@@ -1,0 +1,1248 @@
+{
+	"recipes": [
+		{
+			"id": "recruitindependentedge",
+			"label": "刃の大いなる力を召喚させてトラブルメーカーを勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationedge": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"edge": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "私が尊敬の印として道具を差し出せば、この人は仲間になる。[道具を1つ与える。置いた道具は永久に戻ってこない。]",
+			"description": "この瞬間のためにナイフを用意した。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentforge",
+			"label": "鍛造の大いなる力を召喚させてトラブルメーカーを勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationforge": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"forge": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "私が尊敬の印として道具を差し出せば、この人は仲間になる。[道具を1つ与える。置いた道具は永久に戻ってこない。]",
+			"description": "火は、監視者の肌を焦がすほどの強さに燃え盛る。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentgrail",
+			"label": "聖杯の大いなる力を召喚させてトラブルメーカーを勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationgrail": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"grail": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "私が尊敬の印として道具を差し出せば、この人は仲間になる。[道具を1つ与える。置いた道具は永久に戻ってこない。]",
+			"description": "一緒にいよう。ああ、そうだ、離れなくて良い。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentheart",
+			"label": "心臓の大いなる力を召喚させてトラブルメーカーを勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationheart": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"heart": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "私が尊敬の印として道具を差し出せば、この人は仲間になる。[道具を1つ与える。置いた道具は永久に戻ってこない。]",
+			"description": "終わりのないことを始めよう。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentknock",
+			"label": "開錠の大いなる力を召喚させてトラブルメーカーを勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationknock": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"knock": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "私が尊敬の印として道具を差し出せば、この人は仲間になる。[道具を1つ与える。置いた道具は永久に戻ってこない。]",
+			"description": "忘れられない始まりになりそうだ。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentlantern",
+			"label": "灯りの大いなる力を召喚させてトラブルメーカーを勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationlantern": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"lantern": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "私が尊敬の印として道具を差し出せば、この人は仲間になる。[道具を1つ与える。置いた道具は永久に戻ってこない。]",
+			"description": "大いなる光、そして大いなる闇。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentmoth",
+			"label": "蛾の大いなる力を召喚させてトラブルメーカーを勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationmoth": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"moth": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "私が尊敬の印として道具を差し出せば、この人は仲間になる。[道具を1つ与える。置いた道具は永久に戻ってこない。]",
+			"description": "一緒に、古い殻を脱ぎ捨てた。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentwinter",
+			"label": "冬の大いなる力を召喚させてトラブルメーカーを勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationwinter": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"winter": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "私が尊敬の印として道具を差し出せば、この人は仲間になる。[道具を1つ与える。置いた道具は永久に戻ってこない。]",
+			"description": "この儀式には言葉は必要ない。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintanceedge",
+			"label": "刃を召喚して、知人を勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationedge": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"edge": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "この人は、次へと進む準備ができている。",
+			"description": "新信者は言葉を発する前に、漂う糸を切り離せるくらい鋭くナイフを研がねばならない。鋭くなければ、悲惨なことになるだろう。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintanceforge",
+			"label": "鍛造を召喚して、知人を勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationforge": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"forge": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "この人は、次へと進む準備ができている。",
+			"description": "この儀式には焼印が必要だ。小さな印だが、その人の一生を左右する印だ。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintancegrail",
+			"label": "聖杯を召喚して、知人を勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationgrail": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"grail": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "この人は、次へと進む準備ができている。",
+			"description": "私が与えた味を忘れることはないだろう。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintanceheart",
+			"label": "心臓を召喚して、知人を勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationheart": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"heart": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "この人は、次へと進む準備ができている。",
+			"description": "儀式の鐘の音が雷のように教会に響き渡る。その内容はよく知っている。自分が書いたものだ。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintanceknock",
+			"label": "開錠を召喚して、知人を勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationknock": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"knock": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "この人は、次へと進む準備ができている。",
+			"description": "小さな傷だが、開放の力に敬意を表するには十分だ。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintancelantern",
+			"label": "灯りを召喚して、知人を勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationlantern": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"lantern": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "この人は、次へと進む準備ができている。",
+			"description": "十数個の光が燃えている。この儀式には影や慈悲の出番はない。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintancemoth",
+			"label": "蛾を召喚して、知人を勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationmoth": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"moth": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "この人は、次へと進む準備ができている。",
+			"description": "蛾は脱皮する。新信者は、自分の衣を脱ぎ捨て、過去を剥ぎ取らなければならない。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintancewinter",
+			"label": "冬を召喚して、知人を勧誘する",
+			"actionId": "talk",
+			"requirements": {
+				"venerationwinter": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"winter": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "この人は、次へと進む準備ができている。",
+			"description": "私は9つの言葉だけを話す。新信者は何も話すことはできない。",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "promotetodiscipleedge",
+			"label": "刃を召喚させて信者を昇格させる",
+			"actionId": "talk",
+			"requirements": {
+				"venerationedge": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"edge": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "私の信奉者は新信者として跪き、伝授者として立ち上がる。必要な宣誓は私が行う。",
+			"description": "「私の傷は武器だ。努力によって私は勝利へと昇る。敗北ではなく、消滅だけが存在している。明るい刃の光の中で本当の自分が見えてくる。私は、最強の者に仕えるために身を捧げることを誓う」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodiscipleforge",
+			"label": "鍛造を召喚させて信者を昇格させる",
+			"actionId": "talk",
+			"requirements": {
+				"venerationforge": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"forge": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "私の信奉者は新信者として跪き、伝授者として立ち上がる。必要な宣誓は私が行う。",
+			"description": "「私は破壊され、生まれ変わった。そして今、自分の皮膚を燃やし、その跡を世界に知らしめる。私は炎に身を捧げることを誓う。何も恐れることはないだろう」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodisciplegrail",
+			"label": "聖杯を召喚させて信者を昇格させる",
+			"actionId": "talk",
+			"requirements": {
+				"venerationgrail": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"grail": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "私の信奉者は新信者として跪き、伝授者として立ち上がる。必要な宣誓は私が行う。",
+			"description": "痛みの中で我々は生まれ、飢えの中で受け入れられ、喜びの中で我々は貪られる。これが肉体の扉であり、彼女の約束だ。その約束を思い起こして、饗宴に身を捧げるのだ。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodiscipleheart",
+			"label": "心臓を召喚させて信者を昇格させる",
+			"actionId": "talk",
+			"requirements": {
+				"venerationheart": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"heart": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "私の信奉者は新信者として跪き、伝授者として立ち上がる。必要な宣誓は私が行う。",
+			"description": "「我々は舌を雷に、足を踊りに捧げ、肌を夜にゆだねる。そして我々は止まらない、止まらない、止まらない」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodiscipleknock",
+			"label": "開錠を召喚させて信者を昇格させる",
+			"actionId": "talk",
+			"requirements": {
+				"venerationknock": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"knock": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "私の信奉者は新信者として跪き、伝授者として立ち上がる。必要な宣誓は私が行う。",
+			"description": "「肉体であった彼女に、己の傷を捧げる。石であった彼女に、古い自分と新しい自分が分かれるこの瞬間を捧げよう。光から生まれた彼女には、秘密を捧げる。扉は開かれた」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodisciplelantern",
+			"label": "灯りを召喚させて信者を昇格させる",
+			"actionId": "talk",
+			"requirements": {
+				"venerationlantern": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"lantern": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "私の信奉者は新信者として跪き、伝授者として立ち上がる。必要な宣誓は私が行う。",
+			"description": "「彼が道を示し、あなたが地図になる。彼は灯りをともし、あなたは闇であった。彼には慈悲がなく、あなたは決して慈悲を示さない。我々の羅針盤は知識であり、我々の進路は栄光である」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodisciplemoth",
+			"label": "蛾を召喚させて信者を昇格させる",
+			"actionId": "talk",
+			"requirements": {
+				"venerationmoth": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"moth": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "私の信奉者は新信者として跪き、伝授者として立ち上がる。必要な宣誓は私が行う。",
+			"description": "「次はハサミ、そしてナイフ。次は木、そして骨。月のひらめき、そして魂の斑点。彼は血であり、我々も血となるだろう」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodisciplewinter",
+			"label": "冬を召喚させて信者を昇格させる",
+			"actionId": "talk",
+			"requirements": {
+				"venerationwinter": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"winter": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "私の信奉者は新信者として跪き、伝授者として立ち上がる。必要な宣誓は私が行う。",
+			"description": "「太陽の血が流されたように、今あなたの血も流れる。狼が分裂したように、今、あなたの過去はあなたの未来から分裂している。あなたは生まれていない。使命は溶解でのみ終わる。静かに立ち上がれ」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_edge",
+			"label": "弟子を暗殺者に昇格させようとする",
+			"actionId": "talk",
+			"requirements": {
+				"cultedge_1": 1,
+				"follower": 1,
+				"edge": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_edge": 1
+			},
+			"startdescription": "この地位に就けるのは、ごく一部の、我々の秘儀にふさわしい者だけである。",
+			"description": "「ライオンスミスが大佐にひざまずいたように、私もひざまずく。私の使命は死か力の解決で終わる」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_forge",
+			"label": "弟子を作り変える者に昇格させようとする",
+			"actionId": "talk",
+			"requirements": {
+				"cultforge_1": 1,
+				"follower": 1,
+				"forge": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_forge": 1
+			},
+			"startdescription": "この地位に就けるのは、ごく一部の、我々の秘儀にふさわしい者だけである。",
+			"description": "「私は金槌であり金床である。私は火の感触であり、鉄の恵である。私は終わりの火に身を捧げることを誓う」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_grail",
+			"label": "弟子をシプリアンに昇格させようとする",
+			"actionId": "talk",
+			"requirements": {
+				"cultgrail_1": 1,
+				"follower": 1,
+				"grail": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_grail": 1
+			},
+			"startdescription": "この地位に就けるのは、ごく一部の、我々の秘儀にふさわしい者だけである。",
+			"description": "「銅と鴉の名のもと、我々が渇望する彼女、そして我々を渇望するの彼女の名のもと、私はな饗宴者として、また宴のごちそうとして自分の身を捧げることを誓う。私はむさぼり食い、貪り食われるだろう」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_heart",
+			"label": "弟子をタランテリストに昇格させようとする",
+			"actionId": "talk",
+			"requirements": {
+				"cultheart_1": 1,
+				"follower": 1,
+				"heart": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_heart": 1
+			},
+			"startdescription": "この地位に就けるのは、ごく一部の、我々の秘儀にふさわしい者だけである。",
+			"description": "「松とナイフ、太鼓と輪の名の下、私は終わらない踊りを導くことを誓う。これは私の使命だが、最後に私が仕えるのは踊りだけだ」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_knock",
+			"label": "弟子を鍵に昇格させようとする",
+			"actionId": "talk",
+			"requirements": {
+				"cultknock_1": 1,
+				"follower": 1,
+				"knock": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_knock": 1
+			},
+			"startdescription": "この地位に就けるのは、ごく一部の、我々の秘儀にふさわしい者だけである。",
+			"description": "「鍵も、扉も、門も残っていなければ、壁もない。私を締めだす要塞もなければ、入国を禁じる国もない。母の法以外に私を縛る法律はない。私は鍵で、これが私の役目だ」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_lantern",
+			"label": "弟子を預言者に昇格させようとする",
+			"actionId": "talk",
+			"requirements": {
+				"cultlantern_1": 1,
+				"follower": 1,
+				"lantern": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_lantern": 1
+			},
+			"startdescription": "この地位に就けるのは、ごく一部の、我々の秘儀にふさわしい者だけである。",
+			"description": "「私は、望む者と望まない者のために道を照らすことを誓う。道を示し、照らすことを誓う。私は、慈悲に背くことを誓い、どんな犠牲を払ってでも示された道を歩む」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_moth",
+			"label": "弟子をスキンツイスターに昇格させようとする",
+			"actionId": "talk",
+			"requirements": {
+				"cultmoth_1": 1,
+				"follower": 1,
+				"moth": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_moth": 1
+			},
+			"startdescription": "この地位に就けるのは、ごく一部の、我々の秘儀にふさわしい者だけである。",
+			"description": "「これは私の過去だったが、今の私は変わった。これは私が手放した衣服だ。皮膚もあるが、それは私が一時的に使っているものだ。私の名前は、単なる目隠しでしかない。この森で我々は、光を絞る。私はここにいたが、今はここにいない」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_winter",
+			"label": "弟子を昇格させようとする",
+			"actionId": "talk",
+			"requirements": {
+				"venerationwinter": 1,
+				"venerationedge": -1,
+				"venerationforge": -1,
+				"venerationgrail": -1,
+				"venerationheart": -1,
+				"venerationlantern": -1,
+				"venerationknock": -1,
+				"venerationmoth": -1,
+				"follower": 1,
+				"winter": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_winter": 1
+			},
+			"startdescription": "この地位に就けるのは、ごく一部の、我々の秘儀にふさわしい者だけである。",
+			"description": "「......？」「......？」「......？」\n\n「......」",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "recruitacquaintanceclue",
+			"label": "知人を勧誘する？",
+			"actionId": "talk",
+			"requirements": {
+				"society": 1,
+				"mortal": 1,
+				"follower": -1
+			},
+			"startdescription": "この者にもう少し供給できれば、次のレベルにたどり着くかもしれない。",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "cultfoundation",
+			"label": "基本信条を選ぶ",
+			"alternativerecipes": [
+				{
+					"id": "cultfoundationedge",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationforge",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationgrail",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationheart",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationknock",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationlantern",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationmoth",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationsecrethistories",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationwinter",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationwinter.prealzabo",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationwinter.alzabo",
+					"chance": 100
+				}
+			],
+			"actionId": "cult",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Doctrine",
+					"label": "教義",
+					"required": {
+						"lore": 1
+					},
+					"description": "我々の求めること"
+				}
+			],
+			"startdescription": "伝統と衝動――古いものか、新しいものか、または両方か。[伝承を追加して、教団の基本信条を決める。]",
+			"description": "",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "cultfoundation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationedge",
+			"label": "明るい刃を設立する",
+			"actionId": "establishcult",
+			"requirements": {
+				"edge": 1
+			},
+			"effects": {
+				"cultedge_1": 1
+			},
+			"startdescription": "苦闘と征服の時の神に身を捧げるカルト教団。",
+			"linked": [
+				{
+					"id": "cultfoundation_health",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationforge",
+			"label": "不屈教団を設立する",
+			"actionId": "establishcult",
+			"requirements": {
+				"forge": 1
+			},
+			"effects": {
+				"cultforge_1": 1
+			},
+			"startdescription": "変わる火と作り変える火に身を捧げるカルト教団。",
+			"linked": [
+				{
+					"id": "cultfoundation_health",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationgrail",
+			"label": "血の聖杯教団を設立する",
+			"actionId": "establishcult",
+			"requirements": {
+				"grail": 1
+			},
+			"effects": {
+				"cultgrail_1": 1
+			},
+			"startdescription": "出生、血液、食欲の謎に身を捧げるカルト教団。",
+			"linked": [
+				{
+					"id": "cultfoundation_passion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationheart",
+			"label": "不断寺院を設立する",
+			"actionId": "establishcult",
+			"requirements": {
+				"heart": 1
+			},
+			"effects": {
+				"cultheart_1": 1
+			},
+			"startdescription": "鳴りやまない太鼓の音に身を捧げるカルト教団。",
+			"linked": [
+				{
+					"id": "cultfoundation_passion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationknock",
+			"label": "聖痕教団を設立する",
+			"actionId": "establishcult",
+			"requirements": {
+				"knock": 1
+			},
+			"effects": {
+				"cultknock_1": 1
+			},
+			"startdescription": "扉を開く時の神に身を捧げるカルト教団。",
+			"linked": [
+				{
+					"id": "cultfoundation_health",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationlantern",
+			"label": "栄光の鏡を設立する ",
+			"actionId": "establishcult",
+			"requirements": {
+				"lantern": 1
+			},
+			"effects": {
+				"cultlantern_1": 1
+			},
+			"startdescription": "荒々しい場所から漏れる光の理解に身を捧げるカルト教団。",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationmoth",
+			"label": "野山クラブを設立する",
+			"actionId": "establishcult",
+			"requirements": {
+				"moth": 1
+			},
+			"effects": {
+				"cultmoth_1": 1
+			},
+			"startdescription": "混沌と予期せぬ時の神に身を捧げるカルト教団。",
+			"linked": [
+				{
+					"id": "cultfoundation_passion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationsecrethistories",
+			"label": "聖ヒドラ教団を設立する",
+			"actionId": "establishcult",
+			"requirements": {
+				"secrethistories": 1
+			},
+			"effects": {
+				"cultsecrethistories_1": 1
+			},
+			"startdescription": "5つの歴史と、何千にも分かれる半神話的分岐点を研究するカルト教団。",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationwinter",
+			"label": "静寂の子供たちを設立する ",
+			"actionId": "establishcult",
+			"requirements": {
+				"winter": 1
+			},
+			"effects": {
+				"cultwinter_1": 1
+			},
+			"startdescription": "来るべき沈黙と終わるべき寒さに身を捧げるカルト教団。",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationwinter.prealzabo",
+			"label": "鳩の塔を設立する",
+			"actionId": "establishcult",
+			"requirements": {
+				"prealzabo": 1
+			},
+			"effects": {
+				"cultwinter_2": 1
+			},
+			"startdescription": "失われたものと復活するものに身を捧げるカルト教団。",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationwinter.alzabo",
+			"label": "鳩の塔を設立する",
+			"actionId": "establishcult",
+			"requirements": {
+				"alzabo": 1
+			},
+			"effects": {
+				"cultwinter_2": 1
+			},
+			"startdescription": "失われたものと復活するものに身を捧げるカルト教団。",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_health",
+			"label": "苦痛の犠牲",
+			"actionId": "establishcult",
+			"requirements": {
+				"injury": -1
+			},
+			"slots": [
+				{
+					"id": "Health",
+					"label": "自分の体力",
+					"required": {
+						"health": 1
+					},
+					"description": "我々が仕える力を敬うために、自分自身を捧げなければいけない。"
+				}
+			],
+			"aspects": {
+				"damagehealth": 1
+			},
+			"warmup": 30,
+			"startdescription": "我々が仕える時の神々は痛みを必要としている。自分自身を捧げなければ。",
+			"description": "",
+			"linked": [
+				{
+					"id": "cultfoundation_fatigue",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundation_health",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundation_firstrecruit",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_fatigue",
+			"label": "苦痛の犠牲",
+			"requirements": {
+				"fatigue": 1
+			},
+			"actionId": "establishcult",
+			"aspects": {
+				"damagehealth": 1
+			},
+			"comments": "most explicit way to resolve the damagehealth/injury/ingredient/fatigue society/cult inconsistency",
+			"linked": [
+				{
+					"id": "cultfoundation_firstrecruit",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_reason",
+			"label": "凄まじい明快さ",
+			"actionId": "establishcult",
+			"requirements": {
+				"concentration": -1
+			},
+			"slots": [
+				{
+					"id": "Reason",
+					"label": "自分の理性",
+					"required": {
+						"reason": 1
+					},
+					"description": "我々が仕える力を敬うために、自分自身を捧げなければいけない。"
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 30,
+			"startdescription": "目標を達成するには、恐ろしい真実に気づかなければならない。自分自身を捧げなければ。",
+			"description": "",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundation_firstrecruit",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_passion",
+			"label": "献身の誓い",
+			"actionId": "establishcult",
+			"requirements": {
+				"passionexhausted": -1
+			},
+			"slots": [
+				{
+					"id": "Passion",
+					"label": "自分の情熱",
+					"required": {
+						"passion": 1
+					},
+					"description": "我々が仕える力を敬うために、自分自身を捧げなければいけない。"
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 30,
+			"startdescription": "情熱をすべて目標に捧げろと、我々が仕える時の神々と言う。自分自身を捧げなければ。",
+			"description": "",
+			"linked": [
+				{
+					"id": "cultfoundation_passion",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundation_firstrecruit",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_firstrecruit",
+			"label": "初めての勧誘",
+			"actionId": "establishcult",
+			"requirements": {
+				"follower": -1
+			},
+			"slots": [
+				{
+					"id": "Recruit",
+					"label": "初めての勧誘",
+					"required": {
+						"acquaintance": 1
+					},
+					"forbidden": {
+						"independent": 1,
+						"prisoner": 1,
+						"hunter": 1,
+						"patron": 1,
+						"hireling": 1
+					},
+					"description": "準備ができている者。"
+				}
+			],
+			"warmup": 30,
+			"startdescription": "1人しか信者がいないカルトは、教団ではなく、その人の奇妙な癖でしかない。勧誘活動をしなくてはいけない。",
+			"aspects": {
+				"recruiting": 1
+			},
+			"linked": [
+				{
+					"id": "cultfoundation_firstrecruit",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundation_complete",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_complete",
+			"label": "我々の上昇が始まる。",
+			"actionId": "establishcult",
+			"effects": {
+				"hq.temporary": 1
+			},
+			"description": "教団を設立した。大きな力への一歩だ。[カルトを使って、信奉者を募集したり昇格させたりできる。信奉者にカルトの話をして、教団業務に送り出そう。]"
+		}
+	]
+}

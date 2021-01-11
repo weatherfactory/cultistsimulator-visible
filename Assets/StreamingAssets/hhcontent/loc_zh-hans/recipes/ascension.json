@@ -1,0 +1,2103 @@
+{
+    "recipes": [
+        {
+            "id": "ascensionpower_upgradetoobsession",
+            "label": "燃烧之钥",
+            "actionId": "work",
+            "requirements": {
+                "ascensionpowerb": 1,
+                "waystag_after": 1,
+                "forge": 6
+            },
+            "effects": {
+                "ascensionpowerb": -1,
+                "ascensionpowerc": 1
+            },
+            "startdescription": "这道仪式是钥匙，令白日铸炉进入我的身体。我将永久地转变。",
+            "description": "仪式完成了。我身上出现了铸炉的印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查自己的身体，还会发现第三个印记。我精神振奋，焕发出新的需求。",
+            "warmup": 60,
+            "craftable": true,
+            "burnimage": "flammarion"
+        },
+        {
+            "comments": "male and female flavour; //TODO implement more elegantly",
+            "id": "ascensionsensation_upgradetoobsessionm",
+            "label": "叹息之钥",
+            "actionId": "work",
+            "requirements": {
+                "ascensionsensationbm": 1,
+                "waystag_after": 1,
+                "grail": 6
+            },
+            "effects": {
+                "ascensionsensationbm": -1,
+                "ascensionsensationc": 1
+            },
+            "startdescription": "这道仪式是钥匙，令赤杯进入我的身体。我将永久地转变。",
+            "description": "仪式完成了。我身上出现了赤杯的印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查自己的身体，还会发现第三个印记。我战栗不已，焕发出新的食欲。",
+            "warmup": 60,
+            "craftable": true,
+            "burnimage": "flammarion"
+        },
+        {
+            "comments": "male and female flavour; //TODO implement more elegantly",
+            "id": "ascensionsensation_upgradetoobsessionf",
+            "label": "叹息之钥",
+            "actionId": "work",
+            "requirements": {
+                "ascensionsensationbf": 1,
+                "waystag_after": 1,
+                "grail": 6
+            },
+            "effects": {
+                "ascensionsensationbf": -1,
+                "ascensionsensationc": 1
+            },
+            "startdescription": "这道仪式是钥匙，令赤杯进入我的身体。我将永久地转变。",
+            "description": "仪式完成了。我身上出现了赤杯的印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查自己的身体，还会发现第三个印记。我战栗不已，焕发出新的食欲。",
+            "warmup": 60,
+            "craftable": true,
+            "burnimage": "flammarion"
+        },
+        {
+            "id": "ascensionsensation_switchpolarity_mtof",
+            "label": "偏好",
+            "actionId": "dream",
+            "requirements": {
+                "ascensionsensationbm": 1
+            },
+            "effects": {
+                "ascensionsensationbm": -1,
+                "ascensionsensationbf": 1
+            },
+            "startdescription": "我已经在梦境中来到了我所能抵达的最远处。我必须要开始施行“功业”了。但有可能，我在思考我何所欲时，想到的不是男人……",
+            "description": "口味会改，需求会变，想法会改弦易辙。",
+            "warmup": 3,
+            "craftable": true
+        },
+        {
+            "id": "ascensionsensation_switchpolarity_ftom",
+            "label": "偏好",
+            "actionId": "dream",
+            "requirements": {
+                "ascensionsensationbf": 1
+            },
+            "effects": {
+                "ascensionsensationbf": -1,
+                "ascensionsensationbm": 1
+            },
+            "startdescription": "我已经在梦境中来到了我所能抵达的最远处。我必须要开始施行“功业”了。但有可能，但有可能，我在思考我何所欲时，想到的不是女人……",
+            "description": "口味会改，需求会变，想法会改弦易辙。",
+            "warmup": 3,
+            "craftable": true
+        },
+        {
+            "id": "ascensionenlightenment_upgradetoobsession",
+            "label": "致盲之钥",
+            "actionId": "work",
+            "requirements": {
+                "ascensionenlightenmentb": 1,
+                "waystag_after": 1,
+                "lantern": 6
+            },
+            "effects": {
+                "ascensionenlightenmentb": -1,
+                "ascensionenlightenmentc": 1
+            },
+            "startdescription": "这道仪式是钥匙，令守夜人的凝视进入我的身体。我将永久地转变。",
+            "description": "仪式完成了。我身上出现了守夜人的印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查自己的身体，还会发现第三个印记。我会发现第三个印记。我的饥饿现在变得更加精纯。",
+            "warmup": 60,
+            "craftable": true,
+            "burnimage": "flammarion"
+        },
+        {
+            "id": "majorforgevictory",
+            "label": "黎明将至",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "ascensionpowerf": 1,
+                "forge": 50
+            },
+            "effects": {},
+            "startdescription": "[This text is available when advanced legacies arrive.]",
+            "description": "Remember that the ending text will contain the payload.",
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "minorforgevictory_trigger",
+            "actionId": "work",
+            "label": "烈火焚心",
+            "startdescription": "我已投身火焰无数次。我身上块块厚硬的甲皮互相摩擦着。我于此呼唤铸炉的高热，焚毁从前之我。我将在通过三尖之门时死去，但死亡并不是终结。我将获得永生：成为长生者，得到铸炉的宠爱。[用于此仪式的追随者会被吃掉。如果你在意失去某名追随者，请谨慎选择。]",
+            "requirements": {
+                "ritual": 1,
+                "ascensionpowerf": 1,
+                "forge": 36
+            },
+            "craftable": true,
+            "comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+            "warmup": 1,
+            "effects": {
+                "follower": -3,
+                "summoned": -3,
+                "passion": -3
+            },
+            "linked": [
+                {
+                    "id": "minorforgevictory_overture",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "minorforgevictory_overture",
+            "label": "烈火焚心",
+            "actionId": "work",
+            "description": "我快要成为火焰之具名者。Remember that the ending text will contain the payload.",
+            "warmup": 60,
+            "slots": [
+                {
+                    "id": "beloved",
+                    "label": "爱人",
+                    "required": {
+                        "romanticinterest": 1
+                    },
+                    "forbidden": {
+                        "corpse": 1,
+                        "notoriety": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "signalEndingFlavour": "Grand",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "belovedfarewell"
+                },
+                {
+                    "chance": 100,
+                    "id": "minorforgevictorywithrisen"
+                },
+                {
+                    "chance": 100,
+                    "id": "minorforgevictory"
+                }
+            ]
+        },
+        {
+            "id": "minorforgevictory",
+            "label": "烈火焚心",
+            "requirements": {
+                "ascensionpowerf": 1
+            },
+            "ending": "minorforgevictory",
+            "actionId": "work"
+        },
+        {
+            "id": "minorforgevictorywithrisen",
+            "requirements": {
+                "summoned": 1,
+                "ascensionpowerf": 1
+            },
+            "label": "烈火焚心",
+            "ending": "minorforgevictorywithrisen",
+            "actionId": "work"
+        },
+        {
+            "id": "majorgrailvictory",
+            "label": "筵宴将至",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "ascensionsensationf": 1,
+                "grail": 50
+            },
+            "effects": {},
+            "startdescription": "[This text is available when advanced legacies arrive.]",
+            "description": "筵宴开幕。Remember that the ending text will contain the payload.",
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "minorgrailvictory_withromanticsacrifice",
+            "label": "铭诸心腑之宴",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "ascensionsensationf": 1,
+                "romanticinterest": 1,
+                "grail": 27
+            },
+            "startdescription": "我因摄入他人的生命而胀大。我身体的接缝开始破裂。现在我向赤杯祈求——她是群山之母、进食之神、起源之神。献上爱我之人，或许也是我爱之人，如赤杯爱轰雷之皮直至他绝命。以此为牺牲，祷文施行得更加容易且可怖。具她之名，我将诞下我自己。三尖之门开启了。我将获得永生：成为长生者，得到赤杯的宠爱，而爱我之人将为我至死铭记。",
+            "description": ".",
+            "warmup": 60,
+            "craftable": true,
+            "signalEndingFlavour": "Grand",
+            "ending": "minorgrailvictory"
+        },
+        {
+            "id": "minorgrailvictory_trigger",
+            "actionId": "work",
+            "label": "真正生诞之宴",
+            "startdescription": "我因摄入他人的生命而胀大。我身体的接缝开始破裂。现在我向赤杯祈求——她是群山之母、进食之神、起源之神。具她之名，我将诞下我自己。三尖之门开启了。我将获得永生：成为长生者，得到赤杯的宠爱。[用于此仪式的追随者会被吃掉。如果你在意失去某名追随者，请谨慎选择。]",
+            "requirements": {
+                "ritual": 1,
+                "ascensionsensationf": 1,
+                "grail": 36
+            },
+            "craftable": true,
+            "comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+            "warmup": 1,
+            "effects": {
+                "follower": -3,
+                "summoned": -3,
+                "passion": -3
+            },
+            "linked": [
+                {
+                    "id": "minorgrailvictory_overture",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "minorgrailvictory_overture",
+            "label": "真正生诞之宴",
+            "actionId": "work",
+            "description": ".",
+            "warmup": 60,
+            "signalEndingFlavour": "Grand",
+            "slots": [
+                {
+                    "id": "beloved",
+                    "label": "爱人",
+                    "required": {
+                        "romanticinterest": 1
+                    },
+                    "forbidden": {
+                        "corpse": 1,
+                        "notoriety": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "minorgrailvictorywithrisen"
+                },
+                {
+                    "chance": 100,
+                    "id": "belovedfarewell"
+                },
+                {
+                    "chance": 100,
+                    "id": "minorgrailvictory"
+                }
+            ]
+        },
+        {
+            "id": "minorgrailvictory",
+            "label": "真正生诞之宴",
+            "requirements": {
+                "ascensionsensationf": 1
+            },
+            "ending": "minorgrailvictory",
+            "actionId": "work"
+        },
+        {
+            "id": "minorgrailvictorywithrisen",
+            "requirements": {
+                "summoned": 1,
+                "ascensionsensationf": 1
+            },
+            "label": "真正生诞之宴",
+            "ending": "minorgrailvictorywithrisen",
+            "actionId": "work"
+        },
+        {
+            "id": "majorlanternvictory",
+            "label": "灯",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "ascensionenlightenmentf": 1,
+                "lantern": 50
+            },
+            "effects": {},
+            "startdescription": "[This text is available when advanced legacies arrive.]",
+            "description": "我正在接近辉光。Remember that the ending text will contain the payload.",
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "belovedfarewell",
+            "label": "临行抉择",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "summoned": -1
+            },
+            "startdescription": "最后的道别。他将留下，而我将飞升。",
+            "slots": [
+                {
+                    "id": "decision",
+                    "label": "决断",
+                    "description": "[用激情打断飞升……和你的爱人共度凡人的一生。如要继续，则什么也不做。]",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "auclairvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "catvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "clovettevictory",
+                    "chance": 100
+                },
+                {
+                    "id": "cliftonvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "dorothyvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "elridgevictory",
+                    "chance": 100
+                },
+                {
+                    "id": "enidvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "laidlawvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "leovictory",
+                    "chance": 100
+                },
+                {
+                    "id": "nevillevictory",
+                    "chance": 100
+                },
+                {
+                    "id": "portervictory",
+                    "chance": 100
+                },
+                {
+                    "id": "reniravictory",
+                    "chance": 100
+                },
+                {
+                    "id": "rosevictory",
+                    "chance": 100
+                },
+                {
+                    "id": "salibavictory",
+                    "chance": 100
+                },
+                {
+                    "id": "sleevictory",
+                    "chance": 100
+                },
+                {
+                    "id": "sylviavictory",
+                    "chance": 100
+                },
+                {
+                    "id": "tristanvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "valcianevictory",
+                    "chance": 100
+                },
+                {
+                    "id": "victorvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "violetvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "ysabetvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "imnotinlove",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "auclairvictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqauclair": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人奥克莱尔共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "auclairvictory"
+        },
+        {
+            "id": "catvictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqcat": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人卡特·卡罗共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "catvictory"
+        },
+        {
+            "id": "clovettevictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqclovette": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人克罗薇特共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "clovettevictory"
+        },
+        {
+            "id": "cliftonvictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqclifton": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人克利夫顿共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "cliftonvictory"
+        },
+        {
+            "id": "dorothyvictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqdorothy": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人多萝西共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "dorothyvictory"
+        },
+        {
+            "id": "elridgevictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqelridge": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人埃尔里奇共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "elridgevictory"
+        },
+        {
+            "id": "enidvictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqenid": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人伊妮德共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "enidvictory"
+        },
+        {
+            "id": "laidlawvictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqlaidlaw": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人莱德劳共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "laidlawvictory"
+        },
+        {
+            "id": "leovictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqleo": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人里奥共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "leovictory"
+        },
+        {
+            "id": "nevillevictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqneville": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人内维尔共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "nevillevictory"
+        },
+        {
+            "id": "portervictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqporter": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人波特共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "portervictory"
+        },
+        {
+            "id": "reniravictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqrenira": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人芮妮拉共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "reniravictory"
+        },
+        {
+            "id": "rosevictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqrose": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人萝丝共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "rosevictory"
+        },
+        {
+            "id": "salibavictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqsaliba": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人萨利巴共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "salibavictory"
+        },
+        {
+            "id": "sleevictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqslee": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人思雷共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "sleevictory"
+        },
+        {
+            "id": "sylviavictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqsylvia": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人西尔维娅共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "sylviavictory"
+        },
+        {
+            "id": "tristanvictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqtristan": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人崔斯坦共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "tristanvictory"
+        },
+        {
+            "id": "valcianevictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqvalciane": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人万查妮共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "valcianevictory"
+        },
+        {
+            "id": "victorvictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqvictor": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人维克多共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "victorvictory"
+        },
+        {
+            "id": "violetvictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqviolet": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人维奥莱特共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "violetvictory"
+        },
+        {
+            "id": "ysabetvictory",
+            "label": "爱？",
+            "actionId": "work",
+            "requirements": {
+                "romanticinterest": 1,
+                "passion": 1,
+                "uqysabet": 1
+            },
+            "startdescription": "我听过一个故事：天平一端为一颗心脏，另一端为一片羽毛。这就是我此刻的选择，虽然羽毛通往永恒。[此选择可中止飞升，让你和爱人伊莎贝特共度凡人的一生。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "signalEndingFlavour": "Grand",
+            "ending": "ysabetvictory"
+        },
+        {
+            "id": "imnotinlove",
+            "label": "奉上",
+            "startdescription": "或许他爱着我。或许我爱着他。或许这些都不重要。",
+            "actionId": "work",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "minorlanternvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "minorgrailvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "minorforgevictory",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "minorlanternvictory_trigger",
+            "actionId": "work",
+            "label": "神掠",
+            "startdescription": "肉体所剩无几。我将穿过三尖门，一去不回。守夜人在等我。跟随他的足迹，我会找到来自辉光之光。认知辉光令我的灵魂无法承受，我的灵魂将会洞开。我不会得到永生：我将进入比永生更高的境界。[用于此仪式的追随者会被吃掉。如果你在意失去某名追随者，请谨慎选择。]",
+            "requirements": {
+                "ritual": 1,
+                "ascensionenlightenmentf": 1,
+                "lantern": 36
+            },
+            "craftable": true,
+            "comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+            "warmup": 1,
+            "effects": {
+                "follower": -3,
+                "summoned": -3,
+                "passion": -3
+            },
+            "linked": [
+                {
+                    "id": "minorlanternvictory_overture",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "minorlanternvictory_overture",
+            "label": "神掠",
+            "actionId": "work",
+            "description": ".",
+            "warmup": 60,
+            "slots": [
+                {
+                    "id": "beloved",
+                    "label": "爱人",
+                    "required": {
+                        "romanticinterest": 1
+                    },
+                    "forbidden": {
+                        "corpse": 1,
+                        "notoriety": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "signalEndingFlavour": "Grand",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "minorlanternvictorywithrisen"
+                },
+                {
+                    "chance": 100,
+                    "id": "belovedfarewell"
+                },
+                {
+                    "chance": 100,
+                    "id": "minorlanternvictory"
+                }
+            ]
+        },
+        {
+            "id": "minorlanternvictory",
+            "label": "神掠",
+            "requirements": {
+                "ascensionenlightenmentf": 1
+            },
+            "ending": "minorlanternvictory",
+            "actionId": "work"
+        },
+        {
+            "id": "minorlanternvictorywithrisen",
+            "requirements": {
+                "summoned": 1,
+                "ascensionenlightenmentf": 1
+            },
+            "label": "神掠",
+            "ending": "minorlanternvictorywithrisen",
+            "actionId": "work"
+        },
+        {
+            "id": "ambition",
+            "requirements": {
+                "seasonambitions": 1
+            },
+            "label": "异质的追求？",
+            "actionId": "craving",
+            "slots": [
+                {
+                    "id": "Obsessions",
+                    "label": "痴迷之念",
+                    "description": "更深层的渴望",
+                    "required": {
+                        "enlightenmentmarks": 3,
+                        "powermarks": 3,
+                        "sensationmarks": 3,
+                        "remembrancemarks": 2,
+                        "changemarks": 1,
+                        "independent": 1,
+                        "resentment": 3,
+                        "mentor": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "什么样的饥渴在驱使着我们？",
+            "description": "",
+            "effects": {},
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "L_ascension_rival",
+                    "chance": 100
+                },
+                {
+                    "id": "L_independent",
+                    "chance": 100
+                },
+                {
+                    "id": "L_rebellion_activate",
+                    "chance": 70
+                },
+                {
+                    "id": "L_rebellion_noactivation",
+                    "chance": 100
+                },
+                {
+                    "id": "ending.minorcrownedgrowthvictory",
+                    "chance": 100
+                },
+                {
+                    "id": "ambition.apostleforge.emitfuel",
+                    "chance": 100
+                },
+                {
+                    "id": "ambition.apostlegrail.emitfuel",
+                    "chance": 100
+                },
+                {
+                    "id": "ambition.apostlelantern.emitfuel",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingpower",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingsensation",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingenlightenment",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingremembrance",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingremembrancenegative",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_tryascendfromg",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_tryascendfromf",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_tryascendfrome",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_tryascendfromd",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_tryascendfromc",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_tryascendfromb",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_tryascendfroma",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensionnotyet",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_independent",
+            "label": "竞争对手！",
+            "requirements": {
+                "independent": 1
+            },
+            "actionId": "ambition",
+            "deckeffect": {
+                "schemeevents": 1
+            },
+            "linked": [
+                {
+                    "id": "L_independent_router",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_independent_router",
+            "label": "竞争对手！",
+            "actionId": "ambition",
+            "requirements": {
+                "independent": 1
+            },
+            "comments": "That requirement is strictly unnecessary, but leaving it here just in case we move recipe connections again - it's an important filter",
+            "startdescription": "又一个先于我飞升的人。[无派的密教徒会试图独占司辰的关注。他说不定还有其他的计策，不论你喜不喜欢。]",
+            "alternativerecipes": [
+                {
+                    "id": "scheme_murderhunter",
+                    "chance": 100,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "independent": 1
+                        }
+                    }
+                },
+                {
+                    "id": "scheme_expedition_grab",
+                    "chance": 100,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "independent": 1
+                        }
+                    }
+                },
+                {
+                    "id": "scheme_activities",
+                    "chance": 100,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "independent": 1
+                        }
+                    }
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "L_ascension_rival",
+            "actionId": "ambition",
+            "requirements": {
+                "rivalmarks": 7
+            },
+            "extantreqs": {
+                "long.enemy": -1
+            },
+            "label": "功成名就的竞争者",
+            "startdescription": "我对手的成就使我黯然失色。现在其人将飞升，在太阳之居屋享有一席；而仍然留在人世的我只能空自懊恼。",
+            "ending": "rivalascension",
+            "signalEndingFlavour": "Melancholy",
+            "warmup": 60
+        },
+        {
+            "id": "L_ascension_rival_apostle",
+            "actionId": "ambition",
+            "requirements": {
+                "rivalmarks": 7
+            },
+            "extantreqs": {
+                "long.enemy": 1
+            },
+            "label": "敌人过多",
+            "startdescription": "一个不死的敌人已是致死的威胁。两个不死的敌人更是令人无从招架。我们的大功业流产了。",
+            "ending": "rivalascension",
+            "signalEndingFlavour": "Melancholy",
+            "warmup": 60
+        },
+        {
+            "id": "L_rebellion_activate",
+            "label": "叛变！",
+            "actionId": "ambition",
+            "requirements": {
+                "resentment": 3
+            },
+            "startdescription": "我是做得太过，还是不足？不论如何，我已使某人难耐怒火。",
+            "description": "一个盟友背弃了我。此人也许不会与我为敌——现在还不会——还谈不上为敌——但他不会再替我办事。",
+            "aspects": {
+                "rebellion": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "L_rebellion_noactivation",
+            "label": "不满",
+            "actionId": "ambition",
+            "requirements": {
+                "resentment": 3
+            },
+            "startdescription": "我时做得太过，还是不足？不论如何，我已激起了某盟友的怒火。",
+            "description": "此人独自生了一阵闷气。他现将归队。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "ending.minorcrownedgrowthvictory",
+            "actionId": "ambition",
+            "label": "去侵染和成为",
+            "requirements": {
+                "ghoul.hunger": 7
+            },
+            "startdescription": "我的食欲已成为超越我本身的一种东西，但并未出离我本身之外。我的腹腔中孳殖满了硕果。太迟了。",
+            "ending": "minorcrownedgrowthvictory",
+            "signalEndingFlavour": "Vile",
+            "warmup": 30
+        },
+        {
+            "id": "ascensionnotyet",
+            "label": "凡人的懊恼",
+            "actionId": "craving",
+            "requirements": {
+                "enlightenmentmarks": -1,
+                "powermarks": -1,
+                "sensationmarks": -1
+            },
+            "slots": [
+                {
+                    "id": "Temptations",
+                    "label": "诱惑",
+                    "description": "火待浇油",
+                    "required": {
+                        "desire": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "什么样的饥渴在驱使着我？",
+            "effects": {
+                "restlessness": 1
+            },
+            "description": "迄今为止，我的需求与欲望与其他凡人并无不同。然是，是什么使我坐立不安？",
+            "alternativerecipes": [
+                {
+                    "id": "ascensionhintpower2",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensionhintenlightenment2",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensionhintsensation2m",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensionhintsensation2f",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensionhintpower1",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensionhintenlightenment1",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensionhintsensation1",
+                    "chance": 100
+                },
+                {
+                    "id": "legacydetectiveplotitem_tempt",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensionhintpower2",
+            "label": "铸炉的咆哮",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionpowerb": 1
+            },
+            "startdescription": "现在我总觉得周身不够温暖。",
+            "description": "我曾梦见白日铸炉，我向往她火焰的高热。差不多是时候施行“功业”，开始转变了——但我必须拥有足够的<b>铸</b>相。在<b>探索</b>中可能能找到更多。",
+            "effects": {
+                "restlessness": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "ascensionhintenlightenment2",
+            "label": "守夜人的光",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionenlightenmentb": 1
+            },
+            "startdescription": "即便在醒时，我也开始看见新的颜色。",
+            "description": "好奇心开始成为我的生理需求。我的双眼将会成为门关。差不多是时候施行“功业”，开始转变了——但我必须拥有足够的<b>灯</b>相。在<b>探索</b>中可能能找到更多。",
+            "effects": {
+                "restlessness": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "ascensionhintsensation2m",
+            "label": "圣杯的触摸",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionsensationbm": 1
+            },
+            "startdescription": "我的欲望正在起变化。",
+            "description": "赤杯美妙的浪潮在我体内涌动。差不多是时候施行“功业”，开始转变了——但我必须拥有足够的<b>杯</b>相。在<b>探索</b>中可能能找到更多。",
+            "effects": {
+                "restlessness": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "ascensionhintsensation2f",
+            "label": "圣杯的触摸",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionsensationbf": 1
+            },
+            "startdescription": "我的欲望正在起变化。",
+            "description": "赤杯用她美妙的手指触碰了我。差不多是时候施行“功业”，开始转变了——但我必须要有足够的<b>杯</b>相。在<b>探索</b>中可能能找到更多。",
+            "effects": {
+                "restlessness": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "ascensionhintpower1",
+            "label": "铸炉的火光",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionpowera": 1
+            },
+            "startdescription": "我心中燃烧着渴求——渴求无形之术所能带来的力量。",
+            "description": "白日铸炉在我的梦中等候着。如果我学到<b>铸</b>之密传并梦到这份诱惑，我会向目标更进一步。这样的需求侵蚀着我。",
+            "effects": {
+                "restlessness": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "ascensionhintenlightenment1",
+            "label": "守夜人的足迹",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionenlightenmenta": 1
+            },
+            "startdescription": "我脑中燃烧着渴求——渴求无形之术所能带来的知识。",
+            "description": "守夜人——即瞳中扉——在我的梦中等候着。如果我学到<b>灯</b>之密传，并以此诱惑入梦，我会向目标更进一步。这样的需求侵蚀着我。",
+            "effects": {
+                "restlessness": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "ascensionhintsensation1",
+            "label": "圣杯的私语",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionsensationa": 1
+            },
+            "startdescription": "我身上缠绕着渴求——渴求无形之术所能带来的欢愉。",
+            "description": "红杯——沉溺与吞噬之杯——在我的梦中等候着。如果我学到<b>杯</b>之密传，并以此诱惑入梦，我会向目标更进一步。这样的需求侵蚀着我。",
+            "effects": {
+                "restlessness": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingpower",
+            "label": "塑形的高热",
+            "actionId": "craving",
+            "requirements": {
+                "powermarks": 1
+            },
+            "slots": [
+                {
+                    "id": "Fuels",
+                    "label": "燃料",
+                    "description": "火待浇油",
+                    "required": {
+                        "funds": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "我需要更炽烈的火。现今燃料稀缺而又昂贵。如果买不起燃料，我便会被寒冷所压倒。",
+            "linked": [
+                {
+                    "id": "ascensionsuccesscravingpower_descend",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingpower_ascend",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "ascensionsuccesscravingpower_descend",
+            "label": "转变的余灰",
+            "actionId": "craving",
+            "requirements": {
+                "funds": -1
+            },
+            "slots": [
+                {
+                    "id": "Pain",
+                    "label": "痛楚",
+                    "description": "需求侵蚀着我",
+                    "required": {
+                        "health": 1,
+                        "vitality": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "我在颤抖。一旦离开火，我的肉体将变得瘦削而虚弱。",
+            "description": "我的力气减弱，我的血液更凉了。我认为我身上一部分伤疤甚至正在平愈。我被削弱了。",
+            "aspects": {
+                "descend": 1,
+                "damagehealth": 1
+            },
+            "effects": {
+                "vitality": -1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "ascensioncravingpower_ascend",
+            "label": "另一道印记",
+            "actionId": "craving",
+            "startdescription": "",
+            "description": "火焰渴求我，如我渴求它。火焰的触碰带来的绝不仅是疼痛。我拥有了另一道印记。",
+            "effects": {
+                "vitality": 2,
+                "funds": -1
+            },
+            "aspects": {
+                "ascend": 1
+            }
+        },
+        {
+            "id": "ascensioncravingsensation",
+            "label": "赤红的需求",
+            "actionId": "craving",
+            "requirements": {
+                "sensationmarks": 1
+            },
+            "slots": [
+                {
+                    "id": "Sustenance",
+                    "label": "食料",
+                    "description": "新死的人、活着的人，都可以。",
+                    "required": {
+                        "corpse": 1,
+                        "lunatic": -1,
+                        "prisoner": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "渴求鲜血？要是真那么简单就好了。我会更彻底地将他吮吸至尽。",
+            "linked": [
+                {
+                    "id": "ascensionsuccesscravingsensation_descend",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingsensation_ascend",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "ascensionsuccesscravingsensation_descend",
+            "label": "内侧的沙漠",
+            "actionId": "craving",
+            "requirements": {
+                "corpse": -1,
+                "lunatic": -1,
+                "prisoner": -1
+            },
+            "slots": [
+                {
+                    "id": "Pain",
+                    "label": "痛楚",
+                    "description": "需求侵蚀着我",
+                    "required": {
+                        "passion": 1,
+                        "glimmering": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "若离了别人的生命，我的生命将消耗自身。",
+            "description": "我的体液稀薄，肉体干枯；我的转变褪去，激情随之黯淡。我离追求中的自己渐行渐远。",
+            "aspects": {
+                "descend": 1,
+                "fatiguing": 1
+            },
+            "effects": {
+                "glimmering": -1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "ascensioncravingsensation_ascend",
+            "label": "另一道印记",
+            "actionId": "craving",
+            "effects": {
+                "glimmering": 2,
+                "corpse": -1,
+                "lunatic": -1,
+                "prisoner": -1
+            },
+            "startdescription": "",
+            "description": "完成后，我的满足感会如海中月影般深沉。另一道印记在我体内萌发。",
+            "aspects": {
+                "ascend": 1
+            }
+        },
+        {
+            "id": "ascensioncravingenlightenment",
+            "label": "对光的好奇心",
+            "actionId": "craving",
+            "requirements": {
+                "enlightenmentmarks": 1
+            },
+            "slots": [
+                {
+                    "id": "Conversation",
+                    "label": "谈话",
+                    "description": "鲜活头脑的最后遗言。",
+                    "required": {
+                        "prisoner": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "与鲜活的头脑在安静的房间中独处一段时光。我需要的只是这些。",
+            "linked": [
+                {
+                    "id": "ascensionsuccesscravingenlightenment_descend",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingenlightenment_ascend",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "ascensionsuccesscravingenlightenment_descend",
+            "label": "内侧的沙漠",
+            "actionId": "craving",
+            "requirements": {
+                "prisoner": -1
+            },
+            "slots": [
+                {
+                    "id": "Pain",
+                    "label": "痛楚",
+                    "description": "需求侵蚀着我",
+                    "required": {
+                        "reason": 1,
+                        "erudition": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "如果我不能从鲜活的头脑中摄食思想，我的需求会反噬自身。",
+            "description": "漫宿之光在我体内黯淡下来。我已不如原先的我。我需要交谈。我需要那些特定的交谈。",
+            "aspects": {
+                "descend": 1,
+                "fatiguing": 1
+            },
+            "effects": {
+                "erudition": -1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "ascensioncravingenlightenment_ascend",
+            "label": "另一道印记",
+            "actionId": "craving",
+            "effects": {
+                "erudition": 2,
+                "prisoner": -1
+            },
+            "startdescription": "",
+            "description": "我饮下了此人头脑中的光。它令我战栗而充盈。我体内的印记更亮了一层。",
+            "aspects": {
+                "ascend": 1
+            }
+        },
+        {
+            "id": "ascensioncravingremembrance",
+            "label": "在黑暗泥土中生长的饥渴",
+            "actionId": "craving",
+            "requirements": {
+                "remembrancemarks": 2,
+                "ghoul.hunger": 1
+            },
+            "mutations": [
+                {
+                    "filter": "remembrancemarks",
+                    "mutate": "ghoul.hunger",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "startdescription": "那种味道——那种特定的味道——那种既不清新也不腐臭的味道——又来烦扰我的口腔了。我的舌头将肿胀，我的嘴唇将变黑。灵药已在我体内种下孢子，且只有死人肉才能使它们平息。",
+            "warmup": 30
+        },
+        {
+            "id": "ascensioncravingremembrancenegative",
+            "label": "在黑暗泥土中生长的饥渴",
+            "actionId": "craving",
+            "requirements": {
+                "remembrancemarks": 2
+            },
+            "mutations": [
+                {
+                    "filter": "remembrancemarks",
+                    "mutate": "ghoul.hunger",
+                    "level": 1,
+                    "additive": false
+                }
+            ],
+            "startdescription": "那种味道——那种特定的味道——那种既不清新也不腐臭的味道——又来烦扰我的口腔了。我的舌头将肿胀，我的嘴唇将变黑。灵药已在我体内种下孢子，且只有死人肉才能使它们平息。",
+            "comments": "This is a safety measure for players who managed to allow their hunger to go negative with an old save.",
+            "warmup": 30
+        },
+        {
+            "id": "ascensioncravingchange_tryascendfroma",
+            "label": "诱向蜕变",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionchangea": 1
+            },
+            "slots": [
+                {
+                    "id": "Lesson",
+                    "label": "学成",
+                    "description": "抛却成就变化",
+                    "required": {
+                        "ascensionlessonhearta": 1,
+                        "ascensionlessonmotha": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "我向往成为其他的存在，但是在找到必不可少的见证人前，我学会我需要学的了吗？",
+            "linked": [
+                {
+                    "id": "ascensioncravingchange_heartlessonascendfroma",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_mothlessonascendfroma",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_noascension",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "ascensioncravingchange_heartlessonascendfroma",
+            "label": "抛却服饰",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonhearta": 1
+            },
+            "description": "当我放弃我做过的选择，当树影间漏下的月光在我表面游走时，我像树叶般发出光来。",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonhearta": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desireheart_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_mothlessonascendfroma",
+            "label": "抛却服饰",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonmotha": 1
+            },
+            "description": "我剥去我的外皮，使自己成长。月亮已来到此处，而我已在它眼中——",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonmotha": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desiremoth_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_tryascendfromb",
+            "label": "迎来第二次蜕变",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionchangeb": 1
+            },
+            "slots": [
+                {
+                    "id": "Lesson",
+                    "label": "学成",
+                    "description": "抛却成就变化",
+                    "required": {
+                        "ascensionlessonheartb": 1,
+                        "ascensionlessonmothb": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "包裹我的皮肤会越来越容不下我，我应该开始将其丢弃。我需要派遣我的一部分去学习丢弃的方法。",
+            "linked": [
+                {
+                    "id": "ascensioncravingchange_heartlessonascendfromb",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_mothlessonascendfromb",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_noascension",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "ascensioncravingchange_heartlessonascendfromb",
+            "label": "抛却覆皮",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonheartb": 1
+            },
+            "description": "我最外层的皮肤分崩瓦解，我也一样。",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonheartb": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desireheart_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_mothlessonascendfromb",
+            "label": "抛却覆皮",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonmothb": 1
+            },
+            "description": "我们都由层构成\n但我的层数有欠",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonmothb": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desiremoth_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_tryascendfromc",
+            "label": "迎来第三次蜕变",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionchangec": 1
+            },
+            "slots": [
+                {
+                    "id": "Lesson",
+                    "label": "学成",
+                    "description": "抛却成就变化",
+                    "required": {
+                        "ascensionlessonheartc": 1,
+                        "ascensionlessonmothc": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "先揭露，再掩盖，再揭露。要想继续，我须得学习如何掩藏。",
+            "linked": [
+                {
+                    "id": "ascensioncravingchange_heartlessonascendfromc",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_mothlessonascendfromc",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_noascension",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "ascensioncravingchange_heartlessonascendfromc",
+            "label": "抛却足音",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonheartc": 1
+            },
+            "description": "没有脚步声可跟踪，谁会知道我们的去向？我急不可待地要出发。",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonheartc": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desireheart_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_mothlessonascendfromc",
+            "label": "抛却足音",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonmothc": 1
+            },
+            "description": "鼹鼠给出的最古早的教训：音乐之间即无声",
+            "comments": "lack of full stop intentional",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonmothc": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desiremoth_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_tryascendfromd",
+            "label": "迎来第四次蜕变",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionchanged": 1
+            },
+            "slots": [
+                {
+                    "id": "Lesson",
+                    "label": "学成",
+                    "description": "抛却成就变化",
+                    "required": {
+                        "ascensionlessonheartd": 1,
+                        "ascensionlessonmothd": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "为了下一次蜕变，我须得软化我自己，以接纳助我蜕变的中介物。",
+            "linked": [
+                {
+                    "id": "ascensioncravingchange_heartlessonascendfromd",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_mothlessonascendfromd",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_noascension",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "ascensioncravingchange_heartlessonascendfromd",
+            "label": "抛却颜色",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonheartd": 1
+            },
+            "description": "我新暴露出的惨白色的肉饱含着融解出的汁液。",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonheartd": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desireheart_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_mothlessonascendfromd",
+            "label": "抛却颜色",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonmothd": 1
+            },
+            "description": "当我钻进最后的皮肤，整个此刻我都将融解，化为斑斑点点。很快了，点点斑斑。",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonmothd": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desiremoth_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_tryascendfrome",
+            "label": "迎来第五次蜕变",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionchangee": 1
+            },
+            "slots": [
+                {
+                    "id": "Lesson",
+                    "label": "学成",
+                    "description": "抛却成就变化",
+                    "required": {
+                        "ascensionlessonhearte": 1,
+                        "ascensionlessonmothe": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "我将要穿过的门扉从不对醒时的，或阖上的眼睛显现。我须得把双眼让与知晓门路之人，才能得见门扉。",
+            "linked": [
+                {
+                    "id": "ascensioncravingchange_heartlessonascendfrome",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_mothlessonascendfrome",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_noascension",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "ascensioncravingchange_heartlessonascendfrome",
+            "label": "抛却视力",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonhearte": 1
+            },
+            "description": "有时，经受此蜕变之人的黄水晶色的双眼会被误认为接近“神侵”者受沐光明的双眼。不过绝对骗不过多长时间。",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonhearte": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desireheart_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_mothlessonascendfrome",
+            "label": "抛却视力",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonmothe": 1
+            },
+            "description": "现在我进入了我最终的皮肤。",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonmothe": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desiremoth_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_tryascendfromg",
+            "actionId": "craving",
+            "label": "内侧的搏动",
+            "requirements": {
+                "ascensionchangeg": 1
+            },
+            "slots": [
+                {
+                    "id": "Lesson",
+                    "label": "学成",
+                    "description": "抛却成就变化",
+                    "required": {
+                        "ascensionlessonheartf": 1,
+                        "ascensionlessonmothf": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "我必须赶紧入梦，在我的灵魂爆裂之前。",
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_tryascendfromf",
+            "actionId": "craving",
+            "label": "迎来第六次转变",
+            "requirements": {
+                "ascensionchangef": 1
+            },
+            "slots": [
+                {
+                    "id": "Lesson",
+                    "label": "学成",
+                    "description": "抛却成就变化",
+                    "required": {
+                        "ascensionlessonheartf": 1,
+                        "ascensionlessonmothf": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "骨头总被留到最后。等我学会它们的转变之法，我便已准备就绪。",
+            "linked": [
+                {
+                    "id": "ascensioncravingchange_heartlessonascendfromf",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_mothlessonascendfromf",
+                    "chance": 100
+                },
+                {
+                    "id": "ascensioncravingchange_noascension",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "ascensioncravingchange_heartlessonascendfromf",
+            "label": "抛却骨骼",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonheartf": 1
+            },
+            "description": "现在日已东升，阴影为之驱散，是时候记起了；我会如我所学，用我的骨骼记起。我可说已准备就绪。",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonheartf": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desireheart_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_mothlessonascendfromf",
+            "label": "抛却骨骼",
+            "actionId": "craving",
+            "requirements": {
+                "ascensionlessonmothf": 1
+            },
+            "description": "现在日已西沉，阴影蔓延如黑油，我的骨骼知道最终注定发生什么。终结近在眼前。",
+            "aspects": {
+                "ascend": 1
+            },
+            "effects": {
+                "ascensionlessonmothf": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desiremoth_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "ascensioncravingchange_noascension",
+            "label": "一样的我",
+            "actionId": "craving",
+            "description": "我在转变之路上不再是孤身一人。我须得在以隐秘<b>形态</b>移动时找到我要学的东西。",
+            "effects": {
+                "restlessness": 1
+            },
+            "warmup": 10
+        }
+    ]
+}

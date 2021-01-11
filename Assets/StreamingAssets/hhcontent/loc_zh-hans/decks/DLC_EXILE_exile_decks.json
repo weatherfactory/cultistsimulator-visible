@@ -1,0 +1,46 @@
+{
+	"decks": [
+		{
+			"id": "rkx.events",
+			"label": "清算人的计划",
+			"description": "清算人正在计划下一步行动.",
+			"spec": [
+				"rkx.event.aggressive",
+				"rkx.event.aggressive",
+				"rkx.event.aggressive",
+				"rkx.event.passive"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "rkx.weaknesses.environment",
+			"label": "敌手的弱点:环境",
+			"spec": [
+				"rkx.weakness.cold.hidden",
+				"rkx.weakness.heat.hidden",
+				"rkx.weakness.sea.hidden"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "rkx.weaknesses.quirk",
+			"label": "敌手的弱点:怪癖",
+			"spec": [
+				"rkx.weakness.faith.hidden",
+				"rkx.weakness.cats.hidden",
+				"rkx.weakness.heights.hidden"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "rkx.weaknesses.disfavour",
+			"label": "敌手的弱点:厌恶",
+			"spec": [
+				"rkx.weakness.horned.hidden",
+				"rkx.weakness.wolf.hidden",
+				"rkx.weakness.flowermaker.hidden"
+			],
+			"resetonexhaustion": true
+		}
+	]
+}

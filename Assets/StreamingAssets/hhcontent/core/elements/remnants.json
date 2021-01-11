@@ -1,0 +1,77 @@
+{
+    "elements": [
+        {
+            "id": "corpse",
+            "label": "A Human Corpse",
+            "description": "The spirit is departed. At some point, the smell will be so bad you'll have to dispose of it, but here it is for now. It may attract attention; it may be used to impress the impressionable. [Even after the Corpse is gone, Notoriety will remain.]",
+            "aspects": {
+                "winter": 3,
+                "grail": 3,
+                "ingredient": 1,
+                "reputation": 2,
+                "remnant": 1
+            },
+            "xtriggers": {
+                "raiseburgeoning": "spirit_wintera_moth",
+                "raiseshattered": "spirit_wintera_edge"
+            },
+            "lifetime": 60,
+            "decayTo": "notoriety"
+        },
+        {
+            "id": "corpse.furious",
+            "label": "Scarred Bone-Fragment",
+            "aspects": {
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.furious"
+            },
+            "description": "Within this fragment lie memories of an older Hour."
+        },
+        {
+            "id": "corpse.luxurious",
+            "label": "Leathery Remnant",
+            "aspects": {
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.luxurious"
+            },
+            "description": "Sense-memories and longings, the secrets of the Knot, in an unpromising scrap of old self."
+        },
+        {
+            "id": "corpse.liminal",
+            "label": "Long-Flake",
+            "aspects": {
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.liminal"
+            },
+            "description": "Very little remains, but the taste - the unheralded taste - "
+        },
+        {
+            "id": "corpse.horizon",
+            "label": "Shadowless Segment",
+            "aspects": {
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.horizon"
+            },
+            "description": "Did the Kings ever know true Glory?"
+        },
+        {
+            "id": "corpse.splendid",
+            "label": "Wolfshead",
+            "aspects": {
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.splendid"
+            },
+            "description": "Did she know the Sun as it was?"
+        }
+    ]
+}

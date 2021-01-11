@@ -1,0 +1,370 @@
+{
+    "elements": [
+        {
+            "id": "fervour",
+            "label": "Fervour",
+            "aspects": {
+                "influence": 1,
+                "heart": 2
+            },
+            "description": "My congregation's passions run strong, if not deep. [Keep your congregation satisfied. Fervour, if unused, will decay to Dread.]",
+            "lifetime": 180,
+            "decayTo": "dread"
+        },
+        {
+            "id": "lockscaredge",
+            "label": "Edge-Lock Scar",
+            "description": "When I am Threshold, this scar will open beneath a blade's touch.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "edge": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscaredge"
+            }
+        },
+        {
+            "id": "lockscarforge",
+            "label": "Forge-Lock Scar",
+            "description": "When I am Threshold, this scar will open to the touch of hot iron.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "forge": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarforge"
+            }
+        },
+        {
+            "id": "lockscargrail",
+            "label": "Grail-Lock Scar",
+            "description": "When I am Threshold, this scar will open to a fervent kiss.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "grail": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscargrail"
+            }
+        },
+        {
+            "id": "lockscarheart",
+            "label": "Heart-Lock Scar",
+            "description": "When I am Threshold, this scar will open at the beat of the drum.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "heart": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarheart"
+            }
+        },
+        {
+            "id": "lockscarlantern",
+            "label": "Lantern-Lock Scar",
+            "description": "When I am Threshold, this scar will open at the flush of dawn.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "lantern": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarlantern"
+            }
+        },
+        {
+            "id": "lockscarmoth",
+            "label": "Moth-Lock Scar",
+            "description": "When I am Threshold, this scar will answer to the scissors.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "moth": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarmoth"
+            }
+        },
+        {
+            "id": "lockscarwinter",
+            "label": "Winter-Lock Scar",
+            "description": "When I am Threshold, this scar will open last.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "winter": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarwinter"
+            }
+        },
+        {
+            "id": "openedlockscaredge",
+            "label": "Edge-Lock Scar",
+            "description": "When I am Threshold, this scar will open beneath a blade's touch.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "edge": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscaredge",
+            "icon": "lockscaredge"
+        },
+        {
+            "id": "openedlockscarforge",
+            "label": "Forge-Lock Scar",
+            "description": "When I am Threshold, this scar will open to the touch of hot iron.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "forge": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarforge",
+            "icon": "lockscarforge"
+        },
+        {
+            "id": "openedlockscargrail",
+            "label": "Grail-Lock Scar",
+            "description": "When I am Threshold, this scar will open to a fervent kiss.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "grail": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscargrail",
+            "icon": "lockscargrail"
+        },
+        {
+            "id": "openedlockscarheart",
+            "label": "Heart-Lock Scar",
+            "description": "When I am Threshold, this scar will open at the beat of the drum.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "heart": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarheart",
+            "icon": "lockscarheart"
+        },
+        {
+            "id": "openedlockscarlantern",
+            "label": "Lantern-Lock Scar",
+            "description": "When I am Threshold, this scar will open at the flush of dawn.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "lantern": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarlantern",
+            "icon": "lockscarlantern"
+        },
+        {
+            "id": "openedlockscarmoth",
+            "label": "Moth-Lock Scar",
+            "description": "When I am Threshold, this scar will answer to the scissors.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "moth": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarmoth",
+            "icon": "lockscarmoth"
+        },
+        {
+            "id": "openedlockscarwinter",
+            "label": "Winter-Lock Scar",
+            "description": "When I am Threshold, this scar will open last.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "winter": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarwinter",
+            "icon": "lockscarwinter"
+        },
+        {
+            "id": "devotee_edge",
+            "label": "A Sturdy Worshipper",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 2
+            },
+            "description": "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_edge"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_forge",
+            "label": "A Practical Worshipper",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "forge": 2
+            },
+            "description": "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_forge"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_grail",
+            "label": "An Avid Worshipper",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "grail": 2
+            },
+            "description": "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_grail"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_heart",
+            "label": "A Lively Worshipper ",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "heart": 2
+            },
+            "description": "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_heart"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_knock",
+            "label": "A Dextrous Worshipper ",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "knock": 2
+            },
+            "description": "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_knock"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_lantern",
+            "label": "A Percipient Worshipper",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "lantern": 2
+            },
+            "description": "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_lantern"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_moth",
+            "label": "An Erratic Worshipper",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "moth": 2
+            },
+            "description": "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_moth"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_winter",
+            "label": "A Silent Worshipper",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "winter": 2
+            },
+            "description": "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_winter"
+            },
+            "lifetime": 180
+        }
+    ]
+}

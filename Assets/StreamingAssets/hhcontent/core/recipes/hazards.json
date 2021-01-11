@@ -1,0 +1,746 @@
+{
+    "recipes": [
+        {
+            "id": "despairrisk",
+            "label": "Bleak Thoughts",
+            "actionid": "despair",
+            "requirements": {},
+            "effects": {},
+            "slots": [
+                {
+                    "id": "Shadows",
+                    "label": "Shadows",
+                    "required": {
+                        "inducesdespair": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "Dark days. I must be careful not to let doubts creep in. [Dread may provoke full-fledged Despair.]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "despairactive",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdefeated",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "despairactive",
+            "label": "DESPAIR",
+            "actionid": "despair",
+            "requirements": {
+                "inducesdespair": 1
+            },
+            "startdescription": "Despair is the wolf that devours thought. [You can defeat Despair by feeding it Contentment; otherwise, it will destroy you when it reaches 3 Dread.]",
+            "description": ".",
+            "warmup": 60,
+            "slots": [
+                {
+                    "id": "Thoughts",
+                    "label": "Thoughts",
+                    "required": {
+                        "contentment": 1,
+                        "inducesdespair": 1
+                    },
+                    "greedy": true,
+                    "noanim": true
+                }
+            ],
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "despairwarning",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "despairabate",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "despairactive",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "despairwarning",
+            "label": "DESPAIR",
+            "actionid": "despair",
+            "requirements": {
+                "dread": 2,
+                "contentment": -1
+            },
+            "startdescription": "Despair pads close at my heels. The world is leached of light. [You can defeat Despair by feeding it Contentment; otherwise, it will destroy you when it reaches 3 Dread.]",
+            "description": ".",
+            "comments": "This exists specifically for the burn image at 2 Dread.",
+            "burnimage": "despair",
+            "linked": [
+                {
+                    "id": "despairabate",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "despairactive",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "despairabate",
+            "label": "Despair Abates",
+            "actionid": "despair",
+            "requirements": {
+                "contentment": 1
+            },
+            "effects": {
+                "inducesdespair": -1,
+                "contentment": -1
+            },
+            "startdescription": "Memories of better times keep the wolf from the door. [Each Contentment destroys one Dread.]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "despairactive",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdefeated",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "despairdeath",
+            "label": "DESPAIR OVERWHELMS ME",
+            "actionid": "despair",
+            "requirements": {
+                "inducesdespair": 3
+            },
+            "slots": [
+                {
+                    "id": "Thoughts",
+                    "label": "Thoughts",
+                    "required": {
+                        "contentment": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "effects": {},
+            "startdescription": "This is almost the end - [Find Contentment now, or it's over.]",
+            "description": "Where will they find me? I am not here.",
+            "warmup": 60,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "despairabate",
+                    "chance": 100
+                }
+            ],
+            "ending": "despairending",
+            "signalEndingFlavour": "Melancholy",
+            "comments": "Consider (1) allowing the threshold to grab Dread too. (2) allowing the active step to have a low-risk possibility of increasing Dread (3) providing a reward when Despair is defeated."
+        },
+        {
+            "id": "despairdefeated",
+            "label": "The Clouds Part",
+            "actionid": "despair",
+            "effects": {
+                "fleeting": 1
+            },
+            "startdescription": ".",
+            "description": "The wolf Despair prowls elsewhere. [No Dread empowers this Despair. It's over, for now.]",
+            "craftable": false
+        },
+        {
+            "id": "visionsrisk",
+            "label": "A Trembling in the Air",
+            "actionid": "visions",
+            "requirements": {},
+            "slots": [
+                {
+                    "id": "Shadows",
+                    "label": "Shadows",
+                    "required": {
+                        "fascination": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "The sun flickers like a shadow. Dreams ripple behind the surface of mirrors. I must be careful not to drift from the waking world. [Fascination may provoke Visions]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdefeated",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "visionsactive",
+            "label": "I Am Seeing Things",
+            "actionid": "visions",
+            "requirements": {
+                "fascination": 1
+            },
+            "startdescription": "Paintings whisper. Windows wink. I know these things are not true, but how can I be certain? [You can defeat Visions with Dread or a Fleeting Memory; otherwise, you will lose yourself completely at Fascination 3.]",
+            "description": ".",
+            "warmup": 60,
+            "slots": [
+                {
+                    "id": "Thoughts",
+                    "label": "Thoughts",
+                    "required": {
+                        "dread": 1,
+                        "fascination": 1,
+                        "fleeting": 1
+                    },
+                    "greedy": true,
+                    "noanim": true
+                }
+            ],
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "visionswarning",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "visionsabate",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsabatefleeting",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "visionswarning",
+            "label": "I Am Seeing Things!",
+            "actionid": "visions",
+            "requirements": {
+                "fascination": 2,
+                "dread": -1,
+                "fleeting": -1
+            },
+            "startdescription": "The world is dangerously bright. [You can defeat Visions with Dread or a Fleeting Memory; otherwise, you will lose yourself completely at Fascination 3.]",
+            "description": ".",
+            "comments": "This exists specifically for the burn image at 2 Fascination.",
+            "burnimage": "visions",
+            "linked": [
+                {
+                    "id": "visionsabate",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsabatefleeting",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "visionsdeath",
+            "label": "Help Me - ",
+            "actionid": "visions",
+            "requirements": {
+                "fascination": 3
+            },
+            "slots": [
+                {
+                    "id": "Thoughts",
+                    "label": "Thoughts",
+                    "required": {
+                        "dread": 1,
+                        "fleeting": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "effects": {},
+            "startdescription": "What is the light that brims the surface of everything? The Glory is coming, but I cannot be here to see it - [If you don't find Dread or a Fleeting Memory now, it's over.]",
+            "description": "Where will they find me? I am not here.",
+            "warmup": 60,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "visionsabate",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsabatefleeting",
+                    "chance": 100
+                }
+            ],
+            "signalEndingFlavour": "Melancholy",
+            "ending": "visionsending"
+        },
+        {
+            "id": "visionsabate",
+            "label": "Visions Abate",
+            "actionid": "visions",
+            "requirements": {
+                "dread": 1
+            },
+            "effects": {
+                "fascination": -1,
+                "dread": -1
+            },
+            "startdescription": "Shadows are shelter from light. Despair is ballast. Even misery has its uses. [Each Dread quells one Fascination.]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdefeated",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "visionsabatefleeting",
+            "label": "Visions Abate",
+            "actionid": "visions",
+            "requirements": {
+                "fleeting": 1
+            },
+            "effects": {
+                "fascination": -1,
+                "fleeting": -1
+            },
+            "startdescription": "The solidity of the everyday banishes phantoms. I tether myself to the everyday. [Each Fleeting Memory quells one Fascination.]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdefeated",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "visionsdefeated",
+            "label": "The World as it Is",
+            "actionid": "visions",
+            "effects": {
+                "fleeting": 1
+            },
+            "startdescription": ".",
+            "description": "Mirrors are calm. The sun is steady. The Glory recedes. I am sane, if that means anything. [No Fascination drives your Visions. It's over, for now.]",
+            "craftable": false
+        },
+        {
+            "id": "curse_dread_dormant",
+            "label": "Dormant Dry Soul Curse",
+            "actionid": "curse_dread",
+            "startdescription": "The Dry Soul Curse has not yet taken effect.",
+            "alt": [
+                {
+                    "id": "curse_dread_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_dread_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "curse_dread_active",
+            "label": "Dry Soul Curse",
+            "requirements": {
+                "reason": -1
+            },
+            "actionid": "curse_dread",
+            "startdescription": "The Dry Soul Curse settles softly, like a withered hand on the shoulder.",
+            "slots": [
+                {
+                    "id": "Reason",
+                    "label": "Reason",
+                    "greedy": true,
+                    "required": {
+                        "reason": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_dread_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_dread_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "curse_dread_attempt_mitigation",
+            "label": "The Dry Soul Curse: A Last Chance",
+            "actionid": "curse_dread",
+            "slots": [
+                {
+                    "id": "Protection",
+                    "label": "Protection",
+                    "required": {
+                        "influencehearte": 1,
+                        "influenceheartg": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "curse_dread_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "The Curse has taken hold. Now the tunnel tightens around all I see. [Only if you have enough Heart influence will it be possible to turn aside the Curse.]",
+            "description": "My skull creaks. The light greys.",
+            "aspects": {
+                "damagereason": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "curse_dread_mitigation_successful",
+            "label": "The Thunderskin's Favour",
+            "actionid": "curse_dread",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "Tap the drum and speak the words. Keep hope alive until the chant is done.",
+            "description": "My soul swells again. The Curse has passed. Far off, on the horizon, the storm moves like a watchful beast."
+        },
+        {
+            "id": "curse_visions_dormant",
+            "label": "Dormant Fifth Eye Curse",
+            "actionid": "curse_visions",
+            "startdescription": "The Fifth Eye Curse has not yet taken effect.",
+            "alt": [
+                {
+                    "id": "curse_visions_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_visions_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "curse_visions_active",
+            "label": "Fifth Eye Curse",
+            "actionid": "curse_visions",
+            "requirements": {
+                "passion": -1
+            },
+            "startdescription": "The Third Eye is a myth, or the pineal gland. The Fourth Eye is a Mark in certain processes of ascension. The Fifth Eye now opens before me.",
+            "slots": [
+                {
+                    "id": "Passion",
+                    "label": "Passion",
+                    "greedy": true,
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_visions_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_visions_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "curse_visions_attempt_mitigation",
+            "label": "The Fifth Eye Curse: A Last Chance",
+            "actionid": "curse_visions",
+            "slots": [
+                {
+                    "id": "Protection",
+                    "label": "Protection",
+                    "required": {
+                        "influencehearte": 1,
+                        "influenceheartg": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "curse_visions_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "The Curse has taken hold. Now the world, rotting, leaks light. [With enough Heart influence, it will be possible to turn aside the Curse.]",
+            "description": "I cannot stop seeing. If I look long enough, I will not wish to.",
+            "aspects": {
+                "damagepassion": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "curse_visions_mitigation_successful",
+            "label": "The Thunderskin's Favour",
+            "actionid": "curse_visions",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "Tap the drum and speak the words. I will close all my eyes until the chant is done.",
+            "description": "My eyes are clear. The Curse has passed. Far off, on the horizon, the storm moves like a watchful beast."
+        },
+        {
+            "id": "curse_affliction_dormant",
+            "label": "Dormant Creeping Breath Curse",
+            "actionid": "curse_affliction",
+            "startdescription": "The Creeping Breath curse has not yet come due.",
+            "alt": [
+                {
+                    "id": "curse_affliction_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_affliction_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "curse_affliction_active",
+            "label": "Creeping Breath Curse",
+            "actionid": "curse_affliction",
+            "requirements": {
+                "health": -1
+            },
+            "startdescription": "The Creeping Breath Curse begins with a cough - a cough that loiters in one's throat like a debt-collector.",
+            "slots": [
+                {
+                    "id": "Health",
+                    "label": "Health",
+                    "greedy": true,
+                    "required": {
+                        "health": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_affliction_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_affliction_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "curse_affliction_attempt_mitigation",
+            "label": "The Creeping Breath Curse: A Last Chance",
+            "actionid": "curse_affliction",
+            "slots": [
+                {
+                    "id": "Protection",
+                    "label": "Protection",
+                    "required": {
+                        "influencehearte": 1,
+                        "influenceheartg": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "curse_affliction_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "The Curse has taken hold. Now the life-pulse slows. [The Curse is no ordinary sickness, but with enough Heart influence, it will be possible to turn it aside.]",
+            "description": "Each breath we take in this life is weaker than the last, until we come to the final breath of all. The process is so slow as to be imperceptible... until one is touched by the Creeping Breath Curse.",
+            "aspects": {
+                "destroyhealth": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "curse_affliction_mitigation_successful",
+            "label": "The Thunderskin's Favour",
+            "actionid": "curse_affliction",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "Tap the drum and speak the words. Suppress the cough until the chant is done.",
+            "description": "My lungs are clear. The Curse has passed. Far off, on the horizon, the storm moves like a watchful beast."
+        },
+        {
+            "id": "curse_nowhere_dormant",
+            "label": "Something's Come Back With Us",
+            "actionid": "curse_nowhere",
+            "startdescription": "I glimpse subtle movement in the world - like the floaters which sometimes move through the eye, but slyer. Sometimes, too, I hear them.",
+            "alt": [
+                {
+                    "id": "curse_nowhere_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_nowhere_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "curse_nowhere_active",
+            "label": "The Worms in the World",
+            "actionid": "curse_nowhere",
+            "requirements": {
+                "mortal": -1
+            },
+            "startdescription": "There are Worms in the city. One does not see Worms, but neither does one forget them. They will search until they find someone they can enter through the spaces in the skin, and then do what Worms will.",
+            "slots": [
+                {
+                    "id": "Someone",
+                    "label": "Someone",
+                    "greedy": true,
+                    "required": {
+                        "mortal": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_nowhere_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_nowhere_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "curse_nowhere_attempt_mitigation",
+            "label": "The Worms in the World: A Last Chance",
+            "actionid": "curse_nowhere",
+            "slots": [
+                {
+                    "id": "Protection",
+                    "label": "Protection",
+                    "required": {
+                        "influenceheartg": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "curse_nowhere_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "The Worms have found their way beneath the skin. This is the end. [It's possible to save this one only if you have a tremendous degree of Heart influence at your disposal.]",
+            "description": "When Worms take flesh, there is nothing to be done except destroy what remains - burn and sift with the utmost care.",
+            "effects": {
+                "mortal": -1,
+                "notoriety": 1,
+                "dread": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "curse_nowhere_mitigation_successful",
+            "label": "The Thunderskin's Favour",
+            "actionid": "curse_nowhere",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "Implore the lightning. Only the storm's own breath can save this one now.",
+            "description": "The absence of the Worms is like a curtain flung open. The air is rain-scent and ozone. Our fingers still tap to the Thunderskin's rhythms."
+        }
+    ]
+}

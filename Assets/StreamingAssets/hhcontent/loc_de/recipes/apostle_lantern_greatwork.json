@@ -1,0 +1,275 @@
+{
+	"recipes": [
+		{
+			"id": "ambition.apostlelantern.emitfuel",
+			"actionId": "work",
+			"label": "Eine Vision von der Erleuchtung",
+			"requirements": {
+				"apostlelantern.mentor": 1
+			},
+			"startdescription": "Wieder der Traum.",
+			"effects": {
+				"apostlelantern.pillarfuel": 1
+			}
+		},
+		{
+			"id": "work.apostlelantern.majorvictory.postbetrayal",
+			"actionId": "work",
+			"label": "Und doch öffnet sich das Tor nach außen",
+			"extantreqs": {
+				"apostlelantern.mentor": -1
+			},
+			"startdescription": "Der Wächter ist hier in all seiner messerlichen Pracht, doch letztendlich wird er dem Schlüssel des Tages weichen müssen. Ich habe die Tür in meinem Auge geschlossen, doch vergessen kann ich nicht. Mein Pfad stand fest noch bevor ich das wahre Licht gesehen hatte.  Die Zeugen und ich sind gewappnet – gewappnet dafür, dass der Ruhm von der anderen Seite in den Mansus einzieht. Die Träume der Unschuldigen sind nicht so gewappnet. Hunderte Seelen werden niemals erwachen. Es gibt immer einen Preis, und es ist unerlässlich, dass unsere Erleuchtung lenkt, dass sie erleuchtet, dass sie kein Mitleid zeigt.",
+			"requirements": {
+				"apostlelantern.pillar3": 1,
+				"apostlelantern.pillar4": 1,
+				"ingredientlanternf": 1,
+				"fragmentmothe": 1,
+				"toollanternf": 1,
+				"kleidouchos": 1,
+				"promise": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorlanternvictory"
+		},
+		{
+			"id": "work.apostlelantern.majorvictory",
+			"actionId": "work",
+			"label": "Das Tor öffnet sich nach außen",
+			"extantreqs": {
+				"apostlelantern.mentor": 1
+			},
+			"startdescription": "Der Wächter ist hier in all seiner messerlichen Pracht, doch letztendlich wird er dem Schlüssel des Tages weichen müssen. Die Zeugen und ich sind gewappnet – gewappnet dafür, dass der Ruhm von der anderen Seite in den Mansus einzieht. Die Träume der Unschuldigen sind nicht so gewappnet. Hunderte Seelen werden niemals erwachen. Es gibt immer einen Preis, und es ist unerlässlich, dass unsere Erleuchtung lenkt, dass sie erleuchtet, dass sie kein Mitleid zeigt.",
+			"requirements": {
+				"apostlelantern.pillar3": 1,
+				"apostlelantern.pillar4": 1,
+				"ingredientlanternf": 1,
+				"fragmentmothe": 1,
+				"toollanternf": 1,
+				"kleidouchos": 1,
+				"promise": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorlanternvictory"
+		},
+		{
+			"id": "apostlelantern.createpillar2",
+			"actionId": "dream",
+			"label": "Finde den Scheideweg",
+			"startdescription": "Hinter der Pfauentür, Wurmwärts zur Kammer der Wege, kreuzen sich zwei Straßen im Schatten einer Eiche.",
+			"description": "Hier verdunkelt sich das blaue Licht des Mansus fast zum Blau des Abendhimmels. Die Straßen dehnen sich aus in den Mauernebel und sind vergessen, doch hier, wo sie sich kreuzen, erinnert sich der Krähenschatten im Eichenschatten.",
+			"requirements": {
+				"waypeacock": 1,
+				"apostlelantern.pillarfuel": 1
+			},
+			"effects": {
+				"apostlelantern.pillar2": 1,
+				"apostlelantern.pillarfuel": -1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "apostlelantern.createpillar3.hint2",
+			"actionId": "dream",
+			"label": "Den Reiz säen?",
+			"startdescription": "Drücke den Traum eines Schlüssels in die weiche Erde des Scheidewegs. Lass ihn im hellsten Lichte baden, das wir auftreiben können. Was wird wachsen?",
+			"requirements": {
+				"apostlelantern.pillar2": 1,
+				"apostlelantern.pillarfuel": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "apostlelantern.createpillar3.hint1",
+			"actionId": "dream",
+			"label": "Den Reiz säen?",
+			"startdescription": "Wenn der Traum vom Schlüssel das nächste Mal kommt, bringe ich ihn zum Scheideweg.",
+			"requirements": {
+				"apostlelantern.pillar2": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "apostlelantern.createpillar3",
+			"actionId": "dream",
+			"label": "Den Reiz säen",
+			"startdescription": "Drücke den Traum eines Schlüssels in die weiche Erde des Scheidewegs. Lass ihn im Lichte des Wächters baden. Ein leuchtender Baum wird sich entfalten, mit einer strahlenden Ernte in seinen Zweigen.",
+			"description": "Dies ist die größere Erleuchtung, die unsere Erleuchtung für den Wächter braucht, doch sie hat auch noch einen anderen Zweck. Wie Motten zu einer Kerzen, Fische zu einem Köder. so auch Seelen zum Lichte.",
+			"requirements": {
+				"apostlelantern.pillar2": 1,
+				"apostlelantern.pillarfuel": 1,
+				"influencelanterng": 1
+			},
+			"effects": {
+				"apostlelantern.pillar3": 1,
+				"apostlelantern.pillarfuel": -1,
+				"influencelanterng": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "apostlelantern.maintainpillar3.hint",
+			"actionId": "study",
+			"label": "Den Reiz aufrecht erhalten?",
+			"startdescription": "Der Reiz wird dahinwelken ... es sei denn, er wird mit den richtigen Farben gewässert.",
+			"requirements": {
+				"apostlelantern.pillar3": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "apostlelantern.maintainpillar3",
+			"actionId": "study",
+			"label": "Den Reiz aufrecht erhalten",
+			"startdescription": "Im blauen Traume des Mansus ist es zuweilen möglich, Licht in der Schale der eigenen Hände zu tragen.",
+			"description": "Ich öffne meine Hände über den Wurzeln des Reizes, wo es sich an die Erde klammert. Neue Früchte wachsen an seinen Ästen und der Scheideweg ist wieder blasser.",
+			"requirements": {
+				"apostlelantern.pillar3": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"fascination": -1
+			},
+			"aspects": {
+				"renew.apostlelantern.pillar3": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "apostlelantern.usepillar3",
+			"actionId": "talk",
+			"label": "Eine Maid-im-Spiegel entsenden, um einen Zeugen anzulocken",
+			"startdescription": "Meine Maid wird die schlafende Seele durch die Weiße Tür führen und sie den Aufstieg der Messer hinauftragen, bis das, was noch übrig ist, den Reiz am Scheideweg sieht.",
+			"requirements": {
+				"spirit_winterd_edge": 1,
+				"apostlelantern.pillar3": 1
+			},
+			"linked": [
+				{
+					"id": "apostlelantern.trycreatepillar4"
+				}
+			]
+		},
+		{
+			"id": "apostlelantern.trycreatepillar4",
+			"actionId": "talk",
+			"label": "Eine Maid-im-Spiegel entsenden, um einen Zeugen anzulocken",
+			"startdescription": "Die Maid murmelt die niederen Elemente des Mantras des Aufstiegs. Sie stellt ihre blassen Füße vorsichtig auf die Steine der Straße: sie hinterlassen keine Spuren. Die Füße des Zeugen sind mit Blut besprenkelt.",
+			"description": "Die Maid geht, der Zeuge bleibt, taumelt im Baumschatten, die Augen auf den Reiz fixiert, wobei der Mund sanft verheilt. Einer von Sieben. Kein Erwachen. Wird das Dezernat für Unterdrückung interessieren.",
+			"effects": {
+				"spirit_winterd_edge": -1,
+				"apostlelantern.pillar4.inprogress1": 1,
+				"notoriety": 1
+			},
+			"slots": [
+				{
+					"id": "pillar4",
+					"label": "Zeugen",
+					"required": {
+						"uqthirdwaywitnesses": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "apostlelantern.upgradepillar4"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "apostlelantern.upgradepillar4",
+			"actionId": "talk",
+			"label": "Eine Maid-im-Spiegel entsenden, um einen Zeugen anzulocken",
+			"startdescription": "Die Maid murmelt die niederen Elemente des Mantras des Aufstiegs. Sie stellt ihre blassen Füße vorsichtig auf die Steine der Straße: sie hinterlassen keine Spuren. Die Füße des Zeugen sind mit Blut besprenkelt.",
+			"description": "Die Maid geht, der Zeuge bleibt, taumelt im Baumschatten, die Augen auf den Reiz fixiert, wobei der Mund sanft verheilt. Noch einer. Kein Erwachen. Wird das Dezernat für Unterdrückung interessieren.",
+			"requirements": {
+				"uqthirdwaywitnesses": 1
+			},
+			"aspects": {
+				"cloudwitnessesupgrade": 1
+			},
+			"effects": {
+				"spirit_winterd_edge": -1,
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "apostlelantern.pillar4.chat",
+			"actionId": "talk",
+			"label": "Mit den Zeugen sprechen",
+			"startdescription": "Ihrer Münder sind verschlossen, doch ihre Ohren sind offen.",
+			"description": "Manchmal sehen sie mich an. Zumeist sehen sie zum Lichte. Ich sehe sie seufzen, wie sie einander sanft berühren. Sie sind noch immer Menschen. Das Licht saugt sich in sie hinein, und in mich. Vielleicht habe ich dabei geholfen, ihre Aufmerksamkeit wach zu halten.",
+			"requirements": {
+				"uqthirdwaywitnesses": 1
+			},
+			"effects": {
+				"fascination": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "apostlelantern.attemptrecruitkleidouchos.sulochana",
+			"actionId": "talk",
+			"label": "Sulochana nach dem Schlüssel fragen",
+			"startdescription": "'Der Schlüssel der Tage.' Sulochana nagt an ihrer Lippe. Ihre Zähne funkeln im Lampenschein. 'Ja, ich habe ein passende Schwester. Aber ich werde sie dir nicht vorstellen. Frag jemanden auf der anderen Seite des Forstes – jemanden, dem etwas am Ruhme liegt.'",
+			"requirements": {
+				"sulochana": 1,
+				"apostlelantern.pillarfuel": 1
+			}
+		},
+		{
+			"id": "apostlelantern.recruitkleidouchos.teresa",
+			"actionId": "talk",
+			"label": "Teresa nach dem Traum vom Schlüssel fragen",
+			"startdescription": "'Nun, mein Aufsteiger hat sich also noch mehr vorgenommen, was? Wenn du das mal nicht bereust.' Teresa dreht den eingebildeten Schlüssel mit ihren Händen. 'Ein Traum vom Schlüssel der Tage. Der Traum ist falsch, die Schlüssel real. Doch das ist nichts, was du oder ich anrühren könnten.'",
+			"description": "'Ich kenne den Schlüsselträger – denjenigen, den du suchst. Ich habe schon eine ganze Weile nicht mehr mit ihr gesprochen – ich spreche nicht oft mit Ligeianern – doch als Laterne-Langer muss ich deinem Mentor gewogen sein. Ich werde nach deinem Schlüsselträger schicken.'",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"apostlelantern.pillarfuel": 1
+			},
+			"effects": {
+				"kleidouchos.enroute": 1,
+				"apostlelantern.pillarfuel": -1,
+				"spirit_lanterne_secret": -1
+			}
+		},
+		{
+			"id": "apostlelantern.persuadekleidouchos",
+			"actionId": "talk",
+			"label": "Mit der Frau in Schwarz-Weiß sprechen",
+			"startdescription": "'Ich soll dir beim Trikuspidalen Tor helfen, ja? Stimmt das? In seinem ultimativen Modus? Mit meinem Schlüssel der Tage? Ja, ja, ist mir bewusst. Ich bin nicht gern ahnungslos unterwegs.'",
+			"description": "'Okkasionen dieser Art sind ja so selten – ach, so selten. Es wird mir ein Vergnügen sein, dem Aufstieg deines Langen beizuwohnen, kleines Püppchen.  Sag mir, wo. Sag mir, wann. Bis dahin werde ich diese Stadt genießen.'",
+			"requirements": {
+				"kleidouchos": 1,
+				"promise": -1
+			},
+			"mutations": [
+				{
+					"filter": "kleidouchos",
+					"mutate": "promise",
+					"level": 1
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "apostlelantern.kleidouchos.persuaded.hint",
+			"actionId": "talk",
+			"label": "Mit der Frau in Schwarz-Weiß sprechen",
+			"startdescription": "'Wenn du bereit bist. Lass dir Zeit. Ich habe noch Häute zu sammeln.'",
+			"requirements": {
+				"kleidouchos": 1,
+				"promise": 1
+			},
+			"hintonly": true
+		}
+	]
+}

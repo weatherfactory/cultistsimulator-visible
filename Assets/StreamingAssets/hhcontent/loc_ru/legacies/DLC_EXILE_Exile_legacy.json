@@ -1,0 +1,268 @@
+{
+	"legacies": [
+		{
+			"id": "exile",
+			"label": "Изгнание",
+			"description": "Никто не смеет воровать у главаря считальцев. Но мне хватило смелости. У меня на это свои причины.",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"trace": 7,
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1
+			},
+			"fromEnding": "wintersacrifice",
+			"availableWithoutEndingMatch": true,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorya",
+			"label": "Изгнание",
+			"description": "Что если всё было бы иначе? Если бы в другой истории мне досталась большая награда?",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorya",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryb",
+			"label": "Изгнание",
+			"description": "Что если всё было бы иначе? Если бы в другой истории мне достались награды более ценные?",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryb",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryc",
+			"label": "Изгнание",
+			"description": "Что если всё было бы иначе? Если бы в другой истории мне удалось достичь больших высот?",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryc",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryafoeslain",
+			"label": "Изгнание",
+			"description": "Что если всё было бы иначе? Если бы в другой истории мне досталась большая награда?",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryafoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorybfoeslain",
+			"label": "Изгнание",
+			"description": "Что если всё было бы иначе? Если бы в другой истории мне достались награды более ценные?",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorybfoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorycfoeslain",
+			"label": "Изгнание",
+			"description": "Что если всё было бы иначе? Если бы в другой истории мне удалось достичь больших высот?",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorycfoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.foecaughtup",
+			"label": "Изгнание",
+			"description": "Что если всё было бы иначе? Если бы в другой истории мне удалось выжить?",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "foecaughtup",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensioncolonel",
+			"label": "Изгнание",
+			"description": "Что если всё было бы иначе? Если бы в другой истории мне удалось обрести свободу?",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensioncolonel",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensionlionsmith",
+			"label": "Изгнание",
+			"description": "Что если всё было бы иначе? Если бы в другой истории мне удалось обрести покой?",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensionlionsmith",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensionwolf",
+			"label": "Изгнание",
+			"description": "Что если всё было бы иначе? Если бы в другой истории мне тоже бы пришлось разрушать?",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensionwolf",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.victoryvelvet",
+			"label": "Изгнание",
+			"description": "Что если всё было бы иначе? Если бы в другой истории мне бы встретился мой создатель?",
+			"startdescription": "Закат. Пришло время уходить.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "victoryvelvet",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		}
+	]
+}

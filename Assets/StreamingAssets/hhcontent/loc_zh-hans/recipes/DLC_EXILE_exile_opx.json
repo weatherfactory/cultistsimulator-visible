@@ -1,0 +1,1962 @@
+{
+	"recipes": [
+		{
+			"id": "use.sanatorium.duplicate.hint",
+			"actionId": "use",
+			"label": "经营另一家疗养院？",
+			"startdescription": "同时一个就够了。",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": 4,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.sanatorium": 1
+			},
+			"alt": [
+				{
+					"id": "opx.sanatorium.begin",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.doctorspractice.duplicate.hint",
+			"actionId": "use",
+			"label": "经营另一家医疗诊所?",
+			"startdescription": "同时一个就够了。",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.doctor": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.miracles.duplicate.hint",
+			"actionId": "use",
+			"label": "组织另一个治愈崇拜教团？",
+			"startdescription": "同时一个就够了。",
+			"requirements": {
+				"connection.holy": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.flowermaker.duplicate.hint",
+			"actionId": "use",
+			"label": "聚集另一个制花人教团？",
+			"startdescription": "同时一个就够了。",
+			"description": "教众正在聚集。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.flowermaker": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.flowermaker": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.horned.duplicate.hint",
+			"actionId": "use",
+			"label": "聚集另一个双角斧教团？",
+			"startdescription": "同时一个就够了。",
+			"description": "教众正在聚集。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.horned": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.horned": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.wolf.duplicate.hint",
+			"actionId": "use",
+			"label": "聚集另一个裂分之狼教团？",
+			"startdescription": "同时一个就够了。",
+			"description": "教众正在聚集。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.wolf": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.wolf": "-"
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.miracles.duplicate.hint",
+			"actionId": "use",
+			"label": "继续另一个治愈崇拜教团？",
+			"startdescription": "同时一个就够了。",
+			"description": "教众再次聚集。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.import.duplicate.hint",
+			"actionId": "use",
+			"label": "经营另一项进口业务？",
+			"startdescription": "同时一个就够了。",
+			"description": "我的商店已开业。",
+			"requirements": {
+				"licence.import": 1,
+				"space": 1,
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"opx.import": "-"
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.counterfeiting.duplicate.hint",
+			"actionId": "use",
+			"label": "开始另一次伪造货币？",
+			"startdescription": "同时一个就够了。",
+			"description": "印刷机差不多准备好了。",
+			"requirements": {
+				"connection.underworld": 1,
+				"forge": 6,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.counterfeiting": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.smuggling.duplicate.hint",
+			"actionId": "use",
+			"label": "开始另一次走私行动？",
+			"startdescription": "同时一个就够了。",
+			"description": "一切都准备好了。",
+			"requirements": {
+				"connection.underworld": 1,
+				"op.sea": 1,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.smuggling": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.fights.duplicate.hint",
+			"actionId": "use",
+			"label": "参加更多的非法比赛？",
+			"startdescription": "还是算了吧。",
+			"requirements": {
+				"connection.underworld": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.fights": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.betrayal.duplicate.hint",
+			"actionId": "use",
+			"label": "背叛另一个起义？",
+			"startdescription": "同时一个就够了。",
+			"requirements": {
+				"connection.radicals": 1,
+				"winter": 2,
+				"domicile": 1,
+				"temptation.defiance": 1
+			},
+			"extantreqs": {
+				"opx.betrayal": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.uprising.duplicate.hint",
+			"actionId": "use",
+			"label": "帮助另一个起义？",
+			"startdescription": "同时一个就够了。",
+			"comments": "Assumes Radicals add Forge 6",
+			"requirements": {
+				"connection.radicals": 1,
+				"forge": 8,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.patronage.duplicate.hint",
+			"actionId": "use",
+			"label": "纠缠统治者以获得更多的资助？",
+			"startdescription": "还是算了吧。",
+			"requirements": {
+				"connection.ruler": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.patronage": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.sanatorium",
+			"actionId": "use",
+			"label": "经营一家疗养院",
+			"startdescription": "一旦我治好了几个有钱的寡妇，这个消息就会很快传开。[一种相当安全的方法，可以把偷来的岁月转换成现金。当经营疗养院时，具有心性相的卡片通常是有用的。]",
+			"description": "疗养院已开业。",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": 4,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.sanatorium": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.sanatorium.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.sanatorium.doctor.hint",
+			"actionId": "use",
+			"label": "经营疗养院还是医疗诊所？",
+			"startdescription": "我需要一间经营医疗诊所的办公室，或者一间大点的，同时令人印象深刻的场所来经营疗养院。一个仓库或其他不吸引人的场所是不够的。",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.doctorspractice",
+			"actionId": "use",
+			"label": "经营一家医疗诊所",
+			"startdescription": "我的治疗方法可能不太像它们看起来的那样……但我的成果总是很不错。[一种相当安全的方法，可以把偷来的岁月转换成现金。当经营诊所时，具有心性相的卡片通常是有用的。]",
+			"description": "诊所已开业。",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 1,
+				"year.stolen": 1,
+				"comfort": 1
+			},
+			"extantreqs": {
+				"opx.doctor": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.doctorspractice.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.miracles",
+			"actionId": "use",
+			"label": "组织一个治愈崇拜教团",
+			"startdescription": "我能给会众带来真正的治愈奇迹。[一种相当安全的方法，可以把偷来的岁月转换成现金。当组织教团时，具有蛾性相的卡片通常是有用的。]",
+			"description": "教众正在聚集。",
+			"requirements": {
+				"connection.holy": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.miracles.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 4,
+						"filter": {
+							"space": 1,
+							"op.connection.holy": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.flowermaker",
+			"actionId": "use",
+			"label": "聚集一个制花人教团",
+			"startdescription": "制花人在这里广受崇拜。我会让会众中的狂热者去追求他们的欢愉。 [一种相当安全的方法，可以把偷来的岁月转换成现金。当组织教团时，具有蛾性相的卡片通常是有用的。]",
+			"description": "教众正在聚集。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.flowermaker": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.flowermaker": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.flowermaker": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.flowermaker.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.horned",
+			"actionId": "use",
+			"label": "聚集一个双角斧教团",
+			"startdescription": "双角斧在这里广受崇拜。会有一些教众被她吸引。[一种相当安全的方法，可以把偷来的岁月转换成现金。 当组织教团时，具有蛾性相的卡片通常是有用的。]",
+			"description": "教众正在聚集。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.horned": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.horned": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.horned": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.horned.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.wolf",
+			"actionId": "use",
+			"label": "聚集一个裂分之狼教团",
+			"startdescription": "双角斧在这里广受崇拜。教众中的暴力分子会对此作出回应。[一种相当安全的方法，可以把偷来的岁月转换成现金。 当组织教团时，具有蛾性相的卡片通常是有用的。]",
+			"description": "教众正在聚集。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.wolf": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.wolf": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.wolf": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.wolf.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.miracles",
+			"actionId": "use",
+			"label": "继续治愈崇拜教团",
+			"startdescription": "每个人都很快乐。表演必须继续。[一种相当安全的方法，可以把偷来的岁月转换成现金。 当组织教团时，具有蛾性相的卡片通常是有用的。]",
+			"description": "教众再次聚集。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"progress.effectiveness": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.miracles.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"progress.effectiveness": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.import",
+			"actionId": "use",
+			"label": "经营进口业务",
+			"startdescription": "每项都很合法。太过于合法。[一种相当安全的赚钱方式。当经营进口业务时，具有灯性相的卡片通常是有用的。]",
+			"description": "我的商店已开业。",
+			"requirements": {
+				"licence.import": 1,
+				"space": 1,
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"opx.import": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.import.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.import": 1,
+							"op.sea": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.counterfeiting",
+			"actionId": "use",
+			"label": "继续伪造货币",
+			"startdescription": "只要我有关系和资源，我就可以……造钱。[一种相当安全的赚钱方式。当伪造货币时，具有铸性相的卡片通常是有用的。]",
+			"description": "印刷机差不多准备好了。",
+			"requirements": {
+				"connection.underworld": 1,
+				"forge": 6,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.counterfeiting": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.counterfeiting.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 4,
+						"filter": {
+							"op.connection.underworld": 1,
+							"space": 1,
+							"forge": 6
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.smuggling",
+			"actionId": "use",
+			"label": "进行走私行动",
+			"startdescription": "物皆有所值。[一种相当安全的赚钱方式。走私活动通常很隐蔽，但无论如何都能得到丰厚的回报。当走私时，具有蛾性相的卡片通常是有用的。]",
+			"description": "一切都准备好了。",
+			"requirements": {
+				"connection.underworld": 1,
+				"op.sea": 1,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.smuggling": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.smuggling.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"op.sea": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.fights",
+			"actionId": "use",
+			"label": "进行非法比赛",
+			"startdescription": "艰难。但只要我手头还有几年岁月，我就不会遭受太多的永久性伤害。[任何挑战失败都会产生伤口，直到行动结束你才能开始治疗。当比赛时，具有刃性相的卡片通常是有用的。]",
+			"requirements": {
+				"connection.underworld": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.fights": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.fights.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.connection.underworld": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.underworld.hint",
+			"actionId": "use",
+			"label": "利用和黑社会的关系？",
+			"requirements": {
+				"connection.underworld": 1
+			},
+			"startdescription": "[放入6点铸和空间开始伪造货币, 放入港口的机会和空间开始走私行动, 或者放入一张偷来的岁月开始进行非法比赛。]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.radicals.hint",
+			"actionId": "use",
+			"label": "利用与激进分子的关系？",
+			"requirements": {
+				"connection.radicals": 1
+			},
+			"startdescription": "[利用铸来协助起义，或利用冬来背叛它。这只可能发生在陷入动乱的城市。]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.uprising.wolf",
+			"actionId": "use",
+			"label": "为裂分之狼煽动混乱",
+			"startdescription": "“Caput gerat lupinum（拉丁语，罪人当佩狼首）”，那为什么不呢？我到底欠别人什么？[这将造成痛苦和破坏。这将是一个盈利的机会，清算人将更难找到你的踪迹。]",
+			"requirements": {
+				"connection.radicals": 1,
+				"op.wolf": 1,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": -1,
+				"opx.betrayal": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.uprising.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1,
+							"op.wolf.husk.active": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.betrayal",
+			"actionId": "use",
+			"label": "背叛起义",
+			"startdescription": "这是革命的世纪，而革命才刚刚开始。我会拯救生命的。[这将是一个盈利的机会，你将赢得当地政府的青睐。上校喜欢现状。]",
+			"requirements": {
+				"connection.radicals": 1,
+				"winter": 2,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.betrayal": -1,
+				"opx.uprising": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.betrayal.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.uprising",
+			"actionId": "use",
+			"label": "协助起义",
+			"startdescription": "这将变得混乱，但最终可能会让世界变得更美好。[这将是一个盈利的机会，清算人将更难找到你的踪迹。狮子匠喜欢叛逆。]",
+			"comments": "Assumes Radicals add Forge 6",
+			"requirements": {
+				"connection.radicals": 1,
+				"forge": 8,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": -1,
+				"opx.betrayal": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.uprising.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.patronage",
+			"actionId": "use",
+			"label": "接受赞助",
+			"startdescription": "没有什么东西比岁月更受统治者的青睐，也没有什么人能比我提供更多。不过，我要确保我的赞助人不明白我的渠道，否则他们可能会有些想法。[一种相当安全的方法，可以把偷来的岁月转换成现金。]",
+			"requirements": {
+				"connection.ruler": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.patronage": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.patronage.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.connection.ruler": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "opx.sanatorium.setup",
+			"actionId": "opx.sanatorium",
+			"label": "疗养院",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.sanatorium1.heart.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.sanatorium.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.doctorspractice.setup",
+			"actionId": "opx.doctorspractice",
+			"label": "一家医疗诊所",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.doctor1.heart.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.doctorspractice.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.miracles.setup",
+			"actionId": "opx.miracles",
+			"label": "一个治愈崇拜教团",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.miracles1.moth.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.miracles.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.flowermaker.setup",
+			"actionId": "opx.flowermaker",
+			"label": "一个制花人教团",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.flowermaker1.grail.lantern": 1
+			},
+			"linked": [
+				{
+					"id": "opx.flowermaker.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.horned.setup",
+			"actionId": "opx.horned",
+			"label": "一个双角斧教团",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.horned1.knock.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.horned.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.wolf.setup",
+			"actionId": "opx.wolf",
+			"label": "一个裂分之狼教团",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.wolf1.edge.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.wolf.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.import.setup",
+			"actionId": "opx.import",
+			"label": "一项进口业务",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.import1.lantern.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.import.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.counterfeiting.setup",
+			"actionId": "opx.counterfeiting",
+			"label": "一次伪造货币",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.counterfeiting1.forge.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.counterfeiting.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.smuggling.setup",
+			"actionId": "opx.smuggling",
+			"label": "一场走私行动",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.smuggling1.moth.knock": 1
+			},
+			"linked": [
+				{
+					"id": "opx.smuggling.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.fights.setup",
+			"actionId": "opx.fights",
+			"label": "比赛",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.fights1.edge.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.fights.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.uprising.setup",
+			"actionId": "opx.uprising.betrayal",
+			"label": "起义",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.uprising1.edge.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.uprising.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.betrayal.setup",
+			"actionId": "opx.uprising.betrayal",
+			"label": "背叛",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.betrayal1.winter.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.betrayal.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.patronage.setup",
+			"actionId": "opx.patronage",
+			"label": "赞助",
+			"startdescription": "正在建设……",
+			"effects": {
+				"ee.patronage1.heart.lantern": 1
+			},
+			"linked": [
+				{
+					"id": "opx.patronage.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.sanatorium.begin",
+			"actionId": "opx.sanatorium",
+			"label": "疗养院",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.doctorspractice.begin",
+			"actionId": "opx.doctorspractice",
+			"label": "一家医疗诊所",
+			"startdescription": "营业时间。[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.miracles.begin",
+			"actionId": "opx.miracles",
+			"label": "一个治愈崇拜教团",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.flowermaker.begin",
+			"actionId": "opx.flowermaker",
+			"label": "一个制花人教团",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.horned.begin",
+			"actionId": "opx.horned",
+			"label": "一个双角斧教团",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.wolf.begin",
+			"actionId": "opx.wolf",
+			"label": "一个裂分之狼教团",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.import.begin",
+			"actionId": "opx.import",
+			"label": "一项进口业务",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.counterfeiting.begin",
+			"actionId": "opx.counterfeiting",
+			"label": "一次伪造货币",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.smuggling.begin",
+			"actionId": "opx.smuggling",
+			"label": "一场走私行动",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.fights.begin",
+			"actionId": "opx.fights",
+			"label": "比赛",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.uprising.begin",
+			"actionId": "opx.uprising.betrayal",
+			"label": "起义",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.betrayal.begin",
+			"actionId": "opx.uprising.betrayal",
+			"label": "背叛",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.patronage.begin",
+			"actionId": "opx.patronage",
+			"label": "赞助",
+			"startdescription": "[行动时将遇到挑战。如果你添加的卡牌达到了相应的性相需要，那么这次行动将更加敏锐，或者更加有效。行动结束卡牌都将保留。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "准备工作",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.challenge",
+			"actionId": "opx.",
+			"label": "挑战",
+			"startdescription": "@#ee.doctor1.heart.grail|医疗诊所：治愈病人，或者给予老人短暂的青春？#ee.doctor2.heart.knock|#ee.doctor3.heart.forge|医疗诊所：Quietly 治愈病人，或者专注于使用奇迹疗法？#ee.sanatorium1.heart.grail|#ee.sanatorium2.heart.knock|医疗诊所：Quietly 治愈病人，或者安装显眼的器具？#ee.sanatorium3.heart.forge|#ee.miracles1.moth.grail|疗养院：治愈病人，或者给予老人短暂的青春？#ee.miracles2.moth.lantern|#ee.miracles3.moth.winter|疗养院：Quietly 治愈病人，或者专注于使用奇迹疗法？#ee.flowermaker1.grail.lantern|#ee.flowermaker2.grail.knock|疗养院：Quietly 治愈病人，或者安装显眼的器具？#ee.flowermaker3.grail.winter|#ee.horned1.knock.winter|治愈崇拜教团：传授预言，或愉悦？#ee.horned2.knock.forge|#ee.horned3.knock.lantern|治愈崇拜教团：含糊其辞，或者言语清晰？#ee.wolf1.edge.winter|#ee.wolf2.edge.lantern|治愈崇拜教团：令人欣慰的误导，或者令人沮丧的揭露？#ee.wolf3.grail.winter|#ee.import1.lantern.heart|制花人教团：私人的享乐仪式，或者公开的启示仪式？#ee.import2.lantern.forge|#ee.import3.lantern.winter|制花人教团：拉上丝绒的窗帘，或者推开感官的大门？#ee.counterfeiting1.forge.winter|#ee.counterfeiting2.forge.moth|制花人教团：诱惑，或者敬畏？#ee.counterfeiting3.forge.grail|#ee.smuggling1.moth.knock|双角斧教团：来者不拒，或者留者不驱？#ee.smuggling2.moth.heart|#ee.smuggling3.moth.winter|双角斧教团：向来者寻求协助，或者让教众出门工作？#ee.fights1.edge.grail|#ee.fights2.edge.moth|双角斧教团：门，或者灯？#ee.fights3.edge.forge|#ee.uprising1.edge.heart|裂分之狼教团：剧痛，或者寒冰？#ee.uprising2.edge.heart|#ee.uprising3.edge.heart|裂分之狼教团：剧痛，或者盲目？#ee.betrayal1.winter.heart|#ee.betrayal2.winter.heart|裂分之狼教团：寒冰，或者热血？#ee.betrayal3.winter.heart|#ee.patronage1.heart.lantern|进口业务：寻找新的机会，或者继续旧的生意？#ee.patronage2.heart.lantern|#ee.patronage3.heart.lantern|进口业务：寻找新的机会，或者改进你的现有？#|进口业务：寻找新的机会，或者准备新的发展？伪造货币：增加产出，或者保持警惕？伪造货币：增加产出，或者专注欺骗？伪造货币：增加产出，或者雇佣打手？走私行动：更多的伪装，或者更多的船只？走私行动：更多的伪装，或者更多的留意？走私行动：更隐秘，或者更安静？非法比赛：大胆，或者贿赂？非法比赛：强壮，或者快速？非法比赛：拳头，或者武器？起义：文斗，或者火并？起义：文斗，或者火并？起义：文斗，或者火并？背叛起义：说服，或者谋杀？背叛起义：说服，或者谋杀？背叛起义：说服，或者谋杀？赞助：慎言，或者戏称？赞助：慎言，或者戏称？赞助：慎言，或者戏称？A challenge lies ahead.@[满足刃，铸，启或灯的性相需要以增加效果。或者，满足心，杯，蛾或冬的性相需要以增加敏锐。]",
+			"warmup": 60,
+			"requirements": {
+				"complication": 1
+			},
+			"slots": [
+				{
+					"id": "response",
+					"label": "Response",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "opx.tryresolve.edge"
+				},
+				{
+					"id": "opx.tryresolve.forge"
+				},
+				{
+					"id": "opx.tryresolve.lantern"
+				},
+				{
+					"id": "opx.tryresolve.knock"
+				},
+				{
+					"id": "opx.tryresolve.grail"
+				},
+				{
+					"id": "opx.tryresolve.heart"
+				},
+				{
+					"id": "opx.tryresolve.moth"
+				},
+				{
+					"id": "opx.tryresolve.secrethistories"
+				},
+				{
+					"id": "opx.tryresolve.winter"
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge.failed"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.edge",
+			"actionId": "opx.",
+			"label": "闪刃",
+			"startdescription": "我正面对刃之挑战，这将增加效果。",
+			"requirements": {
+				"minedge": 1,
+				"edge": "minedge"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.forge",
+			"actionId": "opx.",
+			"label": "锤与砧",
+			"startdescription": "我正面对铸之挑战，这将增加效果。",
+			"requirements": {
+				"minforge": 1,
+				"forge": "minforge"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.grail",
+			"actionId": "opx.",
+			"label": "愉悦和其女儿",
+			"startdescription": "我正面对杯之挑战，这将增加敏锐。",
+			"requirements": {
+				"mingrail": 1,
+				"grail": "mingrail"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.heart",
+			"actionId": "opx.",
+			"label": "不息之鼓",
+			"startdescription": "我正面对心之挑战，这将增加敏锐。",
+			"requirements": {
+				"minheart": 1,
+				"heart": "minheart"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.knock",
+			"actionId": "opx.",
+			"label": "所有创伤都是门扉",
+			"startdescription": "我正面对启之挑战，这将增加效果。",
+			"requirements": {
+				"minknock": 1,
+				"knock": "minknock"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.lantern",
+			"actionId": "opx.",
+			"label": "启明",
+			"startdescription": "我正面对灯之挑战，这将增加效果。",
+			"requirements": {
+				"minlantern": 1,
+				"lantern": "minlantern"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.moth",
+			"actionId": "opx.",
+			"label": "烟雾与镜子",
+			"startdescription": "我正面对蛾之挑战，这将增加敏锐。",
+			"requirements": {
+				"minmoth": 1,
+				"moth": "minmoth"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.secrethistories",
+			"actionId": "opx.",
+			"label": "并非只有一重历史",
+			"startdescription": "我正面对秘史之挑战，这将增加敏锐。",
+			"requirements": {
+				"minsecrethistories": 1,
+				"secrethistories": "minsecrethistories"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.winter",
+			"actionId": "opx.",
+			"label": "黑夜加深",
+			"startdescription": "我正面对冬之挑战，这将增加敏锐。",
+			"requirements": {
+				"minwinter": 1,
+				"winter": "minwinter"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.challenge.failed",
+			"actionId": "opx.",
+			"label": "错过挑战！",
+			"startdescription": "本来可以做得更好的。",
+			"aspects": {
+				"failure": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.next",
+			"actionId": "opx.",
+			"label": "行动继续",
+			"startdescription": "行动完成",
+			"aspects": {
+				"next": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.challenge"
+				},
+				{
+					"id": "opx.end"
+				}
+			]
+		},
+		{
+			"id": "opx.end",
+			"actionId": "opx.",
+			"label": "行动完成",
+			"startdescription": "@#opx.doctor|“我很高兴看到你气色好转。”#opx.sanatorium|#opx.miracles|“明年见。”#opx.flowermaker|#opx.horned|“现在，我必须离开你了。”#opx.wolf|#opx.counterfeiting|“勿忘我。”#opx.smuggling|#opx.import|“一个结束，一个开始。”#opx.fights|#opx.uprising|“你的时候到了。”#opx.betrayal|#opx.patronage|“关掉。”“起来。”“把账簿给我。”“……啊。”“这就是我们所盼之时！”“你可以在这个地址找到他们……”“有一件小事我需要处理。”@",
+			"warmup": 5,
+			"burnimage": "operation.complete",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"cash": "opx.basepayout"
+			},
+			"linked": [
+				{
+					"id": "opx.end.subtlety3"
+				},
+				{
+					"id": "opx.end.subtlety2"
+				},
+				{
+					"id": "opx.end.subtlety1"
+				},
+				{
+					"id": "opx.end.subtlety0"
+				},
+				{
+					"id": "opx.end.effectiveness"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety3",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "行动完成：一项无形之术？",
+			"startdescription": "我的所为已经消去。[你获得了三个敏锐。你不仅避免了产生的痕迹，而且获得了一个隐秘。]",
+			"requirements": {
+				"progress.subtlety": 3
+			},
+			"effects": {
+				"progress.subtlety": -3,
+				"obscurity": 1
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety2",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "行动完成：一种轻微之触？",
+			"startdescription": "我一直都很小心。[你获得了两个敏锐。不过还有少数可能会产生痕迹。]",
+			"requirements": {
+				"progress.subtlety": 2
+			},
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety1",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "行动完成：那些注视之人所见",
+			"startdescription": "我本可以更敏锐一些。[你获得了一个敏锐。不过还有不小可能会产生痕迹。]",
+			"requirements": {
+				"progress.subtlety": 1
+			},
+			"aspects": {
+				"tracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety0",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "行动完成：虎头蛇尾",
+			"startdescription": "敏锐不是我的重点。[你获得了一个敏锐。不过还有很大可能会产生痕迹。]",
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.effectiveness",
+			"actionId": "opx.",
+			"label": "行动完成：投资回报",
+			"startdescription": "我用我的岁月换取了很大的回报。",
+			"aspects": {
+				"success": 1
+			},
+			"warmup": 5,
+			"requirements": {
+				"progress.effectiveness": 1
+			},
+			"effects": {
+				"cash": "progress.effectiveness",
+				"progress.effectiveness": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.special.router",
+			"actionId": "opx.",
+			"label": "[特殊结果]",
+			"linked": [
+				{
+					"id": "opx.end.uprising"
+				},
+				{
+					"id": "opx.end.betrayal"
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising",
+			"actionId": "opx.",
+			"label": "一场起义！",
+			"startdescription": "我们的计划已经制定好了，今天将以火焰结束。",
+			"description": "这是人民的胜利。总是。",
+			"aspects": {
+				"uprising": 1
+			},
+			"purge": {
+				"trace": 100,
+				"op": 100,
+				"connection.ruler": 100,
+				"connection.official": 100
+			},
+			"warmup": 30,
+			"requirements": {
+				"opx.uprising.complete": 1
+			},
+			"effects": {
+				"trail.false.exile": 1
+			},
+			"linked": [
+				{
+					"id": "opx.end.uprising.wolf"
+				},
+				{
+					"id": "opx.end.uprising.colonel"
+				},
+				{
+					"id": "opx.end.uprising.lionsmith"
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal",
+			"actionId": "opx.",
+			"label": "一场对起义的背叛！",
+			"startdescription": "我们的计划已经制定好了，今天不会如他们所愿般结束。",
+			"description": "秩序得到了维护，当局对此表示感谢。",
+			"requirements": {
+				"opx.betrayal.complete": 1
+			},
+			"effects": {
+				"connection.ruler": 1,
+				"op.connection.radicals": -1
+			},
+			"purge": {
+				"connection.radicals": 100
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "opx.end.betrayal.colonel"
+				},
+				{
+					"id": "opx.end.betrayal.lionsmith"
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.wolf",
+			"actionId": "opx.",
+			"label": "火焰盛宴",
+			"startdescription": "朱利安·科塞利曾经说过：“当我们不知道我们为谁服务时，我们就是为裂分之狼服务。”但我知道自己在做什么。[反抗增加。你这么做的次数不受限制。]",
+			"requirements": {
+				"op.wolf.husk.active": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.colonel",
+			"actionId": "opx.",
+			"label": "上校的不满",
+			"startdescription": "上校不喜欢革命。我会从他那里失宠。[反抗减少。]",
+			"requirements": {
+				"defiance.uprising": -1,
+				"defiance.consecration.colonel": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.uprising",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.lionsmith",
+			"actionId": "opx.",
+			"label": "狮子匠的喜悦",
+			"startdescription": "狮子匠以革命为乐。他会更加青睐我的。[反抗增加。]",
+			"requirements": {
+				"defiance.uprising": -1,
+				"defiance.consecration.lionsmith": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.uprising",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal.colonel",
+			"actionId": "opx.",
+			"label": "上校的满意",
+			"startdescription": "上校喜欢维持现状。我将获得他的恩宠。[反抗增加。]",
+			"requirements": {
+				"defiance.betrayal": -1,
+				"defiance.consecration.colonel": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.betrayal",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal.lionsmith",
+			"actionId": "opx.",
+			"label": "狮子匠的愤怒",
+			"startdescription": "狮子匠的力量在革命中增强。他会收回他的恩宠。[反抗减少。]",
+			"requirements": {
+				"defiance.betrayal": -1,
+				"defiance.consecration.lionsmith": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.betrayal",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,2916 @@
+{
+    "recipes": [
+        {
+            "id": "long.executestrategy.assassination.begin",
+            "actionid": "longassault.assassination",
+            "label": "The Dart in the Dark",
+            "startdescription": "In times long past, the Tragulari - the Dartsmen - were employed to hunt immortals and their chattels. The Troissaint Company is generally supposed to have extirpated them after the First Worm War... but perhaps not in every History. [The Dartsman might destroy you, or a follower. Uncover him with <sprite name=heart> <sprite name=lantern> followers while they're preparing, or defend with <sprite name=edge> <sprite name=forge> <sprite name=winter> followers once they begin their assault. Unsuccessful defenders will die. The Dartsman is not protected against summonings.] ",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Uncover",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "warmup": 120,
+            "internaldeck": {
+                "label": "Target",
+                "description": "Who is the Dartsman's target?",
+                "spec": [
+                    "assassinationinprogress.follower",
+                    "assassinationinprogress.player"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            },
+            "linked": [
+                {
+                    "id": "longassault.assassination.uncovered.success",
+                    "challenges": {
+                        "heart": "base",
+                        "lantern": "base"
+                    }
+                },
+                {
+                    "id": "longassault.assassination.uncovered.failure"
+                },
+                {
+                    "id": "longassault.assassination.continue"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.uncovered.success",
+            "actionid": "longassault.assassination",
+            "requirements": {
+                "follower": 1
+            },
+            "label": "The Serpent, Exposed",
+            "startdescription": "Tragulari strike from stealth. They don't thrive in daylight. This one has fled. (For good?) Our enemy will take note.",
+            "effects": {
+                "long.lesson.might": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "longassault.assassination.uncovered.failure",
+            "actionid": "longassault.assassination",
+            "requirements": {
+                "follower": 1
+            },
+            "label": "The Waiting Serpent",
+            "startdescription": "Our follower never returns. We can only assume that the Tragulari felled them with his little javelins and his poisons.",
+            "effects": {
+                "follower": -1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "longassault.assassination.continue"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.continue",
+            "actionid": "longassault.assassination",
+            "label": "The First Wound",
+            "startdescription": "A Dartsman will kill even the strongest by inches. [Defend with <sprite name=edge> <sprite name=forge> <sprite name=winter> followers. Unsuccessful defenders will die. The Dartsman is not protected against summonings.]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1,
+                        "murderskill": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "longassault.assassination.attack.defeated",
+                    "challenges": {
+                        "edge": "base",
+                        "winter": "base",
+                        "forge": "base"
+                    }
+                },
+                {
+                    "id": "longassault.assassination.defenderdefeated"
+                },
+                {
+                    "id": "longassault.assassination.murderskill.succeed",
+                    "chance": 30
+                },
+                {
+                    "id": "longassault.assassination.murderskill.failure"
+                },
+                {
+                    "id": "longassault.assassination.attack.player"
+                },
+                {
+                    "id": "longassault.assassination.attack.follower"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.defenderdefeated",
+            "actionid": "longassault.assassination",
+            "label": "An Undue Death",
+            "startdescription": "The Dartsman has claimed the life of a defender: but the only payment that will satisfy them now is their target's death, or their own.",
+            "requirements": {
+                "follower": 1
+            },
+            "effects": {
+                "follower": -1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "longassault.assassination.attack.player"
+                },
+                {
+                    "id": "longassault.assassination.attack.follower"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.attack.defeated",
+            "actionid": "longassault.assassination",
+            "label": "The Final Payment",
+            "startdescription": "Our defender has triumphed, and the Dartsman is dead. Perhaps that's enough to stop them.",
+            "effects": {
+                "long.lesson.might": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "longassault.assassination.attack.player",
+            "actionid": "longassault.assassination",
+            "label": "The Dartsman's Poisons",
+            "startdescription": "The Dartsman will taint me and bleed me, drop by drop.",
+            "slots": [
+                {
+                    "id": "health",
+                    "label": "Attacking...",
+                    "required": {
+                        "health": 1,
+                        "fatigue": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "id": "longassault.assassination.killplayer"
+                }
+            ],
+            "aspects": {
+                "damagehealth": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "longassault.assassination.continue"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.murderskill.succeed",
+            "actionid": "longassault.assassination",
+            "label": "The Broken Barb",
+            "requirements": {
+                "murderskill": 1
+            },
+            "startdescription": "They should have known better than to set their strength against mine. They were owed a death, but I have paid them in their own blood.",
+            "warmup": 30,
+            "effects": {
+                "long.lesson.might": 1
+            }
+        },
+        {
+            "id": "longassault.assassination.murderskill.failure",
+            "actionid": "longassault.assassination",
+            "label": "A Scarred Respite",
+            "requirements": {
+                "murderskill": 1
+            },
+            "startdescription": "I have won a breathing space, but they are too strong for me. My strength is broken.",
+            "warmup": 30,
+            "effects": {
+                "murderskill": -1
+            },
+            "linked": [
+                {
+                    "id": "longassault.assassination.continue"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.killplayer",
+            "actionid": "longassault.assassination",
+            "label": "The Dart's End",
+            "startdescription": "Have I no more strength? [If you have no Health available, the Dartsman's poisons will end your game.]",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1,
+                "injury": -1
+            },
+            "ending": "deathofthebody",
+            "signalEndingFlavour": "Melancholy",
+            "comments": "The -1 to injury doesn't seem right, since the damagehealth in longassault.assassination.attack.player will always turn health/fatigue into an injury. To be checked."
+        },
+        {
+            "id": "longassault.assassination.attack.follower",
+            "actionid": "longassault.assassination",
+            "label": "The Wound that Kills",
+            "startdescription": "The Dartsman might employ a single dart, or a dozen; but it's always the last dart that kills.[<sprite name=edge> <sprite name=forge> <sprite name=winter> followers might survive. Others, or unlucky followers, will always die.]",
+            "slots": [
+                {
+                    "id": "targetfollower",
+                    "label": "Attacking...",
+                    "required": {
+                        "follower": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "longassault.assassination.attack.follower.failure",
+                    "challenges": {
+                        "edge": "base",
+                        "winter": "base",
+                        "forge": "base"
+                    }
+                },
+                {
+                    "id": "longassault.assassination.attack.follower.success"
+                },
+                {
+                    "id": "longassault.assassination.continue"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.attack.follower.failure",
+            "actionid": "longassault.assassination",
+            "label": "A Sudden Reversal",
+            "startdescription": "This time, the Dartsman met a challenge they hadn't expected. They're dead. Perhaps that will stop them.",
+            "effects": {
+                "long.lesson.might": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "longassault.assassination.attack.follower.success",
+            "actionid": "longassault.assassination",
+            "label": "The Death that is Due",
+            "startdescription": "The Dartsman's victims are sometimes found contorted in agony, neck arched, eyes starting. Sometimes they are found holed like a foundered ship. This one is not found at all. The Dartsman has had their due.",
+            "requirements": {
+                "follower": 1
+            },
+            "effects": {
+                "follower": -1
+            }
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.begin",
+            "actionid": "longassault.abduction",
+            "label": "An Abduction!",
+            "startdescription": "Our enemy is mounting an abduction attempt!",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "Target",
+                    "required": {
+                        "romanticinterest": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.captured"
+                },
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.begin.nonromancedfollower"
+                }
+            ],
+            "effects": {
+                "abductioninprogress": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.begin.nonromancedfollower",
+            "actionid": "longassault.abduction",
+            "label": "An Abduction!",
+            "startdescription": "Our enemy is mounting an abduction attempt!",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "Target",
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1,
+                        "hireling": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.captured"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.captured",
+            "actionid": "longassault",
+            "label": "Captured!",
+            "requirements": {
+                "follower": 1
+            },
+            "startdescription": "Our enemy has immured our follower in a locked room in a guarded house, behind invisible walls to keep invisible things at bay.",
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.continue"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.continue",
+            "actionid": "longassault",
+            "label": "A rescue?",
+            "startdescription": "Our enemy has snatched a follower! They'll try to escape, and we might assist them - but it could be a trap. And the place is warded against summonings. [The highest total of <sprite name=edge> <sprite name=forge> or <sprite name=winter> will determine whether our followers escape unscathed.]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.defencesucceeded",
+                    "actionid": "longassault",
+                    "label": "A Victory",
+                    "challenges": {
+                        "edge": "base",
+                        "forge": "base",
+                        "winter": "base"
+                    },
+                    "startdescription": "Smashed lock - broken window - night air by the gulp. Our follower is free. Our enemy will pay closer attention, now.",
+                    "effects": {
+                        "long.lesson.might": 1
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.defencefailed",
+                    "actionid": "longassault",
+                    "label": "A Trap",
+                    "startdescription": "The escape attempt has failed. There may be another opportunity later.",
+                    "linked": [
+                        {
+                            "id": "long.executestrategy.assault.abduct.follower.continue"
+                        }
+                    ],
+                    "warmup": 300
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "long.executestrategy.assault.forge.greatwork.begin",
+            "actionid": "longassault",
+            "label": "An Act of Sabotage!",
+            "startdescription": "Our immortal enemy has dispatched operatives to wreck our work in progress.",
+            "description": "Our enemy's operatives could find nothing suitable for their sledgehammer-work.",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "Target",
+                    "required": {
+                        "greatwork": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.forge.greatwork.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.forge.greatwork.continue",
+            "actionid": "longassault",
+            "label": "Defending the Great Work",
+            "startdescription": "Our work-room is besieged! Protect the Great Work! [A <sprite name=heart> or <sprite name=forge> follower - the stronger, the better - might be able to defend against this action.]",
+            "description": "",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "greatwork": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "forge": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.forge.greatwork.succeed"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.assault.forge.greatwork.succeed",
+            "actionid": "longassault",
+            "label": "Sabotage!",
+            "startdescription": "Our enemy has been busy with their hooked knives and crowbars.",
+            "aspects": {
+                "sabotage": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.setambush.expedition.begin",
+            "warmup": 10,
+            "actionid": "longassault",
+            "label": "An Ambush",
+            "startdescription": "Our enemy has learnt that we're considering an expedition. If they can learn our destination, they'll send allies to prepare an ambush.",
+            "slots": [
+                {
+                    "id": "vault",
+                    "label": "Vault",
+                    "required": {
+                        "vault": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.setambush.expedition.continue.watchers",
+                    "actionid": "longassault",
+                    "label": "An Additional Complication",
+                    "startdescription": "Our enemy has paid locals to watch the place.",
+                    "requirements": {
+                        "guardian_watchers": -1,
+                        "guardian_watchers_pre": -1
+                    },
+                    "mutations": [
+                        {
+                            "mutate": "guardian_watchers_pre",
+                            "level": 1,
+                            "filter": "vault"
+                        }
+                    ]
+                },
+                {
+                    "id": "long.executestrategy.assault.setambush.expedition.continue.monks",
+                    "actionid": "longassault",
+                    "label": "An Additional Complication",
+                    "startdescription": "Our enemy has sent their sworn servants to guard the place.",
+                    "requirements": {
+                        "guardian_monks": -1,
+                        "guardian_monks_pre": -1
+                    },
+                    "mutations": [
+                        {
+                            "mutate": "guardian_monks_pre",
+                            "level": 1,
+                            "filter": "vault"
+                        }
+                    ]
+                },
+                {
+                    "id": "long.executestrategy.assault.setambush.expedition.continue.dead",
+                    "actionid": "longassault",
+                    "label": "An Additional Complication",
+                    "requirements": {
+                        "guardian_dead": -1,
+                        "guardian_dead_pre": -1
+                    },
+                    "startdescription": "Our enemy has set the Dead to guard the place.",
+                    "mutations": [
+                        {
+                            "mutate": "guardian_dead_pre",
+                            "level": 1,
+                            "filter": "vault"
+                        }
+                    ]
+                },
+                {
+                    "id": "long.executestrategy.assault.setambush.expedition.continue.serpent",
+                    "actionid": "longassault",
+                    "label": "An Additional Complication",
+                    "requirements": {
+                        "guardian_serpent": -1,
+                        "guardian_serpent_pre": -1
+                    },
+                    "startdescription": "Our enemy has raised up a Serpent to guard the place.",
+                    "mutations": [
+                        {
+                            "mutate": "guardian_serpent_pre",
+                            "level": 1,
+                            "filter": "vault"
+                        }
+                    ],
+                    "warmup": 1
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.assault.destroyhealth.begin",
+            "actionid": "longassault",
+            "label": "A Crushing Assault!",
+            "startdescription": "Our enemy has dispatched very serious gentlemen with orders to kill, or at least maim. [This will destroy Health.]",
+            "slots": [
+                {
+                    "id": "health",
+                    "label": "Health",
+                    "required": {
+                        "health": 1,
+                        "fatigue": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "aspects": {
+                "destroyhealth": 1
+            },
+            "comments": "Damaging health now so it doesn't figure into the Heart calculations",
+            "alt": [
+                {
+                    "id": "long.executestrategy.assault.health.nonefound",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.destroyhealth.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "long.executestrategy.assault.health.nonefound",
+            "label": "This Attack will End Me",
+            "actionid": "longassault",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1
+            },
+            "startdescription": "Sickness, exhaustion or distraction prevents me from resisting this attack. [Supply Health immediately, or die.]",
+            "craftable": false,
+            "ending": "deathofthebody",
+            "signalEndingFlavour": "Melancholy"
+        },
+        {
+            "id": "long.executestrategy.assault.destroyhealth.continue",
+            "actionid": "longassault",
+            "label": "A Crushing Assault!",
+            "startdescription": "If this attack succeeds, I'll be grievously hurt. [A <sprite name=heart> or <sprite name=edge> follower - the stronger, the better - might be able to defend against this action.]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "decrepitude": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "edge": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.destroyhealth.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.assault.destroyhealth.succeed",
+            "actionid": "longassault",
+            "label": "The Lessons of Agony",
+            "startdescription": "I suffer. I endure.",
+            "effects": {
+                "influenceknock": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.begin",
+            "actionid": "longassault",
+            "label": "An Attack on a Follower!",
+            "startdescription": "Our enemy has sent agents out to deliver a savage beating to any of our followers they might find.",
+            "slots": [
+                {
+                    "id": "follower",
+                    "label": "Follower",
+                    "required": {
+                        "follower": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.injurefollower.hireling.continue"
+                },
+                {
+                    "id": "long.executestrategy.assault.injurefollower.spirit.continue"
+                },
+                {
+                    "id": "long.executestrategy.assault.injurefollower.continue"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.hireling.continue",
+            "actionid": "longassault",
+            "label": "'You're Not Paying Me Enough For This'",
+            "startdescription": "That's the last we see of our hireling.",
+            "requirements": {
+                "hireling": 1
+            },
+            "effects": {
+                "follower": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.spirit.continue",
+            "actionid": "longassault",
+            "label": "The Door Swings Both Ways",
+            "startdescription": "Our enemy has given their agents the means to expel our summoning from the world. And it's gone.",
+            "requirements": {
+                "summoned": 1
+            },
+            "effects": {
+                "follower": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.continue",
+            "actionid": "longassault",
+            "label": "Reinforcements?",
+            "requirements": {
+                "follower": 1
+            },
+            "startdescription": "Another follower might rush to assist - but they risk being wounded too. And it would be foolish to send spirits against the forces of an ancient Long. [The highest total of <sprite name=edge> <sprite name=forge> or <sprite name=winter> will determine whether our followers escape unscathed.]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.injurefollower.defencesucceeded",
+                    "actionid": "longassault",
+                    "label": "A Victory",
+                    "challenges": {
+                        "edge": "base",
+                        "forge": "base",
+                        "winter": "base"
+                    },
+                    "startdescription": "Our followers are not to be discounted lightly. Our enemy's agents retreat in disarray. Of course, our enemy will now take the matter more seriously.",
+                    "effects": {
+                        "long.lesson.might": 1
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.injurefollower.defencefailed",
+                    "actionid": "longassault",
+                    "label": "A Defeat",
+                    "startdescription": "We all suffer in the service of our Founder. Perhaps that suffering enhances our worthiness.",
+                    "mutations": [
+                        {
+                            "filter": "mortal",
+                            "mutate": "follower_wound",
+                            "level": 1,
+                            "additive": false
+                        },
+                        {
+                            "filter": "mortal",
+                            "mutate": "follower",
+                            "level": -1,
+                            "additive": false
+                        }
+                    ]
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "long.executestrategy.assault.injurehealth.begin",
+            "actionid": "longassault",
+            "label": "An Assault!",
+            "startdescription": "Our enemy has set a hired thug to deliver a beating. They're not yet ready to order my murder, but they won't grieve if I happen to expire.[This will Injure your Health.]",
+            "slots": [
+                {
+                    "id": "health",
+                    "label": "Health",
+                    "required": {
+                        "health": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "aspects": {
+                "damagehealth": 1
+            },
+            "comments": "Damaging health now so it doesn't figure into the Heart calculations",
+            "alt": [
+                {
+                    "id": "long.executestrategy.assault.health.nonefound",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.injurehealth.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "long.executestrategy.assault.injurehealth.continue",
+            "actionid": "longassault",
+            "label": "An Assault!",
+            "startdescription": "Who'll defend me? [A <sprite name=heart> or <sprite name=edge> follower - the stronger, the better - might be able to defend against this action.]",
+            "description": "",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "injury": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "edge": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.injurehealth.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.assault.injurehealth.succeed",
+            "actionid": "longassault",
+            "label": "A Lesser Ordeal",
+            "startdescription": "They leave me bleeding, but not yet broken."
+        },
+        {
+            "id": "long.executestrategy.assault.rob.begin",
+            "actionid": "longassault",
+            "label": "Petty Theft",
+            "startdescription": "Our enemy has set a pickpocket to bedevil me.",
+            "description": "So much the worse for my enemy: I have no money to steal.",
+            "slots": [
+                {
+                    "id": "funds",
+                    "label": "Funds",
+                    "required": {
+                        "funds": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "id": "long.executestrategy.assault.rob.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.rob.continue",
+            "actionid": "longassault",
+            "label": "Petty, but Successful, Theft",
+            "startdescription": "Someone's snatched my pocketbook!",
+            "effects": {
+                "funds": -1
+            }
+        },
+        {
+            "id": "long.executestrategy.assault.intimidate.begin",
+            "actionid": "longassault",
+            "label": "A Menacing Feint",
+            "startdescription": "Our enemy sends agents to threaten and dismay us. [A <sprite name=heart> or <sprite name=grail> follower - the stronger, the better - might be able to defend against this action.]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "grail": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.intimidate.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.assault.intimidate.succeed",
+            "actionid": "longassault",
+            "label": "Presages of Pain",
+            "startdescription": "Curses scrawled in black chalk - animals crucified in the garden - fires set in unwatched houses. The lesser moves of a secret war.",
+            "effects": {
+                "dread": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.assault.failure",
+            "actionid": "longassault",
+            "label": "A Failed Assault",
+            "startdescription": "We've defeated our enemy's assault... but they've learnt something of us, and they'll take us more seriously as a threat. I can expect more dangerous assaults in future.",
+            "effects": {
+                "long.lesson.might": 1
+            },
+            "aspects": {
+                "restorehealth": 1,
+                "tohealth": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.intrigue.scandal.begin",
+            "actionid": "scandal",
+            "label": "A Scandal!",
+            "startdescription": "Our enemy has engineered a Scandal, which will roar through all our enterprises like a forest fire. [A Scandal will intermittently emit Notoriety until it unexpectedly dies out.]",
+            "alt": [
+                {
+                    "id": "scandal.notoriety",
+                    "chance": 70,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "scandalinprogress": 1
+            },
+            "linked": [
+                {
+                    "id": "scandal.end",
+                    "chance": 10
+                },
+                {
+                    "id": "long.executestrategy.intrigue.scandal.begin",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "scandal.end",
+            "actionid": "scandal",
+            "label": "Silence At Last",
+            "startdescription": "The public is fickle... fortunately. They're forgetting us.",
+            "effects": {
+                "mystique": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "scandal.notoriety",
+            "actionid": "scandal.notoriety",
+            "label": "Filthy Lies",
+            "startdescription": "There is so much we're guilty of, and this is not it, not it at all! And yet it may be what damns us.",
+            "effects": {
+                "notoriety": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.begin",
+            "actionid": "longintrigue",
+            "label": "A Rendezvous",
+            "startdescription": "Our immortal enemy is attempting to engineer a meeting with one of our followers - one who harbours resentment.",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "Tempted",
+                    "greedy": true,
+                    "required": {
+                        "resentment": 1
+                    },
+                    "forbidden": {
+                        "independent": 1,
+                        "investigator": 1,
+                        "romanticinterest": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.follower.seduce.continue"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.continue",
+            "actionid": "longintrigue",
+            "label": "A Seduction",
+            "startdescription": "Now the Long will deploy all the formidable wiles they've learnt over the centuries... and perhaps our follower will leave our service. [Use Passion to keep them loyal. That isn't always successful, but you can keep trying as long as you have Passion.]",
+            "description": "",
+            "requirements": {
+                "resentment": 1
+            },
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "Passionate Argument",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.follower.seduce.defendpassion.try",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.follower.seduce.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.defendpassion.try",
+            "actionid": "longintrigue",
+            "label": "A Passionate Defence",
+            "startdescription": "Passion might sway them. [If it fails, we can keep trying.]",
+            "requirements": {
+                "passion": 1
+            },
+            "warmup": 10,
+            "aspects": {
+                "fatiguing": 1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.follower.seduce.defendpassion.succeed",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.follower.seduce.continue",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.defendpassion.succeed",
+            "actionid": "longintrigue",
+            "label": "A Reprieve",
+            "startdescription": "Our follower has chosen to stay with us... for now. [But their Resentment has increased, and our enemy has learnt more about us.]",
+            "mutations": [
+                {
+                    "mutate": "resentment",
+                    "filter": "follower",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.succeed",
+            "actionid": "longintrigue",
+            "label": "A Betrayal",
+            "startdescription": "Our follower has forsaken their sacred trust. Now they will lend their strength to the growing power of our enemy.",
+            "effects": {
+                "follower": -1,
+                "long.lesson.might": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.grail.greatwork.begin",
+            "actionid": "longintrigue",
+            "label": "An Act of Sabotage!",
+            "startdescription": "Our immortal enemy is attempting to convince our Host that the Vitulation will be vile, perilous, or dull.",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "Target",
+                    "required": {
+                        "uqvitulation": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.grail.greatwork.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.grail.greatwork.continue",
+            "actionid": "longintrigue",
+            "label": "Defending the Great Work",
+            "startdescription": "I could send my herald to entice or reassure. [A <sprite name=heart> or <sprite name=grail> follower - the stronger, the better - might be able to defend against this action.]",
+            "description": "",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "uqvitulation": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "grail": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.intrigue.grail.greatwork.succeed"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.grail.greatwork.succeed",
+            "actionid": "longintrigue",
+            "label": "The Host's Dismay",
+            "startdescription": "Our Host is crumbling. Their greedy faith is soured.",
+            "aspects": {
+                "sabotage": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.begin",
+            "actionid": "longintrigue",
+            "label": "Seeds of Resentment",
+            "startdescription": "Our enemy is working to poison a follower's mind against us.",
+            "slots": [
+                {
+                    "id": "follower",
+                    "label": "Target",
+                    "greedy": true,
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "summoned": -1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.continue"
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.hireling.continue"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.continue",
+            "actionid": "longintrigue",
+            "label": "Taking Black Root",
+            "requirements": {
+                "follower": 1
+            },
+            "startdescription": "What are they saying? [Use Passion to keep them loyal. That isn't always successful, but you can keep trying as long as you have Passion.]",
+            "slots": [
+                {
+                    "id": "passionateargument",
+                    "label": "Passionate Argument",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.try"
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.try",
+            "actionid": "longintrigue",
+            "label": "A Passionate Defence",
+            "startdescription": "Passion might sway them. [If it fails, we can keep trying.]",
+            "requirements": {
+                "passion": 1
+            },
+            "warmup": 10,
+            "aspects": {
+                "fatiguing": 1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.succeed",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.continue",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.succeed",
+            "actionid": "longintrigue",
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.succeed",
+            "actionid": "longintrigue",
+            "label": "Frustration's Fruit",
+            "startdescription": "We are at the point, now, where I believe that my follower is not telling me everything they have heard about me.",
+            "mutations": [
+                {
+                    "mutate": "resentment",
+                    "filter": "follower",
+                    "level": 1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.hireling.continue",
+            "actionid": "longintrigue",
+            "label": "Professional Caution",
+            "startdescription": "This hireling has been persuaded or threatened into disappearing. We won't see them again.",
+            "requirements": {
+                "hireling": 1
+            },
+            "effects": {
+                "hireling": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.begin",
+            "actionid": "longintrigue",
+            "label": "Unlikely Alliances?",
+            "startdescription": "Our immortal enemy is seeking a catspaw.",
+            "slots": [
+                {
+                    "id": "hunter",
+                    "label": "A Thorn in our Side",
+                    "greedy": true,
+                    "required": {
+                        "hunter": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.continue",
+            "actionid": "longintrigue",
+            "requirements": {
+                "hunter": 1
+            },
+            "label": "The Enemy of Their Enemy",
+            "startdescription": "The Suppression Bureau will take assistance where they find it, and no doubt our Great Work is a cause of great concern to them. What mischief will our immortal enemy effect here?",
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.mystic",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.idealist",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.grim",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.erratic",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.evidence",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.mystic",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.idealist",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.grim",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.erratic",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.evidence",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.mystic",
+            "actionid": "longintrigue",
+            "requirements": {
+                "mystic": -1
+            },
+            "label": "Defence Against the Invisible Arts",
+            "startdescription": "Our enemy has taught this investigator something of how to protect themselves against spirits. [The investigator is now Mystic.]",
+            "mutations": [
+                {
+                    "mutate": "mystic",
+                    "filter": "hunter",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.idealist",
+            "actionid": "longintrigue",
+            "requirements": {
+                "idealist": -1
+            },
+            "label": "The New Light",
+            "startdescription": "This investigator has been educated in the nature of our Great Work. Consequently their commitment to defeating it has been forged, quenched, tempered. [The investigator is now an Idealist.]",
+            "mutations": [
+                {
+                    "mutate": "idealist",
+                    "filter": "hunter",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.grim",
+            "actionid": "longintrigue",
+            "requirements": {
+                "grim": -1
+            },
+            "label": "Granite Certainty",
+            "startdescription": "This investigator has been shown lessons they will not readily forget. [The investigator is now Grim.]",
+            "mutations": [
+                {
+                    "mutate": "grim",
+                    "filter": "hunter",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.erratic",
+            "actionid": "longintrigue",
+            "requirements": {
+                "erratic": -1
+            },
+            "label": "A New Perspective",
+            "startdescription": "This investigator has learnt new techniques and intuitions; although, now, their hands sometimes tremble. [The investigator is now Erratic.]",
+            "mutations": [
+                {
+                    "mutate": "erratic",
+                    "filter": "hunter",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "mutate": "meticulous",
+                    "filter": "hunter",
+                    "level": -1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.evidence",
+            "actionid": "longintrigue",
+            "requirements": {
+                "erratic": 1,
+                "grim": 1,
+                "idealist": 1,
+                "mystic": 1
+            },
+            "label": "Frankly Cheating",
+            "startdescription": "Our immortal enemy has whispered in this investigator's ear. [The enemy Long has provided Evidence.]",
+            "effects": {
+                "evidence": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.adversary.assist.begin",
+            "actionid": "longintrigue",
+            "label": "Unlikely Alliances?",
+            "startdescription": "Our immortal enemy is seeking an ally - someone with potential. [If they can't find anyone suitable, their intrigue will end in failure.]",
+            "slots": [
+                {
+                    "id": "rival",
+                    "label": "A Rival",
+                    "greedy": true,
+                    "required": {
+                        "independent": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.adversary.assist.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.adversary.assist.continue",
+            "actionid": "longintrigue",
+            "requirements": {
+                "independent": 1
+            },
+            "label": "Immortal Tutelage",
+            "startdescription": "Our enemy is coaching our rival towards more rapid ascension to the Long state. If they can recruit a second Long, our defeat is assured. [A <sprite name=heart> or <sprite name=moth> follower - the stronger, the better - might be able to defend against this action.]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "moth": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.intrigue.adversary.assist.succeed"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.adversary.assist.succeed",
+            "actionid": "longintrigue",
+            "label": "Higher",
+            "startdescription": "Our enemy has imparted vital secrets of ascension to our rival. No doubt, should our rival become truly Long, they'll be a tool of our enemy: but that won't help us much.",
+            "mutations": [
+                {
+                    "mutate": "rivalmarks",
+                    "filter": "independent",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.begin",
+            "actionid": "longintrigue",
+            "label": "Daylight's Terrors",
+            "startdescription": "Our enemy is working to expose the secrets of our followers. [If they can't find an unexposed follower, this will end quietly.]",
+            "slots": [
+                {
+                    "id": "follower",
+                    "label": "Target",
+                    "greedy": true,
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "summoned": -1,
+                        "poison.notoriety": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.continue"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.continue",
+            "actionid": "longintrigue",
+            "label": "Defend against Exposure?",
+            "startdescription": "I can try giving the public something else to think about. [Use Mystique to attempt a distraction, though that isn't always successful, and may generate Notoriety. Use a Favour from Authority to shut it down immediately.]",
+            "slots": [
+                {
+                    "id": "defence",
+                    "label": "Distraction",
+                    "required": {
+                        "mystique": 1,
+                        "favour": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "follower": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendfavour"
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.try"
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendfavour",
+            "actionid": "longintrigue",
+            "requirements": {
+                "favour": 1
+            },
+            "effects": {
+                "favour": -1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.try",
+            "actionid": "longintrigue",
+            "label": "A Distraction",
+            "startdescription": "Too many strangers have heard this follower's name already. [If the distraction fails, we can keep trying. If it succeeds, it will generate Notoriety.]",
+            "requirements": {
+                "mystique": 1
+            },
+            "warmup": 10,
+            "effects": {
+                "mystique": -1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.succeed",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.continue",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.succeed",
+            "actionid": "longintrigue",
+            "effects": {
+                "notoriety": 1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.succeed",
+            "actionid": "longintrigue",
+            "label": "The Public Eye",
+            "startdescription": "Our follower is the wrong kind of famous.",
+            "mutations": [
+                {
+                    "mutate": "poison.notoriety",
+                    "filter": "follower",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.mystiquetonotoriety.begin",
+            "actionid": "longintrigue",
+            "label": "Woven from Whispers",
+            "startdescription": "Our enemy is working to magnify the rumours that already exist into something more dire.",
+            "slots": [
+                {
+                    "id": "mystique",
+                    "label": "Mystique",
+                    "required": {
+                        "mystique": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "comments": "If we can't find mystique, we go on trying to generate it",
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.mystiquetonotoriety.continue",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.createmystique.begin",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.mystiquetonotoriety.continue",
+            "actionid": "longintrigue",
+            "label": "Defend our Reputation?",
+            "startdescription": "I might know someone who can turn the story around. [A <sprite name=heart> follower - the stronger, the better - might be able to defend against this action.]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "mystique": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure",
+                    "challenges": {
+                        "heart": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.intrigue.mystiquetonotoriety.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.mystiquetonotoriety.succeed",
+            "actionid": "longintrigue",
+            "label": "We Are Despised",
+            "startdescription": "It's not exactly true, but neither is it exactly a lie.",
+            "description": "",
+            "effects": {
+                "notoriety": 1,
+                "mystique": -1
+            }
+        },
+        {
+            "id": "long.executestrategy.intrigue.fraud.begin",
+            "actionid": "longintrigue",
+            "label": "The Paper Snare",
+            "startdescription": "Our enemy has borne false witness against us. The authorities must be convinced of our innocence. [If this succeeds, you may lose one or many funds. A <sprite name=heart> or <sprite name=moth> follower - the stronger, the better - might be able to defend against this action.]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "moth": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.intrigue.fraud.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.fraud.succeed",
+            "actionid": "longintrigue",
+            "label": "The Auditor's Sting",
+            "startdescription": "'In our previous correspondence, we indicated the likely degree of your default. We have assessed the matter in more detail...'",
+            "slots": [
+                {
+                    "id": "funds",
+                    "label": "Funds",
+                    "required": {
+                        "funds": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "effects": {
+                "funds": -1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.fraud.succeed",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.fraud.completed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.fraud.completed",
+            "actionid": "longintrigue",
+            "label": "The Comptroller's Mercy",
+            "startdescription": "The steady stream of menacing letters has slowed; ceased. It's over... for now."
+        },
+        {
+            "id": "long.executestrategy.intrigue.createmystique.begin",
+            "actionid": "longintrigue",
+            "label": "Baseless Rumours",
+            "startdescription": "If our enemy repeats the story often enough, it might stick. [A <sprite name=heart> follower - the stronger, the better - might be able to defend against this action.]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure",
+                    "challenges": {
+                        "heart": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.intrigue.createmystique.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.createmystique.succeed",
+            "actionid": "longintrigue",
+            "label": "Rumour's Mist",
+            "startdescription": "My reputation is no longer entirely my own doing.",
+            "effects": {
+                "mystique": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.intrigue.failure",
+            "actionid": "longintrigue",
+            "label": "The Benefit of the Doubt",
+            "startdescription": "Our reputation is no worse... but our enemy will focus their attention more intently on us, now.",
+            "effects": {
+                "long.lesson.connections": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.dreams.drysoul.begin",
+            "actionid": "longdreams",
+            "label": "The Dry Soul Curse, Rising",
+            "startdescription": "Our enemy is raising a Dry Soul Curse against us. We could employ a Percussigant to avert the curse with its cheering thumps and merry limbs, but then our enemy will be able to interrogate it. [A Percussigant can avert the curse's raising, but will provide a Lesson for our enemy.] ",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Percussigant",
+                    "required": {
+                        "spirit_heartc_edge": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "long.executestrategy.dreams.drysoul.defeated"
+                },
+                {
+                    "id": "curse_dread_dormant",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.drysoul.defeated",
+            "actionid": "longdreams",
+            "label": "The Percussigant Defence",
+            "startdescription": "\nsing those hymns\nof writhing limbs\npercussigant, rehearse\n\nthe dry soul curse!\nthe dry soul curse!\na polymelian universe!",
+            "requirements": {
+                "spirit_heartc_edge": 1
+            },
+            "effects": {
+                "long.lesson.dreamwork": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.fiftheye.begin",
+            "actionid": "longdreams",
+            "label": "The Fifth Eye Curse, Rising",
+            "startdescription": "Our enemy is raising a Fifth Eye against us. We could use a Caligine's smokes to cloud their preparations, but then our enemy will be able to interrogate it. [A Caligine can avert the curse's raising, but will provide a Lesson for our enemy.] ",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Percussigant",
+                    "required": {
+                        "spirit_forgec_winter": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "long.executestrategy.dreams.fiftheye.defeated"
+                },
+                {
+                    "id": "curse_visions_dormant",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.fiftheye.defeated",
+            "actionid": "longdreams",
+            "label": "The Fifth Eye Lost In Smoke",
+            "startdescription": "The Fifth Eye Curse has been defeated before it resolved. Our Caligine is gone, too, along with whatever secrets it might have learnt from us.",
+            "requirements": {
+                "spirit_forgec_winter": 1
+            },
+            "effects": {
+                "long.lesson.dreamwork": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonway.begin",
+            "actionid": "longdreams.poisonway",
+            "comments": "unique verb, because it loops",
+            "label": "The Watchers in the Way",
+            "startdescription": "Our enemy will select a way we have found into the Mansus, and set a watch upon it.",
+            "slots": [
+                {
+                    "id": "way",
+                    "label": "Way",
+                    "required": {
+                        "way": 1
+                    },
+                    "forbidden": {
+                        "poison.long.way": 1,
+                        "waystagbefore_1": 1,
+                        "waystagbefore_2": 1,
+                        "waystagbefore_3": 1,
+                        "waystagbefore_4": 1,
+                        "waystagbefore_5": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.poisonway.continue"
+                },
+                {
+                    "id": "long.executestrategy.dreams.poisonway.begin"
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonway.continue",
+            "actionid": "longdreams.poisonway",
+            "label": "The Watchers in the Way",
+            "requirements": {
+                "way": 1
+            },
+            "startdescription": "Our enemy has made their choice. We'll never be able to pass this gate again without inviting peril.",
+            "mutations": [
+                {
+                    "filter": "way",
+                    "mutate": "poison.way.long",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.begin",
+            "actionid": "longdreams",
+            "label": "An Act of Sabotage!",
+            "startdescription": "Our immortal enemy has drawn attention to our work in the Mansus. A lesser Name of the Wolf-Divided is on its scent.",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "Target",
+                    "required": {
+                        "uqthirdwaywitnesses": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.lantern.greatwork.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.continue",
+            "actionid": "longdreams",
+            "label": "Defending the Great Work",
+            "startdescription": "Our Great Work is threatened by lean grey malice. If we shroud it in light, that might deter this prowling wolf-splinter. [A <sprite name=heart> or <sprite name=lantern> spirit - the stronger, the better - might be able to defend against this action.]",
+            "description": "",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "Defender",
+                    "required": {
+                        "summoned": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "uqthirdwaywitnesses": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.lantern.greatwork.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "lantern": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.dreams.lantern.greatwork.succeed"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.succeed",
+            "actionid": "longdreams",
+            "label": "The Dimming Light",
+            "startdescription": "One witness fled, another lost to the wolf-splinter. What of the third? Gone somewhere unmapped.",
+            "aspects": {
+                "sabotage": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.failure",
+            "actionid": "longdreams",
+            "label": "The Shrouding Light",
+            "startdescription": "We've averted the attention of the prowling wolf-splinter. Our Great Work is safe for now.",
+            "effects": {
+                "long.lesson.dreamwork": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonpassionwithdread.begin",
+            "actionid": "longdreams",
+            "label": "The Deepening Twilight",
+            "slots": [
+                {
+                    "id": "seeking",
+                    "label": "Passion",
+                    "required": {
+                        "passion": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.poisonpassionwithdread.continue"
+                }
+            ],
+            "startdescription": "Death, it is said, is down. The roots of the Mansus extend far below the light. This is in the dreams my enemy sends me.",
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonpassionwithdread.continue",
+            "actionid": "longdreams",
+            "label": "The Deepening Twilight",
+            "startdescription": "In my dreams I see the staircases that go ever downwards, into the place the Dead go as the world turns.",
+            "requirements": {
+                "passion": 1
+            },
+            "mutations": [
+                {
+                    "filter": "passion",
+                    "mutate": "poison.passion.dread",
+                    "level": 1
+                }
+            ],
+            "alt": [
+                {
+                    "id": "poison.passion.dread.induction",
+                    "additional": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonreasonwithfascination.begin",
+            "actionid": "longdreams",
+            "label": "The Glint and the Wick",
+            "startdescription": "My enemy has salted my dreams with images - each a different facet of the promise of an Hour to come.",
+            "slots": [
+                {
+                    "id": "seeking",
+                    "label": "Reason",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.poisonreasonwithfascination.continue"
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonreasonwithfascination.continue",
+            "actionid": "longdreams",
+            "label": "The Glint and the Wick",
+            "startdescription": "Who is the Chandler? Why will I dream of her? What is the flame, and what the fuel? My thoughts are tinder.",
+            "requirements": {
+                "reason": 1
+            },
+            "mutations": [
+                {
+                    "filter": "reason",
+                    "mutate": "poison.reason.fascination",
+                    "level": 1
+                }
+            ],
+            "alt": [
+                {
+                    "id": "poison.reason.fascination.induction",
+                    "additional": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.createfascination.poisoned.begin",
+            "actionid": "longdreams",
+            "label": "Tasty Dreams",
+            "startdescription": "Our enemy's knowledge of my hopes and fears has advanced. They no longer need to fuel their sendings with my Dread. This night's dream is cinnamon in amber. It arrives fresh from the Malleary, tempting as an uncut cake, haloed in firelit nostalgia.",
+            "effects": {
+                "fascination": 1,
+                "contentment": 1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.applypoison.fascination.longlesson"
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.dreadtofascination.poisoned.begin",
+            "actionid": "longdreams",
+            "label": "Juicy Dreams",
+            "startdescription": "Our enemy Long has sent me a dream of the Orchard of Lights. Nestled in the dream, like a juicy pear in rustling paper, is the promise of an end to fear.",
+            "slots": [
+                {
+                    "id": "seeking",
+                    "label": "Dread",
+                    "required": {
+                        "dread": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.dreadtofascination.poisoned.continue"
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.dreadtofascination.poisoned.continue",
+            "actionid": "longdreams",
+            "label": "Juicy Dreams",
+            "startdescription": "The dream I received has encompassed my Dread like a polyp devouring a life-mote. In its place, it offers a memory of a conversation that never happened, ripe with luminous laughter.",
+            "requirements": {
+                "dread": 1
+            },
+            "effects": {
+                "dread": -1,
+                "fascination": 1,
+                "contentment": 1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.applypoison.fascination.longlesson"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.applypoison.fascination.longlesson",
+            "actionid": "longdreams",
+            "label": "Juicy Dreams",
+            "mutations": [
+                {
+                    "filter": "fascination",
+                    "mutate": "poison.fascination.longlesson",
+                    "level": 1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.createfascination.begin",
+            "actionid": "longdreams",
+            "label": "Distant Lights",
+            "startdescription": "Our enemy has set a candle in the high Mansus-window. Its light will infiltrate our dreams.",
+            "description": "Here is that light on the edge of sleep, of which both Coseley and Heursault wrote, each in their time.",
+            "effects": {
+                "fascination": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.learndreams.begin",
+            "actionid": "longdreams",
+            "label": "An Unveiled Angle",
+            "startdescription": "At a certain angle, my thoughts reflect the Mansus-light. Our enemy seeks to learn that angle.",
+            "description": "Our enemy has searched the Mansus-halls for the glint of my reflected thoughts, and found nothing.",
+            "slots": [
+                {
+                    "id": "impulses",
+                    "label": "Impulses",
+                    "greedy": true,
+                    "required": {
+                        "fascination": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "long.executestrategy.dreams.learndreams.continue",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.learndreams.continue",
+            "actionid": "longdreams",
+            "label": "An Unveiled Angle",
+            "startdescription": "Our enemy has learnt the angle of my thoughts. Our vulnerability has increased.",
+            "requirements": {
+                "fascination": 1
+            },
+            "effects": {
+                "fascination": -1,
+                "long.lesson.dreamwork": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.dreams.learnfears.begin",
+            "actionid": "longdreams",
+            "label": "The Exhibition of Fears",
+            "startdescription": "There is a room in my heart where my fears are all arrayed. In my dreams, that room has a door. If our enemy finds that door, they might pass through it.",
+            "description": "My fears are lost in darkness. Our enemy has found nothing.",
+            "slots": [
+                {
+                    "id": "impulses",
+                    "label": "Impulses",
+                    "greedy": true,
+                    "required": {
+                        "dread": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "long.executestrategy.dreams.learndreams.continue",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.learnfears.continue",
+            "actionid": "longdreams",
+            "label": "The Exhibition of Fears",
+            "startdescription": "Our enemy has seen the fears arrayed in my heart. Our vulnerability has increased.",
+            "requirements": {
+                "dread": 1
+            },
+            "effects": {
+                "dread": -1,
+                "long.lesson.dreamwork": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.downtime.learn.begin",
+            "actionid": "longdowntime",
+            "label": "A Rising Power",
+            "startdescription": "Our immortal enemy has allies and resources in many nations. They move slowly, but as time passes, they will bring more and more of those allies and resources to bear against us.",
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.downtime.learn.might",
+                    "chance": 33
+                },
+                {
+                    "id": "long.executestrategy.downtime.learn.connections",
+                    "chance": 50
+                },
+                {
+                    "id": "long.executestrategy.downtime.learn.dreamwork",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.downtime.learn.might",
+            "label": "Learning: Might",
+            "actionid": "longdowntime",
+            "effects": {
+                "long.lesson.might": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.downtime.learn.connections",
+            "label": "Learning: Connections",
+            "actionid": "longdowntime",
+            "effects": {
+                "long.lesson.connections": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.downtime.learn.dreamwork",
+            "label": "Learning: Dreamwork",
+            "actionid": "longdowntime",
+            "effects": {
+                "long.lesson.dreamwork": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.downtime.rest.begin",
+            "actionid": "longdowntime",
+            "label": "A Respite",
+            "startdescription": "For now, our enemy has chosen to wait.",
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "long.intrigue.confrontation",
+            "actionid": "long",
+            "label": "Preparations for an Assault",
+            "startdescription": "Our enemy's connections are so ubiquitous that they now feel confident of success in open assault. We can expect an onslaught, very soon.",
+            "requirements": {
+                "long.connections": 10,
+                "diarist": -1,
+                "diarist_unknown": -1
+            },
+            "mutations": [
+                {
+                    "mutate": "long.might",
+                    "filter": "long.enemy",
+                    "level": 10
+                }
+            ],
+            "warmup": 60,
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ],
+            "aspects": {
+                "revealidentity": 1
+            }
+        },
+        {
+            "id": "long.assault.confrontation",
+            "actionid": "long",
+            "comments": "Note: this takes effect in the main verb. Once in an assault confrontation, we're in it until the end.",
+            "label": "A Direct Assault!",
+            "aspects": {
+                "revealidentity": 1
+            },
+            "slots": [
+                {
+                    "id": "follower",
+                    "label": "Defender",
+                    "required": {
+                        "follower": 1,
+                        "murderskill": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1,
+                        "hireling": 1
+                    }
+                }
+            ],
+            "startdescription": "Enough feinting and proxy struggle. @#welland|Captain Welland will use his Forge-strength against us personally.#tryphon|Lady Tryphon has opted to bloody her well-manicured hands in a personal assault. #julian|This chilly enemy has come to end us personally.#|Our enemy has personally entered the fray.@ [The Long will devour my Health until I am dead, although our loyal followers might protect us for a little while. And only mortal followers - our enemy is wise in the invisible arts, and spirits cannot assail them.] ",
+            "requirements": {
+                "long.might": 10,
+                "diarist": -1,
+                "diarist_unknown": -1
+            },
+            "alt": [
+                {
+                    "id": "expel_corpses",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 9,
+                        "filter": {
+                            "corpse": 1
+                        }
+                    }
+                },
+                {
+                    "id": "long.assault.confrontation.vanquished"
+                },
+                {
+                    "id": "long.assault.confrontation.murderskill"
+                },
+                {
+                    "id": "long.assault.confrontation.defender"
+                }
+            ],
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "long.assault.confrontation.grabhealth"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.vanquished",
+            "actionid": "long",
+            "label": "The Long is dead!",
+            "startdescription": "This giant might have lived forever, but they grew incautious.",
+            "description": "[Savour your victory while you can. The work continues. If our enemy can be destroyed, so too can our mentor.]",
+            "requirements": {
+                "long_wound": 3
+            },
+            "aspects": {
+                "longded": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "long.assault.confrontation.grabhealth",
+            "label": "A Savage Onslaught",
+            "actionid": "long",
+            "slots": [
+                {
+                    "id": "injury",
+                    "label": "Injury",
+                    "required": {
+                        "health": 1,
+                        "fatigue": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "aspects": {
+                "damagehealth": 1
+            },
+            "alt": [
+                {
+                    "id": "expel_injury",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "injury": 1
+                        }
+                    }
+                },
+                {
+                    "id": "deathofthebody",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "The Long strikes from shadow, and returns to silence! [When I have no remaining Health, this will kill me.]",
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.defender",
+            "actionid": "long",
+            "label": "A Necessary Sacrifice",
+            "requirements": {
+                "follower": 1
+            },
+            "startdescription": "This one will give their life for the cause. [Only a follower with <sprite name=edge><sprite name=forge><sprite name=winter> at least 5 stands a chance of harming the Long. But others will delay the inevitable, for a little while.]",
+            "linked": [
+                {
+                    "id": "long.assault.confrontation.weakfollower"
+                },
+                {
+                    "id": "long.assault.confrontation.strongfollower",
+                    "challenges": {
+                        "edge": "base",
+                        "forge": "base",
+                        "winter": "base"
+                    }
+                },
+                {
+                    "id": "long.assault.confrontation.strongfollower.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.weakfollower",
+            "actionid": "long",
+            "label": "A Necessary Sacrifice",
+            "startdescription": "One more candle extinguished.",
+            "requirements": {
+                "edge": -5,
+                "forge": -5,
+                "winter": -5
+            },
+            "warmup": 30,
+            "aspects": {
+                "killmortal": 1
+            },
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.murderskill",
+            "actionid": "long",
+            "label": "Into the Night",
+            "startdescription": "I shall confront this creature directly. They have the strength of centuries... but I am not to be underestimated.",
+            "requirements": {
+                "murderskill": 1
+            },
+            "linked": [
+                {
+                    "id": "long.assault.confrontation.murderskill.succeed",
+                    "chance": 30
+                },
+                {
+                    "id": "long.assault.confrontation.murderskill.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.murderskill.succeed",
+            "actionid": "long",
+            "label": "I Was Broken, Though My Edges Wound Like Knives",
+            "startdescription": "I grappled with my enemy in the darkness, and even as they overmastered me, I sacrificed my strength to draw their blood. They are wounded! but I am broken.",
+            "mutations": [
+                {
+                    "filter": "long.enemy",
+                    "mutate": "long_wound",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30,
+            "effects": {
+                "murderskill": -1
+            },
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.murderskill.failure",
+            "actionid": "long",
+            "label": "I Was Broken",
+            "startdescription": "I set myself against my enemy; I met their strength with mine; and I was broken. I might be something more than human; but they have not been human in a very long time.",
+            "warmup": 30,
+            "effects": {
+                "murderskill": -1
+            },
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.strongfollower",
+            "actionid": "long",
+            "label": "A Noble End",
+            "startdescription": "In the depths of the night, we hear a scream that shakes the city. The Long is wounded!",
+            "mutations": [
+                {
+                    "filter": "long.enemy",
+                    "mutate": "long_wound",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30,
+            "aspects": {
+                "killmortal": 1
+            },
+            "alt": [
+                {
+                    "id": "expel_corpses",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 9,
+                        "filter": {
+                            "corpse": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.strongfollower.failure",
+            "actionid": "long",
+            "label": "A Noble Failure",
+            "startdescription": "Minutes stretch to hours. The night has swallowed our comrade as easily as a fish taking a fly. The Long, unsated, continues the assault.",
+            "warmup": 30,
+            "aspects": {
+                "killmortal": 1
+            },
+            "alt": [
+                {
+                    "id": "expel_corpses",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "corpse": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation",
+            "actionid": "long",
+            "comments": "Note: this takes effect in the main verb. Once in a dreams confrontation, we're in it until the end.",
+            "label": "A War of Phantoms",
+            "aspects": {
+                "revealidentity": 1
+            },
+            "slots": [
+                {
+                    "id": "summoned",
+                    "label": "Defender",
+                    "required": {
+                        "summoned": 1
+                    }
+                }
+            ],
+            "startdescription": "@#welland|Captain Welland has, uncharacteristically, chosen the Bounds of the Mansus for our final battleground.#tryphon|Lady Tryphon has chosen the Bounds of the Mansus for our final confrontation. #julian|Coseley is raising allies in the Bounds of the Mansus to strike at us.#diarist|The Diarist has begun an all-out attack on us, through the Bounds of the Mansus that they know so well.#|Our enemy has raised a host of spirits to strike at us through the Mansus.@ [The Long will devour my Passion and Reason until I am no more. But they have exposed themselves to a counterattack... if I can raise a sufficient host of Mansus-things against them.] ",
+            "requirements": {
+                "long.dreamwork": 10
+            },
+            "alt": [
+                {
+                    "id": "long.dreams.confrontation.vanquished"
+                },
+                {
+                    "id": "long.dreams.confrontation.defender"
+                }
+            ],
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.grabability"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.vanquished",
+            "actionid": "long",
+            "label": "The Long is vanquished!",
+            "startdescription": "Among the wheeling shadows, the furious smokes, of the Bounds, the Long shrinks like a melting moon. Their armies dissipate. Their intentions founder. Their name is lost.",
+            "description": "[Savour your victory while you can. The work continues. If our enemy can be destroyed, so too can our mentor.]",
+            "requirements": {
+                "long_wound": 3
+            },
+            "aspects": {
+                "longded": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "long.dreams.confrontation.defender",
+            "actionid": "long",
+            "label": "A Battle in the Bounds",
+            "requirements": {
+                "summoned": 1
+            },
+            "startdescription": "The battle is imaginary; the war is not. I can set guards in my dreams. [Only a spirit with <sprite name=edge><sprite name=lantern><sprite name=moth> at least 5 stands a chance of harming the Long. But others will delay the inevitable, for a little while.]",
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.lantern.maid"
+                },
+                {
+                    "id": "long.dreams.confrontation.lantern.hint"
+                },
+                {
+                    "id": "long.dreams.confrontation.winter.maid"
+                },
+                {
+                    "id": "long.dreams.confrontation.forge.caligine"
+                },
+                {
+                    "id": "long.dreams.confrontation.grail.prophet"
+                },
+                {
+                    "id": "long.dreams.confrontation.weakfollower"
+                },
+                {
+                    "id": "long.dreams.confrontation.strongfollower",
+                    "challenges": {
+                        "edge": "base",
+                        "lantern": "base",
+                        "moth": "base"
+                    }
+                },
+                {
+                    "id": "long.dreams.confrontation.strongfollower.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.lantern.maid",
+            "actionid": "long",
+            "label": "An Understanding with the Sun-in-Rags",
+            "startdescription": "The Diarist is on first-name terms with the presences that pass along the Ascent of Knives. No Maid-in-the-Mirror will raise her hand against him.",
+            "requirements": {
+                "diarist": 1,
+                "spirit_winterd_edge": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.winter.maid",
+            "actionid": "long",
+            "label": "Winter's Chill",
+            "startdescription": "Coseley is a Winter-long. However that chilly state was achieved, it has sealed him against the attacks of Maids-in-the-Mirror.",
+            "requirements": {
+                "julian": 1,
+                "spirit_winterd_edge": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.lantern.hint",
+            "actionid": "long",
+            "label": "The Meniscate's Light",
+            "startdescription": "As Lantern-long, the Diarist has an understanding with the Glory's epigones. No Hint will harm him.",
+            "requirements": {
+                "diarist": 1,
+                "spirit_lanternc_edge": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.forge.caligine",
+            "actionid": "long",
+            "label": "Long Acquaintance with the Forge",
+            "startdescription": "Welland held fire on a long leash before ever our founder was born. No Caligine will harm him.",
+            "requirements": {
+                "welland": 1,
+                "spirit_forgec_winter": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.grail.prophet",
+            "actionid": "long",
+            "label": "A Certain Sympathy",
+            "startdescription": "'Don't do that,' Lady Tryphon will remark. And the Raw Prophet will not, in fact, do that.",
+            "requirements": {
+                "tryphon": 1,
+                "spirit_grailc_moth": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.weakfollower",
+            "actionid": "long",
+            "label": "A Necessary Sacrifice",
+            "requirements": {
+                "edge": -5,
+                "lantern": -5,
+                "moth": -5
+            },
+            "startdescription": "One more candle extinguished.",
+            "warmup": 30,
+            "aspects": {
+                "killsummoned": 1
+            },
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.strongfollower",
+            "actionid": "long",
+            "label": "The Wound in the Wood",
+            "startdescription": "Blood drips from tree-branches. Our enemy is hurt.",
+            "mutations": [
+                {
+                    "filter": "long.enemy",
+                    "mutate": "long_wound",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30,
+            "aspects": {
+                "killsummoned": 1
+            },
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.strongfollower.failure",
+            "actionid": "long",
+            "label": "The Lengthening Light",
+            "startdescription": "Our enemy is unharmed.",
+            "warmup": 30,
+            "aspects": {
+                "killsummoned": 1
+            },
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.grabability",
+            "actionid": "long",
+            "label": "Dusk Unrelenting",
+            "startdescription": "The nightmares keep coming. They keep coming. Day or night, waking or sleeping, the sounds of the things in the air, the roots of my hair growing inwards, the open doors that open all the way and the migraines that lair in cold and everything speaks to me, all the time everything, the tug of waking is gravity's slither and the press of the Bounds is the press of the crowd and I am sloughing me, this is how glaciers go\n\n[When I have no remaining Passion or Reason, this will destroy me.]",
+            "slots": [
+                {
+                    "id": "wakingnightmares",
+                    "label": "Waking Nightmares",
+                    "required": {
+                        "passion": 1,
+                        "reason": 1,
+                        "concentration": 1,
+                        "disillusionment": 1,
+                        "passionexhausted": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "effects": {
+                "passion": -1,
+                "reason": -1,
+                "concentration": -1,
+                "disillusionment": -1,
+                "passionexhausted": -1
+            },
+            "alt": [
+                {
+                    "id": "long.dreams.confrontation.destroyedbynightmares"
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.destroyedbynightmares",
+            "actionid": "long",
+            "label": "The Mercy",
+            "startdescription": "- no more -",
+            "requirements": {
+                "passion": -1,
+                "reason": -1,
+                "concentration": -1,
+                "disillusionment": -1,
+                "passionexhausted": -1
+            },
+            "ending": "longnightmareending",
+            "signalEndingFlavour": "Melancholy"
+        },
+        {
+            "id": "long.dreams.confrontation.cleanup",
+            "actionid": "long",
+            "comments": "We remove principle aspects on each run-through - any clutter left from killing spirits, we want to remove so it doesn't affect the attack calculation.",
+            "label": "A War of Phantoms",
+            "aspects": {
+                "revealidentity": 1
+            },
+            "effects": {
+                "edge": -99,
+                "forge": -99,
+                "grail": -99,
+                "heart": -99,
+                "knock": -99,
+                "lantern": -99,
+                "moth": -99,
+                "winter": -99
+            },
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,177 @@
+{
+	"recipes": [
+		{
+			"id": "workbytjobstart",
+			"label": "Ein goldener Tag der Gelegenheitsarbeit",
+			"actionId": "work",
+			"requirements": {
+				"legacybytjob": 1
+			},
+			"effects": {
+				"funds": 3,
+				"legacybytjob": -1,
+				"legacybytjobmatured": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "bytopenexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "Vielleicht kriege ich heute was auf die Reihe.",
+			"description": "Alles läuft bestens. Wobei Papa immer noch krank ist. [<b>Erkunden</b> freigeschaltet.]",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "workbytjob",
+			"label": "Ein goldener Tag der Gelegenheitsarbeit",
+			"actionId": "work",
+			"requirements": {
+				"legacybytjobmatured": 1
+			},
+			"effects": {
+				"funds": 3
+			},
+			"alternativerecipes": [
+				{
+					"id": "workbytjobend",
+					"chance": 30
+				}
+			],
+			"startdescription": "Vielleicht kriege ich heute was auf die Reihe.",
+			"description": "Alles läuft bestens. Wobei Papa immer noch krank ist.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "workbytjobend",
+			"label": "Eine Wolke am Horizont",
+			"actionId": "work",
+			"startdescription": "Papa hat mich zu sich gerufen! Ich muss an sein Krankenlager. Alle Familienangelegenheiten sind für den Augenblick zurückgestellt – ",
+			"craftable": false,
+			"effects": {
+				"legacybytjobmatured": -1,
+				"funds": 2
+			},
+			"alternativerecipes": [
+				{
+					"id": "workbytjobepilogue",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "workbytjobepilogue",
+			"label": "Schreckliche Neuigkeiten",
+			"actionId": "legacyeventbad",
+			"alternativerecipes": [
+				{
+					"id": "bytopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"health": 2,
+				"funds": 20
+			},
+			"startdescription": "Papa ist tot! Keiner will mir sagen, wie genau er gestorben ist. Doch alles ist in Aufruhr. Mein Geld ist bis zur Testamentseröffnung eingefroren und so weiter. Man kann nur hoffen, dass alles geregelt ist, bevor die Rechnungen fällig sind. ",
+			"description": "Das mit dem Testament ist geregelt ... aber Papas Geschäfte sind wie von Holzwürmern von Schulden zerfressen. Niemand scheint so genau zu wissen, wofür er das Geld ausgegeben hat. Doch der Notar schickt mir offenbar einige Papiere.",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "bytopenexplore",
+			"label": "Eine Welt voller Möglichkeiten!",
+			"actionId": "explore",
+			"startdescription": "Einige herrliche Leute haben mir einige herrliche Lokalitäten gezeigt.",
+			"description": "Sollte ich mal nicht wissen, wie ich mein Geld ausgeben soll, werden mir die netten Leute dort sicher gerne behilflich sein!",
+			"warmup": 10,
+			"effects": {
+				"locationauctionhouse": 1,
+				"locationcabaret": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "bytopenstudy",
+			"label": "Verwirrende Papiere",
+			"actionId": "study",
+			"startdescription": "Ich soll Papiere aus Papas Nachlass bekommen, die vielleicht Rückschlüsse darauf zulassen, wohin zur Hölle das ganze Geld verschwunden ist.",
+			"alternativerecipes": [
+				{
+					"id": "bytopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"description": "Ich habe die Papiere erhalten. Armer Papa. Seite für Seite für Seite ein verzweifeltes Gekritzel über ein unsichtbares Haus und die Farben des Schlafs und die unsichtbaren Götter hinter der Welt ... doch je mehr ich davon lese, desto weniger ergibt es einen Sinn. Es ergibt keinen Sinn. Doch es hängt alles zusammen. Und hier haben wir Papas Tagebuch.",
+			"effects": {
+				"legacydiarylastcharacter": 1,
+				"LEVER_LastBook": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "bytstudydiary",
+			"label": "Ein verstörendes Tagebuch studieren",
+			"actionId": "study",
+			"requirements": {
+				"legacydiarylastcharacter": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "bytopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"legacydiarylastcharacter": -1,
+				"reason": 1,
+				"fragmentgrail": 1
+			},
+			"startdescription": "Papas Tagebuch. Es ist ein Panoptikum der Obsessionen. Doch vielleicht ergibt es angesichts der jüngsten Ereignisse doch einen Sinn?",
+			"description": "Der Name #PREVIOUSCHARACTERNAME# taucht in jenen Seiten wieder und wieder auf. 'Ein Ort des Unmöglichen', eine 'Quelle der Zukunft' ... 'hat den Schnitt durchs Auge gemacht.' Und auf der letzten Seite stehen eine Korrespondenzadresse und ein Name.",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "bytopendream",
+			"label": "Das Haus ohne Mauern",
+			"actionId": "dream",
+			"alternativerecipes": [
+				{
+					"id": "despairrisk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "Die Träume beginnen. Papa sprach davon, und er sagte, dass sein Vater vor ihm solche Sorgen gehabt habe. Etwas in unserem Blute, eine beißende Melancholie, welche die Seele tötet.",
+			"description": "Ich träume von einem schrumpfenden Licht, einer Sonne, die den Schnee röstet, aber nicht schmilzt. Wenn ich erwache, ist mein Zimmer immer kalt.",
+			"warmup": 30,
+			"effects": {
+				"passion": 1,
+				"influencewinter": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "bytopentalk",
+			"label": "Einen Fremden beschwören",
+			"actionId": "talk",
+			"startdescription": "Ich habe mich an das Individuum gewandt, das in jenem verstörenden Schriftstück erwähnt wird. Ich habe wenig Grund zu der Annahme, dass ich viel Neues in jener Sache erfahren werde. Doch vielleicht bekomme ich ja Hilfe bei dem, was da noch kommen mag.",
+			"description": "Meine neue Bekanntschaft spricht mit Autorität von Papa. Er wusste, dass er stirbt. Er hatte gehofft, noch vor seinem Tode in den Genuss unbekannter Freuden zu kommen – Freuden, die einer gesunden Gesellschaft verwehrt sind. Meine neue Bekanntschaft schlägt vor, dass ich zu Ende bringe, was er einst begann – das könne mich vor der Verzweiflung bewahren, die meine Familie heimsucht.",
+			"effects": {
+				"poppyready": 1,
+				"ascensionsensationa": 1
+			},
+			"warmup": 60,
+			"craftable": false
+		}
+	]
+}

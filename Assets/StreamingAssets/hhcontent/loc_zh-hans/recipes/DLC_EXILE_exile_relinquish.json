@@ -1,0 +1,499 @@
+{
+	"recipes": [
+		{
+			"id": "relinquish.first",
+			"actionId": "relinquish",
+			"label": "让出",
+			"startdescription": "当我带走那些岁月时，有人向我开了一枪。我几乎快忘记了。",
+			"description": "变换装扮，我可以移动得很快。我可以等待伤口恢复，或者如果我很着急的话，可以用偷来的岁月治愈它——但这需要整整十年的时间，而且肯定会被注意到。",
+			"effects": {
+				"wound.exile": 1
+			},
+			"comments": "opened by initial scout recipe",
+			"alt": [
+				{
+					"id": "send.first",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.decade.healwound.foe",
+			"actionId": "relinquish",
+			"label": "用偷来的十年治愈伤口",
+			"startdescription": "在黎明来临之际，我必须默默地燃烧岁月，用灰烬包扎伤口。在任何一天这都是棘手的，但随着敌手今晚对我的跟踪，这将毫无乐趣可言。[你需要一个黎明的机会来完成。]",
+			"description": "我找不到足够的时间和安静。[准备好黎明的机会。]",
+			"slots": [
+				{
+					"id": "dawn",
+					"label": "Dawn",
+					"description": "The Moment",
+					"requirements": {
+						"op.dawn": 1
+					}
+				}
+			],
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"alt": [
+				{
+					"id": "relinquish.decade.healwound.success.foe"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.decade.healwound.success.foe",
+			"actionId": "relinquish",
+			"label": "用偷来的十年治愈伤口",
+			"startdescription": "我从昕旦那里买回了一点时间。",
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1,
+				"op.dawn": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"damage.exile": -1,
+				"op.dawn": -1
+			}
+		},
+		{
+			"id": "relinquish.decade.healwound",
+			"actionId": "relinquish",
+			"label": "用偷来的十年治愈伤口",
+			"startdescription": "在黎明来临的时候，岁月必须在沉默中燃烧——昕旦对此颇为挑剔——伤口上撒满了灰烬。[你需要一个黎明的机会来完成。]",
+			"description": "我找不到足够的时间和安静。[准备好黎明的机会。]",
+			"slots": [
+				{
+					"id": "dawn",
+					"label": "Dawn",
+					"description": "The Moment",
+					"requirements": {
+						"op.dawn": 1
+					}
+				}
+			],
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1
+			},
+			"alt": [
+				{
+					"id": "relinquish.decade.healwound.success"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.decade.healwound.success",
+			"actionId": "relinquish",
+			"label": "用偷来的十年治愈伤口",
+			"startdescription": "昕旦是不仁慈的。她总是索取必要的东西。但是，我从来都不是那种祈求仁慈的人。[你的清算人追兵已经嗅到了燃烧的岁月。]",
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1,
+				"op.dawn": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"damage.exile": -1,
+				"trace": 1,
+				"op.dawn": -1
+			}
+		},
+		{
+			"id": "relinquish.vitality.healwound",
+			"actionId": "relinquish",
+			"label": "用活力治愈伤口",
+			"startdescription": "作为一名清算人，我很久以前就学会了如何重新引导生命的突涌。",
+			"description": "一个研究无形之术的学徒，现在一定会向轰雷之皮祈祷。我知道更好的方法。",
+			"requirements": {
+				"vitality": 1,
+				"damage.exile": 1
+			},
+			"effects": {
+				"vitality": -1,
+				"damage.exile": -1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.healwound.hint",
+			"actionId": "relinquish",
+			"label": "治愈伤口？",
+			"startdescription": "我可以用偷来的十年治愈我的伤口——尽管这可能会吸引清算人。或者如果我找到了活力的来源，我也可以利用它。当然，如果我有时间，我也可以等待我的伤口恢复。",
+			"requirements": {
+				"damage.exile": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.decade.unpack",
+			"actionId": "relinquish",
+			"label": "打碎偷来的十年",
+			"startdescription": "被偷走的岁月，一年比十年更容易卖掉。我有工具来做必要的改变，但我必须非常小心。来自于骄阳的她从不容忍粗心大意。[十年是无法卖掉的，也不能用来治愈伤口。不过一年不能重新合为十年。]",
+			"description": "终于完成了。我已经根据这个数字仔细起草了十张簿，并把十年的簿烧掉了。我的每一份新簿都价值四千两百万次心脏的跳动。我想我能听到它们在纸上颤抖的声音……",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"year.stolen": 10
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.convertyear",
+			"actionId": "relinquish",
+			"label": "快速筹集现金",
+			"startdescription": "直接以现金出售岁月只会收获颇微，并将很快引起清算人的注意。一旦我找到一个更好的选择，我应该尽可能少做此事。",
+			"description": "烟雾缭绕的房间；皱巴巴的钞票。我受够了。[行动是一种更安全的将岁月转换为现金的方式。大多数行动都需要关系。]",
+			"requirements": {
+				"year.stolen": 1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"cash": 1
+			},
+			"aspects": {
+				"terribletracerisk": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.defiance",
+			"actionId": "relinquish",
+			"label": "庆祝我的胜利",
+			"startdescription": "抗争和征服的司辰是承认胜利的。我可以用这个战利品来增加我在他们眼中的地位。",
+			"description": "完成了。在白天和黑夜战斗的时候，多翼之物飞下来评判我的奖赏，当它们离开的时候，只留下几片骨头和几缕头发。",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"temptation.defiance": 1,
+				"defiance.underlingdefeated": -1
+			},
+			"effects": {
+				"corpse.exile.underling": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.underlingdefeated",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.lore",
+			"actionId": "relinquish",
+			"label": "从我的胜利中学习",
+			"startdescription": "某些技艺只能用敌人的血来表达。",
+			"description": "这不是一个整洁或愉快的过程……但是我已经对许多凡人的行为有了自己的理解。",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"lore": 1
+			},
+			"effects": {
+				"corpse.exile.underling": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile",
+			"actionId": "relinquish",
+			"label": "一个谨慎的葬礼",
+			"startdescription": "不把它们埋起来是不体面的。但也不必小题大做。",
+			"description": "我们已经把这具可怜的躯壳悄悄弄走了。任何寻找它们的人都会发现一串错误的线索。",
+			"requirements": {
+				"corpse.exile": 1,
+				"deception": 2
+			},
+			"effects": {
+				"corpse.exile": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.connections",
+			"actionId": "relinquish",
+			"label": "掩盖我的痕迹",
+			"startdescription": "我的同伙会帮我篡改必要的记录。",
+			"description": "“书籍是永远不会消失的记忆”……一个从来都不称职的锻造者说。",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"connection": 2
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.night.connection",
+			"actionId": "relinquish",
+			"label": "掩盖我的痕迹",
+			"startdescription": "当月亮落下时，我们将开始实施我们的计划。",
+			"description": "太阳在另一段缺失的历史上升起。",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"connection": 1,
+				"op.night": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space.connection",
+			"actionId": "relinquish",
+			"label": "掩盖我的痕迹",
+			"startdescription": "我的朋友会确保那个地址仍住着骗子。",
+			"description": "我捐了一件旧大衣给骗子。我希望他们不会惨遭谋杀。",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1,
+				"connection": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space.night",
+			"actionId": "relinquish",
+			"label": "掩盖我的痕迹",
+			"startdescription": "我会在晚上溜出去。",
+			"description": "没有人会知道我已经离开那里很久了……到时候我会从其他地方离开。",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1,
+				"op.night": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space",
+			"actionId": "relinquish",
+			"label": "掩盖我的痕迹？",
+			"startdescription": "[你可以用一个带有夜间卡或连接卡的住所来消除痕迹，但不要用两个住所。]",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace",
+			"actionId": "relinquish",
+			"label": "掩盖我的痕迹",
+			"startdescription": "在当地人精心帮助下，我可以误导敌人。",
+			"description": "我的同党设下虚假的计谋，迷惑我的敌人。",
+			"requirements": {
+				"trace": 1,
+				"deception": 2
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.defiance.already.hint",
+			"actionId": "relinquish",
+			"label": "已被承认",
+			"startdescription": "审判被杀者的多翼者已经承认这一次胜利。我不应该再麻烦他们了。",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"temptation.defiance": 1,
+				"defiance.underlingdefeated": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.hint",
+			"actionId": "relinquish",
+			"label": "凡人的用处？",
+			"startdescription": "作为财产来说，人的尸体颇为不便，但有时也有它的价值。",
+			"requirements": {
+				"corpse.exile.underling": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.space",
+			"actionId": "relinquish",
+			"label": "掩盖我的痕迹？",
+			"startdescription": "一个我再也不会去的地方……[再加一张骗术卡，但不要另外加地址。]",
+			"requirements": {
+				"trace": 1,
+				"space": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.connection",
+			"actionId": "relinquish",
+			"label": "掩盖我的痕迹？",
+			"startdescription": "在熟悉这个城市的朋友的帮助下……[再加一张骗术卡。]",
+			"requirements": {
+				"trace": 1,
+				"connection": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.night",
+			"actionId": "relinquish",
+			"label": "掩盖我的痕迹？",
+			"startdescription": "当黑夜蒙蔽了警惕的眼睛……[再加一张骗术卡。]",
+			"requirements": {
+				"trace": 1,
+				"op.night": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint",
+			"actionId": "relinquish",
+			"label": "掩盖我的痕迹？",
+			"startdescription": "为了误导我的敌人，我需要从当地人那里得到精心的帮助。",
+			"requirements": {
+				"trace": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.sell",
+			"actionId": "relinquish",
+			"label": "试图出售资产换取现金",
+			"startdescription": "@#licence.medical|我总能找到一个觉得自己配得上当医生的人。#|也许我更需要现金。@ [这将把资产换成与其价值相等的现金。]",
+			"requirements": {
+				"worth": 1,
+				"cash": -1,
+				"trace": -1
+			},
+			"extantreqs": {
+				"asset.packed": -1
+			},
+			"comments": "cash also has worth, but let's not convert it back to cash",
+			"effects": {
+				"cash": "worth",
+				"asset": -1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.abandon",
+			"actionId": "relinquish",
+			"label": "放弃一项资产",
+			"startdescription": "当魔鬼在你背后时，轻装前进。[用这个来摆脱任何你没有时间随身携带的可移动资产。]",
+			"requirements": {
+				"asset": 1,
+				"trace": -1
+			},
+			"extantreqs": {
+				"asset.packed": 1
+			},
+			"effects": {
+				"asset": -1
+			},
+			"warmup": 1,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.provoke",
+			"actionId": "relinquish",
+			"label": "激活我的关系",
+			"startdescription": "我不是唯一一个有敌人的人。如果我和这个联系人公开不和，我可能会获得 @#connection.official|与黑社会的关系#connection.holy|#connection.radicals|与激进分子的关系#connection.ruler|#connection.underworld|与官方的关系与激进分子的关系与官方的关系@。或者我可能会惹恼我现在的联系人。[这通常有用，但有时会失败，且会让你失去目前的关系并产生痕迹。]",
+			"requirements": {
+				"connection": 1,
+				"trace": -1
+			},
+			"linked": [
+				{
+					"id": "relinquish.provoke.success",
+					"chance": 70
+				},
+				{
+					"id": "relinquish.provoke.failure"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.provoke.success",
+			"actionId": "relinquish",
+			"label": "成功！",
+			"startdescription": "新朋友。",
+			"aspects": {
+				"provoking": 1
+			}
+		},
+		{
+			"id": "relinquish.provoke.failure",
+			"actionId": "relinquish",
+			"label": "糟糕——",
+			"startdescription": "我知道那些言辞不好, 但我没有意识到<i>多么</i>不好。",
+			"effects": {
+				"connection": -1,
+				"trace": 1
+			}
+		}
+	]
+}

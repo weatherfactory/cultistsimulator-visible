@@ -1,0 +1,3057 @@
+{
+	"recipes": [
+		{
+			"id": "send.first",
+			"actionId": "send",
+			"label": "交流",
+			"startdescription": "我确实不想去联系以前生活中的任何人。但情况有变。",
+			"effects": {
+				"temptation.obscurity": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "send.op.echidna",
+			"actionId": "send",
+			"label": "柴玛的追求",
+			"startdescription": "一听到有厄客德娜出现的传言……",
+			"description": "有件事让查玛无法离开。",
+			"slots": [
+				{
+					"id": "chaima",
+					"label": "Chaima",
+					"description": "柴玛在沙漠之疆有事要做",
+					"required": {
+						"ally.huntress": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.echidna.2"
+				}
+			],
+			"requirements": {
+				"op.echidna": 1
+			},
+			"extantreqs": {
+				"ally.huntress": 1
+			},
+			"comments": "Extantreq shouldn't be necessary because the op card is unique, but leaving it here as a safety measure",
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.op.echidna.2",
+			"actionId": "send",
+			"label": "柴玛的掠食",
+			"startdescription": "一听到有厄客德娜出现的传言，柴玛便消失在沙漠中。她留下了一张她特有的简短字条：“狩猎。不是狩猎丽姬亚.”",
+			"description": "查玛回来了，带回来的是一个眼睛凹陷、相貌非凡的男人，他被绑着，拖着尾巴。非人的肌肉在人的皮肤下荡漾。“找到了。”柴玛告诉我。",
+			"requirements": {
+				"ally.huntress": 1
+			},
+			"effects": {
+				"op.echidna": -1,
+				"contact.labhite.fallen": 1
+			}
+		},
+		{
+			"id": "send.op.morgen",
+			"actionId": "send",
+			"label": "和平旦夫人会面？",
+			"startdescription": "平旦夫人就是人们所说的丽姬亚，意思是她就像一个会吃人的人。但是我听说她认识丝绒的那位无名具名者，“在那位具名者的迷雾中，败者寻到了慰藉。”那可能是我需要的。",
+			"description": "Nothing.",
+			"slots": [
+				{
+					"id": "gift",
+					"label": "A Gift",
+					"description": "有东西引起了平旦夫人的兴趣"
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.morgen.pentiment"
+				}
+			],
+			"requirements": {
+				"op.morgen": 1
+			},
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.op.morgen.pentiment",
+			"actionId": "send",
+			"label": "平旦夫人！",
+			"startdescription": "平旦夫人笑着从舷梯上走下来。她的笑声像鸟儿的歌声，她的眼睛也像鸟儿的眼睛——闪闪发光的黑色珠子。“很有趣”她说，“还有吗？”",
+			"requirements": {
+				"pentiment": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.ii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.ii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 1
+			},
+			"label": "将第二张原画复现送给平旦夫人",
+			"startdescription": "“一个好的开始。我猜你想让我替你说情。你得非常努力才能说服我。你还有什么？”",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "悔改",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.iii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.iii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 2
+			},
+			"label": "将第三张原画复现送给平旦夫人",
+			"startdescription": "“很好。继续。我亲爱的无名者相当贪婪。”",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "悔改",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.iv"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.iv",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 3
+			},
+			"label": "将第四张原画复现送给平旦夫人",
+			"startdescription": "“没错，没错。还有吗？靠近点。让我看看你。”",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "悔改",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.v"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.v",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 4
+			},
+			"label": "将第五张原画复现送给平旦夫人",
+			"startdescription": "“我想我闻到了一种罕见的气味。大地之血，对吧？为了你的血脉，我想我可以安排一趟<i>旅程</i>。那里的人会很高兴见到你的。但代价更高。七张。”",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "悔改",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.vi"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.vi",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 5
+			},
+			"label": "将第六张原画复现送给平旦夫人",
+			"startdescription": "“<i>Allez</i>（法语，加油），我的朋友。我们可以一起做到。就快了。”",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "悔改",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.vii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.vii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 6
+			},
+			"label": "将第七张原画复现送给平旦夫人",
+			"startdescription": "平旦夫人戏剧性地吸了一口气。“真不少——！那位无名者谅必会欣喜若狂！再来一个——再多一个，我就把钥匙拿出来，只为了你。”",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "悔改",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.final"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.final",
+			"requirements": {
+				"pentiment": 7
+			},
+			"actionId": "send",
+			"label": "顶点之门",
+			"startdescription": "平旦夫人举起一颗宝石，像她的眼睛一样闪闪发光。“<i>Bon voyage.</i>（法语，一路平安）”",
+			"warmup": 30,
+			"ending": "victoryvelvet"
+		},
+		{
+			"id": "send.op.morgen.pentiment.break",
+			"actionId": "send",
+			"label": "不够",
+			"startdescription": "“没了？”",
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.break.nothing"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break.flute"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.break.nothing",
+			"actionId": "send",
+			"label": "不够",
+			"startdescription": "“我希望你不是来浪费我的时间的。我已经解释过了。”",
+			"extantreqs": {
+				"curio.morgen": 1
+			}
+		},
+		{
+			"id": "send.op.morgen.pentiment.break.flute",
+			"actionId": "send",
+			"label": "不够",
+			"startdescription": "平旦夫人苍白无比的额头浮现一丝皱纹。“还不够。我们能做得更好，<i>对吧</i>？拿着这个。你在海边的时候用这个呼唤我，我就会出现。不过只有一次。我不喜欢浪费时间。到时再见。”",
+			"effects": {
+				"curio.morgen": 1
+			}
+		},
+		{
+			"id": "send.op.medusa",
+			"actionId": "send",
+			"label": "寻找未见之物",
+			"startdescription": "丽姬亚俱乐部的美杜莎。有一次皮尔对我说：“她可能是她这类人当中还活着的最年迈的一个，不过她已经死了。”皮尔就是这么说的。但现在，在雕像的盲眼下，在布达佩斯雨中隐约可见的街道上，我还记得他说的另一件事，那就是美杜莎的谜语——“什么是未见之物？”我的皮肤传来一阵刺痛。",
+			"description": "什么都没有。雨水浸穿了我的大衣，打在了我的脖子后面。她还在此处，如果她还在的话。",
+			"slots": [
+				{
+					"id": "medusa",
+					"label": "Medusa's Riddle",
+					"description": "“什么是未见之物？”",
+					"required": {
+						"moth": 1
+					},
+					"consumes": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.medusa.pentiment"
+				}
+			],
+			"requirements": {
+				"op.medusa": 1
+			},
+			"extantreqs": {
+				"wound.exile.medusa": -1
+			},
+			"comments": "Extantreq shouldn't be necessary because the op card is unique, but leaving it here as a safety measure",
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"effects": {
+				"dread": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.op.medusa.pentiment",
+			"actionId": "send",
+			"label": "偶遇",
+			"startdescription": "我找到了美杜莎之谜的答案……而且我想她发现我了。当然我从来没有看见她，但是我在外面的黑夜里失去了一个小时，现在我的心脏上带着一个无法愈合的伤口。当我自找麻烦的时候就会这样。（如果我真的遇到了一个丽姬亚，她为什么会放过我？我满怀疑问。）",
+			"requirements": {
+				"moth": 1
+			},
+			"effects": {
+				"wound.exile.medusa": 1,
+				"op.medusa": -1
+			},
+			"burnimage": "pentiment",
+			"warmup": 30
+		},
+		{
+			"id": "send.ligeian",
+			"actionId": "send",
+			"label": "寻找一位丽姬亚",
+			"requirements": {
+				"ligeian": 1
+			},
+			"startdescription": "和我一样，丽姬亚也是罪犯和逃亡者。与我不同的是，她们一直被诅咒缠身，因为她们把刚出生的血肉吃掉了。不过，或许我们可以找到一些共同点。",
+			"slots": [
+				{
+					"id": "gift",
+					"label": "A Gift",
+					"required": {
+						"remnant": 1,
+						"decade.stolen": 1,
+						"ally": 1,
+						"associate": 1
+					},
+					"actionId": "send"
+				}
+			],
+			"warmup": 30,
+			"craftable": true,
+			"alt": [
+				{
+					"id": "send.ligeian.risk"
+				}
+			],
+			"effects": {
+				"remnant": -1,
+				"decade.stolen": -1,
+				"ally": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "send.ligeian.reward"
+				}
+			]
+		},
+		{
+			"id": "send.ligeian.risk",
+			"actionId": "send",
+			"label": "长勺的司辰",
+			"requirements": {
+				"remnant": -1,
+				"decade.stolen": -1,
+				"ally": -1,
+				"associate": -1
+			},
+			"startdescription": "如果我寻找丽姬亚时两手空空，我最好祈祷她心情不错。[丽姬亚有些时候心情不错，但并不总是如此。]",
+			"linked": [
+				{
+					"id": "send.ligeian.reward",
+					"chance": 30
+				},
+				{
+					"id": "send.ligeian.displeased"
+				}
+			]
+		},
+		{
+			"id": "send.ligeian.reward",
+			"actionId": "send",
+			"label": "“丽姬亚记得”",
+			"startdescription": "@#op.echidna|“亲爱的，坐。我们聊聊。”#op.kleidouchos|#op.marinette|“今天，我没有吃掉你。你想要什么？快说。”<sprite name=secrethistories>#op.sulochana|“？”苏洛恰那深吸了一口丁香味的雪茄。“我觉得太纵容你了”她小声地说，“继续吧。”@[放入一张敌手未知的弱点来详细了解它。如果没有，丽姬亚则会给你一份礼物，或者吃掉一个清算人而不留下任何痕迹——尽管她不会注意到线人，也不会去追杀敌手。]",
+			"slots": [
+				{
+					"id": "advice",
+					"label": "Advice",
+					"description": "丽姬亚还能听见东西，并且她们已经十分年迈。",
+					"required": {
+						"weakness.foe.unknown": 1
+					},
+					"actionId": "send"
+				}
+			],
+			"alt": [
+				{
+					"id": "send.ligeian.revelation"
+				}
+			],
+			"linked": [
+				{
+					"id": "send.ligeian.ravage"
+				},
+				{
+					"id": "send.ligeian.echidna.reward"
+				},
+				{
+					"id": "send.ligeian.kleidouchos.reward"
+				},
+				{
+					"id": "send.ligeian.marinette.reward"
+				},
+				{
+					"id": "send.ligeian.sulochana.reward"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "send.ligeian.revelation",
+			"actionId": "send",
+			"label": "智慧",
+			"startdescription": "@#op.echidna|“我当然知道他。我也认识你母亲。虽然我对她曾寄予厚望……”#op.kleidouchos|#op.marinette|“嗯…我知道你的敌手。”<sprite name=lantern>#op.sulochana|“。”“哦，是的。他在战前就经常到这儿来。”@",
+			"requirements": {
+				"weakness.foe.unknown": 1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"effects": {
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.ravage",
+			"actionId": "send",
+			"label": "一饮而尽",
+			"startdescription": "@#op.echidna|“宝宝，有人给你添麻烦了吗？让E阿姨来解决吧。”#op.kleidouchos|#op.marinette|“我已经向你那个清算人朋友提出了我的反对意见。”<sprite name=edge><sprite name=edge>“<sprite name=edge>，<sprite name=grail>，#op.sulochana|……。”“他真傻。好吧，他不会再这样做了。”@",
+			"extantreqs": {
+				"rkx.rank": 1
+			},
+			"deleteverb": {
+				"rkx": 1
+			},
+			"effects": {
+				"ligeian": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "send.ligeian.echidna.reward",
+			"actionId": "send",
+			"label": "厄客德娜的礼物",
+			"startdescription": "“给你，亲爱的。从那些本不会改变主意的人那里。”",
+			"requirements": {
+				"op.echidna": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"memento.edge": 1,
+				"ligeian": -1
+			},
+			"burnimage": "pentiment"
+		},
+		{
+			"id": "send.ligeian.kleidouchos.reward",
+			"actionId": "send",
+			"label": "施鲁塞尔的礼物",
+			"startdescription": "“我再也用不着这个了。你可能用得上。不要把它喝掉。”",
+			"requirements": {
+				"op.kleidouchos": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"rarity.knock.poison": 1,
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.marinette.reward",
+			"actionId": "send",
+			"label": "玛丽内特的礼物",
+			"startdescription": "<sprite name=mortal>。",
+			"requirements": {
+				"op.marinette": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"memento.grail": 1,
+				"ligeian": -1
+			},
+			"burnimage": "pentiment"
+		},
+		{
+			"id": "send.ligeian.sulochana.reward",
+			"actionId": "send",
+			"label": "苏洛恰那的礼物",
+			"startdescription": "“我来为你介绍几个人。我在俱乐部见到的人会让你大吃一惊的。”",
+			"requirements": {
+				"op.sulochana": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"connection.official": 1,
+				"connection.holy": 1,
+				"connection.radicals": 1,
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.displeased",
+			"actionId": "send",
+			"label": "不可抗拒的丽姬亚",
+			"startdescription": "一场满是牙齿和皱缩皮肤的噩梦!我在努力争取自由—— ",
+			"description": "我已回到安全的街道上。但我也不是毫发无损。当我踉踉跄跄地走过时，旁观者转过身来看着我。",
+			"effects": {
+				"wound.exile.unstanchable": 1,
+				"trace": 1,
+				"ligeian": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "send.defiance.ascend.colonel",
+			"actionId": "send",
+			"label": "不死者敌人",
+			"startdescription": "现在上校向我的决心和技巧致敬。他会在他的敌人狮子匠面前为我担保。",
+			"requirements": {
+				"defiancemarks": 7,
+				"defiance.consecration.colonel": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensioncolonel",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.lionsmith",
+			"actionId": "send",
+			"label": "不死者敌人",
+			"startdescription": "现在狮子匠向我的勇气和力量致敬。他将在他的敌人上校面前为我担保。",
+			"requirements": {
+				"defiancemarks": 7,
+				"defiance.consecration.lionsmith": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensionlionsmith",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.wolf",
+			"actionId": "send",
+			"label": "不死者敌人",
+			"startdescription": "裂分之狼把我标记为它的所有物。我的脖子因它的臭气而发烫。",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensionwolf",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.morewounds.hint",
+			"actionId": "send",
+			"label": "不死者敌人?",
+			"startdescription": "还有另一种方式来结束这一切…这还没完呢。我的敌手和我现在被锁在了纷争中，就像时钟里的齿轮一样。而我只需要转动钥匙。[我可以拜请一位刃之司辰将我与敌手的决斗升华到永恒的境界——但前提是我必须给他六处伤口，使他陷于瘫痪。]",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.ascend.moremarks.hint",
+			"actionId": "send",
+			"label": "不死者敌人?",
+			"startdescription": "也许有另一种方式来结束这一切…根本就没有结束。[如果你拥有七个反抗，而且你的敌手正在场上，那么另一种形式的胜利会变为可能。]",
+			"requirements": {
+				"defiancemarks": 2
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.lureexists.hint",
+			"actionId": "send",
+			"label": "反抗的召唤：已经发出",
+			"startdescription": "我的敌手已经知道我之所在了。",
+			"requirements": {
+				"temptation.defiance": 1,
+				"lure.foe": 1,
+				"domicile": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.weaponalreadysent.hint",
+			"actionId": "send",
+			"label": "反抗的礼物：已经发出",
+			"startdescription": "我已经给我的敌手送去了武器。",
+			"requirements": {
+				"temptation.defiance": 1,
+				"weapon": 1,
+				"defiance.weaponsent": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.weaponprofane.hint",
+			"actionId": "send",
+			"label": "反抗的礼物：还不够",
+			"startdescription": "世俗的武器并无作用。",
+			"requirements": {
+				"temptation.defiance": 1,
+				"uq.weapon.profane": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.7",
+			"actionId": "send",
+			"label": "纷争",
+			"startdescription": "如果我能让我的敌手陷入僵局，那么我便准备好进入纷争的中心。一旦我到了那里，我就再也不会感到平静了。",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.6",
+			"actionId": "send",
+			"label": "纷争",
+			"startdescription": "我已经成为了纷争的中心。当我经过时，夫妻们有时会吵架。而狗会转身咬主人。火会明亮地燃烧或熄灭。",
+			"requirements": {
+				"defiancemarks": 6
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.5",
+			"actionId": "send",
+			"label": "纷争",
+			"startdescription": "我今天早上醒来，发现有人在镜子上写着“爱是战争”。可能是我。如果是我，可能会更让人安心。",
+			"requirements": {
+				"defiancemarks": 5
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.4",
+			"actionId": "send",
+			"label": "纷争",
+			"startdescription": "我还记得何时我开始认为我与纷争无能为力，当然我也一直如此。每位司辰，每个凡人，每粒尘埃，都在永恒的斗争中扮演着自己的角色。但是在欧洲与一个半不死者对手进行一场不断的战斗——这意味着我在纷争中戏份不低，而不仅仅是一个跑龙套的角色。",
+			"requirements": {
+				"defiancemarks": 4
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.3",
+			"actionId": "send",
+			"label": "纷争",
+			"startdescription": "我开始注意到世界上的纷争形式——树木与狂风的纷争，火焰与烟雾的纷争，河流与土地的纷争。人群是动机的不断碰撞。如此美丽。",
+			"requirements": {
+				"defiancemarks": 3
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.2",
+			"actionId": "send",
+			"label": "纷争",
+			"startdescription": "我现在正在做一场关于刀的梦。这可能意味着一位刃之司辰已经注意到我了。",
+			"requirements": {
+				"defiancemarks": 2
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.1",
+			"actionId": "send",
+			"label": "纷争",
+			"startdescription": "纷争，是一个学徒们用来表示刃之司辰及其永无止境之反抗的拗口词语。像大多数清算人一样，我已经远离了这一切。",
+			"requirements": {
+				"defiancemarks": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.summons",
+			"actionId": "send",
+			"label": "发出反抗的召唤",
+			"startdescription": "我在信封上写的字清晰而坚定。我的手毫不颤抖。[这将消除所有的隐秘]",
+			"description": "我的敌手很快就要来了。也许他已经来了。[你的反抗现在更加激烈了。]",
+			"requirements": {
+				"temptation.defiance": 1,
+				"domicile": 1,
+				"lure.foe": -1,
+				"defiance.foesummoned": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "lure.foe",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.foesummoned",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.defiance",
+					"additional": true
+				}
+			],
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.summons.again",
+			"actionId": "send",
+			"label": "再次发出反抗的召唤",
+			"startdescription": "让他来吧。让他来接受他应得的。[这将消除所有的隐秘]",
+			"description": "我的敌手很快就要来了。也许他已经来了。",
+			"requirements": {
+				"temptation.defiance": 1,
+				"domicile": 1,
+				"lure.foe": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "lure.foe",
+					"mutationLevel": 1
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.defiance",
+					"additional": true
+				}
+			],
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.gift",
+			"actionId": "send",
+			"label": "送出反抗的礼物",
+			"startdescription": "我要给我的敌手送一件强大的武器。因为这<i>真的</i>能激怒他们。",
+			"description": "也许他会自己打开包裹。也许他会认为这是一个陷阱，让别人去做。不管怎样，当我想象他的脸时，很难不笑出来。[你的反抗现在更加激烈了。]",
+			"requirements": {
+				"temptation.defiance": 1,
+				"weapon": 1,
+				"defiance.weaponsent": -1,
+				"uq.weapon.profane": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.weaponsent",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"weapon": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.ahead.cash.hint",
+			"actionId": "send",
+			"label": "提前汇钱？",
+			"startdescription": "我可能需要尽快离开。我可以提前把钱汇到一个可能去的目的地。当然，如果我不去那里，汇去的钱就会丢失。",
+			"requirements": {
+				"cash": 1,
+				"destination": -1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.ahead.cash",
+			"actionId": "send",
+			"label": "提前汇钱",
+			"startdescription": "我可能需要尽快离开。我可以提前把钱汇到一个可能去的目的地。当然，如果我不去那里，汇去的钱就会丢失。",
+			"description": "完成了。如果我需要离开，我可以轻装上路。",
+			"requirements": {
+				"cash": 1,
+				"destination": 1
+			},
+			"effects": {
+				"cash": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "cash.sent",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.getsentahead.cash.hint",
+			"actionId": "send",
+			"label": "利用我之前的准备？",
+			"startdescription": "一旦我到了这个地方，我就可以取回事先汇来的现金。",
+			"requirements": {
+				"domicile": -1,
+				"cash.sent": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.getsentahead.cash",
+			"actionId": "send",
+			"label": "利用我之前的准备",
+			"startdescription": "我应该去取回我事先汇来的现金。",
+			"requirements": {
+				"domicile": 1,
+				"cash.sent": 1
+			},
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "send.getsentahead.cash.loop"
+				}
+			]
+		},
+		{
+			"id": "send.getsentahead.cash.loop",
+			"actionId": "send",
+			"label": "完成！",
+			"startdescription": "我已经提前汇走了钱。现在我到那儿就能直接取出。",
+			"requirements": {
+				"cash.sent": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "cash.sent",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"cash": 1
+			},
+			"linked": [
+				{
+					"id": "send.getsentahead.cash.loop"
+				}
+			]
+		},
+		{
+			"id": "send.victory.hint",
+			"actionId": "send",
+			"label": "隐秘的安全？",
+			"startdescription": "[如果你拥有七个隐秘，你就可以在你永远消失之前向你的敌手发出一个嘲讽的信息。]",
+			"requirements": {
+				"temptation.obscurity": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.victory.obscurity.c.begin",
+			"actionId": "send",
+			"label": "难得的快乐生活……",
+			"startdescription": "我拥有了所有的需求之物吗？[如果在你消失的那一刻，你仍然拥有至少价值30现金的资产，你将获得更大的胜利。]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"warmup": 60,
+			"extantreqs": {
+				"comfort": 20
+			},
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.b.begin",
+			"actionId": "send",
+			"label": "平静舒适的生活",
+			"startdescription": "我拥有了所有的需求之物吗？[如果在你消失的那一刻，你仍然拥有至少价值30现金的资产，你将获得更大的胜利。]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"extantreqs": {
+				"comfort": 10
+			},
+			"warmup": 60,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.a.begin",
+			"actionId": "send",
+			"label": "忘却的生活",
+			"startdescription": "我将是安全的。这对我来说足够了吗？[如果在你消失的那一刻，你仍然拥有至少价值20现金的资产，你将获得更大的胜利。]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"warmup": 60,
+			"craftable": true,
+			"signalEndingFlavour": "Pale",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.c",
+			"actionId": "send",
+			"label": "喜悦",
+			"extantreqs": {
+				"comfort": 30
+			},
+			"ending": "obscurityvictoryc"
+		},
+		{
+			"id": "send.victory.obscurity.b",
+			"actionId": "send",
+			"label": "放松",
+			"extantreqs": {
+				"comfort": 20
+			},
+			"ending": "obscurityvictoryb"
+		},
+		{
+			"id": "send.victory.obscurity.a",
+			"actionId": "send",
+			"label": "宁静",
+			"ending": "obscurityvictorya"
+		},
+		{
+			"id": "send.victory.obscurity.c.foeslain",
+			"actionId": "send",
+			"label": "喜悦",
+			"extantreqs": {
+				"comfort": 30,
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictorycfoeslain"
+		},
+		{
+			"id": "send.victory.obscurity.b.foeslain",
+			"actionId": "send",
+			"label": "放松",
+			"extantreqs": {
+				"comfort": 20,
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictorybfoeslain"
+		},
+		{
+			"id": "send.victory.obscurity.a.foeslain",
+			"actionId": "send",
+			"label": "宁静",
+			"extantreqs": {
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictoryafoeslain"
+		},
+		{
+			"id": "send.labhite.fallen.intro",
+			"actionId": "send",
+			"requirements": {
+				"contact.labhite.fallen": 1
+			},
+			"label": "决定坠落的狻猊的命运",
+			"startdescription": "甚至在厄客德娜腐蚀狻猊之前，柴玛就会以上校的名义杀了他。现在他不仅是一个怪物，而且是一个腐败的怪物。同时，纳维尔建议抱有仁慈。“虚假的完美”他郑重地说，“是灵魂最深处的疾病。把他放逐到沙漠里，他就重见天日。”柴玛不为所动。但她尊重你和她的父亲——如果你坚持的话，她可以放手不管。",
+			"slots": [
+				{
+					"id": "decision",
+					"label": "Decision",
+					"required": {
+						"temptation.defiance": 1,
+						"temptation.obscurity": 1,
+						"rage": 1,
+						"tranquillity": 1
+					}
+				}
+			],
+			"description": "坠落的狻猊还能在笼子里苟活一段时间。",
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "send.labhite.fallen.merciless"
+				},
+				{
+					"id": "send.labhite.fallen.merciful"
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "send.labhite.fallen.merciless",
+			"actionId": "send",
+			"label": "不留情面",
+			"startdescription": "“他背叛了狮子匠的意志。让他去死。”",
+			"description": "柴玛带着狻猊去完成这件事。当她向上校献上祭品时，她给了你一小罐金粉。“纪念品”，她说。",
+			"requirements": {
+				"choice.merciless": 1
+			},
+			"burnimage": "pentiment",
+			"effects": {
+				"memento.edge": 1,
+				"contact.labhite.fallen": -1
+			}
+		},
+		{
+			"id": "send.labhite.fallen.merciful",
+			"actionId": "send",
+			"label": "仁慈",
+			"startdescription": "他是狮子铁匠从未设想过的东西。谁知道他还会成为什么样的人呢？",
+			"description": "柴马耸耸肩，转过身去。纳维尔陪你走到沙漠的边缘。仍一言未发的狻猊，从地上捡起一块扁平的石头，亲吻之后递给了你。然后他跑进沙丘，不再回头。",
+			"requirements": {
+				"choice.merciful": 1
+			},
+			"burnimage": "pentiment",
+			"effects": {
+				"memento.lantern": 1,
+				"contact.labhite.fallen": -1
+			}
+		},
+		{
+			"id": "send.retainer.chat",
+			"actionId": "send",
+			"label": "教诫",
+			"startdescription": "“我可以谈谈她吗？”",
+			"description": "这位老人对她的美貌、智慧和她的<i>barakah</i>（阿拉伯语，福分）有很多话要说，但我开始意识到，他几乎不记得她了，除非是作为一次偶或一个故事。望着窗外摇曳的树影，我的注意力被转移了。我记得我的敌手教我如何下棋，如何玩牌，如何带走岁月，以及我如何教<i>他</i>。",
+			"requirements": {
+				"contact.retainer": 1,
+				"associate": 1
+			},
+			"effects": {
+				"grief": 1,
+				"rage": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.mortal.intro",
+			"actionId": "send",
+			"label": "安排初次会面",
+			"startdescription": "@#contact.barber|与祖尔菲亚的会面，他现在被称为理发师。#contact.delver|#contact.fivegoer|与欧索丽娜的会面，“la Scavatrice”——研习者，用我的语言来说。#contact.ghoul|#contact.huntress|与五之旅人瓦西尔的会面。#contact.smuggler|#contact.visionary|与面包师多明卡斯的会面。#contact.vivisectionist|#contact.retainer|与拉拉柴玛的会面，有时她也被称作捕兽人。<i></i>与走私犯M.乔吉奥的会面。#|与画家玛丽亚的会面。与外科医生、决斗者和活体解剖者雅宁斯伯爵的会面。“你母亲是安泰姆的入会者。少有女人如此，但她的barakah（阿拉伯语，福分）让我们看见她的光是如此伟大。起初，你父亲希望买走她的光。但是他爱上了她……而她开始认出他的本来面目。这就是为什么，当你的出生日期临近时，她却逃离了他，而他却追逐着她。”一场介绍——@",
+			"description": "@#contact.barber|祖尔菲亚热切地注视着我。“我要你到林地里去”她坚持说，“把你在双结之翼下面找到的饮料拿来。”#contact.delver|#contact.fivegoer|欧索丽娜用一个大大的热烈的拥抱来欢迎我，倾听我的烦恼。“我当然会帮忙的”她坚持道，“可是，要我穿过咸水湖是不容易的，就我的身体来说，这是不容易的。我吃了太多的海鲜。但在达里欧宫的地下室里，还有一些东西可以帮助我。这所房子闹鬼，但我想对我们来说还不算太闹鬼。”#contact.ghoul|#contact.huntress|瓦西尔热情地握着我的手，我清楚地记得，他那毫无骨感但却无法抗拒的握法。“我当然欠你的”他告诉我，“但我欠别人更多。我的曾祖母就在这个城市里，由一些非常冷漠的人看管着。如果你和我能解决这个问题，我就可以自由地和你一起去。”#contact.smuggler|#contact.visionary|多明卡斯为我提供加了香料的蜂蜜蛋糕和格瓦斯，并亲切地谈论了一个能满足“佐料”多明卡斯需要的人。他希望小小地麻烦我一下，去帮助他得到它，然后，当然，他会反过来自由地帮助我。#contact.vivisectionist|#contact.retainer|拉拉柴玛受雇于杀死仁慈盛宴者，它在亚琛的阴沟里，钻出来猎食酒鬼和士兵。法国军队当然不相信这种事，但古梅尔有个中士，他一闻到狮子匠的味道就知道他在干些什么。#|乔吉奥有个提议。在塔拉斯克城堡有许多等着去拿的财宝。当然也有“出现怪物的可能性”，但是，他指出，毕竟，没有怪物的地方，我们通常就会自己创造怪物。他开始以欧洲近代历史为参照来说明这一点，但幸运的是，此时酒已经上桌了。玛丽亚哭了起来。“上帝派你来的”她喘着气说，“我做了一件事——一件事——”然后她完全垮了。据我所知，她在自己的一幅画中发现了对轰雷之皮的狂热崇拜。他们已经发现了，现在他们要来抓她。雅宁斯伯爵起立鞠躬。“我对你的烦恼有些耳闻”他告诉我，“陪你去会很有趣。但首先，请让我邀请你参加一个稍有竞争性的社交场合。不不。我坚持邀请你。”“她宁愿结束自己的生命——也要结束你的生命——而不是让他抚养你长大。但是在安泰姆，当他们得知你的父亲是一位大地之子，他们说服她把你生下来——在圣所里，在破碎之剑的标志下。来。我带你去见她。”——现在你知道了。@",
+			"requirements": {
+				"mortal": 1,
+				"associate": -1,
+				"ally": -1
+			},
+			"aspects": {
+				"mortal.introduce": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "associate",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.barber.upgrade",
+			"actionId": "send",
+			"label": "祖尔菲亚踱着步子，敲着手指",
+			"startdescription": "“它在哪里？在哪里？？”",
+			"description": "“一堵墙有很多石头；但你不会忘记我们俩都是有血有肉的。”",
+			"requirements": {
+				"contact.barber": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Goo",
+					"required": {
+						"vault.barber.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.delver.upgrade",
+			"actionId": "send",
+			"label": "欧索丽娜已经点亮了她工作室的灯——用油，而不是电。",
+			"startdescription": "“我很感激你给我添的麻烦。”",
+			"description": "欧索丽娜耸了耸肩：“如果不是现在，那就去吧。”",
+			"requirements": {
+				"contact.delver": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Goo",
+					"required": {
+						"vault.delver.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.fivegoer.upgrade",
+			"actionId": "send",
+			"label": "瓦西尔因期待而变得柔软",
+			"startdescription": "”好吗?我们怎么样了？”",
+			"description": "“我想过去的恐怖还可以再等一会儿。”",
+			"requirements": {
+				"contact.fivegoer": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Goo",
+					"required": {
+						"vault.fivegoer.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.ghoul.upgrade",
+			"actionId": "send",
+			"label": "多明卡斯展现出和蔼耐心的微笑",
+			"startdescription": "“我的蜂蜜蛋糕还远远没有发挥出它的全部潜力。”",
+			"description": "“你知道，时间越来越短了。对我们俩都是。”",
+			"requirements": {
+				"contact.ghoul": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Goo",
+					"required": {
+						"vault.ghoul.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.huntress.upgrade",
+			"actionId": "send",
+			"label": "柴玛渴望完成她的合同",
+			"startdescription": "“我的古梅尔朋友越加焦急起来。我想他对我的能力缺乏信心。”",
+			"description": "“我们没有多少时间了。”",
+			"requirements": {
+				"contact.huntress": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Goo",
+					"required": {
+						"vault.huntress.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.smuggler.upgrade",
+			"actionId": "send",
+			"label": "乔吉奥希望这桩生意就此了结",
+			"startdescription": "好了吗？",
+			"description": "“我想情况可能会更糟。”",
+			"requirements": {
+				"contact.smuggler": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Goo",
+					"required": {
+						"vault.smuggler.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.visionary.upgrade",
+			"actionId": "send",
+			"label": "玛丽亚像水一样颤抖",
+			"startdescription": "“他们还在外面吗？”",
+			"description": "“请快点。快点。”",
+			"requirements": {
+				"contact.visionary": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": " Goo",
+					"required": {
+						"vault.visionary.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.vivisectionist.upgrade",
+			"actionId": "send",
+			"label": "雅宁斯简短地向我打招呼",
+			"startdescription": "“那么？”",
+			"description": "“我相信你很快就会发现那个时候的。”",
+			"requirements": {
+				"contact.vivisectionist": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Goo",
+					"required": {
+						"vault.vivisectionist.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.associate.upgraded",
+			"actionId": "send",
+			"label": "一个盟友",
+			"requirements": {
+				"vault.completed": 1
+			},
+			"startdescription": "我们握了握手。[你的伙伴现在是你的盟友了。当你离开这个城市时，他们会跟着你……除非你要去地图之疆的最后决战。]",
+			"description": "@#ally.barber|祖尔菲亚一边扯着指甲，一边用一种交谈的口吻说：“母亲会开洞。巫女会命令，而女巫则会融化。”#ally.delver|<i>“</i>In bocca al lupo!#ally.fivegoer|（意大利语，祝你演出成功），不是字面上的意思，我确定。”#ally.ghoul|#ally.huntress|从我们把当事人送进的里屋传来一阵黏糊糊的撞击声。瓦西尔翻了翻眼睛。“家人。你知道他们会怎样。给我半个小时跟她好好道别，她就会好起来的。”#ally.smuggler|#ally.visionary|“用四个偷来的调味料，我想我就会有一个偷来的一年。”多明卡斯亲切地说。他用胳膊肘戳了戳你。#ally.vivisectionist|#|“我期待着和你一起打猎。”“我欠你太多了。”“非常感谢。我会尽我所能报答你。不过我恐怕不能开枪。”“恐怕我们确实使你与众不同了。不过，很好。是的，很好。”——@",
+			"aspects": {
+				"recruiting": 1
+			},
+			"comments": "IMPORTANT - this mutation stops them being removed on departure. The Ally mutation won't protect them from purging, and contact.local isn't a mutation so can't be removed with an xtrigger",
+			"mutations": [
+				{
+					"filterOnAspectId": "contact.local",
+					"mutateAspectId": "contact.local",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"vault.completed": -1
+			}
+		},
+		{
+			"id": "send.ally.upgrade",
+			"actionId": "send",
+			"label": "意识到的潜力",
+			"startdescription": "我可以和我的盟友谈谈他们学到了什么。[这将使你的盟友性相提升一级]",
+			"description": "@#ally.barber|“剪啊剪。剪啊剪。”#ally.delver|#ally.fivegoer|“我开始觉得自己更像以前的自己了。”<i></i>“啊啊——#ally.ghoul|更柔软——#ally.huntress|。”#ally.smuggler|#ally.visionary|“经验是最好的香料。直到现在我才真正相信。”#ally.vivisectionist|#|“还不错，对吧？”“我累了。我想我可能会一直很累……”“我的写生簿放哪儿了？”“是的。很好。”——@",
+			"requirements": {
+				"mortal": 1,
+				"ally": 1,
+				"experience.exile.ally": 3
+			},
+			"aspects": {
+				"upgrade.exile.ally": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.ally.upgrade.hint",
+			"actionId": "send",
+			"label": "潜力？",
+			"startdescription": "我的盟友和我一起旅行有他们自己的原因。原因之一是对新体验的渴望。[当你的盟友获得三个经验时，你就可以增加他们的力量。]",
+			"requirements": {
+				"mortal": 1,
+				"ally": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.investigate.end",
+			"actionId": "send",
+			"label": "已到止境",
+			"startdescription": "你可以称这个地方为世界之疆。",
+			"requirements": {
+				"end": 1,
+				"domicile": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.investigate.description",
+			"actionId": "send",
+			"label": "向前？",
+			"description": "@#city.aachen|我收到了来自亚琛的消息。马拉喀什的一位老熟人在那里打猎，想让我帮个忙。\n#city.alexandria|在反抗英国人的起义之前，我被邀请去亚历山大港的无形塞拉比尤姆神庙。幸运的是，邀请依然有效。\n#city.algiers|我从事走私生意的朋友M.乔吉奥在阿尔及尔有人脉。他们可以悄悄把我弄进去。\n#city.amsterdam|多年来，我为阿姆斯特丹的斯特根加兄弟找到了不少好东西。他们也许会给我庇护。\n#city.avignon|一个在阿维尼翁从事走私生意的朋友M.乔吉奥给我提了个建议。\n#city.baghdad|珀西·斯泰尔斯仍在巴格达，为英国政府在戒严的伊拉克卖命。他可能还会很乐意见到我。\n#city.budapest|我听说我的老朋友莉莉把她的黑市生意搬到了布达佩斯。\n#city.candia|我离开克里特岛已经有很长一段时间了，但我又梦见了它，梦见了山楂树的香味……\n#city.cluj|自从匈牙利放弃克卢日以来，我的老朋友莉莉在克卢日的生意就受到了影响，但她的名号仍有可能为我打开一扇门。\n#city.granada|我和格拉纳达的一个画廊老板打过交道。去年她邀请我和她同居。\n#city.istanbul|我的老战友凯拉·凯末尔与伊斯坦布尔的黑社会残党仍有联系。但他的名号仍有可能为我打开一扇门。\n#city.kaunas|面包师多明卡斯干得不错：与考纳斯铁狼高层的交情。我们从来没有真正相处过，但是他欠我的，我不能太挑剔。\n#city.kiev|我听说丽姬亚中最饥渴的人在基辅。我的追兵在那里得处处小心，不过我也一样。\n#city.krakow|多年来，克拉科夫的伊兹乔克·阿什拉格一直靠我来获得更罕见的密教文献。他是个好客的人。\n#city.leningrad|那些不计后果的清算人暴徒有个死敌，那就是在俄罗斯卖命多年的“雅典人”。不过我也曾和一个叫苏斯金的人喝得酩酊大醉。希望他还记得我。\n#city.london|伦敦的奥塔维奥·伯顿说他需要我的帮助。他是个恶棍，但我们交情已久。\n#city.marrakech|一个叫纳维尔的隐士不知怎么发现了我。他的留言只写着“来马拉喀什，为了荣耀”。\n#city.meshad|在梅沙德有一位年迈的诗人，她一直是我最喜欢的客人。她一定会款待我的。\n#city.munich|慕尼黑的戈特洛布·雅宁斯伯爵长期邀请我参加他所代表的决斗者协会的一次会议。\n#city.nizhny|“雅典人”苏斯金一直在下城经营进出口业务，但在苏联统治下生意不佳。他在那里的人谅必会因我的帮助而高兴。\n#city.paris|坦特·艾德琳以前负责沼泽区。她已经走了，但她在巴黎还有人，他们会给我提供庇护的。\n#city.prague|布拉格那个自称“坦特·艾德琳”的老流氓需要我的帮助。\n#city.rostock|我的联络人雅宁斯伯爵在罗斯托克有一所房子，我能用得上。\n#city.samarkand|我曾经在撒马尔罕给一个圣战分子祭司提供过禁忌的材料。也许他还记得我。\n#city.stalingrad|被称为“食鸟者”的有罪学徒能公然违犯凡人和漫宿的规律。我听说理发师祖尔菲亚在斯大林格勒加入了他们。食鸟者可不是好人，但我一直喜欢祖尔菲亚。\n#city.strasbourg|孚日山脉的巨人有时会以人形行走在斯特拉斯堡的街道上。我以前和他们打过交道。他们和任何人一样知道如何保持低调：也许他们能帮上忙。\n#city.sverdlovsk|在斯维尔德洛夫斯克，理发师祖尔菲亚过去常常用珠宝向我购买岁月。后来她变得很奇怪，并且搬到了另一个城市。但在内战之前，她向我介绍了她的一些联系人。\n#city.tiflis|五之旅人瓦西尔很久以前在第比利斯躲避清算人。他欠我人情，尽管他可能不欢迎我的来访。\n#city.tirana|在这一切变得糟糕之前，我正与佐古总统在地拉那的手下商议关于岁月的生意。我还有她的地址。\n#city.tripoli|在的黎波里我一个熟人都没有。我一点也不记得了。但很久以前，在奥斯曼帝国时代，我在这里出生。\n#city.valletta|我的老战友凯拉·凯末尔被流放到瓦莱塔。已经过去了很久，但是我在一战中救了他的命……\n#city.venice|我在威尼斯认识一个叫欧索丽娜的女人。她并不总是一个女人。但是她在那里住了很长时间。\n#city.vienna|它曾经是白色的城市。现在他们称之为“红色维也纳”。这里有一个丽姬亚俱乐部成员，蠕虫大战留下的伤疤对那些知晓此事的人来说仍然是可见的。但如果我快死了，我想再看看那个老地方。\n#wilderness|在这个区域无法期盼任何其他的援助，公路和铁路也受到了十分密切的监视。我唯一的机会是快速通过。\n#end.bornholm|波罗的海有一个崎岖的小岛，很少有船经过。我在那儿和一个几乎叫不上名字的人一起度过了一个夏天。也许我的敌手不会去那里找我，如果他去了，那就是时候奋起反抗了。\n#end.cheko|沙皇时代我曾在泰加林狩猎，那里的深处有一个虎口形状的湖。也许我的敌手不会去那里找我，如果他去了，那就是时候奋起反抗了。\n#end.ghardaia|在沙漠深处有一个森严的村庄群。几年前柴玛给我标出了这条路线。也许我的敌手不会去那里找我，如果他去了，那就是时候奋起反抗了。\n#end.messana|在一个奇怪的小村庄上面的山上有一个隐居处，玛丽亚曾经在那里度过一个夏天。我想这是一个很好的藏身之处，于是我让她标出了一条去那里的路线。也许我的敌手不会去那里找我，如果他去了，那就是时候奋起反抗了。\n#end.morbihan|摩比汉湾有个很特别的修道院，从陆上往西走就可以到达，而不用横跨大海。也许我的敌手不会去那里找我，如果他去了，那就是时候奋起反抗了。\n#end.paro|在俄罗斯那边的高山中有一座寺院。我年轻的时候去过。也许我的敌手不会去那里找我，如果他去了，那就是时候奋起反抗了。\n#end.slettnes|在欧洲的尽头有一座灯塔，在那里我第一次触摸到了无名的具名者的外表。也许我的敌手不会去那里找我，如果他去了，那就是时候奋起反抗了。\n#|某个地方？\n@"
+		},
+		{
+			"id": "send.investigate.aachen",
+			"actionId": "send",
+			"label": "从亚琛发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.aachen": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.alexandria",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"actionId": "send",
+			"label": "从亚历山大港发送慎重的消息",
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.alexandria": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.istanbul",
+					"city.baghdad",
+					"end.messana",
+					"city.candia"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.algiers",
+			"actionId": "send",
+			"label": "从阿尔及尔发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.algiers": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.avignon",
+					"city.valletta",
+					"city.tripoli",
+					"end.ghardaia",
+					"city.marrakech"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.amsterdam",
+			"actionId": "send",
+			"label": "从阿姆斯特丹发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.amsterdam": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.aachen",
+					"city.rostock",
+					"city.london"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.avignon",
+			"actionId": "send",
+			"label": "从阿维尼翁发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.avignon": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.munich",
+					"city.venice",
+					"city.algiers",
+					"city.granada"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.baghdad",
+			"actionId": "send",
+			"label": "从巴格达发送慎重的消息",
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.baghdad": 1
+			},
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"internaldeck": {
+				"spec": [
+					"city.tiflis",
+					"city.meshad",
+					"end.messana",
+					"city.alexandria",
+					"city.istanbul"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.budapest",
+			"actionId": "send",
+			"label": "从布达佩斯发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.budapest": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.krakow",
+					"city.cluj",
+					"city.tirana",
+					"city.venice"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.candia",
+			"actionId": "send",
+			"label": "从堪迪亚-伊拉克利翁发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这将寻找可以逃去的地方。有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。并且你离有机会的可能性很远，这会多花些时间。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.candia": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.tirana",
+					"city.alexandria",
+					"end.messana",
+					"city.tripoli"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.cluj",
+			"actionId": "send",
+			"label": "从克卢日-纳波卡发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这将寻找可以逃去的地方。有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.cluj": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.kiev",
+					"city.tiflis",
+					"city.istanbul",
+					"city.budapest"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.granada",
+			"actionId": "send",
+			"label": "从格拉纳达发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.granada": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.strasbourg",
+					"city.avignon",
+					"city.marrakech",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.istanbul",
+			"actionId": "send",
+			"label": "从伊斯坦布尔发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.istanbul": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.cluj",
+					"city.baghdad",
+					"city.alexandria",
+					"city.tirana"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kaunas",
+			"actionId": "send",
+			"label": "从考纳斯发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kaunas": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.leningrad",
+					"city.krakow",
+					"city.prague",
+					"city.rostock"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kiev",
+			"actionId": "send",
+			"label": "从基辅发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kiev": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.leningrad",
+					"city.stalingrad",
+					"city.cluj",
+					"city.krakow"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.krakow",
+			"actionId": "send",
+			"label": "从克拉科夫发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.krakow": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.kaunas",
+					"city.kiev",
+					"city.budapest",
+					"city.vienna"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.leningrad",
+			"actionId": "send",
+			"label": "从列宁格勒发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.leningrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.nizhny",
+					"city.kiev",
+					"city.kaunas"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.london",
+			"actionId": "send",
+			"label": "从伦敦发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.london": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.paris",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.marrakech",
+			"actionId": "send",
+			"label": "从马拉喀什发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.marrakech": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.granada",
+					"city.algiers",
+					"end.ghardaia",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.meshad",
+			"actionId": "send",
+			"label": "从梅沙德发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。并且你离有机会的可能性很远，这会多花些时间。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.meshad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.samarkand",
+					"end.paro",
+					"end.messana",
+					"city.baghdad"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.munich",
+			"actionId": "send",
+			"label": "从慕尼黑发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.munich": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.vienna",
+					"city.avignon",
+					"city.strasbourg"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.nizhny",
+			"actionId": "send",
+			"label": "从下诺夫哥罗德发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。并且你离有机会的可能性很远，这会多花些时间。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.nizhny": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"city.sverdlovsk",
+					"city.stalingrad",
+					"city.leningrad"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.paris",
+			"actionId": "send",
+			"label": "从巴黎发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.paris": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.london",
+					"city.aachen",
+					"city.strasbourg",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.prague",
+			"actionId": "send",
+			"label": "从布拉格发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.prague": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.rostock",
+					"city.kaunas",
+					"city.vienna",
+					"city.aachen"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.rostock",
+			"actionId": "send",
+			"label": "从罗斯托克发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.rostock": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.kaunas",
+					"city.prague"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.samarkand",
+			"actionId": "send",
+			"label": "从撒马尔罕发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.samarkand": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.sverdlovsk",
+					"end.paro",
+					"city.meshad",
+					"city.tiflis"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.strasbourg",
+			"actionId": "send",
+			"label": "从斯特拉斯堡发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.strasbourg": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.paris",
+					"city.aachen",
+					"city.granada",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.stalingrad",
+			"actionId": "send",
+			"label": "从斯大林格勒发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。并且你离有机会的可能性很远，这会多花些时间。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.stalingrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.nizhny",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.kiev"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.sverdlovsk",
+			"actionId": "send",
+			"label": "从斯维尔德洛夫斯克发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。并且你离有机会的可能性很远，这会多花些时间。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.sverdlovsk": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"end.paro",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.nizhny"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tiflis",
+			"actionId": "send",
+			"label": "从第比利斯发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tiflis": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.stalingrad",
+					"city.samarkand",
+					"city.baghdad",
+					"city.cluj"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tirana",
+			"actionId": "send",
+			"label": "从地拉那发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tirana": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.budapest",
+					"city.istanbul",
+					"city.candia",
+					"city.valletta"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tripoli",
+			"actionId": "send",
+			"label": "从西的黎波里发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tripoli": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.valletta",
+					"city.candia",
+					"end.ghardaia",
+					"city.algiers"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.valletta",
+			"actionId": "send",
+			"label": "从瓦莱塔发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。并且你离有机会的可能性很远，这会多花些时间。]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.valletta": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.venice",
+					"city.tirana",
+					"city.tripoli",
+					"city.algiers"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.venice",
+			"actionId": "send",
+			"label": "从威尼斯发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.venice": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.vienna",
+					"city.budapest",
+					"city.valletta",
+					"city.avignon"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.vienna",
+			"actionId": "send",
+			"label": "从维也纳发送慎重的消息",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[这能让你找到可以逃去的地方——但是有很小的造成痕迹的风险。更糟的是，清算人可能在你之前就到那里了。]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.vienna": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.prague",
+					"city.krakow",
+					"city.venice",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.aachen.turmoil",
+			"actionId": "send",
+			"label": "从亚琛发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.aachen.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.algiers.turmoil",
+			"actionId": "send",
+			"label": "从阿尔及尔发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.algiers.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.avignon",
+					"city.valletta",
+					"city.tripoli",
+					"end.ghardaia",
+					"city.marrakech"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.baghdad.turmoil",
+			"actionId": "send",
+			"label": "从巴格达发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.baghdad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.tiflis",
+					"city.meshad",
+					"end.messana",
+					"city.alexandria",
+					"city.istanbul"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.istanbul.turmoil",
+			"actionId": "send",
+			"label": "从伊斯坦布尔发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.istanbul.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.cluj",
+					"city.baghdad",
+					"city.alexandria",
+					"city.tirana"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kiev.turmoil",
+			"actionId": "send",
+			"label": "从基辅发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kiev.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.leningrad",
+					"city.stalingrad",
+					"city.cluj",
+					"city.krakow"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.leningrad.turmoil",
+			"actionId": "send",
+			"label": "从列宁格勒发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.leningrad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.nizhny",
+					"city.kiev",
+					"city.kaunas"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.london.turmoil",
+			"actionId": "send",
+			"label": "从伦敦发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.london.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.paris",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.munich.turmoil",
+			"actionId": "send",
+			"label": "从慕尼黑发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.munich.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.vienna",
+					"city.avignon",
+					"city.strasbourg"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.nizhny.turmoil",
+			"actionId": "send",
+			"label": "从下诺夫哥罗德发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.nizhny.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.samarkand.turmoil",
+			"actionId": "send",
+			"label": "从撒马尔罕发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.samarkand.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.sverdlovsk",
+					"end.paro",
+					"city.meshad",
+					"city.tiflis"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.stalingrad.turmoil",
+			"actionId": "send",
+			"label": "从斯特拉斯堡发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.stalingrad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.nizhny",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.kiev"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.sverdlovsk.turmoil",
+			"actionId": "send",
+			"label": "从斯维尔德洛夫斯克发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.sverdlovsk.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"end.paro",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.nizhny"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tiflis.turmoil",
+			"actionId": "send",
+			"label": "从第比利斯发送匆忙的消息",
+			"startdescription": "我需要找个更安全的地方。[当城市处于这种状态时，发现联系要难很多。出现痕迹的风险很高。]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tiflis.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.stalingrad",
+					"city.samarkand",
+					"city.baghdad",
+					"city.cluj"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.wilderness",
+			"startdescription": "如果我跑，我应该往有老朋友的地方跑——或者至少有个老熟人。[野外很危险，你每次都会获得一个伤口。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"actionId": "send",
+			"label": "尝试与某处的某人联系",
+			"requirements": {
+				"domicile.wilderness": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.alexandria",
+					"city.algiers",
+					"city.amsterdam",
+					"city.avignon",
+					"city.baghdad",
+					"city.budapest",
+					"city.candia",
+					"city.cluj",
+					"city.granada",
+					"city.istanbul",
+					"city.kaunas",
+					"city.kiev",
+					"city.krakow",
+					"city.leningrad",
+					"city.london",
+					"city.marrakech",
+					"city.meshad",
+					"city.munich",
+					"city.nizhny",
+					"city.paris",
+					"city.prague",
+					"city.rostock",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.strasbourg",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.tirana",
+					"city.tripoli",
+					"city.valletta",
+					"city.venice",
+					"city.vienna",
+					"end.bornholm",
+					"end.cheko",
+					"end.ghardaia",
+					"end.messana",
+					"end.morbihan",
+					"end.paro",
+					"end.slettnes"
+				],
+				"draws": 1,
+				"defaultcard": "end.cheko",
+				"resetonexhaustion": false
+			},
+			"effects": {
+				"wound.exile": 1
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		}
+	]
+}

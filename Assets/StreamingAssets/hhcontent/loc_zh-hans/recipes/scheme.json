@@ -1,0 +1,587 @@
+{
+    "recipes": [
+        {
+            "id": "scheme_murderhunter",
+            "label": "酝酿谋杀猎人的计策",
+            "actionId": "scheme",
+            "requirements": {
+                "schememurder": 1
+            },
+            "effects": {},
+            "startdescription": "有个对手想要猎人的命。我或许能利用这一点……但这也可能引起注意。",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_murderhunter_grab",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_murderhunter_grab",
+            "label": "酝酿谋杀猎人的计策",
+            "actionId": "scheme",
+            "slots": [
+                {
+                    "id": "victim",
+                    "label": "被害者",
+                    "greedy": true,
+                    "required": {
+                        "hunter": 1
+                    }
+                }
+            ],
+            "effects": {},
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_murderhunter_success",
+                    "chance": 30
+                },
+                {
+                    "id": "scheme_murderhunter_failure",
+                    "chance": 100
+                },
+                {
+                    "id": "scheme_murderhunter_nohunterfound",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_murderhunter_success",
+            "label": "有人谋杀了猎人！",
+            "actionId": "scheme",
+            "requirements": {
+                "hunter": 1
+            },
+            "aspects": {
+                "killhunter": 1
+            },
+            "effects": {
+                "notoriety": 1
+            },
+            "startdescription": "我或许可以喘口气了——但此事最后说不定会把防剿局引上门来。",
+            "warmup": 5,
+            "craftable": false
+        },
+        {
+            "id": "scheme_murderhunter_failure",
+            "label": "有人谋杀猎人失败！",
+            "actionId": "scheme",
+            "requirements": {
+                "hunter": 1
+            },
+            "effects": {
+                "notoriety": 1
+            },
+            "startdescription": "此事最后说不定会把防剿局引上门来。",
+            "warmup": 5,
+            "craftable": false
+        },
+        {
+            "id": "scheme_murderhunter_nohunterfound",
+            "label": "谋杀猎人之计无果而终。",
+            "actionId": "scheme",
+            "effects": {},
+            "startdescription": "也许这是最好的结果。",
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "scheme_expedition_debug",
+            "label": "FORCE EXP START",
+            "actionId": "scheme",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "演员",
+                    "required": {
+                        "independent": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_grab"
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_grab",
+            "label": "有个对手正在准备去探险……",
+            "actionId": "scheme",
+            "requirements": {
+                "schemeexpedition": 1
+            },
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "目标",
+                    "greedy": true,
+                    "required": {
+                        "vault": 1
+                    }
+                }
+            ],
+            "effects": {},
+            "startdescription": "我的对手正在为飞升寻找工具与密传。",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_expedition_prep",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_prep",
+            "label": "设布圈套之机",
+            "actionId": "scheme",
+            "slots": [
+                {
+                    "id": "snare",
+                    "label": "伏击",
+                    "required": {
+                        "snare": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "vault": 1
+            },
+            "startdescription": "如果我事先设下圈套，我便能设法伏击对手，破坏他的探险，甚至伤到他本人……",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_great"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_good"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_poor"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_rubbish"
+                },
+                {
+                    "chance": 70,
+                    "id": "scheme_expedition_success"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_failure"
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_great",
+            "actionId": "scheme",
+            "requirements": {
+                "snarelevel": 4
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 90
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_good",
+            "actionId": "scheme",
+            "requirements": {
+                "snarelevel": 3
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 70
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_poor",
+            "actionId": "scheme",
+            "requirements": {
+                "snarelevel": 2
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 30
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_rubbish",
+            "actionId": "scheme",
+            "requirements": {
+                "snarelevel": 1
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 10
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_success",
+            "label": "我们的圈套奏效了！",
+            "actionId": "scheme",
+            "effects": {
+                "snare": -1
+            },
+            "startdescription": "对手落入了我们的陷阱！他会设法撤退，回去自舔伤口。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "independent",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 5,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "independent_scar",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_failure",
+            "label": "我们的圈套没有奏效了！",
+            "actionId": "scheme",
+            "startdescription": "对手避开了我们的陷阱……",
+            "mutations": [
+                {
+                    "filterOnAspectId": "independent",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "snare": -1
+            },
+            "warmup": 5,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_expedition_success",
+                    "chance": 70
+                },
+                {
+                    "id": "scheme_expedition_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_success",
+            "label": "对手把此地翻了个底朝天……",
+            "actionId": "scheme",
+            "requirements": {
+                "vault": 1
+            },
+            "effects": {
+                "vault": -1
+            },
+            "startdescription": "不论他来这儿是要找什么，他都已经得手。",
+            "warmup": 5,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultshires4.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultshires3.ransackedbyrival",
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "scheme_promotion",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_failure",
+            "label": "对手的探险失败了。",
+            "actionId": "scheme",
+            "requirements": {
+                "vault": 1
+            },
+            "effects": {},
+            "startdescription": "不论他来这儿是要找什么，他都没能得手。他已放弃了这次探索……至少现下如此。",
+            "warmup": 5,
+            "craftable": false
+        },
+        {
+            "id": "scheme_activities",
+            "label": "有个对手正在暗中活动。",
+            "actionId": "scheme",
+            "requirements": {
+                "schemeactivities": 1
+            },
+            "effects": {
+                "mystique": 1
+            },
+            "startdescription": "他仍旧潜伏着。他的目的究竟为何？[此事有极大概率会无疾而终，但偶尔也会出现某个对手偷偷增长力量的情况。你可以考虑空出一处探险地点来引蛇出洞。]",
+            "description": "对手在搞某些小破坏。防剿局可能会有所察觉。",
+            "alternativerecipes": [
+                {
+                    "id": "scheme_calm",
+                    "chance": 10
+                },
+                {
+                    "id": "scheme_promotion",
+                    "chance": 11
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "scheme_calm",
+            "label": "对手的心境缓和了。",
+            "actionId": "scheme",
+            "effects": {
+                "influenceheartc": 1
+            },
+            "description": "对手展现出周全的礼数：我收到了一封措辞谨慎文雅的信件，尽管信中所谈无足轻重……或许某一天，我们双方会有联手的机会？[对手的怨恨偶尔会减轻。]",
+            "mutations": [
+                {
+                    "filterOnAspectId": "independent",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "scheme_promotion",
+            "label": "对手的事业取得了进展。",
+            "actionId": "scheme",
+            "alternativerecipes": [
+                {
+                    "chance": 100,
+                    "id": "scheme_promotion_ascension"
+                }
+            ],
+            "effects": {
+                "mystique": 1
+            },
+            "aspects": {
+                "rival_promotion": 1
+            },
+            "description": "对手获得了更多密传、更多宝藏、更多人脉……他由此一步一步，积攒了更多实力。",
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "scheme_promotion_ascension",
+            "label": "对手奋力穿过三尖之门，获得了更高的身份。",
+            "actionId": "scheme",
+            "requirements": {
+                "exalted": 1
+            },
+            "effects": {
+                "mystique": 1
+            },
+            "startdescription": "他离目标又近了一步，在太阳居屋的体制中又升了一级。[当心：一旦你的对手飞升到第7级，获得游戏胜利的将是他而不是你。]",
+            "mutations": [
+                {
+                    "filterOnAspectId": "independent",
+                    "mutateAspectId": "rivalmarks",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "independent_scar",
+            "label": "对手落下伤疤",
+            "startdescription": "对手遭到不幸。失败给他留下了伤疤；他会记恨我。[落下三道同样伤疤的凡人必死无疑。]",
+            "actionId": "scheme",
+            "linked": [
+                {
+                    "id": "independent_givescar_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "independent_givescar_knock",
+                    "chance": 50
+                },
+                {
+                    "id": "independent_givescar_winter",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "independent_givescar_edge",
+            "actionId": "scheme",
+            "label": "对手受挫",
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower_scar_edge",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "edge",
+                    "mutationLevel": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "independent_deathscar_edge",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "independent_givescar_knock",
+            "label": "对手受挫",
+            "actionId": "scheme",
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower_scar_knock",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "knock",
+                    "mutationLevel": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "independent_deathscar_knock",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "independent_givescar_winter",
+            "actionId": "scheme",
+            "label": "对手受挫",
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower_scar_winter",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "winter",
+                    "mutationLevel": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "independent_deathscar_winter",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "independent_deathscar_edge",
+            "actionId": "scheme",
+            "label": "死亡：一次败北",
+            "requirements": {
+                "follower_scar_edge": 3
+            },
+            "description": "此人展现出了勇气与韧性。但到最后，这些都不够。[对手因落下三道<b>刃</b>伤疤而丧命。]",
+            "aspects": {
+                "killmortal": 1
+            }
+        },
+        {
+            "id": "independent_deathscar_knock",
+            "actionId": "scheme",
+            "label": "死亡：一处开口",
+            "requirements": {
+                "follower_scar_knock": 3
+            },
+            "description": "人为了有效地运转，须得保持其内部之物存于内部，并阻止外部之物进入内部。当人的内部之物流出到外部到一定程度时，人就不再能持续运转了。[对手因落下三道<b>启</b>伤疤而丧命。]",
+            "aspects": {
+                "killmortal": 1
+            }
+        },
+        {
+            "id": "independent_deathscar_winter",
+            "actionId": "scheme",
+            "label": "死亡：一个结尾",
+            "requirements": {
+                "follower_scar_winter": 3
+            },
+            "description": "无声雪落。夕阳如光的污迹。[对手因落下三道<b>冬</b>伤疤而丧命。]",
+            "aspects": {
+                "killmortal": 1
+            }
+        }
+    ]
+}

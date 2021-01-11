@@ -1,0 +1,1351 @@
+{
+	"recipes": [
+		{
+			"id": "scout.first",
+			"actionId": "scout",
+			"label": "勘察",
+			"startdescription": "外面是一片寒冷的旧世界，但我知道一些窍门。",
+			"effects": {
+				"fragmentedge.exile": 1
+			},
+			"alt": [
+				{
+					"id": "relinquish.first",
+					"additional": true
+				}
+			],
+			"warmup": 5,
+			"comments": "opened by initial travel recipe"
+		},
+		{
+			"id": "scout.turmoil",
+			"actionId": "scout",
+			"label": "混乱的城市",
+			"startdescription": "我应该离开——而且尽快。",
+			"requirements": {
+				"turmoil": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "scout.aachen",
+			"actionId": "scout",
+			"label": "勘察亚琛",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.aachen": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"loc.shrine.colonel.aachen",
+					"op.connection.radicals",
+					"op.weapon.a",
+					"op.weapon.b",
+					"op.night",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.alexandria",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"actionId": "scout",
+			"label": "勘察亚历山大港",
+			"requirements": {
+				"domicile.alexandria": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern1",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.weapon.a",
+					"op.weapon.d",
+					"loc.shrine.lionsmith.alexandria",
+					"op.heat",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"op.sea",
+					"op.sea",
+					"op.night",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.algiers",
+			"actionId": "scout",
+			"label": "勘察阿尔及尔",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.algiers": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.weapon.a",
+					"op.weapon.d",
+					"loc.shrine.lionsmith.algiers",
+					"op.heat",
+					"op.heights",
+					"op.cats",
+					"op.sea",
+					"op.sea",
+					"op.connection.radicals",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.amsterdam",
+			"actionId": "scout",
+			"label": "勘察阿姆斯特丹",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.amsterdam": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.morgen",
+					"op.sea",
+					"op.sea",
+					"op.weapon.b",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.avignon",
+			"actionId": "scout",
+			"label": "勘察阿维尼翁",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.avignon": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.grail",
+					"op.rarity.heart",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.baghdad",
+			"actionId": "scout",
+			"label": "勘察巴格达",
+			"requirements": {
+				"domicile.baghdad": 1
+			},
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.heat",
+					"op.faith",
+					"op.connection.holy",
+					"op.connection.ruler",
+					"op.connection.radicals",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.budapest",
+			"actionId": "scout",
+			"label": "勘察布达佩斯",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.budapest": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.grail",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.medusa",
+					"op.connection.underworld",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.candia",
+			"actionId": "scout",
+			"label": "勘察坎迪亚-伊拉克利翁",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.candia": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.heart",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"loc.shrine.colonel.candia",
+					"op.heat",
+					"op.heights",
+					"op.horned",
+					"op.sea",
+					"op.sea",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.cluj",
+			"actionId": "scout",
+			"label": "勘察克卢日-纳波卡",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.cluj": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.weapon.b",
+					"op.rarity.winter",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.heights",
+					"op.connection.ruler",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.granada",
+			"actionId": "scout",
+			"label": "勘察格拉纳达",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.granada": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.heart",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.heat",
+					"op.heights",
+					"op.cats",
+					"op.flowermaker",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.istanbul",
+			"actionId": "scout",
+			"label": "勘察伊斯坦布尔",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.istanbul": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern1",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.heat",
+					"op.heights",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"op.sea",
+					"op.sea",
+					"op.connection.radicals",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.kaunas",
+			"actionId": "scout",
+			"label": "勘察考纳斯",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.kaunas": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.cold",
+					"op.faith",
+					"op.connection.holy",
+					"op.wolf",
+					"op.connection.ruler",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.kiev",
+			"actionId": "scout",
+			"label": "勘察基辅",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.kiev": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.knock",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.connection.radicals",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.marinette",
+					"op.heights",
+					"op.faith",
+					"op.connection.holy",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.krakow",
+			"actionId": "scout",
+			"label": "勘察克拉科夫",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.krakow": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern2",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.heights",
+					"op.faith",
+					"op.connection.holy",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.leningrad",
+			"actionId": "scout",
+			"label": "勘察列宁格勒",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.leningrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.weapon.b",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.cold",
+					"loc.shrine.colonel.leningrad",
+					"op.connection.radicals",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.london",
+			"actionId": "scout",
+			"label": "勘察伦敦",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.london": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern2",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.sulochana",
+					"op.sea",
+					"op.sea",
+					"op.connection.radicals",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.marrakech",
+			"actionId": "scout",
+			"label": "勘察马拉喀什",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.marrakech": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern3",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.echidna",
+					"op.heat",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"loc.shrine.lionsmith.marrakech",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.meshad",
+			"actionId": "scout",
+			"label": "勘察梅沙德",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.meshad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"loc.shrine.lionsmith.meshad",
+					"op.heat",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.munich",
+			"actionId": "scout",
+			"label": "勘察慕尼黑",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.munich": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.connection.radicals",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"loc.shrine.colonel.munich",
+					"op.horned",
+					"op.weapon.b",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.nizhny",
+			"actionId": "scout",
+			"label": "勘察下诺夫哥罗德",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.nizhny": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.connection.radicals",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.cold",
+					"loc.shrine.colonel.nizhny",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.paris",
+			"actionId": "scout",
+			"label": "勘察巴黎",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.paris": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.weapon.b",
+					"op.rarity.grail",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.heights",
+					"op.flowermaker",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.prague",
+			"actionId": "scout",
+			"label": "勘察布拉格",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.prague": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.knock",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.cold",
+					"op.connection.ruler",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.rostock",
+			"actionId": "scout",
+			"label": "勘察罗斯托克",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.rostock": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.weapon.b",
+					"op.rarity.moth",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.cold",
+					"op.sea",
+					"op.sea",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.samarkand",
+			"actionId": "scout",
+			"label": "勘察撒马尔罕",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.samarkand": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern1",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.connection.radicals",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"loc.shrine.lionsmith.samarkand",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.stalingrad",
+			"actionId": "scout",
+			"label": "勘察斯大林格勒",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.stalingrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.moth",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"loc.shrine.colonel.stalingrad",
+					"op.cold",
+					"op.wolf",
+					"op.connection.radicals",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.strasbourg",
+			"actionId": "scout",
+			"label": "勘察斯特拉斯堡",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.strasbourg": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.weapon.b",
+					"op.rarity.knock",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.horned",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.sverdlovsk",
+			"actionId": "scout",
+			"label": "勘察斯维尔德洛夫斯克",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.sverdlovsk": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.heart",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.cold",
+					"op.connection.radicals",
+					"op.night",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.tiflis",
+			"actionId": "scout",
+			"label": "勘察第比利斯",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.tiflis": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern2",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.connection.radicals",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.heights",
+					"op.wolf",
+					"op.weapon.b",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.tirana",
+			"actionId": "scout",
+			"label": "勘察地拉那",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.tirana": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.flowermaker",
+					"op.connection.ruler",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.tripoli",
+			"actionId": "scout",
+			"label": "勘察西的黎波里",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.tripoli": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.lantern3",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.heat",
+					"op.cats",
+					"op.sea",
+					"op.sea",
+					"op.sunset",
+					"op.dawn",
+					"op.weapon.a",
+					"op.weapon.d"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.valletta",
+			"actionId": "scout",
+			"label": "勘察瓦莱塔",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.valletta": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.forge",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.import",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"loc.shrine.colonel.valletta",
+					"op.sea",
+					"op.sea",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.venice",
+			"actionId": "scout",
+			"label": "勘察威尼斯",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.venice": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.curio.knock",
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"loc.shrine.lionsmith.venice",
+					"op.faith",
+					"op.connection.holy",
+					"op.cats",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.vienna",
+			"actionId": "scout",
+			"label": "勘察维也纳",
+			"startdescription": "走遍城市，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"domicile.vienna": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.connection.official",
+					"op.connection.underworld",
+					"op.weapon.b",
+					"op.rarity.forge",
+					"op.licence.medical",
+					"op.office",
+					"op.warehouse",
+					"op.townhouse",
+					"op.villa",
+					"op.kleidouchos",
+					"op.dawn",
+					"op.weapon.a"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.end.foe.defeated",
+			"actionId": "scout",
+			"label": "休息和等待",
+			"startdescription": "@#domicile.bornholm| #domicile.cheko|#domicile.ghardaia|每一天，日出都变得更早。风渐渐不再猛烈。春天快到了。#domicile.messana|#domicile.morbihan|高处沙漠半震半静；太阳缓慢爬动。当地人仍然和我保持着礼仪性的距离，但现在当我经过他们时，他们会点头致意。#domicile.paro|#domicile.slettnes|阴影一天天地蔓延。现在，村民们有时会过来给我留下小礼物，向我敬礼。兄弟们已收拾好战斗的残局，允许我在阳光斜照的长厅里和他们一起进餐。每天早晨，我爬上台阶，跨过摇摇欲坠的桥前去观看日出。当我走过时，僧侣们朝我投来微笑。灰色的海水在每个早晨都冲击着岩石，在每个夜晚都向我咆哮。当我睡不着的时候，我会去聆听它们。@",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"domicile": 1,
+				"end": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": 1
+			},
+			"effects": {
+				"obscurity": 3
+			}
+		},
+		{
+			"id": "scout.bornholm",
+			"actionId": "scout",
+			"label": "勘察阳光群岛",
+			"startdescription": "走遍岛屿，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"domicile.bornholm": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.cold",
+					"op.flowermaker",
+					"op.sea",
+					"obscurity"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.slettnes",
+			"actionId": "scout",
+			"label": "勘察雾火点",
+			"startdescription": "徘徊于海岸，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"domicile.slettnes": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.cold",
+					"op.wolf",
+					"op.sea",
+					"obscurity",
+					"op.sunset",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.cheko",
+			"actionId": "scout",
+			"label": "勘察伤月湖 ",
+			"startdescription": "漫步于林地，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"domicile.cheko": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.cold",
+					"op.cats",
+					"op.wolf",
+					"obscurity",
+					"op.night",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.paro",
+			"actionId": "scout",
+			"label": "勘察虎巢",
+			"startdescription": "踏遍高山与寺院，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 60,
+			"craftable": true,
+			"requirements": {
+				"domicile.paro": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.cold",
+					"op.heights",
+					"op.faith",
+					"op.cats",
+					"obscurity",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.messana",
+			"actionId": "scout",
+			"label": "勘察大镰的归隐处",
+			"startdescription": "漫步于山间，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 60,
+			"craftable": true,
+			"requirements": {
+				"domicile.messana": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.heat",
+					"op.heights",
+					"op.horned",
+					"obscurity",
+					"op.sunset",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.ghardaia",
+			"actionId": "scout",
+			"label": "勘察五城",
+			"startdescription": "漫步于村庄和高原，寻找机会[产生痕迹的可能性很小，但存在。]",
+			"warmup": 60,
+			"craftable": true,
+			"requirements": {
+				"domicile.ghardaia": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.heat",
+					"op.cats",
+					"op.flowermaker",
+					"obscurity",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.morbihan",
+			"actionId": "scout",
+			"label": "勘察船长的修道院",
+			"startdescription": "漫步于岛屿，寻找机会。[产生痕迹的可能性很小，但存在。]",
+			"warmup": 60,
+			"craftable": true,
+			"requirements": {
+				"domicile.morbihan": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.faith",
+					"op.horned",
+					"op.sea",
+					"obscurity",
+					"op.night",
+					"op.dawn"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		},
+		{
+			"id": "scout.wilderness",
+			"actionId": "scout",
+			"label": "勘察",
+			"startdescription": "我在何处？",
+			"description": "@#op.cold|在雪中挣扎之处。#op.heat|#op.sea|风干燥热之处。#|黑暗深海之处。谁能知道？@",
+			"warmup": 60,
+			"craftable": true,
+			"requirements": {
+				"domicile": 1,
+				"wilderness": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.cold",
+					"op.heat",
+					"op.sea"
+				],
+				"draws": 1,
+				"resetonexhaustion": true
+			}
+		}
+	]
+}

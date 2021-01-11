@@ -1,0 +1,3102 @@
+{
+    "recipes": [
+        {
+            "id": "talktofollower_attemptheal",
+            "label": "尝试治疗追随者",
+            "actionId": "talk",
+            "startdescription": "出于同情，还是私利？",
+            "description": "我不能或不愿提供医疗援助。",
+            "requirements": {
+                "follower_wound": 1,
+                "mortal": 1,
+                "society": -1
+            },
+            "slots": [
+                {
+                    "id": "Healing",
+                    "label": "治疗",
+                    "description": "用资金购买药物。",
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "talktofollower_heal",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "talktofollower_heal",
+            "label": "完成对追随者的治疗",
+            "startdescription": "也许暂时能保此人一命。但人类身体的承受能力是有限度的。",
+            "actionId": "talk",
+            "requirements": {
+                "funds": 1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower_wound",
+                    "mutationLevel": 0,
+                    "additive": false
+                },
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower",
+                    "mutationLevel": 0,
+                    "additive": false
+                }
+            ],
+            "effects": {
+                "funds": -1
+            },
+            "linked": [
+                {
+                    "id": "givescar_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "givescar_knock",
+                    "chance": 50
+                },
+                {
+                    "id": "givescar_winter",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "givescar_edge",
+            "actionId": "talk",
+            "label": "习学教训",
+            "description": "伤口痊愈，伤疤留存。但每道伤疤，如学者舒加曾经眼见的一样，都是我们学到的教训。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_scar_edge",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "edge",
+                    "mutationLevel": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "deathscar_edge",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "givescar_knock",
+            "label": "疼痛之门",
+            "actionId": "talk",
+            "description": "伤口——尽可能地——痊愈了。一扇痛苦与可能性之门留存下来。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_scar_knock",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "knock",
+                    "mutationLevel": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "deathscar_knock",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "givescar_winter",
+            "actionId": "talk",
+            "label": "结尾的开端",
+            "description": "伤口痊愈了，但此人曾和死亡擦肩而过。寂静如雪一般触碰了他。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_scar_winter",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "winter",
+                    "mutationLevel": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "deathscar_winter",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deathscar_edge",
+            "actionId": "talk",
+            "label": "死亡：一次败北",
+            "requirements": {
+                "follower_scar_edge": 3
+            },
+            "description": "此人展现出了勇气与韧性。但到最后，这些都不够。[你的追随者因落下三道<b>刃</b>伤疤而丧命。]",
+            "aspects": {
+                "killmortal": 1
+            }
+        },
+        {
+            "id": "deathscar_knock",
+            "actionId": "talk",
+            "label": "死亡：一处开口",
+            "requirements": {
+                "follower_scar_knock": 3
+            },
+            "description": "人为了有效地运转，须得保持其内部之物存于内部，并阻止外部之物进入内部。当人的内部之物流出到外部到一定程度时，人就不再能持续运转了。[你的追随者因落下三道<b>启</b>伤疤而丧命。]",
+            "aspects": {
+                "killmortal": 1
+            }
+        },
+        {
+            "id": "deathscar_winter",
+            "actionId": "talk",
+            "label": "死亡：一个结尾",
+            "requirements": {
+                "follower_scar_winter": 3
+            },
+            "description": "年景向西转向，朝冬而去。此人选择阖上双眼。[你的追随者因落下三道<b>冬</b>伤疤而丧命。]",
+            "aspects": {
+                "killmortal": 1
+            }
+        },
+        {
+            "id": "talktofollower",
+            "label": "与追随者讨论教团事务",
+            "actionId": "talk",
+            "requirements": {
+                "society": -1,
+                "follower": 1,
+                "summoned": -1
+            },
+            "slots": [
+                {
+                    "id": "Subject",
+                    "label": "话题",
+                    "description": "本教事务；目标；或者另一个话题。",
+                    "required": {
+                        "society": 1,
+                        "evidencelevel": 1,
+                        "hunter": 1,
+                        "independent": 1,
+                        "tool": 1,
+                        "ingredient": 1,
+                        "annoyance": 1,
+                        "location": 1
+                    }
+                }
+            ],
+            "comments": "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+            "alternativerecipes": [
+                {
+                    "id": "talktohireling_rehire",
+                    "chance": 100
+                },
+                {
+                    "id": "talktodevotee_refire",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_givetool_router",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_cantgivetool",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationcabaret_lustsensation",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationcabaret_lustchange",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationstreetsstrange_lustenlightenment",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationauctionhouse_lustpower",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationcabaret_notinterested",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationstreetsstrange_notinterested",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationauctionhouse_notinterested",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_repairtoollanternbcracked",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_repairtoollanterndcracked",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_repairtoollanternfcracked",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction.repair.greatwork.sabotaged"
+                },
+                {
+                    "id": "A_follower_settrap_independent",
+                    "chance": 100
+                },
+                {
+                    "id": "A_follower_settrap_vault",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_murderhighwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_craftworkhighforge",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_seducehighgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_burglehighknock",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_charmhighheart",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_auguryhighlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_hoodwinkhighmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_abducthighedge",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_murdermidwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_craftworkmidforge",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_seducemidgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_burglemidknock",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_charmmidheart",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_augurymidlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_hoodwinkmidmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_abductmidedge",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_murderlowwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_craftworklowforge",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_seducelowgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_burglelowknock",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_charmlowheart",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_augurylowlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_hoodwinklowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_abductlowedge",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattackhighedge",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattackmidedge",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattacklowedge",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattackhighwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattackmidwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattacklowwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattacknoedge",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceseducehighgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceattackhighedge",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceseducemidgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceattackmidedge",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyancederangemidmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceseducelowgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceattacklowedge",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyancederangelowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceattacknoedge",
+                    "chance": 100
+                },
+                {
+                    "id": "evidencedestroymidmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "evidencedestroylowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "evidencedestroynomoth",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "去烟雾弥漫的会议室进行重要谈话。我需要我的追随者做什么呢？[放入教徒，派其办理教团事务、跟踪敌人、或再次起事。]",
+            "description": "无话可谈。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "talktohireling_rehire",
+            "actionId": "talk",
+            "label": "再付这名雇工一笔酬金。",
+            "requirements": {
+                "hireling": 1,
+                "funds": 1
+            },
+            "startdescription": "我可以花钱延长这名雇工的工期。",
+            "description": "“行啊。价钱和之前一样。”",
+            "aspects": {
+                "hiring": 1
+            },
+            "effects": {
+                "funds": -1
+            },
+            "craftable": true,
+            "warmup": 10
+        },
+        {
+            "id": "talktodevotee_refire",
+            "actionId": "talk",
+            "label": "重燃这名义徒的信仰",
+            "requirements": {
+                "devotee": 1,
+                "fervour": 1
+            },
+            "startdescription": "如果我义徒的信仰在动摇，我可以用<b>热忱</b>再度点燃他的热情。",
+            "description": "“你这么快便忘记了你做的那些梦？”",
+            "effects": {
+                "refiring": 1
+            },
+            "craftable": true,
+            "warmup": 10
+        },
+        {
+            "id": "A_talktofollower_cantgivetool",
+            "label": "不明智，还是不允许？",
+            "actionId": "talk",
+            "requirements": {
+                "follower": 1,
+                "tool": 1,
+                "summoned": -1,
+                "follower_honoured": 1
+            },
+            "startdescription": "我已经给这名追随者送过礼了。[一名追随者只能收一份礼。]"
+        },
+        {
+            "id": "A_talktofollower_givetool_router",
+            "label": "赠予追随者一件工具",
+            "actionId": "talk",
+            "requirements": {
+                "follower": 1,
+                "tool": 1,
+                "summoned": -1,
+                "follower_honoured": -1,
+                "greatwork": -1,
+                "greatwork.sabotaged": -1
+            },
+            "startdescription": "力量将从我手传到他手。[可为追随者增加相应的性相，但你将再也不能取回该工具，也不能赠与该人第二件工具。礼物会消减<b>怨恨</b>。]",
+            "description": ".",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_edgeb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_edged"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_edgef"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_forgeb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_forged"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_forgef"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_grailmoth"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_grailb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_graild"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_grailf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_heartb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_heartd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_heartf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_knockb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_knockd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_knockf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_lanternb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_lanternd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_lanternf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_mothb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_mothd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_mothf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_secrethistoriesb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_secrethistoriesd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_winterb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_winterd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_winterf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_other"
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_edgeb",
+            "label": "刃之薄礼",
+            "actionId": "talk",
+            "description": "用干虎筋穿起，挂在颈上。",
+            "requirements": {
+                "tooledgeb": 1
+            },
+            "effects": {
+                "tooledgeb": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "edge",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 1,
+                    "additive": false
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_edged",
+            "label": "刃之厚礼",
+            "actionId": "talk",
+            "description": "置于手边，但要包裹起来，免得其见血兴奋。",
+            "requirements": {
+                "tooledged": 1
+            },
+            "effects": {
+                "tooledged": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "edge",
+                    "mutationLevel": 2,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_edgef",
+            "label": "刃之大礼",
+            "actionId": "talk",
+            "description": "埋在一个它不能煽动叛乱的地方。",
+            "requirements": {
+                "tooledgef": 1
+            },
+            "effects": {
+                "tooledgef": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "edge",
+                    "mutationLevel": 3,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_forgeb",
+            "label": "铸之薄礼",
+            "actionId": "talk",
+            "description": "保管方式：用精钢链穿起，挂在颈上。",
+            "requirements": {
+                "toolforgeb": 1
+            },
+            "effects": {
+                "toolforgeb": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "forge",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_forged",
+            "label": "铸之厚礼",
+            "actionId": "talk",
+            "description": "保管方式：用铁环牢牢固定在肉上。",
+            "requirements": {
+                "toolforged": 1
+            },
+            "effects": {
+                "toolforged": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "forge",
+                    "mutationLevel": 2,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_forgef",
+            "label": "铸之大礼",
+            "actionId": "talk",
+            "description": "保管方式：置于私家神龛灯中。",
+            "requirements": {
+                "toolforgef": 1
+            },
+            "effects": {
+                "toolforgef": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "forge",
+                    "mutationLevel": 3,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_grailmoth",
+            "label": "杯与蛾之薄礼",
+            "actionId": "talk",
+            "description": "保管方式：低于颈部，高于腰部，置于胸腔正当中。",
+            "requirements": {
+                "toolgrailmoth": 1
+            },
+            "effects": {
+                "toolgrailmoth": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "grail",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "moth",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_grailb",
+            "label": "杯之薄礼",
+            "actionId": "talk",
+            "description": "保管方式：绝不可在日光下穿戴，唯有十分小心才能在月光下穿戴。",
+            "requirements": {
+                "toolgrailb": 1
+            },
+            "effects": {
+                "toolgrailb": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "grail",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_graild",
+            "label": "杯之厚礼",
+            "actionId": "talk",
+            "description": "保管方式：我的仆从会把自己的头发编进这只环，供下一个所有者焚烧。",
+            "requirements": {
+                "toolgraild": 1
+            },
+            "effects": {
+                "toolgraild": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "grail",
+                    "mutationLevel": 2,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_grailf",
+            "label": "杯之大礼",
+            "actionId": "talk",
+            "description": "保管方式：置于酒窖，更稀有的葡萄酒旁。",
+            "requirements": {
+                "toolgrailf": 1
+            },
+            "effects": {
+                "toolgrailf": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "grail",
+                    "mutationLevel": 3,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_heartb",
+            "label": "心之薄礼",
+            "actionId": "talk",
+            "description": "携带方式：置于襁褓中随身背负，如同对待乖巧的婴儿。",
+            "requirements": {
+                "toolheartb": 1
+            },
+            "effects": {
+                "toolheartb": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "heart",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_heartd",
+            "label": "心之厚礼",
+            "actionId": "talk",
+            "description": "保管方式：紧紧裹住，以防其不时震颤。",
+            "requirements": {
+                "toolheartd": 1
+            },
+            "effects": {
+                "toolheartd": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "heart",
+                    "mutationLevel": 2,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_heartf",
+            "label": "心之大礼",
+            "actionId": "talk",
+            "description": "保管方式：置于壁炉上方，或门槛前方。",
+            "requirements": {
+                "toolheartf": 1
+            },
+            "effects": {
+                "toolheartf": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "heart",
+                    "mutationLevel": 3,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_knockb",
+            "label": "启之薄礼",
+            "actionId": "talk",
+            "description": "保管方式：用干蛇肠穿起，挂在颈上。",
+            "requirements": {
+                "toolknockb": 1
+            },
+            "effects": {
+                "toolknockb": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "knock",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_knockd",
+            "label": "启之厚礼",
+            "actionId": "talk",
+            "description": "保管方式：置于不打开的门上。",
+            "requirements": {
+                "toolknockd": 1
+            },
+            "effects": {
+                "toolknockd": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "knock",
+                    "mutationLevel": 2,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_knockf",
+            "label": "启之大礼",
+            "actionId": "talk",
+            "description": "无法锁在某处。应保管于手中或舌下。",
+            "requirements": {
+                "toolknockf": 1
+            },
+            "effects": {
+                "toolknockf": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "knock",
+                    "mutationLevel": 3,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_lanternb",
+            "label": "灯之薄礼",
+            "actionId": "talk",
+            "description": "保管方式：用金缠丝穿起，挂在颈上。",
+            "requirements": {
+                "toollanternb": 1
+            },
+            "effects": {
+                "toollanternb": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "lantern",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_lanternd",
+            "label": "灯之厚礼",
+            "actionId": "talk",
+            "description": "不管保管在哪，都可见之于瞳孔中细碎的反照。",
+            "requirements": {
+                "toollanternd": 1
+            },
+            "effects": {
+                "toollanternd": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "lantern",
+                    "mutationLevel": 2,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_lanternf",
+            "label": "灯之大礼",
+            "actionId": "talk",
+            "description": "保管方式：置于从未容许光线进入过的无窗房间。",
+            "requirements": {
+                "toollanternf": 1
+            },
+            "effects": {
+                "toollanternf": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "lantern",
+                    "mutationLevel": 3,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_mothb",
+            "label": "蛾之薄礼",
+            "actionId": "talk",
+            "description": "保管方式：置于乱发中，于绷带中，于盒子中，于我们下定决心才会造访的地方。",
+            "requirements": {
+                "toolmothb": 1
+            },
+            "effects": {
+                "toolmothb": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "moth",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_mothd",
+            "label": "蛾之厚礼",
+            "actionId": "talk",
+            "description": "保管方式：置于人体模型的空白脸庞上，永远面对墙。",
+            "requirements": {
+                "toolmothd": 1
+            },
+            "effects": {
+                "toolmothd": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "moth",
+                    "mutationLevel": 2,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_mothf",
+            "label": "蛾之大礼",
+            "actionId": "talk",
+            "description": "保管方式：以铜碗盛水，拌入三滴血和三缕发，每周更换；再加一根铁针，可令此物永远指向北方。",
+            "requirements": {
+                "toolmothf": 1
+            },
+            "effects": {
+                "toolmothf": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "moth",
+                    "mutationLevel": 3,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_secrethistoriesb",
+            "label": "纪念秘史之薄礼",
+            "actionId": "talk",
+            "description": "有时，一件物品可以同时保管于多个地点。",
+            "requirements": {
+                "toolsecrethistoriesb": 1
+            },
+            "effects": {
+                "toolsecrethistoriesb": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "secrethistories",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_secrethistoriesd",
+            "label": "纪念秘史的厚礼",
+            "actionId": "talk",
+            "description": "保管方式：置于两面镜子之间，不熄灭的光下。",
+            "requirements": {
+                "toolsecrethistoriesd": 1
+            },
+            "effects": {
+                "toolsecrethistoriesd": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "secrethistories",
+                    "mutationLevel": 2,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_winterb",
+            "label": "冬之薄礼",
+            "actionId": "talk",
+            "description": "保管于寂静处。",
+            "requirements": {
+                "toolwinterb": 1
+            },
+            "effects": {
+                "toolwinterb": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "winter",
+                    "mutationLevel": 1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_winterd",
+            "label": "冬之厚礼",
+            "actionId": "talk",
+            "description": "保管于空荡处。",
+            "requirements": {
+                "toolwinterd": 1
+            },
+            "effects": {
+                "toolwinterd": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "winter",
+                    "mutationLevel": 2,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_winterf",
+            "label": "冬之大礼",
+            "actionId": "talk",
+            "description": "保管于寂静且空荡处。",
+            "requirements": {
+                "toolwinterf": 1
+            },
+            "effects": {
+                "toolwinterf": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "winter",
+                    "mutationLevel": 3,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": -1,
+                    "additive": true
+                },
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "follower_honoured",
+                    "mutationLevel": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_other",
+            "label": "并非所有物件都适合送礼",
+            "actionId": "talk",
+            "description": "有些东西不能送给他人；有些东西没人会接受。"
+        },
+        {
+            "id": "A_talktofollower_locationcabaret_lustsensation",
+            "label": "邀请此人至蜕衣俱乐部共度一晚",
+            "actionId": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "follower_lustsensation": 1,
+                "locationcabaret": 1
+            },
+            "startdescription": "\"@#uqrose|萝丝咧嘴笑了。“谢谢你。我特别喜欢这个俱乐部。以前我哥哥经常带我去。”\r\n#uqsaliba|萨利巴打量着我，从脚趾到头顶。他把手指弯曲到掌心中，握成拳，然后放开。“好”，他同意道。\r\n#uqvictor|维克多挤挤眼。“好啊，一起。以前我妹妹喜欢去这个俱乐部。我也在找机会回去看看。”\r\n#uqviolet|维奥莱特先是轻笑，轻笑变成愉悦的大笑，笑到咳嗽才收住。待她缓过气，她用一根手指抬起我的下颚，直直地看进我的双眼。“哦，好啊”，她说道。\r\n#uqrenira|芮妮拉一言不发。她只是伸了个赏心悦目的懒腰，然后便起身从房间阔步走出。但走时她回头给了我长长的一瞥。@\"",
+            "description": "若我有意开始一段露水情缘，那么此处便是绝佳场所。只要我和同行之人具有相同的感性。[要想与该角色开始一段私情，请向其表明你们最深的欲望是一致的。]",
+            "linked": [
+                {
+                    "id": "L_talk_roseopportunity",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_talktofollower_locationcabaret_lustchange",
+            "label": "邀请此人至蜕衣俱乐部共度一晚",
+            "actionId": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "follower_lustchange": 1,
+                "locationcabaret": 1
+            },
+            "startdescription": "\"@#uqporter|波特弓着背，口里嚼着一条甘草根。“行”，他说道。\r\n#uqysabet|伊莎贝特歪头想了想。“我会去的吧”，她说。她犹豫了如蝙蝠拍翅的一瞬。“应该会很精彩的”，她补充道。\r\n#uqclovette|克罗薇特拍起手来。“我还以为你永远也不会提呢！”\r\n#uqdorothy|多萝西果决地点头，点了两次，三次。“是时候了”，她柔声说道。\r\n#uqsylvia|西尔维娅打了个呵欠。她拎起眼罩边搔了搔底下的空洞。“棒极了”，她拖长语调说道。\r\n#uqleo|里奥忽地埋下头去。他抬眼向我一瞥，然后又看着地面。“我很乐意”，他语气非常正式，对着地面说道。@\"",
+            "description": "随着舞台上表演的进行，我同伴的呼吸变得急促；主要不是因为舞者衣不遮体，而是为台上显现的某些变形。[要想与该角色开始一段私情，请向其表明你们最深的欲望是一致的。]",
+            "linked": [
+                {
+                    "id": "L_talk_roseopportunity",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_talktofollower_locationstreetsstrange_lustenlightenment",
+            "label": "邀请此人去奇异的街巷散步",
+            "actionId": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "follower_lustenlightenment": 1,
+                "locationstreetsstrange": 1
+            },
+            "startdescription": "\"@#uqauclair|奥克莱尔扬起脸，把她的嘴调整成欢快的，明白的微笑。“我乐意”，她说道。\r\n#uqcat|卡特端起她的茶杯，喝干，然后倾斜茶杯，仔细端详剩下的茶渣。“为什么不”，她说，“为什么不呢。”\r\n#uqclifton|克利夫顿打了个嗝，擦擦嘴。“行啊”，他赞同道。\r\n#uqenid|伊妮德抬头直视我，双眼发出光芒。“好”，她说道。\r\n#uqneville|内维尔咽了咽口水。“真的吗？谢谢你。我是说，嗯，当然！”\r\n#uqslee|有那么一刻，思雷看上去惊恐地仿佛我提出了手术干预。然后他真诚地点了点头。“我想知道后面会发生什么”，他说道。@\"",
+            "description": "地撒银光，晚风凉爽；夜晚的寂静引来言语，如暗色丝绒引来手指抚弄。[要想与该角色开始一段私情，请向其表明你们最深的欲望是一致的。]",
+            "linked": [
+                {
+                    "id": "L_talk_roseopportunity",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_talktofollower_locationauctionhouse_lustpower",
+            "label": "邀请此人至奥里弗拉姆共度一晚",
+            "actionId": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "follower_lustpower": 1,
+                "locationauctionhouse": 1
+            },
+            "startdescription": "\"@#uqtristan|崔斯坦用力地点了点头，没有说话。\r\n#uqvalciane|万查妮轻微地点了点头，但她的双眼放光如炉门打开时炉内的煤炭。\r\n#uqelridge|埃尔里奇将刀子“咔哒”一声收折起来，把注意力全副集中给我。“好，拜托了。”，他说道。\r\n#uqlaidlaw|莱德劳露出灿烂的笑容道：“听起来很妙啊！”@\"",
+            "description": "有人更爱月下漫步。有人更爱轻缓的音乐。但也有人喜欢珠光宝气，名流相伴，还有权力的轻声运转。[要想与该角色开始一段私情，请向其表明你们最深的欲望是一致的。]",
+            "linked": [
+                {
+                    "id": "L_talk_roseopportunity",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_talktofollower_locationcabaret_notinterested",
+            "label": "邀请此人至蜕衣俱乐部共度一晚",
+            "actionId": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "locationcabaret": 1
+            },
+            "startdescription": "“我……不太想去那个地方。”",
+            "description": "[你的追随者对此处并无特别的兴趣。]"
+        },
+        {
+            "id": "A_talktofollower_locationauctionhouse_notinterested",
+            "label": "邀请此人至奥里弗拉姆共度一晚",
+            "actionId": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "locationauctionhouse": 1
+            },
+            "startdescription": "“我……不太想去那个地方。”",
+            "description": "[你的追随者对此处并无特别的兴趣。]"
+        },
+        {
+            "id": "A_talktofollower_locationstreetsstrange_notinterested",
+            "label": "邀请此人去一个离奇的地方散步",
+            "actionId": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "locationstreetsstrange": 1
+            },
+            "startdescription": "“我……不太想去那个地方。”",
+            "description": "[你的追随者对此处并无特别的兴趣。]"
+        },
+        {
+            "id": "followeraction_repairtoollanternbcracked",
+            "label": "修复裂损的午之石",
+            "actionId": "talk",
+            "requirements": {
+                "follower": 1,
+                "forge": 1,
+                "toollanternbcracked": 1
+            },
+            "startdescription": "我们可以开始修复工作了，不过购买所需材料需花费<b>资金</b>。",
+            "description": ".",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "followeraction_repairtoollanternbcracked_attempt"
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanternbcracked_attempt",
+            "label": "正在修复裂损的午之石",
+            "actionId": "talk",
+            "slots": [
+                {
+                    "id": "Materials",
+                    "label": "材料",
+                    "description": "稀有燃料与古怪粉末",
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "startdescription": "我的追随者需要<b>资金</b>来完成这项工作。",
+            "description": "我无法提供追随者所需的材料。这块石头没能复原。",
+            "warmup": 30,
+            "alternativerecipes": [
+                {
+                    "id": "followeraction_repairtoollanternbcracked_succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanternbcracked_succeed",
+            "label": "正在修复裂损的午之石",
+            "actionId": "talk",
+            "requirements": {
+                "funds": 1
+            },
+            "startdescription": "追随者正在修理这块石头。",
+            "description": "石头修复完毕！它现在光亮一如从前。",
+            "effects": {
+                "funds": -1,
+                "toollanternbcracked": -1,
+                "toollanternb": 1
+            }
+        },
+        {
+            "id": "followeraction_repairtoollanterndcracked",
+            "label": "修复裂损的迷途之镜",
+            "actionId": "talk",
+            "requirements": {
+                "follower": 1,
+                "forge": 1,
+                "toollanterndcracked": 1
+            },
+            "startdescription": "我们可以开始修复了，不过购买所需材料需花费至少一枚<b>古铜币</b>。",
+            "description": ".",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "followeraction_repairtoollanterndcracked_attempt"
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanterndcracked_attempt",
+            "label": "正在修复裂损的迷途之镜",
+            "actionId": "talk",
+            "slots": [
+                {
+                    "id": "Materials",
+                    "label": "材料",
+                    "description": "稀有金属与乌有之色",
+                    "required": {
+                        "compensationvalue": 4
+                    }
+                }
+            ],
+            "startdescription": "我的追随者需要一枚<b>古铜币</b>，或更贵重的古币，来完成这项工作。",
+            "description": "我无法提供追随者所需的材料。这面镜子没能修复。",
+            "warmup": 30,
+            "alternativerecipes": [
+                {
+                    "id": "followeraction_repairtoollanterndcracked_succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanterndcracked_succeed",
+            "label": "正在修复裂损的迷途之镜",
+            "actionId": "talk",
+            "requirements": {
+                "compensationvalue": 4
+            },
+            "startdescription": "追随者正在修理这面镜子。",
+            "description": "镜子修复完毕！它现在光亮一如从前。",
+            "effects": {
+                "compensationvalue": -1,
+                "toollanterndcracked": -1,
+                "toollanternd": 1
+            }
+        },
+        {
+            "id": "followeraction_repairtoollanternfcracked",
+            "label": "修复裂损的守夜人之镜",
+            "actionId": "talk",
+            "requirements": {
+                "follower": 1,
+                "forge": 1,
+                "toollanternfcracked": 1
+            },
+            "startdescription": "我们可以开始修复了，不过购买所需材料需花费至少一枚<b>古银币</b>。",
+            "description": ".",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "followeraction_repairtoollanternfcracked_attempt"
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanternfcracked_attempt",
+            "label": "正在修复裂损的守夜人之镜",
+            "actionId": "talk",
+            "slots": [
+                {
+                    "id": "Materials",
+                    "label": "材料",
+                    "description": "明媚之歌与异域合金",
+                    "required": {
+                        "compensationvalue": 8
+                    }
+                }
+            ],
+            "startdescription": "我的追随者需要一枚<b>古银币</b>，或更贵重的古币，来完成这项工作。",
+            "description": "我无法提供追随者所需的材料。这面镜子没能修复。",
+            "warmup": 30,
+            "alternativerecipes": [
+                {
+                    "id": "followeraction_repairtoollanternfcracked_succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanternfcracked_succeed",
+            "label": "正在修复裂损的守夜人之镜",
+            "actionId": "talk",
+            "requirements": {
+                "compensationvalue": 8
+            },
+            "startdescription": "追随者正在修理这面镜子。",
+            "description": "镜子修复完毕！它现在光亮一如从前。",
+            "effects": {
+                "compensationvalue": -1,
+                "toollanternfcracked": -1,
+                "toollanternf": 1
+            }
+        },
+        {
+            "id": "followeraction.repair.greatwork.sabotaged",
+            "label": "修复大功业被破坏的环节",
+            "actionId": "talk",
+            "requirements": {
+                "follower": 1,
+                "forge": 1,
+                "greatwork.sabotaged": 1
+            },
+            "startdescription": "我们可以开始修复了，不过购买所需材料需花费一枚<b>古银币</b>。",
+            "description": ".",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "followeraction.repair.greatwork.sabotaged.attempt"
+                }
+            ]
+        },
+        {
+            "id": "followeraction.repair.greatwork.sabotaged.attempt",
+            "label": "正在修复大功业被破坏的环节",
+            "actionId": "talk",
+            "slots": [
+                {
+                    "id": "Materials",
+                    "label": "材料",
+                    "description": "金属与怜悯",
+                    "required": {
+                        "compensationvalue": 8
+                    }
+                }
+            ],
+            "startdescription": "我的追随者需要一枚<b>古银币</b>来完成这项工作。",
+            "description": "我无法提供追随者所需的材料。大功业仍然岌岌可危。",
+            "warmup": 30,
+            "alternativerecipes": [
+                {
+                    "id": "followeraction.repair.greatwork.sabotaged.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction.repair.greatwork.sabotaged.succeed",
+            "label": "正在修复大功业被破坏的环节",
+            "actionId": "talk",
+            "requirements": {
+                "compensationvalue": 8
+            },
+            "startdescription": "追随者正在修理。",
+            "description": "大功业将继续！",
+            "aspects": {
+                "sabotage.repair": 1
+            }
+        },
+        {
+            "id": "A_follower_settrap_independent",
+            "actionId": "talk",
+            "label": "设计圈套来拖延或击败对手",
+            "startdescription": "对手不会像猎人一样上街巡查。他们只在中立之地与我们会面。为了击败对手，我们须得准备一个能让他失足落入的陷阱。[<b>刃</b>、<b>铸</b>、<b>蛾</b>和<b>冬</b>可用来设布<b>圈套</b>。<b>圈套</b>会在<b>无派人士</b>试图搜刮<b>藏宝地</b>时派上用场。]",
+            "requirements": {
+                "independent": 1,
+                "follower": 1,
+                "summoned": -1
+            },
+            "comments": "Follower requirement isn't redundant... cos we also link here from conversations with Independents.",
+            "alternativerecipes": [
+                {
+                    "id": "expel_independent",
+                    "chance": 100,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "independent": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "L_set_trap_router",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_follower_settrap_vault",
+            "actionId": "talk",
+            "label": "设计圈套来拖延或击败对手",
+            "startdescription": "对手是谨慎的：他们不会像猎人一样上街巡查。为了击败对手，我们须得准备一个陷阱，然后静待时机到来。[<b>刃</b>、<b>铸</b>、<b>蛾</b>和<b>冬</b>可用来设布<b>圈套</b>。<b>圈套</b>会在<b>无派人士</b>试图搜刮<b>藏宝地</b>时派上用场。]",
+            "requirements": {
+                "vault": 1
+            },
+            "linked": [
+                {
+                    "id": "L_set_trap_router",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_set_trap_router",
+            "actionId": "talk",
+            "effects": {
+                "snare": 1
+            },
+            "linked": [
+                {
+                    "id": "L_settrap_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_highwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_midwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_lowedge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_lowwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_lowforge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "L_createsnare_rubbish",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_highedge",
+            "actionId": "talk",
+            "requirements": {
+                "edge": 10
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_great",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_highwinter",
+            "actionId": "talk",
+            "requirements": {
+                "winter": 10
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_great",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_highforge",
+            "actionId": "talk",
+            "requirements": {
+                "forge": 10
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_great",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_highmoth",
+            "actionId": "talk",
+            "requirements": {
+                "moth": 10
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_great",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_midedge",
+            "actionId": "talk",
+            "requirements": {
+                "edge": 7
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_good",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_midwinter",
+            "actionId": "talk",
+            "requirements": {
+                "winter": 7
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_good",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_midforge",
+            "actionId": "talk",
+            "requirements": {
+                "forge": 7
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_good",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_midmoth",
+            "actionId": "talk",
+            "requirements": {
+                "moth": 7
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_good",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_lowedge",
+            "actionId": "talk",
+            "requirements": {
+                "edge": 3
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_poor",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_lowwinter",
+            "actionId": "talk",
+            "requirements": {
+                "winter": 3
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_poor",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_lowforge",
+            "actionId": "talk",
+            "requirements": {
+                "forge": 3
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_poor",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_lowmoth",
+            "actionId": "talk",
+            "requirements": {
+                "moth": 3
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_poor",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_createsnare_great",
+            "actionId": "talk",
+            "label": "阴险的圈套",
+            "description": "我的追随者设下了阴险狡诈的埋伏——此举谅必能够成功。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "snare",
+                    "mutateAspectId": "snarelevel",
+                    "mutationLevel": 3,
+                    "additive": true
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "L_createsnare_good",
+            "actionId": "talk",
+            "label": "狡诈的圈套",
+            "description": "我的追随者设下了狡诈的埋伏——此举很可能会成功。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "snare",
+                    "mutateAspectId": "snarelevel",
+                    "mutationLevel": 2,
+                    "additive": true
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "L_createsnare_poor",
+            "actionId": "talk",
+            "label": "差强人意的圈套",
+            "description": "我的追随者备好了一计，或许能挫败对手的计划——运气够好的话。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "snare",
+                    "mutateAspectId": "snarelevel",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "L_createsnare_rubbish",
+            "actionId": "talk",
+            "label": "孤注一掷的尝试",
+            "description": "我的追随者的计划往最好说是古怪，往最坏说就是不可行，不过也许敌人会失足落入套中呢。",
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_abducthighedge",
+            "label": "教团事务：绑架陌生人",
+            "actionId": "talk",
+            "startdescription": "暗杀者能够轻而易举地把受害者从街上抓走。",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "edge": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_abductsuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_abductfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_abductmidedge",
+            "label": "教团事务：绑架陌生人",
+            "actionId": "talk",
+            "startdescription": "善于此道的门徒大概能绑架来缺乏警惕的受害者。",
+            "requirements": {
+                "society": 1,
+                "edge": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_abductsuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_abductfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_abductlowedge",
+            "label": "教团事务：绑架陌生人",
+            "actionId": "talk",
+            "startdescription": "我的信徒要想绑架受害者会很吃力，不过也要看他的运气。",
+            "requirements": {
+                "society": 1,
+                "edge": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_abductsuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_abductfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_abductsuccess",
+            "label": "正在筹划一场绑架",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下带着一个被包装妥当的囚犯归来。",
+            "effects": {
+                "notoriety": 1,
+                "funds": 1
+            },
+            "deckeffect": {
+                "randomvictim": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_abductfailure",
+            "label": "正在筹划一场绑架",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下空手而归。",
+            "effects": {
+                "notoriety": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "followeraction_abductfailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_abductfailure_losefollower",
+            "label": "正在筹划一场绑架",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下回来了，两手空空且身受重伤。他盯上的受害者颇有胆量。[通过<b>谈话</b>治疗倒下的追随者。]",
+            "effects": {
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower_wound",
+                    "mutationLevel": 1,
+                    "additive": false
+                },
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower",
+                    "mutationLevel": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_murderhighwinter",
+            "label": "教团事务：谋杀陌生人",
+            "actionId": "talk",
+            "startdescription": "此人几乎每次归来都带回一份死讯。",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "winter": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_murdersuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_murderfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_murdermidwinter",
+            "label": "教团事务：谋杀陌生人",
+            "actionId": "talk",
+            "startdescription": "善于此道的门徒大概能带回一具新鲜的尸体。",
+            "requirements": {
+                "society": 1,
+                "winter": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_murdersuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_murderfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_murderlowwinter",
+            "label": "教团事务：谋杀陌生人",
+            "actionId": "talk",
+            "startdescription": "我的信徒失手的可能性很大。",
+            "requirements": {
+                "society": 1,
+                "winter": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_murdersuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_murderfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_murdersuccess",
+            "label": "正在筹划一场谋杀……",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下带回一具新鲜的尸体和它生前的遗物。",
+            "effects": {
+                "notoriety": 1,
+                "corpse": 1
+            },
+            "deckeffect": {
+                "robberyrewards": 2
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_murderfailure",
+            "label": "正在筹划一场谋杀……",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下空手而归。",
+            "effects": {
+                "notoriety": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "followeraction_murderfailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_murderfailure_losefollower",
+            "label": "正在筹划一场谋杀……",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下带着失败的消息归来。他盯上的受害者奋力抵抗，使他现在几乎站都站不稳了。[通过<b>谈话</b>治疗倒下的追随者。]",
+            "effects": {
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower_wound",
+                    "mutationLevel": 1,
+                    "additive": false
+                },
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower",
+                    "mutationLevel": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_craftworkhighforge",
+            "label": "教团事务：出卖手艺",
+            "actionId": "talk",
+            "startdescription": "我麾下的重塑者可以从各路不法实验室和地下工厂赚来资金——偶尔会出岔子。",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "forge": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_craftworksuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_craftworkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_craftworkmidforge",
+            "label": "教团事务：出卖手艺",
+            "actionId": "talk",
+            "startdescription": "我的门徒大概能从非法实验室和地下工厂赚来资金——但存有发生意外的风险。",
+            "requirements": {
+                "society": 1,
+                "forge": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_craftworksuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_craftworkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_craftworklowforge",
+            "label": "教团事务：出卖手艺",
+            "actionId": "talk",
+            "startdescription": "我的信徒或许能从非法实验室和地下工厂赚来资金……如果他走运的话。",
+            "requirements": {
+                "society": 1,
+                "forge": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_craftworksuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_craftworkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_craftworksuccess",
+            "label": "按照合同做工……",
+            "actionId": "talk",
+            "startdescription": "这座城市里存在着各种违背国家王法的勾当。个别的甚至违背自然规律。其中一些非常危险。",
+            "description": "我的追随者带着劳动所得归来。",
+            "deckeffect": {
+                "robberyrewards": 2
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_craftworkfailure",
+            "label": "按照合同做工……",
+            "actionId": "talk",
+            "startdescription": "这座城市里存在着各种违背国家王法的勾当。个别的甚至违背自然规律。其中一些非常危险。",
+            "description": "我的追随者空手而归。今天的工作任务超出了他所能。",
+            "effects": {},
+            "alternativerecipes": [
+                {
+                    "id": "followeraction_craftworkfailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_craftworkfailure_losefollower",
+            "label": "按照合同做工……",
+            "actionId": "talk",
+            "startdescription": "这座城市里存在着各种违背国家王法的勾当。个别的甚至违背自然规律。其中一些非常危险。",
+            "description": "发生了意外。[通过<b>谈话</b>治疗倒下的追随者。]",
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower_wound",
+                    "mutationLevel": 1,
+                    "additive": false
+                },
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower",
+                    "mutationLevel": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_seducehighgrail",
+            "label": "教团事务：引诱生人",
+            "actionId": "talk",
+            "startdescription": "没有人能——几乎没有人能拒绝纵情者。",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "grail": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_seducesuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_seducefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_seducemidgrail",
+            "label": "教团事务：引诱生人",
+            "actionId": "talk",
+            "startdescription": "擅长劝诱的门徒大概能为我们钓回一个耳根子软的玩伴。",
+            "requirements": {
+                "society": 1,
+                "grail": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_seducesuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_seducefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_seducelowgrail",
+            "label": "教团事务：引诱生人",
+            "actionId": "talk",
+            "startdescription": "我的信徒或许能帮我们钓回一名受害者。",
+            "requirements": {
+                "society": 1,
+                "grail": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_seducesuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_seducefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_seducesuccess",
+            "label": "尝试色诱",
+            "actionId": "talk",
+            "startdescription": "我在外过夜的追随者悄声说着半真半假的话语。就算他的受害者知道这些话是谎言，或许也不会在乎。",
+            "description": "我的手下归来，身边伴着一名乐意顺服的囚犯。",
+            "effects": {
+                "notoriety": 1,
+                "funds": 1
+            },
+            "deckeffect": {
+                "randomvictim": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_seducefailure",
+            "label": "尝试色诱",
+            "actionId": "talk",
+            "startdescription": "我在外过夜的追随者悄声说着半真半假的话语。就算他的受害者知道这些话是谎言，或许也不会在乎。",
+            "description": "我的手下空手而归。",
+            "effects": {
+                "notoriety": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "followeraction_seducefailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_seducefailure_losefollower",
+            "label": "尝试色诱",
+            "actionId": "talk",
+            "startdescription": "我在外过夜的追随者悄声说着半真半假的话语。就算他的受害者知道这些话是谎言，或许也不会在乎。",
+            "description": "我的手下意识模糊，血流不止地归来了。看来某个情敌反感他的所作所为。[通过<b>谈话</b>治疗倒下的追随者。]",
+            "effects": {
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower_wound",
+                    "mutationLevel": 1,
+                    "additive": false
+                },
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower",
+                    "mutationLevel": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_burglehighknock",
+            "label": "教团事务：入室盗窃",
+            "actionId": "talk",
+            "startdescription": "我麾下的“钥匙”应当能击败这座城市所有的锁。",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "knock": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_burglesuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_burglefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_burglemidknock",
+            "label": "教团事务：入室盗窃",
+            "actionId": "talk",
+            "startdescription": "我的门徒大概能利用他的才能从缺乏戒心之人处取来钱财。",
+            "requirements": {
+                "society": 1,
+                "knock": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_burglesuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_burglefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_burglelowknock",
+            "label": "教团事务：入室盗窃",
+            "actionId": "talk",
+            "startdescription": "我的信徒或许能从缺乏戒心之人处取来钱财……如果他走运的话。",
+            "requirements": {
+                "society": 1,
+                "knock": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_burglesuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_burglefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_burglesuccess",
+            "label": "破门，进门，出门……",
+            "actionId": "talk",
+            "startdescription": "在地窖和阁楼里，在隐秘的隔间和闭锁的壁橱里，不论是不是富人都会藏匿自己的钱财。",
+            "description": "我的追随者带着他的收获回来了。",
+            "effects": {
+                "notoriety": 1,
+                "funds": 1
+            },
+            "deckeffect": {
+                "robberyrewards": 2
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_burglefailure",
+            "label": "破门，进门，出门……",
+            "actionId": "talk",
+            "startdescription": "在地窖和阁楼里，在隐秘的隔间和闭锁的壁橱里，不论是不是富人都会藏匿自己的钱财。",
+            "description": "我的追随者空手而归。今天的工作任务超出了他所能。",
+            "effects": {
+                "notoriety": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "followeraction_burglefailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_burglefailure_losefollower",
+            "label": "破门，进门，出门……",
+            "actionId": "talk",
+            "startdescription": "在地窖和阁楼里，在隐秘的隔间和闭锁的壁橱里，不论是不是富人都会藏匿自己的钱财。",
+            "description": "发生了意外。[通过<b>谈话</b>治疗倒下的追随者。]",
+            "effects": {
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower_wound",
+                    "mutationLevel": 1,
+                    "additive": false
+                },
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower",
+                    "mutationLevel": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_charmhighheart",
+            "label": "教团事务：发挥魅力",
+            "actionId": "talk",
+            "startdescription": "并非每个人都认同我们的宗旨，不过我手下的蛊舞者到哪里都受欢迎。如果我们的声名出了问题，他谅必能把问题摆平。",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "heart": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_charmsuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_charmfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_charmmidheart",
+            "label": "教团事务：发挥魅力",
+            "actionId": "talk",
+            "startdescription": "并非每个人都认同我们的宗旨，不过如果我们的声名出了问题，我的门徒大概能把问题摆平。",
+            "requirements": {
+                "society": 1,
+                "heart": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_charmsuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_charmfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_charmlowheart",
+            "label": "教团事务：发挥魅力",
+            "actionId": "talk",
+            "startdescription": "并非每个人都认同我们的宗旨，不过如果我们的声名出了问题，我的门徒或许能把问题摆平。",
+            "requirements": {
+                "society": 1,
+                "heart": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_charmsuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_charmfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_charmsuccess",
+            "label": "真挚的演讲，亲切的谈话",
+            "actionId": "talk",
+            "slots": [
+                {
+                    "id": "Reputation",
+                    "label": "声名",
+                    "required": {
+                        "reputation": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "地上社会的规范并不适用于我们。但也许我们不会对人强调这一点。也许我们要靠魅力和良好的心态对人。我已不吝将各种高雅的陈词滥调套给我们组织的崇高准则。",
+            "description": "乐观是制胜的调料。",
+            "effects": {
+                "reputation": -1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_charmfailure",
+            "label": "真挚的演讲，亲切的谈话",
+            "actionId": "talk",
+            "slots": [
+                {
+                    "id": "Reputation",
+                    "label": "声名",
+                    "required": {
+                        "reputation": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "地上社会的规范并不适用于我们。但也许我们不会对人强调这一点。也许我们要靠魅力和良好的心态对人。我已不吝将各种高雅的陈词滥调套给我们组织的崇高准则。",
+            "description": "没人理解我们，或者说，人们已太过理解我们。",
+            "effects": {
+                "rumour": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_auguryhighlantern",
+            "label": "教团事务：求天问卜",
+            "actionId": "talk",
+            "startdescription": "我麾下的先见者能够判断法力在何时何地可以为我们所用。存在些微风险。",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "lantern": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_augurysuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_auguryfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_augurymidlantern",
+            "label": "教团事务：求天问卜",
+            "actionId": "talk",
+            "startdescription": "我的门徒大概能判断法力在何时何地可以为我们所用：不过凡涉及漫宿的事情都存在危险。",
+            "requirements": {
+                "society": 1,
+                "lantern": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_augurysuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_auguryfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_augurylowlantern",
+            "label": "教团事务：求天问卜",
+            "actionId": "talk",
+            "startdescription": "我的信徒也许能判断法力在何时何地可以为我们所用：不过凡涉及漫宿的事情都存在危险。",
+            "requirements": {
+                "society": 1,
+                "lantern": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_augurysuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_auguryfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_augurysuccess",
+            "label": "在世界的表皮之下",
+            "actionId": "talk",
+            "startdescription": "经由数时辰的研修与沉思……",
+            "description": "我的追随者找到了又一种能让我们的事业与众司辰那更伟大的事业相调和的方法。",
+            "effects": {
+                "erudition": 1
+            },
+            "deckeffect": {
+                "randominfluencelow": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_auguryfailure",
+            "label": "在世界的表皮之下",
+            "actionId": "talk",
+            "startdescription": "经由数时辰的研修与沉思……",
+            "description": "我的追随者犯下了一个危险的错误。此人的神智未受损伤，但漫宿之光已触到了此处的世界。",
+            "effects": {
+                "fascination": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "followeraction_auguryfailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_auguryfailure_losefollower",
+            "label": "在世界的表皮之下",
+            "actionId": "talk",
+            "startdescription": "经由数时辰的研修与沉思……",
+            "description": "我的追随者犯下了一个危险的错误。漫宿之光已触到了此处的世界。他精神上的防线已经崩溃，化为一团混沌，我们必须把他控制起来免得他进一步伤到自己。他的神智会随时间恢复，但他仍然伤得很重。[通过<b>谈话</b>治疗倒下的追随者。]",
+            "effects": {
+                "fascination": 1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower_wound",
+                    "mutationLevel": 1,
+                    "additive": false
+                },
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower",
+                    "mutationLevel": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_hoodwinkhighmoth",
+            "label": "教团事务：下套",
+            "actionId": "talk",
+            "startdescription": "我麾下的易皮者甚是狡诈，帮傻瓜摆脱钱财易如在果园摘梨子。（虽说梨园偶尔也有危险。好比说黄蜂。）",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "moth": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_hoodwinksuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_hoodwinkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_hoodwinkmidmoth",
+            "label": "教团事务：下套",
+            "actionId": "talk",
+            "startdescription": "我的门徒大概能利用他的才能帮傻瓜摆脱一些钱财。",
+            "requirements": {
+                "society": 1,
+                "moth": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_hoodwinksuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_hoodwinkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_hoodwinklowmoth",
+            "label": "教团事务：下套",
+            "actionId": "talk",
+            "startdescription": "我的信徒或许能帮傻瓜摆脱一些钱财……如果他走运的话。",
+            "requirements": {
+                "society": 1,
+                "moth": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_hoodwinksuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_hoodwinkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_hoodwinksuccess",
+            "label": "欺诈与诳骗",
+            "actionId": "talk",
+            "startdescription": "我的追随者正在实施一场有利可图的骗局。",
+            "description": "骗局成功了！我们的收获如下。",
+            "effects": {
+                "notoriety": 1,
+                "funds": 1
+            },
+            "deckeffect": {
+                "robberyrewards": 2
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_hoodwinkfailure",
+            "label": "欺诈与诳骗",
+            "actionId": "talk",
+            "startdescription": "我的追随者正在实施一场有利可图的骗局。",
+            "description": "我的追随者空手而归。他的计策败露了。",
+            "effects": {
+                "notoriety": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "followeraction_hoodwinkfailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_hoodwinkfailure_losefollower",
+            "label": "欺诈与诳骗",
+            "actionId": "talk",
+            "startdescription": "我的追随者正在实施一场有利可图的骗局。",
+            "description": "我开始担心我的追随者是不是自导自演了自己的人间蒸发。然而看样子他的骗局是被识破了。受害者怒不可遏，我的追随者勉强逃出一条命来。[通过<b>谈话</b>治疗倒下的追随者。]",
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower_wound",
+                    "mutationLevel": 1,
+                    "additive": false
+                },
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "follower",
+                    "mutationLevel": -1,
+                    "additive": false
+                }
+            ],
+            "effects": {
+                "notoriety": 1
+            },
+            "warmup": 30
+        }
+    ]
+}

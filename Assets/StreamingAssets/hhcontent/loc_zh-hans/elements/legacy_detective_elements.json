@@ -1,0 +1,151 @@
+{
+    "elements": [
+        {
+            "id": "legacydetectivejob",
+            "label": "督察的职位",
+            "description": "我是首都警察局的高层职员。",
+            "aspects": {
+                "job": 1
+            },
+            "xtriggers": {
+                "careeradvancement": "legacydetectivejob_matured"
+            }
+        },
+        {
+            "id": "legacydetectivejob_matured",
+            "label": "督察的职位",
+            "description": "我是首都警察局的高层职员，但我被临时调派到了防剿局。",
+            "aspects": {
+                "job": 1
+            },
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "话题",
+                    "required": {
+                        "suspicious": 1
+                    },
+                    "description": "在取得证据前，我得从直接监察我的猎物开始做起。",
+                    "actionId": "work"
+                },
+                {
+                    "id": "meticulous",
+                    "label": "一丝不苟",
+                    "description": "更多的理性能提高我调查的成功率。",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "vigilant",
+                    "label": "警醒",
+                    "description": "更多的理性能提高我调查的成功率。",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "singleminded",
+                    "label": "专一",
+                    "description": "更多的理性能提高我调查的成功率。",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "employment": "legacydetectivejob_matured"
+            },
+            "lifetime": 90,
+            "decayTo": "legacydetectivejob_suspended",
+            "icon": "legacydetectivejob"
+        },
+        {
+            "id": "legacydetectivejob_suspended",
+            "label": "督察警[停职]",
+            "description": "我旷工的事情被注意到了。我已因此被停职。[尽快申辩你的情况，否则会永久失去工作。]",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "激情",
+                    "required": {
+                        "passion": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "aspects": {
+                "job": 1
+            },
+            "xtriggers": {
+                "plead": "legacydetectivejob_matured"
+            },
+            "lifetime": 90,
+            "decayTo": "legacydetectivejob_disgraced"
+        },
+        {
+            "id": "legacydetectivejob_disgraced",
+            "label": "督察警[黜免]",
+            "description": "我丢掉了职位，我不太可能重新回去上班了。我需要在这个文明的世界里自谋出路。",
+            "lifetime": 120,
+            "decayTo": "mystique"
+        },
+        {
+            "id": "legacydetective_plotitem",
+            "label": "加封的局里文件",
+            "aspects": {
+                "desire": 1,
+                "legacyplotitem": 1,
+                "detectivetemptation": 1
+            },
+            "description": "一份有关神秘的#PREVIOUSCHARACTERNAME#的档案文件。我亲自将其加封。我对它的内容再熟悉不过了。如果我再去读它，很可能又会做梦。"
+        },
+        {
+            "id": "myevidence",
+            "label": "不确凿证据",
+            "description": "我掌握了我的猎物所进行活动的某些证据。",
+            "lifetime": 300,
+            "aspects": {
+                "suspicious": 1
+            },
+            "xtriggers": {
+                "investigatingsuccess": "myevidenceb"
+            }
+        },
+        {
+            "id": "myevidenceb",
+            "label": "确凿证据",
+            "description": "我掌握了某些令人信服的证据，直指我的猎物进行的某些活动。",
+            "lifetime": 300,
+            "aspects": {
+                "suspicious": 1
+            }
+        },
+        {
+            "id": "legacydetective_plotitem_burning",
+            "label": "着火的局里文件",
+            "description": "快烧光了！也许我能把它火里捡出来——",
+            "lifetime": 10,
+            "icon": "legacydetective_plotitem",
+            "aspects": {
+                "desire": 1,
+                "legacyplotitem": 1,
+                "detectivetemptation": 1
+            }
+        },
+        {
+            "id": "legacydetective_plotitem_backup",
+            "label": "令人不安的局里文件",
+            "aspects": {
+                "desire": 1,
+                "legacyplotitem": 1,
+                "detectivetemptation": 1
+            },
+            "icon": "legacydetective_plotitem",
+            "description": "证据中包含了让人不禁舔嘴唇的那种细节，如果那人这样的事物感兴趣的话。我不应该读他。那些梦境也许会重现。"
+        }
+    ]
+}

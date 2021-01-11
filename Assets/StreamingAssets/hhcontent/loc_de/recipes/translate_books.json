@@ -1,0 +1,28 @@
+{
+	"recipes": [
+		{
+			"id": "translatehint",
+			"label": "Übersetzung eines Texts versuchen?",
+			"actionId": "study",
+			"requirements": {
+				"language": 1
+			},
+			"startdescription": "Habe ich einen Text in dieser Sprache, kann ich mit seiner Übersetzung beginnen.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "translate",
+			"label": "Übersetzung eines Texts beginnen",
+			"actionId": "study",
+			"requirements": {
+				"language": 1,
+				"text": 1
+			},
+			"startdescription": "Die Tür zum Studierzimmer wird abgeschlossen. An die Arbeit. ",
+			"description": "Ich habe den Text für mein Studium vorbereitet.",
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

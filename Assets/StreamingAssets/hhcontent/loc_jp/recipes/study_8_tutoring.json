@@ -1,0 +1,299 @@
+{
+	"recipes": [
+		{
+			"id": "studylatintutoring",
+			"label": "教師とラテン語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"tutorlatin": 1,
+				"commission": -1,
+				"article": -1
+			},
+			"slots": [
+				{
+					"id": "Costs",
+					"label": "費用",
+					"required": {
+						"compensationvalue": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studylatintutoringpaid",
+					"chance": 100
+				}
+			],
+			"startdescription": "ラテン語を学びたければ、この人が助けてくれるだろうが、スピントリアという、秘密の世界の通貨で支払わなければならない。",
+			"description": "教師はただでは教えない。遠慮しておこう。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studylatintutoringpaid",
+			"label": "教師とラテン語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"compensationvalue": 2
+			},
+			"effects": {
+				"scholarlatin": 1,
+				"compensationvalue": -2
+			},
+			"startdescription": "これで十分なはずだ。じっくりと話を聞こう。",
+			"description": "ルクレティウスの『事物の本性について』、アクィナスの『神学大全』、そして悪名高き『デ・ホリス』で使われている言語。"
+		},
+		{
+			"id": "studygreektutoring",
+			"label": "教師とギリシャ語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"tutorgreek": 1,
+				"commission": -1,
+				"article": -1
+			},
+			"slots": [
+				{
+					"id": "Costs",
+					"label": "費用",
+					"required": {
+						"compensationvalue": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studygreektutoringpaid",
+					"chance": 100
+				}
+			],
+			"startdescription": "ギリシャ語を学びたければ、この人が助けてくれるだろうが、スピントリアという、秘密の世界の通貨で支払わなければならない。",
+			"description": "教師はただでは教えない。遠慮しておこう。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studygreektutoringpaid",
+			"label": "教師とギリシャ語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"compensationvalue": 2
+			},
+			"effects": {
+				"scholargreek": 1,
+				"compensationvalue": -2
+			},
+			"startdescription": "これで十分なはずだ。じっくりと話を聞こう。",
+			"description": "形而上学、プロコピウスの『秘密の歴史』、そして恐ろしい『銀に閉じ込められたもの』で使われている言語。"
+		},
+		{
+			"id": "studyaramaictutoring",
+			"label": "教師とアラム語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"tutoraramaic": 1,
+				"commission": -1,
+				"article": -1
+			},
+			"slots": [
+				{
+					"id": "Costs",
+					"label": "費用",
+					"required": {
+						"compensationvalue": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyaramaictutoringpaid",
+					"chance": 100
+				}
+			],
+			"startdescription": "アラム語を学びたければ、この人が助けてくれるだろうが、スピントリアという、秘密の世界の通貨で支払わなければならない。",
+			"description": "教師はただでは教えない。遠慮しておこう。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyaramaictutoringpaid",
+			"label": "教師とアラム語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"compensationvalue": 2
+			},
+			"effects": {
+				"scholararamaic": 1,
+				"compensationvalue": -2
+			},
+			"startdescription": "これで十分なはずだ。じっくりと話を聞こう。",
+			"description": "アラムの幻影、『ダニエル書』、『蜘蛛の扉のカニシュクの話』で使われている言語。"
+		},
+		{
+			"id": "studysanskrittutoring",
+			"label": "教師とサンスクリット語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"tutorsanskrit": 1,
+				"commission": -1,
+				"article": -1
+			},
+			"slots": [
+				{
+					"id": "Costs",
+					"label": "費用",
+					"required": {
+						"compensationvalue": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studysanskrittutoringpaid",
+					"chance": 100
+				}
+			],
+			"startdescription": "サンスクリット語を学びたければ、この人が助けてくれるだろうが、スピントリアという、秘密の世界の通貨で支払わなければならない。",
+			"description": "教師はただでは教えない。遠慮しておこう。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studysanskrittutoringpaid",
+			"label": "教師とサンスクリット語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"compensationvalue": 2
+			},
+			"effects": {
+				"scholarsanskrit": 1,
+				"compensationvalue": -2
+			},
+			"startdescription": "これで十分なはずだ。じっくりと話を聞こう。",
+			"description": "亜大陸の聖なる言語。四千年の詩、儀式、神秘への扉。"
+		},
+		{
+			"id": "studyfucinetutoringspirit",
+			"label": "教師とフチーノ語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"spirittutorfucine": 1,
+				"summoned": 1
+			},
+			"slots": [
+				{
+					"id": "Background",
+					"label": "背景",
+					"required": {
+						"scholarlatin": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyfucinetutoringsuccessful",
+					"chance": 100
+				}
+			],
+			"startdescription": "「フチーノ語？ええ、フチーノ語なら何とか喋れるわ。ラテン語の基礎を知っているなら、教えてあげる。でも「魔女の言葉」の冗談を言ったら、すぐにやめるわよ」",
+			"description": "私には必要な基盤がない。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyfucinetutoringsuccessful",
+			"label": "教師とフチーノ語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"scholarlatin": 1
+			},
+			"effects": {
+				"scholarfucine": 1
+			},
+			"startdescription": "私のラテン語の知識は基礎となるだろう。できる限りのことを学びたい。",
+			"description": "人は水を飲まずして長い間フチーノ語を話すことはできない。唇や喉を乾かせるからだ。それもあり、湖岸の近くに住んでいた人々だけが話していたと言われている。"
+		},
+		{
+			"id": "studyphrygiantutoringspirit",
+			"label": "教師とフリュギア語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"spirittutorphrygian": 1,
+				"summoned": 1
+			},
+			"slots": [
+				{
+					"id": "Background",
+					"label": "背景",
+					"required": {
+						"scholargreek": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studyphrygiantutoringsuccessful",
+					"chance": 100
+				}
+			],
+			"startdescription": "「フリュギア語！大いなる母の母語！もちろん。ギリシャ語の基礎を知っていれば、フリュギア語の勉強は<i>とても</i>楽しいものになるだろう」",
+			"description": "私には必要な基盤がない。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyphrygiantutoringsuccessful",
+			"label": "教師とフリュギア語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"scholargreek": 1
+			},
+			"effects": {
+				"scholarphrygian": 1
+			},
+			"startdescription": "私のギリシャ語の知識は基礎となるだろう。できる限りのことを学びたい。",
+			"description": "ヘロドトスは、人間が最初に話した言語がフリュギア語であったことを発見したファラオの荒唐無稽な物語を語る。もちろん、ファラオの意見は間違っていて、正解はヴャック語であったわけだが、誰もが好きな物語であることには変わりない。"
+		},
+		{
+			"id": "studymandaictutoringspirit",
+			"label": "教師とディープマンダ語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"spirittutormandaic": 1,
+				"summoned": 1
+			},
+			"slots": [
+				{
+					"id": "Background",
+					"label": "背景",
+					"required": {
+						"scholararamaic": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "studymandaictutoringsuccessful",
+					"chance": 100
+				}
+			],
+			"startdescription": "「共に未燃の神の言葉を讃えよう」",
+			"description": "私には必要な基盤がない。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studymandaictutoringsuccessful",
+			"label": "教師とディープマンダ語を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"scholararamaic": 1
+			},
+			"effects": {
+				"scholarmandaic": 1
+			},
+			"startdescription": "私のアラム語の知識は基礎となるだろう。できる限りのことを学びたい。",
+			"description": "とある歴史では、これは影のない王たちが話す言葉だった。別の歴史では、これは繋がれた炎の子供たちの呪文の基礎となった。"
+		}
+	]
+}

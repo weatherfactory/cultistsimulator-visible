@@ -1,0 +1,625 @@
+{
+	"recipes": [
+		{
+			"id": "studyincreasehealthstarter",
+			"label": "Körperliche Ertüchtigung",
+			"actionId": "study",
+			"requirements": {
+				"vitality": 2
+			},
+			"startdescription": "Ich vibriere vor Vitalität. Wenn ich einige Zeit der körperlichen Ertüchtigung widme, ist das zu meinem Vorteil",
+			"description": "Ich bin stärker geworden. [Ich habe an Gesundheit gewonnen, was beim nächsten Mal aber nicht mehr so leicht sein wird.]",
+			"effects": {
+				"vitality": -2,
+				"health": 1,
+				"skillhealtha": 1
+			},
+			"warmup": 60,
+			"maxexecutions": 1,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasevitalitytoplus",
+			"label": "Körperliche Ertüchtigung",
+			"actionId": "study",
+			"requirements": {
+				"vitality": 2
+			},
+			"startdescription": "Ich vibriere vor Vitalität. Wenn ich einige Zeit der körperlichen Ertüchtigung widme, ist das zu meinem Vorteil",
+			"description": "Ich bin bereit, stärker zu werden. [Nutze diese Gelernte Lektion mit deiner Stärke-Fertigkeit.]",
+			"effects": {
+				"vitality": -2,
+				"vitalityplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasevitalitywithinfluencehearttoplus",
+			"label": "Körperliche Ertüchtigung",
+			"actionId": "study",
+			"requirements": {
+				"vitality": 1,
+				"influenceheart": 1,
+				"lore": -1
+			},
+			"startdescription": "Ich vibriere vor Vitalität, und diese ich eine erfrischende Jahreszeit. Wenn ich einige Zeit der körperlichen Ertüchtigung widme, ist das zu meinem Vorteil. [Fügst du das entsprechende Wissen hinzu, kannst du stattdessen einen noch mächtigeren okkulten Einfluss erzeugen.]",
+			"description": "Ich bin bereit, stärker zu werden. [Nutze diese Gelernte Lektion mit deiner Fertigkeit 'Stärke'.]",
+			"effects": {
+				"influence": -2,
+				"vitalityplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskilla",
+			"label": "Körperliche Ertüchtigung: Stärker ...",
+			"actionId": "study",
+			"requirements": {
+				"skillhealtha": 1,
+				"vitalityplus": 2
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "Ich werde noch stärker werden.",
+			"description": "Die Maschine, mein Leib, zittert vor Kraft.",
+			"effects": {
+				"health": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskillb",
+			"label": "Körperliche Ertüchtigung:  Stärker ...",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthb": 1,
+				"vitalityplus": 3
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "Ich werde noch stärker werden.",
+			"description": "Ich könnte jetzt einen Mann durch einen Fluss tragen. Oder ihn erwürgen.",
+			"effects": {
+				"health": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskill_to_d_edge",
+			"label": "Körperliche Ertüchtigung: Eine größere Stärke",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"edge": 1,
+				"lore": 1
+			},
+			"startdescription": "Ich werde in die Fußstapfen des Löwenschmieds treten, der stärker und stärker wird, und des Obersts, der vor keiner Narbe zurückschreckt.",
+			"description": "Mein Herz schlägt mit der Standhaftigkeit einer Trommel und der Gewissheit eines Richterspruchs.",
+			"effects": {
+				"health": 1,
+				"skillhealthc": -1,
+				"skillhealthd_strength": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskill_to_d_forge",
+			"label": "Körperliche Ertüchtigung: Eine größere Stärke",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"forge": 1,
+				"lore": 1
+			},
+			"startdescription": "Ich werde mit der Stärke der Schmiede der Tage brennen.",
+			"description": "Mein Herz schlägt mit der Standhaftigkeit einer Trommel und der Gewissheit eines Richterspruchs.",
+			"effects": {
+				"health": 1,
+				"skillhealthc": -1,
+				"skillhealthd_strength": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskill_to_d_grail",
+			"label": "Körperliche Ertüchtigung: Eine tiefere Anmut",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"grail": 1,
+				"lore": 1
+			},
+			"startdescription": "Ich werde kosten, was der Gral vorgeschrieben hat. Ich werde rank und dornig und süß sein.",
+			"description": "Kein Sturm kann den Baum brechen, der sich biegt.",
+			"effects": {
+				"health": 1,
+				"skillhealthc": -1,
+				"skillhealthd_grace": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskill_to_d_heart",
+			"label": "Körperliche Ertüchtigung: Eine tiefere Anmut",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"heart": 9,
+				"lore": 1
+			},
+			"comments": "ugh: heart influence from vitalityplus",
+			"startdescription": "Ich werde der Stimme der Donnerhaut folgen.",
+			"description": "Kein Sturm kann den Baum brechen, der sich biegt.",
+			"effects": {
+				"health": 1,
+				"skillhealthc": -1,
+				"skillhealthd_grace": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskill_to_d_moth",
+			"label": "Körperliche Ertüchtigung: Eine tiefere Anmut",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"moth": 1,
+				"lore": 1
+			},
+			"startdescription": "Durch das Feuer fliegen wir, und es wird uns nicht verzehren.",
+			"description": "Kein Sturm kann den Baum brechen, der sich biegt.",
+			"effects": {
+				"health": 1,
+				"skillhealthc": -1,
+				"skillhealthd_grace": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonstarter",
+			"label": "Geistige Ertüchtigung",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 2
+			},
+			"startdescription": "Ich habe hier und da ein paar seltsame Fakten aufgeschnappt. Wenn ich einige Zeit darauf verwende, sie zu studieren, könnte ich meinen Verstand verbessern.",
+			"description": "Mein Geist, die Bibliothek. [Ich habe an Verstand gewonnen, was beim nächsten Mal aber nicht mehr so leicht sein wird.]",
+			"effects": {
+				"erudition": -2,
+				"reason": 1,
+				"skillreasona": 1
+			},
+			"warmup": 60,
+			"maxexecutions": 1,
+			"craftable": true
+		},
+		{
+			"id": "studyincreaseeruditiontoplus",
+			"label": "Geistige Ertüchtigung",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 2
+			},
+			"startdescription": "Ich habe hier und da ein paar seltsame Fakten aufgeschnappt. Wenn ich einige Zeit darauf verwende, sie zu studieren, könnte ich meinen Verstand verbessern.",
+			"description": "Mein Geist, die Bibliothek. [Nutze diese Gelernte Lektion mit deiner Fertigkeit 'Gelehrsamkeit'.]",
+			"effects": {
+				"erudition": -2,
+				"eruditionplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreaseeruditionwithlanterninfluencetoplus",
+			"label": "Das Licht des Geistes",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 1,
+				"influencelantern": 1,
+				"lore": -1
+			},
+			"startdescription": "Ich habe hier und da ein paar seltsame Fakten aufgeschnappt ... und in dieser Jahreszeit besonderer Leuchtkraft könnte ich meinen Verstand verbessern. [Fügst du das entsprechende Wissen hinzu, kannst du stattdessen einen noch mächtigeren okkulten Einfluss erzeugen.]",
+			"description": "Mein Geist, die Bibliothek. [Nutze diese Gelernte Lektion mit deiner Fertigkeit 'Gelehrsamkeit'.]",
+			"effects": {
+				"influence": -2,
+				"eruditionplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskilla",
+			"label": "Geistige Ertüchtigung: Weiser ...",
+			"actionId": "study",
+			"requirements": {
+				"skillreasona": 1,
+				"eruditionplus": 2
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "Das Wissen ist eine Stadtmauer, die Stein für Stein errichtet wird. Doch was wartet in der Finsternis jenseits der Mauer? Wozu brauchen wir eine Festung? Weil wir etwas zu fürchten haben?",
+			"description": "Ich habe die Grenzen meiner Ignoranz neu vermessen.",
+			"effects": {
+				"reason": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskillb",
+			"label": "Geistige Ertüchtigung:  Am weisesten ...",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonb": 1,
+				"eruditionplus": 3
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "Ich werde noch weiser werden.",
+			"description": "Mein Geist ist ein Paradies der Spiegel, in dem alle Dinge klar sind, selbst jene, die ich lieber nicht sehen würde.",
+			"effects": {
+				"reason": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_lantern",
+			"label": "Geistige Ertüchtigung: Eine hellere Erleuchtung",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"lantern": 9,
+				"lore": 1
+			},
+			"startdescription": "Ich werde in die Fußstapfen des Wächters treten.",
+			"description": "Je höher ich mich erhebe, desto mehr sehe ich.",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_illumination": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_winter",
+			"label": "Geistige Ertüchtigung: Eine tiefere Konzentration",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"winter": 1,
+				"lore": 1
+			},
+			"startdescription": "Ich werde auf die Stimme der Madrugada hören.",
+			"description": "Unbeweglichkeit ist die Tugend.",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_concentration": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_knock",
+			"label": "Geistige Ertüchtigung: Eine hellere Erleuchtung",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"knock": 1,
+				"lore": 1
+			},
+			"startdescription": "Ich werde die Schwelle übertreten, wo die Hornaxt wartet.",
+			"description": "Je höher ich mich erhebe, desto mehr sehe ich.",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_illumination": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_secrethistories",
+			"label": "Geistige Ertüchtigung: Eine tiefere Konzentration",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"secrethistories": 1,
+				"lore": 1
+			},
+			"startdescription": "Niemand erinnert sich an alle Historien, weshalb auch niemand sie alle vergessen kann.",
+			"description": "Unbeweglichkeit ist die Tugend.",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_concentration": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_forge",
+			"label": "Geistige Ertüchtigung: Eine hellere Erleuchtung",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"forge": 1,
+				"lore": 1
+			},
+			"startdescription": "Ich werde mich selbst neu erschaffen, um die Nacht der Ignoranz zu erleuchten.",
+			"description": "Je höher ich mich erhebe, desto mehr sehe ich.",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_illumination": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_edge",
+			"label": "Geistige Ertüchtigung: Eine tiefere Konzentration",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"edge": 1,
+				"lore": 1
+			},
+			"startdescription": "Ich werde erbarmungslos sein. Nichts wird mich aufhalten können.",
+			"description": "Unbeweglichkeit ist die Tugend.",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_concentration": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionstarter",
+			"label": "Futter für meine Vorstellungskraft",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 2
+			},
+			"startdescription": "'Die Tiger des Zorns sind weiser als die Pferde der Unterweisung.' Wenn ich einige Zeit für mein Studium verwende, könnte ich meine Leidenschaft steigern und eine Fertigkeit hinzugewinnen.",
+			"description": "Es gibt mehr Fenster in meiner Seele, doch es ist nicht nur das Sonnenlicht, das durch ein Fenster kommt. [Ich habe meine Leidenschaft gesteigert, was beim nächsten Mal aber nicht mehr so leicht sein wird.]",
+			"effects": {
+				"glimmering": -2,
+				"passion": 1,
+				"skillpassiona": 1
+			},
+			"warmup": 60,
+			"maxexecutions": 1,
+			"craftable": true
+		},
+		{
+			"id": "studyincreaseglimmeringtoplus",
+			"label": "Futter für meine Vorstellungskraft",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 2
+			},
+			"startdescription": "'Die Tiger des Zorns sind weiser als die Pferde der Unterweisung.' Wenn ich einige Zeit für mein Studium verwende, könnte ich meine Leidenschaft steigern.",
+			"description": "Es gibt mehr Fenster in meiner Seele, doch es ist nicht nur das Sonnenlicht, das durch ein Fenster kommt. [Nutze diese Gelernte Lektion mit deiner Fertigkeit 'Vorstellungskraft'.]",
+			"effects": {
+				"glimmering": -2,
+				"glimmeringplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreaseglimmeringwithmothinfluencetoplus",
+			"label": "Futter für meine Vorstellungskraft",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 1,
+				"influencemoth": 1,
+				"lore": -1
+			},
+			"startdescription": "'Die Tiger des Zorns sind weiser als die Pferde der Unterweisung.' In dieser Jahreszeit unvorhergesehener Impulse könnte ich meine Leidenschaft steigern. [Fügst du das entsprechende Wissen hinzu, kannst du stattdessen einen noch mächtigeren okkulten Einfluss erzeugen.]",
+			"description": "Es gibt mehr Fenster in meiner Seele, doch es ist nicht nur das Sonnenlicht, das durch ein Fenster kommt. [Nutze diese Gelernte Lektion mit deiner Fertigkeit 'Vorstellungskraft'.]",
+			"effects": {
+				"influence": -2,
+				"glimmeringplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskilla",
+			"label": "Futter für meine Vorstellungskraft: Wilder ...",
+			"actionId": "study",
+			"requirements": {
+				"skillpassiona": 1,
+				"glimmeringplus": 2
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "'Wer begehrt, aber nicht handelt, verursacht Pestilenz.'",
+			"description": "Mein Verlangen wächst. Es kann sein, dass es meinen Taten immer voraus sein wird.",
+			"effects": {
+				"passion": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskillb",
+			"label": "Futter für meine Vorstellungskraft:  Am wildesten ...",
+			"actionId": "study",
+			"requirements": {
+				"skillpassionb": 1,
+				"glimmeringplus": 3
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "'Ermorde eher ein Kind in dessen Wiege als dein Verlangen nicht auszuleben.'",
+			"description": "In einer anderen Zeit wäre ich ein Seher gewesen, oder ein Ketzer.",
+			"effects": {
+				"passion": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskill_to_d_moth",
+			"label": "Ertüchtigung der Vorstellungskraft: Unverstand",
+			"actionId": "study",
+			"requirements": {
+				"skillpassionc": 1,
+				"glimmeringplus": 4,
+				"moth": 9,
+				"lore": 1
+			},
+			"startdescription": "Haare schneiden, Bande lösen, schnipp, schnapp.",
+			"description": "Bringt mir eure Antworten, und ich werde sie mit meinen Fragen schlagen ...",
+			"effects": {
+				"passion": 1,
+				"skillpassionc": -1,
+				"skillpassiond_unreason": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskill_to_d_heart",
+			"label": "Ertüchtigung der Vorstellungskraft: Unverstand",
+			"actionId": "study",
+			"requirements": {
+				"skillpassionc": 1,
+				"glimmeringplus": 4,
+				"heart": 1,
+				"lore": 1
+			},
+			"startdescription": "Die Donnerhaut gelobte: Wir enden nicht.",
+			"description": "Bringt mir eure Antworten, und ich werde sie mit meinen Fragen schlagen ...",
+			"effects": {
+				"passion": 1,
+				"skillpassionc": -1,
+				"skillpassiond_unreason": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskill_to_d_knock",
+			"label": "Ertüchtigung der Vorstellungskraft: Narretei",
+			"actionId": "study",
+			"requirements": {
+				"skillpassionc": 1,
+				"glimmeringplus": 4,
+				"knock": 1,
+				"lore": 1
+			},
+			"startdescription": "'Der Apfelbaum fragt nie die Buche, wie er wachsen soll, noch fragt der Löwe das Ross, wie er seine Beute schlagen soll.'",
+			"description": "Und nun liegt meine Seele bereit.",
+			"effects": {
+				"passion": 1,
+				"skillpassionc": -1,
+				"skillpassiond_folly": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskill_to_d_grail",
+			"label": "Ertüchtigung der Vorstellungskraft: Narretei",
+			"actionId": "study",
+			"requirements": {
+				"skillpassionc": 1,
+				"glimmeringplus": 4,
+				"grail": 1,
+				"lore": 1
+			},
+			"startdescription": "'Wer begehrt, aber nicht handelt, verursacht Pestilenz.'",
+			"description": "Und nun liegt meine Seele bereit.",
+			"effects": {
+				"passion": 1,
+				"skillpassionc": -1,
+				"skillpassiond_folly": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyhealth",
+			"label": "Frische Luft und Ertüchtigung",
+			"actionId": "study",
+			"requirements": {
+				"health": 1,
+				"lore": -1
+			},
+			"comments": "lore limiter added in case we use health for researching lore at some point",
+			"effects": {
+				"vitality": 1
+			},
+			"startdescription": "Lange Spaziergänge beseitigen Spinnweben.",
+			"description": "Ich habe meine Studien vernachlässigt, doch nun gehe ich etwas aufrechter.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyreason",
+			"label": "Lesen, was gerade zur Hand ist",
+			"actionId": "study",
+			"requirements": {
+				"reason": 1,
+				"lore": -1
+			},
+			"comments": "lore limiter added because we use reason for researching (splitting) lore",
+			"effects": {
+				"erudition": 1
+			},
+			"startdescription": "Die Welt ist voll des gedruckten Wortes. Selbst in den Zeitungen ist, ab und an, Wissen zu finden.",
+			"description": "Die Worte enthielten Wissen. Nun enthalte ich es. Es ist ein wenig wie Diebstahl und ein wenig wie Völlerei und ein wenig wie der Fortschritt einer ansteckenden Krankheit.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studypassion",
+			"label": "Sentimentale Literatur lesen",
+			"actionId": "study",
+			"requirements": {
+				"passion": 1
+			},
+			"comments": "lore limiter added in case we use passion for researching lore at some point",
+			"effects": {
+				"glimmering": 1
+			},
+			"startdescription": "Wollte ich irgendetwas lernen, würde ich dieses Zeug nicht lesen.",
+			"description": "Ich habe die Zeit totgeschlagen. Erst wollte ich weinen, dann wollte ich lachen. In der Zwischenzeit dreht sich die Welt weiter.",
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

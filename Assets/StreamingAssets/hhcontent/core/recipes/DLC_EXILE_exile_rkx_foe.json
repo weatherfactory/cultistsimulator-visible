@@ -1,0 +1,724 @@
+{
+    "recipes": [
+        {
+            "id": "rkx.foe.arrive",
+            "actionid": "rkx.foe",
+            "label": "My Foe is Almost Here!",
+            "startdescription": "Frost pinches the windows and shadow crisps the candle-flames. I know too well what these signs mean.",
+            "effects": {
+                "rkx.foe": 1
+            },
+            "extantreqs": {
+                "rkx.foe.defeated": -1
+            },
+            "warmup": 10,
+            "alt": [
+                {
+                    "id": "rkx.spawn.escort",
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "rkx.foe.obscured"
+                },
+                {
+                    "id": "rkx.foe.attack"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.arrive.mapedge",
+            "actionid": "rkx.foe",
+            "label": "My Foe Is On His Way",
+            "startdescription": "My reflection in a knife-blade shivers like an image on the surface of water. My shadow is long and strange in the chilly dawn hours that the Madrugad favours. These are the signs of my Foe's approach. Honour, or arrogance, will bring him here alone.",
+            "effects": {
+                "rkx.foe": 1
+            },
+            "extantreqs": {
+                "rkx.foe.defeated": -1
+            },
+            "linked": [
+                {
+                    "id": "rkx.foe.obscured"
+                },
+                {
+                    "id": "rkx.foe.attack"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "rkx.foe.arrive.defiance",
+            "actionid": "rkx.foe",
+            "label": "I've brought my Foe here!",
+            "startdescription": "Let's hope I don't regret it.",
+            "effects": {
+                "rkx.foe": 1
+            },
+            "extantreqs": {
+                "rkx.foe.defeated": -1
+            },
+            "alt": [
+                {
+                    "id": "foe.weaknesses.generate.backup",
+                    "additional": true
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "rkx.foe.attack"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.selector",
+            "actionid": "rkx.foe",
+            "label": "My Foe is Stalking Me",
+            "startdescription": "Even when I can't see him, I know he's there. He'll attack at any moment.",
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "rkx.foe.obscured"
+                },
+                {
+                    "id": "rkx.foe.attack",
+                    "chance": 30
+                },
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.obscured",
+            "actionid": "rkx.foe",
+            "label": "My Foe is close!",
+            "startdescription": "'You can't hide from me. I know you too well.'",
+            "extantreqs": {
+                "obscurity": 1
+            },
+            "effects": {
+                "obscurity": -1
+            },
+            "slots": [
+                {
+                    "id": "obscurity",
+                    "label": "Obscurity",
+                    "required": {
+                        "obscurity": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 20,
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.attack",
+            "actionid": "rkx.foe",
+            "label": "My Foe is Striking!",
+            "startdescription": "'You should have run further.'\n\n[The Foe's attacks will usually hit. Add an appropriate card to defend. Distractions will buy you extra respite, but the Foe is only vulnerable to a few Distractions; you'll know which once you've uncovered his Weaknesses. He may also sometimes break Weapons.]",
+            "slots": [
+                {
+                    "id": "defence",
+                    "label": "Defence",
+                    "required": {
+                        "lore": 1,
+                        "weapon": 1,
+                        "distraction": 1,
+                        "associate": 1,
+                        "defiance.consecration.lionsmith": 1
+                    },
+                    "forbidden": {
+                        "uq.weapon.profane": 1,
+                        "remnant": 1,
+                        "exhausted": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "rkx.spawn.escort",
+                    "additional": true
+                },
+                {
+                    "id": "rkx.foe.mock"
+                }
+            ],
+            "warmup": 20,
+            "effects": {
+                "husk": -1
+            },
+            "purge": {
+                "obscurity": 100
+            },
+            "linked": [
+                {
+                    "id": "rkx.foe.ligeian"
+                },
+                {
+                    "id": "rkx.foe.weaknessexploited.cold"
+                },
+                {
+                    "id": "rkx.foe.weaknessexploited.heat"
+                },
+                {
+                    "id": "rkx.foe.weaknessexploited.sea"
+                },
+                {
+                    "id": "rkx.foe.weaknessexploited.faith"
+                },
+                {
+                    "id": "rkx.foe.weaknessexploited.cats"
+                },
+                {
+                    "id": "rkx.foe.weaknessexploited.heights"
+                },
+                {
+                    "id": "rkx.foe.weaknessexploited.horned"
+                },
+                {
+                    "id": "rkx.foe.weaknessexploited.wolf"
+                },
+                {
+                    "id": "rkx.foe.weaknessexploited.flowermaker"
+                },
+                {
+                    "id": "rkx.foe.attack.success.wrongdistraction"
+                },
+                {
+                    "id": "rkx.foe.attack.success",
+                    "chance": 70
+                },
+                {
+                    "id": "rkx.foe.attack.failure"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.mock",
+            "actionid": "rkx.foe",
+            "label": "Laugh as the Lionsmith Laughed",
+            "startdescription": "I could lampoon my Foe with a certain very ancient mocking gesture... leaving myself open to attack. Perhaps the Hour called Lionsmith would enjoy my audacity. [Suffer two Wounds but gain a level of Defiance.]",
+            "requirements": {
+                "defiance.consecration.lionsmith": 1,
+                "defiance.foetaunted": -1
+            },
+            "mutations": [
+                {
+                    "filter": "defiance.consecration.lionsmith",
+                    "mutate": "defiancemarks",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "alt": [
+                {
+                    "id": "spit.foe.attack.success.mocked",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "desire": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "rkx.foe.attack.success.mocked"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.attack.success.mocked",
+            "actionid": "rkx.foe",
+            "label": "Strength before Cunning",
+            "startdescription": "My Foe hisses with fury! He lands a crushing blow before I can pull away.",
+            "linked": [
+                {
+                    "id": "rkx.foe.attack"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "spit.foe.attack.success.mocked",
+            "actionid": "spit.foe.attack",
+            "label": "Badly wounded!",
+            "startdescription": "I've paid the price for my audacity -",
+            "effects": {
+                "wound.exile": 2
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "warmup": 2
+        },
+        {
+            "id": "rkx.foe.ligeian",
+            "actionid": "rkx.foe",
+            "label": "Ligeian Interference",
+            "startdescription": "Even my Foe is wary of the Ligeians. He's hesitating.",
+            "requirements": {
+                "ligeian": 1
+            },
+            "effects": {
+                "ligeian": -1
+            },
+            "warmup": 30,
+            "alt": [
+                {
+                    "id": "spit.foe.attack.failure.ligeian",
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.weaknessexploited.cold",
+            "actionid": "rkx.foe",
+            "label": "The North Wind is my shield - ",
+            "startdescription": "The rumours are true - snow makes my Foe slow and stupid.",
+            "requirements": {
+                "op.cold": 1
+            },
+            "extantreqs": {
+                "uq.rkx.weakness.cold": 1
+            },
+            "purge": {
+                "rkx.weakness.cold.hidden": 1
+            },
+            "effects": {
+                "op.cold": -1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "rkx.foe.attack.failure"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.weaknessexploited.heat",
+            "actionid": "rkx.foe",
+            "label": "The sirocco is my shield - ",
+            "startdescription": "The rumours are true - when the weather is hot enough, my Foe becomes slow and stupid.",
+            "requirements": {
+                "op.heat": 1
+            },
+            "extantreqs": {
+                "uq.rkx.weakness.heat": 1
+            },
+            "purge": {
+                "rkx.weakness.heat.hidden": 1
+            },
+            "effects": {
+                "op.heat": -1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.weaknessexploited.sea",
+            "actionid": "rkx.foe",
+            "label": "The Sea is my shield -",
+            "startdescription": "All reckoners treat the sea with caution. But it's true what I've heard: my Foe especially fears its touch.",
+            "requirements": {
+                "op.sea": 1
+            },
+            "extantreqs": {
+                "uq.rkx.weakness.sea": 1
+            },
+            "purge": {
+                "rkx.weakness.sea.hidden": 1
+            },
+            "effects": {
+                "op.sea": -1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.weaknessexploited.faith",
+            "actionid": "rkx.foe",
+            "label": "Old Habits",
+            "startdescription": "As I long suspected, my Foe's upbringing has left its mark. He's not a believer, but he's bound by his respect for the forms of faith.",
+            "requirements": {
+                "op.faith": 1
+            },
+            "extantreqs": {
+                "uq.rkx.weakness.faith": 1
+            },
+            "purge": {
+                "rkx.weakness.faith.hidden": 1
+            },
+            "effects": {
+                "op.faith": -1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.weaknessexploited.cats",
+            "actionid": "rkx.foe",
+            "label": "The Lionsmith's Least Works",
+            "startdescription": "It's true! My Foe fears cats! He's long been ready to murder anyone who even hinted as much. Now I know why.",
+            "requirements": {
+                "op.cats": 1
+            },
+            "extantreqs": {
+                "uq.rkx.weakness.cats": 1
+            },
+            "purge": {
+                "rkx.weakness.cats.hidden": 1
+            },
+            "effects": {
+                "op.cats": -1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.weaknessexploited.heights",
+            "actionid": "rkx.foe",
+            "label": "Gravity's Menace",
+            "startdescription": "High places dizzy and demoralise my Foe. I've used this to my advantage.",
+            "requirements": {
+                "op.heights": 1
+            },
+            "extantreqs": {
+                "uq.rkx.weakness.heights": 1
+            },
+            "purge": {
+                "rkx.weakness.heights.hidden": 1
+            },
+            "effects": {
+                "op.heights": -1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.weaknessexploited.horned",
+            "actionid": "rkx.foe",
+            "label": "The Shadow of the Axe",
+            "startdescription": "The Horned Axe does not favour my Foe, and where its shadow falls, he hesitates.",
+            "requirements": {
+                "op.horned": 1
+            },
+            "extantreqs": {
+                "uq.rkx.weakness.horned": 1
+            },
+            "purge": {
+                "rkx.weakness.horned.hidden": 1
+            },
+            "effects": {
+                "op.horned": -1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.weaknessexploited.wolf",
+            "actionid": "rkx.foe",
+            "label": "The Breath of the Wolf",
+            "startdescription": "At some time in his long and inglorious career, my Foe did something to arouse the especial enmity of the Wolf-Divided. Where it's strong, he's wary.",
+            "requirements": {
+                "op.wolf": 1
+            },
+            "extantreqs": {
+                "uq.rkx.weakness.wolf": 1
+            },
+            "purge": {
+                "rkx.weakness.wolf.hidden": 1
+            },
+            "effects": {
+                "op.wolf": -1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.weaknessexploited.flowermaker",
+            "actionid": "rkx.foe",
+            "label": "The Flowermaker's Light",
+            "startdescription": "Something about the Flowermaker's influence confounds my Foe. I may never know exactly what.",
+            "requirements": {
+                "op.flowermaker": 1
+            },
+            "extantreqs": {
+                "uq.rkx.weakness.flowermaker": 1
+            },
+            "purge": {
+                "rkx.weakness.flowermaker.hidden": 1
+            },
+            "effects": {
+                "op.flowermaker": -1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ]
+        },
+        {
+            "id": "rkx.foe.attack.success.wrongdistraction",
+            "actionid": "rkx.foe",
+            "label": "A Guttural Chuckle",
+            "requirements": {
+                "lore": -1,
+                "weapon": -1,
+                "associate": -1,
+                "distraction": 1
+            },
+            "startdescription": "'@#op.cold|'I was <i>born</i> in snow.'\n#op.heat|'Nice weather for what I intend.'\n#op.sea|'Good idea. I'll feed what's left to the sharks.'\n#op.cats|'Here, kitten. Here.'\n#op.heights|'Long way down.'\n#op.faith|'Wrong god.'\n#op.flowermaker|'I call upon the Flowermaker, who always has what I desire...'\n#op.horned|'The Horned-Axe, who separates and distinguishes. Come here and be distinguished, then.'\n#op.wolf|'Appropriate. There'll be nothing left of you.' [This is not one of the Foe's Weaknesses.]@",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "alt": [
+                {
+                    "id": "spit.foe.attack.success",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 3,
+                        "filter": {
+                            "lore": 1,
+                            "weapon": 1,
+                            "distraction": 1
+                        }
+                    }
+                }
+            ],
+            "effects": {
+                "distraction": -1
+            },
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "rkx.foe.attack.success",
+            "actionid": "rkx.foe",
+            "label": "No Defence",
+            "startdescription": "'You were always too slow -'",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "alt": [
+                {
+                    "id": "spit.foe.attack.success",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 3,
+                        "filter": {
+                            "lore": 1,
+                            "weapon": 1,
+                            "distraction": 1
+                        }
+                    }
+                }
+            ],
+            "requirements": {
+                "lore": -1,
+                "weapon": -1,
+                "associate": -1
+            },
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "spit.foe.attack.success",
+            "actionid": "spit.foe.attack",
+            "label": "A Crushing Blow!",
+            "startdescription": "The bastard's still damnably strong. [Seven Wounds will kill you.]",
+            "effects": {
+                "wound.exile": 2
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "warmup": 2
+        },
+        {
+            "id": "rkx.foe.attack.failure",
+            "actionid": "rkx.foe",
+            "label": "My Foe, Stymied",
+            "startdescription": "I've held off his attack - ",
+            "alt": [
+                {
+                    "id": "spit.foe.attack.failure.lore",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "lore": 1
+                        }
+                    }
+                },
+                {
+                    "id": "spit.foe.attack.failure.weapon",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "weapon": 1
+                        }
+                    }
+                },
+                {
+                    "id": "spit.foe.attack.failure.associate",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "associate": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "rkx.foe.selector"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "spit.foe.attack.failure.lore",
+            "actionid": "spit.foe.attack.failure",
+            "requirements": {
+                "lore": 1
+            },
+            "label": "Defended with Training",
+            "startdescription": "This came in useful.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "warmup": 2
+        },
+        {
+            "id": "spit.foe.attack.failure.weapon",
+            "actionid": "spit.foe.attack.failure",
+            "requirements": {
+                "weapon": 1
+            },
+            "label": "Defended with Weaponry",
+            "startdescription": "This came in useful.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "linked": [
+                {
+                    "id": "spit.foe.attack.failure.weapon.broken",
+                    "chance": 30
+                }
+            ],
+            "warmup": 2
+        },
+        {
+            "id": "spit.foe.attack.failure.weapon.broken",
+            "actionid": "spit.foe.attack.failure",
+            "label": "'I'll break you, too -'",
+            "startdescription": "@#weapon.b.2.exhausted|He's too close! He snatches the rifle, breaks it like a stick and tosses it aside.\n#weapon.b.1.exhausted|He's too close! He snatches the rifle, breaks it like a stick and tosses it aside.\n#weapon.d.exhausted|He's seized Biedde's blade! He snaps it in two, one-handed.\n#weapon.e.exhausted|He's swept the Tectrix from my hand! A wind snatches it, and it's gone.@",
+            "requirements": {
+                "weapon.c.exhausted": -1
+            },
+            "effects": {
+                "exhausted": -3,
+                "curio": -1,
+                "husk": 1
+            },
+            "warmup": 2
+        },
+        {
+            "id": "spit.foe.attack.failure.associate",
+            "actionid": "spit.foe.attack.failure",
+            "requirements": {
+                "associate": 1
+            },
+            "label": "A Friend in Need",
+            "startdescription": "My associate's come to my defence!",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "linked": [
+                {
+                    "id": "spit.foe.attack.failure.associate.killed",
+                    "chance": 30
+                }
+            ],
+            "warmup": 2
+        },
+        {
+            "id": "spit.foe.attack.failure.associate.killed",
+            "actionid": "spit.foe.attack.failure",
+            "label": "An Unexpected Sacrifice",
+            "startdescription": "My friend's fallen in bitter battle! But they gave my Foe something to remember them by. [Allies and associates sometimes die when fighting the Foe. They can hurt him, but not deal a finishing blow.]",
+            "aspects": {
+                "killmortal": 1
+            },
+            "effects": {
+                "wound.foe": 1,
+                "grief": 1
+            },
+            "warmup": 2
+        },
+        {
+            "id": "spit.foe.attack.failure.ligeian",
+            "actionid": "spit.foe.attack.failure",
+            "label": "Something Greater",
+            "startdescription": "My Foe tangled with a member of the Ligeia Club, and now regrets it.",
+            "effects": {
+                "wound.foe": 1
+            },
+            "warmup": 2
+        }
+    ]
+}

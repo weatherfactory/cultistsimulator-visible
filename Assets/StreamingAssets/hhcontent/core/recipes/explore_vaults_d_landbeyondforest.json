@@ -1,0 +1,315 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaultlandbeyondforest1_setup",
+            "label": "Beginning an Expedition: the Cave of Candles",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforest1": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "guardian_serpent": 1
+            },
+            "startdescription": "The ascent to the cave through the high passes will be dangerous. Whatever waits in the darkness below is probably more dangerous still. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultlandbeyondforest2_setup",
+            "label": "Beginning an Expedition: the Voivode's Citadel",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforest2": 1
+            },
+            "effects": {
+                "seal_hiddendoor": 1,
+                "guardian_dead": 1
+            },
+            "startdescription": "The Voivode's vault will be hidden well, and if the stories are true, his victims may not rest peacefully in the dark behind the citadel's walls. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultlandbeyondforest3_setup",
+            "label": "Beginning an Expedition: Grunewald's Permanent Circus",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforest3": 1
+            },
+            "effects": {
+                "guardian_watchers": 1,
+                "curse_nowhere": 1
+            },
+            "startdescription": "The circus folk will be ready to take up arms against us, and the power in the Circus, we fear, may be Worm-touched. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultlandbeyondforest4_setup",
+            "label": "Beginning an Expedition: Tower Revek",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforest4": 1
+            },
+            "effects": {
+                "seal_hiddendoor": 1,
+                "curse_affliction": 1
+            },
+            "startdescription": "We will have to search assiduously to find whatever treasures might remain; and if the tower was truly destroyed in a battle between adepts, dangerous influences may still cling to it. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultlandbeyondforest5_setup",
+            "label": "Beginning an Expedition: the Kusnetsov Endowment",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforest5": 1
+            },
+            "effects": {
+                "seal_hiddendoor": 1,
+                "guardian_watchers": 1,
+                "peril_treacherousground": 1
+            },
+            "startdescription": "The journey to the Endowment buildings is not long, but the ground is difficult. We have sent three times for permission to visit, and received a less friendly answer each time. No doubt the staff will attempt to forbid our entry. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultlandbeyondforestdefault_setup",
+            "label": "Beginning an Expedition: Foxlily Meadows",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforestdefault": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "guardian_watchers": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "The path through the mountains to the high meadow will be hard. The peasants of the mountains will seek to drive us away. If we return home safe, we may struggle to shake off the visions of the place. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultlandbeyondforest1_success",
+            "label": "A Nest of Lights",
+            "actionid": "explore",
+            "requirements": {
+                "vaultlandbeyondforest1": 1
+            },
+            "effects": {
+                "vaultlandbeyondforest1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "influencelanternc",
+                    "accountkanishkspidersdooraramaic",
+                    "theskythesoularamaic",
+                    "ingredientlanternf"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The tunnels beneath the cave are smooth with the great serpent's passage, and chokingly dark until we come with our lanterns. But the chamber where it nested is surprisingly bright. Luminescent fungi flood the place with ersatz moonlight. Perhaps the candles drew it, not repelled it.",
+            "description": "A little cache of treasures, culled over the years from the serpent's meals. It has nosed them into a glinting pile.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultlandbeyondforest2_success",
+            "label": "The Empty Tomb",
+            "actionid": "explore",
+            "requirements": {
+                "vaultlandbeyondforest2": 1
+            },
+            "effects": {
+                "vaultlandbeyondforest2": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "influencegrailc",
+                    "gospelzacchaeusgreek",
+                    "catalogueofunchartedpleasuresphrygian",
+                    "bookofthronesphrygian",
+                    "twentysixenticementsseventormentsfucine",
+                    "toolheartd"
+                ],
+                "draws": 6,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "Here is the Voivode's mausoleum. Swagged cobwebs hang like soft grey drapes. A great sandstone sarcophagus stands upright at the far end. It's empty.",
+            "description": "Someone has left a little heap of treasures before the sarcophagus, like an offering. There are no footprints in the dust. Whoever left them came here long ago, or else has no need to touch the ground when they pass.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultlandbeyondforest3_success",
+            "label": "After the Circus",
+            "actionid": "explore",
+            "requirements": {
+                "vaultlandbeyondforest3": 1
+            },
+            "effects": {
+                "vaultlandbeyondforest3": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "erudition",
+                    "jumble",
+                    "sunsetpassageslatin",
+                    "historyofshadowlesskingsaramaic",
+                    "ivorybookfucine",
+                    "ingredientgrailf",
+                    "textbooksanskrit"
+                ],
+                "draws": 7,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "In the striped tent, coiling teratologies behind smeared and murky glass. In the grey tent, dripping fog that nuzzles us like a hunting cat - fog rank as an animal. In the black-and-starred tent, wonderful meshes of orrery and sculpture spangled with costume gems. In the red tent, the waxen priest in the glass coffin, and the books clasped to his chest -",
+            "description": "In the red tent, a madness of paper. The circus folk have pasted diagram-crowded paper to every surface: the anatomies of time, the dissections of old weather. The place stinks of Nowhere. We should burn it when we leave. A trestle table holds an unceremonious muddle of trophies and keepsakes.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultlandbeyondforest4_success",
+            "label": "A Long-Delayed Conclusion",
+            "actionid": "explore",
+            "requirements": {
+                "vaultlandbeyondforest4": 1
+            },
+            "effects": {
+                "vaultlandbeyondforest4": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "furioustantrasanskrit",
+                    "twinserpenttantrasanskrit",
+                    "howendwillbeginvak",
+                    "ingredientforgeb"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "Beneath the tower is a cramped cellar with cracked slate walls. The proportions - it should be a perfect cube, but somehow there are too many corners. Blue light festers at the junction of ceiling and wall. The floor flexes, slowly, like the skin of a bubble. It echoes to a stamped foot. What spaces open beneath?",
+            "description": "Bundle the books into a sack. Hurry up the handholds to the tower-stump. The sky above ripples with cobalt aurorae. The hills around are washed with shudders of blue light. There is a high and singing sound from the stones of the tower as we leave. Lightning cracks from the sky, and suddenly everything is silent. The tower-stump is gone.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultlandbeyondforest5_success",
+            "label": "Words' End",
+            "actionid": "explore",
+            "requirements": {
+                "vaultlandbeyondforest5": 1
+            },
+            "effects": {
+                "vaultlandbeyondforest5": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "burningwomanphrygian",
+                    "encirclingtantrasanskrit",
+                    "knownunknowntantrasanskrit",
+                    "ironbookfucine",
+                    "silverbookfucine",
+                    "matthiasamethystpursuitaramaic"
+                ],
+                "draws": 6,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The library ceiling collapsed years ago. Many of the books have been reduced to swollen pulp by dripping water. Something must remain. ",
+            "description": "A portrait of a genially smiling man - dark skin, bright eyes, neither hair nor eyebrows - watches over the ruined library. It is titled 'Don't Mind Me', and signed with an indecipherable serpentine scrawl. The paint is peeling. It watches us with its benevolent smile as we find intact treasures among the swollen books on the shelves.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultlandbeyondforestdefault_success",
+            "label": "The Nourishment of Blossoms",
+            "actionid": "explore",
+            "requirements": {
+                "vaultlandbeyondforestdefault": 1
+            },
+            "effects": {
+                "vaultlandbeyondforestdefault": -1
+            },
+            "deckeffects": {
+                "vaultrewardsd": 3
+            },
+            "startdescription": "We've dipped cloths in ammonia, and bound them round our faces, to deaden the foxlily scent. Even so, our heads swim, our bodies respond to a half-dozen contradictory desires. Here are the bones we sought. Loot them and get out.",
+            "description": "The foxlilies are white as cave-skin, white as frost, white as unsullied sheets. It is hard to look away. We will close our eyes and struggle away with our treasures.",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "expeditionascensionheartd",
+                    "chance": 100
+                },
+                {
+                    "id": "expeditionascensionmothd",
+                    "chance": 100
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1518 @@
+{
+	"recipes": [
+		{
+			"id": "dreamstartingpassion",
+			"label": "月夜の道",
+			"actionId": "dream",
+			"requirements": {
+				"passion": 1
+			},
+			"slots": [
+				{
+					"id": "Lore",
+					"label": "伝承",
+					"description": "寝る前にカルト修行をすれば、より深い夢への道が開けるかもしれない。",
+					"required": {
+						"lore": 1,
+						"waywood": 1
+					}
+				}
+			],
+			"startdescription": "この夢を知っている。丘の上に道があり、空気は銀色に輝いている。",
+			"description": "皺だらけの野原、川のせせらぎ。刺さるような冷たさ。",
+			"alternativerecipes": [
+				{
+					"id": "dreamreachwoodknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachwoodlantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachwoodmoth",
+					"chance": 100
+				},
+				{
+					"id": "dreamenterwood",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "moon",
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachwoodmoth",
+			"label": "シルシンの道",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"moth": 3
+			},
+			"comments": "requirement 3, not 2, because there's already moth in the mix.",
+			"startdescription": "森の力を称えて、眠る前に髪の毛を切ることもできる。",
+			"description": "道は木々の中にひっそりと佇み、青白い翼が夜の深みにはためく。根に足が引っ掛かりつまずいてしまった。低い枝を避けるために四つん這いになりたくなる。月は黒い葉の後ろを通り過ぎていったが、彼女の指はまだ私の髪の中に残っている。私はこの場所への道のりを忘れない。",
+			"effects": {
+				"waywood": 1,
+				"influencemoth": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachwoodknock",
+			"label": "蛇の道",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 2
+			},
+			"startdescription": "鍵屋は、特に足の裏を、蛇に噛まれて怪我を負った後に夢を見ることが多い。試してみる価値はあるかもしれない。",
+			"description": "足を引きずって道を歩いていると、溝の中に蛇を見つけた。私はそれを追いかけて廃墟を横切り、根でできた迷路の中へと入っていく。私の顔をなでるのは髪なのか、それとも苔なのだろうか。私は、案内役の真似をして、大地に寄り添うように低く身をかがめた。私はこの場所への道を忘れない。",
+			"effects": {
+				"waywood": 1,
+				"influencemoth": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachwoodlantern",
+			"label": "漂白された道",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 2
+			},
+			"startdescription": "シーツを漂白したり、壁を白くしたり、髪を染めたり、肌に色を塗ったり、色のない部屋でも寝ることができる。",
+			"description": "「色は光があるところにしか存在しない。そして、森はは光が届かないところにある」。夢の中で私は目を閉じて歩き、つまずき、足と膝を痛めた。やがて目の前の下草が生い茂りすぎて通れなくなり、目を開けると黒い木の間を彷徨っていた。影が舞う。私の足は帰り道を見つけてくれるだろう。",
+			"effects": {
+				"waywood": 1,
+				"influencemoth": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamusewoodway",
+			"label": "森への道",
+			"actionId": "dream",
+			"requirements": {
+				"waywood": 1
+			},
+			"slots": [
+				{
+					"id": "Path",
+					"label": "道",
+					"description": "情熱を使って森に入るか、適切な伝承があれば、死者が群がる白い扉への道を見つけることができる。",
+					"required": {
+						"lore": 1,
+						"passion": 1
+					}
+				}
+			],
+			"startdescription": "情熱があれば、夢の森への道を歩むことができる。正しい知識があれば、その先の道を見つけることができるかもしれない。",
+			"description": "森の水は冷たく深く流れているが、決して澄んではいない。記憶だけではそこには行けない。情熱を注ぎ込まねば。私は他の夢へと漂っていく。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				},
+				{
+					"id": "dreamenterwood",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachwhitelantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachwhiteknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachwhitewinter",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachwhitelantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachwhiteknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachwhitewinter",
+					"chance": 100
+				}
+			],
+			"craftable": true,
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreamenterwood",
+			"label": "森に入る",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"waywood": 1,
+				"passion": 1
+			},
+			"startdescription": "私は傷跡の残る木々の間を歩いている。月は枝の後ろを通り過ぎていったが、彼女の指はまだ私の髪の中に残っている。根に足が引っ掛かりつまずいてしまった。低い枝を避けるために四つん這いになりたくなる。青白い翼が夜の深みにはためく。",
+			"description": ".",
+			"portaleffect": "Wood",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"warmup": 0,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachwhitelantern",
+			"label": "森の光：足りない！",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 1
+			},
+			"startdescription": "森の中に家がある。私が知っているのはそれだけだ。木漏れ日が降り注いできた―― ",
+			"description": "夢の肌は夢の中で夢の棘に貫かれている。目が覚めたらベッドは血まみれになっているだろう。道は間違っていないが、先に進むためにもっと知らなくてはいけない。そして私は今、他の夢の中へ漂う。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachwhitelantern",
+			"label": "白い扉に近づく",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 4
+			},
+			"startdescription": "森の中に家がある。この家について知っていることがある。光への道を見つけるのに十分だろうか？",
+			"description": "ここは、霧と痕跡に包まれた「家」の境界線だ。車 車輪の神殿と呼ばれるこの岩は、教会の尖塔のようにそびえ立ち、黒い苔に覆われ、目が描かれている。その周りを歩いていくと、目の前に白い扉を見つけた。扉の縁から家の光が漏れ出す。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waywhite": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachwhiteknock",
+			"label": "森の光：足りない！",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 1
+			},
+			"startdescription": "森の中に家がある。私が知っているのはそれだけだ。木漏れ日が降り注いできた―― ",
+			"description": "夢の肌は夢の中で夢の棘に貫かれている。目が覚めたらベッドは血まみれになっているだろう。道は間違っていないが、先に進むためにもっと知らなくてはいけない。そして私は今、他の夢の中へ漂う。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"warmup": 10,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachwhiteknock",
+			"label": "白い扉に近づく",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 4
+			},
+			"startdescription": "森の中に家がある。開錠の秘密を十分に知っているから、絡み合った木々の間に隠された小道を見つけられるはずだ。",
+			"description": "ここは、霧と痕跡に包まれた「家」の境界線だ。車 車輪の神殿と呼ばれるこの岩は、教会の尖塔のようにそびえ立ち、黒い苔に覆われ、目が描かれている。その周りを歩いていくと、目の前に白い扉を見つけた。昔からそう定められていたように、扉は開いている。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waywhite": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachwhitewinter",
+			"label": "森の光：足りない！",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"winter": 1
+			},
+			"startdescription": "森の中に家がある。私が知っているのはそれだけだ。木漏れ日が降り注いできた―― ",
+			"description": "夢の肌は夢の中で夢の棘に貫かれている。目が覚めたらベッドは血まみれになっているだろう。道は間違っていないが、先に進むためにもっと知らなくてはいけない。そして私は今、他の夢の中へ漂う。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachwhitewinter",
+			"label": "白い扉に近づく",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"winter": 4
+			},
+			"startdescription": "森の中に家がある。その扉を時折死者が通るらしい。死者が通る小道の話を読んだことがある。",
+			"description": "ここは、霧と痕跡に包まれた「家」の境界線だ。車 車輪の神殿と呼ばれるこの岩は、教会の尖塔のようにそびえ立ち、黒い苔に覆われ、目が描かれている。その周りを歩いていくと、目の前に、冬の月のように輝く白い扉を見つけた。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waywhite": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamusewhiteway",
+			"label": "白い扉への道",
+			"actionId": "dream",
+			"requirements": {
+				"waywhite": 1
+			},
+			"slots": [
+				{
+					"id": "Ascent",
+					"label": "上昇",
+					"description": "白い扉を通るために体力を投資するか、欲に従って、知る者の扉、牡鹿の扉へ向かう。",
+					"required": {
+						"desire": 1,
+						"health": 1
+					}
+				}
+			],
+			"startdescription": "夢の中では白い扉への道を知っている。境界を通って行く道だ。しかし、その道はそこを通った死者で溢れている。彼らの冷たさに対抗するには体力が必要だ。",
+			"description": "狭い道には、ゆったりとしたシルエットが溢れ、彼らのため息で空気が震えている。私の血は寒さで濃くなる。引き返さなければ。私は他の夢へと漂っていく。",
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				},
+				{
+					"id": "dreamenterwhite",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachstagfirst",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachstagsubsequent",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamenterwhite",
+			"label": "白い扉を通る",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"waywhite": 1,
+				"health": 1
+			},
+			"startdescription": "これで私は境界を越えて、白い扉に近づくことができる。今なら指で押し付けて冷たさを感じ、開くところを見ることができる。扉が開くと、私の口は閉じ、締め付けられ、醜い欠陥のように癒される。マンサスのコバルトブルー色の光が、私を包む......",
+			"description": ".",
+			"portaleffect": "whitedoor",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"warmup": 0,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachstagfirst",
+			"label": "牡鹿の扉へ",
+			"actionId": "dream",
+			"requirements": {
+				"waywhite": 1,
+				"desire": 1
+			},
+			"extantreqs": {
+				"waystagbefore_1": -1,
+				"waystagbefore_2": -1,
+				"waystagbefore_3": -1,
+				"waystagbefore_4": -1,
+				"waystagbefore_5": -1,
+				"waystag_after": -1
+			},
+			"startdescription": "上昇は時間がかかる。どこからともなく吹く風が私を襲う。肌が光に染まる。森が遥か下で揺れている。",
+			"description": "牡鹿の扉：血まみれの角でできた畝状の壁で、船が通れるほどの大きさ。ずっと前に壊れて以来、今でもその傷跡は癒えていない。扉の横の下り傾斜には、傷のついた金色の大きな頭部が置いてある。その口は、顎が砕けていなければ、私を飲み込めるほど大きい。ギルビと呼ばれる名を持つ者だ。ギルビはなぞなぞを語り始めた。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"deckeffect": {
+				"stagriddles": 1
+			},
+			"warmup": 30,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachstagsubsequent",
+			"label": "もう一度、牡鹿の扉に",
+			"actionId": "dream",
+			"requirements": {
+				"waywhite": 1,
+				"desire": 1
+			},
+			"startdescription": "同じように上昇したことがあるが、もう一度やろうと何の役にも立たない。他の方法が思いつかなければ、なぞなぞを解くか......できるなら牡鹿の扉への道を使うべきだ。",
+			"description": "牡鹿の扉：血まみれの角でできた畝状の壁で、船が通れるほどの大きさ。ずっと前に壊れて以来、今でもその傷跡は癒えていない。扉の横の下り傾斜には、ギルビと呼ばれる、傷のついた金色の大きな頭部が置いてある。ギルビが、牡鹿の扉を通りたいなら、絶対に答えなくてはいけないなぞなぞを与えてくれた。[なぞなぞで夢を使って答えるか、すでに答えたなら、道：牡鹿の扉を使う。]",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dream_answerstagriddle_router",
+			"actionId": "dream",
+			"label": "ギルビのなぞなぞ",
+			"requirements": {
+				"riddle": 1
+			},
+			"slots": [
+				{
+					"id": "Answer",
+					"label": "答え",
+					"required": {
+						"lore": 1
+					}
+				}
+			],
+			"startdescription": "夢の中で私は、もう一度牡鹿の扉の前に立つ。それは血まみれの角でできた畝状の壁で、ずっと前に壊れて以来、今でもその傷は癒えていない。金色の大きな東部、ギルビが私の答えを待っている。",
+			"description": "頭は静かだ。扉は閉じたまま。私は他の夢へと漂っていく。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "dream_answerstagriddle_1",
+					"chance": 100
+				},
+				{
+					"id": "dream_answerstagriddle_1",
+					"chance": 100
+				},
+				{
+					"id": "dream_answerstagriddle_2",
+					"chance": 100
+				},
+				{
+					"id": "dream_answerstagriddle_3",
+					"chance": 100
+				},
+				{
+					"id": "dream_answerstagriddle_4",
+					"chance": 100
+				},
+				{
+					"id": "dream_answerstagriddle_5",
+					"chance": 100
+				},
+				{
+					"id": "dream_wronganswerstagriddle",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"comments": "Route through this to answer riddle.",
+			"craftable": true
+		},
+		{
+			"id": "dream_answerstagriddle_1",
+			"label": "迷宮の1本の糸",
+			"actionId": "dream",
+			"requirements": {
+				"waystagbefore_1": 1,
+				"fragmentmothc": 1
+			},
+			"startdescription": "「皮膚を脱ぐ者は知っているが、この質問にはたくさんの答えがある。これが私の答えだ......」",
+			"description": "ギシギシと音を立てて扉が開く。見張り番の明かりが廊下からから降り注いだ。頭部からギリビのうなり声がゴロゴロと聞こえる。溶けた真鍮の涙が目から溢れて頬を伝い、真下の地面を焦がした。中に入れる！",
+			"effects": {
+				"riddle": -1,
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"linked": [
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_answerstagriddle_2",
+			"label": "冷酷無情な答え",
+			"actionId": "dream",
+			"requirements": {
+				"waystagbefore_2": 1,
+				"fragmentlanternc": 1
+			},
+			"startdescription": "「影の中だけで」",
+			"description": "ギシギシと音を立てて扉が開く。見張り番の明かりが廊下からから降り注いだ。頭部からギリビのうなり声がゴロゴロと聞こえる。溶けた真鍮の涙が目から溢れて頬を伝い、真下の地面を焦がした。中に入れる！",
+			"effects": {
+				"riddle": -1,
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"linked": [
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_answerstagriddle_3",
+			"actionId": "dream",
+			"label": "望ましい答え",
+			"requirements": {
+				"waystagbefore_3": 1,
+				"fragmentgrailc": 1
+			},
+			"startdescription": "「これがその言葉だ......」",
+			"description": "ギシギシと音を立てて扉が開く。見張り番の明かりが廊下からから降り注いだ。頭部からギリビのうなり声がゴロゴロと聞こえる。溶けた真鍮の涙が目から溢れて頬を伝い、真下の地面を焦がした。中に入れる！",
+			"effects": {
+				"riddle": -1,
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"linked": [
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_answerstagriddle_4",
+			"actionId": "dream",
+			"label": "蛇の答え",
+			"requirements": {
+				"waystagbefore_4": 1,
+				"fragmentknockc": 1
+			},
+			"startdescription": "「私自身が開かなくてはいけない。見よ、私の流れる血を」",
+			"description": "ギシギシと音を立てて扉が開く。見張り番の明かりが廊下からから降り注いだ。頭部からギリビのうなり声がゴロゴロと聞こえる。溶けた真鍮の涙が目から溢れて頬を伝い、真下の地面を焦がした。中に入れる！",
+			"effects": {
+				"riddle": -1,
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"linked": [
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_answerstagriddle_5",
+			"actionId": "dream",
+			"label": "歴史の答え",
+			"requirements": {
+				"waystagbefore_5": 1,
+				"fragmentsecrethistoriesc": 1
+			},
+			"startdescription": "「彼女の心は別の歴史に埋もれている」。",
+			"description": "ギシギシと音を立てて扉が開く。見張り番の明かりが廊下からから降り注いだ。頭部からギリビのうなり声がゴロゴロと聞こえる。溶けた真鍮の涙が目から溢れて頬を伝い、真下の地面を焦がした。中に入れる！",
+			"effects": {
+				"riddle": -1,
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"linked": [
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_wronganswerstagriddle",
+			"actionId": "dream",
+			"label": "それは答えではない",
+			"requirements": {
+				"lore": 1
+			},
+			"startdescription": "ギルビは落ちぶれてしまった。家に入ることができないギルビに残された数少ない楽しみの1つは、他の者が家に入ることを拒否することだ。自尊心が高すぎるため私をあざけたりはしないが、黄金色の瞳には満足感が映っている。「それは答えになっていない」と、言葉の1つひとつを味わいながら言う。",
+			"description": "私は目を覚ました。目は開いているが、牡鹿の扉は閉じたままだ。今、私は他の夢へと漂っていく。",
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreamusestagway",
+			"label": "牡鹿の扉への道",
+			"actionId": "dream",
+			"requirements": {
+				"waystag_after": 1
+			},
+			"slots": [
+				{
+					"id": "Ascent",
+					"label": "上昇",
+					"description": "牡鹿の扉を通過するために理性を投資する――または、適切な伝承を使用して、蜘蛛の扉、血の流れる扉への道を見つける。",
+					"required": {
+						"reason": 1,
+						"lore": 1
+					}
+				}
+			],
+			"startdescription": "夢の中では、境界の迷路を抜けて牡鹿の扉へたどり着く道を知っていた。ギルビは私を通してくれるが、その道はいつでもパズルのようだ。理性が必要になる。",
+			"description": "この境界の高台にあり乾燥している小道には、一万年以上前からある複雑な亀裂や罠がある。理性が足りない。扉が見える前に目を覚ましてしまうだろう。そして私は、他の夢へと漂っていく。",
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				},
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachspiderlantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachspiderknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachspidergrail",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachspiderlantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachspiderknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachspidergrail",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "dreamenterstag",
+			"label": "牡鹿の扉を通る",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "牡鹿の扉は高僧の門だ。ここを通るということは、太陽の棲む家の1つ目の真の神秘に導かれるということである。ギルビは、彼が入れないところに私が入るのを見て泣いたが、私を通さなければならなかった。扉の傷ついた弁が軋みながら開く。",
+			"description": ".",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"portaleffect": "stagdoor",
+			"warmup": 30
+		},
+		{
+			"id": "dreamnotquitereachspiderlantern",
+			"label": "シルクの砂：足りない！",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 1
+			},
+			"startdescription": "夢の中で、シルクの砂はささやく場所である。灰色の砂利が震え、灰色の雑草が震える。辿らなくてはいけない角ばった道について読んだことがある。それは背中を丸くした、目に見えない、ゆっくりと動く砂の住人たちが残したものらしい―― ",
+			"description": "砂が私の足跡を飲み込む。流れ込み口や目を塞ぐ。目覚めたら、舌は腫れ、喉は痛いほど乾いているだろう。道は間違っていないが、上に進むためにもっと知らなくてはいけない。そして私は今、他の夢の中へ漂う。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachspiderlantern",
+			"label": "蜘蛛の扉に近づく",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 8
+			},
+			"startdescription": "夢の中で、シルクの砂はささやく場所である。灰色の砂利が震え、灰色の雑草が震える。辿らなくてはいけない角ばった道について読んだことがある。それは背中を丸くした、目に見えない、ゆっくりと動く砂の住人たちが残したものらしい―― ",
+			"description": "砂は水のように流れ去り、その下に昔、神々が生まれた石が現れる。その先に見える扉は雨のように光り、黒い表面から、腫れたダニのように丸い血の滴がにじみ出ている。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"wayspider": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachspiderknock",
+			"label": "シルクの砂：足りない！",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 1
+			},
+			"startdescription": "夢の中で、シルクの砂はささやく場所である。灰色の砂利が震え、灰色の雑草が震える。風を開く言葉を知っている私を―― ",
+			"description": "砂が私の足跡を飲み込む。流れ込み口や目を塞ぐ。目覚めたら、舌は腫れ、喉は痛いほど乾いているだろう。道は間違っていないが、上に進むためにもっと知らなくてはいけない。そして私は今、他の夢の中へ漂う。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachspiderknock",
+			"label": "蜘蛛の扉に近づく",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 8
+			},
+			"startdescription": "夢の中で、シルクの砂はささやく場所である。灰色の砂利が震え、灰色の雑草が震える。風を開く言葉を知っている私を、砂は通してくれるだろう―― ",
+			"description": "砂は水のように流れ去り、その下に昔、神々が生まれた石が現れる。その先に見える扉は雨のように光り、黒い表面から、腫れたダニのように丸い血の滴がにじみ出ている。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"wayspider": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachspidergrail",
+			"label": "シルクの砂：足りない！",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"grail": 1
+			},
+			"startdescription": "夢の中で、シルクの砂はささやく場所である。灰色の砂利が震え、灰色の雑草が震える。渇きが砂を導く唯一の道しるべである――己の渇きか、蜘蛛の扉の渇きか――",
+			"description": "砂が私の足跡を飲み込む。流れ込み口や目を塞ぐ。目覚めたら、舌は腫れ、喉は痛いほど乾いているだろう。道は間違っていないが、上に進むためにもっと知らなくてはいけない。そして私は今、他の夢の中へ漂う。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachspidergrail",
+			"label": "蜘蛛の扉に近づく",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"grail": 8
+			},
+			"startdescription": "夢の中で、シルクの砂はささやく場所である。灰色の砂利が震え、灰色の雑草が震える。渇きが砂を導く唯一の道しるべである――己の渇きか、蜘蛛の扉の渇きか――",
+			"description": "砂は水のように流れ去り、その下に昔、神々が生まれた石が現れる。その先に見える扉は雨のように光り、黒い表面から、腫れたダニのように丸い血の滴がにじみ出ている。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"wayspider": 1
+			}
+		},
+		{
+			"id": "dreamusespiderway",
+			"label": "蜘蛛の扉への道",
+			"actionId": "dream",
+			"requirements": {
+				"wayspider": 1
+			},
+			"slots": [
+				{
+					"id": "Ascent",
+					"label": "上昇",
+					"description": "蜘蛛の扉の渇きを満たすために、血の生贄を捧げる。または、適切な伝承があれば、クジャクの扉、血が光のようにこぼれる扉への道を見つけられる。",
+					"required": {
+						"prisoner": 1,
+						"lore": 1
+					}
+				}
+			],
+			"startdescription": "夢の中で、シルクの砂を通って蜘蛛の扉へたどり着く道を知っている。眠る前に新鮮な血を流してその渇きを癒したら......扉は開いてくれるだろう。",
+			"description": "この夢の中に隠された扉は、土蜂の腹のように黒く輝き、永遠に縮み続ける血の斑点に染まっている。その渇きを満たせなかった私に、扉は開いてくれないだろう。そして私は今、他の夢へと漂う。",
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				},
+				{
+					"id": "dreamenterspider",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachpeacocklantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachpeacockknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachpeacockedge",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachpeacocklantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachpeacockknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachpeacockedge",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "dreamenterspider",
+			"label": "蜘蛛の扉に入る",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"wayspider": 1,
+				"prisoner": 1
+			},
+			"startdescription": "蜘蛛の門はいつでも喉を渇かせている。いつものことだ。私が与えた血は糸のように滲み、世界の表面を伝ってこぼれ落ちる。扉がそれを飲み、一瞬の満足感を得ると通り口を膨らませ、私を通してくれる。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"prisoner": -1
+			},
+			"description": ".",
+			"portaleffect": "spiderdoor",
+			"warmup": 0
+		},
+		{
+			"id": "dreamnotquitereachpeacocklantern",
+			"label": "ガラスの庭：足りない！",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 1
+			},
+			"startdescription": "分裂した太陽の光が夢に突き刺さったが、ガラスの庭に咲くはるか昔に枯れた霜の花を溶かすほどではなかった。一歩一歩踏み込むたびに、花が粉々に砕け散っていく。この道は、かつては明るい時の神が歩んだ道だが、今は雲の中で静寂が漂う―― ",
+			"description": "ガラスの庭の冷たい静けさが、私のあらゆる毛穴を突き刺す。寒さで青白くなって目が覚めるだろう。道は間違っていないが、上に進むためにもっと知らなくてはいけない。そして私は今、他の夢の中へ漂う。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreamreachpeacocklantern",
+			"label": "ガラスの庭：孔雀の扉に近づく",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 10
+			},
+			"startdescription": "分裂した太陽の光が夢に突き刺さったが、ガラスの庭に咲くはるか昔に枯れた霜の花を溶かすほどではなかった。一歩一歩踏み込むたびに、花が粉々に砕け散っていく。この道は、かつては明るい時の神が歩んだ道だが、今は雲の中で静寂が漂う―― ",
+			"description": "孔雀の扉：誇り高く輝くアメジスト。その輝きはガラスの庭の青白い雪の空間を鮮やかに彩る。ここは、定命の者が入ることができるマンサスの最高地点。扉の表面に亀裂は入っていない。この扉は開く扉ではないが、伝説によると、光が差し込むかもしれないと言われている。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waypeacock": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachpeacockknock",
+			"label": "ガラスの庭：足りない！",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 1
+			},
+			"startdescription": "分裂した太陽の光が夢に突き刺さったが、ガラスの庭に咲くはるか昔に枯れた霜の花を溶かすほどではなかった。一歩一歩踏み込むたびに、花が粉々に砕け散っていく。歩むべき道はほとんどわかっている――. ",
+			"description": "ガラスの庭の冷たい静けさが、私のあらゆる毛穴を突き刺す。寒さで青白くなって目が覚めるだろう。道は間違っていないが、上に進むためにもっと知らなくてはいけない。そして私は今、他の夢の中へ漂う。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreamreachpeacockknock",
+			"label": "ガラスの庭：孔雀の扉に近づく",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 10
+			},
+			"startdescription": "分裂した太陽の光が夢に突き刺さったが、ガラスの庭に咲くはるか昔に枯れた霜の花を溶かすほどではなかった。一歩一歩踏み込むたびに、花が粉々に砕け散っていく。慎重に歩くつもりだ。歩むべき道を、私は覚えた―― ",
+			"description": "孔雀の扉：誇り高く輝くアメジスト。その輝きはガラスの庭の青白い雪の空間を鮮やかに彩る。ここは、定命の者が入ることができるマンサスの最高地点。扉の表面に亀裂は入っていない。この扉は開く扉ではないが、伝説によると、光が差し込むかもしれないと言われている。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waypeacock": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachpeacockedge",
+			"label": "ガラスの庭：足りない！",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"edge": 1
+			},
+			"startdescription": "分裂した太陽の光が夢に突き刺さったが、ガラスの庭に咲くはるか昔に枯れた霜の花を溶かすほどではなかった。一歩一歩踏み込むたびに、花が粉々に砕け散っていく。これが本来あるべき姿なのだ――. ",
+			"description": "孔雀の扉：誇り高く輝くアメジスト。その輝きはガラスの庭の淡い雪の空間を鮮やかに彩る。ここは、定命の者が入ることができるマンサスの最高地点。扉の表面に亀裂は入っていない。この扉は開く扉ではないが、伝説によると、光が差し込むかもしれないと言われている。そして私は今、他の夢の中へ漂う。",
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachpeacockedge",
+			"label": "ガラスの庭：孔雀の扉に近づく",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"edge": 10
+			},
+			"startdescription": "分裂した太陽の光が夢に突き刺さったが、ガラスの庭に咲くはるか昔に枯れた霜の花を溶かすほどではなかった。一歩一歩踏み込むたびに、花が粉々に砕け散っていく。これが本来あるべき姿なのだ。伝承通りに、私は慎重に足を進めよう――",
+			"description": "孔雀の扉：誇り高く輝くアメジスト。その輝きはガラスの庭の青白い雪の空間を鮮やかに彩る。ここは、定命の者が入ることができるマンサスの最高地点。扉の表面に亀裂は入っていない。この扉は開く扉ではないが、伝説によると、光が差し込むかもしれないと言われている。",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waypeacock": 1
+			}
+		},
+		{
+			"id": "dreamusepeacockway",
+			"label": "孔雀の扉への道",
+			"actionId": "dream",
+			"requirements": {
+				"waypeacock": 1
+			},
+			"slots": [
+				{
+					"id": "Ascent",
+					"label": "上昇",
+					"description": "孔雀の扉は開かない。",
+					"required": {
+						"tool": 1
+					}
+				}
+			],
+			"startdescription": "夢の中で、ガラスの庭を通って孔雀の扉へたどり着く道を知っている。最も立派で、鏡のように輝く扉だ。必要なものが揃えば、通ることができるかもしれない。",
+			"description": "孔雀の扉は紫色で、それはまるで、この世で一番美しい宝石や、熟しすぎた果実、深みのなさすぎる文章のようだ。扉に自分の姿を映しても何も見えない。目が覚めても夢を思い出すことはないだろう。",
+			"craftable": true,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				},
+				{
+					"id": "apostlelantern.createpillar2",
+					"chance": 100
+				},
+				{
+					"id": "dreamenterpeacockmirror",
+					"chance": 100
+				},
+				{
+					"id": "dreamenterpeacockfrangiclave",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "dreamenterpeacockmirror",
+			"label": "孔雀の扉をくぐる",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"waypeacock": 1,
+				"mirror": 1
+			},
+			"startdescription": "孔雀の扉には、私が寝ている間に手にした鏡が映り込み、鏡には孔雀の扉が映っている。快楽の震えが表面を駆け抜ける。扉は裂け目に痛むが、その快感を知ったとき、私は中に入れるだろう。",
+			"description": ".",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"portaleffect": "peacockdoor",
+			"aspects": {
+				"crackmirror": 1
+			},
+			"warmup": 0
+		},
+		{
+			"id": "dreamenterpeacockfrangiclave",
+			"label": "孔雀の扉をくぐる",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"waypeacock": 1,
+				"toolknockf": 1
+			},
+			"startdescription": "音叉の音で手の中の鍵が脈打ち、それに呼応して孔雀の扉がうめき声をあげた。快楽の震えが表面を駆け抜ける。扉は裂け目に痛むが、その快感を知ったとき、私は中に入れるだろう。",
+			"description": ".",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"portaleffect": "peacockdoor",
+			"warmup": 0
+		},
+		{
+			"id": "poison.long.way.trap",
+			"actionId": "poison.long.way.trap",
+			"label": "道端の守り手",
+			"startdescription": "長生者は扉の前に目に見えない地図製作者を配置した。私が通過するたびに観察して、未開拓地のように私の位置を特定するのだろう。",
+			"requirements": {
+				"poison.way.long": 1
+			},
+			"effects": {
+				"long.lesson.dreamwork": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "dreamheartvictoryintro",
+			"label": "嵐の中の太鼓",
+			"actionId": "dream",
+			"requirements": {
+				"sendingheartg": 1
+			},
+			"startdescription": "寝ようとした矢先、強風が吹き荒れ、屋根がガタガタと音を立てた。眠れない夜にちょうど良い苦いハーブがある。周りには森が広がっていたが、新しい目で見ると、全く違う道が見えてくる。マリネットという人が、その道沿いで待っている。私を終わらせ、始める鍵を持って。",
+			"warmup": 30,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "最愛の人",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dreamheartvictory_withrisen",
+					"chance": 100
+				},
+				{
+					"chance": 100,
+					"id": "belovedfarewelldream"
+				},
+				{
+					"id": "dreamheartvictory",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreamheartvictory",
+			"label": "キングスキンゲート",
+			"actionId": "dream",
+			"requirements": {
+				"sendingheartg": 1
+			},
+			"startdescription": "マリネットは松の木の影で待っている。浅黒い肌と白い骨がきらきらと輝き、爪は真鍮のように輝く。彼女は血のついたナイフかルビーの傷に見える赤い鍵を持っている。彼女がそれを落とすと、その痛みは真っ赤に染まる。",
+			"ending": "minorheartvictory",
+			"warmup": 30
+		},
+		{
+			"id": "dreamheartvictory_withrisen",
+			"label": "キングスキンゲート",
+			"actionId": "dream",
+			"requirements": {
+				"sendingheartg": 1,
+				"summoned": 1
+			},
+			"startdescription": "マリネットは松の木の影で待っている。浅黒い肌と白い骨がきらきらと輝き、爪は真鍮のように輝く。彼女は血のついたナイフかルビーの傷に見える赤い鍵を持っている。彼女がそれを落とすと、その痛みは真っ赤に染まる。\n\n死んだ恋人が木の下の暗闇から見つめている。その肌は斑点だらけで、目は灯りのように光っていた。",
+			"ending": "minorheartvictorywithrisen",
+			"warmup": 10
+		},
+		{
+			"id": "dreammothvictoryintro",
+			"label": "嵐の中の太鼓",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothg": 1
+			},
+			"startdescription": "慣れ親しんだ夢の中の道を漂っていると、森が姿を現し、木々や影に囲まれた道が広がる森が現れた。森の扉は井戸の水の下にある。今の私はそれを知っている。生きても死んでも潜り抜けることはできない。生きても死んでもいないメドゥーサが道を切り拓くだろう。私は小走りに駆け出した。",
+			"warmup": 30,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "最愛の人",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dreammothvictory_withrisen",
+					"chance": 100
+				},
+				{
+					"chance": 100,
+					"id": "belovedfarewelldream"
+				},
+				{
+					"id": "dreammothvictory",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreammothvictory",
+			"label": "森の扉",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothg": 1
+			},
+			"startdescription": "月明かりが木を裂き、井戸の中を暗くし、木の根の輪郭を描く。そしてそれは、井戸のそばで待つメドゥーサのねじれた手足に触れるようになった。彼女は、牙を持つミミズのように捻じれ、滴る両腕を持ち上げた。その手には青白い鍵が握られている。私は、赤鹿のように首を差し出して跪いた。井戸の中に血が吹き出し、メドゥーサは私を新しい形に刻み始めた。",
+			"ending": "minormothvictory",
+			"warmup": 30
+		},
+		{
+			"id": "dreammothvictory_withrisen",
+			"label": "森の扉",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothg": 1,
+				"summoned": 1
+			},
+			"startdescription": "月明かりが木を裂き、井戸の中を暗くし、木の根の輪郭を描く。そしてそれは、井戸のそばで待つメドゥーサのねじれた手足に触れるようになった。彼女は、牙を持つミミズのように捻じれ、滴る両腕を持ち上げた。その手には青白い鍵が握られている。私は、赤鹿のように首を差し出して跪いた。井戸の中に血が吹き出し、メドゥーサは私を新しい形に刻み始めた。\n\n死んだ恋人が木の下の暗闇から見つめている。その肌は斑点だらけで、目は灯りのように光っていた。",
+			"ending": "minormothvictorywithrisen",
+			"warmup": 10
+		},
+		{
+			"id": "dreammeniscatevictoryintro",
+			"label": "壁のないところ",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothheartg": 1
+			},
+			"startdescription": "慣れ親しんだ夢の中の道を漂っていると、森が姿を現し、木々や影に囲まれた道が広がる森が現れた。しかし、ここは私の知っている森ではない。白樺の木ばかりで、月明かりのように白く、月明かりは墨のように黒い。その圧力に押されて、白い木の皮が水ぶくれになり、血のように流れ出す。私は小走りに駆け出し、そして駆け足で走り出した。目が覚める前に、いや、もっと酷いことが起こる前に、井戸にたどり着かなければ―― ",
+			"warmup": 30,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "最愛の人",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dreammeniscatevictory_withrisen",
+					"chance": 100
+				},
+				{
+					"chance": 100,
+					"id": "belovedfarewelldream"
+				},
+				{
+					"id": "dreammeniscatevictory",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreammeniscatevictory",
+			"label": "三",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothheartg": 1
+			},
+			"startdescription": "肌がボロボロになってきた。井戸は先にあるが、月が黒、金色、真珠色と変わっていく。井戸の血は赤い鏡となり、3つの姿が浮かび上がる。彼らの顔は私のものとなり、月のような角を生やしていた。そのうちの一人がブラックサファイアの鍵を握り、私の肌を切り裂くと、私の体は稲妻のように裂け散る。そして、内にあるものは外に、外にあるものは内に――",
+			"ending": "minormeniscatevictory",
+			"warmup": 30
+		},
+		{
+			"id": "dreammeniscatevictory_withrisen",
+			"label": "三",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothheartg": 1,
+				"summoned": 1
+			},
+			"startdescription": "肌がボロボロになってきた。井戸は先にあるが、月が黒、金色、真珠色と変わっていく。井戸の血は赤い鏡となり、3つの姿が浮かび上がる。彼らの顔は私のものとなり、月のような角を生やしていた。そのうちの一人がブラックサファイアの鍵を握り、私の肌を切り裂くと、私の体は稲妻のように裂け散る。そして、内にあるものは外に、外にあるものは内に――",
+			"ending": "minormeniscatevictorywithrisen",
+			"warmup": 30
+		},
+		{
+			"id": "belovedfarewelldream",
+			"label": "入り口の選択",
+			"actionId": "dream",
+			"requirements": {
+				"romanticinterest": 1
+			},
+			"startdescription": "最後の別れだ。彼らは残り、私は上昇する。",
+			"slots": [
+				{
+					"id": "decision",
+					"label": "決断",
+					"description": "[情熱を追加して上昇から身を翻し......最愛の人と定命の者として生きる。何もしなくても次へ進む。]",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "auclairvictory",
+					"chance": 100
+				},
+				{
+					"id": "catvictory",
+					"chance": 100
+				},
+				{
+					"id": "clovettevictory",
+					"chance": 100
+				},
+				{
+					"id": "cliftonvictory",
+					"chance": 100
+				},
+				{
+					"id": "dorothyvictory",
+					"chance": 100
+				},
+				{
+					"id": "elridgevictory",
+					"chance": 100
+				},
+				{
+					"id": "enidvictory",
+					"chance": 100
+				},
+				{
+					"id": "laidlawvictory",
+					"chance": 100
+				},
+				{
+					"id": "leovictory",
+					"chance": 100
+				},
+				{
+					"id": "nevillevictory",
+					"chance": 100
+				},
+				{
+					"id": "portervictory",
+					"chance": 100
+				},
+				{
+					"id": "reniravictory",
+					"chance": 100
+				},
+				{
+					"id": "rosevictory",
+					"chance": 100
+				},
+				{
+					"id": "salibavictory",
+					"chance": 100
+				},
+				{
+					"id": "sleevictory",
+					"chance": 100
+				},
+				{
+					"id": "sylviavictory",
+					"chance": 100
+				},
+				{
+					"id": "tristanvictory",
+					"chance": 100
+				},
+				{
+					"id": "valcianevictory",
+					"chance": 100
+				},
+				{
+					"id": "victorvictory",
+					"chance": 100
+				},
+				{
+					"id": "violetvictory",
+					"chance": 100
+				},
+				{
+					"id": "ysabetvictory",
+					"chance": 100
+				},
+				{
+					"id": "imnotinlovedream",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "imnotinlovedream",
+			"label": "献身",
+			"startdescription": "愛されているかもしれないし、愛しているかもしれない。もしかすると、どうでも良いことなのかもしれない。",
+			"actionId": "dream",
+			"craftable": false,
+			"linked": [
+				{
+					"id": "dreammothvictory",
+					"chance": 100
+				},
+				{
+					"id": "dreamheartvictory",
+					"chance": 100
+				},
+				{
+					"id": "dreammeniscatevictory",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

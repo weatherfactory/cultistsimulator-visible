@@ -1,0 +1,266 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultrendingmountains1_setup",
+			"label": "遠征の始まり：ハンターの穴",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultrendingmountains1": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"guardian_watchers": 1,
+				"guardian_serpent": 1
+			},
+			"startdescription": "引き裂き部族の罠迷宮。山を登り、部族と戦うしかない。その先には、間違いなく何かがあるだろう。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultrendingmountains2_setup",
+			"label": "遠征の始まり：雪の守り人",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultrendingmountains2": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"guardian_dead": 1,
+				"curse_nowhere": 1
+			},
+			"startdescription": "山の雪を乗り越えれば、寺院にたどり着くだろう。死者が現れたら、反撃をしなくてはいけない。しかし、ここには制圧しなければ、旅の終わりまで我々の後を追ってくる悪が立ちはだかる。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultrendingmountains3_setup",
+			"label": "遠征の始まり：イキルマウィの瞳",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultrendingmountains3": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"seal_wardeddoor": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "展望台との間には、裂け目の山が立ちはだかっている。扉は封印され、我々を阻むだろう。幻影を見つけたら、五感を引き裂かれるかもかもしれない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultrendingmountains4_setup",
+			"label": "遠征の始まり：狼の霊廟",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultrendingmountains4": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"seal_wardeddoor": 1,
+				"guardian_dead": 1
+			},
+			"startdescription": "太陽の死が宣告された時、太陽はここに来たのだろうか？早すぎる宣告だったのかもしれない。いずれにしても、もし我々が太陽の進行を妨害するならば、雪崩や怒り狂う幽霊、建築家である高僧によって封印された扉と直面することになるだろう。覚悟をしておこう。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultrendingmountainsdefault_setup",
+			"label": "遠征の始まり：影のない王たちの墓",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultrendingmountainsdefault": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"seal_hiddendoor": 1,
+				"guardian_watchers": 1,
+				"curse_affliction": 1
+			},
+			"startdescription": "山を越えて守護者たちを乗り越え、影のない王の呪いに立ち向かわなければいけない。そうすればきっと、宝物が見つかるだろう。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultrendingmountains1_success",
+			"label": "戦争の記憶",
+			"actionId": "explore",
+			"requirements": {
+				"vaultrendingmountains1": 1
+			},
+			"effects": {
+				"vaultrendingmountains1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientedgef",
+					"ingredientedgef",
+					"ingredientedgef",
+					"toolforged",
+					"bookofdissolutionmandaic",
+					"ingredientforgeb",
+					"ingredientforgeb",
+					"ingredientforgeb",
+					"textbookmandaicaramaic"
+				],
+				"draws": 9,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "崩壊したハンターの洞窟の奥深くで、壁に戦闘場面が描かれた部屋を見つけた。ここには、引き裂き部族の偉大なハンターの祠がある。",
+			"description": "ハンターたちが勝ち取った戦利品が残っている。彼らが倒した獣の中には、今では絶滅危惧種となったものもいた。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultrendingmountains2_success",
+			"label": "祭壇の服装",
+			"actionId": "explore",
+			"requirements": {
+				"vaultrendingmountains2": 1
+			},
+			"effects": {
+				"vaultrendingmountains2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolgraild",
+					"wherehasshegonevak",
+					"tooledgef",
+					"dreamconspiracyskiesphrygian",
+					"textbookvaksanskrit"
+				],
+				"draws": 5,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "寺院の内部は発光するキノコで覆われている。価値のある物を略奪する前に、手袋をした手でキノコを祭壇から剥がさなければならない。雨で冷えた肉体のように冷たい。手袋は、光に染まっている。寺院の寒さに息が白くなる。",
+			"description": "名もなき祭司たちが、ここに骨や宝の山を残していった。犠牲になったのか？それとも後から来た訪問者がここで息絶えたのだろうか？光るキノコが骨を酸で腐食している。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultrendingmountains3_success",
+			"label": "天界の歩み",
+			"actionId": "explore",
+			"requirements": {
+				"vaultrendingmountains3": 1
+			},
+			"effects": {
+				"vaultrendingmountains3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toollanternfcracked",
+					"larquebinecodexphrygian",
+					"bookofmasksphrygian",
+					"toolknockd"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "大きな望遠鏡が錆びてドームから落ちてしまった。レンズも割れているが、まるでダンサーたちが手に持って踊っているかのように、青白い光が床の上でゆっくりと回転している。天体の列を真似ているのかもしれないし、その動きは、太陽の死を悼んでいるのかもしれない。",
+			"description": "ここに住んでいた天文学者の長は目に見えない術に関わっていたも違いない。彼の部屋にある朽ち果てたベッドの下から、我々が探していたものが入っているシダー材の木箱を見つけた。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultrendingmountains4_success",
+			"label": "狼の訪れ",
+			"actionId": "explore",
+			"requirements": {
+				"vaultrendingmountains4": 1
+			},
+			"effects": {
+				"vaultrendingmountains4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientwinterd",
+					"ingredientwinterd",
+					"ingredientwinterd",
+					"secondglorymandaic",
+					"asthesunhiscoursearamaic",
+					"textbookphrygiangreek"
+				],
+				"draws": 6,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "死者の囁きは静かだが、もう1つの音が霊廟に響いている。それは低い遠吠えのようだが、かすかにしか聞こえない。船体を金属が引き裂くように、我々の骨をかき乱されるまで、徐々に音は低くなっていく。風のような音だが、そうではない。長居はしない方がいい",
+			"description": "空気が冷たくなってきて、肌が霜に覆われてきた。霊廟の中心には、花崗岩の台座に置かれた白い大理石の鉢がある。その鉢は、触れると肌が焼ける雪で満たされていて、その中には重要な物が埋まっている。隠されたものなのだろうか？それとも供物だったのだろうか？それ以外には何も残っていない。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultrendingmountainsdefault_success",
+			"label": "残るもの",
+			"actionId": "explore",
+			"requirements": {
+				"vaultrendingmountainsdefault": 1
+			},
+			"effects": {
+				"vaultrendingmountainsdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardse": 3
+			},
+			"startdescription": "石を脇に転がすと、光が墓の中に差し込む。ここに眠るのは王であったものである。今となっては紙のような皮となり骨は崩れている。王は動かない。不死身ではなかったのだ。",
+			"description": "影のない王たちは自分たちの最も貴重な宝と共に葬られた。彼らは死後の世界に富をもたらすつもりはなかった。これは、死んだ王が大切にしていた小さな宝物だ。",
+			"warmup": 30,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultrendingmountainsdefault",
+					"additional": true
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,1319 @@
+{
+	"recipes": [
+		{
+			"id": "rkx.spawn.escort",
+			"actionId": "rkx",
+			"label": "Nicht allein",
+			"startdescription": "Es ist niemals nur eine Sache. [Dein Feind wird sich immer gegen dich verbünden ... es sei denn, du stellst ihn am Kartenrand.]",
+			"extantreqs": {
+				"rkx.foe": 1,
+				"rkx.underlings.blocker": -1
+			},
+			"effects": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.first",
+			"actionId": "rkx",
+			"label": "Direkt hinter mir",
+			"startdescription": "Der hier kennt mein Gesicht und ich kenne das seine.",
+			"effects": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 1,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.ahead",
+			"actionId": "rkx",
+			"label": "Abrechner sind hier zuerst",
+			"startdescription": "Die Abrechner haben vermutet, dass ich hierher komme. Sie haben schon Kundschafter in dieser Stadt.",
+			"requirements": {
+				"rkx.infected": 1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"extantreqs": {
+				"rkx.underlings.blocker": -1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.traces",
+			"actionId": "rkx",
+			"label": "Zu viele Spuren",
+			"startdescription": "Ich habe eine Spur zu viel hinterlassen. Abrechner sind mir hierher gefolgt. [Hast du mehr als eine Spur auf dem Tisch, lockt das in der Regel Abrechner an.]",
+			"extantreqs": {
+				"trace": 2
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.trace",
+			"actionId": "rkx",
+			"label": "Nur ein Fehler",
+			"startdescription": "Ich war vorsichtig ... aber nicht vorsichtig genug. [Eine Spur auf dem Tisch lockt manchmal Abrechner an.]",
+			"extantreqs": {
+				"trace": 1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.no.trace",
+			"actionId": "rkx",
+			"label": "Abrechner sind eingetroffen!",
+			"startdescription": "Meine Verfolger sind da. Ich war vorsichtig. Das muss einfach nur Pech sein. [Gelegentlich beschließen Abrechner, eine Stadt zu durchkämmen, auch wenn sie gar keine Spur haben, der sie nachgehen könnten.]",
+			"extantreqs": {
+				"trace": -1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.selector",
+			"actionId": "rkx",
+			"label": "Die Suche",
+			"startdescription": "@#rkx.underboss|Ich kenne die Zeichen. Ein niederer Abrechner-Fürst ist in die Stadt gekommen. Mein Feind kann nicht weit sein.\n#rkx.enforcer|Ich habe ein vertrautes Gesicht in der Menge gesehen - zu vertraut.\n#rkx.operative|Ich habe gelernt, meinen Instinkten zu folgen, und meine Instinkte sagen mir, dass jemand gegen mich arbeitet.\n#|Ich habe da dieses Kribbeln im Nacken. Jemand sucht nach mir.@  [Je mehr Spuren auf dem Tisch sind, desto schneller können deine Verfolger gegen dich vorgehen.]",
+			"deckeffect": {
+				"rkx.events": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.underboss.slain"
+				},
+				{
+					"id": "rkx.reckoner.slain"
+				},
+				{
+					"id": "rkx.escort.attack"
+				},
+				{
+					"id": "rkx.underboss.aggressive.obscured"
+				},
+				{
+					"id": "rkx.underboss.aggressive.violent",
+					"chance": 50
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning"
+				},
+				{
+					"id": "rkx.underboss.reinforcements"
+				},
+				{
+					"id": "rkx.underboss.search"
+				},
+				{
+					"id": "rkx.enforcer.aggressive.obscured"
+				},
+				{
+					"id": "rkx.enforcer.aggressive"
+				},
+				{
+					"id": "rkx.enforcer.reinforcements"
+				},
+				{
+					"id": "rkx.enforcer.search"
+				},
+				{
+					"id": "rkx.operative.aggressive.obscured"
+				},
+				{
+					"id": "rkx.operative.aggressive"
+				},
+				{
+					"id": "rkx.operative.reinforcements"
+				},
+				{
+					"id": "rkx.operative.search"
+				},
+				{
+					"id": "rkx.scouts.aggressive.reinforcements"
+				},
+				{
+					"id": "rkx.scouts.aggressive.search"
+				},
+				{
+					"id": "rkx.scouts.passive.hesitate"
+				},
+				{
+					"id": "rkx.scouts.passive.leave"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.slain",
+			"actionId": "rkx",
+			"label": "Tot durch Wunden",
+			"startdescription": "Dieser Unterboss ist erledigt.",
+			"requirements": {
+				"rkx.underboss": 1
+			},
+			"extantreqs": {
+				"damage.underling": 4
+			},
+			"purge": {
+				"damage.underling": 5
+			}
+		},
+		{
+			"id": "rkx.reckoner.slain",
+			"actionId": "rkx",
+			"label": "Tot durch Wunden",
+			"startdescription": "Dieser Abrechner ist erledigt.",
+			"requirements": {
+				"rkx.underboss": -1,
+				"rkx.rank": 1
+			},
+			"extantreqs": {
+				"damage.underling": 2
+			},
+			"purge": {
+				"damage.underling": 3
+			}
+		},
+		{
+			"id": "rkx.escort.attack",
+			"actionId": "rkx.escort",
+			"label": "Nur eine Verschnaufpause",
+			"startdescription": "Der Lakai meines Feindes wird schon bald einen weiteren Angriff gegen mich entfesseln – ",
+			"requirements": {
+				"rkx.enforcer": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive.obscured"
+				},
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "Durchsuchen der Schatten",
+			"startdescription": "Ein Abrechner-Unterboss sucht nach mir. Noch wird er mich nicht finden. Doch mein Schleier des Geheimen wird immer dünner.",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"effects": {
+				"obscurity": -1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "Unklarheit",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "Durchsuchen der Schatten",
+			"startdescription": "Ein Abrechner-Meuchelmörder streift durch die Stadt. Noch wird er mich nicht finden. Doch mein Schleier des Geheimen wird immer dünner.",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "Unklarheit",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				"obscurity": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "Durchsuchen der Schatten",
+			"startdescription": "Ein Abrechner-Agent ist hier am Werke. Noch wird er mich nicht finden.  Doch mein Schleier des Geheimen wird immer dünner.",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "Unklarheit",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				"obscurity": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.violent",
+			"actionId": "rkx",
+			"label": "Eine feindselige Aktion!",
+			"startdescription": "Der Unterboss greift mich direkt an! [Direkte Angriffe durch Abrechner verursachen Wunden, wenn sie Erfolg haben. In der Regel haben sie Erfolg, es sei denn, du hast eine Karte, um dich zu verteidigen. Du kannst auch versuchen, sie mit einem Jahrzehnt zu bestechen, wobei Unterbosse immer habgierig sind.]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Verteidigung",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"decade.stolen": 1
+					},
+					"forbidden": {
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "rkx.bossondeck.attack"
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy"
+				},
+				{
+					"id": "rkx.underling.distracted"
+				},
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning",
+			"actionId": "rkx",
+			"label": "Diebstahl oder Sabotage",
+			"startdescription": "Der Unterboss hat es auf meine Aktiva abgesehen. [Du kannst ihm zuvorkommen, indem du einen Kontakt einsetzt: Radikale, Unterwelt, Herrscher oder Offizielle. Ansonsten wird per Zufall ein Aktivum zerstört. Du kannst auch versuchen, sie mit einem Jahrzehnt zu bestechen, wobei Unterbosse immer habgierig sind.]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Verteidigung",
+					"description": "Kontakt einsetzen: Radikale, Unterwelt, Offizieller oder Herrscher. Ansonsten wird per Zufall ein Aktivum zerstört.",
+					"required": {
+						"connection.ruler": 1,
+						"connection.underworld": 1,
+						"connection.radicals": 1,
+						"connection.official": 1,
+						"decade.stolen": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.bossondeck.underboss.cunning"
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning.defended"
+				}
+			],
+			"warmup": 30,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy"
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning.defended",
+			"actionId": "rkx",
+			"label": "Freunde an der richtigen Stelle",
+			"startdescription": "Ich fordere einen Gefallen ein. Diesen Unterboss erwartet eine böse Überraschung.",
+			"requirements": {
+				"connection": 1
+			},
+			"effects": {
+				"connection": -1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.wounded",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning.undefended",
+			"actionId": "rkx",
+			"label": "Rückschlag",
+			"startdescription": "@#connection|Der Unterboss hat einen Keil zwischen mich und meinen Verbündeten getrieben.\n#space|Eine meiner Liegenschaften ist unter rätselhaften Umständen abgebrannt.\n#portable|Da fehlt etwas! Der Unterboss oder seine Agenten müssen hier eingebrochen sein.\n#|Der Unterboss will mich meiner Ressourcen berauben.@",
+			"slots": [
+				{
+					"id": "asset",
+					"label": "Ziel",
+					"required": {
+						"asset": 1
+					},
+					"greedy": true
+				}
+			],
+			"requirements": {
+				"connection.ruler": -1,
+				"connection.underworld": -1,
+				"connection.radicals": -1
+			},
+			"warmup": 10,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.reinforcements",
+			"actionId": "rkx",
+			"label": "Verstärkung!",
+			"startdescription": "Ein Abrechner-Unterboss hat Beweise dafür, dass ich hier bin, doch noch hat er nichts gegen mich unternommen. Das kann nur bedeuten, dass er nach seinem Vorgesetzten geschickt hat ... meinem Feind. [Sind 5 Spuren auf dem Tisch, kann der Feind erscheinen.]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 5,
+				"rkx.foe": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.search",
+			"actionId": "rkx",
+			"label": "Die Suche ausweiten ...",
+			"startdescription": "Ein Abrechner-Unterboss sammelt Informationen über mich und wohin ich gehe.",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.aggressive",
+			"actionId": "rkx",
+			"label": "Eine feindselige Aktion!",
+			"startdescription": "Der Meuchelmörder greift mich direkt an! [Direkte Angriffe durch Abrechner verursachen Wunden, wenn sie Erfolg haben. In der Regel haben sie Erfolg, es sei denn, du hast eine Karte, um dich zu verteidigen.  Du kannst auch versuchen, sie mit einem Jahrzehnt zu bestechen, wobei sie habgierig sein können.]",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Verteidigung",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"decade.stolen": 1
+					},
+					"forbidden": {
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"warmup": 40,
+			"alt": [
+				{
+					"id": "rkx.bossondeck.attack"
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy",
+					"chance": 30
+				},
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.underling.distracted"
+				},
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.reinforcements",
+			"actionId": "rkx",
+			"label": "Verstärkung!",
+			"startdescription": "Ein Abrechner-Meuchelmörder hat Beweise dafür, dass ich hier bin, doch noch hat er nichts gegen mich unternommen. Das kann nur bedeuten, dass er nach seinem Vorgesetzten geschickt hat ... meinem Feind. [Sind 3 Spuren auf dem Tisch, kann ein Unterboss erscheinen.]",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 3
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.search",
+			"actionId": "rkx",
+			"label": "Die Suche ausweiten ...",
+			"startdescription": "Ein Abrechner-Meuchelmörder entdeckt mehr Hinweise. Er könnte schon bald Verstärkung holen.",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive",
+			"actionId": "rkx",
+			"label": "Diebstahl oder Sabotage",
+			"startdescription": "Der Abrechner-Agent hat es auf meine Aktiva abgesehen. [Du kannst ihm zuvorkommen, indem du einen Kontakt einsetzt: Radikale, Unterwelt, Offizieller oder Herrscher. Du kannst auch versuchen, Abrechner mit einem Jahrzehnt zu bestechen, wobei sie habgierig sein können.] Ansonsten wird per Zufall ein Aktivum zerstört.",
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Verteidigung",
+					"description": "Kontakt einsetzen: Radikale, Unterwelt, Offizieller oder Herrscher. Ansonsten wird per Zufall ein Aktivum zerstört.",
+					"required": {
+						"connection.ruler": 1,
+						"connection.underworld": 1,
+						"connection.radicals": 1,
+						"connection.official": 1,
+						"decade.stolen": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.bossondeck.operative"
+				},
+				{
+					"id": "rkx.operative.aggressive.defended"
+				}
+			],
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy",
+					"chance": 30
+				},
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.operative.aggressive.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.defended",
+			"actionId": "rkx",
+			"label": "Freunde an der richtigen Stelle",
+			"startdescription": "Ich fordere einen Gefallen ein. Diesen Agenten erwartet eine böse Überraschung.",
+			"requirements": {
+				"connection": 1
+			},
+			"effects": {
+				"connection": -1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.wounded",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.undefended",
+			"actionId": "rkx",
+			"label": "Rückschlag",
+			"startdescription": "@#connection|Der Abrechner-Agent hat einen Keil zwischen mich und meinen Verbündeten getrieben.\n#space|Eine meiner Liegenschaften ist unter rätselhaften Umständen abgebrannt.\n#portable|Da fehlt etwas! Der Abrechner-Agent oder seine Agenten müssen hier eingebrochen sein.\n#|Der Abrechner-Agent will mich meiner Ressourcen berauben.@",
+			"slots": [
+				{
+					"id": "asset",
+					"label": "Ziel",
+					"required": {
+						"asset": 1
+					},
+					"greedy": true
+				}
+			],
+			"requirements": {
+				"connection.ruler": -1,
+				"connection.underworld": -1,
+				"connection.radicals": -1
+			},
+			"warmup": 10,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.reinforcements",
+			"actionId": "rkx",
+			"label": "Verstärkung!",
+			"startdescription": "Ein Abrechner-Agent hat Beweise dafür, dass ich hier bin, doch noch hat er nichts gegen mich unternommen. Das kann nur bedeuten, dass er nach seinem Vorgesetzten geschickt hat ... meinem Feind. [Sind 3 Spuren auf dem Tisch, kann ein Unterboss erscheinen.]",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 3
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.search",
+			"actionId": "rkx",
+			"label": "Die Suche ausweiten ...",
+			"startdescription": "Ein Abrechner-Agent entdeckt mehr Hinweise. Er könnte schon bald Verstärkung holen.",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.aggressive.reinforcements",
+			"actionId": "rkx",
+			"label": "Verstärkung!",
+			"startdescription": "Abrechner haben Beweise dafür, dass ich hier bin. Sie holen Hilfe, um mich auszuräuchern.",
+			"requirements": {
+				"rkx.event.aggressive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": 1
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.aggressive.search",
+			"actionId": "rkx",
+			"label": "Die Suche ausweiten ...",
+			"startdescription": "Abrechner-Informanten entdecken mehr Hinweise. Sie könnten schon bald Verstärkung holen.",
+			"requirements": {
+				"rkx.event.aggressive": 1,
+				"rkx.rank": -1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.passive.hesitate",
+			"actionId": "rkx",
+			"label": "Zögern",
+			"startdescription": "Meine Verfolger – vorsichtig oder feige oder sich ihrer Beweise nicht sicher – haben noch nichts unternommen.",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.passive.leave",
+			"actionId": "rkx",
+			"label": "Unentdeckt!",
+			"startdescription": "Meine Verfolger sind überzeugt, dass ich nicht hier bin. Natürlich könnten sie immer noch zurückkommen.",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": -1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"haltverb": {
+				"rkx": 1
+			},
+			"warmup": 50
+		},
+		{
+			"id": "rkx.underling.distracted",
+			"actionId": "rkx",
+			"label": "Eine erfolgreiche Ablenkung!",
+			"startdescription": "...",
+			"requirements": {
+				"distraction": 1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.attack.success",
+			"actionId": "rkx",
+			"label": "Ich bin verletzt!",
+			"startdescription": "Mein Feind hat mich verletzt! Ich kann nicht immer wachsam sein.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"associate": 1
+						}
+					}
+				}
+			],
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.success",
+			"actionId": "spit.underling.attack",
+			"label": "Ich bin verletzt!",
+			"startdescription": "Ich brauche Zeit und Sicherheit zum Heilen.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"wound.exile": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.underling.attack.failure",
+			"actionId": "rkx",
+			"label": "Meine Verfolger, aufgeschmissen",
+			"startdescription": "@#lore|Ich habe meine Fertigkeiten eingesetzt, um meinen Verfolger auf Distanz zu halten.\n#weapon|Ich habe eine Waffe eingesetzt, um meinen Verfolger auf Distanz zu halten.\n#associate|Ein Freund hat mir Schutz gewährt.\n#op.cold|Der Schnee sinkt herab wie die Nacht. Ich habe meinen Verfolger in den Wehen abgehängt.\n#op.heat|Ich habe meinen Verfolger in der Mittagssonne tanzen lassen, bis er vor Hitze taumelte.\n#op.sea|Ich habe meinen Verfolger im geschäftigen Treiben des Hafens abgehängt.\n#op.faith|Abrechner meiden in der Regel gebenedeite Orte. Das habe ich für meine Flucht genutzt.\n#op.cats|Der Oberst – die Stunde, die meinen Feind schützt – kann schon lange keine Katzen ausstehen. Unter meinen Feinden hat sich die Vorsicht vor Katzen zu einem mächtigen Aberglauben entwickelt. Ich habe mich abgesetzt während mein Verfolger noch zaudert.\n#op.height|Ich habe mich in einer Höhe versteckt, die nur wenige erklimmen, und mein Verfolger musste zurück bleiben.\n#op.horned|Abrechner machen einen Bogen um die Stunden. Die Schatten hier sind geschärft durch die Präsenz der Hornaxt. Ich habe mich abgesetzt während mein Verfolger noch zauderte.\n#op.wolf|Alle fürchten den Geteilten Wolf, und sein Odem hat diesen Ort berührt. Mein Verfolger will mir nicht in dessen Schatten folgen, und so konnte ich ihm entwischen.\n#op.flowermaker|Hier duftet es nach dem Blumenmacher. Der Duft hat meinen Verfolger so verwirrt, dass ich entkommen konnte. \n#ligeian|Eine Raffgier ist hier unterwegs – vor allem von den Abrechnern gefürchtet.\n#|... Ich hab Glück gehabt. [Manchmal schlägt der Angriff eines Abrechners fehl.]@",
+			"alt": [
+				{
+					"id": "spit.underling.attack.failure.lore",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"lore": 1
+						}
+					}
+				},
+				{
+					"id": "spit.underling.attack.failure.weapon",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"weapon": 1
+						}
+					}
+				},
+				{
+					"id": "spit.underling.attack.failure.associate",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"associate": 1
+						}
+					}
+				}
+			],
+			"effects": {
+				"distraction": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.underling.attack.failure.lore",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"lore": 1
+			},
+			"label": "Ein wenig Aufsehen",
+			"startdescription": "Ich habe meinen Angreifer abgeschüttelt, was aber für noch mehr Aufsehen gesorgt hat.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.failure.weapon",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"weapon": 1
+			},
+			"label": "Ein wenig Aufsehen",
+			"startdescription": "Ich habe meinen Angreifer abgeschüttelt, was aber für noch mehr Aufsehen gesorgt hat.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.failure.associate",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"associate": 1
+			},
+			"label": "Ein Freund in Not",
+			"startdescription": "Mein Partner hat mich verteidigt! Das war anständig, aber jetzt hat der Abrechner-Mob noch mehr Hinweise, denen er nachgehen kann.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.lookfurtherafield",
+			"actionId": "rkx",
+			"label": "Abrechner suchen weiter entfernt",
+			"startdescription": "Wenn meine Verfolger mich hier nicht finden können, suchen sie vielleicht in anderen Städten – vor allem in denen, an denen ich mich interessiert gezeigt habe. [Abrechner reisen manchmal noch vor dir an ein bestimmtes Ziel. Dies ist noch wahrscheinlicher, wenn du Geldmittel dorthin geschickt hast.",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": 1
+			},
+			"extantreqs": {
+				"trace": -1
+			},
+			"slots": [
+				{
+					"id": "destination",
+					"label": "Eine Spur?",
+					"required": {
+						"destination": 1
+					},
+					"forbidden": {
+						"rkx.infected": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.infect.becauseprep",
+					"chance": 70
+				},
+				{
+					"id": "rkx.infect.noprep",
+					"chance": 30
+				},
+				{
+					"id": "rkx.notfollowinglead"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.becauseprep",
+			"actionId": "rkx",
+			"label": "Immer dem Geld nach",
+			"startdescription": "Meine Verfolger sind den Geldmitteln gefolgt, die ich vorausgeschickt habe.",
+			"requirements": {
+				"destination": 1,
+				"cash.sent": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "rkx.infected",
+					"mutationLevel": 1
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.infect.demote"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.noprep",
+			"actionId": "rkx",
+			"label": "Eine Finte?",
+			"startdescription": "Meine Verfolger konzentrieren sich auf einen anderen Ort – warum? ",
+			"requirements": {
+				"destination": 1,
+				"cash.sent": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "rkx.infected",
+					"mutationLevel": 1
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.infect.demote"
+				}
+			]
+		},
+		{
+			"id": "rkx.notfollowinglead",
+			"actionId": "rkx",
+			"label": "Abrechner warten ab",
+			"startdescription": "Meine Verfolger sind davon überzeugt, dass ich noch hier bin.",
+			"alt": [
+				{
+					"id": "spit.uninfected.destination",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"destination": 1
+						}
+					}
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.demote",
+			"actionId": "rkx",
+			"label": "Abrechner verringern ihre Präsenz",
+			"startdescription": "Jetzt sind weniger Abrechner in der Stadt",
+			"aspects": {
+				"rkx.demote": 1
+			},
+			"comments": "If we infected a destination in the previous step, spit the destination out",
+			"alt": [
+				{
+					"id": "spit.infected.destination",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"rkx.infected": 1
+						}
+					}
+				}
+			],
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "spit.infected.destination",
+			"actionId": "spit.infected.destination",
+			"label": "Gefahren voraus",
+			"startdescription": "Wenn ich hierhin gehe, finde ich vielleicht meine Verfolger, bevor sie mich finden.",
+			"requirements": {
+				"rkx.infected": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.uninfected.destination",
+			"actionId": "spit.uninfected.destination",
+			"label": "Eine verworfene Spur",
+			"startdescription": "Meine Verfolger sind davon überzeugt, dass ich noch hier bin. Sie haben beschlossen, nicht zu diesem Ziel zu reisen.",
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.wounded",
+			"actionId": "spit.underling.wounded",
+			"label": "Eine Blutspur",
+			"startdescription": "Ein Verfolger ist verletzt!",
+			"effects": {
+				"wound.underling": 1
+			},
+			"warmup": 1,
+			"linked": [
+				{
+					"id": "use.attack.underling.slain"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.bribe.greedy",
+			"actionId": "rkx",
+			"label": "Ein höherer Preis",
+			"startdescription": "'@#rkx.underboss|'Sei ernst.'\n#rkx.enforcer|'Verdoppeln.'\n#rkx.operative|'Red weiter ...'\n#|'Red weiter ...'@ [Wenn du noch ein Jahrzehnt drauflegst, hat deine Bestechung Erfolg. Falls nicht, verzehrt dein Verfolger das 1. Jahrzehnt und setzt dir weiter nach.']",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"slots": [
+				{
+					"id": "more",
+					"label": "Mehr",
+					"description": "Verdoppeln oder gehen.",
+					"required": {
+						"decade.stolen": 1
+					}
+				}
+			],
+			"effects": {
+				"decade.stolen": -1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.bribe.success",
+			"actionId": "rkx",
+			"label": "Eine erfolgreiche Bestechung",
+			"startdescription": "'@#rkx.underboss|'Ich konnte dich schon immer gut leiden, weißt du? Wenn der Alte mal einen Unfall haben sollte ... meld' dich einfach.'\n#rkx.enforcer|'Abgemacht. Und das hier ist nie passiert.'\n#rkx.operative|'Du bist gar nicht so übel. Wenn der Alte endlich aufgeholt hat ... Dann gebe ich einen für dich aus.'\n#|'Nur gut, dass du nie hier warst, was?'@",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"rkx.rank": -1,
+				"rkx.event": -1,
+				"trail.false.bribe": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 10
+		},
+		{
+			"id": "rkx.bossondeck.attack",
+			"actionId": "rkx",
+			"label": "Zu spät für so etwas",
+			"startdescription": "Kein Handlanger wird es wagen, beide Augen zuzudrücken, wenn der Feind hier ist.",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.bossondeck.underboss.cunning",
+			"actionId": "rkx",
+			"label": "Zu spät für so etwas",
+			"startdescription": "Kein Handlanger wird es wagen, beide Augen zuzudrücken, wenn der Feind hier ist.",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underboss.aggressive.cunning.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.bossondeck.operative",
+			"actionId": "rkx",
+			"label": "Zu spät für so etwas",
+			"startdescription": "Kein Handlanger wird es wagen, beide Augen zuzudrücken, wenn der Feind hier ist.",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.operative.aggressive.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.reset",
+			"actionId": "rkx",
+			"label": "Was jetzt?",
+			"startdescription": "Was jetzt?",
+			"effects": {
+				"rkx.event": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		}
+	]
+}

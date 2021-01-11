@@ -1,0 +1,315 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaultlandbeyondforest1_setup",
+            "label": "探险开始：蜡烛岩洞",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforest1": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "guardian_serpent": 1
+            },
+            "startdescription": "通往高处的洞穴的道路是危险的。但下方黑暗中所蛰伏着的东西很可能更为可怕。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultlandbeyondforest2_setup",
+            "label": "探险开始：大公的城塞",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforest2": 1
+            },
+            "effects": {
+                "seal_hiddendoor": 1,
+                "guardian_dead": 1
+            },
+            "startdescription": "大公城塞的地下室必然极为隐秘，并且如果传闻为真，在要塞的高墙背后，为他所害者很可能死不瞑目。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultlandbeyondforest3_setup",
+            "label": "探险开始：格吕内瓦尔德的长驻马戏团",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforest3": 1
+            },
+            "effects": {
+                "guardian_watchers": 1,
+                "curse_nowhere": 1
+            },
+            "startdescription": "马戏团一众人准备对我们举起武器，且我们担心，马戏团里的神怪也许受了蠕虫的碰触。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultlandbeyondforest4_setup",
+            "label": "探险开始：瑞弗克塔楼",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforest4": 1
+            },
+            "effects": {
+                "seal_hiddendoor": 1,
+                "curse_affliction": 1
+            },
+            "startdescription": "我们必须努力搜寻任何可能留存的宝藏；如果塔楼的确已经被学徒内战所摧毁，那里可能仍然残留着危险的影响。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultlandbeyondforest5_setup",
+            "label": "探险开始：库兹涅佐夫的捐赠",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforest5": 1
+            },
+            "effects": {
+                "seal_hiddendoor": 1,
+                "guardian_watchers": 1,
+                "peril_treacherousground": 1
+            },
+            "startdescription": "前往捐赠楼的路并不漫长，但走进去却很困难。我们已三次申请访问许可，然而每次都收到不甚友好的回复。毋庸置疑，楼里的员工会试图阻止我们进入。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultlandbeyondforestdefault_setup",
+            "label": "探险开始：狐百合原野",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultlandbeyondforestdefault": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "guardian_watchers": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "穿过群山通向高处的狐百合之海的的道路将是艰险的。山上的农民会试图赶走我们。即便我们安全到家，也很可能难以在脑海中摆脱那里的景象。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultlandbeyondforest1_success",
+            "label": "光之巢穴",
+            "actionId": "explore",
+            "requirements": {
+                "vaultlandbeyondforest1": 1
+            },
+            "effects": {
+                "vaultlandbeyondforest1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "influencelanternc",
+                    "accountkanishkspidersdooraramaic",
+                    "theskythesoularamaic",
+                    "ingredientlanternf"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "因为充当巨蛇的通路，山洞下的隧道非常平滑，但要不是我们带着灯，它的黑暗将令人窒息。然而它盘踞的房间出乎意料地明亮。作为月光的替代品，发光的真菌充满了整个空间。也许蜡烛并没有驱赶走这些真菌，反而吸引了它们。",
+            "description": "一小堆宝藏，自经年累月的巨蛇食物中筛选而出，并被巨蛇拱成一堆，闪闪发光。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultlandbeyondforest2_success",
+            "label": "空墓穴",
+            "actionId": "explore",
+            "requirements": {
+                "vaultlandbeyondforest2": 1
+            },
+            "effects": {
+                "vaultlandbeyondforest2": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "influencegrailc",
+                    "gospelzacchaeusgreek",
+                    "catalogueofunchartedpleasuresphrygian",
+                    "bookofthronesphrygian",
+                    "twentysixenticementsseventormentsfucine",
+                    "toolheartd"
+                ],
+                "draws": 6,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "此处乃大公的陵墓。垂挂的蛛网宛如柔软的灰色的帘幕。在最尽头竖立着一个巨大的砂岩石棺，里面空无一物。",
+            "description": "有人在棺枢前面留下了一小堆宝物，仿佛贡品。尘土上没有任何足迹。无论是何人留下的宝物，此人定是来于很久之前，或者在通过时无需接触地面。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultlandbeyondforest3_success",
+            "label": "马戏团后方",
+            "actionId": "explore",
+            "requirements": {
+                "vaultlandbeyondforest3": 1
+            },
+            "effects": {
+                "vaultlandbeyondforest3": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "erudition",
+                    "jumble",
+                    "sunsetpassageslatin",
+                    "historyofshadowlesskingsaramaic",
+                    "ivorybookfucine",
+                    "ingredientgrailf",
+                    "textbooksanskrit"
+                ],
+                "draws": 7,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "在条纹帐篷里，脏污而浑浊的玻璃后的畸形阴魂不散。在灰色帐篷里，滴水的雾气紧紧包裹我们，宛如捕猎中的猫——那雾简直仿佛是活物。在黑色上缀着星点的帐篷里，星象仪与表面镶嵌着宝石的雕塑完美啮合。在红色帐篷里，面如白蜡的教士躺在玻璃棺材里，胸前紧抱着书本——",
+            "description": "在红色的帐篷里，满纸荒唐。马戏团众人在每个地方都贴满了写满图标的纸张：时间分析，旧时气候的解构。这个地方散发着虚界的气息。我们应当在离开时烧毁它。在一个支架桌上随意堆放着一些战利品和纪念品。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultlandbeyondforest4_success",
+            "label": "迟来已久的结局",
+            "actionId": "explore",
+            "requirements": {
+                "vaultlandbeyondforest4": 1
+            },
+            "effects": {
+                "vaultlandbeyondforest4": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "furioustantrasanskrit",
+                    "twinserpenttantrasanskrit",
+                    "howendwillbeginvak",
+                    "ingredientforgeb"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "塔的下方是一个狭窄的地窖，地窖的板岩墙已经裂缝。它的体积——它本应是个正立方型空间，却不知为何有超额数量的角。房顶和墙壁的接合处渗出蓝色的光。地面缓慢地伸缩，如同气泡的表面。如果跺脚，能听到回音。向下挖掘，还出现有怎样的空间？",
+            "description": "把书捆好放进麻袋。迅速沿扶手爬回残塔。头顶的天空飘着涟漪般的钴蓝色极光。颤动的蓝光冲刷着四周的山岭。我们离去时，从筑塔的石块传来高亢的鸣响。闪电从天空劈下，突然间万籁俱寂。残塔消失了。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultlandbeyondforest5_success",
+            "label": "文字的结末",
+            "actionId": "explore",
+            "requirements": {
+                "vaultlandbeyondforest5": 1
+            },
+            "effects": {
+                "vaultlandbeyondforest5": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "burningwomanphrygian",
+                    "encirclingtantrasanskrit",
+                    "knownunknowntantrasanskrit",
+                    "ironbookfucine",
+                    "silverbookfucine",
+                    "matthiasamethystpursuitaramaic"
+                ],
+                "draws": 6,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "图书馆的天花板在多年前便已坍塌。许多书籍已被漏水泡成了发胀的书浆。一定还有留存的东西。",
+            "description": "一副和蔼微笑着的男人——深色皮肤，眼睛明亮，没有头发与眉毛——的肖像看管着这座破败的图书馆。肖像画题为“不要在意我”，签名难以辨认，蜷曲潦草。画的四角已经卷起。当我们在书架上泡胀的书本中寻找完好无损的宝物时，这副画用它仁慈的微笑看着我们。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultlandbeyondforestdefault_success",
+            "label": "花的滋养",
+            "actionId": "explore",
+            "requirements": {
+                "vaultlandbeyondforestdefault": 1
+            },
+            "effects": {
+                "vaultlandbeyondforestdefault": -1
+            },
+            "deckeffect": {
+                "vaultrewardsd": 3
+            },
+            "startdescription": "我们将布浸入氨水，蒙在脸上，以抵抗狐百合的香气。即便这样，我们仍然头晕目眩，身体却对各种矛盾的欲望作出回应。这里有我们所找寻的遗骨。搜索它们，然后离开。",
+            "description": "狐百合之花白如穴居动物，如冰霜，如清洁的床单。很难将目光从它们身上移开。我们将阖上眼睛，带着宝藏拼力离开。",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "expeditionascensionheartd",
+                    "chance": 100
+                },
+                {
+                    "id": "expeditionascensionmothd",
+                    "chance": 100
+                }
+            ]
+        }
+    ]
+}

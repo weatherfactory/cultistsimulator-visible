@@ -1,0 +1,96 @@
+{
+    "recipes": [
+        {
+            "id": "explore_movehq_hint",
+            "label": "A Change of Premises?",
+            "actionid": "explore",
+            "requirements": {
+                "hq.potential": 1
+            },
+            "startdescription": "We could move our base of operations here, if we so choose.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "explorevault_hint_sending",
+            "label": "A Second Self?",
+            "actionid": "explore",
+            "requirements": {
+                "vault": 1,
+                "sending": 1
+            },
+            "startdescription": "If this expedition succeeds, the I-that-is-not-I will be there to perform the Forms. [If you succeed, you'll reap the usual rewards, and also progress your Change ascension.]",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "explorevault_hint_addfunds",
+            "label": "Preparations for an Expedition?",
+            "actionid": "explore",
+            "requirements": {
+                "vault": 1,
+                "follower": 1
+            },
+            "startdescription": "If I add at least one Funds, I can begin the Expedition. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "explorevault_hint_addfollower",
+            "label": "Preparations for an Expedition?",
+            "actionid": "explore",
+            "requirements": {
+                "vault": 1,
+                "funds": 1
+            },
+            "startdescription": "If I add a Follower, I can begin the Expedition. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "explorevault_hint",
+            "label": "Preparations for an Expedition?",
+            "actionid": "explore",
+            "requirements": {
+                "vault": 1
+            },
+            "startdescription": "I could send an Expedition here to find books, treasures, tools of power. But I'll need Followers to send, and Funds to supply them.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "exploresulochanacabaret_hint",
+            "label": "The Old Form and the New",
+            "actionid": "explore",
+            "requirements": {
+                "locationcabaret": 1,
+                "sulochana": 1
+            },
+            "startdescription": "[If you have the Dancer expansion, you can use this combination to find a job at the Ecdysis club, and pursue the Change ascensions.]",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "explore.searchgraveyard.hint",
+            "actionid": "explore",
+            "requirements": {
+                "location.cemetery": 1
+            },
+            "label": "A Disinterment?",
+            "startdescription": "I'll need to deploy my own strength, or that of a friend.",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "explore.searchgraveyard.closing.hint",
+            "actionid": "explore",
+            "requirements": {
+                "location.cemetery.closing": 1
+            },
+            "label": "A Cautious Disinterment?",
+            "startdescription": "I'll need to deploy my own strength, or that of a friend.",
+            "craftable": false,
+            "hintonly": true
+        }
+    ]
+}

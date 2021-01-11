@@ -1,0 +1,46 @@
+{
+    "elements": [
+        {
+            "id": "insight",
+            "label": "Insight",
+            "description": "An insight into this mystery.",
+            "lifetime": 1
+        },
+        {
+            "id": "bid",
+            "label": "Bid",
+            "description": "A bid placed in an auction house.",
+            "xtriggers": {
+                "restore": "funds"
+            }
+        },
+        {
+            "id": "abductioninprogress",
+            "label": "A Warded Cell",
+            "description": "Thought, they say, is free, but thought is chained to the body.",
+            "lifetime": 1,
+            "icon": "seal_wardeddoor"
+        },
+        {
+            "id": "assassinationinprogress.player",
+            "label": "An Assassination",
+            "description": "This will end in a death. It could be my death.",
+            "lifetime": 1,
+            "icon": "dread"
+        },
+        {
+            "id": "assassinationinprogress.follower",
+            "label": "An Assassination",
+            "description": "This will end in a death - theirs, or ours.",
+            "lifetime": 1,
+            "icon": "dread"
+        },
+        {
+            "id": "scandalinprogress",
+            "label": "Evil Gossip",
+            "description": "What they say is only a shadow of the truth, but by our shadows we are discovered.",
+            "lifetime": 1,
+            "icon": "notoriety"
+        }
+    ]
+}

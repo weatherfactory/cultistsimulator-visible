@@ -1,0 +1,342 @@
+{
+    "recipes": [
+        {
+            "id": "workapostleforgejob",
+            "label": "Consider my Resources",
+            "actionid": "work",
+            "requirements": {
+                "legacyapostleforgejob": 1
+            },
+            "effects": {
+                "funds": 7,
+                "legacyapostleforgejob": -1
+            },
+            "alt": [
+                {
+                    "id": "apostleforgeopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "Our organisation has some resources...",
+            "description": "...enough for a while, but I will need to find other means of support.",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "apostleforgeopentalk",
+            "label": "Our Cause",
+            "actionid": "talk",
+            "requirements": {},
+            "startdescription": "I am not alone.",
+            "alt": [
+                {
+                    "id": "apostleforgeopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "description": "My allies; my Shaper.",
+            "effects": {
+                "lever_LastCult": 1,
+                "lever_LastFollower": 1,
+                "apostleforge.mentor": 1
+            },
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "begincultfoundation",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "apostleforgeopenstudy",
+            "label": "What do I recall?",
+            "actionid": "study",
+            "startdescription": "I have been vouchsafed secrets.",
+            "alt": [
+                {
+                    "id": "apostleforgeopenexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "fragmentforgef": 1,
+                "reason": 1,
+                "waywood": 1,
+                "waywhite": 1,
+                "waystag_after": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "apostleforgeopenexplore",
+            "label": "A Place to Begin",
+            "actionid": "explore",
+            "startdescription": "Where were we?",
+            "description": "In our meeting-place, I shall consider the commands I was given.",
+            "alt": [
+                {
+                    "id": "apostleforgeopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "apostleforge.pillar1": 1,
+                "hq.temporary": 1
+            },
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "apostleforgeopendream",
+            "label": "Distant Thunder",
+            "actionid": "dream",
+            "startdescription": "What is coming? Who is coming?",
+            "description": "Our Shaper wishes to change the order of the world, and even of the Mansus. There will be opposition.",
+            "warmup": 60,
+            "effects": {
+                "passion": 1
+            },
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "long.spawn.forge",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "workapostlegrailjob",
+            "label": "Consider my Resources",
+            "actionid": "work",
+            "requirements": {
+                "legacyapostlegrailjob": 1
+            },
+            "effects": {
+                "funds": 7,
+                "legacyapostlegrailjob": -1,
+                "apostlegrail.pillar2.dormant": 1,
+                "apostlegrail.pillarfuel": 1
+            },
+            "alt": [
+                {
+                    "id": "apostlegrailopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "Our organisation has some resources...",
+            "description": "...enough for a while, but I will need to find other means of support. And my health is now very poor. I can only hope our Delight will sustain me.",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "apostlegrailopentalk",
+            "label": "Our Cause",
+            "actionid": "talk",
+            "requirements": {},
+            "startdescription": "I am not alone.",
+            "alt": [
+                {
+                    "id": "apostlegrailopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "description": "My allies; my Delight.",
+            "effects": {
+                "lever_LastCult": 1,
+                "lever_LastFollower": 1,
+                "apostlegrail.mentor": 1
+            },
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "begincultfoundation",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "apostlegrailopenstudy",
+            "label": "What do I recall?",
+            "actionid": "study",
+            "startdescription": "I have been vouchsafed secrets.",
+            "alt": [
+                {
+                    "id": "apostlegrailopenexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "fragmentgrailf": 1,
+                "reason": 1,
+                "waywood": 1,
+                "waywhite": 1,
+                "waystag_after": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "apostlegrailopenexplore",
+            "label": "A Place to Begin",
+            "actionid": "explore",
+            "startdescription": "Where were we?",
+            "description": "In our meeting-place, I shall consider the commands I was given.",
+            "alt": [
+                {
+                    "id": "apostlegrailopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "apostlegrail.pillar1": 1,
+                "hq.temporary": 1
+            },
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "apostlegrailopendream",
+            "label": "Distant Light",
+            "actionid": "dream",
+            "startdescription": "What is coming? Who is coming?",
+            "description": "Our Delight wishes to change the order of the world, and even of the Mansus. There will be opposition.",
+            "warmup": 60,
+            "effects": {
+                "passion": 1
+            },
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "long.spawn.grail",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "workapostlelanternjob",
+            "label": "What I Must Do",
+            "actionid": "work",
+            "requirements": {
+                "legacyapostlelanternjob": 1
+            },
+            "effects": {
+                "funds": 7,
+                "legacyapostlelanternjob": -1,
+                "apostlelantern.pillar1": 1
+            },
+            "alt": [
+                {
+                    "id": "apostlelanternopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "I return to myself with a start. Was I daydreaming?",
+            "description": "Here is a package, with funds. Here are my instructions, in a slender envelope of skymost blue. It's enough. My other memories are not relevant just now.",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "apostlelanternopentalk",
+            "label": "Our Cause",
+            "actionid": "talk",
+            "requirements": {},
+            "startdescription": "I remember these names, though I have never heard them spoken.",
+            "alt": [
+                {
+                    "id": "apostlelanternopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "description": "My allies; my Illuminated One.",
+            "effects": {
+                "lever_LastCult": 1,
+                "lever_LastFollower": 1,
+                "apostlelantern.mentor": 1
+            },
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "begincultfoundation",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "apostlelanternopenstudy",
+            "label": "What do I recall?",
+            "actionid": "study",
+            "startdescription": "I have been vouchsafed secrets.",
+            "alt": [
+                {
+                    "id": "apostlelanternopenexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "fragmentlanternf": 1,
+                "reason": 1,
+                "waywood": 1,
+                "waywhite": 1,
+                "waystag_after": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "apostlelanternopenexplore",
+            "label": "A Place to Begin",
+            "actionid": "explore",
+            "startdescription": "Where were we?",
+            "description": "This is the place I saw, in the light at sleep's edge.",
+            "alt": [
+                {
+                    "id": "apostlelanternopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "hq.temporary": 1
+            },
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "apostlelanternopendream",
+            "label": "Distant Light",
+            "actionid": "dream",
+            "startdescription": "What is coming? Who is coming?",
+            "description": "My dreams warned that there would be opposition to the Illuminated One. All the dreams I am sent are true.",
+            "warmup": 60,
+            "effects": {
+                "passion": 1
+            },
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "long.spawn.lantern",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        }
+    ]
+}

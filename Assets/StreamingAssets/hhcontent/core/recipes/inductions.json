@@ -1,0 +1,180 @@
+{
+    "recipes": [
+        {
+            "id": "heartinduction",
+            "label": "The Course of the Heart",
+            "actionid": "heartinduction",
+            "effects": {
+                "previtality": 1
+            },
+            "startdescription": "Whenever the principle of the Heart is implicated, I may gain Vitality.",
+            "description": "My own heart pumps more strongly, today.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "lanterninduction",
+            "label": "A Light in the Skull",
+            "actionid": "lanterninduction",
+            "effects": {
+                "preerudition": 1
+            },
+            "startdescription": "Whenever the principle of the Lantern sheds its light, I may recall additional scraps of knowledge.",
+            "description": "Dusty facts have come clear in my brain. For now, at least.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "mothinduction",
+            "label": "Old Unhappy Far-off Things",
+            "actionid": "mothinduction",
+            "effects": {
+                "prerestlessness": 1
+            },
+            "startdescription": "Moth finds the light in the dark, and so do I.",
+            "description": "A half-glimpsed wistfulness has touched me.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "mothglimmeringinduction",
+            "label": "The Dark, the Light",
+            "actionid": "mothinduction",
+            "effects": {
+                "preglimmering": 1
+            },
+            "startdescription": "Moth finds the light in the dark, and so do I.",
+            "description": "What could I be if I could be not this?",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "grailinduction",
+            "label": "The Place Behind Desire",
+            "actionid": "grailinduction",
+            "effects": {
+                "preglimmering": 1
+            },
+            "startdescription": "Is there something to be learnt from the satisfaction of desire?",
+            "description": "This is something like enlightenment.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "dreadinduction",
+            "label": "Night Terrors",
+            "actionid": "dreadinduction",
+            "effects": {
+                "predread": 1
+            },
+            "startdescription": "I wake in the night. My palms, my face, are beaded with sweat.",
+            "description": "Slowly, my clenched fists relax. I'll slide back into sleep. But something will remain, like spiderwebs in the corner of the room.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "dreadinduction_ifdread",
+            "label": "Night Terrors",
+            "actionid": "dreadinduction",
+            "requirements": {
+                "dread": 1
+            },
+            "effects": {
+                "predread": 1
+            },
+            "comments": "Only triggers if there's already Dread in whatever called this.",
+            "startdescription": "I wake in the night. My palms, my face, are beaded with sweat.",
+            "description": "Slowly, my clenched fists relax. I'll slide back into sleep. But something will remain, like spiderwebs in the corner of the room.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "fascinationinduction",
+            "label": "New Colours",
+            "actionid": "fascinationinduction",
+            "effects": {
+                "prefascination": 1
+            },
+            "startdescription": "I have begun to notice colours in the world for which I have no name.",
+            "description": "I am seeing things I shouldn't. I know this is dangerous. But it's difficult not to long for it.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "fascinationinduction_iffascination",
+            "label": "New Colours",
+            "actionid": "fascinationinduction",
+            "requirements": {
+                "fascination": 1
+            },
+            "effects": {
+                "prefascination": 1
+            },
+            "startdescription": "I have begun to notice colours in the world for which I have no name.",
+            "description": "I am seeing things I shouldn't. I know this is dangerous. But it's difficult not to long for it.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "poison.notoriety.induction",
+            "actionid": "poison.notoriety.induction",
+            "label": "The Public Gaze",
+            "startdescription": "I've used a follower who's too well-known. The Suppression Bureau may hear of it.",
+            "effects": {
+                "notoriety": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "poison.passion.dread.induction",
+            "actionid": "poison.passion.dread.induction",
+            "label": "The Creeping Colour",
+            "startdescription": "My passions are poisoned. Each pang of emotion brings an answering pang of savage grey.",
+            "effects": {
+                "dread": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "poison.reason.fascination.induction",
+            "actionid": "poison.reason.fascination.induction",
+            "label": "Relentless Light",
+            "startdescription": "A candle, when burned, brings light. When my thoughts ignite, what then?",
+            "effects": {
+                "fascination": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "poison.health.dread.induction",
+            "actionid": "poison.health.dread.induction",
+            "label": "The Hospitality of Agony",
+            "startdescription": "I have invited an old friend to lair in my muscles for one more day.",
+            "effects": {
+                "dread": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "secret.induction",
+            "actionid": "unsuspicion",
+            "label": "The Benefits of Privacy",
+            "startdescription": "We've taken care to locate our headquarters somewhere out of the way...",
+            "description": "...perhaps it will be harder for the Suppression Bureau to follow leads to our door. It may also be harder to sustain a reputation.",
+            "slots": [
+                {
+                    "id": "reputation",
+                    "label": "Reputation",
+                    "required": {
+                        "reputation": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 180,
+            "effects": {
+                "reputation": -1
+            }
+        }
+    ]
+}

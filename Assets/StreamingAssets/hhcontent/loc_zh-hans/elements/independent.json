@@ -1,0 +1,1562 @@
+{
+    "elements": [
+        {
+            "id": "generic_r",
+            "label": "捣乱分子",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "完全失了分寸之人。",
+            "animFrames": 1,
+            "icon": "generic_c_edge",
+            "xtriggers": {
+                "rival_promotion": "generic_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "generic_c_edge"
+            }
+        },
+        {
+            "id": "auclair_r",
+            "icon": "auclair_r",
+            "label": "捣乱分子奥克莱尔",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "奥克莱尔爱下象棋，现在比以往更甚。黑与白，错综迷离。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "auclair_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "auclair_b"
+            },
+            "uniquenessgroup": "uqauclair"
+        },
+        {
+            "id": "cat_r",
+            "icon": "cat_r",
+            "label": "捣乱分子卡特·卡罗",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "她叫自己“卡特·卡罗”。她以前是算命师。现在似乎没人弄得明白她是什么。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "cat_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "cat_b"
+            },
+            "uniquenessgroup": "uqcat"
+        },
+        {
+            "id": "clifton_r",
+            "icon": "clifton_r",
+            "label": "捣乱分子“教皇”克利夫顿",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "克利夫顿喜欢别人称他为“教皇陛下”。当有人不这么称呼时，他说不定就会大闹一场。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "clifton_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "clifton_b"
+            },
+            "uniquenessgroup": "uqclifton"
+        },
+        {
+            "id": "clovette_r",
+            "icon": "clovette_r",
+            "label": "捣乱分子克罗薇特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "即便人知道了克罗薇特的所作所为，也很难去讨厌她。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "clovette_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "clovette_b"
+            },
+            "uniquenessgroup": "uqclovette"
+        },
+        {
+            "id": "dorothy_r",
+            "icon": "dorothy_r",
+            "label": "捣乱分子多萝西",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "多萝西不会停歇，永远不会停歇。她已发誓如此。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "dorothy_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "dorothy_b"
+            },
+            "uniquenessgroup": "uqdorothy"
+        },
+        {
+            "id": "douglas_r",
+            "icon": "defaulthunter",
+            "label": "捣乱分子道格拉斯",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "道格拉斯已忍无可忍。该去看看他在大惊小怪些什么了。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "douglas_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "douglas_b"
+            },
+            "uniquenessgroup": "uqdouglas"
+        },
+        {
+            "id": "elridge_r",
+            "icon": "elridge_r",
+            "label": "捣乱分子埃尔里奇",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "埃尔里奇的鞋上总溅着血迹。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "elridge_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "elridge_b"
+            }
+        },
+        {
+            "id": "enid_r",
+            "icon": "enid_r",
+            "label": "捣乱分子伊妮德",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "伊妮德总能提前发现敌人来袭。次次如此。",
+            "xtriggers": {
+                "rival_promotion": "enid_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "enid_b"
+            },
+            "uniquenessgroup": "uqenid"
+        },
+        {
+            "id": "laidlaw_r",
+            "icon": "laidlaw_r",
+            "label": "捣乱分子莱德劳",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "莱德劳的计策如蕨叶之影般错综复杂。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "laidlaw_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "laidlaw_b"
+            },
+            "uniquenessgroup": "uqlaidlaw"
+        },
+        {
+            "id": "leo_r",
+            "icon": "leo_r",
+            "label": "捣乱分子里奥",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "里奥已选定了他的事业，他将采取一切必要措施使它存续。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "leo_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "leo_b"
+            },
+            "uniquenessgroup": "uqleo"
+        },
+        {
+            "id": "neville_r",
+            "icon": "neville_r",
+            "label": "捣乱分子内维尔",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "内维尔知道他这么做不能久长。但只要他还能，上神保佑，他就会打开出现在面前的一切门扉。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "neville_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "neville_b"
+            },
+            "uniquenessgroup": "uqneville"
+        },
+        {
+            "id": "porter_r",
+            "icon": "porter_r",
+            "label": "捣乱分子波特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "波特已开始收集名字。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "porter_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "porter_b"
+            },
+            "uniquenessgroup": "uqporter"
+        },
+        {
+            "id": "renira_r",
+            "icon": "renira_r",
+            "label": "捣乱分子芮妮拉",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "芮妮拉喜欢将别人对她的爱慕转为崇拜。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "renira_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "renira_b"
+            },
+            "uniquenessgroup": "uqrenira"
+        },
+        {
+            "id": "rose_r",
+            "icon": "rose_r",
+            "label": "捣乱分子萝丝",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "萝丝早已停止畏惧她的敌人。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "rose_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "rose_b"
+            },
+            "uniquenessgroup": "uqrose"
+        },
+        {
+            "id": "saliba_r",
+            "icon": "saliba_r",
+            "label": "捣乱分子萨利巴",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "萨利巴不能忍受无聊。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "saliba_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "saliba_b"
+            },
+            "uniquenessgroup": "uqsaliba"
+        },
+        {
+            "id": "slee_r",
+            "icon": "slee_r",
+            "label": "捣乱分子思雷",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "思雷总巴望弄到更多资源好钻研他的理论。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "slee_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "slee_b"
+            },
+            "uniquenessgroup": "uqslee"
+        },
+        {
+            "id": "sylvia_r",
+            "icon": "sylvia_r",
+            "label": "捣乱分子西尔维娅",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "西尔维娅的日程安排不清不楚。人们怀疑连她自己也搞不清楚。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "sylvia_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "sylvia_b"
+            },
+            "uniquenessgroup": "uqsylvia"
+        },
+        {
+            "id": "tristan_r",
+            "icon": "tristan_r",
+            "label": "捣乱分子崔斯坦",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "崔斯坦正在铸造一个小小的王国。有必要用火时，他就会用火。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "tristan_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "tristan_b"
+            },
+            "uniquenessgroup": "uqtristan"
+        },
+        {
+            "id": "valciane_r",
+            "icon": "valciane_r",
+            "label": "捣乱分子万查妮",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "万查妮用一个抄起瓶子就砸的小青年的劲头对付她的对头。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "valciane_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "valciane_b"
+            },
+            "uniquenessgroup": "uqvalciane"
+        },
+        {
+            "id": "victor_r",
+            "icon": "victor_r",
+            "label": "捣乱分子维克多",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "维克多已准备好迎接将可能发生的一切了，他的所有刀子都锋利如新兵。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "victor_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "victor_b"
+            },
+            "uniquenessgroup": "uqvictor"
+        },
+        {
+            "id": "violet_r",
+            "icon": "violet_r",
+            "label": "捣乱分子维奥莱特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "维奥莱特找到了新的爱好。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "violet_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "violet_b"
+            },
+            "uniquenessgroup": "uqviolet"
+        },
+        {
+            "id": "ysabet_r",
+            "icon": "ysabet_r",
+            "label": "捣乱分子伊莎贝特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "rivalmarks": 2,
+                "suspicious": 1
+            },
+            "description": "伊莎贝特在没人能看到她的地方等待着。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "ysabet_r_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "ysabet_b"
+            },
+            "uniquenessgroup": "uqysabet"
+        },
+        {
+            "id": "generic_r_c",
+            "label": "对手",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "完全失了分寸之人。",
+            "animFrames": 1,
+            "icon": "generic_c_edge",
+            "xtriggers": {
+                "rival_promotion": "generic_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "generic_c_edge"
+            }
+        },
+        {
+            "id": "auclair_r_c",
+            "icon": "auclair_r",
+            "label": "对手奥克莱尔",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "奥克莱尔爱下象棋，现在比以往更甚。黑与白，错综迷离。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "auclair_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "auclair_c"
+            },
+            "uniquenessgroup": "uqauclair"
+        },
+        {
+            "id": "cat_r_c",
+            "icon": "cat_r",
+            "label": "对手卡特·卡罗",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "她叫自己“卡特·卡罗”。她以前是算命师。现在似乎没人弄得明白她是什么。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "cat_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "cat_c"
+            },
+            "uniquenessgroup": "uqcat"
+        },
+        {
+            "id": "clifton_r_c",
+            "icon": "clifton_r",
+            "label": "对手“教皇”克里夫顿",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "克利夫顿喜欢别人称他为“教皇陛下”。当有人不这么称呼时，他说不定就会大闹一场。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "clifton_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "clifton_c"
+            },
+            "uniquenessgroup": "uqclifton"
+        },
+        {
+            "id": "clovette_r_c",
+            "icon": "clovette_r",
+            "label": "对手克罗薇特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "即便人知道了克罗薇特的所作所为，也很难去讨厌她。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "clovette_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "clovette_c"
+            },
+            "uniquenessgroup": "uqclovette"
+        },
+        {
+            "id": "connie_r_c",
+            "icon": "connie_r",
+            "label": "叛党康妮",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "康妮……康妮正在重新考量情况。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "connie_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "connie_c"
+            },
+            "uniquenessgroup": "uqconnie"
+        },
+        {
+            "id": "dorothy_r_c",
+            "icon": "dorothy_r",
+            "label": "对手多萝西",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "多萝西不会停歇，永远不会停歇。她已发誓如此。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "dorothy_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "dorothy_c"
+            },
+            "uniquenessgroup": "uqdorothy"
+        },
+        {
+            "id": "douglas_r_c",
+            "icon": "douglas_r",
+            "label": "对手道格拉斯",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "道格拉斯已忍无可忍。该去看看他在大惊小怪些什么了。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "douglas_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "douglas_c"
+            },
+            "uniquenessgroup": "uqdouglas"
+        },
+        {
+            "id": "elridge_r_c",
+            "icon": "elridge_r",
+            "label": "对手埃尔里奇",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "埃尔里奇的鞋上总溅着血迹。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "elridge_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "elridge_c"
+            }
+        },
+        {
+            "id": "enid_r_c",
+            "icon": "enid_r",
+            "label": "对手伊妮德",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "伊妮德总能提前发现敌人来袭。次次如此。",
+            "xtriggers": {
+                "rival_promotion": "enid_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "enid_c"
+            },
+            "uniquenessgroup": "uqenid"
+        },
+        {
+            "id": "laidlaw_r_c",
+            "icon": "laidlaw_r",
+            "label": "对手莱德劳",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "莱德劳的计策如蕨叶之影般错综复杂。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "laidlaw_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "laidlaw_c"
+            },
+            "uniquenessgroup": "uqlaidlaw"
+        },
+        {
+            "id": "leo_r_c",
+            "icon": "leo_r",
+            "label": "对手里奥",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "里奥已选定了他的事业，他将采取一切必要措施使它存续。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "leo_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "leo_c"
+            },
+            "uniquenessgroup": "uqleo"
+        },
+        {
+            "id": "natalia_r_c",
+            "icon": "natalia_r",
+            "label": "叛党纳塔丽娅",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "纳塔丽娅已经知道了深藏已久的真相。于是她调整了她的日程安排。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "natalia_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "natalia_c"
+            },
+            "uniquenessgroup": "uqnatalia"
+        },
+        {
+            "id": "neville_r_c",
+            "icon": "neville_r",
+            "label": "对手内维尔",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "内维尔知道他这么做不能久长。但只要他还能，上神保佑，他就会打开出现在面前的一切门扉。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "neville_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "neville_c"
+            },
+            "uniquenessgroup": "uqneville"
+        },
+        {
+            "id": "porter_r_c",
+            "icon": "porter_r",
+            "label": "对手波特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "波特已开始收集名字。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "porter_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "porter_c"
+            },
+            "uniquenessgroup": "uqporter"
+        },
+        {
+            "id": "renira_r_c",
+            "icon": "renira_r",
+            "label": "对手芮妮拉",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "芮妮拉喜欢将别人对她的爱慕转为崇拜。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "renira_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "renira_c"
+            },
+            "uniquenessgroup": "uqrenira"
+        },
+        {
+            "id": "rose_r_c",
+            "icon": "rose_r",
+            "label": "对手萝丝",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "萝丝早已停止畏惧她的敌人。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "rose_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "rose_c"
+            },
+            "uniquenessgroup": "uqrose"
+        },
+        {
+            "id": "saliba_r_c",
+            "icon": "saliba_r",
+            "label": "对手萨利巴",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "萨利巴不能忍受无聊。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "saliba_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "saliba_c"
+            },
+            "uniquenessgroup": "uqsaliba"
+        },
+        {
+            "id": "slee_r_c",
+            "icon": "slee_r",
+            "label": "对手思雷",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "思雷总巴望弄到更多资源好钻研他的理论。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "slee_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "slee_c"
+            },
+            "uniquenessgroup": "uqslee"
+        },
+        {
+            "id": "spencer_r_c",
+            "icon": "spencer_r",
+            "label": "叛党斯宾塞",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "斯宾塞已在各种可能性之间摇摆了许久……如今，他做出了选择。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "spencer_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "spencer_c"
+            },
+            "uniquenessgroup": "uqspencer"
+        },
+        {
+            "id": "sylvia_r_c",
+            "icon": "sylvia_r",
+            "label": "对手西尔维亚",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "西尔维娅的日程安排不清不楚。人们怀疑连她自己也搞不清楚。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "sylvia_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "sylvia_c"
+            },
+            "uniquenessgroup": "uqsylvia"
+        },
+        {
+            "id": "tristan_r_c",
+            "icon": "tristan_r",
+            "label": "对手崔斯坦",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "崔斯坦正在铸造一个小小的王国。有必要用火时，他就会用火。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "tristan_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "tristan_c"
+            },
+            "uniquenessgroup": "uqtristan"
+        },
+        {
+            "id": "valciane_r_c",
+            "icon": "valciane_r",
+            "label": "对手万查妮",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "万查妮用一个抄起瓶子就砸的小青年的劲头对付她的对头。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "valciane_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "valciane_c"
+            },
+            "uniquenessgroup": "uqvalciane"
+        },
+        {
+            "id": "victor_r_c",
+            "icon": "victor_r",
+            "label": "对手维克多",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "维克多已准备好迎接将可能发生的一切了，他的所有刀子都锋利如新兵。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "victor_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "victor_c"
+            },
+            "uniquenessgroup": "uqvictor"
+        },
+        {
+            "id": "violet_r_c",
+            "icon": "violet_r",
+            "label": "对手维奥莱特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "维奥莱特找到了新的爱好。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "violet_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "violet_c"
+            },
+            "uniquenessgroup": "uqviolet"
+        },
+        {
+            "id": "ysabet_r_c",
+            "icon": "ysabet_r",
+            "label": "对手伊莎贝特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "伊莎贝特在没人能看到她的地方等待着。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "ysabet_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "ysabet_c"
+            },
+            "uniquenessgroup": "uqysabet"
+        },
+        {
+            "id": "zachary_r_c",
+            "icon": "zachary_r",
+            "label": "叛党扎迦利",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "扎迦利总是遵循自己的理性，不论它引向何处；如今，它将他引出防剿局，带进了严寒的黎明。",
+            "animFrames": 1,
+            "xtriggers": {
+                "rival_promotion": "zachary_r_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "zachary_c"
+            },
+            "uniquenessgroup": "uqzachary"
+        },
+        {
+            "id": "generic_r_d",
+            "label": "形成途中的长生者",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "完全失了分寸之人。",
+            "animFrames": 1,
+            "icon": "generic_c_edge",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "generic_c_edge"
+            }
+        },
+        {
+            "id": "auclair_r_d",
+            "icon": "auclair_r",
+            "label": "形成途中的长生者奥克莱尔",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "奥克莱尔爱下象棋，现在比以往更甚。黑与白，错综迷离。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "auclair_d"
+            },
+            "uniquenessgroup": "uqauclair"
+        },
+        {
+            "id": "cat_r_d",
+            "icon": "cat_r",
+            "label": "形成途中的长生者卡特·卡罗",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "她叫自己“卡特·卡罗”。她以前是算命师。现在似乎没人弄得明白她是什么。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "cat_d"
+            },
+            "uniquenessgroup": "uqcat"
+        },
+        {
+            "id": "clifton_r_d",
+            "icon": "clifton_r",
+            "label": "形成途中的长生者“教皇”克里夫顿",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "克利夫顿喜欢别人称他为“教皇陛下”。当有人不这么称呼时，他说不定就会大闹一场。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "clifton_d"
+            },
+            "uniquenessgroup": "uqclifton"
+        },
+        {
+            "id": "clovette_r_d",
+            "icon": "clovette_r",
+            "label": "形成途中的长生者克罗薇特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "即便人知道了克罗薇特的所作所为，也很难去讨厌她。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "clovette_d"
+            },
+            "uniquenessgroup": "uqclovette"
+        },
+        {
+            "id": "connie_r_d",
+            "icon": "connie_r",
+            "label": "形成途中的长生者康妮",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 3,
+                "suspicious": 1
+            },
+            "description": "康妮从来不能忍住不接受挑战。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "connie_d"
+            },
+            "uniquenessgroup": "uqconnie"
+        },
+        {
+            "id": "dorothy_r_d",
+            "icon": "dorothy_r",
+            "label": "形成途中的长生者多萝西",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "多萝西不会停歇，永远不会停歇。她已发誓如此。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "dorothy_d"
+            },
+            "uniquenessgroup": "uqdorothy"
+        },
+        {
+            "id": "douglas_r_d",
+            "icon": "douglas_r",
+            "label": "形成途中的长生者道格拉斯",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "disciple": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "道格拉斯寻见了火焰。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "douglas_d"
+            },
+            "uniquenessgroup": "uqdouglas"
+        },
+        {
+            "id": "elridge_r_d",
+            "icon": "elridge_r",
+            "label": "形成途中的长生者埃尔里奇",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "埃尔里奇的鞋上总溅着血迹。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "elridge_d"
+            }
+        },
+        {
+            "id": "enid_r_d",
+            "icon": "enid_r",
+            "label": "形成途中的长生者伊妮德",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "伊妮德总能提前发现敌人来袭。次次如此。",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "enid_d"
+            },
+            "uniquenessgroup": "uqenid"
+        },
+        {
+            "id": "laidlaw_r_d",
+            "icon": "laidlaw_r",
+            "label": "形成途中的长生者莱德劳",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "莱德劳的计策如蕨叶之影般错综复杂。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "laidlaw_d"
+            },
+            "uniquenessgroup": "uqlaidlaw"
+        },
+        {
+            "id": "leo_r_d",
+            "icon": "leo_r",
+            "label": "形成途中的长生者里奥",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "里奥已选定了他的事业，他将采取一切必要措施使它存续。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "leo_d"
+            },
+            "uniquenessgroup": "uqleo"
+        },
+        {
+            "id": "natalia_r_d",
+            "icon": "natalia_r",
+            "label": "形成途中的长生者纳塔丽娅",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "纳塔丽娅已经知道了如此之多，付出了如此之大的代价。如今她不会收手。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "natalia_d"
+            },
+            "uniquenessgroup": "uqnatalia"
+        },
+        {
+            "id": "neville_r_d",
+            "icon": "neville_r",
+            "label": "形成途中的长生者内维尔",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "内维尔知道他这么做不能久长。但只要他还能，上神保佑，他就会打开出现在面前的一切门扉。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "neville_d"
+            },
+            "uniquenessgroup": "uqneville"
+        },
+        {
+            "id": "porter_r_d",
+            "icon": "porter_r",
+            "label": "形成途中的长生者波特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "波特已开始收集名字。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "porter_d"
+            },
+            "uniquenessgroup": "uqporter"
+        },
+        {
+            "id": "renira_r_d",
+            "icon": "renira_r",
+            "label": "形成途中的长生者芮妮拉",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "芮妮拉喜欢将别人对她的爱慕转为崇拜。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "renira_d"
+            },
+            "uniquenessgroup": "uqrenira"
+        },
+        {
+            "id": "rose_r_d",
+            "icon": "rose_r",
+            "label": "形成途中的长生者萝丝",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "萝丝早已停止畏惧她的敌人。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "rose_d"
+            },
+            "uniquenessgroup": "uqrose"
+        },
+        {
+            "id": "saliba_r_d",
+            "icon": "saliba_r",
+            "label": "形成途中的长生者萨利巴",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "萨利巴不能忍受无聊。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "saliba_d"
+            },
+            "uniquenessgroup": "uqsaliba"
+        },
+        {
+            "id": "slee_r_d",
+            "icon": "slee_r",
+            "label": "形成途中的长生者思雷",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "思雷总巴望弄到更多资源好钻研他的理论。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "slee_d"
+            },
+            "uniquenessgroup": "uqslee"
+        },
+        {
+            "id": "spencer_r_d",
+            "icon": "spencer_r",
+            "label": "形成途中的长生者斯宾塞",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "斯宾塞不会再允许任何事物存于他的明察之外。如今他已前进到最后一个门关。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "spencer_d"
+            },
+            "uniquenessgroup": "uqspencer"
+        },
+        {
+            "id": "sylvia_r_d",
+            "icon": "sylvia_r",
+            "label": "形成途中的长生者西尔维亚",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "西尔维娅的日程安排不清不楚。人们怀疑连她自己也搞不清楚。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "sylvia_d"
+            },
+            "uniquenessgroup": "uqsylvia"
+        },
+        {
+            "id": "tristan_r_d",
+            "icon": "tristan_r",
+            "label": "形成途中的长生者崔斯坦",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "崔斯坦正在铸造一个小小的王国。有必要用火时，他就会用火。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "tristan_d"
+            },
+            "uniquenessgroup": "uqtristan"
+        },
+        {
+            "id": "valciane_r_d",
+            "icon": "valciane_r",
+            "label": "形成途中的长生者万查妮",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "万查妮用一个抄起瓶子就砸的小青年的劲头对付她的对头。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "valciane_d"
+            },
+            "uniquenessgroup": "uqvalciane"
+        },
+        {
+            "id": "victor_r_d",
+            "icon": "victor_r",
+            "label": "形成途中的长生者维克多",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "维克多已准备好迎接将可能发生的一切了，他的所有刀子都锋利如新兵。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "victor_d"
+            },
+            "uniquenessgroup": "uqvictor"
+        },
+        {
+            "id": "violet_r_d",
+            "icon": "violet_r",
+            "label": "形成途中的长生者维奥莱特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "维奥莱特找到了新的爱好。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "violet_d"
+            },
+            "uniquenessgroup": "uqviolet"
+        },
+        {
+            "id": "ysabet_r_d",
+            "icon": "ysabet_r",
+            "label": "形成途中的长生者伊莎贝特",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "伊莎贝特在没人能看到她的地方等待着。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "ysabet_d"
+            },
+            "uniquenessgroup": "uqysabet"
+        },
+        {
+            "id": "zachary_r_d",
+            "icon": "zachary_r",
+            "label": "形成途中的长生者扎迦利",
+            "aspects": {
+                "mortal": 1,
+                "independent": 1,
+                "exalted": 1,
+                "rivalmarks": 4,
+                "suspicious": 1
+            },
+            "description": "扎迦利在一步步接近自己无可避免的终局。",
+            "animFrames": 1,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "recruiting": "zachary_d"
+            },
+            "uniquenessgroup": "uqzachary"
+        }
+    ]
+}

@@ -1,0 +1,109 @@
+{
+    "recipes": [
+        {
+            "id": "studybenefactorwill",
+            "label": "研究故人留下的文件",
+            "actionId": "study",
+            "requirements": {
+                "benefactorwill": 1,
+                "funds": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "studybenefactorwill_suspicion",
+                    "chance": 30
+                }
+            ],
+            "effects": {
+                "funds": 49,
+                "benefactorwill": -1
+            },
+            "startdescription": "当前的情况需要谨慎行事。在社会舆论中我们的关系是不正当的。",
+            "description": "我们两人的关系从未公开。很难想象我能继承一大份遗产。但无论如何，我拿到的资产不少。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studybenefactorwill_suspicion",
+            "label": ".",
+            "actionId": "study",
+            "effects": {
+                "notoriety": 1,
+                "benefactorwill": -1
+            },
+            "description": "哪里出岔子了。我在街上撞见了我们原先的熟人。一家报纸在暗示谋杀的可能性。律师不接待我。我不用指望分遗产了，且或许还有更糟的东西会找上我。"
+        },
+        {
+            "id": "study.welland.defeated",
+            "actionId": "study",
+            "label": "伊苏斯重演",
+            "startdescription": "我有机会和我们的塑形者成为敌人，正如狮子匠与上校那样。[这将会使你先前的角色永远不能飞升，但会给你机会赢得一场常规的<b>铸</b>之胜利。此外无其他影响。]",
+            "description": "忠诚的锁链已经粉碎。我的追随者不会起任何怀疑。待到我们的塑形者从流放中归来时，我已然离去，或者成为永恒。",
+            "requirements": {
+                "welland.defeated": 1,
+                "mentor": 1
+            },
+            "effects": {
+                "mentor": -1,
+                "welland.defeated": -1,
+                "ascensionpowerc": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "study.tryphon.defeated",
+            "actionId": "study",
+            "label": "极上的菜品",
+            "startdescription": "如果我食用了特里丰女士的残尸，我就不会被人食用。[这将会使你先前的角色永远不能飞升，但会给你机会赢得常规的<b>杯</b>之胜利。此外无其他影响。]",
+            "description": "味道在舌尖熠熠生辉。我们的愉悦者将不会享有谢肉祭。我的追随者将为我的欲望服务。此时此刻，我将吞噬；我将不被吞噬。",
+            "requirements": {
+                "tryphon.defeated": 1,
+                "mentor": 1
+            },
+            "effects": {
+                "mentor": -1,
+                "tryphon.defeated": -1,
+                "ascensionsensationc": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "study.diarist.defeated",
+            "actionId": "study",
+            "label": "一扇门关闭",
+            "startdescription": "日记作者给了我将沐光明者扔在漫宿的方法。[这将会使你先前的角色永远不能飞升，但会给你机会赢得一场常规的<b>灯</b>之胜利。此外无其他影响。]",
+            "description": "我已关上我眼瞳中的门扉。用蜡将其封死。那只眼盲了，其他眼则看到了新的地平线。我们的组织将会为其他目标效力。也许有一天我会与我教的创教者平起平坐。",
+            "requirements": {
+                "diarist.defeated": 1,
+                "mentor": 1
+            },
+            "effects": {
+                "mentor": -1,
+                "diarist.defeated": -1,
+                "ascensionenlightenmentc": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "study.julian.defeated",
+            "actionId": "study",
+            "label": "空虚与孤独",
+            "startdescription": "难道我仅仅是是“漫宿墙上多来的一块石头”？还能是其他东西吗？[这将会使你先前的角色永远不能飞升，同时在牌桌上增加“恐惧”。此外无其他影响。]",
+            "description": "我将按自己的选择生活。现在如何，将来就如何，直至不复存在。",
+            "requirements": {
+                "julian.defeated": 1,
+                "mentor": 1
+            },
+            "effects": {
+                "mentor": -1,
+                "julian.defeated": -1,
+                "dread": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        }
+    ]
+}

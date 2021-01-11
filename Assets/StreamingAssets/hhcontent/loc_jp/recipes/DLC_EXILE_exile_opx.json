@@ -1,0 +1,1962 @@
+{
+	"recipes": [
+		{
+			"id": "use.sanatorium.duplicate.hint",
+			"actionId": "use",
+			"label": "もう1軒、療養所を運営する？",
+			"startdescription": "一度に1つで十分だ。",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": 4,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.sanatorium": 1
+			},
+			"alt": [
+				{
+					"id": "opx.sanatorium.begin",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.doctorspractice.duplicate.hint",
+			"actionId": "use",
+			"label": "もう1つの診察所を経営する？",
+			"startdescription": "一度に1つで十分だ。",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.doctor": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.miracles.duplicate.hint",
+			"actionId": "use",
+			"label": "もう1つ、信仰療法カルトを運営する？",
+			"startdescription": "一度に1つで十分だ。",
+			"requirements": {
+				"connection.holy": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.flowermaker.duplicate.hint",
+			"actionId": "use",
+			"label": "もう1つフラワーメーカーの密教カルトを形成する？",
+			"startdescription": "一度に1つで十分だ。",
+			"description": "会衆が集まっている。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.flowermaker": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.flowermaker": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.horned.duplicate.hint",
+			"actionId": "use",
+			"label": "もう1つ、角斧の密教カルトを形成する？",
+			"startdescription": "一度に1つで十分だ。",
+			"description": "会衆が集まっている。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.horned": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.horned": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.wolf.duplicate.hint",
+			"actionId": "use",
+			"label": "もう1つ、分裂した狼の密教カルトを形成する？",
+			"startdescription": "一度に1つで十分だ。",
+			"description": "会衆が集まっている。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.wolf": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.wolf": "-"
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.miracles.duplicate.hint",
+			"actionId": "use",
+			"label": "もう1つの信仰療法カルトの運営を続ける？",
+			"startdescription": "一度に1つで十分だ。",
+			"description": "会衆がまた集まってきた。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.import.duplicate.hint",
+			"actionId": "use",
+			"label": "もう1つ、輸入業を経営する？",
+			"startdescription": "一度に1つで十分だ。",
+			"description": "店を開いた。",
+			"requirements": {
+				"licence.import": 1,
+				"space": 1,
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"opx.import": "-"
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.counterfeiting.duplicate.hint",
+			"actionId": "use",
+			"label": "もう1つ偽札工作を始める？",
+			"startdescription": "一度に1つで十分だ。",
+			"description": "あともう少しで印刷機の準備ができる。",
+			"requirements": {
+				"connection.underworld": 1,
+				"forge": 6,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.counterfeiting": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.smuggling.duplicate.hint",
+			"actionId": "use",
+			"label": "もう1つ密輸工作を始める？",
+			"startdescription": "一度に1つで十分だ。",
+			"description": "全ての準備ができている。",
+			"requirements": {
+				"connection.underworld": 1,
+				"op.sea": 1,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.smuggling": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.fights.duplicate.hint",
+			"actionId": "use",
+			"label": "まだまだ闘争に参戦する？",
+			"startdescription": "冗談はさておき.....",
+			"requirements": {
+				"connection.underworld": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.fights": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.betrayal.duplicate.hint",
+			"actionId": "use",
+			"label": "別の反乱を裏切る？",
+			"startdescription": "一度に1つで十分だ。",
+			"requirements": {
+				"connection.radicals": 1,
+				"winter": 2,
+				"domicile": 1,
+				"temptation.defiance": 1
+			},
+			"extantreqs": {
+				"opx.betrayal": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.uprising.duplicate.hint",
+			"actionId": "use",
+			"label": "別の反乱を援助する？",
+			"startdescription": "一度に1つで十分だ。",
+			"comments": "Assumes Radicals add Forge 6",
+			"requirements": {
+				"connection.radicals": 1,
+				"forge": 8,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.patronage.duplicate.hint",
+			"actionId": "use",
+			"label": "もっと後援してもらえるように支配者にうるさくせがむ？",
+			"startdescription": "やめておこう。",
+			"requirements": {
+				"connection.ruler": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.patronage": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.sanatorium",
+			"actionId": "use",
+			"label": "療養所を経営する",
+			"startdescription": "裕福な未亡人を何人か治療したら、すぐに評判は広まるだろう。[盗まれた寿命を現金に変えるかなり安全な方法。心臓の属性カードは療養所の運営に役立つことが多い。]",
+			"description": "療養所を開いた。",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": 4,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.sanatorium": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.sanatorium.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.sanatorium.doctor.hint",
+			"actionId": "use",
+			"label": "療養所と診察所、どちらを経営する？",
+			"startdescription": "診察所を経営するには事務所、療養所なら立派な施設必要だ。倉庫や見た目の悪い場所は論外だ。",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.doctorspractice",
+			"actionId": "use",
+			"label": "診察所を経営する",
+			"startdescription": "私の治療法は変っているかもしれないが......いつも良い結果を出せている。[盗まれた寿命を現金に変えるかなり安全な方法。心臓の属性カードは診察所の運営に役立つことが多い。]",
+			"description": "診察所を開院した。",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 1,
+				"year.stolen": 1,
+				"comfort": 1
+			},
+			"extantreqs": {
+				"opx.doctor": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.doctorspractice.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.miracles",
+			"actionId": "use",
+			"label": "信仰療法カルトを運営する",
+			"startdescription": "信徒に真の奇跡的な癒しをもたらすことができる。[盗まれた寿命を現金に変えるかなり安全な方法。蛾の属性カードはカルト教団の運営に役立つことが多い。]",
+			"description": "会衆が集まっている。",
+			"requirements": {
+				"connection.holy": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.miracles.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 4,
+						"filter": {
+							"space": 1,
+							"op.connection.holy": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.flowermaker",
+			"actionId": "use",
+			"label": "フラワーメーカーの密教カルトを形成する",
+			"startdescription": "ここではフラワーメーカーの存在感が強く感じられる。会衆の中の熱狂的信者たちに快楽を追求してもらおう。[盗まれた寿命を現金に変えるかなり安全な方法。蛾の属性カードはカルト教団の運営に役立つことが多い。]",
+			"description": "会衆が集まっている。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.flowermaker": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.flowermaker": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.flowermaker": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.flowermaker.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.horned",
+			"actionId": "use",
+			"label": "角斧の密教カルトを形成する",
+			"startdescription": "ここでは角斧の存在感が強く感じられる。会衆の中には彼女に引き寄せられる人が何人かいるだろう。 [盗まれた寿命を現金に変えるかなり安全な方法。蛾の属性カードはカルト教団の運営に役立つことが多い。]",
+			"description": "会衆が集まっている。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.horned": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.horned": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.horned": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.horned.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.wolf",
+			"actionId": "use",
+			"label": "分裂した狼の密教カルトを形成する",
+			"startdescription": "ここでは分裂した狼の存在感が強く感じられる。会衆の中で暴力的な信者たちが、それに反応するだろう。[盗まれた寿命を現金に変えるかなり安全な方法。蛾の属性カードはカルト教団の運営に役立つことが多い。]",
+			"description": "会衆が集まっている。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.wolf": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.wolf": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.wolf": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.wolf.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.miracles",
+			"actionId": "use",
+			"label": "信仰療法カルトの運営を続ける",
+			"startdescription": "誰もが幸せそうだ。やめるわけにはいかない。[盗まれた寿命を現金に変えるかなり安全な方法。蛾の属性カードはカルト教団の運営に役立つことが多い。]",
+			"description": "会衆がまた集まってきた。",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"progress.effectiveness": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.miracles.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"progress.effectiveness": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.import",
+			"actionId": "use",
+			"label": "輸入業を経営する",
+			"startdescription": "合法ですべてを行っている。合法すぎて、少し不安になってしまうくらいだ。[盗まれた寿命を現金に変えるかなり安全な方法。灯りの属性カードは輸入業の運営に役立つことが多い。]",
+			"description": "店を開いた。",
+			"requirements": {
+				"licence.import": 1,
+				"space": 1,
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"opx.import": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.import.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.import": 1,
+							"op.sea": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.counterfeiting",
+			"actionId": "use",
+			"label": "偽札工作を運営する",
+			"startdescription": "人脈と資金さえあれば......金を稼ぐことができる。[盗まれた寿命を現金に変えるかなり安全な方法。鍛造の属性カードは偽札工作の実行に役立つことが多い。]",
+			"description": "あともう少しで印刷機の準備ができる。",
+			"requirements": {
+				"connection.underworld": 1,
+				"forge": 6,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.counterfeiting": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.counterfeiting.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 4,
+						"filter": {
+							"op.connection.underworld": 1,
+							"space": 1,
+							"forge": 6
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.smuggling",
+			"actionId": "use",
+			"label": "密輸工作を始める",
+			"startdescription": "何でもどこかで価値があるものとなる。[かなり安全な現金の稼ぎ方。通常、密輸工作は巧妙だが、いずれにしても高い報酬を得ることができる。蛾の属性カードは、密輸工作を行う際に役に立つことが多い。]",
+			"description": "全ての準備ができている。",
+			"requirements": {
+				"connection.underworld": 1,
+				"op.sea": 1,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.smuggling": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.smuggling.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"op.sea": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.fights",
+			"actionId": "use",
+			"label": "闘争に参戦する",
+			"startdescription": "残酷だが、年をいくつか手元に置いておけば、あまり永久的なダメージを受けないはずだ。[課題に失敗した場合は傷を負うことになり、作戦が完了するまで治すことができない。刃の属性カードは、闘争に参戦する際に役立つことが多い。]",
+			"requirements": {
+				"connection.underworld": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.fights": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.fights.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.connection.underworld": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.underworld.hint",
+			"actionId": "use",
+			"label": "裏社会の人脈を使う？",
+			"requirements": {
+				"connection.underworld": 1
+			},
+			"startdescription": "[偽札工作を始めるには鍛造6と空間を追加、密輸工作を始めるには海港での機会と空間を追加、闘争に参加するには盗まれた年を追加する。]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.radicals.hint",
+			"actionId": "use",
+			"label": "過激派の人脈を使う？",
+			"requirements": {
+				"connection.radicals": 1
+			},
+			"startdescription": "[反乱を支援する場合は鍛造を、裏切る場合は冬を使う。問題を抱えた街でのみ使用可能。]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.uprising.wolf",
+			"actionId": "use",
+			"label": "分裂した狼のために混沌を起こす",
+			"startdescription": "「Caput gerat lupinum」。どうして？私は誰かに何の借りがあるというのだ？[これによって、苦しみと破壊を引き起こされる。利益を得る機会が生まれ、精算人たちがあなたを追跡しづらくなるだろう。]",
+			"requirements": {
+				"connection.radicals": 1,
+				"op.wolf": 1,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": -1,
+				"opx.betrayal": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.uprising.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1,
+							"op.wolf.husk.active": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.betrayal",
+			"actionId": "use",
+			"label": "反乱を裏切る",
+			"startdescription": "これは革命の世紀であり、まだ始まったばかりだ。私は命を救うこととなるだろう。[利益を得る機会が生まれる可能性があり、地方自治体に気に入られるだろう。大佐は現状維持を好む。]",
+			"requirements": {
+				"connection.radicals": 1,
+				"winter": 2,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.betrayal": -1,
+				"opx.uprising": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.betrayal.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.uprising",
+			"actionId": "use",
+			"label": "反乱を支援する",
+			"startdescription": "面倒なことになるだろうが、最終的には世界を良くするかもしれない。[利益を得る機会が生まれ、精算人たちがあなたを追跡しづらくなるだろう。ライオンスミスは反乱を好む。]",
+			"comments": "Assumes Radicals add Forge 6",
+			"requirements": {
+				"connection.radicals": 1,
+				"forge": 8,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": -1,
+				"opx.betrayal": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.uprising.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.patronage",
+			"actionId": "use",
+			"label": "後援を受け入れる",
+			"startdescription": "支配者が命以上に欲しがるものはないし、これ以上の金を払う者はいない。パトロンが私の手段を理解しないようにしなければいけない。そうでなければ、厄介なことを思いついてしまうかもしれない。[盗まれた寿命を現金に変えるかなり安全な方法。]",
+			"requirements": {
+				"connection.ruler": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.patronage": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.patronage.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.connection.ruler": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "opx.sanatorium.setup",
+			"actionId": "opx.sanatorium",
+			"label": "療養所",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.sanatorium1.heart.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.sanatorium.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.doctorspractice.setup",
+			"actionId": "opx.doctorspractice",
+			"label": "診察所",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.doctor1.heart.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.doctorspractice.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.miracles.setup",
+			"actionId": "opx.miracles",
+			"label": "信仰療法カルト",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.miracles1.moth.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.miracles.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.flowermaker.setup",
+			"actionId": "opx.flowermaker",
+			"label": "フラワーメーカーのカルト",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.flowermaker1.grail.lantern": 1
+			},
+			"linked": [
+				{
+					"id": "opx.flowermaker.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.horned.setup",
+			"actionId": "opx.horned",
+			"label": "角斧カルト",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.horned1.knock.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.horned.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.wolf.setup",
+			"actionId": "opx.wolf",
+			"label": "分裂した狼のカルト",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.wolf1.edge.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.wolf.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.import.setup",
+			"actionId": "opx.import",
+			"label": "輸入業",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.import1.lantern.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.import.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.counterfeiting.setup",
+			"actionId": "opx.counterfeiting",
+			"label": "偽札工作",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.counterfeiting1.forge.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.counterfeiting.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.smuggling.setup",
+			"actionId": "opx.smuggling",
+			"label": "密輸工作",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.smuggling1.moth.knock": 1
+			},
+			"linked": [
+				{
+					"id": "opx.smuggling.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.fights.setup",
+			"actionId": "opx.fights",
+			"label": "戦い",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.fights1.edge.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.fights.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.uprising.setup",
+			"actionId": "opx.uprising.betrayal",
+			"label": "反乱",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.uprising1.edge.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.uprising.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.betrayal.setup",
+			"actionId": "opx.uprising.betrayal",
+			"label": "裏切り行為",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.betrayal1.winter.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.betrayal.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.patronage.setup",
+			"actionId": "opx.patronage",
+			"label": "後援",
+			"startdescription": "設置中......",
+			"effects": {
+				"ee.patronage1.heart.lantern": 1
+			},
+			"linked": [
+				{
+					"id": "opx.patronage.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.sanatorium.begin",
+			"actionId": "opx.sanatorium",
+			"label": "療養所",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.doctorspractice.begin",
+			"actionId": "opx.doctorspractice",
+			"label": "診察所",
+			"startdescription": "営業時間。[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.miracles.begin",
+			"actionId": "opx.miracles",
+			"label": "信仰療法カルト",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.flowermaker.begin",
+			"actionId": "opx.flowermaker",
+			"label": "フラワーメーカーのカルト",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.horned.begin",
+			"actionId": "opx.horned",
+			"label": "角斧カルト",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.wolf.begin",
+			"actionId": "opx.wolf",
+			"label": "分裂した狼のカルト",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.import.begin",
+			"actionId": "opx.import",
+			"label": "輸入業",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.counterfeiting.begin",
+			"actionId": "opx.counterfeiting",
+			"label": "偽札工作",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.smuggling.begin",
+			"actionId": "opx.smuggling",
+			"label": "密輸工作",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.fights.begin",
+			"actionId": "opx.fights",
+			"label": "戦い",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.uprising.begin",
+			"actionId": "opx.uprising.betrayal",
+			"label": "反乱",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.betrayal.begin",
+			"actionId": "opx.uprising.betrayal",
+			"label": "裏切り行為",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.patronage.begin",
+			"actionId": "opx.patronage",
+			"label": "後援",
+			"startdescription": "[作戦実行中に、課題が発生する。カードを追加して、相手の属性条件をマッチできれば、作戦はより巧妙、または効果的なものになる。カードは最後まで作戦に残る。]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "準備",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.challenge",
+			"actionId": "opx.",
+			"label": "課題",
+			"startdescription": "@#ee.doctor1.heart.grail|診療所：病人を治す？それとも、老人に若さを与える？\n#ee.doctor2.heart.knock|診療所：病人をそっと治療する？それとも、けが人を奇跡的に治すことに専念する？\n#ee.doctor3.heart.forge|診療所：病人をそっと治療する？それとも、派手な小道具を作る？\n#ee.sanatorium1.heart.grail|療養所：病人を治す？それとも、老人に若さを与える？\n#ee.sanatorium2.heart.knock|療養所：病人をそっと治療する？それとも、けが人を奇跡的に治すことに専念する？\n#ee.sanatorium3.heart.forge|療養所：病人をそっと治療する？それとも、派手な小道具を作る？\n#ee.miracles1.moth.grail|信仰療法カルト：寓話？それとも快楽？\n#ee.miracles2.moth.lantern|信仰療法カルト：慎重になり曖昧に話す？それとも、本当の秘密を共有する？\n#ee.miracles3.moth.winter|信仰療法カルト：慰めのミスディレクション？それとも、希望のない啓示？\n#ee.flowermaker1.grail.lantern|フラワーメーカーのカルト：個人的な快楽の儀式？それとも、公的な啓示？\n#ee.flowermaker2.grail.knock|フラワーメーカーのカルト ：ベルベットのカーテンを閉める？それとも、感性の扉を大きく開く？\n#ee.flowermaker3.grail.winter|フラワーメーカーのカルト：誘惑？それとも、畏怖？\n#ee.horned1.knock.winter|角斧カルト：誰と構わず、来訪者を呼び出す？それとも、去らないものを倒す？\n#ee.horned2.knock.forge|角斧カルト：誰と構わず、来訪者に助けを求める？それとも、会衆にやらせる？\n#ee.horned3.knock.lantern|角斧カルト：扉？それとも、ランプ？\n#ee.wolf1.edge.winter|分裂した狼のカルト：苦悶？それとも、氷？\n#ee.wolf2.edge.lantern|分裂した狼のカルト：苦悶？それとも、盲目？\n#ee.wolf3.grail.winter|分裂した狼のカルト：氷？それとも、血液？\n#ee.import1.lantern.heart|輸入業：新しい機会を探す？それとも、事業を継続させる？\n#ee.import2.lantern.forge|輸入業：新しい機会を探す？それとも、事業を改善させる？\n#ee.import3.lantern.winter|輸入業：新しい機会を探す？それとも、撤退に向けて準備を始める？\n#ee.counterfeiting1.forge.winter|偽札工作：生産量を増やす？それとも、警戒する？\n#ee.counterfeiting2.forge.moth|偽札工作：生産量を増やす？それとも、騙すことに力を注ぐ？\n#ee.counterfeiting3.forge.grail|偽札工作：生産量を増やす？それとも、トラブルメーカーを買収する？\n#ee.smuggling1.moth.knock|密輸工作：偽装を増やす？それとも、積み荷を増やす？\n#ee.smuggling2.moth.heart|密輸工作：もっとカモフラージュする？それとも、用心する？\n#ee.smuggling3.moth.winter|密輸工作：こっそり？それとも、静かに？\n#ee.fights1.edge.grail|闘争：大胆？それとも、賄賂？\n#ee.fights2.edge.moth|闘争：力？それとも、素早さ？\n#ee.fights3.edge.forge|闘争：拳？それとも、武器を使う？\n#ee.uprising1.edge.heart|反乱：言葉？それとも、銃？\n#ee.uprising2.edge.heart|反乱：言葉？それとも、銃？\n#ee.uprising3.edge.heart|反乱：言葉？それとも、銃？\n#ee.betrayal1.winter.heart|反乱を裏切る：説得？それとも、殺人？\n#ee.betrayal2.winter.heart|反乱を裏切る：説得？それとも、殺人？\n#ee.betrayal3.winter.heart|反乱を裏切る：説得？それとも、殺人？\n#ee.patronage1.heart.lantern|後援：控えめ？それとも、ドラマチックに？\n#ee.patronage2.heart.lantern|後援：控えめ？それとも、ドラマチックに？\n#ee.patronage3.heart.lantern|後援：控えめ？それとも、ドラマチックに？\n#|課題が待ち受けている。@\n\n課題を刃、鍛造、開錠、灯りに合わせると効果がアップする。または、心臓、聖杯、蛾、冬とマッチさせると巧妙が増加する。]",
+			"warmup": 60,
+			"requirements": {
+				"complication": 1
+			},
+			"slots": [
+				{
+					"id": "response",
+					"label": "応答",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "opx.tryresolve.edge"
+				},
+				{
+					"id": "opx.tryresolve.forge"
+				},
+				{
+					"id": "opx.tryresolve.lantern"
+				},
+				{
+					"id": "opx.tryresolve.knock"
+				},
+				{
+					"id": "opx.tryresolve.grail"
+				},
+				{
+					"id": "opx.tryresolve.heart"
+				},
+				{
+					"id": "opx.tryresolve.moth"
+				},
+				{
+					"id": "opx.tryresolve.secrethistories"
+				},
+				{
+					"id": "opx.tryresolve.winter"
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge.failed"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.edge",
+			"actionId": "opx.",
+			"label": "明るい刃",
+			"startdescription": "刃で課題に取り組んでいる。これにより効率が増加する。",
+			"requirements": {
+				"minedge": 1,
+				"edge": "minedge"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.forge",
+			"actionId": "opx.",
+			"label": "金槌と鉄床",
+			"startdescription": "鍛造で課題に取り組んでいる。これにより効率が増加する。",
+			"requirements": {
+				"minforge": 1,
+				"forge": "minforge"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.grail",
+			"actionId": "opx.",
+			"label": "喜びの者とその娘たち",
+			"startdescription": "聖杯で課題に取り組んでいる。これにより巧妙が増加する。",
+			"requirements": {
+				"mingrail": 1,
+				"grail": "mingrail"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.heart",
+			"actionId": "opx.",
+			"label": "鳴りやまぬ鼓動",
+			"startdescription": "心臓で課題に取り組んでいる。これにより巧妙が増加する。",
+			"requirements": {
+				"minheart": 1,
+				"heart": "minheart"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.knock",
+			"actionId": "opx.",
+			"label": "傷口はすべて扉である",
+			"startdescription": "開錠で課題に取り組んでいる。これにより効率が増加する。",
+			"requirements": {
+				"minknock": 1,
+				"knock": "minknock"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.lantern",
+			"actionId": "opx.",
+			"label": "光",
+			"startdescription": "灯りで課題に取り組んでいる。これにより効率が増加する。",
+			"requirements": {
+				"minlantern": 1,
+				"lantern": "minlantern"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.moth",
+			"actionId": "opx.",
+			"label": "巧妙なトリック",
+			"startdescription": "蛾で課題に取り組んでいる。これにより巧妙が増加する。",
+			"requirements": {
+				"minmoth": 1,
+				"moth": "minmoth"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.secrethistories",
+			"actionId": "opx.",
+			"label": "歴史は一つだけではない",
+			"startdescription": "秘史で課題に取り組んでいる。これにより巧妙が増加する。",
+			"requirements": {
+				"minsecrethistories": 1,
+				"secrethistories": "minsecrethistories"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.winter",
+			"actionId": "opx.",
+			"label": "夜は深まる",
+			"startdescription": "冬で課題に取り組んでいる。これにより巧妙が増加する。",
+			"requirements": {
+				"minwinter": 1,
+				"winter": "minwinter"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.challenge.failed",
+			"actionId": "opx.",
+			"label": "課題、失敗！",
+			"startdescription": "もっとうまくやれたはず。",
+			"aspects": {
+				"failure": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.next",
+			"actionId": "opx.",
+			"label": "作戦続行",
+			"startdescription": "@#opx.doctor|診療所には患者が出入りしている。<br><br><i>「次の方」</i>\n\n#opx.sanatorium|療養所には患者が出入りしている。<br><br><i>「スタッフがお部屋まで案内します」。</i>\n\n#opx.miracles|信仰療法カルトの新メンバーが増えている。<br><br><i></i>「喜べ！」\n\n#opx.flowermaker|密教カルト「フラワーメーカー」の儀式が増えた。<br><br><i>「愛は法だが、それ以上でもある」</i>\n\n#opx.horned|密教「角斧」の儀式が増えた。<br><br><i>「我々は結合してはならないものを分裂させる」</i>\n\n#opx.wolf|密教「分裂した狼」の儀式が増えた。<br><br><i>「苦は仇の門」</i>\n\n#opx.counterfeiting|偽札工作はまだ続いている。<br><br><i>「止めずに走らせておけ」</i>\n\n#opx.smuggling|密輸活動はまだ続いている。<br><br><i>「灯りを消せ！」</i>\n\n#opx.import|輸入業はまだ続いている。<br><br><i>「ここにサインをお願いします」</i>\n\n#opx.fights|まだまだ闘争は続く。準備はできている。<br><br><i>「次は誰だ？」</i>\n\n#opx.uprising|反乱が山場を迎える。<br><br><i>「あともう少しだ」</i>\n\n#opx.betrayal|地元過激派への裏切り行為が進展している......<br><br>「大丈夫、私を信じて」<i></i>\n\n\n#opx.patronage|後援は役に立っている。<br><br><i>「その分、期待されているけど」</i>\n\n@",
+			"aspects": {
+				"next": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.challenge"
+				},
+				{
+					"id": "opx.end"
+				}
+			]
+		},
+		{
+			"id": "opx.end",
+			"actionId": "opx.",
+			"label": "作戦完了",
+			"startdescription": "#opx.doctor|「元気そうで良かった」\n#opx.sanatorium|「また来年」\n#opx.miracles|「それでは、これで失礼するよ」\n#opx.flowermaker|「忘れないでおくれ」\n#opx.horned|「終わりは、始まり」\n#opx.wolf|「キミの番だ」\n#opx.counterfeiting|「止めろ」\n#opx.smuggling|「閉めるぞ」\n#opx.import|「帳簿を持って来て」\n#opx.fights|「......ああ」\n#opx.uprising|「この日のために頑張ってきたんだ！」\n#opx.betrayal|「この住所にいるはずだ......」\n#opx.patronage|「ちょっとした用事があってね」@",
+			"warmup": 5,
+			"burnimage": "operation.complete",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"cash": "opx.basepayout"
+			},
+			"linked": [
+				{
+					"id": "opx.end.subtlety3"
+				},
+				{
+					"id": "opx.end.subtlety2"
+				},
+				{
+					"id": "opx.end.subtlety1"
+				},
+				{
+					"id": "opx.end.subtlety0"
+				},
+				{
+					"id": "opx.end.effectiveness"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety3",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "作戦完了：目に見えない術？",
+			"startdescription": "私の作品は水に書かれている。[巧妙を3枚獲得した。痕跡のリスクを回避しただけでなく、不明瞭を獲得した。]",
+			"requirements": {
+				"progress.subtlety": 3
+			},
+			"effects": {
+				"progress.subtlety": -3,
+				"obscurity": 1
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety2",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "作戦完了：軽快なタッチ",
+			"startdescription": "慎重にやってきた。[巧妙を2枚獲得した。痕跡のリスクが少しある。]",
+			"requirements": {
+				"progress.subtlety": 2
+			},
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety1",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "作戦完了：見る目を持つ者のために",
+			"startdescription": "もっと巧妙にできたかもしれない。[巧妙を1枚獲得した。痕跡が残る危険性が高い。]",
+			"requirements": {
+				"progress.subtlety": 1
+			},
+			"aspects": {
+				"tracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety0",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "作戦完了：やり残し",
+			"startdescription": "巧妙さを重要視していなかった。[巧妙を1枚獲得した。痕跡が残る危険性が非常に高い。]",
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.effectiveness",
+			"actionId": "opx.",
+			"label": "作戦完了：投資収益率",
+			"startdescription": "得した気がする。",
+			"aspects": {
+				"success": 1
+			},
+			"warmup": 5,
+			"requirements": {
+				"progress.effectiveness": 1
+			},
+			"effects": {
+				"cash": "progress.effectiveness",
+				"progress.effectiveness": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.special.router",
+			"actionId": "opx.",
+			"label": "[特別な成果]",
+			"linked": [
+				{
+					"id": "opx.end.uprising"
+				},
+				{
+					"id": "opx.end.betrayal"
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising",
+			"actionId": "opx.",
+			"label": "反乱だ！",
+			"startdescription": "計画は決まっている。今日と言う日は炎に焼かれて滅びるだろう。",
+			"description": "これは人々が勝ち取った勝利だ。いつでもそうだ。",
+			"aspects": {
+				"uprising": 1
+			},
+			"purge": {
+				"trace": 100,
+				"op": 100,
+				"connection.ruler": 100,
+				"connection.official": 100
+			},
+			"warmup": 30,
+			"requirements": {
+				"opx.uprising.complete": 1
+			},
+			"effects": {
+				"trail.false.exile": 1
+			},
+			"linked": [
+				{
+					"id": "opx.end.uprising.wolf"
+				},
+				{
+					"id": "opx.end.uprising.colonel"
+				},
+				{
+					"id": "opx.end.uprising.lionsmith"
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal",
+			"actionId": "opx.",
+			"label": "裏切られた反乱！",
+			"startdescription": "計画は立てられているが、この終わり方は誰も予想していなかっただろう。",
+			"description": "秩序が維持され、取締局に感謝される。",
+			"requirements": {
+				"opx.betrayal.complete": 1
+			},
+			"effects": {
+				"connection.ruler": 1,
+				"op.connection.radicals": -1
+			},
+			"purge": {
+				"connection.radicals": 100
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "opx.end.betrayal.colonel"
+				},
+				{
+					"id": "opx.end.betrayal.lionsmith"
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.wolf",
+			"actionId": "opx.",
+			"label": "火の饗宴",
+			"startdescription": "ジュリアン・コーズリーはかつて「誰に仕えているかわからない時は、我々は分裂した狼に仕えている」と言っていた。しかし私は、ちゃんとわかってやっていた。[反抗心が増加した。回数に制限はない。]",
+			"requirements": {
+				"op.wolf.husk.active": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.colonel",
+			"actionId": "opx.",
+			"label": "大佐の不機嫌",
+			"startdescription": "大佐は革命を嫌う。彼の私に対する評価が下がるだろう。[反抗心が低下した。]",
+			"requirements": {
+				"defiance.uprising": -1,
+				"defiance.consecration.colonel": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.uprising",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.lionsmith",
+			"actionId": "opx.",
+			"label": "ライオンスミスの喜び",
+			"startdescription": "ライオンスミスは革命を好む。彼は今まで以上に私を支持してくれるだろう。[反抗心が高まった。]",
+			"requirements": {
+				"defiance.uprising": -1,
+				"defiance.consecration.lionsmith": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.uprising",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal.colonel",
+			"actionId": "opx.",
+			"label": "大佐の満足度",
+			"startdescription": "大佐は現状維持を好む。私は彼に評価されるだろう。[反抗心が高まった。]",
+			"requirements": {
+				"defiance.betrayal": -1,
+				"defiance.consecration.colonel": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.betrayal",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal.lionsmith",
+			"actionId": "opx.",
+			"label": "ライオンスミスの怒り",
+			"startdescription": "ライオンスミスの力が、革命によって上昇する。支持をしてくれなくなるかもしれない。[反抗心が低下した。]",
+			"requirements": {
+				"defiance.betrayal": -1,
+				"defiance.consecration.lionsmith": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.betrayal",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,205 @@
+{
+	"legacies": [
+		{
+			"id": "aspirant",
+			"label": "Aspirant",
+			"description": "28. Juni, schon wieder.",
+			"startdescription": "Allein in dieser eisigen Stadt, mit meiner nutzlosen Ausbildung, und meinen Träumen.\nWas jetzt? Könnte ich etwas Besseres werden?",
+			"effects": {
+				"introjob": 1
+			},
+			"image": "aspirant",
+			"fromEnding": "default",
+			"availableWithoutEndingMatch": true,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "brightyoungthing",
+			"label": "Schlaues junges Ding",
+			"description": "Von Geburt an mit Reichtum und Talent gesegnet. Ein Leben voller Leichtigkeit, Bequemlichkeit und Wonne wartet, wie ein Teppich aus Bernstein.",
+			"startdescription": "Ich habe die Dämmerung versäumt. Wie eigentlich immer. Aber es wird noch viele geben.",
+			"effects": {
+				"legacybytjob": 1,
+				"health": 1
+			},
+			"image": "byt",
+			"fromEnding": "deathofthebody",
+			"availableWithoutEndingMatch": true,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "physician",
+			"label": "Arzt",
+			"description": "Als der Patient schließlich im letztem Delirium versank, machte ich umfangreiche Notizen. In der flirrenden Hitze der Nacht las ich mir jene Notizen erneut durch, und sie fingen, endlich, an, einen Sinn zu ergeben.",
+			"startdescription": "Heute ist der Tag, an dem ich auf meinen Posten im Institut zurückkehre. Ich habe eine Position, einen Ruf. Das sollte für etwas gelten, doch so langsam fange ich an, von etwas anderem zu träumen.",
+			"effects": {
+				"legacyphysicianjob": 1,
+				"reason": 1
+			},
+			"image": "physician",
+			"fromEnding": "deathofthebody",
+			"availableWithoutEndingMatch": true,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "detective",
+			"label": "Detektiv",
+			"description": "Ich bin Inspektor bei der Polizei in der Hauptstadt und mit den Ermittlungen zu den widerwärtigsten und verwerflichsten Dingen betraut, die Menschen einander antun.",
+			"startdescription": "Ich habe die Laufbahnen von Dieben, Mördern, Erpressern und Feuerteufeln beendet. Manche Kriminelle sind noch schlimmer, und an manch einem Morgen haben meine Hände schon gezittert.",
+			"effects": {
+				"legacydetectivejob:": 1,
+				"reason": 1,
+				"health": 1
+			},
+			"image": "detective",
+			"fromEnding": "arrest",
+			"availableWithoutEndingMatch": true,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "detectivepostpromotion",
+			"label": "Detektiv",
+			"description": "Ich bin Inspektor bei der Polizei in der Hauptstadt und mit den Ermittlungen zu den widerwärtigsten und verwerflichsten Dingen betraut, die Menschen einander antun.",
+			"startdescription": "Ich habe die Laufbahnen von Dieben, Mördern, Erpressern und Feuerteufeln beendet. Manche Kriminelle sind noch schlimmer, und an manch einem Morgen haben meine Hände schon gezittert.",
+			"effects": {
+				"legacydetectivejob:": 1,
+				"reason": 1,
+				"health": 1
+			},
+			"image": "detective",
+			"fromEnding": "workvictoryb",
+			"availableWithoutEndingMatch": false,
+			"excludesOnEnding": [
+				"detective"
+			],
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostleforge",
+			"label": "Brennender Apostel",
+			"startdescription": "Unser Gestalter ist auf eine höhere Ebene aufgestiegen ... zumindest in einer Historie. Die Vergangenheit ist ungewiss. Doch ich werde bis zum nächsten Aufstieg über den Tiegel wachen.",
+			"description": "Unser Großer Gestalter ist mächtig geworden – und er hat mächtige Feinde. Er bleibt verborgen während ich ihm als sein Werkzeug diene.",
+			"effects": {
+				"health": 2,
+				"legacyapostleforgejob:": 1
+			},
+			"image": "apostleforge",
+			"fromEnding": "minorforgevictory",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostlegrail",
+			"label": "Nährender Apostel",
+			"startdescription": "Unser Ernährer ist auf eine höhere Ebene aufgestiegen ... zumindest in einer Historie. Die Vergangenheit ist ungewiss. Doch ich werde für den nächsten Aufstieg ein Gelage vorbereiten.",
+			"description": "Unsere Wonne ist mächtig geworden – und sie hat mächtige Feinde. Sie bleibt verborgen während ich ihr als ihr Werkzeug diene.",
+			"effects": {
+				"passion": 1,
+				"health": 1,
+				"legacyapostlegrailjob:": 1
+			},
+			"image": "apostlegrail",
+			"fromEnding": "minorgrailvictory",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostlelantern",
+			"label": "Inspirierter Apostel",
+			"startdescription": "Die Erleuchtung wartet im Hause der Sonne – um höher zu steigen. Ich bin ihre Hand.",
+			"description": "Ich weiß nicht mehr, was sich zugetragen hat. Ich weiß nicht mehr, wer ich bin. Doch die Träume haben mir gesagt, was ich tun muss.",
+			"effects": {
+				"reason": 1,
+				"health": 1,
+				"legacyapostlelanternjob:": 1
+			},
+			"image": "apostlelantern",
+			"fromEnding": "minorlanternvictory",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostleforgewithrisen",
+			"label": "Brennender Apostel",
+			"startdescription": "Unser Gestalter ist auf eine höhere Ebene aufgestiegen ... zumindest in einer Historie. Die Vergangenheit ist ungewiss. Doch ich werde bis zum nächsten Aufstieg über den Tiegel wachen.",
+			"description": "Unser Großer Gestalter ist mächtig geworden – und er hat mächtige Feinde. Er bleibt verborgen während ich ihm als sein Werkzeug diene.",
+			"effects": {
+				"health": 2,
+				"legacyapostleforgejob:": 1
+			},
+			"image": "apostleforge",
+			"fromEnding": "minorforgevictorywithrisen",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostlegrailwithrisen",
+			"label": "Nährender Apostel",
+			"startdescription": "Unser Ernährer ist auf eine höhere Ebene aufgestiegen ... zumindest in einer Historie. Die Vergangenheit ist ungewiss. Doch ich werde für den nächsten Aufstieg ein Gelage vorbereiten.",
+			"description": "Unsere Wonne ist mächtig geworden – und sie hat mächtige Feinde. Sie bleibt verborgen während ich ihr als ihr Werkzeug diene.",
+			"effects": {
+				"passion": 1,
+				"health": 1,
+				"legacyapostlegrailjob:": 1
+			},
+			"image": "apostlegrail",
+			"fromEnding": "minorgrailvictorywithrisen",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "apostlelanternwithrisen",
+			"label": "Inspirierter Apostel",
+			"startdescription": "Die Erleuchtung wartet im Hause der Sonne – um höher zu steigen. Ich bin ihre Hand.",
+			"description": "Ich weiß nicht mehr, was sich zugetragen hat. Ich weiß nicht mehr, wer ich bin. Doch die Träume haben mir gesagt, was ich tun muss.",
+			"effects": {
+				"reason": 1,
+				"health": 1,
+				"legacyapostlelanternjob:": 1
+			},
+			"image": "apostlelantern",
+			"fromEnding": "minorlanternvictorywithrisen",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "auctioneer",
+			"label": "Auktionator",
+			"description": "--",
+			"startdescription": "--",
+			"effects": {
+				"funds": 5
+			},
+			"image": "moth",
+			"fromEnding": "_workvictory",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "survivor",
+			"label": "Überlebender",
+			"description": "Zuweilen, in Spiegeln, in der Menge, siehst du das Gesicht von jemandem, der nun verloren ist.",
+			"startdescription": "Unheimliche erste Notiz",
+			"effects": {
+				"introjob": 1
+			},
+			"image": "moth",
+			"fromEnding": "_wintersacrifice",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		},
+		{
+			"id": "cousin",
+			"label": "Vetter",
+			"description": "Eines Morgens, wenn die Sonne hoch steht und alle Spiegel versiegelt sind, wird es an deiner Tür klopfen. \"Ein Wohltäter\", wird der Herr in Grau sagen. \"Ein Nachlass. Vielleicht wussten Sie ja gar nicht, dass Sie verwandt sind.\"",
+			"startdescription": "Erste Notiz des Erben",
+			"effects": {
+				"introjob": 1
+			},
+			"image": "knock",
+			"fromEnding": "_",
+			"availableWithoutEndingMatch": false,
+			"startingVerbId": "work"
+		}
+	]
+}

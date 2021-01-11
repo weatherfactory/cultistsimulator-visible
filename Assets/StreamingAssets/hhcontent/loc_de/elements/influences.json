@@ -1,0 +1,1074 @@
+{
+	"elements": [
+		{
+			"id": "influenceedge",
+			"label": "Eine spannende Atmosphäre",
+			"aspects": {
+				"edge": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Kanten-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Winter-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influenceedge": 1,
+						"influencewinter": 1,
+						"dread": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentedged": 1,
+						"fragmentedgee": 1,
+						"fragmentedgef": 1,
+						"fragmentedgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Die Sinne sind geschärft. [Ein Einfluss 2. Ordnung: sichtbar für die Aufmerksamen, sofort erkennbar für einen Adepten. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceedgec"
+			}
+		},
+		{
+			"id": "influenceedgec",
+			"label": "Eine erregende Atmosphäre",
+			"aspects": {
+				"edge": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Kanten-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Winter-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influenceedgec": 1,
+						"influencewinterc": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentedged": 1,
+						"fragmentedgee": 1,
+						"fragmentedgef": 1,
+						"fragmentedgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Die Leidenschaften sind erwacht. [Ein Einfluss 6. Ordnung: die Zeichen sind unmissverständlich. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceedgee"
+			},
+			"decayTo": "influenceedge"
+		},
+		{
+			"id": "influenceedgee",
+			"label": "Eine wütende Atmosphäre",
+			"aspects": {
+				"edge": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Kanten-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Winter-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influenceedgee": 1,
+						"influencewintere": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentedged": 1,
+						"fragmentedgee": 1,
+						"fragmentedgef": 1,
+						"fragmentedgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Zorn ist implizit in jeder Form. [Ein Einfluss 10. Ordnung! Eine Mischung aus Macht und Risiko. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceedgeg"
+			},
+			"decayTo": "influenceedgec"
+		},
+		{
+			"id": "influenceedgeg",
+			"label": "Ein Entschluss",
+			"aspects": {
+				"edge": 15,
+				"influence": 1
+			},
+			"description": "Wer kann die Endgültigkeit des Kampfes noch abwenden? [Ein Einfluss 15. Ordnung! Dies könnte die persönliche Aufmerksamkeit einer Stunde sein.  Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"decayTo": "influenceedgee"
+		},
+		{
+			"id": "influenceforge",
+			"label": "Ein sich erhebendes Herz",
+			"aspects": {
+				"forge": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Schmiede-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Kanten-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influenceforge": 1,
+						"influenceedge": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentforgec": 1,
+						"fragmentforged": 1,
+						"fragmentforgee": 1,
+						"fragmentforgef": 1,
+						"fragmentforgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Ein Nebel und ein Schimmern. [Ein Einfluss 2. Ordnung: sichtbar für die Aufmerksamen, sofort erkennbar für einen Adepten. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören, und manche Schergen werden es hinterlassen, wenn sie vernichtet werden.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceforgec"
+			}
+		},
+		{
+			"id": "influenceforgec",
+			"label": "Ein bebendes Herz",
+			"aspects": {
+				"forge": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Schmiede-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Kanten-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influenceforgec": 1,
+						"influenceedgec": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentforgec": 1,
+						"fragmentforged": 1,
+						"fragmentforgee": 1,
+						"fragmentforgef": 1,
+						"fragmentforgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Funken sind möglich. [Ein Einfluss 6. Ordnung: die Zeichen sind unmissverständlich. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceforgee"
+			},
+			"decayTo": "influenceforge"
+		},
+		{
+			"id": "influenceforgee",
+			"label": "Eine erhebende Hitze",
+			"aspects": {
+				"forge": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Schmiede-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Kanten-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influenceforgee": 1,
+						"influenceedgee": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentforgec": 1,
+						"fragmentforged": 1,
+						"fragmentforgee": 1,
+						"fragmentforgef": 1,
+						"fragmentforgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Dies ist die Aura am Rande eines Vulkans. [Ein Einfluss 10. Ordnung! Eine Mischung aus Macht und Risiko. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceforgeg"
+			},
+			"decayTo": "influenceforgec"
+		},
+		{
+			"id": "influenceforgeg",
+			"label": "Ein Strahlen",
+			"aspects": {
+				"forge": 15,
+				"influence": 1
+			},
+			"description": "Wandel folgt dem Feuer. [Ein Einfluss 15. Ordnung! Dies könnte die persönliche Aufmerksamkeit einer Stunde sein.  Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"decayTo": "influenceforgee"
+		},
+		{
+			"id": "influencegrail",
+			"label": "Das Bewusstsein eines Verlangens",
+			"aspects": {
+				"grail": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Gral-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Motten-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencegrail": 1,
+						"influencemoth": 1,
+						"glimmering": 1,
+						"glimmeringplus": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentgrailc": 1,
+						"fragmentgraild": 1,
+						"fragmentgraile": 1,
+						"fragmentgrailf": 1,
+						"fragmentgrailg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Jeder Sinn ist geschärft, jedes Gefühl intensiver. [Ein Einfluss 2. Ordnung: sichtbar für die Aufmerksamen, sofort erkennbar für einen Adepten. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören, und manche Schergen werden es hinterlassen, wenn sie vernichtet werden.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencegrailc"
+			}
+		},
+		{
+			"id": "influencegrailc",
+			"label": "Die Dringlichkeit eines Verlangens",
+			"aspects": {
+				"grail": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Gral-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Motten-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencegrailc": 1,
+						"influencemothc": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentgrailc": 1,
+						"fragmentgraild": 1,
+						"fragmentgraile": 1,
+						"fragmentgrailf": 1,
+						"fragmentgrailg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Es fällt schwer, sich im Griff zu haben. [Ein Einfluss 6. Ordnung: bedeutsame Resonanzen oder Korrespondenzen. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencegraile"
+			},
+			"decayTo": "influencegrail"
+		},
+		{
+			"id": "influencegraile",
+			"label": "Der Imperativ eines Verlangens",
+			"aspects": {
+				"grail": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Gral-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Motten-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencegraile": 1,
+						"influencemothe": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentgrailc": 1,
+						"fragmentgraild": 1,
+						"fragmentgraile": 1,
+						"fragmentgrailf": 1,
+						"fragmentgrailg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Die Lippen sehnen sich nach Genuss, die Finger nach Berührung. [Ein Einfluss 10. Ordnung! Eine Mischung aus Macht und Risiko. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencegrailg"
+			},
+			"decayTo": "influencegrailc"
+		},
+		{
+			"id": "influencegrailg",
+			"label": "Ein Inkarnastrahlen",
+			"aspects": {
+				"grail": 15,
+				"influence": 1
+			},
+			"description": "Die Luft ist saftig von Möglichkeiten. Durchbohre sie, so könnte sie bluten. [Ein Einfluss 15. Ordnung! Dies könnte die persönliche Aufmerksamkeit einer Stunde sein.  Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"decayTo": "influencegraile"
+		},
+		{
+			"id": "influenceheart",
+			"label": "Bebende Atmosphäre",
+			"aspects": {
+				"heart": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Herz-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Motten-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influenceheart": 1,
+						"influencegrail": 1,
+						"vitality": 1,
+						"vitalityplus": 1,
+						"contentment": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentheartc": 1,
+						"fragmentheartd": 1,
+						"fragmenthearte": 1,
+						"fragmentheartf": 1,
+						"fragmentheartg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Die Zehen wippen. Alles ist munter und alles ist gut. [Ein Einfluss 2. Ordnung: sichtbar für die Aufmerksamen, sofort erkennbar für einen Adepten. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören, und manche Schergen werden es hinterlassen, wenn sie vernichtet werden.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceheartc"
+			},
+			"decayTo": "vitality"
+		},
+		{
+			"id": "influenceheartc",
+			"label": "Pulsierende Atmosphäre",
+			"aspects": {
+				"heart": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Herz-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Motten-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influenceheartc": 1,
+						"influencegrailc": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentheartc": 1,
+						"fragmentheartd": 1,
+						"fragmenthearte": 1,
+						"fragmentheartf": 1,
+						"fragmentheartg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Eine aufstrebende Kraft, eine beruhigende Energie. [Ein Einfluss 6. Ordnung: bedeutsame Resonanzen oder Korrespondenzen. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencehearte"
+			},
+			"decayTo": "influenceheart"
+		},
+		{
+			"id": "influencehearte",
+			"label": "Vibrierende Atmosphäre",
+			"aspects": {
+				"heart": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Herz-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Motten-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencehearte": 1,
+						"influencegraile": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentheartc": 1,
+						"fragmentheartd": 1,
+						"fragmenthearte": 1,
+						"fragmentheartf": 1,
+						"fragmentheartg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Das Herz bewegt sich, die Welt bewegt sich. [Ein Einfluss 10. Ordnung! Eine Mischung aus Macht und Risiko. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceheartg"
+			},
+			"decayTo": "influenceheartc"
+		},
+		{
+			"id": "influenceheartg",
+			"label": "Ein drohendes Unheil",
+			"aspects": {
+				"heart": 15,
+				"influence": 1
+			},
+			"description": "Der Himmel ist die Trommel, die Erde ist bereit für ihre Ekstase. [Ein Einfluss 15. Ordnung! Dies könnte die persönliche Aufmerksamkeit einer Stunde sein.  Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"decayTo": "influencehearte"
+		},
+		{
+			"id": "sicknessprotection",
+			"label": "Eine verschobene Exekution",
+			"description": "Alles Fleisch versagt. Doch mir wurde versprochen, dass mein Fleisch erst etwas später versagen wird. [Dies ist eine letzte Versicherung gegen Krankheit, falls du keine Gesundheit mehr übrig hast.]",
+			"lifetime": 600,
+			"decayTo": "influenceheart"
+		},
+		{
+			"id": "influenceknock",
+			"label": "Subtiler Makel",
+			"aspects": {
+				"knock": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Bei genug Druck wird die Haut der Welt reißen. Füge einen beliebigen Einfluss hinzu, um es zu einem höherstufigen Klopfen-Einfluss zu subversieren.",
+					"actionId": "study",
+					"required": {
+						"influenceedge": 1,
+						"influenceforge": 1,
+						"influencegrail": 1,
+						"influenceheart": 1,
+						"influenceknock": 1,
+						"influencelantern": 1,
+						"influencemoth": 1,
+						"influencewinter": 1,
+						"erudition": 1,
+						"glimmering": 1,
+						"vitality": 1,
+						"eruditionplus": 1,
+						"glimmeringplus": 1,
+						"vitalityplus": 1
+					}
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentknockc": 1,
+						"fragmentknockd": 1,
+						"fragmentknocke": 1,
+						"fragmentknockf": 1,
+						"fragmentknockg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Senkel entwirren sich – Fenster schwingen auf – Schlösser bewegen sich wie geölt. [Ein Einfluss 2. Ordnung: sichtbar für die Aufmerksamen, sofort erkennbar für einen Adepten. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceknockc"
+			}
+		},
+		{
+			"id": "influenceknockc",
+			"label": "Subtiler Bruch",
+			"aspects": {
+				"knock": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Bei genug Druck wird die Haut der Welt reißen. Füge einen beliebigen passenden Einfluss hinzu, um es zu einem höherstufigen Klopfen-Einfluss zu subversieren.",
+					"actionId": "study",
+					"required": {
+						"influenceedgec": 1,
+						"influenceforgec": 1,
+						"influencegrailc": 1,
+						"influenceheartc": 1,
+						"influenceknockc": 1,
+						"influencelanternc": 1,
+						"influencemothc": 1,
+						"influencewinterc": 1
+					}
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentknockc": 1,
+						"fragmentknockd": 1,
+						"fragmentknocke": 1,
+						"fragmentknockf": 1,
+						"fragmentknockg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Wolken teilen sich – Mauer ächzen – alter Wunden schmerzen. [Ein Einfluss 6. Ordnung: bedeutsame Resonanzen oder Korrespondenzen. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceknocke"
+			},
+			"decayTo": "influenceknock"
+		},
+		{
+			"id": "influenceknocke",
+			"label": "Subtiler Riss",
+			"aspects": {
+				"knock": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Bei genug Druck wird die Haut der Welt reißen. Füge einen beliebigen passenden Einfluss hinzu, um es zu einem höherstufigen Klopfen-Einfluss zu subversieren.",
+					"actionId": "study",
+					"required": {
+						"influenceedgee": 1,
+						"influenceforgee": 1,
+						"influencegraile": 1,
+						"influencehearte": 1,
+						"influenceknocke": 1,
+						"influencelanterne": 1,
+						"influencemothe": 1,
+						"influencewintere": 1
+					}
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentknockc": 1,
+						"fragmentknockd": 1,
+						"fragmentknocke": 1,
+						"fragmentknockf": 1,
+						"fragmentknockg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Die Geometrie verzerrt sich – Türen fliegen auf – Schlangen kochen aus der Erde hervor! [Ein Einfluss 10. Ordnung! Eine Mischung aus Macht und Risiko. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceknockg"
+			},
+			"decayTo": "influenceknockc"
+		},
+		{
+			"id": "influenceknockg",
+			"label": "Falsche Tür",
+			"aspects": {
+				"knock": 15,
+				"influence": 1
+			},
+			"description": "Es gibt da eine Tür, die sich nicht öffnen sollte, und ab und zu werden ihre Angeln erregt – [Ein Einfluss 15. Ordnung! Dies könnte die persönliche Aufmerksamkeit einer Stunde sein.  Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"decayTo": "influenceknocke"
+		},
+		{
+			"id": "influencelantern",
+			"label": "Das Bewusstsein des Strahlens",
+			"aspects": {
+				"lantern": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Laternen-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Schmiede-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencelantern": 1,
+						"influenceforge": 1,
+						"erudition": 1,
+						"eruditionplus": 1,
+						"fascination": 1,
+						"contentment": 1,
+						"fleeting": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentlanternc": 1,
+						"fragmentlanternd": 1,
+						"fragmentlanterne": 1,
+						"fragmentlanternf": 1,
+						"fragmentlanterng": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Es gibt ein Licht hinter der Welt, ein Licht über dem Mansus, ein Licht, das Glas und Haut durchdringt. Es ist hier präsent. [Ein Einfluss 2. Ordnung: sichtbar für die Aufmerksamen, sofort erkennbar für einen Adepten. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören, und manche Schergen werden es hinterlassen, wenn sie vernichtet werden.  Bleibt es ungenutzt, wird daraus Faszination.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencelanternc"
+			},
+			"decayTo": "fascination"
+		},
+		{
+			"id": "influencelanternc",
+			"label": "Die Intensität des Strahlens",
+			"aspects": {
+				"lantern": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Laternen-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Schmiede-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencelanternc": 1,
+						"influenceforgec": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentlanternc": 1,
+						"fragmentlanternd": 1,
+						"fragmentlanterne": 1,
+						"fragmentlanternf": 1,
+						"fragmentlanterng": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Licht betaut die Haut und durchflutet die Luft. [Ein Einfluss 6. Ordnung: bedeutsame Resonanzen oder Korrespondenzen. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencelanterne"
+			},
+			"decayTo": "influencelantern"
+		},
+		{
+			"id": "influencelanterne",
+			"label": "Das Gleißen des Strahlens",
+			"aspects": {
+				"lantern": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Laternen-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Schmiede-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencelanterne": 1,
+						"influenceforgee": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentlanternc": 1,
+						"fragmentlanternd": 1,
+						"fragmentlanterne": 1,
+						"fragmentlanternf": 1,
+						"fragmentlanterng": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Jede Farbe ist so hell wie neue Farbe geworden, doch nun bluten sie sich alle weiß. [Ein Einfluss 10. Ordnung! Eine Mischung aus Macht und Risiko. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencelanterng"
+			},
+			"decayTo": "influencelanternc"
+		},
+		{
+			"id": "influencelanterng",
+			"label": "Eine Herrlichkeit",
+			"aspects": {
+				"lantern": 15,
+				"influence": 1
+			},
+			"lifetime": 60,
+			"description": "Bedecke deine Augen, wenn du magst. Es wird dir nichts nützen. [Ein Einfluss 15. Ordnung! Dies könnte die persönliche Aufmerksamkeit einer Stunde sein.  Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"decayTo": "influencelanterne"
+		},
+		{
+			"id": "influencemoth",
+			"label": "Ein Summen im Hirn",
+			"aspects": {
+				"moth": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Motten-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Laternen-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencemoth": 1,
+						"influencelantern": 1,
+						"erudition": 1,
+						"eruditionplus": 1,
+						"glimmering": 1,
+						"glimmeringplus": 1,
+						"fascination": 1,
+						"fleeting": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentmothd": 1,
+						"fragmentmothe": 1,
+						"fragmentmothf": 1,
+						"fragmentmothg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "in gi rum imus noc te et con sumi <b>schnipp schnipp schnipp</b>. [Ein Einfluss 2. Ordnung: sichtbar für die Aufmerksamen, sofort erkennbar für einen Adepten. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören, und manche Schergen werden es hinterlassen, wenn sie vernichtet werden.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothc"
+			},
+			"decayTo": "restlessness"
+		},
+		{
+			"id": "influencemothc",
+			"label": "Ein Rappeln in der Seele",
+			"aspects": {
+				"moth": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Motten-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Laternen-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencemothc": 1,
+						"influencelanternc": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentmothd": 1,
+						"fragmentmothe": 1,
+						"fragmentmothf": 1,
+						"fragmentmothg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Ach, die Freunde, die wir spielten, und die Häute, die wir machten – sie treiben uns immer noch an! [Ein Einfluss 6. Ordnung: bedeutsame Resonanzen oder Korrespondenzen. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothe"
+			},
+			"decayTo": "influencemoth"
+		},
+		{
+			"id": "influencemothe",
+			"label": "Ein Heulen des Herzens",
+			"aspects": {
+				"moth": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Motten-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Laternen-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencemothe": 1,
+						"influencelanterne": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentmothd": 1,
+						"fragmentmothe": 1,
+						"fragmentmothf": 1,
+						"fragmentmothg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Gefühle verzerren unsere Gedanken. Eine Leidenschaft gibt der nächsten nach wie Blätter im Griff des Winds! [Ein Einfluss 10. Ordnung! Eine Mischung aus Macht und Risiko. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothg"
+			},
+			"decayTo": "influencemothc"
+		},
+		{
+			"id": "influencemothg",
+			"label": "Diese alte Sehnsucht",
+			"aspects": {
+				"moth": 15,
+				"influence": 1
+			},
+			"description": "\"\n    bitte\"",
+			"lifetime": 60,
+			"decayTo": "influencemothe"
+		},
+		{
+			"id": "influencewinter",
+			"label": "Eine kühle Atmosphäre",
+			"aspects": {
+				"winter": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Winter-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Herz-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencewinter": 1,
+						"influenceheart": 1,
+						"vitality": 1,
+						"vitalityplus": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentwinterc": 1,
+						"fragmentwinterd": 1,
+						"fragmentwintere": 1,
+						"fragmentwinterf": 1,
+						"fragmentwinterg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Eine seltsame Kälte verweilt in meinen Zimmern. [Ein Einfluss 2. Ordnung: sichtbar für die Aufmerksamen, sofort erkennbar für einen Adepten. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören, und manche Schergen werden es hinterlassen, wenn sie vernichtet werden.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencewinterc"
+			},
+			"decayTo": "dread"
+		},
+		{
+			"id": "influencewinterc",
+			"label": "Eine eisige Atmosphäre",
+			"aspects": {
+				"winter": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Winter-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Herz-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencewinterc": 1,
+						"influenceheartc": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentwinterc": 1,
+						"fragmentwinterd": 1,
+						"fragmentwintere": 1,
+						"fragmentwinterf": 1,
+						"fragmentwinterg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Die Luft macht die Haut knusprig. Frost zeichnet das Glas. [Ein Einfluss 6. Ordnung: die Zeichen sind unmissverständlich. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören. Bleibt es ungenutzt, wird daraus Grauen.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencewintere"
+			},
+			"decayTo": "influencewinter"
+		},
+		{
+			"id": "influencewintere",
+			"label": "Eine bittere Atmosphäre",
+			"aspects": {
+				"winter": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Studiere die Korrespondenz zweier zusammengehöriger Winter-Einflüsse, um sie zu intensivieren. Studiere, wie es vom Herz-Einfluss betroffen ist, um es stattdessen zu subversieren.",
+					"required": {
+						"influencewintere": 1,
+						"influencehearte": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "Wissen",
+					"description": "Ich muss ein Verständnis für die Einflüsse entwickeln, die am Werke sind, wenn ich sie stärken oder subversieren will. [Du musst beim relevanten Wissen über erhebliche Grundlagen verfügen.]",
+					"required": {
+						"fragmentwinterc": 1,
+						"fragmentwinterd": 1,
+						"fragmentwintere": 1,
+						"fragmentwinterf": 1,
+						"fragmentwinterg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Der Winter fährt über die Kleider, fährt über die Haut, setzt sich in den Adern fest. [Ein Einfluss 10. Ordnung! Eine Mischung aus Macht und Risiko. Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören. Bleibt es ungenutzt, wird daraus Grauen.]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencewinterg"
+			},
+			"decayTo": "influencewinterc"
+		},
+		{
+			"id": "influencewinterg",
+			"label": "Perfekter Frost",
+			"aspects": {
+				"winter": 15,
+				"influence": 1
+			},
+			"description": "Die Welt ist so still wie Eis. Jede Bewegung ist eine Reise. [Ein Einfluss 15. Ordnung! Dies könnte die persönliche Aufmerksamkeit einer Stunde sein.  Kann bei manchen Riten eingesetzt werden, um Schergen zu beschwören. Bleibt es ungenutzt, wird daraus Grauen.]",
+			"lifetime": 60,
+			"decayTo": "influencewintere"
+		}
+	]
+}

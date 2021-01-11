@@ -1,0 +1,327 @@
+{
+    "recipes": [
+        {
+            "id": "ambition.apostleforge.emitfuel",
+            "actionid": "work",
+            "label": "Guidance from our Shaper",
+            "requirements": {
+                "apostleforge.mentor": 1
+            },
+            "startdescription": "Our Shaper has favoured us with guidance. We should use it to pursue the Great Work.",
+            "effects": {
+                "apostleforge.pillarfuel": 1
+            }
+        },
+        {
+            "id": "work.apostleforge.majorvictory.postbetrayal",
+            "actionid": "work",
+            "label": "Nevertheless, the Great Work Continues",
+            "extantreqs": {
+                "apostleforge.mentor": -1
+            },
+            "startdescription": "TO REMAKE WITH FIRE; TO END WHAT WILL NOT CHANGE; TO END ALL NIGHTS. As the Dawnbreaker begins to spin, the rotation of the Earth will slow, minutely. Echidna will bear the key in her taloned hands. The Compass will speak their last words. Blue Gold will burn. The Savage Door will open. Our Shaper will enact the Forge. And I; I will return to our Shaper's side. I made my choice long ago. I will be consumed.",
+            "description": "",
+            "requirements": {
+                "fragmentknockg": 1,
+                "influenceforgeg": 1,
+                "apostleforge.pillar2": 1,
+                "apostleforge.pillar3": 1,
+                "apostleforge.pillar4": 1,
+                "apostleforge.pillar5": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "ending": "majorforgevictory"
+        },
+        {
+            "id": "work.apostleforge.majorvictory",
+            "actionid": "work",
+            "label": "The Last Pieces of the Great Work",
+            "extantreqs": {
+                "apostleforge.mentor": 1
+            },
+            "startdescription": "TO REMAKE WITH FIRE; TO END WHAT WILL NOT CHANGE; TO END ALL NIGHTS. As the Dawnbreaker begins to spin, the rotation of the Earth will slow, minutely. Echidna will bear the key in her taloned hands. The Compass will speak their last words. Blue Gold will burn. The Savage Door will open. Our Shaper will enact the Forge. And I; I will be consumed.",
+            "description": "",
+            "requirements": {
+                "fragmentknockg": 1,
+                "influenceforgeg": 1,
+                "apostleforge.pillar2": 1,
+                "apostleforge.pillar3": 1,
+                "apostleforge.pillar4": 1,
+                "apostleforge.pillar5": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "ending": "majorforgevictory"
+        },
+        {
+            "id": "work.apostleforge.createcore",
+            "actionid": "work",
+            "label": "Forging the Dawnbreaker Core",
+            "startdescription": "With the guidance of our Shaper, and a mote of the old Sun, we can begin the construction of the Dawnbreaker Device.",
+            "description": "We hum as we work, the old song: what shall not change shall end. At last the Core is complete. The Device slumbers. The Mysteries of Making will raise it to life.",
+            "requirements": {
+                "toolforgef": 1,
+                "apostleforge.pillarfuel": 1
+            },
+            "effects": {
+                "toolforgef": -1,
+                "apostleforge.pillarfuel": -1,
+                "apostleforge.pillar2.dormant": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.apostleforge.awakencore",
+            "actionid": "work",
+            "label": "Awakening the Dawnbreaker Core",
+            "startdescription": "The Forge, the Madrugad and the Meniscate all recall the Sun. We shall build their memory as an armature around the Core, and it will flicker into terrible awareness.",
+            "description": "The Device wakes to purring life, and like all life, it knows hunger. Only the highest products of alchemy will feed it.",
+            "requirements": {
+                "apostleforge.pillar2.dormant": 1,
+                "fragmentforgeg": 1
+            },
+            "effects": {
+                "apostleforge.pillar2.dormant": -1,
+                "apostleforge.pillar2": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.apostleforge.upgradeingredientforgeb",
+            "actionid": "work",
+            "label": "Refine Bitterblack Salts",
+            "startdescription": "With the guidance of our Shaper, we can refine this to something greater.",
+            "description": "Black clarifies to yellow.",
+            "requirements": {
+                "ingredientforgeb": 1,
+                "apostleforge.pillarfuel": 1
+            },
+            "effects": {
+                "ingredientforgeb": -1,
+                "apostleforge.pillarfuel": -1,
+                "ingredientforged": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.apostleforge.upgradeingredientforged",
+            "actionid": "work",
+            "label": "Refine Xanthotic Essence",
+            "startdescription": "With the guidance of our Shaper, we can refine this to something greater.",
+            "description": "Yellow ripens to red.",
+            "requirements": {
+                "ingredientforged": 1,
+                "apostleforge.pillarfuel": 1
+            },
+            "effects": {
+                "ingredientforged": -1,
+                "apostleforge.pillarfuel": -1,
+                "ingredientforgef": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.apostleforge.prepareingredientforgef",
+            "actionid": "work",
+            "label": "Refine Iotic Essence",
+            "startdescription": "With the guidance of our Shaper, we can refine this to something greater.",
+            "description": "Red thrills to blue.",
+            "requirements": {
+                "ingredientforgef": 1,
+                "apostleforge.pillarfuel": 1
+            },
+            "effects": {
+                "ingredientforgef": -1,
+                "apostleforge.pillarfuel": -1,
+                "apostleforge.pillar3": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.apostleforge.baptisefollower",
+            "actionid": "work",
+            "label": "Choose the Compass",
+            "startdescription": "With our Shaper's assistance, we can prepare a follower to find the way to a flaw in the world. Once they've found it, they will find nothing else, ever again.",
+            "description": "The eyes, embers. The heart, a waiting temple.",
+            "requirements": {
+                "follower": 1,
+                "mortal": 1,
+                "apostleforge.pillarfuel": 1,
+                "tool": -1,
+                "lore": -1
+            },
+            "effects": {
+                "apostleforge.pillarfuel": -1
+            },
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "apostleforge.pillar4.dormant",
+                    "level": 1
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "explore.apostleforge.findflaw",
+            "actionid": "explore",
+            "label": "The Flaw in the World",
+            "startdescription": "Few eyes can see the flaw, and those that see it once will never see anything else.",
+            "description": "This is the place where the Histories align - the rawness in the world's skin. Each wound here will be a sevenfold harm. If we detonate the Dawnbreaker Device here, it might turn the Biting Key in the lock of the Savage Door, and our Shaper will pass as did the gods-who-were-stone.",
+            "requirements": {
+                "apostleforge.pillar4.dormant": 1
+            },
+            "mutations": [
+                {
+                    "filter": "apostleforge.pillar4.dormant",
+                    "mutate": "apostleforge.pillar4",
+                    "level": 1
+                },
+                {
+                    "filter": "apostleforge.pillar4.dormant",
+                    "mutate": "edge",
+                    "level": -99
+                },
+                {
+                    "filter": "apostleforge.pillar4.dormant",
+                    "mutate": "forge",
+                    "level": -99
+                },
+                {
+                    "filter": "apostleforge.pillar4.dormant",
+                    "mutate": "grail",
+                    "level": -99
+                },
+                {
+                    "filter": "apostleforge.pillar4.dormant",
+                    "mutate": "heart",
+                    "level": -99
+                },
+                {
+                    "filter": "apostleforge.pillar4.dormant",
+                    "mutate": "knock",
+                    "level": -99
+                },
+                {
+                    "filter": "apostleforge.pillar4.dormant",
+                    "mutate": "lantern",
+                    "level": -99
+                },
+                {
+                    "filter": "apostleforge.pillar4.dormant",
+                    "mutate": "moth",
+                    "level": -99
+                },
+                {
+                    "filter": "apostleforge.pillar4.dormant",
+                    "mutate": "winter",
+                    "level": -99
+                }
+            ],
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "talk.apostleforge.sulochanaechidna",
+            "actionid": "talk",
+            "label": "An Introduction to Mrs E.",
+            "startdescription": "'Your Shaper wants to pass the Savage Door, hm? Do they really know what they're at? I've seen Forge-long try. Generally, they fail. But I'll see what I can do. I have a sister who holds the key you want. I'll get in touch with her... but it'll take a while.'",
+            "description": "",
+            "requirements": {
+                "apostleforge.pillarfuel": 1
+            },
+            "effects": {
+                "apostleforge.pillarfuel": -1,
+                "echidna.enroute": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "talk.apostleforge.echidna",
+            "actionid": "talk",
+            "label": "Petitioning Mrs E.",
+            "startdescription": "'Of course I can help, moppet. Lucky you came to me. I'm much more accommodating than our other sisters. But I will want someone tasty... unless you can give me a good reason.'",
+            "description": "'No? I'll be around a little while longer.'",
+            "requirements": {
+                "echidna": 1
+            },
+            "slots": [
+                {
+                    "id": "sacrifice",
+                    "label": "Someone Tasty, or a Good Reason",
+                    "required": {
+                        "exalted": 1,
+                        "cultsecrethistories_1": 1
+                    }
+                }
+            ],
+            "warmup": 60,
+            "craftable": true,
+            "alt": [
+                {
+                    "id": "talk.apostleforge.echidnahelp.independent"
+                },
+                {
+                    "id": "talk.apostleforge.echidnahelp"
+                },
+                {
+                    "id": "talk.apostleforge.echidnahelp.sthydra"
+                }
+            ]
+        },
+        {
+            "id": "talk.apostleforge.echidnahelp.independent",
+            "actionid": "talk",
+            "label": "Someone Tasty",
+            "startdescription": "'Have you two had a falling-out? Don't you worry, I'll tidy everything up. Listen, though - I'm a woman of my word, but I'm not a patient woman.  Wait until you're ready, and then I'll meet your tasty little problem.'",
+            "description": "'Take this. Don't lose it. I'll be there.'",
+            "requirements": {
+                "echidna": 1,
+                "exalted": 1
+            },
+            "effects": {
+                "exalted": -1,
+                "apostleforge.pillar5": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "talk.apostleforge.echidnahelp",
+            "actionid": "talk",
+            "label": "Someone Tasty",
+            "startdescription": "'Oh, goody. Listen, though - I'm a woman of my word, but I'm not a patient woman. Don't give me your friend until you're ready.'",
+            "description": "'Take this. Don't lose it. I'll be there.'",
+            "requirements": {
+                "echidna": 1,
+                "exalted": 1
+            },
+            "effects": {
+                "exalted": -1,
+                "apostleforge.pillar5": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "talk.apostleforge.echidnahelp.sthydra",
+            "actionid": "talk",
+            "label": "A Good Reason",
+            "startdescription": "'I see we both suckle serpents. As my sister likes to say: Ligeia remembers. I'll indulge you. (Did you ever wonder why it was five, not seven? Two missing Histories. Well, why only two? But we don't have time for that now. I'm not a patient woman.) Don't ask for my help until you're ready.'",
+            "description": "'Take this. Don't lose it. I'll be there.'",
+            "requirements": {
+                "echidna": 1,
+                "cultsecrethistories_1": 1
+            },
+            "effects": {
+                "apostleforge.pillar5": 1
+            },
+            "craftable": false
+        }
+    ]
+}

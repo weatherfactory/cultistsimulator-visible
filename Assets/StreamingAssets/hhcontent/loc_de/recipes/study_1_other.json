@@ -1,0 +1,109 @@
+{
+	"recipes": [
+		{
+			"id": "studybenefactorwill",
+			"label": "Papiere einer geliebten verstorbenen Person studieren",
+			"actionId": "study",
+			"requirements": {
+				"benefactorwill": 1,
+				"funds": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "studybenefactorwill_suspicion",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"funds": 49,
+				"benefactorwill": -1
+			},
+			"startdescription": "Diese Situation verlangt nach Diskretion. Die Gesellschaft hat unser Verhältnis missbilligt.",
+			"description": "Unsere Beziehung wurde nie offiziell besiegelt. Undenkbar, dass ich einen erheblichen Anteil am Vermögen erben könnte. Und dennoch wurde für mich gut vorgesorgt.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studybenefactorwill_suspicion",
+			"label": ".",
+			"actionId": "study",
+			"effects": {
+				"notoriety": 1,
+				"benefactorwill": -1
+			},
+			"description": "Etwas ist schiefgelaufen. Unsere früheren Bekanntschaften wechseln die Straßenseite, wenn ich mich nähere. Eine Zeitung vermutet eine Intrige. Der Notar will mich nicht empfangen. Ich kann kein Erbe erwarten, und vielleicht kommt es noch schlimmer."
+		},
+		{
+			"id": "study.welland.defeated",
+			"actionId": "study",
+			"label": "Wie in Issos",
+			"startdescription": "Ich habe die Chance, mich gegen unseren Gestalter zu erheben, wie einst der Löwenschmied gegen den Oberst. [Dies verhindert, dass dein vorheriger Charakter jemals aufsteigen kann, doch du bekommst die Gelegenheit, einen Standard-Sieg der Schmiede zu erringen. Einen anderen Effekt gibt es nicht.]",
+			"description": "Die Kette der Loyalität ist zertrümmert. Meine Anhänger werden nichts argwöhnen. Wenn unser Gestalter aus dem Exil zurückkehren kann, werde ich fort sein – oder für immer sein.",
+			"requirements": {
+				"welland.defeated": 1,
+				"mentor": 1
+			},
+			"effects": {
+				"mentor": -1,
+				"welland.defeated": -1,
+				"ascensionpowerc": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "study.tryphon.defeated",
+			"actionId": "study",
+			"label": "Das erlesenste Menü",
+			"startdescription": "Wenn ich das verzehre, was von Lady Tryphon noch übrig ist, werde ich selbst nicht verzehrt. [Dies verhindert, dass dein vorheriger Charakter jemals aufsteigen kann, doch du bekommst die Gelegenheit, einen Standard-Sieg des Grals zu erringen. Einen anderen Effekt gibt es nicht.]",
+			"description": "Der Geschmack ist hell auf meiner Zunge. Es wird keine Vitulation für unsere Wonne geben. Meine Anhänger werden meinen Gelüsten dienen. Für den Augenblick werde ich verzehren und nicht verzehrt werden.",
+			"requirements": {
+				"tryphon.defeated": 1,
+				"mentor": 1
+			},
+			"effects": {
+				"mentor": -1,
+				"tryphon.defeated": -1,
+				"ascensionsensationc": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "study.diarist.defeated",
+			"actionId": "study",
+			"label": "Eine Tür schließt sich",
+			"startdescription": "Der Tagebuchschreiber hat mir die Mittel gegeben, um unsere Erleuchtung für den Mansus zu verlassen. [Dies verhindert, dass dein vorheriger Charakter jemals aufsteigen kann, doch du bekommst die Gelegenheit, einen Standard-Sieg der Laterne zu erringen. Einen anderen Effekt gibt es nicht.]",
+			"description": "Ich habe die Tür in meinem Auge geschlossen. Ich habe sie mit Wachs versiegelt. Jenes Auge ist blind, doch das andere sieht neue Horizonte. Unsere Organisation wird einem anderen Zwecke dienen. Vielleicht werde ich eines Tages unseren Gründer auf Augenhöhe begrüßen.",
+			"requirements": {
+				"diarist.defeated": 1,
+				"mentor": 1
+			},
+			"effects": {
+				"mentor": -1,
+				"diarist.defeated": -1,
+				"ascensionenlightenmentc": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "study.julian.defeated",
+			"actionId": "study",
+			"label": "Leer und allein",
+			"startdescription": "'Ein weiterer Stein in der Mauer des Mansus.' Ist es das, was ich bin? Gibt es sonst noch etwas? [Dies verhindert, dass dein vorheriger Charakter jemals aufsteigen kann, und Grauen wird auf den Tisch gelegt. Einen anderen Effekt gibt es nicht.]",
+			"description": "Ich werde mein Leben nach meinen Entscheidungen leben. Was ich bin, werde ich sein, bis ich nichts mehr bin.",
+			"requirements": {
+				"julian.defeated": 1,
+				"mentor": 1
+			},
+			"effects": {
+				"mentor": -1,
+				"julian.defeated": -1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

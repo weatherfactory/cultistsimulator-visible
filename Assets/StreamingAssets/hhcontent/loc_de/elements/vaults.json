@@ -1,0 +1,2055 @@
+{
+	"elements": [
+		{
+			"id": "vaultcapital1",
+			"label": "Strathcoynes Wohnstätte",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Das Haus von Mr. Strathcoyne, seines Zeichens Sammler seltener Objekte. Strathcoyne verkauft seine Schätze nicht. Doch ein Komplize, der gerissen genug ist, könnte sich Zutritt verschaffen.",
+			"unique": true
+		},
+		{
+			"id": "vaultcapital2",
+			"label": "Vergessenes Mithräum",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Kuriositäten-Jäger haben diesen uralten Tempel schon durchkämmt, doch es könnte hier irgendwo eine Verborgene Tür geben.",
+			"unique": true
+		},
+		{
+			"id": "vaultcapital3",
+			"label": "Cater & Hero Limited",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Seit der Explosion verlassen, bei der beide Besitzer ums Leben kamen. Die Maschinen schweigen, das Gebäude ist eine in sich zusammenfallende Ruine. Mr. Cater war dafür bekannt, seltsame Schmuckstücke in seinem Bureau auszustellen. Vielleicht sind ja noch welche dort. ",
+			"unique": true
+		},
+		{
+			"id": "vaultcapital4",
+			"label": "Hospital der Heiligen Agnes",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Früher wurde hier gute Arbeit geleistet. Gewiss fanden etwas zu viele Amputationen statt, doch es gibt ja Leute, die lieber nicht über die Straßen der Stadt laufen.",
+			"unique": true
+		},
+		{
+			"id": "vaultcapital5",
+			"label": "Gemeinde St. Felix von Schüren",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Eine Nonkonformisten-Enklave einer heterodoxen Sekte eines Calvinisten-Ablegers, versteckt in einem seltsamen Winkel der Stadt. Sie hauen ihre Hymnen mit unpassendem Gusto raus, in einer rauh-kehligen Sprache, die mit Latein nichts zu tun hat.",
+			"unique": true
+		},
+		{
+			"id": "vaultcapitaldefault",
+			"label": "Der verlorene Einflussbereich",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcapital": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Entlang der grauen Ufer des fauligen Flusses warten die Lagerhäuser. Vielleicht habe ich ja festgehalten, wo eine ungewöhnliche Fracht verstaut ist. [Du hast alle Expeditionen in der Hauptstadt gefunden, wobei du den Einflussbereich mehrmals finden und besuchen kannst.]"
+		},
+		{
+			"id": "vaultshires1",
+			"label": "Gladwyn Lake",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Am Fuße der düsteren Hänge der Fjells wartet die umnebelte Oberfläche des Sees. Es gab hier einen Zwillingsaltar bevor die Römer kamen, und die Legende von einer Schlange, die zur Schändung jenes Alters gesandt wurde.",
+			"unique": true
+		},
+		{
+			"id": "vaultshires2",
+			"label": "Lockwood-Sumpf",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Der stinkende Schlamm der Sümpfe ist voll von wimmelndem Leben. Wortkarge Einheimische wachen immer noch über die gebenedeiten Stätten der kleinen und geheimen Götter, die Gebete <i>beantworten</i>.",
+			"unique": true
+		},
+		{
+			"id": "vaultshires3",
+			"label": "Krähenkusshügel",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Der uralte Stamm hat diesen Ruheort für einen reserviert, der am Ende seines Dienstes für eine gewisse gnadenlose Stunde mehr Narbe als Mann war. Sie haben dein Eingang mit bindenden Liedern und gemörsertem Blute versiegelt. ",
+			"unique": true
+		},
+		{
+			"id": "vaultshires4",
+			"label": "Keglins Ritz",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Hier gruben die Römer nach Silber bis sie auf den verbotenen Bereich stießen, wo die Namen Dinge verbargen, die nicht für das Sonnenlicht bestimmt waren. Viele andere sind seither gekommen, selbst wo die Tunnel zerbröseln. Manche sind nie wieder fort.",
+			"unique": true
+		},
+		{
+			"id": "vaultshires5",
+			"label": "Gwaer Inn",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Auf einem bröckeligen Kliff über einer grauen See sitzt das Gwaer Inn, bis eines Tages das Meer kommt, um es sich zu holen. Es sieht nur wenige Gäste – noch weniger seit der Besitzer seine berüchtigte Bibliothek für fahrende Gelehrte schloss.",
+			"unique": true
+		},
+		{
+			"id": "vaultshiresdefault",
+			"label": "Kerisham",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultshires": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "sending",
+					"label": "Sender",
+					"description": "Ab und zu könnte die Expedition einen anderen Zweck haben.",
+					"required": {
+						"sendingheartb": 1,
+						"sendingmothb": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Fahr durch das Hügelland zur Küste, wo das grau-grüne Land auf den Atlantik stößt. Suche entlang der Straße nach Schildern Richtung Kerisham. Du wirst es nur selten finden, selbst du schon vorher dort gewesen bist. Und die Bewohner dort hüten ihre Geheimnisse mit Fluch und Flegel und fest verrammelten Pforten. [Du hast alle Expeditionen auf dem Lande gefunden, wobei du Kerisham mehrmals finden und besuchen kannst.]"
+		},
+		{
+			"id": "vaultcontinent1",
+			"label": "Chateau Raveline",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Die Lieblingsgeschichten der Comtes des Raveline drehen sich darum, dass sie vom <i>ersten</i> Sonnenkönig abstammen. In anderen Geschichten durchstreifen sie den Wald in Wolfsgestalt. Sie sind schon lange fort. Ihr verfallendes Chateau bleibt. Nicht alle seine Bosheiten wurden schon entdeckt.",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinent2",
+			"label": "Fermier Abbey",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Robert Fermier gab viel von seinem ungeheuren Vermögen für die Ausstattung dieser monumentalen, vom Wald umgebenen Abtei aus. Die Mönche schätzen keinen Besuch. Ihr Verhalten ist nicht gerade orthodox zu nennen. Sie feiern ein bestimmtes Erntefest mit ungeheurem Eifer.",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinent3",
+			"label": "Orthos-Wald",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Die Pinien wachsen so dicht wie die Haare auf dem Rücken eines Hundes. Die Luft im Inneren des Waldes ist stickig vor lauter Harz und Staub.  Die Quelle, die dich hierher geführt hat, behauptet, dass in der Dämmerung der größte Baum im schwarzen Herzen des Waldes als Sitz einer großen maskierten Krähe dient.",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinent4",
+			"label": "Die Vanderschaaf-Kollektion",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Ein vollgestopftes kleines Museum in einer Provinzstadt, das lange wegen des Ausbruchs einer seltsamen Entrückung in einem Raum mit gepressten Blumen für die Öffentlichkeit geschlossen war. Nur die Neugierigsten schenken diesem Orte je irgendeine Aufmerksamkeit, wie auch seinem fest verschlossenen Lagerraum voller Schätze mit bösem Omen. ",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinent5",
+			"label": "Das Forman-Haus",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Filip Forman, der Helminthologe und Antiquar, lieferte hier im Haus der Familie seine beste Arbeit ab, bis eines Tages seine Versuchsobjekte entsprangen. Der Befall wurde vernichtet, doch Forman, so sagt man, wandle bis heute durch die Räume und wache über seine Bibliothek und seine Schande.",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinent6",
+			"label": "Mansarde des Schlüsseljägers",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Wien ist eine der wenigen Städte, die in jeder Historie den gleichen Namen trägt, wobei sie Adepten als die Weiße Stadt kennen, vielleicht auch als Stadt des Weiß. In einer verschneiten Straße, in einem schiefen Haus, auf einem hohen und klapprigen Dachboden haben wir erfahren, dass ein exzentrischer Jäger imaginärer Schlüssel einen kleinen Schatz an seltsamen Büchern zusammengetragen hat.",
+			"unique": true
+		},
+		{
+			"id": "vaultcontinentdefault",
+			"label": "Die zahllosen Steine",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultcontinent": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "sending",
+					"label": "Sender",
+					"description": "Ab und zu könnte die Expedition einen anderen Zweck haben.",
+					"required": {
+						"sendingheartc": 1,
+						"sendingmothc": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Megalithen, die von längst verstorbenen Priester-Kasten obsessiv in makellosen Reihen aufgestellt wurden. Die Zeit hat längst die ursprünglichen Blutspuren ausgetilgt, doch in mondlosen Nächten ergänzen die Einheimischen, was fehlt. In verborgenen Kammern könnten sich Schätze verbergen. [Du hast alle Expeditionen auf dem Kontinent gefunden, wobei du die Steine mehrmals finden und besuchen kannst.]"
+		},
+		{
+			"id": "vaultlandbeyondforest1",
+			"label": "Höhle der Kerzen",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Jeden siebenten Sonnenuntergang kommt der gerissene Mann unten aus dem Dorfe, um die Kerzen zu erneuern. Der Boden der Eingangskammer ist glatt von stinkendem Wachs. Er behauptet, das Licht besänftige die Kreatur, doch wahrscheinlicher ist, dass es von den Opfern, die er ihm bringt, zu satt ist, um aufzutauchen.",
+			"unique": true
+		},
+		{
+			"id": "vaultlandbeyondforest2",
+			"label": "Woivoden-Zitadelle",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Als die Türken noch große Macht hatten, herrschte hier ein mächtiger Mann. Viele Jahre lange stillt er viele Dürste, bis sein eigener Durst ihn übermannte. Ich habe erfahren, dass sowohl seine Schätze als auch seine Opfer in einem unberührten Gewölbe unter der Burg ruhen.",
+			"unique": true
+		},
+		{
+			"id": "vaultlandbeyondforest3",
+			"label": "Grunewalds Dauerzirkus",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Eine kleine Stadt aus zusammengeflickten Zelten rund um einen weiß getünchten Bauernhof. Gebeugte Schausteller zittern im tropfenden Regen. Frau Grunewald hat ihr erhebliches Vermögen der Erhaltung dieser Institution gewidmet: wer weiß, warum? Die Zirkus-Schausteller mögen keine Besucher hinter den Kulissen.",
+			"unique": true
+		},
+		{
+			"id": "vaultlandbeyondforest4",
+			"label": "Turm Revek",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Der zerschlagene Stumpf eines Gebäudes. Die Luft ist faulig. Welche Macht auch immer das hier zerstört hat, weilt noch immer hier. Nur eine Etage ist über dem Boden übrig geblieben, doch wir vermuten weitere Räume unter der Erde.",
+			"unique": true
+		},
+		{
+			"id": "vaultlandbeyondforest5",
+			"label": "Die Kusnetzow-Stiftung",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Prinz Kusnetzow gab ein Viertel seines blutgetränkten Vermögens für die Einrichtung einer Fakultät für Eschatologie an dieser Provinz-Universität. Das Personal ist mittlerweile recht wunderlich und die Gebäude verrotten in einem eiskalten Sumpf, doch ein Teil von Kusnetzows Geld wurde vielleicht für Schätze ausgegeben.",
+			"unique": true
+		},
+		{
+			"id": "vaultlandbeyondforestdefault",
+			"label": "Fuchslilien-Wiese",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultlandbeyondforest": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "sending",
+					"label": "Sender",
+					"description": "Ab und zu könnte die Expedition einen anderen Zweck haben.",
+					"required": {
+						"sendingheartd": 1,
+						"sendingmothd": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Der Duft von Fuchslilien weckt wildes Verlangen. Es ist vielleicht ein Glück, dass sie nur auf dieser Höhe wachsen. Die Leute vom Lande haben sich organisiert, um Schatzsucher fernzuhalten, doch manche Schatzsucher erliegen dem Hunger, den die Lilien wecken. Ihre eigenen Schätze liegen zwischen ihren Knochen. Und so geht der Zyklus weiter. [Du hast alle Expeditionen im Lande jenseits des Waldes gefunden, wobei du die Wiesen mehrmals finden und besuchen kannst.]"
+		},
+		{
+			"id": "vaultrendingmountains1",
+			"label": "Jägergruben",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultrendingmountains": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Die Reißenden Stämme haben dieses Höhlensystem erweitert, Schächte gegraben, Fallen gelegt. Es könnt ein Ort für Hinrichtungen gewesen sein, vielleicht auch für Mutproben. Wie auch immer, es ist heilig, und die Stämme wollen uns hier nicht haben. Wenn wir sie überleben, wartet noch ein Schrecken in den engen Tunneln.",
+			"unique": true
+		},
+		{
+			"id": "vaultrendingmountains2",
+			"label": "Der Hüter des Schnees",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultrendingmountains": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Ein Gipfeltempel eines Aspekts schlechten Omens. Juwelenhelle Pilzteppiche leuchten im Schnee. Niemand ist seit einer Generation hierher gekommen, doch etwas regt sich noch im Inneren.",
+			"unique": true
+		},
+		{
+			"id": "vaultrendingmountains3",
+			"label": "Das Auge von Ikirmawi",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultrendingmountains": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Wir haben von einem Sultan gelesen, der vor 800 Jahren nur unter dem Sternenzelt schlafen konnte. Er befahl den Bau dieses Observatoriums, damit die Sterne möglichst genau an die Decke seines Schlafgemachs gemalt werden konnten. Leider waren die Sternen, die sie sahen, nicht sicher genug für den ungeschützten menschlichen Geist. Der Nachfolger des Sultans befahl, das Observatorium zu versiegeln.",
+			"unique": true
+		},
+		{
+			"id": "vaultrendingmountains4",
+			"label": "Mausoleum der Wölfe",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultrendingmountains": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Diese eiskalte Monument wurde lange vor dem Fall Roms errichtet. Steinwölfe wachen an der Tür. Eine Kammer im Inneren wurde in den Fels getrieben, um Fragmente der Sonne bei deren prophezeiter Bestattungsprozession aufzunehmen. Jene Prozession kam nie, doch die Toten fühlen sich noch immer hierher gezogen.",
+			"unique": true
+		},
+		{
+			"id": "vaultrendingmountainsdefault",
+			"label": "Grüfte der Schattenlosen Könige",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultrendingmountains": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "In einen sich aufbäumenden Haufen löwenfarbener Felsen schlugen Arbeiter Grüfte für die ersten Könige dieser Lande. Diese Könige hatten gehofft, unsterblich zu sein, und vielleicht ist es ja auch einer von ihnen. Die anderen ruhen inmitten ihrer Beigaben. Ein Erborden von Hütern passt argwöhnisch auf. [Du hast alle Expeditionen in den Zerfleischenden Bergen gefunden, wobei du die Gräber mehrmals finden und besuchen kannst.]"
+		},
+		{
+			"id": "vaultloneandlevelsands1",
+			"label": "Sternenzerschlagenes Gotteshaus",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultloneandlevelsands": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Hier war einst ein Ort, der den Göttern der Erde heilig war, bis eines Nachts im Winter ein Meteorit herabstürzte. Nach und nach kamen die Gläubigen zurück in die zerschlagene Ruine. Nach und nach wurde der Meteorit selbst als Traumbringer verehrt. Der alte Altar könnte immer noch dort sein, irgendwo unter dem Raum des Meteoriten.",
+			"unique": true
+		},
+		{
+			"id": "vaultloneandlevelsands2",
+			"label": "Laguns Gruft",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultloneandlevelsands": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Ein flaches Rechteck aus Schlammziegeln mit abgeflachten Seiten in einer obskuren Ecke der Wüste. Es macht nicht viel her, aber Lagun zählte zu den unsterblichen Langen, und kein Räuber konnte je in seine Gruft eindringen.",
+			"unique": true
+		},
+		{
+			"id": "vaultloneandlevelsands3",
+			"label": "Messana",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultloneandlevelsands": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Ein ruhiges wohlhabendes Dorf ruht in der Beuge eines Flusses: ein überraschender grüner Fleck in all dem staubigen Land ringsherum. Die Dorfbewohner leben länger als natürlich. Was haben sie zu verbergen?",
+			"unique": true
+		},
+		{
+			"id": "vaultloneandlevelsands4",
+			"label": "Tempel der Sieben Spulen",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultloneandlevelsands": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Ein verfallender Tempel in einer schattigen Klause. Offenbar wurde er in der 3. Historie errichtet, in der sehr viel später Europa von den Würmern überrannt wurde, doch nun existiert er in allen Historien.",
+			"unique": true
+		},
+		{
+			"id": "vaultloneandlevelsandsdefault",
+			"label": "Miah",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaultloneandlevelsands": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "sending",
+					"label": "Sender",
+					"description": "Ab und zu könnte die Expedition einen anderen Zweck haben.",
+					"required": {
+						"sendinghearte": 1,
+						"sendingmothe": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Hier war einst eine Stadt. Wir können ihre Überreste durchwühlen wie Schakale alte Knochen: Palastmauern, begrabene Straßen, zerschmetterte Brunnen. Manchmal finden wir das Wissen der Toten, manchmal finden sie uns. [Du hast alle Expeditionen in den Sanden gefunden, wobei du Miah mehrmals finden und besuchen kannst.]"
+		},
+		{
+			"id": "vaulteveningisles1",
+			"label": "Rabeninsel",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaulteveningisles": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Ein verloschener Vulkan erhebt sein Haupt aus dem grünen Gewirr einen smaragdenen Urwalds. Unsterbliche, die sich des abscheulichsten Verbrechens ihresgleichen schuldig gemacht haben, werden hierher verbannt um arglosen Reisenden aufzulauern, ihr Blut zu trinken und ihre Knochen zu knacken. Über die Jahre sind sie gewiss zu interessanten Spielzeugen gekommen.",
+			"unique": true
+		},
+		{
+			"id": "vaulteveningisles2",
+			"label": "Fort Geryk",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaulteveningisles": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Vor 300 Jahren beanspruchte ein raublustiges Reich eine Insel voller Turmalin. Weder jenes Reich noch jene Insel werden in irgendeiner seriösen Chronik erwähnt. Doch die Festung des Gouverneurs ist geblieben. Vielleicht auch seine Schätze. Vielleicht auch er selbst.",
+			"unique": true
+		},
+		{
+			"id": "vaulteveningisles3",
+			"label": "Das Wrack der Christabel",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaulteveningisles": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Ein Meeresungeheuer verliebte sich in dieses Schiff, doch als seine Liebe nicht erwidert wird, zerquetscht es das Schiff. Auch heute noch verlässt das Monster nie das Wrack, das von okkulten Schätzen bedeckt ist. Wir müssen vorsichtig tauchen.",
+			"unique": true
+		},
+		{
+			"id": "vaulteveningisles4",
+			"label": "St. Tentreto von der Tiefen Tür",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaulteveningisles": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Ein Kloster klammert sich verbissen an den Rand einer Klippe. Es hätte schon längst ins Meer stürzen müssen, doch – so steht es geschrieben – die Mönche ersäufen ihre Opfer in einem tiefen Wasser unter dem Kloster, um sich des Schutzes der Schwester-und-Hexe vom Meer sicher zu sein, noch ein Jahr, noch ein Jahr.",
+			"unique": true
+		},
+		{
+			"id": "vaulteveningislesdefault",
+			"label": "Mittagshafen",
+			"aspects": {
+				"vault": 1,
+				"location": 1,
+				"vaulteveningisles": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "sending",
+					"label": "Sender",
+					"description": "Ab und zu könnte die Expedition einen anderen Zweck haben.",
+					"required": {
+						"sendingheartf": 1,
+						"sendingmothf": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Es gibt da eine Entscheidung, die jeder Unsterbliche für sich allein fällen muss: in den Dienst einer Stunden eintreten, in die Reihen der Sterblichen zurückkehren oder aussterben. Der sonnige kleine Inselhafen namens Mittag ist das Exil der Unsterblichen, die alle diese Optionen ablehnen. [Du hast alle Expeditionen auf den Abendinseln gefunden, wobei du Mittag mehrmals finden und besuchen kannst.]"
+		},
+		{
+			"id": "vaultfloating1",
+			"label": "Die 'Hebe Stanton'",
+			"aspects": {
+				"vault": 1,
+				"location": 1
+			},
+			"slots": [
+				{
+					"id": "expeditionmember",
+					"label": "Anführer",
+					"description": "Ich muss mindestens einen Anhänger haben, um mit der Expedition zu beginnen. Ich kann später weitere hinzufügen.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionmember2",
+					"label": "Assistent",
+					"description": "Optional kann ich nun einen Anhänger extra hinzufügen, falls ich das für angebracht halte.",
+					"required": {
+						"follower": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds",
+					"label": "Geldmittel",
+					"description": "Ich muss mindestens ein Geldmittel haben, um mit der Expedition zu beginnen.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				},
+				{
+					"id": "expeditionfunds2",
+					"label": "Weitere Geldmittel",
+					"description": "Optional kann ich nun mehr Geldmittel hinzufügen, falls ich Sorge habe, dass sie mir ausgehen könnten.",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"description": "Ein mitgenommener, aber überraschend komfortabler Dampfer, viel von Schauspielern auf der Flucht vor Skandalen frequentiert, von scheuen Millionären, okkulten Gelehrten, denen wohler ist, wenn unter ihnen Wasser in Bewegung ist. Und nur einmal diente er auch dem Ligeia-Klub, der das gesamte Schiff charterte, um ganze sieben Kabinen zu nutzen.",
+			"unique": true
+		}
+	]
+}

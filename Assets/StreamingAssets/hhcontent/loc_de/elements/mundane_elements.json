@@ -1,0 +1,118 @@
+{
+	"elements": [
+		{
+			"id": "rumour",
+			"label": "Eigentümliches Gerücht",
+			"description": "Dies könnte mich zu jemandem führen, den ich brauche. Oder vielleicht bedeutet es auch etwas vollkommen anderes. [Erkunde mit einem Gerücht, um nachzuhaken.]",
+			"aspects": {
+				"ingredient": 1,
+				"secrethistories": 1,
+				"moth": 1
+			},
+			"lifetime": 60
+		},
+		{
+			"id": "favour",
+			"label": "Ein Gefallen der Obrigkeit",
+			"description": "Ich habe etwas erfahren, das mir einen Gefallen einbringen wird, wenn auch nur einmal. [Dies bewahrt dich oder einen Anhänger vor der Gefangenschaft ... aber du kannst dich nicht darauf verlassen.] ",
+			"aspects": {
+				"suspicious": 1
+			},
+			"lifetime": 300
+		},
+		{
+			"id": "mistakenidentity",
+			"label": "Ein Fall von Verwechslung",
+			"aspects": {
+				"mortal": 1
+			},
+			"description": "Letzten Endes ist dies nicht die Person, auf die du gehofft hattest. Sie ist nicht sonderlich wichtig und irgendwann wird sie dir schließlich entfallen sein. Vielleicht gibt es sonst niemanden mehr, den du gern treffen würdest.",
+			"xtriggers": {
+				"rebellion": "generic_r"
+			},
+			"comments": "This xtrigger is here specifically in case someone runs through all the possible rivals as a Detective",
+			"lifetime": 10
+		},
+		{
+			"id": "funds",
+			"label": "Geldmittel",
+			"aspects": {
+				"ingredient": 1
+			},
+			"description": "Genug, um mich eine Weile recht bequem leben zu lassen."
+		},
+		{
+			"id": "compensation",
+			"label": "Eiserne Spintria",
+			"aspects": {
+				"edge": 2,
+				"secrethistories": 1,
+				"compensationvalue": 2,
+				"ingredient": 1,
+				"auctionable": 2
+			},
+			"description": "Initiierte der verborgenen Welt bezahlen für Dienste mit Spintriae. Eiserne Spintriae haben dabei den geringsten Wert, und auf ihrer Rückseite wird ein Mord dargestellt. [Spintriae können im Auktionshaus für traditionellere Währungen verkauft werden.]"
+		},
+		{
+			"id": "compensationb",
+			"label": "Bronzene Spintria",
+			"aspects": {
+				"forge": 4,
+				"secrethistories": 1,
+				"compensationvalue": 4,
+				"ingredient": 1,
+				"auctionable": 3
+			},
+			"description": "Initiierte der verborgenen Welt bezahlen für Dienste mit Spintriae. Bronzene Spintriae haben auf ihrer Rückseite in der Regel eine Darstellung des Aktes der Gestaltung. [Spintriae können im Auktionshaus für traditionellere Währungen verkauft werden.]"
+		},
+		{
+			"id": "compensationc",
+			"label": "Silberne Spintria",
+			"aspects": {
+				"grail": 6,
+				"secrethistories": 1,
+				"compensationvalue": 8,
+				"ingredient": 1,
+				"auctionable": 4
+			},
+			"description": "Initiierte der verborgenen Welt bezahlen für Dienste mit Spintriae. Sie können leicht für traditionellere Währungen verkauft werden. Silberne Spintriae sind wertvoller und haben auf ihrer Rückseite in der Regel eine Darstellung von Verkommenheit. [Spintriae können im Auktionshaus für traditionellere Währungen verkauft werden.]"
+		},
+		{
+			"id": "compensationd",
+			"label": "Goldene Spintria",
+			"aspects": {
+				"lantern": 8,
+				"secrethistories": 1,
+				"compensationvalue": 16,
+				"ingredient": 1,
+				"auctionable": 5
+			},
+			"description": "Initiierte der verborgenen Welt bezahlen für Dienste mit Spintriae. Sie können leicht für traditionellere Währungen verkauft werden. Goldene Spintriae haben auf ihrer Rückseite Szenen, die mit den Augen Sterblicher nicht zu sehen sind. [Spintriae können im Auktionshaus für traditionellere Währungen verkauft werden.]"
+		},
+		{
+			"id": "mapbookdealer",
+			"label": "Wegbeschreibung zu Morland",
+			"aspects": {
+				"legacyplotitem": 1
+			},
+			"description": "Kryptische Wegbeschreibung zur nebulösen Adresse eines Gewissen Morland, seines Zeichens Händler für Bücher der selteneren Sorte."
+		},
+		{
+			"id": "jumble",
+			"label": "Ramsch",
+			"aspects": {
+				"auctionable": 1
+			},
+			"description": "Alte Kleidung, praktisch wertlose Accessoires. Vielleicht irgendwo noch einige Pennys wert, aber für mich kaum noch zu gebrauchen."
+		},
+		{
+			"id": "snare",
+			"label": "Falle",
+			"aspects": {
+				"snarelevel": 1
+			},
+			"description": "Ich habe einen Hinterhalt für einen Rivalen vorbereitet. [Eine Falle kann gegen jeden Unabhängigen eingesetzt werden, oder um einem Unabhängigen den Zutritt zu einem Gewölbe zu verwehren.]",
+			"lifetime": 300
+		}
+	]
+}

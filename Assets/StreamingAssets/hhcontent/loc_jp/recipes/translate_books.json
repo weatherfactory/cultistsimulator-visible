@@ -1,0 +1,28 @@
+{
+	"recipes": [
+		{
+			"id": "translatehint",
+			"label": "文章の翻訳をしてみる？",
+			"actionId": "study",
+			"requirements": {
+				"language": 1
+			},
+			"startdescription": "この言語の文章があれば、翻訳を始めることができる。",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "translate",
+			"label": "翻訳を始める",
+			"actionId": "study",
+			"requirements": {
+				"language": 1,
+				"text": 1
+			},
+			"startdescription": "書斎の扉の鍵を掛けて、作業を始めよう。",
+			"description": "勉強したい文献を用意してきた。",
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

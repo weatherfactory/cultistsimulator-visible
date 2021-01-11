@@ -1,0 +1,697 @@
+{
+	"recipes": [
+		{
+			"id": "getcommissionaladim",
+			"label": "アル＝アディム博士から依頼を受け取る",
+			"actionId": "talk",
+			"requirements": {
+				"aladimready": 1
+			},
+			"startdescription": "博士は研究に協力してほしいと言ってくれた。",
+			"description": "これが彼が必要なものだ。",
+			"warmup": 10,
+			"deckeffect": {
+				"aladimcommissions": 1
+			},
+			"aspects": {
+				"commissiongiven": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "getcommissionbechet",
+			"label": "ベシェ夫人から依頼を受け取る",
+			"actionId": "talk",
+			"requirements": {
+				"bechetready": 1
+			},
+			"startdescription": "彼女は悪名高い「ケリシャム・レビュー」に載せられる記事を求めている。",
+			"description": "これが彼女が必要なものだ。",
+			"warmup": 10,
+			"deckeffect": {
+				"bechetcommissions": 1
+			},
+			"aspects": {
+				"commissiongiven": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "getcommissionjannings",
+			"label": "ジャニングス伯爵から依頼を受け取る",
+			"actionId": "talk",
+			"requirements": {
+				"janningsready": 1
+			},
+			"startdescription": "ヨーロッパにいる伯爵の仲間たちが特定の研究を求めている。",
+			"description": "これが彼が必要なものだ。",
+			"warmup": 10,
+			"deckeffect": {
+				"janningscommissions": 1
+			},
+			"aspects": {
+				"commissiongiven": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "getcommissionpoppy",
+			"label": "ポピー・ラスセルズから依頼を受け取る",
+			"actionId": "talk",
+			"requirements": {
+				"poppycommissionready": 1
+			},
+			"startdescription": "「私は」、と口を開くとポピーは女の子のような笑い声をあげた。「ほら、あれよ、血と氷の技に興味があるの。下らないことだって分かっているけど、年寄りの気まぐれを許してちょうだい。手伝ってくれるわよね？」",
+			"description": "これが彼女が必要なものだ。",
+			"warmup": 10,
+			"deckeffect": {
+				"poppycommissions": 1
+			},
+			"aspects": {
+				"commissiongiven": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "fulfilcommissionaladimsecrethistoriesc",
+			"label": "アル＝アディム博士の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlesecrethistoriesc": 1,
+				"aladim": 1,
+				"article": 1,
+				"secrethistories": 6
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "博士に頼まれたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionaladimsecrethistoriesb",
+			"label": "アル＝アディム博士の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlesecrethistoriesb": 1,
+				"aladim": 1,
+				"article": 1,
+				"secrethistories": 4
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "博士に頼まれたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionaladimsecrethistories",
+			"label": "アル＝アディム博士の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlesecrethistories": 1,
+				"aladim": 1,
+				"article": 1,
+				"secrethistories": 2
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "博士に頼まれたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionaladimlanternc",
+			"label": "アル＝アディム博士の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlelanternc": 1,
+				"aladim": 1,
+				"article": 1,
+				"lantern": 6
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "博士に頼まれたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionaladimlanternb",
+			"label": "アル＝アディム博士の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlelanternb": 1,
+				"aladim": 1,
+				"article": 1,
+				"lantern": 4
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "博士に頼まれたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionaladimlantern",
+			"label": "アル＝アディム博士の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlelantern": 1,
+				"aladim": 1,
+				"article": 1,
+				"lantern": 2
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "博士に頼まれたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionbechetforgec",
+			"label": "ベシェ夫人の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleforgec": 1,
+				"bechet": 1,
+				"article": 1,
+				"forge": 6
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionbechetforgeb",
+			"label": "ベシェ夫人の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleforgeb": 1,
+				"bechet": 1,
+				"article": 1,
+				"forge": 4
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionbechetforge",
+			"label": "ベシェ夫人の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleforge": 1,
+				"bechet": 1,
+				"article": 1,
+				"forge": 2
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionbechetgrailc",
+			"label": "ベシェ夫人の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlegrailc": 1,
+				"bechet": 1,
+				"article": 1,
+				"grail": 6
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"glimmering": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionbechetgrailb",
+			"label": "ベシェ夫人の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlegrailb": 1,
+				"bechet": 1,
+				"article": 1,
+				"grail": 4
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"glimmering": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionbechetgrail",
+			"label": "ベシェ夫人の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlegrail": 1,
+				"bechet": 1,
+				"article": 1,
+				"grail": 2
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"glimmering": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionbechetmothc",
+			"label": "ベシェ夫人の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlemothc": 1,
+				"bechet": 1,
+				"article": 1,
+				"moth": 6
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"glimmering": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionbechetmothb",
+			"label": "ベシェ夫人の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlemothb": 1,
+				"bechet": 1,
+				"article": 1,
+				"moth": 4
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"glimmering": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionbechetmoth",
+			"label": "ベシェ夫人の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlemoth": 1,
+				"bechet": 1,
+				"article": 1,
+				"moth": 2
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"glimmering": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionjanningsheartc",
+			"label": "ジャニングス伯爵の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleheartc": 1,
+				"jannings": 1,
+				"article": 1,
+				"heart": 6
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"glimmering": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionjanningsheartb",
+			"label": "ジャニングス伯爵の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleheartb": 1,
+				"jannings": 1,
+				"article": 1,
+				"heart": 4
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"glimmering": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionjanningsheart",
+			"label": "ジャニングス伯爵の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleheart": 1,
+				"jannings": 1,
+				"article": 1,
+				"heart": 2
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"glimmering": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionjanningsedgec",
+			"label": "ジャニングス伯爵の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleedgec": 1,
+				"jannings": 1,
+				"article": 1,
+				"edge": 6
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionjanningsedgeb",
+			"label": "ジャニングス伯爵の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleedgeb": 1,
+				"jannings": 1,
+				"article": 1,
+				"edge": 4
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionjanningsedge",
+			"label": "ジャニングス伯爵の依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleedge": 1,
+				"jannings": 1,
+				"article": 1,
+				"edge": 2
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionpoppycommissionwinterc",
+			"label": "ポピー・ラスセルズの依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlewinterc": 1,
+				"poppycommission": 1,
+				"article": 1,
+				"winter": 6
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "ポピーに依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionpoppycommissionwinterb",
+			"label": "ポピー・ラスセルズの依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlewinterb": 1,
+				"poppycommission": 1,
+				"article": 1,
+				"winter": 4
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "ポピーに依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionpoppycommissionwinter",
+			"label": "ポピー・ラスセルズの依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticlewinter": 1,
+				"poppycommission": 1,
+				"article": 1,
+				"winter": 2
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "ポピーに依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionpoppycommissionknockc",
+			"label": "ポピー・ラスセルズの依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleknockc": 1,
+				"poppycommission": 1,
+				"article": 1,
+				"knock": 6
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "ポピーに依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionpoppycommissionknockb",
+			"label": "ポピー・ラスセルズの依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleknockb": 1,
+				"poppycommission": 1,
+				"article": 1,
+				"knock": 4
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "ポピーに依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		},
+		{
+			"id": "fulfilcommissionpoppycommissionknock",
+			"label": "ポピー・ラスセルズの依頼を遂行する",
+			"actionId": "talk",
+			"requirements": {
+				"commissionarticleknock": 1,
+				"poppycommission": 1,
+				"article": 1,
+				"knock": 2
+			},
+			"effects": {
+				"mystique": 1,
+				"article": -1,
+				"erudition": 1
+			},
+			"startdescription": "ポピーに依頼されたものを手に入れた。",
+			"description": "秘密の世界の通貨を渡され、パトロンから興味をそそる情報が入ってきた。",
+			"warmup": 10,
+			"craftable": true,
+			"aspects": {
+				"commissionfulfilled": 1
+			}
+		}
+	]
+}

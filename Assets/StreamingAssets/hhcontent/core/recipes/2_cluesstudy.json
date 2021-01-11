@@ -1,0 +1,382 @@
+{
+    "recipes": [
+        {
+            "id": "studyupgrade_downgrade_lore_hint",
+            "label": "Improve my Knowledge of the invisible arts?",
+            "actionid": "study",
+            "requirements": {
+                "lore": 1,
+                "edge": -1,
+                "forge": -1,
+                "grail": -1,
+                "heart": -1,
+                "knock": -1,
+                "lantern": -1,
+                "moth": -1,
+                "secrethistories": -1,
+                "winter": -1,
+                "alzabo": -1,
+                "prealzabo": -1
+            },
+            "startdescription": "If I have two lore fragments of the same level and aspect, I can study them together to improve my understanding. If I use Reason, I can analyse the lore, breaking it down into lower-level fragments. Or I can use another type of lore to subvert it...",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "studyupgradelore_hint",
+            "label": "Improve my Knowledge of the invisible arts?",
+            "actionid": "study",
+            "requirements": {
+                "lore": 1,
+                "healthskill": -1,
+                "alzabo": -1,
+                "prealzabo": -1
+            },
+            "startdescription": "If I have two lore fragments of the same level and aspect, I can study them together to improve my understanding. Or I can use another type of lore to subvert it...",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "studyprealzabo_hint",
+            "label": "A Bold Experiment",
+            "actionid": "study",
+            "requirements": {
+                "prealzabo": 1
+            },
+            "startdescription": "I need only purchase a few final ingredients, and then I can prepare the mixture. I must summon my courage... and find a suitable meal.",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "studyalzabo_hint",
+            "label": "The Feast of the Honeyed Dove",
+            "actionid": "study",
+            "requirements": {
+                "alzabo": 1
+            },
+            "startdescription": "I can consume Remnants, to preserve a little of their knowledge from dust. I may yet have to.",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "translatelatinhint",
+            "label": "Translate from Latin?",
+            "actionid": "study",
+            "requirements": {
+                "textlatin": 1
+            },
+            "startdescription": "My Latin skills are too limited to read this. I might be able to find a textbook, or hire a tutor.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translategreekhint",
+            "label": "Translate from Greek?",
+            "actionid": "study",
+            "requirements": {
+                "textgreek": 1
+            },
+            "startdescription": "My Greek skills are too limited to read this. I might be able to find a textbook, or hire a tutor.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatearamaichint",
+            "label": "Translate from Aramaic?",
+            "actionid": "study",
+            "requirements": {
+                "textaramaic": 1
+            },
+            "startdescription": "My Aramaic skills are too limited to read this. I might be able to find a textbook, or hire a tutor.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatesanskrithint",
+            "label": "Translate from Sanskrit?",
+            "actionid": "study",
+            "requirements": {
+                "textsanskrit": 1
+            },
+            "startdescription": "My Sanskrit skills are too limited to read this. I might be able to find a textbook, or hire a tutor.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatefucinehint",
+            "label": "Translate from Fucine?",
+            "actionid": "study",
+            "requirements": {
+                "textfucine": 1
+            },
+            "startdescription": "I don't know Fucine; perhaps no-one living does. There might be a Rosetta Stone somewhere... or I might find a tutor who is not living, not exactly.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatephrygianhint",
+            "label": "Translate from Phrygian?",
+            "actionid": "study",
+            "requirements": {
+                "textphrygian": 1
+            },
+            "startdescription": "I don't know Phrygian; perhaps no-one living does. There might be a Rosetta Stone somewhere... or I might find a tutor who is not living, not exactly.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatemandaichint",
+            "label": "Translate from Deep Mandaic?",
+            "actionid": "study",
+            "requirements": {
+                "textmandaic": 1
+            },
+            "startdescription": "I don't know Deep Mandaic; perhaps no-one living does. There might be a Rosetta Stone somewhere... or I might find a tutor who is not living, not exactly.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatevakhint",
+            "label": "Translate from Vak?",
+            "actionid": "study",
+            "requirements": {
+                "textvak": 1
+            },
+            "startdescription": "I don't know Vak; perhaps no-one living does. There might be a Rosetta Stone somewhere... or I might find a tutor who is not living, not exactly.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "studyincreasehealthskilld_wronglore",
+            "label": "Exercise the Body: Secret Techniques?",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "lore": 1
+            },
+            "startdescription": "Nothing in this lore will be of use here. I must choose something else.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasehealthfurtherhint",
+            "label": "Increase my Health?",
+            "actionid": "study",
+            "requirements": {
+                "vitality": 2
+            },
+            "startdescription": "The more Health I gain, the more Vitality I'll need. [Use Skill: Physique to increase Health further.]",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasereasonfurtherhint",
+            "label": "Increase my Reason?",
+            "actionid": "study",
+            "requirements": {
+                "erudition": 2
+            },
+            "startdescription": "The more Reason I gain, the more Erudition I'll need. [Use Skill: Scholarship to increase Reason further.]",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasepassionfurtherhint",
+            "label": "Increase my Passion?",
+            "actionid": "study",
+            "requirements": {
+                "glimmering": 2
+            },
+            "startdescription": "The more Passion I gain, the more Glimmering I'll need. [Use Skill: Imagination to increase Passion further.]",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "studyupgradeinfluences.apostlelanternhint",
+            "label": "Maintaining a Marvel",
+            "actionid": "study",
+            "requirements": {
+                "apostlelantern.pillar3": 1
+            },
+            "startdescription": "Even the greatest allure, over time, will flicker and grey. I must stoke it with the colours of obsession.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "studyupgradeinfluenceshint2",
+            "label": "Upgrade Influences?",
+            "actionid": "study",
+            "requirements": {
+                "influence": 2,
+                "lore": -1,
+                "healthskill": -1,
+                "reasonskill": -1,
+                "passionskill": -1
+            },
+            "startdescription": "It might be possible, with the right combination of Influences, to raise more power... but only if I have the necessary knowledge of the invisible arts.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasehealthfurtherhintpluswithskillneedslore",
+            "label": "Increase my Skill to something extraordinary?",
+            "actionid": "study",
+            "requirements": {
+                "vitalityplus": 1,
+                "skillhealthc": 1
+            },
+            "startdescription": "I'll need enough Lessons Learnt... and something more.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasehealthfurtherhintpluswithskill",
+            "label": "Increase my Health?",
+            "actionid": "study",
+            "requirements": {
+                "vitalityplus": 1,
+                "healthskill": 1
+            },
+            "startdescription": "I'll need more Lessons Learnt.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasehealthfurtherhintplus",
+            "label": "Increase my Health?",
+            "actionid": "study",
+            "requirements": {
+                "vitalityplus": 1
+            },
+            "startdescription": "I'll need to use this with my Strength skill.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasehealthfurtherhint1",
+            "label": "Increase my Health?",
+            "actionid": "study",
+            "requirements": {
+                "vitality": 1
+            },
+            "startdescription": "I'll need more.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasereasonfurtherhintpluswithskillneedslore",
+            "label": "Increase my Skill to something extraordinary?",
+            "actionid": "study",
+            "requirements": {
+                "eruditionplus": 1,
+                "skillreasonc": 1
+            },
+            "startdescription": "I'll need enough Lessons Learnt... and something more.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasereasonfurtherhintpluswithskill",
+            "label": "Increase my Reason?",
+            "actionid": "study",
+            "requirements": {
+                "eruditionplus": 1,
+                "reasonskill": 1
+            },
+            "startdescription": "I'll need more Lessons Learnt.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasereasonfurtherhintplus",
+            "label": "Increase my Reason?",
+            "actionid": "study",
+            "requirements": {
+                "eruditionplus": 1
+            },
+            "startdescription": "I'll need to use this with my Scholarship skill.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasereasonfurtherhint1",
+            "label": "Increase my Reason?",
+            "actionid": "study",
+            "requirements": {
+                "erudition": 1
+            },
+            "startdescription": "I'll need more than one.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasepassionfurtherhintpluswithskillneedslore",
+            "label": "Increase my Skill to something extraordinary?",
+            "actionid": "study",
+            "requirements": {
+                "glimmeringplus": 1,
+                "skillpassionc": 1
+            },
+            "startdescription": "I'll need enough Lessons Learnt... and something more.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasepassionfurtherhintpluswithskill",
+            "label": "Increase my passion?",
+            "actionid": "study",
+            "requirements": {
+                "glimmeringplus": 1,
+                "passionskill": 1
+            },
+            "startdescription": "I'll need more Lessons Learnt.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasepassionfurtherhintplus",
+            "label": "Increase my passion?",
+            "actionid": "study",
+            "requirements": {
+                "glimmeringplus": 1
+            },
+            "startdescription": "I'll need to use this with my Imagination skill.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasepassionfurtherhint1",
+            "label": "Increase my Passion?",
+            "actionid": "study",
+            "requirements": {
+                "glimmering": 1
+            },
+            "startdescription": "I'll need more than one.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "studyrestlessnesshint",
+            "label": "Study Restlessness?",
+            "actionid": "study",
+            "requirements": {
+                "restlessness": 1
+            },
+            "startdescription": "To study, one must generally sit quite still. Restlessness is rarely the ally of scholarship.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "studyupgradeinfluenceshint1",
+            "label": "Upgrade Influences?",
+            "actionid": "study",
+            "requirements": {
+                "influence": 1
+            },
+            "startdescription": "It might be possible, with the right combination of Influences, to raise more power...",
+            "hintonly": true,
+            "craftable": false
+        }
+    ]
+}

@@ -1,0 +1,438 @@
+{
+    "decks": [
+        {
+            "id": "seasonevents",
+            "label": "Seasons",
+            "description": "Whenever Time Passes, an unexpected event might occur.",
+            "spec": [
+                "seasonsickness",
+                "seasonsuspicion",
+                "seasonsuspicion",
+                "seasondespair",
+                "seasondespair",
+                "seasonvisions",
+                "seasonvisions",
+                "seasonambitions",
+                "seasonambitions",
+                "seasonsilence",
+                "seasonardours"
+            ],
+            "defaultcard": "contentment",
+            "resetonexhaustion": true
+        },
+        {
+            "id": "cabaretevents",
+            "label": "An Evening at the Club",
+            "description": "Each evening brings different delights, and occasionally perils.",
+            "spec": [
+                "contentment",
+                "contentment",
+                "contentment",
+                "fascination",
+                "fascination",
+                "erudition",
+                "glimmering",
+                "vitality",
+                "notoriety",
+                "influencegrail",
+                "influencemoth"
+            ],
+            "defaultcard": "contentment",
+            "resetonexhaustion": true
+        },
+        {
+            "id": "roserewards",
+            "label": "Romance's Reward",
+            "description": "Then, now, when?",
+            "spec": [
+                "memorybittersweet",
+                "memorypleasant",
+                "memorypassionate",
+                "fleeting"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "dreamreasonresults",
+            "label": "Dream's Hinterlands",
+            "description": "Sleep usually brings rest and peace; but not always. Not always.",
+            "spec": [
+                "dread",
+                "fascination",
+                "glimmering",
+                "vitality",
+                "contentment",
+                "restlessness"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "paintingresultsbasic",
+            "label": "Art's Rewards",
+            "description": "Painting can bring contentment, or sometimes, a new kind of understanding.",
+            "spec": [
+                "contentment",
+                "contentment",
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "glimmering"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "paintingresults",
+            "label": "Art's Rewards",
+            "description": "Painting often brings contentment. Sometimes, my work will attract attention.",
+            "spec": [
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "contentment",
+                "contentment",
+                "contentment",
+                "contentment",
+                "contentment",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "paintingresultsreputation",
+            "label": "Fame's Rewards",
+            "description": "This is where the money is.",
+            "spec": [
+                "overexposure",
+                "overexposure",
+                "overexposure",
+                "overexposure",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "ecdysisrewards",
+            "label": "The Offerings at the End",
+            "description": "The Club guarantees a minimum, but the audience sometimes offer contributions of their own.",
+            "spec": [
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "compensationb",
+                "compensationb",
+                "compensationc",
+                "jumble",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "compensationb",
+                "compensationb",
+                "compensationc",
+                "jumble",
+                "kitlingripe",
+                "raptintheking",
+                "vienneseconundra"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "robberyrewards",
+            "label": "The Wages of Sin",
+            "description": "My minions will usually bring me back petty treasures; sometimes junk; rarely, something extraordinary.",
+            "spec": [
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "jumble",
+                "jumble",
+                "jumble",
+                "jumble",
+                "jumble",
+                "compensation",
+                "compensation",
+                "compensation",
+                "compensation",
+                "compensation",
+                "compensation",
+                "compensationb",
+                "compensationb",
+                "compensationb",
+                "ingredientedgeb",
+                "ingredientforgeb",
+                "ingredientgrailb",
+                "ingredientheartb",
+                "ingredientknockb",
+                "ingredientmothb"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "exploreevents",
+            "label": "Exploring the Capital",
+            "description": "Searching the city can find...",
+            "spec": [
+                "daycriminals",
+                "dayplaces",
+                "daycriminals",
+                "dayplaces"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "schemeevents",
+            "label": "Potential Scheme",
+            "description": "My Rival Plots...",
+            "spec": [
+                "schememurder",
+                "schememurder",
+                "schemeexpedition",
+                "schemeexpedition",
+                "schemeexpedition",
+                "schemeexpedition",
+                "schemeactivities",
+                "schemeactivities",
+                "schemeactivities",
+                "schemeactivities"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "talkevents",
+            "label": "Midnight Meetings",
+            "description": "I might find recruits, allies, or rivals.",
+            "spec": [
+                "dayacquaintances",
+                "dayacquaintances",
+                "dayacquaintances",
+                "dayacquaintances",
+                "dayacquaintances",
+                "dayacquaintances",
+                "dayacquaintances",
+                "daypatrons",
+                "daypatrons"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "citysecrets",
+            "label": "City Secrets",
+            "description": "Easily overlooked locations.",
+            "spec": [
+                "locationauctionhouse",
+                "locationcabaret",
+                "locationbookdealer",
+                "locationstreetsstrange"
+            ],
+            "defaultcard": "locationstreetsstrange"
+        },
+        {
+            "id": "streetsstrangefinds",
+            "label": "Strange Streets",
+            "description": "Insights and influences.",
+            "spec": [
+                "influenceknockc",
+                "influenceknockc",
+                "glimmering",
+                "glimmering",
+                "fascination",
+                "contentment",
+                "contentment"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "troublemakerconversations",
+            "label": "Conversations with a Troublemaker",
+            "description": "What might I learn?",
+            "spec": [
+                "dread",
+                "dread",
+                "fascination",
+                "fascination",
+                "erudition",
+                "erudition",
+                "erudition",
+                "glimmering",
+                "glimmering"
+            ],
+            "defaultcard": "contentment"
+        },
+        {
+            "id": "forgelong",
+            "label": "An Enemy of the Work",
+            "description": "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+            "spec": [
+                "julian_unknown",
+                "welland_unknown",
+                "welland_unknown"
+            ],
+            "defaultcard": "julian_unknown"
+        },
+        {
+            "id": "graillong",
+            "label": "An Enemy of the Work",
+            "description": "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+            "spec": [
+                "tryphon_unknown",
+                "tryphon_unknown",
+                "julian_unknown"
+            ],
+            "defaultcard": "julian_unknown"
+        },
+        {
+            "id": "lanternlong",
+            "label": "An Enemy of the Work",
+            "description": "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+            "spec": [
+                "julian_unknown",
+                "diarist_unknown",
+                "diarist_unknown"
+            ],
+            "defaultcard": "julian_unknown"
+        },
+        {
+            "id": "long.strategies",
+            "label": "An Enemy of the Work",
+            "description": "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+            "spec": [
+                "strategy.assault.concealed",
+                "strategy.intrigue.concealed",
+                "strategy.dreams.concealed",
+                "strategy.downtime.concealed"
+            ],
+            "defaultcard": "strategy.downtime",
+            "resetonexhaustion": true
+        },
+        {
+            "id": "long.strategies.preference.assault",
+            "label": "An Enemy of the Work",
+            "description": "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+            "spec": [
+                "strategy.assault.concealed",
+                "strategy.assault.concealed",
+                "strategy.intrigue.concealed",
+                "strategy.dreams.concealed",
+                "strategy.downtime.concealed"
+            ],
+            "defaultcard": "strategy.downtime",
+            "resetonexhaustion": true
+        },
+        {
+            "id": "long.strategies.preference.intrigue",
+            "label": "An Enemy of the Work",
+            "description": "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+            "spec": [
+                "strategy.assault.concealed",
+                "strategy.intrigue.concealed",
+                "strategy.intrigue.concealed",
+                "strategy.dreams.concealed",
+                "strategy.downtime.concealed"
+            ],
+            "defaultcard": "strategy.downtime",
+            "resetonexhaustion": true
+        },
+        {
+            "id": "long.strategies.preference.dreamwork",
+            "label": "An Enemy of the Work",
+            "description": "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+            "spec": [
+                "strategy.assault.concealed",
+                "strategy.intrigue.concealed",
+                "strategy.dreams.concealed",
+                "strategy.dreams.concealed",
+                "strategy.downtime.concealed"
+            ],
+            "defaultcard": "strategy.downtime",
+            "resetonexhaustion": true
+        },
+        {
+            "id": "priest.repevent",
+            "label": "The Congregation's Passions",
+            "description": "What will come of this?",
+            "spec": [
+                "notoriety",
+                "notoriety",
+                "notoriety",
+                "notoriety",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique",
+                "funds",
+                "funds",
+                "funds",
+                "funds"
+            ],
+            "resetonexhaustion": true
+        },
+        {
+            "id": "ghoul.memory",
+            "label": "Memories",
+            "description": "I will remember what all others have forgotten",
+            "spec": [
+                "memory.unexpected",
+                "memory.joyful",
+                "memory.profitable",
+                "memory.shameful",
+                "memory.menacing",
+                "memory.joyful",
+                "memory.profitable",
+                "memory.shameful",
+                "memory.menacing",
+                "memory.joyful",
+                "memory.profitable",
+                "memory.shameful",
+                "memory.menacing"
+            ],
+            "resetonexhaustion": true
+        }
+    ]
+}

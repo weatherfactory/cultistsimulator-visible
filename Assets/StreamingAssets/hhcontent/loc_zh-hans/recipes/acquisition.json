@@ -1,0 +1,298 @@
+{
+    "recipes": [
+        {
+            "id": "auctionbuy",
+            "label": "在拍卖中竞价",
+            "actionId": "explore",
+            "effects": {},
+            "slots": [
+                {
+                    "id": "Bid",
+                    "label": "出价",
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "startdescription": "人群中是一张张绷紧的面孔和一双双发光的眼睛。谁会出价呢？[拍品显示在右边。如果竞拍失败，该物品将永久消失。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "playerincreasedbid",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "auctionfailureclear",
+                    "chance": 100
+                }
+            ],
+            "comments": "The auction item should be inherited from the linking recipe. If this event completes, the auction has failed and the item is removed. NB the auctioncomplete aspect, which converts existing bids back into funds."
+        },
+        {
+            "id": "playerincreasedbid",
+            "actionId": "explore",
+            "label": "我出价了！",
+            "requirements": {
+                "funds": 1
+            },
+            "startdescription": "我举起了手。拍卖师敲下木槌表示收到。会有人跟价吗？",
+            "description": ".",
+            "effects": {
+                "funds": -1,
+                "bid": 1
+            },
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "auctionbidmatched.grailapostlepillar3"
+                },
+                {
+                    "id": "auctionsuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "auctionbidmatched",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "auctionbidmatched.grailapostlepillar3",
+            "actionId": "explore",
+            "requirements": {
+                "bid": -6,
+                "apostlegrail.pillar3": 1
+            },
+            "linked": [
+                {
+                    "id": "auctionbidmatched"
+                }
+            ]
+        },
+        {
+            "id": "auctionbidmatched",
+            "label": "另一位竞拍者！",
+            "actionId": "explore",
+            "startdescription": "有人跟拍！我必须花更多资金追上，不然就只能放弃目标。",
+            "description": ".",
+            "slots": [
+                {
+                    "id": "Bid",
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "playerincreasedbid",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "auctionfailureclear",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "auctionfailureclear",
+            "actionId": "explore",
+            "effects": {
+                "text": -1,
+                "tool": -1,
+                "ingredient": -1
+            },
+            "comments": "Tools and ingredients might subsequently be offered as purchases; in particular, ingredients are right now in a Grail Apostle plot recipe.",
+            "linked": [
+                {
+                    "id": "auctionfailure",
+                    "chance": 100
+                }
+            ],
+            "warmup": 0
+        },
+        {
+            "id": "auctionfailure",
+            "actionId": "explore",
+            "label": "我没能竞到拍品。",
+            "aspects": {
+                "restore": 1
+            },
+            "startdescription": ".",
+            "description": "拍卖结束了。拍品已归他人所有。我仍保有我的资金。",
+            "warmup": 0
+        },
+        {
+            "id": "auctionsuccess",
+            "label": "我已竞到拍品！",
+            "actionId": "explore",
+            "effects": {
+                "funds": -100,
+                "bid": -100
+            },
+            "startdescription": ".",
+            "description": "拍卖师记下了我的名字，并向助手之一打手势。我得到了我的目标。但愿它值这个价。",
+            "warmup": 0,
+            "craftable": false,
+            "comments": "The auction item should be inherited from the linking recipe."
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires3",
+            "actionId": "expedition.corpse.find",
+            "label": "尚余一件宝物",
+            "startdescription": "其他来过此地的人都忽略了锁在战士国王遗体内的秘密。我不会犯同样的错误。",
+            "extantreqs": {
+                "remembrancemarks": 1
+            },
+            "effects": {
+                "corpse.furious": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "expedition.corpse.find.vaultcapital5",
+            "actionId": "expedition.corpse.find",
+            "label": "尚余一件宝物",
+            "startdescription": "我不该漏过最后的这一片教士。无疑它会很有嚼劲，但里面也蕴含着力量与知识。",
+            "extantreqs": {
+                "remembrancemarks": 1
+            },
+            "effects": {
+                "corpse.luxurious": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "expedition.corpse.find.vaultloneandlevelsands2",
+            "actionId": "expedition.corpse.find",
+            "label": "尚余一件宝物",
+            "startdescription": "我将尽我所能收集拉贡的尸骸。我会找到法子解开里面所含的回忆。哪怕让我把它泡成茶喝。",
+            "extantreqs": {
+                "remembrancemarks": 1
+            },
+            "effects": {
+                "corpse.liminal": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "expedition.corpse.find.vaultrendingmountainsdefault",
+            "actionId": "expedition.corpse.find",
+            "label": "尚余一件宝物",
+            "startdescription": "我要独吞这位王的残馀。",
+            "extantreqs": {
+                "remembrancemarks": 1,
+                "corpse.horizon": -1,
+                "memory.horizon": -1,
+                "colours.horizon": -1
+            },
+            "effects": {
+                "corpse.horizon": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires4",
+            "actionId": "expedition.corpse.find",
+            "label": "尚余一件宝物",
+            "startdescription": "“Caput gerat lupinum（拉丁语，罪人当佩狼首）”。从前，若有人犯下法外之事，人们会认为他变成了一匹狼。",
+            "extantreqs": {
+                "remembrancemarks": 1
+            },
+            "effects": {
+                "corpse.splendid": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires3.ransackedbyrival",
+            "actionId": "expedition.corpse.find",
+            "label": "尚余一件宝物",
+            "startdescription": "我的对手和其他来过此地的人一样，都忽略了锁在战士国王遗体内的秘密。我不会犯同样的错误。",
+            "requirements": {
+                "vaultshires3": 1
+            },
+            "extantreqs": {
+                "remembrancemarks": 1
+            },
+            "effects": {
+                "corpse.furious": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+            "actionId": "expedition.corpse.find",
+            "label": "尚余一件宝物",
+            "startdescription": "现在我的对手已走，我们可以溜进去捡走最后的这一片教士了。无疑它会很有嚼劲，但里面也蕴含着力量与知识。",
+            "requirements": {
+                "vaultcapital5": 1
+            },
+            "extantreqs": {
+                "remembrancemarks": 1
+            },
+            "effects": {
+                "corpse.luxurious": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
+            "actionId": "expedition.corpse.find",
+            "label": "尚余一件宝物",
+            "startdescription": "现在我的对手已走，我们可以溜进去捡走我所需的这具曾永生不死的尸骸了。我将尽我所能收集拉贡的尸骸。我会找到法子解开里面所含的回忆。哪怕让我把它泡成茶喝。",
+            "requirements": {
+                "vaultloneandlevelsands2": 1
+            },
+            "extantreqs": {
+                "remembrancemarks": 1
+            },
+            "effects": {
+                "corpse.liminal": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
+            "actionId": "expedition.corpse.find",
+            "label": "尚余一件宝物",
+            "startdescription": "现在我的对手已走，我们可以溜进去捡走我所需的这具半是凡人的尸骸了。我要独吞这位王的残馀。",
+            "requirements": {
+                "vaultrendingmountainsdefault": 1
+            },
+            "extantreqs": {
+                "remembrancemarks": 1,
+                "corpse.horizon": -1,
+                "memory.horizon": -1,
+                "colours.horizon": -1
+            },
+            "effects": {
+                "corpse.horizon": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires4.ransackedbyrival",
+            "actionId": "expedition.corpse.find",
+            "label": "尚余一件宝物",
+            "startdescription": "现在我的对手已走，我们可以溜进去捡走我所需的这具凡人尸骸了。",
+            "requirements": {
+                "vaultshires4": 1
+            },
+            "extantreqs": {
+                "remembrancemarks": 1
+            },
+            "effects": {
+                "corpse.splendid": 1
+            },
+            "warmup": 60
+        }
+    ]
+}

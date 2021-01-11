@@ -1,0 +1,424 @@
+{
+	"recipes": [
+		{
+			"id": "dreamascensionpowera",
+			"label": "Für mein Ziel überirdischer Macht meditieren",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionpowera": 1
+			},
+			"slots": [
+				{
+					"id": "Calculation",
+					"label": "Berechnung",
+					"required": {
+						"lore": 1,
+						"health": 1,
+						"reason": 1,
+						"priestjob": 1
+					},
+					"description": "Mich dem Wissen des Prinzips verschreiben, das ich suche oder mich auf etwas anderes konzentrieren."
+				}
+			],
+			"startdescription": "Soll ich mich meinem Ziel verschreiben? Oder mich auf etwas anderes konzentrieren?",
+			"description": "Ich habe beschlossen, so zu bleiben, wie ich bin ... bis auf weiteres.",
+			"alternativerecipes": [
+				{
+					"id": "dreamascension_abandontemptation",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_sensation",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_enlightenment",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_upgrade_power_1to2",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamascensionsensationa",
+			"label": "Über das Streben nach dem Gefühl meditieren",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionsensationa": 1
+			},
+			"slots": [
+				{
+					"id": "Musing",
+					"label": "Grübeln",
+					"required": {
+						"lore": 1,
+						"passion": 1,
+						"reason": 1,
+						"priestjob": 1
+					},
+					"description": "Mich dem Wissen des Prinzips verschreiben, das ich suche oder mich auf etwas anderes konzentrieren."
+				}
+			],
+			"startdescription": "Soll ich mich meinem Ziel verschreiben? Oder mich auf etwas anderes konzentrieren?",
+			"description": "Ich habe beschlossen, so zu bleiben, wie ich bin ... bis auf weiteres.",
+			"alternativerecipes": [
+				{
+					"id": "dreamascension_abandontemptation",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_power",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_enlightenment",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_upgrade_sensation_1to2m",
+					"chance": 50
+				},
+				{
+					"id": "dreamascension_upgrade_sensation_1to2f",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamascensionenlightenmenta",
+			"label": "Für mein Ziel überirdischen Wissens meditieren",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionenlightenmenta": 1
+			},
+			"slots": [
+				{
+					"id": "Reflection",
+					"label": "Reflexion",
+					"required": {
+						"lore": 1,
+						"passion": 1,
+						"health": 1,
+						"priestjob": 1
+					},
+					"description": "Mich dem Wissen des Prinzips verschreiben, das ich suche oder mich auf etwas anderes konzentrieren."
+				}
+			],
+			"startdescription": "Soll ich mich meinem Ziel verschreiben? Oder mich auf etwas anderes konzentrieren?",
+			"description": "Ich habe beschlossen, so zu bleiben, wie ich bin ... bis auf weiteres.",
+			"alternativerecipes": [
+				{
+					"id": "dreamascension_abandontemptation",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_sensation",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_power",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_upgrade_enlightenment_1to2",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamascension_abandontemptation",
+			"actionId": "dream",
+			"label": "Mich von der Versuchung läutern",
+			"startdescription": "Mein eigenes Verlangen ist nichts. Ich bin die Schwelle. Ich bin die Straße, auf der meine Leute wandeln werden. Ich werde mich unwiderruflich diesem Zwecke verschreiben. [Dadurch wird deine Versuchung dauerhaft zerstört. Überlege dir gut, ob du das wirklich willst.]",
+			"description": "Ich könnte sagen, dass ich meine Wahl getroffen habe, doch so ganz stimmt das nicht. Ich <i>wurde</i> erwählt.",
+			"requirements": {
+				"priestjob": 1
+			},
+			"effects": {
+				"passion": 1,
+				"desire": -1
+			}
+		},
+		{
+			"id": "dreamascension_switchfromchange",
+			"label": "Nach Gefühl statt Wandel streben",
+			"requirements": {
+				"ascensionchangea": 1
+			},
+			"actionId": "dream",
+			"effects": {
+				"desire": -1,
+				"ascensionsensationa": 1
+			},
+			"startdescription": "Gerade das Verlangen nach Wandel ist besonders für den Wandel anfällig. [Du kannst nicht so einfach das Verlangen nach Wandel zurückbekommen, wenn du es einmal verloren hast.]",
+			"description": "Ich habe meine Absichten neu ausgerichtet. Es gibt Erfahrungen, die wie Adern unter der Haut der Welt versteckt sind. Ich werde die tiefgründigste von ihnen kennenlernen, auch wenn die Erfahrung mich verschlingen könnte.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamascension_switchto_power",
+			"label": "Nun ist Macht mein Ziel.",
+			"actionId": "dream",
+			"requirements": {
+				"passion": 1
+			},
+			"effects": {
+				"desire": -1,
+				"ascensionpowera": 1
+			},
+			"startdescription": "Vielleicht ist Macht das reizvollere Ziel.",
+			"description": "Ich habe meine Absichten neu ausgerichtet. Meine Vorgänger setzten die Macht der Umgestaltung ein: eine Macht, von der Kaiserinnen, Generäle und Physiker nur Träumen können. Wie auch ich, obwohl die Macht mich versengen könnte."
+		},
+		{
+			"id": "dreamascension_switchto_sensation",
+			"label": "Nun ist das Gefühl mein Ziel.",
+			"actionId": "dream",
+			"requirements": {
+				"health": 1
+			},
+			"effects": {
+				"desire": -1,
+				"ascensionsensationa": 1
+			},
+			"startdescription": "Vielleicht ist das Gefühl das süßere Ziel.",
+			"description": "Ich habe meine Absichten neu ausgerichtet. Es gibt Erfahrungen, die wie Adern unter der Haut der Welt versteckt sind. Ich werde die tiefgründigste von ihnen kennenlernen, auch wenn die Erfahrung mich verschlingen könnte."
+		},
+		{
+			"id": "dreamascension_switchto_enlightenment",
+			"label": "Nun ist Erleuchtung mein Ziel.",
+			"actionId": "dream",
+			"requirements": {
+				"reason": 1
+			},
+			"effects": {
+				"desire": -1,
+				"ascensionenlightenmenta": 1
+			},
+			"startdescription": "Vielleicht ist das Wissen ein edleres Ziel.",
+			"description": "Ich habe meine Absichten neu ausgerichtet. Meine Vorgänger kannten die höchsten Geheimnisse, die suchenden Geheimnisse, die Geheimnisse, die durch Knochen wie durch Glas und durch Haut wie durch Pergament schienen. Wie auch ich, obwohl das Wissen mein Verderben sein könnte."
+		},
+		{
+			"id": "dreamascension_upgrade_power_1to2",
+			"label": "Hingabe zur Flamme",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"forge": 1
+			},
+			"startdescription": "Ich werde mich dem Streben nach Macht verschreiben.",
+			"description": "Ich habe die Worte geflüstert, die der Schmied zum Eisen spricht, die der Mörder zu seinen Opfern spricht, die das Feuer zu seinem Brennstoff spricht. Nur ich weiß, was ich getan habe, doch jetzt hat es meinen Weg geprägt. [Ich habe einen Schritt in Richtung eines schrecklichen Aufstiegs gemacht.]",
+			"effects": {
+				"ascensionpowera": -1,
+				"ascensionpowerb": 1
+			},
+			"burnimage": "forgededication"
+		},
+		{
+			"id": "dreamascension_upgrade_sensation_1to2m",
+			"label": "Hingabe zum Blut",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"grail": 1
+			},
+			"startdescription": "Ich werde mich dem Streben nach dem Gefühl verschreiben.",
+			"description": "Manche Worte hört man am besten. Manche Worte schmeckt man am besten. Der Geschmack ist nun auf meiner Zunge, und ich werde ihn niemals vergessen. [Ich habe einen Schritt in Richtung eines schrecklichen Aufstiegs gemacht.]",
+			"effects": {
+				"ascensionsensationa": -1,
+				"ascensionsensationbm": 1
+			},
+			"burnimage": "graildedication"
+		},
+		{
+			"id": "dreamascension_upgrade_sensation_1to2f",
+			"label": "Hingabe zum Blut",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"grail": 1
+			},
+			"startdescription": "Ich werde mich dem Streben nach dem Gefühl verschreiben.",
+			"description": "Manche Worte hört man am besten. Manche Worte schmeckt man am besten. Der Geschmack ist nun auf meiner Zunge, und ich werde ihn niemals vergessen. [Ich habe einen Schritt in Richtung eines schrecklichen Aufstiegs gemacht.]",
+			"effects": {
+				"ascensionsensationa": -1,
+				"ascensionsensationbf": 1
+			},
+			"burnimage": "graildedication"
+		},
+		{
+			"id": "dreamascension_upgrade_enlightenment_1to2",
+			"label": "Hingabe zum Licht",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 1
+			},
+			"startdescription": "Ich werde mich dem Streben nach Wissen verschreiben.",
+			"description": "Ich habe die Worte gesprochen: 'Jede Stunde hat ihre Farbe, doch Farbe existiert nur, wo Licht ist.' Ich werde dorthin gehen, wo Licht ist, obwohl es mich wie Glas ausbleichen wird. [Ich habe einen Schritt in Richtung eines schrecklichen Aufstiegs gemacht.]",
+			"effects": {
+				"ascensionenlightenmenta": -1,
+				"ascensionenlightenmentb": 1
+			},
+			"burnimage": "lanterndedication"
+		},
+		{
+			"id": "dreamreason",
+			"label": "Der wandernde Geist",
+			"actionId": "dream",
+			"requirements": {
+				"reason": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Es gab einst einen Mann, der sprach, dass dem Schlaf des Verstandes Monster entsprängen. Oft ist es gesund, den Geist im Schlafe wandern zu lassen. Doch wenn ich weiter träume, erhebt sich früher oder später irgendeine Art von Monster aus meinen eigenen Ängsten.",
+			"description": ".",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_router",
+			"label": "Die Massen des Schlafs",
+			"actionId": "dream",
+			"deckeffect": {
+				"dreamreasonresults": 1
+			},
+			"linked": [
+				{
+					"id": "dreamcontentment",
+					"chance": 100
+				},
+				{
+					"id": "dreamrestlessness",
+					"chance": 100
+				},
+				{
+					"id": "dreamvitality",
+					"chance": 100
+				},
+				{
+					"id": "dreamglimmering",
+					"chance": 100
+				},
+				{
+					"id": "nightmarehersault",
+					"chance": 100
+				},
+				{
+					"id": "nightmarecleansingdawn",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "dreamcontentment",
+			"label": "Träume vom Regen",
+			"actionId": "dream",
+			"requirements": {
+				"contentment": 1
+			},
+			"startdescription": "Der Regen kommt. Aber von der richtigen Sorte.",
+			"description": "Mir träumte vom Regen, wie er in den Traufen flüsterte, an den Fenstern wie ein alter Freund klopfte, vorwitzig im Kamin zischte. Es ist schwer, bei der richtigen Art von Regen unglücklich zu sein.",
+			"warmup": 10
+		},
+		{
+			"id": "dreamrestlessness",
+			"label": "Träume von Türen",
+			"actionId": "dream",
+			"requirements": {
+				"restlessness": 1
+			},
+			"startdescription": "Heute Nacht ist der Traum vom Irrgarten der Türen.",
+			"description": "Mir träumte vom Öffnen von Türen. Rote Türen und goldene Türen und Türen aus Glas und wie Bücher gebundene Türen und Zugabteiltüren und Burgtore. Hinter einer war etwas, das ich suche. Ich erwachte mit dem Zuschlagen von Türen noch in meinen Ohren.",
+			"warmup": 10
+		},
+		{
+			"id": "dreamvitality",
+			"label": "Ein profunder und erholsamer Schlaf",
+			"actionId": "dream",
+			"requirements": {
+				"vitality": 1
+			},
+			"startdescription": "Heute Nacht träume ich von –",
+			"description": "Ich habe von gar nichts geträumt. Ich erwachte, streckte mich und erhob mich ohne Hast. Diese stillen Stunden haben mir neue Energie geschenkt.",
+			"warmup": 10
+		},
+		{
+			"id": "dreamglimmering",
+			"label": "Träume von Kuriosa hinter Glas",
+			"actionId": "dream",
+			"requirements": {
+				"glimmering": 1
+			},
+			"startdescription": "Heute Nacht träume ich von einem Museum.",
+			"description": "In den Schaukästen des unmöglichen Museums sehe ich immer einen Apfel, weiß wie Schnee und hart wie Marmor. Ein goldener Käfer einer strengen Schatulle. Eine neckische Geometrie, die von mir berührt werden will. Ein schwarzer Umschlag, der vor Frühling birst. Eine Opernkiste aus Messing für Messinstrumente. Ein Sturm in einer Büchse. Ich erwache immer, bevor ich das Ende des Gangs sehe.",
+			"warmup": 10
+		},
+		{
+			"id": "nightmarecleansingdawn",
+			"label": "Alptraum: Die läuternde Dämmerung",
+			"actionId": "dream",
+			"requirements": {
+				"fascination": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "nightmarecleansingdawnsuccess",
+					"chance": 30
+				}
+			],
+			"startdescription": "Die Sonne geht auf. Sie wird mich nicht schonen.",
+			"description": "Nun kann ich meine Haut ablösen, Stück für Stück, die Sehnen freilegen, als würde ich mir Fasern zwischen den Zähnen herausholen. Meine Haut liegt da wie eine zerfetzte Decke. Die Sonne hievt sich mit einem triumphalen Kriegsgebrüll über den Horizont. Das Licht fällt wie Säure auf meine nackten Knochen. Die Pein weckt mich auf. Meine Knochen werden noch Tage pochen.",
+			"warmup": 10
+		},
+		{
+			"id": "nightmarecleansingdawnsuccess",
+			"actionId": "dream",
+			"effects": {
+				"influencelanternc": 1
+			},
+			"description": "Nun kann ich meine Haut ablösen, Stück für Stück, die Sehnen freilegen, als würde ich mir Fasern zwischen den Zähnen herausholen. Meine Haut liegt da wie eine zerfetzte Decke. Die Sonne hievt sich mit einem triumphalen Kriegsgebrüll über den Horizont. Das Licht fällt wie Säure auf meine nackten Knochen. Die Pein wird mich wecken und meine Knochen werden noch Tage pochen, doch die Worte der Sonne sind in mein Gebein eingraviert."
+		},
+		{
+			"id": "nightmarehersault",
+			"label": "Hersaults Alptraum",
+			"actionId": "dream",
+			"requirements": {
+				"dread": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "nightmarehersaultsuccess",
+					"chance": 30
+				}
+			],
+			"startdescription": "Abwärts geht es mit mir.",
+			"description": "Ich weiß noch, dass Hersault davon geschrieben hat. Ich habe Bodenbretter hochgestemmt und mich darunter geschlängelt. Nun werde ich unter ihnen zusammengedrückt wie eine versteckte Leiche. Die Luft stinkt nach heißem Staub. Mein Mund ist voller Splitter. Diesmal habe ich nicht gelernt, was ich zu lernen gehofft hatte – was immer das auch gewesen sein mochte.",
+			"warmup": 10
+		},
+		{
+			"id": "nightmarehersaultsuccess",
+			"label": "Hersaults Alptraum",
+			"actionId": "dream",
+			"effects": {
+				"influenceknockc": 1
+			},
+			"description": "Ich habe Bodenbretter hochgestemmt und mich darunter geschlängelt. Nun werde ich unter ihnen zusammengedrückt wie eine versteckte Leiche. Die Luft stinkt nach heißem Staub. Mein Mund ist voller Splitter. Doch dies ist nun der Raum darunter."
+		}
+	]
+}

@@ -1,0 +1,199 @@
+{
+    "elements": [
+        {
+            "id": "investigator1",
+            "label": "韦克菲尔德督察",
+            "aspects": {
+                "hunter": 1,
+                "mortal": 1,
+                "meticulous": 1,
+                "grim": 1
+            },
+            "description": "扎迦利·韦克菲尔德（意为醒时之境）：一名悒悒不乐却又冷酷无情的督察警官。他最近被借调到了防剿局。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "killhunter": "corpse",
+                "derangemortal": "zachary_r_c",
+                "capturehunter": "investigator1prisoner",
+                "dissolution": "influencewintere"
+            }
+        },
+        {
+            "id": "investigator2",
+            "label": "斯宾塞·霍布森",
+            "aspects": {
+                "hunter": 1,
+                "mortal": 1,
+                "mystic": 1,
+                "erratic": 1
+            },
+            "description": "霍布森当过记者，私家侦探和——时间极短的——教士。现在他是防剿局的一名干员。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "killhunter": "corpse",
+                "derangemortal": "spencer_r_c",
+                "capturehunter": "investigator2prisoner",
+                "dissolution": "influenceknocke"
+            }
+        },
+        {
+            "id": "investigator3",
+            "label": "康妮·李",
+            "aspects": {
+                "hunter": 1,
+                "mortal": 1,
+                "tenacious": 1,
+                "mystic": 1
+            },
+            "description": "女继承人，女性参政论者兼冒险家。她最近把她那堂吉诃德式的热忱和大笔财富投入到为防剿局办事中。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "killhunter": "corpse",
+                "derangemortal": "connie_r_c",
+                "capturehunter": "investigator3prisoner",
+                "dissolution": "influenceedgee"
+            }
+        },
+        {
+            "id": "investigator4",
+            "label": "纳塔丽娅·龙博士",
+            "aspects": {
+                "hunter": 1,
+                "mortal": 1,
+                "idealist": 1,
+                "meticulous": 1
+            },
+            "description": "她在分析多重历史时遭到嘲笑，被排挤出了学术界，这却让她变得更加坚定。她现在在和防剿局协作。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "killhunter": "corpse",
+                "derangemortal": "natalia_r_c",
+                "capturehunter": "investigator4prisoner",
+                "dissolution": "influencelanterne"
+            }
+        },
+        {
+            "id": "defaulthunter",
+            "label": "讨人嫌的警探",
+            "aspects": {
+                "hunter": 1,
+                "mortal": 1
+            },
+            "description": "这位绅士更愿意独自跟他的烟斗和《伦敦新闻画报》待在一起，但是不行，<i>显然</i>哪里冒出来了些讨厌鬼需要人像逮疯狗一样去逮他们，而且<i>显然</i>其他人都没功夫去做。",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "killhunter": "corpse",
+                "derangemortal": "douglas_r",
+                "capturehunter": "defaulthunterprisoner",
+                "dissolution": "influenceforgec"
+            }
+        },
+        {
+            "id": "investigator1prisoner",
+            "label": "韦克菲尔德督察：俘获！",
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "winter": 4
+            },
+            "description": "扎迦利·韦克菲尔德：一名悒悒不乐却又冷酷无情的督察警官。让我们确保他死在牢中。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "zachary_r_c",
+                "dissolution": "influencewintere"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse"
+        },
+        {
+            "id": "investigator2prisoner",
+            "label": "斯宾塞·霍布森：俘获！",
+            "aspects": {
+                "prisoner": 1,
+                "mortal": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "knock": 3
+            },
+            "description": "霍布森当过记者，私家侦探和——时间极短的——教士。让我们确保他死在牢中。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "spencer_r_c",
+                "dissolution": "influenceknocke"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse"
+        },
+        {
+            "id": "investigator3prisoner",
+            "label": "康妮·李：俘获！",
+            "aspects": {
+                "prisoner": 1,
+                "mortal": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "edge": 3
+            },
+            "description": "女继承人，女性参政论者兼冒险家。让我们确保她死在牢中。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "connie_r_c",
+                "dissolution": "influenceedgee"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse"
+        },
+        {
+            "id": "investigator4prisoner",
+            "label": "纳塔丽娅·龙博士：俘获！",
+            "aspects": {
+                "prisoner": 1,
+                "mortal": 1,
+                "lantern": 5,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "她在分析多重历史时遭到嘲笑，被排挤出了学术界，这却让她变得更加坚定。让我们确保她死在牢中。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "natalia_r_c",
+                "dissolution": "influencelanterne"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse"
+        },
+        {
+            "id": "defaulthunterprisoner",
+            "label": "讨人嫌的警探：俘获！",
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 5,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "这位绅士更愿意独自跟他的烟斗和《伦敦新闻画报》待在一起，不过如今他给关进了某个倒霉的地洞里。",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "douglas_r",
+                "capturehunter": "defaulthunterprisoner",
+                "dissolution": "influenceforgec"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse"
+        }
+    ]
+}

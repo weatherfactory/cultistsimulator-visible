@@ -1,0 +1,1074 @@
+{
+    "elements": [
+        {
+            "id": "influenceedge",
+            "label": "A Thrilling Air",
+            "aspects": {
+                "edge": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Edge influences to intensify them. Study how it's affected by Winter influence to subvert it, instead.",
+                    "required": {
+                        "influenceedge": 1,
+                        "influencewinter": 1,
+                        "dread": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentedgec": 1,
+                        "fragmentedged": 1,
+                        "fragmentedgee": 1,
+                        "fragmentedgef": 1,
+                        "fragmentedgeg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "The senses are sharpened. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceedgec"
+            }
+        },
+        {
+            "id": "influenceedgec",
+            "label": "A Rousing Air",
+            "aspects": {
+                "edge": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Edge influences to intensify them. Study how it's affected by Winter influence to subvert it, instead.",
+                    "required": {
+                        "influenceedgec": 1,
+                        "influencewinterc": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentedgec": 1,
+                        "fragmentedged": 1,
+                        "fragmentedgee": 1,
+                        "fragmentedgef": 1,
+                        "fragmentedgeg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "The passions are roused. [A sixth-order influence: the signs are unmistakable. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceedgee"
+            },
+            "decayTo": "influenceedge"
+        },
+        {
+            "id": "influenceedgee",
+            "label": "A Furious Air",
+            "aspects": {
+                "edge": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Edge influences to intensify them. Study how it's affected by Winter influence to subvert it, instead.",
+                    "required": {
+                        "influenceedgee": 1,
+                        "influencewintere": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentedgec": 1,
+                        "fragmentedged": 1,
+                        "fragmentedgee": 1,
+                        "fragmentedgef": 1,
+                        "fragmentedgeg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "Anger is implicit in every shape. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceedgeg"
+            },
+            "decayTo": "influenceedgec"
+        },
+        {
+            "id": "influenceedgeg",
+            "label": "A Resolution",
+            "aspects": {
+                "edge": 15,
+                "influence": 1
+            },
+            "description": "Who can avert the finality of battle? [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "decayTo": "influenceedgee"
+        },
+        {
+            "id": "influenceforge",
+            "label": "A Rising Heat",
+            "aspects": {
+                "forge": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Forge influences to intensify them. Study how it's affected by Edge influence to subvert it, instead.",
+                    "required": {
+                        "influenceforge": 1,
+                        "influenceedge": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentforgec": 1,
+                        "fragmentforged": 1,
+                        "fragmentforgee": 1,
+                        "fragmentforgef": 1,
+                        "fragmentforgeg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "A haze and a shimmer. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceforgec"
+            }
+        },
+        {
+            "id": "influenceforgec",
+            "label": "A Trembling Heat",
+            "aspects": {
+                "forge": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Forge influences to intensify them. Study how it's affected by Edge influence to subvert it, instead.",
+                    "required": {
+                        "influenceforgec": 1,
+                        "influenceedgec": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentforgec": 1,
+                        "fragmentforged": 1,
+                        "fragmentforgee": 1,
+                        "fragmentforgef": 1,
+                        "fragmentforgeg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "The possibility of sparks. [A sixth-order influence: the signs are unmistakable. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceforgee"
+            },
+            "decayTo": "influenceforge"
+        },
+        {
+            "id": "influenceforgee",
+            "label": "An Exalting Heat",
+            "aspects": {
+                "forge": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Forge influences to intensify them. Study how it's affected by Edge influence to subvert it, instead.",
+                    "required": {
+                        "influenceforgee": 1,
+                        "influenceedgee": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentforgec": 1,
+                        "fragmentforged": 1,
+                        "fragmentforgee": 1,
+                        "fragmentforgef": 1,
+                        "fragmentforgeg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "This is the aura at the volcano's edge. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceforgeg"
+            },
+            "decayTo": "influenceforgec"
+        },
+        {
+            "id": "influenceforgeg",
+            "label": "An Incandescence",
+            "aspects": {
+                "forge": 15,
+                "influence": 1
+            },
+            "description": "Change follows fire. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "decayTo": "influenceforgee"
+        },
+        {
+            "id": "influencegrail",
+            "label": "An Awareness of Appetite",
+            "aspects": {
+                "grail": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Grail influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",
+                    "required": {
+                        "influencegrail": 1,
+                        "influencemoth": 1,
+                        "glimmering": 1,
+                        "glimmeringplus": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentgrailc": 1,
+                        "fragmentgraild": 1,
+                        "fragmentgraile": 1,
+                        "fragmentgrailf": 1,
+                        "fragmentgrailg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "Every sense is heightened; every sensation, deepened. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencegrailc"
+            }
+        },
+        {
+            "id": "influencegrailc",
+            "label": "An Urgency of Appetite",
+            "aspects": {
+                "grail": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Grail influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",
+                    "required": {
+                        "influencegrailc": 1,
+                        "influencemothc": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentgrailc": 1,
+                        "fragmentgraild": 1,
+                        "fragmentgraile": 1,
+                        "fragmentgrailf": 1,
+                        "fragmentgrailg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "It is difficult to control oneself. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencegraile"
+            },
+            "decayTo": "influencegrail"
+        },
+        {
+            "id": "influencegraile",
+            "label": "An Imperative of Appetite",
+            "aspects": {
+                "grail": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Grail influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",
+                    "required": {
+                        "influencegraile": 1,
+                        "influencemothe": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentgrailc": 1,
+                        "fragmentgraild": 1,
+                        "fragmentgraile": 1,
+                        "fragmentgrailf": 1,
+                        "fragmentgrailg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "The lips ache to savour; the fingers ache to clutch. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencegrailg"
+            },
+            "decayTo": "influencegrailc"
+        },
+        {
+            "id": "influencegrailg",
+            "label": "An Incarnadescence",
+            "aspects": {
+                "grail": 15,
+                "influence": 1
+            },
+            "description": "The very air is succulent with possibility. Pierce it, and it might bleed. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "decayTo": "influencegraile"
+        },
+        {
+            "id": "influenceheart",
+            "label": "Trembling Airs",
+            "aspects": {
+                "heart": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Heart influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",
+                    "required": {
+                        "influenceheart": 1,
+                        "influencegrail": 1,
+                        "vitality": 1,
+                        "vitalityplus": 1,
+                        "contentment": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentheartc": 1,
+                        "fragmentheartd": 1,
+                        "fragmenthearte": 1,
+                        "fragmentheartf": 1,
+                        "fragmentheartg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "The toes tap. All is brisk and all is well. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceheartc"
+            },
+            "decayTo": "vitality"
+        },
+        {
+            "id": "influenceheartc",
+            "label": "Pulsing Airs",
+            "aspects": {
+                "heart": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Heart influences to intensify them. Study how it's affected by Grail influence to subvert it, instead.",
+                    "required": {
+                        "influenceheartc": 1,
+                        "influencegrailc": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentheartc": 1,
+                        "fragmentheartd": 1,
+                        "fragmenthearte": 1,
+                        "fragmentheartf": 1,
+                        "fragmentheartg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "A rising power; a reassuring energy. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencehearte"
+            },
+            "decayTo": "influenceheart"
+        },
+        {
+            "id": "influencehearte",
+            "label": "Pounding Airs",
+            "aspects": {
+                "heart": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Heart influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",
+                    "required": {
+                        "influencehearte": 1,
+                        "influencegraile": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentheartc": 1,
+                        "fragmentheartd": 1,
+                        "fragmenthearte": 1,
+                        "fragmentheartf": 1,
+                        "fragmentheartg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "The heart moves; the world moves. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceheartg"
+            },
+            "decayTo": "influenceheartc"
+        },
+        {
+            "id": "influenceheartg",
+            "label": "An Imminence",
+            "aspects": {
+                "heart": 15,
+                "influence": 1
+            },
+            "description": "The sky is a drum; the earth is ready for its ecstasy. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "decayTo": "influencehearte"
+        },
+        {
+            "id": "sicknessprotection",
+            "label": "A Stay of Execution",
+            "description": "All flesh fails. But I've been promised that my flesh will fail a little later. [This is a final insurance against sickness, if no Health remains to you.]",
+            "lifetime": 600,
+            "decayTo": "influenceheart"
+        },
+        {
+            "id": "influenceknock",
+            "label": "Subtle Flaw",
+            "aspects": {
+                "knock": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "With enough pressure, the skin of the world will tear. Add any influence to subvert it to a higher level Knock influence.",
+                    "actionid": "study",
+                    "required": {
+                        "influenceedge": 1,
+                        "influenceforge": 1,
+                        "influencegrail": 1,
+                        "influenceheart": 1,
+                        "influenceknock": 1,
+                        "influencelantern": 1,
+                        "influencemoth": 1,
+                        "influencewinter": 1,
+                        "erudition": 1,
+                        "glimmering": 1,
+                        "vitality": 1,
+                        "eruditionplus": 1,
+                        "glimmeringplus": 1,
+                        "vitalityplus": 1
+                    }
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentknockc": 1,
+                        "fragmentknockd": 1,
+                        "fragmentknocke": 1,
+                        "fragmentknockf": 1,
+                        "fragmentknockg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "Laces uncoil -- windows swing open -- locks move as if oiled. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceknockc"
+            }
+        },
+        {
+            "id": "influenceknockc",
+            "label": "Subtle Fracture",
+            "aspects": {
+                "knock": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "With enough pressure, the skin of the world will tear. Add any matching influence to subvert it to a higher level Knock influence.",
+                    "actionid": "study",
+                    "required": {
+                        "influenceedgec": 1,
+                        "influenceforgec": 1,
+                        "influencegrailc": 1,
+                        "influenceheartc": 1,
+                        "influenceknockc": 1,
+                        "influencelanternc": 1,
+                        "influencemothc": 1,
+                        "influencewinterc": 1
+                    }
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentknockc": 1,
+                        "fragmentknockd": 1,
+                        "fragmentknocke": 1,
+                        "fragmentknockf": 1,
+                        "fragmentknockg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "Clouds part -- walls creak -- old wounds ache. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceknocke"
+            },
+            "decayTo": "influenceknock"
+        },
+        {
+            "id": "influenceknocke",
+            "label": "Subtle Rupture",
+            "aspects": {
+                "knock": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "With enough pressure, the skin of the world will tear. Add any matching influence to subvert it to a higher level Knock influence.",
+                    "actionid": "study",
+                    "required": {
+                        "influenceedgee": 1,
+                        "influenceforgee": 1,
+                        "influencegraile": 1,
+                        "influencehearte": 1,
+                        "influenceknocke": 1,
+                        "influencelanterne": 1,
+                        "influencemothe": 1,
+                        "influencewintere": 1
+                    }
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentknockc": 1,
+                        "fragmentknockd": 1,
+                        "fragmentknocke": 1,
+                        "fragmentknockf": 1,
+                        "fragmentknockg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "Geometry contorts -- doors burst open -- snakes boil from the earth! [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceknockg"
+            },
+            "decayTo": "influenceknockc"
+        },
+        {
+            "id": "influenceknockg",
+            "label": "Wrong Door",
+            "aspects": {
+                "knock": 15,
+                "influence": 1
+            },
+            "description": "There is a Door that should not open, and even now its hinges are roused -- [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "decayTo": "influenceknocke"
+        },
+        {
+            "id": "influencelantern",
+            "label": "A Consciousness of Radiance",
+            "aspects": {
+                "lantern": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",
+                    "required": {
+                        "influencelantern": 1,
+                        "influenceforge": 1,
+                        "erudition": 1,
+                        "eruditionplus": 1,
+                        "fascination": 1,
+                        "contentment": 1,
+                        "fleeting": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentlanternc": 1,
+                        "fragmentlanternd": 1,
+                        "fragmentlanterne": 1,
+                        "fragmentlanternf": 1,
+                        "fragmentlanterng": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "There is a light behind the world, a light above the Mansus, a light that penetrates both glass and skin. It is present here. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.  If unused, it will become Fascination.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencelanternc"
+            },
+            "decayTo": "fascination"
+        },
+        {
+            "id": "influencelanternc",
+            "label": "An Intensity of Radiance",
+            "aspects": {
+                "lantern": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",
+                    "required": {
+                        "influencelanternc": 1,
+                        "influenceforgec": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentlanternc": 1,
+                        "fragmentlanternd": 1,
+                        "fragmentlanterne": 1,
+                        "fragmentlanternf": 1,
+                        "fragmentlanterng": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "Light dews the skin and suffuses the air. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencelanterne"
+            },
+            "decayTo": "influencelantern"
+        },
+        {
+            "id": "influencelanterne",
+            "label": "A Blaze of Radiance",
+            "aspects": {
+                "lantern": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",
+                    "required": {
+                        "influencelanterne": 1,
+                        "influenceforgee": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentlanternc": 1,
+                        "fragmentlanternd": 1,
+                        "fragmentlanterne": 1,
+                        "fragmentlanternf": 1,
+                        "fragmentlanterng": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "Every colour has grown bright as new dye, but now all of them begin to bleed towards white. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencelanterng"
+            },
+            "decayTo": "influencelanternc"
+        },
+        {
+            "id": "influencelanterng",
+            "label": "A Splendour",
+            "aspects": {
+                "lantern": 15,
+                "influence": 1
+            },
+            "lifetime": 60,
+            "description": "Cover your eyes, if you like. It will serve no purpose. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
+            "decayTo": "influencelanterne"
+        },
+        {
+            "id": "influencemoth",
+            "label": "A Buzzing in the Brain",
+            "aspects": {
+                "moth": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Moth influences to intensify them. Study how it's affected by Lantern influence to subvert it, instead.",
+                    "required": {
+                        "influencemoth": 1,
+                        "influencelantern": 1,
+                        "erudition": 1,
+                        "eruditionplus": 1,
+                        "glimmering": 1,
+                        "glimmeringplus": 1,
+                        "fascination": 1,
+                        "fleeting": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentmothc": 1,
+                        "fragmentmothd": 1,
+                        "fragmentmothe": 1,
+                        "fragmentmothf": 1,
+                        "fragmentmothg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "in gi rum imus noc te et con sumi <b>snip snip snip</b> [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencemothc"
+            },
+            "decayTo": "restlessness"
+        },
+        {
+            "id": "influencemothc",
+            "label": "A Rattling in the Soul",
+            "aspects": {
+                "moth": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Moth influences to intensify them. Study how it's affected by Lantern influence to subvert it, instead.",
+                    "required": {
+                        "influencemothc": 1,
+                        "influencelanternc": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentmothc": 1,
+                        "fragmentmothd": 1,
+                        "fragmentmothe": 1,
+                        "fragmentmothf": 1,
+                        "fragmentmothg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "Oh the friends that we played and the skins that we made; still they drive us! [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencemothe"
+            },
+            "decayTo": "influencemoth"
+        },
+        {
+            "id": "influencemothe",
+            "label": "A Howling in the Heart",
+            "aspects": {
+                "moth": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Moth influences to intensify them. Study how it's affected by Lantern influence to subvert it, instead.",
+                    "required": {
+                        "influencemothe": 1,
+                        "influencelanterne": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentmothc": 1,
+                        "fragmentmothd": 1,
+                        "fragmentmothe": 1,
+                        "fragmentmothf": 1,
+                        "fragmentmothg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "Emotions contort our thoughts. One passion yields to the next like leaves in the wind's grip! [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencemothg"
+            },
+            "decayTo": "influencemothc"
+        },
+        {
+            "id": "influencemothg",
+            "label": "That Old Yearning",
+            "aspects": {
+                "moth": 15,
+                "influence": 1
+            },
+            "description": "\"\r\n    please\"",
+            "lifetime": 60,
+            "decayTo": "influencemothe"
+        },
+        {
+            "id": "influencewinter",
+            "label": "A Chilly Atmosphere",
+            "aspects": {
+                "winter": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Winter influences to intensify them. Study how it's affected by Heart influence to subvert it, instead.",
+                    "required": {
+                        "influencewinter": 1,
+                        "influenceheart": 1,
+                        "vitality": 1,
+                        "vitalityplus": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentwinterc": 1,
+                        "fragmentwinterd": 1,
+                        "fragmentwintere": 1,
+                        "fragmentwinterf": 1,
+                        "fragmentwinterg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "A peculiar chill lingers in my rooms. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencewinterc"
+            },
+            "decayTo": "dread"
+        },
+        {
+            "id": "influencewinterc",
+            "label": "An Icy Atmosphere",
+            "aspects": {
+                "winter": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Winter influences to intensify them. Study how it's affected by Heart influence to subvert it, instead.",
+                    "required": {
+                        "influencewinterc": 1,
+                        "influenceheartc": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentwinterc": 1,
+                        "fragmentwinterd": 1,
+                        "fragmentwintere": 1,
+                        "fragmentwinterf": 1,
+                        "fragmentwinterg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "The air crisps the skin. Frost marks the glass. [A sixth-order influence: the signs are unmistakable. This can be used in some Rites to summon minions. If unused, it will become Dread.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencewintere"
+            },
+            "decayTo": "influencewinter"
+        },
+        {
+            "id": "influencewintere",
+            "label": "A Bitter Atmosphere",
+            "aspects": {
+                "winter": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study the correspondences of two matching Winter influences to intensify them. Study how it's affected by Heart influence to subvert it, instead.",
+                    "required": {
+                        "influencewintere": 1,
+                        "influencehearte": 1
+                    },
+                    "actionid": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "Knowledge",
+                    "description": "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+                    "required": {
+                        "fragmentwinterc": 1,
+                        "fragmentwinterd": 1,
+                        "fragmentwintere": 1,
+                        "fragmentwinterf": 1,
+                        "fragmentwinterg": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "Winter passes the clothes, passes the skin, nestles in the veins. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions. If unused, it will become Dread.]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencewinterg"
+            },
+            "decayTo": "influencewinterc"
+        },
+        {
+            "id": "influencewinterg",
+            "label": "Perfect Frost",
+            "aspects": {
+                "winter": 15,
+                "influence": 1
+            },
+            "description": "The world is still as ice. Each movement is a journey. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions. If unused, it will become Dread.]",
+            "lifetime": 60,
+            "decayTo": "influencewintere"
+        }
+    ]
+}

@@ -1,0 +1,155 @@
+{
+	"recipes": [
+		{
+			"id": "legacyphysicianwork",
+			"label": "Arbeit im Institut",
+			"actionId": "work",
+			"requirements": {
+				"legacyphysicianjob": 1
+			},
+			"effects": {
+				"funds": 2,
+				"legacyphysicianjob": -1,
+				"institutephysicianjob": 1,
+				"health": 1,
+				"reason": 3
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacyphysicianopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "#PREVIOUSCHARACTERNAME# war ein ... ein schwieriger Patient. Ich musste mir eine Auszeit nehmen, als das vorbei war.",
+			"description": "Ich bin früher fertig geworden. Der Direktor hat Verständnis gezeigt. Doch jetzt muss ich wieder in Vollzeit an die Arbeit.",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "legacyphysicianopenstudy",
+			"actionId": "study",
+			"label": "Notizen zum Fall von #PREVIOUSCHARACTERNAME#",
+			"startdescription": "Meine Aufzeichnungen quillen aus der Schreibtischschublade, in die ich sie gestopft hatte.",
+			"description": "Der Patient hat Dinge gesagt, die keine Bedeutung haben können. Das Haus ohne Mauern. Die geteilte Sonne. Das unsichtbare Licht. Doch wenn ich mich daran erinnere, wie er von jenem unsichtbaren Licht sprach, macht mein Herz einen Satz. Ich kann diese Aufzeichnungen nicht mehr länger ignorieren.\n[Die <b>Zeit</b> verstreicht nun.]",
+			"effects": {
+				"legacyphysiciannotes": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "needs",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "legacyphysicianstudynotes",
+			"actionId": "study",
+			"requirements": {
+				"legacyphysiciannotes": 1
+			},
+			"label": "Studium meiner Notizen zum Fall von #PREVIOUSCHARACTERNAME#",
+			"startdescription": "Als ich mit dem Lesen beginne, fällt mir die Wonne in den Augen des Patienten ein, die Musik in seiner Stimme, aber auch den Geruch des Zimmers, in dem er lag.",
+			"description": "Seltsam lichte Momente tauchen auf. Ich hätte fast diesen kuriosen Exkurs zu 'wie man auf Morland kommt' vergessen – doch jetzt wird mit klar, dass es 'wie man <i>zu</i> Morland kommt' war. Ich habe von dieser Morland gehört – sie handelt mit problematischen Büchern. \n Das übrige wirre Gerede – das bedeutet jetzt nicht mehr als damals. Wie kann ein Haus keine Mauern haben? Was ist das für ein Ruhm, nach dem er sich sehnte? Doch ich kann bereits die Träume spüren, wie sie mich im Traum erwarten.",
+			"effects": {
+				"legacyphysiciannotes": -1,
+				"mapbookdealer": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacyphysicianopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"comments": "The book dealer can be studied through the generic intro; there's a generic openexplore there",
+			"craftable": true
+		},
+		{
+			"id": "legacyphysicianopendream",
+			"actionId": "dream",
+			"label": "Das unsichtbare Licht",
+			"startdescription": "Im Schlaf bin ich ein knorriger Baum. Motten kriechen auf meiner Rinde. Die Dämmerung kommt, obwohl das Licht unsichtbar ist. Als sie mich berührt, straffe ich mich, um nach der Sonne zu greifen.",
+			"description": "Als ich erwache, ist mein Gesicht feucht von Freudentränen. Dieses Licht! Reiner als alles, was ich im wachenden Leben berühre. Doch ich habe gesehen, was diese Träume bei #PREVIOUSCHARACTERNAME# am Ende angerichtet haben. Es wäre weder weise noch sicher, ihnen zu folgen.",
+			"effects": {
+				"contentment": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacyphysicianhook",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "legacyphysicianhook",
+			"actionId": "hookplot",
+			"label": "Glaube?",
+			"startdescription": "Ich könnte den Träumen nachgeben. Doch sie <i>werden</i> meinen Verstand verschlingen.",
+			"description": ".",
+			"alternativerecipes": [
+				{
+					"id": "legacyphysicianhookfulfilment",
+					"chance": 100
+				}
+			],
+			"slots": [
+				{
+					"id": "Temptation",
+					"label": "Versuchung",
+					"required": {
+						"reason": 1
+					},
+					"consumes": true
+				}
+			],
+			"linked": [
+				{
+					"id": "legacyphysicianhook",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "legacyphysicianhookfulfilment",
+			"actionId": "hookplot",
+			"label": "Das Auge des Wächters",
+			"requirements": {
+				"reason": 1
+			},
+			"startdescription": "Der Wächter ist die Tür im Auge. Um mein eigenes Auge aufzuschließen, ist ein winziges Opfer nötig.",
+			"description": "Ich habe das Messer im Traum geführt. Der Schmerz ist da, doch selbst der Schmerz ist ein Wegweiser. Ich habe die Wunde verbunden. Ich werde denen sagen, dass das ein Unfall gewesen sei. Im Traum habe ich die Tür gesehen. Eines Tages, schon bald, werde ich durch sie hindurchgehen.",
+			"effects": {
+				"ascensionenlightenmenta": 1,
+				"passion": 1,
+				"fragmentknock": 1,
+				"fragmentlantern": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacyphysicianopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "legacyphysicianopentalk",
+			"label": "Verwandte Geister",
+			"actionId": "talk",
+			"startdescription": "Einer der Patienten im Institut hat auch ein verbundenes Auge. Eine selbst zugefügte Wunde, heißt es. Vielleicht unterhalten wir uns schon bald.",
+			"description": "Meine Wunde ist verheilt, und seine auch. Er versteht nicht, warum er das getan hat. Doch in jener Nacht hat er von mir geträumt. Wir sind miteinander verbunden.",
+			"deckeffect": {
+				"acquaintances": 1
+			},
+			"warmup": 60,
+			"craftable": false
+		}
+	]
+}

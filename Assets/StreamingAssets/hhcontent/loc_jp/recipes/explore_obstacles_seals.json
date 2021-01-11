@@ -1,0 +1,418 @@
+{
+	"recipes": [
+		{
+			"id": "explorevaultseal_hiddendoor_encounter",
+			"actionId": "explore",
+			"label": "隠し扉",
+			"startdescription": "ここに扉があるはずだが、灯りや開錠なしには扉は見つからない。",
+			"requirements": {
+				"seal_hiddendoor": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultseal_hiddendoor_highlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_highknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_midlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_midknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_lowlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_lowknock",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_highlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 10
+			},
+			"label": "光を照らす、見張り番に助けを乞う",
+			"startdescription": "ほぼ確実にこの隠し扉を見つけられるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_midlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 5
+			},
+			"label": "道を導く見張り番に助けを乞う",
+			"startdescription": "感覚が研ぎ澄まされた。隠し扉を見つけられるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_lowlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 1
+			},
+			"label": "無慈悲な見張り番に助けを乞う",
+			"startdescription": "光を灯して進む。隠し扉を見つけられるかもしれない。苦労はするだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_highknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 10
+			},
+			"label": "失われたものが見える浜辺の鴉に助けを乞う",
+			"startdescription": "我々には偉大な開放の力がある。ほぼ確実にこの隠し扉を見つけられるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_midknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 5
+			},
+			"label": "大地を開く浜辺の鴉に助けを乞う",
+			"startdescription": "我々は秘密の道を見つけることに長けている。この隠し扉も見つけられるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_lowknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 1
+			},
+			"label": "持ち主のいないものの持ち主である浜辺の鴉に助けを乞う",
+			"startdescription": "我々には開放の能力がある。隠し扉を見つけられるかもしれない。苦労はするだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_hiddendoor_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_success",
+			"actionId": "explore",
+			"label": "秘密の扉をくぐる道",
+			"startdescription": "石に薄っすらと描かれた線。圧力に屈した表面。見つけた！耳障りな音を立てて、埃を散らしながら、秘密の扉は動く。",
+			"description": ".",
+			"effects": {
+				"seal_hiddendoor": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultseal_hiddendoor_failure",
+			"actionId": "explore",
+			"label": "実りのない探索",
+			"startdescription": "どこだ？もっと灯りや開錠を使おう。",
+			"description": ".",
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_encounter",
+			"actionId": "explore",
+			"label": "守られた扉",
+			"startdescription": "この扉は長い間しっかりと封印されてきた。鍛造や開錠を使わない限り、我々でも開くことはできないだろう。",
+			"requirements": {
+				"seal_wardeddoor": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultseal_wardeddoor_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_highknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_midknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_lowforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_lowknock",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "すべての夜を終わらせる、日々の鍛造に助けを乞う",
+			"startdescription": "ほぼ確実にこの守られた扉を壊せるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "変らぬものを終わらせる、日々の鍛造に助けを乞う",
+			"startdescription": "道具の準備はできている。この守られた扉を開くことができるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "炎を作り直す、日々の鍛造に助けを乞う",
+			"startdescription": "鍛造の火の準備はできている。この守られた扉を開くことができるはずだが、簡単には終わらないだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_highknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 10
+			},
+			"label": "入り口の前で待っている角斧に助けを乞う",
+			"startdescription": "我々には偉大な開放の力がある。ほぼ確実にこの守られた扉を壊せるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_midknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 5
+			},
+			"label": "通行が許可されるべき時に通行を許可する、角斧に助けを乞う",
+			"startdescription": "我々は守られた道を暴くのに長けている。おそらく、この守られた扉を開くことができるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_lowknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 1
+			},
+			"label": "2本の刃を持つ角斧の助けを乞う",
+			"startdescription": "我々には開放の能力がある。この守られた扉を開くことができるはずだが、簡単には終わらないだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultseal_wardeddoor_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_success",
+			"actionId": "explore",
+			"label": "扉の死",
+			"startdescription": "すべての命が終わりを迎えるように、すべての扉は開かなくてはいけない。この扉は今日終わりを迎えたのだ。",
+			"description": ".",
+			"effects": {
+				"seal_wardeddoor": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultseal_wardeddoor_failure",
+			"actionId": "explore",
+			"label": "扉の目的",
+			"startdescription": "扉には2つの目的がある。開くことと、閉じたままであること。今日この扉は、2つ目の目的は忠実に守っている。",
+			"description": ".",
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		}
+	]
+}

@@ -17,14 +17,23 @@ namespace SecretHistories.Constants
 
         public const int CULTIST_STEAMWORKS_APP_ID = 718670;
 
+
         public const string CORE_FOLDER_NAME = "core";
         public const string LOC_FOLDER_TEMPLATE = "loc_[culture]";
         public const string LOC_TOKEN = "[culture]";
-
-        public const string CONTENT_FOLDER_NAME = "content";
         public static string LOC_FOLDER_NAME = "loc";
+
+        public const string DEFAULT_CONTENT_FOLDER_NAME = "content";
+        public const string CONTENT_FOLDER_NAME_KEY = "contentdir";
+
+        public const string DEFAULT_IMAGES_FOLDER_NAME = "images";
+        public const string IMAGES_FOLDER_NAME_KEY = "imagesdir";
+
+
         public const string DEFAULT_CULTURE_ID = "en";
         public const string CULTURE_SETTING_KEY = "Culture";
+
+        
 
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
         public const string TOKEN_LAST_DESIRE = "#LAST_DESIRE#";

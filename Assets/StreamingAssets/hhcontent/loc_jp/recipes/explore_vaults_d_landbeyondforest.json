@@ -1,0 +1,315 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultlandbeyondforest1_setup",
+			"label": "遠征の始まり：ロウソクの洞窟",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforest1": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"guardian_serpent": 1
+			},
+			"startdescription": "高い峠を通って洞窟へ登るのは危険だが、下の闇に潜むものは、もっと危険かもしれない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultlandbeyondforest2_setup",
+			"label": "遠征の始まり：ヴォイヴォダの城塞",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforest2": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1,
+				"guardian_dead": 1
+			},
+			"startdescription": "ヴォイヴォダの要塞は見つかりづらい。伝説が本当ならば、彼の犠牲者たちは要塞の壁の向こうで安らかに眠れないかもしれない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultlandbeyondforest3_setup",
+			"label": "遠征の始まり：グリューネヴァルトの常設サーカス",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforest3": 1
+			},
+			"effects": {
+				"guardian_watchers": 1,
+				"curse_nowhere": 1
+			},
+			"startdescription": "サーカスの人々は我々に対抗する準備ができている。我々は、サーカスの力がワームに触れられたのではないかと心配しだした。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultlandbeyondforest4_setup",
+			"label": "遠征の始まり：レヴェック塔",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforest4": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1,
+				"curse_affliction": 1
+			},
+			"startdescription": "残っているかもしれない宝物を探すにはかなりの労力を費やさなくてはいけないだろう。それに、本当にこの塔が高僧間の戦いで破壊したのなら、まだ危険なものが漂っている可能性がある。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultlandbeyondforest5_setup",
+			"label": "遠征の始まり：クスネツォフの寄贈建物",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforest5": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1,
+				"guardian_watchers": 1,
+				"peril_treacherousground": 1
+			},
+			"startdescription": "寄贈された建物までの道のりは長くはないが、徒歩で行くのは厳しい。3回も訪問の許可を求めて来たが、毎回あまり親切ではない回答を返された。今回も従業員たちが我々の訪問を禁じるだろう。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultlandbeyondforestdefault_setup",
+			"label": "遠征の始まり：フォックスリリー草原",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultlandbeyondforestdefault": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"guardian_watchers": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "山を抜けて高い草原まで向かうのは大変だろう。山の農民たちが我々を追いはらおうとするはずだ。無事に帰れたとしても、そこの幻影を振り払うのに苦労するかもしれない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultlandbeyondforest1_success",
+			"label": "光の巣",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforest1": 1
+			},
+			"effects": {
+				"vaultlandbeyondforest1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"influencelanternc",
+					"accountkanishkspidersdooraramaic",
+					"theskythesoularamaic",
+					"ingredientlanternf"
+				],
+				"draws": 4,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "洞窟の下のトンネルは大蛇の通り道となっていて滑らかだが、我々が提灯を持って来るまでは息が詰まるほど暗い。それなのに、大蛇が巣を作った部屋は驚くほど明るい。月明かりの代わりに、光り輝く菌類が空間を満たしていた。ロウソクは菌を追い払ったのではなく、むしろ引き寄せたのかもしれない。",
+			"description": "長い年月をかけて蛇の食事から集められた小さな宝の山。大蛇によって煌びやかな山に形作られたようだ。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultlandbeyondforest2_success",
+			"label": "空っぽの墓",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforest2": 1
+			},
+			"effects": {
+				"vaultlandbeyondforest2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"influencegrailc",
+					"gospelzacchaeusgreek",
+					"catalogueofunchartedpleasuresphrygian",
+					"bookofthronesphrygian",
+					"twentysixenticementsseventormentsfucine",
+					"toolheartd"
+				],
+				"draws": 6,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "ここがヴォイヴォードの霊廟だ。蜘蛛の巣が柔らかい灰色のカーテンのように垂れ下がっている。砂岩をくり抜い手作られた大きな石棺が奥の方に直立している。中には誰もいない。",
+			"description": "誰かが石棺の前に、小さな宝の山を供え物のように置いていった。埃の中には足跡が見つからない。誰が置いていったにせよ、ずっと前にここに来たのか、地面に触れずに通り過ぎたのだろう。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultlandbeyondforest3_success",
+			"label": "サーカスの後",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforest3": 1
+			},
+			"effects": {
+				"vaultlandbeyondforest3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"erudition",
+					"jumble",
+					"sunsetpassageslatin",
+					"historyofshadowlesskingsaramaic",
+					"ivorybookfucine",
+					"ingredientgrailf",
+					"textbooksanskrit"
+				],
+				"draws": 7,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "しま模様のテントの中では、汚れた濁ったガラスの向こうで怪しげな影が蠢いている。灰色のテントの中では、滴る霧がまるで狩りをしている猫のように我々を包み込んでいる――霧はまるで動物のようだ。星模様の黒いのテントの中では、美しい太陽系儀と彫刻の表面に宝石が散りばめられている。赤いテントでは、ガラスの棺に入った蝋人形の司祭が胸に本を抱えて横たわっている――",
+			"description": "赤色のテントは紙で溢れかえっている。サーカスの人々が、時間の解剖や昔の天候の解剖など、所狭しと図解の詰まった紙を貼り付けたようだ。ここは「名もなき場所」の匂いがする。去る前に燃やしたほうが良いだろう。テーブルの上には、トロフィーや記念品が無造作に積み上げられている。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultlandbeyondforest4_success",
+			"label": "待ちに待った結末",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforest4": 1
+			},
+			"effects": {
+				"vaultlandbeyondforest4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"furioustantrasanskrit",
+					"twinserpenttantrasanskrit",
+					"howendwillbeginvak",
+					"ingredientforgeb"
+				],
+				"draws": 4,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "塔の下には、スレートの壁にひびが入った狭い地下室があった。壁の長さと高さから判断すると、完璧な立方体のはずなのに、なぜか角が多すぎる。天井と壁の接合部には青い光が差し込んでいる。泡の表面のように、床がゆっくりとたわみ、踏みつけると足に響いた。下にはどんな空間があるのだろうか。",
+			"description": "本を袋にかき集め、塔の跡へと急ぎ足で向かう。空にはコバルトブルーのオーロラが浮かび、震えるような青い光が周囲の山々を覆っていた。出発すると、塔の棟石から甲高い歌声が鳴り響いた。空から雷が落ち、突然すべてが静かになる。塔の跡が消えた。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultlandbeyondforest5_success",
+			"label": "言葉の終わり",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforest5": 1
+			},
+			"effects": {
+				"vaultlandbeyondforest5": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"burningwomanphrygian",
+					"encirclingtantrasanskrit",
+					"knownunknowntantrasanskrit",
+					"ironbookfucine",
+					"silverbookfucine",
+					"matthiasamethystpursuitaramaic"
+				],
+				"draws": 6,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "数年前に図書館の天井が崩壊した。多くの本が水を滴らせて膨れ上がった泥となってしまった。残っているものがあるはずだ。",
+			"description": "黒い肌、明るい目、髪も眉毛もない、荒れ果てた図書館を見守る優しい笑顔の男性の肖像画。肖像画は「気にするな」と題されていて、サインは蛇が這ったような文字で書かれている。絵が剥がれてきている。棚の上の膨れた本の中から無傷の宝物を探している我々に、この絵は優しく微笑みかけてくれる。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultlandbeyondforestdefault_success",
+			"label": "花の栄養",
+			"actionId": "explore",
+			"requirements": {
+				"vaultlandbeyondforestdefault": 1
+			},
+			"effects": {
+				"vaultlandbeyondforestdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardsd": 3
+			},
+			"startdescription": "フォックスリリーの香りを和らげるために、アンモニアに布を浸して顔に巻いた。それでも頭は回りだし、体は相反する欲望に反応し始める。これが我々が探してた骨だ。奪って逃げよう。",
+			"description": "フォックスリリーリは洞窟の表面のように白く、霜のように白く、汚れのないシーツのように白い。目をそらすのは難しい。我々は、目を閉じて、もがきながら宝を持って逃げていく。",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "expeditionascensionheartd",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionmothd",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

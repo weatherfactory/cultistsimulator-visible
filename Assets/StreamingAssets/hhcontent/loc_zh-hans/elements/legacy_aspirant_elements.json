@@ -1,0 +1,40 @@
+{
+    "elements": [
+        {
+            "id": "bequestintro",
+            "label": "一份遗赠",
+            "aspects": {
+                "legacyplotitem": 1
+            },
+            "description": "包裹中夹着我通信者的遗嘱执行人留下的诡异书页。我必须以<b>理性</b>或以<b>激情</b>来<b>研究</b>它。",
+            "slots": [
+                {
+                    "id": "Approach",
+                    "label": "方式",
+                    "actionId": "study",
+                    "required": {
+                        "reason": 1,
+                        "passion": 1
+                    },
+                    "description": "我是一个委身激情的人，还是一个坚持理性的人？。"
+                }
+            ]
+        },
+        {
+            "id": "introjob",
+            "label": "卑微的雇工之职",
+            "description": "医院搬工之职，并不稳定。虽悲惨，却也是你当下唯一的选择。",
+            "aspects": {
+                "job": 1
+            }
+        },
+        {
+            "id": "contactintro",
+            "aspects": {
+                "legacyplotitem": 1
+            },
+            "label": "关于潜在合作者的笔记",
+            "description": "来信者记录了他对我的观察。他相信我有“潜能”。同样的，他也记录了他对另一个人的观察。经过一定的时间与学习，我应该能找出那人的下落。"
+        }
+    ]
+}

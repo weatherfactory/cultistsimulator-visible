@@ -1,0 +1,1248 @@
+{
+	"recipes": [
+		{
+			"id": "recruitindependentedge",
+			"label": "Rekrutiere einen Störenfried, indem du eine große Macht der Kante anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationedge": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"edge": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Der hier ist bereit, sich mir anzuschließen ... wenn ich ein Werkzeug als Zeichen meines Respekts abgebe. [Du musst ein Werkzeug abgeben, das so dauerhaft verloren geht.]",
+			"description": "Wir haben ein Messer für diesen Moment vorbereitet.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentforge",
+			"label": "Rekrutiere einen Störenfried, indem du eine große Macht der Schmiede anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationforge": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"forge": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Der hier ist bereit, sich mir anzuschließen ... wenn ich ein Werkzeug als Zeichen meines Respekts abgebe. [Du musst ein Werkzeug abgeben, das so dauerhaft verloren geht.]",
+			"description": "Das Feuer muss lodern, stark genug, um die Haut der Wächter zu versengen.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentgrail",
+			"label": "Rekrutiere einen Störenfried, indem du eine große Macht des Grals anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationgrail": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"grail": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Der hier ist bereit, sich mir anzuschließen ... wenn ich ein Werkzeug als Zeichen meines Respekts abgebe. [Du musst ein Werkzeug abgeben, das so dauerhaft verloren geht.]",
+			"description": "Wir werden vereint. Oh, ja, wir werden vereint.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentheart",
+			"label": "Rekrutiere einen Störenfried, indem du eine große Macht des Herzens anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationheart": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"heart": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Der hier ist bereit, sich mir anzuschließen ... wenn ich ein Werkzeug als Zeichen meines Respekts abgebe. [Du musst ein Werkzeug abgeben, das so dauerhaft verloren geht.]",
+			"description": "Nun beginnen wir das, was kein Ende hat.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentknock",
+			"label": "Rekrutiere einen Störenfried, indem du eine große Macht des Klopfens anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationknock": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"knock": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Der hier ist bereit, sich mir anzuschließen ... wenn ich ein Werkzeug als Zeichen meines Respekts abgebe. [Du musst ein Werkzeug abgeben, das so dauerhaft verloren geht.]",
+			"description": "Dies ist eine Öffnung, an die wir uns alle erinnern werden.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentlantern",
+			"label": "Rekrutiere einen Störenfried, indem du eine große Macht der Laterne anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationlantern": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"lantern": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Der hier ist bereit, sich mir anzuschließen ... wenn ich ein Werkzeug als Zeichen meines Respekts abgebe. [Du musst ein Werkzeug abgeben, das so dauerhaft verloren geht.]",
+			"description": "Ein großes Licht, dann eine große Finsternis.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentmoth",
+			"label": "Rekrutiere einen Störenfried, indem du eine große Macht der Motte anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationmoth": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"moth": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Der hier ist bereit, sich mir anzuschließen ... wenn ich ein Werkzeug als Zeichen meines Respekts abgebe. [Du musst ein Werkzeug abgeben, das so dauerhaft verloren geht.]",
+			"description": "Wir haben beide unsere Haut abgelegt.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitindependentwinter",
+			"label": "Rekrutiere einen Störenfried, indem du eine große Macht des Winters anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationwinter": 1,
+				"tool": 1,
+				"independent": 1,
+				"mortal": 1,
+				"resentment": -1,
+				"winter": 21
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1,
+				"tool": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Der hier ist bereit, sich mir anzuschließen ... wenn ich ein Werkzeug als Zeichen meines Respekts abgebe. [Du musst ein Werkzeug abgeben, das so dauerhaft verloren geht.]",
+			"description": "Diese Zeremonie braucht keine Worte.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintanceedge",
+			"label": "Rekrutiere eine Bekanntschaft, indem du die Kante anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationedge": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"edge": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Diese Person hier ist bereit.",
+			"description": "Bevor er die Worte spricht, muss der Novize ein Messer so wetzen, dass es einen schwebenden Faden durchtrennen kann. Ist es nicht scharf genug, macht es die Sache nur schlimmer.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintanceforge",
+			"label": "Rekrutiere eine Bekanntschaft, indem du die Schmiede anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationforge": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"forge": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Diese Person hier ist bereit.",
+			"description": "Die Zeremonie verlangt nach einer Verbrennung. Nur nach einer kleinen, doch das Mal wird ein Leben lang bleiben.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintancegrail",
+			"label": "Rekrutiere eine Bekanntschaft, indem du den Gral anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationgrail": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"grail": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Diese Person hier ist bereit.",
+			"description": "Sie wird das Aroma nicht vergessen, das ich ihr verliehen habe.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintanceheart",
+			"label": "Rekrutiere eine Bekanntschaft, indem du das Herz anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationheart": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"heart": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Diese Person hier ist bereit.",
+			"description": "Die Zeremonie ist so widerhallend wie Donner in einer Kirche. Ich kenne sie gut. Ich habe sie selbst verfasst.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintanceknock",
+			"label": "Rekrutiere eine Bekanntschaft, indem du das Klopfen anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationknock": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"knock": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Diese Person hier ist bereit.",
+			"description": "Nur eine kleine Wunde. Gerade genug, um die Mächte des Öffnens zu ehren.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintancelantern",
+			"label": "Rekrutiere eine Bekanntschaft, indem du die Laterne anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationlantern": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"lantern": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Diese Person hier ist bereit.",
+			"description": "Ein Dutzend Lichter gleißt. In diesen ist kein Platz für Schatten, und kein Platz für Gnade.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintancemoth",
+			"label": "Rekrutiere eine Bekanntschaft, indem du die Motte anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationmoth": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"moth": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Diese Person hier ist bereit.",
+			"description": "Die Motte häutet sich. Der Novize braucht nur seine Kleidung abzulegen – und seine Vergangenheit.",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "recruitacquaintancewinter",
+			"label": "Rekrutiere eine Bekanntschaft, indem du den Winter anrufst",
+			"actionId": "talk",
+			"requirements": {
+				"venerationwinter": 1,
+				"acquaintance": 1,
+				"follower": -1,
+				"mortal": 1,
+				"winter": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"recruiting": 1
+			},
+			"startdescription": "Diese Person hier ist bereit.",
+			"description": "Ich werde nur und exakt neun Wörter sagen. Der Novize wird überhaupt nichts sagen. ",
+			"warmup": 30,
+			"craftable": true,
+			"burnimage": "freemasons"
+		},
+		{
+			"id": "promotetodiscipleedge",
+			"label": "Einen Gläubigen durch Anrufen der Kante befördern",
+			"actionId": "talk",
+			"requirements": {
+				"venerationedge": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"edge": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "Mein Anhänger wird als Novize niederknien und sich als Initiierter erheben. Ich werde die nötigen Schwüre selbst sprechen.",
+			"description": "'Meine Narben sind Waffen. Durch das Streben erhebe ich mich zum Siege. Es gibt keine Niederlage außer der Vernichtung. Im Lichte der Hellen Kante erkennen wir uns selbst. Ich begebe mich in den Dienst des Stärksten.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodiscipleforge",
+			"label": "Einen Gläubigen durch Anrufen der Schmiede befördern",
+			"actionId": "talk",
+			"requirements": {
+				"venerationforge": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"forge": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "Mein Anhänger wird als Novize niederknien und sich als Initiierter erheben. Ich werde die nötigen Schwüre selbst sprechen.",
+			"description": "'Ich bin vernichtet. Ich bin neu erschaffen.  Nun versenge ich meine Haut, und anhand jener Male soll man mich kennen. Ich weihe mich der Flamme und werde vor keiner Neuerschaffung zurückschrecken.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodisciplegrail",
+			"label": "Einen Gläubigen durch Anrufen des Grals befördern",
+			"actionId": "talk",
+			"requirements": {
+				"venerationgrail": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"grail": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "Mein Anhänger wird als Novize niederknien und sich als Initiierter erheben. Ich werde die nötigen Schwüre selbst sprechen.",
+			"description": "Im Schmerze werden wir geboren. Im Hunger werden wir umarmt. In der Wonne werden wir verschlungen. Dies sind die Tore des Leibes, und dies ist das Versprechen: nicht alles, das geboren wird, verfällt. Im Gedenken an jenes Versprechen geben wir uns dem Gelage hin.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodiscipleheart",
+			"label": "Einen Gläubigen durch Anrufen des Herzens befördern",
+			"actionId": "talk",
+			"requirements": {
+				"venerationheart": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"heart": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "Mein Anhänger wird als Novize niederknien und sich als Initiierter erheben. Ich werde die nötigen Schwüre selbst sprechen.",
+			"description": "'Wir überlassen unseren Mund dem Donner. Wir überlassen unsere Füße dem Tanz. Wir überlassen unsere Haut der Nacht. Wir enden nicht. Wir enden nicht. Wir enden nicht.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodiscipleknock",
+			"label": "Einen Gläubigen durch Anrufen des Klopfens befördern",
+			"actionId": "talk",
+			"requirements": {
+				"venerationknock": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"knock": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "Mein Anhänger wird als Novize niederknien und sich als Initiierter erheben. Ich werde die nötigen Schwüre selbst sprechen.",
+			"description": "'Ihr, die Fleisch war, biete ich meine Wunden dar. Ihr, die Stein war, biete ich diesen Moment dar, in dem sich mein altes Ich von meinem neuen trennt. Ihr, die aus dem Lichte kam, biete ich meine Geheimnisse dar. Die Tür ist geöffnet.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodisciplelantern",
+			"label": "Einen Gläubigen durch Anrufen der Laterne befördern",
+			"actionId": "talk",
+			"requirements": {
+				"venerationlantern": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"lantern": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "Mein Anhänger wird als Novize niederknien und sich als Initiierter erheben. Ich werde die nötigen Schwüre selbst sprechen.",
+			"description": "'Er navigiert. Nun bist du die Karte. Er erleuchtet. Du warst die Finsternis. Er ist nicht barmherzig. Er wird keine Barmherzigkeit zeigen. Unser Kompass ist das Wissen und unser Kurs ist der Ruhm.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodisciplemoth",
+			"label": "Einen Gläubigen durch Anrufen der Motte befördern",
+			"actionId": "talk",
+			"requirements": {
+				"venerationmoth": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"moth": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "Mein Anhänger wird als Novize niederknien und sich als Initiierter erheben. Ich werde die nötigen Schwüre selbst sprechen.",
+			"description": "'Nun die Schere, dann das Messer. Nun das Holz, dann die Knochen. Nun das Flattern des Mondes, nun das Sprenkeln der Seele. Er war das Blut und so werden auch wir es sein.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promotetodisciplewinter",
+			"label": "Einen Gläubigen durch Anrufen des Winters befördern",
+			"actionId": "talk",
+			"requirements": {
+				"venerationwinter": 1,
+				"follower": 1,
+				"disciple": -1,
+				"independent": -1,
+				"mortal": 1,
+				"winter": 7
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"startdescription": "Mein Anhänger wird als Novize niederknien und sich als Initiierter erheben. Ich werde die nötigen Schwüre selbst sprechen.",
+			"description": "'Nun vergießt du dein Blut wie das Blut der Sonne vergossen wurde. Nun ist deine Vergangenheit von deiner Zukunft getrennt, wie auch der Wolf geteilt wurde. Du wurdest nicht geboren. Dein Dienst kann nur in Auflösung enden. Erhebe dich, in Stille.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_edge",
+			"label": "Versuchen, einen Jünger zu einem Meuchelmörder zu erhöhen",
+			"actionId": "talk",
+			"requirements": {
+				"cultedge_1": 1,
+				"follower": 1,
+				"edge": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_edge": 1
+			},
+			"startdescription": "Nur einige wenige – die sich am besten als Diener unserer Mysterien eignen – können einen solchen Rang erreichen.",
+			"description": "'Wie der Löwenschmied vor dem Oberst kniete, so knie ich nun. Mein Dienst endet mit dem Tode, oder mit der Auflösung unserer Stärke.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_forge",
+			"label": "Versuchen, einen Jünger zu einem Umformer zu erhöhen",
+			"actionId": "talk",
+			"requirements": {
+				"cultforge_1": 1,
+				"follower": 1,
+				"forge": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_forge": 1
+			},
+			"startdescription": "Nur einige wenige – die sich am besten als Diener unserer Mysterien eignen – können einen solchen Rang erreichen.",
+			"description": "'Ich bin Hammer und Amboss. Ich bin die Berührung des Feuers und der Segen des Eisens. Ich weihe mich der letzten Feuersbrunst.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_grail",
+			"label": "Versuchen, einen Jünger zu einem Cyprian zu erhöhen",
+			"actionId": "talk",
+			"requirements": {
+				"cultgrail_1": 1,
+				"follower": 1,
+				"grail": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_grail": 1
+			},
+			"startdescription": "Nur einige wenige – die sich am besten als Diener unserer Mysterien eignen – können einen solchen Rang erreichen.",
+			"description": "'Bei Kupfer und Krähe, bei Ihr, nach der wir hungern und die nach uns hungert, weihe ich mich, sowohl Schmausender als auch Schmaus zu sein. Ich werde verzehrt werden und werden verzehren.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_heart",
+			"label": "Versuchen, einen Jünger zu einem Tarantellisten zu erhöhen",
+			"actionId": "talk",
+			"requirements": {
+				"cultheart_1": 1,
+				"follower": 1,
+				"heart": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_heart": 1
+			},
+			"startdescription": "Nur einige wenige – die sich am besten als Diener unserer Mysterien eignen – können einen solchen Rang erreichen.",
+			"description": "'Bei Pinie und Messer, bei Trommel und Kreis, gelobe ich, den Tanz anzuführen, der niemals endet. Dies ist mein Dienst, doch am Ende ist es nur der Tanz, dem ich diene.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_knock",
+			"label": "Versuchen, einen Jünger zu einem Schlüssel zu erhöhen",
+			"actionId": "talk",
+			"requirements": {
+				"cultknock_1": 1,
+				"follower": 1,
+				"knock": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_knock": 1
+			},
+			"startdescription": "Nur einige wenige – die sich am besten als Diener unserer Mysterien eignen – können einen solchen Rang erreichen.",
+			"description": "'Kein Schloss bleibt. Keine Tür bleibt. Kein Tor bleibt. Keine Wand bleibt. Keine Festung wird mir verschlossen. Kein Land verbietet mich. Kein Gesetz bindet mich, außer dem Gesetz der Mutter. Ich bin ein Schlüssel, und dies ist mein Zweck.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_lantern",
+			"label": "Versuchen, einen Jünger zu einem Seher zu erhöhen",
+			"actionId": "talk",
+			"requirements": {
+				"cultlantern_1": 1,
+				"follower": 1,
+				"lantern": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_lantern": 1
+			},
+			"startdescription": "Nur einige wenige – die sich am besten als Diener unserer Mysterien eignen – können einen solchen Rang erreichen.",
+			"description": "'Ich gelobe, den Weg für Willige und Unwillige zu erleuchten. Ich gelobe zu navigieren. Ich gelobe zu erleuchten. Ich gelobe, keine Gnade zu kennen. Ich werde auf dem Pfade wandeln, der mir gewiesen wird, was auch der Preis sei.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_moth",
+			"label": "Versuchen, einen Jünger zu einem Zwicker zu erhöhen",
+			"actionId": "talk",
+			"requirements": {
+				"cultmoth_1": 1,
+				"follower": 1,
+				"moth": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_moth": 1
+			},
+			"startdescription": "Nur einige wenige – die sich am besten als Diener unserer Mysterien eignen – können einen solchen Rang erreichen.",
+			"description": "'Dies war meine Vergangenheit, doch nun bin ich gewandelt. Dies sind meine Gewänder, die ich ablege. Hier ist meine Haut, doch sie ist mir nur geliehen. Hier ist mein Name, doch er ist nur eine Augenbinde. Hier ist der Forst, wo wir das Licht würgen. Hier war ich, und hier bin ich nicht.'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "promoteto_d_winter",
+			"label": "Versuchen, einen Jünger zu erhöhen",
+			"actionId": "talk",
+			"requirements": {
+				"venerationwinter": 1,
+				"venerationedge": -1,
+				"venerationforge": -1,
+				"venerationgrail": -1,
+				"venerationheart": -1,
+				"venerationlantern": -1,
+				"venerationknock": -1,
+				"venerationmoth": -1,
+				"follower": 1,
+				"winter": 21,
+				"exalted": -1,
+				"potential": 1
+			},
+			"effects": {
+				"ingredient": -1,
+				"influence": -1
+			},
+			"aspects": {
+				"promotionto_d_winter": 1
+			},
+			"startdescription": "Nur einige wenige – die sich am besten als Diener unserer Mysterien eignen – können einen solchen Rang erreichen.",
+			"description": "'...?' '...?' '...?'\n\n'...'",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "recruitacquaintanceclue",
+			"label": "Eine Bekanntschaft rekrutieren?",
+			"actionId": "talk",
+			"requirements": {
+				"society": 1,
+				"mortal": 1,
+				"follower": -1
+			},
+			"startdescription": "Diese Person könnte bereit für die nächste Stufe sein, wenn ich etwas mehr bieten kann.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "cultfoundation",
+			"label": "Grundprinzipien wählen",
+			"alternativerecipes": [
+				{
+					"id": "cultfoundationedge",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationforge",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationgrail",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationheart",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationknock",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationlantern",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationmoth",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationsecrethistories",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationwinter",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationwinter.prealzabo",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundationwinter.alzabo",
+					"chance": 100
+				}
+			],
+			"actionId": "cult",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Doctrine",
+					"label": "Doktrin",
+					"required": {
+						"lore": 1
+					},
+					"description": "Was suchen wir?"
+				}
+			],
+			"startdescription": "Tradition und Zwang – alt, neu oder beides zusammen. [Füge Wissen hinzu, um die Grundprinzipien deines Kults festzulegen.]",
+			"description": "",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "cultfoundation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationedge",
+			"label": "Kirche der Hellen Kante begründen",
+			"actionId": "establishcult",
+			"requirements": {
+				"edge": 1
+			},
+			"effects": {
+				"cultedge_1": 1
+			},
+			"startdescription": "Eine okkulte Gesellschaft, die sich den Stunden des Kampfes und der Eroberung gewidmet hat.",
+			"linked": [
+				{
+					"id": "cultfoundation_health",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationforge",
+			"label": "Unverzagten Orden begründen",
+			"actionId": "establishcult",
+			"requirements": {
+				"forge": 1
+			},
+			"effects": {
+				"cultforge_1": 1
+			},
+			"startdescription": "Eine okkulte Gesellschaft, die sich dem Feuer, das wandelt und neu erschafft, gewidmet hat.",
+			"linked": [
+				{
+					"id": "cultfoundation_health",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationgrail",
+			"label": "Orden des Blutigen Kelches begründen",
+			"actionId": "establishcult",
+			"requirements": {
+				"grail": 1
+			},
+			"effects": {
+				"cultgrail_1": 1
+			},
+			"startdescription": "Eine okkulte Gesellschaft, die sich den Mysterien der Geburt, des Blutes und des Appetits gewidmet hat.",
+			"linked": [
+				{
+					"id": "cultfoundation_passion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationheart",
+			"label": "Rastlosen Tempel begründen",
+			"actionId": "establishcult",
+			"requirements": {
+				"heart": 1
+			},
+			"effects": {
+				"cultheart_1": 1
+			},
+			"startdescription": "Eine okkulte Gesellschaft, die sich dem Paukenschlag gewidmet hat, der niemals enden kann.",
+			"linked": [
+				{
+					"id": "cultfoundation_passion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationknock",
+			"label": "Gesellschaft der Gebenedeiten Wunde begründen",
+			"actionId": "establishcult",
+			"requirements": {
+				"knock": 1
+			},
+			"effects": {
+				"cultknock_1": 1
+			},
+			"startdescription": "Eine okkulte Gesellschaft, die sich den Stunden gewidmet hat, die Türen öffnen.",
+			"linked": [
+				{
+					"id": "cultfoundation_health",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationlantern",
+			"label": "Spiegel des Ruhms begründen ",
+			"actionId": "establishcult",
+			"requirements": {
+				"lantern": 1
+			},
+			"effects": {
+				"cultlantern_1": 1
+			},
+			"startdescription": "Eine okkulte Gesellschaft, die sich dem Verständnis des Lichts gewidmet hat, das von einem wilderen Orte durchscheint.",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationmoth",
+			"label": "Wildwald-Klub begründen",
+			"actionId": "establishcult",
+			"requirements": {
+				"moth": 1
+			},
+			"effects": {
+				"cultmoth_1": 1
+			},
+			"startdescription": "Eine okkulte Gesellschaft, die sich dem Chaos und den unerwarteten Stunden gewidmet hat.",
+			"linked": [
+				{
+					"id": "cultfoundation_passion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationsecrethistories",
+			"label": "Gesellschaft von St. Hydra begründen",
+			"actionId": "establishcult",
+			"requirements": {
+				"secrethistories": 1
+			},
+			"effects": {
+				"cultsecrethistories_1": 1
+			},
+			"startdescription": "Eine okkulte Gesellschaft, die sich dem Studium der fünf Historien und ihrer tausend demi-realen Zweige gewidmet hat.",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationwinter",
+			"label": "Kinder der Stille begründen ",
+			"actionId": "establishcult",
+			"requirements": {
+				"winter": 1
+			},
+			"effects": {
+				"cultwinter_1": 1
+			},
+			"startdescription": "Eine okkulte Gesellschaft, die sich der Stille gewidmet hat, die kommt, und der Kälte, die endet.",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationwinter.prealzabo",
+			"label": "Türme der Taube begründen",
+			"actionId": "establishcult",
+			"requirements": {
+				"prealzabo": 1
+			},
+			"effects": {
+				"cultwinter_2": 1
+			},
+			"startdescription": "Eine okkulte Gesellschaft, die sich allem gewidmet hat, das verloren ging, und dem, was noch zurückkehren könnte.",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundationwinter.alzabo",
+			"label": "Türme der Taube begründen",
+			"actionId": "establishcult",
+			"requirements": {
+				"alzabo": 1
+			},
+			"effects": {
+				"cultwinter_2": 1
+			},
+			"startdescription": "Eine okkulte Gesellschaft, die sich allem gewidmet hat, das verloren ging, und dem, was noch zurückkehren könnte.",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_health",
+			"label": "Ein Opfer der Pein",
+			"actionId": "establishcult",
+			"requirements": {
+				"injury": -1
+			},
+			"slots": [
+				{
+					"id": "Health",
+					"label": "Meine Gesundheit",
+					"required": {
+						"health": 1
+					},
+					"description": "Ich muss von mir geben, um der Macht zu huldigen, der wir dienen."
+				}
+			],
+			"aspects": {
+				"damagehealth": 1
+			},
+			"warmup": 30,
+			"startdescription": "Die Stunde, der wir dienen werden, verlangt nach Pein. Ich muss von mir geben.",
+			"description": "",
+			"linked": [
+				{
+					"id": "cultfoundation_fatigue",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundation_health",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundation_firstrecruit",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_fatigue",
+			"label": "Ein Opfer der Pein",
+			"requirements": {
+				"fatigue": 1
+			},
+			"actionId": "establishcult",
+			"aspects": {
+				"damagehealth": 1
+			},
+			"comments": "most explicit way to resolve the damagehealth/injury/ingredient/fatigue society/cult inconsistency",
+			"linked": [
+				{
+					"id": "cultfoundation_firstrecruit",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_reason",
+			"label": "Eine schreckliche Klarheit",
+			"actionId": "establishcult",
+			"requirements": {
+				"concentration": -1
+			},
+			"slots": [
+				{
+					"id": "Reason",
+					"label": "Mein Verstand",
+					"required": {
+						"reason": 1
+					},
+					"description": "Ich muss von mir geben, um der Macht zu huldigen, der wir dienen."
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 30,
+			"startdescription": "Unser Ziel verlangt es, dass wir Wahrheiten anerkennen, die den Geist erschaudern lassen. Ich muss von mir geben.",
+			"description": "",
+			"linked": [
+				{
+					"id": "cultfoundation_reason",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundation_firstrecruit",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_passion",
+			"label": "Ein Schwur der Hingabe",
+			"actionId": "establishcult",
+			"requirements": {
+				"passionexhausted": -1
+			},
+			"slots": [
+				{
+					"id": "Passion",
+					"label": "Meine Leidenschaft",
+					"required": {
+						"passion": 1
+					},
+					"description": "Ich muss von mir geben, um der Macht zu huldigen, der wir dienen."
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 30,
+			"startdescription": "Die Stunde, der wir dienen, verlangt, dass unsere Leidenschaft in ihrem Dienste steht. Ich muss von mir geben.",
+			"description": "",
+			"linked": [
+				{
+					"id": "cultfoundation_passion",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundation_firstrecruit",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_firstrecruit",
+			"label": "Mein erster Rekrut",
+			"actionId": "establishcult",
+			"requirements": {
+				"follower": -1
+			},
+			"slots": [
+				{
+					"id": "Recruit",
+					"label": "Mein erster Rekrut",
+					"required": {
+						"acquaintance": 1
+					},
+					"forbidden": {
+						"independent": 1,
+						"prisoner": 1,
+						"hunter": 1,
+						"patron": 1,
+						"hireling": 1
+					},
+					"description": "Jemand, der bereit ist."
+				}
+			],
+			"warmup": 30,
+			"startdescription": "Ein Kult mit nur einem Mitglied ist nur eine ungewöhnliche Angewohnheit. Ich muss einen Rekruten haben.",
+			"aspects": {
+				"recruiting": 1
+			},
+			"linked": [
+				{
+					"id": "cultfoundation_firstrecruit",
+					"chance": 100
+				},
+				{
+					"id": "cultfoundation_complete",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cultfoundation_complete",
+			"label": "UNSER AUFSTIEG BEGINNT.",
+			"actionId": "establishcult",
+			"effects": {
+				"hq.temporary": 1
+			},
+			"description": "Ich habe meinen Kult begründet. Dies ist ein Schritt hin zu größerer Macht. [Benutze deinen Kult, um Anhänger zu gewinnen und zu befördern. Sprich mit Anhängern über deinen Kult, um sie für den Kult loszuschicken.]"
+		}
+	]
+}

@@ -204,7 +204,7 @@ namespace SecretHistories.Constants.Modding
             return mod;
         }
         
-        var candidateContentFolder = Path.Combine(modFolder, NoonConstants.CONTENT_FOLDER_NAME);
+        var candidateContentFolder = Path.Combine(modFolder, NoonConstants.DEFAULT_CONTENT_FOLDER_NAME);
 
         if (!Directory.Exists(candidateContentFolder))
         {

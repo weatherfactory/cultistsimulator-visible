@@ -1,0 +1,643 @@
+{
+	"recipes": [
+		{
+			"id": "suspicion",
+			"label": "Die falsche Art von Aufmerksamkeit",
+			"actionId": "suspicion",
+			"requirements": {
+				"seasonsuspicion": 1
+			},
+			"slots": [
+				{
+					"id": "Suspicion",
+					"label": "Ein Gegner?",
+					"required": {
+						"hunter": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Die Stadt ist voller Journalisten, Detektive und anderer Schnüffler. Wie lange werden die mich wohl in Ruhe lassen?",
+			"description": "Für den Moment bin ich in Sicherheit. Die Schnüffler müssen sich für etwas anderes interessieren. Eine Erleichterung.",
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "suspiciongrabreputation",
+					"chance": 100
+				},
+				{
+					"id": "suspiciontrycreatehunter",
+					"chance": 70
+				}
+			]
+		},
+		{
+			"id": "suspiciongrabreputation",
+			"label": "Nach Hinweisen suchen ...",
+			"actionId": "suspicion",
+			"requirements": {
+				"hunter": 1
+			},
+			"startdescription": "Ein Gegner stellt bohrende Fragen zu meinen Aktivitäten.",
+			"description": "",
+			"slots": [
+				{
+					"id": "Clues",
+					"label": "Hinweise",
+					"required": {
+						"reputation": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "suspicion_searchlongerforevidence",
+					"chance": 100
+				},
+				{
+					"id": "suspiciongrabevidence",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "suspiciongrabevidence",
+			"actionId": "suspicion",
+			"label": "Die Beweise auswerten ...",
+			"startdescription": "Hat ein Jäger Berüchtigtsein entdeckt, wird er versuchen, damit Beweise zu erzeugen oder zu verbessern. Ist er Akkurat, hat er immer Erfolg. Ist er Launisch, wird er eher scheitern ... doch gelegentlich kann er auch ohne Berüchtigtsein noch Beweise erzeugen.",
+			"description": "Für den Moment bin ich in Sicherheit. Mein Gegner hat nicht genug Beweise in der Hand, um mich anklagen zu können, und er hat keine neuen Hinweise gefunden.",
+			"slots": [
+				{
+					"id": "Evidence",
+					"label": "Beweise",
+					"required": {
+						"evidenceb": 1,
+						"evidence": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "suspicionpretrial",
+					"chance": 100
+				},
+				{
+					"id": "suspicionerratic_alwaysfail",
+					"chance": 10
+				},
+				{
+					"id": "suspicionpromoteevidencemeticulous",
+					"chance": 100
+				},
+				{
+					"id": "suspicionpromoteevidence",
+					"chance": 70
+				},
+				{
+					"id": "suspicioncreateevidencemeticulous",
+					"chance": 100
+				},
+				{
+					"id": "suspicioncreateevidence",
+					"chance": 70
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "suspicionerratic_alwayssucceed",
+					"chance": 10
+				}
+			]
+		},
+		{
+			"id": "suspicionerratic_alwaysfail",
+			"actionId": "suspicion",
+			"label": "Kuriose Gewohnheiten",
+			"requirements": {
+				"erratic": 1,
+				"reputation": 1
+			},
+			"startdescription": "Mein Gegner legt ein exzentrisches Verhalten an den Tag. [Dies geschieht nur gelegentlich.]",
+			"description": "Hat mein Gegner mit einem Musikinstrument geübt anstatt seine Ermittlungen voranzutreiben? Pfeile nach einer Korkscheibe geworfen? Oder einfach nur sehr lange Nickerchen gehalten? Die Berichte sind inkonsistent, aber sein Verhalten ja auch. Er hat keine Fortschritte gemacht.",
+			"effects": {
+				"reputation": -1
+			}
+		},
+		{
+			"id": "suspicionerratic_alwayssucceed",
+			"actionId": "suspicion",
+			"label": "Verblüffende Erfolge",
+			"requirements": {
+				"erratic": 1,
+				"reputation": -1
+			},
+			"effects": {
+				"notoriety": 1
+			},
+			"startdescription": "Einem Gerücht zufolge konsultiert mein Gegner das Orakel des I Ching. Ein anderes lautet, dass er in Träumen nach Antworten sucht. Noch ein anderes lautet, dass er seine Fragen durch Würfeln bestimmt. Er hat Beweise gefunden, wo es keine Beweise hätte geben sollen. [Dies geschieht nur gelegentlich.]",
+			"linked": [
+				{
+					"id": "suspicionpromoteevidence",
+					"chance": 100
+				},
+				{
+					"id": "suspicioncreateevidence",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "suspicion_searchlongerforevidence",
+			"actionId": "suspicion",
+			"requirements": {
+				"mystique": 1
+			},
+			"label": "Die Gefahren der Bekanntheit",
+			"startdescription": "Meine Mystik hat die Aufmerksamkeit dieses Jägers auf sich gezogen. Noch kann er nichts beweisen, doch er wird jetzt noch länger suchen.",
+			"effects": {
+				"mystique": -1
+			},
+			"slots": [
+				{
+					"id": "Clues",
+					"label": "Hinweise",
+					"required": {
+						"reputation": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "suspicion_searchlongerforevidence",
+					"chance": 100
+				},
+				{
+					"id": "suspiciongrabevidence",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "suspicionpromoteevidencemeticulous",
+			"actionId": "suspicion",
+			"label": "Erdrückende Beweise erschaffen",
+			"requirements": {
+				"evidence": 1,
+				"reputation": 1,
+				"meticulous": 1
+			},
+			"linked": [
+				{
+					"id": "suspicionpromoteevidence",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "suspicionpromoteevidence",
+			"actionId": "suspicion",
+			"requirements": {
+				"evidence": 1,
+				"reputation": 1
+			},
+			"label": "Erdrückende Beweise erschaffen",
+			"startdescription": "Dieser Jäger verpasst seinen Ermittlungen den Feinschliff.",
+			"description": "Wenn das jemals vor Gericht geht, bin ich ernstlich in Gefahr. Selbst wenn dieser Jäger beseitigt wird, könnte ein anderer seine Aufzeichnungen finden.",
+			"effects": {
+				"evidence": -1,
+				"evidenceb": 1,
+				"reputation": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "suspicioncreateevidencemeticulous",
+			"actionId": "suspicion",
+			"label": "Hinweise in Beweise ummünzen",
+			"requirements": {
+				"reputation": 1,
+				"meticulous": 1
+			},
+			"linked": [
+				{
+					"id": "suspicioncreateevidence",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "suspicioncreateevidence",
+			"actionId": "suspicion",
+			"requirements": {
+				"reputation": 1
+			},
+			"label": "Hinweise in Beweise ummünzen",
+			"startdescription": "Gerüchte hocken auf den Dächern und flattern durch die Gosse. Dieser Jäger macht Fortschritte bei seinen Ermittlungen.",
+			"description": "Ich bin mir ziemlich sicher, dass mein Gegner eine Kopie seiner Aufzeichnungen noch woanders hat – bei seinem Anwalt, seinem Vorgesetzten oder sogar bei jemandem von der Presse. Das macht mir Sorge.",
+			"effects": {
+				"reputation": -1,
+				"evidence": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "suspiciontrycreatehunter",
+			"label": "Die neugierige Minderheit",
+			"actionId": "suspicion",
+			"startdescription": "Die falsche Art von Bekanntheit kann das Interesse der Neugierigen wecken, der Puritaner oder der Rachsüchtigen. [Das Ansehen kann einen Gegner auftauchen lassen.]",
+			"slots": [
+				{
+					"id": "Clues",
+					"label": "Hinweise",
+					"required": {
+						"reputation": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "suspicioncreatefirsthunter",
+					"chance": 100
+				},
+				{
+					"id": "suspicioncreatehunter",
+					"chance": 100
+				}
+			],
+			"description": "Meine Name ist, für den Moment, reingewaschen. Alle Wächter bleiben in den Schatten.",
+			"effects": {
+				"contentment": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "suspicioncreatefirsthunter",
+			"actionId": "suspicion",
+			"label": "Ein Gegner!",
+			"requirements": {
+				"reputation": 1
+			},
+			"startdescription": "Jemand schnüffelt hier herum.",
+			"description": "Da gibt es immer jemanden, der nichts versteht oder zu viel versteht. Dieser Störenfried könnte danach trachten, Beweise für meine Aktivitäten mit den Behörden zu teilen.",
+			"effects": {
+				"reputation": -1,
+				"defaulthunter": 1
+			},
+			"maxexecutions": 1,
+			"warmup": 0
+		},
+		{
+			"id": "suspicioncreatehunter",
+			"actionId": "suspicion",
+			"label": "Ein Gegner!",
+			"requirements": {
+				"reputation": 1
+			},
+			"startdescription": "Jemand schnüffelt hier herum.",
+			"description": "Da gibt es immer jemanden, der nichts versteht oder zu viel versteht. Dieser Störenfried könnte danach trachten, Beweise für meine Aktivitäten mit den Behörden zu teilen.",
+			"deckeffect": {
+				"hunters": 1
+			},
+			"effects": {
+				"reputation": -1
+			},
+			"warmup": 0
+		},
+		{
+			"id": "suspicionpretrial",
+			"label": "Das Dezernat prüft meinen Fall",
+			"actionId": "suspicion",
+			"requirements": {
+				"evidenceb": 1
+			},
+			"startdescription": "Mein Gegner hat das Dezernat für Unterdrückung dazu gebracht, meinen Fall zu prüfen. Das Dezernat verfolgt die etwas weniger üblichen Kriminellen – die Kriminellen, deren Verbrechen es vielleicht nur im Traume gibt.",
+			"description": ".",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "suspicion_attemptmitigation_me",
+					"chance": 30
+				},
+				{
+					"id": "suspicion_questionfollower",
+					"chance": 100
+				}
+			],
+			"burnimage": "beforetrial"
+		},
+		{
+			"id": "suspicion_questionme",
+			"label": "Ich komme vor Gericht!",
+			"actionId": "suspicion",
+			"startdescription": "Das Dezernat für Unterdrückung hat mich zum Verhör bestellt.",
+			"description": ".",
+			"craftable": false,
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_me"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "suspicion_questionfollower",
+			"label": "Ein Prozess!",
+			"actionId": "suspicion",
+			"slots": [
+				{
+					"id": "Suspect",
+					"label": "Verdächtiger",
+					"required": {
+						"follower": 1,
+						"independent": 1
+					},
+					"forbidden": {
+						"summoned": 1,
+						"hireling": 1
+					},
+					"description": "Das Dezernat lechzt nach Verdächtigen.",
+					"greedy": true
+				}
+			],
+			"startdescription": "Das Dezernat für Unterdrückung sucht nach einem meiner Partner, um ihn zu verhören. Wenn die niemanden finden können, bin ich direkt an der Reihe.",
+			"description": ".",
+			"craftable": false,
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_follower"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_rival"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_me"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "suspicion_attemptmitigation_me",
+			"actionId": "suspicion",
+			"label": "Das Dezernat für Unterdrückung bringt mich vor Gericht!",
+			"startdescription": "Es gibt Verbrechen, die der Staat nicht offen anerkennt. Eines davon wird mir zur Last gelegt. Das Dezernat für Unterdrückung hält seine Verfahren hinter verschlossenen Tüten ab, und es kennt keine Gnade. Wenn ich keinen Kontakt zu meinem Vorteil nutzen kann, riskiere ich Gefängnis!",
+			"description": ".",
+			"slots": [
+				{
+					"id": "favour",
+					"label": "Ein Gefallen",
+					"required": {
+						"favour": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_favourused"
+				},
+				{
+					"chance": 70,
+					"id": "suspicion_meimprisoned"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_meexonerated"
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "suspicion_attemptmitigation_follower",
+			"label": "Das Dezernat für Unterdrückung bringt einen Partner vor Gericht!",
+			"actionId": "suspicion",
+			"requirements": {
+				"follower": 1
+			},
+			"startdescription": "Es gibt Verbrechen, die der Staat nicht offen anerkennt. Meinem Partner wird eines davon zur Last gelegt. Das Dezernat für Unterdrückung hält seine Verfahren hinter verschlossenen Tüten ab, und es kennt keine Gnade. Wenn ich keinen Kontakt zu meinem Vorteil nutzen kann, könnte ich meinen Partner für immer verlieren ... ",
+			"description": ".",
+			"slots": [
+				{
+					"id": "favour",
+					"label": "Ein Gefallen",
+					"required": {
+						"favour": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_favourused"
+				},
+				{
+					"chance": 70,
+					"id": "suspicion_followerimprisoned"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_followerexonerated"
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "suspicion_attemptmitigation_rival",
+			"label": "Das Dezernat für Unterdrückung bringt einen Rivalen vor Gericht!",
+			"actionId": "suspicion",
+			"requirements": {
+				"independent": 1
+			},
+			"startdescription": "Es gibt Verbrechen, die der Staat nicht offen anerkennt. Meinem Rivalen wird eines davon zur Last gelegt. Das Dezernat für Unterdrückung hält seine Verfahren hinter verschlossenen Tüten ab, und es kennt keine Gnade. Dies könnte das Ende für meinen Rivalen sein ... wobei ich versuchen könnte, noch einzuschreiten.",
+			"description": ".",
+			"slots": [
+				{
+					"id": "favour",
+					"label": "Ein Gefallen",
+					"required": {
+						"favour": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_favourused"
+				},
+				{
+					"chance": 70,
+					"id": "suspicion_rivalimprisoned"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_rivalexonerated"
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "suspicion_favourused",
+			"actionId": "suspicion",
+			"label": "Ein Verbündeter in den Schatten",
+			"requirements": {
+				"favour": 1
+			},
+			"effects": {
+				"favour": -1
+			},
+			"startdescription": "Ich habe bei jemand Bekanntem einen Gefallen eingefordert. Wahrscheinlich kann ich mich so schützen, doch nichts ist sicher.",
+			"description": ".",
+			"warmup": 30,
+			"linked": [
+				{
+					"chance": 70,
+					"id": "suspicion_followerexonerated"
+				},
+				{
+					"chance": 70,
+					"id": "suspicion_meexonerated"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_favourused_failure"
+				}
+			]
+		},
+		{
+			"id": "suspicion_favourused_failure",
+			"actionId": "suspicion",
+			"label": "Nicht genug!",
+			"startdescription": "Ich habe alle Register gezogen, die ich nur ziehen kann, und es hat nicht gereicht. Das Dezernat kennt keine Gnade. Wenn ich noch einen Kontakt habe, könnte ich ihn vielleicht nutzen. Ansonsten müssen wir im Prozess auf das Beste hoffen.",
+			"description": ".",
+			"warmup": 30,
+			"linked": [
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_follower"
+				},
+				{
+					"chance": 100,
+					"id": "suspicion_attemptmitigation_me"
+				}
+			]
+		},
+		{
+			"id": "suspicion_followerimprisoned",
+			"actionId": "suspicion",
+			"label": "Ein Sieg für das Dezernat",
+			"description": "Mein Partner wurde in einem Gefängnis weggesperrt, wo Besuche nicht gestattet sind, und selbst der Termin der Entlassung ist äußerst vage. Die Gelüste des Dezernats sind für den Moment befriedigt, doch was hat man dort wirklich erfahren?",
+			"aspects": {
+				"investigatingsetback": 1
+			},
+			"effects": {
+				"follower": -1
+			}
+		},
+		{
+			"id": "suspicion_meimprisoned",
+			"actionId": "suspicion",
+			"label": "Ein Sieg für das Dezernat",
+			"startdescription": "Ich wurde für schuldig befunden! All meine Pläne sind nun am Ende. Ich muss mich wappnen.",
+			"description": ".",
+			"warmup": 10,
+			"signalEndingFlavour": "Melancholy",
+			"ending": "arrest"
+		},
+		{
+			"id": "suspicion_followerexonerated",
+			"actionId": "suspicion",
+			"requirements": {
+				"follower": 1
+			},
+			"label": "Der Zorn des Dezernats",
+			"startdescription": "Mein Partner wurde entlastet! Die Beweise waren nicht überzeugend genug für eine Verurteilung, und er kann gehen ... aber vielleicht hegt man nun einen Groll gegen mich. Das Dezernat ist für den Augenblick in die Schranken gewiesen.",
+			"aspects": {
+				"investigatingsetback": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "suspicion_meexonerated",
+			"actionId": "suspicion",
+			"label": "Der Zorn des Dezernats",
+			"startdescription": "Ich bin entlastet worden! Die Beweise waren nicht überzeugend genug für eine Verurteilung, und ich kann gehen.",
+			"requirements": {
+				"follower": -1
+			},
+			"aspects": {
+				"evidencelevel": -1
+			}
+		},
+		{
+			"id": "suspiciontrial",
+			"comments": "Here for legacy compatibility",
+			"actionId": "suspicion",
+			"description": "VERHAFTUNG!",
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "suspicionpretrial",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "suspicion_rivalimprisoned",
+			"actionId": "suspicion",
+			"label": "Ein Sieg für das Dezernat",
+			"description": "Mein Rivale wird das Tageslicht nicht wieder sehen. Die Gelüste des Dezernats sind für den Moment befriedigt, doch was hat man dort wirklich erfahren?",
+			"aspects": {
+				"investigatingsetback": 1
+			},
+			"effects": {
+				"independent": -1
+			}
+		},
+		{
+			"id": "suspicion_rivalexonerated",
+			"actionId": "suspicion",
+			"requirements": {
+				"independent": 1
+			},
+			"label": "Der Zorn des Dezernats",
+			"startdescription": "Mein Rivale wurde entlastet! Die Beweise waren nicht überzeugend genug für eine Verurteilung, und er kann gehen ... aber vielleicht hegt er nun einen Groll gegen mich wegen seiner Entbehrungen.",
+			"aspects": {
+				"investigatingsetback": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "scapegoat",
+			"actionId": "suspicion",
+			"comments": "Here for legacy compatibility",
+			"warmup": 0
+		}
+	]
+}

@@ -1,0 +1,1522 @@
+{
+    "recipes": [
+        {
+            "id": "explorevaultguardian_serpent_encounter",
+            "actionId": "explore",
+            "label": "幼妹：巨蛇",
+            "startdescription": "巨蛇摆动着硕大的头，紧紧地盯着我们。没有<b>刃</b>和<b>启</b>，我们无法战胜它。",
+            "requirements": {
+                "guardian_serpent": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultguardian_serpent_highknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_serpent_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_serpent_midknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_serpent_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_serpent_lowknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_serpent_lowedge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_highedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 10
+            },
+            "label": "我们的力量无人能及。",
+            "startdescription": "目若汽灯，鳞似墨玉。巨蛇乃是强敌，但我们势不可挡。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_edge",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_midedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 5
+            },
+            "label": "我们的力量不容小觑。",
+            "startdescription": "目似汽灯，齿若石笋。巨蛇乃是强敌，但我们于之亦如是。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_edge",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_lowedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 1
+            },
+            "label": "我们的力量不足。",
+            "startdescription": "目似汽灯，口若血盆。我们或许能战胜这巨蛇，又或许会为挑战了它深感后悔。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_highknock",
+            "actionId": "explore",
+            "requirements": {
+                "knock": 10
+            },
+            "label": "我们拜请蚁母，自创口现身之神",
+            "startdescription": "巨蛇之口足以吞人，其舌之厚堪比人的肩膀。不过谅必它不会小瞧我们的力量。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_knock",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_midknock",
+            "actionId": "explore",
+            "requirements": {
+                "knock": 5
+            },
+            "label": "我们拜请蚁母，盘伏环绕之神",
+            "startdescription": "巨蛇齿泛寒光，身长足以缠绕房屋。大概它不会小瞧我们的力量。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_knock",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_lowknock",
+            "actionId": "explore",
+            "requirements": {
+                "knock": 1
+            },
+            "label": "我们拜请蚁母，洞开之神",
+            "startdescription": "巨蛇抬起身躯，好似河水翻涌，细长的瞳孔中满是饥饿。也许它不会小瞧我们的力量。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_knock",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_success_edge",
+            "actionId": "explore",
+            "label": "巨蛇的挣扎",
+            "startdescription": "巨蛇全身翻卷，嘶声轰鸣！垂死挣扎震天动地！但它已濒死，我们得以通过。",
+            "description": ".",
+            "effects": {
+                "guardian_serpent": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_serpent_success_knock",
+            "actionId": "explore",
+            "label": "巨蛇的哀伤",
+            "startdescription": "它垂下巨大的头，无睑的双眼渗出水汽。它在哭吗？对于我们拜请的神灵，它的长姐，它记得些什么呢？",
+            "description": ".",
+            "effects": {
+                "guardian_serpent": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_serpent_failure",
+            "actionId": "explore",
+            "label": "巨蛇的力量",
+            "startdescription": "撤退，快撤退！我们赢不了它！",
+            "description": ".",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_watchers_encounter",
+            "actionId": "explore",
+            "label": "看守",
+            "startdescription": "一群当地人，有的心怀怨恨，有的是职责在身，也有的是拿钱办事。我们能用<b>蛾</b>欺骗他们，用<b>杯</b>引诱他们，或是用<b>刃</b>与他们较量一番。",
+            "requirements": {
+                "guardian_watchers": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultguardian_watchers_highgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_midgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_lowgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_lowedge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_highedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 10
+            },
+            "label": "我们的力量无人能及。",
+            "startdescription": "谅必这些看守将会后悔与我们为敌。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_edge",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_midedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 5
+            },
+            "label": "我们的力量不容小觑。",
+            "startdescription": "这些看守没料到我们会来。我们应该能够干掉他们。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_edge",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_lowedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 1
+            },
+            "label": "我们的力量不足。",
+            "startdescription": "这些看守可能不好对付——但我们还是有机会的。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_highgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 10
+            },
+            "label": "对抗看守：杯之魅惑",
+            "startdescription": "“走近点呀，亲爱的。我们有好东西要给你瞧。”",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_grail",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_midgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 5
+            },
+            "label": "对抗看守：杯之诱惑",
+            "startdescription": "我们的诱饵应该能使看守的心动神摇。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_grail",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_lowgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 1
+            },
+            "label": "对抗看守：杯之扰乱",
+            "startdescription": "也许我们能转移看守的注意。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_grail",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_highmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 10
+            },
+            "label": "对抗看守：强力的骗局",
+            "startdescription": "“仔细看，再仔细点儿。盯住别放！盯住，别眨眼。现在，闭眼……”",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_moth",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_midmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 5
+            },
+            "label": "对抗看守：有把握的骗局",
+            "startdescription": "“醒醒！醒醒！他们冲我们来了！往那边跑，快！”",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_moth",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_lowmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 1
+            },
+            "label": "对抗看守：孤注一掷的骗局",
+            "startdescription": "“他们往……那边去了？”",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_moth",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_success_edge",
+            "actionId": "explore",
+            "label": "看守的末路",
+            "startdescription": "他们流出鲜红的血，然后是黑色的。这些人不该挡我们的道。我们继续前进。",
+            "description": ".",
+            "effects": {
+                "guardian_watchers": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_watchers_success_grail",
+            "actionId": "explore",
+            "label": "看守的堕落",
+            "startdescription": "当下的欢愉最终会使他们落得惨痛的下场。也许他们会觉得这很值得。我们可以在这期间前进了。",
+            "description": ".",
+            "effects": {
+                "guardian_watchers": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_watchers_success_moth",
+            "actionId": "explore",
+            "label": "看守的迷惑",
+            "startdescription": "他们迷惑的这段时间是个好机会，我们会悄无声息地通过。",
+            "description": ".",
+            "effects": {
+                "guardian_watchers": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_watchers_failure",
+            "actionId": "explore",
+            "label": "看守的胜利",
+            "startdescription": "他们远比我们想象的要狡猾，数量也更多！这场战斗将以我们付出鲜血告终。",
+            "description": ".",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_monks_encounter",
+            "actionId": "explore",
+            "label": "僧侣",
+            "startdescription": "一队恪守誓言，信奉传统的守卫。<b>杯</b>之魅惑对他们没有效果，我们必须用<b>刃</b>击败他们，或是用<b>蛾</b>迷惑他们。",
+            "requirements": {
+                "guardian_monks": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultguardian_monks_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_monks_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_monks_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_monks_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_monks_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_monks_lowedge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_highedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 10
+            },
+            "label": "我们的力量势不可当。",
+            "startdescription": "我们将为土地染上神圣的血迹。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_edge",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_midedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 5
+            },
+            "label": "我们的力量不容小觑。",
+            "startdescription": "应付这些信神的蠢货，我们应该游刃有余。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_edge",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_lowedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 1
+            },
+            "label": "我们的力量不足。",
+            "startdescription": "僧侣并不可怕，但许许多多的僧侣就不好对付了。我们或许能赢，运气好的话。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_highmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 10
+            },
+            "label": "对抗看守：有效的骗局",
+            "startdescription": "“我们带来了不容置疑的神圣书卷，其真意只有在月光中才会呈现。”",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_moth",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_midmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 5
+            },
+            "label": "对抗僧侣：有把握的骗局",
+            "startdescription": "“这份搜查令上盖的是当局最高层的大印。别挡我们的路——”",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_moth",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_lowmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 1
+            },
+            "label": "对抗僧侣：孤注一掷的骗局",
+            "startdescription": "“我们有……圣物。<b><i>上古</i></b>圣物。”",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_moth",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_success_edge",
+            "actionId": "explore",
+            "label": "僧侣沉默",
+            "startdescription": "他们的尸体瘫在蜷曲的长袍堆中，一个叠着一个，看不出差别。迈过他们，继续前进。",
+            "description": ".",
+            "effects": {
+                "guardian_monks": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_monks_success_moth",
+            "actionId": "explore",
+            "label": "僧侣中计",
+            "startdescription": "信仰是把双刃剑。这些僧侣对相信某物有极高的天赋，因而他们信了我们的谎言。",
+            "description": ".",
+            "effects": {
+                "guardian_monks": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_monks_failure",
+            "actionId": "explore",
+            "label": "僧侣暴怒",
+            "startdescription": "他们比我们想象中的更强，也更聪明。而现在他们找到了出手的目标——",
+            "description": ".",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_dead_encounter",
+            "actionId": "explore",
+            "label": "烦躁的亡者",
+            "startdescription": "亡者像是污浊的鬼火一样聚集在我们周围的空气中。没有<b>刃</b>或<b>冬</b>，我们无法与之抗衡。",
+            "requirements": {
+                "guardian_dead": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultguardian_dead_highwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_dead_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_dead_midwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_dead_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_dead_lowwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_dead_lowedge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_highedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 10
+            },
+            "label": "我们的力量无人能及。",
+            "startdescription": "亡者身形苍白，仿佛是颜色反转的阴影。它们行动如是微风中的飘忽的蛛网。谅必它们挡不住我们，我们会将它们赶回林地的阴影，让它们到那里咕哝去吧。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_edge",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_midedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 5
+            },
+            "label": "我们的力量不容小觑。",
+            "startdescription": "这些眼神热切而卑微的亡者已经死过一次了。它们与醒时世界的连结很微弱，我们应该能够把它们赶回黑暗中去，但必须要小心谨慎。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_edge",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_lowedge",
+            "actionId": "explore",
+            "requirements": {
+                "edge": 1
+            },
+            "label": "我们的力量不足。",
+            "startdescription": "亡者行动迟缓，如同日晷阴影的转动——慢，却不止不休。它们记得何为痛苦和恐惧，但不甚清晰。而对这两种情感我们也同样熟悉。我们可能赢不了它们。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_highwinter",
+            "actionId": "explore",
+            "requirements": {
+                "winter": 10
+            },
+            "label": "我们拜请骨白鸽，通晓亡者姓名之神",
+            "startdescription": "亡者在我们的视野边缘围成一圈，仿佛是焦虑的梦。我们周围的空气带上了<b>冬</b>天阴影的寒意，这寒意它们肯定认得。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_winter",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_midwinter",
+            "actionId": "explore",
+            "requirements": {
+                "winter": 5
+            },
+            "label": "我们拜请骨白鸽，不受欺骗之神",
+            "startdescription": "亡者紧紧地望着我们，仿佛圣徒的雕像般面无表情。但我们身上带有<b>冬</b>之力，亡者大概能认出此力。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_winter",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_lowwinter",
+            "actionId": "explore",
+            "requirements": {
+                "winter": 1
+            },
+            "label": "我们拜请骨白鸽，被剥夺至夺无可夺之神",
+            "startdescription": "亡者在黑暗中沸腾翻滚，但我们已经受了众位<b>冬</b>之司辰的触摸。也许这些亡者能辨识出这点。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_winter",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_success_edge",
+            "actionId": "explore",
+            "label": "悲惨的亡者",
+            "startdescription": "当亡者返回我们这边的时候，它们用上了肉体消逝时能用的一切：沙土、锈铁、蛛网、碎片、破布。如今它们已被我们毁灭，留下的就只有这些破烂了。",
+            "description": ".",
+            "effects": {
+                "guardian_dead": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_dead_success_winter",
+            "actionId": "explore",
+            "label": "小心翼翼的亡者",
+            "startdescription": "亡者缩了回去，几不可辨的面孔空洞而警觉。它们不会妨碍我们了。",
+            "description": ".",
+            "effects": {
+                "guardian_dead": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_dead_failure",
+            "actionId": "explore",
+            "label": "亡者的暴怒",
+            "startdescription": "比起物体，亡者更像是风，但这并不意味着风可以被低估。就像现在，它们是苍白阴影的风暴，恐怖是它们的獠牙。撤，快撤！",
+            "description": ".",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_encounter",
+            "actionId": "explore",
+            "label": "黑暗中的索寇焰特",
+            "startdescription": "夜风随它们咔嗒作响。放低身子，它们太强大了，但我们或许能够骗过它们，或是用漫宿的光将它们驱散。",
+            "requirements": {
+                "guardian_soucouyants": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultguardian_soucouyants_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_highlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_midlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_lowlantern",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_highlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 10
+            },
+            "label": "我们拜请守夜人，照明驱暗之神",
+            "startdescription": "我们的力量够强，想必能和它们保持距离。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_lantern",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_midlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 5
+            },
+            "label": "我们拜请守夜人，无怜悯心之神",
+            "startdescription": "我们的力量应该足以使它们不敢靠近——但它们警戒着，随时准备抓住我们的疏漏。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_lantern",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_lowlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 1
+            },
+            "label": "我们拜请守夜人，指引前路之神",
+            "startdescription": "很有可能我们的力量会确保我们安全通过这人挤人的夜晚。完全有可能。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_lantern",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_highmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 10
+            },
+            "label": "我们拜请飞蛾，于林地树间寻觅之神",
+            "startdescription": "飞蛾能够在这人潮攒动的森林之夜发挥神力。我们将隐秘而安全地通过……除非我们特别不走运。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_moth",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_midmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 5
+            },
+            "label": "我们拜请飞蛾，于颅内振翅之神",
+            "startdescription": "我们的力量应该足以瞒过这些在夜里飞翔的干渴妖怪，让它们失去兴趣。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_moth",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_lowmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 1
+            },
+            "label": "我们拜请飞蛾，通体斑驳之神",
+            "startdescription": "飞蛾会在森林斑驳的阴影中给我们一些可能性——但也只是可能性而已。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_moth",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_success_lantern",
+            "actionId": "explore",
+            "label": "索寇焰特的败退",
+            "startdescription": "它们不会靠近了。它们以食腐鸟和孩童的声音尖声奚落；它们晃动树冠；它们于黑暗中抛投石头。但它们不会靠近。我们得以通过。",
+            "description": ".",
+            "effects": {
+                "guardian_soucouyants": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_success_moth",
+            "actionId": "explore",
+            "label": "索寇焰特的懊丧",
+            "startdescription": "从阴影赶往更深的阴影，将面孔压进海绵般的泥土中。它们知道我们在这，但不知道具体在哪。它们的哭号渐渐消失在我们身后。",
+            "description": ".",
+            "effects": {
+                "guardian_soucouyants": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_failure",
+            "actionId": "explore",
+            "label": "索寇焰特的饥饿",
+            "startdescription": "它们追来了！其中一个长着有粗糙裂纹的翅膀，另一个嘶声尖叫的身躯则飞进黑暗之中——",
+            "description": ".",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_long_encounter",
+            "actionId": "explore",
+            "label": "长生者",
+            "startdescription": "午港建于那眼臭名昭著的泉水所在之处：饮用此泉，会令这个世界忘却你的存在。一些长生者从上层世界的纷扰中抽身而出，隐居在这里。它们对待入侵者的可不手软，只有蠢货才去打扰它们。但是，它们对<b>蛾</b>的乐趣或<b>杯</b>的魅惑却也非常敏感。",
+            "requirements": {
+                "guardian_long": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultguardian_long_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_long_highgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_long_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_long_midgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_long_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_long_lowgrail",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_highgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 10
+            },
+            "label": "“我们是来为您提供欢愉的。”",
+            "startdescription": "即便是长生者也有欲望，也许正因为长生才更懂欲望。这名长生者谅必会屈服，心甘情愿地受我们服侍。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_grail",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_midgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 5
+            },
+            "label": "“我们是来为您提供消遣的。”",
+            "startdescription": "这名长生者很乐于接受我们所提供的娱乐，但它仍然心存疑虑。我们大概能成功。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_grail",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_lowgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 1
+            },
+            "label": "“希望……我们希望能为您提供些乐子？”",
+            "startdescription": "长生者和凡人拥有相同的胃口，但却在漫长重复的经历中感到了厌倦。运气好的话，也许我们还能使一名长生者感到愉悦。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_grail",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_highmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 10
+            },
+            "label": "“新闻！古老国度传来的新闻！从一切古老国度传来的新闻！”",
+            "startdescription": "长生者极度渴求新鲜感。我们会利用这一点，然后如果一切顺利的话，在它意识到不对之前走得远远的。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_moth",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_midmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 5
+            },
+            "label": "“打赌吗，很好。”",
+            "startdescription": "这名长生者是在玩弄我们吗？很难说。但即便这只是个游戏，它也说不定会准许我们离开。大概能一切顺利。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_moth",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_lowmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 1
+            },
+            "label": "“这故事，呃，还挺好笑的……”",
+            "startdescription": "这名长生者的双眸不为所动，遥远如天边的地平线。他全身僵如蜥蜴。他有在听吗？",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_moth",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_success_grail",
+            "actionId": "explore",
+            "label": "漫长而金光闪闪的午后",
+            "startdescription": "这名长生者真的沦陷在杯的魅惑中了吗？抑或是它很清楚自己在做的究竟是什么？无论如何，我们都已经赢得了足够的空间与时间——",
+            "description": ".",
+            "effects": {
+                "guardian_long": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_long_success_moth",
+            "actionId": "explore",
+            "label": "给长生者的谎言",
+            "startdescription": "这些午港的不死居民依旧或受骗，或沉沦，或被困于更宏大的计划之中。这次，它们不会多事了。",
+            "description": ".",
+            "effects": {
+                "guardian_long": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_long_failure",
+            "actionId": "explore",
+            "label": "长生的痛苦",
+            "startdescription": "不死的居民怒了，它可能会选择将某人打倒在地，也可能会抑制住怒意。和不死者相关的事，都很难说——",
+            "description": ".",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        }
+    ]
+}

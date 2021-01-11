@@ -1,0 +1,249 @@
+{
+    "recipes": [
+        {
+            "id": "auctionentry6",
+            "label": "售卖价值极高之物",
+            "actionId": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 6
+            },
+            "effects": {
+                "funds": 20
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increasegrand",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "奥里弗拉姆拍卖行的顾客中极少有修习无形之术的人。但即使外行人也能认出这是件非同寻常的器物。[请谨慎，售出后无法回购。]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionentry5",
+            "label": "售卖价值稀有之物",
+            "actionId": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 5
+            },
+            "effects": {
+                "funds": 16
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increasemajor",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "奥里弗拉姆拍卖行的顾客中极少有修习无形之术的人。他们会把存有法力的工具当成纪念品或奇珍买回家去，却不能意识到它们真正的价值。但这件东西显然是稀有品。[请谨慎，售出后无法回购。]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionentry4",
+            "label": "售卖价值名贵之物",
+            "actionId": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 4
+            },
+            "effects": {
+                "funds": 8
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increasemajor",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "奥里弗拉姆拍卖行的顾客中极少有修习无形之术的人。他们会把存有法力的工具当成纪念品或奇珍买回家去，却不能意识到它们真正的价值。但这件东西会引起他们注意。[请谨慎，售出后无法回购。]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionentry3",
+            "label": "售卖价值非常之物",
+            "actionId": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 3
+            },
+            "effects": {
+                "funds": 4
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increaseminor",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "这件不同寻常的物件肯定能换来资金。[请谨慎，售出后无法回购。]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionentry2",
+            "label": "售卖价值寻常之物",
+            "actionId": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 2
+            },
+            "effects": {
+                "funds": 2
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increaseminor",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "这件珍奇的物件能换来资金。[请谨慎，售出后无法回购。]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionentry1",
+            "label": "售卖价值较低之物",
+            "actionId": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 1
+            },
+            "effects": {
+                "funds": 1
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increasepetty",
+                    "chance": 30
+                },
+                {
+                    "id": "auctionsell_worthless",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "这件怪异的物件大概值些钱，不过也很难讲。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionsell_worthless",
+            "label": "拍卖：鲜少有人问津",
+            "actionId": "explore",
+            "startdescription": "反响寥寥。拍卖师木槌落定。我的物件卖掉了，但价格极廉，不值一提。",
+            "linked": [
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": -99,
+                "auctionable": -99
+            },
+            "warmup": 30
+        },
+        {
+            "id": "auctionsell_increasepetty",
+            "label": "拍卖：观者悄声议论",
+            "actionId": "explore",
+            "startdescription": "不论出于什么难以意料的原因，我的物件勾起了出价人的兴趣。",
+            "linked": [
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "auctionsell_increaseminor",
+            "label": "拍卖：踊跃出价",
+            "actionId": "explore",
+            "startdescription": "立时有观众站了起来。激情高涨。",
+            "linked": [
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 2
+            },
+            "warmup": 30
+        },
+        {
+            "id": "auctionsell_increasemajor",
+            "label": "拍卖：兴奋的喊声",
+            "actionId": "explore",
+            "startdescription": "拍卖师不得不提高他的声音来盖过喧闹的人群。",
+            "linked": [
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 4
+            },
+            "warmup": 30
+        },
+        {
+            "id": "auctionsell_increasegrand",
+            "label": "拍卖：出价人的决斗",
+            "actionId": "explore",
+            "startdescription": "两位富有的收藏家将目光锁定在拍卖师上，用最轻微的点头表达着他们的意图。除了拍卖师严肃的声音外，房间里鸦雀无声。",
+            "effects": {
+                "funds": 8
+            },
+            "linked": [
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "auctioncleanup",
+            "label": "拍卖结束",
+            "actionId": "explore",
+            "description": "拍卖师木槌落定。我的物品已经售出。",
+            "effects": {
+                "auctionable": -99
+            },
+            "warmup": 0
+        }
+    ]
+}

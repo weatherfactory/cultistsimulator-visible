@@ -1,0 +1,338 @@
+{
+    "elements": [
+        {
+            "id": "ascensionpowera",
+            "label": "诱惑：力量",
+            "aspects": {
+                "desire": 1,
+                "powermarks": 1
+            },
+            "description": "我突然意识到我握着通往力量的钥匙。[此卡可通达“力量胜利”，只要将其升级到一定程度。以之“入梦”可以使之升级或转变。]",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionsensationa",
+            "label": "诱惑：感官",
+            "aspects": {
+                "desire": 1,
+                "sensationmarks": 1
+            },
+            "description": "我能感受到那种几乎无人体会过的强烈冲动。[此卡可通达“感官胜利”，只要将其升级到一定程度。以之“入梦”可以使之升级或转变。]",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionenlightenmenta",
+            "label": "诱惑：启明",
+            "aspects": {
+                "desire": 1,
+                "enlightenmentmarks": 1
+            },
+            "description": "我突然意识到我手里握着前往智慧的钥匙。[此卡可通达“启明胜利”，只要将其升级到一定程度。以之“入梦”可以使之升级或转变。]",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionpowerb",
+            "label": "追奉：力量",
+            "aspects": {
+                "desire": 2,
+                "powermarks": 2
+            },
+            "description": "我已奉身于获取永恒的力量。[进一步升级此卡，追求“力量胜利”。我必须真正地融入漫宿。我需要进行<b>铸</b>相的<b><作业></b>来祈求白日铸炉，开始改变。]",
+            "slots": [
+                {
+                    "id": "Know",
+                    "label": "通晓者",
+                    "actionId": "work",
+                    "required": {
+                        "waystag_after": 1
+                    },
+                    "description": "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过牡鹿之门之人。"
+                },
+                {
+                    "id": "Power",
+                    "label": "力量",
+                    "actionId": "work",
+                    "required": {
+                        "forge": 1
+                    },
+                    "description": "我需要足够炽烈的铸之火力。"
+                }
+            ],
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionsensationbm",
+            "label": "追奉：感官",
+            "aspects": {
+                "desire": 2,
+                "sensationmarks": 2
+            },
+            "description": "我将奉身于对感官的永恒追求。[进一步升级此卡，追求“感官胜利”。我必须真正地融入漫宿。我需要进行<b>杯</b>相的<b><作业></b>，让自己能够被赤杯接纳。]",
+            "slots": [
+                {
+                    "id": "Know",
+                    "label": "通晓者",
+                    "actionId": "work",
+                    "required": {
+                        "waystag_after": 1
+                    },
+                    "description": "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过牡鹿之门之人。"
+                },
+                {
+                    "id": "Power",
+                    "label": "力量",
+                    "actionId": "work",
+                    "required": {
+                        "grail": 1
+                    },
+                    "description": "我需要足够的<b>杯</b>之快感冲击。"
+                }
+            ],
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionsensationbf",
+            "label": "追奉：感官",
+            "aspects": {
+                "desire": 2,
+                "sensationmarks": 2
+            },
+            "description": "我已奉身于对感官的永恒追求。[进一步升级此卡，追求“感官胜利”。我必须真正地融入漫宿。我需要进行<b>杯</b>相的<b><作业></b>，让自己能够被赤杯接纳。]",
+            "slots": [
+                {
+                    "id": "Know",
+                    "label": "通晓者",
+                    "actionId": "work",
+                    "required": {
+                        "waystag_after": 1
+                    },
+                    "description": "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过牡鹿之门之人。"
+                },
+                {
+                    "id": "Power",
+                    "label": "力量",
+                    "actionId": "work",
+                    "required": {
+                        "grail": 1
+                    },
+                    "description": "我需要足够的<b>杯</b>之快感冲击。"
+                }
+            ],
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionenlightenmentb",
+            "label": "追奉：启明",
+            "aspects": {
+                "desire": 2,
+                "enlightenmentmarks": 2
+            },
+            "description": "我已奉身于追求更高层次的理解。我需要看透世界的本质，不论付出何种代价。[进一步升级此卡，追求“启明胜利”。我必须真正地融入漫宿。我需要进行<b>灯</b>相的<b><作业></b>，让守夜人能够看到我。]",
+            "slots": [
+                {
+                    "id": "Know",
+                    "actionId": "work",
+                    "required": {
+                        "waystag_after": 1
+                    },
+                    "description": "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过牡鹿之门之人。"
+                },
+                {
+                    "id": "Power",
+                    "label": "力量",
+                    "actionId": "work",
+                    "required": {
+                        "lantern": 1
+                    },
+                    "description": "我需要象征漫宿无情之光的标志。"
+                }
+            ],
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionpowerc",
+            "label": "飞升：力量",
+            "aspects": {
+                "desire": 3,
+                "powermarks": 3
+            },
+            "xtriggers": {
+                "ascend": "ascensionpowerd"
+            },
+            "description": "铸炉在我肉体上点燃了回应的火花。我极度渴求火焰的热力。我想很快我就将在睡梦中燃火。这是十分迫切的需求，就像生命对水的需求一样。我很确定这就是第三印记。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionpowerd",
+            "label": "飞升：力量",
+            "aspects": {
+                "desire": 4,
+                "powermarks": 4
+            },
+            "xtriggers": {
+                "ascend": "ascensionpowere",
+                "descend": "ascensionpowerc"
+            },
+            "description": "虽然火焰让我遍体伤疤，但想炙伤我的肉体也是越来越难。我现在开始渐渐习惯火焰，如同一条龙或一块石头。这是第四印记。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionpowere",
+            "label": "飞升：力量",
+            "aspects": {
+                "desire": 5,
+                "powermarks": 5,
+                "murderskill": 1
+            },
+            "xtriggers": {
+                "ascend": "ascensionpowerf",
+                "descend": "ascensionpowerd"
+            },
+            "description": "第五印记：我的身体没有一根毛发。我变得像魔鬼一样强壮。如果我离开了火焰，我就会不停颤抖。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionpowerf",
+            "label": "飞升：力量",
+            "aspects": {
+                "desire": 6,
+                "powermarks": 6,
+                "murderskill": 1
+            },
+            "xtriggers": {
+                "descend": "ascensionpowere"
+            },
+            "description": "我满身伤疤，四肢都很难弯屈。我不愿将我的面容暴露在众人的目光下。我能手握炙热的煤炭而毫无知觉，虽然我能感到一丝气味和轻微的嘶嘶声。这是第六印记。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionsensationc",
+            "label": "飞升：感官",
+            "aspects": {
+                "desire": 3,
+                "sensationmarks": 3
+            },
+            "xtriggers": {
+                "ascend": "ascensionsensationd"
+            },
+            "description": "赤杯给予我温暖。它的干渴让我的嘴变干，手发痒。我知道这是第三印记。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionsensationd",
+            "label": "飞升：感官",
+            "aspects": {
+                "desire": 4,
+                "sensationmarks": 4
+            },
+            "xtriggers": {
+                "ascend": "ascensionsensatione",
+                "descend": "ascensionsensationc"
+            },
+            "description": "第四印记是皮肤上断断续续的改善，从手臂到大腿的痕迹成补丁状生长。洁净，柔软，而透着红光，好似爬出山泉水的新生儿的皮肤。只是一块一块的。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionsensatione",
+            "label": "飞升：感官",
+            "aspects": {
+                "desire": 5,
+                "sensationmarks": 5
+            },
+            "xtriggers": {
+                "ascend": "ascensionsensationf",
+                "descend": "ascensionsensationd"
+            },
+            "description": "“增生和出疹”是第五印记的昵称。我已经长出了两根新的手指，但只有一根长在我的手上。我的膝盖弯曲处出现了一个瘘管。压迫其边缘带来一种轻柔的快感。我认为我背上的小小隆起是一个新的器官。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionsensationf",
+            "label": "飞升：感官",
+            "aspects": {
+                "desire": 6,
+                "sensationmarks": 6
+            },
+            "xtriggers": {
+                "descend": "ascensionsensatione"
+            },
+            "description": "我发现自己比以前高了一个手的长度后察觉了第六印记。我的每个部位，每个方向都肿胀着。我的皮肤是发光的丝绒。一对肉陷坑垫着我的眼珠。我非常干渴。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionenlightenmentc",
+            "label": "飞升：启明",
+            "aspects": {
+                "desire": 3,
+                "enlightenmentmarks": 3
+            },
+            "xtriggers": {
+                "ascend": "ascensionenlightenmentd"
+            },
+            "description": "守夜人，即瞳中扉，触碰了我。现在每天我的好奇心都会增强：这是一种急迫的，生理上的需求，就像饥饿一样折磨我。我知道这就是第三印记。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionenlightenmentd",
+            "label": "飞升：启明",
+            "aspects": {
+                "desire": 4,
+                "enlightenmentmarks": 4
+            },
+            "xtriggers": {
+                "ascend": "ascensionenlightenmente",
+                "descend": "ascensionenlightenmentc"
+            },
+            "description": "第四印记是眼中亮着的光，但是却难以发现。大多数情况下，人们只有在油灯熄灭时或者午夜的黑暗之中才能看到它；虽然当我瞪大眼睛的时候，会有更多的光开始溢出。我开始日渐消瘦了。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionenlightenmente",
+            "label": "飞升：启明",
+            "aspects": {
+                "desire": 5,
+                "enlightenmentmarks": 5
+            },
+            "xtriggers": {
+                "ascend": "ascensionenlightenmentf",
+                "descend": "ascensionenlightenmentd"
+            },
+            "description": "在第五印记时，光芒会从皮肤乌青或被剥皮之处泄露出来。我的皮肤开始逐渐松弛了，只因我日渐消瘦。我现在相当瘦弱。我总是很饥饿。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionenlightenmentf",
+            "label": "飞升：启明",
+            "aspects": {
+                "desire": 6,
+                "enlightenmentmarks": 6
+            },
+            "xtriggers": {
+                "descend": "ascensionenlightenmente"
+            },
+            "description": "据说第六印记出现的标记就是虎口间的皮肤可以拉到小指关节处。我的皮肤已经变得非常非常松弛了。我觉得我的骨头也开始变得酥软了。我的双眼丧失了属于人类的色泽。",
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "temptation.remembrance",
+            "label": "诱惑：铭记",
+            "description": "赤红的太阳低垂天际时的凉风。海浪原先的话音。在我们身边一同跋涉积雪的虚影。都压在时间的玻璃板下，变得粉碎。我须得重温失去的事物。",
+            "aspects": {
+                "desire": 1,
+                "remembrancemarks": 1
+            },
+            "xtriggers": {
+                "ascend": "dedication.remembrance"
+            }
+        },
+        {
+            "id": "dedication.remembrance",
+            "label": "追奉：铭记",
+            "description": "赤红的太阳低垂天际时的凉风。海浪原先的话音。在我们身边一同跋涉积雪的虚影。都压在时间的玻璃板下，变得粉碎。我须得重温失去的事物……尽管其味醇熟而怪异。",
+            "aspects": {
+                "desire": 1,
+                "remembrancemarks": 2
+            }
+        }
+    ]
+}

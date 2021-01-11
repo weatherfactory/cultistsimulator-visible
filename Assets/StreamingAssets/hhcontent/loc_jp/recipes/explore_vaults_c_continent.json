@@ -1,0 +1,363 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultcontinent1_setup",
+			"label": "遠征の始まり：ラヴェリン城",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent1": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1,
+				"curse_dread": 1
+			},
+			"startdescription": "ラヴェリン伯爵家の城は人里離れた場所にあり、ずっと昔に略奪されて廃墟と化していた。しかし、我々は、略奪を免れた物があるかもしれないという手がかりを見つけた。秘密の部屋があるかもしれない。それと同時に呪いもあるかもしれない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinent2_setup",
+			"label": "遠征の始まり：フェルミエール修道院",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent2": 1
+			},
+			"effects": {
+				"peril_forest": 1,
+				"guardian_monks": 1
+			},
+			"startdescription": "森の奥深くにあるフェルミエール修道院は、緑の外套に包まれて密輸された宝石箱のようだ。なんとか森を抜けたとしても、僧侶たちに立ち向かわなければならない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinent3_setup",
+			"label": "遠征の始まり：オルトロスの森",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent3": 1
+			},
+			"effects": {
+				"peril_forest": 1,
+				"guardian_watchers": 1
+			},
+			"startdescription": "オルトロスの森の真っ暗な中心部に、仮面の鴉が仲間と出会った木が見つかるかもしれない。しかし、そこに住む人食い族も危険だが、森自体も危険である。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinent4_setup",
+			"label": "遠征の始まり：ヴァンダーシャーフ・コレクション",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent4": 1
+			},
+			"effects": {
+				"seal_wardeddoor": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "ヴァンダーシャーフ・コレクションの絵画の間への扉には鍵がかけられ、封印されている。この建物は「花に取り憑かれている」と言われている。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinent5_setup",
+			"label": "遠征の始まり：フォアマンの家",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent5": 1
+			},
+			"effects": {
+				"guardian_dead": 1,
+				"curse_dread": 1
+			},
+			"startdescription": "紛れもなくこの荒涼とした屋敷は憑りつかれている。最後の訪問者は、死者の擦り切れた手が触れる前に逃げていった。その前の訪問者は何も見なかったと言っていたが、訪問日からちょうど一年経った日に、絶望のあまり死んでしまった。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinent6_setup",
+			"label": "遠征の始まり：キーハンターの屋根裏部屋",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinent6": 1
+			},
+			"effects": {
+				"guardian_serpent": 1,
+				"seal_hiddendoor": 1
+			},
+			"startdescription": "ウィーンに着くとと、キーハンターが何日も姿を見せていないという噂を聞く。地元の酔っぱらいは、大蛇が家に入ってきて彼らを食い物にしたと言い張っている。確かに、家の中は真っ暗で、窓や扉は木材で塞がれていた。それに、爬虫類の家の臭いがする。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcontinentdefault_setup",
+			"label": "遠征の始まり：無数の石",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcontinentdefault": 1
+			},
+			"effects": {
+				"peril_forest": 1,
+				"seal_hiddendoor": 1,
+				"guardian_watchers": 1
+			},
+			"startdescription": "石を訪れる宝探しの人々は、石を隠す森に入り込み、石を崇拝する地元の人々と戦わなくてはいけない。そして、やっと秘密の扉を見つけても、発掘する準備をしなければならない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcontinent1_success",
+			"label": "幼少期の終わり",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent1": 1
+			},
+			"effects": {
+				"vaultcontinent1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientwinterb",
+					"toolforgeb",
+					"highmysterieschurchsolarfucine",
+					"bookoftruebloodlatin",
+					"morphycodexaramaic"
+				],
+				"draws": 5,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "狼の人間狩りを描かれたボロボロのタペストリーの後ろには、パネル張りの壁がある。そしてパネルの中には秘密の扉があるが、バネがとっくの昔に壊れていたため、ハンマーで叩き割るしかなかった。",
+			"description": "ラヴェリン伯爵家の最後の宝物は、この驚くほど風通しの良い部屋にある。高い天窓はとっくに壊れていて、床は枯れ葉や瓦礫で覆われているが、かつては子供部屋として使われていた。子犬の骨が入ったゆりかごがある。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinent2_success",
+			"label": "大枝の下",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent2": 1
+			},
+			"effects": {
+				"vaultcontinent2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"againstsisterhoodknotgreek",
+					"ingredientheartb",
+					"thirstingtantrasanskrit",
+					"dehoris2latin",
+					"tantrawormssanskrit",
+					"textbookaramaic"
+				],
+				"draws": 6,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "僧侶と彼らの不幸は過去の話だ。礼拝堂の中庭にはイチイの木が石棺のような蓋をした花崗岩の祭壇の横にそびえている。中には何が？",
+			"description": "祭壇の中の空間は、割れた器で埋め尽くされていて、1つひとつつが赤く塗られ、下品な落書きがされていたり、汚れていたりする。僧侶たちは、忌まわしい儀式を行い、戦利品として残りを保管していたに違いない。器の欠片と共に、他の宝物も埋められている。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinent3_success",
+			"label": "鴉の記憶",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent3": 1
+			},
+			"effects": {
+				"vaultcontinent3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientmothd",
+					"toolgrailmoth",
+					"toolmothd",
+					"inthemountainsasupontheplainvak"
+				],
+				"draws": 4,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "これはかつて仮面の鴉ががねぐらをかいた偉大な樫だ。雷で縦に裂け、木は焦げて腐っている。指の長さの虫が蠢き、枯れた根の中で何かが鈍く光っている。",
+			"description": "子供ほどの大きさの鉛の卵に根が巻き付いている。おそらくかつては別の金属でメッキされていたのだろうが、天候の影響でメッキの痕跡は残っていない。苦戦の末、卵が半分に割れ、中身が出てきた。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinent4_success",
+			"label": "絵画の間",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent4": 1
+			},
+			"effects": {
+				"vaultcontinent4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolsecrethistoriesb",
+					"jumble",
+					"influencemothc",
+					"watchfultantrasanskrit",
+					"vinzantinscriptionsphrygian",
+					"geminiadfucine",
+					"textbookaramaic"
+				],
+				"draws": 7,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "絵画の間の壁には、ウィーンがワームに降伏する場面、繋がれた炎の主権者が絆の姉妹団の殉教兵士を燃やす場面、アレクサンダーと影のない王の出会いなど、戦争の場面が描かれている。片側の壁に沿って、ガラクタや珍品で埋め尽くされた棚が置かれている。",
+			"description": "独特の香りを放つ押し花の本、古いベデカー旅行案内書が3冊、黒と白に塗られた蝶のコレクション、そして本物の宝物。ガラスケースに入った奇妙な本と七宝焼きの箱に入った珍しい本が飾られている。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinent5_success",
+			"label": "石膏型",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent5": 1
+			},
+			"effects": {
+				"vaultcontinent5": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"devouredtantrasanskrit",
+					"worlddoesnotweeparamaic",
+					"deedsofthescarredcaptaingreek",
+					"matthiasamethysttransformationaramaic"
+				],
+				"draws": 4,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "老朽化した温室の汚れたガラス張りを見下ろす部屋に、ウジ虫のような淡い黄色のねじれた形が板の上に横たわっていた。これらはフォアマンが研究した生物が宿る可哀想な魂を石膏模型にしたものだ。模型の中には、表面に入り口の穴があるものや、耳や口、またはほかの場所から生物が侵入したと想定できるものもある。",
+			"description": "部屋には何もなかった。しかし、最後に、偶然にも石膏模型の1つを壊してしまうと、模型の黄ばんだ腹部の中から、フォアマンの貴重な本の山が見つかった。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinent6_success",
+			"label": "上の灰",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinent6": 1
+			},
+			"effects": {
+				"vaultcontinent6": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"onthematterandthedeedsofserpentsvak",
+					"irreproachabletraditionssocietynobleendeavourlatin",
+					"textbookfucinelatin",
+					"serenityofblackwoodgreek"
+				],
+				"draws": 4,
+				"defaultcard": "compensationc",
+				"resetonexhaustion": false
+			},
+			"startdescription": "部屋は蛇と焦げた紙の臭いがする。誰かが、見つけた記録を完全に隠滅していたのだろう。壁の掃除までされている。冷たい灰が暖炉に積もっていた。ここを借りていた哀れな人の痕跡は残っていない。",
+			"description": "紙の片隅だけが炎の中で生き残った。震えた文字で「Ｋさん。グリーンカルセドニー。三裂。火の中に春の葉――」と書かれている。炎のそばのスーツケースの中には、小さな本の山が入っていた。キーハンターの日記を破壊した者は、本を燃やす必要はないと思ったようだ。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcontinentdefault_success",
+			"label": "石の下",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcontinentdefault": 1
+			},
+			"effects": {
+				"vaultcontinentdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardsc": 3
+			},
+			"startdescription": "月の光が草を冬の色に染め上げる。周りを見渡すと、石が立ちはだかっていた。芝の下の古墳側には、仕掛け扉のように持ちあがる石があった。全力を注ぎ込まないといけない。",
+			"description": "古墳の中の空間は、老化で崩壊しかけている。太った白い蜘蛛が、我々の灯りの光に誘われ這い出てくる。浮き彫りの石像はひび割れてぶら下がっているが、まだ宝物が入ったままの供え物の穴が見つかった。",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "expeditionascensionheartc",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionmothc",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

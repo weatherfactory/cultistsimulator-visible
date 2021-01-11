@@ -1,0 +1,269 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaultloneandlevelsands1_setup",
+            "label": "Beginning an Expedition: the Star-Shattered Fane",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultloneandlevelsands1": 1
+            },
+            "effects": {
+                "peril_desert": 1,
+                "seal_hiddendoor": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "A star fell in the deep desert. It did not quite destroy the sacred place it struck. The treasures of the old altar may remain, hidden beneath the grave of the star. But we must approach the star cautiously: it still resonates with energies from outside the world. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultloneandlevelsands2_setup",
+            "label": "Beginning an Expedition: Lagun's Tomb",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultloneandlevelsands2": 1
+            },
+            "effects": {
+                "peril_desert": 1,
+                "seal_wardeddoor": 1,
+                "curse_dread": 1
+            },
+            "startdescription": "Lagun's Tomb will be difficult to find in the desert. We must navigate by the stars. Its door has long resisted the assaults of tomb-robbers. We must bring what force we can. There will likely be a curse. We must be prepared for it. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultloneandlevelsands3_setup",
+            "label": "Beginning an Expedition: Messana",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultloneandlevelsands3": 1
+            },
+            "effects": {
+                "peril_desert": 1,
+                "guardian_watchers": 1,
+                "curse_affliction": 1
+            },
+            "startdescription": "Messana, where the villagers routinely remain hale and vigorous past their hundredth year. They will resist attempts to pry into their secrets, and they may have curses at their disposal - if we can even penetrate the desert to reach them. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultloneandlevelsands4_setup",
+            "label": "Beginning an Expedition: the Temple of Seven Coils",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultloneandlevelsands4": 1
+            },
+            "effects": {
+                "peril_desert": 1,
+                "seal_wardeddoor": 1,
+                "curse_nowhere": 1
+            },
+            "startdescription": "'The site will tolerate no life', says the journal of Zane Marc Gentis. So we will find no serpents there. But the place sounds cursed, and Gentis recorded a door that his expedition could not open. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultloneandlevelsandsdefault_setup",
+            "label": "Beginning an Expedition: Miah",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultloneandlevelsandsdefault": 1
+            },
+            "effects": {
+                "peril_desert": 1,
+                "seal_hiddendoor": 1,
+                "guardian_dead": 1,
+                "curse_affliction": 1
+            },
+            "startdescription": "The city, Miah, has long been sunk in the desert. Only ghosts walk its streets. Anything left there will be well-hidden. And the Vagabond's curse hangs over it all: her revenge on the place that wronged her so. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultloneandlevelsands1_success",
+            "label": "The Opening Stone",
+            "actionid": "explore",
+            "requirements": {
+                "vaultloneandlevelsands1": 1
+            },
+            "effects": {
+                "vaultloneandlevelsands1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toollanternd",
+                    "focusambermandaic",
+                    "medusaslamentgreek",
+                    "manneralchemistsparedvak"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The meteorite lies in the shattered temple, ridged like a sea creature, smoothed by its passage through the atmosphere. The old altar must have been crushed centuries ago, but the meteorite responds to our touch. It hums like wires in wind. Its surface shifts, and it opens like an eye - ",
+            "description": "What has passed? The meteorite is cold and closed and silent. The sand of centuries lies untouched upon it. But here in our hands are the treasures we found within.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultloneandlevelsands2_success",
+            "label": "Lagun's End",
+            "actionid": "explore",
+            "requirements": {
+                "vaultloneandlevelsands2": 1
+            },
+            "effects": {
+                "vaultloneandlevelsands2": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toolsecrethistoriesd",
+                    "voyagesfofucine",
+                    "toolmothf",
+                    "ingredientmothf",
+                    "ingredientknockf"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "In the central chamber, Lagun, the once-immortal Long, lies peacefully naked on a sandalwood bier. He is perfectly preserved - a slender, dark-skinned man in excellent physical health - but at our approach, he crumbles into blackened flakes like fallen leaves. Objects glint from the remains.",
+            "description": "We find a pocket-watch, a book, a quantity of Algerian currency - all from our own era. He must have come and gone many times from this place before he resigned himself to his final rest. On the back of the watch, we see engraved the closed eye of the Long society called the Obliviates...",
+            "warmup": 30,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "expedition.corpse.find.vaultloneandlevelsands2",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "explorevaultloneandlevelsands3_success",
+            "label": "A Long Feast",
+            "actionid": "explore",
+            "requirements": {
+                "vaultloneandlevelsands3": 1
+            },
+            "effects": {
+                "vaultloneandlevelsands3": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toolheartf",
+                    "songscarapacecrossmandaic",
+                    "sevenfoldslayingsevencoiledfucine"
+                ],
+                "draws": 3,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "Beneath the granary, we find the deepest secret of Messana: an altar on which are displayed segments of an embalmed human body. Little of it still remains. The visitors must have been feasting on this for years. Is it Long-flesh? That might account for their longevity.",
+            "description": "Items of note are displayed on the walls. They might be trophies from unwise travellers, or they might have been possessions of the Long. There is no indication whether the Long was a willing victim, an ancestor, or a prisoner, and we'll learn nothing from the villagers now. A Greek inscription on the altar reads: FOR THE FLOOD.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultloneandlevelsands4_success",
+            "label": "The Coils of God",
+            "actionid": "explore",
+            "requirements": {
+                "vaultloneandlevelsands4": 1
+            },
+            "effects": {
+                "vaultloneandlevelsands4": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "ingredientwinterf",
+                    "influencewintere",
+                    "toolknockd",
+                    "memoryofgodsfucine",
+                    "toolwinterf"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "'Seven Coils', said Gentis' journal, but the idol within is an impossible heap of stone serpent - coil upon coil, a knot that dizzies the soul. Wrongness squirms in the temple corners. We should search the place quickly, before its influences overwhelm us.",
+            "description": "The temple is as clean as if it were newly swept. No sand has crossed the threshold, no dust settled on the idol's horrible twists. We find things tucked away here and there amid the coils, as if they had been playfully left for us to find, or as if the idol had coiled round them.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultloneandlevelsandsdefault_success",
+            "label": "The City No More",
+            "actionid": "explore",
+            "requirements": {
+                "vaultloneandlevelsandsdefault": 1
+            },
+            "effects": {
+                "vaultloneandlevelsandsdefault": -1
+            },
+            "deckeffects": {
+                "vaultrewardsf": 3
+            },
+            "startdescription": "The wind of Miah is a pettish wind. It tugs at our garments like a needy child; it tosses sand in our faces; it whines among the dust-choked stones. The desolation of the city is not quite absolute. There are pillars, arches, sand-blinded statues, steps to nowhere.",
+            "description": "We find relics in an abandoned chamber which might equally have been a cellar or a shrine. The walls are cracked and sand has poured through. When we return to the surface, the wind is rising. It almost tugs us from our feet. Perhaps it missed us.",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "expeditionascensionmothe",
+                    "chance": 100
+                },
+                {
+                    "id": "expeditionascensionhearte",
+                    "chance": 100
+                }
+            ]
+        }
+    ]
+}

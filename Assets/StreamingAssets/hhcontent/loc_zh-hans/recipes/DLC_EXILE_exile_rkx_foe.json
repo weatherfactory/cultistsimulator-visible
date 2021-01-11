@@ -1,0 +1,724 @@
+{
+	"recipes": [
+		{
+			"id": "rkx.foe.arrive",
+			"actionId": "rkx.foe",
+			"label": "我的敌手快来了！",
+			"startdescription": "霜冻把窗户冻得严严实实，烛光摇曳不定。我太了解这些迹象的含义了。",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"alt": [
+				{
+					"id": "rkx.spawn.escort",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.arrive.mapedge",
+			"actionId": "rkx.foe",
+			"label": "我的敌手已至！",
+			"startdescription": "荣誉，或者说傲慢，让他孤身前来。",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "rkx.foe.arrive.defiance",
+			"actionId": "rkx.foe",
+			"label": "我把我的敌手引来了！",
+			"startdescription": "希望我不会后悔。",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "foe.weaknesses.generate.backup",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.foe.attack"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.selector",
+			"actionId": "rkx.foe",
+			"label": "我的敌手正在跟踪我",
+			"startdescription": "即使我看不见他，我也知道他在那里。他随时都会攻击。",
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack",
+					"chance": 30
+				},
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.obscured",
+			"actionId": "rkx.foe",
+			"label": "我的敌手就在附近！",
+			"startdescription": "“你逃不掉的。我太了解你了。”",
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"effects": {
+				"obscurity": -1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "隐秘",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 20,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack",
+			"actionId": "rkx.foe",
+			"label": "我的敌手正在进攻！",
+			"startdescription": "“你应该跑得更远些。”[敌手的攻击通常会命中。添加一张合适的卡牌来防御。分心之物会让你得到暂时的喘息，但敌手只会受到少数分心之物的影响；一旦你尝试出了他的弱点，你会记在心中。有时他会破坏你的武器。]",
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Defence",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"defiance.consecration.lionsmith": 1
+					},
+					"forbidden": {
+						"uq.weapon.profane": 1,
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.spawn.escort",
+					"additional": true
+				},
+				{
+					"id": "rkx.foe.mock"
+				}
+			],
+			"warmup": 20,
+			"effects": {
+				"husk": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.ligeian"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.cold"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.heat"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.sea"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.faith"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.cats"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.heights"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.horned"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.wolf"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.flowermaker"
+				},
+				{
+					"id": "rkx.foe.attack.success.wrongdistraction"
+				},
+				{
+					"id": "rkx.foe.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.foe.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.mock",
+			"actionId": "rkx.foe",
+			"label": "如狮子匠般大笑",
+			"startdescription": "我可以用一种非常古典的方式来嘲讽我的敌手……以此面对他的攻击。也许称为狮子匠的司辰会欣赏我的勇气。[遭受两处伤口，将反抗提升一级。]",
+			"requirements": {
+				"defiance.consecration.lionsmith": 1,
+				"defiance.foetaunted": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "defiance.consecration.lionsmith",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"alt": [
+				{
+					"id": "spit.foe.attack.success.mocked",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"desire": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.attack.success.mocked"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack.success.mocked",
+			"actionId": "rkx.foe",
+			"label": "一力降十会",
+			"startdescription": "我的敌手发出愤怒的嘶吼！在我拉开他之前，他就给了我致命一击。",
+			"linked": [
+				{
+					"id": "rkx.foe.attack"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.success.mocked",
+			"actionId": "spit.foe.attack",
+			"label": "受伤严重！",
+			"startdescription": "我已经为我的勇气付出了代价——",
+			"effects": {
+				"wound.exile": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.foe.ligeian",
+			"actionId": "rkx.foe",
+			"label": "丽姬亚的干扰",
+			"startdescription": "即便是我的敌手也会忌惮丽姬亚俱乐部成员。他在犹豫。",
+			"requirements": {
+				"ligeian": 1
+			},
+			"effects": {
+				"ligeian": -1
+			},
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "spit.foe.attack.failure.ligeian",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.cold",
+			"actionId": "rkx.foe",
+			"label": "北风为我之盾—— ",
+			"startdescription": "传言是真的——雪使我的敌手变得迟钝和愚蠢。",
+			"requirements": {
+				"op.cold": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.cold": 1
+			},
+			"purge": {
+				"rkx.weakness.cold.hidden": 1
+			},
+			"effects": {
+				"op.cold": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.heat",
+			"actionId": "rkx.foe",
+			"label": "南风为我之盾—— ",
+			"startdescription": "传言是真的——当天气足够热的时候，我的敌手就会变得迟钝和愚蠢。",
+			"requirements": {
+				"op.heat": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.heat": 1
+			},
+			"purge": {
+				"rkx.weakness.heat.hidden": 1
+			},
+			"effects": {
+				"op.heat": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.sea",
+			"actionId": "rkx.foe",
+			"label": "海洋为我之盾——",
+			"startdescription": "所有清算人都很当心海洋。但我听到的是真的：我的敌手害怕海洋的触碰。",
+			"requirements": {
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.sea": 1
+			},
+			"purge": {
+				"rkx.weakness.sea.hidden": 1
+			},
+			"effects": {
+				"op.sea": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.faith",
+			"actionId": "rkx.foe",
+			"label": "老习惯",
+			"startdescription": "正如我长期以来所怀疑的那样，我的敌手的成长经历对他造成了影响。他不是一个信徒，但他被他对信仰的尊重所束缚。",
+			"requirements": {
+				"op.faith": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.faith": 1
+			},
+			"purge": {
+				"rkx.weakness.faith.hidden": 1
+			},
+			"effects": {
+				"op.faith": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.cats",
+			"actionId": "rkx.foe",
+			"label": "狮子匠的小作品",
+			"startdescription": "我的敌手害怕猫！他早就准备好了谋杀任何一个被标记的人。现在我知道原因了。",
+			"requirements": {
+				"op.cats": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.cats": 1
+			},
+			"purge": {
+				"rkx.weakness.cats.hidden": 1
+			},
+			"effects": {
+				"op.cats": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.heights",
+			"actionId": "rkx.foe",
+			"label": "重力的威胁",
+			"startdescription": "高处使我的敌手头晕目眩，意志消沉。我将利用这个优势。",
+			"requirements": {
+				"op.heights": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.heights": 1
+			},
+			"purge": {
+				"rkx.weakness.heights.hidden": 1
+			},
+			"effects": {
+				"op.heights": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.horned",
+			"actionId": "rkx.foe",
+			"label": "双角斧的阴影",
+			"startdescription": "双角斧不喜欢我的敌手，它的影子落在哪里，他就犹豫不决。",
+			"requirements": {
+				"op.horned": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.horned": 1
+			},
+			"purge": {
+				"rkx.weakness.horned.hidden": 1
+			},
+			"effects": {
+				"op.horned": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.wolf",
+			"actionId": "rkx.foe",
+			"label": "裂分之狼的气息",
+			"startdescription": "在他漫长而不光彩的生涯中，我的敌手曾做过一件事，引起了裂分之狼的特别敌意。在狼强大的地方，他就变得谨慎。",
+			"requirements": {
+				"op.wolf": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.wolf": 1
+			},
+			"purge": {
+				"rkx.weakness.wolf.hidden": 1
+			},
+			"effects": {
+				"op.wolf": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.flowermaker",
+			"actionId": "rkx.foe",
+			"label": "制花人的光芒",
+			"startdescription": "我的敌手被制花人的影响迷混。我可能永远都不知道那到底是什么。",
+			"requirements": {
+				"op.flowermaker": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.flowermaker": 1
+			},
+			"purge": {
+				"rkx.weakness.flowermaker.hidden": 1
+			},
+			"effects": {
+				"op.flowermaker": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack.success.wrongdistraction",
+			"actionId": "rkx.foe",
+			"label": "轻蔑一笑",
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1,
+				"distraction": 1
+			},
+			"startdescription": "'v",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.foe.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"distraction": 1
+						}
+					}
+				}
+			],
+			"effects": {
+				"distraction": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "rkx.foe.attack.success",
+			"actionId": "rkx.foe",
+			"label": "毫无防御",
+			"startdescription": "“你总是太慢——”",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.foe.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"distraction": 1
+						}
+					}
+				}
+			],
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.success",
+			"actionId": "spit.foe.attack",
+			"label": "沉重一击！",
+			"startdescription": "这混蛋还是强大得可怕。[七处伤口就会让你完蛋]",
+			"effects": {
+				"wound.exile": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.foe.attack.failure",
+			"actionId": "rkx.foe",
+			"label": "我的敌手被阻拦了",
+			"startdescription": "我挡下了他的攻击—— ",
+			"alt": [
+				{
+					"id": "spit.foe.attack.failure.lore",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"lore": 1
+						}
+					}
+				},
+				{
+					"id": "spit.foe.attack.failure.weapon",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"weapon": 1
+						}
+					}
+				},
+				{
+					"id": "spit.foe.attack.failure.associate",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"associate": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.failure.lore",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"lore": 1
+			},
+			"label": "训练有素",
+			"startdescription": "这很有用。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.weapon",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"weapon": 1
+			},
+			"label": "器械有方",
+			"startdescription": "这很有用。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "spit.foe.attack.failure.weapon.broken",
+					"chance": 30
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.weapon.broken",
+			"actionId": "spit.foe.attack.failure",
+			"label": "我也要痛揍你——！",
+			"startdescription": "@#weapon.b.2.exhausted|他离得太近了！他抓起步枪，像棍子一样折断，然后把它扔到一边。#weapon.b.1.exhausted|#weapon.d.exhausted|他离得太近了！他抓起步枪，像棍子一样折断，然后把它扔到一边。#weapon.e.exhausted|他抓住了比德之刃！用一只手把它掰成两段。他抢走了覆羽！一阵风吹起，把它刮走了。@",
+			"requirements": {
+				"weapon.c.exhausted": -1
+			},
+			"effects": {
+				"exhausted": -3,
+				"curio": -1,
+				"husk": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.associate",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"associate": 1
+			},
+			"label": "患难之交",
+			"startdescription": "我的伙伴为我挡下了他！",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "spit.foe.attack.failure.associate.killed",
+					"chance": 30
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.associate.killed",
+			"actionId": "spit.foe.attack.failure",
+			"label": "意外的牺牲",
+			"startdescription": "我的伙伴在苦战中牺牲了!但是他们也给我的敌手留下了纪念品。[盟友和伙伴有时会在与敌手战斗中死亡。]",
+			"aspects": {
+				"killmortal": 1
+			},
+			"effects": {
+				"wound.foe": 1,
+				"grief": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.ligeian",
+			"actionId": "spit.foe.attack.failure",
+			"label": "人外有人",
+			"startdescription": "我的敌手和丽姬亚俱乐部的一名成员纠缠在一起，现在他后悔了。",
+			"effects": {
+				"wound.foe": 1
+			},
+			"warmup": 2
+		}
+	]
+}

@@ -1,0 +1,126 @@
+{
+	"recipes": [
+		{
+			"id": "conjurationpower",
+			"label": "心の鍵",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"follower": 1,
+				"ascensionpowera": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "この儀式を使って時の神を自分の体に取り入れることができるのか？力が香りのように付いてくる。もちろん......どの時の神が来るかは分からない。",
+			"description": "儀式が終わった。扉が開いている。",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "conjurationpowerclue",
+			"label": "心の鍵？",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionpowera": 1
+			},
+			"effects": {
+				"mystique": 1
+			},
+			"startdescription": "この儀式を使って時の神を自分の体に取り入れることができるのか？力が香りのように付いてくる。",
+			"description": "だめだった。別の召喚文が必要だ――道を開くものが良い。進んで生贄になってくれる人も必要だ。",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "conjurationenlightenment",
+			"label": "夢の中の扉",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"funds": 1,
+				"ascensionenlightenmenta": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "この儀式を使えば見張り番の足跡を辿り、壁のない家について知ることができる。",
+			"description": "儀式が終わった。扉が開いている。",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "conjurationenlightenmentclue",
+			"label": "夢の中の扉？",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionenlightenmenta": 1
+			},
+			"startdescription": "この儀式を使えば見張り番の足跡を辿り、壁のない家について知ることができるのだろうか？",
+			"description": "上手くいかなかった。別の力――開放の力――も必要だ。それに、見張り番の道を照らす希少なロウソクを購入するために、資金が必要になるだろう。",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "ascensionpowerapromotion",
+			"label": "赤い聖杯の訪れ",
+			"actionId": "grailminorpromotion",
+			"requirements": {
+				
+			},
+			"slots": [
+				{
+					"id": "Dedication",
+					"label": "献身",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"startdescription": "心臓が膨らみ、血が燃え上がる。あともう少しだ。もっと精進しなければならない。",
+			"description": "儀式は失敗した！あともう少しだった......炎とロウソク、血と心臓のように近くまで来ていた。もう一度試さなければ。",
+			"warmup": 60,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "ascensionenlightenmentapromotion",
+			"label": "見張り番の足音が聞こえる",
+			"actionId": "watchmanminorpromotion",
+			"requirements": {
+				
+			},
+			"effects": {
+				"mystique": 1
+			},
+			"slots": [
+				{
+					"id": "Dedication",
+					"label": "献身",
+					"required": {
+						"reason": 1
+					}
+				}
+			],
+			"startdescription": "世界の壁がシルクのように震えている。あともう少しだ。すべての思考を集中させなければいけない。",
+			"description": "自分の求める理解力を指先で触れてみた。あともう少しだ。もう一度試してみよう。",
+			"warmup": 60,
+			"craftable": false,
+			"comments": "legacy",
+			"burnimage": "flammarion"
+		}
+	]
+}

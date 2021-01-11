@@ -1,0 +1,1801 @@
+{
+    "elements": [
+        {
+            "id": "fragmentedge",
+            "label": "A Knife's Secret",
+            "aspects": {
+                "edge": 2,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.practical": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to subvert it, and get Winter lore instead.",
+                    "required": {
+                        "fragmentedge": 1,
+                        "fragmentwinter": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "When our ancestors forged swords, taught the arts of martial movement, spoke curses on the eve of battle - all these things shared certain patterns. [Use this in a Rite with a corpse and Winter power, and the corpse will rise.]",
+            "xtriggers": {
+                "epiphany": "fragmentedgeb"
+            }
+        },
+        {
+            "id": "fragmentedgeb",
+            "label": "Chiliarch's Lesson",
+            "aspects": {
+                "edge": 4,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.practical": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to subvert it, and get Winter lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentedgeb": 1,
+                        "fragmentwinterb": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "This is the bone-deep story the thousandman learnt in antiquity, of blood and its exits. To speak it aloud is to hear the sword hiss. [Use this in a Rite with a corpse and Winter power, and the corpse will rise.]",
+            "xtriggers": {
+                "epiphany": "fragmentedgec"
+            }
+        },
+        {
+            "id": "fragmentedgec",
+            "label": "An Operation of the Labhite",
+            "aspects": {
+                "edge": 6,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.practical": 1,
+                "challenge.grim": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to subvert it, and get Winter lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentedgec": 1,
+                        "fragmentwinterc": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "A series of mystic exercises that requires both dedication and terror. [Use this in a Rite with a corpse and Winter power, and the corpse will rise.]",
+            "xtriggers": {
+                "epiphany": "fragmentedged"
+            }
+        },
+        {
+            "id": "fragmentedged",
+            "label": "The Colonel's Names",
+            "aspects": {
+                "edge": 8,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.practical": 1,
+                "challenge.grim": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to subvert it, and get Winter lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentedged": 1,
+                        "fragmentwinterd": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
+            "xtriggers": {
+                "epiphany": "fragmentedgee"
+            }
+        },
+        {
+            "id": "fragmentedgee",
+            "label": "The Lionsmith's Names",
+            "aspects": {
+                "edge": 10,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.practical": 1,
+                "challenge.grim": 1,
+                "challenge.knowledge": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to subvert it, and get Winter lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentedgee": 1,
+                        "fragmentwintere": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
+            "xtriggers": {
+                "epiphany": "fragmentedgef"
+            }
+        },
+        {
+            "id": "fragmentedgef",
+            "label": "The Alignments of Murder",
+            "aspects": {
+                "edge": 12,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.practical": 1,
+                "challenge.grim": 1,
+                "challenge.knowledge": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to subvert it, and get Winter lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentedgef": 1,
+                        "fragmentwinterf": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "These are the arts that ensure an ending.",
+            "xtriggers": {
+                "epiphany": "fragmentedgeg"
+            }
+        },
+        {
+            "id": "fragmentedgeg",
+            "label": "The Mysteries of Force",
+            "aspects": {
+                "edge": 14,
+                "lore": 1,
+                "subvertable_lore": 1
+            },
+            "description": "The Colonel and the Lionsmith are gods-who-were-flesh, but the Wolf-Divided is a god-who-was-blood. Cunning, Strength and Agony are the three roots of victory, and here is their secret doctrine...",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "unique": true
+        },
+        {
+            "id": "fragmentforge",
+            "label": "A Smith's Secret",
+            "aspects": {
+                "forge": 2,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1
+            },
+            "description": "In five continents, smiths have whispered the same words to the iron. Murderers have been known to whisper these words, too. And adepts, of course. These words are spoken in ritual to inspire an unmerciful Change.",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead.",
+                    "required": {
+                        "fragmentforge": 1,
+                        "fragmentedge": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentforgeb"
+            }
+        },
+        {
+            "id": "fragmentforgeb",
+            "label": "An Ardent Orison",
+            "aspects": {
+                "forge": 4,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1
+            },
+            "description": "When we watch a fire, what are we watching for? When we find it, these are the words it will speak: a word that sanctifies the change that comes when the seared skin peels.",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentforgeb": 1,
+                        "fragmentedgeb": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentforgec"
+            }
+        },
+        {
+            "id": "fragmentforgec",
+            "label": "A Shaping Chant",
+            "aspects": {
+                "forge": 6,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.practical": 1
+            },
+            "description": "The proper words must be employed when the Change comes. [Use this in a Rite with a Knock influence and a Bone Flute - or other resources of equal power - to summon a Caligine.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentforgec": 1,
+                        "fragmentedgec": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentforged"
+            }
+        },
+        {
+            "id": "fragmentforged",
+            "label": "Callidate Invocation",
+            "aspects": {
+                "forge": 8,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.practical": 1
+            },
+            "description": "The Names of the Forge have all spoken these words. [Use this in a Rite with a Knock influence and a Bone Flute - or other resources of equal power - to summon a Caligine.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentforged": 1,
+                        "fragmentedged": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentforgee"
+            }
+        },
+        {
+            "id": "fragmentforgee",
+            "label": "Formula Fissive",
+            "aspects": {
+                "forge": 10,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.practical": 1,
+                "challenge.illumination": 1
+            },
+            "description": "Break a thing, and you have fragments. Break those fragments, and you have dust. Break the dust, and then break what remains. Here is fire. [Use this in a Rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentforgee": 1,
+                        "fragmentedgee": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentforgef"
+            }
+        },
+        {
+            "id": "fragmentforgef",
+            "label": "Furnace Paean",
+            "aspects": {
+                "forge": 12,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.practical": 1,
+                "challenge.illumination": 1
+            },
+            "description": "This is the hymn the heat sings to the iron. If we imitate it faithfully enough we will parch our lips and crisp our tongue, but O, the rewards. [Use this in a Rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentforgef": 1,
+                        "fragmentedgef": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentforgeg"
+            }
+        },
+        {
+            "id": "fragmentforgeg",
+            "label": "Mysteries of Making",
+            "aspects": {
+                "forge": 14,
+                "lore": 1,
+                "subvertable_lore": 1
+            },
+            "description": "The Forge of Days, the Meniscate and the Madrugad are gods-from-Light. Mercury, silver and gold are the seeds of the Work, and here is their secret doctrine... [Use this in a Rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "unique": true
+        },
+        {
+            "id": "fragmentgrail",
+            "label": "A Red Secret",
+            "aspects": {
+                "grail": 2,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1
+            },
+            "description": "Some words are spelt correctly only when the proper ink is used.",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead.",
+                    "required": {
+                        "fragmentgrail": 1,
+                        "fragmentmoth": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentgrailb"
+            }
+        },
+        {
+            "id": "fragmentgrailb",
+            "label": "A Megalesian Incantation",
+            "aspects": {
+                "grail": 4,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1
+            },
+            "description": "The Great Mother remembers.",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentgrailb": 1,
+                        "fragmentmothb": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentgrailc"
+            }
+        },
+        {
+            "id": "fragmentgrailc",
+            "label": "A Delightful Sacrament",
+            "aspects": {
+                "grail": 6,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.practical": 1
+            },
+            "description": "So pleasant upon the ear. One could listen over and over. These are the words that make sacrifice sweet. [Use this with Byzantine Tinct and a Moth influence - or other resources of equal power - to summon a Raw Prophet.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentgrailc": 1,
+                        "fragmentmothc": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentgraild"
+            }
+        },
+        {
+            "id": "fragmentgraild",
+            "label": "Thiatic Invocation",
+            "aspects": {
+                "grail": 8,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.practical": 1
+            },
+            "description": "Raucous shrieks attend the passage of the Names of the Grail. We reproduce them as best we can, for the pulsing power they lend. [Use this with Byzantine Tinct and a Moth influence - or other resources of equal power - to summon a Raw Prophet.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentgraild": 1,
+                        "fragmentmothd": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentgraile"
+            }
+        },
+        {
+            "id": "fragmentgraile",
+            "label": "Formulae Voluptuous",
+            "aspects": {
+                "grail": 10,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.practical": 1,
+                "challenge.paradox": 1
+            },
+            "description": "There exist some pleasures intense enough to corrupt the laws of the physical world. [This formula can be used in a Rite with Bitterblack Salts and a Subtle Rupture - or similar sources of power - to summon Ezeem itself.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentgraile": 1,
+                        "fragmentmothe": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentgrailf"
+            }
+        },
+        {
+            "id": "fragmentgrailf",
+            "label": "Anthic Elaboration",
+            "aspects": {
+                "grail": 12,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.practical": 1,
+                "challenge.paradox": 1
+            },
+            "description": "The Flowermaker cannot touch you; he cannot find you; he always has what you desire. Even an elaboration of the properties of his works can draw the attention of Hours. [This formula can be used in a Rite with Bitterblack Salts and a Subtle Rupture - or similar sources of power - to summon Ezeem itself.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentgrailf": 1,
+                        "fragmentmothf": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentgrailg"
+            }
+        },
+        {
+            "id": "fragmentgrailg",
+            "label": "Devouring Mysteries",
+            "aspects": {
+                "grail": 14,
+                "lore": 1,
+                "subvertable_lore": 1
+            },
+            "description": "The Grail was the first god-who-was-blood. The Flowermaker came from Light. The Beach-Crow was flesh. Hunger and Greed and Yearning are the matrix of appetite, and here is their secret doctrine...  [Use this formula in Rite with Bitterblack Salts and a Subtle Rupture - or similar sources of power - to summon Ezeem itself.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "unique": true
+        },
+        {
+            "id": "fragmentheart",
+            "label": "A Thunderous Secret",
+            "aspects": {
+                "heart": 2,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1
+            },
+            "description": "There are common sentiments in every thunderclap. Let us acknowledge them.",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead.",
+                    "required": {
+                        "fragmentheart": 1,
+                        "fragmentgrail": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentheartb"
+            }
+        },
+        {
+            "id": "fragmentheartb",
+            "label": "Words that Walk",
+            "aspects": {
+                "heart": 4,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1
+            },
+            "description": "The syllables of this formula are compelling. I find myself snapping my fingers to its rhythm. It desires not to cease.",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentheartb": 1,
+                        "fragmentgrailb": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentheartc"
+            }
+        },
+        {
+            "id": "fragmentheartc",
+            "label": "A Waking Chant",
+            "aspects": {
+                "heart": 6,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.practical": 1
+            },
+            "description": "Who could hear this and remain unmoved? The sleeping? The dead? The earth and the sky? [Use this in a Rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentheartc": 1,
+                        "fragmentgrailc": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentheartd"
+            }
+        },
+        {
+            "id": "fragmentheartd",
+            "label": "Geminate Invocation",
+            "aspects": {
+                "heart": 8,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.practical": 1
+            },
+            "description": "The Sister-and-Witch has always been invoked for protection, at crossroads and at moonrise and where the land shelters the sea. [Use this in a Rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentheartd": 1,
+                        "fragmentgraild": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmenthearte"
+            }
+        },
+        {
+            "id": "fragmenthearte",
+            "label": "Formulae Vigilant",
+            "aspects": {
+                "heart": 10,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.practical": 1,
+                "challenge.obsessive": 1
+            },
+            "description": "One who watches does not sleep, one who sleeps watches not. <b>One who watches does not sleep, one who sleeps watches not.</b> [Use this in a Rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmenthearte": 1,
+                        "fragmentgraile": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentheartf"
+            }
+        },
+        {
+            "id": "fragmentheartf",
+            "label": "Velvet Charm",
+            "aspects": {
+                "heart": 12,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.practical": 1,
+                "challenge.obsessive": 1
+            },
+            "description": "The Velvet always answers 'No', but we can shelter in that 'No' like beasts in the crook of a tree. [Use this in a Rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentheartf": 1,
+                        "fragmentgrailf": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentheartg"
+            }
+        },
+        {
+            "id": "fragmentheartg",
+            "label": "Unceasing Mysteries",
+            "aspects": {
+                "heart": 14,
+                "lore": 1,
+                "subvertable_lore": 1
+            },
+            "description": "The Grail ripped the Thunderskin from flesh. The Sister-and-Witch was born from two wombs. The Velvet woke when the Wood-roots tasted blood. The Heart is Blood's Drum, and here is its secret doctrine... [Use this in a Rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "unique": true
+        },
+        {
+            "id": "fragmentknock",
+            "label": "A Locksmith's Secret",
+            "aspects": {
+                "knock": 2,
+                "lore": 1,
+                "challenge.knowledge": 1
+            },
+            "description": "Sooner or later, every locksmith has the Dream. Now we recite its seven phases... [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore.",
+                    "required": {
+                        "fragmentedge": 1,
+                        "fragmentforge": 1,
+                        "fragmentgrail": 1,
+                        "fragmentheart": 1,
+                        "fragmentknock": 1,
+                        "fragmentlantern": 1,
+                        "fragmentmoth": 1,
+                        "fragmentwinter": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentknockb"
+            }
+        },
+        {
+            "id": "fragmentknockb",
+            "label": "An Iguvine Rite",
+            "aspects": {
+                "knock": 4,
+                "lore": 1,
+                "challenge.knowledge": 1
+            },
+            "description": "Every door in the Mansus requires its sacrifice before it will open. The Iguvine Rites prescribe the manner of the sacrifice. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentedgeb": 1,
+                        "fragmentforgeb": 1,
+                        "fragmentgrailb": 1,
+                        "fragmentheartb": 1,
+                        "fragmentknockb": 1,
+                        "fragmentlanternb": 1,
+                        "fragmentmothb": 1,
+                        "fragmentwinterb": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentknockc"
+            }
+        },
+        {
+            "id": "fragmentknockc",
+            "label": "A Consent of Wounds",
+            "aspects": {
+                "knock": 6,
+                "lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.grim": 1
+            },
+            "description": "To open certain Ways, one must first open oneself. This practice outlines that opening, in the name of the Mother of Ants. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentedgec": 1,
+                        "fragmentforgec": 1,
+                        "fragmentgrailc": 1,
+                        "fragmentheartc": 1,
+                        "fragmentknockc": 1,
+                        "fragmentlanternc": 1,
+                        "fragmentmothc": 1,
+                        "fragmentwinterc": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentknockd"
+            }
+        },
+        {
+            "id": "fragmentknockd",
+            "label": "Meniscate Invocation",
+            "aspects": {
+                "knock": 8,
+                "lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.grim": 1
+            },
+            "description": "When the moon's face was wounded, these words appeared. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentedged": 1,
+                        "fragmentforged": 1,
+                        "fragmentgraild": 1,
+                        "fragmentheartd": 1,
+                        "fragmentknockd": 1,
+                        "fragmentlanternd": 1,
+                        "fragmentmothd": 1,
+                        "fragmentwinterd": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentknocke"
+            }
+        },
+        {
+            "id": "fragmentknocke",
+            "label": "Formulae Ophidian",
+            "aspects": {
+                "knock": 10,
+                "lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.grim": 1,
+                "challenge.paradox": 1
+            },
+            "description": "Serpents are the visitors which may not be denied. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentedgee": 1,
+                        "fragmentforgee": 1,
+                        "fragmentgraile": 1,
+                        "fragmenthearte": 1,
+                        "fragmentknocke": 1,
+                        "fragmentlanterne": 1,
+                        "fragmentmothe": 1,
+                        "fragmentwintere": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentknockf"
+            }
+        },
+        {
+            "id": "fragmentknockf",
+            "label": "Liminal Evocation",
+            "aspects": {
+                "knock": 12,
+                "lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.grim": 1,
+                "challenge.paradox": 1
+            },
+            "description": "One god-who-was-stone remains, and she watches all thresholds. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentedgef": 1,
+                        "fragmentforgef": 1,
+                        "fragmentgrailf": 1,
+                        "fragmentheartf": 1,
+                        "fragmentknockf": 1,
+                        "fragmentlanternf": 1,
+                        "fragmentmothf": 1,
+                        "fragmentwinterf": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentknockg"
+            }
+        },
+        {
+            "id": "fragmentknockg",
+            "label": "Mysteries of Opening",
+            "aspects": {
+                "knock": 14,
+                "lore": 1
+            },
+            "description": "The Mother of Ants is the child of two rivers. The Horned-Axe is the last god-from-Stone. The Meniscate was born in the Moon from Light. The Wound and the Threshold and the Revelation are all the Gate's aspects, and here is their secret doctrine... [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "unique": true
+        },
+        {
+            "id": "fragmentlantern",
+            "label": "A Watchman's Secret",
+            "aspects": {
+                "lantern": 2,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1
+            },
+            "description": "It has been expressed like this: 'Each Hour has its colour, but colour exists only where there is light.'",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",
+                    "required": {
+                        "fragmentlantern": 1,
+                        "fragmentforge": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentlanternb"
+            }
+        },
+        {
+            "id": "fragmentlanternb",
+            "label": "A Mansus-Glimpse",
+            "aspects": {
+                "lantern": 4,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1
+            },
+            "description": "A snatch of poetry; a single memory of a certain house that all of us visit at least twice in our lives. For one's first visit to the Mansus, this lore is almost essential.",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentlanternb": 1,
+                        "fragmentforgeb": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentlanternc"
+            }
+        },
+        {
+            "id": "fragmentlanternc",
+            "label": "An Unmerciful Mantra",
+            "aspects": {
+                "lantern": 6,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.illumination": 1
+            },
+            "description": "'Mercy', saith the Watchman, 'is found only in shadow.'",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentlanternc": 1,
+                        "fragmentforgec": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentlanternd"
+            }
+        },
+        {
+            "id": "fragmentlanternd",
+            "label": "Phanaean Invocation",
+            "aspects": {
+                "lantern": 8,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.illumination": 1
+            },
+            "description": "The Door-in-the-Eye navigates; he is not merciful; but first and always, he illuminates. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentlanternd": 1,
+                        "fragmentforged": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentlanterne"
+            }
+        },
+        {
+            "id": "fragmentlanterne",
+            "label": "Formulae Concursate",
+            "aspects": {
+                "lantern": 10,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.illumination": 1,
+                "challenge.paradox": 1
+            },
+            "description": "The Concursum waits at the Lantern of the Mansus. It has been called the Chamber of Ways and also the Chamber of Endings. Its intricacies are probably beyond human comprehension, but these formulae are a first approximation. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentlanterne": 1,
+                        "fragmentforgee": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentlanternf"
+            }
+        },
+        {
+            "id": "fragmentlanternf",
+            "label": "Mantra of Ascent",
+            "aspects": {
+                "lantern": 12,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.illumination": 1,
+                "challenge.paradox": 1
+            },
+            "description": "The Ascent of Knives is the bloodiest of the Watchman's tests. Those who pass it and are dead enter the service of the Sun-in-Rags. Those living who pass it are a little closer to the Glory. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentlanternf": 1,
+                        "fragmentforgef": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentlanterng"
+            }
+        },
+        {
+            "id": "fragmentlanterng",
+            "label": "Illuminate Mysteries",
+            "aspects": {
+                "lantern": 14,
+                "lore": 1,
+                "subvertable_lore": 1
+            },
+            "description": "The Meniscate, the Madrugad, the Flowermaker and the Forge of Days are the gods-from-Light. There is a fifth, but now we know it is not the Watchman. Yet the Watchman shares a secret doctrine with those five, and here is that doctrine... [Use this in a Rite with a Subtle Rupture and a Paradoxical Curio, and someone will come. Speak it to a Hunter, and it might drive them insane on the spot.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "unique": true
+        },
+        {
+            "id": "fragmentmoth",
+            "label": "A Barber's Warning",
+            "aspects": {
+                "moth": 2,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1
+            },
+            "description": "A power of the Wood enjoys the separation of the lock from the scalp. For attention, burn it. For opportunity, bury it. [Speak this over a corpse in a Rite, with a Winter influence present, and the corpse will rise.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Moth lore fragment of the same level to upgrade to the next level. Study with Lantern lore of the same level to subvert it, and get Lantern lore instead.",
+                    "required": {
+                        "fragmentmoth": 1,
+                        "fragmentlantern": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentmothb"
+            }
+        },
+        {
+            "id": "fragmentmothb",
+            "label": "A Wood-Whisper",
+            "aspects": {
+                "moth": 4,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1
+            },
+            "description": "Lie awake, and listen. The wind speaks in the branches. The house cries out in its sleep. These are the roads that chaos rides. [Speak this over a corpse in a Rite, with a Winter influence present, and the corpse will rise.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Moth lore fragment of the same level to upgrade to the next level. Study with Lantern lore of the same level to subvert it, and get Lantern lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentmothb": 1,
+                        "fragmentlanternb": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentmothc"
+            }
+        },
+        {
+            "id": "fragmentmothc",
+            "label": "An Ecdysiast's Parable",
+            "aspects": {
+                "moth": 6,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.illumination": 1
+            },
+            "description": "The Ecdysiast's Riddle is 'What may be lost?' Each Ecdysiast's Parable is an attempt to answer the Riddle. ",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Moth lore fragment of the same level to upgrade to the next level. Study with Lantern lore of the same level to subvert it, and get Lantern lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentmothc": 1,
+                        "fragmentlanternc": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentmothd"
+            }
+        },
+        {
+            "id": "fragmentmothd",
+            "label": "Moldywarp Admonitions",
+            "aspects": {
+                "moth": 8,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.illumination": 1
+            },
+            "description": "Moldywarp keeps her crowns in the moss and her feet in the dirt and the trees locked jaw-tight. Moldywarp has these warnings for you.",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Moth lore fragment of the same level to upgrade to the next level. Study with Lantern lore of the same level to subvert it, and get Lantern lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentmothd": 1,
+                        "fragmentlanternd": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentmothe"
+            }
+        },
+        {
+            "id": "fragmentmothe",
+            "label": "Centipede Testament",
+            "aspects": {
+                "moth": 10,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.illumination": 1,
+                "challenge.obsessive": 1
+            },
+            "description": "The Centipede came up out of the sands and went in under the roots. She found a new home but now she can't go home. She creeps in everywhere else: keyholes and histories and the channels of birth and sight and hearing. Here's what she has to say.",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Moth lore fragment of the same level to upgrade to the next level. Study with Lantern lore of the same level to subvert it, and get Lantern lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentmothe": 1,
+                        "fragmentlanterne": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentmothf"
+            }
+        },
+        {
+            "id": "fragmentmothf",
+            "label": "Thigh-born Thorax-Sweet",
+            "aspects": {
+                "moth": 12,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.intuition": 1,
+                "challenge.illumination": 1,
+                "challenge.obsessive": 1
+            },
+            "description": "Vine-crowned moth-king hatched in the thigh of the thunder-king who's dead. Drink up his belly-lymph. These are the sights you'll see.",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Moth lore fragment of the same level to upgrade to the next level. Study with Lantern lore of the same level to subvert it, and get Lantern lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentmothf": 1,
+                        "fragmentlanternf": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentmothg"
+            }
+        },
+        {
+            "id": "fragmentmothg",
+            "label": "Mare-in-the-Yew",
+            "aspects": {
+                "moth": 14,
+                "lore": 1,
+                "subvertable_lore": 1
+            },
+            "description": "The real Hours don't meet the gods-from-Nowhere, but the Ring-Yew meets the Mare-in-the-Tree in where the Wood grows lush. Their couplings are forbidden, and forbidden things have power, and this is the story of their couplings.",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "unique": true
+        },
+        {
+            "id": "fragmentsecrethistories",
+            "label": "An Occult Scrap",
+            "aspects": {
+                "secrethistories": 2,
+                "lore": 1,
+                "challenge.knowledge": 1
+            },
+            "description": "Secret histories are layered beneath the one we know, like the notes in rare wine. This is a detail from one of those histories. [Exploring with this scrap of knowledge may uncover secret locations in the Capital.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Secret Histories lore fragment of the same level to upgrade to the next level.",
+                    "required": {
+                        "fragmentsecrethistories": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentsecrethistoriesb"
+            }
+        },
+        {
+            "id": "fragmentsecrethistoriesb",
+            "label": "A Furtive Truth",
+            "aspects": {
+                "secrethistories": 4,
+                "lore": 1,
+                "challenge.knowledge": 1
+            },
+            "description": "A detail smuggled in from an adjacent narrative. Don't speak this where you may be overheard. [Exploring with this scrap of knowledge may uncover secret locations in the Shires.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Secret Histories lore fragment of the same level to upgrade to the next level. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentsecrethistoriesb": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentsecrethistoriesc"
+            }
+        },
+        {
+            "id": "fragmentsecrethistoriesc",
+            "label": "A Forgotten Chronicle",
+            "aspects": {
+                "secrethistories": 6,
+                "lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.intuition": 1
+            },
+            "description": "A story of a city without a gate, of a queen who was not born, of a war which was not fought. [Exploring with this scrap of knowledge may uncover secret locations on the Continent.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Secret Histories lore fragment of the same level to upgrade to the next level. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentsecrethistoriesc": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentsecrethistoriesd"
+            }
+        },
+        {
+            "id": "fragmentsecrethistoriesd",
+            "label": "Forbidden Epic",
+            "aspects": {
+                "secrethistories": 8,
+                "lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.intuition": 1
+            },
+            "description": "The attention of the Hours is drawn to the bloodiest wars. Afterwards, the Histories are braided like hair. [Exploring with this scrap of knowledge may uncover secret locations in the Land Beyond the Forest, across the Continent.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Secret Histories lore fragment of the same level to upgrade to the next level. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentsecrethistoriesd": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentsecrethistoriese"
+            }
+        },
+        {
+            "id": "fragmentsecrethistoriese",
+            "label": "Unresolved Ambiguity",
+            "aspects": {
+                "secrethistories": 10,
+                "lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.intuition": 1,
+                "challenge.illumination": 1
+            },
+            "description": "In the Mansus, the Hours strive one against another. As the struggles are resolved, they iron out the impossible, exalt the possible, tie the fraying braids of what has been into one golden ribbon of future. Everything is resolved. History becomes the past. There are, however, exceptions. [Exploring with this scrap of knowledge may uncover secret locations in the Rending Mountains, three thousand miles away among the wreck of the oldest empires.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Secret Histories lore fragment of the same level to upgrade to the next level. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentsecrethistoriese": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentsecrethistoriesf"
+            }
+        },
+        {
+            "id": "fragmentsecrethistoriesf",
+            "label": "Vagabond's Map",
+            "aspects": {
+                "secrethistories": 12,
+                "lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.intuition": 1,
+                "challenge.illumination": 1
+            },
+            "description": "The Vagabond is the one Hour who can never enter the Mansus, but she goes <i>everywhere</i> else... and, if you believe her boasts, she's the only one who knows all the Histories. Sometimes, she lets someone record her travels. [Exploring with this scrap of knowledge may uncover secret locations in the Lone and Level Sands, far from here.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Secret Histories lore fragment of the same level to upgrade to the next level. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentsecrethistoriesf": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentsecrethistoriesg"
+            }
+        },
+        {
+            "id": "fragmentsecrethistoriesg",
+            "label": "Port Noon Anecdote",
+            "aspects": {
+                "secrethistories": 14,
+                "lore": 1
+            },
+            "description": "Port Noon is where the Long go to enjoy the sea and the sun, to drink from the Spring that makes them forgotten, and to stay out of trouble. Mostly out of trouble. The stories you can hear in the Hotel Ciervo are golden-dewed, quintuple-distilled toasts to memory, served straight up. [Exploring with this scrap of knowledge may uncover secret locations in the Evening Isles, where Port Noon is located, across the great ocean.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "unique": true
+        },
+        {
+            "id": "fragmentwinter",
+            "label": "A Sexton's Secret",
+            "aspects": {
+                "winter": 2,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1
+            },
+            "description": "Certain knowledge, it is said, can be expressed only through the particular quality of a silence. It has been suggested that one can only read such knowledge with one's eyes closed, but only by mischievous commentators. [Use this in a Rite with a corpse and Edge aspect, and the corpse will rise.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Winter lore fragment of the same level to upgrade to the next level. Study with Heart lore of the same level to subvert it, and get Heart lore instead.",
+                    "required": {
+                        "fragmentwinter": 1,
+                        "fragmentheart": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentwinterb"
+            }
+        },
+        {
+            "id": "fragmentwinterb",
+            "label": "A White Ceremony",
+            "aspects": {
+                "winter": 4,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1
+            },
+            "description": "When I speak it, my lips don't crisp with frost. Each time, this is surprising. [Use this in a Rite with a Heart influence and Byzantine Tinct to summon the Voiceless Dead.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Winter lore fragment of the same level to upgrade to the next level. Study with Heart lore of the same level to subvert it, and get Heart lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentwinterb": 1,
+                        "fragmentheartb": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentwinterc"
+            }
+        },
+        {
+            "id": "fragmentwinterc",
+            "label": "An Operation of the Declining Sun",
+            "aspects": {
+                "winter": 6,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.grim": 1
+            },
+            "description": "This invokes, acknowledges and welcomes the passage to silence. [Use this in a Rite with a Heart influence and Byzantine Tinct to summon the Voiceless Dead.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Winter lore fragment of the same level to upgrade to the next level. Study with Heart lore of the same level to subvert it, and get Heart lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentwinterc": 1,
+                        "fragmentheartc": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentwinterd"
+            }
+        },
+        {
+            "id": "fragmentwinterd",
+            "label": "Invocation of the Ivory Dove",
+            "aspects": {
+                "winter": 8,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.grim": 1
+            },
+            "description": "There is a power that commemorates and grieves, from whom nothing is taken, but who cannot be deceived. You might expect to be able to crush him in your hand, into bird-bone fragments. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock - or other resources of equal power - to summon a Maid-in-the-Mirror.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Winter lore fragment of the same level to upgrade to the next level. Study with Heart lore of the same level to subvert it, and get Heart lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentwinterd": 1,
+                        "fragmentheartd": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentwintere"
+            }
+        },
+        {
+            "id": "fragmentwintere",
+            "label": "Recitation of Lost Hours",
+            "aspects": {
+                "winter": 10,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.grim": 1,
+                "challenge.obsessive": 1
+            },
+            "description": "Six are gone. Five came from Stone and one from Light. All went to Nowhere. Still their memories have power, and now we call upon it. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock - or other resources of equal power - to summon a Maid-in-the-Mirror.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Winter lore fragment of the same level to upgrade to the next level. Study with Heart lore of the same level to subvert it, and get Heart lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentwintere": 1,
+                        "fragmenthearte": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentwinterf"
+            }
+        },
+        {
+            "id": "fragmentwinterf",
+            "label": "The Divisions of the Names",
+            "aspects": {
+                "winter": 12,
+                "lore": 1,
+                "subvertable_lore": 1,
+                "challenge.knowledge": 1,
+                "challenge.grim": 1,
+                "challenge.obsessive": 1
+            },
+            "description": "When the Sun-in-Splendour was divided, its Names fractured too. Here are the shards of their names which once were whole. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock - or other resources of equal power - to summon a Maid-in-the-Mirror.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with a Winter lore fragment of the same level to upgrade to the next level. Study with Heart lore of the same level to subvert it, and get Heart lore instead. Or study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "fragmentwinterf": 1,
+                        "fragmentheartf": 1,
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "epiphany": "fragmentwinterg"
+            }
+        },
+        {
+            "id": "fragmentwinterg",
+            "label": "Wolf-Word",
+            "aspects": {
+                "winter": 14,
+                "lore": 1,
+                "subvertable_lore": 1
+            },
+            "description": "When the Forge is cold and the Glory is dark and the Wood is dust, perhaps the Wolf Divided will rest, but only until it can devour itself. This Word almost expresses the Divided One's hatred. [Speak this to a Hunter, and it might drive them insane on the spot.]",
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "With",
+                    "description": "Study with Reason to break the lore into lower-level fragments.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "unique": true
+        },
+        {
+            "id": "fragmentglory",
+            "label": "A Recollection of Glory",
+            "aspects": {
+                "lantern": 6,
+                "forge": 6,
+                "lore": 1
+            },
+            "description": "--",
+            "comments": "Hello, Seeker. If you're here to decipher enigmas, familiarise yourself with the eidesis in which were presented the Lion, the Boar and the Bull. - AK.",
+            "xtriggers": {
+                "epiphany": "bequestintro"
+            },
+            "noartneeded": true
+        },
+        {
+            "id": "prealzabo",
+            "label": "Formula: Elixir Zeboim?",
+            "description": "I have here a secret - a recipe of honey, asphodel, powdered ivory, and a mottled fungus that grows only where the dead are buried.",
+            "aspects": {
+                "lore": 1
+            },
+            "slots": [
+                {
+                    "id": "desire",
+                    "label": "Temptation",
+                    "description": "Old memories go into the earth, and there they cannot be found - but they dwell in another place, first, before they go too deep.",
+                    "actionid": "study",
+                    "required": {
+                        "remembrancemarks": 1
+                    }
+                },
+                {
+                    "id": "taste",
+                    "label": "Taste",
+                    "description": "There is no turning back.",
+                    "actionid": "study",
+                    "required": {
+                        "remnant": 1
+                    }
+                },
+                {
+                    "id": "materials",
+                    "label": "Materials",
+                    "required": {
+                        "funds": 1
+                    },
+                    "actionid": "study"
+                }
+            ]
+        },
+        {
+            "id": "alzabo",
+            "label": "Formula: Elixir Zeboim",
+            "description": "That formula which quickens the memories of decaying flesh in the bellies of the living. Such a thing could not exist without the consent of both the Flowermaker and the Elegiast... and with the assistance of one more Hour besides.",
+            "comments": "RIP Gene Wolfe, 1931-2019. 'Some are haunted by ghosts. I am haunted by stories.'",
+            "aspects": {
+                "lore": 1
+            },
+            "slots": [
+                {
+                    "id": "desire",
+                    "label": "Desire",
+                    "description": "Old memories go into the earth, and there they cannot be found - but they dwell in another place, first, before they go too deep.",
+                    "actionid": "study",
+                    "required": {
+                        "remembrancemarks": 1
+                    }
+                },
+                {
+                    "id": "feast",
+                    "label": "Feast",
+                    "description": "When the Elixir is consumed, the enzymes of digestion become the messengers of resurrection. The Dead live again - if only in my memories.",
+                    "actionid": "study",
+                    "required": {
+                        "remnant": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,756 @@
+{
+	"recipes": [
+		{
+			"id": "despairrisk",
+			"label": "暗い思考",
+			"actionId": "despair",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Shadows",
+					"label": "影",
+					"required": {
+						"inducesdespair": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "暗い日々。疑念が忍び寄らないように気をつけなければならない。[恐怖が本格的な絶望を呼び起こすかもしれない。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "despairactive",
+					"chance": 100
+				},
+				{
+					"id": "despairdefeated",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "despairactive",
+			"label": "絶望",
+			"actionId": "despair",
+			"requirements": {
+				"inducesdespair": 1
+			},
+			"startdescription": "絶望は思考を食い尽くす狼である。[絶望に満足感を与えれば倒せるが、そうでなければ恐怖が3つになると破壊される。]",
+			"description": ".",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "Thoughts",
+					"label": "思考",
+					"required": {
+						"contentment": 1,
+						"inducesdespair": 1
+					},
+					"greedy": true,
+					"noanim": true
+				}
+			],
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "despairwarning",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "despairabate",
+					"chance": 100
+				},
+				{
+					"id": "despairdeath",
+					"chance": 100
+				},
+				{
+					"id": "despairactive",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "despairwarning",
+			"label": "絶望",
+			"actionId": "despair",
+			"requirements": {
+				"dread": 2,
+				"contentment": -1
+			},
+			"startdescription": "絶望が私の足下に迫る。世界は光を失った。[絶望に満足感を与えれば倒せるが、そうでなければ恐怖が3つになると破壊される。]",
+			"description": ".",
+			"comments": "This exists specifically for the burn image at 2 Dread.",
+			"burnimage": "despair",
+			"linked": [
+				{
+					"id": "despairabate",
+					"chance": 100
+				},
+				{
+					"id": "despairdeath",
+					"chance": 100
+				},
+				{
+					"id": "despairactive",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "despairabate",
+			"label": "絶望感の軽減",
+			"actionId": "despair",
+			"requirements": {
+				"contentment": 1
+			},
+			"effects": {
+				"inducesdespair": -1,
+				"contentment": -1
+			},
+			"startdescription": "幸せな思い出が狼を扉から遠ざける。[1つの満足感が１つの恐怖を消し去る。」",
+			"description": ".",
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "despairactive",
+					"chance": 100
+				},
+				{
+					"id": "despairdefeated",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "despairdeath",
+			"label": "欲望が私を覆い尽くす",
+			"actionId": "despair",
+			"requirements": {
+				"inducesdespair": 3
+			},
+			"slots": [
+				{
+					"id": "Thoughts",
+					"label": "思考",
+					"required": {
+						"contentment": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				
+			},
+			"startdescription": "終わりが近い――[今すぐ満足感を見つけなければ、終わる。]",
+			"description": "どこで見つけるというのだろう？私はここにいないのに。",
+			"warmup": 60,
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "despairabate",
+					"chance": 100
+				}
+			],
+			"ending": "despairending",
+			"signalEndingFlavour": "Melancholy",
+			"comments": "Consider (1) allowing the threshold to grab Dread too. (2) allowing the active step to have a low-risk possibility of increasing Dread (3) providing a reward when Despair is defeated."
+		},
+		{
+			"id": "despairdefeated",
+			"label": "雲が晴れる",
+			"actionId": "despair",
+			"effects": {
+				"fleeting": 1
+			},
+			"startdescription": ".",
+			"description": "絶望と言う名の狼は、ここではないどこかを徘徊している。[この絶望を煽るような恐怖は存在しない。今のところ、これで終わりだ。]",
+			"craftable": false
+		},
+		{
+			"id": "visionsrisk",
+			"label": "震える空気",
+			"actionId": "visions",
+			"requirements": {
+				
+			},
+			"slots": [
+				{
+					"id": "Shadows",
+					"label": "影",
+					"required": {
+						"fascination": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "太陽が影のようにちらつく。夢が鏡の向こうでさざ波を立てている。現実世界から離れないように気をつけなければならない。[魅了が幻影を呼び起こすかもしれない]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "visionsactive",
+					"chance": 100
+				},
+				{
+					"id": "visionsdefeated",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "visionsactive",
+			"label": "幻覚が見える",
+			"actionId": "visions",
+			"requirements": {
+				"fascination": 1
+			},
+			"startdescription": "絵画が囁き、窓が瞬く。現実に起きていないことは分かっているが、どうやって断言しろと言うんだ？[恐怖か儚い記憶で幻影を倒せるが、そうでなければ、魅了が3つ溜まると完全に自分を見失うことになる。]",
+			"description": ".",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "Thoughts",
+					"label": "思考",
+					"required": {
+						"dread": 1,
+						"fascination": 1,
+						"fleeting": 1
+					},
+					"greedy": true,
+					"noanim": true
+				}
+			],
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "visionswarning",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "visionsabate",
+					"chance": 100
+				},
+				{
+					"id": "visionsabatefleeting",
+					"chance": 100
+				},
+				{
+					"id": "visionsdeath",
+					"chance": 100
+				},
+				{
+					"id": "visionsactive",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "visionswarning",
+			"label": "幻覚が見える！",
+			"actionId": "visions",
+			"requirements": {
+				"fascination": 2,
+				"dread": -1,
+				"fleeting": -1
+			},
+			"startdescription": "世界は危険なほど明るい。[恐怖か儚い記憶で幻影を倒せるが、そうでなければ、魅了が3つ溜まると完全に自分を見失うことになる。]",
+			"description": ".",
+			"comments": "This exists specifically for the burn image at 2 Fascination.",
+			"burnimage": "visions",
+			"linked": [
+				{
+					"id": "visionsabate",
+					"chance": 100
+				},
+				{
+					"id": "visionsabatefleeting",
+					"chance": 100
+				},
+				{
+					"id": "visionsdeath",
+					"chance": 100
+				},
+				{
+					"id": "visionsactive",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "visionsdeath",
+			"label": "助けて―― ",
+			"actionId": "visions",
+			"requirements": {
+				"fascination": 3
+			},
+			"slots": [
+				{
+					"id": "Thoughts",
+					"label": "思考",
+					"required": {
+						"dread": 1,
+						"fleeting": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				
+			},
+			"startdescription": "万物の表面から溢れる光は何なのだろう？栄光は迫っているが、ここで立ち止まって待っているわけにはいかない――[今すぐ恐怖か儚い記憶を見つけなければ、終わる。]",
+			"description": "どこで見つけるというのだろう？私はここにいないのに。",
+			"warmup": 60,
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "visionsabate",
+					"chance": 100
+				},
+				{
+					"id": "visionsabatefleeting",
+					"chance": 100
+				}
+			],
+			"signalEndingFlavour": "Melancholy",
+			"ending": "visionsending"
+		},
+		{
+			"id": "visionsabate",
+			"label": "幻影の緩和",
+			"actionId": "visions",
+			"requirements": {
+				"dread": 1
+			},
+			"effects": {
+				"fascination": -1,
+				"dread": -1
+			},
+			"startdescription": "影は光の逃げ場。絶望は底荷。不幸にも使い道はある。[1つの絶望が1つの魅了を消し去る。]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "visionsactive",
+					"chance": 100
+				},
+				{
+					"id": "visionsdefeated",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "visionsabatefleeting",
+			"label": "幻影の緩和",
+			"actionId": "visions",
+			"requirements": {
+				"fleeting": 1
+			},
+			"effects": {
+				"fascination": -1,
+				"fleeting": -1
+			},
+			"startdescription": "日常が幻影を追い払う。私は日常にしがみつく。[1つの儚い記憶が、1つの魅了を抑える。]",
+			"description": ".",
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "visionsactive",
+					"chance": 100
+				},
+				{
+					"id": "visionsdefeated",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "visionsdefeated",
+			"label": "そのままの世界",
+			"actionId": "visions",
+			"effects": {
+				"fleeting": 1
+			},
+			"startdescription": ".",
+			"description": "鏡は穏やかで、太陽は安定し、栄光は遠ざかる。私は正気だ。[魅了が幻影を駆り立てることはなくなった。少なくとも当分の間は安全だ。]",
+			"craftable": false
+		},
+		{
+			"id": "curse_dread_dormant",
+			"label": "休眠状態の乾いた魂の呪い",
+			"actionId": "curse_dread",
+			"startdescription": "乾いた魂の呪いはまだ効いていない。",
+			"alternativerecipes": [
+				{
+					"id": "curse_dread_active",
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_dread_dormant",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "curse_dread_active",
+			"label": "乾いた魂の呪い",
+			"requirements": {
+				"reason": -1
+			},
+			"actionId": "curse_dread",
+			"startdescription": "枯れた手を肩にかけるように、乾いた魂の呪いはやわらかくかかっていく。",
+			"slots": [
+				{
+					"id": "Reason",
+					"label": "理性",
+					"greedy": true,
+					"required": {
+						"reason": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_dread_active",
+					"chance": 100
+				},
+				{
+					"id": "curse_dread_attempt_mitigation",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "curse_dread_attempt_mitigation",
+			"label": "乾いた魂の呪い：最後のチャンス",
+			"actionId": "curse_dread",
+			"slots": [
+				{
+					"id": "Protection",
+					"label": "保護",
+					"required": {
+						"influencehearte": 1,
+						"influenceheartg": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "curse_dread_mitigation_successful",
+					"chance": 100
+				}
+			],
+			"startdescription": "呪いが効いてきた。今やトンネルが目に見えるもの全てを締め付けている。[心臓の影響力が十分にあれば、呪いを解くことができる。]",
+			"description": "頭蓋骨が軋む。光が灰色に染まる。",
+			"aspects": {
+				"damagereason": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "curse_dread_mitigation_successful",
+			"label": "サンダースキンの恵み",
+			"actionId": "curse_dread",
+			"requirements": {
+				"influence": 1
+			},
+			"effects": {
+				"influence": -1
+			},
+			"startdescription": "太鼓を叩いて言葉を発せ。詠唱が終わるまで希望を持ち続けよ。",
+			"description": "私の魂が再び満たされた。呪いは過ぎ去った。遥か彼方の地平線上で、嵐が用心深い獣のように動いている。"
+		},
+		{
+			"id": "curse_visions_dormant",
+			"label": "休眠状態の第五の目の呪い",
+			"actionId": "curse_visions",
+			"startdescription": "第五の目の呪いはまだ効いていない。",
+			"alternativerecipes": [
+				{
+					"id": "curse_visions_active",
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_visions_dormant",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "curse_visions_active",
+			"label": "第五の目の呪い",
+			"actionId": "curse_visions",
+			"requirements": {
+				"passion": -1
+			},
+			"startdescription": "第三の目は神話、または松果体である。第四の目は昇天の特定の過程を印すもの。第五の目は今、私の目の前で開いている。",
+			"slots": [
+				{
+					"id": "Passion",
+					"label": "情熱",
+					"greedy": true,
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_visions_active",
+					"chance": 100
+				},
+				{
+					"id": "curse_visions_attempt_mitigation",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "curse_visions_attempt_mitigation",
+			"label": "第五の目の呪い：ラストチャンス",
+			"actionId": "curse_visions",
+			"slots": [
+				{
+					"id": "Protection",
+					"label": "保護",
+					"required": {
+						"influencehearte": 1,
+						"influenceheartg": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "curse_visions_mitigation_successful",
+					"chance": 100
+				}
+			],
+			"startdescription": "呪いが効いてきた。今や世界は腐り、光を漏らしている。[心臓の影響力が十分にあれば、呪いを解くことができる。]",
+			"description": "目を背けられない。長く見れば見るほど、背けたくなくなる。",
+			"aspects": {
+				"damagepassion": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "curse_visions_mitigation_successful",
+			"label": "サンダースキンの恵み",
+			"actionId": "curse_visions",
+			"requirements": {
+				"influence": 1
+			},
+			"effects": {
+				"influence": -1
+			},
+			"startdescription": "太鼓を叩いて言葉を発せ。詠唱が終わるまで目を閉じる。",
+			"description": "私の目は澄んでいる。呪いは過ぎ去った。遥か彼方の地平線上で、嵐が用心深い獣のように動いている。"
+		},
+		{
+			"id": "curse_affliction_dormant",
+			"label": "休眠状態の這う息の呪い",
+			"actionId": "curse_affliction",
+			"startdescription": "這う息の呪いはまだ効いていない。",
+			"alternativerecipes": [
+				{
+					"id": "curse_affliction_active",
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_affliction_dormant",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "curse_affliction_active",
+			"label": "這う息の呪い",
+			"actionId": "curse_affliction",
+			"requirements": {
+				"health": -1
+			},
+			"startdescription": "這う息の呪いは咳から始まる――借金取りのように喉に潜む咳だ。",
+			"slots": [
+				{
+					"id": "Health",
+					"label": "体力",
+					"greedy": true,
+					"required": {
+						"health": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_affliction_active",
+					"chance": 100
+				},
+				{
+					"id": "curse_affliction_attempt_mitigation",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "curse_affliction_attempt_mitigation",
+			"label": "這う息の呪い：最後のチャンス",
+			"actionId": "curse_affliction",
+			"slots": [
+				{
+					"id": "Protection",
+					"label": "保護",
+					"required": {
+						"influencehearte": 1,
+						"influenceheartg": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "curse_affliction_mitigation_successful",
+					"chance": 100
+				}
+			],
+			"startdescription": "呪いが効いてきた。今や生命の鼓動が速さを落とす。[呪いは普通の病ではないが、心臓の影響力が十分にあれば、呪いを解くことができる。]",
+			"description": "我々の呼吸は、最後の息に至るまで、段々と弱くなっていくものだ。ゆっくりとした過程であるため、気づかないが、這う息の呪いにかかるとはっきりしてくる。",
+			"aspects": {
+				"destroyhealth": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "curse_affliction_mitigation_successful",
+			"label": "サンダースキンの恵み",
+			"actionId": "curse_affliction",
+			"requirements": {
+				"influence": 1
+			},
+			"effects": {
+				"influence": -1
+			},
+			"startdescription": "太鼓を叩いて言葉を発せ。詠唱が終わるまで咳を抑えよ。",
+			"description": "私の肺は澄んでいる。呪いは過ぎ去った。遥か彼方の地平線上で、嵐が用心深い獣のように動いている。"
+		},
+		{
+			"id": "curse_nowhere_dormant",
+			"label": "何かを思いだしてきた",
+			"actionId": "curse_nowhere",
+			"startdescription": "世界の微妙な動きを垣間見る。時々視界に浮かぶ黒い点のようなものだが、それよりももっと狡猾なものだ。時々、音が聞こえてくることもある。",
+			"alternativerecipes": [
+				{
+					"id": "curse_nowhere_active",
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_nowhere_dormant",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "curse_nowhere_active",
+			"label": "世界のワーム",
+			"actionId": "curse_nowhere",
+			"requirements": {
+				"mortal": -1
+			},
+			"startdescription": "街にはワームがいる。ワームは目に見えないが、ワームを忘れることもない。彼らは皮膚の隙間から侵入できる人間を探し出し、やるべきことを済ます。",
+			"slots": [
+				{
+					"id": "Someone",
+					"label": "誰か",
+					"greedy": true,
+					"required": {
+						"mortal": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "curse_nowhere_active",
+					"chance": 100
+				},
+				{
+					"id": "curse_nowhere_attempt_mitigation",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "curse_nowhere_attempt_mitigation",
+			"label": "世界のワーム：最後のチャンス",
+			"actionId": "curse_nowhere",
+			"slots": [
+				{
+					"id": "Protection",
+					"label": "保護",
+					"required": {
+						"influenceheartg": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "curse_nowhere_mitigation_successful",
+					"chance": 100
+				}
+			],
+			"startdescription": "ワームが皮膚の下に入り込んでしまった。絶望的だ。[非常に高いレベルの心臓の影響力が手元にあれば、この者を救うことができる。]",
+			"description": "ワームが肉体を乗っ取ると、残骸を破壊する以外できることはない。燃やして慎重にふるいにかけるのだ。",
+			"effects": {
+				"mortal": -1,
+				"notoriety": 1,
+				"dread": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "curse_nowhere_mitigation_successful",
+			"label": "サンダースキンの恵み",
+			"actionId": "curse_nowhere",
+			"requirements": {
+				"influence": 1
+			},
+			"effects": {
+				"influence": -1
+			},
+			"startdescription": "稲妻を呼び寄せよ。嵐の息吹だけがこの者を救うことができる。",
+			"description": "ワームを追い払えば、世界から幕が引かれたかのように、すべてが変わる。空気から、また雨とオゾンの匂いがしてくる。我々の指は今もサンダースキンの鼓動を叩いている。"
+		}
+	]
+}

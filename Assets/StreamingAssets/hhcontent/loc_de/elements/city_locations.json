@@ -1,0 +1,526 @@
+{
+	"elements": [
+		{
+			"id": "locationbookdealer",
+			"label": "Morlands Laden",
+			"aspects": {
+				"location": 1
+			},
+			"slots": [
+				{
+					"id": "Cost",
+					"label": "Preis",
+					"required": {
+						"funds": 1
+					},
+					"consumes": true,
+					"actionId": "explore"
+				}
+			],
+			"description": "Das schummrige Geschäft von Fräulein Morland, die mit seltenen und zuweilen auch gefährlichen Büchern handelt.",
+			"unique": true,
+			"xtriggers": {
+				"exhaustlocation": "locationbookdealer_exhausted"
+			}
+		},
+		{
+			"id": "locationbookdealer_exhausted",
+			"label": "Morlands Laden [Geschlossen]",
+			"description": "Dies war früher die Adresse von Fräulein Morlands Buchladen, doch nun muss ich mich wohl anderweitig umsehen.",
+			"aspects": {
+				"location": 1,
+				"hq.potential": 1
+			},
+			"slots": [
+				{
+					"id": "Old HQ",
+					"description": "Platziere hier ein altes HQ, um es zu verlassen und an diesen neuen Ort umzuziehen. Eine Rückkehr ist nicht möglich.",
+					"actionId": "explore",
+					"required": {
+						"hq": 1
+					}
+				}
+			],
+			"unique": true,
+			"xtriggers": {
+				"movehq": "hq.bookshop"
+			}
+		},
+		{
+			"id": "locationauctionhouse",
+			"label": "Oriflammes Auktionshaus",
+			"aspects": {
+				"location": 1
+			},
+			"description": "Oriflamme ist auf Kuriosa, Parfüm, Taxidermie und seltene Text spezialisiert. Im neuen Ladengeschäft steht nun alles dicht gedrängt, da das vorherige einem unerklärlichen Brand zum Opfer gefallen ist. [Du kannst bei Oriflamme Ware kaufen oder verkaufen.]",
+			"slots": [
+				{
+					"id": "Sell",
+					"label": "Verkaufen",
+					"description": "Füge hier einen Artikel hinzu, um ihn zu versteigern.",
+					"required": {
+						"auctionable": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "locationcabaretclosed",
+			"label": "Der Ecdysis-Klub [Geschlossen]",
+			"description": "Ein Cabaret von okkultem Rufe. Es öffnet nur an bestimmten Abenden unter der Woche. Schon bald wird es wieder eröffnet.",
+			"unique": true,
+			"lifetime": 30,
+			"decayTo": "locationcabaret",
+			"uniquenessgroup": "uqcabaret",
+			"resaturate": true
+		},
+		{
+			"id": "locationcabaret",
+			"label": "Der Ecdysis-Klub",
+			"aspects": {
+				"location": 1,
+				"moth": 1,
+				"grail": 1,
+				"heart": 1
+			},
+			"description": "Ein Cabaret von okkultem Rufe.",
+			"slots": [
+				{
+					"id": "Entry",
+					"label": "Eingang",
+					"actionId": "explore",
+					"required": {
+						"funds": 1,
+						"sulochana": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"locationcabaret": "locationcabaretclosed"
+			},
+			"unique": true,
+			"uniquenessgroup": "uqcabaret"
+		},
+		{
+			"id": "hq.abandoned",
+			"label": "Verlassenes Hauptquartier",
+			"description": "Vergiss es, J.N.",
+			"lifetime": 1
+		},
+		{
+			"id": "generichq",
+			"label": "Hauptquartier?",
+			"aspects": {
+				"hq": 1
+			},
+			"description": "[Die Spielmechaniken des Hauptquartiers haben sich geändert.]",
+			"unique": true
+		},
+		{
+			"id": "hq.temporary",
+			"label": "Temporäres Hauptquartier",
+			"aspects": {
+				"hq": 1,
+				"location": 1
+			},
+			"description": "Unsere Angelegenheiten sind privat. Wir könnten etwas Verschwiegeneres brauchen.",
+			"slots": [
+				{
+					"id": "Cupboard",
+					"label": "Schrank",
+					"description": "Platziere hier einen Anhänger, um ihn, dauerhaft, in einem Gefangenen zu verwandeln.",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true,
+			"icon": "generichq"
+		},
+		{
+			"id": "hq.townhouse",
+			"label": "Opulentes Stadthaus",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"library": 1
+			},
+			"description": "Wir ziehen immer schön die Vorhänge zu, bevor wir die Teppiche einrollen und den Boden mit Kreide markieren.",
+			"slots": [
+				{
+					"id": "Attic",
+					"description": "Platziere hier einen Anhänger, um ihn, dauerhaft, in einem Gefangenen zu verwandeln.",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "Geldmittel",
+					"description": "Platziere hier Geldmittel, um den Einfluss des Grals zu mehren.",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.church",
+			"label": "Heterodoxe Kirche",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"sanctuary": 1
+			},
+			"description": "Selbst am Sonntagmorgen kommen Pannen beim Ablauf des Gottesdienstes vor, was den meisten Außenstehenden aber nicht weiter auffällt. Außenstehende werden nicht zu den Zeremonien eingeladen, die wir zu kühlerer Stunde abhalten.",
+			"slots": [
+				{
+					"id": "Vestry",
+					"description": "Schließe hier einen Anhänger ein, um ihn, dauerhaft, in einem Gefangenen zu verwandeln.",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "Geldmittel",
+					"description": "Platziere hier Geldmittel, um den Einfluss des Klopfens zu mehren.",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.mithraeum",
+			"label": "Kerzenerleuchtetes Mithräum",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"sanctuary": 1,
+				"secret": 1
+			},
+			"description": "Initiierte feiern hier seit fast 2000 Jahren die Mysterien. Die Worte wechseln, die Götter wechseln, doch am Ende fließt immer Blut.",
+			"slots": [
+				{
+					"id": "Chains",
+					"description": "Platziere hier einen Anhänger, um ihn, dauerhaft, in einem Gefangenen zu verwandeln.",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "Geldmittel",
+					"description": "Platziere hier Geldmittel, um den Einfluss der Laterne zu mehren.",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.hospital",
+			"label": "Haus Violett",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"pit": 1,
+				"secret": 1
+			},
+			"description": "Wir haben die Wände in der satten Farbe der Violetten Kammer gestrichen. Wir haben die Spinnweben beseitigt und hinter allen Fenstern unaufdringliche Jalousien angebracht. Und wir haben alle Schlösser ausgetauscht.",
+			"slots": [
+				{
+					"id": "Cell",
+					"description": "Platziere hier einen Anhänger, um ihn, dauerhaft, in einem Gefangenen zu verwandeln.",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "Geldmittel",
+					"description": "Platziere hier Geldmittel, um den Einfluss des Klopfens zu mehren.",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.bookshop",
+			"label": "Räume hinter einem Buchladen",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"library": 1
+			},
+			"description": "Die niederen Stücke in Fräulein Morlands Bestand bleiben jedoch. Von Zeit zu Zeit kommen Fremde mit Büchern vorbei, die sie verkaufen möchten, und manchmal nehmen wir uns Zeit für sie.",
+			"slots": [
+				{
+					"id": "Cellar",
+					"description": "Platziere hier einen Anhänger, um ihn, dauerhaft, in einem Gefangenen zu verwandeln.",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "Geldmittel",
+					"description": "Platziere hier Geldmittel, um den Einfluss des Herzens zu mehren.",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.warehouse",
+			"label": "Ein verdunkeltes Lagerhaus",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"pit": 1,
+				"secret": 1
+			},
+			"description": "Die Dachsparren wimmeln von Ratten. Ihr Geruch geht im Geruch des Flusses fast unter. Es liegt weitab von allen Orten, zu denen irgendjemand noch zu gehen bereit wäre. All diese Dinge sind, auf ihre Art und Weise, Vorteile.",
+			"slots": [
+				{
+					"id": "Shed",
+					"description": "Platziere hier einen Anhänger, um ihn, dauerhaft, in einem Gefangenen zu verwandeln.",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "Geldmittel",
+					"description": "Platziere hier Geldmittel, um den Einfluss der Schmiede zu mehren.",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.church.potential",
+			"label": "Unbesuchte Kirche",
+			"aspects": {
+				"location": 1,
+				"hq.potential": 1
+			},
+			"description": "Eines Nachts verschwand der Pastor, recht abrupt, mit seinem innersten Zirkel und den größten Schätzen der Kirche. Generell wird angenommen, dass er nun an einem besseren Orte weilt, möglicherweise an einem sonnigen Fleckchen am funkelnden Meer. Wir könnten seine hirtenlosen Schäfchen rekrutieren und dies zu unserer Einsatzbasis machen.",
+			"slots": [
+				{
+					"id": "Old HQ",
+					"description": "Platziere hier ein altes HQ, um es zu verlassen und an diesen neuen Ort umzuziehen. Eine Rückkehr ist nicht möglich.",
+					"actionId": "explore",
+					"required": {
+						"hq": 1
+					}
+				}
+			],
+			"unique": true,
+			"xtriggers": {
+				"movehq": "hq.church"
+			},
+			"icon": "hq.church"
+		},
+		{
+			"id": "hq.mithraeum.potential",
+			"label": "Leeres Mithräum",
+			"aspects": {
+				"location": 1,
+				"hq.potential": 1
+			},
+			"description": "Dies war einst ein Ort der Andacht. Wir könnten ihn wieder dazu machen.",
+			"slots": [
+				{
+					"id": "Old HQ",
+					"description": "Platziere hier ein altes HQ, um es zu verlassen und an diesen neuen Ort umzuziehen. Eine Rückkehr ist nicht möglich.",
+					"actionId": "explore",
+					"required": {
+						"hq": 1
+					}
+				}
+			],
+			"unique": true,
+			"xtriggers": {
+				"movehq": "hq.mithraeum"
+			},
+			"icon": "hq.mithraeum"
+		},
+		{
+			"id": "hq.hospital.potential",
+			"label": "Leeres Hospital",
+			"aspects": {
+				"location": 1,
+				"hq.potential": 1
+			},
+			"description": "Phantome – so die Nachbarn – wandeln immer noch in den hallenden Hallen umher. Nehmen wir das hier in Besitz, werden sie sich natürlich verziehen, oder wir benutzen sie für unsere Zwecke.",
+			"slots": [
+				{
+					"id": "Old HQ",
+					"description": "Platziere hier ein altes HQ, um es zu verlassen und an diesen neuen Ort umzuziehen. Eine Rückkehr ist nicht möglich.",
+					"actionId": "explore",
+					"required": {
+						"hq": 1
+					}
+				}
+			],
+			"unique": true,
+			"xtriggers": {
+				"movehq": "hq.hospital"
+			},
+			"icon": "hq.hospital"
+		},
+		{
+			"id": "hq.warehouse.potential",
+			"label": "Ein verlassenes Lagerhaus",
+			"aspects": {
+				"location": 1,
+				"hq.potential": 1
+			},
+			"description": "Eine faulige Ruine an einem fauligen Fluss. Wer sollte uns hierher folgen?",
+			"slots": [
+				{
+					"id": "Old HQ",
+					"description": "Platziere hier ein altes HQ, um es zu verlassen und an diesen neuen Ort umzuziehen. Eine Rückkehr ist nicht möglich.",
+					"actionId": "explore",
+					"required": {
+						"hq": 1
+					}
+				}
+			],
+			"unique": true,
+			"xtriggers": {
+				"movehq": "hq.warehouse"
+			},
+			"icon": "hq.warehouse"
+		},
+		{
+			"id": "locationstreetsstrange",
+			"label": "Seltsame Straßen im Mondlicht",
+			"aspects": {
+				"location": 1
+			},
+			"description": "Zuweilen ist das Licht des Mondes der Schlüssel zu anderen Räumen. Ich habe hier ein Plätzchen gefunden, wo, für ein, zwei Nächte, die Straßen sich in unbekannter Art und Weise krümmen. Wenn ich hier wandle, komme ich vielleicht zu neuen Erkenntnissen, oder mich ereilt der Wahnsinn.",
+			"lifetime": 120
+		},
+		{
+			"id": "location.gallery",
+			"label": "Die Montmerenzi-McDonald-Galerie",
+			"comments": "currently just used for early Ghoul flavour, but we could do more.",
+			"aspects": {
+				"location": 1
+			},
+			"description": "Alistair Montmerenzi, dritter und letzter der Montmerenzi-Kartographen, und sein rätselhafter Mäzen Timothy McDonald, stellten diese kleine, aber feine Sammlung an Miszellen zusammen. Als sie nach ihrer letzten Polar-Expedition als verschollen gelten mussten, wurde die Sammlung in einem schlichten grauen Gebäude an einem ruhigen Park der Öffentlichkeit zugänglich gemacht ... unter der Bedingung, dass die Kunstwerke niemals fotografiert oder dem Tageslicht ausgesetzt werden dürfen."
+		},
+		{
+			"id": "location.cemetery",
+			"label": "Friedhof",
+			"slots": [
+				{
+					"id": "muscle",
+					"label": "Muskel",
+					"description": "Ich kann einen Helfer einsetzen oder selbst das Graben übernehmen.",
+					"actionId": "explore",
+					"required": {
+						"health": 1,
+						"follower": 1
+					}
+				}
+			],
+			"description": "In der wachenden Welt sind, wie im Traume, die Toten meist unter der Erde zu finden.",
+			"aspects": {
+				"location": 1
+			},
+			"lifetime": 300,
+			"decayTo": "location.cemetery.closing"
+		},
+		{
+			"id": "location.cemetery.closing",
+			"label": "Streng bewachter Friedhof",
+			"description": "Den Behörden sind hier merkwürdige Aktivitäten aufgefallen. Sie haben Wachen postiert. Besuche dauern länger, und schon bald werden sie überhaupt nicht mehr möglich sein.",
+			"slots": [
+				{
+					"id": "muscle",
+					"label": "Muskel",
+					"description": "Ich kann einen Helfer einsetzen oder selbst das Graben übernehmen.",
+					"actionId": "explore",
+					"required": {
+						"health": 1,
+						"follower": 1
+					}
+				}
+			],
+			"aspects": {
+				"location": 1
+			},
+			"lifetime": 60
+		}
+	]
+}

@@ -1,0 +1,378 @@
+{
+    "elements": [
+        {
+            "id": "fervour",
+            "label": "热忱",
+            "aspects": {
+                "influence": 1,
+                "heart": 2
+            },
+            "description": "我会众们的激情未必深刻，但在持续高涨。[你最好让你的会众保持满足。“热忱如果不使用，将退化成“恐惧”。]",
+            "lifetime": 180,
+            "decayTo": "dread"
+        },
+        {
+            "id": "lockscaredge",
+            "label": "刃之伤疤锁",
+            "description": "我为门关时，这道伤疤将在利刃的触摸下开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "edge": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscaredge"
+            }
+        },
+        {
+            "id": "lockscarforge",
+            "label": "铸之伤疤锁",
+            "description": "我为门关时，这道伤疤将为炙铁的触摸而开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "forge": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarforge"
+            }
+        },
+        {
+            "id": "lockscargrail",
+            "label": "杯之伤疤锁",
+            "description": "我为门关时，这道伤疤将为热吻开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "grail": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscargrail"
+            }
+        },
+        {
+            "id": "lockscarheart",
+            "label": "心之伤疤锁",
+            "description": "我为门关时，这道伤疤将在鼓响时开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "heart": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarheart"
+            }
+        },
+        {
+            "id": "lockscarlantern",
+            "label": "灯之伤疤锁",
+            "description": "我为门关时，这道伤疤将在曙光下开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "lantern": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarlantern"
+            }
+        },
+        {
+            "id": "lockscarmoth",
+            "label": "蛾之伤疤锁",
+            "description": "我为门关时，这道伤疤将对剪子起反应。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "moth": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarmoth"
+            }
+        },
+        {
+            "id": "lockscarwinter",
+            "label": "冬之伤疤锁",
+            "description": "我为门关时，这道伤疤将在最后开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "winter": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarwinter"
+            }
+        },
+        {
+            "id": "openedlockscaredge",
+            "label": "刃之伤疤锁",
+            "description": "我为门关时，这道伤疤将在利刃的触摸下开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "edge": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscaredge",
+            "icon": "lockscaredge"
+        },
+        {
+            "id": "openedlockscarforge",
+            "label": "铸之伤疤锁",
+            "description": "我为门关时，这道伤疤将为炙铁的触摸而开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "forge": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarforge",
+            "icon": "lockscarforge"
+        },
+        {
+            "id": "openedlockscargrail",
+            "label": "杯之伤疤锁",
+            "description": "我为门关时，这道伤疤将为热吻开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "grail": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscargrail",
+            "icon": "lockscargrail"
+        },
+        {
+            "id": "openedlockscarheart",
+            "label": "心之伤疤锁",
+            "description": "我为门关时，这道伤疤将在鼓响时开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "heart": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarheart",
+            "icon": "lockscarheart"
+        },
+        {
+            "id": "openedlockscarlantern",
+            "label": "灯之伤疤锁",
+            "description": "我为门关时，这道伤疤将在曙光下开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "lantern": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarlantern",
+            "icon": "lockscarlantern"
+        },
+        {
+            "id": "openedlockscarmoth",
+            "label": "蛾之伤疤锁",
+            "description": "我为门关时，这道伤疤将对剪子起反应。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "moth": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarmoth",
+            "icon": "lockscarmoth"
+        },
+        {
+            "id": "openedlockscarwinter",
+            "label": "冬之伤疤锁",
+            "description": "我为门关时，这道伤疤将在最后开启。",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "winter": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarwinter",
+            "icon": "lockscarwinter"
+        },
+        {
+            "id": "devotee_edge",
+            "label": "强壮的敬拜者",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 2
+            },
+            "animFrames": 1,
+            "description": "有的时候，俗家人会在热忱的驱使下投身于较为不寻常的义务。[若此人的热情消退，他将变回会众。]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_edge"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_forge",
+            "label": "务实的敬拜者",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "forge": 2
+            },
+            "animFrames": 1,
+            "description": "有的时候，俗家人会在热忱的驱使下投身于较为不寻常的义务。[若此人的热情消退，他将变回会众。]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_forge"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_grail",
+            "label": "急切的敬拜者",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "grail": 2
+            },
+            "animFrames": 1,
+            "description": "有的时候，俗家人会在热忱的驱使下投身于较为不寻常的义务。[若此人的热情消退，他将变回会众。]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_grail"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_heart",
+            "label": "活泼的敬拜者",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "heart": 2
+            },
+            "animFrames": 1,
+            "description": "有的时候，俗家人会在热忱的驱使下投身于较为不寻常的义务。[若此人的热情消退，他将变回会众。]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_heart"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_knock",
+            "label": "手巧的敬拜者",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "knock": 2
+            },
+            "animFrames": 1,
+            "description": "有的时候，俗家人会在热忱的驱使下投身于较为不寻常的义务。[若此人的热情消退，他将变回会众。]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_knock"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_lantern",
+            "label": "机敏的敬拜者",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "lantern": 2
+            },
+            "animFrames": 1,
+            "description": "有的时候，俗家人会在热忱的驱使下投身于较为不寻常的义务。[若此人的热情消退，他将变回会众。]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_lantern"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_moth",
+            "label": "古怪的敬拜者",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "moth": 2
+            },
+            "animFrames": 1,
+            "description": "有的时候，俗家人会在热忱的驱使下投身于较为不寻常的义务。[若此人的热情消退，他将变回会众。]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_moth"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "devotee_winter",
+            "label": "静默的敬拜者",
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "winter": 2
+            },
+            "animFrames": 1,
+            "description": "有的时候，俗家人会在热忱的驱使下投身于较为不寻常的义务。[若此人的热情消退，他将变回会众。]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_winter"
+            },
+            "lifetime": 180
+        }
+    ]
+}

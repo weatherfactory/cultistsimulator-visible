@@ -1,0 +1,1899 @@
+{
+	"elements": [
+		{
+			"id": "acquaintance",
+			"label": "知人",
+			"description": "まだ友達でもなく、敵でもない。",
+			"isAspect": true
+		},
+		{
+			"id": "independent",
+			"label": "一匹狼",
+			"description": "目に見えない術の生徒。何かを企んでいる。",
+			"isAspect": true
+		},
+		{
+			"id": "benefactor",
+			"label": "後援者",
+			"description": "私の作品の愛好家で、親しくなった人。",
+			"isAspect": true
+		},
+		{
+			"id": "follower",
+			"label": "信奉者",
+			"description": "生徒、協力者、守り人、闘士、カモ、生贄......仲間。",
+			"isAspect": true
+		},
+		{
+			"id": "hireling",
+			"label": "雇い人",
+			"description": "少しの間、仕えてくれるように交渉した。",
+			"isAspect": true
+		},
+		{
+			"id": "disciple",
+			"label": "弟子",
+			"description": "秘儀の真の伝授者",
+			"isAspect": true
+		},
+		{
+			"id": "devotee",
+			"label": "心酔者",
+			"description": "この者には今、信仰以外なにもないが、それはすぐに薄れてしまい、自分が何をしたのかと自問自答することになるだろう。",
+			"isAspect": true
+		},
+		{
+			"id": "exalted",
+			"label": "崇高者",
+			"description": "この者はこれ以上昇格できない......少なくとも私が教団の上位に立っている間は。",
+			"isAspect": true
+		},
+		{
+			"id": "prisoner",
+			"label": "囚人",
+			"description": "この者は手のひらで転がせる。",
+			"isAspect": true
+		},
+		{
+			"id": "hunter",
+			"label": "ハンター",
+			"description": "文明の法は時の法よりも新しいが、それも時には犠牲を必要とする。この人は法の代理人だ。",
+			"isAspect": true
+		},
+		{
+			"id": "patron",
+			"label": "パトロン",
+			"description": "私の周りでは著名な人物。",
+			"isAspect": true
+		},
+		{
+			"id": "approval",
+			"label": "承認",
+			"description": "誰かが私を認めてくれるようになってきた。",
+			"isAspect": true
+		},
+		{
+			"id": "tutor",
+			"label": "教師",
+			"description": "価値のある知識を持っている人。",
+			"isAspect": true
+		},
+		{
+			"id": "annoyance",
+			"label": "頭痛の種",
+			"description": "脇腹に棘が刺さっている。未だに取り除く方法は見つかっていない。",
+			"isAspect": true
+		},
+		{
+			"id": "sending",
+			"label": "派遣",
+			"description": "私ではないが、他の誰かでもない。",
+			"isAspect": true
+		},
+		{
+			"id": "edge",
+			"label": "刃",
+			"description": "すべての征服は刃から始まる。住人の1人は盲目だが怪我をしない。もう1人は強く、日に日に強さを増していく。[刃は、戦闘と苦闘の信条。]",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "forge",
+			"label": "鍛造",
+			"description": "「火は、暖める冬であり、消耗する春である」と読んだことがある」[鍛造の信条は変形と破壊。]",
+			"isAspect": true
+		},
+		{
+			"id": "grail",
+			"label": "聖杯",
+			"description": "空腹、欲望、溺れるほどの水。[聖杯の信条は誕生と饗宴を称える。]",
+			"isAspect": true,
+			"induces": [
+				{
+					"id": "grailinduction",
+					"chance": 5
+				}
+			]
+		},
+		{
+			"id": "heart",
+			"label": "心臓",
+			"description": "我々の知る世界の表面を守るために、落ち着きのない心臓は果てしなく鼓動する。[心臓は継続と保存の信条。]",
+			"isAspect": true,
+			"induces": [
+				{
+					"id": "heartinduction",
+					"chance": 10
+				}
+			]
+		},
+		{
+			"id": "knock",
+			"label": "開錠",
+			"description": "開錠は封印も孤立も許さない。無知の安全地帯から、我々を陽気に誘いだす。[開錠は扉を開き、障壁を解く信条である。]",
+			"isAspect": true
+		},
+		{
+			"id": "lantern",
+			"label": "灯り",
+			"description": "「生命は清らかな炎であり、私たちは目に見えない内なる太陽によって生かされている」――トーマス・ブラウン。[灯りは太陽の棲む家と呼ばれる秘密の場所とその上に輝く光の信条である。]",
+			"isAspect": true,
+			"induces": [
+				{
+					"id": "lanterninduction",
+					"chance": 5
+				}
+			]
+		},
+		{
+			"id": "moth",
+			"label": "蛾",
+			"isAspect": true,
+			"description": "蛾を鐘形ガラス器に入れて捕まえる男がいた。このような夜には、彼は1匹ずつ放ち、ロウソクの炎の中で死んでいくのを見つめていた。[予測不可能で危険な蛾は、混沌と切望の信条である。]",
+			"induces": [
+				{
+					"id": "mothinduction",
+					"chance": 10
+				}
+			]
+		},
+		{
+			"id": "secrethistories",
+			"label": "秘史",
+			"description": "歴史は時間が残した傷跡である。[秘史は、世界の知られざる物語とその重い過去を描いている。]",
+			"isAspect": true
+		},
+		{
+			"id": "winter",
+			"label": "冬",
+			"description": "......[冬は沈黙や終焉の信条であり、生と死の境目にいるものの信条でもある。]",
+			"isAspect": true
+		},
+		{
+			"id": "ability",
+			"label": "能力",
+			"isAspect": true,
+			"description": "脳、心臓、手、目。ほとんどの人にとって、それは生まれ持ったもの。"
+		},
+		{
+			"id": "scar",
+			"label": "傷跡",
+			"isAspect": true,
+			"description": "取り返しのつかない行為の取り返しのつかない結果。"
+		},
+		{
+			"id": "advancement",
+			"label": "進歩",
+			"isAspect": true,
+			"description": "未来を垣間見れる。[このカードを十分に集めると、能力を伸ばせる。]"
+		},
+		{
+			"id": "potential",
+			"label": "潜在能力",
+			"isAspect": true,
+			"description": "偉業の印？[この信奉者は、状況次第で更に強力になる可能性がある。]"
+		},
+		{
+			"id": "job",
+			"label": "仕事",
+			"isAspect": true,
+			"description": "命をお金に換える方法。",
+			"induces": [
+				{
+					"id": "needs",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dance",
+			"label": "ダンス",
+			"isAspect": true,
+			"description": "言葉よりも古く、命よりも若い。",
+			"induces": [
+				{
+					"id": "heartinduction",
+					"chance": 10
+				},
+				{
+					"id": "mothglimmeringinduction",
+					"chance": 10
+				}
+			]
+		},
+		{
+			"id": "ecdysijob",
+			"label": "エクディシスクラブでの仕事",
+			"isAspect": true,
+			"description": "エクディシスクラブでの舞台出演の依頼が来た。"
+		},
+		{
+			"id": "demotion",
+			"label": "降格",
+			"isAspect": true,
+			"description": "仕事を休みすぎた。"
+		},
+		{
+			"id": "ritual",
+			"label": "儀式",
+			"isAspect": true,
+			"description": "「正しいことを正しい方法で、正しい順序で行う。神のご加護がありますように」――ヘルソーの言葉。[儀式では、属性を組み合わせて召喚を行うことができる。]"
+		},
+		{
+			"id": "society",
+			"label": "教団",
+			"isAspect": true,
+			"description": "信者を募るには、彼らが信じてくれるようなものを作らなければならない。"
+		},
+		{
+			"id": "rededicable",
+			"label": "不確か",
+			"description": "この組織は、信条に疑問を抱き始めた。圧力をかければ軌道修正できるだろう。",
+			"isAspect": true
+		},
+		{
+			"id": "ingredient",
+			"label": "素材",
+			"isAspect": true,
+			"description": "燃料、軟膏、塗料、忍耐。すべて時間とともに消費されていく。",
+			"induces": [
+				{
+					"id": "needs",
+					"chance": 100
+				}
+			],
+			"comments": "This is so anything that generates Funds will always trigger the needs timer if it's not already running."
+		},
+		{
+			"id": "pigment",
+			"label": "塗料",
+			"isAspect": true,
+			"description": "キャンバスに塗ることもできる。"
+		},
+		{
+			"id": "poison",
+			"label": "猛毒",
+			"isAspect": true,
+			"description": "何があっても、生きてほしい人にこれを与えてはいけない。"
+		},
+		{
+			"id": "influence",
+			"label": "影響力",
+			"isAspect": true,
+			"description": "反応、共鳴、協力。すぐに色あせてしまうもの。"
+		},
+		{
+			"id": "tool",
+			"label": "道具",
+			"isAspect": true,
+			"description": "「剣それ自体が人を殺すわけではない。それは単に殺人者に使われる武器なだけだ」――小セネカ"
+		},
+		{
+			"id": "mirror",
+			"label": "鏡",
+			"isAspect": true,
+			"description": "光の皮膚を割れば、光が流れ出る。"
+		},
+		{
+			"id": "riddle",
+			"label": "なぞなぞ",
+			"isAspect": true,
+			"description": "質問の中には、答えが1つしかないものもあれば、全く答えがないものもある。"
+		},
+		{
+			"id": "reputation",
+			"label": "評判",
+			"isAspect": true,
+			"description": "「評判を気にする人は多く、良心を気にする人は少ない」――プリニウス"
+		},
+		{
+			"id": "evidencelevel",
+			"label": "証拠レベル",
+			"isAspect": true,
+			"description": "証拠の中には、他のものより根拠のあるものもある。"
+		},
+		{
+			"id": "suspicious",
+			"label": "不審",
+			"isAspect": true,
+			"description": "探偵がこれを調査したがるかもしれない。"
+		},
+		{
+			"id": "healthskill",
+			"label": "強さ",
+			"isAspect": true,
+			"description": "昼も夜も強い。[これにより、肉体労働者やダンサーとしてより良い仕事ができるようになるかもしれない。]"
+		},
+		{
+			"id": "murderskill",
+			"label": "危険",
+			"isAspect": true,
+			"description": "直接対決は賢明ではない。しかし、私に選択の余地がなくなり戦うこととなったら、敵は怯えて震え出すだろう。"
+		},
+		{
+			"id": "passionskill",
+			"label": "想像力",
+			"isAspect": true,
+			"description": "私の頭蓋骨には幻影が渦巻いている。[これでもっと野心的な絵が描けるようになるかもしれない。]"
+		},
+		{
+			"id": "reasonskill",
+			"label": "学識",
+			"isAspect": true,
+			"description": "私は知識の柱。[このカードは現在、理性を高めることしかできない。]"
+		},
+		{
+			"id": "way",
+			"label": "夢の中の帰り道",
+			"isAspect": true,
+			"description": "思い出の中には、夢の見取り図のようなものもある。その一部は、夢の境界を突き破り、森とその上に伸びる家に到達する。"
+		},
+		{
+			"id": "desire",
+			"label": "欲望",
+			"isAspect": true,
+			"description": "私の最終目標。達成には代償が伴うだろう。"
+		},
+		{
+			"id": "promise",
+			"label": "約束",
+			"isAspect": true,
+			"description": "結末へのこだわり。"
+		},
+		{
+			"id": "rivalmarks",
+			"label": "ライバルの昇天",
+			"isAspect": true,
+			"description": "太陽の棲む家に昇れる機会は滅多に訪れない。他の誰かが先に達成したら、自分はチャンスを逃すかもしれない。[この数値が７になると、次の野望の季節で、自分の代わりにライバルが勝つ可能性がある。]"
+		},
+		{
+			"id": "changemarks",
+			"label": "変化の形態",
+			"isAspect": true,
+			"description": "変わるたびに何かを残していく。"
+		},
+		{
+			"id": "powermarks",
+			"label": "形の印",
+			"isAspect": true,
+			"description": "日々の鍛造と呼ばれる時の神に、不死と強さを求めよう。彼女は特別な欲望を呼び覚まし、特別な印を与えてくれる。"
+		},
+		{
+			"id": "sensationmarks",
+			"label": "喜びの印",
+			"isAspect": true,
+			"description": "赤い聖杯と呼ばれる時の神に、不死と喜びを求めよう。彼女は特別な欲望を呼び覚まし、特別な印を与えてくれる。"
+		},
+		{
+			"id": "enlightenmentmarks",
+			"label": "光の印",
+			"isAspect": true,
+			"description": "見張り番と呼ばれる時の神に、不死と悟りを求めよう。彼女は特別な欲望を呼び覚まし、特別な印を与えてくれる。"
+		},
+		{
+			"id": "remembrancemarks",
+			"label": "記憶の爪",
+			"isAspect": true,
+			"description": "土の下には骨。骨の中には記憶。記憶の中には、色。",
+			"comments": "Important! this is used to trigger the extra corpse-remnants discovery from Expeditions for Ghoul"
+		},
+		{
+			"id": "follower_lustenlightenment",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "follower_lustpower",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "follower_lustsensation",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "follower_lustchange",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "detectivetemptation",
+			"comments": "Aspect for Detective plot items",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "long.preference.assault",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "long.preference.intrigue",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "long.preference.dreamwork",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "long.preference.winter",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "ascend",
+			"label": "上昇",
+			"isAspect": true,
+			"description": "次の印へ。",
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "descend",
+			"label": "堕落",
+			"isAspect": true,
+			"description": "新しい欲望を満たさなければ、印は消えてしまう。",
+			"noartneeded": true,
+			"comments": "Recipe aspect"
+		},
+		{
+			"id": "article",
+			"label": "記事",
+			"isAspect": true,
+			"description": "特定のテーマに関するオリジナルの論文。"
+		},
+		{
+			"id": "text",
+			"label": "文章",
+			"isAspect": true,
+			"description": "本とは、死なない記憶である。"
+		},
+		{
+			"id": "legacyplotitem",
+			"label": "伝説のアイテム",
+			"isAspect": true,
+			"isHidden": true,
+			"comments": "Used for plot items that shouldn't be passed down to another legacy through LEVER_LastBook, since they can break flows."
+		},
+		{
+			"id": "autographed",
+			"label": "サイン入り",
+			"isAspect": true,
+			"description": "作り手の跡が残っている。"
+		},
+		{
+			"id": "lore",
+			"label": "伝承",
+			"isAspect": true,
+			"description": "目に見えない術の知識。これを利用して、信奉者を集めたり、儀式を行ったり、マンサスへの道を開いたり、自分の昇天を求めたりできる......[伝承の断片は、時折、研究とそれに一致する断片でアップグレードできる。]"
+		},
+		{
+			"id": "subvertable_lore",
+			"label": "改変できる伝承",
+			"isAspect": true,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "memory",
+			"label": "記憶",
+			"isAspect": true,
+			"description": "忘れるまで、死者を覚えている。"
+		},
+		{
+			"id": "language",
+			"label": "言語",
+			"isAspect": true,
+			"description": "文章の翻訳に便利。"
+		},
+		{
+			"id": "tutorlatin",
+			"label": "ラテン語学者",
+			"isAspect": true,
+			"description": "一緒に勉強すれば、教えてくれるかもしれないラテン語の学者。"
+		},
+		{
+			"id": "tutorgreek",
+			"label": "ギリシャ語学者",
+			"isAspect": true,
+			"description": "一緒に勉強すれば、教えてくれるかもしれないギリシャ語の学者。"
+		},
+		{
+			"id": "tutoraramaic",
+			"label": "アラム語学者",
+			"isAspect": true,
+			"description": "一緒に勉強すれば、教えてくれるかもしれないアラム語の学者。"
+		},
+		{
+			"id": "tutorsanskrit",
+			"label": "サンスクリット語学者",
+			"isAspect": true,
+			"description": "一緒に勉強すれば、教えてくれるかもしれないサンスクリット語の学者。"
+		},
+		{
+			"id": "spirittutorfucine",
+			"label": "フチーノ語話者",
+			"isAspect": true,
+			"description": "関連する言語を知っていれば、この霊がフチーノ語を教えてくれる。"
+		},
+		{
+			"id": "spirittutorphrygian",
+			"label": "フリュギア語話者",
+			"isAspect": true,
+			"description": "関連する言語を知っていれば、この霊がフリュギア語を教えてくれる。"
+		},
+		{
+			"id": "spirittutormandaic",
+			"label": "マンダ語話者",
+			"isAspect": true,
+			"description": "関連する言語を知っていれば、この霊がディープマンダ語を教えてくれる。"
+		},
+		{
+			"id": "spiritsicknessprotector",
+			"label": "フィラクシアン",
+			"description": "自分の体力について話すと、病から守ってくれる。",
+			"isAspect": true
+		},
+		{
+			"id": "spiriteatspassion",
+			"label": "喪失の明かり",
+			"description": "この魂に話しかければ、自分の情熱を提供できる。",
+			"isAspect": true
+		},
+		{
+			"id": "spiriteatsreason",
+			"label": "思考を打ち叩く者",
+			"description": "この魂に話しかければ、自分の理性を提供できる。",
+			"isAspect": true
+		},
+		{
+			"id": "auctionable",
+			"label": "競売可能なもの",
+			"description": "競売価格はいつでも上下するが、これを競売にかけることができるはずだ。",
+			"isAspect": true
+		},
+		{
+			"id": "compensationvalue",
+			"label": "スピントリアの価値",
+			"description": "スピントリアは、秘密の世界の古代硬貨。スピントリアの中には、他のものより価値のある者もあるが、釣り銭は期待しない方が良い。ここは八百屋ではない。",
+			"isAspect": true
+		},
+		{
+			"id": "hq",
+			"label": "本部",
+			"description": "談話会や集会を行う場所。",
+			"isAspect": true
+		},
+		{
+			"id": "hq.potential",
+			"label": "本部として利用できそうな場所",
+			"description": ".",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "movehq",
+			"label": "新本部へ移動",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "library",
+			"label": "図書館",
+			"description": "研究に役立つと思われる小巻、部分的な複写物、エフェメラを集めたもの。",
+			"isAspect": true
+		},
+		{
+			"id": "pit",
+			"label": "暗い穴",
+			"description": "光のない深い井戸。厳しい真実を体感できる場所。",
+			"isAspect": true
+		},
+		{
+			"id": "secret",
+			"label": "秘密",
+			"description": "ここは見落とされやすい場所。[この本部を使うと評判のカードが消えてしまう。]",
+			"isAspect": true,
+			"induces": [
+				{
+					"id": "secret.induction",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"id": "sanctuary",
+			"label": "聖域",
+			"description": "黙想や平和のために設計された空間。",
+			"isAspect": true
+		},
+		{
+			"id": "location",
+			"label": "場所",
+			"description": "場所！すべての物事にはあるべき場所がある。これのあるべき場所はここだ。",
+			"isAspect": true
+		},
+		{
+			"id": "vaultcapital",
+			"label": "首都",
+			"description": "私が住んでいる活気のある首都にある秘密の場所。",
+			"isAspect": true
+		},
+		{
+			"id": "vaultshires",
+			"label": "州",
+			"description": "緑の野原と灰色の丘。",
+			"isAspect": true
+		},
+		{
+			"id": "vaultcontinent",
+			"label": "大陸",
+			"description": "狭い海の向こう側、誰も見向きもしない敵地の片隅。",
+			"isAspect": true
+		},
+		{
+			"id": "vaultlandbeyondforest",
+			"label": "森の向こうの大地",
+			"description": "世界の表皮が薄い霧の峠や辺境の村。",
+			"isAspect": true
+		},
+		{
+			"id": "vaultrendingmountains",
+			"label": "裂け目の山",
+			"description": "砂の斜面、雪を被った山頂、人里離れた場所。",
+			"isAspect": true
+		},
+		{
+			"id": "vaultloneandlevelsands",
+			"label": "閑散とした平坦な砂地",
+			"description": "この乾燥した辺ぴな土地には、見渡す限り砂丘しかない。",
+			"isAspect": true
+		},
+		{
+			"id": "vaulteveningisles",
+			"label": "夕方の島の中",
+			"description": "緑豊かな岩礁の島々に波が打ち寄せている。",
+			"isAspect": true
+		},
+		{
+			"id": "peril",
+			"label": "危機",
+			"description": "障害、危険、または早すぎる結論。",
+			"isAspect": true
+		},
+		{
+			"id": "curse",
+			"label": "呪い",
+			"description": "壊さなくてはいけない負の影響力。",
+			"isAspect": true
+		},
+		{
+			"id": "guardian",
+			"label": "守護者",
+			"description": "侵入を防ぐために責任を負う存在。",
+			"isAspect": true
+		},
+		{
+			"id": "seal",
+			"label": "封印",
+			"description": "進歩を妨げるもの。",
+			"isAspect": true
+		},
+		{
+			"id": "vault",
+			"label": "金庫室",
+			"description": "ここには貴重なものがある。",
+			"isAspect": true
+		},
+		{
+			"id": "challenge.knowledge",
+			"label": "知識が必要",
+			"description": "これはピースが足りないパズルだ。学問の海の片隅で見つけられるかもしれない。[この断片をアップグレードしたり改変したりするには、博学か図書館のある本部が必要。]",
+			"isAspect": true
+		},
+		{
+			"id": "challenge.intuition",
+			"label": "直感が必要",
+			"description": "時と平穏とともに、時に答えは予告なしにやってくる。[この断片をアップグレードしたり改変したりするには、煌めきか聖域のある本部が必要。]",
+			"isAspect": true
+		},
+		{
+			"id": "challenge.grim",
+			"label": "過酷な学習が必要",
+			"description": "習得する。[この断片をアップグレードしたり改変したりするには、恐怖（増加する可能性あり）、静かな緊張感のスキル、または暗い穴のある本部が必要になる。]",
+			"isAspect": true
+		},
+		{
+			"id": "challenge.obsessive",
+			"label": "過剰な研究が必要",
+			"description": "この研究には、安全性を超えた献身的な取り組みが必要だ。[この断片をアップグレードしたり改変したりするには、図書館のある本部、「留まること知らず」のスキル、または理性が必要になる。理性が永久的にダメージを受けるリスクは非常に少ない。]",
+			"isAspect": true
+		},
+		{
+			"id": "challenge.paradox",
+			"label": "逆説的な解決策が必要",
+			"description": "真実は蛇だ。答えはその食欲の糧となる。[この断片をアップグレードしたり改変したりするには、聖域のある本部か、むき出しの魂スキル、情熱が必要となる。情熱が永久的にダメージを受ける危険性がわずかにある。]",
+			"isAspect": true
+		},
+		{
+			"id": "challenge.illumination",
+			"label": "光が必要",
+			"description": "水は杯を満たし、光は心を満たす。[この断片をアップグレードしたり改変したりするには、幻影（生む可能性がある）、図書館のある本部、または高尚な心のスキルが必要となる。]",
+			"isAspect": true
+		},
+		{
+			"id": "challenge.practical",
+			"label": "実証実験が必要",
+			"description": "痛みは今起きていることでしかない。知識は我々が記憶するものである。[この断片をアップグレードしたり改変したりするには、体力を危険にさらすか囚人を使う必要がある。]",
+			"isAspect": true
+		},
+		{
+			"id": "summoned",
+			"label": "召喚",
+			"description": "この世のものではない。",
+			"isAspect": true
+		},
+		{
+			"id": "illhealth",
+			"label": "不健康",
+			"description": "休めば、回復できるかもしれない。",
+			"isAspect": true
+		},
+		{
+			"id": "inducesdespair",
+			"label": "絶望感を誘発",
+			"description": "絶望を招く可能性がある。",
+			"isAspect": true
+		},
+		{
+			"id": "inducesvisions",
+			"label": "幻影を誘発",
+			"description": "幻覚が見えるかもしれない。",
+			"isAspect": true
+		},
+		{
+			"id": "commissiongiven",
+			"label": "与えられた依頼",
+			"description": "タスクが待っている。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "commissionfulfilled",
+			"label": "依頼遂行",
+			"description": "タスクを完了した。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "recruiting",
+			"label": "募集",
+			"description": "盲目では光は見えないが、時に光は我々を盲目にする。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "hiring",
+			"label": "採用",
+			"description": "雇い人の勤務期間を延長する。",
+			"isAspect": true,
+			"comments": "Recipe aspect. Use to rehire hirelings.",
+			"noartneeded": true
+		},
+		{
+			"id": "refiring",
+			"label": "再焼成",
+			"description": "Extend a d's period of service.",
+			"isAspect": true,
+			"comments": "Recipe aspect. Use to refire devotees.",
+			"noartneeded": true
+		},
+		{
+			"id": "promotiontodisciple",
+			"label": "昇格",
+			"description": "深い誓いを立てる時が来た。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "promotionto_d_edge",
+			"label": "昇進：刃",
+			"description": "これは崇敬の真の神秘。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "promotionto_d_forge",
+			"label": "昇進：鍛造",
+			"description": "これは崇敬の真の神秘。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "promotionto_d_grail",
+			"label": "昇進：聖杯",
+			"description": "これは崇敬の真の神秘。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "promotionto_d_heart",
+			"label": "昇進：心臓",
+			"description": "これは崇敬の真の神秘。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "promotionto_d_knock",
+			"label": "昇進：開錠",
+			"description": "これは崇敬の真の神秘。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "promotionto_d_lantern",
+			"label": "昇進：灯り",
+			"description": "これは崇敬の真の神秘。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "promotionto_d_moth",
+			"label": "昇進：蛾",
+			"description": "これは崇敬の真の神秘。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "promotionto_d_winter",
+			"label": "昇進：冬",
+			"description": "これは崇敬の真の神秘。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "rival_promotion",
+			"label": "昇格：ライバル",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "fatiguing",
+			"label": "資源を投入した",
+			"description": "何かが起こった。",
+			"isAspect": true,
+			"comments": "Recipe aspect; runs to fatigue stats, or to convert situation-invested elements into a form that won't keep triggering a recipe that wants more of them (eg reason in Research, funds in bidding).",
+			"noartneeded": true
+		},
+		{
+			"id": "exhaustlocation",
+			"label": "場所（枯渇）",
+			"description": "この場所の資源が枯渇してしまった。更新されるまで開かない。",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "restore",
+			"label": "何も起こらなかった",
+			"description": "すべてはそのまま",
+			"isAspect": true,
+			"comments": "Recipe aspect; runs when an situation fails to convert situation control elements back to their originals.",
+			"noartneeded": true
+		},
+		{
+			"id": "decline",
+			"label": "衰退",
+			"description": "何かが終わりを迎える",
+			"isAspect": true,
+			"comments": "Recipe aspect; runs when we want to decay something like an investment.",
+			"noartneeded": true
+		},
+		{
+			"id": "avowal",
+			"label": "公言",
+			"description": "忠誠心の好ましい変化",
+			"isAspect": true,
+			"comments": "Recipe aspect; runs when we want to flip someone's loyalties positively",
+			"noartneeded": true
+		},
+		{
+			"id": "rejection",
+			"label": "拒否",
+			"description": "忠誠心の変化",
+			"isAspect": true,
+			"comments": "Recipe aspect; runs when we want to flip someone's loyalties",
+			"noartneeded": true
+		},
+		{
+			"id": "scarability",
+			"label": "傷跡の能力",
+			"description": "アクティブまたは消耗した能力を永続的に傷跡のある能力に変換する。",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "restorehealth",
+			"label": "体力の回復",
+			"description": "体力が回復する。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "damagehealth",
+			"label": "体力にダメージを与える",
+			"description": "健康が害される。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "fallsick",
+			"label": "病気になる",
+			"description": "健康が苦悩の原因となる。人に影響を与える可能性がある。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "destroyhealth",
+			"label": "健康破壊",
+			"description": "健康が破壊される。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "damagereason",
+			"label": "理性にダメージを与える",
+			"description": "理性が恐怖になる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "toreason",
+			"label": "理性へ",
+			"description": "......理性に変わる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "topassion",
+			"label": "情熱へ",
+			"description": "......情熱に変わる",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "tohealth",
+			"label": "体力へ",
+			"description": "......体力に変わる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "dreadful",
+			"label": "恐ろしい",
+			"description": "恐怖が発生するおそれがある。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true,
+			"induces": [
+				{
+					"id": "dreadinduction",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"id": "fascinating",
+			"label": "魅力的",
+			"description": "魅了が発生するおそれがある。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true,
+			"induces": [
+				{
+					"id": "fascinationinduction",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"id": "damagepassion",
+			"label": "情熱にダメージを与える",
+			"description": "情熱が魅了になる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "killmortal",
+			"label": "定命の者を倒す",
+			"description": "定命の者は死体に置き換えられる",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "longded",
+			"label": "長生者を倒す",
+			"description": "長生者は報酬に置き換えらえる",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "killsummoned",
+			"label": "召喚獣を殺す",
+			"description": "召喚獣は一致する影響力や召喚ブロックに置き換えられる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "killmanifesting",
+			"label": "出現中の召喚獣を殺す",
+			"description": "召喚獣は一致する影響力や召喚ブロックに置き換えられる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "dissolution",
+			"label": "溶解",
+			"description": "内にあるものは外に、外にあるものは内に。何かを影響力へと分解する。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "raiseshattered",
+			"label": "死体を砕ける復活者に変化させる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "raiseburgeoning",
+			"label": "死体を急成長する復活者に変化させる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "renewshattered",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "renewburgeoning",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "rebellion",
+			"label": "反抗",
+			"description": "信奉者がライバルとなる",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "endannoyance",
+			"label": "頭痛の種を片づける",
+			"description": "気難しい上司など、頭痛の種が解決される。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "careeradvancement",
+			"label": "キャリアアップ",
+			"description": "昇格・スキルアップ",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "derangemortal",
+			"label": "定命の者を混乱させる",
+			"description": "定命の者は狂人に置き換えられる",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "capturehunter",
+			"label": "ハンターの捕獲",
+			"description": "ハンターを刑務所に入れる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "killhunter",
+			"label": "ハンターの殺害",
+			"description": "ハンターが死体になる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "capturefollower",
+			"label": "信奉者の身柄確保",
+			"description": "信奉者を刑務所に入れる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "restorepassion",
+			"label": "情熱を取り戻す",
+			"description": "情熱が明確になる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "plead",
+			"label": "懇願",
+			"description": "慈悲を掛けてもらえるかもしれない。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "employment",
+			"label": "仕事",
+			"description": "仕事を片付けた。",
+			"isAspect": true,
+			"comments": "Recipe aspect. Refreshes job timers and fatigues stats",
+			"noartneeded": true
+		},
+		{
+			"id": "scandalous",
+			"label": "不祥事",
+			"description": "世間はそう簡単に忘れてくれないだろう。",
+			"isAspect": true,
+			"comments": "Recipe aspect. Refreshes reputation timers.",
+			"noartneeded": true
+		},
+		{
+			"id": "epiphany",
+			"label": "突然のひらめき",
+			"description": "理解が深まった。",
+			"isAspect": true,
+			"comments": "Recipe aspect. Upgrades lore.",
+			"noartneeded": true
+		},
+		{
+			"id": "upgradeinfluence",
+			"label": "影響力を高める",
+			"description": "共感を得る方法を見つけた。",
+			"isAspect": true,
+			"comments": "Recipe aspect. Upgrades influence.",
+			"noartneeded": true
+		},
+		{
+			"id": "glorify",
+			"label": "A MOve toWards the GLory",
+			"description": "恐怖を魅了に変換し、他の要素を栄光に満ちたものに変換する。",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "depiphany",
+			"label": "思考の濁り",
+			"description": "物事を単純に理解できるようになった。",
+			"isAspect": true,
+			"comments": "Recipe aspect. Downgrades and splits lore.",
+			"noartneeded": true
+		},
+		{
+			"id": "investigatingsuccess",
+			"label": "調査の成功",
+			"description": "証拠をアップグレードする",
+			"isAspect": true,
+			"comments": "Recipe aspect.",
+			"noartneeded": true
+		},
+		{
+			"id": "investigatingsetback",
+			"label": "調査の妨げ",
+			"description": "証拠の質を下げる。",
+			"isAspect": true,
+			"comments": "Recipe aspect.",
+			"noartneeded": true
+		},
+		{
+			"id": "crackmirror",
+			"label": "ひび割れの鏡",
+			"description": "鏡が割れた状態になる。",
+			"isAspect": true,
+			"comments": "Recipe aspect",
+			"noartneeded": true
+		},
+		{
+			"id": "mortal",
+			"label": "定命の者",
+			"description": "「長く生きていると死ぬことができなくなる」―― トーマス・ブラウン",
+			"isAspect": true
+		},
+		{
+			"id": "commission",
+			"label": "依頼",
+			"description": "稼ぐ機会。これを遂行して、パトロンに返済するべきだ。",
+			"isAspect": true
+		},
+		{
+			"id": "benign",
+			"label": "単なる幸運",
+			"description": "なんて幸運なんだろう。",
+			"isAspect": true
+		},
+		{
+			"id": "malign",
+			"label": "醜さ",
+			"description": "歓迎されないもの。",
+			"isAspect": true
+		},
+		{
+			"id": "season",
+			"label": "季節",
+			"description": "すぐに、関係のあることが起こるだろう",
+			"isAspect": true,
+			"comments": "identifies card draws for Time seasonal events"
+		},
+		{
+			"id": "devourer",
+			"label": "食い荒らす者",
+			"description": "逃げだしたら、攻撃してきたり、信奉者を食い荒らす可能性がある。",
+			"isAspect": true
+		},
+		{
+			"id": "deceiver",
+			"label": "欺く者",
+			"description": "逃げだしたら、あなたや信奉者を狂気に落とし込もうとする可能性がある。",
+			"isAspect": true
+		},
+		{
+			"id": "mystic",
+			"label": "神秘的",
+			"description": "このハンターは通常、阻止できない攻撃の場合でも、マンサスのクリーチャーの攻撃を生き延びる。",
+			"isAspect": true
+		},
+		{
+			"id": "brilliant",
+			"label": "優秀",
+			"description": "優秀なハンターは、些細なことにも意味を見出す。彼らは悪評を直接、不利な証拠に変換することができる。",
+			"noartneeded": true,
+			"isAspect": true
+		},
+		{
+			"id": "erratic",
+			"label": "不安定",
+			"description": "このハンターは悪評からの証拠を作ることを失敗することが多い。逆に悪評が見つからなくても証拠を作ってくれることもある。",
+			"isAspect": true
+		},
+		{
+			"id": "meticulous",
+			"label": "几帳面",
+			"description": "このハンターはいつでも、悪評から証拠を作ることに成功する。",
+			"isAspect": true
+		},
+		{
+			"id": "tenacious",
+			"label": "頑強",
+			"description": "このハンターは、3回に1回は物理攻撃を受けても、それ以外では止められない攻撃を受けても、生き延びる可能性がある。",
+			"isAspect": true
+		},
+		{
+			"id": "wary",
+			"label": "警戒心",
+			"description": "慎重になった。もう二度と直接会うことはないだろう。",
+			"isAspect": true
+		},
+		{
+			"id": "grim",
+			"label": "冷酷",
+			"description": "冷酷なハンターたちは、栄光の魅惑に動じないが......内なる絶望感が彼らを破壊するかもしれない。",
+			"isAspect": true
+		},
+		{
+			"id": "idealist",
+			"label": "理想家",
+			"description": "理想家の士気を下げることはできない。しかし時折、彼らの理想が反旗を翻すことはある。",
+			"isAspect": true
+		},
+		{
+			"id": "venerationedge",
+			"label": "崇敬：刃",
+			"description": "この組織は刃と呼ばれる信条を崇拝している。大佐とライオンスミスの名において、その力を呼び起こす。",
+			"isAspect": true
+		},
+		{
+			"id": "venerationforge",
+			"label": "崇敬：鍛造",
+			"description": "この組織は鍛造と呼ばれる信条を崇拝している。日々の鍛造自身と、マドゥルガーダの名において、その力を呼び起こす。",
+			"isAspect": true
+		},
+		{
+			"id": "venerationgrail",
+			"label": "崇敬：聖杯",
+			"description": "この組織は聖杯と呼ばれる信条を崇拝している。赤い聖杯自身と、双子の片割れと魔女の名において、その力を呼び起こす。",
+			"isAspect": true
+		},
+		{
+			"id": "venerationheart",
+			"label": "崇敬：心臓",
+			"description": "この組織は心臓と呼ばれる信条を崇拝している。サンダースキンとベルベットの名において、その力を呼び起こす。",
+			"isAspect": true
+		},
+		{
+			"id": "venerationknock",
+			"label": "崇敬：開錠",
+			"description": "この組織は開錠と呼ばれる信条を崇拝している。蟻の母とメニスカーテの名において、その力を呼び起こす。",
+			"isAspect": true
+		},
+		{
+			"id": "venerationlantern",
+			"label": "崇敬：灯り",
+			"description": "この組織は灯りと呼ばれる信条を崇拝している。瞳の扉と、フラワーメーカーの名において、その力を呼び起こす。",
+			"isAspect": true
+		},
+		{
+			"id": "venerationmoth",
+			"label": "崇敬：蛾",
+			"description": "この組織は蛾と呼ばれる信条を崇拝している。蛾自身と、魔女と双子の片割れの名において、その力を呼び起こす。",
+			"isAspect": true
+		},
+		{
+			"id": "venerationwinter",
+			"label": "崇敬：冬",
+			"description": "この組織は冬と呼ばれる信条を崇拝している。ボロボロの太陽と角斧の名において、その力を呼び起こす。",
+			"isAspect": true
+		},
+		{
+			"id": "textlatin",
+			"label": "ラテン語の文書",
+			"description": "死語。ダイアモンドのように死んでいる。[一部の本には翻訳しないと読めないものもある。]",
+			"isAspect": true
+		},
+		{
+			"id": "textfucine",
+			"label": "フチーノ語の文書",
+			"description": "消えたフチーノ湖の東側には、かつて人が住んでいた。ホレスは、そこを魔女の国だと警告していた。そして、これは彼らが話していた言語で、「乾いた言葉」や「魔女の言葉」と呼ばれていた。[一部の本には翻訳しないと読めないものもある。]",
+			"isAspect": true
+		},
+		{
+			"id": "textgreek",
+			"label": "ギリシャ語の文書",
+			"description": "哲学者、神学者、英雄の言語。[一部の本には翻訳しないと読めないものもある。]",
+			"isAspect": true
+		},
+		{
+			"id": "textphrygian",
+			"label": "フリュギア語の文書",
+			"description": "フリュギア人は、我々が聖杯と呼ぶ偉大なる母を崇拝していた。彼らの土地は、絆の姉妹団が生まれた土地であり、そこではサンダースキンが昇天の際に嘆願していた言語が使われている。[一部の本には翻訳しないと読めないものもある。]",
+			"isAspect": true
+		},
+		{
+			"id": "textaramaic",
+			"label": "アラム語の文書",
+			"description": "アラムの言語で、彼女の子孫によって3,000年以上にわたって話されてきたもの。[一部の本には翻訳しないと読めないものもある。]",
+			"isAspect": true
+		},
+		{
+			"id": "textmandaic",
+			"label": "ディープマンダ語の文書",
+			"description": "砂漠の奥深くに隠された宗派内で行われる秘めた儀式の最も秘密な記録。蟻の母の母語だと言われている。[一部の本には翻訳しないと読めないものもある。]",
+			"isAspect": true
+		},
+		{
+			"id": "textsanskrit",
+			"label": "サンスクリット語の文書",
+			"description": "亜大陸の聖なる言語。蓮のように複雑な語彙から切り抜けることができれば、4,000年の詩、儀式、神秘への扉が、目の前で開くだろう。[一部の本には翻訳しないと読めないものもある。]",
+			"isAspect": true
+		},
+		{
+			"id": "textvak",
+			"label": "ヴャック語の文書",
+			"description": "それは、神々が血から生まれ、類人猿が直立歩行するずっと前から、太陽の棲む家に聞こえていた言葉だった。[一部の本には翻訳しないと読めないものもある。]",
+			"isAspect": true
+		},
+		{
+			"id": "follower_honoured",
+			"label": "栄誉",
+			"description": "この信奉者の栄誉をたたえて贈り物をした。",
+			"isAspect": true
+		},
+		{
+			"id": "romanticinterest",
+			"label": "興味",
+			"description": "私に恋愛感情を抱くようになった人。",
+			"isAspect": true
+		},
+		{
+			"id": "long_wound",
+			"label": "傷口",
+			"description": "長生者の命を奪うことはできるのだろうか？試しにやってみよう。",
+			"isAspect": true,
+			"icon": "long_wound"
+		},
+		{
+			"id": "follower_wound",
+			"label": "傷口",
+			"description": "この者は、私に仕えている間に怪我をした。[負傷した信奉者は、信奉者としてカウントされず、工作員や助手として使うことはできない。病の季節で死ぬ可能性がある。<b>会話</b>を使って治療できる。]",
+			"isAspect": true
+		},
+		{
+			"id": "follower_scar_edge",
+			"label": "傷跡：残忍な経験",
+			"description": "フォースタス：「地獄は作り話だ」。メフィストフェレス：ああ、そう思うだろうが、経験によって見方が変わる。[同じ傷跡を3度負った定命の者は命を失う。]",
+			"isAspect": true
+		},
+		{
+			"id": "follower_scar_knock",
+			"label": "傷跡：治りかけの瘻孔",
+			"description": "すべての扉が傷ではないが、すべての傷は扉だ。[同じ傷を3度負った定命の者は命を失う。]",
+			"isAspect": true
+		},
+		{
+			"id": "follower_scar_winter",
+			"label": "傷跡：古傷",
+			"description": "夕焼けに一歩近づけば、夜の最初の星を見ることができる。[同じ傷跡を3度負った定命の者は命を失う。]",
+			"isAspect": true
+		},
+		{
+			"id": "corpse_scar",
+			"label": "古傷",
+			"description": "これは痛みを知っている人だった。",
+			"isAspect": true
+		},
+		{
+			"id": "resentment",
+			"label": "恨み",
+			"description": "不平不満が多すぎると忠誠心が損なわれる。",
+			"comments": "Three resentments in the season of ambitions will turn someone Troublemaker",
+			"isAspect": true
+		},
+		{
+			"id": "boredom",
+			"label": "退屈",
+			"description": "後援者の関心はいずれ薄れていくだろう。",
+			"isAspect": true
+		},
+		{
+			"id": "besotment",
+			"label": "夢中",
+			"description": "後援者が私をいとおしそうに見つめる。",
+			"isAspect": true
+		},
+		{
+			"id": "benefactor_proposal",
+			"label": "後援者の提案",
+			"description": "情熱の瞬間に促されて、後援者が結婚を申し込んできた。チャンスを逃さずに受け入れたら、私の人生は変わり......前に進むべき道を失ってしまう。[熱意が冷めないうちに後援者に話しかける。]",
+			"isAspect": true
+		},
+		{
+			"id": "desiremoth_track",
+			"label": "古い形態",
+			"description": "1つ目の大陸にある泥だらけの森で始まった踊りを覚えた。",
+			"isAspect": true
+		},
+		{
+			"id": "desireheart_track",
+			"label": "新しい形態",
+			"description": "乾いた大地にある山の松の下で始まった踊りを覚えた。",
+			"isAspect": true
+		},
+		{
+			"id": "potentialbenefactorm",
+			"label": "楽屋口の紳士たち",
+			"description": "時々パフォーマンスを観に来る裕福な紳士がいる。彼は終演後に合唱団員に敬意を払うことで有名だ。",
+			"isAspect": true
+		},
+		{
+			"id": "potentialbenefactorf",
+			"label": "箱の中の女性",
+			"description": "時々パフォーマンスを観に来る女性がいる。彼女は、合唱団員たちに関心を見せることで知られている。",
+			"isAspect": true
+		},
+		{
+			"id": "potentialecdysiast",
+			"label": "明るい目をした観察者",
+			"description": "時々、彼女は2列目に座って、彼女の独特な施設にちょうど良い才能を探している。彼女が雇った人材を街中で見かけることはほとんどない。",
+			"isAspect": true
+		},
+		{
+			"id": "snarelevel",
+			"label": "罠の効果",
+			"description": "簡単に逃げられる罠もあれば、鋼の巣のような罠もある。",
+			"isAspect": true
+		},
+		{
+			"id": "apostleforge.pillar4.dormant",
+			"label": "選ばれた羅針盤",
+			"description": "我々の形作る者は、世界の割れ目へと導く羅針盤としてこの者を選んだ。それは、変わらない場所にある弱い場所だ。見つかったら、両目を委ね、目的のために生きるようになるだろう。",
+			"isAspect": true
+		},
+		{
+			"id": "apostleforge.pillar4",
+			"label": "汝の目は見た",
+			"description": "自分たちが求める世界の割れ目以外は何も見えていない。ウィーンにもあるが、もっと身近なところにもあり、都市イスの時代から名前は変わらない。大いなる業を果たさなくてはいけない我々を、ドーンブレーカーコアを使って導いてくれる。",
+			"isAspect": true
+		},
+		{
+			"id": "mentor",
+			"label": "師匠",
+			"description": "我々の秘密の支配者は、忠誠を命じる者であり、我々の働きによってさらなる高みに昇るであろう存在だ。",
+			"isAspect": true
+		},
+		{
+			"id": "intention.assault",
+			"label": "意図",
+			"description": "我々の不滅の敵には計画がある。",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "intention.intrigue",
+			"label": "意図",
+			"description": "我々の不滅の敵には計画がある。",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "intention.dreams",
+			"label": "意図",
+			"description": "我々の不滅の敵には計画がある。",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "intention.downtime",
+			"label": "意図",
+			"description": "我々の不滅の敵には計画がある。",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "strategy.revealed",
+			"label": "戦略のを明らかにする",
+			"description": "戦略が露呈してしまった。",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "revealstrategy",
+			"label": "戦略を明らかにする",
+			"description": "隠された戦略を明らかにする",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "revealidentity",
+			"label": "正体を明かす",
+			"description": "未知の敵が現れる",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "long.lesson",
+			"label": "学んだ教訓",
+			"description": "我々の敵は見て学ぶ。",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "long.might",
+			"label": "力",
+			"description": "時が経つにつれて、この長生者は街に味方と資源を集め、我々を攻撃する能力を高める。[10に達すると、長生者が直接攻撃を検討する。]",
+			"isAspect": true
+		},
+		{
+			"id": "long.connections",
+			"label": "人脈",
+			"description": "時が経つにつれて、この長生者は街中にネットワークを築き、我々に対して陰謀を企てる能力を高める。[10に達すると、長生者が直接攻撃を検討する。]",
+			"isAspect": true
+		},
+		{
+			"id": "long.dreamwork",
+			"label": "星明りのサイズ",
+			"description": "時が経つにつれて、この長生者は夢の形を学びマンサスを通して我々を攻撃する能力を高める。[10に達すると、長生者が直接攻撃を検討する。]",
+			"isAspect": true
+		},
+		{
+			"id": "long.enemy",
+			"label": "不死の敵",
+			"description": "多くの長生者が時の神々に仕えている。彼らは、いつか時の神を乗っ取る可能性のある、新たな名を持つ者たちの出現に猛烈に反対している。長生者の中には時の神々を嫌う者もいて、何よりも猛烈に新たな名を持つ者に反発している。",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "greatwork",
+			"label": "大いなる業の要素",
+			"description": "大いなる業が完成すれば、我々の創造者でインスピレーションであるものは更なる高みを目指していくだろう。",
+			"isAspect": true
+		},
+		{
+			"id": "greatwork.sabotaged",
+			"label": "妨害された！",
+			"description": "大いなる業が危機に瀕している。[鍛造の信奉者と銀のスピントリアを使うと、これを修復できる。]",
+			"isAspect": true
+		},
+		{
+			"id": "sabotage",
+			"label": "妨害！",
+			"description": "大いなる業のアイテムを修復が必要な不安定な状態に変換する。",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "sabotage.repair",
+			"label": "修復完了！",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "grailflavour",
+			"label": "最高の甘味",
+			"description": "イチゴ、シナモン、オレンジブロッサム。",
+			"isAspect": true
+		},
+		{
+			"id": "heartflavour",
+			"label": "塩",
+			"description": "銅、没薬、錆。",
+			"isAspect": true
+		},
+		{
+			"id": "mothflavour",
+			"label": "甘味",
+			"description": "イチジク、木の実、麦芽。",
+			"isAspect": true
+		},
+		{
+			"id": "vitulationupgrade",
+			"label": "謝肉祭の客人のアップグレード",
+			"description": "客人集合！",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "cloudwitnessesupgrade",
+			"label": "大勢の目撃者のアップグレード",
+			"description": "目撃者が集まってきた！",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "renew.apostlelantern.pillar3",
+			"label": "魅惑を一新する",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "poison.notoriety",
+			"label": "露呈",
+			"description": "信奉者の秘密が暴かれてしまった。この人が何かをするたびに、マスコミの関心を集めてしまうかもしれない。",
+			"isAspect": true,
+			"icon": "reputation",
+			"induces": [
+				{
+					"id": "poison.notoriety.induction",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"id": "poison.passion.dread",
+			"label": "毒された情熱",
+			"description": "私の感情は不気味な恐怖に蝕まれている。[場所を問わずこのカードを使うと、恐怖が生まれる可能性がある。]",
+			"isAspect": true,
+			"induces": [
+				{
+					"id": "poison.passion.dread.induction",
+					"chance": 70
+				}
+			]
+		},
+		{
+			"id": "poison.reason.fascination",
+			"label": "華麗なる感染",
+			"description": "繰り返し見るロウソクの灯りの夢に焦らされている。[場所を問わずこのカードを使うと、魅了が生まれる可能性がある。]",
+			"isAspect": true,
+			"induces": [
+				{
+					"id": "poison.reason.fascination.induction",
+					"chance": 70
+				}
+			]
+		},
+		{
+			"id": "poison.health.dread",
+			"label": "弱った肉体 ",
+			"description": "決して去らない痛みの虜になってしまった。[場所を問わずこのカードを使うと、恐怖が生まれる可能性がある。]",
+			"isAspect": true,
+			"induces": [
+				{
+					"id": "poison.health.dread.induction",
+					"chance": 70
+				}
+			]
+		},
+		{
+			"id": "poison.fascination.longlesson",
+			"label": "記憶の中の瞳",
+			"description": "長生者に甘い夢を見せられた。この事は考えるべきではない。[このカードを夢や儀式で使用すると、長生者はあなたのことを知り、夢の中で力を高めていく。]",
+			"isAspect": true
+		},
+		{
+			"id": "poison.dread.longlesson",
+			"label": "心の中の歯",
+			"description": "長生者は私を悩ませる夢を見せてくる。追い出した方が安全だが、考えない方が賢明だ。[このカードを夢や儀式で使用すると、長生者はあなたのことを知り、夢の中で力を高めていく。]",
+			"isAspect": true
+		},
+		{
+			"id": "poison.way.long",
+			"label": "道は監視されている",
+			"description": "長生者がこの道を見張っている。この道を通れば、寝ている間に私のことをもっと知ってしまうだろう。",
+			"isAspect": true
+		},
+		{
+			"id": "lockscar",
+			"label": "傷跡の鍵",
+			"description": "蛇に口づけされたのかもしれないし、ナイフに飲まれたのかもしれない。鋭すぎる夢を見た可能性もある。[十分な強さの開錠のある儀式で、この傷跡が開くかもしれない」",
+			"isAspect": true
+		},
+		{
+			"id": "openedlockscar",
+			"label": "傷跡の鍵を開く",
+			"description": "[傷跡が開いている。]",
+			"isAspect": true
+		},
+		{
+			"id": "unlockscar",
+			"label": "この傷痕は開く",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ghoul.hunger",
+			"label": "墓場の口",
+			"description": "墓場の果実を味わった今、空腹が頻繁に私を悩ませる。腐敗の香りに涎が落ち、腹が犬のように唸る。[残骸を食べると、これが減少する（7になると、残念な形でゲームが終わる可能性がある）。]",
+			"isAspect": true
+		},
+		{
+			"id": "colours.furious",
+			"label": "ナナトグロの色",
+			"description": "真っ赤な夕日の下、砂丘の上で、怪物が自らを襲い、その脇腹に付き人たちが群がる。それは巨大で汚れた硫黄色だった。牙のついた触手のような首が、子猫のように格闘している。喜び勇んで自らの肉を引き裂き、そこから黄金の血が噴き出す。怪物がひっくり返り、肉の海へと落ちれば、付き人たちを潰し、残りの者たちは悲鳴と歓声を上げる。",
+			"isAspect": true
+		},
+		{
+			"id": "colours.luxurious",
+			"label": "潮汐の色",
+			"description": "夜の青さを帯びたマンサスの靄の中に、珊瑚の王冠が浮かんでいる。前方では劣る名を持つ者たちを吸収し、鉱物や樹液で覆い、後方では一部の名を持つ者たちを宝石のように磨いて排出する。残りのものは、棘のある潮汐の心臓の餌となる。",
+			"isAspect": true
+		},
+		{
+			"id": "colours.liminal",
+			"label": "二重の入り口の色",
+			"description": "角斧のことを思い出すと、サンザシの香りを思い出す。金色に輝く紫の黄昏の空を思い浮かべる。私は、使命を果たしたばかりの刃から、血が滴っていたのを覚えている。",
+			"isAspect": true
+		},
+		{
+			"id": "colours.horizon",
+			"label": "水平線の色",
+			"description": "霧は晴れているが、太陽が月と間違われそうなとき、空の特定の場所で見られる色あせた淡い白金色。新しく作られた言葉のように色が次々と分かれていくまで、我々は息を止めて、色が明るくなっていくを見守る。孵化しない卵。",
+			"isAspect": true
+		},
+		{
+			"id": "colours.splendid",
+			"label": "これまでの色",
+			"description": "オーロラのようなバラ色と鋼青色が空を競う。そこには夜も朝もなく、待ち望まれる正午のと名残惜しまれる正午だけがある。一人一人が、空から降り注ぐ金色の針に心を開いた。どの色も栄光の太陽の光を浴びると色が濃くなる。",
+			"isAspect": true
+		},
+		{
+			"id": "colours.endless",
+			"label": "回る色",
+			"description": "回るたびに、繊毛が跳ねたりねじれたりしながら、体が透明から緋色へと変化していく。その様子は、醜いかもしれないが、ガラスの迷宮から血を引くように美しい。それは止まること知らずで、無限に回転し続ける。車輪。",
+			"isAspect": true
+		},
+		{
+			"id": "colours.wildering",
+			"label": "黒以外の色",
+			"description": "闇に包まれる前の森は、毒々しい緑色の実をつけて、根はカーネリアン色に染まっている。蛾の目は空腹であることを喜んでいる。狩りをしているのだ。",
+			"isAspect": true
+		},
+		{
+			"id": "colours.golden",
+			"label": "古い火の色",
+			"description": "滑らかで研ぎ澄まされているとはいえ、これはただの石――でも、良く見てみると、各面に一点の光が輝いている。火灯りの光かもしれないし、様々な星なのかもしれない。",
+			"isAspect": true
+		},
+		{
+			"id": "colours.honeyed",
+			"label": "これからの色",
+			"description": "我々の翼は広がって輝き、鱗は黒曜石のように柔らかく光る。瞳は宝石のように煌めき、爪は紛れもなく闇のように黒い。",
+			"isAspect": true
+		},
+		{
+			"id": "ascension.remembrance.offering",
+			"label": "哀歌詩人の犠牲",
+			"description": "哀歌詩人は、奪いきれないほどに奪われ、死者を名指しで呼ぶ時の神のことである。ごくまれに、大きな犠牲と引き換えに、死者を虚空から呼び起こし、その者の最期の冬を迎える日まで、孤独で無傷のまま生き続けさせている。",
+			"isAspect": true
+		},
+		{
+			"id": "remnant",
+			"label": "残骸",
+			"description": "この肉は、かつて別の人が身につけていたもの。",
+			"isAspect": true
+		},
+		{
+			"id": "manifesting",
+			"label": "出現",
+			"description": "霊が世界に入っていく。これは出産よりも単純だが、扉をくぐるほど単純なことではない。",
+			"isAspect": true
+		},
+		{
+			"id": "stale",
+			"label": "マンネリ化",
+			"description": "同じことを繰り返すようになってきた。[これが増加するほど、作品への影響が高まる。質の高い作品を生産することで、徐々にマンネリ化が軽減されていく。]",
+			"isAspect": true,
+			"icon": "boredom"
+		},
+		{
+			"id": "project",
+			"label": "プロジェクト",
+			"description": "研究プロジェクトの議題",
+			"isHidden": true,
+			"isAspect": true
+		}
+	]
+}

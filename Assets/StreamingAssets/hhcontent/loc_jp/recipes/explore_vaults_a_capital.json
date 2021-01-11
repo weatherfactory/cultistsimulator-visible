@@ -1,0 +1,303 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultcapital1_setup",
+			"label": "遠征の始まり：ストラスコインのコレクション",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital1": 1,
+				"funds": 1,
+				"follower": 1
+			},
+			"effects": {
+				"guardian_watchers": 1
+			},
+			"startdescription": "ストラスコイン氏は図書館への立ち入りを禁止している。残念だ。できることがあるか見てみよう。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcapital2_setup",
+			"label": "遠征の始まり：忘れ去られたミトラ神殿",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcapital2": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1
+			},
+			"startdescription": "ミトラ神殿には、発見者たちが見つけられなかったまだ秘密があると、私は確信している。危険であるとは思えないが、捜索には資金が必要だ。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcapital3_setup",
+			"label": "遠征の始まり：有限会社ケーター&ヒーロー",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital3": 1,
+				"funds": 1,
+				"follower": 1
+			},
+			"effects": {
+				"peril_treacherousground": 1
+			},
+			"startdescription": "残っている工場の壁は、いつ倒壊してもおかしくない。黒く塗りつぶされた材木が痛みできしむ。身支度を整えて、慎重に行動しなければならない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcapital4_setup",
+			"label": "遠征の始まり：聖アグネス病院",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcapital4": 1
+			},
+			"effects": {
+				"curse_dread": 1
+			},
+			"startdescription": "今、病院のホールには音だけが響いているが、悪意はまだ残っている。隅から隅まで入念に捜索しなければならない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcapital5_setup",
+			"label": "遠征の始まり：シューレンの聖フェリックスの会",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcapital5": 1
+			},
+			"effects": {
+				"guardian_monks": 1
+			},
+			"startdescription": "会衆の会員資格は厳しく管理されており、継承することもできる。礼拝中に神父の家に忍び込むのが一番安全だが、会衆の母たちが交代で守っており、彼女たちの気を逸らすのは容易ではない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcapitaldefault_setup",
+			"label": "遠征の始まり：忘れられた川岸",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcapitaldefault": 1
+			},
+			"effects": {
+				"peril_treacherousground": 1,
+				"guardian_watchers": 1
+			},
+			"startdescription": "この朽ち果てた街の端には、法律は適用されない。ここの泥は多くの命を奪った。そして倉庫の中には哀れな犯罪者たちが隠れているに違いない。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcapital1_success",
+			"label": "ストラスコインの宝物",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital1": 1
+			},
+			"effects": {
+				"vaultcapital1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"wainscothistories",
+					"textbookfucine",
+					"travellingatnight3",
+					"locksmithsdream4",
+					"treatiseonunderplaces"
+				],
+				"draws": 5,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "ストラスコインの居心地の良さそうな部屋。火格子の中で炎が煙を上げる。ガラスケースにはあらゆる種類の奇妙な小物が飾られている。早く、奪えるだけ奪うんだ！ストラスコインはもう警察に通報したかもしれない。",
+			"description": "夜の闇へと逃げろ！我々は誰にも見つからずに逃げ切ったが、翌日の新聞には、ストラスコインの家が火事が起きたと報じられていた。誰かが暖炉の前の敷物に燃えている石炭を落としたのだろうか。それともストラトコイン自身が未知の目的のために自分の家を破壊したのだろうか。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcapital2_success",
+			"label": "深い聖域",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital2": 1
+			},
+			"effects": {
+				"vaultcapital2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientlanternb",
+					"toolwinterd",
+					"toollanternbcracked",
+					"hq.mithraeum.potential"
+				],
+				"draws": 4,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "血の記憶が漂う孤独な空間。最高級の伝授者が使っていた秘密の扉を見つけた。",
+			"description": "祭壇は顎のように後ろに傾いている。その後ろにはピラミッドのような空間がある。太陽を狩る者と夜明けを与える者だけが行くような場所だが......最近では他の者もここに来ている。彼らは宝物を残していった。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcapital3_success",
+			"label": "ケーターの事務所",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital3": 1
+			},
+			"effects": {
+				"vaultcapital3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolheartb",
+					"ingredientgrailb",
+					"franklinbancroftdiarieslatin",
+					"apolloandmarsyas",
+					"hq.warehouse.potential"
+				],
+				"draws": 5,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "ここは、かつてケーター氏が工場で働く労働者たちを見張っていた広い部屋だ。窓ガラスはとっくに無くなり、ネズミや鴉の戦場と化しているが、もしかしたらまだ何か役に立つものがあるのかもしれない......",
+			"description": "2枚の床板が持ち上がり、ケーターの机の下に穴が現れた！ネズミ達は、起業家が小腹を満たすためにそこに保管していたビスケットを盗んで逃げたが、この鉄製の金庫には侵入できなかったようだ。バールを使えば、一瞬で開けることができる。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcapital4_success",
+			"label": "青紫の広間",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital4": 1
+			},
+			"effects": {
+				"vaultcapital4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolgrailb",
+					"ingredientheartb",
+					"locksmithsdream3",
+					"roseofhypatiagreek",
+					"hq.hospital.potential"
+				],
+				"draws": 5,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "ここは何だったのだろう。扉には何も書いてなかった。窓はなく、壁は深い青紫色に塗られている。天井から雨漏りが起きて壁がボロボロになっても、その色は深く美しいままだ。朽ちた椅子の腕には革のストラップが付いている。床は磁器張りで、その上には溝が刻まれている。",
+			"description": "壁には南京錠のかかった食器棚があるが、力をかけるとすぐに開いた。中には、火打石とガラスで覆われた器具が入っている。外科医が使うとは思えない器具だ。それ以外にも、興味深いものが見つかった......",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcapital5_success",
+			"label": "秘密の献身",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital5": 1
+			},
+			"effects": {
+				"vaultcapital5": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"roseofnurielgreek",
+					"roseofwazneigreek",
+					"chioneatabydos",
+					"debellismurorum",
+					"textbookgreek",
+					"hq.church.potential"
+				],
+				"draws": 6,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "神父の寝室は広かったが、家具はほとんどなかった。窓の下には、小さなイチイの木でできた祭壇がある。その上には、エナメル加工されたダラブッカと羽のついた斧が飾られている。",
+			"description": "祭壇の下で見つかった、複雑な三つの結び目で封じられた箱の中には、貴重な本が入っていた。それ以外にも、古い血のついたナイフ、布の切れ端、神父が聖職授任した際に明け渡したであろう皮の残骸がある。",
+			"warmup": 30,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultcapital5",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "explorevaultcapitaldefault_success",
+			"label": "遅れた配達",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapitaldefault": 1
+			},
+			"effects": {
+				"vaultcapitaldefault": -1,
+				"funds": 1
+			},
+			"deckeffect": {
+				"vaultrewardsa": 3
+			},
+			"startdescription": "鉄格子の扉、窮屈な空間、隠された貨物。",
+			"description": "監視者たちは泥棒印のリボンで封じられた箱を見張っている。これは、法に反したことだ。我々の行動を、貨物の所有者が喜ぶことはないだろう。",
+			"warmup": 30,
+			"craftable": false
+		}
+	]
+}

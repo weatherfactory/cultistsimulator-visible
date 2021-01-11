@@ -1,0 +1,46 @@
+{
+    "elements": [
+        {
+            "id": "insight",
+            "label": "洞见",
+            "description": "洞见奥秘。",
+            "lifetime": 1
+        },
+        {
+            "id": "bid",
+            "label": "出价",
+            "description": "在拍卖行中出价。",
+            "xtriggers": {
+                "restore": "funds"
+            }
+        },
+        {
+            "id": "abductioninprogress",
+            "label": "上锁的牢房",
+            "description": "他们说，思想是自由的，然而思想是锁在肉体上的。",
+            "lifetime": 1,
+            "icon": "seal_wardeddoor"
+        },
+        {
+            "id": "assassinationinprogress.player",
+            "label": "暗杀",
+            "description": "此举将以死亡告终。可能是我的死亡。",
+            "lifetime": 1,
+            "icon": "dread"
+        },
+        {
+            "id": "assassinationinprogress.follower",
+            "label": "暗杀",
+            "description": "此举将以死亡告终——他们的，或我们的。",
+            "lifetime": 1,
+            "icon": "dread"
+        },
+        {
+            "id": "scandalinprogress",
+            "label": "邪恶的流言",
+            "description": "他们所说的只是真理的影子，但我们的影子暴露了我们。",
+            "lifetime": 1,
+            "icon": "notoriety"
+        }
+    ]
+}

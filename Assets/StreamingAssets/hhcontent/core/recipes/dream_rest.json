@@ -1,0 +1,316 @@
+{
+    "recipes": [
+        {
+            "id": "dream.poison.fascination.longlesson.trap",
+            "actionid": "dream",
+            "label": "An Enemy Ever Vigilant",
+            "startdescription": "Our enemy has learnt from my dreams.",
+            "requirements": {
+                "poison.fascination.longlesson": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "long.lesson.dreamwork": 1
+            },
+            "mutations": [
+                {
+                    "filter": "fascination",
+                    "mutate": "poison.fascination.longlesson",
+                    "level": -1
+                }
+            ],
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "dreamhealth",
+            "label": "An Early Night",
+            "actionid": "dream",
+            "requirements": {
+                "health": 1
+            },
+            "effects": {
+                "fleeting": 1
+            },
+            "alt": [
+                {
+                    "id": "dreamhealthdread",
+                    "chance": 10
+                },
+                {
+                    "id": "dreamhealthfascination",
+                    "chance": 10
+                },
+                {
+                    "id": "dreamhealthcontentment",
+                    "chance": 30
+                },
+                {
+                    "id": "dream_router",
+                    "chance": 30
+                }
+            ],
+            "startdescription": "With luck, I'll wake refreshed. [Sometimes, this will provide Contentment. Often, it will do nothing. Occasionally, it will create Dread or Fascination.]",
+            "description": "Sometimes, I have dreamt of a tall woman in a sand-coloured coat, who stands at the foot of my bed, smiling as she watches me sleep. In that dream, she turns her head with the swiftness of a bird, and her fingers flex like talons. I do not think I dreamt of her last night. If I had, I could not have slept so soundly.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "dreamhealthcontentment",
+            "label": "An Early Night",
+            "actionid": "dream",
+            "effects": {
+                "contentment": 1
+            },
+            "description": "Sleep is a long dark ocean, but sometimes, when we reach the farther shore, there is lamp-light.",
+            "craftable": false
+        },
+        {
+            "id": "dreamhealthdread",
+            "label": "An Early Night",
+            "actionid": "dream",
+            "effects": {
+                "dread": 1
+            },
+            "description": "In the land of the two rivers, in the days of Rimush and of Naram-Sin, there were stories told of a howling woman who devoured the children of other mothers. Last night there was a howling in my dreams.",
+            "craftable": false
+        },
+        {
+            "id": "dreamhealthfascination",
+            "label": "An Early Night",
+            "actionid": "dream",
+            "effects": {
+                "fascination": 1
+            },
+            "description": "Imagine a box of mirrors, where each mirror contains a sweeter light. Now imagine that in the seventh mirror there is only an ordinary dawn, an ordinary bed, the dull beginnings of an ordinary day. Imagine that, and long for light.",
+            "craftable": false
+        },
+        {
+            "id": "recoverhunger",
+            "label": "Restore my Strength",
+            "actionid": "dream",
+            "requirements": {
+                "funds": 1,
+                "hunger": 1
+            },
+            "effects": {
+                "funds": -1
+            },
+            "aspects": {
+                "restorehealth": 1
+            },
+            "startdescription": "I have gone some time without food. I should eat carefully.",
+            "description": "My strength returns. The wheeling dark at the corners of my sight is gone.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "recoverfatigue",
+            "label": "Nap to recover from Fatigue",
+            "actionid": "dream",
+            "requirements": {
+                "fatigue": 1
+            },
+            "aspects": {
+                "restorehealth": 1
+            },
+            "startdescription": "I just need a little time to recover my energies.",
+            "description": "I am refreshed.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "recover.apostlegrail.pillar2",
+            "actionid": "dream",
+            "label": "The Dream of the End",
+            "startdescription": "I consume the little vial of blood, lie back, close my eyes. Tomorrow, I will be stronger.",
+            "description": "I am much recovered - more than that - I am sumptuous. The sclera of my eyes, the veins in my wrists, are aswim with gorgeous serums. When the Vitulation comes, I will be the centre-piece, for our Delight to prove their appetite, to enact the Grail.",
+            "requirements": {
+                "apostlegrail.pillarfuel": 1,
+                "apostlegrail.pillar2.dormant": 1
+            },
+            "effects": {
+                "apostlegrail.pillar2.dormant": -1,
+                "apostlegrail.pillar2": 1,
+                "apostlegrail.pillarfuel": -1,
+                "fascination": 1
+            },
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "recoverillhealthfunds",
+            "label": "Heal",
+            "actionid": "dream",
+            "requirements": {
+                "funds": 1,
+                "illhealth": 1
+            },
+            "effects": {
+                "funds": -1
+            },
+            "aspects": {
+                "restorehealth": 1
+            },
+            "startdescription": "The medicine is dark and bitter as tar. It would be easy to suspect I am being poisoned.",
+            "description": "The sick-room grows close and stale. Time to get up.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "recoverillhealthfundsvitality",
+            "label": "Heal",
+            "actionid": "dream",
+            "requirements": {
+                "vitality": 1,
+                "illhealth": 1
+            },
+            "effects": {
+                "vitality": -1
+            },
+            "aspects": {
+                "restorehealth": 1
+            },
+            "startdescription": "All I need now is time.",
+            "description": "The sick-room grows close and stale. Time to get up.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "reducedread",
+            "label": "Clear my Mind",
+            "actionid": "dream",
+            "requirements": {
+                "contentment": 1,
+                "dread": 1
+            },
+            "effects": {
+                "contentment": -1,
+                "dread": -1,
+                "fleeting": 1
+            },
+            "startdescription": "I remember that I was different, before.",
+            "description": "The sun still moves. The wind still walks. My journals are the labyrinth clue.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "reducefascination",
+            "label": "Composure",
+            "actionid": "dream",
+            "requirements": {
+                "dread": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "fascination": -1,
+                "dread": -1,
+                "fleeting": 1
+            },
+            "startdescription": ".",
+            "description": "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "reducefascinationfleeting",
+            "label": "Composure",
+            "actionid": "dream",
+            "requirements": {
+                "fleeting": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "fleeting": -1,
+                "fascination": -1
+            },
+            "startdescription": ".",
+            "description": "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "dreamfunds",
+            "label": "Purchase a Tincture of Opium",
+            "actionid": "dream",
+            "requirements": {
+                "funds": 1
+            },
+            "effects": {
+                "contentment": 1,
+                "funds": -1
+            },
+            "startdescription": "In times of especial crisis, I might visit a discreet pharmacist, to purchase a tincture of opium and make my dreams sweet. But only in times of especial crisis. [This is an expensive and risky way to gain Contentment. It might provoke sickness or despair.]",
+            "description": "Oh, that deep peace. But I should not do this again.",
+            "warmup": 30,
+            "craftable": true,
+            "alt": [
+                {
+                    "id": "grailinduction",
+                    "chance": 30,
+                    "additional": true
+                },
+                {
+                    "id": "despairrisk",
+                    "chance": 10,
+                    "additional": true
+                },
+                {
+                    "id": "presickness",
+                    "chance": 10,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "dream.decrepitude",
+            "actionid": "dream",
+            "label": "Desperate Measures",
+            "startdescription": "My soul haunts my failing flesh like a swamp-wisp. My heart slows, and one day it will cease. Perhaps if I were to consume some exotic substance it might restore the strength that is lost. But it seems unlikely.",
+            "requirements": {
+                "decrepitude": 1,
+                "ingredient": 1
+            },
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "dream.decrepitude.ingredientheartf"
+                },
+                {
+                    "id": "dream.decrepitude.failure"
+                }
+            ]
+        },
+        {
+            "id": "dream.decrepitude.ingredientheartf",
+            "actionid": "dream",
+            "label": "January's Quickening",
+            "startdescription": "At the faint rust-tang of the blood, my heart leaps, painful as a stabbing sunrise.",
+            "description": "St January has opened the door of years and the door of agonies, and through that twin gate, pain and history flee.",
+            "requirements": {
+                "ingredientheartf": 1,
+                "decrepitude": 1
+            },
+            "effects": {
+                "ingredientheartf": -1,
+                "restlessness": 1,
+                "mystique": 1
+            },
+            "aspects": {
+                "tohealth": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "dream.decrepitude.failure",
+            "actionid": "dream",
+            "label": "Only The Strangest Taste",
+            "startdescription": "My heart limps on. I have gained no benefit - except, I suppose, hard-won knowledge.",
+            "effects": {
+                "ingredient": -1,
+                "erudition": 1
+            }
+        }
+    ]
+}

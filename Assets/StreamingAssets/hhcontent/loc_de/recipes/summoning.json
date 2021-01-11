@@ -1,0 +1,542 @@
+{
+	"recipes": [
+		{
+			"id": "summon_spirit_wintera_edge",
+			"label": "Den Kartographen der Narben eine Leiche zum Halbleben erwecken lassen",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"corpse": 1,
+				"winter": 4,
+				"edge": 2,
+				"desire": -1
+			},
+			"aspects": {
+				"raiseshattered": 1
+			},
+			"startdescription": "Eine zerschmetternde Macht wird in ihr Fleisch eindringen, damit sie sich den Zerschlagenen Erhobenen anschließen kann. Ich muss den Prozess einleiten. Ich werde meinen Hammer bereit machen.",
+			"description": "Die Leiche taumelt stöhnend auf die Beine, oder auf das, was von ihren Füßen noch übrig ist. Ich habe einen Zerschlagenen Erhobenen beschworen.",
+			"warmup": 60,
+			"craftable": true,
+			"comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+			"mutations": [
+				{
+					"filterOnAspectId": "corpse",
+					"mutateAspectId": "follower",
+					"mutationLevel": 0
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_wintera_moth",
+			"label": "Die Ringeibe eine Leiche zum Halbleben erwecken lassen",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"corpse": 1,
+				"winter": 4,
+				"moth": 2,
+				"desire": -1
+			},
+			"aspects": {
+				"raiseburgeoning": 1
+			},
+			"startdescription": "Erst muss ich die Saat ausbringen: unter den Lider, unter der Zunge, in allen geheimen Öffnungen des Leibes. Sie wird als Wachsender Erhobener erwachen.",
+			"description": "Die Leiche erhebt sich taumelnd auf ihre Beine. Ihre Augen kämpfen sich offen. Harz läuft ihr aus dem Munde. Sie wächst, sie hat sich erhoben.",
+			"warmup": 60,
+			"craftable": true,
+			"comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+			"mutations": [
+				{
+					"filterOnAspectId": "corpse",
+					"mutateAspectId": "follower",
+					"mutationLevel": 0
+				}
+			]
+		},
+		{
+			"id": "renew_spirit_wintera_edge",
+			"label": "Den Kartographen der Narben das Halbleben einer Leiche verlängern lassen",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"spirit_wintera_edge": 1,
+				"winter": 8,
+				"edge": 8,
+				"desire": -1
+			},
+			"aspects": {
+				"renewshattered": 1
+			},
+			"startdescription": "Dies ist nicht wirklich ein Ritus der Erneuerung – eher des Aufschubs. Der Winter lässt sich aufschieben, aber nicht verhindern.",
+			"description": "Die Prozesse der Verwesung sind verlangsamt, die Bewegungsenergie ist  wieder vorhanden. Die Leiche wird weitere tausend Schritte tun, bevor sie zerfällt.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "renew_spirit_wintera_moth",
+			"label": "Die Ringeibe das Halbleben einer Leiche verlängern lassen",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"spirit_wintera_moth": 1,
+				"winter": 8,
+				"moth": 8,
+				"desire": -1
+			},
+			"aspects": {
+				"renewburgeoning": 1
+			},
+			"startdescription": "Das neue Leben in der Leiche kämpft um seine Freiheit. Sie wird es noch etwas länger bändigen.",
+			"description": "Das Licht in den Augen der Leiche brennt weniger wild. Ihre Ranken sind bezwungen. Einen Augenblick lang glaube ich schon, dass sie sprechen wird.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "summon_spirit_forgee_edge",
+			"label": "Einen der Namen der Schmiede der Tage beschwören",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 5,
+				"forge": 10,
+				"lantern": 2,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_forgee_edge": -1,
+				"pre.spirit_forgee_edge": -1,
+				"spirit_forgee_edge.defunct": -1,
+				"spirit_forgee_edge.consumed": -1
+			},
+			"effects": {
+				"pre.spirit_forgee_edge": 1
+			},
+			"startdescription": "König Tiegel stellt sich nur ein, wenn der Raum durch den Aspekt namens Schmiede leuchtet. Er braucht auch eine Laterne, als Licht des Ruhms, den er zu kennen behauptet.",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_forgee_edge.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_forgee_edge.success",
+			"label": "Einen der Namen der Schmiede der Tage beschwören",
+			"actionId": "work",
+			"description": "Er kann sich in einer Kerzenflamme verbergen, so er denn muss. Doch hier ist er, mit all seinem Freudenfeuer-Pomp. Als ich mich mit ihm unterredet habe, ist meine Haut im Gesicht und an den Händen rosig, wie von zu viel Sonne.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_graile_edge",
+			"label": "Einen der Namen des Roten Grals beschwören",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 5,
+				"grail": 10,
+				"forge": 2,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_graile_edge": -1,
+				"pre.spirit_graile_edge": -1,
+				"spirit_graile_edge.defunct": -1
+			},
+			"effects": {
+				"pre.spirit_graile_edge": 1
+			},
+			"startdescription": "Ezeem kann nur dort erscheinen, wo die Macht des Grails stark ist, und er wird nur dann erscheinen, wenn er mit der Schmiede beschworen wird, mit der er schon so oft geflirtet hat. ",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_graile_edge.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_graile_edge.success",
+			"label": "Einen der Namen des Roten Grals beschwören",
+			"actionId": "work",
+			"description": "So viele reiche Aromen, wie ein Gelage in der Luft! Doch vor allem Blut.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_lanterne_secret",
+			"label": "Den mysteriösen Namen beschwören, der als die Baldomeranerin bekannt ist",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 5,
+				"lantern": 10,
+				"secrethistories": 2,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_lanterne_secret": -1,
+				"pre.spirit_lanterne_secret": -1,
+				"spirit_lanterne_secret.defunct": -1
+			},
+			"effects": {
+				"pre.spirit_lanterne_secret": 1
+			},
+			"startdescription": "Eine große Macht der Laterne, um die Aufmerksamkeit der Baldomeranerin zu wecken, und ein verlockendes Aroma von Geheimnissen, um sie noch näher heran zu holen.",
+			"description": "Die Baldomeranerin hat die hochgezogenen Schultern einer Gelehrten, die klare Stimme einer Lehrerein und die Sommersprossen einer Kontinentalreisenden. Ihr fehlt ein Schatten.",
+			"warmup": 60,
+			"craftable": true,
+			"comments": "Teresa doesn't struggle; she's always up for a chat"
+		},
+		{
+			"id": "summon_spirit_forgec_winter",
+			"label": "Eine Kreatur rauchiger Täuschung beschwören",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"forge": 6,
+				"winter": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_forgec_winter": 1
+			},
+			"startdescription": "Schmiede für die Beschwörung des Rauchgeistes, Winter für seine Bändigung. Er muss wissen, wer über ihn gebieten wird.",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_forgec_winter.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_forgec_winter.success",
+			"label": "Eine Kreatur rauchiger Täuschung beschwören",
+			"actionId": "work",
+			"description": "Nicht alle Kinder der Schmiede sind hell. Ihre Reststücke und Bastarde sammeln sich in den Grenzen wie Hammerspäne in den Bodenritzen einer Schmiede.  Hier kommt nun so eine Gestalt.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_grailc_moth",
+			"label": "Eine der verstörenderen Kreaturen des Roten Grals beschwören",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"grail": 6,
+				"moth": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_grailc_moth": 1
+			},
+			"startdescription": "Gral für die Quelle des Rohen Propheten und etwas Motte für die Sucht nach Chaos.",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_grailc_moth.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_grailc_moth.success",
+			"label": "Eine der verstörenderen Kreaturen des Roten Grals beschwören",
+			"actionId": "work",
+			"description": "Sie kommt Glied für Glied auf die Welt, suchend wie eine Schlange, krächzend wie eine Krähe und pulsierend wie eine Ader. Sie wird sich an mein Bein schmiegen, wenn ich sie lasse, und danach werde ich mein Schuhwerk wegwerfen müssen.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_lanternc_edge",
+			"label": "Ein scharfkantiges Ding der Laterne beschwören",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"lantern": 6,
+				"edge": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_lanternc_edge": 1
+			},
+			"startdescription": "Ein Hinter war einst ein lebendiger Sterblicher, dann ein toter, und jetzt ist er etwas anderes. Zu seiner Beschwörung ist Laterne nötig, für das Licht, das ihn einst zum Mansus lockte, und Kante, für die Entbehrungen in den Spiegeln.",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_lanternc_edge.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_lanternc_edge.success",
+			"label": "Ein scharfkantiges Ding der Laterne beschwören",
+			"actionId": "work",
+			"description": "Die Hinter lassen sich nicht zu pompösen Auftritten herab.  Der Blick eines Lebendigen verwirkt sie. Ich weiß, er ist da, und das soll für den Augenblick reichen.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_heartc_edge",
+			"label": "Eine Kreatur der Donnerhaut beschwören",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"heart": 6,
+				"edge": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_heartc_edge": 1
+			},
+			"startdescription": "Der Percussigant, gnadenlos und fröhlich! Herz holt ihn herbei, Kante bändigt ihn.",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_heartc_edge.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_heartc_edge.success",
+			"label": "Eine Kreatur der Donnerhaut beschwören",
+			"actionId": "work",
+			"description": "Erst der Rumms, der Rumms, das Rappeln und Rufen der Zeremonien, denen er im Forste beiwohnt. Nun ist er da, bahnt sich seinen Weg durch die Haut der Welt, wie ein klauenbewehrter und ruchloser Onkel oder ein kopflos kloppender Bär.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_winterd_edge",
+			"label": "Einen Diener der Sonne-in-Lumpen beschwören",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"winter": 8,
+				"edge": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_winterd_edge": 1
+			},
+			"startdescription": "Ein starker Frost des Winters, um die Maid-im-Spiegel zu benennen und anzulocken. Kante, ihrer scharfen Grausamkeit angemessen.",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_winterd_edge.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_winterd_edge.success",
+			"label": "Einen Diener der Sonne-in-Lumpen beschwören",
+			"actionId": "work",
+			"description": "Das Ding, das eine Frau war, hat keinen eigenen Ausdruck. Die Bewegungen ihrer Augen und ihres Mundes spiegeln stets die meinen wider, also würde ich in einen Spiegel schauen. Ihre Fingernägel sind scharf wie Glas.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summon_spirit_winterb_heart",
+			"label": "Einen aus der Masse der Stummen Toten beschwören",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"winter": 4,
+				"heart": 2,
+				"desire": -1
+			},
+			"effects": {
+				"pre.spirit_winterb_heart": 1
+			},
+			"startdescription": "Dies sind die Toten, die weder abwärts oder aufwärts streben, sondern im Mansus verweilen und vom Winter träumen. Die Macht des Winters zusammen mit etwas Wärme des Herzens wird sie hierher führen.",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "summoninglosingcontrol",
+					"chance": 30
+				},
+				{
+					"id": "summon_spirit_winterb_heart.success"
+				}
+			]
+		},
+		{
+			"id": "summon_spirit_winterb_heart.success",
+			"label": "Einen aus der Masse der Stummen Toten beschwören",
+			"actionId": "work",
+			"description": "Eine finstere Form, vom Winterlicht bemalt.  Sie wird nicht sprechen, doch ihre Augen sind aufmerksam, schauen, schauen. Die Toten sehnen sich, irgendwann, immer nach der Welt.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "summoninglosingcontrol",
+			"label": "Beschwörung: Ein rebellischer Geist",
+			"actionId": "work",
+			"requirements": {
+				
+			},
+			"startdescription": "Das beschworene Wesen versucht sich meiner Kontrolle zu entziehen! Ich könnte Verstand einsetzen, um es sich zu beseitigen, was stets zuverlässig klappt. Ich könnte versuchen, mit Leidenschaft die Kontrolle wieder an mich zu reißen, was nicht zuverlässig klappt. Oder ich könnte den Dingen ihren Lauf lassen.",
+			"description": "Es hat sich meiner Kontrolle entzogen!",
+			"alternativerecipes": [
+				{
+					"id": "summoningshutitdown",
+					"chance": 100
+				},
+				{
+					"id": "summoningfightformastery",
+					"chance": 100
+				}
+			],
+			"slots": [
+				{
+					"id": "Effort",
+					"label": "Einsatz",
+					"description": "Ich könnte Verstand einsetzen, um es sich zu beseitigen, was stets zuverlässig klappt. Ich könnte versuchen, mit Leidenschaft die Kontrolle wieder an mich zu reißen, was nicht zuverlässig klappt. Oder ich könnte den Dingen ihren Lauf lassen.",
+					"required": {
+						"passion": 1,
+						"reason": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "summoningescaped",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "summoningshutitdown",
+			"label": "Beschwörung: Nach Hause schicken",
+			"actionId": "work",
+			"requirements": {
+				"reason": 1
+			},
+			"effects": {
+				
+			},
+			"aspects": {
+				"fatiguing": 1,
+				"killmanifesting": 1
+			},
+			"startdescription": "Die Worte der Entlassung sprechen. Den Kreis fest versiegeln. Jede Spur beseitigen.",
+			"description": "Es ist fort. Wir sind in Sicherheit.",
+			"warmup": 10
+		},
+		{
+			"id": "summoningfightformastery",
+			"label": "Beschwörung: Wettstreit um Dominanz",
+			"actionId": "work",
+			"startdescription": "Die Dinge von jenseits dieser Welt haben viele Waffen: Messer und Rätsel, Feuer und Verzweiflung. Ich habe meine eigenen Waffen. [Dies funktioniert für gewöhnlich, aber nicht immer.]",
+			"description": "",
+			"requirements": {
+				"passion": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "summoningmasteryregained",
+					"chance": 70
+				},
+				{
+					"id": "summoningescaped",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "summoningescaped",
+			"label": "Beschwörung: Entfleucht!",
+			"actionId": "work",
+			"requirements": {
+				
+			},
+			"startdescription": "Es ist frei!",
+			"description": "Mein beschworenes Wesen hat sich meiner Kontrolle entwunden und wird nun zweifellos für Unheil sorgen – ",
+			"warmup": 5,
+			"alternativerecipes": [
+				{
+					"id": "summoning_haunt_devourer",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"manifesting": 1
+						}
+					}
+				},
+				{
+					"id": "summoning_haunt_deceiver",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"manifesting": 1
+						}
+					}
+				}
+			]
+		},
+		{
+			"id": "summoningmasteryregained",
+			"label": "Beschwörung: Überhand zurückgewonnen!",
+			"actionId": "work",
+			"requirements": {
+				
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Ich hab's geschafft!",
+			"description": "Mein beschworenes Wesen gehorcht mir aufs Wort – für den Augenblick.",
+			"warmup": 10
+		}
+	]
+}

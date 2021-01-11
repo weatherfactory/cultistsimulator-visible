@@ -1,0 +1,1074 @@
+{
+	"elements": [
+		{
+			"id": "influenceedge",
+			"label": "刺激的な空気",
+			"aspects": {
+				"edge": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの刃の影響がどのように相乗効果を発揮するのかを研究することで、2つの刃を強化することができる。代わりに、冬の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influenceedge": 1,
+						"influencewinter": 1,
+						"dread": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentedged": 1,
+						"fragmentedgee": 1,
+						"fragmentedgef": 1,
+						"fragmentedgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "感覚が研ぎ澄まされる。[2番目の影響力：鋭い者には明らかで、高僧は即座に認識できる。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceedgec"
+			}
+		},
+		{
+			"id": "influenceedgec",
+			"label": "鼓舞する雰囲気",
+			"aspects": {
+				"edge": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの刃の影響がどのように相乗効果を発揮するのかを研究することで、2つの刃を強化することができる。代わりに、冬の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influenceedgec": 1,
+						"influencewinterc": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentedged": 1,
+						"fragmentedgee": 1,
+						"fragmentedgef": 1,
+						"fragmentedgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "情熱が沸き起こる。[6番目の影響力：兆候は紛れのないもの。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceedgee"
+			},
+			"decayTo": "influenceedge"
+		},
+		{
+			"id": "influenceedgee",
+			"label": "怒涛の雰囲気",
+			"aspects": {
+				"edge": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの刃の影響がどのように相乗効果を発揮するのかを研究することで、2つの刃を強化することができる。代わりに、冬の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influenceedgee": 1,
+						"influencewintere": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentedged": 1,
+						"fragmentedgee": 1,
+						"fragmentedgef": 1,
+						"fragmentedgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "怒りは様々な形で現れる。[10番目の影響力！強さと危険さが交錯し、互いに結びつく。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceedgeg"
+			},
+			"decayTo": "influenceedgec"
+		},
+		{
+			"id": "influenceedgeg",
+			"label": "解決策",
+			"aspects": {
+				"edge": 15,
+				"influence": 1
+			},
+			"description": "戦いの結末を回避できるのは誰なのか？[15番目の影響力！時の神の注意を引くことができるかもしれない。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"decayTo": "influenceedgee"
+		},
+		{
+			"id": "influenceforge",
+			"label": "高まる熱",
+			"aspects": {
+				"forge": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの鍛造の影響がどのように相乗効果を発揮するのかを研究することで、2つの刃を強化することができる。代わりに、刃の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influenceforge": 1,
+						"influenceedge": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentforgec": 1,
+						"fragmentforged": 1,
+						"fragmentforgee": 1,
+						"fragmentforgef": 1,
+						"fragmentforgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "霞とゆらめき。[2番目の影響力：鋭い者には明らかで、高僧は即座に認識できる。一部の儀式で手下を召喚するために使用できる。また、手下の中には、破壊された時に影響力カードを残していく者もいる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceforgec"
+			}
+		},
+		{
+			"id": "influenceforgec",
+			"label": "震えるような暑さ",
+			"aspects": {
+				"forge": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの鍛造の影響がどのように相乗効果を発揮するのかを研究することで、2つの刃を強化することができる。代わりに、刃の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influenceforgec": 1,
+						"influenceedgec": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentforgec": 1,
+						"fragmentforged": 1,
+						"fragmentforgee": 1,
+						"fragmentforgef": 1,
+						"fragmentforgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "火花が散る可能性。[6番目の影響力：兆候は紛れもないもの。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceforgee"
+			},
+			"decayTo": "influenceforge"
+		},
+		{
+			"id": "influenceforgee",
+			"label": "高まる熱",
+			"aspects": {
+				"forge": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの鍛造の影響がどのように相乗効果を発揮するのかを研究することで、2つの刃を強化することができる。代わりに、刃の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influenceforgee": 1,
+						"influenceedgee": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentforgec": 1,
+						"fragmentforged": 1,
+						"fragmentforgee": 1,
+						"fragmentforgef": 1,
+						"fragmentforgeg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "これは火山の縁から発せられるオーラだ。[10番目の影響力！強さと危険さが交錯し、互いに結びつく。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceforgeg"
+			},
+			"decayTo": "influenceforgec"
+		},
+		{
+			"id": "influenceforgeg",
+			"label": "烈火",
+			"aspects": {
+				"forge": 15,
+				"influence": 1
+			},
+			"description": "変化は火の後を追う。[15番目の影響力！時の神の注意をひくことができるかもしれない。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"decayTo": "influenceforgee"
+		},
+		{
+			"id": "influencegrail",
+			"label": "欲望の自覚",
+			"aspects": {
+				"grail": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの聖杯の影響がどのように相乗効果を発揮するのかを研究することで、2つの聖杯を強化することができる。代わりに、蛾の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencegrail": 1,
+						"influencemoth": 1,
+						"glimmering": 1,
+						"glimmeringplus": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentgrailc": 1,
+						"fragmentgraild": 1,
+						"fragmentgraile": 1,
+						"fragmentgrailf": 1,
+						"fragmentgrailg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "すべての感覚は高められ、すべての感覚は深まる。[2番目の影響力：鋭い者には明らかで、高僧は即座に認識できる。一部の儀式で手下を召喚するために使用できる。また、手下の中には、破壊された時に影響力カードを残していく者もいる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencegrailc"
+			}
+		},
+		{
+			"id": "influencegrailc",
+			"label": "旺盛な欲望",
+			"aspects": {
+				"grail": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの聖杯の影響がどのように相乗効果を発揮するのかを研究することで、2つの聖杯を強化することができる。代わりに、蛾の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencegrailc": 1,
+						"influencemothc": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentgrailc": 1,
+						"fragmentgraild": 1,
+						"fragmentgraile": 1,
+						"fragmentgrailf": 1,
+						"fragmentgrailg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "自分をコントロールするのは難しい。[6番目の影響力：強い共感や調和を呼び起こせる。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencegraile"
+			},
+			"decayTo": "influencegrail"
+		},
+		{
+			"id": "influencegraile",
+			"label": "避けられない欲望",
+			"aspects": {
+				"grail": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの聖杯の影響がどのように相乗効果を発揮するのかを研究することで、2つの聖杯を強化することができる。代わりに、蛾の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencegraile": 1,
+						"influencemothe": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentgrailc": 1,
+						"fragmentgraild": 1,
+						"fragmentgraile": 1,
+						"fragmentgrailf": 1,
+						"fragmentgrailg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "唇は味わいたくなり、指は握りたくなる。[10番目の影響力！強さと危険さが交錯し、互いに結びつく。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencegrailg"
+			},
+			"decayTo": "influencegrailc"
+		},
+		{
+			"id": "influencegrailg",
+			"label": "光り輝くもの",
+			"aspects": {
+				"grail": 15,
+				"influence": 1
+			},
+			"description": "空気は可能性に満ちている。突き刺せば血が出るかもしれない。[15番目の影響力！時の神の注意をひくことができるかもしれない。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"decayTo": "influencegraile"
+		},
+		{
+			"id": "influenceheart",
+			"label": "震える空気",
+			"aspects": {
+				"heart": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの心臓の影響がどのように相乗効果を発揮するのかを研究することで、2つの心臓を強化することができる。代わりに、蛾の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influenceheart": 1,
+						"influencegrail": 1,
+						"vitality": 1,
+						"vitalityplus": 1,
+						"contentment": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentheartc": 1,
+						"fragmentheartd": 1,
+						"fragmenthearte": 1,
+						"fragmentheartf": 1,
+						"fragmentheartg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "つま先を鳴らす。何もかもが爽やかで、穏やかだ。[2番目の影響力：鋭い者には明らかで、高僧は即座に認識できる。一部の儀式で手下を召喚するために使用できる。また、手下の中には、破壊された時に影響力カードを残していく者もいる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceheartc"
+			},
+			"decayTo": "vitality"
+		},
+		{
+			"id": "influenceheartc",
+			"label": "脈打つ雰囲気",
+			"aspects": {
+				"heart": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの心臓の影響がどのように相乗効果を発揮するのかを研究することで、2つの心臓を強化することができる。代わりに、蛾の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influenceheartc": 1,
+						"influencegrailc": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentheartc": 1,
+						"fragmentheartd": 1,
+						"fragmenthearte": 1,
+						"fragmentheartf": 1,
+						"fragmentheartg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "高まる力、心強いエネルギー。[6番目の影響力：強い共感や調和を呼び起こせる。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencehearte"
+			},
+			"decayTo": "influenceheart"
+		},
+		{
+			"id": "influencehearte",
+			"label": "高鳴る空気",
+			"aspects": {
+				"heart": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの心臓の影響がどのように相乗効果を発揮するのかを研究することで、2つの心臓を強化することができる。代わりに、蛾の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencehearte": 1,
+						"influencegraile": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentheartc": 1,
+						"fragmentheartd": 1,
+						"fragmenthearte": 1,
+						"fragmentheartf": 1,
+						"fragmentheartg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "心が動き、世界が動く。[10番目の影響力！強さと危険さが交錯し、互いに結びつく。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceheartg"
+			},
+			"decayTo": "influenceheartc"
+		},
+		{
+			"id": "influenceheartg",
+			"label": "間近",
+			"aspects": {
+				"heart": 15,
+				"influence": 1
+			},
+			"description": "空はドラムだ。大地はその恍惚感に浸る準備ができている。[15番目の影響力！時の神の注意を引くことができるかもしれない。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"decayTo": "influencehearte"
+		},
+		{
+			"id": "sicknessprotection",
+			"label": "執行停止",
+			"description": "すべての肉は朽ちていく。しかし、私の肉が朽ちるのはもう少し後だと約束された。「体力が残っていない場合、これが病気に対する最後の保険となる。]",
+			"lifetime": 600,
+			"decayTo": "influenceheart"
+		},
+		{
+			"id": "influenceknock",
+			"label": "小さな割れ目",
+			"aspects": {
+				"knock": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "十分な圧力をかけると、世界の皮が弾ける。いずれかの影響力を加えると、高レベルの開錠の影響力に改変できる。",
+					"actionId": "study",
+					"required": {
+						"influenceedge": 1,
+						"influenceforge": 1,
+						"influencegrail": 1,
+						"influenceheart": 1,
+						"influenceknock": 1,
+						"influencelantern": 1,
+						"influencemoth": 1,
+						"influencewinter": 1,
+						"erudition": 1,
+						"glimmering": 1,
+						"vitality": 1,
+						"eruditionplus": 1,
+						"glimmeringplus": 1,
+						"vitalityplus": 1
+					}
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentknockc": 1,
+						"fragmentknockd": 1,
+						"fragmentknocke": 1,
+						"fragmentknockf": 1,
+						"fragmentknockg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "紐が外れて窓が開き、油を塗ったように鍵が回る。[2番目の影響力：鋭い者には明らかで、高僧は即座に認識できる。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceknockc"
+			}
+		},
+		{
+			"id": "influenceknockc",
+			"label": "小さな亀裂",
+			"aspects": {
+				"knock": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "十分な圧力をかけると、世界の皮が弾ける。一致する影響力を加えると、高レベルの開錠の影響力に改変できる。",
+					"actionId": "study",
+					"required": {
+						"influenceedgec": 1,
+						"influenceforgec": 1,
+						"influencegrailc": 1,
+						"influenceheartc": 1,
+						"influenceknockc": 1,
+						"influencelanternc": 1,
+						"influencemothc": 1,
+						"influencewinterc": 1
+					}
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentknockc": 1,
+						"fragmentknockd": 1,
+						"fragmentknocke": 1,
+						"fragmentknockf": 1,
+						"fragmentknockg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "雲が裂け、壁が軋み、古傷が痛む。[6番目の影響力：強い共感や調和を呼び起こせる。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceknocke"
+			},
+			"decayTo": "influenceknock"
+		},
+		{
+			"id": "influenceknocke",
+			"label": "小さな裂け目",
+			"aspects": {
+				"knock": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "十分な圧力をかけると、世界の皮が弾ける。一致する影響力を加えると、高レベルの開錠の影響力に改変できる。",
+					"actionId": "study",
+					"required": {
+						"influenceedgee": 1,
+						"influenceforgee": 1,
+						"influencegraile": 1,
+						"influencehearte": 1,
+						"influenceknocke": 1,
+						"influencelanterne": 1,
+						"influencemothe": 1,
+						"influencewintere": 1
+					}
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentknockc": 1,
+						"fragmentknockd": 1,
+						"fragmentknocke": 1,
+						"fragmentknockf": 1,
+						"fragmentknockg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "空間が歪み、扉が破裂し、地中から蛇が沸き上がる！[10番目の影響力！強さと危険さが交錯し、互いに結びつく。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceknockg"
+			},
+			"decayTo": "influenceknockc"
+		},
+		{
+			"id": "influenceknockg",
+			"label": "間違った扉",
+			"aspects": {
+				"knock": 15,
+				"influence": 1
+			},
+			"description": "開けてはいけない扉がある。今でもその蝶番はガタガタと軋んでいる――[15番目の影響力！時の神の注意を引くことができるかもしれない。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"decayTo": "influenceknocke"
+		},
+		{
+			"id": "influencelantern",
+			"label": "輝きの意識",
+			"aspects": {
+				"lantern": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの灯りの影響がどのように相乗効果を発揮するのかを研究することで、2つの灯りを強化することができる。代わりに、鍛造の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencelantern": 1,
+						"influenceforge": 1,
+						"erudition": 1,
+						"eruditionplus": 1,
+						"fascination": 1,
+						"contentment": 1,
+						"fleeting": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentlanternc": 1,
+						"fragmentlanternd": 1,
+						"fragmentlanterne": 1,
+						"fragmentlanternf": 1,
+						"fragmentlanterng": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "世界の背後には光があり、マンサスの上にはガラスと肌の両方を貫く光がある。ここに存在している。[2番目の影響力：鋭い者には明らかで、高僧は即座に認識できる。一部の儀式で手下を召喚するために使用できる。また、手下の中には、破壊された時に影響力カードを残していく者もいる。未使用の場合、魅了になる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencelanternc"
+			},
+			"decayTo": "fascination"
+		},
+		{
+			"id": "influencelanternc",
+			"label": "輝きの強さ",
+			"aspects": {
+				"lantern": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの灯りの影響がどのように相乗効果を発揮するのかを研究することで、2つの灯りを強化することができる。代わりに、鍛造の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencelanternc": 1,
+						"influenceforgec": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentlanternc": 1,
+						"fragmentlanternd": 1,
+						"fragmentlanterne": 1,
+						"fragmentlanternf": 1,
+						"fragmentlanterng": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "光が肌を露わにし、空気を満たす。[6番目の影響力：強い共感や調和を呼び起こせる。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencelanterne"
+			},
+			"decayTo": "influencelantern"
+		},
+		{
+			"id": "influencelanterne",
+			"label": "輝きの炎",
+			"aspects": {
+				"lantern": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの灯りの影響がどのように相乗効果を発揮するのかを研究することで、2つの灯りを強化することができる。代わりに、鍛造の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencelanterne": 1,
+						"influenceforgee": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentlanternc": 1,
+						"fragmentlanternd": 1,
+						"fragmentlanterne": 1,
+						"fragmentlanternf": 1,
+						"fragmentlanterng": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "どの色も新しい染料のように明るくなったが、今ではすべての色が白に向かって滲み始める。[10番目の影響力！強さと危険さが交錯し、互いに結びつく。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencelanterng"
+			},
+			"decayTo": "influencelanternc"
+		},
+		{
+			"id": "influencelanterng",
+			"label": "輝き",
+			"aspects": {
+				"lantern": 15,
+				"influence": 1
+			},
+			"lifetime": 60,
+			"description": "目を覆っても大丈夫。何の役にも立たないから。[15番目の影響力！時の神の注意を引くことができるかもしれない。一部の儀式で手下を召喚するために使用できる。]",
+			"decayTo": "influencelanterne"
+		},
+		{
+			"id": "influencemoth",
+			"label": "脳の騒めき",
+			"aspects": {
+				"moth": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの蛾の影響がどのように相乗効果を発揮するのかを研究することで、2つの蛾を強化することができる。代わりに、灯りの影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencemoth": 1,
+						"influencelantern": 1,
+						"erudition": 1,
+						"eruditionplus": 1,
+						"glimmering": 1,
+						"glimmeringplus": 1,
+						"fascination": 1,
+						"fleeting": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentmothd": 1,
+						"fragmentmothe": 1,
+						"fragmentmothf": 1,
+						"fragmentmothg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "in gi rum imus noc te et con sumi <b>チョキチョキチョキ</b>。[2番目の影響力：鋭い者には明らかで、高僧は即座に認識できる。一部の儀式で手下を召喚するために使用できる。また、手下の中には、破壊された時に影響力カードを残していく者もいる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothc"
+			},
+			"decayTo": "restlessness"
+		},
+		{
+			"id": "influencemothc",
+			"label": "魂の響き",
+			"aspects": {
+				"moth": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの蛾の影響がどのように相乗効果を発揮するのかを研究することで、2つの蛾を強化することができる。代わりに、灯りの影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencemothc": 1,
+						"influencelanternc": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentmothd": 1,
+						"fragmentmothe": 1,
+						"fragmentmothf": 1,
+						"fragmentmothg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "ああ、我々が遊んだ友人、我々が作った皮膚は、今で我々を駆り立てている！[6番目の影響力：強い共感や調和を呼び起こせる。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothe"
+			},
+			"decayTo": "influencemoth"
+		},
+		{
+			"id": "influencemothe",
+			"label": "心の遠吠え",
+			"aspects": {
+				"moth": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの蛾の影響がどのように相乗効果を発揮するのかを研究することで、2つの蛾を強化することができる。代わりに、灯りの影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencemothe": 1,
+						"influencelanterne": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentmothd": 1,
+						"fragmentmothe": 1,
+						"fragmentmothf": 1,
+						"fragmentmothg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "感情が思考を歪める。情熱は風の中の葉のように次のものへと移っていく。[10番目の影響力！強さと危険さが交錯し、互いに結びつく。一部の儀式で手下を召喚するために使用できる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothg"
+			},
+			"decayTo": "influencemothc"
+		},
+		{
+			"id": "influencemothg",
+			"label": "昔の憧れ",
+			"aspects": {
+				"moth": 15,
+				"influence": 1
+			},
+			"description": "「\n    お願い」",
+			"lifetime": 60,
+			"decayTo": "influencemothe"
+		},
+		{
+			"id": "influencewinter",
+			"label": "ひんやりとした雰囲気",
+			"aspects": {
+				"winter": 2,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの冬の影響がどのように相乗効果を発揮するのかを研究することで、2つの冬を強化することができる。心臓の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencewinter": 1,
+						"influenceheart": 1,
+						"vitality": 1,
+						"vitalityplus": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentwinterc": 1,
+						"fragmentwinterd": 1,
+						"fragmentwintere": 1,
+						"fragmentwinterf": 1,
+						"fragmentwinterg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "部屋には独特の寒気が漂う。[2番目の影響力：鋭い者には明らかで、高僧は即座に認識できる。一部の儀式で手下を召喚するために使用できる。また、手下の中には、破壊された時に影響力カードを残していく者もいる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencewinterc"
+			},
+			"decayTo": "dread"
+		},
+		{
+			"id": "influencewinterc",
+			"label": "凍りついた雰囲気",
+			"aspects": {
+				"winter": 6,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの冬の影響がどのように相乗効果を発揮するのかを研究することで、2つの冬を強化することができる。心臓の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencewinterc": 1,
+						"influenceheartc": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentwinterc": 1,
+						"fragmentwinterd": 1,
+						"fragmentwintere": 1,
+						"fragmentwinterf": 1,
+						"fragmentwinterg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "冷たい空気が肌を冷やす。霜がガラスに跡をつける。[6番目の影響力：兆候は紛れもないもの。一部の儀式で手下を召喚するために使用できる。未使用の場合、恐怖になる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencewintere"
+			},
+			"decayTo": "influencewinter"
+		},
+		{
+			"id": "influencewintere",
+			"label": "苦い雰囲気",
+			"aspects": {
+				"winter": 10,
+				"influence": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "同一の2つの冬の影響がどのように相乗効果を発揮するのかを研究することで、2つの冬を強化することができる。心臓の影響でどのように変化するかを研究することで、改変することができる。",
+					"required": {
+						"influencewintere": 1,
+						"influencehearte": 1
+					},
+					"actionId": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentwinterc": 1,
+						"fragmentwinterd": 1,
+						"fragmentwintere": 1,
+						"fragmentwinterf": 1,
+						"fragmentwinterg": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "冬は服を通り過ぎ、肌を通り過ぎ、静脈に巣食う。[10番目の影響力！強さと危険さが交錯し、互いに結びつく。一部の儀式で手下を召喚するために使用できる。未使用の場合、恐怖になる。]",
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influencewinterg"
+			},
+			"decayTo": "influencewinterc"
+		},
+		{
+			"id": "influencewinterg",
+			"label": "完璧な霜",
+			"aspects": {
+				"winter": 15,
+				"influence": 1
+			},
+			"description": "世界は氷のように静止している。1つひとつの動きが旅となる。[15番目の影響力！時の神の注意を引くことができるかもしれない。一部の儀式で手下を召喚するために使用できる。未使用の場合、恐怖になる。]",
+			"lifetime": 60,
+			"decayTo": "influencewintere"
+		}
+	]
+}

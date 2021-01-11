@@ -1,0 +1,334 @@
+{
+	"elements": [
+		{
+			"id": "ascensionchangea",
+			"label": "Versuchung: Wandel",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 1
+			},
+			"description": "An bestimmten Abenden vor dem Publikum lässt sich erahnen, dass es da noch mehr gibt. Was könnte ich wohl aus mir machen? [Diese Karte ermöglicht dir einen Sieg des Wandels, wenn du sie nur genug verbesserst. Widme nur genug deinem Tanze, und der nächste Schritt wird sich offenbaren.]",
+			"xtriggers": {
+				"ascend": "ascensionchangeb"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchangeb",
+			"label": "Wandel: Blatt",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 2
+			},
+			"description": "Ich erbebe, wenn der Wind kommt. Die Adern unter meiner Oberfläche werden sichtbar. Ich trage stets eine Perle aus Malachit auf der Haut. [Diese Karte ermöglicht dir einen Sieg des Wandels, wenn du sie nur genug verbesserst. Widme nur genug deinem Tanze, und der nächste Schritt wird sich offenbaren.]",
+			"xtriggers": {
+				"ascend": "ascensionchangec"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchangec",
+			"label": "Wandel: Perle",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 3
+			},
+			"description": "Meine Haut schält sich ab und darunter bin ich dunkler, wobei meine Augen heller sind. Ich trage eine Meeresperle an einer geheimen Stelle. Manchmal des Nachts hörte ich das Meer. Manchmal sind morgens meine Laken blutig. [Diese Karte ermöglicht dir einen Sieg des Wandels, wenn du sie nur genug verbesserst. Widme nur genug deinem Tanze, und der nächste Schritt wird sich offenbaren.]",
+			"xtriggers": {
+				"ascend": "ascensionchanged"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchanged",
+			"label": "Wandel: Antumbra",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 4
+			},
+			"description": "Ich bin so dunkel geworden wie ich es nur sein kann. Schatten sind meine Begleiter und meine Schritte sind ein Flüstern. Ich trage einen Ring mit einem Gagat, doch den Stein nach innen, unsichtbar in meiner Handfläche. [Diese Karte ermöglicht dir einen Sieg des Wandels, wenn du sie nur genug verbesserst. Widme nur genug deinem Tanze, und der nächste Schritt wird sich offenbaren.]",
+			"xtriggers": {
+				"ascend": "ascensionchangee"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchangee",
+			"label": "Wandel: Stigma",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 5
+			},
+			"description": "Meine Finsternis ist erbleicht und alle meine Farben sind wie ausgelaugt. Neue Ohrmuscheln sprießen an den empfindlichsten Stellen. Geheimnisse bedecken mich wie Tau. Ich trage ein Skolezit-Prisma unter meiner bleichen Zunge. [Diese Karte ermöglicht dir einen Sieg des Wandels, wenn du sie nur genug verbesserst. Widme nur genug deinem Tanze, und der nächste Schritt wird sich offenbaren.]",
+			"xtriggers": {
+				"ascend": "ascensionchangef"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchangef",
+			"label": "Wandel: Pupille",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 6
+			},
+			"description": "Das Weiß meiner Augen ist gelb und ein neues Integument hat sich um meine Glieder herum entwickelt, um mich vor dem letzten Wandel zu schützen. Privat trage ich einen goldenen Zehenring sowie Ohrringe aus Gold und Topaz, die aber nicht zu sehen sind. [Diese Karte ermöglicht dir einen Sieg des Wandels, wenn du sie nur genug verbesserst. Widme nur genug deinem Tanze, und der nächste Schritt wird sich offenbaren.]",
+			"xtriggers": {
+				"ascend": "ascensionchangeg"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchangeg",
+			"label": "Wandel: Elfenbein",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 6
+			},
+			"description": "Meine Knochen sind anders. Sie bergen in sich die Geschichte dessen, was verloren ging. Sollte ich nicht überleben, werden sie meine Geschichte sein, und jemand wird Fragmente meines Elfenbeins tragen, um sich die Haut zu wärmen. [Diese Karte ermöglicht dir einen Sieg des Wandels.]",
+			"xtriggers": {
+				"ascend": "ascensionchangeg"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "sendingheartb",
+			"label": "Larve: Viper",
+			"aspects": {
+				"sending": 1,
+				"knock": 1
+			},
+			"description": "Die Viper rollt sich zusammen, wo sich das Meer ans Land schmiegt. Ich muss einen Ort der Macht am Ufer finden.  Vielleicht kann mir Sulochana helfen, wenn ich ihr die Geheimnisse anderer Orte bringe. [Ein Teil von dir kann sich in Gestalt einer Schlange bewegen. Schicke sie los, um deine Gefolgsleute an einen Ort zu begleiten, wo sie den Tanz vollführen kann, den du tanzen musst. Hast du Probleme, jenen Ort zu finden, sprich Sulochana auf Geheime Geschichten an.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingheartc",
+			"label": "Larve: Katze",
+			"aspects": {
+				"sending": 1,
+				"moth": 2
+			},
+			"description": "Die Katze spaziert nachts am Fluss, wo der Schwarzflachs gedeiht. [Ein Teil von dir kann sich in Gestalt einer Katze bewegen. Schicke sie los, um deine Gefolgsleute an einen Ort zu begleiten, wo sie den Tanz vollführen kann, den du tanzen musst. Hast du Probleme, jenen Ort zu finden, sprich Sulochana auf Geheime Geschichten an.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingheartd",
+			"label": "Larve: Fuchs",
+			"aspects": {
+				"sending": 1,
+				"grail": 3
+			},
+			"description": "Der Fuchs wandert über die Bergwiesen und sucht nach einem Zeichen des Blumenmachers. [Ein Teil von dir kann sich in Gestalt eines Fuchses bewegen. Schicke ihn los, um deine Gefolgsleute an einen Ort zu begleiten, wo er den Tanz vollführen kann, den du tanzen musst. Hast du Probleme, jenen Ort zu finden, sprich Sulochana auf Geheime Geschichten an.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendinghearte",
+			"label": "Larve: Adler",
+			"aspects": {
+				"sending": 1,
+				"lantern": 4
+			},
+			"description": "Der Adler reist auf den Straßen des Himmels, und er sieht dies: in Miah war der erste Horst, wo die Mächte der Lüfte erstmals ihre Geheimnisse austauschten. [Ein Teil von dir kann sich in Gestalt eines Adlers bewegen. Schicke ihn los, um deine Gefolgsleute an einen Ort zu begleiten, wo er den Tanz vollführen kann, den du tanzen musst. Hast du Probleme, jenen Ort zu finden, sprich Sulochana auf Geheime Geschichten an.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingheartf",
+			"label": "Larve: Taube",
+			"aspects": {
+				"sending": 1,
+				"winter": 5
+			},
+			"description": "Die Taube erinnert sich an das, was alle anderen vergessen. [Ein Teil von dir kann sich in Gestalt eines bleichen Vogels bewegen. Schicke sie los, um deine Gefolgsleute an einen Ort zu begleiten, wo sie den Tanz vollführen kann, den du tanzen musst. Hast du Probleme, jenen Ort zu finden, sprich Sulochana auf Geheime Geschichten an.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingheartg",
+			"label": "Larve: Keiler",
+			"aspects": {
+				"sending": 1,
+				"way": 1
+			},
+			"description": "In dieser Gestalt gebe ich mich demjenigen hin, der den Schlüssel zum Königshaut-Tor besitzt. [Ein Teil von dir kann sich in Gestalt einer wilden schwarzen Bestie bewegen.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothb",
+			"label": "Instar: Stumm",
+			"aspects": {
+				"sending": 1,
+				"knock": 1
+			},
+			"description": "In einem stummen Hause am Meere, in einer geborgten Haut, werden wir den zweiten Wandel suchen. Ich muss einen Ort der Macht am Ufer finden. Vielleicht kann mir Sulochana helfen, wenn ich ihr die Geheimnisse anderer Orte bringe. [Ein Teil von dir kann sich in Gestalt einer Viper bewegen. Schicke sie los, um deine Gefolgsleute an einen Ort zu begleiten, wo sie den Tanz vollführen kann, den du tanzen musst. Hast du Probleme, jenen Ort zu finden, sprich Sulochana auf Geheime Geschichten an.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothc",
+			"label": "Instar: Schleichend",
+			"aspects": {
+				"sending": 1,
+				"moth": 2
+			},
+			"description": "Inmitten der Steine, wo die schwarze Bestie haust, hinter der Maske der Augen, werden wir den dritten Wandel suchen. [Ein Teil von dir kann sich in Gestalt einer Katze bewegen. Schicke sie los, um deine Gefolgsleute an einen Ort zu begleiten, wo sie den Tanz vollführen kann, den du tanzen musst. Hast du Probleme, jenen Ort zu finden, sprich Sulochana auf Geheime Geschichten an.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothd",
+			"label": "Instar: Rostrot",
+			"aspects": {
+				"sending": 1,
+				"grail": 3
+			},
+			"description": "An hoch gelegenen Orten, wo die Luft eine Verführung ist, werden wir den vierten Wandel suchen. [Ein Teil von dir kann sich in Gestalt eines Fuchses bewegen. Schicke ihn los, um deine Gefolgsleute an einen Ort zu begleiten, wo er den Tanz vollführen kann, den du tanzen musst. Hast du Probleme, jenen Ort zu finden, sprich Sulochana auf Geheime Geschichten an.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothe",
+			"label": "Instar: Weitgereist",
+			"aspects": {
+				"sending": 1,
+				"lantern": 4
+			},
+			"description": "In Miah, wo die Tausendfüßlerin alles sah, was noch kommen könnte, werden wir den fünften Wandel suchen. [Ein Teil von dir kann sich in Gestalt eines Adlers bewegen. Schicke ihn los, um deine Gefolgsleute an einen Ort zu begleiten, wo er den Tanz vollführen kann, den du tanzen musst. Hast du Probleme, jenen Ort zu finden, sprich Sulochana auf Geheime Geschichten an.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothf",
+			"label": "Instar: Gierig",
+			"aspects": {
+				"sending": 1,
+				"winter": 5
+			},
+			"description": "An dem fernen Ort, wo man sich noch an die Sonne erinnert, werde ich meinen geborgten Hass für den sechsten Wandel mitbringen. [Ein Teil von dir kann sich in Gestalt eines Wolfs bewegen. Schicke ihn los, um deine Gefolgsleute an einen Ort zu begleiten, wo er den Tanz vollführen kann, den du tanzen musst. Hast du Probleme, jenen Ort zu finden, sprich Sulochana auf Geheime Geschichten an.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothg",
+			"label": "Imago",
+			"aspects": {
+				"sending": 1,
+				"way": 1
+			},
+			"description": "Für den letzten Wandel werde ich die Tür im Walde passieren. Medusas Opfer ist stets ein jungfräuliches Rotwild, also werde ich dir Tür als Hirschkuh passieren. [In den Kreis der Nacht fliegst du.]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothheartg",
+			"label": "Larve: Imago",
+			"aspects": {
+				"sending": 1,
+				"way": 1
+			},
+			"description": "Mein Geist wird meinen Körper als große gehörnte Bestie verlassen. Um ein Opfer zu sein? [Was innen ist, außen. Was außen ist, innen.]",
+			"icon": "sendingmothg",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "ascensionlessonhearta",
+			"label": "Kleider, abgelegt",
+			"aspects": {
+				
+			},
+			"description": "Der Malachit hat mich gelehrt, dass das nackte Ich nicht das wahre ich ist, aber weniger eine Lüge. [In der Jahreszeit der Ambitionen kann dies dein Verlangen nach Wandel steigern.]",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonheartb",
+			"label": "Integument, abgelegt",
+			"aspects": {
+				
+			},
+			"description": "Die Zwillinge und die Schlange führen Krieg, und in jenem Krieg habe ich erfahren, wie Schmerz ein Tor sein kann.",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonheartc",
+			"label": "Schritte, aufgegeben",
+			"aspects": {
+				
+			},
+			"description": "Der Samt hat mich gelehrt, dass alles, was enthüllt wird, zuerst zu verbergen ist, damit die Enthüllung Folgen haben kann. Ich habe meine Schritte aufgegeben.",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonheartd",
+			"label": "Farbtöne, aufgegeben",
+			"aspects": {
+				
+			},
+			"description": "Der Blumenmacher hat mir alles gegeben, was ich begehre, und mir meine Farben genommen.",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonhearte",
+			"label": "Augenlicht, aufgegeben",
+			"aspects": {
+				
+			},
+			"description": "Ich habe meine Augen der Vagabundin gegeben, und durch sie werde ich sehen, was sie sehen würde: die Straße zum roten Wandel.",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonheartf",
+			"label": "Knochen, aufgegeben",
+			"aspects": {
+				
+			},
+			"description": "Der Elegiker hat mich Erinnern gelehrt, im letzten Teil von mir, der sich wandeln wird. Ich werde diese Lektion mit durch das Königshaut-Tor nehmen.",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmotha",
+			"label": "Kleider, abgelegt",
+			"aspects": {
+				
+			},
+			"description": "Die Ringeibe befahl mir, mein Fleisch zu entblößen, und ich gehorchte. Ich werde der Ringeibe nicht immer gehorchen. [In der Jahreszeit der Ambitionen kann dies dein Verlangen nach Wandel steigern.]",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmothb",
+			"label": "Integument, abgelegt",
+			"aspects": {
+				
+			},
+			"description": "Die Mutter durchbohrt, die Hexe verlangt, die Schwester löst sich auf. Und so ist\nmeine Haut\nso dünn\nwie Regen",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmothc",
+			"label": "Schritte, aufgegeben",
+			"aspects": {
+				
+			},
+			"description": "Ich ging in den Schwarzflachs am Ufer des Flusses und er kostete mit seinen hundert Zungen meine Füße, bis ich die Berührung nicht mehr ertragen konnte. Und dann war ich nur noch ein Schatten.",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmothd",
+			"label": "Farbtöne, aufgegeben",
+			"aspects": {
+				
+			},
+			"description": "Ich kam zu den Blumen, die der Blumenmacher gemacht hatte, und das ist es, was ich geworden bin. Nun bewahrt er meine Farben für mich auf.",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmothe",
+			"label": "Augenlicht, aufgegeben",
+			"aspects": {
+				
+			},
+			"description": "Die Tausendfüßlerin erzählte mir ihre Witze und im Gegenzug werde ich sie mir Augen aus Gold schnitzen lassen, bis die Ommatidien wachsen. ",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmothf",
+			"label": "Knochen, aufgegeben",
+			"aspects": {
+				
+			},
+			"description": "Die Sonne ward geteilt und der Wolf wird mich nicht das salzige Aroma ihrer Knochen vergessen lassen – nicht bevor der Mansus birst. Nun will der Wolf, dass ich jenes Aroma durch die Tür im Walde trage.",
+			"unique": true
+		}
+	]
+}

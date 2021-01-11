@@ -1,0 +1,59 @@
+{
+    "recipes": [
+        {
+            "id": "health_expel_to_scar",
+            "label": "健康：落下伤疤",
+            "actionId": "scar_ability",
+            "startdescription": "我的身体正在改变……",
+            "description": "有些动作会留下更深的印记。[“健康”已永久地成为一道伤疤。注意：伤疤不能治疗生病与挨饿。]",
+            "requirements": {
+                "health": 1
+            },
+            "aspects": {
+                "scarability": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "passion_expel_to_scar",
+            "label": "激情：落下伤疤",
+            "actionId": "scar_ability",
+            "startdescription": "我的多愁善感正在改变我……",
+            "description": "我的思绪将我的肉体与灵魂绑定得甚是牢靠。[“激情”已永久地成为一道伤疤。]",
+            "requirements": {
+                "passion": 1
+            },
+            "aspects": {
+                "scarability": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "expel_independent",
+            "label": "浑然不查",
+            "actionId": "expel_independent",
+            "startdescription": "我的对手不可能知道等待他的是什么。",
+            "warmup": 1
+        },
+        {
+            "id": "expel_corpses",
+            "label": "一抹虚影",
+            "actionId": "expel_corpse",
+            "requirements": {
+                "corpse": 1
+            },
+            "startdescription": "长眠于此。",
+            "warmup": 1
+        },
+        {
+            "id": "expel_injury",
+            "label": "一道血痕",
+            "actionId": "expel_injury",
+            "requirements": {
+                "injury": 1
+            },
+            "startdescription": "痛楚是最后的礼物。",
+            "warmup": 1
+        }
+    ]
+}

@@ -1,0 +1,712 @@
+{
+    "elements": [
+        {
+            "id": "skillhealtha",
+            "label": "Skill: a Stronger Physique",
+            "aspects": {
+                "healthskill": 1,
+                "ability": 1
+            },
+            "description": "I have benefited from exercise. [Use this with two Lessons Learnt to gain more Health.]",
+            "slots": [
+                {
+                    "id": "Health",
+                    "actionid": "work",
+                    "description": "I must devote my energies to this.",
+                    "required": {
+                        "health": 1
+                    }
+                },
+                {
+                    "id": "V1",
+                    "actionid": "study",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "vitalityplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Am I ready to grow stronger?"
+                },
+                {
+                    "id": "V2",
+                    "actionid": "study",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "vitalityplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Am I ready to grow stronger?"
+                }
+            ],
+            "xtriggers": {
+                "careeradvancement": "skillhealthb"
+            }
+        },
+        {
+            "id": "skillhealthb",
+            "label": "Skill: a Hardened Physique",
+            "description": "You might not know it to look at me, but I have grown strong as a smith or a soldier. [Use this with three Lessons Learnt to gain more Health.]",
+            "xtriggers": {
+                "careeradvancement": "skillhealthc"
+            },
+            "aspects": {
+                "healthskill": 2,
+                "ability": 1
+            },
+            "slots": [
+                {
+                    "id": "Health",
+                    "actionid": "work",
+                    "description": "I must devote my energies to this.",
+                    "required": {
+                        "health": 1
+                    }
+                },
+                {
+                    "id": "V1",
+                    "actionid": "study",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "vitalityplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Shall I grow stronger yet?[Use this with three Lessons Learnt  to gain more Health.]"
+                },
+                {
+                    "id": "V2",
+                    "actionid": "study",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "vitalityplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Shall I grow stronger yet?"
+                },
+                {
+                    "id": "V3",
+                    "actionid": "study",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "vitalityplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Shall I grow stronger yet?"
+                }
+            ]
+        },
+        {
+            "id": "skillhealthc",
+            "label": "Skill: a Steely Physique",
+            "description": "There are many things now that I could crush in my fists. [Use this with four Lessons Learnt to gain more Health.]",
+            "aspects": {
+                "healthskill": 3,
+                "ability": 1
+            },
+            "slots": [
+                {
+                    "id": "Health",
+                    "actionid": "work",
+                    "description": "I must devote my energies to this.",
+                    "required": {
+                        "health": 1
+                    }
+                },
+                {
+                    "id": "specialisation",
+                    "actionid": "study",
+                    "label": "Something More",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between strength and grace."
+                },
+                {
+                    "id": "V1",
+                    "actionid": "study",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "vitalityplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Could I grow healthier still? [Use this with four Lessons Learnt to gain more Health.]"
+                },
+                {
+                    "id": "V2",
+                    "actionid": "study",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "vitalityplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Could I grow healthier still?"
+                },
+                {
+                    "id": "V3",
+                    "actionid": "study",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "vitalityplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Could I grow healthier still?"
+                },
+                {
+                    "id": "V4",
+                    "actionid": "study",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "vitalityplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Could I grow healthier still?"
+                }
+            ]
+        },
+        {
+            "id": "skillhealthd_strength",
+            "label": "Skill: a Matchless Physique",
+            "description": "I move like a mountain and strike like the sky. 'To master others is strength. To master yourself is power.' [Health and Skill can increase no further.]",
+            "aspects": {
+                "healthskill": 4,
+                "ability": 1,
+                "murderskill": 1
+            },
+            "slots": [
+                {
+                    "id": "Health",
+                    "actionid": "work",
+                    "description": "I must devote my energies to this.",
+                    "required": {
+                        "health": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "skillhealthd_grace",
+            "label": "Skill: a Flawless Physique",
+            "description": "Machine perfection. Sinew-bound ivory, tight in satin skin. 'From here, I can only deteriorate.' [Health and Skill can increase no further.]",
+            "aspects": {
+                "healthskill": 4,
+                "ability": 1
+            },
+            "slots": [
+                {
+                    "id": "Health",
+                    "actionid": "work",
+                    "description": "I must devote my energies to this.",
+                    "required": {
+                        "health": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "skillreasona",
+            "label": "Skill: Scholarship",
+            "aspects": {
+                "reasonskill": 1,
+                "ability": 1
+            },
+            "description": "I am flush with clever quotations. [Use this with two Lessons Learnt to gain more Reason.]",
+            "slots": [
+                {
+                    "id": "e1",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "eruditionplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Shall I stock my mind with more knowledge?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "e2",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "eruditionplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Shall I stock my mind with more knowledge?",
+                    "actionid": "study"
+                }
+            ],
+            "xtriggers": {
+                "careeradvancement": "skillreasonb"
+            }
+        },
+        {
+            "id": "skillreasonb",
+            "label": "Skill: Notable Scholarship",
+            "description": "I have learnt enough to know how little I know. [Use this with three Lessons Learnt to gain more Reason.]",
+            "xtriggers": {
+                "careeradvancement": "skillreasonc"
+            },
+            "aspects": {
+                "reasonskill": 2,
+                "ability": 1
+            },
+            "slots": [
+                {
+                    "id": "e1",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "eruditionplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Could I learn even more?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "e2",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "eruditionplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Could I learn even more?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "e3",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "eruditionplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Could I learn even more?",
+                    "actionid": "study"
+                }
+            ]
+        },
+        {
+            "id": "skillreasonc",
+            "label": "Skill: Profound Scholarship",
+            "description": "My skull creaks at the corners with the knowledge I've accrued. [Use this with four Lessons Learnt to gain more Reason.]",
+            "aspects": {
+                "reasonskill": 3,
+                "ability": 1
+            },
+            "slots": [
+                {
+                    "id": "specialisation",
+                    "actionid": "study",
+                    "label": "Something More",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between illumination and concentration."
+                },
+                {
+                    "id": "e1",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "eruditionplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Can I sharpen my reason further?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "e2",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "eruditionplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Can I sharpen my reason further?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "e3",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "eruditionplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Can I sharpen my reason further?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "e4",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "eruditionplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Can I sharpen my reason further?",
+                    "actionid": "study"
+                }
+            ]
+        },
+        {
+            "id": "skillreasond_illumination",
+            "label": "Skill: a Rarefied Mind",
+            "description": "My mind is glass, and my memory light. [Reason and Skill can increase no further.]",
+            "aspects": {
+                "reasonskill": 4,
+                "ability": 1
+            },
+            "icon": "skillreasonc"
+        },
+        {
+            "id": "skillreasond_concentration",
+            "label": "Skill: a Silent Intensity",
+            "description": "This chilly stillness is the stillness of certainty. [Reason and Skill can increase no further.]",
+            "aspects": {
+                "reasonskill": 4,
+                "ability": 1
+            },
+            "icon": "skillreasonc"
+        },
+        {
+            "id": "skillpassiona",
+            "label": "Skill: a Vivid Imagination",
+            "aspects": {
+                "passionskill": 1,
+                "ability": 1
+            },
+            "description": "My daydreams sometimes outpace my dreams. [Use this with Work to Paint, or with Study and with two Lessons Learnt to gain more Passion.]",
+            "slots": [
+                {
+                    "id": "G1",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "glimmeringplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Am I ready to feed my passions further?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "G2",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "glimmeringplus": 1
+                    },
+                    "consumes": true,
+                    "description": "Am I ready to feed my passions further?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "painting1",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting2",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                }
+            ],
+            "xtriggers": {
+                "careeradvancement": "skillpassionb"
+            }
+        },
+        {
+            "id": "skillpassionb",
+            "label": "Skill: a Wild Imagination",
+            "description": "I have been known to break six pencils in a day. [Use this with Work to Paint, or with Study and three Lessons Learnt to gain more Passion.]",
+            "xtriggers": {
+                "careeradvancement": "skillpassionc"
+            },
+            "aspects": {
+                "passionskill": 2,
+                "ability": 1
+            },
+            "slots": [
+                {
+                    "id": "G1",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "glimmeringplus": 1
+                    },
+                    "consumes": true,
+                    "description": "What could I see, what could I be? [Use this with three Lessons Learnt to gain more Passion.]",
+                    "actionid": "study"
+                },
+                {
+                    "id": "G2",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "glimmeringplus": 1
+                    },
+                    "consumes": true,
+                    "description": "What could I see, what could I be?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "G3",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "glimmeringplus": 1
+                    },
+                    "consumes": true,
+                    "description": "What could I see, what could I be?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "painting1",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting2",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting3",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                }
+            ]
+        },
+        {
+            "id": "skillpassionc",
+            "label": "Skill: a Fevered Imagination",
+            "description": "Phantoms ride my waking mind. [Use this with four Lessons Learnt to gain more Passion.]",
+            "aspects": {
+                "passionskill": 3,
+                "ability": 1
+            },
+            "slots": [
+                {
+                    "id": "specialisation",
+                    "actionid": "study",
+                    "label": "Something More",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between unreason and folly."
+                },
+                {
+                    "id": "G1",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "glimmeringplus": 1
+                    },
+                    "consumes": true,
+                    "description": "What furious visions remain? [Use this with Work to Paint, or with Study and four Lessons Learnt to gain more Passion.]",
+                    "actionid": "study"
+                },
+                {
+                    "id": "G2",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "glimmeringplus": 1
+                    },
+                    "consumes": true,
+                    "description": "What furious visions remain?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "G3",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "glimmeringplus": 1
+                    },
+                    "consumes": true,
+                    "description": "What furious visions remain?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "G4",
+                    "label": "A Lesson Learnt",
+                    "required": {
+                        "glimmeringplus": 1
+                    },
+                    "consumes": true,
+                    "description": "What furious visions remain?",
+                    "actionid": "study"
+                },
+                {
+                    "id": "painting1",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting2",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting3",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting4",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                }
+            ]
+        },
+        {
+            "id": "skillpassiond_unreason",
+            "label": "Skill: Never-No",
+            "description": "The more, the more, the more, the m - [Passion and Skill can increase no further.]",
+            "aspects": {
+                "passionskill": 4,
+                "ability": 1
+            },
+            "slots": [
+                {
+                    "id": "painting1",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting2",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting3",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting4",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                }
+            ],
+            "icon": "skillpassionc"
+        },
+        {
+            "id": "skillpassiond_folly",
+            "label": "Skill: an Open Soul",
+            "description": "'Behold, they stand at my door and knock; if I hear any voice, I will open the door, and they will come in to me, and sup with them, and they with me.' [Passion and Skill can increase no further.]",
+            "aspects": {
+                "passionskill": 4,
+                "ability": 1
+            },
+            "slots": [
+                {
+                    "id": "painting1",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting2",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting3",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "painting4",
+                    "label": "Art or Bread",
+                    "required": {
+                        "passion": 1,
+                        "mystique": 1,
+                        "notoriety": 1
+                    },
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",
+                    "actionid": "work"
+                }
+            ],
+            "icon": "skillpassionc"
+        }
+    ]
+}

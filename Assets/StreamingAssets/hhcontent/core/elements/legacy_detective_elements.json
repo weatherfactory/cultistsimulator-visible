@@ -1,0 +1,151 @@
+{
+    "elements": [
+        {
+            "id": "legacydetectivejob",
+            "label": "Inspector's Position",
+            "description": "I have a senior position in the capital's police force.",
+            "aspects": {
+                "job": 1
+            },
+            "xtriggers": {
+                "careeradvancement": "legacydetectivejob_matured"
+            }
+        },
+        {
+            "id": "legacydetectivejob_matured",
+            "label": "Inspector's Position",
+            "description": "I have a senior position in the capital's police force, although I have been seconded to the Suppression Bureau.",
+            "aspects": {
+                "job": 1
+            },
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "Subject",
+                    "required": {
+                        "suspicious": 1
+                    },
+                    "description": "Until I have evidence, I must start by observing my quarry directly.",
+                    "actionid": "work"
+                },
+                {
+                    "id": "meticulous",
+                    "label": "Meticulous",
+                    "description": "More Reason will give my investigation a better chance of success.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "work"
+                },
+                {
+                    "id": "vigilant",
+                    "label": "Vigilant",
+                    "description": "More Reason will give my investigation a better chance of success.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "work"
+                },
+                {
+                    "id": "singleminded",
+                    "label": "Singleminded",
+                    "description": "More Reason will give my investigation a better chance of success.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "work"
+                }
+            ],
+            "xtriggers": {
+                "employment": "legacydetectivejob_matured"
+            },
+            "lifetime": 90,
+            "decayTo": "legacydetectivejob_suspended",
+            "icon": "legacydetectivejob"
+        },
+        {
+            "id": "legacydetectivejob_suspended",
+            "label": "Inspector of Police [Suspended]",
+            "description": "My absence has been noted. I've been suspended. [Plead your case soon, or lose your position forever.]",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "Passion",
+                    "required": {
+                        "passion": 1
+                    },
+                    "actionid": "work"
+                }
+            ],
+            "aspects": {
+                "job": 1
+            },
+            "xtriggers": {
+                "plead": "legacydetectivejob_matured"
+            },
+            "lifetime": 90,
+            "decayTo": "legacydetectivejob_disgraced"
+        },
+        {
+            "id": "legacydetectivejob_disgraced",
+            "label": "Inspector of Police [Disgraced]",
+            "description": "I've lost my position. I'm unlikely to regain it. I must find my own way in the civilian world.",
+            "lifetime": 120,
+            "decayTo": "mystique"
+        },
+        {
+            "id": "legacydetective_plotitem",
+            "label": "Sealed Bureau File",
+            "aspects": {
+                "desire": 1,
+                "legacyplotitem": 1,
+                "detectivetemptation": 1
+            },
+            "description": "A file on the enigmatic #PREVIOUSCHARACTERNAME#. I sealed it myself. I am all too familiar with its contents. If I were to revisit them, the dreams might begin again."
+        },
+        {
+            "id": "myevidence",
+            "label": "Tentative Evidence",
+            "description": "I have some evidence of my quarry's activities.",
+            "lifetime": 300,
+            "aspects": {
+                "suspicious": 1
+            },
+            "xtriggers": {
+                "investigatingsuccess": "myevidenceb"
+            }
+        },
+        {
+            "id": "myevidenceb",
+            "label": "Damning Evidence",
+            "description": "I have compelling evidence of my quarry's activities.",
+            "lifetime": 300,
+            "aspects": {
+                "suspicious": 1
+            }
+        },
+        {
+            "id": "legacydetective_plotitem_burning",
+            "label": "Burning Bureau File",
+            "description": "It's almost gone! I could pluck it from the flames - ",
+            "lifetime": 10,
+            "icon": "legacydetective_plotitem",
+            "aspects": {
+                "desire": 1,
+                "legacyplotitem": 1,
+                "detectivetemptation": 1
+            }
+        },
+        {
+            "id": "legacydetective_plotitem_backup",
+            "label": "Troubling Bureau File",
+            "aspects": {
+                "desire": 1,
+                "legacyplotitem": 1,
+                "detectivetemptation": 1
+            },
+            "icon": "legacydetective_plotitem",
+            "description": "The evidence includes the kind of details that might make one lick one's lips, if one were interested in such things. I should not read it. The dreams might begin again."
+        }
+    ]
+}

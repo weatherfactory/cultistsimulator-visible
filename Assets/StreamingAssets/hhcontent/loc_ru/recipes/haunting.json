@@ -1,0 +1,180 @@
+{
+    "recipes": [
+        {
+            "id": "summoning_haunt_devourer",
+            "startdescription": "Оно сбежало!"
+        },
+        {
+            "id": "summoning_haunt_devourer_eatsmortal",
+            "label": "Скрывающийся Пожиратель",
+            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
+            "startdescription": "Призванное вами существо рыскает по городу в поисках смертных, чтобы их пожрать. [Чем выше аспект Пожирателя, тем с большей вероятностью он навредит смертному.]",
+            "slots": [
+                {
+                    "id": "Consuming",
+                    "label": "Поглощение"
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_mortal_highdevourer",
+            "label": "Бежавшее существо приближается к жертве",
+            "description": "Смерть приходит незримой, но никогда — неслышной.",
+            "startdescription": "Всё ближе и ближе с каждым движением стрелки часов, как сжимающийся смерч, как изгибы реки."
+        },
+        {
+            "id": "devourer_haunting_mortal_middevourer",
+            "label": "Бежавшее существо приближается к жертве",
+            "description": ". devourer_haunting_mortal_middevourer",
+            "startdescription": "Жертва догадается, что чего-то не хватает. Она будет прислушиваться к ночным звукам и постарается подготовиться."
+        },
+        {
+            "id": "devourer_haunting_mortal_lowdevourer",
+            "label": "Бежавшее существо приближается к жертве",
+            "description": ". devourer_haunting_mortal_lowdevourer",
+            "startdescription": "Это не самая страшная из угроз, но даже такая может быть смертельно опасной."
+        },
+        {
+            "id": "devourer_haunting_mortal_success",
+            "label": "Сбежавшее существо добралось до жертвы",
+            "description": "Первые лучи солнца лягут на открытые глаза трупа. Неудача при призыве существа обходится дорого, но платит не всегда тот, кто проводил обряд.",
+            "startdescription": "."
+        },
+        {
+            "id": "devourer_haunting_mortal_failure",
+            "label": "Сбежавшее существо вселило ужас в свою жертву",
+            "description": "Жертва выжила, но рассказы об этой ночи будут расползаться, как чернильное пятно.",
+            "startdescription": "."
+        },
+        {
+            "id": "summoning_haunt_devourer_damages_health",
+            "label": "Скрывающийся Пожиратель",
+            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
+            "startdescription": "Сбежавшее существо постарается забрать что-нибудь у вас перед тем, как вернуться на своё место под кожей мироздания. [Чем выше аспект Пожирателя, тем с большей вероятностью он навредит вам.]",
+            "slots": [
+                {
+                    "id": "consuming",
+                    "label": "Поглощение"
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_damageshealth_highdevourer",
+            "label": "Сбежавшее существо ожидает своего времени",
+            "description": ".",
+            "startdescription": "Оно играет со мной?"
+        },
+        {
+            "id": "devourer_haunting_damageshealth_middevourer",
+            "label": "Сбежавшее существо ожидает вас",
+            "description": ". devourer_haunting_damageshealth_middevourer",
+            "startdescription": "Есть множество способов уничтожить человеческое тело. Моя кожа уязвима, как открытая дверь."
+        },
+        {
+            "id": "devourer_haunting_damageshealth_lowdevourer",
+            "label": "Сбежавшее существо ожидает вас",
+            "description": ". devourer_haunting_damageshealth_lowdevourer",
+            "startdescription": "Я буду следить за окнами, запру двери и положу подле кровати дуб и серебро. Это должно помочь."
+        },
+        {
+            "id": "devourer_haunting_damageshealth_success",
+            "label": "Сбежавшее существо напало на вас",
+            "description": "У меня останется шрам. Такой, какие порой фотографируют для музеев. И соседи будут обо мне судачить. О, какие же это будут сплетни...",
+            "startdescription": "."
+        },
+        {
+            "id": "devourer_haunting_damageshealth_failure",
+            "label": "Сбежавшее существо не смогло с вами справиться",
+            "description": "Со мной такие штуки не пройдут! Но всё же стоило действовать тише. Люди ведь будут говорить.",
+            "startdescription": "."
+        },
+        {
+            "id": "summoning_haunt_deceiver",
+            "startdescription": "Оно сбежало!"
+        },
+        {
+            "id": "summoning_haunt_deceiver_derangesreason",
+            "label": "Скрывающийся Обманщик",
+            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
+            "startdescription": "Сбежавшее существо преследует вас, надеясь вогнать в отчаяние...",
+            "slots": [
+                {
+                    "id": "Consuming",
+                    "label": "Поглощение"
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_reason_highdeceiver",
+            "label": "Сбежавшее существо ожидает вас",
+            "description": ".",
+            "startdescription": "Человеческий разум хрупок, а это существо практически неутомимо."
+        },
+        {
+            "id": "deceiver_haunting_reason_middeceiver",
+            "label": "Сбежавшее существо ожидает вас",
+            "description": ". deceiver_haunting_reason_middeceiver",
+            "startdescription": "Человеческий разум хрупок, а это существо весьма сильно."
+        },
+        {
+            "id": "deceiver_haunting_reason_lowdeceiver",
+            "label": "Сбежавшее существо ожидает вас",
+            "description": ". deceiver_haunting_reason_lowedge",
+            "startdescription": "Человеческий разум хрупок, но это существо способно разве что на проказы, нанести серьёзный вред оно не может."
+        },
+        {
+            "id": "deceiver_haunting_reason_success",
+            "label": "Сбежавшее существо напало на ваши сны",
+            "description": "События этой ночи будут долго жить в вашей памяти, много дней журналисты будут опрашивать местных жителей.",
+            "startdescription": "."
+        },
+        {
+            "id": "deceiver_haunting_reason_failure",
+            "label": "Сбежавшее существо не сумело сломить вашу волю",
+            "description": "События этой ночи будут долго жить в вашей памяти, но существо с той стороны Бодрствования не способно справиться с вами. Тем не менее, ещё много дней журналисты будут опрашивать местных жителей.",
+            "startdescription": "."
+        },
+        {
+            "id": "summoning_haunt_deceiver_derangesmortal",
+            "label": "Скрывающийся Обманщик",
+            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
+            "startdescription": "Призванное вами существо скитается вокруг, разыскивая смертных, чтобы свести их с ума.",
+            "slots": [
+                {
+                    "id": "Consuming",
+                    "label": "Поглощение"
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_mortal_highedge",
+            "label": "Бежавшее существо приближается к жертве",
+            "description": ".",
+            "startdescription": "Человеческий разум хрупок, а это существо практически неутомимо."
+        },
+        {
+            "id": "deceiver_haunting_mortal_midedge",
+            "label": "Бежавшее существо приближается к жертве",
+            "description": ". deceiver_haunting_mortal_midedge",
+            "startdescription": "Человеческий разум хрупок, а это существо весьма сильно."
+        },
+        {
+            "id": "deceiver_haunting_mortal_lowedge",
+            "label": "Бежавшее существо приближается к жертве",
+            "description": ". deceiver_haunting_mortal_lowedge",
+            "startdescription": "Человеческий разум хрупок, но это существо способно разве что на проказы, нанести серьёзный вред оно не может."
+        },
+        {
+            "id": "deceiver_haunting_mortal_success",
+            "label": "Сбежавшее существо вселило ужас в свою жертву",
+            "description": "Только трезвый рассудок может вынести такое. Газетчикам будет о чём рассказывать.",
+            "startdescription": "."
+        },
+        {
+            "id": "deceiver_haunting_mortal_failure",
+            "label": "Сбежавшее существо вселило ужас в свою жертву",
+            "description": "Волю жертвы не удалось сломить. Газетчикам будет о чём рассказывать.",
+            "startdescription": "."
+        }
+    ]
+}

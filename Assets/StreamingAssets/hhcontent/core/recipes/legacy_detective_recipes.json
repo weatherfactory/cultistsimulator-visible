@@ -1,0 +1,620 @@
+{
+    "recipes": [
+        {
+            "id": "workdetectivejob_start",
+            "label": "At the Station",
+            "actionid": "work",
+            "requirements": {
+                "legacydetectivejob": 1
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "effects": {
+                "lever_LastFollower": 1,
+                "legacydetective_plotitem": 1,
+                "funds": 3,
+                "health": 1
+            },
+            "alt": [
+                {
+                    "id": "needs",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "detectiveopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "Once again, I have been seconded to the Suppression Bureau, the government office which concerns itself with 'occult' crimes. The Bureau has a poor reputation.",
+            "description": "The Bureau has identified a troublesome individual I am to investigate. My breath tightens when I see the name. There was another case, one I remember all too well...",
+            "warmup": 10,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "workdetectivejob_start_rebellion",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "detectiveopendream",
+            "label": "Dreaming...",
+            "actionid": "dream",
+            "startdescription": "The Suppression Bureau publishes memoranda on the dangers of dreams. Every week, there's another.",
+            "description": "'Report dreams of moonlight. Report dreams of a night-bound forest. Draw back your curtains to be woken by the sun. Do not cut your hair before you sleep. Never sleep before a cracked mirror.'",
+            "effects": {
+                "passion": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_investigate_hint",
+            "label": "Pursuing an Investigation?",
+            "actionid": "work",
+            "requirements": {
+                "legacydetectivejob_matured": 1,
+                "suspicious": 1
+            },
+            "startdescription": "If I apply my Reason, perhaps I can learn more about my target.",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_pursuepromotion",
+            "label": "A Kind of Ascension",
+            "actionid": "work",
+            "requirements": {
+                "legacydetectivejob_matured": 1,
+                "favour": 1
+            },
+            "startdescription": "I've won favour with the authorities. I could use this to win myself a promotion to a place in the hierarchy of the Bureau itself. [This is a minor victory ending.]",
+            "description": "Ending finish.",
+            "warmup": 60,
+            "ending": "workvictoryb",
+            "signalEndingFlavour": "Grand",
+            "craftable": true
+        },
+        {
+            "id": "workdetectivejob_matured_investigate",
+            "label": "Pursuing an Investigation",
+            "actionid": "work",
+            "requirements": {
+                "legacydetectivejob_matured": 1,
+                "suspicious": 1,
+                "reason": 1
+            },
+            "alt": [
+                {
+                    "id": "detectiveopenstudy",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_threereason_success",
+                    "chance": 100
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_tworeason_success",
+                    "chance": 70
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_onereason_success",
+                    "chance": 30
+                }
+            ],
+            "effects": {
+                "funds": 2
+            },
+            "startdescription": "Investigating a target. The more Reason I use, the better my chance of success.",
+            "description": "My investigation has turned up no new leads.",
+            "warmup": 60,
+            "aspects": {
+                "employment": 1,
+                "fatiguing": 1
+            },
+            "craftable": true
+        },
+        {
+            "id": "workdetectivejob_matured_investigate_threereason_success",
+            "label": "Progress!",
+            "actionid": "work",
+            "alt": [
+                {
+                    "id": "detectiveopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "requirements": {
+                "reason": 3
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "workdetectivejob_matured_attemptsolvecase",
+                    "chance": 100
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_successresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_matured_investigate_tworeason_success",
+            "label": "Progress!",
+            "actionid": "work",
+            "alt": [
+                {
+                    "id": "detectiveopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "requirements": {
+                "reason": 2
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "workdetectivejob_matured_attemptsolvecase",
+                    "chance": 100
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_successresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_matured_investigate_onereason_success",
+            "label": "Progress!",
+            "actionid": "work",
+            "alt": [
+                {
+                    "id": "detectiveopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "requirements": {
+                "reason": 1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "workdetectivejob_matured_attemptsolvecase",
+                    "chance": 100
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_successresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_matured_investigate_successresults",
+            "label": "Progress!",
+            "actionid": "work",
+            "effects": {
+                "funds": 3,
+                "myevidence": 1
+            },
+            "aspects": {
+                "employment": 1,
+                "fatiguing": 1,
+                "investigatingsuccess": 1,
+                "dreadful": 1
+            },
+            "description": "The constant clatter of closing doors, the damp-stains on the station walls, the smell of boot-polish and unwashed constables. All this narrows to a single crystalline truth. I've made progress, and earned myself some overtime pay.",
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_attemptsolvecase",
+            "label": "Solving the case",
+            "actionid": "work",
+            "requirements": {
+                "myevidenceb": 1
+            },
+            "slots": [
+                {
+                    "id": "Culprit",
+                    "label": "Culprit",
+                    "required": {
+                        "independent": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "I've turned over my evidence to the Assistant Director General of the Suppression Bureau...",
+            "description": "I've provided the Suppression Bureau with enough evidence to make an arrest... but there's no-one to arrest.",
+            "alt": [
+                {
+                    "id": "workdetectivejob_matured_solvecase_withbackup",
+                    "chance": 100
+                },
+                {
+                    "id": "workdetectivejob_matured_solvecase",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "aspects": {
+                "employment": 1,
+                "fatiguing": 1
+            },
+            "effects": {
+                "funds": 2,
+                "suspicious": -99
+            },
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_solvecase_withbackup",
+            "label": "Solving the case",
+            "actionid": "work",
+            "requirements": {
+                "myevidenceb": 1,
+                "independent": 1
+            },
+            "extantreqs": {
+                "desire": -1
+            },
+            "startdescription": "I've turned over my evidence to the Assistant Director General of the Suppression Bureau. At this moment, I can assume, hard-faced men in plain clothing are pounding on the door of my quarry.",
+            "description": "The Suppression Bureau holds their trials in closed court, and they are not merciful. My quarry disappears from the world. I have earned myself a promotion. ",
+            "effects": {
+                "funds": 7,
+                "favour": 1,
+                "suspicious": -99,
+                "independent": -1,
+                "legacydetective_plotitem_backup": 1
+            },
+            "warmup": 60,
+            "aspects": {
+                "employment": 1,
+                "fatiguing": 1
+            },
+            "alt": [
+                {
+                    "id": "workdetectivejob_newrival",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_solvecase",
+            "label": "Solving the case",
+            "actionid": "work",
+            "requirements": {
+                "myevidenceb": 1,
+                "independent": 1
+            },
+            "startdescription": "I've turned over my evidence to the Assistant Director General of the Suppression Bureau. At this moment, I can assume, hard-faced men in plain clothing are pounding on the door of my quarry.",
+            "description": "The Suppression Bureau holds their trials in closed court, and they are not merciful. My quarry disappears from the world. I have earned myself a promotion. ",
+            "effects": {
+                "funds": 7,
+                "favour": 1,
+                "suspicious": -99,
+                "independent": -1
+            },
+            "warmup": 60,
+            "aspects": {
+                "employment": 1,
+                "fatiguing": 1
+            },
+            "alt": [
+                {
+                    "id": "workdetectivejob_newrival",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_newrival",
+            "label": "Another Miscreant?",
+            "actionid": "newrival",
+            "startdescription": "Will it ever end? Can we ever call the law, the city, the world 'safe'?",
+            "description": "There are reports - troubling reports - of this one.",
+            "deckeffects": {
+                "acquaintances": 1
+            },
+            "warmup": 60,
+            "linked": [
+                {
+                    "id": "workdetectivejob_newrival_recruit",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_newrival_recruit",
+            "label": "Another Miscreant?",
+            "actionid": "newrival",
+            "startdescription": ".",
+            "description": ".",
+            "aspects": {
+                "recruiting": 1
+            },
+            "linked": [
+                {
+                    "id": "workdetectivejob_start_promote_lever_believer",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_start_promote_lever_believer",
+            "comments": "left unrenamed for backwards compatibility",
+            "label": "Be Wary...",
+            "actionid": "newrival",
+            "aspects": {
+                "promotiontodisciple": 1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "workdetectivejob_start_promote_lever_disciple",
+                    "chance": 30
+                },
+                {
+                    "id": "workdetectivejob_start_rebellion",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_start_promote_lever_disciple",
+            "comments": "left unrenamed for backwards compatibility",
+            "label": "Be Wary...",
+            "actionid": "newrival",
+            "aspects": {
+                "promotionto_d_edge": 1,
+                "promotionto_d_forge": 1,
+                "promotionto_d_grail": 1,
+                "promotionto_d_heart": 1,
+                "promotionto_d_knock": 1,
+                "promotionto_d_lantern": 1,
+                "promotionto_d_moth": 1,
+                "promotionto_d_winter": 1
+            },
+            "linked": [
+                {
+                    "id": "workdetectivejob_start_rebellion",
+                    "chance": 100
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_start_rebellion",
+            "comments": "left unrenamed for backwards compatibility",
+            "label": "Be Wary...",
+            "actionid": "work",
+            "aspects": {
+                "rebellion": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_plead",
+            "label": "Plead for reinstatement!",
+            "actionid": "work",
+            "requirements": {
+                "legacydetectivejob_suspended": 1,
+                "passion": 1
+            },
+            "startdescription": "Why won't they understand?",
+            "description": "I've been reinstated... for now.",
+            "aspects": {
+                "plead": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "workdetectivejob_epilogue",
+            "label": "",
+            "actionid": "work",
+            "effects": {
+                "legacydetectivejob_matured": -1
+            },
+            "startdescription": "Lost mah job",
+            "description": "",
+            "craftable": false
+        },
+        {
+            "id": "legacydetectiveplotitem_tempt",
+            "label": "The Scent of the Pages",
+            "actionid": "craving",
+            "requirements": {
+                "detectivetemptation": 1
+            },
+            "linked": [
+                {
+                    "id": "legacydetectiveplotitem_tempt_addslot",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "legacydetectiveplotitem_tempt_addslot",
+            "label": "The Scent of the Pages",
+            "actionid": "craving",
+            "slots": [
+                {
+                    "id": "resist",
+                    "label": "Resist",
+                    "description": "It is difficult to resist re-reading the file. Add Reason to strengthen your resistance.",
+                    "required": {
+                        "reason": 1
+                    }
+                }
+            ],
+            "startdescription": "I cannot forget what I saw in the file on #PREVIOUSCHARACTERNAME#. [It is difficult to resist re-reading the file. Add Reason to strengthen your resistance.]",
+            "description": "The pages turn so easily. It's like peeling a fruit, or unwrapping a secret gift. At the end of it, my hands are stained with ink. My brain boils. What have I begun?",
+            "effects": {
+                "legacydetective_plotitem": -1,
+                "lever_LastDesire": 1,
+                "fascination": 1,
+                "dread": 1
+            },
+            "alt": [
+                {
+                    "id": "legacydetectiveplotitem_tempt_resist",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsrisk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "legacydetectiveplotitem_tempt_resist",
+            "label": "The Scent of the Pages",
+            "requirements": {
+                "reason": 1
+            },
+            "actionid": "craving",
+            "startdescription": "I am discipline. I am all discipline. I haven't lasted this long to give up so easily.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "description": "The temptation has passed, for now."
+        },
+        {
+            "id": "detectiveopenstudy",
+            "label": "Studying...",
+            "alt": [
+                {
+                    "id": "ascensionnotyet",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "detectiveopenexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "actionid": "study",
+            "startdescription": "Now and then, I have a little time to improve myself.",
+            "description": "No doubt, somewhere out there, I can find materials for study.",
+            "effects": {
+                "reason": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "detectiveopenexplore",
+            "label": "Exploring...",
+            "actionid": "explore",
+            "startdescription": "I have a map of the capital on the wall of my office, bristling with dark-headed pins, spidery with annotations.",
+            "description": "I know this city well, but it would take a lifetime to know it completely.",
+            "warmup": 10,
+            "deckeffects": {
+                "citysecrets": 2
+            },
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "detectiveopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "detectiveopentalk",
+            "label": "Talking...",
+            "actionid": "talk",
+            "startdescription": "I might make a friendship, or end one.",
+            "description": "",
+            "effects": {},
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "detectivestudy_plotitem",
+            "label": "I Should Not Open the File",
+            "actionid": "study",
+            "requirements": {
+                "detectivetemptation": 1
+            },
+            "alt": [
+                {
+                    "id": "detectiveopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "detectivetemptation": -1,
+                "fascination": 1,
+                "lever_LastDesire": 1,
+                "dread": 1
+            },
+            "startdescription": "I MUST NOT READ IT AGAIN. It took me weeks to forget the accounts, the instructions - God help me, the sketches.",
+            "description": "The pages turn so easily. It's like peeling a fruit, or unwrapping a secret gift. At the end of it, my hands are stained with ink. My brain boils. What have I begun?",
+            "warmup": 60,
+            "craftable": true,
+            "maxexecutions": 1
+        },
+        {
+            "id": "detectivestudy_plotitem_afterfirsttime",
+            "label": "I Should Not Open the File",
+            "actionid": "study",
+            "requirements": {
+                "detectivetemptation": 1
+            },
+            "alt": [
+                {
+                    "id": "detectiveopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "detectivetemptation": -1,
+                "fascination": 1,
+                "dread": 1
+            },
+            "startdescription": "I MUST NOT READ IT AGAIN. It took me weeks to forget the accounts, the instructions - God help me, the sketches.",
+            "description": "The pages turn so easily. It's like peeling a fruit, or unwrapping a secret gift. At the end of it, my hands are stained with ink. My brain boils. What have I done?",
+            "warmup": 60,
+            "craftable": true,
+            "maxexecutions": 1
+        },
+        {
+            "id": "detectivework_plotitem",
+            "label": "Burn the File",
+            "actionid": "work",
+            "requirements": {
+                "detectivetemptation": 1,
+                "legacydetective_plotitem_burning": -1
+            },
+            "effects": {
+                "detectivetemptation": -1,
+                "legacydetective_plotitem_burning": 1,
+                "restlessness": 1,
+                "contentment": 1
+            },
+            "startdescription": "This is evidence. We do not burn evidence. But perhaps it's for the best.",
+            "description": "The pages blacken, one by one, curling like closing fingers. I have opened the window of my office. The smoke dissipates and is lost. What exactly have I done?",
+            "warmup": 30,
+            "craftable": true
+        }
+    ]
+}

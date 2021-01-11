@@ -1,0 +1,1522 @@
+{
+	"recipes": [
+		{
+			"id": "explorevaultguardian_serpent_encounter",
+			"actionId": "explore",
+			"label": "妹：蛇",
+			"startdescription": "蛇は大きな頭を揺らしながら、我々をじっと見つめている。刃や開錠なしには、勝ち目はないだろう。",
+			"requirements": {
+				"guardian_serpent": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_serpent_highknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_highedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_midknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_midedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_lowknock",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_lowedge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_highedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 10
+			},
+			"label": "我々は無敵の強さの持ち主。",
+			"startdescription": "ガス灯のような瞳に、黒翡翠のような鱗。蛇は手強い敵だが、我々にとっては他愛もない敵だ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_edge",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_midedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 5
+			},
+			"label": "我々の強さは相当なものだ。",
+			"startdescription": "ガス灯のような瞳に、鍾乳石のような牙。偉大な蛇は手強い敵だが、我々も同じだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_edge",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_lowedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 1
+			},
+			"label": "我々の強さでは足りないかもしれない。",
+			"startdescription": "ガス灯のような瞳に、しゃがみ込めば中に入れそうなほど大きい口。蛇を倒せるかもしれないし、戦わなければ良かったっと後悔するかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_edge",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_highknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 10
+			},
+			"label": "傷口から生まれた蟻の母に助けを乞う",
+			"startdescription": "蛇の口は中に隠れられるほど大きい。その舌は人間の肩のように分厚い。しかし、ほぼ確実に我々の持つ力を認めてくれるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_knock",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_midknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 5
+			},
+			"label": "取り囲む蟻の母に助けを乞う",
+			"startdescription": "蛇は小屋を包み込めるほど長く、その牙は氷のように輝いている。我々の持つ力を認めてくれるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_knock",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_lowknock",
+			"actionId": "explore",
+			"requirements": {
+				"knock": 1
+			},
+			"label": "開く蟻の母に助けを乞う",
+			"startdescription": "蛇は川が渦を巻くように立ち上がり、その細長い瞳は飢えに満ちていた。我々の持つ力を認めてくれるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_serpent_success_knock",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_serpent_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_serpent_success_edge",
+			"actionId": "explore",
+			"label": "蛇の苦闘",
+			"startdescription": "蛇が転がり咆哮する！死の苦しみが大地を揺らす！しかし、蛇は死にかけている。さあ、前へと進もう。",
+			"description": ".",
+			"effects": {
+				"guardian_serpent": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_serpent_success_knock",
+			"actionId": "explore",
+			"label": "蛇の嘆き",
+			"startdescription": "巨大な頭を下げ、瞼のない目から水分がにじみ出る。泣いているのか？我々が助けを乞う長姉のことを、思い出しているのだろうか。",
+			"description": ".",
+			"effects": {
+				"guardian_serpent": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_serpent_failure",
+			"actionId": "explore",
+			"label": "蛇の強さ",
+			"startdescription": "下がって。下がれ！無理だ！",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_watchers_encounter",
+			"actionId": "explore",
+			"label": "監視者",
+			"startdescription": "恨みや義務、傭兵契約をしている地元の人たち。蛾で彼らを騙したり、聖杯で彼らを誘惑したり、刃で彼らと戦ったりするかもしれない。",
+			"requirements": {
+				"guardian_watchers": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_watchers_highgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_highedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_midgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_midedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_lowgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_lowedge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_highedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 10
+			},
+			"label": "我々は無敵の強さの持ち主。",
+			"startdescription": "監視者は、ほぼ確実に我々に逆らったことを後悔するだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_edge",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_midedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 5
+			},
+			"label": "我々の強さは相当なものだ。",
+			"startdescription": "監視者の態勢は整っていない。今なら倒すことができるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_edge",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_lowedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 1
+			},
+			"label": "我々の強さでは足りないかもしれない。",
+			"startdescription": "監視者は強すぎるかもしれないが、まだ勝ち目はある。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_edge",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_highgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 10
+			},
+			"label": "監視者への対抗：聖杯の口説き",
+			"startdescription": "「近くに来て、可愛い人。特別なものを見せてあげる」",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_grail",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_midgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 5
+			},
+			"label": "監視者への対抗：聖杯の誘惑",
+			"startdescription": "我々の魅力が監視者の心を揺さぶるはず。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_grail",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_lowgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 1
+			},
+			"label": "監視者への対抗：聖杯の気をそらす",
+			"startdescription": "監視者に目的を忘れさせることができるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_grail",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "監視者への対抗：強力な欺瞞",
+			"startdescription": "「見て。近くにおいで。もっと近くに！目を離さないで、さあ、もっと近づくんだ。よし、それじゃあ、目を閉じて......」",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_moth",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "監視者への対抗：見込みのある欺瞞",
+			"startdescription": "「目覚めろ！目覚めろ！奴らが来るぞ！あっちだ、早く！」",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_moth",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "監視者への対抗：必死の欺瞞",
+			"startdescription": "「あっちに......行ったって？」",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_watchers_success_moth",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_watchers_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_watchers_success_edge",
+			"actionId": "explore",
+			"label": "監視者の終わり",
+			"startdescription": "真っ赤な血が流れ出て、次第に黒くなっていった。監視者は邪魔をするべきではなかったんだ。先へと進もう。",
+			"description": ".",
+			"effects": {
+				"guardian_watchers": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_watchers_success_grail",
+			"actionId": "explore",
+			"label": "監視者の堕落",
+			"startdescription": "現在感じている快楽は、やがて悲惨な結末を迎えることになる。価値があると思うかもしれない。その間に前に進むことができるだろう。",
+			"description": ".",
+			"effects": {
+				"guardian_watchers": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_watchers_success_moth",
+			"actionId": "explore",
+			"label": "監視者の混乱",
+			"startdescription": "彼らの困惑は我々のチャンスだ。秘密裏に通過しよう。",
+			"description": ".",
+			"effects": {
+				"guardian_watchers": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_watchers_failure",
+			"actionId": "explore",
+			"label": "監視者の勝利",
+			"startdescription": "予想以上に狡猾で人数の多い相手だ！血みどろの結末になってしまうかもしれない――",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_monks_encounter",
+			"actionId": "explore",
+			"label": "僧侶",
+			"startdescription": "誓いを守り、伝統を信じる守護者の集まり。聖杯の誘惑は効かないため、刃で倒すか、蛾で混乱させるしかない。",
+			"requirements": {
+				"guardian_monks": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_monks_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_highedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_midedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_lowedge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_highedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 10
+			},
+			"label": "我々は簡単に抵抗できない強さの持ち主だ。",
+			"startdescription": "聖なる血で大地を染め上げよう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_edge",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_midedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 5
+			},
+			"label": "我々の強さは相当なものだ。",
+			"startdescription": "聖なる愚者どもが対抗できるはずがない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_edge",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_lowedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 1
+			},
+			"label": "我々の強さでは足りないかもしれない。",
+			"startdescription": "ただの僧侶たちだが、数が多すぎる。運が良ければ勝てるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_edge",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "僧侶：強力な欺瞞",
+			"startdescription": "「月の光の中でのみ文字が浮き出る、神聖な文書を持ってきた――」",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_moth",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "僧侶：見込みのある欺瞞",
+			"startdescription": "「この通行許可書には最高権威者の印が押してある。どいてくれ――」",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_moth",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "僧侶：必死の欺瞞",
+			"startdescription": "「遺物が......あるぞ。『古代』の遺物が」",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_monks_success_moth",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_monks_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_monks_success_edge",
+			"actionId": "explore",
+			"label": "僧侶の沈黙",
+			"startdescription": "彼らの体はローブの山に隠れ、違いが分からないようになっている。跨いで、前へと進もう。",
+			"description": ".",
+			"effects": {
+				"guardian_monks": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_monks_success_moth",
+			"actionId": "explore",
+			"label": "僧侶の妄想",
+			"startdescription": "信仰は両刃の武器だ。この僧侶たちは、信じることに長けているので、我々の嘘を信じてきた。",
+			"description": ".",
+			"effects": {
+				"guardian_monks": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_monks_failure",
+			"actionId": "explore",
+			"label": "僧侶の怒り",
+			"startdescription": "我々が思っていたより強くて賢い彼らの攻撃が、今、命中してしまった。 ",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_dead_encounter",
+			"actionId": "explore",
+			"label": "気難しい死者",
+			"startdescription": "死者は死体の光のように、周りの空気に群がる。刃や冬なしには、我々に勝ち目はなかっただろう。",
+			"requirements": {
+				"guardian_dead": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_dead_highwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_highedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_midwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_midedge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_lowwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_lowedge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_highedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 10
+			},
+			"label": "我々は無敵の強さの持ち主。",
+			"startdescription": "死者は逆影のように青白く、そよ風に揺れる蜘蛛の巣のように動き回る。我々を引き止めることはできないだろう。不平を呟く彼らを、森の陰へと送り返そう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_edge",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_midedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 5
+			},
+			"label": "我々の強さは相当なものだ。",
+			"startdescription": "貪欲で哀れな目をした死人たちはすでに一度死んでいる。現実世界ではほとんど影響力を持たない。闇の中に送り込むことは可能だが、慎重にやらなくてはいけない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_edge",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_lowedge",
+			"actionId": "explore",
+			"requirements": {
+				"edge": 1
+			},
+			"label": "我々の強さでは足りないかもしれない。",
+			"startdescription": "死者は日時計の影のようにゆっくりと動く。ゆっくりとしているが、止まることはない。彼らは、痛みと恐怖を覚えているが、はっきりとは覚えてはいない。両方の感覚をよく知っている我々には、手に負えない相手なのかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_edge",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_highwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 10
+			},
+			"label": "死者の名を知る骨の鳩に助けを乞う",
+			"startdescription": "死者がほつれた夢のように、視界の縁を回る。周りの空気は冬の影で冷えている。死者はそれを知っているのだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_winter",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_midwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 5
+			},
+			"label": "惑わされない骨の鳩に助けを乞う",
+			"startdescription": "死者は聖人の像のように無表情で我々を見ている。だが我々には冬の力が宿っている。おそらく死者はそれを認識するだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_winter",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_lowwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 1
+			},
+			"label": "すべてを奪われた骨の鳩に助けを乞う",
+			"startdescription": "死者は闇の中で煮えくり返っているが、我々は冬の時の神々に触れてきた。おそらく死者はそれを認識するだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_dead_success_winter",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_dead_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_dead_success_edge",
+			"actionId": "explore",
+			"label": "哀れな死者",
+			"startdescription": "死者が我らの元に戻ってきた時、肉体がなくなっていれば、あらゆる物を使う。埃、錆、蜘蛛の巣、瓦礫、ぼろきれ。我々に壊されてしまった今、残るのはぼろきれだけだ。",
+			"description": ".",
+			"effects": {
+				"guardian_dead": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_dead_success_winter",
+			"actionId": "explore",
+			"label": "用心深い死者",
+			"startdescription": "死者は後退した。辛うじて顔のように見える部分は、虚ろだが警戒しているようだ。もう手は出してこないだろう。",
+			"description": ".",
+			"effects": {
+				"guardian_dead": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_dead_failure",
+			"actionId": "explore",
+			"label": "死者の怒り",
+			"startdescription": "死者は肉体というより風のようなものだが、風を甘く見ると痛い目を見る。今や死者たちは青白い影の嵐であり、恐怖に満ちている。下がれ！下がるんだ！",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_encounter",
+			"actionId": "explore",
+			"label": "暗闇のソーコーヤント",
+			"startdescription": "夜風が彼らと共にガタガタと音を立てている。伏せろ。強すぎるに立ち向かっても勝ち目はないが、彼らを欺いたり、マンサスの光で追い払ったりすることはできるかもしれない。",
+			"requirements": {
+				"guardian_soucouyants": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_soucouyants_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_highlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_midlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_lowlantern",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_highlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 10
+			},
+			"label": "光を照らす見張り番に助けを乞う",
+			"startdescription": "我々の力は敵を遠ざけるのに十分なはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_lantern",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_midlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 5
+			},
+			"label": "無慈悲な見張り番に助けを乞う",
+			"startdescription": "敵を寄せ付けないようにするには、我々の力だけで十分なはずだが――警戒心を失えば、敵は突進してくるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_lantern",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_lowlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 1
+			},
+			"label": "道を導く見張り番に助けを乞う",
+			"startdescription": "我々の力が、混沌とした闇の中を導いてくれるはずだ。そう、その可能性は十分にある。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_lantern",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "森の木の間を探し求める、蛾に助けを乞う",
+			"startdescription": "蛾はこのこの混雑した森の夜に力を発揮できる。よほど運が悪ければ話は別だが......我々は密かに安全に通過できるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_moth",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "頭蓋骨を叩き割る、蛾に助けを乞う",
+			"startdescription": "我々には、この夜を飛び回る喉を渇かせた者たちを惑わせ、幻滅させるだけの力があるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_moth",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "まだらな蛾に助けを乞う",
+			"startdescription": "蛾はまだらな森の陰の中で、我々に機会を与えてくれるだろう――しかし、与えてくれるのは機会だけだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_soucouyants_success_moth",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_success_lantern",
+			"actionId": "explore",
+			"label": "ソーコーヤントの退路",
+			"startdescription": "彼らは近づいてこないだろう。ハゲワシや子供の声で暗闇から罵り、木のてっぺんを揺らし、石を投げつけてくる。しかし、彼らがちかづいてくることはないだろう。先に進もう。",
+			"description": ".",
+			"effects": {
+				"guardian_soucouyants": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_success_moth",
+			"actionId": "explore",
+			"label": "ソーコーヤントの不満",
+			"startdescription": "影から深い影へと急ぐ。スポンジのような大地に顔を押しつける。我々がここにいることは分かっていても、どこにいるかは分からないだろう。彼らの叫び声は我々の後ろで消えていく。",
+			"description": ".",
+			"effects": {
+				"guardian_soucouyants": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_soucouyants_failure",
+			"actionId": "explore",
+			"label": "ソーコーヤントの飢え",
+			"startdescription": "来たぞ！かたい翼がバシッと音を鳴らし、悲鳴を上げながら誰かの体が闇の中へと飛んでいく―― ",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_long_encounter",
+			"actionId": "explore",
+			"label": "長生者",
+			"startdescription": "正午の港は悪名高い泉の跡地に建てられた。そこから飲んだ者は、世界から存在を忘れられると言われている。長生者の中には、世俗的なことから身を引き、ここで隠遁生活を送っている者もいる。招かれざる客を好まない彼らを攻撃するのは賢明ではないだろう。しかし、蛾の慰みや聖杯の誘惑が、ここで役立つかもしれない。",
+			"requirements": {
+				"guardian_long": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultguardian_long_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_highgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_midgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_lowgrail",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_highgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 10
+			},
+			"label": "「喜んでもらえるなら――」",
+			"startdescription": "長生者にも欲望があり、長生者だからこそ欲望があるのかもしれない。この者は喜んで我々に仕えてくれてるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_grail",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_midgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 5
+			},
+			"label": "「楽しんでもらえるなら――」",
+			"startdescription": "この長生者は我々が用意したもてなしを楽しんでくれたが、まだ不信感は拭えないようだった。おそらく上手くいくだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_grail",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_lowgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 1
+			},
+			"label": "「楽しんで......もらえると良いのだけれど」",
+			"startdescription": "不死身の者は長生者と同じ欲望を持っているが、長く繰り返される経験にうんざりしている。運が良ければ、まだもてなすことはできるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_grail",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "「知らせだ！祖国からの知らせだ！すべての祖国からの知らせだ！」",
+			"startdescription": "長生者は目新しさを求めている。その弱点を利用して、うまくいけば、相手が気付く前に姿を消すことができるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_moth",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "「良いだろう、賭けだ」",
+			"startdescription": "からかわれているのか？確信は持てないが、例えこれがただの遊びだとしても、去ることを許してくれるかもしれない。何とかなるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_moth",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "「ああ、えっと、面白い話なんだ......」",
+			"startdescription": "この長生者の目は動かず、地平線のように遠くを見つめていて、全身はトカゲのように固まっている。話を聞いているだろうか？",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultguardian_long_success_moth",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultguardian_long_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultguardian_long_success_grail",
+			"actionId": "explore",
+			"label": "金色に輝く長い午後",
+			"startdescription": "この長生者は聖杯の誘惑に屈したのか？それとも、自分が何をしていたか理解していたのだろうか？いずれにせよ、なんとか時間と空間を稼ぐことができた......",
+			"description": ".",
+			"effects": {
+				"guardian_long": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_long_success_moth",
+			"actionId": "explore",
+			"label": "長生者の欺瞞",
+			"startdescription": "正午の不死の住人たちは、騙されたり、娯楽にはまっていたり、大きな陰謀に巻き込まれたりしている。今回は邪魔してこないだろう。",
+			"description": ".",
+			"effects": {
+				"guardian_long": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultguardian_long_failure",
+			"actionId": "explore",
+			"label": "長生者の苦悩",
+			"startdescription": "不死者が怒っている。誰かを叩きのめすかもしれないし、怒りを抑える可能性もある。不死者の場合、それを見極めるのは非常に難しい―― ",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		}
+	]
+}

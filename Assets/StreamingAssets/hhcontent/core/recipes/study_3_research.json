@@ -1,0 +1,1820 @@
+{
+    "recipes": [
+        {
+            "id": "studyknocklore",
+            "label": "Study the Lore which Opens",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "knock": 1
+            },
+            "effects": {
+                "project_upgrade_subvert_knock": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "There are incantations of unseaming, where the space between the words is as potent as the actual syllables. When a thing is opened, we will know its nature. [Any Lore studied with Knock becomes Knock.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studyupgradelore_edge",
+            "label": "Study the Lore of the Knife",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "edge": 1,
+                "winter": -1,
+                "forge": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_edge": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "All of the greatest struggles end in death. The Lore of the Knife holds the lessons of those struggles.",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_edgetowinter",
+            "label": "Subvert the Lore of the Knife",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "edge": 1,
+                "winter": 1
+            },
+            "effects": {
+                "project_subvert_edgetowinter": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "All things end. I will meditate on the triumph of patience over strength. [This will create Winter lore instead of Edge.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studyforgelore",
+            "label": "Study the Lore which Burns",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "forge": 1,
+                "edge": -1,
+                "lantern": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_forge": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_forgetoedge",
+            "label": "Subvert the Lore which Burns",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "forge": 1,
+                "edge": 1
+            },
+            "effects": {
+                "project_subvert_forgetoedge": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "The Hour called Lionsmith shattered his own sword to escape his master's dominion. All things can be overcome, with sufficient force. [This will create Edge lore instead of Forge.]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studygraillore",
+            "label": "Study the Succulent Lore",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "grail": 1,
+                "moth": -1,
+                "heart": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_grail": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_grailtomoth",
+            "label": "Subvert the Succulent Lore",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "grail": 1,
+                "moth": 1
+            },
+            "effects": {
+                "project_subvert_grailtomoth": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "It has been claimed that Grail was born from the first sacrifice. But Moth knows better. [This will create Moth lore instead of Grail.]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studyheartlore",
+            "label": "Study the Lore Unceasing",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "heart": 1,
+                "grail": -1,
+                "winter": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_heart": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "There are lessons the anatomist, the dancer and the shaman all learn.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_hearttograil",
+            "label": "Subvert the Lore Unceasing",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "heart": 1,
+                "grail": 1
+            },
+            "effects": {
+                "project_subvert_hearttograil": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "What does not cease will succumb, at last, to temptation. [This will create Grail lore instead of Heart.]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studylanternlore",
+            "label": "Study the Glorious Lore",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "lantern": 1,
+                "forge": -1,
+                "moth": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_lantern": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_lanterntoforge",
+            "label": "Subvert the Glorious Lore",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "lantern": 1,
+                "forge": 1
+            },
+            "effects": {
+                "project_subvert_lanterntoforge": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "The magus Julian Coseley claims the Forge of Days split the Sun. Perhaps he was right. [This will create Forge lore instead of Lantern.]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studymothlore",
+            "label": "Study the Lore of the Wood",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "moth": 1,
+                "lantern": -1,
+                "grail": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_moth": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "When breath is black at the glass, when mist tautens the skin, when woods walk in winter, we hear these words.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_mothtolantern",
+            "label": "Subvert the Lore of the Wood",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "moth": 1,
+                "lantern": 1
+            },
+            "effects": {
+                "project_subvert_mothtolantern": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "The Glory is a question, and the Moth always answers, Yes. [This will create Lantern lore instead of Moth.]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysecrethistorieslore",
+            "label": "Study the Histories",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "secrethistories": 1
+            },
+            "effects": {
+                "project_upgrade_secrethistories": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "History is less certain than we are taught. I can learn from the study of its blurred edges.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studywinterlore",
+            "label": "Study the Ragged Lore",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "winter": 1,
+                "heart": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_winter": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "These are the words which chill the air and drink the colour of my skin.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "subvertwinterlore",
+            "label": "Subvert the Ragged Lore",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2,
+                "winter": 1,
+                "heart": 1
+            },
+            "effects": {
+                "project_subvert_wintertoheart": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Even in the snow, in the silence, in the white without colours, life will never quite cease. [This will create Heart lore instead of Winter.]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studyproject_upgrade_edge",
+            "label": "The Lore of the Knife",
+            "actionid": "study",
+            "requirements": {
+                "project_upgrade_edge": 1
+            },
+            "effects": {
+                "project": -1,
+                "edge": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "I've increased my mastery of the Lore of the Knife, which we call by its aspect, Edge."
+        },
+        {
+            "id": "studyproject_upgrade_forge",
+            "label": "The Lore that Burns",
+            "actionid": "study",
+            "requirements": {
+                "project_upgrade_forge": 1
+            },
+            "effects": {
+                "project": -1,
+                "forge": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "I've increased my mastery of the Lore that Burns, which we call by its aspect, Forge."
+        },
+        {
+            "id": "studyproject_upgrade_grail",
+            "label": "The Succulent Lore",
+            "actionid": "study",
+            "requirements": {
+                "project_upgrade_grail": 1
+            },
+            "effects": {
+                "project": -1,
+                "grail": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "I've increased my mastery of the Succulent Lore, which we call by its aspect, Grail."
+        },
+        {
+            "id": "studyproject_upgrade_heart",
+            "label": "The Lore Unceasing",
+            "actionid": "study",
+            "requirements": {
+                "project_upgrade_heart": 1
+            },
+            "effects": {
+                "project": -1,
+                "heart": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "I've increased my mastery of the Lore Unceasing, which we call by its aspect, Heart."
+        },
+        {
+            "id": "studyproject_upgrade_lantern",
+            "label": "The Glorious Lore",
+            "actionid": "study",
+            "requirements": {
+                "project_upgrade_lantern": 1
+            },
+            "effects": {
+                "project": -1,
+                "lantern": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "I've increased my mastery of the Glorious Lore, which we call by its aspect, Lantern."
+        },
+        {
+            "id": "studyproject_upgrade_moth",
+            "label": "The Lore of the Wood",
+            "actionid": "study",
+            "requirements": {
+                "project_upgrade_moth": 1
+            },
+            "effects": {
+                "project": -1,
+                "moth": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "I've increased my mastery of the Lore of the Wood, which we call by its aspect, Moth."
+        },
+        {
+            "id": "studyproject_upgrade_secrethistories",
+            "label": "The Secret Histories",
+            "actionid": "study",
+            "requirements": {
+                "project_upgrade_secrethistories": 1
+            },
+            "effects": {
+                "project": -1,
+                "secrethistories": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "I've increased my knowledge of the secret histories behind the one we know."
+        },
+        {
+            "id": "studyproject_upgrade_winter",
+            "label": "The Ragged Lore",
+            "actionid": "study",
+            "requirements": {
+                "project_upgrade_winter": 1
+            },
+            "effects": {
+                "project": -1,
+                "winter": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "I've increased my mastery of the Ragged Lore, which we call by its aspect, Winter."
+        },
+        {
+            "id": "studyproject_subvert_edgetowinter",
+            "label": "All Things End",
+            "actionid": "study",
+            "requirements": {
+                "project_subvert_edgetowinter": 1
+            },
+            "effects": {
+                "project": -1,
+                "edge": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "Patience defeats strength. I've subverted my Edge lore to Winter."
+        },
+        {
+            "id": "studyproject_subvert_forgetoedge",
+            "label": "Force Conquers All",
+            "actionid": "study",
+            "requirements": {
+                "project_subvert_forgetoedge": 1
+            },
+            "effects": {
+                "project": -1,
+                "forge": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "I've shattered what I believed before. Thus have I subverted my Forge lore to Edge."
+        },
+        {
+            "id": "studyproject_subvert_grailtomoth",
+            "label": "Hunger is Folly",
+            "actionid": "study",
+            "requirements": {
+                "project_subvert_grailtomoth": 1
+            },
+            "effects": {
+                "project": -1,
+                "grail": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "Even the Red Grail falls prey to the buzzing in the brain. I've subverted my Grail lore to Moth."
+        },
+        {
+            "id": "studyproject_subvert_hearttograil",
+            "label": "What Does Not Cease Must Eventually Yield",
+            "actionid": "study",
+            "requirements": {
+                "project_subvert_hearttograil": 1
+            },
+            "effects": {
+                "project": -1,
+                "heart": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "All that moves must succumb to hunger. I've subverted my Heart lore to Grail."
+        },
+        {
+            "id": "studyproject_subvert_lanterntoforge",
+            "label": "Sunset at Noon",
+            "actionid": "study",
+            "requirements": {
+                "project_subvert_lanterntoforge": 1
+            },
+            "effects": {
+                "project": -1,
+                "lantern": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "There are arts in Forge which may split even the sun. I've subverted my Lantern lore to Forge."
+        },
+        {
+            "id": "studyproject_subvert_mothtolantern",
+            "label": "The Light Above",
+            "actionid": "study",
+            "requirements": {
+                "project_subvert_mothtolantern": 1
+            },
+            "effects": {
+                "project": -1,
+                "moth": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "The Glory is a question, and Moth always answers Yes. I've subverted my Moth lore to Lantern."
+        },
+        {
+            "id": "studyproject_subvert_wintertoheart",
+            "label": "The Life Beneath",
+            "actionid": "study",
+            "requirements": {
+                "project_subvert_wintertoheart": 1
+            },
+            "effects": {
+                "project": -1,
+                "winter": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "Winter's coming must yield at last to spring. I've subverted my Winter lore to Heart."
+        },
+        {
+            "id": "studyproject_upgrade_subvert_knock",
+            "label": "All Shall Be Opened",
+            "actionid": "study",
+            "requirements": {
+                "project_upgrade_subvert_knock": 1
+            },
+            "effects": {
+                "project": -1,
+                "subvertable_lore": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "When we open a thing, then we learn its nature. I've deepened my understanding of the Lore that Opens, which we call by its aspect, Knock.",
+            "linked": [
+                {
+                    "id": "studyproject_upgrade_subvert_knock_remove_spare_knock",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "studyproject_upgrade_subvert_knock_remove_spare_knock",
+            "label": "All Shall Be Opened",
+            "comments": "This exists to remove a Knock lore, if we were combining Knock lores rather than Knock + another. Dangit Kennedy you wouldn't need hacks like this if you'd implemented OR conditions. Aspects don't *quite* always cut it.",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2
+            },
+            "effects": {
+                "knock": -1
+            },
+            "description": "."
+        },
+        {
+            "id": "studyresearchconsolation",
+            "label": "The Lessons of Experience",
+            "actionid": "study",
+            "requirements": {},
+            "effects": {
+                "insight": -100,
+                "erudition": 1
+            },
+            "aspects": {
+                "restore": 1
+            },
+            "startdescription": ".",
+            "description": "This time, this research has failed. But I've learnt the lessons of experience.",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "studydowngradefragmentedgeb",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentedgeb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentedgeb": -1,
+                "fragmentedge": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentedgec",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentedgec": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentedgec": -1,
+                "fragmentedgeb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentedged",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentedged": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentedged": -1,
+                "fragmentedgec": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentedgee",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentedgee": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentedgee": -1,
+                "fragmentedged": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentedgef",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentedgef": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentedgef": -1,
+                "fragmentedgee": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentedgeg",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentedgeg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentedgeg": -1,
+                "fragmentedgef": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforgeb",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentforgeb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentforgeb": -1,
+                "fragmentforge": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforgec",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentforgec": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentforgec": -1,
+                "fragmentforgeb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforged",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentforged": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentforged": -1,
+                "fragmentforgec": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforgee",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentforgee": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentforgee": -1,
+                "fragmentforged": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforgef",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentforgef": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentforgef": -1,
+                "fragmentforgee": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforgeg",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentforgeg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentforgeg": -1,
+                "fragmentforgef": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgrailb",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentgrailb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentgrailb": -1,
+                "fragmentgrail": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgrailc",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentgrailc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentgrailc": -1,
+                "fragmentgrailb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgraild",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentgraild": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentgraild": -1,
+                "fragmentgrailc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgraile",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentgraile": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentgraile": -1,
+                "fragmentgraild": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgrailf",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentgrailf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentgrailf": -1,
+                "fragmentgraile": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgrailg",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentgrailg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentgrailg": -1,
+                "fragmentgrailf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentheartb",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentheartb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentheartb": -1,
+                "fragmentheart": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentheartc",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentheartc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentheartc": -1,
+                "fragmentheartb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentheartd",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentheartd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentheartd": -1,
+                "fragmentheartc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmenthearte",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmenthearte": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmenthearte": -1,
+                "fragmentheartd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentheartf",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentheartf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentheartf": -1,
+                "fragmenthearte": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentheartg",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentheartg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "project": -1,
+                "fragmentheartg": -1,
+                "fragmentheartf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknockb",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentknockb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentknockb": -1,
+                "fragmentknock": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknockc",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentknockc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentknockc": -1,
+                "fragmentknockb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknockd",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentknockd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentknockd": -1,
+                "fragmentknockc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknocke",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentknocke": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentknocke": -1,
+                "fragmentknockd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknockf",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentknockf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentknockf": -1,
+                "fragmentknocke": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknockg",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentknockg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentknockg": -1,
+                "fragmentknockf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanternb",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentlanternb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentlanternb": -1,
+                "fragmentlantern": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanternc",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentlanternc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentlanternc": -1,
+                "fragmentlanternb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanternd",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentlanternd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentlanternd": -1,
+                "fragmentlanternc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanterne",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentlanterne": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentlanterne": -1,
+                "fragmentlanternd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanternf",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentlanternf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentlanternf": -1,
+                "fragmentlanterne": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanterng",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentlanterng": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentlanterng": -1,
+                "fragmentlanternf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothb",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentmothb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentmothb": -1,
+                "fragmentmoth": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothc",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentmothc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentmothc": -1,
+                "fragmentmothb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothd",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentmothd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentmothd": -1,
+                "fragmentmothc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothe",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentmothe": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentmothe": -1,
+                "fragmentmothd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothf",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentmothf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentmothf": -1,
+                "fragmentmothe": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothg",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentmothg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentmothg": -1,
+                "fragmentmothf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriesb",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentsecrethistoriesb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentsecrethistoriesb": -1,
+                "fragmentsecrethistories": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriesc",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentsecrethistoriesc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentsecrethistoriesc": -1,
+                "fragmentsecrethistoriesb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriesd",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentsecrethistoriesd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentsecrethistoriesd": -1,
+                "fragmentsecrethistoriesc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriese",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentsecrethistoriese": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentsecrethistoriese": -1,
+                "fragmentsecrethistoriesd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriesf",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentsecrethistoriesf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentsecrethistoriesf": -1,
+                "fragmentsecrethistoriese": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriesg",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentsecrethistoriesg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentsecrethistoriesg": -1,
+                "fragmentsecrethistoriesf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwinterb",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentwinterb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentwinterb": -1,
+                "fragmentwinter": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwinterc",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentwinterc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentwinterc": -1,
+                "fragmentwinterb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwinterd",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentwinterd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentwinterd": -1,
+                "fragmentwinterc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwintere",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentwintere": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentwintere": -1,
+                "fragmentwinterd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwinterf",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentwinterf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentwinterf": -1,
+                "fragmentwintere": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwinterg",
+            "label": "Return to the Fundamentals",
+            "actionid": "study",
+            "requirements": {
+                "fragmentwinterg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "Sometimes, I might need to return to a more basic understanding of a particular piece of lore. [This will split the lore into two lower-level fragments. You can recombine it later, but that won't be as easy as splitting it.]",
+            "description": "Analysis is a kind of vivisection. Reason is the knife.",
+            "effects": {
+                "fragmentwinterg": -1,
+                "fragmentwinterf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        }
+    ]
+}

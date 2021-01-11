@@ -1,0 +1,1132 @@
+{
+    "recipes": [
+        {
+            "id": "work.seance.first",
+            "actionId": "work",
+            "label": "一场座无虚席的舞台灵媒表演",
+            "startdescription": "我独自一人立于舞台灯光下，回应观众的第一个提问——回应今晚众多拒绝承认死者已死之人的头一个。我已做好充分准备：我有大把回答可选。",
+            "requirements": {
+                "ghouljob.first": 1
+            },
+            "slots": [
+                {
+                    "id": "desire",
+                    "label": "非止于此？",
+                    "description": "我是个骗子，不是……吗？",
+                    "greedy": true,
+                    "required": {
+                        "desire": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "work.seance.demotion"
+                },
+                {
+                    "id": "work.seance.first.shameful"
+                },
+                {
+                    "id": "work.seance.first.profitable"
+                },
+                {
+                    "id": "work.seance.first.joyful"
+                },
+                {
+                    "id": "work.seance.first.fleeting"
+                },
+                {
+                    "id": "work.seance.first.nomemory"
+                }
+            ],
+            "warmup": 15,
+            "craftable": true
+        },
+        {
+            "id": "work.seance.first.shameful",
+            "actionId": "work",
+            "label": "摹仿死者：一桩羞耻事",
+            "startdescription": "我并不会从头到尾效法死者的罪业。那样对我们双方都没有好处。但我给出了能让他们察觉的暗示。",
+            "description": "我们的公开业务已经结束，而在这场演出过后，遗属也将用一点小礼物来结束我们的私人业务——某些能确保我缄口的东西。\n\n（今晚的空气中有着某种东西。雪的气味？感觉不太可能。）",
+            "requirements": {
+                "memory.shameful": 1
+            },
+            "effects": {
+                "favour": 1,
+                "funds": 6,
+                "passion": 1,
+                "memory.shameful": -1,
+                "mystique": 1
+            },
+            "alt": [
+                {
+                    "id": "open.dream.ghoul",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.seance.first.profitable",
+            "actionId": "work",
+            "label": "摹仿死者：一桩得利事",
+            "startdescription": "我嗅到一笔已被遗忘的投资，我们双方都能从中获益。但我须得小心，别透露太多信息。生者的贪婪更胜死者。",
+            "description": "\"他们会在演出后与我会面。他们会对我疑心却又感恩。我赚到了情报提供费。\r\n\r\n（今晚的空气中有着某种东西。雪的气味？感觉不太可能。）\"",
+            "requirements": {
+                "memory.profitable": 1
+            },
+            "effects": {
+                "funds": 6,
+                "reason": 1,
+                "memory.profitable": -1,
+                "mystique": 1
+            },
+            "alt": [
+                {
+                    "id": "open.dream.ghoul",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.seance.first.joyful",
+            "actionId": "work",
+            "label": "摹仿死者：一桩欢乐事",
+            "startdescription": "我曾看到过某个金色午后的照片，距今已久到足够让我体味到怀念的甜蜜，却又不够久到让我淡忘。",
+            "description": "他们抽泣着返回自己的座位。如果他们再在某个夜晚前来，我将不会回答他们的提问。该让这个故事成为他们议论我的谈资。\n\n（今晚的空气中有着某种东西。雪的气味？感觉不太可能。）",
+            "requirements": {
+                "memory.joyful": 1
+            },
+            "effects": {
+                "funds": 4,
+                "health": 1,
+                "memory.joyful": -1,
+                "mystique": 1
+            },
+            "alt": [
+                {
+                    "id": "open.dream.ghoul",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.seance.first.fleeting",
+            "actionId": "work",
+            "label": "摹仿死者：风言风语",
+            "startdescription": "我已经收集到足够的流言，可以凑出一些说得过去、足够服人的话了。",
+            "description": "我以更多的提问回答他们的提问。有来有回，好似夜鸟的啼鸣。他们满意了吗？至少他们坐回了座位。\n\n（今晚的空气中有着某种东西。雪的气味？感觉不太可能。）",
+            "requirements": {
+                "fleeting": 1
+            },
+            "effects": {
+                "funds": 2,
+                "fleeting": -1
+            },
+            "alt": [
+                {
+                    "id": "open.dream.ghoul",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.seance.first.nomemory",
+            "actionId": "work",
+            "label": "尽我所能摹仿死者",
+            "startdescription": "我没有准备此人的资料。只能即兴发挥了。",
+            "description": "我的回应干瘪无味。即便在这几不可见的黑暗中，观众的失望也是一目了然。\n\n（今晚的空气中有着某种东西。雪的气味？感觉不太可能。）",
+            "effects": {
+                "funds": 1
+            },
+            "alt": [
+                {
+                    "id": "open.dream.ghoul",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.seance.demotion",
+            "actionId": "work",
+            "label": "死者",
+            "startdescription": "当我开口讲话时，我尝到了雪和铜——",
+            "requirements": {
+                "ghouljob.first": 1,
+                "temptation.remembrance": 1
+            },
+            "effects": {
+                "funds": 2,
+                "memory": -1,
+                "notoriety": 1
+            },
+            "aspects": {
+                "demotion": 1
+            },
+            "alt": [
+                {
+                    "id": "open.explore.ghoul",
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "work.seance.demotion.continue"
+                }
+            ]
+        },
+        {
+            "id": "work.seance.demotion.continue",
+            "actionId": "work",
+            "label": "表演没有按我的计划进行",
+            "startdescription": "我听到我的声音从远处传来。我在谈论象牙与旧雪。我在摹仿鸟儿的歌鸣。观众逐渐开始犹犹豫豫地发笑，但也有少数人在哭泣。我在言讲半熟悉不熟悉的名字：蒙特梅伦齐、挽歌儿、#PREVIOUSCHARACTERNAME#。名字一个接一个——没有尽头——",
+            "description": "我的合约在我离开这栋建筑物前便被终止了。剧院经理甚至不愿屈尊亲自来羞辱于我。我站在寒凉的街头，凝思着我破烂不堪的声名，与此同时羽色淡白的鸽子们也在剧院屋檐上凝思着我。它们咯咯咕咕的叫声几似人言：“蒙特梅伦齐、挽歌儿、#PREVIOUSCHARACTERNAME#……”",
+            "warmup": 60
+        },
+        {
+            "id": "open.dream.ghoul",
+            "actionId": "dream",
+            "label": "前夜",
+            "startdescription": "在那里，在舞台上，我忆起了那个淡白的梦境……",
+            "description": "在那里，在舞台上，我忆起了那个再度造访的淡白梦境。赤红的太阳低垂天际时的凉风。海浪原先的话音。在我们身边一同跋涉积雪的虚影……对它的向往现在好似一个燧石瘤子，盘踞在我的心脏底下。",
+            "effects": {
+                "temptation.remembrance": 1,
+                "health": 1
+            },
+            "warmup": 15
+        },
+        {
+            "id": "open.explore.ghoul",
+            "actionId": "explore",
+            "label": "“蒙特梅伦齐”",
+            "startdescription": "不是“蒙特梅伦西”，而是“蒙梅特伦齐”。我听<i>过</i>这个名字——在从前我还认为自己是个画师的时候。",
+            "description": "这就是我看到过这个名字的地方。一家画廊，灰色的门面紧闭，好似寡妇的脸容。",
+            "effects": {
+                "location.gallery": 1,
+                "reason": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "explore.location.gallery.ghoul",
+            "actionId": "explore",
+            "label": "探索画廊",
+            "startdescription": "我付过入场券的钱，然后沿着昏暗的楼梯井向上爬去。此事必须有其意义。也许意义就是我已失了心神。",
+            "description": "一件件有争议的圣徒的画像、解剖图、粉彩的藏骨瓮。草草涂画在石头上的眼睛。一组描绘多种气候下的一个大理石神群的古旧油画，名为“阿拜多斯城的诸季节”。但我不觉为一幅画所吸引，甚至在我看到她的命名之前。",
+            "requirements": {
+                "location.gallery": 1
+            },
+            "effects": {
+                "location.gallery": -1,
+                "fragmentsecrethistories": 1
+            },
+            "alt": [
+                {
+                    "id": "open.talk.ghoul",
+                    "additional": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "open.talk.ghoul",
+            "actionId": "talk",
+            "label": "“挽歌儿小姐”",
+            "startdescription": "在画中，挽歌儿小姐的肤色深暗，然而她剪得很短的头发色如白骨，双眸色如雪花。我每天回到这幅画前，等待着知悉我被吸引至此的原因。我从未听过这幅画开口——它不过是幅画！——但过后我似乎记得她说过的话。",
+            "description": "我记得挽歌儿小姐和我如何谈及那轮善解其意的低垂的红太阳，谈及飞行带来的苍白色欢乐。我开始相信我在把我回忆的宝物带给她，她将会留下一份宝物以代之。",
+            "requirements": {},
+            "effects": {
+                "naenia": 1,
+                "passion": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "open.study.ghoul",
+            "actionId": "study",
+            "label": "书架尘封的最顶层",
+            "startdescription": "挽歌儿小姐让我想起了一本我多年未打开过的书。书仍在我手上，放在家中某处。",
+            "description": "书为黑根与格里斯伍德所著之《撕身山脉丧俗》，是很久以前我需要为表演找灵感时买下的。里面找不到什么有用的内容。但我现在想起了作者收录的一个配方。这个配方听上去让人大摇其头……但其中提到的象牙骨粉勾起了我的思绪。",
+            "effects": {
+                "prealzabo": 1,
+                "fragmentgrail": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "ghoul.firsttaste.prologue",
+            "actionId": "study",
+            "label": "初尝人脔",
+            "requirements": {
+                "prealzabo": 1,
+                "temptation.remembrance": 1,
+                "corpse": 1,
+                "funds": 1
+            },
+            "startdescription": "我将独自进餐——或许不能算是独自。",
+            "slots": [
+                {
+                    "id": "forceofwill",
+                    "label": "意志力",
+                    "description": "难啊。",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "ghoul.firsttaste"
+                }
+            ],
+            "description": "我下不去嘴。",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "ghoul.firsttaste",
+            "actionId": "study",
+            "label": "初尝人脔",
+            "startdescription": "开头是困难的。我发现我得把意志集中成锯齿，好似一枚石制枪头的样子才行。但每一口都比上一口更容易。",
+            "description": "“我们每一个人”——事过许久后我在手记中写道——“都有在某一刻世事永久改变了的回忆，虽然当时我们不可能自知。也许世界也有这样的回忆。”我记得当时我搁下笔，放远目光看向窗外的黑暗，但我忘记了那一刻的另外一面。也许我是擦了擦嘴。也许我是舔了舔嘴唇。",
+            "requirements": {
+                "prealzabo": 1,
+                "temptation.remembrance": 1,
+                "corpse": 1,
+                "funds": 1,
+                "passion": 1
+            },
+            "effects": {
+                "corpse": -1,
+                "memory.unexpected": 1,
+                "prealzabo": -1,
+                "funds": -1,
+                "alzabo": 1
+            },
+            "aspects": {
+                "ascend": 1
+            },
+            "mutations": [
+                {
+                    "filter": "desire",
+                    "mutate": "ghoul.hunger",
+                    "level": 1
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.hint",
+            "actionId": "talk",
+            "label": "与挽歌儿小姐交谈？",
+            "startdescription": "挽歌儿小姐耐心地等待着，她的耐心是画像的耐心。",
+            "requirements": {
+                "naenia": 1
+            },
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "talk.ghoul.consolation",
+            "actionId": "talk",
+            "label": "向挽歌儿小姐寻求慰藉",
+            "startdescription": "挽歌儿小姐眼神和善。",
+            "description": "她理解我的躁动。她自己也不时有此体会。她提醒我没有什么事物可以长存。",
+            "requirements": {
+                "naenia": 1,
+                "restlessness": 1
+            },
+            "effects": {
+                "restlessness": -1,
+                "fleeting": 1
+            },
+            "alt": [
+                {
+                    "id": "open.study.ghoul",
+                    "additional": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.recollection",
+            "actionId": "talk",
+            "label": "同挽歌儿小姐分享我的记忆",
+            "startdescription": "挽歌儿小姐眼神思虑。",
+            "description": "挽歌儿小姐承认一切都将逝去，哪怕是回忆……但回忆可以传承，好似一支火炬，抑或一件宝物。",
+            "requirements": {
+                "naenia": 1,
+                "fleeting": 1
+            },
+            "effects": {
+                "fleeting": -1,
+                "restlessness": 1
+            },
+            "alt": [
+                {
+                    "id": "open.study.ghoul",
+                    "additional": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.fascination",
+            "actionId": "talk",
+            "label": "与挽歌儿小姐谈论我所见的幻象",
+            "startdescription": "和她谈这个安全吗？",
+            "description": "这里的光线比我之前以为的要亮。色彩在挽歌儿小姐的肌肤下游动，好像电，好像油。叫人很难移开视线。",
+            "requirements": {
+                "naenia": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "fascination": 1
+            },
+            "alt": [
+                {
+                    "id": "open.study.ghoul",
+                    "additional": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.dread",
+            "actionId": "talk",
+            "label": "与挽歌儿小姐谈论我的恐惧",
+            "startdescription": "我真的该和她分享恐惧吗？我不认为她能算作一幅和善的画。",
+            "description": "我注视挽歌儿小姐的微笑越久，就越意识到她的牙齿。",
+            "requirements": {
+                "naenia": 1,
+                "dread": 1
+            },
+            "effects": {
+                "dread": 1
+            },
+            "alt": [
+                {
+                    "id": "open.study.ghoul",
+                    "additional": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.grandmemory",
+            "actionId": "talk",
+            "label": "坠入往时",
+            "startdescription": "当来到挽歌儿小姐面前时，我似乎觉察到一道淡白的光芒在她的嘴眼间欢跳。",
+            "description": "后来，我记得挽歌儿小姐和我如何手挽手漫步于已打烊的画廊。她手擎蜡烛的光在其他画中的脸孔上跳动。“我们不会被遗忘，”她用极轻的声音道，“只要我们的画像存世。”",
+            "requirements": {
+                "naenia": 1,
+                "memory": 5
+            },
+            "effects": {
+                "restlessness": 1
+            },
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memorypassionate",
+            "actionId": "talk",
+            "label": "与挽歌儿小姐谈论我的情人",
+            "startdescription": "我开始与她一同追想一段激烈的回忆。",
+            "requirements": {
+                "naenia": 1,
+                "memorypassionate": 1
+            },
+            "alt": [
+                {
+                    "id": "dreampassionatememory"
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memorypleasant",
+            "actionId": "talk",
+            "label": "与挽歌儿小姐谈论我的情人",
+            "startdescription": "我开始与她一同追想一段甜美的回忆。",
+            "requirements": {
+                "naenia": 1,
+                "memorypleasant": 1
+            },
+            "alt": [
+                {
+                    "id": "dreampleasantmemory"
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memorybittersweet",
+            "actionId": "talk",
+            "label": "与挽歌儿小姐谈论我的情人",
+            "startdescription": "我开始与她一同追想一段艰辛的回忆。",
+            "requirements": {
+                "naenia": 1,
+                "memorybittersweet": 1
+            },
+            "alt": [
+                {
+                    "id": "dreambittersweetmemory"
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memory.menacing",
+            "actionId": "talk",
+            "label": "我开始与她一同追想一段骇人的回忆。",
+            "startdescription": "她眼神警觉。",
+            "requirements": {
+                "naenia": 1,
+                "memory.menacing": 1
+            },
+            "warmup": 30,
+            "internaldeck": {
+                "label": "回应",
+                "description": "回应",
+                "spec": [
+                    "vitalityplus",
+                    "influenceedgec",
+                    "influencewinterc",
+                    "influenceedgec",
+                    "influencewinterc"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            },
+            "effects": {
+                "memory.menacing": -1
+            },
+            "description": "@#vitalityplus|挽歌儿小姐一言不发，但过后我记得她的微笑如何驱散冷意，温暖了我。\n#influenceedgec|挽歌儿小姐一言不发，但很久过后我记得她的眼睛如何闪动。\n#influencewinterc|挽歌儿小姐一言不发。静默似画廊灯间的阴影一样汇积成片。@",
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memory.shameful",
+            "actionId": "talk",
+            "label": "同挽歌儿小姐分享隐秘罪业的回忆",
+            "startdescription": "今天挽歌儿小姐的眼神几近狡黠。",
+            "requirements": {
+                "naenia": 1,
+                "memory.shameful": 1
+            },
+            "warmup": 30,
+            "internaldeck": {
+                "label": "回应",
+                "description": "回应",
+                "spec": [
+                    "favour",
+                    "contentment",
+                    "influencegrailc",
+                    "influencegrailc",
+                    "influencegrailc"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            },
+            "effects": {
+                "memory.shameful": -1
+            },
+            "description": "@#favour|挽歌儿小姐一言不发，但我后来意识到我们两个定是起了同样的念头：我们可以拿这个作为对付某当局者的手段。\n#contentment|挽歌儿小姐一言不发，但那一刻的亲密非常令人愉快，且带来了迟留不散的安心感。\n#influencegrailc|挽歌儿小姐一言不发，但她的嘴角慢慢地，一分一分地向上弯起。我意识到我从未见过她开启双唇。@",
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memory.unexpected",
+            "actionId": "talk",
+            "label": "同挽歌儿小姐分享离奇的回忆",
+            "startdes
+			cription": "挽歌儿小姐今天的表情难以捉摸。我则改将她的眼、嘴、面部线条认知成互不关联、只是偶然组合在一起的物体，好像一个人口袋里的东西被一股脑倾倒在桌上。",
+            "requirements": {
+                "naenia": 1,
+                "memory.unexpected": 1
+            },
+            "warmup": 30,
+            "deckeffect": {
+                "vaultrewardsb": 1
+            },
+            "effects": {
+                "memory.unexpected": -1
+            },
+            "description": "@#|挽歌儿小姐一言不发，但我当场既从口袋里一把掏出笔，在画廊里不顾一切地书写，仿佛有人在我的耳边低声给我指引。若我遵循指引，便能找到某些宝贵的东西。@",
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memory.joyful",
+            "actionId": "talk",
+            "label": "同挽歌儿小姐分享欢乐的回忆",
+            "startdescription": "挽歌儿小姐眼神温暖。",
+            "requirements": {
+                "naenia": 1,
+                "memory.joyful": 1
+            },
+            "warmup": 30,
+            "internaldeck": {
+                "label": "回应",
+                "description": "回应",
+                "spec": [
+                    "influencehearte",
+                    "influenceheartc",
+                    "influenceheartc",
+                    "contentment",
+                    "contentment"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            },
+            "effects": {
+                "memory.joyful": -1
+            },
+            "description": "@#influencehearte|挽歌儿小姐一言不发，但我的心脏似遭捶打的铁砧一般猛跳，即便在我离开画廊之后。\n#influenceheartc|挽歌儿小姐一言不发，但我在回家时，一路上脑海里总有个调子让我想到她。\n#contentment|挽歌儿小姐一言不发，但我露出了与她相仿的微笑。@",
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memory.profitable",
+            "actionId": "talk",
+            "label": "同挽歌儿小姐分享得利的回忆",
+            "startdescription": "挽歌儿小姐眼神精明。",
+            "requirements": {
+                "naenia": 1,
+                "memory.profitable": 1
+            },
+            "warmup": 30,
+            "internaldeck": {
+                "label": "回应",
+                "description": "回应",
+                "spec": [
+                    "jumble",
+                    "funds",
+                    "compensation",
+                    "funds",
+                    "funds"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            },
+            "effects": {
+                "memory.profitable": -1
+            },
+            "description": "@#jumble|挽歌儿小姐一言不发，但过后我在逛一家旧货店时想到了她，然后便一时冲动买了些蠢兮兮的东西。\n#funds|挽歌儿小姐一言不发，但第二天我的邮箱收到了一件意想不到包裹。\n#compensation|挽歌儿小姐一言不发，但过后我在街上捡到了一枚索维林币。@",
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.painting.palest",
+            "actionId": "talk",
+            "label": "向挽歌儿小姐展示淡白至极的画作",
+            "startdescription": "我感觉我可能有点蠢，竟向一幅画展示另一幅画。但当我转过街角走向画廊时，发现天正在下雪，且只下在那条街上。路过的行人或瑟缩，或疾行，或大声惊叹。虽然画已妥妥当当地包在牛皮纸中，我还是将它抱紧，然后踏上通往挽歌儿小姐厅堂的阶梯。",
+            "description": "挽歌儿小姐不见了。在她曾悬挂，而今空荡荡的地方是一块深色的长方形印痕。我惊愕地瞪大了双眼。但她不在这里，我亦无计可施。\n\n现今虽无计，然而当我在自家的寂静中解开淡白至极的画作时，我看到它变样了。一个模糊的身形站在虚界的门户前，回首眺望着——等待我随其同行。这个身形有些挽歌儿小姐的韵味。",
+            "requirements": {
+                "naenia": 1,
+                "painting.palest": 1
+            },
+            "warmup": 30,
+            "effects": {
+                "naenia": -1
+            },
+            "mutations": [
+                {
+                    "mutate": "way",
+                    "filter": "painting.palest",
+                    "level": 1
+                }
+            ],
+            "craftable": true
+        },
+        {
+            "id": "dream.ghoul.painting.palest",
+            "actionId": "dream",
+            "label": "跨入画中之门",
+            "startdescription": "太阳的居屋拥有许多隐秘的门。它们自然都是锁住的，但挽歌儿小姐今夜将为我打开此一扇。悼歌诗人手捧严冬，于门的另一边静待。",
+            "requirements": {
+                "painting.palest": 1,
+                "way": 1
+            },
+            "linked": [
+                {
+                    "id": "dream.ghoul.sacrificeabilities"
+                }
+            ],
+            "craftable": true,
+            "warmup": 10
+        },
+        {
+            "id": "dream.ghoul.sacrificeabilities",
+            "actionId": "dream",
+            "label": "死亡是朝下的",
+            "startdescription": "于门的另一边，是一道由墨玉灯照亮的螺旋阶梯，而再遥遥其下，是死者顺流而下所至的名为虚界处，在那里没有什么能被完全遗忘。我朝下行。",
+            "slots": [
+                {
+                    "id": "sacrifice",
+                    "label": "此画所饥",
+                    "description": "若我不加阻止，画中之门将夺走一切。<i>勿</i>要在家中尝试。",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "reason": 1,
+                        "fatigue": 1,
+                        "disillusionment": 1,
+                        "concentration": 1,
+                        "passionexhausted": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "dream.ghoul.noabilitysacrificed"
+                }
+            ],
+            "linked": [
+                {
+                    "id": "ending.minorpalestvictory"
+                },
+                {
+                    "id": "dream.ghoul.sacrificeabilities"
+                }
+            ],
+            "warmup": 30,
+            "effects": {
+                "health": -1,
+                "passion": -1,
+                "reason": -1,
+                "fatigue": -1,
+                "disillusionment": -1,
+                "concentration": -1,
+                "passionexhausted": -1
+            }
+        },
+        {
+            "id": "dream.ghoul.noabilitysacrificed",
+            "actionId": "dream",
+            "label": "被剥夺至夺无可夺者",
+            "startdescription": "悼歌诗人不赐人以永生，而是赐人成为一种超越死亡的存在。淡白至极的画作会吸去我生命的剩余，但只在我应允之后。",
+            "requirements": {
+                "health": -1,
+                "passion": -1,
+                "reason": -1,
+                "fatigue": -1,
+                "disillusionment": -1,
+                "concentration": -1,
+                "passionexhausted": -1
+            },
+            "description": "我醒来了。在高于我的墙面上，这幅画在饥渴地等待。"
+        },
+        {
+            "id": "ending.minorpalestvictory",
+            "actionId": "dream",
+            "label": "乌有乡",
+            "startdescription": "我看到了那些失落的色彩，代价是我死去并身归虚界。但如若悼歌诗人记得我，也许他会将我唤回漫宿，让我行走世间，直到我命定的结尾到来——",
+            "extantreqs": {
+                "health": -1,
+                "passion": -1,
+                "reason": -1,
+                "fatigue": -1,
+                "disillusionment": -1,
+                "concentration": -1,
+                "passionexhausted": -1
+            },
+            "ending": "minorpalestvictory",
+            "signalEndingFlavour": "Pale",
+            "warmup": 30
+        },
+        {
+            "id": "study.alzabo.remnant",
+            "actionId": "study",
+            "label": "享用残骸",
+            "startdescription": "\"@#corpse| 又一次，我的食欲腾起，掺杂些许反胃导致的颤抖。\r\n#spirit_wintera_moth| 若我要求它，它会躺好不动。\r\n#spirit_wintera_edge| 若我要求它，它会躺好不动。它说不定其实甘美多汁。\r\n#corpse.furious| 我会将其碾成粉末服下。\r\n#corpse.luxurious| 有嚼劲。\r\n#corpse.liminal| 仿佛生食香料。\r\n#corpse.horizon| 我该把它煮到软再吃来着——\r\n#corpse.splendid| 这一餐不好下咽。\r\n#ingredientheartf| 让我的舌头明亮鲜艳似铜柑橘。\r\n#ingredientmothf| 我好奇过它会是什么味道，不过现在，我主要的感想是它<i>又黏又糯</i>。\r\n#spirit_forgee_edge.defunct| 我已铁面无情地备好了水，用于漱口和浇灭一切意外起火。\r\n#decrepitude| 我还是走到了这一步。我没有死去。我希望我身上的死已足够让此举起到我希望的效果，并让我解开宿于自己肉体内的回忆。\r\n#| 但愿这东西能吃。@\"",
+            "description": "\"@#memory.furious| 我拥有一段狂暴的回忆，继承自知晓几多宴席之人——一段沙色回忆，可供绘画。\r\n#memory.liminal| 我拥有一段关于门槛的回忆，可供绘画。\r\n#memory.splendid| 我拥有一段关于置闰前的世态的回忆，可供绘画。\r\n#memory.golden| 我拥有一段关于铸炉点燃前的世相的回忆，可供绘画。\r\n#memory.horizon| 我拥有一段连继承它的王也不明白的回忆。\r\n#memory.endless| 我现在拥有一段关于本该永不停歇之物的回忆——也许它确未停歇——\r\n#memory.wildering| 我拥有一段关于<b>狩猎</b>的回忆，彼时转轮是第一个被逼至绝路的……\r\n#memory.honeyed| 我拥有一段回忆，几乎就像是我自己的一样。\r\n#| 吃出了什么？@\"",
+            "requirements": {
+                "remnant": 1,
+                "alzabo": 1,
+                "remembrancemarks": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.remnant.reducehunger"
+                }
+            ],
+            "alt": [
+                {
+                    "id": "study.alzabo.follower_scar_edge"
+                },
+                {
+                    "id": "study.alzabo.follower_scar_knock"
+                },
+                {
+                    "id": "study.alzabo.follower_scar_winter"
+                },
+                {
+                    "id": "study.alzabo.corpse"
+                },
+                {
+                    "id": "study.alzabo.crucible"
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "study.alzabo.remnant.reducehunger",
+            "actionId": "study",
+            "label": "享用残骸",
+            "requirements": {
+                "ghoul.hunger": 1
+            },
+            "mutations": [
+                {
+                    "filter": "remembrancemarks",
+                    "mutate": "ghoul.hunger",
+                    "level": -1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "study.alzabo.corpse",
+            "actionId": "study",
+            "label": "享用尸体",
+            "startdescription": "有时有些东西的残馀须得被再一次埋葬，但还有一种更节约的做法。",
+            "requirements": {
+                "corpse": 1,
+                "alzabo": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.corpse.reducehunger"
+                }
+            ],
+            "deckeffect": {
+                "ghoul.memory": 1
+            },
+            "effects": {
+                "corpse": -1
+            }
+        },
+        {
+            "id": "study.alzabo.corpse.reducehunger",
+            "actionId": "study",
+            "label": "享用尸体",
+            "requirements": {
+                "ghoul.hunger": 1
+            },
+            "mutations": [
+                {
+                    "filter": "remembrancemarks",
+                    "mutate": "ghoul.hunger",
+                    "level": -1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "study.alzabo.follower_scar_edge",
+            "actionId": "study",
+            "label": "旧痛",
+            "startdescription": "残暴的经历使这具肉体染上了暴烈的刺鼻气味。",
+            "requirements": {
+                "follower_scar_edge": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.follower_scar.reducehunger"
+                }
+            ],
+            "effects": {
+                "dread": 1,
+                "influenceedge": 1,
+                "memory.menacing": 1,
+                "corpse": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "study.alzabo.follower_scar_knock",
+            "actionId": "study",
+            "label": "旧痛",
+            "startdescription": "太多的门曾在这具肉体上打开，使它的味道成为一座恐怖的迷宫。",
+            "requirements": {
+                "follower_scar_knock": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.follower_scar.reducehunger"
+                }
+            ],
+            "effects": {
+                "dread": 1,
+                "influenceknock": 1,
+                "memory.menacing": 1,
+                "corpse": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "study.alzabo.follower_scar_winter",
+            "actionId": "study",
+            "label": "旧痛",
+            "startdescription": "冷冽的苦难使这具肉体染上了一股冰寒，我的心脏因这寒意而收紧。",
+            "requirements": {
+                "follower_scar_winter": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.follower_scar.reducehunger"
+                }
+            ],
+            "effects": {
+                "dread": 1,
+                "influencewinter": 1,
+                "memory.menacing": 1,
+                "corpse": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "study.alzabo.follower_scar.reducehunger",
+            "actionId": "study",
+            "label": "旧痛",
+            "requirements": {
+                "ghoul.hunger": 1
+            },
+            "mutations": [
+                {
+                    "filter": "remembrancemarks",
+                    "mutate": "ghoul.hunger",
+                    "level": -1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "study.alzabo.crucible",
+            "actionId": "study",
+            "label": "享用坩埚的残余",
+            "startdescription": "往上走：我只需要取走一点点。",
+            "description": "烧伤很轻微——很快便会痊愈——但他的味道将在我口中停留好多天。",
+            "requirements": {
+                "alzabo": 1,
+                "spirit_forgee_edge.defunct": 1
+            },
+            "effects": {
+                "influenceforgec": 1,
+                "spirit_forgee_edge.consumed": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.crucible.reducehunger"
+                }
+            ]
+        },
+        {
+            "id": "study.alzabo.crucible.reducehunger",
+            "actionId": "study",
+            "label": "享用坩埚的残余",
+            "requirements": {
+                "ghoul.hunger": 1
+            },
+            "mutations": [
+                {
+                    "filter": "remembrancemarks",
+                    "mutate": "ghoul.hunger",
+                    "level": -1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "explore.ghoul.findgraveyard",
+            "actionId": "explore",
+            "requirements": {
+                "ghoul.hunger": 1
+            },
+            "effects": {
+                "location.cemetery": 1,
+                "mystique": 1
+            },
+            "label": "寻找有挖掘价值的公墓",
+            "startdescription": "梭巡于市街，寻找临近的，但又不能太近的坟地——尸口要密集，但来人不能太多。",
+            "description": "我已寻到一块有挖掘价值的坟场。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "work.seance",
+            "actionId": "work",
+            "label": "地下咨询服务",
+            "startdescription": "我作为表演者的声名已经毁了，我作为神谕者的声名才刚刚开始传播。然而当局已经盯上了我。",
+            "description": "今天没人上我的门。幸好如此：我没有什么可以说给他们。",
+            "requirements": {
+                "ghouljob": 1
+            },
+            "alt": [
+                {
+                    "id": "work.seance.shameful"
+                },
+                {
+                    "id": "work.seance.profitable"
+                },
+                {
+                    "id": "work.seance.joyful"
+                },
+                {
+                    "id": "work.seance.menacing"
+                },
+                {
+                    "id": "work.seance.unexpected"
+                },
+                {
+                    "id": "work.seance.grandmemory"
+                },
+                {
+                    "id": "work.seance.other"
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "work.seance.shameful",
+            "actionId": "work",
+            "label": "记念死者：一桩羞耻事",
+            "startdescription": "我已找到愿意花钱买我缄口之人。",
+            "description": "一桩卑劣的交易，但有利可图。",
+            "requirements": {
+                "memory.shameful": 1
+            },
+            "effects": {
+                "funds": 3,
+                "memory.shameful": -1
+            }
+        },
+        {
+            "id": "work.seance.profitable",
+            "actionId": "work",
+            "label": "记念死者：一桩得利事",
+            "startdescription": "我已找到能从已此回忆获利之人。他们会慷慨解囊。",
+            "description": "我们都从中得到了不少好处……且我的声名变得更离奇了一点。",
+            "requirements": {
+                "memory.profitable": 1
+            },
+            "effects": {
+                "funds": 3,
+                "memory.profitable": -1,
+                "mystique": 1
+            }
+        },
+        {
+            "id": "work.seance.joyful",
+            "actionId": "work",
+            "label": "记念死者：一桩欢乐事",
+            "startdescription": "这未必是与我的客户有关的回忆，但它是真实的。",
+            "description": "目前这样就够了。我乐意让委托人流下眼泪，连他们自己也乐意。",
+            "requirements": {
+                "memory.joyful": 1
+            },
+            "effects": {
+                "funds": 2,
+                "memory.joyful": -1,
+                "contentment": 1,
+                "mystique": 1
+            }
+        },
+        {
+            "id": "work.seance.menacing",
+            "actionId": "work",
+            "label": "记念死者：一桩骇人事",
+            "startdescription": "这件工作是严酷的。我或许不会从中获得乐趣。",
+            "description": "我的客户吓坏了，但同时也很兴奋。有的人会花钱买这种体验。有的人会花钱买任何体验。",
+            "requirements": {
+                "memory.menacing": 1
+            },
+            "effects": {
+                "funds": 2,
+                "memory.menacing": -1,
+                "dread": 1,
+                "mystique": 1
+            }
+        },
+        {
+            "id": "work.seance.unexpected",
+            "actionId": "work",
+            "label": "记念死者：一桩意外事",
+            "startdescription": "做神谕者是不能让人轻易料到自己要说什么的。",
+            "description": "事后，我从不记得我讲的具体语句，但我的嘴唇会粘上这些字词的味道。",
+            "requirements": {
+                "memory.unexpected": 1
+            },
+            "effects": {
+                "funds": 2,
+                "memory.unexpected": -1,
+                "mystique": 1
+            },
+            "internaldeck": {
+                "label": "一桩意外事",
+                "description": "一桩意外事",
+                "spec": [
+                    "vitalityplus",
+                    "fascination",
+                    "dread",
+                    "eruditionplus",
+                    "glimmeringplus",
+                    "influencelanternc",
+                    "influencewinterc",
+                    "influencemothc",
+                    "fragmentsecrethistories",
+                    "vitalityplus",
+                    "fascination",
+                    "dread",
+                    "eruditionplus",
+                    "glimmeringplus",
+                    "influencelanternc",
+                    "influencewinterc",
+                    "influencemothc",
+                    "fragmentsecrethistories",
+                    "fragmentsecrethistoriesc",
+                    "influencemothe"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            }
+        },
+        {
+            "id": "work.seance.grandmemory",
+            "actionId": "work",
+            "label": "酒过醇则适得其反",
+            "startdescription": "我真的要谈论那些失落的色彩吗？",
+            "description": "客户踉跄着离开了我处。我不觉得他能理解哪怕四分之一我说的话，但他该有故事可讲了。",
+            "requirements": {
+                "memory": 5
+            },
+            "effects": {
+                "funds": 1,
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "work.seance.other",
+            "actionId": "work",
+            "label": "喜忧参半",
+            "startdescription": "我可以拼凑出足够量半真半假的东西来使我的客户满意。",
+            "description": "我拿到了酬金。难说我的服务值不值这个价格。幸运的是，他们也难说我的服务值还是不值。",
+            "comments": "I've decided that Fleeting Rems get eaten and romantic rems, Dread, F all get kept. We can crack this into specifics if we have too.",
+            "requirements": {
+                "memory": 1
+            },
+            "effects": {
+                "funds": 1,
+                "mystique": 1,
+                "fleeting": -1
+            }
+        }
+    ]
+}

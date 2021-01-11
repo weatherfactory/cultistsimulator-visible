@@ -44,7 +44,17 @@ public class Config
         PopulateConfigValuesFromIniFile();
 
       if(string.IsNullOrEmpty(GetConfigValue(NoonConstants.CULTURE_SETTING_KEY)))
-        PersistConfigValue(NoonConstants.CULTURE_SETTING_KEY,DetermineMostSuitableCultureId());
+        PersistConfigValue(NoonConstants.CULTURE_SETTING_KEY,
+            DetermineMostSuitableCultureId());
+
+      if (string.IsNullOrEmpty(GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY)))
+          PersistConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY,
+              NoonConstants.DEFAULT_CONTENT_FOLDER_NAME);
+
+
+        if (string.IsNullOrEmpty(GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY)))
+            PersistConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY,
+                NoonConstants.DEFAULT_IMAGES_FOLDER_NAME);
 
     }
 

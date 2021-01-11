@@ -1,0 +1,712 @@
+{
+	"elements": [
+		{
+			"id": "skillhealtha",
+			"label": "スキル：強靭な体躯",
+			"aspects": {
+				"healthskill": 1,
+				"ability": 1
+			},
+			"description": "運動は心にも体にも良い。[これを2つの学んだ教訓と使うと、さらなる体力を習得できる。]",
+			"slots": [
+				{
+					"id": "Health",
+					"actionId": "work",
+					"description": "これに力を注がねばならない。",
+					"required": {
+						"health": 1
+					}
+				},
+				{
+					"id": "V1",
+					"actionId": "study",
+					"label": "学んだ教訓",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "強くなる準備はできているのか？"
+				},
+				{
+					"id": "V2",
+					"actionId": "study",
+					"label": "学んだ教訓",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "強くなる準備はできているのか？"
+				}
+			],
+			"xtriggers": {
+				"careeradvancement": "skillhealthb"
+			}
+		},
+		{
+			"id": "skillhealthb",
+			"label": "スキル：鍛えられた体躯",
+			"description": "見た目ではわからないかもしれないが、鍛冶屋や兵士のように強くなった。[これを3つの学んだ教訓と使うと、さらなる体力を習得できる。]",
+			"xtriggers": {
+				"careeradvancement": "skillhealthc"
+			},
+			"aspects": {
+				"healthskill": 2,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "Health",
+					"actionId": "work",
+					"description": "これに力を注がねばならない。",
+					"required": {
+						"health": 1
+					}
+				},
+				{
+					"id": "V1",
+					"actionId": "study",
+					"label": "学んだ教訓",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "もっと強くなるべきだろうか？[これを3つの学んだ教訓と使うと、さらなる体力を習得できる。]"
+				},
+				{
+					"id": "V2",
+					"actionId": "study",
+					"label": "学んだ教訓",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "もっと強くなるべきだろうか？"
+				},
+				{
+					"id": "V3",
+					"actionId": "study",
+					"label": "学んだ教訓",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "もっと強くなるべきだろうか？"
+				}
+			]
+		},
+		{
+			"id": "skillhealthc",
+			"label": "スキル：がっちりとした体格",
+			"description": "今なら拳で砕けそうなものがたくさんある。[これを4つの学んだ教訓と使うと、さらなる体力を習得できる。]",
+			"aspects": {
+				"healthskill": 3,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "Health",
+					"actionId": "work",
+					"description": "これに力を注がねばならない。",
+					"required": {
+						"health": 1
+					}
+				},
+				{
+					"id": "specialisation",
+					"actionId": "study",
+					"label": "もっと",
+					"required": {
+						"lore": 1
+					},
+					"description": "正しい伝承を知っていれば、目に見えない術を使って、より高い頂上に到達することができる。強さと優美さのどちらかを選ばなければならない。"
+				},
+				{
+					"id": "V1",
+					"actionId": "study",
+					"label": "学んだ教訓",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "まだまだ丈夫になれるのだろうか？[これを4つの学んだ教訓と使うと、さらなる体力を習得できる。]"
+				},
+				{
+					"id": "V2",
+					"actionId": "study",
+					"label": "学んだ教訓",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "まだまだ健康になれる？"
+				},
+				{
+					"id": "V3",
+					"actionId": "study",
+					"label": "学んだ教訓",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "まだまだ健康になれる？"
+				},
+				{
+					"id": "V4",
+					"actionId": "study",
+					"label": "学んだ教訓",
+					"required": {
+						"vitalityplus": 1
+					},
+					"consumes": true,
+					"description": "まだまだ健康になれる？"
+				}
+			]
+		},
+		{
+			"id": "skillhealthd_strength",
+			"label": "スキル：無敵な体躯",
+			"description": "山のように動き、空のように打つ、「他人を支配することが強さであり、自分自身を支配することが力である」。[体力とスキルはこれ以上上昇しない。]",
+			"aspects": {
+				"healthskill": 4,
+				"ability": 1,
+				"murderskill": 1
+			},
+			"slots": [
+				{
+					"id": "Health",
+					"actionId": "work",
+					"description": "これに力を注がねばならない。",
+					"required": {
+						"health": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "skillhealthd_grace",
+			"label": "スキル：欠点のない体躯",
+			"description": "機械的な精密さ。腱が骨を包み込み、滑らかで張りのある皮膚で包まれている。「ここから先は劣化するだけだ」[体力とスキルはこれ以上増加しない。]",
+			"aspects": {
+				"healthskill": 4,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "Health",
+					"actionId": "work",
+					"description": "これに力を注がねばならない。",
+					"required": {
+						"health": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "skillreasona",
+			"label": "スキル：学識",
+			"aspects": {
+				"reasonskill": 1,
+				"ability": 1
+			},
+			"description": "巧妙な名言が溢れ出てくる。[これを2つの学んだ教訓と一緒に使うと、理性を高めることができる。]",
+			"slots": [
+				{
+					"id": "e1",
+					"label": "学んだ教訓",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "もっと知識を蓄えるべきだろうか？",
+					"actionId": "study"
+				},
+				{
+					"id": "e2",
+					"label": "学んだ教訓",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "もっと知識を蓄えるべきだろうか？",
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"careeradvancement": "skillreasonb"
+			}
+		},
+		{
+			"id": "skillreasonb",
+			"label": "スキル：注目すべき学識",
+			"description": "学ぶことで、自分自身の無知さを痛感できた。[これを3つの学んだ教訓と一緒に使うと、理性を高めることができる。]",
+			"xtriggers": {
+				"careeradvancement": "skillreasonc"
+			},
+			"aspects": {
+				"reasonskill": 2,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "e1",
+					"label": "学んだ教訓",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "もっと学びたい。",
+					"actionId": "study"
+				},
+				{
+					"id": "e2",
+					"label": "学んだ教訓",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "もっと学びたい。",
+					"actionId": "study"
+				},
+				{
+					"id": "e3",
+					"label": "学んだ教訓",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "もっと学びたい。",
+					"actionId": "study"
+				}
+			]
+		},
+		{
+			"id": "skillreasonc",
+			"label": "スキル：深い学識",
+			"description": "私の頭蓋骨が隅々まできしむのは、習得した知識のせいだ。[これを4つの学んだ教訓と一緒に使うと、さらに理性を得ることができる。]",
+			"aspects": {
+				"reasonskill": 3,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "specialisation",
+					"actionId": "study",
+					"label": "もっと",
+					"required": {
+						"lore": 1
+					},
+					"description": "正しい伝承を知っていれば、目に見えない術を使って、より高い頂上に到達することができる。光と集中力のどちらかを選ばなければならない。"
+				},
+				{
+					"id": "e1",
+					"label": "学んだ教訓",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "もっと理性を研ぎ澄ませられる？",
+					"actionId": "study"
+				},
+				{
+					"id": "e2",
+					"label": "学んだ教訓",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "もっと理性を研ぎ澄ませられる？",
+					"actionId": "study"
+				},
+				{
+					"id": "e3",
+					"label": "学んだ教訓",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "もっと理性を研ぎ澄ませられる？",
+					"actionId": "study"
+				},
+				{
+					"id": "e4",
+					"label": "学んだ教訓",
+					"required": {
+						"eruditionplus": 1
+					},
+					"consumes": true,
+					"description": "もっと理性を研ぎ澄ませられる？",
+					"actionId": "study"
+				}
+			]
+		},
+		{
+			"id": "skillreasond_illumination",
+			"label": "スキル：高尚な心",
+			"description": "私の心はガラスであり、記憶は光である。[理性とスキルはこれ以上上昇しない。]",
+			"aspects": {
+				"reasonskill": 4,
+				"ability": 1
+			},
+			"icon": "skillreasonc"
+		},
+		{
+			"id": "skillreasond_concentration",
+			"label": "スキル：静かな緊張感",
+			"description": "この冷ややかな沈黙が自信を語っている。[理性とスキルはこれ以上増加しない。]",
+			"aspects": {
+				"reasonskill": 4,
+				"ability": 1
+			},
+			"icon": "skillreasonc"
+		},
+		{
+			"id": "skillpassiona",
+			"label": "スキル：鮮やかな想像力",
+			"aspects": {
+				"passionskill": 1,
+				"ability": 1
+			},
+			"description": "私の白昼夢は時々夢を追い越す。[これを「仕事」と一緒に使って絵を描いたり、「学習」とさらに2枚の「学んだ教訓」と合わせて使って、さらに情熱を高めたりすることができる。]",
+			"slots": [
+				{
+					"id": "G1",
+					"label": "学んだ教訓",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "情熱の火にさらに油を加える覚悟はできているのだろうか？",
+					"actionId": "study"
+				},
+				{
+					"id": "G2",
+					"label": "学んだ教訓",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "情熱の火にさらに油を加える覚悟はできているのだろうか？",
+					"actionId": "study"
+				},
+				{
+					"id": "painting1",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting2",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"careeradvancement": "skillpassionb"
+			}
+		},
+		{
+			"id": "skillpassionb",
+			"label": "スキル：ワイルドな想像力",
+			"description": "1日に6本の鉛筆を割ったことがある。[これを絵を描く、または学習、そして3つの学んだ教訓と使うと、さらに情熱を高められる。]",
+			"xtriggers": {
+				"careeradvancement": "skillpassionc"
+			},
+			"aspects": {
+				"passionskill": 2,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "G1",
+					"label": "学んだ教訓",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "何が見える？何になれる？[これを3つの学んだ教訓と一緒に使うと、情熱を高めることができる。]",
+					"actionId": "study"
+				},
+				{
+					"id": "G2",
+					"label": "学んだ教訓",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "何が見える？何になれる？",
+					"actionId": "study"
+				},
+				{
+					"id": "G3",
+					"label": "学んだ教訓",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "何が見える？何になれる？",
+					"actionId": "study"
+				},
+				{
+					"id": "painting1",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting2",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting3",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				}
+			]
+		},
+		{
+			"id": "skillpassionc",
+			"label": "スキル：熱狂的な想像力",
+			"description": "幻が目覚めた心を操る。[これを4つの学んだ教訓と一緒に使うと、情熱を高めることができる。]",
+			"aspects": {
+				"passionskill": 3,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "specialisation",
+					"actionId": "study",
+					"label": "もっと",
+					"required": {
+						"lore": 1
+					},
+					"description": "正しい伝承を知っていれば、目に見えない術を使って、より高い頂上に到達することができる。不合理と愚行のどちらかを選ばなければならない。"
+				},
+				{
+					"id": "G1",
+					"label": "学んだ教訓",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "どんな猛烈な幻影が残っているのだろうか？[これを絵を描く、または学習、そして4つの学んだ教訓と使うと、さらに情熱を高められる。]",
+					"actionId": "study"
+				},
+				{
+					"id": "G2",
+					"label": "学んだ教訓",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "どんな猛烈な幻影が残っているのだろうか？",
+					"actionId": "study"
+				},
+				{
+					"id": "G3",
+					"label": "学んだ教訓",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "どんな猛烈な幻影が残っているのだろうか？",
+					"actionId": "study"
+				},
+				{
+					"id": "G4",
+					"label": "学んだ教訓",
+					"required": {
+						"glimmeringplus": 1
+					},
+					"consumes": true,
+					"description": "どんな猛烈な幻影が残っているのだろうか？",
+					"actionId": "study"
+				},
+				{
+					"id": "painting1",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting2",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting3",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting4",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				}
+			]
+		},
+		{
+			"id": "skillpassiond_unreason",
+			"label": "スキル：留まること知らず",
+			"description": "もっと、もっと、もっと、も――[情熱とスキルをこれ以上上昇させることはできない。]",
+			"aspects": {
+				"passionskill": 4,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "painting1",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting2",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting3",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting4",
+					"label": "芸術かパンか",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				}
+			],
+			"icon": "skillpassionc"
+		},
+		{
+			"id": "skillpassiond_folly",
+			"label": "スキル：むき出しの魂",
+			"description": "「見よ、扉を叩く者がいる。声が聞こえたら、私は扉を開き、迎え入れ、食事を共にするだろう」[情熱とスキルはこれ以上増加しない。]",
+			"aspects": {
+				"passionskill": 4,
+				"ability": 1
+			},
+			"slots": [
+				{
+					"id": "painting1",
+					"label": "芸術か食糧か",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting2",
+					"label": "芸術か食糧か",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting3",
+					"label": "芸術か食糧か",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				},
+				{
+					"id": "painting4",
+					"label": "芸術か食糧か",
+					"required": {
+						"passion": 1,
+						"mystique": 1,
+						"notoriety": 1
+					},
+					"description": "情熱を取り入れて最高の仕事をすることもできる。そうでなければ評判があれば、注目を集める作品を描くこともできる。",
+					"actionId": "work"
+				}
+			],
+			"icon": "skillpassionc"
+		}
+	]
+}

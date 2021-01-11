@@ -1,0 +1,363 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaultcontinent1_setup",
+            "label": "Beginning an Expedition: Chateau Raveline",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultcontinent1": 1
+            },
+            "effects": {
+                "seal_hiddendoor": 1,
+                "curse_dread": 1
+            },
+            "startdescription": "The remote and rotting chateau of the Comtes des Raveline was looted long ago. We have found hints that it was not looted thoroughly enough. There may be a secret room. Equally, there may be a curse. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultcontinent2_setup",
+            "label": "Beginning an Expedition: Fermier Abbey",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultcontinent2": 1
+            },
+            "effects": {
+                "peril_forest": 1,
+                "guardian_monks": 1
+            },
+            "startdescription": "Fermier Abbey, folded into the forest like a jewel-box smuggled in a green robe. If we can make it through the forest, we'll still have to face the monks. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultcontinent3_setup",
+            "label": "Beginning an Expedition: Orthos Wood",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultcontinent3": 1
+            },
+            "effects": {
+                "peril_forest": 1,
+                "guardian_watchers": 1
+            },
+            "startdescription": "In the black heart of Orthos Wood, we might find the tree where the masked Crow met its peers. But the forest itself is a peril, and the cannibal clans who live there are another. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultcontinent4_setup",
+            "label": "Beginning an Expedition: the Vanderschaaf Collection",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultcontinent4": 1
+            },
+            "effects": {
+                "seal_wardeddoor": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "The door to the Painted Chamber of the Vanderschaaf Collection is locked and warded. The building is said to be 'haunted by flowers'. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultcontinent5_setup",
+            "label": "Beginning an Expedition: Forman House",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultcontinent5": 1
+            },
+            "effects": {
+                "guardian_dead": 1,
+                "curse_dread": 1
+            },
+            "startdescription": "Unquestionably, this bleak mansion is haunted. The last visitor saw and fled the dead before they could touch him with their fraying hands. The visitor before that claimed she saw nothing, but she died of despair exactly one year later to the day. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultcontinent6_setup",
+            "label": "Beginning an Expedition: the Key-Hunter's Garret",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultcontinent6": 1
+            },
+            "effects": {
+                "guardian_serpent": 1,
+                "seal_hiddendoor": 1
+            },
+            "startdescription": "Once in Vienna, we hear that the key-hunter has not been seen for many days. A local drunk insists that a great serpent entered the house to devour them. Certainly, the house is unlit and boarded up, and there is a reptile-house smell. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultcontinentdefault_setup",
+            "label": "Beginning an Expedition: the Unnumbered Stones",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultcontinentdefault": 1
+            },
+            "effects": {
+                "peril_forest": 1,
+                "seal_hiddendoor": 1,
+                "guardian_watchers": 1
+            },
+            "startdescription": "Treasure-seekers visiting the Stones must penetrate the forest that conceals them; grapple with the locals who revere them; and finally be prepared to do some digging, even if they can find a hidden door. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcontinent1_success",
+            "label": "Childhood's End",
+            "actionid": "explore",
+            "requirements": {
+                "vaultcontinent1": 1
+            },
+            "effects": {
+                "vaultcontinent1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "ingredientwinterb",
+                    "toolforgeb",
+                    "highmysterieschurchsolarfucine",
+                    "bookoftruebloodlatin",
+                    "morphycodexaramaic"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "Behind a rotting tapestry of wolves hunting men, a panelled wall. In the panelled wall, a secret door. The spring is long gone, of course. We had to smash it in with hammers.",
+            "description": "The last treasures of the Comtes des Raveline lie here, in a surprisingly airy room. High skylight windows have long since broken, and the floor is lost underneath leaves and debris, but once the place was furnished as a nursery. Here is a cradle, with the skeleton of a puppy.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultcontinent2_success",
+            "label": "Beneath the Boughs",
+            "actionid": "explore",
+            "requirements": {
+                "vaultcontinent2": 1
+            },
+            "effects": {
+                "vaultcontinent2": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "againstsisterhoodknotgreek",
+                    "ingredientheartb",
+                    "thirstingtantrasanskrit",
+                    "dehoris2latin",
+                    "tantrawormssanskrit",
+                    "textbookaramaic"
+                ],
+                "draws": 6,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The monks and their miseries lie behind us. Here in their chapel-courtyard, a great yew rises beside a granite altar, lidded like a sarcophagus. What's within?",
+            "description": "The space inside the altar is filled with broken cups, every one painted red, every one scrawled with vile graffiti and otherwise befouled. The monks must have held great ceremonies of detestation, and kept the remains as trophies. Buried among the cup-corpses are other treasures.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultcontinent3_success",
+            "label": "The Memory of Crows",
+            "actionid": "explore",
+            "requirements": {
+                "vaultcontinent3": 1
+            },
+            "effects": {
+                "vaultcontinent3": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "ingredientmothd",
+                    "toolgrailmoth",
+                    "toolmothd",
+                    "inthemountainsasupontheplainvak"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "This is the great oak where the masked Crow once roosted. Lightning has split it from head to heart, and the tree is charred and rotting. It squirms with finger-length worms. Something glints dully in the swarm of dead roots.",
+            "description": "A root coils around an egg of lead the size of a child. Perhaps it was plated with another metal, once, but the weather has removed all trace of any coating. After a struggle, the halves of the egg come apart to reveal its contents.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultcontinent4_success",
+            "label": "In the Painted Chamber",
+            "actionid": "explore",
+            "requirements": {
+                "vaultcontinent4": 1
+            },
+            "effects": {
+                "vaultcontinent4": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toolsecrethistoriesb",
+                    "jumble",
+                    "influencemothc",
+                    "watchfultantrasanskrit",
+                    "vinzantinscriptionsphrygian",
+                    "geminiadfucine",
+                    "textbookaramaic"
+                ],
+                "draws": 7,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The walls of the Painted Chamber carry scenes of war from all the major histories - Vienna falling to the Worms, the Sovereigns of the Leashed Flame burning the martyr-soldiers of the Knot Sisterhood, the meeting of Alexander and the Shadowless King. Along one wall, a shelf is stuffed with junk and curiosities.",
+            "description": "A book of pressed flowers emanating a peculiar scent; three elderly Baedekers; a collection of butterflies painted black and white; and the real treasures. An oddity in a glass case and a  cloisonnéd coffer of rare books.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultcontinent5_success",
+            "label": "The Casts",
+            "actionid": "explore",
+            "requirements": {
+                "vaultcontinent5": 1
+            },
+            "effects": {
+                "vaultcontinent5": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "devouredtantrasanskrit",
+                    "worlddoesnotweeparamaic",
+                    "deedsofthescarredcaptaingreek",
+                    "matthiasamethysttransformationaramaic"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "In the room that overlooks the grimy glass of the broken conservatory, twisted shapes yellow-pale as maggots recline on slabs of wood. These are the plaster-casts that Forman made of the poor souls inhabited by the creatures he studied. In some of the figures, the entry-holes are visible in the relevant surface. In others, we might assume the creatures entered by ear, or mouth, or elsewhere. ",
+            "description": "The room is empty. But at last, when we chance to break one of the casts, we find Forman's library-treasures, cached in the figure's yellowing abdomen.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultcontinent6_success",
+            "label": "Ashes Above",
+            "actionid": "explore",
+            "requirements": {
+                "vaultcontinent6": 1
+            },
+            "effects": {
+                "vaultcontinent6": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "onthematterandthedeedsofserpentsvak",
+                    "irreproachabletraditionssocietynobleendeavourlatin",
+                    "textbookfucinelatin",
+                    "serenityofblackwoodgreek"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationc",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The room stinks of serpent-musk and burnt paper. Someone has comprehensively destroyed all the records they could find. They've even scrubbed the walls clean. Cold ashes choke the fireplace. No trace of the poor soul who rented this place remains.",
+            "description": "A single corner of fire-curled paper has survived the flames. In a shaky hand, it reads: 'Lady K. Green Chalcedony. Three-lobed. Spring leaves in fi -' But, unexpectedly,in a suitcase beside the flames, a little trove of books survives. Whoever destroyed the key-hunter's journals saw no need to burn these books.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultcontinentdefault_success",
+            "label": "Beneath the Stone",
+            "actionid": "explore",
+            "requirements": {
+                "vaultcontinentdefault": 1
+            },
+            "effects": {
+                "vaultcontinentdefault": -1
+            },
+            "deckeffects": {
+                "vaultrewardsc": 3
+            },
+            "startdescription": "The moonlight bleaches the grass to winter. All around, the stones loom. Here in the tumulus side beneath the turf is a stone that will rise like a trap-door. We must put our backs into it. ",
+            "description": "The chamber inside the tumulus has half-collapsed with the years. Fat white spiders crawl from the touch of our lamplight, insolently slow. The stone reliefs are cracked and dripping. But here is the offering-hole still, with its treasures.",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "expeditionascensionheartc",
+                    "chance": 100
+                },
+                {
+                    "id": "expeditionascensionmothc",
+                    "chance": 100
+                }
+            ]
+        }
+    ]
+}

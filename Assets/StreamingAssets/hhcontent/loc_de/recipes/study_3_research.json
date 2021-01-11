@@ -1,0 +1,1822 @@
+{
+	"recipes": [
+		{
+			"id": "studyknocklore",
+			"label": "Das Wissen studieren, das öffnet",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"knock": 1
+			},
+			"effects": {
+				"project_upgrade_subvert_knock": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Es gibt Zauberformeln des Auftrennens, bei denen der Raum zwischen den Worten so wirkmächtig ist wie die eigentlichen Silben. Wird etwas geöffnet, erkennen wir sein Wesen. [Jedes Wissen, das mit Klopfen studiert wird, wird zu Klopfen.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studyupgradelore_edge",
+			"label": "Das Wissen des Messers studieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"edge": 1,
+				"winter": -1,
+				"forge": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_edge": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Die größten Kämpfe im Leben enden mit dem Tod. Das Wissen des Messers birgt die Lektionen jener Kämpfe in sich.",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_edgetowinter",
+			"label": "Das Wissen des Messers subversieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"edge": 1,
+				"winter": 1
+			},
+			"effects": {
+				"project_subvert_edgetowinter": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Alles hat ein Ende. Ich werde über den Triumph der Geduld über die Stärke meditieren. [Dadurch wird Wissen des Winters statt der Kante erschaffen.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studyforgelore",
+			"label": "Das Wissen studieren, das brennt",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"forge": 1,
+				"edge": -1,
+				"lantern": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_forge": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Nur sehr wenige wissen, dass Schmiede und Mörder die gleichen Gebete sprechen. Ich werde jene Gebete untersuchen.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_forgetoedge",
+			"label": "Das Wissen, das brennt, subversieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"forge": 1,
+				"edge": 1
+			},
+			"effects": {
+				"project_subvert_forgetoedge": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Die Stunde namens Löwenschmied hat ihr eigenes Schwert zerschlagen, um sich der Herrschaft ihres Meisters zu entziehen. Alles lässt sich überwinden – mit ausreichend Gewalt. [Dadurch wird Wissen der Kante statt der Schmiede erschaffen.]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studygraillore",
+			"label": "Das Saftige Wissen studieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"grail": 1,
+				"moth": -1,
+				"heart": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_grail": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Bestimmte Worte schreien danach ausgesprochen zu werden. Es ist verlockend, Zeit damit zu verbringen, sie abzuwägen – verlockend und vielleicht auch nützlich.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_grailtomoth",
+			"label": "Das Saftige Wissen subversieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"grail": 1,
+				"moth": 1
+			},
+			"effects": {
+				"project_subvert_grailtomoth": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Es wurde behauptet, der Gral sei durch das erste Opfer geboren worden. Doch die Motte weiß das besser. [Dadurch wird Wissen der Motte statt des Grals erschaffen.]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studyheartlore",
+			"label": "Das Rastlose Wissen studieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"heart": 1,
+				"grail": -1,
+				"winter": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_heart": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Es gibt Lektionen, die der Anatom, der Tänzer und der Schamane gleichermaßen lernen.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_hearttograil",
+			"label": "Das Rastlose Wissen subversieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"heart": 1,
+				"grail": 1
+			},
+			"effects": {
+				"project_subvert_hearttograil": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Was nicht endet, gibt schließlich der Versuchung nach. [Dadurch wird Wissen des Grals statt des Herzens erschaffen.]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studylanternlore",
+			"label": "Das Ruhmreiche Wissen studieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"lantern": 1,
+				"forge": -1,
+				"moth": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_lantern": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Es gibt da ein Sprichwort unter all jenen, welche die Unsichtbaren Künste praktizieren: 'Der Ruhm besucht das Haus ohne Mauern.' Ich möchte vom Ruhm wissen.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_lanterntoforge",
+			"label": "Das Ruhmreiche Wissen subversieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"lantern": 1,
+				"forge": 1
+			},
+			"effects": {
+				"project_subvert_lanterntoforge": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Der Magus Julian Coseley behauptet, die Schmiede der Tage habe die Sonne gespalten. Vielleicht hatte er Recht. [Dadurch wird Wissen der Schmiede statt der Laterne erschaffen.]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studymothlore",
+			"label": "Das Wissen des Forstes studieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"moth": 1,
+				"lantern": -1,
+				"grail": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_moth": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Wenn der Atem schwarz am Glas ist, wenn der Nebel die Haut reizt, wenn die Wälder im Winter wandeln, dann hören wir diese Worte.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_mothtolantern",
+			"label": "Das Wissen des Forstes subversieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"moth": 1,
+				"lantern": 1
+			},
+			"effects": {
+				"project_subvert_mothtolantern": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Der Ruhm ist eine Frage, welche die Motte stets bejaht. [Dadurch wird Wissen der Laterne statt der Motte erschaffen.]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysecrethistorieslore",
+			"label": "Die Historien studieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"secrethistories": 1
+			},
+			"effects": {
+				"project_upgrade_secrethistories": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Die Geschichte ist weniger gewiss als wir es gelehrt werden. Ich kann durch das Studium ihrer unscharfen Ränder lernen.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studywinterlore",
+			"label": "Das Zerlumpte Wissen studieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"winter": 1,
+				"heart": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_winter": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Dies sind die Worte, welche die Luft kühlen und die Farbe meiner Haut trinken.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "subvertwinterlore",
+			"label": "Das Zerlumpte Wissen subversieren",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"winter": 1,
+				"heart": 1
+			},
+			"effects": {
+				"project_subvert_wintertoheart": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "Selbst im Schnee, in der Stille, im Weiß ohne Farben, hört das Leben nie ganz auf. [Dadurch wird Wissen des Herzens statt des Winters erschaffen.]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studyproject_upgrade_edge",
+			"label": "Das Wissen des Messers",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_edge": 1
+			},
+			"effects": {
+				"project": -1,
+				"edge": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Ich habe mich im Wissen des Messers weitergebildet, das nach seinem Aspekt der Kante benannt ist."
+		},
+		{
+			"id": "studyproject_upgrade_forge",
+			"label": "Das Wissen, das brennt",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_forge": 1
+			},
+			"effects": {
+				"project": -1,
+				"forge": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Ich habe mich im Wissen, das brennt, weitergebildet, das nach seinem Aspekt der Schmiede benannt ist."
+		},
+		{
+			"id": "studyproject_upgrade_grail",
+			"label": "Das Saftige Wissen",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_grail": 1
+			},
+			"effects": {
+				"project": -1,
+				"grail": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Ich habe mich im Saftigen Wissen weitergebildet, das nach seinem Aspekt des Grals benannt ist."
+		},
+		{
+			"id": "studyproject_upgrade_heart",
+			"label": "Das Rastlose Wissen",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_heart": 1
+			},
+			"effects": {
+				"project": -1,
+				"heart": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Ich habe mich im Rastlosen Wissen weitergebildet, das nach seinem Aspekt des Herzens benannt ist."
+		},
+		{
+			"id": "studyproject_upgrade_lantern",
+			"label": "Das Ruhmreiche Wissen",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_lantern": 1
+			},
+			"effects": {
+				"project": -1,
+				"lantern": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Ich habe mich im Ruhmreichen Wissen weitergebildet, das nach seinem Aspekt der Laterne benannt ist."
+		},
+		{
+			"id": "studyproject_upgrade_moth",
+			"label": "Das Wissen des Forstes",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_moth": 1
+			},
+			"effects": {
+				"project": -1,
+				"moth": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Ich habe mich im Wissen des Forstes weitergebildet, das nach seinem Aspekt der Motte benannt ist."
+		},
+		{
+			"id": "studyproject_upgrade_secrethistories",
+			"label": "Die Geheimen Geschichten",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_secrethistories": 1
+			},
+			"effects": {
+				"project": -1,
+				"secrethistories": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Ich habe mich im Wissen um die Geheimen Geschichten weitergebildet, die hinter denen stecken, die wir kennen."
+		},
+		{
+			"id": "studyproject_upgrade_winter",
+			"label": "Das Zerlumpte Wissen",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_winter": 1
+			},
+			"effects": {
+				"project": -1,
+				"winter": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Ich habe mich im Zerlumpten Wissen weitergebildet, das nach seinem Aspekt des Winters benannt ist."
+		},
+		{
+			"id": "studyproject_subvert_edgetowinter",
+			"label": "Alles hat ein Ende.",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_edgetowinter": 1
+			},
+			"effects": {
+				"project": -1,
+				"edge": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Geduld siegt über Stärke. Ich habe mein Wissen der Kante zu Winter subversiert."
+		},
+		{
+			"id": "studyproject_subvert_forgetoedge",
+			"label": "Macht erobert alles",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_forgetoedge": 1
+			},
+			"effects": {
+				"project": -1,
+				"forge": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Ich habe zerschlagen, was ich einst glaubte. Also habe ich mein Wissen der Schmiede zur Kante subversiert."
+		},
+		{
+			"id": "studyproject_subvert_grailtomoth",
+			"label": "Hunger ist Narretei",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_grailtomoth": 1
+			},
+			"effects": {
+				"project": -1,
+				"grail": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Selbst der Rote Gral fällt dem Summen des Hirns anheim. Ich habe mein Wissen des Gral zur Motte subversiert."
+		},
+		{
+			"id": "studyproject_subvert_hearttograil",
+			"label": "Was nicht endet, muss letzten Endes nachgeben",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_hearttograil": 1
+			},
+			"effects": {
+				"project": -1,
+				"heart": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Alles, was sich bewegt, gehorcht dem Hunger. Ich habe mein Wissen des Herzens zum Gral subversiert."
+		},
+		{
+			"id": "studyproject_subvert_lanterntoforge",
+			"label": "Sonnenuntergang am Mittag",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_lanterntoforge": 1
+			},
+			"effects": {
+				"project": -1,
+				"lantern": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Es gibt Künste der Schmiede, die selbst die Sonne spalten könnten. Ich habe mein Wissen der Laterne zur Schmiede subversiert."
+		},
+		{
+			"id": "studyproject_subvert_mothtolantern",
+			"label": "Das Licht droben",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_mothtolantern": 1
+			},
+			"effects": {
+				"project": -1,
+				"moth": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Der Ruhm ist eine Frage, welche die Motte stets bejaht. Ich habe mein Wissen der Motte zur Laterne subversiert."
+		},
+		{
+			"id": "studyproject_subvert_wintertoheart",
+			"label": "Das Leben unten",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_wintertoheart": 1
+			},
+			"effects": {
+				"project": -1,
+				"winter": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Das Kommen des Winters weicht endlich dem Frühling. Ich habe mein Wissen des Winter zum Herzen subversiert."
+		},
+		{
+			"id": "studyproject_upgrade_subvert_knock",
+			"label": "Alles soll aufgetan werden",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_subvert_knock": 1
+			},
+			"effects": {
+				"project": -1,
+				"subvertable_lore": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "Wenn wir etwas öffnen, erfahren wir sein Wesen. Ich habe mich im Wissen, das öffnet, weitergebildet, das nach seinem Aspekt des Klopfens benannt ist.",
+			"linked": [
+				{
+					"id": "studyproject_upgrade_subvert_knock_remove_spare_knock",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyproject_upgrade_subvert_knock_remove_spare_knock",
+			"label": "Alles soll aufgetan werden",
+			"comments": "This exists to remove a Knock lore, if we were combining Knock lores rather than Knock + another. Dangit Kennedy you wouldn't need hacks like this if you'd implemented OR conditions. Aspects don't *quite* always cut it.",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2
+			},
+			"effects": {
+				"knock": -1
+			},
+			"description": "."
+		},
+		{
+			"id": "studyresearchconsolation",
+			"label": "Die Lektionen der Erfahrung",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				"insight": -100,
+				"erudition": 1
+			},
+			"aspects": {
+				"restore": 1
+			},
+			"startdescription": ".",
+			"description": "Diesmal sind diese Forschungen gescheitert. Doch ich habe die Lektionen der Erfahrung gelernt.",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "studydowngradefragmentedgeb",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedgeb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentedgeb": -1,
+				"fragmentedge": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentedgec",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedgec": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentedgec": -1,
+				"fragmentedgeb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentedged",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedged": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentedged": -1,
+				"fragmentedgec": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentedgee",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedgee": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentedgee": -1,
+				"fragmentedged": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentedgef",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedgef": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentedgef": -1,
+				"fragmentedgee": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentedgeg",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedgeg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentedgeg": -1,
+				"fragmentedgef": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforgeb",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforgeb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentforgeb": -1,
+				"fragmentforge": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforgec",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforgec": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentforgec": -1,
+				"fragmentforgeb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforged",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforged": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentforged": -1,
+				"fragmentforgec": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforgee",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforgee": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentforgee": -1,
+				"fragmentforged": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforgef",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforgef": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentforgef": -1,
+				"fragmentforgee": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforgeg",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforgeg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentforgeg": -1,
+				"fragmentforgef": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgrailb",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgrailb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentgrailb": -1,
+				"fragmentgrail": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgrailc",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgrailc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentgrailc": -1,
+				"fragmentgrailb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgraild",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgraild": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentgraild": -1,
+				"fragmentgrailc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgraile",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgraile": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentgraile": -1,
+				"fragmentgraild": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgrailf",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgrailf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentgrailf": -1,
+				"fragmentgraile": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgrailg",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgrailg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentgrailg": -1,
+				"fragmentgrailf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentheartb",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentheartb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentheartb": -1,
+				"fragmentheart": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentheartc",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentheartc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentheartc": -1,
+				"fragmentheartb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentheartd",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentheartd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentheartd": -1,
+				"fragmentheartc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmenthearte",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmenthearte": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmenthearte": -1,
+				"fragmentheartd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentheartf",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentheartf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentheartf": -1,
+				"fragmenthearte": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentheartg",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentheartg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"project": -1,
+				"fragmentheartg": -1,
+				"fragmentheartf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknockb",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknockb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentknockb": -1,
+				"fragmentknock": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknockc",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknockc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentknockc": -1,
+				"fragmentknockb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknockd",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknockd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentknockd": -1,
+				"fragmentknockc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknocke",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknocke": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentknocke": -1,
+				"fragmentknockd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknockf",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknockf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentknockf": -1,
+				"fragmentknocke": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknockg",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknockg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentknockg": -1,
+				"fragmentknockf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanternb",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanternb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentlanternb": -1,
+				"fragmentlantern": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanternc",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanternc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentlanternc": -1,
+				"fragmentlanternb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanternd",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanternd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentlanternd": -1,
+				"fragmentlanternc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanterne",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanterne": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentlanterne": -1,
+				"fragmentlanternd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanternf",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanternf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentlanternf": -1,
+				"fragmentlanterne": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanterng",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanterng": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentlanterng": -1,
+				"fragmentlanternf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothb",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentmothb": -1,
+				"fragmentmoth": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothc",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentmothc": -1,
+				"fragmentmothb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothd",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentmothd": -1,
+				"fragmentmothc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothe",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothe": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentmothe": -1,
+				"fragmentmothd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothf",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentmothf": -1,
+				"fragmentmothe": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothg",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentmothg": -1,
+				"fragmentmothf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriesb",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriesb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentsecrethistoriesb": -1,
+				"fragmentsecrethistories": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriesc",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriesc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentsecrethistoriesc": -1,
+				"fragmentsecrethistoriesb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriesd",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriesd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentsecrethistoriesd": -1,
+				"fragmentsecrethistoriesc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriese",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriese": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentsecrethistoriese": -1,
+				"fragmentsecrethistoriesd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriesf",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriesf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentsecrethistoriesf": -1,
+				"fragmentsecrethistoriese": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriesg",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriesg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentsecrethistoriesg": -1,
+				"fragmentsecrethistoriesf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwinterb",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwinterb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentwinterb": -1,
+				"fragmentwinter": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwinterc",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwinterc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentwinterc": -1,
+				"fragmentwinterb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwinterd",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwinterd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentwinterd": -1,
+				"fragmentwinterc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwintere",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwintere": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentwintere": -1,
+				"fragmentwinterd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwinterf",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwinterf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentwinterf": -1,
+				"fragmentwintere": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwinterg",
+			"label": "Zurück den Grundlagen",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwinterg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Manchmal muss ich mich vielleicht auf die Grundlagen eines bestimmten Wissens rückbesinnen. [Dadurch wird das Wissen in zwei niederstufige Fragmente aufgespalten. Du kannst sie später wieder miteinander kombinieren, was aber nicht so leicht wie das aufspalten ist.]",
+			"description": "Eine Analyse ist eine Art von Sezierung. Der Verstand ist das Messer.",
+			"effects": {
+				"fragmentwinterg": -1,
+				"fragmentwinterf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

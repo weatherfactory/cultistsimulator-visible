@@ -1,0 +1,300 @@
+{
+	"recipes": [
+		{
+			"id": "auctionbuy",
+			"label": "オークションで入札する",
+			"actionId": "explore",
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Bid",
+					"label": "入札",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "やつれた顔とぎらぎらした目が会場を満たす。誰が入札するのだろうか？[オークションに出品されているものは、右に表示される。落札できないと、その品は永遠に消えてしまう。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "playerincreasedbid",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "auctionfailureclear",
+					"chance": 100
+				}
+			],
+			"comments": "The auction item should be inherited from the linking recipe. If this event completes, the auction has failed and the item is removed. NB the auctioncomplete aspect, which converts existing bids back into funds."
+		},
+		{
+			"id": "playerincreasedbid",
+			"actionId": "explore",
+			"label": "入札した！",
+			"requirements": {
+				"funds": 1
+			},
+			"startdescription": "私が手を上げると、競売人が感謝の言葉を口にした。他にも入札はあるのだろうか？",
+			"description": ".",
+			"effects": {
+				"funds": -1,
+				"bid": 1
+			},
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "auctionbidmatched.grailapostlepillar3"
+				},
+				{
+					"id": "auctionsuccess",
+					"chance": 70
+				},
+				{
+					"id": "auctionbidmatched",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "auctionbidmatched.grailapostlepillar3",
+			"actionId": "explore",
+			"requirements": {
+				"bid": -6,
+				"apostlegrail.pillar3": 1
+			},
+			"linked": [
+				{
+					"id": "auctionbidmatched"
+				}
+			]
+		},
+		{
+			"id": "auctionbidmatched",
+			"label": "他の入札者！",
+			"actionId": "explore",
+			"startdescription": "誰かが私よりも高い値を付けた！もっと資金を投資するか、購入を諦めないといけない。",
+			"description": ".",
+			"slots": [
+				{
+					"id": "Bid",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "playerincreasedbid",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "auctionfailureclear",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "auctionfailureclear",
+			"actionId": "explore",
+			"effects": {
+				"text": -1,
+				"tool": -1,
+				"ingredient": -1
+			},
+			"comments": "Tools and ingredients might subsequently be offered as purchases; in particular, ingredients are right now in a Grail Apostle plot recipe.",
+			"linked": [
+				{
+					"id": "auctionfailure",
+					"chance": 100
+				}
+			],
+			"warmup": 0
+		},
+		{
+			"id": "auctionfailure",
+			"actionId": "explore",
+			"label": "落札できなかった",
+			"aspects": {
+				"restore": 1
+			},
+			"startdescription": ".",
+			"description": "オークションが終わった。品は他の誰かの手に渡ってしまった。私の手元には資金が残っている。",
+			"warmup": 0
+		},
+		{
+			"id": "auctionsuccess",
+			"label": "落札した！",
+			"actionId": "explore",
+			"effects": {
+				"funds": -100,
+				"bid": -100
+			},
+			"startdescription": ".",
+			"description": "競売人が私の名前を書き、係員の一人に合図した。出品されていた品を手に入れた。価値のあるものであってほしい。",
+			"warmup": 0,
+			"craftable": false,
+			"comments": "The auction item should be inherited from the linking recipe."
+		},
+		{
+			"id": "expedition.corpse.find.vaultshires3",
+			"actionId": "expedition.corpse.find",
+			"label": "もう1つの宝物",
+			"startdescription": "ここに来た他の者たちは皆、戦士王の死体の中に隠された秘密を見落としていた。同じ過ちは犯さない。",
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.furious": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expedition.corpse.find.vaultcapital5",
+			"actionId": "expedition.corpse.find",
+			"label": "もう1つの宝物",
+			"startdescription": "祭司の最後の一欠片を忘れてはいけない。噛みごたえはあるだろうが......中には力と知識がある。",
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.luxurious": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expedition.corpse.find.vaultloneandlevelsands2",
+			"actionId": "expedition.corpse.find",
+			"label": "もう1つの宝物",
+			"startdescription": "できる限りラグーンの残骸を集めよう。紅茶に浸してでも、その中に眠る記憶を解き放つ方法を見つけなければいけない。",
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.liminal": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expedition.corpse.find.vaultrendingmountainsdefault",
+			"actionId": "expedition.corpse.find",
+			"label": "もう1つの宝物",
+			"startdescription": "王の残骸は独り占めさせてもらおう。",
+			"extantreqs": {
+				"remembrancemarks": 1,
+				"corpse.horizon": -1,
+				"memory.horizon": -1,
+				"colours.horizon": -1
+			},
+			"effects": {
+				"corpse.horizon": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expedition.corpse.find.vaultshires4",
+			"actionId": "expedition.corpse.find",
+			"label": "もう1つの宝物",
+			"startdescription": "「Caput gerat lupinum」。人間が許容範囲を超えると、かつては狼になったと考えられていた。",
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.splendid": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expedition.corpse.find.vaultshires3.ransackedbyrival",
+			"actionId": "expedition.corpse.find",
+			"label": "もう1つの宝物",
+			"startdescription": "ライバルは、ここに来た他の者たちと同じように、戦士王の死体の中に隠された秘密を見落としていた。同じ過ちは犯さない。",
+			"requirements": {
+				"vaultshires3": 1
+			},
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.furious": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+			"actionId": "expedition.corpse.find",
+			"label": "もう1つの宝物",
+			"startdescription": "ライバルがいなくなった今、忍び込んで祭司の最後の一欠片を漁ることができるだろう。噛みごたえはあるだろうが......中には力と知識がある。",
+			"requirements": {
+				"vaultcapital5": 1
+			},
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.luxurious": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
+			"actionId": "expedition.corpse.find",
+			"label": "もう1つの宝物",
+			"startdescription": "ライバルがいなくなった今なら、忍び込んで、不死者の死体から必要なものを漁りに行ける。ラグーンの残骸からできる限り集めるつもりだ。その中に眠る記憶を解き放つ方法を見つけたい――残骸を紅茶に浸すことになっても。",
+			"requirements": {
+				"vaultloneandlevelsands2": 1
+			},
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.liminal": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
+			"actionId": "expedition.corpse.find",
+			"label": "もう1つの宝物",
+			"startdescription": "ライバルがいなくなった今、忍び込んで、半死半生状態の定命の者の遺骨を盗みに行ける。王の残骸は独り占めさせてもらおう。",
+			"requirements": {
+				"vaultrendingmountainsdefault": 1
+			},
+			"extantreqs": {
+				"remembrancemarks": 1,
+				"corpse.horizon": -1,
+				"memory.horizon": -1,
+				"colours.horizon": -1
+			},
+			"effects": {
+				"corpse.horizon": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "expedition.corpse.find.vaultshires4.ransackedbyrival",
+			"actionId": "expedition.corpse.find",
+			"label": "もう1つの宝物",
+			"startdescription": "ライバルがいなくなった今、忍び込んで必要な定命の者の遺骨を集めることができる。",
+			"requirements": {
+				"vaultshires4": 1
+			},
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.splendid": 1
+			},
+			"warmup": 60
+		}
+	]
+}

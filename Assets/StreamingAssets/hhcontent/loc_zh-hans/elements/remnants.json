@@ -1,0 +1,77 @@
+{
+    "elements": [
+        {
+            "id": "corpse",
+            "label": "人类尸体",
+            "description": "里面的魂灵已去。到某个时点，它散发的臭气会重到让你不得不把它处理掉，但现在还不至于。它有可能引来注意；也可用来打动那些可打动之人。[即便在“尸体”消失后，“邪名”也依然会留存。]",
+            "aspects": {
+                "winter": 3,
+                "grail": 3,
+                "ingredient": 1,
+                "reputation": 2,
+                "remnant": 1
+            },
+            "xtriggers": {
+                "raiseburgeoning": "spirit_wintera_moth",
+                "raiseshattered": "spirit_wintera_edge"
+            },
+            "lifetime": 60,
+            "decayTo": "notoriety"
+        },
+        {
+            "id": "corpse.furious",
+            "label": "带疤骨片",
+            "aspects": {
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.furious"
+            },
+            "description": "碎骨内含一位更古老的司辰的回忆。"
+        },
+        {
+            "id": "corpse.luxurious",
+            "label": "韧皮残片",
+            "aspects": {
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.luxurious"
+            },
+            "description": "感官回忆和向往，绳结的秘密，存于旧自我的一块不被看好的碎片中。"
+        },
+        {
+            "id": "corpse.liminal",
+            "label": "长生碎片",
+            "aspects": {
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.liminal"
+            },
+            "description": "残量极少，但其味道——这份出人意料的味道——"
+        },
+        {
+            "id": "corpse.horizon",
+            "label": "无影断片",
+            "aspects": {
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.horizon"
+            },
+            "description": "众王究竟是否知晓真正的辉光？"
+        },
+        {
+            "id": "corpse.splendid",
+            "label": "狼首",
+            "aspects": {
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.splendid"
+            },
+            "description": "她知道太阳原先的模样吗？"
+        }
+    ]
+}

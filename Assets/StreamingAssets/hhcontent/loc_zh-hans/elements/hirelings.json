@@ -1,0 +1,133 @@
+{
+    "elements": [
+        {
+            "id": "thugedgeminor",
+            "label": "大块头之人",
+            "aspects": {
+                "mortal": 1,
+                "hireling": 1,
+                "follower": 1,
+                "edge": 3
+            },
+            "description": "“我搞定了工作。”[该雇工可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎人和找你麻烦的家伙。]",
+            "xtriggers": {
+                "hiring": "thugedgeminor",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "generic_p"
+            },
+            "lifetime": 120
+        },
+        {
+            "id": "thugmothminor",
+            "label": "狡诈的女人",
+            "aspects": {
+                "mortal": 1,
+                "hireling": 1,
+                "follower": 1,
+                "moth": 3
+            },
+            "description": "“我搞定了工作。”[该雇工可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎人和找你麻烦的家伙。]",
+            "xtriggers": {
+                "hiring": "thugmothminor",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "generic_p"
+            },
+            "lifetime": 120
+        },
+        {
+            "id": "thugedge",
+            "label": "肌肉专家",
+            "aspects": {
+                "mortal": 1,
+                "hireling": 1,
+                "follower": 1,
+                "edge": 5
+            },
+            "description": "“我要把他们劈成两半。”[该雇工可以用于探险，并且可以可以帮你解决来寻找你犯罪证据的猎人和找你麻烦的家伙。]",
+            "xtriggers": {
+                "hiring": "thugedge",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "generic_p"
+            },
+            "lifetime": 120
+        },
+        {
+            "id": "thugforgeedge",
+            "label": "炸弹制造师",
+            "aspects": {
+                "mortal": 1,
+                "hireling": 1,
+                "follower": 1,
+                "forge": 5,
+                "edge": 3
+            },
+            "description": "“也许我们这会儿不该谈政治。”[该雇工可以用于探险，并且可以可以帮你解决来寻找你犯罪证据的猎人和找你麻烦的家伙]",
+            "xtriggers": {
+                "hiring": "thugforgeedge",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "generic_p"
+            },
+            "lifetime": 120
+        },
+        {
+            "id": "thugknock",
+            "label": "破门顾问",
+            "aspects": {
+                "mortal": 1,
+                "hireling": 1,
+                "follower": 1,
+                "knock": 5
+            },
+            "description": "“我对门很在行。”[该雇工或可在某些探险中派上用场。]",
+            "xtriggers": {
+                "hiring": "thugknock",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "generic_p"
+            },
+            "lifetime": 120
+        },
+        {
+            "id": "thuglanternmoth",
+            "label": "占卜师",
+            "aspects": {
+                "mortal": 1,
+                "hireling": 1,
+                "follower": 1,
+                "lantern": 5,
+                "moth": 3
+            },
+            "description": "“我感受到了。我感受到了你的与众不同。”[该雇工可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎人和找你麻烦的家伙。]",
+            "xtriggers": {
+                "hiring": "thuglanternmoth",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "generic_p"
+            },
+            "lifetime": 120
+        },
+        {
+            "id": "thugmoth",
+            "label": "经验丰富的骗子",
+            "aspects": {
+                "mortal": 1,
+                "hireling": 1,
+                "follower": 1,
+                "moth": 5,
+                "grail": 1
+            },
+            "description": "“很高兴与您共事！”[该雇工可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎人和找你麻烦的家伙。]",
+            "xtriggers": {
+                "hiring": "thugmoth",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "generic_p"
+            },
+            "lifetime": 120
+        }
+    ]
+}

@@ -1,0 +1,464 @@
+{
+	"elements": [
+		{
+			"id": "dropzone",
+			"label": "DropZone",
+			"description": "",
+			"aspects": {
+				
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "tooledgeb",
+			"label": "流星の弾丸",
+			"description": "テーナイトの弾丸は、ヨーロッパ、中東、インドの各地で、時折、珍しい獣の骨格から発見されている。誰かが怪物を狩っていたのだろう。",
+			"aspects": {
+				"edge": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "tooledged",
+			"label": "ビエッデの刃",
+			"description": "この刃で切られると、傷口が治るまで出血が止まらない。ある説によると、ビエッデは18世紀のトゥールーズでナイフを収集する外科医であったと言われている。ビエッデはアラビア語で「蚊」を意味する言葉が転訛したものだという説もある。",
+			"aspects": {
+				"edge": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "tooledgef",
+			"label": "凶暴な銀",
+			"description": "ライオンスミスは大佐に反旗を翻すと、自分の剣を拳で砕いた。その武器の一片一片が、今でも怒りで震えている。",
+			"aspects": {
+				"edge": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolforgeb",
+			"label": "辰砂のお守り",
+			"description": "緋色は熱の色。水銀は究極の溶解の鍵を1つ握る。",
+			"aspects": {
+				"forge": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolforged",
+			"label": "槌骨の槌",
+			"description": "猛烈な熱で黒く染められた小さな耳の骨。正しく使うと、石を割ることができる。",
+			"aspects": {
+				"forge": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolforgef",
+			"label": "死体の火花",
+			"description": "朽ちていくように柔らかく光っている、大きな光の名残り。分裂した太陽の欠片なのかもしれない。",
+			"aspects": {
+				"forge": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolgrailmoth",
+			"label": "囁くお守り",
+			"description": "私が望むことを知っている、あるいは知っていると想像している。",
+			"aspects": {
+				"grail": 2,
+				"moth": 2,
+				"auctionable": 2,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolgrailb",
+			"label": "汚れた手袋",
+			"description": "何に使えと言うのだろうか？私の手はこれから何を学ぶのだろうか。",
+			"aspects": {
+				"grail": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"comments": "Not unique; we can get an extra one from the Dancer legacy."
+		},
+		{
+			"id": "toolgraild",
+			"label": "聖なる冠",
+			"description": "エキスで染められた野蛮な母の冠。髪の切れ端が編み込まれ、皮膚の破片が散りばめられている。",
+			"aspects": {
+				"grail": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolgrailf",
+			"label": "騒めきの聖杯",
+			"description": "聖杯から飲んだ夜は、自分たちが何をしたのか、後から思いだすことはできない。しかし、それはいつものことであり、もし我々が覚えていないのなら、子供たちが赤い夢の中で覚えているから安心だ。",
+			"aspects": {
+				"grail": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolheartb",
+			"label": "マルヴィの偶像",
+			"description": "マルヴィは湖に住む双子の魔女への恐怖心を和らげるために、木の人形を作った。今では湖はほとんど干上がってしまったが、心臓の属性が影を落としているとはいえ、人形と双子の魔女の姿は変わらない。",
+			"aspects": {
+				"heart": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"comments": "Not unique; we can get an extra one from the Dancer legacy."
+		},
+		{
+			"id": "toolheartd",
+			"label": "鼓膜の覚醒",
+			"description": "雷を撒き散らした木々の中で、猛烈に楽器を手で叩いて怒りをかき立てた。その力は今も匂いのようにまとわりついている。",
+			"aspects": {
+				"heart": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolheartf",
+			"label": "キングスキンのバウロン",
+			"description": "深い森の中で、土地を永遠に守る道具を作るために、君主は最後の手段を諦めた。そして、当然のように帝国がその道具を盗んだのだ。",
+			"aspects": {
+				"heart": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolknockb",
+			"label": "聖アグネスの偶像",
+			"description": "ボヘミアの聖アグネスは、敬虔な肉体の苦行に身を捧げたことで知られている。この偶像は見るも恐ろしい。",
+			"aspects": {
+				"knock": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolknockd",
+			"label": "聖なるまぐさ石",
+			"description": "これは力が通った扉の頭蓋骨だ。",
+			"aspects": {
+				"knock": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolknockf",
+			"label": "フランギクレーブ",
+			"description": "扉を開ける鍵と、それを破壊する鍵がある。",
+			"aspects": {
+				"knock": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toollanternb",
+			"label": "正午の石",
+			"description": "諺にもあるように、正午は昔のままではないが、この磨かれた石は今でも夕焼けの輝きを保っている。",
+			"aspects": {
+				"lantern": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"xtriggers": {
+				"crackmirror": "toollanternbcracked"
+			},
+			"comments": "Not unique; we can get multiples if cracked ones are supplied."
+		},
+		{
+			"id": "toollanternd",
+			"label": "錯乱の鏡",
+			"description": "複数の景色が見える！戸惑ってしまうような光景だ！じっと見つめて、五感が溶けていく感覚を楽しもう！",
+			"aspects": {
+				"lantern": 8,
+				"auctionable": 5,
+				"tool": 1,
+				"mirror": 1
+			},
+			"xtriggers": {
+				"crackmirror": "toollanterndcracked"
+			},
+			"comments": "Not unique; we can get multiples if cracked ones are supplied."
+		},
+		{
+			"id": "toollanternf",
+			"label": "見張り番の鏡",
+			"description": "これは、人が二度見しない鏡。",
+			"aspects": {
+				"lantern": 12,
+				"auctionable": 6,
+				"tool": 1,
+				"mirror": 1
+			},
+			"xtriggers": {
+				"crackmirror": "toollanternfcracked"
+			},
+			"comments": "Not unique; we can get multiples if cracked ones are supplied.",
+			"animFrames": 1
+		},
+		{
+			"id": "toolmothb",
+			"label": "羽のある人形",
+			"description": "家には窓があった。その窓の横には箱がある。箱の中には包帯が入っていて、その中には固まった髪の毛が包まれていた。窓は一度も開かれたことがないから、その髪の毛は人形をぐるぐる巻きにしていた。",
+			"aspects": {
+				"moth": 4,
+				"auctionable": 3,
+				"tool": 1
+			}
+		},
+		{
+			"id": "toolmothd",
+			"label": "まだら模様の仮面",
+			"description": "月の届かない森の中では、木の枝が包帯や恋人同士のように織り成されていた。月が自分の姿を蟻や鳥に変えたり、彼女の姉妹の姿に変えたりしても、いくら優しく触れられても、森は彼女の侵入を抵抗した。ある日、私たちは鋏を持って来て、月明かりと血が木の根元の腐った葉を彩るまで枝を切り落とした。",
+			"aspects": {
+				"moth": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolmothf",
+			"label": "アラカプリンの鋏",
+			"description": "北部には大富豪の都市があり、そこには世界の守護者が住んでいた。ある日を境に彼は口をきかなくなった。この鋏は、彼からまず、髪の毛を奪い、次に指を、そして残りを奪うために使われたものだ。",
+			"aspects": {
+				"moth": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolsecrethistoriesb",
+			"label": "奇妙な骨董品",
+			"description": "矢がヘロディアス皇后を殺したのか、エウドキア皇后を殺したのか、はっきりしないこともある。ローマの金庫にしっかりと保管されていたオルモルの時計がウィーンの略奪で盗まれた可能性もある。",
+			"aspects": {
+				"secrethistories": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolsecrethistoriesd",
+			"label": "夢の地図",
+			"description": "世界の形はそれぞれの過去で変化するが、マンサスの形はすべての過去に反映されている。マンサスを写像することはできないが、反映されたものを写像することはできる。",
+			"aspects": {
+				"secrethistories": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolwinterb",
+			"label": "骨笛",
+			"description": "その音色はいつか途絶える。",
+			"aspects": {
+				"winter": 4,
+				"auctionable": 3,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolwinterd",
+			"label": "エラガバルスの足かせ",
+			"description": "一度はめたら解放されることはない。",
+			"aspects": {
+				"winter": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toolwinterf",
+			"label": "分裂の鐘",
+			"description": "鐘が鳴り、次に静けさが訪れる。",
+			"aspects": {
+				"winter": 12,
+				"auctionable": 6,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "toollanternbcracked",
+			"label": "ひび割れた正午の石",
+			"description": "諺にもあるように、正午は昔のままではないが、この石は今も輝きを保っている。ひび割れてしまったようだ。鍛造の属性を持つ信奉者ならば、資源があれば修復できる。あるいは残りの力を使い切ることもできる。",
+			"aspects": {
+				"lantern": 1,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "toollanterndcracked",
+			"label": "ひび割れた錯乱の鏡",
+			"description": "深い亀裂が輝く金属に入っている。鍛造の属性を持つ信奉者ならば、資源があれば修理できる。あるいは残りの力を使い切ることもできる。",
+			"aspects": {
+				"lantern": 2,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "toollanternfcracked",
+			"label": "ひび割れた見張り番の鏡",
+			"description": " 鍛造の属性を持つ信奉者なら修復できるが、費用は安くない。あるいは、残っている力を使い切ることもできる。",
+			"aspects": {
+				"lantern": 3,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "paintingmasteredge",
+			"label": "「大佐とライオンスミス」",
+			"description": "イッソス時代から対立してきた。",
+			"aspects": {
+				"edge": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmasterforge",
+			"label": "「日々の鍛造」",
+			"description": "鍛造が後悔するとしたら、「閏月の挿入」を後悔するだろうが、その他すべてのことに関しては喜びを感じるだろう。",
+			"aspects": {
+				"forge": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmastergrail",
+			"label": "「赤い聖杯」",
+			"description": "彼女は太陽を分裂しなかったが、彼女がそれを望んでいたに違いないと想像することはできるだろう。",
+			"aspects": {
+				"grail": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmasterheart",
+			"label": "「双子の片割れと魔女」",
+			"description": "彼女は葬儀に現れる一対の鳥になったことはあるが、この絵画の中では、希望通りに溺れていた。",
+			"aspects": {
+				"heart": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmasterknock",
+			"label": "「蟻の母」",
+			"description": "エラムの時代にも、彼女はこのように現れ始めていた。",
+			"aspects": {
+				"knock": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmasterlantern",
+			"label": "「瞳の扉」",
+			"description": "栄光から訪れた。我々は見ずにはいられない。",
+			"aspects": {
+				"lantern": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmastermoth",
+			"label": "「蛾」",
+			"description": "第一大陸の森では、我々の祖先は自分たちの神を呪っていた。",
+			"aspects": {
+				"moth": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmastersecrethistories",
+			"label": "「テレサとクリストファー」",
+			"description": "愛はマンサスのように、境界を無視する。",
+			"aspects": {
+				"secrethistories": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "paintingmasterwinter",
+			"label": "「分裂した狼」",
+			"description": "Caput gerat lupinum――太陽は分裂された。これがその傷口だ。",
+			"aspects": {
+				"winter": 8,
+				"auctionable": 5,
+				"tool": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "canvas.pale",
+			"label": "青白いキャンバス",
+			"description": "慎重に行かなければならない。強く描きすぎると伝えたい記憶が、キャンバスから消えてしまう。私は、その記憶を死者の肉体の中や......もしかしたら、死にかけている自分の肉体の中で見つけるのだろう。",
+			"aspects": {
+				
+			}
+		},
+		{
+			"id": "painting.palest",
+			"label": "最も青白い絵画",
+			"description": "「6人がいなくなり、30人が残った」。キャンバスは白ではない。よく見ると、遥か昔にいなくなった時の神々の影が薄っすらと見える。曲がりくねった道を歩いて名もなき場所の扉へと向かっているようだ。よく見すぎると、自分が涙を流していることに気づく。",
+			"aspects": {
+				"ascension.remembrance.offering": 1
+			}
+		}
+	]
+}

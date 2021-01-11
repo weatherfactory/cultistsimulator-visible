@@ -1,0 +1,55 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultfloating1_setup",
+			"label": "Der Beginn einer Expedition: Die 'Hebe Stanton'",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultfloating1": 1
+			},
+			"effects": {
+				"guardian_watchers": 1,
+				"seal_wardeddoor": 1,
+				"peril_sea": 1
+			},
+			"startdescription": "Es ist selten, dass ein Passagierschiff die düstere Insel ansteuert, wo die 'Hebe Stanton' vor Anker liegt – doch wir können ein Fischerboot chartern und hoffen, dass sich die See benimmt. Die eigentliche Arbeit, Wachen und Türen zu passieren, beginnt, sobald wir an Bord sind. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultfloating1_success",
+			"label": "Ein kuscheliges Nest",
+			"actionId": "explore",
+			"requirements": {
+				"vaultfloating1": 1
+			},
+			"effects": {
+				"vaultfloating1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ceaselesstantrasanskrit",
+					"leoninetantrasanskrit",
+					"incandescenttantrasanskrit",
+					"firecircletantrasanskrit"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Es sind nur wenige Passagiere an Bord – kein Wunder, wenn diese freudlose eisige Insel das Ziel der Reise sein sollte. Doch immerhin gibt es einen Passagier – jemanden, der seine Kabinentür nicht nur mit einem herkömmlichen Schloss verriegelt hat. Er muss an Land gegangen sein. Er kann jeden Augenblick zurückkommen – ",
+			"description": "Wir leeren die Gepäckstücke aus, schütteln die Bücher aus, drehen Bilder um. Wir finden Kleidung, Fahrkarten, Karten, nichts Ungewöhnliches ... wobei, es gibt da so ein kurioses durchsichtiges Material, das wie eine Lage Schlagenhaut über eine Stuhllehne geworfen liegt. Schließlich schlitzen wir die Matratze auf, durchsuchen ihre Füllung unf finden eine kleine Sammlung Schriftrollenhüllen aus Elfenbein.",
+			"warmup": 30,
+			"craftable": false
+		}
+	]
+}

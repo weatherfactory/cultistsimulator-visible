@@ -1,0 +1,177 @@
+{
+    "recipes": [
+        {
+            "id": "workbytjobstart",
+            "label": "非常适合从事出于兴趣的工作的一天",
+            "actionId": "work",
+            "requirements": {
+                "legacybytjob": 1
+            },
+            "effects": {
+                "funds": 3,
+                "legacybytjob": -1,
+                "legacybytjobmatured": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "bytopenexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "今天我或许能完成什么。",
+            "description": "一切都很顺利。尽管爸爸的身体没能好转。[解锁<b>探索</b>。]",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "workbytjob",
+            "label": "非常适合从事出于兴趣的工作的一天",
+            "actionId": "work",
+            "requirements": {
+                "legacybytjobmatured": 1
+            },
+            "effects": {
+                "funds": 3
+            },
+            "alternativerecipes": [
+                {
+                    "id": "workbytjobend",
+                    "chance": 30
+                }
+            ],
+            "startdescription": "今天我或许能完成什么。",
+            "description": "一切都很顺利。尽管爸爸的身体还是没能好转。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "workbytjobend",
+            "label": "天边的云",
+            "actionId": "work",
+            "startdescription": "爸爸召唤了我！我要立刻赶到他的床边。家庭事务暂且全部推后——",
+            "craftable": false,
+            "effects": {
+                "legacybytjobmatured": -1,
+                "funds": 2
+            },
+            "alternativerecipes": [
+                {
+                    "id": "workbytjobepilogue",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "workbytjobepilogue",
+            "label": "噩耗",
+            "actionId": "legacyeventbad",
+            "alternativerecipes": [
+                {
+                    "id": "bytopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "health": 2,
+                "funds": 20
+            },
+            "startdescription": "爸爸去世了！没人告诉我事情到底是如何发生的。但遗产现在混乱不清。我能分到多少全看遗嘱如何认定。只能指望在我账单到期前能有个结果了。",
+            "description": "遗嘱相关事宜已处理完毕……但爸爸的生意已被蛀虫般的债务吃干抹净。似乎没人知道他到底把钱花到什么地方去了。不过据说，律师要给我寄来一些文书。",
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "bytopenexplore",
+            "label": "无限可能的世界",
+            "actionId": "explore",
+            "startdescription": "一些有意思的人把我带到了一些有意思的地方。",
+            "description": "如果我需要一些关于如何花钱的建议，这些有意思的地方的有意思的人一定可以帮到我！",
+            "warmup": 10,
+            "effects": {
+                "locationauctionhouse": 1,
+                "locationcabaret": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "bytopenstudy",
+            "label": "令人疑惑的文书",
+            "actionId": "study",
+            "startdescription": "我要接收爸爸遗物里的一些文书，这些文书或许能给我一些启示，关于他把钱都花到哪个该死的地方去了。",
+            "alternativerecipes": [
+                {
+                    "id": "bytopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "description": "我已经收到了这份文书。可怜的爸爸。一页一页又一页潦草的手书，望眼欲穿地写道一座无形的房屋，睡梦的颜色和世界背后的无形诸神……但你知道吗，我读得越多，它就越发地……怎么说呢，不“合理”。完全不合理。但又自成一体。这便是爸爸的日记。",
+            "effects": {
+                "legacydiarylastcharacter": 1,
+                "LEVER_LastBook": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "bytstudydiary",
+            "label": "研究令人不安的日记",
+            "actionId": "study",
+            "requirements": {
+                "legacydiarylastcharacter": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "bytopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "legacydiarylastcharacter": -1,
+                "reason": 1,
+                "fragmentgrail": 1
+            },
+            "startdescription": "爸爸的日记，记录了一长痴迷的念头。但是也许能解释最近发生的事情？",
+            "description": "#PREVIOUSCHARACTERNAME#的名字不断出现在日记中。他是“不可能的交点”，“未来之泉”……“割眼之人”。而且，在最后一页，留下了一个通信地址，还有一个名字。",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "bytopendream",
+            "label": "无墙的居屋",
+            "actionId": "dream",
+            "alternativerecipes": [
+                {
+                    "id": "despairrisk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "梦境开始了。爸爸谈到过它们，他说在更早的时候他的爸爸也有过这样的问题。有些东西存在于我们血缘之中；一种能消灭灵魂的刺骨哀愁。",
+            "description": "我梦到一束收缩的光，一束洒落在雪上却并未将其融化的阳光。当我醒来，房间总是冷的。",
+            "warmup": 30,
+            "effects": {
+                "passion": 1,
+                "influencewinter": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "bytopentalk",
+            "label": "招徕一名陌生人",
+            "actionId": "talk",
+            "startdescription": "我已经联系了那位在令人费解的文件中提及的人。我没理由相信他能对我明白之前所发生的事情的本质有所帮助。但是也许他能在即将到来的事上有所帮助。",
+            "description": "我的新熟人对爸爸的事很了解。他知道他要死了。他还想在死前品味未知的、被健康社会所不容的欢愉。我的新朋友建议我完成他刚刚开始的任务——而如果我这么做了，我可能可以将自己从那困扰我家庭的绝望中拯救出来。",
+            "effects": {
+                "poppyready": 1,
+                "ascensionsensationa": 1
+            },
+            "warmup": 60,
+            "craftable": false
+        }
+    ]
+}

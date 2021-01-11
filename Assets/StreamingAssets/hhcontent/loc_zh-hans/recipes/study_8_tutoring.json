@@ -1,0 +1,299 @@
+{
+    "recipes": [
+        {
+            "id": "studylatintutoring",
+            "label": "和教师学习拉丁语",
+            "actionId": "study",
+            "requirements": {
+                "tutorlatin": 1,
+                "commission": -1,
+                "article": -1
+            },
+            "slots": [
+                {
+                    "id": "Costs",
+                    "label": "费用",
+                    "required": {
+                        "compensationvalue": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "studylatintutoringpaid",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "我要学拉丁语的话，此人便能教我；但我得用斯宾特里亚古币，即隐秘世界的货币付钱才行。",
+            "description": "教师不会免费授课。下次吧。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studylatintutoringpaid",
+            "label": "和教师学习拉丁语",
+            "actionId": "study",
+            "requirements": {
+                "compensationvalue": 2
+            },
+            "effects": {
+                "scholarlatin": 1,
+                "compensationvalue": -2
+            },
+            "startdescription": "这些钱够了。我会认真听讲。",
+            "description": "卢克莱修的《物性论》、阿奎那的《神学大全》以及声名狼藉的《司辰志》都是由这一语言写就。"
+        },
+        {
+            "id": "studygreektutoring",
+            "label": "和教师学习希腊语",
+            "actionId": "study",
+            "requirements": {
+                "tutorgreek": 1,
+                "commission": -1,
+                "article": -1
+            },
+            "slots": [
+                {
+                    "id": "Costs",
+                    "label": "费用",
+                    "required": {
+                        "compensationvalue": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "studygreektutoringpaid",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "我要学希腊语的话，此人便能教我；但我得用斯宾特里亚古币，即隐秘世界的货币付钱才行。",
+            "description": "教师不会免费授课。下次吧。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studygreektutoringpaid",
+            "label": "和教师学习希腊语",
+            "actionId": "study",
+            "requirements": {
+                "compensationvalue": 2
+            },
+            "effects": {
+                "scholargreek": 1,
+                "compensationvalue": -2
+            },
+            "startdescription": "这些钱够了。我会认真听讲。",
+            "description": "《形而上学》、普罗科匹厄斯的《秘史》和险恶的《论困于银镜之物》都是由这一语言写就。"
+        },
+        {
+            "id": "studyaramaictutoring",
+            "label": "和教师学习亚兰语",
+            "actionId": "study",
+            "requirements": {
+                "tutoraramaic": 1,
+                "commission": -1,
+                "article": -1
+            },
+            "slots": [
+                {
+                    "id": "Costs",
+                    "label": "费用",
+                    "required": {
+                        "compensationvalue": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "studyaramaictutoringpaid",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "我要学亚兰语的话，此人便能教我；但我得用斯宾特里亚古币，即隐秘世界的货币付钱才行。",
+            "description": "教师不会免费授课。下次吧。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyaramaictutoringpaid",
+            "label": "和教师学习亚兰语",
+            "actionId": "study",
+            "requirements": {
+                "compensationvalue": 2
+            },
+            "effects": {
+                "scholararamaic": 1,
+                "compensationvalue": -2
+            },
+            "startdescription": "这些钱够了。我会认真听讲。",
+            "description": "《亚兰所见的幻象》、《但以理书》和《迦腻色伽在蜘蛛之门前的经过》都是由这一语言写就。"
+        },
+        {
+            "id": "studysanskrittutoring",
+            "label": "和教师学习梵语",
+            "actionId": "study",
+            "requirements": {
+                "tutorsanskrit": 1,
+                "commission": -1,
+                "article": -1
+            },
+            "slots": [
+                {
+                    "id": "Costs",
+                    "label": "费用",
+                    "required": {
+                        "compensationvalue": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "studysanskrittutoringpaid",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "我要学梵语的话，此人便能教我；但我得用斯宾特里亚古币，即隐秘世界的货币付钱才行。",
+            "description": "教师不会免费授课。下次吧。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studysanskrittutoringpaid",
+            "label": "和教师学习梵语",
+            "actionId": "study",
+            "requirements": {
+                "compensationvalue": 2
+            },
+            "effects": {
+                "scholarsanskrit": 1,
+                "compensationvalue": -2
+            },
+            "startdescription": "这些钱够了。我会认真听讲。",
+            "description": "此乃次大陆的神圣语言。通向四千年的诗歌、典仪和奥秘的大门。"
+        },
+        {
+            "id": "studyfucinetutoringspirit",
+            "label": "和教师学习富奇诺语",
+            "actionId": "study",
+            "requirements": {
+                "spirittutorfucine": 1,
+                "summoned": 1
+            },
+            "slots": [
+                {
+                    "id": "Background",
+                    "label": "根底",
+                    "required": {
+                        "scholarlatin": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "studyfucinetutoringsuccessful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "“富奇诺语？对，我的富奇诺语还行。你要是会拉丁语做基础的话我可以教你。不过要是让我听到了一丝‘女巫的语言’的风儿，这件事就免谈。”",
+            "description": "我还没打实必要的底子。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyfucinetutoringsuccessful",
+            "label": "和教师学习富奇诺语",
+            "actionId": "study",
+            "requirements": {
+                "scholarlatin": 1
+            },
+            "effects": {
+                "scholarfucine": 1
+            },
+            "startdescription": "拉丁语会是我学习的基础，只要是能学的我都会去学。",
+            "description": "要想长时间说富奇诺语，就必须抿水润喉。这种语言让人口干舌燥，怕是只有住在湖岸边上的人才会讲。"
+        },
+        {
+            "id": "studyphrygiantutoringspirit",
+            "label": "和教师学习弗里吉亚语",
+            "actionId": "study",
+            "requirements": {
+                "spirittutorphrygian": 1,
+                "summoned": 1
+            },
+            "slots": [
+                {
+                    "id": "Background",
+                    "label": "根底",
+                    "required": {
+                        "scholargreek": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "studyphrygiantutoringsuccessful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "“弗里吉亚语！伟大母亲的语言！当然，如果你希腊语不错的话，我保证你学弗里吉亚语会<i>非常</i>省心。”",
+            "description": "我还没打实必要的底子。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyphrygiantutoringsuccessful",
+            "label": "和教师学习弗里吉亚语",
+            "actionId": "study",
+            "requirements": {
+                "scholargreek": 1
+            },
+            "effects": {
+                "scholarphrygian": 1
+            },
+            "startdescription": "希腊语会是我学习的基础，只要是能学的我都会去学。",
+            "description": "希罗多德讲过一个随性的故事，说一位法老发现弗里吉亚语是人类最先开口讲的语言。当然了，他说的不对，应该是伐诃语。不过每个人都喜欢听这个故事。"
+        },
+        {
+            "id": "studymandaictutoringspirit",
+            "label": "和教师学习渊深曼达安语",
+            "actionId": "study",
+            "requirements": {
+                "spirittutormandaic": 1,
+                "summoned": 1
+            },
+            "slots": [
+                {
+                    "id": "Background",
+                    "label": "根底",
+                    "required": {
+                        "scholararamaic": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "studymandaictutoringsuccessful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "<b>“聚首于此，为不焚之神的语言献上我等的追思！”</b>",
+            "description": "我还没打实必要的底子。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studymandaictutoringsuccessful",
+            "label": "和教师学习渊深曼达安语",
+            "actionId": "study",
+            "requirements": {
+                "scholararamaic": 1
+            },
+            "effects": {
+                "scholarmandaic": 1
+            },
+            "startdescription": "亚兰语会是我学习的基础，只要是能学的我都会去学。",
+            "description": "在某一重历史中，这曾是无影众王所用的语言。而在另一重历史，则是受控之火的子女所用咒语的基础。"
+        }
+    ]
+}

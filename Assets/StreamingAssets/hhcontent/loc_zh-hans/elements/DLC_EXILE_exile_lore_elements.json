@@ -1,0 +1,861 @@
+{
+	"elements": [
+		{
+			"id": "uqedgelore.exile",
+			"label": "Exile:",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "uqedgelore.colonel",
+			"label": "Colonel:",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "uqedgelore.lionsmith",
+			"label": "Lionsmith:",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "fragmentedge.exile",
+			"label": "刀子的秘密",
+			"aspects": {
+				"edge": 2,
+				"lore": 1
+			},
+			"description": " 我不是个学徒，但在这段时间里，我不得不杀了几个学徒。你走的时候带好你的东西。",
+			"xtriggers": {
+				"epiphany": "fragmentedgeb.exile",
+				"fatiguing": "fragmentedge.exile.exhausted",
+				"epiphany.colonel": "fragmentedgeb.colonel",
+				"epiphany.lionsmith": "fragmentedgeb.lionsmith",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"icon": "fragmentedge",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedgeb.exile",
+			"label": "比德的教诲",
+			"aspects": {
+				"edge": 4,
+				"lore": 1
+			},
+			"description": "比德说：“血液可以得到补充。时间不能。”比德知道自己曾为何物。",
+			"xtriggers": {
+				"epiphany": "fragmentedgec.exile",
+				"depiphany": "fragmentedge.exile",
+				"fatiguing": "fragmentedgeb.exile.exhausted",
+				"epiphany.colonel": "fragmentedgec.colonel",
+				"epiphany.lionsmith": "fragmentedgec.lionsmith",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"icon": "fragmentedgeb",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedgec.exile",
+			"label": "吸血鹄行动",
+			"aspects": {
+				"edge": 6,
+				"lore": 1
+			},
+			"description": "“在勇士倒下的地方，多翼的勇士聚集在一起，向他们的肉体致敬。在英雄们倒下的地方，多翼者聚集在一起，向司辰传递他们的灵魂。”我不想倒下，所以我学会了如何保护自己。",
+			"xtriggers": {
+				"epiphany": "fragmentedged.exile",
+				"depiphany": "fragmentedgeb.exile",
+				"fatiguing": "fragmentedgec.exile.exhausted",
+				"epiphany.colonel": "fragmentedged.colonel",
+				"epiphany.lionsmith": "fragmentedged.lionsmith",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"icon": "fragmentedgec",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedged.exile",
+			"label": "狼的具名者",
+			"aspects": {
+				"edge": 8,
+				"lore": 1
+			},
+			"description": "“裂分之狼具三性：毁灭性，毁灭性，以及，毁灭性。” 你不必非得喜欢它才能学到这点。",
+			"xtriggers": {
+				"epiphany": "fragmentedgee.exile",
+				"depiphany": "fragmentedgec.exile",
+				"fatiguing": "fragmentedged.exile.exhausted",
+				"epiphany.colonel": "fragmentedgee.colonel",
+				"epiphany.lionsmith": "fragmentedgee.lionsmith",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"icon": "fragmentedged",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedgee.exile",
+			"label": "朱砂之构",
+			"aspects": {
+				"edge": 10,
+				"lore": 1
+			},
+			"description": "七之七种灭绝之术",
+			"xtriggers": {
+				"epiphany": "fragmentedgef.exile",
+				"depiphany": "fragmentedged.exile",
+				"fatiguing": "fragmentedgee.exile.exhausted",
+				"epiphany.colonel": "fragmentedgef.colonel",
+				"epiphany.lionsmith": "fragmentedgef.lionsmith",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"icon": "fragmentedgee",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedgef.exile",
+			"label": "谋杀连珠",
+			"aspects": {
+				"edge": 12,
+				"lore": 1
+			},
+			"description": "此为确保终结的技艺。",
+			"xtriggers": {
+				"epiphany": "fragmentedgeg.exile",
+				"depiphany": "fragmentedgee.exile",
+				"fatiguing": "fragmentedgef.exile.exhausted",
+				"epiphany.colonel": "fragmentedgeg.colonel",
+				"epiphany.lionsmith": "fragmentedgeg.lionsmith",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"icon": "fragmentedgef",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedgeg.exile",
+			"label": "武力之秘",
+			"aspects": {
+				"edge": 14,
+				"lore": 1
+			},
+			"description": "上校和狮子匠是肉源之神，但是裂分之狼是血源之神。狡诈、力气与痛苦乃胜利的三大根基，下文即其秘密教义……",
+			"xtriggers": {
+				"fatiguing": "fragmentedgeg.exile.exhausted",
+				"epiphany.colonel": "fragmentedgeg.colonel",
+				"epiphany.lionsmith": "fragmentedgeg.lionsmith",
+				"depiphany": "fragmentedgef.exile",
+				"epiphany": [
+					{
+						"id": "vitality",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"icon": "fragmentedgeg",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedge.exile.exhausted",
+			"label": "刀子的秘密（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 300,
+			"decayTo": "fragmentedge.exile",
+			"icon": "fragmentedge",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedgeb.exile.exhausted",
+			"label": "比德的教诲（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 260,
+			"decayTo": "fragmentedgeb.exile",
+			"icon": "fragmentedgeb",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedgec.exile.exhausted",
+			"label": "吸血鹄行动（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 220,
+			"decayTo": "fragmentedgec.exile",
+			"icon": "fragmentedgec",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedged.exile.exhausted",
+			"label": "狼的具名者（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 180,
+			"decayTo": "fragmentedged.exile",
+			"icon": "fragmentedged",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedgee.exile.exhausted",
+			"label": "朱砂之构（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 140,
+			"decayTo": "fragmentedgee.exile",
+			"icon": "fragmentedgee",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedgef.exile.exhausted",
+			"label": "谋杀连珠（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 100,
+			"decayTo": "fragmentedgef.exile",
+			"icon": "fragmentedgef",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedgeg.exile.exhausted",
+			"label": "武力之秘（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 60,
+			"decayTo": "fragmentedgeg.exile",
+			"icon": "fragmentedgeg",
+			"uniquenessgroup": "uqedgelore.exile"
+		},
+		{
+			"id": "fragmentedgeb.colonel",
+			"label": "千夫长的教诲",
+			"aspects": {
+				"edge": 4,
+				"lantern": 2,
+				"winter": 2,
+				"lore": 1
+			},
+			"description": "“千夫长在悠久的过去中学到了有关于鲜血和伤口的刻骨故事。刀剑嘶鸣声，正大声诉说着这个故事。” 它比听起来更实际。",
+			"xtriggers": {
+				"epiphany": "fragmentedgec.colonel",
+				"epiphany.colonel": "fragmentedgec.colonel",
+				"fatiguing": "fragmentedgeb.colonel.exhausted",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedgec.colonel",
+			"label": "赫斯提行动",
+			"aspects": {
+				"edge": 6,
+				"lantern": 3,
+				"winter": 3,
+				"lore": 1
+			},
+			"description": "一套严格的训练，将皮肤武装起来，使每一根手指都化作致命的矛尖。",
+			"xtriggers": {
+				"epiphany": "fragmentedged.colonel",
+				"epiphany.colonel": "fragmentedged.colonel",
+				"depiphany": "fragmentedgeb.colonel",
+				"fatiguing": "fragmentedgec.colonel.exhausted",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedged.colonel",
+			"label": "上校的具名者",
+			"aspects": {
+				"edge": 8,
+				"lantern": 4,
+				"winter": 4,
+				"lore": 1
+			},
+			"description": "上校在不同的时代有着不同的形象。他目盲；他耳聋；他不受创伤；他不容违抗。他的具名者皆如极年迈之人一般狡诈。",
+			"xtriggers": {
+				"epiphany": "fragmentedgee.colonel",
+				"epiphany.colonel": "fragmentedgee.colonel",
+				"depiphany": "fragmentedgec.colonel",
+				"fatiguing": "fragmentedged.colonel.exhausted",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedgee.colonel",
+			"label": "钢铁之构",
+			"aspects": {
+				"edge": 10,
+				"lantern": 5,
+				"winter": 5,
+				"lore": 1
+			},
+			"description": "七之七种裂肉之技",
+			"xtriggers": {
+				"epiphany": "fragmentedgef.colonel",
+				"epiphany.colonel": "fragmentedgef.colonel",
+				"depiphany": "fragmentedged.colonel",
+				"fatiguing": "fragmentedgee.colonel.exhausted",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedgef.colonel",
+			"label": "剑齿刻模",
+			"aspects": {
+				"edge": 12,
+				"lantern": 6,
+				"winter": 6,
+				"lore": 1
+			},
+			"description": "如我将化为兵器，则我须知晓我之灵魂被历史强化于何处，而我之极限被其夯实于何处。",
+			"xtriggers": {
+				"epiphany": "fragmentedgeg.colonel",
+				"epiphany.colonel": "fragmentedgeg.colonel",
+				"depiphany": "fragmentedgee.colonel",
+				"fatiguing": "fragmentedgef.colonel.exhausted",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedgeg.colonel",
+			"label": "伤疤之秘",
+			"aspects": {
+				"edge": 14,
+				"lantern": 7,
+				"winter": 7,
+				"lore": 1
+			},
+			"description": "狡诈乃胜利的根基。经验乃狡诈的根基。没有痛苦就没有经验，而伤疤是痛苦的外在表现。",
+			"xtriggers": {
+				"epiphany": [
+					{
+						"id": "weapon.f.colonel",
+						"morpheffect": "spawn"
+					}
+				],
+				"epiphany.colonel": [
+					{
+						"id": "weapon.f.colonel",
+						"morpheffect": "spawn"
+					}
+				],
+				"fatiguing": "fragmentedgeg.colonel.exhausted",
+				"depiphany": "fragmentedgef.colonel",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedgeb.colonel.exhausted",
+			"label": "千夫长的教诲（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 250,
+			"decayTo": "fragmentedgeb.colonel",
+			"icon": "fragmentedgeb.colonel",
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedgec.colonel.exhausted",
+			"label": "赫斯提行动（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 210,
+			"decayTo": "fragmentedgec.colonel",
+			"icon": "fragmentedgec.colonel",
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedged.colonel.exhausted",
+			"label": "上校的具名者（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 170,
+			"decayTo": "fragmentedged.colonel",
+			"icon": "fragmentedged.colonel",
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedgee.colonel.exhausted",
+			"label": "钢铁之构（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 130,
+			"decayTo": "fragmentedgee.colonel",
+			"icon": "fragmentedgee.colonel",
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedgef.colonel.exhausted",
+			"label": "剑齿刻模（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 90,
+			"decayTo": "fragmentedgef.colonel",
+			"icon": "fragmentedgef.colonel",
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedgeg.colonel.exhausted",
+			"label": "伤疤之秘（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 50,
+			"decayTo": "fragmentedgeg.colonel",
+			"icon": "fragmentedgeg.colonel",
+			"uniquenessgroup": "uqedgelore.colonel"
+		},
+		{
+			"id": "fragmentedgeb.lionsmith",
+			"label": "沙普尔的教诲",
+			"aspects": {
+				"edge": 4,
+				"forge": 2,
+				"heart": 2,
+				"lore": 1
+			},
+			"description": "“这是伟大之子在折断刀刃时得到的教训。即使是现在，它也像波斯阳光下的金属碎片一样闪闪发光。”它比听起来更实际。",
+			"xtriggers": {
+				"epiphany": "fragmentedgec.lionsmith",
+				"epiphany.lionsmith": "fragmentedgec.lionsmith",
+				"fatiguing": "fragmentedgeb.lionsmith.exhausted",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		},
+		{
+			"id": "fragmentedgec.lionsmith",
+			"label": "狻猊行动",
+			"aspects": {
+				"edge": 6,
+				"forge": 3,
+				"heart": 3,
+				"lore": 1
+			},
+			"description": "一系列需要为之献身、为之惊骇的神秘活动。",
+			"xtriggers": {
+				"epiphany": "fragmentedged.lionsmith",
+				"epiphany.lionsmith": "fragmentedged.lionsmith",
+				"depiphany": "fragmentedgeb.lionsmith",
+				"fatiguing": "fragmentedgec.lionsmith.exhausted",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		},
+		{
+			"id": "fragmentedged.lionsmith",
+			"label": "狮子匠的具名者",
+			"aspects": {
+				"edge": 8,
+				"forge": 4,
+				"heart": 4,
+				"lore": 1
+			},
+			"description": "狮子匠，按司辰的标准来看尚显青涩，而按战争的标准来看相当老成。他的具名者皆是刚被招募的新成员，其吟诵有一种野蛮的力量。",
+			"xtriggers": {
+				"epiphany": "fragmentedgee.lionsmith",
+				"epiphany.lionsmith": "fragmentedgee.lionsmith",
+				"depiphany": "fragmentedgec.lionsmith",
+				"fatiguing": "fragmentedged.lionsmith.exhausted",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		},
+		{
+			"id": "fragmentedgee.lionsmith",
+			"label": "青铜之构",
+			"aspects": {
+				"edge": 10,
+				"forge": 5,
+				"heart": 5,
+				"lore": 1
+			},
+			"description": "七之七种碎骨之法",
+			"xtriggers": {
+				"epiphany": "fragmentedgef.lionsmith",
+				"epiphany.lionsmith": "fragmentedgef.lionsmith",
+				"depiphany": "fragmentedged.lionsmith",
+				"fatiguing": "fragmentedgee.lionsmith.exhausted",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		},
+		{
+			"id": "fragmentedgef.lionsmith",
+			"label": "斧柄既成",
+			"aspects": {
+				"edge": 12,
+				"forge": 6,
+				"heart": 6,
+				"lore": 1
+			},
+			"description": "我是那将折之兵，亦被重铸于无暇。我肉体之争终将无可辩驳。",
+			"xtriggers": {
+				"epiphany": "fragmentedgeg.lionsmith",
+				"epiphany.lionsmith": "fragmentedgeg.lionsmith",
+				"depiphany": "fragmentedgee.lionsmith",
+				"fatiguing": "fragmentedgef.lionsmith.exhausted",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		},
+		{
+			"id": "fragmentedgeg.lionsmith",
+			"label": "破碎之秘",
+			"aspects": {
+				"edge": 14,
+				"forge": 7,
+				"heart": 7,
+				"lore": 1
+			},
+			"description": "每次重生都伴随更强的力量。被毁之物亦可重被铸造。未毁之物必将重被铸造。",
+			"xtriggers": {
+				"epiphany": [
+					{
+						"id": "weapon.f.lionsmith",
+						"morpheffect": "spawn"
+					}
+				],
+				"epiphany.lionsmith": [
+					{
+						"id": "weapon.f.lionsmith",
+						"morpheffect": "spawn"
+					}
+				],
+				"fatiguing": "fragmentedgeg.lionsmith.exhausted",
+				"depiphany": "fragmentedgef.lionsmith",
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		},
+		{
+			"id": "fragmentedgeb.lionsmith.exhausted",
+			"label": "沙普尔的教诲（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 250,
+			"decayTo": "fragmentedgeb.lionsmith",
+			"icon": "fragmentedgeb.lionsmith",
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		},
+		{
+			"id": "fragmentedgec.lionsmith.exhausted",
+			"label": "狻猊行动（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 210,
+			"decayTo": "fragmentedgec.lionsmith",
+			"icon": "fragmentedgec.lionsmith",
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		},
+		{
+			"id": "fragmentedged.lionsmith.exhausted",
+			"label": "狮子匠的具名者（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 170,
+			"decayTo": "fragmentedged.lionsmith",
+			"icon": "fragmentedged.lionsmith",
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		},
+		{
+			"id": "fragmentedgee.lionsmith.exhausted",
+			"label": "青铜之构（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 130,
+			"decayTo": "fragmentedgee.lionsmith",
+			"icon": "fragmentedgee.lionsmith",
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		},
+		{
+			"id": "fragmentedgef.lionsmith.exhausted",
+			"label": "斧柄既成（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 90,
+			"decayTo": "fragmentedgef.lionsmith",
+			"icon": "fragmentedgef.lionsmith",
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		},
+		{
+			"id": "fragmentedgeg.lionsmith.exhausted",
+			"label": "破碎之秘（枯竭）",
+			"description": "[我需要时间恢复，才能再次使用它。升级一项技巧可以使它在每次升级时恢复得更快。]",
+			"aspects": {
+				"exhausted": 1
+			},
+			"resaturate": true,
+			"lifetime": 50,
+			"decayTo": "fragmentedgeg.lionsmith",
+			"icon": "fragmentedgeg.lionsmith",
+			"uniquenessgroup": "uqedgelore.lionsmith"
+		}
+	]
+}

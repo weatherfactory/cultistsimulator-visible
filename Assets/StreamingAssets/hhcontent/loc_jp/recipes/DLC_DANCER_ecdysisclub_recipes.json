@@ -1,0 +1,1059 @@
+{
+	"recipes": [
+		{
+			"id": "explorecabaret_meetsulochana",
+			"actionId": "explore",
+			"label": "エクディシスクラブでスロチャナと出会う",
+			"requirements": {
+				"locationcabaret": 1,
+				"sulochana": 1
+			},
+			"startdescription": "スロチャナ・アマヴァシャは赤いカーテンのついた出入り口に立っていた。彼女は一点物で輸入物のクローブタバコを吸いながら、ギリシャ人に見える、細身で非常に背の高い男と話していた。彼女はまばたきもせず、表情も変えずに私が近づいてくるのを見つめている。",
+			"slots": [
+				{
+					"id": "Subject",
+					"label": "話題",
+					"description": "話がしたくてきたのだけど.....",
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"description": "「何も言うことはないの？私の時間を無駄にしないで」",
+			"alternativerecipes": [
+				{
+					"id": "A_ecdysis_beginheart",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_beginmoth",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_switchtochangefromsensation",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_switchtochangefrompower",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_cantswitchtochangefromenlightenment",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_alreadyonchange",
+					"chance": 100
+				},
+				{
+					"id": "A_ecdysis_cantswitch",
+					"chance": 100
+				}
+			],
+			"craftable": true,
+			"warmup": 60
+		},
+		{
+			"id": "A_ecdysis_beginheart",
+			"actionId": "explore",
+			"maxexecutions": 1,
+			"extantreqs": {
+				"dancerjobecdysisa": -1,
+				"dancerjobecdysisb": -1,
+				"dancerjobecdysisc": -1
+			},
+			"requirements": {
+				"desireheart_track": 1
+			},
+			"label": "肉体の披露",
+			"startdescription": "「分かったわ。仕事をあげる。チャンスは一度っきりよ」と、スロチャナは言うと、タバコを吸った。そして彼女は「服を脱ぐのよ」と続ける。顔の前に煙が漂っていたが、彼女は瞬きをしなかった。「アウターのことよ」",
+			"description": "窮屈な部屋を割り当てられた。食器棚くらいの広さで、非常に窮屈だ。初めての衣装は用意されていた。一階から、ドラムがクレッシェンドで響いてくる。それと同時に、何の前触れもなく細身のギリシャ人が部屋に入ってきた。彼は屈むと、私の耳元に秘密を囁いた。後から知ったことだが、彼の名前はアグディスティス氏らしい。",
+			"effects": {
+				"dancerjobecdysisa": 1,
+				"fragmentheart": 1
+			}
+		},
+		{
+			"id": "A_ecdysis_beginmoth",
+			"actionId": "explore",
+			"maxexecutions": 1,
+			"requirements": {
+				"desiremoth_track": 1
+			},
+			"extantreqs": {
+				"dancerjobecdysisa": -1,
+				"dancerjobecdysisb": -1,
+				"dancerjobecdysisc": -1
+			},
+			"label": "自己披露",
+			"startdescription": "「分かったわ。仕事をあげる。チャンスは一度っきりよ」と、スロチャナは言うと、タバコを吸った。そして彼女は「服を脱ぐのよ」と続け、ぐっと顔を近づけると、「それだけじゃないわよ」と言った。",
+			"description": "窮屈な部屋を割り当てられた。食器棚くらいの広さで、非常に窮屈だ。初めての衣装は用意されていた。スロチャナは銀色の小さなハサミで私の髪の毛を切り、耳元で秘密を囁いた。",
+			"effects": {
+				"dancerjobecdysisa": 1,
+				"fragmentmoth": 1
+			}
+		},
+		{
+			"id": "A_ecdysis_switchtochangefromsensation",
+			"label": "感性ではなく、変化を追求する",
+			"requirements": {
+				"ascensionsensationa": 1
+			},
+			"actionId": "explore",
+			"effects": {
+				"ascensionsensationa": -1,
+				"ascensionchangea": 1
+			},
+			"startdescription": "「聖杯の道を考え直しているのね？生半可な気持ちではダメよ。形態は同じくらい難しいけど、本当に変わりたいなら――」",
+			"description": "スロチャナは私との距離を縮めると、片手で私の頬を包み込み、じっと私を見つめた。彼女の肌は冷たく、息は暖かかった。彼女は口角を歪めて言った。「よく考えてきて。次にクラブが開いている時に私に会いにいらっしゃい。その時に詳しい話をしましょう」",
+			"linked": [
+				{
+					"id": "L_desire_addmothtrack",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_ecdysis_switchtochangefrompower",
+			"label": "力ではなく、変化を追求する",
+			"requirements": {
+				"ascensionpowera": 1
+			},
+			"actionId": "explore",
+			"effects": {
+				"ascensionpowera": -1,
+				"ascensionchangea": 1
+			},
+			"startdescription": "「鍛造の道を考え直しているのね？確信していないとダメよ。この炎は違う炎だけど、形態は同じくらい難しい――」",
+			"description": "スロチャナは距離を縮めると、私の顔をじっと見つめ、煙草の灰を弾いた。先端が静かに光る。彼女はくすくすと笑うとこういった。「よく考えてきて。次にクラブが開いている時に私に会いにいらっしゃい。その時に詳しい話をしましょう」",
+			"linked": [
+				{
+					"id": "L_desire_addmothtrack",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_ecdysis_cantswitchtochangefromenlightenment",
+			"label": "悟りではなく、変化を追求する",
+			"requirements": {
+				"ascensionenlightenmenta": 1
+			},
+			"actionId": "explore",
+			"startdescription": "「見張り番の道を考え直しているの？良かった。でも、まだまだ道のりは長いわよ」",
+			"description": "視線はそのままに、スロチャナは首を振った。「自分が何であるかを忘れちゃダメよ」[変化を追求したいなら、スロチャナに話しかける前に誘惑の夢を見る。]"
+		},
+		{
+			"id": "A_ecdysis_alreadyonchange",
+			"label": "これからの形態",
+			"actionId": "explore",
+			"requirements": {
+				"changemarks": 1
+			},
+			"startdescription": "「仕事を始める準備はできた？なんでこんなところで時間を無駄にしてるのよ」 [クラブで契約を使って踊る。]",
+			"description": "「ええ、あなたが何をしたいかは分かっているわ」。彼女は隣に立つ背の高い男性を指さした。「アグディスティス氏もよ。ダンスに参加するには、来るのが遅すぎたわ。次は時間通りに来るのよ」"
+		},
+		{
+			"id": "A_ecdysis_cantswitch",
+			"label": "変えるには遅すぎる",
+			"actionId": "explore",
+			"requirements": {
+				"desire": 1
+			},
+			"comments": "Need the desire requirement so we only fall through to this if there's an incompatible desire.",
+			"startdescription": "「まさか。あなたはあなたよ。不可能よ」",
+			"description": "「聞いてる？不可能な話よ。成功するかもしれないし失敗するかもしれないけど、根本的に変わることはできないわ」。そう言うと彼女は火のついたタバコを暗闇へと弾き飛ばした。「激しく夢を見ることね」"
+		},
+		{
+			"id": "ecdysisjobupgradehint_maxedout",
+			"label": "究極のステップ？",
+			"actionId": "work",
+			"startdescription": "すでに、一番難しいダンスを踊っている。",
+			"comments": "Hint appears if we have max skill and don't qualify for an ecdysijob upgrade",
+			"requirements": {
+				"ecdysijob": 1,
+				"healthskill": 4
+			},
+			"craftable": true,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisjobupgrade_toc_hint",
+			"label": "スロチャナに自分の実力を披露する？",
+			"actionId": "work",
+			"startdescription": "スロチャナは、手足の動きや、腰の柔軟性を確認した。「まだまだよ」と彼女は言う。[次に進むには、体力スキルを最高レベルまで上げて、優美さに磨きをかける。]",
+			"requirements": {
+				"dancerjobecdysisb": 1,
+				"healthskill": 2
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisjobupgradehint",
+			"label": "難しいステップ？",
+			"actionId": "work",
+			"startdescription": "観客の身分が上がれば上がるほど、過酷な踊りが求められる。アグディスティス氏とスロチャナが、上を目指すことを許可してくれる前に、自分の身体が負荷に耐えられることを証明しなくてはいけない。[好印象を与えるために体力スキルを向上させる。]",
+			"requirements": {
+				"ecdysijob": 1,
+				"healthskill": 1
+			},
+			"craftable": true,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisjobupgrade_tob",
+			"label": "アグディスティス氏に自分の実力を披露する",
+			"actionId": "work",
+			"startdescription": "クラブの奥にある、赤いフェルト張りの扉がついた部屋で披露される過酷な踊りを踊る覚悟はできた。アグディスティス氏が私の適性を判断してくれるだろう。",
+			"description": "アグディスティス氏は、長く美しい手を組んで、愛想よく微笑んでいた。彼は念のために、私の血をほんの少しだけ採ってくれる。そうすると、すべての準備が整った。",
+			"requirements": {
+				"dancerjobecdysisa": 1,
+				"healthskill": 2
+			},
+			"effects": {
+				"dancerjobecdysisa": -1,
+				"dancerjobecdysisb": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisjobupgrade_toc",
+			"label": "スロチャナに自分の実力を証明する",
+			"actionId": "work",
+			"startdescription": "特別な日だけに披露されるダンスを踊る覚悟ができたと思う。スロシャナが私をクラブの最上階の部屋に招待してくれた。そこは窓のある屋根裏部屋で、彼女が鍵や宝石、トロフィーを保管しているところだ。私が踊り始める前に、彼女が象牙の器に入ったワインを持ってきてくれる。濃厚で甘みのあるワインを飲むと、脳内に新しい思考が湧いてきた。翼のように空気が叩きつけられるが、衣装を脱いでも寒さを感じない。",
+			"description": "「あなたなら大丈夫ね」とスロチャナ・アマヴァシャが言う。彼女はいつも通りに私をじろじろと見つめ、「『変化の部屋』にようこそ」と続けた。「もうすぐよ。もうすぐなの。あなたのことを姉に話したほうが良いのかもしれないわ」",
+			"requirements": {
+				"dancerjobecdysisb": 1,
+				"skillhealthd_grace": 1
+			},
+			"effects": {
+				"dancerjobecdysisb": -1,
+				"dancerjobecdysisc": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdanceclublantern_generichint",
+			"label": "ここでもない、あれでもない",
+			"actionId": "work",
+			"startdescription": "アグディスティス氏は形の良い頭を振った。彼の年老いた目はいつも悲しそうなのに、今は陽気だ。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"lantern": 1
+			},
+			"craftable": true,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisdanceclub_generichint",
+			"label": "舞台が待っている",
+			"actionId": "work",
+			"startdescription": "アグディスティス氏が、楽屋から舞台まで案内してくれる。彼自身もかつてはダンサーだった。今でも彼の死性や仕草は、ダンサーのものだ。しかし、太ももに傷を負ったことで、彼は舞台に立つことを舞台を諦めざるを得なくなったのだという。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1
+			},
+			"craftable": true,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisdance_generichint",
+			"label": "夜と夜",
+			"actionId": "work",
+			"startdescription": "エクディシスクラブは月が形を変える時のリズムに合わせて開くそうだ。新月の夜には必ず開店しているが、それ以外の日にも営業している。",
+			"requirements": {
+				"ecdysijob": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"hintonly": true
+		},
+		{
+			"id": "ecdysisdance_sendingheartg",
+			"label": "最後のダンス",
+			"actionId": "work",
+			"startdescription": "アグディスティス氏が話すことはごくまれだが、彼の声は非常に美しく、アルトフルートのような優しい響きでだ。「キングスキンゲートを通るのに必要なものはほぼ揃ったね」と彼は言う。そして彼はあなたの目を見つめて「誰かが鍵を貸しに来るだろう」と言った。「彼女の手を取ってはいけない。彼女の足元も見てはいけない。彼女に飲み物をあげてはいけない」。そういうと彼は、とても静かに涙を流し始めた。「痛むはず。彼女を愛しているんだ」",
+			"description": "踊りが終わり、私の体が傷つき引き裂かれ、アグディスティス氏の涙が私のボロボロになった肉体に温かく触れると、私の影は牙を持つ大きな獣の影となった。「早く行け」とアグディスティス氏は言う。「早く寝なさい。スロシャナ嬢はすでにマリネット嬢を呼ばれた。彼女があなたの皮を剥ぐことになるだろう」",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 18,
+				"ascensionchangeg": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingheartg": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"aspects": {
+				"damagehealth": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "ecdysisdance_sendingmothheartg",
+					"chance": 100
+				},
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothg",
+			"label": "最後のダンス",
+			"actionId": "work",
+			"startdescription": "スロチャナが私の最後のパフォーマンスを見に来てくれた。「もうすこしね。あなたが通らなくてはいけない扉の鍵は持っていないけど、私の姉が――私たちの中で最年長で、まだ生きている（人間として生きているわけではないけど）姉――夢の中で鍵を私に来るわ。あなたと彼女のために言っておくけど、彼女の顔を見てはダメよ」\n\nそういうとスロチャナはタバコに火をつけ、「痛くなるわよ」と愉快そうに言った。",
+			"description": "踊りが終わり、頭が混乱し、感情が蛇のように頭を上げ始めると、何が現実で何が現実でないのかがはっきりしなくなってきた。スロチャナは実在している、はずだ。鏡に映る自分の姿――雌鹿の姿――は確実に本物だ。「早くいくのよ」とスロチャナは言う。私の肩を掴むと、蛾の羽根のようにそっとキスをしてくれた。彼女の唇は冷たい。彼女の息は腐肉の匂いがする。彼女の瞳は美しい夜のようだ。これは現実なのだろうか？",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 18,
+				"ascensionchangeg": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothg": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "ecdysisdance_sendingmothheartg",
+					"chance": 100
+				},
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothheartg",
+			"label": "最後のダンス",
+			"actionId": "work",
+			"startdescription": "スロチャナとアグディスティス氏が、最後のパフォーマンスを見に来てくれた。「もう少しね」と彼女は言うと眉を寄せる。「どうかしら......でも心を決めたのよね。森での幸運を祈るわ」と言うと、スロチャナはタバコに火をつけた。そして彼女は「痛むわよ」と、面白おかしく付け加える。彼女の後ろで、アグディスティス氏があなたの名前を一度だけ、そっと言った。彼の声はとても美しく、アルトフルートのような優しい響きだった。",
+			"description": "踊りが終わり、頭が混乱し、感情が蛇のように頭を上げ始めると、何が現実で何が現実でないのかがはっきりしなくなってきた。スロチャナは実在している、はずだ。鏡に映る自分の姿――角の生えた獣の姿――は確実に本物だ。「早くいくのよ」とスロチャナは言う。私の肩を掴むと、蛾の羽根のようにそっとキスをしてくれた。彼女の唇は冷たい。彼女の息は腐肉の匂いがする。彼女の瞳は夜の鏡のようだ。これは現実なのだろうか？",
+			"requirements": {
+				"desiremoth_track": 3,
+				"desireheart_track": 3
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothheartg": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "ecdysisdance_sendingheartf",
+			"label": "エクシディシスクラブで働く：蒼白の彼方へ",
+			"actionId": "work",
+			"startdescription": "この踊りは裸で踊る。私の体を白く塗るために、アグディスティス氏が楽屋で合流してくれた。彼は涙を流している。",
+			"description": "客席は暗くて静かだ。1つの舞台照明がが私の動きを追う。誰も私を見ていない可能性もあるが、照明がゆっくりと消えていき、私が最後に落ちていくところ、白い鳥が私の口から飛び立ち夜へと消えていくところを、誰も見ていないわけはないだろう。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 15,
+				"ascensionchangef": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingheartf": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothf",
+			"label": "エクシディシスクラブで働く：蒼白の彼方へ",
+			"actionId": "work",
+			"startdescription": "このダンスのために、私の残りの毛をすべて取り除かなければならない――剃るのではなく、ハサミで慎重に1本も残さず切るのだ。スロチャナが切ってくれることになった。私が動いたりすれば、彼女は唸り声をあげ、ハサミの先で突いてくる。「本当は、歯を削らないといけないの」とスロチャナは物思いにふけるように言った。「でも時間がないから、強く噛むのよ」。そう言うと彼女は、毛が1本も残っていない私の尻を叩いた。もう行かなくては。",
+			"description": "このダンスにはパートナーはいない。観客は、涙を流し、壁を叩きながら走り回っている生贄だけだ。私は椅子をひっくり返し、瓶をたたき割りながら、生贄を追いかけた。私の歯が生贄の首に食い込む。血の中から狼の姿をした自分が立ち上がった。目を閉じていても、太陽が昇るのを見つめるように、それが見える。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 15,
+				"ascensionchangef": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothf": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendinghearte",
+			"label": "エクシディシスクラブで働く：新たな高み",
+			"actionId": "work",
+			"startdescription": "今夜はスロチャナ自身が私に羽毛の衣装を着せに来てくれた。「これ以上、上に行ったことはないわ。昔の姿でもね。結局違う道を使って家にたどり着いたのよ」と彼女は明かした。そしてスロチャナは満足げに私の腰を揉む。至近距離で見ると彼女の歯は、蛇の牙のように曲がっていた。「でも、あなたなら最後までやってくれると思うわ。そろそろ姉妹たちに、あなたが来るって知らせないと。さあ早くいって、私たちを驚かせてちょうだい。マンサスもいいけど、私は稼げるところにいたいわ」",
+			"description": "今夜の舞台を観に来たのは、男3人と女3人、アグディスティス氏だけ。彼は観客の支払いを受け取るためそこにいる。私は、不思議な形をした７つの穴が開いている杉の笛の音色に合わせて踊る。演奏しているのはスロッチャナ自身だ。天窓は大きく開いている――寒い夜だが、それを忘れるほど夢中になって踊った。もう1人の私が夜空に舞い上がると、観客からの拍手はなく、ただ賛同の呟きが聞こえてきただけだった。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 12,
+				"ascensionchangee": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendinghearte": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothe",
+			"label": "エクシディシスクラブで働く：新たな高み",
+			"actionId": "work",
+			"startdescription": "今夜はスロチャナ自身が私に羽毛の衣装を着せに来てくれた。「ここまで来たことはあるけど、これ以上、上に行ったことはないわ。結局違う道を使って家にたどり着いたのよ」と彼女は明かした。そしてスロチャナは満足げに私の腰を揉む。至近距離で見ると彼女の歯は、蛇の牙のように曲がっていた。「でも、あなたなら最後までやってくれると思うわ。そろそろ姉妹たちに、あなたが来るって知らせないと。さあ早くいって、私たちを驚かせてちょうだい。マンサスもいいけど、私は稼ぎたいわ」",
+			"description": "今夜の舞台を観に来たのは、男3人と女3人、アグディスティス氏だけ。彼は観客の支払いを受け取るためそこにいる。私は、不思議な形をした７つの穴が開いている杉の笛の音色に合わせて踊る。演奏しているのはスロッチャナ自身だ。天窓は大きく開いている――寒い夜だが、それを忘れるほど夢中になって踊った。もう1人の私が夜空に舞い上がると、観客からの拍手はなく、ただ賛同の呟きが聞こえてきただけだった。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 12,
+				"ascensionchangee": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothe": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingheartd",
+			"label": "エクシディシスクラブの仕事：希少な追求",
+			"actionId": "work",
+			"startdescription": "今夜、私は淡いあずき色の衣装を着て狐の仮面をかぶっている。ハンターたちは飛びつくものが必要だろうから、後ろには尻尾をつけた。今夜、私は1人で踊るが1人ではない。幕の向こうを覗くと、多くの観客が席を立っていた。残った観客たちは辛抱強く椅子に座り、赤と黒に身をまとった付き人たちに縛られている。",
+			"description": "音楽が軽快なクイックステップのリズムになると、私は舞台から飛び出し、客席の間を歩き回った。観客は大声をあげ、私が通り過ぎると、椅子を揺らして手を伸ばしてくる。私の尻尾が指の間に触れると1人の観客が床に倒れ......もう1人が尻尾を掴んで奪い取った。付き人たちが彼を舞台裏に連れて行ったから、賞品か何かが与えられるのだろう。拍手喝采の中、私はクラブを抜け出した。尻尾を掴んだ者だけが、もう1人の私が仮面とあずき色の衣装を着て、綺麗な尻尾をつけたまま去っていくのを目撃した。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 10,
+				"ascensionchanged": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingheartd": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothd",
+			"label": "エクシディシスクラブの仕事：希少な追求",
+			"actionId": "work",
+			"startdescription": "今夜、私は淡いあずき色の衣装を着て狐の仮面をかぶっている。ハンターたちは飛びつくものが必要だろうから、後ろには尻尾をつけた。今夜、私は1人で踊るが1人ではない。幕の向こうを覗くと、多くの観客が席を立っていた。残った観客たちは辛抱強く椅子に座り、赤と黒に身をまとった付き人たちに縛られている。",
+			"description": "音楽が軽快なクイックステップのリズムになると、私は舞台から飛び出し、客席の間を歩き回った。観客は大声をあげ、私が通り過ぎると、椅子を揺らして手を伸ばしてくる。私の尻尾が指の間に触れると1人の観客が床に倒れ......もう1人が尻尾を掴んで奪い取った。付き人たちが彼を舞台裏に連れて行ったから、賞品か何かが与えられるのだろう。拍手喝采の中、私はクラブを抜け出した。尻尾を掴んだ者だけが、もう1人の私が仮面とあずき色の衣装を着て、綺麗な尻尾をつけたまま去っていくのを目撃した。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 10,
+				"ascensionchanged": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothd": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingheartc",
+			"label": "エクシディシスクラブの仕事：別れる影",
+			"actionId": "work",
+			"startdescription": "猫の仮面をかぶって蛇の格好をしたパートナーと踊ることになった。私の黒い手袋の指先は鋼色に染まっている。蛇のパートナーの動きが遅すぎれば、その肌に痕をつけるだろう。向こうの仮面には牙がついているから、キスをするときは気をつけなくてはいけない。",
+			"description": "優美な曲線を描いて、私は自分の影から足を踏み出す。私は黒猫。丸まって力を温存している。気が済むまで、人目につかないように動く。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 8,
+				"ascensionchangec": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingheartc": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothc",
+			"label": "エクシディシスクラブの仕事：別れる影",
+			"actionId": "work",
+			"startdescription": "猫の仮面をかぶって蛇の格好をしたパートナーと踊ることになった。私の黒い手袋の指先は鋼色に染まっている。蛇のパートナーの動きが遅すぎれば、その肌に痕をつけるだろう。向こうの仮面には牙がついているから、キスをするときは気をつけなくてはいけない。",
+			"description": "優美な曲線を描いて、私は自分の影から足を踏み出す。私は黒猫。丸まって力を温存している。気が済むまで、人目につかないように動く。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 8,
+				"ascensionchangec": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothc": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingheartb",
+			"label": "エクシディシスクラブの仕事：立ち上がる毒蛇",
+			"actionId": "work",
+			"startdescription": "今夜は、舞台に蛇を連れてきて一緒に踊ることにした。私体も、顔に鱗のついた仮面をつけて、蛇のように踊る。舞台は光に包まれ、空気は銀色の霧に包まれているが、うなじには汗が流れている。今夜は月のために踊る。",
+			"description": "ダンスのクライマックスで私は発作を起こした。胸の痙攣は毒蛇となり体から出ていくまで続く。それは、私の仮面の口の部分から病のように流れ込み、体内を巡り、舞台から消えていった。観客から喝采が沸き起こる。私は肩を上下させ、よろめきながら逃げ出した。お互いの覚悟が出来たら、蛇が来た道を戻ってくることは分かっている。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 6,
+				"ascensionchangeb": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingheartb": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_sendingmothb",
+			"label": "エクシディシスクラブの仕事：立ち上がる毒蛇",
+			"actionId": "work",
+			"startdescription": "今夜は、舞台に蛇を連れてきて一緒に踊ることにした。私体も、顔に鱗のついた仮面をつけて、蛇のように踊る。舞台は光に包まれ、空気は銀色の霧に包まれているが、うなじには汗が流れている。今夜は月のために踊る。",
+			"description": "ダンスのクライマックスで私は発作を起こした。胸の痙攣は毒蛇となり体から出ていくまで続く。それは、私の仮面の口の部分から病のように流れ込み、体内を巡り、舞台から消えていった。観客から喝采が沸き起こる。私は肩を上下させ、よろめきながら逃げ出した。お互いの覚悟が出来たら、蛇が来た道を戻ってくることは分かっている。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 6,
+				"ascensionchangeb": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"sendingmothb": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_ascensionlessonmotha",
+			"label": "エクシディシスクラブの仕事：肌の激しさ",
+			"actionId": "work",
+			"startdescription": "今夜、私たちは緑色のシルクのスカーフにしっかりと包まれている。いつも以上に激しく衣装を脱いでいかないといけない。舞台に上がる前に、アグディスティス氏が口のない楕円形の仮面をくれた。春の葉っぱのような緑色をした仮面だ。つける前に一瞬躊躇してしまった。仮面の内側には土壌が塗りつけられている。",
+			"description": "1枚目のスカーフを取ると、かさぶたを剥がしてしまった時のような痛みが体を走った。それから段々と楽になっていったが、少しだけよろめいてしまった。仲間が心配そうにこちらを見つめる。私の顔は仮面で隠れていないから見えない。最後に私たちは円になって踊り、最後の1枚を取ると、地面から根を引き抜くような痛みを感じた。仮面を外す勇気はない。その後、私の肌には痕は残っていなかった。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 4,
+				"ascensionchangea": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"ascensionlessonmotha": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_ascensionlessonhearta",
+			"label": "エクシディシスクラブの仕事：肌の激しさ",
+			"actionId": "work",
+			"startdescription": "今夜、私たちは緑色のシルクのスカーフにしっかりと包まれている。いつも以上に激しく衣装を脱いでいかないといけない。舞台に上がる前に、アグディスティス氏が口のない楕円形の仮面をくれた。春の葉っぱのような緑色をした仮面だ。つける前に一瞬躊躇してしまった。仮面の内側には土壌が塗りつけられている。",
+			"description": "1枚目のスカーフを取ると、かさぶたを剥がしてしまった時のような痛みが体を走った。それから段々と楽になっていったが、少しだけよろめいてしまった。仲間が心配そうにこちらを見つめる。私の顔は仮面で隠れていないから見えない。最後に私たちは円になって踊り、最後の1枚を取ると、地面から根を引き抜くような痛みを感じた。仮面を外す勇気はない。その後、私の肌には痕は残っていなかった。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 4,
+				"ascensionchangea": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"ascensionlessonhearta": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_ascensionlessonheart_fallthrough",
+			"label": "エクシディシスクラブの仕事：雷、もう少し",
+			"actionId": "work",
+			"startdescription": "今夜、私たちは仮面をかぶって、祝うかのように動く。アグディスティス氏はじっと見つめている。",
+			"description": "今夜は、あともう少しで何かが起こりそうな気配がする――それはまるで、雷が鳴り響き、山の松のように爽やかな空気が流れる瞬間のよう。しかし、仮面以外の全てを脱ぎ捨てても、聞こえてきたのは拍手の音だけだった。[もう少し心臓を足すと何かを達成できる。欲望をさらに進化させるほど、必要な心臓の数が増える。]",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 3,
+				"changemarks": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"healthexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_ascensionlessonmoth_fallthrough",
+			"actionId": "work",
+			"label": "エクシディシスクラブの仕事：降伏、もう少し",
+			"startdescription": "今夜、私たちは仮面をかぶって、祝うかのように動く。スロチャナは目を伏せて、舞台袖で待っている。",
+			"description": "今夜は、あともう少しで何かが起こりそうな気配がする――それはまるで枝を揺する風のような音色、観客の瞳に揺れる炎のよう。しかし、仮面以外の全てを脱ぎ捨てても、聞こえてきたのは拍手の音だけだった。[もう少し蛾を足すと何かを達成できる。欲望をさらに進化させるほど、必要な蛾の数が増える。]",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 3,
+				"changemarks": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_genericheart",
+			"label": "エクディシスクラブでの刺激的な仕事",
+			"actionId": "work",
+			"startdescription": "空気が震える。舞台上の仲間は、肉とベルベットの電撃のようになっている。アグディスティス氏がドラムを鳴り響かせる。さあ、始めよう。",
+			"description": "ミュージシャンが華々しく締めくくる。観客の中には、まるで眠りから覚めたかのように動き出す人もいれば、拍手をする人もいた。顔を引きつらせながら、人混みの中を抜けて出口に向かう人もいた。いつもそういう人が1人はいる。私たちが舞台から飛び出すと、アグディスティス氏がウインクをしてくれた。そして、そこに現れたのはスロチャナだった。彼女は手際の良い手つきで、行き過ぎたことをした私たちに包帯を巻いてくれる。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 3
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_genericmoth",
+			"actionId": "work",
+			"label": "エクディシスクラブでの刺激的な仕事",
+			"startdescription": "空気が煙に包まれている。舞台上の仲間は、ばたばたと震える肉とベルベットのように動いている。アグディスティス氏がドラムを鳴り響かせる。さあ、始めよう。",
+			"description": "ミュージシャンが華々しく締めくくる。観客の中には、まるで眠りから覚めたかのように動き出す人もいれば、拍手をする人もいた。顔を引きつらせながら、人混みの中を抜けて出口に向かう人もいた。いつもそういう人が1人はいる。私たちが舞台から飛び出すと、アグディスティス氏がウインクをしてくれた。そして、そこに現れたのはスロチャナだった。彼女は手際の良い手つきで、行き過ぎたことをした私たちに包帯を巻いてくれる。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 3
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"deckeffect": {
+				"ecdysisrewards": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passionexhausted": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_genericheart_rote",
+			"label": "エクディシスクラブでの刺激的ではない仕事",
+			"actionId": "work",
+			"startdescription": "7人で舞台に立つ。頭を後ろに倒すとスカーフが浮いた。しかし、何かが足りないのは分かっている。青い煙の中、観客の顔がこちらを向いて、カクテルと仲間の方へと戻っていく。舞台上を漂う煙の中で、私は咳を抑えた。",
+			"description": "アグディスティス氏は、他のミュージシャンと一緒にドラムの前に座っている。演奏が終わると彼の視線を感じる。がっかりしているようだが、彼が意地悪なことを言わないのを私は知っている。おそらく何も言わないだろう。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"heart": 2
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "health_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"fatigue": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "ecdysisdance_genericmoth_rote",
+			"label": "エクディシスクラブでの刺激的ではない仕事",
+			"actionId": "work",
+			"startdescription": "7人で舞台に立つ。頭を後ろに倒すとスカーフが空中で揺れる。しかし、何かが足りないのは分かっている。青い煙の中、観客の顔がこちらを向いて、カクテルと仲間の方へと戻っていく。舞台上を漂う煙の中で、私は咳を抑えた。",
+			"description": "スロチャナは舞台裏に立ち、肘に手を添えながら、通り過ぎる私を睨みつけた。「もっと期待していたのに」。そう言った彼女の声は尖っていた。",
+			"requirements": {
+				"ecdysijob": 1,
+				"locationcabaret": 1,
+				"moth": 2
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "passion_expel_to_scar",
+					"chance": 30,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"passion": 1
+						}
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work_changedesire",
+			"label": "どこまでも自分の欲望に従う",
+			"actionId": "work",
+			"startdescription": "夜の外出......",
+			"description": "翌朝、太陽が昇ってくると、私は煙突の上に立っていて、夜明けの街を見下ろしていることに気づく。髪は乱れ、靴は誰かに盗まれたのか、ここにはない。",
+			"requirements": {
+				"changemarks": 1,
+				"ecdysijob": -1,
+				"job": -1,
+				"dance": -1,
+				"location": -1
+			},
+			"effects": {
+				"glimmering": 1,
+				"vitality": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "work_changedesire_restlessness",
+					"chance": 70
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work_changedesire_restlessness",
+			"label": "どこまでも自分の欲望に従う",
+			"actionId": "work",
+			"description": "神父と白ワインを飲み、埠頭で犬の喧嘩を見て、マネキンでいっぱいの部屋でシルエットをスケッチされた。どれも私が望んだこのではなかった。",
+			"effects": {
+				"restlessness": 1
+			}
+		}
+	]
+}

@@ -1,0 +1,1104 @@
+{
+	"recipes": [
+		{
+			"id": "explorevaultperil_treacherousground_encounter",
+			"actionId": "explore",
+			"label": "危険な地面",
+			"startdescription": "飲み込む泥、目を欺く亀裂。大地は飢えている。道を照らすには灯りが、道を作るには鍛造が必要だ。",
+			"requirements": {
+				"peril_treacherousground": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultperil_treacherousground_highlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_treacherousground_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_treacherousground_midlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_treacherousground_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_treacherousground_lowlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_treacherousground_lowforge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_highlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 10
+			},
+			"label": "道を導く見張り番に助けを乞う",
+			"startdescription": "見張り番のおかげで、はっきりと見えるようになるだろう。そうすればもう迷うことはないはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_midlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 5
+			},
+			"label": "光を照らす見張り番に助けを乞う",
+			"startdescription": "見張り番は我々のランプに力を貸してくれるだろう。そして、どこに足を踏み入れてはいけないかを教えてくれるだろう。多分。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_lowlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 1
+			},
+			"label": "無慈悲な見張り番に助けを乞う",
+			"startdescription": "見張り番は障害物にも我々にも慈悲を示さない。運が良ければ乗り切れるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "永遠の均衡のマドゥルガーダに助けを乞う",
+			"startdescription": "冬と鍛造の時の神であるマドゥルガーダを召喚する。自分たちで道を切り開くんだ。ほぼ確実に成功するだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "鎮圧と静寂のマドゥルガーダに助けを乞う",
+			"startdescription": "マドゥルガーダは、鍛造と冬の時の神だ。彼女の力が、不安定な大地を鎮めるかもしれない。きっと大丈夫だ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "太陽の前に現われるマドゥルガーダに助けを乞う",
+			"startdescription": "マドゥルガーダは、鍛造と冬の時の神だ。鍛造は力を貸してくれるが、霧が立ち昇ってまとわりついている。乗り切れるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_success",
+			"actionId": "explore",
+			"label": "危険な地面を無事に移動する",
+			"startdescription": "泥まみれになり棘だらけになっているが、なんとか乗り切った。",
+			"description": ".",
+			"effects": {
+				"peril_treacherousground": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_treacherousground_failure",
+			"actionId": "explore",
+			"label": "大地は飢えている",
+			"startdescription": "一見安全な経路が、実は吸い込む罠であったことが判明した。迂回して別のルートを探そう。",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_forest_encounter",
+			"actionId": "explore",
+			"label": "危険な森",
+			"startdescription": "木々の下の暗闇は今のところ静かだが、ここにいるのは我々だけではない。蛾の属性が我々を導くか、鍛造の属性が道を切り開いてくれるだろう。",
+			"requirements": {
+				"peril_forest": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultperil_forest_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_lowforge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "森の木の間を探し求める、蛾に助けを乞う",
+			"startdescription": "マンサスの下の森は、ここよりも暗い。蛾が我々の足取りを導いてくれる。成功する可能性は高い。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "まだらな蛾に助けを乞う",
+			"startdescription": "影が道にまだら模様を映し出す。その道は蛾が与えてくれたものなのだろう。多分そうだ。おそらく、我々は乗り切れるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "頭蓋骨の中を叩き割る蛾に助けを乞う",
+			"startdescription": "我々は危険を冒して蛾を呼び出す。森は羽ばたく翼と想像上の目で脈打つ。乗り切れるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "鋼と火",
+			"startdescription": "鍛造は独創的で、冷酷だ。ほぼ確実に乗り切れるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "斧とランプ",
+			"startdescription": "森に囲まれているが、我々は現実的で、鍛造に強い魂の持ち主だ。おそらく大丈夫だろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "夕暮れの奮闘",
+			"startdescription": "鍛造の力を召喚し、道を切り拓いていく。困難な道のりだが、乗り切れるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_success",
+			"actionId": "explore",
+			"label": "「木漏れ日が......」",
+			"startdescription": "この先に何かがある。森を抜けられた。",
+			"description": ".",
+			"effects": {
+				"peril_forest": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_forest_failure",
+			"actionId": "explore",
+			"label": "深まる静寂",
+			"startdescription": "道を見失った。夕暮れの空に森がそびえ立つ。森の獣たちは沈黙しているが、時折彼らの目が見える。",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_mountains_encounter",
+			"actionId": "explore",
+			"label": "峠",
+			"startdescription": "荒々しい山頂は空に傷をつける。冬の属性は寒さから我々を守り、鍛造の属性は我々に道を与えてくれるだろう。どちらもなければ、遠征は失敗だ。",
+			"requirements": {
+				"peril_mountains": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultperil_mountains_highwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_midwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_lowwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_lowforge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_highwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 10
+			},
+			"label": "永遠の均衡のマドゥルガーダに助けを乞う",
+			"startdescription": "マドゥルガーダと呼ばれる時の神は、寒さの中家にいる。彼女はほぼ確実に、我々を落下から守ってくれるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_midwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 5
+			},
+			"label": "鎮圧と静寂のマドゥルガーダに助けを乞う",
+			"startdescription": "マドゥルガーダは冬に強い。雪崩から守ってくれるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_lowwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 1
+			},
+			"label": "太陽の前を行く神、マドゥルガーダに助けを乞う",
+			"startdescription": "夜明け前の数時間は、冬を知るマドゥルガーダと呼ばれる時の神々に捧げられた時間である。その間に起き上がり、彼女を召喚すれば守ってくれるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "登山家の道",
+			"startdescription": "我々は鍛造のスキルに精通している。ほぼ確実に乗り切れるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "探索者の道",
+			"startdescription": "我々は実用的で、鍛造に強い魂の持ち主だ。おそらく大丈夫だろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "さすらい人の道",
+			"startdescription": "鍛造の属性を持つ信奉者は有能で実用的だが、山には、鋭利な岩や凍てついた岩がある。厳しい道のりが待っているだろう。運が良ければ、乗り切れるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_success",
+			"actionId": "explore",
+			"label": "峠を越えて",
+			"startdescription": "凍てつくような寒さに震えながら、山を越えてきた。",
+			"description": ".",
+			"effects": {
+				"peril_mountains": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_mountains_failure",
+			"actionId": "explore",
+			"label": "猛烈な響き",
+			"startdescription": "土砂崩れや雪崩で引き返すこととなった。生き残れたら、別の道を試してみよう。",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_desert_encounter",
+			"actionId": "explore",
+			"label": "荒廃",
+			"startdescription": "地平線の彼方に広がる、巨大な茶褐色の炉。夜には冷たい星空の荒れ地となる。慎重に行かなくてはいけない。鍛造が道を切り開き、聖杯が喉の渇きを癒してくれるだろう。",
+			"requirements": {
+				"peril_desert": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultperil_desert_highgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_midgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_lowgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_lowforge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_highgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 10
+			},
+			"label": "真珠の神、双子の片割れと魔女に助けを乞う",
+			"startdescription": "双子の片割れと魔女なら、乾燥地帯でも我々を守ってくれるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_midgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 5
+			},
+			"label": "触れることのできない神、双子の片割れと魔女に助けを乞う",
+			"startdescription": "灼熱の太陽と蜃気楼から守ってもらえるように、双子の片割れと魔女に助けを乞おう。これで乗り越えられるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_lowgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 1
+			},
+			"label": "切り離すことはできない神、双子の片割れと魔女に助けを乞う",
+			"startdescription": "乾燥地帯の砂嵐の中でも離れ離れにならないように、双子の片割れと魔女に助けを乞おう。それで十分かもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "灼熱の道",
+			"startdescription": "鍛造のスキルが我々を守り、燃える岩からオアシスへと導いてくれるだろう。ほぼ確実に大丈夫だ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "乾いた道",
+			"startdescription": "我々は鍛造に強い、実用的な魂の持ち主だ。燃える岩からオアシスまでたどり着けるはずだ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "無慈悲な道",
+			"startdescription": "鍛造の属性を持つ信奉者は有能で実用的だが、ここは殺伐としている。なんとかなるかもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_success",
+			"actionId": "explore",
+			"label": "栄光の太陽",
+			"startdescription": "太陽が沈んでいく。我々が横切った荒涼とした風景を振り返ってみると夕方の光に照らされた全ての色が見えてくる。夜になり、星が輝く。風が顔を冷やす。前へ進もう。",
+			"description": ".",
+			"effects": {
+				"peril_desert": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_desert_failure",
+			"actionId": "explore",
+			"label": "怒りの太陽",
+			"startdescription": "毎日のように太陽が肌を引きつらせ、口を乾かし、頭に強烈な光を浴びせる。迷子になったのかもしれない。迷子になった可能性は高い。",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_sea_encounter",
+			"actionId": "explore",
+			"label": "夕方の島周辺の海",
+			"startdescription": "我々が航海する海は荒れていて、我々が求める島々は、未記録の歴史の隅々に隠されている。心臓か鍛造か、その両方が必要だ。",
+			"requirements": {
+				"peril_sea": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者のおかげで障害を乗り越えることができる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultperil_sea_highheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_midheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_lowheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_lowforge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_highheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 10
+			},
+			"label": "触れることのできない、双子の片割れと魔女に助けを乞う",
+			"startdescription": "嵐はサンダースキンのために吹き荒れ、双子の片割れのために鎮まる。正しい言葉があれば海を渡っても安全だ。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_midheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 5
+			},
+			"label": "切り離すことはできない、双子の片割れと魔女に助けを乞う",
+			"startdescription": "嵐が来ても、双子の片割れと魔女が乗組員と船の安全を確保してくれる。きっと。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_lowheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 1
+			},
+			"label": "真珠の神、双子の片割れと魔女に助けを乞う",
+			"startdescription": "双子の片割れと魔女は海から来たわけではないが、海辺を歩く。彼女たちのご加護があれば、十分かもしれない。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "船乗りの保証",
+			"startdescription": "我々は鍛造のスキルに精通している。ほぼ確実に乗り切れるだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "船乗りの強さ",
+			"startdescription": "我々は実用的で、鍛造に強い魂の持ち主だ。おそらく大丈夫だろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "船乗りの希望",
+			"startdescription": "鍛造の属性を持つ信奉者は有能で実用的だが、海は予測不可能だ。簡単には進めないだろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_success",
+			"actionId": "explore",
+			"label": "安全に海を渡る",
+			"startdescription": "波に打たれ、海に飛沫を浴び、太陽に灼かれ、塩に焼かれる。しかし、目的地にたどり着けた。",
+			"description": ".",
+			"effects": {
+				"peril_sea": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_sea_failure",
+			"actionId": "explore",
+			"label": "塩と玄武岩の迷宮",
+			"startdescription": "またもや嵐に見舞われた。近くまで来ているはずだが、島々は迷路のように入り組んでいて、我々が求める場所は海図には載っていない。",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		}
+	]
+}

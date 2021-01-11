@@ -1,0 +1,532 @@
+{
+    "recipes": [
+        {
+            "id": "summon_spirit_wintera_edge",
+            "label": "Call on the Cartographer of Scars to raise a corpse to half-life",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "corpse": 1,
+                "winter": 4,
+                "edge": 2,
+                "desire": -1
+            },
+            "aspects": {
+                "raiseshattered": 1
+            },
+            "startdescription": "A shattering force will infuse its flesh, so that it joins the Shattered Risen. I must begin the process. I will ready my hammer.",
+            "description": "The corpse lurches groaning to its feet: or what is left of its feet. I have conjured a Shattered Risen.",
+            "warmup": 60,
+            "craftable": true,
+            "comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+            "mutations": [
+                {
+                    "filter": "corpse",
+                    "mutate": "follower",
+                    "level": 0
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_wintera_moth",
+            "label": "Call on the Ring-Yew to raise a corpse to half-life",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "corpse": 1,
+                "winter": 4,
+                "moth": 2,
+                "desire": -1
+            },
+            "aspects": {
+                "raiseburgeoning": 1
+            },
+            "startdescription": "First I must plant the seeds: under the eyelids, under the tongue, in all the secret openings of the body. It will awaken as a Burgeoning Risen.",
+            "description": "The corpse sways to its feet. Its eyes struggle open. Sap trickles from its mouth. It burgeons; it has risen.",
+            "warmup": 60,
+            "craftable": true,
+            "comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+            "mutations": [
+                {
+                    "filter": "corpse",
+                    "mutate": "follower",
+                    "level": 0
+                }
+            ]
+        },
+        {
+            "id": "renew_spirit_wintera_edge",
+            "label": "Call on the Cartographer of Scars to renew a corpse's half-life",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "spirit_wintera_edge": 1,
+                "winter": 8,
+                "edge": 8,
+                "desire": -1
+            },
+            "aspects": {
+                "renewshattered": 1
+            },
+            "startdescription": "This is not really a rite of renewal - more of deferral. Winter can be delayed, but not denied.",
+            "description": "The processes of decay are retarded - the motile energies re-engaged. The corpse will walk another ten hundred steps before it fails.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "renew_spirit_wintera_moth",
+            "label": "Call on the Ring-Yew to renew a corpse's half-life",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "spirit_wintera_moth": 1,
+                "winter": 8,
+                "moth": 8,
+                "desire": -1
+            },
+            "aspects": {
+                "renewburgeoning": 1
+            },
+            "startdescription": "The new life within the corpse struggles to be free. I will contain it a little longer.",
+            "description": "The light in the corpse's eyes grows less wild. Its tendrils are quelled. For a moment, I think it will speak.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "summon_spirit_forgee_edge",
+            "label": "Summon one of the Name-emanations of the Forge of Days",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 5,
+                "forge": 10,
+                "lantern": 2,
+                "desire": -1
+            },
+            "extantreqs": {
+                "spirit_forgee_edge": -1,
+                "pre.spirit_forgee_edge": -1,
+                "spirit_forgee_edge.defunct": -1,
+                "spirit_forgee_edge.consumed": -1
+            },
+            "effects": {
+                "pre.spirit_forgee_edge": 1
+            },
+            "startdescription": "King Crucible will come only when the room glows with the aspect called Forge. He also requires a Lantern, for the light of the Glory that he claims to know.",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_forgee_edge.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_forgee_edge.success",
+            "label": "Summon one of the Name-emanations of the Forge of Days",
+            "actionid": "work",
+            "description": "He can hide in a candle-flame if he must. But here he is in all his bonfire pomp. After I speak with him, the skin of my face and hands will be pink as if from too much sun.",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_graile_edge",
+            "label": "Summon one of the Name-emanations of the Red Grail",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 5,
+                "grail": 10,
+                "forge": 2,
+                "desire": -1
+            },
+            "extantreqs": {
+                "spirit_graile_edge": -1,
+                "pre.spirit_graile_edge": -1,
+                "spirit_graile_edge.defunct": -1
+            },
+            "effects": {
+                "pre.spirit_graile_edge": 1
+            },
+            "startdescription": "Ezeem may enter only where the Grail's power is strong; and it will choose to enter only when invoked with the Forge, with which it has flirted so often. ",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_graile_edge.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_graile_edge.success",
+            "label": "Summon one of the Name-emanations of the Red Grail",
+            "actionid": "work",
+            "description": "So many rich aromas, like a feast upon the air! but first, and mostly, blood.",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_lanterne_secret",
+            "label": "Summon the mysterious Name known as the Baldomerian",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 5,
+                "lantern": 10,
+                "secrethistories": 2,
+                "desire": -1
+            },
+            "extantreqs": {
+                "spirit_lanterne_secret": -1,
+                "pre.spirit_lanterne_secret": -1,
+                "spirit_lanterne_secret.defunct": -1
+            },
+            "effects": {
+                "pre.spirit_lanterne_secret": 1
+            },
+            "startdescription": "A mighty force of Lantern to draw the Baldomerian's attention, and a teasing taste of secrets to bring her closer.",
+            "description": "The Baldomerian has the hunched shoulders of a scholar, the clear voice of a school-teacher, and the freckles of a traveller on the Continent. She lacks a shadow.",
+            "warmup": 60,
+            "craftable": true,
+            "comments": "Teresa doesn't struggle; she's always up for a chat"
+        },
+        {
+            "id": "summon_spirit_forgec_winter",
+            "label": "Summon a creature of smoky deception",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "forge": 6,
+                "winter": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_forgec_winter": 1
+            },
+            "startdescription": "Forge for the smoky spirit's summoning, Winter for its binding. It must know who will rule it.",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_forgec_winter.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_forgec_winter.success",
+            "label": "Summon a creature of smoky deception",
+            "actionid": "work",
+            "description": "Not all the Forge's children are bright. Its offcuts and its bastards gather in the Bounds like hammerscale in the cracks of a smithy floor. Here comes one now.",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_grailc_moth",
+            "label": "Summon one of the more bewildering creatures of the Red Grail",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "grail": 6,
+                "moth": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_grailc_moth": 1
+            },
+            "startdescription": "Grail for the Raw Prophet's source, and a little Moth, for its chaos-addiction.",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_grailc_moth.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_grailc_moth.success",
+            "label": "Summon one of the more bewildering creatures of the Red Grail",
+            "actionid": "work",
+            "description": "It enters the world one limb at a time, questing like a serpent, cawing like a crow, throbbing like a vein. It will cuddle close against my leg, if I let it, and afterwards I will have to dispose of my shoes.",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_lanternc_edge",
+            "label": "Summon a sharp-edged Lantern-thing",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "lantern": 6,
+                "edge": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_lanternc_edge": 1
+            },
+            "startdescription": "A Hint was once a living mortal, and then a dead one, and now it's something else. Their summoning requires Lantern, for the light which drew them to the Mansus, and Edge, for the striving they've endured in mirrors.",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_lanternc_edge.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_lanternc_edge.success",
+            "label": "Summon a sharp-edged Lantern-thing",
+            "actionid": "work",
+            "description": "The Hinter do not indulge themselves with showy entrances. A living gaze will shatter them. I know it's here, and that's enough for now.",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_heartc_edge",
+            "label": "Summon a creature of the Thunderskin",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "heart": 6,
+                "edge": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_heartc_edge": 1
+            },
+            "startdescription": "The Percussigant, merciless and merry! Heart will bring it, Edge will constrain it.",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_heartc_edge.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_heartc_edge.success",
+            "label": "Summon a creature of the Thunderskin",
+            "actionid": "work",
+            "description": "First the thump, the thump, the rattle and cry of the ceremonies it attends in the Wood. Now here it is, shouldering its way through the world's skin, like a clawed and ruthless uncle or a headless flapping bear.",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_winterd_edge",
+            "label": "Summon a servant of the Sun-in-Rags",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "winter": 8,
+                "edge": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_winterd_edge": 1
+            },
+            "startdescription": "A deep Winter's cold to name and draw the Maid-in-the-Mirror. Edge, to match her keen cruelty.",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_winterd_edge.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_winterd_edge.success",
+            "label": "Summon a servant of the Sun-in-Rags",
+            "actionid": "work",
+            "description": "The thing that was a woman has no expression of her own. The movements of her eyes and mouth always match mine, as if I were looking in a mirror. Her fingernails are sharp as glass.",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_winterb_heart",
+            "label": "Summon one of the Voiceless Dead",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "winter": 4,
+                "heart": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_winterb_heart": 1
+            },
+            "startdescription": "These are the Dead who do not descend or ascend, but who remain in the Mansus and dream of Winter. The power of Winter, along with a little of the Heart's warmth, will draw them here.",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_winterb_heart.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_winterb_heart.success",
+            "label": "Summon one of the Voiceless Dead",
+            "actionid": "work",
+            "description": "A dark shape limned with winter light. It will not speak, but its eyes are avid, looking, looking. The Dead always long for the world, eventually.",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summoninglosingcontrol",
+            "label": "Summoning: a Rebellious Spirit",
+            "actionid": "work",
+            "requirements": {},
+            "startdescription": "The summoning is struggling against my control! I could use Reason to dismiss it safely, which is always reliable. I could try to reassert control with Passion, which is not reliable. Or I could let what will happen, happen.",
+            "description": "It's escaped my control!",
+            "alt": [
+                {
+                    "id": "summoningshutitdown",
+                    "chance": 100
+                },
+                {
+                    "id": "summoningfightformastery",
+                    "chance": 100
+                }
+            ],
+            "slots": [
+                {
+                    "id": "Effort",
+                    "label": "Effort",
+                    "description": "I could use Reason to dismiss it safely, which is always reliable. I could try to reassert control with Passion, which is not reliable. Or I could let what will happen, happen.",
+                    "required": {
+                        "passion": 1,
+                        "reason": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "summoningescaped",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "summoningshutitdown",
+            "label": "Summoning: Sending it Home",
+            "actionid": "work",
+            "requirements": {
+                "reason": 1
+            },
+            "effects": {},
+            "aspects": {
+                "fatiguing": 1,
+                "killmanifesting": 1
+            },
+            "startdescription": "Pronounce the words of dismissal. Seal the circle tight. Erase every trace.",
+            "description": "It's gone. We are safe.",
+            "warmup": 10
+        },
+        {
+            "id": "summoningfightformastery",
+            "label": "Summoning: Contending for Mastery",
+            "actionid": "work",
+            "startdescription": "The things from outside the world have many weapons: knives and riddles, fire and despair. I have weapons of my own. [This will usually, but not always, work.]",
+            "description": "",
+            "requirements": {
+                "passion": 1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "summoningmasteryregained",
+                    "chance": 70
+                },
+                {
+                    "id": "summoningescaped",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "summoningescaped",
+            "label": "Summoning: a Breach!",
+            "actionid": "work",
+            "requirements": {},
+            "startdescription": "It's free!",
+            "description": "My summoning has escaped my control, where it'll wreak havoc, no doubt - ",
+            "warmup": 5,
+            "alt": [
+                {
+                    "id": "summoning_haunt_devourer",
+                    "chance": 100,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "manifesting": 1
+                        }
+                    }
+                },
+                {
+                    "id": "summoning_haunt_deceiver",
+                    "chance": 100,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "manifesting": 1
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "summoningmasteryregained",
+            "label": "Summoning: Mastery Regained!",
+            "actionid": "work",
+            "requirements": {},
+            "effects": {},
+            "startdescription": "I'm succeeding!",
+            "description": "My summoning will obey my wishes - for now.",
+            "warmup": 10
+        }
+    ]
+}

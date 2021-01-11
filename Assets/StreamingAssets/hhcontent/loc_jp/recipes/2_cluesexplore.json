@@ -1,0 +1,96 @@
+{
+	"recipes": [
+		{
+			"id": "explore_movehq_hint",
+			"label": "場所を変える？",
+			"actionId": "explore",
+			"requirements": {
+				"hq.potential": 1
+			},
+			"startdescription": "変えたければ、ここに拠点を移すことができる。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "explorevault_hint_sending",
+			"label": "第2の自分？",
+			"actionId": "explore",
+			"requirements": {
+				"vault": 1,
+				"sending": 1
+			},
+			"startdescription": "この遠征が成功すれば「私ではない私」がそこにいて、形態を実行することになる。[成功すれば通常の報酬を得ることができ、変化の昇天も進行する。]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "explorevault_hint_addfunds",
+			"label": "遠征の準備？",
+			"actionId": "explore",
+			"requirements": {
+				"vault": 1,
+				"follower": 1
+			},
+			"startdescription": "1つ以上の資金を追加すれば、遠征を始められる。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "explorevault_hint_addfollower",
+			"label": "遠征の準備？",
+			"actionId": "explore",
+			"requirements": {
+				"vault": 1,
+				"funds": 1
+			},
+			"startdescription": "信奉者を1人追加すれば、遠征を始められる。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終了となる。]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "explorevault_hint",
+			"label": "遠征の準備？",
+			"actionId": "explore",
+			"requirements": {
+				"vault": 1
+			},
+			"startdescription": "ここに遠征隊を派遣して、本や財宝や魔法の道具を見つけることもできるが、それには、派遣可能な信奉者たちと、彼らを供給するための資金が必要だ。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "exploresulochanacabaret_hint",
+			"label": "古い形態と新しい形態",
+			"actionId": "explore",
+			"requirements": {
+				"locationcabaret": 1,
+				"sulochana": 1
+			},
+			"startdescription": "[ダンサー拡張版を持っている場合は、この組み合わせを使ってエクシディシスクラブに就職し、変化の昇天を追求することができる]。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "explore.searchgraveyard.hint",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery": 1
+			},
+			"label": "墓掘？",
+			"startdescription": "自分の力か友人の力を使う必要がある。",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "explore.searchgraveyard.closing.hint",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery.closing": 1
+			},
+			"label": "慎重な墓掘？",
+			"startdescription": "自分の力か友人の力を使う必要がある。",
+			"craftable": false,
+			"hintonly": true
+		}
+	]
+}

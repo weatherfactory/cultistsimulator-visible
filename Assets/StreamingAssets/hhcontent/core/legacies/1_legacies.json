@@ -1,0 +1,206 @@
+{
+    "legacies": [
+        {
+            "id": "aspirant",
+            "label": "The Aspirant",
+            "description": "June the 28th, once again.",
+            "startdescription": "Alone in this chilly city, with my useless education, and my dreams.\nWhat now? Could I become something more?",
+            "effects": {
+                "introjob": 1
+            },
+            "image": "aspirant",
+            "fromending": "default",
+            "availableWithoutEndingMatch": true,
+            "startingverbid": "work"
+        },
+        {
+            "id": "brightyoungthing",
+            "label": "The Bright Young Thing",
+            "description": "Endowed from birth with wealth and talent. A life of ease, comfort and delight stretches ahead like an amber carpet.",
+            "startdescription": "I missed the dawn. I generally do. There'll be plenty more.",
+            "effects": {
+                "legacybytjob": 1,
+                "health": 1
+            },
+            "image": "byt",
+            "fromending": "deathofthebody",
+            "availableWithoutEndingMatch": true,
+            "startingverbid": "work"
+        },
+
+        {
+            "id": "physician",
+            "label": "The Physician",
+            "description": "As the patient descended into the final delirium, I made copious notes. In the buzzing heat of the night, I re-read those notes, and they began, at last, to make a kind of sense.",
+            "startdescription": "Today is the day I return to my post at the Institute. I have a position, and a reputation. That should mean something; but I am beginning to dream of something else.",
+            "effects": {
+                "legacyphysicianjob": 1,
+                "reason": 1
+            },
+            "image": "physician",
+            "fromending": "deathofthebody",
+            "availableWithoutEndingMatch": true,
+            "startingverbid": "work"
+        },
+        {
+            "id": "detective",
+            "label": "The Detective",
+            "description": "I am an Inspector in the capital's police, charged with the investigation of the most vile and wretched things that one human does to another.",
+            "startdescription": "I have ended the careers of thieves, murderers, blackmailers, arsonists. Some criminals do worse still; and on some mornings, my hands have been known to tremble.",
+            "effects": {
+                "legacydetectivejob": 1,
+                "reason": 1,
+                "health": 1
+            },
+            "image": "detective",
+            "fromending": "arrest",
+            "availableWithoutEndingMatch": true,
+            "startingverbid": "work"
+        },
+        {
+            "id": "detectivepostpromotion",
+            "label": "The Detective",
+            "description": "I am an Inspector in the capital's police, charged with the investigation of the most vile and wretched things that one human does to another.",
+            "startdescription": "I have ended the careers of thieves, murderers, blackmailers, arsonists. Some criminals do worse still; and on some mornings, my hands have been known to tremble.",
+            "effects": {
+                "legacydetectivejob": 1,
+                "reason": 1,
+                "health": 1
+            },
+            "image": "detective",
+            "fromending": "workvictoryb",
+            "availableWithoutEndingMatch": false,
+            "excludesOnEnding": [
+                "detective"
+            ],
+            "startingverbid": "work"
+        },
+        {
+            "id": "apostleforge",
+            "label": "Apostle Aestuant",
+            "startdescription": "The one who shaped us has ascended to a higher state... in one history, at least. The past is uncertain. But I will tend the crucible for their next ascension.",
+            "description": "Our Great Shaper is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their instrument.",
+            "effects": {
+                "health": 2,
+                "legacyapostleforgejob": 1
+            },
+            "image": "apostleforge",
+            "fromending": "minorforgevictory",
+            "availableWithoutEndingMatch": false,
+            "startingverbid": "work"
+        },
+        {
+            "id": "apostlegrail",
+            "label": "Apostle Obsonate",
+            "startdescription": "The one who nourished us has ascended to a higher state... in one history, at least. The past is uncertain. But I will prepare the feast for their next ascension.",
+            "description": "Our Delight is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their vessel.",
+            "effects": {
+                "passion": 1,
+                "health": 1,
+                "legacyapostlegrailjob": 1
+            },
+            "image": "apostlegrail",
+            "fromending": "minorgrailvictory",
+            "availableWithoutEndingMatch": false,
+            "startingverbid": "work"
+        },
+        {
+            "id": "apostlelantern",
+            "label": "Apostle Entheate",
+            "startdescription": "The Illuminated One waits in the House of the Sun - waits to rise higher. I am their hand.",
+            "description": "I don't remember what happened. I don't remember who I am. But the dreams have taught me what I must do.",
+            "effects": {
+                "reason": 1,
+                "health": 1,
+                "legacyapostlelanternjob": 1
+            },
+            "image": "apostlelantern",
+            "fromending": "minorlanternvictory",
+            "availableWithoutEndingMatch": false,
+            "startingverbid": "work"
+        },
+        {
+            "id": "apostleforgewithrisen",
+            "label": "Apostle Aestuant",
+            "startdescription": "The one who shaped us has ascended to a higher state... in one history, at least. The past is uncertain. But I will tend the crucible for their next ascension.",
+            "description": "Our Great Shaper is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their instrument.",
+            "effects": {
+                "health": 2,
+                "legacyapostleforgejob": 1
+            },
+            "image": "apostleforge",
+            "fromending": "minorforgevictorywithrisen",
+            "availableWithoutEndingMatch": false,
+            "startingverbid": "work"
+        },
+        {
+            "id": "apostlegrailwithrisen",
+            "label": "Apostle Obsonate",
+            "startdescription": "The one who nourished us has ascended to a higher state... in one history, at least. The past is uncertain. But I will prepare the feast for their next ascension.",
+            "description": "Our Delight is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their vessel.",
+            "effects": {
+                "passion": 1,
+                "health": 1,
+                "legacyapostlegrailjob": 1
+            },
+            "image": "apostlegrail",
+            "fromending": "minorgrailvictorywithrisen",
+            "availableWithoutEndingMatch": false,
+            "startingverbid": "work"
+        },
+        {
+            "id": "apostlelanternwithrisen",
+            "label": "Apostle Entheate",
+            "startdescription": "The Illuminated One waits in the House of the Sun - waits to rise higher. I am their hand.",
+            "description": "I don't remember what happened. I don't remember who I am. But the dreams have taught me what I must do.",
+            "effects": {
+                "reason": 1,
+                "health": 1,
+                "legacyapostlelanternjob": 1
+            },
+            "image": "apostlelantern",
+            "fromending": "minorlanternvictorywithrisen",
+            "availableWithoutEndingMatch": false,
+            "startingverbid": "work"
+        },
+        {
+            "id": "auctioneer",
+            "label": "The Auctioneer",
+            "description": "--",
+            "startdescription": "--",
+            "effects": {
+                "funds": 5
+            },
+            "image": "auctioneer",
+            "fromending": "_workvictory",
+            "availableWithoutEndingMatch": false,
+            "startingverbid": "work"
+        },
+        {
+            "id": "survivor",
+            "label": "The Survivor",
+            "description": "At times, in mirrors, in crowds, you see the face of one now lost.",
+            "startdescription": "Haunted starting note",
+            "effects": {
+                "introjob": 1
+            },
+            "image": "survivor",
+            "fromending": "_wintersacrifice",
+            "availableWithoutEndingMatch": false,
+            "startingverbid": "work"
+        },
+        {
+            "id": "cousin",
+            "label": "The Cousin",
+            "description": "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
+            "startdescription": "Inheritor starting note",
+            "effects": {
+                "introjob": 1
+            },
+            "image": "cousin",
+            "fromending": "_",
+            "availableWithoutEndingMatch": false,
+            "startingverbid": "work"
+        }
+    ]
+}

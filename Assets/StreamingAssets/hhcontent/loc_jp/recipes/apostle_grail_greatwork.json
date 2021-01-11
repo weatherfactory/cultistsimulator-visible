@@ -1,0 +1,431 @@
+{
+	"recipes": [
+		{
+			"id": "ambition.apostlegrail.emitfuel",
+			"actionId": "work",
+			"label": "喜びの者の導き",
+			"requirements": {
+				"apostlegrail.mentor": 1
+			},
+			"startdescription": "喜びの者の使いが、最も神聖な血液の入った小瓶を1本届けに来た。",
+			"effects": {
+				"apostlegrail.pillarfuel": 1
+			}
+		},
+		{
+			"id": "work.apostlegrail.majorvictory.postbetrayal",
+			"actionId": "work",
+			"label": "予定射通りに行われる肉謝祭",
+			"extantreqs": {
+				"apostlegrail.mentor": -1
+			},
+			"startdescription": "聖杯と一体となるためには、喜びの者は、命を与え、命を奪い、飽くなきものでなければならない。私は謝肉祭のメインディッシュとなった。喜びの者の子は身体的な条件を満たすが、天空の罪を犯した者は、大手を振ってマンサスに入ることはできない。だからこれは私の役目なのだ。トリフォンの誘惑にもかかわらず、私は大人しく拘束され、マリネットにマリネされる。七つの恵と三種の味が私の体を満たし、1口目が頬張られても、ほとんど痛みを感じなかった。ほとんど何も感じなかったのだ。",
+			"requirements": {
+				"fragmentheartg": 1,
+				"influencegrailg": 1,
+				"apostlegrail.pillar2": 1,
+				"apostlegrail.pillar3": 1,
+				"apostlegrail.pillar4": 1,
+				"toolgrailf": 1,
+				"grailflavour": 1,
+				"heartflavour": 1,
+				"mothflavour": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorgrailvictory"
+		},
+		{
+			"id": "work.apostlegrail.majorvictory",
+			"actionId": "work",
+			"label": "謝肉祭の仕上げ",
+			"extantreqs": {
+				"apostlegrail.mentor": 1
+			},
+			"startdescription": "聖杯と一体となるためには、喜びの者は、命を与え、命を奪い、飽くなきものでなければならない。私は謝肉祭のメインディッシュとなった。喜びの者の子は身体的な条件を満たすが、天空の罪を犯した者は、大手を振ってマンサスに入ることはできない。だからこれは私の役目なのだ。私は大人しく拘束され、マリネットにマリネされる。七つの恵と三種の味が私の体を満たし、1口目が頬張られても、ほとんど痛みを感じなかった。ほとんど何も感じなかったのだ。",
+			"requirements": {
+				"fragmentheartg": 1,
+				"influencegrailg": 1,
+				"apostlegrail.pillar2": 1,
+				"apostlegrail.pillar3": 1,
+				"apostlegrail.pillar4": 1,
+				"toolgrailf": 1,
+				"grailflavour": 1,
+				"heartflavour": 1,
+				"mothflavour": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorgrailvictory"
+		},
+		{
+			"id": "explore.apostlegrail.purchase.apostlegrail.pillar3",
+			"actionId": "explore",
+			"label": "珍しい香辛料に入札する",
+			"startdescription": "喜びの者の血を使って、特定の専門家から特定の商品を購入することができる。肉謝祭で使われるものは、すべて完璧な状態でなければいけない。",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"apostlegrail.pillarfuel": 1
+			},
+			"effects": {
+				"apostlegrail.pillar3": 1,
+				"apostlegrail.pillarfuel": -1
+			},
+			"warmup": 5,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "auctionbuy"
+				}
+			]
+		},
+		{
+			"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished",
+			"actionId": "work",
+			"label": "七つの恵みの準備",
+			"startdescription": "七つの恵みと三種の味（塩、甘味、最高の甘味）。極上の宴の主である我々は、自分たちを聖別しなくてはいけない。",
+			"requirements": {
+				"apostlegrail.pillar3": 1,
+				"grailflavour": 1,
+				"heartflavour": 1,
+				"mothflavour": 1,
+				"ritual": -1
+			},
+			"craftable": true,
+			"comments": "NB this is both craftable *and* linked, and precedes the main cooking recipe, in case the player tries to keep working on the Graces once it's done."
+		},
+		{
+			"id": "work.apostlegrail.upgrade.apostlegrail.pillar3",
+			"actionId": "work",
+			"label": "七つの恵みの準備をする",
+			"startdescription": "香りと風味はレシピ通りに正確でなければならない。そうすれば、私や仲間は食欲を十分にそそれるようになる――現実世界ではあり得ないほどに食欲を呼び覚ます存在になれるのだ。",
+			"requirements": {
+				"apostlegrail.pillar3": 1,
+				"ritual": -1
+			},
+			"description": "入れたい香りや味が見つからなかった。",
+			"slots": [
+				{
+					"id": "enhancement",
+					"label": "調味料",
+					"description": "謝肉祭がうまくいくように使用する、非常に特別な添加物。",
+					"required": {
+						"ingredientgraild": 1,
+						"ingredientmothd": 1,
+						"ingredientheartf": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+				},
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail"
+				},
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.heart"
+				},
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail",
+			"actionId": "work",
+			"label": "フラワーメーカーの贈り物",
+			"startdescription": "我々が死んだとしても、我々を殺した者たちの中では生き続けるだろう。",
+			"requirements": {
+				"ingredientgraild": 1,
+				"grailflavour": -1
+			},
+			"effects": {
+				"ingredientgraild": -1
+			},
+			"mutations": [
+				{
+					"filter": "apostlegrail.pillar3",
+					"mutate": "grailflavour",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+				}
+			]
+		},
+		{
+			"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.heart",
+			"actionId": "work",
+			"label": "ヤヌスの味",
+			"startdescription": "ヤヌスは復活しないが君臨する神である。ヤヌスは死なずに死んだ聖人である。ヤヌスは、ありえないものと、そうでなければならないものの間にある扉である。",
+			"requirements": {
+				"ingredientheartf": 1,
+				"heartflavour": -1
+			},
+			"effects": {
+				"ingredientheartf": -1
+			},
+			"mutations": [
+				{
+					"filter": "apostlegrail.pillar3",
+					"mutate": "heartflavour",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+				}
+			]
+		},
+		{
+			"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth",
+			"actionId": "work",
+			"label": "暗い葉の味",
+			"startdescription": "自分が何者であったかを忘れなければいけない。",
+			"requirements": {
+				"ingredientmothd": 1,
+				"mothflavour": -1
+			},
+			"effects": {
+				"ingredientmothd": -1
+			},
+			"mutations": [
+				{
+					"filter": "apostlegrail.pillar3",
+					"mutate": "mothflavour",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+				}
+			]
+		},
+		{
+			"id": "talk.apostlegrail.createpillar4",
+			"actionId": "talk",
+			"label": "謝肉際の準備を始める",
+			"startdescription": "喜びの者が食欲を示せば、盛大な祝いが始まる。",
+			"description": "聖杯の影響力が一番強い時がわかるまでは、いつ開催されるかわかないが、宴の主の構成要素となる者を選ばび始めることはできる。",
+			"requirements": {
+				"apostlegrail.pillar1": 1
+			},
+			"craftable": true,
+			"effects": {
+				"apostlegrail.pillar4.inprogress1": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "talk.apostlegrail.upgradepillar4.attempt",
+			"actionId": "talk",
+			"label": "最後の客を招待する",
+			"startdescription": "鍵の持ち主なしでは、準備がすべて無駄になってしまう。",
+			"description": "鍵の持ち主はまだ来ていない",
+			"requirements": {
+				"apostlegrail.pillar4.inprogress7": 1
+			},
+			"slots": [
+				{
+					"id": "finalguest",
+					"label": "鍵の持ち主",
+					"required": {
+						"marinette": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "talk.apostlegrail.upgradepillar4.marinetteready"
+				},
+				{
+					"id": "talk.apostlegrail.upgradepillar4.marinettenotready"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "talk.apostlegrail.upgradepillar4.inprogress.attempt",
+			"actionId": "talk",
+			"label": "宴の主を強化する",
+			"startdescription": "参加者をもっと集めることにした。我々の味方は、貪欲さ、好奇心、色欲、そして怠惰さだ。",
+			"description": "興味の火を点けることはできなかった。",
+			"requirements": {
+				"uqvitulation": 1
+			},
+			"slots": [
+				{
+					"id": "more",
+					"label": "その他",
+					"required": {
+						"mystique": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "talk.apostlegrail.upgradepillar4.succeed"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "talk.apostlegrail.upgradepillar4.marinetteready",
+			"actionId": "talk",
+			"label": "鍵の持ち主",
+			"startdescription": "「<sprite name=winter>」",
+			"requirements": {
+				"marinette": 1,
+				"approval": 7,
+				"apostlegrail.pillar4.inprogress7": 1
+			},
+			"effects": {
+				"marinette": -1,
+				"apostlegrail.pillar4.inprogress7": -1,
+				"apostlegrail.pillar4": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostlegrail.upgradepillar4.marinettenotready",
+			"actionId": "talk",
+			"label": "まだ足りない",
+			"startdescription": "「......<sprite name=grail>」[マリネットはまだ満足していない。]",
+			"requirements": {
+				"marinette": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostlegrail.upgradepillar4.succeed",
+			"actionId": "talk",
+			"label": "宴の主が大きくなる",
+			"startdescription": "リストに載っている名前は、神聖で秘密ものが多くなってきた。より多くの人が壮大な夜に参加してくれるようだ。",
+			"requirements": {
+				"mystique": 1,
+				"uqvitulation": 1
+			},
+			"effects": {
+				"mystique": -1
+			},
+			"aspects": {
+				"vitulationupgrade": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostlegrail.sulochanamarinette",
+			"actionId": "talk",
+			"label": "操り人形の聖母の紹介",
+			"startdescription": "「本当にやるのね？」とスロチャナはブーツの底でタバコを踏み潰した。「それなら私はもう行くわ。心配しないで、あなたのことは姉に話しておくから。血があれば、きっと来るわ」",
+			"description": "",
+			"requirements": {
+				"apostlegrail.pillar1": 1
+			},
+			"effects": {
+				"marinette.enroute": 1,
+				"sulochana": -1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostlegrail.marinette.ready.hint",
+			"actionId": "talk",
+			"label": "マリネットは満たされた",
+			"startdescription": "「<sprite name=heart>」。[マリネットを客人に追加できる。]",
+			"requirements": {
+				"marinette": 1,
+				"approval": 7
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "talk.apostlegrail.marinette",
+			"actionId": "talk",
+			"label": "操り人形のマリネットへのお願い",
+			"startdescription": "「<sprite name=grail>？」",
+			"description": "「<sprite name=grail>。<sprite name=grail>。<sprite name=grail>！」",
+			"requirements": {
+				"marinette": 1,
+				"approval": -7
+			},
+			"slots": [
+				{
+					"id": "sacrifice",
+					"label": "血",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": -1
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "talk.apostlegrail.marinettenext.hireling"
+				},
+				{
+					"id": "talk.apostlegrail.marinettenext.follower"
+				}
+			]
+		},
+		{
+			"id": "talk.apostlegrail.marinettenext.hireling",
+			"actionId": "talk",
+			"label": "血",
+			"startdescription": "マリネットはいつも皮を食べ残し、時には骨を残すこともある。彼女は雇われた人を熱心に食べつくそうとするが、大抵反対され、大騒ぎになる。",
+			"requirements": {
+				"marinette": 1,
+				"hireling": 1
+			},
+			"effects": {
+				"hireling": -1,
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filter": "marinette",
+					"mutate": "approval",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "talk.apostlegrail.marinettenext.follower",
+			"actionId": "talk",
+			"label": "血",
+			"startdescription": "マリネットは、いつも皮を残し、時折、骨も残す。忠実な信奉者たちに目を閉じろと言えば、すぐに終わる。",
+			"mutations": [
+				{
+					"filter": "marinette",
+					"mutate": "approval",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"requirements": {
+				"marinette": 1,
+				"follower": 1
+			},
+			"effects": {
+				"follower": -1
+			},
+			"craftable": false
+		}
+	]
+}

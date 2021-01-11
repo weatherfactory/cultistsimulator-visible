@@ -1,0 +1,506 @@
+{
+    "elements": [
+        {
+            "id": "aladim",
+            "label": "伊本·阿迪姆博士",
+            "aspects": {
+                "tutoraramaic": 1,
+                "tutor": 1,
+                "patron": 1
+            },
+            "description": "伊本·阿迪姆博士，人称阿勒颇人，对被忽视的历史有兴趣。他向你提出了委托。",
+            "unique": true,
+            "xtriggers": {
+                "commissionfulfilled": "aladimaway",
+                "killmortal": "rumour",
+                "derangemortal": "rumour"
+            },
+            "slots": [
+                {
+                    "id": "Commission",
+                    "label": "委托",
+                    "actionId": "talk",
+                    "required": {
+                        "commission": 1
+                    }
+                },
+                {
+                    "id": "Manuscript",
+                    "label": "文稿",
+                    "actionId": "talk",
+                    "required": {
+                        "article": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "aladimready",
+            "label": "伊本·阿迪姆博士",
+            "aspects": {
+                "tutoraramaic": 1,
+                "tutor": 1,
+                "patron": 1
+            },
+            "description": "伊本·阿迪姆博士，人称阿勒颇人，对被忽视的历史有兴趣。他正需要有人协助。",
+            "unique": true,
+            "xtriggers": {
+                "commissiongiven": "aladim",
+                "killmortal": "rumour",
+                "derangemortal": "rumour"
+            }
+        },
+        {
+            "id": "bechet",
+            "label": "贝谢女士",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorgreek": 1
+            },
+            "description": "奥兰普·贝谢女士是《凯尔伊苏姆评论报》的编辑；该报刊登的是那些对其他文学杂志来说过于阴森或惊悚的题材。她向你提出了委托。",
+            "unique": true,
+            "xtriggers": {
+                "commissionfulfilled": "bechetaway",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "slots": [
+                {
+                    "id": "Commission",
+                    "label": "委托",
+                    "actionId": "talk",
+                    "required": {
+                        "commission": 1
+                    }
+                },
+                {
+                    "id": "Manuscript",
+                    "label": "文稿",
+                    "actionId": "talk",
+                    "required": {
+                        "article": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "bechetready",
+            "label": "贝谢女士",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorgreek": 1
+            },
+            "description": "奥兰普·贝谢女士是《凯尔伊苏姆评论报》的编辑；该报刊登的是那些对其他文学杂志来说过于阴森或惊悚的题材。她正需要有人协助。",
+            "unique": true,
+            "xtriggers": {
+                "commissiongiven": "bechet",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
+        },
+        {
+            "id": "jannings",
+            "label": "雅宁斯伯爵",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorlatin": 1
+            },
+            "description": "戈特洛布·雅宁斯伯爵是大陆上一个医师和决斗者协会的代表。他向你提出了委托。",
+            "unique": true,
+            "xtriggers": {
+                "commissionfulfilled": "janningsaway",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "slots": [
+                {
+                    "id": "Commission",
+                    "label": "委托",
+                    "actionId": "talk",
+                    "required": {
+                        "commission": 1
+                    }
+                },
+                {
+                    "id": "Manuscript",
+                    "label": "文稿",
+                    "actionId": "talk",
+                    "required": {
+                        "article": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "janningsready",
+            "label": "雅宁斯伯爵",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorlatin": 1
+            },
+            "description": "戈特洛布·雅宁斯伯爵是大陆上一个医师和决斗者协会的代表。他正需要有人协助。",
+            "unique": true,
+            "xtriggers": {
+                "commissiongiven": "jannings",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
+        },
+        {
+            "id": "poppyready",
+            "label": "波比·拉舍莱斯",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
+            "description": "一个和蔼可亲的富有女人。她想要和你谈谈。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
+        },
+        {
+            "id": "poppy",
+            "label": "波比·拉舍莱斯",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
+            "description": "一个和蔼可亲的富有女人。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
+        },
+        {
+            "id": "poppycommissionready",
+            "label": "波比·拉舍莱斯",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
+            "description": "一个和蔼可亲的富有女人。她想要你的帮助。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "commissiongiven": "poppycommission"
+            },
+            "icon": "poppyready"
+        },
+        {
+            "id": "poppycommission",
+            "label": "波比·拉舍莱斯",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
+            "description": "一个和蔼可亲的富有女人。她向你提出了委托。",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "commissionfulfilled": "poppyaway"
+            },
+            "slots": [
+                {
+                    "id": "Commission",
+                    "label": "委托",
+                    "actionId": "talk",
+                    "required": {
+                        "commission": 1
+                    }
+                },
+                {
+                    "id": "Manuscript",
+                    "label": "文稿",
+                    "actionId": "talk",
+                    "required": {
+                        "article": 1
+                    }
+                }
+            ],
+            "icon": "poppy"
+        },
+        {
+            "id": "aladimaway",
+            "label": "伊本·阿迪姆博士",
+            "description": "伊本·阿迪姆博士，人称阿勒颇人，对被忽视的历史有兴趣。眼下联系不上他，但他很快便会回来。",
+            "lifetime": 120,
+            "decayTo": "aladimready",
+            "icon": "aladim"
+        },
+        {
+            "id": "bechetaway",
+            "label": "贝谢女士",
+            "description": "奥兰普·贝谢女士是《凯尔伊苏姆评论报》的编辑；该报刊登的是那些对其他文学杂志来说过于阴森或惊悚的题材。眼下她正忙着出版的准备工作，但很快便会回来。",
+            "lifetime": 120,
+            "decayTo": "bechetready",
+            "icon": "bechet"
+        },
+        {
+            "id": "janningsaway",
+            "label": "雅宁斯伯爵",
+            "lifetime": 120,
+            "description": "戈特洛布·雅宁斯伯爵是大陆上一个医师和决斗者协会的代表。眼下他出国去了，但很快便会回来。",
+            "decayTo": "janningsready",
+            "icon": "jannings"
+        },
+        {
+            "id": "poppyaway",
+            "label": "波比·拉舍莱斯",
+            "description": "一个和蔼可亲的富有女人。她现在不接见访客。",
+            "lifetime": 120,
+            "decayTo": "poppycommissionready",
+            "icon": "poppy"
+        },
+        {
+            "id": "benefactorm",
+            "label": "提摩西·曼迪勋爵",
+            "description": "一位举止优雅的绅士，有着忧伤的眼神和后退的发际线，时不时发出阵阵友善、粗嘎、神经质的笑声。他不会再碰烈酒了。",
+            "animFrames": 1,
+            "uniquenessgroup": "uqbenefactorm",
+            "aspects": {
+                "benefactor": 1,
+                "mortal": 1
+            },
+            "slots": [
+                {
+                    "id": "health",
+                    "actionId": "work",
+                    "label": "健康",
+                    "required": {
+                        "health": 1
+                    }
+                },
+                {
+                    "id": "funds",
+                    "actionId": "work",
+                    "label": "妆扮",
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "xtriggers": {
+                "employment": "benefactorm",
+                "rejection": "benefactorm_rejectedplayer",
+                "killmortal": "corpse",
+                "avowal": "benefactorm_proposedtoplayer"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorm_rejectedplayer"
+        },
+        {
+            "id": "benefactorf",
+            "label": "第四代斯坦福女侯爵尼科尔",
+            "description": "一位谨慎，聪慧的女性，有着窄间距的双目和以她的岁数来说极好的肌肤。她已经亲自打理财务多年，并义不容辞地向慈善事业捐款。",
+            "animFrames": 1,
+            "uniquenessgroup": "uqbenefactorf",
+            "aspects": {
+                "benefactor": 1,
+                "mortal": 1
+            },
+            "slots": [
+                {
+                    "id": "health",
+                    "actionId": "work",
+                    "label": "健康",
+                    "required": {
+                        "health": 1
+                    }
+                },
+                {
+                    "id": "funds",
+                    "actionId": "work",
+                    "label": "妆扮",
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "xtriggers": {
+                "employment": "benefactorf",
+                "rejection": "benefactorf_rejectedplayer",
+                "killmortal": "corpse",
+                "avowal": "benefactorf_proposedtoplayer"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorf_rejectedplayer"
+        },
+        {
+            "id": "benefactorm_rejectedplayer",
+            "label": "提摩西·曼迪勋爵",
+            "description": "提摩西勋爵不再给我递小纸条了。",
+            "uniquenessgroup": "uqbenefactorm",
+            "aspects": {
+                "mortal": 1
+            },
+            "xtriggers": {
+                "killmortal": "corpse"
+            },
+            "icon": "benefactorm"
+        },
+        {
+            "id": "benefactorf_rejectedplayer",
+            "label": "第四代斯坦福女侯爵尼科尔",
+            "description": "听说最尊贵的斯坦福女侯爵已宣布她不太明自己看上我哪一点了。",
+            "uniquenessgroup": "uqbenefactorf",
+            "aspects": {
+                "mortal": 1
+            },
+            "xtriggers": {
+                "killmortal": "corpse"
+            },
+            "icon": "benefactorf"
+        },
+        {
+            "id": "benefactorm_proposedtoplayer",
+            "label": "提摩西·曼迪勋爵",
+            "description": "在一瞬激情的推动下，提摩西勋爵提出结婚。如果我能抓住机会同意，如果我能抓住机会接受，我的人生将会改变……并失去其他的前路。[请在勋爵的热情消退前和他谈话，否则他会觉得自己被甩了。]",
+            "uniquenessgroup": "uqbenefactorm",
+            "aspects": {
+                "mortal": 1,
+                "benefactor_proposal": 1
+            },
+            "xtriggers": {
+                "killmortal": "benefactorwill"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorm_rejectedplayer",
+            "icon": "benefactorm"
+        },
+        {
+            "id": "benefactorf_proposedtoplayer",
+            "label": "第四代斯坦福女侯爵尼科尔",
+            "description": "在一瞬激情的推动下，最尊贵的尼科尔女爵提出结婚。如果我能抓住机会接受，我的人生将会改变……并失去其他的前路。[请在女侯爵的热情消退前和她谈话，否则她会觉得自己被甩了。]",
+            "uniquenessgroup": "uqbenefactorf",
+            "aspects": {
+                "mortal": 1,
+                "benefactor_proposal": 1
+            },
+            "xtriggers": {
+                "killmortal": "benefactorwill"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorf_rejectedplayer",
+            "icon": "benefactorf"
+        },
+        {
+            "id": "benefactorwill",
+            "label": "故人留下的文件",
+            "description": "某个爱我的人死了。或许他在遗嘱里给我留了东西。我该找个律师谈谈。[若想推进此事，你需要采取行动……不过会有小几率让人怀疑到你头上。]",
+            "slots": [
+                {
+                    "id": "lawyerfees",
+                    "actionId": "study",
+                    "label": "律师费",
+                    "consumes": true,
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "aspects": {
+                "legacyplotitem": 1
+            },
+            "icon": "documentgeneric"
+        },
+        {
+            "id": "sulochana",
+            "label": "苏洛恰那·阿摩伐舍",
+            "description": "蜕衣俱乐部的所有者，言语简练，精力充沛，目光炯炯，从不眨眼。",
+            "animFrames": 1,
+            "unique": true,
+            "aspects": {
+                "tutorsanskrit": 1,
+                "tutor": 1,
+                "patron": 1
+            }
+        },
+        {
+            "id": "echidna.enroute",
+            "label": "E夫人正在途中",
+            "description": "E夫人，苏洛恰那的“姐妹”，有着与外表不相称的“怪物之母”之称。她的老巢在哪里不清楚，但肯定不在海的这一边。她得花些时间才能抵达此处。",
+            "unique": true,
+            "lifetime": 180,
+            "decayTo": "echidna"
+        },
+        {
+            "id": "echidna",
+            "label": "E夫人",
+            "description": "一位自封“怪物之母”的，活泼、矮胖的女性，身着一身灰绿色、松垮垮的奥地利农妇裙。",
+            "aspects": {
+                "patron": 1
+            },
+            "animFrames": 1,
+            "unique": true
+        },
+        {
+            "id": "marinette.enroute",
+            "label": "操线仙娥正在途中",
+            "description": "苏洛恰那的“姐妹”，对她人们通常不称名字，只称“操线仙娥”。她很快便会抵达，在黑夜中。",
+            "unique": true,
+            "lifetime": 180,
+            "decayTo": "marinette"
+        },
+        {
+            "id": "marinette",
+            "label": "“操线仙娥”玛丽内特",
+            "description": "它散发着腐败血液的恶臭，每一说话下颚骨便咔嚓作响。蜷缩在这层衣服和骨骸下的也许是个女人，又也许是某种操线木偶。",
+            "aspects": {
+                "patron": 1
+            },
+            "animFrames": 1,
+            "unique": true
+        },
+        {
+            "id": "kleidouchos.enroute",
+            "label": "施鲁塞尔女士正在途中",
+            "description": "特蕾莎·加尔米耶的“笔友”，苏洛恰那的“姐妹”，白日之钥的持有者，正从维也纳前来。也许我应该在车站见见她。",
+            "aspects": {
+                "patron": 1
+            },
+            "lifetime": 180,
+            "decayTo": "kleidouchos"
+        },
+        {
+            "id": "kleidouchos",
+            "label": "施鲁塞尔女士",
+            "description": "一个精神矍铄，魄力十足的女人，衣着黑白分明，脸上满布皱纹。没人见过她眨眼。一只小小的黑毛狗崽从她裙底探出头来。",
+            "aspects": {
+                "patron": 1
+            }
+        },
+        {
+            "id": "naenia",
+            "label": "“挽歌儿小姐”",
+            "description": "一幅画作，画中肤色深暗的女人拥有雪色的双眸和剪得很短的骨白色头发，站在一个长满白花藤的小型大理石墓前。署名为“乔纳斯·B·蒙克，作于1811年。”",
+            "aspects": {
+                "patron": 1
+            },
+            "slots": [
+                {
+                    "id": "subject",
+                    "label": "回忆",
+                    "description": "挽歌儿小姐从不对我开口——她不过是一幅画——但过后我总能记得她说过什么。",
+                    "actionId": "talk",
+                    "required": {
+                        "memory": 1,
+                        "ascension.remembrance.offering": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

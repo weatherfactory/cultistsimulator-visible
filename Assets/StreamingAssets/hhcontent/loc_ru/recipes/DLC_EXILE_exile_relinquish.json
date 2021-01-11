@@ -1,0 +1,499 @@
+{
+	"recipes": [
+		{
+			"id": "relinquish.first",
+			"actionId": "relinquish",
+			"label": "Освобождение",
+			"startdescription": "Кто-то стрелял в меня при попытке уйти с годами. Это почти забылось.",
+			"description": "Повязка заменена. Я неплохо двигаюсь. Я могу дождаться, пока рана излечится сама или исцелиться украденными годами, если нужно поспешить. Но на это потребуется целая Декада и это точно не останется без внимания.",
+			"effects": {
+				"wound.exile": 1
+			},
+			"comments": "opened by initial scout recipe",
+			"alt": [
+				{
+					"id": "send.first",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.decade.healwound.foe",
+			"actionId": "relinquish",
+			"label": "Излечить Ранение Украденной Декадой",
+			"startdescription": "Годы нужно сжигать в тишине, с первым лучом рассвета, а рану посыпать пеплом. Это всегда непросто, но после ночного бегства от Врага будет совсем не весело. [Для этого потребуется возможность: Рассвет.]",
+			"description": "Мне не удалось найти достаточно времени или тишины. [Подготовьте возможность: Рассвет.]",
+			"slots": [
+				{
+					"id": "dawn",
+					"label": "Рассвет",
+					"description": "Момент",
+					"requirements": {
+						"op.dawn": 1
+					}
+				}
+			],
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"alt": [
+				{
+					"id": "relinquish.decade.healwound.success.foe"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.decade.healwound.success.foe",
+			"actionId": "relinquish",
+			"label": "Излечить Ранение Украденной Декадой",
+			"startdescription": "Мне удалось выкупить у Мадругад немного времени обратно.",
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1,
+				"op.dawn": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"damage.exile": -1,
+				"op.dawn": -1
+			}
+		},
+		{
+			"id": "relinquish.decade.healwound",
+			"actionId": "relinquish",
+			"label": "Излечить Ранение Украденной Декадой",
+			"startdescription": "Годы нужно сжигать в тишине, с первым лучом рассвета — для Мадругад это важно, — а рану посыпать пеплом. [Для этого потребуется возможность: Рассвет.]",
+			"description": "Мне не удалось найти достаточно времени или тишины. [Подготовьте возможность: Рассвет.]",
+			"slots": [
+				{
+					"id": "dawn",
+					"label": "Рассвет",
+					"description": "Момент",
+					"requirements": {
+						"op.dawn": 1
+					}
+				}
+			],
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1
+			},
+			"alt": [
+				{
+					"id": "relinquish.decade.healwound.success"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.decade.healwound.success",
+			"actionId": "relinquish",
+			"label": "Излечить Ранение Украденной Декадой",
+			"startdescription": "Мадругад не безжалостна. Она всегда требует то, что необходимо. Но и я не из тех, кто просит пощады. [Ваши преследователи годами идут по следу.]",
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1,
+				"op.dawn": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"damage.exile": -1,
+				"trace": 1,
+				"op.dawn": -1
+			}
+		},
+		{
+			"id": "relinquish.vitality.healwound",
+			"actionId": "relinquish",
+			"label": "Излечить Ранение Стойкостью",
+			"startdescription": "Как считальцу мне давно пришлось постичь управление жизненными перипетиями.",
+			"description": "Изучающий незримые искусства несомненно сейчас бы молился Громокоже. Мне лучше знать.",
+			"requirements": {
+				"vitality": 1,
+				"damage.exile": 1
+			},
+			"effects": {
+				"vitality": -1,
+				"damage.exile": -1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.healwound.hint",
+			"actionId": "relinquish",
+			"label": "Излечить Ранение?",
+			"startdescription": "Я могу использовать Украденную Декаду, чтобы излечить Ранение, но это может привлечь считальцев. Или если отыщу источник Стойкости, я могу им воспользоваться. Хотя, конечно, если у меня есть время, я могу просто подождать, пока мои раны затянутся.",
+			"requirements": {
+				"damage.exile": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.decade.unpack",
+			"actionId": "relinquish",
+			"label": "Разбить Украденную Декаду",
+			"startdescription": "Украденную жизнь легче продать, чем декаду. У меня есть все необходимые для изменения инструменты. Но нужно писать аккуратнее. Та, что приходит перед Солнцем, не приемлет небрежности. [Декады нельзя продать. Годы нельзя использовать для излечения Ранений. Годы нельзя обратно трансформировать в Декады.]",
+			"description": "Наконец-то дело сделано. Десять чётких набросков против Числа подготовлены, десять набросков декады сожжены. Каждый из моих набросков стоит сорок два миллиона ударов человеческих сердец. Мне кажется, я слышу из сквозь бумагу...",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"year.stolen": 10
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.convertyear",
+			"actionId": "relinquish",
+			"label": "Быстро получить наличные",
+			"startdescription": "Менять жизнь на деньги не выгодно, к тому же, это быстро привлечёт внимание считальцев. Когда я найду этому альтернативу, нужно делать это как можно реже.",
+			"description": "Прокуренные комнаты, мятые купюры. Как же мне всё это опостылело. [Операциями можно намного безопаснее конвертировать годы в наличные. Для большинства Операций требуются Связи.]",
+			"requirements": {
+				"year.stolen": 1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"cash": 1
+			},
+			"aspects": {
+				"terribletracerisk": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.defiance",
+			"actionId": "relinquish",
+			"label": "Отпраздновать Победу",
+			"startdescription": "Часы борьбы и завоеваний признают победы. Я могу использовать этот трофей, чтобы повысить свою значимость в их глазах.",
+			"description": "Готово. В час, когда день сражается с ночью, Многокрылые спускаются, чтобы присудить мне приз. Когда они уходят, остаются лишь крошки костей и обрывки волос.",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"temptation.defiance": 1,
+				"defiance.underlingdefeated": -1
+			},
+			"effects": {
+				"corpse.exile.underling": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.underlingdefeated",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.lore",
+			"actionId": "relinquish",
+			"label": "Знание через Победу",
+			"startdescription": "Некоторые техники можно изучить только через кровь противника.",
+			"description": "Процесс не был чистым или приятным... но мне удалось понять немало смертельных действий.",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"lore": 1
+			},
+			"effects": {
+				"corpse.exile.underling": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile",
+			"actionId": "relinquish",
+			"label": "Скромное погребение",
+			"startdescription": "Будет неподобающе не похоронить их. Но и переполох устраивать не стоит.",
+			"description": "Теперь эта несчастная оболочка будет покоиться с миром. Те, кто их ищет, пойдут по ложному следу.",
+			"requirements": {
+				"corpse.exile": 1,
+				"deception": 2
+			},
+			"effects": {
+				"corpse.exile": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.connections",
+			"actionId": "relinquish",
+			"label": "Замести Следы",
+			"startdescription": "Мои сообщники помогут мне подделать нужные документы.",
+			"description": "«Книги — это бессмертная память», — сказал кто-то, кто не встречал умелого фальшивомонетчика.",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"connection": 2
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.night.connection",
+			"actionId": "relinquish",
+			"label": "Замести Следы",
+			"startdescription": "Когда луна взойдет, мы начнём воплощать свои планы.",
+			"description": "Восходит солнце, и ещё одна история забыта.",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"connection": 1,
+				"op.night": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space.connection",
+			"actionId": "relinquish",
+			"label": "Замести Следы",
+			"startdescription": "Мои друзья позаботятся о том, чтобы мой адрес оставался приманкой.",
+			"description": "Ради приманки мне пришлось отдать старое пальто. Надеюсь, их не убьют.",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1,
+				"connection": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space.night",
+			"actionId": "relinquish",
+			"label": "Замести Следы",
+			"startdescription": "Я ускользну в ночи.",
+			"description": "Никто не будет знать, что меня здесь нет уже несколько дней... А тем временем я буду где-то ещё.",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1,
+				"op.night": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space",
+			"actionId": "relinquish",
+			"label": "Замести Следы?",
+			"startdescription": "[Следы можно стереть с помощью жилища с картой Ночи или Связи, но не двумя адресами.]",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace",
+			"actionId": "relinquish",
+			"label": "Замести Следы",
+			"startdescription": "Я могу сбить со следа своих преследователей.",
+			"description": "Я будто туман.",
+			"requirements": {
+				"trace": 1,
+				"deception": 2
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.defiance.already.hint",
+			"actionId": "relinquish",
+			"label": "Уже признано",
+			"startdescription": "Многокрылые, что судят павших, уже признали одну такую победу. Не стоит их больше беспокоить.",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"temptation.defiance": 1,
+				"defiance.underlingdefeated": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.hint",
+			"actionId": "relinquish",
+			"label": "Смертельное применение?",
+			"startdescription": "Человеческое тело — обременительное имущество, но иногда бывает полезным.",
+			"requirements": {
+				"corpse.exile.underling": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.space",
+			"actionId": "relinquish",
+			"label": "Замести Следы?",
+			"startdescription": "Где-то, где я никогда не окажусь... [Добавьте ещё одну карту Обмана, но не второй адрес.]",
+			"requirements": {
+				"trace": 1,
+				"space": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.connection",
+			"actionId": "relinquish",
+			"label": "Замести Следы?",
+			"startdescription": "С помощью друзей, которые хорошо знают город... [Добавьте ещё одну карту Обмана.]",
+			"requirements": {
+				"trace": 1,
+				"connection": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.night",
+			"actionId": "relinquish",
+			"label": "Замести Следы?",
+			"startdescription": "Когда ночь скрывает всё от внимательного взгляда... [Добавьте ещё одну карту Обмана.]",
+			"requirements": {
+				"trace": 1,
+				"op.night": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint",
+			"actionId": "relinquish",
+			"label": "Замести Следы?",
+			"startdescription": "С нужными ресурсами я могу отправить своих врагов по ложному следу. [Используйте две карты с Обманом и больше одного адреса.]",
+			"requirements": {
+				"trace": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.sell",
+			"actionId": "relinquish",
+			"label": "Попытаться продать имущество за наличные",
+			"startdescription": "@#licence.medical|Обычно мне удаётся найти тех, кто чувствует, что заслуживает быть доктором.\n#|Вероятно, наличные мне нужнее, чем это.@ [Так можно обменять имущество на наличные равнозначно его Стоимости.]",
+			"requirements": {
+				"worth": 1,
+				"cash": -1,
+				"trace": -1
+			},
+			"extantreqs": {
+				"asset.packed": -1
+			},
+			"comments": "cash also has worth, but let's not convert it back to cash",
+			"effects": {
+				"cash": "worth",
+				"asset": -1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.abandon",
+			"actionId": "relinquish",
+			"label": "Оставить Имущество",
+			"startdescription": "Когда за тобой по пятам идёт Дьявол, путешествуй налегке. [Используйте, чтобы избавиться от любого Движимого Имущества, которое вы не успеваете забрать с собой.]",
+			"requirements": {
+				"asset": 1,
+				"trace": -1
+			},
+			"extantreqs": {
+				"asset.packed": 1
+			},
+			"effects": {
+				"asset": -1
+			},
+			"warmup": 1,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.provoke",
+			"actionId": "relinquish",
+			"label": "Провоцировать Связи",
+			"startdescription": "Враги есть не только у меня. Если я публично разорву эту связь, то могу получить @#connection.official|Связь с Преступным миром\n#connection.holy|Связь с Радикалами\n#connection.radicals|Связь с Чиновниками\n#connection.ruler|Связь с Радикалами\n#connection.underworld|Связь с Чиновниками@ вместо этого. Или же я могу просто докучать моим нынешним связям. [Обычно это срабатывает, но иногда нет, и вы остаётесь без Связей и со Следами.]",
+			"requirements": {
+				"connection": 1,
+				"trace": -1
+			},
+			"linked": [
+				{
+					"id": "relinquish.provoke.success",
+					"chance": 70
+				},
+				{
+					"id": "relinquish.provoke.failure"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.provoke.success",
+			"actionId": "relinquish",
+			"label": "Успех!",
+			"startdescription": "Новые друзья.",
+			"aspects": {
+				"provoking": 1
+			}
+		},
+		{
+			"id": "relinquish.provoke.failure",
+			"actionId": "relinquish",
+			"label": "Ой...",
+			"startdescription": "Понятно, что то слово было плохим, но чтобы <i>настолько</i>...",
+			"effects": {
+				"connection": -1,
+				"trace": 1
+			}
+		}
+	]
+}

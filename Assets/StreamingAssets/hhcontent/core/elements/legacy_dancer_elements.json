@@ -1,0 +1,262 @@
+{
+    "elements": [
+        {
+            "id": "legacydancerjob",
+            "label": "A Contract at the Gaiety",
+            "description": "I have a position in the chorus at the Gaiety. It's mine until my luck or my looks run out... or until I find something better.",
+            "aspects": {
+                "job": 1,
+                "dance": 1,
+                "potentialbenefactorm": 1,
+                "potentialbenefactorf": 1,
+                "potentialecdysiast": 1
+            },
+            "lifetime": 120,
+            "decayTo": "legacydancerjob_suspended",
+            "xtriggers": {
+                "job": "legacydancerjob"
+            },
+            "slots": [
+                {
+                    "id": "health",
+                    "label": "Health",
+                    "actionid": "work",
+                    "required": {
+                        "health": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "legacydancerjob_suspended",
+            "label": "A Contract at the Gaiety: Suspended",
+            "description": "I've missed too many performances. If I plead convincingly enough, I might get my job back.",
+            "aspects": {
+                "job": 1
+            },
+            "lifetime": 300,
+            "xtriggers": {
+                "plead": "legacydancerjob"
+            },
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "Passion",
+                    "actionid": "work",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "dancerlegacy_plotitem_a",
+            "label": "A Crumpled Poem",
+            "description": "It's addressed to another dancer and signed by someone named #LAST_FOLLOWER#. The writer describes how they met the dancer in a dream, in a dark wood. Their dream featured drum-beats, wing-beats, the skin of shadows, the blood of the moon. No wonder the poem was discarded. But already I can see that there are layers of meaning to unpeel.",
+            "slots": [
+                {
+                    "id": "Approach",
+                    "label": "Approach",
+                    "actionid": "study",
+                    "description": "The heart's throb, or the violin's cry?",
+                    "required": {
+                        "heart": 1,
+                        "moth": 1
+                    }
+                }
+            ],
+            "aspects": {
+                "legacyplotitem": 1
+            }
+        },
+        {
+            "id": "dancerjobecdysisa",
+            "label": "A Contract at the Ecdysis Club",
+            "description": "I perform at the Ecdysis Club, on the nights when it's open.",
+            "slots": [
+                {
+                    "id": "location",
+                    "label": "The Ecdysis Club",
+                    "description": "The Ecdysis Club, where I enact revelations before witnesses",
+                    "actionid": "work",
+                    "required": {
+                        "locationcabaret": 1
+                    }
+                },
+                {
+                    "id": "purpose",
+                    "label": "Purpose",
+                    "actionid": "work",
+                    "required": {
+                        "changemarks": 1,
+                        "healthskill": 1
+                    },
+                    "description": "Show my Skill to gain access to more complex dances; or use my Desire to pursue Change; or leave empty if I'm just earning money."
+                },
+                {
+                    "id": "abilityfirst",
+                    "label": "Ability, or Scar",
+                    "description": "What of myself shall I commit?",
+                    "actionid": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "influence",
+                    "label": "Influence",
+                    "description": "What stirs me today?",
+                    "actionid": "work",
+                    "required": {
+                        "influence": 1
+                    },
+                    "consumes": true
+                }
+            ],
+            "aspects": {
+                "job": 1,
+                "dance": 1,
+                "ecdysijob": 1
+            }
+        },
+        {
+            "id": "dancerjobecdysisb",
+            "label": "A Superior Contract at the Ecdysis Club",
+            "description": "I perform the more exacting dances at the Ecdysis Club.",
+            "slots": [
+                {
+                    "id": "location",
+                    "label": "The Ecdysis Club",
+                    "description": "The Ecdysis Club, where I enact revelations before witnesses",
+                    "actionid": "work",
+                    "required": {
+                        "locationcabaret": 1
+                    }
+                },
+                {
+                    "id": "purpose",
+                    "label": "Purpose",
+                    "actionid": "work",
+                    "required": {
+                        "changemarks": 1,
+                        "healthskill": 1
+                    },
+                    "description": "Show my Skill to gain access to more complex dances; or use my Desire to pursue Change; or leave empty if I'm just earning money."
+                },
+                {
+                    "id": "abilityfirst",
+                    "label": "Ability, or Scar",
+                    "description": "What of myself shall I commit?",
+                    "actionid": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "abilitysecond",
+                    "label": "Ability, or Scar",
+                    "description": "What of myself shall I commit?",
+                    "actionid": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "influence",
+                    "label": "Influence",
+                    "description": "What stirs me today?",
+                    "actionid": "work",
+                    "required": {
+                        "influence": 1
+                    },
+                    "consumes": true
+                }
+            ],
+            "aspects": {
+                "job": 1,
+                "dance": 1,
+                "ecdysijob": 1
+            }
+        },
+        {
+            "id": "dancerjobecdysisc",
+            "label": "A Particular Arrangement with the Ecdysis Club",
+            "description": "I am occasionally paid a generous consideration to perform very specific dances for very particular connoisseurs.",
+            "slots": [
+                {
+                    "id": "location",
+                    "label": "The Ecdysis Club",
+                    "description": "The Ecdysis Club, where I enact revelations before witnesses",
+                    "actionid": "work",
+                    "required": {
+                        "locationcabaret": 1
+                    }
+                },
+                {
+                    "id": "purpose",
+                    "label": "Purpose",
+                    "actionid": "work",
+                    "required": {
+                        "changemarks": 1,
+                        "healthskill": 1
+                    },
+                    "description": "Use my Desire to pursue Change; or leave empty if I'm just earning money."
+                },
+                {
+                    "id": "abilityfirst",
+                    "label": "Ability, or Scar",
+                    "description": "What of myself shall I commit?",
+                    "actionid": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "abilitysecond",
+                    "label": "Ability, or Scar",
+                    "description": "What of myself shall I commit?",
+                    "actionid": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "abilitythird",
+                    "label": "Ability, or Scar",
+                    "description": "What of myself shall I commit?",
+                    "actionid": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "influence",
+                    "label": "Influence",
+                    "description": "What stirs me today?",
+                    "actionid": "work",
+                    "required": {
+                        "influence": 1
+                    },
+                    "consumes": true
+                }
+            ],
+            "aspects": {
+                "job": 1,
+                "dance": 1,
+                "ecdysijob": 1
+            }
+        }
+    ]
+}

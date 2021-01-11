@@ -1,0 +1,109 @@
+{
+	"recipes": [
+		{
+			"id": "studybenefactorwill",
+			"label": "故人が残した文書を研究する",
+			"actionId": "study",
+			"requirements": {
+				"benefactorwill": 1,
+				"funds": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "studybenefactorwill_suspicion",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"funds": 49,
+				"benefactorwill": -1
+			},
+			"startdescription": "注意しなくてはいけない。我々の交友関係は、世間から受け入れがたいとされてきたものだ。",
+			"description": "我々の関係は正式なものではなかった。遺産の大部分を相続できるとは思っていない。いずれにしても、かなりの資産を手に入れた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studybenefactorwill_suspicion",
+			"label": ".",
+			"actionId": "study",
+			"effects": {
+				"notoriety": 1,
+				"benefactorwill": -1
+			},
+			"description": "何かがおかしい。昔の知り合いは私を見ると道を渡る。新聞が不正行為をほのめかしているし、弁護士は面会を拒否している。もう遺産相続はあてにしていないが、最悪の事態はまだ訪れていないようだ。"
+		},
+		{
+			"id": "study.welland.defeated",
+			"actionId": "study",
+			"label": "イッソスは繰り返す",
+			"startdescription": "ライオンスミスが大佐にしたように、形作る者に反旗を翻す機会を得た。[これにより、前のキャラが昇天できなくなるが、鍛造の通常勝利ルートを達成できる機会が与えられる。その他の効果はない。]",
+			"description": "忠誠の鎖は砕け散ってしまった。信奉者は何も疑わないはずだ。形作る者が亡命先から戻る頃には、私はいなくなるか永遠に生きているかだ。",
+			"requirements": {
+				"welland.defeated": 1,
+				"mentor": 1
+			},
+			"effects": {
+				"mentor": -1,
+				"welland.defeated": -1,
+				"ascensionpowerc": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "study.tryphon.defeated",
+			"actionId": "study",
+			"label": "極上の料理",
+			"startdescription": "トライフォン夫人の残骸を消費すれば、私自身は消費されない。[これにより、前のキャラが昇天できなくなるが、聖杯の通常勝利ルートを達成できる機会が与えられる。その他の効果はない。]",
+			"description": "舌が鮮やかな味を感じる。喜びの者のために肉謝祭が開かれることはないだろう。信奉者たちは私の欲望に仕える。今のところ、私は貪り食うが、貪り食われることはないだろう。",
+			"requirements": {
+				"tryphon.defeated": 1,
+				"mentor": 1
+			},
+			"effects": {
+				"mentor": -1,
+				"tryphon.defeated": -1,
+				"ascensionsensationc": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "study.diarist.defeated",
+			"actionId": "study",
+			"label": "扉が1つ閉まると",
+			"startdescription": "日記作家は、照らされた者をマンサスに委ねる機会を与えてくれた。[これにより、前のキャラが昇天できなくなるが、灯りの通常勝利ルートを達成できる機会が与えられる。その他の効果はない。]",
+			"description": "私は目の中の扉を閉じ、蝋で封印した。その目ではもう何も見えないが、もう片方の目は新しい地平線を見ている。我々の組織は別の目的を持つだろう。いつか仲間として、創造者に挨拶をする日がくるかもしれない。",
+			"requirements": {
+				"diarist.defeated": 1,
+				"mentor": 1
+			},
+			"effects": {
+				"mentor": -1,
+				"diarist.defeated": -1,
+				"ascensionenlightenmentc": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "study.julian.defeated",
+			"actionId": "study",
+			"label": "空虚と孤独",
+			"startdescription": "私は、マンサスの「壁の石」の1つに過ぎないのだろうか。他には何かないのか？[これにより、前のキャラが昇天できなくなり、盤面に恐怖を加える。その他の効果はない。]",
+			"description": "自分が好きなように生きていこうと思う。自分が無になるまで自分が自分であるのだ。",
+			"requirements": {
+				"julian.defeated": 1,
+				"mentor": 1
+			},
+			"effects": {
+				"mentor": -1,
+				"julian.defeated": -1,
+				"dread": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

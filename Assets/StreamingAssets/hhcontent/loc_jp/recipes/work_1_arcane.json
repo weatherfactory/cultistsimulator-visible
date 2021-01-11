@@ -1,0 +1,621 @@
+{
+	"recipes": [
+		{
+			"id": "work.poison.fascination.longlesson.trap",
+			"actionId": "work",
+			"label": "用心深い敵",
+			"startdescription": "敵はマンサスの背の高い窓から、我々の行動を見張っている。以前より我々のことを知っているはずだ。",
+			"requirements": {
+				"poison.fascination.longlesson": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"long.lesson.dreamwork": 1
+			},
+			"mutations": [
+				{
+					"filter": "fascination",
+					"mutate": "poison.fascination.longlesson",
+					"level": -1
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"label": "理性の栄光[大]",
+			"id": "arcane_lantern_edge_grand",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"lantern": 15,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "上なる如く、下もまた然り――理性と情熱は、栄光の光を飲み込む森のように、人間の魂の中で闘う。この神秘的な修行は、情熱を理性に変える。[灯りの偉大なる力を呼び起こす。この儀式はほぼ確実に成功するが、危険を伴う。] ",
+			"description": "心が光で満たされている。私は冷静になり、鋭くなった。私は変わった。[情熱が理性に変わった。]",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "情熱を捨てる",
+					"required": {
+						"passion": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 10,
+					"id": "arcane_lantern_edge_failure"
+				}
+			],
+			"aspects": {
+				"toreason": 1,
+				"fascinating": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "理性の栄光[中]",
+			"id": "arcane_lantern_edge_major",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"lantern": 10,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "上なる如く、下もまた然り――理性と情熱は、栄光の光を飲み込む森のように、人間の魂の中で闘う。この神秘的な修行は、情熱を理性に変える。[灯りの大いなる力を呼び起こす。この儀式は成功する確率が高い。灯りを15以上に増加すると、確率がさらに上がる。] ",
+			"description": "心が光で満たされている。私は冷静になり、鋭くなった。私は変わった。[情熱が理性に変わった。]",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "情熱を捨てる",
+					"required": {
+						"passion": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 30,
+					"id": "arcane_lantern_edge_failure"
+				}
+			],
+			"aspects": {
+				"toreason": 1,
+				"fascinating": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "理性の栄光[小]",
+			"id": "arcane_lantern_edge_minor",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"lantern": 5,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "上なる如く、下もまた然り――理性と情熱は、栄光の光を飲み込む森のように、人間の魂の中で闘う。この神秘的な修行は、情熱を理性に変える。[灯りの力を少しだけを呼び起こす。そのため、この儀式は失敗に終わることが多い。灯りを10以上に増加すると確率が上がる。] ",
+			"description": "心が光で満たされている。私は冷静になり、鋭くなった。私は変わった。[情熱が理性に変わった。]",
+			"slots": [
+				{
+					"id": "passion",
+					"label": "情熱を捨てる",
+					"required": {
+						"passion": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 70,
+					"id": "arcane_lantern_edge_failure"
+				}
+			],
+			"aspects": {
+				"toreason": 1,
+				"fascinating": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "arcane_lantern_edge_failure",
+			"label": "理性の栄光[失敗！]",
+			"actionId": "work",
+			"description": "魔法は失敗に終わり、見えない光が私を縛った。",
+			"effects": {
+				"fascination": 1
+			}
+		},
+		{
+			"label": "情熱の渦巻[大]",
+			"id": "arcane_moth_edge_grand",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"moth": 15,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "上なる如く、下もまた然り――理性と情熱は、栄光の光を飲み込む森のように、人間の魂の中で闘う。この神秘的な儀式は、情熱を理性に変えるが......収拾がつかなくなることもある。[蛾の偉大なる力を呼び起こす。この儀式はほぼ確実に成功するが、危険を伴う。] ",
+			"description": "私の情熱は風のように、波のように、洪水のように高まる。冷静に考えることができなくなっている。私は変わった。[理性が情熱に変わった。]",
+			"slots": [
+				{
+					"id": "reason",
+					"label": "理性を捨てる",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 10,
+					"id": "arcane_moth_edge_failure"
+				}
+			],
+			"aspects": {
+				"topassion": 1,
+				"dreadful": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "arcane_moth_edge_runaway_link",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"label": "情熱の渦巻[中]",
+			"id": "arcane_moth_edge_major",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"moth": 10,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "上なる如く、下もまた然り――理性と情熱は、栄光の光を飲み込む森のように、人間の魂の中で闘う。この神秘的な儀式は、情熱を理性に変えるが......収拾がつかなくなることもある。[蛾の大いなる力を呼び起こす。この儀式は成功する確率が高い。蛾を15以上に増加すると、確率がさらに上がる。] ",
+			"description": "私の情熱は風のように、波のように、洪水のように高まる。冷静に考えることができなくなっている。私は変わった。[理性が情熱に変わった。]",
+			"slots": [
+				{
+					"id": "reason",
+					"label": "理性を捨てる",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 30,
+					"id": "arcane_moth_edge_failure"
+				}
+			],
+			"aspects": {
+				"topassion": 1,
+				"dreadful": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "arcane_moth_edge_runaway_link",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"label": "情熱の渦巻[小]",
+			"id": "arcane_moth_edge_minor",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"moth": 5,
+				"edge": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "上なる如く、下もまた然り――理性と情熱は、栄光の光を飲み込む森のように、人間の魂の中で闘う。この神秘的な儀式は、情熱を理性に変えるが......収拾がつかなくなることもある。[蛾の力を少しだけを呼び起こす。そのためこの儀式は失敗に終わりことが多い。蛾を10以上に増加すると、確率がさらに上がる。] ",
+			"description": "私の情熱は風のように、波のように、洪水のように高まる。冷静に考えることができなくなっている。私は変わった。[理性が情熱に変わった。]",
+			"slots": [
+				{
+					"id": "reason",
+					"label": "理性を捨てる",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 70,
+					"id": "arcane_moth_edge_failure"
+				}
+			],
+			"aspects": {
+				"topassion": 1,
+				"dreadful": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "arcane_moth_edge_runaway_link",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"id": "arcane_moth_edge_failure",
+			"label": "情熱の渦巻[失敗！]",
+			"actionId": "work",
+			"description": "魔法は失敗に終わった。恐怖が喜びをかき消していく。",
+			"effects": {
+				"dread": 1
+			}
+		},
+		{
+			"id": "arcane_moth_edge_runaway_link",
+			"label": "情熱の渦巻[止まらない！]",
+			"actionId": "work",
+			"warmup": 2,
+			"linked": [
+				{
+					"id": "arcane_moth_edge_runaway",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"id": "arcane_moth_edge_runaway",
+			"label": "情熱の渦巻[止まらない！]",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"moth": 15,
+				"edge": 1
+			},
+			"startdescription": "蛾に捕まった！渦が広がっていく！理性が完全に飲み込まれてしまうかもしれない！",
+			"description": "ようやく渦が閉じてきたが、まともに考えられない。私は変わってしまった。[理性は情熱に変わった。]",
+			"slots": [
+				{
+					"id": "reason",
+					"label": "理性を捨てる",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 10,
+					"id": "arcane_moth_edge_failure"
+				}
+			],
+			"aspects": {
+				"topassion": 1,
+				"fascinating": 1
+			},
+			"effects": {
+				"influenceheartc": 1
+			},
+			"warmup": 15,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "arcane_moth_edge_runaway",
+					"chance": 30
+				}
+			]
+		},
+		{
+			"label": "鍛造の償い[大]",
+			"id": "arcane_forge_grail_grand",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"forge": 15,
+				"grail": 1
+			},
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			},
+			"startdescription": "日々の鍛造は破壊し生まれ変わらせる神。聖杯を使ってその力を召喚し、私の朽ちた肉を禁断の魔法で再生させよう。[鍛造の偉大なる力を呼び起こす。ほぼ確実に成功するが、危険はつきものだ。] ",
+			"description": "私は炎で新しく生まれ変わり、血で焼かれた。私の肉は強さを取り戻したが、鍛造の明るさが魂を眩惑させる......人々は噂をするだろう。[老化は体力に戻ったが、魅了と悪評を得た。]",
+			"slots": [
+				{
+					"id": "decrepitude",
+					"label": "老化",
+					"required": {
+						"decrepitude": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 10,
+					"id": "arcane_forge_grail_failure"
+				}
+			],
+			"aspects": {
+				"tohealth": 1,
+				"fascinating": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "鍛造の償い[中]",
+			"id": "arcane_forge_grail_major",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"forge": 10,
+				"grail": 1
+			},
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			},
+			"startdescription": "日々の鍛造は破壊し生まれ変わらせる神。聖杯を使ってその力を召喚し、私の朽ちた肉を禁断の魔法で再生させよう。[鍛造の大いなる力を呼び起こす。この儀式は成功する確率が高い。鍛造を15以上に増加すると、確率がさらに上がる。] ",
+			"description": "私は炎で新しく生まれ変わり、血で焼かれた。私の肉は強さを取り戻したが、鍛造の明るさが魂を眩惑させる......人々は噂をするだろう。[老化は体力に戻ったが、魅了と悪評を得た。]",
+			"slots": [
+				{
+					"id": "decrepitude",
+					"label": "老化",
+					"required": {
+						"decrepitude": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 30,
+					"id": "arcane_forge_grail_failure"
+				}
+			],
+			"aspects": {
+				"tohealth": 1,
+				"fascinating": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "鍛造の償い[小]",
+			"id": "arcane_forge_grail_minor",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"forge": 5,
+				"grail": 1
+			},
+			"effects": {
+				"notoriety": 1,
+				"fascination": 1
+			},
+			"startdescription": "日々の鍛造は破壊し生まれ変わらせる神。聖杯を使ってその力を召喚し、私の朽ちた肉を禁断の魔法で再生させよう。[鍛造の力を少しだけを呼び起こす。そのため、この儀式は失敗に終わることが多い。鍛造を10以上に増加すると確率が上がる。] ",
+			"description": "私は炎で新しく生まれ変わり、血で焼かれた。私の肉は強さを取り戻したが、鍛造の明るさが魂を眩惑させる......人々は噂をするだろう。[老化は体力に戻ったが、魅了と悪評を得た。]",
+			"slots": [
+				{
+					"id": "decrepitude",
+					"label": "老化",
+					"required": {
+						"decrepitude": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 70,
+					"id": "arcane_forge_grail_failure"
+				}
+			],
+			"aspects": {
+				"tohealth": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "arcane_forge_grail_failure",
+			"label": "鍛造の償い[失敗！]",
+			"actionId": "work",
+			"description": "日々の鍛造のせいか、私のせいか、失敗に終わった。この魔法がもたらしたのは、悪夢と危険だけだ。",
+			"effects": {
+				"dread": 1,
+				"mystique": 1
+			}
+		},
+		{
+			"label": "美しい最後[大]",
+			"id": "arcane_winter_lantern_grand",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"winter": 15,
+				"lantern": 1
+			},
+			"startdescription": "ボロボロの太陽は、美しい結末をもたらす。痛快な結末をもたらす。この迅速で危険な魔法は、誰かや何かに終止符を打つが、何に効くかは正確にはわからない。儀式を手伝う定命の者や精霊も殺してしまうだろう。[冬の偉大なる力を呼び起こす。ほぼ確実に成功するだろうが、失敗した方が安全かもしれない。] ",
+			"description": "私の仕事部屋には雪が降り積もっている。炎は熱を失っているが、消すことはできない。それに、赤い輝きと金色の炎、黒い心で燃えるロウソクを消すこともできない。儀式が最高潮に達すると、誰かが、どこかで終わりを迎える",
+			"slots": [
+				{
+					"id": "conclusion",
+					"label": "結末",
+					"required": {
+						"mortal": 1,
+						"summoned": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 10,
+					"id": "arcane_winter_lantern_failure"
+				}
+			],
+			"aspects": {
+				"killhunter": 1,
+				"killmortal": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"dread": 1,
+				"fascination": 1,
+				"notoriety": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "美しい最後[中]",
+			"id": "arcane_winter_lantern_major",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"winter": 10,
+				"lantern": 1
+			},
+			"startdescription": "ボロボロの太陽は、美しい結末をもたらす。痛快な結末をもたらす。この迅速で危険な魔法は、誰かや何かに終止符を打つが、何に効くかは正確にはわからない。儀式を手伝う定命の者や精霊も殺してしまうだろう。[冬の大いなる力を呼び起こす。この儀式は成功する確率が高い。レベル15以上の冬を呼び起こすと確率がさらに上がるが、失敗したほうが安全かもしれない。] ",
+			"description": "私の仕事部屋には雪が降り積もっている。炎は熱を失っているが、消すことはできない。それに、赤い輝きと金色の炎、黒い心で燃えるロウソクを消すこともできない。儀式が最高潮に達すると、誰かが、どこかで終わりを迎える",
+			"slots": [
+				{
+					"id": "conclusion",
+					"label": "結末",
+					"required": {
+						"mortal": 1,
+						"summoned": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 30,
+					"id": "arcane_winter_lantern_failure"
+				}
+			],
+			"aspects": {
+				"killhunter": 1,
+				"killmortal": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"dread": 1,
+				"fascination": 1,
+				"notoriety": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"label": "美しい最後[小]",
+			"id": "arcane_winter_lantern_minor",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"winter": 5,
+				"lantern": 1
+			},
+			"startdescription": "ボロボロの太陽は、美しい結末をもたらす。痛快な結末をもたらす。この迅速で危険な魔法は、誰かや何かに終止符を打つが、何に効くかは正確にはわからない。儀式を手伝う定命の者や精霊も殺してしまうだろう。[冬の力を少しだけを呼び起こす。そのため、この儀式は失敗に終わることが多い。10以上の冬を呼び起こすと確率が上がるが、失敗した方が安全かもしれない。] ",
+			"description": "私の仕事部屋には雪が降り積もっている。炎は熱を失っているが、消すことはできない。それに、赤い輝きと金色の炎、黒い心で燃えるロウソクを消すこともできない。儀式が最高潮に達すると、誰かが、どこかで終わりを迎える",
+			"slots": [
+				{
+					"id": "conclusion",
+					"label": "結末",
+					"required": {
+						"mortal": 1,
+						"summoned": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"chance": 30,
+					"id": "arcane_winter_lantern_failure"
+				}
+			],
+			"aspects": {
+				"killhunter": 1,
+				"killmortal": 1,
+				"killsummoned": 1
+			},
+			"effects": {
+				"dread": 1,
+				"fascination": 1,
+				"notoriety": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "arcane_winter_lantern_failure",
+			"label": "美しい最後[失敗！]",
+			"actionId": "work",
+			"description": "ボロボロの太陽は私の声に答えてくれない。この魔法がもたらしたのは、冬の予感だけだった。",
+			"effects": {
+				"dread": 1,
+				"mystique": 1
+			}
+		}
+	]
+}

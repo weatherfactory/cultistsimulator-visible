@@ -1,0 +1,281 @@
+{
+    "legacies": [
+        {
+            "id": "exile",
+            "label": "The Exile",
+            "description": "No-one steals from a reckoner lord. And yet, I did. I had my reasons.",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "trace": 7,
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1
+            },
+            "fromending": "wintersacrifice",
+            "availableWithoutEndingMatch": true,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "newstart": true,
+            "tablecoverimage": "table_leather_exile"
+        },
+        {
+            "id": "exile.obscurityvictorya",
+            "label": "The Exile",
+            "description": "What if it had been different? In another history, did I reap greater rewards?",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1,
+                "trace": 7
+            },
+            "fromending": "obscurityvictorya",
+            "availableWithoutEndingMatch": false,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "tablecoverimage": "table_leather_exile"
+        },
+        {
+            "id": "exile.obscurityvictoryb",
+            "label": "The Exile",
+            "description": "What if it had been different? In another history, did I reap even greater rewards?",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1,
+                "trace": 7
+            },
+            "fromending": "obscurityvictoryb",
+            "availableWithoutEndingMatch": false,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "tablecoverimage": "table_leather_exile"
+        },
+        {
+            "id": "exile.obscurityvictoryc",
+            "label": "The Exile",
+            "description": "What if it had been different? In another history, did I rise higher?",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1,
+                "trace": 7
+            },
+            "fromending": "obscurityvictoryc",
+            "availableWithoutEndingMatch": false,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "tablecoverimage": "table_leather_exile"
+        },
+        {
+            "id": "exile.obscurityvictoryafoeslain",
+            "label": "The Exile",
+            "description": "What if it had been different? In another history, did I reap greater rewards?",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1,
+                "trace": 7
+            },
+            "fromending": "obscurityvictoryafoeslain",
+            "availableWithoutEndingMatch": false,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "tablecoverimage": "table_leather_exile"
+        },
+        {
+            "id": "exile.obscurityvictorybfoeslain",
+            "label": "The Exile",
+            "description": "What if it had been different? In another history, did I reap even greater rewards?",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1,
+                "trace": 7
+            },
+            "fromending": "obscurityvictorybfoeslain",
+            "availableWithoutEndingMatch": false,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "tablecoverimage": "table_leather_exile"
+        },
+        {
+            "id": "exile.obscurityvictorycfoeslain",
+            "label": "The Exile",
+            "description": "What if it had been different? In another history, did I rise higher?",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1,
+                "trace": 7
+            },
+            "fromending": "obscurityvictorycfoeslain",
+            "availableWithoutEndingMatch": false,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "tablecoverimage": "table_leather_exile"
+        },
+        {
+            "id": "exile.foecaughtup",
+            "label": "The Exile",
+            "description": "What if it had been different? In another history, did I survive?",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1,
+                "trace": 7
+            },
+            "fromending": "foecaughtup",
+            "availableWithoutEndingMatch": false,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "tablecoverimage": "table_leather_exile"
+        },
+        {
+            "id": "exile.ascensioncolonel",
+            "label": "The Exile",
+            "description": "What if it had been different? In another history, did I find something more like freedom?",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1,
+                "trace": 7
+            },
+            "fromending": "ascensioncolonel",
+            "availableWithoutEndingMatch": false,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "tablecoverimage": "table_leather_exile"
+        },
+        {
+            "id": "exile.ascensionlionsmith",
+            "label": "The Exile",
+            "description": "What if it had been different? In another history, did I find something more like peace?",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1,
+                "trace": 7
+            },
+            "fromending": "ascensionlionsmith",
+            "availableWithoutEndingMatch": false,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "tablecoverimage": "table_leather_exile"
+        },
+        {
+            "id": "exile.ascensionwolf",
+            "label": "The Exile",
+            "description": "What if it had been different? In another history, was I also a destroyer?",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1,
+                "trace": 7
+            },
+            "fromending": "ascensionwolf",
+            "availableWithoutEndingMatch": false,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "tablecoverimage": "table_leather_exile"
+        },
+        {
+            "id": "exile.victoryvelvet",
+            "label": "The Exile",
+            "description": "What if it had been different? In another history, did I meet my maker?",
+            "startdescription": "Sunset. Time to go.",
+            "image": "exile",
+            "effects": {
+                "decade.stolen": 7,
+                "year.stolen": 7,
+                "ticket.train": 1,
+                "trace": 7
+            },
+            "fromending": "victoryvelvet",
+            "availableWithoutEndingMatch": false,
+            "statusbarelements": [
+                "obscurity",
+                "comfort",
+                "damage.exile",
+                "lifespan.stolen"
+            ],
+            "startingverbid": "use",
+            "tablecoverimage": "table_leather_exile"
+        }
+    ]
+}

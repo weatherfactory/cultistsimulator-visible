@@ -1,0 +1,3102 @@
+{
+    "recipes": [
+        {
+            "id": "talktofollower_attemptheal",
+            "label": "Attempt the healing of a Follower",
+            "actionid": "talk",
+            "startdescription": "Compassion, or convenience?",
+            "description": "I could not or would not provide medical assistance.",
+            "requirements": {
+                "follower_wound": 1,
+                "mortal": 1,
+                "society": -1
+            },
+            "slots": [
+                {
+                    "id": "Healing",
+                    "label": "Healing",
+                    "description": "Funds will buy medicine.",
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "talktofollower_heal",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "talktofollower_heal",
+            "label": "Complete the healing of a Follower",
+            "startdescription": "Perhaps, now, they'll survive. But there are limits to what the human body can sustain.",
+            "actionid": "talk",
+            "requirements": {
+                "funds": 1
+            },
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_wound",
+                    "level": 0,
+                    "additive": false
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "follower",
+                    "level": 0,
+                    "additive": false
+                }
+            ],
+            "effects": {
+                "funds": -1
+            },
+            "linked": [
+                {
+                    "id": "givescar_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "givescar_knock",
+                    "chance": 50
+                },
+                {
+                    "id": "givescar_winter",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "givescar_edge",
+            "actionid": "talk",
+            "label": "The Lessons of Experience",
+            "description": "The wound is healed. The scar remains. But each scar, as the scholar Shulga once observed, is a lesson.",
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "follower_scar_edge",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "edge",
+                    "level": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "deathscar_edge",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "givescar_knock",
+            "label": "Pain's Gate",
+            "actionid": "talk",
+            "description": "The wound is healed - as much as it will ever be. A gate of pain and possibility remains.",
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "follower_scar_knock",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "knock",
+                    "level": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "deathscar_knock",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "givescar_winter",
+            "actionid": "talk",
+            "label": "The Beginning of an Ending",
+            "description": "The wound is healed, but this one came very close to death. Silence has touched them, like snow.",
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "follower_scar_winter",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "winter",
+                    "level": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "deathscar_winter",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deathscar_edge",
+            "actionid": "talk",
+            "label": "Death: a Defeat",
+            "requirements": {
+                "follower_scar_edge": 3
+            },
+            "description": "This one showed courage and endurance. In the end, that wasn't enough.[Your Follower acquired three Edge-Scars, and died.]",
+            "aspects": {
+                "killmortal": 1
+            }
+        },
+        {
+            "id": "deathscar_knock",
+            "actionid": "talk",
+            "label": "Death: an Opening",
+            "requirements": {
+                "follower_scar_knock": 3
+            },
+            "description": "To operate effectively, one must keep one's insides inside, and discourage what is outside from coming inside. When sufficient of one's insides pass outside, one is no longer a going concern. [Your Follower acquired three Knock-Scars, and died.]",
+            "aspects": {
+                "killmortal": 1
+            }
+        },
+        {
+            "id": "deathscar_winter",
+            "actionid": "talk",
+            "label": "Death: an Ending",
+            "requirements": {
+                "follower_scar_winter": 3
+            },
+            "description": "The year turns Westwards, towards Winter. This one has chosen to close their eyes. [Your Follower acquired three Winter-Scars, and died.]",
+            "aspects": {
+                "killmortal": 1
+            }
+        },
+        {
+            "id": "talktofollower",
+            "label": "Discuss occult business with a Follower",
+            "actionid": "talk",
+            "requirements": {
+                "society": -1,
+                "follower": 1,
+                "summoned": -1
+            },
+            "slots": [
+                {
+                    "id": "Subject",
+                    "label": "Subject",
+                    "description": "Our cult, for cult business; a target; or another topic.",
+                    "required": {
+                        "society": 1,
+                        "evidencelevel": 1,
+                        "hunter": 1,
+                        "independent": 1,
+                        "tool": 1,
+                        "ingredient": 1,
+                        "annoyance": 1,
+                        "location": 1
+                    }
+                }
+            ],
+            "comments": "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+            "alt": [
+                {
+                    "id": "talktohireling_rehire",
+                    "chance": 100
+                },
+                {
+                    "id": "talktodevotee_refire",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_givetool_router",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_cantgivetool",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationcabaret_lustsensation",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationcabaret_lustchange",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationstreetsstrange_lustenlightenment",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationauctionhouse_lustpower",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationcabaret_notinterested",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationstreetsstrange_notinterested",
+                    "chance": 100
+                },
+                {
+                    "id": "A_talktofollower_locationauctionhouse_notinterested",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_repairtoollanternbcracked",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_repairtoollanterndcracked",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_repairtoollanternfcracked",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction.repair.greatwork.sabotaged"
+                },
+                {
+                    "id": "A_follower_settrap_independent",
+                    "chance": 100
+                },
+                {
+                    "id": "A_follower_settrap_vault",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_murderhighwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_craftworkhighforge",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_seducehighgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_burglehighknock",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_charmhighheart",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_auguryhighlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_hoodwinkhighmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_abducthighedge",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_murdermidwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_craftworkmidforge",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_seducemidgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_burglemidknock",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_charmmidheart",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_augurymidlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_hoodwinkmidmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_abductmidedge",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_murderlowwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_craftworklowforge",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_seducelowgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_burglelowknock",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_charmlowheart",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_augurylowlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_hoodwinklowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "followeraction_abductlowedge",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattackhighedge",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattackmidedge",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattacklowedge",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattackhighwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattackmidwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattacklowwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "hunterattacknoedge",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceseducehighgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceattackhighedge",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceseducemidgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceattackmidedge",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyancederangemidmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceseducelowgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceattacklowedge",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyancederangelowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "annoyanceattacknoedge",
+                    "chance": 100
+                },
+                {
+                    "id": "evidencedestroymidmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "evidencedestroylowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "evidencedestroynomoth",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Significant conversations in a smoky meeting-room. What do I need from my follower? [Add your cult, to send them out on cult business; send them after enemies; or raise another matter.]",
+            "description": "Nothing, then.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "talktohireling_rehire",
+            "actionid": "talk",
+            "label": "Offer this hireling another payment.",
+            "requirements": {
+                "hireling": 1,
+                "funds": 1
+            },
+            "startdescription": "I could pay to extend this hireling's period of service.",
+            "description": "'All right. Same terms as before.'",
+            "aspects": {
+                "hiring": 1
+            },
+            "effects": {
+                "funds": -1
+            },
+            "craftable": true,
+            "warmup": 10
+        },
+        {
+            "id": "talktodevotee_refire",
+            "actionid": "talk",
+            "label": "Fire this Devotee with faith again.",
+            "requirements": {
+                "devotee": 1,
+                "fervour": 1
+            },
+            "startdescription": "If my devotee's faith is wavering, I can use Fervour to fire their enthusiasm again.",
+            "description": "'Would you forget your dreams so quickly?'",
+            "effects": {
+                "refiring": 1
+            },
+            "craftable": true,
+            "warmup": 10
+        },
+        {
+            "id": "A_talktofollower_cantgivetool",
+            "label": "Not Wise, or Not Permitted?",
+            "actionid": "talk",
+            "requirements": {
+                "follower": 1,
+                "tool": 1,
+                "summoned": -1,
+                "follower_honoured": 1
+            },
+            "startdescription": "I have already given this follower a gift. [A follower cannot receive a second gift.]"
+        },
+        {
+            "id": "A_talktofollower_givetool_router",
+            "label": "Gift a Tool to a Follower",
+            "actionid": "talk",
+            "requirements": {
+                "follower": 1,
+                "tool": 1,
+                "summoned": -1,
+                "follower_honoured": -1,
+                "greatwork": -1,
+                "greatwork.sabotaged": -1
+            },
+            "startdescription": "Power will pass from my hands to theirs. [This will increase a follower's relevant Aspect, but you can never reclaim the tool, nor gift them a second tool. A Gift will reduce Resentment.]",
+            "description": ".",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_edgeb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_edged"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_edgef"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_forgeb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_forged"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_forgef"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_grailmoth"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_grailb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_graild"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_grailf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_heartb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_heartd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_heartf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_knockb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_knockd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_knockf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_lanternb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_lanternd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_lanternf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_mothb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_mothd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_mothf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_secrethistoriesb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_secrethistoriesd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_winterb"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_winterd"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_winterf"
+                },
+                {
+                    "chance": 100,
+                    "id": "L_give_tool_other"
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_edgeb",
+            "label": "A minor gift of Edge",
+            "actionid": "talk",
+            "description": "Around the neck, on a length of dried tiger-sinew.",
+            "requirements": {
+                "tooledgeb": 1
+            },
+            "effects": {
+                "tooledgeb": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "edge",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 1,
+                    "additive": false
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_edged",
+            "label": "A significant gift of Edge",
+            "actionid": "talk",
+            "description": "Close to the hand, but wrapped against the touch of blood which may excite it.",
+            "requirements": {
+                "tooledged": 1
+            },
+            "effects": {
+                "tooledged": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "edge",
+                    "level": 2,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_edgef",
+            "label": "A great gift of Edge",
+            "actionid": "talk",
+            "description": "Buried somewhere it cannot incite rebellion.",
+            "requirements": {
+                "tooledgef": 1
+            },
+            "effects": {
+                "tooledgef": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "edge",
+                    "level": 3,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_forgeb",
+            "label": "A minor gift of Forge",
+            "actionid": "talk",
+            "description": "To be kept: around the neck, on a chain of fine steel links.",
+            "requirements": {
+                "toolforgeb": 1
+            },
+            "effects": {
+                "toolforgeb": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "forge",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_forged",
+            "label": "A significant gift of Forge",
+            "actionid": "talk",
+            "description": "To be kept: in a hoop of iron, fixed fast to the flesh.",
+            "requirements": {
+                "toolforged": 1
+            },
+            "effects": {
+                "toolforged": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "forge",
+                    "level": 2,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_forgef",
+            "label": "A great gift of Forge",
+            "actionid": "talk",
+            "description": "To be kept: in the lamp of a private shrine.",
+            "requirements": {
+                "toolforgef": 1
+            },
+            "effects": {
+                "toolforgef": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "forge",
+                    "level": 3,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_grailmoth",
+            "label": "A minor gift of Grail and Moth",
+            "actionid": "talk",
+            "description": "To be kept: below the neck, above the waist, in the central hollow of the chest.",
+            "requirements": {
+                "toolgrailmoth": 1
+            },
+            "effects": {
+                "toolgrailmoth": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "grail",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "moth",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_grailb",
+            "label": "A minor gift of Grail",
+            "actionid": "talk",
+            "description": "To be kept: never to be worn in daylight, and in moonlight, only with utmost caution.",
+            "requirements": {
+                "toolgrailb": 1
+            },
+            "effects": {
+                "toolgrailb": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "grail",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_graild",
+            "label": "A significant gift of Grail",
+            "actionid": "talk",
+            "description": "To be kept: into this ring will my servant weave their own hair, for its next owner to burn.",
+            "requirements": {
+                "toolgraild": 1
+            },
+            "effects": {
+                "toolgraild": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "grail",
+                    "level": 2,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_grailf",
+            "label": "A great gift of Grail",
+            "actionid": "talk",
+            "description": "To be kept: in the cellar, beside the rarer sort of wine.",
+            "requirements": {
+                "toolgrailf": 1
+            },
+            "effects": {
+                "toolgrailf": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "grail",
+                    "level": 3,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_heartb",
+            "label": "A minor gift of Heart",
+            "actionid": "talk",
+            "description": "To be carried: in a bandage-sling, like a well-behaved infant.",
+            "requirements": {
+                "toolheartb": 1
+            },
+            "effects": {
+                "toolheartb": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "heart",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_heartd",
+            "label": "A significant gift of Heart",
+            "actionid": "talk",
+            "description": "To be kept: wrapped tight, so it will not shiver untimely.",
+            "requirements": {
+                "toolheartd": 1
+            },
+            "effects": {
+                "toolheartd": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "heart",
+                    "level": 2,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_heartf",
+            "label": "A great gift of Heart",
+            "actionid": "talk",
+            "description": "To be kept: above the mantel, or before the threshold.",
+            "requirements": {
+                "toolheartf": 1
+            },
+            "effects": {
+                "toolheartf": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "heart",
+                    "level": 3,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_knockb",
+            "label": "A minor gift of Knock",
+            "actionid": "talk",
+            "description": "To be kept: around the neck, on a length of dried serpent-gut.",
+            "requirements": {
+                "toolknockb": 1
+            },
+            "effects": {
+                "toolknockb": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "knock",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_knockd",
+            "label": "A significant gift of Knock",
+            "actionid": "talk",
+            "description": "To be kept: at the door which is not to be opened.",
+            "requirements": {
+                "toolknockd": 1
+            },
+            "effects": {
+                "toolknockd": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "knock",
+                    "level": 2,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_knockf",
+            "label": "A great gift of Knock",
+            "actionid": "talk",
+            "description": "It cannot be locked away. Keep it in the hand or beneath the tongue.",
+            "requirements": {
+                "toolknockf": 1
+            },
+            "effects": {
+                "toolknockf": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "knock",
+                    "level": 3,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_lanternb",
+            "label": "A minor gift of Lantern",
+            "actionid": "talk",
+            "description": "To be kept: around the neck, on a twist of golden wire.",
+            "requirements": {
+                "toollanternb": 1
+            },
+            "effects": {
+                "toollanternb": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "lantern",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_lanternd",
+            "label": "A significant gift of Lantern",
+            "actionid": "talk",
+            "description": "Wherever it's kept, it will be visible in the splintered reflections of the pupils.",
+            "requirements": {
+                "toollanternd": 1
+            },
+            "effects": {
+                "toollanternd": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "lantern",
+                    "level": 2,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_lanternf",
+            "label": "A great gift of Lantern",
+            "actionid": "talk",
+            "description": "To be kept: in a room without windows, to which no light is ever admitted.",
+            "requirements": {
+                "toollanternf": 1
+            },
+            "effects": {
+                "toollanternf": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "lantern",
+                    "level": 3,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_mothb",
+            "label": "A minor gift of Moth",
+            "actionid": "talk",
+            "description": "To be kept: in a clot of hair, in a bandage, in a box, in a place we visit only when we are ready.",
+            "requirements": {
+                "toolmothb": 1
+            },
+            "effects": {
+                "toolmothb": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "moth",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_mothd",
+            "label": "A significant gift of Moth",
+            "actionid": "talk",
+            "description": "To be kept: upon the blank face of a mannequin-head, always facing the wall.",
+            "requirements": {
+                "toolmothd": 1
+            },
+            "effects": {
+                "toolmothd": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "moth",
+                    "level": 2,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_mothf",
+            "label": "A great gift of Moth",
+            "actionid": "talk",
+            "description": "To be kept: in a copper bowl of water, mixed with three drops of blood and three strands of hair, freshened weekly; and an iron needle, so they may always be aligned to the North.",
+            "requirements": {
+                "toolmothf": 1
+            },
+            "effects": {
+                "toolmothf": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "moth",
+                    "level": 3,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_secrethistoriesb",
+            "label": "A minor gift in commemoration of the Secret Histories",
+            "actionid": "talk",
+            "description": "Sometimes, one object can be kept in more than one place.",
+            "requirements": {
+                "toolsecrethistoriesb": 1
+            },
+            "effects": {
+                "toolsecrethistoriesb": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "secrethistories",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_secrethistoriesd",
+            "label": "A significant gift in commemoration of the Secret Histories",
+            "actionid": "talk",
+            "description": "To be kept: between two mirrors, beneath a light that is not to be extinguished.",
+            "requirements": {
+                "toolsecrethistoriesd": 1
+            },
+            "effects": {
+                "toolsecrethistoriesd": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "secrethistories",
+                    "level": 2,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_winterb",
+            "label": "A minor gift of Winter",
+            "actionid": "talk",
+            "description": "Kept in a silent place.",
+            "requirements": {
+                "toolwinterb": 1
+            },
+            "effects": {
+                "toolwinterb": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "winter",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 1,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_winterd",
+            "label": "A significant gift of Winter",
+            "actionid": "talk",
+            "description": "Kept in an empty place.",
+            "requirements": {
+                "toolwinterd": 1
+            },
+            "effects": {
+                "toolwinterd": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "winter",
+                    "level": 2,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 2,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_winterf",
+            "label": "A great gift of Winter",
+            "actionid": "talk",
+            "description": "Kept in an empty, silent place.",
+            "requirements": {
+                "toolwinterf": 1
+            },
+            "effects": {
+                "toolwinterf": -1
+            },
+            "mutations": [
+                {
+                    "filter": "follower",
+                    "mutate": "winter",
+                    "level": 3,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                },
+                {
+                    "filter": "follower",
+                    "mutate": "follower_honoured",
+                    "level": 3,
+                    "additive": false
+                }
+            ]
+        },
+        {
+            "id": "L_give_tool_other",
+            "label": "Not all gifts are suitable",
+            "actionid": "talk",
+            "description": "This is something that cannot be given away; or something that no-one would accept."
+        },
+        {
+            "id": "A_talktofollower_locationcabaret_lustsensation",
+            "label": "Invite them to an evening at the Ecdysis Club",
+            "actionid": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "follower_lustsensation": 1,
+                "locationcabaret": 1
+            },
+            "startdescription": "@#uqrose|Rose grins. 'Thank you. I'm very fond of the Club. My brother used to take me there.'\n#uqsaliba|Saliba examines me, toe to head. He curls his fingers into the palms of his hands, into fists, and then smooths them out. 'Good,' he agrees.\n#uqvictor|Victor winks. 'Yes, let's. My sister used to like the Club. I've been looking for a chance to go back.'\n#uqviolet|Violet chuckles. The chuckle becomes a delighted cackle, which ends in coughs. She recovers, and places a finger under my chin, to look directly into my eyes. 'Oh, yes,' she says.\n#uqrenira|Renira doesn't say a word. She only stretches splendidly and rises to stalk from the room. But she sends me a long glance back over her shoulder as she goes.@",
+            "description": "If I'm thinking of beginning a dalliance, then really, this is the place. If I and my companion share the same sensibilities. [To begin an affair with this character, show them that your deepest desires are aligned.]",
+            "linked": [
+                {
+                    "id": "L_talk_roseopportunity",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_talktofollower_locationcabaret_lustchange",
+            "label": "Invite them to an evening at the Ecdysis Club",
+            "actionid": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "follower_lustchange": 1,
+                "locationcabaret": 1
+            },
+            "startdescription": "@#uqporter|Porter hunches his shoulders and chews on a piece of liquorice root. 'Right,' he says.\n#uqysabet|Ysabet tilts her head reflectively. 'I might do,' she says. She hesitates for a batwing's beat. 'That would be gorgeous,' she adds.\n#uqclovette|Clovette claps her hands. 'I thought you'd never ask!'\n#uqdorothy|Dorothy nods decisively, twice, thrice. 'It's time,' she says softly.\n#uqsylvia|Sylvia yawns. She lifts her eye-patch edge to scratch an itch in the hollow beneath. 'Ripping,' she drawls.\n#uqleo|Leo ducks his head. He glances up at me and then at the ground. 'I would be delighted,' he says, very formally, to the ground.@",
+            "description": "My companion's breath comes short as they watch the display on the stage; not particularly when the bodies of the performers are unsheathed, but most of all when certain transformations are manifested. [To begin an affair with this character, show them that your deepest desires are aligned.]",
+            "linked": [
+                {
+                    "id": "L_talk_roseopportunity",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_talktofollower_locationstreetsstrange_lustenlightenment",
+            "label": "Invite them for a walk in strange streets",
+            "actionid": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "follower_lustenlightenment": 1,
+                "locationstreetsstrange": 1
+            },
+            "startdescription": "@#uqauclair|Auclair elevates her face and orients her mouth into a bright, clear smile. 'Delighted,' she says.\n#uqcat|Cat lifts her teacup, drains it to the dregs, tilts the cup to study it critically. 'Why not,' she says. 'Why not indeed.'\n#uqclifton|Clifton belches and wipes his mouth. 'All bloody right,' he says approvingly.\n#uqenid|Enid looks up, directly into my eyes, a sudden dragonfly brightness. 'Yes,' she says.\n#uqneville|Neville swallows. 'Truly? Thank you. I mean, yes, of course!'\n#uqslee|For a moment Slee looks as alarmed as if I'd suggested a surgical intervention. Then he nods, earnestly. 'I wonder what will happen,' he says. @",
+            "description": "The light is silver; the breeze is cool; the night's silence invites words as dark velvet invites a finger's touch. [To begin an affair with this character, show them that your deepest desires are aligned.]",
+            "linked": [
+                {
+                    "id": "L_talk_roseopportunity",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_talktofollower_locationauctionhouse_lustpower",
+            "label": "Invite them to an evening at Oriflamme's",
+            "actionid": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "follower_lustpower": 1,
+                "locationauctionhouse": 1
+            },
+            "startdescription": "@#uqtristan|Tristan nods emphatically, without speaking.\n#uqvalciane|Valciane nods curtly, but her eyes glow as coals do when a furnace door is opened.\n#uqelridge|Elridge folds his knife shut with a click, and focuses his whole attention on me. 'Yes, please,' he says.\n#uqlaidlaw|Laidlaw beams. 'That sounds pretty!'@",
+            "description": "Some prefer moonlit walks. Some prefer soft music. But there are those whose enjoy shining opulence, high company, and the soft click of the operations of power. [To begin an affair with this character, show them that your deepest desires are aligned.]",
+            "linked": [
+                {
+                    "id": "L_talk_roseopportunity",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_talktofollower_locationcabaret_notinterested",
+            "label": "Invite them to an evening at the Ecdysis Club",
+            "actionid": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "locationcabaret": 1
+            },
+            "startdescription": "'I... don't think that's for me.'",
+            "description": "[Your follower has no especial interest in this place.]"
+        },
+        {
+            "id": "A_talktofollower_locationauctionhouse_notinterested",
+            "label": "Invite them to an evening at Oriflamme's",
+            "actionid": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "locationauctionhouse": 1
+            },
+            "startdescription": "'I... don't think that's for me.'",
+            "description": "[Your follower has no especial interest in this place.]"
+        },
+        {
+            "id": "A_talktofollower_locationstreetsstrange_notinterested",
+            "label": "Invite them to take a walk in an uncanny place.",
+            "actionid": "talk",
+            "requirements": {
+                "romanticinterest": -1,
+                "locationstreetsstrange": 1
+            },
+            "startdescription": "'I... don't think that's for me.'",
+            "description": "[Your follower has no especial interest in this place.]"
+        },
+        {
+            "id": "followeraction_repairtoollanternbcracked",
+            "label": "Repair a Cracked Noonstone",
+            "actionid": "talk",
+            "requirements": {
+                "follower": 1,
+                "forge": 1,
+                "toollanternbcracked": 1
+            },
+            "startdescription": "We can begin to repair this, but it will take Funds to purchase the necessary materials.",
+            "description": ".",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "followeraction_repairtoollanternbcracked_attempt"
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanternbcracked_attempt",
+            "label": "Repairing a Cracked Noonstone",
+            "actionid": "talk",
+            "slots": [
+                {
+                    "id": "Materials",
+                    "label": "Materials",
+                    "description": "Rare fuels and odd powders",
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "startdescription": "My follower needs Funds to complete their task.",
+            "description": "I couldn't provide the materials my follower needed. The stone is unredeemed.",
+            "warmup": 30,
+            "alt": [
+                {
+                    "id": "followeraction_repairtoollanternbcracked_succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanternbcracked_succeed",
+            "label": "Repairing a Cracked Noonstone",
+            "actionid": "talk",
+            "requirements": {
+                "funds": 1
+            },
+            "startdescription": "My follower is at work on the stone.",
+            "description": "The stone is repaired! It shines again as it did once before.",
+            "effects": {
+                "funds": -1,
+                "toollanternbcracked": -1,
+                "toollanternb": 1
+            }
+        },
+        {
+            "id": "followeraction_repairtoollanterndcracked",
+            "label": "Repair a Cracked Wildering Mirror",
+            "actionid": "talk",
+            "requirements": {
+                "follower": 1,
+                "forge": 1,
+                "toollanterndcracked": 1
+            },
+            "startdescription": "We can begin to repair this, but it will take at least a Bronze Spintria to purchase the necessary materials.",
+            "description": ".",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "followeraction_repairtoollanterndcracked_attempt"
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanterndcracked_attempt",
+            "label": "Repairing a Cracked Wildering Mirror",
+            "actionid": "talk",
+            "slots": [
+                {
+                    "id": "Materials",
+                    "label": "Materials",
+                    "description": "Rare metals and improbable tints",
+                    "required": {
+                        "compensationvalue": 4
+                    }
+                }
+            ],
+            "startdescription": "My follower needs a Bronze Spintria, or better, to complete their task.",
+            "description": "I couldn't provide the materials my follower needed. The mirror is unredeemed.",
+            "warmup": 30,
+            "alt": [
+                {
+                    "id": "followeraction_repairtoollanterndcracked_succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanterndcracked_succeed",
+            "label": "Repairing a Cracked Wildering Mirror",
+            "actionid": "talk",
+            "requirements": {
+                "compensationvalue": 4
+            },
+            "startdescription": "My follower is at work on the mirror.",
+            "description": "The mirror is repaired! It shines again as it did once before.",
+            "effects": {
+                "compensationvalue": -1,
+                "toollanterndcracked": -1,
+                "toollanternd": 1
+            }
+        },
+        {
+            "id": "followeraction_repairtoollanternfcracked",
+            "label": "Repair a Cracked Watchman's Glass",
+            "actionid": "talk",
+            "requirements": {
+                "follower": 1,
+                "forge": 1,
+                "toollanternfcracked": 1
+            },
+            "startdescription": "We can begin to repair this, but it will take at least a Silver Spintria to purchase the necessary materials.",
+            "description": ".",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "followeraction_repairtoollanternfcracked_attempt"
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanternfcracked_attempt",
+            "label": "Repairing a Cracked Watchman's Glass",
+            "actionid": "talk",
+            "slots": [
+                {
+                    "id": "Materials",
+                    "label": "Materials",
+                    "description": "Shining songs and exotic alloys",
+                    "required": {
+                        "compensationvalue": 8
+                    }
+                }
+            ],
+            "startdescription": "My follower needs a Silver Spintria, or better, to complete their task.",
+            "description": "I couldn't provide the materials my follower needed. The mirror is unredeemed.",
+            "warmup": 30,
+            "alt": [
+                {
+                    "id": "followeraction_repairtoollanternfcracked_succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_repairtoollanternfcracked_succeed",
+            "label": "Repairing a Cracked Watchman's Glass",
+            "actionid": "talk",
+            "requirements": {
+                "compensationvalue": 8
+            },
+            "startdescription": "My follower is at work on the mirror.",
+            "description": "The mirror is repaired! It shines again as it did once before.",
+            "effects": {
+                "compensationvalue": -1,
+                "toollanternfcracked": -1,
+                "toollanternf": 1
+            }
+        },
+        {
+            "id": "followeraction.repair.greatwork.sabotaged",
+            "label": "Repair a Sabotaged Element of the Great Work",
+            "actionid": "talk",
+            "requirements": {
+                "follower": 1,
+                "forge": 1,
+                "greatwork.sabotaged": 1
+            },
+            "startdescription": "We can begin to repair this, but it will take a Silver Spintria to purchase the necessary materials.",
+            "description": ".",
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "followeraction.repair.greatwork.sabotaged.attempt"
+                }
+            ]
+        },
+        {
+            "id": "followeraction.repair.greatwork.sabotaged.attempt",
+            "label": "Repairing a Sabotaged Element of the Great Work",
+            "actionid": "talk",
+            "slots": [
+                {
+                    "id": "Materials",
+                    "label": "Materials",
+                    "description": "Metals and mercies",
+                    "required": {
+                        "compensationvalue": 8
+                    }
+                }
+            ],
+            "startdescription": "My follower needs a Silver Spintria to complete their task.",
+            "description": "I couldn't provide the materials my follower needed. The Work remains imperilled.",
+            "warmup": 30,
+            "alt": [
+                {
+                    "id": "followeraction.repair.greatwork.sabotaged.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction.repair.greatwork.sabotaged.succeed",
+            "label": "Repairing a Sabotaged Element of the Great Work",
+            "actionid": "talk",
+            "requirements": {
+                "compensationvalue": 8
+            },
+            "startdescription": "My follower is at work,",
+            "description": "The Great Work will continue!",
+            "aspects": {
+                "sabotage.repair": 1
+            }
+        },
+        {
+            "id": "A_follower_settrap_independent",
+            "actionid": "talk",
+            "label": "Create a Snare to delay or defeat a Rival",
+            "startdescription": "Rivals don't prowl the streets like Hunters. They will only meet us on neutral ground. To defeat one, we must prepare a trap they may stumble into. [Edge, Forge, Moth or Winter are useful for creating Snares. Once created, a Snare can be used when an Independent makes an attempt on any Vault.]",
+            "requirements": {
+                "independent": 1,
+                "follower": 1,
+                "summoned": -1
+            },
+            "comments": "Follower requirement isn't redundant... cos we also link here from conversations with Independents.",
+            "alt": [
+                {
+                    "id": "expel_independent",
+                    "chance": 100,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "independent": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "L_set_trap_router",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_follower_settrap_vault",
+            "actionid": "talk",
+            "label": "Create a Snare to delay or defeat a Rival",
+            "startdescription": "Rivals are cautious: they don't prowl the streets like Hunters. To defeat one, we must prepare a trap, and await our opportunity. [Edge, Forge, Moth or Winter are useful for creating Snares. Once created, a Snare can be used when an Independent makes an attempt on any Vault.]",
+            "requirements": {
+                "vault": 1
+            },
+            "linked": [
+                {
+                    "id": "L_set_trap_router",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_set_trap_router",
+            "actionid": "talk",
+            "effects": {
+                "snare": 1
+            },
+            "linked": [
+                {
+                    "id": "L_settrap_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_highwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_midwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_lowedge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_lowwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_lowforge",
+                    "chance": 100
+                },
+                {
+                    "id": "L_settrap_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "L_createsnare_rubbish",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_highedge",
+            "actionid": "talk",
+            "requirements": {
+                "edge": 10
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_great",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_highwinter",
+            "actionid": "talk",
+            "requirements": {
+                "winter": 10
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_great",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_highforge",
+            "actionid": "talk",
+            "requirements": {
+                "forge": 10
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_great",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_highmoth",
+            "actionid": "talk",
+            "requirements": {
+                "moth": 10
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_great",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_midedge",
+            "actionid": "talk",
+            "requirements": {
+                "edge": 7
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_good",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_midwinter",
+            "actionid": "talk",
+            "requirements": {
+                "winter": 7
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_good",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_midforge",
+            "actionid": "talk",
+            "requirements": {
+                "forge": 7
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_good",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_midmoth",
+            "actionid": "talk",
+            "requirements": {
+                "moth": 7
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_good",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_lowedge",
+            "actionid": "talk",
+            "requirements": {
+                "edge": 3
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_poor",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_lowwinter",
+            "actionid": "talk",
+            "requirements": {
+                "winter": 3
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_poor",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_lowforge",
+            "actionid": "talk",
+            "requirements": {
+                "forge": 3
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_poor",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_settrap_lowmoth",
+            "actionid": "talk",
+            "requirements": {
+                "moth": 3
+            },
+            "linked": [
+                {
+                    "id": "L_createsnare_poor",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "L_createsnare_great",
+            "actionid": "talk",
+            "label": "A Perilous Snare",
+            "description": "My follower has set a perilously cunning ambuscade - one that will almost certainly succeed.",
+            "mutations": [
+                {
+                    "filter": "snare",
+                    "mutate": "snarelevel",
+                    "level": 3,
+                    "additive": true
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "L_createsnare_good",
+            "actionid": "talk",
+            "label": "A Cunning Snare",
+            "description": "My follower has set a cunning ambuscade - one that will likely succeed.",
+            "mutations": [
+                {
+                    "filter": "snare",
+                    "mutate": "snarelevel",
+                    "level": 2,
+                    "additive": true
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "L_createsnare_poor",
+            "actionid": "talk",
+            "label": "An Adequate Snare",
+            "description": "My follower has prepared a stratagem which - with considerable luck - might defeat a rival's plans.",
+            "mutations": [
+                {
+                    "filter": "snare",
+                    "mutate": "snarelevel",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "L_createsnare_rubbish",
+            "actionid": "talk",
+            "label": "A Desperate Attempt",
+            "description": "My follower's plan is eccentric at best and incompetent at worst, but perhaps an enemy will stumble into it.",
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_abducthighedge",
+            "label": "Cult Business: Abduct a Stranger",
+            "actionid": "talk",
+            "startdescription": "An Assassin can snatch a victim off the streets with ease.",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "edge": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_abductsuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_abductfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_abductmidedge",
+            "label": "Cult Business: Abduct a Stranger",
+            "actionid": "talk",
+            "startdescription": "A skilled Disciple can probably abduct an unwary victim.",
+            "requirements": {
+                "society": 1,
+                "edge": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_abductsuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_abductfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_abductlowedge",
+            "label": "Cult Business: Abduct a Stranger",
+            "actionid": "talk",
+            "startdescription": "My Believer will struggle to abduct a victim, but they may be lucky.",
+            "requirements": {
+                "society": 1,
+                "edge": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_abductsuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_abductfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_abductsuccess",
+            "label": "Attempting an Abduction",
+            "actionid": "talk",
+            "startdescription": "I await word....",
+            "description": "My minion has returned, with a carefully packaged prisoner.",
+            "effects": {
+                "notoriety": 1,
+                "funds": 1
+            },
+            "deckeffects": {
+                "randomvictim": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_abductfailure",
+            "label": "Attempting an Abduction",
+            "actionid": "talk",
+            "startdescription": "I await word....",
+            "description": "My minion has returned, empty-handed.",
+            "effects": {
+                "notoriety": 1
+            },
+            "alt": [
+                {
+                    "id": "followeraction_abductfailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_abductfailure_losefollower",
+            "label": "Attempting an Abduction",
+            "actionid": "talk",
+            "startdescription": "I await word....",
+            "description": "My minion has returned, empty-handed and grievously wounded. Their victim showed pluck. [Heal a fallen Follower with Talk.]",
+            "effects": {
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_wound",
+                    "level": 1,
+                    "additive": false
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "follower",
+                    "level": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_murderhighwinter",
+            "label": "Cult Business: Murder a Stranger",
+            "actionid": "talk",
+            "startdescription": "This one nearly always returns with a death in their pocket.",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "winter": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_murdersuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_murderfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_murdermidwinter",
+            "label": "Cult Business: Murder a Stranger",
+            "actionid": "talk",
+            "startdescription": "A skilled Disciple can probably bring back a fresh corpse.",
+            "requirements": {
+                "society": 1,
+                "winter": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_murdersuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_murderfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_murderlowwinter",
+            "label": "Cult Business: Murder a Stranger",
+            "actionid": "talk",
+            "startdescription": "My Believer may very easily fail.",
+            "requirements": {
+                "society": 1,
+                "winter": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_murdersuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_murderfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_murdersuccess",
+            "label": "Attempting a Murder...",
+            "actionid": "talk",
+            "startdescription": "I await word....",
+            "description": "My minion has returned, with a fresh corpse and its former belongings.",
+            "effects": {
+                "notoriety": 1,
+                "corpse": 1
+            },
+            "deckeffects": {
+                "robberyrewards": 2
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_murderfailure",
+            "label": "Attempting a Murder...",
+            "actionid": "talk",
+            "startdescription": "I await word....",
+            "description": "My minion has returned, empty-handed.",
+            "effects": {
+                "notoriety": 1
+            },
+            "alt": [
+                {
+                    "id": "followeraction_murderfailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_murderfailure_losefollower",
+            "label": "Attempting a Murder...",
+            "actionid": "talk",
+            "startdescription": "I await word....",
+            "description": "My minion has returned to report failure. They can barely stand. Their victim put up a fight. [Heal a fallen Follower with Talk.]",
+            "effects": {
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_wound",
+                    "level": 1,
+                    "additive": false
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "follower",
+                    "level": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_craftworkhighforge",
+            "label": "Cult Business: Craftsmanship",
+            "actionid": "talk",
+            "startdescription": "My Reshaper can earn funds in illegal laboratories and shadowy manufactories. Occasionally, something may go awry.",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "forge": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_craftworksuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_craftworkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_craftworkmidforge",
+            "label": "Cult Business: Craftsmanship",
+            "actionid": "talk",
+            "startdescription": "My Disciple can probably earn funds in illegal laboratories and shadowy manufactories - but there is a risk of accidents.",
+            "requirements": {
+                "society": 1,
+                "forge": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_craftworksuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_craftworkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_craftworklowforge",
+            "label": "Cult Business: Craftsmanship",
+            "actionid": "talk",
+            "startdescription": "My Believer might be able to earn funds in illegal laboratories and shadowy manufactories... if they're lucky.",
+            "requirements": {
+                "society": 1,
+                "forge": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_craftworksuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_craftworkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_craftworksuccess",
+            "label": "Working under Contract...",
+            "actionid": "talk",
+            "startdescription": "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
+            "description": "My follower has returned with the rewards of their labour.",
+            "deckeffects": {
+                "robberyrewards": 2
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_craftworkfailure",
+            "label": "Working under Contract...",
+            "actionid": "talk",
+            "startdescription": "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
+            "description": "My follower has returned empty-handed. Today's tasks were beyond them.",
+            "effects": {},
+            "alt": [
+                {
+                    "id": "followeraction_craftworkfailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_craftworkfailure_losefollower",
+            "label": "Working under Contract...",
+            "actionid": "talk",
+            "startdescription": "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
+            "description": "There has been an accident. [Heal a fallen Follower with Talk.]",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_wound",
+                    "level": 1,
+                    "additive": false
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "follower",
+                    "level": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_seducehighgrail",
+            "label": "Cult Business: Seduce a Stranger",
+            "actionid": "talk",
+            "startdescription": "No-one refuses a Cyprian. Almost no-one.",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "grail": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_seducesuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_seducefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_seducemidgrail",
+            "label": "Cult Business: Seduce a Stranger",
+            "actionid": "talk",
+            "startdescription": "A sufficiently persuasive Disciple can probably lure a susceptible companion back to us.",
+            "requirements": {
+                "society": 1,
+                "grail": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_seducesuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_seducefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_seducelowgrail",
+            "label": "Cult Business: Seduce a Stranger",
+            "actionid": "talk",
+            "startdescription": "My Believer might be able to lure a victim back to us.",
+            "requirements": {
+                "society": 1,
+                "grail": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_seducesuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_seducefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_seducesuccess",
+            "label": "Attempting a Seduction",
+            "actionid": "talk",
+            "startdescription": "Out in the night, my follower is whispering words that sometimes they might mean. Even if their victim knows the words are lies, they might not care.",
+            "description": "My minion has returned, attended by a prisoner rendered docile with delight.",
+            "effects": {
+                "notoriety": 1,
+                "funds": 1
+            },
+            "deckeffects": {
+                "randomvictim": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_seducefailure",
+            "label": "Attempting a Seduction",
+            "actionid": "talk",
+            "startdescription": "Out in the night, my follower is whispering words that sometimes they might mean. Even if their victim knows the words are lies, they might not care.",
+            "description": "My minion has returned, empty-handed.",
+            "effects": {
+                "notoriety": 1
+            },
+            "alt": [
+                {
+                    "id": "followeraction_seducefailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_seducefailure_losefollower",
+            "label": "Attempting a Seduction",
+            "actionid": "talk",
+            "startdescription": "Out in the night, my follower is whispering words that sometimes they might mean. Even if their victim knows the words are lies, they might not care.",
+            "description": "My minion has returned, half-conscious, bleeding badly. It seems a rival suitor took exception to their efforts. [Heal a fallen Follower with Talk.]",
+            "effects": {
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_wound",
+                    "level": 1,
+                    "additive": false
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "follower",
+                    "level": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_burglehighknock",
+            "label": "Cult Business: Burglary",
+            "actionid": "talk",
+            "startdescription": "My Key should be capable of defeating any lock in this city.",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "knock": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_burglesuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_burglefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_burglemidknock",
+            "label": "Cult Business: Burglary",
+            "actionid": "talk",
+            "startdescription": "My Disciple can probably use their talents to harvest treasures from the unsuspecting.",
+            "requirements": {
+                "society": 1,
+                "knock": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_burglesuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_burglefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_burglelowknock",
+            "label": "Cult Business: Burglary",
+            "actionid": "talk",
+            "startdescription": "My Believer might be able to harvest treasures from the unsuspecting... if they're lucky.",
+            "requirements": {
+                "society": 1,
+                "knock": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_burglesuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_burglefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_burglesuccess",
+            "label": "Breaking, Entering, Returning...",
+            "actionid": "talk",
+            "startdescription": "In cellars and in attics, in secret compartments and sealed closets, the rich and not-so-rich conceal their treasures.",
+            "description": "My follower has returned with their haul.",
+            "effects": {
+                "notoriety": 1,
+                "funds": 1
+            },
+            "deckeffects": {
+                "robberyrewards": 2
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_burglefailure",
+            "label": "Breaking, Entering, Returning...",
+            "actionid": "talk",
+            "startdescription": "In cellars and in attics, in secret compartments and sealed closets, the rich and not-so-rich conceal their treasures.",
+            "description": "My follower has returned empty-handed. Today's tasks were beyond them.",
+            "effects": {
+                "notoriety": 1
+            },
+            "alt": [
+                {
+                    "id": "followeraction_burglefailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_burglefailure_losefollower",
+            "label": "Breaking, Entering, Returning...",
+            "actionid": "talk",
+            "startdescription": "In cellars and in attics, in secret compartments and sealed closets, the rich and not-so-rich conceal their treasures.",
+            "description": "There has been an accident. [Heal a fallen Follower with Talk.]",
+            "effects": {
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_wound",
+                    "level": 1,
+                    "additive": false
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "follower",
+                    "level": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_charmhighheart",
+            "label": "Cult Business: Charm",
+            "actionid": "talk",
+            "startdescription": "Not everyone is sympathetic to our aims, but my Tarantellist is popular everywhere. If we have problems with our reputation, they can almost certainly smooth them over.",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "heart": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_charmsuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_charmfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_charmmidheart",
+            "label": "Cult Business: Charm",
+            "actionid": "talk",
+            "startdescription": "Not everyone is sympathetic to our aims, but if we have problems with our reputation, our Disciple can probably smooth them over.",
+            "requirements": {
+                "society": 1,
+                "heart": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_charmsuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_charmfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_charmlowheart",
+            "label": "Cult Business: Charm",
+            "actionid": "talk",
+            "startdescription": "Not everyone is sympathetic to our aims, but if we have problems with our reputation, our Believer might be able to smooth them over. ",
+            "requirements": {
+                "society": 1,
+                "heart": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_charmsuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_charmfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_charmsuccess",
+            "label": "Earnest Speeches, Affable Conversation",
+            "actionid": "talk",
+            "slots": [
+                {
+                    "id": "Reputation",
+                    "label": "Reputation",
+                    "required": {
+                        "reputation": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "The standards of daylight society cannot apply to us. But perhaps we won't emphasise that point. Perhaps we'll rely on charm and good humour.  I have supplied elegant platitudes about the high principles of our organisation.",
+            "description": "Optimism is the spice which saves.",
+            "effects": {
+                "reputation": -1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_charmfailure",
+            "label": "Earnest Speeches, Affable Conversation",
+            "actionid": "talk",
+            "slots": [
+                {
+                    "id": "Reputation",
+                    "label": "Reputation",
+                    "required": {
+                        "reputation": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "The standards of daylight society cannot apply to us. But perhaps we won't emphasise that point. Perhaps we'll rely on charm and good humour.  I have supplied elegant platitudes about the high principles of our organisation.",
+            "description": "No-one understands us, or else they understand us too well.",
+            "effects": {
+                "rumour": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_auguryhighlantern",
+            "label": "Cult Business: Augury",
+            "actionid": "talk",
+            "startdescription": "My Seer can determine times and places where power will be available for our uses. There is a small risk.",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "lantern": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_augurysuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_auguryfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_augurymidlantern",
+            "label": "Cult Business: Augury",
+            "actionid": "talk",
+            "startdescription": "My Disciple can probably determine times and places where power will be available for our uses: but in matters of the Mansus, there is always danger.",
+            "requirements": {
+                "society": 1,
+                "lantern": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_augurysuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_auguryfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_augurylowlantern",
+            "label": "Cult Business: Augury",
+            "actionid": "talk",
+            "startdescription": "My Believer might be able to determine times and places where power will be available for our uses: but in matters of the Mansus, there is always danger.",
+            "requirements": {
+                "society": 1,
+                "lantern": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_augurysuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_auguryfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_augurysuccess",
+            "label": "Beneath the World's Skin",
+            "actionid": "talk",
+            "startdescription": "Hours of scholarship and meditation...",
+            "description": "My follower has found one more way to align our work with the greater work of the Hours.",
+            "effects": {
+                "erudition": 1
+            },
+            "deckeffects": {
+                "randominfluencelow": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_auguryfailure",
+            "label": "Beneath the World's Skin",
+            "actionid": "talk",
+            "startdescription": "Hours of scholarship and meditation...",
+            "description": "My follower has committed a dangerous error. Their mind is still intact, but the light of the Mansus has touched the world here.",
+            "effects": {
+                "fascination": 1
+            },
+            "alt": [
+                {
+                    "id": "followeraction_auguryfailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_auguryfailure_losefollower",
+            "label": "Beneath the World's Skin",
+            "actionid": "talk",
+            "startdescription": "Hours of scholarship and meditation...",
+            "description": "My follower has committed a dangerous error. The light of the Mansus has touched the world here. Their psychic defences crumble to chaos, and we had to restrain them before they could do themself further harm. They will recover their senses in time, but they are badly hurt. [Heal a fallen Follower with Talk.]",
+            "effects": {
+                "fascination": 1
+            },
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_wound",
+                    "level": 1,
+                    "additive": false
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "follower",
+                    "level": -1,
+                    "additive": false
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_hoodwinkhighmoth",
+            "label": "Cult Business: Hoodwink",
+            "actionid": "talk",
+            "startdescription": "My Skintwister's cunning is enough to part fools from their treasure as easily as picking pears in an orchard. (Although even a pear orchard has the occasional hazard. Wasps, perhaps.)",
+            "description": ".",
+            "requirements": {
+                "society": 1,
+                "moth": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_hoodwinksuccess",
+                    "chance": 90
+                },
+                {
+                    "id": "followeraction_hoodwinkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_hoodwinkmidmoth",
+            "label": "Cult Business: Hoodwink",
+            "actionid": "talk",
+            "startdescription": "My Disciple can probably use their talents to part fools from their treasures.",
+            "requirements": {
+                "society": 1,
+                "moth": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_hoodwinksuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "followeraction_hoodwinkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_hoodwinklowmoth",
+            "label": "Cult Business: Hoodwink",
+            "actionid": "talk",
+            "startdescription": "My Believer might be able to part fools from their treasures... if they're lucky.",
+            "requirements": {
+                "society": 1,
+                "moth": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "followeraction_hoodwinksuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "followeraction_hoodwinkfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "followeraction_hoodwinksuccess",
+            "label": "Deceit and Confusion",
+            "actionid": "talk",
+            "startdescription": "My follower is attempting a profitable deception.",
+            "description": "A successful deception! Here are the rewards.",
+            "effects": {
+                "notoriety": 1,
+                "funds": 1
+            },
+            "deckeffects": {
+                "robberyrewards": 2
+            },
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_hoodwinkfailure",
+            "label": "Deceit and Confusion",
+            "actionid": "talk",
+            "startdescription": "My follower is attempting a profitable deception.",
+            "description": "My follower has returned empty-handed. Their scheme came unravelled.",
+            "effects": {
+                "notoriety": 1
+            },
+            "alt": [
+                {
+                    "id": "followeraction_hoodwinkfailure_losefollower",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "followeraction_hoodwinkfailure_losefollower",
+            "label": "Deceit and Confusion",
+            "actionid": "talk",
+            "startdescription": "My follower is attempting a profitable deception.",
+            "description": "I was beginning to worry that my follower had arranged their own disappearance. But it seems their deception was detected. The victim was outraged, and my follower barely escaped alive. [Heal a fallen Follower with Talk.]",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_wound",
+                    "level": 1,
+                    "additive": false
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "follower",
+                    "level": -1,
+                    "additive": false
+                }
+            ],
+            "effects": {
+                "notoriety": 1
+            },
+            "warmup": 30
+        }
+    ]
+}

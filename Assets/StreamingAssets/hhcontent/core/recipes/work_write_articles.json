@@ -1,0 +1,493 @@
+{
+    "recipes": [
+        {
+            "id": "writeedgec",
+            "label": "Write an extensive treatise on the practices of the Edge, and the Hours that rule it",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleedgec": 1,
+                "lore": 1,
+                "edge": 6,
+                "reason": 2
+            },
+            "effects": {
+                "articleedgec": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writeforgec",
+            "label": "Write an extensive treatise on the lore of the principle called Forge",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleforgec": 1,
+                "lore": 1,
+                "forge": 6,
+                "reason": 2
+            },
+            "effects": {
+                "articleforgec": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writegrailc",
+            "label": "Write an extensive treatise on the lore of the Red Grail",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlegrailc": 1,
+                "lore": 1,
+                "grail": 6,
+                "reason": 1,
+                "passion": 1
+            },
+            "effects": {
+                "articlegrailc": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writeheartc",
+            "label": "Write an extensive treatise on Heart-lore",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleheartc": 1,
+                "lore": 1,
+                "heart": 6,
+                "reason": 1,
+                "passion": 1
+            },
+            "effects": {
+                "articleheartc": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writeknockc",
+            "label": "Write an extensive treatise on the Knock-lore",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleknockc": 1,
+                "lore": 1,
+                "knock": 6,
+                "reason": 2
+            },
+            "effects": {
+                "articleknockc": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writelanternc",
+            "label": "Write an extensive treatise on the lore of the Lantern",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlelanternc": 1,
+                "lore": 1,
+                "lantern": 6,
+                "reason": 2
+            },
+            "effects": {
+                "articlelanternc": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writemothc",
+            "label": "Write an extensive treatise on the lore of the Moth",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlemothc": 1,
+                "lore": 1,
+                "moth": 6,
+                "reason": 1,
+                "passion": 1
+            },
+            "effects": {
+                "articlemothc": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writesecrethistoriesc",
+            "label": "Write an extensive treatise on the Secret Histories",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlesecrethistoriesc": 1,
+                "lore": 1,
+                "secrethistories": 6,
+                "reason": 2
+            },
+            "effects": {
+                "articlesecrethistoriesc": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writewinterc",
+            "label": "Write an extensive treatise on the White Lore",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlewinterc": 1,
+                "lore": 1,
+                "winter": 6,
+                "reason": 2
+            },
+            "effects": {
+                "articlewinterc": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writeedgeb",
+            "label": "Write a substantial treatise on the lore of the practices of the Edge",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleedgeb": 1,
+                "lore": 1,
+                "edge": 4,
+                "reason": 1
+            },
+            "effects": {
+                "articleedgeb": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writeforgeb",
+            "label": "Write a substantial treatise on the Forge-principle",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleforgeb": 1,
+                "lore": 1,
+                "forge": 4,
+                "reason": 1
+            },
+            "effects": {
+                "articleforgeb": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writegrailb",
+            "label": "Write a substantial treatise on the rites of the Red Grail",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlegrailb": 1,
+                "lore": 1,
+                "grail": 4,
+                "reason": 1
+            },
+            "effects": {
+                "articlegrailb": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writeheartb",
+            "label": "Write a substantial treatise on Heart-lore",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleheartb": 1,
+                "lore": 1,
+                "heart": 4,
+                "reason": 1
+            },
+            "effects": {
+                "articleheartb": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writeknockb",
+            "label": "Write a substantial treatise on the opening-rites of Knock",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleknockb": 1,
+                "lore": 1,
+                "knock": 4,
+                "reason": 1
+            },
+            "effects": {
+                "articleknockb": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writelanternb",
+            "label": "Write a substantial treatise on the Lantern",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlelanternb": 1,
+                "lore": 1,
+                "lantern": 4,
+                "reason": 1
+            },
+            "effects": {
+                "articlelanternb": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writemothb",
+            "label": "Write a substantial treatise on the Moth",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlemothb": 1,
+                "lore": 1,
+                "moth": 4,
+                "reason": 1
+            },
+            "effects": {
+                "articlemothb": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writesecrethistoriesb",
+            "label": "Write a substantial treatise on the Secret Histories",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlesecrethistoriesb": 1,
+                "lore": 1,
+                "secrethistories": 4,
+                "reason": 1
+            },
+            "effects": {
+                "articlesecrethistoriesb": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writewinterb",
+            "label": "Write a substantial treatise on the White Lore",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlewinterb": 1,
+                "lore": 1,
+                "winter": 4,
+                "reason": 1
+            },
+            "effects": {
+                "articlewinterb": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writeedgea",
+            "label": "Write a brief treatise on the Edge-principle",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleedge": 1,
+                "lore": 1,
+                "edge": 2,
+                "reason": 1
+            },
+            "effects": {
+                "articleedgea": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writeforgea",
+            "label": "Write a brief treatise on the Forge-principle",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleforge": 1,
+                "lore": 1,
+                "forge": 2,
+                "reason": 1
+            },
+            "effects": {
+                "articleforgea": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writegraila",
+            "label": "Write a brief treatise on the lore of the Red Grail",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlegrail": 1,
+                "lore": 1,
+                "grail": 2,
+                "reason": 1
+            },
+            "effects": {
+                "articlegraila": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writehearta",
+            "label": "Write a brief treatise on the lore of the Heart",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleheart": 1,
+                "lore": 1,
+                "heart": 2,
+                "reason": 1
+            },
+            "effects": {
+                "articlehearta": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writeknocka",
+            "label": "Write a brief treatise on the Knock-principle and the rites of opening",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticleknock": 1,
+                "lore": 1,
+                "knock": 2,
+                "reason": 1
+            },
+            "effects": {
+                "articleknocka": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writelanterna",
+            "label": "Write a brief treatise on the lore of the Lantern",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlelantern": 1,
+                "lore": 1,
+                "lantern": 2,
+                "reason": 1
+            },
+            "effects": {
+                "articlelanterna": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writemotha",
+            "label": "Write a brief treatise on the Moth",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlemoth": 1,
+                "lore": 1,
+                "moth": 2,
+                "reason": 1
+            },
+            "effects": {
+                "articlemotha": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writesecrethistoriesa",
+            "label": "Write a brief treatise on the Secret Histories",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlesecrethistories": 1,
+                "lore": 1,
+                "secrethistories": 2,
+                "reason": 1
+            },
+            "effects": {
+                "articlesecrethistoriesa": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "writewintera",
+            "label": "Write a brief treatise on the White Lore",
+            "actionid": "work",
+            "requirements": {
+                "commissionarticlewinter": 1,
+                "lore": 1,
+                "winter": 2,
+                "reason": 1
+            },
+            "effects": {
+                "articlewintera": 1
+            },
+            "startdescription": "This may be useful for a Commission.",
+            "description": "I've finished the manuscript.",
+            "warmup": 60,
+            "craftable": true
+        }
+    ]
+}

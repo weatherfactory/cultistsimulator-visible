@@ -1,0 +1,455 @@
+{
+    "recipes": [
+        {
+            "id": "lockfollowerincupboard",
+            "label": "Betray and Imprison a Follower",
+            "actionid": "talk",
+            "requirements": {
+                "hq": 1,
+                "follower": 1
+            },
+            "startdescription": "This one must serve another purpose now. Into the cupboard they go.",
+            "description": "I've locked this one away safely. When their screaming and raving subsides, I will subdue them properly.",
+            "aspects": {
+                "capturefollower": 1
+            },
+            "effects": {
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "romanticinterest",
+                    "level": -1
+                }
+            ],
+            "craftable": true,
+            "warmup": 10
+        },
+        {
+            "id": "sulochanachat",
+            "label": "A Chat with Sulochana",
+            "actionid": "talk",
+            "requirements": {
+                "sulochana": 1
+            },
+            "slots": [
+                {
+                    "id": "Subject",
+                    "label": "Subject",
+                    "description": "A topic of conversation"
+                }
+            ],
+            "startdescription": "@#ascensionlessonhearta|'You want to know more?'\n#ascensionlessonheartb|'You want to know more?'\n#ascensionlessonheartc|'You want to know more?'\n#ascensionlessonheartd|'You want to know more?'\n#ascensionlessonhearte|'You want to know more?'\n#ascensionlessonheartf|'You want to know more?'\n#ascensionlessonmotha|'You want to know more?'\n#ascensionlessonmothb|'You want to know more?'\n#ascensionlessonmothc|'You want to know more?'\n#ascensionlessonmothd|'You want to know more?'\n#ascensionlessonmothe|'You want to know more?'\n#ascensionlessonmothf|'You want to know more?'\n#|Sulochana stubs out her cigarette. 'Yes, if you want to study the language with me, yes, you can. Was there something else?'@",
+            "description": "@#ascensionlessonhearta|'Not my speciality.' Sulochana smiles\n#ascensionlessonheartb|'Not my speciality.' Sulochana shrugs like a snake.\n#ascensionlessonheartc|'Not my speciality.' Sulochana smiles.\n#ascensionlessonheartd|'Not my speciality.' Sulochana shrugs like a snake.\n#ascensionlessonhearte|'Not my speciality.' Sulochana smiles.\n#ascensionlessonheartf|'Not my speciality.' Sulochana shrugs like a snake.\n#ascensionlessonmotha|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'\n#ascensionlessonmothb|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'\n#ascensionlessonmothc|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'\n#ascensionlessonmothd|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'\n#ascensionlessonmothe|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'\n#ascensionlessonmothf|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'\n#|Is she disappointed? It's difficult to tell, with Sulochana.@",
+            "alt": [
+                {
+                    "id": "talk.apostleforge.sulochanaechidna"
+                },
+                {
+                    "id": "talk.apostlegrail.sulochanamarinette"
+                },
+                {
+                    "id": "apostlelantern.attemptrecruitkleidouchos.sulochana"
+                },
+                {
+                    "id": "sulochanachat_health",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_passion",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_cabaret",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_desireheart_track",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_desiremoth_track",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_desire",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_secrethistoriesrouter",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "sulochanachat_health",
+            "actionid": "talk",
+            "label": "On the Body's Strengths",
+            "requirements": {
+                "sulochana": 1,
+                "health": 1
+            },
+            "startdescription": "'You're young. Congratulations.'",
+            "description": "'We were all of us young. Everyone. That's the only thing most of us have in common.'"
+        },
+        {
+            "id": "sulochanachat_passion",
+            "label": "On Passion",
+            "actionid": "talk",
+            "requirements": {
+                "sulochana": 1,
+                "passion": 1
+            },
+            "startdescription": "'Yes. That will get you into trouble.'",
+            "description": "'You have potential. You saw me see that. Potential isn't enough. Anything else?'"
+        },
+        {
+            "id": "sulochanachat_cabaret",
+            "label": "On the Ecdysis Club",
+            "actionid": "talk",
+            "requirements": {
+                "sulochana": 1,
+                "locationcabaret": 1
+            },
+            "startdescription": "'Yes?'",
+            "description": "'There's a road you can walk that begins there, in my house. If you want to talk about it, meet me there.'"
+        },
+        {
+            "id": "sulochanachat_desireheart_track",
+            "label": "On the New Form",
+            "actionid": "talk",
+            "requirements": {
+                "sulochana": 1,
+                "desireheart_track": 1
+            },
+            "effects": {
+                "locationcabaret": 1
+            },
+            "startdescription": "'Looking to shed your skin, hm?'",
+            "description": "'The road you want to walk is what we call the New Form. Not all that new, not any more. But it has merit, if you can stand the pain. Find me in my house, and we can talk about the partner you will need in the end. Here's the address.'"
+        },
+        {
+            "id": "sulochanachat_desiremoth_track",
+            "actionid": "talk",
+            "label": "On the Old Form",
+            "requirements": {
+                "sulochana": 1,
+                "desiremoth_track": 1
+            },
+            "effects": {
+                "locationcabaret": 1
+            },
+            "startdescription": "'Now - now we begin to understand each other.'",
+            "description": "'The road you want to walk is what we call the Old Form. I walked it myself, and eventually it brought me here. You'll give up everything along the way. You'll need to shed your skin, and not only once... Find me in my house, and we can talk about the partner you will need in the end. Here's the address.'"
+        },
+        {
+            "id": "sulochanachat_desire_change",
+            "actionid": "talk",
+            "label": "On Desire",
+            "requirements": {
+                "sulochana": 1,
+                "changemarks": 1
+            },
+            "startdescription": "'The dance, hm?'",
+            "description": "'Find me in my house, and we can talk about the partner you will need in the end. Here's the address.'"
+        },
+        {
+            "id": "sulochanachat_desire",
+            "actionid": "talk",
+            "label": "On Desire",
+            "requirements": {
+                "sulochana": 1,
+                "desire": 1
+            },
+            "startdescription": "'That's what steers you?'",
+            "description": "'We have no common ground there. I chose a different road a very long time ago. But if that's a road you wish to walk... speak to me again, at the Ecdysis Club.'"
+        },
+        {
+            "id": "sulochanachat_secrethistoriesrouter",
+            "actionid": "talk",
+            "label": "On Secret Places",
+            "requirements": {
+                "sulochana": 1,
+                "lore": 1,
+                "secrethistories": 1
+            },
+            "startdescription": "As to that...",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "sulochanachat_secrethistoriesg",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_secrethistoriesf",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_secrethistoriese",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_secrethistoriesd",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_secrethistoriesc",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_secrethistoriesb",
+                    "chance": 100
+                },
+                {
+                    "id": "sulochanachat_secrethistoriesa",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "sulochanachat_secrethistoriesg",
+            "actionid": "talk",
+            "label": "On the Road to Ivory",
+            "requirements": {
+                "sulochana": 1,
+                "fragmentsecrethistoriesg": 1
+            },
+            "startdescription": "'You need to go to Noon? Hah. Sorry to hear it.' Sulochana speaks with unusual venom.",
+            "description": "'Here. This map will work for a little while. If any of them ask after me, tell them I'll come for their children next.'",
+            "effects": {
+                "lore": -1,
+                "vaulteveningislesdefault": 1
+            }
+        },
+        {
+            "id": "sulochanachat_secrethistoriesf",
+            "actionid": "talk",
+            "label": "On the Road to Pupil",
+            "requirements": {
+                "sulochana": 1,
+                "fragmentsecrethistoriesf": 1
+            },
+            "startdescription": "'You need to go to Miah? Bring me back some of those dates.'",
+            "description": "'Here. This is the address of someone who'll guide you. If the Thief of Sights asks after me... tell her to give my regards to Kleido... you know what? Don't say anything about me. Here's your address.'",
+            "effects": {
+                "lore": -1,
+                "vaultloneandlevelsandsdefault": 1
+            }
+        },
+        {
+            "id": "sulochanachat_secrethistoriese",
+            "actionid": "talk",
+            "label": "Not there - ",
+            "requirements": {
+                "sulochana": 1,
+                "fragmentsecrethistoriese": 1
+            },
+            "startdescription": "'The Shadowless Kings? No - '",
+            "description": "'There's nothing there for my kind or yours. No dance is worth dancing in that place. You'll need to go further south.'",
+            "effects": {}
+        },
+        {
+            "id": "sulochanachat_secrethistoriesd",
+            "actionid": "talk",
+            "label": "On the Road to Stigma",
+            "requirements": {
+                "sulochana": 1,
+                "fragmentsecrethistoriesd": 1
+            },
+            "startdescription": "'You need to go to the Meadows? Mm.'",
+            "description": "'This is the easiest road at this time of year. But it won't be easy. Enjoy yourself.'",
+            "effects": {
+                "lore": -1,
+                "vaultlandbeyondforestdefault": 1
+            }
+        },
+        {
+            "id": "sulochanachat_secrethistoriesc",
+            "actionid": "talk",
+            "label": "On the Road to Antumbra",
+            "requirements": {
+                "sulochana": 1,
+                "fragmentsecrethistoriesc": 1
+            },
+            "startdescription": "'You want to go to the Stones?'",
+            "description": "'Here. This will get you to the last mile, and then you'll have to walk. There is a little auberge I used to stay at when I went. But I burnt it down.' She lights a cigarette.",
+            "effects": {
+                "lore": -1,
+                "vaultcontinentdefault": 1
+            }
+        },
+        {
+            "id": "sulochanachat_secrethistoriesb",
+            "actionid": "talk",
+            "label": "On the Road to Pearl",
+            "requirements": {
+                "sulochana": 1,
+                "fragmentsecrethistoriesb": 1
+            },
+            "startdescription": "'You want to go to Kerisham? Yes. The trains are difficult.'",
+            "description": "Sulochana hands you a printed slip of paper. 'These are the numbers, this month. Be sure you get the right platform. Much easier to get there now, hm? There was a time you'd have had to pass the Wrong Door, and I have better things to do.' She chuckles richly.",
+            "effects": {
+                "lore": -1,
+                "vaultshiresdefault": 1
+            }
+        },
+        {
+            "id": "sulochanachat_secrethistoriesa",
+            "actionid": "talk",
+            "label": "On the Roads to Change",
+            "requirements": {
+                "sulochana": 1,
+                "fragmentsecrethistories": 1
+            },
+            "startdescription": "'I can help you with that... if you want to Change.'",
+            "description": "'We always change at the sea first. Kerisham is a good place, these days. Then further and further afield. But not in person. Never in person. In your other self. Feel free to come back to me with more lore, if you're not sure where to go. If you're looking for anything but Change... I can't help you.'"
+        },
+        {
+            "id": "poppyoffer",
+            "label": "Speak to Poppy Lascelles",
+            "actionid": "talk",
+            "requirements": {
+                "poppyready": 1
+            },
+            "slots": [
+                {
+                    "id": "Consent",
+                    "label": "Consent",
+                    "description": "Add Passion to accept, or Reason to interrogate Poppy further.",
+                    "required": {
+                        "passion": 1,
+                        "reason": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "poppyofferaccept",
+                    "chance": 100
+                },
+                {
+                    "id": "poppyofferquery",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "'My dear, I've been wanting to talk to you. Sometimes, I fund scholars of the invisible arts. I'd like to offer you my support. A substantial contribution. And all you need to do, some day, is to introduce me to someone else who'll end matters properly.' She smiles, benignly. [Add <b>Passion</b> to accept, or <b>Reason</b> to interrogate her further.]",
+            "description": "I didn't take up Poppy's offer.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "poppyofferaccept",
+            "label": "Accept Poppy's Offer",
+            "actionid": "talk",
+            "requirements": {
+                "passion": 1
+            },
+            "startdescription": "'Yes, that's exactly right. I'll come back tonight.'",
+            "description": "A tiny packet of tiny treasures: a gift from Poppy. She'll see me again in the Season of Rags, for me to make the introduction I promised.",
+            "effects": {
+                "funds": 10,
+                "compensationc": 1,
+                "poppyready": -1
+            },
+            "alt": [
+                {
+                    "id": "poppytimebomb",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "poppyofferquery",
+            "label": "Question Poppy closely",
+            "actionid": "talk",
+            "requirements": {
+                "reason": 1
+            },
+            "startdescription": "Someone who'll end matters properly?",
+            "description": "'Yes. When the Season of Rags comes round again, my sponsor will require someone for an ending. You can provide someone sufficiently loyal, or you can provide yourself. As you prefer. I don't want to be any trouble.'",
+            "effects": {
+                "influencewinter": 1
+            }
+        },
+        {
+            "id": "poppytimebomb",
+            "label": "Poppy's Request",
+            "actionid": "poppytime",
+            "startdescription": "In the 'Season of Rags', Poppy will return...",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "poppysafefornow",
+                    "chance": 7
+                },
+                {
+                    "id": "poppywantssoul",
+                    "chance": 100
+                }
+            ],
+            "warmup": 300
+        },
+        {
+            "id": "poppysafefornow",
+            "actionid": "poppytime",
+            "label": "Silence from Poppy",
+            "startdescription": "Poppy is seen around town, assisting at charitable events, smiling benignly.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "poppytimebomb",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "poppywantssoul",
+            "label": "A Friendly Visit from Poppy",
+            "actionid": "poppytime",
+            "slots": [
+                {
+                    "id": "Sacrifice",
+                    "label": "Sacrifice",
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "hireling": 1,
+                        "summoned": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "poppysatiated",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "signalEndingFlavour": "Melancholy",
+            "ending": "wintersacrifice",
+            "startdescription": "'This is the time, my dear. The Sun-in-Rags requires his conclusion. Will it be you? Or do you have a friend?'",
+            "description": "."
+        },
+        {
+            "id": "poppysatiated",
+            "actionid": "poppytime",
+            "label": "A Suitable Conclusion",
+            "requirements": {
+                "follower": 1
+            },
+            "startdescription": "'What a loyal friend you have here! Do say goodbye, now.'",
+            "description": "My follower is gone. I remain. Poppy Lascelles is seen, here and there. She may have more to say to me.",
+            "effects": {
+                "poppycommissionready": 1,
+                "influencewinter": 1,
+                "follower": -1
+            }
+        }
+    ]
+}

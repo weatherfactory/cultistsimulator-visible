@@ -1,0 +1,303 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaultcapital1_setup",
+            "label": "探险开始：斯特拉思科因的藏品",
+            "actionId": "explore",
+            "requirements": {
+                "vaultcapital1": 1,
+                "funds": 1,
+                "follower": 1
+            },
+            "effects": {
+                "guardian_watchers": 1
+            },
+            "startdescription": "很遗憾，斯特拉思科因先生禁止他人进入他的藏书室。我们看看有何办法可想。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultcapital2_setup",
+            "label": "探险开始：被遗忘的密特拉寺",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultcapital2": 1
+            },
+            "effects": {
+                "seal_hiddendoor": 1
+            },
+            "startdescription": "我相信这座密特拉寺仍保有未被发掘的秘密。搜寻工作虽无甚危险，却需要资金的支持。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultcapital3_setup",
+            "label": "探险开始：凯特与赫洛有限公司",
+            "actionId": "explore",
+            "requirements": {
+                "vaultcapital3": 1,
+                "funds": 1,
+                "follower": 1
+            },
+            "effects": {
+                "peril_treacherousground": 1
+            },
+            "startdescription": "工厂的残垣断壁摇摇欲倒。熏成黑色的梁木咯吱作响，发出痛苦的声音。我们需要装备妥当，并且提心吊胆，极其谨慎地前行。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultcapital4_setup",
+            "label": "探险开始：圣亚割妮医院",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultcapital4": 1
+            },
+            "effects": {
+                "curse_dread": 1
+            },
+            "startdescription": "如今的医院的厅堂只剩余音徘徊，空气中的恶意却仍不肯离去。我们的调查必须细致入微，不放过一个房间。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultcapital5_setup",
+            "label": "探险开始：许伦的圣菲利克斯之会众",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultcapital5": 1
+            },
+            "effects": {
+                "guardian_monks": 1
+            },
+            "startdescription": "会众的成员资格是严格受控的，甚至可能采取血缘继承的方式。最保险的取得法是在牧师举行礼拜时去他的住处偷。但那里有发过永愿的修女嬷嬷轮流保卫，而且她们不会随便分神。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultcapitaldefault_setup",
+            "label": "探险开始：荒废的河岸街",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultcapitaldefault": 1
+            },
+            "effects": {
+                "peril_treacherousground": 1,
+                "guardian_watchers": 1
+            },
+            "startdescription": "法律约束不了这片衰落的城市边缘地带。这里的淤泥已夺去了许多条性命，这间仓库无疑也盘踞着可鄙的罪犯或此类人等。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcapital1_success",
+            "label": "斯特拉思科因的宝物",
+            "actionId": "explore",
+            "requirements": {
+                "vaultcapital1": 1
+            },
+            "effects": {
+                "vaultcapital1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "wainscothistories",
+                    "textbookfucine",
+                    "travellingatnight3",
+                    "locksmithsdream4",
+                    "treatiseonunderplaces"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationb",
+                "resetonexhaustion": false
+            },
+            "startdescription": "这里是斯特拉思科因布置的舒适密室。壁炉里的火忽明忽暗，玻璃展柜里摆放着各种稀奇的小玩意。我们必须抓紧时间，能拿多少拿多少！斯特拉思科因可能已经通过电话报警了。",
+            "description": "逃之夭夭，没入黑夜！我们逃离时并没有被人看见，然而第二天报上却刊登了斯特拉思科因家遭火灾的消息。是有人把烧红的煤块碰到壁炉前的地毯上了？或者是斯特拉思科因自己烧毁了住处，为了实施一场更大的阴谋？",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultcapital2_success",
+            "label": "愈深圣所",
+            "actionId": "explore",
+            "requirements": {
+                "vaultcapital2": 1
+            },
+            "effects": {
+                "vaultcapital2": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "ingredientlanternb",
+                    "toolwinterd",
+                    "toollanternbcracked",
+                    "hq.mithraeum.potential"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationb",
+                "resetonexhaustion": false
+            },
+            "startdescription": "一个孤寂的地方。散发着腐臭味道和血的回忆。我们在其中发现了新人中最高级别者所用的那扇暗门。",
+            "description": "祭坛向后倾倒，像一张大嘴。后面是只有逐阳者和赋晓者们能进入的金字塔状空间……然而就在短短不久前，亦有我们之外的人踏足此地。他们留下了宝物。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultcapital3_success",
+            "label": "凯特的办公室",
+            "actionId": "explore",
+            "requirements": {
+                "vaultcapital3": 1
+            },
+            "effects": {
+                "vaultcapital3": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toolheartb",
+                    "ingredientgrailb",
+                    "franklinbancroftdiarieslatin",
+                    "apolloandmarsyas",
+                    "hq.warehouse.potential"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationb",
+                "resetonexhaustion": false
+            },
+            "startdescription": "这里就是那间宽敞的大房间，凯特先生曾在这里监工车间的工人。窗玻璃早已不在，此地变作了老鼠和乌鸦的乐园。不过这里或许还存留着有用的东西……",
+            "description": "挪开两块地板后，凯特的办公桌下露出了一个空洞！老鼠已经不请自来地享用了这位企业家为抵抗腹中辘辘所预备的饼干，但是它们无法穿透这个铁质保险箱。我们用撬棍小试片刻便可将之开启。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultcapital4_success",
+            "label": "蓝紫色厅堂",
+            "actionId": "explore",
+            "requirements": {
+                "vaultcapital4": 1
+            },
+            "effects": {
+                "vaultcapital4": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toolgrailb",
+                    "ingredientheartb",
+                    "locksmithsdream3",
+                    "roseofhypatiagreek",
+                    "hq.hospital.potential"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationb",
+                "resetonexhaustion": false
+            },
+            "startdescription": "这是什么地方？房门上没有任何标识。没有窗户，墙壁刷成浓重的蓝紫色——被由天花板破洞漏下的雨水蹂躏后浓重依旧。一把木料腐烂的椅子，扶手处装着皮制捆绳。地面是瓷砖铺成的，开有下水渠。",
+            "description": "墙上安着一个用挂锁的锁住的橱柜：我们的力气很快使它就范。里面是一些镶有燧石和玻璃的器具——不像是外科医生会用的。还有一些我们更感兴趣的物质……",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultcapital5_success",
+            "label": "隐秘的祀奉",
+            "actionId": "explore",
+            "requirements": {
+                "vaultcapital5": 1
+            },
+            "effects": {
+                "vaultcapital5": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "roseofnurielgreek",
+                    "roseofwazneigreek",
+                    "chioneatabydos",
+                    "debellismurorum",
+                    "textbookgreek",
+                    "hq.church.potential"
+                ],
+                "draws": 6,
+                "defaultcard": "compensationb",
+                "resetonexhaustion": false
+            },
+            "startdescription": "牧师卧室面积巨大，家具却鲜少。在窗下一方小小的红豆杉木祭台上，一把羽毛装饰的斧头摆在一面珐琅制杯状鼓旁。",
+            "description": "在祭台下，一个被复杂的三重结封死的盒子中，我们发现了一批书籍——旁边还有更多东西——一把散发着腐旧血味的刀、一卷布，一块准是牧师受任圣职时丢弃的皮革制品残片。",
+            "warmup": 30,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "expedition.corpse.find.vaultcapital5",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcapitaldefault_success",
+            "label": "延滞的货物",
+            "actionId": "explore",
+            "requirements": {
+                "vaultcapitaldefault": 1
+            },
+            "effects": {
+                "vaultcapitaldefault": -1,
+                "funds": 1
+            },
+            "deckeffect": {
+                "vaultrewardsa": 3
+            },
+            "startdescription": "面前是一扇栅栏门，狭窄的空间，货物藏于其中。",
+            "description": "有人在这里看守着一堆板条箱，上面捆着被贼做过记号的封带。我们这次行动不为法律允许：货物的主人很可能不会喜欢我们动手脚。",
+            "warmup": 30,
+            "craftable": false
+        }
+    ]
+}

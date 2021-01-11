@@ -1,0 +1,328 @@
+{
+    "recipes": [
+        {
+            "id": "ambition.apostleforge.emitfuel",
+            "actionId": "work",
+            "label": "来自我们的塑形者的指引",
+            "requirements": {
+                "apostleforge.mentor": 1
+            },
+            "startdescription": "我们的塑形者已赐我们以指引。我们应顺之追求大功业的实现。",
+            "effects": {
+                "apostleforge.pillarfuel": 1
+            }
+        },
+        {
+            "id": "work.apostleforge.majorvictory.postbetrayal",
+            "actionId": "work",
+            "label": "尽管如此，大功业仍在继续",
+            "extantreqs": {
+                "apostleforge.mentor": -1
+            },
+            "startdescription": "<b>以火再造；终结不变之物；终结一切黑夜。</b>当破晓器开始旋转，地球的自转将减缓数分钟。厄客德娜将用她的利爪握住钥匙。罗盘将说出最后的言语。蓝金将燃烧。狂暴之门将敞开。我们的塑形者将扮演铸炉。而我；我将回到我们塑形者的身边。我在很久之前就做出了决定。我将被吞食。",
+            "description": "",
+            "requirements": {
+                "fragmentknockg": 1,
+                "influenceforgeg": 1,
+                "apostleforge.pillar2": 1,
+                "apostleforge.pillar3": 1,
+                "apostleforge.pillar4": 1,
+                "apostleforge.pillar5": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "ending": "majorforgevictory"
+        },
+        {
+            "id": "work.apostleforge.majorvictory",
+            "actionId": "work",
+            "label": "大功业最后的组成部分",
+            "extantreqs": {
+                "apostleforge.mentor": 1
+            },
+            "startdescription": "<b>以火再造；终结不变之物；终结一切黑夜。</b>当破晓器开始旋转，地球的自转将减缓数分钟。厄客德娜将用她的利爪握住钥匙。罗盘将说出最后的言语。蓝金将燃烧。狂暴之门将敞开。我们的塑形者将扮演铸炉。我将被吞食。",
+            "description": "",
+            "requirements": {
+                "fragmentknockg": 1,
+                "influenceforgeg": 1,
+                "apostleforge.pillar2": 1,
+                "apostleforge.pillar3": 1,
+                "apostleforge.pillar4": 1,
+                "apostleforge.pillar5": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "ending": "majorforgevictory"
+        },
+        {
+            "id": "work.apostleforge.createcore",
+            "actionId": "work",
+            "label": "铸造破晓器核心",
+            "startdescription": "凭借我们塑形者的指引，及旧太阳的一星微粒，我们开始组建破晓装置。",
+            "description": "我们一面做活一面哼唱，哼唱旧日的歌曲：“不改变者必当终结”。最终我们完成了核心。装置现处于休眠态。铸造之秘将赋予它生命。",
+            "requirements": {
+                "toolforgef": 1,
+                "apostleforge.pillarfuel": 1
+            },
+            "effects": {
+                "toolforgef": -1,
+                "apostleforge.pillarfuel": -1,
+                "apostleforge.pillar2.dormant": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.apostleforge.awakencore",
+            "actionId": "work",
+            "label": "唤醒破晓器核心",
+            "startdescription": "铸炉，昕旦与弧月都记得太阳。我们将他们的回忆作为转子线圈绕在核心之上，它会猛地闪烁出剧烈的意识。",
+            "description": "装置伴着嗡嗡的转动声活了过来，且它如所有活物一样，会饥饿。只有最高等级的炼金产物能喂饱它。",
+            "requirements": {
+                "apostleforge.pillar2.dormant": 1,
+                "fragmentforgeg": 1
+            },
+            "effects": {
+                "apostleforge.pillar2.dormant": -1,
+                "apostleforge.pillar2": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.apostleforge.upgradeingredientforgeb",
+            "actionId": "work",
+            "label": "精炼苦黑盐",
+            "startdescription": "凭借我们塑形者的指引，我们可以把它精炼成更强大的东西。",
+            "description": "黑色淘澄为黄。",
+            "requirements": {
+                "ingredientforgeb": 1,
+                "apostleforge.pillarfuel": 1
+            },
+            "effects": {
+                "ingredientforgeb": -1,
+                "apostleforge.pillarfuel": -1,
+                "ingredientforged": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.apostleforge.upgradeingredientforged",
+            "actionId": "work",
+            "label": "精炼黄化精华",
+            "startdescription": "凭借我们塑形者的指引，我们可以把它精炼成更强大的东西。",
+            "description": "黄色熟成为赤。",
+            "requirements": {
+                "ingredientforged": 1,
+                "apostleforge.pillarfuel": 1
+            },
+            "effects": {
+                "ingredientforged": -1,
+                "apostleforge.pillarfuel": -1,
+                "ingredientforgef": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.apostleforge.prepareingredientforgef",
+            "actionId": "work",
+            "label": "精炼赤化精华",
+            "startdescription": "凭借我们塑形者的指引，我们可以把它精炼成更强大的东西。",
+            "description": "赤色振颤为蓝。",
+            "requirements": {
+                "ingredientforgef": 1,
+                "apostleforge.pillarfuel": 1
+            },
+            "effects": {
+                "ingredientforgef": -1,
+                "apostleforge.pillarfuel": -1,
+                "apostleforge.pillar3": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.apostleforge.baptisefollower",
+            "actionId": "work",
+            "label": "选定罗盘",
+            "startdescription": "在我们的塑形者的协助下，我们送一名追随者去寻找通往世界破绽处的道路。一旦该人找到道路，他便不再会找到任何其他事物。",
+            "description": "眼为余烬，心为等待朝拜的庙宇。",
+            "requirements": {
+                "follower": 1,
+                "mortal": 1,
+                "apostleforge.pillarfuel": 1,
+                "tool": -1,
+                "lore": -1
+            },
+            "effects": {
+                "apostleforge.pillarfuel": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "mortal",
+                    "mutateAspectId": "apostleforge.pillar4.dormant",
+                    "mutationLevel": 1
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "explore.apostleforge.findflaw",
+            "actionId": "explore",
+            "label": "世界的破绽",
+            "startdescription": "极少有眼睛能看见这破绽，见者将永不能视物。",
+            "description": "这里是诸历史调和之地——是世界未被皮肤覆盖的血肉。这里的创口会造成别处七倍的伤害。若我们在此处引爆破晓器，或许可以拧转插入狂暴之门的咬噬之钥，让我们的塑形者如当年的石源诸神般通过此门。",
+            "requirements": {
+                "apostleforge.pillar4.dormant": 1
+            },
+            "effects": {},
+            "mutations": [
+                {
+                    "filterOnAspectId": "apostleforge.pillar4.dormant",
+                    "mutateAspectId": "apostleforge.pillar4",
+                    "mutationLevel": 1
+                },
+                {
+                    "filterOnAspectId": "apostleforge.pillar4.dormant",
+                    "mutateAspectId": "edge",
+                    "mutationLevel": -99
+                },
+                {
+                    "filterOnAspectId": "apostleforge.pillar4.dormant",
+                    "mutateAspectId": "forge",
+                    "mutationLevel": -99
+                },
+                {
+                    "filterOnAspectId": "apostleforge.pillar4.dormant",
+                    "mutateAspectId": "grail",
+                    "mutationLevel": -99
+                },
+                {
+                    "filterOnAspectId": "apostleforge.pillar4.dormant",
+                    "mutateAspectId": "heart",
+                    "mutationLevel": -99
+                },
+                {
+                    "filterOnAspectId": "apostleforge.pillar4.dormant",
+                    "mutateAspectId": "knock",
+                    "mutationLevel": -99
+                },
+                {
+                    "filterOnAspectId": "apostleforge.pillar4.dormant",
+                    "mutateAspectId": "lantern",
+                    "mutationLevel": -99
+                },
+                {
+                    "filterOnAspectId": "apostleforge.pillar4.dormant",
+                    "mutateAspectId": "moth",
+                    "mutationLevel": -99
+                },
+                {
+                    "filterOnAspectId": "apostleforge.pillar4.dormant",
+                    "mutateAspectId": "winter",
+                    "mutationLevel": -99
+                }
+            ],
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "talk.apostleforge.sulochanaechidna",
+            "actionId": "talk",
+            "label": "被引荐给E夫人",
+            "startdescription": "你们的塑形者想穿过狂暴之门，唔？他真的明白自己要做的是什么吗？我见铸之长生者试过。大体来说，他们失败了。不过我会给你想想办法。我一个姐妹有你想要的钥匙。我会和她联系……不过要花一些时间。",
+            "description": "",
+            "requirements": {
+                "apostleforge.pillarfuel": 1
+            },
+            "effects": {
+                "apostleforge.pillarfuel": -1,
+                "echidna.enroute": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "talk.apostleforge.echidna",
+            "actionId": "talk",
+            "label": "对E夫人提出请求",
+            "startdescription": "“我当然会帮你了，小娃娃。找到我算你走运。我比其他姐妹好通融得多。不过我得要你一个可口的人……除非你给我一个不要的正当理由。”",
+            "description": "“不接受？我可以再给你一点儿时间。”",
+            "requirements": {
+                "echidna": 1
+            },
+            "slots": [
+                {
+                    "id": "sacrifice",
+                    "label": "一个可口的人，还是一个正当理由？",
+                    "required": {
+                        "exalted": 1,
+                        "cultsecrethistories_1": 1
+                    }
+                }
+            ],
+            "warmup": 60,
+            "craftable": true,
+            "alternativerecipes": [
+                {
+                    "id": "talk.apostleforge.echidnahelp.independent"
+                },
+                {
+                    "id": "talk.apostleforge.echidnahelp"
+                },
+                {
+                    "id": "talk.apostleforge.echidnahelp.sthydra"
+                }
+            ]
+        },
+        {
+            "id": "talk.apostleforge.echidnahelp.independent",
+            "actionId": "talk",
+            "label": "可口的人",
+            "startdescription": "“你们两个是闹翻了吗？不必担心，一切都有我收拾。那么听我说——我是个说话算数的女人，却不是个耐得住性子的女人。先等你准备好，然后我再办了你那个可口的小麻烦。”",
+            "description": "“拿着这个，别弄丢。到时候我必去。”",
+            "requirements": {
+                "echidna": 1,
+                "exalted": 1
+            },
+            "effects": {
+                "exalted": -1,
+                "apostleforge.pillar5": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "talk.apostleforge.echidnahelp",
+            "actionId": "talk",
+            "label": "可口的人",
+            "startdescription": "“噢，好极了。那么听我说——我是个说话算数的女人，却不是个耐得住性子的女人。等你准备好再把你的朋友给我。”",
+            "description": "“拿着这个，别弄丢。到时候我必去。”",
+            "requirements": {
+                "echidna": 1,
+                "exalted": 1
+            },
+            "effects": {
+                "exalted": -1,
+                "apostleforge.pillar5": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "talk.apostleforge.echidnahelp.sthydra",
+            "actionId": "talk",
+            "label": "正当理由",
+            "startdescription": "“看来我们同为为蛇哺乳之人。我的姐妹挂在嘴边这样一句话：‘丽姬亚永记不忘。’我会让你满意的。（你想过为什么是五，不是七吗？两重历史缺失掉了。那么，为什么只缺两重呢？不过我们没时间谈这个了。我不是个耐烦得住性子的女人。）等你准备好再来叫我帮忙。”",
+            "description": "“拿着这个，别弄丢。到时候我必去。”",
+            "requirements": {
+                "echidna": 1,
+                "cultsecrethistories_1": 1
+            },
+            "effects": {
+                "apostleforge.pillar5": 1
+            },
+            "craftable": false
+        }
+    ]
+}

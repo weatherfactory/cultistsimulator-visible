@@ -1,0 +1,51 @@
+{
+    "elements": [
+        {
+            "id": "mystique",
+            "label": "Mystique",
+            "aspects": {
+                "reputation": 1
+            },
+            "description": "Uncanniness lingers. [Mystique may attract the attention of Hunters. They can't use it to build a case against you, but it will encourage them to look harder.]",
+            "lifetime": 300
+        },
+        {
+            "id": "notoriety",
+            "label": "Notoriety",
+            "aspects": {
+                "reputation": 2
+            },
+            "description": "Certain acts are not quickly forgotten. [Notoriety may allow Hunters to build a case against you.]",
+            "lifetime": 300,
+            "xtriggers": {
+                "scandalous": "notoriety"
+            }
+        },
+        {
+            "id": "evidence",
+            "aspects": {
+                "evidencelevel": 1
+            },
+            "label": "Tentative Evidence",
+            "description": "A hunter has found evidence - real or imagined - of my sins. [Hunters with Evidence of occult activities become more dangerous. Evidence may survive the death of the Hunter who created it.]",
+            "xtriggers": {
+                "investigatingsuccess": "evidenceb",
+                "investigatingsetback": "notoriety"
+            },
+            "lifetime": 600
+        },
+        {
+            "id": "evidenceb",
+            "aspects": {
+                "evidencelevel": 2
+            },
+            "label": "Damning Evidence",
+            "description": "'Earth, gape!  O, no, it will not harbour me!' [With Damning Evidence of occult activities in the city, the Suppression Bureau will be able to convict you. Evidence may survive the death of the Hunter who created it.]",
+            "xtriggers": {
+                "investigatingsetback": "evidence"
+            },
+            "lifetime": 600,
+            "decayTo": "evidence"
+        }
+    ]
+}

@@ -1,0 +1,437 @@
+{
+    "recipes": [
+        {
+            "id": "drawseason",
+            "actionid": "time",
+            "deckeffects": {
+                "seasonevents": 1
+            },
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "needs",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "needs",
+            "label": "Time Passes",
+            "actionid": "time",
+            "requirements": {},
+            "alt": [
+                {
+                    "id": "forlornbloodsickness",
+                    "chance": 70,
+                    "additional": true
+                },
+                {
+                    "id": "sickness",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "pleasantday",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "suspicion",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "ambition",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "despairrisklink",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "visionsrisklink",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "starvation",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "rosenext",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "Time, the sundial's shadow, passes. I must have Funds to live, or I will become ill.",
+            "description": ".",
+            "warmup": 60,
+            "slots": [
+                {
+                    "id": "Expenses",
+                    "label": "Expenses",
+                    "required": {
+                        "funds": 1
+                    },
+                    "greedy": true,
+                    "noanim": true,
+                    "description": "The shop-keepers will have their due. I must pay it or starve."
+                }
+            ],
+            "linked": [
+                {
+                    "id": "discardseason",
+                    "chance": 100
+                }
+            ],
+            "signalimportantloop": true
+        },
+        {
+            "id": "discardseason",
+            "actionid": "time",
+            "effects": {
+                "season": -1,
+                "funds": -999
+            },
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "drawseason",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "presickness",
+            "label": "The Price of Joy",
+            "actionid": "illhealth",
+            "comments": "to lead into actual sickness from opium abuse, which requires Season Of",
+            "startdescription": "My breathing has been laboured; my thoughts confused. Perhaps I should not have indulged so freely in that cure for pain.",
+            "effects": {
+                "seasonsickness": 1
+            },
+            "linked": [
+                {
+                    "id": "sickness"
+                }
+            ],
+            "warmup": 15
+        },
+        {
+            "id": "sickness",
+            "label": "Sickness",
+            "actionid": "illhealth",
+            "startdescription": "I've become unwell!",
+            "description": "This illness has damaged my health. I'll need to rest before I am fully recovered. [Cure your Affliction with Funds or Vitality.]",
+            "requirements": {
+                "seasonsickness": 1
+            },
+            "extantreqs": {
+                "apostlegrail.pillar2.dormant": -1
+            },
+            "comments": "We don't want to double up on normal and Grail-apostle sickness",
+            "slots": [
+                {
+                    "id": "Affliction",
+                    "label": "Health",
+                    "required": {
+                        "health": 1,
+                        "follower_wound": 1,
+                        "fatigue": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1,
+                        "corpse": 1,
+                        "notoriety": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "aspects": {
+                "fallsick": 1
+            },
+            "alt": [
+                {
+                    "id": "deathofthewoundedfollower",
+                    "chance": 100
+                },
+                {
+                    "id": "signalupcomingsicknessdeath",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "effects": {
+                "seasonsickness": -1
+            }
+        },
+        {
+            "id": "signalupcomingsicknessdeath",
+            "actionid": "sickness",
+            "label": "Sickness",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1
+            },
+            "startdescription": "I've become unwell! [If an illness cannot consume Health, it will kill you... unless you have special protection.]",
+            "comments": "need this here so we can have a warning if there's no health; then we link to the stay of execution attempt so we can have a new slot.",
+            "signalEndingFlavour": "Melancholy",
+            "linked": [
+                {
+                    "id": "sickness.nohealthavailable.tryforstayofexecution",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "sickness.nohealthavailable.tryforstayofexecution",
+            "actionid": "illhealth",
+            "label": "Mortal Peril",
+            "slots": [
+                {
+                    "id": "sicknessprotection",
+                    "label": "Protection",
+                    "required": {
+                        "sicknessprotection": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "The sickness will end me, unless I have made extraordinary arrangements to protect my health...",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1
+            },
+            "warmup": 10,
+            "signalEndingFlavour": "Melancholy",
+            "ending": "deathofthebody",
+            "alt": [
+                {
+                    "id": "protectedagainstsickness",
+                    "actionid": "sickness",
+                    "label": "Not This Time",
+                    "requirements": {
+                        "sicknessprotection": 1
+                    },
+                    "startdescription": "Flesh has limits, and now my flesh would fail: but a mark of mortal grace has been set upon me, and it will not fail today. [Your Stay of Execution has spared you from the ravages of sickness.]",
+                    "effects": {
+                        "sicknessprotection": -1,
+                        "influenceheart": 1
+                    }
+                },
+                {
+                    "id": "mareendingsickness",
+                    "chance": 100,
+                    "actionid": "sickness",
+                    "label": "The Mare In Me",
+                    "startdescription": "SHE COMES",
+                    "description": "--",
+                    "extantreqs": {
+                        "lockscar": 3,
+                        "health": -1
+                    },
+                    "signalEndingFlavour": "Melancholy",
+                    "ending": "minormarevictory",
+                    "craftable": false
+                }
+            ]
+        },
+        {
+            "id": "forlornbloodsickness",
+            "label": "Sickness",
+            "actionid": "illhealth",
+            "extantreqs": {
+                "apostlegrail.pillar2.dormant": 1
+            },
+            "slots": [
+                {
+                    "id": "Affliction",
+                    "label": "Affliction",
+                    "required": {
+                        "health": 1,
+                        "fatigue": 1,
+                        "apostlegrail.pillar2": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "aspects": {
+                "fallsick": 1
+            },
+            "alt": [
+                {
+                    "id": "savorousbloodrespite",
+                    "chance": 100
+                },
+                {
+                    "id": "forlornblooddeathofthebody",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "My illness has come for me. If I survive, I must taste the blood of our Delight, and soon. [If this illness cannot consume Health, or Savorous Blood, it will kill you.]",
+            "description": "I shrink and grow pale. Fatigue chokes my throat. I must ensure that my death serves a purpose.",
+            "warmup": 60
+        },
+        {
+            "id": "savorousbloodrespite",
+            "actionid": "illhealth",
+            "label": "A Respite",
+            "requirements": {
+                "apostlegrail.pillar2": 1
+            },
+            "startdescription": "The blood of our Delight warms me. It makes red flowers in my cheeks; it pours out wine in my heart; it twitches my strings in the rhythm the Grail taught the Thunderskin. I shall live a little longer, I have decided.",
+            "warmup": 10
+        },
+        {
+            "id": "deathofthewoundedfollower",
+            "actionid": "time",
+            "label": "My Follower is dying!",
+            "requirements": {
+                "follower_wound": 1
+            },
+            "startdescription": "Their wounds are mortal. There's nothing to be done.",
+            "description": "Perhaps their spirit walks the House. Perhaps it's lost in the Wood, to sink ever lower. Their mortal shell remains.",
+            "aspects": {
+                "killmortal": 1
+            },
+            "effects": {
+                "seasonsickness": -1
+            }
+        },
+        {
+            "id": "rosenext",
+            "label": "Trysts and Interludes",
+            "actionid": "rose",
+            "requirements": {
+                "seasonardours": 1
+            },
+            "slots": [
+                {
+                    "id": "Who?",
+                    "label": "Who?",
+                    "description": "Palm to palm and eye to eye.",
+                    "required": {
+                        "romanticinterest": 1
+                    },
+                    "forbidden": {
+                        "notoriety": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "If I have a particular friend, now is the time to renew our connection.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "L_roseend",
+                    "chance": 100
+                },
+                {
+                    "id": "L_checkjealousy",
+                    "chance": 30
+                },
+                {
+                    "id": "L_roserouter",
+                    "chance": 100
+                }
+            ],
+            "warmup": 5
+        },
+        {
+            "id": "pleasantday",
+            "label": "A Pleasant Day",
+            "actionid": "pleasantday",
+            "requirements": {
+                "seasonserenities": 1
+            },
+            "effects": {
+                "contentment": 1
+            },
+            "comments": "currently unused",
+            "startdescription": "This morning, there is a spring in my step. I'm not sure why.",
+            "description": "Some days are better than others. Sometimes the sky is nothing like a filthy sheet. Sometimes the river runs clear.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "despairrisklink",
+            "label": "despairrisklink",
+            "actionid": "despair",
+            "requirements": {
+                "seasondespair": 1
+            },
+            "warmup": 0,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "despairrisk",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "visionsrisklink",
+            "label": "visionsrisklink",
+            "actionid": "visions",
+            "requirements": {
+                "seasonvisions": 1
+            },
+            "warmup": 0,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsrisk",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "starvation",
+            "label": "Starvation",
+            "actionid": "illhealth",
+            "requirements": {
+                "funds": -1
+            },
+            "effects": {
+                "health": -1,
+                "hunger": 1
+            },
+            "alt": [
+                {
+                    "id": "mareendingstarvation",
+                    "actionid": "illhealth",
+                    "label": "The Mare In Me",
+                    "startdescription": "SHE COMES",
+                    "description": "--",
+                    "extantreqs": {
+                        "lockscar": 3,
+                        "health": -1
+                    },
+                    "signalEndingFlavour": "Melancholy",
+                    "ending": "minormarevictory",
+                    "craftable": false
+                },
+                {
+                    "id": "deathofthebody",
+                    "chance": 100
+                }
+            ],
+            "startdescription": ".",
+            "description": "Without money, I'll soon starve. [If an illness cannot consume Health, it will kill you.]",
+            "warmup": 60,
+            "slots": [
+                {
+                    "id": "starvation",
+                    "label": "Starvation",
+                    "required": {
+                        "health": 1
+                    },
+                    "greedy": true
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "recipes": [
+        {
+            "id": "translatehint",
+            "label": "尝试翻译文献？",
+            "actionId": "study",
+            "requirements": {
+                "language": 1
+            },
+            "startdescription": "若我拥有以这种语言写作的文献，我便能开始翻译。",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "translate",
+            "label": "开始翻译文献",
+            "actionId": "study",
+            "requirements": {
+                "language": 1,
+                "text": 1
+            },
+            "startdescription": "锁紧书房房门。开始作业。",
+            "description": "我已准备好要研究的文献。",
+            "warmup": 60,
+            "craftable": true
+        }
+    ]
+}

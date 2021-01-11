@@ -1,0 +1,431 @@
+{
+    "recipes": [
+        {
+            "id": "ambition.apostlegrail.emitfuel",
+            "actionid": "work",
+            "label": "Guidance from our Delight",
+            "requirements": {
+                "apostlegrail.mentor": 1
+            },
+            "startdescription": "A courier has arrived from our Delight, with a single vial of their most holy blood.",
+            "effects": {
+                "apostlegrail.pillarfuel": 1
+            }
+        },
+        {
+            "id": "work.apostlegrail.majorvictory.postbetrayal",
+            "actionid": "work",
+            "label": "Nevertheless, the Vitulation",
+            "extantreqs": {
+                "apostlegrail.mentor": -1
+            },
+            "startdescription": "To join with the Grail, our Delight must give life and take life and be not sated. So it is that I am the centrepiece of the Vitulation. A child of the Delight's body would fulfil the requirement, but one cannot enter the Mansus in triumph when one has committed the Crime of the Sky. So it is me, and after all despite Tryphon's temptations I will submit to the binding and to Marinette's marinations, and the Seven Graces and the Three Savours overwhelm me, and when the first mouthful is taken, almost I do not feel it; almost I do not feel it at all.",
+            "requirements": {
+                "fragmentheartg": 1,
+                "influencegrailg": 1,
+                "apostlegrail.pillar2": 1,
+                "apostlegrail.pillar3": 1,
+                "apostlegrail.pillar4": 1,
+                "toolgrailf": 1,
+                "grailflavour": 1,
+                "heartflavour": 1,
+                "mothflavour": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "ending": "majorgrailvictory"
+        },
+        {
+            "id": "work.apostlegrail.majorvictory",
+            "actionid": "work",
+            "label": "The Last Elements of the Vitulation",
+            "extantreqs": {
+                "apostlegrail.mentor": 1
+            },
+            "startdescription": "To join with the Grail, our Delight must give life and take life and be not sated. So it is that I am the centrepiece of the Vitulation. A child of the Delight's body would fulfil the requirement, but one cannot enter the Mansus in triumph when one has committed the Crime of the Sky. So it is me, and I submit to the binding and to Marinette's marinations, and the Seven Graces and the Three Savours overwhelm me, and when the first mouthful is taken, almost I do not feel it; almost I do not feel it at all.",
+            "requirements": {
+                "fragmentheartg": 1,
+                "influencegrailg": 1,
+                "apostlegrail.pillar2": 1,
+                "apostlegrail.pillar3": 1,
+                "apostlegrail.pillar4": 1,
+                "toolgrailf": 1,
+                "grailflavour": 1,
+                "heartflavour": 1,
+                "mothflavour": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "ending": "majorgrailvictory"
+        },
+        {
+            "id": "explore.apostlegrail.purchase.apostlegrail.pillar3",
+            "actionid": "explore",
+            "label": "Bid for Rare Spices",
+            "startdescription": "Our Delight's blood is a payment towards certain special goods for particular connoisseurs. Everything must be just right for the Vitulation.",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "apostlegrail.pillarfuel": 1
+            },
+            "effects": {
+                "apostlegrail.pillar3": 1,
+                "apostlegrail.pillarfuel": -1
+            },
+            "warmup": 5,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "auctionbuy"
+                }
+            ]
+        },
+        {
+            "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished",
+            "actionid": "work",
+            "label": "The Seven Graces are Prepared",
+            "startdescription": "The Seven Graces and the Three Savours: the Salt, the Sweet, the Sweetest. We who are the choicest of the Host shall so annoint ourselves.",
+            "requirements": {
+                "apostlegrail.pillar3": 1,
+                "grailflavour": 1,
+                "heartflavour": 1,
+                "mothflavour": 1,
+                "ritual": -1
+            },
+            "craftable": true,
+            "comments": "NB this is both craftable *and* linked, and precedes the main cooking recipe, in case the player tries to keep working on the Graces once it's done."
+        },
+        {
+            "id": "work.apostlegrail.upgrade.apostlegrail.pillar3",
+            "actionid": "work",
+            "label": "Prepare the Seven Graces",
+            "startdescription": "The scents and savours must be precisely as the Recipe dictates. Only so can I, and my colleagues, be sufficiently appetising - appetising enough to arouse a pitch of appetite not seen in the waking world.",
+            "requirements": {
+                "apostlegrail.pillar3": 1,
+                "ritual": -1
+            },
+            "description": "I couldn't find a scent or savour I needed to add.",
+            "slots": [
+                {
+                    "id": "enhancement",
+                    "label": "Enhancement",
+                    "description": "Very special additives to ensure the Vitulation goes just right.",
+                    "required": {
+                        "ingredientgraild": 1,
+                        "ingredientmothd": 1,
+                        "ingredientheartf": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+                },
+                {
+                    "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail"
+                },
+                {
+                    "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.heart"
+                },
+                {
+                    "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth"
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail",
+            "actionid": "work",
+            "label": "The Flowermaker's Gift",
+            "startdescription": "If we die, yet shall we live on in those who slew us.",
+            "requirements": {
+                "ingredientgraild": 1,
+                "grailflavour": -1
+            },
+            "effects": {
+                "ingredientgraild": -1
+            },
+            "mutations": [
+                {
+                    "filter": "apostlegrail.pillar3",
+                    "mutate": "grailflavour",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+                }
+            ]
+        },
+        {
+            "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.heart",
+            "actionid": "work",
+            "label": "Janus' Savour",
+            "startdescription": "Janus is the god that rose not, but reigns. Janus is the saint that died not, but is dead. Janus is the door between what cannot be, and what must be.",
+            "requirements": {
+                "ingredientheartf": 1,
+                "heartflavour": -1
+            },
+            "effects": {
+                "ingredientheartf": -1
+            },
+            "mutations": [
+                {
+                    "filter": "apostlegrail.pillar3",
+                    "mutate": "heartflavour",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+                }
+            ]
+        },
+        {
+            "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth",
+            "actionid": "work",
+            "label": "The Black-Flax's Savour",
+            "startdescription": "It is necessary that we forget what we were.",
+            "requirements": {
+                "ingredientmothd": 1,
+                "mothflavour": -1
+            },
+            "effects": {
+                "ingredientmothd": -1
+            },
+            "mutations": [
+                {
+                    "filter": "apostlegrail.pillar3",
+                    "mutate": "mothflavour",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+                }
+            ]
+        },
+        {
+            "id": "talk.apostlegrail.createpillar4",
+            "actionid": "talk",
+            "label": "Begin Preparations for the Vitulation",
+            "startdescription": "There will be a great celebration when our Delight proves their appetite.",
+            "description": "We cannot know the final date, until we know the time of the Grail's greatest influence. But we can, we must, begin to select those who will comprise the Host.",
+            "requirements": {
+                "apostlegrail.pillar1": 1
+            },
+            "craftable": true,
+            "effects": {
+                "apostlegrail.pillar4.inprogress1": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "talk.apostlegrail.upgradepillar4.attempt",
+            "actionid": "talk",
+            "label": "Invite our Final Guest",
+            "startdescription": "Without the Key-Holder, all this preparation will be in vain.",
+            "description": "We do not yet have our Key-Holder",
+            "requirements": {
+                "apostlegrail.pillar4.inprogress7": 1
+            },
+            "slots": [
+                {
+                    "id": "finalguest",
+                    "label": "The Key-Holder",
+                    "required": {
+                        "marinette": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "talk.apostlegrail.upgradepillar4.marinetteready"
+                },
+                {
+                    "id": "talk.apostlegrail.upgradepillar4.marinettenotready"
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "talk.apostlegrail.upgradepillar4.inprogress.attempt",
+            "actionid": "talk",
+            "label": "Augment the Host",
+            "startdescription": "We seek more attendees. Our allies: greed; curiosity; prurience; unalloyed idleness.",
+            "description": "We could not stoke excitement's oven sufficiently.",
+            "requirements": {
+                "uqvitulation": 1
+            },
+            "slots": [
+                {
+                    "id": "more",
+                    "label": "More",
+                    "required": {
+                        "mystique": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "talk.apostlegrail.upgradepillar4.succeed"
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "talk.apostlegrail.upgradepillar4.marinetteready",
+            "actionid": "talk",
+            "label": "The Key-Holder",
+            "startdescription": "'<sprite name=winter>.'",
+            "requirements": {
+                "marinette": 1,
+                "approval": 7,
+                "apostlegrail.pillar4.inprogress7": 1
+            },
+            "effects": {
+                "marinette": -1,
+                "apostlegrail.pillar4.inprogress7": -1,
+                "apostlegrail.pillar4": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "talk.apostlegrail.upgradepillar4.marinettenotready",
+            "actionid": "talk",
+            "label": "Not Yet Enough",
+            "startdescription": "'...<sprite name=grail>.' [Marinette is not yet sated.]",
+            "requirements": {
+                "marinette": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "talk.apostlegrail.upgradepillar4.succeed",
+            "actionid": "talk",
+            "label": "The Host Grows",
+            "startdescription": "More names for the list which is equal parts sacred and secret; more faces for the great night.",
+            "requirements": {
+                "mystique": 1,
+                "uqvitulation": 1
+            },
+            "effects": {
+                "mystique": -1
+            },
+            "aspects": {
+                "vitulationupgrade": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "talk.apostlegrail.sulochanamarinette",
+            "actionid": "talk",
+            "label": "An Introduction to Our Lady of Wires",
+            "startdescription": "'You're really going to do it?' Sulochana meditatively rocks the sole of one booted foot over the wreck of her cigarette. 'Then I'm leaving, now. Don't worry. I'll send your message to the necessary sister. I'm sure she'll come... if there's blood enough.'",
+            "description": "",
+            "requirements": {
+                "apostlegrail.pillar1": 1
+            },
+            "effects": {
+                "marinette.enroute": 1,
+                "sulochana": -1
+            },
+            "craftable": false
+        },
+        {
+            "id": "talk.apostlegrail.marinette.ready.hint",
+            "actionid": "talk",
+            "label": "Marinette is Sated",
+            "startdescription": "'<sprite name=heart>'. [You can now add Marinette to your Guests.]",
+            "requirements": {
+                "marinette": 1,
+                "approval": 7
+            },
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "talk.apostlegrail.marinette",
+            "actionid": "talk",
+            "label": "Petitioning Marinette of the Wires",
+            "startdescription": "'<sprite name=grail>?'",
+            "description": "'<sprite name=grail>. <sprite name=grail>. <sprite name=grail>!'",
+            "requirements": {
+                "marinette": 1,
+                "approval": -7
+            },
+            "slots": [
+                {
+                    "id": "sacrifice",
+                    "label": "Blood",
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "summoned": -1
+                    }
+                }
+            ],
+            "warmup": 60,
+            "craftable": true,
+            "alt": [
+                {
+                    "id": "talk.apostlegrail.marinettenext.hireling"
+                },
+                {
+                    "id": "talk.apostlegrail.marinettenext.follower"
+                }
+            ]
+        },
+        {
+            "id": "talk.apostlegrail.marinettenext.hireling",
+            "actionid": "talk",
+            "label": "Blood",
+            "startdescription": "Marinette always leaves the skin. Sometimes she leaves the bones. She'll consume the hired help eagerly enough, but the hired help generally objects, and then there is generally a fuss.",
+            "requirements": {
+                "marinette": 1,
+                "hireling": 1
+            },
+            "effects": {
+                "hireling": -1,
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filter": "marinette",
+                    "mutate": "approval",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "talk.apostlegrail.marinettenext.follower",
+            "actionid": "talk",
+            "label": "Blood",
+            "startdescription": "Marinette always leaves the skin. Sometimes she leaves the bones. If we tell our loyal followers to close their eyes, it's over very quickly.",
+            "mutations": [
+                {
+                    "filter": "marinette",
+                    "mutate": "approval",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "requirements": {
+                "marinette": 1,
+                "follower": 1
+            },
+            "effects": {
+                "follower": -1
+            },
+            "craftable": false
+        }
+    ]
+}

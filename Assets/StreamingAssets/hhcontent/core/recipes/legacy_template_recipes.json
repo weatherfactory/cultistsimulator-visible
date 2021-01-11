@@ -1,0 +1,146 @@
+{
+    "recipes": [
+        {
+            "id": "worktemplatejob",
+            "label": "Start template Job",
+            "actionid": "work",
+            "requirements": {
+                "legacytemplatejob": 1
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "effects": {
+                "legacytemplate_plotitem": 1
+            },
+            "alt": [
+                {
+                    "id": "templateopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "",
+            "description": "",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "worktemplatejob_matured",
+            "label": "",
+            "actionid": "work",
+            "requirements": {
+                "legacytemplatejob_matured": 1
+            },
+            "alt": [
+                {
+                    "id": "needs",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "funds": 1
+            },
+            "startdescription": "",
+            "description": "",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "worktemplatejob_epilogue",
+            "label": "",
+            "actionid": "work",
+            "effects": {
+                "legacytemplatejob_matured": -1
+            },
+            "startdescription": "",
+            "description": "",
+            "craftable": false
+        },
+        {
+            "id": "templateopendream",
+            "label": "OPEN DREAM",
+            "actionid": "dream",
+            "startdescription": "",
+            "description": "",
+            "effects": {
+                "lever_LastDesire": 1
+            },
+            "warmup": 60,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "visionsrisk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "templateopenstudy",
+            "label": "OPEN STUDY",
+            "actionid": "study",
+            "startdescription": "",
+            "description": "",
+            "alt": [
+                {
+                    "id": "templateopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "reason": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "templateopenexplore",
+            "label": "OPEN EXPLORE",
+            "actionid": "explore",
+            "startdescription": "",
+            "description": "",
+            "warmup": 10,
+            "effects": {
+                "locationbookdealer": 1,
+                "locationcabaret": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "templateopentalk",
+            "label": "",
+            "actionid": "talk",
+            "startdescription": "",
+            "description": "",
+            "effects": {},
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "templatestudy_plotitem",
+            "label": "",
+            "actionid": "study",
+            "requirements": {
+                "legacytemplate_plotitem": 1
+            },
+            "alt": [
+                {
+                    "id": "templateopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "legacytemplate_plotitem": -1,
+                "fascination": 1
+            },
+            "startdescription": "",
+            "description": "",
+            "warmup": 10,
+            "craftable": true
+        }
+    ]
+}

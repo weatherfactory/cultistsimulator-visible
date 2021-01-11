@@ -1,0 +1,861 @@
+{
+    "elements": [
+        {
+            "id": "uqedgelore.exile",
+            "label": "Exile: Edge Lore",
+            "isAspect": true,
+            "isHidden": true
+        },
+        {
+            "id": "uqedgelore.colonel",
+            "label": "Colonel: Edge Lore",
+            "isAspect": true,
+            "isHidden": true
+        },
+        {
+            "id": "uqedgelore.lionsmith",
+            "label": "Lionsmith: Edge Lore",
+            "isAspect": true,
+            "isHidden": true
+        },
+        {
+            "id": "fragmentedge.exile",
+            "label": "A Knife's Secret",
+            "aspects": {
+                "edge": 2,
+                "lore": 1
+            },
+            "description": " I'm no adept, but I've had to kill a few adepts in my time. You pick things up as you go.",
+            "xtriggers": {
+                "epiphany": "fragmentedgeb.exile",
+                "fatiguing": "fragmentedge.exile.exhausted",
+                "epiphany.colonel": "fragmentedgeb.colonel",
+                "epiphany.lionsmith": "fragmentedgeb.lionsmith",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "icon": "fragmentedge",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedgeb.exile",
+            "label": "Biedde's Lesson",
+            "aspects": {
+                "edge": 4,
+                "lore": 1
+            },
+            "description": "Biedde said: 'Blood can be replenished. Time cannot.' Biedde knew what he was about.",
+            "xtriggers": {
+                "epiphany": "fragmentedgec.exile",
+                "depiphany": "fragmentedge.exile",
+                "fatiguing": "fragmentedgeb.exile.exhausted",
+                "epiphany.colonel": "fragmentedgec.colonel",
+                "epiphany.lionsmith": "fragmentedgec.lionsmith",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "icon": "fragmentedgeb",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedgec.exile",
+            "label": "An Operation of the Strix",
+            "aspects": {
+                "edge": 6,
+                "lore": 1
+            },
+            "description": "'Where warriors fall, the many-winged striges gather to honour their flesh. Where heroes fall, the Many-Winged Ones gather to convey their souls before the Hours.' I don't intend to fall, so I've learnt how the striges protect themselves.",
+            "xtriggers": {
+                "epiphany": "fragmentedged.exile",
+                "depiphany": "fragmentedgeb.exile",
+                "fatiguing": "fragmentedgec.exile.exhausted",
+                "epiphany.colonel": "fragmentedged.colonel",
+                "epiphany.lionsmith": "fragmentedged.lionsmith",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "icon": "fragmentedgec",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedged.exile",
+            "label": "The Names of the Wolf",
+            "aspects": {
+                "edge": 8,
+                "lore": 1
+            },
+            "description": "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at the last, he unmaketh.' You don't have to like an Hour to learn from it.",
+            "xtriggers": {
+                "epiphany": "fragmentedgee.exile",
+                "depiphany": "fragmentedgec.exile",
+                "fatiguing": "fragmentedged.exile.exhausted",
+                "epiphany.colonel": "fragmentedgee.colonel",
+                "epiphany.lionsmith": "fragmentedgee.lionsmith",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "icon": "fragmentedged",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedgee.exile",
+            "label": "The Cinnabar Forms",
+            "aspects": {
+                "edge": 10,
+                "lore": 1
+            },
+            "description": "Seven times seven techniques of unmaking.",
+            "xtriggers": {
+                "epiphany": "fragmentedgef.exile",
+                "depiphany": "fragmentedged.exile",
+                "fatiguing": "fragmentedgee.exile.exhausted",
+                "epiphany.colonel": "fragmentedgef.colonel",
+                "epiphany.lionsmith": "fragmentedgef.lionsmith",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "icon": "fragmentedgee",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedgef.exile",
+            "label": "The Alignments of Murder",
+            "aspects": {
+                "edge": 12,
+                "lore": 1
+            },
+            "description": "These are the arts that ensure an ending.",
+            "xtriggers": {
+                "epiphany": "fragmentedgeg.exile",
+                "depiphany": "fragmentedgee.exile",
+                "fatiguing": "fragmentedgef.exile.exhausted",
+                "epiphany.colonel": "fragmentedgeg.colonel",
+                "epiphany.lionsmith": "fragmentedgeg.lionsmith",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "icon": "fragmentedgef",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedgeg.exile",
+            "label": "The Mysteries of Force",
+            "aspects": {
+                "edge": 14,
+                "lore": 1
+            },
+            "description": "The Colonel and the Lionsmith are gods-who-were-flesh, but the Wolf-Divided is a god-who-was-blood. Cunning, Strength and Agony are the three roots of victory, and here is their secret doctrine...",
+            "xtriggers": {
+                "fatiguing": "fragmentedgeg.exile.exhausted",
+                "epiphany.colonel": "fragmentedgeg.colonel",
+                "epiphany.lionsmith": "fragmentedgeg.lionsmith",
+                "depiphany": "fragmentedgef.exile",
+                "epiphany": [
+                    {
+                        "id": "vitality",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "icon": "fragmentedgeg",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedge.exile.exhausted",
+            "label": "A Knife's Secret (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 300,
+            "decayTo": "fragmentedge.exile",
+            "icon": "fragmentedge",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedgeb.exile.exhausted",
+            "label": "Biedde's Lesson (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to recover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 260,
+            "decayTo": "fragmentedgeb.exile",
+            "icon": "fragmentedgeb",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedgec.exile.exhausted",
+            "label": "An Operation of the Strix (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 220,
+            "decayTo": "fragmentedgec.exile",
+            "icon": "fragmentedgec",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedged.exile.exhausted",
+            "label": "The Names of the Wolf (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 180,
+            "decayTo": "fragmentedged.exile",
+            "icon": "fragmentedged",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedgee.exile.exhausted",
+            "label": "The Cinnabar Forms (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 140,
+            "decayTo": "fragmentedgee.exile",
+            "icon": "fragmentedgee",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedgef.exile.exhausted",
+            "label": "The Alignments of Murder (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 100,
+            "decayTo": "fragmentedgef.exile",
+            "icon": "fragmentedgef",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedgeg.exile.exhausted",
+            "label": "The Mysteries of Force (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 60,
+            "decayTo": "fragmentedgeg.exile",
+            "icon": "fragmentedgeg",
+            "uniquenessgroup": "uqedgelore.exile"
+        },
+        {
+            "id": "fragmentedgeb.colonel",
+            "label": "The Chiliarch's Lesson",
+            "aspects": {
+                "edge": 4,
+                "lantern": 2,
+                "winter": 2,
+                "lore": 1
+            },
+            "description": "'This is the bone-deep story the thousandman learnt in antiquity, of blood and its exits. To speak it aloud is to hear the sword hiss.' It's more practical than it sounds.",
+            "xtriggers": {
+                "epiphany": "fragmentedgec.colonel",
+                "epiphany.colonel": "fragmentedgec.colonel",
+                "fatiguing": "fragmentedgeb.colonel.exhausted",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedgec.colonel",
+            "label": "An Operation of the Histid",
+            "aspects": {
+                "edge": 6,
+                "lantern": 3,
+                "winter": 3,
+                "lore": 1
+            },
+            "description": "A set of exacting exercises that will armour the skin and make each digit lethal as a spear-point.",
+            "xtriggers": {
+                "epiphany": "fragmentedged.colonel",
+                "epiphany.colonel": "fragmentedged.colonel",
+                "depiphany": "fragmentedgeb.colonel",
+                "fatiguing": "fragmentedgec.colonel.exhausted",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedged.colonel",
+            "label": "The Colonel's Names",
+            "aspects": {
+                "edge": 8,
+                "lantern": 4,
+                "winter": 4,
+                "lore": 1
+            },
+            "description": "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
+            "xtriggers": {
+                "epiphany": "fragmentedgee.colonel",
+                "epiphany.colonel": "fragmentedgee.colonel",
+                "depiphany": "fragmentedgec.colonel",
+                "fatiguing": "fragmentedged.colonel.exhausted",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedgee.colonel",
+            "label": "The Iron Forms",
+            "aspects": {
+                "edge": 10,
+                "lantern": 5,
+                "winter": 5,
+                "lore": 1
+            },
+            "description": "Seven times seven techniques for the sundering of flesh.",
+            "xtriggers": {
+                "epiphany": "fragmentedgef.colonel",
+                "epiphany.colonel": "fragmentedgef.colonel",
+                "depiphany": "fragmentedged.colonel",
+                "fatiguing": "fragmentedgee.colonel.exhausted",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedgef.colonel",
+            "label": "Moduli of the Langet",
+            "aspects": {
+                "edge": 12,
+                "lantern": 6,
+                "winter": 6,
+                "lore": 1
+            },
+            "description": "If I am to be a weapon, I must know where my soul is reinforced by its history, and where my limits become fundamental.",
+            "xtriggers": {
+                "epiphany": "fragmentedgeg.colonel",
+                "epiphany.colonel": "fragmentedgeg.colonel",
+                "depiphany": "fragmentedgee.colonel",
+                "fatiguing": "fragmentedgef.colonel.exhausted",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedgeg.colonel",
+            "label": "The Scarred Mysteries",
+            "aspects": {
+                "edge": 14,
+                "lantern": 7,
+                "winter": 7,
+                "lore": 1
+            },
+            "description": "Cunning is the root of victory. Experience is the root of cunning. There can be no experience without suffering, and a scar is suffering given form.",
+            "xtriggers": {
+                "epiphany": [
+                    {
+                        "id": "weapon.f.colonel",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "epiphany.colonel": [
+                    {
+                        "id": "weapon.f.colonel",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "fatiguing": "fragmentedgeg.colonel.exhausted",
+                "depiphany": "fragmentedgef.colonel",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedgeb.colonel.exhausted",
+            "label": "Chiliarch's Lesson (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 250,
+            "decayTo": "fragmentedgeb.colonel",
+            "icon": "fragmentedgeb.colonel",
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedgec.colonel.exhausted",
+            "label": "An Operation of the Histid (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 210,
+            "decayTo": "fragmentedgec.colonel",
+            "icon": "fragmentedgec.colonel",
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedged.colonel.exhausted",
+            "label": "The Colonel's Names (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 170,
+            "decayTo": "fragmentedged.colonel",
+            "icon": "fragmentedged.colonel",
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedgee.colonel.exhausted",
+            "label": "The Iron Forms (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 130,
+            "decayTo": "fragmentedgee.colonel",
+            "icon": "fragmentedgee.colonel",
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedgef.colonel.exhausted",
+            "label": "Moduli of the Langet (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 90,
+            "decayTo": "fragmentedgef.colonel",
+            "icon": "fragmentedgef.colonel",
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedgeg.colonel.exhausted",
+            "label": "The Scarred Mysteries (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 50,
+            "decayTo": "fragmentedgeg.colonel",
+            "icon": "fragmentedgeg.colonel",
+            "uniquenessgroup": "uqedgelore.colonel"
+        },
+        {
+            "id": "fragmentedgeb.lionsmith",
+            "label": "The Shahpur's Lesson",
+            "aspects": {
+                "edge": 4,
+                "forge": 2,
+                "heart": 2,
+                "lore": 1
+            },
+            "description": "'This is the lesson the Great One's Son found in the breaking of his blade. Even now it glints like shards of metal in the Persian sun.' It's more practical than it sounds.",
+            "xtriggers": {
+                "epiphany": "fragmentedgec.lionsmith",
+                "epiphany.lionsmith": "fragmentedgec.lionsmith",
+                "fatiguing": "fragmentedgeb.lionsmith.exhausted",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        },
+        {
+            "id": "fragmentedgec.lionsmith",
+            "label": "An Operation of the Labhite",
+            "aspects": {
+                "edge": 6,
+                "forge": 3,
+                "heart": 3,
+                "lore": 1
+            },
+            "description": "A series of mystic exercises that require both dedication and terror.",
+            "xtriggers": {
+                "epiphany": "fragmentedged.lionsmith",
+                "epiphany.lionsmith": "fragmentedged.lionsmith",
+                "depiphany": "fragmentedgeb.lionsmith",
+                "fatiguing": "fragmentedgec.lionsmith.exhausted",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        },
+        {
+            "id": "fragmentedged.lionsmith",
+            "label": "The Lionsmith's Names",
+            "aspects": {
+                "edge": 8,
+                "forge": 4,
+                "heart": 4,
+                "lore": 1
+            },
+            "description": "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
+            "xtriggers": {
+                "epiphany": "fragmentedgee.lionsmith",
+                "epiphany.lionsmith": "fragmentedgee.lionsmith",
+                "depiphany": "fragmentedgec.lionsmith",
+                "fatiguing": "fragmentedged.lionsmith.exhausted",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        },
+        {
+            "id": "fragmentedgee.lionsmith",
+            "label": "The Brass Forms",
+            "aspects": {
+                "edge": 10,
+                "forge": 5,
+                "heart": 5,
+                "lore": 1
+            },
+            "description": "Seven times seven techniques for the shattering of bone.",
+            "xtriggers": {
+                "epiphany": "fragmentedgef.lionsmith",
+                "epiphany.lionsmith": "fragmentedgef.lionsmith",
+                "depiphany": "fragmentedged.lionsmith",
+                "fatiguing": "fragmentedgee.lionsmith.exhausted",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        },
+        {
+            "id": "fragmentedgef.lionsmith",
+            "label": "Consummations of the Helve",
+            "aspects": {
+                "edge": 12,
+                "forge": 6,
+                "heart": 6,
+                "lore": 1
+            },
+            "description": "I am the weapon that will be broken, and remade again without flaw. The argument of my flesh will at last be irrefragable.",
+            "xtriggers": {
+                "epiphany": "fragmentedgeg.lionsmith",
+                "epiphany.lionsmith": "fragmentedgeg.lionsmith",
+                "depiphany": "fragmentedgee.lionsmith",
+                "fatiguing": "fragmentedgef.lionsmith.exhausted",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        },
+        {
+            "id": "fragmentedgeg.lionsmith",
+            "label": "The Shattered Mysteries",
+            "aspects": {
+                "edge": 14,
+                "forge": 7,
+                "heart": 7,
+                "lore": 1
+            },
+            "description": "In each rebirth there is greater strength. What has been broken can be reforged. What has never been broken must be reforged.",
+            "xtriggers": {
+                "epiphany": [
+                    {
+                        "id": "weapon.f.lionsmith",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "epiphany.lionsmith": [
+                    {
+                        "id": "weapon.f.lionsmith",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "fatiguing": "fragmentedgeg.lionsmith.exhausted",
+                "depiphany": "fragmentedgef.lionsmith",
+                "striking.foe": [
+                    {
+                        "id": "wound.foe",
+                        "morpheffect": "spawn"
+                    }
+                ],
+                "striking.underling": [
+                    {
+                        "id": "wound.underling",
+                        "morpheffect": "spawn"
+                    }
+                ]
+            },
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        },
+        {
+            "id": "fragmentedgeb.lionsmith.exhausted",
+            "label": "The Shahpur's Lesson (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 250,
+            "decayTo": "fragmentedgeb.lionsmith",
+            "icon": "fragmentedgeb.lionsmith",
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        },
+        {
+            "id": "fragmentedgec.lionsmith.exhausted",
+            "label": "An Operation of the Labhite (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 210,
+            "decayTo": "fragmentedgec.lionsmith",
+            "icon": "fragmentedgec.lionsmith",
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        },
+        {
+            "id": "fragmentedged.lionsmith.exhausted",
+            "label": "The Lionsmith's Names (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 170,
+            "decayTo": "fragmentedged.lionsmith",
+            "icon": "fragmentedged.lionsmith",
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        },
+        {
+            "id": "fragmentedgee.lionsmith.exhausted",
+            "label": "The Brass Forms (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 130,
+            "decayTo": "fragmentedgee.lionsmith",
+            "icon": "fragmentedgee.lionsmith",
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        },
+        {
+            "id": "fragmentedgef.lionsmith.exhausted",
+            "label": "Consummations of the Helve (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 90,
+            "decayTo": "fragmentedgef.lionsmith",
+            "icon": "fragmentedgef.lionsmith",
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        },
+        {
+            "id": "fragmentedgeg.lionsmith.exhausted",
+            "label": "The Shattered Mysteries (Exhausted)",
+            "description": "[I'll need time to recover before I can use this again. Upgrading a technique allows it to reccover more quickly with each upgrade.]",
+            "aspects": {
+                "exhausted": 1
+            },
+            "resaturate": true,
+            "lifetime": 50,
+            "decayTo": "fragmentedgeg.lionsmith",
+            "icon": "fragmentedgeg.lionsmith",
+            "uniquenessgroup": "uqedgelore.lionsmith"
+        }
+    ]
+}

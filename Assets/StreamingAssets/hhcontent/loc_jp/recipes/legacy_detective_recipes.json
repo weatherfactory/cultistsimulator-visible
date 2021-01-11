@@ -1,0 +1,622 @@
+{
+	"recipes": [
+		{
+			"id": "workdetectivejob_start",
+			"label": "部署内",
+			"actionId": "work",
+			"requirements": {
+				"legacydetectivejob": 1
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"effects": {
+				"LEVER_LastFollower": 1,
+				"legacydetective_plotitem": 1,
+				"funds": 3,
+				"health": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "needs",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "detectiveopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "またしても、私はオカルト犯罪を扱う官庁である取締局に出向することになった。この局の評判は良くない。",
+			"description": "取締局が厄介な犯人を特定し、私に捜査を命じた。その人物の名前を見た瞬間、息が詰まる。別の事件をはっきりと思い出してしまった......",
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "workdetectivejob_start_rebellion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "detectiveopendream",
+			"label": "夢を見て......",
+			"actionId": "dream",
+			"startdescription": "取締局は夢の危険性を記した備忘録を発表する。毎週新しい夢が追加されていく。",
+			"description": "「月明かりの夢を報告すること。夜の森の夢を報告すること。太陽の光で目が覚めるように、カーテンを開けて眠ること。寝る前に髪を切ってはいけない。割れた鏡の前で寝てはいけない」",
+			"effects": {
+				"passion": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_investigate_hint",
+			"label": "調査を進める？",
+			"actionId": "work",
+			"requirements": {
+				"legacydetectivejob_matured": 1,
+				"suspicious": 1
+			},
+			"startdescription": "自分の理性を活かせば、ターゲットのことをもっと知ることができるかもしれない。",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_pursuepromotion",
+			"label": "一種の昇天",
+			"actionId": "work",
+			"requirements": {
+				"legacydetectivejob_matured": 1,
+				"favour": 1
+			},
+			"startdescription": "取締局に気に入られた。これを利用して、出世の階段を登ることができるはずだ。[これは、小さな勝利ルートのエンディングである。]",
+			"description": "物語の結末。",
+			"warmup": 60,
+			"ending": "workvictoryb",
+			"signalEndingFlavour": "Grand",
+			"craftable": true
+		},
+		{
+			"id": "workdetectivejob_matured_investigate",
+			"label": "調査を進める",
+			"actionId": "work",
+			"requirements": {
+				"legacydetectivejob_matured": 1,
+				"suspicious": 1,
+				"reason": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "detectiveopenstudy",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_threereason_success",
+					"chance": 100
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_tworeason_success",
+					"chance": 70
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_onereason_success",
+					"chance": 30
+				}
+			],
+			"effects": {
+				"funds": 2
+			},
+			"startdescription": "ターゲットを調査する。理性を使えば使うほど、成功する確率が高くなる。",
+			"description": "私の調査では、新しい手掛かりは見つからなかった。",
+			"warmup": 60,
+			"aspects": {
+				"employment": 1,
+				"fatiguing": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "workdetectivejob_matured_investigate_threereason_success",
+			"label": "進展があった！",
+			"actionId": "work",
+			"alternativerecipes": [
+				{
+					"id": "detectiveopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"requirements": {
+				"reason": 3
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "workdetectivejob_matured_attemptsolvecase",
+					"chance": 100
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_successresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_matured_investigate_tworeason_success",
+			"label": "進展があった！",
+			"actionId": "work",
+			"alternativerecipes": [
+				{
+					"id": "detectiveopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"requirements": {
+				"reason": 2
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "workdetectivejob_matured_attemptsolvecase",
+					"chance": 100
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_successresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_matured_investigate_onereason_success",
+			"label": "進展があった！",
+			"actionId": "work",
+			"alternativerecipes": [
+				{
+					"id": "detectiveopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"requirements": {
+				"reason": 1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "workdetectivejob_matured_attemptsolvecase",
+					"chance": 100
+				},
+				{
+					"id": "workdetectivejob_matured_investigate_successresults",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_matured_investigate_successresults",
+			"label": "進展があった！",
+			"actionId": "work",
+			"effects": {
+				"funds": 3,
+				"myevidence": 1
+			},
+			"aspects": {
+				"employment": 1,
+				"fatiguing": 1,
+				"investigatingsuccess": 1,
+				"dreadful": 1
+			},
+			"description": "扉のバタバタと閉まる音、署内の壁の湿った汚れ、靴磨きワックスの匂いと、警官の汗の匂い。すべてが凝縮し、真実と言う名の結晶が生まれた。多くのことを成し遂げた私には、残業代をもらう資格がある。",
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_attemptsolvecase",
+			"label": "事件の解決",
+			"actionId": "work",
+			"requirements": {
+				"myevidenceb": 1
+			},
+			"slots": [
+				{
+					"id": "Culprit",
+					"label": "犯人",
+					"required": {
+						"independent": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "証拠を取締局次長に引き渡した......",
+			"description": "取締局に、逮捕に必要な証拠を引き渡したが......逮捕できる人間がいなくては仕方ない。",
+			"alternativerecipes": [
+				{
+					"id": "workdetectivejob_matured_solvecase_withbackup",
+					"chance": 100
+				},
+				{
+					"id": "workdetectivejob_matured_solvecase",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"aspects": {
+				"employment": 1,
+				"fatiguing": 1
+			},
+			"effects": {
+				"funds": 2,
+				"suspicious": -99
+			},
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_solvecase_withbackup",
+			"label": "事件の解決",
+			"actionId": "work",
+			"requirements": {
+				"myevidenceb": 1,
+				"independent": 1
+			},
+			"extantreqs": {
+				"desire": -1
+			},
+			"startdescription": "証拠を取締局次長に引き渡した。今、私服を着た、無表情な男たちがターゲットの扉を叩いている様子が目に浮かぶ。",
+			"description": "取締局は、密室裁判を行っている。彼らは血も涙もない人間たちだ。ターゲットはこの世から姿を消し、私は昇格することとなった。",
+			"effects": {
+				"funds": 7,
+				"favour": 1,
+				"suspicious": -99,
+				"independent": -1,
+				"legacydetective_plotitem_backup": 1
+			},
+			"warmup": 60,
+			"aspects": {
+				"employment": 1,
+				"fatiguing": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "workdetectivejob_newrival",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_solvecase",
+			"label": "事件の解決",
+			"actionId": "work",
+			"requirements": {
+				"myevidenceb": 1,
+				"independent": 1
+			},
+			"startdescription": "証拠を取締局次長に引き渡した。今、私服を着た、無表情な男たちがターゲットの扉を叩いている様子が目に浮かぶ。",
+			"description": "取締局は、密室裁判を行っている。彼らは血も涙もない人間たちだ。ターゲットはこの世から姿を消し、私は昇格することとなった。",
+			"effects": {
+				"funds": 7,
+				"favour": 1,
+				"suspicious": -99,
+				"independent": -1
+			},
+			"warmup": 60,
+			"aspects": {
+				"employment": 1,
+				"fatiguing": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "workdetectivejob_newrival",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_newrival",
+			"label": "あと何人、悪党がいるのだろう？",
+			"actionId": "newrival",
+			"startdescription": "終わりはあるのか？法や街や世界を「安全」と呼べる日は来るのだろうか？",
+			"description": "この人物について不穏な報告があった。",
+			"deckeffect": {
+				"acquaintances": 1
+			},
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "workdetectivejob_newrival_recruit",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_newrival_recruit",
+			"label": "あと何人、悪党がいるのだろう？",
+			"actionId": "newrival",
+			"startdescription": ".",
+			"description": ".",
+			"aspects": {
+				"recruiting": 1
+			},
+			"linked": [
+				{
+					"id": "workdetectivejob_start_promote_lever_believer",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_start_promote_lever_believer",
+			"comments": "left unrenamed for backwards compatibility",
+			"label": "気をつけて......",
+			"actionId": "newrival",
+			"aspects": {
+				"promotiontodisciple": 1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "workdetectivejob_start_promote_lever_disciple",
+					"chance": 30
+				},
+				{
+					"id": "workdetectivejob_start_rebellion",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "workdetectivejob_start_promote_lever_disciple",
+			"comments": "left unrenamed for backwards compatibility",
+			"label": "気をつけて......",
+			"actionId": "newrival",
+			"aspects": {
+				"promotionto_d_edge": 1,
+				"promotionto_d_forge": 1,
+				"promotionto_d_grail": 1,
+				"promotionto_d_heart": 1,
+				"promotionto_d_knock": 1,
+				"promotionto_d_lantern": 1,
+				"promotionto_d_moth": 1,
+				"promotionto_d_winter": 1
+			},
+			"linked": [
+				{
+					"id": "workdetectivejob_start_rebellion",
+					"chance": 100
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_start_rebellion",
+			"comments": "left unrenamed for backwards compatibility",
+			"label": "気をつけて......",
+			"actionId": "work",
+			"aspects": {
+				"rebellion": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "workdetectivejob_matured_plead",
+			"label": "復職させてくれと懇願する！",
+			"actionId": "work",
+			"requirements": {
+				"legacydetectivejob_suspended": 1,
+				"passion": 1
+			},
+			"startdescription": "なんでわかってくれないんだ？",
+			"description": "とりあえず、復職することができた。",
+			"aspects": {
+				"plead": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "workdetectivejob_epilogue",
+			"label": "",
+			"actionId": "work",
+			"effects": {
+				"legacydetectivejob_matured": -1
+			},
+			"startdescription": "仕事を失った",
+			"description": "",
+			"craftable": false
+		},
+		{
+			"id": "legacydetectiveplotitem_tempt",
+			"label": "ページの香り",
+			"actionId": "craving",
+			"requirements": {
+				"detectivetemptation": 1
+			},
+			"linked": [
+				{
+					"id": "legacydetectiveplotitem_tempt_addslot",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "legacydetectiveplotitem_tempt_addslot",
+			"label": "ページの香り",
+			"actionId": "craving",
+			"slots": [
+				{
+					"id": "resist",
+					"label": "抵抗",
+					"description": "ファイルを何度も読みたくなる誘惑に抗うのは簡単ではない。理性を追加すると、抵抗力を強化できる。",
+					"required": {
+						"reason": 1
+					}
+				}
+			],
+			"startdescription": "#PREVIOUSCHARACTERNAME#のファイルで見た内容が忘れられない。[ファイルを何度も読みたくなる誘惑に抗うのは簡単ではない。理性を追加すると、抵抗力を強化できる。]",
+			"description": "ページは簡単に捲れる。果実の皮を剥いたり、秘密の贈り物を開いたりしているようだ。最後まで読むと、指先がインクで汚れていることに気づく。脳みそが沸騰しそうだ。何を始めてしまったのだろう。",
+			"effects": {
+				"legacydetective_plotitem": -1,
+				"LEVER_LastDesire": 1,
+				"fascination": 1,
+				"dread": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacydetectiveplotitem_tempt_resist",
+					"chance": 100
+				},
+				{
+					"id": "visionsrisk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "legacydetectiveplotitem_tempt_resist",
+			"label": "ページの香り",
+			"requirements": {
+				"reason": 1
+			},
+			"actionId": "craving",
+			"startdescription": "私には自制心がある。私には自制心しかない。簡単にあきらめるために、こんなに長く頑張ってきたわけではない。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"description": "今のところ誘惑は過ぎ去った。"
+		},
+		{
+			"id": "detectiveopenstudy",
+			"label": "勉強中......",
+			"alternativerecipes": [
+				{
+					"id": "ascensionnotyet",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "detectiveopenexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"actionId": "study",
+			"startdescription": "時々、自分を磨く時間ができる。",
+			"description": "間違いなく、どこかに勉強に役立つ資料があるはずだ。",
+			"effects": {
+				"reason": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "detectiveopenexplore",
+			"label": "探索......",
+			"actionId": "explore",
+			"startdescription": "事務所の壁には首都の地図が貼ってあり、そこにはメモが蜘蛛の巣のように黒い画鋲で止められている。",
+			"description": "この街のことはよく知っているが、完全に知るには一生かかるだろう。",
+			"warmup": 10,
+			"deckeffect": {
+				"citysecrets": 2
+			},
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "detectiveopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "detectiveopentalk",
+			"label": "会話中.....",
+			"actionId": "talk",
+			"startdescription": "友情を結ぶかもしれないし、終わらせるかもしれない。",
+			"description": "",
+			"effects": {
+				
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "detectivestudy_plotitem",
+			"label": "開いてはいけない",
+			"actionId": "study",
+			"requirements": {
+				"detectivetemptation": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "detectiveopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"detectivetemptation": -1,
+				"fascination": 1,
+				"LEVER_LastDesire": 1,
+				"dread": 1
+			},
+			"startdescription": "もう二度と読んではいけない。記録や説明、スケッチを忘れるのに数週間も掛ってしまった。",
+			"description": "ページは簡単に捲れる。果実の皮を剥いたり、秘密の贈り物を開いたりしているようだ。最後まで読むと、指先がインクで汚れていることに気づく。脳みそが沸騰しそうだ。何を始めてしまったのだろう。",
+			"warmup": 60,
+			"craftable": true,
+			"maxexecutions": 1
+		},
+		{
+			"id": "detectivestudy_plotitem_afterfirsttime",
+			"label": "開いてはいけない",
+			"actionId": "study",
+			"requirements": {
+				"detectivetemptation": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "detectiveopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"detectivetemptation": -1,
+				"fascination": 1,
+				"dread": 1
+			},
+			"startdescription": "もう二度と読んではいけない。記録や説明、スケッチを忘れるのに数週間も掛ってしまった。",
+			"description": "ページは簡単に捲れる。果実の皮を剥いたり、秘密の贈り物を開いたりしているようだ。最後まで読むと、指先がインクで汚れていることに気づく。脳みそが沸騰しそうだ。何をしてしまったのだろう。",
+			"warmup": 60,
+			"craftable": true,
+			"maxexecutions": 1
+		},
+		{
+			"id": "detectivework_plotitem",
+			"label": "ファイルを燃やす",
+			"actionId": "work",
+			"requirements": {
+				"detectivetemptation": 1,
+				"legacydetective_plotitem_burning": -1
+			},
+			"effects": {
+				"detectivetemptation": -1,
+				"legacydetective_plotitem_burning": 1,
+				"restlessness": 1,
+				"contentment": 1
+			},
+			"startdescription": "これは証拠だ。証拠を燃やしてはいけないが、これが最善の策なのかもしれない。",
+			"description": "ページは黒くなり、1枚1枚、指を閉じるように丸まっていく。私は事務所の窓を開けた。煙は散り、消えていく。何をしてしまったのだろうか？",
+			"warmup": 30,
+			"craftable": true
+		}
+	]
+}

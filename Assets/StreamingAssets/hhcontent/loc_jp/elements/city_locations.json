@@ -1,0 +1,526 @@
+{
+	"elements": [
+		{
+			"id": "locationbookdealer",
+			"label": "モーランドの店",
+			"aspects": {
+				"location": 1
+			},
+			"slots": [
+				{
+					"id": "Cost",
+					"label": "費用",
+					"required": {
+						"funds": 1
+					},
+					"consumes": true,
+					"actionId": "explore"
+				}
+			],
+			"description": "珍しく、時に危険な本を扱うモーランド嬢の薄暗い敷地。",
+			"unique": true,
+			"xtriggers": {
+				"exhaustlocation": "locationbookdealer_exhausted"
+			}
+		},
+		{
+			"id": "locationbookdealer_exhausted",
+			"label": "モーランドの店 [閉店]",
+			"description": "以前は本屋のモーランドの住所だったが、今は他の場所で知識を探さないといけない。",
+			"aspects": {
+				"location": 1,
+				"hq.potential": 1
+			},
+			"slots": [
+				{
+					"id": "Old HQ",
+					"description": "旧本部をここに配置して放棄し、新しい場所に移動する。元に戻すことはできない。",
+					"actionId": "explore",
+					"required": {
+						"hq": 1
+					}
+				}
+			],
+			"unique": true,
+			"xtriggers": {
+				"movehq": "hq.bookshop"
+			}
+		},
+		{
+			"id": "locationauctionhouse",
+			"label": "オリフラムのオークションハウス",
+			"aspects": {
+				"location": 1
+			},
+			"description": "オリフラムの店では、珍品、香水、剥製標本、希少な本などを専門に扱っている。原因不明の火事で古い建物が破壊されて以来、新しい建物で営業している。[オークションハウスでは商品の売買ができる。]",
+			"slots": [
+				{
+					"id": "Sell",
+					"label": "売る",
+					"description": "ここにアイテムを追加してオークションに出品する。",
+					"required": {
+						"auctionable": 1
+					},
+					"actionId": "explore"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "locationcabaretclosed",
+			"label": "エクディシスクラブ（閉店中）",
+			"description": "オカルト的な評判のあるキャバレー。特定の曜日の夜だけ営業する。すぐに営業再開するだろう。",
+			"unique": true,
+			"lifetime": 30,
+			"decayTo": "locationcabaret",
+			"uniquenessgroup": "uqcabaret",
+			"resaturate": true
+		},
+		{
+			"id": "locationcabaret",
+			"label": "エクディシスクラブ",
+			"aspects": {
+				"location": 1,
+				"moth": 1,
+				"grail": 1,
+				"heart": 1
+			},
+			"description": "オカルト的な評判のあるキャバレー。",
+			"slots": [
+				{
+					"id": "Entry",
+					"label": "入り口",
+					"actionId": "explore",
+					"required": {
+						"funds": 1,
+						"sulochana": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"locationcabaret": "locationcabaretclosed"
+			},
+			"unique": true,
+			"uniquenessgroup": "uqcabaret"
+		},
+		{
+			"id": "hq.abandoned",
+			"label": "放置された本部",
+			"description": "忘れてくれ、J.N。",
+			"lifetime": 1
+		},
+		{
+			"id": "generichq",
+			"label": "本部？",
+			"aspects": {
+				"hq": 1
+			},
+			"description": "[Headquarters mechanics have changed.]",
+			"unique": true
+		},
+		{
+			"id": "hq.temporary",
+			"label": "仮本部",
+			"aspects": {
+				"hq": 1,
+				"location": 1
+			},
+			"description": "我々は公にはできないようなことをしている。もっとプライベートな場所に移動しよう。",
+			"slots": [
+				{
+					"id": "Cupboard",
+					"label": "戸棚",
+					"description": "信奉者を配置すると、永久的に、囚人へと変えることができる。",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true,
+			"icon": "generichq"
+		},
+		{
+			"id": "hq.townhouse",
+			"label": "豪華なタウンハウス",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"library": 1
+			},
+			"description": "敷物を巻き戻して床にチョークで印をつける前に、必ずカーテンをしっかり閉める。",
+			"slots": [
+				{
+					"id": "Attic",
+					"description": "信奉者を配置すると、永久的に、囚人へと変えることができる。",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "資金",
+					"description": "ここに資金を置いて、聖杯の影響力を上げる。",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.church",
+			"label": "異端教会",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"sanctuary": 1
+			},
+			"description": "日曜の朝でも、礼拝には個性が見られるが、ほとんどの部外者は気づかない。寒い時間帯に行われる儀式には、部外者は招待されない。",
+			"slots": [
+				{
+					"id": "Vestry",
+					"description": "信奉者を閉じ込めると、永久的に、囚人へと変えることができる。",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "資金",
+					"description": "ここに資金を置いて、開錠の影響力を上げる。",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.mithraeum",
+			"label": "ロウソクの灯るミトラ神殿",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"sanctuary": 1,
+				"secret": 1
+			},
+			"description": "伝授者たちは2000年前からここで神秘の儀式を祝ってきた。言葉は変わり、神々も変わったが、いつも最後には血が流れる。",
+			"slots": [
+				{
+					"id": "Chains",
+					"description": "信奉者を配置すると、永久的に、囚人へと変えることができる。",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "資金",
+					"description": "ここに資金を置いて、灯りの影響力を上げる。",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.hospital",
+			"label": "青紫の家",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"pit": 1,
+				"secret": 1
+			},
+			"description": "壁は青紫の広間の濃い色に塗り替えた。蜘蛛の巣を片づけ、窓の後ろには目立たない雨戸を設置した。そして、すべての鍵を入れ替えた。",
+			"slots": [
+				{
+					"id": "Cell",
+					"description": "信奉者を配置すると、永久的に、囚人へと変えることができる。",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "資金",
+					"description": "ここに資金を置いて、開錠の影響力を上げる。",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.bookshop",
+			"label": "本屋の裏の部屋",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"library": 1
+			},
+			"description": "希少性に欠けるが、店内にはモーランド嬢が置いていった在庫が残っている。時が経つにつれ、見知らぬ人たちがここに本を売りに迷い込んで来るようになった。たまにだが、我々が、彼らの相手をすることもある。",
+			"slots": [
+				{
+					"id": "Cellar",
+					"description": "信奉者を配置すると、永久的に、囚人へと変えることができる。",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "資金",
+					"description": "ここに資金を置いて、心臓の影響力を上げる。",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.warehouse",
+			"label": "暗い倉庫",
+			"aspects": {
+				"hq": 1,
+				"location": 1,
+				"pit": 1,
+				"secret": 1
+			},
+			"description": "垂木はネズミの臭いがするが、その臭いは川の悪臭に負けて消えかかっている。ここは辺ぴな場所にある。こういう特徴が、それなりに利点となるのだ。",
+			"slots": [
+				{
+					"id": "Shed",
+					"description": "信奉者を配置すると、永久的に、囚人へと変えることができる。",
+					"actionId": "talk",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				},
+				{
+					"id": "funds",
+					"label": "資金",
+					"description": "ここに資金を置いて、鍛造の影響力を上げる。",
+					"actionId": "explore",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"movehq": "hq.abandoned"
+			},
+			"unique": true
+		},
+		{
+			"id": "hq.church.potential",
+			"label": "無人の教会",
+			"aspects": {
+				"location": 1,
+				"hq.potential": 1
+			},
+			"description": "ある夜、聖職者が側近と教会の最も重要な財宝を携えて、突然姿を消した。彼は居心地の良い場所に行った、と言う人が多い。海が輝く日当たりの良い場所に行ったのかもしれない。指導者を失った群れを集めて、ここを作戦の拠点にしよう。",
+			"slots": [
+				{
+					"id": "Old HQ",
+					"description": "旧本部をここに配置して放棄し、新しい場所に移動する。元に戻すことはできない。",
+					"actionId": "explore",
+					"required": {
+						"hq": 1
+					}
+				}
+			],
+			"unique": true,
+			"xtriggers": {
+				"movehq": "hq.church"
+			},
+			"icon": "hq.church"
+		},
+		{
+			"id": "hq.mithraeum.potential",
+			"label": "空っぽののミトラ神殿",
+			"aspects": {
+				"location": 1,
+				"hq.potential": 1
+			},
+			"description": "ここはかつて礼拝の場であった。我々の手で、再び命を吹き込むことができる。",
+			"slots": [
+				{
+					"id": "Old HQ",
+					"description": "旧本部をここに配置して放棄し、新しい場所に移動する。元に戻すことはできない。",
+					"actionId": "explore",
+					"required": {
+						"hq": 1
+					}
+				}
+			],
+			"unique": true,
+			"xtriggers": {
+				"movehq": "hq.mithraeum"
+			},
+			"icon": "hq.mithraeum"
+		},
+		{
+			"id": "hq.hospital.potential",
+			"label": "空っぽの病院",
+			"aspects": {
+				"location": 1,
+				"hq.potential": 1
+			},
+			"description": "近所の人が言うには、幽霊がまだここを歩き回っているらしい。我々がここを手に入れれば、もちろん彼らは去っていくだろう。あるいは、彼らを上手く利用することができるかもしれない。",
+			"slots": [
+				{
+					"id": "Old HQ",
+					"description": "旧本部をここに配置して放棄し、新しい場所に移動する。元に戻すことはできない。",
+					"actionId": "explore",
+					"required": {
+						"hq": 1
+					}
+				}
+			],
+			"unique": true,
+			"xtriggers": {
+				"movehq": "hq.hospital"
+			},
+			"icon": "hq.hospital"
+		},
+		{
+			"id": "hq.warehouse.potential",
+			"label": "放置された倉庫",
+			"aspects": {
+				"location": 1,
+				"hq.potential": 1
+			},
+			"description": "腐った川の横にある腐った箱。ここについて来る人はいないだろう。",
+			"slots": [
+				{
+					"id": "Old HQ",
+					"description": "旧本部をここに配置して放棄し、新しい場所に移動する。元に戻すことはできない。",
+					"actionId": "explore",
+					"required": {
+						"hq": 1
+					}
+				}
+			],
+			"unique": true,
+			"xtriggers": {
+				"movehq": "hq.warehouse"
+			},
+			"icon": "hq.warehouse"
+		},
+		{
+			"id": "locationstreetsstrange",
+			"label": "月明かりに照らされた奇妙な街並み",
+			"aspects": {
+				"location": 1
+			},
+			"description": "月の光が異空間への鍵となることもある。一晩か二晩の間、道が見慣れない形で曲がる場所を見つけた。ここを歩けば、見識が得られるかもしれないし、気が狂うかもしれない。",
+			"lifetime": 120
+		},
+		{
+			"id": "location.gallery",
+			"label": "モンメレンツィ・マクドナルド・ギャラリー",
+			"comments": "currently just used for early Ghoul flavour, but we could do more.",
+			"aspects": {
+				"location": 1
+			},
+			"description": "アリスター・モンメレンツィは、モンメレンツィ家の三代目にして最後の地図測量家だった。アリスターと彼の謎めいた後援者であるティモシー・マクドナルドは、小さいながらも印象的なコレクションを集めていた。極地での冒険に失敗した後、コレクションは静かな公園の脇にある灰色の建物で一般公開されたが、その中の美術品を撮影したり日光にさらしたりしないことが条件となっていた。"
+		},
+		{
+			"id": "location.cemetery",
+			"label": "墓地",
+			"slots": [
+				{
+					"id": "muscle",
+					"label": "筋肉",
+					"description": "ヘルパーを雇うこともできるし、自分で掘ることもできる。",
+					"actionId": "explore",
+					"required": {
+						"health": 1,
+						"follower": 1
+					}
+				}
+			],
+			"description": "覚醒世界では、夢の中と同じように、死者は下にいることが多い。",
+			"aspects": {
+				"location": 1
+			},
+			"lifetime": 300,
+			"decayTo": "location.cemetery.closing"
+		},
+		{
+			"id": "location.cemetery.closing",
+			"label": "厳重に監視された墓地",
+			"description": "取締局が異変に気付き、警備員を送ってきた。訪問には時間がかかるだろうし、すぐに不可能なこととなるだろう。",
+			"slots": [
+				{
+					"id": "muscle",
+					"label": "筋肉",
+					"description": "ヘルパーを雇うこともできるし、自分で掘ることもできる。",
+					"actionId": "explore",
+					"required": {
+						"health": 1,
+						"follower": 1
+					}
+				}
+			],
+			"aspects": {
+				"location": 1
+			},
+			"lifetime": 60
+		}
+	]
+}

@@ -1,0 +1,42 @@
+{
+    "recipes": [
+        {
+            "id": "studymapbookdealer",
+            "label": "寻访莫兰书店",
+            "actionId": "study",
+            "requirements": {
+                "mapbookdealer": 1
+            },
+            "effects": {
+                "mapbookdealer": -1,
+                "locationbookdealer": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "openexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "如何去往莫兰书店的说明写得语焉不详。若要与来信者所研究的那类书籍打交道，我务必要小心谨慎。",
+            "description": "那是一条照明不佳的街巷，位于一个景貌不佳的小河弯处。积灰的窗户透出柔和的黄光。莫兰小姐向进门的我点头致意，却没起身。“我从不过问客户的名字。”她不等我自报家门便如此告知道。\n\n[<b>探索</b>已解锁。]",
+            "warmup": 30,
+            "craftable": true,
+            "comments": "This is one way the Explore verb may be opened."
+        },
+        {
+            "id": "openexplore",
+            "label": "探索",
+            "actionId": "explore",
+            "requirements": {},
+            "effects": {
+                "fragmentsecrethistories": 1
+            },
+            "startdescription": ".",
+            "description": "既然我已经发现了一处地点，我便可以<b>探索</b>那里。",
+            "warmup": 0,
+            "maxexecutions": 1,
+            "craftable": false
+        }
+    ]
+}

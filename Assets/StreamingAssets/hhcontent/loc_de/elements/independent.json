@@ -1,0 +1,1562 @@
+{
+	"elements": [
+		{
+			"id": "generic_r",
+			"label": "Ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Jemand, dem jeder Sinn für Verhältnismäßigkeit abhanden gekommen ist.",
+			"animFrames": 1,
+			"icon": "generic_c_edge",
+			"xtriggers": {
+				"rival_promotion": "generic_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "generic_c_edge"
+			}
+		},
+		{
+			"id": "auclair_r",
+			"icon": "auclair_r",
+			"label": "Auclair, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Auclair mag Schach, jetzt mehr denn je. Das Schwarz, das Weiß.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "auclair_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "auclair_b"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "cat_r",
+			"icon": "cat_r",
+			"label": "Katze Karo, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "'Katze Karo' nennt sie sich selbst. Einst war sie Wahrsagerin. Niemand scheint so genau zu wissen, was sie jetzt ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "cat_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "cat_b"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "clifton_r",
+			"icon": "clifton_r",
+			"label": "'Papst' Clifton, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Clifton lässt sich gern mit 'Eure Heiligkeit' anreden. Wird er nicht so angeredet, macht er unter Umständen eine Szene.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "clifton_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clifton_b"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clovette_r",
+			"icon": "clovette_r",
+			"label": "Clovette, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Es ist schwer, Clovette nicht zu mögen, selbst wenn man weiß, was sie getan hat.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "clovette_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clovette_b"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "dorothy_r",
+			"icon": "dorothy_r",
+			"label": "Dorothy, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Dorothy wird nicht nachlassen. Sie wird niemals nachlassen. So viel hat sie geschworen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "dorothy_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "dorothy_b"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "douglas_r",
+			"icon": "defaulthunter",
+			"label": "Douglas, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Douglas hat die Schnauze voll. Zeit zu sehen, was das alles soll.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "douglas_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "douglas_b"
+			},
+			"uniquenessgroup": "uqdouglas"
+		},
+		{
+			"id": "elridge_r",
+			"icon": "elridge_r",
+			"label": "Elridge, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Elridges Schuhe haben häufig Blutflecken.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "elridge_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "elridge_b"
+			}
+		},
+		{
+			"id": "enid_r",
+			"icon": "enid_r",
+			"label": "Enid, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Enid sieht den Feind stets kommen. Andauernd.",
+			"xtriggers": {
+				"rival_promotion": "enid_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "enid_b"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "laidlaw_r",
+			"icon": "laidlaw_r",
+			"label": "Laidlaw, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Laidlaws Pläne sind so raffiniert wie der Schatten eines Farns.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "laidlaw_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "laidlaw_b"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "leo_r",
+			"icon": "leo_r",
+			"label": "Leo, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Leo hat sich seiner Sache verschrieben und wird dafür alles tun, was nötig ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "leo_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "leo_b"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "neville_r",
+			"icon": "neville_r",
+			"label": "Neville, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Neville weiß, dass dies nicht von Dauer sein kann. Aber falls doch, dann wird er, bei Gott, alle Türen öffnen, die sich im bieten.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "neville_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "neville_b"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "porter_r",
+			"icon": "porter_r",
+			"label": "Porter, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Porter hat begonnen, Namen zu sammeln.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "porter_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "porter_b"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "renira_r",
+			"icon": "renira_r",
+			"label": "Renira, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Renira macht gern Verehrer aus Bewunderern.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "renira_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "renira_b"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "rose_r",
+			"icon": "rose_r",
+			"label": "Rose, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Rose fürchtet schon längst nicht mehr ihre Feinde.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "rose_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "rose_b"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "saliba_r",
+			"icon": "saliba_r",
+			"label": "Saliba, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Saliba duldet keine Langeweile.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "saliba_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "saliba_b"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "slee_r",
+			"icon": "slee_r",
+			"label": "Slee, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Slee giert immer nach Ressourcen um seinen Theorien nachzugehen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "slee_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "slee_b"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "sylvia_r",
+			"icon": "sylvia_r",
+			"label": "Sylvia, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Sylvias Pläne sind unklar. Man vermutet, selbst für Sylvia.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "sylvia_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "sylvia_b"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "tristan_r",
+			"icon": "tristan_r",
+			"label": "Tristan, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Tristan schmiedet sich ein kleines Königreich. Wo Feuer nötig ist, setzt er Feuer ein.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "tristan_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "tristan_b"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "valciane_r",
+			"icon": "valciane_r",
+			"label": "Valciane, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Valciane widmet sich ihren Gegnern mit dem gnadenlosen Elan eines Jungspunds, der Flaschen zerschlägt.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "valciane_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "valciane_b"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "victor_r",
+			"icon": "victor_r",
+			"label": "Victor, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Victor ist bereit für das, was kommen mag. Alle seine Messer sind so tatendurstig wie frische Rekruten.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "victor_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "victor_b"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "violet_r",
+			"icon": "violet_r",
+			"label": "Violet, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Violet hat sich neue Hobbys gesucht.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "violet_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "violet_b"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "ysabet_r",
+			"icon": "ysabet_r",
+			"label": "Ysabet, ein Störenfried",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"rivalmarks": 2,
+				"suspicious": 1
+			},
+			"description": "Ysabet wartet, wo sie nicht zu sehen ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "ysabet_r_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "ysabet_b"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "generic_r_c",
+			"label": "Ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Jemand, dem jeder Sinn für Verhältnismäßigkeit abhanden gekommen ist.",
+			"animFrames": 1,
+			"icon": "generic_c_edge",
+			"xtriggers": {
+				"rival_promotion": "generic_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "generic_c_edge"
+			}
+		},
+		{
+			"id": "auclair_r_c",
+			"icon": "auclair_r",
+			"label": "Auclair, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Auclair mag Schach, jetzt mehr denn je. Das Schwarz, das Weiß.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "auclair_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "auclair_c"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "cat_r_c",
+			"icon": "cat_r",
+			"label": "Katze Karo, eine Rivalin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "'Katze Karo' nennt sie sich selbst. Einst war sie Wahrsagerin. Niemand scheint so genau zu wissen, was sie jetzt ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "cat_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "cat_c"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "clifton_r_c",
+			"icon": "clifton_r",
+			"label": "'Papst' Clifton, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Clifton lässt sich gern mit 'Eure Heiligkeit' anreden. Wird er nicht so angeredet, macht er unter Umständen eine Szene.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "clifton_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clifton_c"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clovette_r_c",
+			"icon": "clovette_r",
+			"label": "Clovette, eine Rivalin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Es ist schwer, Clovette nicht zu mögen, selbst wenn man weiß, was sie getan hat.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "clovette_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clovette_c"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "connie_r_c",
+			"icon": "connie_r",
+			"label": "Connie, eine Abtrünnige",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Connie ... Connie überdenkt die Dinge.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "connie_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "connie_c"
+			},
+			"uniquenessgroup": "uqconnie"
+		},
+		{
+			"id": "dorothy_r_c",
+			"icon": "dorothy_r",
+			"label": "Dorothy, eine Rivalin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Dorothy wird nicht nachlassen. Sie wird niemals nachlassen. So viel hat sie geschworen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "dorothy_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "dorothy_c"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "douglas_r_c",
+			"icon": "douglas_r",
+			"label": "Douglas, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Douglas hat die Schnauze voll. Zeit zu sehen, was das alles soll.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "douglas_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "douglas_c"
+			},
+			"uniquenessgroup": "uqdouglas"
+		},
+		{
+			"id": "elridge_r_c",
+			"icon": "elridge_r",
+			"label": "Elridge, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Elridges Schuhe haben häufig Blutflecken.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "elridge_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "elridge_c"
+			}
+		},
+		{
+			"id": "enid_r_c",
+			"icon": "enid_r",
+			"label": "Enid, eine Rivalin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Enid sieht den Feind stets kommen. Andauernd.",
+			"xtriggers": {
+				"rival_promotion": "enid_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "enid_c"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "laidlaw_r_c",
+			"icon": "laidlaw_r",
+			"label": "Laidlaw, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Laidlaws Pläne sind so raffiniert wie der Schatten eines Farns.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "laidlaw_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "laidlaw_c"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "leo_r_c",
+			"icon": "leo_r",
+			"label": "Leo, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Leo hat sich seiner Sache verschrieben und wird dafür alles tun, was nötig ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "leo_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "leo_c"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "natalia_r_c",
+			"icon": "natalia_r",
+			"label": "Natalia, eine Abtrünnige",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Natalia hat Wahrheiten erfahren, die schon zu lange verborgen gewesen waren. Als Konsequenz hat sie ihre Pläne angepasst.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "natalia_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "natalia_c"
+			},
+			"uniquenessgroup": "uqnatalia"
+		},
+		{
+			"id": "neville_r_c",
+			"icon": "neville_r",
+			"label": "Neville, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Neville weiß, dass dies nicht von Dauer sein kann. Aber falls doch, dann wird er, bei Gott, alle Türen öffnen, die sich im bieten.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "neville_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "neville_c"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "porter_r_c",
+			"icon": "porter_r",
+			"label": "Porter, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Porter hat begonnen, Namen zu sammeln.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "porter_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "porter_c"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "renira_r_c",
+			"icon": "renira_r",
+			"label": "Renira, eine Rivalin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Renira macht gern Verehrer aus Bewunderern.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "renira_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "renira_c"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "rose_r_c",
+			"icon": "rose_r",
+			"label": "Rose, eine Rivalin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Rose fürchtet schon längst nicht mehr ihre Feinde.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "rose_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "rose_c"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "saliba_r_c",
+			"icon": "saliba_r",
+			"label": "Saliba, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Saliba duldet keine Langeweile.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "saliba_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "saliba_c"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "slee_r_c",
+			"icon": "slee_r",
+			"label": "Slee, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Slee giert immer nach Ressourcen um seinen Theorien nachzugehen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "slee_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "slee_c"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "spencer_r_c",
+			"icon": "spencer_r",
+			"label": "Spencer, ein Abtrünniger",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Spencer liebäugelte so lange mit diesen Möglichkeiten ... und jetzt steht seine Entscheidung fest.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "spencer_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "spencer_c"
+			},
+			"uniquenessgroup": "uqspencer"
+		},
+		{
+			"id": "sylvia_r_c",
+			"icon": "sylvia_r",
+			"label": "Sylvia, eine Rivalin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Sylvias Pläne sind unklar. Man vermutet, selbst für Sylvia.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "sylvia_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "sylvia_c"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "tristan_r_c",
+			"icon": "tristan_r",
+			"label": "Tristan, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Tristan schmiedet sich ein kleines Königreich. Wo Feuer nötig ist, setzt er Feuer ein.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "tristan_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "tristan_c"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "valciane_r_c",
+			"icon": "valciane_r",
+			"label": "Valciane, eine Rivalin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Valciane widmet sich ihren Gegnern mit dem gnadenlosen Elan eines Jungspunds, der Flaschen zerschlägt.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "valciane_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "valciane_c"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "victor_r_c",
+			"icon": "victor_r",
+			"label": "Victor, ein Rivale",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Victor ist bereit für das, was kommen mag. Alle seine Messer sind so tatendurstig wie frische Rekruten.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "victor_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "victor_c"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "violet_r_c",
+			"icon": "violet_r",
+			"label": "Violet, eine Rivalin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Violet hat sich neue Hobbys gesucht.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "violet_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "violet_c"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "ysabet_r_c",
+			"icon": "ysabet_r",
+			"label": "Ysabet, eine Rivalin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Ysabet wartet, wo sie nicht zu sehen ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "ysabet_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "ysabet_c"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "zachary_r_c",
+			"icon": "zachary_r",
+			"label": "Zachary, ein Abtrünniger",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Zachary ist immer seinem Verstand gefolgt, und nun hat er ihn hinaus aus dem Dezernat für Unterdrückung in eine bittere Dämmerung geführt.",
+			"animFrames": 1,
+			"xtriggers": {
+				"rival_promotion": "zachary_r_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "zachary_c"
+			},
+			"uniquenessgroup": "uqzachary"
+		},
+		{
+			"id": "generic_r_d",
+			"label": "Ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Jemand, dem jeder Sinn für Verhältnismäßigkeit abhanden gekommen ist.",
+			"animFrames": 1,
+			"icon": "generic_c_edge",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "generic_c_edge"
+			}
+		},
+		{
+			"id": "auclair_r_d",
+			"icon": "auclair_r",
+			"label": "Auclair, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Auclair mag Schach, jetzt mehr denn je. Das Schwarz, das Weiß.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "auclair_d"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "cat_r_d",
+			"icon": "cat_r",
+			"label": "Katze Karo, eine Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "'Katze Karo' nennt sie sich selbst. Einst war sie Wahrsagerin. Niemand scheint so genau zu wissen, was sie jetzt ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "cat_d"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "clifton_r_d",
+			"icon": "clifton_r",
+			"label": "'Papst' Clifton, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Clifton lässt sich gern mit 'Eure Heiligkeit' anreden. Wird er nicht so angeredet, macht er unter Umständen eine Szene.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clifton_d"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clovette_r_d",
+			"icon": "clovette_r",
+			"label": "Clovette, eine Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Es ist schwer, Clovette nicht zu mögen, selbst wenn man weiß, was sie getan hat.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "clovette_d"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "connie_r_d",
+			"icon": "connie_r",
+			"label": "Connie, eine Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 3,
+				"suspicious": 1
+			},
+			"description": "Connie konnte einer Herausforderung noch nie widerstehen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "connie_d"
+			},
+			"uniquenessgroup": "uqconnie"
+		},
+		{
+			"id": "dorothy_r_d",
+			"icon": "dorothy_r",
+			"label": "Dorothy, eine Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Dorothy wird nicht nachlassen. Sie wird niemals nachlassen. So viel hat sie geschworen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "dorothy_d"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "douglas_r_d",
+			"icon": "douglas_r",
+			"label": "Douglas, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"disciple": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Douglas hat das Feuer entdeckt.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "douglas_d"
+			},
+			"uniquenessgroup": "uqdouglas"
+		},
+		{
+			"id": "elridge_r_d",
+			"icon": "elridge_r",
+			"label": "Elridge, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Elridges Schuhe haben häufig Blutflecken.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "elridge_d"
+			}
+		},
+		{
+			"id": "enid_r_d",
+			"icon": "enid_r",
+			"label": "Enid, eine Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Enid sieht den Feind stets kommen. Andauernd.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "enid_d"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "laidlaw_r_d",
+			"icon": "laidlaw_r",
+			"label": "Laidlaw, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Laidlaws Pläne sind so raffiniert wie der Schatten eines Farns.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "laidlaw_d"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "leo_r_d",
+			"icon": "leo_r",
+			"label": "Leo, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Leo hat sich seiner Sache verschrieben und wird dafür alles tun, was nötig ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "leo_d"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "natalia_r_d",
+			"icon": "natalia_r",
+			"label": "Natalia, eine Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Natalia hat so viel gelernt und einen so hohen Preis bezahlt. Sie wird jetzt nicht aufgeben.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "natalia_d"
+			},
+			"uniquenessgroup": "uqnatalia"
+		},
+		{
+			"id": "neville_r_d",
+			"icon": "neville_r",
+			"label": "Neville, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Neville weiß, dass dies nicht von Dauer sein kann. Aber falls doch, dann wird er, bei Gott, alle Türen öffnen, die sich im bieten.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "neville_d"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "porter_r_d",
+			"icon": "porter_r",
+			"label": "Porter, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Porter hat begonnen, Namen zu sammeln.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "porter_d"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "renira_r_d",
+			"icon": "renira_r",
+			"label": "Renira, eine Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Renira macht gern Verehrer aus Bewunderern.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "renira_d"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "rose_r_d",
+			"icon": "rose_r",
+			"label": "Rose, eine Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Rose fürchtet schon längst nicht mehr ihre Feinde.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "rose_d"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "saliba_r_d",
+			"icon": "saliba_r",
+			"label": "Saliba, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Saliba duldet keine Langeweile.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "saliba_d"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "slee_r_d",
+			"icon": "slee_r",
+			"label": "Slee, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Slee giert immer nach Ressourcen um seinen Theorien nachzugehen.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "slee_d"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "spencer_r_d",
+			"icon": "spencer_r",
+			"label": "Spencer, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Spencer wird nicht mehr zulassen, dass ihm irgendetwas vorenthalten wird. Nun nähert er sich der letzten Schwelle.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "spencer_d"
+			},
+			"uniquenessgroup": "uqspencer"
+		},
+		{
+			"id": "sylvia_r_d",
+			"icon": "sylvia_r",
+			"label": "Sylvia, ein Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Sylvias Pläne sind unklar. Man vermutet, selbst für Sylvia.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "sylvia_d"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "tristan_r_d",
+			"icon": "tristan_r",
+			"label": "Tristan, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Tristan schmiedet sich ein kleines Königreich. Wo Feuer nötig ist, setzt er Feuer ein.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "tristan_d"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "valciane_r_d",
+			"icon": "valciane_r",
+			"label": "Valciane, eine Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Valciane widmet sich ihren Gegnern mit dem gnadenlosen Elan eines Jungspunds, der Flaschen zerschlägt.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "valciane_d"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "victor_r_d",
+			"icon": "victor_r",
+			"label": "Victor, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Victor ist bereit für das, was kommen mag. Alle seine Messer sind so tatendurstig wie frische Rekruten.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "victor_d"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "violet_r_d",
+			"icon": "violet_r",
+			"label": "Violet, eine Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Violet hat sich neue Hobbys gesucht.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "violet_d"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "ysabet_r_d",
+			"icon": "ysabet_r",
+			"label": "Ysabet, eine Spätzünderin",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Ysabet wartet, wo sie nicht zu sehen ist.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "ysabet_d"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "zachary_r_d",
+			"icon": "zachary_r",
+			"label": "Zachary, ein Spätzünder",
+			"aspects": {
+				"mortal": 1,
+				"independent": 1,
+				"exalted": 1,
+				"rivalmarks": 4,
+				"suspicious": 1
+			},
+			"description": "Zachary nähert sich seinem unabwendbaren Ende.",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"recruiting": "zachary_d"
+			},
+			"uniquenessgroup": "uqzachary"
+		}
+	]
+}

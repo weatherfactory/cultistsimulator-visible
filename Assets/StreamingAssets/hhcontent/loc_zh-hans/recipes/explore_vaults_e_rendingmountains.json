@@ -1,0 +1,266 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaultrendingmountains1_setup",
+            "label": "探险开始:猎手之穴",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultrendingmountains1": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "guardian_watchers": 1,
+                "guardian_serpent": 1
+            },
+            "startdescription": "撕祭部落的陷阱迷宫。我们必须穿山越岭，一路杀入部落。在那之后，毫无疑问的是，我们会在那里发现别的东西。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultrendingmountains2_setup",
+            "label": "探险开始:避雪神庙",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultrendingmountains2": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "guardian_dead": 1,
+                "curse_nowhere": 1
+            },
+            "startdescription": "我们踏雪而行，攀山而上前往那座神庙。如果那些死者苏生过来袭击我们，我们会干掉它们。但挡在我们面前的还有一股扭曲的恶意，若是不消灭它，那它会跟着我们回去。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultrendingmountains3_setup",
+            "label": "探险开始:伊克玛维之眼",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultrendingmountains3": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "seal_wardeddoor": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "我们与观星台之间隔着撕身山脉。那扇门会在我们面前紧闭，让我们无法入内。我们所见的那些幻象会撕碎我们的五感。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultrendingmountains4_setup",
+            "label": "探险开始:石狼陵墓",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultrendingmountains4": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "seal_wardeddoor": 1,
+                "guardian_dead": 1
+            },
+            "startdescription": "自从墓主死了之后，这里是不是就变成了连太阳都未曾踏足过的地方？不过或许，说墓主已死还为时尚早。如果我们想要洗劫这座寝陵，那我们就得面对雪崩，狂灵还有被手艺精湛的建筑师们所密封的那扇墓门。让我们做好准备吧。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultrendingmountainsdefault_setup",
+            "label": "探险开始:无影众王的墓群",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultrendingmountainsdefault": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "seal_hiddendoor": 1,
+                "guardian_watchers": 1,
+                "curse_affliction": 1
+            },
+            "startdescription": "我们必须翻越群山，闯过守卫，而后解开无影众王的诅咒。这样我们或许才能找到宝藏。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultrendingmountains1_success",
+            "label": "战争回忆",
+            "actionId": "explore",
+            "requirements": {
+                "vaultrendingmountains1": 1
+            },
+            "effects": {
+                "vaultrendingmountains1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "ingredientedgef",
+                    "ingredientedgef",
+                    "ingredientedgef",
+                    "toolforged",
+                    "bookofdissolutionmandaic",
+                    "ingredientforgeb",
+                    "ingredientforgeb",
+                    "ingredientforgeb",
+                    "textbookmandaicaramaic"
+                ],
+                "draws": 9,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "在猎手之穴的塌陷深处，我们找到了一个房间，房间的墙壁上绘满了战斗场景。此处是座圣坛，用以祭奠撕祭部落最伟大的猎手。",
+            "description": "这里还堆着那些猎手所猎获的战利品。里边也有现在已经灭绝了的动物。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultrendingmountains2_success",
+            "label": "祭坛的外衣",
+            "actionId": "explore",
+            "requirements": {
+                "vaultrendingmountains2": 1
+            },
+            "effects": {
+                "vaultrendingmountains2": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toolgraild",
+                    "wherehasshegonevak",
+                    "tooledgef",
+                    "dreamconspiracyskiesphrygian",
+                    "textbookvaksanskrit"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "神殿内耸动着泛冷光的菌菇。要搜刮这个地方，我们先得戴着手套把密布在祭坛上的菌菇都剥下来。它们摸起来冰冷如霜。我们的手套现在也开始发光，我们的呼吸为这冰冷的神殿蒙上了雾气。",
+            "description": "那些无名祭司在这里留下了一堆尸骨和一堆珍宝。是祭品吗？又或者是后来者死在了这里？那些发光的菌菇用酸腐蚀着尸骨。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultrendingmountains3_success",
+            "label": "天宫的运转",
+            "actionId": "explore",
+            "requirements": {
+                "vaultrendingmountains3": 1
+            },
+            "effects": {
+                "vaultrendingmountains3": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toollanternfcracked",
+                    "larquebinecodexphrygian",
+                    "bookofmasksphrygian",
+                    "toolknockd"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "大望远镜生锈了，从穹顶上掉了下来。镜头碎裂。苍白的光在地板上来回旋转，宛若有舞者举着提灯起舞一般。或许它们在效仿天体的运转，又或者它们在用此来悼念太阳的消亡。",
+            "description": "居住在这里的首席天文学家一定是无形之术的实践者。在他住处那张腐朽的床下，一只柏木箱子里，我们找到了我们想要的东西。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultrendingmountains4_success",
+            "label": "狼之将至",
+            "actionId": "explore",
+            "requirements": {
+                "vaultrendingmountains4": 1
+            },
+            "effects": {
+                "vaultrendingmountains4": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "ingredientwinterd",
+                    "ingredientwinterd",
+                    "ingredientwinterd",
+                    "secondglorymandaic",
+                    "asthesunhiscoursearamaic",
+                    "textbookphrygiangreek"
+                ],
+                "draws": 6,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "死者并没未发出低语，但陵墓内回荡着另一种声音，我们听到了微弱的嚎叫声，嚎叫声渐渐低沉，就仿佛一艘船外壳上的铁皮逐渐剥落，这声音搅着我们的骨髓。尽管听起来非常像，但它绝对不是风的声音。我们不该在这里待上太久。",
+            "description": "寒气逐渐加重，我们的皮肤上都结了一层薄冰。陵墓中央是一个陈放在花岗岩底座上的白色大理石碗状物。里边装满触手如灼的冷雪——雪中埋了值得注意的物什。这些东西是藏在此处？还是供奉在此处？除此之外没有剩下任何东西了。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultrendingmountainsdefault_success",
+            "label": "身后所遗",
+            "actionId": "explore",
+            "requirements": {
+                "vaultrendingmountainsdefault": 1
+            },
+            "effects": {
+                "vaultrendingmountainsdefault": -1
+            },
+            "deckeffect": {
+                "vaultrewardse": 3
+            },
+            "startdescription": "我们把石头移到一边，然后用光照亮整座王陵。国王就躺在那里，已经只剩下一具纸一样薄而干的尸体，碎骨散落四处。国王并没有坐起身来，看来他并非不死者。",
+            "description": "无影众王只会将自己最为珍爱的宝物随葬。他们并不打算把财富带到来世。此物是这位王所珍视的随葬珍宝。",
+            "warmup": 30,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "expedition.corpse.find.vaultrendingmountainsdefault",
+                    "additional": true
+                }
+            ]
+        }
+    ]
+}

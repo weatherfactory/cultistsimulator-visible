@@ -1,0 +1,3057 @@
+{
+	"recipes": [
+		{
+			"id": "send.first",
+			"actionId": "send",
+			"label": "Kommunikation",
+			"startdescription": "Ich habe hervorragende Gründe, nicht mit jemandem aus meinem alten Leben in Kontakt zu treten. Doch das könnte sich noch ändern.",
+			"effects": {
+				"temptation.obscurity": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "send.op.echidna",
+			"actionId": "send",
+			"label": "Chaimas Streben",
+			"startdescription": "Beim ersten Gerücht, dass Echidna anwesend ist ...",
+			"description": "Etwas hat Chaima am Gehen gehindert.",
+			"slots": [
+				{
+					"id": "chaima",
+					"label": "Chaima",
+					"description": "Chaima hat am Rande der Wüste zu tun.",
+					"required": {
+						"ally.huntress": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.echidna.2"
+				}
+			],
+			"requirements": {
+				"op.echidna": 1
+			},
+			"extantreqs": {
+				"ally.huntress": 1
+			},
+			"comments": "Extantreq shouldn't be necessary because the op card is unique, but leaving it here as a safety measure",
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.op.echidna.2",
+			"actionId": "send",
+			"label": "Chaimas Beute",
+			"startdescription": "Beim ersten Gerücht, dass Echidna anwesend sei, ist Chaima in die Wüste verschwunden. Sie hat eine ihrer typischen Botschaften hinterlassen: 'Auf der Jagd. Nicht auf die Ligeianerin.'",
+			"description": "Chaima ist mit einem hohläugigen Mann von ungewöhnlicher Schönheit zurückgekehrt, der ihr gefesselt in einigem Abstand folgt. Unmenschliche Muskeln spielen unter der Haut des Mannes. 'Hab's gefunden', erklärt mir Chaima.",
+			"requirements": {
+				"ally.huntress": 1
+			},
+			"effects": {
+				"op.echidna": -1,
+				"contact.labhite.fallen": 1
+			}
+		},
+		{
+			"id": "send.op.morgen",
+			"actionId": "send",
+			"label": "Eine Audienz bei Mme Matutine?",
+			"startdescription": "Mme Matutine ist, was man eine Ligeianerin nennt, was bedeutet, dass sie jemand ist, der so etwas macht, wie Leute zu essen. Doch ich habe gehört, dass sie mit dem Namenlosen Namen des Samtes eine Bekanntschaft verbindet, 'in dessen Nebeln die Besiegten Trost finden.' Das könnte etwas sein, was ich brauche.",
+			"description": "Nichts. Ich warte am Kai während der Meereswind mich beutelt.",
+			"slots": [
+				{
+					"id": "gift",
+					"label": "Ein Geschenk",
+					"description": "Etwas um das Interesse von Mme Matutine zu wecken"
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.morgen.pentiment"
+				}
+			],
+			"requirements": {
+				"op.morgen": 1
+			},
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.op.morgen.pentiment",
+			"actionId": "send",
+			"label": "Mme Matutine!",
+			"startdescription": "Mme Matutine kommt lachend die Gangway herunter. Ihr Lachen ist wie Vogelgesang und auch ihre Augen haben etwas von denen eines Vogels – funkelnde schwarze Perlen. 'Interessant', schnurrt sie. 'Gibt es noch mehr davon?'",
+			"requirements": {
+				"pentiment": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.ii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.ii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 1
+			},
+			"label": "Mme Matutine ein zweites Pentiment darbringen",
+			"startdescription": "'Ein guter Anfang. Ich nehme an, dass ich für dich eingreifen soll. Dafür wirst du sehr hart arbeiten müssen. Was hast du sonst noch?'",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.iii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.iii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 2
+			},
+			"label": "Mme Matutine ein drittes Pentiment darbringen",
+			"startdescription": "'Das ist gut. Nur weiter so. Mein Namenloser Schatz ist gierig.'",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.iv"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.iv",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 3
+			},
+			"label": "Mme Matutine ein viertes Pentiment darbringen",
+			"startdescription": "'Ja, ja. Noch eins? Und komm näher. Lass mich dich anschauen.'",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.v"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.v",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 4
+			},
+			"label": "Mme Matutine ein fünftes Pentiment darbringen",
+			"startdescription": "'Ich dachte schon, ich hätte etwas Kostbares gewittert. Das Blut der Erde, hm? Für jemanden deines Blutes könnte ich wohl einen <i>Übertritt</i> arrangieren. Dort wird sich jemand freuen, dich zu sehen. Doch der Preis ist höher. Sieben von diesen.'",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.vi"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.vi",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 5
+			},
+			"label": "Mme Matutine ein sechstes Pentiment darbringen",
+			"startdescription": "'<i>Allez</i>, mein Freund. Zusammen können wir das schaffen. Es ist fast vollbracht –'",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.vii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.vii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 6
+			},
+			"label": "Mme Matutine ein siebentes Pentiment darbringen",
+			"startdescription": "Mme Matutine holt mit viel Drama Luft. 'So viele! Der Namenlose wird entzückt sein! Noch eins – noch eins, und ich werde meinen Schlüssel umdrehen, nur für dich.'",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Pentiment",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.final"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.final",
+			"requirements": {
+				"pentiment": 7
+			},
+			"actionId": "send",
+			"label": "Das Gipfeltor",
+			"startdescription": "Mme Matutine hält ein Juwel in die Höhe, schwarz und funkelnd wie ihre Augen.  '<i>Bon voyage.</i> '",
+			"warmup": 30,
+			"ending": "victoryvelvet"
+		},
+		{
+			"id": "send.op.morgen.pentiment.break",
+			"actionId": "send",
+			"label": "Nicht genug",
+			"startdescription": "'Nein?'",
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.break.nothing"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break.flute"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.break.nothing",
+			"actionId": "send",
+			"label": "Nicht genug",
+			"startdescription": "'Ich hoffe, du bist nicht hier, um mir die Zeit zu stehlen. Das habe ich dir ja schon gesagt.'",
+			"extantreqs": {
+				"curio.morgen": 1
+			}
+		},
+		{
+			"id": "send.op.morgen.pentiment.break.flute",
+			"actionId": "send",
+			"label": "Nicht genug",
+			"startdescription": "Ein kleines Stirnrunzeln zeichnet sich auf Mme Matutines blasser und unvergleichlicher Stirn ab. 'Ungenügend. Das können wir besser, <i>hein</i>? Nimm das. Wenn du am Meer bist, ruf mich, und ich werde kommen. Nur einmal. Ich vergeude nur ungern meine Zeit. Bis dann.'",
+			"effects": {
+				"curio.morgen": 1
+			}
+		},
+		{
+			"id": "send.op.medusa",
+			"actionId": "send",
+			"label": "Nach etwas Ungesehenem suchen",
+			"startdescription": "Medusa, die Ligeianerin. Pelle hat mal gesagt: 'Sie könnte die Älteste ihrer Art sein, die noch lebt. Und sie ist tot.' Typisch Pelle. Doch jetzt, in den verregneten, nur halb zu erahnenden Straßen von Buda, unter den blinden Augen der Statuen, erinnere ich mich an noch etwas, das er gesagt hat, dass das Rätsel der Medusa 'Was wird ?' laute, und ich kriege eine Gänsehaut.",
+			"description": "Nichts. Der Regen hat sich seinen Weg durch meinen Mantel gebahnt und läuft mir nun den Nacken hinunter. Sie ist immer noch da draußen, falls sie überhaupt irgendwo ist.",
+			"slots": [
+				{
+					"id": "medusa",
+					"label": "Medusas Rätsel",
+					"description": "'Was wird nicht gesehen?'",
+					"required": {
+						"moth": 1
+					},
+					"consumes": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.medusa.pentiment"
+				}
+			],
+			"requirements": {
+				"op.medusa": 1
+			},
+			"extantreqs": {
+				"wound.exile.medusa": -1
+			},
+			"comments": "Extantreq shouldn't be necessary because the op card is unique, but leaving it here as a safety measure",
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"effects": {
+				"dread": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.op.medusa.pentiment",
+			"actionId": "send",
+			"label": "Eine Begegnung",
+			"startdescription": "Ich habe meine Antwort auf Medusas Rätsel gefunden ... und ich denke, sie hat mich gefunden. Natürlich habe ich sie nie gesehen, doch ich habe eine Stunde verloren, da draußen in der Nacht, und nun habe ich eine Wunde über dem Herzen, die nicht heilen will.\n\nGenau das passiert, wenn ich mir Ärger suche. (Wenn ich wirklich eine Ligeianerin getroffen habe, warum hat sie mich dann geschont? Ich habe da so eine Ahnung.)",
+			"requirements": {
+				"moth": 1
+			},
+			"effects": {
+				"wound.exile.medusa": 1,
+				"op.medusa": -1
+			},
+			"burnimage": "pentiment",
+			"warmup": 30
+		},
+		{
+			"id": "send.ligeian",
+			"actionId": "send",
+			"label": "Eine Ligeianerin aufsuchen",
+			"requirements": {
+				"ligeian": 1
+			},
+			"startdescription": "Wie ich sind Ligeianer kriminell und auf der Flucht. Im Gegensatz zu mir sind sie auf immer und ewig verflucht, weil sie ihre Kinder frisch aus dem Mutterleib verzehren. Aber vielleicht kommen wir ja doch auf einen gemeinsamen Nenner.",
+			"slots": [
+				{
+					"id": "gift",
+					"label": "Geschenk",
+					"required": {
+						"remnant": 1,
+						"decade.stolen": 1,
+						"ally": 1,
+						"associate": 1
+					},
+					"actionId": "send"
+				}
+			],
+			"warmup": 30,
+			"craftable": true,
+			"alt": [
+				{
+					"id": "send.ligeian.risk"
+				}
+			],
+			"effects": {
+				"remnant": -1,
+				"decade.stolen": -1,
+				"ally": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "send.ligeian.reward"
+				}
+			]
+		},
+		{
+			"id": "send.ligeian.risk",
+			"actionId": "send",
+			"label": "Die Stunde des Langen Löffels",
+			"requirements": {
+				"remnant": -1,
+				"decade.stolen": -1,
+				"ally": -1,
+				"associate": -1
+			},
+			"startdescription": "Wenn ich eine Ligeianerin aufsuchen will, ohne ein Geschenk dabei zu haben. Ich hoffe, sie hat gute Laune. [Ligeianer haben manchmal, aber nicht oft, gute Laune.]",
+			"linked": [
+				{
+					"id": "send.ligeian.reward",
+					"chance": 30
+				},
+				{
+					"id": "send.ligeian.displeased"
+				}
+			]
+		},
+		{
+			"id": "send.ligeian.reward",
+			"actionId": "send",
+			"label": "'LIGEIA VERGISST NICHT'",
+			"startdescription": "@#op.echidna|'Setz dich, Schätzchen. Lass uns plaudern.'\n#op.kleidouchos|'Heute habe ich dich nicht verzehrt. Was willst du? Mach schnell.'\n#op.marinette|'<sprite name=secrethistories>?'\n#op.sulochana|Sulochana nimmt einen tiefen Zug von ihrer Nelken-Zigarette. 'Mir ist danach, mich in Geduld zu üben', schnurrt sie. 'Nur zu.'@\n\n[Füge eine unbekannte Schwäche deines Feindes hinzu, um ihr Wesen zu erfahren. Tust du das nicht, wird dir die Ligeianerin ein Geschenk geben oder einen Abrechner verzehren, ohne Spuren zu hinterlassen – wobei sie keine Informanten bemerken und den Feind nicht verfolgen wird.]",
+			"slots": [
+				{
+					"id": "advice",
+					"label": "Rat",
+					"description": "Die Ligeianer hören Dinge und sind sehr alt.",
+					"required": {
+						"weakness.foe.unknown": 1
+					},
+					"actionId": "send"
+				}
+			],
+			"alt": [
+				{
+					"id": "send.ligeian.revelation"
+				}
+			],
+			"linked": [
+				{
+					"id": "send.ligeian.ravage"
+				},
+				{
+					"id": "send.ligeian.echidna.reward"
+				},
+				{
+					"id": "send.ligeian.kleidouchos.reward"
+				},
+				{
+					"id": "send.ligeian.marinette.reward"
+				},
+				{
+					"id": "send.ligeian.sulochana.reward"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "send.ligeian.revelation",
+			"actionId": "send",
+			"label": "Intelligenz",
+			"startdescription": "@#op.echidna|'Natürlich erinnere ich mich an ihn. Ich kannte auch deine Mutter. Ich hatte einst große Hoffnungen in sie gesetzt ...'\n#op.kleidouchos|'Mm. Ich weiß von deinem Feind.'\n#op.marinette|'<sprite name=lantern>.'\n#op.sulochana|'Oh, ja. Er ist ständig hierher gekommen, damals vor dem Krieg.'@",
+			"requirements": {
+				"weakness.foe.unknown": 1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"effects": {
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.ravage",
+			"actionId": "send",
+			"label": "Auf Ex",
+			"startdescription": "@#op.echidna|'Macht jemand Leckeres dir Sorgen, Schätzchen? Lass Tantchen E das für dich regeln.'\n#op.kleidouchos|'Ich habe deinem Abrechner-Freund meine Vorbehalte deutlich gemacht.'\n#op.marinette|'<sprite name=edge>, <sprite name=edge>, <sprite name=edge>... <sprite name=grail>.'\n#op.sulochana|'Das war töricht von ihm. Nun, er wird's nicht noch einmal tun.'@",
+			"extantreqs": {
+				"rkx.rank": 1
+			},
+			"deleteverb": {
+				"rkx": 1
+			},
+			"effects": {
+				"ligeian": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "send.ligeian.echidna.reward",
+			"actionId": "send",
+			"label": "Ein Geschenk von Echidna",
+			"startdescription": "'Bitte schön, Schätzchen. Von jemandem, der es sich wirklich nicht hätte anders überlegen sollen.'",
+			"requirements": {
+				"op.echidna": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"memento.edge": 1,
+				"ligeian": -1
+			},
+			"burnimage": "pentiment"
+		},
+		{
+			"id": "send.ligeian.kleidouchos.reward",
+			"actionId": "send",
+			"label": "Ein Geschenk von Kleidouchos",
+			"startdescription": "'Ich habe dafür kaum noch Verwendung. Du vielleicht. Nicht trinken.'",
+			"requirements": {
+				"op.kleidouchos": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"rarity.knock.poison": 1,
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.marinette.reward",
+			"actionId": "send",
+			"label": "Ein Geschenk von Marinette",
+			"startdescription": "<sprite name=mortal>.",
+			"requirements": {
+				"op.marinette": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"memento.grail": 1,
+				"ligeian": -1
+			},
+			"burnimage": "pentiment"
+		},
+		{
+			"id": "send.ligeian.sulochana.reward",
+			"actionId": "send",
+			"label": "Ein Geschenk von Sulochana",
+			"startdescription": "'Ich werde dich einigen Leuten vorstellen. Du würdest dich wundern, wen ich alles im Klub sehe.'",
+			"requirements": {
+				"op.sulochana": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"connection.official": 1,
+				"connection.holy": 1,
+				"connection.radicals": 1,
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.displeased",
+			"actionId": "send",
+			"label": "Ligeianische Irritation",
+			"startdescription": "Ein flatternder Albtraum aus Zähnen und Flederhaut! Ich versuche, mich freizukämpfen – ",
+			"description": "Zurück in der Sicherheit der Straße. Doch ich bin nicht ungeschoren davon gekommen. Passanten drehen sich um als ich vorbeiwanke.",
+			"effects": {
+				"wound.exile.unstanchable": 1,
+				"trace": 1,
+				"ligeian": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "send.defiance.ascend.colonel",
+			"actionId": "send",
+			"label": "Eine unsterbliche Feindschaft",
+			"startdescription": "Nun gratuliert mir der Oberst zu meiner Entschlossenheit und meinem Können. Er wird für mich bei seinem Feind bürgen, dem Löwenschmied.",
+			"requirements": {
+				"defiancemarks": 7,
+				"defiance.consecration.colonel": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensioncolonel",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.lionsmith",
+			"actionId": "send",
+			"label": "Eine unsterbliche Feindschaft",
+			"startdescription": "Nun gratuliert mir der Löwenschmied zu meiner Tapferkeit und meiner Stärke. Er wird für mich bei seinem Feind bürgen, dem Oberst.",
+			"requirements": {
+				"defiancemarks": 7,
+				"defiance.consecration.lionsmith": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensionlionsmith",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.wolf",
+			"actionId": "send",
+			"label": "Eine unsterbliche Feindschaft",
+			"startdescription": "Der Geteilte Wolf hat mich als den seinen gekennzeichnet. Mein Nacken ist heiß von seinem stinkenden Odem.",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensionwolf",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.morewounds.hint",
+			"actionId": "send",
+			"label": "Eine unsterbliche Feindschaft?",
+			"startdescription": "Es gibt noch einen anderen Weg, all dem ein Ende zu machen ... indem man nie ein Ende macht. Mein Feind und ich sind nun in unserer Rivalität gefangen wie Zahnrädchen in einer Uhr. Ich brauche nur den Schlüssel umzudrehen. [Ich kann eine Stunde der Kante rufen, um mein Duell zu etwas von Ewigkeiten zu erheben – doch nur wenn ich durch das Zufügen von 6 schweren Wunden einen Patt erzwungen habe.]",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.ascend.moremarks.hint",
+			"actionId": "send",
+			"label": "Eine unsterbliche Feindschaft?",
+			"startdescription": "Es könnte noch einen anderen Weg geben, all dem ein Ende zu machen ... indem man nie ein Ende macht. [Bei 7 Zeichen des Trotzes ist eine andere Art des Sieges möglich, falls dein Feind anwesend ist.]",
+			"requirements": {
+				"defiancemarks": 2
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.lureexists.hint",
+			"actionId": "send",
+			"label": "Eine trotzige Vorladung: Bereits versandt",
+			"startdescription": "Mein Feind weiß bereits ganz genau, wo ich bin.",
+			"requirements": {
+				"temptation.defiance": 1,
+				"lure.foe": 1,
+				"domicile": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.weaponalreadysent.hint",
+			"actionId": "send",
+			"label": "Ein trotziges Geschenk: Bereits versandt",
+			"startdescription": "Ich habe meinen Feind bereits eine Waffe geschickt.",
+			"requirements": {
+				"temptation.defiance": 1,
+				"weapon": 1,
+				"defiance.weaponsent": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.weaponprofane.hint",
+			"actionId": "send",
+			"label": "Ein trotziges Geschenk: Nicht genug",
+			"startdescription": "Eine profane Waffe reicht nicht.",
+			"requirements": {
+				"temptation.defiance": 1,
+				"uq.weapon.profane": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.7",
+			"actionId": "send",
+			"label": "Die Rivalität",
+			"startdescription": "Wenn ich meinen Feind im Kampf zum Stillstand bringen kann, bin ich bereit, im Herzen der Rivalität willkommen geheißen zu werden. Sobald ich dort bin, muss ich nie mehr Frieden ertragen.",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.6",
+			"actionId": "send",
+			"label": "Die Rivalität",
+			"startdescription": "Ich bin ein Exponent der Rivalität geworden. Pärchen streiten sich manchmal, wenn ich vorbeigehe. Hunde beißen ihre Herrchen und Frauchen. Feuer lodern heller oder erlöschen.",
+			"requirements": {
+				"defiancemarks": 6
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.5",
+			"actionId": "send",
+			"label": "Die Rivalität",
+			"startdescription": "Als ich heute früh erwachte, hatte jemand LIEBE IST KRIEG auf den Spiegel geschrieben. Könnte ich gewesen sein. Wäre wahrscheinlich beruhigender, wenn ich es gewesen wäre. ",
+			"requirements": {
+				"defiancemarks": 5
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.4",
+			"actionId": "send",
+			"label": "Die Rivalität",
+			"startdescription": "Ich weiß noch, dass ich mal dachte, ich hätte nichts mit der Rivalität zu tun, aber natürlich hatte ich das schon immer. Jede Stunde, jeder Sterbliche, jedes Stäubchen spielt eine Rolle beim Unvergänglichen Zwist. Doch sich in ganz Europa ein Gefecht mit einem halb-unsterblichen Gegner zu liefern – das bedeutet, dass ich eine Sprechrolle bei der Rivalität habe, nicht die eines Statisten.",
+			"requirements": {
+				"defiancemarks": 4
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.3",
+			"actionId": "send",
+			"label": "Die Rivalität",
+			"startdescription": "So langsam fallen mir Muster der Streitigkeiten auf der Welt auf – Bäume kämpfen mit dem Wind, Flammen mit Rauch, Flüsse mit der Erde. In der Menge ringen ständigen irgendwelche Ziele und Impulse miteinander. Es ist herrlich.",
+			"requirements": {
+				"defiancemarks": 3
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.2",
+			"actionId": "send",
+			"label": "Die Rivalität",
+			"startdescription": "Nun träume ich von Messern. Das bedeutet vielleicht, dass ich einer Stunde der Kante aufgefallen bin.",
+			"requirements": {
+				"defiancemarks": 2
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.1",
+			"actionId": "send",
+			"label": "Die Rivalität",
+			"startdescription": "'Die Rivalität' ist das Schlagwort, das Adepten sowohl für die Stunden der Kante als auch für deren endlose Streitigkeiten benutzen. Wie die meisten Abrechner habe ich mich von all dem lieber ferngehalten.",
+			"requirements": {
+				"defiancemarks": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.summons",
+			"actionId": "send",
+			"label": "Eine trotzige Vorladung verschicken",
+			"startdescription": "Meine Handschrift auf dem Umschlag ist klar und deutlich. Meine Hand zittert nicht. [Dies zerstört alle Unklarheiten.]",
+			"description": "Mein Feind wird schon bald hier sein. Vielleicht ist er das schon. [Dein Trotz ist jetzt noch wilder.]",
+			"requirements": {
+				"temptation.defiance": 1,
+				"domicile": 1,
+				"lure.foe": -1,
+				"defiance.foesummoned": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "lure.foe",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.foesummoned",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.defiance",
+					"additional": true
+				}
+			],
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.summons.again",
+			"actionId": "send",
+			"label": "Eine trotzige Vorladung erneut verschicken",
+			"startdescription": "Soll er nur kommen. Soll er nur versuchen, sich seinen Anteil zu holen. [Dies zerstört alle Unklarheiten.]",
+			"description": "Mein Feind wird schon bald hier sein. Vielleicht ist er das schon.",
+			"requirements": {
+				"temptation.defiance": 1,
+				"domicile": 1,
+				"lure.foe": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "lure.foe",
+					"mutationLevel": 1
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.defiance",
+					"additional": true
+				}
+			],
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.gift",
+			"actionId": "send",
+			"label": "Ein trotziges Geschenk verschicken",
+			"startdescription": "Ich werde meinem Feind eine Waffe der Macht schicken. Denn das wird ihn <i>wirklich</i> vor den Kopf stoßen.",
+			"description": "Vielleicht macht er das Paket selbst auf. Vielleicht hält er es für eine Falle und überlässt das jemand anderem. Wie auch immer, es fällt mir schwer, nicht zu lachen, wenn ich mir sein Gesicht vorstelle. [Dein Trotz ist jetzt noch wilder.]",
+			"requirements": {
+				"temptation.defiance": 1,
+				"weapon": 1,
+				"defiance.weaponsent": -1,
+				"uq.weapon.profane": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.weaponsent",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"weapon": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.ahead.cash.hint",
+			"actionId": "send",
+			"label": "Bargeld vorschicken?",
+			"startdescription": "Vielleicht muss ich ganz schnell verschwinden. Ich könnte schon mal Geldmittel zu einem möglichen Ziel vorschicken. Wenn ich dann nicht dorthin reise, ist natürlich alles weg.",
+			"requirements": {
+				"cash": 1,
+				"destination": -1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.ahead.cash",
+			"actionId": "send",
+			"label": "Bargeld vorschicken",
+			"startdescription": "Vielleicht muss ich ganz schnell verschwinden. Ich könnte schon mal Geldmittel zu einem möglichen Ziel vorschicken. Wenn ich dann nicht dorthin reise, ist natürlich alles weg.",
+			"description": "Es ist vollbracht. Wenn ich mal schnell weg muss, lande ich immerhin sanfter.",
+			"requirements": {
+				"cash": 1,
+				"destination": 1
+			},
+			"effects": {
+				"cash": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "cash.sent",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.getsentahead.cash.hint",
+			"actionId": "send",
+			"label": "Meine Vorbereitungen nutzen?",
+			"startdescription": "Sobald ich meinen Zielort erreiche, kann ich mir das Bargeld holen, das ich vorgeschickt habe.",
+			"requirements": {
+				"domicile": -1,
+				"cash.sent": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.getsentahead.cash",
+			"actionId": "send",
+			"label": "Meine Vorbereitungen nutzen",
+			"startdescription": "Ich sollte mir das Bargeld holen, das ich vorgeschickt habe.",
+			"requirements": {
+				"domicile": 1,
+				"cash.sent": 1
+			},
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "send.getsentahead.cash.loop"
+				}
+			]
+		},
+		{
+			"id": "send.getsentahead.cash.loop",
+			"actionId": "send",
+			"label": "Erledigt!",
+			"startdescription": "Ich habe Bargeld vorgeschickt. Ich kann es mir abholen, sobald ich angekommen bin.",
+			"requirements": {
+				"cash.sent": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "cash.sent",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"cash": 1
+			},
+			"linked": [
+				{
+					"id": "send.getsentahead.cash.loop"
+				}
+			]
+		},
+		{
+			"id": "send.victory.hint",
+			"actionId": "send",
+			"label": "Sicherheit durch Unklarheit?",
+			"startdescription": "[Erreicht deine Unklarheit 7, kannst du deinem Feind einen Provokation schicken, um dann für immer zu verschwinden.]",
+			"requirements": {
+				"temptation.obscurity": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.victory.obscurity.c.begin",
+			"actionId": "send",
+			"label": "Ein Leben seltener Wonne ...",
+			"startdescription": "Habe ich alles, was ich brauche? [Wenn du noch Aktiva im Wert von mindestens 30 Gemütlichkeit hast, wenn du verschwindest, erringst du einen noch größeren Sieg.]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"warmup": 60,
+			"extantreqs": {
+				"comfort": 20
+			},
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.b.begin",
+			"actionId": "send",
+			"label": "Ein Leben voll Frieden und Gemütlichkeit",
+			"startdescription": "Habe ich alles, was ich brauche? [Wenn du Aktiva im Wert von mindestens 30 Gemütlichkeit hast, wenn du verschwindest, erringst du einen noch größeren Sieg.]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"extantreqs": {
+				"comfort": 10
+			},
+			"warmup": 60,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.a.begin",
+			"actionId": "send",
+			"label": "Ein Leben in Vergessenheit",
+			"startdescription": "Ich werde in Sicherheit sein. Reicht mir das? [Wenn du Aktiva im Wert von mindestens 20 Gemütlichkeit hast, wenn du verschwindest, erringst du einen noch größeren Sieg.]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"warmup": 60,
+			"craftable": true,
+			"signalEndingFlavour": "Pale",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.c",
+			"actionId": "send",
+			"label": "WONNE",
+			"extantreqs": {
+				"comfort": 30
+			},
+			"ending": "obscurityvictoryc"
+		},
+		{
+			"id": "send.victory.obscurity.b",
+			"actionId": "send",
+			"label": "LEICHTIGKEIT",
+			"extantreqs": {
+				"comfort": 20
+			},
+			"ending": "obscurityvictoryb"
+		},
+		{
+			"id": "send.victory.obscurity.a",
+			"actionId": "send",
+			"label": "STILLE",
+			"ending": "obscurityvictorya"
+		},
+		{
+			"id": "send.victory.obscurity.c.foeslain",
+			"actionId": "send",
+			"label": "WONNE",
+			"extantreqs": {
+				"comfort": 30,
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictorycfoeslain"
+		},
+		{
+			"id": "send.victory.obscurity.b.foeslain",
+			"actionId": "send",
+			"label": "LEICHTIGKEIT",
+			"extantreqs": {
+				"comfort": 20,
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictorybfoeslain"
+		},
+		{
+			"id": "send.victory.obscurity.a.foeslain",
+			"actionId": "send",
+			"label": "STILLE",
+			"extantreqs": {
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictoryafoeslain"
+		},
+		{
+			"id": "send.labhite.fallen.intro",
+			"actionId": "send",
+			"requirements": {
+				"contact.labhite.fallen": 1
+			},
+			"label": "Über das Schicksal des Gefallenen Labhiten richten",
+			"startdescription": "Selbst als Echidna den Labhiten noch nicht verdorben hatte, hätte Chaima ihn im Namen des Obersts getötet. Jetzt ist er nicht nur ein Monster, sondern ein verderbtes Monster. Navil hat in der Zwischenzeit empfohlen, Gnade walten zu lassen. 'Das Vorspiegeln von Perfektion', sagt er mit großer Geste, 'ist die tiefgründigste Krankheit der Seele. Verbannt ihn in die Wüste, und er wird die Sonne wiederfinden.'\n\nChaima bleibt unbeeindruckt. Doch sie respektiert dich und ihren Vater – so sehr, dass sie inne hält, wenn du darauf bestehst.",
+			"slots": [
+				{
+					"id": "decision",
+					"label": "Entscheidung",
+					"required": {
+						"temptation.defiance": 1,
+						"temptation.obscurity": 1,
+						"rage": 1,
+						"tranquillity": 1
+					}
+				}
+			],
+			"description": "Der Gefallene Labhite kann noch etwas länger in seinem Käfig bleiben.",
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "send.labhite.fallen.merciless"
+				},
+				{
+					"id": "send.labhite.fallen.merciful"
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "send.labhite.fallen.merciless",
+			"actionId": "send",
+			"label": "Keine Gnade",
+			"startdescription": "'Er hat den Willen des Löwenschmieds verraten. Möge er sterben.'",
+			"description": "Chaima führt den Labhiten, um die Sache zu Ende zu bringen. Als sie dem Oberst seine Opfer gebracht hat, bietet sie dir einen kleinen Topf mit Goldstaub an. 'Zum Andenken', sagt sie.",
+			"requirements": {
+				"choice.merciless": 1
+			},
+			"burnimage": "pentiment",
+			"effects": {
+				"memento.edge": 1,
+				"contact.labhite.fallen": -1
+			}
+		},
+		{
+			"id": "send.labhite.fallen.merciful",
+			"actionId": "send",
+			"label": "Gnade",
+			"startdescription": "Er ist etwas, das der Löwenschmied nie gewollt hätte. Wer weiß, was sonst noch aus ihm werden könnte?",
+			"description": "Chaima zuckt mit den Achseln und dreht sich um. Navil begleitet dich bis an den Rand der Wüste. Der Labhite, der noch immer kein Wort gesagt hat, hebt einen flachen Stein vom Boden auf, küsst ihn und gibt ihn dir. Dann schreitet er davon in die Dünen, ohne sich noch einmal umzusehen.",
+			"requirements": {
+				"choice.merciful": 1
+			},
+			"burnimage": "pentiment",
+			"effects": {
+				"memento.lantern": 1,
+				"contact.labhite.fallen": -1
+			}
+		},
+		{
+			"id": "send.retainer.chat",
+			"actionId": "send",
+			"label": "Lektionen",
+			"startdescription": "'Soll ich von ihr reden?'",
+			"description": "Der Alte hat einiges über ihre Schönheit, ihre Weisheit und ihr <i>barakah</i> zu sagen, doch mir wird klar, dass er sich kaum noch an sie erinnert, nur als einen Anstoß oder eine Geschichte. Meine Aufmerksamkeit wird abgelenkt, als ich auf das Flirren der Stadt schaue, und mir fällt ein, wie mein Feind mir Schach beigebracht hat, wie ich beim Kartenspiel betrüge, jemandem des Leben nehmen – und was ich <i>ihm</i> beibringen werde.",
+			"requirements": {
+				"contact.retainer": 1,
+				"associate": 1
+			},
+			"effects": {
+				"grief": 1,
+				"rage": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.mortal.intro",
+			"actionId": "send",
+			"label": "Ein erstes Treffen vereinbaren",
+			"startdescription": "@#contact.barber|Ein Treffen mit Zulfiya, die, dieser Tage, als die Barbierin bekannt ist.\n#contact.delver|Ein Treffer mit Orsolina, 'la Scavatrice' – die Gräberin, in meiner Muttersprache.\n#contact.fivegoer|Ein Treffen mit Vasil, einem Fünfgeher.\n#contact.ghoul|Ein Treffen mit Dominykas, dem Bäcker.\n#contact.huntress|Ein Treffen mit Lalla Chaima, manchmal auch Falle genannt.\n#contact.smuggler|Ein Treffen mit M. Giorgiou, einem Schmuggler.\n#contact.visionary|Ein Treffen mit der Malerin Mireya.\n#contact.vivisectionist|Ein Treffen mit Graf Jannings, dem Chirurgen, Duellanten und Sezierer.\n#contact.retainer|'Deine Mutter war eine Initiantin des Antaeums. Das waren nicht viele Frauen, doch ihr <i>barakah</i> – sagen wir, ihr Licht – war sehr groß. Zuerst hatte dein Vater noch gehofft, ihr Licht kaufen zu können. Doch dann verliebte er sich in sie ... während sie ihn als den erkannte, der er war. Das ist der Grund, warum sie vor ihm floh, als deine Geburt näher rückte, und er sie verfolgte.'\n#|Eine Einführung - @",
+			"description": "@#contact.barber|Zulfiya verbeißt sich regelrecht in mir. 'Ich will dich im Forst haben', beharrt sie. 'Bring mir, was du unter dem Knotenflügel zu trinken findest.'\n#contact.delver|Orsolina heißt mich mit einer wilden Umarmung willkommen und hört sich meine Sorgen an. 'Natürlich werde ich dir helfen', beharrt sie, 'doch es ist für mich nicht so leicht, die Lagune zu durchqueren, nicht in meinem Zustand. Ich habe zu viel aus der See gegessen. Doch es gibt da immer noch etwas in der Schatzkammer des Palazzo Dario, das mir helfen könnte. Im Palazzo spukt es, aber nicht zu sehr, denke ich.'\n#contact.fivegoer|Vasil schüttelt mir freundlich die Hand mit diesem knochenlosen, aber unwiderstehlichen Griff, an den ich mich noch so gut erinnere. 'Natürlich schulde ich dir noch was', sagt er, 'aber jemand anderem noch mehr. Meine Urgroßmutter ist hier in der Stadt, in Gesellschaft sehr unsympatischer Herren. Wenn wir zusammen dieses Problem lösen können, bin ich wieder frei und kann mitkommen.'\n#contact.ghoul|Dominykas serviert mir würzigen Honigkuchen mit Kwas und plaudert heiter über einen Rivalen, der sich eine 'Würzung' angeeignet habe, die Dominykas brauche. Er hoffe, es mache mir nicht allzu große Umstände, ihm bei der Wiederbeschaffung zu helfen, und dann werde er mir natürlich gern selber helfen.\n#contact.huntress|Lalla Chaima wurde engagiert, um den Fröhlichen Fresser umzubringen, der in der Kanalisation von Aachen haust und immer wieder auftaucht, um Betrunkene und Soldaten zu fressen. Die französische Armee glaubt davon natürlich kein Wort, doch es gibt da einen Sergeant bei den Goumiers, der das Werk des Löwenschmieds zu wittern weiß.\n#contact.smuggler|Giorgiou hat einen Vorschlag. Im Chateau Tarrascon gibt es Schätze zu holen. Zudem gibt es dort 'vielleicht ein Monster', aber, so betont er, wo es keine Monster gebe, erfänden wir in der Regel unsere eigenen. Er unterstreicht dies am Beispiel der jüngsten europäischen Geschichte, doch zu meinem Glück wird dann der Wein gebracht.\n#contact.visionary|Mireya bricht in Tränen aus. 'Dich schickt der Himmel', keucht sie. 'Ich hab etwas getan – etwas – ' und dann bricht sie völlig zusammen. So weit ich schließlich in Erfahrung bringen kann, hat sie für eines ihrer Gemälde einen Kult der Donnerhaut ausspioniert. Dort hat man davon Wind gekriegt, und jetzt hat man es auf sie abgesehen.\n#contact.vivisectionist|Graf Jannings schlägt die Hacken zusammen und verbeugt sich. 'Ich hab von deinen Sorgen gehört', sagt er. 'Wäre interessant, dich zu begleiten. Doch zunächst möchte ich dich einladen, einem Wettstreit gesellschaftlicher Natur beizuwohnen. Nein, nein, ich bestehe darauf.'\n#contact.retainer|'Sie hätte sich lieber selbst das Leben genommen – und dir – als ihn dich großziehen zu lassen. Doch im Antaeum, wo man erfuhr, dass dein Vater ein Sohn der Erde ist, überzeugte man sie, dich auszutragen – dort in jener Zuflucht, unter dem Zeichen des zerschmetterten Schwertes. Komm. Ich bringe dich zu ihr.'\n#|– jetzt weißt du es.@",
+			"requirements": {
+				"mortal": 1,
+				"associate": -1,
+				"ally": -1
+			},
+			"aspects": {
+				"mortal.introduce": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "associate",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.barber.upgrade",
+			"actionId": "send",
+			"label": "Zulfiya schreitet voran und schnalzt mit den Fingern.",
+			"startdescription": "'Wo ist es? Wo ist es?!'",
+			"description": "'Eine Mauer hat viele Steine, doch dir wird nicht entfallen, dass wir beide vom Fleische sind.'",
+			"requirements": {
+				"contact.barber": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Schleim",
+					"required": {
+						"vault.barber.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.delver.upgrade",
+			"actionId": "send",
+			"label": "Orsolina hat die Lampen in ihrer Werkstatt entzündet – Öl, nicht elektrisch.",
+			"startdescription": "'Ich weiß deine Mühen zu schätzen.'",
+			"description": "Orsolina zuckt mit den Achseln. 'Wenn nicht jetzt, dann dann.'",
+			"requirements": {
+				"contact.delver": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Röte",
+					"required": {
+						"vault.delver.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.fivegoer.upgrade",
+			"actionId": "send",
+			"label": "Vasil ist vergeht fast vor Erwartung.",
+			"startdescription": "'Nun? Wie schlagen wir uns?'",
+			"description": "'Schätze mal, das alte Grauen kann noch etwas länger warten.'",
+			"requirements": {
+				"contact.fivegoer": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Rezipiens",
+					"required": {
+						"vault.fivegoer.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.ghoul.upgrade",
+			"actionId": "send",
+			"label": "Dominykas setzt ein Lächeln freundlicher Geduld auf.",
+			"startdescription": "'Mein Honigkuchen ist noch weit von seinem wahren Potenzial entfernt.'",
+			"description": "'Die Zeit wird knapp, weißt du? Für uns beide.'",
+			"requirements": {
+				"contact.ghoul": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Würzung",
+					"required": {
+						"vault.ghoul.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.huntress.upgrade",
+			"actionId": "send",
+			"label": "Challa will ihren Vertrag unbedingt erfüllen.",
+			"startdescription": "'Mein Freund, der Goumier, wird langsam nervös. Ich glaube, ihm fehlt der Glaube an meine Fähigkeiten.'",
+			"description": "'Wir haben nicht viel Zeit.'",
+			"requirements": {
+				"contact.huntress": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Kadaver",
+					"required": {
+						"vault.huntress.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.smuggler.upgrade",
+			"actionId": "send",
+			"label": "Giorgiou will, dass diese Sache vorbei ist.",
+			"startdescription": "Ist es vollbracht?",
+			"description": "'Hätte schlimmer laufen können, schätze ich mal.'",
+			"requirements": {
+				"contact.smuggler": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Relikt",
+					"required": {
+						"vault.smuggler.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.visionary.upgrade",
+			"actionId": "send",
+			"label": "Mireya zittert wie Wasser.",
+			"startdescription": "'Sind die immer noch da draußen?'",
+			"description": "'Bitte, beeile dich. Bitte.'",
+			"requirements": {
+				"contact.visionary": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": " Haut",
+					"required": {
+						"vault.visionary.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.vivisectionist.upgrade",
+			"actionId": "send",
+			"label": "Jannings grüßt mich knapp.",
+			"startdescription": "'Und?'",
+			"description": "'Ich gehe davon aus, dass du die Zeit dafür finden wirst.'",
+			"requirements": {
+				"contact.vivisectionist": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Schmiss",
+					"required": {
+						"vault.vivisectionist.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.associate.upgraded",
+			"actionId": "send",
+			"label": "Ein Verbündeter",
+			"requirements": {
+				"vault.completed": 1
+			},
+			"startdescription": "Wir schütteln uns die Hand. [Dieses Mitglied ist nun ein Verbündeter. Du bist nun in Begleitung, wenn du die Stadt verlässt ... es sei denn, es geht zum letzten Gefecht am Kartenrand.]",
+			"description": "@#ally.barber|'DIe Mutter durchbohrt', sagt Zulfiya im Plauderton und zieht an ihren Fingernägeln. 'Die Hexe verlangt, die Schwester löst sich auf.'\n#ally.delver|'<i>In bocca al lupo!</i> Nicht wortwörtlich, da bin ich mir sicher.'\n#ally.fivegoer|Ein klebriges Krachen kommt aus dem Hinterzimmer, das wir dem Rezipiens zugewiesen haben. Vasil verdreht die Augen. 'Verwandte. Du weißt ja, wie die sein können. Gib mir eine halbe Stunde, um mich richtig von ihr zu verabschieden, und alles wird gut.'\n#ally.ghoul|'Vier gestohlene Würzungen und ein gestohlenes Jahr, denke ich', sagt Dominykas heiter. Er stößt dir seinen Ellenbogen in die Seite.\n#ally.huntress|'Ich freue mich schon, mit dir auf die Jagd zu gehen.'\n#ally.smuggler|'Das schulde ich dir.'\n#ally.visionary|'Vielen, vielen Dank. Ich werde mich so gut es nur geht erkenntlich zeigen. Wobei ich leider nicht weiß, wie man schießt.'\n#ally.vivisectionist|'Ich fürchte, wir haben dich ziemlich unverwechselbar gemacht. Trotzdem, sehr gut. Ja, sehr gut.'\n#|--@",
+			"aspects": {
+				"recruiting": 1
+			},
+			"comments": "IMPORTANT - this mutation stops them being removed on departure. The Ally mutation won't protect them from purging, and contact.local isn't a mutation so can't be removed with an xtrigger",
+			"mutations": [
+				{
+					"filterOnAspectId": "contact.local",
+					"mutateAspectId": "contact.local",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"vault.completed": -1
+			}
+		},
+		{
+			"id": "send.ally.upgrade",
+			"actionId": "send",
+			"label": "Potenzial, verwirklicht",
+			"startdescription": "Ich könnte mit meinem Verbündeten über das reden, was ich erfahren habe. [Dadurch erhöht sich der Aspekt deines Verbündeten um 1 Punkt.]",
+			"description": "@#ally.barber|'Schnipp, schnipp. Schnipp.'\n#ally.delver|'So langsam fühle ich mich wieder wie früher.'\n#ally.fivegoer|'Ahhh. <i>Locker</i>.'\n#ally.ghoul|'Erfahrung ist das beste Gewürz. Hab ich bis jetzt nicht wirklich geglaubt.'\n#ally.huntress|'Nicht übel, hmm?'\n#ally.smuggler|'Ich bin müde. Ich denke, vielleicht werde ich immer müde sein ...'\n#ally.visionary|'Wo hab ich mein Skizzenbuch?'\n#ally.vivisectionist|'Ja. Sehr gut.'\n#|--@",
+			"requirements": {
+				"mortal": 1,
+				"ally": 1,
+				"experience.exile.ally": 3
+			},
+			"aspects": {
+				"upgrade.exile.ally": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.ally.upgrade.hint",
+			"actionId": "send",
+			"label": "Potenzial?",
+			"startdescription": "Mein Verbündeter hat seine eigenen Gründe, warum er mit mir reist. Einer der Gründe: ein Hunger nach neuen Erfahrungen. [Wenn dein Verbündeter 3 Erfahrungen gesammelt hat, kannst du seine Macht erhöhen.]",
+			"requirements": {
+				"mortal": 1,
+				"ally": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.investigate.end",
+			"actionId": "send",
+			"label": "Nicht weiter",
+			"startdescription": "Man könnte das hier als die Kante der Welt bezeichnen.",
+			"requirements": {
+				"end": 1,
+				"domicile": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.investigate.description",
+			"actionId": "send",
+			"label": "Weiter?",
+			"description": "@#city.aachen|Eine Nachricht aus Aachen hat mich erreicht. Eine alte Bekanntschaft aus Marrakesch ist hier zur Jagd. Sie würde gern meine Hilfe in Anspruch nehmen.\n#city.alexandria|Vor dem Kriege gegen die Briten wurde ich zum Unsichtbaren Serapeum in Alexandria eingeladen. Mit etwas Glück gilt die Einladung noch.\n#city.algiers|Mein Schmugglerkontakt, M. Giorgiou, hat seine Leute in Algier. Die könnten mich still und heimlich dorthin bringen.\n#city.amsterdam|Im Laufe der Jahre habe ich ein Dutzend Schätze für die Stegenga-Zwillinge in Amsterdam gefunden. Vielleicht gewähren sie mir jetzt Unterschlupf.\n#city.avignon|Mein Schmugglerkontakt in Avignon, M. Giorgiou, hat ein Angebot für mich.\n#city.baghdad|Percy Styles ist immer noch in Bagdad und tut, was auch immer er für die britische Regierung im Mandat Mesopotamien tut. Vermutlich würde er sich freuen mich zu sehen.\n#city.budapest|Wie ich höre, geht meine alte Freundin Lili nun auf dem Schwarzmarkt von Budapest ihren Geschäften nach.\n#city.candia|Es ist schon lange her, dass ich auf Kreta war, doch ich habe wieder davon geträumt, und vom Duft des Weißdorns ...\n#city.cluj|Die Geschäfte meiner alten Freundin Lili in Cluj haben gelitten seit Ungarn die Stadt aufgegeben hat, doch ihr Name könnte noch immer Türen öffnen.\n#city.granada|Ich hatte mit einer Galeriebesitzerin auf Granada zu tun. Letztes Jahr hat sie mich eingeladen, bei ihr zu bleiben.\n#city.istanbul|Mein alter Waffenbruder Kara Kemal hat Kontakte zu den Resten des Schwarzen Arms in Istanbul. Vielleicht öffnet sein Name ja noch Türen.\n#city.kaunas|Dominykas der Bäcker hat sich gut gemacht: hochrangige Kontakte zum Eisernen Wolf in Kaunas. Wir haben uns nie gut verstanden, aber er schuldet mir noch was, und da kann ich nicht wählerisch sein.\n#city.kiev|Ich habe Gerüchte gehört, dass der hungrigste der Ligeianer in Kiew weilt. Meine Verfolger müssen sich dort vorsehen – wobei, ich natürlich auch.\n#city.krakow|Jitschok Ashlag in Krakau hat sich jahrelang auf mich verlassen, wenn es um die selteneren okkulten Texte ging. Er ist ein gastfreundlicher Mann.\n#city.leningrad|Die 'Athener', die Jahre in Russland verkaufen, sind die Erbfeinde der Abrechner-Mobs, doch ich bin dafür bekannt, mich mit einem gewissen Suschkin betrunken zu haben. Hoffen wir mal, dass er sich meiner noch erinnert.\n#city.london|Ottavio Berton in London hat bekannt gegeben, dass er gern meine Hilfe hätte. Er ist ein Halunke, aber wir kennen uns schon ewig.\n#city.marrakech|Ein Marabut namens Navil hat irgendwie spitzgekriegt, dass ich hier bin. Seine Nachricht lautet lediglich: 'KOMM NACH MARRAKESCH, FÜR DEN RUHM'.\n#city.meshad|Eine sehr alte Dichterin in Maschhad ist schon lange eine meiner Lieblingskundinnen. Sie wird mich sicher in den Genuss ihrer Gastfreundschaft bringen.\n#city.munich|Ich hab da noch eine Einladung von Graf Gottlieb Jannings aus München, an einem Treffen einer von ihm geschätzten schlagenden Verbindung teilzunehmen. \n#city.nizhny|Suschkin von den 'Athenern' hat sein Import-Export-Geschäft in Nischni weiter betrieben, doch unter den Sowjets ist das schwer.. Seine Leute dort wären sicher froh über meine Hilfe.\n#city.paris|Tante Adeline hat einst das Marais geführt. Tante Adeline ist weitergezogen, doch sie hat noch immer ihre Leute in Paris, und die könnten mir Unterschlupf gewähren.\n#city.prague|Die gerissene Alte in Prag, die sich 'Tante Adeline' nennt, hätte gern meine Hilfe.\n#city.rostock|Mein Korrespondent Graf Jannings hat ein Haus in Rostock, das ich benutzen könnte.\n#city.samarkand|Ich habe mal verbotenes Material an einen Jadiden-Magus in Samarkand geliefert. Vielleicht erinnert er sich meiner noch.\n#city.stalingrad|Die kriminellen Adepten namens 'Vogelfresser' verstoßen gleichermaßen gegen die Gesetze der Menschen und des Mansus. Ich habe gehört, dass Zulfiya die Barbierin sich ihnen in Stalingrad angeschlossen hat. Die Vogelfresser sind keine guten Menschen. Doch Zulfiya hab ich schon immer gemocht.\n#city.strasbourg|Die Hügelkinder der Vogesen nehmen zuweilen menschliche Gestalt an, um in den Straßen von Strasbourg zu wandeln. Ich hatte schon früher mit ihnen zu tun. Sie verstehen sich so gut wie kaum ein anderer auf Diskretion: vielleicht können sie mir ja helfen.\n#city.sverdlovsk|Zulfiya die Barbierin hat mir in Swerdlowsk Leben mit Juwelen abgekauft. Sie hat sich von mir entfremdet und ist in eine andere Stadt gezogen, doch sie hat mich einigen ihrer Kontakte vorgestellt, damals, vor dem Bürgerkrieg.\n#city.tiflis|Vasil der Fünfgeher suchte vor langer Zeit in Tiflis Zuflucht vor den Abrechnern. Er schuldet mir noch was, weiß aber vielleicht meinen Besuch nicht zu schätzen.\n#city.tirana|Bevor alles den Bach hinunterging, verhandelte ich über das Geschäft meines Lebens mit einer Vertrauten von Präsident Zogu in Tirana. Ich habe noch ihre Adresse.\n#city.tripoli|Ich hab keine Leute in Tripolis. Ich kann mich überhaupt nicht mehr an die Stadt erinnern. Doch vor einiger Zeit, in der Ära der Ottomanen, wurde ich dort geboren.\n#city.valletta|Mein alter Waffenbruder Kara Kemal ist im Exil in Valletta. Ist schon eine Weile her, aber ich hab ihm im Großen Krieg das Leben gerettet ...\n#city.venice|Ich kenne in Venedig eine Frau namens Orsolina. Sie war nicht immer eine Frau. Doch sie hat dort sehr lange gelebt.\n#city.vienna|Das war früher mal die Weiße Stadt. Nun wird sie das 'Rote Wien' genannt. Dort ist ein Ligeianer, und die Narben der Wurmkriege sind noch immer für alle sichtbar, die davon wissen. Doch wenn ich schon sterben soll, dann möchte ich diese alte Stadt noch einmal sehen.\n#wilderness|In dieser Region ist nicht mit Hilfe zu rechnen und Straßen und Schienen werden zu gut bewacht. Meine einzige Chance ist, mich querfeldein durchzuschlagen.\n#end.bornholm|Es gibt da eine trutzige kleine Insel in der Ostsee, die nur wenige Schiffe ansteuern. Ich habe dort mal einen Sommer mit jemandem verbracht, dessen Namen ich schon fast wieder vergessen habe. Vielleicht findet mein Feind mich dort nicht, und falls doch, ist es vielleicht an der Zeit, sich ihm zu stellen.\n#end.cheko|Es gibt da eine Hütte an einem von Tigern umstreunten See, tief in der Taiga, wo ich zur Zarenzeit auf der Jagd war. Vielleicht findet mein Feind mich dort nicht, und falls doch, ist es vielleicht an der Zeit, sich ihm zu stellen.\n#end.ghardaia|es gibt da einen befestigten Quincunx von Dörfern tief in der Wüste. Chaima hat mir den Weg dorthin vor Jahren aufgezeichnet.  Vielleicht findet mein Feind mich dort nicht, und falls doch, ist es vielleicht an der Zeit, sich ihm zu stellen.\n#end.messana|Es gibt da eine Einsiedelei in den Hügeln über einem seltsamen kleinen Dorf, wo Mireya mal einen Sommer verbracht hat. Ich fand damals, es würde ein gutes Versteck abgeben, weshalb ich sie bat, mir den Weg dorthin aufzschreiben. Vielleicht findet mein Feind mich dort nicht, und falls doch, ist es vielleicht an der Zeit, sich ihm zu stellen.\n#end.morbihan|Es gibt da eine ungewöhnliche Priorei im Golf von Morbihan, so weit im Westen, wie man nur kommen kann, ohne den großen Ozean zu queren. Vielleicht findet mein Feind mich dort nicht, und falls doch, ist es vielleicht an der Zeit, sich ihm zu stellen.\n#end.paro|Es gibt da ein Kloster hoch in den großen Bergen jenseits von Russland. Ich war dort in meiner Jugend. Vielleicht findet mein Feind mich dort nicht, und falls doch, ist es vielleicht an der Zeit, sich ihm zu stellen.\n#end.slettnes|Es gibt da einen Leuchtturm ganz am Ende Europas, wo ich zum ersten Male die Berührung des Gewands des Namenlosen Namens spürte. Vielleicht findet mein Feind mich dort nicht, und falls doch, ist es vielleicht an der Zeit, sich ihm zu stellen.\n#|Irgendwo?\n@"
+		},
+		{
+			"id": "send.investigate.aachen",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Aachen senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.aachen": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.alexandria",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Alexandria senden",
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.alexandria": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.istanbul",
+					"city.baghdad",
+					"end.messana",
+					"city.candia"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.algiers",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Algier senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.algiers": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.avignon",
+					"city.valletta",
+					"city.tripoli",
+					"end.ghardaia",
+					"city.marrakech"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.amsterdam",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Amsterdam senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.amsterdam": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.aachen",
+					"city.rostock",
+					"city.london"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.avignon",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Avignon senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.avignon": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.munich",
+					"city.venice",
+					"city.algiers",
+					"city.granada"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.baghdad",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Bagdad senden",
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.baghdad": 1
+			},
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"internaldeck": {
+				"spec": [
+					"city.tiflis",
+					"city.meshad",
+					"end.messana",
+					"city.alexandria",
+					"city.istanbul"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.budapest",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Budapest senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.budapest": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.krakow",
+					"city.cluj",
+					"city.tirana",
+					"city.venice"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.candia",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Candia-Heraklion senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So suchst du nach einem Ort, an den du fliehen kannst. Es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen. Und du bist weit weg von allen Wahrscheinlichkeiten. Es wird länger dauern.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.candia": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.tirana",
+					"city.alexandria",
+					"end.messana",
+					"city.tripoli"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.cluj",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Cluj-Napoca senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So suchst du nach einem Ort, an den du fliehen kannst. Es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.cluj": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.kiev",
+					"city.tiflis",
+					"city.istanbul",
+					"city.budapest"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.granada",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Granada senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.granada": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.strasbourg",
+					"city.avignon",
+					"city.marrakech",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.istanbul",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Istanbul senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.istanbul": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.cluj",
+					"city.baghdad",
+					"city.alexandria",
+					"city.tirana"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kaunas",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Kaunas senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kaunas": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.leningrad",
+					"city.krakow",
+					"city.prague",
+					"city.rostock"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kiev",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Kiew senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kiev": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.leningrad",
+					"city.stalingrad",
+					"city.cluj",
+					"city.krakow"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.krakow",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Krakau senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.krakow": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.kaunas",
+					"city.kiev",
+					"city.budapest",
+					"city.vienna"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.leningrad",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Leningrad senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.leningrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.nizhny",
+					"city.kiev",
+					"city.kaunas"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.london",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus London senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.london": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.paris",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.marrakech",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Marrakesch senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.marrakech": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.granada",
+					"city.algiers",
+					"end.ghardaia",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.meshad",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Maschhad senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen. Und du bist weit weg von allen Wahrscheinlichkeiten. Es wird länger dauern.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.meshad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.samarkand",
+					"end.paro",
+					"end.messana",
+					"city.baghdad"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.munich",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus München senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.munich": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.vienna",
+					"city.avignon",
+					"city.strasbourg"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.nizhny",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Nischni senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen. Und du bist weit weg von allen Wahrscheinlichkeiten. Es wird länger dauern.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.nizhny": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"city.sverdlovsk",
+					"city.stalingrad",
+					"city.leningrad"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.paris",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Paris senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.paris": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.london",
+					"city.aachen",
+					"city.strasbourg",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.prague",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Prag senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.prague": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.rostock",
+					"city.kaunas",
+					"city.vienna",
+					"city.aachen"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.rostock",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Rostock senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.rostock": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.kaunas",
+					"city.prague"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.samarkand",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Samarkand senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.samarkand": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.sverdlovsk",
+					"end.paro",
+					"city.meshad",
+					"city.tiflis"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.strasbourg",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Strasbourg senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.strasbourg": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.paris",
+					"city.aachen",
+					"city.granada",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.stalingrad",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Stalingrad senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen. Und du bist weit weg von allen Wahrscheinlichkeiten. Es wird länger dauern.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.stalingrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.nizhny",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.kiev"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.sverdlovsk",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Swerdlowsk senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen. Und du bist weit weg von allen Wahrscheinlichkeiten. Es wird länger dauern.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.sverdlovsk": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"end.paro",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.nizhny"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tiflis",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Tiflis senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tiflis": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.stalingrad",
+					"city.samarkand",
+					"city.baghdad",
+					"city.cluj"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tirana",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Tirana senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tirana": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.budapest",
+					"city.istanbul",
+					"city.candia",
+					"city.valletta"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tripoli",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Tripolis senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tripoli": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.valletta",
+					"city.candia",
+					"end.ghardaia",
+					"city.algiers"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.valletta",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Valletta senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen. Und du bist weit weg von allen Wahrscheinlichkeiten. Es wird länger dauern.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.valletta": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.venice",
+					"city.tirana",
+					"city.tripoli",
+					"city.algiers"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.venice",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Venedig senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.venice": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.vienna",
+					"city.budapest",
+					"city.valletta",
+					"city.avignon"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.vienna",
+			"actionId": "send",
+			"label": "Diskrete Botschaften aus Wien senden",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [So findest du einen Ort, an den du fliehen kannst – doch es bleibt ein kleines Risiko, dass du Spuren hinterlässt. Und was noch schwerer wiegt: Die Abrechner könnten noch vor dir dort eintreffen.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.vienna": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.prague",
+					"city.krakow",
+					"city.venice",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.aachen.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus Aachen senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.aachen.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.algiers.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus Algier senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.algiers.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.avignon",
+					"city.valletta",
+					"city.tripoli",
+					"end.ghardaia",
+					"city.marrakech"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.baghdad.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus Bagdad senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.baghdad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.tiflis",
+					"city.meshad",
+					"end.messana",
+					"city.alexandria",
+					"city.istanbul"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.istanbul.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus Istanbul senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.istanbul.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.cluj",
+					"city.baghdad",
+					"city.alexandria",
+					"city.tirana"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kiev.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus Kiew senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kiev.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.leningrad",
+					"city.stalingrad",
+					"city.cluj",
+					"city.krakow"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.leningrad.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus Leningrad senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.leningrad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.nizhny",
+					"city.kiev",
+					"city.kaunas"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.london.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus London senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.london.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.paris",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.munich.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus München senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.munich.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.vienna",
+					"city.avignon",
+					"city.strasbourg"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.nizhny.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus Nischni Nowgorod senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.nizhny.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.samarkand.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus Samarkand senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.samarkand.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.sverdlovsk",
+					"end.paro",
+					"city.meshad",
+					"city.tiflis"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.stalingrad.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus Stalingrad senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.stalingrad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.nizhny",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.kiev"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.sverdlovsk.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus Swerdlowsk senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.sverdlovsk.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"end.paro",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.nizhny"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tiflis.turmoil",
+			"actionId": "send",
+			"label": "Gehetzte Botschaften aus Tiflis senden",
+			"startdescription": "Ich muss einen Ort finden, an dem es sicherer ist. [Angesichts der aktuellen Verhältnisse in der Stadt ist es deutlich schwerer, unbemerkt einen Kontakt herzustellen. Es besteht ein hohes Risiko, dass du Spuren hinterlässt.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tiflis.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.stalingrad",
+					"city.samarkand",
+					"city.baghdad",
+					"city.cluj"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.wilderness",
+			"startdescription": "Wenn ich fliehen sollte, dann irgendwohin, wo ich einen alten Freund habe – oder zumindest eine alte Bekanntschaft. [Die Wildnis ist gefährlich. Du ziehst dir immer eine Wunde zu, wenn du so etwas machst.]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"actionId": "send",
+			"label": "Versuchen, irgendjemanden irgendwo zu kontaktieren",
+			"requirements": {
+				"domicile.wilderness": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.alexandria",
+					"city.algiers",
+					"city.amsterdam",
+					"city.avignon",
+					"city.baghdad",
+					"city.budapest",
+					"city.candia",
+					"city.cluj",
+					"city.granada",
+					"city.istanbul",
+					"city.kaunas",
+					"city.kiev",
+					"city.krakow",
+					"city.leningrad",
+					"city.london",
+					"city.marrakech",
+					"city.meshad",
+					"city.munich",
+					"city.nizhny",
+					"city.paris",
+					"city.prague",
+					"city.rostock",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.strasbourg",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.tirana",
+					"city.tripoli",
+					"city.valletta",
+					"city.venice",
+					"city.vienna",
+					"end.bornholm",
+					"end.cheko",
+					"end.ghardaia",
+					"end.messana",
+					"end.morbihan",
+					"end.paro",
+					"end.slettnes"
+				],
+				"draws": 1,
+				"defaultcard": "end.cheko",
+				"resetonexhaustion": false
+			},
+			"effects": {
+				"wound.exile": 1
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,697 @@
+{
+    "recipes": [
+        {
+            "id": "getcommissionaladim",
+            "label": "Get a Commission from Dr al-Adim",
+            "actionid": "talk",
+            "requirements": {
+                "aladimready": 1
+            },
+            "startdescription": "The doctor would like my help with his research.",
+            "description": "Here's what he needs.",
+            "warmup": 10,
+            "deckeffects": {
+                "aladimcommissions": 1
+            },
+            "aspects": {
+                "commissiongiven": 1
+            },
+            "craftable": true
+        },
+        {
+            "id": "getcommissionbechet",
+            "label": "Get a Commission from Mme Bechet",
+            "actionid": "talk",
+            "requirements": {
+                "bechetready": 1
+            },
+            "startdescription": "She's seeking pieces for the notorious 'Kerisham Review'.",
+            "description": "Here's what she needs.",
+            "warmup": 10,
+            "deckeffects": {
+                "bechetcommissions": 1
+            },
+            "aspects": {
+                "commissiongiven": 1
+            },
+            "craftable": true
+        },
+        {
+            "id": "getcommissionjannings",
+            "label": "Get a Commission from Count Jannings",
+            "actionid": "talk",
+            "requirements": {
+                "janningsready": 1
+            },
+            "startdescription": "The good Count's fraternity in Europe is seeking particular research.",
+            "description": "Here's what he needs.",
+            "warmup": 10,
+            "deckeffects": {
+                "janningscommissions": 1
+            },
+            "aspects": {
+                "commissiongiven": 1
+            },
+            "craftable": true
+        },
+        {
+            "id": "getcommissionpoppy",
+            "label": "Get a Commission from Poppy Lascelles",
+            "actionid": "talk",
+            "requirements": {
+                "poppycommissionready": 1
+            },
+            "startdescription": "'I am,' Poppy says with a girlish giggle, 'curious about, oh, you know, the arts of blood and ice. It's silly, but allow an old woman her whims. Will you help me?'",
+            "description": "Here's what she needs.",
+            "warmup": 10,
+            "deckeffects": {
+                "poppycommissions": 1
+            },
+            "aspects": {
+                "commissiongiven": 1
+            },
+            "craftable": true
+        },
+        {
+            "id": "fulfilcommissionaladimsecrethistoriesc",
+            "label": "Fulfil a Commission for Dr al-Adim",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlesecrethistoriesc": 1,
+                "aladim": 1,
+                "article": 1,
+                "secrethistories": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what the doctor requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionaladimsecrethistoriesb",
+            "label": "Fulfil a Commission for Dr al-Adim",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlesecrethistoriesb": 1,
+                "aladim": 1,
+                "article": 1,
+                "secrethistories": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what the doctor requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionaladimsecrethistories",
+            "label": "Fulfil a Commission for Dr al-Adim",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlesecrethistories": 1,
+                "aladim": 1,
+                "article": 1,
+                "secrethistories": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what the doctor requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionaladimlanternc",
+            "label": "Fulfil a Commission for Dr al-Adim",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlelanternc": 1,
+                "aladim": 1,
+                "article": 1,
+                "lantern": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what the doctor requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionaladimlanternb",
+            "label": "Fulfil a Commission for Dr al-Adim",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlelanternb": 1,
+                "aladim": 1,
+                "article": 1,
+                "lantern": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what the doctor requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionaladimlantern",
+            "label": "Fulfil a Commission for Dr al-Adim",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlelantern": 1,
+                "aladim": 1,
+                "article": 1,
+                "lantern": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what the doctor requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetforgec",
+            "label": "Fulfil a Commission for Mme Bechet",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleforgec": 1,
+                "bechet": 1,
+                "article": 1,
+                "forge": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetforgeb",
+            "label": "Fulfil a Commission for Mme Bechet",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleforgeb": 1,
+                "bechet": 1,
+                "article": 1,
+                "forge": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetforge",
+            "label": "Fulfil a Commission for Mme Bechet",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleforge": 1,
+                "bechet": 1,
+                "article": 1,
+                "forge": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetgrailc",
+            "label": "Fulfil a Commission for Mme Bechet",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlegrailc": 1,
+                "bechet": 1,
+                "article": 1,
+                "grail": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetgrailb",
+            "label": "Fulfil a Commission for Mme Bechet",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlegrailb": 1,
+                "bechet": 1,
+                "article": 1,
+                "grail": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetgrail",
+            "label": "Fulfil a Commission for Mme Bechet",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlegrail": 1,
+                "bechet": 1,
+                "article": 1,
+                "grail": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetmothc",
+            "label": "Fulfil a Commission for Mme Bechet",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlemothc": 1,
+                "bechet": 1,
+                "article": 1,
+                "moth": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetmothb",
+            "label": "Fulfil a Commission for Mme Bechet",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlemothb": 1,
+                "bechet": 1,
+                "article": 1,
+                "moth": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetmoth",
+            "label": "Fulfil a Commission for Mme Bechet",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlemoth": 1,
+                "bechet": 1,
+                "article": 1,
+                "moth": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsheartc",
+            "label": "Fulfil a Commission for Count Jannings",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleheartc": 1,
+                "jannings": 1,
+                "article": 1,
+                "heart": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsheartb",
+            "label": "Fulfil a Commission for Count Jannings",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleheartb": 1,
+                "jannings": 1,
+                "article": 1,
+                "heart": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsheart",
+            "label": "Fulfil a Commission for Count Jannings",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleheart": 1,
+                "jannings": 1,
+                "article": 1,
+                "heart": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsedgec",
+            "label": "Fulfil a Commission for Count Jannings",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleedgec": 1,
+                "jannings": 1,
+                "article": 1,
+                "edge": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsedgeb",
+            "label": "Fulfil a Commission for Count Jannings",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleedgeb": 1,
+                "jannings": 1,
+                "article": 1,
+                "edge": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsedge",
+            "label": "Fulfil a Commission for Count Jannings",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleedge": 1,
+                "jannings": 1,
+                "article": 1,
+                "edge": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what was requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionwinterc",
+            "label": "Fulfil a Commission for Poppy Lascelles",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlewinterc": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "winter": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what Poppy requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionwinterb",
+            "label": "Fulfil a Commission for Poppy Lascelles",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlewinterb": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "winter": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what Poppy requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionwinter",
+            "label": "Fulfil a Commission for Poppy Lascelles",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticlewinter": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "winter": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what Poppy requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionknockc",
+            "label": "Fulfil a Commission for Poppy Lascelles",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleknockc": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "knock": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what Poppy requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionknockb",
+            "label": "Fulfil a Commission for Poppy Lascelles",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleknockb": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "knock": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what Poppy requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionknock",
+            "label": "Fulfil a Commission for Poppy Lascelles",
+            "actionid": "talk",
+            "requirements": {
+                "commissionarticleknock": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "knock": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "I have what Poppy requested.",
+            "description": "I've received the currency of the secret world, and my patron has let tantalising information slip.",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        }
+    ]
+}

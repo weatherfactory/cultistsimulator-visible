@@ -1,0 +1,750 @@
+{
+	"recipes": [
+		{
+			"id": "internaldecktest",
+			"actionId": "test",
+			"label": "x",
+			"startdescription": "？",
+			"description": "！",
+			"internaldeck": {
+				"label": "知人の選択",
+				"description": "ハロー",
+				"spec": [
+					"cat_a",
+					"clifton_a",
+					"slee_a",
+					"elridge_a",
+					"laidlaw_a"
+				],
+				"defaultcard": "funds",
+				"draws": 2
+			}
+		},
+		{
+			"id": "bi",
+			"actionId": "bii",
+			"label": "マップ",
+			"startdescription": "マップ",
+			"burnimage": "map",
+			"warmup": 5
+		},
+		{
+			"id": "droo",
+			"actionId": "droo",
+			"label": "Deliverooで寿司を注文する",
+			"startdescription": "数分で美味しい寿司が玄関まで届く。便利なことに、リアルタイムで注文した寿司の現在地を確認できる。",
+			"description": "数分で美味しい寿司が玄関まで届く。便利なことに、リアルタイムで注文した寿司の現在地を確認できる。",
+			"slots": [
+				{
+					"id": "funds",
+					"label": "注文",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "droo"
+				}
+			]
+		},
+		{
+			"id": "droostart",
+			"actionId": "droo",
+			"requirements": {
+				"funds": 1
+			},
+			"label": "レストランがご注文品を準備しています",
+			"startdescription": "んー、寿司！",
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogo",
+			"actionId": "droo",
+			"deckeffect": {
+				"seasonevents": 1
+			},
+			"linked": [
+				{
+					"id": "droogosickness"
+				},
+				{
+					"id": "droogodespair"
+				},
+				{
+					"id": "droogovisions"
+				},
+				{
+					"id": "droogoambition"
+				},
+				{
+					"id": "droogovisions"
+				},
+				{
+					"id": "droogosuspicion"
+				},
+				{
+					"id": "droogoardours"
+				},
+				{
+					"id": "droogosilence"
+				}
+			]
+		},
+		{
+			"id": "droogosickness",
+			"actionId": "droo",
+			"label": "配達員がレストランで待機しています",
+			"startdescription": "あともう少し！",
+			"requirements": {
+				"seasonsickness": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogodespair",
+			"actionId": "droo",
+			"label": "配達員を指名中",
+			"startdescription": "誰が来るだろう？",
+			"requirements": {
+				"seasondespair": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogovisions",
+			"actionId": "droo",
+			"label": "ご注文品に配達員が割り当てられました",
+			"startdescription": "やった！もうすぐでレストランに着くはず。",
+			"requirements": {
+				"seasonvisions": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogoambition",
+			"actionId": "droo",
+			"label": "配達員がレストランで待機しています",
+			"startdescription": "やった！もうすぐ着くはず。",
+			"requirements": {
+				"seasonambitions": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogoardours",
+			"actionId": "droo",
+			"label": "Deliverooサポート担当者から電話がかかってきた？",
+			"startdescription": "私が注文をキャンセルしたとレストランが言っているって？おかしいな。でも大丈夫。キャンセルしたくない、と伝えたから、何とかなるはずだ。",
+			"requirements": {
+				"seasonardours": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogosuspicion",
+			"actionId": "droo",
+			"label": "ご注文品に配達員が割り当てられました",
+			"startdescription": "やった！もうすぐでレストランに着くはず。",
+			"requirements": {
+				"seasonsuspicion": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "droogo"
+				}
+			]
+		},
+		{
+			"id": "droogosilence",
+			"actionId": "droo",
+			"label": "「ご注文がキャンセルされました",
+			"startdescription": "この度はご不便をおかけし誠に申し訳ございません。\n\n商品代金を返金させていただきます。\n\n次回にご利用いただける£15のクレジットを付与させていただきました。」",
+			"requirements": {
+				"seasonsilence": 1
+			},
+			"effects": {
+				"season": -1,
+				"dread": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "debugsnare",
+			"actionId": "x",
+			"label": "Create Great Snares",
+			"effects": {
+				"snare": 1
+			},
+			"warmup": 1,
+			"linked": [
+				{
+					"id": "debugsnareaddmutation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "debugsnareaddmutation",
+			"actionId": "x",
+			"label": "Create Great Snares+",
+			"mutations": [
+				{
+					"filterOnAspectId": "snare",
+					"mutateAspectId": "snarelevel",
+					"mutationLevel": 3,
+					"additive": true
+				}
+			],
+			"warmup": 1
+		},
+		{
+			"id": "_testexpelled",
+			"actionId": "testexpelled",
+			"startdescription": "test expelled",
+			"description": "end test expelled",
+			"warmup": 5
+		},
+		{
+			"id": "_testmutations",
+			"label": "Testing mutation",
+			"actionId": "work",
+			"requirements": {
+				"owl": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "owl",
+					"mutateAspectId": "dreadful",
+					"mutationLevel": 10
+				}
+			],
+			"warmup": 1,
+			"craftable": true
+		},
+		{
+			"id": "_adeptskit",
+			"label": "Adept's Kit",
+			"actionId": "adeptskit",
+			"warmup": 1,
+			"effects": {
+				"fragmentedge": 1,
+				"fragmentforge": 1,
+				"fragmentgrail": 1,
+				"fragmentheart": 1,
+				"fragmentknock": 1,
+				"fragmentlantern": 1,
+				"fragmentmoth": 1,
+				"fragmentsecrethistories": 1,
+				"fragmentwinter": 1,
+				"fragmentedgeb": 1,
+				"fragmentforgeb": 1,
+				"fragmentgrailb": 1,
+				"fragmentheartb": 1,
+				"fragmentknockb": 1,
+				"fragmentlanternb": 1,
+				"fragmentmothb": 1,
+				"fragmentsecrethistoriesb": 1,
+				"fragmentwinterb": 1,
+				"ingredientedgeb": 1,
+				"ingredientforgeb": 1,
+				"ingredientgrailb": 1,
+				"ingredientheartb": 1,
+				"ingredientknockb": 1,
+				"ingredientlanternb": 1,
+				"ingredientmothb": 1,
+				"ingredientwinterb": 1,
+				"tooledged": 1,
+				"toolforged": 1,
+				"toolgraild": 1,
+				"toolheartd": 1,
+				"toolknockd": 1,
+				"toollanternd": 1,
+				"toolmothd": 1,
+				"toolsecrethistoriesd": 1,
+				"toolwinterd": 1,
+				"ritefollowerconsumeingredient": 1,
+				"ritetoolconsumeingredient": 1
+			}
+		},
+		{
+			"id": "_memoryvault",
+			"label": "Retrieve stored things",
+			"actionId": "fictitiousverb",
+			"effects": {
+				"LEVER_LastBook": 1,
+				"LEVER_LastDesire": 1,
+				"LEVER_LastTool": 1,
+				"LEVER_LastSignificantPainting": 1,
+				"LEVER_LastCult": 1,
+				"LEVER_LastHeadquarters": 1,
+				"LEVER_LastPersonKilled": 1
+			},
+			"startdescription": "This is what we had:",
+			"warmup": 1,
+			"craftable": false
+		},
+		{
+			"id": "_ascensionending",
+			"label": "Display Ascension Ending",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Here I go",
+			"description": "Ending text coming",
+			"warmup": 5,
+			"craftable": false,
+			"ending": "minorgrailvictory"
+		},
+		{
+			"id": "_arrest",
+			"label": "Display Imprisonment Ending",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"startdescription": "Here I go",
+			"description": "Ending text coming",
+			"warmup": 5,
+			"craftable": false,
+			"ending": "arrest"
+		},
+		{
+			"id": "_mansustest",
+			"label": "マンサスの効果を試す",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus entry will occur on completion",
+			"description": "これが表示されると、マンサス突入が発生する。",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "Wood"
+		},
+		{
+			"id": "_mansusteststag",
+			"label": "マンサスの効果を試す",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus entry will occur on completion",
+			"description": "これが表示されると、マンサス突入が発生する。",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "StagDoor"
+		},
+		{
+			"id": "_mansustestpeacock",
+			"label": "マンサスの効果を試す",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus entry will occur on completion",
+			"description": "これが表示されると、マンサス突入が発生する。",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "PeacockDoor"
+		},
+		{
+			"id": "_mansustestgate",
+			"label": "マンサスの効果を試す",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus entry will occur on completion",
+			"description": "これが表示されると、マンサス突入が発生する。",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "TricuspidGate"
+		},
+		{
+			"id": "_mansustestspider",
+			"label": "マンサスの効果を試す",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus entry will occur on completion",
+			"description": "これが表示されると、マンサス突入が発生する。",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "SpiderDoor"
+		},
+		{
+			"id": "_mansustestwhite",
+			"label": "マンサスの効果を試す",
+			"actionId": "fictitiousverb",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus entry will occur on completion",
+			"description": "これが表示されると、マンサス突入が発生する。",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "WhiteDoor"
+		},
+		{
+			"id": "_mansustest2",
+			"label": "Test Mansus effect for door",
+			"actionId": "fictitiousverb2",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": "Mansus entry will occur on completion",
+			"description": "これが表示されると、マンサス突入が発生する。",
+			"warmup": 1,
+			"craftable": false,
+			"portaleffect": "whitedoor"
+		},
+		{
+			"id": "_dream",
+			"label": "夢のトークンの作成",
+			"actionId": "dream",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": ".",
+			"description": "...",
+			"warmup": 1,
+			"craftable": false
+		},
+		{
+			"id": "_study",
+			"label": "学習トークンの作成",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": ".",
+			"description": "...",
+			"warmup": 1,
+			"craftable": false
+		},
+		{
+			"id": "_talk",
+			"label": "会話トークンの作成",
+			"actionId": "talk",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": ".",
+			"description": "...",
+			"warmup": 1,
+			"craftable": false
+		},
+		{
+			"id": "_explore",
+			"label": "探索トークンの作成",
+			"actionId": "explore",
+			"requirements": {
+				
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"startdescription": ".",
+			"description": "...",
+			"warmup": 1,
+			"craftable": false
+		},
+		{
+			"id": "testdeathcountdown",
+			"label": "体力は残っていない",
+			"actionId": "healthend",
+			"requirements": {
+				"health": -1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "私の人生は滑り落ちていく――",
+			"description": "どこで見つけるというのだろう？私はここにいないのに。",
+			"warmup": 10,
+			"craftable": false,
+			"signalEndingFlavour": "Melancholy",
+			"ending": "deathofthebody"
+		},
+		{
+			"id": "testemptyresults",
+			"label": "「人は現実を否定するのと同じくらい、空想に憑りつかれている」――ル＝グウィン",
+			"actionId": "testemptyresults",
+			"effects": {
+				
+			},
+			"startdescription": "test empty coming up -",
+			"description": "Nothing here, verb stuck open.",
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "wolfatthedooreats_work",
+			"label": "狼だ",
+			"actionId": "work",
+			"requirements": {
+				"wolfatthedoor": 1
+			},
+			"effects": {
+				"wolfatthedoor": -1
+			},
+			"startdescription": "遠吠えが聞こえ......",
+			"description": "......うなり声が聞こえる。",
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "wolfatthedooreats_dream",
+			"label": "狼だ",
+			"actionId": "dream",
+			"requirements": {
+				"wolfatthedoor": 1
+			},
+			"effects": {
+				"wolfatthedoor": -1
+			},
+			"startdescription": "遠吠えが聞こえ......",
+			"description": "......うなり声が聞こえる。",
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "wolfatthedooreats_study",
+			"label": "狼だ",
+			"actionId": "study",
+			"requirements": {
+				"wolfatthedoor": 1
+			},
+			"effects": {
+				"wolfatthedoor": -1
+			},
+			"startdescription": "遠吠えが聞こえ......",
+			"description": "......うなり声が聞こえる。",
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "wolfatthedooreats_explore",
+			"label": "狼だ",
+			"actionId": "explore",
+			"requirements": {
+				"wolfatthedoor": 1
+			},
+			"effects": {
+				"wolfatthedoor": -1
+			},
+			"startdescription": "遠吠えが聞こえ......",
+			"description": "......うなり声が聞こえる。",
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "wolfatthedooreats_talk",
+			"label": "狼だ",
+			"actionId": "talk",
+			"requirements": {
+				"wolfatthedoor": 1
+			},
+			"effects": {
+				"wolfatthedoor": -1
+			},
+			"startdescription": "遠吠えが聞こえ......",
+			"description": "......うなり声が聞こえる。",
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "_wrap_cultfoundation",
+			"actionId": "_wrap_cultfoundation",
+			"linked": [
+				{
+					"id": "cultfoundation",
+					"chance": 100
+				}
+			],
+			"requirements": {
+				"notaworm": 1
+			},
+			"effects": {
+				"notaworm": -1
+			},
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "_wrap_bytopenstudy",
+			"actionId": "_wrap_bytopenstudy",
+			"linked": [
+				{
+					"id": "bytopenstudy",
+					"chance": 100
+				}
+			],
+			"requirements": {
+				"notaworm": 1
+			},
+			"effects": {
+				"notaworm": -1
+			},
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "_wrap_ambition",
+			"actionId": "craving",
+			"linked": [
+				{
+					"id": "ambition",
+					"chance": 100
+				}
+			],
+			"requirements": {
+				"notaworm": 1
+			},
+			"effects": {
+				"notaworm": -1,
+				"seasonambitions": 1
+			},
+			"warmup": 0,
+			"craftable": true
+		},
+		{
+			"id": "_long.dreamconfrontation",
+			"actionId": "long",
+			"startdescription": "マンサスで戦おう",
+			"linked": [
+				{
+					"id": "_long.dreamconfrontation.skillup"
+				}
+			],
+			"effects": {
+				"diarist": 1
+			},
+			"warmup": 1
+		},
+		{
+			"id": "_long.dreamconfrontation.skillup",
+			"actionId": "long",
+			"startdescription": "まずは長生者のスキル上げをしよう",
+			"mutations": [
+				{
+					"filter": "long.enemy",
+					"mutate": "long.dreamwork",
+					"level": 10
+				}
+			],
+			"linked": [
+				{
+					"id": "long.dreams.confrontation"
+				}
+			],
+			"warmup": 1
+		},
+		{
+			"id": "_ghoulmemories",
+			"actionId": "gm",
+			"label": "記憶",
+			"startdescription": "奈落の底でひとりぼっち",
+			"effects": {
+				"memory.furious": 1,
+				"memory.luxurious": 1,
+				"memory.liminal": 1,
+				"memory.horizon": 1,
+				"memory.splendid": 1,
+				"memory.endless": 1,
+				"memory.wildering": 1,
+				"memory.golden": 1,
+				"memory.honeyed": 1
+			},
+			"warmup": 1
+		}
+	]
+}

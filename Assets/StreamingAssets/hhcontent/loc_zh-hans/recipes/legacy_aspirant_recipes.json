@@ -1,0 +1,147 @@
+{
+    "recipes": [
+        {
+            "id": "workintrojob",
+            "label": "医院里的又一次轮班",
+            "actionId": "work",
+            "requirements": {
+                "introjob": 1
+            },
+            "effects": {
+                "introjob": -1,
+                "health": 1,
+                "funds": 2
+            },
+            "alternativerecipes": [
+                {
+                    "id": "introdream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "又一次轮班：在昏暗的走廊里拖地，给双眼空洞的病人送去包裹，将装满尸体的轮床推去地下室。",
+            "description": "正当你轮班的时候，搬工工头招呼你到一旁。“我们这边不需要你来了”，他说：“这是你最后一笔工资。”\n\n我就这样失去了我的工作，但至少我现在有一点时间休息了，而且我变得更健康了。\n\n[解锁<b>入梦</b>。]",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "introdream",
+            "label": "回忆我的梦境",
+            "actionId": "dream",
+            "requirements": {},
+            "effects": {
+                "passion": 1,
+                "contentment": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "bequestcountdown",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "我又梦见了潜藏在世界那污秽的表皮下的光芒。穿过黑暗树林的光。那扇苍白的门。那名老人——",
+            "description": "事情始于我和医院里那名老人交流的那一刻。他知道我的名字。但是他现在已经死了，死于肺炎。为什么我还是能梦见他？我梦中那道钴蓝色的光芒是什么？\n\n[时间开始流逝。]",
+            "warmup": 30,
+            "craftable": false,
+            "comments": "This is triggered from the intro work recipe only."
+        },
+        {
+            "id": "bequestcountdown",
+            "label": "冥冥之中的变化",
+            "actionId": "study",
+            "requirements": {},
+            "startdescription": "我需要资金来维系生活。但是，眼下这种情况之下，我近来感觉到的心烦意乱反倒很可能是一种潜在的护佑。有什么闯入了我的梦境吗？冥冥之中似乎有某种改变。",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "bequestarrives",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "bequestarrives",
+            "label": "收到遗赠",
+            "actionId": "study",
+            "requirements": {},
+            "effects": {
+                "reason": 1,
+                "funds": 9,
+                "bequestintro": 1
+            },
+            "startdescription": "一封来自律师的信。那位在医院的老人——那位我梦见的人——在遗嘱中提到了我。我很快会收到更多消息。",
+            "description": "那位老人遗赠给我一笔钱，还有一包奇怪的文书——包含诗歌，谜语以及一些形而上学的猜想。几个月以来，我的理性第一次获得了燃料。\n\n[解锁<b>研究</b>。]",
+            "warmup": 30,
+            "craftable": false,
+            "maxexecutions": 1,
+            "comments": "This makes the Study action available, and is triggered from intro only."
+        },
+        {
+            "id": "studybequestreason",
+            "label": "用理性检查遗赠",
+            "actionId": "study",
+            "requirements": {
+                "bequestintro": 1,
+                "reason": 1
+            },
+            "effects": {
+                "bequestintro": -1,
+                "ascensionenlightenmenta": 1,
+                "mapbookdealer": 1,
+                "fragmentlantern": 1,
+                "contactintro": 1
+            },
+            "startdescription": "我会一丝不苟地检查每件物品。",
+            "description": "\"来信者准确地描述了我的梦境！他们的用词充满既视感——居屋、林地、司辰、辉光。他们知晓时间与世界表皮下隐藏的秘密。<b>我开始燃起新的好奇之念。</b>\\n\r\n这里有一份笔记——提到如何前往一家不宣传自家货品的书店……\\n\"",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studybequestpassion",
+            "label": "用激情检查遗赠",
+            "actionId": "study",
+            "requirements": {
+                "bequestintro": 1,
+                "passion": 1
+            },
+            "effects": {
+                "bequestintro": -1,
+                "ascensionpowera": 1,
+                "mapbookdealer": 1,
+                "fragmentforge": 1,
+                "contactintro": 1
+            },
+            "startdescription": "我会阅读，会来回踱步，会打着草稿，会惊讶地抓自己的头发，高兴到手舞足蹈，绝望到精神崩溃。",
+            "description": "\"来信者准确地描述了我的梦境！他们的用词充满既视感——居屋、林地、司辰、辉光。我察觉到那里有连将军和国王也会嫉妒的力量。<b>我开始燃起新的欲望之念。</b>\\n\r\n这里有一份笔记——提到如何前往一家不宣传自家货品的书店……\\n\"",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studycontactintro",
+            "label": "寻找潜在的合作者",
+            "actionId": "study",
+            "requirements": {
+                "contactintro": 1
+            },
+            "effects": {
+                "contactintro": -1,
+                "mystique": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "findacquaintanceopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "我掌握了一个名字，一份描述，一些撩人的细节……但是，这座城市有千千万万张面孔。",
+            "description": "现在我知道了一个地址！我将寄一封信过去，然后提议安排一次见面。[解锁<b>谈话</b>。]",
+            "warmup": 30,
+            "craftable": true,
+            "comments": "This is one way the Talk verb may be opened."
+        }
+    ]
+}

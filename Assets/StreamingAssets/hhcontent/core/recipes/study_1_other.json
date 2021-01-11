@@ -1,0 +1,109 @@
+{
+    "recipes": [
+        {
+            "id": "studybenefactorwill",
+            "label": "Study a Dearly Departed's Papers",
+            "actionid": "study",
+            "requirements": {
+                "benefactorwill": 1,
+                "funds": 1
+            },
+            "alt": [
+                {
+                    "id": "studybenefactorwill_suspicion",
+                    "chance": 30
+                }
+            ],
+            "effects": {
+                "funds": 49,
+                "benefactorwill": -1
+            },
+            "startdescription": "This situation requires discretion. Society considered our association improper.",
+            "description": "Our relations were never formalised. It would be unthinkable that I would inherit a significant portion of the estate. Nevertheless, I have been well provided for.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studybenefactorwill_suspicion",
+            "label": ".",
+            "actionid": "study",
+            "effects": {
+                "notoriety": 1,
+                "benefactorwill": -1
+            },
+            "description": "Something has gone awry. Our former acquaintances cross the street when I pass. A newspaper hints at foul play. The solicitor will not receive me. I can expect no bequest, and there may be worse to come."
+        },
+        {
+            "id": "study.welland.defeated",
+            "actionid": "study",
+            "label": "As At Issus",
+            "startdescription": "I have the opportunity to turn against our Shaper, as the Lionsmith did against the Colonel. [This will prevent your previous character from ever ascending, but give you the opportunity to win a standard Forge victory. It will have no other effect.]",
+            "description": "The chain of loyalty is shattered. My followers will suspect nothing. By the time our Shaper can return from their exile, I will be gone, or I will be forever.",
+            "requirements": {
+                "welland.defeated": 1,
+                "mentor": 1
+            },
+            "effects": {
+                "mentor": -1,
+                "welland.defeated": -1,
+                "ascensionpowerc": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "study.tryphon.defeated",
+            "actionid": "study",
+            "label": "The Selectest of Menus",
+            "startdescription": "If I consume what remains of Lady Tryphon, I will not be consumed. [This will prevent your previous character from ever ascending, but give you the opportunity to win a standard Grail victory. It will have no other effect.]",
+            "description": "The taste is bright on my tongue. There will be no Vitulation for our Delight. My followers will serve my desires. For now, I will devour; I will not be devoured.",
+            "requirements": {
+                "tryphon.defeated": 1,
+                "mentor": 1
+            },
+            "effects": {
+                "mentor": -1,
+                "tryphon.defeated": -1,
+                "ascensionsensationc": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "study.diarist.defeated",
+            "actionid": "study",
+            "label": "One Door Closes",
+            "startdescription": "The Diarist has given me the means to abandon our Illuminated One to the Mansus. [This will prevent your previous character from ever ascending, but give you the opportunity to win a standard Lantern victory. It will have no other effect.]",
+            "description": "I have closed the door in my eye. I have sealed it with wax. That eye is blind, but the other sees new horizons. Our organisation will serve a different end. Perhaps one day I will greet our Founder as a peer.",
+            "requirements": {
+                "diarist.defeated": 1,
+                "mentor": 1
+            },
+            "effects": {
+                "mentor": -1,
+                "diarist.defeated": -1,
+                "ascensionenlightenmentc": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "study.julian.defeated",
+            "actionid": "study",
+            "label": "Empty and Alone",
+            "startdescription": "'One more stone in the Mansus-wall.' Is that all I am? Is there anything else? [This will prevent your previous character from ever ascending, and add Dread to the board. It will have no other effect.]",
+            "description": "I will live out my life according to my choices. What I am is what I will be, until I am nothing at all.",
+            "requirements": {
+                "julian.defeated": 1,
+                "mentor": 1
+            },
+            "effects": {
+                "mentor": -1,
+                "julian.defeated": -1,
+                "dread": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        }
+    ]
+}

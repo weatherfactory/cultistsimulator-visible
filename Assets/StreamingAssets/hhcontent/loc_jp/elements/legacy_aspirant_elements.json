@@ -1,0 +1,40 @@
+{
+	"elements": [
+		{
+			"id": "bequestintro",
+			"label": "遺言",
+			"aspects": {
+				"legacyplotitem": 1
+			},
+			"description": "文通相手の遺言執行者から奇妙な書類が入った小包が届いた。情熱か理性を活かして、しっかりと読まなくてはいけない。",
+			"slots": [
+				{
+					"id": "Approach",
+					"label": "取り組み方",
+					"actionId": "study",
+					"required": {
+						"reason": 1,
+						"passion": 1
+					},
+					"description": "私は情熱的な人間なのだろうか、それとも理性的な人間なのだろうか。"
+				}
+			]
+		},
+		{
+			"id": "introjob",
+			"label": "退屈な仕事",
+			"description": "病院のポーターという不安定な立場。惨めだが、今はそれしかない。",
+			"aspects": {
+				"job": 1
+			}
+		},
+		{
+			"id": "contactintro",
+			"aspects": {
+				"legacyplotitem": 1
+			},
+			"label": "協力者候補の記録",
+			"description": "文通相手は、私の観察を記録していた。私には「可能性」があると思っていたようだ。同様に、他の人の観察内容も記録されている。しっかりと調べれば、その人の居場所が分かるはずだ。"
+		}
+	]
+}

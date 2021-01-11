@@ -1,0 +1,1822 @@
+{
+	"recipes": [
+		{
+			"id": "studyknocklore",
+			"label": "開く伝承を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"knock": 1
+			},
+			"effects": {
+				"project_upgrade_subvert_knock": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "単語と単語の間が実際の音節と同じくらい強力な力を持っている、縫い目を解く呪文がある。物が開かれたとき、私たちはその性質を知ることになる。 [開錠で学んだ伝承は全て開錠になる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studyupgradelore_edge",
+			"label": "ナイフの伝承を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"edge": 1,
+				"winter": -1,
+				"forge": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_edge": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "どんな激しい闘争も死で終わる。刃の伝承には、闘争の教訓が込められている。",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_edgetowinter",
+			"label": "刀の伝承を改変する",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"edge": 1,
+				"winter": 1
+			},
+			"effects": {
+				"project_subvert_edgetowinter": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "万物には終わりが来る。忍耐力がいかに強さに勝るかを深く考えてみようと思う。 [これにより、刃の代わりに冬の伝承が生まれる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studyforgelore",
+			"label": "燃える伝承を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"forge": 1,
+				"edge": -1,
+				"lantern": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_forge": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "鍛冶屋と殺人者が同じ祈りを捧げることを知っている者はほとんどいない。祈りを調べてみようと思う。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_forgetoedge",
+			"label": "燃える伝承を改変する",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"forge": 1,
+				"edge": 1
+			},
+			"effects": {
+				"project_subvert_forgetoedge": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "ライオンスミスと呼ばれた時の神は、主人の支配から逃れるために自らの剣を粉々にした。十分な力があれば、万物を克服することができる。 [これにより、鍛造の代わりに刃の伝承が生まれる。]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studygraillore",
+			"label": "美味な伝承を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"grail": 1,
+				"moth": -1,
+				"heart": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_grail": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "言葉の中にはが口にされることを乞うものもある。じっくりと時間をかけて考えたくなる――そしてそうすることが、自分の役に立つかもしれない。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_grailtomoth",
+			"label": "美味な伝承に改変する",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"grail": 1,
+				"moth": 1
+			},
+			"effects": {
+				"project_subvert_grailtomoth": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "最初の生贄で聖杯が生まれたと言われているが、蛾はそれが真実でないことを知っている。 [これにより、蛾の代わりに聖杯の伝承が生まれる。]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studyheartlore",
+			"label": "止まらない伝承を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"heart": 1,
+				"grail": -1,
+				"winter": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_heart": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "解剖学者、ダンサー、シャーマンが学ぶ教訓がある。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_hearttograil",
+			"label": "止まらない伝承を改変する",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"heart": 1,
+				"grail": 1
+			},
+			"effects": {
+				"project_subvert_hearttograil": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "止まらないものは、最後には、誘惑に屈するだろう。[これにより、心臓の代わりに聖杯の伝承が生まれる。]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studylanternlore",
+			"label": "栄光の伝承を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"lantern": 1,
+				"forge": -1,
+				"moth": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_lantern": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "目に見えない術の修行者たちの間では、「栄光は壁のない家を訪れる」ということわざがある。私も、栄光について知りたい。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_lanterntoforge",
+			"label": "栄光の伝承を改変する",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"lantern": 1,
+				"forge": 1
+			},
+			"effects": {
+				"project_subvert_lanterntoforge": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "魔術師ジュリアン・コーズリーは日々の鍛造が太陽を分割したと主張している。彼の意見は、正しかったのかもしれない。[これにより、灯りの代わりに鍛造の伝承が生まれる。]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studymothlore",
+			"label": "森の伝承を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"moth": 1,
+				"lantern": -1,
+				"grail": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_moth": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "ガラスに吐く息が黒い時、霧が肌を引き締める時、冬に森が歩く時、私たちはこの言葉を聞く。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertlore_mothtolantern",
+			"label": "森の伝承を改変する",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"moth": 1,
+				"lantern": 1
+			},
+			"effects": {
+				"project_subvert_mothtolantern": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "栄光は質問であり、蛾はいつでも「はい」と答える。[これにより。蛾の代わりに灯りの伝承が生まれる。]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studysecrethistorieslore",
+			"label": "歴史を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"secrethistories": 1
+			},
+			"effects": {
+				"project_upgrade_secrethistories": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "歴史は教えられているより確実なものではない。そのぼやけた縁から学べることがあると思う。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studywinterlore",
+			"label": "ボロボロの伝承を学ぶ",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"winter": 1,
+				"heart": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_upgrade_winter": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "空気を冷やし、肌の色を飲む言葉。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "subvertwinterlore",
+			"label": "ボロボロの伝承を改変する",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2,
+				"winter": 1,
+				"heart": 1
+			},
+			"effects": {
+				"project_subvert_wintertoheart": 1
+			},
+			"linked": [
+				{
+					"id": "studyresearch.entrypoint",
+					"chance": 100
+				}
+			],
+			"startdescription": "雪の中でも、静寂の中でも、色のない白の中でも、命は決して絶えることはない。[これにより、冬の代わりに心臓の伝承が生まれる。]",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studyproject_upgrade_edge",
+			"label": "ナイフの伝承",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_edge": 1
+			},
+			"effects": {
+				"project": -1,
+				"edge": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "刃という属性の名で呼ばれている、「ナイフの伝承」の習熟度を向上した。"
+		},
+		{
+			"id": "studyproject_upgrade_forge",
+			"label": "燃える伝承",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_forge": 1
+			},
+			"effects": {
+				"project": -1,
+				"forge": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "鍛造という属性の名で呼ばれている、「燃える伝承」の習熟度を向上した。"
+		},
+		{
+			"id": "studyproject_upgrade_grail",
+			"label": "美味な伝承",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_grail": 1
+			},
+			"effects": {
+				"project": -1,
+				"grail": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "聖杯という属性の名で呼ばれている、「美味な伝承」の習熟度を向上した。"
+		},
+		{
+			"id": "studyproject_upgrade_heart",
+			"label": "止まらない伝承",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_heart": 1
+			},
+			"effects": {
+				"project": -1,
+				"heart": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "心臓という属性の名で呼ばれている、「止まらない伝承」の習熟度を向上した。"
+		},
+		{
+			"id": "studyproject_upgrade_lantern",
+			"label": "栄光の伝承",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_lantern": 1
+			},
+			"effects": {
+				"project": -1,
+				"lantern": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "灯りという属性の名で呼ばれている、「栄光の伝承」の習熟度を向上した。"
+		},
+		{
+			"id": "studyproject_upgrade_moth",
+			"label": "森の伝承",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_moth": 1
+			},
+			"effects": {
+				"project": -1,
+				"moth": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "蛾という属性の名で呼ばれている、「森の伝承」の習熟度を向上した。"
+		},
+		{
+			"id": "studyproject_upgrade_secrethistories",
+			"label": "秘史",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_secrethistories": 1
+			},
+			"effects": {
+				"project": -1,
+				"secrethistories": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "我々が知っている歴史の裏にある秘史の知識が増えた。"
+		},
+		{
+			"id": "studyproject_upgrade_winter",
+			"label": "ボロボロの伝承",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_winter": 1
+			},
+			"effects": {
+				"project": -1,
+				"winter": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "冬という属性の名で呼ばれている、「ボロボロの伝承」の習熟度を向上した。"
+		},
+		{
+			"id": "studyproject_subvert_edgetowinter",
+			"label": "万物には終わりが来る",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_edgetowinter": 1
+			},
+			"effects": {
+				"project": -1,
+				"edge": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "忍耐は強さに勝る。刃の伝承を冬に改変した。"
+		},
+		{
+			"id": "studyproject_subvert_forgetoedge",
+			"label": "力は万物を征服する",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_forgetoedge": 1
+			},
+			"effects": {
+				"project": -1,
+				"forge": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "今まで信じてきたことを打ち砕いた。だから私は、鍛造の伝承を刃に改変した。"
+		},
+		{
+			"id": "studyproject_subvert_grailtomoth",
+			"label": "空腹は愚行である",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_grailtomoth": 1
+			},
+			"effects": {
+				"project": -1,
+				"grail": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "赤い聖杯でさえ、頭の中の騒々しさの餌食となる、聖杯の伝承を蛾に改変した。"
+		},
+		{
+			"id": "studyproject_subvert_hearttograil",
+			"label": "止まらないものは最終的に屈する",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_hearttograil": 1
+			},
+			"effects": {
+				"project": -1,
+				"heart": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "動くものはすべて飢えに屈する。心臓の伝承を聖杯に改変した。"
+		},
+		{
+			"id": "studyproject_subvert_lanterntoforge",
+			"label": "正午の夕焼け",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_lanterntoforge": 1
+			},
+			"effects": {
+				"project": -1,
+				"lantern": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "鍛造には、太陽さえも割れる術がある。灯りの伝承を鍛造に改変した。"
+		},
+		{
+			"id": "studyproject_subvert_mothtolantern",
+			"label": "上の光",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_mothtolantern": 1
+			},
+			"effects": {
+				"project": -1,
+				"moth": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "栄光は質問であり、蛾はいつでも「はい」と答える。蛾の伝承を灯りに改変した。"
+		},
+		{
+			"id": "studyproject_subvert_wintertoheart",
+			"label": "下にある命",
+			"actionId": "study",
+			"requirements": {
+				"project_subvert_wintertoheart": 1
+			},
+			"effects": {
+				"project": -1,
+				"winter": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "冬はやがて春を迎える。冬の伝承を心臓に改変した。"
+		},
+		{
+			"id": "studyproject_upgrade_subvert_knock",
+			"label": "すべてを開放する",
+			"actionId": "study",
+			"requirements": {
+				"project_upgrade_subvert_knock": 1
+			},
+			"effects": {
+				"project": -1,
+				"subvertable_lore": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"description": "物を開くと、その性質を知ることになる。開錠という属性の名で呼ばれている「開く伝承」について理解を深めた。",
+			"linked": [
+				{
+					"id": "studyproject_upgrade_subvert_knock_remove_spare_knock",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyproject_upgrade_subvert_knock_remove_spare_knock",
+			"label": "すべてを開放する",
+			"comments": "This exists to remove a Knock lore, if we were combining Knock lores rather than Knock + another. Dangit Kennedy you wouldn't need hacks like this if you'd implemented OR conditions. Aspects don't *quite* always cut it.",
+			"actionId": "study",
+			"requirements": {
+				"lore": 2
+			},
+			"effects": {
+				"knock": -1
+			},
+			"description": "."
+		},
+		{
+			"id": "studyresearchconsolation",
+			"label": "経験の教訓",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				"insight": -100,
+				"erudition": 1
+			},
+			"aspects": {
+				"restore": 1
+			},
+			"startdescription": ".",
+			"description": "今回の研究は失敗しました。しかし、経験から学んだこともある。",
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "studydowngradefragmentedgeb",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedgeb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentedgeb": -1,
+				"fragmentedge": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentedgec",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedgec": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentedgec": -1,
+				"fragmentedgeb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentedged",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedged": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentedged": -1,
+				"fragmentedgec": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentedgee",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedgee": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentedgee": -1,
+				"fragmentedged": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentedgef",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedgef": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentedgef": -1,
+				"fragmentedgee": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentedgeg",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentedgeg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentedgeg": -1,
+				"fragmentedgef": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforgeb",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforgeb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentforgeb": -1,
+				"fragmentforge": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforgec",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforgec": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentforgec": -1,
+				"fragmentforgeb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforged",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforged": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentforged": -1,
+				"fragmentforgec": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforgee",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforgee": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentforgee": -1,
+				"fragmentforged": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforgef",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforgef": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentforgef": -1,
+				"fragmentforgee": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentforgeg",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentforgeg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentforgeg": -1,
+				"fragmentforgef": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgrailb",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgrailb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentgrailb": -1,
+				"fragmentgrail": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgrailc",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgrailc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentgrailc": -1,
+				"fragmentgrailb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgraild",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgraild": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentgraild": -1,
+				"fragmentgrailc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgraile",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgraile": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentgraile": -1,
+				"fragmentgraild": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgrailf",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgrailf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentgrailf": -1,
+				"fragmentgraile": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentgrailg",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentgrailg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentgrailg": -1,
+				"fragmentgrailf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentheartb",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentheartb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentheartb": -1,
+				"fragmentheart": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentheartc",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentheartc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentheartc": -1,
+				"fragmentheartb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentheartd",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentheartd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentheartd": -1,
+				"fragmentheartc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmenthearte",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmenthearte": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmenthearte": -1,
+				"fragmentheartd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentheartf",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentheartf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentheartf": -1,
+				"fragmenthearte": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentheartg",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentheartg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"project": -1,
+				"fragmentheartg": -1,
+				"fragmentheartf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknockb",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknockb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentknockb": -1,
+				"fragmentknock": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknockc",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknockc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentknockc": -1,
+				"fragmentknockb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknockd",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknockd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentknockd": -1,
+				"fragmentknockc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknocke",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknocke": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentknocke": -1,
+				"fragmentknockd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknockf",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknockf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentknockf": -1,
+				"fragmentknocke": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentknockg",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentknockg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentknockg": -1,
+				"fragmentknockf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanternb",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanternb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentlanternb": -1,
+				"fragmentlantern": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanternc",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanternc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentlanternc": -1,
+				"fragmentlanternb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanternd",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanternd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentlanternd": -1,
+				"fragmentlanternc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanterne",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanterne": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentlanterne": -1,
+				"fragmentlanternd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanternf",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanternf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentlanternf": -1,
+				"fragmentlanterne": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentlanterng",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentlanterng": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentlanterng": -1,
+				"fragmentlanternf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothb",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentmothb": -1,
+				"fragmentmoth": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothc",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentmothc": -1,
+				"fragmentmothb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothd",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentmothd": -1,
+				"fragmentmothc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothe",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothe": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentmothe": -1,
+				"fragmentmothd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothf",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentmothf": -1,
+				"fragmentmothe": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentmothg",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentmothg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentmothg": -1,
+				"fragmentmothf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriesb",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriesb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentsecrethistoriesb": -1,
+				"fragmentsecrethistories": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriesc",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriesc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentsecrethistoriesc": -1,
+				"fragmentsecrethistoriesb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriesd",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriesd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentsecrethistoriesd": -1,
+				"fragmentsecrethistoriesc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriese",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriese": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentsecrethistoriese": -1,
+				"fragmentsecrethistoriesd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriesf",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriesf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentsecrethistoriesf": -1,
+				"fragmentsecrethistoriese": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentsecrethistoriesg",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentsecrethistoriesg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentsecrethistoriesg": -1,
+				"fragmentsecrethistoriesf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwinterb",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwinterb": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentwinterb": -1,
+				"fragmentwinter": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwinterc",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwinterc": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentwinterc": -1,
+				"fragmentwinterb": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwinterd",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwinterd": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentwinterd": -1,
+				"fragmentwinterc": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwintere",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwintere": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentwintere": -1,
+				"fragmentwinterd": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwinterf",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwinterf": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentwinterf": -1,
+				"fragmentwintere": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studydowngradefragmentwinterg",
+			"label": "基礎に戻る",
+			"actionId": "study",
+			"requirements": {
+				"fragmentwinterg": 1,
+				"reason": 1
+			},
+			"comments": "This doesn't participate in the research cycle - it's one-and-done.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "特定の伝承の一部の基礎知識を学び直さなければいけない時もある。[これにより、伝承が低レベルの断片に分割される。後から再び組み合わせることもできるが、分割するより難しい。]",
+			"description": "分析は一種の生体解剖。理性はナイフである。",
+			"effects": {
+				"fragmentwinterg": -1,
+				"fragmentwinterf": 2
+			},
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

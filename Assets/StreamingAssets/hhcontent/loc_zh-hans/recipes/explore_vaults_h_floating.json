@@ -1,0 +1,55 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaultfloating1_setup",
+            "label": "探险开始：赫柏·斯坦顿号",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultfloating1": 1
+            },
+            "effects": {
+                "guardian_watchers": 1,
+                "seal_wardeddoor": 1,
+                "peril_sea": 1
+            },
+            "startdescription": "客船是极少造访赫柏·斯坦顿号停泊的这座阴沉的海岛的——但我们可以包下一艘渔船，然后听凭海浪的安排。穿过守卫与重重门关的真正工作始于我们登上赫柏·斯坦顿号后。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultfloating1_success",
+            "label": "一座舒适的巢",
+            "actionId": "explore",
+            "requirements": {
+                "vaultfloating1": 1
+            },
+            "effects": {
+                "vaultfloating1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "ceaselesstantrasanskrit",
+                    "leoninetantrasanskrit",
+                    "incandescenttantrasanskrit",
+                    "firecircletantrasanskrit"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "船上的乘客寥寥—难怪如此，既然这艘船的目的地是这座这沉闷而冰冷的岛屿。不过乘客至少有一名之数——此人用不止是物理上的门锁守住了他的舱门。他肯定上岸去了。他随时可能回来——",
+            "description": "我们把行李全部打开，把书本倒过来来回抖动，图画翻过来检查背面。我们找到了衣物、票据、地图，没有什么出格的东西……除了一片奇妙的、半透明的物质，状如蛇蜕，搭在椅子背上。最后，我们在劈开床垫搜查里面的填充物时，找到了一小堆象牙制卷轴筒。",
+            "warmup": 30,
+            "craftable": false
+        }
+    ]
+}

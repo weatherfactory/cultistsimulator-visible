@@ -1,0 +1,269 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultloneandlevelsands1_setup",
+			"label": "Der Beginn einer Expedition: Das Sternenzerschlagene Gotteshaus",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultloneandlevelsands1": 1
+			},
+			"effects": {
+				"peril_desert": 1,
+				"seal_hiddendoor": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "Ein Stern fiel tief in der Wüste herab. Er zerstörte nicht ganz den gebenedeiten Ort, den er traf. Die Schätze des alten Altars mögen überlebt haben, verborgen unter dem Grabe des Sterns. Doch wir müssen uns vorsichtig dem Stern nähern: er pulsiert noch immer mit den Energien jenseits der Welt. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultloneandlevelsands2_setup",
+			"label": "Der Beginn einer Expedition: Laguns Gruft",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultloneandlevelsands2": 1
+			},
+			"effects": {
+				"peril_desert": 1,
+				"seal_wardeddoor": 1,
+				"curse_dread": 1
+			},
+			"startdescription": "Laguns Gruft wird in der Wüste nur schwer zu finden sein. Wir müssen uns an den Sternen orientieren. Diese Tür hat lange den Bemühungen von Grabräubern trotzen können. Wir müssen so viel Kraft wie nur möglich einsetzen. Vermutlich liegt ein Fluch auf der Gruft. Wir müssen dafür gewappnet sein. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultloneandlevelsands3_setup",
+			"label": "Der Beginn einer Expedition: Messana",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultloneandlevelsands3": 1
+			},
+			"effects": {
+				"peril_desert": 1,
+				"guardian_watchers": 1,
+				"curse_affliction": 1
+			},
+			"startdescription": "Messana, wo die Dorfbewohner in der Regel bis über hundert Jahre gesund und munter sind. Sie werden sich gegen alle Versuche wehren, ihre Geheimnisse zu lüften, und vielleicht setzen sie selbst Flüche ein – selbst wenn wir die Wüste durchqueren können, um überhaupt zu ihnen zu kommen. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultloneandlevelsands4_setup",
+			"label": "Der Beginn einer Expedition: Der Tempel der Sieben Spulen",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultloneandlevelsands4": 1
+			},
+			"effects": {
+				"peril_desert": 1,
+				"seal_wardeddoor": 1,
+				"curse_nowhere": 1
+			},
+			"startdescription": "'Diese Stätte duldet kein Leben', sagt das Tagebuch von Zane Marc Gentis. Also werden wir dort keine Schlangen vorfinden. Doch ein Fluch scheint auf jenem Ort zu lasten, und Gentis erwähnt eine Tür, die seine Expedition nicht öffnen konnte. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultloneandlevelsandsdefault_setup",
+			"label": "Der Beginn einer Expedition: Miah",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultloneandlevelsandsdefault": 1
+			},
+			"effects": {
+				"peril_desert": 1,
+				"seal_hiddendoor": 1,
+				"guardian_dead": 1,
+				"curse_affliction": 1
+			},
+			"startdescription": "Die Stadt Miah ist schon lange in der Wüste versunken. Nur Geister wandeln auf ihren Straßen. Was noch dort ist, wird gut versteckt sein. Und auf allem lastet der Fluch der Vagabundin: ihre Rache an dem Ort, der ihr so übel mitgespielt hat. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultloneandlevelsands1_success",
+			"label": "Der Stein der Öffnung",
+			"actionId": "explore",
+			"requirements": {
+				"vaultloneandlevelsands1": 1
+			},
+			"effects": {
+				"vaultloneandlevelsands1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toollanternd",
+					"focusambermandaic",
+					"medusaslamentgreek",
+					"manneralchemistsparedvak"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Der Meteorit ruht im zerschmetterten Tempel, zerfurcht wie ein Meereswesen, geglättet von seiner Reise durch die Atmosphäre. Der alte Altar muss vor Jahrhunderten zu Bruch gegangen sein, doch der Meteorit reagiert auf unsere Berührung. Er summt wie Kabel im Wind. Seine Oberfläche verändert sich und sie öffnet sich wie ein Auge – ",
+			"description": "Was ist geschehen? Der Meteorit ist kalt und stumm. Der Sand von Jahrhunderten liegt unberührt auf ihm. Doch hier in unseren Händen liegen die Schätze, die wir im Inneren gefunden haben.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultloneandlevelsands2_success",
+			"label": "Laguns Ende",
+			"actionId": "explore",
+			"requirements": {
+				"vaultloneandlevelsands2": 1
+			},
+			"effects": {
+				"vaultloneandlevelsands2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolsecrethistoriesd",
+					"voyagesfofucine",
+					"toolmothf",
+					"ingredientmothf",
+					"ingredientknockf"
+				],
+				"draws": 5,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "In der Hauptkammer liegt Lagun, der einst unsterbliche Lange, friedlich und nackt auf einer Totenbahre aus Sandelholz. Er ist perfekt erhalten – ein schlanker, dunkelhäutiger Mann bei hervorragender physischer Gesundheit – doch als wir uns nähern, zerfällt er zu schwärzlichen Flocken wie Herbstlaub. In den Überresten funkeln Gegenstände.",
+			"description": "Wir finden eine Taschenuhr, ein Buch, etwas algerisches Geld – alles aus unserer eigenen Epoche. Er muss häufig diesen Ort verlassen haben und wieder zurückgekehrt sein, bis er sich schließlich zur letzten Ruhe begab. Auf der Rückseite der Uhr sehen wir das geschlossene Auge der Gesellschaft der Langen, die sich Obliviaten nennen ...",
+			"warmup": 30,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultloneandlevelsands2",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "explorevaultloneandlevelsands3_success",
+			"label": "Ein langes Gelage",
+			"actionId": "explore",
+			"requirements": {
+				"vaultloneandlevelsands3": 1
+			},
+			"effects": {
+				"vaultloneandlevelsands3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolheartf",
+					"songscarapacecrossmandaic",
+					"sevenfoldslayingsevencoiledfucine"
+				],
+				"draws": 3,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Unter der Kornkammer entdecken wir das größte Geheimnis von Messana: einen Altar, auf dem Teile eines einbalsamierten menschlichen Leibes zu sehen sind. Es ist nur noch wenig übrig. Die Besucher müssen sich jahrelang daran gütlich getan haben. Ist es das Fleisch eines Langen? Dafür würde die Langlebigkeit sprechen.",
+			"description": "Beachtenswerte Objekte sind an den Wänden ausgestellt. Es könnten Trophäen leichtsinniger Reisender sein, vielleicht aber auch Besitztümer des Langen. Nichts deutet darauf hin, dass der Lange ein williges Opfer, ein Urahn oder ein Gefangener war, und von den Dörfler werden wir jetzt nichts erfahren. Eine griechische Inschrift am Altar lautet: FÜR DIE FLUT",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultloneandlevelsands4_success",
+			"label": "Die Spulen Gottes",
+			"actionId": "explore",
+			"requirements": {
+				"vaultloneandlevelsands4": 1
+			},
+			"effects": {
+				"vaultloneandlevelsands4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientwinterf",
+					"influencewintere",
+					"toolknockd",
+					"memoryofgodsfucine",
+					"toolwinterf"
+				],
+				"draws": 5,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "'Sieben Spulen', stand in Gentis' Tagebuch, doch der Götze im Inneren ist ein unmögliches Knäuel aus Steinschlangen – Windung um Windung, ein Knoten, der die Seele verwirrt. Die Falschheit windet sich in den Winkeln des Tempels. Wir sollten alles schnell durchsuchen, bevor wir von ihr überwältigt werden.",
+			"description": "Der Tempel ist so sauber, als wäre er gerade erst durchgefegt worden. Kein Sand hat die Schwelle überschritten, kein Staub hat sich auf den schrecklichen Windungen des Götzen angesammelt. Hier und da finden wir etwas in den Windungen, als wären sie dort wie im Spiel für uns hinterlassen worden, oder als hätte sich der Götze darumgelegt.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultloneandlevelsandsdefault_success",
+			"label": "Die Stadt Nicht Mehr",
+			"actionId": "explore",
+			"requirements": {
+				"vaultloneandlevelsandsdefault": 1
+			},
+			"effects": {
+				"vaultloneandlevelsandsdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardsf": 3
+			},
+			"startdescription": "Der Wind von Miah ist ein launischer Wind. Er zupft an unseren Kleidern wie ein bedürftiges Kind, wirft uns Sand ins Gesicht und jammert inmitten der staubbedeckten Felsen. Doch die Stadt ist nicht vollkommen verlassen. Es gibt Säulen, Bögen, sandgeblendete Stauten, Treppen ins Nichts.",
+			"description": "Wir finden Relikte in einer verlassenen Kammer, die vielleicht mal ein Keller oder ein Schrein gewesen sein mag. Die Wände sind gerissen und Sand ist hindurchgekommen. Als wir an die Oberfläche zurückkehren, frischt der Wind auf. Er reißt uns fast von den Füßen. Vielleicht hat er uns vermisst.",
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "expeditionascensionmothe",
+					"chance": 100
+				},
+				{
+					"id": "expeditionascensionhearte",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

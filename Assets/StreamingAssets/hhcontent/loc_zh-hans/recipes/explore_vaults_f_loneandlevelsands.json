@@ -1,0 +1,269 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaultloneandlevelsands1_setup",
+            "label": "探险开始：被星辰击碎的神殿",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultloneandlevelsands1": 1
+            },
+            "effects": {
+                "peril_desert": 1,
+                "seal_hiddendoor": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "一颗星辰坠落在沙漠深处。它没能完全摧毁它击中的圣地。古老祭坛的宝藏或许仍然埋藏在星辰的墓穴之下。但我们必须谨慎地靠近星辰：它仍然会与不属于这个世界的能量产生共鸣。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultloneandlevelsands2_setup",
+            "label": "探险开始：拉贡之墓",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultloneandlevelsands2": 1
+            },
+            "effects": {
+                "peril_desert": 1,
+                "seal_wardeddoor": 1,
+                "curse_dread": 1
+            },
+            "startdescription": "拉贡之墓地处沙漠，难以发现。我们必须借助星星确认方向。墓门经受住了盗墓者长久以来的攻击。我们必须拿出我们拥有的所有武力。那里宛如诅咒。我们必须做好万全的准备。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultloneandlevelsands3_setup",
+            "label": "探险开始：墨萨拿",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultloneandlevelsands3": 1
+            },
+            "effects": {
+                "peril_desert": 1,
+                "guardian_watchers": 1,
+                "curse_affliction": 1
+            },
+            "startdescription": "墨萨拿的村民在过去百年都保持着强健的体魄和充沛的活力。他们会阻止任何挖掘他们秘密的企图，甚至很可能拥有操纵诅咒的能力——前提是我们得先设法穿过沙漠，与他们接触。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultloneandlevelsands4_setup",
+            "label": "探险开始：七蟠寺",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultloneandlevelsands4": 1
+            },
+            "effects": {
+                "peril_desert": 1,
+                "seal_wardeddoor": 1,
+                "curse_nowhere": 1
+            },
+            "startdescription": "“这个地方禁止生命的存在”，赞恩·马克·甘提斯在手记中如是写道。因此我们不会在那里发现蛇。此外那个地方听起来被诅咒了，并且甘提斯记录了他在探索中没能开启的门。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultloneandlevelsandsdefault_setup",
+            "label": "探险开始：弥阿",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultloneandlevelsandsdefault": 1
+            },
+            "effects": {
+                "peril_desert": 1,
+                "seal_hiddendoor": 1,
+                "guardian_dead": 1,
+                "curse_affliction": 1
+            },
+            "startdescription": "弥阿，陷入沙漠已久的城市。仅有幽灵还在市街徘徊。任何尚存之物都会被彻底掩藏起来。浪游旅人的诅咒笼罩着整座城市：这座城市曾亏待她，而这就是她的复仇。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultloneandlevelsands1_success",
+            "label": "开门石",
+            "actionId": "explore",
+            "requirements": {
+                "vaultloneandlevelsands1": 1
+            },
+            "effects": {
+                "vaultloneandlevelsands1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toollanternd",
+                    "focusambermandaic",
+                    "medusaslamentgreek",
+                    "manneralchemistsparedvak"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "陨石位于分崩离析的神庙中，蜿蜒如海洋生物，表面在穿过大气层的过程中变得平滑。早在几个世纪前古老祭坛肯定已然坍塌，但陨石仍然回应着我们的触摸。在风中它发出电线般的嗡嗡声。它的表面不断变换，如眼睛般张开……",
+            "description": "发生了什么？陨石已经合上，冰冷而沉默。沙土堆积其上，显示这数百年来从未有人涉足。但此刻在我们的手中的，是我们在陨石之中发现的宝藏。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultloneandlevelsands2_success",
+            "label": "拉贡的结末",
+            "actionId": "explore",
+            "requirements": {
+                "vaultloneandlevelsands2": 1
+            },
+            "effects": {
+                "vaultloneandlevelsands2": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toolsecrethistoriesd",
+                    "voyagesfofucine",
+                    "toolmothf",
+                    "ingredientmothf",
+                    "ingredientknockf"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "在中央大厅中，拉贡，那位曾经不死的长生者，赤裸而平静地横躺在檀香制成的棺枢之上。他被保存得很好——身形修长、皮肤黝黑、无比健康——但当我们靠近时，他化为黑色的碎块，落叶般地分崩离析。残渣中有东西发出微光。",
+            "description": "我们发现一块怀表，一本书，一些阿尔及利亚货币——都是我们这个时代的产物。他在听任自己最终安息之前，一定多次往返此处。在怀表的背面，我们发现它雕刻着名为忘却会的长生者社团的标志——闭合的眼睛。",
+            "warmup": 30,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "expedition.corpse.find.vaultloneandlevelsands2",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "explorevaultloneandlevelsands3_success",
+            "label": "长生的宴席",
+            "actionId": "explore",
+            "requirements": {
+                "vaultloneandlevelsands3": 1
+            },
+            "effects": {
+                "vaultloneandlevelsands3": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toolheartf",
+                    "songscarapacecrossmandaic",
+                    "sevenfoldslayingsevencoiledfucine"
+                ],
+                "draws": 3,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "在粮仓下方，我们发现了墨萨拿最深的秘密：一座祭坛，上面摆放着人类尸体的残肢断臂，已做过防腐处理。仅有很少的部分得以留存。数年来访客们一定有在大吃这副身躯。这是长生者的肉吗？这也许能解释他们的长寿。",
+            "description": "墙上陈列着值得注意的物什。可能是从不明智的旅客身上获得的战利品，也可能是长生者的所有物。没有迹象表明那名长生者究竟是自愿的牺牲者，祖先，还是阶下囚，现在我们也无法从村民处得知更多。祭坛上以希腊文写就铭文：<b>献给洪水</b>。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultloneandlevelsands4_success",
+            "label": "神蛇之蟠",
+            "actionId": "explore",
+            "requirements": {
+                "vaultloneandlevelsands4": 1
+            },
+            "effects": {
+                "vaultloneandlevelsands4": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "ingredientwinterf",
+                    "influencewintere",
+                    "toolknockd",
+                    "memoryofgodsfucine",
+                    "toolwinterf"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "“七蟠寺”，甘提斯在手记中如此称呼它，位于其中的偶像是由石头奇迹般堆叠而成的石蛇——一重又一重，形成了令灵魂晕眩的蛇结。不安的预感蔓延至庙宇的每个角落。在这种感觉压垮我们之前，我们应迅速搜查这个地方。",
+            "description": "寺庙干净得如同刚刚清扫过。门槛上没有沙土，恐怖而盘旋回转的石蛇上亦一尘不染。在其回旋之中我们不时找到一些藏品，仿佛它们是调皮地留给我们找到，亦或是偶像盘旋在它们之上。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultloneandlevelsandsdefault_success",
+            "label": "往昔不再之城",
+            "actionId": "explore",
+            "requirements": {
+                "vaultloneandlevelsandsdefault": 1
+            },
+            "effects": {
+                "vaultloneandlevelsandsdefault": -1
+            },
+            "deckeffect": {
+                "vaultrewardsf": 3
+            },
+            "startdescription": "弥阿的风十分任性。它像个穷孩子一样拉扯着我们的衣服，向我们的脸上投掷沙土，在布满尘土的石块中哀鸣。这座荒废之城并不单调。这里有柱子、拱门、被沙子蒙蔽的雕像，和不知延伸到何处的脚印。",
+            "description": "我们在一个可能是地窖或神殿的废弃房间里发现了遗迹。房间的墙壁开裂，裂缝中流出沙土。当我们回到地面时，风正在上行，几乎将我们吹至空中。也许它很是想念我们。",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "expeditionascensionmothe",
+                    "chance": 100
+                },
+                {
+                    "id": "expeditionascensionhearte",
+                    "chance": 100
+                }
+            ]
+        }
+    ]
+}

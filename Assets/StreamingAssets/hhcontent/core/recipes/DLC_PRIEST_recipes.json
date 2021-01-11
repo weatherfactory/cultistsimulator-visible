@@ -1,0 +1,1356 @@
+{
+    "recipes": [
+        {
+            "id": "work.priest.first",
+            "actionid": "work",
+            "label": "Conduct My First Service",
+            "startdescription": "I have chosen as my text Matthias 7:7 - 'Ask, and it shall be given; suffer, and ye shall attain; knock, and ye shall be opened.' The Book fell open at that page. I swear that I would have not have chosen it otherwise.",
+            "description": "The sermon went well, though the echoes in this place are seductive, and I was drawn to extemporise. I do not remember all that I said, but it was all well received. When I descended from the pulpit, I tore my sleeve upon a nail, and a woman in the front row gasped.",
+            "requirements": {
+                "priestjob": 1,
+                "passion": 1
+            },
+            "effects": {
+                "funds": 1,
+                "reason": 1
+            },
+            "warmup": 10,
+            "craftable": true,
+            "maxexecutions": 1,
+            "alt": [
+                {
+                    "id": "dream.priest.open",
+                    "additional": true
+                },
+                {
+                    "id": "study.priest.open",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.priest.second",
+            "actionid": "work",
+            "label": "Conduct a Service, and speak of the Locksmith's Dream",
+            "startdescription": "I will speak again of what Matthias said about doors, but I will speak of St Agnes, too, and of what comes at night when one has shaped a key.",
+            "description": "Some of them have had the dream, too. I see it in their faces. It's this church - the doors here are not only the doors we see. Even the valves of the heart are a door, when the limbs are properly aligned. I never said that in my sermon, but their hearts respond nonetheless to its truth.",
+            "requirements": {
+                "priestjob": 1,
+                "reason": 1,
+                "fragmentknock": 1
+            },
+            "effects": {
+                "fervour": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "maxexecutions": 1,
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "additional": true
+                },
+                {
+                    "id": "explore.priest.open",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.priest.third",
+            "actionid": "work",
+            "label": "Conduct a Service",
+            "startdescription": "The congregation whispers as it waits, and the echoes are like wings in a high place, like tree-branches in the wind. The deacon and the sacristan watch me as I take my place. There is something in their eyes I didn't quite expect. Is it... pride?",
+            "description": "My heart is the crossroads of my blood. My tongue is a sharpened flame. I see shapes in the stained glass that are not always there. A grey mare; a sundered tree; a twinned serpent. When I've finished, the congregation is on their feet, stamping and hooting, and their eyes, their mouths, are doors. The sacristan takes my hand in his withered own, before the whole church. There are tears in his eyes. 'We've waited so long', he whispers.",
+            "requirements": {
+                "priestjob": 1,
+                "ability": 1,
+                "lore": 1,
+                "fervour": 1
+            },
+            "effects": {
+                "funds": 1,
+                "fervour": -1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "maxexecutions": 1,
+            "alt": [
+                {
+                    "id": "talk.priest.open",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "dream.priest.open",
+            "actionid": "dream",
+            "label": "The Sleep of the Just",
+            "startdescription": "I have performed my devotions as I was taught. I have set aside the histories I should not have read. I no longer speak either of the Knot nor the Unconquered Sun. The Bishop's secretary was quite clear on all of that. But still, in my dreams, St Agnes comes to me now and then, and now is tonight.",
+            "description": "St Agnes walks in smoke, crushing violets beneath her narrow pale feet. St Agnes carries keys and a bright knife and a sharp candle and, in the last of her slender hands, her own martyred head. St Agnes lifts her face above my shoulder to kiss my forehead, and I open to her, like a door. When I wake, my heart is racing, my skin is pricking, my limbs jitter: I have begun to leak.",
+            "effects": {
+                "health": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "study.priest.open",
+            "actionid": "study",
+            "label": "The Hinge in the Words",
+            "startdescription": "I have begun to unpack my books...",
+            "description": "Here is one of my old journals. A sheaf of papers slips from behind the cover, and drifts towards the floor. It is something I had copied and long tried to forget.",
+            "effects": {
+                "fragmentknock": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "explore.priest.open",
+            "actionid": "explore",
+            "label": "Old Stones",
+            "startdescription": "There is a cathedral in this city that was dedicated to St Peter of the Keys, long ago. It burned in the Fire two centuries ago. I have read that it was dedicated in secret to St Spark: perhaps that's why. When they rebuilt it, the King agreed, reluctantly, that St Peter should no longer have his keys. Once this church was dedicated to St Peter too...",
+            "description": "The church has another patron saint now. Perhaps another bishop wished to erase what the stones had seen. But the stones remember. Here is one marked with the rayed sun. Here, beneath the font, a knot. Here, in the window behind the altar, visible only at dawn, fanned like flowers, the seven keys...",
+            "effects": {
+                "hq.church": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "talk.priest.open",
+            "actionid": "talk",
+            "label": "A Welcome",
+            "startdescription": "The deacon and the sacristan have come to speak with me on a private matter. They've brought a guest - someone I've never met, but someone who now drops to one knee to honour me. All three now do me honour - ",
+            "effects": {
+                "lever_LastCult": 1,
+                "lever_LastFollower": 1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "talk.priest.open.followup"
+                }
+            ]
+        },
+        {
+            "id": "talk.priest.open.followup",
+            "actionid": "talk",
+            "label": "Rededication",
+            "startdescription": "The sacristan is weeping again. 'We've waited for you. #PREVIOUSCHARACTERNAME# taught us of the @#cultedge_1|Bright Edge#cultforge_1|power in the shaping flame#cultgrail_1|secret delights of appetite#cultheart_1|dance that does not end#cultknock_1|nature of keys#cultlantern_1|Glory#cultmoth_1|Wood#cultsecrethistories_1|many Histories#cultwinter_1|Silence#|colours beneath the world's skin@, and we have used those teachings to prepare the Way. You are our Light; you are our Threshold. We need you. Lead us.'",
+            "mutations": [
+                {
+                    "filter": "society",
+                    "mutate": "rededicable",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": "talk.rededicatecult",
+            "actionid": "talk",
+            "label": "A New Way",
+            "startdescription": "#PREVIOUSCHARACTERNAME# prepared the path, but I <i>am</i> the path. I could alter the forms that have been established. [Once and only once, you may set another kind of Lore at the heart of your Cult. Begin the process only if you have Lore of your preferred Aspect ready.]",
+            "description": "We shall follow the path that #PREVIOUSCHARACTERNAME# set... for now.",
+            "requirements": {
+                "society": 1,
+                "rededicable": 1,
+                "mortal": -1,
+                "summoned": -1,
+                "influence": -1,
+                "ability": -1,
+                "tool": -1,
+                "ingredient": -1,
+                "lore": -1
+            },
+            "slots": [
+                {
+                    "id": "principle",
+                    "label": "New Founding Principle",
+                    "required": {
+                        "lore": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "talk.rededicatecult.edge",
+                    "label": "Re-dedicate Cult: Edge",
+                    "startdescription": "I will draw a line of bright division between the cult that was and the cult that will be. I will bend them to follow my will. [You could pursue a different ascension than Knock. You need not complete the process.]",
+                    "requirements": {
+                        "society": 1,
+                        "lore": 1,
+                        "edge": 1
+                    },
+                    "effects": {
+                        "society": -1,
+                        "cultedge_1": 1,
+                        "ascensionpowera": 1
+                    },
+                    "mutations": [
+                        {
+                            "filter": "society",
+                            "mutate": "rededicable",
+                            "level": -1
+                        }
+                    ]
+                },
+                {
+                    "id": "talk.rededicatecult.forge",
+                    "label": "Re-dedicate Cult: Forge",
+                    "startdescription": "I will reshape the cult to serve my purposes. I hold an unexpected power in my hands. [You could pursue a different ascension than Knock. You need not complete the process.]",
+                    "requirements": {
+                        "society": 1,
+                        "lore": 1,
+                        "forge": 1
+                    },
+                    "effects": {
+                        "society": -1,
+                        "cultforge_1": 1,
+                        "ascensionpowera": 1
+                    },
+                    "mutations": [
+                        {
+                            "filter": "society",
+                            "mutate": "rededicable",
+                            "level": -1
+                        }
+                    ]
+                },
+                {
+                    "id": "talk.rededicatecult.grail",
+                    "label": "Re-dedicate Cult: Grail",
+                    "startdescription": "I will adjust the cult to serve my desires. I might consider the nature of those desires more carefully. [You could pursue a different ascension than Knock. You need not complete the process.]",
+                    "requirements": {
+                        "society": 1,
+                        "lore": 1,
+                        "grail": 1
+                    },
+                    "effects": {
+                        "society": -1,
+                        "cultgrail_1": 1,
+                        "ascensionsensationa": 1
+                    },
+                    "mutations": [
+                        {
+                            "filter": "society",
+                            "mutate": "rededicable",
+                            "level": -1
+                        }
+                    ]
+                },
+                {
+                    "id": "talk.rededicatecult.heart",
+                    "label": "Re-dedicate Cult: Heart",
+                    "startdescription": "The old cult ceases; the new cult will never cease. I hear the drums in the blood, now. [You could pursue a different ascension than Knock. You need not complete the process.]",
+                    "requirements": {
+                        "society": 1,
+                        "lore": 1,
+                        "heart": 1
+                    },
+                    "effects": {
+                        "society": -1,
+                        "cultheart_1": 1,
+                        "ascensionsensationa": 1
+                    },
+                    "mutations": [
+                        {
+                            "filter": "society",
+                            "mutate": "rededicable",
+                            "level": -1
+                        }
+                    ]
+                },
+                {
+                    "id": "talk.rededicatecult.knock",
+                    "label": "Re-dedicate Cult: Knock",
+                    "startdescription": "Now the Seal is opened, and behind it lies the true Cult. It is St Agnes that opens the Seal, but who waits behind it? [You could pursue a different ascension than Knock. You need not complete the process.] ",
+                    "requirements": {
+                        "society": 1,
+                        "lore": 1,
+                        "knock": 1
+                    },
+                    "effects": {
+                        "society": -1,
+                        "cultknock_1": 1,
+                        "ascensionenlightenmenta": 1
+                    },
+                    "mutations": [
+                        {
+                            "filter": "society",
+                            "mutate": "rededicable",
+                            "level": -1
+                        }
+                    ]
+                },
+                {
+                    "id": "talk.rededicatecult.lantern",
+                    "label": "Re-dedicate Cult: Lantern",
+                    "startdescription": "I will reveal a new truth. I might consider further what that truth should be. [You could pursue a different ascension than Knock. You need not complete the process.]",
+                    "requirements": {
+                        "society": 1,
+                        "lore": 1,
+                        "lantern": 1
+                    },
+                    "effects": {
+                        "society": -1,
+                        "cultlantern_1": 1,
+                        "ascensionenlightenmenta": 1
+                    },
+                    "mutations": [
+                        {
+                            "filter": "society",
+                            "mutate": "rededicable",
+                            "level": -1
+                        }
+                    ]
+                },
+                {
+                    "id": "talk.rededicatecult.moth",
+                    "label": "Re-dedicate Cult: Moth",
+                    "startdescription": "They will change; or I shall change them. I could change even further, if the whim took me. [You could pursue a different ascension than Knock. You need not complete the process.]",
+                    "requirements": {
+                        "society": 1,
+                        "lore": 1,
+                        "moth": 1
+                    },
+                    "effects": {
+                        "society": -1,
+                        "cultmoth_1": 1,
+                        "ascensionsensationa": 1
+                    },
+                    "mutations": [
+                        {
+                            "filter": "society",
+                            "mutate": "rededicable",
+                            "level": -1
+                        }
+                    ]
+                },
+                {
+                    "id": "talk.rededicatecult.secrethistories",
+                    "label": "Re-dedicate Cult: Secret Histories",
+                    "startdescription": "In another History, our cult remained unchanged. Not here. Here, I have altered our path... and I could alter it even further. [You could pursue a different ascension than Knock. You need not complete the process.]",
+                    "requirements": {
+                        "society": 1,
+                        "lore": 1,
+                        "secrethistories": 1
+                    },
+                    "effects": {
+                        "society": -1,
+                        "cultsecrethistories_1": 1,
+                        "ascensionenlightenmenta": 1
+                    },
+                    "mutations": [
+                        {
+                            "filter": "society",
+                            "mutate": "rededicable",
+                            "level": -1
+                        }
+                    ]
+                },
+                {
+                    "id": "talk.rededicatecult.winter",
+                    "label": "Re-dedicate Cult: Winter",
+                    "startdescription": "Tonight, the old ways are ended. But for the first time, I hold the reins of our destiny. Should I choose... I could take a different path. [You could pursue a different ascension than Knock. You need not complete the process.]",
+                    "requirements": {
+                        "society": 1,
+                        "lore": 1,
+                        "winter": 1
+                    },
+                    "effects": {
+                        "society": -1,
+                        "cultwinter_1": 1,
+                        "ascensionenlightenmenta": 1
+                    },
+                    "mutations": [
+                        {
+                            "filter": "society",
+                            "mutate": "rededicable",
+                            "level": -1
+                        }
+                    ]
+                }
+            ],
+            "craftable": true,
+            "warmup": 60
+        },
+        {
+            "id": "work.priest.passion.fervour.lore",
+            "actionid": "work",
+            "label": "Improvise upon a secret doctrine, before a fervent congregation",
+            "startdescription": "The congregation is already in a state of excitement. Any secret knowledge will almost certainly drive them to exultation.",
+            "description": "At last their fervour is spent.  What have they made of this night? [Fervour and Lore together will almost always cause Exultation, but will use up the Fervour.]",
+            "requirements": {
+                "priestjob": 1,
+                "passion": 1,
+                "lore": 1,
+                "fervour": 1
+            },
+            "effects": {
+                "funds": 1,
+                "fervour": -1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "chance": 90,
+                    "additional": true
+                }
+            ],
+            "warmup": 50,
+            "craftable": true
+        },
+        {
+            "id": "work.priest.reason.fervour.lore",
+            "actionid": "work",
+            "label": "Prepare a sermon on a secret doctrine, to give to a fervent congregation",
+            "startdescription": "The congregation is already in a state of excitement. Any secret knowledge will almost certainly drive them to exultation.",
+            "description": "At last their fervour is spent.  What have they made of this night? [Fervour and Lore together will almost always cause Exultation, but will use up the Fervour.]",
+            "requirements": {
+                "priestjob": 1,
+                "reason": 1,
+                "lore": 1,
+                "fervour": 1
+            },
+            "effects": {
+                "funds": 1,
+                "fervour": -1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "chance": 90,
+                    "additional": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.priest.passion.fervour",
+            "actionid": "work",
+            "label": "Improvise a sermon, before a fervent congregation",
+            "startdescription": "The congregation is already in a state of excitement. Any secret knowledge will likely drive them to exultation.",
+            "description": "At last their fervour is spent.  What have they made of this night? [Fervour will usually cause Exultation, but will use up the Fervour.]",
+            "requirements": {
+                "priestjob": 1,
+                "passion": 1,
+                "fervour": 1
+            },
+            "effects": {
+                "funds": 1,
+                "fervour": -1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "chance": 70,
+                    "additional": true
+                }
+            ],
+            "warmup": 50,
+            "craftable": true
+        },
+        {
+            "id": "work.priest.reason.fervour",
+            "actionid": "work",
+            "label": "Carefully prepare a sermon for a fervent congregation",
+            "startdescription": "The congregation is already in a state of excitement. Any secret knowledge will likely drive them to exultation.",
+            "description": "At last their fervour is spent.  What have they made of this night? [Fervour will usually cause Exultation, but will use up the Fervour.]",
+            "requirements": {
+                "priestjob": 1,
+                "reason": 1,
+                "fervour": 1
+            },
+            "effects": {
+                "funds": 1,
+                "fervour": -1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "chance": 70,
+                    "additional": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.priest.passion.lore",
+            "actionid": "work",
+            "label": "Improvise a sermon on a secret doctrine",
+            "startdescription": "I will speak to their souls, and if I speak with conviction, their souls may answer me. [Using a suitable doctrine with Passionate preaching is more likely to create Fervour. Improvised preaching is a little quicker.]",
+            "requirements": {
+                "priestjob": 1,
+                "passion": 1,
+                "lore": 1
+            },
+            "linked": [
+                {
+                    "id": "preach.edge",
+                    "challenges": {
+                        "edge": "base"
+                    }
+                },
+                {
+                    "id": "preach.forge",
+                    "challenges": {
+                        "forge": "base"
+                    }
+                },
+                {
+                    "id": "preach.grail",
+                    "challenges": {
+                        "grail": "base"
+                    }
+                },
+                {
+                    "id": "preach.heart",
+                    "challenges": {
+                        "heart": "base"
+                    }
+                },
+                {
+                    "id": "preach.moth",
+                    "challenges": {
+                        "moth": "base"
+                    }
+                },
+                {
+                    "id": "work.priest.nolorematch"
+                }
+            ],
+            "warmup": 50,
+            "craftable": true
+        },
+        {
+            "id": "work.priest.reason.lore",
+            "actionid": "work",
+            "label": "Prepare a sermon on a secret doctrine",
+            "startdescription": "I will speak to their souls, and if I speak with precision, their souls may answer me. [Using a suitable doctrine with Reasoned preaching is more likely to create Fervour.]",
+            "requirements": {
+                "priestjob": 1,
+                "reason": 1,
+                "lore": 1
+            },
+            "linked": [
+                {
+                    "id": "preach.knock",
+                    "challenges": {
+                        "knock": "base"
+                    }
+                },
+                {
+                    "id": "preach.secrethistories",
+                    "challenges": {
+                        "secrethistories": "base"
+                    }
+                },
+                {
+                    "id": "preach.winter",
+                    "challenges": {
+                        "winter": "base"
+                    }
+                },
+                {
+                    "id": "preach.lantern",
+                    "challenges": {
+                        "lantern": "base"
+                    }
+                },
+                {
+                    "id": "work.priest.nolorematch"
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.priest.nolorematch",
+            "actionid": "work",
+            "label": "A Subdued Ceremony",
+            "startdescription": "Tonight, they listen... but they do not hear. [If you use Reason with more Reasoned doctrines, or Passion with more Passionate lore, you are more likely to create Fervour. The deeper the Lore, the greater the chance of Exultation.]",
+            "effects": {
+                "funds": 1
+            }
+        },
+        {
+            "id": "preach.edge",
+            "actionid": "work",
+            "label": "'Answer strength with strength.'",
+            "startdescription": "'The light above the world does not look kindly on surrender. Strive until your last breath. As the high angels of the House of the Sun strive on against another, so shall we strive, until we are, at last, conquered.' [The deeper the Lore, the greater the chance of Exultation.]",
+            "effects": {
+                "funds": 1,
+                "fervour": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "challenges": {
+                        "edge": "base"
+                    },
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "preach.forge",
+            "actionid": "work",
+            "label": "'The thought of the wood was in vain, for the fire came and it was changed unto ash.'",
+            "startdescription": "'We are all changed. Sometimes we are changed to that which does not live - sometimes to that which that has never lived - sometimes, to something glorious. And sometimes, we change ourselves. This is the crossroads  where the Sun's shadow waits.' [The deeper the Lore, the greater the chance of Exultation.]",
+            "effects": {
+                "funds": 1,
+                "fervour": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "challenges": {
+                        "forge": "base"
+                    },
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "preach.grail",
+            "actionid": "work",
+            "label": "'Thou hast walked in the way of our Mother; therefore will I give her cup into thine hand.'",
+            "startdescription": "'Our souls dwell each in the house which is our flesh. Our senses are the windows, and each sense has its attendant appetites. To leave the appetites unsatisfied, is to leave the windows uncared for. And who would choose to live in a house with filthy windows?' [The deeper the Lore, the greater the chance of Exultation.]",
+            "effects": {
+                "funds": 1,
+                "fervour": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "challenges": {
+                        "grail": "base"
+                    },
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "preach.heart",
+            "actionid": "work",
+            "label": "'The hearts of the false shall be taken from them when they cease; but the hearts of the true cease not.'",
+            "startdescription": "'In the House of the Sun, the dance of the angels of Glory does not cease. Those who were cast down, wave or wound or snow, are gone from the House, and as long as their parts in the dance are filled, they may never return. Therefore let us join hands, and add our little steps to the dance.' [The deeper the Lore, the greater the chance of Exultation.]",
+            "effects": {
+                "funds": 1,
+                "fervour": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "challenges": {
+                        "heart": "base"
+                    },
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "preach.knock",
+            "actionid": "work",
+            "label": "'Behold, he breaketh down, and it cannot be built again: he openeth up a man, and he shall not be closed.'",
+            "startdescription": "'You have opened the door of this place, and I have passed through to stand before you now, but this is my promise: a time will come when I shall open, and you shall pass through me to stand in a higher place than this.' [The deeper the Lore, the greater the chance of Exultation.]",
+            "effects": {
+                "funds": 1,
+                "fervour": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "challenges": {
+                        "knock": "base"
+                    },
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "preach.lantern",
+            "actionid": "work",
+            "label": "'Mercy and truth preserve the king: but the light, only truth preserveth.'",
+            "startdescription": "'The Glory demands truth. When we are clad in truth, it shall not burn us.' [The deeper the Lore, the greater the chance of Exultation.]",
+            "effects": {
+                "funds": 1,
+                "fervour": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "challenges": {
+                        "lantern": "base"
+                    },
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "preach.moth",
+            "actionid": "work",
+            "label": "'They have led me, and brought me first into darkness, then into light.'",
+            "startdescription": "'The Glory demands truth. When we are clad in lies, then it shall burn them from us.' [The deeper the Lore, the greater the chance of Exultation.]",
+            "effects": {
+                "funds": 1,
+                "fervour": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "challenges": {
+                        "moth": "base"
+                    },
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "preach.secrethistories",
+            "actionid": "work",
+            "label": "'If one sews a new patch on to an old garment, and the garment should tear, is there then one garment, or two, or none?'",
+            "startdescription": "'I have said these words to you. I have not said these words to you. Yesterday both these things were false. Tomorrow, how many will be true?' [The deeper the Lore, the greater the chance of Exultation.]",
+            "effects": {
+                "funds": 1,
+                "fervour": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "challenges": {
+                        "secrethistories": "base"
+                    },
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "preach.winter",
+            "actionid": "work",
+            "label": "'He sitteth alone and keepeth silence, for Winter waiteth not forever.'",
+            "startdescription": "'Close your mouths. Close your ears. Listen.' [The deeper the Lore, the greater the chance of Exultation.]",
+            "effects": {
+                "funds": 1,
+                "fervour": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "challenges": {
+                        "winter": "base"
+                    },
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "priest.repevent",
+            "actionid": "priest.repevent",
+            "label": "Exultation",
+            "startdescription": "Sometimes, my words - and those I have borrowed - move my congregation beyond mere concentration, to exultation.",
+            "description": "@#reputation|Our devotion has drawn comment...\n#funds|The congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+            "slots": [
+                {
+                    "id": "society",
+                    "label": "Inner Circle",
+                    "description": "I could introduce the most enthusiastic worshippers to an inner circle...",
+                    "required": {
+                        "society": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "priest.repevent.devotee.edge",
+                    "requirements": {
+                        "venerationedge": 1
+                    },
+                    "deckeffects": {
+                        "priest.repevent": 1
+                    },
+                    "label": "Inspiration",
+                    "description": "A worshipper has dreamt of St Agnes of the Division! Meanwhile, @#reputation|our devotion has drawn comment...\n#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+                    "effects": {
+                        "funds": 2,
+                        "devotee_edge": 1
+                    }
+                },
+                {
+                    "id": "priest.repevent.devotee.forge",
+                    "requirements": {
+                        "venerationforge": 1
+                    },
+                    "deckeffects": {
+                        "priest.repevent": 1
+                    },
+                    "label": "Inspiration",
+                    "description": "A worshipper has dreamt of St Agnes of the Fires! Meanwhile, @#reputation|our devotion has drawn comment...\n#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+                    "effects": {
+                        "funds": 2,
+                        "devotee_forge": 1
+                    }
+                },
+                {
+                    "id": "priest.repevent.devotee.grail",
+                    "requirements": {
+                        "venerationgrail": 1
+                    },
+                    "deckeffects": {
+                        "priest.repevent": 1
+                    },
+                    "label": "Inspiration",
+                    "description": "A worshipper has dreamt of St Agnes the Red! Meanwhile, @#reputation|our devotion has drawn comment...\n#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+                    "effects": {
+                        "funds": 2,
+                        "devotee_grail": 1
+                    }
+                },
+                {
+                    "id": "priest.repevent.devotee.heart",
+                    "requirements": {
+                        "venerationheart": 1
+                    },
+                    "deckeffects": {
+                        "priest.repevent": 1
+                    },
+                    "label": "Inspiration",
+                    "description": "A worshipper has dreamt of St Agnes of the Drum! Meanwhile, @#reputation|our devotion has drawn comment...\n#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+                    "effects": {
+                        "funds": 2,
+                        "devotee_heart": 1
+                    }
+                },
+                {
+                    "id": "priest.repevent.devotee.knock",
+                    "requirements": {
+                        "venerationknock": 1
+                    },
+                    "deckeffects": {
+                        "priest.repevent": 1
+                    },
+                    "label": "Inspiration",
+                    "description": "A worshipper has dreamt of St Agnes of the Threshold! Meanwhile, @#reputation|our devotion has drawn comment...\n#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+                    "effects": {
+                        "funds": 2,
+                        "devotee_knock": 1
+                    }
+                },
+                {
+                    "id": "priest.repevent.devotee.lantern",
+                    "requirements": {
+                        "venerationlantern": 1
+                    },
+                    "deckeffects": {
+                        "priest.repevent": 1
+                    },
+                    "label": "Inspiration",
+                    "description": "A worshipper has dreamt of St Agnes of the Candle! Meanwhile, @#reputation|our devotion has drawn comment...\n#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+                    "effects": {
+                        "funds": 2,
+                        "devotee_lantern": 1
+                    }
+                },
+                {
+                    "id": "priest.repevent.devotee.moth",
+                    "requirements": {
+                        "venerationmoth": 1
+                    },
+                    "deckeffects": {
+                        "priest.repevent": 1
+                    },
+                    "label": "Inspiration",
+                    "description": "A worshipper has dreamt of St Agnes of the Shears! Meanwhile, @#reputation|our devotion has drawn comment...\n#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+                    "effects": {
+                        "funds": 2,
+                        "devotee_moth": 1
+                    }
+                },
+                {
+                    "id": "priest.repevent.devotee.winter",
+                    "requirements": {
+                        "venerationwinter": 1
+                    },
+                    "deckeffects": {
+                        "priest.repevent": 1
+                    },
+                    "label": "Inspiration",
+                    "description": "A worshipper has come who will not speak of their dreams; but, indeed, they need not! Meanwhile, @#reputation|our devotion has drawn comment...\n#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+                    "effects": {
+                        "funds": 2,
+                        "devotee_winter": 1
+                    }
+                }
+            ],
+            "deckeffects": {
+                "priest.repevent": 1
+            },
+            "effects": {
+                "funds": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "work.priest.passion",
+            "actionid": "work",
+            "label": "Conduct a Service",
+            "startdescription": "I will improvise my sermon.",
+            "description": "The congregation listens closely. I have shared no secret doctrine today.",
+            "requirements": {
+                "priestjob": 1,
+                "passion": 1
+            },
+            "effects": {
+                "funds": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "chance": 90,
+                    "additional": true
+                }
+            ],
+            "warmup": 50,
+            "craftable": true
+        },
+        {
+            "id": "work.priest.reason",
+            "actionid": "work",
+            "label": "Conduct a Service",
+            "startdescription": "I will prepare my sermon with care.",
+            "description": "The congregation listens closely. I have shared no secret doctrine today.",
+            "requirements": {
+                "priestjob": 1,
+                "reason": 1
+            },
+            "effects": {
+                "funds": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "chance": 10,
+                    "additional": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "work.openscar",
+            "actionid": "work",
+            "label": "Opening the Scars",
+            "startdescription": "Once I am seven locks, I may be opened, for my people to pass. That is what the yearning has been teaching me, these long nights past. My congregation's prayers will exalt my pain.",
+            "description": "The pain recedes. For a moment it is a relief, and then the despair floods in. Perhaps I am not yet ready. Perhaps I never will be.",
+            "requirements": {
+                "ritual": 1,
+                "lockscar": 1,
+                "knock": 24
+            },
+            "effects": {
+                "dread": 1
+            },
+            "aspects": {
+                "unlockscar": 1
+            },
+            "linked": [
+                {
+                    "id": "work.openscar.continue"
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "work.openscar.continue",
+            "actionid": "work",
+            "label": "Another Scar",
+            "startdescription": "One more. My weeping faithful ply their instruments; see to my thirsts; wipe the blood from my mouth. Perhaps I will burst like ripe fruit. Perhaps I will fall like rain.",
+            "description": "The pain recedes. Perhaps I am not yet ready.",
+            "slots": [
+                {
+                    "id": "scar",
+                    "label": "My Lock",
+                    "required": {
+                        "lockscar": 1
+                    }
+                }
+            ],
+            "effects": {
+                "dread": 1
+            },
+            "alt": [
+                {
+                    "id": "minorknockvictory"
+                },
+                {
+                    "id": "work.openscar.failed"
+                }
+            ],
+            "linked": [
+                {
+                    "id": "work.openscar.continue"
+                }
+            ],
+            "aspects": {
+                "unlockscar": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "work.openscar.failed",
+            "actionid": "work",
+            "label": "Another Scar?",
+            "startdescription": "The tide of pain recedes. For a moment it is a relief, and then the despair floods in. Perhaps I am not yet ready. Perhaps I never will be.",
+            "requirements": {
+                "lockscar": -1
+            },
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "minorknockvictory",
+            "actionid": "work",
+            "label": "The Threshold",
+            "startdescription": "My people draw back from me, crying, shouting, laughing. I cannot be beautiful in their eyes, not now after all they have done, but now they look upon me as I might be a new sky -",
+            "requirements": {
+                "openedlockscar": 6,
+                "lockscar": 1
+            },
+            "warmup": 30,
+            "signalEndingFlavour": "Grand",
+            "ending": "minorknockvictory"
+        },
+        {
+            "id": "work.priest.scarhealth.hint",
+            "actionid": "work",
+            "label": "'To Be a Threshold?'",
+            "requirements": {
+                "priestjob": 1,
+                "health": 1
+            },
+            "startdescription": "St Agnes has drawn me here, where I might fulfil my potential - not merely to open doors, but to <i>become</i>, myself, a door. [Add Lore of at least the tenth level, and Fervour, to begin the process of creating a Lock-Scar.]",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "work.priest.scarhealth",
+            "actionid": "work",
+            "label": "'To Be a Threshold'",
+            "requirements": {
+                "priestjob": 1,
+                "health": 1,
+                "lore": 1,
+                "fervour": 1
+            },
+            "startdescription": "My people stand before me, voices raised in song, faces upraised, aflame. There are doors that few ever see - fewer yet ever open. If I am willing to suffer the consequences, I might some day become one of those doors, for my congregation to pass. 'Knock, and Ye Shall Be Opened.'",
+            "description": "The congregation is satisfied by my mortifications, but that divine spark is absent. [To create a Lock Scar, you need Restlessness, at least tenth-level Lore, and a particular discipline of body or spirit. You can only have one of each type of scar.]",
+            "aspects": {
+                "damagehealth": 1
+            },
+            "effects": {
+                "fervour": -1,
+                "funds": 1
+            },
+            "alt": [
+                {
+                    "id": "priest.repevent",
+                    "chance": 90,
+                    "additional": true
+                }
+            ],
+            "slots": [
+                {
+                    "id": "restlessnessfuel",
+                    "label": "Yearning",
+                    "required": {
+                        "restlessness": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "work.priest.scarhealth.restlessnesspresent"
+                }
+            ],
+            "craftable": true,
+            "warmup": 60
+        },
+        {
+            "id": "work.priest.scarhealth.restlessnesspresent",
+            "actionid": "work",
+            "label": "The Work of the Threshold",
+            "startdescription": "The deacon reads now from the Book of St Respicius: 'Bronze shapes, but the heart labours. Hunger shows the red cup, and sickness the snow. The Lantern knows, while Moth understands. And the sword, when it comes, is its own answer.'",
+            "description": "I have suffered. Perhaps I have not suffered enough. My Restlessness is assuaged, my congregation is satisfied, but that is all. [To create a Lock Scar, you need Restlessness, at least tenth-level Lore, and a particular discipline of body or spirit which matches that lore. You can only have one of each type of scar.]",
+            "requirements": {
+                "restlessness": 1
+            },
+            "effects": {
+                "restlessness": -1
+            },
+            "slots": [
+                {
+                    "id": "discipline",
+                    "label": "Discipline",
+                    "required": {
+                        "injury": 1,
+                        "compensationb": 1,
+                        "hunger": 1,
+                        "vitality": 1,
+                        "erudition": 1,
+                        "glimmering": 1,
+                        "affliction": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "a_scarhealth_edge",
+                    "chance": 100
+                },
+                {
+                    "id": "a_scarhealth_forge",
+                    "chance": 100
+                },
+                {
+                    "id": "a_scarhealth_grail",
+                    "chance": 100
+                },
+                {
+                    "id": "a_scarhealth_heart",
+                    "chance": 100
+                },
+                {
+                    "id": "a_scarhealth_lantern",
+                    "chance": 100
+                },
+                {
+                    "id": "a_scarhealth_moth",
+                    "chance": 100
+                },
+                {
+                    "id": "a_scarhealth_winter",
+                    "chance": 100
+                },
+                {
+                    "id": "a_noscar_secrethistories",
+                    "chance": 100
+                },
+                {
+                    "id": "a_noscar_knock",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "a_scarhealth_edge",
+            "actionid": "work",
+            "label": "The Seven-Coiled Vision",
+            "startdescription": "In the vision, my wound has seven branches, and each branch seven more, and each of those branches seven heads. In the vision, each head is severed, one by one, by one who uses scars as weapons. He hands each head to St Agnes where she waits with her candle, and with each mutilation my agony increases.",
+            "description": "My congregation have waited all night in vigil. I am awake. My wound is closed. The scar remains. [Health has been permanently converted to a Scar. There are always seven Marks; you will need seven Lock-Scars. There is always a way, though the way may be narrow.]",
+            "requirements": {
+                "edge": 10,
+                "restlessness": 1,
+                "injury": 2
+            },
+            "extantreqs": {
+                "lockscaredge": -1,
+                "openedlockscaredge": -1
+            },
+            "effects": {
+                "injury": -1,
+                "lockscaredge": 1,
+                "fervour": -1,
+                "restlessness": -1
+            },
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "a_scarhealth_forge",
+            "actionid": "work",
+            "label": "The Vision of Flint",
+            "startdescription": "In the vision, I walk in the cold tunnels beneath the House of the Sun, in the light of the lamps of nephrite and black jade. Angles of flint protrude from the walls, glowing with the heat of their end. I trail my hand over each. They are no longer sharp, and so my people will come with their candles.",
+            "description": "My congregation have waited all night in vigil. I am awake. My wound is almost healed. The scar will remain. [Health has been permanently converted to a Scar. There are always seven Marks; you will need seven Lock-Scars. There is always a way, though the way may be narrow.]",
+            "requirements": {
+                "forge": 16,
+                "restlessness": 1,
+                "compensationb": 1
+            },
+            "extantreqs": {
+                "lockscarforge": -1,
+                "openedlockscarforge": -1
+            },
+            "effects": {
+                "injury": -1,
+                "lockscarforge": 1,
+                "restlessness": -1,
+                "fervour": -1,
+                "compensationb": -1
+            },
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "a_scarhealth_grail",
+            "actionid": "work",
+            "label": "The Vision of the Red Cup",
+            "startdescription": "'Here,' says the woman of ivory in my vision, 'let me show you that not all scars are pain.' She sets her mouth to the well of my blood, until her paleness is thrilled all through with threads of rose.",
+            "description": "My congregation have waited all night in vigil. I am awake. My wound is almost invisible. But the scar will remain. [Health has been permanently converted to a Scar. There are always seven Marks; you will need seven Lock-Scars. There is always a way, though the way may be narrow.]",
+            "requirements": {
+                "grail": 14,
+                "restlessness": 1,
+                "hunger": 1
+            },
+            "extantreqs": {
+                "lockscargrail": -1,
+                "openedlockscargrail": -1
+            },
+            "effects": {
+                "injury": -1,
+                "lockscargrail": 1,
+                "restlessness": -1,
+                "fervour": -1
+            },
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "a_scarhealth_heart",
+            "actionid": "work",
+            "label": "The Vision of the Pines",
+            "startdescription": "In the vision the trunks of the pines are lit by the fire but the shadows of the dancers come and go in a zoetrope flicker. With each stroke of the drum I am freed from another slip of skin, but it is not St Agnes who holds the knife, and at last I can bear no more and all the pent screams burst from me -",
+            "description": "My congregation have waited all night in vigil. I am awake. The only wound I can see is the one above my heart, and that will heal in time. But the scar will remain. [Health has been permanently converted to a Scar. There are always seven Marks; you will need seven Lock-Scars  There is always a way, though the way may be narrow.]",
+            "requirements": {
+                "heart": 11,
+                "restlessness": 1,
+                "vitality": 1
+            },
+            "extantreqs": {
+                "lockscarheart": -1,
+                "openedlockscarheart": -1
+            },
+            "effects": {
+                "injury": -1,
+                "lockscarheart": 1,
+                "restlessness": -1,
+                "fervour": -1,
+                "vitality": -1
+            },
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "a_scarhealth_lantern",
+            "actionid": "work",
+            "label": "The Vision of the Peacock",
+            "startdescription": "In the vision we enter the second chamber by the rending of the wall, and it screams like a peacock but its blood is gold. We pass in triumphant procession from the cloudy slopes to the bright corridors of the House of the Sun, and our mouths are opened that we may bear words; although as at all births, the youngest word is a scream.",
+            "description": "My congregation have waited all night in vigil. I am awake. My mouth has been continued into my cheek, and although it is almost healed, it will be a new agony to speak. It will heal. My speech will be renewed. But the scar will remain. [Health has been permanently converted to a Scar. There are always seven Marks; you will need seven Lock-Scars. There is always a way, though the way may be narrow.]",
+            "requirements": {
+                "lantern": 11,
+                "restlessness": 1,
+                "erudition": 1
+            },
+            "extantreqs": {
+                "lockscarlantern": -1,
+                "openedlockscarlantern": -1
+            },
+            "effects": {
+                "injury": -1,
+                "lockscarlantern": 1,
+                "restlessness": -1,
+                "fervour": -1,
+                "erudition": -1
+            },
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "a_scarhealth_moth",
+            "actionid": "work",
+            "label": "The Vision of the Shearing",
+            "startdescription": "In the vision I see our wings, and I hear the rustling as we unfurl them to the shears. Our abdomens were patterned black and white like bandages, and our beaks scissor-sharp. Fold us in the chrysalis and lock us in the dark. Break our eggs and steal our hair and watch for us within.",
+            "description": "My congregation have waited all night in vigil. I am awake. The double wound on my back will heal. But the scar will remain. [Health has been permanently converted to a Scar. There are always seven Marks; you will need seven Lock-Scars. There is always a way, though the way may be narrow.]",
+            "requirements": {
+                "moth": 12,
+                "restlessness": 1,
+                "glimmering": 1
+            },
+            "extantreqs": {
+                "lockscarmoth": -1,
+                "openedlockscarmoth": -1
+            },
+            "effects": {
+                "injury": -1,
+                "lockscarmoth": 1,
+                "restlessness": -1,
+                "fervour": -1,
+                "glimmering": -1
+            },
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "a_scarhealth_winter",
+            "actionid": "work",
+            "label": "The Nine-Year Vision",
+            "startdescription": "Wait in the white on the walls. Watch the sun slow. Chione walks the streets in silence. Her skirts are the wind. So white her surface. See what ceases in the storm.",
+            "description": "My congregation waited until sunrise when I woke from the white sleep. Frost has withered my hand. There is no wound, not as such, but there will be a scar. [Health has been permanently converted to a Scar. There are always seven Marks; you will need seven Lock-Scars. There is always a way, though the way may be narrow.]",
+            "requirements": {
+                "winter": 12,
+                "restlessness": 1,
+                "affliction": 1
+            },
+            "extantreqs": {
+                "lockscarwinter": -1,
+                "openedlockscarwinter": -1
+            },
+            "effects": {
+                "injury": -1,
+                "lockscarwinter": 1,
+                "restlessness": -1,
+                "fervour": -1
+            },
+            "craftable": false
+        },
+        {
+            "id": "a_noscar_knock",
+            "actionid": "work",
+            "label": "A Vision of St Agnes",
+            "startdescription": "I begin my vigil. My mouth is open. My eyes are open. Through them, as the congregation raises the hymn, St Agnes enters like a questing hand.",
+            "description": "St Agnes unlocks my tongue, and I taste blood. St Agnes encircles the vessels of my heart, and I feel a moment's pain. St Agnes departs via the first wound of all, the one in the pit of my belly where the serpent of my birth was severed, but first she affirms and uplifts me. This is my path, until I am the path. I will open unto my people as a door, that they might pass me. [Lock-Scars cannot be created with Knock or Secret Histories, only the other seven Aspects.]",
+            "requirements": {
+                "knock": 3
+            },
+            "effects": {
+                "funds": 1,
+                "restlessness": -1,
+                "fervour": -1,
+                "influenceknockc": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "a_noscar_secrethistories",
+            "actionid": "work",
+            "label": "A Vision of the One Hundred and Eight",
+            "startdescription": "I begin my vigil. The voices of the congregation rise. The light of the windows mingles before the altar. In that light, I see events that have not occurred...",
+            "description": "Great princes lie hooded in garments of striped black and yellow and rich ornaments of gold, upon the fields of bone. Their eyes are open to the sky. Their scales are scarred and cold. Now at last are they visible, and to look upon them is long-forbidden knowledge. This did not occur. [Lock-Scars cannot be created with Knock or Secret Histories, only the other seven Aspects.]",
+            "requirements": {
+                "secrethistories": 2
+            },
+            "effects": {
+                "funds": 1,
+                "restlessness": -1,
+                "fervour": -1,
+                "erudition": 1
+            },
+            "craftable": false
+        }
+    ]
+}

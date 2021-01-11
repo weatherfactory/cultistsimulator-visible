@@ -1,0 +1,57 @@
+{
+    "recipes": [
+        {
+            "id": "dreampleasantmemory",
+            "label": "Dwell on a Pleasant Memory",
+            "actionid": "dream",
+            "requirements": {
+                "memorypleasant": 1
+            },
+            "effects": {
+                "memorypleasant": -1,
+                "contentment": 1,
+                "fleeting": 1
+            },
+            "startdescription": "The sweet stillness of a common understanding? A moment in winter light?",
+            "description": "This might sustain me.",
+            "craftable": true,
+            "warmup": 10
+        },
+        {
+            "id": "dreampassionatememory",
+            "label": "Dwell on a Passionate Memory",
+            "actionid": "dream",
+            "requirements": {
+                "memorypassionate": 1
+            },
+            "effects": {
+                "memorypassionate": -1,
+                "restlessness": 1,
+                "contentment": 1,
+                "vitality": 1
+            },
+            "startdescription": "Shared gasps, tangled limbs? Heat in secret dark?",
+            "description": "This might distract me.",
+            "craftable": true,
+            "warmup": 10
+        },
+        {
+            "id": "dreambittersweetmemory",
+            "label": "Dwell on a Bittersweet Memory",
+            "actionid": "dream",
+            "requirements": {
+                "memorybittersweet": 1
+            },
+            "effects": {
+                "memorybittersweet": -1,
+                "dread": 1,
+                "contentment": 1,
+                "glimmering": 1
+            },
+            "startdescription": "An understanding neither dare speak aloud? A quarrel, and its aftermath?",
+            "description": "This might permit me to hesitate.",
+            "craftable": true,
+            "warmup": 10
+        }
+    ]
+}

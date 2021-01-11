@@ -1,0 +1,438 @@
+{
+	"decks": [
+		{
+			"id": "seasonevents",
+			"label": "季節",
+			"description": "時が経つたびに、予期せぬ出来事が起こるかもしれない。",
+			"spec": [
+				"seasonsickness",
+				"seasonsuspicion",
+				"seasonsuspicion",
+				"seasondespair",
+				"seasondespair",
+				"seasonvisions",
+				"seasonvisions",
+				"seasonambitions",
+				"seasonambitions",
+				"seasonsilence",
+				"seasonardours"
+			],
+			"defaultcard": "contentment",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "cabaretevents",
+			"label": "クラブで過ごす夜",
+			"description": "毎晩、様々な楽しみ方ができるが、時には危険を伴う。",
+			"spec": [
+				"contentment",
+				"contentment",
+				"contentment",
+				"fascination",
+				"fascination",
+				"erudition",
+				"glimmering",
+				"vitality",
+				"notoriety",
+				"influencegrail",
+				"influencemoth"
+			],
+			"defaultcard": "contentment",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "roserewards",
+			"label": "ロマンスの報酬",
+			"description": "あの時、今、いつ？",
+			"spec": [
+				"memorybittersweet",
+				"memorypleasant",
+				"memorypassionate",
+				"fleeting"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "dreamreasonresults",
+			"label": "夢の奥地",
+			"description": "睡眠は大抵、安らぎと平穏をもたらすが、いつもそうとは限らない。いつもそうとは限らないのだ。",
+			"spec": [
+				"dread",
+				"fascination",
+				"glimmering",
+				"vitality",
+				"contentment",
+				"restlessness"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "paintingresultsbasic",
+			"label": "芸術の報酬",
+			"description": "絵を描くことで、満足感を得たり、時には新たな理解を深めたりすることもできる。",
+			"spec": [
+				"contentment",
+				"contentment",
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"glimmering"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "paintingresults",
+			"label": "芸術の報酬",
+			"description": "絵を描くことで、満足感を得られることが多い。時には作品が注目を集めることもある。",
+			"spec": [
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"contentment",
+				"contentment",
+				"contentment",
+				"contentment",
+				"contentment",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "paintingresultsreputation",
+			"label": "名声の報酬",
+			"description": "金づる。",
+			"spec": [
+				"overexposure",
+				"overexposure",
+				"overexposure",
+				"overexposure",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "ecdysisrewards",
+			"label": "最後の貢物",
+			"description": "クラブは最低支払額を保証してくれるが、客が自ら貢献してくれることもある。",
+			"spec": [
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"compensationb",
+				"compensationb",
+				"compensationc",
+				"jumble",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"compensationb",
+				"compensationb",
+				"compensationc",
+				"jumble",
+				"kitlingripe",
+				"raptintheking",
+				"vienneseconundra"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "robberyrewards",
+			"label": "罪の償い",
+			"description": "手下が持って帰ってくるものは、つまらない宝であることが多く、時にガラクタ、稀にとんでもないものを持ってくる。",
+			"spec": [
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"jumble",
+				"jumble",
+				"jumble",
+				"jumble",
+				"jumble",
+				"compensation",
+				"compensation",
+				"compensation",
+				"compensation",
+				"compensation",
+				"compensation",
+				"compensationb",
+				"compensationb",
+				"compensationb",
+				"ingredientedgeb",
+				"ingredientforgeb",
+				"ingredientgrailb",
+				"ingredientheartb",
+				"ingredientknockb",
+				"ingredientmothb"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "exploreevents",
+			"label": "首都の探索",
+			"description": "街を探索すると、多くの発見がある......",
+			"spec": [
+				"daycriminals",
+				"dayplaces",
+				"daycriminals",
+				"dayplaces"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "schemeevents",
+			"label": "陰謀の可能性",
+			"description": "ライバルの陰謀......",
+			"spec": [
+				"schememurder",
+				"schememurder",
+				"schemeexpedition",
+				"schemeexpedition",
+				"schemeexpedition",
+				"schemeexpedition",
+				"schemeactivities",
+				"schemeactivities",
+				"schemeactivities",
+				"schemeactivities"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "talkevents",
+			"label": "深夜の出会い",
+			"description": "新たな参加者や味方、ライバルが見つかるかもしれない。",
+			"spec": [
+				"dayacquaintances",
+				"dayacquaintances",
+				"dayacquaintances",
+				"dayacquaintances",
+				"dayacquaintances",
+				"dayacquaintances",
+				"dayacquaintances",
+				"daypatrons",
+				"daypatrons"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "citysecrets",
+			"label": "都市の秘密",
+			"description": "見落としがちな場所。",
+			"spec": [
+				"locationauctionhouse",
+				"locationcabaret",
+				"locationbookdealer",
+				"locationstreetsstrange"
+			],
+			"defaultcard": "locationstreetsstrange"
+		},
+		{
+			"id": "streetsstrangefinds",
+			"label": "見知らぬ街並み",
+			"description": "洞察力と影響力。",
+			"spec": [
+				"influenceknockc",
+				"influenceknockc",
+				"glimmering",
+				"glimmering",
+				"fascination",
+				"contentment",
+				"contentment"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "troublemakerconversations",
+			"label": "トラブルメーカーとの会話",
+			"description": "何を学べるだろう？",
+			"spec": [
+				"dread",
+				"dread",
+				"fascination",
+				"fascination",
+				"erudition",
+				"erudition",
+				"erudition",
+				"glimmering",
+				"glimmering"
+			],
+			"defaultcard": "contentment"
+		},
+		{
+			"id": "forgelong",
+			"label": "業の敵",
+			"description": "敵は一般的なアプローチを選択するだろう。それを見極めることはできるかもしれないが、実行されるまで、彼らの計画の細かな部分まで知ることはできない。",
+			"spec": [
+				"julian_unknown",
+				"welland_unknown",
+				"welland_unknown"
+			],
+			"defaultcard": "julian_unknown"
+		},
+		{
+			"id": "graillong",
+			"label": "業の敵",
+			"description": "敵は一般的なアプローチを選択するだろう。それを見極めることはできるかもしれないが、実行されるまで、彼らの計画の細かな部分まで知ることはできない。",
+			"spec": [
+				"tryphon_unknown",
+				"tryphon_unknown",
+				"julian_unknown"
+			],
+			"defaultcard": "julian_unknown"
+		},
+		{
+			"id": "lanternlong",
+			"label": "業の敵",
+			"description": "敵は一般的なアプローチを選択するだろう。それを見極めることはできるかもしれないが、実行されるまで、彼らの計画の細かな部分まで知ることはできない。",
+			"spec": [
+				"julian_unknown",
+				"diarist_unknown",
+				"diarist_unknown"
+			],
+			"defaultcard": "julian_unknown"
+		},
+		{
+			"id": "long.strategies",
+			"label": "業の敵",
+			"description": "敵は一般的なアプローチを選択するだろう。それを見極めることはできるかもしれないが、実行されるまで、彼らの計画の細かな部分まで知ることはできない。",
+			"spec": [
+				"strategy.assault.concealed",
+				"strategy.intrigue.concealed",
+				"strategy.dreams.concealed",
+				"strategy.downtime.concealed"
+			],
+			"defaultcard": "strategy.downtime",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "long.strategies.preference.assault",
+			"label": "業の敵",
+			"description": "敵は一般的なアプローチを選択するだろう。それを見極めることはできるかもしれないが、実行されるまで、彼らの計画の細かな部分まで知ることはできない。",
+			"spec": [
+				"strategy.assault.concealed",
+				"strategy.assault.concealed",
+				"strategy.intrigue.concealed",
+				"strategy.dreams.concealed",
+				"strategy.downtime.concealed"
+			],
+			"defaultcard": "strategy.downtime",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "long.strategies.preference.intrigue",
+			"label": "業の敵",
+			"description": "敵は一般的なアプローチを選択するだろう。それを見極めることはできるかもしれないが、実行されるまで、彼らの計画の細かな部分まで知ることはできない。",
+			"spec": [
+				"strategy.assault.concealed",
+				"strategy.intrigue.concealed",
+				"strategy.intrigue.concealed",
+				"strategy.dreams.concealed",
+				"strategy.downtime.concealed"
+			],
+			"defaultcard": "strategy.downtime",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "long.strategies.preference.dreamwork",
+			"label": "業の敵",
+			"description": "敵は一般的なアプローチを選択するだろう。それを見極めることはできるかもしれないが、実行されるまで、彼らの計画の細かな部分まで知ることはできない。",
+			"spec": [
+				"strategy.assault.concealed",
+				"strategy.intrigue.concealed",
+				"strategy.dreams.concealed",
+				"strategy.dreams.concealed",
+				"strategy.downtime.concealed"
+			],
+			"defaultcard": "strategy.downtime",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "priest.repevent",
+			"label": "信徒の受難",
+			"description": "何が起こるだろう？",
+			"spec": [
+				"notoriety",
+				"notoriety",
+				"notoriety",
+				"notoriety",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique",
+				"funds",
+				"funds",
+				"funds",
+				"funds"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "ghoul.memory",
+			"label": "記憶",
+			"description": "人が忘れたことでも忘れない",
+			"spec": [
+				"memory.unexpected",
+				"memory.joyful",
+				"memory.profitable",
+				"memory.shameful",
+				"memory.menacing",
+				"memory.joyful",
+				"memory.profitable",
+				"memory.shameful",
+				"memory.menacing",
+				"memory.joyful",
+				"memory.profitable",
+				"memory.shameful",
+				"memory.menacing"
+			],
+			"resetonexhaustion": true
+		}
+	]
+}

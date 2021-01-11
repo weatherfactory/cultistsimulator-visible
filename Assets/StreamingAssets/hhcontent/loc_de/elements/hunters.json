@@ -1,0 +1,199 @@
+{
+	"elements": [
+		{
+			"id": "investigator1",
+			"label": "Inspektor Wakefield",
+			"aspects": {
+				"hunter": 1,
+				"mortal": 1,
+				"meticulous": 1,
+				"grim": 1
+			},
+			"description": "Zachary Wakefield: ein melancholischer, aber gnadenloser Polizeiinspektor. Erst kürzlich wurde er zum Dezernat für Unterdrückung versetzt.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"killhunter": "corpse",
+				"derangemortal": "zachary_r_c",
+				"capturehunter": "investigator1prisoner",
+				"dissolution": "influencewintere"
+			}
+		},
+		{
+			"id": "investigator2",
+			"label": "Spencer Hobson",
+			"aspects": {
+				"hunter": 1,
+				"mortal": 1,
+				"mystic": 1,
+				"erratic": 1
+			},
+			"description": "Hobson war Journalist, Privatdetektiv und, für nur kurze Zeit, Priester. Nun ist er Agent des Dezernats für Unterdrückung.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"killhunter": "corpse",
+				"derangemortal": "spencer_r_c",
+				"capturehunter": "investigator2prisoner",
+				"dissolution": "influenceknocke"
+			}
+		},
+		{
+			"id": "investigator3",
+			"label": "Connie Lee",
+			"aspects": {
+				"hunter": 1,
+				"mortal": 1,
+				"tenacious": 1,
+				"mystic": 1
+			},
+			"description": "Die Erbin, Suffragette und Abenteurerin. Sie hat erst kürzlich ihren donquichottischen Enthusiasmus sowie ihren beträchtlichen Reichtum in den Dienst des Dezernats für Unterdrückung gestellt.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"killhunter": "corpse",
+				"derangemortal": "connie_r_c",
+				"capturehunter": "investigator3prisoner",
+				"dissolution": "influenceedgee"
+			}
+		},
+		{
+			"id": "investigator4",
+			"label": "Doktor Natalia Dragon",
+			"aspects": {
+				"hunter": 1,
+				"mortal": 1,
+				"idealist": 1,
+				"meticulous": 1
+			},
+			"description": "Sie wurde wegen ihrer Analysen zu alternativen Geschichtsverläufen aus dem akademischen Leben gelacht, was sie aber nur noch entschlossener gemacht hat. Nun arbeitet sie mit dem Dezernat für Unterdrückung zusammen.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"killhunter": "corpse",
+				"derangemortal": "natalia_r_c",
+				"capturehunter": "investigator4prisoner",
+				"dissolution": "influencelanterne"
+			}
+		},
+		{
+			"id": "defaulthunter",
+			"label": "Müder Detektiv",
+			"aspects": {
+				"hunter": 1,
+				"mortal": 1
+			},
+			"description": "Dieser Herr würde es vorziehen, mit seiner Pfeife und seinen Illustrated London News in Ruhe gelassen zu werden, aber, nein, <i>offenbar</i> muss irgendein Beschwörer von Abscheulichkeiten wie ein toller Hund zur Strecke gebracht werden, und <i>offenbar</i> hat sonst niemand Zeit.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"killhunter": "corpse",
+				"derangemortal": "douglas_r",
+				"capturehunter": "defaulthunterprisoner",
+				"dissolution": "influenceforgec"
+			}
+		},
+		{
+			"id": "investigator1prisoner",
+			"label": "Inspektor Wakefield: Geschnappt!",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"winter": 4
+			},
+			"description": "Zachary Wakefield: ein melancholischer, aber gnadenloser Polizeiinspektor. Sorgen wir dafür, dass er in Gefangenschaft stirbt.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "zachary_r_c",
+				"dissolution": "influencewintere"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		},
+		{
+			"id": "investigator2prisoner",
+			"label": "Spencer Hobson: Geschnappt!",
+			"aspects": {
+				"prisoner": 1,
+				"mortal": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"knock": 3
+			},
+			"description": "Hobson war Journalist, Privatdetektiv und, für nur kurze Zeit, Priester. Sorgen wir dafür, dass er in Gefangenschaft stirbt.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "spencer_r_c",
+				"dissolution": "influenceknocke"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		},
+		{
+			"id": "investigator3prisoner",
+			"label": "Connie Lee: Geschnappt!",
+			"aspects": {
+				"prisoner": 1,
+				"mortal": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"edge": 3
+			},
+			"description": "Die Erbin, Suffragette und Abenteurerin. Sorgen wir dafür, dass sie in Gefangenschaft stirbt.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "connie_r_c",
+				"dissolution": "influenceedgee"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		},
+		{
+			"id": "investigator4prisoner",
+			"label": "Doktor Natalia Dragon: Geschnappt!",
+			"aspects": {
+				"prisoner": 1,
+				"mortal": 1,
+				"lantern": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "Sie wurde wegen ihrer Analysen zu alternativen Geschichtsverläufen aus dem akademischen Leben gelacht, was sie aber nur noch entschlossener gemacht hat.  Sorgen wir dafür, dass sie in Gefangenschaft stirbt.",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "natalia_r_c",
+				"dissolution": "influencelanterne"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		},
+		{
+			"id": "defaulthunterprisoner",
+			"label": "Müder Detektiv geschnappt!",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "Dieser Herr würde es vorziehen, mit seiner Pfeife und seinen Illustrated London News in Ruhe gelassen zu werden, doch nun hockt er in irgendeinem elenden Erdloch.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "douglas_r",
+				"capturehunter": "defaulthunterprisoner",
+				"dissolution": "influenceforgec"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		}
+	]
+}

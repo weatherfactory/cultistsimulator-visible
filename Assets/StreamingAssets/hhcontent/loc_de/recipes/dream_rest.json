@@ -1,0 +1,316 @@
+{
+	"recipes": [
+		{
+			"id": "dream.poison.fascination.longlesson.trap",
+			"actionId": "dream",
+			"label": "Ein stets wachsamer Feind",
+			"startdescription": "Unser Feind hat aus meinen Träumen gelernt.",
+			"requirements": {
+				"poison.fascination.longlesson": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"long.lesson.dreamwork": 1
+			},
+			"mutations": [
+				{
+					"filter": "fascination",
+					"mutate": "poison.fascination.longlesson",
+					"level": -1
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "dreamhealth",
+			"label": "Früh schlafen",
+			"actionId": "dream",
+			"requirements": {
+				"health": 1
+			},
+			"effects": {
+				"fleeting": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "dreamhealthdread",
+					"chance": 10
+				},
+				{
+					"id": "dreamhealthfascination",
+					"chance": 10
+				},
+				{
+					"id": "dreamhealthcontentment",
+					"chance": 30
+				},
+				{
+					"id": "dream_router",
+					"chance": 30
+				}
+			],
+			"startdescription": "Mit etwas Glück wache ich erfrischt auf. [Manchmal sorgt dies für Zufriedenheit. Oft bringt es aber nichts. Gelegentlich erzeugt es Grauen oder Faszination.]",
+			"description": "Manchmal habe ich von einer hoch gewachsenen Frau in einem sandfarbenen Mantel geträumt, die am Fuße meines Betts steht und lächelt, während sie mich im Schlaf beobachtet. In jenem Traume wendet sie den Kopf mit der Schnelligkeit eines Vogels, und ihre Finger spannen sich wie Krallen an. Ich glaube nicht, dass ich letzte Nacht von ihr geträumt habe. Sonst hätte ich nicht so gut geschlafen.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamhealthcontentment",
+			"label": "Früh schlafen",
+			"actionId": "dream",
+			"effects": {
+				"contentment": 1
+			},
+			"description": "Der Schlaf ist wie ein großer finsterer Ozean, doch manchmal, wenn wir das andere Ufer erreichen, brennt dort eine Lampe.",
+			"craftable": false
+		},
+		{
+			"id": "dreamhealthdread",
+			"label": "Früh schlafen",
+			"actionId": "dream",
+			"effects": {
+				"dread": 1
+			},
+			"description": "Im Lande der beiden Flüsse, in den Tagen von Rimush und Naram-Sin, erzählte man sich Geschichten von einer heulenden Frau, welche die Kinder anderer Mütter verschlang. Letzte Nacht habe ich im Traume ein Heulen gehört.",
+			"craftable": false
+		},
+		{
+			"id": "dreamhealthfascination",
+			"label": "Früh schlafen",
+			"actionId": "dream",
+			"effects": {
+				"fascination": 1
+			},
+			"description": "Stell dir eine Spiegelkiste vor, bei der jeder Spiegel ein süßeres Licht enthält. Nun stell dir vor, dass im siebenten Spiegel nur ein gewöhnlicher Sonnenuntergang ist, ein gewöhnliches Bett, der öde Beginn eines gewöhnlichen Tages. Stell dir das vor, und sehne dich nach dem Lichte.",
+			"craftable": false
+		},
+		{
+			"id": "recoverhunger",
+			"label": "Meine Stärke wiederherstellen",
+			"actionId": "dream",
+			"requirements": {
+				"funds": 1,
+				"hunger": 1
+			},
+			"effects": {
+				"funds": -1
+			},
+			"aspects": {
+				"restorehealth": 1
+			},
+			"startdescription": "Ich habe seit einiger Zeit nichts gegessen. Ich sollte mit Vorsicht essen.",
+			"description": "Meine Kraft kehrt zurück. Die schummrige Finsternis am Rande meiner Wahrnehmung ist fort.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "recoverfatigue",
+			"label": "Nickerchen gegen Erschöpfung machen",
+			"actionId": "dream",
+			"requirements": {
+				"fatigue": 1
+			},
+			"aspects": {
+				"restorehealth": 1
+			},
+			"startdescription": "Ich brauche einfach nur ein wenig Ruhe, um wieder zu Kräften zu kommen.",
+			"description": "Ich bin erfrischt.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "recover.apostlegrail.pillar2",
+			"actionId": "dream",
+			"label": "Der Traum vom Ende",
+			"startdescription": "Ich trinke die kleine Phiole mit Blut leer, lege mich hin, schließe die Augen. Morgen werde ich stärker sein.",
+			"description": "Ich habe mich gut erholt – mehr als das – mir geht es prächtig. Die Lederhaut meiner Augen, die Adern in meinen Handgelenken, sind prall von herrlichem Serum. Wenn die Vitulation kommt, werde ich im Mittelpunkt stehen, wenn es darum geht, den Appetit der Wonne zu stillen und den Gral anzurufen.",
+			"requirements": {
+				"apostlegrail.pillarfuel": 1,
+				"apostlegrail.pillar2.dormant": 1
+			},
+			"effects": {
+				"apostlegrail.pillar2.dormant": -1,
+				"apostlegrail.pillar2": 1,
+				"apostlegrail.pillarfuel": -1,
+				"fascination": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "recoverillhealthfunds",
+			"label": "Heilen",
+			"actionId": "dream",
+			"requirements": {
+				"funds": 1,
+				"illhealth": 1
+			},
+			"effects": {
+				"funds": -1
+			},
+			"aspects": {
+				"restorehealth": 1
+			},
+			"startdescription": "Die Medizin ist dunkel und bitter wie Teer. Man könnte leicht meinen, ich sei vergiftet worden.",
+			"description": "Das Krankenzimmer wird eng und stickig. Zeit zu gehen.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "recoverillhealthfundsvitality",
+			"label": "Heilen",
+			"actionId": "dream",
+			"requirements": {
+				"vitality": 1,
+				"illhealth": 1
+			},
+			"effects": {
+				"vitality": -1
+			},
+			"aspects": {
+				"restorehealth": 1
+			},
+			"startdescription": "Alles, was ich jetzt brauche, ist Zeit.",
+			"description": "Das Krankenzimmer wird eng und stickig. Zeit zu gehen.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "reducedread",
+			"label": "Meinen Kopf frei machen",
+			"actionId": "dream",
+			"requirements": {
+				"contentment": 1,
+				"dread": 1
+			},
+			"effects": {
+				"contentment": -1,
+				"dread": -1,
+				"fleeting": 1
+			},
+			"startdescription": "Ich weiß noch, dass ich früher anders war.",
+			"description": "Die Sonne bewegt sich noch. Der Wind wandelt noch immer. Meine Tagebücher sind der Schlüssel zum Irrgarten.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "reducefascination",
+			"label": "Gelassenheit",
+			"actionId": "dream",
+			"requirements": {
+				"dread": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"fascination": -1,
+				"dread": -1,
+				"fleeting": 1
+			},
+			"startdescription": ".",
+			"description": "Die Luft ist jetzt wie geronnen. Ich bin wieder zu Hause, um diesem Klumpen Fleisch. Besser, vielleicht.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "reducefascinationfleeting",
+			"label": "Gelassenheit",
+			"actionId": "dream",
+			"requirements": {
+				"fleeting": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"fleeting": -1,
+				"fascination": -1
+			},
+			"startdescription": ".",
+			"description": "Die Luft ist jetzt wie geronnen. Ich bin wieder zu Hause, um diesem Klumpen Fleisch. Besser, vielleicht.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamfunds",
+			"label": "Opium-Tinktur kaufen",
+			"actionId": "dream",
+			"requirements": {
+				"funds": 1
+			},
+			"effects": {
+				"contentment": 1,
+				"funds": -1
+			},
+			"startdescription": "In Zeiten besonderer Not könnte ich einen diskreten Apotheker aufsuchen, um eine Opium-Tinktur zu erwerben und mir die Träume zu versüßen. Doch nur in Zeiten besonderer Not. [Dies ist eine ebenso teure wie riskante Art an Zufriedenheit zu kommen. Sie könnte eine Krankheit oder Verzweiflung auslösen.]",
+			"description": "Ach, dieser tiefe Frieden. Aber ich sollte das nicht noch einmal machen.",
+			"warmup": 30,
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "grailinduction",
+					"chance": 30,
+					"additional": true
+				},
+				{
+					"id": "despairrisk",
+					"chance": 10,
+					"additional": true
+				},
+				{
+					"id": "presickness",
+					"chance": 10,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "dream.decrepitude",
+			"actionId": "dream",
+			"label": "Verzweifelte Maßnahmen",
+			"startdescription": "Meine Seele sucht mein verfallendes Fleisch wie ein Sumpfgeist heim. Mein Herz wird langsamer, und eines Tages wird es ruhen. Wenn ich vielleicht irgendeine exotische Substanz zu mir nehme, könnte ich meine verlorene Kraft wiederherstellen. Doch das scheint mir unwahrscheinlich zu sein.",
+			"requirements": {
+				"decrepitude": 1,
+				"ingredient": 1
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "dream.decrepitude.ingredientheartf"
+				},
+				{
+					"id": "dream.decrepitude.failure"
+				}
+			]
+		},
+		{
+			"id": "dream.decrepitude.ingredientheartf",
+			"actionId": "dream",
+			"label": "Die Regungen des Januarius",
+			"startdescription": "Mit schwachem rostigem Blute macht mein Herz einen Satz, schmerzhaft wie ein durchbohrender Sonnenaufgang.",
+			"description": "Der Heilige Januarius hat dir Tür der Jahre und die Tür der Agonien geöffnet, und durch jenes doppelte Tor werden Pein und Geschichte entweichen.",
+			"requirements": {
+				"ingredientheartf": 1,
+				"decrepitude": 1
+			},
+			"effects": {
+				"ingredientheartf": -1,
+				"restlessness": 1,
+				"mystique": 1
+			},
+			"aspects": {
+				"tohealth": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "dream.decrepitude.failure",
+			"actionId": "dream",
+			"label": "Nur das seltsamste Aroma",
+			"startdescription": "Mein Herz hinkt weiter. Ich habe mir keinen Vorteil verschafft – nur, so vermute ich, hart erarbeitetes Wissen.",
+			"effects": {
+				"ingredient": -1,
+				"erudition": 1
+			}
+		}
+	]
+}

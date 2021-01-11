@@ -1,0 +1,1104 @@
+{
+    "recipes": [
+        {
+            "id": "explorevaultperil_treacherousground_encounter",
+            "actionId": "explore",
+            "label": "诡变多端的地面",
+            "startdescription": "拉人下陷的泥浆，欺人眼目的裂缝——大地急于吞吃我们。我们需要用<b>灯</b>照亮前路，或<b>铸</b>一盏灯。",
+            "requirements": {
+                "peril_treacherousground": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultperil_treacherousground_highlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_midlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_lowlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_lowforge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_highlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 10
+            },
+            "label": "我们拜请守夜人，指引前路之神",
+            "startdescription": "守夜人令我们视物清晰，我们谅必不会走错路。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_midlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 5
+            },
+            "label": "我们拜请守夜人，照明驱暗之神",
+            "startdescription": "守夜人将美德赐给我们的灯火，令我们用其避开险境。大概能吧。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_lowlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 1
+            },
+            "label": "我们拜请守夜人，无怜悯心之神",
+            "startdescription": "守夜人对我们和阻拦我们的障碍都不会容情。我们能否通过要看运气。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_highforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "我们拜请昕旦，永葆平衡之神。",
+            "startdescription": "我们祈求昕旦，<b>铸</b>与<b>冬</b>之司辰护佑。我们将开辟一条自己的通路。成功近在咫尺。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_midforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "我们拜请昕旦，平息靖声之神。",
+            "startdescription": "昕旦乃<b>铸</b>与<b>冬</b>之司辰，拥有平靖躁动大地的神力。大概我们能平安生还。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_lowforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "我们拜请昕旦，先于太阳而来之神",
+            "startdescription": "昕旦乃<b>铸</b>与<b>冬</b>之司辰。<b>铸</b>带来力量，然而雾气现已升腾凝聚。也许我们能成功通过。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_success",
+            "actionId": "explore",
+            "label": "平安通过诡变多端的土地",
+            "startdescription": "我们身上尽是点点泥浆和荆棘擦伤，但我们成功了。",
+            "description": ".",
+            "effects": {
+                "peril_treacherousground": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_treacherousground_failure",
+            "actionId": "explore",
+            "label": "急于吞吃的大地",
+            "startdescription": "这条看似安全可行的通路实为让人深陷其中的圈套。我们得绕回去再找一条路。",
+            "description": ".",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_forest_encounter",
+            "actionId": "explore",
+            "label": "危机四伏的森林",
+            "startdescription": "现下树下的黑暗尚还安静，但这里不只我们存在。让<b>蛾</b>相为我指引方向，或<b>铸</b>相为我涤清道路。",
+            "requirements": {
+                "peril_forest": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultperil_forest_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_forest_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_forest_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_forest_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_forest_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_forest_lowforge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_highmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 10
+            },
+            "label": "我们拜请飞蛾，于林地树间寻觅之神",
+            "startdescription": "漫宿下面的林地的黑暗更甚此地。飞蛾指引我们的脚步。成功近在咫尺。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_midmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 5
+            },
+            "label": "我们拜请飞蛾，通体斑驳之神",
+            "startdescription": "路上映出斑驳阴影。也许这是飞蛾在为我们指路。大概是这样的。大概我们能成功通过。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_lowmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 1
+            },
+            "label": "我们拜请飞蛾，于颅内振翅之神",
+            "startdescription": "我们于危难中祈求飞蛾护佑。森林以拍打的翅，以想象中的眼脉动着。也许我们能成功通过。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_highforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "钢与焰",
+            "startdescription": "铸炉独具匠心，铸炉残酷无情。我们谅必能够成功通过。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_midforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "斧与灯",
+            "startdescription": "森林包围了我们，但我们是务实的人，擅<b>铸</b>，大概能平安生还。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_lowforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "黄昏中的挣扎",
+            "startdescription": "我们祈求<b>铸</b>之力的护佑，助我披荆斩棘。前路艰难。也许我们能成功通过。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_success",
+            "actionId": "explore",
+            "label": "“穿过树林的光……”",
+            "startdescription": "我们看到前方有东西。我们成功穿过了森林。",
+            "description": ".",
+            "effects": {
+                "peril_forest": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_forest_failure",
+            "actionId": "explore",
+            "label": "愈加深沉的静默",
+            "startdescription": "我们迷路了。森林高耸，巨影倾倒在黄昏的天幕上。林中的野兽静默无声，但我们时常能看到它们的眼睛。",
+            "description": ".",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_mountains_encounter",
+            "actionId": "explore",
+            "label": "云中径",
+            "startdescription": "高峻的山峰划破天空。让<b>冬</b>相免我受寒，或<b>铸</b>相为我开道。若两者皆无，探险必失败。",
+            "requirements": {
+                "peril_mountains": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultperil_mountains_highwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_mountains_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_mountains_midwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_mountains_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_mountains_lowwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_mountains_lowforge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_highwinter",
+            "actionId": "explore",
+            "requirements": {
+                "winter": 10
+            },
+            "label": "我们拜请昕旦，永葆平衡之神。",
+            "startdescription": "名为昕旦的司辰惯于寒冷。她令我们谅必不至坠落。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_midwinter",
+            "actionId": "explore",
+            "requirements": {
+                "winter": 5
+            },
+            "label": "我们拜请昕旦，平息靖声之神。",
+            "startdescription": "昕旦擅<b>冬</b>。她大概能令我们不遭雪崩。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_lowwinter",
+            "actionId": "explore",
+            "requirements": {
+                "winter": 1
+            },
+            "label": "我们拜请昕旦，先于太阳而去之神",
+            "startdescription": "对于通晓<b>冬</b>天、名为昕旦的司辰来说，黎明前的时辰是神圣的。若我们奋起反抗，求她护佑，或许她会保我周全。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_highforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "登山者之途",
+            "startdescription": "我们精通<b>铸</b>之本领。我们谅必能够成功通过。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_midforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "探索者之途",
+            "startdescription": "我们是务实的人，擅<b>铸</b>，大概能成功。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_lowforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "浪迹者之途",
+            "startdescription": "<b>铸</b>相的追随者既能干又务实，但禁不住漫漫山脊上岩石尖利，冰封雪盖。我们前路艰难。运气好的话或能通过。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_success",
+            "actionId": "explore",
+            "label": "穿过云中径",
+            "startdescription": "满身冻伤，瑟瑟发抖的我们成功穿过高山。",
+            "description": ".",
+            "effects": {
+                "peril_mountains": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_mountains_failure",
+            "actionId": "explore",
+            "label": "愤怒的回响",
+            "startdescription": "滑坡和雪崩将我们逼退。如果能生还，我们会换一条路走。",
+            "description": ".",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_desert_encounter",
+            "actionId": "explore",
+            "label": "荒漠",
+            "startdescription": "这片广袤的土地犹如一个几达天边的土黄色火炉。到了夜晚，莽莽星空撒下冷冽的光。我们必须小心前行，或以<b>铸</b>铺就前路，或以<b>杯</b>避免干渴。",
+            "requirements": {
+                "peril_desert": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultperil_desert_highgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_desert_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_desert_midgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_desert_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_desert_lowgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_desert_lowforge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_highgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 10
+            },
+            "label": "我们拜请双生女巫，身为珍珠之神",
+            "startdescription": "双生女巫应能护我穿过干涸地。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_midgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 5
+            },
+            "label": "我们拜请双生女巫，不可触碰之神",
+            "startdescription": "我们拜请双生女巫护我免遭太阳的炙烤和蜃景的迷惑。我们应能顺利通过。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_lowgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 1
+            },
+            "label": "我们拜请双生女巫，不可分离之神",
+            "startdescription": "我们拜请双生女巫保护我们不因干涸地带的沙暴失散。这样应该足够了。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_highforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "炙阳之途",
+            "startdescription": "我们的<b>铸</b>之本领可保我们平安穿过炙热的岩石路到达绿洲。我们谅必能够通行无碍。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_midforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "干旱之途",
+            "startdescription": "我们是务实的人，擅<b>铸</b>，应该能穿过炙热的戈壁到达绿洲。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_lowforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "无情之途",
+            "startdescription": "<b>铸</b>相的追随者既能干又务实，奈何此地荒瘠。我们或许能成功通过。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_success",
+            "actionId": "explore",
+            "label": "骄盛的太阳",
+            "startdescription": "太阳西沉。我们回首瞭望方才穿过的荒漠，和它在暮光中显现的所有色彩。夜幕降临，群星闪烁。抚过我们的脸颊风如同冰冷的手。旅途继续。",
+            "description": ".",
+            "effects": {
+                "peril_desert": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_desert_failure",
+            "actionId": "explore",
+            "label": "愤怒的太阳",
+            "startdescription": "日复一日，太阳令我们皮肤紧绷，口唇干燥，在我们的头顶倾泻毒辣的光。我们可能会迷路，也许已经迷路了。",
+            "description": ".",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_sea_encounter",
+            "actionId": "explore",
+            "label": "薄暮群屿周边海域",
+            "startdescription": "我们航行的海面风暴肆虐。我们要找寻的岛屿隐藏在没有记载的历史角落之中。我们需要<b>心</b>或<b>铸</b>，或两者皆需。",
+            "requirements": {
+                "peril_sea": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultperil_sea_highheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_sea_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_sea_midheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_sea_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_sea_lowheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_sea_lowforge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_highheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 10
+            },
+            "label": "我们拜请双生女巫，不可触碰之神",
+            "startdescription": "风暴因轰雷之皮而起，又因双生巫女而息。恰当的言词应该能够带我们平安驶过这片海域。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_midheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 5
+            },
+            "label": "我们拜请双生女巫，不可分离之神",
+            "startdescription": "若风暴来袭，双生巫女能保我们的船员和船只无虞。大概能吧。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_lowheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 1
+            },
+            "label": "我们拜请双生女巫，身为珍珠之神",
+            "startdescription": "双生女巫并未来自于海，却行于海边。她的庇护或许已足够保护我们。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_highforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "水手的确信",
+            "startdescription": "我们精通<b>铸</b>之本领。我们谅必能够成功通过。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_midforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "水手的气力",
+            "startdescription": "我们是务实的人，擅<b>铸</b>，大概能成功。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_lowforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "水手的希望",
+            "startdescription": "<b>铸</b>相的追随者既能干又务实，但禁不住海况变化无常。我们得使出全身解数维持住航路。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_success",
+            "actionId": "explore",
+            "label": "平安驶过海域",
+            "startdescription": "被海浪拍打，海水泼溅，阳光炙烤，盐渍粘身。但是我们到了。",
+            "description": ".",
+            "effects": {
+                "peril_sea": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_sea_failure",
+            "actionId": "explore",
+            "label": "盐水与玄武岩的迷宫",
+            "startdescription": "又是被风暴吹打的一日。我们肯定离目标不远了。然而群屿仿佛一座诱人发狂的迷宫，且我们要找的地方不存在于任何公开的海图上。",
+            "description": ".",
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        }
+    ]
+}

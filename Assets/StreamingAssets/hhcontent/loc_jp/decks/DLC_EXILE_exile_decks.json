@@ -1,0 +1,46 @@
+{
+	"decks": [
+		{
+			"id": "rkx.events",
+			"label": "精算人の計画",
+			"description": "精算人は次の動きを計画している。",
+			"spec": [
+				"rkx.event.aggressive",
+				"rkx.event.aggressive",
+				"rkx.event.aggressive",
+				"rkx.event.passive"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "rkx.weaknesses.environment",
+			"label": "敵の弱点：環境",
+			"spec": [
+				"rkx.weakness.cold.hidden",
+				"rkx.weakness.heat.hidden",
+				"rkx.weakness.sea.hidden"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "rkx.weaknesses.quirk",
+			"label": "敵の弱点：個性",
+			"spec": [
+				"rkx.weakness.faith.hidden",
+				"rkx.weakness.cats.hidden",
+				"rkx.weakness.heights.hidden"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "rkx.weaknesses.disfavour",
+			"label": "敵の弱点：不利",
+			"spec": [
+				"rkx.weakness.horned.hidden",
+				"rkx.weakness.wolf.hidden",
+				"rkx.weakness.flowermaker.hidden"
+			],
+			"resetonexhaustion": true
+		}
+	]
+}

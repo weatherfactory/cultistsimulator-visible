@@ -1,0 +1,286 @@
+{
+	"recipes": [
+		{
+			"id": "annoyanceseducehighgrail",
+			"label": "魅力的な手下を送り込んで、頭痛の種を誘惑して恥をかかせる",
+			"actionId": "talk",
+			"startdescription": "この不快なものを何とかしたい。堕落していく過程を楽しむような人間かもしれない。",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"grail": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceseducesuccess",
+					"chance": 70
+				},
+				{
+					"id": "annoyanceseducefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceseducemidgrail",
+			"label": "魅惑的な手下を送り込んで、頭痛の種を誘惑して恥をかかせる",
+			"actionId": "talk",
+			"startdescription": "誰にでも弱みとなる快楽がある。快楽の本質を熟知している手下を送り込もう。高い確率で成功するだろう。",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"grail": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceseducesuccess",
+					"chance": 70
+				},
+				{
+					"id": "annoyanceseducefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceseducelowgrail",
+			"label": "心をそそる手下を送り込んで、頭痛の種を誘惑して恥をかかせる",
+			"actionId": "talk",
+			"startdescription": "これが成功するかどうかは誰にもわからない。頭痛の種が、手下を魅力的だと思わない可能性もある。",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"grail": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceseducesuccess",
+					"chance": 30
+				},
+				{
+					"id": "annoyanceseducefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceseducesuccess",
+			"label": "頭痛の種を誘惑する......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "私の手下が戻ってきた。頭痛の種が簡単に屈するような誘惑を見つけたのだという。しかし、そのために自分の評判を犠牲にしてしまったようだ。",
+			"aspects": {
+				"endannoyance": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "annoyanceseducefailure",
+			"label": "頭痛の種を誘惑する......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "私の手下が残念な知らせを持って帰ってきた。頭痛の種を誘惑できるような快楽を見つけられなかったのだ。",
+			"warmup": 30
+		},
+		{
+			"id": "annoyanceattackhighedge",
+			"label": "止めようのない力を送り込んで、頭痛の種を殺害する",
+			"actionId": "talk",
+			"startdescription": "堪忍袋の緒が切れた。異常なほどの防御力がない限り、この者は死んだようなものだ。しかし、その死は注目を集めるだろう。",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"edge": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceattacksuccess",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceattackmidedge",
+			"label": "有能な手下を送り込んで、頭痛の種を殺害する",
+			"actionId": "talk",
+			"startdescription": "堪忍の緒が切れた。これで一件落着となるはずだが、相手は生き残るかもしれないし、成功しても失敗しても注目を集めてしまうだろう。[失敗すると手下が死ぬ。]",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"edge": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceattacksuccess",
+					"chance": 70
+				},
+				{
+					"id": "annoyanceattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceattacklowedge",
+			"label": "手下を送り込んで、頭痛の種を殺害する",
+			"actionId": "talk",
+			"startdescription": "頭痛の種を取り除きたいが、この方法は危険だ。手下の力には限界がある。頭痛の種は簡単に生き延びるかもしれない。それに、試みれば、注目を集めてしまうだろう。[失敗すると手下が命を失う。]",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"edge": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceattacksuccess",
+					"chance": 30
+				},
+				{
+					"id": "annoyanceattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceattacknoedge",
+			"label": "不向きな人を送り込んで、頭痛の種を殺害する。",
+			"actionId": "talk",
+			"startdescription": "手下は刃の属性を持っていないし、頭痛の種への攻撃には向いていない。成功する可能性は低い。[失敗すると手下が死ぬ。]",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceattacksuccess",
+					"chance": 10
+				},
+				{
+					"id": "annoyanceattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceattacksuccess",
+			"label": "頭痛の種を片づける......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が、トロフィーを持って帰ってきた。頭痛の種は駆除された。",
+			"aspects": {
+				"endannoyance": 1
+			},
+			"effects": {
+				"corpse": 1,
+				"notoriety": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "annoyancecapturesuccess",
+					"chance": 30
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "annoyancecapturesuccess",
+			"label": "頭痛の種を片づける......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が囚人を連れて帰ってきた！.....囚人は自分の行動を後悔することになるだろう。",
+			"aspects": {
+				"endannoyance": 1
+			},
+			"effects": {
+				"notoriety": 1,
+				"genericprisonerm": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "annoyanceattackfailure",
+			"label": "頭痛の種を片づける......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が戻ってこない。失敗したに違いない。恥をかくことになるかもしれない。",
+			"effects": {
+				"follower": -1,
+				"notoriety": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "annoyancederangemidmoth",
+			"label": "邪悪な手下を送り込んで、頭痛の種の気を狂わせる。",
+			"actionId": "talk",
+			"startdescription": "この頭痛の種を片づけたい。計画は上手くいくだろうが、失敗したら注目を集めてしまう。",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"moth": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyancederangesuccess",
+					"chance": 70
+				},
+				{
+					"id": "annoyancederangefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyancederangelowmoth",
+			"label": "邪悪な手下を送り込んで、頭痛の種の気を狂わせる。",
+			"actionId": "talk",
+			"startdescription": "この頭痛の種を片づけたいが、手下の能力には限界がある。失敗するかもしれない。そうなったら注目を浴びることになる。",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"moth": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyancederangesuccess",
+					"chance": 30
+				},
+				{
+					"id": "annoyancederangefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyancederangesuccess",
+			"label": "頭痛の種に悪夢を見せる......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が戻ってきた。頭痛の種はもうはっきりとした言葉を発することができない。これ以上私を困らせることはできないだろう。",
+			"aspects": {
+				"endannoyance": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "annoyancederangefailure",
+			"label": "頭痛の種に悪夢を見せる......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が戻ってきた。頭痛の種は予想以上に回復力があるようだ。手下の心は無傷のままだ。",
+			"effects": {
+				"notoriety": 1
+			},
+			"warmup": 30
+		}
+	]
+}

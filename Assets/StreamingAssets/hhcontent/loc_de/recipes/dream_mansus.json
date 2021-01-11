@@ -1,0 +1,1518 @@
+{
+	"recipes": [
+		{
+			"id": "dreamstartingpassion",
+			"label": "Die mondbeschienene Straße",
+			"actionId": "dream",
+			"requirements": {
+				"passion": 1
+			},
+			"slots": [
+				{
+					"id": "Lore",
+					"label": "Wissen",
+					"description": "Wenn ich mich vor dem Schlafen einer okkulten Praktik widme, könnte ich einen Weg finden, tiefer zu träumen.",
+					"required": {
+						"lore": 1,
+						"waywood": 1
+					}
+				}
+			],
+			"startdescription": "Ich kenne diesen Traum. Eine Straße geht über eine Hügelkuppe und die Luft ist silberhell –",
+			"description": "Wellige Felder, das Blinzeln eines Flusses. Eine kühle Brise.",
+			"alternativerecipes": [
+				{
+					"id": "dreamreachwoodknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachwoodlantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachwoodmoth",
+					"chance": 100
+				},
+				{
+					"id": "dreamenterwood",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "moon",
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachwoodmoth",
+			"label": "Der Thyrsine-Weg",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"moth": 3
+			},
+			"comments": "requirement 3, not 2, because there's already moth in the mix.",
+			"startdescription": "Ich könnte vor dem Schlafen eine Haarlocke abschneiden, um einer Macht des Forstes zu huldigen.",
+			"description": "Die Straße duckt sich in die Bäume weg. Blasse Flügel regen sich tief im Forst. Jetzt stolpere ich über Wurzeln. Es ist verlockend, auf alle Viere zu gehen, um den tief hängenden Zweigen auszuweichen. Der Mond wandert hinter schwarzen Blättern vorbei, doch er behält seine Finger in meinem Haar. Den Weg hierher werde ich nicht vergessen.",
+			"effects": {
+				"waywood": 1,
+				"influencemoth": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachwoodknock",
+			"label": "Der Weg der Schlange",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 2
+			},
+			"startdescription": "Kleinschmiede haben oft den Traum, wenn die Fußsohle verletzt wurde – vor allem, wenn es durch einen Schlangenbiss war. Ich könnte das probieren.",
+			"description": "Ich humple auf der Straße, und so sehe ich die Schlange im Graben. Ich folge ihr durch die Einöde und in den Wurzelirrgarten. Ist das Haar, das mir durchs Gesicht streicht, oder herabhängendes Moos? Ich beuge mich herunter, um der Erde nah zu bleiben, wie mein Führer. Den Weg hierher werde ich nicht vergessen.",
+			"effects": {
+				"waywood": 1,
+				"influencemoth": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachwoodlantern",
+			"label": "Der ausgeblichene Weg",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 2
+			},
+			"startdescription": "Ich könnte in einem Raum ohne Farben schlafen: die Laken bleichen, die Wände tünchen, mir die Haare färben und die Haut anmalen.",
+			"description": "'Farbe gibt es nur dort, wo Licht ist' – und der Forst ist der Ort, wo das Licht nicht wandelt. Im Traume schließe ich die Augen und gehe, wobei ich stolpere und mir Füße und Knie aufschlage. Schließlich wird das Unterholz zu dicht als dass ich noch durchkäme, und als ich meine Augen öffne, treibe ich zwischen schwarzen Bäumen. Schatten flattern. Meine Füße werden den Weg zurück an diesen Ort finden.",
+			"effects": {
+				"waywood": 1,
+				"influencemoth": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamusewoodway",
+			"label": "Der Weg zum Forst",
+			"actionId": "dream",
+			"requirements": {
+				"waywood": 1
+			},
+			"slots": [
+				{
+					"id": "Path",
+					"label": "Pfad",
+					"description": "Setze Leidenschaft ein, um den Forst zu betreten – oder, wenn du das richtige Wissen hast, finde einen Weg zur Weißen Tür, wo sich die Toten drängen.",
+					"required": {
+						"lore": 1,
+						"passion": 1
+					}
+				}
+			],
+			"startdescription": "Wenn ich genug Leidenschaft aufbringe, kann ich auf der Traumstraße zum Forst gehen. Wenn ich über das richtige Wissen verfüge, könnte ich den Weg jenseits davon finden.",
+			"description": "Die Wasser des Forstes fließen kalt und tief, doch niemals klar. Nur auswendig gelernte Erinnerungen werden mich nicht dorthin führen. Ich muss meine Leidenschaft einsetzen. Nun treibe ich in andere Träume ab.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				},
+				{
+					"id": "dreamenterwood",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachwhitelantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachwhiteknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachwhitewinter",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachwhitelantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachwhiteknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachwhitewinter",
+					"chance": 100
+				}
+			],
+			"craftable": true,
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreamenterwood",
+			"label": "Den Forst betreten",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"waywood": 1,
+				"passion": 1
+			},
+			"startdescription": "Nun gehe ich zwischen Bäumen mit vernarbter Borke hindurch. Der Mond wandert hinter den Ästen vorbei, doch er behält seine Finger in meinem Haar. Jetzt stolpere ich über Wurzeln. Es ist verlockend, auf alle Viere zu gehen, um den tief hängenden Zweigen auszuweichen. Blasse Flügel regen sich tief in der Nacht.",
+			"description": ".",
+			"portaleffect": "Wood",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"warmup": 0,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachwhitelantern",
+			"label": "Das Licht im Forst: Nicht genug!",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 1
+			},
+			"startdescription": "Da ist ein Haus im Forst. So viel weiß ich. Hier ist ein Licht durch die Bäume – ",
+			"description": "Meine Traumhaut wird von Traumdornen traumdurchbohrt. Mein Bett wird blutbefleckt sein, wenn ich erwache. Dies ist der richtige Ansatz, doch ich muss mehr wissen, um weiter zu reisen. Nun treibe ich in andere Träume ab.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachwhitelantern",
+			"label": "Annäherung an die Weiße Tür",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 4
+			},
+			"startdescription": "Da ist ein Haus im Forst. Ich weiß etwas über jenes Haus. Genug, um den Weg zu seinem Lichte zu finden?",
+			"description": "Dies sind die Grenzen rund um das Haus, mit ihren Nebeln und ihren Spuren. Dies ist der Fels namens Tempel des Rads, hoch wie ein Kirchturm, gescheckt von schwarzen Flechten und gesprenkelt mit Augensymbolen. Ich umrunde ihn, und die Weiße Tür ist vor mir. Das Licht des Hauses leckt an seinen Mauern heraus.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waywhite": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachwhiteknock",
+			"label": "Das Licht im Forst: Nicht genug!",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 1
+			},
+			"startdescription": "Da ist ein Haus im Forst. So viel weiß ich. Hier ist ein Licht durch die Bäume – ",
+			"description": "Meine Traumhaut wird von Traumdornen traumdurchbohrt. Mein Bett wird blutbefleckt sein, wenn ich erwache. Dies ist der richtige Ansatz, doch ich muss mehr wissen, um weiter zu reisen. Nun treibe ich in andere Träume ab.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"warmup": 10,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachwhiteknock",
+			"label": "Annäherung an die Weiße Tür",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 4
+			},
+			"startdescription": "Da ist ein Haus im Forst. Ich kenne genug Geheimnisse des Klopfens, um die verborgenen Pfade durch die verschlungenen Bäume zu finden.",
+			"description": "Dies sind die Grenzen rund um das Haus, mit ihren Nebeln und ihren Spuren. Dies ist der Fels namens Tempel des Rads, hoch wie ein Kirchturm, gescheckt von schwarzen Flechten und gesprenkelt mit Augensymbolen. Ich umrunde ihn, und die Weiße Tür ist vor mir: offen, wie es vor so langer Zeit schon geschrieben stand.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waywhite": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachwhitewinter",
+			"label": "Das Licht im Forst: Nicht genug!",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"winter": 1
+			},
+			"startdescription": "Da ist ein Haus im Forst. So viel weiß ich. Hier ist ein Licht durch die Bäume – ",
+			"description": "Meine Traumhaut wird von Traumdornen traumdurchbohrt. Mein Bett wird blutbefleckt sein, wenn ich erwache. Dies ist der richtige Ansatz, doch ich muss mehr wissen, um weiter zu reisen. Nun treibe ich in andere Träume ab.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachwhitewinter",
+			"label": "Annäherung an die Weiße Tür",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"winter": 4
+			},
+			"startdescription": "Da ist ein Haus im Forst, und eine Tür, wo zuweilen die Toten wandeln. Ich habe von den Pfaden gelesen, welche die Toten nehmen.",
+			"description": "Dies sind die Grenzen rund um das Haus, mit ihren Nebeln und ihren Spuren. Dies ist der Fels namens Tempel des Rads, hoch wie ein Kirchturm, gescheckt von schwarzen Flechten und gesprenkelt mit Augensymbolen. Ich umrunde ihn, und die Weiße Tür ist vor mir, leuchtend wie der Mond im Winter.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waywhite": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamusewhiteway",
+			"label": "Der Weg zur Weißen Tür",
+			"actionId": "dream",
+			"requirements": {
+				"waywhite": 1
+			},
+			"slots": [
+				{
+					"id": "Ascent",
+					"label": "Aufstieg",
+					"description": "Setze Gesundheit ein, um die Weiße Tür zu passieren – oder folge deinem Verlangen des Tür des Hirsches, der Tür der Wissenden.",
+					"required": {
+						"desire": 1,
+						"health": 1
+					}
+				}
+			],
+			"startdescription": "In meinen Träumen kenne ich den Weg zur Weißen Tür, durch die Grenzen. Doch jener Pfad ist voller Toter, die dort wandeln. Ich brauche Gesundheit, um ihrer Kälte zu trotzen.",
+			"description": "Der schmale Pfad ist verstopft mit langsamen Gestalten – die Luft erbebt von ihrem Seufzen. Mein Blut verdickt sich vor Kälte. Ich muss umkehren. Nun treibe ich in andere Träume ab.",
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				},
+				{
+					"id": "dreamenterwhite",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachstagfirst",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachstagsubsequent",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamenterwhite",
+			"label": "Durch die Weiße Tür treten",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"waywhite": 1,
+				"health": 1
+			},
+			"startdescription": "Nun kann ich mich der Weißen Tür durch die Grenzen nähern. Nun kann ich meine Finger auf sie legen, ihre Kälte spüren, ihr beim Öffnen zusehen. Als sie sich öffnet, schließt sich mir der Mund, verhärtet sich, verheilt wie eine längst vergessene Entstellung. Um mich herum erstrahlt der Mansus in Kobaltblau ...",
+			"description": ".",
+			"portaleffect": "whitedoor",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"warmup": 0,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachstagfirst",
+			"label": "Zur Tür des Hirsches",
+			"actionId": "dream",
+			"requirements": {
+				"waywhite": 1,
+				"desire": 1
+			},
+			"extantreqs": {
+				"waystagbefore_1": -1,
+				"waystagbefore_2": -1,
+				"waystagbefore_3": -1,
+				"waystagbefore_4": -1,
+				"waystagbefore_5": -1,
+				"waystag_after": -1
+			},
+			"startdescription": "Der Aufstieg ist langsam. Aus dem Nichts heraus zerrt der Wind an mir. Meine Haut ist von Licht besudelt. Der Forst erbebt vor Bewegung, weit unten.",
+			"description": "Die Tür des Hirsches: eine gezahnte Barriere blutgefleckten Horns, groß genug, um ein Schiff passieren zu lassen. Sie wurde vor langer Zeit aufgebrochen, und selbst jetzt sind die Narben noch nicht ganz verheilt. Auf einem Abhang neben der Tür ruht ein gigantisches und verwundetes goldenes Haupt. Sein Mund wäre groß genug, um mich zu verschlingen, wäre sein Unterkiefer nicht gebrochen. Dies ist der Name Ghirbi. Er beginnt sein Rätsel zu verkünden. ",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"deckeffect": {
+				"stagriddles": 1
+			},
+			"warmup": 30,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dreamreachstagsubsequent",
+			"label": "Wieder an der Tür des Hirsches",
+			"actionId": "dream",
+			"requirements": {
+				"waywhite": 1,
+				"desire": 1
+			},
+			"startdescription": "Ich habe diesen Aufstieg bereits gemacht. Er wird mir nichts nützen. Ich sollte das Rätsel lösen, so ich denn muss, oder den Weg zur Tür des Hirsches nehmen, so ich denn kann.",
+			"description": "Die Tür des Hirsches: eine gezahnte Barriere blutgefleckten Horns, groß genug, um ein Schiff passieren zu lassen. Sie wurde vor langer Zeit aufgebrochen, und selbst jetzt sind die Narben noch nicht ganz verheilt. Auf einem Abhang neben der Tür ruht ein gigantisches und verwundetes goldenes Haupt: Ghirbi. Es hat mir sein Rätsel gesagt, das ich lösen muss, um durch die Tür des Hirsches zu treten. [Träume vom Rätsel, um es zu lösen, oder wähle den Weg: Die Tür des Hirsches, falls du es bereits gelöst hast.]",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "dream_answerstagriddle_router",
+			"actionId": "dream",
+			"label": "Ghirbis Rätsel",
+			"requirements": {
+				"riddle": 1
+			},
+			"slots": [
+				{
+					"id": "Answer",
+					"label": "Antwort",
+					"required": {
+						"lore": 1
+					}
+				}
+			],
+			"startdescription": "In meinem Traume werde ich wieder vor der Tür des Hirsches stehen: einer gezahnten Barriere blutgefleckten Horns, vor langer Zeit aufgebrochen, aber noch nicht ganz verheilt. Jenes riesige goldene Haupt, Ghirbi, wird auf die Lösung meines Rätsels warten.",
+			"description": "Das Haupt schweigt. Die Tür bleibt verschlossen. Nun treibe ich in andere Träume ab.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "dream_answerstagriddle_1",
+					"chance": 100
+				},
+				{
+					"id": "dream_answerstagriddle_1",
+					"chance": 100
+				},
+				{
+					"id": "dream_answerstagriddle_2",
+					"chance": 100
+				},
+				{
+					"id": "dream_answerstagriddle_3",
+					"chance": 100
+				},
+				{
+					"id": "dream_answerstagriddle_4",
+					"chance": 100
+				},
+				{
+					"id": "dream_answerstagriddle_5",
+					"chance": 100
+				},
+				{
+					"id": "dream_wronganswerstagriddle",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"comments": "Route through this to answer riddle.",
+			"craftable": true
+		},
+		{
+			"id": "dream_answerstagriddle_1",
+			"label": "Ein Faden in einem Irrgarten",
+			"actionId": "dream",
+			"requirements": {
+				"waystagbefore_1": 1,
+				"fragmentmothc": 1
+			},
+			"startdescription": "'Es gibt viele Antworten auf diese Frage, wie die sich Häutenden wissen. Hier ist die meine ...'",
+			"description": "Die Tür öffnet sich malmend. Das Licht des Wächters durchflutet den Korridor im Inneren. Dem Haupte Ghibri entringt sich ein malmendes Stöhnen. Tränen geschmolzenen Messings rinnen aus seinen Augen und seine Wangen hinab, um den Boden zu versengen. Ich darf eintreten!",
+			"effects": {
+				"riddle": -1,
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"linked": [
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_answerstagriddle_2",
+			"label": "Eine unversöhnliche Antwort",
+			"actionId": "dream",
+			"requirements": {
+				"waystagbefore_2": 1,
+				"fragmentlanternc": 1
+			},
+			"startdescription": "'Nur im Schatten.'",
+			"description": "Die Tür öffnet sich malmend. Das Licht des Wächters durchflutet den Korridor im Inneren. Dem Haupte Ghibri entringt sich ein malmendes Stöhnen. Tränen geschmolzenen Messings rinnen aus seinen Augen und seine Wangen hinab, um den Boden zu versengen. Ich darf eintreten!",
+			"effects": {
+				"riddle": -1,
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"linked": [
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_answerstagriddle_3",
+			"actionId": "dream",
+			"label": "Ein begehrenswerte Antwort",
+			"requirements": {
+				"waystagbefore_3": 1,
+				"fragmentgrailc": 1
+			},
+			"startdescription": "'Hier nun jene Worte ...'",
+			"description": "Die Tür öffnet sich malmend. Das Licht des Wächters durchflutet den Korridor im Inneren. Dem Haupte Ghibri entringt sich ein malmendes Stöhnen. Tränen geschmolzenen Messings rinnen aus seinen Augen und seine Wangen hinab, um den Boden zu versengen. Ich darf eintreten!",
+			"effects": {
+				"riddle": -1,
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"linked": [
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_answerstagriddle_4",
+			"actionId": "dream",
+			"label": "Die Antwort einer Schlange",
+			"requirements": {
+				"waystagbefore_4": 1,
+				"fragmentknockc": 1
+			},
+			"startdescription": "'Ich selbst muss geöffnet werden. Sehet mein Blut, das vergossen wird.'",
+			"description": "Die Tür öffnet sich malmend. Das Licht des Wächters durchflutet den Korridor im Inneren. Dem Haupte Ghibri entringt sich ein malmendes Stöhnen. Tränen geschmolzenen Messings rinnen aus seinen Augen und seine Wangen hinab, um den Boden zu versengen. Ich darf eintreten!",
+			"effects": {
+				"riddle": -1,
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"linked": [
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_answerstagriddle_5",
+			"actionId": "dream",
+			"label": "Eine Antwort aus der Geschichte",
+			"requirements": {
+				"waystagbefore_5": 1,
+				"fragmentsecrethistoriesc": 1
+			},
+			"startdescription": "'Ihr Herz ist in einer anderen Historie begraben.'",
+			"description": "Die Tür öffnet sich malmend. Das Licht des Wächters durchflutet den Korridor im Inneren. Dem Haupte Ghibri entringt sich ein malmendes Stöhnen. Tränen geschmolzenen Messings rinnen aus seinen Augen und seine Wangen hinab, um den Boden zu versengen. Ich darf eintreten!",
+			"effects": {
+				"riddle": -1,
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"linked": [
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_wronganswerstagriddle",
+			"actionId": "dream",
+			"label": "Dies ist nicht die Antwort.",
+			"requirements": {
+				"lore": 1
+			},
+			"startdescription": "Ghirbi ist sehr weit gefallen. Ich darf das Haus nicht betreten, und eine seiner wenigen Quellen der Befriedigung ist es, den Zutritt zu verweigern. Es hat zu viel Ehrgefühl, um meiner zu spotten, doch ich kann die Befriedigung in seinen goldenen Augen sehen. 'Dies ist nicht', sagt es genüsslich, 'die Antwort.'",
+			"description": "Ich bin wach. Meine Augen sind offen und die Tür des Hirsches bleibt geschlossen. Nun treibe ich in andere Träume ab.",
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreamusestagway",
+			"label": "Der Weg zur Tür des Hirsches",
+			"actionId": "dream",
+			"requirements": {
+				"waystag_after": 1
+			},
+			"slots": [
+				{
+					"id": "Ascent",
+					"label": "Aufstieg",
+					"description": "Setze Leidenschaft ein, um die Tür des Hirsches zu passieren – oder, wenn du das richtige Wissen hast, finde einen Weg zur Spinnentür, wo Blut vergossen wird.",
+					"required": {
+						"reason": 1,
+						"lore": 1
+					}
+				}
+			],
+			"startdescription": "In meinen Träumen kenne ich den Weg zur Tür des Hirsches, durch den Irrgarten der Grenzen. Ghirbi wird mich passieren lassen, doch der Pfad ist immer ein Rätsel. Ich brauche Verstand.",
+			"description": "Hier auf den hohen trockenen Nebenwegen der Grenzen sind die feinen Risse und Fallen aus zehntausend Jahren. Mir mangelt es an Verstand. Ich werde erwachen, ohne die Tür zu sehen. Nun treibe ich in andere Träume ab.",
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				},
+				{
+					"id": "dreamenterstag",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachspiderlantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachspiderknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachspidergrail",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachspiderlantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachspiderknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachspidergrail",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "dreamenterstag",
+			"label": "Durch die Tür des Hirsches treten",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"waystag_after": 1,
+				"reason": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"startdescription": "Die Tür des Hirsches ist das Tor des Adepten. Wer sie passiert, wird in das erste wahre Mysterium des Hauses der Sonne initiiert. Das Haupt, Ghibri, weint, als ich dort eintrete, wo ihm der Zutritt verwehrt bleibt, doch es muss mich passieren lassen. Die vernarbten Ventile der Tür öffnen sich malmend.",
+			"description": ".",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"portaleffect": "stagdoor",
+			"warmup": 30
+		},
+		{
+			"id": "dreamnotquitereachspiderlantern",
+			"label": "Die Seidenen Sande: Nicht genug!",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 1
+			},
+			"startdescription": "In Träumen sind die Seidenen Sande der Ort, der flüstert. Graue Körner sieben, graues Unkraut bebt. Ich habe von den gewinkelten Spuren gelesen, denen ich zu folgen habe, von den gebeugten, ungesehenen, langsam schreitenden Bewohnern der Sande ... ",
+			"description": "Die Sande verschlucken meine Schritte. Sie rauschen herein, um mir den Mund zu verstopfen und die Augen zu füllen ... Ich werde mit geschwollener Zunge erwachen, mein Hals staubtrocken. Dies ist der richtige Ansatz, doch ich muss mehr wissen, um höher zu reisen. Nun treibe ich in andere Träume ab.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachspiderlantern",
+			"label": "Annäherung an die Spinnentür",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 8
+			},
+			"startdescription": "In Träumen sind die Seidenen Sande der Ort, der flüstert. Graue Körner sieben, graues Unkraut bebt. Ich habe von den gewinkelten Spuren gelesen, denen ich zu folgen habe, von den gebeugten, ungesehenen, langsam schreitenden Bewohnern der Sande ... ",
+			"description": "Die Sande verrinnen wie Wasser, und darunter ist der Stein, aus dem sich Götter erhoben, vor so langer Zeit. Vor mir ist die Tür, funkelnd im Regen, ihre schwarze Oberfläche mit Blut beperlt, jeder Tropfen schwer gerundet wie eine vollgesaugte Zecke.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"wayspider": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachspiderknock",
+			"label": "Die Seidenen Sande: Nicht genug!",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 1
+			},
+			"startdescription": "In Träumen sind die Seidenen Sande der Ort, der flüstert. Graue Körner sieben, graues Unkraut bebt. Ich weiß von den Worten, welche den Wind öffnen – ",
+			"description": "Die Sande verschlucken meine Schritte. Sie rauschen herein, um mir den Mund zu verstopfen und die Augen zu füllen ... Ich werde mit geschwollener Zunge erwachen, mein Hals staubtrocken. Dies ist der richtige Ansatz, doch ich muss mehr wissen, um höher zu reisen. Nun treibe ich in andere Träume ab.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachspiderknock",
+			"label": "Annäherung an die Spinnentür",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 8
+			},
+			"startdescription": "In Träumen sind die Seidenen Sande der Ort, der flüstert. Graue Körner sieben, graues Unkraut bebt. Ich weiß von den Worten, welche den Wind öffnen, also werden die Sande mir Zutritt gewähren – ",
+			"description": "Die Sande verrinnen wie Wasser, und darunter ist der Stein, aus dem sich Götter erhoben, vor so langer Zeit. Vor mir ist die Tür, funkelnd im Regen, ihre schwarze Oberfläche mit Blut beperlt, jeder Tropfen schwer gerundet wie eine vollgesaugte Zecke.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"wayspider": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachspidergrail",
+			"label": "Die Seidenen Sande: Nicht genug!",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"grail": 1
+			},
+			"startdescription": "In Träumen sind die Seidenen Sande der Ort, der flüstert. Graue Körner sieben, graues Unkraut bebt. DURST ist der einzige Führer durch die Sande – mein DURST oder der DURST der Spinnentür –",
+			"description": "Die Sande verschlucken meine Schritte. Sie rauschen herein, um mir den Mund zu verstopfen und die Augen zu füllen ... Ich werde mit geschwollener Zunge erwachen, mein Hals staubtrocken. Dies ist der richtige Ansatz, doch ich muss mehr wissen, um höher zu reisen. Nun treibe ich in andere Träume ab.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachspidergrail",
+			"label": "Annäherung an die Spinnentür",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"grail": 8
+			},
+			"startdescription": "In Träumen sind die Seidenen Sande der Ort, der flüstert. Graue Körner sieben, graues Unkraut bebt. DURST ist der einzige Führer durch die Sande – mein DURST oder der DURST der Spinnentür –",
+			"description": "Die Sande verrinnen wie Wasser, und darunter ist der Stein, aus dem sich Götter erhoben, vor so langer Zeit. Vor mir ist die Tür, funkelnd im Regen, ihre schwarze Oberfläche mit Blut beperlt, jeder Tropfen schwer gerundet wie eine vollgesaugte Zecke.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"wayspider": 1
+			}
+		},
+		{
+			"id": "dreamusespiderway",
+			"label": "Der Weg zur Spinnentür",
+			"actionId": "dream",
+			"requirements": {
+				"wayspider": 1
+			},
+			"slots": [
+				{
+					"id": "Ascent",
+					"label": "Aufstieg",
+					"description": "Bringe ein Blutopfer dar, um den DURST der Spinnentür zu löschen – oder, wenn du das richtige Wissen hast, finde einen Weg zur Pfauentür, wo Licht wie Blut vergossen wird.",
+					"required": {
+						"prisoner": 1,
+						"lore": 1
+					}
+				}
+			],
+			"startdescription": "In meinen Träumen kenne ich den Weg durch die Seidenen Sande zur Spinnentür. Wenn ich ihren DURST durch das Vergießen frischen Blutes stille, bevor ich schlafe, wird sie sich mir öffnen.",
+			"description": "Hier in den Winkeln des Traumes ist die Tür, funkelnd schwarz wie der Bauch einer Dolchwespe, auf ewig gezeichnet mit stetig schrumpfenden Blutstropfen.  Ich habe nicht ihren DURST gestillt, und die wird sich mir nicht öffnen. Nun treibe ich in andere Träume ab.",
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				},
+				{
+					"id": "dreamenterspider",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachpeacocklantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachpeacockknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamreachpeacockedge",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachpeacocklantern",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachpeacockknock",
+					"chance": 100
+				},
+				{
+					"id": "dreamnotquitereachpeacockedge",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "dreamenterspider",
+			"label": "Durch die Spinnentür treten",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"wayspider": 1,
+				"prisoner": 1
+			},
+			"startdescription": "Die Spinnentür hat immer DURST. Immer. Das Blut, das ich gelassen habe, fließt in Rinnsalen und sickert durch die Haut der Welt, und die Tür trinkt es und in der Befriedigung des Augenblicks schwillt ihre Öffnung so an, dass ich sie passieren kann.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"prisoner": -1
+			},
+			"description": ".",
+			"portaleffect": "spiderdoor",
+			"warmup": 0
+		},
+		{
+			"id": "dreamnotquitereachpeacocklantern",
+			"label": "Glasgarten: Nicht genug!",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 1
+			},
+			"startdescription": "Das Licht der Geteilten Sonne durchdringt meinen Traum, doch nicht genug, um die längst toten Frostblüten des Glasgartens aufzutauen. Mit jedem meiner Schritte zermalme ich eine weitere Pflanze zu Staub. Dies ist der Weg, den einst die helleren Stunden nahmen, doch nun liegt er in Schweigen gehüllt, hier in den Wolken – ",
+			"description": "Die Kälte des Glasgartens durchbohrt jede meiner Poren. Ich werde blau vor Kälte erwachen. Dies ist der richtige Ansatz, doch ich muss mehr wissen, um höher zu reisen. Nun treibe ich in andere Träume ab.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreamreachpeacocklantern",
+			"label": "Glasgarten: Annäherung an die Pfauentür",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 10
+			},
+			"startdescription": "Das Licht der Geteilten Sonne durchdringt meinen Traum, doch nicht genug, um die längst toten Frostblüten des Glasgartens aufzutauen. Mit jedem meiner Schritte zermalme ich eine weitere Pflanze zu Staub. Dies ist der Weg, den einst die helleren Stunden nahmen, doch nun liegt er in Schweigen gehüllt, hier in den Wolken – ",
+			"description": "Die Pfauentür: stolz in funkelndem Amethyst, ihr Glanz färbt die schneebleichen Formen des Glasgartens. Dies ist der höchste Punkt, an dem Sterbliche in den Mansus gelangen können. Kein Riss verunstaltet seine Oberfläche. Dies ist keine Tür, die blutet, wobei das Wort geht, sie können Licht bluten.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waypeacock": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachpeacockknock",
+			"label": "Glasgarten: Nicht genug!",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 1
+			},
+			"startdescription": "Das Licht der Geteilten Sonne durchdringt meinen Traum, doch nicht genug, um die längst toten Frostblüten des Glasgartens aufzutauen. Mit jedem meiner Schritte zermalme ich eine weitere Pflanze zu Staub. Ich kenne fast den Weg – ",
+			"description": "Die Kälte des Glasgartens durchbohrt jede meiner Poren. Ich werde blau vor Kälte erwachen. Dies ist der richtige Ansatz, doch ich muss mehr wissen, um höher zu reisen. Nun treibe ich in andere Träume ab.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreamreachpeacockknock",
+			"label": "Glasgarten: Annäherung an die Pfauentür",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"knock": 10
+			},
+			"startdescription": "Das Licht der Geteilten Sonne durchdringt meinen Traum, doch nicht genug, um die längst toten Frostblüten des Glasgartens aufzutauen. Mit jedem meiner Schritte zermalme ich eine weitere Pflanze zu Staub. Ich werde meine Schritte mit Bedacht wählen. Ich habe den Weg erlernt – ",
+			"description": "Die Pfauentür: stolz in funkelndem Amethyst, ihr Glanz färbt die schneebleichen Formen des Glasgartens. Dies ist der höchste Punkt, an dem Sterbliche in den Mansus gelangen können. Kein Riss verunstaltet seine Oberfläche. Dies ist keine Tür, die blutet, wobei das Wort geht, sie können Licht bluten.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waypeacock": 1
+			}
+		},
+		{
+			"id": "dreamnotquitereachpeacockedge",
+			"label": "Glasgarten: Nicht genug!",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"edge": 1
+			},
+			"startdescription": "Das Licht der Geteilten Sonne durchdringt meinen Traum, doch nicht genug, um die längst toten Frostblüten des Glasgartens aufzutauen. Mit jedem meiner Schritte zermalme ich eine weitere Pflanze zu Staub. Dies ist, wie es sich gehört – ",
+			"description": "Die Pfauentür: stolz in funkelndem Amethyst, ihr Glanz färbt die schneebleichen Formen des Glasgartens. Dies ist der höchste Punkt, an dem Sterbliche in den Mansus gelangen können. Kein Riss verunstaltet seine Oberfläche. Dies ist keine Tür, die blutet, wobei das Wort geht, sie können Licht bluten. Nun treibe ich in andere Träume ab.",
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "dreamreachpeacockedge",
+			"label": "Glasgarten: Annäherung an die Pfauentür",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"edge": 10
+			},
+			"startdescription": "Das Licht der Geteilten Sonne durchdringt meinen Traum, doch nicht genug, um die längst toten Frostblüten des Glasgartens aufzutauen. Mit jedem meiner Schritte zermalme ich eine weitere Pflanze zu Staub. Dies ist, wie es sich gehört. Ich werde meine Schritte mit Bedacht wählen, wie es das Wissen vorschreibt –",
+			"description": "Die Pfauentür: stolz in funkelndem Amethyst, ihr Glanz färbt die schneebleichen Formen des Glasgartens. Dies ist der höchste Punkt, an dem Sterbliche in den Mansus gelangen können. Kein Riss verunstaltet seine Oberfläche. Dies ist keine Tür, die blutet, wobei das Wort geht, sie können Licht bluten.",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"effects": {
+				"waypeacock": 1
+			}
+		},
+		{
+			"id": "dreamusepeacockway",
+			"label": "Der Weg zur Pfauentür",
+			"actionId": "dream",
+			"requirements": {
+				"waypeacock": 1
+			},
+			"slots": [
+				{
+					"id": "Ascent",
+					"label": "Aufstieg",
+					"description": "Die Pfauentür öffnet sich, eigentlich, nicht.",
+					"required": {
+						"tool": 1
+					}
+				}
+			],
+			"startdescription": "In meinen Träumen kenne ich den Weg durch den Glasgarten zur Spinnentür: der bewundernswertesten Tür, der Tür, die wie ein Spiegel funkelt. Vielleicht kann ich sie, mit den richtigen Ressourcen, passieren. ",
+			"description": "Die Pfauentür ist lila wie der süßeste Edelstein, wie die reifste Frucht, wie die tiefenloseste Prosa. Sie nimmt mein Spiegelbild und gibt mir nichts. Wenn ich erwache, entsinne ich mich nicht meines Traums.",
+			"craftable": true,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				},
+				{
+					"id": "apostlelantern.createpillar2",
+					"chance": 100
+				},
+				{
+					"id": "dreamenterpeacockmirror",
+					"chance": 100
+				},
+				{
+					"id": "dreamenterpeacockfrangiclave",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "dreamenterpeacockmirror",
+			"label": "Durch die Pfauentür",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"waypeacock": 1,
+				"mirror": 1
+			},
+			"startdescription": "Die Pfauentür spiegelt den Spiegel, den ich in meinem Traume halte, und der Spiegel spiegelt die Pfauentür. Schon kräuselt ein sinnliches Erschaudern ihre Oberfläche. Sie sehnt sich nach einem Bruch, und wenn sie diese Befriedigung erfährt, trete ich ein.",
+			"description": ".",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"portaleffect": "peacockdoor",
+			"aspects": {
+				"crackmirror": 1
+			},
+			"warmup": 0
+		},
+		{
+			"id": "dreamenterpeacockfrangiclave",
+			"label": "Durch die Pfauentür",
+			"actionId": "dream",
+			"craftable": false,
+			"requirements": {
+				"waypeacock": 1,
+				"toolknockf": 1
+			},
+			"startdescription": "Das Summen einer Stimmgabel durchfährt den Schlüssel in meiner Hand: die Pfauentür keucht wie zur Antwort. Schon kräuselt ein sinnliches Erschaudern ihre Oberfläche. Sie sehnt sich nach einem Bruch, und wenn sie diese Befriedigung erfährt, trete ich ein.",
+			"description": ".",
+			"alternativerecipes": [
+				{
+					"id": "poison.long.way.trap",
+					"additional": true
+				}
+			],
+			"portaleffect": "peacockdoor",
+			"warmup": 0
+		},
+		{
+			"id": "poison.long.way.trap",
+			"actionId": "poison.long.way.trap",
+			"label": "Der Wächter auf dem Weg",
+			"startdescription": "Der Lange hat unsichtbare Kartographen am Tor postiert, um mich beim Passieren zu beobachten und mich wie ein halb bekanntes Land zu vermessen.",
+			"requirements": {
+				"poison.way.long": 1
+			},
+			"effects": {
+				"long.lesson.dreamwork": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "dreamheartvictoryintro",
+			"label": "Trommeln im Sturm",
+			"actionId": "dream",
+			"requirements": {
+				"sendingheartg": 1
+			},
+			"startdescription": "Der Wind frisch auf und das Dach klappert als ich mich zum Schlafen einrichte. Es gibt da ein bitteres Kraut, das mir helfen wird, meinen Körper zu verlassen. Der Forst öffnet sich um mich herum, doch mit meinen neuen Augen kann ich nun einen anderen Pfad erkennen. Diejenige mit Namen Marinette wartet an jenem Pfad mit dem Schlüssel, der mein Ende und Anfang sein wird.",
+			"warmup": 30,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "Liebling",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dreamheartvictory_withrisen",
+					"chance": 100
+				},
+				{
+					"chance": 100,
+					"id": "belovedfarewelldream"
+				},
+				{
+					"id": "dreamheartvictory",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreamheartvictory",
+			"label": "Das Königshaut-Tor",
+			"actionId": "dream",
+			"requirements": {
+				"sendingheartg": 1
+			},
+			"startdescription": "Marinette wartet im Schatten einer Pinie, dunkle Haut schimmert, weiße Knochen gleißen, Krallen hell wie Messing. Sie hat einen roten Schlüssel bei sich, der ein blutiges Messer oder eine rubinrote Wunde sein könnte. Wenn sie ihn einsetzt, ist der Schmerz komplett rot.",
+			"ending": "minorheartvictory",
+			"warmup": 30
+		},
+		{
+			"id": "dreamheartvictory_withrisen",
+			"label": "Das Königshaut-Tor",
+			"actionId": "dream",
+			"requirements": {
+				"sendingheartg": 1,
+				"summoned": 1
+			},
+			"startdescription": "Marinette wartet im Schatten einer Pinie, dunkle Haut schimmert, weiße Knochen gleißen, Krallen hell wie Messing. Sie hat einen roten Schlüssel bei sich, der ein blutiges Messer oder eine rubinrote Wunde sein könnte. Wenn sie ihn einsetzt, ist der Schmerz komplett rot.\n\nAn dem finsteren Ort unter den Bäumen schaut mein toter Liebling zu, mit einer Haut, die gesprenkelt ist, mit Augen, die Lampen sind.",
+			"ending": "minorheartvictorywithrisen",
+			"warmup": 10
+		},
+		{
+			"id": "dreammothvictoryintro",
+			"label": "Trommeln im Sturm",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothg": 1
+			},
+			"startdescription": "Ich lasse mich auf den vertrauten Pfaden des Schlafes nach unten treiben, bis der Forst klar vor mir steht, mit seinen ausgreifenden Bäumen und seinen schattenumsäumten Pfaden. Die Tür im Forst liegt unterhalb der Wasser des Brunnens. Das weiß ich jetzt. Ich kann sie weder tot noch lebendig passieren. Medusa, die weder tot noch lebendig ist, wird den Weg frei machen. Ich fange an zu laufen.",
+			"warmup": 30,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "Liebling",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dreammothvictory_withrisen",
+					"chance": 100
+				},
+				{
+					"chance": 100,
+					"id": "belovedfarewelldream"
+				},
+				{
+					"id": "dreammothvictory",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreammothvictory",
+			"label": "Die Tür im Forst",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothg": 1
+			},
+			"startdescription": "Der Mondschein teilt die Bäume, um das zu schwärzen, was der Brunnen birgt, die Baumwurzeln zu malen, Medusas ineinander verschlungene Glieder zu berühren, wenn sie am Brunnen wartet. Sie hebt ihre tropfenden Arme, mit denen sie einen bleichen Schlüssel hält, der sich wie ein zahnbewehrter Wurm windet. Ich knie, ein Reh, und biete meinen Hals dar. Ein Blutstrahl schießt in den Brunnen, und dann beginnt Medusa, mir einen neue Gestalt zu schnitzen.",
+			"ending": "minormothvictory",
+			"warmup": 30
+		},
+		{
+			"id": "dreammothvictory_withrisen",
+			"label": "Die Tür im Forst",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothg": 1,
+				"summoned": 1
+			},
+			"startdescription": "Der Mondschein teilt die Bäume, um das zu schwärzen, was der Brunnen birgt, die Baumwurzeln zu malen, Medusas ineinander verschlungene Glieder zu berühren, wenn sie am Brunnen wartet. Sie hebt ihre tropfenden Arme, mit denen sie einen bleichen Schlüssel hält, der sich wie ein zahnbewehrter Wurm windet. Ich knie, ein Reh, und biete meinen Hals dar. Ein Blutstrahl schießt in den Brunnen, und dann beginnt Medusa, mir einen neue Gestalt zu schnitzen. \n\nAn dem finsteren Ort unter den Bäumen schaut mein toter Liebling zu, mit einer Haut, die gesprenkelt ist, mit Augen, die Lampen sind.",
+			"ending": "minormothvictorywithrisen",
+			"warmup": 10
+		},
+		{
+			"id": "dreammeniscatevictoryintro",
+			"label": "Ohne die Mauern",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothheartg": 1
+			},
+			"startdescription": "Ich lasse mich auf den vertrauten Pfaden des Schlafes nach unten treiben, bis der Forst klar vor mir steht, mit seinen ausgreifenden Bäumen und seinen schattenumsäumten Pfaden. Doch dies ist nicht der Forst, wie ich ihn kenne. Überall Birken, weiß wie Mondschein, und der Mondschein ist schwarz wie Tinte. Unter seinem Druck beginnt die weiße Haut des Baums sich abzuschälen, bis er blutet. Ich fange an zu laufen, dann renne ich. Ich muss den Brunnen erreichen, bevor ich erwache, oder etwas Schlimmeres – ",
+			"warmup": 30,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "Liebling",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "dreammeniscatevictory_withrisen",
+					"chance": 100
+				},
+				{
+					"chance": 100,
+					"id": "belovedfarewelldream"
+				},
+				{
+					"id": "dreammeniscatevictory",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dreammeniscatevictory",
+			"label": "Drei",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothheartg": 1
+			},
+			"startdescription": "Meine Haut ist nun zerfetzt. Der Brunnen ist vor mir, doch der Mond wandelt sich, ist schwarz, ist golden, ist perlfarben. Das Blut des Brunnens ist ein roter Spiegel, und drei von ihnen erheben sich, und ihre Antlitze sind die meinen, gehörnt wie der Mond, der Größte hält einen Schlüssel aus schwarzem Saphir, und als sich meine Haut teilt, wird mein Leib wie ein Blitz zerrissen, und WAS INNEN IST, AUSSEN. WAS AUSSEN IST, INNEN. –",
+			"ending": "minormeniscatevictory",
+			"warmup": 30
+		},
+		{
+			"id": "dreammeniscatevictory_withrisen",
+			"label": "Drei",
+			"actionId": "dream",
+			"requirements": {
+				"sendingmothheartg": 1,
+				"summoned": 1
+			},
+			"startdescription": "Meine Haut ist nun zerfetzt. Der Brunnen ist vor mir, doch der Mond wandelt sich, ist schwarz, ist golden, ist perlfarben. Das Blut des Brunnens ist ein roter Spiegel, und drei von ihnen erheben sich, und ihre Antlitze sind die meinen, gehörnt wie der Mond, der Größte hält einen Schlüssel aus schwarzem Saphir, und als sich meine Haut teilt, wird mein Leib wie ein Blitz zerrissen, und WAS INNEN IST, AUSSEN. WAS AUSSEN IST, INNEN. –",
+			"ending": "minormeniscatevictorywithrisen",
+			"warmup": 30
+		},
+		{
+			"id": "belovedfarewelldream",
+			"label": "Die Wahl der Schwelle",
+			"actionId": "dream",
+			"requirements": {
+				"romanticinterest": 1
+			},
+			"startdescription": "Der letzte Abschied. Sie werden bleiben und ich werde aufsteigen.",
+			"slots": [
+				{
+					"id": "decision",
+					"label": "Entscheidung",
+					"description": "[Füge Leidenschaft hinzu, um dich von deinem Aufstieg abzuwenden ... und als Sterblicher mit deinem Liebling zu leben. Tue zum Fortfahren nichts.]",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "auclairvictory",
+					"chance": 100
+				},
+				{
+					"id": "catvictory",
+					"chance": 100
+				},
+				{
+					"id": "clovettevictory",
+					"chance": 100
+				},
+				{
+					"id": "cliftonvictory",
+					"chance": 100
+				},
+				{
+					"id": "dorothyvictory",
+					"chance": 100
+				},
+				{
+					"id": "elridgevictory",
+					"chance": 100
+				},
+				{
+					"id": "enidvictory",
+					"chance": 100
+				},
+				{
+					"id": "laidlawvictory",
+					"chance": 100
+				},
+				{
+					"id": "leovictory",
+					"chance": 100
+				},
+				{
+					"id": "nevillevictory",
+					"chance": 100
+				},
+				{
+					"id": "portervictory",
+					"chance": 100
+				},
+				{
+					"id": "reniravictory",
+					"chance": 100
+				},
+				{
+					"id": "rosevictory",
+					"chance": 100
+				},
+				{
+					"id": "salibavictory",
+					"chance": 100
+				},
+				{
+					"id": "sleevictory",
+					"chance": 100
+				},
+				{
+					"id": "sylviavictory",
+					"chance": 100
+				},
+				{
+					"id": "tristanvictory",
+					"chance": 100
+				},
+				{
+					"id": "valcianevictory",
+					"chance": 100
+				},
+				{
+					"id": "victorvictory",
+					"chance": 100
+				},
+				{
+					"id": "violetvictory",
+					"chance": 100
+				},
+				{
+					"id": "ysabetvictory",
+					"chance": 100
+				},
+				{
+					"id": "imnotinlovedream",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "imnotinlovedream",
+			"label": "Hingabe",
+			"startdescription": "Vielleicht werde ich geliebt. Vielleicht liebe ich. Vielleicht spielt all das gar keine Rolle.",
+			"actionId": "dream",
+			"craftable": false,
+			"linked": [
+				{
+					"id": "dreammothvictory",
+					"chance": 100
+				},
+				{
+					"id": "dreamheartvictory",
+					"chance": 100
+				},
+				{
+					"id": "dreammeniscatevictory",
+					"chance": 100
+				}
+			]
+		}
+	]
+}

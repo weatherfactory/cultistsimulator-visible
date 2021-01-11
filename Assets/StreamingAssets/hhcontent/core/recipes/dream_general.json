@@ -1,0 +1,422 @@
+{
+    "recipes": [
+        {
+            "id": "dreamascensionpowera",
+            "label": "Meditate on my goal of unearthly power",
+            "actionid": "dream",
+            "requirements": {
+                "ascensionpowera": 1
+            },
+            "slots": [
+                {
+                    "id": "Calculation",
+                    "label": "Calculation",
+                    "required": {
+                        "lore": 1,
+                        "health": 1,
+                        "reason": 1,
+                        "priestjob": 1
+                    },
+                    "description": "Dedicate myself with the lore of the principle I seek; or focus my efforts elsewhere."
+                }
+            ],
+            "startdescription": "Should I dedicate myself to my purpose? Or focus my efforts elsewhere?",
+            "description": "I have decided to remain as I am... for now.",
+            "alt": [
+                {
+                    "id": "dreamascension_abandontemptation",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamascension_switchto_sensation",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamascension_switchto_enlightenment",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamascension_upgrade_power_1to2",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "dreamascensionsensationa",
+            "label": "Meditate on the pursuit of sensation",
+            "actionid": "dream",
+            "requirements": {
+                "ascensionsensationa": 1
+            },
+            "slots": [
+                {
+                    "id": "Musing",
+                    "label": "Musing",
+                    "required": {
+                        "lore": 1,
+                        "passion": 1,
+                        "reason": 1,
+                        "priestjob": 1
+                    },
+                    "description": "Dedicate myself with the lore of the principle I seek; or focus my efforts elsewhere."
+                }
+            ],
+            "startdescription": "Should I dedicate myself to my purpose? Or focus my efforts elsewhere?",
+            "description": "I have decided to remain as I am... for now.",
+            "alt": [
+                {
+                    "id": "dreamascension_abandontemptation",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamascension_switchto_power",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamascension_switchto_enlightenment",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamascension_upgrade_sensation_1to2m",
+                    "chance": 50
+                },
+                {
+                    "id": "dreamascension_upgrade_sensation_1to2f",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "dreamascensionenlightenmenta",
+            "label": "Meditate on my goal of unearthly knowledge",
+            "actionid": "dream",
+            "requirements": {
+                "ascensionenlightenmenta": 1
+            },
+            "slots": [
+                {
+                    "id": "Reflection",
+                    "label": "Reflection",
+                    "required": {
+                        "lore": 1,
+                        "passion": 1,
+                        "health": 1,
+                        "priestjob": 1
+                    },
+                    "description": "Dedicate myself with the lore of the principle I seek; or focus my efforts elsewhere."
+                }
+            ],
+            "startdescription": "Should I dedicate myself to my purpose? Or focus my efforts elsewhere?",
+            "description": "I have decided to remain as I am... for now.",
+            "alt": [
+                {
+                    "id": "dreamascension_abandontemptation",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamascension_switchto_sensation",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamascension_switchto_power",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamascension_upgrade_enlightenment_1to2",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "dreamascension_abandontemptation",
+            "actionid": "dream",
+            "label": "Purge myself of Temptation",
+            "startdescription": "My own desires are nothing. I am the Threshold. I am the road that my people will walk. I will set myself irrevocably to that purpose. [This will destroy your Temptation permanently. Be sure that's what you want.]",
+            "description": "I might say that I have chosen, but that is not quite true. I <i>have been</i> chosen.",
+            "requirements": {
+                "priestjob": 1
+            },
+            "effects": {
+                "passion": 1,
+                "desire": -1
+            }
+        },
+        {
+            "id": "dreamascension_switchfromchange",
+            "label": "Pursue Sensation rather than Change",
+            "requirements": {
+                "ascensionchangea": 1
+            },
+            "actionid": "dream",
+            "effects": {
+                "desire": -1,
+                "ascensionsensationa": 1
+            },
+            "startdescription": "Of all things, the desire for change is most susceptible to change. [It isn't straightforward to regain the desire for Change, once it's lost.]",
+            "description": "I have refocused my intentions. There are experiences tucked like veins beneath the world's skin. I will know the deepest of them, though the experience might devour me.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "dreamascension_switchto_power",
+            "label": "My goal is Power, now.",
+            "actionid": "dream",
+            "requirements": {
+                "passion": 1
+            },
+            "effects": {
+                "desire": -1,
+                "ascensionpowera": 1
+            },
+            "startdescription": "Perhaps Power is the more compelling goal.",
+            "description": "I have refocused my intentions. My predecessors wielded the power of remaking: a power that empresses, generals, physicists could only dream of. So shall I, though the power might sear me."
+        },
+        {
+            "id": "dreamascension_switchto_sensation",
+            "label": "My goal is Sensation, now.",
+            "actionid": "dream",
+            "requirements": {
+                "health": 1
+            },
+            "effects": {
+                "desire": -1,
+                "ascensionsensationa": 1
+            },
+            "startdescription": "Perhaps Sensation is the sweeter goal.",
+            "description": "I have refocused my intentions. There are experiences tucked like veins beneath the world's skin. I will know the deepest of them, though the experience might devour me."
+        },
+        {
+            "id": "dreamascension_switchto_enlightenment",
+            "label": "My goal is Enlightenment, now.",
+            "actionid": "dream",
+            "requirements": {
+                "reason": 1
+            },
+            "effects": {
+                "desire": -1,
+                "ascensionenlightenmenta": 1
+            },
+            "startdescription": "Perhaps knowledge is the finer goal.",
+            "description": "I have refocused my intentions. My predecessors understood the highest secrets, the searching secrets, the secrets that shone through bones like glass and skin like parchment. So shall I, though the knowledge might undo me."
+        },
+        {
+            "id": "dreamascension_upgrade_power_1to2",
+            "label": "Flame's Dedication",
+            "actionid": "dream",
+            "requirements": {
+                "lore": 1,
+                "forge": 1
+            },
+            "startdescription": "I will dedicate myself to the pursuit of power.",
+            "description": "I've whispered the words that the smith speaks to the iron, that the murderer speaks to their victims, that the fire speaks to its fuel. Only I know what I have done, but it has shaped my path now. [I have advanced a step towards a terrible ascension.]",
+            "effects": {
+                "ascensionpowera": -1,
+                "ascensionpowerb": 1
+            },
+            "burnimage": "forgededication"
+        },
+        {
+            "id": "dreamascension_upgrade_sensation_1to2m",
+            "label": "Blood's Dedication",
+            "actionid": "dream",
+            "requirements": {
+                "lore": 1,
+                "grail": 1
+            },
+            "startdescription": "I will dedicate myself to the pursuit of sensation.",
+            "description": "Some words are best heard. Some words are best tasted. That taste is on my tongue now, and I will never forget it. [I have advanced a step towards a terrible ascension.]",
+            "effects": {
+                "ascensionsensationa": -1,
+                "ascensionsensationbm": 1
+            },
+            "burnimage": "graildedication"
+        },
+        {
+            "id": "dreamascension_upgrade_sensation_1to2f",
+            "label": "Blood's Dedication",
+            "actionid": "dream",
+            "requirements": {
+                "lore": 1,
+                "grail": 1
+            },
+            "startdescription": "I will dedicate myself to the pursuit of sensation.",
+            "description": "Some words are best heard. Some words are best tasted. That taste is on my tongue now, and I will never forget it. [I have advanced a step towards a terrible ascension.]",
+            "effects": {
+                "ascensionsensationa": -1,
+                "ascensionsensationbf": 1
+            },
+            "burnimage": "graildedication"
+        },
+        {
+            "id": "dreamascension_upgrade_enlightenment_1to2",
+            "label": "Light's Dedication",
+            "actionid": "dream",
+            "requirements": {
+                "lore": 1,
+                "lantern": 1
+            },
+            "startdescription": "I will dedicate myself to the pursuit of knowledge.",
+            "description": "I have spoken the words: 'Each Hour has its colour, but colour exists only where there is light.' I will go where there is light, though it bleach me to glass. [I have advanced a step towards a terrible ascension.]",
+            "effects": {
+                "ascensionenlightenmenta": -1,
+                "ascensionenlightenmentb": 1
+            },
+            "burnimage": "lanterndedication"
+        },
+        {
+            "id": "dreamreason",
+            "label": "The Wandering Mind",
+            "actionid": "dream",
+            "requirements": {
+                "reason": 1
+            },
+            "effects": {},
+            "startdescription": "There was once a man who said that the sleep of reason produced monsters. Often it is healthy to let the mind wander in sleep. But if I keep dreaming, sooner or later, some sort of monster will rise from my own fears.",
+            "description": ".",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "dream_router",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "dream_router",
+            "label": "The Crowds of Sleep",
+            "actionid": "dream",
+            "deckeffects": {
+                "dreamreasonresults": 1
+            },
+            "linked": [
+                {
+                    "id": "dreamcontentment",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamrestlessness",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamvitality",
+                    "chance": 100
+                },
+                {
+                    "id": "dreamglimmering",
+                    "chance": 100
+                },
+                {
+                    "id": "nightmarehersault",
+                    "chance": 100
+                },
+                {
+                    "id": "nightmarecleansingdawn",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "dreamcontentment",
+            "label": "Dreams of the Rain",
+            "actionid": "dream",
+            "requirements": {
+                "contentment": 1
+            },
+            "startdescription": "Rain is coming; but the right kind of rain.",
+            "description": "I dreamt of the rain, whispering in the eaves, tapping on windows like an old friend, hissing prankishly in the chimney. It is difficult to be unhappy in the right kind of rain.",
+            "warmup": 10
+        },
+        {
+            "id": "dreamrestlessness",
+            "label": "Dreams of Doors",
+            "actionid": "dream",
+            "requirements": {
+                "restlessness": 1
+            },
+            "startdescription": "Tonight is the dream of the labyrinth of doors.",
+            "description": "I dreamt of opening doors. Red doors and gold doors and doors of glass and doors bound like books and railway-carriage doors and castle gates. Behind one was the something I seek. I woke with the slamming of doors still in my ears.",
+            "warmup": 10
+        },
+        {
+            "id": "dreamvitality",
+            "label": "A Profound and Restful Sleep",
+            "actionid": "dream",
+            "requirements": {
+                "vitality": 1
+            },
+            "startdescription": "Tonight I will dream of -",
+            "description": "I dreamt of nothing at all. I woke and stretched and rose without haste. Those quiet hours have left me energised.",
+            "warmup": 10
+        },
+        {
+            "id": "dreamglimmering",
+            "label": "Dreams of Curios behind Glass",
+            "actionid": "dream",
+            "requirements": {
+                "glimmering": 1
+            },
+            "startdescription": "Tonight I will dream of a museum.",
+            "description": "In the display cases of the impossible museum, I always see an apple white as snow and hard as marble. A golden beetle in a stern box. A coy geometry awaiting my touch. A black envelope bursting with spring. A brass opera-box for instruments of record and measure. A storm in a tin. I always wake before I see the aisle's end.",
+            "warmup": 10
+        },
+        {
+            "id": "nightmarecleansingdawn",
+            "label": "Nightmare: The Cleansing Dawn",
+            "actionid": "dream",
+            "requirements": {
+                "fascination": 1
+            },
+            "alt": [
+                {
+                    "id": "nightmarecleansingdawnsuccess",
+                    "chance": 30
+                }
+            ],
+            "startdescription": "The sun is rising. It won't spare me.",
+            "description": "Now I can slough off my flesh, patch by patch, tugging the tendons free like fibres picked from teeth. My skin lies like a shredded blanket. The sun heaves itself above the horizon with a triumphant battle-yell. The light falls like acid on my naked bones. Pain wakes me. My bones will throb for days.",
+            "warmup": 10
+        },
+        {
+            "id": "nightmarecleansingdawnsuccess",
+            "actionid": "dream",
+            "effects": {
+                "influencelanternc": 1
+            },
+            "description": "Now I can slough off my flesh, patch by patch, tugging the tendons free like fibres picked from teeth. My skin lies like a shredded blanket. The sun heaves itself above the horizon with a triumphant battle-yell. The light falls like acid on my naked bones. Pain will wake me, and my bones will ache for days, but the Sun's  words are etched on my bones."
+        },
+        {
+            "id": "nightmarehersault",
+            "label": "Hersault's Nightmare",
+            "actionid": "dream",
+            "requirements": {
+                "dread": 1
+            },
+            "alt": [
+                {
+                    "id": "nightmarehersaultsuccess",
+                    "chance": 30
+                }
+            ],
+            "startdescription": "Down I go.",
+            "description": "I remember that Hersault wrote of this. I've levered up floor-boards, and wriggled down snugly. Now I am compressed beneath them like a hidden corpse. The air stinks of hot dust. My mouth is full of splinters. This time, I haven't learnt what I hoped to learn - whatever that was.",
+            "warmup": 10
+        },
+        {
+            "id": "nightmarehersaultsuccess",
+            "label": "Hersault's Nightmare",
+            "actionid": "dream",
+            "effects": {
+                "influenceknockc": 1
+            },
+            "description": "I've levered up floor-boards, and wriggled down snugly. Now I am compressed beneath them like a hidden corpse. The air stinks of hot dust. My mouth is full of splinters. But this is the space below."
+        }
+    ]
+}

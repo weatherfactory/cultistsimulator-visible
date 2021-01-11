@@ -1,0 +1,286 @@
+{
+    "recipes": [
+        {
+            "id": "annoyanceseducehighgrail",
+            "label": "派一名不可抗拒的手下引诱、羞辱眼中钉",
+            "actionId": "talk",
+            "startdescription": "我想摆脱这个讨厌鬼。此人甚至有可能享受他的堕落。",
+            "description": ".",
+            "requirements": {
+                "annoyance": 1,
+                "grail": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "annoyanceseducesuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "annoyanceseducefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "annoyanceseducemidgrail",
+            "label": "派一名勾魂摄魄的手下引诱、羞辱眼中钉",
+            "actionId": "talk",
+            "startdescription": "每个人都有一个不敌特定快感的弱点。我会派去一名精通快感的多重本质的手下。他很有可能成功。",
+            "description": ".",
+            "requirements": {
+                "annoyance": 1,
+                "grail": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "annoyanceseducesuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "annoyanceseducefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "annoyanceseducelowgrail",
+            "label": "派一名迷人的手下引诱、羞辱眼中钉",
+            "actionId": "talk",
+            "startdescription": "天知道这能不能成事？这颗眼中钉可能根本不觉得我的手下有魅力。",
+            "description": ".",
+            "requirements": {
+                "annoyance": 1,
+                "grail": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "annoyanceseducesuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "annoyanceseducefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "annoyanceseducesuccess",
+            "label": "正在引诱眼中钉……",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下回来了。他找到了可使眼中钉轻易屈服的特定诱惑；只付出小小的代价，便使他的名声彻底毁灭。",
+            "aspects": {
+                "endannoyance": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "annoyanceseducefailure",
+            "label": "正在引诱眼中钉……",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下带回令人失望的消息。他没能发现让眼中钉不能自已的快感。",
+            "warmup": 30
+        },
+        {
+            "id": "annoyanceattackhighedge",
+            "label": "派一支锐不可当的武力谋杀眼中钉",
+            "actionId": "talk",
+            "startdescription": "我对这个讨嫌的家伙彻底失去了耐心。除非他有什么不同寻常的防护，不然他必死无疑。不过，他的去世会引人关注。",
+            "description": ".",
+            "requirements": {
+                "annoyance": 1,
+                "edge": 10,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "annoyanceattacksuccess",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "annoyanceattackmidedge",
+            "label": "派一名强大的手下谋杀眼中钉",
+            "actionId": "talk",
+            "startdescription": "我对这个讨嫌的家伙彻底失去了耐心。这次必要一了百了。但他仍有可能逃过一劫，而成功与否都会引发关注。[失败会使你的手下死亡。]",
+            "description": ".",
+            "requirements": {
+                "annoyance": 1,
+                "edge": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "annoyanceattacksuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "annoyanceattackfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "annoyanceattacklowedge",
+            "label": "派一名手下谋杀眼中钉",
+            "actionId": "talk",
+            "startdescription": "我想让这颗眼中钉消失。但此法有风险：我的手下力气有限。眼中钉很有可能逃过一劫，而成功与否都会引发关注。[失败会使你的手下死亡。]",
+            "description": ".",
+            "requirements": {
+                "annoyance": 1,
+                "edge": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "annoyanceattacksuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "annoyanceattackfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "annoyanceattacknoedge",
+            "label": "派不适合的人谋杀眼中钉",
+            "actionId": "talk",
+            "startdescription": "我的手下没有<b>刃</b>相，他实在不适合去袭击这个眼中钉。他只有很小的概率能成功。[失败会使你的手下死亡。]",
+            "description": ".",
+            "requirements": {
+                "annoyance": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "annoyanceattacksuccess",
+                    "chance": 10
+                },
+                {
+                    "id": "annoyanceattackfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "annoyanceattacksuccess",
+            "label": "正在消灭眼中钉……",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下携战利品归来。眼中钉已经被拔除。",
+            "aspects": {
+                "endannoyance": 1
+            },
+            "effects": {
+                "corpse": 1,
+                "notoriety": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "annoyancecapturesuccess",
+                    "chance": 30
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "annoyancecapturesuccess",
+            "label": "正在消灭眼中钉……",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下携囚犯归来！……囚犯现在有时间后悔他之前的选择了。",
+            "aspects": {
+                "endannoyance": 1
+            },
+            "effects": {
+                "notoriety": 1,
+                "genericprisonerm": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "annoyanceattackfailure",
+            "label": "正在消灭眼中钉……",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下没有归来。他一定是失败了。情况可能变得很尴尬。",
+            "effects": {
+                "follower": -1,
+                "notoriety": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "annoyancederangemidmoth",
+            "label": "派一名阴险的手下逼疯眼中钉",
+            "actionId": "talk",
+            "startdescription": "我想摆脱这个讨厌鬼。此计大概能成功，但如果失败，则会引发关注。",
+            "description": ".",
+            "requirements": {
+                "annoyance": 1,
+                "moth": 5,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "annoyancederangesuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "annoyancederangefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "annoyancederangelowmoth",
+            "label": "派一名阴险的手下逼疯眼中钉",
+            "actionId": "talk",
+            "startdescription": "我想让这颗眼中钉消失。但我的手下能力有限。此事很容易失败，且一旦失败，则会引发关注。",
+            "description": ".",
+            "requirements": {
+                "annoyance": 1,
+                "moth": 1,
+                "follower": 1
+            },
+            "linked": [
+                {
+                    "id": "annoyancederangesuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "annoyancederangefailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "annoyancederangesuccess",
+            "label": "正在为眼中钉安排暗夜惊魂……",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下归来。眼中钉已经不能清楚地说话了，更别提以后再来烦我。",
+            "aspects": {
+                "endannoyance": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "annoyancederangefailure",
+            "label": "正在为眼中钉安排暗夜惊魂……",
+            "actionId": "talk",
+            "startdescription": "我静待回音……",
+            "description": "我的手下归来。眼中钉看来比我们预想得更有韧性。他的心智完好无损。",
+            "effects": {
+                "notoriety": 1
+            },
+            "warmup": 30
+        }
+    ]
+}

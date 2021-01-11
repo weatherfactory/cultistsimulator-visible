@@ -1,0 +1,286 @@
+{
+	"recipes": [
+		{
+			"id": "annoyanceseducehighgrail",
+			"label": "Einen Unwiderstehlichen Schergen zum Verführen und Entehren eines Ärgernisses entsenden",
+			"actionId": "talk",
+			"startdescription": "Ich will dieses Ärgernis aus dem Weg haben. Vielleicht gefällt ihm sein Untergang sogar.",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"grail": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceseducesuccess",
+					"chance": 70
+				},
+				{
+					"id": "annoyanceseducefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceseducemidgrail",
+			"label": "Einen Bezaubernden Schergen zum Verführen und Entehren eines Ärgernisses entsenden",
+			"actionId": "talk",
+			"startdescription": "Jeder hat eine Schwäche für eine bestimmte Art von Wonne. Ich werde einen Schergen entsenden, der sich auf viele Arten der Wonne versteht. Wahrscheinlich wird er Erfolg haben.",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"grail": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceseducesuccess",
+					"chance": 70
+				},
+				{
+					"id": "annoyanceseducefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceseducelowgrail",
+			"label": "Einen Verlockenden Schergen zum Verführen und Entehren eines Ärgernisses entsenden",
+			"actionId": "talk",
+			"startdescription": "Wer weiß, ob das von Erfolg gekrönt sein wird? Das Ärgernis könnte meinen Schergen überhaupt nicht ansprechend finden.",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"grail": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceseducesuccess",
+					"chance": 30
+				},
+				{
+					"id": "annoyanceseducefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceseducesuccess",
+			"label": "Einem Ärgernis Versuchungen anbieten ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist zurück. Er hat sich eine Versuchung einfallen lassen, der sich unser Ärgernis sofort hingegeben hat – wen schert es da schon, wenn der eigene Ruf restlos ruiniert wird?",
+			"aspects": {
+				"endannoyance": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "annoyanceseducefailure",
+			"label": "Einem Ärgernis Versuchungen anbieten ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist mit enttäuschenden Nachrichten zurück. Er konnte keine Versuchung finden, die unser Ärgernis zu einer Dummheit hätte animieren können.",
+			"warmup": 30
+		},
+		{
+			"id": "annoyanceattackhighedge",
+			"label": "Eine Unaufhaltsame Macht entsenden, um ein Ärgernis zu ermorden",
+			"actionId": "talk",
+			"startdescription": "Meine Geduld mit diesem Ärgernis ist am Ende. Wenn es keine speziellen Schutzmaßnahmen ergriffen hat, dürfte es bereits tot sein. Doch sein Ableben dürfte für Aufsehen sorgen.",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"edge": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceattacksuccess",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceattackmidedge",
+			"label": "Einen Starken Schergen entsenden, um ein Ärgernis zu ermorden",
+			"actionId": "talk",
+			"startdescription": "Meine Geduld mit diesem Ärgernis ist am Ende. Jetzt sollte endlich Schluss sein. Doch das Ärgernis könnte überleben und allein der Versuch wird für Aufsehen sorgen. [Bei einem Fehlschlag stirbt dein Scherge.]",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"edge": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceattacksuccess",
+					"chance": 70
+				},
+				{
+					"id": "annoyanceattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceattacklowedge",
+			"label": "Einen Schergen entsenden, um ein Ärgernis zu ermorden",
+			"actionId": "talk",
+			"startdescription": "Ich will, dass dieses Ärgernis verschwindet. Doch dieser Ansatz ist riskant: die Kraft meines Schergen ist begrenzt. Doch das Ärgernis könnte sehr leicht überleben und allein der Versuch wird für Aufsehen sorgen. [Bei einem Fehlschlag stirbt dein Scherge.]",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"edge": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceattacksuccess",
+					"chance": 30
+				},
+				{
+					"id": "annoyanceattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceattacknoedge",
+			"label": "Jemand Ungeeigneten entsenden, um ein Ärgernis zu ermorden",
+			"actionId": "talk",
+			"startdescription": "Meinem Schergen fehlt der Aspekt der Kante und er ist schrecklich ungeeignet dafür, das Ärgernis anzugreifen. Es besteht eine geringe Chance auf Erfolg. [Bei einem Fehlschlag stirbt dein Scherge.]",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyanceattacksuccess",
+					"chance": 10
+				},
+				{
+					"id": "annoyanceattackfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyanceattacksuccess",
+			"label": "Einem Ärgernis ein Ende machen ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist mit einer Trophäe zurück. Das Ärgernis wurde ausgemerzt.",
+			"aspects": {
+				"endannoyance": 1
+			},
+			"effects": {
+				"corpse": 1,
+				"notoriety": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "annoyancecapturesuccess",
+					"chance": 30
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "annoyancecapturesuccess",
+			"label": "Einem Ärgernis ein Ende machen ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist zurück, mit einem Gefangene! ... der nun Zeit haben wird, seine Entscheidungen zu bereuen.",
+			"aspects": {
+				"endannoyance": 1
+			},
+			"effects": {
+				"notoriety": 1,
+				"genericprisonerm": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "annoyanceattackfailure",
+			"label": "Einem Ärgernis ein Ende machen ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist nicht zurückgekehrt. Er muss gescheitert sein. Das könnte noch peinlich werden.",
+			"effects": {
+				"follower": -1,
+				"notoriety": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "annoyancederangemidmoth",
+			"label": "Einen Verschlagenen Schergen entsenden, um ein Ärgernis in den Wahnsinn zu treiben",
+			"actionId": "talk",
+			"startdescription": "Ich will dieses Ärgernis aus dem Weg haben. Dieser Plan wird wahrscheinlich funktionieren, aber falls nicht, wird er für Aufsehen sorgen.",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"moth": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyancederangesuccess",
+					"chance": 70
+				},
+				{
+					"id": "annoyancederangefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyancederangelowmoth",
+			"label": "Einen Verschlagenen Schergen entsenden, um ein Ärgernis in den Wahnsinn zu treiben",
+			"actionId": "talk",
+			"startdescription": "Ich will, dass dieses Ärgernis verschwindet. Doch die Fähigkeiten meines Schergen sind begrenzt. Das alles könnte genau so gut scheitern, und dann wird die Sache für Aufsehen sorgen.",
+			"description": ".",
+			"requirements": {
+				"annoyance": 1,
+				"moth": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "annoyancederangesuccess",
+					"chance": 30
+				},
+				{
+					"id": "annoyancederangefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "annoyancederangesuccess",
+			"label": "Nächtliches Grauen für ein Ärgernis arrangieren ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist zurück. Das Ärgernis kann sich nicht mehr zusammenhängend äußern, geschweige denn mir noch weiter Ärger machen.",
+			"aspects": {
+				"endannoyance": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "annoyancederangefailure",
+			"label": "Nächtliches Grauen für ein Ärgernis arrangieren ...",
+			"actionId": "talk",
+			"startdescription": "Ich warte auf Antwort ...",
+			"description": "Mein Scherge ist zurück. Das Ärgernis hat sich als hartnäckiger erwiesen als wir gedacht hätten. Sein Geist ist weiterhin intakt.",
+			"effects": {
+				"notoriety": 1
+			},
+			"warmup": 30
+		}
+	]
+}

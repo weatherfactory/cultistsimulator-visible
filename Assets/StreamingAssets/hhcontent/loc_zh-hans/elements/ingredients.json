@@ -1,0 +1,263 @@
+{
+    "elements": [
+        {
+            "id": "ingredientedgeb",
+            "label": "马氏膏",
+            "description": "涂剑用的圣油。且有着迷人的银绿色。",
+            "aspects": {
+                "edge": 4,
+                "auctionable": 2,
+                "ingredient": 1,
+                "pigment": 1
+            }
+        },
+        {
+            "id": "ingredientedged",
+            "label": "狻猊颗粒",
+            "description": "狻猊是狮子匠最年轻的仆从。磨成粉后，它效力依旧，却不复美丽。",
+            "aspects": {
+                "edge": 8,
+                "auctionable": 4,
+                "ingredient": 1
+            }
+        },
+        {
+            "id": "ingredientedgef",
+            "label": "剑齿兽的獠牙",
+            "description": "狮子匠如今甚少制造剑齿兽了；但是它们很难杀死，而且寿命极长。",
+            "aspects": {
+                "edge": 12,
+                "auctionable": 6,
+                "ingredient": 1
+            }
+        },
+        {
+            "id": "ingredientforgeb",
+            "label": "苦黑盐",
+            "description": "没有哪个普通的化学家能制造出这种黑亮的晶体——若离了铸炉的触碰。",
+            "aspects": {
+                "forge": 4,
+                "auctionable": 2,
+                "ingredient": 1,
+                "pigment": 1
+            }
+        },
+        {
+            "id": "ingredientforged",
+            "label": "黄化精华",
+            "description": "在铸炉的某些行动中，据说日光会驱散月光，如同我们从弧月的钟点过渡到昕旦的钟点。这种精华曾是水银，不过它现在为夏日午后的浓金色。很漂亮。",
+            "aspects": {
+                "forge": 8,
+                "auctionable": 4,
+                "ingredient": 1
+            }
+        },
+        {
+            "id": "ingredientforgef",
+            "label": "赤化精华",
+            "description": "在铸炉的后期运转中，昕旦让位于真正的白日铸炉，这种精华也开始变红。也许有一天，变红会停止，不过现下我们还有的可用。",
+            "aspects": {
+                "forge": 12,
+                "auctionable": 6,
+                "ingredient": 1
+            }
+        },
+        {
+            "id": "ingredientgrailb",
+            "label": "活力颜料",
+            "description": "躯体死后还保留如此红的红色，并不寻常。",
+            "aspects": {
+                "grail": 4,
+                "auctionable": 2,
+                "ingredient": 1,
+                "pigment": 1
+            }
+        },
+        {
+            "id": "ingredientgraild",
+            "label": "不凋花蜜",
+            "description": "制花人的繁多赠礼之一。在更加光明的年代，它或许被赐予了永生。即使在这重枯萎的历史中，它依旧拥有无法比拟的甜腻。",
+            "aspects": {
+                "grail": 8,
+                "auctionable": 4,
+                "ingredient": 1
+            }
+        },
+        {
+            "id": "ingredientgrailf",
+            "label": "扭动胎膜",
+            "description": "把你的手置于它残破的褶皱上，感受它的温暖；手不收回，则它将探索拥抱的可能性。",
+            "aspects": {
+                "grail": 12,
+                "auctionable": 6,
+                "ingredient": 1
+            }
+        },
+        {
+            "id": "ingredientheartb",
+            "label": "玫瑰色珍珠粉",
+            "description": "珍珠对双生巫女而言是神圣的，特别是这种颜色的。它们尤其被用在防护性的仪式中。",
+            "aspects": {
+                "heart": 4,
+                "auctionable": 2,
+                "ingredient": 1,
+                "pigment": 1
+            }
+        },
+        {
+            "id": "ingredientheartd",
+            "label": "巫吻之油",
+            "description": "从女神赫卡忒在十字路受人敬拜始，这个配方从未改变过。",
+            "aspects": {
+                "heart": 8,
+                "auctionable": 4,
+                "ingredient": 1
+            }
+        },
+        {
+            "id": "ingredientheartf",
+            "label": "圣雅纳略的真血",
+            "description": "轰雷之皮在每一个过去中保护了一个人称“雅纳略”的人免遭危难。时至如今，他的血液仍在持续舞动。",
+            "aspects": {
+                "heart": 12,
+                "auctionable": 6,
+                "ingredient": 1,
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.endless"
+            }
+        },
+        {
+            "id": "ingredientknockb",
+            "label": "拜占庭染剂",
+            "description": "这种深奥的紫色只在“推罗紫”染料不够浓重的历史中才用于穿着。穿这种颜色的人到哪里都出入无禁。",
+            "aspects": {
+                "knock": 4,
+                "auctionable": 2,
+                "ingredient": 1,
+                "pigment": 1
+            }
+        },
+        {
+            "id": "ingredientknockd",
+            "label": "生猛毒液",
+            "description": "蚁母时而也被称为“毒液的女儿”。这种物质在不计其数的地方洞开着人体。",
+            "aspects": {
+                "knock": 8,
+                "auctionable": 4,
+                "ingredient": 1,
+                "poison": 2
+            }
+        },
+        {
+            "id": "ingredientknockf",
+            "label": "阿佐特",
+            "description": "此物只能储存在纯由一种元素制成的容器，且绝对不能容许它加温。它或许不是炼金术士追寻的终极溶剂。但它能胜任我们的目的。",
+            "aspects": {
+                "knock": 12,
+                "auctionable": 6,
+                "ingredient": 1
+            }
+        },
+        {
+            "id": "ingredientlanternb",
+            "label": "耀素",
+            "description": "至纯的白色，在全然的黑暗中依然可见。",
+            "aspects": {
+                "lantern": 4,
+                "auctionable": 2,
+                "ingredient": 1,
+                "pigment": 1
+            }
+        },
+        {
+            "id": "ingredientlanternd",
+            "label": "透指毒素",
+            "description": "“内外相易，表里互替。”一种对弧月信徒来说地位神圣的毒素。",
+            "aspects": {
+                "lantern": 8,
+                "auctionable": 4,
+                "ingredient": 1,
+                "poison": 2
+            }
+        },
+        {
+            "id": "ingredientlanternf",
+            "label": "玻璃灵液",
+            "description": "有的时候，瞳中扉打开时，可以收集到一种浅色的，警觉的液体。",
+            "aspects": {
+                "lantern": 12,
+                "auctionable": 6,
+                "ingredient": 1
+            }
+        },
+        {
+            "id": "ingredientmothb",
+            "label": "黑白颜料",
+            "description": "取自碾碎的稀有鳞翅目昆虫的翅膀。“想画黑，想画白，这种颜料都能来。”",
+            "aspects": {
+                "moth": 4,
+                "auctionable": 2,
+                "ingredient": 1,
+                "pigment": 1
+            }
+        },
+        {
+            "id": "ingredientmothd",
+            "label": "遗忘之水",
+            "description": "一种粘稠的黑色液体，受到森林中无名村落的喜爱。“舌头与眼睛，现在我们开始！忘记你的名字，忘记你的表皮。”",
+            "aspects": {
+                "moth": 8,
+                "auctionable": 4,
+                "ingredient": 1
+            }
+        },
+        {
+            "id": "ingredientmothf",
+            "label": "至圣血淋巴",
+            "description": "某桩古老罪案现场洒落的神秘物质的淡淡印痕，紧封在一个安瓿瓶中。“谁会记得理发师的儿子？”",
+            "aspects": {
+                "moth": 12,
+                "auctionable": 6,
+                "ingredient": 1,
+                "remnant": 1
+            },
+            "xtriggers": {
+                "alzabo": "memory.wildering"
+            }
+        },
+        {
+            "id": "ingredientwinterb",
+            "label": "灰晓之油",
+            "description": "正是人于之无法入眠的时辰的颜色。",
+            "aspects": {
+                "winter": 4,
+                "auctionable": 2,
+                "ingredient": 1,
+                "pigment": 1
+            }
+        },
+        {
+            "id": "ingredientwinterd",
+            "label": "狼雪",
+            "description": "此物冷到任何事物都无法将之融化，除了最炎热的正午阳光。它会一点一点，极缓地蚕食人类的血肉。",
+            "aspects": {
+                "winter": 8,
+                "auctionable": 4,
+                "ingredient": 1
+            }
+        },
+        {
+            "id": "ingredientwinterf",
+            "label": "守夜虫",
+            "description": "第一次蠕虫大战遗留下的一小罐发育不良的，干瘪的幼虫，与占据已逝众司辰之位的神灵同级。",
+            "aspects": {
+                "winter": 12,
+                "auctionable": 6,
+                "ingredient": 1,
+                "poison": 3
+            }
+        }
+    ]
+}

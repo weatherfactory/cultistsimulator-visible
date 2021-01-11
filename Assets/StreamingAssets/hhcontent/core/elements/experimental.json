@@ -1,0 +1,67 @@
+{
+    "elements": [
+        {
+            "id": "owl",
+            "label": "The Owl Without a Hat",
+            "aspects": {
+                "job": 1
+            },
+            "description": "The Owl says that our last character was #PREVIOUSCHARACTERNAME#, our last desire was #LAST_DESIRE#, our last best follower was #LAST_FOLLOWER# and our last book was #LAST_BOOK#.",
+            "noartneeded": true
+        },
+        {
+            "id": "wolfatthedoor",
+            "label": "T H  E  WO L  F  W  H  O   L  I  V  E  S IN THE BIG HOUSE",
+            "aspects": {
+                "ability": 1,
+                "location": 1,
+                "acquaintance": 1
+            },
+            "slots": [
+                {
+                    "id": "Meal5",
+                    "consumes": true,
+                    "actionid": "explore"
+                }
+            ],
+            "icon": "violet_p",
+            "description": "The Wolf will accept anything, and then devour everything, no matter what.",
+            "noartneeded": true
+        },
+        {
+            "id": "wolf",
+            "lifetime": 1,
+            "decayTo": "wolfatthedoor",
+            "description": "",
+            "noartneeded": true
+        },
+        {
+            "id": "lionweb",
+            "label": "The Lion in the Web",
+            "comments": "Information lives in the sky.",
+            "icon": "valciane_p",
+            "noartneeded": true
+        },
+        {
+            "id": "boarwords",
+            "label": "The Boar in the Words",
+            "comments": "Titles are criminal.",
+            "icon": "victor_p",
+            "noartneeded": true
+        },
+        {
+            "id": "worldbull",
+            "label": "The World in the Bull",
+            "comments": "The crime At the beginning",
+            "icon": "clifton_p",
+            "noartneeded": true
+        },
+        {
+            "id": "notaworm",
+            "label": "Possibly a Bird",
+            "comments": "We Await S.T.E.",
+            "icon": "clovette_p",
+            "noartneeded": true
+        }
+    ]
+}

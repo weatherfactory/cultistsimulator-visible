@@ -33,19 +33,21 @@ using UnityEditor;
 public class CompendiumLoader
 {
 
-    private static readonly string CORE_CONTENT_DIR = Path.Combine(Application.streamingAssetsPath,
-        NoonConstants.CONTENT_FOLDER_NAME, NoonConstants.CORE_FOLDER_NAME);
 
-    private static readonly string LOC_CONTENT_DIR = Path.Combine(Application.streamingAssetsPath,
-        NoonConstants.CONTENT_FOLDER_NAME, NoonConstants.LOC_FOLDER_TEMPLATE);
 
     readonly ContentImportLog _log=new ContentImportLog();
 
 
     public ContentImportLog PopulateCompendium(Compendium compendiumToPopulate,string forCultureId)
     {
+      string CORE_CONTENT_DIR = Path.Combine(Application.streamingAssetsPath,
+        Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY), NoonConstants.CORE_FOLDER_NAME);
 
-        Dictionary<string,EntityTypeDataLoader> dataLoaders=new Dictionary<string,EntityTypeDataLoader>();
+      string LOC_CONTENT_DIR = Path.Combine(Application.streamingAssetsPath,
+        Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY), NoonConstants.LOC_FOLDER_TEMPLATE);
+
+
+    Dictionary<string,EntityTypeDataLoader> dataLoaders=new Dictionary<string,EntityTypeDataLoader>();
         List<Type> importableEntityTypes=new List<Type>();
         var assembly = Assembly.GetExecutingAssembly();
 

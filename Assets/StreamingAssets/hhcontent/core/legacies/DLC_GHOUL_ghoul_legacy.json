@@ -1,0 +1,21 @@
+{
+    "legacies": [
+        {
+            "id": "ghoul",
+            "label": "The Medium?",
+            "description": "Everyone knows that I speak with the dead. I have been called a prophet, and a ghoul. I have no reason to disabuse them of their illusions.",
+            "startdescription": "Tonight the theatre is crammed and breathless. I have let them wait long enough.",
+            "effects": {
+                "ghouljob.first": 1,
+                "memory.shameful": 1,
+                "memory.profitable": 1,
+                "memory.joyful": 1
+            },
+            "image": "ghoul",
+            "fromending": "despairending",
+            "availableWithoutEndingMatch": true,
+            "startingverbid": "work",
+            "newstart": true
+        }
+    ]
+}

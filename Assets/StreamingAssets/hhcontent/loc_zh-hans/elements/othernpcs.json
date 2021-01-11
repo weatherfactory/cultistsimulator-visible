@@ -1,0 +1,56 @@
+{
+    "elements": [
+        {
+            "id": "lunatic",
+            "label": "可悲的疯人",
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "moth": 3,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "过于强烈的感受攫夺了此人的心智。他不久便会消失，永远离开人们的视线。",
+            "lifetime": 60,
+            "xtriggers": {
+                "killmortal": "corpse"
+            }
+        },
+        {
+            "id": "genericprisonerm",
+            "label": "不幸的囚犯",
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "被你玩弄于股掌的家伙，迟早要完。",
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
+        },
+        {
+            "id": "genericprisonerf",
+            "label": "不幸的囚犯",
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "被你玩弄于股掌的家伙，迟早要完。",
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
+        }
+    ]
+}

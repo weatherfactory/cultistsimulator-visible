@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using SecretHistories.UI;
 using SecretHistories.Services;
+using UnityEngine.InputSystem;
+using UnityEngine.PlayerLoop;
 
 public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 
@@ -24,7 +26,7 @@ public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 	}
 
 	void Update() {
-		if (Input.anyKeyDown)
+		if (Keyboard.current.anyKey.wasPressedThisFrame)
 			LoadGameScene();
 	}
 

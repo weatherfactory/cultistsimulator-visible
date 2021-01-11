@@ -1,0 +1,164 @@
+{
+    "recipes": [
+        {
+            "id": "explorecabaret",
+            "actionid": "explore",
+            "label": "Visit the Ecdysis Club",
+            "requirements": {
+                "locationcabaret": 1,
+                "funds": 1
+            },
+            "startdescription": "The entrance is lost beneath soft drapes of crimson, cinnabar and incarnadine. Above the door, the club motto: 'IN GI RUM IMUS NOC TE ET CON SUMI MUR IGNI'. It has been rendered as 'into night's circle we fly, until the fire enjoys us'.",
+            "description": ".",
+            "effects": {
+                "funds": -1
+            },
+            "craftable": true,
+            "deckeffects": {
+                "cabaretevents": 1
+            },
+            "linked": [
+                {
+                    "id": "cabaretpleasure",
+                    "chance": 100
+                },
+                {
+                    "id": "cabaretallure",
+                    "chance": 100
+                },
+                {
+                    "id": "cabareteducation",
+                    "chance": 100
+                },
+                {
+                    "id": "cabaretglimpse",
+                    "chance": 100
+                },
+                {
+                    "id": "cabaretharm",
+                    "chance": 100
+                },
+                {
+                    "id": "cabaretexposure",
+                    "chance": 100
+                },
+                {
+                    "id": "cabarethunger",
+                    "chance": 100
+                },
+                {
+                    "id": "cabaretfey",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cabaretpleasure",
+            "label": "Nightly Pleasures at the Cabaret Club",
+            "actionid": "explore",
+            "requirements": {
+                "contentment": 1
+            },
+            "startdescription": "The drinks, the songs, the light; the arching walls, the smoke-blue haze, the press and sway of clothed and unclothed flesh.",
+            "description": "I have purchased pleasure. I reel home in the ungodly hours and collapse into bed.",
+            "warmup": 15,
+            "craftable": false
+        },
+        {
+            "id": "cabaretallure",
+            "label": "Allure at the Ecdysis Club",
+            "actionid": "explore",
+            "requirements": {
+                "fascination": 1
+            },
+            "startdescription": "In tonight's performance, 'Amethyst', a net-wielding hunter pursues a veil-winged woman through a murmuring maze of leaf-clad dancers. Each movement is underwater-slow.",
+            "description": "The lights go down, very gradually, as the performance ends. There is no applause. We each drift into the street, alone with our dream.",
+            "effects": {
+                "contentment": 1
+            },
+            "warmup": 15,
+            "craftable": false
+        },
+        {
+            "id": "cabareteducation",
+            "label": "The Educations of the Cabaret Club",
+            "actionid": "explore",
+            "requirements": {
+                "erudition": 1
+            },
+            "startdescription": "Tonight's performance is a desultory affair of flapping scarves and earnest flesh. The audience turns to conversation.",
+            "description": "I've spent the evening swapping theories with a tableful of charlatans, poseurs and - perhaps - initiates. Some of these theories may be true.",
+            "effects": {
+                "contentment": 1
+            },
+            "warmup": 15,
+            "craftable": false
+        },
+        {
+            "id": "cabaretglimpse",
+            "label": "A Glimpse of Something More at the Ecdysis Club",
+            "actionid": "explore",
+            "requirements": {
+                "glimmering": 1
+            },
+            "startdescription": "The backdrops for tonight's performances are painted with nightmare images out of Piranesi - vast impossible subterranean prisons. The dancers are monster-masked, sudden as fire, each movement snapping with wicked intent.",
+            "description": "The dancers pass beyond the backdrops, cross them, seem to move upon their staircases and drawbridges. Their bodies become smudged with backdrop-paint. A growl arises from the audience. 'The walls of the House...'",
+            "warmup": 15,
+            "craftable": false
+        },
+        {
+            "id": "cabaretharm",
+            "label": "A Wounding Consummation at the Ecdysis Club",
+            "actionid": "explore",
+            "requirements": {
+                "vitality": 1
+            },
+            "startdescription": "Tonight, the performers pass among the audience, juggling knives or bottles of red glass, bending to bestow whispers or other gifts.",
+            "description": "A dancer pressed a red glass cup to my mouth. Its lip was sharp. My mouth is bleeding. But the wine within was a strong wine -",
+            "effects": {
+                "contentment": 1
+            },
+            "warmup": 15,
+            "craftable": false
+        },
+        {
+            "id": "cabaretexposure",
+            "label": "An Interruption at the Ecdysis Club",
+            "actionid": "explore",
+            "requirements": {
+                "notoriety": 1
+            },
+            "startdescription": "The performance has hardly begun when a moan of terror arises from the audience!",
+            "description": "The performance ends immediately; the lights come up; we are ushered from our seats and urged into the street. It's never clear what has happened, but the Club staff seem prepared, as if this has happened before. Lights bloom in nearby windows, and passersby gawp at the crowd of guests dispersing into the night.",
+            "warmup": 15,
+            "craftable": false
+        },
+        {
+            "id": "cabarethunger",
+            "label": "The Hungers of the Ecdysis Club",
+            "actionid": "explore",
+            "requirements": {
+                "influencegrail": 1
+            },
+            "startdescription": "A dancer enters from stage left, swathed in red bandages tight as tendons. She peels one away. Another. Another. Another - ",
+            "description": "This must be a trick. One cannot remove garments so softly that the bones beneath the skin are visible. Bone pink as peach-flesh. Organs nestled like grapes. The lights dim, gutter, go out, and the stage's red star with them. All our lips are dry.",
+            "warmup": 15,
+            "craftable": false
+        },
+        {
+            "id": "cabaretfey",
+            "label": "The Mysteries of the Ecdysis Club",
+            "actionid": "explore",
+            "requirements": {
+                "influencemoth": 1
+            },
+            "startdescription": "'The Wreath!' announces the master of ceremonies. A dancer undulates on to the stage, unfolding her arms. Live moths spill in a stream from her mouth!",
+            "description": "White moths eddy through the hall. They perch on the brims of wine-glasses and sip. The audience applauds. The woman on stage moves as if she has too many limbs. Moths crowd my arms, nestle against my shoulder. In a little while, I'll step outside and look at the clear cold stars: assume I dreamt the whole thing. The smokes of the Club are treacherous.",
+            "effects": {
+                "contentment": 1
+            },
+            "warmup": 15,
+            "craftable": false
+        }
+    ]
+}

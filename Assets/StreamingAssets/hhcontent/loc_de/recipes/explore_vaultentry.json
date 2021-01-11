@@ -1,0 +1,484 @@
+{
+	"recipes": [
+		{
+			"id": "explorevault_expeditionbegun",
+			"label": "Die Expedition macht sich auf die Reise",
+			"actionId": "explore",
+			"requirements": {
+				"vault": 1,
+				"follower": 1,
+				"funds": 1
+			},
+			"startdescription": "Ich habe meinen Agenten die Möglichkeit gegeben, mir dienstbar zu sein. Hoffen wir mal, dass das für uns alle gut ausgeht.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevault.add.watchers"
+				},
+				{
+					"id": "explorevault.add.monks"
+				},
+				{
+					"id": "explorevault.add.dead"
+				},
+				{
+					"id": "explorevault.add.serpent"
+				},
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "explorevault.add.watchers",
+			"actionId": "explore",
+			"requirements": {
+				"guardian_watchers_pre": 1,
+				"guardian_watchers": -1
+			},
+			"effects": {
+				"guardian_watchers": 1
+			},
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun"
+				}
+			]
+		},
+		{
+			"id": "explorevault.add.monks",
+			"actionId": "explore",
+			"requirements": {
+				"guardian_monks_pre": 1,
+				"guardian_monks": -1
+			},
+			"effects": {
+				"guardian_monks": 1
+			},
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun"
+				}
+			]
+		},
+		{
+			"id": "explorevault.add.dead",
+			"actionId": "explore",
+			"requirements": {
+				"guardian_dead_pre": 1,
+				"guardian_dead": -1
+			},
+			"effects": {
+				"guardian_dead": 1
+			},
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun"
+				}
+			]
+		},
+		{
+			"id": "explorevault.add.serpent",
+			"actionId": "explore",
+			"requirements": {
+				"guardian_serpent_pre": 1,
+				"guardian_serpent": -1
+			},
+			"effects": {
+				"guardian_serpent": 1
+			},
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun"
+				}
+			]
+		},
+		{
+			"id": "explorevaulttick",
+			"comments": "Can't reach success until all the alternatives are unavailable. That means no obstacles, >0 followers and >0 funds.",
+			"label": "Die Expedition geht weiter",
+			"actionId": "explore",
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger beseitigen Hindernisse.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "Unsere Expedition bereitet sich auf die nächste Herausforderung vor. Das wird Geld kosten. Ich kann jetzt Geldmittel hinzufügen oder noch einen Anhänger losschicken.",
+			"description": ".",
+			"warmup": 30,
+			"alternativerecipes": [
+				{
+					"id": "explorevaultsuccesslink",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultfailure_nofunds",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultfailure_nofollowers",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": -1
+			},
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_encounter",
+					"chance": 100
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "explorevaultfailure_nofunds",
+			"actionId": "explore",
+			"label": "Logistik-Probleme",
+			"startdescription": "Die Vorräte sind knapp. Wenn ich nicht weitere Geldmittel schicken kann, müssen wir die Expedition abbrechen.",
+			"description": "Wir können es erneut versuchen, sobald sich der Staub gelegt hat.",
+			"requirements": {
+				"funds": -1
+			},
+			"effects": {
+				"dread": 1,
+				"peril": -10,
+				"seal": -10,
+				"guardian": -10,
+				"curse": -10,
+				"mystique": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "explorevaultfailure_nofollowers",
+			"actionId": "explore",
+			"label": "Kein Reisender kehrt zurück",
+			"startdescription": "Es ist kein Mitglied der Expedition mehr übrig. Ich muss Hilfe rufen, sonst ist diese Expedition beendet.",
+			"description": "Niemand kehrt zurück. Ich kann mich noch einmal an der Expedition versuchen. Ich kann sogar die Vorräte wiederverwenden.",
+			"requirements": {
+				"follower": -1
+			},
+			"effects": {
+				"dread": 1,
+				"peril": -10,
+				"seal": -10,
+				"guardian": -10,
+				"curse": -10,
+				"mystique": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "explorevaultsuccesslink",
+			"label": "Schätze liegen vor uns",
+			"requirements": {
+				"peril": -1,
+				"seal": -1,
+				"guardian": -1,
+				"curse": -1
+			},
+			"actionId": "explore",
+			"comments": "Separate recipe link to remove the confusing slot from Success, next.",
+			"linked": [
+				{
+					"id": "explorevaultsuccess",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultsuccess",
+			"label": "Schätze liegen vor uns",
+			"actionId": "explore",
+			"startdescription": "Geschafft! Ich werde schon bald mehr wissen ...",
+			"description": ".",
+			"effects": {
+				"notoriety": 1
+			},
+			"linked": [
+				{
+					"id": "explorevaultcapital1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapital1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapital2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapital3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapital4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapital5_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapitaldefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshires1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshires2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshires3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshires4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshires5_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshiresdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent5_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent6_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinentdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforest1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforest2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforest3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforest4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforest5_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforestdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultrendingmountains1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultrendingmountains2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultrendingmountains3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultrendingmountains4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultrendingmountainsdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultloneandlevelsands1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultloneandlevelsands2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultloneandlevelsands3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultloneandlevelsands4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultloneandlevelsandsdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaulteveningisles1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaulteveningisles2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaulteveningisles3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaulteveningisles4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaulteveningislesdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultfloating1_success",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevault_casualty",
+			"actionId": "explorevault_casualty",
+			"label": "Ein Mitglied der Expedition ist gefallen!",
+			"startdescription": "Unsere Reihen lichten sich.",
+			"description": "Die Verletzungen sind schwer. [Sprich mit einem gefallenen Anhänger um ihn zu heilen.]",
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty_summoning",
+					"chance": 100
+				}
+			],
+			"craftable": false,
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": -1,
+					"additive": false
+				}
+			],
+			"warmup": 5
+		},
+		{
+			"id": "explorevault_casualty_summoning",
+			"actionId": "explorevault_casualty",
+			"requirements": {
+				"summoned": 1
+			},
+			"label": "Meine Beschwörung wurde abgewehrt!",
+			"description": "Sie ist gebannt oder vernichtet.",
+			"aspects": {
+				"killsummoned": 1
+			}
+		}
+	]
+}

@@ -1,0 +1,262 @@
+{
+    "elements": [
+        {
+            "id": "legacydancerjob",
+            "label": "与欢腾剧院的合约",
+            "description": "我在欢腾剧院中的舞蹈队任职。在我的好运，抑或美貌，消逝之前，这个职位都将归我所有……又除非我找到了更好的活儿。",
+            "aspects": {
+                "job": 1,
+                "dance": 1,
+                "potentialbenefactorm": 1,
+                "potentialbenefactorf": 1,
+                "potentialecdysiast": 1
+            },
+            "lifetime": 120,
+            "decayTo": "legacydancerjob_suspended",
+            "xtriggers": {
+                "job": "legacydancerjob"
+            },
+            "slots": [
+                {
+                    "id": "health",
+                    "label": "健康",
+                    "actionId": "work",
+                    "required": {
+                        "health": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "legacydancerjob_suspended",
+            "label": "与欢腾剧院的合约：停职",
+            "description": "我错过了太多的演出。如果我够真情实意地恳求，也许还能挽回工作。",
+            "aspects": {
+                "job": 1
+            },
+            "lifetime": 300,
+            "xtriggers": {
+                "plead": "legacydancerjob"
+            },
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "激情",
+                    "actionId": "work",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "dancerlegacy_plotitem_a",
+            "label": "揉成一团的诗文",
+            "description": "这是致另一名舞者的信，署名为#LAST_FOLLOWER#。写信人描述了他于梦中一片昏暗的林地里遇到该舞者的原委。他梦到了鼓声、拍翅声、影子的皮肤、月亮的血。怪不得信被扔掉了。但我看出这些话里有层层深意尚待揭开。",
+            "slots": [
+                {
+                    "id": "Approach",
+                    "label": "方式",
+                    "actionId": "study",
+                    "description": "是心的悸动，还是小提琴的高鸣？",
+                    "required": {
+                        "heart": 1,
+                        "moth": 1
+                    }
+                }
+            ],
+            "aspects": {
+                "legacyplotitem": 1
+            }
+        },
+        {
+            "id": "dancerjobecdysisa",
+            "label": "与蜕衣俱乐部的合约",
+            "description": "我在蜕衣俱乐部开业的夜晚表演。",
+            "slots": [
+                {
+                    "id": "location",
+                    "label": "蜕衣俱乐部",
+                    "description": "蜕衣俱乐部——我在人们的见证下揭示己身的地方。",
+                    "actionId": "work",
+                    "required": {
+                        "locationcabaret": 1
+                    }
+                },
+                {
+                    "id": "purpose",
+                    "label": "目的",
+                    "actionId": "work",
+                    "required": {
+                        "changemarks": 1,
+                        "healthskill": 1
+                    },
+                    "description": "我可以展示<b>技能</b>以进修更复杂的舞蹈；或者用<b>欲望</b>来追求蜕变；又或者将其留空，如果我只想赚钱的话。"
+                },
+                {
+                    "id": "abilityfirst",
+                    "label": "能力，或者伤疤",
+                    "description": "我应当将自己的哪样东西献出？",
+                    "actionId": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "influence",
+                    "label": "影响",
+                    "description": "今天是什么让我心神不安？",
+                    "actionId": "work",
+                    "required": {
+                        "influence": 1
+                    },
+                    "consumes": true
+                }
+            ],
+            "aspects": {
+                "job": 1,
+                "dance": 1,
+                "ecdysijob": 1
+            }
+        },
+        {
+            "id": "dancerjobecdysisb",
+            "label": "与蜕衣俱乐部的上级合约",
+            "description": "我在蜕衣俱乐部表演更艰深的舞蹈。",
+            "slots": [
+                {
+                    "id": "location",
+                    "label": "蜕衣俱乐部",
+                    "description": "蜕衣俱乐部——我在人们的见证下揭示己身的地方。",
+                    "actionId": "work",
+                    "required": {
+                        "locationcabaret": 1
+                    }
+                },
+                {
+                    "id": "purpose",
+                    "label": "目的",
+                    "actionId": "work",
+                    "required": {
+                        "changemarks": 1,
+                        "healthskill": 1
+                    },
+                    "description": "我可以展示<b>技能</b>以进修更复杂的舞蹈；或者用<b>欲望</b>来追求蜕变；又或者将其留空，如果我只想赚钱的话。"
+                },
+                {
+                    "id": "abilityfirst",
+                    "label": "能力，或者伤疤",
+                    "description": "我应当将自己的哪样东西献出？",
+                    "actionId": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "abilitysecond",
+                    "label": "能力，或者伤疤",
+                    "description": "我应当将自己的哪样东西献出？",
+                    "actionId": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "influence",
+                    "label": "影响",
+                    "description": "今天是什么让我心神不安？",
+                    "actionId": "work",
+                    "required": {
+                        "influence": 1
+                    },
+                    "consumes": true
+                }
+            ],
+            "aspects": {
+                "job": 1,
+                "dance": 1,
+                "ecdysijob": 1
+            }
+        },
+        {
+            "id": "dancerjobecdysisc",
+            "label": "与蜕衣俱乐部的特殊合约",
+            "description": "我偶尔被聘以重金，为那些非常挑剔的鉴赏家表演非常特殊的舞蹈。",
+            "slots": [
+                {
+                    "id": "location",
+                    "label": "蜕衣俱乐部",
+                    "description": "蜕衣俱乐部——我在人们的见证下揭示己身的地方。",
+                    "actionId": "work",
+                    "required": {
+                        "locationcabaret": 1
+                    }
+                },
+                {
+                    "id": "purpose",
+                    "label": "目的",
+                    "actionId": "work",
+                    "required": {
+                        "changemarks": 1,
+                        "healthskill": 1
+                    },
+                    "description": "我可以使用<b>欲望</b>以追求蜕变；又或者将其留空，如果我只想赚钱的话。"
+                },
+                {
+                    "id": "abilityfirst",
+                    "label": "能力，或者伤疤",
+                    "description": "我应当将自己的哪样东西献出？",
+                    "actionId": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "abilitysecond",
+                    "label": "能力，或者伤疤",
+                    "description": "我应当将自己的哪样东西献出？",
+                    "actionId": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "abilitythird",
+                    "label": "能力，或者伤疤",
+                    "description": "我应当将自己的哪样东西献出？",
+                    "actionId": "work",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "scar": 1
+                    }
+                },
+                {
+                    "id": "influence",
+                    "label": "影响",
+                    "description": "今天是什么让我心神不安？",
+                    "actionId": "work",
+                    "required": {
+                        "influence": 1
+                    },
+                    "consumes": true
+                }
+            ],
+            "aspects": {
+                "job": 1,
+                "dance": 1,
+                "ecdysijob": 1
+            }
+        }
+    ]
+}

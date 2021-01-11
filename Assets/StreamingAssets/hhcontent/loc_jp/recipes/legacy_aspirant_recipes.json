@@ -1,0 +1,153 @@
+{
+	"recipes": [
+		{
+			"id": "workintrojob",
+			"label": "病院のいつものシフト",
+			"actionId": "work",
+			"requirements": {
+				"introjob": 1
+			},
+			"effects": {
+				"introjob": -1,
+				"health": 1,
+				"funds": 2
+			},
+			"alternativerecipes": [
+				{
+					"id": "introdream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "いつものシフト：暗い廊下の床を掃除し、空っぽの目をした患者に荷物を届け、死体の詰まった台車を地下に押し込む。",
+			"description": "シフトの途中に、ヘッドポーターが手招きをする。「もう仕事に来なくていい。ほら、これが最後の給料だ。今月末まで支払ったから」と、彼は言った。\n\n無職になった。少なくとも今は少し休む時間ができて、体力が回復した。\n\n[<b>夢</b>がアンロックされた。]",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "introdream",
+			"label": "夢を思い出す",
+			"actionId": "dream",
+			"requirements": {
+				
+			},
+			"effects": {
+				"passion": 1,
+				"contentment": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "bequestcountdown",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "もう一度、世界の汚染された皮膚に光る輝きを夢見る。黒い木漏れ日。青白い扉。老人―― ",
+			"description": "病院の老人と話したことがきっかけだった。私の名前を知っていた。でも老人は死んでしまった。肺炎だ。なぜ私は彼の夢を未だに見るのだろう？夢の中のコバルト色の光は何なんだろう？\n\n[時は流れている。]",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "This is triggered from the intro work recipe only."
+		},
+		{
+			"id": "bequestcountdown",
+			"label": "空気の変化",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"startdescription": "生きていくためには資金が必要だ。でも、もしかしたら、最近の苦労は自分にとってプラスにしかならないのかもしれない。夢と関係があるとしたら？空気が変わってきているような気がする。",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "bequestarrives",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "bequestarrives",
+			"label": "遺言書が届く",
+			"actionId": "study",
+			"requirements": {
+				
+			},
+			"effects": {
+				"reason": 1,
+				"funds": 9,
+				"bequestintro": 1
+			},
+			"startdescription": "弁護士からの手紙だ。夢に出てくる病院の老人が遺言で私を指名してくれた。近いうちに詳細を聞くことになるだろう。",
+			"description": "老人は私に大金と奇妙な書類の束を遺してくれた。詩や謎、形而上学的推論がいくつか入っていた。数ヶ月ぶりに理性が刺激された気がした。\n\n[<b>学習</b>がアンロックされた]",
+			"warmup": 30,
+			"craftable": false,
+			"maxexecutions": 1,
+			"comments": "This makes the Study action available, and is triggered from intro only."
+		},
+		{
+			"id": "studybequestreason",
+			"label": "理性を活かして形見を確認する",
+			"actionId": "study",
+			"requirements": {
+				"bequestintro": 1,
+				"reason": 1
+			},
+			"effects": {
+				"bequestintro": -1,
+				"ascensionenlightenmenta": 1,
+				"mapbookdealer": 1,
+				"fragmentlantern": 1,
+				"contactintro": 1
+			},
+			"startdescription": "1つひとつを丁寧に確認していこうと思う。",
+			"description": "手紙の書き手は、私の夢を正確に描写してくれた！家、森、時の神々、栄光など、聞き覚えのある言葉が使われている。時間の下に隠された秘密と世界の地表を知っているようだ。<b>新たな好奇心を感じ始めた。</b>\n\nメモを見つけた――商品の宣伝をしない本屋への道順が書かれている――\n",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studybequestpassion",
+			"label": "情熱を活かして形見を確認する",
+			"actionId": "study",
+			"requirements": {
+				"bequestintro": 1,
+				"passion": 1
+			},
+			"effects": {
+				"bequestintro": -1,
+				"ascensionpowera": 1,
+				"mapbookdealer": 1,
+				"fragmentforge": 1,
+				"contactintro": 1
+			},
+			"startdescription": "本を読み、理論を練り、ペースをとり、スケッチをし、悩んで髪を掴み、高揚感に浸り、絶望に打ちひしがれる。",
+			"description": "手紙の書き手は、私の夢を正確に描写してくれた！家、森、時の神々、栄光など、聞き覚えのある言葉が使われている。将軍や王が羨むような力を感じる。<b>新たな欲望が燃え始めている。</b>\n\nメモを見つけた――商品の宣伝をしない本屋への道順が書かれている――\n",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "studycontactintro",
+			"label": "協力者候補を見つける",
+			"actionId": "study",
+			"requirements": {
+				"contactintro": 1
+			},
+			"effects": {
+				"contactintro": -1,
+				"mystique": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "findacquaintanceopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "この人物の名前や人相、興味深い詳細を手に入れたが、街には何百万人もの人が歩いている。",
+			"description": "住所も手に入れた！手紙を送って会うことを提案してみよう。[<b>話す</b>がアンロックされた]。",
+			"warmup": 30,
+			"craftable": true,
+			"comments": "This is one way the Talk verb may be opened."
+		}
+	]
+}

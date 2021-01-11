@@ -1,0 +1,316 @@
+{
+	"recipes": [
+		{
+			"id": "dream.poison.fascination.longlesson.trap",
+			"actionId": "dream",
+			"label": "用心深い敵",
+			"startdescription": "敵は私の夢から学んだ。",
+			"requirements": {
+				"poison.fascination.longlesson": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"long.lesson.dreamwork": 1
+			},
+			"mutations": [
+				{
+					"filter": "fascination",
+					"mutate": "poison.fascination.longlesson",
+					"level": -1
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "dreamhealth",
+			"label": "早寝早起き",
+			"actionId": "dream",
+			"requirements": {
+				"health": 1
+			},
+			"effects": {
+				"fleeting": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "dreamhealthdread",
+					"chance": 10
+				},
+				{
+					"id": "dreamhealthfascination",
+					"chance": 10
+				},
+				{
+					"id": "dreamhealthcontentment",
+					"chance": 30
+				},
+				{
+					"id": "dream_router",
+					"chance": 30
+				}
+			],
+			"startdescription": "運が良ければ、すっきりと目覚めるはずだ。[時には、これで満足感が得られることもある。多くの場合、何の役にも立たない。時折、恐怖や魅了を生むこともある。]",
+			"description": "時々、砂色のコートを着た背の高い女性の夢を見ることがある。彼女はベッドの足元に立ち、微笑みながら眠る私を見つめている。その夢の中で、彼女の頭は鳥のように素早く回転し、指は鳥の爪のように曲がっていた。昨夜、彼女の夢を見たとは思えない。もし見ていたら、こんなにぐっすり眠れなかっただろう。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamhealthcontentment",
+			"label": "早寝早起き",
+			"actionId": "dream",
+			"effects": {
+				"contentment": 1
+			},
+			"description": "眠りは長く暗い海だが、時々、彼岸に着くとランプの光が見える。",
+			"craftable": false
+		},
+		{
+			"id": "dreamhealthdread",
+			"label": "早寝早起き",
+			"actionId": "dream",
+			"effects": {
+				"dread": 1
+			},
+			"description": "レムシュやナラム＝シンの時代、2つの川が流れる地には、他人の子供を食い荒らす遠吠え女の噂が語られていた。昨夜、夢の中で遠吠えが聞こえた。",
+			"craftable": false
+		},
+		{
+			"id": "dreamhealthfascination",
+			"label": "早寝早起き",
+			"actionId": "dream",
+			"effects": {
+				"fascination": 1
+			},
+			"description": "鏡の箱を想像してみよう。それぞれの鏡が甘い光を見せてくれる。次に、7番目の鏡に映るのは、平凡な夜明け、平凡なベッド、平凡な一日の平凡な始まりだけだということを想像してみよう。これを頭に浮かべながら、光を待ちわびよう。",
+			"craftable": false
+		},
+		{
+			"id": "recoverhunger",
+			"label": "強さを取り戻す",
+			"actionId": "dream",
+			"requirements": {
+				"funds": 1,
+				"hunger": 1
+			},
+			"effects": {
+				"funds": -1
+			},
+			"aspects": {
+				"restorehealth": 1
+			},
+			"startdescription": "しばらく食べない日々が続いた。慎重に食べるものを選ぼう。",
+			"description": "私の力が戻ってきた。視界の端の闇の渦が消えた。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "recoverfatigue",
+			"label": "疲労回復のために昼寝をする",
+			"actionId": "dream",
+			"requirements": {
+				"fatigue": 1
+			},
+			"aspects": {
+				"restorehealth": 1
+			},
+			"startdescription": "エネルギーを回復させるために少し時間が必要なんだ。",
+			"description": "気分転換できた。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "recover.apostlegrail.pillar2",
+			"actionId": "dream",
+			"label": "終わりの夢",
+			"startdescription": "小瓶から血を飲み込み、横になり、目を閉じる。明日、私はもっと強くなっているだろう。",
+			"description": "私はかなり回復した――それ以上に――贅沢になってしまった。目の強膜、手首の静脈には豪華な液体が流れている。謝肉祭が始まると、私はセンターピースとなり、喜びの者が欲望を示し、聖杯の性質を実行する。",
+			"requirements": {
+				"apostlegrail.pillarfuel": 1,
+				"apostlegrail.pillar2.dormant": 1
+			},
+			"effects": {
+				"apostlegrail.pillar2.dormant": -1,
+				"apostlegrail.pillar2": 1,
+				"apostlegrail.pillarfuel": -1,
+				"fascination": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "recoverillhealthfunds",
+			"label": "治癒",
+			"actionId": "dream",
+			"requirements": {
+				"funds": 1,
+				"illhealth": 1
+			},
+			"effects": {
+				"funds": -1
+			},
+			"aspects": {
+				"restorehealth": 1
+			},
+			"startdescription": "薬はタールのように黒くて苦い。毒を盛られているのかもしれないと、疑ってしまう気持ちは分かる。",
+			"description": "病室がの壁が迫り、空気がよどむ。起きる時間だ。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "recoverillhealthfundsvitality",
+			"label": "治癒",
+			"actionId": "dream",
+			"requirements": {
+				"vitality": 1,
+				"illhealth": 1
+			},
+			"effects": {
+				"vitality": -1
+			},
+			"aspects": {
+				"restorehealth": 1
+			},
+			"startdescription": "今必要なのは時間だ。",
+			"description": "病室がの壁が迫り、空気がよどむ。起きる時間だ。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "reducedread",
+			"label": "心を空っぽにする",
+			"actionId": "dream",
+			"requirements": {
+				"contentment": 1,
+				"dread": 1
+			},
+			"effects": {
+				"contentment": -1,
+				"dread": -1,
+				"fleeting": 1
+			},
+			"startdescription": "以前の自分は違っていたと気がする。",
+			"description": "太陽はまだ動き、風はまだなびいている。日記が迷宮の手がかりになっている。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "reducefascination",
+			"label": "平静",
+			"actionId": "dream",
+			"requirements": {
+				"dread": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"fascination": -1,
+				"dread": -1,
+				"fleeting": 1
+			},
+			"startdescription": ".",
+			"description": "空気がよどんでいる。このボロボロの姿で、帰ってきたのだ。これが一番良いのかもしれない。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "reducefascinationfleeting",
+			"label": "平静",
+			"actionId": "dream",
+			"requirements": {
+				"fleeting": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"fleeting": -1,
+				"fascination": -1
+			},
+			"startdescription": ".",
+			"description": "空気がよどんでいる。このボロボロの姿で、帰ってきたのだ。これが一番良いのかもしれない。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamfunds",
+			"label": "アヘンのチンキ剤を購入する",
+			"actionId": "dream",
+			"requirements": {
+				"funds": 1
+			},
+			"effects": {
+				"contentment": 1,
+				"funds": -1
+			},
+			"startdescription": "特別な危機に直面した時には、口の堅い薬剤師を訪ねて、アヘンのチンキ剤を買い、甘い夢を見る。しかし、これは特別な危機に直面した時にだけやることだ。[これは満足感を得るための高価で危険な方法だ。[病気や絶望を引き起こすかもしれない。]",
+			"description": "ああ、深い安らぎを感じられる。しかし、もう二度とこんなことはしてはいけない。",
+			"warmup": 30,
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "grailinduction",
+					"chance": 30,
+					"additional": true
+				},
+				{
+					"id": "despairrisk",
+					"chance": 10,
+					"additional": true
+				},
+				{
+					"id": "presickness",
+					"chance": 10,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "dream.decrepitude",
+			"actionId": "dream",
+			"label": "必死の策",
+			"startdescription": "私の魂は自分の弱った肉体に沼の怪火のように憑りつく。私の鼓動は速度を落とし、いつ止まってしまうだろう。風変わりなものを食べれば、失われた体力を取り戻せるかもしれないが、その可能性も低い。",
+			"requirements": {
+				"decrepitude": 1,
+				"ingredient": 1
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "dream.decrepitude.ingredientheartf"
+				},
+				{
+					"id": "dream.decrepitude.failure"
+				}
+			]
+		},
+		{
+			"id": "dream.decrepitude.ingredientheartf",
+			"actionId": "dream",
+			"label": "ヤヌアリウスの鼓動",
+			"startdescription": "かすかに錆びたような血の匂いを感じた途端、心臓が舞い上がり、突然の夜明けのような痛みが私を突き刺す。",
+			"description": "聖ヤヌアリウスは年の扉を開き、苦悩の扉を開き、その2つの扉をくぐって、痛みと歴史が逃げていく。",
+			"requirements": {
+				"ingredientheartf": 1,
+				"decrepitude": 1
+			},
+			"effects": {
+				"ingredientheartf": -1,
+				"restlessness": 1,
+				"mystique": 1
+			},
+			"aspects": {
+				"tohealth": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "dream.decrepitude.failure",
+			"actionId": "dream",
+			"label": "奇妙な味だけ",
+			"startdescription": "私の心臓は弱々しく動き続けた。苦労して手に入れた知識を除けば他に利益は得られなかった。",
+			"effects": {
+				"ingredient": -1,
+				"erudition": 1
+			}
+		}
+	]
+}

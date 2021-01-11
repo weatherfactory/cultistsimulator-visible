@@ -1,0 +1,551 @@
+{
+    "recipes": [
+        {
+            "id": "summoning_haunt_devourer",
+            "actionId": "haunting",
+            "requirements": {
+                "devourer": 1
+            },
+            "startdescription": "它脱逃了！",
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "summoning_haunt_devourer_eatsmortal",
+                    "chance": 50
+                },
+                {
+                    "id": "summoning_haunt_devourer_damages_health",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "summoning_haunt_devourer_eatsmortal",
+            "label": "潜伏的吞噬者",
+            "actionId": "haunting",
+            "startdescription": "那只从你处逃走的召唤物在此地作乱，寻找凡人来吞噬。[吞噬者的性相越高，他就更加容易去伤害凡人。]",
+            "description": "你召唤出来的生物已经回到了属于它的地方。它不会给你造成伤害了，至少现下如此。",
+            "slots": [
+                {
+                    "id": "Consuming",
+                    "label": "摄食",
+                    "required": {
+                        "mortal": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "comments": "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
+            "alternativerecipes": [
+                {
+                    "id": "devourer_haunting_mortal_highdevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_mortal_middevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_mortal_lowdevourer",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "devourer_haunting_mortal_highdevourer",
+            "label": "逃脱的召唤物逐步接近它盯上的受害者",
+            "actionId": "haunting",
+            "startdescription": "表针每走一格它就更近一些，像盘旋的风，像河水的涡。",
+            "description": "死亡来之无踪，但并非无声。",
+            "requirements": {
+                "mortal": 1,
+                "devourer": 10
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_mortal_success",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_mortal_middevourer",
+            "label": "逃脱的召唤物逐步接近它盯上的受害者",
+            "actionId": "haunting",
+            "startdescription": "事到如今，受害者会注意到有些不对劲了。他将在夜里留心响动，试图防备。",
+            "description": ". devourer_haunting_mortal_middevourer",
+            "requirements": {
+                "mortal": 1,
+                "devourer": 5
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_mortal_success",
+                    "chance": 70
+                },
+                {
+                    "id": "devourer_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_mortal_lowdevourer",
+            "label": "逃脱的召唤物逐步接近它盯上的受害者",
+            "actionId": "haunting",
+            "startdescription": "这个生物的对人的威胁并不强烈，但即使是不强烈的威胁有时也会致命。",
+            "description": ". devourer_haunting_mortal_lowdevourer",
+            "requirements": {
+                "mortal": 1
+            },
+            "comments": "Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_mortal_success",
+                    "chance": 30
+                },
+                {
+                    "id": "devourer_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_mortal_success",
+            "label": "逃脱的召唤物杀死了受害者",
+            "actionId": "haunting",
+            "startdescription": ".",
+            "description": "那天的第一缕阳光将会落在尸体睁大的眼睛上。轻率的召唤仪式常常要付出这种代价：但却并不总是由召唤者支付。",
+            "aspects": {
+                "killmortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "devourer_haunting_mortal_failure",
+            "label": "逃脱的召唤物对受害者造成恐惧",
+            "actionId": "haunting",
+            "startdescription": ".",
+            "description": "不论如何，这名受害者活了下来！但是这个夜晚的故事会像污点一样蔓延开来。",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
+        },
+        {
+            "id": "summoning_haunt_devourer_damages_health",
+            "label": "潜伏的吞噬者",
+            "actionId": "haunting",
+            "startdescription": "从你处逃脱的召唤物在回归世界表皮下之前会尝试从你身上夺去什么。[吞噬者的性相越高，就越可能伤害你。]",
+            "description": "你召唤出来的生物已经回到了属于它的地方。它不会给你造成伤害了，至少现下如此。",
+            "slots": [
+                {
+                    "id": "consuming",
+                    "label": "摄食",
+                    "required": {
+                        "health": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 30,
+            "alternativerecipes": [
+                {
+                    "id": "devourer_haunting_damageshealth_highdevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_middevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_lowdevourer",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "summoning_haunt_devourer_damages_health"
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_damageshealth_highdevourer",
+            "label": "逃脱的召唤物静候时机",
+            "actionId": "haunting",
+            "startdescription": "它是在逗弄我吗？",
+            "description": ".",
+            "requirements": {
+                "health": 1,
+                "devourer": 10
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_damageshealth_success",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_damageshealth_middevourer",
+            "label": "逃脱的召唤物正在埋伏你",
+            "actionId": "haunting",
+            "startdescription": "有太多的办法可以拆解人类的身体。我感觉自己的皮肤脆弱如大敞的门。",
+            "description": ". devourer_haunting_damageshealth_middevourer",
+            "requirements": {
+                "health": 1,
+                "devourer": 5
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_damageshealth_success",
+                    "chance": 70
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_damageshealth_lowdevourer",
+            "label": "逃脱的召唤物正在埋伏你",
+            "actionId": "haunting",
+            "startdescription": "我会监视着窗户，把门栓上，然后把橡木和银器放在床边。这样可能就够了。",
+            "description": ". devourer_haunting_damageshealth_lowdevourer",
+            "requirements": {
+                "health": 1
+            },
+            "comments": "Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_damageshealth_success",
+                    "chance": 30
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_damageshealth_success",
+            "label": "逃脱的召唤物袭击了你",
+            "actionId": "haunting",
+            "startdescription": ".",
+            "description": "我会落下一道伤疤，那种有朝一日说不定会在博物馆展出照片的伤疤。而且邻里一定会议论的。他们会议论什么呢……",
+            "aspects": {
+                "damagehealth": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "devourer_haunting_damageshealth_failure",
+            "label": "逃脱的召唤物敌不过你",
+            "actionId": "haunting",
+            "startdescription": ".",
+            "description": "它哪里有我厉害！但是我没法无声无息地解决掉它。人们会议论的。",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
+        },
+        {
+            "id": "summoning_haunt_deceiver",
+            "actionId": "haunting",
+            "requirements": {
+                "deceiver": 1
+            },
+            "startdescription": "它脱逃了！",
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "summoning_haunt_deceiver_derangesreason",
+                    "chance": 100
+                }
+            ],
+            "comments": "Currently doesn't call summoning_haunt_deceiver_derangesmortal, because Deceivers don't attack directly."
+        },
+        {
+            "id": "summoning_haunt_deceiver_derangesreason",
+            "label": "潜伏的欺骗者",
+            "actionId": "haunting",
+            "startdescription": "那只从你处逃走的召唤物骚扰着着你，试图使你陷入绝望——",
+            "description": "你召唤出来的生物已经回到了属于它的地方。它不会给你造成伤害了，至少现下如此。",
+            "slots": [
+                {
+                    "id": "Consuming",
+                    "label": "摄食",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 30,
+            "alternativerecipes": [
+                {
+                    "id": "deceiver_haunting_reason_highdeceiver",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_reason_middeceiver",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_reason_lowdeceiver",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "summoning_haunt_deceiver_derangesreason"
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_reason_highdeceiver",
+            "label": "逃脱的召唤物正在埋伏你",
+            "actionId": "haunting",
+            "startdescription": "人类的理智是脆弱的，而这个生物令人无法抗拒。",
+            "description": ".",
+            "requirements": {
+                "reason": 1,
+                "deceiver": 10
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_reason_success",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_reason_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_reason_middeceiver",
+            "label": "逃脱的召唤物正在埋伏你",
+            "actionId": "haunting",
+            "startdescription": "人类的理智是脆弱的，而这个生物能言善辩。",
+            "description": ". deceiver_haunting_reason_middeceiver",
+            "requirements": {
+                "reason": 1,
+                "deceiver": 5
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_reason_success",
+                    "chance": 70
+                },
+                {
+                    "id": "deceiver_haunting_reason_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_reason_lowdeceiver",
+            "label": "逃脱的召唤物正在埋伏你",
+            "actionId": "haunting",
+            "startdescription": "人类的理智是脆弱的，但与其说是伤害，这个生物可能更多在是捣乱。",
+            "description": ". deceiver_haunting_reason_lowedge",
+            "requirements": {
+                "reason": 1
+            },
+            "comments": "Leaving 'Deceiver' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+            "linked": [
+                {
+                    "id": "deceiver_haunting_reason_success",
+                    "chance": 30
+                },
+                {
+                    "id": "deceiver_haunting_reason_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_reason_success",
+            "label": "逃脱的召唤物蹂躏了你的梦境",
+            "actionId": "haunting",
+            "startdescription": ".",
+            "description": "那晚的情景将久久地留在你的记忆中。连续很多天来，报社都在向当地的居民了解情况。",
+            "aspects": {
+                "damagereason": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "deceiver_haunting_reason_failure",
+            "label": "逃脱的召唤物没能击垮你的决心",
+            "actionId": "haunting",
+            "startdescription": ".",
+            "description": "那晚的情景会久久地留在你的记忆中。然而那个来自清醒世界之外的生物不是你的对手。然而很多天来，报社都在向当地的居民了解情况。",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
+        },
+        {
+            "id": "summoning_haunt_deceiver_derangesmortal",
+            "label": "潜伏的欺骗者",
+            "actionId": "haunting",
+            "startdescription": "那只从你处逃走的召唤物在此地作乱，寻找凡人来搅扰。",
+            "description": "你召唤出来的生物已经回到了属于它的地方。它不会给你造成伤害了，至少现下如此。",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "derangemortal": 1
+            },
+            "slots": [
+                {
+                    "id": "Consuming",
+                    "label": "摄食",
+                    "required": {
+                        "mortal": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "comments": "This isn't currently in use. We only allow Deceivers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
+            "alternativerecipes": [
+                {
+                    "id": "deceiver_haunting_mortal_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_mortal_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_mortal_lowedge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "deceiver_haunting_mortal_highedge",
+            "label": "逃脱的召唤物逐步接近它盯上的受害者",
+            "actionId": "haunting",
+            "startdescription": "人类的理智是脆弱的，而这个生物令人无法抗拒。",
+            "description": ".",
+            "requirements": {
+                "mortal": 1,
+                "edge": 10
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_mortal_success",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_mortal_midedge",
+            "label": "逃脱的召唤物逐步接近它盯上的受害者",
+            "actionId": "haunting",
+            "startdescription": "人类的理智是脆弱的，而这个生物能言善辩。",
+            "description": ". deceiver_haunting_mortal_midedge",
+            "requirements": {
+                "mortal": 1,
+                "edge": 5
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_mortal_success",
+                    "chance": 70
+                },
+                {
+                    "id": "deceiver_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_mortal_lowedge",
+            "label": "逃脱的召唤物逐步接近它盯上的受害者",
+            "actionId": "haunting",
+            "startdescription": "人类的理智是脆弱的，但与其说是伤害，这个生物可能更多在是捣乱。",
+            "description": ". deceiver_haunting_mortal_lowedge",
+            "requirements": {
+                "mortal": 1,
+                "edge": 1
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_mortal_success",
+                    "chance": 30
+                },
+                {
+                    "id": "deceiver_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_mortal_success",
+            "label": "逃脱的召唤物对受害者造成恐惧",
+            "actionId": "haunting",
+            "startdescription": ".",
+            "description": "只有心智最强大的人才能逃出一命。报社有稀奇的新闻可登了。",
+            "aspects": {
+                "derangemortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "deceiver_haunting_mortal_failure",
+            "label": "逃脱的召唤物对受害者造成恐惧",
+            "actionId": "haunting",
+            "startdescription": ".",
+            "description": "受害者的决心依然坚定不移。报社有稀奇的新闻可登了。",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
+        }
+    ]
+}

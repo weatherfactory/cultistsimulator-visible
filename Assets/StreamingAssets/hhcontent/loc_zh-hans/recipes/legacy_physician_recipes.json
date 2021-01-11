@@ -1,0 +1,155 @@
+{
+    "recipes": [
+        {
+            "id": "legacyphysicianwork",
+            "label": "在研究所工作",
+            "actionId": "work",
+            "requirements": {
+                "legacyphysicianjob": 1
+            },
+            "effects": {
+                "funds": 2,
+                "legacyphysicianjob": -1,
+                "institutephysicianjob": 1,
+                "health": 1,
+                "reason": 3
+            },
+            "alternativerecipes": [
+                {
+                    "id": "legacyphysicianopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "#PREVIOUSCHARACTERNAME#是一个——一个棘手的病人。等到他完事后，我必需得休息一段时间。",
+            "description": "今天我下班很早。主任很体贴我，但现在我必须回归全时工作了。",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "legacyphysicianopenstudy",
+            "actionId": "study",
+            "label": "关于#PREVIOUSCHARACTERNAME#病情的笔记",
+            "startdescription": "我之前塞进办公桌抽屉的笔记散落了出来。",
+            "description": "病人提到的都是些没什么意义的事。无墙的房屋。分裂的太阳。无形的光芒。但是，当我回想他谈论无形光芒时的情景，我内心会涌起冲动。我没办法再无视那些笔记了。\n[<b>时间</b>现在开始流逝。]",
+            "effects": {
+                "legacyphysiciannotes": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "needs",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "legacyphysicianstudynotes",
+            "actionId": "study",
+            "requirements": {
+                "legacyphysiciannotes": 1
+            },
+            "label": "研究我关于#PREVIOUSCHARACTERNAME#病情的笔记",
+            "startdescription": "当我开始阅读时，我回想起了病人眼中透出的愉悦，声音中的欣喜；但同时，他所在房间里的那股气味也涌上心头。",
+            "description": "我突然莫名地想通了一些事情。我差不多已经快忘掉那次关于“莫兰之道”的有趣闲聊了——而现在我意识到，“道”指的是去向莫兰的“道路”。我之前就听说过这个莫兰，一名出售问题书籍的商贩。\n剩下的内容都是胡言乱语——和从前一样让人摸不着头绪。房屋怎会没有墙壁呢？他渴求的“辉光”到底是什么？但我已经感觉到有梦境正在睡眠中等待着我。",
+            "effects": {
+                "legacyphysiciannotes": -1,
+                "mapbookdealer": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "legacyphysicianopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 30,
+            "comments": "The book dealer can be studied through the generic intro; there's a generic openexplore there",
+            "craftable": true
+        },
+        {
+            "id": "legacyphysicianopendream",
+            "actionId": "dream",
+            "label": "无形的光芒",
+            "startdescription": "睡梦中，我化身为一棵弯折的树。蛾子在我的树皮上蠕动。黎明即将到来，尽管其光芒并无可见之形。在光的触碰下，我挺直腰，想要够到太阳。",
+            "description": "当我醒来，脸上布满喜悦的泪水。那道光！比我在醒时生活中碰到过的一切都要圣洁。但我见过了这类梦境最终把#PREVIOUSCHARACTERNAME#变成了什么样子。追随梦境并不明智，也不安全。",
+            "effects": {
+                "contentment": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "legacyphysicianhook",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "legacyphysicianhook",
+            "actionId": "hookplot",
+            "label": "信仰？",
+            "startdescription": "我可以屈服于梦境。但他<i>将会</i>吞噬我的理性。",
+            "description": ".",
+            "alternativerecipes": [
+                {
+                    "id": "legacyphysicianhookfulfilment",
+                    "chance": 100
+                }
+            ],
+            "slots": [
+                {
+                    "id": "Temptation",
+                    "label": "诱惑",
+                    "required": {
+                        "reason": 1
+                    },
+                    "consumes": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "legacyphysicianhook",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "legacyphysicianhookfulfilment",
+            "actionId": "hookplot",
+            "label": "守夜人之眼",
+            "requirements": {
+                "reason": 1
+            },
+            "startdescription": "守夜人即瞳中之扉。想要打开我自己眼睛上的锁，必须付出一些小小的牺牲。",
+            "description": "我在睡梦中挥舞着匕首。我感受到了疼痛，但疼痛就是路标。我把伤口包扎好。我会告诉别人这只是意外。在梦中，我看到了那扇门。不久的将来，我会通过它。",
+            "effects": {
+                "ascensionenlightenmenta": 1,
+                "passion": 1,
+                "fragmentknock": 1,
+                "fragmentlantern": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "legacyphysicianopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "legacyphysicianopentalk",
+            "label": "同道中人",
+            "actionId": "talk",
+            "startdescription": "研究所里有位病人也包扎着一只眼睛。他说这是自残造成的伤口。或许我们很快就会聊一聊。",
+            "description": "我的伤口已经痊愈，他的也是。他无法理解他为什么会那样做。但他也梦见了我，那天夜里，我们紧密相连。",
+            "deckeffect": {
+                "acquaintances": 1
+            },
+            "warmup": 60,
+            "craftable": false
+        }
+    ]
+}

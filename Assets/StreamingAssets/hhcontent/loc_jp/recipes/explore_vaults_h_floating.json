@@ -1,0 +1,55 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultfloating1_setup",
+			"label": "遠征の始まり：ヘベ・スタントン号",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultfloating1": 1
+			},
+			"effects": {
+				"guardian_watchers": 1,
+				"seal_wardeddoor": 1,
+				"peril_sea": 1
+			},
+			"startdescription": "ヘベ・スタントン号が停泊しているこの陰鬱な島に客船が訪れるのは珍しいことだが、漁船を借りて好天を祈ることはできるだろう。一番大変なのは、乗船してから護衛や扉を突破しなくてはいけないことだろう。[遠征には障害物1つにつき最低でも1つの資金が必要。信奉者は障害物を倒すことができる。資金や信奉者がなくなると遠征は終わりを告げる。]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultfloating1_success",
+			"label": "居心地の良い巣",
+			"actionId": "explore",
+			"requirements": {
+				"vaultfloating1": 1
+			},
+			"effects": {
+				"vaultfloating1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ceaselesstantrasanskrit",
+					"leoninetantrasanskrit",
+					"incandescenttantrasanskrit",
+					"firecircletantrasanskrit"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "船内には一握りの乗客しかいなかったが、目的地がこの氷の島であることを考えれば、不思議なことではない。しかし、少なくとも1人は、鍵以外のもので自分の客室の扉を保護していた。その人は上陸したに違いない。今にも戻ってくるかもしれない―― ",
+			"description": "荷物を全て解き、本を上下逆さまに振ったり、写真をめくって裏を調べたりした。衣類や紙幣、地図などは見つかったが、変ったものはなかった。蛇の脱皮のような形をした半透明の物質が椅子の背もたれに置かれていた。最後に、詰め物の中を探るためにマットレスを切ると、象牙の巻物入れの小さな山が見つかった。",
+			"warmup": 30,
+			"craftable": false
+		}
+	]
+}

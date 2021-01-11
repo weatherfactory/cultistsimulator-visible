@@ -1,0 +1,266 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaultrendingmountains1_setup",
+            "label": "Beginning an Expedition: Hunter's Pit",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultrendingmountains1": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "guardian_watchers": 1,
+                "guardian_serpent": 1
+            },
+            "startdescription": "The trap-labyrinths of the Tearing Tribes. We'll have to scale the mountains and battle our way through the tribes. After that, no doubt, there will be something else. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultrendingmountains2_setup",
+            "label": "Beginning an Expedition: Snow's Keeper",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultrendingmountains2": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "guardian_dead": 1,
+                "curse_nowhere": 1
+            },
+            "startdescription": "We'll brave the mountain-snows to reach the temple. If the dead rise against us, we'll suppress them. But there is a malignity here that we must suppress, or it will return home with us. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultrendingmountains3_setup",
+            "label": "Beginning an Expedition: the Eye of Ikirmawi",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultrendingmountains3": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "seal_wardeddoor": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "The Rending Mountains stand between us and the observatory. The door will be sealed and barred against us. The visions we find may tear at our senses. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultrendingmountains4_setup",
+            "label": "Beginning an Expedition: the Mausoleum of Wolves",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultrendingmountains4": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "seal_wardeddoor": 1,
+                "guardian_dead": 1
+            },
+            "startdescription": "Did the Sun ever come here, when its death was pronounced? Perhaps that pronouncement was premature. In any case, if we usurp its progress, we'll have to face avalanches, furious ghosts, and a door sealed by adept-architects. Let's be ready. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultrendingmountainsdefault_setup",
+            "label": "Beginning an Expedition: Tombs of the Shadowless Kings",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultrendingmountainsdefault": 1
+            },
+            "effects": {
+                "peril_mountains": 1,
+                "seal_hiddendoor": 1,
+                "guardian_watchers": 1,
+                "curse_affliction": 1
+            },
+            "startdescription": "We must penetrate the mountains, pass the guardians, and brave the curse the Shadowless Kings left behind. Perhaps then we will find treasures. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultrendingmountains1_success",
+            "label": "The Memory of War",
+            "actionid": "explore",
+            "requirements": {
+                "vaultrendingmountains1": 1
+            },
+            "effects": {
+                "vaultrendingmountains1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "ingredientedgef",
+                    "ingredientedgef",
+                    "ingredientedgef",
+                    "toolforged",
+                    "bookofdissolutionmandaic",
+                    "ingredientforgeb",
+                    "ingredientforgeb",
+                    "ingredientforgeb",
+                    "textbookmandaicaramaic"
+                ],
+                "draws": 9,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "In the crumbling depths of the Hunter's Pits, we've found a room where battle-scenes are painted on the walls. Here are the shrines of all the greatest hunters of the Tearing Tribes.",
+            "description": "These are the trophies the hunters won. Not all the beasts they slew are beasts that walk the earth today.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultrendingmountains2_success",
+            "label": "The Altar's Garment",
+            "actionid": "explore",
+            "requirements": {
+                "vaultrendingmountains2": 1
+            },
+            "effects": {
+                "vaultrendingmountains2": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toolgraild",
+                    "wherehasshegonevak",
+                    "tooledgef",
+                    "dreamconspiracyskiesphrygian",
+                    "textbookvaksanskrit"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The interior of the temple throbs with luminescent fungi. We must peel them from the altar with our gloved hands before we can loot the place. It is as cold as rain-chilled flesh. Our gloves now are stained with light. Our breath mists in the temple's cold.",
+            "description": "The treasures that unknown priests left here, and a pitiful huddle of bones. A sacrifice? Or did a later visitor end their visit here? The glowing fungus has etched their skeleton with its acids.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultrendingmountains3_success",
+            "label": "The Progress of the Heavens",
+            "actionid": "explore",
+            "requirements": {
+                "vaultrendingmountains3": 1
+            },
+            "effects": {
+                "vaultrendingmountains3": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toollanternfcracked",
+                    "larquebinecodexphrygian",
+                    "bookofmasksphrygian",
+                    "toolknockd"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The great telescope has rusted and fallen from the dome. The lenses have cracked. But pale lights rotate slowly above the floor, like lamps held aloft by dancers. Perhaps they imitate the procession of heavenly bodies. Perhaps their motion mourns the passing of the Sun.",
+            "description": "The chief of the astronomers who dwelt here must have been a practitioner of the invisible arts. In a cedarwood box in his quarters, beneath the decaying bed, we find what we sought.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultrendingmountains4_success",
+            "label": "The Coming of the Wolf",
+            "actionid": "explore",
+            "requirements": {
+                "vaultrendingmountains4": 1
+            },
+            "effects": {
+                "vaultrendingmountains4": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "ingredientwinterd",
+                    "ingredientwinterd",
+                    "ingredientwinterd",
+                    "secondglorymandaic",
+                    "asthesunhiscoursearamaic",
+                    "textbookphrygiangreek"
+                ],
+                "draws": 6,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The whispering of the Dead is quiet, but another sound echoes in the Mausoleum: a faint descending howl, like metal tearing in the hull of a ship, dropping in pitch until it churns our bones. It could almost be the wind, but it is not. We should not stay long here.",
+            "description": "The chill in the air deepens, until our skin crisps with ice. At the core of the Mausoleum is a white marble bowl upon a granite plinth. It is filled with snow whose touch burns the skin - and buried in it, items of note. Were they concealed here? Or were they offerings? Nothing beside remains.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultrendingmountainsdefault_success",
+            "label": "What Remains",
+            "actionid": "explore",
+            "requirements": {
+                "vaultrendingmountainsdefault": 1
+            },
+            "effects": {
+                "vaultrendingmountainsdefault": -1
+            },
+            "deckeffects": {
+                "vaultrewardse": 3
+            },
+            "startdescription": "We roll the stone aside, and light floods the tomb. Here is the king, dried to papery leather and crumbling bone. He does not move. This one was not immortal.",
+            "description": "The Shadowless Kings were buried only with their most personal treasures. They expected no luxury in the afterlife. Here is a tiny cache of the things this king valued.",
+            "warmup": 30,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "expedition.corpse.find.vaultrendingmountainsdefault",
+                    "additional": true
+                }
+            ]
+        }
+    ]
+}

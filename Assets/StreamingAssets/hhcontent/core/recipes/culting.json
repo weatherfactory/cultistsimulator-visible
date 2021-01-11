@@ -1,0 +1,1244 @@
+{
+    "recipes": [
+        {
+            "id": "recruitindependentedge",
+            "label": "Recruit a Troublemaker, by invoking a great power of Edge",
+            "actionid": "talk",
+            "requirements": {
+                "venerationedge": 1,
+                "tool": 1,
+                "independent": 1,
+                "mortal": 1,
+                "resentment": -1,
+                "edge": 21
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1,
+                "tool": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready to join me... if I give up a Tool as a mark of my respect. [You must include one Tool, which will be permanently lost.]",
+            "description": "We have prepared a knife for this moment.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitindependentforge",
+            "label": "Recruit a Troublemaker, by invoking a great power of Forge",
+            "actionid": "talk",
+            "requirements": {
+                "venerationforge": 1,
+                "tool": 1,
+                "independent": 1,
+                "mortal": 1,
+                "resentment": -1,
+                "forge": 21
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1,
+                "tool": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready to join me... if I give up a Tool as a mark of my respect. [You must include one Tool, which will be permanently lost.]",
+            "description": "The fire must blaze, strong enough to scorch the skin of the watchers.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitindependentgrail",
+            "label": "Recruit a Troublemaker, by invoking a great power of Grail",
+            "actionid": "talk",
+            "requirements": {
+                "venerationgrail": 1,
+                "tool": 1,
+                "independent": 1,
+                "mortal": 1,
+                "resentment": -1,
+                "grail": 21
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1,
+                "tool": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready to join me... if I give up a Tool as a mark of my respect. [You must include one Tool, which will be permanently lost.]",
+            "description": "We will be joined; oh yes, we will be joined.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitindependentheart",
+            "label": "Recruit a Troublemaker, by invoking a great power of Heart",
+            "actionid": "talk",
+            "requirements": {
+                "venerationheart": 1,
+                "tool": 1,
+                "independent": 1,
+                "mortal": 1,
+                "resentment": -1,
+                "heart": 21
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1,
+                "tool": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready to join me... if I give up a Tool as a mark of my respect. [You must include one Tool, which will be permanently lost.]",
+            "description": "Now we begin what will not end.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitindependentknock",
+            "label": "Recruit a Troublemaker, by invoking a great power of Knock",
+            "actionid": "talk",
+            "requirements": {
+                "venerationknock": 1,
+                "tool": 1,
+                "independent": 1,
+                "mortal": 1,
+                "resentment": -1,
+                "knock": 21
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1,
+                "tool": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready to join me... if I give up a Tool as a mark of my respect. [You must include one Tool, which will be permanently lost.]",
+            "description": "This is an opening we will all remember.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitindependentlantern",
+            "label": "Recruit a Troublemaker, by invoking a great power of Lantern",
+            "actionid": "talk",
+            "requirements": {
+                "venerationlantern": 1,
+                "tool": 1,
+                "independent": 1,
+                "mortal": 1,
+                "resentment": -1,
+                "lantern": 21
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1,
+                "tool": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready to join me... if I give up a Tool as a mark of my respect. [You must include one Tool, which will be permanently lost.]",
+            "description": "A great light, and then a great darkness.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitindependentmoth",
+            "label": "Recruit a Troublemaker, by invoking a great power of Moth",
+            "actionid": "talk",
+            "requirements": {
+                "venerationmoth": 1,
+                "tool": 1,
+                "independent": 1,
+                "mortal": 1,
+                "resentment": -1,
+                "moth": 21
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1,
+                "tool": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready to join me... if I give up a Tool as a mark of my respect. [You must include one Tool, which will be permanently lost.]",
+            "description": "We have both shed our skins.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitindependentwinter",
+            "label": "Recruit a Troublemaker, by invoking a great power of Winter",
+            "actionid": "talk",
+            "requirements": {
+                "venerationwinter": 1,
+                "tool": 1,
+                "independent": 1,
+                "mortal": 1,
+                "resentment": -1,
+                "winter": 21
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1,
+                "tool": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready to join me... if I give up a Tool as a mark of my respect. [You must include one Tool, which will be permanently lost.]",
+            "description": "This ceremony needs no words.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitacquaintanceedge",
+            "label": "Recruit an Acquaintance, by invoking Edge",
+            "actionid": "talk",
+            "requirements": {
+                "venerationedge": 1,
+                "acquaintance": 1,
+                "follower": -1,
+                "mortal": 1,
+                "edge": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready.",
+            "description": "Before they speak the words, the novice must sharpen a knife so it can separate a drifting thread. An it be not sharp enough, it will be the worse for them.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitacquaintanceforge",
+            "label": "Recruit an Acquaintance, by invoking Forge",
+            "actionid": "talk",
+            "requirements": {
+                "venerationforge": 1,
+                "acquaintance": 1,
+                "follower": -1,
+                "mortal": 1,
+                "forge": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready.",
+            "description": "The ceremony requires a searing. Only a little one; but they will carry the mark all their life.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitacquaintancegrail",
+            "label": "Recruit an Acquaintance, by invoking Grail",
+            "actionid": "talk",
+            "requirements": {
+                "venerationgrail": 1,
+                "acquaintance": 1,
+                "follower": -1,
+                "mortal": 1,
+                "grail": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready.",
+            "description": "They will not forget the savour I have given them.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitacquaintanceheart",
+            "label": "Recruit an Acquaintance, by invoking Heart",
+            "actionid": "talk",
+            "requirements": {
+                "venerationheart": 1,
+                "acquaintance": 1,
+                "follower": -1,
+                "mortal": 1,
+                "heart": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready.",
+            "description": "The ceremony is resonant as thunder in a church. I know it well. I wrote it myself.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitacquaintanceknock",
+            "label": "Recruit an Acquaintance, by invoking Knock",
+            "actionid": "talk",
+            "requirements": {
+                "venerationknock": 1,
+                "acquaintance": 1,
+                "follower": -1,
+                "mortal": 1,
+                "knock": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready.",
+            "description": "Only a little wound. Just enough to give homage to the powers that open.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitacquaintancelantern",
+            "label": "Recruit an Acquaintance, by invoking Lantern",
+            "actionid": "talk",
+            "requirements": {
+                "venerationlantern": 1,
+                "acquaintance": 1,
+                "follower": -1,
+                "mortal": 1,
+                "lantern": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready.",
+            "description": "A dozen lights blaze. There is no place for shadow in these rites, and no place for mercy.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitacquaintancemoth",
+            "label": "Recruit an Acquaintance, by invoking Moth",
+            "actionid": "talk",
+            "requirements": {
+                "venerationmoth": 1,
+                "acquaintance": 1,
+                "follower": -1,
+                "mortal": 1,
+                "moth": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready.",
+            "description": "Moth sheds its skin. The novice must only shed their clothes, and their past.",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "recruitacquaintancewinter",
+            "label": "Recruit an Acquaintance, by invoking Winter",
+            "actionid": "talk",
+            "requirements": {
+                "venerationwinter": 1,
+                "acquaintance": 1,
+                "follower": -1,
+                "mortal": 1,
+                "winter": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "recruiting": 1
+            },
+            "startdescription": "This one is ready.",
+            "description": "I will speak only and exactly nine words. The novice will speak none at all. ",
+            "warmup": 30,
+            "craftable": true,
+            "burnimage": "freemasons"
+        },
+        {
+            "id": "promotetodiscipleedge",
+            "label": "Promote a Believer by invoking Edge",
+            "actionid": "talk",
+            "requirements": {
+                "venerationedge": 1,
+                "follower": 1,
+                "disciple": -1,
+                "independent": -1,
+                "mortal": 1,
+                "edge": 7
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotiontodisciple": 1
+            },
+            "startdescription": "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+            "description": "'My scars are weapons. Through striving I rise to victory. There is no defeat but annihilation. In the light of the Bright Edge we know ourselves. I pledge myself to the service of the strongest.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promotetodiscipleforge",
+            "label": "Promote a Believer by invoking Forge",
+            "actionid": "talk",
+            "requirements": {
+                "venerationforge": 1,
+                "follower": 1,
+                "disciple": -1,
+                "independent": -1,
+                "mortal": 1,
+                "forge": 7
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotiontodisciple": 1
+            },
+            "startdescription": "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+            "description": "'I am destroyed. I am remade. Now I sear my skin, and by these marks shall I be known. I pledge myself to the flame, and I shall not flinch from any remaking.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promotetodisciplegrail",
+            "label": "Promote a Believer by invoking Grail",
+            "actionid": "talk",
+            "requirements": {
+                "venerationgrail": 1,
+                "follower": 1,
+                "disciple": -1,
+                "independent": -1,
+                "mortal": 1,
+                "grail": 7
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotiontodisciple": 1
+            },
+            "startdescription": "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+            "description": "In pain are we born. In hunger are we embraced. In delight are we devoured. These are the gates of the body, and this is Her promise: not all that is born decays. In remembrance of that promise, we give ourselves to the Feast.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promotetodiscipleheart",
+            "label": "Promote a Believer by invoking Heart",
+            "actionid": "talk",
+            "requirements": {
+                "venerationheart": 1,
+                "follower": 1,
+                "disciple": -1,
+                "independent": -1,
+                "mortal": 1,
+                "heart": 7
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotiontodisciple": 1
+            },
+            "startdescription": "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+            "description": "'We cede our mouths to the thunder. We cede our feet to the dance. We cede our skins to the night. We do not cease; we do not cease; we do not cease.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promotetodiscipleknock",
+            "label": "Promote a Believer by invoking Knock",
+            "actionid": "talk",
+            "requirements": {
+                "venerationknock": 1,
+                "follower": 1,
+                "disciple": -1,
+                "independent": -1,
+                "mortal": 1,
+                "knock": 7
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotiontodisciple": 1
+            },
+            "startdescription": "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+            "description": "'To she who was flesh, I offer my wounds. To she who was stone, I offer this moment, where my old self divides from my new. To she who came from Light, I offer my secrets. The door is opened.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promotetodisciplelantern",
+            "label": "Promote a Believer by invoking Lantern",
+            "actionid": "talk",
+            "requirements": {
+                "venerationlantern": 1,
+                "follower": 1,
+                "disciple": -1,
+                "independent": -1,
+                "mortal": 1,
+                "lantern": 7
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotiontodisciple": 1
+            },
+            "startdescription": "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+            "description": "'He navigates. Now you are the map. He illuminates. You were the darkness. He is not compassionate. You will not show compassion. Our compass is Knowledge and our course is Glory.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promotetodisciplemoth",
+            "label": "Promote a Believer by invoking Moth",
+            "actionid": "talk",
+            "requirements": {
+                "venerationmoth": 1,
+                "follower": 1,
+                "disciple": -1,
+                "independent": -1,
+                "mortal": 1,
+                "moth": 7
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotiontodisciple": 1
+            },
+            "startdescription": "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+            "description": "'Now the scissors, and then the knife. Now the wood, and then the bones. Now the flutter of the moon, and then the dappling of the soul. He was blood, and so will we be.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promotetodisciplewinter",
+            "label": "Promote a Believer by invoking Winter",
+            "actionid": "talk",
+            "requirements": {
+                "venerationwinter": 1,
+                "follower": 1,
+                "disciple": -1,
+                "independent": -1,
+                "mortal": 1,
+                "winter": 7
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotiontodisciple": 1
+            },
+            "startdescription": "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+            "description": "'Now you shed your blood, as the Sun's blood was shed. Now your past is divided from your future, as the Wolf was divided. You were not born. Your service ends only in dissolution. Arise, in silence.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_edge",
+            "label": "Attempt to Exalt a Disciple to an Assassin",
+            "actionid": "talk",
+            "requirements": {
+                "cultedge_1": 1,
+                "follower": 1,
+                "edge": 21,
+                "exalted": -1,
+                "potential": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotionto_d_edge": 1
+            },
+            "startdescription": "Only a rare few - those most suited to service in our mysteries - may achieve this rank.",
+            "description": "'As the Lionsmith knelt to the Colonel, so now I kneel. My service ends in death, or in the resolution of strengths.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_forge",
+            "label": "Attempt to Exalt a Disciple to a Reshaper",
+            "actionid": "talk",
+            "requirements": {
+                "cultforge_1": 1,
+                "follower": 1,
+                "forge": 21,
+                "exalted": -1,
+                "potential": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotionto_d_forge": 1
+            },
+            "startdescription": "Only a rare few - those most suited to service in our mysteries - may achieve this rank.",
+            "description": "'I am the hammer and the anvil; I am the fire's touch and the iron's blessing. I pledge myself to the final conflagration.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_grail",
+            "label": "Attempt to Exalt a Disciple to a Cyprian",
+            "actionid": "talk",
+            "requirements": {
+                "cultgrail_1": 1,
+                "follower": 1,
+                "grail": 21,
+                "exalted": -1,
+                "potential": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotionto_d_grail": 1
+            },
+            "startdescription": "Only a rare few - those most suited to service in our mysteries - may achieve this rank.",
+            "description": "'By the Copper and the Crow, by She for whom we Hunger and She who Hungers for us, I pledge myself to be the Feaster and the Feast. I will be devoured and I will devour.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_heart",
+            "label": "Attempt to Exalt a Disciple to a Tarantellist",
+            "actionid": "talk",
+            "requirements": {
+                "cultheart_1": 1,
+                "follower": 1,
+                "heart": 21,
+                "exalted": -1,
+                "potential": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotionto_d_heart": 1
+            },
+            "startdescription": "Only a rare few - those most suited to service in our mysteries - may achieve this rank.",
+            "description": "'By the Pine and the Knife, by the Drum and the Circle, I pledge myself to lead the Dance that does not end. This is my service, but in the end, it is only the Dance that I serve. '",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_knock",
+            "label": "Attempt to Exalt a Disciple to a Key",
+            "actionid": "talk",
+            "requirements": {
+                "cultknock_1": 1,
+                "follower": 1,
+                "knock": 21,
+                "exalted": -1,
+                "potential": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotionto_d_knock": 1
+            },
+            "startdescription": "Only a rare few - those most suited to service in our mysteries - may achieve this rank.",
+            "description": "'No lock remains. No door remains. No gate remains. No wall remains. No fortress is closed against me. No country forbids me. No law binds but the law of the Mother. I am a Key, and this is my use.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_lantern",
+            "label": "Attempt to Exalt a Disciple to a Seer",
+            "actionid": "talk",
+            "requirements": {
+                "cultlantern_1": 1,
+                "follower": 1,
+                "lantern": 21,
+                "exalted": -1,
+                "potential": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotionto_d_lantern": 1
+            },
+            "startdescription": "Only a rare few - those most suited to service in our mysteries - may achieve this rank.",
+            "description": "'I pledge myself to light the way for the willing and for the unwilling. I pledge myself to navigate. I pledge myself to illuminate. I pledge myself against mercy. I will walk the path that is shown, no matter the price.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_moth",
+            "label": "Attempt to Exalt a Disciple to a Skintwister",
+            "actionid": "talk",
+            "requirements": {
+                "cultmoth_1": 1,
+                "follower": 1,
+                "moth": 21,
+                "exalted": -1,
+                "potential": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotionto_d_moth": 1
+            },
+            "startdescription": "Only a rare few - those most suited to service in our mysteries - may achieve this rank.",
+            "description": "'This was my past, but now I am changed. These are my garments, which I set aside. Here is my skin, but it is loaned to me. Here is my name, which is only a blindfold. Here is the Wood, where we strangle the light. Here I was, and here I am not.'",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_winter",
+            "label": "Attempt to Exalt a Disciple",
+            "actionid": "talk",
+            "requirements": {
+                "venerationwinter": 1,
+                "venerationedge": -1,
+                "venerationforge": -1,
+                "venerationgrail": -1,
+                "venerationheart": -1,
+                "venerationlantern": -1,
+                "venerationknock": -1,
+                "venerationmoth": -1,
+                "follower": 1,
+                "winter": 21,
+                "exalted": -1,
+                "potential": 1
+            },
+            "effects": {
+                "ingredient": -1,
+                "influence": -1
+            },
+            "aspects": {
+                "promotionto_d_winter": 1
+            },
+            "startdescription": "Only a rare few - those most suited to service in our mysteries - may achieve this rank.",
+            "description": "\"'...?' '...?' '...?'\r\n\t\t\r\n\t\t'...'\"",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "recruitacquaintanceclue",
+            "label": "Recruit an Acquaintance,?",
+            "actionid": "talk",
+            "requirements": {
+                "society": 1,
+                "mortal": 1,
+                "follower": -1
+            },
+            "startdescription": "This one might be ready to achieve the next level, if I can supply something more.",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "cultfoundation",
+            "label": "Choose Founding Principles",
+            "alt": [
+                {
+                    "id": "cultfoundationedge",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundationforge",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundationgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundationheart",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundationknock",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundationlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundationmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundationsecrethistories",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundationwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundationwinter.prealzabo",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundationwinter.alzabo",
+                    "chance": 100
+                }
+            ],
+            "actionid": "cult",
+            "requirements": {},
+            "effects": {},
+            "slots": [
+                {
+                    "id": "Doctrine",
+                    "label": "Doctrine",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "What do we seek?"
+                }
+            ],
+            "startdescription": "Tradition and compulsion - old, new, or both together. [Add Lore to determine your cult's founding principles.]",
+            "description": "",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "cultfoundation",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundationedge",
+            "label": "Establish the Church of the Bright Edge",
+            "actionid": "establishcult",
+            "requirements": {
+                "edge": 1
+            },
+            "effects": {
+                "cultedge_1": 1
+            },
+            "startdescription": "An occult society dedicated to the Hours of struggle and conquest.",
+            "linked": [
+                {
+                    "id": "cultfoundation_health",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundationforge",
+            "label": "Establish the Unflinching Order",
+            "actionid": "establishcult",
+            "requirements": {
+                "forge": 1
+            },
+            "effects": {
+                "cultforge_1": 1
+            },
+            "startdescription": "An occult society dedicated to the fire that changes and remakes.",
+            "linked": [
+                {
+                    "id": "cultfoundation_health",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundationgrail",
+            "label": "Establish the Order of the Bloody Cup",
+            "actionid": "establishcult",
+            "requirements": {
+                "grail": 1
+            },
+            "effects": {
+                "cultgrail_1": 1
+            },
+            "startdescription": "An occult society dedicated to the mysteries of birth, blood and appetite.",
+            "linked": [
+                {
+                    "id": "cultfoundation_passion",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundationheart",
+            "label": "Establish the Temple Unceasing",
+            "actionid": "establishcult",
+            "requirements": {
+                "heart": 1
+            },
+            "effects": {
+                "cultheart_1": 1
+            },
+            "startdescription": "An occult society dedicated to the drumbeat which can never end.",
+            "linked": [
+                {
+                    "id": "cultfoundation_passion",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundationknock",
+            "label": "Establish the Society of the Holy Wound",
+            "actionid": "establishcult",
+            "requirements": {
+                "knock": 1
+            },
+            "effects": {
+                "cultknock_1": 1
+            },
+            "startdescription": "An occult society dedicated to the Hours which open doors.",
+            "linked": [
+                {
+                    "id": "cultfoundation_health",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundationlantern",
+            "label": "Establish the Mirror of Glory ",
+            "actionid": "establishcult",
+            "requirements": {
+                "lantern": 1
+            },
+            "effects": {
+                "cultlantern_1": 1
+            },
+            "startdescription": "An occult society dedicated to the understanding of the Light that leaks from a fiercer place.",
+            "linked": [
+                {
+                    "id": "cultfoundation_reason",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundationmoth",
+            "label": "Establish the Wildwood Club",
+            "actionid": "establishcult",
+            "requirements": {
+                "moth": 1
+            },
+            "effects": {
+                "cultmoth_1": 1
+            },
+            "startdescription": "An occult society dedicated to chaos, and the unexpected Hours.",
+            "linked": [
+                {
+                    "id": "cultfoundation_passion",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundationsecrethistories",
+            "label": "Establish the Society of St Hydra",
+            "actionid": "establishcult",
+            "requirements": {
+                "secrethistories": 1
+            },
+            "effects": {
+                "cultsecrethistories_1": 1
+            },
+            "startdescription": "An occult society dedicated to the study of the five Histories and their thousand demi-real branches.",
+            "linked": [
+                {
+                    "id": "cultfoundation_reason",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundationwinter",
+            "label": "Establish the Children of Silence ",
+            "actionid": "establishcult",
+            "requirements": {
+                "winter": 1
+            },
+            "effects": {
+                "cultwinter_1": 1
+            },
+            "startdescription": "An occult society dedicated to the silence that comes and the cold that ends.",
+            "linked": [
+                {
+                    "id": "cultfoundation_reason",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundationwinter.prealzabo",
+            "label": "Establish the Towers of the Dove",
+            "actionid": "establishcult",
+            "requirements": {
+                "prealzabo": 1
+            },
+            "effects": {
+                "cultwinter_2": 1
+            },
+            "startdescription": "An occult society dedicated to all that has been lost, and what may yet return.",
+            "linked": [
+                {
+                    "id": "cultfoundation_reason",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundationwinter.alzabo",
+            "label": "Establish the Towers of the Dove",
+            "actionid": "establishcult",
+            "requirements": {
+                "alzabo": 1
+            },
+            "effects": {
+                "cultwinter_2": 1
+            },
+            "startdescription": "An occult society dedicated to all that has been lost, and what may yet return.",
+            "linked": [
+                {
+                    "id": "cultfoundation_reason",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundation_health",
+            "label": "A Sacrifice of Pain",
+            "actionid": "establishcult",
+            "requirements": {
+                "injury": -1
+            },
+            "slots": [
+                {
+                    "id": "Health",
+                    "label": "My Health",
+                    "required": {
+                        "health": 1
+                    },
+                    "description": "I must give of myself to honour the power we will serve."
+                }
+            ],
+            "aspects": {
+                "damagehealth": 1
+            },
+            "warmup": 30,
+            "startdescription": "The Hour we will serve requires pain. I must give of myself.",
+            "description": "",
+            "linked": [
+                {
+                    "id": "cultfoundation_fatigue",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundation_health",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundation_firstrecruit",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundation_fatigue",
+            "label": "A Sacrifice of Pain",
+            "requirements": {
+                "fatigue": 1
+            },
+            "actionid": "establishcult",
+            "aspects": {
+                "damagehealth": 1
+            },
+            "comments": "most explicit way to resolve the damagehealth/injury/ingredient/fatigue society/cult inconsistency",
+            "linked": [
+                {
+                    "id": "cultfoundation_firstrecruit",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundation_reason",
+            "label": "A Terrible Clarity",
+            "actionid": "establishcult",
+            "requirements": {
+                "concentration": -1
+            },
+            "slots": [
+                {
+                    "id": "Reason",
+                    "label": "My Reason",
+                    "required": {
+                        "reason": 1
+                    },
+                    "description": "I must give of myself to honour the power we will serve."
+                }
+            ],
+            "aspects": {
+                "fatiguing": 1
+            },
+            "warmup": 30,
+            "startdescription": "Our purpose demands we recognise truths that chill the spirit. I must give of myself.",
+            "description": "",
+            "linked": [
+                {
+                    "id": "cultfoundation_reason",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundation_firstrecruit",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundation_passion",
+            "label": "A Pledge of Devotion",
+            "actionid": "establishcult",
+            "requirements": {
+                "passionexhausted": -1
+            },
+            "slots": [
+                {
+                    "id": "Passion",
+                    "label": "My Passion",
+                    "required": {
+                        "passion": 1
+                    },
+                    "description": "I must give of myself to honour the power we will serve."
+                }
+            ],
+            "aspects": {
+                "fatiguing": 1
+            },
+            "warmup": 30,
+            "startdescription": "The Hour we will serve demands that our passions are devoted to its purpose. I must give of myself.",
+            "description": "",
+            "linked": [
+                {
+                    "id": "cultfoundation_passion",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundation_firstrecruit",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundation_firstrecruit",
+            "label": "My First Recruit",
+            "actionid": "establishcult",
+            "requirements": {
+                "follower": -1
+            },
+            "slots": [
+                {
+                    "id": "Recruit",
+                    "label": "My First Recruit",
+                    "required": {
+                        "acquaintance": 1
+                    },
+                    "forbidden": {
+                        "independent": 1,
+                        "prisoner": 1,
+                        "hunter": 1,
+                        "patron": 1,
+                        "hireling": 1
+                    },
+                    "description": "One who is ready."
+                }
+            ],
+            "warmup": 30,
+            "startdescription": "A cult with one member is only an unusual habit. I must have a recruit.",
+            "aspects": {
+                "recruiting": 1
+            },
+            "linked": [
+                {
+                    "id": "cultfoundation_firstrecruit",
+                    "chance": 100
+                },
+                {
+                    "id": "cultfoundation_complete",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "cultfoundation_complete",
+            "label": "OUR RISE BEGINS.",
+            "actionid": "establishcult",
+            "effects": {
+                "hq.temporary": 1
+            },
+            "description": "I have founded my cult. This is a step to greater power. [Use your cult to recruit and promote followers. Talk with followers about your cult to send them out on cult business.]"
+        }
+    ]
+}

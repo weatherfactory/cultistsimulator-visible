@@ -1,0 +1,418 @@
+{
+    "recipes": [
+        {
+            "id": "explorevaultseal_hiddendoor_encounter",
+            "actionid": "explore",
+            "label": "A Hidden Door",
+            "startdescription": "There must be a door here. But without Lantern or Knock, we can't uncover it.",
+            "requirements": {
+                "seal_hiddendoor": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultseal_hiddendoor_highlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_highknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_midlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_midknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_lowlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_lowknock",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_highlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 10
+            },
+            "label": "We call upon the Watchman, who Illuminates",
+            "startdescription": "We'll almost certainly find this Hidden Door.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_midlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 5
+            },
+            "label": "We call upon the Watchman, who Navigates",
+            "startdescription": "Our senses are sharpened. We should find this Hidden Door.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_lowlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 1
+            },
+            "label": "We call upon the Watchman, who is not Compassionate",
+            "startdescription": "We carry light. We might find this Hidden Door. It'll be a struggle.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_highknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 10
+            },
+            "label": "We call upon the Beach-Crow, who sees what is lost",
+            "startdescription": "We bear a great power of opening. We'll almost certainly find this Hidden Door.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_midknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 5
+            },
+            "label": "We call upon the Beach-Crow, who opens the earth",
+            "startdescription": "We are skilled in uncovering hidden ways. We'll probably find this Hidden Door.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_lowknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 1
+            },
+            "label": "We call upon the Beach-Crow, to whom belongs what is not possessed",
+            "startdescription": "We have some ability in the matter of opening. We might find this Hidden Door. It'll be a struggle.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_success",
+            "actionid": "explore",
+            "label": "A Way through the Hidden Door",
+            "startdescription": "Faint lines in stone; a surface that yields to pressure. We've found it! The Hidden Door moves, with a grating shudder and a shower of dust.",
+            "description": ".",
+            "effects": {
+                "seal_hiddendoor": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_failure",
+            "actionid": "explore",
+            "label": "A Fruitless Search",
+            "startdescription": "Where is it? We could use more Knock, or Lantern.",
+            "description": ".",
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_encounter",
+            "actionid": "explore",
+            "label": "A Warded Door",
+            "startdescription": "This door has held fast for a long time. Unless we bring Forge or Knock, it will hold fast against us too.",
+            "requirements": {
+                "seal_wardeddoor": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultseal_wardeddoor_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_highknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_midknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_lowforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_lowknock",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_highforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "We call upon the Forge of Days, who will end all nights",
+            "startdescription": "We'll almost certainly shatter this Warded Door.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_midforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "We call upon the Forge of Days, who ends what will not change",
+            "startdescription": "Our tools are ready. We should be able to penetrate this Warded Door.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_lowforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "We call upon the Forge of Days, who remakes with fire",
+            "startdescription": "We are ready with the Forge's fire. We might be able to penetrate this Warded Door. It'll be a struggle.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_highknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 10
+            },
+            "label": "We call upon the Horned-Axe, who waits at the threshold",
+            "startdescription": "We bear a great power of opening. We'll almost certainly shatter this Warded Door.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_midknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 5
+            },
+            "label": "We call upon the Horned-Axe, who permits passage when passage is to be permitted",
+            "startdescription": "We are skilled in uncovering warded ways. We'll probably penetrate this Warded Door.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_lowknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 1
+            },
+            "label": "We call upon the Horned-Axe, who bears two blades",
+            "startdescription": "We have some ability in the matter of opening. We might be able to penetrate this Warded Door. It'll be a struggle.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_success",
+            "actionid": "explore",
+            "label": "The Death of a Door",
+            "startdescription": "All doors must open, as all lives must end. This door has found its end here today.",
+            "description": ".",
+            "effects": {
+                "seal_wardeddoor": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_failure",
+            "actionid": "explore",
+            "label": "The Purposes of Doors",
+            "startdescription": "Doors have two purposes: to open, and to remain closed. Today, this door remains true to its second purpose.",
+            "description": ".",
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        }
+    ]
+}

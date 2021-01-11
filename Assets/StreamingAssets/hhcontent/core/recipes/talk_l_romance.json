@@ -1,0 +1,793 @@
+{
+    "recipes": [
+        {
+            "id": "L_talk_roseopportunity",
+            "label": "A Liaison?",
+            "actionid": "talk",
+            "slots": [
+                {
+                    "id": "ascension",
+                    "label": "Kindred Spirits?",
+                    "required": {
+                        "desire": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "A_startrose_power_initiate",
+                    "chance": 100
+                },
+                {
+                    "id": "A_startrose_sensation_initiate",
+                    "chance": 100
+                },
+                {
+                    "id": "A_startrose_change_initiate",
+                    "chance": 100
+                },
+                {
+                    "id": "A_startrose_enlightenment_initiate",
+                    "chance": 100
+                }
+            ],
+            "startdescription": ".",
+            "description": "The evening is going in a direction I hadn't intended. Did I say the wrong thing? Or are we just hopelessly unsuited?",
+            "craftable": false,
+            "warmup": 30
+        },
+        {
+            "id": "A_startrose_power_initiate",
+            "actionid": "rose",
+            "label": "To Rise Together",
+            "requirements": {
+                "follower_lustpower": 1,
+                "resentment": -1,
+                "powermarks": 1
+            },
+            "startdescription": "@#uqtristan|Tristan rises before I've finished speaking. 'We should go now,' he says, very calmly, but when he places a hand on my shoulder, the hand trembles. \n#uqvalciane|Valciane inches closer as we speak together. When she takes my hand, the machine strength of her fingers is matched by the embery heat of her skin. 'I'm not light', she warns me. 'We should establish tolerances.'\n#uqelridge|Elridge listens intently to every word. His eyes never leave mine. The only thing he says is 'Yes', but by the time we reach my home, he has begun to say it even when I haven't asked a question.\n#uqlaidlaw|Laidlaw's eyes shine as I speak. He can't seem to look away. His hands are upon me before either of us quite seem clear how it happened. Just for a moment, the auctioneer falters. We leave together before we attract comment.@",
+            "description": ".",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "romanticinterest",
+                    "level": 1
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "forge",
+                    "level": 1,
+					additive:true
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "A_startrose_sensation_initiate",
+            "actionid": "rose",
+            "label": "Fellow Explorers",
+            "requirements": {
+                "follower_lustsensation": 1,
+                "resentment": -1,
+                "sensationmarks": 1
+            },
+            "startdescription": "@#uqrose|Rose lolls back into the crook of my arm, smiling contentedly. 'Just like old times,' she says. 'When are you going to take me home?'\n#uqsaliba|Saliba has twined his fingers in my hair, musingly. 'This will end badly,' he says, with some satisfaction.\n#uqvictor|Above table level, Victor is a perfect gentleman. The hand he keeps above the table is placed palm upwards. A moth lands on the outstretched palm: he closes his hand to crush it. 'Good memories,' he says. 'Let's go.'\n#uqviolet|Violet has, somehow, arranged herself against and across me, and begun to bestow melting kisses like momentary snowflakes. 'I'm not going to wait,' she warns me. 'Take me home if you know what's good for you.'\n#uqrenira|Renira sits perfectly composed at the intersection of attention. Some audience members pay more attention to her than they do to the dancers. We move together like one hot drop of wax running into another. 'I do hope you're not going to be foolish,' she breathes, just before our lips meet. @",
+            "description": ".",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "romanticinterest",
+                    "level": 1
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "grail",
+                    "level": 1,
+					additive:true
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "A_startrose_enlightenment_initiate",
+            "actionid": "rose",
+            "label": "Shared Light",
+            "requirements": {
+                "follower_lustenlightenment": 1,
+                "resentment": -1,
+                "enlightenmentmarks": 1
+            },
+            "startdescription": "@#uqenid|Enid drifts closer to me, and closer, like a reflection on a wave-crest, until she fits against my side. She says nothing at all, neither then, nor later.\n#uqauclair|Speaking with Auclair is always a little like fencing and a little like accounting, so it's a surprise when she hesitates and lets the hesitation draw out inelegantly far. 'I don't want to touch you,' she says at last, 'but I want to be in your bed. Tonight.'\n#uqcat|Cat Caro listens as I speak. She links her arm through mine. 'This isn't what I dreamt would happen,' she remarks, 'but I like it that way.' She smiles. 'I dreamt I'd take you home. Perhaps, instead, you should take me home.'\n#uqclifton|Clifton sways closer to me. 'I haven't drunk anything,' he assures me, 'but I'm drunk anyway. Maybe it's the moon.' He places an experimental hand on my hip. 'Maybe it's you. Are we going home now?'\n#uqneville|Neville can't seem to stop smiling. He hangs on your every word. 'I never imagined - ' he breathes.\n#uqslee|Slee, it transpires, has prepared a poem dedicated to me. It's very flattering. But it does go on. Kissing him is an effective way to curtail it. @",
+            "description": ".",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "romanticinterest",
+                    "level": 1
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "lantern",
+                    "level": 1,					
+					additive:true
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "A_startrose_change_initiate",
+            "actionid": "rose",
+            "label": "Those Who Will Be Different",
+            "requirements": {
+                "follower_lustchange": 1,
+                "resentment": -1,
+                "changemarks": 1
+            },
+            "startdescription": "@#uqporter|Porter sits curled in his seat, motionless, but his eyes glitter as he watches the stage, and they glitter the same way when I lean in to kiss him. 'Your taste,' he says. 'We're the same.' He chuckles, and then he puts his hands back on me.\n#uqysabet|Ysabet applauds enthusiastically at the end of every performance. With each cocktail she drinks, her applause grows more vigorous. After our first kiss, she leans back, considers me, and begins, once more, to applaud.\n#uqclovette|Clovette clasps my arm in excitement. 'I'm beginning to understand something. I don't know what, but there's something. And it's you, too - it's you!' She says nothing for a little while, and then, much later, long after we have left the club, she says again, very softly, 'It's you, too.'\n#uqdorothy|Dorothy hums along with the music. Dorothy unconsciously moves in time with the dancers' actions. When I kiss Dorothy, she kisses me back in equal measure. She's breathing heavily as she draws back. 'We'll be different, now,' she says.\n#uqsylvia|Sylvia pops olives into her mouth as she watches the stage, chewing noisily. When she kisses me, she bites my upper lip hard enough to draw blood, and I can taste olives for hours. 'I'll get inside your clothes,' she says hungrily, 'all the way inside. If we fit.'\n#uqleo|Leo sits very straight, to begin with, but as excitement and cocktails overcome him, he begins to relax, until he relaxes all the way into me. 'I want to be different,' he whispers, 'but I don't know how.' His eyes are wide; his mouth is supple.@",
+            "description": ".",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "romanticinterest",
+                    "level": 1
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "heart",
+                    "level": 1,					
+					additive:true
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "moth",
+                    "level": 1,					
+					additive:true
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "L_checkjealousy",
+            "label": "Another?",
+            "actionid": "rose",
+            "requirements": {
+                "romanticinterest": 1,
+                "summoned": -1,
+                "corpse": -1
+            },
+            "comments": "re requirements: can't be another if there isn't even one. Also people don't *currently* get jealous of the dead. They're either non-viable, or kept somewhere extremely private",
+            "slots": [
+                {
+                    "id": "Who?",
+                    "label": "Who?",
+                    "description": "Palm to palm and eye to eye.",
+                    "required": {
+                        "romanticinterest": 1
+                    },
+                    "forbidden": {
+                        "summoned": -1,
+                        "corpse": -1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "Is there another? ",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "L_activatejealousy",
+                    "chance": 100
+                },
+                {
+                    "id": "L_roserouter",
+                    "chance": 100
+                }
+            ],
+            "warmup": 5
+        },
+        {
+            "id": "L_activatejealousy",
+            "label": "O Rose Thou Art Sick",
+            "actionid": "rose",
+            "requirements": {
+                "romanticinterest": 2
+            },
+            "comments": "careful: this is a potential weak spot if we ever start making romantic interest additive not binary",
+            "startdescription": "Two of my particular friends have chosen to call on me at the same hour. The conversation is stilted.",
+            "description": "As the evening proceeds, tempers become strained, and there is a difficult scene.",
+            "warmup": 10,
+            "effects": {
+                "mystique": 1
+            },
+            "alt": [
+                {
+                    "id": "A_roseend_expulsion",
+                    "chance": 100,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "resentment": 3
+                        }
+                    }
+                }
+            ],
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "A_roseend_expulsion",
+            "actionid": "roseextra",
+            "comments": "allows us to have only one of a jealous lover break up with the player",
+            "label": "Consequences!",
+            "startdescription": "@#uqauclair|Auclair#uqcat|Cat#uqclovette|Clovette#uqclifton|Clifton#uqdorothy|Dorothy#uqelridge|Elridge\n#uqenid|Enid#uqlaidlaw|Laidlaw#uqleo|Leo#uqneville|Neville#uqporter|Porter#uqrenira|Renira#uqrose|Rose\n#uqsaliba|Saliba#uqslee|Slee#uqsylvia|Sylvia#uqtristan|Tristan\n#uqvalciane|Valciane#uqvictor|Victor#uqviolet|Violet#uqysabet|Ysabet#|My lover@ will tolerate my neglect no longer.",
+            "description": "Neither of us will remember this moment kindly.",
+            "slots": [
+                {
+                    "id": "glummer",
+                    "label": "What Remains",
+                    "required": {
+                        "contentment": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "mutations": [
+                {
+                    "filter": "romanticinterest",
+                    "mutate": "romanticinterest",
+                    "level": -1
+                }
+            ],
+            "effects": {
+                "dread": 1,
+                "contentment": -1
+            },
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "L_roserouter",
+            "actionid": "rose",
+            "linked": [
+                {
+                    "id": "L_continuerose_corpse",
+                    "chance": 100
+                },
+                {
+                    "id": "L_continuerose_risen",
+                    "chance": 100
+                },
+                {
+                    "id": "L_continuerose_power",
+                    "chance": 100
+                },
+                {
+                    "id": "L_continuerose_sensation",
+                    "chance": 100
+                },
+                {
+                    "id": "L_continuerose_change",
+                    "chance": 100
+                },
+                {
+                    "id": "L_continuerose_enlightenment",
+                    "chance": 100
+                },
+                {
+                    "id": "L_continuerose_noone",
+                    "chance": 100
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "L_continuerose_corpse",
+            "actionid": "rose",
+            "label": "Desolate And Sick of an Old Passion",
+            "requirements": {
+                "corpse": 1,
+                "romanticinterest": 1
+            },
+            "startdescription": "I can't; not yet. Grief will have its due.",
+            "description": "In time, their body will be gone as their spirit now is, and I will forget.\n\nUnless...",
+            "effects": {
+                "dread": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "L_continuerose_risen",
+            "actionid": "rose",
+            "label": "Never Let Me Go",
+            "requirements": {
+                "summoned": 1,
+                "romanticinterest": 1
+            },
+            "slots": [
+                {
+                    "id": "Blood?",
+                    "label": "Blood?",
+                    "description": "The body's strengths",
+                    "required": {
+                        "health": 1
+                    }
+                }
+            ],
+            "startdescription": "One that loved me is not as they were. If I give them a little of my blood - just a little, but sometimes they are greedy... if I give them a little, they will remember, for a time.",
+            "description": "No. They were alive, and now they are dead, and with enough time, that will be all they are.",
+            "alt": [
+                {
+                    "id": "A_continuerose_risen_success",
+                    "chance": 100
+                }
+            ],
+            "mutations": [
+                {
+                    "filter": "summoned",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "L_roseend_risen",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_continuerose_risen_success",
+            "actionid": "rose",
+            "label": "Never Let Me Go",
+            "requirements": {
+                "health": 1
+            },
+            "startdescription": "The colours in my once-lover's skin - what remains - grow deeper and richer. That old light kindles again in the eyes.",
+            "description": "@#spirit_wintera_edge|Pain, cold, misery. These are all that remain to us, and because they remain to us, perhaps they are precious.\n#spirit_wintera_moth|Their hands, their lips, are ripe with life, but it is the chilly life of apple-skin and lily-petal. Still it is their hands, and their lips.@",
+            "effects": {
+                "dread": 1
+            },
+            "deckeffects": {
+                "roserewards": 1
+            },
+            "aspects": {
+                "damagehealth": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "L_continuerose_power",
+            "actionid": "rose",
+            "label": "A Liaison: the Uses of Strength",
+            "requirements": {
+                "follower_lustpower": 1,
+                "romanticinterest": 1
+            },
+            "slots": [
+                {
+                    "id": "What?",
+                    "label": "Health",
+                    "description": "The body's strengths",
+                    "required": {
+                        "health": 1,
+                        "dread": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "startdescription": "My lover is not easily satisfied - but then, nor am I.",
+            "description": "Just now... I can't spare the energy.",
+            "alt": [
+                {
+                    "id": "A_rose_binoff_dread",
+                    "chance": 100
+                },
+                {
+                    "id": "A_rose_binoff_funds",
+                    "chance": 100
+                },
+                {
+                    "id": "A_continuerose_power_success",
+                    "chance": 100
+                }
+            ],
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "L_roseend",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_continuerose_power_success",
+            "actionid": "rose",
+            "label": "A Liaison: the Uses of Strength",
+            "requirements": {
+                "health": 1
+            },
+            "startdescription": "When I am done, we'll both sleep deeply. But I'm not done yet.",
+            "description": "@#uqtristan|Tristan will not touch strong drink, except with me. He will not leave the clock unwound, except the nights that I visit. He is always wary of closing his eyes, but sometimes, when we are together, he cannot but close them.\n#uqvalciane|Valciane's skin glows with furnace heat. Her strength is exquisitely strained. Each time when I leave, she follows me down the stairs for a final kiss.\n#uqelridge|Elridge acts unhesitatingly with elegance and economy, precisely anticipating my preferences.\n#uqlaidlaw|Laidlaw is ingenious and indefatigable. He likes to bring me little gifts: clockworks, liqueurs, caged amusements.@",
+            "effects": {
+                "contentment": 1
+            },
+            "deckeffects": {
+                "roserewards": 1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "L_continuerose_sensation",
+            "actionid": "rose",
+            "label": "A Liaison: the Imperatives of Delight",
+            "requirements": {
+                "follower_lustsensation": 1,
+                "romanticinterest": 1
+            },
+            "slots": [
+                {
+                    "id": "What?",
+                    "label": "Passion",
+                    "description": "The deepest imperative.",
+                    "required": {
+                        "passion": 1,
+                        "dread": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "startdescription": "My lover's experiments in pleasure are endless in their ingenuity - but so far, I can match them.",
+            "description": "Just now... I can't spare the time.",
+            "alt": [
+                {
+                    "id": "A_rose_binoff_dread",
+                    "chance": 100
+                },
+                {
+                    "id": "A_rose_binoff_funds",
+                    "chance": 100
+                },
+                {
+                    "id": "A_continuerose_sensation_success",
+                    "chance": 100
+                }
+            ],
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "L_roseend",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_continuerose_sensation_success",
+            "actionid": "rose",
+            "label": "A Liaison: the Imperatives of Delight",
+            "requirements": {
+                "passion": 1
+            },
+            "startdescription": "For days - for days - the memories of this will interrupt my thoughts like lightning on a summer night.",
+            "description": "@#uqrose|Rose is on me, devouringly, the moment I pass the threshold. Once only, she called me 'Victor'. We never mentioned it after.\n#uqsaliba|Saliba is always relentless, always tireless. He never smiles. Sometimes, afterwards, his voice cracks as if he might be close to tears, but his eyes remain dry.\n#uqvictor|Victor always brings me a single rose. He always hesitates when he hands it to me. He never shows any hesitation afterward.\n#uqviolet|Violet's enthusiasms are depthless as a dark well. There's something remorseless about her pleasures, but she never once causes any lasting pain.\n#uqrenira|When I arrive, Renira is hazed in perfumes. When I leave, she lies tangled in a glorious sprawl of limbs. I'll carry her with me for days.@",
+            "effects": {
+                "contentment": 1
+            },
+            "deckeffects": {
+                "roserewards": 1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "L_continuerose_enlightenment",
+            "actionid": "rose",
+            "label": "A Liaison: the Raptures of Understanding",
+            "requirements": {
+                "follower_lustenlightenment": 1,
+                "romanticinterest": 1
+            },
+            "slots": [
+                {
+                    "id": "What?",
+                    "label": "Reason",
+                    "description": "The spirit's true light.",
+                    "required": {
+                        "reason": 1,
+                        "dread": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "startdescription": "My lover and I contend in the spaces above and beneath the flesh. I must match their intensity.",
+            "description": "Just now... I can't spare the attention.",
+            "alt": [
+                {
+                    "id": "A_rose_binoff_dread",
+                    "chance": 100
+                },
+                {
+                    "id": "A_rose_binoff_funds",
+                    "chance": 100
+                },
+                {
+                    "id": "A_continuerose_enlightenment_success",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "L_roseend",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_continuerose_enlightenment_success",
+            "actionid": "rose",
+            "label": "A Liaison: the Raptures of Understanding",
+            "requirements": {
+                "reason": 1
+            },
+            "startdescription": "Together we are brighter.",
+            "description": "@#uqenid|Enid prefers to close her eyes rather than look at me. She says it hurts to look. She says it with such longing that I can't take offence.\n#uqauclair|Auclair sets up the chess board. The rules are a little different every evening. By the evening's end, we have always been distracted from them.\n#uqcat|Cat Caro knows the way; Cat Caro knows so many ways. We'll walk them together, when the moon parts the curtains to peep into dark.\n#uqclifton|When I come to Clifton, his rooms are always blazingly lit - candles, arc-lights, even oil-lamps. He insists. As the evening goes on, the lights fail, one by one, until our ultimate business is conducted in perfect darkness.\n#uqneville|Neville welcomes me with tea and flowers. He sits cross-legged at my feet and waits for me to speak. It always takes an effort to coax him into initiative, but I am never disappointed.\n#uqslee|Invariably Slee comes armed with poetry. Sometimes I'm in the mood for poetry. Sometimes I'm in the mood for something else.@",
+            "effects": {
+                "contentment": 1
+            },
+            "deckeffects": {
+                "roserewards": 1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "L_continuerose_change",
+            "actionid": "rose",
+            "label": "A Liaison: When We Were...",
+            "requirements": {
+                "follower_lustchange": 1,
+                "romanticinterest": 1
+            },
+            "slots": [
+                {
+                    "id": "What?",
+                    "description": "An urgency.",
+                    "required": {
+                        "passion": 1,
+                        "dread": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "startdescription": "My lover and I share a desire, even though we may not yet quite understand it.",
+            "description": "Just now... I just can't.",
+            "alt": [
+                {
+                    "id": "A_rose_binoff_dread",
+                    "chance": 100
+                },
+                {
+                    "id": "A_rose_binoff_funds",
+                    "chance": 100
+                },
+                {
+                    "id": "A_continuerose_change_success",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "L_roseend",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "A_continuerose_change_success",
+            "actionid": "rose",
+            "label": "A Liaison: When We Were...",
+            "requirements": {
+                "passion": 1
+            },
+            "startdescription": "Together we become something else.",
+            "description": "@#uqporter|Porter has taken the trouble to bathe before our time together. He has also taken the trouble to shave, meticulously.\n#uqysabet|Ysabet moves so quickly, and with such subtlety, she never seems quite to be in one place. But, somehow, she's always where she should be.\n#uqclovette|Clovette laughs at the strangest moments, but her laughter always comes right. Her joy is almost a physical thing. One could be lost in it; one would not emerge unchanged.\n#uqdorothy|Dorothy insists that the gramophone must play, from the moment we touch to the moment we part. This occasions interruptions. But she makes up for those interruptions, and the memory of the music is woven into the memory of the evening like a bright thread into sateen.\n#uqsylvia|Sylvia snips your clothes off with her scissors, and then she snips her clothes off with her scissors, and then she chooses a location for what you do next. It's not a convenient location.\n#uqleo|Leo is happy to see me - so very happy - so happy sometimes that the shape of it seems visible through his fragile skin. I will trace its shape with my fingers, exalt him, calm him, as we become what we are together.@",
+            "effects": {
+                "contentment": 1
+            },
+            "deckeffects": {
+                "roserewards": 1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "L_continuerose_noone",
+            "label": "Solitude",
+            "actionid": "rose",
+            "requirements": {},
+            "startdescription": "I am alone, but there is peace in that also.",
+            "description": "Some days are better than others. Sometimes the sky is nothing like a filthy sheet. Sometimes the river runs clear.",
+            "effects": {
+                "contentment": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "L_roseend",
+            "actionid": "rose",
+            "requirements": {
+                "resentment": 3
+            },
+            "label": "Consequences!",
+            "startdescription": "@#uqauclair|Auclair#uqcat|Cat#uqclovette|Clovette#uqclifton|Clifton#uqdorothy|Dorothy#uqelridge|Elridge#uqenid|Enid#uqlaidlaw|Laidlaw#uqleo|Leo#uqneville|Neville#uqporter|Porter#uqrenira|Renira#uqrose|Rose#uqsaliba|Saliba#uqslee|Slee#uqsylvia|Sylvia#uqtristan|Tristan#uqvalciane|Valciane#uqvictor|Victor#uqviolet|Violet#uqysabet|Ysabet#uq|My lover@ will tolerate my neglect no longer.",
+            "description": "Neither of us will remember this moment kindly.",
+            "slots": [
+                {
+                    "id": "glummer",
+                    "label": "What Remains",
+                    "required": {
+                        "contentment": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "mutations": [
+                {
+                    "filter": "romanticinterest",
+                    "mutate": "romanticinterest",
+                    "level": -1
+                }
+            ],
+            "effects": {
+                "dread": 1,
+                "contentment": -1
+            },
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "L_roseend_risen",
+            "actionid": "rose",
+            "requirements": {
+                "resentment": 3,
+                "summoned": 1
+            },
+            "label": "Consequences!",
+            "startdescription": "Memory survives even death. So does rage; so does contempt. Love, too? I won't find that answer here.",
+            "description": "These are the last moments of an ending long begun. [Even the dead will not forgive neglect.]",
+            "slots": [
+                {
+                    "id": "glummer",
+                    "label": "What Remains",
+                    "required": {
+                        "contentment": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "mutations": [
+                {
+                    "filter": "romanticinterest",
+                    "mutate": "romanticinterest",
+                    "level": -1
+                }
+            ],
+            "effects": {
+                "dread": 1,
+                "contentment": -1
+            },
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "A_rose_binoff_dread",
+            "actionid": "rose",
+            "requirements": {
+                "dread": 1
+            },
+            "label": "End the affair by visiting my despair on my lover",
+            "startdescription": "'There is no future for us. Perhaps not even apart, but certainly not together.'",
+            "description": "My former lover leaves. The silence thickens.",
+            "effects": {
+                "dread": 1
+            },
+            "mutations": [
+                {
+                    "filter": "romanticinterest",
+                    "mutate": "resentment",
+                    "level": 2,
+                    "additive": true
+                },
+                {
+                    "filter": "romanticinterest",
+                    "mutate": "romanticinterest",
+                    "level": -1
+                }
+            ]
+        },
+        {
+            "id": "A_rose_binoff_funds",
+            "actionid": "rose",
+            "requirements": {
+                "funds": 1
+            },
+            "label": "End the affair, insultingly",
+            "startdescription": "'There now. Buy yourself something nice.'",
+            "description": "The door slams behind my former lover.",
+            "effects": {
+                "funds": -1,
+                "dread": 1
+            },
+            "mutations": [
+                {
+                    "filter": "romanticinterest",
+                    "mutate": "resentment",
+                    "level": 2,
+                    "additive": true
+                },
+                {
+                    "filter": "romanticinterest",
+                    "mutate": "romanticinterest",
+                    "level": -1
+                }
+            ]
+        }
+    ]
+}

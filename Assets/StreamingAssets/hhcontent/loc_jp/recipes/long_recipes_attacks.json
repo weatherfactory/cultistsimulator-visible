@@ -1,0 +1,2916 @@
+{
+	"recipes": [
+		{
+			"id": "long.executestrategy.assassination.begin",
+			"actionId": "longassault.assassination",
+			"label": "闇の中のダーツ",
+			"startdescription": "昔、トラグラリ（ダーツマン）は不死身の者とその家来を狩るために雇われていた。第一次ワーム戦争後にトロワセイント隊が駆除したとされているが......全ての歴史で起きたことでないのかもしれない。[自分か信奉者が、ダーツマンに殺される可能性がある。準備している間に<sprite name=heart> <sprite name=lantern>の信奉者たちでダーツマンを見つけるか、攻撃をし始めたら、<sprite name=edge> <sprite name=forge> <sprite name=winter>の信奉者たちで防御する。防御に失敗した場合は死亡する。ダーツマンには召喚獣に対する免疫力はない。] ",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "見つける",
+					"required": {
+						"follower": 1
+					}
+				}
+			],
+			"warmup": 120,
+			"internaldeck": {
+				"label": "ターゲット",
+				"description": "ダーツマンのターゲットは誰？",
+				"spec": [
+					"assassinationinprogress.follower",
+					"assassinationinprogress.player"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			},
+			"linked": [
+				{
+					"id": "longassault.assassination.uncovered.success",
+					"challenges": {
+						"heart": "base",
+						"lantern": "base"
+					}
+				},
+				{
+					"id": "longassault.assassination.uncovered.failure"
+				},
+				{
+					"id": "longassault.assassination.continue"
+				}
+			]
+		},
+		{
+			"id": "longassault.assassination.uncovered.success",
+			"actionId": "longassault.assassination",
+			"requirements": {
+				"follower": 1
+			},
+			"label": "露呈した蛇",
+			"startdescription": "トラグラリは敵の背後から忍び寄って攻撃し、日光には耐えられない。このトラグラリは逃げたが、もう二度と戻ってこないだろうか？敵はこのことに気づくだろう。",
+			"effects": {
+				"long.lesson.might": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "longassault.assassination.uncovered.failure",
+			"actionId": "longassault.assassination",
+			"requirements": {
+				"follower": 1
+			},
+			"label": "待つ蛇",
+			"startdescription": "我々の信奉者は戻ってこなかった。トラグラリに投げ槍と毒で倒されたに違いない。",
+			"effects": {
+				"follower": -1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "longassault.assassination.continue"
+				}
+			]
+		},
+		{
+			"id": "longassault.assassination.continue",
+			"actionId": "longassault.assassination",
+			"label": "最初の傷",
+			"startdescription": "ダーツマンは強者でもじわじわと殺してしまう。[<sprite name=edge> <sprite name=forge> <sprite name=winter>の信奉者で防御する。防御に失敗した場合は死亡する。ダーツマンには召喚獣に対する免疫力はない。]",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1,
+						"murderskill": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "longassault.assassination.attack.defeated",
+					"challenges": {
+						"edge": "base",
+						"winter": "base",
+						"forge": "base"
+					}
+				},
+				{
+					"id": "longassault.assassination.defenderdefeated"
+				},
+				{
+					"id": "longassault.assassination.murderskill.succeed",
+					"chance": 30
+				},
+				{
+					"id": "longassault.assassination.murderskill.failure"
+				},
+				{
+					"id": "longassault.assassination.attack.player"
+				},
+				{
+					"id": "longassault.assassination.attack.follower"
+				}
+			]
+		},
+		{
+			"id": "longassault.assassination.defenderdefeated",
+			"actionId": "longassault.assassination",
+			"label": "不当な死",
+			"startdescription": "ダーツマンは防御者の命を奪った。しかし、今、彼を満足させる唯一の報酬は、ターゲットの死、または彼自身の死である。",
+			"requirements": {
+				"follower": 1
+			},
+			"effects": {
+				"follower": -1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "longassault.assassination.attack.player"
+				},
+				{
+					"id": "longassault.assassination.attack.follower"
+				}
+			]
+		},
+		{
+			"id": "longassault.assassination.attack.defeated",
+			"actionId": "longassault.assassination",
+			"label": "最期の報酬",
+			"startdescription": "我々の守り人が勝ち、ダーツマンは死んだ。これだけで彼を止められるかもしれない",
+			"effects": {
+				"long.lesson.might": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "longassault.assassination.attack.player",
+			"actionId": "longassault.assassination",
+			"label": "ダーツマンの毒",
+			"startdescription": "ダーツマンは私に毒を盛り、血が一滴一滴流れ出ていくだろう。",
+			"slots": [
+				{
+					"id": "health",
+					"label": "攻撃......",
+					"required": {
+						"health": 1,
+						"fatigue": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "longassault.assassination.killplayer"
+				}
+			],
+			"aspects": {
+				"damagehealth": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "longassault.assassination.continue"
+				}
+			]
+		},
+		{
+			"id": "longassault.assassination.murderskill.succeed",
+			"actionId": "longassault.assassination",
+			"label": "壊れた槍先",
+			"requirements": {
+				"murderskill": 1
+			},
+			"startdescription": "私に手を出すなんて、愚かなことを。死の借りがある者には、その者の血で償った。",
+			"warmup": 30,
+			"effects": {
+				"long.lesson.might": 1
+			}
+		},
+		{
+			"id": "longassault.assassination.murderskill.failure",
+			"actionId": "longassault.assassination",
+			"label": "傷跡と休息",
+			"requirements": {
+				"murderskill": 1
+			},
+			"startdescription": "一息つくことはできたが、敵は強すぎた。私にはほとんど力が残っていない。",
+			"warmup": 30,
+			"effects": {
+				"murderskill": -1
+			},
+			"linked": [
+				{
+					"id": "longassault.assassination.continue"
+				}
+			]
+		},
+		{
+			"id": "longassault.assassination.killplayer",
+			"actionId": "longassault.assassination",
+			"label": "ダーツの道の果て",
+			"startdescription": "もう体力がないのか？[体力がない場合、ダーツマンの毒がゲームを終了させる。]",
+			"requirements": {
+				"health": -1,
+				"fatigue": -1,
+				"injury": -1
+			},
+			"ending": "deathofthebody",
+			"signalEndingFlavour": "Melancholy",
+			"comments": "The -1 to injury doesn't seem right, since the damagehealth in longassault.assassination.attack.player will always turn health/fatigue into an injury. To be checked."
+		},
+		{
+			"id": "longassault.assassination.attack.follower",
+			"actionId": "longassault.assassination",
+			"label": "殺す傷",
+			"startdescription": "ダーツマンは1本の矢を使うこともあれば、12本の矢を使うこともある。しかし、命を奪うのはいつも最期の1本である。[<sprite name=edge> <sprite name=forge> <sprite name=winter>の信奉者は生き延びる可能性がある。その他の者や不運な信奉者たちは必ず死ぬ。]",
+			"slots": [
+				{
+					"id": "targetfollower",
+					"label": "攻撃......",
+					"required": {
+						"follower": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "longassault.assassination.attack.follower.failure",
+					"challenges": {
+						"edge": "base",
+						"winter": "base",
+						"forge": "base"
+					}
+				},
+				{
+					"id": "longassault.assassination.attack.follower.success"
+				},
+				{
+					"id": "longassault.assassination.continue"
+				}
+			]
+		},
+		{
+			"id": "longassault.assassination.attack.follower.failure",
+			"actionId": "longassault.assassination",
+			"label": "突然の逆転劇",
+			"startdescription": "今回、ダーツマンは思わぬ試練に遭遇した。死んだのだ。これだけで彼を止められるかもしれない",
+			"effects": {
+				"long.lesson.might": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "longassault.assassination.attack.follower.success",
+			"actionId": "longassault.assassination",
+			"label": "死が訪れる",
+			"startdescription": "ダーツマンの犠牲者の中には、苦悶の表情で体を歪め、頭を後ろに傾け、目を膨らませていた者も、沈没船のように穴が開いている者もいる。そして、見つからない者もいる。ダーツマンは使命を果たしたのだ。",
+			"requirements": {
+				"follower": 1
+			},
+			"effects": {
+				"follower": -1
+			}
+		},
+		{
+			"id": "long.executestrategy.assault.abduct.follower.begin",
+			"actionId": "longassault.abduction",
+			"label": "誘拐だ！",
+			"startdescription": "敵が誘拐を企てている！",
+			"slots": [
+				{
+					"id": "target",
+					"label": "ターゲット",
+					"required": {
+						"romanticinterest": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.abduct.follower.captured"
+				},
+				{
+					"id": "long.executestrategy.assault.abduct.follower.begin.nonromancedfollower"
+				}
+			],
+			"effects": {
+				"abductioninprogress": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.assault.abduct.follower.begin.nonromancedfollower",
+			"actionId": "longassault.abduction",
+			"label": "誘拐だ！",
+			"startdescription": "敵が誘拐を企てている！",
+			"slots": [
+				{
+					"id": "target",
+					"label": "ターゲット",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1,
+						"hireling": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.abduct.follower.captured"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.assault.abduct.follower.captured",
+			"actionId": "longassault",
+			"label": "捕まった！",
+			"requirements": {
+				"follower": 1
+			},
+			"startdescription": "敵は、見えないものを寄せ付けないように、目に見えない壁の向こうにある、見張りの家の鍵のかかった部屋に、我々の信奉者を監禁している。",
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.abduct.follower.continue"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.assault.abduct.follower.continue",
+			"actionId": "longassault",
+			"label": "救出？",
+			"startdescription": "敵が信奉者を捕らえた！自力で脱出しようとするだろうし、我々はそれを手助けできるはずだが......罠である可能性も高い。そして、そこは召喚獣対策がされている。[<sprite name=edge> <sprite name=forge>または<sprite name=winter>の最高値によって、信奉者が脱出する確率が決まる。]",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.abduct.follower.defencesucceeded",
+					"actionId": "longassault",
+					"label": "勝利",
+					"challenges": {
+						"edge": "base",
+						"forge": "base",
+						"winter": "base"
+					},
+					"startdescription": "こじ開けられた鍵――壊れた窓――夜の空気を飲み込む。信奉者は逃げ切った。敵はもっと注意を払うようになるだろう。",
+					"effects": {
+						"long.lesson.might": 1
+					}
+				},
+				{
+					"id": "long.executestrategy.assault.abduct.follower.defencefailed",
+					"actionId": "longassault",
+					"label": "罠",
+					"startdescription": "脱出に失敗した。後でもう一度機会が訪れるかもしれない。",
+					"linked": [
+						{
+							"id": "long.executestrategy.assault.abduct.follower.continue"
+						}
+					],
+					"warmup": 300
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "long.executestrategy.assault.forge.greatwork.begin",
+			"actionId": "longassault",
+			"label": "妨害行為！",
+			"startdescription": "不死の敵は我々の決行中の作戦を潰すために諜報員を送り込んできた。",
+			"description": "敵の諜報員は叩き潰して破壊できるようなものを見つけられなかったようだ。",
+			"slots": [
+				{
+					"id": "target",
+					"label": "ターゲット",
+					"required": {
+						"greatwork": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.forge.greatwork.continue",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.assault.forge.greatwork.continue",
+			"actionId": "longassault",
+			"label": "大いなる業を守る",
+			"startdescription": "作業部屋が包囲された！大いなる業を守れ！[<sprite name=heart>や<sprite name=forge>の信奉者であれば、この行為を防ぐことができる可能性がある。]",
+			"description": "",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1
+					}
+				}
+			],
+			"requirements": {
+				"greatwork": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.failure",
+					"challenges": {
+						"heart": "base",
+						"forge": "base"
+					}
+				},
+				{
+					"id": "long.executestrategy.assault.forge.greatwork.succeed"
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.assault.forge.greatwork.succeed",
+			"actionId": "longassault",
+			"label": "妨害！",
+			"startdescription": "敵はフックナイフとバールを手に持ち、攻撃を仕掛けている。",
+			"aspects": {
+				"sabotage": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.assault.setambush.expedition.begin",
+			"warmup": 10,
+			"actionId": "longassault",
+			"label": "奇襲",
+			"startdescription": "敵は我々が遠征を検討していることを知った。目的地がわかれば、敵は味方を送って待ち伏せの準備をさせるだろう。",
+			"slots": [
+				{
+					"id": "vault",
+					"label": "金庫室",
+					"required": {
+						"vault": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.setambush.expedition.continue.watchers",
+					"actionId": "longassault",
+					"label": "さらなる複雑な状況",
+					"startdescription": "敵は地元の人間を雇って監視させている。",
+					"requirements": {
+						"guardian_watchers": -1,
+						"guardian_watchers_pre": -1
+					},
+					"mutations": [
+						{
+							"mutate": "guardian_watchers_pre",
+							"level": 1,
+							"filter": "vault"
+						}
+					]
+				},
+				{
+					"id": "long.executestrategy.assault.setambush.expedition.continue.monks",
+					"actionId": "longassault",
+					"label": "さらなる複雑な状況",
+					"startdescription": "敵はその場所を守るために従者を送り込んだ。",
+					"requirements": {
+						"guardian_monks": -1,
+						"guardian_monks_pre": -1
+					},
+					"mutations": [
+						{
+							"mutate": "guardian_monks_pre",
+							"level": 1,
+							"filter": "vault"
+						}
+					]
+				},
+				{
+					"id": "long.executestrategy.assault.setambush.expedition.continue.dead",
+					"actionId": "longassault",
+					"label": "さらなる複雑な状況",
+					"requirements": {
+						"guardian_dead": -1,
+						"guardian_dead_pre": -1
+					},
+					"startdescription": "敵はその場所を守るために死者を配置した。",
+					"mutations": [
+						{
+							"mutate": "guardian_dead_pre",
+							"level": 1,
+							"filter": "vault"
+						}
+					]
+				},
+				{
+					"id": "long.executestrategy.assault.setambush.expedition.continue.serpent",
+					"actionId": "longassault",
+					"label": "さらなる複雑な状況",
+					"requirements": {
+						"guardian_serpent": -1,
+						"guardian_serpent_pre": -1
+					},
+					"startdescription": "敵はこの場所を守るために蛇を起こした。",
+					"mutations": [
+						{
+							"mutate": "guardian_serpent_pre",
+							"level": 1,
+							"filter": "vault"
+						}
+					],
+					"warmup": 1
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.assault.destroyhealth.begin",
+			"actionId": "longassault",
+			"label": "圧倒的な攻撃！",
+			"startdescription": "敵がとても真面目な顔をした紳士を送り込んできた。彼に下された命令は我々を殺すか、少なくとも傷つけることだ。[これによって健康を害することになる。]",
+			"slots": [
+				{
+					"id": "health",
+					"label": "体力",
+					"required": {
+						"health": 1,
+						"fatigue": 1
+					},
+					"greedy": true
+				}
+			],
+			"aspects": {
+				"destroyhealth": 1
+			},
+			"comments": "Damaging health now so it doesn't figure into the Heart calculations",
+			"alt": [
+				{
+					"id": "long.executestrategy.assault.health.nonefound",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.destroyhealth.continue",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "long.executestrategy.assault.health.nonefound",
+			"label": "この攻撃は私の命を奪う",
+			"actionId": "longassault",
+			"requirements": {
+				"health": -1,
+				"fatigue": -1
+			},
+			"startdescription": "病や疲れ、目くらましのせいで、この攻撃に抵抗できなくなる。[今すぐに体力を供給したいと命を失う。]",
+			"craftable": false,
+			"ending": "deathofthebody",
+			"signalEndingFlavour": "Melancholy"
+		},
+		{
+			"id": "long.executestrategy.assault.destroyhealth.continue",
+			"actionId": "longassault",
+			"label": "圧倒的な攻撃！",
+			"startdescription": "この攻撃が成功したら、私は悲痛な目に遭うだろう。[<sprite name=heart>や<sprite name=edge>の信奉者であれば、この行為を防ぐことができる可能性がある。]",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1
+					}
+				}
+			],
+			"requirements": {
+				"decrepitude": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.failure",
+					"challenges": {
+						"heart": "base",
+						"edge": "base"
+					}
+				},
+				{
+					"id": "long.executestrategy.assault.destroyhealth.succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.assault.destroyhealth.succeed",
+			"actionId": "longassault",
+			"label": "苦悩の教訓",
+			"startdescription": "私は苦しみ、耐える。",
+			"effects": {
+				"influenceknock": 1
+			}
+		},
+		{
+			"id": "long.executestrategy.assault.injurefollower.begin",
+			"actionId": "longassault",
+			"label": "信奉者への攻撃！",
+			"startdescription": "敵が工作員を送り込んできた。我々の信奉者を見つけ、皆殺しにしようとしているようだ。",
+			"slots": [
+				{
+					"id": "follower",
+					"label": "信奉者",
+					"required": {
+						"follower": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.injurefollower.hireling.continue"
+				},
+				{
+					"id": "long.executestrategy.assault.injurefollower.spirit.continue"
+				},
+				{
+					"id": "long.executestrategy.assault.injurefollower.continue"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.assault.injurefollower.hireling.continue",
+			"actionId": "longassault",
+			"label": "「これに耐えられるだけの給料を貰っていない」",
+			"startdescription": "もう二度と雇い人には会わないだろう。",
+			"requirements": {
+				"hireling": 1
+			},
+			"effects": {
+				"follower": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.assault.injurefollower.spirit.continue",
+			"actionId": "longassault",
+			"label": "扉は両方向に開く",
+			"startdescription": "我々の召喚獣をこの世から追放する手段を工作員に与えた敵のせいで、召喚獣は姿を消してしまった。",
+			"requirements": {
+				"summoned": 1
+			},
+			"effects": {
+				"follower": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.assault.injurefollower.continue",
+			"actionId": "longassault",
+			"label": "増援？",
+			"requirements": {
+				"follower": 1
+			},
+			"startdescription": "もう１人の信奉者が助けに駆けつけるかもしれないが、彼らも負傷する危険がある。古代の長生者の力に精霊を送るのは愚かなことだ。[<sprite name=edge> <sprite name=forge>または<sprite name=winter>の最高値によって、信奉者が無傷で逃げ切れるかどうかが決まる。]",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.injurefollower.defencesucceeded",
+					"actionId": "longassault",
+					"label": "勝利",
+					"challenges": {
+						"edge": "base",
+						"forge": "base",
+						"winter": "base"
+					},
+					"startdescription": "信奉者たちを軽視してはいけない。敵の工作員は混乱しながら逃げていく。当然ながら、敵は今までよりも真剣に取り組むようになるだろう。",
+					"effects": {
+						"long.lesson.might": 1
+					}
+				},
+				{
+					"id": "long.executestrategy.assault.injurefollower.defencefailed",
+					"actionId": "longassault",
+					"label": "敗北",
+					"startdescription": "創造者に仕えながら、我々は苦しんでいる。その苦しみが我々の価値を高めてくれるのかもしれない。",
+					"mutations": [
+						{
+							"filterOnAspectId": "mortal",
+							"mutateAspectId": "follower_wound",
+							"mutationLevel": 1,
+							"additive": false
+						},
+						{
+							"filterOnAspectId": "mortal",
+							"mutateAspectId": "follower",
+							"mutationLevel": -1,
+							"additive": false
+						}
+					]
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "long.executestrategy.assault.injurehealth.begin",
+			"actionId": "longassault",
+			"label": "攻撃！",
+			"startdescription": "敵が雇われチンピラを送りこんできた。まだ私の殺人を命じていないようだが、たまたま私が死んでも動揺しないだろう。[これであなたの「体力」が「怪我」に変わる。]",
+			"slots": [
+				{
+					"id": "health",
+					"label": "体力",
+					"required": {
+						"health": 1
+					},
+					"greedy": true
+				}
+			],
+			"aspects": {
+				"damagehealth": 1
+			},
+			"comments": "Damaging health now so it doesn't figure into the Heart calculations",
+			"alt": [
+				{
+					"id": "long.executestrategy.assault.health.nonefound",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.injurehealth.continue",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "long.executestrategy.assault.injurehealth.continue",
+			"actionId": "longassault",
+			"label": "攻撃！",
+			"startdescription": "誰が守ってくれるんだ？[<sprite name=heart>や<sprite name=edge>の信奉者であれば、この行為を防ぐことができる可能性がある。]",
+			"description": "",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1
+					}
+				}
+			],
+			"requirements": {
+				"injury": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.failure",
+					"challenges": {
+						"heart": "base",
+						"edge": "base"
+					}
+				},
+				{
+					"id": "long.executestrategy.assault.injurehealth.succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.assault.injurehealth.succeed",
+			"actionId": "longassault",
+			"label": "ちょっとした問題",
+			"startdescription": "出血はしているが、まだ壊れてはいない。"
+		},
+		{
+			"id": "long.executestrategy.assault.rob.begin",
+			"actionId": "longassault",
+			"label": "窃盗",
+			"startdescription": "敵はスリを仕掛けて私を悩ませている。",
+			"description": "敵にとっては残念だが、私は現金を持ち合わせていない。",
+			"slots": [
+				{
+					"id": "funds",
+					"label": "資金",
+					"required": {
+						"funds": 1
+					},
+					"greedy": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "long.executestrategy.assault.rob.continue",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.assault.rob.continue",
+			"actionId": "longassault",
+			"label": "窃盗の成功",
+			"startdescription": "誰かに手帳を盗まれた！",
+			"effects": {
+				"funds": -1
+			}
+		},
+		{
+			"id": "long.executestrategy.assault.intimidate.begin",
+			"actionId": "longassault",
+			"label": "威嚇作戦",
+			"startdescription": "敵は我々を威嚇するために工作員を送ってきた。[<sprite name=heart>や<sprite name=grail>の信奉者であれば、この行為を防ぐことができる可能性がある。]",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.assault.failure",
+					"challenges": {
+						"heart": "base",
+						"grail": "base"
+					}
+				},
+				{
+					"id": "long.executestrategy.assault.intimidate.succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.assault.intimidate.succeed",
+			"actionId": "longassault",
+			"label": "痛みの前兆",
+			"startdescription": "黒いチョークで書かれた呪い――庭で磔にされた動物たち――無人の家に仕掛けられた火事。秘密の戦争には、このような戦法もある。",
+			"effects": {
+				"dread": 1
+			}
+		},
+		{
+			"id": "long.executestrategy.assault.failure",
+			"actionId": "longassault",
+			"label": "失敗した攻撃",
+			"startdescription": "敵の攻撃から身を守ったが......相手も我々から何かを学んだようで、これからは我々を脅威として扱うようになるだろう。今後の攻撃が今までより、危険なものになることは明らかだ。",
+			"effects": {
+				"long.lesson.might": 1
+			},
+			"aspects": {
+				"restorehealth": 1,
+				"tohealth": 1
+			}
+		},
+		{
+			"id": "long.executestrategy.intrigue.scandal.begin",
+			"actionId": "scandal",
+			"label": "スキャンダル！",
+			"startdescription": "敵はスキャンダルを企てている。それは森林火災のように広まり、我々の努力を潰していくだろう。[スキャンダルは、突然収まるまで、断続的に悪評を生み出す。]",
+			"alt": [
+				{
+					"id": "scandal.notoriety",
+					"chance": 70,
+					"additional": true
+				}
+			],
+			"effects": {
+				"scandalinprogress": 1
+			},
+			"linked": [
+				{
+					"id": "scandal.end",
+					"chance": 10
+				},
+				{
+					"id": "long.executestrategy.intrigue.scandal.begin",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "scandal.end",
+			"actionId": "scandal",
+			"label": "ついに静寂が訪れた",
+			"startdescription": "幸運にも世間は気まぐれだ。すぐに我々のことを忘れていくだろう。",
+			"effects": {
+				"mystique": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "scandal.notoriety",
+			"actionId": "scandal.notoriety",
+			"label": "汚い嘘",
+			"startdescription": "我々はたくさんの罪を犯してきたが、今回のことは例外だ。まったく関係ない話だ！しかしこれのせいで破滅に追いやられるかもしれない。",
+			"effects": {
+				"notoriety": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.follower.seduce.begin",
+			"actionId": "longintrigue",
+			"label": "待ち合わせ",
+			"startdescription": "我々の不滅の敵は、我々の信奉者の1人に会おうとしている――恨みを抱いている1人と。",
+			"slots": [
+				{
+					"id": "target",
+					"label": "魔が差す",
+					"greedy": true,
+					"required": {
+						"resentment": 1
+					},
+					"forbidden": {
+						"independent": 1,
+						"investigator": 1,
+						"romanticinterest": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.follower.seduce.continue"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.follower.seduce.continue",
+			"actionId": "longintrigue",
+			"label": "誘惑",
+			"startdescription": "長生者は、何世紀にもわたって学んできた恐るべき手口を全て使い始めるだろう。そして信奉者は我々に仕えなくなるだろう。[情熱を使って忠誠心を保つ。いつも成功するとは限らないが、情熱がある限り、何度も試すことができる。]",
+			"description": "",
+			"requirements": {
+				"resentment": 1
+			},
+			"slots": [
+				{
+					"id": "passion",
+					"label": "情熱的な議論",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.follower.seduce.defendpassion.try",
+					"chance": 100
+				},
+				{
+					"id": "long.executestrategy.intrigue.follower.seduce.succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.follower.seduce.defendpassion.try",
+			"actionId": "longintrigue",
+			"label": "情熱的な弁護",
+			"startdescription": "情熱で心を揺り動かすことができるかもしれない。[失敗しても、何度も試すことができる。]",
+			"requirements": {
+				"passion": 1
+			},
+			"warmup": 10,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.follower.seduce.defendpassion.succeed",
+					"chance": 70
+				},
+				{
+					"id": "long.executestrategy.intrigue.follower.seduce.continue",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.follower.seduce.defendpassion.succeed",
+			"actionId": "longintrigue",
+			"label": "猶予",
+			"startdescription": "信奉者は今のところは我々のもとに残ることを選んだ。[しかし、彼らの恨みは増大しており、敵は我々のことを以前よりも知っている。]",
+			"mutations": [
+				{
+					"mutate": "resentment",
+					"filter": "follower",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.failure"
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.follower.seduce.succeed",
+			"actionId": "longintrigue",
+			"label": "裏切り行為",
+			"startdescription": "信奉者が神聖な信頼を裏切った。これから増大する敵の強さに貢献するようになるだろう。",
+			"effects": {
+				"follower": -1,
+				"long.lesson.might": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.grail.greatwork.begin",
+			"actionId": "longintrigue",
+			"label": "妨害行為！",
+			"startdescription": "不滅の敵は、謝肉祭が卑劣で、危険で、つまらないものになると、宴の主を説得しようとしている。",
+			"slots": [
+				{
+					"id": "target",
+					"label": "ターゲット",
+					"required": {
+						"uqvitulation": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.grail.greatwork.continue",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.grail.greatwork.continue",
+			"actionId": "longintrigue",
+			"label": "大いなる業を守る",
+			"startdescription": "誘惑したり安心させたりするために、布告者を送り込むことができる。[<sprite name=heart>や<sprite name=grail>の信奉者であれば、この行為を防ぐことができる可能性がある。]",
+			"description": "",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1
+					}
+				}
+			],
+			"requirements": {
+				"uqvitulation": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.failure",
+					"challenges": {
+						"heart": "base",
+						"grail": "base"
+					}
+				},
+				{
+					"id": "long.executestrategy.intrigue.grail.greatwork.succeed"
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.grail.greatwork.succeed",
+			"actionId": "longintrigue",
+			"label": "宴の主の失望",
+			"startdescription": "宴の主が崩れていく。彼の強欲な信仰心は腐っている。",
+			"aspects": {
+				"sabotage": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.resentment.begin",
+			"actionId": "longintrigue",
+			"label": "恨みの種",
+			"startdescription": "敵は信奉者が我々に偏見を抱くようにしようとしている。",
+			"slots": [
+				{
+					"id": "follower",
+					"label": "ターゲット",
+					"greedy": true,
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": -1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.resentment.continue"
+				},
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.resentment.hireling.continue"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.resentment.continue",
+			"actionId": "longintrigue",
+			"label": "黒い根が育つ",
+			"requirements": {
+				"follower": 1
+			},
+			"startdescription": "何を言っているんだ？[情熱を使って忠誠心を保つ。いつも成功するとは限らないが、情熱がある限り、何度も試すことができる。]",
+			"slots": [
+				{
+					"id": "passionateargument",
+					"label": "情熱的な議論",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.try"
+				},
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.resentment.succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.try",
+			"actionId": "longintrigue",
+			"label": "情熱的な弁護",
+			"startdescription": "情熱で心を揺り動かすことができるかもしれない。[失敗しても、何度も試すことができる。]",
+			"requirements": {
+				"passion": 1
+			},
+			"warmup": 10,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.succeed",
+					"chance": 70
+				},
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.resentment.continue",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.succeed",
+			"actionId": "longintrigue",
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.failure"
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.resentment.succeed",
+			"actionId": "longintrigue",
+			"label": "失望の果実",
+			"startdescription": "私に関する噂話を信奉者は時折隠しているような気がする。",
+			"mutations": [
+				{
+					"mutate": "resentment",
+					"filter": "follower",
+					"level": 1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.resentment.hireling.continue",
+			"actionId": "longintrigue",
+			"label": "プロの警戒心",
+			"startdescription": "この雇い人は、説得されたのか脅されたのか、姿を消してしまった。もう二度と会うことはないだろう。",
+			"requirements": {
+				"hireling": 1
+			},
+			"effects": {
+				"hireling": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.detective.assist.begin",
+			"actionId": "longintrigue",
+			"label": "思いもよらない味方？",
+			"startdescription": "不死の敵は、手先になれる人を探している。",
+			"slots": [
+				{
+					"id": "hunter",
+					"label": "悩みの種",
+					"greedy": true,
+					"required": {
+						"hunter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.detective.assist.continue",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.detective.assist.continue",
+			"actionId": "longintrigue",
+			"requirements": {
+				"hunter": 1
+			},
+			"label": "敵の敵",
+			"startdescription": "取締局は支援を受けるだろう。我々の大いなる業は彼らにとって大きな懸念であることは間違いない。不滅の敵はここでどんな災いをもたらすのだろうか？",
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.detective.assist.mystic",
+					"chance": 70
+				},
+				{
+					"id": "long.executestrategy.intrigue.detective.assist.idealist",
+					"chance": 70
+				},
+				{
+					"id": "long.executestrategy.intrigue.detective.assist.grim",
+					"chance": 70
+				},
+				{
+					"id": "long.executestrategy.intrigue.detective.assist.erratic",
+					"chance": 70
+				},
+				{
+					"id": "long.executestrategy.intrigue.detective.assist.evidence",
+					"chance": 70
+				},
+				{
+					"id": "long.executestrategy.intrigue.detective.assist.mystic",
+					"chance": 100
+				},
+				{
+					"id": "long.executestrategy.intrigue.detective.assist.idealist",
+					"chance": 100
+				},
+				{
+					"id": "long.executestrategy.intrigue.detective.assist.grim",
+					"chance": 100
+				},
+				{
+					"id": "long.executestrategy.intrigue.detective.assist.erratic",
+					"chance": 100
+				},
+				{
+					"id": "long.executestrategy.intrigue.detective.assist.evidence",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.detective.assist.mystic",
+			"actionId": "longintrigue",
+			"requirements": {
+				"mystic": -1
+			},
+			"label": "目に見えない術に対する防御",
+			"startdescription": "敵はこの捜査官に精霊から身を守る方法を教えた。[捜査官が神秘的になった。]",
+			"mutations": [
+				{
+					"mutate": "mystic",
+					"filter": "hunter",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.detective.assist.idealist",
+			"actionId": "longintrigue",
+			"requirements": {
+				"idealist": -1
+			},
+			"label": "新しい光",
+			"startdescription": "この捜査官は、我々の大いなる業の本質を知ってしまった。その結果、大いなる業を破壊しようとする捜査官の決心は強化され、硬化され、磨かれてしまった。[捜査官は理想家になった。]",
+			"mutations": [
+				{
+					"mutate": "idealist",
+					"filter": "hunter",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.detective.assist.grim",
+			"actionId": "longintrigue",
+			"requirements": {
+				"grim": -1
+			},
+			"label": "揺るぎない確信",
+			"startdescription": "この捜査官はすぐには忘れられない教訓を与えられた。[捜査官が冷酷になった。]",
+			"mutations": [
+				{
+					"mutate": "grim",
+					"filter": "hunter",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.detective.assist.erratic",
+			"actionId": "longintrigue",
+			"requirements": {
+				"erratic": -1
+			},
+			"label": "新しい視点",
+			"startdescription": "この捜査官は新しい技術と勘を身につけたが、時々手が震えるようになった。[捜査官が不安定になった。]",
+			"mutations": [
+				{
+					"mutate": "erratic",
+					"filter": "hunter",
+					"level": 1,
+					"additive": true
+				},
+				{
+					"mutate": "meticulous",
+					"filter": "hunter",
+					"level": -1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.detective.assist.evidence",
+			"actionId": "longintrigue",
+			"requirements": {
+				"erratic": 1,
+				"grim": 1,
+				"idealist": 1,
+				"mystic": 1
+			},
+			"label": "あからさまな不正行為",
+			"startdescription": "我々の不滅の敵が捜査官の耳にささやいた。[敵の長生者が証拠を提供した。]",
+			"effects": {
+				"evidence": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.adversary.assist.begin",
+			"actionId": "longintrigue",
+			"label": "思いもよらない味方？",
+			"startdescription": "不死の敵は味方を探している。特に可能性を秘めた者を探しているようだ。[適した者が見つからなければ、敵の陰謀は失敗に終わる。]",
+			"slots": [
+				{
+					"id": "rival",
+					"label": "ライバル",
+					"greedy": true,
+					"required": {
+						"independent": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.adversary.assist.continue",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.adversary.assist.continue",
+			"actionId": "longintrigue",
+			"requirements": {
+				"independent": 1
+			},
+			"label": "不死の保護",
+			"startdescription": "敵は我々のライバルに、急速に昇天して長生者の仲間入りを果たす方法を指導している。敵が2人目の長生者を手に入れることができたら、我々の敗北は決まるだろう。[<sprite name=heart>や<sprite name=moth>の信奉者であれば、この行為を防ぐことができる可能性がある。]",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.failure",
+					"challenges": {
+						"heart": "base",
+						"moth": "base"
+					}
+				},
+				{
+					"id": "long.executestrategy.intrigue.adversary.assist.succeed"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.adversary.assist.succeed",
+			"actionId": "longintrigue",
+			"label": "さらなる高み",
+			"startdescription": "我々の敵が、我々のライバルに昇天の秘訣を教えてしまった。間違いなく、ライバルが真の「長生者」となれば、敵の道具となってしまうが、それでは何の役にも立たない。",
+			"mutations": [
+				{
+					"mutate": "rivalmarks",
+					"filter": "independent",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.notoriety.begin",
+			"actionId": "longintrigue",
+			"label": "昼間の恐怖",
+			"startdescription": "敵は信奉者の秘密を暴こうとしている。[暴かれていない信奉者が見つけられなければ、静かに終わるだろう。]",
+			"slots": [
+				{
+					"id": "follower",
+					"label": "ターゲット",
+					"greedy": true,
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": -1,
+						"poison.notoriety": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.notoriety.continue"
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.notoriety.continue",
+			"actionId": "longintrigue",
+			"label": "晒し者にされないように自分を守る？",
+			"startdescription": "世間の目をそらすために他の話題を提供する。[神秘性を使って、目くらましを試みる。それが成功するとは限らないし、悪評を生む可能性もある。取締局からのお願いを使うと即座に解決する。]",
+			"slots": [
+				{
+					"id": "defence",
+					"label": "目くらまし",
+					"required": {
+						"mystique": 1,
+						"favour": 1
+					}
+				}
+			],
+			"requirements": {
+				"follower": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.notoriety.defendfavour"
+				},
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.try"
+				},
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.notoriety.succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.notoriety.defendfavour",
+			"actionId": "longintrigue",
+			"requirements": {
+				"favour": 1
+			},
+			"effects": {
+				"favour": -1
+			},
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.failure"
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.try",
+			"actionId": "longintrigue",
+			"label": "目くらまし",
+			"startdescription": "すでにたくさんの人たちが、この信奉者の名前を耳にしている。[目くらましが失敗しても何度も試すことができる。成功すると、悪評を生む。]",
+			"requirements": {
+				"mystique": 1
+			},
+			"warmup": 10,
+			"effects": {
+				"mystique": -1
+			},
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.succeed",
+					"chance": 70
+				},
+				{
+					"id": "long.executestrategy.intrigue.poison.follower.notoriety.continue",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.succeed",
+			"actionId": "longintrigue",
+			"effects": {
+				"notoriety": 1
+			},
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.failure"
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.poison.follower.notoriety.succeed",
+			"actionId": "longintrigue",
+			"label": "世間の注目",
+			"startdescription": "信奉者が望んでいない形で有名になってしまった。",
+			"mutations": [
+				{
+					"mutate": "poison.notoriety",
+					"filter": "follower",
+					"level": 1
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.mystiquetonotoriety.begin",
+			"actionId": "longintrigue",
+			"label": "噂話の捏造",
+			"startdescription": "敵は既存の噂を信じられないほど膨らませようとしている。",
+			"slots": [
+				{
+					"id": "mystique",
+					"label": "神秘性",
+					"required": {
+						"mystique": 1
+					},
+					"greedy": true
+				}
+			],
+			"comments": "If we can't find mystique, we go on trying to generate it",
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.mystiquetonotoriety.continue",
+					"chance": 100
+				},
+				{
+					"id": "long.executestrategy.intrigue.createmystique.begin",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.intrigue.mystiquetonotoriety.continue",
+			"actionId": "longintrigue",
+			"label": "評判を守る？",
+			"startdescription": "話の流れを変えられる人を知っている。[<sprite name=heart>の信奉者であれば、この行為を防ぐことができる可能性がある。]",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1
+					}
+				}
+			],
+			"requirements": {
+				"mystique": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.failure",
+					"challenges": {
+						"heart": "base"
+					}
+				},
+				{
+					"id": "long.executestrategy.intrigue.mystiquetonotoriety.succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.mystiquetonotoriety.succeed",
+			"actionId": "longintrigue",
+			"label": "軽蔑されている",
+			"startdescription": "正確には事実ではないが、正確には嘘でもない。",
+			"description": "",
+			"effects": {
+				"notoriety": 1,
+				"mystique": -1
+			}
+		},
+		{
+			"id": "long.executestrategy.intrigue.fraud.begin",
+			"actionId": "longintrigue",
+			"label": "紙の罠",
+			"startdescription": "敵は我々に対して偽証した。政府は我々の無実を確信するに違いない。[これが成功してしまうと、1つ、または複数の資金を失う可能性がある。<sprite name=heart>や<sprite name=moth>の信奉者であれば、この行為を防ぐことができる可能性がある。]",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.failure",
+					"challenges": {
+						"heart": "base",
+						"moth": "base"
+					}
+				},
+				{
+					"id": "long.executestrategy.intrigue.fraud.succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.fraud.succeed",
+			"actionId": "longintrigue",
+			"label": "監査役のトゲ",
+			"startdescription": "「以前送らせていただいた手紙では、債務不履行の度合いを指摘しましたが、今回はこの問題について詳しく調べましたので......」",
+			"slots": [
+				{
+					"id": "funds",
+					"label": "資金",
+					"required": {
+						"funds": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				"funds": -1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.fraud.succeed",
+					"chance": 70
+				},
+				{
+					"id": "long.executestrategy.intrigue.fraud.completed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.fraud.completed",
+			"actionId": "longintrigue",
+			"label": "検査官の慈悲",
+			"startdescription": "途絶えることなく届いていた脅迫状はその勢いを失い、やがて止まった。今のところはこれで終わりなはずだ。"
+		},
+		{
+			"id": "long.executestrategy.intrigue.createmystique.begin",
+			"actionId": "longintrigue",
+			"label": "根拠のない噂",
+			"startdescription": "敵が何度も同じ話をすれば、噂が定着するかもしれない。[<sprite name=heart>の信奉者であれば、この行為を防ぐことができる可能性がある。]",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"follower": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.intrigue.failure",
+					"challenges": {
+						"heart": "base"
+					}
+				},
+				{
+					"id": "long.executestrategy.intrigue.createmystique.succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.intrigue.createmystique.succeed",
+			"actionId": "longintrigue",
+			"label": "噂の霧",
+			"startdescription": "私の評判は独り歩きし始めた。",
+			"effects": {
+				"mystique": 1
+			}
+		},
+		{
+			"id": "long.executestrategy.intrigue.failure",
+			"actionId": "longintrigue",
+			"label": "多めに見る",
+			"startdescription": "我々の評判は悪くないが......敵は我々に焦点を絞り始めるだろう。",
+			"effects": {
+				"long.lesson.connections": 1
+			}
+		},
+		{
+			"id": "long.executestrategy.dreams.drysoul.begin",
+			"actionId": "longdreams",
+			"label": "立ち上がる乾いた魂の呪い",
+			"startdescription": "敵は乾いた魂の呪いを我々にかけている。パーカッシガントを使えば、その元気な足音と陽気な手足で呪いを回避することができるが、そうすると、後から敵に尋問されてしまう。[パーカッシガントは呪いを未然に防ぎ、敵に教訓を与えてくれる。] ",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "パーカッシガント",
+					"required": {
+						"spirit_heartc_edge": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "long.executestrategy.dreams.drysoul.defeated"
+				},
+				{
+					"id": "curse_dread_dormant",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "long.executestrategy.dreams.drysoul.defeated",
+			"actionId": "longdreams",
+			"label": "パーカッシガントの防衛",
+			"startdescription": "\n手足が震る\n賛美歌を歌う\rパーカッシガント、練習をする\n\n乾いた魂の呪い！\n乾いた魂の呪い！\n多肢の世界！",
+			"requirements": {
+				"spirit_heartc_edge": 1
+			},
+			"effects": {
+				"long.lesson.dreamwork": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.dreams.fiftheye.begin",
+			"actionId": "longdreams",
+			"label": "立ち上がる第五の目の呪い",
+			"startdescription": "敵は我々に対して第五の目を仕掛けようとしている。煙霧の煙を使えば、敵が備えたものを隠すことはできるが、そうすれば敵にそれを調べる機会を与えることになってしまう。[煙霧は呪いの攻撃を防ぐことができるが、敵に教訓を与えるだろう。] ",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "パーカッシガント",
+					"required": {
+						"spirit_forgec_winter": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "long.executestrategy.dreams.fiftheye.defeated"
+				},
+				{
+					"id": "curse_visions_dormant",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "long.executestrategy.dreams.fiftheye.defeated",
+			"actionId": "longdreams",
+			"label": "煙に消える第五の目",
+			"startdescription": "第五の目の呪いは消滅する前に倒された。煙霧も我々から学んだ秘密を持って、一緒に消えていった。",
+			"requirements": {
+				"spirit_forgec_winter": 1
+			},
+			"effects": {
+				"long.lesson.dreamwork": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.dreams.poisonway.begin",
+			"actionId": "longdreams.poisonway",
+			"comments": "unique verb, because it loops",
+			"label": "道中の監視者たち",
+			"startdescription": "敵は我々が見つけたマンサスへの道を選んで、監視するだろう。",
+			"slots": [
+				{
+					"id": "way",
+					"label": "道",
+					"required": {
+						"way": 1
+					},
+					"forbidden": {
+						"poison.long.way": 1,
+						"waystagbefore_1": 1,
+						"waystagbefore_2": 1,
+						"waystagbefore_3": 1,
+						"waystagbefore_4": 1,
+						"waystagbefore_5": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.dreams.poisonway.continue"
+				},
+				{
+					"id": "long.executestrategy.dreams.poisonway.begin"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "long.executestrategy.dreams.poisonway.continue",
+			"actionId": "longdreams.poisonway",
+			"label": "道中の監視者たち",
+			"requirements": {
+				"way": 1
+			},
+			"startdescription": "敵は選択をした。危険を招かずして二度とこの門を通れないだろう。",
+			"mutations": [
+				{
+					"filter": "way",
+					"mutate": "poison.way.long",
+					"level": 1
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.dreams.lantern.greatwork.begin",
+			"actionId": "longdreams",
+			"label": "妨害行為！",
+			"startdescription": "不滅の敵が我々のマンサスでの活動に注目し始めた。分裂した狼の下級の名を持つ者が、手がかりを追っているようだ。",
+			"slots": [
+				{
+					"id": "target",
+					"label": "ターゲット",
+					"required": {
+						"uqthirdwaywitnesses": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.dreams.lantern.greatwork.continue",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.dreams.lantern.greatwork.continue",
+			"actionId": "longdreams",
+			"label": "大いなる業を守る",
+			"startdescription": "我々の大いなる業は、痩せた灰色の獣に脅かされている。光で覆えば、この徘徊する狼の欠片を遠ざけることができるかもしれない。[<sprite name=heart>や<sprite name=lantern>の精霊であれば、この行為を防ぐことができる可能性がある。]",
+			"description": "",
+			"slots": [
+				{
+					"id": "defender",
+					"label": "守り人",
+					"required": {
+						"summoned": 1
+					}
+				}
+			],
+			"requirements": {
+				"uqthirdwaywitnesses": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.dreams.lantern.greatwork.failure",
+					"challenges": {
+						"heart": "base",
+						"lantern": "base"
+					}
+				},
+				{
+					"id": "long.executestrategy.dreams.lantern.greatwork.succeed"
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.dreams.lantern.greatwork.succeed",
+			"actionId": "longdreams",
+			"label": "薄暗くなる光",
+			"startdescription": "目撃者の1人は逃げ、もう1人は狼の欠片にやられてしまった。3人目は？地図に載っていないどこかへ行ってしまった。",
+			"aspects": {
+				"sabotage": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.dreams.lantern.greatwork.failure",
+			"actionId": "longdreams",
+			"label": "包む光",
+			"startdescription": "我々は、徘徊する狼の欠片を避けてきた。我々の大いなる業は今のところ安全だ。",
+			"effects": {
+				"long.lesson.dreamwork": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.dreams.poisonpassionwithdread.begin",
+			"actionId": "longdreams",
+			"label": "深まる黄昏",
+			"slots": [
+				{
+					"id": "seeking",
+					"label": "情熱",
+					"required": {
+						"passion": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.dreams.poisonpassionwithdread.continue"
+				}
+			],
+			"startdescription": "死は、下にあると言われている。敵が見せてくる夢の中では、マンサスの根は光のはるか下に伸びている。",
+			"warmup": 60
+		},
+		{
+			"id": "long.executestrategy.dreams.poisonpassionwithdread.continue",
+			"actionId": "longdreams",
+			"label": "深まる黄昏",
+			"startdescription": "夢の中で、階段が下に向かっているのが見える。それは、世界が回る中、死者が向かっていく場所へと続いている。",
+			"requirements": {
+				"passion": 1
+			},
+			"mutations": [
+				{
+					"filter": "passion",
+					"mutate": "poison.passion.dread",
+					"level": 1
+				}
+			],
+			"alt": [
+				{
+					"id": "poison.passion.dread.induction",
+					"additional": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.dreams.poisonreasonwithfascination.begin",
+			"actionId": "longdreams",
+			"label": "ロウソクの輝きと芯",
+			"startdescription": "敵は夢で様々なイメージを私に見せた。それぞれに、時の神の訪れを予感させる伏線が散りばめられていた。",
+			"slots": [
+				{
+					"id": "seeking",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.dreams.poisonreasonwithfascination.continue"
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "long.executestrategy.dreams.poisonreasonwithfascination.continue",
+			"actionId": "longdreams",
+			"label": "ロウソクの輝きと芯",
+			"startdescription": "誰がロウソクの者なんだ？なぜ彼女の夢を見るのだろう。炎とは何だ？燃料は？思考が燃えていく。",
+			"requirements": {
+				"reason": 1
+			},
+			"mutations": [
+				{
+					"filter": "reason",
+					"mutate": "poison.reason.fascination",
+					"level": 1
+				}
+			],
+			"alt": [
+				{
+					"id": "poison.reason.fascination.induction",
+					"additional": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "long.executestrategy.dreams.createfascination.poisoned.begin",
+			"actionId": "longdreams",
+			"label": "美味しい夢",
+			"startdescription": "敵は私の希望や恐怖を以前よりも理解しだし、私の恐怖を夢の燃料にする必要がなくなったようだ。今夜の夢は琥珀に包まれたシナモンのようで、マラーリーから作りたての状態で届いた手つかずのケーキのように、火照ったノスタルジアに包まれ、私を手招きしている。",
+			"effects": {
+				"fascination": 1,
+				"contentment": 1
+			},
+			"linked": [
+				{
+					"id": "long.executestrategy.dreams.applypoison.fascination.longlesson"
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "long.executestrategy.dreams.dreadtofascination.poisoned.begin",
+			"actionId": "longdreams",
+			"label": "ジューシーな夢",
+			"startdescription": "敵の長生者が私に光の果樹園の夢を送ってきた。夢の中では、カサカサと音を立てる紙に包まれたジューシーな梨のように、恐怖の終末が約束されている。",
+			"slots": [
+				{
+					"id": "seeking",
+					"label": "恐怖",
+					"required": {
+						"dread": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"id": "long.executestrategy.dreams.dreadtofascination.poisoned.continue"
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "long.executestrategy.dreams.dreadtofascination.poisoned.continue",
+			"actionId": "longdreams",
+			"label": "ジューシーな夢",
+			"startdescription": "夢が生命の粒子を食い荒らすポリープのように、私の恐怖を包み込んだ。恐怖の代わりに、光り輝く笑い声で満ちた、架空の会話の記憶を与えてくれる。",
+			"requirements": {
+				"dread": 1
+			},
+			"effects": {
+				"dread": -1,
+				"fascination": 1,
+				"contentment": 1
+			},
+			"linked": [
+				{
+					"id": "long.executestrategy.dreams.applypoison.fascination.longlesson"
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.dreams.applypoison.fascination.longlesson",
+			"actionId": "longdreams",
+			"label": "ジューシーな夢",
+			"mutations": [
+				{
+					"filter": "fascination",
+					"mutate": "poison.fascination.longlesson",
+					"level": 1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.dreams.createfascination.begin",
+			"actionId": "longdreams",
+			"label": "遠くの光",
+			"startdescription": "敵はマンサスの高窓にロウソクを置いた。ロウソクの光が夢に染み込んでくる。",
+			"description": "これが、コーズリーとへルソーがそれぞれの時代に書いた、眠りの端の光だ。",
+			"effects": {
+				"fascination": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "long.executestrategy.dreams.learndreams.begin",
+			"actionId": "longdreams",
+			"label": "露出した角度",
+			"startdescription": "私の思考がマンサスの光に反映する角度がある。敵はその角度を知ろうとしている。",
+			"description": "敵は私の反映した思考の輝きを求めてマンサスの広間を探したが、何も見つけられなかった。",
+			"slots": [
+				{
+					"id": "impulses",
+					"label": "衝動",
+					"greedy": true,
+					"required": {
+						"fascination": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "long.executestrategy.dreams.learndreams.continue",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.dreams.learndreams.continue",
+			"actionId": "longdreams",
+			"label": "露出した角度",
+			"startdescription": "敵が私の思考の角度を知り、私の立場は弱くなってしまった。",
+			"requirements": {
+				"fascination": 1
+			},
+			"effects": {
+				"fascination": -1,
+				"long.lesson.dreamwork": 1
+			}
+		},
+		{
+			"id": "long.executestrategy.dreams.learnfears.begin",
+			"actionId": "longdreams",
+			"label": "恐怖の展示",
+			"startdescription": "心の中に、自分の恐怖がすべて並んでいる部屋がある。夢の中で、その部屋には扉がついている。もし敵がその扉を見つけたら、中に入ってしまうかもしれない。",
+			"description": "私の恐怖心は闇の中へと消えた。敵は何も見つけられなかった。",
+			"slots": [
+				{
+					"id": "impulses",
+					"label": "衝動",
+					"greedy": true,
+					"required": {
+						"dread": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "long.executestrategy.dreams.learndreams.continue",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.dreams.learnfears.continue",
+			"actionId": "longdreams",
+			"label": "恐怖の展示",
+			"startdescription": "敵は私の心の中に並ぶ恐怖を見つけた。私の立場は弱くなった。",
+			"requirements": {
+				"dread": 1
+			},
+			"effects": {
+				"dread": -1,
+				"long.lesson.dreamwork": 1
+			}
+		},
+		{
+			"id": "long.executestrategy.downtime.learn.begin",
+			"actionId": "longdowntime",
+			"label": "高まる力",
+			"startdescription": "不死の敵は多くの国に味方と資源を持っている。動きはゆっくりだが、時間が経てば経つほど、我々に対抗する味方や物資がどんどん増えていく。",
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.executestrategy.downtime.learn.might",
+					"chance": 33
+				},
+				{
+					"id": "long.executestrategy.downtime.learn.connections",
+					"chance": 50
+				},
+				{
+					"id": "long.executestrategy.downtime.learn.dreamwork",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "long.executestrategy.downtime.learn.might",
+			"label": "学習：力",
+			"actionId": "longdowntime",
+			"effects": {
+				"long.lesson.might": 1
+			}
+		},
+		{
+			"id": "long.executestrategy.downtime.learn.connections",
+			"label": "学習：人脈",
+			"actionId": "longdowntime",
+			"effects": {
+				"long.lesson.connections": 1
+			}
+		},
+		{
+			"id": "long.executestrategy.downtime.learn.dreamwork",
+			"label": "学習：夢の仕事",
+			"actionId": "longdowntime",
+			"effects": {
+				"long.lesson.dreamwork": 1
+			}
+		},
+		{
+			"id": "long.executestrategy.downtime.rest.begin",
+			"actionId": "longdowntime",
+			"label": "一時休止",
+			"startdescription": "今のところ、敵は待つことにしたようだ。",
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "long.intrigue.confrontation",
+			"actionId": "long",
+			"label": "突撃の準備",
+			"startdescription": "至る所に人脈がある敵は、直接攻撃を成功させる確信を持っている。もうすぐ襲撃が起きるかもしれない。",
+			"requirements": {
+				"long.connections": 10,
+				"diarist": -1,
+				"diarist_unknown": -1
+			},
+			"mutations": [
+				{
+					"mutate": "long.might",
+					"filter": "long.enemy",
+					"level": 10
+				}
+			],
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "long.assault.confrontation"
+				}
+			],
+			"aspects": {
+				"revealidentity": 1
+			}
+		},
+		{
+			"id": "long.assault.confrontation",
+			"actionId": "long",
+			"comments": "Note: this takes effect in the main verb. Once in an assault confrontation, we're in it until the end.",
+			"label": "直接攻撃！",
+			"aspects": {
+				"revealidentity": 1
+			},
+			"slots": [
+				{
+					"id": "follower",
+					"label": "守り人",
+					"required": {
+						"follower": 1,
+						"murderskill": 1
+					},
+					"forbidden": {
+						"summoned": 1,
+						"hireling": 1
+					}
+				}
+			],
+			"startdescription": "もう陽動作戦や代理を使って戦うのはやめよう。 @#welland|ウェランド大尉は、個人的に我々に対して鍛造の力を使うだろう。#tryphon|トライフォン夫人は自ら戦い、きれいに手入れされた手を血で汚すことにした。#julian|この冷徹な敵は、我々を自らの手で滅ぼしに来た。#|我々の敵は自ら戦場に降りてきた。@[長生者は私が死ぬまで私の「体力」を消費し続けるだろうが、しばらくの間は忠実な信奉者が我々を守ってくれるだろう。定命の者の信奉者だけが我々を守れる――我々の敵は目に見えない術の達人であり、精霊たちは敵に攻撃を仕掛けることができない。] ",
+			"requirements": {
+				"long.might": 10,
+				"diarist": -1,
+				"diarist_unknown": -1
+			},
+			"alt": [
+				{
+					"id": "expel_corpses",
+					"additional": true,
+					"expulsion": {
+						"limit": 9,
+						"filter": {
+							"corpse": 1
+						}
+					}
+				},
+				{
+					"id": "long.assault.confrontation.vanquished"
+				},
+				{
+					"id": "long.assault.confrontation.murderskill"
+				},
+				{
+					"id": "long.assault.confrontation.defender"
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "long.assault.confrontation.grabhealth"
+				}
+			]
+		},
+		{
+			"id": "long.assault.confrontation.vanquished",
+			"actionId": "long",
+			"label": "長生者が死んだ！",
+			"startdescription": "この巨人は果てしない時を生きてきたが、何年もの歳月を経て、慎重さを失った。",
+			"description": "[今のうちに勝利を味わおう。これで終わりではない。敵を滅ぼすことができるならば、師匠も滅ぼすことができる。]",
+			"requirements": {
+				"long_wound": 3
+			},
+			"aspects": {
+				"longded": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "long.assault.confrontation.grabhealth",
+			"label": "猛烈な猛攻撃",
+			"actionId": "long",
+			"slots": [
+				{
+					"id": "injury",
+					"label": "怪我",
+					"required": {
+						"health": 1,
+						"fatigue": 1
+					},
+					"greedy": true
+				}
+			],
+			"aspects": {
+				"damagehealth": 1
+			},
+			"alt": [
+				{
+					"id": "expel_injury",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"injury": 1
+						}
+					}
+				},
+				{
+					"id": "deathofthebody",
+					"chance": 100
+				}
+			],
+			"startdescription": "長生者が影から飛び出し、沈黙へと戻っていった！[体力が残っていない場合は、命を失うだろう。]",
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.assault.confrontation"
+				}
+			]
+		},
+		{
+			"id": "long.assault.confrontation.defender",
+			"actionId": "long",
+			"label": "必要な生贄",
+			"requirements": {
+				"follower": 1
+			},
+			"startdescription": "この人は目的のために命を捧げるだろう[<sprite name=edge><sprite name=forge><sprite name=winter>が5点以上ある信奉者のみが長生者を痛めつけることができる。しかし、他の者たちは、長くはないが、避けられない事態を遅らせることができる。]",
+			"linked": [
+				{
+					"id": "long.assault.confrontation.weakfollower"
+				},
+				{
+					"id": "long.assault.confrontation.strongfollower",
+					"challenges": {
+						"edge": "base",
+						"forge": "base",
+						"winter": "base"
+					}
+				},
+				{
+					"id": "long.assault.confrontation.strongfollower.failure"
+				}
+			]
+		},
+		{
+			"id": "long.assault.confrontation.weakfollower",
+			"actionId": "long",
+			"label": "必要な生贄",
+			"startdescription": "もう1つロウソクが消えた。",
+			"requirements": {
+				"edge": -5,
+				"forge": -5,
+				"winter": -5
+			},
+			"warmup": 30,
+			"aspects": {
+				"killmortal": 1
+			},
+			"linked": [
+				{
+					"id": "long.assault.confrontation"
+				}
+			]
+		},
+		{
+			"id": "long.assault.confrontation.murderskill",
+			"actionId": "long",
+			"label": "夜の中へ",
+			"startdescription": "このクリーチャーとは直接対決する。何世紀分の力を持っているだろうが......私の力も侮れない。",
+			"requirements": {
+				"murderskill": 1
+			},
+			"linked": [
+				{
+					"id": "long.assault.confrontation.murderskill.succeed",
+					"chance": 30
+				},
+				{
+					"id": "long.assault.confrontation.murderskill.failure"
+				}
+			]
+		},
+		{
+			"id": "long.assault.confrontation.murderskill.succeed",
+			"actionId": "long",
+			"label": "ナイフのように刃が傷つけたが、私は敗北した",
+			"startdescription": "暗闇の中で敵と格闘し、敵が私を制圧しても、私は自分の力を犠牲にして敵の血を流した。敵は負傷しているが、私は敗北した。",
+			"mutations": [
+				{
+					"filter": "long.enemy",
+					"mutate": "long_wound",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"warmup": 30,
+			"effects": {
+				"murderskill": -1
+			},
+			"linked": [
+				{
+					"id": "long.assault.confrontation"
+				}
+			]
+		},
+		{
+			"id": "long.assault.confrontation.murderskill.failure",
+			"actionId": "long",
+			"label": "私は敗北した",
+			"startdescription": "私は敵に立ち向かい、力の限り戦ったが負けてしまった。私は人間より優れているかもしれないが、敵は長い間人間ではなかったのだ。",
+			"warmup": 30,
+			"effects": {
+				"murderskill": -1
+			},
+			"linked": [
+				{
+					"id": "long.assault.confrontation"
+				}
+			]
+		},
+		{
+			"id": "long.assault.confrontation.strongfollower",
+			"actionId": "long",
+			"label": "高貴な終わり",
+			"startdescription": "夜の深みに、街を揺るがす悲鳴が聞こえてくる。長生者が負傷した!",
+			"mutations": [
+				{
+					"filter": "long.enemy",
+					"mutate": "long_wound",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"warmup": 30,
+			"aspects": {
+				"killmortal": 1
+			},
+			"alt": [
+				{
+					"id": "expel_corpses",
+					"additional": true,
+					"expulsion": {
+						"limit": 9,
+						"filter": {
+							"corpse": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "long.assault.confrontation"
+				}
+			]
+		},
+		{
+			"id": "long.assault.confrontation.strongfollower.failure",
+			"actionId": "long",
+			"label": "高貴な失敗",
+			"startdescription": "数分は数時間に伸びていく。魚がハエを捕まえるように、夜が我々の仲間を簡単に飲み込んだ。満たされていない長生者が攻撃を続ける。",
+			"warmup": 30,
+			"aspects": {
+				"killmortal": 1
+			},
+			"alt": [
+				{
+					"id": "expel_corpses",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"corpse": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "long.assault.confrontation"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation",
+			"actionId": "long",
+			"comments": "Note: this takes effect in the main verb. Once in a dreams confrontation, we're in it until the end.",
+			"label": "幻の戦争",
+			"aspects": {
+				"revealidentity": 1
+			},
+			"slots": [
+				{
+					"id": "summoned",
+					"label": "守り人",
+					"required": {
+						"summoned": 1
+					}
+				}
+			],
+			"startdescription": "@#welland|ウェランド大尉は異例のことにマンサスの境界を我々の最後の戦いの場に選んだ。#tryphon|トリフォン夫人はマンサスの境界を最後の対決の場に選んだ。#julian|コーズリーはマンサスの境界で味方を集めて、攻撃を仕掛けようとしている。#diarist|日記作家はマンサスの境界から我々への総攻撃を開始した。#|敵はマンサスを通して我々を攻撃するために、精霊の群れを呼び起こした。@[長生者は、私が存在しなくなるまで、情熱と理性を食い尽くすだろう。しかし、敵は反撃の危険に身を晒している......私がマンサスの軍勢を十分に集められれば......」 ",
+			"requirements": {
+				"long.dreamwork": 10
+			},
+			"alt": [
+				{
+					"id": "long.dreams.confrontation.vanquished"
+				},
+				{
+					"id": "long.dreams.confrontation.defender"
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "long.dreams.confrontation.grabability"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation.vanquished",
+			"actionId": "long",
+			"label": "長生者を退治した！",
+			"startdescription": "境界の気まぐれな影と激しい煙の中で、長生者は消えゆく月のように溶け、軍隊は散り、計画は意味を失い、名前は消えていった。",
+			"description": "[今のうちに勝利を味わおう。これで終わりではない。敵を滅ぼすことができるならば、師匠も滅ぼすことができる。]",
+			"requirements": {
+				"long_wound": 3
+			},
+			"aspects": {
+				"longded": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "long.dreams.confrontation.defender",
+			"actionId": "long",
+			"label": "境界線上の戦い",
+			"requirements": {
+				"summoned": 1
+			},
+			"startdescription": "戦いは想像上のものであり、戦争はそうではない。夢の中で衛兵を配置した方が良いだろう。[<sprite name=edge><sprite name=lantern><sprite name=moth>が5点以上ある精霊のみが長生者を痛めつけることができる。しかし、他の者たちは、長くはないが、避けられない事態を遅らせることができる。]",
+			"linked": [
+				{
+					"id": "long.dreams.confrontation.lantern.maid"
+				},
+				{
+					"id": "long.dreams.confrontation.lantern.hint"
+				},
+				{
+					"id": "long.dreams.confrontation.winter.maid"
+				},
+				{
+					"id": "long.dreams.confrontation.forge.caligine"
+				},
+				{
+					"id": "long.dreams.confrontation.grail.prophet"
+				},
+				{
+					"id": "long.dreams.confrontation.weakfollower"
+				},
+				{
+					"id": "long.dreams.confrontation.strongfollower",
+					"challenges": {
+						"edge": "base",
+						"lantern": "base",
+						"moth": "base"
+					}
+				},
+				{
+					"id": "long.dreams.confrontation.strongfollower.failure"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation.lantern.maid",
+			"actionId": "long",
+			"label": "ボロボロの太陽との理解",
+			"startdescription": "日記作家は、刃物の階段を歩く者と仲が良い。鏡の少女は、彼に手を出さない。",
+			"requirements": {
+				"diarist": 1,
+				"spirit_winterd_edge": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.dreams.confrontation.cleanup"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation.winter.maid",
+			"actionId": "long",
+			"label": "冬の寒さ",
+			"startdescription": "コーズリーは冬の長生者だ。この冷たさを実現した方法は、それが何であれ、彼を「鏡の少女」の攻撃から守る。",
+			"requirements": {
+				"julian": 1,
+				"spirit_winterd_edge": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.dreams.confrontation.cleanup"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation.lantern.hint",
+			"actionId": "long",
+			"label": "メニスカーテの光",
+			"startdescription": "灯りの長生者である日記作家は、栄光の模倣者に理解を示している。暗示が彼を傷つけることはない。",
+			"requirements": {
+				"diarist": 1,
+				"spirit_lanternc_edge": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.dreams.confrontation.cleanup"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation.forge.caligine",
+			"actionId": "long",
+			"label": "鍛造との長い付き合い",
+			"startdescription": "ウェランドは、我々の創始者が生まれる前から、火を飼いならしていた。煙霧が彼に攻撃を仕掛けることはない。",
+			"requirements": {
+				"welland": 1,
+				"spirit_forgec_winter": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.dreams.confrontation.cleanup"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation.grail.prophet",
+			"actionId": "long",
+			"label": "とある共感",
+			"startdescription": "「そんなことをしてはダメよ」と、トライフォン夫人が言う。そうすると未熟な預言者は、動きを止める。",
+			"requirements": {
+				"tryphon": 1,
+				"spirit_grailc_moth": 1
+			},
+			"aspects": {
+				"killsummoned": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.dreams.confrontation.cleanup"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation.weakfollower",
+			"actionId": "long",
+			"label": "必要な生贄",
+			"requirements": {
+				"edge": -5,
+				"lantern": -5,
+				"moth": -5
+			},
+			"startdescription": "もう1つロウソクが消えた。",
+			"warmup": 30,
+			"aspects": {
+				"killsummoned": 1
+			},
+			"linked": [
+				{
+					"id": "long.dreams.confrontation.cleanup"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation.strongfollower",
+			"actionId": "long",
+			"label": "森の傷口",
+			"startdescription": "木の枝から血が滴る。敵は怪我を負っている。",
+			"mutations": [
+				{
+					"filter": "long.enemy",
+					"mutate": "long_wound",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"warmup": 30,
+			"aspects": {
+				"killsummoned": 1
+			},
+			"linked": [
+				{
+					"id": "long.dreams.confrontation.cleanup"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation.strongfollower.failure",
+			"actionId": "long",
+			"label": "長くなった光",
+			"startdescription": "敵は無傷だ。",
+			"warmup": 30,
+			"aspects": {
+				"killsummoned": 1
+			},
+			"linked": [
+				{
+					"id": "long.dreams.confrontation.cleanup"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation.grabability",
+			"actionId": "long",
+			"label": "容赦のない夕暮れ",
+			"startdescription": "悪夢が続き、終わる気配さえない。昼も夜も、現実の中でも夢の中でも、風の中で音が聞こえ、髪の毛の根が深くなり、扉は不自然に大きく開き、寒さの中で頭痛を感じ、すべてのものが私に語りかけてくる。ずっとずっと、何もかもが。起きていることの重苦しさは、不規則な重力であり、境界線の圧迫は人混みの圧迫であり、私は氷河のように皮を脱ぎ捨てる。\n\n[情熱や理性がなくなると、これによって自分が壊されてしまう。]",
+			"slots": [
+				{
+					"id": "wakingnightmares",
+					"label": "目覚めの悪夢",
+					"required": {
+						"passion": 1,
+						"reason": 1,
+						"concentration": 1,
+						"disillusionment": 1,
+						"passionexhausted": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				"passion": -1,
+				"reason": -1,
+				"concentration": -1,
+				"disillusionment": -1,
+				"passionexhausted": -1
+			},
+			"alt": [
+				{
+					"id": "long.dreams.confrontation.destroyedbynightmares"
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "long.dreams.confrontation.cleanup"
+				}
+			]
+		},
+		{
+			"id": "long.dreams.confrontation.destroyedbynightmares",
+			"actionId": "long",
+			"label": "慈悲",
+			"startdescription": "――限界――",
+			"requirements": {
+				"passion": -1,
+				"reason": -1,
+				"concentration": -1,
+				"disillusionment": -1,
+				"passionexhausted": -1
+			},
+			"ending": "longnightmareending",
+			"signalEndingFlavour": "Melancholy"
+		},
+		{
+			"id": "long.dreams.confrontation.cleanup",
+			"actionId": "long",
+			"comments": "We remove principle aspects on each run-through - any clutter left from killing\nspirits, we want to remove so it doesn't affect the attack calculation.",
+			"label": "幻の戦争",
+			"aspects": {
+				"revealidentity": 1
+			},
+			"effects": {
+				"edge": -99,
+				"forge": -99,
+				"grail": -99,
+				"heart": -99,
+				"knock": -99,
+				"lantern": -99,
+				"moth": -99,
+				"winter": -99
+			},
+			"linked": [
+				{
+					"id": "long.dreams.confrontation"
+				}
+			]
+		}
+	]
+}

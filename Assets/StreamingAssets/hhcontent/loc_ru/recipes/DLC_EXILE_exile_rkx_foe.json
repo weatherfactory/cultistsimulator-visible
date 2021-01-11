@@ -1,0 +1,724 @@
+{
+	"recipes": [
+		{
+			"id": "rkx.foe.arrive",
+			"actionId": "rkx.foe",
+			"label": "Мой Враг почти здесь!",
+			"startdescription": "Стёкла трещат от мороза. Свечи трепещут во тьме. Я слишком хорошо понимаю, что это за знаки.",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"alt": [
+				{
+					"id": "rkx.spawn.escort",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.arrive.mapedge",
+			"actionId": "rkx.foe",
+			"label": "Мой Враг в пути",
+			"startdescription": "Моё отражение в лезвии ножа дрожит, словно рябь воды. В предрассветных часах, которые так любит Мадругад, моя тень становится причудливой и удлиняется. Это знак. Мой Враг приближается. Благородство это или высокомерие, но он идёт сюда один.",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "rkx.foe.arrive.defiance",
+			"actionId": "rkx.foe",
+			"label": "Мой Враг здесь из-за меня!",
+			"startdescription": "Будем надеяться, я об этом не пожалею.",
+			"effects": {
+				"rkx.foe": 1
+			},
+			"extantreqs": {
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "foe.weaknesses.generate.backup",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.foe.attack"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.selector",
+			"actionId": "rkx.foe",
+			"label": "Мой Враг следит за мной",
+			"startdescription": "Даже когда я его не вижу, я знаю: он здесь. Он может напасть в любой момент.",
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "rkx.foe.obscured"
+				},
+				{
+					"id": "rkx.foe.attack",
+					"chance": 30
+				},
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.obscured",
+			"actionId": "rkx.foe",
+			"label": "Мой Враг близко!",
+			"startdescription": "«От меня не спрячешься. Я слишком хорошо тебя знаю».",
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"effects": {
+				"obscurity": -1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "Забвение",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 20,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack",
+			"actionId": "rkx.foe",
+			"label": "Мой Враг наносит удар!",
+			"startdescription": "«Нужно было убегать дальше».\n\n[Атаки Врага обычно срабатывают. Добавьте соответствующую карту для защиты. Отвлекающие манёвры помогут выиграть время, но лишь некоторые из них действуют на Врага. Какие именно, можно узнать, обнаружив Слабости Врага. Иногда Враг может сломать оружие.]",
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Защита",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"defiance.consecration.lionsmith": 1
+					},
+					"forbidden": {
+						"uq.weapon.profane": 1,
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.spawn.escort",
+					"additional": true
+				},
+				{
+					"id": "rkx.foe.mock"
+				}
+			],
+			"warmup": 20,
+			"effects": {
+				"husk": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.ligeian"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.cold"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.heat"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.sea"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.faith"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.cats"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.heights"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.horned"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.wolf"
+				},
+				{
+					"id": "rkx.foe.weaknessexploited.flowermaker"
+				},
+				{
+					"id": "rkx.foe.attack.success.wrongdistraction"
+				},
+				{
+					"id": "rkx.foe.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.foe.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.mock",
+			"actionId": "rkx.foe",
+			"label": "Смеяться, как смеялся Львокузнец",
+			"startdescription": "Я могу высмеять своего Врага, используя один древний издевательский жест... и открыть себя для нападения. Возможно, Час, именуемый Львокузнецом, оценит мою дерзость. [Вы получите <i>два</i> Ранения, но повысите уровень Непокорности.]",
+			"requirements": {
+				"defiance.consecration.lionsmith": 1,
+				"defiance.foetaunted": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "defiance.consecration.lionsmith",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"alt": [
+				{
+					"id": "spit.foe.attack.success.mocked",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"desire": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.attack.success.mocked"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack.success.mocked",
+			"actionId": "rkx.foe",
+			"label": "Сила превыше коварства",
+			"startdescription": "Мой Враг яростно шипит! Он наносит сокрушающий удар до того как я успеваю увернуться.",
+			"linked": [
+				{
+					"id": "rkx.foe.attack"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.success.mocked",
+			"actionId": "spit.foe.attack",
+			"label": "Меня сильно ранили!",
+			"startdescription": "Мне пришлось заплатить за свою дерзость...",
+			"effects": {
+				"wound.exile": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.foe.ligeian",
+			"actionId": "rkx.foe",
+			"label": "Вмешательство Лигений",
+			"startdescription": "Даже мой Враг знает о Лигениях. Он в нерешительности.",
+			"requirements": {
+				"ligeian": 1
+			},
+			"effects": {
+				"ligeian": -1
+			},
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "spit.foe.attack.failure.ligeian",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.cold",
+			"actionId": "rkx.foe",
+			"label": "Северный ветер — мой щит ",
+			"startdescription": "Слухи не лгут — из-за снега мой Враг становится медленнее и глупее.",
+			"requirements": {
+				"op.cold": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.cold": 1
+			},
+			"purge": {
+				"rkx.weakness.cold.hidden": 1
+			},
+			"effects": {
+				"op.cold": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.heat",
+			"actionId": "rkx.foe",
+			"label": "Сирокко — мой щит ",
+			"startdescription": "Слухи не лгут — если достаточно жарко, мой Враг становится медленнее и глупее.",
+			"requirements": {
+				"op.heat": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.heat": 1
+			},
+			"purge": {
+				"rkx.weakness.heat.hidden": 1
+			},
+			"effects": {
+				"op.heat": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.sea",
+			"actionId": "rkx.foe",
+			"label": "Море — мой щит",
+			"startdescription": "Все считальцы относятся к морю с осторожностью. Но слухи не лгут: мой Враг боится морской воды.",
+			"requirements": {
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.sea": 1
+			},
+			"purge": {
+				"rkx.weakness.sea.hidden": 1
+			},
+			"effects": {
+				"op.sea": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.faith",
+			"actionId": "rkx.foe",
+			"label": "Старые привычки",
+			"startdescription": "Как можно было предположить, воспитание моего Врага оставило на нём метку. Он не верующий, но уважение к различным формам веры его сковывает.",
+			"requirements": {
+				"op.faith": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.faith": 1
+			},
+			"purge": {
+				"rkx.weakness.faith.hidden": 1
+			},
+			"effects": {
+				"op.faith": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.cats",
+			"actionId": "rkx.foe",
+			"label": "Последняя работа Львокузнеца",
+			"startdescription": "Это правда! Мой Враг боится кошек! Он готов убивать тех, кто хоть немного на них походит. Теперь я знаю, почему.",
+			"requirements": {
+				"op.cats": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.cats": 1
+			},
+			"purge": {
+				"rkx.weakness.cats.hidden": 1
+			},
+			"effects": {
+				"op.cats": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.heights",
+			"actionId": "rkx.foe",
+			"label": "Угроза гравитации",
+			"startdescription": "На высоте мой Враг чувствует головокружение и теряет хватку. Воспользуюсь этим как преимуществом.",
+			"requirements": {
+				"op.heights": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.heights": 1
+			},
+			"purge": {
+				"rkx.weakness.heights.hidden": 1
+			},
+			"effects": {
+				"op.heights": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.horned",
+			"actionId": "rkx.foe",
+			"label": "Тень Топора",
+			"startdescription": "Моему Врагу не по нраву Рогатая Секира — когда падает его тень, мой Враг в нерешительности.",
+			"requirements": {
+				"op.horned": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.horned": 1
+			},
+			"purge": {
+				"rkx.weakness.horned.hidden": 1
+			},
+			"effects": {
+				"op.horned": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.wolf",
+			"actionId": "rkx.foe",
+			"label": "Дыхание Волка",
+			"startdescription": "В какой-то момент своей длинной и незаметной карьеры мой Враг сделал кое-что и заслужил особую неприязнь Разделённого Волка. Мой Враг настороже там, где ненависть сильна.",
+			"requirements": {
+				"op.wolf": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.wolf": 1
+			},
+			"purge": {
+				"rkx.weakness.wolf.hidden": 1
+			},
+			"effects": {
+				"op.wolf": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.weaknessexploited.flowermaker",
+			"actionId": "rkx.foe",
+			"label": "Свет Цветочника",
+			"startdescription": "Цветочник каким-то образом приводит в смятение моего Врага. Возможно, я никогда не узнаю, как именно.",
+			"requirements": {
+				"op.flowermaker": 1
+			},
+			"extantreqs": {
+				"uq.rkx.weakness.flowermaker": 1
+			},
+			"purge": {
+				"rkx.weakness.flowermaker.hidden": 1
+			},
+			"effects": {
+				"op.flowermaker": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.foe.attack.success.wrongdistraction",
+			"actionId": "rkx.foe",
+			"label": "Гортанный смех",
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1,
+				"distraction": 1
+			},
+			"startdescription": "«@#op.cold|«Меня <i>произвели на свет</i> в снегу».\n#op.heat|«Хорошая погода — подходит для задуманного».\n#op.sea|«Хорошая идея. Твои останки я брошу на корм акулам».\n#op.cats|«Сюда! Кис-кис-кис!»\n#op.heights|«Долгое падение».\n#op.faith|«Не тот бог».\n#op.flowermaker|«Я призову Цветочника, у которого всегда есть то, что мне нужно...»\n#op.horned|«Рогатая Секира, что разделяет и различает. Приди, и тогда тебя тоже различат».\n#op.wolf|«Подходит. От тебя ничего не останется». [Это не является Слабостью Врага.]@",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.foe.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"distraction": 1
+						}
+					}
+				}
+			],
+			"effects": {
+				"distraction": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "rkx.foe.attack.success",
+			"actionId": "rkx.foe",
+			"label": "Нет защиты",
+			"startdescription": "«Ты всегда всё делаешь слишком медленно...»",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.foe.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"distraction": 1
+						}
+					}
+				}
+			],
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.success",
+			"actionId": "spit.foe.attack",
+			"label": "Сокрушающий удар!",
+			"startdescription": "Этот мерзавец всё ещё чертовски силён. [Семь ранений убьют вас.]",
+			"effects": {
+				"wound.exile": 2
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.foe.attack.failure",
+			"actionId": "rkx.foe",
+			"label": "Мой Враг загнан в угол",
+			"startdescription": "Мне удалось сдержать его атаку... ",
+			"alt": [
+				{
+					"id": "spit.foe.attack.failure.lore",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"lore": 1
+						}
+					}
+				},
+				{
+					"id": "spit.foe.attack.failure.weapon",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"weapon": 1
+						}
+					}
+				},
+				{
+					"id": "spit.foe.attack.failure.associate",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"associate": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.foe.selector"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.foe.attack.failure.lore",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"lore": 1
+			},
+			"label": "Защита с помощью Умения",
+			"startdescription": "Сейчас это пригодилось.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.weapon",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"weapon": 1
+			},
+			"label": "Защита с помощью Оружия",
+			"startdescription": "Сейчас это пригодилось.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "spit.foe.attack.failure.weapon.broken",
+					"chance": 30
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.weapon.broken",
+			"actionId": "spit.foe.attack.failure",
+			"label": "«Я сокрушу и тебя...»",
+			"startdescription": "@#weapon.b.2.exhausted|Он слишком близко! Он выхватывает винтовку, ломает её, будто палку, и отбрасывает в сторону.\n#weapon.b.1.exhausted|Он слишком близко! Он выхватывает винтовку, ломает её, будто палку, и отбрасывает в сторону.\n#weapon.d.exhausted|Он хватает Клинок Бьедде Одной рукой он ломает его пополам.\n#weapon.e.exhausted|Он выбивает Имхуллуново перо из моих рук! Ветер подхватывает его и уносит вдаль.@",
+			"requirements": {
+				"weapon.c.exhausted": -1
+			},
+			"effects": {
+				"exhausted": -3,
+				"curio": -1,
+				"husk": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.associate",
+			"actionId": "spit.foe.attack.failure",
+			"requirements": {
+				"associate": 1
+			},
+			"label": "Друг познаётся в беде",
+			"startdescription": "Мой соратник защищает меня!",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "spit.foe.attack.failure.associate.killed",
+					"chance": 30
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.associate.killed",
+			"actionId": "spit.foe.attack.failure",
+			"label": "Неожиданная потеря",
+			"startdescription": "Мой друг пал в жестокой битве! Но мой Враг этого никогда не забудет. [Союзники и приспешники иногда погибают в борьбе с Врагом. Они могут ранить его, но не могут нанести решающий удар.]",
+			"aspects": {
+				"killmortal": 1
+			},
+			"effects": {
+				"wound.foe": 1,
+				"grief": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.foe.attack.failure.ligeian",
+			"actionId": "spit.foe.attack.failure",
+			"label": "Что-то большее",
+			"startdescription": "Мой Враг имел связь с кем-то из клуба Лигений и теперь сожалеет об этом.",
+			"effects": {
+				"wound.foe": 1
+			},
+			"warmup": 2
+		}
+	]
+}

@@ -1,0 +1,57 @@
+{
+	"recipes": [
+		{
+			"id": "dreampleasantmemory",
+			"label": "Einer angenehmen Erinnerung nachhängen",
+			"actionId": "dream",
+			"requirements": {
+				"memorypleasant": 1
+			},
+			"effects": {
+				"memorypleasant": -1,
+				"contentment": 1,
+				"fleeting": 1
+			},
+			"startdescription": "Das süße Schweigen einer gemeinsamen Erkenntnis? Ein Augenblick im Winterlicht?",
+			"description": "Daran könnte ich mich festhalten.",
+			"craftable": true,
+			"warmup": 10
+		},
+		{
+			"id": "dreampassionatememory",
+			"label": "Einer leidenschaftlichen Erinnerung nachhängen",
+			"actionId": "dream",
+			"requirements": {
+				"memorypassionate": 1
+			},
+			"effects": {
+				"memorypassionate": -1,
+				"restlessness": 1,
+				"contentment": 1,
+				"vitality": 1
+			},
+			"startdescription": "Gemeinsames Stöhnen, verschlungene Glieder? Hitze in geheimer Finsternis?",
+			"description": "Könnte mich ablenken.",
+			"craftable": true,
+			"warmup": 10
+		},
+		{
+			"id": "dreambittersweetmemory",
+			"label": "Einer wehmütigen Erinnerung nachhängen",
+			"actionId": "dream",
+			"requirements": {
+				"memorybittersweet": 1
+			},
+			"effects": {
+				"memorybittersweet": -1,
+				"dread": 1,
+				"contentment": 1,
+				"glimmering": 1
+			},
+			"startdescription": "Eine Übereinkunft, über die keiner zu sprechen wagt? Ein Streit und seine Folgen?",
+			"description": "Könnte mich zögern lassen.",
+			"craftable": true,
+			"warmup": 10
+		}
+	]
+}

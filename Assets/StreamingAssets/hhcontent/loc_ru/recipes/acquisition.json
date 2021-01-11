@@ -1,0 +1,102 @@
+{
+    "recipes": [
+        {
+            "id": "auctionbuy",
+            "label": "Ставка на аукционе",
+            "description": ".",
+            "startdescription": "Нетерпеливые лица, сверкающие глаза. Кто предложит цену? [Предмет с аукциона можно увидеть справа. Если вы его упустите, он будет утрачен навсегда.]",
+            "slots": [
+                {
+                    "id": "Bid",
+                    "label": "Заявка"
+                }
+            ]
+        },
+        {
+            "id": "playerincreasedbid",
+            "label": "Предложение цены!",
+            "description": ".",
+            "startdescription": "Я поднимаю руку. Аукционист вскриком показывает, что заметил меня. Даст ли кто-то больше?"
+        },
+        {
+            "id": "auctionbidmatched.grailapostlepillar3"
+        },
+        {
+            "id": "auctionbidmatched",
+            "label": "Ещё одно предложение!",
+            "description": ".",
+            "startdescription": "Кто-то поднял ставку! Мне надо вложить больше средств или отказаться от покупки.",
+            "slots": [
+                {
+                    "id": "Bid",
+                    "label": "Заявка"
+                }
+            ]
+        },
+        {
+            "id": "auctionfailureclear"
+        },
+        {
+            "id": "auctionfailure",
+            "label": "Неудача на аукционе",
+            "description": "Аукцион окончен. Лот достался другому. Мои средства остались при мне.",
+            "startdescription": "."
+        },
+        {
+            "id": "auctionsuccess",
+            "label": "Выигрыш на аукционе!",
+            "description": "Аукционист записывает моё имя и даёт сигнал кому-то из помощников. Лот достался мне. Надеюсь, оно того стоило.",
+            "startdescription": "."
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires3",
+            "label": "Ещё одно сокровище",
+            "startdescription": "Другие искатели не обратили внимания на тайны, скрытые в трупе короля-воина. Я не совершу эту ошибку."
+        },
+        {
+            "id": "expedition.corpse.find.vaultcapital5",
+            "label": "Ещё одно сокровище",
+            "startdescription": "Не стоит пренебрегать последним кусочком жреца. Да, прожевать его будет сложновато, но в нём содержатся знания и сила."
+        },
+        {
+            "id": "expedition.corpse.find.vaultloneandlevelsands2",
+            "label": "Ещё одно сокровище",
+            "startdescription": "Я соберу всё, что осталось от Лагуна, и придумаю, как добраться до его воспоминаний. Может, растворить прах в чае?"
+        },
+        {
+            "id": "expedition.corpse.find.vaultrendingmountainsdefault",
+            "label": "Ещё одно сокровище",
+            "startdescription": "Я сохраню останки Короля у себя."
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires4",
+            "label": "Ещё одно сокровище",
+            "startdescription": "Caput gerat lupinum. Когда-то считалось, что человек превращается в волка, если выходит за границы дозволенного."
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires3.ransackedbyrival",
+            "label": "Ещё одно сокровище",
+            "startdescription": "Как и все остальные, кто приходил сюда прежде, мой соперник не обратил внимания на тайны, скрытые в трупе короля-воина. Я не совершу эту ошибку."
+        },
+        {
+            "id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+            "label": "Ещё одно сокровище",
+            "startdescription": "Моего соперника больше нет, и теперь мы можем похитить последний кусочек священника. Да, прожевать его будет сложновато, но в нём содержатся знания и сила."
+        },
+        {
+            "id": "expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
+            "label": "Ещё одно сокровище",
+            "startdescription": "Моего соперника больше нет, и теперь мы можем похитить останки бывшего бессмертного. Я соберу всё, что осталось от Лагуна, и придумаю, как добраться до его воспоминаний. Может, растворить прах в чае?"
+        },
+        {
+            "id": "expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
+            "label": "Ещё одно сокровище",
+            "startdescription": "Моего соперника больше нет, и теперь мы можем похитить наполовину смертные остатки. Я сохраню останки Короля у себя."
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires4.ransackedbyrival",
+            "label": "Ещё одно сокровище",
+            "startdescription": "Моего соперника больше нет, и теперь мы можем похитить останки смертного."
+        }
+    ]
+}

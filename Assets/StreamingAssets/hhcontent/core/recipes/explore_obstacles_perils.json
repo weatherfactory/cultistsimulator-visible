@@ -1,0 +1,1104 @@
+{
+    "recipes": [
+        {
+            "id": "explorevaultperil_treacherousground_encounter",
+            "actionid": "explore",
+            "label": "Treacherous Ground",
+            "startdescription": "Sucking mud, tricksy fissures: the earth is hungry. We need Lantern to show us a way, or Forge to make one.",
+            "requirements": {
+                "peril_treacherousground": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultperil_treacherousground_highlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_midlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_lowlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_lowforge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_highlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 10
+            },
+            "label": "We call upon the Watchman, who navigates",
+            "startdescription": "The Watchman will clear our sight, so that we can almost certainly pass without error.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_midlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 5
+            },
+            "label": "We call upon the Watchman, who illuminates",
+            "startdescription": "The Watchman will lend virtue to our lamps, that they will show us the perils to avoid. Probably.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_lowlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 1
+            },
+            "label": "We call upon the Watchman, who is not compassionate",
+            "startdescription": "The Watchman shows mercy neither to our obstacles nor to us. If we're lucky, we may make it through.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_highforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "We call upon the Madrugad, who cannot be unbalanced",
+            "startdescription": "We invoke the Madrugad, an Hour of Forge as well as Winter. We'll make our own path through. Success is almost certain.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_midforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "We call upon the Madrugad, who quells and quiets",
+            "startdescription": "The Madrugad is an Hour of Forge as well as Winter. Her power might quiet the unsteady earth. We'll probably be fine.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_lowforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "We call upon the Madrugad, who comes before the Sun",
+            "startdescription": "The Madrugad is an Hour of Forge as well as Winter. Forge lends strength, but now the mists rise and cling. We might make it through.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_treacherousground_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_treacherousground_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_treacherousground_success",
+            "actionid": "explore",
+            "label": "Safe Across the Treacherous Ground",
+            "startdescription": "We're mud-spattered and thorn-scratched, but we've made it through.",
+            "description": ".",
+            "effects": {
+                "peril_treacherousground": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_treacherousground_failure",
+            "actionid": "explore",
+            "label": "The Earth is Hungry",
+            "startdescription": "A promising route reveals itself as a sucking snare. We'll have to go round and try again.",
+            "description": ".",
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_forest_encounter",
+            "actionid": "explore",
+            "label": "Peril-Prowled Forest",
+            "startdescription": "The darkness under the trees is quiet, for now, but we're not alone in here. Moth aspect will guide us through, or Forge aspect will clear a path.",
+            "requirements": {
+                "peril_forest": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultperil_forest_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_forest_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_forest_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_forest_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_forest_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_forest_lowforge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_highmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 10
+            },
+            "label": "We call upon the Moth, who seeks among the trees of the Wood",
+            "startdescription": "The Wood beneath the Mansus is darker even than this place. The Moth will guide our footfalls. Success is very likely.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_midmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 5
+            },
+            "label": "We call upon the Moth, who is dappled",
+            "startdescription": "Shadows dapple the path. Perhaps the path is one the Moth has given us. Probably it is. Probably we'll make it through.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_lowmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 1
+            },
+            "label": "We call upon the Moth, who beats within the skull",
+            "startdescription": "We invoke the Moth at our peril. The forest pulses with beating wings, imagined eyes. We might make it through.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_highforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "Steel and Fire",
+            "startdescription": "Forge is ingenious, Forge is ruthless. We'll almost certainly make it through.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_midforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "Axe and Lamp",
+            "startdescription": "The forest enfolds us, but we are practical souls, strong in Forge. We'll probably be fine.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_lowforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "Struggles in the Dusk",
+            "startdescription": "We invoke the powers of Forge and hack our way through the trees. It's tough going. We might make it.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_forest_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_forest_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_forest_success",
+            "actionid": "explore",
+            "label": "'A Light Through the Trees...'",
+            "startdescription": "There's something up ahead. We've made it through the forest.",
+            "description": ".",
+            "effects": {
+                "peril_forest": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_forest_failure",
+            "actionid": "explore",
+            "label": "The Deepening Silence",
+            "startdescription": "We've lost the path. The forest towers against the dusk sky. The beasts of the forest are silent, but now and then we see their eyes.",
+            "description": ".",
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_mountains_encounter",
+            "actionid": "explore",
+            "label": "The High Passes",
+            "startdescription": "Savage peaks scar the sky. Winter aspect may preserve us from chill, and Forge aspect may give us a path. If we have neither, our expedition will fail.",
+            "requirements": {
+                "peril_mountains": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultperil_mountains_highwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_mountains_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_mountains_midwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_mountains_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_mountains_lowwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_mountains_lowforge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_highwinter",
+            "actionid": "explore",
+            "requirements": {
+                "winter": 10
+            },
+            "label": "We call upon the Madrugad, who cannot be unbalanced",
+            "startdescription": "The Hour called the Madrugad is at home in the cold. She will almost certainly keep us from falling.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_midwinter",
+            "actionid": "explore",
+            "requirements": {
+                "winter": 5
+            },
+            "label": "We call upon the Madrugad, who quells and quiets",
+            "startdescription": "The Madrugad is strong in Winter. Probably she will keep us from avalanches.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_lowwinter",
+            "actionid": "explore",
+            "requirements": {
+                "winter": 1
+            },
+            "label": "We call upon the Madrugad, which goes before the Sun",
+            "startdescription": "The hours before dawn are sacred to the Hour called Madrugad, who knows Winter. If we rise then and invoke her, perhaps she will keep us safe.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_highforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "The Mountaineer's Road",
+            "startdescription": "Our Forge skills represent plenty of expertise. We'll almost certainly make it through.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_midforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "The Explorer's Road",
+            "startdescription": "We are practical souls, strong in Forge. We'll probably be fine.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_lowforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "The Wanderer's Road",
+            "startdescription": "Forge-aspected followers are competent and practical, but the mountains are miles of fanged and freezing rock. Our road is hard. We might be lucky.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_mountains_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_mountains_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_mountains_success",
+            "actionid": "explore",
+            "label": "Through the High Passes",
+            "startdescription": "Frost-scarred and shivering, we've made it through the mountains.",
+            "description": ".",
+            "effects": {
+                "peril_mountains": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_mountains_failure",
+            "actionid": "explore",
+            "label": "Furious Echoes",
+            "startdescription": "Rock-slides and avalanches drive us back. We'll try another route, if we survive.",
+            "description": ".",
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_desert_encounter",
+            "actionid": "explore",
+            "label": "Desolation",
+            "startdescription": "An immense and tawny furnace barely contained by its horizons. At night, a chilly wilderness of stars. We must go carefully, with Forge to shape our way or Grail to secure us against thirst.",
+            "requirements": {
+                "peril_desert": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultperil_desert_highgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_desert_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_desert_midgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_desert_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_desert_lowgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_desert_lowforge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_highgrail",
+            "actionid": "explore",
+            "requirements": {
+                "grail": 10
+            },
+            "label": "We call upon the Sister-and-Witch, who are pearl",
+            "startdescription": "The Sister-and-Witch should see us safe through the dry places.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_midgrail",
+            "actionid": "explore",
+            "requirements": {
+                "grail": 5
+            },
+            "label": "We call upon the Sister-and-Witch, who cannot be touched",
+            "startdescription": "We'll call upon the Sister-and-Witch to shield us from the scorching heat of the sun and the mirrors of the horizon. It should see us through.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_lowgrail",
+            "actionid": "explore",
+            "requirements": {
+                "grail": 1
+            },
+            "label": "We call upon the Sister-and-Witch, who cannot be separated",
+            "startdescription": "We'll call upon the Sister-and-Witch to keep us together through the dust storms of the dry land. It might be enough.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_highforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "The Sun-Scorched Road",
+            "startdescription": "Our Forge skills should keep us safe and lead us through the baking rocks to the green places. We'll almost certainly be fine.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_midforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "The Dry Road",
+            "startdescription": "We are practical souls, strong in Forge. We should be able to make it between the baking rocks to the green places.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_lowforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "The Pitiless Road",
+            "startdescription": "Forge-aspected followers are competent and practical, but this is a blighted place. We might make it through.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_desert_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_desert_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_desert_success",
+            "actionid": "explore",
+            "label": "The Sun in Splendour",
+            "startdescription": "The sun is setting. We look back across the desolation we crossed, and at all the colours it assumes in the evening light. Night falls. Stars prickle. The wind presses cold hands to our faces. Onwards.",
+            "description": ".",
+            "effects": {
+                "peril_desert": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_desert_failure",
+            "actionid": "explore",
+            "label": "The Sun in Wrath",
+            "startdescription": "Day after day, the sun tautens our skin, dries our mouths, floods our skulls with savage light. We might be lost. It's possible we're lost.",
+            "description": ".",
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_sea_encounter",
+            "actionid": "explore",
+            "label": "The Sea around the Evening Isles",
+            "startdescription": "The sea we sail is plagued by storms. The isles we seek are tucked in the corners of unmapped history. We will need Heart or Forge or both.",
+            "requirements": {
+                "peril_sea": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultperil_sea_highheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_sea_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_sea_midheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_sea_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_sea_lowheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultperil_sea_lowforge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_highheart",
+            "actionid": "explore",
+            "requirements": {
+                "heart": 10
+            },
+            "label": "We call upon the Sister-and-Witch, who cannot be touched",
+            "startdescription": "Storms rise for the Thunderskin and subside for the Sister. The right words should carry us safe across the sea.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_midheart",
+            "actionid": "explore",
+            "requirements": {
+                "heart": 5
+            },
+            "label": "We call upon the Sister-and-Witch, who cannot be separated",
+            "startdescription": "If storms strike, the Sister-and-Witch will keep our crew and our vessel in one piece. Probably.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_lowheart",
+            "actionid": "explore",
+            "requirements": {
+                "heart": 1
+            },
+            "label": "We call upon the Sister-and-Witch, who are pearl",
+            "startdescription": "The Sister-and-Witch are not of the sea, but they walk beside it. Perhaps their protection will be sufficient.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_highforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "The Sailor's Surety",
+            "startdescription": "Our Forge skills represent plenty of expertise. We'll almost certainly make it through.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_midforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "The Sailor's Strength",
+            "startdescription": "We are practical souls, strong in Forge. We'll probably be fine.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_lowforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "The Sailor's Hope",
+            "startdescription": "Forge-aspected followers are competent and practical, but the sea is tricksy. We will struggle to stay on course.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultperil_sea_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultperil_sea_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultperil_sea_success",
+            "actionid": "explore",
+            "label": "Safe Across the Sea",
+            "startdescription": "Wave-lashed and sea-spattered, sun-scorched and salt-stained. But here.",
+            "description": ".",
+            "effects": {
+                "peril_sea": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultperil_sea_failure",
+            "actionid": "explore",
+            "label": "Labyrinths of Salt and Basalt",
+            "startdescription": "Another day battered by storms. We must be close. But the isles are a maddening maze, and the places we seek lie on no published chart.",
+            "description": ".",
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        }
+    ]
+}

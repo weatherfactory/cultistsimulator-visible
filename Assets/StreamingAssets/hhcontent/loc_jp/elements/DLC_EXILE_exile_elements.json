@@ -1,0 +1,9305 @@
+{
+	"elements": [
+		{
+			"id": "uq.rkx.weakness.cold",
+			"label": "弱点：寒さ",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "uq.rkx.weakness.heat",
+			"label": "弱点：暑さ",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "uq.rkx.weakness.sea",
+			"label": "弱点：海",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "uq.rkx.weakness.faith",
+			"label": "弱点：信仰",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "uq.rkx.weakness.cats",
+			"label": "弱点：猫",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "uq.rkx.weakness.heights",
+			"label": "弱点：高所",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "uq.rkx.weakness.horned",
+			"label": "弱点：角",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "uq.rkx.weakness.wolf",
+			"label": "弱点：狼",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "uq.rkx.weakness.flowermaker",
+			"label": "弱点：フラワーメーカー",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "uq.weapon.profane",
+			"label": "野蛮な武器",
+			"description": "立派な武器だが世俗的なものだ。[普通の武器は追っ手のほとんどを傷つけることができるが、敵には効かない。]",
+			"isAspect": true,
+			"icon": "accursed"
+		},
+		{
+			"id": "weakness.foe.unknown",
+			"label": "敵：弱点不明",
+			"description": "私の敵は、特定の目くらましに弱い。[実験や啓示でどれなのかを知ることができる。]",
+			"isAspect": true,
+			"icon": "lockscar"
+		},
+		{
+			"id": "weakness.foe",
+			"label": "敵：弱点",
+			"description": "私の敵はこの特定の目くらましに弱い......これを上手く利用すれば、どこで彼に立ち向かえば良いか決められるかもしれない。",
+			"isAspect": true,
+			"icon": "openedlockscar"
+		},
+		{
+			"id": "renewal.exile",
+			"label": "再生",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "minortracerisk",
+			"label": "小さな痕跡のリスク",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"induces": [
+				{
+					"id": "spawn.trace",
+					"chance": 10
+				}
+			],
+			"noartneeded": true
+		},
+		{
+			"id": "tracerisk",
+			"label": "痕跡のリスク",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"induces": [
+				{
+					"id": "spawn.trace",
+					"chance": 30
+				}
+			],
+			"noartneeded": true
+		},
+		{
+			"id": "majortracerisk",
+			"label": "大きな痕跡のリスク",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"induces": [
+				{
+					"id": "spawn.trace",
+					"chance": 70
+				}
+			],
+			"noartneeded": true
+		},
+		{
+			"id": "terribletracerisk",
+			"label": "恐ろしいほどの痕跡のリスク",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"induces": [
+				{
+					"id": "spawn.trace",
+					"chance": 90
+				}
+			],
+			"noartneeded": true
+		},
+		{
+			"id": "epiphany.colonel",
+			"label": "突然のひらめき：大佐",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "epiphany.lionsmith",
+			"label": "突然のひらめき：ライオンスミス",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "minedge",
+			"label": "刃が必要",
+			"description": "複雑な状況が起きたが、これなら刃が解決できる。",
+			"isAspect": true
+		},
+		{
+			"id": "minforge",
+			"label": "鍛造が必要",
+			"description": "複雑な状況が起きたが、これなら鍛造が解決できる。",
+			"isAspect": true
+		},
+		{
+			"id": "mingrail",
+			"label": "聖杯が必要",
+			"description": "複雑な状況が起きたが、これなら聖杯が解決できる。",
+			"isAspect": true
+		},
+		{
+			"id": "minheart",
+			"label": "心臓が必要",
+			"description": "複雑な状況が起きたが、これなら心臓が解決できる。",
+			"isAspect": true
+		},
+		{
+			"id": "minknock",
+			"label": "開錠が必要",
+			"description": "複雑な状況が起きたが、これなら開錠が解決できる。",
+			"isAspect": true
+		},
+		{
+			"id": "minlantern",
+			"label": "灯りが必要",
+			"description": "複雑な状況が起きたが、これなら灯りが解決できる。",
+			"isAspect": true
+		},
+		{
+			"id": "minmoth",
+			"label": "蛾が必要",
+			"description": "複雑な状況が起きたが、これなら蛾が解決できる。",
+			"isAspect": true
+		},
+		{
+			"id": "minsecrethistories",
+			"label": "秘史が必要",
+			"description": "複雑な状況が起きたが、これなら秘史が解決できる。",
+			"isAspect": true
+		},
+		{
+			"id": "minwinter",
+			"label": "冬が必要",
+			"description": "複雑な状況が起きたが、これなら冬が解決できる。",
+			"isAspect": true
+		},
+		{
+			"id": "purchase.property",
+			"label": "物件購入の機会",
+			"description": "Used to mark rkx internal components",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true
+		},
+		{
+			"id": "rkx.internal",
+			"label": "Reckoner internal",
+			"description": "Used to mark rkx internal components",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true
+		},
+		{
+			"id": "rkx.underlings.blocker",
+			"label": "追跡から逃げる",
+			"description": "[これが盤面にある間は、精算人の追撃は見られないだろう。]",
+			"isAspect": true,
+			"icon": "mystic"
+		},
+		{
+			"id": "apx.trail.false.exile",
+			"label": "False trail marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1
+		},
+		{
+			"id": "opx.doctor",
+			"label": "Doctor op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.heart"
+		},
+		{
+			"id": "opx.sanatorium",
+			"label": "sanatorium op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.heart"
+		},
+		{
+			"id": "opx.miracles",
+			"label": "Miracles op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.lantern"
+		},
+		{
+			"id": "opx.flowermaker",
+			"label": "flowermaker op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.grail"
+		},
+		{
+			"id": "opx.horned",
+			"label": "horned op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.knock"
+		},
+		{
+			"id": "opx.wolf",
+			"label": "wolf op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.winter"
+		},
+		{
+			"id": "opx.counterfeiting",
+			"label": "counterfeiting op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.moth"
+		},
+		{
+			"id": "opx.smuggling",
+			"label": "smuggling op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.moth"
+		},
+		{
+			"id": "opx.import",
+			"label": "import op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation"
+		},
+		{
+			"id": "opx.fights",
+			"label": "fights op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.edge"
+		},
+		{
+			"id": "opx.uprising",
+			"label": "uprising op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.forge"
+		},
+		{
+			"id": "opx.betrayal",
+			"label": "betrayal op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.winter"
+		},
+		{
+			"id": "opx.patronage",
+			"label": "patronage op marker: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true,
+			"lifetime": 1,
+			"verbicon": "operation.secrethistories"
+		},
+		{
+			"id": "turmoil",
+			"label": "turmoil flag: DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true
+		},
+		{
+			"id": "supplies",
+			"label": "物資",
+			"description": "有限、寿命のようなもの。[物資は使うと消費される。]",
+			"isAspect": true,
+			"icon": "ingredient"
+		},
+		{
+			"id": "complication",
+			"label": "複雑な状況",
+			"description": "Used to mark opx events",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true
+		},
+		{
+			"id": "negotiation",
+			"label": "交渉",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "purchase",
+			"label": "購入",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "arriving",
+			"label": "到着",
+			"description": "レシピ属性",
+			"noartneeded": true
+		},
+		{
+			"id": "provoking",
+			"label": "挑発",
+			"description": "レシピ属性",
+			"noartneeded": true
+		},
+		{
+			"id": "opx.progress2",
+			"label": "Op Populate 2",
+			"description": "recipe aspect: populates an operation with third escalation event spawns",
+			"noartneeded": true
+		},
+		{
+			"id": "opx.progress1",
+			"label": "Opx Populate 1",
+			"description": "recipe aspect: populates an operation with second escalation event spawns",
+			"noartneeded": true
+		},
+		{
+			"id": "opx.progress0",
+			"label": "Opx Populate 0",
+			"description": "recipe aspect: populates an operation with first escalation event spawns",
+			"noartneeded": true
+		},
+		{
+			"id": "success",
+			"label": "成功",
+			"description": "レシピ属性",
+			"noartneeded": true
+		},
+		{
+			"id": "failure",
+			"label": "失敗",
+			"description": "レシピ属性",
+			"noartneeded": true
+		},
+		{
+			"id": "uprising",
+			"label": "反乱",
+			"description": "レシピ属性",
+			"noartneeded": true
+		},
+		{
+			"id": "striking.foe",
+			"label": "敵への攻撃",
+			"description": "recipe aspect - hit an foe with",
+			"noartneeded": true
+		},
+		{
+			"id": "striking.underling",
+			"label": "手下への攻撃",
+			"description": "レシピ属性――手下を攻撃する",
+			"noartneeded": true
+		},
+		{
+			"id": "striking.foe.weapon",
+			"label": "武器を使って敵を攻撃する",
+			"description": "recipe aspect - hit an foe with specifically a weapon",
+			"noartneeded": true
+		},
+		{
+			"id": "striking.underling.weapon",
+			"label": "手下を武器で攻撃する",
+			"description": "レシピ属性――特定の武器で手下を攻撃する",
+			"noartneeded": true
+		},
+		{
+			"id": "mortal.introduce",
+			"label": "定命の者のイントロ",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "rkx.promote",
+			"label": "精算人の昇格",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "lure.foe",
+			"label": "敵の誘惑",
+			"comments": "hidden mutation applied to domicile that infallibly brings the Foe if an rkx verb is running",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true
+		},
+		{
+			"id": "defiance.foesummoned",
+			"label": "敵にメッセージを送って、居場所を明らかにした。",
+			"isAspect": true,
+			"icon": "enlightenmentmarks"
+		},
+		{
+			"id": "defiance.underlingdefeated",
+			"label": "精算人を倒し、トロフィーでそれを証明した。",
+			"isAspect": true,
+			"icon": "remembrancemarks"
+		},
+		{
+			"id": "defiance.weaponsent",
+			"label": "敵に武器を送った。",
+			"isAspect": true,
+			"icon": "powermarks"
+		},
+		{
+			"id": "defiance.foetaunted",
+			"label": "敵を挑発した。",
+			"isAspect": true,
+			"icon": "sensationmarks"
+		},
+		{
+			"id": "defiance.consecration.colonel",
+			"label": "聖別：大佐",
+			"isAspect": true
+		},
+		{
+			"id": "defiance.consecration.lionsmith",
+			"label": "聖別：ライオンスミス",
+			"isAspect": true
+		},
+		{
+			"id": "defiance.uprising",
+			"label": "反乱を支援した。",
+			"isAspect": true,
+			"icon": "changemarks"
+		},
+		{
+			"id": "defiance.betrayal",
+			"label": "反乱を裏切った。",
+			"isAspect": true,
+			"icon": "rivalmarks"
+		},
+		{
+			"id": "shrine.edge",
+			"label": "刃の祠",
+			"description": "苦闘と葛藤の時の神々に捧げられた場所。",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "shrine.colonel",
+			"label": "祠：大佐",
+			"description": "秘密の神、時に大佐として知られる力を祭る秘密の祠。私敵は大佐と関わっていたことがあったし、昔の仲間は彼の祠に行くことを躊躇していた。",
+			"isAspect": true
+		},
+		{
+			"id": "shrine.colonel.marker",
+			"label": "大佐のカルト教団",
+			"description": "私の情報が正しければ、この街のどこかに大佐のカルト教団があるはずだ。",
+			"icon": "shrine.colonel",
+			"isAspect": true
+		},
+		{
+			"id": "shrine.lionsmith",
+			"label": "祠：ライオンスミス",
+			"description": "秘密の神、時にライオンスミスとして知られる力を祭る秘密の祠。昔の仲間は祠に近寄らなかった。",
+			"isAspect": true
+		},
+		{
+			"id": "shrine.lionsmith.marker",
+			"label": "ライオンスミスのカルト教団",
+			"description": "私の情報が正しければ、この街のどこかにライオンスミスのカルト教団があるはずだ。",
+			"icon": "shrine.lionsmith",
+			"isAspect": true
+		},
+		{
+			"id": "rkx.demote",
+			"label": "精算人の降格",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "rkx.event",
+			"label": "精算人の計画",
+			"isAspect": true,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "rkx.rank",
+			"label": "精算人のランク",
+			"description": "格下の清算人たちは、悪事のために雇われているだけの人間。格上の清算人たちは狡猾でコネがあり、盗まれた年で身を守っている。",
+			"isAspect": true
+		},
+		{
+			"id": "cash.sent",
+			"label": "準備",
+			"description": "この地での生活を楽に始めるために、先に資金を送った。[到着したら、このカードをコミュニケーションで使えば資金を回収できる。]",
+			"isAspect": true
+		},
+		{
+			"id": "rkx.infected",
+			"label": "精算人の存在感",
+			"description": "追っ手はもうここで、圧倒的な存在感を見せている。",
+			"isAspect": true
+		},
+		{
+			"id": "defiancemarks",
+			"label": "反抗心を示す",
+			"description": "狡猾さが強さに答え、強さが狡猾さに答えるかもしれないが、どうやって苦悩に答えるのだろう？[反抗心が上昇すると刃の時の神々が関心を持ちだす。7に到達すれば、思いもよらないことができるかもしれない。]",
+			"isAspect": true
+		},
+		{
+			"id": "domicile",
+			"label": "居住地",
+			"description": "今のところ、ここにいることにした。",
+			"isAspect": true
+		},
+		{
+			"id": "lifespan.stolen",
+			"label": "盗まれた寿命",
+			"description": "他人の寿命から、買われたり盗まれたり、奪われた年月。",
+			"isAspect": true
+		},
+		{
+			"id": "destination",
+			"label": "目的地",
+			"description": "ここならあともう少し身を守ることができるかもしれない......",
+			"isAspect": true
+		},
+		{
+			"id": "remote",
+			"label": "遠隔地",
+			"description": "長く険しい道のりになりそうだが、今の私の状況では、その方が魅力的な旅になるのかもしれない。[この目的地への旅は高価だが、不明瞭を得ることができる。]",
+			"isAspect": true
+		},
+		{
+			"id": "troubled",
+			"label": "物騒な場所",
+			"description": "ここは落ちぶれてしまった。[荒れた街では望ましいものを購入するのが難しくなる。また、他の効果もあるかもしれない。]",
+			"isAspect": true,
+			"icon": "resentment"
+		},
+		{
+			"id": "end",
+			"label": "地図の端",
+			"description": "もう走れない時が来るかもしれない。その時は、一番孤独な場所で自分を見失うか、その場所で敵に立ち向かうかを選ばねばならない。[終わりの場所を離れることはできないし、そこに味方がついてくることもない。]",
+			"isAspect": true
+		},
+		{
+			"id": "weapon",
+			"label": "武器",
+			"description": "「本を手にとれ、本も武器のひとつ」――ブレヒト",
+			"isAspect": true
+		},
+		{
+			"id": "proof",
+			"label": "証拠",
+			"description": "適切な書類があれば、何でも証明できる。",
+			"isAspect": true,
+			"icon": "article",
+			"comments": "Chiefly here to allow some things to be slottable in Use"
+		},
+		{
+			"id": "uses.remaining",
+			"label": "残りの用途",
+			"description": "使い道のないものは、文字通り、役に立たない。",
+			"isAspect": true
+		},
+		{
+			"id": "damage.exile",
+			"description": "Allows multiple elements to count towards Exile damage",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "damage.foe",
+			"description": "Allows multiple elements to count towards Foe damage",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "damage.underling",
+			"description": "Allows multiple elements to count towards Underling damage",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "op",
+			"label": "チャンス",
+			"description": "実現されていない可能性。",
+			"isAspect": true,
+			"icon": "benign"
+		},
+		{
+			"id": "distraction",
+			"label": "目くらまし",
+			"description": "正しい使い方をすれば、何でも武器になる。",
+			"isAspect": true,
+			"icon": "annoyance"
+		},
+		{
+			"id": "ligeian",
+			"label": "リゲイアの者の存在感",
+			"description": "リゲイアクラブが、何なのかは詳しく知らないが、私たちの仲間より、メンバーたちが年老いていて飢えているのは、どの精算人も知っていることだ。我々は彼らを避けるようになった。",
+			"isAspect": true,
+			"icon": "ghoul.hunger"
+		},
+		{
+			"id": "asset",
+			"label": "資産",
+			"description": "所有されることに反対しないもの。",
+			"isAspect": true
+		},
+		{
+			"id": "connection",
+			"label": "人脈",
+			"description": "「あなたの敵を許しなさい、と書いてあるけれど、あなたの友を許しなさい、とは書いてない」――コジモ・デ・メディチ",
+			"isAspect": true
+		},
+		{
+			"id": "worth",
+			"label": "価値",
+			"description": "これを換金するとしたらいくらになるのだろう？",
+			"isAspect": true,
+			"icon": "compensationvalue"
+		},
+		{
+			"id": "price.lifespan.stolen",
+			"label": "年での価格",
+			"description": "貴重すぎて現金で買えないものもある。鼓動で買うには貴重すぎるものは数少ない。",
+			"isAspect": true
+		},
+		{
+			"id": "price.connection",
+			"label": "価格：救いの手",
+			"description": "[適切な人脈を使って購入すること。]",
+			"isAspect": true
+		},
+		{
+			"id": "price",
+			"label": "価格",
+			"description": "「価格（名詞）。元値に、それを要求する際の良心の消耗に見合う手頃な額を足したもの」――ビアス。[これ以上の価値を提供する。]",
+			"isAspect": true
+		},
+		{
+			"id": "space",
+			"label": "空間",
+			"description": "会場や拠点となる部屋。",
+			"isAspect": true
+		},
+		{
+			"id": "comfort",
+			"label": "快適さ",
+			"description": "現金では買えない喜びがある。これはその内の1つではない。",
+			"isAspect": true
+		},
+		{
+			"id": "contact.local",
+			"label": "現地の連絡先",
+			"description": "ここに住んでいる人。",
+			"isAspect": true,
+			"icon": "vaultcapital"
+		},
+		{
+			"id": "associate",
+			"label": "同僚",
+			"description": "私と一緒に働いてくれるはずだ。",
+			"isAspect": true
+		},
+		{
+			"id": "ally",
+			"label": "味方",
+			"description": "信頼を勝ち取った。私が去れば後をついてくるだろう。",
+			"isAspect": true,
+			"icon": "follower"
+		},
+		{
+			"id": "experience.exile.ally",
+			"label": "経験",
+			"description": "まだまだ知らないことがあるものだ。[味方の経験属性が3になると、味方の力を高められる。]",
+			"isAspect": true
+		},
+		{
+			"id": "upgrade.exile.ally",
+			"label": "味方のアップグレード",
+			"description": "レシピ属性",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true
+		},
+		{
+			"id": "venerates.colonel",
+			"label": "大佐を尊敬する",
+			"description": "強さの前に忍耐。",
+			"icon": "winter",
+			"isAspect": true
+		},
+		{
+			"id": "venerates.lionsmith",
+			"label": "ライオンスミスを尊敬する",
+			"description": "狡猾さの前に勇気を。",
+			"icon": "forge",
+			"isAspect": true
+		},
+		{
+			"id": "vault.completed",
+			"label": "やった！",
+			"isAspect": true,
+			"isHidden": true
+		},
+		{
+			"id": "opx.basepayout",
+			"label": "Payout aspect for operations DO NOT TRANSLATE",
+			"isAspect": true,
+			"noartneeded": true,
+			"isHidden": true
+		},
+		{
+			"id": "portable",
+			"label": "ポータブル",
+			"description": "持ち運びできる資産。",
+			"isAspect": true
+		},
+		{
+			"id": "exhausted",
+			"label": "枯渇",
+			"description": "少し時間が経てば、回復する。",
+			"isAspect": true
+		},
+		{
+			"id": "deception",
+			"label": "欺瞞の支援",
+			"description": "「明白な事実ほどあてにならないものはない」――アーサー・コナン・ドイル。  [この属性のあるものは、痕跡を倒すために使える。]",
+			"isAspect": true
+		},
+		{
+			"id": "choice.merciless",
+			"label": "無慈悲な選択",
+			"description": "",
+			"noartneeded": true,
+			"isHidden": true,
+			"isAspect": true
+		},
+		{
+			"id": "choice.merciful",
+			"label": "慈悲深い選択",
+			"description": "",
+			"noartneeded": true,
+			"isHidden": true,
+			"isAspect": true
+		},
+		{
+			"id": "pentiment",
+			"label": "ペンティメント",
+			"description": "",
+			"noartneeded": true,
+			"isHidden": true,
+			"isAspect": true
+		},
+		{
+			"id": "pentiment.display",
+			"label": "ペンティメント",
+			"comments": "For Nameless shrine slot",
+			"description": "ピールの言葉を思い出した。「名もなき名を持つ者は覚醒世界で秘密を探し出し、それを森のベルベットに送る。猫も飼い主のためにネズミを持ち帰ることがあるが、同じように喜ばれるとは限らない」",
+			"icon": "pentiment",
+			"isAspect": true
+		},
+		{
+			"id": "pentiment.1",
+			"label": "ペンティメント",
+			"description": "かつては、これは違う目的のために作られた。",
+			"icon": "pentiment",
+			"isAspect": true
+		},
+		{
+			"id": "pentiment.2",
+			"label": "ペンティメント",
+			"description": "おそらく何かが別の歴史から迷い込んだのだろう。",
+			"icon": "pentiment",
+			"isAspect": true
+		},
+		{
+			"id": "pentiment.3",
+			"label": "ペンティメント",
+			"description": "意図されたものではなかった人。",
+			"icon": "pentiment",
+			"isAspect": true
+		},
+		{
+			"id": "pentiment.4",
+			"label": "ペンティメント",
+			"description": "その選択は生だったのか、死だったのか。",
+			"icon": "pentiment",
+			"isAspect": true
+		},
+		{
+			"id": "pentiment.5",
+			"label": "ペンティメント",
+			"description": "違うことが意図されていた。痕跡が残っている。",
+			"icon": "pentiment",
+			"isAspect": true
+		},
+		{
+			"id": "pentiment.6",
+			"label": "ペンティメント",
+			"description": "おそらくこの傷の作者は、私の正体を知った時に目的を変えたのだろう。",
+			"icon": "pentiment",
+			"isAspect": true
+		},
+		{
+			"id": "pentiment.7",
+			"label": "ペンティメント",
+			"description": "何かが違っていたのかもしれない。",
+			"icon": "pentiment",
+			"isAspect": true
+		},
+		{
+			"id": "pentiment.8",
+			"label": "ペンティメント",
+			"description": "かつてこれをは、今とはかなり違う形で吊るされていた。",
+			"icon": "pentiment",
+			"isAspect": true
+		},
+		{
+			"id": "pentiment.9",
+			"label": "ペンティメント",
+			"description": "かつては、何かが違っていたかもしれない。",
+			"icon": "pentiment",
+			"isAspect": true
+		},
+		{
+			"id": "pentiment.10",
+			"label": "ペンティメント",
+			"description": "間違いが起きたが、最初からそう計画されていたわけではない。",
+			"icon": "pentiment",
+			"isAspect": true
+		},
+		{
+			"id": "asset.packed",
+			"label": "資産（荷造り済み）",
+			"description": "旅の準備が出来ている資産",
+			"isAspect": true
+		},
+		{
+			"id": "ee.doctor1.heart.grail",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minheart": 4,
+				"mingrail": 4,
+				"opx.doctor": 1
+			},
+			"xtriggers": {
+				"next": "ee.doctor2.heart.knock"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.doctor2.heart.knock",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minheart": 8,
+				"mingrail": 8,
+				"opx.doctor": 1
+			},
+			"xtriggers": {
+				"next": "ee.doctor3.heart.forge"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.doctor3.heart.forge",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minheart": 12,
+				"minforge": 12,
+				"opx.doctor": 1
+			},
+			"xtriggers": {
+				"next": "opx.doctor.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.doctor.complete",
+			"label": "診察所が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.doctor": 1,
+				"opx.basepayout": 2
+			},
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.sanatorium1.heart.grail",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minheart": 4,
+				"mingrail": 4,
+				"opx.sanatorium": 1
+			},
+			"xtriggers": {
+				"next": "ee.sanatorium2.heart.knock"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.sanatorium2.heart.knock",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minheart": 8,
+				"mingrail": 8,
+				"opx.sanatorium": 1
+			},
+			"xtriggers": {
+				"next": "ee.sanatorium3.heart.forge"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.sanatorium3.heart.forge",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minheart": 12,
+				"minforge": 12,
+				"opx.sanatorium": 1
+			},
+			"xtriggers": {
+				"next": "opx.sanatorium.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.sanatorium.complete",
+			"label": "療養所が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.sanatorium": 1,
+				"opx.basepayout": 4
+			},
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.miracles1.moth.grail",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minmoth": 4,
+				"mingrail": 4,
+				"opx.miracles": 1
+			},
+			"xtriggers": {
+				"next": "ee.miracles2.moth.lantern"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.miracles2.moth.lantern",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minmoth": 8,
+				"minlantern": 8,
+				"opx.miracles": 1
+			},
+			"xtriggers": {
+				"next": "ee.miracles3.moth.winter"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.miracles3.moth.winter",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minmoth": 12,
+				"minwinter": 12,
+				"opx.miracles": 1
+			},
+			"xtriggers": {
+				"next": "opx.miracles.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.miracles.complete",
+			"label": "――",
+			"description": "――",
+			"aspects": {
+				"opx.miracles": 1,
+				"opx.basepayout": 2
+			},
+			"xtriggers": {
+				"success": "op.miracles.cultseed"
+			},
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "op.miracles.cultseed",
+			"label": "新しい信仰？",
+			"description": "会衆は新しいものを求めている。[信仰療法カルトを運営している時に効果を1枚でも達成していれば、密教カルトを設立できるかもしれない。",
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "meetingplace",
+					"label": "会場",
+					"required": {
+						"space": 1
+					}
+				},
+				{
+					"actionId": "use",
+					"id": "year",
+					"label": "年",
+					"required": {
+						"year.stolen": 1
+					}
+				},
+				{
+					"actionId": "use",
+					"id": "influence",
+					"label": "影響力",
+					"required": {
+						"op.flowermaker": 1,
+						"op.horned": 1,
+						"op.wolf": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"renewal.exile": "op.miracles.cultseed"
+			},
+			"aspects": {
+				"op": 1,
+				"opx.basepayout": 2
+			},
+			"lifetime": 300
+		},
+		{
+			"id": "ee.flowermaker1.grail.lantern",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"mingrail": 4,
+				"minlantern": 4,
+				"opx.flowermaker": 1
+			},
+			"xtriggers": {
+				"next": "ee.flowermaker2.grail.knock"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.flowermaker2.grail.knock",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"mingrail": 8,
+				"minknock": 8,
+				"opx.flowermaker": 1
+			},
+			"xtriggers": {
+				"next": "ee.flowermaker3.grail.winter"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.flowermaker3.grail.winter",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"mingrail": 12,
+				"minwinter": 12,
+				"opx.flowermaker": 1
+			},
+			"xtriggers": {
+				"next": "opx.flowermaker.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.flowermaker.complete",
+			"label": "フラワーメーカーのカルト教団が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.flowermaker": 1,
+				"opx.basepayout": 1
+			},
+			"xtriggers": {
+				"success": [
+					{
+						"id": "contact.cultist.flowermaker",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"comments": "NB this is in addition to the cult seed base payout",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.horned1.knock.winter",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minknock": 4,
+				"minwinter": 4,
+				"opx.horned": 1
+			},
+			"xtriggers": {
+				"next": "ee.horned2.knock.forge"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.horned2.knock.forge",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minknock": 8,
+				"minforge": 8,
+				"opx.horned": 1
+			},
+			"xtriggers": {
+				"next": "ee.horned3.knock.lantern"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.horned3.knock.lantern",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minknock": 12,
+				"minlantern": 12,
+				"opx.horned": 1
+			},
+			"xtriggers": {
+				"next": "opx.horned.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.horned.complete",
+			"label": "角斧のカルト教団が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.horned": 1,
+				"opx.basepayout": 1
+			},
+			"xtriggers": {
+				"success": [
+					{
+						"id": "contact.cultist.horned",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"comments": "NB this is in addition to the cult seed base payout",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.wolf1.edge.winter",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minwinter": 4,
+				"opx.wolf": 1
+			},
+			"xtriggers": {
+				"next": "ee.wolf2.edge.lantern"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.wolf2.edge.lantern",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minedge": 8,
+				"minlantern": 8,
+				"opx.wolf": 1
+			},
+			"xtriggers": {
+				"next": "ee.wolf3.grail.winter"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.wolf3.grail.winter",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minedge": 12,
+				"minknock": 12,
+				"opx.wolf": 1
+			},
+			"xtriggers": {
+				"next": "opx.wolf.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.wolf.complete",
+			"label": "分裂した狼のカルト教団が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.wolf": 1,
+				"opx.basepayout": 1
+			},
+			"xtriggers": {
+				"success": [
+					{
+						"id": "contact.cultist.wolf",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"comments": "NB this is in addition to the cult seed base payout",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.import1.lantern.heart",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minlantern": 4,
+				"minheart": 4,
+				"opx.import": 1
+			},
+			"xtriggers": {
+				"next": "ee.import2.lantern.forge"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.import2.lantern.forge",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minlantern": 8,
+				"minforge": 8,
+				"opx.import": 1
+			},
+			"xtriggers": {
+				"next": "ee.import3.lantern.winter"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.import3.lantern.winter",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minlantern": 12,
+				"minwinter": 12,
+				"opx.import": 1
+			},
+			"xtriggers": {
+				"next": "opx.import.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.import.complete",
+			"label": "輸入業が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.import": 1,
+				"opx.basepayout": 3
+			},
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.counterfeiting1.forge.winter",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minforge": 4,
+				"minwinter": 4,
+				"opx.counterfeiting": 1
+			},
+			"xtriggers": {
+				"next": "ee.counterfeiting2.forge.moth"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.counterfeiting2.forge.moth",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minforge": 8,
+				"minmoth": 8,
+				"opx.counterfeiting": 1
+			},
+			"xtriggers": {
+				"next": "ee.counterfeiting3.forge.grail"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.counterfeiting3.forge.grail",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minforge": 12,
+				"mingrail": 12,
+				"opx.counterfeiting": 1
+			},
+			"xtriggers": {
+				"next": "opx.counterfeiting.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.counterfeiting.complete",
+			"label": "偽札工作が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.counterfeiting": 1,
+				"opx.basepayout": 2
+			},
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.smuggling1.moth.knock",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minmoth": 4,
+				"minknock": 4,
+				"opx.smuggling": 1
+			},
+			"xtriggers": {
+				"next": "ee.smuggling2.moth.heart"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.smuggling2.moth.heart",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minmoth": 8,
+				"minheart": 8,
+				"opx.smuggling": 1
+			},
+			"xtriggers": {
+				"next": "ee.smuggling3.moth.winter"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.smuggling3.moth.winter",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minmoth": 12,
+				"minwinter": 12,
+				"opx.smuggling": 1
+			},
+			"xtriggers": {
+				"next": "opx.smuggling.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.smuggling.complete",
+			"label": "密輸工作が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.smuggling": 1,
+				"opx.basepayout": 4
+			},
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.fights1.edge.grail",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minedge": 4,
+				"mingrail": 4,
+				"opx.fights": 1
+			},
+			"xtriggers": {
+				"next": "ee.fights2.edge.moth",
+				"failure": [
+					{
+						"id": "wound.exile",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.fights2.edge.moth",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minedge": 8,
+				"minmoth": 8,
+				"opx.fights": 1
+			},
+			"xtriggers": {
+				"next": "ee.fights3.edge.forge",
+				"failure": [
+					{
+						"id": "wound.exile",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.fights3.edge.forge",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minedge": 12,
+				"minforge": 12,
+				"opx.fights": 1
+			},
+			"xtriggers": {
+				"next": "opx.fights.complete",
+				"failure": [
+					{
+						"id": "wound.exile",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.fights.complete",
+			"label": "闘争が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.fights": 1,
+				"opx.basepayout": 2
+			},
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.uprising1.edge.heart",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minedge": 4,
+				"minheart": 4,
+				"opx.uprising": 1
+			},
+			"xtriggers": {
+				"next": "ee.uprising2.edge.heart"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.uprising2.edge.heart",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minedge": 8,
+				"minheart": 8,
+				"opx.uprising": 1
+			},
+			"xtriggers": {
+				"next": "ee.uprising3.edge.heart"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.uprising3.edge.heart",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minedge": 12,
+				"minheart": 12,
+				"opx.uprising": 1
+			},
+			"xtriggers": {
+				"next": "opx.uprising.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.uprising.complete",
+			"label": "反乱が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.uprising": 1,
+				"opx.basepayout": 4
+			},
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.betrayal1.winter.heart",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minwinter": 4,
+				"minheart": 4,
+				"opx.betrayal": 1
+			},
+			"xtriggers": {
+				"next": "ee.betrayal2.winter.heart"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.betrayal2.winter.heart",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minwinter": 8,
+				"minheart": 8,
+				"opx.betrayal": 1
+			},
+			"xtriggers": {
+				"next": "ee.betrayal3.winter.heart"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.betrayal3.winter.heart",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minwinter": 12,
+				"minheart": 12,
+				"opx.betrayal": 1
+			},
+			"xtriggers": {
+				"next": "opx.betrayal.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.betrayal.complete",
+			"label": "裏切り行為が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.betrayal": 1,
+				"opx.basepayout": 4
+			},
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.patronage1.heart.lantern",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minheart": 4,
+				"minlantern": 4,
+				"opx.patronage": 1
+			},
+			"xtriggers": {
+				"next": "ee.patronage2.heart.lantern"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.patronage2.heart.lantern",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minheart": 8,
+				"minlantern": 8,
+				"opx.patronage": 1
+			},
+			"xtriggers": {
+				"next": "ee.patronage3.heart.lantern"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.patronage3.heart.lantern",
+			"label": "――",
+			"aspects": {
+				"complication": 1,
+				"minheart": 12,
+				"minlantern": 12,
+				"opx.patronage": 1
+			},
+			"xtriggers": {
+				"next": "opx.patronage.complete"
+			},
+			"description": "――",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "opx.patronage.complete",
+			"label": "後援が実を結ぶ",
+			"description": "――",
+			"aspects": {
+				"opx.patronage": 1,
+				"opx.basepayout": 4
+			},
+			"xtriggers": {
+				"success": "townhouse"
+			},
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "ee.armouredgate",
+			"label": "守られた門",
+			"aspects": {
+				"complication": 1,
+				"minforge": 8,
+				"minknock": 8
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.avidadept",
+			"label": "熱心な高僧",
+			"aspects": {
+				"complication": 1,
+				"mingrail": 10,
+				"minmoth": 10
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.bosk",
+			"label": "小さな森",
+			"aspects": {
+				"complication": 1,
+				"minlantern": 8,
+				"minmoth": 8,
+				"minwinter": 8
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.coiltrace",
+			"label": "トグロの痕跡",
+			"aspects": {
+				"complication": 1,
+				"minedge": 14,
+				"minwinter": 14
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.crags",
+			"label": "激しい岩山",
+			"aspects": {
+				"complication": 1,
+				"minforge": 6,
+				"minheart": 6
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.creepinghorror",
+			"label": "忍び寄る恐怖",
+			"aspects": {
+				"complication": 1,
+				"minedge": 4,
+				"minheart": 4,
+				"minwinter": 4
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.deceiver",
+			"label": "欺く者",
+			"aspects": {
+				"complication": 1,
+				"minlantern": 10,
+				"minmoth": 10
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.devourer",
+			"label": "食い荒らす者",
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"aspects": {
+				"complication": 1,
+				"minedge": 10,
+				"minmoth": 10
+			},
+			"lifetime": 1
+		},
+		{
+			"id": "ee.feast",
+			"label": "ご馳走",
+			"isHidden": true,
+			"noartneeded": true,
+			"aspects": {
+				"complication": 1,
+				"mingrail": 2,
+				"minwinter": 2
+			},
+			"description": ".",
+			"lifetime": 1
+		},
+		{
+			"id": "ee.fretfuldead",
+			"label": "気難しい死者",
+			"isHidden": true,
+			"noartneeded": true,
+			"aspects": {
+				"complication": 1,
+				"minedge": 8,
+				"minwinter": 8
+			},
+			"description": ".",
+			"lifetime": 1
+		},
+		{
+			"id": "ee.guardedcompound",
+			"label": "守られた敷地",
+			"aspects": {
+				"complication": 1,
+				"minforge": 6,
+				"minknock": 6,
+				"minmoth": 6
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.labyrinthseal",
+			"label": "迷宮の封印",
+			"aspects": {
+				"complication": 1,
+				"minforge": 12,
+				"minknock": 12
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.ligeian",
+			"label": "リゲイアの者",
+			"aspects": {
+				"complication": 1,
+				"minedge": 12,
+				"mingrail": 12,
+				"minmoth": 12
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.miasma",
+			"label": "毒気",
+			"aspects": {
+				"complication": 1,
+				"minforge": 6,
+				"minheart": 6,
+				"minwinter": 6
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.mist",
+			"label": "霧",
+			"aspects": {
+				"complication": 1,
+				"minforge": 2,
+				"minlantern": 2
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.monks",
+			"label": "聖人",
+			"aspects": {
+				"complication": 1,
+				"minedge": 6,
+				"minmoth": 6
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.ordeal.agony",
+			"label": "試練：苦痛",
+			"aspects": {
+				"complication": 1,
+				"minedge": 12,
+				"minheart": 12,
+				"minwinter": 12
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.ordeal.desolation",
+			"label": "試練：荒廃",
+			"aspects": {
+				"complication": 1,
+				"minheart": 12,
+				"minwinter": 12
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.ordeal.enigma",
+			"label": "試練：謎",
+			"aspects": {
+				"complication": 1,
+				"minlantern": 12,
+				"minmoth": 12
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.percussigant",
+			"label": "パーカッシガント",
+			"aspects": {
+				"complication": 1,
+				"minedge": 8,
+				"mingrail": 8,
+				"minheart": 8
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.scarredduellist",
+			"label": "傷だらけのデュエリスト",
+			"aspects": {
+				"complication": 1,
+				"minedge": 4,
+				"minmoth": 4
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.securevault",
+			"label": "厳重に施錠された金庫室",
+			"aspects": {
+				"complication": 1,
+				"minforge": 10,
+				"minknock": 10
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.shadowedway",
+			"label": "影の道",
+			"aspects": {
+				"complication": 1,
+				"minknock": 4,
+				"minlantern": 4
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.soldiers",
+			"label": "兵士 ",
+			"aspects": {
+				"complication": 1,
+				"minedge": 8,
+				"mingrail": 8,
+				"minmoth": 8
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.storm",
+			"label": "嵐",
+			"aspects": {
+				"complication": 1,
+				"minforge": 2,
+				"minheart": 2
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.strixriddenadversary",
+			"label": "ストリックスに支配された敵",
+			"aspects": {
+				"complication": 1,
+				"minedge": 8,
+				"minmoth": 8
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.thugs",
+			"label": "悪党",
+			"aspects": {
+				"complication": 1,
+				"minedge": 4,
+				"mingrail": 4,
+				"minmoth": 4
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.unknownlocation",
+			"label": "未知の場所",
+			"aspects": {
+				"complication": 1,
+				"minknock": 2,
+				"minlantern": 2
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.unwelcomememories",
+			"label": "嫌な記憶",
+			"aspects": {
+				"complication": 1,
+				"minheart": 8,
+				"minlantern": 8,
+				"minmoth": 8,
+				"minwinter": 8
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "ee.vigil",
+			"label": "寝ずの番",
+			"aspects": {
+				"complication": 1,
+				"minheart": 10,
+				"minlantern": 10,
+				"minwinter": 10
+			},
+			"description": "――",
+			"isHidden": true,
+			"noartneeded": true,
+			"lifetime": 1
+		},
+		{
+			"id": "husk",
+			"label": "殻",
+			"aspects": {
+				"exhausted": 1
+			},
+			"description": "中身は使いつくされたようだ。",
+			"icon": "jumble",
+			"lifetime": 1
+		},
+		{
+			"id": "_vault.exile",
+			"label": "_vault.exile",
+			"aspects": {
+				"location": 1,
+				"vault": 1
+			},
+			"slots": [
+				{
+					"id": "resource",
+					"actionId": "travel",
+					"label": "資源",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"winter": 1
+					}
+				}
+			],
+			"noartneeded": true
+		},
+		{
+			"id": "_contact.mortal",
+			"label": "_contact.mortal",
+			"aspects": {
+				"mortal": 1,
+				"contact.local": 1
+			},
+			"xtriggers": {
+				"betrayal": [
+					{
+						"id": "corpse.exile"
+					},
+					{
+						"id": "progress",
+						"morpheffect": "spawn"
+					}
+				],
+				"killmortal": "corpse.exile"
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "_contact.mortal.fatigued",
+			"label": "_contact.mortal.fatigued",
+			"aspects": {
+				"mortal": 1,
+				"exhausted": 1,
+				"contact.local": 1
+			},
+			"xtriggers": {
+				"killmortal": "corpse.exile"
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "_ally.mortal",
+			"label": "_ally.mortal",
+			"aspects": {
+				"mortal": 1,
+				"ally": 1,
+				"associate": 1
+			},
+			"slots": [
+				{
+					"id": "destination",
+					"label": "目的地",
+					"actionId": "travel",
+					"required": {
+						"destination": 1
+					},
+					"forbidden": {
+						"end": 1,
+						"wilderness": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"killmortal": [
+					{
+						"id": "corpse.exile"
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": -3
+					},
+					{
+						"id": "edge",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "forge",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "grail",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "heart",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "knock",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "moth",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "winter",
+						"morpheffect": "mutate",
+						"level": -99
+					}
+				]
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "_ally.mortal.fatigued",
+			"label": "_ally.mortal.fatigued",
+			"aspects": {
+				"mortal": 1,
+				"exhausted": 1,
+				"ally": 1,
+				"associate": 1
+			},
+			"xtriggers": {
+				"killmortal": [
+					{
+						"id": "corpse.exile"
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": -3
+					},
+					{
+						"id": "edge",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "forge",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "grail",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "heart",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "knock",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "moth",
+						"morpheffect": "mutate",
+						"level": -99
+					},
+					{
+						"id": "winter",
+						"morpheffect": "mutate",
+						"level": -99
+					}
+				]
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "corpse.exile",
+			"label": "人間の死体",
+			"aspects": {
+				"trace": 1,
+				"remnant": 1,
+				"winter": 2,
+				"grail": 2,
+				"supplies": 1
+			},
+			"description": "この世にはもういない。私もそうでなければいけない。",
+			"slots": [
+				{
+					"id": "assistance",
+					"actionId": "relinquish",
+					"label": "援助",
+					"required": {
+						"deception": 1
+					},
+					"consumes": true
+				},
+				{
+					"id": "assistance2",
+					"actionId": "relinquish",
+					"label": "援助",
+					"required": {
+						"deception": 1
+					},
+					"consumes": true
+				}
+			],
+			"icon": "corpse",
+			"xtriggers": {
+				"fatiguing": "husk"
+			}
+		},
+		{
+			"id": "corpse.exile.underling",
+			"label": "精算人の死体",
+			"aspects": {
+				"trace": 1,
+				"remnant": 1,
+				"winter": 2,
+				"grail": 2,
+				"supplies": 1
+			},
+			"description": "勝利の証明だ。敵が動揺するだろう。",
+			"decayTo": "trace",
+			"slots": [
+				{
+					"actionId": "relinquish",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"temptation.defiance": 1,
+						"lore": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"fatiguing": "husk"
+			}
+		},
+		{
+			"id": "progress",
+			"label": "勢い",
+			"description": "[勢いを3枚手に入れると泥棒を達成できる。]",
+			"lifetime": 1
+		},
+		{
+			"id": "progress.subtlety",
+			"label": "巧妙",
+			"isAspect": true,
+			"description": "[巧妙のレベルが上がるごとに、作戦から痕跡が生まれるリスクが軽減される。巧妙が3枚揃うと不明瞭が生まれる。]",
+			"lifetime": 1,
+			"icon": "changemarks"
+		},
+		{
+			"id": "progress.effectiveness",
+			"label": "効果",
+			"isAspect": true,
+			"description": "[効果のレベルが上がるごとに、作戦の最終的な結果が向上する。]",
+			"lifetime": 1,
+			"icon": "idealist"
+		},
+		{
+			"id": "next",
+			"label": "次",
+			"description": "レシピの効果",
+			"isAspect": true,
+			"noartneeded": true
+		},
+		{
+			"id": "payment",
+			"label": "支払い",
+			"description": "問題を現金で解決した。",
+			"lifetime": 1,
+			"icon": "bid"
+		},
+		{
+			"id": "cash",
+			"label": "現金",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"worth": 1,
+				"supplies": 1,
+				"forge": 2,
+				"grail": 2,
+				"knock": 2
+			},
+			"xtriggers": {
+				"fatiguing": "husk"
+			},
+			"description": "扉を開けたり、プロジェクトに資金を提供したり、欲に駆られたりするのに十分な金額。",
+			"slots": [
+				{
+					"actionId": "send",
+					"id": "destination",
+					"label": "目的地",
+					"required": {
+						"destination": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "loc.shrine.nameless",
+			"label": "霧がかった場所",
+			"aspects": {
+				"location": 1
+			},
+			"description": "夜になるとなぜかたどり着きやすい、目立たない場所。壁の隙間に何の変哲もないロウソクが無造作に突っ込まれている。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"pentiment": 1,
+						"pentiment.display": 1
+					},
+					"forbidden": {
+						"fragmentedge.exile": 1,
+						"fragmentedgeb.colonel": 1,
+						"fragmentedgeb.lionsmith": 1
+					}
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.colonel.aachen",
+			"label": "聖アンドリュー・ストラテレーツの礼拝堂",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.colonel": 1
+			},
+			"description": "アーヘンの大聖堂にはペルシャ人に立ち向かった聖人戦士のための付属礼拝堂がある。特定の日には助祭が扉に鍵をかけ、退役軍人のために異端の儀式を行う。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.colonel",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.colonel.candia",
+			"label": "鉄の聖人の道端の祠",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.colonel": 1
+			},
+			"description": "岩の張り出しの下、白塗りの小屋の中に古代の鋳鉄製の像が立っている。顔は認識できないほどの傷ついているが、片手にはまだ槍が握られている。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.colonel",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.colonel.leningrad",
+			"label": "新しいダツァン",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.colonel": 1
+			},
+			"description": "ここは塗装された扉とステンドグラスの窓がある仏教寺院だが、ペンキは剥げ落ちていて、窓のほとんどは板張りになっている。ある赤軍の大隊長がこの場所を占領した。おそらく倉庫として使うつもりだったのだろう。合言葉を知っている者は、顔に傷跡のある仏陀の前で厳粛な儀式に参加することが許されているのだ。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.colonel",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.colonel.munich",
+			"label": "ヴォータンの地下室",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.colonel": 1
+			},
+			"description": "国立劇場の一番奥の地下室には、シュワルツワルトのオーク材で彫られた厳かな像が立っている。60年前、白鳥の王はお気に入りの作曲家の新作オペラを大々的に初演したが、失敗に終わった。舞台装置はここに捨てられれ、忘れ去られた。今や像の目には傷がついて目が見えないようにしてある。今や像の目は見えないように傷がつけられ、この場所の力を知る者たちは、その前で過酷な献身を行っている。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.colonel",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.colonel.nizhny",
+			"label": "傷だらけの小屋",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.colonel": 1
+			},
+			"description": "町外れの燃え尽きた狩猟小屋では、焦げた骨が彫られチェスの駒となっていて、路床の石にはチェス盤が刻まれている。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.colonel",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.colonel.stalingrad",
+			"label": "片腕のフェーン",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.colonel": 1
+			},
+			"description": "放棄された穀物貯蔵庫が秘密のカルト教団に採用され、奇妙な英雄を称えることになった。一人で戦車に乗って白ロシア軍のために街を襲撃した片腕の英国人だ。彼は今では名を持つ者になっているのかもしれないし、死んだだけかもしれない。しかし、大佐を崇拝する者は彼を覚えている。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.colonel",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.colonel.valletta",
+			"label": "定命の者の祠",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.colonel": 1
+			},
+			"description": "マルタは「地中海の看護婦」であり、負傷した兵士たちが治療を受けに来る場所だ。治療者の中には目に見えない術を実践する者たちがいる。彼らは病院の密室に祠を建てて癒しの時の神々を呼び寄せる。大佐に癒しの祈りを捧げる者はいない。軒下の腐った部屋を訪れるのは、死が慈悲となる時に彼を呼び出すためだけだ。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.colonel",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.lionsmith.alexandria",
+			"label": "雄牛の金床",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.lionsmith": 1
+			},
+			"description": "ここで言う「金床」は、聖なる雄牛アピスの青銅製の祭壇だ。青銅は金床に適した金属ではないが、司祭たちは、この上で鍛えられた唯一の素材は人間の精神であると言う。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.lionsmith",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.lionsmith.algiers",
+			"label": "スカプトドンの墓",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.lionsmith": 1
+			},
+			"description": "欲張りになったスカプトドンは、地中にはないものを食べ始め、人間のような姿に退化することがある。私は昔の強さが残っているスカプトドンを殺すのは、さらに難しいことを身をもって知った。しかし、1匹のスカプトドンがここで戦死し、その骨はこの祠に祀られている。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.lionsmith",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.lionsmith.marrakech",
+			"label": "真鍮鏡の間",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.lionsmith": 1
+			},
+			"description": "マラブーのナビルはここによくいるが、ライオンスミスに仕えているわけではないと言い張っている。「最も偉大なライオンは<i>自分自身</i>を克服したらライオンだ」と彼は親切そうに言う。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.lionsmith",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.lionsmith.meshad",
+			"label": "シャールワールの石",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.lionsmith": 1
+			},
+			"description": "詩人の友人がこの場所の話をしてくれたことがある。空が最も硬い石の磨かれた屋根であった時代に、ライオンスミスがハンマーでそれを叩いて、この大きな岩を地上に落としたのだという。テーナイトを含む隕石のように見えるが、だからと言って彼女の話が嘘だというわけではない。だからこそ私は、歴史についてはあまり難しく考えないようにしている。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.lionsmith",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.lionsmith.samarkand",
+			"label": "アテシュガの十字路",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.lionsmith": 1
+			},
+			"description": "共産党が参拝者をこの火の神殿から追い出した。今では、少人数の軍事技術者たちがここで活動している。しかし、永遠の炎を燃やすガス管の維持にはかなり力を入れている。彼らの信仰は特に風変わりなものだ。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.lionsmith",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.lionsmith.tripoli",
+			"label": "アンテウム",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.lionsmith": 1
+			},
+			"description": "イマズイゲンはベルベル人として世界に知られている人々で、アンタイオスを英雄の王として崇めている。もちろん、大地の子、アンタイオス（「向き合う者」を意味する）はライオンスミスの大敵であったが、ライオンスミスは常に自分の大敵を尊敬してきた――と、アンテウムの伝授者は言う。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1,
+						"contact.retainer": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.lionsmith",
+			"unique": true
+		},
+		{
+			"id": "loc.shrine.lionsmith.venice",
+			"label": "槌の聖マルコの礼拝堂",
+			"aspects": {
+				"location": 1,
+				"shrine.edge": 1,
+				"shrine.lionsmith": 1
+			},
+			"description": "<i>聖マルコ礼拝堂</i>は、１世紀ほど前に正式に解散したが、強い決意を持った教会員たちが、秘密裏に集会を開き、キリスト教的ではない独自の儀式を続けたり、目に見えない術の修行者に奉仕をしていたりする。誰でもこの礼拝堂を訪れることができる。彼らとはいつでも気が合った。",
+			"slots": [
+				{
+					"actionId": "travel",
+					"id": "purpose",
+					"label": "目的",
+					"required": {
+						"lore": 1,
+						"desire": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			],
+			"icon": "loc.shrine.lionsmith",
+			"unique": true
+		},
+		{
+			"id": "contact.retainer",
+			"label": "最後のアンタイの伝授者",
+			"comments": "no killmortal trigger because we want him permanently on the board.",
+			"description": "深い傷のついた頬、白い無精ひげ、目には年老いた哀愁が漂う、ビーズのついた帽子を被った老人。",
+			"xtriggers": {
+				"fatiguing": "contact.retainer.exhausted",
+				"mortal.introduce": [
+					{
+						"id": "loc.shrine.lionsmith.tripoli",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"aspects": {
+				"forge": 3,
+				"heart": 3,
+				"mortal": 1,
+				"contact.local": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "contact.retainer.exhausted",
+			"label": "年とった家来（枯渇）",
+			"comments": "no killmortal trigger because we want him permanently on the board.",
+			"description": "深い傷のついた頬、白い無精ひげ、目には年老いた哀愁が漂う、ビーズのついた帽子を被った老人。",
+			"aspects": {
+				"exhausted": 1,
+				"mortal": 1,
+				"contact.local": 1
+			},
+			"decayTo": "contact.retainer",
+			"lifetime": 300,
+			"unique": true,
+			"icon": "contact.retainer",
+			"resaturate": true
+		},
+		{
+			"id": "vault.imhullu",
+			"label": "アルティバンの深淵",
+			"inherits": "_vault.exile",
+			"description": "「山には厄介な力が蠢いている。何年も地中に封印されていた力だが地震が起きて大きな穴が開いてしまった。何か武器のようなものがあると、取締局が言っていた。正直に言うと、地元の厄介者より、あなたに持っていて欲しいと思っている」",
+			"icon": "vaultrendingmountainsdefault",
+			"xtriggers": {
+				"success": [
+					{
+						"id": "weapon.e"
+					}
+				],
+				"opx.progress0": [
+					{
+						"id": "ee.crags",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress1": [
+					{
+						"id": "ee.avidadept",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress2": [
+					{
+						"id": "ee.coiltrace",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "vault.serapeum",
+			"label": "見えないセラペウム",
+			"inherits": "_vault.exile",
+			"description": "セラペウムは、すでに中にいる場合でも、見つけることはほぼ不可能である。招待状があれば、チャンスは高まる。",
+			"icon": "vaultlandbeyondforest5",
+			"xtriggers": {
+				"success": [
+					{
+						"id": "vault.serapeum.completed"
+					}
+				],
+				"opx.progress0": [
+					{
+						"id": "ee.shadowedway",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress1": [
+					{
+						"id": "ee.unwelcomememories",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress2": [
+					{
+						"id": "ee.ordeal.enigma",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "vault.barber",
+			"label": "ムスビハネホツレの巣",
+			"inherits": "_vault.exile",
+			"description": "眠る心の窓を押す暗い森がある。枝には黒い絹と白い髪で織られた巣がある。ズルフィヤは私を今夜そこに連れて行くためにご馳走を用意し、私の背中に何かを書いた。それは私が見てはいけない地図なのだ、と彼女は言う。",
+			"icon": "vaultcontinent3",
+			"xtriggers": {
+				"success": [
+					{
+						"id": "vault.barber.completed"
+					}
+				],
+				"opx.progress0": [
+					{
+						"id": "ee.feast",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress1": [
+					{
+						"id": "ee.bosk",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress2": [
+					{
+						"id": "ee.ordeal.enigma",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "vault.delver",
+			"label": "ダリオ宮殿",
+			"inherits": "_vault.exile",
+			"description": "200年前、ホコバルドという不死身の男がここで錬金術を使った。あと100年もすれば運河に落ちるかもしれない。霧に包まれ、不気味な死者が徘徊しているが、オルソリーナは金庫は破られていないと信じている。",
+			"icon": "vaultcapital3",
+			"xtriggers": {
+				"success": [
+					{
+						"id": "vault.delver.completed"
+					}
+				],
+				"opx.progress0": [
+					{
+						"id": "ee.mist",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress1": [
+					{
+						"id": "ee.fretfuldead",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress2": [
+					{
+						"id": "ee.securevault",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "vault.fivegoer",
+			"label": "イェシーバー・チグリス",
+			"inherits": "_vault.exile",
+			"description": "50年間、この秘密のイェシーバーはベイ・イライの4つの伝統を教えてきた。霊の幽閉、魔物の追放、粘り強い呪いの終結、そして厄介なポータルの封印である。それを破るためには、それを見つけなければならない。ラビや生徒たちは我々を困らせるだろうし、淫魔を屈服させないといけないかもしれない。",
+			"icon": "vaultlandbeyondforest5",
+			"xtriggers": {
+				"success": [
+					{
+						"id": "vault.fivegoer.completed"
+					}
+				],
+				"opx.progress0": [
+					{
+						"id": "ee.shadowedway",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress1": [
+					{
+						"id": "ee.monks",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress2": [
+					{
+						"id": "ee.deceiver",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "vault.ghoul",
+			"label": "スカイリアス-Ｔ",
+			"inherits": "_vault.exile",
+			"description": "取締局には、催奇形現象を専門とする秘密の部署がある。その場所を見つけたら、壁を破って、その中心から放射される恐ろしい影響力を切り抜けなければならない。",
+			"icon": "vaultcapital4",
+			"xtriggers": {
+				"success": [
+					{
+						"id": "vault.ghoul.completed"
+					}
+				],
+				"opx.progress0": [
+					{
+						"id": "ee.unknownlocation",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress1": [
+					{
+						"id": "ee.guardedcompound",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress2": [
+					{
+						"id": "ee.ordeal.desolation",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "vault.huntress",
+			"label": "陽気な饗宴者の巣",
+			"description": "アーヘンの地下にある下水道には、ライオンスミスの神々しさに欠ける創造物がうろついている。秘密の入り口を探し出して、下水道の空気を無事通り抜けてから、饗宴者に立ち向かうこととなるだろう。",
+			"inherits": "_vault.exile",
+			"icon": "hq.abandoned",
+			"xtriggers": {
+				"success": [
+					{
+						"id": "vault.huntress.completed"
+					}
+				],
+				"opx.progress0": [
+					{
+						"id": "ee.shadowedway",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress1": [
+					{
+						"id": "ee.miasma",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress2": [
+					{
+						"id": "ee.devourer",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "vault.smuggler",
+			"label": "タラスコン城",
+			"inherits": "_vault.exile",
+			"description": "タラスコン公爵家は怪物を繁殖させていると噂されている。彼らは、フランス人とドイツ人の脱走兵を雇い、霧に包まれた城を守っている。",
+			"icon": "vaultlandbeyondforest2",
+			"xtriggers": {
+				"success": [
+					{
+						"id": "vault.smuggler.completed"
+					},
+					{
+						"id": "curio",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "cash",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress0": [
+					{
+						"id": "ee.mist",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress1": [
+					{
+						"id": "ee.soldiers",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress2": [
+					{
+						"id": "ee.devourer",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "vault.visionary",
+			"label": "夜中のドゥエンデ",
+			"inherits": "_vault.exile",
+			"description": "アルプジャラスの高地には、サンダースキンのために踊る者達の飛び地がある。彼らは監視されることを嫌っている。私が止めない限り、彼らは画家ミレーヤに嫌悪感を抱くだろう。私は彼らが仕向けてくるものを撃退するために夜明けまで起きていなければならない。",
+			"icon": "peril_mountains",
+			"xtriggers": {
+				"success": [
+					{
+						"id": "vault.visionary.completed"
+					}
+				],
+				"opx.progress0": [
+					{
+						"id": "ee.storm",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress1": [
+					{
+						"id": "ee.percussigant",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress2": [
+					{
+						"id": "ee.vigil",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "vault.vivisectionist",
+			"label": "コープスハウス・マームッラ・ミュンヘン",
+			"inherits": "_vault.exile",
+			"description": "玄関先の老朽化した一対の松の木と、階段状破風が特徴的な魅力的なレンガ造りの家。屋根裏部屋ではマムラの者が痛みと勇気の儀式を行う。痛くなりそうだ。",
+			"icon": "vaultcontinent4",
+			"xtriggers": {
+				"success": [
+					{
+						"id": "vault.vivisectionist.completed"
+					}
+				],
+				"opx.progress0": [
+					{
+						"id": "ee.scarredduellist",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress1": [
+					{
+						"id": "ee.strixriddenadversary",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress2": [
+					{
+						"id": "ee.ordeal.agony",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "vault.yitzchok",
+			"label": "白の聖マルザンナ教会",
+			"inherits": "_vault.exile",
+			"description": "風が強く吹き荒れる街を見渡す丘の上に、朽ちかけた木造教会が、葉のない樫に囲まれて建っている。イッツチョクによると、そこには私の役に立つものがあるらしい。しかし彼は「どの本を読んでも聖マルザンナを見つけられなかった。どこにも見当たらないんだ」と言った。",
+			"icon": "vaultcapital5",
+			"xtriggers": {
+				"success": [
+					{
+						"id": "weapon.c"
+					}
+				],
+				"opx.progress0": [
+					{
+						"id": "ee.creepinghorror",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress1": [
+					{
+						"id": "ee.bosk",
+						"morpheffect": "spawn"
+					}
+				],
+				"opx.progress2": [
+					{
+						"id": "ee.ordeal.desolation",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "vault.barber.completed",
+			"label": "不思議な液体",
+			"description": "森から目覚めた時に、ベッドの横にあった密閉された瓶に入っていたもの。",
+			"aspects": {
+				"vault.completed": 1,
+				"moth": 12,
+				"asset": 1,
+				"portable": 1,
+				"supplies": 1,
+				"worth": 1
+			},
+			"xtriggers": {
+				"fatiguing": "husk"
+			},
+			"icon": "ingredientmothf"
+		},
+		{
+			"id": "vault.delver.completed",
+			"label": "ホコバルトの錬金物質",
+			"description": "忘れられた太陽のように赤い。",
+			"aspects": {
+				"vault.completed": 1,
+				"forge": 12,
+				"asset": 1,
+				"portable": 1,
+				"supplies": 1,
+				"worth": 1
+			},
+			"xtriggers": {
+				"fatiguing": "husk"
+			},
+			"icon": "ingredientforgef"
+		},
+		{
+			"id": "vault.fivegoer.completed",
+			"label": "居眠りする淫魔",
+			"aspects": {
+				"vault.completed": 1,
+				"asset": 1
+			},
+			"description": "活動中は、サキュバスはしなやかで、出来損ないで、魅力的な存在で、定命の者を食べたり、定命の者に孕まされたりすることをしきりに求める。しかし休眠状態では、交互に鳴き声をあげ、鼻を鳴らし、いびきをかく触手の集合体となる。",
+			"icon": "spirit_grailc_moth"
+		},
+		{
+			"id": "vault.ghoul.completed",
+			"label": "ウジ虫の調味料？",
+			"description": "ドミニカスが欲しがっていた「調味料」：不味そうな幼虫の残骸が入った鍋。触ると冷たい。",
+			"aspects": {
+				"vault.completed": 1,
+				"winter": 12,
+				"asset": 1,
+				"portable": 1,
+				"supplies": 1,
+				"worth": 1
+			},
+			"xtriggers": {
+				"fatiguing": "husk"
+			},
+			"icon": "ingredientwinterf"
+		},
+		{
+			"id": "vault.huntress.completed",
+			"label": "陽気な饗宴者の死骸",
+			"aspects": {
+				"vault.completed": 1,
+				"asset": 1
+			},
+			"description": "内部が腐食して急速に溶解している。",
+			"lifetime": 300
+		},
+		{
+			"id": "vault.smuggler.completed",
+			"label": "タラスコンの遺物",
+			"aspects": {
+				"vault.completed": 1,
+				"grail": 2,
+				"winter": 4,
+				"asset": 1,
+				"portable": 1,
+				"worth": 1
+			},
+			"description": "必要なものが手に入った。",
+			"icon": "corpse.splendid"
+		},
+		{
+			"id": "vault.visionary.completed",
+			"label": "パーカッシガント、投げる！",
+			"aspects": {
+				"vault.completed": 1,
+				"asset": 1,
+				"portable": 1,
+				"heart": 4,
+				"worth": 2
+			},
+			"description": "<i>E pur si muove!</i> [注意：これを成功の証としてミレーヤに見せた後も、手元に置いておける。]",
+			"xtriggers": {
+				"recruiting": "pelt.percussigant"
+			},
+			"icon": "spirit_heartc_edge"
+		},
+		{
+			"id": "pelt.percussigant",
+			"label": "パーカッシガント、投げる！",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"heart": 4,
+				"worth": 2
+			},
+			"description": "<i>E pur si muove!</i>",
+			"icon": "spirit_heartc_edge"
+		},
+		{
+			"id": "vault.vivisectionist.completed",
+			"label": "マムラの傷跡",
+			"aspects": {
+				"vault.completed": 1,
+				"heart": 2,
+				"winter": 2
+			},
+			"description": "ジャニングスは、肌にしか書けない教訓もあると言う。そうかもしれないが、ジャニングスが自分の仕事を心ゆくまで楽しんでいるだけという可能性もある。",
+			"xtriggers": {
+				"recruiting": "scar_mamurren"
+			},
+			"icon": "scar_winter",
+			"comments": "We switch it to a slightly different element so it doesn't get consumed by the ally recruitment recipe."
+		},
+		{
+			"id": "vault.serapeum.completed",
+			"label": "セラペウム・ペリスタシス",
+			"aspects": {
+				"vault.completed": 1,
+				"location": 1
+			},
+			"description": "見えないセラペウムの外側空間に足を入れた。そこには非常に大きく日当たりの良い柱廊があり、ブラックウッド博士が私に席を譲ってくれ、冷たいハイビスカスティーを淹れてくれた。",
+			"icon": "vaultlandbeyondforest5"
+		},
+		{
+			"id": "scar_mamurren",
+			"label": "マムラの傷跡",
+			"aspects": {
+				"heart": 2,
+				"winter": 2
+			},
+			"description": "ジャニングスは、肌にしか書けない教訓もあると言う。そうかもしれないが、ジャニングスが自分の仕事を心ゆくまで楽しんでいるだけという可能性もある。",
+			"icon": "scar_winter"
+		},
+		{
+			"id": "contact.cultist.flowermaker",
+			"label": "フラワーメーカーの指先",
+			"inherits": "_contact.mortal",
+			"description": "見知らぬ人の肌に湿った指先で触れるだけで、心が読める者が会衆に1人いる。楽しんでやっているようだ。[効率を1つ以上達成すると、フラワーメーカーのカルト教団がカルト信者を1人生成する。]",
+			"xtriggers": {
+				"fatiguing": "contact.cultist.flowermaker.fatigued"
+			},
+			"aspects": {
+				"grail": 4,
+				"lantern": 4
+			},
+			"icon": "devotee_grail"
+		},
+		{
+			"id": "contact.cultist.flowermaker.fatigued",
+			"label": "フラワーメーカーの指先、回復中",
+			"description": "「頭から離れない。もう寝ないと」",
+			"inherits": "_contact.mortal.fatigued",
+			"icon": "devotee_grail",
+			"decayTo": "contact.cultist.flowermaker",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "contact.cultist.horned",
+			"label": "分裂した魂",
+			"inherits": "_contact.mortal",
+			"description": "物事の始まりと終わりに関する超自然的な理解を得た者が会衆に1人いる。[効率を1つ以上達成すると、角斧のカルト教団がカルト信者を1人生成する。]",
+			"xtriggers": {
+				"fatiguing": "contact.cultist.horned.fatigued"
+			},
+			"aspects": {
+				"knock": 4,
+				"winter": 4
+			},
+			"icon": "devotee_knock"
+		},
+		{
+			"id": "contact.cultist.horned.fatigued",
+			"label": "分裂した魂、回復",
+			"description": "「あれは昼で、今は夜だ」",
+			"inherits": "_contact.mortal.fatigued",
+			"icon": "devotee_knock",
+			"decayTo": "contact.cultist.horned",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "contact.cultist.wolf",
+			"label": "罰当たり",
+			"inherits": "_contact.mortal",
+			"description": "終わりを喜んで受け入れる者が会衆に1人いる。[効率を1つ以上達成すると、分裂した狼のカルト教団がカルト信者を1人生成する。]",
+			"xtriggers": {
+				"fatiguing": "corpse.exile"
+			},
+			"aspects": {
+				"edge": 6,
+				"winter": 6
+			},
+			"icon": "devotee_edge"
+		},
+		{
+			"id": "contact.labhite.fallen",
+			"label": "堕落したラビト",
+			"inherits": "_contact.mortal",
+			"description": "ラビトは、空にあるものだけを消費する限り、その力と地位を維持する。このラビトは、どうやらエキドナの悪名高いミルクに誘惑されたようだ......いくつかの疑問がわいてくるが、至急解決しなくてはいけない問題は、彼をどうするかということだ。",
+			"icon": "genericprisonermupgraded"
+		},
+		{
+			"id": "contact.barber",
+			"label": "床屋のゾルフィア",
+			"inherits": "_contact.mortal",
+			"description": "ゾルフィアはハサミなしではどこにも行かない。",
+			"xtriggers": {
+				"fatiguing": "contact.barber.fatigued",
+				"recruiting": "ally.barber",
+				"mortal.introduce": [
+					{
+						"id": "vault.barber",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"aspects": {
+				"moth": 6
+			},
+			"icon": "npc.barber"
+		},
+		{
+			"id": "contact.delver",
+			"label": "探求者のオルソリーナ",
+			"inherits": "_contact.mortal",
+			"description": "安定したまなざしを持つ、筋肉質の女性。ライオンスミスに仕えていた頃とは食生活が変わっているが、まだ昔と似たような体力を保っている。",
+			"xtriggers": {
+				"fatiguing": "contact.delver.fatigued",
+				"recruiting": "ally.delver",
+				"mortal.introduce": [
+					{
+						"id": "vault.delver",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"aspects": {
+				"forge": 6
+			},
+			"icon": "npc.delver"
+		},
+		{
+			"id": "contact.fivegoer",
+			"label": "夢魔の曾孫、ヴァシル",
+			"inherits": "_contact.mortal",
+			"description": "惚れ惚れするほど男前な男性。異常に柔軟な指に気づいたり、なぜ鼻が垂れているのか不思議に思ったりしない限り、彼の祖先が人間ではないとは分からないはず。",
+			"xtriggers": {
+				"fatiguing": "contact.fivegoer.fatigued",
+				"recruiting": "ally.fivegoer",
+				"mortal.introduce": [
+					{
+						"id": "vault.fivegoer",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"aspects": {
+				"grail": 6
+			},
+			"icon": "npc.fivegoer"
+		},
+		{
+			"id": "contact.ghoul",
+			"label": "パン屋のドミニカス",
+			"inherits": "_contact.mortal",
+			"description": "ドミニカスは印象的な笑顔の持ち主だが、残念なことに歯をせせる癖がある。",
+			"xtriggers": {
+				"fatiguing": "contact.ghoul.fatigued",
+				"recruiting": "ally.ghoul",
+				"mortal.introduce": [
+					{
+						"id": "vault.ghoul",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"aspects": {
+				"winter": 6
+			},
+			"icon": "npc.ghoul"
+		},
+		{
+			"id": "contact.huntress",
+			"label": "狩女、ララ・チャイマ",
+			"inherits": "_contact.mortal",
+			"description": "灰色がかった茶色の縞模様のジェラバを着た、しなやかで逞しい顔立ちのベルベルの女性。",
+			"aspects": {
+				"venerates.colonel": 1,
+				"edge": 6
+			},
+			"xtriggers": {
+				"fatiguing": "contact.huntress.fatigued",
+				"recruiting": "ally.huntress",
+				"mortal.introduce": [
+					{
+						"id": "vault.huntress",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"icon": "npc.huntress"
+		},
+		{
+			"id": "contact.smuggler",
+			"label": "密輸業者のジョルジュ",
+			"inherits": "_contact.mortal",
+			"description": "レアなタバコやレアな毒物、レアな武器を扱う物憂げで哲学的な密輸業者。",
+			"xtriggers": {
+				"fatiguing": "contact.smuggler.fatigued",
+				"recruiting": "ally.smuggler",
+				"mortal.introduce": [
+					{
+						"id": "vault.smuggler",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"aspects": {
+				"knock": 6
+			},
+			"icon": "npc.smuggler"
+		},
+		{
+			"id": "contact.visionary",
+			"label": "ビジョナリーのミレーヤ",
+			"inherits": "_contact.mortal",
+			"description": "ふっくらとした、夢のような女性。躊躇しがちだが明るい目の持ち主。",
+			"xtriggers": {
+				"fatiguing": "contact.visionary.fatigued",
+				"recruiting": "ally.visionary",
+				"mortal.introduce": [
+					{
+						"id": "vault.visionary",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"aspects": {
+				"lantern": 6
+			},
+			"icon": "npc.visionary"
+		},
+		{
+			"id": "contact.vivisectionist",
+			"label": "生体解剖学者のジャニングス",
+			"inherits": "_contact.mortal",
+			"description": "解体の専門家であり、組み立ての専門家でもある。",
+			"xtriggers": {
+				"fatiguing": "contact.vivisectionist.fatigued",
+				"recruiting": "ally.vivisectionist",
+				"mortal.introduce": [
+					{
+						"id": "vault.vivisectionist",
+						"morpheffect": "spawn"
+					}
+				]
+			},
+			"aspects": {
+				"heart": 6
+			},
+			"icon": "jannings"
+		},
+		{
+			"id": "contact.barber.fatigued",
+			"label": "夢見るゾルフィア",
+			"description": "ゾルフィアのメモには、しばらくの間「森を歩く」と走り書きされていた。",
+			"inherits": "_contact.mortal.fatigued",
+			"icon": "npc.barber",
+			"decayTo": "contact.barber",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "contact.delver.fatigued",
+			"label": "休眠中のオルソリーナ",
+			"description": "体力を回復するために、オルソリーナは大地の近くで1人で過ごせる時間が必要だ。",
+			"inherits": "_contact.mortal.fatigued",
+			"icon": "npc.delver",
+			"decayTo": "contact.delver",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "contact.fivegoer.fatigued",
+			"label": "体力を消耗したヴァシル",
+			"description": "ヴァシルの努力が、彼の形を柔らかくした。彼はポタリポタリと垂らし、鳴き声をあげながら、暖かいところへと逃げていった。",
+			"inherits": "_contact.mortal.fatigued",
+			"icon": "npc.fivegoer",
+			"decayTo": "contact.fivegoer",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "contact.ghoul.fatigued",
+			"label": "空腹のドミニカス",
+			"description": "スコップを持って、ドミニカスは空腹を満たすために、炉床へ向かった。",
+			"inherits": "_contact.mortal.fatigued",
+			"icon": "npc.ghoul",
+			"decayTo": "contact.ghoul",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "contact.huntress.fatigued",
+			"label": "隠れるララ・チャイマ",
+			"description": "チャイマは暗闇に傷心を癒しに行った。",
+			"inherits": "_contact.mortal.fatigued",
+			"icon": "npc.huntress",
+			"decayTo": "contact.huntress",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "contact.smuggler.fatigued",
+			"label": "不在のジョルジュ",
+			"description": "ジョルジュは、神経が回復するまで隠れている（と本人は言っている）。",
+			"inherits": "_contact.mortal.fatigued",
+			"icon": "npc.smuggler",
+			"decayTo": "contact.smuggler",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "contact.visionary.fatigued",
+			"label": "気が進まないミレーヤ",
+			"description": "ミレーヤは震えながら、掛け布団の下に隠れている。",
+			"inherits": "_contact.mortal.fatigued",
+			"icon": "npc.visionary",
+			"decayTo": "contact.visionary",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "contact.vivisectionist.fatigued",
+			"label": "待機中のジャニングス",
+			"description": "ジャニングスは新しい物資が届くまで第一線から退いている。",
+			"inherits": "_contact.mortal.fatigued",
+			"icon": "jannings",
+			"decayTo": "contact.vivisectionist",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "ally.barber",
+			"label": "床屋のゾルフィア",
+			"inherits": "_ally.mortal",
+			"description": "ゾルフィアはハサミなしではどこにも行かない。",
+			"xtriggers": {
+				"fatiguing": [
+					{
+						"id": "ally.barber.fatigued"
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": 1
+					}
+				],
+				"upgrade.exile.ally": [
+					{
+						"id": "moth",
+						"morpheffect": "mutate",
+						"level": 1
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": -3
+					}
+				]
+			},
+			"aspects": {
+				"moth": 6
+			},
+			"icon": "npc.barber"
+		},
+		{
+			"id": "ally.delver",
+			"label": "探求者のオルソリーナ",
+			"inherits": "_ally.mortal",
+			"description": "安定したまなざしを持つ、筋肉質の女性。ライオンスミスに仕えていた頃とは食生活が変わっているが、まだ昔と似たような体力を保っている。",
+			"xtriggers": {
+				"fatiguing": [
+					{
+						"id": "ally.delver.fatigued"
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": 1
+					}
+				],
+				"upgrade.exile.ally": [
+					{
+						"id": "forge",
+						"morpheffect": "mutate",
+						"level": 1
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": -3
+					}
+				]
+			},
+			"aspects": {
+				"forge": 6
+			},
+			"icon": "npc.delver"
+		},
+		{
+			"id": "ally.fivegoer",
+			"label": "夢魔の曾孫、ヴァシル",
+			"inherits": "_ally.mortal",
+			"description": "惚れ惚れするほど男前な男性。異常に柔軟な指に気づいたり、なぜ鼻が垂れているのか不思議に思ったりしない限り、彼の祖先が人間ではないとは分からないはず。",
+			"xtriggers": {
+				"fatiguing": [
+					{
+						"id": "ally.fivegoer.fatigued"
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": 1
+					}
+				],
+				"upgrade.exile.ally": [
+					{
+						"id": "grail",
+						"morpheffect": "mutate",
+						"level": 1
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": -3
+					}
+				]
+			},
+			"aspects": {
+				"grail": 6
+			},
+			"icon": "npc.fivegoer"
+		},
+		{
+			"id": "ally.ghoul",
+			"label": "パン屋のドミニカス",
+			"inherits": "_ally.mortal",
+			"description": "ドミニカスは印象的な笑顔の持ち主だが、残念なことに歯をせせる癖がある。",
+			"xtriggers": {
+				"fatiguing": [
+					{
+						"id": "ally.ghoul.fatigued"
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": 1
+					}
+				],
+				"upgrade.exile.ally": [
+					{
+						"id": "winter",
+						"morpheffect": "mutate",
+						"level": 1
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": -3
+					}
+				]
+			},
+			"aspects": {
+				"winter": 6
+			},
+			"icon": "npc.ghoul"
+		},
+		{
+			"id": "ally.huntress",
+			"label": "狩女、ララ・チャイマ",
+			"inherits": "_ally.mortal",
+			"description": "灰色がかった茶色の縞模様のジェラバを着た、しなやかで逞しい顔立ちのベルベルの女性。",
+			"aspects": {
+				"venerates.colonel": 1,
+				"edge": 6
+			},
+			"xtriggers": {
+				"fatiguing": [
+					{
+						"id": "ally.huntress.fatigued"
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": 1
+					}
+				],
+				"upgrade.exile.ally": [
+					{
+						"id": "edge",
+						"morpheffect": "mutate",
+						"level": 1
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": -3
+					}
+				]
+			},
+			"icon": "npc.huntress"
+		},
+		{
+			"id": "ally.smuggler",
+			"label": "密輸業者のジョルジュ",
+			"inherits": "_ally.mortal",
+			"description": "レアなタバコやレアな毒物、レアな武器を扱う物憂げで哲学的な密輸業者。",
+			"xtriggers": {
+				"fatiguing": [
+					{
+						"id": "ally.smuggler.fatigued"
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": 1
+					}
+				],
+				"upgrade.exile.ally": [
+					{
+						"id": "knock",
+						"morpheffect": "mutate",
+						"level": 1
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": -3
+					}
+				]
+			},
+			"aspects": {
+				"knock": 6
+			},
+			"icon": "npc.smuggler"
+		},
+		{
+			"id": "ally.visionary",
+			"label": "ビジョナリーのミレーヤ",
+			"inherits": "_ally.mortal",
+			"description": "ふっくらとした、夢のような女性。躊躇しがちだが明るい目の持ち主。",
+			"xtriggers": {
+				"fatiguing": [
+					{
+						"id": "ally.visionary.fatigued"
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": 1
+					}
+				],
+				"upgrade.exile.ally": [
+					{
+						"id": "lantern",
+						"morpheffect": "mutate",
+						"level": 1
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": -3
+					}
+				]
+			},
+			"aspects": {
+				"lantern": 6
+			},
+			"icon": "npc.visionary"
+		},
+		{
+			"id": "ally.vivisectionist",
+			"label": "生体解剖学者のジャニングス",
+			"inherits": "_ally.mortal",
+			"description": "解体の専門家であり、組み立ての専門家でもある。",
+			"xtriggers": {
+				"fatiguing": [
+					{
+						"id": "ally.vivisectionist.fatigued"
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": 1
+					}
+				],
+				"upgrade.exile.ally": [
+					{
+						"id": "heart",
+						"morpheffect": "mutate",
+						"level": 1
+					},
+					{
+						"id": "experience.exile.ally",
+						"morpheffect": "mutate",
+						"level": -3
+					}
+				]
+			},
+			"aspects": {
+				"heart": 6
+			},
+			"icon": "jannings"
+		},
+		{
+			"id": "ally.barber.fatigued",
+			"label": "夢見るゾルフィア",
+			"description": "ゾルフィアのメモには、しばらくの間「森を歩く」と走り書きされていた。",
+			"inherits": "_ally.mortal.fatigued",
+			"icon": "npc.barber",
+			"decayTo": "ally.barber",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "ally.delver.fatigued",
+			"label": "休眠中のオルソリーナ",
+			"description": "体力を回復するために、オルソリーナは大地の近くで1人で過ごせる時間が必要だ。",
+			"inherits": "_ally.mortal.fatigued",
+			"icon": "npc.delver",
+			"decayTo": "ally.delver",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "ally.fivegoer.fatigued",
+			"label": "体力を消耗したヴァシル",
+			"description": "ヴァシルの努力が、彼の形を柔らかくした。彼はポタリポタリと垂らし、鳴き声をあげながら、暖かいところへと逃げていった。",
+			"inherits": "_ally.mortal.fatigued",
+			"icon": "npc.fivegoer",
+			"decayTo": "ally.fivegoer",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "ally.ghoul.fatigued",
+			"label": "空腹のドミニカス",
+			"description": "スコップを持って、ドミニカスは空腹を満たすために、炉床へ向かった。",
+			"inherits": "_ally.mortal.fatigued",
+			"icon": "npc.ghoul",
+			"decayTo": "ally.ghoul",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "ally.huntress.fatigued",
+			"label": "隠れるララ・チャイマ",
+			"description": "チャイマは暗闇に傷心を癒しに行った。",
+			"inherits": "_ally.mortal.fatigued",
+			"icon": "npc.huntress",
+			"decayTo": "ally.huntress",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "ally.smuggler.fatigued",
+			"label": "不在のジョルジュ",
+			"description": "ジョルジュは、神経が回復するまで隠れている（と本人は言っている）。",
+			"inherits": "_ally.mortal.fatigued",
+			"icon": "npc.smuggler",
+			"decayTo": "ally.smuggler",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "ally.visionary.fatigued",
+			"label": "気が進まないミレーヤ",
+			"description": "ミレーヤは震えながら、掛け布団の下に隠れている。",
+			"inherits": "_ally.mortal.fatigued",
+			"icon": "npc.visionary",
+			"decayTo": "ally.visionary",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "ally.vivisectionist.fatigued",
+			"label": "待機中のジャニングス",
+			"description": "ジャニングスは新しい物資が届くまで第一線から退いている。",
+			"inherits": "_ally.mortal.fatigued",
+			"icon": "jannings",
+			"decayTo": "ally.vivisectionist",
+			"lifetime": 120,
+			"resaturate": true
+		},
+		{
+			"id": "op.weapon.a",
+			"label": "チャンス：野蛮な武器を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 1
+			},
+			"description": "戦争以来、銃器を見つけるのは簡単になった。[すでに野蛮な武器を持っている場合は、これが代わりになる。枯渇している場合は役に立つかもしれない。]",
+			"xtriggers": {
+				"purchase": "weapon.a",
+				"renewal.exile": "op.weapon.a"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "op.weapon.b",
+			"label": "チャンス：珍しい武器を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 1
+			},
+			"description": "アンティークショップのカウンターに、ボロボロのライフルが平然と置かれている。",
+			"xtriggers": {
+				"purchase": "weapon.b",
+				"renewal.exile": "op.weapon.b"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.weapon.d",
+			"label": "チャンス：「酒飲みのナイフ」を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 2
+			},
+			"description": "暗い質屋での思わぬ発見。",
+			"xtriggers": {
+				"purchase": "weapon.d",
+				"renewal.exile": "op.weapon.d"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.curio.forge",
+			"label": "チャンス：危険物を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 1
+			},
+			"description": "多くの人に知れ渡ったら、違法になってしまう。[鍛造の骨董品]",
+			"xtriggers": {
+				"purchase": "curio.forge",
+				"renewal.exile": "op.curio.forge"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"comments": "not unique: can be purchased multiple times"
+		},
+		{
+			"id": "op.curio.grail",
+			"label": "チャンス：赤い誘惑を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 2
+			},
+			"description": "粘り気があって甘いもの。[聖杯の骨董品。]",
+			"xtriggers": {
+				"purchase": "curio.grail",
+				"renewal.exile": "op.curio.grail"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"comments": "not unique: can be purchased multiple times"
+		},
+		{
+			"id": "op.curio.heart",
+			"label": "チャンス：粗野に彫られた彫像を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 1
+			},
+			"description": "「本物そっくりの本物だ」と、その人ははっきりと言った。[心臓の骨董品。]",
+			"xtriggers": {
+				"purchase": "curio.heart",
+				"renewal.exile": "op.curio.heart"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.curio.knock",
+			"label": "チャンス：険悪な聖像を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 1
+			},
+			"description": "私が教会に行かない理由の1つ。[開錠の骨董品。]",
+			"xtriggers": {
+				"purchase": "curio.knock",
+				"renewal.exile": "op.curio.knock"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.curio.lantern1",
+			"label": "チャンス：バラバラになった原稿を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 2
+			},
+			"description": "一握りのボロボロなページ。[灯りの骨董品。]",
+			"xtriggers": {
+				"purchase": "curio.lantern",
+				"renewal.exile": "op.curio.lantern1"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true,
+			"icon": "op.curio.lantern"
+		},
+		{
+			"id": "op.curio.lantern2",
+			"label": "チャンス：バラバラになった原稿を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 2
+			},
+			"description": "一握りのボロボロなページ。[灯りの骨董品。]",
+			"xtriggers": {
+				"purchase": "curio.lantern",
+				"renewal.exile": "op.curio.lantern2"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true,
+			"icon": "op.curio.lantern"
+		},
+		{
+			"id": "op.curio.lantern3",
+			"label": "チャンス：バラバラになった原稿を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 2
+			},
+			"description": "一握りのボロボロなページ。[灯りの骨董品。]",
+			"xtriggers": {
+				"purchase": "curio.lantern",
+				"renewal.exile": "op.curio.lantern3"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true,
+			"icon": "op.curio.lantern"
+		},
+		{
+			"id": "op.curio.moth",
+			"label": "チャンス：気味の悪い人形を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 1
+			},
+			"description": "「また戻ってくるさ、それまでは好きに使うんだな」と、売り手は暗い顔で私に言う。",
+			"xtriggers": {
+				"purchase": "curio.moth",
+				"renewal.exile": "op.curio.moth"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true,
+			"icon": "toolmothb"
+		},
+		{
+			"id": "op.rarity.forge",
+			"label": "チャンス：不思議な小骨を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 2
+			},
+			"description": "炉の中で見つけたらしい。[鍛造の珍品。]",
+			"xtriggers": {
+				"purchase": "rarity.forge",
+				"renewal.exile": "op.rarity.forge"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.rarity.heart",
+			"label": "チャンス：ヴィンテージギターを購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 3
+			},
+			"description": "ある音楽家が苦境に陥った。手放しがたい宝だろうが、食費を稼がなくてはいけない。[心臓の珍品。]",
+			"xtriggers": {
+				"purchase": "rarity.heart",
+				"renewal.exile": "op.rarity.heart"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment3",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.rarity.knock",
+			"label": "チャンス：思わぬ場所の地図を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 3
+			},
+			"description": "必ず道はある。[開錠の珍品]",
+			"xtriggers": {
+				"purchase": "rarity.knock",
+				"renewal.exile": "op.rarity.knock"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment3",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.rarity.moth",
+			"label": "チャンス：憧れをテーマにした芸術品を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 2
+			},
+			"description": "なれなかったものに通じる窓。[蛾の珍品]",
+			"xtriggers": {
+				"purchase": "rarity.moth",
+				"renewal.exile": "op.rarity.moth"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.rarity.winter",
+			"label": "チャンス：結末をテーマにした芸術品を購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 2
+			},
+			"description": "完成する前夜に、芸術家はなくなったらしい。[冬の珍品]",
+			"xtriggers": {
+				"purchase": "rarity.winter",
+				"renewal.exile": "op.rarity.winter"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.rarity.grail",
+			"label": "チャンス：特別なワインを1箱購入する？",
+			"aspects": {
+				"op": 1,
+				"price": 4
+			},
+			"description": "「神は水を作ったが、人はワインを作った」――ヴィクトル・ユーゴー。[聖杯の珍品]",
+			"xtriggers": {
+				"purchase": "rarity.grail",
+				"renewal.exile": "op.rarity.grail"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment3",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment4",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.office",
+			"label": "チャンス：目立たない事務所？",
+			"aspects": {
+				"op": 1,
+				"price": 1,
+				"purchase.property": 1
+			},
+			"description": "静かな場所を借りれば仕事が捗る。[事務所は小さな空間、逃げ場、そして、少しばかり心臓を提供してくれる。] ",
+			"xtriggers": {
+				"purchase": "office",
+				"renewal.exile": "op.office"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "op.warehouse",
+			"label": "チャンス：静かな倉庫？",
+			"aspects": {
+				"op": 1,
+				"price": 2,
+				"purchase.property": 1
+			},
+			"description": "邪魔にならない場所にスペースを借りられる。[倉庫はかなりの空間を提供する。休憩したり、騒がしいプロジェクトに取り掛かるのに適している。そして、心臓と鍛造を提供する。]",
+			"xtriggers": {
+				"purchase": "warehouse",
+				"renewal.exile": "op.warehouse"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "op.townhouse",
+			"label": "チャンス：大きなタウンハウス？",
+			"aspects": {
+				"op": 1,
+				"price": 4,
+				"purchase.property": 1
+			},
+			"description": "物件を取得できる。[タウンハウスは大きな空間を提供する。避難所や客人をもてなす場所としても適していて、心臓と聖杯を与えてくれる。ここで老後を過ごすなら、かなり快適な生活が送れるだろう。]",
+			"xtriggers": {
+				"purchase": "townhouse",
+				"renewal.exile": "op.townhouse"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment3",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment4",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "op.villa",
+			"label": "チャンス：静かな別荘？",
+			"aspects": {
+				"op": 1,
+				"price": 8,
+				"purchase.property": 1
+			},
+			"description": "物件を取得できる。[別荘は大きな空間、鍛造、心臓、聖杯を与えてくれる。老後を過ごすなら、かなり快適な生活が送れるだろう。]",
+			"xtriggers": {
+				"purchase": "villa",
+				"renewal.exile": "op.villa"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment2",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment3",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment4",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment5",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment6",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment7",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				},
+				{
+					"actionId": "use",
+					"id": "payment8",
+					"label": "支払い",
+					"required": {
+						"worth": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "op.licence.medical",
+			"label": "チャンス：医療従事者免許？",
+			"aspects": {
+				"op": 1,
+				"price.connection": 1
+			},
+			"description": "これを機に、医師の資格を極めて迅速に取ることができるはずだ。",
+			"xtriggers": {
+				"negotiation": "licence.medical",
+				"renewal.exile": "op.licence.medical"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "connection",
+					"label": "人脈",
+					"required": {
+						"connection.official": 1,
+						"connection.ruler": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "op.licence.import",
+			"label": "チャンス：輸入承認書？",
+			"aspects": {
+				"op": 1,
+				"price.connection": 1
+			},
+			"description": "通常輸入制限されている商品もあるが、ちょうど良い友人ができた。[輸入承認書は、取得した町でしか有効ではない。]",
+			"xtriggers": {
+				"negotiation": "licence.import",
+				"renewal.exile": "op.licence.import"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "connection",
+					"label": "人脈",
+					"required": {
+						"connection.official": 1,
+						"connection.ruler": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "op.connection.official",
+			"label": "チャンス：官界の人脈",
+			"aspects": {
+				"op": 1,
+				"price.lifespan.stolen": 1
+			},
+			"description": "もっと友人を利用することができるはずだ。",
+			"xtriggers": {
+				"purchase": "connection.official",
+				"renewal.exile": "op.connection.official"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"lifespan.stolen": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "op.connection.ruler",
+			"label": "チャンス：支配者の人脈？",
+			"aspects": {
+				"op": 1,
+				"price.lifespan.stolen": 10
+			},
+			"description": "本当に重要な人と知り合う機会。",
+			"xtriggers": {
+				"purchase": "connection.ruler",
+				"renewal.exile": "op.connection.ruler"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"decade.stolen": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "op.connection.holy",
+			"label": "チャンス：聖人の人脈？",
+			"aspects": {
+				"op": 1,
+				"price.lifespan.stolen": 1
+			},
+			"description": "慈善心は心を澄ます。",
+			"xtriggers": {
+				"purchase": "connection.holy",
+				"renewal.exile": "op.connection.holy"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"lifespan.stolen": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "op.connection.radicals",
+			"label": "チャンス：過激派の人脈？",
+			"aspects": {
+				"op": 1,
+				"price.lifespan.stolen": 1
+			},
+			"description": "悲惨な結果を招くことになるかもしれないが、ここに長居するつもりはない。",
+			"xtriggers": {
+				"purchase": "connection.radicals",
+				"renewal.exile": "op.connection.radicals"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"lifespan.stolen": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "op.connection.underworld",
+			"label": "チャンス：アンダーワールドの人脈？",
+			"aspects": {
+				"op": 1,
+				"price.lifespan.stolen": 1
+			},
+			"description": "私は多くの修羅場をくぐってきた。そういう経験を積んでいくと、特定の類のプロと知り合っていく。そういうものなんだ。",
+			"xtriggers": {
+				"purchase": "connection.underworld",
+				"renewal.exile": "op.connection.underworld"
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "payment",
+					"label": "支払い",
+					"required": {
+						"lifespan.stolen": 1
+					},
+					"consumes": true
+				}
+			],
+			"lifetime": 300
+		},
+		{
+			"id": "curio",
+			"label": "魅惑的な骨董品",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 1,
+				"grail": 2,
+				"worth": 1
+			},
+			"description": "私が棚のある生活に戻らないと役に立たないが、棚の上をおしゃれに飾れそうな物。",
+			"icon": "locationauctionhouse"
+		},
+		{
+			"id": "curio.forge",
+			"label": "骨董品：高僧の粉",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"forge": 4,
+				"grail": 2,
+				"supplies": 1,
+				"worth": 1
+			},
+			"description": "1つまみで雷に打たれたテルミットのように爆破する。",
+			"xtriggers": {
+				"fatiguing": "husk"
+			},
+			"icon": "ingredientforgeb"
+		},
+		{
+			"id": "curio.grail",
+			"label": "骨董品：クレーム・ド・カーマイン",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 1,
+				"grail": 8,
+				"supplies": 1,
+				"worth": 2
+			},
+			"description": "美味しくなければ、血の味がしたと言ってもいいと思う。",
+			"xtriggers": {
+				"fatiguing": "husk"
+			},
+			"icon": "ingredientgraild"
+		},
+		{
+			"id": "curio.heart",
+			"label": "骨董品：ヴェネツィアの人形",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 1,
+				"heart": 4,
+				"grail": 2,
+				"worth": 1
+			},
+			"description": "不細工な小物だが、そこには心強い温かさがある。",
+			"icon": "toolheartb"
+		},
+		{
+			"id": "curio.knock",
+			"label": "骨董品：ボヘミアの聖人",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"knock": 4,
+				"grail": 2,
+				"worth": 1
+			},
+			"description": "異教徒たちが描かれた厄介な絵画。あるいは教会が描かれているのだろうが、私は歴史に詳しくない。この偶像に鍵の力があるのは確かだ。",
+			"icon": "toolknockb"
+		},
+		{
+			"id": "curio.lantern",
+			"label": "骨董品：太陽の書のページ",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 1,
+				"lantern": 4,
+				"grail": 2,
+				"worth": 2
+			},
+			"slots": [
+				{
+					"id": "parttwo",
+					"label": "ページ",
+					"actionId": "use",
+					"required": {
+						"curio.lantern": 1
+					}
+				},
+				{
+					"id": "parttwo",
+					"label": "ページ",
+					"actionId": "use",
+					"required": {
+						"curio.lantern": 1
+					}
+				},
+				{
+					"id": "cost",
+					"label": "費用",
+					"actionId": "use",
+					"description": "専門家を雇って、太陽の書を復元して、製本し直してもらわなければいけない。",
+					"required": {
+						"cash": 1
+					},
+					"consumes": true
+				}
+			],
+			"description": "豪華な挿絵の入ったページは、別に売るために元の装丁から切り取られたようだ。何語かは分からないが（ペルシャ語かアラビア語か？）、明るいところで読むと、どういうわけか何が書かれているか理解できる。時の神々の争い、隠された血統、忠誠心を砕いた秘密......実用的な情報は少ないが、魂を研ぎ澄ます響きがある。"
+		},
+		{
+			"id": "curio.morgen",
+			"label": "骨董品：マチュティーヌのフルート",
+			"aspects": {
+				"winter": 4,
+				"uses.remaining": 1
+			},
+			"description": "「誰も使わなくなってしまったから、実用的で魅力的なものを作ってみたの。どうかしら？」[海港カードを持っていないと使えない。]",
+			"icon": "toolwinterb"
+		},
+		{
+			"id": "memento.edge",
+			"label": "ラビトの形見",
+			"description": "創造者の思い通りにならなかった者の残骸。",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 1,
+				"edge": 8,
+				"supplies": 1,
+				"pentiment": 1,
+				"pentiment.3": 1
+			},
+			"icon": "ingredientedged",
+			"xtriggers": {
+				"fatiguing": "husk"
+			}
+		},
+		{
+			"id": "memento.grail",
+			"label": "汚れた手袋",
+			"description": "最初は「まだ温かいのか」と思うが、しばらくすると、いつまでも温かいままだということに気づく。",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"grail": 4,
+				"worth": 1,
+				"pentiment": 1,
+				"pentiment.10": 1
+			},
+			"icon": "toolgrailb"
+		},
+		{
+			"id": "memento.grail.lantern",
+			"label": "キルカ＝コール",
+			"description": "空気の世界で初めて着た衣服だった。",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"grail": 2,
+				"lantern": 2,
+				"pentiment": 1,
+				"pentiment.4": 1
+			},
+			"icon": "ingredientgrailf"
+		},
+		{
+			"id": "memento.knock",
+			"label": "半分吸われたタバコ",
+			"aspects": {
+				"pentiment": 1,
+				"pentiment.2": 1,
+				"knock": 2,
+				"heart": 2
+			},
+			"description": "かつて、権力と分裂の場と時代で、反逆者である開錠の長生者の手と口に触れた物。少なくとも1つの歴史の中で、彼はこのタバコを吸い終えた。",
+			"icon": "bytflavour"
+		},
+		{
+			"id": "memento.lantern",
+			"label": "日焼けした石",
+			"description": "昔のままではない人からもらった贈り物。",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 1,
+				"lantern": 4,
+				"pentiment": 1,
+				"pentiment.3": 1
+			},
+			"icon": "toollanternb"
+		},
+		{
+			"id": "curio.moth",
+			"label": "骨董品：すり切れた天使",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"moth": 4,
+				"grail": 2
+			},
+			"description": "開かずの間のような匂いがする。なぜか見ていないうちに形が変わっている気がするが、まだその瞬間を押さえられていない。[これを買う人はいない。]",
+			"icon": "toolmothb"
+		},
+		{
+			"id": "rarity.forge",
+			"label": "珍品：奇妙な小さな骨",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 1,
+				"forge": 8,
+				"grail": 4,
+				"worth": 2
+			},
+			"description": "小さくて壊れやすいように見えるが、とんでもない威力を持っている。",
+			"icon": "toolforged"
+		},
+		{
+			"id": "rarity.heart",
+			"label": "珍品：グレーゼのギター",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 2,
+				"heart": 8,
+				"grail": 6,
+				"worth": 3,
+				"pentiment": 1,
+				"pentiment.8": 1
+			},
+			"description": "ストラディヴァリ家からずっと前に購入されたギターで、柔らかな光を放つイリリアン・メイプル材で作られ、アーモンドの葉とザクロの模様が象嵌されている。去年、グレーフィン・フォン・グレーゼのコレクションから盗まれたという噂を聞いたことがある。この種の楽器の中で演奏可能な状態で残っているのは、これが最後かもしれない。"
+		},
+		{
+			"id": "rarity.lantern",
+			"label": "珍品：修理された太陽の書",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 2,
+				"lantern": 8,
+				"grail": 4,
+				"worth": 5,
+				"pentiment": 1,
+				"pentiment.5": 1
+			},
+			"description": "この中には忘れられた黄金の真実がある。それは太陽が分裂する前の時代の真実だ。私には理解できない。私のために書かれたものではない。しかし、その真実の反射光でさえも光なのだ。"
+		},
+		{
+			"id": "rarity.knock",
+			"label": "珍品：思わぬ場所の地図",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 1,
+				"knock": 8,
+				"grail": 4,
+				"worth": 3
+			},
+			"description": "これはヨーロッパの都市の地図として始まった。何十年にもわたって、それは拡張され、熟練者、強盗、兵士、スパイなど数多くの手によって、秘密のルートや隠れ場所などが加えられている。"
+		},
+		{
+			"id": "rarity.knock.poison",
+			"label": "見知らぬ人の水",
+			"description": "粘性のある合鍵のような、激しく侵略的な唾液が入った小瓶。",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"knock": 8,
+				"edge": 8,
+				"supplies": 1,
+				"worth": 1
+			},
+			"icon": "ingredientknockd",
+			"xtriggers": {
+				"fatiguing": "husk"
+			}
+		},
+		{
+			"id": "rarity.moth",
+			"label": "珍品：「追憶の雨のような緑」",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 1,
+				"moth": 8,
+				"grail": 4,
+				"worth": 2,
+				"pentiment": 1,
+				"pentiment.7": 1
+			},
+			"description": "緑と金色の栄光に包まれた最後の地平線を描いた油彩画。"
+		},
+		{
+			"id": "rarity.winter",
+			"label": "「露になったアビドス」",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 1,
+				"winter": 8,
+				"grail": 4,
+				"worth": 2
+			},
+			"description": "雪に埋もれた街の油絵。暗い塔の向こうには、鎌のような月が昇っている。"
+		},
+		{
+			"id": "rarity.grail",
+			"label": "珍品：1865年、ドメーヌ・ラヴェリーヌひと箱",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"comfort": 2,
+				"grail": 12,
+				"worth": 4
+			},
+			"description": "大飢饉以前の時代の秘密があふれる<i>テロワール</i>で絞られたヴィンテージワイン。規律と忍耐力、決断力があれば、ボトルを1本空けずに、このワインを<i>1杯だけ</i>楽しむことができる。"
+		},
+		{
+			"id": "office",
+			"label": "目立たない事務所",
+			"aspects": {
+				"asset": 1,
+				"space": 1,
+				"heart": 2,
+				"worth": 1,
+				"comfort": 1,
+				"deception": 1
+			},
+			"description": "目立ちすぎず、遠すぎない。",
+			"icon": "vaultcapital1"
+		},
+		{
+			"id": "warehouse",
+			"label": "静かな倉庫",
+			"aspects": {
+				"asset": 1,
+				"space": 2,
+				"forge": 4,
+				"heart": 4,
+				"worth": 2,
+				"deception": 1
+			},
+			"description": "他に勧められるところはないが、十分なスペースがある。",
+			"icon": "vaultcapitaldefault"
+		},
+		{
+			"id": "townhouse",
+			"label": "大きなタウンハウス",
+			"aspects": {
+				"asset": 1,
+				"space": 2,
+				"comfort": 4,
+				"heart": 4,
+				"grail": 4,
+				"worth": 4,
+				"deception": 1
+			},
+			"description": "通りすがる人たちが羨ましそうに見つめる。カーテンはしっかりと閉めておこう。",
+			"icon": "hq.townhouse"
+		},
+		{
+			"id": "townhouse.jannings",
+			"label": "ジャニングスのタウンハウス",
+			"aspects": {
+				"asset": 1,
+				"space": 2,
+				"comfort": 4,
+				"heart": 4,
+				"grail": 4,
+				"deception": 1
+			},
+			"description": "通りすがる人たちが羨ましそうに見つめる。カーテンはしっかりと閉めておこう。",
+			"icon": "hq.townhouse"
+		},
+		{
+			"id": "villa",
+			"label": "静かな別荘",
+			"aspects": {
+				"asset": 1,
+				"space": 2,
+				"comfort": 8,
+				"forge": 6,
+				"heart": 6,
+				"grail": 6,
+				"deception": 1,
+				"worth": 8
+			},
+			"description": "ここなら幸せに余生を送ることができるだろう。差し迫った現実的な問題がなければの話だが......",
+			"icon": "vaultcontinent5"
+		},
+		{
+			"id": "licence.medical",
+			"label": "医療従事者免許証",
+			"aspects": {
+				"asset": 1,
+				"portable": 1,
+				"worth": 1,
+				"proof": 1
+			},
+			"description": "医療従事者免許証に書かれた名前は私のものではないが、似たようなものだ。",
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "location",
+					"label": "場所",
+					"required": {
+						"space": 1
+					}
+				},
+				{
+					"actionId": "use",
+					"id": "year",
+					"label": "年",
+					"required": {
+						"year.stolen": 1
+					}
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "licence.import",
+			"label": "輸入承認書",
+			"aspects": {
+				"asset": 1,
+				"worth": 1,
+				"proof": 1
+			},
+			"description": "輸入承認書に書かれた名前は私のものではないが、似たようなものだ。[輸入承認証は、取得した街のみで有効。]",
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "location",
+					"label": "場所",
+					"required": {
+						"space": 2
+					}
+				},
+				{
+					"actionId": "use",
+					"id": "means",
+					"label": "手段",
+					"required": {
+						"op.sea": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "connection.official",
+			"label": "官界の人脈",
+			"aspects": {
+				"connection": 1,
+				"asset": 1,
+				"deception": 1,
+				"grail": 6,
+				"lantern": 6
+			},
+			"description": "権力者との互いにメリットのある関係。",
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "consideration",
+					"label": "検討",
+					"required": {
+						"worth": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"fatiguing": "op.connection.official",
+				"provoking": "connection.underworld"
+			}
+		},
+		{
+			"id": "connection.ruler",
+			"label": "人脈：支配者",
+			"aspects": {
+				"connection": 1,
+				"asset": 1,
+				"deception": 1,
+				"edge": 10,
+				"grail": 10,
+				"knock": 10
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "year",
+					"label": "年",
+					"required": {
+						"year.stolen": 1
+					}
+				}
+			],
+			"description": "実権を握る人との互いにメリットのある関係。",
+			"xtriggers": {
+				"fatiguing": "op.connection.ruler",
+				"provoking": "connection.radicals"
+			}
+		},
+		{
+			"id": "connection.holy",
+			"label": "人脈：聖人",
+			"aspects": {
+				"connection": 1,
+				"asset": 1,
+				"deception": 1,
+				"heart": 4,
+				"lantern": 4
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "venue",
+					"label": "場所",
+					"required": {
+						"space": 2
+					}
+				},
+				{
+					"actionId": "use",
+					"id": "year",
+					"label": "年",
+					"required": {
+						"year.stolen": 1
+					}
+				}
+			],
+			"description": "学のある聖人との互いにメリットのある関係。",
+			"xtriggers": {
+				"fatiguing": "op.connection.holy",
+				"provoking": "connection.radicals"
+			}
+		},
+		{
+			"id": "connection.radicals",
+			"label": "人脈：過激派",
+			"aspects": {
+				"connection": 1,
+				"asset": 1,
+				"deception": 1,
+				"edge": 8,
+				"moth": 8,
+				"forge": 6
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "direction",
+					"label": "方向",
+					"required": {
+						"forge": 2,
+						"winter": 2
+					}
+				},
+				{
+					"actionId": "use",
+					"id": "city",
+					"label": "街",
+					"required": {
+						"troubled": 1
+					},
+					"forbidden": {
+						"destination": 1
+					}
+				},
+				{
+					"actionId": "use",
+					"id": "defiance",
+					"label": "反抗心",
+					"required": {
+						"temptation.defiance": 1
+					}
+				}
+			],
+			"description": "革命家や他の熱狂者との互いにメリットのある関係。",
+			"xtriggers": {
+				"fatiguing": "op.connection.radicals",
+				"provoking": "connection.official"
+			}
+		},
+		{
+			"id": "connection.underworld",
+			"label": "人脈：裏社会",
+			"aspects": {
+				"connection": 1,
+				"asset": 1,
+				"deception": 1,
+				"edge": 8,
+				"moth": 8,
+				"knock": 6
+			},
+			"slots": [
+				{
+					"actionId": "use",
+					"id": "means",
+					"label": "手段",
+					"required": {
+						"forge": 1,
+						"op.sea": 1,
+						"year.stolen": 1
+					}
+				},
+				{
+					"actionId": "use",
+					"id": "location",
+					"label": "場所",
+					"required": {
+						"space": 2
+					}
+				}
+			],
+			"description": "その道のプロとの互いにメリットのある関係。",
+			"xtriggers": {
+				"fatiguing": "op.connection.underworld",
+				"provoking": "connection.official"
+			}
+		},
+		{
+			"id": "ticket.train",
+			"label": "脱出計画",
+			"aspects": {
+				"op": 1
+			},
+			"description": "安全な場所に行かなくては――少なくともしばらくの間は。"
+		},
+		{
+			"id": "weapon.a",
+			"label": "野蛮な武器",
+			"aspects": {
+				"weapon": 1,
+				"edge": 2,
+				"asset": 1,
+				"portable": 1,
+				"worth": 1
+			},
+			"xtriggers": {
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.foe.weapon": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling.weapon": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"fatiguing": "weapon.a.exhausted"
+			},
+			"description": "平凡な重さ。",
+			"icon": "weapon.a",
+			"uniquenessgroup": "uq.weapon.profane"
+		},
+		{
+			"id": "weapon.b",
+			"label": "ライオンハンターのライフル",
+			"aspects": {
+				"weapon": 1,
+				"edge": 4,
+				"uses.remaining": 3,
+				"worth": 2,
+				"asset": 1,
+				"portable": 1
+			},
+			"xtriggers": {
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.foe.weapon": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling.weapon": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"fatiguing": "weapon.b.2.exhausted"
+			},
+			"description": "多翼の者たちの五重の印が刻まれたアンティークのライフル。テーナイト鉄球（怪物殺し）が3個残っている。[ライオンハンターのライフルはすぐにリフレッシュするが、３回までしか使えない。]",
+			"icon": "weapon.b",
+			"unique": true
+		},
+		{
+			"id": "weapon.b.2",
+			"label": "ライオンハンターのライフル",
+			"aspects": {
+				"weapon": 1,
+				"edge": 4,
+				"uses.remaining": 2,
+				"worth": 2,
+				"asset": 1,
+				"portable": 1
+			},
+			"xtriggers": {
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.foe.weapon": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling.weapon": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"fatiguing": "weapon.b.1.exhausted"
+			},
+			"description": "多翼の者たちの五重の印が刻まれたアンティークのライフル。残っているのはテーナイト鉄球（怪物殺し）2個のみ。[ライオンハンターのライフルは神聖な武器だが、あと2回しか発砲できない。]",
+			"icon": "weapon.b",
+			"unique": true
+		},
+		{
+			"id": "weapon.b.1",
+			"label": "ライオンハンターのライフル",
+			"aspects": {
+				"weapon": 1,
+				"edge": 4,
+				"uses.remaining": 1,
+				"worth": 2,
+				"asset": 1,
+				"portable": 1
+			},
+			"xtriggers": {
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.foe.weapon": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling.weapon": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"fatiguing": "curio"
+			},
+			"description": "多翼の者たちの五重の印が刻まれたアンティークのライフル。残っているのはテーナイト鉄球1個のみ。[ライオンハンターのライフルは神聖な武器だが、あと1回しか使えない。]",
+			"icon": "weapon.b",
+			"unique": true
+		},
+		{
+			"id": "weapon.c",
+			"label": "ボロボロの剣、エブレエル",
+			"aspects": {
+				"weapon": 1,
+				"edge": 6,
+				"knock": 6,
+				"forge": 6,
+				"worth": 3,
+				"asset": 1,
+				"portable": 1,
+				"pentiment": 1,
+				"pentiment.1": 1
+			},
+			"xtriggers": {
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.foe.weapon": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling.weapon": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"fatiguing": "weapon.c.exhausted"
+			},
+			"description": "その長い歴史の中で（イッツチョクによると）、この武器は「ゲートメーカー」、「スカーソード」、「オーファン」とも呼ばれてきた。とある季節に、未開の都市に対抗する王のために作られたものらしいが、異なる方法で使われるようになった。定命の者や不死の者を切り刻むのに適している。[敵がエブレエルを壊すことはできない。]",
+			"unique": true
+		},
+		{
+			"id": "weapon.d",
+			"label": "ビエッデの刃",
+			"aspects": {
+				"weapon": 1,
+				"edge": 8,
+				"worth": 3,
+				"asset": 1,
+				"portable": 1
+			},
+			"xtriggers": {
+				"striking.foe": [
+					{
+						"id": "wound.foe.unstanchable",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling.unstanchable",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.foe.weapon": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling.weapon": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"fatiguing": "weapon.d.exhausted"
+			},
+			"description": "ビエッデはアラビア語で「蚊」を意味する言葉だと言う説もあるが、私の敵はビエッデを大佐の名を持つ者たちの1人とみなしていた。[この刃の傷は治るまでに時間がかかる。]",
+			"icon": "tooledged",
+			"unique": true
+		},
+		{
+			"id": "weapon.e",
+			"label": "イムフルの雨覆い羽",
+			"aspects": {
+				"weapon": 1,
+				"edge": 10,
+				"worth": 4,
+				"asset": 1,
+				"portable": 1
+			},
+			"xtriggers": {
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.foe.weapon": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling.weapon": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"fatiguing": "weapon.e.exhausted"
+			},
+			"description": "たいしたものには見えないが、触れると肉は朽ちる。ナナトグロを内側から殺した武器の最後の一片なのかもしれない。",
+			"unique": true
+		},
+		{
+			"id": "weapon.f.colonel",
+			"label": "ヒステッドのダーツ",
+			"aspects": {
+				"weapon": 1,
+				"edge": 12,
+				"worth": 1,
+				"asset": 1,
+				"portable": 1
+			},
+			"xtriggers": {
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.foe.weapon": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling.weapon": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"fatiguing": "husk"
+			},
+			"description": "不死身の者を狩るために雇われたトラグラリは、大佐のヒスティッドからその技術を学んだ。ダーツの先にはスカプトドンの歯が付いている。[これは一度しか使えない神聖な武器。]",
+			"icon": "ingredientedgef"
+		},
+		{
+			"id": "weapon.f.lionsmith",
+			"label": "スカプトドンの犠牲",
+			"aspects": {
+				"weapon": 1,
+				"edge": 12,
+				"worth": 1,
+				"asset": 1,
+				"portable": 1
+			},
+			"xtriggers": {
+				"striking.foe": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.foe.weapon": [
+					{
+						"id": "wound.foe",
+						"morpheffect": "spawn"
+					}
+				],
+				"striking.underling.weapon": [
+					{
+						"id": "wound.underling",
+						"morpheffect": "spawn"
+					}
+				],
+				"fatiguing": "husk"
+			},
+			"description": "スカプトドンが戦場で倒れると、ライオンズスミスの使用人はしばしば、その歯と爪を武器に成形してその犠牲に敬意を表す。[これは一度しか使えない神聖な武器。]",
+			"icon": "ingredientedgef"
+		},
+		{
+			"id": "weapon.a.exhausted",
+			"label": "野蛮な武器（準備中）",
+			"aspects": {
+				"exhausted": 1,
+				"asset": 1,
+				"portable": 1,
+				"worth": 1
+			},
+			"description": "平凡な重さ。",
+			"lifetime": 120,
+			"decayTo": "weapon.a",
+			"resaturate": true,
+			"icon": "weapon.a",
+			"uniquenessgroup": "uq.weapon.profane"
+		},
+		{
+			"id": "weapon.b.2.exhausted",
+			"label": "ライオンハンターのライフル（準備中）",
+			"aspects": {
+				"exhausted": 1,
+				"uses.remaining": 2,
+				"asset": 1,
+				"portable": 1,
+				"worth": 2
+			},
+			"description": "多翼の者たちの五重の印が刻まれたアンティークのライフル。[ライオンハンターのライフルは神聖な武器だが、あと2回しか発砲できない。]",
+			"lifetime": 90,
+			"decayTo": "weapon.b.2",
+			"resaturate": true,
+			"icon": "weapon.b"
+		},
+		{
+			"id": "weapon.b.1.exhausted",
+			"label": "ライオンハンターのライフル（準備中）",
+			"aspects": {
+				"exhausted": 1,
+				"uses.remaining": 1,
+				"asset": 1,
+				"portable": 1,
+				"worth": 2
+			},
+			"description": "多翼の者たちの五重の印が刻まれたアンティークのライフル。[ライオンハンターのライフルは神聖な武器だが、あと1回しかj発砲できない。]",
+			"lifetime": 90,
+			"decayTo": "weapon.b.1",
+			"resaturate": true,
+			"icon": "weapon.b"
+		},
+		{
+			"id": "weapon.c.exhausted",
+			"label": "ボロボロの剣、エブレエル（準備中）",
+			"aspects": {
+				"exhausted": 1,
+				"asset": 1,
+				"portable": 1,
+				"pentiment": 1,
+				"pentiment.1": 1,
+				"worth": 3
+			},
+			"description": "その長い歴史の中で、この武器は「ゲートメーカー」、「スカーソード」、「オーファン」とも呼ばれてきた。包囲された都市に対抗する王の命令で作られたものらしいが、定命の者や不死の者を切り刻むのに適している。",
+			"lifetime": 90,
+			"decayTo": "weapon.c",
+			"resaturate": true,
+			"icon": "weapon.c"
+		},
+		{
+			"id": "weapon.d.exhausted",
+			"label": "ビエッデの刃（準備中）",
+			"aspects": {
+				"exhausted": 1,
+				"asset": 1,
+				"portable": 1,
+				"worth": 3
+			},
+			"description": "この刃で切られた傷は、傷が治るまで出血が止まらない。ある説によると、ビエッデは18世紀のトゥールーズでナイフを収集する外科医であったと言われている。ビエッデはアラビア語で「蚊」を意味する言葉が転訛したものだという説もある。私の敵はビエッデを大佐の名を持つ者たちの1人とみなしていた。",
+			"lifetime": 90,
+			"decayTo": "weapon.d",
+			"resaturate": true,
+			"icon": "tooledged"
+		},
+		{
+			"id": "weapon.e.exhausted",
+			"label": "イムフルの雨覆い羽（準備中）",
+			"aspects": {
+				"exhausted": 1,
+				"asset": 1,
+				"portable": 1,
+				"worth": 4
+			},
+			"description": "たいしたものには見えないが、触れると肉は朽ちる。ナナトグロを内側から殺した武器の最後の一片なのかもしれない。",
+			"lifetime": 60,
+			"decayTo": "weapon.e",
+			"resaturate": true,
+			"icon": "weapon.e"
+		},
+		{
+			"id": "obscurity",
+			"label": "不明瞭",
+			"description": "これが精算人の主に対する唯一の防御かもしれないが、全く防御にならないかもしれない。",
+			"aspects": {
+				"moth": 2,
+				"winter": 2,
+				"supplies": 1
+			},
+			"xtriggers": {
+				"fatiguing": "husk"
+			}
+		},
+		{
+			"id": "temptation.obscurity",
+			"label": "誘惑：脱出",
+			"aspects": {
+				"desire": 1,
+				"choice.merciful": 1
+			},
+			"unique": true,
+			"slots": [
+				{
+					"actionId": "send",
+					"id": "obscurity1",
+					"label": "不明瞭",
+					"required": {
+						"obscurity": 1
+					}
+				},
+				{
+					"actionId": "send",
+					"id": "obscurity2",
+					"label": "不明瞭",
+					"required": {
+						"obscurity": 1
+					}
+				},
+				{
+					"actionId": "send",
+					"id": "obscurity3",
+					"label": "不明瞭",
+					"required": {
+						"obscurity": 1
+					}
+				},
+				{
+					"actionId": "send",
+					"id": "obscurity4",
+					"label": "不明瞭",
+					"required": {
+						"obscurity": 1
+					}
+				},
+				{
+					"actionId": "send",
+					"id": "obscurity5",
+					"label": "不明瞭",
+					"required": {
+						"obscurity": 1
+					}
+				},
+				{
+					"actionId": "send",
+					"id": "obscurity6",
+					"label": "不明瞭",
+					"required": {
+						"obscurity": 1
+					}
+				},
+				{
+					"actionId": "send",
+					"id": "obscurity7",
+					"label": "不明瞭",
+					"required": {
+						"obscurity": 1
+					}
+				}
+			],
+			"description": "私を信頼してくれた精算人の主から、何年もかけて財産を盗んできた。彼は大陸を越えて私を追うだろうが、彼の手の届く範囲にも限界がある。[不明瞭カードを7枚獲得し、精算人の敵に挑発的なメッセージを送り、永遠に姿を消し、ゲームに勝利する。]"
+		},
+		{
+			"id": "decade.stolen",
+			"label": "盗まれた10年",
+			"description": "「灰の記録」に記載されているように、惜しみなく捧げられた10年分の命。",
+			"aspects": {
+				"lifespan.stolen": 10
+			}
+		},
+		{
+			"id": "year.stolen",
+			"label": "盗まれた年",
+			"description": "「灰の記録」に記載されているように、惜しみなく捧げられた1年分の命。",
+			"aspects": {
+				"lifespan.stolen": 1
+			}
+		},
+		{
+			"id": "trace",
+			"label": "痕跡",
+			"description": "追っ手に気づかれそうな裏切りの手掛かり[盤面上の痕跡が多いほど、精算人の出現が早くなり、より強力になる。5枚以上あれば、敵自身が登場する可能性も出てくる。]",
+			"slots": [
+				{
+					"id": "assistance",
+					"actionId": "relinquish",
+					"label": "援助",
+					"required": {
+						"deception": 1
+					},
+					"consumes": true
+				},
+				{
+					"id": "assistance2",
+					"actionId": "relinquish",
+					"label": "援助",
+					"required": {
+						"deception": 1
+					},
+					"consumes": true
+				}
+			],
+			"icon": "rumour"
+		},
+		{
+			"id": "diversion.exile",
+			"label": "Diversion Effect for False Trails",
+			"description": "DO NOT TRANSLATE",
+			"isAspect": true,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "trail.false.exile",
+			"label": "偽の足跡",
+			"description": "自分がいない場所にいるという嘘だが説得力のある証拠。[これが盤面にある間は、現在いる街に精算人がたどり着くことはないが、すでに精算人がいる場合は、何の役にも立たない。]",
+			"aspects": {
+				"diversion.exile": 1
+			},
+			"lifetime": 360
+		},
+		{
+			"id": "trail.false.bribe",
+			"label": "虚偽報告",
+			"description": "追っ手は、私が街を出たと報告した。他の捜索者が到着するまでは、少しの間だが自由でいられる。[これが盤面にある間は、現在いる街に精算人がたどり着くことはないが、すでに精算人がいる場合は、何の役にも立たない。]",
+			"aspects": {
+				"diversion.exile": 1
+			},
+			"lifetime": 60,
+			"icon": "trail.false.exile"
+		},
+		{
+			"id": "trail.false.exile.nameless",
+			"label": "名もなき祝福",
+			"description": "しばらくの間は、霧の中を歩こう。[これが盤面にある間は、現在いる街に精算人がたどり着くことはないが、すでに精算人がいる場合は、何の役にも立たない。]",
+			"aspects": {
+				"diversion.exile": 1
+			},
+			"lifetime": 720,
+			"icon": "nameless"
+		},
+		{
+			"id": "domicile.bornholm",
+			"label": "サンシャイン島",
+			"aspects": {
+				"domicile": 1,
+				"end": 1,
+				"remote": 1,
+				"rkx.underlings.blocker": 1
+			},
+			"description": "日当たりが良いことで有名で、少数の芸術家たちがここで活動している。嵐にさらされたバルト海の花崗岩が転がる島にしては、前向きな名前である。",
+			"icon": " end.bornholm",
+			"unique": true
+		},
+		{
+			"id": "domicile.cheko",
+			"label": "傷ついた月の湖",
+			"aspects": {
+				"domicile": 1,
+				"end": 1,
+				"remote": 1,
+				"rkx.underlings.blocker": 1
+			},
+			"description": "シベリアのタイガの森の奥深く、狩猟小屋が氷のように青い湖へと優雅に朽ちていく。その湖は、落ちてきた月のかけらが森に傷跡を残したものだと言われている。",
+			"icon": " end.cheko",
+			"unique": true
+		},
+		{
+			"id": "domicile.ghardaia",
+			"label": "ペンタポリス",
+			"aspects": {
+				"domicile": 1,
+				"end": 1,
+				"remote": 1,
+				"rkx.underlings.blocker": 1
+			},
+			"description": "最も偉大な砂漠の石灰岩の高台に、モザバイト人が民衆の避難所となるように５つの城塞村を作った。今、その１つが私の避難所になっている。",
+			"icon": " end.ghardaia",
+			"unique": true
+		},
+		{
+			"id": "domicile.messana",
+			"label": "鎌の庵",
+			"aspects": {
+				"domicile": 1,
+				"end": 1,
+				"remote": 1,
+				"rkx.underlings.blocker": 1
+			},
+			"description": "殺伐とした砂地の向こうには、奇妙なほど健康な村人たちがすむオアシスがある。丘の上には、日当たりの良い岩場の独房に3つの窓がついている。",
+			"icon": " end.messana",
+			"unique": true
+		},
+		{
+			"id": "domicile.morbihan",
+			"label": "船長の修道院",
+			"aspects": {
+				"domicile": 1,
+				"end": 1,
+				"remote": 1,
+				"rkx.underlings.blocker": 1
+			},
+			"description": "西の海への入り口であるモルビハンと呼ばれる小さな海に船乗りで有名な島がある。そして、その最西端にあるのは、静かな修道院。修道士たちは静かな生活を楽しんでいるが、安全な場所を提供してくれることで知られている。",
+			"icon": " end.morbihan",
+			"unique": true
+		},
+		{
+			"id": "domicile.paro",
+			"label": "トラの巣",
+			"aspects": {
+				"domicile": 1,
+				"end": 1,
+				"remote": 1,
+				"rkx.underlings.blocker": 1
+			},
+			"description": "永遠の雪が積もる高き地に、金剛乗の寺院は岩壁にしがみつくように建てられている。その姿は、苔に咲く花のようである。",
+			"icon": " end.paro",
+			"unique": true
+		},
+		{
+			"id": "domicile.slettnes",
+			"label": "フォグファイアの岬",
+			"aspects": {
+				"domicile": 1,
+				"end": 1,
+				"remote": 1,
+				"rkx.underlings.blocker": 1
+			},
+			"description": "ノルウェー最北端の氷に覆われた岬に、海に背を向けて誇らしげに立つ孤独な灯台がある。",
+			"icon": " end.slettnes",
+			"unique": true
+		},
+		{
+			"id": "end.bornholm",
+			"label": "サンシャイン島",
+			"aspects": {
+				"destination": 1,
+				"end": 1,
+				"remote": 1
+			},
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "domicile.bornholm",
+						"morpheffect": "transform"
+					}
+				]
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "日当たりが良いことで有名で、少数の芸術家たちがここで活動している。嵐にさらされたバルト海の花崗岩が転がる島にしては、前向きな名前である。",
+			"unique": true
+		},
+		{
+			"id": "end.cheko",
+			"label": "傷ついた月の湖",
+			"aspects": {
+				"destination": 1,
+				"end": 1,
+				"remote": 1
+			},
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "domicile.cheko",
+						"morpheffect": "transform"
+					}
+				]
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "シベリアのタイガの森の奥深く、狩猟小屋が氷のように青い湖へと優雅に朽ちていく。その湖は、落ちてきた月のかけらが森に傷跡を残したものだと言われている。",
+			"unique": true
+		},
+		{
+			"id": "end.ghardaia",
+			"label": "ペンタポリス",
+			"aspects": {
+				"destination": 1,
+				"end": 1,
+				"remote": 1
+			},
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "domicile.ghardaia",
+						"morpheffect": "transform"
+					}
+				]
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "最も偉大な砂漠の石灰岩の高台に、モザバイト人が民衆の避難所となるように５つの城塞村を作った。今、その１つが私の避難所になっている。",
+			"unique": true
+		},
+		{
+			"id": "end.messana",
+			"label": "鎌の庵",
+			"aspects": {
+				"destination": 1,
+				"end": 1,
+				"remote": 1
+			},
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "domicile.messana",
+						"morpheffect": "transform"
+					}
+				]
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "殺伐とした砂地の向こうには、奇妙なほど健康な村人たちがすむオアシスがある。丘の上には、日当たりの良い岩場の独房に3つの窓がついている。",
+			"unique": true
+		},
+		{
+			"id": "end.morbihan",
+			"label": "船長の修道院",
+			"aspects": {
+				"destination": 1,
+				"end": 1,
+				"remote": 1
+			},
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "domicile.morbihan",
+						"morpheffect": "transform"
+					}
+				]
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "西の海への入り口であるモルビハンと呼ばれる小さな海に船乗りで有名な島がある。そして、その最西端にあるのは、静かな修道院。修道士たちは静かな生活を楽しんでいるが、安全な場所を提供してくれることで知られている。",
+			"unique": true
+		},
+		{
+			"id": "end.paro",
+			"label": "トラの巣",
+			"aspects": {
+				"destination": 1,
+				"end": 1,
+				"remote": 1
+			},
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "domicile.paro",
+						"morpheffect": "transform"
+					}
+				]
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "永遠の雪が積もる高き地に、金剛乗の寺院は岩壁にしがみつくように建てられている。その姿は、苔に咲く花のようである。",
+			"icon": "vaultcontinent3",
+			"unique": true
+		},
+		{
+			"id": "end.slettnes",
+			"label": "フォグファイアの岬",
+			"aspects": {
+				"destination": 1,
+				"end": 1,
+				"remote": 1
+			},
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "domicile.slettnes",
+						"morpheffect": "transform"
+					}
+				]
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "ノルウェー最北端の氷に覆われた岬に、海に背を向けて誇らしげに立つ孤独な灯台がある。",
+			"icon": "vaultcontinent3",
+			"unique": true
+		},
+		{
+			"id": "domicile.aachen",
+			"label": "レニッシュ・アーヘン",
+			"aspects": {
+				"domicile": 1,
+				"troubled": 1,
+				"shrine.colonel.marker": 1
+			},
+			"description": "共和国は第一次世界大戦後に生まれては去っていく。今ではアーヘンはフランスの庇護の下で独自の共和国を持っている。崩壊する前に出て行くべきだ。",
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "contact.huntress",
+						"morpheffect": "spawn"
+					}
+				],
+				"uprising": "domicile.aachen.turmoil"
+			},
+			"icon": "domicile.aachen",
+			"unique": true
+		},
+		{
+			"id": "domicile.alexandria",
+			"label": "アレクサンドリア",
+			"aspects": {
+				"domicile": 1,
+				"shrine.lionsmith.marker": 1
+			},
+			"description": "証券取引所の外に立つ、背の高い赤い帽子と真っ白なスーツに身を包んだ威厳のあるビジネスマンたち、メロンスライスの屋台で酔っぱらって口論するイギリス兵、カフェ・アル・アクタールでバックギャモンに興じる神学者たち。サフィヤ・ザグルールのリアルトでは、蝋人形のドイツ映画を上映していたが、電気が消えたりついたりを繰り返している。夜の帳の向こうには、見えないセラペウムが待っている。",
+			"icon": "domicile.alexandria",
+			"unique": true
+		},
+		{
+			"id": "domicile.algiers",
+			"label": "アルジェ",
+			"aspects": {
+				"domicile": 1,
+				"troubled": 1,
+				"shrine.lionsmith.marker": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.algiers.turmoil"
+			},
+			"description": "松の香りとブーゲンビリア、白い壁と海の光、シロッコ風と革命の煙。",
+			"icon": "domicile.algiers",
+			"unique": true
+		},
+		{
+			"id": "domicile.amsterdam",
+			"label": "アムステルダム",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "黄金時代は終わったが、栄光は色あせた音楽のように残る。石畳の上を自転車がガタガタと音を立てて走る。白い服を着た女性が背の高い窓のシャッターを開ける。霧の濃い夜、ベルベットの名もなき名を持つ者がここを歩く。",
+			"icon": "domicile.amsterdam",
+			"unique": true
+		},
+		{
+			"id": "domicile.avignon",
+			"label": "アヴィニョン",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "ミストラルが吹く静かなアビニョン。",
+			"icon": "domicile.avignon",
+			"unique": true
+		},
+		{
+			"id": "domicile.baghdad",
+			"label": "バグダード",
+			"aspects": {
+				"domicile": 1,
+				"troubled": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.baghdad.turmoil"
+			},
+			"description": "灼熱の暑さ、濃いオレンジ色の木、タイル張りで上品な廃墟。オスマン帝国はバグダードに優しくなかった。イギリスがシリアの王を招き、病院の建設をしたり、地元住民を服従させるために爆弾を投下し犠牲者を出したりしている。今にももう一度反乱が起こりそうだ。",
+			"icon": "domicile.baghdad",
+			"unique": true
+		},
+		{
+			"id": "domicile.budapest",
+			"label": "ブダペスト",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "冬のブダペスト、ドナウ川には雪が舞う。二重君主制は崩壊したが、なぜかこの街は再びハンガリー王国の首都となっている。国王は二度も帰還を試み、二度も追い出されている。政治問題だ。",
+			"icon": "domicile.budapest",
+			"unique": true
+		},
+		{
+			"id": "domicile.candia",
+			"label": "カンディア（イラクリオン）",
+			"aspects": {
+				"domicile": 1,
+				"remote": 1,
+				"shrine.colonel.marker": 1
+			},
+			"description": "厳しい20年を送ってきた土地。希土戦争、独立、ギリシャとの同盟.....そして王が猿に噛み殺され......クレタ人とその島は4千年の時を経て、今もなお耐え続けている。港は山のように要塞化されているが、イラクリオンは午後の太陽の下で静かに眠っている。",
+			"icon": "domicile.candia",
+			"unique": true
+		},
+		{
+			"id": "domicile.cluj",
+			"label": "クルジュ＝ナポカ",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "夕焼けの山の中に、大天使ミカエルの街が横たわっている。ツイカを飲みすぎて、煉瓦職人と喧嘩になった場所として覚えている。あの時は、みんな若かった。",
+			"icon": "domicile.cluj",
+			"unique": true
+		},
+		{
+			"id": "domicile.granada",
+			"label": "グラナダ",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "冷たく澄んだ空気と、静かな白い街並み、緑が散りばめられたテラスに、山が見下ろしている。ここなら、一休みできるかもしれない。",
+			"icon": "domicile.granada",
+			"unique": true
+		},
+		{
+			"id": "domicile.istanbul",
+			"label": "イスタンブール",
+			"aspects": {
+				"domicile": 1,
+				"troubled": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.istanbul.turmoil"
+			},
+			"description": "7つの丘、3つの名前、2つの大陸、そして10万匹の猫。グランドバザールの賑わいと金角湾の静かな眩しさ。",
+			"icon": "domicile.istanbul",
+			"unique": true
+		},
+		{
+			"id": "domicile.kaunas",
+			"label": "カウナス（リトル・パリ)",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "リトアニアの半分はポーランド領となり、住人たちは絶望的にもろい平和の中で暮らしているが、今はここが首都だ。リトル・パリと呼ばれ、灯りがカフェやダンスホールを照らす。しかし、新しい大統領が選ばれ、鉄の狼組織が歯を食いしばりだした。",
+			"icon": "domicile.kaunas",
+			"unique": true
+		},
+		{
+			"id": "domicile.kiev",
+			"label": "キエフ",
+			"aspects": {
+				"domicile": 1,
+				"troubled": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.kiev.turmoil"
+			},
+			"description": "黒土と黄金の門の街。しばらくの間は自由だったが、最初に元帥が、そして赤軍がそれに終止符を打った。",
+			"icon": "domicile.kiev",
+			"unique": true
+		},
+		{
+			"id": "domicile.krakow",
+			"label": "クラクフ",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "竜が死んだ丘の上にある城が、十月の日差しで穏やかになった街を見渡している。元帥の悪口だけは言ってはいけない。",
+			"icon": "domicile.krakow",
+			"unique": true
+		},
+		{
+			"id": "domicile.leningrad",
+			"label": "レニングラード",
+			"aspects": {
+				"domicile": 1,
+				"troubled": 1,
+				"shrine.colonel.marker": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.leningrad.turmoil"
+			},
+			"description": "レーニンは死んだが、古都には彼の名前が残っている。それはまた、革命の傷跡、赤色テロ、そして9月の大洪水の傷跡を残している。通りはまだネヴァ川の泥の悪臭を放っている。タウリデ宮殿の薄暗いオフィスで、ジノヴィエフはスターリンの次の一手を待っていた。",
+			"icon": "domicile.leningrad",
+			"unique": true
+		},
+		{
+			"id": "domicile.london",
+			"label": "ロンドン",
+			"aspects": {
+				"domicile": 1,
+				"troubled": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.london.turmoil"
+			},
+			"description": "今月は、集団ストライキと戒厳令で大都会が機能しなくなっている。戦車がパルマル街をガラガラと走る。扇動者達は街を覆う危険な霧の中で、策謀を巡らせている。名もなき名を持つ者は霧で私を守るだろう......",
+			"icon": "domicile.london",
+			"unique": true
+		},
+		{
+			"id": "domicile.marrakech",
+			"label": "マラケッシュ",
+			"aspects": {
+				"domicile": 1,
+				"shrine.lionsmith.marker": 1
+			},
+			"description": "500マイル先のリーフ共和国は、フランス保護領とのゲリラ戦を繰り広げている。しかし、ここマラケシュには、まだミントティーとパラソルを楽しむ余裕がある。",
+			"icon": "domicile.marrakech",
+			"unique": true
+		},
+		{
+			"id": "domicile.meshad",
+			"label": "マシュハド",
+			"aspects": {
+				"domicile": 1,
+				"remote": 1,
+				"shrine.lionsmith.marker": 1
+			},
+			"description": "マシュハドの穏やかなターコイズブルーの夕焼けと、カヤム大通りの灯りがちらつく。装甲車がうなりを上げる――新しいシャーは用心深い。千年前、山の間でフェルダウシは「書かれていることからいかにして人は逃れなければならないか。どうやって運命から逃れるというのか」と綴った。興味深い質問だ。",
+			"icon": "domicile.meshad",
+			"unique": true
+		},
+		{
+			"id": "domicile.munich",
+			"label": "ミュンヘン",
+			"aspects": {
+				"domicile": 1,
+				"troubled": 1,
+				"shrine.colonel.marker": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.munich.turmoil"
+			},
+			"description": "ミュンヘンは今でも気品のある街で春には栗がとても美しい。しかし新旧の憎しみと、第一次世界大戦の苦難のせいで、今のミュンヘンは居づらい場所となっている。去年、ルーデンドルフとあのオーストリア人の間で起きたビアホールの件があってからはなおさらだ。",
+			"icon": "domicile.munich",
+			"unique": true
+		},
+		{
+			"id": "domicile.nizhny",
+			"label": "ニジニ・ノヴゴロド",
+			"aspects": {
+				"domicile": 1,
+				"remote": 1,
+				"troubled": 1,
+				"shrine.colonel.marker": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.nizhny.turmoil"
+			},
+			"description": "100年もの間、ヴォルガ川とオカ川が合流するこの場所では、旧ロシア内外の富が、ニジニ・ノヴゴロドの定期市に集まっていた。今では赤軍が駐留しているが、商品はまだ集まってくる。銅、塩、穀物、茶、羊毛、石炭、爪、肉。",
+			"icon": "domicile.nizhny",
+			"unique": true
+		},
+		{
+			"id": "domicile.paris",
+			"label": "パリ",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "今年の光の都では、社会主義者が共産主義者と戦い、地下鉄がガタガタと音を鳴らし、やつれた芸術家たちが本屋をうろついている。時代は変わっても本質は変わらない。",
+			"icon": "domicile.paris",
+			"unique": true
+		},
+		{
+			"id": "domicile.prague",
+			"label": "プラハ",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "マサリクと城の群の者たちが穏やかに見守る中、百塔の街は共和国となる準備をしている。像が毎晩橋を見守っている。ヨーロッパの心臓であるこの街は、もうしばらくの間、元気よく鼓動を打つだろう。",
+			"icon": "domicile.prague",
+			"unique": true
+		},
+		{
+			"id": "domicile.rostock",
+			"label": "ロストック",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "灯油の匂いがする大港の喧騒の向こう側、琥珀が見つかる暗い海のほとりで、古代の時計仕掛けがヴェルネミュンデの灯台を動かしている。毎晩、灯台は地平線に向かって瞬きをする。",
+			"icon": "domicile.rostock",
+			"unique": true
+		},
+		{
+			"id": "domicile.samarkand",
+			"label": "サマルカンド",
+			"aspects": {
+				"domicile": 1,
+				"remote": 1,
+				"troubled": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.samarkand.turmoil"
+			},
+			"description": "征服者ティムールの首都であり、絹織物貿易の十字路であり、百の信仰の街でもある。マングト部族のアミールたちが追放されてからは、ツァーリ（ロシア皇帝）とボリシェヴィキがここを支配している。",
+			"icon": "domicile.samarkand",
+			"unique": true
+		},
+		{
+			"id": "domicile.stalingrad",
+			"label": "スターリングラード",
+			"aspects": {
+				"domicile": 1,
+				"remote": 1,
+				"troubled": 1,
+				"shrine.colonel.marker": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.stalingrad.turmoil"
+			},
+			"description": "真夜中のスターリングラード。至る所でグルジアの像が月明かりに染まる通りで慈愛にあふれた威圧感を放っている。",
+			"icon": "domicile.stalingrad",
+			"unique": true
+		},
+		{
+			"id": "domicile.strasbourg",
+			"label": "ストラスブール",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "偉大なるシャルル国王の帝国を東西に分裂した誓いが、ここで宣誓された。その結果、この土地は千年もの間、争われ続けてきた。またその結果、角斧の影がここに長い間居座っている。そしてここには、私の好物であるジュニパーと白ワインを使ったシチューを出してくれる陽気なビストロがある。",
+			"icon": "domicile.strasbourg",
+			"unique": true
+		},
+		{
+			"id": "domicile.sverdlovsk",
+			"label": "スヴェルドロフスク",
+			"aspects": {
+				"domicile": 1,
+				"remote": 1,
+				"troubled": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.sverdlovsk.turmoil"
+			},
+			"description": "ここは宝石商とマラカイト鉱夫の街だった。今は、ボリシェヴィキがこの街を重工業の坩堝に変えようとしている。",
+			"icon": "domicile.sverdlovsk",
+			"unique": true
+		},
+		{
+			"id": "domicile.tiflis",
+			"label": "トビリシ",
+			"aspects": {
+				"domicile": 1,
+				"troubled": 1
+			},
+			"xtriggers": {
+				"uprising": "domicile.tiflis.turmoil"
+			},
+			"description": "鷹の王は硫黄泉を見つけてここに街を建てた。今ではザカフカース社会主義連邦ソビエト共和国の首都になっている。自動車や電信局もある。進歩だ。",
+			"icon": "domicile.tiflis",
+			"unique": true
+		},
+		{
+			"id": "domicile.tirana",
+			"label": "ティラナ",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "花が咲き乱れるティラナでは、ゾギストの兵士たちが酔っぱらい笑い声でカフェを賑わせ、フラワーメーカーがハチが飛び回る影の中で夢のような歌を口ずさんでいる。",
+			"icon": "domicile.tirana",
+			"unique": true
+		},
+		{
+			"id": "domicile.tripoli",
+			"label": "西トリポリ州",
+			"aspects": {
+				"domicile": 1,
+				"comfort": 2,
+				"shrine.lionsmith.marker": 1
+			},
+			"description": "スペイン人がベルベル人からトリポリを奪い、聖ヨハネ騎士団がスペイン人からトリポリを奪い、オスマン人が騎士団からトリポリを奪い、今ではイタリア人がトリポリを支配している。ベルベル人はトリポリを「海の花嫁」と呼んでいた。そして、私の敵の言うことを信じるならば、私の母はそこを「故郷」と呼んでいた。",
+			"icon": "domicile.tripoli",
+			"unique": true
+		},
+		{
+			"id": "domicile.valletta",
+			"label": "バレッタ",
+			"aspects": {
+				"domicile": 1,
+				"remote": 1,
+				"shrine.colonel.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "直轄植民地マルタの日当たりの良い場所。イギリス人の船乗りたちが坂道を歩き、戦艦<i>ロイヤルローズ号</i>が鉄の大聖堂のように港を見下ろしている。",
+			"icon": "domicile.valletta",
+			"unique": true
+		},
+		{
+			"id": "domicile.venice",
+			"label": "ヴェネツィア",
+			"aspects": {
+				"domicile": 1,
+				"shrine.lionsmith.marker": 1
+			},
+			"description": "青白い街、ヴェネツィアの深い霧の中では、見えるものよりも聞こえるものが多い。それは、波の音だったり、ヴァポレットの音だったり、海藻と下水の匂いだったりす。太陽が目を眩ませる。ベルベットの名もなき名を持つ者が昼間に歩くとすれば、ここを歩くはずだ。",
+			"icon": "domicile.venice",
+			"unique": true
+		},
+		{
+			"id": "domicile.vienna",
+			"label": "ウィーン",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "どの歴史でも同じ名前で呼ばれている数少ない都市の1つ......そういうことを信じていればの話だが。長い間、二重帝国の第一の中心地であり、非常に長い間、高僧たちはこの地を「白の都」と呼んできた。しかし今では第一共和制下の赤いウィーンとなり、街は夜明けとともに明るくなる。",
+			"icon": "domicile.vienna",
+			"unique": true
+		},
+		{
+			"id": "domicile.aachen.turmoil",
+			"label": "燃えるアーヘン",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "ライン分離派が街頭でドイツ忠誠者と戦っている。今のうちに去ったほうが良い。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.algiers.turmoil",
+			"label": "燃えるアルジェ",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "民族主義者が街頭でフランス軍と戦っている。今のうちに去ったほうが良い。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.baghdad.turmoil",
+			"label": "燃えるバグダード",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "ハーシム軍が街頭で民族主義者と戦っている。今のうちに去ったほうが良い。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.istanbul.turmoil",
+			"label": "燃えるイスタンブール",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "革命家と反革命家が街頭で戦っている。今のうちに去るべきだ。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.kiev.turmoil",
+			"label": "燃えるキエフ",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "革命家と反革命家が街頭で戦っている。今のうちに去るべきだ。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.leningrad.turmoil",
+			"label": "燃えるレニングラード",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "革命家と反革命家が街頭で戦っている。今のうちに去るべきだ。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.london.turmoil",
+			"label": "燃えるロンドン",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "警察が労働者たちと街頭で争っている。今のうちに去るべきだ。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.munich.turmoil",
+			"label": "燃えるミュンヘン",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "共産主義者と民族主義者が街頭で戦っている。今のうちに去るべきだ。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.nizhny.turmoil",
+			"label": "燃えるニジニ・ノヴゴロド",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "革命家と反革命家が街頭で戦っている。今のうちに去るべきだ。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.samarkand.turmoil",
+			"label": "燃えるサマルカンド",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "ソビエトとジャディディストが街頭で戦っている。今のうちに去るべきだ。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.stalingrad.turmoil",
+			"label": "燃えるスターリングラード",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "革命家と反革命家が街頭で戦っている。今のうちに去るべきだ。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.sverdlovsk.turmoil",
+			"label": "燃えるスヴェルドロフスク",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "革命家と反革命家が街頭で戦っている。今のうちに去るべきだ。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "domicile.tiflis.turmoil",
+			"label": "燃えるトビリシ",
+			"aspects": {
+				"domicile": 1,
+				"turmoil": 1
+			},
+			"description": "革命家と反革命家が街頭で戦っている。今のうちに去るべきだ。",
+			"icon": "city.inflames",
+			"unique": true
+		},
+		{
+			"id": "city.aachen",
+			"label": "レニッシュ・アーヘン",
+			"aspects": {
+				"destination": 1,
+				"troubled": 1,
+				"shrine.colonel.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "アーヘンから伝言が届いた。マラケッシュの昔からの知り合いが、そこで狩りをしていて、私の助けを求めている。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "contact.huntress",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.aachen"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "city.alexandria",
+			"label": "アレクサンドリア",
+			"aspects": {
+				"destination": 1,
+				"shrine.lionsmith.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "戦前、アレクサンドリアの透明なセラペウムに招待された。運が良ければ、まだ迎えてもらえるはずだ。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "vault.serapeum",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.alexandria",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.algiers",
+			"label": "アルジェ",
+			"aspects": {
+				"destination": 1,
+				"shrine.lionsmith.marker": 1,
+				"troubled": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "密輸業者のM・ジョルジュは、アルジェに人脈を持っている。その人たちが私をこっそりと入れてくれるかもしれない。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.underworld",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.algiers",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.amsterdam",
+			"label": "アムステルダム",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "何年もの間、私はアムステルダムのシュテーゲンガの双子たちのために、いくつもの宝物を見つけてきた。彼らなら、泊まらせてくれるかもしれない。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.official",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.amsterdam",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.avignon",
+			"label": "アヴィニョン",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "アヴィニョンの密輸業者M・ジョルジュが提案をしたいと言っている。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "contact.smuggler",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.avignon",
+						"morpheffect": "transform"
+					}
+				]
+			},
+			"unique": true
+		},
+		{
+			"id": "city.baghdad",
+			"label": "バグダード",
+			"aspects": {
+				"destination": 1,
+				"troubled": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "パーシー・スタイルズは、まだバグダードで、委任統治領イラクで英国政府のために色々とやっている。会いに行ったら、まだきっと喜んでくれるはずだ。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.official",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "vault.imhullu",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.baghdad",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.budapest",
+			"label": "ブダペスト",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "旧友のリリが闇市の運営をブダペストに移したらしい。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.underworld",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.budapest",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.candia",
+			"label": "カンディア（イラクリオン）",
+			"aspects": {
+				"destination": 1,
+				"remote": 1,
+				"shrine.colonel.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "クレタ島には、しばらく行っていないが、また夢に出てきた。サンザシの香りもだ......[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "op.horned",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.candia",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.cluj",
+			"label": "クルジュ＝ナポカ",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "旧友のリリのクルジュでの活動は、ハンガリーが街を手放してから苦戦しているが、彼女の名前を出せば、まだ扉が開くかもしれない。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.underworld",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.cluj",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.granada",
+			"label": "グラナダ",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "グラナダにあるギャラリーのオーナーと取引したことがある。去年、彼女は私を彼女の家に招待してくれた。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "contact.visionary",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.granada",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.istanbul",
+			"label": "イスタンブール",
+			"aspects": {
+				"destination": 1,
+				"troubled": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "昔の戦友、カラ・ケマールはイスタンブールのブラックアームの残党と通じている。彼の名前を出せば、まだ扉が開くかもしれない。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.radicals",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.istanbul",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.kaunas",
+			"label": "カウナス（リトル・パリ)",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "パン屋のドミニカスは、カウナスの鉄狼の中でも高レベルのコネを持っている。仲良くはなれなかったが、彼は私に借りがあるし、選り好みをしている場合ではない。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "contact.ghoul",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.kaunas",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.kiev",
+			"label": "キエフ",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "リゲイアの者の中で最も飢えたものが、キエフにいるとの噂を聞いた。追っ手は慎重に行動しなくてはいけなくなるだろうが、もちろん、私も気をつけたい。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "op.marinette",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.kiev",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.krakow",
+			"label": "クラクフ",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "クラクフのイッツチョク・アシュラグは、珍しいカルトの本に関しては何年も私を頼ってくれた。彼は親切な人だ。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "vault.yitzchok",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.krakow",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.leningrad",
+			"label": "レニングラード",
+			"aspects": {
+				"destination": 1,
+				"troubled": 1,
+				"shrine.colonel.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "ロシアで年を売る「アテナイ人」は、精算人集団の宿敵だが、私は某サスキンと酔うほど酒を飲んだことがある。覚えていてくれることを祈ろう。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.underworld",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.leningrad",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.london",
+			"label": "ロンドン",
+			"aspects": {
+				"destination": 1,
+				"troubled": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "ロンドンのオッタビオ・バートンが私の手を借りたいと言ってきた。彼は悪党だが、昔からの知り合いだ。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.underworld",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.london",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.marrakech",
+			"label": "マラケッシュ",
+			"aspects": {
+				"destination": 1,
+				"shrine.lionsmith.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "ナビルという名のマラブーに、ここにいることがなぜか知られてしまった。彼から届いた伝言には「マラケッシュへ来てくれ、栄光のために」としか書かれていない。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.holy",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.marrakech",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.meshad",
+			"label": "マシュハド",
+			"aspects": {
+				"destination": 1,
+				"remote": 1,
+				"shrine.lionsmith.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "マシュハドの年寄り詩人は、昔から私のお気に入りのお客さんだった。彼女はもてなしくれるだろう。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "grief",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.meshad",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.munich",
+			"label": "ミュンヘン",
+			"aspects": {
+				"destination": 1,
+				"troubled": 1,
+				"shrine.colonel.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "ミュンヘンのゴットリーブ・ジャニングス伯爵から、彼がひいきするデュエリング協会の会合にいつでも顔を出すようにと言われている。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "contact.vivisectionist",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.munich",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.nizhny",
+			"label": "ニジニ・ノヴゴロド",
+			"aspects": {
+				"destination": 1,
+				"remote": 1,
+				"troubled": 1,
+				"shrine.colonel.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "「アテナイ人」のサスキンはニジニで輸出入事業を続けているが、ソビエト政権下ではそれも困難なことだ。彼の手下たちは私の助けを喜んでくれるかもしれない。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.underworld",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.nizhny",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.paris",
+			"label": "パリ",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "タンテ・アデリーヌは他へと移動してしまったが、パリにはまだ彼女のツテがいる。彼らなら私を匿ってくれるはずだ。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.underworld",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.paris",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.prague",
+			"label": "プラハ",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "プラハに住む、年寄りの悪党「タンテ・アデリーヌ」が私の助けを必要としている。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.underworld",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.prague",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.rostock",
+			"label": "ロストック",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "私の文通相手、ジャニングス伯爵はロックストックに家を持っている。私が使っても良いそうだ。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "townhouse.jannings",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.rostock",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.samarkand",
+			"label": "サマルカンド",
+			"aspects": {
+				"destination": 1,
+				"remote": 1,
+				"troubled": 1,
+				"shrine.lionsmith.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "私はかつてサマルカンドのジャディード運動家であり魔術師である者に、禁じられた材料を調達していた。彼なら私を覚えているかもしれない。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "connection.holy",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.samarkand",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.stalingrad",
+			"label": "スターリングラード",
+			"aspects": {
+				"destination": 1,
+				"remote": 1,
+				"troubled": 1,
+				"shrine.colonel.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "バードイーターと呼ばれる犯罪者の高僧たちが、人間とマンサスの両方の法律に反抗した。床屋のゾルフィアがスターリングラードで彼らと合流したと聞いた。バードイーターは良い人間たちではないが、私はズルフィアのことを気に入っていた。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "contact.barber",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.stalingrad",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.strasbourg",
+			"label": "ストラスブール",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "ヴォージュ山脈のヒューゲルキンダーは時々人間に化け、ストラスブールの街を歩く。前にも会ったことがある。人目につかない方法を知っているはずだ。助けてくれるかもしれない。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "obscurity",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.strasbourg",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.sverdlovsk",
+			"label": "スヴェルドロフスク",
+			"aspects": {
+				"destination": 1,
+				"remote": 1,
+				"troubled": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "床屋のゾルフィアは、スヴェルドロフスクの街で宝石で命を買っていた。彼女は気が変になり、他の都市に移ったが、私に知り合いを紹介してくれた。内戦前のことだ。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "op.connection.official",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.sverdlovsk",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.tiflis",
+			"label": "トビリシ",
+			"aspects": {
+				"destination": 1,
+				"troubled": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "「夢魔の曾孫」のヴァシルは、ずっと前にトビリシに逃げ込んだ。彼には貸しがある。と言っても、私の訪問を歓迎しないかもしれないが......[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "contact.fivegoer",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.tiflis",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.tirana",
+			"label": "ティラナ",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "状況が諸々と悪化する前、私はティラナでゾグ大統領の部下と命の売買交渉を行っていた。彼女の住所なら、まだ手元にある。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "op.connection.ruler",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.tirana",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.tripoli",
+			"label": "西トリポリ州",
+			"aspects": {
+				"destination": 1,
+				"shrine.lionsmith.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "トリポリには知り合いがいない。ここの記憶は全くないが、かなり昔、オスマン帝国時代に、私はここで生まれた。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "domicile.tripoli",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.valletta",
+			"label": "バレッタ",
+			"aspects": {
+				"destination": 1,
+				"remote": 1,
+				"shrine.colonel.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				},
+				{
+					"id": "cash2",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "昔の戦友カラ・ケマールは、バレッタに亡命している。しばらくぶりだが、私は、第一次世界大戦で彼の命を救ってやった......[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "op.connection.ruler",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.valletta",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.venice",
+			"label": "ヴェネツィア",
+			"aspects": {
+				"destination": 1,
+				"shrine.lionsmith.marker": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "ヴェネツィアにオルソリーナという女性がいる。彼女は元々女性ではなかったが、だいぶ前からそこに住んでいる。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "contact.delver",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.venice",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "city.vienna",
+			"label": "ウィーン",
+			"aspects": {
+				"destination": 1
+			},
+			"slots": [
+				{
+					"id": "cash1",
+					"label": "費用",
+					"actionId": "travel",
+					"consumes": true,
+					"required": {
+						"cash": 1
+					}
+				}
+			],
+			"description": "かつては白の都だった。今は「レッド・ウィーン」と呼ばれている。ここにはリゲイアの者がいて、知る人ぞ知る戦争の傷跡が残っている。死ぬ前にもう一度、ここを訪れたい。[現在の街を離れると、二度とアクセスできなくなる。]",
+			"unique": true,
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "op.kleidouchos",
+						"morpheffect": "spawn"
+					},
+					{
+						"id": "domicile.vienna",
+						"morpheffect": "transform"
+					}
+				]
+			}
+		},
+		{
+			"id": "wilderness",
+			"label": "山野を横断する",
+			"aspects": {
+				"destination": 1
+			},
+			"description": "荒野へ進もう。これは最後の手段だ。[役に立つ機会はほとんどなく、ここで長く生き延びることはできない。]",
+			"xtriggers": {
+				"arriving": [
+					{
+						"id": "domicile.wilderness",
+						"morpheffect": "transform"
+					}
+				]
+			},
+			"lifetime": 60
+		},
+		{
+			"id": "domicile.wilderness",
+			"label": "狭間の寂れた場所",
+			"aspects": {
+				"domicile": 1
+			},
+			"description": "常に選択しなければならない。死ぬとしても、喉の渇きや寒さ、飢え、と原因は様々だ。「役に立つ機会はほとんどなく、ここで長く生き延びることはできない。]",
+			"icon": "wilderness"
+		},
+		{
+			"id": "op.cold",
+			"label": "凍てつく風",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"winter": 2,
+				"edge": 2
+			},
+			"description": "霜が歩く場所。",
+			"lifetime": 300,
+			"xtriggers": {
+				"renewal.exile": "op.cold",
+				"fatiguing": "husk"
+			}
+		},
+		{
+			"id": "op.heat",
+			"label": "震えるような暑さ",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"forge": 2,
+				"grail": 2
+			},
+			"description": "むき出しの炉のように空気が揺らめく。蛇が好む天候。",
+			"lifetime": 300,
+			"xtriggers": {
+				"renewal.exile": "op.heat",
+				"fatiguing": "husk"
+			}
+		},
+		{
+			"id": "op.sea",
+			"label": "海",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"moth": 2,
+				"winter": 2
+			},
+			"description": "ここは海から近く、海は贈り物をくれる。それは、平和か、死か、逃避か......",
+			"slots": [
+				{
+					"id": "more",
+					"label": "その他",
+					"actionId": "use",
+					"description": "海辺でしか使えないもの。",
+					"required": {
+						"curio.morgen": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"renewal.exile": "op.sea",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300
+		},
+		{
+			"id": "op.faith",
+			"label": "信仰",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"lantern": 2,
+				"heart": 2
+			},
+			"description": "礼拝所を通り過ぎた。",
+			"xtriggers": {
+				"renewal.exile": "op.faith",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300
+		},
+		{
+			"id": "op.cats",
+			"label": "猫",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"grail": 2,
+				"moth": 2
+			},
+			"description": "騒がしい猫たちでにぎわう場所を見つけた。",
+			"xtriggers": {
+				"renewal.exile": "op.cats",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300
+		},
+		{
+			"id": "op.heights",
+			"label": "高所",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"lantern": 2,
+				"moth": 2
+			},
+			"description": "高いところ。下を見てはいけない。",
+			"xtriggers": {
+				"renewal.exile": "op.heights",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300
+		},
+		{
+			"id": "op.horned",
+			"label": "角斧の影",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"knock": 6,
+				"winter": 6
+			},
+			"description": "サンザシの香り、影が横切る夕日の色。角斧はここで力を発揮できる。",
+			"xtriggers": {
+				"renewal.exile": "op.horned",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300
+		},
+		{
+			"id": "op.wolf",
+			"label": "分裂した狼の影",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"edge": 6,
+				"winter": 6
+			},
+			"description": "タールでも血でもオゾンでもない香り。分裂した狼の怒りが大気の下で煮えくり返る。",
+			"xtriggers": {
+				"renewal.exile": "op.wolf",
+				"fatiguing": "op.wolf.husk.active"
+			},
+			"lifetime": 300
+		},
+		{
+			"id": "op.wolf.husk.active",
+			"label": "分裂した狼の関心",
+			"aspects": {
+				"op": 1,
+				"edge": 6,
+				"winter": 6
+			},
+			"description": "汚れた炎が世界の表面化で燻っている。狼を召喚した私は、否が応でも彼のために働く。",
+			"lifetime": 1,
+			"icon": "op.wolf"
+		},
+		{
+			"id": "op.flowermaker",
+			"label": "フラワーメーカーの影",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"grail": 6,
+				"lantern": 6
+			},
+			"description": "ここには甘い空気が漂い、夢の始まりがある......我々のの思考はフラワーメーカーと呼ばれる時の神に向けられている。",
+			"xtriggers": {
+				"renewal.exile": "op.flowermaker",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300
+		},
+		{
+			"id": "op.echidna",
+			"label": "エキドナ",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"ligeian": 1
+			},
+			"description": "ここ砂漠の端では、エキドナが人間の姿に化けることはない。運が良ければ、私が彼女の好む形を見ることは一生ないだろう。",
+			"xtriggers": {
+				"renewal.exile": "op.echidna",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300,
+			"icon": "echidna",
+			"unique": true
+		},
+		{
+			"id": "op.kleidouchos",
+			"label": "シュリュッセル夫人",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"ligeian": 1
+			},
+			"description": "シュリュッセル夫人は、包囲のずっと前からここに住んでいた。彼女の注意を引かなければ、私の命は安全だろう。",
+			"xtriggers": {
+				"renewal.exile": "op.kleidouchos",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300,
+			"icon": "kleidouchos",
+			"unique": true
+		},
+		{
+			"id": "op.marinette",
+			"label": "操り人形の聖母",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"ligeian": 1
+			},
+			"description": "「操り人形の聖母」が何であろうと、今年はキエフをえさ場に選んだ。",
+			"xtriggers": {
+				"renewal.exile": "op.marinette",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300,
+			"icon": "marinette",
+			"unique": true
+		},
+		{
+			"id": "op.medusa",
+			"label": "見えないものは何だ？",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"ligeian": 1,
+				"pentiment": 1,
+				"pentiment.9": 1
+			},
+			"description": "この街には目の開いた像が1つもない。なぜだ？",
+			"xtriggers": {
+				"renewal.exile": "op.medusa",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.morgen",
+			"label": "マチュティーヌ夫人",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"ligeian": 1
+			},
+			"description": "マチュティーヌ夫人のヨット、<i>サファイア号</i>がここに停泊している。マテュティーヌ夫人には、危険な評判がつきまとう。",
+			"xtriggers": {
+				"renewal.exile": "op.morgen",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300,
+			"unique": true
+		},
+		{
+			"id": "op.sulochana",
+			"label": "スロチャナ",
+			"aspects": {
+				"op": 1,
+				"distraction": 1,
+				"ligeian": 1
+			},
+			"description": "スロチャナ・アマヴァシャは通常エクディシスクラブにいるが、今週は海外へ行っている。彼女を避けた方が良い。",
+			"xtriggers": {
+				"renewal.exile": "op.sulochana",
+				"fatiguing": "husk"
+			},
+			"lifetime": 300,
+			"icon": "sulochana",
+			"unique": true
+		},
+		{
+			"id": "op.dawn",
+			"label": "夜明け",
+			"aspects": {
+				"op": 1,
+				"knock": 4,
+				"lantern": 4
+			},
+			"description": "世界がきれいになる日の出。",
+			"lifetime": 15
+		},
+		{
+			"id": "op.sunset",
+			"label": "夕焼け",
+			"aspects": {
+				"op": 1,
+				"forge": 4,
+				"winter": 4
+			},
+			"description": "光が豊かになる夕焼け。",
+			"lifetime": 15
+		},
+		{
+			"id": "op.night",
+			"label": "夜",
+			"aspects": {
+				"op": 1,
+				"deception": 1,
+				"moth": 4,
+				"winter": 4
+			},
+			"description": "夜が深く見下ろす。今夜もまた眠れなそうだ。",
+			"lifetime": 15
+		},
+		{
+			"id": "temptation.defiance",
+			"label": "誘惑：反抗心",
+			"unique": true,
+			"aspects": {
+				"defiancemarks": 1,
+				"desire": 1,
+				"choice.merciless": 1
+			},
+			"description": "「Caput gerat lupinum」とよく無法者を指して言っていた。「これが分裂の境界線だ」とかいう意味だ。ラテン語は決して得意ではない。私は今分裂の線の不利な側にいるが......これもまたチャンスなのかもしれない。",
+			"slots": [
+				{
+					"id": "contents",
+					"label": "中身",
+					"description": "敵に私の居場所を伝えることもできるし、贈り物を送ることもできる。",
+					"required": {
+						"domicile": 1,
+						"weapon": 1
+					},
+					"forbidden": {
+						"domicile.wilderness": 1,
+						"weapon.profane": 1
+					},
+					"actionId": "send"
+				}
+			]
+		},
+		{
+			"id": "tranquillity",
+			"label": "静寂",
+			"aspects": {
+				"heart": 4,
+				"winter": 4,
+				"choice.merciful": 1
+			},
+			"description": "私のような人生を送っていても、「来たるべきことが来るかもしれない」と思える瞬間がある。",
+			"lifetime": 300
+		},
+		{
+			"id": "grief",
+			"label": "嘆き",
+			"aspects": {
+				"winter": 6
+			},
+			"description": "万物には終わりが来る。",
+			"lifetime": 300,
+			"icon": "apostlelantern.pillar2"
+		},
+		{
+			"id": "rage",
+			"label": "怒り",
+			"aspects": {
+				"edge": 4,
+				"heart": 4,
+				"choice.merciless": 1
+			},
+			"description": "「忍耐強い男の怒りには気をつけろ」――ドライデン著、『アブサロムとアキトフェル』",
+			"lifetime": 300
+		},
+		{
+			"id": "wound.exile",
+			"label": "自分の傷口",
+			"aspects": {
+				"knock": 4,
+				"winter": 4,
+				"damage.exile": 1
+			},
+			"description": "このような傷を7回も負ったら、私は死ぬだろう。",
+			"slots": [
+				{
+					"actionId": "relinquish",
+					"id": "repurposedlife",
+					"label": "新しい命",
+					"description": "この傷のせいで10年が無駄になるかもしれない――その10年を交換しない限りは。",
+					"required": {
+						"decade.stolen": 1,
+						"vitality": 1
+					}
+				}
+			],
+			"lifetime": 1200
+		},
+		{
+			"id": "wound.exile.unstanchable",
+			"label": "自分の傷口",
+			"aspects": {
+				"knock": 4,
+				"winter": 4,
+				"damage.exile": 1
+			},
+			"description": "このような傷を7回も受けたら、命はないだろう。「この傷の治癒には2倍の時間がかかる。]",
+			"slots": [
+				{
+					"actionId": "relinquish",
+					"id": "repurposedlife",
+					"label": "新しい命",
+					"description": "この傷のせいで10年が無駄になるかもしれない――その10年を交換しない限りは。",
+					"required": {
+						"decade.stolen": 1,
+						"vitality": 1
+					}
+				}
+			],
+			"lifetime": 2400
+		},
+		{
+			"id": "wound.exile.medusa",
+			"label": "治らない傷口",
+			"aspects": {
+				"knock": 4,
+				"winter": 4,
+				"damage.exile": 1,
+				"pentiment": 1,
+				"pentiment.6": 1
+			},
+			"description": "傷をあと6回負ったら、私は終わりだ。この傷は特別な措置なしでは治らない。",
+			"slots": [
+				{
+					"actionId": "relinquish",
+					"id": "repurposedlife",
+					"label": "新しい命",
+					"description": "この傷のせいで10年が無駄になるかもしれない――その10年を交換しない限りは。",
+					"required": {
+						"decade.stolen": 1,
+						"vitality": 1
+					}
+				}
+			],
+			"icon": "scar_knock"
+		},
+		{
+			"id": "wound.foe",
+			"label": "敵の傷口",
+			"description": "このような傷を7回も負ったら、敵に命はないだろう。",
+			"lifetime": 1200,
+			"aspects": {
+				"damage.foe": 1
+			}
+		},
+		{
+			"id": "wound.foe.unstanchable",
+			"label": "敵の止血不能な傷",
+			"description": "このような傷を7回も負ったら、敵に命はないだろう。「この傷の治癒には2倍の時間がかかる。]",
+			"lifetime": 2400,
+			"aspects": {
+				"damage.foe": 1
+			}
+		},
+		{
+			"id": "wound.underling",
+			"label": "追っ手の傷口",
+			"description": "2回傷を負うと、ほとんどの精算人が死ぬ。4回でアンダーボスを殺せる。",
+			"lifetime": 1200,
+			"aspects": {
+				"damage.underling": 1
+			}
+		},
+		{
+			"id": "wound.underling.unstanchable",
+			"label": "追っ手の止血不能な傷口",
+			"description": "2回傷を負うと、ほとんどの精算人が死ぬ。4回でアンダーボスを殺せる。「この傷の治癒には2倍の時間がかかる。]",
+			"lifetime": 2400,
+			"aspects": {
+				"damage.underling": 1
+			}
+		},
+		{
+			"id": "rkx.scout",
+			"label": "精算人の密告者",
+			"aspects": {
+				"rkx.internal": 1
+			},
+			"description": "精算人集団がこの街に注目しだした。[密告者が直接危害を与えてくることはないが、危険な敵を召喚する可能性がある。]",
+			"xtriggers": {
+				"rkx.promote": [
+					{
+						"id": "rkx.operative"
+					},
+					{
+						"id": "rkx.enforcer",
+						"chance": 50
+					}
+				]
+			},
+			"lifetime": 1
+		},
+		{
+			"id": "rkx.operative",
+			"label": "精算人の諜報員",
+			"description": "街で見かけたことがある。一度一緒に働いたことがある。見つかったか？[精算人の諜報員が資産を盗もうとする。]",
+			"verbicon": "rkx.operative",
+			"aspects": {
+				"rkx.rank": 1,
+				"rkx.internal": 1
+			},
+			"xtriggers": {
+				"rkx.promote": "rkx.underboss",
+				"rkx.demote": "rkx.scout"
+			},
+			"lifetime": 1,
+			"decayTo": "corpse.exile.underling"
+		},
+		{
+			"id": "rkx.enforcer",
+			"label": "精算人の暗殺者",
+			"description": "誰かが私のことを尋ねている。その人物の特徴に合う人に覚えがある。[暗殺者に命を狙われる。]",
+			"verbicon": "rkx.enforcer",
+			"aspects": {
+				"rkx.rank": 1,
+				"rkx.internal": 1
+			},
+			"xtriggers": {
+				"rkx.promote": "rkx.underboss",
+				"rkx.demote": "rkx.scout"
+			},
+			"lifetime": 1,
+			"decayTo": "corpse.exile.underling"
+		},
+		{
+			"id": "rkx.underboss",
+			"label": "精算人のアンダーボス",
+			"description": "獰猛さと狡猾さで鍛え上げられた精算人の中尉。借りてきた年で艶やかに成長した。[アンダーボスは資産を盗むこともあれば、直接攻撃することもあれば、敵を召喚することもある。]",
+			"verbicon": "rkx.underboss",
+			"aspects": {
+				"rkx.rank": 2,
+				"rkx.internal": 1
+			},
+			"xtriggers": {
+				"rkx.demote": "rkx.enforcer"
+			},
+			"lifetime": 1,
+			"decayTo": "corpse.exile.underling"
+		},
+		{
+			"id": "rkx.foe",
+			"label": "敵",
+			"description": "樫のように年季が入り、海岸の崖のような傷跡がある。私は彼の強さを見てきた。それを恐れない愚か者はいないだろう。",
+			"aspects": {
+				"rkx.internal": 1
+			},
+			"lifetime": 1
+		},
+		{
+			"id": "rkx.foe.defeated",
+			"label": "敵のトロフィー",
+			"description": "この心臓は鼓動を何回打ったのだろう？その鼓動のうち、どのくらいが他の者から盗まれたものだろう？今は弱く衰えている。",
+			"aspects": {
+				"rkx.underlings.blocker": 1,
+				"proof": 1
+			},
+			"unique": true
+		},
+		{
+			"id": "rkx.weakness.cold",
+			"label": "弱点：寒さ",
+			"description": "噂は本当だ。雪は敵の動きを鈍くし、愚かにする。（暑さと海は苦にならない。）",
+			"uniquenessgroup": "uq.rkx.weakness.cold",
+			"aspects": {
+				"weakness.foe": 1
+			}
+		},
+		{
+			"id": "rkx.weakness.heat",
+			"label": "弱点：暑さ",
+			"description": "噂は本当だ。暑い日が続くと、敵の動きが鈍くなり、愚かになる。（寒さと海は苦にならない。）",
+			"uniquenessgroup": "uq.rkx.weakness.heat",
+			"aspects": {
+				"weakness.foe": 1
+			}
+		},
+		{
+			"id": "rkx.weakness.sea",
+			"label": "弱点：海",
+			"description": "精算人なら誰でも海に気を付けるものだが、聞いた話は本当だったようだ。私の敵は、その感触を恐れているらしい。（暑さと寒さは苦にならない。）",
+			"uniquenessgroup": "uq.rkx.weakness.sea",
+			"aspects": {
+				"weakness.foe": 1
+			}
+		},
+		{
+			"id": "rkx.weakness.faith",
+			"label": "弱点：信仰",
+			"description": "宗教的環境で育ったのか？迷信を信じすぎている？私の敵は聖地を冒涜したがらない。（しかし彼は、猫や高所を避けない。）",
+			"uniquenessgroup": "uq.rkx.weakness.faith",
+			"aspects": {
+				"weakness.foe": 1
+			}
+		},
+		{
+			"id": "rkx.weakness.cats",
+			"label": "弱点：猫",
+			"description": "私の敵は猫を恐れている。昔から、「猫」と言った者を殺す勢いだったが、やっとその理由が分かった。（ただし、聖地や高所は避けない。）",
+			"uniquenessgroup": "uq.rkx.weakness.cats",
+			"aspects": {
+				"weakness.foe": 1
+			}
+		},
+		{
+			"id": "rkx.weakness.heights",
+			"label": "弱点：高所",
+			"description": "敵は高いところで目眩を起こし、自信を失う。（でも、猫や聖地は避けない。）",
+			"uniquenessgroup": "uq.rkx.weakness.heights",
+			"aspects": {
+				"weakness.foe": 1
+			}
+		},
+		{
+			"id": "rkx.weakness.horned",
+			"label": "弱点：角斧の嫌悪",
+			"description": "角斧は私の敵を嫌っている。その影が落ちるところでは、躊躇ってしまう。（ただし、他の時の神を特別恐れているわけではない。）",
+			"uniquenessgroup": "uq.rkx.weakness.horned",
+			"aspects": {
+				"weakness.foe": 1
+			}
+		},
+		{
+			"id": "rkx.weakness.wolf",
+			"label": "弱点：分裂した狼の憎悪",
+			"description": "この話の半分が本当だとしたら、それは、ほぼ同等の熱を込めてすべてのものを憎んでいる。しかし、敵の場合は、狼の怒りがほんの少しだけ熱く燃えている。（他の時の神々に対して特別な恐怖心は持っていない。)",
+			"uniquenessgroup": "uq.rkx.weakness.wolf",
+			"aspects": {
+				"weakness.foe": 1
+			}
+		},
+		{
+			"id": "rkx.weakness.flowermaker",
+			"label": "弱点：フラワーメーカー",
+			"description": "フラワーメーカーの影響力が不思議と私の敵を困惑させる。詳しい理由は一生分からないかもしれない。（ただし、他の時の神を特別に恐れているわけではない。]",
+			"uniquenessgroup": "uq.rkx.weakness.flowermaker",
+			"aspects": {
+				"weakness.foe": 1
+			}
+		},
+		{
+			"id": "rkx.weakness.cold.hidden",
+			"label": "未知の弱点",
+			"description": "この弱点を暴くことができれば、自分に有利になる。",
+			"uniquenessgroup": "uq.rkx.weakness.cold",
+			"decayTo": "rkx.weakness.cold",
+			"aspects": {
+				"weakness.foe.unknown": 1
+			},
+			"xtriggers": {
+				"epiphany": "rkx.weakness.cold"
+			},
+			"icon": "rkx.weakness.unknown"
+		},
+		{
+			"id": "rkx.weakness.heat.hidden",
+			"label": "未知の弱点",
+			"description": "この弱点を暴くことができれば、自分に有利になる。",
+			"uniquenessgroup": "uq.rkx.weakness.heat",
+			"decayTo": "rkx.weakness.heat",
+			"aspects": {
+				"weakness.foe.unknown": 1
+			},
+			"xtriggers": {
+				"epiphany": "rkx.weakness.heat"
+			},
+			"icon": "rkx.weakness.unknown"
+		},
+		{
+			"id": "rkx.weakness.sea.hidden",
+			"label": "未知の弱点",
+			"description": "この弱点を暴くことができれば、自分に有利になる。",
+			"uniquenessgroup": "uq.rkx.weakness.sea",
+			"decayTo": "rkx.weakness.sea",
+			"aspects": {
+				"weakness.foe.unknown": 1
+			},
+			"xtriggers": {
+				"epiphany": "rkx.weakness.sea"
+			},
+			"icon": "rkx.weakness.unknown"
+		},
+		{
+			"id": "rkx.weakness.faith.hidden",
+			"label": "未知の弱点",
+			"description": "この弱点を暴くことができれば、自分に有利になる。",
+			"uniquenessgroup": "uq.rkx.weakness.faith",
+			"decayTo": "rkx.weakness.faith",
+			"aspects": {
+				"weakness.foe.unknown": 1
+			},
+			"xtriggers": {
+				"epiphany": "rkx.weakness.faith"
+			},
+			"icon": "rkx.weakness.unknown"
+		},
+		{
+			"id": "rkx.weakness.cats.hidden",
+			"label": "未知の弱点",
+			"description": "この弱点を暴くことができれば、自分に有利になる。",
+			"uniquenessgroup": "uq.rkx.weakness.cats",
+			"decayTo": "rkx.weakness.cats",
+			"aspects": {
+				"weakness.foe.unknown": 1
+			},
+			"xtriggers": {
+				"epiphany": "rkx.weakness.cats"
+			},
+			"icon": "rkx.weakness.unknown"
+		},
+		{
+			"id": "rkx.weakness.heights.hidden",
+			"label": "未知の弱点",
+			"description": "この弱点を暴くことができれば、自分に有利になる。",
+			"uniquenessgroup": "uq.rkx.weakness.heights",
+			"decayTo": "rkx.weakness.heights",
+			"aspects": {
+				"weakness.foe.unknown": 1
+			},
+			"xtriggers": {
+				"epiphany": "rkx.weakness.heights"
+			},
+			"icon": "rkx.weakness.unknown"
+		},
+		{
+			"id": "rkx.weakness.horned.hidden",
+			"label": "未知の弱点",
+			"description": "この弱点を暴くことができれば、自分に有利になる。",
+			"uniquenessgroup": "uq.rkx.weakness.horned",
+			"aspects": {
+				"weakness.foe.unknown": 1
+			},
+			"decayTo": "rkx.weakness.horned",
+			"xtriggers": {
+				"epiphany": "rkx.weakness.horned"
+			},
+			"icon": "rkx.weakness.unknown"
+		},
+		{
+			"id": "rkx.weakness.wolf.hidden",
+			"label": "未知の弱点",
+			"description": "この弱点を暴くことができれば、自分に有利になる。",
+			"uniquenessgroup": "uq.rkx.weakness.wolf",
+			"decayTo": "rkx.weakness.wolf",
+			"aspects": {
+				"weakness.foe.unknown": 1
+			},
+			"xtriggers": {
+				"epiphany": "rkx.weakness.wolf"
+			},
+			"icon": "rkx.weakness.unknown"
+		},
+		{
+			"id": "rkx.weakness.flowermaker.hidden",
+			"label": "未知の弱点",
+			"description": "この弱点を暴くことができれば、自分に有利になる。",
+			"uniquenessgroup": "uq.rkx.weakness.flowermaker",
+			"decayTo": "rkx.weakness.flowermaker",
+			"aspects": {
+				"weakness.foe.unknown": 1
+			},
+			"xtriggers": {
+				"epiphany": "rkx.weakness.flowermaker"
+			},
+			"icon": "rkx.weakness.unknown"
+		},
+		{
+			"id": "rkx.event.aggressive",
+			"label": "精算人：凶暴",
+			"aspects": {
+				"rkx.event": 1,
+				"rkx.internal": 1
+			},
+			"description": "今夜は追っ手が活動的だ",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		},
+		{
+			"id": "rkx.event.passive",
+			"label": "精算人：消極的",
+			"aspects": {
+				"rkx.event": 1,
+				"rkx.internal": 1
+			},
+			"description": "追っ手が躊躇している",
+			"lifetime": 1,
+			"isHidden": true,
+			"noartneeded": true
+		}
+	]
+}

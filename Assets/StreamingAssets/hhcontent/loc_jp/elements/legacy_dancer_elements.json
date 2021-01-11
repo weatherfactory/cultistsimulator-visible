@@ -1,0 +1,262 @@
+{
+	"elements": [
+		{
+			"id": "legacydancerjob",
+			"label": "ゲイエティ劇場での契約",
+			"description": "ゲイエティ劇場でコーラスの仕事に就いた。私の運が尽きるか、容姿が衰え始めるか......もっとマシな仕事が見つかるまで、この仕事は私のものだ。",
+			"aspects": {
+				"job": 1,
+				"dance": 1,
+				"potentialbenefactorm": 1,
+				"potentialbenefactorf": 1,
+				"potentialecdysiast": 1
+			},
+			"lifetime": 120,
+			"decayTo": "legacydancerjob_suspended",
+			"xtriggers": {
+				"job": "legacydancerjob"
+			},
+			"slots": [
+				{
+					"id": "health",
+					"label": "体力",
+					"actionId": "work",
+					"required": {
+						"health": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "legacydancerjob_suspended",
+			"label": "ゲイエティ劇場での契約：休職処分",
+			"description": "あまりにも多くのパフォーマンスを逃してしまった。説得力のある訴えをすれば、仕事を取り戻せるかもしれない。",
+			"aspects": {
+				"job": 1
+			},
+			"lifetime": 300,
+			"xtriggers": {
+				"plead": "legacydancerjob"
+			},
+			"slots": [
+				{
+					"id": "passion",
+					"label": "情熱",
+					"actionId": "work",
+					"required": {
+						"passion": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "dancerlegacy_plotitem_a",
+			"label": "クシャクシャになった詩",
+			"description": "別のダンサーに宛てたもので、#LAST_FOLLOWER#という名前の人のサインが入っている。暗い森の中で夢の中でそのダンサーに出会った時のことが綴られている。彼らは、ドラムの音、翼の音、影の肌、月の血を夢見ていた。詩が捨てられたのも頷ける。しかし私は、それに書かれた言葉に何層も複雑な意味が含まれているのを知っている。",
+			"slots": [
+				{
+					"id": "Approach",
+					"label": "取り組み方",
+					"actionId": "study",
+					"description": "心臓の鼓動か、バイオリンの音色か？",
+					"required": {
+						"heart": 1,
+						"moth": 1
+					}
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			}
+		},
+		{
+			"id": "dancerjobecdysisa",
+			"label": "エクディシスクラブでの契約",
+			"description": "エクディシスクラブが開いている夜に舞台に立っている。",
+			"slots": [
+				{
+					"id": "location",
+					"label": "エクディシスクラブ",
+					"description": "エクディシスクラブ――人前で自分をさらけ出す場所。",
+					"actionId": "work",
+					"required": {
+						"locationcabaret": 1
+					}
+				},
+				{
+					"id": "purpose",
+					"label": "目的",
+					"actionId": "work",
+					"required": {
+						"changemarks": 1,
+						"healthskill": 1
+					},
+					"description": "複雑なダンスを踊れるようになりたいなら、スキルを見せる。変化したいなら欲望を使い、稼ぎたいだけなら、空のままにしておく。"
+				},
+				{
+					"id": "abilityfirst",
+					"label": "能力か傷跡",
+					"description": "何をしよう？",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "influence",
+					"label": "影響力",
+					"description": "今日は、何が私の心をくすぐるだろう？",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"consumes": true
+				}
+			],
+			"aspects": {
+				"job": 1,
+				"dance": 1,
+				"ecdysijob": 1
+			}
+		},
+		{
+			"id": "dancerjobecdysisb",
+			"label": "エクシシスクラブの上位契約",
+			"description": "エクディシスクラブで難しいダンスを踊る。",
+			"slots": [
+				{
+					"id": "location",
+					"label": "エクディシスクラブ",
+					"description": "エクディシスクラブ――人前で自分をさらけ出す場所。",
+					"actionId": "work",
+					"required": {
+						"locationcabaret": 1
+					}
+				},
+				{
+					"id": "purpose",
+					"label": "目的",
+					"actionId": "work",
+					"required": {
+						"changemarks": 1,
+						"healthskill": 1
+					},
+					"description": "複雑なダンスを踊れるようになりたいなら、スキルを見せる。変化したいなら欲望を使い、稼ぎたいだけなら、空のままにしておく。"
+				},
+				{
+					"id": "abilityfirst",
+					"label": "能力か傷跡",
+					"description": "何をしよう？",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "abilitysecond",
+					"label": "能力か傷跡",
+					"description": "何をしよう？",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "influence",
+					"label": "影響力",
+					"description": "今日は、何が私の心をくすぐるだろう？",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"consumes": true
+				}
+			],
+			"aspects": {
+				"job": 1,
+				"dance": 1,
+				"ecdysijob": 1
+			}
+		},
+		{
+			"id": "dancerjobecdysisc",
+			"label": "エクディシスクラブの特別契約",
+			"description": "時折、高額を支払われ、目の肥えた愛好家のために特別なダンスを披露することもある。",
+			"slots": [
+				{
+					"id": "location",
+					"label": "エクディシスクラブ",
+					"description": "エクディシスクラブ――人前で自分をさらけ出す場所。",
+					"actionId": "work",
+					"required": {
+						"locationcabaret": 1
+					}
+				},
+				{
+					"id": "purpose",
+					"label": "目的",
+					"actionId": "work",
+					"required": {
+						"changemarks": 1,
+						"healthskill": 1
+					},
+					"description": "変化したいなら欲望を使い、稼ぎたいだけなら、空のままにしておく。"
+				},
+				{
+					"id": "abilityfirst",
+					"label": "能力か傷跡",
+					"description": "何をしよう？",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "abilitysecond",
+					"label": "能力か傷跡",
+					"description": "何をしよう？",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "abilitythird",
+					"label": "能力か傷跡",
+					"description": "何をしよう？",
+					"actionId": "work",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"scar": 1
+					}
+				},
+				{
+					"id": "influence",
+					"label": "影響力",
+					"description": "今日は、何が私の心をくすぐるだろう？",
+					"actionId": "work",
+					"required": {
+						"influence": 1
+					},
+					"consumes": true
+				}
+			],
+			"aspects": {
+				"job": 1,
+				"dance": 1,
+				"ecdysijob": 1
+			}
+		}
+	]
+}

@@ -1,0 +1,2111 @@
+{
+	"recipes": [
+		{
+			"id": "ascensionpower_upgradetoobsession",
+			"label": "燃える鍵",
+			"actionId": "work",
+			"requirements": {
+				"ascensionpowerb": 1,
+				"waystag_after": 1,
+				"forge": 6
+			},
+			"effects": {
+				"ascensionpowerb": -1,
+				"ascensionpowerc": 1
+			},
+			"startdescription": "この儀式は、日々の鍛造が私の中に入ることを可能にする鍵。私は永遠に変わるだろう。",
+			"description": "儀式は完了し、鍛造の印が体に現れた。1つ目は私が言ったこと、2つ目は私がしたことを示しているようだ。自分の体を調べれば、3つ目の印も見つかるだろう。新たな必要性を感じて、私は燃えた。",
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "flammarion"
+		},
+		{
+			"comments": "male and female flavour; //TODO implement more elegantly",
+			"id": "ascensionsensation_upgradetoobsessionm",
+			"label": "ため息の鍵",
+			"actionId": "work",
+			"requirements": {
+				"ascensionsensationbm": 1,
+				"waystag_after": 1,
+				"grail": 6
+			},
+			"effects": {
+				"ascensionsensationbm": -1,
+				"ascensionsensationc": 1
+			},
+			"startdescription": "この儀式は、赤い聖杯が私の中に入ることを可能にする鍵。私は永遠に変わるだろう。",
+			"description": "儀式は完了し、聖杯の印が体に現れた。1つ目は私が言ったこと、2つ目は私がしたことを示しているようだ。自分の体を調べれば、3つ目の印も見つかるだろう。新たな欲望を感じて、私は身震いをした。",
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "flammarion"
+		},
+		{
+			"comments": "male and female flavour; //TODO implement more elegantly",
+			"id": "ascensionsensation_upgradetoobsessionf",
+			"label": "ため息の鍵",
+			"actionId": "work",
+			"requirements": {
+				"ascensionsensationbf": 1,
+				"waystag_after": 1,
+				"grail": 6
+			},
+			"effects": {
+				"ascensionsensationbf": -1,
+				"ascensionsensationc": 1
+			},
+			"startdescription": "この儀式は、赤い聖杯が私の中に入ることを可能にする鍵。私は永遠に変わるだろう。",
+			"description": "儀式は完了し、聖杯の印が体に現れた。1つ目は私が言ったこと、2つ目は私がしたことを示しているようだ。自分の体を調べれば、3つ目の印も見つかるだろう。新たな欲望を感じて、私は身震いをした。",
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "ascensionsensation_switchpolarity_mtof",
+			"label": "好き嫌い",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionsensationbm": 1
+			},
+			"effects": {
+				"ascensionsensationbm": -1,
+				"ascensionsensationbf": 1
+			},
+			"startdescription": "夢の世界で手の届くところまで来てしまった。<b>仕事</b>を始めなければならないが、自分の欲望に素直になってみると、頭に浮かぶのは男性ではない気がする......",
+			"description": "好みは変わり、欲望は姿を変え、思考は他の形態に曲がる。",
+			"warmup": 3,
+			"craftable": true
+		},
+		{
+			"id": "ascensionsensation_switchpolarity_ftom",
+			"label": "好き嫌い",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionsensationbf": 1
+			},
+			"effects": {
+				"ascensionsensationbf": -1,
+				"ascensionsensationbm": 1
+			},
+			"startdescription": "夢の世界で手の届くところまで来てしまった。<b>仕事</b>を始めなければならないが、自分の欲望に素直になってみると、頭に浮かぶのは女性ではない気がする......",
+			"description": "好みは変わり、欲望は姿を変え、思考は他の形態に曲がる。",
+			"warmup": 3,
+			"craftable": true
+		},
+		{
+			"id": "ascensionenlightenment_upgradetoobsession",
+			"label": "盲目の鍵",
+			"actionId": "work",
+			"requirements": {
+				"ascensionenlightenmentb": 1,
+				"waystag_after": 1,
+				"lantern": 6
+			},
+			"effects": {
+				"ascensionenlightenmentb": -1,
+				"ascensionenlightenmentc": 1
+			},
+			"startdescription": "この儀式は、見張り番の眼差しが私の中に入ることを可能にする鍵。私は永遠に変わるだろう。",
+			"description": "儀式は完了し、見張り番の印が体に現れた。1つ目は私が言ったこと、2つ目は私がしたことを示しているようだ。自分の体を調べれば、3つ目の印も見つかるだろう。私の欲望は洗練されてきた。",
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "flammarion"
+		},
+		{
+			"id": "majorforgevictory",
+			"label": "夜明けが訪れる",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionpowerf": 1,
+				"forge": 50
+			},
+			"effects": {
+				
+			},
+			"startdescription": "[This text is available when advanced legacies arrive.]",
+			"description": "Remember that the ending text will contain the payload.",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "minorforgevictory_trigger",
+			"actionId": "work",
+			"label": "燃え盛る心",
+			"startdescription": "炎が何度も私の体を包み込んできた。肉の塊同士が擦れ合う。鍛造の熱を呼び出し、過去の自分を燃やす。三又の扉をくぐれば、私は死ぬだろうが、死は終わりではない。私は鍛造の寵愛を受ける、不死の存在、長生者となるのだ。[儀式で使われた信奉者は吸収される。置き去りにする人を大切に思うなら、慎重に選びこと。]",
+			"requirements": {
+				"ritual": 1,
+				"ascensionpowerf": 1,
+				"forge": 36
+			},
+			"craftable": true,
+			"comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+			"warmup": 1,
+			"effects": {
+				"follower": -3,
+				"summoned": -3,
+				"passion": -3
+			},
+			"linked": [
+				{
+					"id": "minorforgevictory_overture",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "minorforgevictory_overture",
+			"label": "燃え盛る心",
+			"actionId": "work",
+			"description": "炎の名になろうとしている。Remember that the ending text will contain the payload.",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "最愛の人",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"chance": 100,
+					"id": "belovedfarewell"
+				},
+				{
+					"chance": 100,
+					"id": "minorforgevictorywithrisen"
+				},
+				{
+					"chance": 100,
+					"id": "minorforgevictory"
+				}
+			]
+		},
+		{
+			"id": "minorforgevictory",
+			"label": "燃え盛る心",
+			"requirements": {
+				"ascensionpowerf": 1
+			},
+			"ending": "minorforgevictory",
+			"actionId": "work"
+		},
+		{
+			"id": "minorforgevictorywithrisen",
+			"requirements": {
+				"summoned": 1,
+				"ascensionpowerf": 1
+			},
+			"label": "燃え盛る心",
+			"ending": "minorforgevictorywithrisen",
+			"actionId": "work"
+		},
+		{
+			"id": "majorgrailvictory",
+			"label": "もうすぐ饗宴が始まる",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionsensationf": 1,
+				"grail": 50
+			},
+			"effects": {
+				
+			},
+			"startdescription": "[This text is available when advanced legacies arrive.]",
+			"description": "饗宴が始まる。Remember that the ending text will contain the payload.",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "minorgrailvictory_withromanticsacrifice",
+			"label": "心臓の記憶の饗宴",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionsensationf": 1,
+				"romanticinterest": 1,
+				"grail": 27
+			},
+			"startdescription": "私は他人の命で膨れ上がり、体の縫い目がはじけ始める。私は、山の母であり、消費する者であり、源である赤い聖杯を召喚させる。ここに、私を愛してくれた人がいる。サンダースキンが死ぬまで赤い聖杯を愛したように、私もこの人を愛していたのかもしれない。この犠牲のおかげで、召喚は簡単だから恐ろしいものとなる。彼女の名の下、私は自分を産むのだ。三又の扉は開き、私は鍛造の寵愛を受ける、不死の存在、長生者となる。そして、私を愛してくれた人の記憶は、私が存在する限り生き続けるだろう。",
+			"description": ".",
+			"warmup": 60,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"ending": "minorgrailvictory"
+		},
+		{
+			"id": "minorgrailvictory_trigger",
+			"actionId": "work",
+			"label": "真の生誕祭",
+			"startdescription": "私は他人の命で膨れ上がり、体の縫い目がはじけ始める。私は、山の母であり、消費する者であり、源である赤い聖杯を召喚させる。彼女の名の下、私は自分を産む。三又の扉は開き、私は鍛造の寵愛を受ける、不死の存在、長生者となる。[儀式で使われた信奉者は吸収される。置き去りにする人を大切に思うなら、慎重に選びこと。]",
+			"requirements": {
+				"ritual": 1,
+				"ascensionsensationf": 1,
+				"grail": 36
+			},
+			"craftable": true,
+			"comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+			"warmup": 1,
+			"effects": {
+				"follower": -3,
+				"summoned": -3,
+				"passion": -3
+			},
+			"linked": [
+				{
+					"id": "minorgrailvictory_overture",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "minorgrailvictory_overture",
+			"label": "真の生誕祭",
+			"actionId": "work",
+			"description": ".",
+			"warmup": 60,
+			"signalEndingFlavour": "Grand",
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "最愛の人",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"linked": [
+				{
+					"chance": 100,
+					"id": "minorgrailvictorywithrisen"
+				},
+				{
+					"chance": 100,
+					"id": "belovedfarewell"
+				},
+				{
+					"chance": 100,
+					"id": "minorgrailvictory"
+				}
+			]
+		},
+		{
+			"id": "minorgrailvictory",
+			"label": "真の生誕祭",
+			"requirements": {
+				"ascensionsensationf": 1
+			},
+			"ending": "minorgrailvictory",
+			"actionId": "work"
+		},
+		{
+			"id": "minorgrailvictorywithrisen",
+			"requirements": {
+				"summoned": 1,
+				"ascensionsensationf": 1
+			},
+			"label": "真の生誕祭",
+			"ending": "minorgrailvictorywithrisen",
+			"actionId": "work"
+		},
+		{
+			"id": "majorlanternvictory",
+			"label": "灯り",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"ascensionenlightenmentf": 1,
+				"lantern": 50
+			},
+			"effects": {
+				
+			},
+			"startdescription": "[This text is available when advanced legacies arrive.]",
+			"description": "栄光に近づいている。Remember that the ending text will contain the payload.",
+			"warmup": 60,
+			"craftable": false
+		},
+		{
+			"id": "belovedfarewell",
+			"label": "入り口の選択",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"summoned": -1
+			},
+			"startdescription": "最後の別れだ。彼らは残り、私は上昇する。",
+			"slots": [
+				{
+					"id": "decision",
+					"label": "決断",
+					"description": "[情熱を追加して上昇から身を翻し......最愛の人と定命の者として生きる。何もしなくても次へ進む。]",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "auclairvictory",
+					"chance": 100
+				},
+				{
+					"id": "catvictory",
+					"chance": 100
+				},
+				{
+					"id": "clovettevictory",
+					"chance": 100
+				},
+				{
+					"id": "cliftonvictory",
+					"chance": 100
+				},
+				{
+					"id": "dorothyvictory",
+					"chance": 100
+				},
+				{
+					"id": "elridgevictory",
+					"chance": 100
+				},
+				{
+					"id": "enidvictory",
+					"chance": 100
+				},
+				{
+					"id": "laidlawvictory",
+					"chance": 100
+				},
+				{
+					"id": "leovictory",
+					"chance": 100
+				},
+				{
+					"id": "nevillevictory",
+					"chance": 100
+				},
+				{
+					"id": "portervictory",
+					"chance": 100
+				},
+				{
+					"id": "reniravictory",
+					"chance": 100
+				},
+				{
+					"id": "rosevictory",
+					"chance": 100
+				},
+				{
+					"id": "salibavictory",
+					"chance": 100
+				},
+				{
+					"id": "sleevictory",
+					"chance": 100
+				},
+				{
+					"id": "sylviavictory",
+					"chance": 100
+				},
+				{
+					"id": "tristanvictory",
+					"chance": 100
+				},
+				{
+					"id": "valcianevictory",
+					"chance": 100
+				},
+				{
+					"id": "victorvictory",
+					"chance": 100
+				},
+				{
+					"id": "violetvictory",
+					"chance": 100
+				},
+				{
+					"id": "ysabetvictory",
+					"chance": 100
+				},
+				{
+					"id": "imnotinlove",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "auclairvictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqauclair": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、最愛の人、オークレールと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "auclairvictory"
+		},
+		{
+			"id": "catvictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqcat": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、キャット・キャロと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "catvictory"
+		},
+		{
+			"id": "clovettevictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqclovette": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、クロヴェットと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "clovettevictory"
+		},
+		{
+			"id": "cliftonvictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqclifton": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、クリフトンと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "cliftonvictory"
+		},
+		{
+			"id": "dorothyvictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqdorothy": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、ドロシーと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "dorothyvictory"
+		},
+		{
+			"id": "elridgevictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqelridge": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選ぶことにより、昇天を中断し、エルリッジと定命の者として共に人生を過ごす決心をする。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "elridgevictory"
+		},
+		{
+			"id": "enidvictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqenid": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、イーニッドと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "enidvictory"
+		},
+		{
+			"id": "laidlawvictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqlaidlaw": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選ぶことにより、昇天を中断し、レイドローと定命の者として共に人生を過ごす決心をする。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "laidlawvictory"
+		},
+		{
+			"id": "leovictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqleo": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、レイドローと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "leovictory"
+		},
+		{
+			"id": "nevillevictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqneville": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、ネビルと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "nevillevictory"
+		},
+		{
+			"id": "portervictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqporter": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、ポーターと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "portervictory"
+		},
+		{
+			"id": "reniravictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqrenira": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、レニラと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "reniravictory"
+		},
+		{
+			"id": "rosevictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqrose": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、ローズと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "rosevictory"
+		},
+		{
+			"id": "salibavictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqsaliba": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、サリバと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "salibavictory"
+		},
+		{
+			"id": "sleevictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqslee": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、スリーと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "sleevictory"
+		},
+		{
+			"id": "sylviavictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqsylvia": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、シルビアと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "sylviavictory"
+		},
+		{
+			"id": "tristanvictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqtristan": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、トリスタンと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "tristanvictory"
+		},
+		{
+			"id": "valcianevictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqvalciane": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、ヴァルシアーヌと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "valcianevictory"
+		},
+		{
+			"id": "victorvictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqvictor": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、ビクターと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "victorvictory"
+		},
+		{
+			"id": "violetvictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqviolet": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、ヴァイオレットと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "violetvictory"
+		},
+		{
+			"id": "ysabetvictory",
+			"label": "愛？",
+			"actionId": "work",
+			"requirements": {
+				"romanticinterest": 1,
+				"passion": 1,
+				"uqysabet": 1
+			},
+			"startdescription": "1つの皿に心臓を、もう片方に羽根を入れた天秤の話を聞いたことがある。羽根は永遠であるが、これが今の私の決断だ。[これを選択すると、昇天を中断し、イザベトと定命の者として共に人生を過ごすこととなる。]",
+			"description": ".",
+			"warmup": 60,
+			"craftable": false,
+			"signalEndingFlavour": "Grand",
+			"ending": "ysabetvictory"
+		},
+		{
+			"id": "imnotinlove",
+			"label": "献身",
+			"startdescription": "愛されているかもしれないし、愛しているかもしれない。もしかすると、どうでも良いことなのかもしれない。",
+			"actionId": "work",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "minorlanternvictory",
+					"chance": 100
+				},
+				{
+					"id": "minorgrailvictory",
+					"chance": 100
+				},
+				{
+					"id": "minorforgevictory",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "minorlanternvictory_trigger",
+			"actionId": "work",
+			"label": "突撃",
+			"startdescription": "この肉体はほとんど残っていない。私は三又の扉を通過し二度と戻って来れないだろう。見張り番が待っている。彼の足跡をたどって、栄光の光を見つけよう。私の魂は理解に耐えられず、開くことになるだろう。私は不死者にはならないが、それ以上の存在になる。[儀式で使われた信奉者は吸収される。置き去りにする人を大切に思うなら、慎重に選びこと。]",
+			"requirements": {
+				"ritual": 1,
+				"ascensionenlightenmentf": 1,
+				"lantern": 36
+			},
+			"craftable": true,
+			"comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+			"warmup": 1,
+			"effects": {
+				"follower": -3,
+				"summoned": -3,
+				"passion": -3
+			},
+			"linked": [
+				{
+					"id": "minorlanternvictory_overture",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "minorlanternvictory_overture",
+			"label": "突撃",
+			"actionId": "work",
+			"description": ".",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "beloved",
+					"label": "最愛の人",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"chance": 100,
+					"id": "minorlanternvictorywithrisen"
+				},
+				{
+					"chance": 100,
+					"id": "belovedfarewell"
+				},
+				{
+					"chance": 100,
+					"id": "minorlanternvictory"
+				}
+			]
+		},
+		{
+			"id": "minorlanternvictory",
+			"label": "突撃",
+			"requirements": {
+				"ascensionenlightenmentf": 1
+			},
+			"ending": "minorlanternvictory",
+			"actionId": "work"
+		},
+		{
+			"id": "minorlanternvictorywithrisen",
+			"requirements": {
+				"summoned": 1,
+				"ascensionenlightenmentf": 1
+			},
+			"label": "突撃",
+			"ending": "minorlanternvictorywithrisen",
+			"actionId": "work"
+		},
+		{
+			"id": "ambition",
+			"requirements": {
+				"seasonambitions": 1
+			},
+			"label": "エキゾチックな欲望？",
+			"actionId": "craving",
+			"slots": [
+				{
+					"id": "Obsessions",
+					"label": "夢中",
+					"description": "強い欲求",
+					"required": {
+						"enlightenmentmarks": 3,
+						"powermarks": 3,
+						"sensationmarks": 3,
+						"remembrancemarks": 2,
+						"changemarks": 1,
+						"independent": 1,
+						"resentment": 3,
+						"mentor": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "何が我々を駆り立てるのだろうか？",
+			"description": "",
+			"effects": {
+				
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "L_ascension_rival",
+					"chance": 100
+				},
+				{
+					"id": "L_independent",
+					"chance": 100
+				},
+				{
+					"id": "L_rebellion_activate",
+					"chance": 70
+				},
+				{
+					"id": "L_rebellion_noactivation",
+					"chance": 100
+				},
+				{
+					"id": "ending.minorcrownedgrowthvictory",
+					"chance": 100
+				},
+				{
+					"id": "ambition.apostleforge.emitfuel",
+					"chance": 100
+				},
+				{
+					"id": "ambition.apostlegrail.emitfuel",
+					"chance": 100
+				},
+				{
+					"id": "ambition.apostlelantern.emitfuel",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingpower",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingsensation",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingenlightenment",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingremembrance",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingremembrancenegative",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfromg",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfromf",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfrome",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfromd",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfromc",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfromb",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_tryascendfroma",
+					"chance": 100
+				},
+				{
+					"id": "ascensionnotyet",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_independent",
+			"label": "ライバル！",
+			"requirements": {
+				"independent": 1
+			},
+			"actionId": "ambition",
+			"deckeffect": {
+				"schemeevents": 1
+			},
+			"linked": [
+				{
+					"id": "L_independent_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_independent_router",
+			"label": "ライバル！",
+			"actionId": "ambition",
+			"requirements": {
+				"independent": 1
+			},
+			"comments": "That requirement is strictly unnecessary, but leaving it here just in case we move recipe connections again - it's an important filter",
+			"startdescription": "この人も私より先に上昇する。[独立したオカルト主義者たちは、時の神々の注目を独占しようとする。また、彼らは他の陰謀を企てているかもしれない。]",
+			"alternativerecipes": [
+				{
+					"id": "scheme_murderhunter",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"independent": 1
+						}
+					}
+				},
+				{
+					"id": "scheme_expedition_grab",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"independent": 1
+						}
+					}
+				},
+				{
+					"id": "scheme_activities",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"independent": 1
+						}
+					}
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "L_ascension_rival",
+			"actionId": "ambition",
+			"requirements": {
+				"rivalmarks": 7
+			},
+			"extantreqs": {
+				"long.enemy": -1
+			},
+			"label": "ライバルの勝利",
+			"startdescription": "ライバルの実績のせいで、自分の影が薄れる。ライバルは今から太陽の棲む家のある場所に昇り、この世に留まる私は、後悔することしかできないのだろう。",
+			"ending": "rivalascension",
+			"signalEndingFlavour": "Melancholy",
+			"warmup": 60
+		},
+		{
+			"id": "L_ascension_rival_apostle",
+			"actionId": "ambition",
+			"requirements": {
+				"rivalmarks": 7
+			},
+			"extantreqs": {
+				"long.enemy": 1
+			},
+			"label": "敵が多すぎる",
+			"startdescription": "不死の敵が1人現れれば、定命の者の危機となる。不死の敵が2人も現れたら手に負えるはずがない。我々の大いなる業は失敗に終わった。",
+			"ending": "rivalascension",
+			"signalEndingFlavour": "Melancholy",
+			"warmup": 60
+		},
+		{
+			"id": "L_rebellion_activate",
+			"label": "反抗！",
+			"actionId": "ambition",
+			"requirements": {
+				"resentment": 3
+			},
+			"startdescription": "やりすぎか、足りないか？私のせいで、我慢の限界を超えて誰かを怒ってしまった。",
+			"description": "味方が私から離れていった。まだ、正確には敵ではないかもしれないが、私に仕えることはないだろう。",
+			"aspects": {
+				"rebellion": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "L_rebellion_noactivation",
+			"label": "不満",
+			"actionId": "ambition",
+			"requirements": {
+				"resentment": 3
+			},
+			"startdescription": "やりすぎか、足りないか？私のせいで、味方が怒ってしまった。",
+			"description": "1人で拗ねている。今のところは仲間のもとへと戻っていくだろう。",
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ending.minorcrownedgrowthvictory",
+			"actionId": "ambition",
+			"label": "感染して、進化する",
+			"requirements": {
+				"ghoul.hunger": 7
+			},
+			"startdescription": "欲望は自分を超えたものになっているが、自分の外には出ていない。腹部は果物で満たされている。もう手遅れだ。",
+			"ending": "minorcrownedgrowthvictory",
+			"signalEndingFlavour": "Vile",
+			"warmup": 30
+		},
+		{
+			"id": "ascensionnotyet",
+			"label": "定命の者の不満",
+			"actionId": "craving",
+			"requirements": {
+				"enlightenmentmarks": -1,
+				"powermarks": -1,
+				"sensationmarks": -1
+			},
+			"slots": [
+				{
+					"id": "Temptations",
+					"label": "誘惑",
+					"description": "火には燃料が必要だ",
+					"required": {
+						"desire": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "何が私を駆り立てるのだろうか？",
+			"effects": {
+				"restlessness": 1
+			},
+			"description": "これまでのところ、私は、他の定命の者と同じような欲求や欲望しか感じていない。それでは、なぜ落ち着かせないのだろう？",
+			"alternativerecipes": [
+				{
+					"id": "ascensionhintpower2",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintenlightenment2",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintsensation2m",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintsensation2f",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintpower1",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintenlightenment1",
+					"chance": 100
+				},
+				{
+					"id": "ascensionhintsensation1",
+					"chance": 100
+				},
+				{
+					"id": "legacydetectiveplotitem_tempt",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintpower2",
+			"label": "鍛造の唸り声",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionpowerb": 1
+			},
+			"startdescription": "今の私は、暖かさを感じられない。",
+			"description": "鍛造の夢を見た私は、彼女の炎の熱を待ち焦がれている。そろそろ大いなる業を実行し、変化を始めた方が良いだろう――しかし、それには十分な数の鍛造の属性が必要だ。<b>探索</b>すれば、もっと見つかるかもしれない。",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintenlightenment2",
+			"label": "見張り番の光",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionenlightenmentb": 1
+			},
+			"startdescription": "現実世界でも、新しい色が見えるようになってきた。",
+			"description": "私の好奇心は物理的欲求になりつつある。私の目は入り口となる。そろそろ大いなる業を実行し、変化を始めた方が良いだろう――しかし、それには十分な数の灯りの属性が必要だ。<b>探索</b>すれば、もっと見つかるかもしれない。",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintsensation2m",
+			"label": "聖杯の指先",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionsensationbm": 1
+			},
+			"startdescription": "私の欲望が変わってきた。",
+			"description": "聖杯の美しい波が私の中で動く。そろそろ大いなる業を実行し、変化を始めた方が良いだろう――しかし、それには十分な数の聖杯の属性が必要だ。<b>探索</b>すれば、もっと見つかるかもしれない。",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintsensation2f",
+			"label": "聖杯の指先",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionsensationbf": 1
+			},
+			"startdescription": "私の欲望が変わってきた。",
+			"description": "聖杯が美しい指先で触れてくれた。そろそろ大いなる業を実行し、変化を始めた方が良いだろう――しかし、それには十分な数の聖杯の属性が必要だ。<b>探索</b>すれば、もっと見つかるかもしれない。",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintpower1",
+			"label": "鍛造の輝き",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionpowera": 1
+			},
+			"startdescription": "飢えが心の中で燃える――目に見えない術がもたらす可能性のある力への飢えだ。",
+			"description": "日々の鍛造が、夢の中で待っている。鍛造の伝承を学び、この誘惑を夢に見れば、自分の目的を達成できる。欲求が私を蝕んでいく。",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintenlightenment1",
+			"label": "見張り番の足音",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionenlightenmenta": 1
+			},
+			"startdescription": "飢えが脳裏をよぎる――目に見えない術がもたらす可能性のある知識への飢えだ。",
+			"description": "瞳の扉である見張り番が、夢の中で待っている。灯りの伝承を学び、この誘惑を夢に見れば、自分の目的を達成できる。欲求が私を蝕んでいく。",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensionhintsensation1",
+			"label": "聖杯の囁き",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionsensationa": 1
+			},
+			"startdescription": "飢えが体を彷徨う――目に見えない術がもたらす可能性のある快楽への飢えだ。",
+			"description": "赤い聖杯――溺れ貪り食う聖杯――が、夢の中で待っている。聖杯の伝承を学び、この誘惑を夢に見れば、自分の目的を達成できる。欲求が私を蝕んでいく。",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingpower",
+			"label": "形作る熱",
+			"actionId": "craving",
+			"requirements": {
+				"powermarks": 1
+			},
+			"slots": [
+				{
+					"id": "Fuels",
+					"label": "燃料",
+					"description": "火には燃料が必要だ",
+					"required": {
+						"funds": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "今以上に熱い火を必要としている。今の燃料は希少で高価だ。それを買う余裕がなければ、寒さに負けてしまう。",
+			"linked": [
+				{
+					"id": "ascensionsuccesscravingpower_descend",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingpower_ascend",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensionsuccesscravingpower_descend",
+			"label": "変化の灰",
+			"actionId": "craving",
+			"requirements": {
+				"funds": -1
+			},
+			"slots": [
+				{
+					"id": "Pain",
+					"label": "痛み",
+					"description": "欲望が私を苦しめる",
+					"required": {
+						"health": 1,
+						"vitality": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "震えが止まらない。日がなければ、私の肉体は薄くなり弱っていく。",
+			"description": "私の力は弱くなり、血は冷たくなってきた。一部の傷跡が治ってきているような気がする。私は衰えていく。",
+			"aspects": {
+				"descend": 1,
+				"damagehealth": 1
+			},
+			"effects": {
+				"vitality": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingpower_ascend",
+			"label": "もう1つの印",
+			"actionId": "craving",
+			"startdescription": "",
+			"description": "私が炎を求めるように、炎も私を求める。その感覚は痛み以上のものをもたらす。私はもう1つの印を手に入れた。",
+			"effects": {
+				"vitality": 2,
+				"funds": -1
+			},
+			"aspects": {
+				"ascend": 1
+			}
+		},
+		{
+			"id": "ascensioncravingsensation",
+			"label": "赤の必要性",
+			"actionId": "craving",
+			"requirements": {
+				"sensationmarks": 1
+			},
+			"slots": [
+				{
+					"id": "Sustenance",
+					"label": "食べ物",
+					"description": "最近死んだ人、あるいは生きている人。",
+					"required": {
+						"corpse": 1,
+						"lunatic": -1,
+						"prisoner": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "血への渇き？そんな単純な話ではない。もっと深く血を抜いてやる。",
+			"linked": [
+				{
+					"id": "ascensionsuccesscravingsensation_descend",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingsensation_ascend",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensionsuccesscravingsensation_descend",
+			"label": "中の砂漠",
+			"actionId": "craving",
+			"requirements": {
+				"corpse": -1,
+				"lunatic": -1,
+				"prisoner": -1
+			},
+			"slots": [
+				{
+					"id": "Pain",
+					"label": "痛み",
+					"description": "欲望が私を苦しめる",
+					"required": {
+						"passion": 1,
+						"glimmering": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "他人の命がなければ、自分の命は自分自身の糧となってしまう。",
+			"description": "私の体液は薄くなり、肉は衰え、変化は解けていき、情熱は薄れていく。求めていた自分からかけ離れていく。",
+			"aspects": {
+				"descend": 1,
+				"fatiguing": 1
+			},
+			"effects": {
+				"glimmering": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingsensation_ascend",
+			"label": "もう1つの印",
+			"actionId": "craving",
+			"effects": {
+				"glimmering": 2,
+				"corpse": -1,
+				"lunatic": -1,
+				"prisoner": -1
+			},
+			"startdescription": "",
+			"description": "終わった時の満足感は、海に浮かぶ月のように深い。私の中にもう1つの印が芽生える。",
+			"aspects": {
+				"ascend": 1
+			}
+		},
+		{
+			"id": "ascensioncravingenlightenment",
+			"label": "光の不思議",
+			"actionId": "craving",
+			"requirements": {
+				"enlightenmentmarks": 1
+			},
+			"slots": [
+				{
+					"id": "Conversation",
+					"label": "会話",
+					"description": "生きている心の最後の言葉。",
+					"required": {
+						"prisoner": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "静かな部屋で生きている心と2人きりの時間を過ごす。それだけでいい。",
+			"linked": [
+				{
+					"id": "ascensionsuccesscravingenlightenment_descend",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingenlightenment_ascend",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensionsuccesscravingenlightenment_descend",
+			"label": "中の砂漠",
+			"actionId": "craving",
+			"requirements": {
+				"prisoner": -1
+			},
+			"slots": [
+				{
+					"id": "Pain",
+					"label": "痛み",
+					"description": "欲望が私を苦しめる",
+					"required": {
+						"reason": 1,
+						"erudition": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "生きている心の思考を吸収しなければ、自分の欲求が私自身に背を向けることになる。",
+			"description": "マンサスの光は私の中で薄れていく。今の私は以前の私よりも劣っている。会話がしたい。特別な会話をしなくてはいけない。",
+			"aspects": {
+				"descend": 1,
+				"fatiguing": 1
+			},
+			"effects": {
+				"erudition": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingenlightenment_ascend",
+			"label": "もう1つの印",
+			"actionId": "craving",
+			"effects": {
+				"erudition": 2,
+				"prisoner": -1
+			},
+			"startdescription": "",
+			"description": "私は彼らの心の光を飲んだ。それは私を興奮させ、満たしてくれる。印が私の中で明るくなった。",
+			"aspects": {
+				"ascend": 1
+			}
+		},
+		{
+			"id": "ascensioncravingremembrance",
+			"label": "暗黒の大地に育つ飢え",
+			"actionId": "craving",
+			"requirements": {
+				"remembrancemarks": 2,
+				"ghoul.hunger": 1
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"startdescription": "この味......この独特な、不味くも美味しくもない味が、また私の味覚を悩ませてくる。舌は腫れ上がり、唇は黒くなる。万能薬が私の中に胞子を植え付けた。それを鎮めることが出来るのは死んだ肉だけである。",
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingremembrancenegative",
+			"label": "暗黒の大地に育つ飢え",
+			"actionId": "craving",
+			"requirements": {
+				"remembrancemarks": 2
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": 1,
+					"additive": false
+				}
+			],
+			"startdescription": "この味......この独特な、不味くも美味しくもない味が、また私の味覚を悩ませてくる。舌は腫れ上がり、唇は黒くなる。万能薬が私の中に胞子を植え付けた。それを鎮めることが出来るのは死んだ肉だけである。",
+			"comments": "This is a safety measure for players who managed to allow their hunger to go negative with an old save.",
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfroma",
+			"label": "変化の誘惑",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionchangea": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "学習",
+					"description": "降伏して、成る",
+					"required": {
+						"ascensionlessonhearta": 1,
+						"ascensionlessonmotha": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "自分以外の存在に憧れてしまうが、必要な証人を見つける前に、学ぶべきことを学んだのだろうか？",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfroma",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfroma",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfroma",
+			"label": "衣服を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonhearta": 1
+			},
+			"description": "自分が選んだ選択を捨てたとき、木の影の間から漏れる月明かりが自分の表面を泳いだとき、私は葉っぱのように光った。",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonhearta": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfroma",
+			"label": "衣服を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmotha": 1
+			},
+			"description": "私は自分の皮を脱いで成長する。この月の瞳に、私は映る――",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmotha": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfromb",
+			"label": "第2の変化に向けて",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionchangeb": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "学習",
+					"description": "降伏して、成る",
+					"required": {
+						"ascensionlessonheartb": 1,
+						"ascensionlessonmothb": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "自分を包む肌がどんどん馴染まなくなってきたから、捨て始めなければいけない。捨て方を学ぶために自分の一部を送らないといけない。",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfromb",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfromb",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfromb",
+			"label": "外皮を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonheartb": 1
+			},
+			"description": "皮膚の一番外側の層がバラバラになってきている......私もそうだ。",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonheartb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfromb",
+			"label": "外皮を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmothb": 1
+			},
+			"description": "誰にも層があるが\n\n私には足りない",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmothb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfromc",
+			"label": "第3の変化に向けて",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionchangec": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "学習",
+					"description": "降伏して、成る",
+					"required": {
+						"ascensionlessonheartc": 1,
+						"ascensionlessonmothc": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "明かして、隠して、明かして。前に進むためには、隠し方を学ばなければいけない。",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfromc",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfromc",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfromc",
+			"label": "足跡を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonheartc": 1
+			},
+			"description": "足跡がなければ、我々の行き先をどう追うというのだろう。早くここを去りたい。",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonheartc": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfromc",
+			"label": "足跡を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmothc": 1
+			},
+			"description": "モグラの最古の教え：音楽と静寂の間",
+			"comments": "lack of full stop intentional",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmothc": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfromd",
+			"label": "第4の変化に向けて",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionchanged": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "学習",
+					"description": "降伏して、成る",
+					"required": {
+						"ascensionlessonheartd": 1,
+						"ascensionlessonmothd": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "次の変化のために、自分を柔らかくして、変化の作用を受け入れなくてはいけない。",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfromd",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfromd",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfromd",
+			"label": "色相を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonheartd": 1
+			},
+			"description": "私の新たに剥がれ肉は、溶解の汁で満たされている。",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonheartd": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfromd",
+			"label": "色を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmothd": 1
+			},
+			"description": "最後の肌に入ると、私のすべてが点々と溶けていく。そしてすぐに、点々、点々と。",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmothd": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfrome",
+			"label": "第5の変化に向けて",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionchangee": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "学習",
+					"description": "降伏して、成る",
+					"required": {
+						"ascensionlessonhearte": 1,
+						"ascensionlessonmothe": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "私が通る扉は、覚めている目にも、閉じている目にも決して見えない。私は道を知っている者に目を委ねなければならない。そうすれば見えるようになる。",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfrome",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfrome",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfrome",
+			"label": "視力を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonhearte": 1
+			},
+			"description": "時々、この変化を受けた者のレモン色の目が、突撃に近づいた者の輝く目と間違われることがある。しかし、その勘違いは決して長く続かない。",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonhearte": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfrome",
+			"label": "視力を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmothe": 1
+			},
+			"description": "今、私は最終的な肌に入る。",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmothe": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfromg",
+			"actionId": "craving",
+			"label": "内なる鼓動",
+			"requirements": {
+				"ascensionchangeg": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "学習",
+					"description": "降伏して、成る",
+					"required": {
+						"ascensionlessonheartf": 1,
+						"ascensionlessonmothf": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "魂が破裂する前に、早く夢を見なければ。",
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_tryascendfromf",
+			"actionId": "craving",
+			"label": "第6の変化に向けて",
+			"requirements": {
+				"ascensionchangef": 1
+			},
+			"slots": [
+				{
+					"id": "Lesson",
+					"label": "学習",
+					"description": "降伏して、成る",
+					"required": {
+						"ascensionlessonheartf": 1,
+						"ascensionlessonmothf": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "骨はいつも最後だ。骨の変化の仕方を学んだら、準備は整う。",
+			"linked": [
+				{
+					"id": "ascensioncravingchange_heartlessonascendfromf",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_mothlessonascendfromf",
+					"chance": 100
+				},
+				{
+					"id": "ascensioncravingchange_noascension",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "ascensioncravingchange_heartlessonascendfromf",
+			"label": "骨を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonheartf": 1
+			},
+			"description": "日が沈み、影が消えた今、思い出す時が来た、教えてもらったように骨で覚えようと思う。あと少しで準備が整う。",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonheartf": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_mothlessonascendfromf",
+			"label": "骨を捨てる",
+			"actionId": "craving",
+			"requirements": {
+				"ascensionlessonmothf": 1
+			},
+			"description": "日が落ち、影が油のように広がった今、私の骨は最後に何が起こるかを知っている。終わりはすぐそこまで来ている。",
+			"aspects": {
+				"ascend": 1
+			},
+			"effects": {
+				"ascensionlessonmothf": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "ascensioncravingchange_noascension",
+			"label": "同一人物",
+			"actionId": "craving",
+			"description": "私はもう変化の道を歩んでいない。秘密の形態がとる動きの中で、私は自分が学べることを見つけなければならない。",
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 10
+		}
+	]
+}

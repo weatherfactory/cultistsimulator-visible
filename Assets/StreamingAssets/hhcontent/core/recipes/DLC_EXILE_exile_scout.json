@@ -1,0 +1,1351 @@
+{
+    "recipes": [
+        {
+            "id": "scout.first",
+            "actionid": "scout",
+            "label": "Reconnoitre",
+            "startdescription": "It's a cold old world out there, but I know a few tricks.",
+            "effects": {
+                "fragmentedge.exile": 1
+            },
+            "alt": [
+                {
+                    "id": "relinquish.first",
+                    "additional": true
+                }
+            ],
+            "warmup": 5,
+            "comments": "opened by initial travel recipe"
+        },
+        {
+            "id": "scout.turmoil",
+            "actionid": "scout",
+            "label": "A City in Turmoil",
+            "startdescription": "I should leave - and soon.",
+            "requirements": {
+                "turmoil": 1
+            },
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "scout.aachen",
+            "actionid": "scout",
+            "label": "Reconnoitre Aachen",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.aachen": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "loc.shrine.colonel.aachen",
+                    "op.connection.radicals",
+                    "op.weapon.a",
+                    "op.weapon.b",
+                    "op.night",
+                    "op.dawn"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.alexandria",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "actionid": "scout",
+            "label": "Reconnoitre Alexandria",
+            "requirements": {
+                "domicile.alexandria": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.lantern1",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.import",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.weapon.a",
+                    "op.weapon.d",
+                    "loc.shrine.lionsmith.alexandria",
+                    "op.heat",
+                    "op.faith",
+                    "op.connection.holy",
+                    "op.cats",
+                    "op.sea",
+                    "op.sea",
+                    "op.night",
+                    "op.dawn"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.algiers",
+            "actionid": "scout",
+            "label": "Reconnoitre Algiers",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.algiers": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.forge",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.import",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.weapon.a",
+                    "op.weapon.d",
+                    "loc.shrine.lionsmith.algiers",
+                    "op.heat",
+                    "op.heights",
+                    "op.cats",
+                    "op.sea",
+                    "op.sea",
+                    "op.connection.radicals",
+                    "op.dawn"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.amsterdam",
+            "actionid": "scout",
+            "label": "Reconnoitre Amsterdam",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.amsterdam": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.import",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.morgen",
+                    "op.sea",
+                    "op.sea",
+                    "op.weapon.b",
+                    "op.sunset",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.avignon",
+            "actionid": "scout",
+            "label": "Reconnoitre Avignon",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.avignon": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.grail",
+                    "op.rarity.heart",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.sunset",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.baghdad",
+            "actionid": "scout",
+            "label": "Reconnoitre Baghdad",
+            "requirements": {
+                "domicile.baghdad": 1
+            },
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "internaldeck": {
+                "spec": [
+                    "op.curio.forge",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.heat",
+                    "op.faith",
+                    "op.connection.holy",
+                    "op.connection.ruler",
+                    "op.connection.radicals",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.budapest",
+            "actionid": "scout",
+            "label": "Reconnoitre Budapest",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.budapest": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.grail",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.medusa",
+                    "op.connection.underworld",
+                    "op.night",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.candia",
+            "actionid": "scout",
+            "label": "Reconnoitre Candia-Heraklion",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.candia": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.heart",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.import",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "loc.shrine.colonel.candia",
+                    "op.heat",
+                    "op.heights",
+                    "op.horned",
+                    "op.sea",
+                    "op.sea",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.cluj",
+            "actionid": "scout",
+            "label": "Reconnoitre Cluj-Napoca",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.cluj": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.weapon.b",
+                    "op.rarity.winter",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.heights",
+                    "op.connection.ruler",
+                    "op.sunset",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.granada",
+            "actionid": "scout",
+            "label": "Reconnoitre Granada",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.granada": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.heart",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.heat",
+                    "op.heights",
+                    "op.cats",
+                    "op.flowermaker",
+                    "op.night",
+                    "op.dawn",
+                    "op.weapon.a",
+                    "op.weapon.d"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.istanbul",
+            "actionid": "scout",
+            "label": "Reconnoitre Istanbul",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.istanbul": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.lantern1",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.import",
+                    "op.office",
+                    "op.warehouse",
+                    "op.heat",
+                    "op.heights",
+                    "op.faith",
+                    "op.connection.holy",
+                    "op.cats",
+                    "op.sea",
+                    "op.sea",
+                    "op.connection.radicals",
+                    "op.sunset",
+                    "op.dawn",
+                    "op.weapon.a",
+                    "op.weapon.d"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.kaunas",
+            "actionid": "scout",
+            "label": "Reconnoitre Kaunas",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.kaunas": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.forge",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.cold",
+                    "op.faith",
+                    "op.connection.holy",
+                    "op.wolf",
+                    "op.connection.ruler",
+                    "op.night",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.kiev",
+            "actionid": "scout",
+            "label": "Reconnoitre Kiev",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.kiev": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.knock",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.connection.radicals",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.marinette",
+                    "op.heights",
+                    "op.faith",
+                    "op.connection.holy",
+                    "op.sunset",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.krakow",
+            "actionid": "scout",
+            "label": "Reconnoitre Kraków",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.krakow": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.lantern2",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.heights",
+                    "op.faith",
+                    "op.connection.holy",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.leningrad",
+            "actionid": "scout",
+            "label": "Reconnoitre Leningrad",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.leningrad": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.weapon.b",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.cold",
+                    "loc.shrine.colonel.leningrad",
+                    "op.connection.radicals",
+                    "op.sunset",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.london",
+            "actionid": "scout",
+            "label": "Reconnoitre London",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.london": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.lantern2",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.import",
+                    "op.office",
+                    "op.warehouse",
+                    "op.sulochana",
+                    "op.sea",
+                    "op.sea",
+                    "op.connection.radicals",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.marrakech",
+            "actionid": "scout",
+            "label": "Reconnoitre Marrakech",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.marrakech": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.lantern3",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.echidna",
+                    "op.heat",
+                    "op.faith",
+                    "op.connection.holy",
+                    "op.cats",
+                    "loc.shrine.lionsmith.marrakech",
+                    "op.sunset",
+                    "op.dawn",
+                    "op.weapon.a",
+                    "op.weapon.d"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.meshad",
+            "actionid": "scout",
+            "label": "Reconnoitre Meshad",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.meshad": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.forge",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "loc.shrine.lionsmith.meshad",
+                    "op.heat",
+                    "op.faith",
+                    "op.connection.holy",
+                    "op.cats",
+                    "op.sunset",
+                    "op.dawn",
+                    "op.weapon.a",
+                    "op.weapon.d"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.munich",
+            "actionid": "scout",
+            "label": "Reconnoitre Munich",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.munich": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.connection.radicals",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "loc.shrine.colonel.munich",
+                    "op.horned",
+                    "op.weapon.b",
+                    "op.night",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.nizhny",
+            "actionid": "scout",
+            "label": "Reconnoitre Nizhny",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.nizhny": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.forge",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.connection.radicals",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.cold",
+                    "loc.shrine.colonel.nizhny",
+                    "op.sunset",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.paris",
+            "actionid": "scout",
+            "label": "Reconnoitre Paris",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.paris": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.weapon.b",
+                    "op.rarity.grail",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.heights",
+                    "op.flowermaker",
+                    "op.night",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.prague",
+            "actionid": "scout",
+            "label": "Reconnoitre Prague",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.prague": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.knock",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.cold",
+                    "op.connection.ruler",
+                    "op.night",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.rostock",
+            "actionid": "scout",
+            "label": "Reconnoitre Rostock",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.rostock": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.weapon.b",
+                    "op.rarity.moth",
+                    "op.licence.import",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.cold",
+                    "op.sea",
+                    "op.sea",
+                    "op.night",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.samarkand",
+            "actionid": "scout",
+            "label": "Reconnoitre Samarkand",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.samarkand": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.lantern1",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.connection.radicals",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "loc.shrine.lionsmith.samarkand",
+                    "op.faith",
+                    "op.connection.holy",
+                    "op.cats",
+                    "op.dawn",
+                    "op.weapon.a",
+                    "op.weapon.d"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.stalingrad",
+            "actionid": "scout",
+            "label": "Reconnoitre Stalingrad",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.stalingrad": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.moth",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "loc.shrine.colonel.stalingrad",
+                    "op.cold",
+                    "op.wolf",
+                    "op.connection.radicals",
+                    "op.night",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.strasbourg",
+            "actionid": "scout",
+            "label": "Reconnoitre Strasbourg",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.strasbourg": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.weapon.b",
+                    "op.rarity.knock",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.horned",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.sverdlovsk",
+            "actionid": "scout",
+            "label": "Reconnoitre Sverdlovsk",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.sverdlovsk": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.heart",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.cold",
+                    "op.connection.radicals",
+                    "op.night",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.tiflis",
+            "actionid": "scout",
+            "label": "Reconnoitre Tiflis",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.tiflis": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.lantern2",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.connection.radicals",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.heights",
+                    "op.wolf",
+                    "op.weapon.b",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.tirana",
+            "actionid": "scout",
+            "label": "Reconnoitre Tirana",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.tirana": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.flowermaker",
+                    "op.connection.ruler",
+                    "op.sunset",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.tripoli",
+            "actionid": "scout",
+            "label": "Reconnoitre Tripoli dell'ovest",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.tripoli": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.lantern3",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.import",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.heat",
+                    "op.cats",
+                    "op.sea",
+                    "op.sea",
+                    "op.sunset",
+                    "op.dawn",
+                    "op.weapon.a",
+                    "op.weapon.d"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.valletta",
+            "actionid": "scout",
+            "label": "Reconnoitre Valletta",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.valletta": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.forge",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.import",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "loc.shrine.colonel.valletta",
+                    "op.sea",
+                    "op.sea",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.venice",
+            "actionid": "scout",
+            "label": "Reconnoitre Venice",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.venice": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.curio.knock",
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "loc.shrine.lionsmith.venice",
+                    "op.faith",
+                    "op.connection.holy",
+                    "op.cats",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.vienna",
+            "actionid": "scout",
+            "label": "Reconnoitre Vienna",
+            "startdescription": "Walk the city, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "aspects": {
+                "tracerisk": 1
+            },
+            "craftable": true,
+            "requirements": {
+                "domicile.vienna": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.connection.official",
+                    "op.connection.underworld",
+                    "op.weapon.b",
+                    "op.rarity.forge",
+                    "op.licence.medical",
+                    "op.office",
+                    "op.warehouse",
+                    "op.townhouse",
+                    "op.villa",
+                    "op.kleidouchos",
+                    "op.dawn",
+                    "op.weapon.a"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.end.foe.defeated",
+            "actionid": "scout",
+            "label": "Rest and Wait",
+            "startdescription": "@#domicile.bornholm| The locals don't know exactly what happened, but they know it's over. One painter keeps pestering me to sit for a portrait. Perhaps, some day soon, I will.\n#domicile.cheko|Each day, sunrise comes a little earlier. The winds grow a little less savage. It's almost spring.\n#domicile.ghardaia|The buffeting half-silence of the high desert; the creeping sun. The locals still keep a respectful distance, but now they nod as I pass them.\n#domicile.messana|Shadows sprawl as each day passes. Sometimes, now, the villagers come up to leave me small gifts of food, and salute me.\n#domicile.morbihan|The brothers have tidied away the debris of the battle, and permit me to break fast with them in the long hall where the sunlight slants.\n#domicile.paro|Each morning I clamber up the steps and across the rickety bridges to watch the dawn. The monks smile at me as I pass.\n#domicile.slettnes|The sea crashes grey on the stones each morning, and grumbles at me all through the night. It's something to listen to when I can't sleep.@",
+            "warmup": 30,
+            "craftable": true,
+            "requirements": {
+                "domicile": 1,
+                "end": 1
+            },
+            "extantreqs": {
+                "rkx.foe.defeated": 1
+            },
+            "effects": {
+                "obscurity": 3
+            }
+        },
+        {
+            "id": "scout.bornholm",
+            "actionid": "scout",
+            "label": "Reconnoitre Sunshine Island",
+            "startdescription": "Walk the island, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "craftable": true,
+            "requirements": {
+                "domicile.bornholm": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.cold",
+                    "op.flowermaker",
+                    "op.sea",
+                    "obscurity"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.slettnes",
+            "actionid": "scout",
+            "label": "Reconnoitre Fogfire Point",
+            "startdescription": "Prowl the coast, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "craftable": true,
+            "requirements": {
+                "domicile.slettnes": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.cold",
+                    "op.wolf",
+                    "op.sea",
+                    "obscurity",
+                    "op.sunset",
+                    "op.dawn"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.cheko",
+            "actionid": "scout",
+            "label": "Reconnoitre Wounded Moon Lake ",
+            "startdescription": "Roam the woods, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 30,
+            "craftable": true,
+            "requirements": {
+                "domicile.cheko": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.cold",
+                    "op.cats",
+                    "op.wolf",
+                    "obscurity",
+                    "op.night",
+                    "op.dawn"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.paro",
+            "actionid": "scout",
+            "label": "Reconnoitre the Tiger's Nest",
+            "startdescription": "Range the mountain and the monastery, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 60,
+            "craftable": true,
+            "requirements": {
+                "domicile.paro": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.cold",
+                    "op.heights",
+                    "op.faith",
+                    "op.cats",
+                    "obscurity",
+                    "op.dawn"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.messana",
+            "actionid": "scout",
+            "label": "Reconnoitre the Hermitage of the Scythe",
+            "startdescription": "Walk the hills, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 60,
+            "craftable": true,
+            "requirements": {
+                "domicile.messana": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.heat",
+                    "op.heights",
+                    "op.horned",
+                    "obscurity",
+                    "op.sunset",
+                    "op.dawn"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.ghardaia",
+            "actionid": "scout",
+            "label": "Reconnoitre the Pentapolis",
+            "startdescription": "Roam the village and the plateau, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 60,
+            "craftable": true,
+            "requirements": {
+                "domicile.ghardaia": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.heat",
+                    "op.cats",
+                    "op.flowermaker",
+                    "obscurity",
+                    "op.dawn"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.morbihan",
+            "actionid": "scout",
+            "label": "Reconnoitre the Priory of Captains",
+            "startdescription": "Roam the island, seeking opportunities. [Sometimes, this will create a Trace.]",
+            "warmup": 60,
+            "craftable": true,
+            "requirements": {
+                "domicile.morbihan": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.faith",
+                    "op.horned",
+                    "op.sea",
+                    "obscurity",
+                    "op.night",
+                    "op.dawn"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        },
+        {
+            "id": "scout.wilderness",
+            "actionid": "scout",
+            "label": "Reconnoitre",
+            "startdescription": "Where even am I?",
+            "description": "\"@#op.cold|Somewhere floundering in the snow.\r\n#op.heat|Somewhere where the wind blows dry and hot.\r\n#op.sea|Somewhere by a nighted sea.\r\n#|Who even knows?@\"",
+            "warmup": 60,
+            "craftable": true,
+            "requirements": {
+                "domicile": 1,
+                "wilderness": 1
+            },
+            "internaldeck": {
+                "spec": [
+                    "op.cold",
+                    "op.heat",
+                    "op.sea"
+                ],
+                "draws": 1,
+                "resetonexhaustion": true
+            }
+        }
+    ]
+}

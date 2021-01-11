@@ -1,0 +1,2915 @@
+{
+    "recipes": [
+        {
+            "id": "long.executestrategy.assassination.begin",
+            "actionId": "longassault.assassination",
+            "label": "暗中飞来的投枪",
+            "startdescription": "在早已逝去的年代，图拉古拉里——即投枪手们——曾受雇猎杀不死者和他们的奴仆。一般观点认为三圣公司在第一次蠕虫大战后除掉了他们……或许并非于每一重历史中。[投枪有可能摧毁你和追随者。用<sprite name=heart> <sprite name=lantern>之追随者在投枪手准备期间发现他们，或者用<sprite name=edge> <sprite name=forge> <sprite name=winter>之追随者在投枪手发起袭击后防御。防御失败的追随者会死亡。投枪手无法免疫召唤物的攻击。]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "发现",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "warmup": 120,
+            "internaldeck": {
+                "label": "目标",
+                "description": "投枪手的目标是谁？",
+                "spec": [
+                    "assassinationinprogress.follower",
+                    "assassinationinprogress.player"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            },
+            "linked": [
+                {
+                    "id": "longassault.assassination.uncovered.success",
+                    "challenges": {
+                        "heart": "base",
+                        "lantern": "base"
+                    }
+                },
+                {
+                    "id": "longassault.assassination.uncovered.failure"
+                },
+                {
+                    "id": "longassault.assassination.continue"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.uncovered.success",
+            "actionId": "longassault.assassination",
+            "requirements": {
+                "follower": 1
+            },
+            "label": "蛇已暴露",
+            "startdescription": "图拉古拉里惯于偷袭。他们受不了日光。这一个逃跑了。（不回来了吧？）我们的敌人会注意到这点。",
+            "effects": {
+                "long.lesson.might": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "longassault.assassination.uncovered.failure",
+            "actionId": "longassault.assassination",
+            "requirements": {
+                "follower": 1
+            },
+            "label": "静候的蛇",
+            "startdescription": "我们的追随者一去不回。我们只能推测图拉古拉里用他的短标枪和毒药放倒了此人。",
+            "effects": {
+                "follower": -1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "longassault.assassination.continue"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.continue",
+            "actionId": "longassault.assassination",
+            "label": "第一道伤口",
+            "startdescription": "哪怕是最强者，投枪手也能一寸一寸地杀死他。[用<sprite name=edge> <sprite name=forge> <sprite name=winter>之追随者进行防御。防御失败的追随者会死亡。投枪手无法免疫召唤物的攻击。]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1,
+                        "murderskill": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "longassault.assassination.attack.defeated",
+                    "challenges": {
+                        "edge": "base",
+                        "winter": "base",
+                        "forge": "base"
+                    }
+                },
+                {
+                    "id": "longassault.assassination.defenderdefeated"
+                },
+                {
+                    "id": "longassault.assassination.murderskill.succeed",
+                    "chance": 30
+                },
+                {
+                    "id": "longassault.assassination.murderskill.failure"
+                },
+                {
+                    "id": "longassault.assassination.attack.player"
+                },
+                {
+                    "id": "longassault.assassination.attack.follower"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.defenderdefeated",
+            "actionId": "longassault.assassination",
+            "label": "不期之死",
+            "startdescription": "投枪手已夺去一名防御者的性命：但现在能满足他的报偿只有他目标的死，或他自己的。",
+            "requirements": {
+                "follower": 1
+            },
+            "effects": {
+                "follower": -1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "longassault.assassination.attack.player"
+                },
+                {
+                    "id": "longassault.assassination.attack.follower"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.attack.defeated",
+            "actionId": "longassault.assassination",
+            "label": "最终的报偿",
+            "startdescription": "我方防御者获胜，投枪手已死。也许这样就足以让他们停手了。",
+            "effects": {
+                "long.lesson.might": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "longassault.assassination.attack.player",
+            "actionId": "longassault.assassination",
+            "label": "投枪手的毒药",
+            "startdescription": "投枪手会让我染毒、流血，一滴又一滴。",
+            "slots": [
+                {
+                    "id": "health",
+                    "label": "攻击……",
+                    "required": {
+                        "health": 1,
+                        "fatigue": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "id": "longassault.assassination.killplayer"
+                }
+            ],
+            "aspects": {
+                "damagehealth": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "longassault.assassination.continue"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.murderskill.succeed",
+            "actionId": "longassault.assassination",
+            "label": "折断的枪头",
+            "requirements": {
+                "murderskill": 1
+            },
+            "startdescription": "他们要有自知之明就不该招惹我。亏欠给他们的死亡，我用他们自己的来偿。",
+            "warmup": 30,
+            "effects": {
+                "long.lesson.might": 1
+            }
+        },
+        {
+            "id": "longassault.assassination.murderskill.failure",
+            "actionId": "longassault.assassination",
+            "label": "苟延残喘",
+            "requirements": {
+                "murderskill": 1
+            },
+            "startdescription": "我赢得了喘息之机，但他对我来说实在太强。我的力气已完全不剩。",
+            "warmup": 30,
+            "effects": {
+                "murderskill": -1
+            },
+            "linked": [
+                {
+                    "id": "longassault.assassination.continue"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.killplayer",
+            "actionId": "longassault.assassination",
+            "label": "投枪下的末路",
+            "startdescription": "我已经没有任何力气了吗？[如果你没有可用的“健康”卡，投枪手的毒药会终结这局游戏。]",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1,
+                "injury": -1
+            },
+            "ending": "deathofthebody",
+            "signalEndingFlavour": "Melancholy",
+            "comments": "The -1 to injury doesn't seem right, since the damagehealth in longassault.assassination.attack.player will always turn health/fatigue into an injury. To be checked."
+        },
+        {
+            "id": "longassault.assassination.attack.follower",
+            "actionId": "longassault.assassination",
+            "label": "致命的伤口",
+            "startdescription": "投枪手可能用一支投枪，也可能用一打；但致人死命的总是最后那支。[<sprite name=edge> <sprite name=forge> <sprite name=winter>之追随者有可能逃出一命。其他人和运气不佳的追随者则必死。]",
+            "slots": [
+                {
+                    "id": "targetfollower",
+                    "label": "攻击……",
+                    "required": {
+                        "follower": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "longassault.assassination.attack.follower.failure",
+                    "challenges": {
+                        "edge": "base",
+                        "winter": "base",
+                        "forge": "base"
+                    }
+                },
+                {
+                    "id": "longassault.assassination.attack.follower.success"
+                },
+                {
+                    "id": "longassault.assassination.continue"
+                }
+            ]
+        },
+        {
+            "id": "longassault.assassination.attack.follower.failure",
+            "actionId": "longassault.assassination",
+            "label": "大逆转",
+            "startdescription": "这次，投枪手遇到了意料之外的挑战。他死了。也许这样就能让他们停手了。",
+            "effects": {
+                "long.lesson.might": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "longassault.assassination.attack.follower.success",
+            "actionId": "longassault.assassination",
+            "label": "可期之死",
+            "startdescription": "被发现的那些投枪手的被害者有的在极度痛苦中身体扭曲，头部后仰，双眼暴突。有的身上钻了个洞，像沉船一样。此人连发现都没被发现。他的死亡即投枪手可期的报偿。",
+            "requirements": {
+                "follower": 1
+            },
+            "effects": {
+                "follower": -1
+            }
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.begin",
+            "actionId": "longassault.abduction",
+            "label": "绑架！",
+            "startdescription": "我们的敌人正在策划一次绑架！",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "目标",
+                    "required": {
+                        "romanticinterest": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.captured"
+                },
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.begin.nonromancedfollower"
+                }
+            ],
+            "effects": {
+                "abductioninprogress": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.begin.nonromancedfollower",
+            "actionId": "longassault.abduction",
+            "label": "绑架！",
+            "startdescription": "我们的敌人正在策划一次绑架！",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "目标",
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1,
+                        "hireling": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.captured"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.captured",
+            "actionId": "longassault",
+            "label": "被俘！",
+            "requirements": {
+                "follower": 1
+            },
+            "startdescription": "敌人把我们的追随者监禁在一个上锁房间中，那栋房子有人看管，位于无形之墙后，以抵挡无形之物的进入。",
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.continue"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.continue",
+            "actionId": "longassault",
+            "label": "营救？",
+            "startdescription": "我们的敌人抓走了一名追随者！此人会尝试逃脱，我们说不定能帮上他——但这也可能是圈套。且此地有阻拦召唤物的措施。[<sprite name=edge> <sprite name=forge>和<sprite name=winter>里的最高值将决定我们的追随者们能否安然无恙地逃离。]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.defencesucceeded",
+                    "actionId": "longassault",
+                    "label": "胜利",
+                    "challenges": {
+                        "edge": "base",
+                        "forge": "base",
+                        "winter": "base"
+                    },
+                    "startdescription": "砸烂锁头——打破窗户——大口呼吸夜晚的空气。我们的追随者自由了。以后，我们的敌人会加紧注意。",
+                    "effects": {
+                        "long.lesson.might": 1
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.abduct.follower.defencefailed",
+                    "actionId": "longassault",
+                    "label": "圈套",
+                    "startdescription": "逃跑失败。说不定以后还有机会。",
+                    "linked": [
+                        {
+                            "id": "long.executestrategy.assault.abduct.follower.continue"
+                        }
+                    ],
+                    "warmup": 300
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "long.executestrategy.assault.forge.greatwork.begin",
+            "actionId": "longassault",
+            "label": "遭受破坏活动！",
+            "startdescription": "我们永生不死的敌人派来奸细，欲毁掉我们进行到半途的作业。",
+            "description": "敌人的奸细找不到任何能供他们打砸破坏的东西。",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "目标",
+                    "required": {
+                        "greatwork": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.forge.greatwork.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.forge.greatwork.continue",
+            "actionId": "longassault",
+            "label": "保卫大功业",
+            "startdescription": "我们的工作间被包围了！快保护大功业！[<sprite name=heart>或<sprite name=forge>之追随者——越强越好——或许能挡下这次攻击。]",
+            "description": "",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "greatwork": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "forge": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.forge.greatwork.succeed"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.assault.forge.greatwork.succeed",
+            "actionId": "longassault",
+            "label": "蓄意破坏！",
+            "startdescription": "我们的敌人用钩刀和撬棍大干了一场。",
+            "aspects": {
+                "sabotage": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.setambush.expedition.begin",
+            "warmup": 10,
+            "actionId": "longassault",
+            "label": "埋伏",
+            "startdescription": "我们的敌人得知我们在筹划一次探险。如果给他知道了目的地，他会派出盟友准备埋伏我们。",
+            "slots": [
+                {
+                    "id": "vault",
+                    "label": "藏宝地",
+                    "required": {
+                        "vault": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.setambush.expedition.continue.watchers",
+                    "actionId": "longassault",
+                    "label": "横生枝节",
+                    "startdescription": "我们的敌人买通了当地人监视该处。",
+                    "requirements": {
+                        "guardian_watchers": -1,
+                        "guardian_watchers_pre": -1
+                    },
+                    "mutations": [
+                        {
+                            "mutate": "guardian_watchers_pre",
+                            "level": 1,
+                            "filter": "vault"
+                        }
+                    ]
+                },
+                {
+                    "id": "long.executestrategy.assault.setambush.expedition.continue.monks",
+                    "actionId": "longassault",
+                    "label": "横生枝节",
+                    "startdescription": "我们的敌人已派出效忠他的仆人保卫该处。",
+                    "requirements": {
+                        "guardian_monks": -1,
+                        "guardian_monks_pre": -1
+                    },
+                    "mutations": [
+                        {
+                            "mutate": "guardian_monks_pre",
+                            "level": 1,
+                            "filter": "vault"
+                        }
+                    ]
+                },
+                {
+                    "id": "long.executestrategy.assault.setambush.expedition.continue.dead",
+                    "actionId": "longassault",
+                    "label": "横生枝节",
+                    "requirements": {
+                        "guardian_dead": -1,
+                        "guardian_dead_pre": -1
+                    },
+                    "startdescription": "我们的敌人已派出亡者保卫该处。",
+                    "mutations": [
+                        {
+                            "mutate": "guardian_dead_pre",
+                            "level": 1,
+                            "filter": "vault"
+                        }
+                    ]
+                },
+                {
+                    "id": "long.executestrategy.assault.setambush.expedition.continue.serpent",
+                    "actionId": "longassault",
+                    "label": "横生枝节",
+                    "requirements": {
+                        "guardian_serpent": -1,
+                        "guardian_serpent_pre": -1
+                    },
+                    "startdescription": "我们的敌人已唤起一条巨蛇保卫该处。",
+                    "mutations": [
+                        {
+                            "mutate": "guardian_serpent_pre",
+                            "level": 1,
+                            "filter": "vault"
+                        }
+                    ],
+                    "warmup": 1
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.assault.destroyhealth.begin",
+            "actionId": "longassault",
+            "label": "压倒性的袭击！",
+            "startdescription": "我们的敌人已派出几位来势汹汹的先生奉命杀死，或至少，搞残我们。[这会毁掉你的“健康”。]",
+            "slots": [
+                {
+                    "id": "health",
+                    "label": "健康",
+                    "required": {
+                        "health": 1,
+                        "fatigue": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "aspects": {
+                "destroyhealth": 1
+            },
+            "comments": "Damaging health now so it doesn't figure into the Heart calculations",
+            "alt": [
+                {
+                    "id": "long.executestrategy.assault.health.nonefound",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.destroyhealth.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "long.executestrategy.assault.health.nonefound",
+            "label": "夺命一击",
+            "actionId": "longassault",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1
+            },
+            "startdescription": "生病不适，精疲力尽或心不在焉会害我抵挡不住这次攻击。[立即补充“健康”，否则将死亡。]",
+            "craftable": false,
+            "ending": "deathofthebody",
+            "signalEndingFlavour": "Melancholy"
+        },
+        {
+            "id": "long.executestrategy.assault.destroyhealth.continue",
+            "actionId": "longassault",
+            "label": "压倒性的袭击！",
+            "startdescription": "如果攻击成功，我将遭到重创。[<sprite name=heart>或<sprite name=edge>的追随者——越强越好——或许能挡下这次攻击。]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "decrepitude": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "edge": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.destroyhealth.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.assault.destroyhealth.succeed",
+            "actionId": "longassault",
+            "label": "习学痛苦",
+            "startdescription": "我受苦。我忍耐。",
+            "effects": {
+                "influenceknock": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.begin",
+            "actionId": "longassault",
+            "label": "对追随者的攻击！",
+            "startdescription": "我们的敌人已派出使者，准备痛击所有他能找到的我们的追随者。",
+            "slots": [
+                {
+                    "id": "follower",
+                    "label": "追随者",
+                    "required": {
+                        "follower": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.injurefollower.hireling.continue"
+                },
+                {
+                    "id": "long.executestrategy.assault.injurefollower.spirit.continue"
+                },
+                {
+                    "id": "long.executestrategy.assault.injurefollower.continue"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.hireling.continue",
+            "actionId": "longassault",
+            "label": "“<b>你付我的钱可不包括这个</b>”",
+            "startdescription": "这便是我们与这位雇工最后的联络。",
+            "requirements": {
+                "hireling": 1
+            },
+            "effects": {
+                "follower": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.spirit.continue",
+            "actionId": "longassault",
+            "label": "双向摇摆的门",
+            "startdescription": "我们的敌人为其使者提供了把我们的召唤物驱逐出世界的手段。于是它离开了。",
+            "requirements": {
+                "summoned": 1
+            },
+            "effects": {
+                "follower": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.continue",
+            "actionId": "longassault",
+            "label": "增援？",
+            "requirements": {
+                "follower": 1
+            },
+            "startdescription": "另一名追随者说不定会冲上去支援——但他也得冒受伤的风险。而且派灵体对抗远古的长生者是愚蠢的行为。[<sprite name=edge> <sprite name=forge>和<sprite name=winter>里的最高值将决定我们的追随者们能否安然无恙地逃离]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.injurefollower.defencesucceeded",
+                    "actionId": "longassault",
+                    "label": "胜利",
+                    "challenges": {
+                        "edge": "base",
+                        "forge": "base",
+                        "winter": "base"
+                    },
+                    "startdescription": "我们的追随者不容小觑。我们敌人的使者已仓皇逃离。当然，敌人以后会加强重视。",
+                    "effects": {
+                        "long.lesson.might": 1
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.injurefollower.defencefailed",
+                    "actionId": "longassault",
+                    "label": "失利",
+                    "startdescription": "我们都因为创教者效力而遭受苦难。或许苦难会提升我们的价值。",
+                    "mutations": [
+                        {
+                            "filterOnAspectId": "mortal",
+                            "mutateAspectId": "follower_wound",
+                            "mutationLevel": 1,
+                            "additive": false
+                        },
+                        {
+                            "filterOnAspectId": "mortal",
+                            "mutateAspectId": "follower",
+                            "mutationLevel": -1,
+                            "additive": false
+                        }
+                    ]
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "long.executestrategy.assault.injurehealth.begin",
+            "actionId": "longassault",
+            "label": "袭击！",
+            "startdescription": "我们的敌人派出一名雇来的暴徒前来打砸。敌人还没下令要我的命，但是若我碰巧死了，他也不会难过就是。[这会使你的“健康”变成“受伤”。]",
+            "slots": [
+                {
+                    "id": "health",
+                    "label": "健康",
+                    "required": {
+                        "health": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "aspects": {
+                "damagehealth": 1
+            },
+            "comments": "Damaging health now so it doesn't figure into the Heart calculations",
+            "alt": [
+                {
+                    "id": "long.executestrategy.assault.health.nonefound",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.injurehealth.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "long.executestrategy.assault.injurehealth.continue",
+            "actionId": "longassault",
+            "label": "袭击！",
+            "startdescription": "谁来保护我？[<sprite name=heart>或<sprite name=edge>之追随者——越强越好——或许能挡下这次攻击。]",
+            "description": "",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "injury": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "edge": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.injurehealth.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.assault.injurehealth.succeed",
+            "actionId": "longassault",
+            "label": "小小试炼",
+            "startdescription": "他们让我流血，但还没让我倒下。"
+        },
+        {
+            "id": "long.executestrategy.assault.rob.begin",
+            "actionId": "longassault",
+            "label": "小贼",
+            "startdescription": "我们的敌人派出一名扒手来骚扰我。",
+            "description": "对我的敌人而言糟透了：我没钱给他偷。",
+            "slots": [
+                {
+                    "id": "funds",
+                    "label": "资金",
+                    "required": {
+                        "funds": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "long.executestrategy.assault.rob.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.assault.rob.continue",
+            "actionId": "longassault",
+            "label": "区区小贼，竟然会得手。",
+            "startdescription": "我的提包被人顺走了！",
+            "effects": {
+                "funds": -1
+            }
+        },
+        {
+            "id": "long.executestrategy.assault.intimidate.begin",
+            "actionId": "longassault",
+            "label": "威吓佯攻",
+            "startdescription": "敌人派出使者来威胁恐吓我们。[<sprite name=heart>或<sprite name=grail>之追随者——越强越好——或许能挡下这次攻击。]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.assault.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "grail": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.assault.intimidate.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.assault.intimidate.succeed",
+            "actionId": "longassault",
+            "label": "痛楚加身的预兆",
+            "startdescription": "用黑煤胡乱涂写的咒骂——花园里被钉死的动物——无人看管的房屋被放火。一场隐秘之战中的小动作。",
+            "effects": {
+                "dread": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.assault.failure",
+            "actionId": "longassault",
+            "label": "失败的袭击",
+            "startdescription": "我们防住了敌人的袭击……但他也从我们身上了解到了什么，他会更认真地将我们视作对他的威胁。可见将来的袭击会更加凶险。",
+            "effects": {
+                "long.lesson.might": 1
+            },
+            "aspects": {
+                "restorehealth": 1,
+                "tohealth": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.intrigue.scandal.begin",
+            "actionId": "scandal",
+            "label": "丑闻！",
+            "startdescription": "我们的敌人策动了一桩丑闻，将以燎原之势传遍我们的活动圈子。[“丑闻”会时不时地产生“恶名”，直到其自行消散为止。]",
+            "alt": [
+                {
+                    "id": "scandal.notoriety",
+                    "chance": 70,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "scandalinprogress": 1
+            },
+            "linked": [
+                {
+                    "id": "scandal.end",
+                    "chance": 10
+                },
+                {
+                    "id": "long.executestrategy.intrigue.scandal.begin",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "scandal.end",
+            "actionId": "scandal",
+            "label": "归于沉寂",
+            "startdescription": "公众是喜新厌旧的……幸亏如此。他们正在将我们遗忘。",
+            "effects": {
+                "mystique": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "scandal.notoriety",
+            "actionId": "scandal.notoriety",
+            "label": "肮脏的谎言",
+            "startdescription": "虽然我们没少做有愧的事，但这件事不是，完全没有的事！然而它说不定真能陷我们于不义。",
+            "effects": {
+                "notoriety": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.begin",
+            "actionId": "longintrigue",
+            "label": "秘密接触",
+            "startdescription": "我们永生不死的敌人正尝试与我们的一名追随者——一名心怀积怨之人——会面。",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "受到引诱",
+                    "greedy": true,
+                    "required": {
+                        "resentment": 1
+                    },
+                    "forbidden": {
+                        "independent": 1,
+                        "investigator": 1,
+                        "romanticinterest": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.follower.seduce.continue"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.continue",
+            "actionId": "longintrigue",
+            "label": "蛊惑人心",
+            "startdescription": "现在，长生者要使出他几个世纪来学到的大奸巨滑……或许我们的追随者将不再为我们效力。[用“激情”让他保持忠诚。不一定能成功，但只要你拥有“激情”就能继续尝试。]",
+            "description": "",
+            "requirements": {
+                "resentment": 1
+            },
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "激烈的争执",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.follower.seduce.defendpassion.try",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.follower.seduce.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.defendpassion.try",
+            "actionId": "longintrigue",
+            "label": "激烈的辩白",
+            "startdescription": "激情或许能让他动摇。[即使失败，也能继续尝试。]",
+            "requirements": {
+                "passion": 1
+            },
+            "warmup": 10,
+            "aspects": {
+                "fatiguing": 1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.follower.seduce.defendpassion.succeed",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.follower.seduce.continue",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.defendpassion.succeed",
+            "actionId": "longintrigue",
+            "label": "缓兵之计",
+            "startdescription": "追随者选择留下……至少现下如此。[但他的“怨恨”有所增长，我们的敌人也更了解我们了。]",
+            "mutations": [
+                {
+                    "mutate": "resentment",
+                    "filter": "follower",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.succeed",
+            "actionId": "longintrigue",
+            "label": "背信弃义",
+            "startdescription": "我们的追随者背弃了神圣的托付。现在他将为我们日益强盛的敌人贡献力量。",
+            "effects": {
+                "follower": -1,
+                "long.lesson.might": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.grail.greatwork.begin",
+            "actionId": "longintrigue",
+            "label": "遭受破坏活动！",
+            "startdescription": "我们永生不死的敌人企图使我们的宴主相信，谢肉祭将会是恶心，凶险，或者无聊的。",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "目标",
+                    "required": {
+                        "uqvitulation": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.grail.greatwork.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.grail.greatwork.continue",
+            "actionId": "longintrigue",
+            "label": "保卫大功业",
+            "startdescription": "我可以派特使去劝慰和安抚。[<sprite name=heart>或<sprite name=grail>之追随者——越强越好——或许能挡下这次攻击。]",
+            "description": "",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "uqvitulation": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "grail": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.intrigue.grail.greatwork.succeed"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.grail.greatwork.succeed",
+            "actionId": "longintrigue",
+            "label": "宴主的不安",
+            "startdescription": "宴主四散。他贪婪的信仰馊掉了。",
+            "aspects": {
+                "sabotage": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.begin",
+            "actionId": "longintrigue",
+            "label": "积怨之种",
+            "startdescription": "敌人正在想办法毒害一名追随者的头脑，叫他倒戈。",
+            "slots": [
+                {
+                    "id": "follower",
+                    "label": "目标",
+                    "greedy": true,
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "summoned": -1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.continue"
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.hireling.continue"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.continue",
+            "actionId": "longintrigue",
+            "label": "扎下祸根",
+            "requirements": {
+                "follower": 1
+            },
+            "startdescription": "他怎么说？[用“激情”让他保持忠诚。不一定能成功，但只要你拥有“激情”就能继续尝试。]",
+            "slots": [
+                {
+                    "id": "passionateargument",
+                    "label": "激烈的争执",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.try"
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.try",
+            "actionId": "longintrigue",
+            "label": "激烈的辩白",
+            "startdescription": "激情或许能让他动摇。[即使失败，也能继续尝试。]",
+            "requirements": {
+                "passion": 1
+            },
+            "warmup": 10,
+            "aspects": {
+                "fatiguing": 1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.succeed",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.resentment.continue",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.succeed",
+            "actionId": "longintrigue",
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.succeed",
+            "actionId": "longintrigue",
+            "label": "气馁之果",
+            "startdescription": "我们现在到了这个地步：我认为我的追随者对我隐瞒了他听到的议论我的话。",
+            "mutations": [
+                {
+                    "mutate": "resentment",
+                    "filter": "follower",
+                    "level": 1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.hireling.continue",
+            "actionId": "longintrigue",
+            "label": "职业谨慎",
+            "startdescription": "这名雇工已经被人说服或威胁，消逝无踪。我们不会再见到他。",
+            "requirements": {
+                "hireling": 1
+            },
+            "effects": {
+                "hireling": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.begin",
+            "actionId": "longintrigue",
+            "label": "意想不到的结盟？",
+            "startdescription": "我们永生不死的敌人正在寻找一枚可利用的棋子。",
+            "slots": [
+                {
+                    "id": "hunter",
+                    "label": "肉中之刺",
+                    "greedy": true,
+                    "required": {
+                        "hunter": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.continue",
+            "actionId": "longintrigue",
+            "requirements": {
+                "hunter": 1
+            },
+            "label": "敌人的敌人",
+            "startdescription": "防剿局不挑剔援助的来源，而且毫无疑问，我们的大功业引起了他们极大关心。我们永生不死的敌人会在这里使什么坏呢？",
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.mystic",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.idealist",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.grim",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.erratic",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.evidence",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.mystic",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.idealist",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.grim",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.erratic",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.detective.assist.evidence",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.mystic",
+            "actionId": "longintrigue",
+            "requirements": {
+                "mystic": -1
+            },
+            "label": "防御无形之术",
+            "startdescription": "我们的敌人已教会这个调查员如何防备灵体。[该调查员成了<b>神秘主义者</b>。]",
+            "mutations": [
+                {
+                    "mutate": "mystic",
+                    "filter": "hunter",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.idealist",
+            "actionId": "longintrigue",
+            "requirements": {
+                "idealist": -1
+            },
+            "label": "新的领悟",
+            "startdescription": "这名调查员已查知我们大功业的真面目，从而使他将其挫败的决心得到锻铸、捶打、淬炼。[该调查员成了<b>理想主义者</b>。]",
+            "mutations": [
+                {
+                    "mutate": "idealist",
+                    "filter": "hunter",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.grim",
+            "actionId": "longintrigue",
+            "requirements": {
+                "grim": -1
+            },
+            "label": "心坚如铁",
+            "startdescription": "这名调查员被告知了他不会轻易忘怀的事情。[该调查员变得<b>冷峻</b>。]",
+            "mutations": [
+                {
+                    "mutate": "grim",
+                    "filter": "hunter",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.erratic",
+            "actionId": "longintrigue",
+            "requirements": {
+                "erratic": -1
+            },
+            "label": "新的视角",
+            "startdescription": "这名调查员已练就新的技术与直觉；然而现在，他的手时不时会发抖。[该调查员变得<b>飘忽不定</b>。]",
+            "mutations": [
+                {
+                    "mutate": "erratic",
+                    "filter": "hunter",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "mutate": "meticulous",
+                    "filter": "hunter",
+                    "level": -1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.evidence",
+            "actionId": "longintrigue",
+            "requirements": {
+                "erratic": 1,
+                "grim": 1,
+                "idealist": 1,
+                "mystic": 1
+            },
+            "label": "公然作弊",
+            "startdescription": "我们永生不死的敌人在这名调查员耳边低语。[敌方长生者提供了<b>证据</b>。]",
+            "effects": {
+                "evidence": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.adversary.assist.begin",
+            "actionId": "longintrigue",
+            "label": "意想不到的结盟？",
+            "startdescription": "我们永生不死的敌人在寻找盟友——寻找有潜力的人。[如果他找不到合适的人，他的阴谋将以失败告终。]",
+            "slots": [
+                {
+                    "id": "rival",
+                    "label": "对手",
+                    "greedy": true,
+                    "required": {
+                        "independent": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.adversary.assist.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.adversary.assist.continue",
+            "actionId": "longintrigue",
+            "requirements": {
+                "independent": 1
+            },
+            "label": "不死者的指点",
+            "startdescription": "敌人正在指导我们的对手怎样更快飞升为长生者。如果他能招募到第二名长生者，我们的失败便已注定。[<sprite name=heart>或<sprite name=moth>之追随者——越强越好——或许能挡下这次攻击。]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "moth": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.intrigue.adversary.assist.succeed"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.adversary.assist.succeed",
+            "actionId": "longintrigue",
+            "label": "更高",
+            "startdescription": "敌人已经将飞升的核心秘诀传授给了我们的对手。毫无疑问，若对手变成真正的长生者，他会为敌人所用：这对我们可没有多少帮助。",
+            "mutations": [
+                {
+                    "mutate": "rivalmarks",
+                    "filter": "independent",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.begin",
+            "actionId": "longintrigue",
+            "label": "白日惊魂",
+            "startdescription": "敌人正在想办法曝光我们追随者的秘密。[如果他找不到还未曝光的追随者，这件事将无疾而终。]",
+            "slots": [
+                {
+                    "id": "follower",
+                    "label": "目标",
+                    "greedy": true,
+                    "required": {
+                        "follower": 1
+                    },
+                    "forbidden": {
+                        "summoned": -1,
+                        "poison.notoriety": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.continue"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.continue",
+            "actionId": "longintrigue",
+            "label": "对抗曝光？",
+            "startdescription": "我能拿出些其他的东西试着转移公众视线。[试用“秘氛”分散公众注意力，但不一定能成功，还有可能产生“邪名”。用“当局欠下的人情”可立刻使其结束。]",
+            "slots": [
+                {
+                    "id": "defence",
+                    "label": "分散注意力",
+                    "required": {
+                        "mystique": 1,
+                        "favour": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "follower": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendfavour"
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.try"
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendfavour",
+            "actionId": "longintrigue",
+            "requirements": {
+                "favour": 1
+            },
+            "effects": {
+                "favour": -1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.try",
+            "actionId": "longintrigue",
+            "label": "分散注意力的事物",
+            "startdescription": "已经有太多陌生人知道这个追随者的名字。[如果分散注意力失败，我们可以继续尝试。成功则会产生“邪名”。]",
+            "requirements": {
+                "mystique": 1
+            },
+            "warmup": 10,
+            "effects": {
+                "mystique": -1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.succeed",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.continue",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.succeed",
+            "actionId": "longintrigue",
+            "effects": {
+                "notoriety": 1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.succeed",
+            "actionId": "longintrigue",
+            "label": "公众视野",
+            "startdescription": "我们的追随者在不好的意义上远近闻名。",
+            "mutations": [
+                {
+                    "mutate": "poison.notoriety",
+                    "filter": "follower",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.mystiquetonotoriety.begin",
+            "actionId": "longintrigue",
+            "label": "杜撰传闻",
+            "startdescription": "我们敌人正在想办法把现存的谣言煽动地更邪乎。",
+            "slots": [
+                {
+                    "id": "mystique",
+                    "label": "秘氛",
+                    "required": {
+                        "mystique": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "comments": "If we can't find mystique, we go on trying to generate it",
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.mystiquetonotoriety.continue",
+                    "chance": 100
+                },
+                {
+                    "id": "long.executestrategy.intrigue.createmystique.begin",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.intrigue.mystiquetonotoriety.continue",
+            "actionId": "longintrigue",
+            "label": "维护我们的声名？",
+            "startdescription": "我说不定知道能把故事反转的人。[<sprite name=heart>之追随者——越强越好——或许能挡下这次攻击。]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "mystique": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure",
+                    "challenges": {
+                        "heart": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.intrigue.mystiquetonotoriety.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.mystiquetonotoriety.succeed",
+            "actionId": "longintrigue",
+            "label": "我们名声扫地",
+            "startdescription": "这既不算真话，也不算谎言。",
+            "description": "",
+            "effects": {
+                "notoriety": 1,
+                "mystique": -1
+            }
+        },
+        {
+            "id": "long.executestrategy.intrigue.fraud.begin",
+            "actionId": "longintrigue",
+            "label": "纸上罗网",
+            "startdescription": "我们的敌人对我们提出了虚假的指证。必须让当局相信我们的清白。[如果成功，你会失去一份或多份资金。<sprite name=heart>或<sprite name=moth>之追随者——越强越好——或许能挡下这次攻击。]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "moth": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.intrigue.fraud.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.fraud.succeed",
+            "actionId": "longintrigue",
+            "label": "审计员的毒刺",
+            "startdescription": "“在以前的往来信函中，我们指出过你违约的可能性。现在我们更详细地评估了这个问题……”",
+            "slots": [
+                {
+                    "id": "funds",
+                    "label": "资金",
+                    "required": {
+                        "funds": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "effects": {
+                "funds": -1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.fraud.succeed",
+                    "chance": 70
+                },
+                {
+                    "id": "long.executestrategy.intrigue.fraud.completed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.fraud.completed",
+            "actionId": "longintrigue",
+            "label": "会计长的饶赦",
+            "startdescription": "语带威胁的来信从原先的源源不断变得稀少，直至终止。结束了……至少现下如此。"
+        },
+        {
+            "id": "long.executestrategy.intrigue.createmystique.begin",
+            "actionId": "longintrigue",
+            "label": "无根无据的谣言",
+            "startdescription": "如果我们的敌人把谣言不断重复，便有可能伤到我们。[<sprite name=heart>之追随者——越强越好——或许能挡下这次攻击。]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.intrigue.failure",
+                    "challenges": {
+                        "heart": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.intrigue.createmystique.succeed",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.intrigue.createmystique.succeed",
+            "actionId": "longintrigue",
+            "label": "谣言的迷雾",
+            "startdescription": "我的声名不再完全取决于我的言行。",
+            "effects": {
+                "mystique": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.intrigue.failure",
+            "actionId": "longintrigue",
+            "label": "疑罪从无",
+            "startdescription": "我的声名不再跌落……但现在，我们的敌人会更加专注地盯着我们。",
+            "effects": {
+                "long.lesson.connections": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.dreams.drysoul.begin",
+            "actionId": "longdreams",
+            "label": "涸魂诅咒出现",
+            "startdescription": "敌人正在用“涸魂诅咒”对付我们。我们可以雇佣“擂击者”用激奋的捶打和快活的肢体动作驱散诅咒，然而敌人能在事后查出缘由。[“擂击者”能避免诅咒发作，也会为我们的敌人提供经验教训。]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "擂击者",
+                    "required": {
+                        "spirit_heartc_edge": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "long.executestrategy.dreams.drysoul.defeated"
+                },
+                {
+                    "id": "curse_dread_dormant",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.drysoul.defeated",
+            "actionId": "longdreams",
+            "label": "擂击者的防护",
+            "startdescription": "\"\r\n来吧擂击者，\r\n反复唱着\r\n扭动四肢的赞歌：\r\n\r\n涸魂诅咒！\r\n涸魂诅咒！\r\n多肢畸形的宇宙！\"",
+            "requirements": {
+                "spirit_heartc_edge": 1
+            },
+            "effects": {
+                "long.lesson.dreamwork": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.fiftheye.begin",
+            "actionId": "longdreams",
+            "label": "第五目诅咒出现",
+            "startdescription": "敌人正在用“第五目诅咒”对付我们。我们可以用“汽灵”的烟气搅扰他们的准备工作，然而敌人能在事后查出缘由。[“汽灵”能避免诅咒发作，但是会为我们的敌人提供经验教训。]",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "擂击者",
+                    "required": {
+                        "spirit_forgec_winter": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "long.executestrategy.dreams.fiftheye.defeated"
+                },
+                {
+                    "id": "curse_visions_dormant",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.fiftheye.defeated",
+            "actionId": "longdreams",
+            "label": "第五目诅咒泯灭于烟",
+            "startdescription": "第五目诅咒在被击败后消散。我方的汽灵也一同消失，带着从我们这学到的不知什么秘密。",
+            "requirements": {
+                "spirit_forgec_winter": 1
+            },
+            "effects": {
+                "long.lesson.dreamwork": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonway.begin",
+            "actionId": "longdreams.poisonway",
+            "comments": "unique verb, because it loops",
+            "label": "挡路的看守",
+            "startdescription": "敌人会选择一条我们进入漫宿的通道，并向之派出守卫。",
+            "slots": [
+                {
+                    "id": "way",
+                    "label": "道路",
+                    "required": {
+                        "way": 1
+                    },
+                    "forbidden": {
+                        "poison.long.way": 1,
+                        "waystagbefore_1": 1,
+                        "waystagbefore_2": 1,
+                        "waystagbefore_3": 1,
+                        "waystagbefore_4": 1,
+                        "waystagbefore_5": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.poisonway.continue"
+                },
+                {
+                    "id": "long.executestrategy.dreams.poisonway.begin"
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonway.continue",
+            "actionId": "longdreams.poisonway",
+            "label": "挡路的看守",
+            "requirements": {
+                "way": 1
+            },
+            "startdescription": "敌人已做出选择。我们若不冒危险便不能再度通过此门。",
+            "mutations": [
+                {
+                    "filter": "way",
+                    "mutate": "poison.way.long",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.begin",
+            "actionId": "longdreams",
+            "label": "遭受破坏活动！",
+            "startdescription": "我们永生不死的敌人已经注意到我们在漫宿的作为。裂分之狼的一名不显要的具名者正循气味前来。",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "目标",
+                    "required": {
+                        "uqthirdwaywitnesses": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.lantern.greatwork.continue",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.continue",
+            "actionId": "longdreams",
+            "label": "保卫大功业",
+            "startdescription": "我们的大功业遭到瘦灰恶兽的威胁。如果我们用光覆住它，或许能阻止这头巡猎的碎狼。[<sprite name=heart>或<sprite name=lantern>之灵体或许能抵御这次攻击。]",
+            "description": "",
+            "slots": [
+                {
+                    "id": "defender",
+                    "label": "防御者",
+                    "required": {
+                        "summoned": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "uqthirdwaywitnesses": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.lantern.greatwork.failure",
+                    "challenges": {
+                        "heart": "base",
+                        "lantern": "base"
+                    }
+                },
+                {
+                    "id": "long.executestrategy.dreams.lantern.greatwork.succeed"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.succeed",
+            "actionId": "longdreams",
+            "label": "光芒渐暗",
+            "startdescription": "一个目击者逃掉，一个被碎狼带走。第三个呢？跑去某个连地图都没标注的地方了吧。",
+            "aspects": {
+                "sabotage": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.failure",
+            "actionId": "longdreams",
+            "label": "光芒遍覆",
+            "startdescription": "我们分散了这头巡猎碎狼的注意力。大功业暂时安全了。",
+            "effects": {
+                "long.lesson.dreamwork": 1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonpassionwithdread.begin",
+            "actionId": "longdreams",
+            "label": "加深的暮色",
+            "slots": [
+                {
+                    "id": "seeking",
+                    "label": "激情",
+                    "required": {
+                        "passion": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.poisonpassionwithdread.continue"
+                }
+            ],
+            "startdescription": "死亡，据说，是朝下的。漫宿的根部深深地蔓延到光明之下。这是我敌人托来的梦告诉我的。",
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonpassionwithdread.continue",
+            "actionId": "longdreams",
+            "label": "加深的暮色",
+            "startdescription": "在梦中，我看到无尽向下的楼梯，直下到亡者的归处，世界转动处。",
+            "requirements": {
+                "passion": 1
+            },
+            "mutations": [
+                {
+                    "filter": "passion",
+                    "mutate": "poison.passion.dread",
+                    "level": 1
+                }
+            ],
+            "alt": [
+                {
+                    "id": "poison.passion.dread.induction",
+                    "additional": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonreasonwithfascination.begin",
+            "actionId": "longdreams",
+            "label": "烛光与烛芯",
+            "startdescription": "敌人用各种图景给我的梦境加味——每个图景都是一个侧面，预示了某位司辰的到来。",
+            "slots": [
+                {
+                    "id": "seeking",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.poisonreasonwithfascination.continue"
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonreasonwithfascination.continue",
+            "actionId": "longdreams",
+            "label": "烛光与烛芯",
+            "startdescription": "谁是“制烛人”？为何我将梦到她？此火为何，燃料又为何？我的思绪便是引火的火绒。",
+            "requirements": {
+                "reason": 1
+            },
+            "mutations": [
+                {
+                    "filter": "reason",
+                    "mutate": "poison.reason.fascination",
+                    "level": 1
+                }
+            ],
+            "alt": [
+                {
+                    "id": "poison.reason.fascination.induction",
+                    "additional": true
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "long.executestrategy.dreams.createfascination.poisoned.begin",
+            "actionId": "longdreams",
+            "label": "味美的梦",
+            "startdescription": "敌人对我的希望和恐惧有了更深入了解。他不再需要用我的恐惧作为他托梦的动力。今夜的梦如同封在琥珀中的肉桂。它从锤炼场新鲜出炉，诱人如未切的蛋糕，笼罩着怀旧之情被点燃的光晕。",
+            "effects": {
+                "fascination": 1,
+                "contentment": 1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.applypoison.fascination.longlesson"
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.dreadtofascination.poisoned.begin",
+            "actionId": "longdreams",
+            "label": "多汁的梦",
+            "startdescription": "敌对长生者给我送来一个关于光之果园的梦。安居在梦中，如同一只多汁的梨裹在沙沙作响的纸中，带来永绝恐惧的安心感。",
+            "slots": [
+                {
+                    "id": "seeking",
+                    "label": "恐惧",
+                    "required": {
+                        "dread": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.dreadtofascination.poisoned.continue"
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.dreadtofascination.poisoned.continue",
+            "actionId": "longdreams",
+            "label": "多汁的梦",
+            "startdescription": "我收到的梦裹住了我的恐惧，如同水蛭吞噬一颗生命微粒。它以它的方式给出一份对于从未发生的对话的回忆，话间饱含明亮的笑声。",
+            "requirements": {
+                "dread": 1
+            },
+            "effects": {
+                "dread": -1,
+                "fascination": 1,
+                "contentment": 1
+            },
+            "linked": [
+                {
+                    "id": "long.executestrategy.dreams.applypoison.fascination.longlesson"
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.applypoison.fascination.longlesson",
+            "actionId": "longdreams",
+            "label": "多汁的梦",
+            "mutations": [
+                {
+                    "filter": "fascination",
+                    "mutate": "poison.fascination.longlesson",
+                    "level": 1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.createfascination.begin",
+            "actionId": "longdreams",
+            "label": "遥远的光",
+            "startdescription": "敌人在漫宿的高窗上放了一支蜡烛。烛光将渗进我们的梦。",
+            "description": "这就是科赛利和海索分别在他们生活的年代记录的位于睡梦边缘的光。",
+            "effects": {
+                "fascination": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "long.executestrategy.dreams.learndreams.begin",
+            "actionId": "longdreams",
+            "label": "袒露的角度",
+            "startdescription": "在一个特定的角度上，我的思想能映射漫宿之光。我们的敌人正设法获知这个角度。",
+            "description": "我们的敌人在漫宿的殿堂里搜寻我思想映射出的闪光，然而一无所获。",
+            "slots": [
+                {
+                    "id": "impulses",
+                    "label": "冲动",
+                    "greedy": true,
+                    "required": {
+                        "fascination": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "long.executestrategy.dreams.learndreams.continue",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.learndreams.continue",
+            "actionId": "longdreams",
+            "label": "袒露的角度",
+            "startdescription": "我们的敌人获知了我思想的角度。我们变得更弱势了。",
+            "requirements": {
+                "fascination": 1
+            },
+            "effects": {
+                "fascination": -1,
+                "long.lesson.dreamwork": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.dreams.learnfears.begin",
+            "actionId": "longdreams",
+            "label": "恐惧的展览",
+            "startdescription": "我心中有一个房间陈列着我的恐惧。在我梦中，那个房间有扇门。如果我的敌人找到了那扇门，他有可能能进入。",
+            "description": "我的恐惧隐没在黑暗中。我们的敌人一无所获。",
+            "slots": [
+                {
+                    "id": "impulses",
+                    "label": "冲动",
+                    "greedy": true,
+                    "required": {
+                        "dread": 1
+                    }
+                }
+            ],
+            "warmup": 10,
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "long.executestrategy.dreams.learndreams.continue",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.dreams.learnfears.continue",
+            "actionId": "longdreams",
+            "label": "恐惧的展览",
+            "startdescription": "我们的敌人发现了我心中陈列的恐惧。我们变得更弱势了。",
+            "requirements": {
+                "dread": 1
+            },
+            "effects": {
+                "dread": -1,
+                "long.lesson.dreamwork": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.downtime.learn.begin",
+            "actionId": "longdowntime",
+            "label": "不断加强的势力",
+            "startdescription": "我们永生不死的敌人在诸多国家中都拥有同盟和物资。他的行动缓慢，但随着时间推移，他会调来越来越越多的同盟和物资来对抗我们。",
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.executestrategy.downtime.learn.might",
+                    "chance": 33
+                },
+                {
+                    "id": "long.executestrategy.downtime.learn.connections",
+                    "chance": 50
+                },
+                {
+                    "id": "long.executestrategy.downtime.learn.dreamwork",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "long.executestrategy.downtime.learn.might",
+            "label": "正在习得：力量",
+            "actionId": "longdowntime",
+            "effects": {
+                "long.lesson.might": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.downtime.learn.connections",
+            "label": "正在习得：人脉",
+            "actionId": "longdowntime",
+            "effects": {
+                "long.lesson.connections": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.downtime.learn.dreamwork",
+            "label": "正在习得：造梦",
+            "actionId": "longdowntime",
+            "effects": {
+                "long.lesson.dreamwork": 1
+            }
+        },
+        {
+            "id": "long.executestrategy.downtime.rest.begin",
+            "actionId": "longdowntime",
+            "label": "缓解",
+            "startdescription": "敌人暂时选择等待。",
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "long.intrigue.confrontation",
+            "actionId": "long",
+            "label": "准备袭击",
+            "startdescription": "敌人的人脉无处不在，这让他有自信发起一次成功的公开袭击。可以想见，很快我们就会迎来一次猛攻。",
+            "requirements": {
+                "long.connections": 10,
+                "diarist": -1,
+                "diarist_unknown": -1
+            },
+            "mutations": [
+                {
+                    "mutate": "long.might",
+                    "filter": "long.enemy",
+                    "level": 10
+                }
+            ],
+            "warmup": 60,
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ],
+            "aspects": {
+                "revealidentity": 1
+            }
+        },
+        {
+            "id": "long.assault.confrontation",
+            "actionId": "long",
+            "comments": "Note: this takes effect in the main verb. Once in an assault confrontation, we're in it until the end.",
+            "label": "直接袭击！",
+            "aspects": {
+                "revealidentity": 1
+            },
+            "slots": [
+                {
+                    "id": "follower",
+                    "label": "防御者",
+                    "required": {
+                        "follower": 1,
+                        "murderskill": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1,
+                        "hireling": 1
+                    }
+                }
+            ],
+            "startdescription": "该停止用喽啰相互试互斗了。@#welland|韦兰上尉将亲自用铸之力对付我们。#tryphon|特里丰女士已决定让她修剪精致的指甲染上鲜血，亲自发起袭击。#julian|这位冷冽的敌人要亲自动手消灭我们。#|我们的敌人亲自下场战斗。@[长生者会不断吞噬我的“健康”，直到我死去，虽然我忠实的追随者可以保护我一段时间。而且必须是凡人追随者——我们的敌人是无形之术的高手，灵体无法侵袭他。]",
+            "requirements": {
+                "long.might": 10,
+                "diarist": -1,
+                "diarist_unknown": -1
+            },
+            "alt": [
+                {
+                    "id": "expel_corpses",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 9,
+                        "filter": {
+                            "corpse": 1
+                        }
+                    }
+                },
+                {
+                    "id": "long.assault.confrontation.vanquished"
+                },
+                {
+                    "id": "long.assault.confrontation.murderskill"
+                },
+                {
+                    "id": "long.assault.confrontation.defender"
+                }
+            ],
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "long.assault.confrontation.grabhealth"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.vanquished",
+            "actionId": "long",
+            "label": "长生者死了！",
+            "startdescription": "这位巨人活过无尽的时间，却涨了岁数失了谨慎。",
+            "description": "[趁现在享受你的胜利吧。作业还要继续。如果我们敌人能被人消灭，我们的导师也能。]",
+            "requirements": {
+                "long_wound": 3
+            },
+            "aspects": {
+                "longded": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "long.assault.confrontation.grabhealth",
+            "label": "凶残的猛攻",
+            "actionId": "long",
+            "slots": [
+                {
+                    "id": "injury",
+                    "label": "受伤",
+                    "required": {
+                        "health": 1,
+                        "fatigue": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "aspects": {
+                "damagehealth": 1
+            },
+            "alt": [
+                {
+                    "id": "expel_injury",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "injury": 1
+                        }
+                    }
+                },
+                {
+                    "id": "deathofthebody",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "长生者从影子袭来，然后重归沉默！[如果我没有剩余的“健康”，我会死去。]",
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.defender",
+            "actionId": "long",
+            "label": "必要的牺牲",
+            "requirements": {
+                "follower": 1
+            },
+            "startdescription": "此人将为事业奉献生命。[只有拥有至少5点<sprite name=edge><sprite name=forge><sprite name=winter>的追随者才有机会伤到长生者。但其他人也能推迟注定到来的结果，虽然时间不长。]",
+            "linked": [
+                {
+                    "id": "long.assault.confrontation.weakfollower"
+                },
+                {
+                    "id": "long.assault.confrontation.strongfollower",
+                    "challenges": {
+                        "edge": "base",
+                        "forge": "base",
+                        "winter": "base"
+                    }
+                },
+                {
+                    "id": "long.assault.confrontation.strongfollower.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.weakfollower",
+            "actionId": "long",
+            "label": "必要的牺牲",
+            "startdescription": "又一根蜡烛熄灭了。",
+            "requirements": {
+                "edge": -5,
+                "forge": -5,
+                "winter": -5
+            },
+            "warmup": 30,
+            "aspects": {
+                "killmortal": 1
+            },
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.murderskill",
+            "actionId": "long",
+            "label": "踏入黑夜",
+            "startdescription": "我要直面这个生物。他拥有数世纪的力量……但我也不容小看。",
+            "requirements": {
+                "murderskill": 1
+            },
+            "linked": [
+                {
+                    "id": "long.assault.confrontation.murderskill.succeed",
+                    "chance": 30
+                },
+                {
+                    "id": "long.assault.confrontation.murderskill.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.murderskill.succeed",
+            "actionId": "long",
+            "label": "我已败倒，虽然吾刃伤敌如刀。",
+            "startdescription": "我与我的敌人在黑暗中搏斗，尽管他远强于我，我仍用牺牲我的力量换得他见血。他被我所伤！然而我已败倒。",
+            "mutations": [
+                {
+                    "filter": "long.enemy",
+                    "mutate": "long_wound",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30,
+            "effects": {
+                "murderskill": -1
+            },
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.murderskill.failure",
+            "actionId": "long",
+            "label": "我已败倒",
+            "startdescription": "我与我的敌人对峙；我与他正面比拼力量；我败倒。我虽可称高于人类，但他早已不做人类很久。",
+            "warmup": 30,
+            "effects": {
+                "murderskill": -1
+            },
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.strongfollower",
+            "actionId": "long",
+            "label": "高尚的结末",
+            "startdescription": "夜深人静时，我们听到一声震动城市的尖啸。长生者已伤！",
+            "mutations": [
+                {
+                    "filter": "long.enemy",
+                    "mutate": "long_wound",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30,
+            "aspects": {
+                "killmortal": 1
+            },
+            "alt": [
+                {
+                    "id": "expel_corpses",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 9,
+                        "filter": {
+                            "corpse": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.assault.confrontation.strongfollower.failure",
+            "actionId": "long",
+            "label": "高尚的失败",
+            "startdescription": "数分钟，又数小时过去。夜晚吞吃了我们的战友，轻易地如游鱼吞蝇。长生者仍不满足，还在继续袭击。",
+            "warmup": 30,
+            "aspects": {
+                "killmortal": 1
+            },
+            "alt": [
+                {
+                    "id": "expel_corpses",
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "corpse": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "long.assault.confrontation"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation",
+            "actionId": "long",
+            "comments": "Note: this takes effect in the main verb. Once in a dreams confrontation, we're in it until the end.",
+            "label": "幻影之战",
+            "aspects": {
+                "revealidentity": 1
+            },
+            "slots": [
+                {
+                    "id": "summoned",
+                    "label": "防御者",
+                    "required": {
+                        "summoned": 1
+                    }
+                }
+            ],
+            "startdescription": "@#welland|韦兰上尉一反常态地选择漫宿边境作为我们的最终战场。#tryphon|特里丰女士选择在漫宿边境进行我们最终的交锋。#julian|科赛利在漫宿边境召集盟友袭击我们。#diarist|“日记作者”向我们发起总攻，地点是他熟门熟路的漫宿边境。#|我们敌人从漫宿召唤出大群灵体攻击我们。@[长生者会不断吞噬我的“激情”和“理性”，直到我不复存在。但他自己也暴露了，我可以反攻……只要我能召唤出大量漫宿生物与之对抗。]",
+            "requirements": {
+                "long.dreamwork": 10
+            },
+            "alt": [
+                {
+                    "id": "long.dreams.confrontation.vanquished"
+                },
+                {
+                    "id": "long.dreams.confrontation.defender"
+                }
+            ],
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.grabability"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.vanquished",
+            "actionId": "long",
+            "label": "长生者败退！",
+            "startdescription": "在边境，在涡卷如飓的暗影，怒火燎天的烟气中，长生者像融化的月亮一样越缩越小。他的军队消散。他的图谋破灭。他的名字已失落。",
+            "description": "[趁现在享受你的胜利吧。作业还要继续。如果我们敌人能被人消灭，我们的导师也能。]",
+            "requirements": {
+                "long_wound": 3
+            },
+            "aspects": {
+                "longded": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "long.dreams.confrontation.defender",
+            "actionId": "long",
+            "label": "边境的战斗",
+            "requirements": {
+                "summoned": 1
+            },
+            "startdescription": "战斗存于想象中，而战争不是。我可以在梦境设置卫兵。[只有拥有至少5点<sprite name=edge><sprite name=lantern><sprite name=moth>的灵体才有机会伤到长生者。但其他的也能推迟注定到来的结果，虽然时间不长。]",
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.lantern.maid"
+                },
+                {
+                    "id": "long.dreams.confrontation.lantern.hint"
+                },
+                {
+                    "id": "long.dreams.confrontation.winter.maid"
+                },
+                {
+                    "id": "long.dreams.confrontation.forge.caligine"
+                },
+                {
+                    "id": "long.dreams.confrontation.grail.prophet"
+                },
+                {
+                    "id": "long.dreams.confrontation.weakfollower"
+                },
+                {
+                    "id": "long.dreams.confrontation.strongfollower",
+                    "challenges": {
+                        "edge": "base",
+                        "lantern": "base",
+                        "moth": "base"
+                    }
+                },
+                {
+                    "id": "long.dreams.confrontation.strongfollower.failure"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.lantern.maid",
+            "actionId": "long",
+            "label": "与残阳的默契",
+            "startdescription": "“日记作者”与那些走过刀刃阶梯者素有交情。哪个镜中少女也不会出手伤他。",
+            "requirements": {
+                "diarist": 1,
+                "spirit_winterd_edge": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.winter.maid",
+            "actionId": "long",
+            "label": "冷冽的严冬",
+            "startdescription": "科赛利是冬之长生者。不论他实现此等冷意的方法为何，这都为他封住了镜中少女的攻击。",
+            "requirements": {
+                "julian": 1,
+                "spirit_winterd_edge": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.lantern.hint",
+            "actionId": "long",
+            "label": "弧月之光",
+            "startdescription": "作为灯之长生者，”日记作者“和辉光的子孙互有默契。哪个迹形也无法伤到他。",
+            "requirements": {
+                "diarist": 1,
+                "spirit_lanternc_edge": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.forge.caligine",
+            "actionId": "long",
+            "label": "熟谙于铸",
+            "startdescription": "韦兰早在我教创教者出生前便能自如地操纵火。哪个汽灵也无法伤到他。",
+            "requirements": {
+                "welland": 1,
+                "spirit_forgec_winter": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.grail.prophet",
+            "actionId": "long",
+            "label": "某种同情",
+            "startdescription": "“不要那样做，”特里丰女士会如此言道。说实话，原生先知也不会那样做。",
+            "requirements": {
+                "tryphon": 1,
+                "spirit_grailc_moth": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.weakfollower",
+            "actionId": "long",
+            "label": "必要的牺牲",
+            "requirements": {
+                "edge": -5,
+                "lantern": -5,
+                "moth": -5
+            },
+            "startdescription": "又一根蜡烛熄灭了。",
+            "warmup": 30,
+            "aspects": {
+                "killsummoned": 1
+            },
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.strongfollower",
+            "actionId": "long",
+            "label": "林地的伤口",
+            "startdescription": "血从树枝间滴落。我们的敌人受伤了。",
+            "mutations": [
+                {
+                    "filter": "long.enemy",
+                    "mutate": "long_wound",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 30,
+            "aspects": {
+                "killsummoned": 1
+            },
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.strongfollower.failure",
+            "actionId": "long",
+            "label": "延长的光",
+            "startdescription": "我们的敌人安然无恙。",
+            "warmup": 30,
+            "aspects": {
+                "killsummoned": 1
+            },
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.grabability",
+            "actionId": "long",
+            "label": "纠缠不休的黄昏",
+            "startdescription": "梦魇永不停歇。永不停歇。不分白天黑夜，梦里梦外，半空中的响动，我向内生长的发根，自始至终敞开的门和栖于寒冷的偏头痛而且一切都在向我说话，无时无刻所有事物，保持清醒的苦役是蜿蜒的重力而边境的挤压是人群的挤压而我正在蜕下我自己，就如同冰川的移动。\n\n[待“理性”或“激情”耗尽后，我将不复存在。]",
+            "slots": [
+                {
+                    "id": "wakingnightmares",
+                    "label": "醒时梦魇",
+                    "required": {
+                        "passion": 1,
+                        "reason": 1,
+                        "concentration": 1,
+                        "disillusionment": 1,
+                        "passionexhausted": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "effects": {
+                "passion": -1,
+                "reason": -1,
+                "concentration": -1,
+                "disillusionment": -1,
+                "passionexhausted": -1
+            },
+            "alt": [
+                {
+                    "id": "long.dreams.confrontation.destroyedbynightmares"
+                }
+            ],
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation.cleanup"
+                }
+            ]
+        },
+        {
+            "id": "long.dreams.confrontation.destroyedbynightmares",
+            "actionId": "long",
+            "label": "终得饶赦",
+            "startdescription": "-——不复存在——",
+            "requirements": {
+                "passion": -1,
+                "reason": -1,
+                "concentration": -1,
+                "disillusionment": -1,
+                "passionexhausted": -1
+            },
+            "ending": "longnightmareending",
+            "signalEndingFlavour": "Melancholy"
+        },
+        {
+            "id": "long.dreams.confrontation.cleanup",
+            "actionId": "long",
+            "label": "幻影之战",
+            "aspects": {
+                "revealidentity": 1
+            },
+            "effects": {
+                "edge": -99,
+                "forge": -99,
+                "grail": -99,
+                "heart": -99,
+                "knock": -99,
+                "lantern": -99,
+                "moth": -99,
+                "winter": -99
+            },
+            "linked": [
+                {
+                    "id": "long.dreams.confrontation"
+                }
+            ]
+        }
+    ]
+}

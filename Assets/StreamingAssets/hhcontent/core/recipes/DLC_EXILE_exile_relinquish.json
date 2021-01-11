@@ -1,0 +1,499 @@
+{
+    "recipes": [
+        {
+            "id": "relinquish.first",
+            "actionid": "relinquish",
+            "label": "Relinquish",
+            "startdescription": "Someone took a shot at me as I got out with the years. I'd almost forgotten.",
+            "description": "I've changed the dressing. I can move well enough. I could wait for it to heal, or heal it with stolen years if I'm in a hurry - but it'll take a whole Decade, and it'll certainly be noticed.",
+            "effects": {
+                "wound.exile": 1
+            },
+            "comments": "opened by initial scout recipe",
+            "alt": [
+                {
+                    "id": "send.first",
+                    "additional": true
+                }
+            ],
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "relinquish.decade.healwound.foe",
+            "actionid": "relinquish",
+            "label": "Heal a Wound with a Stolen Decade",
+            "startdescription": "The years must be burned in silence just as dawn begins and the wound dressed with the ashes. On any day this is tricky, but with the Foe stalking me through the night, it's going to be no fun at all. [You'll need a Dawn opportunity to complete this.]",
+            "description": "I couldn't find enough time or silence. [Be ready with a Dawn opportunity.]",
+            "slots": [
+                {
+                    "id": "dawn",
+                    "label": "Dawn",
+                    "description": "The Moment",
+                    "required": {
+                        "op.dawn": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "decade.stolen": 1,
+                "damage.exile": 1
+            },
+            "extantreqs": {
+                "rkx.foe": 1
+            },
+            "alt": [
+                {
+                    "id": "relinquish.decade.healwound.success.foe"
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.decade.healwound.success.foe",
+            "actionid": "relinquish",
+            "label": "Heal a Wound with a Stolen Decade",
+            "startdescription": "I've bought a little time back from the Madrugad.",
+            "requirements": {
+                "decade.stolen": 1,
+                "damage.exile": 1,
+                "op.dawn": 1
+            },
+            "effects": {
+                "decade.stolen": -1,
+                "damage.exile": -1,
+                "op.dawn": -1
+            }
+        },
+        {
+            "id": "relinquish.decade.healwound",
+            "actionid": "relinquish",
+            "label": "Heal a Wound with a Stolen Decade",
+            "startdescription": "The years must be burned in silence just as dawn begins - the Madrugad is picky about that - and the wound dressed with the ashes. [You'll need a Dawn opportunity to complete this.]",
+            "description": "I couldn't find enough time or silence. [Be ready with a Dawn opportunity.]",
+            "slots": [
+                {
+                    "id": "dawn",
+                    "label": "Dawn",
+                    "description": "The Moment",
+                    "required": {
+                        "op.dawn": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "decade.stolen": 1,
+                "damage.exile": 1
+            },
+            "alt": [
+                {
+                    "id": "relinquish.decade.healwound.success"
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.decade.healwound.success",
+            "actionid": "relinquish",
+            "label": "Heal a Wound with a Stolen Decade",
+            "startdescription": "The Madrugad is not merciful. She always exacts what is necessary. But then, I've never been the kind to ask for mercy. [Your reckoner pursuers have scented burning years.]",
+            "requirements": {
+                "decade.stolen": 1,
+                "damage.exile": 1,
+                "op.dawn": 1
+            },
+            "effects": {
+                "decade.stolen": -1,
+                "damage.exile": -1,
+                "trace": 1,
+                "op.dawn": -1
+            }
+        },
+        {
+            "id": "relinquish.vitality.healwound",
+            "actionid": "relinquish",
+            "label": "Heal a Wound with Vitality",
+            "startdescription": "As a reckoner, I learnt long ago to redirect life's sudden surges.",
+            "description": "A student of the invisible arts would no doubt pray to the Thunderskin just now. I know better.",
+            "requirements": {
+                "vitality": 1,
+                "damage.exile": 1
+            },
+            "effects": {
+                "vitality": -1,
+                "damage.exile": -1
+            },
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.healwound.hint",
+            "actionid": "relinquish",
+            "label": "Heal a Wound?",
+            "startdescription": "I could use a Stolen Decade to heal my Wound - though this may attract reckoners. Or if I have identified a source of Vitality, I could use that. Of course, if I have time, I can just wait for my wound to heal.",
+            "requirements": {
+                "damage.exile": 1
+            },
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "relinquish.decade.unpack",
+            "actionid": "relinquish",
+            "label": "Break down a Stolen Decade",
+            "startdescription": "Stolen life is more easily sold by the year than the decade. I have the tools to make the necessary changes, but I must be very careful with my pen-strokes. She who comes before the Sun looks unkindly on sloppiness. [Decades cannot be sold. Years cannot be used to heal Wounds. Years cannot be converted back into Decades.]",
+            "description": "At last it's done. I have drawn up ten careful drafts against the Tally, and burnt the decade draft. Each of my new drafts is worth forty-two million human heartbeats. I fancy I can hear them trembling in the paper...",
+            "requirements": {
+                "decade.stolen": 1
+            },
+            "effects": {
+                "decade.stolen": -1,
+                "year.stolen": 10
+            },
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.convertyear",
+            "actionid": "relinquish",
+            "label": "Raise Cash Hurriedly",
+            "startdescription": "Selling lifespan directly for cash gets a lower price, and will quickly draw reckoner attention. Once I find a better alternative, I should do it as little as possible.",
+            "description": "Smoky rooms; crumpled banknotes. I'm tired of this. [Operations are a much safer way to convert years to cash. Most Operations require Connections.]",
+            "requirements": {
+                "year.stolen": 1
+            },
+            "effects": {
+                "year.stolen": -1,
+                "cash": 1
+            },
+            "aspects": {
+                "terribletracerisk": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.corpse.exile.underling.defiance",
+            "actionid": "relinquish",
+            "label": "Celebrate my Victory",
+            "startdescription": "The Hours of struggle and conquest acknowledge victories. I can offer this trophy to increase my standing in their eyes.",
+            "description": "It's done. In the hour when day battles night, the Many-Winged Ones descend to judge my prize, and when they depart, they leave only scraps of bone and hanks of hair.",
+            "requirements": {
+                "corpse.exile.underling": 1,
+                "temptation.defiance": 1,
+                "defiance.underlingdefeated": -1
+            },
+            "effects": {
+                "corpse.exile.underling": -1
+            },
+            "mutations": [
+                {
+                    "filter": "temptation.defiance",
+                    "mutate": "defiance.underlingdefeated",
+                    "level": 1
+                },
+                {
+                    "filter": "temptation.defiance",
+                    "mutate": "defiancemarks",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.corpse.exile.underling.lore",
+            "actionid": "relinquish",
+            "label": "Learn from my Victory",
+            "startdescription": "Certain techniques can only be articulated in an enemy's blood.",
+            "description": "This wasn't a tidy or a pleasant process... but I have developed my understanding of the many kinds of mortal action.",
+            "requirements": {
+                "corpse.exile.underling": 1,
+                "lore": 1
+            },
+            "effects": {
+                "corpse.exile.underling": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.corpse.exile",
+            "actionid": "relinquish",
+            "label": "A Discreet Burial",
+            "startdescription": "It would be indecent to leave them unburied. But there's no need to make a fuss.",
+            "description": "We've made sure this poor shell has been put quietly out of the way. Anyone looking for them will find a trail of false clues to follow.",
+            "requirements": {
+                "corpse.exile": 1,
+                "deception": 2
+            },
+            "effects": {
+                "corpse.exile": -1,
+                "obscurity": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.trace.connections",
+            "actionid": "relinquish",
+            "label": "Cover My Tracks",
+            "startdescription": "My confederates will help me manipulate the necessary records.",
+            "description": "'Books are the memory that does not die' ...said someone who'd never met a competent forger.",
+            "requirements": {
+                "trace": 1,
+                "deception": 2,
+                "connection": 2
+            },
+            "effects": {
+                "trace": -1,
+                "obscurity": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.night.connection",
+            "actionid": "relinquish",
+            "label": "Cover My Tracks",
+            "startdescription": "When the moon sets, we'll put our plans in motion.",
+            "description": "The sun rises on another lost history.",
+            "requirements": {
+                "trace": 1,
+                "deception": 2,
+                "connection": 1,
+                "op.night": 1
+            },
+            "effects": {
+                "trace": -1,
+                "obscurity": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.trace.space.connection",
+            "actionid": "relinquish",
+            "label": "Cover My Tracks",
+            "startdescription": "My friends will ensure the address remains occupied by a decoy.",
+            "description": "I've donated an old overcoat for the decoy. I hope they don't get overly murdered.",
+            "requirements": {
+                "trace": 1,
+                "deception": 2,
+                "space": 1,
+                "connection": 1
+            },
+            "effects": {
+                "trace": -1,
+                "obscurity": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.trace.space.night",
+            "actionid": "relinquish",
+            "label": "Cover My Tracks",
+            "startdescription": "I'll slip out at night.",
+            "description": "No-one will know I'm gone from there, not for days... and by then I'll be gone from somewhere else.",
+            "requirements": {
+                "trace": 1,
+                "deception": 2,
+                "space": 1,
+                "op.night": 1
+            },
+            "effects": {
+                "trace": -1,
+                "obscurity": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.trace.space",
+            "actionid": "relinquish",
+            "label": "Cover My Tracks?",
+            "startdescription": "[You can erase a Trace using a dwelling with a Night or Connection card, but not with two dwellings.]",
+            "requirements": {
+                "trace": 1,
+                "deception": 2,
+                "space": 1
+            },
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "relinquish.trace",
+            "actionid": "relinquish",
+            "label": "Cover My Tracks",
+            "startdescription": "I can misdirect the enemies following my trail.",
+            "description": "As if I were mist.",
+            "requirements": {
+                "trace": 1,
+                "deception": 2
+            },
+            "effects": {
+                "trace": -1,
+                "obscurity": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.corpse.exile.underling.defiance.already.hint",
+            "actionid": "relinquish",
+            "label": "Already Recognised",
+            "startdescription": "The Many-Winged Ones who judge the slain have already acknowledged one victory of this nature. I shouldn't trouble them again.",
+            "requirements": {
+                "corpse.exile.underling": 1,
+                "temptation.defiance": 1,
+                "defiance.underlingdefeated": 1
+            },
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "relinquish.corpse.exile.underling.hint",
+            "actionid": "relinquish",
+            "label": "Mortal Uses?",
+            "startdescription": "A human corpse is an inconvenient property, but also, now and then, a valuable one.",
+            "requirements": {
+                "corpse.exile.underling": 1
+            },
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "relinquish.trace.hint.space",
+            "actionid": "relinquish",
+            "label": "Cover My Tracks?",
+            "startdescription": "Somewhere I'll never go again... [Add another card with Deception, but not a second address.]",
+            "requirements": {
+                "trace": 1,
+                "space": 1
+            },
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "relinquish.trace.hint.connection",
+            "actionid": "relinquish",
+            "label": "Cover My Tracks?",
+            "startdescription": "With assistance from friends who know the city well... [Add another card with Deception.]",
+            "requirements": {
+                "trace": 1,
+                "connection": 1
+            },
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "relinquish.trace.hint.night",
+            "actionid": "relinquish",
+            "label": "Cover My Tracks?",
+            "startdescription": "When night blinds watchful eyes... [Add another card with Deception.]",
+            "requirements": {
+                "trace": 1,
+                "op.night": 1
+            },
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "relinquish.trace.hint",
+            "actionid": "relinquish",
+            "label": "Cover My Tracks?",
+            "startdescription": "With the right resources, I could throw my enemies off the scent. [Use two cards with Deception - but no more than one address.]",
+            "requirements": {
+                "trace": 1
+            },
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "relinquish.sell",
+            "actionid": "relinquish",
+            "label": "Attempt to Sell an Asset for Cash",
+            "startdescription": "@#licence.medical|I can usually find someone who feels they really deserve to be a doctor.\n#|Perhaps I need cash more than I need this.@ [This will exchange the asset for Cash equal to its Worth.]",
+            "requirements": {
+                "worth": 1,
+                "cash": -1,
+                "trace": -1
+            },
+            "extantreqs": {
+                "asset.packed": -1
+            },
+            "comments": "cash also has worth, but let's not convert it back to cash",
+            "effects": {
+                "cash": "worth",
+                "asset": -1
+            },
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.abandon",
+            "actionid": "relinquish",
+            "label": "Abandon an Asset",
+            "startdescription": "When the Devil is at your back, travel light. [Use this to get rid of any Portable Assets you don't have time to take with you.]",
+            "requirements": {
+                "asset": 1,
+                "trace": -1
+            },
+            "extantreqs": {
+                "asset.packed": 1
+            },
+            "effects": {
+                "asset": -1
+            },
+            "warmup": 1,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.provoke",
+            "actionid": "relinquish",
+            "label": "Provoke my Connections",
+            "startdescription": "I'm not the only one with enemies. If I arrange a public rift with this contact, I might gain @#connection.official|Underworld Connections\n#connection.holy|Radical Connections\n#connection.radicals|Official Connections\n#connection.ruler|Radical Connections\n#connection.underworld|Official Connections@ instead. Or I might just annoy my current contacts. [This will usually work, but sometimes fail and leave you with no Connections and a Trace.]",
+            "requirements": {
+                "connection": 1,
+                "trace": -1
+            },
+            "linked": [
+                {
+                    "id": "relinquish.provoke.success",
+                    "chance": 70
+                },
+                {
+                    "id": "relinquish.provoke.failure"
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "relinquish.provoke.success",
+            "actionid": "relinquish",
+            "label": "Success!",
+            "startdescription": "New friends.",
+            "aspects": {
+                "provoking": 1
+            }
+        },
+        {
+            "id": "relinquish.provoke.failure",
+            "actionid": "relinquish",
+            "label": "Whoops -",
+            "startdescription": "I knew that word was bad, but I didn't realise <i>how</i> bad.",
+            "effects": {
+                "connection": -1,
+                "trace": 1
+            }
+        }
+    ]
+}

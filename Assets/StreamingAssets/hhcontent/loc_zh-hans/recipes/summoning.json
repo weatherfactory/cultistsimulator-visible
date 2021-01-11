@@ -1,0 +1,532 @@
+{
+    "recipes": [
+        {
+            "id": "summon_spirit_wintera_edge",
+            "label": "告请伤疤测绘师使尸体半获新生",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "corpse": 1,
+                "winter": 4,
+                "edge": 2,
+                "desire": -1
+            },
+            "aspects": {
+                "raiseshattered": 1
+            },
+            "startdescription": "一股碎裂之力将渗入这具肉体，使它成为破碎行尸。我该开工了。我会准备好锤子。",
+            "description": "尸体呻吟着，用跌跌撞撞地双脚站立起来：或者说是用双脚的残余。我制作出了破碎行尸。",
+            "warmup": 60,
+            "craftable": true,
+            "comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+            "mutations": [
+                {
+                    "filterOnAspectId": "corpse",
+                    "mutateAspectId": "follower",
+                    "mutationLevel": 0
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_wintera_moth",
+            "label": "告请环杉使尸体半获新生",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "corpse": 1,
+                "winter": 4,
+                "moth": 2,
+                "desire": -1
+            },
+            "aspects": {
+                "raiseburgeoning": 1
+            },
+            "startdescription": "首先我得在尸体的眼睑下，舌头下，一切隐秘的孔洞里植入种子。然后它将作为抽芽行尸醒来。",
+            "description": "尸体用摇晃的双脚站立起来。眼睛努力睁开。树液从它口中滴落。它抽芽了；它重生了。",
+            "warmup": 60,
+            "craftable": true,
+            "comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+            "mutations": [
+                {
+                    "filterOnAspectId": "corpse",
+                    "mutateAspectId": "follower",
+                    "mutationLevel": 0
+                }
+            ]
+        },
+        {
+            "id": "renew_spirit_wintera_edge",
+            "label": "告请伤疤测绘师使尸体半回新生",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "spirit_wintera_edge": 1,
+                "winter": 8,
+                "edge": 8,
+                "desire": -1
+            },
+            "aspects": {
+                "renewshattered": 1
+            },
+            "startdescription": "此仪式其实不是修复——更像是拖缓。严冬可以晚来，但不会不来。",
+            "description": "腐败减缓——动力再注入。这具尸体能在倒下前再走一千来步。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "renew_spirit_wintera_moth",
+            "label": "告请环杉使尸体半回新生",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "spirit_wintera_moth": 1,
+                "winter": 8,
+                "moth": 8,
+                "desire": -1
+            },
+            "aspects": {
+                "renewburgeoning": 1
+            },
+            "startdescription": "尸体内的新生命挣扎着想要逃离。我还能再困住它一小会儿。",
+            "description": "尸体眼中的光不再那么野蛮。他的藤蔓平息下来。有那么一会儿，我以为它会开口说话。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "summon_spirit_forgee_edge",
+            "label": "召唤白日铸炉的具名映象之一",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 5,
+                "forge": 10,
+                "lantern": 2,
+                "desire": -1
+            },
+            "extantreqs": {
+                "spirit_forgee_edge": -1,
+                "pre.spirit_forgee_edge": -1,
+                "spirit_forgee_edge.defunct": -1,
+                "spirit_forgee_edge.consumed": -1
+            },
+            "effects": {
+                "pre.spirit_forgee_edge": 1
+            },
+            "startdescription": "熔炉王只在房间充满<b>铸</b>相时现身。他对<b>灯</b>也有要求，因为他号称通晓辉光。",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_forgee_edge.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_forgee_edge.success",
+            "label": "召唤白日铸炉的具名映象之一",
+            "actionId": "work",
+            "description": "必要时，他能藏入烛火中。不过此处的他处于篝火样的全盛形态。和他说话后，我的脸和手将如遭暴晒般泛红。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_graile_edge",
+            "label": "召唤赤杯的具名映象之一",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 5,
+                "grail": 10,
+                "forge": 2,
+                "desire": -1
+            },
+            "extantreqs": {
+                "spirit_graile_edge": -1,
+                "pre.spirit_graile_edge": -1,
+                "spirit_graile_edge.defunct": -1
+            },
+            "effects": {
+                "pre.spirit_graile_edge": 1
+            },
+            "startdescription": "伊泽姆只能进入<b>杯</b>之力强盛的地方；而且只有在一并调用<b>铸</b>之力时，它才选择出现，毕竟铸炉是它经常撩逗的神灵。",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_graile_edge.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_graile_edge.success",
+            "label": "召唤赤杯的具名映象之一",
+            "actionId": "work",
+            "description": "如此多的浓郁气味，仿佛半空中的盛宴！不过最先，最多闻到的，是血。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_lanterne_secret",
+            "label": "召唤通称“巴尔多梅人”的神秘具名者",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 5,
+                "lantern": 10,
+                "secrethistories": 2,
+                "desire": -1
+            },
+            "extantreqs": {
+                "spirit_lanterne_secret": -1,
+                "pre.spirit_lanterne_secret": -1,
+                "spirit_lanterne_secret.defunct": -1
+            },
+            "effects": {
+                "pre.spirit_lanterne_secret": 1
+            },
+            "startdescription": "强大的<b>灯</b>之力量会吸引“巴尔多梅人”的注意，再加一丝撩人的秘密还能让她来得更近。",
+            "description": "“巴尔多梅人”拥有老学究般的驼背，学校老师般清亮的声音，和周游大陆的旅行者般的雀斑。她缺了影子。",
+            "warmup": 60,
+            "craftable": true,
+            "comments": "Teresa doesn't struggle; she's always up for a chat"
+        },
+        {
+            "id": "summon_spirit_forgec_winter",
+            "label": "召唤一种状如烟雾的生物",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "forge": 6,
+                "winter": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_forgec_winter": 1
+            },
+            "startdescription": "<b>铸</b>用来召唤烟状灵体，<b>冬</b>用来拘束。必须让它知道是谁要来管控它。",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_forgec_winter.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_forgec_winter.success",
+            "label": "召唤一种状如烟雾的生物",
+            "actionId": "work",
+            "description": "并非铸炉的所有孩子都光鲜明亮。它产生的的碎料和残次品像铁匠铺地缝里积着废渣一样汇聚在边境。现在就来了一个。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_grailc_moth",
+            "label": "召唤赤杯麾下致人迷途的生物之一",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "grail": 6,
+                "moth": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_grailc_moth": 1
+            },
+            "startdescription": "添加<b>杯</b>为原生先知之源，再添一点<b>蛾</b>，因它醉心于混沌。",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_grailc_moth.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_grailc_moth.success",
+            "label": "召唤赤杯麾下致人迷途的生物之一",
+            "actionId": "work",
+            "description": "它一次一肢地进入现世，寻觅如蛇，聒叫如鸦，跳动如血管。它会紧抱我腿，如果我不阻止，我脚上这双鞋以后就得扔掉。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_lanternc_edge",
+            "label": "召唤一种边锐如刃的灯之物",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "lantern": 6,
+                "edge": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_lanternc_edge": 1
+            },
+            "startdescription": "迹形都曾是活人，然后是死人，现在成了某种别的东西。召唤它们需要<b>灯</b>，代表吸引它们到漫宿的光，还需要<b>刃</b>，代表了它们在镜中不绝的抗争。",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_lanternc_edge.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_lanternc_edge.success",
+            "label": "召唤一种边锐如刃的灯之物",
+            "actionId": "work",
+            "description": "迹形不喜欢华丽登场。活人的注视会使它们碎裂。我知道它在这儿，现下这样就够了。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_heartc_edge",
+            "label": "召唤轰雷之皮麾下的一种生物",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "heart": 6,
+                "edge": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_heartc_edge": 1
+            },
+            "startdescription": "擂击者，残忍又快活！由<b>心</b>招徕，由<b>刃</b>约束。",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_heartc_edge.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_heartc_edge.success",
+            "label": "召唤轰雷之皮麾下的一种生物",
+            "actionId": "work",
+            "description": "首先是砰，砰，刷刷声和从它参加的林地典礼传来的高叫声。现在它来了，硬是挤过了世界的表皮，像一个手生利爪的粗暴大叔或一只拍来打去的无头狗熊。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_winterd_edge",
+            "label": "召唤残阳的一名仆从",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "winter": 8,
+                "edge": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_winterd_edge": 1
+            },
+            "startdescription": "以<b>冬</b>之严寒命名并引来镜中少女。以<b>刃</b>，和她敏锐的残虐相配。",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_winterd_edge.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_winterd_edge.success",
+            "label": "召唤残阳的一名仆从",
+            "actionId": "work",
+            "description": "那个曾是女人的东西没有自己的表情。她的眼睛和嘴的动作永远和我相同，就像在照镜子。她的手指甲和玻璃一样锐利。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summon_spirit_winterb_heart",
+            "label": "召唤无声亡者之一",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "winter": 4,
+                "heart": 2,
+                "desire": -1
+            },
+            "effects": {
+                "pre.spirit_winterb_heart": 1
+            },
+            "startdescription": "此类亡者既不下降也不上升，而是留在漫宿和<b>冬</b>的梦境中。<b>冬</b>之力，加上一点<b>心</b>的温暖，便会吸引它们前来。",
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "summoninglosingcontrol",
+                    "chance": 30
+                },
+                {
+                    "id": "summon_spirit_winterb_heart.success"
+                }
+            ]
+        },
+        {
+            "id": "summon_spirit_winterb_heart.success",
+            "label": "召唤无声亡者之一",
+            "actionId": "work",
+            "description": "冬日的光勾勒出一个黑色身形。它不说话，但眼睛热切地看着，看着。亡者终归是要企盼现世。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "summoninglosingcontrol",
+            "label": "召唤物：叛逆的灵体",
+            "actionId": "work",
+            "requirements": {},
+            "startdescription": "召唤物在抵抗我的控制！我可以安全地用理性遣散它，但求无虞。我也可以试着用激情重新控制它，自担风险。又或者我可以顺其自然。",
+            "description": "它逃脱了我的掌控！",
+            "alternativerecipes": [
+                {
+                    "id": "summoningshutitdown",
+                    "chance": 100
+                },
+                {
+                    "id": "summoningfightformastery",
+                    "chance": 100
+                }
+            ],
+            "slots": [
+                {
+                    "id": "Effort",
+                    "label": "努力",
+                    "description": "我可以安全地用理性遣散它，但求无虞。我也可以试着用激情重新控制它，自担风险。又或者我可以顺其自然。",
+                    "required": {
+                        "passion": 1,
+                        "reason": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "summoningescaped",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "summoningshutitdown",
+            "label": "召唤物：送它回原处",
+            "actionId": "work",
+            "requirements": {
+                "reason": 1
+            },
+            "effects": {},
+            "aspects": {
+                "fatiguing": 1,
+                "killmanifesting": 1
+            },
+            "startdescription": "念出驱逐的咒语。将通道紧紧封死。消除一切痕迹。",
+            "description": "它离开了。我们安全了。",
+            "warmup": 10
+        },
+        {
+            "id": "summoningfightformastery",
+            "label": "召唤物：争夺控制权",
+            "actionId": "work",
+            "startdescription": "现世之外的生物拥有许多武器：刀子和谜语，火焰和绝望。而我也有自己的武器。[此法通常有效，但不会永远有效。]",
+            "description": "",
+            "requirements": {
+                "passion": 1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "summoningmasteryregained",
+                    "chance": 70
+                },
+                {
+                    "id": "summoningescaped",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "summoningescaped",
+            "label": "召唤物：突发意外！",
+            "actionId": "work",
+            "requirements": {},
+            "startdescription": "它脱逃了！",
+            "description": "我的召唤物脱离了我的控制，毫无疑问，他将四处肆虐——",
+            "warmup": 5,
+            "alternativerecipes": [
+                {
+                    "id": "summoning_haunt_devourer",
+                    "chance": 100,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "manifesting": 1
+                        }
+                    }
+                },
+                {
+                    "id": "summoning_haunt_deceiver",
+                    "chance": 100,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "manifesting": 1
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "summoningmasteryregained",
+            "label": "召唤物：重获控制权",
+            "actionId": "work",
+            "requirements": {},
+            "effects": {},
+            "startdescription": "我成功了！",
+            "description": "我召唤出的生物将听从我的指示——至少现下如此。",
+            "warmup": 10
+        }
+    ]
+}

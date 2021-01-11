@@ -1,0 +1,609 @@
+{
+    "recipes": [
+        {
+            "id": "work.poison.fascination.longlesson.trap",
+            "actionId": "work",
+            "label": "一个永远警醒的敌人",
+            "startdescription": "我们的敌人在漫宿高处的窗口观察我们。他变得更加了解我们了。",
+            "requirements": {
+                "poison.fascination.longlesson": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "long.lesson.dreamwork": 1
+            },
+            "mutations": [
+                {
+                    "filter": "fascination",
+                    "mutate": "poison.fascination.longlesson",
+                    "level": -1
+                }
+            ],
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "label": "理性的辉光[浩大]",
+            "id": "arcane_lantern_edge_grand",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "lantern": 15,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "上既如此，下亦其然：理性与激情在人类灵魂中争斗，犹如辉光刺破林地的黑暗。这种神秘法则会将激情转化为理性。[你正在告请高阶的<b>灯</b>之力，成功率极高，但依然存在风险。]",
+            "description": "我的头脑被光注满。我现在更加冷静犀利。我变了。[激情已转变为理性。]",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "放弃我的激情",
+                    "required": {
+                        "passion": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 10,
+                    "id": "arcane_lantern_edge_failure"
+                }
+            ],
+            "aspects": {
+                "toreason": 1,
+                "fascinating": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "理性的辉光[中平]",
+            "id": "arcane_lantern_edge_major",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "lantern": 10,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "上既如此，下亦其然：理想与激情在人类灵魂中争斗，犹如辉光刺破林地的黑暗。这种神秘法则会将激情转化为理性。[你正在告请中阶的<b>灯</b>之力，仪式大概率会成功，使用至少15<b>灯</b>可提高成功率。]",
+            "description": "我的头脑被光注满。我现在更加冷静犀利。我变了。[激情已转变为理性。]",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "放弃我的激情",
+                    "required": {
+                        "passion": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 30,
+                    "id": "arcane_lantern_edge_failure"
+                }
+            ],
+            "aspects": {
+                "toreason": 1,
+                "fascinating": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "理性的辉光[微小]",
+            "id": "arcane_lantern_edge_minor",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "lantern": 5,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "上既如此，下亦其然：理想与激情在人类灵魂中争斗，犹如辉光刺破林地的黑暗。这种神秘法则会将激情转化为理性。[你正在告请低阶的<b>灯</b>之力，仪式经常会失败，使用至少10<b>灯</b>可提高成功率。]",
+            "description": "我的头脑被光注满。我现在更加冷静犀利。我变了。[激情已转变为理性。]",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "放弃我的激情",
+                    "required": {
+                        "passion": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 70,
+                    "id": "arcane_lantern_edge_failure"
+                }
+            ],
+            "aspects": {
+                "toreason": 1,
+                "fascinating": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "arcane_lantern_edge_failure",
+            "label": "理性的辉光[失败]",
+            "actionId": "work",
+            "description": "魔法走入歧途，一道无形的光缚住了我。",
+            "effects": {
+                "fascination": 1
+            }
+        },
+        {
+            "label": "激情的漩涡[浩大]",
+            "id": "arcane_moth_edge_grand",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "moth": 15,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "上如其然，下亦其然：理想与激情在人类灵魂中争斗，如同林地吞没辉光之光，这种法悦修炼会将理性转化为激情……也存在失控的可能。[你正在告请高阶的<b>蛾</b>之力，成功率极高，但依然存在风险。]",
+            "description": "我的激情升腾，如疾风，如浪潮，如洪水。我很难明晰地思考。我变了。[理性已转化为激情。]",
+            "slots": [
+                {
+                    "id": "reason",
+                    "label": "抛弃理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 10,
+                    "id": "arcane_moth_edge_failure"
+                }
+            ],
+            "aspects": {
+                "topassion": 1,
+                "dreadful": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "arcane_moth_edge_runaway_link",
+                    "chance": 30
+                }
+            ]
+        },
+        {
+            "label": "激情的漩涡[中平]",
+            "id": "arcane_moth_edge_major",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "moth": 10,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "上如其然，下亦其然：理想与激情在人类灵魂中争斗，如同林地吞没辉光之光，这种法悦修炼会将理性转化为激情……也存在失控的可能。[你正在告请中阶的<b>蛾</b>之力，仪式大概率会成功，使用至少15<b>蛾</b>可提高成功率。]",
+            "description": "我的激情升腾，如疾风，如浪潮，如洪水。我很难明晰地思考。我变了。[理性已转化为激情。]",
+            "slots": [
+                {
+                    "id": "reason",
+                    "label": "抛弃理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 30,
+                    "id": "arcane_moth_edge_failure"
+                }
+            ],
+            "aspects": {
+                "topassion": 1,
+                "dreadful": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "arcane_moth_edge_runaway_link",
+                    "chance": 30
+                }
+            ]
+        },
+        {
+            "label": "激情的漩涡[微小]",
+            "id": "arcane_moth_edge_minor",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "moth": 5,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "上如其然，下亦其然：理想与激情在人类灵魂中争斗，如同林地吞没辉光之光，这种法悦修炼会将理性转化为激情……也存在失控的可能。[你正在告请低阶的<b>蛾</b>之力，仪式经常会失败，使用至少10<b>蛾</b>可提高成功率。]",
+            "description": "我的激情升腾，如疾风，如浪潮，如洪水。我很难明晰地思考。我变了。[理性已转化为激情。]",
+            "slots": [
+                {
+                    "id": "reason",
+                    "label": "抛弃理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 70,
+                    "id": "arcane_moth_edge_failure"
+                }
+            ],
+            "aspects": {
+                "topassion": 1,
+                "dreadful": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "arcane_moth_edge_runaway_link",
+                    "chance": 30
+                }
+            ]
+        },
+        {
+            "id": "arcane_moth_edge_failure",
+            "label": "激情的漩涡[失败]",
+            "actionId": "work",
+            "description": "魔法走入歧途，恐惧淹没了我的喜悦。",
+            "effects": {
+                "dread": 1
+            }
+        },
+        {
+            "id": "arcane_moth_edge_runaway_link",
+            "label": "激情的漩涡[无休止！]",
+            "actionId": "work",
+            "warmup": 2,
+            "linked": [
+                {
+                    "id": "arcane_moth_edge_runaway",
+                    "chance": 30
+                }
+            ]
+        },
+        {
+            "id": "arcane_moth_edge_runaway",
+            "label": "激情的漩涡[无休止！]",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "moth": 15,
+                "edge": 1
+            },
+            "startdescription": "我为飞蛾所俘！漩涡愈加宽广！我的理性快被彻底淹没！",
+            "description": "漩涡终于渐渐闭合，但我已经很难正常的思考。我变了。[理性已转化为激情。]",
+            "slots": [
+                {
+                    "id": "reason",
+                    "label": "抛弃理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 10,
+                    "id": "arcane_moth_edge_failure"
+                }
+            ],
+            "aspects": {
+                "topassion": 1,
+                "fascinating": 1
+            },
+            "effects": {
+                "influenceheartc": 1
+            },
+            "warmup": 15,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "arcane_moth_edge_runaway",
+                    "chance": 30
+                }
+            ]
+        },
+        {
+            "label": "铸炉的赦罪[浩大]",
+            "id": "arcane_forge_grail_grand",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "forge": 15,
+                "grail": 1
+            },
+            "effects": {
+                "notoriety": 1,
+                "fascination": 1
+            },
+            "startdescription": "白日铸炉不断进行着毁坏与重塑。我将借<b>杯</b>召唤它的力量，用禁断的魔法重铸我衰败的肉体。[你正在告请高阶的<b>铸</b>之力，成功率极高，但依然存在风险。]",
+            "description": "我被以火焰重塑，以鲜血淬火。我的肉体重归强壮，但铸炉的辐光眩晕了我的灵魂……而且人们会在背后议论我。[“衰老”已转化回“健康”，但你将获得“入迷”与“邪名”。]",
+            "slots": [
+                {
+                    "id": "decrepitude",
+                    "label": "衰老",
+                    "required": {
+                        "decrepitude": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 10,
+                    "id": "arcane_forge_grail_failure"
+                }
+            ],
+            "aspects": {
+                "tohealth": 1,
+                "fascinating": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "铸炉的赦罪[中平]",
+            "id": "arcane_forge_grail_major",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "forge": 10,
+                "grail": 1
+            },
+            "effects": {
+                "notoriety": 1,
+                "fascination": 1
+            },
+            "startdescription": "白日铸炉不断进行着毁坏与重铸。我将借<b>杯</b>召唤它的力量，用禁断的魔法重铸我衰败的肉体。[你正在告请中阶的<b>铸</b>之力，仪式大概率会成功，使用至少15<b>铸</b>可提高成功率。]",
+            "description": "我被以火焰重塑，以鲜血淬火。我的肉体重归强壮，但铸炉的辐光眩晕了我的灵魂……而且人们会在背后议论我。[“衰老”已转化回“健康”，但你将获得“入迷”与“邪名”。]",
+            "slots": [
+                {
+                    "id": "decrepitude",
+                    "label": "衰老",
+                    "required": {
+                        "decrepitude": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 30,
+                    "id": "arcane_forge_grail_failure"
+                }
+            ],
+            "aspects": {
+                "tohealth": 1,
+                "fascinating": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "铸炉的赦罪[微小]",
+            "id": "arcane_forge_grail_minor",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "forge": 5,
+                "grail": 1
+            },
+            "effects": {
+                "notoriety": 1,
+                "fascination": 1
+            },
+            "startdescription": "白日铸炉不断进行着毁坏与重铸。我将借<b>杯</b>召唤它的力量，用禁断的魔法重铸我衰败的肉体。[你正在告请低阶的<b>铸</b>之力，仪式经常会失败，使用至少10<b>铸</b>可提高成功率。]",
+            "description": "我被以火焰重塑，以鲜血淬火。我的肉体重归强壮，但铸炉的辐光眩晕了我的灵魂……而且人们会在背后议论我。[“衰老”已转化回“健康”，但你将获得“入迷”与“邪名”。]",
+            "slots": [
+                {
+                    "id": "decrepitude",
+                    "label": "衰老",
+                    "required": {
+                        "decrepitude": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 70,
+                    "id": "arcane_forge_grail_failure"
+                }
+            ],
+            "aspects": {
+                "tohealth": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "arcane_forge_grail_failure",
+            "label": "铸炉的赦罪[失败！]",
+            "actionId": "work",
+            "description": "白日铸炉辜负了我，或我辜负了它。这个魔法带给我的只有危险和梦魇。",
+            "effects": {
+                "dread": 1,
+                "mystique": 1
+            }
+        },
+        {
+            "label": "结尾凄美[浩大]",
+            "id": "arcane_winter_lantern_grand",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "winter": 15,
+                "lantern": 1
+            },
+            "startdescription": "残阳带来凄美的结尾。这种迅捷而又凶险的魔法将为某人或某物带来终结，但你不可能确知其作用对象。该魔法也会杀死所有协助仪式的凡人或灵体。[你正在告请高阶的<b>冬</b>之力，成功率极高，虽说失败了或许还比较安全。]",
+            "description": "雪覆盖了我工作室的每一处。火焰失去了热度，但我无法熄灭它，也无法熄灭蜡烛那红色的光晕、金色的火焰和黑色的焰心。随着仪式进入高潮，某处的某人将迎来终结。",
+            "slots": [
+                {
+                    "id": "conclusion",
+                    "label": "终局",
+                    "required": {
+                        "mortal": 1,
+                        "summoned": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 10,
+                    "id": "arcane_winter_lantern_failure"
+                }
+            ],
+            "aspects": {
+                "killhunter": 1,
+                "killmortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "dread": 1,
+                "fascination": 1,
+                "notoriety": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "结尾凄美[中平]",
+            "id": "arcane_winter_lantern_major",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "winter": 10,
+                "lantern": 1
+            },
+            "startdescription": "残阳带来凄美的结尾。这种迅捷而又凶险的魔法将为某人或某物带来终结，但你不可能确知其作用对象。该魔法也会杀死所有协助仪式的凡人或灵体。[你正在告请中阶的<b>冬</b>之力，仪式大概率会成功，使用至少15<b>冬</b>可提高成功率。]",
+            "description": "雪覆盖了我工作室的每一处。火焰失去了热度，但我无法熄灭它，也无法熄灭蜡烛那红色的光晕、金色的火焰和黑色的焰心。随着仪式进入高潮，某处的某人将迎来终结。",
+            "slots": [
+                {
+                    "id": "conclusion",
+                    "label": "终局",
+                    "required": {
+                        "mortal": 1,
+                        "summoned": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 30,
+                    "id": "arcane_winter_lantern_failure"
+                }
+            ],
+            "aspects": {
+                "killhunter": 1,
+                "killmortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "dread": 1,
+                "fascination": 1,
+                "notoriety": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "结尾凄美[微小]",
+            "id": "arcane_winter_lantern_minor",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "winter": 5,
+                "lantern": 1
+            },
+            "startdescription": "残阳带来凄美的结尾。这种迅捷而又凶险的魔法将为某人或某物带来终结，但你不可能确知其作用对象。该魔法也会杀死所有协助仪式的凡人或灵体。[你正在告请低阶的<b>冬</b>之力，仪式经常会失败，使用至少10<b>铸</b>可提高成功率。]",
+            "description": "雪覆盖了我工作室的每一处。火焰失去了热度，但我无法熄灭它，也无法熄灭蜡烛那红色的光晕、金色的火焰和黑色的焰心。随着仪式进入高潮，某处的某人将迎来终结。",
+            "slots": [
+                {
+                    "id": "conclusion",
+                    "label": "终局",
+                    "required": {
+                        "mortal": 1,
+                        "summoned": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "chance": 30,
+                    "id": "arcane_winter_lantern_failure"
+                }
+            ],
+            "aspects": {
+                "killhunter": 1,
+                "killmortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "dread": 1,
+                "fascination": 1,
+                "notoriety": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "arcane_winter_lantern_failure",
+            "label": "结尾凄美[失败！]",
+            "actionId": "work",
+            "description": "残阳不会回应我的呼唤了。这项魔法只让我预见到了冬天。",
+            "effects": {
+                "dread": 1,
+                "mystique": 1
+            }
+        }
+    ]
+}

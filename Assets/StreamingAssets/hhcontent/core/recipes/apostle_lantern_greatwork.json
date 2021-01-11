@@ -1,0 +1,275 @@
+{
+    "recipes": [
+        {
+            "id": "ambition.apostlelantern.emitfuel",
+            "actionid": "work",
+            "label": "A Vision from the Illuminated One",
+            "requirements": {
+                "apostlelantern.mentor": 1
+            },
+            "startdescription": "The dream, again.",
+            "effects": {
+                "apostlelantern.pillarfuel": 1
+            }
+        },
+        {
+            "id": "work.apostlelantern.majorvictory.postbetrayal",
+            "actionid": "work",
+            "label": "And Yet, The Gate Opens Outwards",
+            "extantreqs": {
+                "apostlelantern.mentor": -1
+            },
+            "startdescription": "The Watchman is here in all his knifely radiance, but even he will stand aside for the Key of Days. I have closed the door in my eye, but I cannot forget. My path was ordained before I ever saw true light.  The Witnesses and I are prepared - prepared for the Glory to enter the Mansus from the other side. The dreams of the innocent are not so prepared. Hundreds of souls will never wake. There is always a price, and it is essential that our Illuminated One navigates; that they illuminate; that they are not compassionate.",
+            "requirements": {
+                "apostlelantern.pillar3": 1,
+                "apostlelantern.pillar4": 1,
+                "ingredientlanternf": 1,
+                "fragmentmothe": 1,
+                "toollanternf": 1,
+                "kleidouchos": 1,
+                "promise": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "ending": "majorlanternvictory"
+        },
+        {
+            "id": "work.apostlelantern.majorvictory",
+            "actionid": "work",
+            "label": "The Gate Opens Outwards",
+            "extantreqs": {
+                "apostlelantern.mentor": 1
+            },
+            "startdescription": "The Watchman is here in all his knifely radiance, but even he will stand aside for the Key of Days. The Witnesses and I are prepared - prepared for the Glory to enter the Mansus from the other side. The dreams of the innocent are not so prepared. Hundreds of souls will never wake. There is always a price, and it is essential that our Illuminated One navigates; that they illuminate; that they are not compassionate.",
+            "requirements": {
+                "apostlelantern.pillar3": 1,
+                "apostlelantern.pillar4": 1,
+                "ingredientlanternf": 1,
+                "fragmentmothe": 1,
+                "toollanternf": 1,
+                "kleidouchos": 1,
+                "promise": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "ending": "majorlanternvictory"
+        },
+        {
+            "id": "apostlelantern.createpillar2",
+            "actionid": "dream",
+            "label": "Locate the Crossroads",
+            "startdescription": "Behind the Peacock Door, Wormwards of the Chamber of Ways, two roads cross at the shadow of an oak.",
+            "description": "Here the blue light of the Mansus deepens to almost the blue of the evening sky. The roads stretch into the wall-haze and are forgotten, but here where they cross, the crow-shadow in the oak-shadow remembers.",
+            "requirements": {
+                "waypeacock": 1,
+                "apostlelantern.pillarfuel": 1
+            },
+            "effects": {
+                "apostlelantern.pillar2": 1,
+                "apostlelantern.pillarfuel": -1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "apostlelantern.createpillar3.hint2",
+            "actionid": "dream",
+            "label": "Seed the Allure?",
+            "startdescription": "Press the dream of a key into the soft soil of the crossroads. Bathe it the keenest radiance we can muster. What will grow?",
+            "requirements": {
+                "apostlelantern.pillar2": 1,
+                "apostlelantern.pillarfuel": 1
+            },
+            "hintonly": true
+        },
+        {
+            "id": "apostlelantern.createpillar3.hint1",
+            "actionid": "dream",
+            "label": "Seed the Allure?",
+            "startdescription": "When the dream of the key next comes, I will bring it to the Crossroads.",
+            "requirements": {
+                "apostlelantern.pillar2": 1
+            },
+            "hintonly": true
+        },
+        {
+            "id": "apostlelantern.createpillar3",
+            "actionid": "dream",
+            "label": "Seed the Allure",
+            "startdescription": "Press the dream of a key into the soft soil of the crossroads. Bathe it in the Watchman's light. A shining tree will uncoil, with a radiant harvest in its branches.",
+            "description": "This is the greater illumination our Illuminated One requires for the Watchman's enactment, but it has another purpose besides. As moths to a candle, as fish to a lure, so souls to light.",
+            "requirements": {
+                "apostlelantern.pillar2": 1,
+                "apostlelantern.pillarfuel": 1,
+                "influencelanterng": 1
+            },
+            "effects": {
+                "apostlelantern.pillar3": 1,
+                "apostlelantern.pillarfuel": -1,
+                "influencelanterng": -1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "apostlelantern.maintainpillar3.hint",
+            "actionid": "study",
+            "label": "Maintain the Allure?",
+            "startdescription": "The Allure will wither... unless it is watered with the correct colours.",
+            "requirements": {
+                "apostlelantern.pillar3": 1
+            },
+            "hintonly": true
+        },
+        {
+            "id": "apostlelantern.maintainpillar3",
+            "actionid": "study",
+            "label": "Maintain the Allure",
+            "startdescription": "In the blue dream of the Mansus, it is sometimes possible to carry light in one's cupped hands.",
+            "description": "I open my hands above the roots of the Allure, where it clings to the soil. New fruit swells in its branches, and the Crossroads is paler again.",
+            "requirements": {
+                "apostlelantern.pillar3": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "fascination": -1
+            },
+            "aspects": {
+                "renew.apostlelantern.pillar3": 1
+            },
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "apostlelantern.usepillar3",
+            "actionid": "talk",
+            "label": "Send a Maid-in-the-Mirror to lure a Witness",
+            "startdescription": "My Maid will lead the sleeping soul through the White Door, and bear them up the Ascent of Knives, until what is left of it sees the Allure at the Crossroads.",
+            "requirements": {
+                "spirit_winterd_edge": 1,
+                "apostlelantern.pillar3": 1
+            },
+            "linked": [
+                {
+                    "id": "apostlelantern.trycreatepillar4"
+                }
+            ]
+        },
+        {
+            "id": "apostlelantern.trycreatepillar4",
+            "actionid": "talk",
+            "label": "Send a Maid-in-the-Mirror to lure a Witness",
+            "startdescription": "The Maid murmurs the lesser elements of the Mantra of Ascent. She places her pale feet carefully on the stones of the road: they leave no print. The Witness' feet are spotted with blood.",
+            "description": "The Maid departs; the Witness remains, swaying like the tree-shadow, eyes fixed on the Allure, mouth healing softly. One of seven. They will never wake; that will interest the Suppression Bureau.",
+            "effects": {
+                "spirit_winterd_edge": -1,
+                "apostlelantern.pillar4.inprogress1": 1,
+                "notoriety": 1
+            },
+            "slots": [
+                {
+                    "id": "pillar4",
+                    "label": "Witnesses",
+                    "required": {
+                        "uqthirdwaywitnesses": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "id": "apostlelantern.upgradepillar4"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "apostlelantern.upgradepillar4",
+            "actionid": "talk",
+            "label": "Send a Maid-in-the-Mirror to lure a Witness",
+            "startdescription": "The Maid murmurs the lesser elements of the Mantra of Ascent. She places her pale feet carefully on the stones of the road: they leave no print. The Witness' feet are spotted with blood.",
+            "description": "The Maid departs; the Witness remains, swaying like the tree-shadow, eyes fixed on the Allure, mouth healing softly. One more. They will never wake; that will interest the Suppression Bureau.",
+            "requirements": {
+                "uqthirdwaywitnesses": 1
+            },
+            "aspects": {
+                "cloudwitnessesupgrade": 1
+            },
+            "effects": {
+                "spirit_winterd_edge": -1,
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "apostlelantern.pillar4.chat",
+            "actionid": "talk",
+            "label": "Speak with the Witnesses",
+            "startdescription": "Their mouths are closed, but their ears are open.",
+            "description": "Sometimes they look at me. Mostly, they look at the light. I see them sigh; I see them touch one another gently. They are still human. The light soaks into them, and into me. Perhaps I have helped maintain their attention.",
+            "requirements": {
+                "uqthirdwaywitnesses": 1
+            },
+            "effects": {
+                "fascination": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "apostlelantern.attemptrecruitkleidouchos.sulochana",
+            "actionid": "talk",
+            "label": "Ask Sulochana about the Key",
+            "startdescription": "'The Key of Days.' Sulochana gnaws on her lip. Her teeth glint in the lamp-light. 'Yes, I have a relevant sister. But I'm not going to make that introduction. Ask someone on the other side of the Wood - someone who cares about the Glory.'",
+            "requirements": {
+                "sulochana": 1,
+                "apostlelantern.pillarfuel": 1
+            }
+        },
+        {
+            "id": "apostlelantern.recruitkleidouchos.teresa",
+            "actionid": "talk",
+            "label": "Ask Teresa about the Dream of the Key",
+            "startdescription": "'So my ascent-fellow has set their sights still higher, hm? They may regret it.' Teresa turns the imaginary key in her hands. 'A dream of the Key of Days. The dream is false; the Key is real. But it's not a thing for you or me to touch.'",
+            "description": "'I know the Key-holder - the one you want. I haven't spoken with her in some time - I don't often speak to Ligeians - but as Lantern-long, I owe courtesy to your mentor. I'll send for your Key-holder.'",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "apostlelantern.pillarfuel": 1
+            },
+            "effects": {
+                "kleidouchos.enroute": 1,
+                "apostlelantern.pillarfuel": -1,
+                "spirit_lanterne_secret": -1
+            }
+        },
+        {
+            "id": "apostlelantern.persuadekleidouchos",
+            "actionid": "talk",
+            "label": "Speak to the Woman in Black-and-White",
+            "startdescription": "'You need me to assist you with the Tricuspid Gate, yes, that is correct? In its ultimate mode? With my Key of Days? Yes, yes, I am aware. I do not like to travel in ignorance.'",
+            "description": "'Opportunities of this nature are so rare - so very rare. I will be delighted to attend your Long's ascension, little puppet. Tell me where. Tell me when. I shall enjoy your city until then.'",
+            "requirements": {
+                "kleidouchos": 1,
+                "promise": -1
+            },
+            "mutations": [
+                {
+                    "filter": "kleidouchos",
+                    "mutate": "promise",
+                    "level": 1
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "apostlelantern.kleidouchos.persuaded.hint",
+            "actionid": "talk",
+            "label": "Speak to the Woman in Black-and-White",
+            "startdescription": "'When you're ready. Take your time. I still have skins to glean.'",
+            "requirements": {
+                "kleidouchos": 1,
+                "promise": 1
+            },
+            "hintonly": true
+        }
+    ]
+}

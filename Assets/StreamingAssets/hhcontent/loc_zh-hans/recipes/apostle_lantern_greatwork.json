@@ -1,0 +1,275 @@
+{
+    "recipes": [
+        {
+            "id": "ambition.apostlelantern.emitfuel",
+            "actionId": "work",
+            "label": "沐光明者所见的幻象",
+            "requirements": {
+                "apostlelantern.mentor": 1
+            },
+            "startdescription": "又是这个梦。",
+            "effects": {
+                "apostlelantern.pillarfuel": 1
+            }
+        },
+        {
+            "id": "work.apostlelantern.majorvictory.postbetrayal",
+            "actionId": "work",
+            "label": "然而大门向外敞开",
+            "extantreqs": {
+                "apostlelantern.mentor": -1
+            },
+            "startdescription": "守夜人在此堂堂地照射出刀子般的光辉，然而哪怕是他，也要给白日之钥让位。我已经关闭了我眼瞳中的门，但我无法忘记。我的前路在我看到真实的光前便已注定。见证者和我已准备好——准备好去到辉光，从另一侧进入漫宿。那些无辜者的梦则毫无准备。成百条灵魂将永不再醒来。总要付出一些代价的，要紧的是令我们的沐光明者指引前路，令他照明驱暗，令他无有怜悯之心。",
+            "requirements": {
+                "apostlelantern.pillar3": 1,
+                "apostlelantern.pillar4": 1,
+                "ingredientlanternf": 1,
+                "fragmentmothe": 1,
+                "toollanternf": 1,
+                "kleidouchos": 1,
+                "promise": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "ending": "majorlanternvictory"
+        },
+        {
+            "id": "work.apostlelantern.majorvictory",
+            "actionId": "work",
+            "label": "大门向外敞开",
+            "extantreqs": {
+                "apostlelantern.mentor": 1
+            },
+            "startdescription": "守夜人在此堂堂地照射出刀子般的光辉，然而哪怕是他，也要给白日之钥让位。见证者和我已准备好——准备好去到辉光，从另一侧进入漫宿。那些无辜者的梦则毫无准备。成百条灵魂将永不再醒来。总要付出一些代价的，要紧的是令我们的沐光明者指引前路，令他照明驱暗，令他无有怜悯之心。",
+            "requirements": {
+                "apostlelantern.pillar3": 1,
+                "apostlelantern.pillar4": 1,
+                "ingredientlanternf": 1,
+                "fragmentmothe": 1,
+                "toollanternf": 1,
+                "kleidouchos": 1,
+                "promise": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "ending": "majorlanternvictory"
+        },
+        {
+            "id": "apostlelantern.createpillar2",
+            "actionId": "dream",
+            "label": "找到十字路",
+            "startdescription": "在孔雀之门，道路之室朝向蠕虫的开口后，两条路在一颗橡树的阴影处交汇。",
+            "description": "漫宿的蓝色光线在这里愈加深重，几至暗如暮空。这两条路延伸进雾墙并遭到遗忘，但于它们相交的此处，橡树影中的鸦影会铭记。",
+            "requirements": {
+                "waypeacock": 1,
+                "apostlelantern.pillarfuel": 1
+            },
+            "effects": {
+                "apostlelantern.pillar2": 1,
+                "apostlelantern.pillarfuel": -1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "apostlelantern.createpillar3.hint2",
+            "actionId": "dream",
+            "label": "种下诱饵？",
+            "startdescription": "将关于钥匙的梦境按进十字路松软的土壤。用我们能收集到的最鲜烈的光照沐泽它。会生长出什么来呢？",
+            "requirements": {
+                "apostlelantern.pillar2": 1,
+                "apostlelantern.pillarfuel": 1
+            },
+            "hintonly": true
+        },
+        {
+            "id": "apostlelantern.createpillar3.hint1",
+            "actionId": "dream",
+            "label": "种下诱饵？",
+            "startdescription": "等到下一次关于钥匙的梦境来临，我便将其带去十字路。",
+            "requirements": {
+                "apostlelantern.pillar2": 1
+            },
+            "hintonly": true
+        },
+        {
+            "id": "apostlelantern.createpillar3",
+            "actionId": "dream",
+            "label": "种下诱饵",
+            "startdescription": "将关于钥匙的梦境按进十字路松软的土壤。用守夜人的光沐泽它。一颗闪光的树将会抽芽生发，枝头遍结发光的硕果。",
+            "description": "这是我们的沐光明者为扮演守夜人所需的光明，不过它还有此外的另一功用。如烛之于蛾，如饵之于鱼，光之于灵魂亦然。",
+            "requirements": {
+                "apostlelantern.pillar2": 1,
+                "apostlelantern.pillarfuel": 1,
+                "influencelanterng": 1
+            },
+            "effects": {
+                "apostlelantern.pillar3": 1,
+                "apostlelantern.pillarfuel": -1,
+                "influencelanterng": -1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "apostlelantern.maintainpillar3.hint",
+            "actionId": "study",
+            "label": "养护诱饵？",
+            "startdescription": "诱饵将枯萎……除非给它浇灌正确的颜色。",
+            "requirements": {
+                "apostlelantern.pillar3": 1
+            },
+            "hintonly": true
+        },
+        {
+            "id": "apostlelantern.maintainpillar3",
+            "actionId": "study",
+            "label": "养护诱饵",
+            "startdescription": "在身处漫宿的蓝色梦境中，人有时可以两手捧住光将其携往别处。",
+            "description": "我在诱饵的根茎之上，其扎根于泥土的地方撒开手。新的果子在枝头结实，而十字路再次变得更浅淡了一些。",
+            "requirements": {
+                "apostlelantern.pillar3": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "fascination": -1
+            },
+            "aspects": {
+                "renew.apostlelantern.pillar3": 1
+            },
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "apostlelantern.usepillar3",
+            "actionId": "talk",
+            "label": "遣镜中少女诱来一名见证者",
+            "startdescription": "我所遣的少女会将睡梦中的灵魂引入纯白之门，促使他爬上刀刃阶梯，直到十字路上的诱饵映入眼帘。",
+            "requirements": {
+                "spirit_winterd_edge": 1,
+                "apostlelantern.pillar3": 1
+            },
+            "linked": [
+                {
+                    "id": "apostlelantern.trycreatepillar4"
+                }
+            ]
+        },
+        {
+            "id": "apostlelantern.trycreatepillar4",
+            "actionId": "talk",
+            "label": "遣镜中少女诱来一名见证者",
+            "startdescription": "少女喃喃念动攀升梵咒中的次级咒语。她小心地把苍白的双脚落在路石之上：没有足印留下。见证者的双脚沾着血迹。",
+            "description": "少女离去；见证者留下，像树影般摇摆，眼睛紧盯诱饵，嘴巴悄悄地愈阖。寻七已得一。他永远不会再醒转，防剿局会对此感兴趣的。",
+            "effects": {
+                "spirit_winterd_edge": -1,
+                "apostlelantern.pillar4.inprogress1": 1,
+                "notoriety": 1
+            },
+            "slots": [
+                {
+                    "id": "pillar4",
+                    "label": "见证者们",
+                    "required": {
+                        "uqthirdwaywitnesses": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "id": "apostlelantern.upgradepillar4"
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "apostlelantern.upgradepillar4",
+            "actionId": "talk",
+            "label": "遣镜中少女诱来一名见证者",
+            "startdescription": "少女喃喃念动攀升梵咒中的次级咒语。她小心地把苍白的双脚落在路石之上：没有足印留下。见证者的双脚沾着血迹。",
+            "description": "少女离开；见证者留下，像树影般摇摆，眼睛紧盯诱饵，嘴巴悄然愈合。寻七又得一。他永远不会再醒转，防剿局会对此感兴趣的。",
+            "requirements": {
+                "uqthirdwaywitnesses": 1
+            },
+            "aspects": {
+                "cloudwitnessesupgrade": 1
+            },
+            "effects": {
+                "spirit_winterd_edge": -1,
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "apostlelantern.pillar4.chat",
+            "actionId": "talk",
+            "label": "与见证者们交谈",
+            "startdescription": "他们的嘴已阖闭，耳朵却张开。",
+            "description": "有时他们望向我。大部分时间他们望向光。我看到他们叹息，我看到他们温柔地互相抚摸。他们仍是人类。光浸透他们，也浸透我。或许我起到了帮助维持他们注意力之用。",
+            "requirements": {
+                "uqthirdwaywitnesses": 1
+            },
+            "effects": {
+                "fascination": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "apostlelantern.attemptrecruitkleidouchos.sulochana",
+            "actionId": "talk",
+            "label": "向苏洛恰那询问钥匙",
+            "startdescription": "“白日之钥”，苏洛恰那咬着嘴唇说。她的牙齿在灯光下微微闪烁。“是，我有一个与它有牵连的姐妹。但我不会给你引荐。去林地另一侧找别人问问吧——找一个在意辉光的人。”",
+            "requirements": {
+                "sulochana": 1,
+                "apostlelantern.pillarfuel": 1
+            }
+        },
+        {
+            "id": "apostlelantern.recruitkleidouchos.teresa",
+            "actionId": "talk",
+            "label": "向特蕾莎询问关于钥匙的梦境",
+            "startdescription": "“也就是说伴我升天的伙伴眼光比我还高，嗯？此人说不定会后悔的。”特蕾莎拧转她手上想象中的钥匙。“一个关于白日之钥的梦境；梦为假，钥匙为真。但那不是你和我能碰的东西。”",
+            "description": "“我知道持钥匙者——你要找的那个。我有一阵没和她讲过话了——我不常和丽姬亚成员讲话——不过作为灯之长生者，我得给你的导师一个面子。我会遣人找来那个持钥匙者。”",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "apostlelantern.pillarfuel": 1
+            },
+            "effects": {
+                "kleidouchos.enroute": 1,
+                "apostlelantern.pillarfuel": -1,
+                "spirit_lanterne_secret": -1
+            }
+        },
+        {
+            "id": "apostlelantern.persuadekleidouchos",
+            "actionId": "talk",
+            "label": "与黑白双色的女人交谈",
+            "startdescription": "“你需要我帮你进入三尖之门，是这样吧？在其处于终极态时？用我的白日之钥？是的，是的，我明白。我不喜欢一无所知地动身上路。”",
+            "description": "“这种性质的机会来得相当罕见——非常地罕见。我很高兴和你的长生者一起升天，小木偶。告诉我时间。在那之前我先去你的城市享受一番。”",
+            "requirements": {
+                "kleidouchos": 1,
+                "promise": -1
+            },
+            "mutations": [
+                {
+                    "filter": "kleidouchos",
+                    "mutate": "promise",
+                    "level": 1
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "apostlelantern.kleidouchos.persuaded.hint",
+            "actionId": "talk",
+            "label": "与黑白双色的女人交谈",
+            "startdescription": "“等你准备好再说。不用急。我还要再收捡一下皮肤。”",
+            "requirements": {
+                "kleidouchos": 1,
+                "promise": 1
+            },
+            "hintonly": true
+        }
+    ]
+}

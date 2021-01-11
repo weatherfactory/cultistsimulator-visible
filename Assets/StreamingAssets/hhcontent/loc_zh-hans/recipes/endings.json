@@ -1,0 +1,52 @@
+{
+    "recipes": [
+        {
+            "id": "deathofthebody",
+            "label": "健康已耗尽",
+            "actionId": "healthend",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1
+            },
+            "effects": {},
+            "startdescription": "我的生命正在流失——",
+            "description": "他们会在哪里将我找见呢？我不在此处。",
+            "warmup": 0,
+            "craftable": false,
+            "ending": "deathofthebody",
+            "signalEndingFlavour": "Melancholy"
+        },
+        {
+            "id": "forlornblooddeathofthebody",
+            "label": "健康已耗尽",
+            "actionId": "healthend",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1,
+                "apostlegrail.pillar2": -1
+            },
+            "effects": {},
+            "startdescription": "骨子里的痼疾压倒了我。除非我能振作起来，或者品尝我们愉悦者的血，否则一切都将结束。",
+            "description": "他们会在哪里将我找见呢？我不在此处。",
+            "warmup": 0,
+            "craftable": false,
+            "ending": "deathofthebody",
+            "signalEndingFlavour": "Melancholy"
+        },
+        {
+            "id": "workvictory",
+            "label": "我会在舒适的生活中安顿下来。",
+            "actionId": "workwin",
+            "requirements": {
+                "passion": 1
+            },
+            "effects": {},
+            "startdescription": "我已经放弃了我的梦想。我会过得很好的。",
+            "description": "结束了",
+            "warmup": 0,
+            "craftable": false,
+            "ending": "workvictory",
+            "burnimage": "retirement"
+        }
+    ]
+}

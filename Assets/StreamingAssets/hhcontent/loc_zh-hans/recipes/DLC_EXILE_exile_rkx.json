@@ -1,0 +1,1319 @@
+{
+	"recipes": [
+		{
+			"id": "rkx.spawn.escort",
+			"actionId": "rkx",
+			"label": "并非孤身",
+			"startdescription": "事不为单。[你的敌手总是会派人对付你你……除非你在地图之疆遇见他。]",
+			"extantreqs": {
+				"rkx.foe": 1,
+				"rkx.underlings.blocker": -1
+			},
+			"effects": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.first",
+			"actionId": "rkx",
+			"label": "在你背后",
+			"startdescription": "这人认得我的脸，我也认得他的脸。",
+			"effects": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 1,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.ahead",
+			"actionId": "rkx",
+			"label": "清算人先至",
+			"startdescription": "清算人猜测我可能会来这里。他们在这个城市里已经有了线人。",
+			"requirements": {
+				"rkx.infected": 1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"extantreqs": {
+				"rkx.underlings.blocker": -1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.traces",
+			"actionId": "rkx",
+			"label": "太多痕迹",
+			"startdescription": "我留下了太多的痕迹。清算人跟着我到了这里。[如果你在场上上有不止一个痕迹，它通常会吸引清算人。]",
+			"extantreqs": {
+				"trace": 2
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.trace",
+			"actionId": "rkx",
+			"label": "转角一瞥",
+			"startdescription": "我很小心…但不够小心。[场上的一个痕迹有时也会吸引清算人。]",
+			"extantreqs": {
+				"trace": 1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.no.trace",
+			"actionId": "rkx",
+			"label": "清算人已至！",
+			"startdescription": "追兵在这儿。我一直很小心。这一定是运气太差了。[偶尔，即使没有痕迹，清算人也会搜索某个城市。]",
+			"extantreqs": {
+				"trace": -1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.selector",
+			"actionId": "rkx",
+			"label": "搜索",
+			"startdescription": "@#rkx.underboss|我知道这些迹象。一个清算人小头目进入了城市。我的敌手也不会太远。#rkx.enforcer|#rkx.operative|我在人群中看到了一张熟悉的面孔——太熟悉了。#|我已经学会听从自己的直觉，而直觉告诉我，有人在与我作对。我的脖子后面有一种刺痛的感觉。有人在找我。@  [场上的痕迹越多，你的追兵就能越快地发现你。]",
+			"deckeffect": {
+				"rkx.events": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.underboss.slain"
+				},
+				{
+					"id": "rkx.reckoner.slain"
+				},
+				{
+					"id": "rkx.escort.attack"
+				},
+				{
+					"id": "rkx.underboss.aggressive.obscured"
+				},
+				{
+					"id": "rkx.underboss.aggressive.violent",
+					"chance": 50
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning"
+				},
+				{
+					"id": "rkx.underboss.reinforcements"
+				},
+				{
+					"id": "rkx.underboss.search"
+				},
+				{
+					"id": "rkx.enforcer.aggressive.obscured"
+				},
+				{
+					"id": "rkx.enforcer.aggressive"
+				},
+				{
+					"id": "rkx.enforcer.reinforcements"
+				},
+				{
+					"id": "rkx.enforcer.search"
+				},
+				{
+					"id": "rkx.operative.aggressive.obscured"
+				},
+				{
+					"id": "rkx.operative.aggressive"
+				},
+				{
+					"id": "rkx.operative.reinforcements"
+				},
+				{
+					"id": "rkx.operative.search"
+				},
+				{
+					"id": "rkx.scouts.aggressive.reinforcements"
+				},
+				{
+					"id": "rkx.scouts.aggressive.search"
+				},
+				{
+					"id": "rkx.scouts.passive.hesitate"
+				},
+				{
+					"id": "rkx.scouts.passive.leave"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.slain",
+			"actionId": "rkx",
+			"label": "死于伤口",
+			"startdescription": "这个小头目完蛋了。",
+			"requirements": {
+				"rkx.underboss": 1
+			},
+			"extantreqs": {
+				"damage.underling": 4
+			},
+			"purge": {
+				"damage.underling": 5
+			}
+		},
+		{
+			"id": "rkx.reckoner.slain",
+			"actionId": "rkx",
+			"label": "死于伤口",
+			"startdescription": "这个清算人完蛋了。",
+			"requirements": {
+				"rkx.underboss": -1,
+				"rkx.rank": 1
+			},
+			"extantreqs": {
+				"damage.underling": 2
+			},
+			"purge": {
+				"damage.underling": 3
+			}
+		},
+		{
+			"id": "rkx.escort.attack",
+			"actionId": "rkx.escort",
+			"label": "只有片刻的喘息",
+			"startdescription": "我那敌手的走狗不久将对我发动另一场攻击—— ",
+			"requirements": {
+				"rkx.enforcer": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive.obscured"
+				},
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "搜查阴影",
+			"startdescription": "一个清算人小头目正在找我。目前他们没发现我。但我的神秘面纱正逐渐褪去。",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"effects": {
+				"obscurity": -1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "隐秘",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "搜查阴影",
+			"startdescription": "一个清算人刺客正在找我。目前他们没发现我。但我的神秘面纱正逐渐褪去。",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "隐秘",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				"obscurity": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "搜查阴影",
+			"startdescription": "一个清算人探子在这里行动。目前他们没发现我。但我的神秘面纱正逐渐褪去。",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "隐秘",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				"obscurity": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.violent",
+			"actionId": "rkx",
+			"label": "一场袭击！",
+			"startdescription": "小头目开始直接攻击我！[清算人的直接攻击如果成功则会造成伤口。他们通常会成功，除非你提供一张牌来保护自己。]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Defence",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"decade.stolen": 1
+					},
+					"forbidden": {
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "rkx.bossondeck.attack"
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy"
+				},
+				{
+					"id": "rkx.underling.distracted"
+				},
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning",
+			"actionId": "rkx",
+			"label": "盗窃或破坏",
+			"startdescription": "小头目在觊觎我的资产。[通过与激进分子，黑社会，统治者或者官方的关系，你可以抢占先机。否则，他们会随机破坏你的一个资产。]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Defence",
+					"description": "Spend a Connection:",
+					"required": {
+						"connection.ruler": 1,
+						"connection.underworld": 1,
+						"connection.radicals": 1,
+						"connection.official": 1,
+						"decade.stolen": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.bossondeck.underboss.cunning"
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning.defended"
+				}
+			],
+			"warmup": 30,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy"
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning.defended",
+			"actionId": "rkx",
+			"label": "正确的地点，正确的朋友",
+			"startdescription": "我请人帮忙。那位小头目会收到一份棘手的礼物。",
+			"requirements": {
+				"connection": 1
+			},
+			"effects": {
+				"connection": -1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.wounded",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning.undefended",
+			"actionId": "rkx",
+			"label": "重挫",
+			"startdescription": "@#connection|小头目离间了我和盟友。#space|#portable|我的一处房产神秘地被烧毁了。#|东西丢了!一定是小头目或他的爪牙闯了进来。小头目想抢走我的东西。@",
+			"slots": [
+				{
+					"id": "asset",
+					"label": "Target",
+					"required": {
+						"asset": 1
+					},
+					"greedy": true
+				}
+			],
+			"requirements": {
+				"connection.ruler": -1,
+				"connection.underworld": -1,
+				"connection.radicals": -1
+			},
+			"warmup": 10,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.reinforcements",
+			"actionId": "rkx",
+			"label": "增援！",
+			"startdescription": "一个清算人小头目有证据证明我在这里，但他们还没有对我采取行动。这只能说明他们已经派人去叫他们的上司了……我的敌手。[当场上有五个痕迹时，敌手就有可能出现。]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 5,
+				"rkx.foe": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.search",
+			"actionId": "rkx",
+			"label": "扩大搜索……",
+			"startdescription": "一个清算人小头目正在收集我的行踪和我的信息。",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.aggressive",
+			"actionId": "rkx",
+			"label": "一场袭击！",
+			"startdescription": "刺客正在向我进攻！[清算人的直接攻击如果成功则会造成伤口。他们通常会成功，除非你提供一张牌来保护自己。]",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Defence",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"decade.stolen": 1
+					},
+					"forbidden": {
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"warmup": 40,
+			"alt": [
+				{
+					"id": "rkx.bossondeck.attack"
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy",
+					"chance": 30
+				},
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.underling.distracted"
+				},
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.reinforcements",
+			"actionId": "rkx",
+			"label": "增援！",
+			"startdescription": "一个清算人刺客有证据证明我在这里，但他们还没有对我采取行动。这只能说明他们已经派人去叫他们的上司了……[当场上有三个痕迹时，小头目就有可能出现。]",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 3
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.search",
+			"actionId": "rkx",
+			"label": "扩大搜索……",
+			"startdescription": "一个清算人刺客正在收集更多的线索。他们可能很快就会召集援军。",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive",
+			"actionId": "rkx",
+			"label": "盗窃或破坏",
+			"startdescription": "清算人在追查我的资产。[通过与激进分子，黑社会，统治者或者官方的关系，你可以抢占先机。否则，他们会随机破坏你的一个资产。]",
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Defence",
+					"description": "Spend a Connection:",
+					"required": {
+						"connection.ruler": 1,
+						"connection.underworld": 1,
+						"connection.radicals": 1,
+						"connection.official": 1,
+						"decade.stolen": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.bossondeck.operative"
+				},
+				{
+					"id": "rkx.operative.aggressive.defended"
+				}
+			],
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy",
+					"chance": 30
+				},
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.operative.aggressive.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.defended",
+			"actionId": "rkx",
+			"label": "正确的地点，正确的朋友",
+			"startdescription": "我请人帮忙。那位探子会收到一份棘手的惊喜。",
+			"requirements": {
+				"connection": 1
+			},
+			"effects": {
+				"connection": -1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.wounded",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.undefended",
+			"actionId": "rkx",
+			"label": "重挫",
+			"startdescription": "@#connection|清算人探子离间了我和盟友。#space|#portable|我的一处房产神秘地被烧毁了。#|东西丢了!一定是那探子或他的爪牙闯了进来。那探子想抢走我的东西。@",
+			"slots": [
+				{
+					"id": "asset",
+					"label": "Target",
+					"required": {
+						"asset": 1
+					},
+					"greedy": true
+				}
+			],
+			"requirements": {
+				"connection.ruler": -1,
+				"connection.underworld": -1,
+				"connection.radicals": -1
+			},
+			"warmup": 10,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.reinforcements",
+			"actionId": "rkx",
+			"label": "增援！",
+			"startdescription": "一个清算人探子有证据证明我在这里，但他们还没有对我采取行动。这只能说明他们已经派人去叫他们的上司了……[当场上有三个痕迹时，小头目就有可能出现。]",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 3
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.search",
+			"actionId": "rkx",
+			"label": "扩大搜索……",
+			"startdescription": "一个清算人探子正在收集更多的线索。他们可能很快就会召集援军。",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.aggressive.reinforcements",
+			"actionId": "rkx",
+			"label": "增援！",
+			"startdescription": "清算人有证据证明我在这里。他们正在呼叫帮手来对付我。",
+			"requirements": {
+				"rkx.event.aggressive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": 1
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.aggressive.search",
+			"actionId": "rkx",
+			"label": "扩大搜索……",
+			"startdescription": "清算人正在收集更多的线索。他们可能很快就会召集援军。",
+			"requirements": {
+				"rkx.event.aggressive": 1,
+				"rkx.rank": -1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.passive.hesitate",
+			"actionId": "rkx",
+			"label": "犹豫",
+			"startdescription": "我的那些追兵，有的小心谨慎，有的胆小怕事，有的不确定证据，他们到现在还没有采取任何行动。",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.passive.leave",
+			"actionId": "rkx",
+			"label": "未被发现！",
+			"startdescription": "我的追兵以为我不在这里。当然，他们可能还会回来。",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": -1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"haltverb": {
+				"rkx": 1
+			},
+			"warmup": 50
+		},
+		{
+			"id": "rkx.underling.distracted",
+			"actionId": "rkx",
+			"label": "成功转移注意力！",
+			"startdescription": "……",
+			"requirements": {
+				"distraction": 1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.attack.success",
+			"actionId": "rkx",
+			"label": "我受伤了！",
+			"startdescription": "我的敌人把我打伤了！我不能一直保持警惕。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"associate": 1
+						}
+					}
+				}
+			],
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.success",
+			"actionId": "spit.underling.attack",
+			"label": "我受伤了！",
+			"startdescription": "我需要时间和保持安全来疗伤。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"wound.exile": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.underling.attack.failure",
+			"actionId": "rkx",
+			"label": "我的追兵被阻拦了",
+			"startdescription": "@#lore|我用我的技能把追兵拒之门外。#weapon|#associate|我用武器把追兵拒之门外。#op.cold|#op.heat|一个朋友保护了我。#op.sea|#op.faith|夜雪落下。我让追兵在雪堆里挣扎。#op.cats|#op.height|我带着追兵在正午的阳光下跳舞，直到他们热得头昏脑胀。#op.horned|#op.wolf|我在港口的喧闹中甩掉了追兵。#op.flowermaker|#ligeian|清算人对圣地毕恭毕敬。而我已趁机溜走。#|上校——保护我那敌手的司辰——一直不喜欢猫。在我的敌人中，对猫的警惕已经成为一种强大的迷信。追兵还在犹豫，而我已趁机溜走。我藏在鲜有人烟的高处，追兵被我甩在背后。清算人对司辰抱有俱意。这里的阴影因双角斧而变得尖锐。追兵还在犹豫，而我已趁机溜走。众人皆畏裂分之狼，狼的气息充满此地。追兵不敢踏入他的阴影，而我已趁机溜走。制花人的气息让此处香味浓郁。这里的空气把我的追兵弄得晕头转向，而我已趁机溜走。一种贪婪在这里蠕动——一种让清算人极其恐惧的贪婪。…我很走运。[有时清算人的攻击也会失败。]@",
+			"alt": [
+				{
+					"id": "spit.underling.attack.failure.lore",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"lore": 1
+						}
+					}
+				},
+				{
+					"id": "spit.underling.attack.failure.weapon",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"weapon": 1
+						}
+					}
+				},
+				{
+					"id": "spit.underling.attack.failure.associate",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"associate": 1
+						}
+					}
+				}
+			],
+			"effects": {
+				"distraction": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.underling.attack.failure.lore",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"lore": 1
+			},
+			"label": "大惊小怪",
+			"startdescription": "我击退了攻击者，但它吸引了更多的注意力。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.failure.weapon",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"weapon": 1
+			},
+			"label": "大惊小怪",
+			"startdescription": "我击退了攻击者，但它吸引了更多的注意力。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.failure.associate",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"associate": 1
+			},
+			"label": "患难之交",
+			"startdescription": "我的伙伴为我抵挡他们！这是他们的好意，但现在清算人暴徒有了更多的线索来追踪我。",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.lookfurtherafield",
+			"actionId": "rkx",
+			"label": "清算人正在侦察更远的地方",
+			"startdescription": "如果我的追兵在这里找不到我，他们可能会去其他城市，尤其是那些我感兴趣的城市。[清算人有时会比你先到达目的地。如果你把资金送到那里，这种情况更有可能发生。]",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": 1
+			},
+			"extantreqs": {
+				"trace": -1
+			},
+			"slots": [
+				{
+					"id": "destination",
+					"label": "A Lead?",
+					"required": {
+						"destination": 1
+					},
+					"forbidden": {
+						"rkx.infected": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.infect.becauseprep",
+					"chance": 70
+				},
+				{
+					"id": "rkx.infect.noprep",
+					"chance": 30
+				},
+				{
+					"id": "rkx.notfollowinglead"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.becauseprep",
+			"actionId": "rkx",
+			"label": "跟随钱的去向",
+			"startdescription": "我的追兵一直在追踪我汇走的钱。",
+			"requirements": {
+				"destination": 1,
+				"cash.sent": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "rkx.infected",
+					"mutationLevel": 1
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.infect.demote"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.noprep",
+			"actionId": "rkx",
+			"label": "马虎眼？",
+			"startdescription": "我的追兵把注意力转移到了别处——为什么？",
+			"requirements": {
+				"destination": 1,
+				"cash.sent": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "rkx.infected",
+					"mutationLevel": 1
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.infect.demote"
+				}
+			]
+		},
+		{
+			"id": "rkx.notfollowinglead",
+			"actionId": "rkx",
+			"label": "清算人坚信不疑",
+			"startdescription": "我的追兵确信我还在这里。",
+			"alt": [
+				{
+					"id": "spit.uninfected.destination",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"destination": 1
+						}
+					}
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.demote",
+			"actionId": "rkx",
+			"label": "清算人正在减少",
+			"startdescription": "现在城里的清算人已不多了。",
+			"aspects": {
+				"rkx.demote": 1
+			},
+			"comments": "If we infected a destination in the previous step, spit the destination out",
+			"alt": [
+				{
+					"id": "spit.infected.destination",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"rkx.infected": 1
+						}
+					}
+				}
+			],
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "spit.infected.destination",
+			"actionId": "spit.infected.destination",
+			"label": "前方危险",
+			"startdescription": "如果我到那去，我可能会在那里遇到我的追兵。",
+			"requirements": {
+				"rkx.infected": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.uninfected.destination",
+			"actionId": "spit.uninfected.destination",
+			"label": "固执不变",
+			"startdescription": "我的追兵确信我还在这里。他们决定不去那个地方。",
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.wounded",
+			"actionId": "spit.underling.wounded",
+			"label": "血迹",
+			"startdescription": "一个追兵受伤了！",
+			"effects": {
+				"wound.underling": 1
+			},
+			"warmup": 1,
+			"linked": [
+				{
+					"id": "use.attack.underling.slain"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.bribe.greedy",
+			"actionId": "rkx",
+			"label": "更高的代价",
+			"startdescription": "'@#rkx.underboss|'严肃点。'\n#rkx.enforcer|'两倍。'\n#rkx.operative|'继续……'\n#|'继续……'@ [再过十年，你就能贿赂成功。在这之前，你的追兵会一直来找你麻烦。']",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"slots": [
+				{
+					"id": "more",
+					"label": "More",
+					"description": "要么加倍，要么走开。",
+					"required": {
+						"decade.stolen": 1
+					}
+				}
+			],
+			"effects": {
+				"decade.stolen": -1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.bribe.success",
+			"actionId": "rkx",
+			"label": "贿赂成功",
+			"startdescription": "'@#rkx.underboss|'你知道的，我一直都欣赏你。如果这位老人遇到意外……记得联系我。'\n#rkx.enforcer|'成交。这是从未有过的事情。'\n#rkx.operative|'你还不赖。当老人最后赶上来的时候……我给你倒上一杯。'\n#|'幸好你没来过，对吧？'@",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"rkx.rank": -1,
+				"rkx.event": -1,
+				"trail.false.bribe": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 10
+		},
+		{
+			"id": "rkx.bossondeck.attack",
+			"actionId": "rkx",
+			"label": "为时已晚",
+			"startdescription": "敌手在此，没有人敢对我视而不见。",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.bossondeck.underboss.cunning",
+			"actionId": "rkx",
+			"label": "为时已晚",
+			"startdescription": "敌手在此，没有人敢对我视而不见。",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underboss.aggressive.cunning.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.bossondeck.operative",
+			"actionId": "rkx",
+			"label": "为时已晚",
+			"startdescription": "敌手在此，没有人敢对我视而不见。",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.operative.aggressive.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.reset",
+			"actionId": "rkx",
+			"label": "接下来？",
+			"startdescription": "接下来？",
+			"effects": {
+				"rkx.event": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		}
+	]
+}

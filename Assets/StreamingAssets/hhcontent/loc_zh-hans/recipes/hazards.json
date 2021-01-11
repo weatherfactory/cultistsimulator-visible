@@ -1,0 +1,746 @@
+{
+    "recipes": [
+        {
+            "id": "despairrisk",
+            "label": "阴暗思绪",
+            "actionId": "despair",
+            "requirements": {},
+            "effects": {},
+            "slots": [
+                {
+                    "id": "Shadows",
+                    "label": "阴影",
+                    "required": {
+                        "inducesdespair": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "诸事不顺。我须得小心，不让疑虑滋生。[“恐惧”可能引发成长完全的“绝望”。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "despairactive",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdefeated",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "despairactive",
+            "label": "绝望",
+            "actionId": "despair",
+            "requirements": {
+                "inducesdespair": 1
+            },
+            "startdescription": "绝望似狼，吞噬念想。[你可以投入“安逸”来战胜<b>绝望</b>，否则若“恐惧”累积至3份，你将被它毁灭。]",
+            "description": ".",
+            "warmup": 60,
+            "slots": [
+                {
+                    "id": "Thoughts",
+                    "label": "思绪",
+                    "required": {
+                        "contentment": 1,
+                        "inducesdespair": 1
+                    },
+                    "greedy": true,
+                    "noanim": true
+                }
+            ],
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "despairwarning",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "despairabate",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "despairactive",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "despairwarning",
+            "label": "绝望",
+            "actionId": "despair",
+            "requirements": {
+                "dread": 2,
+                "contentment": -1
+            },
+            "startdescription": "绝望随紧跟不舍。[你可以投入“安逸”来战胜<b>绝望</b>，否则若“恐惧”累积至3份，你将被它毁灭。]",
+            "description": ".",
+            "comments": "This exists specifically for the burn image at 2 Dread.",
+            "burnimage": "despair",
+            "linked": [
+                {
+                    "id": "despairabate",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "despairactive",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "despairabate",
+            "label": "绝望缓解",
+            "actionId": "despair",
+            "requirements": {
+                "contentment": 1
+            },
+            "effects": {
+                "inducesdespair": -1,
+                "contentment": -1
+            },
+            "startdescription": "美好的回忆将恶狼拒之门外。[一张“安逸”消灭一张“恐惧”。]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "despairactive",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdefeated",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "despairdeath",
+            "label": "绝望将我淹没",
+            "actionId": "despair",
+            "requirements": {
+                "inducesdespair": 3
+            },
+            "slots": [
+                {
+                    "id": "Thoughts",
+                    "label": "思绪",
+                    "required": {
+                        "contentment": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "effects": {},
+            "startdescription": "快到头了——[马上寻求“安逸”，否则一切都完了。]",
+            "description": "他们会在哪里将我找见呢？我不在此处。",
+            "warmup": 60,
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "despairabate",
+                    "chance": 100
+                }
+            ],
+            "ending": "despairending",
+            "signalEndingFlavour": "Melancholy",
+            "comments": "Consider (1) allowing the threshold to grab Dread too. (2) allowing the active step to have a low-risk possibility of increasing Dread (3) providing a reward when Despair is defeated."
+        },
+        {
+            "id": "despairdefeated",
+            "label": "云开雾散",
+            "actionId": "despair",
+            "effects": {
+                "fleeting": 1
+            },
+            "startdescription": ".",
+            "description": "绝望之狼巡往别处。[离开“恐惧”的恶化，“绝望”已消退，至少现下如此。]",
+            "craftable": false
+        },
+        {
+            "id": "visionsrisk",
+            "label": "空气中的颤栗",
+            "actionId": "visions",
+            "requirements": {},
+            "slots": [
+                {
+                    "id": "Shadows",
+                    "label": "阴影",
+                    "required": {
+                        "fascination": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "阳光像阴影一样摇曳。而梦在镜面背后泛起涟漪。我须小心，不要游离出醒时的世界。[“入迷”可能引发“幻象”。]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdefeated",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "visionsactive",
+            "label": "我看到不存在的东西",
+            "actionId": "visions",
+            "requirements": {
+                "fascination": 1
+            },
+            "startdescription": "图画低语，窗棂眨动。我知道这些不是真的，但我如何确定呢？[可用“恐惧”或“一瞬追忆”消除幻象；否则若“入迷”累积至3个，你将迷失自我。]",
+            "description": ".",
+            "warmup": 60,
+            "slots": [
+                {
+                    "id": "Thoughts",
+                    "label": "思绪",
+                    "required": {
+                        "dread": 1,
+                        "fascination": 1,
+                        "fleeting": 1
+                    },
+                    "greedy": true,
+                    "noanim": true
+                }
+            ],
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "visionswarning",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "visionsabate",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsabatefleeting",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "visionswarning",
+            "label": "我看到不存在的东西！",
+            "actionId": "visions",
+            "requirements": {
+                "fascination": 2,
+                "dread": -1,
+                "fleeting": -1
+            },
+            "startdescription": "整个世界亮得凶险。[可用“恐惧”或“一瞬追忆”消除幻象；否则若“入迷”累积至3个，你将迷失自我。]",
+            "description": ".",
+            "comments": "This exists specifically for the burn image at 2 Fascination.",
+            "burnimage": "visions",
+            "linked": [
+                {
+                    "id": "visionsabate",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsabatefleeting",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "visionsdeath",
+            "label": "救救我——",
+            "actionId": "visions",
+            "requirements": {
+                "fascination": 3
+            },
+            "slots": [
+                {
+                    "id": "Thoughts",
+                    "label": "思绪",
+                    "required": {
+                        "dread": 1,
+                        "fleeting": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "effects": {},
+            "startdescription": "万物表面溢出的光都是什么？辉光快要到来，但我不能停在这儿看它——[如果你不能马上找到“恐惧”或“一瞬追忆”，一切都完了。]",
+            "description": "他们会在哪里将我找见呢？我不在此处。",
+            "warmup": 60,
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "visionsabate",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsabatefleeting",
+                    "chance": 100
+                }
+            ],
+            "signalEndingFlavour": "Melancholy",
+            "ending": "visionsending"
+        },
+        {
+            "id": "visionsabate",
+            "label": "幻象缓解",
+            "actionId": "visions",
+            "requirements": {
+                "dread": 1
+            },
+            "effects": {
+                "fascination": -1,
+                "dread": -1
+            },
+            "startdescription": "影子是光下的避风港。绝望是压舱石。甚至不幸也有其用处。[一个“恐惧”消除一个“入迷”。]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdefeated",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "visionsabatefleeting",
+            "label": "幻象缓解",
+            "actionId": "visions",
+            "requirements": {
+                "fleeting": 1
+            },
+            "effects": {
+                "fascination": -1,
+                "fleeting": -1
+            },
+            "startdescription": "踏实的日常可以驱逐幻影。我把自己与日常牢系在一起。[一个“一瞬追忆”消除一个“入迷”。]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdefeated",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "visionsdefeated",
+            "label": "世界恢复如常",
+            "actionId": "visions",
+            "effects": {
+                "fleeting": 1
+            },
+            "startdescription": ".",
+            "description": "镜子平静。太阳稳定。辉光褪去。我的神智清明，虽然我不知这意味着什么。[离开“入迷”的驱动，“幻象”已消退，至少现下如此。]",
+            "craftable": false
+        },
+        {
+            "id": "curse_dread_dormant",
+            "label": "蜇伏的涸魂诅咒",
+            "actionId": "curse_dread",
+            "startdescription": "涸魂诅咒尚未生效。",
+            "alternativerecipes": [
+                {
+                    "id": "curse_dread_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_dread_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "curse_dread_active",
+            "label": "涸魂诅咒",
+            "requirements": {
+                "reason": -1
+            },
+            "actionId": "curse_dread",
+            "startdescription": "涸魂诅咒轻柔降下，如同一只枯槁的手落在肩头。",
+            "slots": [
+                {
+                    "id": "Reason",
+                    "label": "理性",
+                    "greedy": true,
+                    "required": {
+                        "reason": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_dread_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_dread_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "curse_dread_attempt_mitigation",
+            "label": "涸魂诅咒：最后的机会",
+            "actionId": "curse_dread",
+            "slots": [
+                {
+                    "id": "Protection",
+                    "label": "防护",
+                    "required": {
+                        "influencehearte": 1,
+                        "influenceheartg": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "curse_dread_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "诅咒已被消除。现在通道已经紧紧围绕着我所见的一切。[拥有足够的<b>心</b>之影响力才能避开诅咒。]",
+            "description": "我的颅骨嘎吱作响。光在眼中发灰。",
+            "aspects": {
+                "damagereason": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "curse_dread_mitigation_successful",
+            "label": "轰雷之皮的宠爱",
+            "actionId": "curse_dread",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "拍击鼓面并口念祝词。保持希望，直到吟唱结束。",
+            "description": "我的灵魂再次充盈。诅咒已经过去。遥遥远望，地平线上，那场风暴如一头警觉的野兽般移动着。"
+        },
+        {
+            "id": "curse_visions_dormant",
+            "label": "蜇伏的第五目诅咒",
+            "actionId": "curse_visions",
+            "startdescription": "第五目诅咒尚未生效。",
+            "alternativerecipes": [
+                {
+                    "id": "curse_visions_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_visions_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "curse_visions_active",
+            "label": "第五目诅咒",
+            "actionId": "curse_visions",
+            "requirements": {
+                "passion": -1
+            },
+            "startdescription": "第三目是一个传说，或者就是松果体。第四目，则是某些飞升过程中的“印记”。第五目现正在我面前开眼。",
+            "slots": [
+                {
+                    "id": "Passion",
+                    "label": "激情",
+                    "greedy": true,
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_visions_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_visions_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "curse_visions_attempt_mitigation",
+            "label": "第五目诅咒：最后的机会",
+            "actionId": "curse_visions",
+            "slots": [
+                {
+                    "id": "Protection",
+                    "label": "防护",
+                    "required": {
+                        "influencehearte": 1,
+                        "influenceheartg": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "curse_visions_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "诅咒已经固着。世界现正在腐烂，漏出光来。[要想避开诅咒，你须得拥有足够的<b>心</b>之影响。]",
+            "description": "我没办法不去看。如果看得够久，我会情愿一直看下去。",
+            "aspects": {
+                "damagepassion": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "curse_visions_mitigation_successful",
+            "label": "轰雷之皮的宠爱",
+            "actionId": "curse_visions",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "拍击鼓面并口念祝词。我将闭上所有眼睛，直到吟唱结束。",
+            "description": "我的双眼澄明。诅咒已经过去。遥遥远望，地平线上，那场风暴如一头警觉的野兽般移动着。"
+        },
+        {
+            "id": "curse_affliction_dormant",
+            "label": "蜇伏的迟息诅咒",
+            "actionId": "curse_affliction",
+            "startdescription": "迟息诅咒尚未生效。",
+            "alternativerecipes": [
+                {
+                    "id": "curse_affliction_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_affliction_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "curse_affliction_active",
+            "label": "迟息诅咒",
+            "actionId": "curse_affliction",
+            "requirements": {
+                "health": -1
+            },
+            "startdescription": "迟息诅咒从咳嗽开始——像讨债人一样在你的喉间游荡。",
+            "slots": [
+                {
+                    "id": "Health",
+                    "label": "健康",
+                    "greedy": true,
+                    "required": {
+                        "health": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_affliction_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_affliction_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "curse_affliction_attempt_mitigation",
+            "label": "迟息诅咒：最后的机会",
+            "actionId": "curse_affliction",
+            "slots": [
+                {
+                    "id": "Protection",
+                    "label": "防护",
+                    "required": {
+                        "influencehearte": 1,
+                        "influenceheartg": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "curse_affliction_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "诅咒已经固着。生命的鼓动现正在变缓。[要想避开诅咒，你须得拥有足够的<b>心</b>之影响。]",
+            "description": "我们这次生命中的每一次呼吸都比在上次生命要弱，直到我们的最后一口呼吸。这个过程慢到无法察觉……直到有人被迟息诅咒缠上。",
+            "aspects": {
+                "destroyhealth": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "curse_affliction_mitigation_successful",
+            "label": "轰雷之皮的宠爱",
+            "actionId": "curse_affliction",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "拍击鼓面并口念祝词。按捺住咳嗽，直到吟唱结束。",
+            "description": "我的两肺清洁。诅咒已经过去。遥遥远望，地平线上，那场风暴如一头警觉的野兽般移动着。"
+        },
+        {
+            "id": "curse_nowhere_dormant",
+            "label": "有什么东西跟我们回来了",
+            "actionId": "curse_nowhere",
+            "startdescription": "我瞥见世间微妙的运动——就像时而飘过视野的斑点，但更加狡黠。有时，我也会听见它们的声音。",
+            "alternativerecipes": [
+                {
+                    "id": "curse_nowhere_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_nowhere_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "curse_nowhere_active",
+            "label": "世间的蠕虫",
+            "actionId": "curse_nowhere",
+            "requirements": {
+                "mortal": -1
+            },
+            "startdescription": "城市里有<b>蠕虫</b>。人看不见蠕虫，但也不会忘记蠕虫。蠕虫会一直寻找，直至找到它们能从皮肤空当钻进去的人，好去做那些蠕虫会做的事。",
+            "slots": [
+                {
+                    "id": "Someone",
+                    "label": "某人",
+                    "greedy": true,
+                    "required": {
+                        "mortal": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_nowhere_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_nowhere_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "curse_nowhere_attempt_mitigation",
+            "label": "世间的蠕虫：最后的机会",
+            "actionId": "curse_nowhere",
+            "slots": [
+                {
+                    "id": "Protection",
+                    "label": "防护",
+                    "required": {
+                        "influenceheartg": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "curse_nowhere_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "蠕虫已钻进皮肤下。快没救了。[要想救回此人，你需要拥有极高阶的<b>心</b>之影响。]",
+            "description": "当蠕虫侵入肉体，你除破坏余下的东西外别无他法——先烧掉再仔细筛查。",
+            "effects": {
+                "mortal": -1,
+                "notoriety": 1,
+                "dread": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "curse_nowhere_mitigation_successful",
+            "label": "轰雷之皮的宠爱",
+            "actionId": "curse_nowhere",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "祈求闪电吧。只有风暴自身的气息才能拯救此人了。",
+            "description": "摆脱蠕虫的感觉好似一口气拉开窗帘，空气含着雨水和臭氧的气味。我们的手指仍在敲打轰雷之皮的节拍。"
+        }
+    ]
+}

@@ -1,0 +1,348 @@
+{
+	"recipes": [
+		{
+			"id": "workapostleforgejob",
+			"label": "Meine Ressourcen überdenken",
+			"actionId": "work",
+			"requirements": {
+				"legacyapostleforgejob": 1
+			},
+			"effects": {
+				"funds": 7,
+				"legacyapostleforgejob": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "apostleforgeopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "Unsere Organisation hat einige Ressourcen ...",
+			"description": "... genug für eine Weile, doch ich werde mir andere Quellen erschließen müssen.",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "apostleforgeopentalk",
+			"label": "Unsere Sache",
+			"actionId": "talk",
+			"requirements": {
+				
+			},
+			"startdescription": "Ich bin nicht allein.",
+			"alternativerecipes": [
+				{
+					"id": "apostleforgeopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"description": "Meine Verbündeten. Mein Gestalter.",
+			"effects": {
+				"LEVER_LastCult": 1,
+				"LEVER_LastFollower": 1,
+				"apostleforge.mentor": 1
+			},
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "begincultfoundation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "apostleforgeopenstudy",
+			"label": "Woran erinnere ich mich?",
+			"actionId": "study",
+			"startdescription": "Mir wurden Geheimnisse anvertraut.",
+			"alternativerecipes": [
+				{
+					"id": "apostleforgeopenexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"fragmentforgef": 1,
+				"reason": 1,
+				"waywood": 1,
+				"waywhite": 1,
+				"waystag_after": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "apostleforgeopenexplore",
+			"label": "Ein Ort für einen Anfang",
+			"actionId": "explore",
+			"startdescription": "Wo waren wir?",
+			"description": "An unserem Treffpunkt werde ich über die Befehle nachdenken, die ich bekommen habe.",
+			"alternativerecipes": [
+				{
+					"id": "apostleforgeopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"apostleforge.pillar1": 1,
+				"hq.temporary": 1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "apostleforgeopendream",
+			"label": "Entfernter Donner",
+			"actionId": "dream",
+			"startdescription": "Was kommt? Wer kommt?",
+			"description": "Unser Gestalter möchte die Ordnung der Welt ändern, selbst die des Mansus. Es wird Widerstand geben.",
+			"warmup": 60,
+			"effects": {
+				"passion": 1
+			},
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "long.spawn.forge",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "workapostlegrailjob",
+			"label": "Meine Ressourcen überdenken",
+			"actionId": "work",
+			"requirements": {
+				"legacyapostlegrailjob": 1
+			},
+			"effects": {
+				"funds": 7,
+				"legacyapostlegrailjob": -1,
+				"apostlegrail.pillar2.dormant": 1,
+				"apostlegrail.pillarfuel": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "apostlegrailopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "Unsere Organisation hat einige Ressourcen ...",
+			"description": "... genug für eine Weile, doch ich werde mir andere Quellen erschließen müssen. Und jetzt bin ich bei sehr schlechter Gesundheit. Ich kann nur hoffen, dass unsere Wonne mich nähren wird.",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "apostlegrailopentalk",
+			"label": "Unsere Sache",
+			"actionId": "talk",
+			"requirements": {
+				
+			},
+			"startdescription": "Ich bin nicht allein.",
+			"alternativerecipes": [
+				{
+					"id": "apostlegrailopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"description": "Meine Verbündeten. Meine Wonne.",
+			"effects": {
+				"LEVER_LastCult": 1,
+				"LEVER_LastFollower": 1,
+				"apostlegrail.mentor": 1
+			},
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "begincultfoundation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "apostlegrailopenstudy",
+			"label": "Woran erinnere ich mich?",
+			"actionId": "study",
+			"startdescription": "Mir wurden Geheimnisse anvertraut.",
+			"alternativerecipes": [
+				{
+					"id": "apostlegrailopenexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"fragmentgrailf": 1,
+				"reason": 1,
+				"waywood": 1,
+				"waywhite": 1,
+				"waystag_after": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "apostlegrailopenexplore",
+			"label": "Ein Ort für einen Anfang",
+			"actionId": "explore",
+			"startdescription": "Wo waren wir?",
+			"description": "An unserem Treffpunkt werde ich über die Befehle nachdenken, die ich bekommen habe.",
+			"alternativerecipes": [
+				{
+					"id": "apostlegrailopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"apostlegrail.pillar1": 1,
+				"hq.temporary": 1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "apostlegrailopendream",
+			"label": "Entferntes Licht",
+			"actionId": "dream",
+			"startdescription": "Was kommt? Wer kommt?",
+			"description": "Unsere Wonne möchte die Ordnung der Welt ändern, selbst die des Mansus. Es wird Widerstand geben.",
+			"warmup": 60,
+			"effects": {
+				"passion": 1
+			},
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "long.spawn.grail",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "workapostlelanternjob",
+			"label": "Was ich tun muss",
+			"actionId": "work",
+			"requirements": {
+				"legacyapostlelanternjob": 1
+			},
+			"effects": {
+				"funds": 7,
+				"legacyapostlelanternjob": -1,
+				"apostlelantern.pillar1": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "apostlelanternopentalk",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "Ich zucke zusammen und bin wieder bei mir. War das ein Tagtraum?",
+			"description": "Ein Paket ist da, mit Geldmitteln. Da sind meine Anweisungen, in einem himmelblauen Umschlag. Das reicht. Meine anderen Erinnerungen sind jetzt gerade unwichtig.",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "apostlelanternopentalk",
+			"label": "Unsere Sache",
+			"actionId": "talk",
+			"requirements": {
+				
+			},
+			"startdescription": "Ich erinnere mich an diese Namen, wobei ich nie gehört habe, wie jemand sie ausspricht.",
+			"alternativerecipes": [
+				{
+					"id": "apostlelanternopenstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"description": "Meine Verbündeten. Meine Erleuchtung.",
+			"effects": {
+				"LEVER_LastCult": 1,
+				"LEVER_LastFollower": 1,
+				"apostlelantern.mentor": 1
+			},
+			"warmup": 10,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "begincultfoundation",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "apostlelanternopenstudy",
+			"label": "Woran erinnere ich mich?",
+			"actionId": "study",
+			"startdescription": "Mir wurden Geheimnisse anvertraut.",
+			"alternativerecipes": [
+				{
+					"id": "apostlelanternopenexplore",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"fragmentlanternf": 1,
+				"reason": 1,
+				"waywood": 1,
+				"waywhite": 1,
+				"waystag_after": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "apostlelanternopenexplore",
+			"label": "Ein Ort für einen Anfang",
+			"actionId": "explore",
+			"startdescription": "Wo waren wir?",
+			"description": "Dies ist der Ort, den ich sah, im Lichte am Rande des Schlafs.",
+			"alternativerecipes": [
+				{
+					"id": "apostlelanternopendream",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"hq.temporary": 1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "apostlelanternopendream",
+			"label": "Entferntes Licht",
+			"actionId": "dream",
+			"startdescription": "Was kommt? Wer kommt?",
+			"description": "Meine Träume haben mich gewarnt, dass es Widerstand gegen die Erleuchtung geben werde. Alle Träume, die ich gesandt bekomme, sind wahr.",
+			"warmup": 60,
+			"effects": {
+				"passion": 1
+			},
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "long.spawn.lantern",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		}
+	]
+}

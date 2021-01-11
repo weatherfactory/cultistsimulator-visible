@@ -1,0 +1,759 @@
+{
+	"recipes": [
+		{
+			"id": "speakpublicly",
+			"label": "Esoterische Themen ansprechen",
+			"actionId": "talk",
+			"requirements": {
+				"society": -1,
+				"lore": 1
+			},
+			"effects": {
+				"mystique": 1
+			},
+			"startdescription": "Wenn ich in der Öffentlichkeit von den unsichtbaren Künsten spreche, wird das für Aufmerksamkeit sorgen. Vielleicht will ich ja genau das.",
+			"description": ".",
+			"warmup": 60,
+			"craftable": true,
+			"deckeffect": {
+				"talkevents": 1
+			},
+			"linked": [
+				{
+					"id": "talkfindacquaintance",
+					"chance": 100
+				},
+				{
+					"id": "talkfindpatron",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "talkfindacquaintance",
+			"label": "Eine Bekanntschaft?",
+			"actionId": "talk",
+			"requirements": {
+				"dayacquaintances": 1
+			},
+			"slots": [
+				{
+					"id": "escalation",
+					"label": "Leidenschaft",
+					"description": "Ich muss inbrünstig und überzeugend sein.",
+					"required": {
+						"passion": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Ich habe jemanden gefunden, der mir seelenverwandt sein könnte – doch ich muss noch Überzeugungsarbeit leisten. [Du brauchst deine Leidenschaft, um eine Bekanntschaft für dich zu gewinnen.]",
+			"alternativerecipes": [
+				{
+					"id": "talkmeetacquaintance",
+					"chance": 100
+				}
+			],
+			"description": "Ich konnte nicht die Leidenschaft aufbringen, um diese Bekanntschaft in meinen Kreis zu holen. Vielleicht ein andermal.",
+			"effects": {
+				"season": -1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "talkfindpatron",
+			"label": "Ein Klient?",
+			"actionId": "talk",
+			"requirements": {
+				"daypatrons": 1
+			},
+			"slots": [
+				{
+					"id": "escalation",
+					"label": "Verstand",
+					"description": "Ich muss beredt und glaubwürdig sein.",
+					"required": {
+						"reason": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Ich habe jemanden gefunden, der mich mit Ressourcen versorgen könnte – doch ich muss Eindruck machen. [Du brauchst deinen Verstand, um einen Klienten zu beeindrucken.]",
+			"alternativerecipes": [
+				{
+					"id": "talkmeetpatron",
+					"chance": 100
+				}
+			],
+			"description": "Ich konnte nicht die mentale Energie aufbringen, um mein Können wirklich zu zeigen. Vielleicht ein andermal.",
+			"effects": {
+				"season": -1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "talkmeetacquaintance",
+			"label": "Eine Bekanntschaft",
+			"actionId": "talk",
+			"requirements": {
+				"passion": 1
+			},
+			"startdescription": "'Mir nach.'",
+			"description": ".",
+			"deckeffect": {
+				"acquaintances": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 5
+		},
+		{
+			"id": "talkmeetpatron",
+			"label": "Ein Klient",
+			"actionId": "talk",
+			"requirements": {
+				"reason": 1
+			},
+			"startdescription": "'Wir können voneinander lernen.'",
+			"description": ".",
+			"deckeffect": {
+				"scholarpatrons": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 5
+		},
+		{
+			"id": "talktotroublemaker",
+			"label": "Ein Treffen auf neutralem Boden vereinbaren.",
+			"actionId": "talk",
+			"requirements": {
+				"independent": 1,
+				"society": -1,
+				"ritual": -1
+			},
+			"slots": [
+				{
+					"id": "Subject",
+					"label": "Thema",
+					"description": "Ein Gesprächsthema."
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "A_follower_settrap_independent",
+					"chance": 100
+				},
+				{
+					"id": "independentloreconversation",
+					"chance": 100
+				},
+				{
+					"id": "independentdesireconversation",
+					"chance": 100
+				},
+				{
+					"id": "independentfitewithextraswole",
+					"chance": 100
+				},
+				{
+					"id": "independentfitewithswole",
+					"chance": 100
+				},
+				{
+					"id": "independentspeakpoison",
+					"chance": 100
+				}
+			],
+			"startdescription": "'Sind wir Feinde? Vielleicht muss das nicht so sein.'",
+			"description": "Ein zurückhaltendes Gespräch in einem früh öffnenden Café zur verregneten windkalten Zeit nach der Dämmerung. Ich habe nichts erfahren.",
+			"effects": {
+				"mystique": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "independentloreconversation",
+			"label": "Ein Treffen auf neutralem Boden vereinbaren.",
+			"actionId": "talk",
+			"requirements": {
+				"lore": 1
+			},
+			"startdescription": "'Offenbar <i>haben</i> wir etwas zu besprechen ...'",
+			"description": "Ein gehetztes und vages Gespräch im Lampenschein, mit Spuren von Wahrheit, wie Gold im Schlick eines Flusses. Wer weiß? Vielleicht können wir uns eines Tages weniger reserviert unterhalten.",
+			"deckeffect": {
+				"troublemakerconversations": 1
+			}
+		},
+		{
+			"id": "independentdesireconversation",
+			"label": "Ein Treffen auf neutralem Boden vereinbaren.",
+			"actionId": "talk",
+			"requirements": {
+				"desire": 1
+			},
+			"startdescription": "'Wir sollen gemeinsame Sache machen? Im Ernst?'",
+			"description": "'Vielleicht. Irgendwann. Du musst dich mir beweisen. Lass uns reden ...' [Wenn du einen Kult hast, ist es möglich, wenn auch nicht einfach, einen Störenfried für deine Seite zu gewinnen.]",
+			"deckeffect": {
+				"troublemakerconversations": 1
+			}
+		},
+		{
+			"id": "independentfitewithextraswole",
+			"label": "Ein Überraschungsangriff auf einen Rivalen",
+			"actionId": "talk",
+			"requirements": {
+				"murderskill": 1
+			},
+			"startdescription": "Wir treffen uns auf neutralem Boden. Er hat alle sinnvollen Sicherheitsvorkehrungen getroffen. Doch gegen mich gibt es keine sinnvollen Sicherheitsvorkehrungen. Ein direkter körperlicher Angriff wäre mit erheblichen Risiken verbunden ... doch vielleicht ist es jetzt so weit. [Dies könnte entgegen aller Wahrscheinlichkeit Erfolg haben.]",
+			"description": "Ich habe seinen Kopf in meinen Händen. Ich breche ihm das Genick. Ich bin fort bevor die Leiche auch nur ganz am Boden ist.",
+			"alternativerecipes": [
+				{
+					"id": "independentfitewithswole_failure",
+					"chance": 70
+				}
+			],
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killmortal": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "independentfitewithswole",
+			"label": "Ein Überraschungsangriff auf einen Rivalen",
+			"actionId": "talk",
+			"requirements": {
+				"healthskill": 1
+			},
+			"startdescription": "Wir treffen uns auf neutralem Boden. Er hat alle sinnvollen Sicherheitsvorkehrungen getroffen, und ein direkter körperlicher Angriff wäre mit erheblichen Risiken verbunden ... doch vielleicht ist es jetzt so weit. [Dies ist wirklich sehr gewagt.]",
+			"description": "Ich habe seinen Kopf in meinen Händen. Ich breche ihm das Genick. Ich bin fort bevor die Leiche auch nur ganz am Boden ist.",
+			"alternativerecipes": [
+				{
+					"id": "independentfitewithswole_failure",
+					"chance": 90
+				}
+			],
+			"effects": {
+				"notoriety": 1
+			},
+			"aspects": {
+				"killmortal": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "independentfitewithswole_failure",
+			"label": "Ein Überraschungsangriff ist gescheitert!",
+			"actionId": "talk",
+			"startdescription": ".",
+			"description": "Mit einem Aufschrei springt mein Rivale zurück und wirft den Tisch um! Um uns herum starrt man uns an. Keine hat gesehen, wie ich mich bewegt habe. Der einzige wahre Zeuge ist mein Rivale. Doch ich muss sofort weg.",
+			"craftable": false,
+			"effects": {
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "wary",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "independentspeakpoison",
+			"label": "Ein Bemerkenswertes Gift gegen einen Rivalen einsetzen",
+			"actionId": "talk",
+			"requirements": {
+				"poison": 1
+			},
+			"startdescription": "'Magst du Tee?'",
+			"description": "Dein Rivale schüttelt enttäuscht den Kopf. 'Wirklich?' Er geht ohne ein weiteres Wort und lässt den Tee unangetastet auf dem Tisch.",
+			"mutations": [
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "wary",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "independent",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "talktohunter",
+			"label": "Ein Treffen mit einem Gegner arrangieren",
+			"actionId": "talk",
+			"requirements": {
+				"hunter": 1
+			},
+			"slots": [
+				{
+					"id": "Subject",
+					"label": "Thema",
+					"description": "Ein Gesprächsthema ... oder einen Schergen, der ihn erledigt."
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "hunterfitewithextraswole"
+				},
+				{
+					"id": "hunterfitewithswole"
+				},
+				{
+					"id": "hunterspeakpoison_glassfinger"
+				},
+				{
+					"id": "hunterspeakpoison"
+				},
+				{
+					"id": "hunterspeakwinterg"
+				},
+				{
+					"id": "hunterspeakwinterd"
+				},
+				{
+					"id": "hunterspeakwinter"
+				},
+				{
+					"id": "hunterspeakdread"
+				},
+				{
+					"id": "hunterspeaklanterng"
+				},
+				{
+					"id": "hunterspeaklanternd"
+				},
+				{
+					"id": "hunterspeaklantern"
+				},
+				{
+					"id": "hunterspeakfascination"
+				},
+				{
+					"id": "hunterattackhighedge"
+				},
+				{
+					"id": "hunterattackhighwinter"
+				},
+				{
+					"id": "hunterattackmidedge"
+				},
+				{
+					"id": "hunterattackmidwinter"
+				},
+				{
+					"id": "hunterattacklowedge"
+				},
+				{
+					"id": "hunterattacklowwinter"
+				},
+				{
+					"id": "hunterattacknoedge"
+				}
+			],
+			"startdescription": "Vielleicht können wir Konversation machen. Oder vielleicht könnte ich von jemandem einen Hinterhalt legen lassen.",
+			"description": "Das war voreilig. Vielleicht hätte ich mich nicht so entlarven sollen.",
+			"effects": {
+				"notoriety": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "talktospirit",
+			"label": "Mit etwas sprechen, das ich beschworen habe",
+			"actionId": "talk",
+			"requirements": {
+				"society": -1,
+				"follower": 1,
+				"summoned": 1
+			},
+			"slots": [
+				{
+					"id": "Subject",
+					"label": "Thema",
+					"description": "Ein Gesprächsthema ... oder ein Ziel."
+				}
+			],
+			"comments": "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+			"alternativerecipes": [
+				{
+					"id": "discusspassionsacrifice"
+				},
+				{
+					"id": "discussreasonsacrifice"
+				},
+				{
+					"id": "discusssicknessprotectionspirit"
+				},
+				{
+					"id": "discussfucinespirit"
+				},
+				{
+					"id": "discussphrygianspirit"
+				},
+				{
+					"id": "discussmandaicspirit"
+				},
+				{
+					"id": "hunterattackhighedge"
+				},
+				{
+					"id": "hunterattackmidedge"
+				},
+				{
+					"id": "hunterattacklowedge"
+				},
+				{
+					"id": "hunterattacknoedge"
+				},
+				{
+					"id": "evidencedestroymidmoth"
+				},
+				{
+					"id": "evidencedestroylowmoth"
+				},
+				{
+					"id": "evidencedestroynomoth"
+				},
+				{
+					"id": "annoyanceseducehighgrail"
+				},
+				{
+					"id": "annoyanceattackhighedge"
+				},
+				{
+					"id": "annoyanceseducemidgrail"
+				},
+				{
+					"id": "annoyanceattackmidedge"
+				},
+				{
+					"id": "annoyancederangemidmoth"
+				},
+				{
+					"id": "annoyanceseducelowgrail"
+				},
+				{
+					"id": "annoyanceattacklowedge"
+				},
+				{
+					"id": "annoyancederangelowmoth"
+				},
+				{
+					"id": "annoyanceattacknoedge"
+				},
+				{
+					"id": "apostlelantern.recruitkleidouchos.teresa"
+				},
+				{
+					"id": "apostlelantern.usepillar3"
+				},
+				{
+					"id": "teresadiscusslocksmithsdream1"
+				},
+				{
+					"id": "teresadiscusslocksmithsdream2"
+				},
+				{
+					"id": "teresadiscusslocksmithsdream3"
+				},
+				{
+					"id": "teresadiscusslocksmithsdream4"
+				},
+				{
+					"id": "teresadiscusslocksmithsdream5"
+				}
+			],
+			"startdescription": "Nicht alles aus dem Mansus kann sprechen, doch alles versteht die Sprache der Sterblichen, auch wenn es die Weiße Tür passiert hat.",
+			"description": "Nichts. Meine Worte vergehen wie Sand in Glas.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "discusspassionsacrifice",
+			"actionId": "talk",
+			"label": "Eiskalte Lektionen",
+			"startdescription": "Wenn ich mir aufmerksam die Geschichten anhört, welche die Wintersonne erzählt, lerne ich vielleicht etwas, nur dass dabei meine Seele welk wird. [Dadurch lernst du die Parabel der Ekdysiastin, doch aus Leidenschaft wird Hinfälligkeit ... wobei selbst die noch eine schmale Tür öffnen könnte.]",
+			"description": "@#spirit_winterb_heart|'Du schaust mich an, und du siehst, dass ich gestorben bin. Du könntest meinen, dass es das ist, was ich verloren habe. Doch wenn das alles ist, warum solltest du mich dann etwas fragen?' Doch ich werde es nichts fragen. Die Toten reden für gewöhnlich nicht.\n#spirit_winterd_edge|Die Stimmen der Maid ist hell und klar wie frisch geschliffene Edelsteine. 'Was kann verloren gehen? Jede Entscheidung schließt eine Tür ... und der Mansus hat nur sieben.'\n#spirit_lanterne_secret|'Was kann verloren gehen?' Meine Kindheit. Meine Lasten. Meine Illusionen. Mein Stolz. Mein Ansehen. Mein Schatten. Mein Herz ...'@",
+			"requirements": {
+				"passion": 1,
+				"spiriteatspassion": 1
+			},
+			"effects": {
+				"passion": -1,
+				"decrepitude": 1,
+				"fragmentmothc": 1,
+				"influencewintere": 1
+			}
+		},
+		{
+			"id": "discussreasonsacrifice",
+			"actionId": "talk",
+			"label": "Wilde Lektionen",
+			"startdescription": "Wenn ich mich der Ekstase hingebe, lerne ich eine wilde Lektion. [Dadurch lernst du die Zustimmung zur Wunde, doch aus Verstand wird Hinfälligkeit ... wobei selbst die noch eine schmale Tür öffnen könnte.]",
+			"description": "@#spirit_grailc_moth|Der Prophet wird seine Prophezeiungen auf meiner Haut vollziehen, und unter seinen Verkündigungen werden sich meine Gedanken teilen wie alter Stoff.\n#spirit_heartc_edge|Der Percussigant wird mich bei den Bewegungen anleiten, die mein Leib nicht vollziehen kann, und wenn ich sowohl Änderungen als auch Zugeständnisse machen muss, also, dann wird meine Haut von der Mär künden, von der Mär, oh, meine Haut, die Mär.\n#spirit_graile_edge|'Einst kannte ich sie in der Wachen Welt. Ihre Arme sind weniger an der Zahl, ihre Arme waren wärmer, doch ihr Mund war immer kalt. Sag, dass ich lüge. Du traust dich ja doch nicht. Oder komm her, und ich werde die Fünfte Historie tief in dich hineinküssen, wo niemand sie sehen wird, nicht mal du selbst – '@",
+			"requirements": {
+				"reason": 1,
+				"spiriteatsreason": 1
+			},
+			"effects": {
+				"reason": -1,
+				"decrepitude": 1,
+				"fragmentknockc": 1,
+				"influenceknocke": 1
+			}
+		},
+		{
+			"id": "discusssicknessprotectionspirit",
+			"label": "Um Verschiebung einer Exekution bitten",
+			"actionId": "talk",
+			"requirements": {
+				"summoned": 1,
+				"spiritsicknessprotector": 1,
+				"health": 1
+			},
+			"startdescription": "Die Bewohner des Mansus sind von den Maladen des Fleisches nicht betroffen. Manche von ihnen können manchmal ihren Schutz auf diejenigen unter uns ausdehnen, die hier in der Wachen Welt gefangen sind.",
+			"description": "@#spirit_wintera_moth|Ich werde eine Locke meines Haars in jene Kuhle in der Brust legen, und mit etwas Glück wird mich die Krankheit eines Tages stattdessen dort suchen.#spirit_grailc_moth|Der Rohe Prophet wird mich mit all seinen Armen umfangen und mich mit all seinen Mündern küssen, oder was auch sonst ihm geeignet erscheinen mag, und vielleicht wird mich das vor Krankheiten schützen, und vielleicht werde ich ihnen einfach zahlenmäßig überlegen sein.#spirit_heartc_edge|Der Percussigant wird das Schlagen meines Herzens in die Schritte seines unendlichen Tanzes einweben, und vielleicht ist das genug, genug, genug. #spirit_graile_edge|'Öffne deinen Mund. Leg deinen Kopf in den Nacken. Wir werden einen Tropfen fallen lassen. Schlucke. Ja. Jetzt wird es dir besser gehen.'#spirit_lanterne_secret|'Ich werde mit deinem Schatten sprechen, und vielleicht kann er schon bald einen größeren Schatten beiseite schieben. Das ist alles, was ich dir jetzt versprechen kann.'@",
+			"craftable": false,
+			"effects": {
+				"sicknessprotection": 1
+			}
+		},
+		{
+			"id": "discussfucinespirit",
+			"label": "Die Sache, Fucine zu lernen",
+			"actionId": "talk",
+			"requirements": {
+				"scholarlatin": 1,
+				"summoned": 1,
+				"spirittutorfucine": 1
+			},
+			"startdescription": "'Fucine? Ja, ich kann mich in Fucine verständigen. Ich kann es dich lehren, wenn du Latein als Grundlage hast. Aber wenn ich auch nur einmal was von wegen 'Sprache der Hexen' hören, ist Feierabend.' [Mit <b>STUDIEREN</b> kannst du bei der Baldomeranerin Fucine lernen].",
+			"description": ".",
+			"craftable": true
+		},
+		{
+			"id": "discussphrygianspirit",
+			"label": "Die Sache, Phrygisch zu lernen",
+			"actionId": "talk",
+			"requirements": {
+				"scholargreek": 1,
+				"summoned": 1,
+				"spirittutorphrygian": 1
+			},
+			"startdescription": "'Phrygisch! Die Sprache der Großen Mutter! Natürlich. Wenn du dich genug auf das Griechische verstehst, garantiere ich dir, dass es dir <i>sehr</i> viel Spaß machen wir, Phrygisch zu lernen.' [Mit <b>STUDIEREN</b> kannst du bei Ezeem Phrygisch lernen].",
+			"description": ".",
+			"craftable": true
+		},
+		{
+			"id": "discussmandaicspirit",
+			"label": "Die Sache, Alt-Mandäisch zu lernen",
+			"actionId": "talk",
+			"requirements": {
+				"scholararamaic": 1,
+				"summoned": 1,
+				"spirittutormandaic": 1
+			},
+			"startdescription": "'ZUSAMMEN WERDEN WIR DER VERBRENNUNG DER UNVERBRANNTEN GOTTES GEDENKEN.' [Mit <b>STUDIEREN</b> kannst du bei König Tiegel Alt-Mandäisch lernen].'",
+			"description": ".",
+			"craftable": true
+		},
+		{
+			"id": "teresadiscusslocksmithsdream1",
+			"label": "Der Traum des Kleinschmieds: Band 1 besprechen",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"locksmithsdream1": 1,
+				"autographed": -1
+			},
+			"actionId": "talk",
+			"startdescription": "'Soll ich das Buch signieren? Ich finde, das wäre doch ganz amüsant, oder?'",
+			"description": "'Ich hab in der Nähe von Camden Lock gewohnt, als ich angefangen habe, dieses Zeug aufzuschreiben. Wenn das kein Scherz der Stunden ist, dann weiß ich auch nicht. Ich will dir mal von meinen Quellen erzählen –'",
+			"effects": {
+				"erudition": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "text",
+					"mutateAspectId": "autographed",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "teresadiscusslocksmithsdream2",
+			"label": "Der Traum des Kleinschmieds: Band 2 besprechen",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"locksmithsdream2": 1,
+				"autographed": -1
+			},
+			"actionId": "talk",
+			"startdescription": "'Soll ich das Buch signieren? Wäre es dann nicht noch kostbarer? Es wird eh niemand glauben, dass das echt ist. Angeblich bin ich ja tot.'",
+			"description": "'Ich glaube noch immer, dass die Türen etwas mit der Arbeit von Handwerkern zu tun haben – mit dem schöpferischen Akt. Ich glaube, so haben wir überhaupt erst einen Weg hinein in das Haus gefunden. Doch natürlich war unser Aufstieg stets begrenzt, bis wir zu sprechen lernten. Ich werde versuchen, dir das zu erklären ...'",
+			"effects": {
+				"glimmering": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "text",
+					"mutateAspectId": "autographed",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "teresadiscusslocksmithsdream3",
+			"label": "Der Traum des Kleinschmieds: Band 3 besprechen",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"locksmithsdream3": 1,
+				"autographed": -1
+			},
+			"actionId": "talk",
+			"startdescription": "'Ich schreibe meinen Namen hinein, ja? Nur den Namen, den mir Christopher einst gab. Nicht den Namen, den ich hier trage.'",
+			"description": "'Ach, du liebe Güte, in was für einem Zustand ich war, als ich das geschrieben habe, was? Tut mir leid. Aber ich hatte Recht: Der Tod ist unten. Das ist einer der Gründe, warum ich in der Regel recht weit oben im Mansus bleibe. Ich werde versuchen, dir das zu erklären, etwas –'",
+			"effects": {
+				"glimmering": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "text",
+					"mutateAspectId": "autographed",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "teresadiscusslocksmithsdream4",
+			"label": "Der Traum des Kleinschmieds: Band 4 besprechen",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"locksmithsdream4": 1,
+				"autographed": -1
+			},
+			"actionId": "talk",
+			"startdescription": "'Ich werde dir das Buch auf jeden Fall signieren. Doch ich fürchte, niemand wird meine Signatur sehen, es sei denn, in einem Traum von dem Buch.'",
+			"description": "'Damals war ich total aufgeregt wegen Janus. Jetzt denke ich, wenn Janus irgendjemand ist, dann entweder der Wächter oder die Meniskate. Knobeleien neigen dazu, sich auszuweiten, Rätsel neigen dazu, sich selbst zu lösen.'",
+			"effects": {
+				"glimmering": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "text",
+					"mutateAspectId": "autographed",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "teresadiscusslocksmithsdream5",
+			"label": "Der Traum des Kleinschmieds: Band 5 besprechen",
+			"requirements": {
+				"spirit_lanterne_secret": 1,
+				"locksmithsdream5": 1,
+				"autographed": -1
+			},
+			"actionId": "talk",
+			"startdescription": "'Wo genau hast du das denn her?'",
+			"description": "'Ich werde es signieren. Aber nicht mit meinem Namen. Noch nicht, falls überhaupt jemals.'",
+			"effects": {
+				"glimmering": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "text",
+					"mutateAspectId": "autographed",
+					"mutationLevel": 1
+				}
+			]
+		},
+		{
+			"id": "begincultfoundation",
+			"label": "Ein neuer Anfang?",
+			"actionId": "talk",
+			"requirements": {
+				"acquaintance": 1,
+				"ritual": -1,
+				"location": -1
+			},
+			"extantreqs": {
+				"society": -1
+			},
+			"craftable": true,
+			"startdescription": "Zusammen könnten wir mehr sein.",
+			"comments": "This is hijacked by links from the Apostle open-talk verbs, to prevent apostles founding a second cult. This is why all the content is in the followup recipe.",
+			"linked": [
+				{
+					"id": "begincultfoundation_createcult",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "begincultfoundation_createcult",
+			"label": "Eine Mystische Organisation gründen",
+			"extantreqs": {
+				"society": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "cultfoundation",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"actionId": "talk",
+			"effects": {
+				"notoriety": 1
+			},
+			"startdescription": "Da haben wir jemanden, mit dem ich arbeiten könnte. Einen Gefährten, oder einen Anhänger. Doch zuerst muss ich überhaupt für etwas sorgen, dem man folgen kann. Eine Gesellschaft, eine Bruderschaft, ein Orden, ein Kult.",
+			"description": "Ich habe mit meinem wahren Werk begonnen. Die Behörden werden sich dafür interessieren. Ich muss bereit für sie sein. [Du hast begonnen, deinen Kult zu etablieren. Es wird noch etwas dauern, bis zu Gefolgsleute rekrutieren kannst.]",
+			"warmup": 10
+		},
+		{
+			"id": "inspiremystique",
+			"actionId": "talk",
+			"label": "Aufmerksamkeit erregen",
+			"effects": {
+				"mystique": 1
+			},
+			"startdescription": "Es gibt Stunden und es gibt Stunden. Diese Stunde gehört mir.",
+			"description": "Geöffnete Lippen, funkelnde Augen.",
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "findacquaintanceopentalk",
+			"label": "Eine Bekanntschaft",
+			"actionId": "talk",
+			"startdescription": "Ich werde auf Antwort auf einen Brief warten.",
+			"description": "Die Antwort auf deinen Brief ist höflich, wenn auch vorsichtig. Man ist verblüfft, dass du auf den Namen gekommen bist: so verblüfft, dass ein Treffen vorgeschlagen wird.",
+			"warmup": 30,
+			"craftable": false,
+			"comments": "this runs as an additional, and is how Talk is opened. I'd like to remove maxexecutions, but it's in here now for safety.",
+			"deckeffect": {
+				"acquaintances": 1
+			},
+			"maxexecutions": 1
+		}
+	]
+}

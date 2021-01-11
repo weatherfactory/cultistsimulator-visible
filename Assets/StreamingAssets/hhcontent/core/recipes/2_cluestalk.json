@@ -1,0 +1,301 @@
+{
+    "recipes": [
+        {
+            "id": "recruitindependentresentmenthint",
+            "label": "Recruit an Independent?",
+            "actionid": "talk",
+            "requirements": {
+                "independent": 1,
+                "mortal": 1,
+                "resentment": 1
+            },
+            "startdescription": "No. This one has not forgotten what occurred between us. Perhaps, some day, if I do them no further harm, their feelings might change.",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "recruitindependenthint",
+            "label": "Recruit an Independent?",
+            "actionid": "talk",
+            "requirements": {
+                "independent": 1,
+                "mortal": 1,
+                "resentment": -1
+            },
+            "startdescription": "This one might join me... if I can muster the Aspect of our cult, to the twenty-first degree. [You can recruit a Troublemaker, even one of a different persuasion, if you can provide enough power - but you must include at least one Tool as a gift to the independent.].",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "promoteto_d_edgehint",
+            "label": "Exalt a Disciple?",
+            "actionid": "talk",
+            "requirements": {
+                "cultedge_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "To Exalt a Disciple to an Assassin, I will need Edge to at least the twenty-first intensity. In any case, only the most savage will be suitable.",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_forgehint",
+            "label": "Exalt a Disciple?",
+            "actionid": "talk",
+            "requirements": {
+                "cultforge_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "To Exalt a Disciple to a Reshaper, I will need Forge to at least the twenty-first intensity. In any case, only the most ingenious and effective will be suitable.",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_grailhint",
+            "label": "Exalt a Disciple?",
+            "actionid": "talk",
+            "requirements": {
+                "cultgrail_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "To Exalt a Disciple to a Cyprian, I will need Grail to at least the twenty-first intensity. In any case, only those with the most inconsolable appetites will be suitable.",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_hearthint",
+            "label": "Exalt a Disciple?",
+            "actionid": "talk",
+            "requirements": {
+                "cultheart_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "To Exalt a Disciple to a Tarantellist, I will need Heart to at least the twenty-first intensity. In any case, only the most spirited will be suitable.",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_knockhint",
+            "label": "Exalt a Disciple?",
+            "actionid": "talk",
+            "requirements": {
+                "cultknock_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "To Exalt a Disciple to a Key, I will need Knock to at least the twenty-first intensity.  In any case, only the most gifted will be suitable.",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_lanternhint",
+            "label": "Exalt a Disciple?",
+            "actionid": "talk",
+            "requirements": {
+                "cultlantern_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "To Exalt a Disciple to a Seer, I will need Lantern to at least the twenty-first intensity.  In any case, only the most clear-sighted will be suitable.",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_mothhint",
+            "label": "Exalt a Disciple?",
+            "actionid": "talk",
+            "requirements": {
+                "cultmoth_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "To Exalt a Disciple to a Skintwister, I will need Moth to at least the twenty-first intensity.  In any case, only very rare individuals will be suitable.",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_winterhint",
+            "label": "Exalt a Disciple?",
+            "actionid": "talk",
+            "requirements": {
+                "venerationwinter": 1,
+                "venerationedge": -1,
+                "venerationforge": -1,
+                "venerationgrail": -1,
+                "venerationheart": -1,
+                "venerationlantern": -1,
+                "venerationknock": -1,
+                "venerationmoth": -1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "To Exalt a Disciple to a degree that has no name, I will need Winter to at least the twenty-first intensity.  In any case, only the bleakest souls will be suitable.",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promotetodisciplehint",
+            "label": "Promote a Believer?",
+            "actionid": "talk",
+            "requirements": {
+                "society": 1,
+                "follower": 1,
+                "disciple": -1,
+                "summoned": -11
+            },
+            "startdescription": "To promote a Believer to a Disciple, I'll need to provide an appropriate aspect for the cult, to at least the seventh intensity.",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "talktobenefactorhint",
+            "label": "My Benefactor Insists on Discretion",
+            "actionid": "talk",
+            "requirements": {
+                "benefactor": 1
+            },
+            "startdescription": "'We can't speak here, my dear. Let's be discreet.'",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "recruitacquaintancenoculthint",
+            "label": "Recruit a new Follower?",
+            "actionid": "talk",
+            "requirements": {
+                "society": -1,
+                "acquaintance": 1
+            },
+            "startdescription": "[Once you've established a cult, use <b>TALK</b> with the Cult to recruit an Acquaintance to your Cult's ranks.]",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "recruitacquaintancehint",
+            "label": "Recruit a new Follower?",
+            "actionid": "talk",
+            "requirements": {
+                "society": 1,
+                "acquaintance": 1
+            },
+            "startdescription": "To recruit a follower, I will need a little of the power we revere. I might glean it from an Influence, or a Tool, or an Ingredient, or just the Lore of our tradition.",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "talk_aladim_wantscommission",
+            "label": "A Commission?",
+            "actionid": "talk",
+            "requirements": {
+                "aladim": 1
+            },
+            "startdescription": "'How's that Commission coming along? I'm looking forward to your thoughts.'",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "talk_bechet_wantscommission",
+            "label": "A Commission?",
+            "actionid": "talk",
+            "requirements": {
+                "bechet": 1
+            },
+            "startdescription": "'Hullo. Do you have something for me? The Commission?'",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "talk_jannings_wantscommission",
+            "label": "A Commission?",
+            "actionid": "talk",
+            "requirements": {
+                "jannings": 1
+            },
+            "startdescription": "'Please, will you conclude the Commission? My colleagues are in urgent need of the information.'",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "talk_poppy_wantscommission",
+            "label": "A Commission?",
+            "actionid": "talk",
+            "requirements": {
+                "poppycommission": 1
+            },
+            "startdescription": "'Oh, do hurry with that Commission! I can't wait.'",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "fulfilcommission_aladimhint",
+            "label": "Fulfil a Commission for the Doctor?",
+            "actionid": "talk",
+            "requirements": {
+                "commission": 1,
+                "aladim": 1,
+                "article": 1
+            },
+            "startdescription": "'Mm. I was hoping for more.' [Check the Commission details.]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "fulfilcommission_bechethint",
+            "label": "Fulfil a Commission for Mme Bechet?",
+            "actionid": "talk",
+            "requirements": {
+                "commission": 1,
+                "bechet": 1,
+                "article": 1
+            },
+            "startdescription": "'Sorry, not quite. I wanted something a little different.' [Check the Commission details.]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "fulfilcommission_janningshint",
+            "label": "Fulfil a Commission for the Count?",
+            "actionid": "talk",
+            "requirements": {
+                "commission": 1,
+                "jannings": 1,
+                "article": 1
+            },
+            "startdescription": "'No no no. This will not do. My instructions were most specific.' [Check the Commission details.]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "fulfilcommission_poppyhint",
+            "label": "Fulfil a Commission for Poppy?",
+            "actionid": "talk",
+            "requirements": {
+                "commission": 1,
+                "poppycommission": 1,
+                "article": 1
+            },
+            "startdescription": "'Oh, dear. I'm sorry. I need more... insight.' [Check the Commission details.]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "talk_nointeraction_mortal",
+            "label": "Nothing to say?",
+            "actionid": "talk",
+            "requirements": {
+                "mortal": 1
+            },
+            "startdescription": "'I don't believe we have anything to say to each other.'",
+            "craftable": false,
+            "hintonly": true
+        }
+    ]
+}

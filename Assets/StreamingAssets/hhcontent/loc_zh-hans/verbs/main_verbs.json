@@ -1,0 +1,122 @@
+{
+    "verbs": [
+        {
+            "id": "work",
+            "label": "作业",
+            "description": "或赚钱糊口，或施展无形之术。",
+            "atStart": true,
+            "slot": [
+                {
+                    "id": "work",
+                    "label": "作业",
+                    "description": "我能做的，我知道的，或者我身为的。",
+                    "required": {
+                        "ability": 1,
+                        "job": 1,
+                        "ritual": 1,
+                        "desire": 1,
+                        "benefactor": 1
+                    },
+                    "forbidden": {
+                        "reasonskill": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "dream",
+            "label": "入梦",
+            "description": "休息，重新考虑你的目标，或冒险探索睡梦中的国度。",
+            "atStart": false,
+            "slot": [
+                {
+                    "id": "dream",
+                    "label": "入梦",
+                    "description": "或做梦的方向，或待解的烦忧。",
+                    "required": {
+                        "ability": 1,
+                        "desire": 1,
+                        "illhealth": 1,
+                        "way": 1,
+                        "funds": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "study",
+            "label": "研究",
+            "description": "解锁书籍和其他宝物。",
+            "atStart": false,
+            "slot": [
+                {
+                    "id": "study",
+                    "label": "研究",
+                    "description": "研究无形之术足够耗尽十世人生。",
+                    "required": {
+                        "text": 1,
+                        "lore": 1,
+                        "ability": 1,
+                        "influence": 1,
+                        "tutor": 1,
+                        "language": 1,
+                        "legacyplotitem": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "talk",
+            "label": "谈话",
+            "description": "逼问，威胁，诱骗，教导，招募。",
+            "atStart": false,
+            "slot": [
+                {
+                    "id": "talk",
+                    "label": "谈话",
+                    "description": "盟友，仇敌，或者敌友难辨之人。",
+                    "required": {
+                        "mortal": 1,
+                        "summoned": 1,
+                        "patron": 1,
+                        "society": 1,
+                        "hq": 1,
+                        "lore": 1
+                    },
+                    "forbidden": {
+                        "wary": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "explore",
+            "label": "探索",
+            "description": "投入健康或者追随者来探索城市；调查各个地点；探究密传之所示。探索的结果通常难以预期。",
+            "atStart": false,
+            "slot": [
+                {
+                    "id": "explore",
+                    "label": "探索",
+                    "description": "地点，人物，场所，秘密。",
+                    "required": {
+                        "health": 1,
+                        "follower": 1,
+                        "secrethistories": 1,
+                        "location": 1,
+                        "ghoul.hunger": 1
+                    },
+                    "forbidden": {
+                        "hireling": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "time",
+            "label": "时间",
+            "description": "日晷之影。",
+            "atStart": false
+        }
+    ]
+}

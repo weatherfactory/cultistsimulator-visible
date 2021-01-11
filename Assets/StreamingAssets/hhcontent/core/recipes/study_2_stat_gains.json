@@ -1,0 +1,625 @@
+{
+    "recipes": [
+        {
+            "id": "studyincreasehealthstarter",
+            "label": "Exercise the Body",
+            "actionid": "study",
+            "requirements": {
+                "vitality": 2
+            },
+            "startdescription": "I am abrim with vitality. If I devote some time to exercise, I'll benefit.",
+            "description": "I've grown stronger. [I've gained Health, but it'll be more difficult to gain Health next time.]",
+            "effects": {
+                "vitality": -2,
+                "health": 1,
+                "skillhealtha": 1
+            },
+            "warmup": 60,
+            "maxexecutions": 1,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasevitalitytoplus",
+            "label": "Exercise the Body",
+            "actionid": "study",
+            "requirements": {
+                "vitality": 2
+            },
+            "startdescription": "I am abrim with vitality. If I devote some time to exercise, I'll benefit.",
+            "description": "I'm ready to grow stronger. [Use this Lesson Learnt with your Strength skill.]",
+            "effects": {
+                "vitality": -2,
+                "vitalityplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasevitalitywithinfluencehearttoplus",
+            "label": "Exercise the Body",
+            "actionid": "study",
+            "requirements": {
+                "vitality": 1,
+                "influenceheart": 1,
+                "lore": -1
+            },
+            "startdescription": "I am abrim with vitality, and this is a brisk season. If I devote some time to exercise, I'll benefit. [If you add appropriate Lore, this will allow you to create a more powerful occult Influence instead.]",
+            "description": "I'm ready to grow stronger. [Use this Lesson Learnt with your Strength skill.]",
+            "effects": {
+                "influence": -2,
+                "vitalityplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskilla",
+            "label": "Exercise the Body: Stronger...",
+            "actionid": "study",
+            "requirements": {
+                "skillhealtha": 1,
+                "vitalityplus": 2
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "I will grow stronger still.",
+            "description": "The machine, my body, ripples with power.",
+            "effects": {
+                "health": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskillb",
+            "label": "Exercise the Body:  Stronger Yet...",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthb": 1,
+                "vitalityplus": 3
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "I will grow stronger yet.",
+            "description": "I could carry a man across a river, now; or strangle him.",
+            "effects": {
+                "health": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskill_to_d_edge",
+            "label": "Exercise the Body: A Higher Strength",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "edge": 1,
+                "lore": 1
+            },
+            "startdescription": "I will follow in the footsteps of the Lionsmith, who grows strong and stronger, and of the Colonel, who does not flinch from scars.",
+            "description": "My heart beats with the steadiness of a drum and the certainty of a judge's sentence.",
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_strength": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskill_to_d_forge",
+            "label": "Exercise the Body: A Higher Strength",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "forge": 1,
+                "lore": 1
+            },
+            "startdescription": "I will burn with the strength of the Forge of Days.",
+            "description": "My heart beats with the steadiness of a drum and the certainty of a judge's sentence.",
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_strength": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskill_to_d_grail",
+            "label": "Exercise the Body: A Deeper Grace",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "grail": 1,
+                "lore": 1
+            },
+            "startdescription": "I will taste what the Grail has prescribed. I will be lithe and thorned and sweet.",
+            "description": "No storm can break the tree that bends.",
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_grace": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskill_to_d_heart",
+            "label": "Exercise the Body: A Deeper Grace",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "heart": 9,
+                "lore": 1
+            },
+            "comments": "ugh: heart influence from vitalityplus",
+            "startdescription": "I will follow the Thunderskin's voice.",
+            "description": "No storm can break the tree that bends.",
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_grace": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskill_to_d_moth",
+            "label": "Exercise the Body: A Deeper Grace",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "moth": 1,
+                "lore": 1
+            },
+            "startdescription": "Through the fire we fly, and it shall not consume us.",
+            "description": "No storm can break the tree that bends.",
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_grace": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonstarter",
+            "label": "Exercise the Mind",
+            "actionid": "study",
+            "requirements": {
+                "erudition": 2
+            },
+            "startdescription": "I have picked up odd facts, here and there. If I spend time studying what I've learnt, I could increase my Reason.",
+            "description": "My mind, the library. [I've gained Reason, but it'll be more difficult to gain Reason next time.]",
+            "effects": {
+                "erudition": -2,
+                "reason": 1,
+                "skillreasona": 1
+            },
+            "warmup": 60,
+            "maxexecutions": 1,
+            "craftable": true
+        },
+        {
+            "id": "studyincreaseeruditiontoplus",
+            "label": "Exercise the Mind",
+            "actionid": "study",
+            "requirements": {
+                "erudition": 2
+            },
+            "startdescription": "I have picked up odd facts, here and there. If I spend time studying what I've learnt, I could increase my Reason.",
+            "description": "My mind, the library. [Use this Lesson Learnt with your Scholarship skill.]",
+            "effects": {
+                "erudition": -2,
+                "eruditionplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreaseeruditionwithlanterninfluencetoplus",
+            "label": "The Light of the Mind",
+            "actionid": "study",
+            "requirements": {
+                "erudition": 1,
+                "influencelantern": 1,
+                "lore": -1
+            },
+            "startdescription": "I have picked up odd facts, here and there... and in this season of peculiar luminosity, I could increase my Reason. [If you add appropriate Lore, this will allow you to create a more powerful occult Influence instead.]",
+            "description": "My mind, the library. [Use this Lesson Learnt with your Scholarship skill.]",
+            "effects": {
+                "influence": -2,
+                "eruditionplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskilla",
+            "label": "Exercise the Mind: Wiser...",
+            "actionid": "study",
+            "requirements": {
+                "skillreasona": 1,
+                "eruditionplus": 2
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "Knowledge is a city wall built stone by stone. But what waits in the darkness beyond the walls? Why would we need a fortress, except that we had something to fear?",
+            "description": "I have reordered the boundaries of my ignorance.",
+            "effects": {
+                "reason": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskillb",
+            "label": "Exercise the Mind:  Wisest...",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonb": 1,
+                "eruditionplus": 3
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "I will grow wiser yet.",
+            "description": "My mind is a paradise of mirrors, in which all things are clear, even those things I might prefer not to see.",
+            "effects": {
+                "reason": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_lantern",
+            "label": "Exercise the Mind: A Brighter Illumination",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "lantern": 9,
+                "lore": 1
+            },
+            "startdescription": "I will follow in the footsteps of the Watchman.",
+            "description": "The higher I rise, the more I see.",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_illumination": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_winter",
+            "label": "Exercise the Mind: A Deeper Concentration",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "winter": 1,
+                "lore": 1
+            },
+            "startdescription": "I will listen for the voice of the Madrugad.",
+            "description": "Stillness is the virtue.",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_concentration": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_knock",
+            "label": "Exercise the Mind: A Brighter Illumination",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "knock": 1,
+                "lore": 1
+            },
+            "startdescription": "I will cross the threshold where the Horned-Axe waits.",
+            "description": "The higher I rise, the more I see.",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_illumination": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_secrethistories",
+            "label": "Exercise the Mind: A Deeper Concentration",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "secrethistories": 1,
+                "lore": 1
+            },
+            "startdescription": "No-one remembers all the Histories; in consequence, no-one can forget them all.",
+            "description": "Stillness is the virtue.",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_concentration": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_forge",
+            "label": "Exercise the Mind: A Brighter Illumination",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "forge": 1,
+                "lore": 1
+            },
+            "startdescription": "I will remake myself, to illuminate the night of ignorance.",
+            "description": "The higher I rise, the more I see.",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_illumination": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_edge",
+            "label": "Exercise the Mind: A Deeper Concentration",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "edge": 1,
+                "lore": 1
+            },
+            "startdescription": "I will be relentless; I will not be denied.",
+            "description": "Stillness is the virtue.",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_concentration": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionstarter",
+            "label": "Feed my Imagination",
+            "actionid": "study",
+            "requirements": {
+                "glimmering": 2
+            },
+            "startdescription": "'The tigers of wrath are wiser than the horses of instruction.' If I spend time studying what I've learnt, I could increase my Passion, and gain a Skill.",
+            "description": "There are more windows in my soul; but sunlight is not the only thing that passes through a window. [I've gained Passion, but it'll be more difficult to gain Passion next time.]",
+            "effects": {
+                "glimmering": -2,
+                "passion": 1,
+                "skillpassiona": 1
+            },
+            "warmup": 60,
+            "maxexecutions": 1,
+            "craftable": true
+        },
+        {
+            "id": "studyincreaseglimmeringtoplus",
+            "label": "Feed my Imagination",
+            "actionid": "study",
+            "requirements": {
+                "glimmering": 2
+            },
+            "startdescription": "'The tigers of wrath are wiser than the horses of instruction.' If I spend time studying what I've learnt, I could work towards increasing my Passion.",
+            "description": "There are more windows in my soul; but sunlight is not the only thing that passes through a window. [Use this Lesson Learnt with your Imagination skill.]",
+            "effects": {
+                "glimmering": -2,
+                "glimmeringplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreaseglimmeringwithmothinfluencetoplus",
+            "label": "Feed my Imagination",
+            "actionid": "study",
+            "requirements": {
+                "glimmering": 1,
+                "influencemoth": 1,
+                "lore": -1
+            },
+            "startdescription": "'The tigers of wrath are wiser than the horses of instruction.' In this season of unheralded impulse, I could work towards increasing my Passion. [If you add appropriate Lore, this will allow you to create a more powerful occult Influence instead.]",
+            "description": "There are more windows in my soul; but sunlight is not the only thing that passes through a window. [Use this Lesson Learnt with your Imagination skill.]",
+            "effects": {
+                "influence": -2,
+                "glimmeringplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskilla",
+            "label": "Feed my Imagination: Fiercer...",
+            "actionid": "study",
+            "requirements": {
+                "skillpassiona": 1,
+                "glimmeringplus": 2
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "'Who desires but acts not, breeds pestilence.'",
+            "description": "My desires grow in number. It may be that they will always outpace my actions.",
+            "effects": {
+                "passion": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskillb",
+            "label": "Feed my Imagination:  Fiercest...",
+            "actionid": "study",
+            "requirements": {
+                "skillpassionb": 1,
+                "glimmeringplus": 3
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "'Sooner murder an infant in its cradle than nurse unacted desires.'",
+            "description": "In another time, I would have been a seer, or a heretic.",
+            "effects": {
+                "passion": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskill_to_d_moth",
+            "label": "Exercise the Imagination: Unreason",
+            "actionid": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "moth": 9,
+                "lore": 1
+            },
+            "startdescription": "cut my hair, cut my bonds, cut my snip snip snip.",
+            "description": "Bring me your answers, and I shall defeat them with my questions...",
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_unreason": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskill_to_d_heart",
+            "label": "Exercise the Imagination: Unreason",
+            "actionid": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "heart": 1,
+                "lore": 1
+            },
+            "startdescription": "The Thunderskin promised: we do not cease, that are not ceased.",
+            "description": "Bring me your answers, and I shall defeat them with my questions...",
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_unreason": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskill_to_d_knock",
+            "label": "Exercise the Imagination: Folly",
+            "actionid": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "knock": 1,
+                "lore": 1
+            },
+            "startdescription": "'The apple tree never asks the beech how he shall grow, nor the lion, the horse, how he shall take his prey.'",
+            "description": "And now my soul lies ready.",
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_folly": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskill_to_d_grail",
+            "label": "Exercise the Imagination: Folly",
+            "actionid": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "grail": 1,
+                "lore": 1
+            },
+            "startdescription": "'Who desires but acts not, breeds pestilence.'",
+            "description": "And now my soul lies ready.",
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_folly": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyhealth",
+            "label": "Fresh Air and Exercise",
+            "actionid": "study",
+            "requirements": {
+                "health": 1,
+                "lore": -1
+            },
+            "comments": "lore limiter added in case we use health for researching lore at some point",
+            "effects": {
+                "vitality": 1
+            },
+            "startdescription": "Long walks kill cobwebs.",
+            "description": "I've neglected my studies, but I stand a little straighter.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyreason",
+            "label": "Read Whatever Is To Hand",
+            "actionid": "study",
+            "requirements": {
+                "reason": 1,
+                "lore": -1
+            },
+            "comments": "lore limiter added because we use reason for researching (splitting) lore",
+            "effects": {
+                "erudition": 1
+            },
+            "startdescription": "The world is awash with printed words. Even the newspapers contain knowledge, sometimes.",
+            "description": "The words contained knowledge. Now I contain it. It is a little like theft and a little like feasting and a little like the progress of an infectious disease.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studypassion",
+            "label": "Read Sentimental Literature",
+            "actionid": "study",
+            "requirements": {
+                "passion": 1
+            },
+            "comments": "lore limiter added in case we use passion for researching lore at some point",
+            "effects": {
+                "glimmering": 1
+            },
+            "startdescription": "If I proposed to learn anything, I wouldn't be reading this stuff.",
+            "description": "I've passed the time. I have been inclined to tears, and afterwards inclined to laughter. Meanwhile, the world continues.",
+            "warmup": 60,
+            "craftable": true
+        }
+    ]
+}

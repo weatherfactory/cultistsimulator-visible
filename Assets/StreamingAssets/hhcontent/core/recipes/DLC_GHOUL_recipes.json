@@ -1,0 +1,1131 @@
+{
+    "recipes": [
+        {
+            "id": "work.seance.first",
+            "actionid": "work",
+            "label": "A Well-Attended Performance by a Stage Medium",
+            "startdescription": "I stand alone in light on the stage. I take the first question from the audience - the first of many tonight who will refuse to acknowledge that the dead are dead. I have prepared well: I have a choice of responses.",
+            "requirements": {
+                "ghouljob.first": 1
+            },
+            "slots": [
+                {
+                    "id": "desire",
+                    "label": "Something More?",
+                    "description": "I am a fraud... aren't I?",
+                    "greedy": true,
+                    "required": {
+                        "desire": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "work.seance.demotion"
+                },
+                {
+                    "id": "work.seance.first.shameful"
+                },
+                {
+                    "id": "work.seance.first.profitable"
+                },
+                {
+                    "id": "work.seance.first.joyful"
+                },
+                {
+                    "id": "work.seance.first.fleeting"
+                },
+                {
+                    "id": "work.seance.first.nomemory"
+                }
+            ],
+            "warmup": 15,
+            "craftable": true
+        },
+        {
+            "id": "work.seance.first.shameful",
+            "actionid": "work",
+            "label": "Imitate the Dead: Something Shameful",
+            "startdescription": "I don't share the whole story of the sins of the dead. That would do neither of us any good. But I share hints that they will recognise.",
+            "description": "Our public business is concluded, and after the show, the bereaved will conclude our private business with a little gift - something to ensure my silence.\n\n(There is something in the air tonight. The scent of snow? It seems unlikely.)",
+            "requirements": {
+                "memory.shameful": 1
+            },
+            "effects": {
+                "favour": 1,
+                "funds": 6,
+                "passion": 1,
+                "memory.shameful": -1,
+                "mystique": 1
+            },
+            "alt": [
+                {
+                    "id": "open.dream.ghoul",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.seance.first.profitable",
+            "actionid": "work",
+            "label": "Imitate the Dead: Something Profitable",
+            "startdescription": "I've sniffed out a forgotten investment that will benefit us both. But I must be careful not to surrender too much information. The living are greedier than the dead.",
+            "description": "They'll meet me after the show. They'll be sceptical, but grateful. I've earned my finder's fee.\n\n(There is something in the air tonight. The scent of snow? It seems unlikely.)",
+            "requirements": {
+                "memory.profitable": 1
+            },
+            "effects": {
+                "funds": 6,
+                "reason": 1,
+                "memory.profitable": -1,
+                "mystique": 1
+            },
+            "alt": [
+                {
+                    "id": "open.dream.ghoul",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.seance.first.joyful",
+            "actionid": "work",
+            "label": "Imitate the Dead: Something Joyful",
+            "startdescription": "I have seen photographs of a golden afternoon, long enough ago to be sweet, not so long as to fade.",
+            "description": "They're sobbing when they return to their seat. If they return another night, I won't answer their questions. This should be the story they tell of me.\n\n(There is something in the air tonight. The scent of snow? It seems unlikely.)",
+            "requirements": {
+                "memory.joyful": 1
+            },
+            "effects": {
+                "funds": 4,
+                "health": 1,
+                "memory.joyful": -1,
+                "mystique": 1
+            },
+            "alt": [
+                {
+                    "id": "open.dream.ghoul",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.seance.first.fleeting",
+            "actionid": "work",
+            "label": "Imitate the Dead: Hearsay and Rumour",
+            "startdescription": "I've gathered enough gossip to stitch together something reasonably persuasive.",
+            "description": "I answer their questions with more questions. Call and response, like night-birds. Are they satisfied? They've sat down, at least.\n\n(There is something in the air tonight. The scent of snow? It seems unlikely.)",
+            "requirements": {
+                "fleeting": 1
+            },
+            "effects": {
+                "funds": 2,
+                "fleeting": -1
+            },
+            "alt": [
+                {
+                    "id": "open.dream.ghoul",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.seance.first.nomemory",
+            "actionid": "work",
+            "label": "Imitate the Dead as best I can",
+            "startdescription": "I have no information prepared for this one. I can only improvise.",
+            "description": "My responses were lacklustre. The audience's disappointment is evident even in the near-dark.\n\n(There is something in the air tonight. The scent of snow? It seems unlikely.)",
+            "effects": {
+                "funds": 1
+            },
+            "alt": [
+                {
+                    "id": "open.dream.ghoul",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "work.seance.demotion",
+            "actionid": "work",
+            "label": "The Dead",
+            "startdescription": "When I open my mouth to speak, I taste snow and copper -",
+            "requirements": {
+                "ghouljob.first": 1,
+                "temptation.remembrance": 1
+            },
+            "effects": {
+                "funds": 2,
+                "memory": -1,
+                "notoriety": 1
+            },
+            "aspects": {
+                "demotion": 1
+            },
+            "alt": [
+                {
+                    "id": "open.explore.ghoul",
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "work.seance.demotion.continue"
+                }
+            ]
+        },
+        {
+            "id": "work.seance.demotion.continue",
+            "actionid": "work",
+            "label": "The Performance Is Not Proceeding As I Had Planned",
+            "startdescription": "I hear my voice from far away. I am speaking of ivory and old snow. I am imitating the songs of birds. The audience have begun, uncertainly, to laugh, but a few of them are also crying. I am speaking half-familiar names: Montmerenzi. Naenia. #PREVIOUSCHARACTERNAME#. It goes on - and on - ",
+            "description": "My contract is terminated before I have left the building. The theatre manager doesn't even deign to insult me in person. I stand in the chilly street, contemplating the rags of my reputation, while pale doves contemplate me from the theatre eaves. Their chuckling and cooing is almost words: 'Montmerenzi. Naenia. #PREVIOUSCHARACTERNAME#...' ",
+            "warmup": 60
+        },
+        {
+            "id": "open.dream.ghoul",
+            "actionid": "dream",
+            "label": "The Night Before",
+            "startdescription": "There, on stage, I remembered the pale dream...",
+            "description": "There, on stage, I remembered the pale dream that had come again. The cool wind that blew when the sun was red and low.  The voice the waves once used. The shapes that loped beside us in the snow... the longing for it nests now like a knurl of flint beneath my heart.",
+            "effects": {
+                "temptation.remembrance": 1,
+                "health": 1
+            },
+            "warmup": 15
+        },
+        {
+            "id": "open.explore.ghoul",
+            "actionid": "explore",
+            "label": "'Montmerenzi'.",
+            "startdescription": "Not 'Montmorency', but 'Montmerenzi.' I <i>had</i> heard that name - back when I still considered myself a painter.",
+            "description": "This was the place I had seen the name. A gallery with a grey facade shut up like the face of a widow.",
+            "effects": {
+                "location.gallery": 1,
+                "reason": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "explore.location.gallery.ghoul",
+            "actionid": "explore",
+            "label": "Explore the Gallery",
+            "startdescription": "I pay the token admission and climb the dark stairwell. This must mean something. Perhaps it means that I have lost my mind.",
+            "description": "Disputed saints, anatomical drawings, ossuaries in pastel. Sketches of eyes daubed on rocks. Old oils of a street of marble temples in many weathers, titled 'The Seasons of Abydos'. But one painting I find myself drawn to, even before I see how she is named.",
+            "requirements": {
+                "location.gallery": 1
+            },
+            "effects": {
+                "location.gallery": -1,
+                "fragmentsecrethistories": 1
+            },
+            "alt": [
+                {
+                    "id": "open.talk.ghoul",
+                    "additional": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "open.talk.ghoul",
+            "actionid": "talk",
+            "label": "'Miss Naenia'",
+            "startdescription": "In the painting, Miss Naenia's skin is dark, but her close-cropped hair is the ivory and her eyes are the colour of snow. Each day I return, waiting to learn the reason I was drawn here. I never hear the painting speak - it's only a painting! - but afterwards I seem to remember things that she has said.",
+            "description": "I remember how Miss Naenia and I have spoken of that low red sun that understands, of that pale joy of flight. I have come to believe I bring her the treasures of my memory, she will leave a treasure in their place.",
+            "requirements": {},
+            "effects": {
+                "naenia": 1,
+                "passion": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "open.study.ghoul",
+            "actionid": "study",
+            "label": "The Top Shelf of the Study",
+            "startdescription": "Miss Naenia has reminded me of a book I have not opened in years. I still have it, somewhere.",
+            "description": "Hagan and Gristwood, 'Funerary Customs of the Rending Mountains.' I purchased this book long ago when I needed inspiration for my show. I had found nothing of use. But I remember now the formula that they recorded. The formula sounds disagreeable... but the mention of powdered ivory speaks to me.",
+            "effects": {
+                "prealzabo": 1,
+                "fragmentgrail": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "ghoul.firsttaste.prologue",
+            "actionid": "study",
+            "label": "The First Taste",
+            "requirements": {
+                "prealzabo": 1,
+                "temptation.remembrance": 1,
+                "corpse": 1,
+                "funds": 1
+            },
+            "startdescription": "I will dine alone - or not exactly alone.",
+            "slots": [
+                {
+                    "id": "forceofwill",
+                    "label": "Force of Will",
+                    "description": "It is difficult.",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "ghoul.firsttaste"
+                }
+            ],
+            "description": "I could not.",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "ghoul.firsttaste",
+            "actionid": "study",
+            "label": "The First Taste",
+            "startdescription": "It is difficult to begin. I find that I have to concentrate my will into a jagged thing like a stone spear-head. But with each mouthful it is easier.",
+            "description": "'We each of us' - I wrote much later in my journal - 'have a memory of a moment when things changed forever, though at the time we never knew it. Perhaps the world also has those memories.' I recall then that I laid down my pen and looked out past the window into the dark, but I have forgotten the other side of that moment. Perhaps I wiped my mouth. Perhaps I licked my lips.",
+            "requirements": {
+                "prealzabo": 1,
+                "temptation.remembrance": 1,
+                "corpse": 1,
+                "funds": 1,
+                "passion": 1
+            },
+            "effects": {
+                "corpse": -1,
+                "memory.unexpected": 1,
+                "prealzabo": -1,
+                "funds": -1,
+                "alzabo": 1
+            },
+            "aspects": {
+                "ascend": 1
+            },
+            "mutations": [
+                {
+                    "filter": "desire",
+                    "mutate": "ghoul.hunger",
+                    "level": 1
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.hint",
+            "actionid": "talk",
+            "label": "Speak to Miss Naenia?",
+            "startdescription": "Miss Naenia waits with the patience that is the patience of images.",
+            "requirements": {
+                "naenia": 1
+            },
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "talk.ghoul.consolation",
+            "actionid": "talk",
+            "label": "Seek consolation from Miss Naenia",
+            "startdescription": "Miss Naenia's eyes are kind.",
+            "description": "She understands my restlessness. She has known it herself now and then. She reminds me that nothing endures.",
+            "requirements": {
+                "naenia": 1,
+                "restlessness": 1
+            },
+            "effects": {
+                "restlessness": -1,
+                "fleeting": 1
+            },
+            "alt": [
+                {
+                    "id": "open.study.ghoul",
+                    "additional": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.recollection",
+            "actionid": "talk",
+            "label": "Share my recollections with Miss Naenia",
+            "startdescription": "Miss Naenia's eyes are thoughtful.",
+            "description": "Miss Naenia acknowledges that all will pass, even memory... but that memory can be passed like a torch, or a treasure.",
+            "requirements": {
+                "naenia": 1,
+                "fleeting": 1
+            },
+            "effects": {
+                "fleeting": -1,
+                "restlessness": 1
+            },
+            "alt": [
+                {
+                    "id": "open.study.ghoul",
+                    "additional": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.fascination",
+            "actionid": "talk",
+            "label": "Speak to Miss Naenia of my visions",
+            "startdescription": "Is it safe to speak of this to her?",
+            "description": "The light in here is brighter than I had realised. Colours swim beneath Miss Naenia's skin, like electricity, like oil. It is very hard to look away.",
+            "requirements": {
+                "naenia": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "fascination": 1
+            },
+            "alt": [
+                {
+                    "id": "open.study.ghoul",
+                    "additional": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.dread",
+            "actionid": "talk",
+            "label": "Speak to Miss Naenia of my Dread",
+            "startdescription": "Should I really share my fears with her? I do not think that she is a kindly painting, not exactly.",
+            "description": "The longer I look at Miss Naenia's smile, the more I am conscious of her teeth.",
+            "requirements": {
+                "naenia": 1,
+                "dread": 1
+            },
+            "effects": {
+                "dread": 1
+            },
+            "alt": [
+                {
+                    "id": "open.study.ghoul",
+                    "additional": true
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.grandmemory",
+            "actionid": "talk",
+            "label": "Falling through Time",
+            "startdescription": "When I come before Miss Naenia, it seems to me that a pale light plays around her mouth and her eyes.",
+            "description": "Later, I remembered how Miss Naenia and I had strolled through the shuttered gallery, arm in arm. The light of the candle she carried played on the faces of the other paintings. 'We will not be forgotten,' she breathed, 'as long as our image endures.'",
+            "requirements": {
+                "naenia": 1,
+                "memory": 5
+            },
+            "effects": {
+                "restlessness": 1
+            },
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memorypassionate",
+            "actionid": "talk",
+            "label": "Speak to Miss Naenia about my lover",
+            "startdescription": "I have come to reminisce with her about a potent memory.",
+            "requirements": {
+                "naenia": 1,
+                "memorypassionate": 1
+            },
+            "alt": [
+                {
+                    "id": "dreampassionatememory"
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memorypleasant",
+            "actionid": "talk",
+            "label": "Speak to Miss Naenia about my lover",
+            "startdescription": "I have come to reminisce with her about a sweet memory.",
+            "requirements": {
+                "naenia": 1,
+                "memorypleasant": 1
+            },
+            "alt": [
+                {
+                    "id": "dreampleasantmemory"
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memorybittersweet",
+            "actionid": "talk",
+            "label": "Speak to Miss Naenia about my lover",
+            "startdescription": "I have come to reminisce with her about a difficult memory.",
+            "requirements": {
+                "naenia": 1,
+                "memorybittersweet": 1
+            },
+            "alt": [
+                {
+                    "id": "dreambittersweetmemory"
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memory.menacing",
+            "actionid": "talk",
+            "label": "Share a menacing memory with Miss Naenia",
+            "startdescription": "Her eyes are watchful.",
+            "requirements": {
+                "naenia": 1,
+                "memory.menacing": 1
+            },
+            "warmup": 30,
+            "internaldeck": {
+                "label": "Response",
+                "description": "Response",
+                "spec": [
+                    "vitalityplus",
+                    "influenceedgec",
+                    "influencewinterc",
+                    "influenceedgec",
+                    "influencewinterc"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            },
+            "effects": {
+                "memory.menacing": -1
+            },
+            "description": "@#vitalityplus|Miss Naenia says nothing, but I remember afterwards how her smile warmed me against the cold.\n#influenceedgec|Miss Naenia says nothing, but I remember long afterwards how her eyes flashed.\n#influencewinterc|Miss Naenia says nothing. Silence pools like shadow between the gallery lamps.@",
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memory.shameful",
+            "actionid": "talk",
+            "label": "Share a memory of secret sin with Miss Naenia",
+            "startdescription": "Today, Miss Naenia's eyes are almost sly.",
+            "requirements": {
+                "naenia": 1,
+                "memory.shameful": 1
+            },
+            "warmup": 30,
+            "internaldeck": {
+                "label": "Response",
+                "description": "Response",
+                "spec": [
+                    "favour",
+                    "contentment",
+                    "influencegrailc",
+                    "influencegrailc",
+                    "influencegrailc"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            },
+            "effects": {
+                "memory.shameful": -1
+            },
+            "description": "@#favour|Miss Naenia says nothing, but I realise later the same idea must have occurred to both of us: we could use this as leverage against someone in authority.\n#contentment|Miss Naenia says nothing, but the intimacy of the moment is very pleasant, and the serenity lingers.\n#influencegrailc|Miss Naenia says nothing, but her mouth curves slowly, slowly. I realise that I have never seen her part her lips.@",
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memory.unexpected",
+            "actionid": "talk",
+            "label": "Share an outré memory with Miss Naenia",
+            "startdescription": "Miss Naenia's expression is difficult to read today. I have become conscious of her eyes, her mouth, the lines of her face as separate objects, conjunct only by chance, like the contents of someone's pockets emptied on to a table.",
+            "requirements": {
+                "naenia": 1,
+                "memory.unexpected": 1
+            },
+            "warmup": 30,
+            "deckeffects": {
+                "vaultrewardsb": 1
+            },
+            "effects": {
+                "memory.unexpected": -1
+            },
+            "description": "@#|Miss Naenia says nothing, but there in the gallery, I snatch my pen from my pocket, and I write, frienziedly, as if I had been given directions by someone whispering in my ear. When I follow the directions, I will find something precious.@",
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memory.joyful",
+            "actionid": "talk",
+            "label": "Share a joyful memory with Miss Naenia",
+            "startdescription": "Miss Naenia's eyes are warm.",
+            "requirements": {
+                "naenia": 1,
+                "memory.joyful": 1
+            },
+            "warmup": 30,
+            "internaldeck": {
+                "label": "Response",
+                "description": "Response",
+                "spec": [
+                    "influencehearte",
+                    "influenceheartc",
+                    "influenceheartc",
+                    "contentment",
+                    "contentment"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            },
+            "effects": {
+                "memory.joyful": -1
+            },
+            "description": "@#influencehearte|Miss Naenia says nothing, but my heart pounds like a hammered anvil, even after I leave the gallery.\n#influenceheartc|Miss Naenia says nothing, but all the way home, there is a tune in my head that leaves me thinking of her.\n#contentment|Miss Naenia says nothing, but I match her smile.@",
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.memory.profitable",
+            "actionid": "talk",
+            "label": "Share a profitable memory with Miss Naenia",
+            "startdescription": "Miss Naenia's eyes are shrewd.",
+            "requirements": {
+                "naenia": 1,
+                "memory.profitable": 1
+            },
+            "warmup": 30,
+            "internaldeck": {
+                "label": "Response",
+                "description": "Response",
+                "spec": [
+                    "jumble",
+                    "funds",
+                    "compensation",
+                    "funds",
+                    "funds"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            },
+            "effects": {
+                "memory.profitable": -1
+            },
+            "description": "@#jumble|Miss Naenia says nothing, but afterwards I think of her when I'm browsing in a junk shop, and I buy something silly on impulse.\n#funds|Miss Naenia says nothing, but the next day I receive an unexpected package in the post.\n#compensation|Miss Naenia says nothing, but afterwards I find a sovereign in the street.@",
+            "craftable": true
+        },
+        {
+            "id": "talk.ghoul.painting.palest",
+            "actionid": "talk",
+            "label": "Show Miss Naenia the Palest Painting",
+            "startdescription": "I might feel a little foolish, bringing a painting to show to a painting. But when I turn the street into the gallery, it is snowing, and only in that street. Passers-by huddle, hurry, or exclaim in wonder. I hug the painting close to me, though it is safely wrapped in brown paper, and mount the stairs to Miss Naenia's chamber.",
+            "description": "Miss Naenia is gone. A dark rectangle marks the empty place where once she hung. I stare about in consternation. But she is not here. There is nothing more to be done.\n\nNothing now, but when I unwrap the Palest Painting in the silence of my home, I see that it has changed. A faint shape stands in the doorway to Nowhere, looking over its shoulder - waiting for me to follow. The shape has something of Miss Naenia about it.",
+            "requirements": {
+                "naenia": 1,
+                "painting.palest": 1
+            },
+            "warmup": 30,
+            "effects": {
+                "naenia": -1
+            },
+            "mutations": [
+                {
+                    "mutate": "way",
+                    "filter": "painting.palest",
+                    "level": 1
+                }
+            ],
+            "craftable": true
+        },
+        {
+            "id": "dream.ghoul.painting.palest",
+            "actionid": "dream",
+            "label": "Enter the Painted Door",
+            "startdescription": "The House of the Sun has many secret doors. They are of course all locked, but tonight Miss Naenia will open this one for me. Beyond that door, the Elegiast waits, with winter in his hand.",
+            "requirements": {
+                "painting.palest": 1,
+                "way": 1
+            },
+            "linked": [
+                {
+                    "id": "dream.ghoul.sacrificeabilities"
+                }
+            ],
+            "craftable": true,
+            "warmup": 10
+        },
+        {
+            "id": "dream.ghoul.sacrificeabilities",
+            "actionid": "dream",
+            "label": "Death is Down",
+            "startdescription": "Beyond the door, a winding stair lit by black nephrite lamps, and far below, the place called Nowhere where the Dead drift down, where nothing is exactly forgotten. Down I go.",
+            "slots": [
+                {
+                    "id": "sacrifice",
+                    "label": "The Painting's Hunger",
+                    "description": "The Painted Door will take everything, if I let it. Do <i>not</i> try this at home.",
+                    "required": {
+                        "health": 1,
+                        "passion": 1,
+                        "reason": 1,
+                        "fatigue": 1,
+                        "disillusionment": 1,
+                        "concentration": 1,
+                        "passionexhausted": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "dream.ghoul.noabilitysacrificed"
+                }
+            ],
+            "linked": [
+                {
+                    "id": "ending.minorpalestvictory"
+                },
+                {
+                    "id": "dream.ghoul.sacrificeabilities"
+                }
+            ],
+            "warmup": 30,
+            "effects": {
+                "health": -1,
+                "passion": -1,
+                "reason": -1,
+                "fatigue": -1,
+                "disillusionment": -1,
+                "concentration": -1,
+                "passionexhausted": -1
+            }
+        },
+        {
+            "id": "dream.ghoul.noabilitysacrificed",
+            "actionid": "dream",
+            "label": "From Whom Nothing More Can Be Taken",
+            "startdescription": "The Elegiast does not offer immortality, but an existence beyond death. The Palest Painting will draw from me what life is left, but only if I permit it.",
+            "requirements": {
+                "health": -1,
+                "passion": -1,
+                "reason": -1,
+                "fatigue": -1,
+                "disillusionment": -1,
+                "concentration": -1,
+                "passionexhausted": -1
+            },
+            "description": "I am awake. On the wall above me, the painting waits hungrily."
+        },
+        {
+            "id": "ending.minorpalestvictory",
+            "actionid": "dream",
+            "label": "NOWHERE",
+            "startdescription": "I have seen the lost colours, and the price of it is that I am dead and Nowhere. But if the Elegiast remembers me, perhaps he will call me back into the Mansus, to walk the world until my appointed end - ",
+            "extantreqs": {
+                "health": -1,
+                "passion": -1,
+                "reason": -1,
+                "fatigue": -1,
+                "disillusionment": -1,
+                "concentration": -1,
+                "passionexhausted": -1
+            },
+            "ending": "minorpalestvictory",
+            "signalEndingFlavour": "Pale",
+            "warmup": 30
+        },
+        {
+            "id": "study.alzabo.remnant",
+            "actionid": "study",
+            "label": "Feast upon a Remnant",
+            "startdescription": "@#corpse| Once again, my appetite rises, flecked once again with shivers of revulsion.\n#spirit_wintera_moth| It will lie still, if I tell it.\n#spirit_wintera_edge| It will lie still, if I tell it. It may even be succulent.\n#corpse.furious| I will grind it to powder and get it down.\n#corpse.luxurious| Chewy.\n#corpse.liminal| Like consuming raw spice.\n#corpse.horizon| If I could only boil it until it was soft -\n#corpse.splendid| This will not be an easy meal.\n#ingredientheartf| Bright upon my tongue like copper citrus.\n#ingredientmothf| I had wondered what the taste might be, but chiefly, now, my experience is that it is <i>gooey</i>.\n#spirit_forgee_edge.defunct| I will set to, grimly, with water to rinse my mouth and to extinguish any unexpected fires.\n#decrepitude| So this is what it has come to. I am not dead. I hope that I may be dead enough that this will work as I hope, and unlock those memories that lair in my own flesh.\n#|Let's hope this is edible.@",
+            "description": "@#memory.furious|I have a savage memory, inherited from who knows how many feasts - a sand-coloured memory, ready to paint.\n#memory.liminal| I have a memory of thresholds, ready to paint.\n#memory.splendid| I have a memory of how matters stood before the Intercalate, ready to paint.\n#memory.golden| I have a memory of how things stood before the Forge was lit, ready to paint.\n#memory.horizon| I have a memory of something even the King who bore it did not understand.\n#memory.endless| I have a memory now of something that should never have ceased - and perhaps it has not -\n#memory.wildering| I have a memory of the Hunt at which the Wheel was first brought to earth...\n#memory.honeyed| I have a memory which almost seems my own.\n#|Something?@",
+            "requirements": {
+                "remnant": 1,
+                "alzabo": 1,
+                "remembrancemarks": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.remnant.reducehunger"
+                }
+            ],
+            "alt": [
+                {
+                    "id": "study.alzabo.follower_scar_edge"
+                },
+                {
+                    "id": "study.alzabo.follower_scar_knock"
+                },
+                {
+                    "id": "study.alzabo.follower_scar_winter"
+                },
+                {
+                    "id": "study.alzabo.corpse"
+                },
+                {
+                    "id": "study.alzabo.crucible"
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "study.alzabo.remnant.reducehunger",
+            "actionid": "study",
+            "label": "Feast upon a Remnant",
+            "requirements": {
+                "ghoul.hunger": 1
+            },
+            "mutations": [
+                {
+                    "filter": "remembrancemarks",
+                    "mutate": "ghoul.hunger",
+                    "level": -1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "study.alzabo.corpse",
+            "actionid": "study",
+            "label": "Feast upon a Corpse",
+            "startdescription": "There is sometimes something left over which must be buried again, but one can be efficient.",
+            "requirements": {
+                "corpse": 1,
+                "alzabo": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.corpse.reducehunger"
+                }
+            ],
+            "deckeffects": {
+                "ghoul.memory": 1
+            },
+            "effects": {
+                "corpse": -1
+            }
+        },
+        {
+            "id": "study.alzabo.corpse.reducehunger",
+            "actionid": "study",
+            "label": "Feast upon a Corpse",
+            "requirements": {
+                "ghoul.hunger": 1
+            },
+            "mutations": [
+                {
+                    "filter": "remembrancemarks",
+                    "mutate": "ghoul.hunger",
+                    "level": -1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "study.alzabo.follower_scar_edge",
+            "actionid": "study",
+            "label": "Old Pain",
+            "startdescription": "Brutal experience has left a savage tang in the flesh.",
+            "requirements": {
+                "follower_scar_edge": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.follower_scar.reducehunger"
+                }
+            ],
+            "effects": {
+                "dread": 1,
+                "influenceedge": 1,
+                "memory.menacing": 1,
+                "corpse": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "study.alzabo.follower_scar_knock",
+            "actionid": "study",
+            "label": "Old Pain",
+            "startdescription": "Too many doors have opened in this flesh, and the taste is a labyrinth of horrors.",
+            "requirements": {
+                "follower_scar_knock": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.follower_scar.reducehunger"
+                }
+            ],
+            "effects": {
+                "dread": 1,
+                "influenceknock": 1,
+                "memory.menacing": 1,
+                "corpse": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "study.alzabo.follower_scar_winter",
+            "actionid": "study",
+            "label": "Old Pain",
+            "startdescription": "Chilly misery has left a frostiness in this flesh, and my heart is chilled thereby.",
+            "requirements": {
+                "follower_scar_winter": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.follower_scar.reducehunger"
+                }
+            ],
+            "effects": {
+                "dread": 1,
+                "influencewinter": 1,
+                "memory.menacing": 1,
+                "corpse": -1
+            },
+            "warmup": 10
+        },
+        {
+            "id": "study.alzabo.follower_scar.reducehunger",
+            "actionid": "study",
+            "label": "Old Pain",
+            "requirements": {
+                "ghoul.hunger": 1
+            },
+            "mutations": [
+                {
+                    "filter": "remembrancemarks",
+                    "mutate": "ghoul.hunger",
+                    "level": -1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "study.alzabo.crucible",
+            "actionid": "study",
+            "label": "Feast upon Crucible's Remains",
+            "startdescription": "Go up: I need only take a little.",
+            "description": "The burns are very minor - they will heal quickly - but the taste of him will be in my mouth for days.",
+            "requirements": {
+                "alzabo": 1,
+                "spirit_forgee_edge.defunct": 1
+            },
+            "effects": {
+                "influenceforgec": 1,
+                "spirit_forgee_edge.consumed": 1
+            },
+            "linked": [
+                {
+                    "id": "study.alzabo.crucible.reducehunger"
+                }
+            ]
+        },
+        {
+            "id": "study.alzabo.crucible.reducehunger",
+            "actionid": "study",
+            "label": "Feast upon Crucible's Remains",
+            "requirements": {
+                "ghoul.hunger": 1
+            },
+            "mutations": [
+                {
+                    "filter": "remembrancemarks",
+                    "mutate": "ghoul.hunger",
+                    "level": -1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "explore.ghoul.findgraveyard",
+            "actionid": "explore",
+            "requirements": {
+                "ghoul.hunger": 1
+            },
+            "effects": {
+                "location.cemetery": 1,
+                "mystique": 1
+            },
+            "label": "Search for Promising Cemeteries",
+            "startdescription": "Prowl the streets, seeking places of burial which are close, but not too close - populous, but not too busy.",
+            "description": "I've found a promising burial ground.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "work.seance",
+            "actionid": "work",
+            "label": "A Clandestine Consultation",
+            "startdescription": "My reputation as a performer is ruined. My reputation as an oracle is only begun. But the authorities have their eye on me.",
+            "description": "No-one stops by my rooms today. It's for the best: I had nothing to tell them.",
+            "requirements": {
+                "ghouljob": 1
+            },
+            "alt": [
+                {
+                    "id": "work.seance.shameful"
+                },
+                {
+                    "id": "work.seance.profitable"
+                },
+                {
+                    "id": "work.seance.joyful"
+                },
+                {
+                    "id": "work.seance.menacing"
+                },
+                {
+                    "id": "work.seance.unexpected"
+                },
+                {
+                    "id": "work.seance.grandmemory"
+                },
+                {
+                    "id": "work.seance.other"
+                }
+            ],
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "work.seance.shameful",
+            "actionid": "work",
+            "label": "Remembering the Dead: Something Shameful",
+            "startdescription": "I've found someone who will purchase my silence.",
+            "description": "A shabby transaction, but a profitable one.",
+            "requirements": {
+                "memory.shameful": 1
+            },
+            "effects": {
+                "funds": 3,
+                "memory.shameful": -1
+            }
+        },
+        {
+            "id": "work.seance.profitable",
+            "actionid": "work",
+            "label": "Remembering the Dead: Something Profitable",
+            "startdescription": "I've found someone who'll benefit from this memory. They'll pay well.",
+            "description": "We both did well out of that... and my reputation is a little uncannier.",
+            "requirements": {
+                "memory.profitable": 1
+            },
+            "effects": {
+                "funds": 3,
+                "memory.profitable": -1,
+                "mystique": 1
+            }
+        },
+        {
+            "id": "work.seance.joyful",
+            "actionid": "work",
+            "label": "Remembering the Dead: Something Joyful",
+            "startdescription": "It might not necessarily be memories of my client, but it's something true.",
+            "description": "Enough for now. My client's tears are welcome, even to them.",
+            "requirements": {
+                "memory.joyful": 1
+            },
+            "effects": {
+                "funds": 2,
+                "memory.joyful": -1,
+                "contentment": 1,
+                "mystique": 1
+            }
+        },
+        {
+            "id": "work.seance.menacing",
+            "actionid": "work",
+            "label": "Remembering the Dead: Something Menacing",
+            "startdescription": "This will be stark. I might not enjoy it.",
+            "description": "My client is aghast, but also agog. Some people will pay for this. Some people will pay for anything.",
+            "requirements": {
+                "memory.menacing": 1
+            },
+            "effects": {
+                "funds": 2,
+                "memory.menacing": -1,
+                "dread": 1,
+                "mystique": 1
+            }
+        },
+        {
+            "id": "work.seance.unexpected",
+            "actionid": "work",
+            "label": "Remembering the Dead: Something Unexpected",
+            "startdescription": "It does not do for oracles to be too predictable.",
+            "description": "I never remember exactly what I said, afterwards, but my lips retain the taste of the words.",
+            "requirements": {
+                "memory.unexpected": 1
+            },
+            "effects": {
+                "funds": 2,
+                "memory.unexpected": -1,
+                "mystique": 1
+            },
+            "internaldeck": {
+                "label": "Something Unexpected",
+                "description": "Something Unexpected",
+                "spec": [
+                    "vitalityplus",
+                    "fascination",
+                    "dread",
+                    "eruditionplus",
+                    "glimmeringplus",
+                    "influencelanternc",
+                    "influencewinterc",
+                    "influencemothc",
+                    "fragmentsecrethistories",
+                    "vitalityplus",
+                    "fascination",
+                    "dread",
+                    "eruditionplus",
+                    "glimmeringplus",
+                    "influencelanternc",
+                    "influencewinterc",
+                    "influencemothc",
+                    "fragmentsecrethistories",
+                    "fragmentsecrethistoriesc",
+                    "influencemothe"
+                ],
+                "resetonexhaustion": true,
+                "draws": 1
+            }
+        },
+        {
+            "id": "work.seance.grandmemory",
+            "actionid": "work",
+            "label": "Too Rich a Wine",
+            "startdescription": "Do I really want to speak of the colours that were lost?",
+            "description": "My client stumbles from the room. I don't think they understood one-quarter of what I said, but they'll have a story to tell.",
+            "requirements": {
+                "memory": 5
+            },
+            "effects": {
+                "funds": 1,
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "work.seance.other",
+            "actionid": "work",
+            "label": "Inspiration and Desperation",
+            "startdescription": "I can cobble together enough half-truths to satisfy my client.",
+            "description": "I've been paid my fee. It's difficult to say whether I have earnt it. Fortunately, it's difficult for them to say whether I have earnt it, too.",
+            "comments": "I've decided that Fleeting Rems get eaten and romantic rems, Dread, F all get kept. We can crack this into specifics if we have too.",
+            "requirements": {
+                "memory": 1
+            },
+            "effects": {
+                "funds": 1,
+                "mystique": 1,
+                "fleeting": -1
+            }
+        }
+    ]
+}

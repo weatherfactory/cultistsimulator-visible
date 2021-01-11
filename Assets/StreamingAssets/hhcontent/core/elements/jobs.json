@@ -1,0 +1,422 @@
+{
+    "elements": [
+        {
+            "id": "gloverandgloverjuniorjob",
+            "label": "Junior Position at Glover & Glover",
+            "aspects": {
+                "job": 1
+            },
+            "description": "My intellect should be put to better use! But the pay is better than labourer's work. [If you don't attend this job regularly, you might suffer a demotion.]",
+            "xtriggers": {
+                "careeradvancement": "gloverandglover_difficultbossa_job",
+                "employment": "gloverandgloverjuniorjob"
+            },
+            "lifetime": 90,
+            "decayTo": "gloverandgloverjuniorjob_demotion"
+        },
+        {
+            "id": "gloverandgloverjuniorjob_nodifficultbossa",
+            "label": "Junior Position at Glover & Glover",
+            "aspects": {
+                "job": 1
+            },
+            "description": "My intellect should be put to better use! But the pay is better than labourer's work. [If you don't attend this job regularly, you might suffer a demotion.]",
+            "xtriggers": {
+                "careeradvancement": "gloverandgloverjob",
+                "employment": "gloverandgloverjuniorjob_nodifficultbossa"
+            },
+            "lifetime": 90,
+            "decayTo": "gloverandgloverjuniorjob_nodifficultbossa_demotion"
+        },
+        {
+            "id": "gloverandglover_difficultbossa_job",
+            "label": "A Position at Glover and Glover",
+            "aspects": {
+                "annoyance": 1,
+                "job": 1
+            },
+            "description": "A position in Records under Mr Alden. I earn a little more; I stay a little later. Mr Alden always watches me closely. [If you don't attend this job regularly, you might suffer a demotion.]",
+            "xtriggers": {
+                "endannoyance": "gloverandglover_difficultbossa_gone_job",
+                "careeradvancement": "gloverandgloverseniorjob",
+                "employment": "gloverandglover_difficultbossa_job"
+            },
+            "lifetime": 59,
+            "decayTo": "gloverandgloverjuniorjob_demotion"
+        },
+        {
+            "id": "gloverandglover_difficultbossa_gone_job",
+            "label": "Position at Glover & Glover",
+            "aspects": {
+                "job": 1
+            },
+            "description": "The man called Alden is gone. I may find matters easier when I return to work.",
+            "comments": "interim job that immediately changes to standard one."
+        },
+        {
+            "id": "gloverandgloverjob",
+            "label": "Position at Glover & Glover",
+            "aspects": {
+                "job": 1
+            },
+            "slots": [
+                {
+                    "id": "Diligence",
+                    "label": "Diligence",
+                    "actionid": "work",
+                    "required": {
+                        "reason": 1
+                    },
+                    "description": "Extra effort. It might help, if I'm very lucky."
+                }
+            ],
+            "description": "I earn a little more; I stay a little later. Envy glints in the eye of the junior clerk who occupies my old desk. [If you don't attend this job regularly, you might suffer a demotion.]",
+            "xtriggers": {
+                "careeradvancement": "gloverandgloverseniorjob",
+                "employment": "gloverandgloverjob"
+            },
+            "lifetime": 90,
+            "decayTo": "gloverandgloverjuniorjob_nodifficultbossa_demotion"
+        },
+        {
+            "id": "gloverandgloverjob_youngerglovergone",
+            "label": "Position at Glover & Glover",
+            "aspects": {
+                "job": 1
+            },
+            "slots": [
+                {
+                    "id": "Diligence",
+                    "label": "Diligence",
+                    "actionid": "work",
+                    "required": {
+                        "reason": 1
+                    },
+                    "description": "Extra effort. It might help, if I'm very lucky."
+                }
+            ],
+            "description": "I earn a little more; I stay a little later. Envy glints in the eye of the junior clerk who occupies my old desk. [If you don't attend this job regularly, you might suffer a demotion.]",
+            "xtriggers": {
+                "careeradvancement": "gloverandgloverseniorjob_youngerglovergone",
+                "employment": "gloverandgloverjob_youngerglovergone"
+            },
+            "lifetime": 90,
+            "decayTo": "gloverandgloverjob_youngerglovergone_demotion"
+        },
+        {
+            "id": "gloverandgloverseniorjob",
+            "label": "Senior Position at Glover & Glover",
+            "aspects": {
+                "annoyance": 1,
+                "job": 1
+            },
+            "slots": [
+                {
+                    "id": "Devotion",
+                    "label": "Devotion",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "work",
+                    "description": "My position is demanding. I must concentrate my mind."
+                }
+            ],
+            "description": "I suppose, theoretically, I could rise higher, if someone died. [If you don't attend this job regularly, you might suffer a demotion.]",
+            "xtriggers": {
+                "endannoyance": "gloverandgloverseniorjob_youngerglovergone",
+                "employment": "gloverandgloverseniorjob"
+            },
+            "lifetime": 60,
+            "decayTo": "gloverandgloverjob_demotion"
+        },
+        {
+            "id": "gloverandgloverseniorjob_youngerglovergone",
+            "label": "Senior Position at Glover & Glover",
+            "aspects": {
+                "job": 1
+            },
+            "slots": [
+                {
+                    "id": "Devotion",
+                    "label": "Devotion",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionid": "work",
+                    "description": "My position is demanding. I must concentrate my mind."
+                }
+            ],
+            "description": "With the younger Glover gone, I might rise even higher. [If you don't attend this job regularly, you might suffer a demotion.]",
+            "xtriggers": {
+                "careeradvancement": "gloverandglovertopjob",
+                "employment": "gloverandgloverseniorjob_youngerglovergone"
+            },
+            "lifetime": 90,
+            "decayTo": "gloverandgloverjob_youngerglovergone_demotion"
+        },
+        {
+            "id": "gloverandglovertopjob",
+            "aspects": {
+                "job": 1
+            },
+            "label": "Board Seat at Glover & Glover",
+            "description": "The younger Glover's disappearance left a board seat empty. I now occupy it. [If you don't attend this job regularly, you might suffer a demotion.]",
+            "lifetime": 100,
+            "decayTo": "gloverandglovertopjob_tainted_demotion",
+            "xtriggers": {
+                "employment": "gloverandglovertopjob"
+            }
+        },
+        {
+            "id": "gloverandglovertopjob_tainted",
+            "aspects": {
+                "job": 1
+            },
+            "label": "Board Seat at Glover & Glover",
+            "description": "Rumours of my esoteric interests have reached the ears of the elder Glover. This has left my position uncertain. [If you don't attend this job regularly, you might suffer a demotion.]",
+            "lifetime": 100,
+            "decayTo": "gloverandglovertopjob_tainted_demotion",
+            "xtriggers": {
+                "employment": "gloverandglovertopjob_tainted"
+            }
+        },
+        {
+            "id": "gloverandgloverjuniorjob_demotion",
+            "aspects": {
+                "job": 1,
+                "demotion": 1
+            },
+            "label": "A Difficulty at Work: Demotion to a Junior Position",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "Persuasion",
+                    "required": {
+                        "passion": 1
+                    },
+                    "actionid": "work"
+                }
+            ],
+            "description": "My absence from the office has been noted. I've been demoted, and I'll need to argue persuasively to keep my job.",
+            "xtriggers": {
+                "plead": "gloverandgloverjuniorjob"
+            }
+        },
+        {
+            "id": "gloverandgloverjuniorjob_nodifficultbossa_demotion",
+            "aspects": {
+                "job": 1,
+                "demotion": 1
+            },
+            "label": "A Difficulty at Work: Demotion to a Junior Position",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "Persuasion",
+                    "required": {
+                        "passion": 1
+                    },
+                    "actionid": "work"
+                }
+            ],
+            "description": "My absence from the office has been noted. I've been demoted, and I'll need to argue persuasively to keep my job.",
+            "xtriggers": {
+                "plead": "gloverandgloverjuniorjob_nodifficultbossa"
+            }
+        },
+        {
+            "id": "gloverandgloverjob_demotion",
+            "aspects": {
+                "job": 1,
+                "demotion": 1
+            },
+            "label": "A Difficulty at Work: Demotion",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "Persuasion",
+                    "required": {
+                        "passion": 1
+                    },
+                    "actionid": "work"
+                }
+            ],
+            "description": "My absence from the office has been noted. I've been demoted, and I'll need to argue persuasively to keep my job.",
+            "xtriggers": {
+                "plead": "gloverandgloverjob"
+            }
+        },
+        {
+            "id": "gloverandgloverjob_youngerglovergone_demotion",
+            "aspects": {
+                "job": 1,
+                "demotion": 1
+            },
+            "label": "A Difficulty at Work: Demotion",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "Persuasion",
+                    "required": {
+                        "passion": 1
+                    },
+                    "actionid": "work"
+                }
+            ],
+            "description": "My absence from the office has been noted. I've been demoted, and I'll need to argue persuasively to keep my job.",
+            "xtriggers": {
+                "plead": "gloverandgloverjob_youngerglovergone"
+            }
+        },
+        {
+            "id": "gloverandglovertopjob_tainted_demotion",
+            "aspects": {
+                "job": 1,
+                "demotion": 1
+            },
+            "label": "A Difficulty at Work: A Risk of Demotion",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "Persuasion",
+                    "required": {
+                        "passion": 1
+                    },
+                    "actionid": "work"
+                }
+            ],
+            "description": "Considerable latitude is allowed to someone in my position, but my absence has been noted. I will have to charm the elder Glover.",
+            "xtriggers": {
+                "plead": "gloverandglovertopjob_tainted"
+            }
+        },
+        {
+            "id": "institutephysicianjob",
+            "aspects": {
+                "job": 1
+            },
+            "description": "Long hours; but good pay.",
+            "label": "A Position at the Institute"
+        },
+        {
+            "id": "investmentsjobc",
+            "aspects": {
+                "benign": 1
+            },
+            "label": "A Generous Private Income",
+            "description": "I am well provided for.",
+            "xtriggers": {
+                "decline": "investmentsjobb"
+            },
+            "noartneeded": true
+        },
+        {
+            "id": "investmentsjobb",
+            "label": "A Substantial Private Income",
+            "description": "Enough of an income to live in comfort.",
+            "aspects": {
+                "benign": 1
+            },
+            "xtriggers": {
+                "decline": "investmentsjoba"
+            },
+            "noartneeded": true
+        },
+        {
+            "id": "investmentsjoba",
+            "aspects": {
+                "benign": 1
+            },
+            "label": "A Modest Private Income",
+            "description": "My investments provide more than enough to live on.",
+            "xtriggers": {
+                "decline": "jumble"
+            },
+            "noartneeded": true
+        },
+        {
+            "id": "ghouljob.first",
+            "aspects": {
+                "job": 1
+            },
+            "label": "A Convincing Spiritualist Routine",
+            "description": "Sometimes, when I am particularly effective, the front row faints.",
+            "slots": [
+                {
+                    "id": "memory",
+                    "label": "Information",
+                    "actionid": "work",
+                    "required": {
+                        "memory": 1
+                    }
+                }
+            ],
+            "xtriggers": {
+                "demotion": "ghouljob"
+            }
+        },
+        {
+            "id": "ghouljob",
+            "aspects": {
+                "job": 1
+            },
+            "label": "A Reputation as a Medium",
+            "description": "Sometimes I speak in voices that even I do not expect.",
+            "slots": [
+                {
+                    "id": "memory",
+                    "label": "Information",
+                    "actionid": "work",
+                    "required": {
+                        "memory": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "auctioneerjob",
+            "aspects": {
+                "job": 1
+            },
+            "label": "A Position at Oriflamme's Auction House",
+            "description": "",
+            "noartneeded": true
+        },
+        {
+            "id": "priestjob",
+            "aspects": {
+                "job": 1
+            },
+            "slots": [
+                {
+                    "id": "ability",
+                    "label": "Ability",
+                    "required": {
+                        "passion": 1,
+                        "reason": 1,
+                        "health": 1
+                    },
+                    "actionid": "work"
+                },
+                {
+                    "id": "doctrine",
+                    "label": "Doctrine",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionid": "work"
+                },
+                {
+                    "id": "fervour",
+                    "label": "Fervour",
+                    "required": {
+                        "fervour": 1
+                    },
+                    "actionid": "work"
+                }
+            ],
+            "label": "An Appointment to a Quiet Parish",
+            "description": "As long as I do not draw the attention of the Bishop through dereliction or scandal, I can draw a living here."
+        }
+    ]
+}

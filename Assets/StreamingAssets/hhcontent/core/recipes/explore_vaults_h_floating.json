@@ -1,0 +1,55 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaultfloating1_setup",
+            "label": "Beginning an Expedition: the 'Hebe Stanton'",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultfloating1": 1
+            },
+            "effects": {
+                "guardian_watchers": 1,
+                "seal_wardeddoor": 1,
+                "peril_sea": 1
+            },
+            "startdescription": "It is rare for passenger vessels to visit the grim island where the 'Hebe Stanton' is docking - but we can charter a fishing boat, and trust the sea behaves. The real work, of passing guards and doors, will begin if we get on board. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultfloating1_success",
+            "label": "A Cosy Nest",
+            "actionid": "explore",
+            "requirements": {
+                "vaultfloating1": 1
+            },
+            "effects": {
+                "vaultfloating1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "ceaselesstantrasanskrit",
+                    "leoninetantrasanskrit",
+                    "incandescenttantrasanskrit",
+                    "firecircletantrasanskrit"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "There are few passengers on board - no wonder, if this cheerless icy isle was the ship's destination. But there's at least one passenger - someone who had protected their cabin door with more than physical locks. They must have gone ashore. They might return at any moment - ",
+            "description": "We empty the luggage, upend the books to shake them, turn pictures to check the backs. We find clothes, tickets, maps, nothing out of the ordinary... although there is a curious translucent material like a sheet of snakeskin draped over a chair-back. At last, when we slash the mattress to search its stuffing, we find a little collection of ivory scroll-cases.",
+            "warmup": 30,
+            "craftable": false
+        }
+    ]
+}

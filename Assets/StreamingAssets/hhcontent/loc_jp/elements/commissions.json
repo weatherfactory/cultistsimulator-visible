@@ -1,0 +1,919 @@
+{
+	"elements": [
+		{
+			"id": "commissionarticlesecrethistory",
+			"label": "依頼：秘史",
+			"aspects": {
+				
+			},
+			"description": "変化が必要だ",
+			"lifetime": 1,
+			"decayTo": "commissionarticlesecrethistories",
+			"noartneeded": true
+		},
+		{
+			"id": "commissionarticlesecrethistoryb",
+			"label": "依頼：秘史",
+			"aspects": {
+				
+			},
+			"description": "変化が必要だ",
+			"lifetime": 1,
+			"decayTo": "commissionarticlesecrethistoriesb",
+			"noartneeded": true
+		},
+		{
+			"id": "commissionarticlesecrethistoryc",
+			"label": "依頼：秘史",
+			"aspects": {
+				
+			},
+			"description": "変化が必要だ",
+			"lifetime": 1,
+			"decayTo": "commissionarticlesecrethistoriesc",
+			"noartneeded": true
+		},
+		{
+			"id": "commissionarticlesecrethistories",
+			"label": "依頼：秘史",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "アレッポの男として知られるイブン・アル＝アディム博士が依頼をしてきた。世界の秘史を集めてきてほしいと言っている。[この依頼を遂行するには、レベル2以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticlesecrethistoriesb",
+			"label": "依頼：秘史（詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "アレッポの男として知られるイブン・アル＝アディム博士が依頼をしてきた。世界の隠された歴史を論じる実質的な論文を求めているようだ。[この依頼を遂行するには、レベル4以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticlesecrethistoriesc",
+			"label": "依頼：秘史（非常に詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "アレッポの男として知られるイブン・アル＝アディム博士が依頼をしてきた。世界の隠された歴史の中でも特に世に知られていない情報を求めているようだ。[この依頼を遂行するには、レベル6以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticlelantern",
+			"label": "依頼：灯り",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "アレッポの男として知られるイブン・アル＝アディム博士が依頼をしてきた。灯りに関する謎を徹底的に調査してほしいと言っている。[この依頼を遂行するには、レベル2以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticlelanternb",
+			"label": "依頼：灯り（詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "アレッポの男として知られるイブン・アル＝アディム博士が依頼をしてきた。灯りの謎を詳しく解説してほしいと言っている。[この依頼を遂行するには、レベル4以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticlelanternc",
+			"label": "依頼：灯り（非常に詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "アレッポの男として知られるイブン・アル＝アディム博士が依頼をしてきた。灯りの謎を非常に細かく調査してほしいと言っている。[この依頼を遂行するには、レベル6以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticleforge",
+			"label": "依頼：鍛造",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "オランプ・ベシェ夫人は、「ケリシャム・レビュー」にふさわしい記事を募集している。鍛造の信条に刺激を受けた文章が欲しいそうだ。[この依頼を遂行するには、レベル2以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticleforgeb",
+			"label": "依頼：鍛造（詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "オランプ・ベシェ夫人は、「ケリシャム・レビュー」にふさわしい記事を募集している。鍛造に関してもう少し詳しい記事が欲しいそうだ。[この依頼を遂行するには、レベル4以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticleforgec",
+			"label": "依頼：鍛造（非常に詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "オランプ・ベシェ夫人は、「ケリシャム・レビュー」にふさわしい記事を募集している。彼女が求めているのは、鍛造がもたらす変化や苦悩に関する非常に詳しい、または強烈な記事だ。[この依頼を遂行するには、レベル6以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticlegrail",
+			"label": "依頼：聖杯",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "オランプ・ベシェ夫人は、「ケリシャム・レビュー」にふさわしい記事を募集している。赤い聖杯に関する刺激的な記事が欲しいそうだ。[この依頼を遂行するには、レベル2以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticlegrailb",
+			"label": "依頼：聖杯（詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "オランプ・ベシェ夫人は、「ケリシャム・レビュー」にふさわしい記事を募集している。赤い聖杯とその魅惑に対する反応に関する、更に詳しい記事に興味があるらしい。[この依頼を遂行するには、レベル4以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticlegrailc",
+			"label": "依頼：聖杯（非常に詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "オランプ・ベシェ夫人は、「ケリシャム・レビュー」にふさわしい記事を募集している。彼女が求めているのは、非常に詳しく、「大胆」な赤い聖杯に関する記事だ。[この依頼を遂行するには、レベル6以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "passion1",
+					"label": "情熱",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticlemoth",
+			"label": "依頼：蛾",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "オランプ・ベシェ夫人は、「ケリシャム・レビュー」にふさわしい記事を募集している。特に彼女は、蛾と呼ばれる信条に関する興味深い記事を求めているようだ。[この依頼を遂行するには、レベル2以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticlemothb",
+			"label": "依頼：蛾（詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "オランプ・ベシェ夫人は、「ケリシャム・レビュー」にふさわしい記事を募集している。彼女が求めているのは、蛾に関する非常に謎めいた記事だ。[この依頼を遂行するには、レベル4以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticlemothc",
+			"label": "依頼：蛾（非常に詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "オランプ・ベシェ夫人は、「ケリシャム・レビュー」にふさわしい記事を募集している。蛾とその謎に関する非常に詳しい記事を求めているようだ。[この依頼を遂行するには、レベル6以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "passion1",
+					"label": "情熱",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticleheart",
+			"label": "依頼：心臓",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "伯爵は興味を引く情報には対価を払うと言っている。今回、彼が求めているのは、心臓の謎に関する情報だ。[この依頼を遂行するには、レベル2以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticleheartb",
+			"label": "依頼：心臓（詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "伯爵は興味を引く情報には対価を払うと言っている。今回は、心臓の謎に関する詳しい研究を求めているようだ。[この依頼を遂行するには、レベル4以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticleheartc",
+			"label": "依頼：心臓（非常に詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "伯爵は興味を引く情報には対価を払うと言っている。今回は、心臓の謎に関する非常に詳しい研究を求めているようだ。[この依頼を遂行するには、レベル6以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "passion1",
+					"label": "情熱",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticleedge",
+			"label": "依頼：刃",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "伯爵は興味を引く情報には対価を払うと言っている。今回は、刃の信仰に関する情報が欲しいらしい。[この依頼を遂行するには、レベル2以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticleedgeb",
+			"label": "依頼：刃（詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "伯爵は興味を引く情報には対価を払うと言っている。今回は、刃の信仰に関する詳しい情報を求めているようだ。[この依頼を遂行するには、レベル4以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticleedgec",
+			"label": "依頼：刃（非常に詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "伯爵は興味を引く情報には対価を払うと言っている。今回は、刃の信仰に関する非常に詳しい情報を求めているようだ。[この依頼を遂行するには、レベル6以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticleknock",
+			"label": "依頼：開錠",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "ポピーは興味を引く情報には対価を払うと言っている。今回、彼女が求めているのは、開錠の謎に関する情報だ。[この依頼を遂行するには、レベル2以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticleknockb",
+			"label": "依頼：開錠（詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "ポピーは興味を引く情報には対価を払うと言っている。今回は、開錠の謎に関する詳しい研究を求めているようだ。[この依頼を遂行するには、レベル4以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticleknockc",
+			"label": "依頼：開錠（非常に詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "ポピーは興味を引く情報には対価を払うと言っている。今回は、開錠の謎に関する非常に詳しい研究を求めているようだ。[この依頼を遂行するには、レベル6以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticlewinter",
+			"label": "依頼：冬",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "ポピーは興味を引く情報には対価を払うと言っている。今回、彼女が求めているのは、冬の謎に関する情報だ。[この依頼を遂行するには、レベル2以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticlewinterb",
+			"label": "依頼：冬（詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "ポピーは興味を引く情報には対価を払うと言っている。今回は、冬の謎に関する詳しい研究を求めているようだ。[この依頼を遂行するには、レベル4以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticlewinterc",
+			"label": "依頼：冬（非常に詳しく）",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "ポピーは興味を引く情報には対価を払うと言っている。今回は、冬の謎に関する非常に詳しい研究を求めているようだ。[この依頼を遂行するには、レベル6以上の依頼と同じ伝承の断片が必要。]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "伝承",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "理性",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		}
+	]
+}

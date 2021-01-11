@@ -1,0 +1,67 @@
+{
+	"elements": [
+		{
+			"id": "owl",
+			"label": "Die Eule ohne Hut",
+			"aspects": {
+				"job": 1
+			},
+			"description": "Die Eule sagt, unser letzter Charakter war #PREVIOUSCHARACTERNAME#, unser letztes Verlangen war #LAST_DESIRE#, unser letzter bester Anhänger war #LAST_FOLLOWER# und unser letztes Buch war #LAST_BOOK#.",
+			"noartneeded": true
+		},
+		{
+			"id": "wolfatthedoor",
+			"label": "D E  R  WO L  F  D  E  R  IM GROSSEN HAUS L  E  B  T ",
+			"aspects": {
+				"ability": 1,
+				"location": 1,
+				"acquaintance": 1
+			},
+			"slots": [
+				{
+					"id": "Meal5",
+					"consumes": true,
+					"actionId": "explore"
+				}
+			],
+			"icon": "violet_p",
+			"description": "Der Wolf nimmt alles an und verschlingt dann alles, was es auch sein mag.",
+			"noartneeded": true
+		},
+		{
+			"id": "wolf",
+			"lifetime": 1,
+			"decayTo": "wolfatthedoor",
+			"description": "",
+			"noartneeded": true
+		},
+		{
+			"id": "lionweb",
+			"label": "Der Löwe im Netz",
+			"comments": "Information lives in the sky.",
+			"icon": "valciane_p",
+			"noartneeded": true
+		},
+		{
+			"id": "boarwords",
+			"label": "Der Keiler in den Worten",
+			"comments": "Titles are criminal.",
+			"icon": "victor_p",
+			"noartneeded": true
+		},
+		{
+			"id": "worldbull",
+			"label": "Die Welt im Bullen",
+			"comments": "The crime At the beginning",
+			"icon": "clifton_p",
+			"noartneeded": true
+		},
+		{
+			"id": "notaworm",
+			"label": "Möglicherweise ein Vogel",
+			"comments": "We Await S.T.E.",
+			"icon": "clovette_p",
+			"noartneeded": true
+		}
+	]
+}

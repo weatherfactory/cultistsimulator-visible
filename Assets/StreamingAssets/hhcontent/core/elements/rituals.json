@@ -1,0 +1,517 @@
+{
+    "elements": [
+        {
+            "id": "ritetoolconsumeingredient",
+            "label": "Rite of the Sea's Feasting",
+            "aspects": {
+                "ritual": 1
+            },
+            "slots": [
+                {
+                    "id": "Invocation",
+                    "label": "Invocation",
+                    "actionid": "work",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "What are the words?"
+                },
+                {
+                    "id": "Instrument",
+                    "label": "Instrument",
+                    "actionid": "work",
+                    "required": {
+                        "tool": 1
+                    },
+                    "description": "What is our instrument?"
+                },
+                {
+                    "id": "Offering",
+                    "label": "Offering",
+                    "actionid": "work",
+                    "required": {
+                        "ingredient": 1
+                    },
+                    "consumes": true,
+                    "description": "What will we give up?"
+                },
+                {
+                    "id": "Desire",
+                    "label": "Desire",
+                    "actionid": "work",
+                    "required": {
+                        "desire": 6
+                    },
+                    "description": "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"
+                }
+            ],
+            "description": "This rite calls on the Witch-and-Sister to close the gap between what is and what might be. The adept pours, or hurls, an offering into water: preferably, but not essentially, the sea.",
+            "unique": true
+        },
+        {
+            "id": "ritetoolconsumeinfluence",
+            "label": "Rite of the Map's Edge",
+            "aspects": {
+                "ritual": 1
+            },
+            "slots": [
+                {
+                    "id": "Invocation",
+                    "label": "Invocation",
+                    "actionid": "work",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "What are the words?"
+                },
+                {
+                    "id": "Offering",
+                    "label": "Offering",
+                    "actionid": "work",
+                    "required": {
+                        "influence": 1
+                    },
+                    "description": "What influence will be taken?",
+                    "consumes": true
+                },
+                {
+                    "id": "Instrument",
+                    "label": "Instrument",
+                    "actionid": "work",
+                    "required": {
+                        "tool": 1
+                    },
+                    "description": "What is our instrument?"
+                },
+                {
+                    "id": "Desire",
+                    "label": "Desire",
+                    "actionid": "work",
+                    "required": {
+                        "desire": 6
+                    },
+                    "description": "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"
+                }
+            ],
+            "description": "The Vagabond is the only Hour that never enters the Mansus. This rite must be performed in the right place, in the right time, and the Vagabond will take that rightness for her own.",
+            "unique": true
+        },
+        {
+            "id": "ritetoolconsumefollower",
+            "label": "Rite of the Crucible Soul",
+            "comments": "endgame rite",
+            "aspects": {
+                "ritual": 1
+            },
+            "slots": [
+                {
+                    "id": "Invocation",
+                    "label": "Invocation",
+                    "actionid": "work",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "What are the words?"
+                },
+                {
+                    "id": "Victim",
+                    "label": "Victim",
+                    "actionid": "work",
+                    "required": {
+                        "follower": 1,
+                        "prisoner": 1
+                    },
+                    "consumes": true,
+                    "description": "There must always be willing blood."
+                },
+                {
+                    "id": "Instrument",
+                    "label": "Instrument",
+                    "actionid": "work",
+                    "required": {
+                        "tool": 1
+                    },
+                    "description": "On what will blood be shed?"
+                },
+                {
+                    "id": "Desire",
+                    "label": "Desire",
+                    "actionid": "work",
+                    "required": {
+                        "desire": 6
+                    },
+                    "description": "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"
+                }
+            ],
+            "description": "This rite uses an instrument of power to set the blood afire: fire is the lesion in the skin of the world. The assistant rarely survives unharmed.",
+            "unique": true
+        },
+        {
+            "id": "ritetoolfollowerconsumelore",
+            "label": "Rite of the Watchman's Sorrow",
+            "comments": "endgame rite",
+            "aspects": {
+                "ritual": 1
+            },
+            "slots": [
+                {
+                    "id": "Sacrifice",
+                    "label": "Sacrifice",
+                    "actionid": "work",
+                    "required": {
+                        "lore": 1
+                    },
+                    "consumes": true,
+                    "description": "What will we forget?"
+                },
+                {
+                    "id": "Assistant",
+                    "label": "Assistant",
+                    "actionid": "work",
+                    "required": {
+                        "follower": 1,
+                        "prisoner": 1
+                    },
+                    "description": "Who will speak the words?"
+                },
+                {
+                    "id": "Instrument",
+                    "label": "Instrument",
+                    "actionid": "work",
+                    "required": {
+                        "tool": 1
+                    },
+                    "description": "What is our instrument?"
+                },
+                {
+                    "id": "Desire",
+                    "label": "Desire",
+                    "actionid": "work",
+                    "required": {
+                        "desire": 6
+                    },
+                    "description": "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"
+                }
+            ],
+            "description": "This rite recalls the loss of the Watchman, who walks the house which has no walls. (Light goes before him and shadow behind. He must not see you.) The instrument of power is used to summon him to take his sacrifice: precious knowledge from the root of your thoughts. The assistant must speak the words that anchor your sanity, so choose someone you trust.",
+            "unique": true
+        },
+        {
+            "id": "ritefollowerconsumetool",
+            "label": "Rite of the Rebel Striving",
+            "aspects": {
+                "ritual": 1
+            },
+            "slots": [
+                {
+                    "id": "Invocation",
+                    "label": "Invocation",
+                    "actionid": "work",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "What are the words?"
+                },
+                {
+                    "id": "Assistant",
+                    "label": "Assistant",
+                    "actionid": "work",
+                    "required": {
+                        "follower": 1,
+                        "prisoner": 1
+                    },
+                    "description": "Who will speak the words?"
+                },
+                {
+                    "id": "Offering",
+                    "label": "Offering",
+                    "actionid": "work",
+                    "required": {
+                        "tool": 1
+                    },
+                    "consumes": true,
+                    "description": "What will we give up?"
+                },
+                {
+                    "id": "Desire",
+                    "label": "Desire",
+                    "actionid": "work",
+                    "required": {
+                        "desire": 6
+                    },
+                    "description": "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"
+                }
+            ],
+            "description": "This rite enacts a teaching of the Forge of Days: the artisan may achieve their highest goal only by destroying their most precious tool. The Lionsmith knew this when he shattered his sword before the Colonel. So my assistant must destroy a chosen instrument.",
+            "unique": true
+        },
+        {
+            "id": "ritefollowerconsumeingredient",
+            "label": "Rite of the Mother's Mercy",
+            "aspects": {
+                "ritual": 1
+            },
+            "slots": [
+                {
+                    "id": "Invocation",
+                    "label": "Invocation",
+                    "actionid": "work",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "What are the words?"
+                },
+                {
+                    "id": "Assistant",
+                    "label": "Assistant",
+                    "actionid": "work",
+                    "required": {
+                        "follower": 1,
+                        "prisoner": 1
+                    },
+                    "description": "Who will speak the words?"
+                },
+                {
+                    "id": "Offering",
+                    "label": "Offering",
+                    "actionid": "work",
+                    "required": {
+                        "ingredient": 1
+                    },
+                    "description": "What will be offered?",
+                    "consumes": true
+                },
+                {
+                    "id": "Desire",
+                    "label": "Desire",
+                    "actionid": "work",
+                    "required": {
+                        "desire": 6
+                    },
+                    "description": "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"
+                }
+            ],
+            "description": "The assistant is offered in sacrifice to the Mother of Ants. But the Mother knows healing as well as poison, and she will be merciful, accepting the substitute of a lesser offering. Usually. The experience is not reassuring for the assistant.",
+            "unique": true
+        },
+        {
+            "id": "riteinfluenceconsumeingredient",
+            "label": "The Rite of the Crow's Quenching",
+            "aspects": {
+                "ritual": 1
+            },
+            "slots": [
+                {
+                    "id": "Invocation",
+                    "label": "Invocation",
+                    "actionid": "work",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "What are the words?"
+                },
+                {
+                    "id": "Influence",
+                    "label": "Influence",
+                    "actionid": "work",
+                    "required": {
+                        "influence": 1
+                    },
+                    "description": "What power is present?"
+                },
+                {
+                    "id": "Offering",
+                    "label": "Offering",
+                    "actionid": "work",
+                    "required": {
+                        "ingredient": 1
+                    },
+                    "description": "What will be offered?",
+                    "consumes": true
+                },
+                {
+                    "id": "Desire",
+                    "label": "Desire",
+                    "actionid": "work",
+                    "required": {
+                        "desire": 6
+                    },
+                    "description": "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"
+                }
+            ],
+            "description": "This rite calls on the Beach-Crow at sunrise or moonrise. The Crow accepts the sacrifice, and returns the gifts of the earth.",
+            "unique": true
+        },
+        {
+            "id": "ritefollowerconsumeinfluence",
+            "label": "Sunset Rite",
+            "aspects": {
+                "ritual": 1
+            },
+            "slots": [
+                {
+                    "id": "Invocation",
+                    "label": "Invocation",
+                    "actionid": "work",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "What are the words?"
+                },
+                {
+                    "id": "Assistant",
+                    "label": "Assistant",
+                    "actionid": "work",
+                    "required": {
+                        "follower": 1,
+                        "prisoner": 1
+                    },
+                    "description": "Who will speak the words?"
+                },
+                {
+                    "id": "Offering",
+                    "label": "Offering",
+                    "actionid": "work",
+                    "required": {
+                        "influence": 1
+                    },
+                    "consumes": true,
+                    "description": "What influence will be consumed?"
+                },
+                {
+                    "id": "Desire",
+                    "label": "Desire",
+                    "actionid": "work",
+                    "required": {
+                        "desire": 6
+                    },
+                    "description": "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"
+                }
+            ],
+            "description": "The assistant must cry tears of genuine emotion, which are asperged in the place where the influence lies. If all is done well, the Sun-in-Rags will consume the influence, acknowledge an ending, and lend its assistance.",
+            "unique": true
+        },
+        {
+            "id": "riteinfluenceconsumefollower",
+            "label": "Rite of the Beast's Division",
+            "aspects": {
+                "ritual": 1
+            },
+            "slots": [
+                {
+                    "id": "Invocation",
+                    "label": "Invocation",
+                    "actionid": "work",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "What are the words?"
+                },
+                {
+                    "id": "Victim",
+                    "label": "Victim",
+                    "actionid": "work",
+                    "required": {
+                        "follower": 1,
+                        "prisoner": 1
+                    },
+                    "description": "Who will be divided?",
+                    "consumes": true
+                },
+                {
+                    "id": "Influence",
+                    "label": "Influence",
+                    "actionid": "work",
+                    "required": {
+                        "influence": 1
+                    },
+                    "description": "What power is present?"
+                },
+                {
+                    "id": "Desire",
+                    "label": "Desire",
+                    "actionid": "work",
+                    "required": {
+                        "desire": 6
+                    },
+                    "description": "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"
+                }
+            ],
+            "description": "The assistant's name is taken from them in a place, or on an occasion, of power; and they are divided into nine parts. They used to be hunted like an animal, too, but times changed.",
+            "unique": true
+        },
+        {
+            "id": "riteconsumetoolingredientfollowerinfluence",
+            "label": "Rite Intercalate",
+            "aspects": {
+                "ritual": 1
+            },
+            "slots": [
+                {
+                    "id": "Sacrifice",
+                    "label": "Sacrifice",
+                    "actionid": "work",
+                    "required": {
+                        "lore": 1
+                    },
+                    "description": "Something to be lost.",
+                    "consumes": true
+                },
+                {
+                    "id": "Offering",
+                    "label": "Offering",
+                    "actionid": "work",
+                    "required": {
+                        "follower": 1,
+                        "prisoner": 1,
+                        "summoned": 1
+                    },
+                    "description": "Something to be lost.",
+                    "consumes": true
+                },
+                {
+                    "id": "Surrender",
+                    "label": "Surrender",
+                    "actionid": "work",
+                    "required": {
+                        "tool": 1
+                    },
+                    "description": "Something to be lost.",
+                    "consumes": true
+                },
+                {
+                    "id": "Dissolution",
+                    "label": "Dissolution",
+                    "actionid": "work",
+                    "required": {
+                        "influence": 1
+                    },
+                    "description": "Something to be lost.",
+                    "consumes": true
+                },
+                {
+                    "id": "Grief",
+                    "label": "Grief",
+                    "actionid": "work",
+                    "required": {
+                        "ingredient": 1
+                    },
+                    "description": "Something to be lost.",
+                    "consumes": true
+                },
+                {
+                    "id": "Desire",
+                    "label": "Desire",
+                    "actionid": "work",
+                    "required": {
+                        "desire": 6,
+                        "promise": 1
+                    },
+                    "description": "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"
+                }
+            ],
+            "description": "This rite recapitulates the Sun's abominable fate. It is used in extreme times by foolish adepts.",
+            "unique": true
+        }
+    ]
+}

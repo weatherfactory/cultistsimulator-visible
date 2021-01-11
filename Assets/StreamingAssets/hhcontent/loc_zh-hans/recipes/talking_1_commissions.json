@@ -1,0 +1,697 @@
+{
+    "recipes": [
+        {
+            "id": "getcommissionaladim",
+            "label": "伊本·阿迪姆博士发来委托",
+            "actionId": "talk",
+            "requirements": {
+                "aladimready": 1
+            },
+            "startdescription": "博士希望我协助他的研究。",
+            "description": "他的需求如下。",
+            "warmup": 10,
+            "deckeffect": {
+                "aladimcommissions": 1
+            },
+            "aspects": {
+                "commissiongiven": 1
+            },
+            "craftable": true
+        },
+        {
+            "id": "getcommissionbechet",
+            "label": "贝谢女士发来委托",
+            "actionId": "talk",
+            "requirements": {
+                "bechetready": 1
+            },
+            "startdescription": "她正在为臭名昭著的《凯尔伊苏姆评论报》取材。",
+            "description": "她的需求如下。",
+            "warmup": 10,
+            "deckeffect": {
+                "bechetcommissions": 1
+            },
+            "aspects": {
+                "commissiongiven": 1
+            },
+            "craftable": true
+        },
+        {
+            "id": "getcommissionjannings",
+            "label": "雅宁斯伯爵发来委托",
+            "actionId": "talk",
+            "requirements": {
+                "janningsready": 1
+            },
+            "startdescription": "我们的好伯爵在欧洲的会友正在寻找关于特定对象的报告。",
+            "description": "他的需求如下。",
+            "warmup": 10,
+            "deckeffect": {
+                "janningscommissions": 1
+            },
+            "aspects": {
+                "commissiongiven": 1
+            },
+            "craftable": true
+        },
+        {
+            "id": "getcommissionpoppy",
+            "label": "波比·拉舍莱斯发来委托",
+            "actionId": "talk",
+            "requirements": {
+                "poppycommissionready": 1
+            },
+            "startdescription": "“我呀，”波比边说边发出少女般的咯咯笑声，“你知道的，对冰与血的技法有些好奇。是挺傻的，但请容许我一个老女人异想天开一下吧。你愿意帮助我吗？”",
+            "description": "她的需求如下。",
+            "warmup": 10,
+            "deckeffect": {
+                "poppycommissions": 1
+            },
+            "aspects": {
+                "commissiongiven": 1
+            },
+            "craftable": true
+        },
+        {
+            "id": "fulfilcommissionaladimsecrethistoriesc",
+            "label": "履行伊本·阿迪姆博士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlesecrethistoriesc": 1,
+                "aladim": 1,
+                "article": 1,
+                "secrethistories": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有博士所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionaladimsecrethistoriesb",
+            "label": "履行伊本·阿迪姆博士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlesecrethistoriesb": 1,
+                "aladim": 1,
+                "article": 1,
+                "secrethistories": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有博士所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionaladimsecrethistories",
+            "label": "履行伊本·阿迪姆博士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlesecrethistories": 1,
+                "aladim": 1,
+                "article": 1,
+                "secrethistories": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有博士所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionaladimlanternc",
+            "label": "履行伊本·阿迪姆博士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlelanternc": 1,
+                "aladim": 1,
+                "article": 1,
+                "lantern": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有博士所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionaladimlanternb",
+            "label": "履行伊本·阿迪姆博士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlelanternb": 1,
+                "aladim": 1,
+                "article": 1,
+                "lantern": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有博士所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionaladimlantern",
+            "label": "履行伊本·阿迪姆博士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlelantern": 1,
+                "aladim": 1,
+                "article": 1,
+                "lantern": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有博士所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetforgec",
+            "label": "履行贝谢女士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleforgec": 1,
+                "bechet": 1,
+                "article": 1,
+                "forge": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetforgeb",
+            "label": "履行贝谢女士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleforgeb": 1,
+                "bechet": 1,
+                "article": 1,
+                "forge": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetforge",
+            "label": "履行贝谢女士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleforge": 1,
+                "bechet": 1,
+                "article": 1,
+                "forge": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetgrailc",
+            "label": "履行贝谢女士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlegrailc": 1,
+                "bechet": 1,
+                "article": 1,
+                "grail": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetgrailb",
+            "label": "履行贝谢女士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlegrailb": 1,
+                "bechet": 1,
+                "article": 1,
+                "grail": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetgrail",
+            "label": "履行贝谢女士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlegrail": 1,
+                "bechet": 1,
+                "article": 1,
+                "grail": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetmothc",
+            "label": "履行贝谢女士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlemothc": 1,
+                "bechet": 1,
+                "article": 1,
+                "moth": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetmothb",
+            "label": "履行贝谢女士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlemothb": 1,
+                "bechet": 1,
+                "article": 1,
+                "moth": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionbechetmoth",
+            "label": "履行贝谢女士的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlemoth": 1,
+                "bechet": 1,
+                "article": 1,
+                "moth": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsheartc",
+            "label": "履行雅宁斯伯爵的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleheartc": 1,
+                "jannings": 1,
+                "article": 1,
+                "heart": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsheartb",
+            "label": "履行雅宁斯伯爵的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleheartb": 1,
+                "jannings": 1,
+                "article": 1,
+                "heart": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsheart",
+            "label": "履行雅宁斯伯爵的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleheart": 1,
+                "jannings": 1,
+                "article": 1,
+                "heart": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "glimmering": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsedgec",
+            "label": "履行雅宁斯伯爵的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleedgec": 1,
+                "jannings": 1,
+                "article": 1,
+                "edge": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsedgeb",
+            "label": "履行雅宁斯伯爵的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleedgeb": 1,
+                "jannings": 1,
+                "article": 1,
+                "edge": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionjanningsedge",
+            "label": "履行雅宁斯伯爵的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleedge": 1,
+                "jannings": 1,
+                "article": 1,
+                "edge": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有对方所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionwinterc",
+            "label": "履行波比·拉舍莱斯的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlewinterc": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "winter": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有波比所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionwinterb",
+            "label": "履行波比·拉舍莱斯的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlewinterb": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "winter": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有波比所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionwinter",
+            "label": "履行波比·拉舍莱斯的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticlewinter": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "winter": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有波比所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionknockc",
+            "label": "履行波比·拉舍莱斯的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleknockc": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "knock": 6
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有波比所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionknockb",
+            "label": "履行波比·拉舍莱斯的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleknockb": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "knock": 4
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有波比所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        },
+        {
+            "id": "fulfilcommissionpoppycommissionknock",
+            "label": "履行波比·拉舍莱斯的委托",
+            "actionId": "talk",
+            "requirements": {
+                "commissionarticleknock": 1,
+                "poppycommission": 1,
+                "article": 1,
+                "knock": 2
+            },
+            "effects": {
+                "mystique": 1,
+                "article": -1,
+                "erudition": 1
+            },
+            "startdescription": "我拥有波比所求之物。",
+            "description": "我收到了隐秘世界的货币，而我的赞助人还说漏了一些引人遐思的信息。",
+            "warmup": 10,
+            "craftable": true,
+            "aspects": {
+                "commissionfulfilled": 1
+            }
+        }
+    ]
+}

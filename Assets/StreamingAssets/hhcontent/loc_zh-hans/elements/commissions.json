@@ -1,0 +1,913 @@
+{
+    "elements": [
+        {
+            "id": "commissionarticlesecrethistory",
+            "label": "委托：秘史",
+            "aspects": {},
+            "description": "I must CHANGE",
+            "lifetime": 1,
+            "decayTo": "commissionarticlesecrethistories",
+            "noartneeded": true
+        },
+        {
+            "id": "commissionarticlesecrethistoryb",
+            "label": "委托：秘史",
+            "aspects": {},
+            "description": "I must CHANGE",
+            "lifetime": 1,
+            "decayTo": "commissionarticlesecrethistoriesb",
+            "noartneeded": true
+        },
+        {
+            "id": "commissionarticlesecrethistoryc",
+            "label": "委托：秘史",
+            "aspects": {},
+            "description": "I must CHANGE",
+            "lifetime": 1,
+            "decayTo": "commissionarticlesecrethistoriesc",
+            "noartneeded": true
+        },
+        {
+            "id": "commissionarticlesecrethistories",
+            "label": "委托：秘史",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伊本·阿迪姆博士，人称阿勒颇人，向你提出了一项委托。他希望你提供你能找到的所有关于世界隐秘历史的情报。[要完成此委任，你需要一个与之匹配且至少2级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensation"
+            }
+        },
+        {
+            "id": "commissionarticlesecrethistoriesb",
+            "label": "委托：秘史（详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伊本·阿迪姆博士，人称阿勒颇人，向你提出了一项委托。他要寻找一篇关于世界隐秘历史的详尽论文。[要完成此委任，你需要一个能与之匹配且至少4级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationb"
+            }
+        },
+        {
+            "id": "commissionarticlesecrethistoriesc",
+            "label": "委托：秘史（极其详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伊本·阿迪姆博士，人称阿勒颇人，向你提出了一项委托。他要寻找一些关于世界隐秘历史的特别隐晦的情报。[要完成此委任，你需要一个能与之匹配且至少6级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason2",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationc"
+            }
+        },
+        {
+            "id": "commissionarticlelantern",
+            "label": "委托：灯",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伊本·阿迪姆博士，人称阿勒颇人，向你提出了一项委托。他希望你提供你能找到的所有关于<b>灯</b>之奥秘的情报。[要完成此委任，你需要一个能与之匹配且至少2级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensation"
+            }
+        },
+        {
+            "id": "commissionarticlelanternb",
+            "label": "委托：灯（详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伊本·阿迪姆博士，人称阿勒颇人，向你提出了一项委托。他希望你提供一份关于<b>灯</b>之奥秘的详尽评述。[要完成此委任，你需要一能个能与之匹配且至少4级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationb"
+            }
+        },
+        {
+            "id": "commissionarticlelanternc",
+            "label": "委托：灯（极其详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伊本·阿迪姆博士，人称阿勒颇人，向你提出了一项委托。他希望你提供一份关于<b>灯</b>之奥秘的极其详尽的调查。[要完成此委任，你需要一个能与之匹配且至少6级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason2",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationc"
+            }
+        },
+        {
+            "id": "commissionarticleforge",
+            "label": "委托：铸",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "奥兰普·贝谢女士正在为《凯尔伊苏姆评论报》寻找合适的文章。她想要一些以<b>铸</b>之准则为灵感的文字。[要完成此委任，你需要一个能与之匹配且至少2级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensation"
+            }
+        },
+        {
+            "id": "commissionarticleforgeb",
+            "label": "委托：铸（详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "奥兰普·贝谢女士正在为《凯尔伊苏姆评论报》寻找适合的文章。她想要一些关于<b>铸</b>的更加详尽的文字。[要完成此委任，你需要一个能与之匹配且至少4级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationb"
+            }
+        },
+        {
+            "id": "commissionarticleforgec",
+            "label": "委托：铸（极其详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "奥兰普·贝谢女士正在为《凯尔伊苏姆评论报》寻找适合的文章。她想要一些关于<b>铸</b>所带来的改变和痛苦方面，极其详尽甚至激烈的文字。[要完成此委任，你需要一个能与之匹配且至少6级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason2",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationc"
+            }
+        },
+        {
+            "id": "commissionarticlegrail",
+            "label": "委托：杯",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "奥兰普·贝谢女士正在为《凯尔伊苏姆评论报》寻找适合的文章。她想要一些挑逗欲望的、关于赤杯的文字。[要完成此委任，你需要一个能与之匹配且至少2级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensation"
+            }
+        },
+        {
+            "id": "commissionarticlegrailb",
+            "label": "委托：杯（详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "奥兰普·贝谢女士正在为《凯尔伊苏姆评论报》寻找适合的文章。她感兴趣的是关于赤杯与其诱惑力的更加详尽的描述。[要完成此委任，你需要一个能与之匹配且至少4级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationb"
+            }
+        },
+        {
+            "id": "commissionarticlegrailc",
+            "label": "委托：杯（极其详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "奥兰普·贝谢女士正在为《凯尔伊苏姆评论报》寻找适合的文章。她想要一些关于赤杯、极其详尽且“不加掩饰”的文字。[要完成此委任，你需要一个能与之匹配且至少6级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "passion1",
+                    "label": "激情",
+                    "required": {
+                        "passion": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationc"
+            }
+        },
+        {
+            "id": "commissionarticlemoth",
+            "label": "委托：蛾",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "奥兰普·贝谢女士正在为《凯尔伊苏姆评论报》寻找适合的文章。她尤其想要一些关于<b>蛾</b>之准则的有趣文字。[要完成此委任，你需要一个能与之匹配且至少2级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensation"
+            }
+        },
+        {
+            "id": "commissionarticlemothb",
+            "label": "委托：蛾（详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "奥兰普·贝谢女士正在为《凯尔伊苏姆评论报》寻找适合的文章。她想要一份关于<b>蛾</b>的、详尽且神秘难解的文字。[要完成此委任，你需要一个能与之匹配且至少4级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationb"
+            }
+        },
+        {
+            "id": "commissionarticlemothc",
+            "label": "委托：蛾（极其详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "奥兰普·贝谢女士正在为《凯尔伊苏姆评论报》寻找适合的文章。她想要一篇关于<b>蛾</b>与其难解之谜的、极其详尽的阐析。[要完成此委任，你需要一个能与之匹配且至少6级的密传片段。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "passion1",
+                    "label": "激情",
+                    "required": {
+                        "passion": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationc"
+            }
+        },
+        {
+            "id": "commissionarticleheart",
+            "label": "委托：心",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想要一些关于<b>心</b>之奥秘的记录。[要完成此委任，你需要一个能与之匹配且至少2级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensation"
+            }
+        },
+        {
+            "id": "commissionarticleheartb",
+            "label": "委托：心（详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想要一篇关于<b>心</b>之奥秘的详尽报告。[要完成此委任，你需要一个能与之匹配且至少4级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationb"
+            }
+        },
+        {
+            "id": "commissionarticleheartc",
+            "label": "委托：心（极其详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想要一篇关于<b>心</b>之奥秘的、极其详尽的报告。[要完成此委任，你需要一个能与之匹配且至少6级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "passion1",
+                    "label": "激情",
+                    "required": {
+                        "passion": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationc"
+            }
+        },
+        {
+            "id": "commissionarticleedge",
+            "label": "委托：刃",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想要你能找到的所有关于<b>刃</b>之实践的情报。[要完成此委任，你需要一个能与之匹配且至少2级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensation"
+            }
+        },
+        {
+            "id": "commissionarticleedgeb",
+            "label": "委托：刃（详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想要一些关于<b>刃</b>之实践的详尽记录。[要完成此委任，你需要一个能与之匹配且至少4级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationb"
+            }
+        },
+        {
+            "id": "commissionarticleedgec",
+            "label": "委托：刃（极其详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想要一篇关于<b>刃</b>之实践的、极其详尽的文章。[要完成此委任，你需要一个能与之匹配且至少6级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason2",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationc"
+            }
+        },
+        {
+            "id": "commissionarticleknock",
+            "label": "委托：启",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "波比愿意为她感兴趣的情报付出酬劳。这一次，她想要一些关于<b>启</b>之奥秘的记录。[要完成此委任，你需要一个能与之匹配且至少2级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensation"
+            }
+        },
+        {
+            "id": "commissionarticleknockb",
+            "label": "委托：启（详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "波比愿意为她感兴趣的情报付酬。这一次，她想要一篇关于<b>启</b>之奥秘的详尽报告。[要完成此委任，你需要一个能与之匹配且至少4级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationb"
+            }
+        },
+        {
+            "id": "commissionarticleknockc",
+            "label": "委托：启（极其详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "波比愿意为她感兴趣的情报付出酬劳。这一次，她想要一篇关于<b>启</b>之奥秘的、极其详尽的报告。[要完成此委任，你需要一个能与之匹配且至少6级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason2",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationc"
+            }
+        },
+        {
+            "id": "commissionarticlewinter",
+            "label": "委托：冬",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "波比愿意为她感兴趣的情报付出酬劳。这一次，她想要一些关于<b>冬</b>之奥秘的记录。[要完成此委任，你需要一个能与之匹配且至少2级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensation"
+            }
+        },
+        {
+            "id": "commissionarticlewinterb",
+            "label": "委托：冬（详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "波比愿意为她感兴趣的情报付出酬劳。这一次，她想要一篇关于<b>冬</b>之奥秘的详尽报告。[要完成此委任，你需要一个能与之匹配且至少4级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationb"
+            }
+        },
+        {
+            "id": "commissionarticlewinterc",
+            "label": "委托：冬（极其详尽）",
+            "aspects": {
+                "commission": 1,
+                "job": 1
+            },
+            "description": "波比愿意为她感兴趣的情报付出酬劳。这一次，她想要一篇关于<b>冬</b>之奥秘的、极其详尽的报告。[要完成此委任，你需要一个能与之匹配且至少6级的密传碎片。]",
+            "slots": [
+                {
+                    "id": "lore",
+                    "label": "密传",
+                    "required": {
+                        "lore": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason1",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                },
+                {
+                    "id": "reason2",
+                    "label": "理性",
+                    "required": {
+                        "reason": 1
+                    },
+                    "actionId": "work"
+                }
+            ],
+            "xtriggers": {
+                "commissionfulfilled": "compensationc"
+            }
+        }
+    ]
+}

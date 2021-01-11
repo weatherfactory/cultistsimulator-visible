@@ -1,0 +1,310 @@
+{
+    "elements": [
+        {
+            "id": "ascensionchangea",
+            "label": "诱惑：蜕变",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 1
+            },
+            "description": "某些夜晚，在观众面前，再进一步的念头振翅欲飞。我能再进一步变成什么呢？[此卡可通达“蜕变胜利”，只要将其升级到一定程度。在舞蹈中下足功夫，你便会找到下一步的去路。]",
+            "xtriggers": {
+                "ascend": "ascensionchangeb"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchangeb",
+            "label": "蜕变：树叶",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 2
+            },
+            "description": "我随风起而颤抖。我表面之下的脉络清晰可见。我总是贴肤带着一颗石绿珠子。[此卡可通达“蜕变胜利”，只要将其升级到一定程度。在舞蹈中下足功夫，你便会找到下一步的去路。]",
+            "xtriggers": {
+                "ascend": "ascensionchangec"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchangec",
+            "label": "蜕变：珍珠",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 3
+            },
+            "description": "我的皮肤正片片剥落，皮肤之下的我更加暗淡，而我的眼睛却更加光亮。我身体的隐秘处藏着一颗海珍珠。有时在夜间，我会听到海的声音；有时在清晨，我的床单上沾着血。[此卡可通达“蜕变胜利”，只要将其升级到一定程度。在舞蹈中下足功夫，你便会找到下一步的去路。]",
+            "xtriggers": {
+                "ascend": "ascensionchanged"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchanged",
+            "label": "蜕变：伪影",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 4
+            },
+            "description": "我的身体已达到我能达到的最暗。暗影是我的伴侣，且我的足音轻似密语。我手戴一只镶黑玉的戒指，不过黑玉被我朝内佩戴，藏于掌中避不示人。[此卡可通达“蜕变胜利”，只要将其升级到一定程度。在舞蹈中下足功夫，你便会找到下一步的去路。]",
+            "xtriggers": {
+                "ascend": "ascensionchangee"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchangee",
+            "label": "蜕变：柱头",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 5
+            },
+            "description": "我的黑暗已淡化，我一切的色彩都已淡去。新叶瓣冒出在我最能容纳的那些部分。秘密在我的体表凝结。我淡白的舌下掩着一颗棱柱形的钙沸石。[此卡可通达“蜕变胜利”，只要将其升级到一定程度。在舞蹈中下足功夫，你便会找到下一步的去路。]",
+            "xtriggers": {
+                "ascend": "ascensionchangef"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchangef",
+            "label": "蜕变：瞳仁",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 6
+            },
+            "description": "我的眼白现在是黄色的，新的覆皮沿我的四肢生长出来，好在最终蜕变前收纳我的锋芒。私下里，我脚戴黄金趾环，耳戴金与黄玉制成的耳环，不过它们不可给旁人看到。[此卡可通达“蜕变胜利”，只要将其升级到一定程度。在舞蹈中下足功夫，你便会找到下一步的去路。。]",
+            "xtriggers": {
+                "ascend": "ascensionchangeg"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchangeg",
+            "label": "蜕变：白骨",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 6
+            },
+            "description": "我的骨骼已变得不一样。它们承载了已失者的传说。如若我没挨过蜕变，这个传说便是我的传说，而我的白骨残片会被别人佩戴在身，用肌肤温暖。[此卡可通达“蜕变胜利”。]",
+            "xtriggers": {
+                "ascend": "ascensionchangeg"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "sendingheartb",
+            "label": "拟态：毒蛇",
+            "aspects": {
+                "sending": 1,
+                "knock": 1
+            },
+            "description": "毒蛇盘踞在层层海水碰撞陆地的地方。我须得在水边寻找一个存有法力的去处。若我给苏洛恰那带去关于其他地点的秘密，她应该会帮助我。[你身体的某部分可化作蛇形在外游荡。将它与你的追随者一同送往某处，让它在那里替你跳那些你必须去跳的舞蹈。如果你找不到地点，试试和苏洛恰那谈论秘史。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingheartc",
+            "label": "拟态：猫",
+            "aspects": {
+                "sending": 1,
+                "moth": 2
+            },
+            "description": "猫于夜间行走在黑色亚麻生长的河畔。[你身体的某部分可化作猫形在外游荡。将它与你的追随者一同送往某处，让它在那里替你跳那些你必须去跳的舞蹈。如果你找不到地点，试试和苏洛恰那谈论秘史。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingheartd",
+            "label": "拟态：狐",
+            "aspects": {
+                "sending": 1,
+                "grail": 3
+            },
+            "description": "狐狸在山中草甸游荡，寻求着花制花人的触碰。[你身体的某部分可化作狐形在外游荡。将它与你的追随者一同送往某处，让它在那里替你跳那些你必须去跳的舞蹈。如果你找不到地点，试试和苏洛恰那谈论秘史。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendinghearte",
+            "label": "拟态：雕",
+            "aspects": {
+                "sending": 1,
+                "lantern": 4
+            },
+            "description": "雕飞行于天路，其眼见如下：位于弥迦的是第一栖木，空中诸神灵首次交换秘密的地方。[你身体的某部分可化作雕形在外游荡。将它与你的追随者一同送往某处，让它在那里替你跳那些你必须去跳的舞蹈。如果你找不到地点，试试和苏洛恰那谈论秘史。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingheartf",
+            "label": "拟态：鸽",
+            "aspects": {
+                "sending": 1,
+                "winter": 5
+            },
+            "description": "白鸽记得被其他所有人遗忘的事物。[你身体的某部分可化作羽色淡白的鸟形在外游荡。将它与你的追随者一同送往某处，让它在那里替你跳那些你必须去跳的舞蹈。如果你找不到地点，试试和苏洛恰那谈论秘史。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingheartg",
+            "label": "拟态：野猪",
+            "aspects": {
+                "sending": 1,
+                "way": 1
+            },
+            "description": "此形态中的我将臣服于持有王皮之门钥匙的人。[你身体的某部分可以化作一头狂野黑兽在外游荡。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothb",
+            "label": "龄虫：静寂",
+            "aspects": {
+                "sending": 1,
+                "knock": 1
+            },
+            "description": "在海边一座静寂的大屋中，在借来的皮囊中，我们将寻求第二次蜕变。我须得在水边寻找一个存有法力的去处。若我给苏洛恰那带去关于其他地点的秘密，她应该会帮助我。[你身体的某部分可化作蛇形在外游荡。将它与你的追随者一同送往某处，让它在那里替你跳那些你必须去跳的舞蹈。如果你找不到地点，试试和苏洛恰那谈论秘史。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothc",
+            "label": "龄虫：潜踪",
+            "aspects": {
+                "sending": 1,
+                "moth": 2
+            },
+            "description": "在黑兽掘洞栖身的石林中，在眼之面具的背后，我们将寻求第三次蜕变。[你身体的某部分可化作猫形在外游荡。将它与你的追随者一同送往某处，让它在那里替你跳那些你必须去跳的舞蹈。如果你找不到地点，试试和苏洛恰那谈论秘史。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothd",
+            "label": "龄虫：红褐",
+            "aspects": {
+                "sending": 1,
+                "grail": 3
+            },
+            "description": "在空气散发着诱惑的高处，我们将寻求第四次蜕变。[你身体的某部分可化作狐形在外游荡。将它与你的追随者一同送往某处，让它在那里替你跳那些你必须去跳的舞蹈。如果你找不到地点，试试和苏洛恰那谈论秘史。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothe",
+            "label": "龄虫：远行",
+            "aspects": {
+                "sending": 1,
+                "lantern": 4
+            },
+            "description": "在弥阿，蜈蚣看遍未来可能之地，我们将寻求第五次蜕变。[你身体的某部分可化作雕形在外游荡。将它与你的追随者一同送往某处，让它在那里替你跳那些你必须去跳的舞蹈。如果你找不到地点，试试和苏洛恰那谈论秘史。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothf",
+            "label": "龄虫：热盼",
+            "aspects": {
+                "sending": 1,
+                "winter": 5
+            },
+            "description": "在他们记得太阳的遥远处，我将带着借来的恨意寻求第六次蜕变。[你身体的某部分可化作狼形在外游荡。将它与你的追随者一同送往某处，让它在那里替你跳那些你必须去跳的舞蹈。如果你找不到地点，试试和苏洛恰那谈论秘史。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothg",
+            "label": "成虫",
+            "aspects": {
+                "sending": 1,
+                "way": 1
+            },
+            "description": "为了最终的蜕变，我将穿过林中之门。献与美杜莎的祭品从来都是一头童子身的红鹿，所以我将作为一头雌鹿穿过此门。[你彻夜飞旋。]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothheartg",
+            "label": "拟态：成虫",
+            "aspects": {
+                "sending": 1,
+                "way": 1
+            },
+            "description": "我的灵将离开肉，化作一只头生巨角的兽。我将成为祭品？[内外相易，表里互替。]",
+            "icon": "sendingmothg",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "ascensionlessonhearta",
+            "label": "抛却服饰",
+            "aspects": {},
+            "description": "石绿已教导我，裸露的自我并非真正的自我，不过这话不假。[在“野心勃发的时节”，此卡可升级你的“蜕变”欲望。]",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonheartb",
+            "label": "抛却覆皮",
+            "aspects": {},
+            "description": "孪生子与巨蛇之战，此战令我学到以痛苦为门的方法。",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonheartc",
+            "label": "抛却足音",
+            "aspects": {},
+            "description": "丝毧已教导我，遭到揭露之物必得掩藏于先，以便让揭示引发后果，我已抛弃自己的足音。",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonheartd",
+            "label": "抛却颜色",
+            "aspects": {},
+            "description": "制花人已赐予我万众渴求的东西，同时夺去了我的色彩。",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonhearte",
+            "label": "抛却视力",
+            "aspects": {},
+            "description": "我将双眼奉与浪游旅人，以通过它们看到她所看的景象：通往红色蜕变之路。",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonheartf",
+            "label": "抛却骨骼",
+            "aspects": {},
+            "description": "悼歌诗人已教导我要铭记，在我最后一部分蜕变的时候。我将带着这番教诲穿过王皮之门。",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmotha",
+            "label": "抛却服饰",
+            "aspects": {},
+            "description": "环杉命我袒露肉体，我听从了。我将不会一直听从环杉。[在“野心勃发的时节”，此卡可升级你的“蜕变”欲望。]",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmothb",
+            "label": "抛却覆皮",
+            "aspects": {},
+            "description": "\"母亲刺穿，女巫索求，巫女融解。于是\r\n\t\t\t我的皮肤\r\n\t\t\t稀薄\r\n\t\t\t如雨幕\"",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmothc",
+            "label": "抛却足音",
+            "aspects": {},
+            "description": "我行走在河边的漆黑色亚麻丛中，亚麻用千百根舌头品尝我的双脚，直到我再也无法抵抗它的碰触，而后我便只是一道影子了。",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmothd",
+            "label": "抛却颜色",
+            "aspects": {},
+            "description": "我撞见制花之人所制之花，于是变做这副模样——我的色彩现在被他代为保管。",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmothe",
+            "label": "抛却视力",
+            "aspects": {},
+            "description": "蜈蚣给我讲了笑话，作为交换，我会让她为我雕刻黄金之眼，直至复眼现出。",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmothf",
+            "label": "抛却骨骼",
+            "aspects": {},
+            "description": "太阳遭到分裂，而且狼不会让我忘记它骨头的盐味——直到漫宿开裂为止。狼现在要求我带着这番滋味穿过林中之门。",
+            "unique": true
+        }
+    ]
+}

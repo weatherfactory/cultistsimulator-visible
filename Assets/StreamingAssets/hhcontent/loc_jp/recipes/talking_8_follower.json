@@ -1,0 +1,3104 @@
+{
+	"recipes": [
+		{
+			"id": "talktofollower_attemptheal",
+			"label": "信奉者の治癒を試みる",
+			"actionId": "talk",
+			"startdescription": "同情、それとも自己満足？",
+			"description": "医療援助はできないし、しない。",
+			"requirements": {
+				"follower_wound": 1,
+				"mortal": 1,
+				"society": -1
+			},
+			"slots": [
+				{
+					"id": "Healing",
+					"label": "治癒",
+					"description": "資金があれば薬を買える。",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "talktofollower_heal",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "talktofollower_heal",
+			"label": "信奉者の治癒を終わらせる",
+			"startdescription": "当分、生き残るだろうが、人間の体には限界がある。",
+			"actionId": "talk",
+			"requirements": {
+				"funds": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 0,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": 0,
+					"additive": false
+				}
+			],
+			"effects": {
+				"funds": -1
+			},
+			"linked": [
+				{
+					"id": "givescar_edge",
+					"chance": 30
+				},
+				{
+					"id": "givescar_knock",
+					"chance": 50
+				},
+				{
+					"id": "givescar_winter",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "givescar_edge",
+			"actionId": "talk",
+			"label": "経験の教訓",
+			"description": "傷は治り、傷跡は残る。しかし、学者のシュルガがかつて言ったように、１つひとつの傷は教訓である。",
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_scar_edge",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "edge",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "deathscar_edge",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "givescar_knock",
+			"label": "痛みの門",
+			"actionId": "talk",
+			"description": "怪我は可能な限り治った。痛みの門と可能性だけが残る。",
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_scar_knock",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "knock",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "deathscar_knock",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "givescar_winter",
+			"actionId": "talk",
+			"label": "終わりの始まり",
+			"description": "傷は癒えているが、この人は死にかけていた。沈黙が雪のように信奉者に触れた。",
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_scar_winter",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "winter",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			],
+			"linked": [
+				{
+					"id": "deathscar_winter",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "deathscar_edge",
+			"actionId": "talk",
+			"label": "死：敗北",
+			"requirements": {
+				"follower_scar_edge": 3
+			},
+			"description": "この者は勇気と忍耐力を見せてくれたが、それだけでは不十分だった。[信奉者が刃の傷跡を3回負い、死亡した。]",
+			"aspects": {
+				"killmortal": 1
+			}
+		},
+		{
+			"id": "deathscar_knock",
+			"actionId": "talk",
+			"label": "死：開幕",
+			"requirements": {
+				"follower_scar_knock": 3
+			},
+			"description": "人間が効果的に機能するためには、自分の中にあるものを内に秘め、外にあるものが自分の中に入らないようにしなければならない。内なるものが外に流れ出すぎてしまうと、懸念材料ではなくなる。「信奉者が開錠の傷跡を3回負い、死亡した。]",
+			"aspects": {
+				"killmortal": 1
+			}
+		},
+		{
+			"id": "deathscar_winter",
+			"actionId": "talk",
+			"label": "死亡：終幕",
+			"requirements": {
+				"follower_scar_winter": 3
+			},
+			"description": "年は冬に向かって西に向きを変えた。その目はもう開かない。[信奉者が冬の傷跡を3度負い死んだ。]",
+			"aspects": {
+				"killmortal": 1
+			}
+		},
+		{
+			"id": "talktofollower",
+			"label": "信奉者と教団業務について話し合う",
+			"actionId": "talk",
+			"requirements": {
+				"society": -1,
+				"follower": 1,
+				"summoned": -1
+			},
+			"slots": [
+				{
+					"id": "Subject",
+					"label": "話題",
+					"description": "我らがカルト、教団業務のため。ターゲットやその他の話題。",
+					"required": {
+						"society": 1,
+						"evidencelevel": 1,
+						"hunter": 1,
+						"independent": 1,
+						"tool": 1,
+						"ingredient": 1,
+						"annoyance": 1,
+						"location": 1
+					}
+				}
+			],
+			"comments": "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+			"alternativerecipes": [
+				{
+					"id": "talktohireling_rehire",
+					"chance": 100
+				},
+				{
+					"id": "talktodevotee_refire",
+					"chance": 100
+				},
+				{
+					"id": "A_talktofollower_givetool_router",
+					"chance": 100
+				},
+				{
+					"id": "A_talktofollower_cantgivetool",
+					"chance": 100
+				},
+				{
+					"id": "A_talktofollower_locationcabaret_lustsensation",
+					"chance": 100
+				},
+				{
+					"id": "A_talktofollower_locationcabaret_lustchange",
+					"chance": 100
+				},
+				{
+					"id": "A_talktofollower_locationstreetsstrange_lustenlightenment",
+					"chance": 100
+				},
+				{
+					"id": "A_talktofollower_locationauctionhouse_lustpower",
+					"chance": 100
+				},
+				{
+					"id": "A_talktofollower_locationcabaret_notinterested",
+					"chance": 100
+				},
+				{
+					"id": "A_talktofollower_locationstreetsstrange_notinterested",
+					"chance": 100
+				},
+				{
+					"id": "A_talktofollower_locationauctionhouse_notinterested",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_repairtoollanternbcracked",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_repairtoollanterndcracked",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_repairtoollanternfcracked",
+					"chance": 100
+				},
+				{
+					"id": "followeraction.repair.greatwork.sabotaged"
+				},
+				{
+					"id": "A_follower_settrap_independent",
+					"chance": 100
+				},
+				{
+					"id": "A_follower_settrap_vault",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_murderhighwinter",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_craftworkhighforge",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_seducehighgrail",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_burglehighknock",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_charmhighheart",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_auguryhighlantern",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_hoodwinkhighmoth",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_abducthighedge",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_murdermidwinter",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_craftworkmidforge",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_seducemidgrail",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_burglemidknock",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_charmmidheart",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_augurymidlantern",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_hoodwinkmidmoth",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_abductmidedge",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_murderlowwinter",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_craftworklowforge",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_seducelowgrail",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_burglelowknock",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_charmlowheart",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_augurylowlantern",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_hoodwinklowmoth",
+					"chance": 100
+				},
+				{
+					"id": "followeraction_abductlowedge",
+					"chance": 100
+				},
+				{
+					"id": "hunterattackhighedge",
+					"chance": 100
+				},
+				{
+					"id": "hunterattackmidedge",
+					"chance": 100
+				},
+				{
+					"id": "hunterattacklowedge",
+					"chance": 100
+				},
+				{
+					"id": "hunterattackhighwinter",
+					"chance": 100
+				},
+				{
+					"id": "hunterattackmidwinter",
+					"chance": 100
+				},
+				{
+					"id": "hunterattacklowwinter",
+					"chance": 100
+				},
+				{
+					"id": "hunterattacknoedge",
+					"chance": 100
+				},
+				{
+					"id": "annoyanceseducehighgrail",
+					"chance": 100
+				},
+				{
+					"id": "annoyanceattackhighedge",
+					"chance": 100
+				},
+				{
+					"id": "annoyanceseducemidgrail",
+					"chance": 100
+				},
+				{
+					"id": "annoyanceattackmidedge",
+					"chance": 100
+				},
+				{
+					"id": "annoyancederangemidmoth",
+					"chance": 100
+				},
+				{
+					"id": "annoyanceseducelowgrail",
+					"chance": 100
+				},
+				{
+					"id": "annoyanceattacklowedge",
+					"chance": 100
+				},
+				{
+					"id": "annoyancederangelowmoth",
+					"chance": 100
+				},
+				{
+					"id": "annoyanceattacknoedge",
+					"chance": 100
+				},
+				{
+					"id": "evidencedestroymidmoth",
+					"chance": 100
+				},
+				{
+					"id": "evidencedestroylowmoth",
+					"chance": 100
+				},
+				{
+					"id": "evidencedestroynomoth",
+					"chance": 100
+				}
+			],
+			"startdescription": "煙が充満した会議室で大切な話し合いをする。信奉者には何をしてもらおう。[カルトを追加して、信奉者を教団業務に送り出したり、敵を負わせたり、他のことを話し合ったりする。]",
+			"description": "何もなしか。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "talktohireling_rehire",
+			"actionId": "talk",
+			"label": "この雇い人にもう一度支払いを提示する。",
+			"requirements": {
+				"hireling": 1,
+				"funds": 1
+			},
+			"startdescription": "資金を払って、雇い人の雇用期間を延長することができる。",
+			"description": "「分かった。前と同じ条件だ」",
+			"aspects": {
+				"hiring": 1
+			},
+			"effects": {
+				"funds": -1
+			},
+			"craftable": true,
+			"warmup": 10
+		},
+		{
+			"id": "talktodevotee_refire",
+			"actionId": "talk",
+			"label": "この心酔者の信仰心に火をつける。",
+			"requirements": {
+				"devotee": 1,
+				"fervour": 1
+			},
+			"startdescription": "信奉者の信仰心が揺らいでいるのなら、熱狂を使って熱意に再び火をつけることができる。",
+			"description": "「そんなに早く夢を忘れてしまうものか？」",
+			"effects": {
+				"refiring": 1
+			},
+			"craftable": true,
+			"warmup": 10
+		},
+		{
+			"id": "A_talktofollower_cantgivetool",
+			"label": "賢くないのか、許されていないのか",
+			"actionId": "talk",
+			"requirements": {
+				"follower": 1,
+				"tool": 1,
+				"summoned": -1,
+				"follower_honoured": 1
+			},
+			"startdescription": "この信奉者にはもう贈り物を渡した。[信奉者は2度贈り物を受け取ることはできない。]"
+		},
+		{
+			"id": "A_talktofollower_givetool_router",
+			"label": "信奉者に道具を贈る",
+			"actionId": "talk",
+			"requirements": {
+				"follower": 1,
+				"tool": 1,
+				"summoned": -1,
+				"follower_honoured": -1,
+				"greatwork": -1,
+				"greatwork.sabotaged": -1
+			},
+			"startdescription": "私の手から信奉者の手に力が渡る。[信奉者の関連する属性を増加させるが、道具を奪い返すことも、2つ目の道具を贈ることもできない。贈り物は恨みを軽減する。]",
+			"description": ".",
+			"linked": [
+				{
+					"chance": 100,
+					"id": "L_give_tool_edgeb"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_edged"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_edgef"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_forgeb"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_forged"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_forgef"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_grailmoth"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_grailb"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_graild"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_grailf"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_heartb"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_heartd"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_heartf"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_knockb"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_knockd"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_knockf"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_lanternb"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_lanternd"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_lanternf"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_mothb"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_mothd"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_mothf"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_secrethistoriesb"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_secrethistoriesd"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_winterb"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_winterd"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_winterf"
+				},
+				{
+					"chance": 100,
+					"id": "L_give_tool_other"
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_edgeb",
+			"label": "刃の小さな贈り物",
+			"actionId": "talk",
+			"description": "乾燥させた虎の腱の長さで、首の周りに巻いておくこと。",
+			"requirements": {
+				"tooledgeb": 1
+			},
+			"effects": {
+				"tooledgeb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "edge",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_edged",
+			"label": "刃の大切な贈り物",
+			"actionId": "talk",
+			"description": "手の近くに、血に触れないように包んで保管すること。そうでなければ、それを興奮させてしまうかもしれない。",
+			"requirements": {
+				"tooledged": 1
+			},
+			"effects": {
+				"tooledged": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "edge",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 2,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_edgef",
+			"label": "刃の素敵な贈り物",
+			"actionId": "talk",
+			"description": "反乱を煽ることができない場所に埋めておくこと。",
+			"requirements": {
+				"tooledgef": 1
+			},
+			"effects": {
+				"tooledgef": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "edge",
+					"mutationLevel": 3,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 3,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_forgeb",
+			"label": "鍛造の小さな贈り物",
+			"actionId": "talk",
+			"description": "上質な鋼の鎖につけて、首に掛けておくこと。",
+			"requirements": {
+				"toolforgeb": 1
+			},
+			"effects": {
+				"toolforgeb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "forge",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_forged",
+			"label": "鍛造の大切な贈り物",
+			"actionId": "talk",
+			"description": "鉄の輪の中に入れて、肉に固定しておくこと。",
+			"requirements": {
+				"toolforged": 1
+			},
+			"effects": {
+				"toolforged": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "forge",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 2,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_forgef",
+			"label": "鍛造の素敵な贈り物",
+			"actionId": "talk",
+			"description": "小さな祠のランプの中に保管しておくこと。",
+			"requirements": {
+				"toolforgef": 1
+			},
+			"effects": {
+				"toolforgef": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "forge",
+					"mutationLevel": 3,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 3,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_grailmoth",
+			"label": "聖杯と蛾の小さな贈り物",
+			"actionId": "talk",
+			"description": "首の下、腰の上、胸の中央のくぼみの中に入れておくこと。",
+			"requirements": {
+				"toolgrailmoth": 1
+			},
+			"effects": {
+				"toolgrailmoth": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "grail",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "moth",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_grailb",
+			"label": "聖杯の小さな贈り物",
+			"actionId": "talk",
+			"description": "昼間は絶対に着用せず、月明かりの下でも、細心の注意を払って保管すること。",
+			"requirements": {
+				"toolgrailb": 1
+			},
+			"effects": {
+				"toolgrailb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "grail",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_graild",
+			"label": "聖杯の大切な贈り物",
+			"actionId": "talk",
+			"description": "保管方法：私の従者がこの指輪に髪を編み込むことで、次の持ち主が指輪を燃やすことができるようにする。",
+			"requirements": {
+				"toolgraild": 1
+			},
+			"effects": {
+				"toolgraild": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "grail",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 2,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_grailf",
+			"label": "聖杯の素敵な贈り物",
+			"actionId": "talk",
+			"description": "貯蔵庫の中で、希少なワインの横に保管しておくこと。",
+			"requirements": {
+				"toolgrailf": 1
+			},
+			"effects": {
+				"toolgrailf": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "grail",
+					"mutationLevel": 3,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 3,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_heartb",
+			"label": "心臓の小さな贈り物",
+			"actionId": "talk",
+			"description": "行儀の良い幼児のように、つり包帯に包んで運ぶこと。",
+			"requirements": {
+				"toolheartb": 1
+			},
+			"effects": {
+				"toolheartb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "heart",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_heartd",
+			"label": "心臓の大切な贈り物",
+			"actionId": "talk",
+			"description": "不意に震えないように、しっかりと包んでおくこと。",
+			"requirements": {
+				"toolheartd": 1
+			},
+			"effects": {
+				"toolheartd": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "heart",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 2,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_heartf",
+			"label": "心臓の素敵な贈り物",
+			"actionId": "talk",
+			"description": "暖炉の上、または入り口の前に置いておくこと。",
+			"requirements": {
+				"toolheartf": 1
+			},
+			"effects": {
+				"toolheartf": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "heart",
+					"mutationLevel": 3,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 3,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_knockb",
+			"label": "開錠の小さな贈り物",
+			"actionId": "talk",
+			"description": "乾燥させた蛇の腹の長さで、首の周りに巻いておくこと。",
+			"requirements": {
+				"toolknockb": 1
+			},
+			"effects": {
+				"toolknockb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "knock",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_knockd",
+			"label": "開錠の大切な贈り物",
+			"actionId": "talk",
+			"description": "開けてはいけない扉の前に置いておくこと。",
+			"requirements": {
+				"toolknockd": 1
+			},
+			"effects": {
+				"toolknockd": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "knock",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 2,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_knockf",
+			"label": "開錠の素敵な贈り物",
+			"actionId": "talk",
+			"description": "閉じ込めておくことはできない。手の中や舌の下に忍ばせておくこと。",
+			"requirements": {
+				"toolknockf": 1
+			},
+			"effects": {
+				"toolknockf": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "knock",
+					"mutationLevel": 3,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 3,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_lanternb",
+			"label": "灯りの小さな贈り物",
+			"actionId": "talk",
+			"description": "絡めた金色の針金につけて、首から掛けておくこと。",
+			"requirements": {
+				"toollanternb": 1
+			},
+			"effects": {
+				"toollanternb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "lantern",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_lanternd",
+			"label": "開錠の大切な贈り物",
+			"actionId": "talk",
+			"description": "どこに保管していても、瞳孔の分裂した反射に映るように保管すること。",
+			"requirements": {
+				"toollanternd": 1
+			},
+			"effects": {
+				"toollanternd": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "lantern",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 2,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_lanternf",
+			"label": "灯りの素敵な贈り物",
+			"actionId": "talk",
+			"description": "光が入らない窓のない部屋に置いておくこと。",
+			"requirements": {
+				"toollanternf": 1
+			},
+			"effects": {
+				"toollanternf": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "lantern",
+					"mutationLevel": 3,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 3,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_mothb",
+			"label": "蛾の小さな贈り物",
+			"actionId": "talk",
+			"description": "髪の毛の塊に入れたり、包帯に入れたり、箱に入れたり、気が向いたときにだけ訪れる場所に保管すること。",
+			"requirements": {
+				"toolmothb": 1
+			},
+			"effects": {
+				"toolmothb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "moth",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_mothd",
+			"label": "蛾の大切な贈り物",
+			"actionId": "talk",
+			"description": "常に壁を向いている無表情のマネキンの上に保管すること。",
+			"requirements": {
+				"toolmothd": 1
+			},
+			"effects": {
+				"toolmothd": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "moth",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 2,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_mothf",
+			"label": "蛾の素敵な贈り物",
+			"actionId": "talk",
+			"description": "血液を3滴と髪の毛を3本混ぜた水を入れた銅製の器に保管すること。毎週入れかえて、常に北を指すように、鉄製の針を浮かべること。",
+			"requirements": {
+				"toolmothf": 1
+			},
+			"effects": {
+				"toolmothf": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "moth",
+					"mutationLevel": 3,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 3,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_secrethistoriesb",
+			"label": "秘史を記念した小さな贈り物",
+			"actionId": "talk",
+			"description": "複数の場所に保管できる物もある。",
+			"requirements": {
+				"toolsecrethistoriesb": 1
+			},
+			"effects": {
+				"toolsecrethistoriesb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "secrethistories",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_secrethistoriesd",
+			"label": "秘史を記念した素敵な贈り物",
+			"actionId": "talk",
+			"description": "2枚の鏡の間、消えない光の下に保管すること。",
+			"requirements": {
+				"toolsecrethistoriesd": 1
+			},
+			"effects": {
+				"toolsecrethistoriesd": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "secrethistories",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 2,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_winterb",
+			"label": "冬の小さな贈り物",
+			"actionId": "talk",
+			"description": "静かな場所に保管されている。",
+			"requirements": {
+				"toolwinterb": 1
+			},
+			"effects": {
+				"toolwinterb": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "winter",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_winterd",
+			"label": "冬の切な贈り物",
+			"actionId": "talk",
+			"description": "誰もいない場所に保管されている。",
+			"requirements": {
+				"toolwinterd": 1
+			},
+			"effects": {
+				"toolwinterd": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "winter",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 2,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_winterf",
+			"label": "冬の素敵な贈り物",
+			"actionId": "talk",
+			"description": "誰もいない静かな場所に保管されている。",
+			"requirements": {
+				"toolwinterf": 1
+			},
+			"effects": {
+				"toolwinterf": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "winter",
+					"mutationLevel": 3,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "resentment",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "follower",
+					"mutateAspectId": "follower_honoured",
+					"mutationLevel": 3,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "L_give_tool_other",
+			"label": "すべてのものが、贈り物に適しているわけではない。",
+			"actionId": "talk",
+			"description": "人に贈れないものもあれば、誰にも受け入れられないものもある。"
+		},
+		{
+			"id": "A_talktofollower_locationcabaret_lustsensation",
+			"label": "エクディシスクラブで過ごす夜に招待する",
+			"actionId": "talk",
+			"requirements": {
+				"romanticinterest": -1,
+				"follower_lustsensation": 1,
+				"locationcabaret": 1
+			},
+			"startdescription": "@#uqrose|ローズはニヤリと笑った。「ありがとう。クラブが大好きなの。兄がよく連れて行ってくれたわ」\n#uqsaliba|サリバは私の足の指先から頭の先までじっと見つめた。彼は手を握りこぶしを作り、手のひらを広げると、「いいね」と言った。\n#uqvictor|ビクターはウインクをして言った。「ああ、そうしよう。姉がクラブが好きだったんだ。もう一度いきたいな、と思っていたところだ」\n#uqviolet|ヴァイオレットはくすくす笑った。その笑い声は甲高い笑い声となり、やがて彼女は咳き込みだした。落ち着くと彼女は、私のあごを指で持ち上げ、目をじっと見つめて、「ええ、そうね」と答えた。\n#uqrenira|レニラは何も言わなかった。ただ体をぐっと伸ばして立ち上がり、肩越しにちらりと視線を送って部屋から出て行った。@",
+			"description": "一緒にいた人が同じ感性を持っていればの話だが、行きずりの恋を始めたいならちょうど良い場所だ。[このキャラクターと恋愛関係を始めるには、自分の心の奥底にある欲望が一致していることを示さなくてはいけない。]",
+			"linked": [
+				{
+					"id": "L_talk_roseopportunity",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_talktofollower_locationcabaret_lustchange",
+			"label": "エクディシスクラブで過ごす夜に招待する",
+			"actionId": "talk",
+			"requirements": {
+				"romanticinterest": -1,
+				"follower_lustchange": 1,
+				"locationcabaret": 1
+			},
+			"startdescription": "@#uqporter|ポーターは肩をすくめて、甘草の根っこをかじると、「そうだな」と言った。\n#uqysabet|イザベトは反射的に首を傾げると、「そうしようかな」と言った。そして、少しの間、躊躇すると「素敵なことだわ」と、付け加えた。\n#uqclovette|クロベットは手を叩いた。「一生誘ってくれないかと思った！」\n#uqdorothy|ドロシーは、心を決めたかのように何度か頷くと、「ついにこの時が来たのね」と、優しい口調で言った。\n#uqsylvia|シルヴィアはあくびをすると、アイパッチの端を持ち上げて、下のくぼみを掻きむしった。そして彼女は、「素敵ね」と物憂げに言った。\n#uqleo|レオは首を傾げると、私を見上げ、それから地面を見つめた。そして地面に向かって、「喜んで」と、かしこまって答えた。@",
+			"description": "パフォーマーの身体が脱ぎ捨てられた瞬間ではなく、何よりもある種の変容が現れた時に、私の仲間は息を切らした。[このキャラクターと恋愛関係を始めるには、自分の心の奥底にある欲望が一致していることを示さなくてはいけない。]",
+			"linked": [
+				{
+					"id": "L_talk_roseopportunity",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_talktofollower_locationstreetsstrange_lustenlightenment",
+			"label": "見知らぬ街並みでの散歩に誘う",
+			"actionId": "talk",
+			"requirements": {
+				"romanticinterest": -1,
+				"follower_lustenlightenment": 1,
+				"locationstreetsstrange": 1
+			},
+			"startdescription": "@#uqauclair|オークレールは顔を上げ、明るく澄んだ笑顔を作ると、「嬉しい」と言った。\n#uqcat|キャットはティーカップを持ち上げ、最後の1滴まで飲み干すと、カップの中をじっくりと見つめて言った。「もちろんよ。そうしましょう」\n#uqclifton|クリフトンは、げっぷをすると口元を拭いて、満足げに言った。「ああ、分かったよ」\n#uqenid|イーニッドは私をじっと見つめると、目を輝かせて言った。「もちろん」\n#uqneville|ネビルはつばを飲み込んで言った。「本当に？ありがとう。えっと、はい、もちろん！」\n#uqslee|一瞬、私が外科的介入を提案したかのように、スリーは怯えた顔をした。そして、真剣に頷くと、「どんな夜になるだろうね」と言った。@",
+			"description": "光は銀色で、風は涼しい。濃い色のベルベットが指先を誘うように、夜の静寂が言葉を誘う。[このキャラクターと恋愛関係を始めるには、自分の心の奥底にある欲望が一致していることを示さなくてはいけない。]",
+			"linked": [
+				{
+					"id": "L_talk_roseopportunity",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_talktofollower_locationauctionhouse_lustpower",
+			"label": "オリフラムの店で過ごす夜に招待する",
+			"actionId": "talk",
+			"requirements": {
+				"romanticinterest": -1,
+				"follower_lustpower": 1,
+				"locationauctionhouse": 1
+			},
+			"startdescription": "@#uqtristan|トリスタンは何も言わずに力強く頷いた。\n#uqvalciane|ヴァルシアーヌは素っ気なくうなずいたが、彼女の瞳は炉の扉を開けた瞬間の炭のように光っている。\n#uqelridge|エルリッジはカチッと音を立ててナイフを閉じ、私に全神経を集中させて、「ああ、頼む」と言った。\n#uqlaidlaw|「名案だ！」と、レイドローは楽しそうに笑った。@",
+			"description": "月夜の散歩が好きな人もいる。優しい音楽を好む人もいる。しかし、贅沢な輝き、上流社会や権力の歯車が静かに回る音を楽しむ人もいる。[このキャラクターと恋愛関係を始めるには、自分の心の奥底にある欲望が一致していることを示さなくてはいけない。]",
+			"linked": [
+				{
+					"id": "L_talk_roseopportunity",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_talktofollower_locationcabaret_notinterested",
+			"label": "エクディシスクラブで過ごす夜に招待する",
+			"actionId": "talk",
+			"requirements": {
+				"romanticinterest": -1,
+				"locationcabaret": 1
+			},
+			"startdescription": "「あそこには......行きたくない」",
+			"description": "[信奉者はこの場所に特別な興味を持っていない。]"
+		},
+		{
+			"id": "A_talktofollower_locationauctionhouse_notinterested",
+			"label": "オリフラムの店で過ごす夜に招待する",
+			"actionId": "talk",
+			"requirements": {
+				"romanticinterest": -1,
+				"locationauctionhouse": 1
+			},
+			"startdescription": "「あそこには......行きたくない」",
+			"description": "[信奉者はこの場所に特別な興味を持っていない。]"
+		},
+		{
+			"id": "A_talktofollower_locationstreetsstrange_notinterested",
+			"label": "不気味な場所での散歩に誘う。",
+			"actionId": "talk",
+			"requirements": {
+				"romanticinterest": -1,
+				"locationstreetsstrange": 1
+			},
+			"startdescription": "「あそこには......行きたくない」",
+			"description": "[信奉者はこの場所に特別な興味を持っていない。]"
+		},
+		{
+			"id": "followeraction_repairtoollanternbcracked",
+			"label": "ひび割れた正午の石を修理する",
+			"actionId": "talk",
+			"requirements": {
+				"follower": 1,
+				"forge": 1,
+				"toollanternbcracked": 1
+			},
+			"startdescription": "修理を始めることはできるが、必要な材料を買うには資金が必要になる。",
+			"description": ".",
+			"linked": [
+				{
+					"chance": 100,
+					"id": "followeraction_repairtoollanternbcracked_attempt"
+				}
+			]
+		},
+		{
+			"id": "followeraction_repairtoollanternbcracked_attempt",
+			"label": "ひび割れた正午の石の修理",
+			"actionId": "talk",
+			"slots": [
+				{
+					"id": "Materials",
+					"label": "材料",
+					"description": "珍しい燃料と風変わりな粉",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "タスクを遂行するために、信奉者が資金を必要としている。",
+			"description": "信奉者が必要としていた材料を提供できなかった。石はひび割れたままだ。",
+			"warmup": 30,
+			"alternativerecipes": [
+				{
+					"id": "followeraction_repairtoollanternbcracked_succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_repairtoollanternbcracked_succeed",
+			"label": "ひび割れた正午の石の修理",
+			"actionId": "talk",
+			"requirements": {
+				"funds": 1
+			},
+			"startdescription": "信奉者が石の修理に取り掛かっている。",
+			"description": "石の修理が終わった！以前の輝きを取り戻したみたいだ。",
+			"effects": {
+				"funds": -1,
+				"toollanternbcracked": -1,
+				"toollanternb": 1
+			}
+		},
+		{
+			"id": "followeraction_repairtoollanterndcracked",
+			"label": "ひび割れた錯乱の鏡を修理する",
+			"actionId": "talk",
+			"requirements": {
+				"follower": 1,
+				"forge": 1,
+				"toollanterndcracked": 1
+			},
+			"startdescription": "修理を始めることはできるが、必要な材料を買うには青銅のスピントリアが必要になる。",
+			"description": ".",
+			"linked": [
+				{
+					"chance": 100,
+					"id": "followeraction_repairtoollanterndcracked_attempt"
+				}
+			]
+		},
+		{
+			"id": "followeraction_repairtoollanterndcracked_attempt",
+			"label": "ひび割れた錯乱の鏡の修理",
+			"actionId": "talk",
+			"slots": [
+				{
+					"id": "Materials",
+					"label": "材料",
+					"description": "珍しい金属とあり得ない色",
+					"required": {
+						"compensationvalue": 4
+					}
+				}
+			],
+			"startdescription": "タスクを遂行するために、信奉者が青銅のスピントリアか、それ以上に価値があるものを必要としている。",
+			"description": "信奉者が必要としていた材料を提供できなかった。鏡はひび割れたままだ。",
+			"warmup": 30,
+			"alternativerecipes": [
+				{
+					"id": "followeraction_repairtoollanterndcracked_succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_repairtoollanterndcracked_succeed",
+			"label": "ひび割れた錯乱の鏡の修理",
+			"actionId": "talk",
+			"requirements": {
+				"compensationvalue": 4
+			},
+			"startdescription": "信奉者が鏡の修理に取り掛かっている。",
+			"description": "鏡の修理が終わった！以前の輝きを取り戻したみたいだ。",
+			"effects": {
+				"compensationvalue": -1,
+				"toollanterndcracked": -1,
+				"toollanternd": 1
+			}
+		},
+		{
+			"id": "followeraction_repairtoollanternfcracked",
+			"label": "ひび割れた見張り番の鏡を修理する",
+			"actionId": "talk",
+			"requirements": {
+				"follower": 1,
+				"forge": 1,
+				"toollanternfcracked": 1
+			},
+			"startdescription": "修理を始めることはできるが、必要な材料を買うには少なくとも銀のスピントリア1枚が必要になる。",
+			"description": ".",
+			"linked": [
+				{
+					"chance": 100,
+					"id": "followeraction_repairtoollanternfcracked_attempt"
+				}
+			]
+		},
+		{
+			"id": "followeraction_repairtoollanternfcracked_attempt",
+			"label": "ひび割れた見張り番の鏡の修理",
+			"actionId": "talk",
+			"slots": [
+				{
+					"id": "Materials",
+					"label": "材料",
+					"description": "輝く歌と風変わりな合金",
+					"required": {
+						"compensationvalue": 8
+					}
+				}
+			],
+			"startdescription": "タスクを遂行するために、信奉者が銀のスピントリアか、それ以上に価値があるものを必要としている。",
+			"description": "信奉者が必要としていた材料を提供できなかった。鏡はひび割れたままだ。",
+			"warmup": 30,
+			"alternativerecipes": [
+				{
+					"id": "followeraction_repairtoollanternfcracked_succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_repairtoollanternfcracked_succeed",
+			"label": "ひび割れた見張り番の鏡の修理",
+			"actionId": "talk",
+			"requirements": {
+				"compensationvalue": 8
+			},
+			"startdescription": "信奉者が鏡の修理に取り掛かっている。",
+			"description": "鏡の修理が終わった！以前の輝きを取り戻したみたいだ。",
+			"effects": {
+				"compensationvalue": -1,
+				"toollanternfcracked": -1,
+				"toollanternf": 1
+			}
+		},
+		{
+			"id": "followeraction.repair.greatwork.sabotaged",
+			"label": "大いなる業の破壊された要素を修復する",
+			"actionId": "talk",
+			"requirements": {
+				"follower": 1,
+				"forge": 1,
+				"greatwork.sabotaged": 1
+			},
+			"startdescription": "修理を始めることはできるが、必要な材料を買うには銀のスピントリアが必要になる。",
+			"description": ".",
+			"linked": [
+				{
+					"chance": 100,
+					"id": "followeraction.repair.greatwork.sabotaged.attempt"
+				}
+			]
+		},
+		{
+			"id": "followeraction.repair.greatwork.sabotaged.attempt",
+			"label": "大いなる業の破壊された要素の修復",
+			"actionId": "talk",
+			"slots": [
+				{
+					"id": "Materials",
+					"label": "材料",
+					"description": "金属と慈しみ",
+					"required": {
+						"compensationvalue": 8
+					}
+				}
+			],
+			"startdescription": "タスクを遂行するために、信奉者が銀のスピントリアを必要としている。",
+			"description": "信奉者が必要としていた材料を提供できなかった。大いなる業は危険にさらされたままだ。",
+			"warmup": 30,
+			"alternativerecipes": [
+				{
+					"id": "followeraction.repair.greatwork.sabotaged.succeed",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction.repair.greatwork.sabotaged.succeed",
+			"label": "大いなる業の破壊された要素の修復",
+			"actionId": "talk",
+			"requirements": {
+				"compensationvalue": 8
+			},
+			"startdescription": "信奉者が修復をしている。",
+			"description": "大いなる業は続く！",
+			"aspects": {
+				"sabotage.repair": 1
+			}
+		},
+		{
+			"id": "A_follower_settrap_independent",
+			"actionId": "talk",
+			"label": "罠を作ってライバルを遅らせたり、倒したりする",
+			"startdescription": "ライバルはハンターのように街をうろついたりしない。中立的な場所以外では会ってくれないだろう。倒すには、罠を用意して捕まるのを待つしかない。[刃、鍛造、蛾、冬は罠を作る際に役立つ。作り終えた罠は、独立した者が金庫を破壊しようとしたときに使える。]",
+			"requirements": {
+				"independent": 1,
+				"follower": 1,
+				"summoned": -1
+			},
+			"comments": "Follower requirement isn't redundant... cos we also link here from conversations with Independents.",
+			"alternativerecipes": [
+				{
+					"id": "expel_independent",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"independent": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "L_set_trap_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_follower_settrap_vault",
+			"actionId": "talk",
+			"label": "罠を作ってライバルを遅らせたり、倒したりする",
+			"startdescription": "ライバルは用心深く、ハンターたちのように街中をうろついたりはしない。倒すには、罠を用意して、機会をうかがうしかない。[刃、鍛造、蛾、冬は罠を作る際に役立つ。作り終えた罠は、独立した者が金庫を破壊しようとしたときに使える。]",
+			"requirements": {
+				"vault": 1
+			},
+			"linked": [
+				{
+					"id": "L_set_trap_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_set_trap_router",
+			"actionId": "talk",
+			"effects": {
+				"snare": 1
+			},
+			"linked": [
+				{
+					"id": "L_settrap_highedge",
+					"chance": 100
+				},
+				{
+					"id": "L_settrap_highwinter",
+					"chance": 100
+				},
+				{
+					"id": "L_settrap_highforge",
+					"chance": 100
+				},
+				{
+					"id": "L_settrap_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "L_settrap_midedge",
+					"chance": 100
+				},
+				{
+					"id": "L_settrap_midwinter",
+					"chance": 100
+				},
+				{
+					"id": "L_settrap_midforge",
+					"chance": 100
+				},
+				{
+					"id": "L_settrap_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "L_settrap_lowedge",
+					"chance": 100
+				},
+				{
+					"id": "L_settrap_lowwinter",
+					"chance": 100
+				},
+				{
+					"id": "L_settrap_lowforge",
+					"chance": 100
+				},
+				{
+					"id": "L_settrap_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "L_createsnare_rubbish",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_highedge",
+			"actionId": "talk",
+			"requirements": {
+				"edge": 10
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_great",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_highwinter",
+			"actionId": "talk",
+			"requirements": {
+				"winter": 10
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_great",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_highforge",
+			"actionId": "talk",
+			"requirements": {
+				"forge": 10
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_great",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_highmoth",
+			"actionId": "talk",
+			"requirements": {
+				"moth": 10
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_great",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_midedge",
+			"actionId": "talk",
+			"requirements": {
+				"edge": 7
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_good",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_midwinter",
+			"actionId": "talk",
+			"requirements": {
+				"winter": 7
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_good",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_midforge",
+			"actionId": "talk",
+			"requirements": {
+				"forge": 7
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_good",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_midmoth",
+			"actionId": "talk",
+			"requirements": {
+				"moth": 7
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_good",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_lowedge",
+			"actionId": "talk",
+			"requirements": {
+				"edge": 3
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_poor",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_lowwinter",
+			"actionId": "talk",
+			"requirements": {
+				"winter": 3
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_poor",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_lowforge",
+			"actionId": "talk",
+			"requirements": {
+				"forge": 3
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_poor",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_settrap_lowmoth",
+			"actionId": "talk",
+			"requirements": {
+				"moth": 3
+			},
+			"linked": [
+				{
+					"id": "L_createsnare_poor",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "L_createsnare_great",
+			"actionId": "talk",
+			"label": "危険な罠",
+			"description": "信奉者が、危険なほど狡猾な略奪戦を仕掛けた――ほぼ確実に成功するだろう。",
+			"mutations": [
+				{
+					"filterOnAspectId": "snare",
+					"mutateAspectId": "snarelevel",
+					"mutationLevel": 3,
+					"additive": true
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "L_createsnare_good",
+			"actionId": "talk",
+			"label": "巧妙な罠",
+			"description": "信奉者が、狡猾な略奪戦を仕掛けた――成功する確率が高い。",
+			"mutations": [
+				{
+					"filterOnAspectId": "snare",
+					"mutateAspectId": "snarelevel",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "L_createsnare_poor",
+			"actionId": "talk",
+			"label": "無難な罠",
+			"description": "信奉者が、かなりの運が良ければライバルの計画を打ち負かす戦略を立てた。",
+			"mutations": [
+				{
+					"filterOnAspectId": "snare",
+					"mutateAspectId": "snarelevel",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "L_createsnare_rubbish",
+			"actionId": "talk",
+			"label": "必死の試み",
+			"description": "信奉者の計画は良く言えば奇抜で、悪く言えば役立たずだが、敵は罠にはまるかもしれない。",
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_abducthighedge",
+			"label": "教団業務：見知らぬ人を拉致する",
+			"actionId": "talk",
+			"startdescription": "暗殺者は簡単に犠牲者を通りから連れ去ることができる。",
+			"description": ".",
+			"requirements": {
+				"society": 1,
+				"edge": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_abductsuccess",
+					"chance": 90
+				},
+				{
+					"id": "followeraction_abductfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_abductmidedge",
+			"label": "教団業務：見知らぬ人を拉致する",
+			"actionId": "talk",
+			"startdescription": "熟練した弟子なら、犠牲者不用心なを拉致できるだろう。",
+			"requirements": {
+				"society": 1,
+				"edge": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_abductsuccess",
+					"chance": 70
+				},
+				{
+					"id": "followeraction_abductfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_abductlowedge",
+			"label": "教団業務：見知らぬ人を拉致する",
+			"actionId": "talk",
+			"startdescription": "信者は拉致に苦戦するだろうが、運が味方してくれるかもしれない。",
+			"requirements": {
+				"society": 1,
+				"edge": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_abductsuccess",
+					"chance": 30
+				},
+				{
+					"id": "followeraction_abductfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_abductsuccess",
+			"label": "拉致を試みる",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が、丁寧に梱包された囚人を連れて戻ってきた。",
+			"effects": {
+				"notoriety": 1,
+				"funds": 1
+			},
+			"deckeffect": {
+				"randomvictim": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_abductfailure",
+			"label": "拉致を試みる",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が手ぶらで戻ってきた。",
+			"effects": {
+				"notoriety": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "followeraction_abductfailure_losefollower",
+					"chance": 30
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_abductfailure_losefollower",
+			"label": "拉致を試みる",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下は手ぶらで戻ってきて、重傷を負っていた。標的とした犠牲者は勇敢だったようだ。[倒れた信奉者を「話す」で治癒する。]",
+			"effects": {
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": -1,
+					"additive": false
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_murderhighwinter",
+			"label": "教団業務：見知らぬ人を殺す",
+			"actionId": "talk",
+			"startdescription": "この人はほぼ確実に目的を達成してから帰ってくる。",
+			"description": ".",
+			"requirements": {
+				"society": 1,
+				"winter": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_murdersuccess",
+					"chance": 90
+				},
+				{
+					"id": "followeraction_murderfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_murdermidwinter",
+			"label": "教団業務：見知らぬ人を殺す",
+			"actionId": "talk",
+			"startdescription": "熟練した弟子なら、おそらく新鮮な死体を持ち帰ることができる。",
+			"requirements": {
+				"society": 1,
+				"winter": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_murdersuccess",
+					"chance": 70
+				},
+				{
+					"id": "followeraction_murderfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_murderlowwinter",
+			"label": "教団業務：見知らぬ人を殺す",
+			"actionId": "talk",
+			"startdescription": "この信者は失敗する可能性が高い。",
+			"requirements": {
+				"society": 1,
+				"winter": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_murdersuccess",
+					"chance": 30
+				},
+				{
+					"id": "followeraction_murderfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_murdersuccess",
+			"label": "殺人を試みる......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手先が新鮮な死体とその人の持ち物を持って帰ってきた。",
+			"effects": {
+				"notoriety": 1,
+				"corpse": 1
+			},
+			"deckeffect": {
+				"robberyrewards": 2
+			},
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_murderfailure",
+			"label": "殺人を試みる......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が手ぶらで戻ってきた。",
+			"effects": {
+				"notoriety": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "followeraction_murderfailure_losefollower",
+					"chance": 30
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_murderfailure_losefollower",
+			"label": "殺人を試みる......",
+			"actionId": "talk",
+			"startdescription": "知らせを待っている......",
+			"description": "手下が失敗の知らせを持って帰ってきた。立っているのもやっとな状態だ。犠牲者が抵抗したようだ。[倒れた信奉者を「話す」で治癒する。]",
+			"effects": {
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": -1,
+					"additive": false
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_craftworkhighforge",
+			"label": "教団業務：職人の技",
+			"actionId": "talk",
+			"startdescription": "私の指揮下にある作り変える者は、違法な研究所や怪しい製造工場で働いて資金を稼ぐことができる。時には、失敗することもあるかもしれない。",
+			"description": ".",
+			"requirements": {
+				"society": 1,
+				"forge": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_craftworksuccess",
+					"chance": 90
+				},
+				{
+					"id": "followeraction_craftworkfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_craftworkmidforge",
+			"label": "教団業務：職人の技",
+			"actionId": "talk",
+			"startdescription": "私の弟子は、違法な研究所や怪しい製造工場で働いて資金を稼ぐことができるかもしれないが、そこで事故が起きる可能性もある。",
+			"requirements": {
+				"society": 1,
+				"forge": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_craftworksuccess",
+					"chance": 70
+				},
+				{
+					"id": "followeraction_craftworkfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_craftworklowforge",
+			"label": "教団業務：職人の技",
+			"actionId": "talk",
+			"startdescription": "私の信者は、違法な研究所や怪しい製造工場で働いて資金を稼ぐことができるかもしれない......運が良ければ。",
+			"requirements": {
+				"society": 1,
+				"forge": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_craftworksuccess",
+					"chance": 30
+				},
+				{
+					"id": "followeraction_craftworkfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_craftworksuccess",
+			"label": "契約に基づいて働く......",
+			"actionId": "talk",
+			"startdescription": "この街には土地の法則に逆らう装置がある。自然の法則に逆らうものもいくつかあり、そのなかには非常に危険なものも存在する。",
+			"description": "私の信者は、労働の成果を持って帰ってきた。",
+			"deckeffect": {
+				"robberyrewards": 2
+			},
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_craftworkfailure",
+			"label": "契約に基づいて働く......",
+			"actionId": "talk",
+			"startdescription": "この街には土地の法則に逆らう装置がある。自然の法則に逆らうものもいくつかあり、そのなかには非常に危険なものも存在する。",
+			"description": "信奉者が手ぶらで帰ってきた。今日の課題は難しすぎたようだ。",
+			"effects": {
+				
+			},
+			"alternativerecipes": [
+				{
+					"id": "followeraction_craftworkfailure_losefollower",
+					"chance": 30
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_craftworkfailure_losefollower",
+			"label": "契約に基づいて働く......",
+			"actionId": "talk",
+			"startdescription": "この街には土地の法則に逆らう装置がある。自然の法則に逆らうものもいくつかあり、そのなかには非常に危険なものも存在する。",
+			"description": "事故が起きた。[倒れた信奉者を「話す」で治癒する。]",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": -1,
+					"additive": false
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_seducehighgrail",
+			"label": "教団業務：見知らぬ人を誘惑する",
+			"actionId": "talk",
+			"startdescription": "シプリアンにノーと言える人はいない。ほとんどいないだろう。",
+			"description": ".",
+			"requirements": {
+				"society": 1,
+				"grail": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_seducesuccess",
+					"chance": 90
+				},
+				{
+					"id": "followeraction_seducefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_seducemidgrail",
+			"label": "教団業務：見知らぬ人を誘惑する",
+			"actionId": "talk",
+			"startdescription": "説得力のある弟子なら、流されやすい人を誘い込むことができるだろう。",
+			"requirements": {
+				"society": 1,
+				"grail": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_seducesuccess",
+					"chance": 70
+				},
+				{
+					"id": "followeraction_seducefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_seducelowgrail",
+			"label": "教団業務：見知らぬ人を誘惑する",
+			"actionId": "talk",
+			"startdescription": "信者なら、犠牲者を誘い込むことができるかもしれない。",
+			"requirements": {
+				"society": 1,
+				"grail": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_seducesuccess",
+					"chance": 30
+				},
+				{
+					"id": "followeraction_seducefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_seducesuccess",
+			"label": "誘惑を試みる",
+			"actionId": "talk",
+			"startdescription": "夜に私の信奉者たちは、時々意味がありそうな言葉を囁いている。たとえ犠牲者がその言葉が嘘だと知っても、彼らは気にしないかもしれない。",
+			"description": "手下が、喜んで従順になった囚人を連れて戻ってきた。",
+			"effects": {
+				"notoriety": 1,
+				"funds": 1
+			},
+			"deckeffect": {
+				"randomvictim": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_seducefailure",
+			"label": "誘惑を試みる",
+			"actionId": "talk",
+			"startdescription": "夜に私の信奉者たちは、時々意味がありそうな言葉を囁いている。たとえ犠牲者がその言葉が嘘だと知っても、彼らは気にしないかもしれない。",
+			"description": "手下が手ぶらで戻ってきた。",
+			"effects": {
+				"notoriety": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "followeraction_seducefailure_losefollower",
+					"chance": 30
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_seducefailure_losefollower",
+			"label": "誘惑を試みる",
+			"actionId": "talk",
+			"startdescription": "夜に私の信奉者たちは、時々意味がありそうな言葉を囁いている。たとえ犠牲者がその言葉が嘘だと知っても、彼らは気にしないかもしれない。",
+			"description": "手下が半ば意識不明の状態で戻ってきた。体からは大量に血を流している。ライバルの恨みを買ってしまったようだ。 [倒れた信奉者を「話す」で治癒する。]",
+			"effects": {
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": -1,
+					"additive": false
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_burglehighknock",
+			"label": "教団業務：窃盗",
+			"actionId": "talk",
+			"startdescription": "私の鍵は、この街のどんな錠前も打ち破れるはずだ。",
+			"description": ".",
+			"requirements": {
+				"society": 1,
+				"knock": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_burglesuccess",
+					"chance": 90
+				},
+				{
+					"id": "followeraction_burglefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_burglemidknock",
+			"label": "教団業務：窃盗",
+			"actionId": "talk",
+			"startdescription": "弟子なら、才能を使って、何も知らない犠牲者から宝物を奪うことができるはずだ。",
+			"requirements": {
+				"society": 1,
+				"knock": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_burglesuccess",
+					"chance": 70
+				},
+				{
+					"id": "followeraction_burglefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_burglelowknock",
+			"label": "教団業務：窃盗",
+			"actionId": "talk",
+			"startdescription": "信者なら、運が良ければ、何も知らない犠牲者から宝物を奪えるはずだ。",
+			"requirements": {
+				"society": 1,
+				"knock": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_burglesuccess",
+					"chance": 30
+				},
+				{
+					"id": "followeraction_burglefailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_burglesuccess",
+			"label": "破壊、侵入、脱出.....",
+			"actionId": "talk",
+			"startdescription": "地下室や屋根裏部屋、隠し部屋や密閉されたクローゼットには、金持ちもそうでない人も宝物を隠している。",
+			"description": "私の信者は、戦利品を持って帰ってきた。",
+			"effects": {
+				"notoriety": 1,
+				"funds": 1
+			},
+			"deckeffect": {
+				"robberyrewards": 2
+			},
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_burglefailure",
+			"label": "破壊、侵入、脱出.....",
+			"actionId": "talk",
+			"startdescription": "地下室や屋根裏部屋、隠し部屋や密閉されたクローゼットには、金持ちもそうでない人も宝物を隠している。",
+			"description": "信奉者が手ぶらで帰ってきた。今日の課題は難しすぎたようだ。",
+			"effects": {
+				"notoriety": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "followeraction_burglefailure_losefollower",
+					"chance": 30
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_burglefailure_losefollower",
+			"label": "破壊、侵入、脱出.....",
+			"actionId": "talk",
+			"startdescription": "地下室や屋根裏部屋、隠し部屋や密閉されたクローゼットには、金持ちもそうでない人も宝物を隠している。",
+			"description": "事故が起きた。[倒れた信奉者を「話す」で治癒する。]",
+			"effects": {
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": -1,
+					"additive": false
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_charmhighheart",
+			"label": "教団業務：魅力",
+			"actionId": "talk",
+			"startdescription": "誰もが我々の教団を支持してくれるわけではないが、タランテリストは誰からも人気がある。悪いうわさが流れていても、タランテリストならほぼ確実に解決してくれるだろう。",
+			"description": ".",
+			"requirements": {
+				"society": 1,
+				"heart": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_charmsuccess",
+					"chance": 90
+				},
+				{
+					"id": "followeraction_charmfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_charmmidheart",
+			"label": "教団業務：魅力",
+			"actionId": "talk",
+			"startdescription": "誰もが我々の教団を支持してくれるわけではないが、悪いうわさが流れていたら、弟子がほぼ確実に解決してくれるだろう。",
+			"requirements": {
+				"society": 1,
+				"heart": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_charmsuccess",
+					"chance": 70
+				},
+				{
+					"id": "followeraction_charmfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_charmlowheart",
+			"label": "教団業務：魅力",
+			"actionId": "talk",
+			"startdescription": "誰もが我々の教団を支持してくれるわけではないが、悪いうわさが流れていたら、信者が解決できるかもしれない。",
+			"requirements": {
+				"society": 1,
+				"heart": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_charmsuccess",
+					"chance": 30
+				},
+				{
+					"id": "followeraction_charmfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_charmsuccess",
+			"label": "心のこもった話、優しい会話",
+			"actionId": "talk",
+			"slots": [
+				{
+					"id": "Reputation",
+					"label": "評判",
+					"required": {
+						"reputation": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "地上社会の規範は、我々には当てはまらない。しかし、それを強調する必要はないかもしれない。愛嬌や優しさを利用したほうが良いだろう。我々の組織の高尚な規範について、上品な決まり文句を用意してきた。",
+			"description": "楽観主義であることが、救いのスパイスとなる。",
+			"effects": {
+				"reputation": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_charmfailure",
+			"label": "心のこもった話、優しい会話",
+			"actionId": "talk",
+			"slots": [
+				{
+					"id": "Reputation",
+					"label": "評判",
+					"required": {
+						"reputation": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "地上社会の規範は、我々には当てはまらない。しかし、それを強調する必要はないかもしれない。愛嬌や優しさを利用したほうが良いだろう。我々の組織の高尚な規範について、上品な決まり文句を用意してきた。",
+			"description": "理解されていないか、理解されすぎているかのどちらかだ。",
+			"effects": {
+				"rumour": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_auguryhighlantern",
+			"label": "教団業務：占い",
+			"actionId": "talk",
+			"startdescription": "預言者は、いつ、どこで力が使えるようになるかを判断することができる。ちょっとした危険が伴う。",
+			"description": ".",
+			"requirements": {
+				"society": 1,
+				"lantern": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_augurysuccess",
+					"chance": 90
+				},
+				{
+					"id": "followeraction_auguryfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_augurymidlantern",
+			"label": "教団業務：占い",
+			"actionId": "talk",
+			"startdescription": "弟子は、いつ、どこで力が使えるようになるかを、おそらく判断することができるが、マンサスに危険はつきものだ。",
+			"requirements": {
+				"society": 1,
+				"lantern": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_augurysuccess",
+					"chance": 70
+				},
+				{
+					"id": "followeraction_auguryfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_augurylowlantern",
+			"label": "教団業務：占い",
+			"actionId": "talk",
+			"startdescription": "信者は、いつ、どこで力が使えるようになるかを判断できるかもしれないが、マンサスに危険はつきものだ。",
+			"requirements": {
+				"society": 1,
+				"lantern": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_augurysuccess",
+					"chance": 30
+				},
+				{
+					"id": "followeraction_auguryfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_augurysuccess",
+			"label": "世界の表面下",
+			"actionId": "talk",
+			"startdescription": "学識と瞑想の時の神々......",
+			"description": "信奉者が、我々の業と時の神々の大義を調和させるもう1つの方法を見つけてきた。",
+			"effects": {
+				"erudition": 1
+			},
+			"deckeffect": {
+				"randominfluencelow": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_auguryfailure",
+			"label": "世界の表面下",
+			"actionId": "talk",
+			"startdescription": "学識と瞑想の時の神々......",
+			"description": "私の信奉者が危険な過ちを犯した。心はそのままだが、マンサスの光がこの世に触れてしまった。",
+			"effects": {
+				"fascination": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "followeraction_auguryfailure_losefollower",
+					"chance": 30
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_auguryfailure_losefollower",
+			"label": "世界の表面下",
+			"actionId": "talk",
+			"startdescription": "学識と瞑想の時の神々......",
+			"description": "信奉者が危険な過ちを犯した。マンサスの光がこの世界に触れたのだ。精神的な防御は混乱の中に崩れ落ちた。これ以上怪我をさせないように信奉者を拘束した。いずれ感覚は回復するだろうが重傷を負っている。[倒れた信奉者を「話す」で治癒する。]",
+			"effects": {
+				"fascination": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": -1,
+					"additive": false
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_hoodwinkhighmoth",
+			"label": "教団業務：目くらまし",
+			"actionId": "talk",
+			"startdescription": "私の指揮下にあるスキンツイスターは非常に狡猾で、果樹園で梨を摘むのと同じくらい簡単に、愚か者から宝を奪い取ることができる（とは言っても、スズメバチに出くわす可能性もあるから、梨の果樹園が完全に安全というわけではない）。",
+			"description": ".",
+			"requirements": {
+				"society": 1,
+				"moth": 10,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_hoodwinksuccess",
+					"chance": 90
+				},
+				{
+					"id": "followeraction_hoodwinkfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_hoodwinkmidmoth",
+			"label": "教団業務：目くらまし",
+			"actionId": "talk",
+			"startdescription": "弟子なら、才能を使って、愚か者から宝物を奪うことができるはずだ。",
+			"requirements": {
+				"society": 1,
+				"moth": 5,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_hoodwinksuccess",
+					"chance": 70
+				},
+				{
+					"id": "followeraction_hoodwinkfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_hoodwinklowmoth",
+			"label": "教団業務：目くらまし",
+			"actionId": "talk",
+			"startdescription": "信者なら、運が良ければ、愚か者から宝物を奪えるはずだ。",
+			"requirements": {
+				"society": 1,
+				"moth": 1,
+				"follower": 1
+			},
+			"linked": [
+				{
+					"id": "followeraction_hoodwinksuccess",
+					"chance": 30
+				},
+				{
+					"id": "followeraction_hoodwinkfailure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "followeraction_hoodwinksuccess",
+			"label": "欺瞞と混乱",
+			"actionId": "talk",
+			"startdescription": "信奉者が儲かる詐欺を試みている。",
+			"description": "上手く騙せた！これが報酬だ。",
+			"effects": {
+				"notoriety": 1,
+				"funds": 1
+			},
+			"deckeffect": {
+				"robberyrewards": 2
+			},
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_hoodwinkfailure",
+			"label": "欺瞞と混乱",
+			"actionId": "talk",
+			"startdescription": "信奉者が儲かる詐欺を試みている。",
+			"description": "信奉者が手ぶらで戻ってきた。陰謀は失敗に終わったようだ。",
+			"effects": {
+				"notoriety": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "followeraction_hoodwinkfailure_losefollower",
+					"chance": 30
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "followeraction_hoodwinkfailure_losefollower",
+			"label": "欺瞞と混乱",
+			"actionId": "talk",
+			"startdescription": "信奉者が儲かる詐欺を試みている。",
+			"description": "信奉者が自分自身の失踪を画策したのではないかと心配し始めていた。しかし、どうやら信奉者の欺瞞が見破られ、犠牲者が激怒し、信奉者は命からがら逃げてきたようだ。 [倒れた信奉者を「話す」で治癒する。]",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": -1,
+					"additive": false
+				}
+			],
+			"effects": {
+				"notoriety": 1
+			},
+			"warmup": 30
+		}
+	]
+}

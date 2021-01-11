@@ -1,0 +1,1522 @@
+{
+    "recipes": [
+        {
+            "id": "explorevaultguardian_serpent_encounter",
+            "actionid": "explore",
+            "label": "A Younger Sister: a Serpent",
+            "startdescription": "The Serpent watches us closely, swaying its great head. WIthout Edge or Knock, we cannot prevail against it.",
+            "requirements": {
+                "guardian_serpent": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultguardian_serpent_highknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_serpent_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_serpent_midknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_serpent_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_serpent_lowknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_serpent_lowedge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_highedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 10
+            },
+            "label": "Our strength is matchless.",
+            "startdescription": "Eyes like gas-lamps; scales like black jade. A Serpent is a powerful foe, but it's nothing before us.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_edge",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_midedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 5
+            },
+            "label": "Our strength is considerable.",
+            "startdescription": "Eyes like gas-lamps; fangs like stalactites. A great Serpent is a powerful foe, but so are we.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_edge",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_lowedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 1
+            },
+            "label": "Our strength may not be enough.",
+            "startdescription": "Eyes like gas-lamps; a mouth one could crouch in. We might defeat this Serpent. We might regret trying.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_highknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 10
+            },
+            "label": "We call upon the Mother of Ants, which ariseth from wounds",
+            "startdescription": "The Serpent's mouth is large enough to crouch in. Its tongue is the thickness of a man's shoulders. But almost certainly it will respect the power we bear.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_knock",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_midknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 5
+            },
+            "label": "We call upon the Mother of Ants, which encircleth",
+            "startdescription": "The Serpent is long enough to coil round a cottage. Its fangs glisten like ice. Probably it will respect the power we bear.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_knock",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_lowknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 1
+            },
+            "label": "We call upon the Mother of Ants, which openeth",
+            "startdescription": "The Serpent rears up like swelling river. Its eyes are slitted pits of hunger. Perhaps the Serpent will respect the power we bear.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_serpent_success_knock",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_serpent_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_serpent_success_edge",
+            "actionid": "explore",
+            "label": "The Serpent's Struggles",
+            "startdescription": "The Serpent rolls and roars! Its death throes shake the earth! But it's dying. We will pass.",
+            "description": ".",
+            "effects": {
+                "guardian_serpent": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_serpent_success_knock",
+            "actionid": "explore",
+            "label": "The Serpent's Sorrow",
+            "startdescription": "It lowers its great head. Moisture seeps from its lidless eyes. Is it weeping? What does it remember of its eldest sister, whose power we call upon?",
+            "description": ".",
+            "effects": {
+                "guardian_serpent": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_serpent_failure",
+            "actionid": "explore",
+            "label": "The Serpent's Strength",
+            "startdescription": "Back. Back! It's too much for us!",
+            "description": ".",
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_watchers_encounter",
+            "actionid": "explore",
+            "label": "Watchers",
+            "startdescription": "Locals with a grudge or a duty or a mercenary contract. We might trick them with Moth, seduce them with Grail, or battle them with Edge.",
+            "requirements": {
+                "guardian_watchers": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultguardian_watchers_highgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_midgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_lowgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_watchers_lowedge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_highedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 10
+            },
+            "label": "Our strength is matchless.",
+            "startdescription": "The Watchers will almost certainly regret standing against us.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_edge",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_midedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 5
+            },
+            "label": "Our strength is considerable.",
+            "startdescription": "The Watchers aren't ready for us. We should be able to bring them down.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_edge",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_lowedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 1
+            },
+            "label": "Our strength may not be enough.",
+            "startdescription": "The Watchers may be too much for us - but we still have a chance.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_highgrail",
+            "actionid": "explore",
+            "requirements": {
+                "grail": 10
+            },
+            "label": "Against the Watchers: The Grail's Seductions",
+            "startdescription": "'Come closer, dear ones. We have something special for you.'",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_grail",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_midgrail",
+            "actionid": "explore",
+            "requirements": {
+                "grail": 5
+            },
+            "label": "Against the Watchers: The Grail's Temptations",
+            "startdescription": "Our allures should sway the Watchers' minds.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_grail",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_lowgrail",
+            "actionid": "explore",
+            "requirements": {
+                "grail": 1
+            },
+            "label": "Against the Watchers: The Grail's Distractions",
+            "startdescription": "Perhaps we can sway the Watchers from their purpose.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_grail",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_highmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 10
+            },
+            "label": "Against the Watchers: A Powerful Deception",
+            "startdescription": "'Look closer. Closer still. Closer! Keep looking. Closer. Now close your eyes...'",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_moth",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_midmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 5
+            },
+            "label": "Against the Watchers: A Likely Deception",
+            "startdescription": "'Awake! Awake! They're upon us! That way, quickly!'",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_moth",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_lowmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 1
+            },
+            "label": "Against the Watchers: A Desperate Deception",
+            "startdescription": "'They went... that way?'",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_watchers_success_moth",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_watchers_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_watchers_success_edge",
+            "actionid": "explore",
+            "label": "The Watchers' End",
+            "startdescription": "Their blood pumps bright, then dark. They should not have opposed us. We move on.",
+            "description": ".",
+            "effects": {
+                "guardian_watchers": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_watchers_success_grail",
+            "actionid": "explore",
+            "label": "The Watchers' Fall",
+            "startdescription": "Their present pleasures will end ill for them. Perhaps they'll think it's worth it. Meanwhile, we can pass.",
+            "description": ".",
+            "effects": {
+                "guardian_watchers": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_watchers_success_moth",
+            "actionid": "explore",
+            "label": "The Watchers' Confusion",
+            "startdescription": "Their bewilderment is our opportunity. We'll pass in silent secrecy.",
+            "description": ".",
+            "effects": {
+                "guardian_watchers": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_watchers_failure",
+            "actionid": "explore",
+            "label": "The Watchers' Victory",
+            "startdescription": "They are more cunning and more numerous than we'd expected! This will end in blood for us -",
+            "description": ".",
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_monks_encounter",
+            "actionid": "explore",
+            "label": "Monks",
+            "startdescription": "An order of guardians bound by oath and custom. They are too steadfast for the Grail's seductions - we must defeat them with Edge or bedazzle them with Moth.",
+            "requirements": {
+                "guardian_monks": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultguardian_monks_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_monks_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_monks_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_monks_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_monks_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_monks_lowedge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_highedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 10
+            },
+            "label": "Our strength is all but irresistible.",
+            "startdescription": "We will dapple the earth with holy blood.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_edge",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_midedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 5
+            },
+            "label": "Our strength is considerable.",
+            "startdescription": "We should be more than enough for these holy fools.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_edge",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_lowedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 1
+            },
+            "label": "Our strength may not be enough.",
+            "startdescription": "They are only monks. But they are many, many monks. We might prevail, if we're lucky.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_highmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 10
+            },
+            "label": "The Monks: a Potent Deception",
+            "startdescription": "'We have brought here with us certain sacred texts, whose meaning is apparent only in moonlight - '",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_moth",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_midmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 5
+            },
+            "label": "The Monks: a Likely Deception",
+            "startdescription": "'This writ of entry bears the seal of the highest authority. Do not stand in our way -'",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_moth",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_lowmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 1
+            },
+            "label": "The Monks: a Desperate Deception",
+            "startdescription": "'We have... relics. *Ancient* relics.'",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_monks_success_moth",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_monks_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_monks_success_edge",
+            "actionid": "explore",
+            "label": "The Monks' Silence",
+            "startdescription": "Their bodies lie in robed huddles, each indistinguishable from the next. Step over, move on.",
+            "description": ".",
+            "effects": {
+                "guardian_monks": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_monks_success_moth",
+            "actionid": "explore",
+            "label": "The Monks' Delusion",
+            "startdescription": "Faith is a double-edged weapon. These monks have great talent in the matter of believing, and so they have believed our lies.",
+            "description": ".",
+            "effects": {
+                "guardian_monks": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_monks_failure",
+            "actionid": "explore",
+            "label": "The Monks' Wrath",
+            "startdescription": "They're stronger and wiser than we had supposed. And now their blows have found a mark - ",
+            "description": ".",
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_dead_encounter",
+            "actionid": "explore",
+            "label": "The Fretful Dead",
+            "startdescription": "The Dead clot in the air around us like stale corpse-light. Without Edge or Winter, we have no chance against them.",
+            "requirements": {
+                "guardian_dead": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultguardian_dead_highwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_dead_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_dead_midwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_dead_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_dead_lowwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_dead_lowedge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_highedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 10
+            },
+            "label": "Our strength is matchless.",
+            "startdescription": "The Dead are pale as inverse shadows. They move like cobwebs in a breeze. Almost certainly, they can't stand before us. We'll send them mumbling back into the shadows of the Wood.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_edge",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_midedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 5
+            },
+            "label": "Our strength is considerable.",
+            "startdescription": "These Dead, with their avid, pitiful eyes, have died once already. Their hold on the waking world is weak. We should be able to send them down into darkness, but we must take care.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_edge",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_lowedge",
+            "actionid": "explore",
+            "requirements": {
+                "edge": 1
+            },
+            "label": "Our strength may not be enough.",
+            "startdescription": "The Dead are slow as the movement of a sundial's shadow - slow, but ceaseless. They remember pain and fear, but not clearly. We know both sensations too well. They may be too much for us.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_highwinter",
+            "actionid": "explore",
+            "requirements": {
+                "winter": 10
+            },
+            "label": "We call upon the Ivory Dove, who knows the names of all the dead",
+            "startdescription": "The Dead circle the edge of our vision like frayed dreams. The very air around us is chill with Winter's shadow. They must recognise that.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_winter",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_midwinter",
+            "actionid": "explore",
+            "requirements": {
+                "winter": 5
+            },
+            "label": "We call upon the Ivory Dove, who cannot be deceived",
+            "startdescription": "The Dead watch us closely, expressionless as saint-statues. But we are invested with the power of Winter. Probably the Dead will recognise that.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_winter",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_lowwinter",
+            "actionid": "explore",
+            "requirements": {
+                "winter": 1
+            },
+            "label": "We call upon the Ivory Dove, from whom nothing more may be taken",
+            "startdescription": "The Dead boil and rattle in the darkness, but we have been touched by the Hours of Winter. Perhaps they will recognise that.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_dead_success_winter",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_dead_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_dead_success_edge",
+            "actionid": "explore",
+            "label": "The Wretched Dead",
+            "startdescription": "When the Dead return to us, they use what matter they can if their bodies are gone: dust, rust, cobwebs, scraps and tatters. Now that we have broken them, these tatters are all that remain.",
+            "description": ".",
+            "effects": {
+                "guardian_dead": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_dead_success_winter",
+            "actionid": "explore",
+            "label": "The Wary Dead",
+            "startdescription": "The Dead draw back, their almost-faces flat and watchful. They will not trouble us.",
+            "description": ".",
+            "effects": {
+                "guardian_dead": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_dead_failure",
+            "actionid": "explore",
+            "label": "The Wrath of the Dead",
+            "startdescription": "The Dead are more like wind than flesh, but it doesn't do to underestimate the wind. Just now, they are a terror-fanged hurricane of pale shadow. Fall back. Fall back!",
+            "description": ".",
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_encounter",
+            "actionid": "explore",
+            "label": "Soucouyants in the Dark",
+            "startdescription": "The night air rattles with them. Duck low. They are much too strong to be fought, but we may be able to deceive them, or drive them off with Mansus-light.",
+            "requirements": {
+                "guardian_soucouyants": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultguardian_soucouyants_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_highlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_midlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_lowlantern",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_highlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 10
+            },
+            "label": "We call upon the Watchman, who illuminates",
+            "startdescription": "We most likely have power enough to keep them at a distance.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_lantern",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_midlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 5
+            },
+            "label": "We call upon the Watchman, who is not compassionate",
+            "startdescription": "Our power should be enough to hold them at bay - but they are ready for any lapse in vigilance.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_lantern",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_lowlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 1
+            },
+            "label": "We call upon the Watchman, who navigates",
+            "startdescription": "It is possible the power we carry will see us safe through the crowded night. It's definitely possible.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_lantern",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_highmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 10
+            },
+            "label": "We call upon the Moth, who seeks among the trees of the Wood",
+            "startdescription": "The Moth has power in this close-crowded forest night. We will pass secretly and safely... unless we are very unlucky.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_moth",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_midmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 5
+            },
+            "label": "We call upon the Moth, who beats in the skull",
+            "startdescription": "We should have power enough to deceive and dismay these night-winged thirsty ones.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_moth",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_lowmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 1
+            },
+            "label": "We call upon the Moth, who is dappled",
+            "startdescription": "The Moth will give us a chance in the dappled shadows of the forest - but only a chance.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_soucouyants_success_moth",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_soucouyants_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_success_lantern",
+            "actionid": "explore",
+            "label": "The Soucouyants' Retreat",
+            "startdescription": "They won't come close. They call out taunts in the voices of carrion birds and children; they rattle the tree-tops; they fling stones from the dark. But they won't come close. We will pass.",
+            "description": ".",
+            "effects": {
+                "guardian_soucouyants": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_success_moth",
+            "actionid": "explore",
+            "label": "The Soucouyants' Frustrations",
+            "startdescription": "Hurry from the shadow to deeper shadow. Press faces into the spongy earth. They know we're here, but they don't know where. Their cries fade behind us.",
+            "description": ".",
+            "effects": {
+                "guardian_soucouyants": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_failure",
+            "actionid": "explore",
+            "label": "The Soucouyants' Hungers",
+            "startdescription": "They're on us! With a leathery crack of wings, and a body is borne shrieking up into the dark - ",
+            "description": ".",
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_long_encounter",
+            "actionid": "explore",
+            "label": "The Long",
+            "startdescription": "Port Noon was founded on the site of a notorious Spring: drink from it, and the world will forget you. Some among the Long have retired there from the affairs of the greater world. They don't treat trespassers kindly, and it would be foolish to assault them. But they may be susceptible to the amusements of Moth, or the seductions of Grail.",
+            "requirements": {
+                "guardian_long": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "Assistance",
+                    "description": "Funds are essential for expeditions. Followers will allow me to pass obstacles.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultguardian_long_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_long_highgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_long_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_long_midgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_long_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultguardian_long_lowgrail",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_highgrail",
+            "actionid": "explore",
+            "requirements": {
+                "grail": 10
+            },
+            "label": "'We are here for your pleasure.'",
+            "startdescription": "Even the Long know desire; perhaps especially the Long. This one will almost certainly yield willingly to our attentions.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_grail",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_midgrail",
+            "actionid": "explore",
+            "requirements": {
+                "grail": 5
+            },
+            "label": "'We are here for your diversion.'",
+            "startdescription": "This Long one welcomes our enticements, but they're still suspicious. We'll probably succeed.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_grail",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_lowgrail",
+            "actionid": "explore",
+            "requirements": {
+                "grail": 1
+            },
+            "label": "'We... hope we may amuse you?",
+            "startdescription": "The Long have the appetites of any mortal, but they are jaded by a thousand experiences. Perhaps we might yet entertain one enough, if we're lucky.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_grail",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_highmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 10
+            },
+            "label": "'News! News from the Old Country! From all the Old Countries!'",
+            "startdescription": "The Long are desperate for novelty. We'll take advantage of that, and if all goes well we'll be gone before they know it.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_moth",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_midmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 5
+            },
+            "label": "'Very well: a wager.'",
+            "startdescription": "Is this one toying with us? It's hard to be sure. But even if this is a game, they may permit us to leave. All will probably be well. ",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_moth",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_lowmoth",
+            "actionid": "explore",
+            "requirements": {
+                "moth": 1
+            },
+            "label": "'It's, ah, er, a funny story, actually...'",
+            "startdescription": "The eyes of this Long are steady and distant as the line of the horizon. Their whole body is lizard-still. Are they even listening?",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultguardian_long_success_moth",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultguardian_long_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultguardian_long_success_grail",
+            "actionid": "explore",
+            "label": "A Long and Golden Afternoon",
+            "startdescription": "Did this Long really fall prey to the Grail's seductions? Or did they know exactly what they were doing? In any case, we have won both space and time enough -",
+            "description": ".",
+            "effects": {
+                "guardian_long": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_long_success_moth",
+            "actionid": "explore",
+            "label": "The Long Deception",
+            "startdescription": "The immortal denizens of Noon are deceived, or amused, or caught up in the knots of a greater scheme yet. They won't interfere, this time.",
+            "description": ".",
+            "effects": {
+                "guardian_long": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultguardian_long_failure",
+            "actionid": "explore",
+            "label": "The Long Agony",
+            "startdescription": "An immortal is angry. They may choose to strike someone down, or they may withhold their anger. It's very difficult to tell, with immortals - ",
+            "description": ".",
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "explorevault_casualty",
+                    "chance": 70,
+                    "additional": true,
+                    "expulsion": {
+                        "limit": 1,
+                        "filter": {
+                            "follower": 1
+                        }
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        }
+    ]
+}

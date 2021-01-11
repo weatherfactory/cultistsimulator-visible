@@ -1,0 +1,40 @@
+{
+    "elements": [
+        {
+            "id": "bequestintro",
+            "label": "A Bequest",
+            "aspects": {
+                "legacyplotitem": 1
+            },
+            "description": "A package of peculiar papers from my correspondent's executor. I must STUDY it, using either Passion or Reason.",
+            "slots": [
+                {
+                    "id": "Approach",
+                    "label": "Approach",
+                    "actionid": "study",
+                    "required": {
+                        "reason": 1,
+                        "passion": 1
+                    },
+                    "description": "Am I a passionate individual, or a reasonable one?"
+                }
+            ]
+        },
+        {
+            "id": "introjob",
+            "label": "Menial Employment",
+            "description": "A precarious position as a hospital porter. Miserable, but it's all you can find just now.",
+            "aspects": {
+                "job": 1
+            }
+        },
+        {
+            "id": "contactintro",
+            "aspects": {
+                "legacyplotitem": 1
+            },
+            "label": "Notes on a Possible Collaborator",
+            "description": "My correspondent had recorded his observations of me. He believed I had 'potential'. He recorded his observations of someone else, too. With time and study, perhaps I can find that person."
+        }
+    ]
+}

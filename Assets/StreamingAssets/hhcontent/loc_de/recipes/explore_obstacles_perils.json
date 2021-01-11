@@ -1,0 +1,1104 @@
+{
+	"recipes": [
+		{
+			"id": "explorevaultperil_treacherousground_encounter",
+			"actionId": "explore",
+			"label": "Tückisches Terrain",
+			"startdescription": "Gieriger Schlamm, heimtückische Risse: die Erde ist hungrig. Wir brauchen die Laterne, die uns den Weg weist, oder die Schmiede, um eine herzustellen.",
+			"requirements": {
+				"peril_treacherousground": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultperil_treacherousground_highlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_treacherousground_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_treacherousground_midlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_treacherousground_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_treacherousground_lowlantern",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_treacherousground_lowforge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_highlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 10
+			},
+			"label": "Wir rufen den Wächter an, der navigiert",
+			"startdescription": "Der Wächter wird unseren Blick schärfen, damit wir so gut wie sicher ohne Probleme passieren können.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_midlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 5
+			},
+			"label": "Wir rufen den Wächter an, der erleuchtet",
+			"startdescription": "Der Wächter wird seine Tugend unseren Lampen schenken, auf dass sie uns die Gefahren enthüllen mögen, die wir zu meiden trachten. Vielleicht.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_lowlantern",
+			"actionId": "explore",
+			"requirements": {
+				"lantern": 1
+			},
+			"label": "Wir rufen den Wächter an, der kein Mitleid kennt",
+			"startdescription": "Der Wächter kennt keine Gnade, weder mit den Hindernissen noch mit uns. Wenn wir Glück haben, kommen wir durch.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "Wir rufen die Madrugada an, die nicht aus dem Gleichgewicht zu bringen ist",
+			"startdescription": "Wir rufen die Madrugada an, eine Stunde der Schmiede und des Winters. Wir werden uns unseren eigenen Weg bahnen. Unser Erfolg ist so gut wie sicher.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "Wir rufen die Madrugada an, die beruhigt und verstummen lässt",
+			"startdescription": "Die Madrugada ist eine Stunde der Schmiede und des Winters. Ihre Macht könnte die wankelmütige Erde beruhigen. Vielleicht schaffen wir es ja.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "Wir rufen die Madrugada an, die vor der Sonne kommt",
+			"startdescription": "Die Madrugada ist eine Stunde der Schmiede und des Winters. Die Schmiede verleiht Kraft, doch nun erheben sie die Nebel und klammern sich fest. Wir könnten es schaffen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_treacherousground_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_treacherousground_success",
+			"actionId": "explore",
+			"label": "Sicher über tückisches Terrain",
+			"startdescription": "Wir sind schlammbespritzt und dornenzerkratzt, aber wir haben es geschafft.",
+			"description": ".",
+			"effects": {
+				"peril_treacherousground": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_treacherousground_failure",
+			"actionId": "explore",
+			"label": "Die Erde ist hungrig.",
+			"startdescription": "Eine vielversprechende Route hat sich als glitschig-gierige Falle entpuppt. Wir müssen umkehren und es erneut versuchen.",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_forest_encounter",
+			"actionId": "explore",
+			"label": "Wald voller Schrecken",
+			"startdescription": "Die Finsternis unter den Bäumen ist still, für den Augenblick, doch wir sind hier nicht allein. Der Aspekt der Motte wird uns leiten, oder der Aspekt der Schmiede wird uns den Weg freimachen.",
+			"requirements": {
+				"peril_forest": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultperil_forest_highmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_midmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_lowmoth",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_lowforge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_highmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 10
+			},
+			"label": "Wir rufen die Motte an, die zwischen den Bäumen im Forst sucht",
+			"startdescription": "Der Forst unter dem Mansus ist noch finsterer als dieser Ort. Die Motte wird unsere Schritte leiten. Unser Erfolg ist sehr wahrscheinlich.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_midmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 5
+			},
+			"label": "Wir rufen die Motte an, die gescheckt ist",
+			"startdescription": "Schatten tupfen den Pfad. Vielleicht ist dies der Pfad, den uns die Motte gewiesen hat. Vielleicht. Vielleicht schaffen wir es.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_lowmoth",
+			"actionId": "explore",
+			"requirements": {
+				"moth": 1
+			},
+			"label": "Wir rufen die Motte an, die im Schädel schlägt",
+			"startdescription": "Wir rufen die Motte auf eigene Gefahr an. Der Wald pulsiert vor schlagenden Schwingen und eingebildeten Augen. Wir könnten es schaffen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "Stahl und Feuer",
+			"startdescription": "Die Schmiede ist einfallsreich, die Schmiede ist skrupellos. Wir werden es so gut wie sicher schaffen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "Axt und Lampe",
+			"startdescription": "Der Wald umfängt uns, doch wir sind praktische Seelen, stark in der Schmiede. Vielleicht schaffen wir es ja.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "Kampf in der Abenddämmerung",
+			"startdescription": "Wir rufen die Mächte der Schmiede an und schlagen uns einen Weg durch die Bäume. Es geht nur langsam voran. Wir könnten es schaffen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_forest_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_forest_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_forest_success",
+			"actionId": "explore",
+			"label": "'Ein Licht durch die Bäume ...'",
+			"startdescription": "Etwas ist vor uns. Wir haben es durch den Wald geschafft.",
+			"description": ".",
+			"effects": {
+				"peril_forest": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_forest_failure",
+			"actionId": "explore",
+			"label": "Die wachsende Stille",
+			"startdescription": "Wir sind vom Wege abgekommen. Der Wald türmt sich in der Abenddämmerung vor dem Himmel auf. Die Bestien des Waldes sind still, doch ab und zu sehen wir ihre Augen.",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_mountains_encounter",
+			"actionId": "explore",
+			"label": "Die hohen Pässe",
+			"startdescription": "Wilde Gipfel narben den Himmel. Der Aspekt des Winters könnte uns vor der Kälte schützen, der Aspekt der Schmiede könnte uns einen Weg schenken. Haben wir keins von beidem, wird unsere Expdition scheitern.",
+			"requirements": {
+				"peril_mountains": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultperil_mountains_highwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_midwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_lowwinter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_lowforge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_highwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 10
+			},
+			"label": "Wir rufen die Madrugada an, die nicht aus dem Gleichgewicht zu bringen ist",
+			"startdescription": "Die Stunde namens Madrugada ist zu Hause in der Kälte. Es ist so gut wie sicher, dass sie uns nicht abstürzen lässt.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_midwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 5
+			},
+			"label": "Wir rufen die Madrugada an, die beruhigt und verstummen lässt",
+			"startdescription": "Die Madrugada ist stark im Winter. Vielleicht schützt sie uns vor Lawinen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_lowwinter",
+			"actionId": "explore",
+			"requirements": {
+				"winter": 1
+			},
+			"label": "Wir rufen die Madrugada an, die vor der Sonne kommt",
+			"startdescription": "Die Stunden vor der Dämmerung sind der Stunde namens Madrugada heilig, die den Winter kennt. Wenn wir uns erheben und sie anrufen, sorgt sie vielleicht für unseren Schutz.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "Die Straße des Bergsteigers",
+			"startdescription": "Unsere Fertigkeiten der Schmiede stehen für jede Menge Expertise. Wir werden es so gut wie sicher schaffen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "Die Straße des Entdeckers",
+			"startdescription": "Wir sind praktische Seelen, stark in der Schmiede. Vielleicht schaffen wir es ja.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "Die Straße des Wanderers",
+			"startdescription": "Anhänger mit dem Aspekt der Schmiede sind kompetent und praktisch veranlagt, doch die Berge sind nichts als Meilen spitzen und frostigen Gesteins. Unser Weg ist kein einfacher. Wir könnten Glück haben.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_mountains_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_mountains_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_mountains_success",
+			"actionId": "explore",
+			"label": "Über die hohen Pässe",
+			"startdescription": "Frostversehrt und zitternd haben wir es über die Berge geschafft.",
+			"description": ".",
+			"effects": {
+				"peril_mountains": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_mountains_failure",
+			"actionId": "explore",
+			"label": "Zornige Echos",
+			"startdescription": "Steinschläge und Lawinen haben uns zurückgedrängt. Wir werden es mit einer anderen Route versuchen, so wir denn überleben.",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_desert_encounter",
+			"actionId": "explore",
+			"label": "Einöde",
+			"startdescription": "Ein gigantischer, rotbrauner Schmelzofen, dem der Horizont kaum Grenzen setzt. Nachts eine kühle Wildnis aus Sternen. Wir müssen vorsichtig sein, wobei die Schmiede unseren Weg formt oder der Gral uns gegen den Durst wappnet.",
+			"requirements": {
+				"peril_desert": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultperil_desert_highgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_midgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_lowgrail",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_lowforge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_highgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 10
+			},
+			"label": "Wir rufen die Schwester-und-Hexe an, die einer Perle gleicht",
+			"startdescription": "Die Schwester-und-Hexe sollte uns sicher durch trockenes Gelände führen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_midgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 5
+			},
+			"label": "Wir rufen die Schwester-und-Hexe an, die nicht angerührt werden kann",
+			"startdescription": "Wir rufen die Schwester-und-Hexe an, uns vor der sengenden Hitze der Sonne und den Spiegeln des Horizonts zu schützen. Sie sollte uns sicher geleiten.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_lowgrail",
+			"actionId": "explore",
+			"requirements": {
+				"grail": 1
+			},
+			"label": "Wir rufen die Schwester-und-Hexe an, die nicht getrennt werden kann",
+			"startdescription": "Wir rufen die Schwester-und-Hexe an, auf dass wir in den Sandstürmen der trockenen Lande nicht getrennt werden mögen. Er könnte reichen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "Die sonnenversengte Straße",
+			"startdescription": "Unsere Fertigkeiten der Schmiede sollten uns schützen und durch die backofenheißen Felsen zu den grünen Orten führen. Wir werden es so gut wie sicher schaffen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "Die trockene Straße",
+			"startdescription": "Wir sind praktische Seelen, stark in der Schmiede. Wir sollten es schaffen, durch die backofenheißen Felsen zu den grünen Orten zu gelangen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "Die gnadenlose Straße",
+			"startdescription": "Anhänger mit dem Aspekt der Schmiede sind kompetent und praktisch veranlagt, doch dies ist ein verwunschener Ort. Wir könnten es schaffen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_desert_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_desert_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_desert_success",
+			"actionId": "explore",
+			"label": "Die Sonne im Ruhme",
+			"startdescription": "Die Sonne geht unter. Wir schauen zurück auf die Einöde, die wir durchquert haben, und auf alle die Farben, die sie im Abendlicht annimmt. Die Nacht kommt. Die Sternen stacheln. Der Wind drückt uns kalte Hände ins Gesicht. Weiter.",
+			"description": ".",
+			"effects": {
+				"peril_desert": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_desert_failure",
+			"actionId": "explore",
+			"label": "Die Sonne in Wut",
+			"startdescription": "Tag für Tag gerbt die Sonne unsere Haut, trocknet uns den Mund aus und flutet unsere Schädel mit erbarmungslosem Licht. Wir könnten uns verirrt haben. Es ist möglich, dass wir uns verirrt haben.",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_sea_encounter",
+			"actionId": "explore",
+			"label": "Das Meer rund um die Abendinseln",
+			"startdescription": "Das Meer, über das wir segeln, wird von Stürmen geplagt. Die Inseln, die wir suchen, sind in den Winkeln nicht kartografierter Geschichte verborgen. Wir brauchen das Herz oder die Schmiede oder beides.",
+			"requirements": {
+				"peril_sea": 1
+			},
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "Hilfe",
+					"description": "Geldmittel sind unverzichtbar bei Expeditionen. Anhänger erlauben es mir, Hindernisse zu überwinden.",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorevaultperil_sea_highheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_highforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_midheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_midforge",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_lowheart",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_lowforge",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_highheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 10
+			},
+			"label": "Wir rufen die Schwester-und-Hexe an, die nicht angerührt werden kann",
+			"startdescription": "Stürme erheben sich für die Donnerhaut und legen sich für die Schwester. Die rechten Worte sollten uns sicher über das Meer bringen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_midheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 5
+			},
+			"label": "Wir rufen die Schwester-und-Hexe an, die nicht getrennt werden kann",
+			"startdescription": "Sollten die Stürme zuschlagen, sorgt die Schwester-und-Hexe dafür, dass Crew und Schiff nichts zustößt. Vielleicht.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_lowheart",
+			"actionId": "explore",
+			"requirements": {
+				"heart": 1
+			},
+			"label": "Wir rufen die Schwester-und-Hexe an, die einer Perle gleicht",
+			"startdescription": "Die Schwester-und-Hexe kommt nicht aus dem Meer, sondern wandelt daneben. Vielleicht reicht ja ihr Schutz.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_highforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 10
+			},
+			"label": "Die Sicherheit des Seemanns",
+			"startdescription": "Unsere Fertigkeiten der Schmiede stehen für jede Menge Expertise. Wir werden es so gut wie sicher schaffen.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 90
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_midforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 5
+			},
+			"label": "Die Stärke des Seemanns",
+			"startdescription": "Wir sind praktische Seelen, stark in der Schmiede. Vielleicht schaffen wir es ja.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 70
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_lowforge",
+			"actionId": "explore",
+			"requirements": {
+				"forge": 1
+			},
+			"label": "Die Hoffnung des Seemanns",
+			"startdescription": "Anhänger mit dem Aspekt der Schmiede sind kompetent und praktisch veranlagt, doch das Meer ist verschlagen. Wir werden kämpfen müssen, um den Kurs zu halten.",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevaultperil_sea_success",
+					"chance": 30
+				},
+				{
+					"id": "explorevaultperil_sea_failure",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultperil_sea_success",
+			"actionId": "explore",
+			"label": "Sicher über das Meer",
+			"startdescription": "Wellengepeitscht und seebespuckt, sonnengegerbt und salzbefleckt. Aber da.",
+			"description": ".",
+			"effects": {
+				"peril_sea": -1
+			},
+			"craftable": false,
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "explorevaultperil_sea_failure",
+			"actionId": "explore",
+			"label": "Irrgärten aus Salz und Basalt",
+			"startdescription": "Noch ein Tag, durchgeprügelt vom Sturm. Wir müssen ganz nah sein. Doch die Inseln sind ein wirrer Irrgarten, und der Ort, den wir suchen, ist auf keiner Karte verzeichnet.",
+			"description": ".",
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty",
+					"chance": 70,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"follower": 1
+						}
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		}
+	]
+}

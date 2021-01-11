@@ -1,0 +1,262 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaulteveningisles1_setup",
+            "label": "An Expedition to Raven Isle",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaulteveningisles1": 1
+            },
+            "effects": {
+                "peril_sea": 1,
+                "guardian_soucouyants": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "The chiefest peril of Raven Isle is the soucouyants, the fallen immortals. But the way there across the sea will be hard, and the isle is full of voices which carry the curse of visions. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaulteveningisles2_setup",
+            "label": "An Expedition to Fort Geryk",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaulteveningisles2": 1
+            },
+            "effects": {
+                "peril_sea": 1,
+                "seal_wardeddoor": 1,
+                "guardian_dead": 1
+            },
+            "startdescription": "A crumbling sandstone fortress broods over an empty bay. At night the dead walk. By day they lie in wait. In a sealed vault, the old governor's hoard awaits its plunderer. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaulteveningisles3_setup",
+            "label": "An Expedition to the Wreck of the Christabel",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaulteveningisles3": 1
+            },
+            "effects": {
+                "peril_sea": 1,
+                "guardian_serpent": 1,
+                "curse_affliction": 1
+            },
+            "startdescription": "Storms have lifted the Christabel from the sea to lay it on a reef, but a wreck with such a sad end will carry a curse. And the beast that once loved it remains there still. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaulteveningisles4_setup",
+            "label": "An Expedition to St Tentreto of the Deep Door",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaulteveningisles4": 1
+            },
+            "effects": {
+                "seal_hiddendoor": 1,
+                "guardian_monks": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "The monks of St Tentreto will not be inclined to allow us to pass. They will hide their treasures well, and if we manage to seize them, no doubt they will pursue us with curses. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaulteveningislesdefault_setup",
+            "label": "An Expedition to Port Noon",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaulteveningislesdefault": 1
+            },
+            "effects": {
+                "peril_sea": 1,
+                "seal_wardeddoor": 1,
+                "guardian_long": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "If we can cross the sea to Port Noon, if we can defeat the Long who do not die, if we can breach their private vaults, still we must resist the temptation of visions. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaulteveningisles1_success",
+            "label": "Raven Feathers",
+            "actionid": "explore",
+            "requirements": {
+                "vaulteveningisles1": 1
+            },
+            "effects": {
+                "vaulteveningisles1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "manualdeparturevak",
+                    "toolgrailf",
+                    "fivecreationsvak",
+                    "originsofhoursvak"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "A mountain cave befouled by soucouyants. On the walls they have scrawled their sad histories, in a hundred languages, in script of striking elegance: the creatures they were, the histories they owned, the children they mourn.",
+            "description": "At the back of the cave, the soucouyants have made a sort of museum-nest. The fine clothes they wore once, adorned now with raven feathers. A little miscellany of cameo portraits and rotting family albums. A few items of power.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaulteveningisles2_success",
+            "label": "The Governor's Last Move",
+            "actionid": "explore",
+            "requirements": {
+                "vaulteveningisles2": 1
+            },
+            "effects": {
+                "vaulteveningisles2": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "bighufffucine",
+                    "toolforgef",
+                    "timedivisionmandaic",
+                    "ingredientheartf"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The vault of Fort Geryk. A mosaic has been laid out as a game board of stupendous size and complexity: a map of the Evening Isles. The sea-tiles are lapis; the islands are nephrite and obsidian. There are toy ships and tin soldiers. The isle of St Thomas is sieged. Raven Isle is crowded with black chess-queens.",
+            "description": "Among the game-pieces, items of true power have been used as temporary markers. Was this an attempt to hide them? Or did the Governor know nothing of their real worth?",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaulteveningisles3_success",
+            "label": "A Closed Eye",
+            "actionid": "explore",
+            "requirements": {
+                "vaulteveningisles3": 1
+            },
+            "effects": {
+                "vaulteveningisles3": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "bookextinguishedheartmandaic",
+                    "bookwhitecatphrygian",
+                    "toolknockf",
+                    "ingredientgrailf"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The ship still stinks of the sea. A sluggish octopus crawls from our lamp-light. The timbers are half-coral. Where are the bodies of the crew? Only one survivor was recorded. Did the serpent devour the rest?",
+            "description": "We've found the captain's cabin. The log-book is here, but its pages are a mass of salt-caked pulp. Someone has scratched a closed-eye symbol on the desk where it was chained. Beneath the symbol is a hidden drawer in the desk, which we can wrench open to loot its treasures...",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaulteveningisles4_success",
+            "label": "The First Tremors",
+            "actionid": "explore",
+            "requirements": {
+                "vaulteveningisles4": 1
+            },
+            "effects": {
+                "vaulteveningisles4": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "scarskyfucine",
+                    "toollanternf",
+                    "birdsongphrygian",
+                    "commandspreservationallexistsmandaic"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "Here we are in the cave of the deep sea-pool, beneath the monastery. Dark water shivers in the light of our lamps. As we approach, the level of the water suddenly drops. There are no tides in this sea. What's happening?",
+            "description": "We have profaned the cave! Already the Hours withdraw their blessing. The water sinks away, leaving the pool empty. Offerings lie on its bed. We must snatch them up quickly. Already the first tremors have begun - the forerunners of the long-delayed earthquake that the monks held at bay for so long.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaulteveningislesdefault_success",
+            "label": "All the Way from Gallaecia",
+            "actionid": "explore",
+            "requirements": {
+                "vaulteveningislesdefault": 1
+            },
+            "effects": {
+                "vaulteveningislesdefault": -1
+            },
+            "deckeffects": {
+                "vaultrewardsg": 3
+            },
+            "startdescription": "This is the secret sub-cellar of the Hotel Ciervo. The walls are whitewashed; the floor is freshly scrubbed; shelves bulge with oddities. A caged man with a wild beard peers morosely at you from the corner. 'Again?' he says. 'Or are you a different lot? No, I don't need rescuing, thank you. It's much worse out there.' ",
+            "description": "'Grab what you can, quickly!' the caged man hisses. 'They'll be back soon. Only please leave the gladius. I brought that all the way from Gallaecia, back in the day. There, that shelf's good. Hurry, they're coming! You can escape up the delivery stairs.'",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "expeditionascensionheartf",
+                    "chance": 100
+                },
+                {
+                    "id": "expeditionascensionmothf",
+                    "chance": 100
+                }
+            ]
+        }
+    ]
+}

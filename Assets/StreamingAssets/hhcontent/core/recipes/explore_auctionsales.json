@@ -1,0 +1,249 @@
+{
+    "recipes": [
+        {
+            "id": "auctionentry6",
+            "label": "Sell Something of Great Value",
+            "actionid": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 6
+            },
+            "effects": {
+                "funds": 20
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increasegrand",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Few of the customer at Oriflamme's are students of the invisible arts. But even laymen will recognise this as something extraordinary. [Sell with caution. There's no way to get it back.]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionentry5",
+            "label": "Sell Something of Rare Value",
+            "actionid": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 5
+            },
+            "effects": {
+                "funds": 16
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increasemajor",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Few of the customer at Oriflamme's are students of the invisible arts. They'll buy tools of power as trophies or curiosities, without any idea of their true value. But this is obviously something rare. [Sell with caution. There's no way to get it back.]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionentry4",
+            "label": "Sell Something of Significant Value",
+            "actionid": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 4
+            },
+            "effects": {
+                "funds": 8
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increasemajor",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Few of the customer at Oriflamme's are students of the invisible arts. They'll buy tools of power as trophies or curiosities, without any idea of their true value. But this will get their attention. [Sell with caution. There's no way to get it back.]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionentry3",
+            "label": "Sell Something of Real Value",
+            "actionid": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 3
+            },
+            "effects": {
+                "funds": 4
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increaseminor",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "This unusual item will definitely earn you some funds. [Sell with caution. There's no way to get it back.]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionentry2",
+            "label": "Sell Something of Some Value",
+            "actionid": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 2
+            },
+            "effects": {
+                "funds": 2
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increaseminor",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "This curiosity will earn you some funds. [Sell with caution. There's no way to get it back.]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionentry1",
+            "label": "Sell Something of Minimal Value",
+            "actionid": "explore",
+            "requirements": {
+                "locationauctionhouse": 1,
+                "auctionable": 1
+            },
+            "effects": {
+                "funds": 1
+            },
+            "linked": [
+                {
+                    "id": "auctionsell_increasepetty",
+                    "chance": 30
+                },
+                {
+                    "id": "auctionsell_worthless",
+                    "chance": 30
+                },
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "This oddity is probably worth something, but it's hard to be sure.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "auctionsell_worthless",
+            "label": "Auction: A Total Lack of Interest",
+            "actionid": "explore",
+            "startdescription": "No-one is impressed. The auctioneer's gavel bangs. My item has sold, but for a sum so trifling as not to be worth recording.",
+            "linked": [
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": -99,
+                "auctionable": -99
+            },
+            "warmup": 30
+        },
+        {
+            "id": "auctionsell_increasepetty",
+            "label": "Auction: Murmurings in the Audience",
+            "actionid": "explore",
+            "startdescription": "For whatever unlikely reason, my item has caught the fancy of the bidders.",
+            "linked": [
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "auctionsell_increaseminor",
+            "label": "Auction: Energetic Bidding",
+            "actionid": "explore",
+            "startdescription": "Some of the audience are on their feet, now. Passions are rising.",
+            "linked": [
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 2
+            },
+            "warmup": 30
+        },
+        {
+            "id": "auctionsell_increasemajor",
+            "label": "Auction: Shouts of Excitement",
+            "actionid": "explore",
+            "startdescription": "The auctioneer has to raise his voice over the hubbub of the crowd.",
+            "linked": [
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 4
+            },
+            "warmup": 30
+        },
+        {
+            "id": "auctionsell_increasegrand",
+            "label": "Auction: Duelling Bidders",
+            "actionid": "explore",
+            "startdescription": "Two wealthy collectors lock eyes with the auctioneer, signalling their intentions with the slightest nods. Except for the auctioneer's grave tones, the room is utterly silent.",
+            "effects": {
+                "funds": 8
+            },
+            "linked": [
+                {
+                    "id": "auctioncleanup",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "auctioncleanup",
+            "label": "The Auction is Complete",
+            "actionid": "explore",
+            "description": "The auctioneer's gavel bangs. My item has sold.",
+            "effects": {
+                "auctionable": -99
+            },
+            "warmup": 0
+        }
+    ]
+}

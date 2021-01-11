@@ -1,0 +1,499 @@
+{
+	"recipes": [
+		{
+			"id": "relinquish.first",
+			"actionId": "relinquish",
+			"label": "放棄",
+			"startdescription": "年を盗んで逃げていたら誰かに撃たれたんだ。忘れかけていた。",
+			"description": "包帯を変えた。少しは動けるようになっている。完治するまで待ったり、急いでいるなら盗んだ年を使って治癒することもできるが、それには丸ごと10年使わなくてはいけない。そんなことをしたら注目を集めてしまう。",
+			"effects": {
+				"wound.exile": 1
+			},
+			"comments": "opened by initial scout recipe",
+			"alt": [
+				{
+					"id": "send.first",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.decade.healwound.foe",
+			"actionId": "relinquish",
+			"label": "奪われた10年で傷口を癒す",
+			"startdescription": "年は夜明けと同じように黙々と燃やされなければならず、傷口には灰がかぶせられている。いつ同じ事が起きても厄介なのは変わらないが、それに加えて、敵に追われたまま夜を明かすのは苦痛でしかないだろう。[これを達成するには、夜明けの機会が必要。]",
+			"description": "満足するほどの時間も沈黙も見つからなかった。[夜明けのチャンスに備える。]",
+			"slots": [
+				{
+					"id": "dawn",
+					"label": "夜明け",
+					"description": "わずかの間",
+					"requirements": {
+						"op.dawn": 1
+					}
+				}
+			],
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"alt": [
+				{
+					"id": "relinquish.decade.healwound.success.foe"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.decade.healwound.success.foe",
+			"actionId": "relinquish",
+			"label": "奪われた10年で傷口を癒す",
+			"startdescription": "マドゥルガーダから少しだけ時間を稼いできた。",
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1,
+				"op.dawn": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"damage.exile": -1,
+				"op.dawn": -1
+			}
+		},
+		{
+			"id": "relinquish.decade.healwound",
+			"actionId": "relinquish",
+			"label": "奪われた10年で傷口を癒す",
+			"startdescription": "年は夜明けと同時に静かに燃やされなければならない。マドゥルガーダは、そのことと灰で覆われた傷口に関しては好みがうるさい。[これを達成するには、夜明けの機会が必要。]",
+			"description": "満足するほどの時間も沈黙も見つからなかった。[夜明けのチャンスに備える。]",
+			"slots": [
+				{
+					"id": "dawn",
+					"label": "夜明け",
+					"description": "わずかの間",
+					"requirements": {
+						"op.dawn": 1
+					}
+				}
+			],
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1
+			},
+			"alt": [
+				{
+					"id": "relinquish.decade.healwound.success"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.decade.healwound.success",
+			"actionId": "relinquish",
+			"label": "奪われた10年で傷口を癒す",
+			"startdescription": "マドゥルガーダは慈悲深くない。彼女はいつでも必要なことを厳しく取り立てる。かと言って、私は情けを乞うような人間ではない。[精算人の追っ手が、燃える年の匂いを嗅ぎつけた。]",
+			"requirements": {
+				"decade.stolen": 1,
+				"damage.exile": 1,
+				"op.dawn": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"damage.exile": -1,
+				"trace": 1,
+				"op.dawn": -1
+			}
+		},
+		{
+			"id": "relinquish.vitality.healwound",
+			"actionId": "relinquish",
+			"label": "活力で傷を治す",
+			"startdescription": "精算人として私は、昔、人生の急な動揺を上手く方向転換することを学んだ。",
+			"description": "目に見えない術を学ぶものは今、サンダースキンに祈りを捧げるに違いない。常識だろう。",
+			"requirements": {
+				"vitality": 1,
+				"damage.exile": 1
+			},
+			"effects": {
+				"vitality": -1,
+				"damage.exile": -1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.healwound.hint",
+			"actionId": "relinquish",
+			"label": "傷を治す？",
+			"startdescription": "傷を癒すために「盗まれた10年」を使うことができる。あるいは、活力の源を見つけられたら、それを使うこともできる。もちろん、時間があれば傷が治るのを待つこともできる。",
+			"requirements": {
+				"damage.exile": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.decade.unpack",
+			"actionId": "relinquish",
+			"label": "盗まれた10年を分解する",
+			"startdescription": "盗まれた命は、10年よりも年単位の方が簡単に売れる。必要な変更を行うための道具はあるが、慎重に筆を動かさなくてはいけない。太陽の前に現れる彼女は、いい加減な者には冷たい視線を向ける。[10年を売ることはできない。年は傷口の治癒には使えない。年を10年に戻すことはできない。]",
+			"description": "ようやく完成した。記録に照らし合わせて丁寧な下書きを10枚書き上げ、10年分の下書きを燃やした。新しい下書きはそれぞれ4200万回の鼓動分の価値がある。紙の中で震えているのが聞こえてくるような気がする......",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"year.stolen": 10
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.convertyear",
+			"actionId": "relinquish",
+			"label": "慌てて現金を調達する",
+			"startdescription": "寿命を売って直接現金に換えると、価格は低くなり、精算人の注目を集めてしまう。ちょうど良い代替案を見つけたら、できる限り少ない量を売るべきだ。",
+			"description": "煙が充満する部屋、くしゃくしゃになった紙幣。うんざりしてきた。[作戦を使うと、年をより安全に現金に換えられる。ほとんどの作戦は、人脈を必要とする。]",
+			"requirements": {
+				"year.stolen": 1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"cash": 1
+			},
+			"aspects": {
+				"terribletracerisk": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.defiance",
+			"actionId": "relinquish",
+			"label": "勝利を祝う",
+			"startdescription": "闘争と征服の時の神々は勝利を認める。このトロフィーを捧げれば、自分の立ち位置を高めることができる。",
+			"description": "終わった。昼と夜が戦う時間になると、多翼の者たちが私の戦利品を確認しに降りてくる。彼らが去ると、そこには骨の欠片と髪の束だけが残されていた。",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"temptation.defiance": 1,
+				"defiance.underlingdefeated": -1
+			},
+			"effects": {
+				"corpse.exile.underling": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.underlingdefeated",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.lore",
+			"actionId": "relinquish",
+			"label": "勝利から学ぶ",
+			"startdescription": "技の中には敵の血でしか発動できない。",
+			"description": "汚く不快な作業だったが......色々な定命の者の行動に関する理解が深まった。",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"lore": 1
+			},
+			"effects": {
+				"corpse.exile.underling": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile",
+			"actionId": "relinquish",
+			"label": "控えめな埋葬",
+			"startdescription": "埋葬されないままにしておくのは見苦しいが、騒ぐ必要はない。",
+			"description": "この可哀想な殻は、ひっそりと片付けられた。探そうとすれば偽の手掛かりが見つかるだろう。",
+			"requirements": {
+				"corpse.exile": 1,
+				"deception": 2
+			},
+			"effects": {
+				"corpse.exile": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.connections",
+			"actionId": "relinquish",
+			"label": "跡を隠す",
+			"startdescription": "仲間が必要な記録を小細工してくれるはずだ。",
+			"description": "「本は死なない記憶である」......と有能な偽造者に出会ったことがない人が言った。",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"connection": 2
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.night.connection",
+			"actionId": "relinquish",
+			"label": "跡を隠す",
+			"startdescription": "月が沈んだら計画を実行に移そう。",
+			"description": "もう1つの失われた歴史に太陽が昇る。",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"connection": 1,
+				"op.night": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space.connection",
+			"actionId": "relinquish",
+			"label": "跡を隠す",
+			"startdescription": "おとりがその住所にずっといるように、友人が手配してくれるだろう。",
+			"description": "おとりに古いコートを上げた。派手に殺されないと良いのだが。",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1,
+				"connection": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space.night",
+			"actionId": "relinquish",
+			"label": "跡を隠す",
+			"startdescription": "夜中に抜け出す。",
+			"description": "しばらくの間は、誰も私がそこからいなくなったことに気づかないだろう......そして気づいた頃には私はどこか他の場所からいなくなっているだろう。",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1,
+				"op.night": 1
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.trace.space",
+			"actionId": "relinquish",
+			"label": "跡を隠す？",
+			"startdescription": "[夜カードや人脈カードのある住居を使うと痕跡を消すことはできるが、住居を2つ使っても消すことはできない。]",
+			"requirements": {
+				"trace": 1,
+				"deception": 2,
+				"space": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace",
+			"actionId": "relinquish",
+			"label": "跡を隠す",
+			"startdescription": "私の跡を追う敵を誤った方向に導くことができる。",
+			"description": "まるで霧になったかのように。",
+			"requirements": {
+				"trace": 1,
+				"deception": 2
+			},
+			"effects": {
+				"trace": -1,
+				"obscurity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.defiance.already.hint",
+			"actionId": "relinquish",
+			"label": "認識済み",
+			"startdescription": "殺された者を裁く多翼の者たちは既にこの手の勝利を一度認めている。再度彼らに迷惑をかけるべきではない",
+			"requirements": {
+				"corpse.exile.underling": 1,
+				"temptation.defiance": 1,
+				"defiance.underlingdefeated": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.corpse.exile.underling.hint",
+			"actionId": "relinquish",
+			"label": "定命の者の使い道？",
+			"startdescription": "人間の死体は不便なものだが、時には貴重なものでもある。",
+			"requirements": {
+				"corpse.exile.underling": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.space",
+			"actionId": "relinquish",
+			"label": "跡を隠す？",
+			"startdescription": "二度と行かない場所......[2つ目の住所ではなく、欺瞞の支援を持つカードをもう1枚追加する。]",
+			"requirements": {
+				"trace": 1,
+				"space": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.connection",
+			"actionId": "relinquish",
+			"label": "跡を隠す？",
+			"startdescription": "街を知り尽くした友人たちの協力を得る......[欺瞞を持つカードをもう1枚追加する。]",
+			"requirements": {
+				"trace": 1,
+				"connection": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint.night",
+			"actionId": "relinquish",
+			"label": "跡を隠す？",
+			"startdescription": "夜の闇が用心深い目を眩ませる時......[欺瞞を持つカードをもう1枚追加する。]",
+			"requirements": {
+				"trace": 1,
+				"op.night": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.trace.hint",
+			"actionId": "relinquish",
+			"label": "跡を隠す？",
+			"startdescription": "適切な資源があれば、敵を撒くことができる。[欺瞞を持つカードを2枚使う――しかし住所は1つまで。]",
+			"requirements": {
+				"trace": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "relinquish.sell",
+			"actionId": "relinquish",
+			"label": "資産を売却して現金化しようとする",
+			"startdescription": "@#licence.medical|医者となるにふさわしいと思っている人を、大抵難なく見つけることができる。\n#|これよりも現金が必要なのかもしれない。@[これにより、資産がその価値に等しい現金と交換される。]",
+			"requirements": {
+				"worth": 1,
+				"cash": -1,
+				"trace": -1
+			},
+			"extantreqs": {
+				"asset.packed": -1
+			},
+			"comments": "cash also has worth, but let's not convert it back to cash",
+			"effects": {
+				"cash": "worth",
+				"asset": -1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.abandon",
+			"actionId": "relinquish",
+			"label": "資産を放棄する",
+			"startdescription": "悪魔が背後にいるときは、軽やかに旅をするべきだ。[これを使って、持っていく余裕のない持ち運び可能な資産を片付ける。]",
+			"requirements": {
+				"asset": 1,
+				"trace": -1
+			},
+			"extantreqs": {
+				"asset.packed": 1
+			},
+			"effects": {
+				"asset": -1
+			},
+			"warmup": 1,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.provoke",
+			"actionId": "relinquish",
+			"label": "人脈を挑発する",
+			"startdescription": "敵がいるのは私だけではない。この人脈と仲たがいすれば、代わりに@#connection.official|裏社会の人脈\n#connection.holy|過激派の人脈\n#connection.radicals|官界の人脈\n#connection.ruler|過激派の人脈\n#connection.underworld|官界の人脈@ができるかもしれない。そうでなければ、今の人脈に迷惑をかけるだけかもしれない。[通常はうまくいくが、たまに失敗して人脈と痕跡が残らないこともある。]",
+			"requirements": {
+				"connection": 1,
+				"trace": -1
+			},
+			"linked": [
+				{
+					"id": "relinquish.provoke.success",
+					"chance": 70
+				},
+				{
+					"id": "relinquish.provoke.failure"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "relinquish.provoke.success",
+			"actionId": "relinquish",
+			"label": "成功！",
+			"startdescription": "新しい友達。",
+			"aspects": {
+				"provoking": 1
+			}
+		},
+		{
+			"id": "relinquish.provoke.failure",
+			"actionId": "relinquish",
+			"label": "おっと――",
+			"startdescription": "その言葉が悪い言葉だとは知っていたが、<i>そんなに</i>悪いとは思わなかった。",
+			"effects": {
+				"connection": -1,
+				"trace": 1
+			}
+		}
+	]
+}

@@ -1,0 +1,262 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaulteveningisles1_setup",
+            "label": "探险渡鸦屿",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaulteveningisles1": 1
+            },
+            "effects": {
+                "peril_sea": 1,
+                "guardian_soucouyants": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "渡鸦屿最大的危险是索寇焰特——堕落的不死者们。此外还有艰难的海上航行，和充满岛屿的幻像诅咒之声。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaulteveningisles2_setup",
+            "label": "探险格里克堡",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaulteveningisles2": 1
+            },
+            "effects": {
+                "peril_sea": 1,
+                "seal_wardeddoor": 1,
+                "guardian_dead": 1
+            },
+            "startdescription": "一座坍圮的砂岩堡垒笼罩着空荡荡的海湾。死者至黑夜则出走，白昼则蛰伏。在一间闭锁的地下宝库中，旧督官的财宝正等待下一任主人来夺得。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaulteveningisles3_setup",
+            "label": "探险克丽斯塔贝号船骸",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaulteveningisles3": 1
+            },
+            "effects": {
+                "peril_sea": 1,
+                "guardian_serpent": 1,
+                "curse_affliction": 1
+            },
+            "startdescription": "风暴将克丽斯塔贝号从海中托起，放在礁石上。然而下场如此悲伤的船骸必有诅咒缠身。爱过它的海兽也依然没有离开。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaulteveningisles4_setup",
+            "label": "探险深邃之门的圣滕特雷之僧院",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaulteveningisles4": 1
+            },
+            "effects": {
+                "seal_hiddendoor": 1,
+                "guardian_monks": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "圣滕特雷托的僧侣不会愿意让我们通过。他们会将宝物藏起，如果宝物被我们所夺，他们无疑会咒骂着追捕我们。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaulteveningislesdefault_setup",
+            "label": "探险午港",
+            "actionId": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaulteveningislesdefault": 1
+            },
+            "effects": {
+                "peril_sea": 1,
+                "seal_wardeddoor": 1,
+                "guardian_long": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "如果我们能够成功跨过海面到达午港，战胜不死的长生者，掘开他们的私人金库的话，最后我们还须要抵抗住幻像的诱惑。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaulteveningisles1_success",
+            "label": "渡鸦羽毛",
+            "actionId": "explore",
+            "requirements": {
+                "vaulteveningisles1": 1
+            },
+            "effects": {
+                "vaulteveningisles1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "manualdeparturevak",
+                    "toolgrailf",
+                    "fivecreationsvak",
+                    "originsofhoursvak"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "一个被索寇焰特涂脏的山洞。它们在洞壁上涂写它们悲哀的历史，用一百种语言，惊人典雅的字迹记录下：它们自身的生态，拥有过的历史，悲悼过的孩童。",
+            "description": "在山洞深处，索寇焰特放置了一个像是展示用的巢。有它们曾经穿过，现在饰以渡鸦羽毛的细布衣衫。有一小堆浮雕小肖像和腐烂的家族相簿。有几件存有法力的器物。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaulteveningisles2_success",
+            "label": "督官的最后一招棋",
+            "actionId": "explore",
+            "requirements": {
+                "vaulteveningisles2": 1
+            },
+            "effects": {
+                "vaulteveningisles2": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "bighufffucine",
+                    "toolforgef",
+                    "timedivisionmandaic",
+                    "ingredientheartf"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "格里克堡的地下金库。地面上用石子镶着一副面积广大，错综复杂的马赛克棋盘——薄暮群屿的地图。上面用青金石表示海，墨玉和黑曜石表示岛屿，还摆放着玩具船和锡兵。其中圣托马斯屿遭到围攻，渡鸦屿则挤满了黑色的王后棋子。",
+            "description": "棋子和玩具中混杂着充当地图标识的，含有真正法力的物件。这样做是为了鱼龙混杂，掩人耳目？还是因为督官对它们真正的价值一无所知？",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaulteveningisles3_success",
+            "label": "一只闭阖的眼睛",
+            "actionId": "explore",
+            "requirements": {
+                "vaulteveningisles3": 1
+            },
+            "effects": {
+                "vaulteveningisles3": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "bookextinguishedheartmandaic",
+                    "bookwhitecatphrygian",
+                    "toolknockf",
+                    "ingredientgrailf"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "船仍旧散发出浓烈的海的味道。一只行动迟缓的章鱼爬着逃开我们的灯光。木料已半被珊瑚覆盖。船员的尸体哪里去了？记录上只有一人生还。是巨蛇吞吃了其他人？",
+            "description": "我们找到了船长室。航海日志在里面，纸页已经成了一团结着盐晶的浆糊。有人在拴着日志的书桌上刻下了一个闭阖的眼睛图案。图案下是一个暗屉，我们可以把它拽开掏空里面的财宝……",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaulteveningisles4_success",
+            "label": "第一次震动",
+            "actionId": "explore",
+            "requirements": {
+                "vaulteveningisles4": 1
+            },
+            "effects": {
+                "vaulteveningisles4": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "scarskyfucine",
+                    "toollanternf",
+                    "birdsongphrygian",
+                    "commandspreservationallexistsmandaic"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationd",
+                "resetonexhaustion": false
+            },
+            "startdescription": "我们来到僧院下面海水深潭所在的岩洞。幽暗的水面在我们的灯光下震颤。当我们接近时，水位突然下降。这片海域没有涨潮落潮，发生了什么？",
+            "description": "我们亵渎了这座岩洞！众司辰已经收回了他们的祝福。海水褪去，水池干涸，供物都落在池底。我们必须抓紧时间拿取。第一次震动已经开始——这是被僧侣一再延后的地震终于到来的征兆。",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaulteveningislesdefault_success",
+            "label": "从加拉埃西亚大老远带来之物",
+            "actionId": "explore",
+            "requirements": {
+                "vaulteveningislesdefault": 1
+            },
+            "effects": {
+                "vaulteveningislesdefault": -1
+            },
+            "deckeffect": {
+                "vaultrewardsg": 3
+            },
+            "startdescription": "这里是希耶尔沃旅店秘密的半地下室。墙上刷着白石灰，地板刚擦洗过，架子上各种奇古怪的物件多到塞不下。一个关在笼子里，胡须疯长的男人从笼子所在的屋角愁眉苦脸地盯着你看。“又来？”他说，“还是说你是另外一拨？不，我不需要人救，谢谢。外面比里面糟多了。”",
+            "description": "“能拿多少拿多少，抓紧！”笼中人压低声音道。“他们快要回来了。只求你留下那把罗马短剑。那是我当年从加拉埃西亚大老远带来的。那儿，架子上的可以拿。快，他们来了！你可以从货用楼梯爬出去。”",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "expeditionascensionheartf",
+                    "chance": 100
+                },
+                {
+                    "id": "expeditionascensionmothf",
+                    "chance": 100
+                }
+            ]
+        }
+    ]
+}

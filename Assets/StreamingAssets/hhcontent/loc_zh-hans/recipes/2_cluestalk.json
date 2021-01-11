@@ -1,0 +1,301 @@
+{
+    "recipes": [
+        {
+            "id": "recruitindependentresentmenthint",
+            "label": "招募一名无派人士？",
+            "actionId": "talk",
+            "requirements": {
+                "independent": 1,
+                "mortal": 1,
+                "resentment": 1
+            },
+            "startdescription": "不。此人还未与我们冰释前嫌。也许，有一天，如果我不再继续加害于他的话，他的想法应会有所改变。",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "recruitindependenthint",
+            "label": "招募一名无派人士？",
+            "actionId": "talk",
+            "requirements": {
+                "independent": 1,
+                "mortal": 1,
+                "resentment": -1
+            },
+            "startdescription": "此人可能入伙……只要我能将我教的性相提升至二十一阶。[你可以招募与你信仰不同的捣乱分子，只要你能提供足够的法力——但你必须将至少一件“工具”作为礼物送给这名无派人士。]",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "promoteto_d_edgehint",
+            "label": "擢升门徒？",
+            "actionId": "talk",
+            "requirements": {
+                "cultedge_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "要将门徒擢升为暗杀者，我需要至少强达二十一级的<b>刃</b>。无论如何，适格之人必须穷凶极恶。",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_forgehint",
+            "label": "擢升门徒？",
+            "actionId": "talk",
+            "requirements": {
+                "cultforge_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "要将门徒擢升为重塑者，我需要至少强达二十一级的<b>铸</b>。无论如何，适格之人必须独具匠心、手艺精湛。",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_grailhint",
+            "label": "擢升门徒？",
+            "actionId": "talk",
+            "requirements": {
+                "cultgrail_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "要将门徒擢升为纵情者，我需要至少强达二十一级的<b>杯</b>。无论如何，适格之人必须食欲惊人。",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_hearthint",
+            "label": "擢升门徒？",
+            "actionId": "talk",
+            "requirements": {
+                "cultheart_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "要将门徒擢升为蛊舞者，我需要至少强达二十一级的<b>心</b>。无论如何，适格之人必须精力充沛。",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_knockhint",
+            "label": "擢升门徒？",
+            "actionId": "talk",
+            "requirements": {
+                "cultknock_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "要将门徒擢升为钥匙，我需要至少强达二十一级的<b>启</b>。无论如何，适格之人必须天资独具。",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_lanternhint",
+            "label": "擢升门徒？",
+            "actionId": "talk",
+            "requirements": {
+                "cultlantern_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "要将门徒擢升为先见者，我需要至少强达二十一级的<b>灯</b>。无论如何，适格之人必须眼明心亮。",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_mothhint",
+            "label": "擢升门徒？",
+            "actionId": "talk",
+            "requirements": {
+                "cultmoth_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "要将门徒擢升为易皮者，我需要至少强达二十一级的<b>蛾</b>。无论如何，适格之人百年难遇。",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promoteto_d_winterhint",
+            "label": "擢升门徒？",
+            "actionId": "talk",
+            "requirements": {
+                "venerationwinter": 1,
+                "venerationedge": -1,
+                "venerationforge": -1,
+                "venerationgrail": -1,
+                "venerationheart": -1,
+                "venerationlantern": -1,
+                "venerationknock": -1,
+                "venerationmoth": -1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "要将门徒擢升至无名的位阶，我需要至少强达二十一级的<b>冬</b>。无论如何，适格之人必须心如死灰。",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "promotetodisciplehint",
+            "label": "晋升信徒？",
+            "actionId": "talk",
+            "requirements": {
+                "society": 1,
+                "follower": 1,
+                "disciple": -1,
+                "summoned": -11
+            },
+            "startdescription": "要将信徒晋升到门徒，我需要为其提供恰当的性相，且至少强达七级。",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "talktobenefactorhint",
+            "label": "我的金主执着于会面的私密性。",
+            "actionId": "talk",
+            "requirements": {
+                "benefactor": 1
+            },
+            "startdescription": "“我们可不能在这儿聊天，亲爱的。我们得私下里说。”",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "recruitacquaintancenoculthint",
+            "label": "招募新的追随者？",
+            "actionId": "talk",
+            "requirements": {
+                "society": -1,
+                "acquaintance": 1
+            },
+            "startdescription": "[待你建立教派后，将<b>教派</b>放入<b><谈话></b>中可招募<b>熟人</b>入教。]",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "recruitacquaintancehint",
+            "label": "招募新的追随者？",
+            "actionId": "talk",
+            "requirements": {
+                "society": 1,
+                "acquaintance": 1
+            },
+            "startdescription": "要招募追随者，我需要一点我们所崇敬的神力。我可以从<b>影响</b>、<b>工具</b>、<b>原料</b>，或我教传承中的<b>密传</b>获得。",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "talk_aladim_wantscommission",
+            "label": "委托？",
+            "actionId": "talk",
+            "requirements": {
+                "aladim": 1
+            },
+            "startdescription": "“那份委托进展如何？我很想听听你的想法。”",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "talk_bechet_wantscommission",
+            "label": "委托？",
+            "actionId": "talk",
+            "requirements": {
+                "bechet": 1
+            },
+            "startdescription": "“哈喽，有什么要给我的吗？委托如何了？”",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "talk_jannings_wantscommission",
+            "label": "委托？",
+            "actionId": "talk",
+            "requirements": {
+                "jannings": 1
+            },
+            "startdescription": "“拜托了，你会完成委托吗？我的同僚十分需要这份信息。”",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "talk_poppy_wantscommission",
+            "label": "委托？",
+            "actionId": "talk",
+            "requirements": {
+                "poppycommission": 1
+            },
+            "startdescription": "“噢，快点完成委托啊！我可等不及了。”",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "fulfilcommission_aladimhint",
+            "label": "完成博士的委托？",
+            "actionId": "talk",
+            "requirements": {
+                "commission": 1,
+                "aladim": 1,
+                "article": 1
+            },
+            "startdescription": "“唔，我想要的可不止这些。”[检查委托细节。]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "fulfilcommission_bechethint",
+            "label": "完成贝谢女士的委托？",
+            "actionId": "talk",
+            "requirements": {
+                "commission": 1,
+                "bechet": 1,
+                "article": 1
+            },
+            "startdescription": "“抱歉，不太对。和我想要的有些不一样。”[检查委托细节。]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "fulfilcommission_janningshint",
+            "label": "完成伯爵的委托？",
+            "actionId": "talk",
+            "requirements": {
+                "commission": 1,
+                "jannings": 1,
+                "article": 1
+            },
+            "startdescription": "“不对不对不对，这可不行。我的要求可是相当具体的。”[检查委托细节。]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "fulfilcommission_poppyhint",
+            "label": "完成波比的委托？",
+            "actionId": "talk",
+            "requirements": {
+                "commission": 1,
+                "poppycommission": 1,
+                "article": 1
+            },
+            "startdescription": "“噢亲爱的，我很抱歉。但我需要更多……深入的见解。”[检查委托细节。]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "talk_nointeraction_mortal",
+            "label": "无话可说？",
+            "actionId": "talk",
+            "requirements": {
+                "mortal": 1
+            },
+            "startdescription": "“我觉得我们之间无话可谈了。”",
+            "craftable": false,
+            "hintonly": true
+        }
+    ]
+}

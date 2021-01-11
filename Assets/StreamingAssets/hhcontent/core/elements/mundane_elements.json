@@ -1,0 +1,118 @@
+{
+    "elements": [
+        {
+            "id": "rumour",
+            "label": "Peculiar Rumour",
+            "description": "This might lead me to someone I need; or it might mean something else entirely. [Explore with a Rumour to follow up on it.]",
+            "aspects": {
+                "ingredient": 1,
+                "secrethistories": 1,
+                "moth": 1
+            },
+            "lifetime": 60
+        },
+        {
+            "id": "favour",
+            "label": "A Favour from Authority",
+            "description": "I've learnt something that will earn me a favour, once only. [This will preserve you or a Follower from imprisonment... but it cannot be relied on.] ",
+            "aspects": {
+                "suspicious": 1
+            },
+            "lifetime": 300
+        },
+        {
+            "id": "mistakenidentity",
+            "label": "A Case of Mistaken Identity",
+            "aspects": {
+                "mortal": 1
+            },
+            "description": "This isn't who you hoped for, after all. They're no-one of particular importance, and eventually they'll pass from your memory. Perhaps there is no-one else available that you'd care to meet.",
+            "xtriggers": {
+                "rebellion": "generic_r"
+            },
+            "comments": "This xtrigger is here specifically in case someone runs through all the possible rivals as a Detective",
+            "lifetime": 10
+        },
+        {
+            "id": "funds",
+            "label": "Funds",
+            "aspects": {
+                "ingredient": 1
+            },
+            "description": "Enough to support me for a little while in adequate comfort."
+        },
+        {
+            "id": "compensation",
+            "label": "Iron Spintria",
+            "aspects": {
+                "edge": 2,
+                "secrethistories": 1,
+                "compensationvalue": 2,
+                "ingredient": 1,
+                "auctionable": 2
+            },
+            "description": "Initiates of the hidden world use spintriae to pay for services. Iron spintriae are the lowest denomination, and display scenes of murder on their reverse side. [Spintriae can be sold for more traditional funds at an auction house.]"
+        },
+        {
+            "id": "compensationb",
+            "label": "Bronze Spintria",
+            "aspects": {
+                "forge": 4,
+                "secrethistories": 1,
+                "compensationvalue": 4,
+                "ingredient": 1,
+                "auctionable": 3
+            },
+            "description": "Initiates of the hidden world use spintriae to pay for services. Bronze spintriae usually display the act of shaping on their reverse side. [Spintriae can be sold for more traditional funds at an auction house.]"
+        },
+        {
+            "id": "compensationc",
+            "label": "Silver Spintria",
+            "aspects": {
+                "grail": 6,
+                "secrethistories": 1,
+                "compensationvalue": 8,
+                "ingredient": 1,
+                "auctionable": 4
+            },
+            "description": "Initiates of the hidden world use spintriae to pay for services. They can easily be sold for more traditional funds. Silver spintriae are more valuable, and usually display scenes of debauchery on their reverse side. [Spintriae can be sold for more traditional funds at an auction house.]"
+        },
+        {
+            "id": "compensationd",
+            "label": "Gold Spintria",
+            "aspects": {
+                "lantern": 8,
+                "secrethistories": 1,
+                "compensationvalue": 16,
+                "ingredient": 1,
+                "auctionable": 5
+            },
+            "description": "Initiates of the hidden world use spintriae to pay for services. They can easily be sold for more traditional funds. Gold spintriae display scenes that are not visible to mortal eyes on their reverse side. [Spintriae can be sold for more traditional funds at an auction house.]"
+        },
+        {
+            "id": "mapbookdealer",
+            "label": "Directions to Morland's",
+            "aspects": {
+                "legacyplotitem": 1
+            },
+            "description": "Cryptic directions to the obscure address of a certain Morland, a dealer in the rarer sort of book."
+        },
+        {
+            "id": "jumble",
+            "label": "Jumble",
+            "aspects": {
+                "auctionable": 1
+            },
+            "description": "Old clothes, near-worthless accessories. It might pick up a few pennies somewhere, but it's of little use to me."
+        },
+        {
+            "id": "snare",
+            "label": "Snare",
+            "aspects": {
+                "snarelevel": 1
+            },
+            "description": "I have prepared an ambush for a rival. [A Snare can be used on any Independent, or to defeat an Independent's attempt on any Vault.]",
+            "lifetime": 300
+        }
+    ]
+}

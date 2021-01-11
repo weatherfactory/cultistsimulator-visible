@@ -1,0 +1,322 @@
+{
+    "recipes": [
+        {
+            "id": "explore_vaultshires1_setup",
+            "label": "Beginning an Expedition: Gladwyn Lake",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultshires1": 1
+            },
+            "effects": {
+                "guardian_serpent": 1
+            },
+            "startdescription": "Beneath the surface of the lake, or in some cliff-side nook, perhaps some relics remain for us yet. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultshires2_setup",
+            "label": "Beginning an Expedition: Lockwood Fen",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultshires2": 1
+            },
+            "effects": {
+                "peril_treacherousground": 1,
+                "guardian_watchers": 1
+            },
+            "startdescription": "Out into the mudlands. Somewhere, we are certain, is a shrine bedecked with precious oddments. If the locals try to kill us, we are probably heading in the right direction. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultshires3_setup",
+            "label": "Beginning an Expedition: Crowkiss Hill",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultshires3": 1
+            },
+            "effects": {
+                "seal_wardeddoor": 1
+            },
+            "startdescription": "The one who came here before us had marked the door in the hillside. And here it may yet be, but it is sealed besides with stone and binding-spell. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultshires4_setup",
+            "label": "Beginning an Expedition: Keglin's Scratch",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultshires4": 1
+            },
+            "effects": {
+                "peril_treacherousground": 1,
+                "guardian_dead": 1
+            },
+            "startdescription": "We prepare for the descent. We bring rope, tools, light; we arm ourselves against anything down there that may yet move. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultshires5_setup",
+            "label": "Beginning an Expedition: the Gwaer Inn",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultshires5": 1
+            },
+            "effects": {
+                "seal_wardeddoor": 1,
+                "guardian_watchers": 1
+            },
+            "startdescription": "We can reserve rooms at the Inn easily enough, but we can expect the locals - if they divine our intentions - to turn nasty. And if the library is still there, it will be well-hidden. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explore_vaultshiresdefault_setup",
+            "label": "Beginning an Expedition: Kerisham",
+            "actionid": "explore",
+            "requirements": {
+                "funds": 1,
+                "follower": 1,
+                "vaultshiresdefault": 1
+            },
+            "effects": {
+                "seal_wardeddoor": 1,
+                "guardian_watchers": 1,
+                "curse_visions": 1
+            },
+            "startdescription": "Slink along the streets to a once-fine townhouse. Surreptitiously case the back garden. Odd stories circulate about the woman who lives here. She might be an adept, a collector, or even the rare thing called <i>empousa</i>. We must be watchful. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "explorevault_expeditionbegun",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultshires1_success",
+            "label": "The Chapel-Root",
+            "actionid": "explore",
+            "requirements": {
+                "vaultshires1": 1
+            },
+            "effects": {
+                "vaultshires1": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "orchidtransfigurations3latin",
+                    "ingredientheartd",
+                    "indignitiesobliviatelatin"
+                ],
+                "draws": 3,
+                "defaultcard": "compensationb",
+                "resetonexhaustion": false
+            },
+            "startdescription": "There are ruins beneath the water - just beneath, at wading depth. The lake has risen a little in all these years, but not enough to keep us out.",
+            "description": "The chapel crypt is flooded, and the water soupy with old corpse-matter, but at last we bring up a wax-sealed coffer. Eighteenth-century? No older than that. Let's see what's within.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultshires2_success",
+            "label": "The Ring-Yew's Shrine",
+            "actionid": "explore",
+            "requirements": {
+                "vaultshires2": 1
+            },
+            "effects": {
+                "vaultshires2": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toolmothb",
+                    "flayedtantrasanskrit",
+                    "ingredientgrailb",
+                    "toolknockb"
+                ],
+                "draws": 4,
+                "defaultcard": "compensationb",
+                "resetonexhaustion": false
+            },
+            "startdescription": "Here on a flat rock, inches above the marsh-water, is a throne carved of yew-wood, ripe with fungus, ornamented with tarnished copper. This is the shrine we seek.",
+            "description": "Apple-green paint marks ritual circles on the rock. The remains of sacrifices past squelch beneath our feet as we search the shrine. In a little hollow in the throne rests an oiled bundle of treasures.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultshires3_success",
+            "label": "The Warrior's End",
+            "actionid": "explore",
+            "requirements": {
+                "vaultshires3": 1
+            },
+            "effects": {
+                "vaultshires3": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toolwinterb",
+                    "tooledgeb",
+                    "influencewinterc",
+                    "ingredientwinterb",
+                    "ingredientmothb",
+                    "bookofcentipedegreek"
+                ],
+                "draws": 6,
+                "defaultcard": "compensationb",
+                "resetonexhaustion": false
+            },
+            "startdescription": "It is almost possible to stand upright in this place, but the air is foul and our lamps burn low. Here is the warrior-king staked out on the funeral-stone, his bones smashed to keep him from walking. The orbits of his skull are bound with bronze.",
+            "description": "Others have been here before us - power still lingers, and no doubt they used it in their ceremonies. They have taken some of the warrior-king's funeral treasures, but left something of their own.",
+            "warmup": 30,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "expedition.corpse.find.vaultshires3",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "explorevaultshires4_success",
+            "label": "Once a Lady",
+            "actionid": "explore",
+            "requirements": {
+                "vaultshires4": 1
+            },
+            "effects": {
+                "vaultshires4": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "toollanterndcracked",
+                    "victoryofcrowns",
+                    "tooledged"
+                ],
+                "draws": 3,
+                "defaultcard": "compensationb",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The air is stale, and dust sifts worryingly down from the rock above, but the dead lie still. This chamber, with its chalked figures and ancient stains, looks promising.",
+            "description": "In a lead-lined sarcophagus lies the skeleton of a woman. She wasn't buried here: it looks like she crawled in to die... something has happened to the shape of her skull, pushing out the jaw like the muzzle of a beast. Scraps of rotting linen swathe her bones. Treasures lie among the remains of her clutching hands between her ribs.",
+            "warmup": 30,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "expedition.corpse.find.vaultshires4",
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "explorevaultshires5_success",
+            "label": "The White Library",
+            "actionid": "explore",
+            "requirements": {
+                "vaultshires5": 1
+            },
+            "effects": {
+                "vaultshires5": -1
+            },
+            "internaldeck": {
+                "spec": [
+                    "shavenlocktantrasanskrit",
+                    "concursumdiariesphrygian",
+                    "thosewhodonotsleepfucine",
+                    "matthiasamethystlossaramaic",
+                    "textbooklatin"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationb",
+                "resetonexhaustion": false
+            },
+            "startdescription": "The room is bleached and quiet. The chairs are pale wood; the table is topped with white marble. A low draught blows through the ill-fitting sea-facing casement. In winter, it must be insupportably cold. A white-painted glass case holds a shelf of books, wrapped oddly in coils of copper wire.",
+            "description": "Some of the books are exotic eighteenth-century pornography. Others are botanist's journals. Some, however, have value for our studies. A yellowing note tucked into the spine of one reads 'Watch for me. - JC.'",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "explorevaultshiresdefault_success",
+            "label": "The Last Room",
+            "actionid": "explore",
+            "requirements": {
+                "vaultshiresdefault": 1
+            },
+            "effects": {
+                "vaultshiresdefault": -1
+            },
+            "deckeffects": {
+                "vaultrewardsb": 3
+            },
+            "startdescription": "Nothing remains to bar our way. Search the cellar first, then the upper rooms. We don't want to be trapped.",
+            "description": "On the topmost floor is an altar to the Sun Divided - which could be one of many Hours. Sweep the items there displayed into a carpet-bag, and let's make haste into the back streets.",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explore.apostleforge.findflaw",
+                    "chance": 100
+                },
+                {
+                    "id": "expeditionascensionheartb",
+                    "chance": 100
+                },
+                {
+                    "id": "expeditionascensionmothb",
+                    "chance": 100
+                }
+            ]
+        }
+    ]
+}

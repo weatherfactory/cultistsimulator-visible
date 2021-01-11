@@ -1,0 +1,825 @@
+{
+	"recipes": [
+		{
+			"id": "studyugradeknockinfluence",
+			"label": "破壊を加速する",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"knock": 1
+			},
+			"effects": {
+				"project_influence_upgrade_subvert_knock": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "世界の地表に圧力をかけると、熟した果実の皮のように裂けてしまう。 [開錠で学んだ影響力は全て開錠になる。]",
+			"description": ".",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studyupgradeinfluence_edge",
+			"label": "最も激しい対決の瞬間を探す",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"edge": 1,
+				"winter": -1,
+				"forge": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_influence_upgrade_edge": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "dreadinduction_ifdread",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "偉大な闘争はすべて死で終わる。[刃の影響力が強化される。]",
+			"description": ".",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertinfluence_edgetowinter",
+			"label": "刃の影響力を改変する",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"edge": 1,
+				"winter": 1
+			},
+			"effects": {
+				"project_influence_subvert_edgetowinter": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "dreadinduction_ifdread",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "万物には終わりが来る。忍耐力がいかに強さに勝るかを深く考えてみようと思う。[これによって、刃の代わりに冬の影響力が生まれる。]",
+			"description": ".",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studyforgeinfluence",
+			"label": "熱を高める",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"forge": 1,
+				"edge": -1,
+				"lantern": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_influence_upgrade_forge": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "火は燃料を加えると大きくなる。[鍛造の影響力が強化される。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertinfluence_forgetoedge",
+			"label": "鍛造の影響力を改変する",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"forge": 1,
+				"edge": 1
+			},
+			"effects": {
+				"project_influence_subvert_forgetoedge": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "ライオンスミスと呼ばれた時の神は、主人の支配から逃れるために自らの剣を粉々にした。十分な力があれば、万物を克服することができる。[これにより、鍛造の代わりに刃の影響力が生まれる。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studygrailinfluence",
+			"label": "欲望を合わせる",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"grail": 1,
+				"moth": -1,
+				"heart": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_influence_upgrade_grail": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "欲望の源を辿れば、その下に隠された欲望も発見できる。[聖杯の影響力が強化される。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertinfluence_grailtomoth",
+			"label": "聖杯の影響力を改変する",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"grail": 1,
+				"moth": 1
+			},
+			"effects": {
+				"project_influence_subvert_grailtomoth": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "最初の生贄で聖杯が生まれたと言われているが、蛾はそれが真実でないことを知っている。[これにより、蛾の代わりに聖杯の影響力が生まれる。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studyheartinfluence",
+			"label": "止まらないリズムを織り交ぜる",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"heart": 1,
+				"grail": -1,
+				"winter": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_influence_upgrade_heart": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "解剖学者、ダンサー、シャーマンが学ぶ教訓がある。[心臓の影響力が強化される。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertinfluence_hearttograil",
+			"label": "心臓の影響力を改変する",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"heart": 1,
+				"grail": 1
+			},
+			"effects": {
+				"project_influence_subvert_hearttograil": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "止まらないものは、最後には、誘惑に屈するだろう。[これにより、心臓の代わりに聖杯の影響力が生まれる。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studylanterninfluence",
+			"label": "輝度の調整",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"lantern": 1,
+				"forge": -1,
+				"moth": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_influence_upgrade_lantern": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "鏡が交差する場所、影が分かれる場所、太陽の黄金の血が最も濃く流れる場所。[灯りの影響力が強化される。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertinfluence_lanterntoforge",
+			"label": "灯りの影響力を改変する",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"lantern": 1,
+				"forge": 1
+			},
+			"effects": {
+				"project_influence_subvert_lanterntoforge": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "魔術師ジュリアン・コーズリーは日々の鍛造が太陽を分割したと主張している。彼の意見は、正しかったのかもしれない。[これにより、灯りの代わりに鍛造の影響力が生まれる。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studymothinfluence",
+			"label": "危機の可能性を受け入れる",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"moth": 1,
+				"lantern": -1,
+				"grail": -1,
+				"knock": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "fascinationinduction_iffascination",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"project_influence_upgrade_moth": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "今、自分の理解していることに背を向ける。[蛾の影響力が強化される。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studysubvertinfluence_mothtolantern",
+			"label": "蛾の影響力を改変する",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"moth": 1,
+				"lantern": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "fascinationinduction_iffascination",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"effects": {
+				"project_influence_subvert_mothtolantern": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "栄光は質問であり、蛾はいつでも「はい」と答える。[これにより。蛾の代わりに灯りの影響力が生まれる。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studywinterinfluence",
+			"label": "静寂を深める",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"winter": 1,
+				"heart": -1,
+				"knock": -1
+			},
+			"effects": {
+				"project_influence_upgrade_winter": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "沈黙は世界の西で待っているが、永遠には待っていない。[冬の影響力が強化される。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "subvertwinterinfluence",
+			"label": "冬の影響力を改変する",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1,
+				"lore": 1,
+				"winter": 1,
+				"heart": 1
+			},
+			"effects": {
+				"project_influence_subvert_wintertoheart": 1
+			},
+			"linked": [
+				{
+					"id": "studyinfluence_effectproject",
+					"chance": 100
+				}
+			],
+			"startdescription": "雪の中でも、静寂の中でも、色のない白の中でも、命は決して絶えることはない。[これにより、冬の代わりに心臓の影響力が生まれる。]",
+			"warmup": 5,
+			"craftable": true
+		},
+		{
+			"id": "studyinfluence_effectproject",
+			"label": "結果の瞬間",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2
+			},
+			"startdescription": "効果と可能性が一致した――",
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "studyproject_influence_upgrade_edge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_upgrade_forge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_upgrade_grail",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_upgrade_heart",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_upgrade_lantern",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_upgrade_moth",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_upgrade_winter",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_subvert_edgetowinter",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_subvert_forgetoedge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_subvert_grailtomoth",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_subvert_hearttograil",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_subvert_lanterntoforge",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_subvert_mothtolantern",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_subvert_wintertoheart",
+					"chance": 100
+				},
+				{
+					"id": "studyproject_influence_upgrade_subvert_knock",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyproject_influence_upgrade_edge",
+			"label": "強烈な相手",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_upgrade_edge": 1
+			},
+			"effects": {
+				"influenceedge": -1,
+				"influenceedgec": -1,
+				"influenceedgee": -1,
+				"influenceedgeg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "この刃の影響力を強化した。"
+		},
+		{
+			"id": "studyproject_influence_upgrade_forge",
+			"label": "強力な熱",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_upgrade_forge": 1
+			},
+			"effects": {
+				"influenceforge": -1,
+				"influenceforgec": -1,
+				"influenceforgee": -1,
+				"influenceforgeg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "この鍛造の影響力を強化した。"
+		},
+		{
+			"id": "studyproject_influence_upgrade_grail",
+			"label": "さらに強力な欲望",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_upgrade_grail": 1
+			},
+			"effects": {
+				"influencegrail": -1,
+				"influencegrailc": -1,
+				"influencegraile": -1,
+				"influencegrailg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "この聖杯の影響力を強化した。"
+		},
+		{
+			"id": "studyproject_influence_upgrade_heart",
+			"label": "止まらないリズム",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_upgrade_heart": 1
+			},
+			"effects": {
+				"influenceheart": -1,
+				"influenceheartc": -1,
+				"influencehearte": -1,
+				"influenceheartg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "この心臓の影響力を強化した。"
+		},
+		{
+			"id": "studyproject_influence_upgrade_lantern",
+			"label": "光の波長が合う",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_upgrade_lantern": 1
+			},
+			"effects": {
+				"influencelantern": -1,
+				"influencelanternc": -1,
+				"influencelanterne": -1,
+				"influencelanterng": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "この灯りの影響力を強化した。"
+		},
+		{
+			"id": "studyproject_influence_upgrade_moth",
+			"label": "近づいて、近づいて",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_upgrade_moth": 1
+			},
+			"effects": {
+				"influencemoth": -1,
+				"influencemothc": -1,
+				"influencemothe": -1,
+				"influencemothg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "この蛾の影響力を強化した。"
+		},
+		{
+			"id": "studyproject_influence_upgrade_winter",
+			"label": "静かな場所",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_upgrade_winter": 1
+			},
+			"effects": {
+				"influencewinter": -1,
+				"influencewinterc": -1,
+				"influencewintere": -1,
+				"influencewinterg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "この冬の影響力を強化した。"
+		},
+		{
+			"id": "studyproject_influence_subvert_edgetowinter",
+			"label": "万物には終わりが来る",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_subvert_edgetowinter": 1
+			},
+			"effects": {
+				"influenceedge": -1,
+				"influenceedgec": -1,
+				"influenceedgee": -1,
+				"influenceedgeg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "忍耐は強さに勝る。"
+		},
+		{
+			"id": "studyproject_influence_subvert_forgetoedge",
+			"label": "力は万物を征服する",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_subvert_forgetoedge": 1
+			},
+			"effects": {
+				"influenceforge": -1,
+				"influenceforgec": -1,
+				"influenceforgee": -1,
+				"influenceforgeg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "形のあるものを粉々にしてしまった。"
+		},
+		{
+			"id": "studyproject_influence_subvert_grailtomoth",
+			"label": "空腹は愚行である",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_subvert_grailtomoth": 1
+			},
+			"effects": {
+				"influencegrail": -1,
+				"influencegrailc": -1,
+				"influencegraile": -1,
+				"influencegrailg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "赤い聖杯でさえ、頭の中の騒々しさの餌食となる、"
+		},
+		{
+			"id": "studyproject_influence_subvert_hearttograil",
+			"label": "止まらないものは最終的に屈する",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_subvert_hearttograil": 1
+			},
+			"effects": {
+				"influenceheart": -1,
+				"influenceheartc": -1,
+				"influencehearte": -1,
+				"influenceheartg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "動くものはすべて飢えに屈する。"
+		},
+		{
+			"id": "studyproject_influence_subvert_lanterntoforge",
+			"label": "正午の夕焼け",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_subvert_lanterntoforge": 1
+			},
+			"effects": {
+				"influencelantern": -1,
+				"influencelanternc": -1,
+				"influencelanterne": -1,
+				"influencelanterng": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "光が熱に屈する。"
+		},
+		{
+			"id": "studyproject_influence_subvert_mothtolantern",
+			"label": "上の光",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_subvert_mothtolantern": 1
+			},
+			"effects": {
+				"influencemoth": -1,
+				"influencemothc": -1,
+				"influencemothe": -1,
+				"influencemothg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "栄光は質問であり、蛾はいつでも「はい」と答える。"
+		},
+		{
+			"id": "studyproject_influence_subvert_wintertoheart",
+			"label": "下にある命",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_subvert_wintertoheart": 1
+			},
+			"effects": {
+				"influencewinter": -1,
+				"influencewinterc": -1,
+				"influencewintere": -1,
+				"influencewinterg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "冬はやがて春を迎える。"
+		},
+		{
+			"id": "studyproject_influence_upgrade_subvert_knock",
+			"label": "世界の皮",
+			"actionId": "study",
+			"requirements": {
+				"project_influence_upgrade_subvert_knock": 1
+			},
+			"effects": {
+				"influenceedge": -1,
+				"influenceedgec": -1,
+				"influenceedgee": -1,
+				"influenceedgeg": -1,
+				"influenceforge": -1,
+				"influenceforgec": -1,
+				"influenceforgee": -1,
+				"influenceforgeg": -1,
+				"influencegrail": -1,
+				"influencegrailc": -1,
+				"influencegraile": -1,
+				"influencegrailg": -1,
+				"influenceheart": -1,
+				"influenceheartc": -1,
+				"influencehearte": -1,
+				"influenceheartg": -1,
+				"influencelantern": -1,
+				"influencelanternc": -1,
+				"influencelanterne": -1,
+				"influencelanterng": -1,
+				"influencemoth": -1,
+				"influencemothc": -1,
+				"influencemothe": -1,
+				"influencemothg": -1,
+				"influencewinter": -1,
+				"influencewinterc": -1,
+				"influencewintere": -1,
+				"influencewinterg": -1
+			},
+			"aspects": {
+				"upgradeinfluence": 1
+			},
+			"description": "弱点に圧力をかけ、世界の皮を剥ぐ。",
+			"linked": [
+				{
+					"id": "studyproject_influence_upgrade_subvert_knock_remove_spare_knock",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "studyproject_influence_upgrade_subvert_knock_remove_spare_knock",
+			"label": "すべてを開放する",
+			"comments": "This exists to remove a Knock influence, if we were combining Knock influences rather than Knock + another. Dangit Kennedy you wouldn't need hacks like this if you'd implemented OR conditions. Aspects don't *quite* always cut it.",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2
+			},
+			"effects": {
+				"influenceknock": -1,
+				"influenceknockc": -1,
+				"influenceknocke": -1,
+				"influenceknockg": -1
+			},
+			"description": "."
+		}
+	]
+}

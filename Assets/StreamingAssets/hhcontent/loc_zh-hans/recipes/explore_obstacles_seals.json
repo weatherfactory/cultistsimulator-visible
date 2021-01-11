@@ -1,0 +1,418 @@
+{
+    "recipes": [
+        {
+            "id": "explorevaultseal_hiddendoor_encounter",
+            "actionId": "explore",
+            "label": "暗门",
+            "startdescription": "这里肯定有一扇门，但若是没有<b>灯</b>或<b>启</b>，我们就无法打开它。",
+            "requirements": {
+                "seal_hiddendoor": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultseal_hiddendoor_highlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_highknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_midlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_midknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_lowlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_lowknock",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_highlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 10
+            },
+            "label": "我们拜请守夜人，照明驱暗之神",
+            "startdescription": "我们谅必能够发现暗门。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_midlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 5
+            },
+            "label": "我们拜请守夜人，指引前路之神",
+            "startdescription": "我们的五感变得敏锐。我们应该能够找到暗门。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_lowlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 1
+            },
+            "label": "我们拜请守夜人，无怜悯心之神",
+            "startdescription": "我们携带着光，或许能够找到暗门。这可要费一番功夫。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_highknock",
+            "actionId": "explore",
+            "requirements": {
+                "knock": 10
+            },
+            "label": "我们拜请拾滩鸦，明晓失物之神",
+            "startdescription": "我们拥有强大的洞开之力，谅必能够发现暗门。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_midknock",
+            "actionId": "explore",
+            "requirements": {
+                "knock": 5
+            },
+            "label": "我们拜请拾滩鸦，开启大地之神",
+            "startdescription": "我们擅长寻找隐藏道路，大概能发现暗门。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_lowknock",
+            "actionId": "explore",
+            "requirements": {
+                "knock": 1
+            },
+            "label": "我们拜请拾滩鸦，辖无主之物之神",
+            "startdescription": "我们对“开启”一事还有些能耐，或许能够找到暗门。这可要费一番功夫。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_success",
+            "actionId": "explore",
+            "label": "道路：穿过暗门",
+            "startdescription": "石头上有着细微的痕迹，是受到外力重压后留下的。我们终于发现了暗门！伴随着尖利的摩擦声、地面的震动与弥漫的尘土，暗门终于向我们敞开。",
+            "description": ".",
+            "effects": {
+                "seal_hiddendoor": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultseal_hiddendoor_failure",
+            "actionId": "explore",
+            "label": "毫无成果的探索",
+            "startdescription": "它在哪儿？我们应该用上更多的<b>启</b>或<b>灯</b>。",
+            "description": ".",
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_encounter",
+            "actionId": "explore",
+            "label": "上锁的门",
+            "startdescription": "这扇门已经坚守了很长时间了。除非我们带来了<b>铸</b>或<b>启</b>，它同样也会阻挡我们很久。",
+            "requirements": {
+                "seal_wardeddoor": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultseal_wardeddoor_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_highknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_midknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_lowforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_lowknock",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_highforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 10
+            },
+            "label": "我们拜请白日铸炉，终结所有夜晚之神",
+            "startdescription": "我们谅必能够打碎这扇上锁的门。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_midforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 5
+            },
+            "label": "我们拜请白日铸炉，终结不变之神",
+            "startdescription": "我们准备了工具，应该能够打穿这扇上锁的门。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_lowforge",
+            "actionId": "explore",
+            "requirements": {
+                "forge": 1
+            },
+            "label": "我们拜请白日铸炉，以火再造之神",
+            "startdescription": "我们准备好了铸炉之火，或许能够打穿这扇上锁的门。这可要费一番功夫。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_highknock",
+            "actionId": "explore",
+            "requirements": {
+                "knock": 10
+            },
+            "label": "我们拜请双角斧，待于门关之神。",
+            "startdescription": "我们拥有强大的洞开之力，谅必能够能打碎这扇上锁的门。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_midknock",
+            "actionId": "explore",
+            "requirements": {
+                "knock": 5
+            },
+            "label": "我们拜请双角斧，因时允行之神",
+            "startdescription": "我们擅长打通上锁的密道，大概能打穿这扇上锁的门。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_lowknock",
+            "actionId": "explore",
+            "requirements": {
+                "knock": 1
+            },
+            "label": "我们拜请双角斧，两面双刃之神",
+            "startdescription": "我们对“开启”一事还有些能耐，或许能够打穿这扇上锁的门。这可要费一番功夫。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_success",
+            "actionId": "explore",
+            "label": "门扉之死",
+            "startdescription": "所有的门扉都应开启，正如所有的生命都应终结。这扇门今天将面临它的终结。",
+            "description": ".",
+            "effects": {
+                "seal_wardeddoor": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultseal_wardeddoor_failure",
+            "actionId": "explore",
+            "label": "门扉的作用",
+            "startdescription": "门扉有两个作用：开启，或保持关闭。今天，这扇门仍忠实地发挥着它的第二种作用。",
+            "description": ".",
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        }
+    ]
+}

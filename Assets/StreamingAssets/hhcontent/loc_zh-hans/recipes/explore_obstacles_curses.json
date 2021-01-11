@@ -1,0 +1,872 @@
+{
+    "recipes": [
+        {
+            "id": "explorevaultcurse_dread_encounter",
+            "actionId": "explore",
+            "label": "涸魂诅咒",
+            "startdescription": "前方的宝藏被涸魂诅咒保护着。若是没有<b>灯</b>或者<b>心</b>，这诅咒会跟着我们回去，吸干我们的魂。",
+            "requirements": {
+                "curse_dread": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultcurse_dread_highheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_dread_highlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_dread_midheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_dread_midlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_dread_lowheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_dread_lowlantern",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultcurse_dread_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_dread_highheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 10
+            },
+            "label": "我们拜请环杉，焕发新生之神",
+            "startdescription": "我们的<b>心</b>非常强大，谅必足以抵御这一诅咒。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_dread_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultcurse_dread_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_dread_midheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 5
+            },
+            "label": "我们拜请环杉，缠绕裹覆之神",
+            "startdescription": "我们的<b>心</b>相足够强大，能够平息这一诅咒……大概能吧。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_dread_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultcurse_dread_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_dread_lowheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 1
+            },
+            "label": "我们拜请环杉，甘美多汁之神",
+            "startdescription": "或许环杉，古老而丰饶的司辰，能够用她的神力帮我们抵御诅咒。又或许不能。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_dread_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultcurse_dread_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_dread_highlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 10
+            },
+            "label": "我们拜请上校，不容违抗之神",
+            "startdescription": "上校是位凶猛，却通晓“光”的司辰，他曾经从比这严酷得多的境遇下生还。他的神力谅必能够保护我们。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_dread_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultcurse_dread_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_dread_midlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 5
+            },
+            "label": "我们拜请上校，身负伤疤之神",
+            "startdescription": "上校是位身负伤疤，却通晓“光”的司辰，他曾经从比这严酷得多的境遇下生还。他的神力应该能够保护我们。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_dread_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultcurse_dread_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_dread_lowlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 1
+            },
+            "label": "我们拜请上校，目盲之神",
+            "startdescription": "上校是位通晓“光”的司辰，但他还记得光吗？他的神力目前或许能够保护我们。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_dread_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultcurse_dread_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_dread_success",
+            "actionId": "explore",
+            "label": "诅咒褪去",
+            "startdescription": "我们的力量比诅咒之力要强得多。这诅咒别想缠上我们。",
+            "description": ".",
+            "effects": {
+                "curse_dread": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultcurse_dread_failure",
+            "actionId": "explore",
+            "label": "诅咒附身",
+            "startdescription": "擅闯这样的地方是要付出代价的。不久之后，这个诅咒便会勒住我们。",
+            "description": ".",
+            "effects": {
+                "curse_dread": -1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "curse_dread_dormant",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultcurse_visions_encounter",
+            "actionId": "explore",
+            "label": "第五目诅咒",
+            "startdescription": "前方的宝藏被第五目诅咒保护着。若是没有<b>冬</b>或者<b>心</b>，这诅咒会跟着我们回去，并开启灵魂之眼。",
+            "requirements": {
+                "curse_visions": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultcurse_visions_highheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_visions_highwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_visions_midheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_visions_midwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_visions_lowheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_visions_lowwinter",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultcurse_visions_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_visions_highheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 10
+            },
+            "label": "我们拜请环杉，焕发新生之神",
+            "startdescription": "我们的<b>心</b>非常强大，谅必足以抵御这一诅咒。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_visions_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultcurse_visions_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_visions_midheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 5
+            },
+            "label": "我们拜请环杉，缠绕裹覆之神",
+            "startdescription": "我们的<b>心</b>相足够强大，能够平息这一诅咒……大概能吧。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_visions_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultcurse_visions_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_visions_lowheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 1
+            },
+            "label": "我们拜请环杉，甘美多汁之神",
+            "startdescription": "或许环杉，古老而丰饶的司辰，能够用她的神力帮我们抵御诅咒。又或许不能。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_visions_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultcurse_visions_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_visions_highwinter",
+            "actionId": "explore",
+            "requirements": {
+                "winter": 10
+            },
+            "label": "我们拜请悼歌诗人，被剥夺至夺无可夺之神",
+            "startdescription": "悼歌诗人知晓已经失落之物。他的神力谅必能够保护我们。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_visions_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultcurse_visions_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_visions_midwinter",
+            "actionId": "explore",
+            "requirements": {
+                "winter": 5
+            },
+            "label": "我们拜请悼歌诗人，不受欺骗之神",
+            "startdescription": "悼歌诗人能分开真实与存于回忆者。他的神力应该能够保护我们。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_visions_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultcurse_visions_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_visions_lowwinter",
+            "actionId": "explore",
+            "requirements": {
+                "winter": 1
+            },
+            "label": "我们拜请悼歌诗人，一一唤亡者以姓名之神",
+            "startdescription": "悼歌诗人的嘲讽与哀伤或许能平息这些幻象。谁知道呢？",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_visions_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultcurse_visions_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_visions_success",
+            "actionId": "explore",
+            "label": "诅咒褪去",
+            "startdescription": "我们的力量比诅咒之力要强得多。这诅咒别想缠上我们。",
+            "description": ".",
+            "effects": {
+                "curse_visions": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultcurse_visions_failure",
+            "actionId": "explore",
+            "label": "诅咒附身",
+            "startdescription": "擅闯这样的地方是要付出代价的。不久之后，这个诅咒便会勒住我们。",
+            "description": ".",
+            "effects": {
+                "curse_visions": -1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "curse_visions_dormant",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultcurse_affliction_encounter",
+            "actionId": "explore",
+            "label": "迟息诅咒",
+            "startdescription": "前方的宝藏被迟息诅咒保护着。若是没有<b>杯</b>或者<b>心</b>，这诅咒会跟着我们回去，并且在我们的肺里播种孢子。",
+            "requirements": {
+                "curse_affliction": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultcurse_affliction_highheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_affliction_highgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_affliction_midheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_affliction_midgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_affliction_lowheart",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_affliction_lowgrail",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultcurse_affliction_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_affliction_highheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 10
+            },
+            "label": "我们拜请环杉，焕发新生之神",
+            "startdescription": "我们的<b>心</b>非常强大，谅必能够抵御这一诅咒。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_affliction_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultcurse_affliction_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_affliction_midheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 5
+            },
+            "label": "我们拜请环杉，缠绕裹覆之神",
+            "startdescription": "我们的<b>心</b>相足够强大，能够平息这一诅咒……大概能吧。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_affliction_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultcurse_affliction_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_affliction_lowheart",
+            "actionId": "explore",
+            "requirements": {
+                "heart": 1
+            },
+            "label": "我们拜请环杉，甘美多汁之神",
+            "startdescription": "或许环杉，古老而丰饶的司辰，能够用她的神力帮我们抵御诅咒。又或许不能。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_affliction_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultcurse_affliction_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_affliction_highgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 10
+            },
+            "label": "我们拜请赤杯，给与生命之神",
+            "startdescription": "赤杯的活力谅必足以保护我们免于诅咒的伤害。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_affliction_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultcurse_affliction_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_affliction_midgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 5
+            },
+            "label": "我们拜请赤杯，夺取生命之神",
+            "startdescription": "赤杯的饥饿应该能够保护我们免于诅咒的伤害。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_affliction_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultcurse_affliction_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_affliction_lowgrail",
+            "actionId": "explore",
+            "requirements": {
+                "grail": 1
+            },
+            "label": "我们拜请赤杯，永无餍足之神",
+            "startdescription": "赤杯或许能保护我们免于诅咒的伤害。它是一位喜新厌旧的司辰。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_affliction_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultcurse_affliction_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_affliction_success",
+            "actionId": "explore",
+            "label": "诅咒褪去",
+            "startdescription": "我们的力量比诅咒之力要强得多。这诅咒别想缠上我们。",
+            "description": ".",
+            "effects": {
+                "curse_affliction": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultcurse_affliction_failure",
+            "actionId": "explore",
+            "label": "诅咒附身",
+            "startdescription": "擅闯这样的地方是要付出代价的。不久之后，这个诅咒便会勒住我们。",
+            "description": ".",
+            "effects": {
+                "curse_affliction": -1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "curse_affliction_dormant",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultcurse_nowhere_encounter",
+            "actionId": "explore",
+            "label": "虚源诅咒",
+            "startdescription": "有一个世界的表皮因高烧而泛黄的地方。在那里，<b>灯</b>或者<b>蛾</b>或许能够保护我们。除它二者再无可能。",
+            "requirements": {
+                "curse_nowhere": 1
+            },
+            "slots": [
+                {
+                    "id": "Assistance",
+                    "label": "助力",
+                    "description": "资金对探险来说必不可少。追随者则会助我突破阻碍。",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "explorevaultcurse_nowhere_highmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_nowhere_highlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_nowhere_midmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_nowhere_midlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_nowhere_lowmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultcurse_nowhere_lowlantern",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultcurse_nowhere_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_nowhere_highmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 10
+            },
+            "label": "我们拜请笑鸫，永不疲惫之神",
+            "startdescription": "我们的<b>蛾</b>非常强大，谅必足以抵御这一诅咒。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_nowhere_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultcurse_nowhere_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_nowhere_midmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 5
+            },
+            "label": "我们拜请笑鸫，永不停步之神",
+            "startdescription": "在我们的请求下，名为笑鸫的司辰或许会替我们带走这一诅咒。我们大概能安然无恙。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_nowhere_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultcurse_nowhere_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_nowhere_lowmoth",
+            "actionId": "explore",
+            "requirements": {
+                "moth": 1
+            },
+            "label": "我们拜请笑鸫，向愿者与不愿者叙说之神",
+            "startdescription": "笑鸫是<b>蛾</b>之神灵，且不可靠。她或许能够保护我们。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_nowhere_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultcurse_nowhere_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_nowhere_highlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 10
+            },
+            "label": "我们拜请残阳，仍在燃烧之神",
+            "startdescription": "残阳借给我们了来自<b>灯</b>的光，谅必能够终结这里的诅咒。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_nowhere_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultcurse_nowhere_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_nowhere_midlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 5
+            },
+            "label": "我们拜请残阳，不类前身之神",
+            "startdescription": "残阳，那位厌倦且冷冽的神灵，可以将<b>灯</b>借给我们。这能够驱散诅咒……大概能吧。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_nowhere_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultcurse_nowhere_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_nowhere_lowlantern",
+            "actionId": "explore",
+            "requirements": {
+                "lantern": 1
+            },
+            "label": "我们拜请残阳，遥不可及之神",
+            "startdescription": "我们需要<b>灯</b>来终结诅咒，但残阳只能借予我们一点点。",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "explorevaultcurse_nowhere_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultcurse_nowhere_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "explorevaultcurse_nowhere_success",
+            "actionId": "explore",
+            "label": "诅咒褪去",
+            "startdescription": "我们的力量比诅咒之力要强得多。这诅咒别想缠上我们。",
+            "description": ".",
+            "effects": {
+                "curse_nowhere": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "explorevaultcurse_nowhere_failure",
+            "actionId": "explore",
+            "label": "诅咒附身",
+            "startdescription": "擅闯这样的地方当然是要付出代价的。不久的将来，我们会被这诅咒缠上。",
+            "description": ".",
+            "effects": {
+                "curse_nowhere": -1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "curse_nowhere_dormant",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        }
+    ]
+}

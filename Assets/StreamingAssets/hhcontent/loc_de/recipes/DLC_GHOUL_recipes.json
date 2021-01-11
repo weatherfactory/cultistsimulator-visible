@@ -1,0 +1,1133 @@
+{
+	"recipes": [
+		{
+			"id": "work.seance.first",
+			"actionId": "work",
+			"label": "Eine gut besuchte Vorstellung eines Bühnenmediums",
+			"startdescription": "Ich stehe allein im Licht auf der Bühne. Ich nehme die erste Frage aus dem Publikum – die erste von vielen, heute Abend, die sich nicht damit abfinden will, dass die Toten wirklich tot sind. Ich habe mich gut vorbereitet: Ich habe eine Reihe von Antworten.",
+			"requirements": {
+				"ghouljob.first": 1
+			},
+			"slots": [
+				{
+					"id": "desire",
+					"label": "Etwas mehr?",
+					"description": "Ich bin ein Scharlatan ... nicht wahr?",
+					"greedy": true,
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "work.seance.demotion"
+				},
+				{
+					"id": "work.seance.first.shameful"
+				},
+				{
+					"id": "work.seance.first.profitable"
+				},
+				{
+					"id": "work.seance.first.joyful"
+				},
+				{
+					"id": "work.seance.first.fleeting"
+				},
+				{
+					"id": "work.seance.first.nomemory"
+				}
+			],
+			"warmup": 15,
+			"craftable": true
+		},
+		{
+			"id": "work.seance.first.shameful",
+			"actionId": "work",
+			"label": "Die Toten imitieren: Etwas zum Schämen",
+			"startdescription": "Ich erzähle nicht die ganze Geschichte von den Sünden der Toten. Das wäre für keinen von uns gut. Doch ich mache Andeutungen, die verstanden werden.",
+			"description": "Unser offizielles Geschäft ist erledigt, und nach meinem Auftritt werden die Trauernden unser privates Geschäft mit einem kleinen Geschenk beschließen – um sich meines Schweigens zu vergewissern.\n\n(Heute Abend liegt etwas in der Luft. Der Duft von Schnee? Scheint mir unwahrscheinlich zu sein.)",
+			"requirements": {
+				"memory.shameful": 1
+			},
+			"effects": {
+				"favour": 1,
+				"funds": 6,
+				"passion": 1,
+				"memory.shameful": -1,
+				"mystique": 1
+			},
+			"alt": [
+				{
+					"id": "open.dream.ghoul",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.seance.first.profitable",
+			"actionId": "work",
+			"label": "Die Toten imitieren: Etwas Profitables",
+			"startdescription": "Ich habe eine vergessene Investition gewittert, die uns beiden nützen wird. Doch ich muss aufpassen, dass ich nicht zu viele Informationen preisgebe. Die Lebenden sind gieriger als die Toten.",
+			"description": "Sie kommen nach meinem Auftritt zu mir. Sie sind skeptisch, aber dankbar. Ich habe mir meinen Finderlohn verdient.\n(Heute Abend liegt etwas in der Luft. Der Duft von Schnee? Scheint mir unwahrscheinlich zu sein.)",
+			"requirements": {
+				"memory.profitable": 1
+			},
+			"effects": {
+				"funds": 6,
+				"reason": 1,
+				"memory.profitable": -1,
+				"mystique": 1
+			},
+			"alt": [
+				{
+					"id": "open.dream.ghoul",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.seance.first.joyful",
+			"actionId": "work",
+			"label": "Die Toten imitieren: Etwas zum Freuen",
+			"startdescription": "Ich habe Photographien eines goldenen Nachmittags gesehen, lange genug her, um verklärt zu werden, nicht lange genug her, um zu verblassen.",
+			"description": "Sie schluchzen, wenn sie an ihre Plätze zurückkehren. Kommen sie an einem anderen Abend wieder, beantworte ich ihre Fragen nicht. Dies soll die Geschichte sein, die sie sich von mir erzählen.\n\n(Heute Abend liegt etwas in der Luft. Der Duft von Schnee? Scheint mir unwahrscheinlich zu sein.)",
+			"requirements": {
+				"memory.joyful": 1
+			},
+			"effects": {
+				"funds": 4,
+				"health": 1,
+				"memory.joyful": -1,
+				"mystique": 1
+			},
+			"alt": [
+				{
+					"id": "open.dream.ghoul",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.seance.first.fleeting",
+			"actionId": "work",
+			"label": "Die Toten imitieren: Hörensagen und Gerüchte",
+			"startdescription": "Ich habe genug Tratsch angesammelt, um etwas relativ Überzeugendes zusammenzuschustern.",
+			"description": "Ich beantworte deren Fragen mit noch mehr Fragen. Ruf und Rückruf, wie bei nachtaktiven Vögeln. Sind sie zufrieden? Endlich haben sie sich gesetzt.\n\n(Heute Abend liegt etwas in der Luft. Der Duft von Schnee? Scheint mir unwahrscheinlich zu sein.)",
+			"requirements": {
+				"fleeting": 1
+			},
+			"effects": {
+				"funds": 2,
+				"fleeting": -1
+			},
+			"alt": [
+				{
+					"id": "open.dream.ghoul",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.seance.first.nomemory",
+			"actionId": "work",
+			"label": "Die Toten so gut wie möglich imitieren",
+			"startdescription": "Ich habe für den hier keine Informationen vorbereitet. Ich kann nur improvisieren.",
+			"description": "Meine Antworten ließen zu wünschen übrig. Selbst in fast völliger Finsternis liegt die Enttäuschung des Publikums auf der Hand.\n\n(Heute Abend liegt etwas in der Luft. Der Duft von Schnee? Scheint mir unwahrscheinlich zu sein.)",
+			"effects": {
+				"funds": 1
+			},
+			"alt": [
+				{
+					"id": "open.dream.ghoul",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "work.seance.demotion",
+			"actionId": "work",
+			"label": "Die Toten",
+			"startdescription": "Wenn ich den Mund zum Reden aufmache, schmecke ich Schnee und Kupfer –",
+			"requirements": {
+				"ghouljob.first": 1,
+				"temptation.remembrance": 1
+			},
+			"effects": {
+				"funds": 2,
+				"memory": -1,
+				"notoriety": 1
+			},
+			"aspects": {
+				"demotion": 1
+			},
+			"alt": [
+				{
+					"id": "open.explore.ghoul",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "work.seance.demotion.continue"
+				}
+			]
+		},
+		{
+			"id": "work.seance.demotion.continue",
+			"actionId": "work",
+			"label": "Die Vorstellung läuft anders, als ich es geplant hatte",
+			"startdescription": "Ich höre meine Stimme aus weiter Entfernung. Ich rede von Elfenbein und altem Schnee. Ich mache die Laute der Vögel nach. Das Publikum hat angefangen, unsicher zu lachen, doch einige weinen auch. Ich sage mir halb bekannte Namen: Montmerenzi. Naenia. #PREVIOUSCHARACTERNAME#. Es geht weiter – und weiter – ",
+			"description": "Mein Kontrakt ist gekündigt noch bevor ich das Gebäude verlassen habe. Der Manager des Theaters lässt sich nicht einmal dazu herab, mich persönlich zu beleidigen. Ich stehe auf der kalten Straße und denke über die kläglichen Reste meines guten Rufes nach, während bleiche Tauben mich von den Traufen des Theaters mustern. Ihr Gurren klingt fast nach Worten: 'Montmerenzi. Naenia. #PREVIOUSCHARACTERNAME# ...' ",
+			"warmup": 60
+		},
+		{
+			"id": "open.dream.ghoul",
+			"actionId": "dream",
+			"label": "Die Nacht davor",
+			"startdescription": "Dort, auf der Bühne, fiel mir der bleiche Traum ein ...",
+			"description": "Dort, auf der Bühne, fiel mir der bleiche Traum ein, der wiedergekommen war. Der kalte Wind, der wehte, als die Sonne rot war und tief stand.  Die Stimme, derer sich einst die Wellen bedienten. Die Formen, die einst neben uns im Schnee galoppierten ... das Verlangen danach sitzt mir jetzt wie ein Knoten aus Feuerstein unter dem Herzen.",
+			"effects": {
+				"temptation.remembrance": 1,
+				"health": 1
+			},
+			"warmup": 15
+		},
+		{
+			"id": "open.explore.ghoul",
+			"actionId": "explore",
+			"label": "'Montmerenzi'.",
+			"startdescription": "Nicht 'Montmorency', sondern 'Montmerenzi.' Ich <i>hatte</i> den Namen bereits gehört – damals, als ich mich noch für einen Maler hielt.",
+			"description": "Den Namen hatte ich hier gesehen. Eine Galerie mit einer grauen Fassade, verschlossen wie das Gesicht eines Fensters.",
+			"effects": {
+				"location.gallery": 1,
+				"reason": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "explore.location.gallery.ghoul",
+			"actionId": "explore",
+			"label": "Die Galerie erkunden",
+			"startdescription": "Ich bezahle den nominellen Eintritt und steige im düsteren Treppenhaus nach oben. Das muss etwas zu bedeuten haben. Vielleicht, dass ich den Verstand verloren habe.",
+			"description": "Umstrittene Heilige, anatomische Zeichnungen, Beinhäuser in Pastell. Skizzen von auf Felsen geschmierten Augen. Alter Ölbilder einer Straße mit Marmortempeln bei unterschiedlichem Wetter mit dem Titel 'Die Jahreszeiten von Abydos'. Noch ein Gemälde, zu dem ich mich hingezogen fühle, noch bevor ich sehe, welchen Namen sie trägt.",
+			"requirements": {
+				"location.gallery": 1
+			},
+			"effects": {
+				"location.gallery": -1,
+				"fragmentsecrethistories": 1
+			},
+			"alt": [
+				{
+					"id": "open.talk.ghoul",
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "open.talk.ghoul",
+			"actionId": "talk",
+			"label": "'Fräulein Naenia'",
+			"startdescription": "Das Gemälde zeigt Fräulein Naenia mit dunkler Haut, doch hier kurz geschnittenes Haar ist elfenbeinfarben und ihre Augen haben die Farbe des Schnees. Jeden Tag kehre ich wieder zurück und warte darauf, dass sich mir endlich offenbart, warum ich mich hierher gezogen gefühlt habe. Ich höre das Gemälde niemals sprechen – es ist nur ein Gemälde! – doch hinterher scheine ich mich an Dinge zu erinnern, die sie gesagt hat.",
+			"description": "Ich erinnere mich daran, dass Fräulein Naenia und ich über die niedrig stehende rote Sonne geredet haben, die versteht, von jener blassen Freude des Fliegens. Ich glaube mittlerweile, dass ich ihr die Schätze meiner Erinnerung darbringe, und sie wird mir an deren Stelle einen Schatz hinterlassen.",
+			"requirements": {
+				
+			},
+			"effects": {
+				"naenia": 1,
+				"passion": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "open.study.ghoul",
+			"actionId": "study",
+			"label": "Das oberste Regal des Arbeitszimmers",
+			"startdescription": "Fräulein Naenia hat mich an ein Buch erinnert, das ich seit Jahren nicht mehr aufgeschlagen habe. Ich habe es noch immer.",
+			"description": "Hagan und Gristwood: 'Bestattungsriten der Zerfleischenden Berge'. Ich habe dieses Buch vor langer Zeit erstanden, als ich nach Inspirationen für meine Darbietung suchte. Ich hatte nichts finden können, das ich hätte gebrauchen können. Doch nun fällt mir die Formel wieder ein, die sie festgehalten hatten. Die Formel hört sich abschreckend an ... doch die Erwähnung von Elfenbein spricht mich an.",
+			"effects": {
+				"prealzabo": 1,
+				"fragmentgrail": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "ghoul.firsttaste.prologue",
+			"actionId": "study",
+			"label": "Das erste Kosten",
+			"requirements": {
+				"prealzabo": 1,
+				"temptation.remembrance": 1,
+				"corpse": 1,
+				"funds": 1
+			},
+			"startdescription": "Ich werde alleine speisen – oder nicht direkt alleine.",
+			"slots": [
+				{
+					"id": "forceofwill",
+					"label": "Macht des Willens",
+					"description": "Es ist schwer.",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "ghoul.firsttaste"
+				}
+			],
+			"description": "Ich konnte es nicht.",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "ghoul.firsttaste",
+			"actionId": "study",
+			"label": "Das erste Kosten",
+			"startdescription": "Aller Anfang ist schwer. Ich muss mich so konzentrieren, dass ich aus meinem Willen ein spitzes Etwas forme, wie eine steinerne Speerspitze. Doch mit jedem Mundvoll fällt es leichter.",
+			"description": "'Jeder von uns', schrieb ich viel später in mein Tagebuch, 'trägt die Erinnerung an einen Moment in sich, an dem sich die Dinge für immer verändert haben, obwohl wir es damals noch nicht wussten. Vielleicht hat auch die Welt solche Erinnerungen.' Ich weiß noch, wie ich den Stift hingelegt und aus dem Fenster hinaus in die Finsternis gesehen habe, doch ich habe die andere Seite jenes Moments vergessen. Vielleicht habe ich mir den Mund abgewischt. Vielleicht habe ich mir die Lippen geleckt.",
+			"requirements": {
+				"prealzabo": 1,
+				"temptation.remembrance": 1,
+				"corpse": 1,
+				"funds": 1,
+				"passion": 1
+			},
+			"effects": {
+				"corpse": -1,
+				"memory.unexpected": 1,
+				"prealzabo": -1,
+				"funds": -1,
+				"alzabo": 1
+			},
+			"aspects": {
+				"ascend": 1
+			},
+			"mutations": [
+				{
+					"filter": "desire",
+					"mutate": "ghoul.hunger",
+					"level": 1
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.hint",
+			"actionId": "talk",
+			"label": "Mit Fräulein Naenia sprechen?",
+			"startdescription": "Fräulein Naenia wartet mit einer Geduld, wie sie Bildern zu eigen ist.",
+			"requirements": {
+				"naenia": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "talk.ghoul.consolation",
+			"actionId": "talk",
+			"label": "Trost bei Fräulein Naenia suchen",
+			"startdescription": "Fräulein Naenias Augen sind gütig.",
+			"description": "Sie versteht meine Ruhelosigkeit. Es ging ihr selbst ab und zu so. Sie erinnert mich daran, dass nichts von Dauer ist.",
+			"requirements": {
+				"naenia": 1,
+				"restlessness": 1
+			},
+			"effects": {
+				"restlessness": -1,
+				"fleeting": 1
+			},
+			"alt": [
+				{
+					"id": "open.study.ghoul",
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.recollection",
+			"actionId": "talk",
+			"label": "Meine Gedanken mit Fräulein Naenia teilen",
+			"startdescription": "Fräulein Naenias Augen sind nachdenklich.",
+			"description": "Miss Naenia ist bewusst, dass alles vergeht, auch die Erinnerung ... doch die Erinnerung lässt sich weitergeben, wie eine Fackel oder ein Schatz.",
+			"requirements": {
+				"naenia": 1,
+				"fleeting": 1
+			},
+			"effects": {
+				"fleeting": -1,
+				"restlessness": 1
+			},
+			"alt": [
+				{
+					"id": "open.study.ghoul",
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.fascination",
+			"actionId": "talk",
+			"label": "Mit Fräulein Naenia über meine Visionen sprechen",
+			"startdescription": "Ist es auch sicher, das bei ihr anzusprechen?",
+			"description": "Das Licht hier drin ist heller als ich gedacht hätte. Farben verschwimmen unter Fräulein Naenias Haut, wie Strom, wie Öl. Es ist sehr schwer nicht hinzusehen.",
+			"requirements": {
+				"naenia": 1,
+				"fascination": 1
+			},
+			"effects": {
+				"fascination": 1
+			},
+			"alt": [
+				{
+					"id": "open.study.ghoul",
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.dread",
+			"actionId": "talk",
+			"label": "Mit Fräulein Naenia über mein Grauen sprechen",
+			"startdescription": "Sollte ich wirklich meine Ängste mit ihr teilen? Ich denke nicht, dass sie ein gütiges Gemälde ist, nicht wirklich.",
+			"description": "Je länger ich mir Fräulein Naenias Lächeln ansehe, desto bewusster werde ich mir ihrer Zähne.",
+			"requirements": {
+				"naenia": 1,
+				"dread": 1
+			},
+			"effects": {
+				"dread": 1
+			},
+			"alt": [
+				{
+					"id": "open.study.ghoul",
+					"additional": true
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.grandmemory",
+			"actionId": "talk",
+			"label": "Sturz durch die Zeit",
+			"startdescription": "Wenn ich vor Miss Naenia trete, scheint mir ein blasser Schein um ihren Mund und ihre Augen zu spielen.",
+			"description": "Später fiel mir ein, wie Fräulein Naenia und ich Arm in Arm durch die verdunkelte Galerie spaziert waren. Das Licht der Kerze, die sie trug, spielte mit den Gesichtern auf den anderen Gemälden. 'Man wird uns nicht vergessen', hauchte sie, 'solange unser Bild überdauert.'",
+			"requirements": {
+				"naenia": 1,
+				"memory": 5
+			},
+			"effects": {
+				"restlessness": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memorypassionate",
+			"actionId": "talk",
+			"label": "Mit Fräulein Naenia über meinen Augenstern sprechen",
+			"startdescription": "Ich bin hergekommen, um mit ihr über eine starke Erinnerung zu sprechen.",
+			"requirements": {
+				"naenia": 1,
+				"memorypassionate": 1
+			},
+			"alt": [
+				{
+					"id": "dreampassionatememory"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memorypleasant",
+			"actionId": "talk",
+			"label": "Mit Fräulein Naenia über meinen Augenstern sprechen",
+			"startdescription": "Ich bin hergekommen, um mit ihr über eine süße Erinnerung zu sprechen.",
+			"requirements": {
+				"naenia": 1,
+				"memorypleasant": 1
+			},
+			"alt": [
+				{
+					"id": "dreampleasantmemory"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memorybittersweet",
+			"actionId": "talk",
+			"label": "Mit Fräulein Naenia über meinen Augenstern sprechen",
+			"startdescription": "Ich bin hergekommen, um mit ihr über eine schwierige Erinnerung zu sprechen.",
+			"requirements": {
+				"naenia": 1,
+				"memorybittersweet": 1
+			},
+			"alt": [
+				{
+					"id": "dreambittersweetmemory"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memory.menacing",
+			"actionId": "talk",
+			"label": "Eine bedrohliche Erinnerung mit Fräulein Naenia teilen",
+			"startdescription": "Ihre Augen sind wachsam.",
+			"requirements": {
+				"naenia": 1,
+				"memory.menacing": 1
+			},
+			"warmup": 30,
+			"internaldeck": {
+				"label": "Antwort",
+				"description": "Antwort",
+				"spec": [
+					"vitalityplus",
+					"influenceedgec",
+					"influencewinterc",
+					"influenceedgec",
+					"influencewinterc"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			},
+			"effects": {
+				"memory.menacing": -1
+			},
+			"description": "@#vitalityplus|Fräulein Naenia sagt nichts, doch hinterher fällt mir ein, dass ihr Lächeln mich in der Kälte gewärmt hat.#vitalityplus|Fräulein Naenia sagt nichts, doch viel später fällt mir ein, wie ihre Augen gefunkelt haben.\n#influencewinterc|Fräulein Naenia sagt nichts. Die Stille sammelt sich wie Schatten zwischen den Lampen der Galerie.@",
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memory.shameful",
+			"actionId": "talk",
+			"label": "Eine Erinnerung an geheimen Sünden mit Fräulein Naenia teilen",
+			"startdescription": "Fräulein Naenias Augen blicken heute fast schon schelmisch.",
+			"requirements": {
+				"naenia": 1,
+				"memory.shameful": 1
+			},
+			"warmup": 30,
+			"internaldeck": {
+				"label": "Antwort",
+				"description": "Antwort",
+				"spec": [
+					"favour",
+					"contentment",
+					"influencegrailc",
+					"influencegrailc",
+					"influencegrailc"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			},
+			"effects": {
+				"memory.shameful": -1
+			},
+			"description": "@#favour|Fräulein Naenia sagt nichts, doch später wird mir klar, dass wir beide den gleichen Einfall gehabt haben müssen: Wir könnten dies als Druckmittel gegen jemanden verwenden, der etwas zu sagen hat.\n#contentment|Fräulein Naenia sagt nichts, doch die Intimität des Augenblicks ist sehr angenehm, und die Heiterkeit verweilt.\n#influencegrailc|Fräulein Naenia sagt nichts, doch ihr Mund kräuselt sich langsam, langsam. Mir wird klar, dass ich noch nie gesehen habe, wie sich ihre Lippen öffnen.@",
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memory.unexpected",
+			"actionId": "talk",
+			"label": "Eine outrierte Erinnerung mit Fräulein Naenia teilen",
+			"startdescription": "Fräulein Naenias Miene ist heute schwer zu lesen. Mir sind ihre Augen, ihr Mund, die Linien ihres Gesichts als separate Objekte bewusst geworden, die nur vom Zufall miteinander vereint wurden, als hätte jemand seine Taschen auf einem Tisch ausgeleert.",
+			"requirements": {
+				"naenia": 1,
+				"memory.unexpected": 1
+			},
+			"warmup": 30,
+			"deckeffect": {
+				"vaultrewardsb": 1
+			},
+			"effects": {
+				"memory.unexpected": -1
+			},
+			"description": "@#|Fräulein Naenia sagt nichts, doch in der Galerie nehme ich meinen Stift aus der Tasche und schreibe, wie im Wahn, als hätte mir jemand Anweisungen ins Ohr geflüstert. Folge ich den Anweisungen, finde ich etwas Kostbares.@",
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memory.joyful",
+			"actionId": "talk",
+			"label": "Eine freudige Erinnerung mit Fräulein Naenia teilen",
+			"startdescription": "Fräulein Naenias Augen sind warm.",
+			"requirements": {
+				"naenia": 1,
+				"memory.joyful": 1
+			},
+			"warmup": 30,
+			"internaldeck": {
+				"label": "Antwort",
+				"description": "Antwort",
+				"spec": [
+					"influencehearte",
+					"influenceheartc",
+					"influenceheartc",
+					"contentment",
+					"contentment"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			},
+			"effects": {
+				"memory.joyful": -1
+			},
+			"description": "@#influencehearte|Fräulein Naenia sagt nichts, doch mein Herz hämmert wie ein Hammer auf den Amboss, selbst als ich die Galerie wieder verlasse.\n#influenceheartc|Fräulein Naenia sagt nichts, doch den ganzen Weg nach Hause habe ich eine Melodie im Kopf, die mich an sie denken lässt.\n#contentment|Fräulein Naenia sagt nichts, doch ich erwidere ihr Lächeln.@",
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.memory.profitable",
+			"actionId": "talk",
+			"label": "Eine profitable Erinnerung mit Fräulein Naenia teilen",
+			"startdescription": "Fräulein Naenias Augen sind gewitzt.",
+			"requirements": {
+				"naenia": 1,
+				"memory.profitable": 1
+			},
+			"warmup": 30,
+			"internaldeck": {
+				"label": "Antwort",
+				"description": "Antwort",
+				"spec": [
+					"jumble",
+					"funds",
+					"compensation",
+					"funds",
+					"funds"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			},
+			"effects": {
+				"memory.profitable": -1
+			},
+			"description": "@#jumble|Fräulein Naenia sagt nichts, doch hinterher muss ich an sie denke, als ich in einem Trödelladen bin, und ich kaufe aus einem Impuls heraus etwas Albernes.\n#funds|Fräulein Naenia sagt nichts, doch am nächsten Tage habe ich ein unerwartetes Paket in der Post.\n#compensation|Fräulein Naenia sagt nichts, doch hinterher finde ich auf der Straße ein Geldstück.@",
+			"craftable": true
+		},
+		{
+			"id": "talk.ghoul.painting.palest",
+			"actionId": "talk",
+			"label": "Fräulein Naenia das blasseste Gemälde zeigen",
+			"startdescription": "Vielleicht kommt es mir ein wenig närrisch vor, einem Gemälde ein anderes Gemälde zu zeigen. Doch als ich in die Straße der Galerie einbiege, schneit es, und zwar nur in jener Straße. Passanten drängen sich zusammen, eilen davon oder rufen vor Erstaunen aus. Ich drücke das Gemälde fester an mich, obwohl es ja sicher in Packpapier eingeschlagen ist, und steige die Stufen zu Fräulein Naenias Kammer hinauf.",
+			"description": "Fräulein Naenia ist fort. Ein schwarzes Rechteck ist dort, wo sie einst hing. Ich starre es perplex an. Doch sie ist nicht da. Mehr kann ich nicht machen.\n\nFür den Moment nicht, doch als ich das Blasseste Gemälde in der Stille meines Heims wieder auswickle, sehe ich, dass es sich verändert hat. Eine schemenhafte Gestalt steht in der Türöffnung zum Nirgendwo und schaut sich über die Schulter – sie wartet darauf, dass ich ihr folge. Die Gestalt hat etwas von Fräulein Naenia.",
+			"requirements": {
+				"naenia": 1,
+				"painting.palest": 1
+			},
+			"warmup": 30,
+			"effects": {
+				"naenia": -1
+			},
+			"mutations": [
+				{
+					"mutate": "way",
+					"filter": "painting.palest",
+					"level": 1
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "dream.ghoul.painting.palest",
+			"actionId": "dream",
+			"label": "Durch die Bemalte Tür treten",
+			"startdescription": "Im Hause der Sonne gibt es viele Geheimtüren. Natürlich sind sie allesamt verschlossen, doch in dieser Nacht wird mit Fräulein Naenia eine davon öffnen. Jenseits jener Tür erwartet mich der Elegiker mit Winter in seiner Hand.",
+			"requirements": {
+				"painting.palest": 1,
+				"way": 1
+			},
+			"linked": [
+				{
+					"id": "dream.ghoul.sacrificeabilities"
+				}
+			],
+			"craftable": true,
+			"warmup": 10
+		},
+		{
+			"id": "dream.ghoul.sacrificeabilities",
+			"actionId": "dream",
+			"label": "Der Tod ist unten",
+			"startdescription": "Jenseits der Tür, eine Wendeltreppe, erleuchtet von schwarzen Nephrit-Lampen, und weiter unten, der Ort namens Nirgendwo, wohin die Toten herabsinken, wo nichts wirklich vergessen ist. Ich gehe hinab.",
+			"slots": [
+				{
+					"id": "sacrifice",
+					"label": "Der Hunger des Gemäldes",
+					"description": "Die Bemalte Tür wird mir alles nehmen, so ich sie denn lasse. <i>Nicht</i> zu Hause versuchen.",
+					"required": {
+						"health": 1,
+						"passion": 1,
+						"reason": 1,
+						"fatigue": 1,
+						"disillusionment": 1,
+						"concentration": 1,
+						"passionexhausted": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "dream.ghoul.noabilitysacrificed"
+				}
+			],
+			"linked": [
+				{
+					"id": "ending.minorpalestvictory"
+				},
+				{
+					"id": "dream.ghoul.sacrificeabilities"
+				}
+			],
+			"warmup": 30,
+			"effects": {
+				"health": -1,
+				"passion": -1,
+				"reason": -1,
+				"fatigue": -1,
+				"disillusionment": -1,
+				"concentration": -1,
+				"passionexhausted": -1
+			}
+		},
+		{
+			"id": "dream.ghoul.noabilitysacrificed",
+			"actionId": "dream",
+			"label": "Der nichts mehr genommen werden kann",
+			"startdescription": "Der Elegiker hat keine Unsterblichkeit anzubieten, wohl aber eine Existenz jenseits des Todes. Das blasseste Gemälde wird mir das Leben entziehen, das noch in mir steckt, aber nur, wenn ich es gestatte.",
+			"requirements": {
+				"health": -1,
+				"passion": -1,
+				"reason": -1,
+				"fatigue": -1,
+				"disillusionment": -1,
+				"concentration": -1,
+				"passionexhausted": -1
+			},
+			"description": "Ich bin wach. An der Wand über mir wartet das Gemälde hungrig."
+		},
+		{
+			"id": "ending.minorpalestvictory",
+			"actionId": "dream",
+			"label": "NIRGENDWO",
+			"startdescription": "Ich habe die verlorenen Farben gesehen und der Preis ist, dass ich tot und im Nirgendwo bin. Doch wenn sich der Elegiker meiner erinnert, ruft er mich vielleicht zurück in den Mansus, um auf der Welt zu wandeln, bis das mir bestimmte Ende kommt ... ",
+			"extantreqs": {
+				"health": -1,
+				"passion": -1,
+				"reason": -1,
+				"fatigue": -1,
+				"disillusionment": -1,
+				"concentration": -1,
+				"passionexhausted": -1
+			},
+			"ending": "minorpalestvictory",
+			"signalEndingFlavour": "Pale",
+			"warmup": 30
+		},
+		{
+			"id": "study.alzabo.remnant",
+			"actionId": "study",
+			"label": "An einem Überbleibsel laben",
+			"startdescription": "@#corpse| Wieder regt sich mein Appetit, wieder gescheckt mit dem Zittern des Ekels.\n#spirit_wintera_moth| Ich werde ruhig liegen, wenn ich es sage.\n#spirit_wintera_edge| Ich werde ruhig liegen, wenn ich es sage. Vielleicht bin ich sogar saftig.\n#corpse.furious| Ich werde es zu Pulver zerstoßen und herunterbringen.\n#corpse.luxurious| Zäh.\n#corpse.liminal| Als würde man Gewürze pur verzehren.\n#corpse.horizon| Wenn ich das nur weich kochen könnte –\n#corpse.splendid| Das wird kein leichtes Mahl.\n#ingredientheartf| Hell auf meiner Zunge wie eine kupferne Zitrone.\n#ingredientmothf| Ich hatte mich gefragt, wie das wohl schmeckt, doch jetzt denke ich vor allem, dass es <i>schleimig</i> ist.\n#spirit_forgee_edge.defunct| Ich werde mich ans Werk machen, verbissen, mit Wasser, um mir den Mund auszuspülen und etwaige unerwartete Feuer zu löschen.\n#decrepitude| So weit ist es also gekommen. Ich bin nicht tot. Ich hoffe, dass ich tot genug bin, damit das hier wie erhofft funktioniert und ich die Erinnerungen wecken kann, die in meinem eigenen Fleische schlumern.\n#|Hoffen wir mal, dass das auch essbar ist.@",
+			"description": "@#memory.furious|Ich habe eine wütende Erinnerung, die ich von unzähligen Gelagen geerbt habe – eine sandfarbene Erinnerung, bereit zum Malen.\n#memory.liminal| Ich erinnere mich an Schwellen, bereit zum Malen.\n#memory.splendid| Ich erinnere mich daran, wie die Dinge vor der Interkalierung standen, bereit zum Malen.\n#memory.golden| Ich erinnere mich daran, wie die Dinge vor der Entzündung der Schmiede standen, bereit zum Malen.\n#memory.horizon| Ich erinnere mich an etwas, das selbst der König, der es trug, nicht verstand.\n#memory.endless| Ich erinnere mich an etwas, das niemals hätte aufhören sollen – und es vielleicht auch nicht hat –\n#memory.wildering| Ich erinnere mich an die Jagd, bei der das Rad zum ersten Male zur Erde gebracht wurde ...\n#memory.honeyed| Ich habe eine Erinnerung, die fast meine eigene zu sein scheint.\n#|Etwas?@",
+			"requirements": {
+				"remnant": 1,
+				"alzabo": 1,
+				"remembrancemarks": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.remnant.reducehunger"
+				}
+			],
+			"alt": [
+				{
+					"id": "study.alzabo.follower_scar_edge"
+				},
+				{
+					"id": "study.alzabo.follower_scar_knock"
+				},
+				{
+					"id": "study.alzabo.follower_scar_winter"
+				},
+				{
+					"id": "study.alzabo.corpse"
+				},
+				{
+					"id": "study.alzabo.crucible"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "study.alzabo.remnant.reducehunger",
+			"actionId": "study",
+			"label": "An einem Überbleibsel laben",
+			"requirements": {
+				"ghoul.hunger": 1
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": -1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "study.alzabo.corpse",
+			"actionId": "study",
+			"label": "An einer Leiche laben",
+			"startdescription": "Manchmal bleibt etwas übrig, das erneut begraben werden muss, aber man kann effizient sein.",
+			"requirements": {
+				"corpse": 1,
+				"alzabo": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.corpse.reducehunger"
+				}
+			],
+			"deckeffect": {
+				"ghoul.memory": 1
+			},
+			"effects": {
+				"corpse": -1
+			}
+		},
+		{
+			"id": "study.alzabo.corpse.reducehunger",
+			"actionId": "study",
+			"label": "An einer Leiche laben",
+			"requirements": {
+				"ghoul.hunger": 1
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": -1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "study.alzabo.follower_scar_edge",
+			"actionId": "study",
+			"label": "Alte Pein",
+			"startdescription": "Ein brutales Erlebnis hat im Fleische einen unbändigen Schmerz hinterlassen.",
+			"requirements": {
+				"follower_scar_edge": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.follower_scar.reducehunger"
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"influenceedge": 1,
+				"memory.menacing": 1,
+				"corpse": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "study.alzabo.follower_scar_knock",
+			"actionId": "study",
+			"label": "Alte Pein",
+			"startdescription": "Zu viele Türen wurden in diesem Fleische geöffnet, und das Aroma ist ein Labyrinth der Schrecken.",
+			"requirements": {
+				"follower_scar_knock": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.follower_scar.reducehunger"
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"influenceknock": 1,
+				"memory.menacing": 1,
+				"corpse": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "study.alzabo.follower_scar_winter",
+			"actionId": "study",
+			"label": "Alte Pein",
+			"startdescription": "Frostiges Elend hat eine Kälte in diesem Fleische hinterlassen, die mein Herz einfriert.",
+			"requirements": {
+				"follower_scar_winter": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.follower_scar.reducehunger"
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"influencewinter": 1,
+				"memory.menacing": 1,
+				"corpse": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "study.alzabo.follower_scar.reducehunger",
+			"actionId": "study",
+			"label": "Alte Pein",
+			"requirements": {
+				"ghoul.hunger": 1
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": -1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "study.alzabo.crucible",
+			"actionId": "study",
+			"label": "An einem Tiegel-Überbleibsel laben",
+			"startdescription": "Nach oben: Ich muss nur wenig nehmen.",
+			"description": "Die Verbrennungen sind sehr gering – sie werden schnell verheilen – doch sein Aroma wird noch tagelang in meinem Mund bleiben.",
+			"requirements": {
+				"alzabo": 1,
+				"spirit_forgee_edge.defunct": 1
+			},
+			"effects": {
+				"influenceforgec": 1,
+				"spirit_forgee_edge.consumed": 1
+			},
+			"linked": [
+				{
+					"id": "study.alzabo.crucible.reducehunger"
+				}
+			]
+		},
+		{
+			"id": "study.alzabo.crucible.reducehunger",
+			"actionId": "study",
+			"label": "An einem Tiegel-Überbleibsel laben",
+			"requirements": {
+				"ghoul.hunger": 1
+			},
+			"mutations": [
+				{
+					"filter": "remembrancemarks",
+					"mutate": "ghoul.hunger",
+					"level": -1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "explore.ghoul.findgraveyard",
+			"actionId": "explore",
+			"requirements": {
+				"ghoul.hunger": 1
+			},
+			"effects": {
+				"location.cemetery": 1,
+				"mystique": 1
+			},
+			"label": "Nach aussichtsreichen Friedhöfen suchen",
+			"startdescription": "Die Straßen durchstreifen, nach Begräbnisstätten suchen, die nahe, aber nicht zu nahe liegen – frequentiert, aber nicht zu sehr.",
+			"description": "Ich habe eine aussichtsreiche Begräbnisstätte gefunden.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "work.seance",
+			"actionId": "work",
+			"label": "Eine klandestine Konsultation",
+			"startdescription": "Mein Ruf als Künstler ist ruiniert. Ich habe gerade erst begonnen, mir einen Ruf als Orakel zu machen. Doch die Behörden haben mich im Visier.",
+			"description": "Heute kommt keiner bei mir vorbei. Ist so am besten: Ich hätte ihnen nichts zu erzählen.",
+			"requirements": {
+				"ghouljob": 1
+			},
+			"alt": [
+				{
+					"id": "work.seance.shameful"
+				},
+				{
+					"id": "work.seance.profitable"
+				},
+				{
+					"id": "work.seance.joyful"
+				},
+				{
+					"id": "work.seance.menacing"
+				},
+				{
+					"id": "work.seance.unexpected"
+				},
+				{
+					"id": "work.seance.grandmemory"
+				},
+				{
+					"id": "work.seance.other"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "work.seance.shameful",
+			"actionId": "work",
+			"label": "Im Gedenken an die Toten: Etwas zum Schämen",
+			"startdescription": "Ich habe jemanden gefunden, der mein Schweigen kaufen würde.",
+			"description": "Ein schäbiger Handel, aber dafür profitabel.",
+			"requirements": {
+				"memory.shameful": 1
+			},
+			"effects": {
+				"funds": 3,
+				"memory.shameful": -1
+			}
+		},
+		{
+			"id": "work.seance.profitable",
+			"actionId": "work",
+			"label": "Im Gedenken an die Toten: Etwas Profitables",
+			"startdescription": "Ich habe jemanden gefunden, der von dieser Erinnerung profitieren würde. Dafür gibt es gutes Geld.",
+			"description": "Wir beide haben davon profitiert ... und mein Ruf ist ein wenig verblüffender geworden.",
+			"requirements": {
+				"memory.profitable": 1
+			},
+			"effects": {
+				"funds": 3,
+				"memory.profitable": -1,
+				"mystique": 1
+			}
+		},
+		{
+			"id": "work.seance.joyful",
+			"actionId": "work",
+			"label": "Im Gedenken an die Toten: Etwas zum Freuen",
+			"startdescription": "Das mögen zwar nicht unbedingt die Erinnerungen meines Klienten sein, aber es ist die Wahrheit.",
+			"description": "Genug für den Moment. Die Tränen meines Klienten sind willkommen, auch ihm selbst.",
+			"requirements": {
+				"memory.joyful": 1
+			},
+			"effects": {
+				"funds": 2,
+				"memory.joyful": -1,
+				"contentment": 1,
+				"mystique": 1
+			}
+		},
+		{
+			"id": "work.seance.menacing",
+			"actionId": "work",
+			"label": "Im Gedenken an die Toten: Etwas Bedrohliches",
+			"startdescription": "Das wird gruselig. Kann sein, dass mir das keinen Spaß machen wird.",
+			"description": "Mein Klient ist entsetzt, aber auch gespannt. Irgendjemand wird dafür bezahlen. Irgendjemand bezahlt für alles.",
+			"requirements": {
+				"memory.menacing": 1
+			},
+			"effects": {
+				"funds": 2,
+				"memory.menacing": -1,
+				"dread": 1,
+				"mystique": 1
+			}
+		},
+		{
+			"id": "work.seance.unexpected",
+			"actionId": "work",
+			"label": "Im Gedenken an die Toten: Etwas Unerwartetes",
+			"startdescription": "Es ziemt sich nicht für Orakel, allzu vorhersehbar zu sein.",
+			"description": "Ich weiß hinterher nie, was genau ich gesagt habe, doch auf meinen Lippen ist noch der Geschmack der Worte.",
+			"requirements": {
+				"memory.unexpected": 1
+			},
+			"effects": {
+				"funds": 2,
+				"memory.unexpected": -1,
+				"mystique": 1
+			},
+			"internaldeck": {
+				"label": "Etwas Unerwartetes",
+				"description": "Etwas Unerwartetes",
+				"spec": [
+					"vitalityplus",
+					"fascination",
+					"dread",
+					"eruditionplus",
+					"glimmeringplus",
+					"influencelanternc",
+					"influencewinterc",
+					"influencemothc",
+					"fragmentsecrethistories",
+					"vitalityplus",
+					"fascination",
+					"dread",
+					"eruditionplus",
+					"glimmeringplus",
+					"influencelanternc",
+					"influencewinterc",
+					"influencemothc",
+					"fragmentsecrethistories",
+					"fragmentsecrethistoriesc",
+					"influencemothe"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			}
+		},
+		{
+			"id": "work.seance.grandmemory",
+			"actionId": "work",
+			"label": "Ein zu vollmundiger Wein",
+			"startdescription": "Möchte ich wirklich über die Farben sprechen, die verloren gingen?",
+			"description": "Mein Klient taumelt aus dem Raum. Ich glaube nicht, dass er auch nur ein Viertel von dem verstanden hat, was ich gesagt habe, aber immerhin hat er jetzt etwas zu erzählen.",
+			"requirements": {
+				"memory": 5
+			},
+			"effects": {
+				"funds": 1,
+				"notoriety": 1
+			}
+		},
+		{
+			"id": "work.seance.other",
+			"actionId": "work",
+			"label": "Inspiration und Verzweiflung",
+			"startdescription": "Ich kann genug Halbwahrheiten zusammenhauen, um meinen Klienten zufriedenzustellen.",
+			"description": "Ich habe mein Geld bekommen. Schwer zu sagen, ob ich es mir verdient habe. Zum Glück ist es auch für die Klienten schwer zu sagen, ob ich es mir verdient habe.",
+			"comments": "I've decided that Fleeting Rems get eaten and romantic rems, Dread, F all get kept. We can crack this into specifics if we have too.",
+			"requirements": {
+				"memory": 1
+			},
+			"effects": {
+				"funds": 1,
+				"mystique": 1,
+				"fleeting": -1
+			}
+		}
+	]
+}

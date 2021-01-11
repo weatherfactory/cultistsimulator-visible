@@ -1,0 +1,32 @@
+{
+    "elements": [
+        {
+            "id": "legacytemplatejob",
+            "label": "督察警",
+            "description": "我是首都警察局的高层职员。",
+            "aspects": {
+                "job": 1
+            },
+            "xtriggers": {
+                "careeradvancement": "legacytemplatejob_matured"
+            },
+            "noartneeded": true
+        },
+        {
+            "id": "legacytemplatejob_matured",
+            "description": "",
+            "label": "",
+            "aspects": {
+                "job": 1
+            },
+            "comments": "Exists to allow a switch to a longer cycle immediately after first use.",
+            "noartneeded": true
+        },
+        {
+            "id": "legacytemplate_plotitem",
+            "label": "",
+            "description": "#PREVIOUSCHARACTERNAME#。",
+            "noartneeded": true
+        }
+    ]
+}

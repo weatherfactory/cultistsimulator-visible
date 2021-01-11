@@ -1,0 +1,493 @@
+{
+	"recipes": [
+		{
+			"id": "writeedgec",
+			"label": "Ein umfangreiches Traktat über die Praktiken der Kante und die Stunden schreiben, die über sie gebieten",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleedgec": 1,
+				"lore": 1,
+				"edge": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articleedgec": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeforgec",
+			"label": "Ein umfangreiches Traktat über das Wissen des Prinzips namens Schmiede schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleforgec": 1,
+				"lore": 1,
+				"forge": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articleforgec": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writegrailc",
+			"label": "Ein umfangreiches Traktat über das Wissen des Roten Grals schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlegrailc": 1,
+				"lore": 1,
+				"grail": 6,
+				"reason": 1,
+				"passion": 1
+			},
+			"effects": {
+				"articlegrailc": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeheartc",
+			"label": "Ein umfangreiches Traktat über das Wissen des Herzens schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleheartc": 1,
+				"lore": 1,
+				"heart": 6,
+				"reason": 1,
+				"passion": 1
+			},
+			"effects": {
+				"articleheartc": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeknockc",
+			"label": "Ein umfangreiches Traktat über das Wissen des Klopfens schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleknockc": 1,
+				"lore": 1,
+				"knock": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articleknockc": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writelanternc",
+			"label": "Ein umfangreiches Traktat über das Wissen der Laterne schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlelanternc": 1,
+				"lore": 1,
+				"lantern": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articlelanternc": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writemothc",
+			"label": "Ein umfangreiches Traktat über das Wissen der Motte schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlemothc": 1,
+				"lore": 1,
+				"moth": 6,
+				"reason": 1,
+				"passion": 1
+			},
+			"effects": {
+				"articlemothc": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writesecrethistoriesc",
+			"label": "Ein umfangreiches Traktat über die Geheimen Geschichten schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlesecrethistoriesc": 1,
+				"lore": 1,
+				"secrethistories": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articlesecrethistoriesc": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writewinterc",
+			"label": "Ein umfangreiches Traktat über das Weiße Wissen schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlewinterc": 1,
+				"lore": 1,
+				"winter": 6,
+				"reason": 2
+			},
+			"effects": {
+				"articlewinterc": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeedgeb",
+			"label": "Ein umfangreiches Traktat über das Wissen der Praktiken der Kante schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleedgeb": 1,
+				"lore": 1,
+				"edge": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articleedgeb": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeforgeb",
+			"label": "Ein umfangreiches Traktat über das Prinzip der Schmiede schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleforgeb": 1,
+				"lore": 1,
+				"forge": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articleforgeb": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writegrailb",
+			"label": "Ein umfangreiches Traktat über die Riten des Roten Grals schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlegrailb": 1,
+				"lore": 1,
+				"grail": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articlegrailb": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeheartb",
+			"label": "Ein umfangreiches Traktat über das Wissen des Herzens schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleheartb": 1,
+				"lore": 1,
+				"heart": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articleheartb": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeknockb",
+			"label": "Ein umfangreiches Traktat über die Riten der Öffnung des Klopfens schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleknockb": 1,
+				"lore": 1,
+				"knock": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articleknockb": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writelanternb",
+			"label": "Ein umfangreiches Traktat über die Laterne schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlelanternb": 1,
+				"lore": 1,
+				"lantern": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articlelanternb": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writemothb",
+			"label": "Ein umfangreiches Traktat über die Motte schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlemothb": 1,
+				"lore": 1,
+				"moth": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articlemothb": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writesecrethistoriesb",
+			"label": "Ein umfangreiches Traktat über die Geheimen Geschichten schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlesecrethistoriesb": 1,
+				"lore": 1,
+				"secrethistories": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articlesecrethistoriesb": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writewinterb",
+			"label": "Ein umfangreiches Traktat über das Weiße Wissen schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlewinterb": 1,
+				"lore": 1,
+				"winter": 4,
+				"reason": 1
+			},
+			"effects": {
+				"articlewinterb": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeedgea",
+			"label": "Ein kurzes Traktat über das Prinzip der Kante schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleedge": 1,
+				"lore": 1,
+				"edge": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articleedgea": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeforgea",
+			"label": "Ein kurzes Traktat über das Prinzip der Schmiede schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleforge": 1,
+				"lore": 1,
+				"forge": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articleforgea": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writegraila",
+			"label": "Ein kurzes Traktat über das Wissen des Roten Grals schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlegrail": 1,
+				"lore": 1,
+				"grail": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlegraila": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writehearta",
+			"label": "Ein kurzes Traktat über das Wissen des Herzens schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleheart": 1,
+				"lore": 1,
+				"heart": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlehearta": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writeknocka",
+			"label": "Ein kurzes Traktat über das Prinzip des Klopfens und die Riten der Öffnung schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticleknock": 1,
+				"lore": 1,
+				"knock": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articleknocka": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writelanterna",
+			"label": "Ein kurzes Traktat über das Wissen der Laterne schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlelantern": 1,
+				"lore": 1,
+				"lantern": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlelanterna": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writemotha",
+			"label": "Ein kurzes Traktat über die Motte schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlemoth": 1,
+				"lore": 1,
+				"moth": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlemotha": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writesecrethistoriesa",
+			"label": "Ein kurzes Traktat über die Geheimen Geschichten schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlesecrethistories": 1,
+				"lore": 1,
+				"secrethistories": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlesecrethistoriesa": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "writewintera",
+			"label": "Ein kurzes Traktat über das Weiße Wissen schreiben",
+			"actionId": "work",
+			"requirements": {
+				"commissionarticlewinter": 1,
+				"lore": 1,
+				"winter": 2,
+				"reason": 1
+			},
+			"effects": {
+				"articlewintera": 1
+			},
+			"startdescription": "Das könnte für einen Auftrag nützlich sein.",
+			"description": "Ich habe das Manuskript vollendet.",
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

@@ -1,0 +1,427 @@
+{
+    "elements": [
+        {
+            "id": "spirit_wintera_edge",
+            "label": "破碎行尸",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 4,
+                "edge": 4,
+                "remnant": 1
+            },
+            "description": "一股撕裂之力将这具尸体拖回半死不活的状态。它一移动，身体就会像碎玻璃一样嘎吱作响。它的手掌是骨片交织成的利爪。看起来它随时可能倒下。",
+            "xtriggers": {
+                "renewshattered": "spirit_wintera_edge",
+                "killsummoned": "influencewinter",
+                "alzabo": "influencewinterc"
+            },
+            "lifetime": 120
+        },
+        {
+            "id": "spirit_wintera_moth",
+            "label": "抽芽行尸",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 4,
+                "moth": 4,
+                "spiritsicknessprotector": 1,
+                "remnant": 1
+            },
+            "description": "林地中的植物覆满了这具尸体的器官，缠住了它的心脏，在它的颅骨中胀大如一颗匏瓜，。它的双眼散发狡诈之气，动作仿佛一抽一抽的提线木偶。他的骨头是腐木，很快便要扎地生根，不过在那之前，它会是一名迅捷且低调的仆从。",
+            "xtriggers": {
+                "renewburgeoning": "spirit_wintera_moth",
+                "killsummoned": "influencemoth",
+                "alzabo": "influencemothc"
+            },
+            "lifetime": 120
+        },
+        {
+            "id": "spirit_winterb_heart",
+            "label": "无声亡者",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 6,
+                "moth": 6,
+                "deceiver": 6,
+                "spiriteatspassion": 1
+            },
+            "description": "亡者有时会通过纯白之门进入漫宿。它们会把说话的能力永远留在门槛外。把它们唤回现世，它们将无法发声，但其落灰的皮囊会遵从你的命令。",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencewinter"
+            },
+            "decayTo": "influencewinter"
+        },
+        {
+            "id": "pre.spirit_winterb_heart",
+            "label": "无声亡者",
+            "aspects": {
+                "winter": 6,
+                "moth": 6,
+                "deceiver": 6,
+                "manifesting": 1
+            },
+            "description": "亡者有时会通过纯白之门进入漫宿。它们会把说话的能力永远留在门槛外。把它们唤回现世，它们将无法发声，但其落灰的皮囊会遵从你的命令。",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencewinter",
+                "killmanifesting": "influencewinter"
+            },
+            "decayTo": "spirit_winterb_heart",
+            "resaturate": true,
+            "icon": "spirit_winterb_heart"
+        },
+        {
+            "id": "spirit_forgec_winter",
+            "label": "汽灵",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "forge": 8,
+                "moth": 8,
+                "deceiver": 8
+            },
+            "description": "在漫宿边界，铸炉四隅，辉光之火烧灼更原始物质之处。那里有一团狡猾的蒸汽，可以侵染你敌人的梦境。",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influenceforge"
+            },
+            "decayTo": "influenceforge"
+        },
+        {
+            "id": "pre.spirit_forgec_winter",
+            "label": "汽灵",
+            "aspects": {
+                "forge": 8,
+                "moth": 8,
+                "deceiver": 8,
+                "manifesting": 1
+            },
+            "description": "在漫宿边界，铸炉四隅，辉光之火烧灼更原始物质之处。那里有一团狡猾的蒸汽，可以侵染你敌人的梦境。",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influenceforge",
+                "killmanifesting": "influenceforge"
+            },
+            "decayTo": "spirit_forgec_winter",
+            "resaturate": true,
+            "icon": "spirit_forgec_winter"
+        },
+        {
+            "id": "spirit_grailc_moth",
+            "label": "原生先知",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "grail": 8,
+                "moth": 8,
+                "deceiver": 8,
+                "spiritsicknessprotector": 1,
+                "spiriteatsreason": 1
+            },
+            "description": "时而分散，时而聚集，她时而预言灾难，他时而宣扬食欲。它的预言让人困惑，它们的低语致人混淆。",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencegrail"
+            },
+            "decayTo": "influencegrail"
+        },
+        {
+            "id": "pre.spirit_grailc_moth",
+            "label": "原生先知",
+            "aspects": {
+                "grail": 8,
+                "moth": 8,
+                "deceiver": 8,
+                "manifesting": 1
+            },
+            "description": "时而分散，时而聚集，她时而预言灾难，他时而宣扬食欲。它的预言让人困惑，它们的低语致人混淆。",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencegrail",
+                "killmanifesting": "influencegrail"
+            },
+            "decayTo": "spirit_grailc_moth",
+            "resaturate": true,
+            "icon": "spirit_grailc_moth"
+        },
+        {
+            "id": "spirit_lanternc_edge",
+            "label": "迹形",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "lantern": 8,
+                "edge": 8,
+                "devourer": 8
+            },
+            "description": "“迹形”之灵躲在后面时最自在：舞台后面，镜子后面，你后面。它们从门底滑入，用玻璃杀戮，却活不过活人的注视。",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencelantern"
+            },
+            "decayTo": "influencelantern"
+        },
+        {
+            "id": "pre.spirit_lanternc_edge",
+            "label": "迹形",
+            "aspects": {
+                "lantern": 8,
+                "edge": 8,
+                "devourer": 8,
+                "manifesting": 1
+            },
+            "description": "“迹形”之灵躲在后面时最自在：舞台后面，镜子后面，你后面。它们从门底滑入，用玻璃杀戮，却活不过活人的注视。",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencelantern",
+                "killmanifesting": "influencelantern"
+            },
+            "decayTo": "spirit_lanternc_edge",
+            "resaturate": true,
+            "icon": "spirit_lanternc_edge"
+        },
+        {
+            "id": "spirit_heartc_edge",
+            "label": "擂击者",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "heart": 8,
+                "edge": 8,
+                "devourer": 8,
+                "spiritsicknessprotector": 1,
+                "spiriteatsreason": 1
+            },
+            "description": "\"擂击者！它热爱叉铃的震颤，热爱敲打定音鼓的声音。它的行动展现了对《被剥皮的马西亚斯》的喜爱，而且它绝对不会\r\n\t\t\t绝对不会\r\n\t\t\t绝对不会停止舞蹈。\"",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influenceheart"
+            },
+            "decayTo": "influenceheart"
+        },
+        {
+            "id": "pre.spirit_heartc_edge",
+            "label": "擂击者",
+            "aspects": {
+                "heart": 8,
+                "edge": 8,
+                "devourer": 8,
+                "manifesting": 1
+            },
+            "description": "\"擂击者！它热爱叉铃的震颤，热爱敲打定音鼓的声音。它的行动展现了对《被剥皮的马西亚斯》的喜爱，而且它绝对不会\r\n            绝对不会\r\n            绝对不会停止舞蹈。\"",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influenceheart",
+                "killmanifesting": "influenceheart"
+            },
+            "decayTo": "spirit_heartc_edge",
+            "resaturate": true,
+            "icon": "spirit_heartc_edge"
+        },
+        {
+            "id": "spirit_winterd_edge",
+            "label": "镜中少女",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 10,
+                "edge": 10,
+                "devourer": 10,
+                "spiriteatspassion": 1
+            },
+            "description": "“路为玻璃，墙为刀刃，步步见血。”在新开裂的镜子前休憩的亡者，穿过孔雀之门的亡者，征服锐利坡路的亡者：它们将加入侍奉残阳的行列。",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencewinter"
+            },
+            "decayTo": "influencewinter"
+        },
+        {
+            "id": "pre.spirit_winterd_edge",
+            "label": "镜中少女",
+            "aspects": {
+                "winter": 10,
+                "edge": 10,
+                "devourer": 10,
+                "manifesting": 1
+            },
+            "description": "“路为玻璃，墙为刀刃，步步见血。”在新开裂的镜子前休憩的亡者，穿过孔雀之门的亡者，征服锐利坡路的亡者：它们将加入侍奉残阳的行列。",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencewinter",
+                "killmanifesting": "influencewinter"
+            },
+            "decayTo": "spirit_winterd_edge",
+            "resaturate": true,
+            "icon": "spirit_winterd_edge"
+        },
+        {
+            "id": "spirit_forgee_edge",
+            "label": "坩埚王",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "forge": 12,
+                "edge": 12,
+                "devourer": 12,
+                "tutor": 1,
+                "spirittutormandaic": 1
+            },
+            "description": "<b>“我于荒漠中等待、于废墟中燃烧——金铁为水——土石化蜡——肉身成烟——来入我内，不复续存。”</b>",
+            "xtriggers": {
+                "killsummoned": "spirit_forgee_edge.defunct"
+            },
+            "lifetime": 180,
+            "decayTo": "spirit_forgee_edge.defunct",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_forgee_edge"
+        },
+        {
+            "id": "pre.spirit_forgee_edge",
+            "label": "坩埚王",
+            "aspects": {
+                "forge": 12,
+                "edge": 12,
+                "devourer": 12,
+                "manifesting": 1
+            },
+            "description": "<b>“我于荒漠中等待、于废墟中燃烧——金铁为水——土石化蜡——肉身成烟——来入我内，不复续存。”</b>",
+            "xtriggers": {
+                "killsummoned": "spirit_forgee_edge.defunct",
+                "killmanifesting": "influenceforge"
+            },
+            "lifetime": 1,
+            "decayTo": "spirit_forgee_edge",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_forgee_edge",
+            "resaturate": true,
+            "icon": "spirit_forgee_edge"
+        },
+        {
+            "id": "spirit_graile_edge",
+            "label": "第二干渴者伊泽姆",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "grail": 12,
+                "edge": 12,
+                "devourer": 12,
+                "tutor": 1,
+                "spirittutorphrygian": 1,
+                "spiritsicknessprotector": 1,
+                "spiriteatsreason": 1
+            },
+            "description": "“改变我。改变我。用力改变我啊。现在——轮到<i>我</i>了。”",
+            "xtriggers": {
+                "killsummoned": "spirit_graile_edge.defunct"
+            },
+            "lifetime": 180,
+            "decayTo": "spirit_graile_edge.defunct",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_graile_edge"
+        },
+        {
+            "id": "pre.spirit_graile_edge",
+            "label": "第二干渴者伊泽姆",
+            "aspects": {
+                "grail": 12,
+                "edge": 12,
+                "devourer": 12,
+                "manifesting": 1
+            },
+            "description": "“改变我。改变我。用力改变我啊。现在——轮到<i>我</i>了。”",
+            "xtriggers": {
+                "killsummoned": "spirit_graile_edge.defunct",
+                "killmanifesting": "influencegrail"
+            },
+            "lifetime": 1,
+            "decayTo": "spirit_graile_edge",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_graile_edge",
+            "resaturate": true,
+            "icon": "spirit_graile_edge"
+        },
+        {
+            "id": "spirit_lanterne_secret",
+            "label": "特蕾莎",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "lantern": 12,
+                "secrethistories": 12,
+                "tutor": 1,
+                "spirittutorfucine": 1,
+                "spiritsicknessprotector": 1,
+                "spiriteatspassion": 1
+            },
+            "description": "“噢，世界是平的；噢，可它是平的！我不会久留，我不该久留。告诉我个秘密。”",
+            "xtriggers": {
+                "killsummoned": "spirit_lanterne_secret.defunct"
+            },
+            "lifetime": 180,
+            "decayTo": "spirit_lanterne_secret.defunct",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_lanterne_secret"
+        },
+        {
+            "id": "pre.spirit_lanterne_secret",
+            "label": "特蕾莎",
+            "aspects": {
+                "lantern": 12,
+                "secrethistories": 12,
+                "tutor": 1,
+                "manifesting": 1
+            },
+            "description": "“噢，世界是平的；噢，可它是平的！我不会久留，我不该久留。告诉我个秘密。”",
+            "xtriggers": {
+                "killsummoned": "spirit_lanterne_secret.defunct",
+                "killmanifesting": "influencelantern"
+            },
+            "lifetime": 1,
+            "decayTo": "spirit_lanterne_secret",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_lanterne_secret",
+            "resaturate": true,
+            "icon": "spirit_lanterne_secret"
+        },
+        {
+            "id": "spirit_forgee_edge.defunct",
+            "label": "坩埚王的火焰衰弱不振",
+            "description": "现下坩埚王之火的热力已不如从前。焦黑的印痕犹存，犹如煤的遗骨。",
+            "lifetime": 180,
+            "aspects": {
+                "remnant": 1
+            },
+            "unique": true,
+            "xtriggers": {
+                "alzabo": "memory.golden"
+            }
+        },
+        {
+            "id": "spirit_forgee_edge.consumed",
+            "label": "灰烬的味道",
+            "description": "我进食了那只坩埚留在世间的印痕。往最轻了说，这会冒犯到他。他可能会震怒。我不应该再召唤他了。",
+            "unique": true
+        },
+        {
+            "id": "spirit_graile_edge.defunct",
+            "label": "伊泽姆正在生闷气",
+            "description": "伊泽姆会好的，最终会的。",
+            "lifetime": 180,
+            "comments": "This shouldn't have any aspects. We don't want it to be removed or used - it's solely a blocker.",
+            "unique": true
+        },
+        {
+            "id": "spirit_lanterne_secret.defunct",
+            "label": "特蕾莎正在休息",
+            "description": "巴尔多梅人已返回睿智骑士小屋中休息。",
+            "lifetime": 180,
+            "comments": "This shouldn't have any aspects. We don't want it to be removed or used - it's solely a blocker.",
+            "unique": true
+        }
+    ]
+}

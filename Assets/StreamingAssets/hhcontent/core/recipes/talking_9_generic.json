@@ -1,0 +1,759 @@
+{
+    "recipes": [
+        {
+            "id": "speakpublicly",
+            "label": "Speak of esoteric matters",
+            "actionid": "talk",
+            "requirements": {
+                "society": -1,
+                "lore": 1
+            },
+            "effects": {
+                "mystique": 1
+            },
+            "startdescription": "Talking publicly about the invisible arts will attract attention. Perhaps that's what I want.",
+            "description": ".",
+            "warmup": 60,
+            "craftable": true,
+            "deckeffects": {
+                "talkevents": 1
+            },
+            "linked": [
+                {
+                    "id": "talkfindacquaintance",
+                    "chance": 100
+                },
+                {
+                    "id": "talkfindpatron",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "talkfindacquaintance",
+            "label": "An Acquaintance?",
+            "actionid": "talk",
+            "requirements": {
+                "dayacquaintances": 1
+            },
+            "slots": [
+                {
+                    "id": "escalation",
+                    "label": "Passion",
+                    "description": "I must be fervent and convincing.",
+                    "required": {
+                        "passion": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "I've found someone who may be a kindred spirit - but I'll need to win them over. [Winning over an Acquaintance requires your Passion.]",
+            "alt": [
+                {
+                    "id": "talkmeetacquaintance",
+                    "chance": 100
+                }
+            ],
+            "description": "I could not muster the Passion to bring them into my circle. Perhaps another time.",
+            "effects": {
+                "season": -1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "talkfindpatron",
+            "label": "A Patron?",
+            "actionid": "talk",
+            "requirements": {
+                "daypatrons": 1
+            },
+            "slots": [
+                {
+                    "id": "escalation",
+                    "label": "Reason",
+                    "description": "I must be articulate and credible.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "I've found someone who may have resources of use to me - but I'll need to impress them. [Impressing a Patron demands your Reason.]",
+            "alt": [
+                {
+                    "id": "talkmeetpatron",
+                    "chance": 100
+                }
+            ],
+            "description": "I could not muster the mental energy to show them what I am. Perhaps another time.",
+            "effects": {
+                "season": -1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "talkmeetacquaintance",
+            "label": "An Acquaintance",
+            "actionid": "talk",
+            "requirements": {
+                "passion": 1
+            },
+            "startdescription": "'Come with me.'",
+            "description": ".",
+            "deckeffects": {
+                "acquaintances": 1
+            },
+            "effects": {
+                "season": -1
+            },
+            "warmup": 5
+        },
+        {
+            "id": "talkmeetpatron",
+            "label": "A Patron",
+            "actionid": "talk",
+            "requirements": {
+                "reason": 1
+            },
+            "startdescription": "'We can learn from each other.'",
+            "description": ".",
+            "deckeffects": {
+                "scholarpatrons": 1
+            },
+            "effects": {
+                "season": -1
+            },
+            "warmup": 5
+        },
+        {
+            "id": "talktotroublemaker",
+            "label": "Arrange a meeting on neutral ground.",
+            "actionid": "talk",
+            "requirements": {
+                "independent": 1,
+                "society": -1,
+                "ritual": -1
+            },
+            "slots": [
+                {
+                    "id": "Subject",
+                    "label": "Subject",
+                    "description": "A topic of conversation."
+                }
+            ],
+            "alt": [
+                {
+                    "id": "A_follower_settrap_independent",
+                    "chance": 100
+                },
+                {
+                    "id": "independentloreconversation",
+                    "chance": 100
+                },
+                {
+                    "id": "independentdesireconversation",
+                    "chance": 100
+                },
+                {
+                    "id": "independentfitewithextraswole",
+                    "chance": 100
+                },
+                {
+                    "id": "independentfitewithswole",
+                    "chance": 100
+                },
+                {
+                    "id": "independentspeakpoison",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "'Are we enemies? Perhaps we don't have to  be.'",
+            "description": "A guarded conversation in an early-opening coffee-shop in the rain-swept wind-shivering after dawn. I've learnt nothing.",
+            "effects": {
+                "mystique": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "independentloreconversation",
+            "label": "Arrange a meeting on neutral ground.",
+            "actionid": "talk",
+            "requirements": {
+                "lore": 1
+            },
+            "startdescription": "'It seems we <i>do</i> have something to discuss...'",
+            "description": "A hushed and elliptical conversation by lamp-light, with glints of truth like gold in river-mud. Who knows? Perhaps, one day, we might speak less guardedly.",
+            "deckeffects": {
+                "troublemakerconversations": 1
+            }
+        },
+        {
+            "id": "independentdesireconversation",
+            "label": "Arrange a meeting on neutral ground.",
+            "actionid": "talk",
+            "requirements": {
+                "desire": 1
+            },
+            "startdescription": "'Do you propose we make common cause? Are you serious?'",
+            "description": "'Perhaps. Eventually. Prove yourself to me. Let's talk...' [If you have a cult, it is possible, although difficult, to win a Troublemaker to your side.]",
+            "deckeffects": {
+                "troublemakerconversations": 1
+            }
+        },
+        {
+            "id": "independentfitewithextraswole",
+            "label": "A Surprise Attack on a Rival",
+            "actionid": "talk",
+            "requirements": {
+                "murderskill": 1
+            },
+            "startdescription": "We are meeting on neutral ground. They have taken all reasonable precautions. But there are no reasonable precautions against one such as I. A direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This might succeed, against the odds.]",
+            "description": "I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
+            "alt": [
+                {
+                    "id": "independentfitewithswole_failure",
+                    "chance": 70
+                }
+            ],
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killmortal": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "independentfitewithswole",
+            "label": "A Surprise Attack on a Rival",
+            "actionid": "talk",
+            "requirements": {
+                "healthskill": 1
+            },
+            "startdescription": "We are meeting on neutral ground. They have taken all reasonable precautions, and a direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This is a very long shot indeed.]",
+            "description": "I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
+            "alt": [
+                {
+                    "id": "independentfitewithswole_failure",
+                    "chance": 90
+                }
+            ],
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killmortal": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "independentfitewithswole_failure",
+            "label": "A Surprise Attack has Failed!",
+            "actionid": "talk",
+            "startdescription": ".",
+            "description": "With a cry, they leap back, kicking over the table! All around us, heads turn. No-one saw me move. The only real witness is my rival. But I must leave immediately.",
+            "craftable": false,
+            "effects": {
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "wary",
+                    "level": 1
+                },
+                {
+                    "filter": "independent",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "independentspeakpoison",
+            "label": "Employ a Remarkable Poison against a Rival",
+            "actionid": "talk",
+            "requirements": {
+                "poison": 1
+            },
+            "startdescription": "'Do you like tea?'",
+            "description": "Your rival shakes their head in disappointment. 'Really?' They leave without another word, leaving their tea untouched on the table.",
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "wary",
+                    "level": 1
+                },
+                {
+                    "filter": "independent",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "talktohunter",
+            "label": "Arrange a meeting with an adversary",
+            "actionid": "talk",
+            "requirements": {
+                "hunter": 1
+            },
+            "slots": [
+                {
+                    "id": "Subject",
+                    "label": "Subject",
+                    "description": "A topic of conversation... or a minion who will destroy them."
+                }
+            ],
+            "alt": [
+                {
+                    "id": "hunterfitewithextraswole"
+                },
+                {
+                    "id": "hunterfitewithswole"
+                },
+                {
+                    "id": "hunterspeakpoison_glassfinger"
+                },
+                {
+                    "id": "hunterspeakpoison"
+                },
+                {
+                    "id": "hunterspeakwinterg"
+                },
+                {
+                    "id": "hunterspeakwinterd"
+                },
+                {
+                    "id": "hunterspeakwinter"
+                },
+                {
+                    "id": "hunterspeakdread"
+                },
+                {
+                    "id": "hunterspeaklanterng"
+                },
+                {
+                    "id": "hunterspeaklanternd"
+                },
+                {
+                    "id": "hunterspeaklantern"
+                },
+                {
+                    "id": "hunterspeakfascination"
+                },
+                {
+                    "id": "hunterattackhighedge"
+                },
+                {
+                    "id": "hunterattackhighwinter"
+                },
+                {
+                    "id": "hunterattackmidedge"
+                },
+                {
+                    "id": "hunterattackmidwinter"
+                },
+                {
+                    "id": "hunterattacklowedge"
+                },
+                {
+                    "id": "hunterattacklowwinter"
+                },
+                {
+                    "id": "hunterattacknoedge"
+                }
+            ],
+            "startdescription": "Perhaps we could parley. Or perhaps I could send something to ambush them.",
+            "description": "This was rash. Perhaps I shouldn't have exposed myself so.",
+            "effects": {
+                "notoriety": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "talktospirit",
+            "label": "Speak to something I have summoned",
+            "actionid": "talk",
+            "requirements": {
+                "society": -1,
+                "follower": 1,
+                "summoned": 1
+            },
+            "slots": [
+                {
+                    "id": "Subject",
+                    "label": "Subject",
+                    "description": "A topic of conversation... or a target."
+                }
+            ],
+            "comments": "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+            "alt": [
+                {
+                    "id": "discusspassionsacrifice"
+                },
+                {
+                    "id": "discussreasonsacrifice"
+                },
+                {
+                    "id": "discusssicknessprotectionspirit"
+                },
+                {
+                    "id": "discussfucinespirit"
+                },
+                {
+                    "id": "discussphrygianspirit"
+                },
+                {
+                    "id": "discussmandaicspirit"
+                },
+                {
+                    "id": "hunterattackhighedge"
+                },
+                {
+                    "id": "hunterattackmidedge"
+                },
+                {
+                    "id": "hunterattacklowedge"
+                },
+                {
+                    "id": "hunterattacknoedge"
+                },
+                {
+                    "id": "evidencedestroymidmoth"
+                },
+                {
+                    "id": "evidencedestroylowmoth"
+                },
+                {
+                    "id": "evidencedestroynomoth"
+                },
+                {
+                    "id": "annoyanceseducehighgrail"
+                },
+                {
+                    "id": "annoyanceattackhighedge"
+                },
+                {
+                    "id": "annoyanceseducemidgrail"
+                },
+                {
+                    "id": "annoyanceattackmidedge"
+                },
+                {
+                    "id": "annoyancederangemidmoth"
+                },
+                {
+                    "id": "annoyanceseducelowgrail"
+                },
+                {
+                    "id": "annoyanceattacklowedge"
+                },
+                {
+                    "id": "annoyancederangelowmoth"
+                },
+                {
+                    "id": "annoyanceattacknoedge"
+                },
+                {
+                    "id": "apostlelantern.recruitkleidouchos.teresa"
+                },
+                {
+                    "id": "apostlelantern.usepillar3"
+                },
+                {
+                    "id": "teresadiscusslocksmithsdream1"
+                },
+                {
+                    "id": "teresadiscusslocksmithsdream2"
+                },
+                {
+                    "id": "teresadiscusslocksmithsdream3"
+                },
+                {
+                    "id": "teresadiscusslocksmithsdream4"
+                },
+                {
+                    "id": "teresadiscusslocksmithsdream5"
+                }
+            ],
+            "startdescription": "Not everything from the Mansus can speak, but everything can understand mortal speech, even once it has passed the White Door.",
+            "description": "Nothing; my words cease like sand in a glass.",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "discusspassionsacrifice",
+            "actionid": "talk",
+            "label": "Chilly Lessons",
+            "startdescription": "If I listen closely enough to the stories told by winter sun, I may learn something, at the cost of my soul's withering. [This will teach the Ecdysiast's Parable, but will convert Passion to Decrepitude... although even that might open a narrow door.]",
+            "description": "@#spirit_winterb_heart|'You look at me, and you see that I died. You might think that's what I lost. But if that's all, why would you ask me?' But I will ask it nothing. The dead do not usually speak.\n#spirit_winterd_edge|The Maid's voice is bright and sharp as fresh-cut gems. 'What may be lost? Every choice closes a door... and the Mansus has only seven.'\n#spirit_lanterne_secret|'What may be lost?' My childhood. My burdens. My illusions. My pride. My reputation. My shadow. My heart...'@",
+            "requirements": {
+                "passion": 1,
+                "spiriteatspassion": 1
+            },
+            "effects": {
+                "passion": -1,
+                "decrepitude": 1,
+                "fragmentmothc": 1,
+                "influencewintere": 1
+            }
+        },
+        {
+            "id": "discussreasonsacrifice",
+            "actionid": "talk",
+            "label": "Wild Lessons",
+            "startdescription": "If I give myself to the frenzy, I will learn a wild lesson. [This will teach the Consent of Wounds, but will convert Reason to Decrepitude... although even that might open a narrow door.]",
+            "description": "@#spirit_grailc_moth|The Prophet will enact its prophecies upon my skin, and beneath its pronouncements, my thoughts will part like old cloth.\n#spirit_heartc_edge|The Percussigant will lead me in the movements my body will not support, and if I need to make both changes and amends, why then, my skin will bear the tale, the tale; o my skin, the bear, the tale.\n#spirit_graile_edge|'I knew her in the Wake. Her arms were fewer; her arms were warmer; but her mouth was always cold. Call me a liar. I dare you. Or come here, and I will kiss the Fifth History deep into you, where no one will see it, not even you - '@",
+            "requirements": {
+                "reason": 1,
+                "spiriteatsreason": 1
+            },
+            "effects": {
+                "reason": -1,
+                "decrepitude": 1,
+                "fragmentknockc": 1,
+                "influenceknocke": 1
+            }
+        },
+        {
+            "id": "discusssicknessprotectionspirit",
+            "label": "Request a Stay of Execution",
+            "actionid": "talk",
+            "requirements": {
+                "summoned": 1,
+                "spiritsicknessprotector": 1,
+                "health": 1
+            },
+            "startdescription": "The residents of the Mansus are not subject to the ills of the flesh. Some of them, sometimes, can extend their protection to those of us trapped out here in the Wake.",
+            "description": "@#spirit_wintera_moth|I will place a lock of my hair in the hollow of this one's chest, and with luck, one day, the sickness will seek me there instead.#spirit_grailc_moth|The Raw Prophet will embrace me with all its arms and kiss me with its mouths or whatever else it might find suitable, and perhaps that will protect me from diseases, and perhaps it will simply outnumber them.#spirit_heartc_edge|The Percussigant will weave the beat of my heart into the steps of its dance unending, and that might be enough, enough, enough. #spirit_graile_edge|'Open your mouth. Tilt back your head. We shall let one drop fall. Swallow. Yes. You'll be better now.'#spirit_lanterne_secret|'I will speak with your shadow, and some time soon it might turn a greater shadow aside. That's all I can promise you now.'@",
+            "craftable": false,
+            "effects": {
+                "sicknessprotection": 1
+            }
+        },
+        {
+            "id": "discussfucinespirit",
+            "label": "The matter of learning Fucine",
+            "actionid": "talk",
+            "requirements": {
+                "scholarlatin": 1,
+                "summoned": 1,
+                "spirittutorfucine": 1
+            },
+            "startdescription": "'Fucine? Yes, I get by in Fucine. I can teach you, if you have Latin as a grounding. But if I hear one crack about the 'tongue of witches', it's off.' [Use <b>STUDY</b> with the Baldomerian to learn Fucine].",
+            "description": ".",
+            "craftable": true
+        },
+        {
+            "id": "discussphrygianspirit",
+            "label": "The matter of learning Phrygian",
+            "actionid": "talk",
+            "requirements": {
+                "scholargreek": 1,
+                "summoned": 1,
+                "spirittutorphrygian": 1
+            },
+            "startdescription": "'Phrygian! The Great Mother's tongue! Of course. If you have enough Greek, I guarantee that the experience of learning Phrygian will be <i>very</i> pleasant.' [Use <b>STUDY</b> with Ezeem to learn Phrygian].'",
+            "description": ".",
+            "craftable": true
+        },
+        {
+            "id": "discussmandaicspirit",
+            "label": "The matter of learning Deep Mandaic",
+            "actionid": "talk",
+            "requirements": {
+                "scholararamaic": 1,
+                "summoned": 1,
+                "spirittutormandaic": 1
+            },
+            "startdescription": "'TOGETHER WE WILL COMMEMORATE THE TONGUE OF THE UNBURNT GOD.' [Use <b>STUDY</b> with King Crucible to learn Deep Mandaic].'",
+            "description": ".",
+            "craftable": true
+        },
+        {
+            "id": "teresadiscusslocksmithsdream1",
+            "label": "Discuss the Locksmith's Dream, Volume 1",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "locksmithsdream1": 1,
+                "autographed": -1
+            },
+            "actionid": "talk",
+            "startdescription": "'Shall I autograph it? I think that would be rather fun, wouldn't it?'",
+            "description": "'I used to live by Camden Lock, when I started writing this stuff down. If that isn't a joke of the Hours, I don't know what is. Let me tell you of my sources -'",
+            "effects": {
+                "erudition": 1
+            },
+            "mutations": [
+                {
+                    "filter": "text",
+                    "mutate": "autographed",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": "teresadiscusslocksmithsdream2",
+            "label": "Discuss the Locksmith's Dream, Volume 2",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "locksmithsdream2": 1,
+                "autographed": -1
+            },
+            "actionid": "talk",
+            "startdescription": "'Shall I autograph it? Would that be a little precious? No-one will believe it's the real thing, anyway. I'm supposed to be dead.'",
+            "description": "'I still think the Doors have to do with artisans' work - with making. I think that's how we begun to find our way into the House. But of course our ascents were always limited, until we learnt to speak. I'll try to explain...'",
+            "effects": {
+                "glimmering": 1
+            },
+            "mutations": [
+                {
+                    "filter": "text",
+                    "mutate": "autographed",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": "teresadiscusslocksmithsdream3",
+            "label": "Discuss the Locksmith's Dream, Volume 3",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "locksmithsdream3": 1,
+                "autographed": -1
+            },
+            "actionid": "talk",
+            "startdescription": "'I'll write my name in it, shall I? Only the name that Christopher called me. Not the name I use in here.'",
+            "description": "'Oh, my, I was in a state when I wrote this, wasn't I? Sorry about that. But I was right that death is down. That's one of the reasons I usually stay pretty high in the Mansus. I'll try to explain what I mean, a little -'",
+            "effects": {
+                "glimmering": 1
+            },
+            "mutations": [
+                {
+                    "filter": "text",
+                    "mutate": "autographed",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": "teresadiscusslocksmithsdream4",
+            "label": "Discuss the Locksmith's Dream, Volume 4",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "locksmithsdream4": 1,
+                "autographed": -1
+            },
+            "actionid": "talk",
+            "startdescription": "'I'll definitely sign that one. But I'm afraid no one will see the signature unless they're dreaming of the book.'",
+            "description": "'I got very excited about Janus, back then. Now I think that if Janus is anyone, that anyone must be the Watchman or the Meniscate. Riddles tend to expand, puzzles tend to resolve.'",
+            "effects": {
+                "glimmering": 1
+            },
+            "mutations": [
+                {
+                    "filter": "text",
+                    "mutate": "autographed",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": "teresadiscusslocksmithsdream5",
+            "label": "Discuss the Locksmith's Dream, Volume 5",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "locksmithsdream5": 1,
+                "autographed": -1
+            },
+            "actionid": "talk",
+            "startdescription": "'Now where exactly did you find this?'",
+            "description": "'I'll sign it. But not with my Name. Not yet, if ever.'",
+            "effects": {
+                "glimmering": 1
+            },
+            "mutations": [
+                {
+                    "filter": "text",
+                    "mutate": "autographed",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": "begincultfoundation",
+            "label": "A New Beginning?",
+            "actionid": "talk",
+            "requirements": {
+                "acquaintance": 1,
+                "ritual": -1,
+                "location": -1
+            },
+            "extantreqs": {
+                "society": -1
+            },
+            "craftable": true,
+            "startdescription": "Together, we might be more.",
+            "comments": "This is hijacked by links from the Apostle open-talk verbs, to prevent apostles founding a second cult. This is why all the content is in the followup recipe.",
+            "linked": [
+                {
+                    "id": "begincultfoundation_createcult",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "begincultfoundation_createcult",
+            "label": "Found a Mystical Organisation",
+            "extantreqs": {
+                "society": -1
+            },
+            "alt": [
+                {
+                    "id": "cultfoundation",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "actionid": "talk",
+            "effects": {
+                "notoriety": 1
+            },
+            "startdescription": "Here is someone I might work with. A companion, or a follower. But first, I must give them something to follow. A society; a sodality; an order; a cult.",
+            "description": "I have begun my true work. The authorities will take an interest in it. I must be ready for them. [You have begun to establish your cult. It will need a little more, before you can recruit followers.]",
+            "warmup": 10
+        },
+        {
+            "id": "inspiremystique",
+            "actionid": "talk",
+            "label": "Attracting Attention",
+            "effects": {
+                "mystique": 1
+            },
+            "startdescription": "There are hours and there are hours. This hour is mine.",
+            "description": "Parted lips; glittering eyes.",
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "findacquaintanceopentalk",
+            "label": "An Acquaintance",
+            "actionid": "talk",
+            "startdescription": "I await an answer to a letter.",
+            "description": "The reply to your letter is courteous, if cautious. They are intrigued by how you found their name: intrigued enough to meet you.",
+            "warmup": 30,
+            "craftable": false,
+            "comments": "this runs as an additional, and is how Talk is opened. I'd like to remove maxexecutions, but it's in here now for safety.",
+            "deckeffects": {
+                "acquaintances": 1
+            },
+            "maxexecutions": 1
+        }
+    ]
+}

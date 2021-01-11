@@ -1,0 +1,1314 @@
+{
+	"recipes": [
+		{
+			"id": "work.apostleforge.majorvictory.hint5",
+			"actionId": "work",
+			"label": "Die letzten Teile des Großen Werkes?",
+			"startdescription": "Wir haben den Kern, seinen Brennstoff, den Kompass, den Schlüssel, die Mysterien der Öffnung. Nun brauchen wir nur die Jahreszeit der wildesten Weißglut der Schmiede.",
+			"requirements": {
+				"apostleforge.pillar2": 1,
+				"apostleforge.pillar3": 1,
+				"apostleforge.pillar4": 1,
+				"apostleforge.pillar5": 1,
+				"fragmentknockg": 1
+			},
+			"effects": {
+				
+			},
+			"warmup": 60,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "work.apostleforge.majorvictory.hint4",
+			"actionId": "work",
+			"label": "Die letzten Teile des Großen Werkes?",
+			"startdescription": "Wir haben den Kern, seinen Brennstoff, den Kompass, den Schlüssel. Selbst all das wird nicht reichen. Wir müssen unserem Gestalter mit den Mysterien der Öffnung den Weg bereiten. ",
+			"requirements": {
+				"apostleforge.pillar2": 1,
+				"apostleforge.pillar3": 1,
+				"apostleforge.pillar4": 1,
+				"apostleforge.pillar5": 1
+			},
+			"effects": {
+				
+			},
+			"warmup": 60,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "work.apostleforge.majorvictory.hint3",
+			"actionId": "work",
+			"label": "Die letzten Teile des Großen Werkes?",
+			"startdescription": "Wir haben den Kern, seinen Brennstoff, den Kompass. Wir brauchen noch immer den Beißenden Schlüssel.",
+			"requirements": {
+				"apostleforge.pillar2": 1,
+				"apostleforge.pillar3": 1,
+				"apostleforge.pillar4": 1
+			},
+			"effects": {
+				
+			},
+			"warmup": 60,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "work.apostleforge.majorvictory.hint2",
+			"actionId": "work",
+			"label": "Die letzten Teile des Großen Werkes?",
+			"startdescription": "Wir haben den Kern und seinen Brennstoff. Wir brauchen unseren Geblendeten Kompass um den Makel der Welt zu finden.",
+			"requirements": {
+				"apostleforge.pillar2": 1,
+				"apostleforge.pillar3": 1
+			},
+			"effects": {
+				
+			},
+			"warmup": 60,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "work.apostleforge.majorvictory.hint1",
+			"actionId": "work",
+			"label": "Die letzten Teile des Großen Werkes?",
+			"startdescription": "Wir haben den Kern: wir brauchen blaues Gold, um ihn zu speisen.",
+			"requirements": {
+				"apostleforge.pillar2": 1
+			},
+			"effects": {
+				
+			},
+			"warmup": 60,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlelantern.majorvictory.hint5",
+			"actionId": "work",
+			"label": "Das Tor öffnet sich nach außen?",
+			"startdescription": "Wir brauchen die Mitwirkung unseres edlen Gastes.",
+			"requirements": {
+				"apostlelantern.pillar3": 1,
+				"apostlelantern.pillar4": 1,
+				"ingredientlanternf": 1,
+				"fragmentmothe": 1,
+				"toollanternf": 1,
+				"kleidouchos": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlelantern.majorvictory.hint4",
+			"actionId": "work",
+			"label": "Das Tor öffnet sich nach außen?",
+			"startdescription": "Das Tor öffnet sich ohne seinen verbotenen Schlüssel nicht nach außen.",
+			"requirements": {
+				"apostlelantern.pillar3": 1,
+				"apostlelantern.pillar4": 1,
+				"ingredientlanternf": 1,
+				"fragmentmothe": 1,
+				"toollanternf": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlelantern.majorvictory.hint3",
+			"actionId": "work",
+			"label": "Das Tor öffnet sich nach außen?",
+			"startdescription": "Wir brauchen das Glas eines Wächters, damit unsere Erleuchtung so leuchtend wie nur möglich sein kann.",
+			"requirements": {
+				"apostlelantern.pillar3": 1,
+				"apostlelantern.pillar4": 1,
+				"ingredientlanternf": 1,
+				"fragmentmothe": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlelantern.majorvictory.hint2",
+			"actionId": "work",
+			"label": "Das Tor öffnet sich nach außen?",
+			"startdescription": "Die Tausendfüßlerin kennt immer den Weg. Wir werden ihre Geheimnisse brauchen.",
+			"requirements": {
+				"apostlelantern.pillar3": 1,
+				"apostlelantern.pillar4": 1,
+				"ingredientlanternf": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlelantern.majorvictory.hint1",
+			"actionId": "work",
+			"label": "Das Tor öffnet sich nach außen?",
+			"startdescription": "Das Auge des Wächters wurde geöffnet, nicht auf die übliche Weise, sondern mit einem Messer. Wir brauchen, was herausgelaufen ist.",
+			"requirements": {
+				"apostlelantern.pillar3": 1,
+				"apostlelantern.pillar4": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlelantern.majorvictory.hint0",
+			"actionId": "work",
+			"label": "Das Tor öffnet sich nach außen?",
+			"startdescription": "Gewiss könnte sich das Tor ohne Zeugen öffnen, doch wie können wir ohne Zeugen zum Erleuchten den Erlass des Wächters erfüllen? Der Wächter ist nicht barmherzig.",
+			"requirements": {
+				"apostlelantern.pillar3": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlegrail.majorvictory.hint5",
+			"actionId": "work",
+			"label": "Die letzten Elemente der Vitulation?",
+			"startdescription": "Unsere besonderen Gewürze müssen besonders vorbereitet werden. Alles sonst ist bereit.",
+			"requirements": {
+				"fragmentheartg": 1,
+				"influencegrailg": 1,
+				"apostlegrail.pillar2": 1,
+				"apostlegrail.pillar3": 1,
+				"apostlegrail.pillar4": 1,
+				"toolgrailf": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlegrail.majorvictory.hint4",
+			"actionId": "work",
+			"label": "Die letzten Elemente der Vitulation?",
+			"startdescription": "Ohne die Endlosen Mysterien wird die Vitulation nicht die Intensität erreichen, die wir brauchen.",
+			"requirements": {
+				"influencegrailg": 1,
+				"apostlegrail.pillar2": 1,
+				"apostlegrail.pillar3": 1,
+				"apostlegrail.pillar4": 1,
+				"toolgrailf": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlegrail.majorvictory.hint3",
+			"actionId": "work",
+			"label": "Die letzten Elemente der Vitulation?",
+			"startdescription": "Wir brauchen den mächtigsten Gral-Einfluss, den wir kriegen können. ",
+			"requirements": {
+				"apostlegrail.pillar2": 1,
+				"apostlegrail.pillar3": 1,
+				"apostlegrail.pillar4": 1,
+				"toolgrailf": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlegrail.majorvictory.hint2",
+			"actionId": "work",
+			"label": "Die letzten Elemente der Vitulation?",
+			"startdescription": "Keine Vitulation wäre eine Vitulation ohne den Murmelnden Kelch.",
+			"requirements": {
+				"apostlegrail.pillar2": 1,
+				"apostlegrail.pillar3": 1,
+				"apostlegrail.pillar4": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlegrail.majorvictory.hint1",
+			"actionId": "work",
+			"label": "Die letzten Elemente der Vitulation?",
+			"startdescription": "Wir können mit der Vitulation ohne ausreichend Gäste nicht beginnen. Unsere Wonne darf nicht hungern.",
+			"requirements": {
+				"apostlegrail.pillar2": 1,
+				"apostlegrail.pillar3": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "work.apostlegrail.majorvictory.hint0",
+			"actionId": "work",
+			"label": "Die letzten Elemente der Vitulation?",
+			"startdescription": "Wir können ohne das richtige Aroma für mich und die anderen der Menge nicht mit der Vitulation beginnen.",
+			"requirements": {
+				"apostlegrail.pillar2": 1
+			},
+			"hintonly": true
+		},
+		{
+			"id": "workbenefactorhint",
+			"label": "Privatvorstellungen?",
+			"actionId": "work",
+			"requirements": {
+				"benefactor": 1
+			},
+			"startdescription": "Um meinen Wohltäter zufriedenzustellen, muss ich meine Fähigkeiten ausreizen und dafür sorgen, dass ich so gut wie möglich aussehe. Das hat immer seinen Preis.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "workfundshint",
+			"label": "Geld",
+			"actionId": "work",
+			"requirements": {
+				"funds": 1
+			},
+			"startdescription": "Das bringt nichts. Aber vielleicht finde ich irgendwann ja einen anderen Weg, mein Geld in meine Zukunft zu investieren. So sich denn eine Zukunft habe.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "skillhealthhintwork",
+			"label": "Gesundheit",
+			"actionId": "work",
+			"requirements": {
+				"healthskill": 1,
+				"job": -1
+			},
+			"startdescription": "Ich bin stark geworden, doch ich muss immer noch meine Gesundheit einem Arbeitstag widmen.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "vitalityhintwork",
+			"label": "Vitalität",
+			"actionId": "work",
+			"requirements": {
+				"vitality": 1
+			},
+			"startdescription": "Für die Arbeit bringt sie mir nichts, aber durch ihr Studium könnte meine Gesundheit verbessern.",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on work primary slot"
+		},
+		{
+			"id": "eruditionhintwork",
+			"label": "Erudition",
+			"actionId": "work",
+			"requirements": {
+				"erudition": 1
+			},
+			"startdescription": "Für die Arbeit bringt sie mir nichts, aber durch ihr Studium könnte meinen Verstand verbessern.",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on work primary slot"
+		},
+		{
+			"id": "glimmeringhintwork",
+			"label": "Schimmern",
+			"actionId": "work",
+			"requirements": {
+				"glimmering": 1
+			},
+			"startdescription": "Für die Arbeit bringt es mir nichts, aber durch sein Studium könnte meine Leidenschaft verbessern.",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on work primary slot"
+		},
+		{
+			"id": "contentmenthintwork",
+			"label": "Zufriedenheit",
+			"actionId": "work",
+			"requirements": {
+				"contentment": 1
+			},
+			"startdescription": "Man kann nicht davon leben glücklich zu sein. Doch das Glück könnte etwas sein, woran ich mich klammern kann, wenn es um mich herum Nacht wird.",
+			"craftable": false,
+			"hintonly": true,
+			"comments": "Not currently possible with restrictions on work primary slot"
+		},
+		{
+			"id": "commissionhint_wronglore",
+			"label": "Einen Auftrag erledigen",
+			"actionId": "work",
+			"requirements": {
+				"commission": 1,
+				"lore": 1
+			},
+			"startdescription": "Ich brauche das richtige Wissen, und ich muss meine Fähigkeiten in den Dienst des Werkes stellen. [Die Beschreibung des Auftrags wird dich daran erinnern, welches Wissen du brauchst.]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "commissionhint",
+			"label": "Einen Auftrag erledigen?",
+			"actionId": "work",
+			"requirements": {
+				"commission": 1
+			},
+			"startdescription": "Durch die Arbeit mit dem richtigen Wissen-Fragment kann ich ein Manuskript erstellen und diesen Auftrag abschließen. Ich muss mit meinem Klienten über diesen Auftrag reden, wenn ich ihn abgeschlossen habe.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "minorforgevictory_hint_sixth",
+			"label": "Das Siebente Zeichen?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"powermarks": 6
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Das Siebente Zeichen ist der Flächenbrand des Herzens. Ich bin ganz nah: so nah wie die Flamme der Kerze ist. Ich brauche alle Macht der Schmiede, die ich kriegen kann, mindestens den 36. Grad der Intensität.",
+			"hintonly": true
+		},
+		{
+			"id": "minorforgevictory_hint",
+			"label": "Das Siebente Zeichen?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"powermarks": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Das Siebente Zeichen ist der Flächenbrand des Herzens. Ich muss zunächst das Sechste Zeichen erreichen.",
+			"hintonly": true
+		},
+		{
+			"id": "minorgrailvictory_hint_sixth_with_romantic",
+			"label": "Eine Abkürzung zum Siebenten Zeichen?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"sensationmarks": 6,
+				"romanticinterest": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Das Siebente Zeichen ist das Fest der Wahren Geburt. Ich bin ganz nah: so nah wie das Blut dem Herzen ist. Ich brauche noch mehr ... doch der Gral opferte einst jemanden, den er geliebt hatte, und solche Opfer sind ihm kostbar. Wenn ich bereit bin, jemand Geliebten zu opfern, brauche ich nur Macht des 27. Grads der Intensität.",
+			"hintonly": true
+		},
+		{
+			"id": "minorgrailvictory_hint_sixth",
+			"label": "Das Siebente Zeichen?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"sensationmarks": 6
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Das Siebente Zeichen ist das Fest der Wahren Geburt. Ich bin ganz nah: so nah wie das Blut dem Herzen ist. Ich brauche alle Macht des Grals, die ich kriegen kann, mindestens den 36. Grad der Intensität.",
+			"hintonly": true
+		},
+		{
+			"id": "minorgrailvictory_hint",
+			"label": "Das Siebente Zeichen?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"sensationmarks": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Das Siebente Zeichen ist das Fest der Wahren Geburt. Ich muss zunächst das Sechste Zeichen erreichen.",
+			"hintonly": true
+		},
+		{
+			"id": "minorlanternvictory_hint_sixth",
+			"label": "Das Siebente Zeichen?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"enlightenmentmarks": 6
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Das Siebente Zeichen ist der Incursus. Ich bin ganz nah: so nah wie das Licht dem Rand des Schattens ist. Ich brauche alle Macht der Laterne, die ich kriegen kann, mindestens den 36. Grad der Intensität.",
+			"hintonly": true
+		},
+		{
+			"id": "minorlanternvictory_hint",
+			"label": "Das Siebente Zeichen?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"enlightenmentmarks": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "Das Siebente Zeichen ist der Incursus. Ich muss zunächst das Sechste Zeichen erreichen.",
+			"hintonly": true
+		},
+		{
+			"id": "hint_summon_spirit_forgee_edge",
+			"label": "Eine mächtige Kreatur der Schmiede der Tage beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"forge": 1,
+				"lantern": 1,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_forgee_edge": -1,
+				"spirit_forgee_edge.defunct": -1,
+				"spirit_forgee_edge.consumed": -1
+			},
+			"startdescription": "Ich habe eine nützliche Verknüpfung von Aspekten entdeckt, doch ich brauche noch mehr. Um ein Ding aus Feuer und Ruhm zu beschwören, brauche ich eine große Macht der Schmiede, eine erhebliche Macht des Klopfens und etwas von der Laterne.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_forgee_edge_exists",
+			"label": "König Tiegel? Schon wieder?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"forge": 1,
+				"lantern": 1,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_forgee_edge": 1
+			},
+			"startdescription": "Ziehe ich es in Erwägung, König Tiegel zu beschwören? König Tiegel ist bereits in der Welt.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_forgee_edge_dayd",
+			"label": "König Tiegel? Schon?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"forge": 1,
+				"lantern": 1,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_forgee_edge.defunct": 1
+			},
+			"startdescription": "Ziehe ich es in Erwägung, König Tiegel zu beschwören? Er schürt noch immer seine Feuer im Mansus.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_forgee_edge_nom",
+			"label": "König Tiegel? Wirklich?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"forge": 1,
+				"lantern": 1,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_forgee_edge.consumed": 1
+			},
+			"startdescription": "Ich habe König Tiegels verrußte Überreste verzehrt. Er wird mir böse sein. Es ziemt sich nicht, einen Namen der Schmiede zu beschwören, der dir zürnt.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_graile_edge",
+			"label": "Eine mächtige Kreatur des Roten Grals beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"grail": 1,
+				"forge": 1,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_graile_edge": -1,
+				"spirit_graile_edge.defunct": -1
+			},
+			"startdescription": "Ich habe eine nützliche Verknüpfung von Aspekten entdeckt, doch ich brauche noch mehr Macht. Um ein Ding aus Blut und Wandel zu beschwören, brauche ich eine große Macht des Grals, eine erhebliche Macht des Klopfens und etwas von der Schmiede.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_graile_edge_exists",
+			"label": "Ezeem? Schon wieder?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"grail": 1,
+				"forge": 1,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_graile_edge": 1
+			},
+			"startdescription": "Ziehe ich es in Erwägung, Ezeem zu beschwören? Ezeem ist bereits in der Welt.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_graile_edge_dayd",
+			"label": "Ezeem? Schon?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"grail": 1,
+				"forge": 1,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_graile_edge.defunct": 1
+			},
+			"startdescription": "Ziehe ich es in Erwägung, Ezeem zu beschwören? Ezeem schmollt im Mansus.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_lanterne_secret",
+			"label": "Etwas Ungewöhnliches beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"lantern": 1,
+				"secrethistories": 1,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_lanterne_secret": -1,
+				"spirit_lanterne_secret.defunct": -1
+			},
+			"startdescription": "Ich habe eine nützliche Verknüpfung von Aspekten entdeckt, doch ich brauche noch mehr Macht. Mit genug von der Laterne, einem erheblichen Grad des Klopfens und dem reizenden Aroma von Geheimnissen kann ich vielleicht etwas Interessantes beschwören.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_lanterne_secret_exists",
+			"label": "Die Baldomeranerin? Schon wieder?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"lantern": 1,
+				"secrethistories": 1,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_lanterne_secret": 1
+			},
+			"startdescription": "Ziehe ich es in Erwägung, die Baldomeranerin zu beschwören? Sie ist bereits in der Welt.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_lanterne_secret_dayd",
+			"label": "Die Baldomeranerin? Schon?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"lantern": 1,
+				"secrethistories": 1,
+				"desire": -1
+			},
+			"extantreqs": {
+				"spirit_lanterne_secret.defunct": 1
+			},
+			"startdescription": "Ziehe ich es in Erwägung, die Baldomeranerin zu beschwören? Sie ruht noch immer im Mansus.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_forgec_winter",
+			"label": "Eine Kreatur der Schmiede der Tage beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"forge": 1,
+				"winter": 1,
+				"desire": -1
+			},
+			"startdescription": "Ich habe eine nützliche Verknüpfung von Aspekten entdeckt, doch ich brauche noch mehr Macht. Um diese nebulöse, listenreiche Entität zu rufen, brauche ich eine erhebliche Menge der Schmiede sowie etwas Winter und Klopfen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_grailc_moth",
+			"label": "Eine Kreatur des Roten Grals beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"grail": 1,
+				"moth": 1,
+				"desire": -1
+			},
+			"startdescription": "Ich habe eine nützliche Verknüpfung von Aspekten entdeckt, doch ich brauche noch mehr Macht. Um diese monströse, aber liebevolle Entität zu rufen, brauche ich eine erhebliche Menge des Grals sowie etwas Motte und Klopfen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_lanternc_edge",
+			"label": "Ein Ding von jenseits der Spiegel beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"lantern": 1,
+				"edge": 1,
+				"desire": -1
+			},
+			"startdescription": "Ich habe eine nützliche Verknüpfung von Aspekten entdeckt, doch ich brauche noch mehr Macht. Um dieses subtile, zerbrechliche, mörderische Ding zu rufen, brauche ich eine erhebliche Menge der Laterne sowie etwas Klopfen und Kante.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_heartc_edge",
+			"label": "Eine Kreatur der Donnerhaut beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"heart": 1,
+				"edge": 1,
+				"desire": -1
+			},
+			"startdescription": "Ich habe eine nützliche Verknüpfung von Aspekten entdeckt, doch ich brauche noch mehr Macht. Um dieses fröhliche, unermüdliche, gnadenlose Ding zu rufen, brauche ich eine erhebliche Menge des Herzens sowie etwas Klopfen und Kante.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_winterd_edge",
+			"label": "Eine Kreatur der Sonne-in-Lumpen beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"winter": 1,
+				"edge": 1,
+				"desire": -1
+			},
+			"startdescription": "Ich habe eine nützliche Verknüpfung von Aspekten entdeckt, doch ich brauche noch mehr Macht. Um dieses frostige und funkelnde Ding zu rufen, brauche ich eine erhebliche Menge des Winters sowie etwas Klopfen und Kante.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_winterb_heart",
+			"label": "Einen aus der Masse der Toten beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"winter": 1,
+				"heart": 1,
+				"desire": -1
+			},
+			"startdescription": "Ich habe eine nützliche Verknüpfung von Aspekten entdeckt, doch ich brauche noch mehr Macht. Um dieses erbärmliche, stumme Ding zu rufen, brauche ich Winter der 4. Intensität sowie etwas Klopfen und Herz.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_renew_spirit_wintera_edge",
+			"label": "Einen Zerschlagenen Erhobenen mit der Macht des Kartographen der Narben erneuern?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"spirit_wintera_edge": 1,
+				"desire": -1
+			},
+			"startdescription": "Es ist schwerer, einen Zerschlagenen Erhobenen zu erhalten als einen sich erheben zu lassen. Doch mit genug Winter-Aspekt und genug Kante könnte ich meinen Zerschlagenen Erhobenen in Bewegung halten. Oder ich beschwöre gleich einen größeren Geist.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_renew_spirit_wintera_moth",
+			"label": "Einen Wachsenden Erhobenen mit der Macht der Ringeibe erneuern?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"spirit_wintera_moth": 1,
+				"desire": -1
+			},
+			"startdescription": "Ein Wachsender Erhobener lässt sich nicht lange im Zaume halten. Doch mit genug Winter-Aspekt und genug Motte könnte ich ihn noch etwas länger stabilisieren. Oder ich beschwöre gleich einen größeren Geist.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_wintera_edge",
+			"label": "Eine Leiche mit der Macht des Kartographen der Narben erfüllen?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"winter": 1,
+				"edge": 1,
+				"desire": -1
+			},
+			"startdescription": "Ich habe eine nützliche Verknüpfung von Aspekten entdeckt, doch ich brauche noch mehr. Ich brauche ein wenig vom Aspekt des Winters, etwas Kante und eine Leiche, um einen brutalen Diener zu erschaffen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "hint_summon_spirit_wintera_moth",
+			"label": "Eine Leiche mit der Macht der Ringeibe erfüllen?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"winter": 1,
+				"moth": 1,
+				"desire": -1
+			},
+			"startdescription": "Ich brauche ein wenig vom Aspekt des Winters, etwas Motte und eine Leiche, um einen gerissenen Diener zu erschaffen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "work.openscar.hint",
+			"actionId": "work",
+			"label": "Ein Schwellen-Aufstieg?",
+			"startdescription": "Ein Schwellen-Aufstieg erfordert mehrere Schloss-Narben und einen Aspekt des Klopfens der 24. Intensität.",
+			"requirements": {
+				"ritual": 1,
+				"lockscar": 1,
+				"knock": 1
+			},
+			"effects": {
+				
+			},
+			"warmup": 60,
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasknockedge",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"edge": 1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1
+			},
+			"startdescription": "Es gäbe da Möglichkeiten, wenn ich Laterne, Herz oder Winter hinzufüge.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasknockforge",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"forge": 1,
+				"edge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1
+			},
+			"startdescription": "Es gäbe da Möglichkeiten. Füge ich Winter hinzu, könnte ich etwas Rauchiges kontaktieren. Füge ich Laterne hinzu, könnte ich eine strahlende Macht kontaktieren.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasknockgrail",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"grail": 1,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1
+			},
+			"startdescription": "Es gäbe da Möglichkeiten. Füge ich Motte hinzu, könnte ich etwas Formloses kontaktieren. Füge ich Schmiede hinzu, könnte ich eine verführerische, unbändige Macht kontaktieren.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasknockheart",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"heart": 1,
+				"edge": -1,
+				"forge": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1
+			},
+			"startdescription": "Es gäbe da Möglichkeiten. Füge ich Kante hinzu, könnte ich etwas Unwiderstehliches kontaktieren. Füge ich Winter hinzu, könnte ich einen aus dem Heer der Toten beschwören.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasknocklantern",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"lantern": 1,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1
+			},
+			"startdescription": "Es gäbe da Möglichkeiten. Füge ich Kante hinzu, könnte ich etwas von jenseits der Spiegel hervorholen. Füge ich Schmiede hinzu, könnte ich etwas Strahlendes kontaktieren.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasknockmoth",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"moth": 1,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"secrethistories": -1,
+				"winter": -1
+			},
+			"startdescription": "Es gäbe da Möglichkeiten. Füge ich Gral hinzu, könnte ich etwas Formloses kontaktieren.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasknocksecrethistories",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"secrethistories": 1,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"winter": -1
+			},
+			"startdescription": "Es gäbe da Möglichkeiten. Füge ich genug Laterne hinzu, wer weiß dann schon, was ich alles anlocken könnte?",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasknockwinter",
+			"label": "Winter",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"winter": 1,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1
+			},
+			"startdescription": "Es gäbe da Möglichkeiten, wenn ich Kante, Herz oder Schmiede hinzufüge.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"label": "Ruhm des Verstands?",
+			"id": "arcane_lantern_edge_hint",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"lantern": 1,
+				"edge": 1
+			},
+			"actionId": "work",
+			"startdescription": "Mit mindestens 5 Mal Laterne und 1 Mal Kante könnte ich die mystische Disziplin namens Ruhm des Verstands benutzen, um meine Leidenschaft in Verstand zu verwandeln.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"label": "Wirbel der Leidenschaft?",
+			"id": "arcane_moth_edge_hint",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"moth": 1,
+				"edge": 1
+			},
+			"actionId": "work",
+			"startdescription": "Mit mindestens 5 Mal Motte und 1 Mal Kante könnte ich die ekstatische Praktik namens Wirbel der Leidenschaft benutzen, um meinen Verstand in Leidenschaft zu verwandeln.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"label": "Erlösung der Schmiede?",
+			"id": "arcane_forge_grail_hint",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"forge": 1,
+				"grail": 1
+			},
+			"startdescription": "Mit mindestens 5 Mal Schmiede und 1 Mal Gral könnte ich die verbotene Prozedur namens Erlösung der Schmiede benutzen, um Hinfälligkeit in Gesundheit zu verwandeln.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"label": "Das Ende ist schön?",
+			"id": "arcane_winter_lantern_hint",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"desire": -1,
+				"winter": 1,
+				"lantern": 1
+			},
+			"startdescription": "Mit mindestens 5 Mal Winter und 1 Mal Laterne könnte ich die Stunde der Enden, die Sonne-in-Lumpen, anflehen, jemanden zu vernichten ... doch nicht jemand bestimmten. Nur die Sonne-in-Lumpen allein wird entscheiden.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasedge",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"edge": 1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1
+			},
+			"startdescription": "Die Kante ist der Aspekt von Schlacht und Kampf. Füge ich Klopfen hinzu, könnte ich mich an einer Beschwörung versuchen. Füge ich Laterne oder Motte hinzu, könnte ich eine Schlacht in meiner Seele entfesseln.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasforge",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"forge": 1,
+				"edge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1
+			},
+			"startdescription": "Die Schmiede ist der Aspekt von Wandel und Zerstörung. Füge ich Klopfen hinzu, könnte ich mich an einer Beschwörung versuchen. Leide ich unter Hinfälligkeit und füge Gral hinzu, könnte ich vielleicht meinen Leib erneuern.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasgrail",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"grail": 1,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1
+			},
+			"startdescription": "Der Gral ist der Aspekt von Appetit, Blut und Geburt. Füge ich Klopfen hinzu, könnte ich mich an einer Beschwörung versuchen. Leide ich unter Hinfälligkeit und füge Schmiede hinzu, könnte ich vielleicht meinen Leib erneuern.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasheart",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"heart": 1,
+				"edge": -1,
+				"forge": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1
+			},
+			"startdescription": "Das Herz ist der Aspekt der Erhaltung, aber auch der fortwährenden Bewegung. Füge ich Klopfen hinzu, könnte ich mich an einer Beschwörung versuchen.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasknock",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 2,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": 1
+			},
+			"startdescription": "Eine Beschwörung beginnt mit Klopfen, doch in der Regel braucht du noch zwei weitere Aspekte. Setze ich kein Klopfen ein, könnte ich noch weitere okkulte Praktiken außer der Beschwörung entdecken.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasmicroknock",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": 1,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": 1
+			},
+			"startdescription": "Eine Beschwörung beginnt mit Klopfen, doch ich brauche zumindest etwas mehr Klopfen.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthaslantern",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"lantern": 1,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1,
+				"apostlelantern.pillar4": -1
+			},
+			"comments": "extremely specific and probably unnecessary exclusion with the pillar, but it caught one person once",
+			"startdescription": "Die Laterne ist das Prinzip des geheimen Ortes, der manchmal das Haus der Sonne genannt wird, und das des Lichtes darüber. Füge ich Klopfen hinzu, könnte ich mich an einer Beschwörung versuchen. Füge ich Kante hinzu, kann ich versuchen, meine Leidenschaft mit Verstand zu bezwingen. Füge ich Winter hinzu, kann ich mich an einer närrischen, wunderschönen Magie versuchen.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthasmoth",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"moth": 1,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"secrethistories": -1,
+				"winter": -1
+			},
+			"startdescription": "Die Motte ist der wilde und riskante Aspekt von Chaos und Sehnsucht. Füge ich Klopfen hinzu, könnte ich mich an einer Beschwörung versuchen. Füge ich Kante hinzu, kann ich versuchen, meinen Verstand in Leidenschaft zu ersäufen.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthassecrethistories",
+			"label": "Etwas beschwören?",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"secrethistories": 1,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"winter": -1
+			},
+			"startdescription": "Geheime Geschichten beschreiben die unbekannten Komplexitäten der Welt und ihrer vielen Vergangenheiten. Für gewöhnlich kommen sie nicht direkt in den unsichtbaren Künsten zum Einsatz, doch wenn ich Klopfen hinzufüge, wer weiß schon, was dann möglich wäre?",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehinthaswinter",
+			"label": "Winter",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"knock": -1,
+				"winter": 1,
+				"edge": -1,
+				"forge": -1,
+				"heart": -1,
+				"grail": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1
+			},
+			"startdescription": "Der Winter ist der Aspekt der Stille, der Enden und der Dinge, die nicht ganz tot sind. Füge ich Klopfen hinzu, könnte ich mich an einer Beschwörung versuchen. Füge ich Laterne hinzu, kann ich mich an einer närrischen, wunderschönen Magie versuchen.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ritehint",
+			"label": "Riten",
+			"actionId": "work",
+			"requirements": {
+				"ritual": 1,
+				"lore": -1,
+				"ingredient": -1,
+				"influence": -1,
+				"follower": -1,
+				"tool": -1,
+				"desire": -1
+			},
+			"startdescription": "Jeder Ritus kann zu vielerlei Zwecken eingesetzt werden. Für eine Beschwörung muss ich damit anfangen, die Macht des Klopfens zu nutzen, um den Weg zu öffnen.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ascensionpower_upgradetoobsession_hint",
+			"label": "Nicht genug, noch nicht",
+			"actionId": "work",
+			"requirements": {
+				"ascensionpowerb": 1,
+				"waystag_after": 1,
+				"forge": 1
+			},
+			"startdescription": "Noch nicht genug. Die Schmiede der Tage wird mich nicht mit ihrer Präsenz beehren, es sein denn, ich bin ihrer Aufmerksamkeit würdig. Ich brauche die Macht der Schmiede in mindestens 6. Intensität.",
+			"description": ".",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "ascensionsensation_upgradetoobsession_hint_m",
+			"label": "Nicht genug, noch nicht",
+			"actionId": "work",
+			"requirements": {
+				"ascensionsensationbm": 1,
+				"waystag_after": 1,
+				"grail": 1
+			},
+			"startdescription": "Noch nicht genug. Der Rote Gral wird mich nicht mit seiner Präsenz beehren, es sein denn, ich bin seiner Aufmerksamkeit würdig. Ich brauche die Macht des Grals in mindestens 6. Intensität.",
+			"description": ".",
+			"hintonly": true
+		},
+		{
+			"id": "ascensionsensation_upgradetoobsession_hint_f",
+			"label": "Nicht genug, noch nicht",
+			"actionId": "work",
+			"requirements": {
+				"ascensionsensationbf": 1,
+				"waystag_after": 1,
+				"grail": 1
+			},
+			"startdescription": "Noch nicht genug. Der Rote Gral wird mich nicht mit seiner Präsenz beehren, es sein denn, ich bin seiner Aufmerksamkeit würdig. Ich brauche die Macht des Grals in mindestens 6. Intensität.",
+			"description": ".",
+			"hintonly": true
+		},
+		{
+			"id": "ascensionenlightenment_upgradetoobsession_hint",
+			"label": "Nicht genug, noch nicht",
+			"actionId": "work",
+			"requirements": {
+				"ascensionenlightenmentb": 1,
+				"waystag_after": 1,
+				"lantern": 1
+			},
+			"startdescription": "Noch nicht genug. Der Wächter wird mich nicht mit seiner Präsenz beehren, es sein denn, ich bin seiner Aufmerksamkeit würdig. Ich brauche die Macht der Laterne in mindestens 6. Intensität.",
+			"description": ".",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "work.temptation.remembrance.hint",
+			"actionId": "work",
+			"label": "Verlorene Farben?",
+			"startdescription": "Ich hungere nach dem, was verloren ist. Der Weg dorthin führt durch einen anderen Hunger. Es gibt da ein Geheimnis, das ich studieren muss.",
+			"requirements": {
+				"temptation.remembrance": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "detectivework_plotitem_burning_hint",
+			"actionId": "work",
+			"label": "Meinung geändert?",
+			"startdescription": "Es war die richtige Entscheidung. Und dennoch ... [Es könnte immer noch nicht zu spät sein, sich dem Studium der Akte zu widmen, bevor sie gänzlich verschwunden ist.]",
+			"requirements": {
+				"legacydetective_plotitem_burning": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "work.generaldesire.hint",
+			"actionId": "work",
+			"label": "Ein großes Werk?",
+			"startdescription": "Die letztendliche Erfüllung eines Verlangens markiert oft ein Ende. Es reicht nicht, nur zu hoffen. Alles hängt von meinen Taten ab. [Das Verlangen ist häufig der Weg, der bei einem Spiel zum Sieg führt. Das Verlangen nach Gefühl oder Macht oder Erleuchtung verlangt nach einem großen Ritual. Doch es gibt noch andere, sogar noch seltenere Spielarten des Verlangens, vor allem in den Erweiterungen Ghul, Priester und Tänzer.]",
+			"requirements": {
+				"desire": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		}
+	]
+}

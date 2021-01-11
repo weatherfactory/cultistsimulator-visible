@@ -1,0 +1,268 @@
+{
+	"legacies": [
+		{
+			"id": "exile",
+			"label": "Exil",
+			"description": "Niemand bestiehlt einen Lord der Abrechner. Und doch habe ich es getan. Ich hatte meine Gründe.",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"trace": 7,
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1
+			},
+			"fromEnding": "wintersacrifice",
+			"availableWithoutEndingMatch": true,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorya",
+			"label": "Exil",
+			"description": "Was wäre, wenn es anders gewesen wäre? Habe ich in einer anderen Historie größere Belohnungen eingeheimst?",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorya",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryb",
+			"label": "Exil",
+			"description": "Was wäre, wenn es anders gewesen wäre? Habe ich in einer anderen Historie noch größere Belohnungen eingeheimst?",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryb",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryc",
+			"label": "Exil",
+			"description": "Was wäre, wenn es anders gewesen wäre? Bin ich in einer anderen Historie noch höher aufgestiegen?",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryc",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryafoeslain",
+			"label": "Exil",
+			"description": "Was wäre, wenn es anders gewesen wäre? Habe ich in einer anderen Historie größere Belohnungen eingeheimst?",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryafoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorybfoeslain",
+			"label": "Exil",
+			"description": "Was wäre, wenn es anders gewesen wäre? Habe ich in einer anderen Historie noch größere Belohnungen eingeheimst?",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorybfoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorycfoeslain",
+			"label": "Exil",
+			"description": "Was wäre, wenn es anders gewesen wäre? Bin ich in einer anderen Historie noch höher aufgestiegen?",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorycfoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.foecaughtup",
+			"label": "Exil",
+			"description": "Was wäre, wenn es anders gewesen wäre? Habe ich in einer anderen Historie überlebt?",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "foecaughtup",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensioncolonel",
+			"label": "Exil",
+			"description": "Was wäre, wenn es anders gewesen wäre? Habe ich in einer anderen Historie etwas gefunden, das der Freiheit näher kommt?",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensioncolonel",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensionlionsmith",
+			"label": "Exil",
+			"description": "Was wäre, wenn es anders gewesen wäre? Habe ich in einer anderen Historie etwas gefunden, das dem Frieden näher kommt?",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensionlionsmith",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensionwolf",
+			"label": "Exil",
+			"description": "Was wäre, wenn es anders gewesen wäre? War ich in einer anderen Historie auch ein Zerstörer?",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensionwolf",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.victoryvelvet",
+			"label": "Exil",
+			"description": "Was wäre, wenn es anders gewesen wäre? Traf ich in einer anderen Historie meinen Schöpfer?",
+			"startdescription": "Sonnenuntergang. Zeit zu gehen.",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "victoryvelvet",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		}
+	]
+}

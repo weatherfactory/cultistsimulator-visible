@@ -1,0 +1,119 @@
+{
+    "recipes": [
+        {
+            "id": "temptationremembrancehintdream",
+            "label": "诱惑？",
+            "actionId": "dream",
+            "requirements": {
+                "temptation.remembrance": 1
+            },
+            "startdescription": "这世上有着各种颜色，漫宿则有另一番色彩，而其他的，便是失落的色彩。它们的缺失让我放不下画刀。[回忆的诱惑已将它的牙齿没入了你，其他的诱惑将无法再染指你。]",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "vitalityhintdream",
+            "label": "活力",
+            "actionId": "dream",
+            "requirements": {
+                "vitality": 1
+            },
+            "startdescription": "它无法激发梦境。但研究它能增进我的健康。",
+            "craftable": false,
+            "hintonly": true,
+            "comments": "Not currently possible with restrictions on Dream primary slot"
+        },
+        {
+            "id": "eruditionhintdream",
+            "label": "博闻",
+            "actionId": "dream",
+            "requirements": {
+                "erudition": 1
+            },
+            "startdescription": "它无法激发梦境。但研究它能增进我的理性。",
+            "craftable": false,
+            "hintonly": true,
+            "comments": "Not currently possible with restrictions on Dream primary slot"
+        },
+        {
+            "id": "glimmeringhintdream",
+            "label": "灵感",
+            "actionId": "dream",
+            "requirements": {
+                "glimmering": 1
+            },
+            "startdescription": "它现在还无法激发梦境。但研究它能增进我的激情。",
+            "craftable": false,
+            "hintonly": true,
+            "comments": "Not currently possible with restrictions on Dream primary slot"
+        },
+        {
+            "id": "contentmenthintdream",
+            "label": "安逸",
+            "actionId": "dream",
+            "requirements": {
+                "contentment": 1
+            },
+            "startdescription": "安逸不是通往梦境的钥匙，但梦境有时让我感到安逸。",
+            "craftable": false,
+            "hintonly": true,
+            "comments": "Not currently possible with restrictions on Dream primary slot"
+        },
+        {
+            "id": "dedicationtoobsession_power_hint",
+            "label": "下一步",
+            "actionId": "dream",
+            "requirements": {
+                "ascensionpowerb": 1
+            },
+            "startdescription": "我已经在梦境中来到了我所能抵达的最远处。我必须要开始施行“功业”了（在<b><作业></b>进行）。",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "dedicationtoobsession_enlightenment_hint",
+            "label": "下一步",
+            "actionId": "dream",
+            "requirements": {
+                "ascensionenlightenmentb": 1
+            },
+            "startdescription": "我已经在梦境中来到了我所能抵达的最远处。我必须要开始施行“功业”了。",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "tryreducefascination",
+            "label": "寻求冷静？",
+            "actionId": "dream",
+            "requirements": {
+                "fascination": 1
+            },
+            "startdescription": "幻象之门纷纷向我敞开。些微的黑暗会让我的光更加圆融。恐惧亦有其作用。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "tryrecoverreason",
+            "label": "放空头脑？",
+            "actionId": "dream",
+            "requirements": {
+                "dread": 1
+            },
+            "startdescription": "我只记得我有所改变；但我暂时想不起来，我是如何改变的。[使用正确的资源可以平息“恐惧”。]",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "tryrecoverillhealth",
+            "label": "恢复？",
+            "actionId": "dream",
+            "requirements": {
+                "illhealth": 1
+            },
+            "startdescription": "休息能够让我恢复——如果我拥有所需的资源的话。",
+            "craftable": false,
+            "hintonly": true,
+            "comments": "This one's generic."
+        }
+    ]
+}

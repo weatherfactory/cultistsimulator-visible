@@ -1,0 +1,821 @@
+{
+	"elements": [
+		{
+			"id": "hunger",
+			"label": "空腹",
+			"aspects": {
+				"illhealth": 1,
+				"grail": 2,
+				"ingredient": 1
+			},
+			"slots": [
+				{
+					"id": "nourishment",
+					"label": "栄養",
+					"actionid": "dream",
+					"description": "回復のためには、食べなければならない。",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"description": "回復するには、休息と食事が必要だ。しかし涎があふれ、視界が揺れだすと、赤い杯が見えた。時々それは私に話しかけてくる。[カードが消える前に、空腹のまま夢を見ると体力を回復できるようになる。]",
+			"xtriggers": {
+				"restorehealth": "health",
+				"scar_ability": "scar_heart"
+			},
+			"lifetime": 60,
+			"decayTo": "decrepitude"
+		},
+		{
+			"id": "health",
+			"label": "体力",
+			"aspects": {
+				"heart": 2,
+				"ingredient": 1,
+				"ability": 1
+			},
+			"animFrames": 1,
+			"xtriggers": {
+				"damagehealth": "injury",
+				"fallsick": "affliction",
+				"destroyhealth": "decrepitude",
+				"fatiguing": "fatigue",
+				"employment": "fatigue",
+				"job": "fatigue",
+				"ritual": "fatigue",
+				"society": "fatigue",
+				"scar_ability": "scar_heart"
+			},
+			"description": "これぞ我が体。世に多くの体があれど、これは我、唯一のもの。菌が土を必要とするように、我が心も体を必要とする。[活力が十分にあれば、もっと体力を獲得できる。]"
+		},
+		{
+			"id": "vitality",
+			"label": "活力",
+			"slots": [
+				{
+					"id": "morevitality",
+					"label": "活力を増やす",
+					"actionid": "study",
+					"description": "活力（または時折それ以上に風変わりな物）を十分に持っていれば、体力を高めることができる。",
+					"required": {
+						"vitality": 1,
+						"influenceheart": 1
+					}
+				}
+			],
+			"aspects": {
+				"advancement": 1,
+				"heart": 1,
+				"influence": 1
+			},
+			"description": "運動（またはもっと珍しいこと）が私を元気づけてくれた。[別の活力と一緒に使用して、自分の能力を高める。未使用の場合は３分しか持続しない。]",
+			"xtriggers": {
+				"upgradeinfluence": "influenceheartc"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "vitalityplus",
+			"label": "活力：学んだ教訓 ",
+			"aspects": {
+				"advancement": 1,
+				"heart": 2,
+				"influence": 1
+			},
+			"description": "向上心はある。[強さのスキルと一緒に使用することで、スキルを強化し、体力を得ることができる。最大5分間持続し、その後、活力に退化する。]",
+			"xtriggers": {
+				"upgradeinfluence": "influenceheartc"
+			},
+			"lifetime": 300,
+			"decayTo": "vitality"
+		},
+		{
+			"id": "restlessness",
+			"label": "落ち着きのなさ",
+			"aspects": {
+				"influence": 1,
+				"forge": 2,
+				"heart": 2,
+				"grail": 2,
+				"lantern": 2,
+				"moth": 2,
+				"memory": 1
+			},
+			"description": "落ち着きのない切望を感じる。<i>何か</i>を......したい気分だが、具体的には何を？",
+			"lifetime": 60,
+			"decayTo": "dread"
+		},
+		{
+			"id": "bloodshed",
+			"label": "流血",
+			"description": "血が流された。",
+			"lifetime": 1
+		},
+		{
+			"id": "injury",
+			"label": "怪我",
+			"aspects": {
+				"illhealth": 1,
+				"knock": 2,
+				"ingredient": 1
+			},
+			"slots": [
+				{
+					"id": "medicines",
+					"label": "薬を使うか......",
+					"actionid": "dream",
+					"description": "金を払って医者に診てもらうこともできる......",
+					"required": {
+						"funds": 1
+					}
+				},
+				{
+					"id": "vitality",
+					"label": "......活力",
+					"description": "...でも少し休ませてもらおう。",
+					"required": {
+						"vitality": 1
+					},
+					"actionid": "dream"
+				}
+			],
+			"description": "私が回復するには休息と栄養が必要だが、蟻の母が傷を優しく見てくれる。[カードが消える前に怪我した状態で夢を見ると、体力を回復することも可能になる。]",
+			"xtriggers": {
+				"restorehealth": "health",
+				"scar_ability": "scar_heart"
+			},
+			"lifetime": 150,
+			"decayTo": "decrepitude"
+		},
+		{
+			"id": "disillusionment",
+			"label": "情熱（幻滅）",
+			"description": "自分の信条や好みに反してしまった。[このカードは使えないが、60秒後には回復する。]",
+			"lifetime": 60,
+			"decayTo": "passion",
+			"icon": "passion",
+			"xtriggers": {
+				"scarability": "scar_moth",
+				"toreason": "concentration",
+				"damagepassion": "fascination"
+			},
+			"resaturate": true
+		},
+		{
+			"id": "passionexhausted",
+			"label": "情熱（枯渇）",
+			"description": "情熱が消えかけている。[このカードは使えないが、60秒後には回復する。]",
+			"lifetime": 60,
+			"decayTo": "passion",
+			"icon": "passion",
+			"xtriggers": {
+				"scarability": "scar_moth",
+				"toreason": "concentration",
+				"damagepassion": "fascination"
+			},
+			"resaturate": true
+		},
+		{
+			"id": "fatigue",
+			"label": "体力（疲労）",
+			"aspects": {
+				"illhealth": 1,
+				"heart": 1
+			},
+			"description": "このカードは使えないが、60秒後には回復する。夢を見ればもっと早く回復できる。",
+			"xtriggers": {
+				"restorehealth": "health",
+				"damagehealth": "injury",
+				"destroyhealth": "decrepitude",
+				"fallsick": "affliction",
+				"scarability": "scar_heart"
+			},
+			"lifetime": 60,
+			"decayTo": "health",
+			"icon": "health",
+			"resaturate": true
+		},
+		{
+			"id": "affliction",
+			"label": "苦悩",
+			"aspects": {
+				"illhealth": 1,
+				"winter": 2,
+				"ingredient": 1
+			},
+			"xtriggers": {
+				"restorehealth": "health",
+				"scarability": "scar_heart"
+			},
+			"slots": [
+				{
+					"id": "medicine",
+					"label": "薬を使うか......",
+					"actionid": "dream",
+					"description": "金を払って医者に診てもらうこともできる......",
+					"required": {
+						"funds": 1
+					}
+				},
+				{
+					"id": "vitality",
+					"label": "......活力",
+					"actionid": "dream",
+					"description": "...でも少し休ませてもらおう。",
+					"required": {
+						"vitality": 1
+					}
+				}
+			],
+			"description": "病のせいで体が弱っている。回復に必要なのは休息と栄養だ。[カードが衰退する前に、苦悩の夢をみると体力を回復できる。]",
+			"lifetime": 180,
+			"decayTo": "decrepitude"
+		},
+		{
+			"id": "reason",
+			"label": "理性",
+			"aspects": {
+				"lantern": 2,
+				"ingredient": 1,
+				"ability": 1
+			},
+			"animFrames": 1,
+			"description": "「いかなる生命体も、絶対現実の下では、正気で存在し続けることはできない」―― シャーリー・ジャクソン\n\n[博学を使うと、勉強して理性を高めることができる。」",
+			"xtriggers": {
+				"damagereason": "dread",
+				"fatiguing": "concentration",
+				"employment": "concentration",
+				"job": "concentration",
+				"topassion": "passion",
+				"ritual": "concentration",
+				"society": "concentration",
+				"scarability": "scar_lantern"
+			}
+		},
+		{
+			"id": "concentration",
+			"label": "理性[曇る]",
+			"description": "心が疲れた。[このカードは使えないが、60秒後には回復する。]",
+			"lifetime": 60,
+			"decayTo": "reason",
+			"icon": "reason",
+			"xtriggers": {
+				"scarability": "scar_lantern",
+				"topassion": "passionexhausted",
+				"damagereason": "dread"
+			},
+			"resaturate": true
+		},
+		{
+			"id": "erudition",
+			"label": "博学",
+			"slots": [
+				{
+					"id": "moreerudition",
+					"label": "さらなる博学",
+					"actionid": "study",
+					"description": "博学（または時折それ以上に風変わりな物を十分に持っていれば、理性を高めることができる。",
+					"required": {
+						"erudition": 1,
+						"influencelantern": 1
+					}
+				}
+			],
+			"aspects": {
+				"advancement": 1,
+				"lantern": 1,
+				"influence": 1
+			},
+			"description": "影が光を吸収するように知識を吸収する。出世も近いかもしれない。[博学は理性を得るために、勉強と一緒に使うことができる。未使用の場合は、３分しか持続しない。]",
+			"lifetime": 180,
+			"xtriggers": {
+				"upgradeinfluence": "influencelanternc"
+			}
+		},
+		{
+			"id": "eruditionplus",
+			"label": "博学：学んだ教訓",
+			"aspects": {
+				"advancement": 1,
+				"lantern": 2,
+				"influence": 1
+			},
+			"description": "向上心はある。[学識のスキルと一緒に使用することで、スキルを強化し、理性を得ることができる。最大5分間持続し、その後、博学に退化する。]",
+			"lifetime": 300,
+			"xtriggers": {
+				"upgradeinfluence": "influencelanternc"
+			},
+			"decayTo": "erudition"
+		},
+		{
+			"id": "dread",
+			"label": "恐怖",
+			"aspects": {
+				"edge": 2,
+				"inducesdespair": 1,
+				"influence": 1,
+				"illhealth": 1,
+				"memory": 1
+			},
+			"slots": [
+				{
+					"id": "reminders",
+					"label": "名残り",
+					"actionid": "dream",
+					"required": {
+						"contentment": 1
+					},
+					"description": "私には少しの安らぎか、幸せの瞬間が必要だ。[過度の恐怖はあなたを破滅させるだろう。満足感がそれを治してくれる。]"
+				},
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "恐怖を使えば、危険な影響力を強めることができるかもしれない。",
+					"required": {
+						"influenceedge": 1,
+						"influencewinter": 1
+					},
+					"actionid": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentedged": 1,
+						"fragmentedgee": 1,
+						"fragmentedgef": 1,
+						"fragmentedgeg": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"description": "私はあまりにも目にしすぎてしまった。未知の恐怖が鋭い歯で私の希望をかじり取っていく。死ぬほど怖い。",
+			"lifetime": 180,
+			"xtriggers": {
+				"upgradeinfluence": "influenceedgec",
+				"glorify": "fascination"
+			}
+		},
+		{
+			"id": "passion",
+			"label": "情熱",
+			"aspects": {
+				"moth": 2,
+				"ingredient": 1,
+				"ability": 1
+			},
+			"animFrames": 1,
+			"description": "「鈍い頭は決して直感的でも数学的でもない」―― ブレーズ・パスカル\n\n[煌めきが十分にあれば、学習して情熱を更に手に入れることができる。]",
+			"xtriggers": {
+				"damagepassion": "fascination",
+				"plead": "disillusionment",
+				"fatiguing": "passionexhausted",
+				"employment": "passionexhausted",
+				"job": "passionexhausted",
+				"toreason": "reason",
+				"ritual": "passionexhausted",
+				"society": "passionexhausted"
+			}
+		},
+		{
+			"id": "decrepitude",
+			"label": "老化",
+			"description": "完全には治らない傷もある。[治療されていない傷と空腹は老化となり、体力には戻らない。老化は死ぬまで残る。]",
+			"aspects": {
+				"ability": 1,
+				"winter": 1,
+				"remnant": 1
+			},
+			"xtriggers": {
+				"tohealth": "health",
+				"alzabo": "memory.honeyed"
+			},
+			"slots": [
+				{
+					"id": "consume",
+					"label": "消費",
+					"required": {
+						"ingredient": 1
+					},
+					"forbidden": {
+						"poison": 1
+					},
+					"actionid": "dream"
+				}
+			]
+		},
+		{
+			"id": "glimmering",
+			"label": "煌めき",
+			"slots": [
+				{
+					"id": "moreglimmering",
+					"label": "煌めきを増やす",
+					"actionid": "study",
+					"description": "煌めき（または時折それ以上に風変わりな物を十分に持っていれば、情熱を高めることができる。",
+					"required": {
+						"glimmering": 1,
+						"influencemoth": 1
+					}
+				}
+			],
+			"aspects": {
+				"advancement": 1,
+				"moth": 1,
+				"influence": 1
+			},
+			"description": "感情がいつも以上に高ぶっている。この世には、絶対に理解できないことがあり、それはいつまでも大切なことだが、今はもっと身近な存在になっている。[煌めきを学習と使うと、情熱を獲得できる。未使用の場合は３分しか効果が持続しない。]",
+			"lifetime": 180,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothc"
+			}
+		},
+		{
+			"id": "glimmeringplus",
+			"label": "煌めき：学んだ教訓",
+			"aspects": {
+				"advancement": 1,
+				"moth": 2,
+				"influence": 1
+			},
+			"description": "向上心はある。[想像力のスキルと一緒に使用することで、スキルを強化し、情熱を高めることができる。最大5分間持続し、その後、煌めきに退化する。]",
+			"lifetime": 300,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothc"
+			},
+			"decayTo": "glimmering"
+		},
+		{
+			"id": "fascination",
+			"label": "魅了",
+			"aspects": {
+				"moth": 2,
+				"illhealth": 1,
+				"influence": 1,
+				"memory": 1
+			},
+			"slots": [
+				{
+					"id": "reminders",
+					"label": "名残り",
+					"required": {
+						"dread": 1,
+						"fleeting": 1
+					},
+					"actionid": "dream",
+					"description": "灰色の現実が私の魂を安定させる。"
+				},
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "魅了を使えば、魅力的な影響力を強化することができるかもしれない。",
+					"required": {
+						"influencemoth": 1,
+						"influencelantern": 1
+					},
+					"actionid": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentmothd": 1,
+						"fragmentmothe": 1,
+						"fragmentmothf": 1,
+						"fragmentmothg": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"description": "隙間から光が差し込む。私の心は今まで以上に明るくなった。高くなればなるほど多くのものが見えてくる。",
+			"lifetime": 180,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothc"
+			}
+		},
+		{
+			"id": "scholarlatin",
+			"label": "学者：ラテン語",
+			"aspects": {
+				"language": 1
+			},
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Untranslated Text",
+					"required": {
+						"textlatin": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"description": "死語。ダイアモンドのように死んでいる。[一部の本には翻訳しないと読めないものもある。]",
+			"unique": true
+		},
+		{
+			"id": "scholarfucine",
+			"label": "学者：フチーノ語",
+			"aspects": {
+				"language": 1
+			},
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Untranslated Text",
+					"required": {
+						"textfucine": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"description": "消えたフチーノ湖の東側には、かつて人が住んでいた。ホレスは、そこを魔女の国だと警告していた。そして、これは彼らが話していた言語で、「乾いた言葉」や「魔女の言葉」と呼ばれていた。[一部の本には翻訳しないと読めないものもある。]",
+			"unique": true
+		},
+		{
+			"id": "scholargreek",
+			"label": "学者：ギリシャ語",
+			"aspects": {
+				"language": 1
+			},
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Untranslated Text",
+					"required": {
+						"textgreek": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"description": "ギリシャ語の始まりからビザンチウムまで、あらゆる種類のギリシャ語に精通しているのだろうが、参考書を持っていて損することはない。[一部の本には翻訳しないと読めないものもある。]",
+			"unique": true
+		},
+		{
+			"id": "scholarphrygian",
+			"label": "学者：フリュギア語",
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Untranslated Text",
+					"required": {
+						"textphrygian": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"aspects": {
+				"language": 1
+			},
+			"description": "フリュギア人は、我々が聖杯と呼ぶ偉大なる母を崇拝していた。彼らの土地は、絆の姉妹団が生まれた土地であり、そこではサンダースキンが昇天の際に嘆願していた言語が使われている。[一部の本には翻訳しないと読めないものもある。]",
+			"unique": true
+		},
+		{
+			"id": "scholararamaic",
+			"label": "学者：アラム語",
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Untranslated Text",
+					"required": {
+						"textaramaic": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"aspects": {
+				"language": 1
+			},
+			"description": "アラムの言語で、彼女の子孫によって3,000年以上にわたって話されてきたもの。[一部の本には翻訳しないと読めないものもある。]",
+			"unique": true
+		},
+		{
+			"id": "scholarmandaic",
+			"label": "学者：ディープマンダ語",
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Untranslated Text",
+					"required": {
+						"textmandaic": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"aspects": {
+				"language": 1
+			},
+			"description": "砂漠の奥深くに隠された宗派内で行われる秘めた儀式の最も秘密な記録。蟻の母の母語だと言われている。[一部の本には翻訳しないと読めないものもある。]",
+			"unique": true
+		},
+		{
+			"id": "scholarsanskrit",
+			"label": "学者：サンスクリット語",
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Untranslated Text",
+					"required": {
+						"textsanskrit": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"aspects": {
+				"language": 1
+			},
+			"description": "亜大陸の聖なる言語。蓮のように複雑な語彙から切り抜けることができれば、4,000年の詩、儀式、神秘への扉が、目の前で開くだろう。[一部の本には翻訳しないと読めないものもある。]",
+			"unique": true
+		},
+		{
+			"id": "scholarvak",
+			"label": "学者：ヴャック語",
+			"slots": [
+				{
+					"id": "Text",
+					"label": "Untranslated Text",
+					"required": {
+						"textvak": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"aspects": {
+				"language": 1
+			},
+			"description": "それは、神々が血から生まれ、類人猿が直立歩行するずっと前から、太陽の棲む家に聞こえていた言葉だった。[一部の本には翻訳しないと読めないものもある。]",
+			"unique": true
+		},
+		{
+			"id": "fleeting",
+			"label": "儚い記憶",
+			"description": "その瞬間は、次の瞬間に消えてしまう。",
+			"aspects": {
+				"secrethistories": 2,
+				"moth": 2,
+				"influence": 1,
+				"memory": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "記憶の中で、つかの間の影響力を強化できる何かを見つけられるかもしれない。",
+					"required": {
+						"influencemoth": 1,
+						"influencelantern": 1
+					},
+					"actionid": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentmothd": 1,
+						"fragmentmothe": 1,
+						"fragmentmothf": 1,
+						"fragmentmothg": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"lifetime": 120,
+			"xtriggers": {
+				"upgradeinfluence": "influencemothc"
+			}
+		},
+		{
+			"id": "contentment",
+			"label": "満足感",
+			"aspects": {
+				"lantern": 2,
+				"heart": 2,
+				"influence": 1
+			},
+			"description": "幸せだと思う。[満足感は恐怖から身を守るが、満足感は続かない。]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "組み合わせ",
+					"description": "満足感を使えば、ポジティブな影響力を強化することができるかもしれない。",
+					"required": {
+						"influencelantern": 1,
+						"influenceheart": 1,
+						"influencewinter": 1,
+						"influenceforge": 1
+					},
+					"actionid": "study"
+				},
+				{
+					"id": "knowledge",
+					"label": "知識",
+					"description": "強化したり破滅させるには、作用している影響力を理解しなくてはいけない。[関連する伝承の基礎を固める必要がある。]",
+					"required": {
+						"fragmentheartc": 1,
+						"fragmentheartd": 1,
+						"fragmenthearte": 1,
+						"fragmentheartf": 1,
+						"fragmentheartg": 1
+					},
+					"actionid": "study"
+				}
+			],
+			"lifetime": 60,
+			"xtriggers": {
+				"upgradeinfluence": "influenceheartc"
+			}
+		},
+		{
+			"id": "scar_edge",
+			"label": "傷跡：残忍な経験",
+			"description": "フォースタス：「地獄は作り話だ」。メフィストフェレス：「ああ、そう思うだろうが、経験によって見方が変わる。」[力のために永久的な犠牲を払った。]",
+			"aspects": {
+				"tool": 1,
+				"edge": 4,
+				"scar": 1
+			}
+		},
+		{
+			"id": "scar_knock",
+			"label": "傷跡：治りかけの瘻孔",
+			"description": "すべての扉は傷ではないが、すべての傷は扉である。[力のために永久的な犠牲を払った。]",
+			"aspects": {
+				"tool": 1,
+				"knock": 4,
+				"scar": 1
+			}
+		},
+		{
+			"id": "scar_winter",
+			"label": "傷跡：古傷",
+			"description": "夕焼けに一歩近づけば、夜の最初の星を見ることができる。[力のために永久的な犠牲を払った。]",
+			"aspects": {
+				"tool": 1,
+				"winter": 4,
+				"scar": 1
+			}
+		},
+		{
+			"id": "scar_heart",
+			"label": "傷跡：彷徨う心",
+			"description": "私の人生は充実している。動かずにはいられない。座っていると関節が焼けるようだ。止まれば、いつも止まるようになってしまうかもしれない。[力のために永久的な犠牲を払った。注意：体力と違って、このカードは病気や飢えを満たすことはできない。]",
+			"aspects": {
+				"tool": 1,
+				"heart": 4,
+				"scar": 1
+			},
+			"xtriggers": {
+				"job": "scar_heart_fatigued",
+				"employment": "scar_heart_fatigued",
+				"ritual": "scar_heart_fatigued"
+			}
+		},
+		{
+			"id": "scar_heart_fatigued",
+			"label": "傷跡：彷徨う心",
+			"description": "動脈が歌い、静脈が燃える。これ以上自分を追い込むことはできない。[待って。]",
+			"decayTo": "scar_heart",
+			"lifetime": 60,
+			"resaturate": true
+		},
+		{
+			"id": "scar_moth",
+			"label": "傷跡：臨機応変な一面",
+			"description": "たくさんの変装をしてきた。新しい変装をするたびに、元の顔を思い出すのが難しくなる。軟骨でさえも、私の感情が高ぶると柔らかくなる。[力のために永久的な犠牲を払った。]",
+			"aspects": {
+				"tool": 1,
+				"moth": 4,
+				"scar": 1
+			},
+			"xtriggers": {
+				"job": "scar_moth_fatigued",
+				"employment": "scar_moth_fatigued",
+				"ritual": "scar_moth_fatigued"
+			}
+		},
+		{
+			"id": "scar_moth_fatigued",
+			"label": "傷跡：臨機応変な一面（過労）",
+			"description": "新しい表情を見せるたびに、私の顔は水のように波打つ。気を付けないと、完全に溶けてしまうだろう。[待って。]",
+			"decayTo": "scar_moth",
+			"lifetime": 60,
+			"resaturate": true
+		},
+		{
+			"id": "scar_lantern",
+			"label": "傷跡：半透明",
+			"description": "時々、今の私は肌の下で美しいと思うことがある。ちょうど良い角度に曲がったとき――服が脇に落ちるとき――目が鋭くなったとき――自分の形が完璧な啓示になる。[力のために永久的な犠牲を払った。]",
+			"aspects": {
+				"tool": 1,
+				"lantern": 4,
+				"scar": 1
+			}
+		}
+	]
+}

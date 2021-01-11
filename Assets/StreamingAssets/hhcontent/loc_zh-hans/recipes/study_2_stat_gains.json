@@ -1,0 +1,625 @@
+{
+    "recipes": [
+        {
+            "id": "studyincreasehealthstarter",
+            "label": "锻炼身体",
+            "actionId": "study",
+            "requirements": {
+                "vitality": 2
+            },
+            "startdescription": "我洋溢着活力。如果我能花一些时间锻炼，我将从中受益。",
+            "description": "我变得更强壮了。[我获得了“健康”，但下次获得健康的难度会上升。]",
+            "effects": {
+                "vitality": -2,
+                "health": 1,
+                "skillhealtha": 1
+            },
+            "warmup": 60,
+            "maxexecutions": 1,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasevitalitytoplus",
+            "label": "锻炼身体",
+            "actionId": "study",
+            "requirements": {
+                "vitality": 2
+            },
+            "startdescription": "我洋溢着活力。如果我能花一些时间锻炼，我将从中受益。",
+            "description": "我已做好变得更强壮的准备。[使用该“学有所成”来习得力量技能。]",
+            "effects": {
+                "vitality": -2,
+                "vitalityplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasevitalitywithinfluencehearttoplus",
+            "label": "锻炼身体",
+            "actionId": "study",
+            "requirements": {
+                "vitality": 1,
+                "influenceheart": 1,
+                "lore": -1
+            },
+            "startdescription": "我洋溢着活力，且正处于一个生气勃勃的季节。如果我能花一些时间锻炼，我将从中受益。[此卡加上恰当的“密传”可以产生强力的密教<b>影响</b>。]",
+            "description": "我已做好变得更强壮的准备。[使用该“学有所成”来习得力量技能。]",
+            "effects": {
+                "influence": -2,
+                "vitalityplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskilla",
+            "label": "锻炼身体：更加强壮……",
+            "actionId": "study",
+            "requirements": {
+                "skillhealtha": 1,
+                "vitalityplus": 2
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "我将变得更加强壮。",
+            "description": "这部机器，即我的身体，涌动着力量。",
+            "effects": {
+                "health": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskillb",
+            "label": "锻炼身体：还能更加强壮……",
+            "actionId": "study",
+            "requirements": {
+                "skillhealthb": 1,
+                "vitalityplus": 3
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "我还能变得更加强壮。",
+            "description": "现在我可以扛着一个人过河，或者将他绞杀。",
+            "effects": {
+                "health": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskill_to_d_edge",
+            "label": "锻炼身体：强力至更高的境界",
+            "actionId": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "edge": 1,
+                "lore": 1
+            },
+            "startdescription": "我将追随狮子匠——无止境变强之神，及上校——不惧伤疤之神的脚步。",
+            "description": "我的心跳平稳如擂鼓，确凿如法官的宣判。",
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_strength": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskill_to_d_forge",
+            "label": "锻炼身体：强力至更高的境界",
+            "actionId": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "forge": 1,
+                "lore": 1
+            },
+            "startdescription": "我会以和白日铸炉一样的力气燃烧。",
+            "description": "我的心跳平稳如擂鼓，确凿如法官的宣判。",
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_strength": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskill_to_d_grail",
+            "label": "锻炼身体：优雅至更深的境界",
+            "actionId": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "grail": 1,
+                "lore": 1
+            },
+            "startdescription": "我将执行赤杯的指示。我将变得柔韧，带刺且甜美。",
+            "description": "风暴无法折断能弯曲的树木。",
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_grace": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskill_to_d_heart",
+            "label": "锻炼身体：优雅至更深的境界",
+            "actionId": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "heart": 9,
+                "lore": 1
+            },
+            "comments": "ugh: heart influence from vitalityplus",
+            "startdescription": "我将追随轰雷之皮的话语。",
+            "description": "风暴无法折断能弯曲的树木。",
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_grace": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasehealthskill_to_d_moth",
+            "label": "锻炼身体：优雅至更深的境界",
+            "actionId": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "moth": 1,
+                "lore": 1
+            },
+            "startdescription": "我们穿火飞过，不会为之吞没。",
+            "description": "风暴无法折断能弯曲的树木。",
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_grace": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonstarter",
+            "label": "锻炼头脑",
+            "actionId": "study",
+            "requirements": {
+                "erudition": 2
+            },
+            "startdescription": "我从这里那里偶然得知了些奇怪的事实。如果我把时间花在钻研这些知识上，我便能增进我的理性。",
+            "description": "我的头脑渊博如图书馆。[我获得了“理性”，但下次获得理性的难度会上升。]",
+            "effects": {
+                "erudition": -2,
+                "reason": 1,
+                "skillreasona": 1
+            },
+            "warmup": 60,
+            "maxexecutions": 1,
+            "craftable": true
+        },
+        {
+            "id": "studyincreaseeruditiontoplus",
+            "label": "锻炼头脑",
+            "actionId": "study",
+            "requirements": {
+                "erudition": 2
+            },
+            "startdescription": "我从这里那里偶然得知了些奇怪的事实。如果我把时间花在钻研这些知识上，我便能增进我的理性。",
+            "description": "我的头脑渊博如图书馆。[使用该“学有所成”来习得学识技能。]",
+            "effects": {
+                "erudition": -2,
+                "eruditionplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreaseeruditionwithlanterninfluencetoplus",
+            "label": "思维之光",
+            "actionId": "study",
+            "requirements": {
+                "erudition": 1,
+                "influencelantern": 1,
+                "lore": -1
+            },
+            "startdescription": "我从这里那里偶然得知了些奇怪的事实……而这光辉出奇的时节，正适合我增进我的理性。[此卡加上恰当的“密传”可以产生强力的密教<b>影响</b>。]",
+            "description": "我的头脑渊博如图书馆。[使用该“学有所成”来习得学识技能。]",
+            "effects": {
+                "influence": -2,
+                "eruditionplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskilla",
+            "label": "锻炼头脑：更加聪慧",
+            "actionId": "study",
+            "requirements": {
+                "skillreasona": 1,
+                "eruditionplus": 2
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "知识是一座一砖一瓦砌成的城市。但在城墙外的黑暗中等待的是什么？如果没有恐惧的对象，我们又何必筑起高墙？",
+            "description": "我重新划定了我熟知与无知的领域间的界限。",
+            "effects": {
+                "reason": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskillb",
+            "label": "锻炼头脑：聪慧绝顶……",
+            "actionId": "study",
+            "requirements": {
+                "skillreasonb": 1,
+                "eruditionplus": 3
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "我还能变得更加聪慧。",
+            "description": "我的头脑澄明如镜子的国度，万事万物都清晰可辨，即便是那些我更愿意视而不见的东西。",
+            "effects": {
+                "reason": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_lantern",
+            "label": "锻炼头脑：明透至更亮的境界",
+            "actionId": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "lantern": 9,
+                "lore": 1
+            },
+            "startdescription": "我将追随看守人的脚步。",
+            "description": "我升得越高，看见得越多。",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_illumination": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_winter",
+            "label": "锻炼头脑：专注至更深的境界",
+            "actionId": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "winter": 1,
+                "lore": 1
+            },
+            "startdescription": "我将聆听昕旦的话语。",
+            "description": "沉静是美德。",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_concentration": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_knock",
+            "label": "锻炼头脑：明透至更亮的境界",
+            "actionId": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "knock": 1,
+                "lore": 1
+            },
+            "startdescription": "我将迈过双角斧于之等待的门关。",
+            "description": "我升得越高，看见得越多。",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_illumination": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_secrethistories",
+            "label": "锻炼头脑：专注至更深的境界",
+            "actionId": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "secrethistories": 1,
+                "lore": 1
+            },
+            "startdescription": "无人全数记得每重历史；故，无人能将其全数忘怀。",
+            "description": "沉静是美德。",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_concentration": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_forge",
+            "label": "锻炼头脑：明透至更亮的境界",
+            "actionId": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "forge": 1,
+                "lore": 1
+            },
+            "startdescription": "我将再造己身，照亮蒙昧之夜。",
+            "description": "我升得越高，看见得越多。",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_illumination": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasereasonskill_to_d_edge",
+            "label": "锻炼头脑：专注至更深的境界",
+            "actionId": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "edge": 1,
+                "lore": 1
+            },
+            "startdescription": "我永不停歇；我不容违抗。",
+            "description": "沉静是美德。",
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_concentration": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionstarter",
+            "label": "培养想象",
+            "actionId": "study",
+            "requirements": {
+                "glimmering": 2
+            },
+            "startdescription": "“暴怒的老虎比训练有素的马更聪明。”如果我把时间花在钻研现有知识上，我便能增进我的激情，并习得一项技能。",
+            "description": "我的心灵有许多窗口，而阳光并非唯一通过窗口之物。[我获得了“激情”，但下次获得激情的难度会上升。]",
+            "effects": {
+                "glimmering": -2,
+                "passion": 1,
+                "skillpassiona": 1
+            },
+            "warmup": 60,
+            "maxexecutions": 1,
+            "craftable": true
+        },
+        {
+            "id": "studyincreaseglimmeringtoplus",
+            "label": "培养想象",
+            "actionId": "study",
+            "requirements": {
+                "glimmering": 2
+            },
+            "startdescription": "“暴怒的老虎比训练有素的马更聪明。”如果我把时间花在钻研现有的知识上，我便能打下增进激情的基础。",
+            "description": "我的心灵有许多窗口，而阳光并非唯一通过窗口之物。[此‘“学有所成”’可与<b>想象技能</b>一同使用。]",
+            "effects": {
+                "glimmering": -2,
+                "glimmeringplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreaseglimmeringwithmothinfluencetoplus",
+            "label": "培养想象",
+            "actionId": "study",
+            "requirements": {
+                "glimmering": 1,
+                "influencemoth": 1,
+                "lore": -1
+            },
+            "startdescription": "“暴怒的老虎比训练有素的马更聪明。”这冲动频发的时节，正适合我打下增进激情的基础。[此卡加上恰当的“密传”可以产生强力的密教<b>影响</b>。]",
+            "description": "我的心灵有许多窗口，而阳光并非唯一通过窗口之物。[此‘“学有所成”’可与<b>想象技能</b>一同使用。]",
+            "effects": {
+                "influence": -2,
+                "glimmeringplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskilla",
+            "label": "培养想象：更加猛烈……",
+            "actionId": "study",
+            "requirements": {
+                "skillpassiona": 1,
+                "glimmeringplus": 2
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "“只欲求而不行动者于世有害。”",
+            "description": "我的欲望与日俱增。它们的增长好像总是快过我的行动。",
+            "effects": {
+                "passion": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskillb",
+            "label": "培养想象：猛烈至极……",
+            "actionId": "study",
+            "requirements": {
+                "skillpassionb": 1,
+                "glimmeringplus": 3
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "“与其哺育只欲求而不行动的婴孩，不如将其尽早扼杀在摇篮中。”",
+            "description": "要是换一个时代，我会成为一名先见，或者是异端教徒。",
+            "effects": {
+                "passion": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskill_to_d_moth",
+            "label": "锻炼想象：非理性",
+            "actionId": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "moth": 9,
+                "lore": 1
+            },
+            "startdescription": "剪掉我的头发，剪掉身上的束缚，剪掉我的喀嚓喀嚓喀嚓。",
+            "description": "给我你的答案吧，我当用问题击败它们……",
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_unreason": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskill_to_d_heart",
+            "label": "锻炼想象：非理性",
+            "actionId": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "heart": 1,
+                "lore": 1
+            },
+            "startdescription": "轰雷之皮允诺过：我们不休止不会休止之物。",
+            "description": "给我你的答案吧，我当用问题击败它们……",
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_unreason": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskill_to_d_knock",
+            "label": "锻炼想象：愚昧",
+            "actionId": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "knock": 1,
+                "lore": 1
+            },
+            "startdescription": "“苹果树从不向枝条询问他应如何生长，狮子也不向马问应如何捕猎。”",
+            "description": "而今，我的灵魂只待开启。",
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_folly": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyincreasepassionskill_to_d_grail",
+            "label": "锻炼想象：愚昧",
+            "actionId": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "grail": 1,
+                "lore": 1
+            },
+            "startdescription": "“只欲求而不行动者于世有害。”",
+            "description": "而今，我的灵魂只待开启。",
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_folly": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyhealth",
+            "label": "新鲜空气与运动健身",
+            "actionId": "study",
+            "requirements": {
+                "health": 1,
+                "lore": -1
+            },
+            "comments": "lore limiter added in case we use health for researching lore at some point",
+            "effects": {
+                "vitality": 1
+            },
+            "startdescription": "走走长路舒活筋骨。",
+            "description": "我疏忽了研究，但我的身板更挺拔了。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studyreason",
+            "label": "阅读手边的随便什么文字",
+            "actionId": "study",
+            "requirements": {
+                "reason": 1,
+                "lore": -1
+            },
+            "comments": "lore limiter added because we use reason for researching (splitting) lore",
+            "effects": {
+                "erudition": 1
+            },
+            "startdescription": "世上到处都是着印刷文字，有时，连报纸里也包蓄着知识。",
+            "description": "这些文字包蓄着知识。而我包蓄了这些文字。这有点像偷窃，有点像饮宴，也有点像传染病的发病过程。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studypassion",
+            "label": "阅读感伤文学",
+            "actionId": "study",
+            "requirements": {
+                "passion": 1
+            },
+            "comments": "lore limiter added in case we use passion for researching lore at some point",
+            "effects": {
+                "glimmering": 1
+            },
+            "startdescription": "如果我是打算学点什么，我是不会读这玩意的。",
+            "description": "我消磨掉了一段时光。其间先是被引得落泪，后又被逗笑了起来。与此同时，世界照常运转。",
+            "warmup": 60,
+            "craftable": true
+        }
+    ]
+}

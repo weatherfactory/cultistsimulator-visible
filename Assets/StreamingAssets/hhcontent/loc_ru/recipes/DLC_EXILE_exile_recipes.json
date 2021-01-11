@@ -1,0 +1,2337 @@
+{
+	"recipes": [
+		{
+			"id": "_cities",
+			"actionId": "spawner",
+			"effects": {
+				"city.aachen": 1,
+				"city.alexandria": 1,
+				"city.algiers": 1,
+				"city.amsterdam": 1,
+				"city.avignon": 1,
+				"city.baghdad": 1,
+				"city.budapest": 1,
+				"city.candia": 1,
+				"city.cluj": 1,
+				"city.granada": 1,
+				"city.istanbul": 1,
+				"city.kaunas": 1,
+				"city.kiev": 1,
+				"city.krakow": 1,
+				"city.leningrad": 1,
+				"city.london": 1,
+				"city.marrakech": 1,
+				"city.meshad": 1,
+				"city.munich": 1,
+				"city.nizhny": 1,
+				"city.paris": 1,
+				"city.prague": 1,
+				"city.rostock": 1,
+				"city.samarkand": 1,
+				"city.stalingrad": 1,
+				"city.strasbourg": 1,
+				"city.sverdlovsk": 1,
+				"city.tiflis": 1,
+				"city.tirana": 1,
+				"city.tripoli": 1,
+				"city.valletta": 1,
+				"city.venice": 1,
+				"city.vienna": 1
+			},
+			"warmup": 1
+		},
+		{
+			"id": "_domiciles",
+			"actionId": "spawner",
+			"effects": {
+				"domicile.aachen": 1,
+				"domicile.alexandria": 1,
+				"domicile.algiers": 1,
+				"domicile.amsterdam": 1,
+				"domicile.avignon": 1,
+				"domicile.baghdad": 1,
+				"domicile.budapest": 1,
+				"domicile.candia": 1,
+				"domicile.cluj": 1,
+				"domicile.granada": 1,
+				"domicile.istanbul": 1,
+				"domicile.kaunas": 1,
+				"domicile.kiev": 1,
+				"domicile.krakow": 1,
+				"domicile.leningrad": 1,
+				"domicile.london": 1,
+				"domicile.marrakech": 1,
+				"domicile.meshad": 1,
+				"domicile.munich": 1,
+				"domicile.nizhny": 1,
+				"domicile.paris": 1,
+				"domicile.prague": 1,
+				"domicile.rostock": 1,
+				"domicile.samarkand": 1,
+				"domicile.stalingrad": 1,
+				"domicile.strasbourg": 1,
+				"domicile.sverdlovsk": 1,
+				"domicile.tiflis": 1,
+				"domicile.tirana": 1,
+				"domicile.tripoli": 1,
+				"domicile.valletta": 1,
+				"domicile.venice": 1,
+				"domicile.vienna": 1
+			},
+			"warmup": 1
+		},
+		{
+			"id": "travel.first",
+			"actionId": "travel",
+			"label": "Довольно далеко и довольно быстро ",
+			"startdescription": "Денег для поездки у меня более чем достаточно, но мне придётся путешествовать налегке. [Покинув город, вы отделаетесь от своих преследователей, но когда-нибудь они снова вас найдут.]",
+			"effects": {
+				"cash": 2
+			},
+			"warmup": 1
+		},
+		{
+			"id": "travel.caper.begin",
+			"actionId": "travel",
+			"label": "Быть вором",
+			"startdescription": "Заходишь, забираешь товар и уходишь. Кто бы мог подумать что это будет настолько просто.",
+			"description": "Началось. [Следите за Операцией. Вы будете встречать Затруднения на своём пути.]",
+			"requirements": {
+				"vault": 1
+			},
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"alt": [
+				{
+					"id": "opx.caper.populate",
+					"additional": true,
+					"expulsion": {
+						"limit": 2,
+						"filter": {
+							"vault": 1,
+							"edge": 1,
+							"forge": 1,
+							"grail": 1,
+							"heart": 1,
+							"knock": 1,
+							"lantern": 1,
+							"moth": 1,
+							"secrethistories": 1,
+							"winter": 1
+						}
+					}
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "opx.caper.progress3",
+			"actionId": "opx.caper",
+			"label": "Приз!",
+			"startdescription": "Я здесь именно за этим.",
+			"requirements": {
+				"progress": 3
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.caper.end"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.progress2",
+			"actionId": "opx.caper",
+			"label": "Последнее затруднение...",
+			"startdescription": "Почти на месте...",
+			"requirements": {
+				"progress": 2
+			},
+			"aspects": {
+				"opx.progress2": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.caper.next"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.progress1",
+			"actionId": "opx.caper",
+			"label": "Ещё одно затруднение...",
+			"startdescription": "Что теперь?",
+			"requirements": {
+				"progress": 1
+			},
+			"aspects": {
+				"opx.progress1": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.caper.next"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.populate",
+			"actionId": "opx.caper",
+			"label": "Это будет беспокойная ночь",
+			"startdescription": "Готово. [Три Момента — это успех. Но перед этим вас ждут затруднения.]",
+			"aspects": {
+				"opx.progress0": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "opx.caper.next"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.next",
+			"actionId": "opx.caper",
+			"label": "Затруднение",
+			"startdescription": "@#ee.armouredgate|На моём пути тяжёлая укреплённая дверь.\n#ee.avidadept|«Неподалёку от нас адепт Грааля. Нужно приготовиться к её уловкам».\n#ee.bosk|Колючие и ласковые ветви, запахи темной зелени, движения чего-то пушистого под моей рукой, чёрная трепещущая тьма... Лес здесь — кожа мира.\n#ee.coiltrace|«Сама эта сила, нечто, что сокрыто под землёй. В Бюро говорят, что сначала это было лишь небольшое щупальце Храма Семи Колец. Старый бог, понимаешь? Божественная плоть начинает гнить, и в ней что-то заводится. Что-то, что называют Червями. Будь осмотрительнее. Предупреждаю».\n#ee.crags|«Многие переходы здесь были заблокированы. Нужно найти дорогу или проложить её самому. Я попытаюсь найти взрывчатку, но в Бюро её не любят, а в Армии не любят меня».\n#ee.creepinghorror|Ужас ползёт, просачиваясь сквозь кожу. «Подойди ближе!» — говорит ночь. Подойди ближе.\n#ee.deceiver|Здесь скрывается существо редкого коварства!\n#ee.devourer|Здесь скрывается существо сокрушающей силы! Некоторые из монстров — порождения Львокузнеца, некоторые — Ехидны, а некоторые — обоих. Остальные — ещё более ужасны.\n#ee.feast|Чтобы попасть, куда мне нужно, требуется ритуал или пир. Буду представлять, что это вечеринка, хотя мне бы не очень хотелось попасть на такой праздник. Мне нужно будет владеть собой, даже если меня опоят. Если это мне не удастся, взамен я не получу ничего, кроме похмелья.\n#ee.fretfuldead|Заросшие паутиной жалкие останки. Они хрупкие, но их касание быстрее,чем кажется, вытягивает годы прямо сквозь кожу.\n#ee.guardedcompound|Территория охраняется: стены, башни и смотрители.\n#ee.labyrinthseal|Необычайная комбинация механизмов закрывает укреплённую дверь хранилища. Не могу понять его природу: чисто оккультная или чисто механическая? Что бы там ни было, моей жизни это не упрощает.\n#ee.ligeian|Лигения! Я не смогу её победить, но может, мне удастся её убедить, что ей не стоит тратить на меня время.\n#ee.miasma|Липкие зловонные миазмы. Голова идёт кругом.\n#ee.mist|Здесь было Безымянное Имя Бархата. Этот туман — шлейф её серого одеяния. Выход найти будет непросто.\n#ee.monks|Хранителей этого место не подкупить взятками, не соблазнить. Кто-то говорит, что это из-за непреложных клятв, что они дали, но я подозреваю, это из-за того, что они внимательно друг за другом следят.\n#ee.ordeal.agony|Сейчас мне предстоит Пытка Агонией. Мне доводилось проходить через такое и раньше, поэтому не очень хочется делать это снова. Ещё не зажили шрамы с прошлого раза, правда, не на моей коже.\n#ee.ordeal.desolation|Сейчас мне предстоит Пытка Опустошением — закат души.\n#ee.ordeal.enigma|Сейчас мне предстоит Неизведанная Пытка. Преодолеть её можно двумя способами: понять всё или не понять ничего.\n#ee.percussigant|Косматый вихрь и скрежет когтей требуют моего немедленного внимания. Сотрясатель!\n#ee.scarredduellist|Обезображенный шрамами дуэлянт приветствует меня.\n#ee.securevault|На тяжёлой двери хранилища висит внушительный замок.\n#ee.shadowedway|Вход где-то здесь. Осталось его найти.\n#ee.soldiers|Место охраняется вооружёнными людьми.\n#ee.storm|Гром и молнии мечутся в тучах, дождь бьёт, будто кулаками.\n#ee.strixriddenadversary|С воплями дуэлянт бросается к вам. Его мышцы дрожат от напряжения, а глаза, словно у совы, блестят чёрным и золотом. Он во власти стриксов —- одержим силами многокрылых Имён Грани.\n#ee.thugs|Здесь бродит банда угрюмых злодеев и ищет проблем.\n#ee.unknownlocation|Неизвестная локация. Пора начинать искать, где именно это место.\n#ee.unwelcomememories|Неприятные воспоминания! Блеск зеркал на стенах, Я снова вижу себя, вижу, как служу своему Врагу, вижу, что сделали со мной и хуже — что было сделано мной...\n#ee.vigil|Пение моих культистов становятся спокойнее и превращается во что-то вроде колыбельной. Глаза начинают слипаться. Голова тяжелеет. Каким-то образом мне нужно не уснуть и продержаться до рассвета.\n#|Впереди меня ждут трудности.@\n\n[Большинство трудностей можно преодолеть соответствующим Аспектом.]",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "response",
+					"label": "Ответ",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "opx.caper.tryresolve.edge"
+				},
+				{
+					"id": "opx.caper.tryresolve.forge"
+				},
+				{
+					"id": "opx.caper.tryresolve.grail"
+				},
+				{
+					"id": "opx.caper.tryresolve.heart"
+				},
+				{
+					"id": "opx.caper.tryresolve.knock"
+				},
+				{
+					"id": "opx.caper.tryresolve.lantern"
+				},
+				{
+					"id": "opx.caper.tryresolve.moth"
+				},
+				{
+					"id": "opx.caper.tryresolve.secrethistories"
+				},
+				{
+					"id": "opx.caper.tryresolve.winter"
+				}
+			],
+			"linked": [
+				{
+					"chance": 30,
+					"id": "opx.caper.lucky"
+				},
+				{
+					"id": "opx.caper.end"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.edge",
+			"actionId": "opx.caper",
+			"label": "Решение — жестокость",
+			"startdescription": "@#ee.devourer|Здесь скрывается существо сокрушающей силы. Мы с ним на равных.\n#ee.soldiers|Шумно, грязно, неизбежно. Теперь придётся чистить ботинки.\n#|Я использую силу.@",
+			"requirements": {
+				"minedge": 1,
+				"edge": "minedge"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.forge",
+			"actionId": "opx.caper",
+			"label": "Молот и наковальня",
+			"startdescription": "@#ee.mist|Огонь и изобретательность снова послужили мне верой и правдой.\n#ee.securevault|Мне удалось попасть в хранилище.\n#|Я использую изобретательность.@",
+			"requirements": {
+				"minforge": 1,
+				"forge": "minforge"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.grail",
+			"actionId": "opx.caper",
+			"label": "Алчность и обман",
+			"startdescription": "@#ee.soldiers|Мне удалось договориться с солдатами, охраняющими это место.\n#|Я использую подкуп.@",
+			"requirements": {
+				"mingrail": 1,
+				"grail": "mingrail"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.heart",
+			"actionId": "opx.caper",
+			"label": "Несмолкающий бой барабанный",
+			"startdescription": "@#|Я использую настойчивость.@",
+			"requirements": {
+				"minheart": 1,
+				"heart": "minheart"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.knock",
+			"actionId": "opx.caper",
+			"label": "Все раны — это двери",
+			"startdescription": "@#|Я открываю то, что было под печатью.@",
+			"requirements": {
+				"minknock": 1,
+				"knock": "minknock"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.lantern",
+			"actionId": "opx.caper",
+			"label": "Озарение",
+			"startdescription": "@#ee.mist|«Смотрящий приходит раньше, чем Бархат» — так говорят адепты. Думаю, это значит лишь то, что туман — та же тьма, только более сырая.\n#|Я растворяюсь в темноте.@",
+			"requirements": {
+				"minlantern": 1,
+				"lantern": "minlantern"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.moth",
+			"actionId": "opx.caper",
+			"label": "Дым и зеркала",
+			"startdescription": "@#ee.devourer|Здесь скрывается существо сокрушающей силы. Я не могу сразиться с ним лицом к лицу, поэтому использую уловку.\n#ee.soldiers|Солдаты, что охраняют это место, загромыхали в ночи. Мне хватит времени закончить всё, пока они не вернулись...\n#|Я использую уловку.@",
+			"requirements": {
+				"minmoth": 1,
+				"moth": "minmoth"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.secrethistories",
+			"actionId": "opx.caper",
+			"label": "Не одна история",
+			"startdescription": "@#|Я использую знание.@",
+			"requirements": {
+				"minsecrethistories": 1,
+				"secrethistories": "minsecrethistories"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.tryresolve.winter",
+			"actionId": "opx.caper",
+			"label": "И сгущается ночь",
+			"startdescription": "@#|Я использую терпение.@",
+			"requirements": {
+				"minwinter": 1,
+				"winter": "minwinter"
+			},
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.lucky",
+			"actionId": "opx.caper",
+			"label": "Счастливый случай",
+			"startdescription": "Кто-то другой бы уже сдался. [Рано или поздно вы справитесь с Затруднением, даже если Аспектов будет недостаточно.]",
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "opx.caper.makeprogress"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.makeprogress",
+			"actionId": "opx.caper",
+			"label": "Момент",
+			"startdescription": "Что дальше?",
+			"effects": {
+				"complication": -1,
+				"progress": 1
+			},
+			"linked": [
+				{
+					"id": "opx.caper.progress3"
+				},
+				{
+					"id": "opx.caper.progress2"
+				},
+				{
+					"id": "opx.caper.progress1"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.end",
+			"actionId": "opx.caper",
+			"effects": {
+				"complication": -100
+			},
+			"linked": [
+				{
+					"id": "opx.caper.success"
+				},
+				{
+					"id": "opx.caper.failure"
+				}
+			]
+		},
+		{
+			"id": "opx.caper.success",
+			"actionId": "opx.caper",
+			"label": "Успех!",
+			"startdescription": "Мне удалось сбежать от преследователей!",
+			"requirements": {
+				"progress": 3
+			},
+			"effects": {
+				"progress": -3
+			},
+			"burnimage": "caper.complete",
+			"aspects": {
+				"fatiguing": 1,
+				"success": 1
+			}
+		},
+		{
+			"id": "opx.caper.failure",
+			"actionId": "opx.caper",
+			"label": "Катастрофа!",
+			"startdescription": "Дело провалилось!",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			}
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis",
+			"actionId": "travel",
+			"label": "Разговор с доктором Блэквуд",
+			"startdescription": "«Знаете, я никогда не одобряла ваш выбор профессии, — говорит она мне. — И у меня нет времени обсуждать ваше «увольнение». Но мне отрадно видеть, как ваши пути с этим мерзавцем расходятся. Полагаю, это решение было принято по моральным соображениям. И конечно, у вас будет возможность воспользоваться помощью, которую я могу оказать».",
+			"slots": [
+				{
+					"id": "assistancewith",
+					"label": "Содействие",
+					"actionId": "travel",
+					"required": {
+						"rarity.lantern": 1,
+						"wound.exile": 1,
+						"wound.exile.medusa": 1,
+						"trace": 1,
+						"temptation.obscurity": 1
+					}
+				}
+			],
+			"requirements": {
+				"vault.serapeum.completed": 1
+			},
+			"alt": [
+				{
+					"id": "travel.visit.serapeum.peristasis.pentiment"
+				},
+				{
+					"id": "travel.visit.serapeum.peristasis.heal"
+				},
+				{
+					"id": "travel.visit.serapeum.peristasis.hide"
+				},
+				{
+					"id": "travel.visit.serapeum.peristasis.obscure"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.pentiment",
+			"actionId": "travel",
+			"requirements": {
+				"rarity.lantern": 1
+			},
+			"label": "Разговор с доктором Блэквуд",
+			"startdescription": "«Книга Солнц! Хотела бы я принести её в наш Отдел закупок. Но Серапенум находится под защитой Кузни Дней, поэтому у нас её быть не может. Почему? Знаете, что такое <i>пентимент</i>? Это когда художник сожалеет о содеянном. Когда хотелось создать нечто иное, но остался след. И следов остаётся больше, чем кажется»."
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.heal",
+			"actionId": "travel",
+			"requirements": {
+				"damage.exile": 1
+			},
+			"label": "Разговор с доктором Блэквуд",
+			"startdescription": "«Боюсь, наши познания в исцелении здесь ограничены. Если бы я всё ещё была в Доме Тишины... Мы делаем всё, что можем». [Это исцелит три Ранения.]",
+			"purge": {
+				"damage.exile": 3
+			},
+			"effects": {
+				"vault.serapeum.completed": -1
+			}
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.hide",
+			"actionId": "travel",
+			"requirements": {
+				"trace": 1
+			},
+			"label": "Разговор с доктором Блэквуд",
+			"startdescription": "«Боюсь, он в конце концов вас найдёт. Но почему бы не усложнить ему жизнь?» [Это уничтожит все нынешние Следы и создаст Ложный след.]",
+			"purge": {
+				"trace": 7
+			},
+			"effects": {
+				"vault.serapeum.completed": -1,
+				"trail.false.exile": 1
+			}
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.tripoli.pentiment.colonel",
+			"actionId": "travel",
+			"requirements": {
+				"loc.shrine.lionsmith.tripoli": 1,
+				"contact.retainer": 1
+			},
+			"extantreqs": {
+				"memento.grail.lantern": -1,
+				"defiance.consecration.colonel": 1
+			},
+			"label": "В Антеуме",
+			"startdescription": "В святилище спокойно и прохладно, хоть оно и залито песчаным светом солнца. «Я последний, — тихо говорит старик. — И я последний, кто знает, где она обрела покой — здесь, под большим камнем алтаря. Видишь ли, простой смертной не так легко произвести на свет Дитя Земли — её сердце не выдержало. Тогда твой отец забрал тебя...»",
+			"description": "Старик уходит, а я остаюсь в святилище, пока за окнами не начинают мигать звёзды, а ночь дышать горечью. Перед уходом старец вложил в мою руку дар: кусок плоти, в котором мне довелось появиться на свет. «Твоё рождение прошло под знаком сломанного меча, — сказал он. — Мы всегда надеялись, что ты будешь мятежником. Но мы не думали, что ты восстанешь против Львокузнеца. Выбор — это тень свободы».",
+			"warmup": 30,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"memento.grail.lantern": 1,
+				"grief": 1
+			},
+			"burnimage": "pentiment",
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.tripoli.pentiment",
+			"actionId": "travel",
+			"requirements": {
+				"loc.shrine.lionsmith.tripoli": 1,
+				"contact.retainer": 1
+			},
+			"extantreqs": {
+				"memento.grail.lantern": -1
+			},
+			"label": "В Антеуме",
+			"startdescription": "В святилище спокойно и прохладно, хоть оно и залито песчаным светом солнца. «Я последний, — тихо говорит старик. — И я последний, кто знает, где она обрела покой — здесь, под большим камнем алтаря. Видишь ли, простой смертной не так легко произвести на свет Дитя Земли — её сердце не выдержало. Тогда твой отец забрал тебя...»",
+			"description": "Старик уходит, а я остаюсь в святилище, пока за окнами не начинают мигать звёзды, а ночь дышать горечью. Перед уходом старец вложил в мою руку дар: кусок плоти, в котором мне довелось появиться на свет. «Твоё рождение прошло под знаком сломанного меча, — сказал он. — Мы всегда надеялись, что ты будешь мятежником. Но после восстания тебя ждёт выбор гораздо сложнее».",
+			"warmup": 30,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"memento.grail.lantern": 1,
+				"grief": 1
+			},
+			"burnimage": "pentiment",
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.tripoli.pentiment.after",
+			"actionId": "travel",
+			"requirements": {
+				"loc.shrine.lionsmith.tripoli": 1,
+				"contact.retainer": 1
+			},
+			"extantreqs": {
+				"memento.grail.lantern": 1
+			},
+			"burnimage": "pentiment",
+			"label": "В Антеуме",
+			"startdescription": "Сегодня старца здесь не видно.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.serapeum.peristasis.obscure",
+			"actionId": "travel",
+			"requirements": {
+				"temptation.obscurity": 1
+			},
+			"label": "Разговор с доктором Блэквуд",
+			"startdescription": "«Раз уж вы спрашиваете об этом, то да. Мы кое-что знаем о том, как избежать нежелательного внимания». [Это увеличит Забвение на 3.]",
+			"effects": {
+				"vault.serapeum.completed": -1,
+				"obscurity": 3
+			}
+		},
+		{
+			"id": "travel.visit.shrine.colonel.blocked.hint",
+			"actionId": "travel",
+			"label": "Храм Врага?",
+			"startdescription": "Я поклоняюсь Львокузнецу, вечному врагу Полковника. Мне здесь не рады.",
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1
+			},
+			"requirements": {
+				"shrine.colonel": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.blocked.hint",
+			"actionId": "travel",
+			"label": "Храм Врага?",
+			"startdescription": "Я поклоняюсь Полковнику, вечному врагу Львокузнеца. Мне здесь не рады.",
+			"extantreqs": {
+				"defiance.consecration.colonel": 1
+			},
+			"requirements": {
+				"shrine.lionsmith": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.blocked.tranquillity",
+			"actionId": "travel",
+			"label": "Противоположное миру",
+			"startdescription": "Не сегодня. Я ухожу и насвистываю забытую мелодию. [Пока на столе есть Спокойствие, вы не можете воспользоваться ни храмом Полковника, ни Львокузнеца.]",
+			"extantreqs": {
+				"tranquillity": 1
+			},
+			"requirements": {
+				"shrine.edge": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.abandonobscurity.hint",
+			"actionId": "travel",
+			"label": "Возможное жертвоприношение?",
+			"startdescription": "Сила, почитаемая здесь, может принять особую клятву. Но сразу ничего не получить. [Повторите снова, когда на вашем столе будет Искушение: Непокорность.]",
+			"requirements": {
+				"shrine.edge": 1,
+				"temptation.obscurity": 1
+			},
+			"extantreqs": {
+				"temptation.defiance": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.consecration.hint",
+			"actionId": "travel",
+			"label": "Вы посвящены",
+			"startdescription": "Посвящение силам борьбы необратимо — словно шрам или предательство. [Нельзя быть посвященным дважды.]",
+			"comments": "This should trigger only if neither Consecration recipe does.",
+			"requirements": {
+				"shrine.edge": 1,
+				"temptation.defiance": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.colonel.upgrade.hint",
+			"actionId": "travel",
+			"label": "Посетить Железный храм?",
+			"startdescription": "Десятки лет мне удавалось избегать Часы. Может быть, пришло время это изменить.",
+			"requirements": {
+				"shrine.colonel": 1,
+				"lore": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.colonel.consecrated.weapon",
+			"actionId": "travel",
+			"label": "Совершить паломничество к Железному храму, чтобы получить Реликвию",
+			"startdescription": "Храмы Полковника иногда пахнут порохом, а иногда — снегом. Все тайны разгаданы. Если я помолюсь в этом храме, возможно, я получу нечто, оставленное мне. [Каждая молитва Полковнику даёт Ранение.]",
+			"description": "Под алтарём мне удаётся найти кое-что, оставленное для меня.",
+			"requirements": {
+				"shrine.colonel": 1,
+				"fragmentedgeg.colonel": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"aspects": {
+				"epiphany.colonel": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.consecrated.revelation",
+			"actionId": "travel",
+			"label": "Совершить паломничество к Железному храму, чтобы получить Откровение",
+			"startdescription": "Храмы Полковника иногда пахнут порохом, а иногда — снегом. Все тайны разгаданы. Если я помолюсь в этом храме, возможно, я услышу его голос. [Каждая молитва Полковнику даёт Ранение.]",
+			"description": "Тени храма сгущаются. Я теряю зрение — как Полковник. Я не вижу Имя Квирина, что стоит передо мной с двусторонним копьём. «Дитя Земли, — шепчет он. — Эта мудрость для тебя». [Вы узнали одну Слабость своего Врага.]",
+			"requirements": {
+				"shrine.colonel": 1,
+				"fragmentedgeg.colonel": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1
+			},
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"linked": [
+				{
+					"id": "cold.weakness.reveal.colonel",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.cold.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cold.hidden": 1
+					}
+				},
+				{
+					"id": "heat.weakness.reveal.colonel",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.heat.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heat.hidden": 1
+					}
+				},
+				{
+					"id": "sea.weakness.reveal.colonel",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.sea.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.sea.hidden": 1
+					}
+				},
+				{
+					"id": "faith.weakness.reveal.colonel",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.faith.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.faith.hidden": 1
+					}
+				},
+				{
+					"id": "heights.weakness.reveal.colonel",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.heights.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heights.hidden": 1
+					}
+				},
+				{
+					"id": "cats.weakness.reveal.colonel",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.cats.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cats.hidden": 1
+					}
+				},
+				{
+					"id": "flowermaker.weakness.reveal.colonel",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.flowermaker.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.flowermaker.hidden": 1
+					}
+				},
+				{
+					"id": "horned.weakness.reveal.colonel",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.horned.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.horned.hidden": 1
+					}
+				},
+				{
+					"id": "wolf.weakness.reveal.colonel",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.wolf.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.wolf.hidden": 1
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.consecrated.upgrade",
+			"actionId": "travel",
+			"label": "Совершить паломничество к Железному храму",
+			"startdescription": "Храмы Полковника иногда пахнут порохом, а иногда — снегом. Молитва здесь усовершенствует моё понимание приёмов, которым учат Имена Полковника. [Каждая молитва Полковнику наносит вам Ранение.]",
+			"description": "Каждый раз обряды требуют крови. В полусознательном исступлении я лежу в храме и, кажется, слышу под потолком шёпот Многокрылых. «Кровь возвращается в землю. Кровь возвращается...»",
+			"requirements": {
+				"shrine.colonel": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany.colonel": 1
+			},
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.upgrade",
+			"actionId": "travel",
+			"label": "Посетить Железный храм",
+			"startdescription": "Храмы Полковника иногда пахнут порохом, а иногда — снегом. @#fragmentedgeg.exile|Больше я ничего здесь не узнаю, но я могу получить Стойкость и излечить Ранение.#|Здесь я могу узнать больше о боевых тайнах Грани.@",
+			"description": "Мои кости скрипят. Мой слух становится острее.",
+			"requirements": {
+				"shrine.colonel": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": -1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"effects": {
+				"location": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.upgrade.hint",
+			"actionId": "travel",
+			"label": "Посетить Бронзовый храм?",
+			"startdescription": "Десятки лет мне удавалось избегать Часы. Может быть, пришло время это изменить.",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"lore": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.consecrated.weapon",
+			"actionId": "travel",
+			"label": "Совершить паломничество к Бронзовому храму, чтобы получить Реликвию",
+			"startdescription": "Храмы Львокузнеца пахнут горячей медью и смердят большими кошками. Все тайны разгаданы. Если я помолюсь в этом храме, возможно, я получу нечто, оставленное мне. [Каждая молитва Львокузнецу даёт Ярость.]",
+			"description": "Под алтарём мне удаётся найти кое-что, оставленное для меня.",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"fragmentedgeg.lionsmith": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"aspects": {
+				"epiphany.lionsmith": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.consecrated.revelation",
+			"actionId": "travel",
+			"label": "Совершить паломничество к Бронзовому храму, чтобы получить Откровение",
+			"startdescription": "Храмы Львокузнеца пахнут горячей медью и смердят большими кошками. Все тайны разгаданы. Если я помолюсь в этом храме, возможно, я услышу его голос. [Каждая молитва Львокузнецу даёт Ярость.]",
+			"description": "Красный, будто кровь, солнечный свет бьёт в глаза, и я вижу лишь золото. Имя Менхит проступает сквозь свет. Я слышу её рык, но не вижу её. «Дитя Земли!, — шипит она. — Услышь меня!» [Вы узнали одну Слабость своего Врага.] ",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"fragmentedgeg.lionsmith": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1
+			},
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"linked": [
+				{
+					"id": "cats.weakness.reveal.lionsmith",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.cats.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cats.hidden": 1
+					}
+				},
+				{
+					"id": "heat.weakness.reveal.lionsmith",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.heat.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heat.hidden": 1
+					}
+				},
+				{
+					"id": "sea.weakness.reveal.lionsmith",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.sea.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.sea.hidden": 1
+					}
+				},
+				{
+					"id": "faith.weakness.reveal.lionsmith",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.faith.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.faith.hidden": 1
+					}
+				},
+				{
+					"id": "heights.weakness.reveal.lionsmith",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.heights.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.heights.hidden": 1
+					}
+				},
+				{
+					"id": "cold.weakness.reveal.lionsmith",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.cold.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.cold.hidden": 1
+					}
+				},
+				{
+					"id": "flowermaker.weakness.reveal.lionsmith",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.flowermaker.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.flowermaker.hidden": 1
+					}
+				},
+				{
+					"id": "horned.weakness.reveal.lionsmith",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.horned.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.horned.hidden": 1
+					}
+				},
+				{
+					"id": "wolf.weakness.reveal.lionsmith",
+					"label": "Откровение",
+					"extantreqs": {
+						"rkx.weakness.wolf.hidden": 1
+					},
+					"purge": {
+						"rkx.weakness.wolf.hidden": 1
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.consecrated.upgrade",
+			"actionId": "travel",
+			"label": "Совершить паломничество к Бронзовому храму",
+			"startdescription": "Храмы Львокузнеца пахнут горячей медью и смердят большими кошками. Все тайны разгаданы. Молитва здесь усовершенствует моё понимание приёмов, которым учат Имена Львокузнеца. [Каждая молитва Львокузнецу даёт Ярость.]",
+			"description": "Овладевающая мной сила затмевает разум. Я обхожу храм, рыча, словно зверь. Сквозь пелену ярости я слышу шёпот Многокрылых наверху: «Сила Земли. Земли...»",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany.lionsmith": 1
+			},
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.upgrade",
+			"actionId": "travel",
+			"label": "Посетить Бронзовый храм",
+			"startdescription": "Храмы Львокузнеца пахнут горячей медью и смердят большими кошками. @#fragmentedgeg.exile|Больше я ничего здесь не узнаю, но я могу получить Стойкость и излечить Ранение.#|Здесь я могу узнать больше о боевых техниках Грани@",
+			"description": "Я становлюсь сильнее.",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"defiance.consecration.colonel": -1,
+				"tranquillity": -1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"effects": {
+				"location": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.consecration.colonel",
+			"actionId": "travel",
+			"label": "Посвящение Полковнику",
+			"startdescription": "Я могу посвятить себя Полковнику. [Это нанесёт вам урон и ограничит взаимодействие со Львокузнецом, но повысит Непокорность и откроет тайны Полковника.]",
+			"description": "Я закрываю своё лицо и оставляю шрам на своей коже. Теперь у меня связь с Девятью Клятвами Пациентов. Я буду солдатом Полковника, и он никогда не отпустит меня.",
+			"requirements": {
+				"shrine.colonel": 1,
+				"temptation.defiance": 1,
+				"defiance.consecration.lionsmith": -1,
+				"defiance.consecration.colonel": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.consecration.colonel",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"location": -1,
+				"wound.exile": 1
+			},
+			"burnimage": "consecration.colonel",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.consecration.lionsmith",
+			"actionId": "travel",
+			"label": "Посвящение Львокузнецу",
+			"startdescription": "Я могу посвятить себя Львокузнецу. [Это разозлит вас и ограничит взаимодействие с Полковником, но повысит Непокорность и откроет тайны Львокузнеца.]",
+			"description": "Кровь зверя пролита, она обжигает мою кожу. Мне удалось пройти Три Испытания Доблести. Теперь я буду воином Львокузнеца, пока однажды он не отпустит меня.",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"temptation.defiance": 1,
+				"defiance.consecration.lionsmith": -1,
+				"defiance.consecration.colonel": -1
+			},
+			"extantreqs": {
+				"tranquillity": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.consecration.lionsmith",
+					"mutationLevel": 1
+				}
+			],
+			"effects": {
+				"location": -1,
+				"rage": 1
+			},
+			"burnimage": "consecration.lionsmith",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.colonel.abandonobscurity",
+			"actionId": "travel",
+			"label": "Нерушимая клятва",
+			"startdescription": "Я могу сделать выбор в пользу Нерушимой клятвы, которая требует стойкости любой ценой. [Нельзя будет завершить игру с Забвением, но ваша Непокорность повысится.]",
+			"description": "«Каждое мучение — это урок. Каждый шрам — оружие. Защиты нет, лишь уничтожение».",
+			"requirements": {
+				"shrine.colonel": 1,
+				"temptation.obscurity": 1
+			},
+			"extantreqs": {
+				"temptation.defiance": 1,
+				"defiance.consecration.colonel": 1,
+				"tranquillity": -1
+			},
+			"slots": [
+				{
+					"id": "defiance",
+					"label": "Непокорность",
+					"required": {
+						"temptation.defiance": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"temptation.obscurity": -1,
+				"location": -1,
+				"wound.exile": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.lionsmith.abandonobscurity",
+			"actionId": "travel",
+			"label": "Бронзовая клятва",
+			"startdescription": "Я могу сделать выбор в пользу Бронзовой клятвы, которая требует стойкости любой ценой. [Нельзя будет завершить игру с Забвением, но ваша Непокорность повысится.]",
+			"description": "«От доблести сила. От силы доблесть. Нет поражения, кроме позора».",
+			"requirements": {
+				"shrine.lionsmith": 1,
+				"temptation.obscurity": 1
+			},
+			"extantreqs": {
+				"temptation.defiance": 1,
+				"defiance.consecration.lionsmith": 1,
+				"tranquillity": -1
+			},
+			"slots": [
+				{
+					"id": "defiance",
+					"label": "Непокорность",
+					"required": {
+						"temptation.defiance": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"temptation.obscurity": -1,
+				"location": -1,
+				"rage": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.nameless.hint",
+			"actionId": "travel",
+			"label": "Избежать",
+			"startdescription": "Больше не буду терять здесь времени. [Присутствие Ярости не позволяет использовать этот храм.]",
+			"requirements": {
+				"loc.shrine.nameless": 1
+			},
+			"extantreqs": {
+				"rage": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment",
+			"actionId": "travel",
+			"label": "Поднести Пентимент Безымянному Имени",
+			"startdescription": "Что-то будет забыто. На этот раз точно.",
+			"requirements": {
+				"loc.shrine.nameless": 1,
+				"pentiment": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.ii"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.ii",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 1
+			},
+			"label": "Поднести второй Пентимент Безымянному Имени",
+			"startdescription": "Туман затаил дыхание.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.iii"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.iii",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 2
+			},
+			"label": "Поднести третий Пентимент Безымянному Имени",
+			"startdescription": "Кое-что ещё для Бархата. Чтобы закопать навсегда.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.iv"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.iv",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 3
+			},
+			"label": "Поднести четвёртый Пентимент Безымянному Имени",
+			"startdescription": "Сгладить кожу мира.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.v"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.v",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 4
+			},
+			"label": "Поднести пятый Пентимент Безымянному Имени",
+			"startdescription": "Тайные преступления, тайные печали, тайные наслаждения — всё потеряно в Лесу.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.vi"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.vi",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 5
+			},
+			"label": "Поднести шестой Пентимент Безымянному Имени",
+			"startdescription": "В тумане: запах земли и чёрного мха.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.vii"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.vii",
+			"actionId": "travel",
+			"requirements": {
+				"pentiment": 6
+			},
+			"label": "Поднести седьмой Пентимент Безымянному Имени",
+			"startdescription": "В тумане: гулкий и скрежещущий грохот огромных цепей.",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.final"
+				},
+				{
+					"id": "travel.visit.shrine.nameless.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.final",
+			"requirements": {
+				"pentiment": 7
+			},
+			"actionId": "travel",
+			"label": "В туман",
+			"startdescription": "Всё готово.Я растягиваюсь, разминаю шею. Туман вокруг меня рассеивается... но не совсем. Видимо, Бархату понравились мои дары. Некоторое время я буду под покровом Безымянного Имени. Попробуйте <i>теперь</i> меня достать, ублюдки.",
+			"warmup": 30,
+			"effects": {
+				"obscurity": 9,
+				"pentiment": -7,
+				"location": -1,
+				"op.dawn": 1,
+				"trail.false.exile.nameless": 1
+			}
+		},
+		{
+			"id": "travel.visit.shrine.nameless.pentiment.break",
+			"actionId": "travel",
+			"label": "Скоро рассвет",
+			"startdescription": "Это начало. Но секретов пока недостаточно, чтобы привлечь внимание Бархата. Всё это всегда происходит в семёрках. Туман вокруг меня рассеивается, и храм исчезает.",
+			"effects": {
+				"op.dawn": 1,
+				"location": -1
+			}
+		},
+		{
+			"id": "travel.visit.shrine.nameless.downgrade",
+			"actionId": "travel",
+			"label": "Поднести Туману Секрет",
+			"startdescription": "Я зажигаю свечу и жду. [Это навсегда снизит Знание на 1 уровень, но даст Забвение и Спокойствие.]",
+			"description": "Туман не движется, но нельзя сказать, что он неподвижен. Ночь тиха. Через некоторое время пламя свечи наклоняется, отважно борется один миг, а затем умирает в сгустке воска. Больше ничего не происходит.",
+			"requirements": {
+				"loc.shrine.nameless": 1,
+				"lore": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"aspects": {
+				"depiphany": 1
+			},
+			"effects": {
+				"loc.shrine.nameless": -1,
+				"obscurity": 1,
+				"tranquillity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.visit.shrine.nameless",
+			"actionId": "travel",
+			"label": "Отдохнуть в Тумане",
+			"startdescription": "Я прислоняюсь к стене и жду. [Это даёт Спокойствие.]",
+			"description": "Туман не движется, но нельзя сказать, что он неподвижен. Ночь тиха. Через час я возвращаюсь в постель, где остаток ночи буду сладко спать.",
+			"requirements": {
+				"loc.shrine.nameless": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"effects": {
+				"loc.shrine.nameless": -1,
+				"tranquillity": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "travel.wilderness.leave",
+			"actionId": "travel",
+			"label": "Куда угодно",
+			"startdescription": "Нужно двигаться дальше. [Вы можете оказаться где угодно.]",
+			"comments": "You can leave wilderness even if you have outstanding Rage. I'm not a monster.",
+			"requirements": {
+				"wilderness": 1,
+				"domicile": 1,
+				"cash": 1
+			},
+			"effects": {
+				"wilderness": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"end.slettnes",
+					"end.cheko",
+					"end.paro",
+					"end.messana",
+					"end.ghardaia",
+					"end.morbihan",
+					"city.alexandria",
+					"city.algiers",
+					"city.amsterdam",
+					"city.avignon",
+					"city.baghdad",
+					"city.budapest",
+					"city.candia",
+					"city.cluj",
+					"city.granada",
+					"city.istanbul",
+					"city.kaunas",
+					"city.kiev",
+					"city.krakow",
+					"city.london",
+					"city.marrakech",
+					"city.meshad",
+					"city.munich",
+					"city.nizhny",
+					"city.paris",
+					"city.prague",
+					"city.aachen",
+					"city.rostock",
+					"city.samarkand",
+					"city.leningrad",
+					"city.stalingrad",
+					"city.strasbourg",
+					"city.tiflis",
+					"city.tirana",
+					"city.tripoli",
+					"city.valletta",
+					"city.venice",
+					"city.vienna",
+					"city.sverdlovsk"
+				],
+				"draws": 1,
+				"defaultcard": "end.slettnes",
+				"resetonexhaustion": false
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.depart"
+				}
+			]
+		},
+		{
+			"id": "travel.rage.hint",
+			"actionId": "travel",
+			"label": "НЕТ",
+			"startdescription": "Моя кровь вскипает при мысли о том, что мне <i>снова</i> придётся сбегать. Пока этот гнев не утих, я могу лишь сражаться. [Нельзя покинуть город, если вы испытываете Ярость.]",
+			"requirements": {
+				"destination": 1
+			},
+			"comments": "This is only a hint, so the Wilderness recipe will override it.",
+			"extantreqs": {
+				"rage": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.ally.duplicate.hint",
+			"actionId": "travel",
+			"label": "Всё слишком запутано",
+			"startdescription": "[На создание Ложного следа можно отправить только одного Союзника.]",
+			"requirements": {
+				"ally": 1
+			},
+			"extantreqs": {
+				"apx.trail.false.exile": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "travel.ally.hint",
+			"actionId": "travel",
+			"label": "Отправить Союзника, чтобы создать Ложный след?",
+			"startdescription": "[Добавьте город, в котором вы ещё не были.]",
+			"requirements": {
+				"ally": 1,
+				"exhausted": -1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "travel.ally",
+			"actionId": "travel",
+			"label": "Отправить Союзника, чтобы создать Ложный след",
+			"startdescription": "Это риск, но ведь мы всегда рискуем, не правда ли? [Ложный след, пока он действует, не даст считальцам найти вас. Вы никогда не сможете попасть в этот город. Вашему Союзнику потребуется неопределённое время на создание следа, и в это время он будет недоступен. Есть небольшой шанс, что Союзник не вернётся.]",
+			"description": "Они в пути",
+			"requirements": {
+				"ally": 1,
+				"destination": 1,
+				"exhausted": -1,
+				"end": -1,
+				"wilderness": -1
+			},
+			"extantreqs": {
+				"apx.trail.false.exile": -1
+			},
+			"effects": {
+				"apx.trail.false.exile": 1
+			},
+			"alt": [
+				{
+					"id": "ally.trail.false.begin",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"ally": 1,
+							"destination": 1,
+							"apx.trail.false.exile": 1
+						}
+					}
+				}
+			],
+			"craftable": true,
+			"warmup": 60
+		},
+		{
+			"id": "ally.trail.false.begin",
+			"actionId": "ally.trail.false.1",
+			"label": "Подготовка Ложного Следа...",
+			"startdescription": "@#ally.barber|Зульфия устраивает настоящий хаос.\n#ally.delver|Орсолина действует методично.\n#ally.fivegoer|Василь, кажется, планирует устроить какую-то вечеринку.\n#ally.ghoul|Доминикас плетёт интриги.\n#ally.huntress|Лалла Хаима сеет разруху.\n#ally.smuggler|Георгиу планирует извлечь выгоду и отвлечь внимание.\n#ally.visionary|Мирейя готовит что-то запоминающееся.\n#ally.vivisectionist|Джаннингс использует свои ресурсы.@ [Каждый ход есть небольшой шанс оставить ложный след.]",
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "ally.trail.false.create",
+					"chance": 30
+				},
+				{
+					"id": "ally.trail.false.begin"
+				}
+			]
+		},
+		{
+			"id": "ally.trail.false.create",
+			"actionId": "ally.trail.false.1",
+			"label": "Оставить ложный след",
+			"startdescription": "@#ally.barber|Зульфия устроила настоящий хаос.\n#ally.delver|Орсолина действовала методично.\n#ally.fivegoer|Вечеринка Василя привлекла к себе много внимания.\n#ally.ghoul|Интриги Доминикаса сработали.\n#ally.huntress|Лалла Хаима посеяла разруху.\n#ally.smuggler|Георгиу извлёк выгоду и отвлёк внимание.\n#ally.visionary|Мирейя приготовила что-то запоминающееся.\n#ally.vivisectionist|Джаннингс использовал свои ресурсы.@",
+			"description": "Мой Союзник оставил ложный след. Он заметут свои свой следы и скоро вернётся. Надеюсь.",
+			"alt": [
+				{
+					"id": "ally.trail.false.waiting",
+					"additional": true,
+					"expulsion": {
+						"limit": 2,
+						"filter": {
+							"ally": 1,
+							"destination": 1
+						}
+					}
+				}
+			],
+			"effects": {
+				"trail.false.exile": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "ally.trail.false.waiting",
+			"actionId": "ally.trail.false.2",
+			"label": "Ожидание...",
+			"startdescription": "Скоро домой?",
+			"linked": [
+				{
+					"id": "ally.trail.false.waiting.displaytext"
+				}
+			]
+		},
+		{
+			"id": "ally.trail.false.waiting.displaytext",
+			"actionId": "ally.trail.false.2",
+			"label": "Ожидание...",
+			"startdescription": "@#ally.barber|Работа Зульфии окончена. Она вернётся, как только станет безопасно.\n#ally.delver|Работа Орсолины окончена. Она вернётся, как только станет безопасно.\n#ally.fivegoer|Работа Василя окончена. Он вернётся, как только станет безопасно.\n#ally.ghoul|Работа Доминикаса окончена. Он вернётся, как только станет безопасно.\n#ally.huntress|Работа Лаллы Хаимы окончена. Она вернётся, как только станет безопасно.\n#ally.smuggler|Работа Георгиу окончена. Он вернётся, как только станет безопасно.\n#ally.visionary|Работа Мирейи окончена. Она вернётся, как только станет безопасно.\n#ally.vivisectionist|@",
+			"warmup": 60,
+			"linked": [
+				{
+					"id": "ally.trail.false.returning",
+					"chance": 30
+				},
+				{
+					"id": "ally.trail.false.lost",
+					"chance": 10
+				},
+				{
+					"id": "ally.trail.false.waiting"
+				}
+			]
+		},
+		{
+			"id": "ally.trail.false.returning",
+			"actionId": "ally.trail.false.2",
+			"label": "Возвращение...",
+			"startdescription": "@#ally.barber|Зульфия возвращается.\n#ally.delver|Орсолина возвращается.\n#ally.fivegoer|Василь возвращается.\n#ally.ghoul|Доминикас возвращается.\n#ally.huntress|Лалла Хаима возвращается.\n#ally.smuggler|Георгиу возвращается.\n#ally.visionary|Мирейя возвращается.\n#ally.vivisectionist|Джаннингс возвращается.@",
+			"warmup": 60,
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"destination": -1
+			}
+		},
+		{
+			"id": "ally.trail.false.lost",
+			"actionId": "ally.trail.false.2",
+			"label": "Потеря...",
+			"startdescription": "@#ally.barber|Зульфия исчезла. Это может означать что угодно. Но я думаю, я больше о ней не услышу.\n#ally.delver|Так или иначе, думаю, Орсолина теперь ближе к земле.\n#ally.fivegoer|Эта статья чуть ли не прошла мимо меня. В заметке говорится, что в ящике было найдено тело с «анатомическими особенностями». Это может быть только Василь.\n#ally.ghoul|В заметке говорится, что высокопоставленный литовец был найден мёртвым с признаками отравления. Доминикас бы оценил, что его назвали «высокопоставленным».\n#ally.huntress|Тело Хаимы было найдено рядом с трупами трёх мужчин с пулевым отверстием прямо промеж глаз. Она погибла в бою.\n#ally.smuggler|Кажется, прошлое настигло Георгиу. И это были даже не считальцы — один из его многих соперников.\n#ally.visionary|Мирейю арестовали за «преступления, посягающие на сохранность тайны».\n#ally.vivisectionist|В сегодняшней газете написали о немецком аристократе, который на добровольных началах работал в больнице — лечил пострадавших от эпидемии тифа — но потом сам стал жертвой болезни. Джаннингс был непростым человеком. Я буду по нему скучать.@",
+			"effects": {
+				"ally": -1,
+				"destination": -1,
+				"grief": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "travel.prepare.end",
+			"actionId": "travel",
+			"label": "Окончательное отправление",
+			"startdescription": "Мой поезд отправляется на рассвете. Всё ли у меня с собой? [Это место находится на краю карты. Дальше пути нет. Как только вы сюда прибудете, будьте готовы, что всё закончится. Союзники не последуют на край карты.]",
+			"requirements": {
+				"end": 1,
+				"destination": 1,
+				"cash": 2
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare.wilderness",
+			"actionId": "travel",
+			"label": "В дебри",
+			"startdescription": "Это моё последнее пристанище. Без спасительной толпы меня будет проще найти. Я не знаю характер местности. Может, я умру бесславной смертью. [Вы можете взять с собой только Движимое имущество. Переезд отменит все действия считальцев и уничтожит все Следы, но вы лишаетесь Средств, Локаций, Мест назначений, Местных контактов и текущих Операций.]",
+			"requirements": {
+				"wilderness": 1,
+				"destination": 1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare.remote",
+			"actionId": "travel",
+			"label": "Подготовиться к отправлению в Отдалённое место",
+			"startdescription": "Мой поезд отправляется на рассвете. Всё ли у меня с собой? [С собой можно забрать только движимое имущество. Переезд отменит все действия считальцев и уничтожит все Следы, но вы лишитесь Средств, Локаций, Мест назначений, Местных контактов и текущих Операций.]",
+			"requirements": {
+				"remote": 1,
+				"destination": 1,
+				"cash": 2
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare",
+			"actionId": "travel",
+			"label": "Подготовиться к отправлению",
+			"startdescription": "Пора уходить. Всё ли у меня с собой? [С собой можно забрать только движимое имущество. Переезд отменит все действия считальцев и уничтожит все Следы, но вы лишаетесь Средств, Локаций, Мест назначений, Местных контактов и текущих Операций.]",
+			"requirements": {
+				"destination": 1,
+				"cash": 1,
+				"remote": -1,
+				"end": -1
+			},
+			"extantreqs": {
+				"rage": -1
+			},
+			"craftable": true,
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.prepare.remote.hint",
+			"actionId": "travel",
+			"label": "Подготовиться к отправлению?",
+			"startdescription": "Это Отдалённое место. В пути мне понадобится достаточно наличных.",
+			"requirements": {
+				"op": -1,
+				"connection": -1,
+				"destination": 1,
+				"remote": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.prepare.hint",
+			"actionId": "travel",
+			"label": "Подготовиться к отправлению?",
+			"startdescription": "В пути мне понадобится достаточно наличных.",
+			"requirements": {
+				"op": -1,
+				"connection": -1,
+				"destination": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "travel.showslot",
+			"actionId": "travel",
+			"label": "Подготовиться к отправлению",
+			"startdescription": "Пора уходить. Всё ли у меня с собой? [С собой можно забрать только Движимое Имущество. Используйте Освобождение, чтобы избавиться от Имущества, которые вы не забираете. Переезд отменит все действия считальцев и уничтожит все Следы, но вы лишаетесь Средств, Локаций, Мест назначений, Местных контактов и текущих Операций.]",
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"portable": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "travel.packing"
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "travel.end.depart"
+				},
+				{
+					"id": "travel.depart"
+				}
+			]
+		},
+		{
+			"id": "travel.packing",
+			"actionId": "travel",
+			"label": "Упаковка багажа...",
+			"startdescription": "Это мне пригодится. [Вы можете взять любое Движимое имущество с собой, но это продлевает ваши сборы.]",
+			"requirements": {
+				"asset": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "asset",
+					"mutateAspectId": "asset.packed",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "asset.packed",
+					"mutateAspectId": "asset",
+					"mutationLevel": -1
+				}
+			],
+			"linked": [
+				{
+					"id": "travel.showslot"
+				}
+			]
+		},
+		{
+			"id": "travel.end.depart",
+			"actionId": "travel",
+			"label": "На край карты",
+			"startdescription": "Пришло время прощаться.",
+			"requirements": {
+				"end": 1
+			},
+			"extantreqs": {
+				"ally": 1
+			},
+			"purge": {
+				"ally": 100
+			},
+			"deleteverb": {
+				"ally.trail.false*": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "travel.depart"
+				}
+			]
+		},
+		{
+			"id": "travel.depart",
+			"actionId": "travel",
+			"label": "Отправление",
+			"startdescription": "Прощайте.",
+			"requirements": {
+				"destination": 1
+			},
+			"haltverb": {
+				"rkx*": 100,
+				"opx*": 100,
+				"scout": 1,
+				"use": 1,
+				"send": 1,
+				"relinquish": 1,
+				"spawn.*": 100,
+				"spit.*": 100
+			},
+			"purge": {
+				"trace": 100,
+				"asset": 100,
+				"op": 100,
+				"location": 100,
+				"destination": 100,
+				"contact.local": 100,
+				"rkx.internal": 100,
+				"damage.underling": 100,
+				"domicile": 1
+			},
+			"comments": "Deleting the rkx verb and then recreating it with the alt works fine because effect execution occurs in turn inside each recipe, and alt additional=true\ngives us another recipe. But keep an eye on this.",
+			"alt": [
+				{
+					"id": "rkx.arrive.ahead",
+					"additional": true
+				}
+			],
+			"warmup": 10,
+			"burnimage": "departure",
+			"linked": [
+				{
+					"id": "travel.enroute"
+				}
+			]
+		},
+		{
+			"id": "travel.enroute",
+			"actionId": "travel",
+			"label": "В пути",
+			"startdescription": "Я в пути...",
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "lure.foe",
+					"mutationLevel": -1
+				},
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "rkx.infected",
+					"mutationLevel": -1
+				}
+			],
+			"aspects": {
+				"arriving": 1
+			},
+			"linked": [
+				{
+					"id": "travel.stillenroute.remote"
+				},
+				{
+					"id": "travel.arrive"
+				}
+			]
+		},
+		{
+			"id": "travel.stillenroute.remote",
+			"actionId": "travel",
+			"label": "В пути...",
+			"startdescription": "Сквозь тьму в новый день. Теперь я достаточно далеко, и считальцам будет сложнее меня найти. Если только они уже не здесь.",
+			"requirements": {
+				"remote": 1
+			},
+			"effects": {
+				"obscurity": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "travel.arrive"
+				}
+			]
+		},
+		{
+			"id": "travel.arrive",
+			"actionId": "travel",
+			"label": "Прибытие",
+			"startdescription": "@#domicile.aachen|Лалла Хаима оставила мне сообщение в отеле, где мне доводилось останавливаться. В сообщении одно слово: «Полдень». Здесь не сказано, где нужно быть — Хаима всегда обладала способностью находить людей, когда ей нужно.\n#domicile.alexandria|Невидимый Серапеум невидим даже изнутри. Возможно, я уже в нём — с того момента, как я не на лодке. Мне нужно время, чтобы понять это.\n#domicile.algiers|Белые домики сгрудились над причалом. У меня есть адрес одного из людей М. Георгиу.\n#domicile.amsterdam|Близнецы Стегенга покину ли город — может, это и не совпадение — и их дом с множеством окон пуст. Но их мажордом оставил для меня послание. Они попросили одного из своих влиятельных клиентов помочь мне.\n#domicile.avignon|М. Георгиу пригласил меня поужинать в одну из своих комнат неподалёку от Папского дворца.\n#domicile.baghdad|Перси Стайлс ожидает меня на станции. Его волосы, всё так же нелепо торчащие, тронула седина. Сейчас он больше чем когда-либо похож на весёлого развратного епископа. «Сейчас самое время, — говорит он, пожимая мне руку. — Есть шанс подсобить друг другу».\n#domicile.budapest|Стоят холода, но Лили как обычно устраивает приём в Варошлигете. Как обычно, она во всём чёрном и играет в шахматы между посетителями. «Я ожидала вас, — говорит она смиренно. — Прошу, скажите мне, что их здесь ещё нет?»\n#domicile.candia|В ночь до моего прибытия на Крит мне приснился сон о подземных богах. Проснувшись, я решаю подняться на палубу. Звёзды сияют так ярко, будто полотно ночного неба проткнули иголками. Ночь ясна, впереди алеет горизонт. Я слышу, как женский скрипучий голос позади меня произносит незнакомое слово. Я оборачиваюсь и вижу, что у неё лишь половина лица, другая же покрыта чешуёй, будто крыло бабочки. Затем я просыпаюсь по-настоящему: в одиночестве, в разгорячённой тьме своей каюты.\n#domicile.cluj|Постоянные посетители кафе Орадеа грустно качают головой, когда я упоминаю Лили. «Она была не из добрых, но она была терпелива, — заявляет один. — Не то что мясник из Васлуя. Но полагаю, вам нужно встретиться с ним. Я вас представлю».\n#domicile.granada|Мирейя живёт в Альбайсине, оригинальное название которого на арабском означает «место на вершине холма после целого дня путешествий, и ни на одной из улиц не горят фонари».\n#domicile.istanbul|Благодаря знакомству с Кемалем мне удалось встретиться с Каракольским ветераном с хищным лицом в захудалой кофейне на площади Таксим. Казалось, он пришёл сюда пожаловаться на своего президента за близость с британцами, но выговорившись, он неохотно предложил мне свою помощь.\n#domicile.kiev|Сразу сойдя с поезда, я ощущаю запах крови. Я поворачиваюсь. Ничего: лишь дым и пот. Должно быть, мне показалось. Но нет, запах снова появился. Эта красная медь.\n#domicile.krakow|Ицхак выделил мне комнату на чердаке. «Меня не станут убивать — я слишком стар», уверяет он. — Если за тобой придут, я спрячусь под стол и начну рыдать».\n#domicile.leningrad|«Афинянин» Сушкин хорошо меня помнит. «Я устрою тебе пышные похороны, — говорит он с восторгом. — Я выбрал тебе участок в Тихвине. Он небольшой, но вряд ли от тебя много останется после встречи с друзьями. Нет-нет. Я настаиваю. Это самое малое, что я могу для тебя сделать».\n#domicile.london|Оттавио ожидает меня у вокзала Виктория. Он с горечью качает головой, глядя на проходящих демонстрантов. «Человек должен получать деньги за свой труд, — причитает он. — Но тут... К чему всё это? Ты знаешь, что перестали проводить скачки? А полиция! Как стая волков! Думаю, мне тоже стоит пойти на митинг. Пусть попробуют найти настоящего преступника».\n#domicile.marrakech|Я не узнаю Навила, но он меня узнаёт и тепло приветствует. «Твоё сердце будто сталь, — говорит он. — Но сталь может быть и зеркалом, а в зеркале мы видим Славу. Понимаешь, о чём я? Неважно! Прими мою помощь, и уходи, когда захочешь. Это всё, что от тебя требуется».\n#domicile.meshad|Моя подруга переехала в деревню неподалёку от Мешхеда. Она исповедовала старинную религию, поэтому, когда заболела, она отправилась в храм огня Базех Хур, чтобы исцелиться. Она умерла, не дождавшись заката. Когда мне удалось туда добраться, её тело уже было на башне для развоплощения.\n#domicile.munich|Граф Джаннингс отправил молчаливого слугу в шрамах, чтобы он привёл меня на нашу с графом встречу.\n#domicile.nizhny|Люди Сушкина осторожны, но один из них хлопает меня по плечу, когда я упоминаю своих преследователей. Он говорит что-то мерзкое о считальцах, а я делаю вид, что меня это не задевает.\n#domicile.paris|Человек тётушки Аделин — угрюмый долговязый паренёк в кожаном фартуке. Он ничего не говорит, лишь кормит своих псов кусками сырого мяса, но внимательно меня слушает и жестом приказывает громадному корсиканцу проводить меня, когда я собираюсь уходить.\n#domicile.prague|Тётушка Аделин — дородная женщина с воробьиными глазками, медвежьей шеей, румяными щеками и неожиданно сладким голосом. «Ты здесь, чтобы проломить кое-кому голову для меня?» — оживлённо спрашивает она.\n#domicile.rostock|Слуги Джаннингса меня ожидали. Я могу здесь находиться так долго, как захочу.\n#domicile.samarkand|Мой друг джадидист убит горем. Он почти не говорит. Но я могу рассчитывать на его помощь.\n#domicile.stalingrad|Птицееды расположились в сгоревшей церкви. Я ясно помню, как с моим приближением огромная змея с блестящей, будто мокрая кожа, чешуёй, скрылась между валунов. Но Зульфия и остальные настаивают, что ничего такого не было.\n#domicile.sverdlovsk|Друг Зульфии теперь стал комиссаром. Он уверяет, что поможет мне, если я не доставлю слишком много хлопот.\n#domicile.strasbourg|В саду у музея меня ожидает высокая тень. Если не вглядываться, то кажется, это человек в накидке. Пусть так оно и будет. Я не смотрю на него, лишь слушаю его шёпот, но ухожу, зная тайные пути Страсбурга.\n#domicile.tiflis|Из открытого окна жилища Василя доносится задорное пение граммофона. Я стучу в дверь.\n#domicile.tirana|Моя подруга-зогистка крепко пожимает мне руку. «Я тебя представлю, — говорит она. — Если у тебя есть годы, чтобы завоевать его расположение».\n#domicile.tripoli|Я схожу с поезда и вижу ясное голубое небо, крошки золотистого камня. И мне вдруг жутко захотелось домой.\n#domicile.valletta|Кемаль ожидает меня на причале. «Я сделаю всё, что смогу, — уверяет он. — У меня ест выход на губернатора. Он британец. Очень надёжный. Хоть и не блещет умом».\n#domicile.venice|Орсолина держит рыбный ресторанчик в Каннареджо. «Ты же знаешь о моей беде, — сказала она в прошлый раз. — Баккала всегда была моей слабостью. Если бы я её не попробовала, то до сих пор бы жила на земле, даже не сомневаюсь».\n#domicile.vienna|Я ухожу с вокзала и вижу, как с противоположной стороны улицы за мной следит седая женщина в чёрно-белом. Толпа на миг скрывает её от моего взора — и её уже нет.\n#domicile.bornholm|Мне удалось найти комнату на возвышении над заливом. Когда мой Враг сюда придёт, я буду ждать его на обрыве.\n#domicile.cheko|Я развожу огонь в большой комнате хижины и пытаюсь хоть как-то починить ставни. Не знаю, сколько мне придётся здесь ждать.\n#domicile.ghardaia|Каждый вечер, когда солнце заходит, воздух в пустыне становится свежим, будто первый снег, я и почти забываю, где нахожусь.\n#domicile.messana|Здесь очень тихо. Но как бы там ни было, он приближается. Я слышу его. Хотя, думаю, он будет гордиться своей скрытностью.\n#domicile.morbihan|«Ты можешь остаться здесь, — говорит настоятель. — Но я не приму твоих денег. За тобой идёт сам Дьявол. Здесь тебе от него не укрыться — нигде на земле тебе от него не спастись».\n#domicile.paro|Подъём занимает много времени. Но вряд ли это будет так же для моего Врага. Я буду наблюдать за ним, когда он появится.\n#domicile.slettnes|Я прибываю в сумерках. Огонёк мерцает. Это его тоже сюда приведёт.\n\n#|Я на месте.@",
+			"comments": "Converts packed assets back into assets.",
+			"alt": [
+				{
+					"id": "scout.first",
+					"additional": true
+				},
+				{
+					"id": "meeting.navil.chaima",
+					"additional": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "asset.packed",
+					"mutateAspectId": "asset",
+					"mutationLevel": 0
+				},
+				{
+					"filterOnAspectId": "asset",
+					"mutateAspectId": "asset.packed",
+					"mutationLevel": 0
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "meeting.navil.chaima",
+			"actionId": "meeting.navil.chaima",
+			"label": "Воссоединение",
+			"startdescription": "«Хаима!» — радостно восклицает Навил. «Отец», — она узнаёт его, но более осторожна. Они обнимаются. Навил ласково мне улыбается. «Моя дочь охотится на монстров для Полковника, а я исцеляю их для Львокузнеца. Но я всегда рад видеть её. Да и вообще, разве Львокузнец не был порождением тела Полковника, пока они ещё не стали врагами? Уж ты-то понимаешь это». [Следите, не появится ли Ехидна. Хаима в этом заинтересована.]",
+			"extantreqs": {
+				"domicile.marrakech": 1,
+				"ally.huntress": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "turn.begin",
+			"actionId": "time.exile",
+			"label": "Колесо судьбы",
+			"startdescription": "Солнце скользит по небосводу, ночь преследует его.",
+			"warmup": 60,
+			"comments": "No enemies arrive in the first turn.",
+			"alt": [
+				{
+					"id": "use.first",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.next",
+			"actionId": "time.exile",
+			"label": "Колесо судьбы",
+			"startdescription": "Солнце скользит по небосводу, ночь преследует его. [В конце каждого цикла считальцы могут войти в город. Шансы повышаются, если вы оставили След и становятся выше, если Следов несколько.]",
+			"warmup": 60,
+			"comments": "using linked recipes so we can select just one possible additional trace response",
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.check.traces"
+				},
+				{
+					"id": "turn.check.trace"
+				},
+				{
+					"id": "turn.check.no.trace"
+				},
+				{
+					"id": "turn.check.mapedge.traces"
+				},
+				{
+					"id": "turn.check.mapedge.trace"
+				},
+				{
+					"id": "turn.check.mapedge.no.trace"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.traces",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 2,
+				"rkx.underlings.blocker": -1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.arrive.traces",
+					"additional": true,
+					"chance": 70
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 1,
+				"rkx.underlings.blocker": -1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.arrive.trace",
+					"additional": true,
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.no.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": -1,
+				"rkx.underlings.blocker": -1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.arrive.no.trace",
+					"additional": true,
+					"chance": 10
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.mapedge.traces",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 2,
+				"rkx.foe": -1,
+				"rkx.underlings.blocker": 1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.mapedge",
+					"additional": true,
+					"chance": 70
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.mapedge.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"trace": 1,
+				"rkx.foe": -1,
+				"rkx.underlings.blocker": 1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.mapedge",
+					"additional": true,
+					"chance": 30
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "turn.check.mapedge.no.trace",
+			"actionId": "time.exile",
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.underlings.blocker": 1,
+				"diversion.exile": -1,
+				"rkx.foe.defeated": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.mapedge",
+					"additional": true,
+					"chance": 10
+				}
+			],
+			"linked": [
+				{
+					"id": "wounds.exile.danger"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "wounds.exile.danger",
+			"actionId": "time.exile",
+			"label": "Время сводить счёты",
+			"startdescription": "Небеса рушатся. И всё остальное вместе с ними. [Если у вас всё ещё семь ран, вы погибнете, когда действие завершится.]",
+			"extantreqs": {
+				"damage.exile": 7
+			},
+			"warmup": 15,
+			"signalEndingFlavour": "Melancholy",
+			"linked": [
+				{
+					"id": "wounds.exile.ending"
+				},
+				{
+					"id": "turn.next"
+				}
+			]
+		},
+		{
+			"id": "wounds.exile.ending",
+			"actionId": "time.exile",
+			"label": "Время сводить счёты",
+			"extantreqs": {
+				"damage.exile": 7
+			},
+			"ending": "foecaughtup"
+		},
+		{
+			"id": "spawn.obscurity",
+			"actionId": "spawn.obscurity",
+			"label": "Дитя Времени",
+			"startdescription": "Если правда — дочь времени, то чьё дитя беспамятство? [Вы получаете Забвение.]",
+			"extantreqs": {
+				"rkx.foe": -1
+			},
+			"effects": {
+				"obscurity": 1
+			},
+			"warmup": 5
+		},
+		{
+			"id": "spawn.trace",
+			"actionId": "spawn.trace",
+			"label": "След!",
+			"startdescription": "Сложно жить, не оставляя следов. [Считальцы могут найти вас по Следам.]",
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 5
+		}
+	]
+}

@@ -1,0 +1,303 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultcapital1_setup",
+			"label": "Der Beginn einer Expedition: Strathcoynes Kollektion",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital1": 1,
+				"funds": 1,
+				"follower": 1
+			},
+			"effects": {
+				"guardian_watchers": 1
+			},
+			"startdescription": "Mr. Strathcoyne hat den Zutritt zu seiner Bibliothek untersagt. Bedauerlich. Mal sehen, was sich da machen lässt. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcapital2_setup",
+			"label": "Der Beginn einer Expedition: Das vergessene Mithräum",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcapital2": 1
+			},
+			"effects": {
+				"seal_hiddendoor": 1
+			},
+			"startdescription": "Ich bin mir sicher, dass das Mithräum noch Geheimnisse in sich birgt, die kein Entdecker je gefunden hat. Wahrscheinlich besteht kein Risiko, doch die Suche wird Geld kosten. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcapital3_setup",
+			"label": "Der Beginn einer Expedition: Cater & Hero Limited",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital3": 1,
+				"funds": 1,
+				"follower": 1
+			},
+			"effects": {
+				"peril_treacherousground": 1
+			},
+			"startdescription": "Was von den Mauern der Fabrik noch übrig ist, könnte jeden Moment einstürzen. Geschwärzte Balken ächzen vor Schmerz. Wir müssen uns angemessen ausrüsten und höllisch aufpassen. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcapital4_setup",
+			"label": "Der Beginn einer Expedition: Hospital der Heiligen Agnes",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcapital4": 1
+			},
+			"effects": {
+				"curse_dread": 1
+			},
+			"startdescription": "Nur Echos sind in den Gängen des Hospitals noch zu hören, doch das Böse lauert in der Luft. Wir müssen gründlich suchen, Zimmer für Zimmer. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcapital5_setup",
+			"label": "Der Beginn einer Expedition: Gemeinde St. Felix von Schüren",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcapital5": 1
+			},
+			"effects": {
+				"guardian_monks": 1
+			},
+			"startdescription": "Die Mitgliedschaft in der Gemeinde ist streng reglementiert. Sie kann sogar vererbt werden. Der sicherste Ansatz ist, in die Residenz des Pastors einzubrechen, wenn er gerade eine Messe liest – doch die eingeschworenen Mütter der Gemeinde bewachen das Haus im Schichtbetrieb, und so leicht sind sie nicht abzulenken. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultcapitaldefault_setup",
+			"label": "Der Beginn einer Expedition: Der verlorene Einflussbereich",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultcapitaldefault": 1
+			},
+			"effects": {
+				"peril_treacherousground": 1,
+				"guardian_watchers": 1
+			},
+			"startdescription": "Das Gesetz wagt sich erst gar nicht in diesen verfallenden Randbezirk der Stadt. Der Schlamm hier hat schon viele Tote gefordert, und zweifellos lauern irgendwelche Kriminellen oder ähnliches Pack im Lagerhaus. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultcapital1_success",
+			"label": "Strathcoynes Schätze",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital1": 1
+			},
+			"effects": {
+				"vaultcapital1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"wainscothistories",
+					"textbookfucine",
+					"travellingatnight3",
+					"locksmithsdream4",
+					"treatiseonunderplaces"
+				],
+				"draws": 5,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Strathcoynes behagliche Zuflucht. Ein Feuer prasselt im Kamin. In Vitrinen sind hart erkämpfte Stücke zu bewundern. Wir müssen uns holen, was wir nur kriegen können, und zwar schnell! Strathcoyne könnte bereits die Polizei gerufen haben.",
+			"description": "Raus in die Nacht! Wir entkommen ungesehen, doch am nächsten Tage gibt es Berichte über einen Brand bei Strathcoyne. Hat da jemand etwa eine noch glühende Kohle auf den Teppich vor dem Kamin geworden? Oder hat Strathcoyne selbst den Brand gelegt, als Teil irgendeines noch größeren Plans?",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcapital2_success",
+			"label": "Die Zuflucht in der Tiefe",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital2": 1
+			},
+			"effects": {
+				"vaultcapital2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientlanternb",
+					"toolwinterd",
+					"toollanternbcracked",
+					"hq.mithraeum.potential"
+				],
+				"draws": 4,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Ein einsamer Ort, moderig vor Erinnerungen an Blut. Wir haben die Geheimtür entdeckt, die einst die höheren Initianten benutzt haben.",
+			"description": "Der Altar neigt sich nach hinten wie offenes Maul. Dahinter ist der pyramidenförmige Raum, den nur Sonnenjäger und Dämmerungsgeber betreten dürfen ... doch auch andere waren hier, vor nicht allzu langer Zeit. Sie haben ihre Schätze hier gelassen.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcapital3_success",
+			"label": "Caters Büro",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital3": 1
+			},
+			"effects": {
+				"vaultcapital3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolheartb",
+					"ingredientgrailb",
+					"franklinbancroftdiarieslatin",
+					"apolloandmarsyas",
+					"hq.warehouse.potential"
+				],
+				"draws": 5,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Dies ist der weitläufige Raum, wo Mr. Cater früher seinen Arbeitern in der Fabrik zuschauen konnte. Die Scheiben sind längst nicht mehr vorhanden und Ratten und Krähen haben sich dort häuslich eingerichtet, doch vielleicht ist ja noch etwas Nützliches hier ...",
+			"description": "Zwei Bodenbretter unter Caters Schreibtisch lassen sich anheben, und darunter ist ein Hohlraum! Die Ratten haben sich an den Keksen gütlich getan, die er dort als geheime Zwischenmahlzeit deponiert hatte, doch seiner Stahlschatulle konnten sie nichts anhaben. Mit einem Stemmeisen lässt sie sich im Handumdrehen öffnen.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcapital4_success",
+			"label": "Die violette Kammer",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital4": 1
+			},
+			"effects": {
+				"vaultcapital4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolgrailb",
+					"ingredientheartb",
+					"locksmithsdream3",
+					"roseofhypatiagreek",
+					"hq.hospital.potential"
+				],
+				"draws": 5,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Was war das mal? An der Tür war kein Schild. Es gab keine Fenster. Die Wände waren in einem satten Violett gestrichen – und es ist trotz des Regens, der durch die undichte Decke tropft, immer noch satt. Ein verrottender Stuhl hat Lederriemen an den Armlehnen. Der Boden ist gefliest und hat Ablaufrinnen.",
+			"description": "In die Wand integriert ist ein mit einem Vorhängeschloss versperrter Schrank: lange kann es unseren Anstrengungen nicht standhalten. Der Schrank enthält Instrumente mit Spitzen aus Feuerstein und Glas – eigentlich nichts, womit ein Chirurg arbeiten würde. Es sind auch noch andere Dinge vorhanden, die für uns von noch größerem Interesse sind ...",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultcapital5_success",
+			"label": "Geheime Hingabe",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapital5": 1
+			},
+			"effects": {
+				"vaultcapital5": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"roseofnurielgreek",
+					"roseofwazneigreek",
+					"chioneatabydos",
+					"debellismurorum",
+					"textbookgreek",
+					"hq.church.potential"
+				],
+				"draws": 6,
+				"defaultcard": "compensationb",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Das Schlafzimmer des Pastors ist verhältnismäßig groß, aber karg möbliert. Unter dem Fenster ruht eine gefiederte Schmuckaxt neben einer emaillierten Kelchtrommel auf einem kleinen Altar aus Eibenholz.",
+			"description": "Unter dem Altar, in einer Kiste, die durch einen komplizierten dreifachen Knoten gesichert ist, finden wir einen Schatz an Büchern sowie ein mit altem Blute verkrustetes Messer, einen Lumpen sowie den ledernen Rest von etwas, das der Pastor bei seiner Ordination wohl zurücklassen musste.",
+			"warmup": 30,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultcapital5",
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "explorevaultcapitaldefault_success",
+			"label": "Eine verzögerte Lieferung",
+			"actionId": "explore",
+			"requirements": {
+				"vaultcapitaldefault": 1
+			},
+			"effects": {
+				"vaultcapitaldefault": -1,
+				"funds": 1
+			},
+			"deckeffect": {
+				"vaultrewardsa": 3
+			},
+			"startdescription": "Eine versperrte Tür, ein enger Raum, eine verborgene Fracht.",
+			"description": "Die Wachen hier haben Kisten bewacht, die mit von Dieben signierten Schleifen versiegelt waren. Das war keine legale Aktion: den Eigentümern der Fracht könnte unsere Einmischung nicht recht gewesen sein.",
+			"warmup": 30,
+			"craftable": false
+		}
+	]
+}

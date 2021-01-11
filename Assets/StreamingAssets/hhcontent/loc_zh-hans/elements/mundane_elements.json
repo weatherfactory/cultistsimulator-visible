@@ -1,0 +1,118 @@
+{
+    "elements": [
+        {
+            "id": "rumour",
+            "label": "古怪的传闻",
+            "description": "这或许能让我找到所需的人，或者这意味着某种完全不同的东西。[跟随传闻的指引，继续探索。]",
+            "aspects": {
+                "ingredient": 1,
+                "secrethistories": 1,
+                "moth": 1
+            },
+            "lifetime": 60
+        },
+        {
+            "id": "favour",
+            "label": "当局欠下的人情",
+            "description": "我掌握了某些让人欠我情的东西，只管一次用。[这会使你或你的一名追随者免受牢狱之灾……但并不够可靠。]",
+            "aspects": {
+                "suspicious": 1
+            },
+            "lifetime": 300
+        },
+        {
+            "id": "mistakenidentity",
+            "label": "错认身份",
+            "aspects": {
+                "mortal": 1
+            },
+            "description": "到头来，这并不是你要寻找的人。他无足轻重，不会让你留下任何印象。或许已经没有什么人值得你去见了。",
+            "xtriggers": {
+                "rebellion": "generic_r"
+            },
+            "comments": "This xtrigger is here specifically in case someone runs through all the possible rivals as a Detective",
+            "lifetime": 10
+        },
+        {
+            "id": "funds",
+            "label": "资金",
+            "aspects": {
+                "ingredient": 1
+            },
+            "description": "足够供我舒舒服服地生活一小段时间。"
+        },
+        {
+            "id": "compensation",
+            "label": "古铁币",
+            "aspects": {
+                "edge": 2,
+                "secrethistories": 1,
+                "compensationvalue": 2,
+                "ingredient": 1,
+                "auctionable": 2
+            },
+            "description": "隐秘世界的新晋者用斯宾特里亚古币支付各种费用。古铁币面值最低，背面画着凶杀的情景。[“古钱币”可以在拍卖行换成份数的普通资金。]"
+        },
+        {
+            "id": "compensationb",
+            "label": "古铜币",
+            "aspects": {
+                "forge": 4,
+                "secrethistories": 1,
+                "compensationvalue": 4,
+                "ingredient": 1,
+                "auctionable": 3
+            },
+            "description": "隐秘世界的新晋者用斯宾特里亚古币支付各种费用。古青铜币背面通常画着塑造的场景。[“古钱币”可以在拍卖行换成份数的普通资金。]"
+        },
+        {
+            "id": "compensationc",
+            "label": "古银币",
+            "aspects": {
+                "grail": 6,
+                "secrethistories": 1,
+                "compensationvalue": 8,
+                "ingredient": 1,
+                "auctionable": 4
+            },
+            "description": "隐秘世界的新晋者用斯宾特里亚古币支付各种费用。古币很容易卖出数值更高的普通货币。古银币更具价值，背面通常画着淫荡的情景。[“古钱币”可以在拍卖行换成份数的普通资金。]"
+        },
+        {
+            "id": "compensationd",
+            "label": "古金币",
+            "aspects": {
+                "lantern": 8,
+                "secrethistories": 1,
+                "compensationvalue": 16,
+                "ingredient": 1,
+                "auctionable": 5
+            },
+            "description": "隐秘世界的新晋者用斯宾特里亚古币支付各种费用。古币很容易卖出数值更高的普通货币。古金币背面画着凡人肉眼不可见的情形。[“古钱币”可以在拍卖行换成份数的普通资金。]"
+        },
+        {
+            "id": "mapbookdealer",
+            "label": "去往莫兰书店的路线",
+            "aspects": {
+                "legacyplotitem": 1
+            },
+            "description": "语焉不详的路线说明，教人如何去往某个不为人知的地址，找到名为莫兰的稀有书籍商贩。"
+        },
+        {
+            "id": "jumble",
+            "label": "一堆杂物",
+            "aspects": {
+                "auctionable": 1
+            },
+            "description": "一堆旧衣服与没什么价值的首饰。或许它们能在哪换得几个便士，但对我没有什么用处。"
+        },
+        {
+            "id": "snare",
+            "label": "圈套",
+            "aspects": {
+                "snarelevel": 1
+            },
+            "description": "我为我的对手下好了圈套。[圈套可用于任何无派人士，或者用于挫败其搜刮藏宝地的企图。]",
+            "lifetime": 300
+        }
+    ]
+}

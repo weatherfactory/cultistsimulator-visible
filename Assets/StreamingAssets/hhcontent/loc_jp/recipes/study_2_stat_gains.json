@@ -1,0 +1,625 @@
+{
+	"recipes": [
+		{
+			"id": "studyincreasehealthstarter",
+			"label": "身体を鍛える",
+			"actionId": "study",
+			"requirements": {
+				"vitality": 2
+			},
+			"startdescription": "私は活力に満ち溢れている。運動に時間を割けば効果が出るだろう。",
+			"description": "強くなった。[体力を手に入れたが、次に体力を手に入れるのは難しくなりそうだ。]",
+			"effects": {
+				"vitality": -2,
+				"health": 1,
+				"skillhealtha": 1
+			},
+			"warmup": 60,
+			"maxexecutions": 1,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasevitalitytoplus",
+			"label": "身体を鍛える",
+			"actionId": "study",
+			"requirements": {
+				"vitality": 2
+			},
+			"startdescription": "私は活力に満ち溢れている。運動に時間を割けば効果が出るだろう。",
+			"description": "強くなる準備はできている。[強さのスキルで、この学んだ教訓を使う。]",
+			"effects": {
+				"vitality": -2,
+				"vitalityplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasevitalitywithinfluencehearttoplus",
+			"label": "身体を鍛える",
+			"actionId": "study",
+			"requirements": {
+				"vitality": 1,
+				"influenceheart": 1,
+				"lore": -1
+			},
+			"startdescription": "私は活力に満ち溢れているし、爽やかな季節になってきた。運動に時間を割けば効果が出るだろう。[適切な伝承を加えることで、より強力なオカルトの影響力を生み出すことができるようになる。]",
+			"description": "強くなる準備はできている。[強さのスキルで、この学んだ教訓を使う。]",
+			"effects": {
+				"influence": -2,
+				"vitalityplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskilla",
+			"label": "身体を鍛える：もっと強くなる......",
+			"actionId": "study",
+			"requirements": {
+				"skillhealtha": 1,
+				"vitalityplus": 2
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "まだまだ強くなっていく。",
+			"description": "機械、私の体は、力でみなぎっている。",
+			"effects": {
+				"health": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskillb",
+			"label": "身体を鍛える：さらに上を目指す......",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthb": 1,
+				"vitalityplus": 3
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "もっと強くなっていく。",
+			"description": "人を運びながら川を渡ることもできるし、首を絞めることもできる。",
+			"effects": {
+				"health": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskill_to_d_edge",
+			"label": "身体を鍛える：さらなる強さ",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"edge": 1,
+				"lore": 1
+			},
+			"startdescription": "私は、どんどん強くなっていくライオンスミスや、傷を負ってもひるむことのない大佐の足跡をたどっていく。",
+			"description": "私の鼓動はドラムのように安定し、裁判官の判決のように確実だ。",
+			"effects": {
+				"health": 1,
+				"skillhealthc": -1,
+				"skillhealthd_strength": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskill_to_d_forge",
+			"label": "身体を鍛える：さらなる強さ",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"forge": 1,
+				"lore": 1
+			},
+			"startdescription": "私は日々の鍛造の強さで燃える。",
+			"description": "私の鼓動はドラムのように安定し、裁判官の判決のように確実だ。",
+			"effects": {
+				"health": 1,
+				"skillhealthc": -1,
+				"skillhealthd_strength": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskill_to_d_grail",
+			"label": "身体を鍛える：さらなる優美さ",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"grail": 1,
+				"lore": 1
+			},
+			"startdescription": "私は、聖杯に指示されたように動く。体はしなやかになり、トゲを増し、甘くなる。",
+			"description": "嵐が来ても曲がる木は折れない。",
+			"effects": {
+				"health": 1,
+				"skillhealthc": -1,
+				"skillhealthd_grace": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskill_to_d_heart",
+			"label": "身体を鍛える：さらなる優美さ",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"heart": 9,
+				"lore": 1
+			},
+			"comments": "ugh: heart influence from vitalityplus",
+			"startdescription": "サンダースキンの声に従う。",
+			"description": "嵐が来ても曲がる木は折れない。",
+			"effects": {
+				"health": 1,
+				"skillhealthc": -1,
+				"skillhealthd_grace": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasehealthskill_to_d_moth",
+			"label": "身体を鍛える：さらなる優美さ",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"moth": 1,
+				"lore": 1
+			},
+			"startdescription": "炎の中を飛んでも、燃え尽きることはない。",
+			"description": "嵐が来ても曲がる木は折れない。",
+			"effects": {
+				"health": 1,
+				"skillhealthc": -1,
+				"skillhealthd_grace": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonstarter",
+			"label": "心を鍛える",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 2
+			},
+			"startdescription": "妙な事実をあちこちで聞いてきた。今まで学んできたことを時間をかけて勉強すれば、理性を高められるかもしれない。",
+			"description": "私の心、図書館。[理性を手に入れたが、次に理性を手に入れるのは難しくなりそうだ。]",
+			"effects": {
+				"erudition": -2,
+				"reason": 1,
+				"skillreasona": 1
+			},
+			"warmup": 60,
+			"maxexecutions": 1,
+			"craftable": true
+		},
+		{
+			"id": "studyincreaseeruditiontoplus",
+			"label": "心を鍛える",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 2
+			},
+			"startdescription": "妙な事実をあちこちで聞いてきた。今まで学んできたことを時間をかけて勉強すれば、理性を高められるかもしれない。",
+			"description": "私の頭は図書室だ。[学識のスキルでこの教訓を使う。]",
+			"effects": {
+				"erudition": -2,
+				"eruditionplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreaseeruditionwithlanterninfluencetoplus",
+			"label": "心の光",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 1,
+				"influencelantern": 1,
+				"lore": -1
+			},
+			"startdescription": "色々な知識をあちらこちらで付けてきた......そして、この妙に明るい季節になると、自分の理性を磨くこともできる。 [適切な伝承を加えることで、より強力なオカルトの影響力を生み出すことができるようになる。]",
+			"description": "私の頭は図書室だ。[学識のスキルでこの教訓を使う。]",
+			"effects": {
+				"influence": -2,
+				"eruditionplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskilla",
+			"label": "心を鍛える：もっと賢くなる......",
+			"actionId": "study",
+			"requirements": {
+				"skillreasona": 1,
+				"eruditionplus": 2
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "知識は石を積み上げて築いた城壁である。しかし、壁の向こうの暗闇には何が待っているのだろうか？なぜ要塞が必要なのだろうか？恐れるべきものがあるからに違いない。",
+			"description": "自分の知識と無知の領域に線を引き直した。",
+			"effects": {
+				"reason": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskillb",
+			"label": "心を鍛える：賢さの頂点......",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonb": 1,
+				"eruditionplus": 3
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "まだまだ賢くなる。",
+			"description": "私の心は鏡の楽園で、すべてのものがはっきりしている。見たくないものでさえもはっきりしているのだ。",
+			"effects": {
+				"reason": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_lantern",
+			"label": "心を鍛える：明るい光",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"lantern": 9,
+				"lore": 1
+			},
+			"startdescription": "私は見張り番の足跡をたどる。",
+			"description": "上がれば上がるほど、見えてくるものがある。",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_illumination": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_winter",
+			"label": "心を鍛える：より深い集中力",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"winter": 1,
+				"lore": 1
+			},
+			"startdescription": "マドゥルガーダの声に耳を傾ける。",
+			"description": "静けさは美徳。",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_concentration": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_knock",
+			"label": "心を鍛える：明るい光",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"knock": 1,
+				"lore": 1
+			},
+			"startdescription": "角斧が待つ入り口を超える。",
+			"description": "上がれば上がるほど、見えてくるものがある。",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_illumination": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_secrethistories",
+			"label": "心を鍛える：より深い集中力",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"secrethistories": 1,
+				"lore": 1
+			},
+			"startdescription": "歴史のすべてを覚えている者はいないが、すべてを忘れられる者もいない。",
+			"description": "静けさは美徳。",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_concentration": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_forge",
+			"label": "心を鍛える：明るい光",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"forge": 1,
+				"lore": 1
+			},
+			"startdescription": "無知の夜を照らすために、私は自分自身を改造する。",
+			"description": "上がれば上がるほど、見えてくるものがある。",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_illumination": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasereasonskill_to_d_edge",
+			"label": "心を鍛える：より深い集中力",
+			"actionId": "study",
+			"requirements": {
+				"skillreasonc": 1,
+				"eruditionplus": 4,
+				"edge": 1,
+				"lore": 1
+			},
+			"startdescription": "私は引き下がらないし、誰も私には逆らえない。",
+			"description": "静けさは美徳。",
+			"effects": {
+				"reason": 1,
+				"skillreasonc": -1,
+				"skillreasond_concentration": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionstarter",
+			"label": "想像力を膨らませる",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 2
+			},
+			"startdescription": "「怒りに燃えた虎は調教された馬よりも賢い」。学んだことを時間をかけて勉強すれば、情熱を高めてスキルを身につけることができる。",
+			"description": "私の魂にはたくさんの窓があるが、窓を通るのは太陽の光だけではない。[情熱を手に入れたが、次に情熱を手に入れるのは難しくなりそうだ。]",
+			"effects": {
+				"glimmering": -2,
+				"passion": 1,
+				"skillpassiona": 1
+			},
+			"warmup": 60,
+			"maxexecutions": 1,
+			"craftable": true
+		},
+		{
+			"id": "studyincreaseglimmeringtoplus",
+			"label": "想像力を膨らませる",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 2
+			},
+			"startdescription": "「怒りに燃えた虎は調教された馬よりも賢い」。学んだことを時間をかけて勉強すれば、情熱の向上を目指して努力することができる。",
+			"description": "私の魂にはたくさんの窓があるが、窓を通るのは太陽の光だけではない。[想像力のスキルでこの学んだ教訓を使う。]",
+			"effects": {
+				"glimmering": -2,
+				"glimmeringplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreaseglimmeringwithmothinfluencetoplus",
+			"label": "想像力を膨らませる",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 1,
+				"influencemoth": 1,
+				"lore": -1
+			},
+			"startdescription": "「怒りに燃えた虎は調教された馬よりも賢い」。予想外の衝動に駆られるこの時期は、自分の情熱を高めるにはちょうど良い。 [適切な伝承を加えることで、より強力なオカルトの影響力を生み出すことができるようになる。]",
+			"description": "私の魂にはたくさんの窓があるが、窓を通るのは太陽の光だけではない。[想像力のスキルでこの学んだ教訓を使う。]",
+			"effects": {
+				"influence": -2,
+				"glimmeringplus": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskilla",
+			"label": "想像力を膨らませる：一層猛烈に",
+			"actionId": "study",
+			"requirements": {
+				"skillpassiona": 1,
+				"glimmeringplus": 2
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "「欲しても行動しない者は疫病を生む」",
+			"description": "私の欲望は日を追うごとに大きくなっていく。それはいつも私の行動を上回ってしまうのかもしれない。",
+			"effects": {
+				"passion": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskillb",
+			"label": "想像力を膨らませる：格段と猛烈に",
+			"actionId": "study",
+			"requirements": {
+				"skillpassionb": 1,
+				"glimmeringplus": 3
+			},
+			"aspects": {
+				"careeradvancement": 1
+			},
+			"startdescription": "「実行されない欲望を育てるよりは、いっそ揺りかごのなかのおさなごを殺せ」",
+			"description": "別の時代の私は、先見者か異端者だったのだろう。",
+			"effects": {
+				"passion": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskill_to_d_moth",
+			"label": "想像力を働かせる：理不尽",
+			"actionId": "study",
+			"requirements": {
+				"skillpassionc": 1,
+				"glimmeringplus": 4,
+				"moth": 9,
+				"lore": 1
+			},
+			"startdescription": "髪を切って、絆を切って、チョキチョキチョキチョキ。",
+			"description": "答えを出したら、私が質問でそれを打ち破ろう......",
+			"effects": {
+				"passion": 1,
+				"skillpassionc": -1,
+				"skillpassiond_unreason": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskill_to_d_heart",
+			"label": "想像力を働かせる：理不尽",
+			"actionId": "study",
+			"requirements": {
+				"skillpassionc": 1,
+				"glimmeringplus": 4,
+				"heart": 1,
+				"lore": 1
+			},
+			"startdescription": "サンダースキンは「我々は止まらないものを止めない」と約束した",
+			"description": "答えを出したら、私が質問でそれを打ち破ろう......",
+			"effects": {
+				"passion": 1,
+				"skillpassionc": -1,
+				"skillpassiond_unreason": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskill_to_d_knock",
+			"label": "想像力を働かせる：愚かさ",
+			"actionId": "study",
+			"requirements": {
+				"skillpassionc": 1,
+				"glimmeringplus": 4,
+				"knock": 1,
+				"lore": 1
+			},
+			"startdescription": "「リンゴの木はブナにどうやって成長するのか尋ねないし、ライオンや馬にどうやって獲物を取るのか尋ねない」",
+			"description": "これで私の魂の準備は整った。",
+			"effects": {
+				"passion": 1,
+				"skillpassionc": -1,
+				"skillpassiond_folly": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyincreasepassionskill_to_d_grail",
+			"label": "想像力を働かせる：愚かさ",
+			"actionId": "study",
+			"requirements": {
+				"skillpassionc": 1,
+				"glimmeringplus": 4,
+				"grail": 1,
+				"lore": 1
+			},
+			"startdescription": "「欲しても行動しない者は疫病を生む」",
+			"description": "これで私の魂の準備は整った。",
+			"effects": {
+				"passion": 1,
+				"skillpassionc": -1,
+				"skillpassiond_folly": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyhealth",
+			"label": "新鮮な空気と運動",
+			"actionId": "study",
+			"requirements": {
+				"health": 1,
+				"lore": -1
+			},
+			"comments": "lore limiter added in case we use health for researching lore at some point",
+			"effects": {
+				"vitality": 1
+			},
+			"startdescription": "長く散歩すると頭がすっきりする。",
+			"description": "勉強をおろそかにしていたが、少しだけ背筋が伸びた。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studyreason",
+			"label": "手元にある文章を何でも読む",
+			"actionId": "study",
+			"requirements": {
+				"reason": 1,
+				"lore": -1
+			},
+			"comments": "lore limiter added because we use reason for researching (splitting) lore",
+			"effects": {
+				"erudition": 1
+			},
+			"startdescription": "世の中は活字で溢れている。新聞にも知識が載っていることがある。",
+			"description": "言葉には知識が含まれている。そしてそれを私が吸収する。盗みのような、ご馳走のような、伝染病の発症のようなものだ。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "studypassion",
+			"label": "感傷的作品を読む",
+			"actionId": "study",
+			"requirements": {
+				"passion": 1
+			},
+			"comments": "lore limiter added in case we use passion for researching lore at some point",
+			"effects": {
+				"glimmering": 1
+			},
+			"startdescription": "勉強しようと思ってたらこんなものは読まない。",
+			"description": "暇つぶしになった。読みながら泣けてきて、その後に笑えてくる作品だった。一方、世界はいつものように進んでいく。",
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

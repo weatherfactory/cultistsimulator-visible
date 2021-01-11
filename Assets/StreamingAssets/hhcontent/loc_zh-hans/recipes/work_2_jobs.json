@@ -1,0 +1,999 @@
+{
+    "recipes": [
+        {
+            "id": "findclericalwork",
+            "label": "找一份文书工作",
+            "actionId": "work",
+            "requirements": {
+                "reason": 1,
+                "ritual": -1,
+                "job": -1
+            },
+            "effects": {
+                "gloverandgloverjuniorjob": 1
+            },
+            "startdescription": "找一份不劳身，但未必不劳神的工作。",
+            "description": "格洛弗父子公司为我提供了一个高层职位。明早八点整我就得来上班！",
+            "warmup": 10,
+            "craftable": true,
+            "maxexecutions": 1,
+            "burnimage": "office"
+        },
+        {
+            "id": "job_plead_hint",
+            "label": "为保住工作苦苦恳求？",
+            "actionId": "work",
+            "requirements": {
+                "demotion": 1
+            },
+            "aspects": {
+                "plead": 1
+            },
+            "startdescription": "一定要让上级主管相信我已痛改前非。[以“激情”说服领导让我重返岗位。]",
+            "hintonly": true,
+            "craftable": true
+        },
+        {
+            "id": "job_plead",
+            "label": "为保住工作苦苦恳求",
+            "actionId": "work",
+            "requirements": {
+                "passion": 1,
+                "demotion": 1
+            },
+            "aspects": {
+                "plead": 1
+            },
+            "startdescription": "这番对话并不愉快，但也许必不可少。",
+            "description": "他们又给了我一次机会。显然他们觉得我应该感激不已。",
+            "craftable": true,
+            "warmup": 30
+        },
+        {
+            "id": "gloverandgloverjuniorwork",
+            "label": "格洛弗父子公司的高层工作",
+            "aspects": {
+                "employment": 1
+            },
+            "requirements": {
+                "gloverandgloverjuniorjob": 1,
+                "ritual": -1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "gloverandglover_diligence",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 1
+            },
+            "actionId": "work",
+            "startdescription": "钢笔发出刮擦声，尘土泛着酸味，小格洛弗口中叹气，老格洛弗肚子贪婪地咕咕作响。",
+            "description": "职员们沉默着鱼贯而出。我现下有空了。",
+            "warmup": 60,
+            "slots": [
+                {
+                    "id": "Diligence",
+                    "label": "勤勉",
+                    "required": {
+                        "reason": 1
+                    },
+                    "forbidden": {},
+                    "description": "加倍努力工作。有时候可能管用。"
+                }
+            ],
+            "craftable": true
+        },
+        {
+            "id": "gloverandglover_diligence",
+            "label": "在格洛弗父子公司加倍努力工作",
+            "aspects": {
+                "employment": 1
+            },
+            "requirements": {
+                "reason": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "gloverandgloverjunior_diligence_promotion",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 1
+            },
+            "actionId": "work",
+            "startdescription": "我要加倍努力工作。也许能得到他们的赞赏。",
+            "description": "一日已毕。脖子酸痛。明天要做的工作还是一样的多。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "gloverandgloverjunior_diligence_promotion",
+            "label": "升职！",
+            "requirements": {
+                "gloverandgloverjuniorjob": 1,
+                "reason": 1
+            },
+            "effects": {
+                "funds": 1
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "actionId": "work",
+            "startdescription": "",
+            "description": "\"档案部主管奥尔登先生叫我去办公室，表扬我工作勤奋。我一直盯着他脖子上的痣，听他讲话、讲话、没完没了地讲话。不过讲到最后，他给我升职了！\r\n\t\t\r\n\t\t我的新职位工资更高，办公桌在临街的窗户旁。然而奥尔登先生现在成了我的直属上司。奥尔登先生可是出了名地难对付。\"",
+            "warmup": 0
+        },
+        {
+            "id": "gloverandgloverjuniorwork_again",
+            "label": "格洛弗父子公司的高层工作",
+            "aspects": {
+                "employment": 1
+            },
+            "requirements": {
+                "gloverandgloverjuniorjob_nodifficultbossa": 1,
+                "ritual": -1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "gloverandglover_diligence_again",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 1
+            },
+            "actionId": "work",
+            "startdescription": "钢笔发出刮擦声，尘土泛着酸味，小格洛弗口中叹气，老格洛弗肚子贪婪地咕咕作响。",
+            "description": "职员们沉默着鱼贯而出。我现下有空了。",
+            "warmup": 60,
+            "slots": [
+                {
+                    "id": "Diligence",
+                    "label": "勤勉",
+                    "required": {
+                        "reason": 1
+                    },
+                    "forbidden": {},
+                    "description": "加倍努力工作。有时候可能管用。"
+                }
+            ],
+            "craftable": true
+        },
+        {
+            "id": "gloverandglover_diligence_again",
+            "label": "在格洛弗父子公司加倍努力工作",
+            "aspects": {
+                "employment": 1
+            },
+            "requirements": {
+                "reason": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "gloverandgloverjunior_diligence_promotion_again",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 1
+            },
+            "actionId": "work",
+            "startdescription": "我要加倍努力工作。也许能得到他们的赞赏，也许能让我重新爬上高级的职位。",
+            "description": "一日已毕。脖子酸痛。明天要做的工作还是一样的多。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "gloverandgloverjunior_diligence_promotion_again",
+            "label": "升职！",
+            "requirements": {
+                "gloverandgloverjuniorjob_nodifficultbossa": 1,
+                "reason": 1
+            },
+            "effects": {
+                "funds": 1
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "actionId": "work",
+            "startdescription": "",
+            "description": "我重新回到了高级职位。",
+            "warmup": 0
+        },
+        {
+            "id": "gloverandgloverwork_difficultbossa",
+            "actionId": "work",
+            "aspects": {
+                "employment": 1
+            },
+            "label": "在格洛弗父子公司工作",
+            "requirements": {
+                "gloverandglover_difficultbossa_job": 1
+            },
+            "startdescription": "我现在收入高了。奥尔登先生却开始留心我。奥尔登先生是个特别挑剔的人。奥尔登先生喜欢事情办得分毫不差。而且奥尔登先生从没相信过我能胜任这个职位。",
+            "description": ".",
+            "effects": {
+                "funds": 2
+            },
+            "linked": [
+                {
+                    "id": "gloverandglover_difficultbossa_overtime_initial",
+                    "chance": 100
+                },
+                {
+                    "id": "gloverandglover_difficultbossa_overtime",
+                    "chance": 70
+                },
+                {
+                    "id": "gloverandglover_difficultbossa_no_overtime",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "gloverandglover_difficultbossa_no_overtime",
+            "actionId": "work",
+            "aspects": {
+                "employment": 1
+            },
+            "label": "在格洛弗父子公司工作",
+            "startdescription": ".",
+            "description": "奥尔登先生今天没从我的工作中挑出任何毛病。我离开时他没有抬眼看我。"
+        },
+        {
+            "id": "gloverandglover_difficultbossa_patienceisavirtue",
+            "actionId": "work",
+            "label": "奥尔登要退休了！",
+            "startdescription": "“我明天将会离开格洛弗父子公司。做完今天的工作后，请来找我。”",
+            "description": "\"“你在我的指点下<i>确实</i>有些进步。我已经推荐你接替我的职位。我教你的东西你要记住，将来说不定能让你在这个部门做出一番成绩。你可以走了。”\r\n\t\r\n“还有一件事，我差点忘记了-”\r\n\t\r\n“明天请务必准时到岗。”\r\n\t\"",
+            "warmup": 30,
+            "craftable": false,
+            "aspects": {
+                "careeradvancement": 1
+            }
+        },
+        {
+            "id": "gloverandglover_difficultbossa_overtime_initial",
+            "comments": "Player will need to go through this minimum ten times. After that, the chance of overtime is reduced, and there is a small possibility Alden will retire.",
+            "actionId": "work",
+            "aspects": {
+                "employment": 1
+            },
+            "label": "在奥尔登先生的坚持下加班",
+            "startdescription": "“我认定工作完成后工作才算完成。我相信我们都了解这一点。”",
+            "slots": [
+                {
+                    "id": "Attention",
+                    "label": "专注",
+                    "required": {
+                        "reason": 1
+                    },
+                    "description": "加倍努力工作，运气很好的话说不定管用。"
+                }
+            ],
+            "description": "“我的结论是你这一次的工作处于及格水准。你可以走了。明天请准时到岗。”\n\n[可能有法子对付奥尔登先生]",
+            "alternativerecipes": [
+                {
+                    "id": "gloverandglover_difficultbossa_overtime_fail",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "maxexecutions": 1
+        },
+        {
+            "id": "gloverandglover_difficultbossa_overtime",
+            "actionId": "work",
+            "aspects": {
+                "employment": 1
+            },
+            "label": "在奥尔登先生的坚持下加班",
+            "startdescription": "“我认定工作完成后工作才算完成。我相信我们都了解这一点。”",
+            "slots": [
+                {
+                    "id": "Attention",
+                    "label": "专注",
+                    "required": {
+                        "reason": 1,
+                        "passion": 1
+                    },
+                    "description": "加倍努力工作，运气很好的话说不定管用。"
+                }
+            ],
+            "description": "“我的结论是你这一次的工作处于及格水准。你可以走了。明天请准时到岗。”\n\n[可能有法子对付奥尔登先生]",
+            "alternativerecipes": [
+                {
+                    "id": "gloverandglover_difficultbossa_overtime_fail",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "gloverandglover_difficultbossa_patienceisavirtue",
+                    "chance": 2
+                }
+            ]
+        },
+        {
+            "id": "gloverandglover_difficultbossa_overtime_fail",
+            "actionId": "work",
+            "aspects": {
+                "employment": 1
+            },
+            "label": "在奥尔登先生的坚持下加班",
+            "startdescription": "“我认为你没有正确认识到我们这里工作的重要性。这份工作需要你投入<i>全部精力</i>。”[加入理性以说服奥尔登先生。]",
+            "description": "“我本打算说我感到失望，不过我对你的期待本已很低了。我不得不扣除你的一部分薪水。你可以走了，别忘了明天请准时到岗。”\n\n[可能有法子对付奥尔登先生]",
+            "requirements": {
+                "reason": -1
+            },
+            "effects": {
+                "funds": -1
+            },
+            "craftable": false
+        },
+        {
+            "id": "gloverandgloverwork_difficultbossa_gone",
+            "actionId": "work",
+            "aspects": {
+                "employment": 1
+            },
+            "label": "在格洛弗父子公司工作",
+            "requirements": {
+                "gloverandglover_difficultbossa_gone_job": 1
+            },
+            "startdescription": "办公室为奥尔登今天没来的消息而沸腾。一个骨瘦如柴，紧张兮兮的家伙从四层过来，被任命为档案部（临时）主管。他和奥尔登不一样，不干涉我的工作。",
+            "description": "墨水，纸张，滋滋作响的电灯。我离开时办公室已光线昏暗。但我是准点离开的。",
+            "effects": {
+                "funds": 2,
+                "gloverandglover_difficultbossa_gone_job": -1,
+                "gloverandgloverjob": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "gloverandgloverwork",
+            "label": "在格洛弗父子公司工作",
+            "aspects": {
+                "employment": 1
+            },
+            "requirements": {
+                "gloverandgloverjob": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "gloverandglover_diligence_promotion",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 2
+            },
+            "actionId": "work",
+            "startdescription": "最近工作的要求更高了，不过薪水也是。",
+            "description": "墨水，纸张，滋滋作响的电灯。我离开时办公室已光线昏暗。走到外面的人行道上，我把衣服领子翻了起来。",
+            "warmup": 70,
+            "slots": [
+                {
+                    "id": "Devotion",
+                    "label": "敬业",
+                    "required": {
+                        "reason": 1
+                    },
+                    "description": "加倍努力工作，运气很好的话说不定管用。"
+                }
+            ],
+            "craftable": true
+        },
+        {
+            "id": "gloverandglover_diligence_promotion",
+            "label": "在格洛弗父子公司加班",
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "requirements": {
+                "gloverandgloverjob": 1,
+                "reason": 2
+            },
+            "effects": {
+                "funds": 3
+            },
+            "actionId": "work",
+            "startdescription": "",
+            "description": "小格洛弗带我去他所在的俱乐部吃了一次午饭。现在我得比以前做事更勤谨、更加小心，作为回报，他会从我为他父亲挣的那些钱里再多拿出一点给我。",
+            "warmup": 0
+        },
+        {
+            "id": "gloverandgloverwork_again",
+            "label": "在格洛弗父子公司工作",
+            "aspects": {
+                "employment": 1
+            },
+            "requirements": {
+                "gloverandgloverjob_youngerglovergone": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "gloverandglover_diligence_promotion_again",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "funds": 2
+            },
+            "actionId": "work",
+            "startdescription": "最近工作的要求更高了，不过薪水也是。",
+            "description": "墨水，纸张，滋滋作响的电灯。我离开时办公室已光线昏暗。走到外面的人行道上，我把衣服领子翻了起来。",
+            "warmup": 70,
+            "slots": [
+                {
+                    "id": "Devotion",
+                    "label": "敬业",
+                    "required": {
+                        "reason": 1
+                    },
+                    "description": "加倍努力工作，运气很好的话说不定管用。"
+                }
+            ],
+            "craftable": true
+        },
+        {
+            "id": "gloverandglover_diligence_promotion_again",
+            "label": "在格洛弗父子公司加班",
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "requirements": {
+                "reason": 2
+            },
+            "effects": {
+                "funds": 2
+            },
+            "actionId": "work",
+            "startdescription": "",
+            "description": "我已坐回高层职位。",
+            "warmup": 0
+        },
+        {
+            "id": "gloverandgloverseniorwork_retirementoption",
+            "label": "在格洛弗父子公司工作",
+            "aspects": {
+                "employment": 1
+            },
+            "requirements": {
+                "gloverandgloverseniorjob": 1,
+                "reason": 1
+            },
+            "effects": {
+                "funds": 3
+            },
+            "actionId": "work",
+            "startdescription": "先把自己的手攥成合适的形状，然后开工。",
+            "description": "我总是最晚一个走的，比老格洛弗还还晚。",
+            "warmup": 70,
+            "slots": [
+                {
+                    "id": "Acceptance",
+                    "label": "接受",
+                    "required": {
+                        "passion": 1
+                    },
+                    "description": "我愿意把毕生精力投入进去。"
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "workvictory",
+                    "chance": 100
+                }
+            ],
+            "craftable": true
+        },
+        {
+            "id": "gloverandgloverseniorwork",
+            "label": "在格洛弗父子公司工作",
+            "aspects": {
+                "employment": 1
+            },
+            "requirements": {
+                "gloverandgloverseniorjob": 1,
+                "reason": 1
+            },
+            "effects": {
+                "funds": 3
+            },
+            "actionId": "work",
+            "startdescription": "先把自己的手攥成合适的形状，然后开工。",
+            "description": "我总是最晚一个走，比老格洛弗还还晚。我和小格洛弗关系不错。他喜欢开玩笑说我以后说不定能接替他，当然了，这不可能。他父亲不会允许。他开这种玩笑是为了让我认清自己。他这么做已经开始叫我恼火了。",
+            "warmup": 70,
+            "craftable": true
+        },
+        {
+            "id": "gloverandgloverseniorwork_hint",
+            "label": "在在格洛弗父子公司工作？",
+            "actionId": "work",
+            "requirements": {
+                "gloverandgloverseniorjob": 1
+            },
+            "startdescription": "我的工作要求很高。我需要投入一些理性才能做。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "gloverandgloverseniorworkyoungerglovergone",
+            "label": "在格洛弗父子公司工作",
+            "aspects": {
+                "employment": 1
+            },
+            "requirements": {
+                "gloverandgloverseniorjob_youngerglovergone": 1,
+                "reason": 1
+            },
+            "effects": {
+                "funds": 3
+            },
+            "actionId": "work",
+            "startdescription": "先把自己的手攥成合适的形状，然后开工。",
+            "description": "我阖上眼，数字在我眼帘下列队飘过。我睁开眼，光线使我刺痛。",
+            "warmup": 70,
+            "slots": [
+                {
+                    "id": "Ambition",
+                    "label": "野心",
+                    "required": {
+                        "passion": 1
+                    },
+                    "description": "小格洛弗留下的董事席位还是空的……"
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "gloverandgloversenior_diligence_promotion",
+                    "chance": 30
+                }
+            ],
+            "craftable": true
+        },
+        {
+            "id": "gloverandgloverseniorwork_youngerglovergone_hint",
+            "label": "在在格洛弗父子公司工作？",
+            "actionId": "work",
+            "requirements": {
+                "gloverandgloverseniorjob_youngerglovergone": 1
+            },
+            "startdescription": "我的工作要求很高。我需要投入一些理性才能完成。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "gloverandgloversenior_diligence_promotion",
+            "label": "升职！",
+            "requirements": {
+                "passion": 1
+            },
+            "effects": {
+                "funds": 5
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "actionId": "work",
+            "startdescription": ".",
+            "description": "“我儿子”，老格洛弗说道，“是个招人疼的孩子，但确实少些志气。而你正相反，你是胸有大志的人。我看着你就想起了我自己，你知道吗？我这是真心话。嗯，我想我们可以安排你进董事会。”"
+        },
+        {
+            "id": "gloverandglovertopwork",
+            "label": "在格洛弗父子公司工作",
+            "aspects": {
+                "employment": 1
+            },
+            "actionId": "work",
+            "requirements": {
+                "gloverandglovertopjob": 1
+            },
+            "slots": [
+                {
+                    "id": "Scandal",
+                    "label": "中伤",
+                    "required": {
+                        "notoriety": 1
+                    },
+                    "greedy": true,
+                    "description": "我身居高位，这也许能再为我抵挡一阵丑闻。但这件事已经引起公司相当的重视，我可能会被解雇。"
+                }
+            ],
+            "startdescription": "工作日难熬的钟点像在我眼前排成长队等着我一样。我吃完午饭就回家算了……",
+            "description": "如果说哪里是格洛弗父子公司的心脏，那便是会计部了，那里的钱来去滚滚如春潮。而公司的肢体则是那些大气也不敢出的行政人员和职员。但我和其他董事处于它的颅顶，（至少现下）我不必惧怕丑闻，也无需顾虑财务压力。",
+            "warmup": 50,
+            "effects": {
+                "funds": 4,
+                "notoriety": -1
+            },
+            "craftable": true,
+            "alternativerecipes": [
+                {
+                    "id": "gloverandglovertopwork_scandal_a",
+                    "chance": 30
+                }
+            ]
+        },
+        {
+            "id": "gloverandglovertopwork_scandal_a",
+            "aspects": {
+                "employment": 1
+            },
+            "label": "一次表达担忧的谈话",
+            "actionId": "work",
+            "requirements": {
+                "notoriety": 1
+            },
+            "startdescription": ".",
+            "description": "我被叫去见老格洛弗——现在唯一的格洛弗。他在椅子上不安地扭动着。“我听说——”他这样开腔，又犹豫地停下，注视我的眼睛：“我不想再听到任何关于——关于那事的话。哪怕是一个字，一个字都不要。”",
+            "effects": {
+                "funds": 4,
+                "notoriety": -1,
+                "gloverandglovertopjob": -1,
+                "gloverandglovertopjob_tainted": 1
+            }
+        },
+        {
+            "id": "gloverandglovertopjob_tainted",
+            "aspects": {
+                "employment": 1
+            },
+            "label": "在格洛弗父子公司工作",
+            "actionId": "work",
+            "requirements": {
+                "gloverandglovertopjob_tainted": 1
+            },
+            "slots": [
+                {
+                    "id": "Scandal",
+                    "label": "中伤",
+                    "required": {
+                        "notoriety": 1
+                    },
+                    "greedy": true,
+                    "description": "我身居高位，这也许能再为我遮挡一阵丑闻。但我现在切实面临丢掉职位的危险。"
+                }
+            ],
+            "startdescription": "吃完午饭就能回家的日子已不再。同事开始怀疑我的身份。他们一点也不知道我非池中之物。",
+            "description": "我在一个位于五楼的齐整房间里审核一列列齐整的数字。办公室的窗外能看到河。秘书每五十九分钟为我送来一杯热饮。窗外的河是雨的颜色。",
+            "warmup": 60,
+            "effects": {
+                "funds": 4,
+                "notoriety": -1
+            },
+            "craftable": true,
+            "alternativerecipes": [
+                {
+                    "id": "gloverandglovertopwork_scandal_b",
+                    "chance": 70
+                }
+            ]
+        },
+        {
+            "id": "gloverandglovertopwork_scandal_b",
+            "label": "遭到黜免！",
+            "actionId": "work",
+            "requirements": {
+                "notoriety": 1
+            },
+            "startdescription": ".",
+            "description": "我接到一封正式（但措辞小心到怪异的）信函，由格洛弗父子公司直接送到我手中。公司不再需要我担任董事，但给我的退职金却相当丰厚。公司衷心希望我们不会因为此事结怨。信上的签名有点发抖……",
+            "effects": {
+                "funds": 8,
+                "notoriety": -1,
+                "gloverandglovertopjob_tainted": -1
+            }
+        },
+        {
+            "id": "institutephysicianwork",
+            "label": "在研究所工作",
+            "requirements": {
+                "institutephysicianjob": 1,
+                "ritual": -1
+            },
+            "effects": {
+                "funds": 2
+            },
+            "actionId": "work",
+            "startdescription": "研究所大厅有一股潮湿黏腻的气味挥之不散。或许是因为墙漆。也许是因为病人。又也许是因为墙里有什么东西。",
+            "description": "我的工作做得不错。病人经我之手变得更安静了。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "workbeg",
+            "label": "沿街乞讨",
+            "actionId": "work",
+            "requirements": {
+                "decrepitude": 1
+            },
+            "effects": {
+                "funds": 1,
+                "dread": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "workbeg_lucky",
+                    "chance": 30
+                }
+            ],
+            "startdescription": "我向路人展示我的病弱之躯，希望博得他们的同情。",
+            "description": "长日漫漫。有人撒下几枚硬币，大多数人扭头躲开。长时间望着这么多退避三舍的背影着实难熬。",
+            "warmup": 90,
+            "craftable": true
+        },
+        {
+            "id": "workbeg_lucky",
+            "label": "沿街乞讨",
+            "actionId": "work",
+            "requirements": {
+                "decrepitude": 1
+            },
+            "effects": {
+                "funds": 2
+            },
+            "description": "长日漫漫。有人撒下几枚硬币，大多数人扭头躲开。但我碗里多了枚索维林金币！是有人慷慨解囊，还是失手漏下？",
+            "warmup": 90
+        },
+        {
+            "id": "workhealthskilld_edge",
+            "label": "做粗重活计：力大如山",
+            "actionId": "work",
+            "requirements": {
+                "health": 1,
+                "skillhealthd_strength": 1,
+                "ritual": -1,
+                "job": -1,
+                "benefactor": -1
+            },
+            "effects": {
+                "funds": 1,
+                "vitality": 1
+            },
+            "aspects": {
+                "employment": 1
+            },
+            "startdescription": "我又一次拿一身力气换饭吃。",
+            "description": "他们说我干活一个顶俩。其实并非如此；我不止顶两个。",
+            "warmup": 40,
+            "craftable": true
+        },
+        {
+            "id": "workhealthskillc",
+            "label": "做粗重活计：臂膀强韧如钢浇",
+            "actionId": "work",
+            "requirements": {
+                "health": 1,
+                "healthskill": 3,
+                "ritual": -1,
+                "job": -1,
+                "benefactor": -1
+            },
+            "effects": {
+                "funds": 1,
+                "vitality": 1
+            },
+            "aspects": {
+                "employment": 1
+            },
+            "startdescription": "我又一次拿一身力气换饭吃。",
+            "description": "人们对我的巨力议论纷纷。内容并不全是夸赞。我领了薪水便离开了。",
+            "warmup": 45,
+            "craftable": true
+        },
+        {
+            "id": "workhealthskillb",
+            "label": "做粗重活计：臂膀强韧如铁打",
+            "actionId": "work",
+            "requirements": {
+                "health": 1,
+                "healthskill": 2,
+                "ritual": -1,
+                "job": -1,
+                "benefactor": -1
+            },
+            "effects": {
+                "funds": 1,
+                "vitality": 1
+            },
+            "aspects": {
+                "employment": 1
+            },
+            "startdescription": "我要少说话，快做事。我不怕受伤。",
+            "description": "其他人不怎么和我说话，但会在我经过时点头。我领到了薪水。",
+            "warmup": 50,
+            "craftable": true
+        },
+        {
+            "id": "workhealthskilla",
+            "label": "做粗重活计：臂膀强韧如铜铸",
+            "alternativerecipes": [
+                {
+                    "id": "workhealthinjury",
+                    "chance": 10
+                }
+            ],
+            "actionId": "work",
+            "requirements": {
+                "health": 1,
+                "healthskill": 1,
+                "ritual": -1,
+                "job": -1,
+                "benefactor": -1
+            },
+            "effects": {
+                "funds": 1,
+                "vitality": 1
+            },
+            "aspects": {
+                "employment": 1
+            },
+            "startdescription": "那么，去干活吧。",
+            "description": "今天已经提早干完了。我拿到了薪水。",
+            "warmup": 55,
+            "craftable": true
+        },
+        {
+            "id": "workhealth_noinjurychance",
+            "label": "做粗重活计",
+            "actionId": "work",
+            "requirements": {
+                "health": 1,
+                "ritual": -1,
+                "job": -1,
+                "benefactor": -1
+            },
+            "aspects": {
+                "employment": 1
+            },
+            "effects": {
+                "vitality": 1,
+                "funds": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "needs",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "靠累断腰的苦工换来一点微薄的薪水，我只有这点能耐了吗？",
+            "description": "一日已毕，我也快累毙了。不过至少我对得起我拿的薪水。",
+            "warmup": 60,
+            "craftable": true,
+            "maxexecutions": 3,
+            "comments": "guaranteed three days without injury"
+        },
+        {
+            "id": "workhealth",
+            "label": "做粗重活计",
+            "alternativerecipes": [
+                {
+                    "id": "workhealthinjury",
+                    "chance": 30
+                }
+            ],
+            "actionId": "work",
+            "requirements": {
+                "health": 1,
+                "ritual": -1,
+                "job": -1,
+                "benefactor": -1
+            },
+            "effects": {
+                "funds": 1,
+                "vitality": 1
+            },
+            "aspects": {
+                "employment": 1
+            },
+            "startdescription": "靠累断腰的苦工换来一点微薄的薪水，我只有这点能耐了吗？",
+            "description": "一日已毕，我也快累毙了。不过至少我对得起我拿的薪水。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "workhealthinjury",
+            "label": "因工负伤！",
+            "actionId": "work",
+            "requirements": {},
+            "effects": {
+                "health": -1,
+                "injury": 1,
+                "funds": 1
+            },
+            "startdescription": ".",
+            "description": "我受伤了！我揣着少得可怜薪水，忍痛跛着脚走回家。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "workinvestmentjobc",
+            "label": "处理财务事宜",
+            "actionId": "work",
+            "requirements": {
+                "investmentsjobc": 1
+            },
+            "effects": {
+                "funds": 4
+            },
+            "linked": [
+                {
+                    "id": "investmentsjobdecline",
+                    "chance": 30
+                }
+            ],
+            "startdescription": "如果我抽出精力管理我的投资，靠收益足可供我宽裕度日。",
+            "description": "一封精致的白色信函内装着一张精致的白色支票，上面记有一笔相当可观的金额。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "workinvestmentjobb",
+            "label": "处理财务事宜",
+            "actionId": "work",
+            "requirements": {
+                "investmentsjobb": 1
+            },
+            "effects": {
+                "funds": 3
+            },
+            "linked": [
+                {
+                    "id": "investmentsjobdecline",
+                    "chance": 30
+                }
+            ],
+            "startdescription": "如果我抽出精力管理我的投资，靠收益足可供我度日。",
+            "description": "一个端整的白色信封内装着一张端整的白色支票，上记一笔小有魅力的金额。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "workinvestmentjoba",
+            "label": "处理财务事宜",
+            "actionId": "work",
+            "requirements": {
+                "investmentsjoba": 1
+            },
+            "effects": {
+                "funds": 2
+            },
+            "linked": [
+                {
+                    "id": "investmentsjobdecline",
+                    "chance": 30
+                }
+            ],
+            "startdescription": "如果我抽出精力管理我的投资，靠收益可供我勉强度日。",
+            "description": "一封精致的白色信函内装着一张精致的白色支票，上面记有一笔略显寒酸的金额。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "investmentsjobdecline",
+            "label": "行情恶化",
+            "aspects": {
+                "decline": 1
+            },
+            "actionId": "work",
+            "startdescription": ".",
+            "description": "我收到了例行的支票，但这次还附带人不安的消息。我的投资损失不菲——或许因我运气不佳；又或许存在另外一种可能，有敌人从中作梗。",
+            "warmup": 5,
+            "craftable": false
+        }
+    ]
+}

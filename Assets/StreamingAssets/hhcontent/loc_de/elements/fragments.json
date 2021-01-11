@@ -1,0 +1,1801 @@
+{
+	"elements": [
+		{
+			"id": "fragmentedge",
+			"label": "Das Geheimnis eines Messers",
+			"aspects": {
+				"edge": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Kante der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Winters der gleichen Stufe studieren, um es zu subversieren und stattdessen Winter-Wissen zu bekommen.",
+					"required": {
+						"fragmentedge": 1,
+						"fragmentwinter": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Als unsere Ahnen Schwerter schmiedeten, die Kriegskunst lehrten, am Vorabend der Schlacht Flüche ausstießen – all diesen Dingen sind bestimmte Muster gemein. [Setze dies bei einem Ritus mit einer Leiche und einer Winter-Kraft ein, und die Leiche wird sich erheben.]",
+			"xtriggers": {
+				"epiphany": "fragmentedgeb"
+			}
+		},
+		{
+			"id": "fragmentedgeb",
+			"label": "Die Lektion des Chiliarchen",
+			"aspects": {
+				"edge": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Kante der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Winters der gleichen Stufe studieren, um es zu subversieren und stattdessen Winter-Wissen zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentedgeb": 1,
+						"fragmentwinterb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Dies ist die knochentiefe Geschichte, die der Tausendmann in der Antike lernte, vom Blute und seinen Auswegen. Wer sie laut verkündet, wird das Schwert zischen hören. [Setze dies bei einem Ritus mit einer Leiche und einer Winter-Kraft ein, und die Leiche wird sich erheben.]",
+			"xtriggers": {
+				"epiphany": "fragmentedgec"
+			}
+		},
+		{
+			"id": "fragmentedgec",
+			"label": "Eine Labhiten-Operation",
+			"aspects": {
+				"edge": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1,
+				"challenge.grim": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Kante der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Winters der gleichen Stufe studieren, um es zu subversieren und stattdessen Winter-Wissen zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentwinterc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Eine Reihe mystischer Übungen, die sowohl Einsatz als auch Grauen verlangen. [Setze dies bei einem Ritus mit einer Leiche und einer Winter-Kraft ein, und die Leiche wird sich erheben.]",
+			"xtriggers": {
+				"epiphany": "fragmentedged"
+			}
+		},
+		{
+			"id": "fragmentedged",
+			"label": "Die Namen des Obersts",
+			"aspects": {
+				"edge": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1,
+				"challenge.grim": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Kante der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Winters der gleichen Stufe studieren, um es zu subversieren und stattdessen Winter-Wissen zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentedged": 1,
+						"fragmentwinterd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Der Oberst war schon vieles in vielen Zeitaltern. Er ist blind. Er ist taub. Er ist unverwundbar. Widerstand ist zwecklos. Seine Namen sind so gerissen wie es nur die sehr alten sein können.",
+			"xtriggers": {
+				"epiphany": "fragmentedgee"
+			}
+		},
+		{
+			"id": "fragmentedgee",
+			"label": "Die Namen des Löwenschmieds",
+			"aspects": {
+				"edge": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1,
+				"challenge.grim": 1,
+				"challenge.knowledge": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Kante der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Winters der gleichen Stufe studieren, um es zu subversieren und stattdessen Winter-Wissen zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentedgee": 1,
+						"fragmentwintere": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Der Löwenschmied ist noch jung für eine Stunde, doch alt für einen Krieger. Seine Namen sind kürzlich Rekrutierte, und ihre Rezitation hat eine wilde Energie.",
+			"xtriggers": {
+				"epiphany": "fragmentedgef"
+			}
+		},
+		{
+			"id": "fragmentedgef",
+			"label": "Die Ausrichtungen des Mordes",
+			"aspects": {
+				"edge": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.practical": 1,
+				"challenge.grim": 1,
+				"challenge.knowledge": 1
+			},
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Kante der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Winters der gleichen Stufe studieren, um es zu subversieren und stattdessen Winter-Wissen zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentedgef": 1,
+						"fragmentwinterf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"description": "Dies sind die Künste, die für ein Ende sorgen.",
+			"xtriggers": {
+				"epiphany": "fragmentedgeg"
+			}
+		},
+		{
+			"id": "fragmentedgeg",
+			"label": "Die Mysterien der Macht",
+			"aspects": {
+				"edge": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "Der Oberst und der Löwenschmied sind Götter-die-Fleisch-waren, doch der Geteilte Wolf ist ein Gott-der-Blut-war. Gerissenheit, Kraft und Pein sind die drei Wurzeln des Sieges, und hier ist ihre geheime Doktrin ...",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentforge",
+			"label": "Das Geheimnis eines Schmiedes",
+			"aspects": {
+				"forge": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "Auf fünf Kontinenten haben Schmiede dem Eisen die gleichen Worte zugeflüstert. Auch von Mördern ist bekannt, dass sie diese Worte wispern. Und von Adepten, versteht sich. Diese Worte werden bei einem Ritual gesprochen, um einen gnadenlosen Wandel anzuregen.",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Schmiede der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Kante der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Kante zu bekommen.",
+					"required": {
+						"fragmentforge": 1,
+						"fragmentedge": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforgeb"
+			}
+		},
+		{
+			"id": "fragmentforgeb",
+			"label": "Ein Inbrünstiges Gebet",
+			"aspects": {
+				"forge": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "Wenn wir einem Feuer zuschauen, wonach suchen wir? Wenn wir es finden, sind dies die Worte, die es sagen wird: Ein Wort, das den Wandel heiligt, der kommt, wenn sich die versengte Haut abschält.",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Schmiede der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Kante der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Kante zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentforgeb": 1,
+						"fragmentedgeb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforgec"
+			}
+		},
+		{
+			"id": "fragmentforgec",
+			"label": "Ein Formender Gesang",
+			"aspects": {
+				"forge": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.practical": 1
+			},
+			"description": "Die richtigen Worte müssen eingesetzt werden, wenn der Wandel kommt. [Setze dies bei einem Ritus mit Einfluss des Klopfens und einer Knochenflöte ein – oder Ressourcen vergleichbarer Macht –, um eine Caligine zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Schmiede der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Kante der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Kante zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentforgec": 1,
+						"fragmentedgec": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforged"
+			}
+		},
+		{
+			"id": "fragmentforged",
+			"label": "Callidate-Bittgebet",
+			"aspects": {
+				"forge": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.practical": 1
+			},
+			"description": "Die Namen der Schmiede haben alle diese Worte gesprochen. [Setze dies bei einem Ritus mit Einfluss des Klopfens und einer Knochenflöte ein – oder Ressourcen vergleichbarer Macht –, um eine Caligine zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Schmiede der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Kante der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Kante zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentforged": 1,
+						"fragmentedged": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforgee"
+			}
+		},
+		{
+			"id": "fragmentforgee",
+			"label": "Formelteilung",
+			"aspects": {
+				"forge": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.practical": 1,
+				"challenge.illumination": 1
+			},
+			"description": "Zerbrich etwas, und du hast Fragmente. Zerbrich diese Fragmente, und du hast Staub. Zerbrich den Staub, und dann zerbrich, was übrig bleibt. Hier ist Feuer. [Setze dies bei einem Ritus mit einem Geweihten Türsturz und ein wenig Refulgin ein – oder Ressourcen vergleichbarer Macht –, um König Tiegel zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Schmiede der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Kante der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Kante zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentforgee": 1,
+						"fragmentedgee": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforgef"
+			}
+		},
+		{
+			"id": "fragmentforgef",
+			"label": "Päan des Ofens",
+			"aspects": {
+				"forge": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.practical": 1,
+				"challenge.illumination": 1
+			},
+			"description": "Dies ist die Hymne, welche die Hitze für das Eisen singt. Imitieren wir sie getreu genug, dörren wir unseren Lippen und Zunge aus, doch Oh, welch ein Lohn. [Setze dies bei einem Ritus mit einem Geweihten Türsturz und ein wenig Refulgin ein – oder Ressourcen vergleichbarer Macht –, um König Tiegel zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Schmiede der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Kante der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Kante zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentforgef": 1,
+						"fragmentedgef": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentforgeg"
+			}
+		},
+		{
+			"id": "fragmentforgeg",
+			"label": "Mysterien der Schöpfung",
+			"aspects": {
+				"forge": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "Die Schmiede der Tage, die Meniskate und die Madrugada sind Götter-aus-Licht. Quecksilber, Silber und Gold sind die Saat des Werks, und hier ist ihre geheime Doktrin ... [Setze dies bei einem Ritus mit einem Geweihten Türsturz und ein wenig Refulgin ein – oder Ressourcen vergleichbarer Macht –, um König Tiegel zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentgrail",
+			"label": "Ein Rotes Geheimnis",
+			"aspects": {
+				"grail": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "Manche Wörter sind nur dann richtig geschrieben, wenn die richtige Tinte zum Einsatz kommt.",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Grals der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Motte der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Motte zu bekommen.",
+					"required": {
+						"fragmentgrail": 1,
+						"fragmentmoth": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgrailb"
+			}
+		},
+		{
+			"id": "fragmentgrailb",
+			"label": "Ein Megalesisches Bittgebet",
+			"aspects": {
+				"grail": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "Die Große Mutter erinnert sich.",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Grals der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Motte der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Motte zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentgrailb": 1,
+						"fragmentmothb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgrailc"
+			}
+		},
+		{
+			"id": "fragmentgrailc",
+			"label": "Ein Köstliches Sakrament",
+			"aspects": {
+				"grail": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1
+			},
+			"description": "So angenehm im Ohr. Könnte man sich wieder und wieder anhören. Es sind diese Worte, die ein Opfer süß machen. [Setze dies bei einem Ritus mit Byzantinischer Färbung und einem Einfluss der Motte ein – oder Ressourcen vergleichbarer Macht –, um einen Rohen Propheten zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Grals der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Motte der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Motte zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentgrailc": 1,
+						"fragmentmothc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgraild"
+			}
+		},
+		{
+			"id": "fragmentgraild",
+			"label": "Thiatisches Bittgebet",
+			"aspects": {
+				"grail": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1
+			},
+			"description": "Kehlige Schreie begleiten die Namen des Grals. Wir empfinden sie so gut wie möglich nach, wegen der pulsierenden Macht, die sie verleihen. [Setze dies bei einem Ritus mit Byzantinischer Färbung und einem Einfluss der Motte ein – oder Ressourcen vergleichbarer Macht –, um einen Rohen Propheten zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Grals der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Motte der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Motte zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentgraild": 1,
+						"fragmentmothd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgraile"
+			}
+		},
+		{
+			"id": "fragmentgraile",
+			"label": "Üppige Formeln",
+			"aspects": {
+				"grail": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1,
+				"challenge.paradox": 1
+			},
+			"description": "Es gibt da Genüsse, die so intensiver Natur sind, dass sie den Gesetzen der physikalischen Welt trotzen. [Diese Formel kann bei einem Ritus mit Bitterschwarz-Salzen und einem Haarriss – oder ähnlichen Quellen der Macht – benutzt werden, um Ezeem persönlich zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Grals der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Motte der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Motte zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentgraile": 1,
+						"fragmentmothe": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgrailf"
+			}
+		},
+		{
+			"id": "fragmentgrailf",
+			"label": "Anthische Ausgestaltung",
+			"aspects": {
+				"grail": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1,
+				"challenge.paradox": 1
+			},
+			"description": "Der Blumenmacher kann dich nicht berühren. Er kann dich nicht finden. Er hat immer, was du begehrst. Selbst eine Ausgestaltung der Eigenschaften seiner Werke kann die Aufmerksamkeit der Stunden auf sich ziehen. [Diese Formel kann bei einem Ritus mit Bitterschwarz-Salzen und einem Haarriss – oder ähnlichen Quellen der Macht – benutzt werden, um Ezeem persönlich zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Grals der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Motte der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Motte zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentgrailf": 1,
+						"fragmentmothf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentgrailg"
+			}
+		},
+		{
+			"id": "fragmentgrailg",
+			"label": "Verschlingende Mysterien",
+			"aspects": {
+				"grail": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "Der Gral war der erste Gott-der-Blut-war. Der Blumenmacher kam aus dem Licht. Die Strandkrähe war Fleisch. Hunger, Gier und Sehnsucht sind die Matrix des Appetits, und hier ist ihre geheime Doktrin ... [Diese Formel kann bei einem Ritus mit Bitterschwarz-Salzen und einem Haarriss – oder ähnlichen Quellen der Macht – benutzt werden, um Ezeem persönlich zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentheart",
+			"label": "Ein Donnerndes Geheimnis",
+			"aspects": {
+				"heart": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "In jedem Donnerhall stecken gemeinsame Gefühle. Nehmen wir sie zur Kenntnis.",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Herzens der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Grals der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Grals zu bekommen.",
+					"required": {
+						"fragmentheart": 1,
+						"fragmentgrail": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentheartb"
+			}
+		},
+		{
+			"id": "fragmentheartb",
+			"label": "Worte, die wandeln",
+			"aspects": {
+				"heart": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "Die Silben dieser Formel sind faszinierend. Ich ertappe mich selbst dabei, wie ich im Takt mit den Fingern schnippe. Es will nicht aufhören.",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Herzens der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Grals der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Grals zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentheartb": 1,
+						"fragmentgrailb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentheartc"
+			}
+		},
+		{
+			"id": "fragmentheartc",
+			"label": "Ein Erwachender Gesang",
+			"aspects": {
+				"heart": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1
+			},
+			"description": "Wer könnte dies hören und nicht bewegt sein? Die Schlafenden? Die Toten? Die Erde und der Himmel? [Setze dies bei einem Ritus mit Byzantinischer Färbung und einer Meteorkugel ein – oder Ressourcen vergleichbarer Macht –, um einen Percussiganten zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Herzens der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Grals der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Grals zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentheartc": 1,
+						"fragmentgrailc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentheartd"
+			}
+		},
+		{
+			"id": "fragmentheartd",
+			"label": "Paarige Anrufung",
+			"aspects": {
+				"heart": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1
+			},
+			"description": "Die Schwester-und-Hexe wurde schon immer zum Schutze angerufen, an Kreuzwegen, bei Mondaufgang und wo das Land das Meer beherbergt. [Setze dies bei einem Ritus mit Byzantinischer Färbung und einer Meteorkugel ein – oder Ressourcen vergleichbarer Macht –, um einen Percussiganten zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Herzens der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Grals der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Grals zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentheartd": 1,
+						"fragmentgraild": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmenthearte"
+			}
+		},
+		{
+			"id": "fragmenthearte",
+			"label": "Wachsame Formeln",
+			"aspects": {
+				"heart": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "Wer beobachtet, schläft nicht, wer schläft, beobachtet nicht. <b>Wer beobachtet, schläft nicht, wer schläft, beobachtet nicht.</b> [Setze dies bei einem Ritus mit Byzantinischer Färbung und einer Meteorkugel ein – oder Ressourcen vergleichbarer Macht –, um einen Percussiganten zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Herzens der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Grals der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Grals zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmenthearte": 1,
+						"fragmentgraile": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentheartf"
+			}
+		},
+		{
+			"id": "fragmentheartf",
+			"label": "Samtener Talisman",
+			"aspects": {
+				"heart": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.practical": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "Das Samt sagt stets 'Nein', doch wir können Zuflucht in jenem 'Nein' finden, wie wilde Tiere in einem Baum. [Setze dies bei einem Ritus mit Byzantinischer Färbung und einer Meteorkugel ein – oder Ressourcen vergleichbarer Macht –, um einen Percussiganten zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Herzens der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Grals der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Grals zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentheartf": 1,
+						"fragmentgrailf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentheartg"
+			}
+		},
+		{
+			"id": "fragmentheartg",
+			"label": "Endlose Mysterien",
+			"aspects": {
+				"heart": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "Der Gral riss die Donnerhaut vom Fleische. Die Schwester-und-Hexe wurde aus zwei Mutterleibern geboren. Das Samt erwachte als die Forstwurzeln Blut kosteten. Das herz ist die Trommel des Blutes, und hier ist seine geheime Doktrin ... [Setze dies bei einem Ritus mit Byzantinischer Färbung und einer Meteorkugel ein – oder Ressourcen vergleichbarer Macht –, um einen Percussiganten zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentknock",
+			"label": "Das Geheimnis eines Hufschmieds",
+			"aspects": {
+				"knock": 2,
+				"lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "Früher oder später hat jeder Hufschmied diesen Traum. Nun rezitieren wir seine sieben Phasen ... [Für fast jeden Beschwörungsritus brauchst du den Einfluss des Klopfens. Dieses Wissen beschert ihn dir.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem beliebigen Wissensfragment der gleichen Stufe (außer Geheimen Geschichten) studieren, um es auf das Wissen des Klopfens der nächsten Stufe zu verbessern.",
+					"required": {
+						"fragmentedge": 1,
+						"fragmentforge": 1,
+						"fragmentgrail": 1,
+						"fragmentheart": 1,
+						"fragmentknock": 1,
+						"fragmentlantern": 1,
+						"fragmentmoth": 1,
+						"fragmentwinter": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknockb"
+			}
+		},
+		{
+			"id": "fragmentknockb",
+			"label": "Ein Iguvinischer Ritus",
+			"aspects": {
+				"knock": 4,
+				"lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "Jede Tür des Mansus verlangt nach einem Opfer, bevor sie sich öffnet. Die Iguvinischen Riten geben die Art des Opfers vor ... [Für fast jeden Beschwörungsritus brauchst du den Einfluss des Klopfens. Dieses Wissen beschert ihn dir.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem beliebigen Wissensfragment der gleichen Stufe (außer Geheimen Geschichten) studieren, um es auf das Wissen des Klopfens der nächsten Stufe zu verbessern. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentedgeb": 1,
+						"fragmentforgeb": 1,
+						"fragmentgrailb": 1,
+						"fragmentheartb": 1,
+						"fragmentknockb": 1,
+						"fragmentlanternb": 1,
+						"fragmentmothb": 1,
+						"fragmentwinterb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknockc"
+			}
+		},
+		{
+			"id": "fragmentknockc",
+			"label": "Eine Zustimmung zur Wunde",
+			"aspects": {
+				"knock": 6,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1
+			},
+			"description": "Um bestimmte Wege zu öffnen, muss man sich erst selbst öffnen. Diese Praktik umreißt jene Öffnung im Namen der Mutter der Ameisen. [Für fast jeden Beschwörungsritus brauchst du den Einfluss des Klopfens. Dieses Wissen beschert ihn dir.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem beliebigen Wissensfragment der gleichen Stufe (außer Geheimen Geschichten) studieren, um es auf das Wissen des Klopfens der nächsten Stufe zu verbessern. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentedgec": 1,
+						"fragmentforgec": 1,
+						"fragmentgrailc": 1,
+						"fragmentheartc": 1,
+						"fragmentknockc": 1,
+						"fragmentlanternc": 1,
+						"fragmentmothc": 1,
+						"fragmentwinterc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknockd"
+			}
+		},
+		{
+			"id": "fragmentknockd",
+			"label": "Anrufung der Meniskate",
+			"aspects": {
+				"knock": 8,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1
+			},
+			"description": "Als das Antlitz des Mondes verletzt wurde, erschienen diese Worte. [Für fast jeden Beschwörungsritus brauchst du den Einfluss des Klopfens. Dieses Wissen beschert ihn dir.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem beliebigen Wissensfragment der gleichen Stufe (außer Geheimen Geschichten) studieren, um es auf das Wissen des Klopfens der nächsten Stufe zu verbessern. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentedged": 1,
+						"fragmentforged": 1,
+						"fragmentgraild": 1,
+						"fragmentheartd": 1,
+						"fragmentknockd": 1,
+						"fragmentlanternd": 1,
+						"fragmentmothd": 1,
+						"fragmentwinterd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknocke"
+			}
+		},
+		{
+			"id": "fragmentknocke",
+			"label": "Ophidische Formeln",
+			"aspects": {
+				"knock": 10,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1,
+				"challenge.paradox": 1
+			},
+			"description": "Schlangen sind die Besucher, die nicht abzuweisen sind. [Für fast jeden Beschwörungsritus brauchst du den Einfluss des Klopfens. Dieses Wissen beschert ihn dir.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem beliebigen Wissensfragment der gleichen Stufe (außer Geheimen Geschichten) studieren, um es auf das Wissen des Klopfens der nächsten Stufe zu verbessern. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentedgee": 1,
+						"fragmentforgee": 1,
+						"fragmentgraile": 1,
+						"fragmenthearte": 1,
+						"fragmentknocke": 1,
+						"fragmentlanterne": 1,
+						"fragmentmothe": 1,
+						"fragmentwintere": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknockf"
+			}
+		},
+		{
+			"id": "fragmentknockf",
+			"label": "Schwellenbeschwörung",
+			"aspects": {
+				"knock": 12,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1,
+				"challenge.paradox": 1
+			},
+			"description": "Ein Gott-der-Stein-war verbleibt, und sie wacht über alle Schwellen. [Für fast jeden Beschwörungsritus brauchst du den Einfluss des Klopfens. Dieses Wissen beschert ihn dir.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem beliebigen Wissensfragment der gleichen Stufe (außer Geheimen Geschichten) studieren, um es auf das Wissen des Klopfens der nächsten Stufe zu verbessern. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentedgef": 1,
+						"fragmentforgef": 1,
+						"fragmentgrailf": 1,
+						"fragmentheartf": 1,
+						"fragmentknockf": 1,
+						"fragmentlanternf": 1,
+						"fragmentmothf": 1,
+						"fragmentwinterf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentknockg"
+			}
+		},
+		{
+			"id": "fragmentknockg",
+			"label": "Mysterien der Öffnung",
+			"aspects": {
+				"knock": 14,
+				"lore": 1
+			},
+			"description": "Die Mutter der Ameisen ist das Kind zweier Flüsse. Die Hornaxt ist der letzte Gott-aus-Stein. Die Meniskate wurde im Monde aus Licht geboren. Die Wunde und die Schwelle und die Offenbarung sind alle Aspekte des Tores, und hier ist ihre geheime Doktrin ... [Für fast jeden Beschwörungsritus brauchst du den Einfluss des Klopfens. Dieses Wissen beschert ihn dir.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentlantern",
+			"label": "Das Geheimnis eines Wächters",
+			"aspects": {
+				"lantern": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "Es wurde so ausgedrückt: 'Jede Stunde hat ihre Farbe, doch Farbe existiert nur, wo Licht ist.'",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Laterne der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Schmiede der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Schmiede zu bekommen.",
+					"required": {
+						"fragmentlantern": 1,
+						"fragmentforge": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanternb"
+			}
+		},
+		{
+			"id": "fragmentlanternb",
+			"label": "Ein flüchtiger Blick auf den Mansus",
+			"aspects": {
+				"lantern": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "Ein Fetzen Dichtung, eine einzelne Erinnerung an ein bestimmtes Haus, das jeder von uns mindestens zweimal im Leben besucht. Für einen Besuch im Mansus ist dieses Wissen praktisch unerlässlich.",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Laterne der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Schmiede der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Schmiede zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentlanternb": 1,
+						"fragmentforgeb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanternc"
+			}
+		},
+		{
+			"id": "fragmentlanternc",
+			"label": "Ein Gnadenloses Mantra",
+			"aspects": {
+				"lantern": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.illumination": 1
+			},
+			"description": "'Gnade', spricht der Wächter, 'ist nur im Schatten zu finden.'",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Laterne der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Schmiede der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Schmiede zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentlanternc": 1,
+						"fragmentforgec": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanternd"
+			}
+		},
+		{
+			"id": "fragmentlanternd",
+			"label": "Phanäische Anrufung",
+			"aspects": {
+				"lantern": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.illumination": 1
+			},
+			"description": "Die Tür-im-Auge bestimmt den Kurs. Er ist nicht barmherzig, doch vor allem erleuchtet er. [Setze dies bei einem Ritus mit Einfluss des Klopfens und einer Spannenden Atmosphäre ein – oder Ressourcen vergleichbarer Macht –, um einen Hinter von jenseits der Spiegel zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Laterne der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Schmiede der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Schmiede zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentlanternd": 1,
+						"fragmentforged": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanterne"
+			}
+		},
+		{
+			"id": "fragmentlanterne",
+			"label": "Concursatische Formeln",
+			"aspects": {
+				"lantern": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.illumination": 1,
+				"challenge.paradox": 1
+			},
+			"description": "Das Concursum wartet bei der Laterne des Mansus. Es wurde als die Kammer der Wege und auch die Kammer der Enden bezeichnet. Seine Komplexität entzieht sich dem menschlichen Geiste, doch diese Formeln sind eine erste Annäherung. [Setze dies bei einem Ritus mit Einfluss des Klopfens und einer Spannenden Atmosphäre ein – oder Ressourcen vergleichbarer Macht –, um einen Hinter von jenseits der Spiegel zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Laterne der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Schmiede der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Schmiede zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentlanterne": 1,
+						"fragmentforgee": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanternf"
+			}
+		},
+		{
+			"id": "fragmentlanternf",
+			"label": "Mantra des Aufstiegs",
+			"aspects": {
+				"lantern": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.illumination": 1,
+				"challenge.paradox": 1
+			},
+			"description": "Der Aufstieg der Messer ist die blutigste Prüfung des Wächters. Wer sie besteht und tot ist, wird in den Dienst der Sonne-in-Lumpen übernommen. Wer sie besteht und noch lebt, kommt dem Ruhme ein wenig näher. [Setze dies bei einem Ritus mit Einfluss des Klopfens und einer Spannenden Atmosphäre ein – oder Ressourcen vergleichbarer Macht –, um einen Fingerzeig von jenseits der Spiegel zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Laterne der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Schmiede der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Schmiede zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentlanternf": 1,
+						"fragmentforgef": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentlanterng"
+			}
+		},
+		{
+			"id": "fragmentlanterng",
+			"label": "Erleuchtende Mysterien",
+			"aspects": {
+				"lantern": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "Die Meniskate, die Madrugada, der Blumenmacher und die Schmiede der Tage sind Götter-aus-Licht. Es gibt einen Fünften, doch wir wissen, dass es nicht der Wächter ist. Und doch teilt der Wächter eine geheime Doktrin mit jenen Fünfen, die wie folgt lautet ... [Setze dies bei einem Ritus mit einem Haarriss und einem Paradoxen Kuriosum ein, und jemand wird kommen. Sag dies zu einem Jäger, und er könnte auf der Stelle den Verstand verlieren.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentmoth",
+			"label": "Die Warnung einer Barbierin",
+			"aspects": {
+				"moth": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "Eine Macht des Forstes genießt das Trennen der Locke vom Schopfe. Verbrennen, um Aufmerksamkeit zu erregen. Vergraben, um eine Möglichkeit zu eröffnen. [Bei einem Ritus in Anwesenheit eines Einflusses des Winters über eine Leiche sprechen, damit diese sich erhebt.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Motte der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Laterne der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Laterne zu bekommen.",
+					"required": {
+						"fragmentmoth": 1,
+						"fragmentlantern": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothb"
+			}
+		},
+		{
+			"id": "fragmentmothb",
+			"label": "Ein Forst-Flüstern",
+			"aspects": {
+				"moth": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1
+			},
+			"description": "Wach liegen und lauschen. Der Wind wispert in den Zweigen. Das Haus schreit im Schlafe auf. Dies sind die Straßen, auf denen das Chaos reist. [Bei einem Ritus in Anwesenheit eines Einflusses des Winters über eine Leiche sprechen, damit diese sich erhebt.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Motte der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Laterne der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Laterne zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentmothb": 1,
+						"fragmentlanternb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothc"
+			}
+		},
+		{
+			"id": "fragmentmothc",
+			"label": "Die Parabel einer Ekdysiastin",
+			"aspects": {
+				"moth": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1
+			},
+			"description": "Das Rätsel der Ekdysiastin lautet: 'Was kann verloren gehen?' Jede Parabel der Ekdysiastin ist der Versuch, das Rätsel zu beantworten. ",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Motte der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Laterne der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Laterne zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentmothc": 1,
+						"fragmentlanternc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothd"
+			}
+		},
+		{
+			"id": "fragmentmothd",
+			"label": "Muffis Ermahnungen",
+			"aspects": {
+				"moth": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1
+			},
+			"description": "Muffi hat ihre Kronen im Moos, ihre Füße im Dreck und die Bäume fest verschlossen. Muffi hat diese Warnungen an dich.",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Motte der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Laterne der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Laterne zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentmothd": 1,
+						"fragmentlanternd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothe"
+			}
+		},
+		{
+			"id": "fragmentmothe",
+			"label": "Testament der Tausendfüßlerin",
+			"aspects": {
+				"moth": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "Die Tausendfüßlerin kam hoch aus dem Sande und ging unter den Wurzeln hinein. Sie fand ein neues Zuhause, doch nun kann sie nicht dorthin zurück. Sie kriecht überall sonst hin: Schlüssellöcher, Geschichten, Geburtskanäle, Sicht und Gehör. Dies hat sie zu sagen.",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Motte der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Laterne der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Laterne zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentmothe": 1,
+						"fragmentlanterne": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothf"
+			}
+		},
+		{
+			"id": "fragmentmothf",
+			"label": "Schenkelgeborener Thorax-Süßling",
+			"aspects": {
+				"moth": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "Rankengekrönter Mottenkönig, der aus dem Schenkel des toten Donnerkönigs schlüpfte. Trink seine Bauchlymphe aus. Dies wirst du sehen.",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Motte der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen der Laterne der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen der Laterne zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentmothf": 1,
+						"fragmentlanternf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentmothg"
+			}
+		},
+		{
+			"id": "fragmentmothg",
+			"label": "Stute-in-der-Eibe",
+			"aspects": {
+				"moth": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "Die wahren Stunden treffen sich nicht mit den Göttern-aus-dem-Nirgendwo, doch die Ringeibe trifft sich mit der Stute-im-Baum, wo der Forst üppig sprießt. Ihr Verkehr ist verboten, und Verbotenes hat Macht, und dies ist die Geschichte ihres Verkehrs.",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentsecrethistories",
+			"label": "Ein Okkulter Zettel",
+			"aspects": {
+				"secrethistories": 2,
+				"lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "Geheime Geschichten sind unter den uns bekannten geschichtet, wie die Noten seltener Weine. Dies ist ein Detail einer jener Geschichten. [Durch die Erkundung mit diesem Stück Wissen könntest du geheime Orte in der Hauptstadt entdecken.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Geheimen Geschichten der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern.",
+					"required": {
+						"fragmentsecrethistories": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriesb"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriesb",
+			"label": "Eine Heimliche Wahrheit",
+			"aspects": {
+				"secrethistories": 4,
+				"lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "Ein Detail, das aus einem benachbarten Narrativ hereingeschmuggelt wurde. Nicht laut aussprechen, wenn man dich hören könnte. [Durch die Erkundung mit diesem Stück Wissen könntest du geheime Orte auf dem Lande entdecken.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Geheimen Geschichten der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentsecrethistoriesb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriesc"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriesc",
+			"label": "Eine Vergessene Chronik",
+			"aspects": {
+				"secrethistories": 6,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.intuition": 1
+			},
+			"description": "Die Geschichte einer Stadt ohne Tor, einer Königin, die nicht geboren wurde, eines Krieges, der nicht ausgefochten wurde. [Durch die Erkundung mit diesem Stück Wissen könntest du geheime Orte auf dem Kontinent entdecken.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Geheimen Geschichten der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentsecrethistoriesc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriesd"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriesd",
+			"label": "Verbotenes Epos",
+			"aspects": {
+				"secrethistories": 8,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.intuition": 1
+			},
+			"description": "Die Aufmerksamkeit der Stunden wird von den blutigsten Kriegen geweckt. Danach werden die Historien wie Haare geflochten. [Durch die Erkundung mit diesem Stück Wissen könntest du geheime Orte überall auf dem Kontinent im Lande jenseits des Waldes entdecken.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Geheimen Geschichten der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentsecrethistoriesd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriese"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriese",
+			"label": "Ungelöste Doppeldeutigkeit",
+			"aspects": {
+				"secrethistories": 10,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1
+			},
+			"description": "Im Mansus rivalisieren die Stunden. Sind die Streitigkeiten beigelegt, bügeln sie das Unmögliche aus, preisen das Mögliche und flechten die zerzausten Zöpfe dessen, was war, zu einer goldenen Schleife der Zukunft. Alles wird gelöst. Die Geschichte wird zur Vergangenheit. Allerdings gibt es Ausnahmen. [Durch die Erkundung mit diesem Stück Wissen könntest du geheime Orte in den Zerfleischenden Bergen entdecken, dreitausend Meilen entfernt vom Wrack der ältesten Imperien.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Geheimen Geschichten der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentsecrethistoriese": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriesf"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriesf",
+			"label": "Die Karte der Vagabundin",
+			"aspects": {
+				"secrethistories": 12,
+				"lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.intuition": 1,
+				"challenge.illumination": 1
+			},
+			"description": "Die Vagabundin ist die eine Stunde, die niemals, die niemals den Mansus betreten kann, doch sie geht <i>überall</i> sonst hin ... und wenn man ihrer Prahlerei Glauben schenken kann, ist sie die Einzige, die alle Historien kennt. Manchmal lässt sie jemanden ihre Reisen aufzeichnen. [Durch die Erkundung mit diesem Stück Wissen könntest du geheime Orte in den Einsamen und Ebenen Sanden entdecken, weit weg von hier.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment der Geheimen Geschichten der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentsecrethistoriesf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentsecrethistoriesg"
+			}
+		},
+		{
+			"id": "fragmentsecrethistoriesg",
+			"label": "Anekdote aus dem Mittagshafen",
+			"aspects": {
+				"secrethistories": 14,
+				"lore": 1
+			},
+			"description": "Im Mittagshafen genießen die Langen das Meer und die Sonne, trinken aus der Quelle, die sie in Vergessenheit geraten lässt, und halten sich Ärger vom Leibe. Größtenteils. Die Geschichten, denen du im Hotel Ciervo lauschen kannst, sind güldene, fünffach destillierte Trinksprüche an die Erinnerung, prompt serviert. [Durch die Erkundung mit diesem Stück Wissen könntest du geheime Orte auf den Abendinseln entdecken, wo der Mittagshafen liegt, auf der anderen Seite des großen Ozeans.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentwinter",
+			"label": "Das Geheimnis eines Küsters",
+			"aspects": {
+				"winter": 2,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "Bestimmtes Wissen, so sagt man, lässt sich nur vermittels der besonderen Qualitäten einer Stille ausdrücken. Es heißt, man könne solches Wissen nur mit geschlossenen Augen lesen, doch nur aus dem Munde schelmischer Kommentatoren. [Setze dies bei einem Ritus mit einer Leiche und einem Aspekt der Kante ein, und die Leiche wird sich erheben.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Winters der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Herzens der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Herzens zu bekommen.",
+					"required": {
+						"fragmentwinter": 1,
+						"fragmentheart": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwinterb"
+			}
+		},
+		{
+			"id": "fragmentwinterb",
+			"label": "Eine Weiße Zeremonie",
+			"aspects": {
+				"winter": 4,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1
+			},
+			"description": "Wenn ich dies vortrage, werden meine Lippen nicht rau vor Frost. Dies ist jedes Mal verblüffend. [Setze dies bei einem Ritus mit einem Einfluss des Herzens und Byzantinischer Färbung ein, um die Sprachlosen Toten zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Winters der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Herzens der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Herzens zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentwinterb": 1,
+						"fragmentheartb": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwinterc"
+			}
+		},
+		{
+			"id": "fragmentwinterc",
+			"label": "Eine Operation der Abnehmenden Sonne",
+			"aspects": {
+				"winter": 6,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1
+			},
+			"description": "Dadurch wird der Übergang zum Schweigen beschworen, bestätigt und begrüßt. [Setze dies bei einem Ritus mit einem Einfluss des Herzens und Byzantinischer Färbung ein, um die Sprachlosen Toten zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Winters der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Herzens der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Herzens zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentwinterc": 1,
+						"fragmentheartc": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwinterd"
+			}
+		},
+		{
+			"id": "fragmentwinterd",
+			"label": "Anrufung des Elfenbeintäubers",
+			"aspects": {
+				"winter": 8,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1
+			},
+			"description": "Es gibt da eine Macht, die gedenkt und trauert, der nichts genommen wird, die aber nicht zu täuschen ist. Man könnte erwarten, ihn in der Hand zermalmen zu können, zu Vogelknochensplittern. [Setze dies bei einem Ritus mit Martensit-Paste und einem dem Klopfen gewidmeten Assistenten ein – oder Ressourcen vergleichbarer Macht –, um eine Maid-im-Spiegel zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Winters der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Herzens der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Herzens zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentwinterd": 1,
+						"fragmentheartd": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwintere"
+			}
+		},
+		{
+			"id": "fragmentwintere",
+			"label": "Rezitation verlorener Stunden",
+			"aspects": {
+				"winter": 10,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "Sechs sind fort. Fünf kamen aus dem Stein und eine aus dem Licht. Alle zogen ins Nirgendwo. Und doch haben ihre Erinnerungen Macht, und nun rufen wir sie an. [Setze dies bei einem Ritus mit Martensit-Paste und einem dem Klopfen gewidmeten Assistenten ein – oder Ressourcen vergleichbarer Macht –, um eine Maid-im-Spiegel zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Winters der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Herzens der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Herzens zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentwintere": 1,
+						"fragmenthearte": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwinterf"
+			}
+		},
+		{
+			"id": "fragmentwinterf",
+			"label": "Die Teilungen des Namens",
+			"aspects": {
+				"winter": 12,
+				"lore": 1,
+				"subvertable_lore": 1,
+				"challenge.knowledge": 1,
+				"challenge.grim": 1,
+				"challenge.obsessive": 1
+			},
+			"description": "Als die Sonne-in-Glorie geteilt wurde, wurden auch ihre Namen aufgespalten. Hier sind die Splitter ihrer Namen, die einst eins waren. [Setze dies bei einem Ritus mit Martensit-Paste und einem dem Klopfen gewidmeten Assistenten ein – oder Ressourcen vergleichbarer Macht –, um eine Maid-im-Spiegel zu beschwören.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit einem Wissensfragment des Winters der gleichen Stufe studieren, um es auf die nächste Stufe zu verbessern. Mit Wissen des Herzens der gleichen Stufe studieren, um es zu subversieren und stattdessen Wissen des Herzens zu bekommen. Oder mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"fragmentwinterf": 1,
+						"fragmentheartf": 1,
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"xtriggers": {
+				"epiphany": "fragmentwinterg"
+			}
+		},
+		{
+			"id": "fragmentwinterg",
+			"label": "Wolfswort",
+			"aspects": {
+				"winter": 14,
+				"lore": 1,
+				"subvertable_lore": 1
+			},
+			"description": "Wenn die Schmiede kalt, der Ruhm dunkel und der Forst nur noch Staub ist, kommt der Geteilte Wolf vielleicht zur Ruhe, doch nur, bis er sich selbst verschlingen kann. Dieses Wort drückt fast den Hass des Geteilt aus. [Sag dies zu einem Jäger, und er könnte auf der Stelle den Verstand verlieren.]",
+			"slots": [
+				{
+					"id": "with",
+					"label": "Mit",
+					"description": "Mit dem Verstand studieren, um das Wissen in niederstufige Fragmente zu zerteilen.",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "study"
+				}
+			],
+			"unique": true
+		},
+		{
+			"id": "fragmentglory",
+			"label": "Eine Erinnerung an den Ruhm",
+			"aspects": {
+				"lantern": 6,
+				"forge": 6,
+				"lore": 1
+			},
+			"description": "--",
+			"comments": "Hello, Seeker. If you're here to decipher enigmas, familiarise yourself with the eidesis in which were presented the Lion, the Boar and the Bull. - AK.",
+			"xtriggers": {
+				"epiphany": "bequestintro"
+			},
+			"noartneeded": true
+		},
+		{
+			"id": "prealzabo",
+			"label": "Formel: Elixir Zeboim?",
+			"description": "Ich habe hier ein Geheimnis: ein Rezept mit Honig, Affodil, zerstoßenem Elfenbein und einem marmorierten Pilz, der nur dort sprießt, wo die Toten begraben sind.",
+			"aspects": {
+				"lore": 1
+			},
+			"slots": [
+				{
+					"id": "desire",
+					"label": "Versuchung",
+					"description": "Alte Erinnerung fahren in die Erde, und dort sind sie nicht zu finden – doch sie hausen zunächst an einem anderen Orte, bevor sie zu tief sinken.",
+					"actionId": "study",
+					"required": {
+						"remembrancemarks": 1
+					}
+				},
+				{
+					"id": "taste",
+					"label": "Aroma",
+					"description": "Es gibt kein Zurück.",
+					"actionId": "study",
+					"required": {
+						"remnant": 1
+					}
+				},
+				{
+					"id": "materials",
+					"label": "Materialien",
+					"required": {
+						"funds": 1
+					},
+					"actionId": "study"
+				}
+			]
+		},
+		{
+			"id": "alzabo",
+			"label": "Formel: Elixir Zeboim",
+			"description": "Jene Formel, welche den Erinnerungen des verrottenden Fleisches im Bauche der Lebenden auf die Sprünge hilft. So etwas könnte ohne die Zustimmung sowohl des Blumenmachers als auch des Elegiasten nicht existieren ... und auch die Hilfe einer weiteren Stunde wäre nötig.",
+			"comments": "RIP Gene Wolfe, 1931-2019. 'Some are haunted by ghosts. I am haunted by stories.'",
+			"aspects": {
+				"lore": 1
+			},
+			"slots": [
+				{
+					"id": "desire",
+					"label": "Verlangen",
+					"description": "Alte Erinnerung fahren in die Erde, und dort sind sie nicht zu finden – doch sie hausen zunächst an einem anderen Orte, bevor sie zu tief sinken.",
+					"actionId": "study",
+					"required": {
+						"remembrancemarks": 1
+					}
+				},
+				{
+					"id": "feast",
+					"label": "Gelage",
+					"description": "Wird das Elixier eingenommen, werden die Enzyme der Verdauung zu den Sendboten der Wiedergeburt. Die Toten leben wieder – wenn auch nur in meinen Erinnerungen.",
+					"actionId": "study",
+					"required": {
+						"remnant": 1
+					}
+				}
+			]
+		}
+	]
+}

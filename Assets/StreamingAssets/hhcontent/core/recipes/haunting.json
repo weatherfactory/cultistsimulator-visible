@@ -1,0 +1,551 @@
+{
+    "recipes": [
+        {
+            "id": "summoning_haunt_devourer",
+            "actionid": "haunting",
+            "requirements": {
+                "devourer": 1
+            },
+            "startdescription": "It's free!",
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "summoning_haunt_devourer_eatsmortal",
+                    "chance": 50
+                },
+                {
+                    "id": "summoning_haunt_devourer_damages_health",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "summoning_haunt_devourer_eatsmortal",
+            "label": "A Lurking Devourer",
+            "actionid": "haunting",
+            "startdescription": "Your escaped summoning haunts the district, seeking mortals to devour. [The higher the Devourer aspect, the more likely it is to harm a mortal.]",
+            "description": "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+            "slots": [
+                {
+                    "id": "Consuming",
+                    "label": "Consuming",
+                    "required": {
+                        "mortal": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "comments": "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
+            "alt": [
+                {
+                    "id": "devourer_haunting_mortal_highdevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_mortal_middevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_mortal_lowdevourer",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "devourer_haunting_mortal_highdevourer",
+            "label": "An Escaped Summoning Closes on its Victim",
+            "actionid": "haunting",
+            "startdescription": "Closer with each sweep of the clock's hand, like a circling wind, like the river's coil.",
+            "description": "Death comes unseen, but not unheard.",
+            "requirements": {
+                "mortal": 1,
+                "devourer": 10
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_mortal_success",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_mortal_middevourer",
+            "label": "An Escaped Summoning Closes on its Victim",
+            "actionid": "haunting",
+            "startdescription": "The victim will know that something is amiss, by now. They will listen to the sounds in the night and try to make preparations.",
+            "description": ". devourer_haunting_mortal_middevourer",
+            "requirements": {
+                "mortal": 1,
+                "devourer": 5
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_mortal_success",
+                    "chance": 70
+                },
+                {
+                    "id": "devourer_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_mortal_lowdevourer",
+            "label": "An Escaped Summoning Closes on its Victim",
+            "actionid": "haunting",
+            "startdescription": "This thing is only a moderate menace, but even a moderate menace can be lethal sometimes.",
+            "description": ". devourer_haunting_mortal_lowdevourer",
+            "requirements": {
+                "mortal": 1
+            },
+            "comments": "Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_mortal_success",
+                    "chance": 30
+                },
+                {
+                    "id": "devourer_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_mortal_success",
+            "label": "An Escaped Summoning has Claimed a Victim",
+            "actionid": "haunting",
+            "startdescription": ".",
+            "description": "The first rays of the day's sun will fall on the open eyes of a corpse. There is often a price for an unwise summoning: but it is not always the summoner who pays it.",
+            "aspects": {
+                "killmortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "devourer_haunting_mortal_failure",
+            "label": "An Escaped Summoning has visited Horror upon its Victim",
+            "actionid": "haunting",
+            "startdescription": ".",
+            "description": "The victim has survived, after all! but the story of this night will spread like a stain.",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
+        },
+        {
+            "id": "summoning_haunt_devourer_damages_health",
+            "label": "A Lurking Devourer",
+            "actionid": "haunting",
+            "startdescription": "Your escaped summoning will attempt to take something from you, before it returns to the place beneath the world's skin. [The higher the Devourer aspect, the more likely it is to damage you.]",
+            "description": "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+            "slots": [
+                {
+                    "id": "consuming",
+                    "label": "Consuming",
+                    "required": {
+                        "health": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 30,
+            "alt": [
+                {
+                    "id": "devourer_haunting_damageshealth_highdevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_middevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_lowdevourer",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "summoning_haunt_devourer_damages_health"
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_damageshealth_highdevourer",
+            "label": "An Escaped Summoning Awaits Its Moment",
+            "actionid": "haunting",
+            "startdescription": "Is it toying with me?",
+            "description": ".",
+            "requirements": {
+                "health": 1,
+                "devourer": 10
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_damageshealth_success",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_damageshealth_middevourer",
+            "label": "An Escaped Summoning Lies in Wait for you",
+            "actionid": "haunting",
+            "startdescription": "There are so many ways to undo a human body. My skin feels vulnerable as an open door.",
+            "description": ". devourer_haunting_damageshealth_middevourer",
+            "requirements": {
+                "health": 1,
+                "devourer": 5
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_damageshealth_success",
+                    "chance": 70
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_damageshealth_lowdevourer",
+            "label": "An Escaped Summoning Lies in Wait for you",
+            "actionid": "haunting",
+            "startdescription": "I will watch the windows and bolt the doors and keep oak and silver by the bed. That might be sufficient.",
+            "description": ". devourer_haunting_damageshealth_lowdevourer",
+            "requirements": {
+                "health": 1
+            },
+            "comments": "Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_damageshealth_success",
+                    "chance": 30
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "devourer_haunting_damageshealth_success",
+            "label": "An Escaped Summoning has Savaged You",
+            "actionid": "haunting",
+            "startdescription": ".",
+            "description": "I will bear a scar, of the kind that one day might be photographed for a museum. And the neighbours will talk; how they will talk.",
+            "aspects": {
+                "damagehealth": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "devourer_haunting_damageshealth_failure",
+            "label": "An Escaped Summoning Has Not Prevailed Against You",
+            "actionid": "haunting",
+            "startdescription": ".",
+            "description": "I was too much for it! But I couldn't deal with it in silence. People will talk.",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
+        },
+        {
+            "id": "summoning_haunt_deceiver",
+            "actionid": "haunting",
+            "requirements": {
+                "deceiver": 1
+            },
+            "startdescription": "It's free!",
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "summoning_haunt_deceiver_derangesreason",
+                    "chance": 100
+                }
+            ],
+            "comments": "Currently doesn't call summoning_haunt_deceiver_derangesmortal, because Deceivers don't attack directly."
+        },
+        {
+            "id": "summoning_haunt_deceiver_derangesreason",
+            "label": "A Lurking Deceiver",
+            "actionid": "haunting",
+            "startdescription": "Your escaped summoning haunts you, seeking to drive you to despair -",
+            "description": "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+            "slots": [
+                {
+                    "id": "Consuming",
+                    "label": "Consuming",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 30,
+            "alt": [
+                {
+                    "id": "deceiver_haunting_reason_highdeceiver",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_reason_middeceiver",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_reason_lowdeceiver",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "summoning_haunt_deceiver_derangesreason"
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_reason_highdeceiver",
+            "label": "An Escaped Summoning Lies in Wait for you",
+            "actionid": "haunting",
+            "startdescription": "Human sanity is fragile, and this thing is all but irresistible.",
+            "description": ".",
+            "requirements": {
+                "reason": 1,
+                "deceiver": 10
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_reason_success",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_reason_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_reason_middeceiver",
+            "label": "An Escaped Summoning Lies in Wait for you",
+            "actionid": "haunting",
+            "startdescription": "Human sanity is fragile, and this thing is potent.",
+            "description": ". deceiver_haunting_reason_middeceiver",
+            "requirements": {
+                "reason": 1,
+                "deceiver": 5
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_reason_success",
+                    "chance": 70
+                },
+                {
+                    "id": "deceiver_haunting_reason_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_reason_lowdeceiver",
+            "label": "An Escaped Summoning Lies in Wait for you",
+            "actionid": "haunting",
+            "startdescription": "Human sanity is fragile, but perhaps this thing might cause more mischief than harm.",
+            "description": ". deceiver_haunting_reason_lowedge",
+            "requirements": {
+                "reason": 1
+            },
+            "comments": "Leaving 'Deceiver' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+            "linked": [
+                {
+                    "id": "deceiver_haunting_reason_success",
+                    "chance": 30
+                },
+                {
+                    "id": "deceiver_haunting_reason_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_reason_success",
+            "label": "An Escaped Summoning has Ravaged your Dreams",
+            "actionid": "haunting",
+            "startdescription": ".",
+            "description": "The events of that night will live long in your memory; and for days, the newspapers question residents of the district.",
+            "aspects": {
+                "damagereason": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "deceiver_haunting_reason_failure",
+            "label": "An Escaped Summoning has Failed to Break your Resolve",
+            "actionid": "haunting",
+            "startdescription": ".",
+            "description": "The events of that night will live long in your memory; but the thing from beyond the Wake is no match for you. For days, however, the newspapers question residents of the district.",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
+        },
+        {
+            "id": "summoning_haunt_deceiver_derangesmortal",
+            "label": "A Lurking Deceiver",
+            "actionid": "haunting",
+            "startdescription": "Your escaped summoning haunts the district, seeking mortals to derange.",
+            "description": "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "derangemortal": 1
+            },
+            "slots": [
+                {
+                    "id": "Consuming",
+                    "label": "Consuming",
+                    "required": {
+                        "mortal": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "comments": "This isn't currently in use. We only allow Deceivers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
+            "alt": [
+                {
+                    "id": "deceiver_haunting_mortal_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_mortal_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_mortal_lowedge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "deceiver_haunting_mortal_highedge",
+            "label": "An Escaped Summoning Closes on its Victim",
+            "actionid": "haunting",
+            "startdescription": "Human sanity is fragile, and this thing is all but irresistible.",
+            "description": ".",
+            "requirements": {
+                "mortal": 1,
+                "edge": 10
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_mortal_success",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_mortal_midedge",
+            "label": "An Escaped Summoning Closes on its Victim",
+            "actionid": "haunting",
+            "startdescription": "Human sanity is fragile, and this thing is potent.",
+            "description": ". deceiver_haunting_mortal_midedge",
+            "requirements": {
+                "mortal": 1,
+                "edge": 5
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_mortal_success",
+                    "chance": 70
+                },
+                {
+                    "id": "deceiver_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_mortal_lowedge",
+            "label": "An Escaped Summoning Closes on its Victim",
+            "actionid": "haunting",
+            "startdescription": "Human sanity is fragile, but perhaps this thing might cause more mischief than harm.",
+            "description": ". deceiver_haunting_mortal_lowedge",
+            "requirements": {
+                "mortal": 1,
+                "edge": 1
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_mortal_success",
+                    "chance": 30
+                },
+                {
+                    "id": "deceiver_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_mortal_success",
+            "label": "An Escaped Summoning has visited Horror upon its Victim",
+            "actionid": "haunting",
+            "startdescription": ".",
+            "description": "Only the strongest mind could survive this. The newspapers will have a peculiar story to tell.",
+            "aspects": {
+                "derangemortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "deceiver_haunting_mortal_failure",
+            "label": "An Escaped Summoning has visited Horror upon its Victim",
+            "actionid": "haunting",
+            "startdescription": ".",
+            "description": "Its victim's resolve remains unbroken. The newspapers will have a peculiar story to tell.",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
+        }
+    ]
+}

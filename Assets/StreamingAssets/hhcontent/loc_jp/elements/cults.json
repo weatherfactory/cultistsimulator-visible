@@ -1,0 +1,472 @@
+{
+	"elements": [
+		{
+			"id": "cultedge_1",
+			"label": "明るい刃教会",
+			"aspects": {
+				"society": 1,
+				"venerationedge": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "同僚",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "新入り、または鍛えられた弟子。"
+				},
+				{
+					"id": "Ceremony",
+					"label": "儀式",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "新信者を勧誘するには、小さな秘密があればいい。高度な謎には、深き誓いが必要だ。"
+				},
+				{
+					"id": "Trappings",
+					"label": "仕掛け",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "特別な日に役立つ。素材や影響力を消費する。道具は使うが、消費しない。"
+				}
+			],
+			"description": "苦闘と征服の時の神に身を捧げるカルト教団。[「会話」の動詞トークンを使って、カルトに信奉者を勧誘したり、昇進させたり、資源を集めに行かせたりできる。信者は弟子に昇格することができ、才能のある少数の弟子はさらに高みを目指して、暗殺者に昇格することもできる。]",
+			"unique": true
+		},
+		{
+			"id": "cultforge_1",
+			"label": "不屈教団",
+			"aspects": {
+				"society": 1,
+				"venerationforge": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "同僚",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "新入り、または鍛えられた弟子。"
+				},
+				{
+					"id": "Ceremony",
+					"label": "儀式",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "新信者を勧誘するには、小さな秘密があればいい。高度な謎には、深き誓いが必要だ。"
+				},
+				{
+					"id": "Trappings",
+					"label": "仕掛け",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "特別な日に役立つ。素材や影響力を消費する。道具は使うが、消費しない。"
+				}
+			],
+			"description": "変わる火と作り変える火に身を捧げるカルト教団。[「会話」の動詞トークンを使って、カルトに信奉者を勧誘したり、昇進させたり、資源を集めに行かせたりできる。信者は弟子に昇格することができ、才能のある少数の弟子はさらに高みを目指して、作り変える者に昇格することもできる。]",
+			"unique": true
+		},
+		{
+			"id": "cultgrail_1",
+			"label": "血の聖杯教団",
+			"aspects": {
+				"society": 1,
+				"venerationgrail": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "同僚",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "新入り、または鍛えられた弟子。"
+				},
+				{
+					"id": "Ceremony",
+					"label": "儀式",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "新信者を勧誘するには、小さな秘密があればいい。高度な謎には、深き誓いが必要だ。"
+				},
+				{
+					"id": "Trappings",
+					"label": "仕掛け",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "特別な日に役立つ。素材や影響力を消費する。道具は使うが、消費しない。"
+				}
+			],
+			"description": "出生、血液、食欲の謎に身を捧げるカルト教団。[「会話」の動詞トークンを使って、カルトに信奉者を勧誘したり、昇進させたり、資源を集めに行かせることもできる。信者は弟子に昇格することができ、才能のある少数の弟子はさらに高みを目指して、シプリアンに昇格することもできる。]",
+			"unique": true
+		},
+		{
+			"id": "cultheart_1",
+			"label": "絶え間ない寺院",
+			"aspects": {
+				"society": 1,
+				"venerationheart": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "同僚",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "新入り、または鍛えられた弟子。"
+				},
+				{
+					"id": "Ceremony",
+					"label": "儀式",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "新信者を勧誘するには、小さな秘密があればいい。高度な謎には、深き誓いが必要だ。"
+				},
+				{
+					"id": "Trappings",
+					"label": "仕掛け",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "特別な日に役立つ。素材や影響力を消費する。道具は使うが、消費しない。"
+				}
+			],
+			"description": "鳴りやまない太鼓の音に身を捧げるカルト教団。[「会話」の動詞トークンを使って、カルトに信奉者を勧誘したり、昇進させたり、資源を集めに行かせたりできる。信者は弟子に昇格することができ、才能のある少数の弟子はさらに高みを目指して、タランテリストに昇格することもできる。]",
+			"unique": true
+		},
+		{
+			"id": "cultknock_1",
+			"label": "聖痕教団",
+			"aspects": {
+				"society": 1,
+				"venerationknock": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "同僚",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "新入り、または鍛えられた弟子。"
+				},
+				{
+					"id": "Ceremony",
+					"label": "儀式",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "新信者を勧誘するには、小さな秘密があればいい。高度な謎には、深き誓いが必要だ。"
+				},
+				{
+					"id": "Trappings",
+					"label": "仕掛け",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "特別な日に役立つ。素材や影響力を消費する。道具は使うが、消費しない。"
+				}
+			],
+			"description": "扉を開く時間に身を捧げるカルト教団。[「会話」の動詞トークンを使って、カルトに信奉者を勧誘したり、昇進させたり、資源を集めに行かせたりできる。信者は弟子に昇格することができ、才能のある少数の弟子はさらに高みを目指して、鍵に昇格することもできる。]",
+			"unique": true
+		},
+		{
+			"id": "cultlantern_1",
+			"label": "栄光の鏡",
+			"aspects": {
+				"society": 1,
+				"venerationlantern": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "同僚",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "新入り、または鍛えられた弟子。"
+				},
+				{
+					"id": "Ceremony",
+					"label": "儀式",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "新信者を勧誘するには、小さな秘密があればいい。高度な謎には、深き誓いが必要だ。"
+				},
+				{
+					"id": "Trappings",
+					"label": "仕掛け",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "特別な日に役立つ。素材や影響力を消費する。道具は使うが、消費しない。"
+				}
+			],
+			"description": "荒々しい場所から漏れる光の理解に身を捧げるカルト教団。[「会話」の動詞トークンを使って、カルトに信奉者を勧誘したり、昇進させたり、資源を集めに行かせたりできる。信者は弟子に昇格することができ、才能のある少数の弟子はさらに高みを目指して、預言者に昇格することもできる。]",
+			"unique": true
+		},
+		{
+			"id": "cultmoth_1",
+			"label": "野山クラブ",
+			"aspects": {
+				"society": 1,
+				"venerationmoth": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "同僚",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "新入り、または鍛えられた弟子。"
+				},
+				{
+					"id": "Ceremony",
+					"label": "儀式",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "新信者を勧誘するには、小さな秘密があればいい。高度な謎には、深き誓いが必要だ。"
+				},
+				{
+					"id": "Trappings",
+					"label": "仕掛け",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "特別な日に役立つ。素材や影響力を消費する。道具は使うが、消費しない。"
+				}
+			],
+			"description": "混沌と予期せぬ時の神に身を捧げるカルト教団。[「会話」の動詞トークンを使って、カルトに信奉者を勧誘したり、昇進させたり、資源を集めに行かせたりできる。信者は弟子に昇格することができ、才能のある少数の弟子はさらに高みを目指して、スキンツイスターに昇格することもできる。]",
+			"unique": true
+		},
+		{
+			"id": "cultsecrethistories_1",
+			"label": "聖ヒドラ教団",
+			"aspects": {
+				"society": 1,
+				"venerationedge": 1,
+				"venerationforge": 1,
+				"venerationgrail": 1,
+				"venerationheart": 1,
+				"venerationlantern": 1,
+				"venerationknock": 1,
+				"venerationmoth": 1,
+				"venerationwinter": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "同僚",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "新入り、または鍛えられた弟子。"
+				},
+				{
+					"id": "Ceremony",
+					"label": "儀式",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "より高い謎には、より深い誓いが必要。"
+				},
+				{
+					"id": "Trappings",
+					"label": "仕掛け",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "特別な日に役立つ。素材や影響力を消費する。道具は使うが、消費しない。"
+				}
+			],
+			"description": "五大史学と数千個に分かれる半現実的な分岐を研究することに身を捧げるカルト教団。他の宗派とは異なり、「聖ヒドラ」はどの属性を使っても信者を昇格できるが、崇高者は存在しない。]",
+			"unique": true
+		},
+		{
+			"id": "cultwinter_1",
+			"label": "静寂の子供たち",
+			"aspects": {
+				"society": 1,
+				"venerationwinter": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "同僚",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "新入り、または鍛えられた弟子。"
+				},
+				{
+					"id": "Ceremony",
+					"label": "儀式",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "新信者を勧誘するには、小さな秘密があればいい。高度な謎には、深き誓いが必要だ。"
+				},
+				{
+					"id": "Trappings",
+					"label": "仕掛け",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "特別な日に役立つ。素材や影響力を消費する。道具は使うが、消費しない。"
+				}
+			],
+			"description": "来るべき沈黙と終わるべき寒さに身を捧げるカルト教団。[「会話」の動詞トークンを使って、カルトに信奉者を勧誘したり、昇進させたり、資源を集めに行かせたりできる。信者は弟子に昇格することができ、才能のある少数の弟子はさらに高みを目指して、死の沈黙状態に昇格することもできる。]",
+			"unique": true
+		},
+		{
+			"id": "cultwinter_2",
+			"label": "鳩の塔",
+			"aspects": {
+				"society": 1,
+				"venerationwinter": 1
+			},
+			"slots": [
+				{
+					"id": "Associate",
+					"label": "同僚",
+					"actionId": "talk",
+					"required": {
+						"mortal": 1
+					},
+					"forbidden": {
+						"hunter": 1,
+						"hireling": 1,
+						"prisoner": 1
+					},
+					"description": "新入り、または鍛えられた弟子。"
+				},
+				{
+					"id": "Ceremony",
+					"label": "儀式",
+					"actionId": "talk",
+					"required": {
+						"lore": 1
+					},
+					"description": "新信者を勧誘するには、小さな秘密があればいい。高度な謎には、深き誓いが必要だ。"
+				},
+				{
+					"id": "Trappings",
+					"label": "仕掛け",
+					"actionId": "talk",
+					"required": {
+						"tool": 1,
+						"ingredient": 1,
+						"influence": 1
+					},
+					"description": "特別な日に役立つ。素材や影響力を消費する。道具は使うが、消費しない。"
+				}
+			],
+			"description": "失われたものと復活するものに身を捧げるカルト教団。[「会話」の動詞トークンを使って、カルトに信奉者を勧誘したり、昇進させたり、資源を集めに行かせたりできる。信者は弟子に昇格することができ、才能のある少数の弟子はさらに高みを目指して、死の沈黙状態に昇格することもできる。]",
+			"unique": true,
+			"icon": "cultwinter_1"
+		}
+	]
+}

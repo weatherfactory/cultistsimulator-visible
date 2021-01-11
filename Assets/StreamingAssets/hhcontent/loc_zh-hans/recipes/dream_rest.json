@@ -1,0 +1,316 @@
+{
+    "recipes": [
+        {
+            "id": "dream.poison.fascination.longlesson.trap",
+            "actionId": "dream",
+            "label": "一个永远警醒的敌人",
+            "startdescription": "我们的敌人从我梦中学习到了一些东西。",
+            "requirements": {
+                "poison.fascination.longlesson": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "long.lesson.dreamwork": 1
+            },
+            "mutations": [
+                {
+                    "filter": "fascination",
+                    "mutate": "poison.fascination.longlesson",
+                    "level": -1
+                }
+            ],
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "dreamhealth",
+            "label": "早睡早起",
+            "actionId": "dream",
+            "requirements": {
+                "health": 1
+            },
+            "effects": {
+                "fleeting": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "dreamhealthdread",
+                    "chance": 10
+                },
+                {
+                    "id": "dreamhealthfascination",
+                    "chance": 10
+                },
+                {
+                    "id": "dreamhealthcontentment",
+                    "chance": 30
+                },
+                {
+                    "id": "dream_router",
+                    "chance": 30
+                }
+            ],
+            "startdescription": "若是走运，我醒来时将精神焕发。[有时能产生“安逸”。通常什么效果也没有。偶尔会导致“恐惧”或“入迷”。]",
+            "description": "有时候，我梦见一个高个子的女人，穿着沙黄色的外套，站在我的床脚，微笑着看着我入眠。在梦里，她如鸟一般迅捷地转动着她的头，而她的手指弯曲好似鹰的脚爪。我不认为我昨晚梦见她了。否则，我不可能睡得那么香。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "dreamhealthcontentment",
+            "label": "早睡早起",
+            "actionId": "dream",
+            "effects": {
+                "contentment": 1
+            },
+            "description": "睡眠是一片宽广而黑暗的海域。但有的时候，当我们抵达那遥远的彼岸，灯光会在那处亮着。",
+            "craftable": false
+        },
+        {
+            "id": "dreamhealthdread",
+            "label": "早睡早起",
+            "actionId": "dream",
+            "effects": {
+                "dread": 1
+            },
+            "description": "早在瑞穆什与纳拉姆辛的时代，在两河流域中流传着一个吞噬了其他母亲的孩子，嗥叫着的女人的故事。昨晚，我的梦里传来了一声嗥叫。",
+            "craftable": false
+        },
+        {
+            "id": "dreamhealthfascination",
+            "label": "早睡早起",
+            "actionId": "dream",
+            "effects": {
+                "fascination": 1
+            },
+            "description": "想象一个装满镜子的盒子。每面镜子透出了更甜美的光。现在，想象在那第七面镜子里，只有一个普通的黎明，一张普通的床，普通一日的平淡开端。想象着这种情景，并渴求光明。",
+            "craftable": false
+        },
+        {
+            "id": "recoverhunger",
+            "label": "恢复我的力量",
+            "actionId": "dream",
+            "requirements": {
+                "funds": 1,
+                "hunger": 1
+            },
+            "effects": {
+                "funds": -1
+            },
+            "aspects": {
+                "restorehealth": 1
+            },
+            "startdescription": "我已经有阵子没吃东西了。我应该吃得小心些。",
+            "description": "我又充满了力量。在我视野边角处涡卷的黑暗消失了。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "recoverfatigue",
+            "label": "小憩以除去疲惫",
+            "actionId": "dream",
+            "requirements": {
+                "fatigue": 1
+            },
+            "aspects": {
+                "restorehealth": 1
+            },
+            "startdescription": "我只是需要一点时间来恢复精力。",
+            "description": "我重又精神抖擞。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "recover.apostlegrail.pillar2",
+            "actionId": "dream",
+            "label": "最终的梦境",
+            "startdescription": "我进食了一小瓶鲜血，躺下，闭眼。明天，我会变得更强壮。",
+            "description": "我现在好多了——还不止——我现在豪奢丰盛。我眼睛的巩膜，我手腕的血管涌动着玉液琼浆。当谢肉祭来临，我会成为压轴大菜，让赐我们愉悦者彰显胃口，扮演赤杯。",
+            "requirements": {
+                "apostlegrail.pillarfuel": 1,
+                "apostlegrail.pillar2.dormant": 1
+            },
+            "effects": {
+                "apostlegrail.pillar2.dormant": -1,
+                "apostlegrail.pillar2": 1,
+                "apostlegrail.pillarfuel": -1,
+                "fascination": 1
+            },
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "recoverillhealthfunds",
+            "label": "治疗",
+            "actionId": "dream",
+            "requirements": {
+                "funds": 1,
+                "illhealth": 1
+            },
+            "effects": {
+                "funds": -1
+            },
+            "aspects": {
+                "restorehealth": 1
+            },
+            "startdescription": "这药又黑又苦，跟焦油似的。这很容易让我怀疑自己是不是被人下毒了。",
+            "description": "病房渐渐变得狭小和陈旧。起床的时候到了。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "recoverillhealthfundsvitality",
+            "label": "治疗",
+            "actionId": "dream",
+            "requirements": {
+                "vitality": 1,
+                "illhealth": 1
+            },
+            "effects": {
+                "vitality": -1
+            },
+            "aspects": {
+                "restorehealth": 1
+            },
+            "startdescription": "现在我需要的仅仅是时间。",
+            "description": "病房渐渐变得狭小和陈旧。起床的时候到了。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "reducedread",
+            "label": "清空我的思绪",
+            "actionId": "dream",
+            "requirements": {
+                "contentment": 1,
+                "dread": 1
+            },
+            "effects": {
+                "contentment": -1,
+                "dread": -1,
+                "fleeting": 1
+            },
+            "startdescription": "我记得我以前并非如此。",
+            "description": "日转，风吹。我的手记就是这个迷宫里的线索。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "reducefascination",
+            "label": "沉思",
+            "actionId": "dream",
+            "requirements": {
+                "dread": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "fascination": -1,
+                "dread": -1,
+                "fleeting": 1
+            },
+            "startdescription": ".",
+            "description": "空气仿佛凝固了。我又回到了家里，拖着这具流浪汉般的身躯。可能，比流浪汉还是好一点吧。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "reducefascinationfleeting",
+            "label": "沉思",
+            "actionId": "dream",
+            "requirements": {
+                "fleeting": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "fleeting": -1,
+                "fascination": -1
+            },
+            "startdescription": ".",
+            "description": "空气仿佛凝固了。我又回到了家里，拖着这具流浪汉般的身躯。可能，比流浪汉还是好一点吧。",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "dreamfunds",
+            "label": "购买一剂鸦片酊",
+            "actionId": "dream",
+            "requirements": {
+                "funds": 1
+            },
+            "effects": {
+                "contentment": 1,
+                "funds": -1
+            },
+            "startdescription": "在面临特别重大的危机时，我可以拜访一个口风严实的药剂师，买一剂鸦片酊来维持我香甜的梦境。但是这只能适用于面临重大危机的情况。[这是一种昂贵而高风险的获取安逸的途径。这可能会导致生病或绝望。]",
+            "description": "噢，我得到了深深的平静。但我不应该再这样做了。",
+            "warmup": 30,
+            "craftable": true,
+            "alternativerecipes": [
+                {
+                    "id": "grailinduction",
+                    "chance": 30,
+                    "additional": true
+                },
+                {
+                    "id": "despairrisk",
+                    "chance": 10,
+                    "additional": true
+                },
+                {
+                    "id": "presickness",
+                    "chance": 10,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "dream.decrepitude",
+            "actionId": "dream",
+            "label": "孤注一掷的举措",
+            "startdescription": "我的灵魂像沼泽鬼火一样在我衰弱的肉体中作祟。我的心脏迟慢，终有一天要休止。若我进食一些异质之物，也许能恢复我失去的气力。不过可能性不大。",
+            "requirements": {
+                "decrepitude": 1,
+                "ingredient": 1
+            },
+            "warmup": 30,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "dream.decrepitude.ingredientheartf"
+                },
+                {
+                    "id": "dream.decrepitude.failure"
+                }
+            ]
+        },
+        {
+            "id": "dream.decrepitude.ingredientheartf",
+            "actionId": "dream",
+            "label": "雅努略的鼓舞",
+            "startdescription": "闻到瓶中血微弱的锈蚀气味，我的心脏猛跳，疼痛如急刺天空的朝日。",
+            "description": "圣雅努略已打开了岁月之门与痛苦之门，疼痛与历史穿过这一双门扉逃离。",
+            "requirements": {
+                "ingredientheartf": 1,
+                "decrepitude": 1
+            },
+            "effects": {
+                "ingredientheartf": -1,
+                "restlessness": 1,
+                "mystique": 1
+            },
+            "aspects": {
+                "tohealth": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "dream.decrepitude.failure",
+            "actionId": "dream",
+            "label": "确是最奇怪的味道",
+            "startdescription": "我的心脏继续苟延残喘。我没得到任何益处——除了应该称得上是得来不易的知识。",
+            "effects": {
+                "ingredient": -1,
+                "erudition": 1
+            }
+        }
+    ]
+}

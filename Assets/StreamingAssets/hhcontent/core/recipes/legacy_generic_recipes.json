@@ -1,0 +1,42 @@
+{
+    "recipes": [
+        {
+            "id": "studymapbookdealer",
+            "label": "Find Morland's shop",
+            "actionid": "study",
+            "requirements": {
+                "mapbookdealer": 1
+            },
+            "effects": {
+                "mapbookdealer": -1,
+                "locationbookdealer": 1
+            },
+            "alt": [
+                {
+                    "id": "openexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "The directions to Morland's shop are cryptic. When one deals in the kind of books my correspondent studied, one must be circumspect.",
+            "description": "An ill-lit street at an ill-favoured bend in a lesser river. A soft yellow light through a grimy window. Miss Morland nods as I enter, but doesn't rise. 'I never ask the names of my clients,' she informs me, before I have time to introduce myself.\n[<b>Explore</b> is unlocked.]",
+            "warmup": 30,
+            "craftable": true,
+            "comments": "This is one way the Explore verb may be opened."
+        },
+        {
+            "id": "openexplore",
+            "label": "Explore",
+            "actionid": "explore",
+            "requirements": {},
+            "effects": {
+                "fragmentsecrethistories": 1
+            },
+            "startdescription": ".",
+            "description": "Now that I've found a location, I can EXPLORE it.",
+            "warmup": 0,
+            "maxexecutions": 1,
+            "craftable": false
+        }
+    ]
+}

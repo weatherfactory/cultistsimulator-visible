@@ -1,0 +1,180 @@
+{
+	"recipes": [
+		{
+			"id": "heartinduction",
+			"label": "心臓の軌跡",
+			"actionId": "heartinduction",
+			"effects": {
+				"previtality": 1
+			},
+			"startdescription": "心臓の信条が出てくるたびに、活力を得ることができる。",
+			"description": "心臓の鼓動が激しくなってきた。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "lanterninduction",
+			"label": "頭蓋骨の中の光",
+			"actionId": "lanterninduction",
+			"effects": {
+				"preerudition": 1
+			},
+			"startdescription": "灯りの信条が光を放つたびに、さらなる知識の欠片を思い出すかもしれない。",
+			"description": "とりあえず、今のところは、靄がかかった頭がはっきりとしてきた。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "mothinduction",
+			"label": "古くて遠い不快なこと",
+			"actionId": "mothinduction",
+			"effects": {
+				"prerestlessness": 1
+			},
+			"startdescription": "蛾は暗闇の中に光を見つけて、私も光を見つける。",
+			"description": "見え隠れする物悲しさが私の心を動かした。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "mothglimmeringinduction",
+			"label": "暗闇と光",
+			"actionId": "mothinduction",
+			"effects": {
+				"preglimmering": 1
+			},
+			"startdescription": "蛾は暗闇の中に光を見つけて、私も光を見つける。",
+			"description": "もし他の何かになれるなら、何になれるのだろう？",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "grailinduction",
+			"label": "欲望の裏にあるもの",
+			"actionId": "grailinduction",
+			"effects": {
+				"preglimmering": 1
+			},
+			"startdescription": "欲望を満たすことで何かを学ぶことができるのだろうか？",
+			"description": "これは悟りのようなものだ。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "dreadinduction",
+			"label": "夜驚症",
+			"actionId": "dreadinduction",
+			"effects": {
+				"predread": 1
+			},
+			"startdescription": "夜中に目を覚ますと、手のひらや顔から汗が噴き出ていた。",
+			"description": "ゆっくりと、握りしめた拳が緩む。私は再び眠りに落ちていくが、部屋の隅には蜘蛛の巣のようなものが残る。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "dreadinduction_ifdread",
+			"label": "夜驚症",
+			"actionId": "dreadinduction",
+			"requirements": {
+				"dread": 1
+			},
+			"effects": {
+				"predread": 1
+			},
+			"comments": "Only triggers if there's already Dread in whatever called this.",
+			"startdescription": "夜中に目を覚ますと、手のひらや顔から汗が噴き出ていた。",
+			"description": "ゆっくりと、握りしめた拳が緩む。私は再び眠りに落ちていくが、部屋の隅には蜘蛛の巣のようなものが残る。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "fascinationinduction",
+			"label": "新しい色",
+			"actionId": "fascinationinduction",
+			"effects": {
+				"prefascination": 1
+			},
+			"startdescription": "名前のない世界の色に気付き始めた。",
+			"description": "見えるべきではない幻覚が見える。危険だということは分かっているが、待ち焦がれないわけにはいかない。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "fascinationinduction_iffascination",
+			"label": "新しい色",
+			"actionId": "fascinationinduction",
+			"requirements": {
+				"fascination": 1
+			},
+			"effects": {
+				"prefascination": 1
+			},
+			"startdescription": "名前のない世界の色に気付き始めた。",
+			"description": "見えるべきではない幻覚が見える。危険だということは分かっているが、待ち焦がれないわけにはいかない。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "poison.notoriety.induction",
+			"actionId": "poison.notoriety.induction",
+			"label": "世間の注目を集める",
+			"startdescription": "知名度の高い信奉者を使ってしまった。取締局が気づくかもしれない。",
+			"effects": {
+				"notoriety": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "poison.passion.dread.induction",
+			"actionId": "poison.passion.dread.induction",
+			"label": "這う色",
+			"startdescription": "私の情熱は毒されている。感情が突き刺さるたびに、凶暴な灰色の答えがやってくる。",
+			"effects": {
+				"dread": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "poison.reason.fascination.induction",
+			"actionId": "poison.reason.fascination.induction",
+			"label": "無慈悲な光",
+			"startdescription": "ロウソクを燃やすと、光をもたらす。私の思考に火がついたら？",
+			"effects": {
+				"fascination": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "poison.health.dread.induction",
+			"actionId": "poison.health.dread.induction",
+			"label": "苦悩のおもてなし",
+			"startdescription": "自分がした選択の結果、体に痛みが生じている。",
+			"effects": {
+				"dread": 1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "secret.induction",
+			"actionId": "unsuspicion",
+			"label": "プライバシーのメリット",
+			"startdescription": "人里離れたところに本部を設置した......",
+			"description": ".......これで、取締局が我々を見つけるのが難しくなるだろうが、同時に評判を維持するのも難しくなるかもしれない。",
+			"slots": [
+				{
+					"id": "reputation",
+					"label": "評判",
+					"required": {
+						"reputation": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 180,
+			"effects": {
+				"reputation": -1
+			}
+		}
+	]
+}

@@ -1,0 +1,587 @@
+{
+    "recipes": [
+        {
+            "id": "scheme_murderhunter",
+            "label": "A scheme to murder a Hunter is afoot",
+            "actionid": "scheme",
+            "requirements": {
+                "schememurder": 1
+            },
+            "effects": {},
+            "startdescription": "A Rival intends to end a Hunter. This may be to my advantage... but it may also draw attention.",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_murderhunter_grab",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_murderhunter_grab",
+            "label": "A scheme to murder a Hunter is afoot",
+            "actionid": "scheme",
+            "slots": [
+                {
+                    "id": "victim",
+                    "label": "Victim",
+                    "greedy": true,
+                    "required": {
+                        "hunter": 1
+                    }
+                }
+            ],
+            "effects": {},
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_murderhunter_success",
+                    "chance": 30
+                },
+                {
+                    "id": "scheme_murderhunter_failure",
+                    "chance": 100
+                },
+                {
+                    "id": "scheme_murderhunter_nohunterfound",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_murderhunter_success",
+            "label": "Someone has murdered a Hunter!",
+            "actionid": "scheme",
+            "requirements": {
+                "hunter": 1
+            },
+            "aspects": {
+                "killhunter": 1
+            },
+            "effects": {
+                "notoriety": 1
+            },
+            "startdescription": "This may give me breathing space - but it may ultimately bring the Suppression Bureau to my door.",
+            "warmup": 5,
+            "craftable": false
+        },
+        {
+            "id": "scheme_murderhunter_failure",
+            "label": "Someone has failed to murder a Hunter!",
+            "actionid": "scheme",
+            "requirements": {
+                "hunter": 1
+            },
+            "effects": {
+                "notoriety": 1
+            },
+            "startdescription": "This may ultimately bring the Suppression Bureau to my door.",
+            "warmup": 5,
+            "craftable": false
+        },
+        {
+            "id": "scheme_murderhunter_nohunterfound",
+            "label": "A scheme to murder a Hunter has ended without consequences.",
+            "actionid": "scheme",
+            "effects": {},
+            "startdescription": "Perhaps this was for the best.",
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "scheme_expedition_debug",
+            "label": "FORCE EXP START",
+            "actionid": "scheme",
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "Actor",
+                    "required": {
+                        "independent": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_grab"
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_grab",
+            "label": "A Rival is Considering an Expedition...",
+            "actionid": "scheme",
+            "requirements": {
+                "schemeexpedition": 1
+            },
+            "slots": [
+                {
+                    "id": "target",
+                    "label": "Target",
+                    "greedy": true,
+                    "required": {
+                        "vault": 1
+                    }
+                }
+            ],
+            "effects": {},
+            "startdescription": "My Rival seeks tools and lore for their own ascension.",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_expedition_prep",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_prep",
+            "label": "An Opportunity to Use a Snare",
+            "actionid": "scheme",
+            "slots": [
+                {
+                    "id": "snare",
+                    "label": "Ambush",
+                    "required": {
+                        "snare": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "vault": 1
+            },
+            "startdescription": "If I've prepared a Snare, I can try to set an ambush for my Rival, to defeat their Expedition and even injure them...",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_great"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_good"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_poor"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_rubbish"
+                },
+                {
+                    "chance": 70,
+                    "id": "scheme_expedition_success"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_failure"
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_great",
+            "actionid": "scheme",
+            "requirements": {
+                "snarelevel": 4
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 90
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_good",
+            "actionid": "scheme",
+            "requirements": {
+                "snarelevel": 3
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 70
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_poor",
+            "actionid": "scheme",
+            "requirements": {
+                "snarelevel": 2
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 30
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_rubbish",
+            "actionid": "scheme",
+            "requirements": {
+                "snarelevel": 1
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 10
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_success",
+            "label": "Our Snare has succeeded!",
+            "actionid": "scheme",
+            "effects": {
+                "snare": -1
+            },
+            "startdescription": "My Rival has fallen into our trap! They'll try to retreat to lick their wounds.",
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 5,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "independent_scar",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_snare_failure",
+            "label": "Our Snare has failed!",
+            "actionid": "scheme",
+            "startdescription": "My Rival has evaded our trap...",
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "snare": -1
+            },
+            "warmup": 5,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_expedition_success",
+                    "chance": 70
+                },
+                {
+                    "id": "scheme_expedition_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_success",
+            "label": "My Rival has ransacked this place...",
+            "actionid": "scheme",
+            "requirements": {
+                "vault": 1
+            },
+            "effects": {
+                "vault": -1
+            },
+            "startdescription": "Whatever they sought here, they've found it.",
+            "warmup": 5,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultshires4.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultshires3.ransackedbyrival",
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "scheme_promotion",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "scheme_expedition_failure",
+            "label": "My Rival has failed in their Expedition.",
+            "actionid": "scheme",
+            "requirements": {
+                "vault": 1
+            },
+            "effects": {},
+            "startdescription": "Whatever they sought here, they haven't found it. They've abandoned their expedition... for now.",
+            "warmup": 5,
+            "craftable": false
+        },
+        {
+            "id": "scheme_activities",
+            "label": "A Rival is at their business in the shadows.",
+            "actionid": "scheme",
+            "requirements": {
+                "schemeactivities": 1
+            },
+            "effects": {
+                "mystique": 1
+            },
+            "startdescription": "They're still in hiding. What exactly are they up to? [Almost always, this will end inconclusively, but occasionally a Rival will manage to increase their power in secret. Consider tempting them out from hiding by leaving an Expedition open.]",
+            "description": "My Rival has been up to some kind of mischief. The Suppression Bureau may take note.",
+            "alt": [
+                {
+                    "id": "scheme_calm",
+                    "chance": 10
+                },
+                {
+                    "id": "scheme_promotion",
+                    "chance": 11
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "scheme_calm",
+            "label": "My Rival's mood has softened.",
+            "actionid": "scheme",
+            "effects": {
+                "influenceheartc": 1
+            },
+            "description": "My Rival is observing professional courtesies: I have received a cautiously civil letter, although it discusses nothing of consequence... might there, some day, be an opportunity for us to join our powers? [Occasionally, a Rival's Resentment may diminish.]",
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "scheme_promotion",
+            "label": "My Rival has advanced their cause.",
+            "actionid": "scheme",
+            "alt": [
+                {
+                    "chance": 100,
+                    "id": "scheme_promotion_ascension"
+                }
+            ],
+            "effects": {
+                "mystique": 1
+            },
+            "aspects": {
+                "rival_promotion": 1
+            },
+            "description": "My Rival has acquired more lore, more treasures, more connections... and in turn, they've become something more.",
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "scheme_promotion_ascension",
+            "label": "My rival strives to pass the Tricuspid Gate, and become something greater.",
+            "actionid": "scheme",
+            "requirements": {
+                "exalted": 1
+            },
+            "effects": {
+                "mystique": 1
+            },
+            "startdescription": "One step closer to their goal. One degree higher in the great machinery of the House of the Sun. [Beware: if your Rival's Ascension reaches 7, they will win the game instead of you.]",
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "rivalmarks",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "independent_scar",
+            "label": "A Rival has been Scarred",
+            "startdescription": "My Rival has met with a misfortune. They have been scarred by their defeat; they will be angry with me. [Three Scars of the same type will kill any mortal.]",
+            "actionid": "scheme",
+            "linked": [
+                {
+                    "id": "independent_givescar_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "independent_givescar_knock",
+                    "chance": 50
+                },
+                {
+                    "id": "independent_givescar_winter",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "independent_givescar_edge",
+            "actionid": "scheme",
+            "label": "A Setback for a Rival",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_scar_edge",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "edge",
+                    "level": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "independent_deathscar_edge",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "independent_givescar_knock",
+            "label": "A Setback for a Rival",
+            "actionid": "scheme",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_scar_knock",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "knock",
+                    "level": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "independent_deathscar_knock",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "independent_givescar_winter",
+            "actionid": "scheme",
+            "label": "A Setback for a Rival",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_scar_winter",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "winter",
+                    "level": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "independent_deathscar_winter",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "independent_deathscar_edge",
+            "actionid": "scheme",
+            "label": "Death: a Defeat",
+            "requirements": {
+                "follower_scar_edge": 3
+            },
+            "description": "This one showed courage and endurance. In the end, that wasn't enough. [Your Rival acquired three Edge-Scars, and died.]",
+            "aspects": {
+                "killmortal": 1
+            }
+        },
+        {
+            "id": "independent_deathscar_knock",
+            "actionid": "scheme",
+            "label": "Death: an Opening",
+            "requirements": {
+                "follower_scar_knock": 3
+            },
+            "description": "To operate effectively, one must keep one's insides inside, and discourage what is outside from coming inside. When sufficient of one's insides pass outside, one is no longer a going concern. [Your Rival acquired three Knock-Scars, and died.]",
+            "aspects": {
+                "killmortal": 1
+            }
+        },
+        {
+            "id": "independent_deathscar_winter",
+            "actionid": "scheme",
+            "label": "Death: an Ending",
+            "requirements": {
+                "follower_scar_winter": 3
+            },
+            "description": "Snow falls softly. Sunset is a stain of light. [Your Rival acquired three Winter-Scars, and died.]",
+            "aspects": {
+                "killmortal": 1
+            }
+        }
+    ]
+}

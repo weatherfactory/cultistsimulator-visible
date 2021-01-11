@@ -1,0 +1,118 @@
+{
+    "recipes": [
+        {
+            "id": "conjurationpower",
+            "label": "心之钥匙",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "follower": 1,
+                "ascensionpowera": 1
+            },
+            "effects": {},
+            "startdescription": "我能否利用这种仪式让一位司辰附体呢？力量如气味一般伴祂降临。当然……我并不能得知哪位司辰会降临。",
+            "description": "仪式完成，门扉即将洞开。",
+            "warmup": 30,
+            "craftable": false,
+            "comments": "legacy",
+            "burnimage": "flammarion"
+        },
+        {
+            "id": "conjurationpowerclue",
+            "label": "心之钥匙？",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "ascensionpowera": 1
+            },
+            "effects": {
+                "mystique": 1
+            },
+            "startdescription": "我能否利用这种仪式让一位司辰附体呢？力量如气味一般伴祂降临。",
+            "description": "不起作用。我还需要别的东西——用于开启道路之物。并且我还需要一名自愿的牺牲者。",
+            "warmup": 30,
+            "craftable": false,
+            "comments": "legacy",
+            "burnimage": "flammarion"
+        },
+        {
+            "id": "conjurationenlightenment",
+            "label": "梦中之扉",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": 2,
+                "funds": 1,
+                "ascensionenlightenmenta": 1
+            },
+            "effects": {},
+            "startdescription": "利用这种仪式，我应该能追上守夜人的脚步，获悉更多关于这栋无墙居屋的知识。",
+            "description": "仪式完成，门扉即将洞开。",
+            "warmup": 30,
+            "craftable": false,
+            "comments": "legacy",
+            "burnimage": "flammarion"
+        },
+        {
+            "id": "conjurationenlightenmentclue",
+            "label": "梦中之扉？",
+            "actionId": "work",
+            "requirements": {
+                "ritual": 1,
+                "ascensionenlightenmenta": 1
+            },
+            "startdescription": "利用这种仪式，我能不能追上守夜人的脚步，获悉更多关于这栋无墙居屋的知识呢？",
+            "description": "不起作用。我需要拜请另一路神力——开启之力。我还需要资金来购买用来点亮守夜人前路的稀罕蜡烛。",
+            "warmup": 30,
+            "craftable": false,
+            "comments": "legacy",
+            "burnimage": "flammarion"
+        },
+        {
+            "id": "ascensionpowerapromotion",
+            "label": "赤杯驾临",
+            "actionId": "grailminorpromotion",
+            "requirements": {},
+            "slots": [
+                {
+                    "id": "Dedication",
+                    "label": "奉上",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "startdescription": "心脏搏动如鼓，血液燃烧沸腾。快成功了。我一定会更加热忱地奉献己身。",
+            "description": "仪式失败了！我几乎就要成功了——仿佛那即将点燃的蜡烛；仿佛那即将流进心脏的热血。我必须再试一次。",
+            "warmup": 60,
+            "craftable": false,
+            "comments": "legacy",
+            "burnimage": "flammarion"
+        },
+        {
+            "id": "ascensionenlightenmentapromotion",
+            "label": "我听见了守夜人的脚步",
+            "actionId": "watchmanminorpromotion",
+            "requirements": {},
+            "effects": {
+                "mystique": 1
+            },
+            "slots": [
+                {
+                    "id": "Dedication",
+                    "label": "奉上",
+                    "required": {
+                        "reason": 1
+                    }
+                }
+            ],
+            "startdescription": "世界的壁障颤抖如薄纱。我快要成功了。我必须全神贯注。",
+            "description": "我的指尖几乎已经要碰触到我所寻求的真知了。仅仅毫厘之差。我必须再试一次。",
+            "warmup": 60,
+            "craftable": false,
+            "comments": "legacy",
+            "burnimage": "flammarion"
+        }
+    ]
+}

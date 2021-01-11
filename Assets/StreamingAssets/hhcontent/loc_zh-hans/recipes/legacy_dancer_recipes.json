@@ -1,0 +1,758 @@
+{
+    "recipes": [
+        {
+            "id": "legacydancer_openstudy",
+            "label": "遗落的谜团",
+            "actionId": "study",
+            "startdescription": "有上百名舞者曾穿行于这间更衣室。人们时不时会发现他们留下的痕迹，如同片片零落的花瓣：落单的手套、褪色的照片、爱慕者的留言……",
+            "description": "一篇被揉成一团的诗文——足有十二页长——被塞进了一只没人要的鞋里。不是情诗。我基本可以肯定不是。但当我读这首诗时，我的呼吸逐渐急促，不知是不是忆起了某些已被我遗失的东西。",
+            "effects": {
+                "dancerlegacy_plotitem_a": 1
+            },
+            "warmup": 60,
+            "comments": "Opened from initial work"
+        },
+        {
+            "id": "legacydancer_study_plotitema_heart",
+            "actionId": "study",
+            "label": "把破解揉皱的诗文视作一个现实中的挑战",
+            "requirements": {
+                "dancerlegacy_plotitem_a": 1,
+                "heart": 1
+            },
+            "startdescription": "这是不是某种密文？里面是否含有指向某种不同寻常的舞步的线索？",
+            "effects": {
+                "vitality": 2,
+                "dancerlegacy_plotitem_a": -1
+            },
+            "description": "方向逐渐明朗。显然，里面记载了舞步——我开始有所觉察——这舞步终于某处——某个潜伏在醒时生活之下的地方。那个地方的我和这儿的不一样。我活动着肩膀：为何我感觉我身上的皮肤和我不太配套？",
+            "alternativerecipes": [
+                {
+                    "id": "legacydancer_opendream_heart",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "legacydancer_study_plotitema_moth",
+            "actionId": "study",
+            "label": "把破解揉皱的诗文视作一个梦境中的挑战",
+            "requirements": {
+                "dancerlegacy_plotitem_a": 1,
+                "moth": 1
+            },
+            "startdescription": "我觉得我梦到过一次类似的东西，那是一个月光将床单染得斑驳的夜晚——我梦见我的手与人手既似而非，某些不仅是血液的东西在我皮下涌动——那副皮肤也并非我原先的皮肤。若我能重新寻见梦中的事物，会发生什么呢？",
+            "description": "我半睡半醒躺到半夜，确信房间里有什么东西存在。午夜过后片刻，我突然意识到我就是它，而后便心怀感激地沉入了睡眠。",
+            "effects": {
+                "glimmering": 2,
+                "dancerlegacy_plotitem_a": -1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "legacydancer_opendream_moth",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "legacydancer_opendream_heart",
+            "actionId": "dream",
+            "label": "关于另一个自己的梦境",
+            "startdescription": "梦中，我渐渐明白，此舞既非一人的独舞，也非与另一人的合舞。这是一支与人偶合跳的舞蹈。",
+            "description": "我已经和布娃娃一起践行过这种舞步了，但感觉不太对劲。当我像剥皮一样撕下娃娃表面的布料时，我感觉松了一口气，然而随后，可想而知，娃娃散架了……哪里有问题——问题出在人偶娃娃，或这个世界，又或者在我身上。",
+            "effects": {
+                "ascensionchangea": 1,
+                "dancerlegacy_plotitem_a": -1
+            },
+            "comments": "opened from studying about first plot object with health",
+            "alternativerecipes": [
+                {
+                    "id": "legacydancer_openexplore_heart",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "L_desire_addhearttrack",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "L_desire_addhearttrack",
+            "actionId": "dream",
+            "label": "关于另一个自己的梦境",
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desireheart_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "legacydancer_opendream_moth",
+            "label": "关于更远久的自己的梦境",
+            "actionId": "dream",
+            "startdescription": "今晚我会在睡前剪下自己一缕头发。诗文里是这样写的。喀嚓，喀嚓。",
+            "effects": {
+                "ascensionchangea": 1,
+                "dancerlegacy_plotitem_a": -1
+            },
+            "description": "我梦到第一块大陆中心一片广大的林地，我们穿行于树间，先亮，后暗，再又亮，先上，后下，最后冲入烈火。我梦到我们曾是人以外的什么东西——或者那东西曾是我们。或许我们曾是有翅的生物。有时候，比如现在，我的肩胛骨会发痒。",
+            "comments": "opened from studying about first plot object with passion",
+            "alternativerecipes": [
+                {
+                    "id": "legacydancer_openexplore_moth",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "L_desire_addmothtrack",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "L_desire_addmothtrack",
+            "actionId": "dream",
+            "label": "关于更远久的自己的梦境",
+            "mutations": [
+                {
+                    "filterOnAspectId": "desire",
+                    "mutateAspectId": "desiremoth_track",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ]
+        },
+        {
+            "id": "legacydancer_openexplore_heart",
+            "actionId": "explore",
+            "label": "新舞伴",
+            "startdescription": "我午后有时会去逛市集。我跳了诗文里的舞，也毁了我的布娃娃。那里肯定有卖更好的娃娃，这样我就能再次踏起舞步了。",
+            "description": "我找到了！当做破烂卖的，只要半先令。尽管不完全符合，却也不远了。它的外观、伤疤、四肢的形状都是。",
+            "effects": {
+                "reason": 1,
+                "toolheartb": 1
+            },
+            "warmup": 60,
+            "comments": "opened from dreaming"
+        },
+        {
+            "id": "legacydancer_openexplore_moth",
+            "actionId": "explore",
+            "label": "旧舞伴",
+            "startdescription": "月亮出来时，我翻过围栏进入上锁的公园，在各个角落的树枝下翻找。我不知道自己为何这样做，至少现在还不。",
+            "description": "我发现了一只掉在泥里的包裹。我一下就明白了那是我要寻找的东西。也许我注定该拥有它，也许我取走它属于偷盗，就像有人偷盗被遗弃的婴儿那样。在那个飞翔林地的梦中，我和略似它的东西共舞过。",
+            "effects": {
+                "reason": 1,
+                "toolmothb": 1
+            },
+            "warmup": 60,
+            "comments": "opened from dreaming"
+        },
+        {
+            "id": "legacydancer_opentalk",
+            "actionId": "talk",
+            "label": "我们要说的话题，与说话的时机",
+            "comments": "opened from first audience interaction",
+            "startdescription": "我是否与部分看我的人有共通之处？",
+            "effects": {
+                "fleeting": 1
+            },
+            "warmup": 60
+        },
+        {
+            "id": "worklegacydancerjob_pleadforreinstatement",
+            "label": "在欢腾剧院恳求复职",
+            "actionId": "work",
+            "requirements": {
+                "legacydancerjob_suspended": 1,
+                "passion": 1
+            },
+            "aspects": {
+                "plead": 1
+            },
+            "startdescription": "我得要回这份工作。我会跟他们说我下次一定改，或许他们会理解。",
+            "description": "我不求人；我这不是求。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "worklegacydancerjob",
+            "label": "在欢腾剧院表演",
+            "actionId": "work",
+            "requirements": {
+                "legacydancerjob": 1,
+                "health": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "legacydancer_openstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "worklegacydancerjob_more",
+                    "chance": 70
+                }
+            ],
+            "startdescription": "舞台就在前方，闷热、洁净、开阔而又明亮。只要我该走步走步，该跳舞跳舞，完成他们的要求，他们就会付钱给我。",
+            "description": ".",
+            "effects": {
+                "funds": 1
+            },
+            "warmup": 45,
+            "craftable": true
+        },
+        {
+            "id": "worklegacydancerjob_more",
+            "actionId": "work",
+            "label": "欢腾剧院里的机会",
+            "startdescription": "今晚我嗅到了机会。今晚我能吸引众人的目光，只要我不再拘束，只要我全身心投入。",
+            "description": "我不为所动。我该走步走步，该跳舞跳舞，完成了他们的要求，他们会付钱给我。",
+            "comments": "the better outcomes require heart or moth 2: enough for abilities or for restlessness, too much for fatigue",
+            "slots": [
+                {
+                    "id": "more",
+                    "label": "额外的努力",
+                    "required": {
+                        "ability": 1,
+                        "restlessness": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "A_worklegacydancerjob_more_benefactorm",
+                    "chance": 50
+                },
+                {
+                    "id": "A_worklegacydancerjob_more_benefactorf",
+                    "chance": 70
+                },
+                {
+                    "id": "A_worklegacydancerjob_more_ecdysiast",
+                    "chance": 70
+                },
+                {
+                    "id": "A_worklegacydancerjob_more_heart",
+                    "chance": 100
+                },
+                {
+                    "id": "A_worklegacydancerjob_more_moth",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "A_worklegacydancerjob_more_benefactorm",
+            "actionId": "work",
+            "requirements": {
+                "potentialbenefactorm": 1,
+                "heart": 2
+            },
+            "label": "潜在的金主",
+            "startdescription": ".",
+            "description": "一位先生说服了舞台监督，让他安排与我后台见面。此人彬彬有礼，对我的工作能力推崇倍至，还送给我一份礼物。他希望我们能成为朋友。",
+            "effects": {
+                "benefactorm": 1,
+                "funds": 2,
+                "influence": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "job",
+                    "mutateAspectId": "potentialbenefactorm",
+                    "mutationLevel": -1
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "legacydancer_opentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "A_worklegacydancerjob_more_benefactorf",
+            "actionId": "work",
+            "requirements": {
+                "potentialbenefactorf": 1,
+                "heart": 2
+            },
+            "label": "潜在的金主",
+            "startdescription": "",
+            "description": "一位女士安排我们在街对面光鲜富丽的咖啡馆见面。此人十分客气，聚精会神地倾听我说的一切，还送给我一份礼物。她希望我们能成为朋友。",
+            "effects": {
+                "benefactorf": 1,
+                "funds": 2,
+                "influence": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "job",
+                    "mutateAspectId": "potentialbenefactorf",
+                    "mutationLevel": -1
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "legacydancer_opentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "A_worklegacydancerjob_more_ecdysiast",
+            "actionId": "work",
+            "requirements": {
+                "potentialecdysiast": 1,
+                "moth": 2
+            },
+            "label": "来自爱慕者的讯息？",
+            "startdescription": ".",
+            "description": "一封由专人递送的信，收件人是我。散发着浓烈的香烟和丁香的味道。信上写道：“如果你想和人谈谈你的梦，就来找我。等你准备好再打电话。”上面还有电话号码和一个名字：苏洛恰那。",
+            "effects": {
+                "sulochana": 1,
+                "funds": 1,
+                "influence": -1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "job",
+                    "mutateAspectId": "potentialecdysiast",
+                    "mutationLevel": -1
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "legacydancer_opentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "A_worklegacydancerjob_more_heart",
+            "actionId": "work",
+            "requirements": {
+                "heart": 2
+            },
+            "label": "我是一副柔顺的血肉皮囊。",
+            "startdescription": "今晚，他们会注意到的。",
+            "description": "我感到他们的目光聚在我身上。之后，我收到了一位爱慕者送的礼物——以我的口味来说过分花哨了，但我可以到二手市场卖掉它。",
+            "effects": {
+                "funds": 1,
+                "influence": -1
+            }
+        },
+        {
+            "id": "A_worklegacydancerjob_more_moth",
+            "actionId": "work",
+            "requirements": {
+                "moth": 2
+            },
+            "label": "我不只是一副柔顺的血肉皮囊。",
+            "startdescription": "今晚，他们会注意到的。",
+            "description": "我感到他们的目光聚在我身上。之后，我收到一位爱慕者送的礼物——礼物稍嫌私密，令我有点不适，不过我可以在二手市场卖掉它。",
+            "effects": {
+                "funds": 1,
+                "influence": -1
+            }
+        },
+        {
+            "id": "workdancerjobbenefactor",
+            "label": "为金主表演",
+            "actionId": "work",
+            "requirements": {
+                "benefactor": 1,
+                "health": 1,
+                "funds": 1
+            },
+            "effects": {
+                "funds": -1
+            },
+            "aspects": {
+                "employment": 1
+            },
+            "linked": [
+                {
+                    "id": "L_workdancerjobbenefactor_discardsme",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_proposes_always",
+                    "chance": 100
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_proposes_sometimes",
+                    "chance": 30
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_more_health",
+                    "chance": 30
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_more_passion",
+                    "chance": 30
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_more_funds",
+                    "chance": 30
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_more_reason",
+                    "chance": 30
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_satisfactory_norequirement",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_bored",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "要是我愿意为少量精挑细选的观众进行私下演出，我的金主会很高兴。他会在演出后请我吃晚餐，当然还会用够分量的礼物回报我付出的时间。",
+            "description": ".",
+            "warmup": 45,
+            "craftable": true
+        },
+        {
+            "id": "L_workdancerjobbenefactor_more_health",
+            "actionId": "work",
+            "label": "金主：活力四射",
+            "startdescription": "今晚，我的金主充满活力！我也应该如是！",
+            "description": ".",
+            "slots": [
+                {
+                    "id": "energy",
+                    "label": "活力",
+                    "required": {
+                        "health": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "L_workdancerjobbenefactor_satisfactory_health",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_bored",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "L_workdancerjobbenefactor_more_passion",
+            "actionId": "work",
+            "label": "金主：花样百出",
+            "startdescription": "今晚，我的金主将为我的花样百出，热情奔放，青春朝气而陶醉。激情燃烧。",
+            "description": ".",
+            "slots": [
+                {
+                    "id": "vivacity",
+                    "label": "朝气",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "L_workdancerjobbenefactor_satisfactory_passion",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_bored",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "L_workdancerjobbenefactor_more_funds",
+            "actionId": "work",
+            "label": "金主：焕然一新",
+            "startdescription": "今晚，我的金主想看我穿点新东西。我应该快些去买……",
+            "description": ".",
+            "slots": [
+                {
+                    "id": "funds",
+                    "label": "资金",
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "L_workdancerjobbenefactor_satisfactory_funds",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_bored",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "L_workdancerjobbenefactor_more_reason",
+            "actionId": "work",
+            "label": "金主：精神交流",
+            "startdescription": "今晚，我的金主意在谈天。",
+            "slots": [
+                {
+                    "id": "L_conversation",
+                    "label": "谈话",
+                    "required": {
+                        "reason": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "L_workdancerjobbenefactor_satisfactory_reason",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_bored",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "L_workdancerjobbenefactor_satisfactory_health",
+            "actionId": "work",
+            "requirements": {
+                "health": 1
+            },
+            "label": "金主被我所吸引",
+            "description": "表演结束后，我面色通红满身汗水，不过我的金主似乎喜欢这样。他送给我一个闪闪发亮的小玩意。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "benefactor",
+                    "mutateAspectId": "besotment",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 5
+            }
+        },
+        {
+            "id": "L_workdancerjobbenefactor_satisfactory_passion",
+            "actionId": "work",
+            "requirements": {
+                "passion": 1
+            },
+            "label": "金主感到高兴",
+            "startdescription": "所有客人都发自内心鼓掌欢呼！我的表演完成得很好。之后，我的金主态度恭敬而又含情脉脉。我得到了今夜的纪念品——价值还相当昂贵。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "benefactor",
+                    "mutateAspectId": "besotment",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 5
+            }
+        },
+        {
+            "id": "L_workdancerjobbenefactor_satisfactory_funds",
+            "actionId": "work",
+            "requirements": {
+                "funds": 1
+            },
+            "label": "金主对我颇有好感",
+            "description": "我的演出服装挑得很好。我的金主冲我毫不吝啬地抛洒赞词，还有礼物。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "benefactor",
+                    "mutateAspectId": "besotment",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 4
+            },
+            "comments": "only 4 funds; 1 used up"
+        },
+        {
+            "id": "L_workdancerjobbenefactor_satisfactory_reason",
+            "actionId": "work",
+            "requirements": {
+                "reason": 1
+            },
+            "label": "金主被我所吸引",
+            "description": "演出比平时要短，但是我与其他客人，以及之后与我的金主一对一地，聊得很好。我走时怀揣着一份阔绰的礼物。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "benefactor",
+                    "mutateAspectId": "besotment",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 5
+            }
+        },
+        {
+            "id": "L_workdancerjobbenefactor_satisfactory_norequirement",
+            "actionId": "work",
+            "label": "金主被我所吸引",
+            "startdescription": ".",
+            "description": "今晚，我又舞又笑，对我的金主施展魅力，与我们的客人谈笑晏晏。每个人都很开心。而我也收获了点东西——足够我好一段时间的花销。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "benefactor",
+                    "mutateAspectId": "besotment",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 5
+            }
+        },
+        {
+            "id": "L_workdancerjobbenefactor_bored",
+            "actionId": "work",
+            "label": "金主焦躁不安",
+            "description": "今晚不知是什么原因，尽管我已使出浑身解数，我的金主似乎对我并不感兴趣。他确有与我彬彬有礼地告别，但是他这次例行的礼物似乎是临时对付的。",
+            "mutations": [
+                {
+                    "filterOnAspectId": "benefactor",
+                    "mutateAspectId": "boredom",
+                    "mutationLevel": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 2
+            },
+            "aspects": {
+                "employment": 1
+            }
+        },
+        {
+            "id": "L_workdancerjobbenefactor_discardsme",
+            "actionId": "work",
+            "requirements": {
+                "boredom": 7
+            },
+            "label": "金主厌倦我了？",
+            "startdescription": "我已多日没有金主的消息……",
+            "description": "我打电话过去，被告知这会儿没人约见访客。对方再三向我保证确实如此。最终，我收到了一份不大不小的礼物，附带着一张措辞礼貌的便签，祝我前程似锦。没有落款。或许这也是“没人“给我寄送的礼物吧。",
+            "aspects": {
+                "rejection": 1
+            },
+            "effects": {
+                "funds": 2
+            }
+        },
+        {
+            "id": "L_workdancerjobbenefactor_proposes_always",
+            "actionId": "work",
+            "requirements": {
+                "besotment": 10,
+                "benefactor_proposal": -1
+            },
+            "label": "金主快要向我求婚了吗？",
+            "startdescription": "今晚的他散发出不动声色的兴奋劲。",
+            "description": ".",
+            "effects": {
+                "funds": 5,
+                "contentment": 1
+            },
+            "aspects": {
+                "avowal": 1
+            }
+        },
+        {
+            "id": "L_workdancerjobbenefactor_proposes_sometimes",
+            "actionId": "work",
+            "requirements": {
+                "besotment": 7,
+                "benefactor_proposal": -1
+            },
+            "label": "金主快要向我求婚了吗？",
+            "startdescription": "今晚的他散发出不动声色的兴奋劲。",
+            "description": ".",
+            "effects": {
+                "funds": 5,
+                "contentment": 1
+            },
+            "aspects": {
+                "avowal": 1
+            },
+            "comments": "Identical to proposes_always, but with a lower threshold"
+        },
+        {
+            "id": "talk_benefactormarry",
+            "actionId": "talk",
+            "requirements": {
+                "benefactor_proposal": 1
+            },
+            "slots": [
+                {
+                    "id": "Yes",
+                    "label": "我愿意",
+                    "required": {
+                        "passion": 1
+                    }
+                }
+            ],
+            "label": "收到求婚",
+            "startdescription": "我收到了结婚之邀——通过婚姻进入贵族名门之邀。附带平和、富裕、安逸，以及金主对我余生的深情陪伴。我必须要真诚。如果我无法自发地真诚，我也得做出真诚的样子来。",
+            "description": "金主仍在等待回复，脸色阴沉。",
+            "alternativerecipes": [
+                {
+                    "id": "talk_benefactormarrycomplete",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "talk_benefactormarrycomplete",
+            "actionId": "talk",
+            "label": "“我愿意！”",
+            "requirements": {
+                "benefactor_proposal": 1,
+                "passion": 1
+            },
+            "startdescription": "现在我将离开此地，进入生命的另一个阶段。进入一个幸福的阶段，可以想见——",
+            "ending": "workvictorymarriage"
+        }
+    ]
+}

@@ -1,0 +1,300 @@
+{
+	"recipes": [
+		{
+			"id": "auctionbuy",
+			"label": "Bei einer Auktion bieten",
+			"actionId": "explore",
+			"effects": {
+				
+			},
+			"slots": [
+				{
+					"id": "Bid",
+					"label": "Gebot",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "Eine Menge angespannter Mienen und funkelnder Augen. Wer wird mitbieten? [Der zur Auktion stehende Gegenstand ist rechts zu sehen. Er ist für immer fort, wenn du die Auktion verlierst.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": false,
+			"alternativerecipes": [
+				{
+					"id": "playerincreasedbid",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "auctionfailureclear",
+					"chance": 100
+				}
+			],
+			"comments": "The auction item should be inherited from the linking recipe. If this event completes, the auction has failed and the item is removed. NB the auctioncomplete aspect, which converts existing bids back into funds."
+		},
+		{
+			"id": "playerincreasedbid",
+			"actionId": "explore",
+			"label": "Ich habe mein Gebot gemacht!",
+			"requirements": {
+				"funds": 1
+			},
+			"startdescription": "Ich habe die Hand gehoben. Der Auktionator klopft zur Bestätigung. Ob mich wohl jemand überbietet?",
+			"description": ".",
+			"effects": {
+				"funds": -1,
+				"bid": 1
+			},
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "auctionbidmatched.grailapostlepillar3"
+				},
+				{
+					"id": "auctionsuccess",
+					"chance": 70
+				},
+				{
+					"id": "auctionbidmatched",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "auctionbidmatched.grailapostlepillar3",
+			"actionId": "explore",
+			"requirements": {
+				"bid": -6,
+				"apostlegrail.pillar3": 1
+			},
+			"linked": [
+				{
+					"id": "auctionbidmatched"
+				}
+			]
+		},
+		{
+			"id": "auctionbidmatched",
+			"label": "Noch ein Gebot!",
+			"actionId": "explore",
+			"startdescription": "Jemand hat mich überboten! Ich muss jetzt noch mehr bieten, sonst war's das.",
+			"description": ".",
+			"slots": [
+				{
+					"id": "Bid",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "playerincreasedbid",
+					"chance": 100
+				}
+			],
+			"linked": [
+				{
+					"id": "auctionfailureclear",
+					"chance": 100
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "auctionfailureclear",
+			"actionId": "explore",
+			"effects": {
+				"text": -1,
+				"tool": -1,
+				"ingredient": -1
+			},
+			"comments": "Tools and ingredients might subsequently be offered as purchases; in particular, ingredients are right now in a Grail Apostle plot recipe.",
+			"linked": [
+				{
+					"id": "auctionfailure",
+					"chance": 100
+				}
+			],
+			"warmup": 0
+		},
+		{
+			"id": "auctionfailure",
+			"actionId": "explore",
+			"label": "Ich habe bei der Auktion nicht gewonnen",
+			"aspects": {
+				"restore": 1
+			},
+			"startdescription": ".",
+			"description": "Die Auktion ist vorbei. Andere Bieter haben sich durchgesetzt. Ich hab meine Geldmittel behalten.",
+			"warmup": 0
+		},
+		{
+			"id": "auctionsuccess",
+			"label": "Ich habe die Auktion gewonnen!",
+			"actionId": "explore",
+			"effects": {
+				"funds": -100,
+				"bid": -100
+			},
+			"startdescription": ".",
+			"description": "Der Auktionator notiert sich meinen Namen und gibt einem der Assistenten ein Zeichen. Ich habe meinen Schatz. Ich hoffe, das hat sich gelohnt.",
+			"warmup": 0,
+			"craftable": false,
+			"comments": "The auction item should be inherited from the linking recipe."
+		},
+		{
+			"id": "expedition.corpse.find.vaultshires3",
+			"actionId": "expedition.corpse.find",
+			"label": "Noch ein Schatz",
+			"startdescription": "Die anderen, die hierher gekommen sind, haben alle die Geheimnisse übersehen, die in der Leiche des Kriegerkönigs schlummern. Ich werde nicht den gleichen Fehler machen.",
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.furious": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expedition.corpse.find.vaultcapital5",
+			"actionId": "expedition.corpse.find",
+			"label": "Noch ein Schatz",
+			"startdescription": "Ich sollte nicht diesen letzten Überrest eines Priesters mit Nichtachtung strafen. Der wird zweifellos zäh sein, doch Macht und Wissen ruhen darin.",
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.luxurious": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expedition.corpse.find.vaultloneandlevelsands2",
+			"actionId": "expedition.corpse.find",
+			"label": "Noch ein Schatz",
+			"startdescription": "Ich werde mir von Laguns Überresten holen, was ich nur kriegen kann. Ich werde einen Weg finden, mir die darin verborgenen Erinnerungen anzueignen. Selbst wenn ich sie in Tee ziehen lassen muss.",
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.liminal": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expedition.corpse.find.vaultrendingmountainsdefault",
+			"actionId": "expedition.corpse.find",
+			"label": "Noch ein Schatz",
+			"startdescription": "Ich werde das, was vom König noch übrig ist, für mich behalten.",
+			"extantreqs": {
+				"remembrancemarks": 1,
+				"corpse.horizon": -1,
+				"memory.horizon": -1,
+				"colours.horizon": -1
+			},
+			"effects": {
+				"corpse.horizon": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expedition.corpse.find.vaultshires4",
+			"actionId": "expedition.corpse.find",
+			"label": "Noch ein Schatz",
+			"startdescription": "'Caput gerat lupinum'. Überschritt ein Mensch einst die Grenzen des Zulässigen, so hieß es, er sei zum Wolfe geworden.",
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.splendid": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expedition.corpse.find.vaultshires3.ransackedbyrival",
+			"actionId": "expedition.corpse.find",
+			"label": "Noch ein Schatz",
+			"startdescription": "Mein Rivale, hat, wie alle anderen, die hierher gekommen sind, die Geheimnisse übersehen, die in der Leiche des Kriegerkönigs schlummern. Ich werde nicht den gleichen Fehler machen.",
+			"requirements": {
+				"vaultshires3": 1
+			},
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.furious": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+			"actionId": "expedition.corpse.find",
+			"label": "Noch ein Schatz",
+			"startdescription": "Nun, da mein Rivale fort ist, können wir uns hereinstehlen und dieses letzte Stück des Priesters plündern. Der wird zweifellos zäh sein, doch Macht und Wissen ruhen darin.",
+			"requirements": {
+				"vaultcapital5": 1
+			},
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.luxurious": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
+			"actionId": "expedition.corpse.find",
+			"label": "Noch ein Schatz",
+			"startdescription": "Nun, da mein Rivale fort ist, können wir uns hereinstehlen und die einst unsterblichen Überreste plündern, die ich brauche. Ich werde mir von Laguns Überresten holen, was ich nur kriegen kann. Ich werde einen Weg finden, mir die darin verborgenen Erinnerungen anzueignen. Selbst wenn ich sie in Tee ziehen lassen muss.",
+			"requirements": {
+				"vaultloneandlevelsands2": 1
+			},
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.liminal": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
+			"actionId": "expedition.corpse.find",
+			"label": "Noch ein Schatz",
+			"startdescription": "Nun, da mein Rivale fort ist, können wir uns hereinstehlen und die halbsterblichen Überreste plündern, die ich brauche. Ich werde das, was vom König noch übrig ist, für mich behalten.",
+			"requirements": {
+				"vaultrendingmountainsdefault": 1
+			},
+			"extantreqs": {
+				"remembrancemarks": 1,
+				"corpse.horizon": -1,
+				"memory.horizon": -1,
+				"colours.horizon": -1
+			},
+			"effects": {
+				"corpse.horizon": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "expedition.corpse.find.vaultshires4.ransackedbyrival",
+			"actionId": "expedition.corpse.find",
+			"label": "Noch ein Schatz",
+			"startdescription": "Nun, da mein Rivale fort ist, können wir uns hereinstehlen und die sterblichen Überreste plündern, die wir brauchen.",
+			"requirements": {
+				"vaultshires4": 1
+			},
+			"extantreqs": {
+				"remembrancemarks": 1
+			},
+			"effects": {
+				"corpse.splendid": 1
+			},
+			"warmup": 60
+		}
+	]
+}

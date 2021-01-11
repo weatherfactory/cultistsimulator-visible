@@ -1,0 +1,51 @@
+{
+	"elements": [
+		{
+			"id": "mystique",
+			"label": "Mystik",
+			"aspects": {
+				"reputation": 1
+			},
+			"description": "Unheimlichkeit verweilt. [Mystik kann die Aufmerksamkeit von Jägern wecken. Sie können sie nicht bei einem Verfahren gegen dich verwenden, doch sie schauen dann genauer hin.]",
+			"lifetime": 300
+		},
+		{
+			"id": "notoriety",
+			"label": "Berüchtigtsein",
+			"aspects": {
+				"reputation": 2
+			},
+			"description": "Bestimmte Taten werden nicht so schnell vergessen. [Berüchtigtsein könnte bei einem Verfahren von Jägern gegen dich verwendet werden.]",
+			"lifetime": 300,
+			"xtriggers": {
+				"scandalous": "notoriety"
+			}
+		},
+		{
+			"id": "evidence",
+			"aspects": {
+				"evidencelevel": 1
+			},
+			"label": "Vorläufige Beweise",
+			"description": "Ein Jäger hat Beweise für meine Sünden gefunden – real oder ausgedacht. [Jäger mit Beweisen für okkulte Aktivitäten werden gefährlicher. Beweise können den Tod des Jägers überdauern, der sie fabriziert hat.]",
+			"xtriggers": {
+				"investigatingsuccess": "evidenceb",
+				"investigatingsetback": "notoriety"
+			},
+			"lifetime": 600
+		},
+		{
+			"id": "evidenceb",
+			"aspects": {
+				"evidencelevel": 2
+			},
+			"label": "Erdrückende Beweise",
+			"description": "'Erde, öffne dein Maul!  Oh, nein, sie wird mich nicht aufnehmen!' [Mit Erdrückenden Beweisen für okkulte Aktivitäten in der Stadt kann das Dezernat für Unterdrückung dich verurteilen. Beweise können den Tod des Jägers überdauern, der sie fabriziert hat.]",
+			"xtriggers": {
+				"investigatingsetback": "evidence"
+			},
+			"lifetime": 600,
+			"decayTo": "evidence"
+		}
+	]
+}

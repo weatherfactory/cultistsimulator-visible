@@ -1,0 +1,919 @@
+{
+	"elements": [
+		{
+			"id": "commissionarticlesecrethistory",
+			"label": "Auftrag: Geheime Geschichten",
+			"aspects": {
+				
+			},
+			"description": "Ich muss mich ÄNDERN",
+			"lifetime": 1,
+			"decayTo": "commissionarticlesecrethistories",
+			"noartneeded": true
+		},
+		{
+			"id": "commissionarticlesecrethistoryb",
+			"label": "Auftrag: Geheime Geschichten",
+			"aspects": {
+				
+			},
+			"description": "Ich muss mich ÄNDERN",
+			"lifetime": 1,
+			"decayTo": "commissionarticlesecrethistoriesb",
+			"noartneeded": true
+		},
+		{
+			"id": "commissionarticlesecrethistoryc",
+			"label": "Auftrag: Geheime Geschichten",
+			"aspects": {
+				
+			},
+			"description": "Ich muss mich ÄNDERN",
+			"lifetime": 1,
+			"decayTo": "commissionarticlesecrethistoriesc",
+			"noartneeded": true
+		},
+		{
+			"id": "commissionarticlesecrethistories",
+			"label": "Auftrag: Geheime Geschichten",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Dr. Ibn al-Adim, genannt der Aleppiner, hat dir einen Auftrag angeboten. Er möchte, dass du ihn mit allen nur erdenklichen Informationen zu den geheimen Weltgeschichten versorgst. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 2, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticlesecrethistoriesb",
+			"label": "Auftrag: Geheime Geschichten (Substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Dr. Ibn al-Adim, genannt der Aleppiner, hat dir einen Auftrag angeboten. Er sucht nach einem substanziellen Traktat über die geheimen Weltgeschichten. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 4, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticlesecrethistoriesc",
+			"label": "Auftrag: Geheime Geschichten (Sehr substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Dr. Ibn al-Adim, genannt der Aleppiner, hat dir einen Auftrag angeboten. Er sucht nach besonders obskuren Informationen über die geheimen Weltgeschichten. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 6, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticlelantern",
+			"label": "Auftrag: Laterne",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Dr. Ibn al-Adim, genannt der Aleppiner, hat dir einen Auftrag angeboten. Er möchte, dass du ihn mit allen nur erdenklichen Informationen zu den großen Mysterien der Laterne versorgst. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 2, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticlelanternb",
+			"label": "Auftrag: Laterne (Substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Dr. Ibn al-Adim, genannt der Aleppiner, hat dir einen Auftrag angeboten. Er möchte, dass du ihn mit einer substanziellen Abhandlung zu den großen Mysterien der Laterne versorgst. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 4, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticlelanternc",
+			"label": "Auftrag: Laterne (Sehr substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Dr. Ibn al-Adim, genannt der Aleppiner, hat dir einen Auftrag angeboten. Er möchte, dass du ihn mit einer sehr substanziellen Untersuchung zu den großen Mysterien der Laterne versorgst. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 6, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticleforge",
+			"label": "Auftrag: Schmiede",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Mme Olympe Bechet sucht passende Artikel für das 'Kerisham Review'. Sie hätte gern etwas, das vom Prinzip der Schmiede inspiriert ist. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 2, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticleforgeb",
+			"label": "Auftrag: Schmiede (Substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Mme Olympe Bechet sucht passende Artikel für das 'Kerisham Review'. Sie hätte gern etwas Substanzielleres zur Schmiede. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 4, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticleforgec",
+			"label": "Auftrag: Schmiede (Sehr substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Mme Olympe Bechet sucht passende Artikel für das 'Kerisham Review'. Sie hätte gern etwas sehr Substanzielles, oder wirklich Intensives, zu dem Wandel und dem Leid, welche die Schmiede mit sich bringt. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 6, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticlegrail",
+			"label": "Auftrag: Gral",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Mme Olympe Bechet sucht passende Artikel für das 'Kerisham Review'. Sie hätte gern etwas Prickelndes zum Roten Gral. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 2, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticlegrailb",
+			"label": "Auftrag: Gral (Substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Mme Olympe Bechet sucht passende Artikel für das 'Kerisham Review'. Sie hätte gern etwas Substanzielleres zum Roten Gral und seinem Reiz. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 4, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticlegrailc",
+			"label": "Auftrag: Gral (Sehr substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Mme Olympe Bechet sucht passende Artikel für das 'Kerisham Review'. Sie hätte gern etwas sehr Substanzielles und 'Schonungsloses' zum Roten Gral. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 6, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "passion1",
+					"label": "Leidenschaft",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticlemoth",
+			"label": "Auftrag: Motte",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Mme Olympe Bechet sucht passende Artikel für das 'Kerisham Review'. Sie hätte gern etwas angemessen Faszinierendes über das Prinzip namens Motte. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 2, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticlemothb",
+			"label": "Auftrag: Motte (Substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Mme Olympe Bechet sucht passende Artikel für das 'Kerisham Review'. Sie hätte gern einen substanziellen rätselhaften Artikel über die Motte. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 4, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticlemothc",
+			"label": "Auftrag: Motte (Sehr substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Mme Olympe Bechet sucht passende Artikel für das 'Kerisham Review'. Sie hätte gern eine sehr substanzielle Abhandlung zur Motte und deren Mysterien. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 6, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "passion1",
+					"label": "Leidenschaft",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticleheart",
+			"label": "Auftrag: Herz",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Der Graf bezahlt für Informationen von Interesse. Diesmal hätte er gern einige Notizen zu den leiblichen Mysterien des Herzens. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 2, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticleheartb",
+			"label": "Auftrag: Herz (Substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Der Graf bezahlt für Informationen von Interesse. Diesmal hätte er gern substanzielle Forschungen zu den leiblichen Mysterien des Herzens. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 4, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticleheartc",
+			"label": "Auftrag: Herz (Sehr substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Der Graf bezahlt für Informationen von Interesse. Diesmal hätte er gern sehr substanzielle Forschungen zu den leiblichen Mysterien des Herzens. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 6, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "passion1",
+					"label": "Leidenschaft",
+					"required": {
+						"passion": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticleedge",
+			"label": "Auftrag: Kante",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Der Graf bezahlt für Informationen von Interesse. Diesmal hätte er gern substanzielle Forschungen zu den Praktiken der Kante. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 2, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticleedgeb",
+			"label": "Auftrag: Kante (Substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Der Graf bezahlt für Informationen von Interesse. Diesmal hätte er gern substanzielle Notizen zu den Praktiken der Kante. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 4, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticleedgec",
+			"label": "Auftrag: Kante (Sehr substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Der Graf bezahlt für Informationen von Interesse. Diesmal hätte er gern ein sehr substanzielles Werk zu den Praktiken der Kante. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 6, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticleknock",
+			"label": "Auftrag: Klopfen",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Poppy bezahlt für Informationen von Interesse. Diesmal hätte sie gern einige Notizen zu den leiblichen Mysterien des Klopfens. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 2, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticleknockb",
+			"label": "Auftrag: Klopfen (Substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Poppy bezahlt für Informationen von Interesse. Diesmal hätte sie gern substanzielle Forschungen zu den leiblichen Mysterien des Klopfens. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 4, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticleknockc",
+			"label": "Auftrag: Klopfen (Sehr substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Poppy bezahlt für Informationen von Interesse. Diesmal hätte sie gern sehr substanzielle Forschungen zu den leiblichen Mysterien des Klopfens. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 6, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		},
+		{
+			"id": "commissionarticlewinter",
+			"label": "Auftrag: Winter",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Poppy bezahlt für Informationen von Interesse. Diesmal hätte sie gern einige Notizen zu den leiblichen Mysterien des Winters. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 2, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensation"
+			}
+		},
+		{
+			"id": "commissionarticlewinterb",
+			"label": "Auftrag: Winter (Substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Poppy bezahlt für Informationen von Interesse. Diesmal hätte sie gern substanzielle Forschungen zu den leiblichen Mysterien des Winters. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 4, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationb"
+			}
+		},
+		{
+			"id": "commissionarticlewinterc",
+			"label": "Auftrag: Winter (Sehr substanziell)",
+			"aspects": {
+				"commission": 1,
+				"job": 1
+			},
+			"description": "Poppy bezahlt für Informationen von Interesse. Diesmal hätte sie gern sehr substanzielle Forschungen zu den leiblichen Mysterien des Winters. [Du brauchst ein passendes Wissensfragment von mindestens Stufe 6, um diesen Auftrag abzuschließen.]",
+			"slots": [
+				{
+					"id": "lore",
+					"label": "Wissen",
+					"required": {
+						"lore": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason1",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				},
+				{
+					"id": "reason2",
+					"label": "Verstand",
+					"required": {
+						"reason": 1
+					},
+					"actionId": "work"
+				}
+			],
+			"xtriggers": {
+				"commissionfulfilled": "compensationc"
+			}
+		}
+	]
+}

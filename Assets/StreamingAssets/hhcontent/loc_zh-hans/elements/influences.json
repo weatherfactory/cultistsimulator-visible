@@ -1,0 +1,1074 @@
+{
+    "elements": [
+        {
+            "id": "influenceedge",
+            "label": "激振的气氛",
+            "aspects": {
+                "edge": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>刃</b>之影响如何相互协同可以将其加强。研究其如何受<b>冬</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influenceedge": 1,
+                        "influencewinter": 1,
+                        "dread": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentedgec": 1,
+                        "fragmentedged": 1,
+                        "fragmentedgee": 1,
+                        "fragmentedgef": 1,
+                        "fragmentedgeg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "五感变得敏锐。[一种二阶影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceedgec"
+            }
+        },
+        {
+            "id": "influenceedgec",
+            "label": "昂扬的气氛",
+            "aspects": {
+                "edge": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>刃</b>之影响如何相互协同可以将其加强。研究其如何受<b>冬</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influenceedgec": 1,
+                        "influencewinterc": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentedgec": 1,
+                        "fragmentedged": 1,
+                        "fragmentedgee": 1,
+                        "fragmentedgef": 1,
+                        "fragmentedgeg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "群情激昂。[一种六阶影响：迹象显著无误。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceedgee"
+            },
+            "decayTo": "influenceedge"
+        },
+        {
+            "id": "influenceedgee",
+            "label": "狂怒的气氛",
+            "aspects": {
+                "edge": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>刃</b>之影响如何相互协同可以将其加强。研究其如何受<b>冬</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influenceedgee": 1,
+                        "influencewintere": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentedgec": 1,
+                        "fragmentedged": 1,
+                        "fragmentedgee": 1,
+                        "fragmentedgef": 1,
+                        "fragmentedgeg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "愤怒以各种形态彰显。[一种十阶影响！力量与危险互相穿插，结为一体。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceedgeg"
+            },
+            "decayTo": "influenceedgec"
+        },
+        {
+            "id": "influenceedgeg",
+            "label": "破局之力",
+            "aspects": {
+                "edge": 15,
+                "influence": 1
+            },
+            "description": "谁人能将注定的战局扭转？[一种十五阶影响！可能引来某位司辰亲身过问。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "decayTo": "influenceedgee"
+        },
+        {
+            "id": "influenceforge",
+            "label": "上升的热力",
+            "aspects": {
+                "forge": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>铸</b>之影响如何相互协同可以将其加强。研究其如何受<b>刃</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influenceforge": 1,
+                        "influenceedge": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentforgec": 1,
+                        "fragmentforged": 1,
+                        "fragmentforgee": 1,
+                        "fragmentforgef": 1,
+                        "fragmentforgeg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "薄雾与微光。[一种二阶影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些<b>仪式</b>中召唤手下，并且会在某些手下被摧毁时遗留。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceforgec"
+            }
+        },
+        {
+            "id": "influenceforgec",
+            "label": "颤抖的热力",
+            "aspects": {
+                "forge": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>铸</b>之影响如何相互协同可以将其加强。研究其如何受<b>刃</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influenceforgec": 1,
+                        "influenceedgec": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentforgec": 1,
+                        "fragmentforged": 1,
+                        "fragmentforgee": 1,
+                        "fragmentforgef": 1,
+                        "fragmentforgeg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "迸出火花的可能性。[一种六阶影响：迹象显著无误。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceforgee"
+            },
+            "decayTo": "influenceforge"
+        },
+        {
+            "id": "influenceforgee",
+            "label": "蒸腾的热力",
+            "aspects": {
+                "forge": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>铸</b>之影响如何相互协同可以将其加强。研究其如何受<b>刃</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influenceforgee": 1,
+                        "influenceedgee": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentforgec": 1,
+                        "fragmentforged": 1,
+                        "fragmentforgee": 1,
+                        "fragmentforgef": 1,
+                        "fragmentforgeg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "这是火山的边缘散发出的气息。[一种十阶影响！力量与危险互相穿插，结为一体。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceforgeg"
+            },
+            "decayTo": "influenceforgec"
+        },
+        {
+            "id": "influenceforgeg",
+            "label": "炽烈已极",
+            "aspects": {
+                "forge": 15,
+                "influence": 1
+            },
+            "description": "改变随火焰而来。[一种十五阶影响！可能引来某位司辰亲身过问。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "decayTo": "influenceforgee"
+        },
+        {
+            "id": "influencegrail",
+            "label": "抬头的食欲",
+            "aspects": {
+                "grail": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>杯</b>之影响如何相互协同可以将其加强。研究其如何受<b>蛾</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencegrail": 1,
+                        "influencemoth": 1,
+                        "glimmering": 1,
+                        "glimmeringplus": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentgrailc": 1,
+                        "fragmentgraild": 1,
+                        "fragmentgraile": 1,
+                        "fragmentgrailf": 1,
+                        "fragmentgrailg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "所有知觉都被增强；所有感情都被加深。[一种二阶影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些<b>仪式</b>中召唤手下，并且会在某些手下被摧毁时遗留。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencegrailc"
+            }
+        },
+        {
+            "id": "influencegrailc",
+            "label": "急切的食欲",
+            "aspects": {
+                "grail": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>杯</b>之影响如何相互协同可以将其加强。研究其如何受<b>蛾</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencegrailc": 1,
+                        "influencemothc": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentgrailc": 1,
+                        "fragmentgraild": 1,
+                        "fragmentgraile": 1,
+                        "fragmentgrailf": 1,
+                        "fragmentgrailg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "难以控制自己。[一种六阶影响：可引发强烈的共鸣或同感。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencegraile"
+            },
+            "decayTo": "influencegrail"
+        },
+        {
+            "id": "influencegraile",
+            "label": "难耐的食欲",
+            "aspects": {
+                "grail": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>杯</b>之影响如何相互协同可以将其加强。研究其如何受<b>蛾</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencegraile": 1,
+                        "influencemothe": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentgrailc": 1,
+                        "fragmentgraild": 1,
+                        "fragmentgraile": 1,
+                        "fragmentgrailf": 1,
+                        "fragmentgrailg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "唇舌期盼尝味，十指期盼抓扼。[一种十阶影响！力量与危险互相穿插，结为一体。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencegrailg"
+            },
+            "decayTo": "influencegrailc"
+        },
+        {
+            "id": "influencegrailg",
+            "label": "道成肉红身",
+            "aspects": {
+                "grail": 15,
+                "influence": 1
+            },
+            "description": "连空气都似果肉饱含汁水般饱含着可能性。刺一下说不定便会淌出。[一种十五阶影响！可能引来某位司辰亲身过问。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "decayTo": "influencegraile"
+        },
+        {
+            "id": "influenceheart",
+            "label": "战栗的气息",
+            "aspects": {
+                "heart": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>心</b>之影响如何相互协同可以将其加强。研究其如何受<b>蛾</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influenceheart": 1,
+                        "influencegrail": 1,
+                        "vitality": 1,
+                        "vitalityplus": 1,
+                        "contentment": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentheartc": 1,
+                        "fragmentheartd": 1,
+                        "fragmenthearte": 1,
+                        "fragmentheartf": 1,
+                        "fragmentheartg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "轻点脚尖。轻快又舒适。[一种二阶影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些<b>仪式</b>中召唤手下，并且会在某些手下被摧毁时遗留。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceheartc"
+            },
+            "decayTo": "vitality"
+        },
+        {
+            "id": "influenceheartc",
+            "label": "脉动的气息",
+            "aspects": {
+                "heart": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>心</b>之影响如何相互协同可以将其加强。研究其如何受<b>蛾</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influenceheartc": 1,
+                        "influencegrailc": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentheartc": 1,
+                        "fragmentheartd": 1,
+                        "fragmenthearte": 1,
+                        "fragmentheartf": 1,
+                        "fragmentheartg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "力量上涌，精神鼓舞。[一种六阶影响：可引发强烈的共鸣或同感。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencehearte"
+            },
+            "decayTo": "influenceheart"
+        },
+        {
+            "id": "influencehearte",
+            "label": "鼓震的气息",
+            "aspects": {
+                "heart": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>心</b>之影响如何相互协同可以将其加强。研究其如何受<b>蛾</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencehearte": 1,
+                        "influencegraile": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentheartc": 1,
+                        "fragmentheartd": 1,
+                        "fragmenthearte": 1,
+                        "fragmentheartf": 1,
+                        "fragmentheartg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "世界随心而动。[一种十阶影响！力量与危险互相穿插，结为一体。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceheartg"
+            },
+            "decayTo": "influenceheartc"
+        },
+        {
+            "id": "influenceheartg",
+            "label": "近在眉睫",
+            "aspects": {
+                "heart": 15,
+                "influence": 1
+            },
+            "description": "天空为鼓，大地已经准备好接受它的痴狂。[一种十五阶影响！可能引来某位司辰亲身过问。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "decayTo": "influencehearte"
+        },
+        {
+            "id": "sicknessprotection",
+            "label": "推迟行刑",
+            "description": "肉体皆会衰败。但我得到了保证，我的肉体会衰败得稍晚一点。[此卡是在你没有“健康”时对付生病的最后一道保险。]",
+            "lifetime": 600,
+            "decayTo": "influenceheart"
+        },
+        {
+            "id": "influenceknock",
+            "label": "轻微的破绽",
+            "aspects": {
+                "knock": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "当压力足够，世界的表皮就会撕裂。添加任一影响，将其拗转为更高阶的<b>启</b>之影响。",
+                    "actionId": "study",
+                    "required": {
+                        "influenceedge": 1,
+                        "influenceforge": 1,
+                        "influencegrail": 1,
+                        "influenceheart": 1,
+                        "influenceknock": 1,
+                        "influencelantern": 1,
+                        "influencemoth": 1,
+                        "influencewinter": 1,
+                        "erudition": 1,
+                        "glimmering": 1,
+                        "vitality": 1,
+                        "eruditionplus": 1,
+                        "glimmeringplus": 1,
+                        "vitalityplus": 1
+                    }
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentknockc": 1,
+                        "fragmentknockd": 1,
+                        "fragmentknocke": 1,
+                        "fragmentknockf": 1,
+                        "fragmentknockg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "系带解开——窗户外敞——锁像上过油一样转动。[一种二阶影响：对于有洞察力的学徒来说很明显，立刻能辨别出来。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceknockc"
+            }
+        },
+        {
+            "id": "influenceknockc",
+            "label": "轻微的裂缝",
+            "aspects": {
+                "knock": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "当压力足够，世界的表皮就会撕裂。添加任一影响，将其拗转为更高阶的<b>启</b>之影响。",
+                    "actionId": "study",
+                    "required": {
+                        "influenceedgec": 1,
+                        "influenceforgec": 1,
+                        "influencegrailc": 1,
+                        "influenceheartc": 1,
+                        "influenceknockc": 1,
+                        "influencelanternc": 1,
+                        "influencemothc": 1,
+                        "influencewinterc": 1
+                    }
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentknockc": 1,
+                        "fragmentknockd": 1,
+                        "fragmentknocke": 1,
+                        "fragmentknockf": 1,
+                        "fragmentknockg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "云朵分离——墙壁碾动——旧伤作痛。[一种六阶影响：可引发强烈的共鸣或同感。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceknocke"
+            },
+            "decayTo": "influenceknock"
+        },
+        {
+            "id": "influenceknocke",
+            "label": "轻微的豁口",
+            "aspects": {
+                "knock": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "当压力足够，世界的表皮就会撕裂。添加任一影响，将其拗转为更高阶的<b>启</b>之影响。",
+                    "actionId": "study",
+                    "required": {
+                        "influenceedgee": 1,
+                        "influenceforgee": 1,
+                        "influencegraile": 1,
+                        "influencehearte": 1,
+                        "influenceknocke": 1,
+                        "influencelanterne": 1,
+                        "influencemothe": 1,
+                        "influencewintere": 1
+                    }
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentknockc": 1,
+                        "fragmentknockd": 1,
+                        "fragmentknocke": 1,
+                        "fragmentknockf": 1,
+                        "fragmentknockg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "框架扭曲——门扉爆开——蛇群自土中沸腾而出！[一种十阶影响！力量与危险互相穿插，结为一体。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influenceknockg"
+            },
+            "decayTo": "influenceknockc"
+        },
+        {
+            "id": "influenceknockg",
+            "label": "错误的门",
+            "aspects": {
+                "knock": 15,
+                "influence": 1
+            },
+            "description": "那里有一扇不该开启的门，现在连它的合页都在摇摇欲动。[一种十五阶影响！可能引来某位司辰亲身过问。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "decayTo": "influenceknocke"
+        },
+        {
+            "id": "influencelantern",
+            "label": "初识的光芒",
+            "aspects": {
+                "lantern": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>灯</b>之影响如何相互协同可以将其加强。研究其如何受<b>铸</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencelantern": 1,
+                        "influenceforge": 1,
+                        "erudition": 1,
+                        "eruditionplus": 1,
+                        "fascination": 1,
+                        "contentment": 1,
+                        "fleeting": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentlanternc": 1,
+                        "fragmentlanternd": 1,
+                        "fragmentlanterne": 1,
+                        "fragmentlanternf": 1,
+                        "fragmentlanterng": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "在世界背后，有这样一道光，凌驾于漫宿之上，能够刺透玻璃与皮肤。它出现在了这里。[一种二阶影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些<b>仪式</b>中召唤手下，且不会随其中一部分手下的毁灭的而消失。如果不使用，将会拗转为入迷。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencelanternc"
+            },
+            "decayTo": "fascination"
+        },
+        {
+            "id": "influencelanternc",
+            "label": "强烈的光芒",
+            "aspects": {
+                "lantern": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>灯</b>之影响如何相互协同可以将其加强。研究其如何受<b>铸</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencelanternc": 1,
+                        "influenceforgec": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentlanternc": 1,
+                        "fragmentlanternd": 1,
+                        "fragmentlanterne": 1,
+                        "fragmentlanternf": 1,
+                        "fragmentlanterng": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "光滴落在皮肤上，弥漫在空气中。[一种六阶影响：可引发强烈的共鸣或同感。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencelanterne"
+            },
+            "decayTo": "influencelantern"
+        },
+        {
+            "id": "influencelanterne",
+            "label": "暴烈的光芒",
+            "aspects": {
+                "lantern": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>灯</b>之影响如何相互协同可以将其加强。研究其如何受<b>铸</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencelanterne": 1,
+                        "influenceforgee": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentlanternc": 1,
+                        "fragmentlanternd": 1,
+                        "fragmentlanterne": 1,
+                        "fragmentlanternf": 1,
+                        "fragmentlanterng": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "每个颜色都更加明亮，仿佛新染过一样，然而现在它们全都开始流失色泽，褪至纯白。[一种十阶影响！力量与危险互相穿插，结为一体。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencelanterng"
+            },
+            "decayTo": "influencelanternc"
+        },
+        {
+            "id": "influencelanterng",
+            "label": "骄盛夺目",
+            "aspects": {
+                "lantern": 15,
+                "influence": 1
+            },
+            "lifetime": 60,
+            "description": "你可以遮住双眼，随便你。遮也无用。[一种十五阶影响！可能引来某位司辰亲身过问。可用于在某些<b>仪式</b>中召唤手下。]",
+            "decayTo": "influencelanterne"
+        },
+        {
+            "id": "influencemoth",
+            "label": "脑中的嗡鸣",
+            "aspects": {
+                "moth": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>蛾</b>之影响如何相互协同可以将其加强。研究其如何受<b>灯</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencemoth": 1,
+                        "influencelantern": 1,
+                        "erudition": 1,
+                        "eruditionplus": 1,
+                        "glimmering": 1,
+                        "glimmeringplus": 1,
+                        "fascination": 1,
+                        "fleeting": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentmothc": 1,
+                        "fragmentmothd": 1,
+                        "fragmentmothe": 1,
+                        "fragmentmothf": 1,
+                        "fragmentmothg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "in gi rum imus noc te et con sumi <b>喀嚓喀嚓喀嚓</b>[一种二阶影响：对于有洞察力的学徒来说很明显，立刻能辨别出来。可用于某些<b>仪式</b>中召唤手下，并且会在某些手下被摧毁时遗留。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencemothc"
+            },
+            "decayTo": "restlessness"
+        },
+        {
+            "id": "influencemothc",
+            "label": "灵魂的振响",
+            "aspects": {
+                "moth": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>蛾</b>之影响如何相互协同可以将其加强。研究其如何受<b>灯</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencemothc": 1,
+                        "influencelanternc": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentmothc": 1,
+                        "fragmentmothd": 1,
+                        "fragmentmothe": 1,
+                        "fragmentmothf": 1,
+                        "fragmentmothg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "噢，我们玩弄过的朋友，我们制造出的皮囊，依然在驱策着我们！[一种六阶影响：可引发强烈的共鸣或同感。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencemothe"
+            },
+            "decayTo": "influencemoth"
+        },
+        {
+            "id": "influencemothe",
+            "label": "心灵的咆哮",
+            "aspects": {
+                "moth": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>蛾</b>之影响如何相互协同可以将其加强。研究其如何受<b>灯</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencemothe": 1,
+                        "influencelanterne": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentmothc": 1,
+                        "fragmentmothd": 1,
+                        "fragmentmothe": 1,
+                        "fragmentmothf": 1,
+                        "fragmentmothg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "情感歪曲了我们的思想。一种激情臣服于另一种，就像被风卷起的叶子！[一种十阶影响！力量与危险互相穿插，结为一体。可用于在某些<b>仪式</b>中召唤手下。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencemothg"
+            },
+            "decayTo": "influencemothc"
+        },
+        {
+            "id": "influencemothg",
+            "label": "旧日的渴慕",
+            "aspects": {
+                "moth": 15,
+                "influence": 1
+            },
+            "description": "\"\t\t\t\r\n我切切想望\"",
+            "lifetime": 60,
+            "decayTo": "influencemothe"
+        },
+        {
+            "id": "influencewinter",
+            "label": "冷冽的气场",
+            "aspects": {
+                "winter": 2,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>冬</b>之影响如何相互协同可以将其加强。研究其如何受<b>心</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencewinter": 1,
+                        "influenceheart": 1,
+                        "vitality": 1,
+                        "vitalityplus": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentwinterc": 1,
+                        "fragmentwinterd": 1,
+                        "fragmentwintere": 1,
+                        "fragmentwinterf": 1,
+                        "fragmentwinterg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "一股特别的寒意徘徊于我的房间。[一种二阶影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些<b>仪式</b>中召唤手下，并且会在某些手下被摧毁时遗留。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencewinterc"
+            },
+            "decayTo": "dread"
+        },
+        {
+            "id": "influencewinterc",
+            "label": "冰结的气场",
+            "aspects": {
+                "winter": 6,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>冬</b>之影响如何相互协同可以将其加强。研究其如何受<b>心</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencewinterc": 1,
+                        "influenceheartc": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentwinterc": 1,
+                        "fragmentwinterd": 1,
+                        "fragmentwintere": 1,
+                        "fragmentwinterf": 1,
+                        "fragmentwinterg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "空气冻得皮肤发脆。霜结上了玻璃。[一种六阶影响：迹象显著无误。可用于在某些<b>仪式</b>中召唤手下。如果不使用，将会拗转为恐惧。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencewintere"
+            },
+            "decayTo": "influencewinter"
+        },
+        {
+            "id": "influencewintere",
+            "label": "严寒的气场",
+            "aspects": {
+                "winter": 10,
+                "influence": 1
+            },
+            "slots": [
+                {
+                    "id": "with",
+                    "label": "加上",
+                    "description": "研究两份相同的<b>冬</b>之影响如何相互协同可以将其加强。研究其如何受<b>心</b>之影响的熏陶则能将其拗转。",
+                    "required": {
+                        "influencewintere": 1,
+                        "influencehearte": 1
+                    },
+                    "actionId": "study"
+                },
+                {
+                    "id": "knowledge",
+                    "label": "知识",
+                    "description": "我必须理解正在起效的影响才能强化或拗转之。[你需要有相关“密传”的坚实基础。]",
+                    "required": {
+                        "fragmentwinterc": 1,
+                        "fragmentwinterd": 1,
+                        "fragmentwintere": 1,
+                        "fragmentwinterf": 1,
+                        "fragmentwinterg": 1
+                    },
+                    "actionId": "study"
+                }
+            ],
+            "description": "冬季穿透了衣物，穿透了皮肤，宿居在血管里。[一种十阶影响！力量与危险互相穿插，结为一体。可用于在某些<b>仪式</b>中召唤手下。如果不使用，将会拗转为恐惧。]",
+            "lifetime": 60,
+            "xtriggers": {
+                "upgradeinfluence": "influencewinterg"
+            },
+            "decayTo": "influencewinterc"
+        },
+        {
+            "id": "influencewinterg",
+            "label": "无瑕的冰霜",
+            "aspects": {
+                "winter": 15,
+                "influence": 1
+            },
+            "description": "这个世界死寂如冰，每一步都是一段艰辛旅程。[一种十五阶影响！可能引来某位司辰亲身过问。可用于在某些<b>仪式</b>中召唤手下。如果不使用，将会拗转为恐惧。]",
+            "lifetime": 60,
+            "decayTo": "influencewintere"
+        }
+    ]
+}

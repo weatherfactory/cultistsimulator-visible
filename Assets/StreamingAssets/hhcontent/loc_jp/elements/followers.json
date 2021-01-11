@@ -1,0 +1,2864 @@
+{
+	"elements": [
+		{
+			"id": "auclair_a",
+			"label": "知人のオークレール",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "オークレールは、学者の顔をしているが、病的な性格の持ち主である。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "auclair_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "auclair_r"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "auclair_b",
+			"label": "信者のオークレール",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"winter": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "オークレールは静かで、几帳面で、冷酷。",
+			"xtriggers": {
+				"promotiontodisciple": "auclair_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "auclair_p",
+				"rebellion": "auclair_r"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "auclair_c",
+			"label": "弟子のオークレール",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"winter": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "オークレールは滅多に喋らない。口を開いても慎重に言葉を選び、無駄な動きをしない。彼女が瞬きをするところを目にした者はいない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_winter": "auclair_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "auclair_p",
+				"rebellion": "auclair_r_c"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "auclair_d",
+			"label": "無口なやつれた女性",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"winter": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "空気は霜のように冷たく、ロウソクは消えかかり、通りは静まり返る。誰かがここにいる。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "auclair_p",
+				"rebellion": "auclair_r_d"
+			},
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "cat_a",
+			"label": "知人のキャット・キャロ",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "「キャット・キャロ」と名乗る彼女は、普段は劇場霊能者や占い師として活躍している。しかし、彼女にはもっと重要な才能が隠れているかもしれない。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "cat_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "cat_r"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "cat_b",
+			"label": "信者のキャット・キャロ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"lantern": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "明るい目を持ち、用心深い女性。夢を完璧に思いだすことができる。",
+			"xtriggers": {
+				"promotiontodisciple": "cat_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "cat_p",
+				"rebellion": "cat_r"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "cat_c",
+			"label": "弟子のキャット・キャロ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"lantern": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "彼女は今でも時々舞台に立つ。ポスターには「キャット・キャロが見つける道。キャット・キャロが知る道」と書かれている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_lantern": "cat_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "cat_p",
+				"rebellion": "cat_r_c"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "cat_d",
+			"label": "預言者のキャット・キャロ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"lantern": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "考古学者は墓の中から宝物を見つける。農家は畑から作物を収穫する。キャット・キャロは夢の中で何を発掘するのだろう？",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "cat_p",
+				"rebellion": "cat_r_d"
+			},
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "clifton_a",
+			"label": "知人のクリフトン「教皇」",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "神秘主義者の空気を漂わせ、髭を生やした不機嫌な声をした非正統派カトリック教徒。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "clifton_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clifton_b",
+			"label": "信者のクリフトン「教皇」",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"lantern": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "今、クリフトンは太陽の比喩に満ちた新しい祈りを即興で行う。彼は今でも兵士のように叫び、船乗りのように酒を飲む。",
+			"xtriggers": {
+				"promotiontodisciple": "clifton_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clifton_p",
+				"rebellion": "clifton_r"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clifton_c",
+			"label": "弟子のクリフトン「教皇」",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"lantern": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "クリフトンの信仰心は複雑なものになった。彼の目は大きく輝きを増した。彼の声はさらに大きくなった。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_lantern": "clifton_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clifton_p",
+				"rebellion": "clifton_r_c"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clifton_d",
+			"label": "預言者のクリフトン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"lantern": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "クリフトンは今でも祈りを唱えているが、それは古い鏡のように奇妙な祈りになってきている。彼は毎朝、夜明けを迎えるために起きる。まじまじと夜明けを見つめると、彼の目に映るものを細かく説明してくれる。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clifton_p",
+				"rebellion": "clifton_r_d"
+			},
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clovette_a",
+			"label": "知人のクロヴェット",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "クロヴェットは、幸福への反論を一切許さないくらい幸せな人だ。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "clovette_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "clovette_b",
+			"label": "信者のクロヴェット",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"heart": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "クロヴェットの幸せに対する執着心は、今となっては狂気じみたものになってきた。",
+			"xtriggers": {
+				"promotiontodisciple": "clovette_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clovette_p",
+				"rebellion": "clovette_r"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "clovette_c",
+			"label": "弟子のクロヴェット",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"heart": 5,
+				"follower_lustchange": 1
+			},
+			"description": "クロヴェットの呑気さには嫌気がさしてくる。彼女は喜びをハンマーのように振り回す。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_heart": "clovette_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clovette_p",
+				"rebellion": "clovette_r_c"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "clovette_d",
+			"label": "タランテリストのクロヴェット",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"heart": 10,
+				"follower_lustchange": 1
+			},
+			"description": "クロヴェットはいつでも動いている。彼女は簡単に笑い、その笑顔は尖った三日月のようだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "clovette_p",
+				"rebellion": "clovette_r_d"
+			},
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "connie_c",
+			"label": "弟子のコニー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"edge": 5,
+				"grail": 4
+			},
+			"description": "コニーは最後に、我慢できないような手口を見つけた.......あるいは人生を楽しむことにしたのかもしれない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"promotionto_d_edge": "connie_d",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerf",
+				"rebellion": "connie_r_c"
+			},
+			"uniquenessgroup": "uqconnie",
+			"icon": "connie_r"
+		},
+		{
+			"id": "connie_d",
+			"label": "征服者のコニー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"edge": 10,
+				"grail": 7
+			},
+			"description": "コニーは生まれつき奉仕をするような性格の持ち主ではない。いつか彼女は、川の水位が上昇するように、上へと昇っていくだろう。しかし今のところ、彼女は征服するために身をかがめている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerf",
+				"rebellion": "connie_r_d"
+			},
+			"uniquenessgroup": "uqconnie",
+			"icon": "connie_r"
+		},
+		{
+			"id": "dorothy_a",
+			"label": "知人のドロシー",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "ドロシーは熱狂的な読書家で、偏った読書癖を持つ。地球の表面化に隠れる形について話すと、彼女は興味深く耳を傾けた。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "dorothy_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "dorothy_b",
+			"label": "信者のドロシー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"heart": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "ドロシーは熱狂的なタイプだ。私は彼女の熱意を利用することにした。",
+			"xtriggers": {
+				"promotiontodisciple": "dorothy_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "dorothy_p",
+				"rebellion": "dorothy_r"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "dorothy_c",
+			"label": "弟子のドロシー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"heart": 5,
+				"follower_lustchange": 1
+			},
+			"description": "ドロシーの熱意は執着心になってしまった。止まることを知らない彼女は踊ることが好きだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_heart": "dorothy_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "dorothy_p",
+				"rebellion": "dorothy_r_c"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "dorothy_d",
+			"label": "タランテリストのドロシー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"heart": 10,
+				"follower_lustchange": 1
+			},
+			"description": "ドロシーが動けば太鼓の音が聞こえる。彼女が話せば、踊る姿が見えてくる。彼女の決意は盾であり、武器でもある。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "dorothy_p",
+				"rebellion": "dorothy_r_d"
+			},
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "douglas_b",
+			"label": "信者のダグラス",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"forge": 2
+			},
+			"animFrames": 1,
+			"description": "ダグラスは力の代わりに鍛造を手にした。",
+			"xtriggers": {
+				"promotiontodisciple": "douglas_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "douglas_p",
+				"rebellion": "douglas_r"
+			},
+			"uniquenessgroup": "uqdouglas",
+			"icon": "douglas_r"
+		},
+		{
+			"id": "douglas_c",
+			"label": "弟子のダグラス",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"forge": 5
+			},
+			"description": "ダグラスがハンマーを嫌うのは、とある事故を思い出させるからだ。しかし彼は、必要な時に必要な道具を使う。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_forge": "douglas_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "douglas_p",
+				"rebellion": "douglas_r_c"
+			},
+			"uniquenessgroup": "uqdouglas",
+			"icon": "douglas_r"
+		},
+		{
+			"id": "douglas_d",
+			"label": "作り変える者、ダグラス",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"forge": 10
+			},
+			"description": "ダグラスは大きく変わった。彼の目は霧の中の鍛冶屋の窓のように輝いている。彼の声はシュートの中の石炭の音のようだ。彼の腕は長い。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "douglas_p",
+				"rebellion": "douglas_r_d"
+			},
+			"uniquenessgroup": "uqdouglas",
+			"icon": "douglas_r"
+		},
+		{
+			"id": "elridge_a",
+			"label": "知人のエルリッジ",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustpower": 1
+			},
+			"description": "優美さに欠ける癖を持つ優美な男性。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "elridge_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqelridge"
+		},
+		{
+			"id": "elridge_b",
+			"label": "信者のエルリッジ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 2,
+				"follower_lustpower": 1
+			},
+			"animFrames": 1,
+			"description": "エルドリッジは、あともう少しで、会話中にナイフで歯をせせらないようになるだろう。彼はまだ、ナイフをブーツに入れたままにしておけないようだ。",
+			"xtriggers": {
+				"promotiontodisciple": "elridge_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "elridge_p",
+				"rebellion": "elridge_r"
+			},
+			"uniquenessgroup": "uqelridge"
+		},
+		{
+			"id": "elridge_c",
+			"label": "弟子のエルリッジ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"edge": 5,
+				"follower_lustpower": 1
+			},
+			"description": "エルリッジはまた誰かを刺す時が来るまで辛抱強く待っている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_edge": "elridge_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "elridge_p",
+				"rebellion": "elridge_r_c"
+			},
+			"uniquenessgroup": "uqelridge"
+		},
+		{
+			"id": "elridge_d",
+			"label": "暗殺者のエルリッジ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"edge": 10,
+				"follower_lustpower": 1
+			},
+			"description": "エルリッジが血痕をつけているのを見たことがない。一滴もだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "elridge_p",
+				"rebellion": "elridge_r_d"
+			},
+			"uniquenessgroup": "uqelridge"
+		},
+		{
+			"id": "enid_a",
+			"label": "知人のイーニッド",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "イーニッドは穏やかに話すが、時折、視線が目に見えるものに集中しないことがある。もしかしたら、同じ夢を見てしまったのかもしれない。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "enid_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "enid_b",
+			"label": "信者のイーニッド",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"knock": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "イーニッドは穏やかに話すが、時折、視線が目に見えるものに集中しないことがある。彼女には、他の人に見えない物が見えるようだ。",
+			"xtriggers": {
+				"promotiontodisciple": "enid_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "enid_p",
+				"rebellion": "enid_r_c"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "enid_c",
+			"label": "弟子のイーニッド",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"knock": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "イーニッドには、他の人に見えない物が見える。段々と辛くなってきているようだが、とても便利なことである。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_knock": "enid_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "enid_p",
+				"rebellion": "enid_r_d"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "enid_d",
+			"label": "鍵のイーニッド",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"knock": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "イーニッドは物と物の間の隙間を見ることができる。習得した技のおかげで、その隙間に指を置ける時もある。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "enid_p",
+				"rebellion": "enid_r"
+			},
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "laidlaw_a",
+			"label": "知人のレイドロー",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustpower": 1
+			},
+			"description": "レイドローは異様な癖を持つ鋳掛屋で修理工だ。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "laidlaw_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "laidlaw_b",
+			"label": "信者のレイドロー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"forge": 2,
+				"follower_lustpower": 1
+			},
+			"animFrames": 1,
+			"description": "レイドローは創意工夫の限界と、犠牲の力を理解し始めた。",
+			"xtriggers": {
+				"promotiontodisciple": "laidlaw_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "laidlaw_p",
+				"rebellion": "laidlaw_r"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "laidlaw_c",
+			"label": "弟子のレイドロー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"forge": 5,
+				"follower_lustpower": 1
+			},
+			"description": "レイドローは火と銅、蝋と酸の賢い使い方を学んだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_forge": "laidlaw_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "laidlaw_p",
+				"rebellion": "laidlaw_r_c"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "laidlaw_d",
+			"label": "作り変える者、レイドロー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"forge": 10,
+				"follower_lustpower": 1
+			},
+			"description": "レイドローは壊れたものを必要なものに変えることができる。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "laidlaw_p",
+				"rebellion": "laidlaw_r_d"
+			},
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "leo_a",
+			"label": "知人のレオ",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "レオはオカルトに興味がある真面目な人だ。目に見えない術に関するあなたの発言が彼を惹きつけている。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "leo_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "leo_b",
+			"label": "信者のレオ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"heart": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "レオは真面目なタイプだが、やるべきことをやる覚悟はできている。",
+			"xtriggers": {
+				"promotiontodisciple": "leo_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "leo_p",
+				"rebellion": "leo_r"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "leo_c",
+			"label": "弟子のレオ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"heart": 5,
+				"follower_lustchange": 1
+			},
+			"description": "レオはまだ善良で価値のあるものを守りたいと願っているが、自分の理想を守るためには、時には怪しげなことをしなければならないことも理解している。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_heart": "leo_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "leo_p",
+				"rebellion": "leo_r_c"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "leo_d",
+			"label": "タランテリストのレオ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"heart": 10,
+				"follower_lustchange": 1
+			},
+			"description": "レオは何としてでも守る。彼を止めることはできない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "leo_p",
+				"rebellion": "leo_r_d"
+			},
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "natalia_c",
+			"label": "弟子のナタリア",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"lantern": 5,
+				"forge": 4
+			},
+			"description": "ナタリアは何の疑問もなく従うことはないが、今のところは従っている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"promotionto_d_lantern": "natalia_d",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerf",
+				"rebellion": "natalia_r_c"
+			},
+			"uniquenessgroup": "uqnatalia",
+			"icon": "natalia_r"
+		},
+		{
+			"id": "natalia_d",
+			"label": "賢者のナタリア",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"lantern": 10,
+				"forge": 7
+			},
+			"description": "ナタリアは最も明るい道に自分自身を合わせている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerf",
+				"rebellion": "natalia_r_d"
+			},
+			"uniquenessgroup": "uqnatalia",
+			"icon": "natalia_r"
+		},
+		{
+			"id": "neville_a",
+			"label": "知人のネビル",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "ネビルは口を開く前に躊躇し、たじろきやすい。あなたが冗談を言ったと思うと笑う。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "neville_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "neville_b",
+			"label": "信者のネビル",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"knock": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "ネビルは口を開く前に躊躇し、たじろきやすい。深い問題に敏感。",
+			"xtriggers": {
+				"promotiontodisciple": "neville_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "neville_p",
+				"rebellion": "neville_r"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "neville_c",
+			"label": "弟子のネビル",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"knock": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "ネビルは人目を盗んで見つめてくるようになり、声が時折荒くなってきた。彼は自分の夢のことを自由に話している。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_knock": "neville_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "neville_p",
+				"rebellion": "neville_r_c"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "neville_d",
+			"label": "鍵のネビル",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"knock": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "ネビルは、世界とその道を開くことができる割れ目を夢で見る。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "neville_p",
+				"rebellion": "neville_r_d"
+			},
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "porter_a",
+			"label": "知人のポーター",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "ポーターは裁判になるまで床屋をしていた。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "porter_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "porter_b",
+			"label": "信者のポーター",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"moth": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "ポーターは仲間のために、カミソリとハサミを振り回した。",
+			"xtriggers": {
+				"promotiontodisciple": "porter_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "porter_p",
+				"rebellion": "porter_r"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "porter_c",
+			"label": "弟子のポーター",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"moth": 5,
+				"follower_lustchange": 1
+			},
+			"description": "ポーターは準備が整うまで気づかれない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_moth": "porter_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "porter_p",
+				"rebellion": "porter_r_c"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "porter_d",
+			"label": "スキンツイスターのポーター",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"moth": 10,
+				"follower_lustchange": 1
+			},
+			"description": "ポーターは蜘蛛のように、意外な場所で発見される。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "porter_p",
+				"rebellion": "porter_r_d"
+			},
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "renira_a",
+			"label": "知人のレニラ",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustsensation": 1
+			},
+			"description": "レニラは3つの管轄区域で3回無罪判決を受けている。彼女が罪に問われることはないだろう。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "renira_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "renira_b",
+			"label": "信者のレニラ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"grail": 2,
+				"follower_lustsensation": 1
+			},
+			"animFrames": 1,
+			"description": "レニラは野望を膨らませながらも、密かに欲望を追求し続ける。",
+			"xtriggers": {
+				"promotiontodisciple": "renira_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "renira_p",
+				"rebellion": "renira_r"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "renira_c",
+			"label": "弟子のレニラ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"grail": 5,
+				"follower_lustsensation": 1
+			},
+			"description": "どこへ行っても喝采を浴びるレニラは、賞賛に値する者だけに関心を向ける。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_grail": "renira_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "renira_p",
+				"rebellion": "renira_r_c"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "renira_d",
+			"label": "シプリアンのレニラ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"grail": 10,
+				"follower_lustsensation": 1
+			},
+			"description": "レニラはほぼ毎日のようにファンから贈り物を受け取る。花をもらう日もあれば、詩を贈られる日もある。ある時は宝石を、またある時は血で汚れたクレープ紙に包まれた絶望に満ちた贈り物を受け取ったこともあった。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "renira_p",
+				"rebellion": "renira_r_d"
+			},
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "rose_a",
+			"label": "知人のローズ",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustsensation": 1
+			},
+			"description": "ローズは悪賢い人で、あなたを普通の人ではないと思っている。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "rose_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "rose_b",
+			"label": "信者のローズ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 2,
+				"follower_lustsensation": 1
+			},
+			"animFrames": 1,
+			"description": "ローズは悪賢いが、忠実だ。",
+			"xtriggers": {
+				"promotiontodisciple": "rose_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "rose_p",
+				"rebellion": "rose_r"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "rose_c",
+			"label": "弟子のローズ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"edge": 5,
+				"follower_lustsensation": 1
+			},
+			"description": "ローズは狡猾さを研ぎ澄ました。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_edge": "rose_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "rose_p",
+				"rebellion": "rose_r_c"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "rose_d",
+			"label": "暗殺者のローズ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"edge": 10,
+				"follower_lustsensation": 1
+			},
+			"description": "ローズが対象者に会う前夜、対象者のもとに一輪の黄色いバラが入った小包が届く。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "rose_p",
+				"rebellion": "rose_r_d"
+			},
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "saliba_a",
+			"label": "知人のサリバ",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustsensation": 1
+			},
+			"description": "サリバは、驚異的な欲望の持ち主だ。満足感から喜びを感じなくなってからだいぶ月日がたつが、彼は非常に多くのことを学んだ。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "saliba_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "saliba_b",
+			"label": "信者のサリバ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"grail": 2,
+				"follower_lustsensation": 1
+			},
+			"animFrames": 1,
+			"description": "サリバは血を理解しているが、まだ誕生を理解できていない。",
+			"xtriggers": {
+				"promotiontodisciple": "saliba_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "saliba_p",
+				"rebellion": "saliba_r"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "saliba_c",
+			"label": "弟子のサリバ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"grail": 5,
+				"follower_lustsensation": 1
+			},
+			"description": "サリバの快楽は窓のない部屋で取り入れられる。彼の仲間が、毎回少しずつ減っているとはいえ、何度も何度も彼のもとに戻ってくる。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_grail": "saliba_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "saliba_p",
+				"rebellion": "saliba_r_c"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "saliba_d",
+			"label": "シプリアンのサリバ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"grail": 10,
+				"follower_lustsensation": 1
+			},
+			"description": "サリバは、ハンマーのような力を持つカリスマ性を発揮している。彼の欲望を拒むのは大変難しい。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "saliba_p",
+				"rebellion": "saliba_r_d"
+			},
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "slee_a",
+			"label": "知人のスリー",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustenlightenment": 1
+			},
+			"description": "天文学者であり前衛詩人でもあるクレイグ・スリーは、健康が衰えていく中で密教に興味を持つようになった。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "slee_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "slee_b",
+			"label": "信者のスリー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"lantern": 2,
+				"follower_lustenlightenment": 1
+			},
+			"animFrames": 1,
+			"description": "スリーは聞く者すべてに自分の理論を真剣に語る。星は小さな傷で、太陽は栄光の出血。彼の詩は、これまで以上に風変わりである。",
+			"xtriggers": {
+				"promotiontodisciple": "slee_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "slee_p",
+				"rebellion": "slee_r"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "slee_c",
+			"label": "弟子のスリー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"lantern": 5,
+				"follower_lustenlightenment": 1
+			},
+			"description": "スリーの頭痛がひどくなってきたが、彼の理論は日に日に実用的になってきている。彼の詩も良くなってきている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_lantern": "slee_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "slee_p",
+				"rebellion": "slee_r_c"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "slee_d",
+			"label": "預言者のスリー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"lantern": 10,
+				"follower_lustenlightenment": 1
+			},
+			"description": "スリーはもっぱら数学と詩を使って話をしている。どちらも説得力はあるが、その違いを見分けるのがますます難しくなっている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "slee_p",
+				"rebellion": "slee_r_d"
+			},
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "spencer_c",
+			"label": "弟子のスペンサー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"knock": 5,
+				"moth": 4
+			},
+			"description": "スペンサーは聖アグネスの小さな偶像のついたチェーンを首から掛けている。それはちょうど心臓の上にある傷を覆う。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"promotionto_d_lantern": "spencer_d",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerm",
+				"rebellion": "spencer_r_c"
+			},
+			"uniquenessgroup": "uqspencer",
+			"icon": "spencer_r"
+		},
+		{
+			"id": "spencer_d",
+			"label": "布告者のスペンサー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"knock": 10,
+				"moth": 7
+			},
+			"description": "ある者は道に従い、ある者は他の者にとっての道となる。スペンサーはもう決断したとは言わない。その代わりに、決断したことが彼を作ったと言っている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerm",
+				"rebellion": "spencer_r_d"
+			},
+			"uniquenessgroup": "uqspencer",
+			"icon": "spencer_r"
+		},
+		{
+			"id": "sylvia_a",
+			"label": "知人のシルヴィア",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "シルヴィアは9歳の時、森で目を失った。毎年聖燭祭の日になると、彼女は目を埋めた場所に戻る。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "sylvia_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "sylvia_b",
+			"label": "信者のシルヴィア",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"moth": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "シルヴィアは、屋根、干潮時の川、アイリッシュウイスキー、魔術に精通している。",
+			"xtriggers": {
+				"promotiontodisciple": "sylvia_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "sylvia_p",
+				"rebellion": "sylvia_r"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "sylvia_c",
+			"label": "弟子のシルヴィア",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"moth": 5,
+				"follower_lustchange": 1
+			},
+			"description": "シルヴィアの得意技は笑顔で片目を閉じること。そうすると、彼女の話し相手は驚くほど簡単に、心の内を打ち明け始める。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_moth": "sylvia_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "sylvia_p",
+				"rebellion": "sylvia_r_c"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "sylvia_d",
+			"label": "スキンツイスターのシルヴィア",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"moth": 10,
+				"follower_lustchange": 1
+			},
+			"description": "シルヴィアはどこかに乗り込む寸前に抜け出すことを覚えた。窓辺の下に枯れ葉を置いていくこともあれば、見つからないところに自分の名前を書くこともある。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "sylvia_p",
+				"rebellion": "sylvia_r_d"
+			},
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "tristan_a",
+			"label": "知人のトリスタン",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustpower": 1
+			},
+			"description": "トリスタンは気晴らしを嫌い、物事をやり遂げる。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "tristan_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "tristan_b",
+			"label": "信者のトリスタン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"forge": 2,
+				"follower_lustpower": 1
+			},
+			"animFrames": 1,
+			"description": "トリスタンは気晴らしを嫌い、結果を好む。",
+			"xtriggers": {
+				"promotiontodisciple": "tristan_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "tristan_p",
+				"rebellion": "tristan_r"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "tristan_c",
+			"label": "弟子のトリスタン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"forge": 5,
+				"follower_lustpower": 1
+			},
+			"description": "トリスタンは必要なことをする。創造するためには、時には、まず破壊しなければならない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_forge": "tristan_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "tristan_p",
+				"rebellion": "tristan_r_c"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "tristan_d",
+			"label": "作り変える者、トリスタン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"forge": 10,
+				"follower_lustpower": 1
+			},
+			"description": "別の時代では、トリスタンは鍛冶屋だったのかもしれない。別の人生では、彼は爆弾職人だったかもしれない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "tristan_p",
+				"rebellion": "tristan_r_d"
+			},
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "valciane_a",
+			"label": "知人のヴァルシアーヌ",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustpower": 1
+			},
+			"description": "ヴァルシアーヌは20年ほど前から店を経営しているが、一度も助手を雇ったことがない。彼女は恐ろしいほど強力な手の持ち主だ。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "valciane_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "valciane_b",
+			"label": "信者のヴァルシアーヌ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"forge": 2,
+				"follower_lustpower": 1
+			},
+			"animFrames": 1,
+			"description": "ヴァルシアーヌの工夫は尽きることがなく、彼女の握力は鍛冶屋よりも強い。",
+			"xtriggers": {
+				"promotiontodisciple": "valciane_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "valciane_p",
+				"rebellion": "valciane_r"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "valciane_c",
+			"label": "弟子のヴァルシアーヌ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"forge": 5,
+				"follower_lustpower": 1
+			},
+			"description": "ヴァルシアーヌが機械ではないという確信はある。なぜなら時折、人為的ミスを犯していることが判明しているからだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_forge": "valciane_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "valciane_p",
+				"rebellion": "valciane_r_c"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "valciane_d",
+			"label": "作り変える者、ヴァルシアーヌ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"forge": 10,
+				"follower_lustpower": 1
+			},
+			"description": "ヴァルシアーヌは道具を使わずに作業を始めた。「邪魔になる」と彼女は言う。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "valciane_p",
+				"rebellion": "valciane_r_d"
+			},
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "victor_a",
+			"label": "知人のビクター",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustsensation": 1
+			},
+			"description": "ビクターはずる賢い男で、珍しいチャンスを察知する能力を持っている。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "victor_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "victor_b",
+			"label": "信者のビクター",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 2,
+				"follower_lustsensation": 1
+			},
+			"animFrames": 1,
+			"description": "ビクターはずる賢いが、忠実な男だ。",
+			"xtriggers": {
+				"promotiontodisciple": "victor_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "victor_p",
+				"rebellion": "victor_r"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "victor_c",
+			"label": "弟子のビクター",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"edge": 5,
+				"follower_lustsensation": 1
+			},
+			"description": "ビクターは狡猾さを研ぎ澄ました。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_edge": "victor_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "victor_p",
+				"rebellion": "victor_r_c"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "victor_d",
+			"label": "暗殺者のビクター",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"edge": 10,
+				"follower_lustsensation": 1
+			},
+			"description": "ヴィクトルは対象者と親しくなることを好み、殺害直前に個人的に謝罪する。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "victor_p",
+				"rebellion": "victor_r_d"
+			},
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "violet_a",
+			"label": "知人のヴァイオレット",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustsensation": 1
+			},
+			"description": "ヴァイオレットはいつも惜しみなく自分の時間を費やし、死にゆく人の痛みを和らげてきた。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "violet_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "violet_b",
+			"label": "信者のヴァイオレット",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"winter": 2,
+				"follower_lustsensation": 1
+			},
+			"animFrames": 1,
+			"description": "ヴァイオレットは絵を描くことが好きだ。才能はあるが、それを自慢したことはなかった。彼女が人の絵を描くことはない。この世にはもうたくさんの人間が存在しているのだ。",
+			"xtriggers": {
+				"promotiontodisciple": "violet_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "violet_p",
+				"rebellion": "violet_r"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "violet_c",
+			"label": "弟子のヴァイオレット",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"winter": 5,
+				"follower_lustsensation": 1
+			},
+			"description": "ヴァイオレットはいつでも慎重だ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_winter": "violet_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "violet_p",
+				"rebellion": "violet_r_c"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "violet_d",
+			"label": "優しい顔をした無口な女性",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"winter": 10,
+				"follower_lustsensation": 1
+			},
+			"description": "おやすみ。心配することはないわ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "violet_p",
+				"rebellion": "violet_r_d"
+			},
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "ysabet_a",
+			"label": "知人のイザベト",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1,
+				"follower_lustchange": 1
+			},
+			"description": "イザベトはいつも月明かりを好んでいた。暗闇でもよく目が見えるようだ。しかし彼女は、昼間だと見過ごされることが多い。[信奉者としてこの知人を勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"xtriggers": {
+				"recruiting": "ysabet_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "ysabet_b",
+			"label": "信者のイザベト",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"moth": 2,
+				"follower_lustchange": 1
+			},
+			"animFrames": 1,
+			"description": "イザベトは気まぐれに眠り、夕暮れ時に起きて、したいことをする。",
+			"xtriggers": {
+				"promotiontodisciple": "ysabet_c",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "ysabet_p",
+				"rebellion": "ysabet_r"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "ysabet_c",
+			"label": "弟子のイザベト",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"potential": 1,
+				"moth": 5,
+				"follower_lustchange": 1
+			},
+			"description": "イザベトはさっきまでここにいた。ここに。ほぼ確実に。",
+			"animFrames": 1,
+			"xtriggers": {
+				"promotionto_d_moth": "ysabet_d",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "ysabet_p",
+				"rebellion": "ysabet_r_c"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "ysabet_d",
+			"label": "スキンツイスターのイザベト",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"moth": 10,
+				"follower_lustchange": 1
+			},
+			"description": "イザベトは嘘をつかない。嘘をつく必要がないから。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "ysabet_p",
+				"rebellion": "ysabet_r_d"
+			},
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "zachary_c",
+			"label": "弟子のザッカリー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"winter": 5,
+				"lantern": 4
+			},
+			"description": "ザッカリーの理性は相変わらず確かなものだが、今はより冷ややかなものになっている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"promotionto_d_winter": "zachary_d",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerm",
+				"rebellion": "zachary_r_c"
+			},
+			"uniquenessgroup": "uqzachary",
+			"icon": "zachary_r"
+		},
+		{
+			"id": "zachary_d",
+			"label": "結末のザッカリー",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"exalted": 1,
+				"winter": 10,
+				"lantern": 7
+			},
+			"description": "ザッカリーは結末を選んだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"capturefollower": "genericprisonerm",
+				"rebellion": "zachary_r_d"
+			},
+			"uniquenessgroup": "uqzachary",
+			"icon": "zachary_r"
+		},
+		{
+			"id": "auclair_p",
+			"label": "囚人のオークレール",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"winter": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "オークレアは喋らないし、食べない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqauclair"
+		},
+		{
+			"id": "cat_p",
+			"label": "囚人のキャット・キャロ",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "自分のことを「キャット・キャロ」と呼んでいた女性は、寝れる時には寝ている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqcat"
+		},
+		{
+			"id": "clifton_p",
+			"label": "囚人のクリフトン「教皇」",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "クリフトンが咆哮して罵っても、鉄格子は持ちこたえた。ここの壁はぶ厚い。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqclifton"
+		},
+		{
+			"id": "clovette_p",
+			"label": "囚人のクロヴェット",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 5
+			},
+			"description": "クロベットは、物事が好転するのを待っている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqclovette"
+		},
+		{
+			"id": "dorothy_p",
+			"label": "囚人のドロシー",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 5
+			},
+			"description": "ドロシーの絶え間ない暴言は神経をすり減らす。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqdorothy"
+		},
+		{
+			"id": "douglas_p",
+			"label": "囚人のダグラス",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"forge": 5
+			},
+			"description": "ダグラスは悲しそうに首を振った。「まさか自分が犯罪者になるとは思わなかった。母さんの言うことを聞くべきだったよ」",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqdouglas",
+			"icon": "defaulthunterprisoner"
+		},
+		{
+			"id": "enid_p",
+			"label": "囚人のイーニッド",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"knock": 5
+			},
+			"description": "イーニッドはもう喋らない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqenid"
+		},
+		{
+			"id": "elridge_p",
+			"label": "囚人のエルリッジ",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"edge": 5
+			},
+			"description": "エルリッジはスプーンや皿を持つことを許されていない。尖った野菜でさえ、彼に持たせるのは賢明ではないだろう。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqelridge"
+		},
+		{
+			"id": "laidlaw_p",
+			"label": "囚人のレイドロー",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"forge": 5
+			},
+			"description": "レイドローの扉には鍵はついてないが、ボルトで固定されている。鍵だけで安心するほど、我々は愚かではない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqlaidlaw"
+		},
+		{
+			"id": "leo_p",
+			"label": "囚人のレオ",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 5
+			},
+			"description": "レオは自分が何を間違ったのか理解していない。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqleo"
+		},
+		{
+			"id": "neville_p",
+			"label": "囚人のネビル",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"knock": 5
+			},
+			"description": "ネビルは泣いている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqneville"
+		},
+		{
+			"id": "porter_p",
+			"label": "囚人のポーター",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"moth": 5
+			},
+			"description": "ポーターは、トカゲのように硬直したまま待っている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqporter"
+		},
+		{
+			"id": "renira_p",
+			"label": "囚人のレニラ",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 5,
+				"heart": 3
+			},
+			"description": "レニラはいつも暇つぶしをしている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqrenira"
+		},
+		{
+			"id": "rose_p",
+			"label": "囚人のローズ",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"edge": 5
+			},
+			"description": "ローズはまだ諦めていない。彼女がフォークやナイフを隠しているのではないかと、私は思っている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqrose"
+		},
+		{
+			"id": "slee_p",
+			"label": "囚人のスリー",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 5,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "スリーは憑りつかれたように、壁に詩を書いている。インクをあげないと、周りにあるものを使って書き始める。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqslee"
+		},
+		{
+			"id": "tristan_p",
+			"label": "囚人のトリスタン",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"forge": 5
+			},
+			"description": "トリスタンは自分が置かれた状況を最大限に利用する。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqtristan"
+		},
+		{
+			"id": "saliba_p",
+			"label": "囚人のサリバ",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 5,
+				"heart": 3
+			},
+			"description": "サリバの怒りは、埋もれた溶岩のように燃え上がる。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqsaliba"
+		},
+		{
+			"id": "sylvia_p",
+			"label": "囚人のシルヴィア",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"moth": 5
+			},
+			"description": "念のため、1時間ごとにシルビアの様子を確認している。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqsylvia"
+		},
+		{
+			"id": "valciane_p",
+			"label": "囚人のヴァルシアーヌ",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"forge": 5
+			},
+			"description": "ヴァルシアーヌの手の届く範囲には決して近づかないこと。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqvalciane"
+		},
+		{
+			"id": "victor_p",
+			"label": "囚人のビクター",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"edge": 5
+			},
+			"description": "ビクターの目は怒りの井戸だ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqvictor"
+		},
+		{
+			"id": "violet_p",
+			"label": "囚人のヴァイオレット",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"winter": 5
+			},
+			"description": "ヴァイオレットは大丈夫だと言い張る。大丈夫なんだ。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqviolet"
+		},
+		{
+			"id": "ysabet_p",
+			"label": "囚人のイザベト",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3,
+				"moth": 5
+			},
+			"description": "イザベトが泣いるとしたら、彼女は涙を流さずに泣いているのだろう。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse",
+			"uniquenessgroup": "uqysabet"
+		},
+		{
+			"id": "generic_a",
+			"label": "取り巻き",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"description": "才能はあるが、大したことにはならないだろう。[この知人を信奉者として勧誘できるかもしれない。]",
+			"animFrames": 1,
+			"comments": "legacy element to keep saves valid",
+			"xtriggers": {
+				"recruiting": "generic_b",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r"
+			}
+		},
+		{
+			"id": "generic_a_edge",
+			"label": "取り巻き",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "才能はあるが、大したことにはならないだろう。[この知人を信奉者として勧誘できるかもしれない。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_edge"
+			}
+		},
+		{
+			"id": "generic_a_forge",
+			"label": "取り巻き",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "才能はあるが、大したことにはならないだろう。[この知人を信奉者として勧誘できるかもしれない。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_forge"
+			}
+		},
+		{
+			"id": "generic_a_grail",
+			"label": "取り巻き",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "才能はあるが、大したことにはならないだろう。[この知人を信奉者として勧誘できるかもしれない。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_grail"
+			}
+		},
+		{
+			"id": "generic_a_heart",
+			"label": "取り巻き",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "才能はあるが、大したことにはならないだろう。[この知人を信奉者として勧誘できるかもしれない。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_heart"
+			}
+		},
+		{
+			"id": "generic_a_knock",
+			"label": "取り巻き",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "才能はあるが、大したことにはならないだろう。[この知人を信奉者として勧誘できるかもしれない。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_knock"
+			}
+		},
+		{
+			"id": "generic_a_lantern",
+			"label": "取り巻き",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "才能はあるが、大したことにはならないだろう。[この知人を信奉者として勧誘できるかもしれない。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_lantern"
+			}
+		},
+		{
+			"id": "generic_a_moth",
+			"label": "取り巻き",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "才能はあるが、大したことにはならないだろう。[この知人を信奉者として勧誘できるかもしれない。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"recruiting": "generic_b_moth"
+			}
+		},
+		{
+			"id": "generic_a_winter",
+			"label": "取り巻き",
+			"aspects": {
+				"mortal": 1,
+				"acquaintance": 1
+			},
+			"animFrames": 1,
+			"description": "才能はあるが、大したことにはならないだろう。[この知人を信奉者として勧誘できるかもしれない。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"recruiting": "generic_b_winter"
+			}
+		},
+		{
+			"id": "generic_b",
+			"label": "ポーン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "忠実だが、率先力に欠ける。",
+			"comments": "This is a legacy element to support older saves.",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_knock"
+			}
+		},
+		{
+			"id": "generic_b_edge",
+			"label": "ポーン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "忠実だが、率先力に欠ける。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_edge"
+			}
+		},
+		{
+			"id": "generic_b_forge",
+			"label": "ポーン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "忠実だが、率先力に欠ける。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_forge"
+			}
+		},
+		{
+			"id": "generic_b_grail",
+			"label": "ポーン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "忠実だが、率先力に欠ける。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_grail"
+			}
+		},
+		{
+			"id": "generic_b_heart",
+			"label": "ポーン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "忠実だが、率先力に欠ける。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_heart"
+			}
+		},
+		{
+			"id": "generic_b_knock",
+			"label": "ポーン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "忠実だが、率先力に欠ける。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_knock"
+			}
+		},
+		{
+			"id": "generic_b_lantern",
+			"label": "ポーン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "忠実だが、率先力に欠ける。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_lantern"
+			}
+		},
+		{
+			"id": "generic_b_moth",
+			"label": "ポーン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "忠実だが、率先力に欠ける。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_moth"
+			}
+		},
+		{
+			"id": "generic_b_winter",
+			"label": "ポーン",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"edge": 1
+			},
+			"animFrames": 1,
+			"description": "忠実だが、率先力に欠ける。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"promotiontodisciple": "generic_c_winter"
+			}
+		},
+		{
+			"id": "generic_c_edge",
+			"label": "頑丈な弟子",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 2
+			},
+			"animFrames": 1,
+			"description": "忠誠心と筋肉。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_forge",
+			"label": "現実的な弟子",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"forge": 2
+			},
+			"animFrames": 1,
+			"description": "忠実で、手先が器用。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_grail",
+			"label": "熱心な弟子",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"grail": 2
+			},
+			"animFrames": 1,
+			"description": "忠誠心が強いが、欲張り。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_heart",
+			"label": "活き活きとした弟子 ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"heart": 2
+			},
+			"animFrames": 1,
+			"description": "忠誠心があり、いつでも歌を歌う準備ができている。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_knock",
+			"label": "手先の器用な弟子 ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"knock": 2
+			},
+			"animFrames": 1,
+			"description": "忠誠心があり、鍵を開けるのが上手い。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_lantern",
+			"label": "明敏な弟子",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"lantern": 2
+			},
+			"animFrames": 1,
+			"description": "忠実で、鋭い洞察力を持っている。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_c_moth",
+			"label": "不安定な弟子",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"moth": 2
+			},
+			"animFrames": 1,
+			"description": "忠誠心はあるが変わっている、我々の中でも少し変わった存在だ。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			},
+			"lifetime": 600,
+			"decayTo": "lunatic"
+		},
+		{
+			"id": "generic_c_winter",
+			"label": "無口な弟子",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"disciple": 1,
+				"edge": 1,
+				"winter": 2
+			},
+			"animFrames": 1,
+			"description": "忠実で、雪が降るように静か。",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p"
+			}
+		},
+		{
+			"id": "generic_p",
+			"label": "裏切られた信奉者",
+			"aspects": {
+				"mortal": 1,
+				"prisoner": 1,
+				"lantern": 3,
+				"grail": 3,
+				"heart": 3
+			},
+			"description": "自分の運命に対して弱弱しく悪態をついている。",
+			"animFrames": 1,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"lifetime": 600,
+			"decayTo": "corpse"
+		}
+	]
+}

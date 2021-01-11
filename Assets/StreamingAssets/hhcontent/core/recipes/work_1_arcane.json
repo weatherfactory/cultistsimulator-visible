@@ -1,0 +1,609 @@
+{
+    "recipes": [
+        {
+            "id": "work.poison.fascination.longlesson.trap",
+            "actionid": "work",
+            "label": "An Enemy Ever Vigilant",
+            "startdescription": "Our enemy watches our operations from a high window of the Mansus. They have learnt more of us.",
+            "requirements": {
+                "poison.fascination.longlesson": 1,
+                "fascination": 1
+            },
+            "effects": {
+                "long.lesson.dreamwork": 1
+            },
+            "mutations": [
+                {
+                    "filter": "fascination",
+                    "mutate": "poison.fascination.longlesson",
+                    "level": -1
+                }
+            ],
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "label": "Reason's Glory [Grand]",
+            "id": "arcane_lantern_edge_grand",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "lantern": 15,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "As above, so below: Reason and Passion contend in the human soul, as the Glory lights the darkness of the Wood. This mystic discipline will transform Passion to Reason. [You are calling on a Grand degree of Lantern, and this will almost certainly succeed, but there are always risks.] ",
+            "description": "My mind is sluiced with light. I have grown calmer and sharper.  I have changed. [Passion has been transformed to Reason.]",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "Give up my Passion",
+                    "required": {
+                        "passion": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 10,
+                    "id": "arcane_lantern_edge_failure"
+                }
+            ],
+            "aspects": {
+                "toreason": 1,
+                "fascinating": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "Reason's Glory [Major]",
+            "id": "arcane_lantern_edge_major",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "lantern": 10,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "As above, so below: Reason and Passion contend in the human soul, as the Glory lights the darkness of the Wood. This mystic discipline will transform Passion to Reason. [You are calling on a Major degree of Lantern, so the rite will probably succeed. Increase Lantern to at least 15 to improve your chances further.] ",
+            "description": "My mind is sluiced with light. I have grown calmer and sharper.  I have changed. [Passion has been transformed to Reason.]",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "Give up my Passion",
+                    "required": {
+                        "passion": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 30,
+                    "id": "arcane_lantern_edge_failure"
+                }
+            ],
+            "aspects": {
+                "toreason": 1,
+                "fascinating": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "Reason's Glory [Minor]",
+            "id": "arcane_lantern_edge_minor",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "lantern": 5,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "As above, so below: Reason and Passion contend in the human soul, as the Glory lights the darkness of the Wood. This mystic discipline will transform Passion to Reason. [You are calling on only a Minor degree of Lantern, so the rite will often fail. Increase Lantern to at least 10 to improve your chances.] ",
+            "description": "My mind is sluiced with light. I have grown calmer and sharper.  I have changed. [Passion has been transformed to Reason.]",
+            "slots": [
+                {
+                    "id": "passion",
+                    "label": "Give up my Passion",
+                    "required": {
+                        "passion": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 70,
+                    "id": "arcane_lantern_edge_failure"
+                }
+            ],
+            "aspects": {
+                "toreason": 1,
+                "fascinating": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "arcane_lantern_edge_failure",
+            "label": "Reason's Glory [Failure!]",
+            "actionid": "work",
+            "description": "This magic has gone awry. An invisible light has ensnared me.",
+            "effects": {
+                "fascination": 1
+            }
+        },
+        {
+            "label": "Passion's Gyre [Grand]",
+            "id": "arcane_moth_edge_grand",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "moth": 15,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "As below, so above: Passion and Reason contend in the human soul, as the Wood engulfs the Glory's light. This ecstatic practice will transform Reason to Passion... but it may get out of hand.  [You are calling on a Grand degree of Moth, and this will almost certainly succeed, but there are always risks.] ",
+            "description": "My passions rise like wind, like tide, like flood. It is difficult to think clearly. I have changed. [Reason has been transformed to Passion.]",
+            "slots": [
+                {
+                    "id": "reason",
+                    "label": "Give up my Reason",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 10,
+                    "id": "arcane_moth_edge_failure"
+                }
+            ],
+            "aspects": {
+                "topassion": 1,
+                "dreadful": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "arcane_moth_edge_runaway_link",
+                    "chance": 30
+                }
+            ]
+        },
+        {
+            "label": "Passion's Gyre [Major]",
+            "id": "arcane_moth_edge_major",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "moth": 10,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "As below, so above: Passion and Reason contend in the human soul, as the Wood engulfs the Glory's light. This ecstatic practice will transform Reason to Passion... but it may get out of hand.[You are calling on a Major degree of Moth, so the rite will probably succeed. Increase Moth to at least 15 to improve your chances further.] ",
+            "description": "My passions rise like wind, like tide, like flood. It is difficult to think clearly. I have changed. [Reason has been transformed to Passion.]",
+            "slots": [
+                {
+                    "id": "reason",
+                    "label": "Give up my reason",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 30,
+                    "id": "arcane_moth_edge_failure"
+                }
+            ],
+            "aspects": {
+                "topassion": 1,
+                "dreadful": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "arcane_moth_edge_runaway_link",
+                    "chance": 30
+                }
+            ]
+        },
+        {
+            "label": "Passion's Gyre [Minor]",
+            "id": "arcane_moth_edge_minor",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "moth": 5,
+                "edge": 1
+            },
+            "effects": {},
+            "startdescription": "As below, so above: Passion and Reason contend in the human soul, as the Wood engulfs the Glory's light. This ecstatic practice will transform Reason to Passion... but it may get out of hand. [You are calling on only a Minor degree of Moth, so the rite will often fail. Increase Moth to at least 10 to improve your chances.] ",
+            "description": "My passions rise like wind, like tide, like flood. It is difficult to think clearly. I have changed. [Reason has been transformed to Passion.]",
+            "slots": [
+                {
+                    "id": "reason",
+                    "label": "Give up my reason",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 70,
+                    "id": "arcane_moth_edge_failure"
+                }
+            ],
+            "aspects": {
+                "topassion": 1,
+                "dreadful": 1
+            },
+            "warmup": 60,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "arcane_moth_edge_runaway_link",
+                    "chance": 30
+                }
+            ]
+        },
+        {
+            "id": "arcane_moth_edge_failure",
+            "label": "Passion's Gyre [Failure!]",
+            "actionid": "work",
+            "description": "This magic has gone askew. Dread has drowned my delight.",
+            "effects": {
+                "dread": 1
+            }
+        },
+        {
+            "id": "arcane_moth_edge_runaway_link",
+            "label": "Passion's Gyre [UNCEASING!]",
+            "actionid": "work",
+            "warmup": 2,
+            "linked": [
+                {
+                    "id": "arcane_moth_edge_runaway",
+                    "chance": 30
+                }
+            ]
+        },
+        {
+            "id": "arcane_moth_edge_runaway",
+            "label": "Passion's Gyre [UNCEASING!]",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "moth": 15,
+                "edge": 1
+            },
+            "startdescription": "The Moth has me! The Gyre widens! My Reason may be drowned entirely!",
+            "description": "At last the Gyre has drawn to its close, but It is difficult to think straight. I have changed. [Reason has been transformed to Passion.]",
+            "slots": [
+                {
+                    "id": "reason",
+                    "label": "Give up my Reason",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 10,
+                    "id": "arcane_moth_edge_failure"
+                }
+            ],
+            "aspects": {
+                "topassion": 1,
+                "fascinating": 1
+            },
+            "effects": {
+                "influenceheartc": 1
+            },
+            "warmup": 15,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "arcane_moth_edge_runaway",
+                    "chance": 30
+                }
+            ]
+        },
+        {
+            "label": "Forge's Redemption [Grand]",
+            "id": "arcane_forge_grail_grand",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "forge": 15,
+                "grail": 1
+            },
+            "effects": {
+                "notoriety": 1,
+                "fascination": 1
+            },
+            "startdescription": "The Forge of Days destroys and renews. I will invoke it with the Grail to renew my failing flesh with forbidden magics. [You are calling on a Grand degree of Forge, and this will almost certainly succeed, but there are always risks.] ",
+            "description": "I have been renewed with flame, tempered with blood. My flesh is strong again, but the Forge's radiance has dazzled my soul... and people will talk. [Decrepitude has been transformed back to Health, but you've gained Fascination and Notoriety.]",
+            "slots": [
+                {
+                    "id": "decrepitude",
+                    "label": "Decrepitude",
+                    "required": {
+                        "decrepitude": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 10,
+                    "id": "arcane_forge_grail_failure"
+                }
+            ],
+            "aspects": {
+                "tohealth": 1,
+                "fascinating": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "Forge's Redemption [Major]",
+            "id": "arcane_forge_grail_major",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "forge": 10,
+                "grail": 1
+            },
+            "effects": {
+                "notoriety": 1,
+                "fascination": 1
+            },
+            "startdescription": "The Forge of Days destroys and renews. I will invoke it with the Grail to renew my failing flesh with forbidden magics. [You are calling on a Major degree of Forge, so the rite will probably succeed. Increase Forge to at least 15 to improve your chances further.] ",
+            "description": "I have been renewed with flame, tempered with blood. My flesh is strong again, but the Forge's radiance has dazzled my soul... and people will talk. [Decrepitude has been transformed back to Health, but you've gained Fascination and Notoriety.]",
+            "slots": [
+                {
+                    "id": "decrepitude",
+                    "label": "Decrepitude",
+                    "required": {
+                        "decrepitude": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 30,
+                    "id": "arcane_forge_grail_failure"
+                }
+            ],
+            "aspects": {
+                "tohealth": 1,
+                "fascinating": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "Forge's Redemption [Minor]",
+            "id": "arcane_forge_grail_minor",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "forge": 5,
+                "grail": 1
+            },
+            "effects": {
+                "notoriety": 1,
+                "fascination": 1
+            },
+            "startdescription": "The Forge of Days destroys and renews. I will invoke it with the Grail to renew my failing flesh with forbidden magics. [You are calling only a Minor degree of Forge, and this will often fail. Increase Forge to at least 10 to improve your chances further.] ",
+            "description": "I have been renewed with flame, tempered with blood. My flesh is strong again, but the Forge's radiance has dazzled my soul... and people will talk. [Decrepitude has been transformed back to Health, but you've gained Fascination and Notoriety.]",
+            "slots": [
+                {
+                    "id": "decrepitude",
+                    "label": "Decrepitude",
+                    "required": {
+                        "decrepitude": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 70,
+                    "id": "arcane_forge_grail_failure"
+                }
+            ],
+            "aspects": {
+                "tohealth": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "arcane_forge_grail_failure",
+            "label": "Forge's Redemption [Failure!]",
+            "actionid": "work",
+            "description": "The Forge of Days has failed me, or I have failed it. This magic has brought me only nightmares, and peril.",
+            "effects": {
+                "dread": 1,
+                "mystique": 1
+            }
+        },
+        {
+            "label": "The End is Beautiful [Grand]",
+            "id": "arcane_winter_lantern_grand",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "winter": 15,
+                "lantern": 1
+            },
+            "startdescription": "The Sun-in-Rags brings beautiful endings. This sudden and perilous magic will end someone or something, but it's impossible to know what. It will also kill any mortal or spirit that assists with the ritual. [You are calling on a Grand degree of Winter, and this will almost certainly succeed, although it might be safer if it fails.] ",
+            "description": "Snow has settled on every surface in my work-chamber. The fire gives no heat, but I cannot extinguish it, nor can I extinguish the candles, which burn with a red nimbus and a gold flame and a heart of black. As the ritual reaches its climax, someone, somewhere, will conclude.",
+            "slots": [
+                {
+                    "id": "conclusion",
+                    "label": "A Conclusion",
+                    "required": {
+                        "mortal": 1,
+                        "summoned": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 10,
+                    "id": "arcane_winter_lantern_failure"
+                }
+            ],
+            "aspects": {
+                "killhunter": 1,
+                "killmortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "dread": 1,
+                "fascination": 1,
+                "notoriety": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "The End is Beautiful [Major]",
+            "id": "arcane_winter_lantern_major",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "winter": 10,
+                "lantern": 1
+            },
+            "startdescription": "The Sun-in-Rags brings beautiful endings. This sudden and perilous magic will end someone or something, but it's impossible to know what. It will also kill any mortal or spirit that assists with the ritual. [You are calling on a Major degree of Winter, so this will probably succeed. Call on at least 15 Winter to increase your chances further, although it might in fact be safer if it fails.] ",
+            "description": "Snow has settled on every surface in my work-chamber. The fire gives no heat, but I cannot extinguish it, nor can I extinguish the candles, which burn with a red nimbus and a gold flame and a heart of black. As the ritual reaches its climax, someone, somewhere, will conclude.",
+            "slots": [
+                {
+                    "id": "conclusion",
+                    "label": "A Conclusion",
+                    "required": {
+                        "mortal": 1,
+                        "summoned": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 30,
+                    "id": "arcane_winter_lantern_failure"
+                }
+            ],
+            "aspects": {
+                "killhunter": 1,
+                "killmortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "dread": 1,
+                "fascination": 1,
+                "notoriety": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "label": "The End is Beautiful [Minor]",
+            "id": "arcane_winter_lantern_minor",
+            "actionid": "work",
+            "requirements": {
+                "ritual": 1,
+                "knock": -1,
+                "desire": -1,
+                "winter": 5,
+                "lantern": 1
+            },
+            "startdescription": "The Sun-in-Rags brings beautiful endings. This sudden and perilous magic will end someone or something, but it's impossible to know what. It will also kill any mortal or spirit that assists with the ritual. [You are calling only a Minor degree of Winter, so this will often fail. Call on at least 10 Winter to increase your chances, although it might in fact be safer if it does fail.] ",
+            "description": "Snow has settled on every surface in my work-chamber. The fire gives no heat, but I cannot extinguish it, nor can I extinguish the candles, which burn with a red nimbus and a gold flame and a heart of black. As the ritual reaches its climax, someone, somewhere, will conclude.",
+            "slots": [
+                {
+                    "id": "conclusion",
+                    "label": "A Conclusion",
+                    "required": {
+                        "mortal": 1,
+                        "summoned": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "chance": 30,
+                    "id": "arcane_winter_lantern_failure"
+                }
+            ],
+            "aspects": {
+                "killhunter": 1,
+                "killmortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "dread": 1,
+                "fascination": 1,
+                "notoriety": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "arcane_winter_lantern_failure",
+            "label": "The End is Beautiful [Failure!]",
+            "actionid": "work",
+            "description": "The Sun-in-Rags will not answer my call. This magic has brought me only the foreknowledge of winter.",
+            "effects": {
+                "dread": 1,
+                "mystique": 1
+            }
+        }
+    ]
+}

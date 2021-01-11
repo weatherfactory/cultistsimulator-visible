@@ -1,0 +1,431 @@
+{
+	"recipes": [
+		{
+			"id": "ambition.apostlegrail.emitfuel",
+			"actionId": "work",
+			"label": "Rechtleitung unserer Wonne",
+			"requirements": {
+				"apostlegrail.mentor": 1
+			},
+			"startdescription": "Ein Kurier ist von unserer Wonne gekommen, mit einer einzelnen Phiole ihres gebenedeitesten Blutes.",
+			"effects": {
+				"apostlegrail.pillarfuel": 1
+			}
+		},
+		{
+			"id": "work.apostlegrail.majorvictory.postbetrayal",
+			"actionId": "work",
+			"label": "Nichtsdestotrotz, die Vitulation",
+			"extantreqs": {
+				"apostlegrail.mentor": -1
+			},
+			"startdescription": "Um mit dem Grale zu verschmelzen, muss unsere Wonne Leben schenken und nehmen und nie statt werden. So kommt es denn, dass ich mit Zentrum der Vitulation stehe. Ein Kind aus dem Leibe der Wonne würde der Anforderung genügen, doch man kann nicht im Triumphe in den Mansus einziehen, wenn man das Verbrechen des Himmels begangen hat. Also bin ich es, und trotz aller Versuchungen Tryphons werde ich mich der Fesselung und Marinettes Marinierung fügen und mich von den Sieben Grazien und den Drei Aromen überwältigen lassen, und wenn der erste Mundvoll genommen ist, spüre ich fast nichts, spüre ich fast überhaupt nichts.",
+			"requirements": {
+				"fragmentheartg": 1,
+				"influencegrailg": 1,
+				"apostlegrail.pillar2": 1,
+				"apostlegrail.pillar3": 1,
+				"apostlegrail.pillar4": 1,
+				"toolgrailf": 1,
+				"grailflavour": 1,
+				"heartflavour": 1,
+				"mothflavour": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorgrailvictory"
+		},
+		{
+			"id": "work.apostlegrail.majorvictory",
+			"actionId": "work",
+			"label": "Die letzten Elemente der Vitulation",
+			"extantreqs": {
+				"apostlegrail.mentor": 1
+			},
+			"startdescription": "Um mit dem Grale zu verschmelzen, muss unsere Wonne Leben schenken und nehmen und nie statt werden. So kommt es denn, dass ich mit Zentrum der Vitulation stehe. Ein Kind aus dem Leibe der Wonne würde der Anforderung genügen, doch man kann nicht im Triumphe in den Mansus einziehen, wenn man das Verbrechen des Himmels begangen hat. Also bin ich es, und ich werde mich der Fesselung und Marinettes Marinierung fügen und mich von den Sieben Grazien und den Drei Aromen überwältigen lassen, und wenn der erste Mundvoll genommen ist, spüre ich fast nichts, spüre ich fast überhaupt nichts.",
+			"requirements": {
+				"fragmentheartg": 1,
+				"influencegrailg": 1,
+				"apostlegrail.pillar2": 1,
+				"apostlegrail.pillar3": 1,
+				"apostlegrail.pillar4": 1,
+				"toolgrailf": 1,
+				"grailflavour": 1,
+				"heartflavour": 1,
+				"mothflavour": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorgrailvictory"
+		},
+		{
+			"id": "explore.apostlegrail.purchase.apostlegrail.pillar3",
+			"actionId": "explore",
+			"label": "Gebot für Seltene Gewürze",
+			"startdescription": "Das Blut unserer Wonne ist der Lohn für bestimmte Waren für bestimmte Kenner. Alles muss für die Vitulation perfekt sein.",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"apostlegrail.pillarfuel": 1
+			},
+			"effects": {
+				"apostlegrail.pillar3": 1,
+				"apostlegrail.pillarfuel": -1
+			},
+			"warmup": 5,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "auctionbuy"
+				}
+			]
+		},
+		{
+			"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished",
+			"actionId": "work",
+			"label": "Die Sieben Grazien sind vorbereitet",
+			"startdescription": "Die Sieben Grazien die Drei Aromen: das Salz, das Süße, das Süßeste. Wir, die wir die Auslese des Wirts sind, werden uns so salben.",
+			"requirements": {
+				"apostlegrail.pillar3": 1,
+				"grailflavour": 1,
+				"heartflavour": 1,
+				"mothflavour": 1,
+				"ritual": -1
+			},
+			"craftable": true,
+			"comments": "NB this is both craftable *and* linked, and precedes the main cooking recipe, in case the player tries to keep working on the Graces once it's done."
+		},
+		{
+			"id": "work.apostlegrail.upgrade.apostlegrail.pillar3",
+			"actionId": "work",
+			"label": "Die Sieben Grazien vorbereiten",
+			"startdescription": "Die Düften und Aromen müssen genau so sein, wie es das Rezept vorschreibt. Nur so können ich und meine Kollegen hinreichend appetitlich sein – so appetitlich, dass wir einen Appetit wecken, wie er in der wachenden Welt nicht gekannt wird.",
+			"requirements": {
+				"apostlegrail.pillar3": 1,
+				"ritual": -1
+			},
+			"description": "Ich konnte weder Duft noch Aroma zum Hinzufügen finden.",
+			"slots": [
+				{
+					"id": "enhancement",
+					"label": "Verbesserung",
+					"description": "Ganz besondere Zusatzstoffe sorgen dafür, dass die Vitulation genau richtig abläuft.",
+					"required": {
+						"ingredientgraild": 1,
+						"ingredientmothd": 1,
+						"ingredientheartf": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+				},
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail"
+				},
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.heart"
+				},
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail",
+			"actionId": "work",
+			"label": "Die Gabe des Blumenmachers",
+			"startdescription": "Wenn wir sterben, werden wir dennoch von denen leben, die uns gerichtet haben.",
+			"requirements": {
+				"ingredientgraild": 1,
+				"grailflavour": -1
+			},
+			"effects": {
+				"ingredientgraild": -1
+			},
+			"mutations": [
+				{
+					"filter": "apostlegrail.pillar3",
+					"mutate": "grailflavour",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+				}
+			]
+		},
+		{
+			"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.heart",
+			"actionId": "work",
+			"label": "Janus' Aroma",
+			"startdescription": "Janus ist der Gott, der sich nicht erhob, aber herrscht. Janus ist der Heilige, der nicht starb, aber tot ist. Janus ist die Tür zwischen dem, was nicht sein kann und dem, was sein muss.",
+			"requirements": {
+				"ingredientheartf": 1,
+				"heartflavour": -1
+			},
+			"effects": {
+				"ingredientheartf": -1
+			},
+			"mutations": [
+				{
+					"filter": "apostlegrail.pillar3",
+					"mutate": "heartflavour",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+				}
+			]
+		},
+		{
+			"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth",
+			"actionId": "work",
+			"label": "Das Aroma des Schwarzflachses",
+			"startdescription": "Wir müssen vergessen, was wir waren.",
+			"requirements": {
+				"ingredientmothd": 1,
+				"mothflavour": -1
+			},
+			"effects": {
+				"ingredientmothd": -1
+			},
+			"mutations": [
+				{
+					"filter": "apostlegrail.pillar3",
+					"mutate": "mothflavour",
+					"level": 1
+				}
+			],
+			"linked": [
+				{
+					"id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished"
+				}
+			]
+		},
+		{
+			"id": "talk.apostlegrail.createpillar4",
+			"actionId": "talk",
+			"label": "Vorbereitungen für die Vitulation beginnen",
+			"startdescription": "Es wird ein großes Fest geben, wenn unsere Wonne ihren Appetit unter Beweis stellt.",
+			"description": "Wir wissen nicht, wann genau, bis wir wissen, wann der Einfluss des Grals am größten ist. Doch wir können, wir müssen, mit der Auswahl derer beginnen, welche die Menge bilden werden.",
+			"requirements": {
+				"apostlegrail.pillar1": 1
+			},
+			"craftable": true,
+			"effects": {
+				"apostlegrail.pillar4.inprogress1": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "talk.apostlegrail.upgradepillar4.attempt",
+			"actionId": "talk",
+			"label": "Unseren Letzten Gast einladen",
+			"startdescription": "Ohne den Schlüsselträger sind all diese Vorbereitungen umsonst.",
+			"description": "Wir haben noch nicht unseren Schlüsselträger",
+			"requirements": {
+				"apostlegrail.pillar4.inprogress7": 1
+			},
+			"slots": [
+				{
+					"id": "finalguest",
+					"label": "Der Schlüsselträger",
+					"required": {
+						"marinette": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "talk.apostlegrail.upgradepillar4.marinetteready"
+				},
+				{
+					"id": "talk.apostlegrail.upgradepillar4.marinettenotready"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "talk.apostlegrail.upgradepillar4.inprogress.attempt",
+			"actionId": "talk",
+			"label": "Die Menge verbessern",
+			"startdescription": "Wir suchen nach noch mehr Teilnehmern. Unsere Verbündeten: Habgier, Neugier, Geilheit, purer Müßiggang.",
+			"description": "Wir konnten das Feuer der Aufregung nicht genug schüren.",
+			"requirements": {
+				"uqvitulation": 1
+			},
+			"slots": [
+				{
+					"id": "more",
+					"label": "Mehr",
+					"required": {
+						"mystique": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "talk.apostlegrail.upgradepillar4.succeed"
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "talk.apostlegrail.upgradepillar4.marinetteready",
+			"actionId": "talk",
+			"label": "Der Schlüsselträger",
+			"startdescription": "'<sprite name=winter>.'",
+			"requirements": {
+				"marinette": 1,
+				"approval": 7,
+				"apostlegrail.pillar4.inprogress7": 1
+			},
+			"effects": {
+				"marinette": -1,
+				"apostlegrail.pillar4.inprogress7": -1,
+				"apostlegrail.pillar4": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostlegrail.upgradepillar4.marinettenotready",
+			"actionId": "talk",
+			"label": "Noch nicht genug",
+			"startdescription": "'... <sprite name=grail>.' [Marinette ist noch nicht satt.]",
+			"requirements": {
+				"marinette": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostlegrail.upgradepillar4.succeed",
+			"actionId": "talk",
+			"label": "Die Menge schwillt an",
+			"startdescription": "Mehr Namen für die Liste, die gleichermaßen gebenedeit und geheim ist. Mehr Gesichter für die große Nacht.",
+			"requirements": {
+				"mystique": 1,
+				"uqvitulation": 1
+			},
+			"effects": {
+				"mystique": -1
+			},
+			"aspects": {
+				"vitulationupgrade": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostlegrail.sulochanamarinette",
+			"actionId": "talk",
+			"label": "Eine Einführung bei Unserer Dame der Kabel",
+			"startdescription": "'Du willst das wirklich tun?' Sulochana wippt meditativ mit der Sohle eines gestiefelten Fußes auf dem Wrack ihrer Zigarette. 'Dann gehe ich jetzt. Keine Sorge. Ich werde deine Nachricht an die entsprechende Schwester weiterleiten. Ich bin mir sicher, sie kommt ... wenn genug Blut da ist.'",
+			"description": "",
+			"requirements": {
+				"apostlegrail.pillar1": 1
+			},
+			"effects": {
+				"marinette.enroute": 1,
+				"sulochana": -1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostlegrail.marinette.ready.hint",
+			"actionId": "talk",
+			"label": "Marinette ist satt",
+			"startdescription": "'<sprite name=heart>'. [Du kannst nun Marinette zu deinen Gästen hinzufügen.]",
+			"requirements": {
+				"marinette": 1,
+				"approval": 7
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "talk.apostlegrail.marinette",
+			"actionId": "talk",
+			"label": "Bitte an Marinette der Kabel",
+			"startdescription": "'<sprite name=grail>?'",
+			"description": "'<sprite name=grail>. <sprite name=grail>. <sprite name=grail>!'",
+			"requirements": {
+				"marinette": 1,
+				"approval": -7
+			},
+			"slots": [
+				{
+					"id": "sacrifice",
+					"label": "Blut",
+					"required": {
+						"follower": 1
+					},
+					"forbidden": {
+						"summoned": -1
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "talk.apostlegrail.marinettenext.hireling"
+				},
+				{
+					"id": "talk.apostlegrail.marinettenext.follower"
+				}
+			]
+		},
+		{
+			"id": "talk.apostlegrail.marinettenext.hireling",
+			"actionId": "talk",
+			"label": "Blut",
+			"startdescription": "Marinette lässt immer die Haut zurück. Manchmal die Knochen. Sie würde den Heuerling bereitwillig verzehren, doch der Heuerling widerspricht in der Regel, was zu allgemeinem Chaos führt.",
+			"requirements": {
+				"marinette": 1,
+				"hireling": 1
+			},
+			"effects": {
+				"hireling": -1,
+				"notoriety": 1
+			},
+			"mutations": [
+				{
+					"filter": "marinette",
+					"mutate": "approval",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "talk.apostlegrail.marinettenext.follower",
+			"actionId": "talk",
+			"label": "Blut",
+			"startdescription": "Marinette lässt immer die Haut zurück. Manchmal die Knochen. Wenn wir unseren loyalen Gefolgsleuten sagen, sie sollen die Augen schließen, ist es sehr schnell vorbei.",
+			"mutations": [
+				{
+					"filter": "marinette",
+					"mutate": "approval",
+					"level": 1,
+					"additive": true
+				}
+			],
+			"requirements": {
+				"marinette": 1,
+				"follower": 1
+			},
+			"effects": {
+				"follower": -1
+			},
+			"craftable": false
+		}
+	]
+}

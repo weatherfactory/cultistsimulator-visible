@@ -1,0 +1,266 @@
+{
+	"recipes": [
+		{
+			"id": "explore_vaultrendingmountains1_setup",
+			"label": "Der Beginn einer Expedition: Jägergrube",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultrendingmountains1": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"guardian_watchers": 1,
+				"guardian_serpent": 1
+			},
+			"startdescription": "Die Fallen-Irrgärten der Reißenden Stämme. Wir müssen die Berge erklimmen und uns durch die Stämme kämpfen. Danach wird es zweifellos noch etwas anderes geben. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultrendingmountains2_setup",
+			"label": "Der Beginn einer Expedition: Der Hüter des Schnees",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultrendingmountains2": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"guardian_dead": 1,
+				"curse_nowhere": 1
+			},
+			"startdescription": "Wir werden dem Schnee der Berge trotzen, um zum Tempel zu gelangen. Erheben sich die Toten gegen uns, werden wir sie zurückschlagen. Doch es gibt dort eine Boshaftigkeit, die wir unterdrücken müssen, sonst wird sie mit uns zurückkehren. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultrendingmountains3_setup",
+			"label": "Der Beginn einer Expedition: Das Auge von Ikirmawi",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultrendingmountains3": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"seal_wardeddoor": 1,
+				"curse_visions": 1
+			},
+			"startdescription": "Die Zerfleischenden Berge stehen zwischen uns und dem Observatorium. Die Tür wird uns versiegelt und verrammelt erwarten. Die Visionen, die uns heimsuchen könnten, werden uns vielleicht die Sinne rauben. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultrendingmountains4_setup",
+			"label": "Der Beginn einer Expedition: Das Mausoleum der Wölfe",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultrendingmountains4": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"seal_wardeddoor": 1,
+				"guardian_dead": 1
+			},
+			"startdescription": "Kam die Sonne je hierher, als ihr Tod verkündet ward? Vielleicht war jene Ankündigung verfrüht. Wie auch immer, bemächtigen wir uns ihres Fortschritts, müssen wir uns auf Lawinen, tobende Geister und eine von Adepten-Artefakten versiegelte Tür einstellen. Wir müssen bereit sein. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explore_vaultrendingmountainsdefault_setup",
+			"label": "Der Beginn einer Expedition: Grüfte der Schattenlosen Könige",
+			"actionId": "explore",
+			"requirements": {
+				"funds": 1,
+				"follower": 1,
+				"vaultrendingmountainsdefault": 1
+			},
+			"effects": {
+				"peril_mountains": 1,
+				"seal_hiddendoor": 1,
+				"guardian_watchers": 1,
+				"curse_affliction": 1
+			},
+			"startdescription": "Wir müssen in die Berge eindringen, an den Wächtern vorbei und dem Fluche trotzen, den die Schattenlosen Könige hinterlassen haben. Vielleicht finden wir dann Schätze. [Expeditionen erfordern mindestens 1 Geldmittel pro Hindernis. Anhänger beseitigen Hindernisse. Gehen dir Geldmittel oder Anhänger aus, endet die Expedition.]",
+			"description": ".",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultrendingmountains1_success",
+			"label": "Im Gedenken an den Krieg",
+			"actionId": "explore",
+			"requirements": {
+				"vaultrendingmountains1": 1
+			},
+			"effects": {
+				"vaultrendingmountains1": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientedgef",
+					"ingredientedgef",
+					"ingredientedgef",
+					"toolforged",
+					"bookofdissolutionmandaic",
+					"ingredientforgeb",
+					"ingredientforgeb",
+					"ingredientforgeb",
+					"textbookmandaicaramaic"
+				],
+				"draws": 9,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "In den bröckelnden Tiefen der Jägergruben haben wir einen Raum entdeckt, wo Schlachtszenen an die Wände gemalt wurden.  Dort sind die Schreine der größten Jäger der Reißenden Stämme.",
+			"description": "Dies sind die Trophäen, welche die Jäger erringen konnten. Nicht alle Bestien, die sie zur Strecke brachten, wandeln heute noch auf Erden.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultrendingmountains2_success",
+			"label": "Das Altar-Gewand",
+			"actionId": "explore",
+			"requirements": {
+				"vaultrendingmountains2": 1
+			},
+			"effects": {
+				"vaultrendingmountains2": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toolgraild",
+					"wherehasshegonevak",
+					"tooledgef",
+					"dreamconspiracyskiesphrygian",
+					"textbookvaksanskrit"
+				],
+				"draws": 5,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Das Innere des Tempels pulsiert im Lichte leuchtender Pilze. Wir müssen sie mit behandschuhter Hand vom Altar schaben, bevor wir mit dem Plündern beginnen können. Sie sind so kalt wie regengekühltes Fleisch. Unsere Handschuhe sind nun lichtbesudelt. Unser Odem kondensiert in der Kälte der Gruft.",
+			"description": "Die Schätze, die unbekannte Priester dort hinterließen, sowie ein erbärmlicher Haufen Knochen. Ein Opfer? Oder hat ein späterer Besucher hier seinem Besuch ein Ende gemacht? Der leuchtende Pilz hat das Skelett mit seinen Säuren gegerbt.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultrendingmountains3_success",
+			"label": "Der Fortschritt des Himmels",
+			"actionId": "explore",
+			"requirements": {
+				"vaultrendingmountains3": 1
+			},
+			"effects": {
+				"vaultrendingmountains3": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"toollanternfcracked",
+					"larquebinecodexphrygian",
+					"bookofmasksphrygian",
+					"toolknockd"
+				],
+				"draws": 4,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Das große Teleskop ist verrostet und von der Kuppel gefallen. Die Linsen sind geborsten. Doch blasses Licht dreht sich langsam über dem Boden, als würden Tänzer Lampen in die Höhe halten. Vielleicht imitieren sie ja die Laufbahnen der himmlischen Gestirne. Vielleicht betrauern ihre Bewegungen das Dahinscheiden der Sonne.",
+			"description": "Der leitende Astronom hier muss die Unsichtbaren Künste praktiziert haben. In einer Zedernholz-Kiste in seinem Quartier, unter dem verrottenden Bett, finden wir das, wonach wir gesucht haben.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultrendingmountains4_success",
+			"label": "Das Kommen des Wolfes",
+			"actionId": "explore",
+			"requirements": {
+				"vaultrendingmountains4": 1
+			},
+			"effects": {
+				"vaultrendingmountains4": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"ingredientwinterd",
+					"ingredientwinterd",
+					"ingredientwinterd",
+					"secondglorymandaic",
+					"asthesunhiscoursearamaic",
+					"textbookphrygiangreek"
+				],
+				"draws": 6,
+				"defaultcard": "compensationd",
+				"resetonexhaustion": false
+			},
+			"startdescription": "Die Toten flüstern leise, doch da ist noch etwas im Mausoleum zu hören: ein schwaches, abklingendes Heulen, als würde Metall in einem Schiffsrumpf reißen, und es wechselt die Frequenz, bis es uns an den Knochen nagt. Fast könnte es der Wind sein, aber er ist es nicht. Wir sollten uns hier nicht lange aufhalten.",
+			"description": "Die Luft wird kühler, bis unsere Haut von Eis bedeckt ist. Im Herzen des Mausoleums ist eine weiße Marmorschale auf einem granitenen Sockel. Sie ist mit einem Schnee gefüllt, der auf der Haut brennt – und darin sind bemerkenswerte Gegenstände verborgen. Waren sie hier versteckt? Oder waren sie Opfergaben? Nichts als Überreste.",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "explorevaultrendingmountainsdefault_success",
+			"label": "Was übrig bleibt",
+			"actionId": "explore",
+			"requirements": {
+				"vaultrendingmountainsdefault": 1
+			},
+			"effects": {
+				"vaultrendingmountainsdefault": -1
+			},
+			"deckeffect": {
+				"vaultrewardse": 3
+			},
+			"startdescription": "Wir wälzen den Stein zur Seite, und Licht durchflutet die Gruft. Dort ist der König, zu papiernem Leder und bröckelndem Gebein getrocknet. Er rührt sich nicht. Er war nicht unsterblich.",
+			"description": "Die Schattenlosen Könige wurden nur mit ihren persönlichsten Schätzen bestattet. Sie erwarteten nach dem Tode keinen Luxus. Hier ist ein kleiner Schatz aus den Dingen, die dieser König schätzte.",
+			"warmup": 30,
+			"craftable": false,
+			"alt": [
+				{
+					"id": "expedition.corpse.find.vaultrendingmountainsdefault",
+					"additional": true
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,263 @@
+{
+	"elements": [
+		{
+			"id": "ingredientedgeb",
+			"label": "Martensit-Paste",
+			"description": "Das gebenedeite Chrysma des Schwerts. Auch ein attraktives Silber-Grün.",
+			"aspects": {
+				"edge": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientedged",
+			"label": "Labhitische Körner",
+			"description": "Labhiten sind die jüngsten unter den Dienern des Löwenschmieds. Zu Pulver zermahlen behalten sie ihre Kraft, nicht aber ihre Schönheit.",
+			"aspects": {
+				"edge": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientedgef",
+			"label": "Skaptodon-Zahn",
+			"description": "Der Löwenschmied macht heutzutage selten einen Skaptodon, doch sie sind schwer zu töten und leben sehr lange.",
+			"aspects": {
+				"edge": 12,
+				"auctionable": 6,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientforgeb",
+			"label": "Bitterschwarz-Salze",
+			"description": "Kein gewöhnlicher Chemiker könnte diese dunkler funkelnden Kristalle herstellen – nicht ohne die Schmiede.",
+			"aspects": {
+				"forge": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientforged",
+			"label": "Xanthotische Essenz",
+			"description": "Bei bestimmten Operationen der Schmiede überwindet angeblich das Sonnenlicht das Mondlicht während wir von der Meniskate zur Madrugada wechseln. Diese Essenz war einst Quecksilber, doch nun ist sie das satte Gold eines Sommernachmittags. Hübsch.",
+			"aspects": {
+				"forge": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientforgef",
+			"label": "Iotische Essenz",
+			"description": "Bei den späteren Operationen der Schmiede unterwirft sich die Madrugada der wahren Schmiede der Tage, und die Essenz beginnt rot zu werden. Manchmal vielleicht auch nicht, doch für den Moment ist es so. ",
+			"aspects": {
+				"forge": 12,
+				"auctionable": 6,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientgrailb",
+			"label": "Vitales Pigment",
+			"description": "Es ist nicht üblich, dass ein so rotes Rot den Tod des Leibes übersteht.",
+			"aspects": {
+				"grail": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientgraild",
+			"label": "Unvergänglicher Nektar",
+			"description": "Eine der vielen Gaben des Blumenmachers. In einem helleren Zeitalter hätte er vielleicht Unsterblichkeit verliehen. In dieser verdorbenen Historie ist er immer noch süß ohne Gleichen.",
+			"aspects": {
+				"grail": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientgrailf",
+			"label": "Sich windende Haube",
+			"description": "Leg deine Hand auf diese zerfledderten Falten und spüre ihre Wärme. Lass deine Hand darauf, und sie wird die Möglichkeiten einer Umarmung ausloten.",
+			"aspects": {
+				"grail": 12,
+				"auctionable": 6,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientheartb",
+			"label": "Rosenperlen-Staub",
+			"description": "Perlen sind der Hexe-und-Schwester heilig, vor allem solche in dieser Farbe. Sie wurden unter anderem bei Schutzriten eingesetzt.",
+			"aspects": {
+				"heart": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientheartd",
+			"label": "Hexengeküsstes Öl",
+			"description": "Die Formel ist unverändert seit den Tagen als Hekate an Scheidewegen verehrt wurde.",
+			"aspects": {
+				"heart": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientheartf",
+			"label": "Wahres Blut des St. Januarius",
+			"description": "Die Donnerhaut schützte den einen, den man Januarius hieß, vor Gefahren aus jeder Vergangenheit. Bis heute tanzt sein Blut.",
+			"aspects": {
+				"heart": 12,
+				"auctionable": 6,
+				"ingredient": 1,
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.endless"
+			}
+		},
+		{
+			"id": "ingredientknockb",
+			"label": "Die Byzantinische Färbung",
+			"description": "Das profunde Purpur, das nur in Historien getragen wird, in denen tyrianische Farbe den Imperatoren nicht satt genug war. Es ist schwer, jemandem den Zugang zu verwehren, der diese Farbe trägt.",
+			"aspects": {
+				"knock": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientknockd",
+			"label": "Sthenisches Gift",
+			"description": "Von Zeit zu Zeit wurde die Mutter der Ameisen auch die Tochter der Gifte genannt. Diese Substanz öffnet den Körper an unzähligen Stellen.",
+			"aspects": {
+				"knock": 8,
+				"auctionable": 4,
+				"ingredient": 1,
+				"poison": 2
+			}
+		},
+		{
+			"id": "ingredientknockf",
+			"label": "Azoth",
+			"description": "Nur in Behälter eines reinen Elements verstauen, niemals warm werden lassen. Vielleicht ist es nicht das endgültiges Lösungsmittel, nach dem die Alchemisten strebten. Doch für unsere Zwecke soll es reichen.",
+			"aspects": {
+				"knock": 12,
+				"auctionable": 6,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientlanternb",
+			"label": "Refulgin",
+			"description": "Ein Weiß, so rein, dass es selbst in absoluter Finsternis noch zu sehen ist.",
+			"aspects": {
+				"lantern": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientlanternd",
+			"label": "Glasfinger-Toxin",
+			"description": "'Was innen ist, außen. Was außen ist, innen.' Ein Gift, dass den Geweihten der Meniskate heilig ist.",
+			"aspects": {
+				"lantern": 8,
+				"auctionable": 4,
+				"ingredient": 1,
+				"poison": 2
+			}
+		},
+		{
+			"id": "ingredientlanternf",
+			"label": "Glassekret",
+			"description": "Eine blasse und wachsame Flüssigkeit, die gesammelt werden kann, manchmal, wenn die Tür-im-Auge geöffnet ist.",
+			"aspects": {
+				"lantern": 12,
+				"auctionable": 6,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientmothb",
+			"label": "Geschecktes Pigment",
+			"description": "Aus den zerstoßenen Schwingen eines seltenen Lepidopterans. 'Schwarz malen oder weiß malen, nur so kann man richtig sehen.'",
+			"aspects": {
+				"moth": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientmothd",
+			"label": "Leathy",
+			"description": "Ein dunkler, sirupartiger Likör, der in namenlosen Walddörfern bevorzugt wird. 'Die Zunge und das Auge, und jetzt fangen wir an! Vergiss deinen Namen, vergiss deine Haut.'",
+			"aspects": {
+				"moth": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientmothf",
+			"label": "Heiligste Hämolymphe",
+			"description": "Schwache Spuren einer rätselhaften Substanz, vergossen für ein Verbrechen aus uralter Zeit, fest versiegelt in einer Glasampulle. 'Wer wird sich an den Sohn der Barbierin erinnern?' ",
+			"aspects": {
+				"moth": 12,
+				"auctionable": 6,
+				"ingredient": 1,
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.wildering"
+			}
+		},
+		{
+			"id": "ingredientwinterb",
+			"label": "Grautauöl",
+			"description": "Die genaue Farbe der Stunden, wenn man nicht schlafen kann.",
+			"aspects": {
+				"winter": 4,
+				"auctionable": 2,
+				"ingredient": 1,
+				"pigment": 1
+			}
+		},
+		{
+			"id": "ingredientwinterd",
+			"label": "Wolfschnee",
+			"description": "So kalt, dass es nur in der heißesten Mittagssonne schmilzt. Es verzehrt nur zu gerne menschliches Fleisch.",
+			"aspects": {
+				"winter": 8,
+				"auctionable": 4,
+				"ingredient": 1
+			}
+		},
+		{
+			"id": "ingredientwinterf",
+			"label": "Wachtwürmer",
+			"description": "Ein kleiner Topf gedrungener, getrockneter Larvenreste aus dem 1. Wurmkrieg, ranzig von der Macht toter Stunden.",
+			"aspects": {
+				"winter": 12,
+				"auctionable": 6,
+				"ingredient": 1,
+				"poison": 3
+			}
+		}
+	]
+}

@@ -1,0 +1,382 @@
+{
+	"recipes": [
+		{
+			"id": "studyupgrade_downgrade_lore_hint",
+			"label": "Mein Wissen um die unsichtbaren Künste verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"lore": 1,
+				"edge": -1,
+				"forge": -1,
+				"grail": -1,
+				"heart": -1,
+				"knock": -1,
+				"lantern": -1,
+				"moth": -1,
+				"secrethistories": -1,
+				"winter": -1,
+				"alzabo": -1,
+				"prealzabo": -1
+			},
+			"startdescription": "Haben ich zwei Wissensfragmente gleicher Stufe und gleichen Aspekts, kann ich sie zusammen studieren, um mein Verständnis zu verbessern. Setze ich meinen Verstand ein, kann ich das Wissen analysieren und es in niederstufige Fragmente zerlegen. Oder ich kann eine andere Art von Wissen einsetzen, um es zu subversieren ...",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "studyupgradelore_hint",
+			"label": "Mein Wissen um die unsichtbaren Künste verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"lore": 1,
+				"healthskill": -1,
+				"alzabo": -1,
+				"prealzabo": -1
+			},
+			"startdescription": "Haben ich zwei Wissensfragmente gleicher Stufe und gleichen Aspekts, kann ich sie zusammen studieren, um mein Verständnis zu verbessern. Oder ich kann eine andere Art von Wissen einsetzen, um es zu subversieren ...",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "studyprealzabo_hint",
+			"label": "Ein mutiges Experiment",
+			"actionId": "study",
+			"requirements": {
+				"prealzabo": 1
+			},
+			"startdescription": "Ich brauche nur noch einige letzte Zutaten zu kaufen, dann kann ich die Mixtur vorbereiten. Ich muss meinen Mut zusammennehmen ... und ein geeignetes Mahl finden.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "studyalzabo_hint",
+			"label": "Das Gelage der Honigtaube",
+			"actionId": "study",
+			"requirements": {
+				"alzabo": 1
+			},
+			"startdescription": "Ich kann Überbleibsel verzehren, um etwas von ihrem Wissen aus dem Staube zu bewahren. Vielleicht muss ich das noch.",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "translatelatinhint",
+			"label": "Aus dem Lateinischen übersetzen?",
+			"actionId": "study",
+			"requirements": {
+				"textlatin": 1
+			},
+			"startdescription": "Meine Latein-Kenntnisse sind zu begrenzt, um das hier lesen zu können. Vielleicht finde ich ja ein Lehrbuch oder heuere einen Tutor an.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translategreekhint",
+			"label": "Aus dem Griechischen übersetzen?",
+			"actionId": "study",
+			"requirements": {
+				"textgreek": 1
+			},
+			"startdescription": "Meine Griechisch-Kenntnisse sind zu begrenzt, um das hier lesen zu können. Vielleicht finde ich ja ein Lehrbuch oder heuere einen Tutor an.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatearamaichint",
+			"label": "Aus dem Aramäischen übersetzen?",
+			"actionId": "study",
+			"requirements": {
+				"textaramaic": 1
+			},
+			"startdescription": "Meine Aramäisch-Kenntnisse sind zu begrenzt, um das hier lesen zu können. Vielleicht finde ich ja ein Lehrbuch oder heuere einen Tutor an.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatesanskrithint",
+			"label": "Aus dem Sanskrit übersetzen?",
+			"actionId": "study",
+			"requirements": {
+				"textsanskrit": 1
+			},
+			"startdescription": "Meine Sanskrit-Kenntnisse sind zu begrenzt, um das hier lesen zu können. Vielleicht finde ich ja ein Lehrbuch oder heuere einen Tutor an.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatefucinehint",
+			"label": "Aus Fucine übersetzen?",
+			"actionId": "study",
+			"requirements": {
+				"textfucine": 1
+			},
+			"startdescription": "Ich kann kein Fucine. Vielleicht niemand mehr, der noch am Leben ist. Vielleicht gibt es irgendwo einen Rosettastein ... oder vielleicht finde ich einen Tutor, der, streng genommen, nicht am Leben ist.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatephrygianhint",
+			"label": "Aus dem Phrygischen übersetzen?",
+			"actionId": "study",
+			"requirements": {
+				"textphrygian": 1
+			},
+			"startdescription": "Ich kann kein Phygisch. Vielleicht niemand mehr, der noch am Leben ist. Vielleicht gibt es irgendwo einen Rosettastein ... oder vielleicht finde ich einen Tutor, der, streng genommen, nicht am Leben ist.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatemandaichint",
+			"label": "Aus dem Alt-Mandäischen übersetzen?",
+			"actionId": "study",
+			"requirements": {
+				"textmandaic": 1
+			},
+			"startdescription": "Ich kann kein Alt-Mandäisch. Vielleicht niemand mehr, der noch am Leben ist. Vielleicht gibt es irgendwo einen Rosettastein ... oder vielleicht finde ich einen Tutor, der, streng genommen, nicht am Leben ist.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "translatevakhint",
+			"label": "Aus Vak übersetzen?",
+			"actionId": "study",
+			"requirements": {
+				"textvak": 1
+			},
+			"startdescription": "Ich kann kein Vak. Vielleicht niemand mehr, der noch am Leben ist. Vielleicht gibt es irgendwo einen Rosettastein ... oder vielleicht finde ich einen Tutor, der, streng genommen, nicht am Leben ist.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "studyincreasehealthskilld_wronglore",
+			"label": "Körperliche Ertüchtigung: Geheime Techniken?",
+			"actionId": "study",
+			"requirements": {
+				"skillhealthc": 1,
+				"vitalityplus": 4,
+				"lore": 1
+			},
+			"startdescription": "Nichts von diesem Wissen wird mir hier etwas bringen. Ich muss etwas anderes wählen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasehealthfurtherhint",
+			"label": "Meine Gesundheit verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"vitality": 2
+			},
+			"startdescription": "Je mehr Gesundheit ich habe, desto mehr Vitalität brauche ich. [Fertigkeit benutzen: Physis zur weiteren Verbesserung der Gesundheit.]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasereasonfurtherhint",
+			"label": "Meinen Verstand verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 2
+			},
+			"startdescription": "Je mehr Verstand ich habe, desto mehr Erudition brauche ich. [Fertigkeit benutzen: Gelehrsamkeit zur weiteren Verbesserung des Verstands.]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasepassionfurtherhint",
+			"label": "Meine Leidenschaft verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 2
+			},
+			"startdescription": "Je mehr Leidenschaft ich habe, desto mehr Schimmern brauche ich. [Fertigkeit benutzen: Vorstellungskraft zur weiteren Verbesserung der Leidenschaft.]",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "studyupgradeinfluences.apostlelanternhint",
+			"label": "Ein Wunder bewahren",
+			"actionId": "study",
+			"requirements": {
+				"apostlelantern.pillar3": 1
+			},
+			"startdescription": "Selbst der größte Reiz wird mit der Zeit nachlassen. Ich muss ihn mit den Farben der Obsession schüren.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "studyupgradeinfluenceshint2",
+			"label": "Einflüsse verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"influence": 2,
+				"lore": -1,
+				"healthskill": -1,
+				"reasonskill": -1,
+				"passionskill": -1
+			},
+			"startdescription": "Es könnte, mit der richtigen Kombination von Einflüssen, möglich sein, an mehr Macht zu kommen ... doch nur, wenn ich über das entsprechende Wissen um die unsichtbaren Künste verfüge.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasehealthfurtherhintpluswithskillneedslore",
+			"label": "Meine Fertigkeit zu etwas Außergewöhnlichem steigern?",
+			"actionId": "study",
+			"requirements": {
+				"vitalityplus": 1,
+				"skillhealthc": 1
+			},
+			"startdescription": "Ich brauche genug Gelernte Lektionen ... und noch etwas.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasehealthfurtherhintpluswithskill",
+			"label": "Meine Gesundheit verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"vitalityplus": 1,
+				"healthskill": 1
+			},
+			"startdescription": "Ich brauche mehr Gelernte Lektionen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasehealthfurtherhintplus",
+			"label": "Meine Gesundheit verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"vitalityplus": 1
+			},
+			"startdescription": "Ich muss das mit meiner Fertigkeit Stärke benutzen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasehealthfurtherhint1",
+			"label": "Meine Gesundheit verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"vitality": 1
+			},
+			"startdescription": "Ich brauche mehr.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasereasonfurtherhintpluswithskillneedslore",
+			"label": "Meine Fertigkeit zu etwas Außergewöhnlichem steigern?",
+			"actionId": "study",
+			"requirements": {
+				"eruditionplus": 1,
+				"skillreasonc": 1
+			},
+			"startdescription": "Ich brauche genug Gelernte Lektionen ... und noch etwas.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasereasonfurtherhintpluswithskill",
+			"label": "Meinen Verstand verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"eruditionplus": 1,
+				"reasonskill": 1
+			},
+			"startdescription": "Ich brauche mehr Gelernte Lektionen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasereasonfurtherhintplus",
+			"label": "Meinen Verstand verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"eruditionplus": 1
+			},
+			"startdescription": "Ich muss das mit meiner Fertigkeit Gelehrsamkeit benutzen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasereasonfurtherhint1",
+			"label": "Meinen Verstand verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"erudition": 1
+			},
+			"startdescription": "Ich brauche mehr als eins.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasepassionfurtherhintpluswithskillneedslore",
+			"label": "Meine Fertigkeit zu etwas Außergewöhnlichem steigern?",
+			"actionId": "study",
+			"requirements": {
+				"glimmeringplus": 1,
+				"skillpassionc": 1
+			},
+			"startdescription": "Ich brauche genug Gelernte Lektionen ... und noch etwas.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasepassionfurtherhintpluswithskill",
+			"label": "Meine Leidenschaft verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"glimmeringplus": 1,
+				"passionskill": 1
+			},
+			"startdescription": "Ich brauche mehr Gelernte Lektionen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasepassionfurtherhintplus",
+			"label": "Meine Leidenschaft verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"glimmeringplus": 1
+			},
+			"startdescription": "Ich muss das mit meiner Fertigkeit Vorstellungskraft benutzen.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "increasepassionfurtherhint1",
+			"label": "Meine Leidenschaft verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"glimmering": 1
+			},
+			"startdescription": "Ich brauche mehr als eins.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "studyrestlessnesshint",
+			"label": "Rastlosigkeit studieren?",
+			"actionId": "study",
+			"requirements": {
+				"restlessness": 1
+			},
+			"startdescription": "Zum Studieren muss man in der Regel relativ ruhig sitzen. Rastlosigkeit ist selten ein Verbündeter der Gelehrsamkeit.",
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "studyupgradeinfluenceshint1",
+			"label": "Einflüsse verbessern?",
+			"actionId": "study",
+			"requirements": {
+				"influence": 1
+			},
+			"startdescription": "Mit der richtigen Kombination von Einflüssen könnte es möglich sein, mehr Macht zu gewinnen ...",
+			"hintonly": true,
+			"craftable": false
+		}
+	]
+}

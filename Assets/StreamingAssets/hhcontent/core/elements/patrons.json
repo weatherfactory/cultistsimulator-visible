@@ -1,0 +1,501 @@
+{
+    "elements": [
+        {
+            "id": "aladim",
+            "label": "Dr Ibn al-Adim",
+            "aspects": {
+                "tutoraramaic": 1,
+                "tutor": 1,
+                "patron": 1
+            },
+            "description": "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He has offered you a commission.",
+            "unique": true,
+            "xtriggers": {
+                "commissionfulfilled": "aladimaway",
+                "killmortal": "rumour",
+                "derangemortal": "rumour"
+            },
+            "slots": [
+                {
+                    "id": "Commission",
+                    "label": "Commission",
+                    "actionid": "talk",
+                    "required": {
+                        "commission": 1
+                    }
+                },
+                {
+                    "id": "Manuscript",
+                    "label": "Manuscript",
+                    "actionid": "talk",
+                    "required": {
+                        "article": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "aladimready",
+            "label": "Dr Ibn al-Adim",
+            "aspects": {
+                "tutoraramaic": 1,
+                "tutor": 1,
+                "patron": 1
+            },
+            "description": "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He could use your assistance.",
+            "unique": true,
+            "xtriggers": {
+                "commissiongiven": "aladim",
+                "killmortal": "rumour",
+                "derangemortal": "rumour"
+            }
+        },
+        {
+            "id": "bechet",
+            "label": "Mme Bechet",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorgreek": 1
+            },
+            "description": "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. She has offered you a commission.",
+            "unique": true,
+            "xtriggers": {
+                "commissionfulfilled": "bechetaway",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "slots": [
+                {
+                    "id": "Commission",
+                    "label": "Commission",
+                    "actionid": "talk",
+                    "required": {
+                        "commission": 1
+                    }
+                },
+                {
+                    "id": "Manuscript",
+                    "label": "Manuscript",
+                    "actionid": "talk",
+                    "required": {
+                        "article": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "bechetready",
+            "label": "Mme Bechet",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorgreek": 1
+            },
+            "description": "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. She could use your assistance.",
+            "unique": true,
+            "xtriggers": {
+                "commissiongiven": "bechet",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
+        },
+        {
+            "id": "jannings",
+            "label": "Count Jannings",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorlatin": 1
+            },
+            "description": "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. He has offered you a commission.",
+            "unique": true,
+            "xtriggers": {
+                "commissionfulfilled": "janningsaway",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "slots": [
+                {
+                    "id": "Commission",
+                    "label": "Commission",
+                    "actionid": "talk",
+                    "required": {
+                        "commission": 1
+                    }
+                },
+                {
+                    "id": "Manuscript",
+                    "label": "Manuscript",
+                    "actionid": "talk",
+                    "required": {
+                        "article": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "janningsready",
+            "label": "Count Jannings",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorlatin": 1
+            },
+            "description": "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. He could use your assistance.",
+            "unique": true,
+            "xtriggers": {
+                "commissiongiven": "jannings",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
+        },
+        {
+            "id": "poppyready",
+            "label": "Poppy Lascelles",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
+            "description": "An amiable woman of property. She'd like to talk to you.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
+        },
+        {
+            "id": "poppy",
+            "label": "Poppy Lascelles",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
+            "description": "An amiable woman of property.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
+        },
+        {
+            "id": "poppycommissionready",
+            "label": "Poppy Lascelles",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
+            "description": "An amiable woman of property. She'd like your help with something.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "commissiongiven": "poppycommission"
+            },
+            "icon": "poppyready"
+        },
+        {
+            "id": "poppycommission",
+            "label": "Poppy Lascelles",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
+            "description": "An amiable woman of property. She has offered you a commission.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "commissionfulfilled": "poppyaway"
+            },
+            "slots": [
+                {
+                    "id": "Commission",
+                    "label": "Commission",
+                    "actionid": "talk",
+                    "required": {
+                        "commission": 1
+                    }
+                },
+                {
+                    "id": "Manuscript",
+                    "label": "Manuscript",
+                    "actionid": "talk",
+                    "required": {
+                        "article": 1
+                    }
+                }
+            ],
+            "icon": "poppy"
+        },
+        {
+            "id": "aladimaway",
+            "label": "Dr Ibn al-Adim",
+            "description": "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He's incommunicado just now, but will be back soon.",
+            "lifetime": 120,
+            "decayTo": "aladimready",
+            "icon": "aladim"
+        },
+        {
+            "id": "bechetaway",
+            "label": "Mme Bechet",
+            "description": "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. Just now, she's busy preparing for publication, but she'll be available again soon.",
+            "lifetime": 120,
+            "decayTo": "bechetready",
+            "icon": "bechet"
+        },
+        {
+            "id": "janningsaway",
+            "label": "Count Jannings",
+            "lifetime": 120,
+            "description": "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. Just now, he's out of the country, but he'll be back soon.",
+            "decayTo": "janningsready",
+            "icon": "jannings"
+        },
+        {
+            "id": "poppyaway",
+            "label": "Poppy Lascelles",
+            "description": "An amiable woman of property. She's not currently receiving visitors.",
+            "lifetime": 120,
+            "decayTo": "poppycommissionready",
+            "icon": "poppy"
+        },
+        {
+            "id": "benefactorm",
+            "label": "Lord Timothy Munday",
+            "description": "An elegant gentleman with sad eyes, receding hair, and a tendency to fits of friendly, braying, nervous laughter. He will no longer touch strong drink.",
+            "uniquenessgroup": "uqbenefactorm",
+            "aspects": {
+                "benefactor": 1,
+                "mortal": 1
+            },
+            "slots": [
+                {
+                    "id": "health",
+                    "actionid": "work",
+                    "label": "Health",
+                    "required": {
+                        "health": 1
+                    }
+                },
+                {
+                    "id": "funds",
+                    "actionid": "work",
+                    "label": "Glamour",
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "xtriggers": {
+                "employment": "benefactorm",
+                "rejection": "benefactorm_rejectedplayer",
+                "killmortal": "corpse",
+                "avowal": "benefactorm_proposedtoplayer"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorm_rejectedplayer"
+        },
+        {
+            "id": "benefactorf",
+            "label": "Nicole, Fourth Marchioness of Stanford",
+            "description": "A cautious, clever woman with close-set eyes and excellent skin for her age. She has long managed her own financial affairs, and donates dutifully to charity.",
+            "uniquenessgroup": "uqbenefactorf",
+            "aspects": {
+                "benefactor": 1,
+                "mortal": 1
+            },
+            "slots": [
+                {
+                    "id": "health",
+                    "actionid": "work",
+                    "label": "Health",
+                    "required": {
+                        "health": 1
+                    }
+                },
+                {
+                    "id": "funds",
+                    "actionid": "work",
+                    "label": "Glamour",
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "xtriggers": {
+                "employment": "benefactorf",
+                "rejection": "benefactorf_rejectedplayer",
+                "killmortal": "corpse",
+                "avowal": "benefactorf_proposedtoplayer"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorf_rejectedplayer"
+        },
+        {
+            "id": "benefactorm_rejectedplayer",
+            "label": "Lord Timothy Munday",
+            "description": "Lord Timothy no longer sends me his little notes.",
+            "uniquenessgroup": "uqbenefactorm",
+            "aspects": {
+                "mortal": 1
+            },
+            "xtriggers": {
+                "killmortal": "corpse"
+            },
+            "icon": "benefactorm"
+        },
+        {
+            "id": "benefactorf_rejectedplayer",
+            "label": "Nicole, Fourth Marchioness of Stanford",
+            "description": "The Most Honourable Marchioness of Stanford has been heard to declare that she doesn't quite understand exactly what she saw in me.",
+            "uniquenessgroup": "uqbenefactorf",
+            "aspects": {
+                "mortal": 1
+            },
+            "xtriggers": {
+                "killmortal": "corpse"
+            },
+            "icon": "benefactorf"
+        },
+        {
+            "id": "benefactorm_proposedtoplayer",
+            "label": "Lord Timothy Munday",
+            "description": "In a moment of passion, Lord Timothy has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to his Lordship before his enthusiasm wanes, or he'll feel spurned.]",
+            "uniquenessgroup": "uqbenefactorm",
+            "aspects": {
+                "mortal": 1,
+                "benefactor_proposal": 1
+            },
+            "xtriggers": {
+                "killmortal": "benefactorwill"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorm_rejectedplayer",
+            "icon": "benefactorm"
+        },
+        {
+            "id": "benefactorf_proposedtoplayer",
+            "label": "Nicole, Fourth Marchioness of Stanford",
+            "description": "In a moment of passion, the Most Honourable Nicole has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to the Marchioness before her enthusiasm wanes, or she'll feel spurned.]",
+            "uniquenessgroup": "uqbenefactorf",
+            "aspects": {
+                "mortal": 1,
+                "benefactor_proposal": 1
+            },
+            "xtriggers": {
+                "killmortal": "benefactorwill"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorf_rejectedplayer",
+            "icon": "benefactorf"
+        },
+        {
+            "id": "benefactorwill",
+            "label": "Dearly Departed's Papers",
+            "description": "Someone who loved me has died. Perhaps they left me something in their will. I should speak to a solicitor. [Take action if you wish to pursue the matter... but there is a small chance that suspicion may fall on you.]",
+            "slots": [
+                {
+                    "id": "lawyerfees",
+                    "actionid": "study",
+                    "label": "Lawyer's Fees",
+                    "consumes": true,
+                    "required": {
+                        "funds": 1
+                    }
+                }
+            ],
+            "aspects": {
+                "legacyplotitem": 1
+            },
+            "icon": "documentgeneric"
+        },
+        {
+            "id": "sulochana",
+            "label": "Sulochana Amavasya",
+            "description": "The laconic, energetic, bright-eyed, unblinking owner of the Ecdysis Club.",
+            "unique": true,
+            "aspects": {
+                "tutorsanskrit": 1,
+                "tutor": 1,
+                "patron": 1
+            }
+        },
+        {
+            "id": "echidna.enroute",
+            "label": "Mrs E. is En Route",
+            "description": "Mrs E., Sulochana's 'sister', goes by the unlikely title of 'the Mother of Monsters'. It's not clear where she usually lairs, but it's not this side of the sea. She'll take a while to get here.",
+            "unique": true,
+            "lifetime": 180,
+            "decayTo": "echidna"
+        },
+        {
+            "id": "echidna",
+            "label": "Mrs E.",
+            "description": "The self-styled Mother of Monsters. A cheery, tubby woman in a green-grey garment like a baggy dirndl.",
+            "aspects": {
+                "patron": 1
+            },
+            "unique": true
+        },
+        {
+            "id": "marinette.enroute",
+            "label": "Our Lady of Wires is En Route",
+            "description": "Sulochana's 'sister', who is not usually named save as 'Our Lady of Wires'. She'll be here, soon, by night.",
+            "unique": true,
+            "lifetime": 180,
+            "decayTo": "marinette"
+        },
+        {
+            "id": "marinette",
+            "label": "Marinette, 'Our Lady of Wires'",
+            "description": "It reeks of rotten blood, and it clacks its jaw each time it speaks. Perhaps there is a woman, huddled beneath the cloth and the bones. Perhaps it's some puppeteer's trick.",
+            "aspects": {
+                "patron": 1
+            },
+            "unique": true
+        },
+        {
+            "id": "kleidouchos.enroute",
+            "label": "Frau Schlüssel is en route",
+            "description": "Teresa Galmier's 'correspondent', Sulochana's 'sister', the holder of the Key of Days, is on her way here from Vienna. Perhaps I should meet her at the station.",
+            "aspects": {
+                "patron": 1
+            },
+            "lifetime": 180,
+            "decayTo": "kleidouchos"
+        },
+        {
+            "id": "kleidouchos",
+            "label": "Frau Schlüssel",
+            "description": "A spry,forceful woman in severe black and white, tightly wrinkled. She is never observed to blink. A tiny black puppy peeps from her skirts.",
+            "aspects": {
+                "patron": 1
+            }
+        },
+        {
+            "id": "naenia",
+            "label": "'Miss Naenia'",
+            "description": "A painting of a dark-skinned woman with snow-coloured eyes and close-cropped ivory-coloured hair. She stands before a small marble tomb overgrown with star jasmine. The painting is signed 'Jonas B. Munch, 1811'.",
+            "slots": [
+                {
+                    "id": "subject",
+                    "label": "Memory",
+                    "description": "Miss Naenia never speaks to me - she is only a painting - but afterwards, I always remember what she has said.",
+                    "actionid": "talk",
+                    "required": {
+                        "memory": 1,
+                        "ascension.remembrance.offering": 1
+                    }
+                }
+            ],
+            "aspects": {
+                "patron": 1
+            }
+        }
+    ]
+}

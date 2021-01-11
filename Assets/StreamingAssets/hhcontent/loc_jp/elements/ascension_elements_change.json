@@ -1,0 +1,334 @@
+{
+	"elements": [
+		{
+			"id": "ascensionchangea",
+			"label": "誘惑：変化",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 1
+			},
+			"description": "夜になると、観客が見ている前で、もう一歩先のことを考えてしまうことがある。他の何になれるというのだろう？[一定レベルまでアップグレードしていれば、このカードを使って変化の勝利を実現できる。一生懸命踊れば、次の一歩が明確になる。]",
+			"xtriggers": {
+				"ascend": "ascensionchangeb"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchangeb",
+			"label": "変化：葉",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 2
+			},
+			"description": "風が吹くと体が震え、皮膚の表面にくっきりと血管が現れる。私はいつでも、マラカイトの珠を肌身離さず持ち歩いている。[一定レベルまでアップグレードしていれば、このカードを使って変化の勝利を実現できる。一生懸命踊れば、次の一歩が明確になる。]",
+			"xtriggers": {
+				"ascend": "ascensionchangec"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchangec",
+			"label": "変化：真珠",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 3
+			},
+			"description": "肌が剥がれてきて、その下がくすみ、目元が明るくなってきた。私の体には、海の真珠が隠されている。夜中に海の音が聞こえ、朝になるとシーツが血に染まっていることがある。[一定レベルまでアップグレードしていれば、このカードを使って変化の勝利を実現できる。一生懸命踊れば、次の一歩が明確になる。]",
+			"xtriggers": {
+				"ascend": "ascensionchanged"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchanged",
+			"label": "変化：擬本影",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 4
+			},
+			"description": "私の体は限りなく暗い。影は私の仲間であり、私の足音はささやきのように軽い。私は黒玉の指輪を身に着けているが、手のひらに隠れるように、黒玉を内側に向けてつけている。[一定レベルまでアップグレードしていれば、このカードを使って変化の勝利を実現できる。一生懸命踊れば、次の一歩が明確になる。]",
+			"xtriggers": {
+				"ascend": "ascensionchangee"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchangee",
+			"label": "変化：刻印",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 5
+			},
+			"description": "私の闇は色あせ、色はすべてくすむ。私の感性に新たな葉が芽生え、私は秘密のしずくで濡れる。そして私は、青白い舌の下に隠して、スコレサイトのプリズムを持ち歩いている。[一定レベルまでアップグレードしていれば、このカードを使って変化の勝利を実現できる。一生懸命踊れば、次の一歩が明確になる。]",
+			"xtriggers": {
+				"ascend": "ascensionchangef"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchangef",
+			"label": "変化：瞳",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 6
+			},
+			"description": "白目は黄ばみ、新たな皮膚が最後の変化前の私の手足を守るように覆う。こっそりと、金色のトーリングと、金色とトパーズのイヤリングをつけているが、自分以外には見せるものではない。[一定レベルまでアップグレードしていれば、このカードを使って変化の勝利を実現できる。一生懸命踊れば、次の一歩が明確になる。]",
+			"xtriggers": {
+				"ascend": "ascensionchangeg"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "ascensionchangeg",
+			"label": "変化：象牙",
+			"aspects": {
+				"desire": 1,
+				"changemarks": 6
+			},
+			"description": "私の骨が変化してきた。失われたものの物語を運んでいる。私が生き残らなければ、骨が私の物語となり、誰かが私の象牙の破片を身につけて温めるだろう。[このカードを使うと、変化の勝利を実現できる。]",
+			"xtriggers": {
+				"ascend": "ascensionchangeg"
+			},
+			"uniquenessgroup": "uqdesire"
+		},
+		{
+			"id": "sendingheartb",
+			"label": "擬態：毒蛇",
+			"aspects": {
+				"sending": 1,
+				"knock": 1
+			},
+			"description": "海が大地と重なるところに蛇がとぐろを巻いている。水際で力を発揮する場所を見つけたい。もしかしたら、他所の秘密を話せば、スロチャナが助けてくれるかもしれない。[自分の一部を蛇にして徘徊させることができる。それを信奉者に同行させて、踊らなければならないダンスを披露できる場所に送ろう。場所がわからない場合は、スロチャナに秘史の話をすると解決する。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingheartc",
+			"label": "擬態：猫",
+			"aspects": {
+				"sending": 1,
+				"moth": 2
+			},
+			"description": "猫は夜に暗い葉が生い茂る川のほとりを歩く。[自分の一部を猫に変化させて徘徊させることができる。それを信奉者に同行させて、踊らなければならないダンスを披露できる場所に送ろう。場所がわからない場合は、スロチャナに秘史の話をすると解決する。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingheartd",
+			"label": "擬態：狐",
+			"aspects": {
+				"sending": 1,
+				"grail": 3
+			},
+			"description": "狐はフラワーメーカーの手を求めては山の草原を彷徨う。[自分の一部を狐に変化させて徘徊させることができる。それを信奉者に同行させて、踊らなければならないダンスを披露できる場所に送ろう。場所がわからない場合は、スロチャナに秘史の話をすると解決する。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendinghearte",
+			"label": "擬態：鷲",
+			"aspects": {
+				"sending": 1,
+				"lantern": 4
+			},
+			"description": "鷲は天の道を飛び、ミアで、空気の神たちが初めて秘密を交換した1つ目の止まり木を見つけた。[自分の一部を鷲に変化させて徘徊させることができる。それを信奉者に同行させて、踊らなければならないダンスを披露できる場所に送ろう。場所がわからない場合は、スロチャナに秘史の話をすると解決する。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingheartf",
+			"label": "擬態：鳩",
+			"aspects": {
+				"sending": 1,
+				"winter": 5
+			},
+			"description": "鳩は他の者が忘れたことも覚えている。[自分の一部を色白の鳥に変化させて徘徊させることができる。それを信奉者に同行させて、踊らなければならないダンスを披露できる場所に送ろう。場所がわからない場合は、スロチャナに秘史の話をすると解決する。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingheartg",
+			"label": "擬態：猪",
+			"aspects": {
+				"sending": 1,
+				"way": 1
+			},
+			"description": "私はこの姿で、キングスゲーとの鍵を握る者に頭を下げる。[自分の一部を野生の黒獣に変化させて徘徊させることができる。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothb",
+			"label": "虫齢：静寂",
+			"aspects": {
+				"sending": 1,
+				"knock": 1
+			},
+			"description": "海辺の静かな家で、借りた肌を身に着け、我々は2度目の変化を求める。水際で力を発揮する場所を見つけたい。もしかしたら、他所の秘密を話せば、スロチャナが助けてくれるかもしれない。[自分の一部を毒蛇に変化させて徘徊させることができる。それを信奉者に同行させて、踊らなければならないダンスを披露できる場所に送ろう。場所がわからない場合は、スロチャナに秘史の話をすると解決する。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothc",
+			"label": "虫齢：忍び寄る",
+			"aspects": {
+				"sending": 1,
+				"moth": 2
+			},
+			"description": "黒獣が潜む岩の中で、目の仮面の奥に3度目の変化を求める。[自分の一部を猫に変化させて徘徊させることができる。それを信奉者に同行させて、踊らなければならないダンスを披露できる場所に送ろう。場所がわからない場合は、スロチャナに秘史の話をすると解決する。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothd",
+			"label": "虫齢：あずき色",
+			"aspects": {
+				"sending": 1,
+				"grail": 3
+			},
+			"description": "空気が誘惑を滲ませている高台で、4度目の変化を求める。[自分の一部を狐に変化させて徘徊させることができる。それを信奉者に同行させて、踊らなければならないダンスを披露できる場所に送ろう。場所がわからない場合は、スロチャナに秘史の話をすると解決する。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothe",
+			"label": "虫齢：遠くへ旅する",
+			"aspects": {
+				"sending": 1,
+				"lantern": 4
+			},
+			"description": "ムカデがまだ訪れぬものを見たミアで、5度目の変化を求める。[自分の一部を鷲に変化させて徘徊させることができる。それを信奉者に同行させて、踊らなければならないダンスを披露できる場所に送ろう。場所がわからない場合は、スロチャナに秘史の話をすると解決する。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothf",
+			"label": "虫齢：熱心",
+			"aspects": {
+				"sending": 1,
+				"winter": 5
+			},
+			"description": "太陽を覚えている遠い地で、私は借りてきた憎しみと共に6度目の変化を求める。[自分の一部を狼に変化させて徘徊させることができる。それを信奉者に同行させて、踊らなければならないダンスを披露できる場所に送ろう。場所がわからない場合は、スロチャナに秘史の話をすると解決する。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothg",
+			"label": "イマーゴ",
+			"aspects": {
+				"sending": 1,
+				"way": 1
+			},
+			"description": "究極の変化のために、私は森の門をくぐる。メドゥーサへの生贄は、純潔の赤鹿――私は雌鹿としてこの門をくぐる。[夜空へと飛び立つ。]",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "sendingmothheartg",
+			"label": "擬態：イマーゴ",
+			"aspects": {
+				"sending": 1,
+				"way": 1
+			},
+			"description": "私の魂は偉大な角の生えた獣として、私の体を去るだろう。生贄になるために？[内にあるものは外に、外にあるものは内に。]",
+			"icon": "sendingmothg",
+			"uniquenessgroup": "uqsending"
+		},
+		{
+			"id": "ascensionlessonhearta",
+			"label": "衣服を捨てる",
+			"aspects": {
+				
+			},
+			"description": "マラカイトが、裸の自分は真の自分ではないが、大した嘘ではない、と教えてくれた。[野望の季節では、変化の願望をアップグレードすることができる。]",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonheartb",
+			"label": "外皮を捨てる",
+			"aspects": {
+				
+			},
+			"description": "痛みを扉として使うことを教えてくれた、双子と蛇の戦い。",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonheartc",
+			"label": "足跡を捨てる",
+			"aspects": {
+				
+			},
+			"description": "ベルベットは私に、明かされるものはそもそも隠されていなければならないと教えてくれました。そうしないと、価値は生まれないのだと言う。私は自分の足跡を捨てた。",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonheartd",
+			"label": "色を捨てる",
+			"aspects": {
+				
+			},
+			"description": "フラワーメーカーが、誰もが望むものを与える代わりに、私から色を奪っていった。",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonhearte",
+			"label": "視力を捨てる",
+			"aspects": {
+				
+			},
+			"description": "放浪者に目を差し出し、彼らを通して彼女が見ているものを見よう――赤い変化への道を。",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonheartf",
+			"label": "骨を捨てる",
+			"aspects": {
+				
+			},
+			"description": "変化の最終段階で、哀歌詩人が覚えておくようにと教えてくれた。その教えを忘れずに、キングスキンの門をくぐろう。",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmotha",
+			"label": "衣服を捨てる",
+			"aspects": {
+				
+			},
+			"description": "ワノイチイは肉を剥き出せと命じ、私はそれに従った。ワノイチイの命令に、いつも従うわけではない。[野望の季節に、変化の欲望をアップグレードすることができる。]",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmothb",
+			"label": "外皮を捨てる",
+			"aspects": {
+				
+			},
+			"description": "母は穴を開け、魔女は要求し、魔女は溶かした。だから\n私の肌は\n雨のように\n薄い",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmothc",
+			"label": "足跡を捨てる",
+			"aspects": {
+				
+			},
+			"description": "川辺の暗い葉の中を歩くと、千の舌が、その感覚に耐えられなくなるまで、私の足を舐めてきた――そして、最後に残ったのは私の影だけだった。",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmothd",
+			"label": "色を捨てる",
+			"aspects": {
+				
+			},
+			"description": "フラワーメーカーが作りだした花々に出会い、私は花になった。私の色は、今、彼の手の中にある。",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmothe",
+			"label": "視力を捨てる",
+			"aspects": {
+				
+			},
+			"description": "ムカデが冗談を言い、その代わりに、個眼が現れ始めるまで、彼女に金の目を掘ってもらうことになった。",
+			"unique": true
+		},
+		{
+			"id": "ascensionlessonmothf",
+			"label": "骨を捨てる",
+			"aspects": {
+				
+			},
+			"description": "太陽が割れ、狼は骨の塩辛さを忘れさせてくれない――マンサスが割れるまで絶対に。狼は今、この味と共に森の門をくぐってくれと頼んでいる。",
+			"unique": true
+		}
+	]
+}

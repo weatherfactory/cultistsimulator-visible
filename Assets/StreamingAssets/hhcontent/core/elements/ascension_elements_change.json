@@ -1,0 +1,310 @@
+{
+    "elements": [
+        {
+            "id": "ascensionchangea",
+            "label": "Temptation: Change",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 1
+            },
+            "description": "On certain nights before the audience, there is the wing-lift of something more. What more could I become? [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+            "xtriggers": {
+                "ascend": "ascensionchangeb"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchangeb",
+            "label": "Change: Leaf",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 2
+            },
+            "description": "I tremble when the wind comes. The veins beneath my surface are apparent. I always carry a bead of malachite next to my skin. [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+            "xtriggers": {
+                "ascend": "ascensionchangec"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchangec",
+            "label": "Change: Pearl",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 3
+            },
+            "description": "My skin is peeling in patches, and beneath it I am darker, but my eyes are brighter. I carry a sea-pearl in a secret place. Sometimes at night I hear the sea; sometimes in the morning my sheets are marked with blood. [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+            "xtriggers": {
+                "ascend": "ascensionchanged"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchanged",
+            "label": "Change: Antumbra",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 4
+            },
+            "description": "I have grown as dark as I ever will. Shadows are my company, and my footfall is a whisper. I wear a ring set with jet, but I keep the stone turned inwards, in my palm invisible. [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+            "xtriggers": {
+                "ascend": "ascensionchangee"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchangee",
+            "label": "Change: Stigma",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 5
+            },
+            "description": "My darkness has paled and all my colours are bleached. New lobes bud about my most receptive elements. I am dewed with secrets. I carry a scolecite prism tucked beneath my pale tongue. [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+            "xtriggers": {
+                "ascend": "ascensionchangef"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchangef",
+            "label": "Change: Pupil",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 6
+            },
+            "description": "The whites of my eyes are yellow, and a new integument has developed along my limbs to sheath me before the final change. In private, I wear a gold toe-ring, and ear-rings of gold and topaz, but they are not to be seen. [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+            "xtriggers": {
+                "ascend": "ascensionchangeg"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "ascensionchangeg",
+            "label": "Change: Ivory",
+            "aspects": {
+                "desire": 1,
+                "changemarks": 6
+            },
+            "description": "My bones are different. They carry the tale of what is lost. If I do not survive, they will be my tale, and someone will wear fragments of my ivory to warm against their skin. [This card will allow you to win a Change victory.]",
+            "xtriggers": {
+                "ascend": "ascensionchangeg"
+            },
+            "uniquenessgroup": "uqdesire"
+        },
+        {
+            "id": "sendingheartb",
+            "label": "Guise: Viper",
+            "aspects": {
+                "sending": 1,
+                "knock": 1
+            },
+            "description": "The Viper coils where the sea folds itself against the land. I must find a place of power at the water's edge.  Perhaps Sulochana can help, if I bring her secrets about other places.  [Some part of you can roam in serpent-shape. Send it to accompany your followers to a place where it can perform the dance you must dance. If you have problems finding the place, talk to Sulochana about Secret Histories.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingheartc",
+            "label": "Guise: Cat",
+            "aspects": {
+                "sending": 1,
+                "moth": 2
+            },
+            "description": "The Cat walks in the night by the river where the black flax grows. [Some part of you can roam in cat-shape. Send it to accompany your followers to a place where it can perform the dance you must dance. If you have problems finding the place, talk to Sulochana about Secret Histories.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingheartd",
+            "label": "Guise: Fox",
+            "aspects": {
+                "sending": 1,
+                "grail": 3
+            },
+            "description": "The Fox wanders the mountain meadows, seeking the flower-maker's touch. [Some part of you can roam in fox-shape. Send it to accompany your followers to a place where it can perform the dance you must dance. If you have problems finding the place, talk to Sulochana about Secret Histories.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendinghearte",
+            "label": "Guise: Eagle",
+            "aspects": {
+                "sending": 1,
+                "lantern": 4
+            },
+            "description": "The Eagle travels the sky's road, and here is what it sees: in Miah was the first Roost, where the powers of the air first exchanged their secrets. [Some part of you can roam in eagle-shape. Send it to accompany your followers to a place where it can perform the dance you must dance. If you have problems finding the place, talk to Sulochana about Secret Histories.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingheartf",
+            "label": "Guise: Dove",
+            "aspects": {
+                "sending": 1,
+                "winter": 5
+            },
+            "description": "The Dove remembers when all others forget. [Some part of you can roam as a pale bird. Send it to accompany your followers to a place where it can perform the dance you must dance. If you have problems finding the place, talk to Sulochana about Secret Histories.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingheartg",
+            "label": "Guise: Boar",
+            "aspects": {
+                "sending": 1,
+                "way": 1
+            },
+            "description": "In this form, I will surrender myself to one who holds the key of the Kingskin Gate. [Some part of you can roam as a wild black beast.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothb",
+            "label": "Instar: Silent",
+            "aspects": {
+                "sending": 1,
+                "knock": 1
+            },
+            "description": "In a silent house beside the sea, in a borrowed skin, we will seek the second change. I must find a place of power at the water's edge. Perhaps Sulochana can help, if I bring her secrets about other places. [Some part of you can roam in viper-shape. Send it to accompany your followers to a place where it can perform the dance you must dance. If you have problems finding the place, talk to Sulochana about Secret Histories.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothc",
+            "label": "Instar: Creeping",
+            "aspects": {
+                "sending": 1,
+                "moth": 2
+            },
+            "description": "Among the stones where the black beast burrows, behind the mask of eyes, we will seek the third change. [Some part of you can roam in cat-shape. Send it to accompany your followers to a place where it can perform the dance you must dance. If you have problems finding the place, talk to Sulochana about Secret Histories.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothd",
+            "label": "Instar: Russet",
+            "aspects": {
+                "sending": 1,
+                "grail": 3
+            },
+            "description": "In the high places where the air is temptation, we will seek the fourth change. [Some part of you can roam in fox-shape. Send it to accompany your followers to a place where it can perform the dance you must dance. If you have problems finding the place, talk to Sulochana about Secret Histories.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothe",
+            "label": "Instar: Far-Travelling",
+            "aspects": {
+                "sending": 1,
+                "lantern": 4
+            },
+            "description": "In Miah, where the Centipede saw all that might yet come, we will seek the fifth change. [Some part of you can roam in eagle-shape. Send it to accompany your followers to a place where it can perform the dance you must dance. If you have problems finding the place, talk to Sulochana about Secret Histories.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothf",
+            "label": "Instar: Avid",
+            "aspects": {
+                "sending": 1,
+                "winter": 5
+            },
+            "description": "In the far place where they remember the Sun, I will bring my borrowed hate for the sixth change. [Some part of you can roam in wolf-shape. Send it to accompany your followers to a place where it can perform the dance you must dance. If you have problems finding the place, talk to Sulochana about Secret Histories.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothg",
+            "label": "Imago",
+            "aspects": {
+                "sending": 1,
+                "way": 1
+            },
+            "description": "For the final change, I will pass the Door in the Wood. Medusa's sacrifice is always a virgin red deer, and so I will pass the door as a hind. [Into night's circle you fly.]",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "sendingmothheartg",
+            "label": "Guise: Imago",
+            "aspects": {
+                "sending": 1,
+                "way": 1
+            },
+            "description": "My spirit will leave my body as a great horned beast. To be a sacrifice? [What is within, without; what is without, within.]",
+            "icon": "sendingmothg",
+            "uniquenessgroup": "uqsending"
+        },
+        {
+            "id": "ascensionlessonhearta",
+            "label": "Garments, Surrendered",
+            "aspects": {},
+            "description": "The Malachite has taught me that the naked self is not the true self, but it is less of a lie. [In the Season of Ambitions, this can upgrade your Change desire.]",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonheartb",
+            "label": "Integument, Surrendered",
+            "aspects": {},
+            "description": "The Twins and the Serpent war, and in that war I have learnt how pain can be a gate.",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonheartc",
+            "label": "Steps, Surrendered",
+            "aspects": {},
+            "description": "The Velvet has taught me that what is revealed must first be hidden, for its revelation to be of any consequence. I have given up my footsteps.",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonheartd",
+            "label": "Hues, Surrendered",
+            "aspects": {},
+            "description": "The Flowermaker has given me what all desire, and taken my colours from me.",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonhearte",
+            "label": "Sight, Surrendered",
+            "aspects": {},
+            "description": "I have given my eyes to the Vagabond, and through them I shall see what she would see: the road to the red change.",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonheartf",
+            "label": "Bones, Surrendered",
+            "aspects": {},
+            "description": "The Elegiast has taught me to remember, in the last part of me to change. I'll carry that lesson past the Kingskin Gate.",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmotha",
+            "label": "Garments, Surrendered",
+            "aspects": {},
+            "description": "The Ring-Yew commanded I bare my flesh, and I obeyed. I will not always obey the Ring-Yew. [In the Season of Ambitions, this can upgrade your Change desire.]",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmothb",
+            "label": "Integument, Surrendered",
+            "aspects": {},
+            "description": "The Mother pierces, the Witch demands, the Sister dissolves. And so\n my skin\n is thin\n as rain",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmothc",
+            "label": "Steps, Surrendered",
+            "aspects": {},
+            "description": "I walked in the black-flax at the river's edge, and it tasted my feet with its hundred tongues until I could withstand the touch of it no longer, and then I was only shadow.",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmothd",
+            "label": "Hues, Surrendered",
+            "aspects": {},
+            "description": "I came to the flowers the flower-maker made and that is what I became. He keeps my colours for me now.",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmothe",
+            "label": "Sight, Surrendered",
+            "aspects": {},
+            "description": "The Centipede told me her jokes and in exchange I will let her carve me eyes of gold, until the ommatidia occur. ",
+            "unique": true
+        },
+        {
+            "id": "ascensionlessonmothf",
+            "label": "Bones, Surrendered",
+            "aspects": {},
+            "description": "The Sun was divided, and the Wolf will not let me forget the salt savour of its bones - not until the Mansus cracks. Now the Wolf requires that I carry that savour through the Door in the Wood.",
+            "unique": true
+        }
+    ]
+}

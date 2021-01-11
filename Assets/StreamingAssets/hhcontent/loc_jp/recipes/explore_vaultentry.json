@@ -1,0 +1,484 @@
+{
+	"recipes": [
+		{
+			"id": "explorevault_expeditionbegun",
+			"label": "遠征が始まる",
+			"actionId": "explore",
+			"requirements": {
+				"vault": 1,
+				"follower": 1,
+				"funds": 1
+			},
+			"startdescription": "私は工作員たちに仕える機会を与えてきた。皆のためにも良い結果になることを祈ろう。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "explorevault.add.watchers"
+				},
+				{
+					"id": "explorevault.add.monks"
+				},
+				{
+					"id": "explorevault.add.dead"
+				},
+				{
+					"id": "explorevault.add.serpent"
+				},
+				{
+					"id": "explorevaulttick",
+					"chance": 100
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "explorevault.add.watchers",
+			"actionId": "explore",
+			"requirements": {
+				"guardian_watchers_pre": 1,
+				"guardian_watchers": -1
+			},
+			"effects": {
+				"guardian_watchers": 1
+			},
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun"
+				}
+			]
+		},
+		{
+			"id": "explorevault.add.monks",
+			"actionId": "explore",
+			"requirements": {
+				"guardian_monks_pre": 1,
+				"guardian_monks": -1
+			},
+			"effects": {
+				"guardian_monks": 1
+			},
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun"
+				}
+			]
+		},
+		{
+			"id": "explorevault.add.dead",
+			"actionId": "explore",
+			"requirements": {
+				"guardian_dead_pre": 1,
+				"guardian_dead": -1
+			},
+			"effects": {
+				"guardian_dead": 1
+			},
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun"
+				}
+			]
+		},
+		{
+			"id": "explorevault.add.serpent",
+			"actionId": "explore",
+			"requirements": {
+				"guardian_serpent_pre": 1,
+				"guardian_serpent": -1
+			},
+			"effects": {
+				"guardian_serpent": 1
+			},
+			"linked": [
+				{
+					"id": "explorevault_expeditionbegun"
+				}
+			]
+		},
+		{
+			"id": "explorevaulttick",
+			"comments": "Can't reach success until all the alternatives are unavailable. That means no obstacles, >0 followers and >0 funds.",
+			"label": "遠征は続く",
+			"actionId": "explore",
+			"slots": [
+				{
+					"id": "Assistance",
+					"label": "援助",
+					"description": "遠征には資金が欠かせない。信奉者は障害物を倒してくれる。",
+					"required": {
+						"follower": 1,
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "次の課題のために遠征計画を立てている。これには資金が必要だ。今すぐ資金を追加するか、他の信奉者を送ることができる。",
+			"description": ".",
+			"warmup": 30,
+			"alternativerecipes": [
+				{
+					"id": "explorevaultsuccesslink",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultfailure_nofunds",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultfailure_nofollowers",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"funds": -1
+			},
+			"linked": [
+				{
+					"id": "explorevaultperil_treacherousground_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_forest_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_mountains_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_desert_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultperil_sea_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_watchers_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_monks_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_serpent_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_dead_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_soucouyants_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultguardian_long_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_hiddendoor_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultseal_wardeddoor_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_dread_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_visions_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_affliction_encounter",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcurse_nowhere_encounter",
+					"chance": 100
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "explorevaultfailure_nofunds",
+			"actionId": "explore",
+			"label": "物流上の問題点",
+			"startdescription": "物資が不足している。もっと資金を送らないと遠征を断念せざるを得ない。",
+			"description": "ほとぼりがさめた時に、もう一度挑戦してみよう。",
+			"requirements": {
+				"funds": -1
+			},
+			"effects": {
+				"dread": 1,
+				"peril": -10,
+				"seal": -10,
+				"guardian": -10,
+				"curse": -10,
+				"mystique": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "explorevaultfailure_nofollowers",
+			"actionId": "explore",
+			"label": "誰も戻ってこない",
+			"startdescription": "遠征隊員は1人も残っていない助けを送らなければ、この遠征は終わりだ。",
+			"description": "誰も戻ってこない。もう一度遠征を試みることはできる。同じ資源を再利用することも可能だ。",
+			"requirements": {
+				"follower": -1
+			},
+			"effects": {
+				"dread": 1,
+				"peril": -10,
+				"seal": -10,
+				"guardian": -10,
+				"curse": -10,
+				"mystique": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "explorevaultsuccesslink",
+			"label": "宝物は目の前にある",
+			"requirements": {
+				"peril": -1,
+				"seal": -1,
+				"guardian": -1,
+				"curse": -1
+			},
+			"actionId": "explore",
+			"comments": "Separate recipe link to remove the confusing slot from Success, next.",
+			"linked": [
+				{
+					"id": "explorevaultsuccess",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevaultsuccess",
+			"label": "宝物は目の前にある",
+			"actionId": "explore",
+			"startdescription": "成功！すぐにもっと成功を経験できるはずだ......",
+			"description": ".",
+			"effects": {
+				"notoriety": 1
+			},
+			"linked": [
+				{
+					"id": "explorevaultcapital1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapital1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapital2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapital3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapital4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapital5_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcapitaldefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshires1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshires2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshires3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshires4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshires5_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultshiresdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent5_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinent6_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultcontinentdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforest1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforest2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforest3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforest4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforest5_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultlandbeyondforestdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultrendingmountains1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultrendingmountains2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultrendingmountains3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultrendingmountains4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultrendingmountainsdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultloneandlevelsands1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultloneandlevelsands2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultloneandlevelsands3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultloneandlevelsands4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultloneandlevelsandsdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaulteveningisles1_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaulteveningisles2_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaulteveningisles3_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaulteveningisles4_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaulteveningislesdefault_success",
+					"chance": 100
+				},
+				{
+					"id": "explorevaultfloating1_success",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorevault_casualty",
+			"actionId": "explorevault_casualty",
+			"label": "遠征隊員が倒れた！",
+			"startdescription": "我々の数は減少していく。",
+			"description": "彼らの傷は痛ましい。[倒れた信奉者を「話す」で治癒する。]",
+			"alternativerecipes": [
+				{
+					"id": "explorevault_casualty_summoning",
+					"chance": 100
+				}
+			],
+			"craftable": false,
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower_wound",
+					"mutationLevel": 1,
+					"additive": false
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "follower",
+					"mutationLevel": -1,
+					"additive": false
+				}
+			],
+			"warmup": 5
+		},
+		{
+			"id": "explorevault_casualty_summoning",
+			"actionId": "explorevault_casualty",
+			"requirements": {
+				"summoned": 1
+			},
+			"label": "召喚獣が敗北した！",
+			"description": "追い払われたか、破壊されてしまった。",
+			"aspects": {
+				"killsummoned": 1
+			}
+		}
+	]
+}

@@ -1,0 +1,427 @@
+{
+    "elements": [
+        {
+            "id": "spirit_wintera_edge",
+            "label": "Shattered Risen",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 4,
+                "edge": 4,
+                "remnant": 1
+            },
+            "description": "A rending force has dragged this corpse back to near-life. When it moves, it crunches like broken glass. Its fists are claw-nests of bone-shards. It won't hold together for long.",
+            "xtriggers": {
+                "renewshattered": "spirit_wintera_edge",
+                "killsummoned": "influencewinter",
+                "alzabo": "influencewinterc"
+            },
+            "lifetime": 120
+        },
+        {
+            "id": "spirit_wintera_moth",
+            "label": "Burgeoning Risen",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 4,
+                "moth": 4,
+                "spiritsicknessprotector": 1,
+                "remnant": 1
+            },
+            "description": "The growths of the Wood have encompassed the corpse's organs, swelled its skull like a gourd, twined around its heart. It eyes are moist with cunning, and it moves with jerky puppet grace. Its bones are rotten wood, and soon it will take root, but until then it will be a swift and subtle servant.",
+            "xtriggers": {
+                "renewburgeoning": "spirit_wintera_moth",
+                "killsummoned": "influencemoth",
+                "alzabo": "influencemothc"
+            },
+            "lifetime": 120
+        },
+        {
+            "id": "spirit_winterb_heart",
+            "label": "Voiceless Dead",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 6,
+                "moth": 6,
+                "deceiver": 6,
+                "spiriteatspassion": 1
+            },
+            "description": "Sometimes the Dead enter the Mansus by the White Door. At its threshold they lay down their power of speech forever. Call them back to the world, and they will have no voice, but their skins of dust are yours to command.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencewinter"
+            },
+            "decayTo": "influencewinter"
+        },
+        {
+            "id": "pre.spirit_winterb_heart",
+            "label": "Voiceless Dead",
+            "aspects": {
+                "winter": 6,
+                "moth": 6,
+                "deceiver": 6,
+                "manifesting": 1
+            },
+            "description": "Sometimes the Dead enter the Mansus by the White Door. At its threshold they lay down their power of speech forever. Call them back to the world, and they will have no voice, but their skins of dust are yours to command.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencewinter",
+                "killmanifesting": "influencewinter"
+            },
+            "decayTo": "spirit_winterb_heart",
+            "resaturate": true,
+            "icon": "spirit_winterb_heart"
+        },
+        {
+            "id": "spirit_forgec_winter",
+            "label": "Caligine",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "forge": 8,
+                "moth": 8,
+                "deceiver": 8
+            },
+            "description": "At the corners of the Forge, in the bounds of the Mansus, the Glory's fire meets baser elements. Here is a cunning vapour to infect your enemy's dreams.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influenceforge"
+            },
+            "decayTo": "influenceforge"
+        },
+        {
+            "id": "pre.spirit_forgec_winter",
+            "label": "Caligine",
+            "aspects": {
+                "forge": 8,
+                "moth": 8,
+                "deceiver": 8,
+                "manifesting": 1
+            },
+            "description": "At the corners of the Forge, in the bounds of the Mansus, the Glory's fire meets baser elements. Here is a cunning vapour to infect your enemy's dreams.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influenceforge",
+                "killmanifesting": "influenceforge"
+            },
+            "decayTo": "spirit_forgec_winter",
+            "resaturate": true,
+            "icon": "spirit_forgec_winter"
+        },
+        {
+            "id": "spirit_grailc_moth",
+            "label": "Raw Prophet",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "grail": 8,
+                "moth": 8,
+                "deceiver": 8,
+                "spiritsicknessprotector": 1,
+                "spiriteatsreason": 1
+            },
+            "description": "Sometimes it divides, sometimes it unites, sometimes she speaks words of warning, sometimes he advises on appetite. Its prophecies are confusion, their whispers confound.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencegrail"
+            },
+            "decayTo": "influencegrail"
+        },
+        {
+            "id": "pre.spirit_grailc_moth",
+            "label": "Raw Prophet",
+            "aspects": {
+                "grail": 8,
+                "moth": 8,
+                "deceiver": 8,
+                "manifesting": 1
+            },
+            "description": "Sometimes it divides, sometimes it unites, sometimes she speaks words of warning, sometimes he advises on appetite. Its prophecies are confusion, their whispers confound.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencegrail",
+                "killmanifesting": "influencegrail"
+            },
+            "decayTo": "spirit_grailc_moth",
+            "resaturate": true,
+            "icon": "spirit_grailc_moth"
+        },
+        {
+            "id": "spirit_lanternc_edge",
+            "label": "Hint",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "lantern": 8,
+                "edge": 8,
+                "devourer": 8
+            },
+            "description": "The Hinter are most comfortable behind: behind the scenes, behind the mirrors, behind you. They slide under doors and kill with glass, but they cannot survive the gaze of a living mortal.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencelantern"
+            },
+            "decayTo": "influencelantern"
+        },
+        {
+            "id": "pre.spirit_lanternc_edge",
+            "label": "Hint",
+            "aspects": {
+                "lantern": 8,
+                "edge": 8,
+                "devourer": 8,
+                "manifesting": 1
+            },
+            "description": "The Hinter are most comfortable behind: behind the scenes, behind the mirrors, behind you. They slide under doors and kill with glass, but they cannot survive the gaze of a living mortal.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencelantern",
+                "killmanifesting": "influencelantern"
+            },
+            "decayTo": "spirit_lanternc_edge",
+            "resaturate": true,
+            "icon": "spirit_lanternc_edge"
+        },
+        {
+            "id": "spirit_heartc_edge",
+            "label": "Percussigant",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "heart": 8,
+                "edge": 8,
+                "devourer": 8,
+                "spiritsicknessprotector": 1,
+                "spiriteatsreason": 1
+            },
+            "description": "The Percussigant! It loves the sistrum's shiver, it loves the thrum of the tympanos, it recalls with fondness the flaying of Marsyas, and so it will not\n            will not\n            will not stop dancing.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influenceheart"
+            },
+            "decayTo": "influenceheart"
+        },
+        {
+            "id": "pre.spirit_heartc_edge",
+            "label": "Percussigant",
+            "aspects": {
+                "heart": 8,
+                "edge": 8,
+                "devourer": 8,
+                "manifesting": 1
+            },
+            "description": "The Percussigant! It loves the sistrum's shiver, it loves the thrum of the tympanos, it recalls with fondness the flaying of Marsyas, and so it will not\n            will not\n            will not stop dancing.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influenceheart",
+                "killmanifesting": "influenceheart"
+            },
+            "decayTo": "spirit_heartc_edge",
+            "resaturate": true,
+            "icon": "spirit_heartc_edge"
+        },
+        {
+            "id": "spirit_winterd_edge",
+            "label": "Maid-in-the-Mirror",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 10,
+                "edge": 10,
+                "devourer": 10,
+                "spiriteatspassion": 1
+            },
+            "description": "'The ascent is glass. The walls are knives. Each step is blood.' The Dead who rest before a new-cracked mirror, who pass through the Peacock Gate, who master the Sharp Stair: those Dead enter the service of the Sun-in-Rags.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencewinter"
+            },
+            "decayTo": "influencewinter"
+        },
+        {
+            "id": "pre.spirit_winterd_edge",
+            "label": "Maid-in-the-Mirror",
+            "aspects": {
+                "winter": 10,
+                "edge": 10,
+                "devourer": 10,
+                "manifesting": 1
+            },
+            "description": "'The ascent is glass. The walls are knives. Each step is blood.' The Dead who rest before a new-cracked mirror, who pass through the Peacock Gate, who master the Sharp Stair: those Dead enter the service of the Sun-in-Rags.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencewinter",
+                "killmanifesting": "influencewinter"
+            },
+            "decayTo": "spirit_winterd_edge",
+            "resaturate": true,
+            "icon": "spirit_winterd_edge"
+        },
+        {
+            "id": "spirit_forgee_edge",
+            "label": "King Crucible",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "forge": 12,
+                "edge": 12,
+                "devourer": 12,
+                "tutor": 1,
+                "spirittutormandaic": 1
+            },
+            "description": "'IN THE DESERT I WAIT IN THE RUINS I BURN - METAL IS WATER - STONE IS WAX - FLESH IS SMOKE - ENTER ME AND BE NO LONGER.'",
+            "xtriggers": {
+                "killsummoned": "spirit_forgee_edge.defunct"
+            },
+            "lifetime": 180,
+            "decayTo": "spirit_forgee_edge.defunct",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_forgee_edge"
+        },
+        {
+            "id": "pre.spirit_forgee_edge",
+            "label": "King Crucible",
+            "aspects": {
+                "forge": 12,
+                "edge": 12,
+                "devourer": 12,
+                "manifesting": 1
+            },
+            "description": "'IN THE DESERT I WAIT IN THE RUINS I BURN - METAL IS WATER - STONE IS WAX - FLESH IS SMOKE - ENTER ME AND BE NO LONGER.'",
+            "xtriggers": {
+                "killsummoned": "spirit_forgee_edge.defunct",
+                "killmanifesting": "influenceforge"
+            },
+            "lifetime": 1,
+            "decayTo": "spirit_forgee_edge",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_forgee_edge",
+            "resaturate": true,
+            "icon": "spirit_forgee_edge"
+        },
+        {
+            "id": "spirit_graile_edge",
+            "label": "Ezeem, the Second Thirstly",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "grail": 12,
+                "edge": 12,
+                "devourer": 12,
+                "tutor": 1,
+                "spirittutorphrygian": 1,
+                "spiritsicknessprotector": 1,
+                "spiriteatsreason": 1
+            },
+            "description": "'Change me. Change me. Change me harder. Now: <i>my</i> turn.'",
+            "xtriggers": {
+                "killsummoned": "spirit_graile_edge.defunct"
+            },
+            "lifetime": 180,
+            "decayTo": "spirit_graile_edge.defunct",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_graile_edge"
+        },
+        {
+            "id": "pre.spirit_graile_edge",
+            "label": "Ezeem, the Second Thirstly",
+            "aspects": {
+                "grail": 12,
+                "edge": 12,
+                "devourer": 12,
+                "manifesting": 1
+            },
+            "description": "'Change me. Change me. Change me harder. Now: <i>my</i> turn.'",
+            "xtriggers": {
+                "killsummoned": "spirit_graile_edge.defunct",
+                "killmanifesting": "influencegrail"
+            },
+            "lifetime": 1,
+            "decayTo": "spirit_graile_edge",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_graile_edge",
+            "resaturate": true,
+            "icon": "spirit_graile_edge"
+        },
+        {
+            "id": "spirit_lanterne_secret",
+            "label": "Teresa",
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "lantern": 12,
+                "secrethistories": 12,
+                "tutor": 1,
+                "spirittutorfucine": 1,
+                "spiritsicknessprotector": 1,
+                "spiriteatspassion": 1
+            },
+            "description": "'Oh, the world is flat; oh, but it's flat! I won't stay long. I shan't stay long. Tell me a secret.'",
+            "xtriggers": {
+                "killsummoned": "spirit_lanterne_secret.defunct"
+            },
+            "lifetime": 180,
+            "decayTo": "spirit_lanterne_secret.defunct",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_lanterne_secret"
+        },
+        {
+            "id": "pre.spirit_lanterne_secret",
+            "label": "Teresa",
+            "aspects": {
+                "lantern": 12,
+                "secrethistories": 12,
+                "tutor": 1,
+                "manifesting": 1
+            },
+            "description": "'Oh, the world is flat; oh, but it's flat! I won't stay long. I shan't stay long. Tell me a secret.'",
+            "xtriggers": {
+                "killsummoned": "spirit_lanterne_secret.defunct",
+                "killmanifesting": "influencelantern"
+            },
+            "lifetime": 1,
+            "decayTo": "spirit_lanterne_secret",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_lanterne_secret",
+            "resaturate": true,
+            "icon": "spirit_lanterne_secret"
+        },
+        {
+            "id": "spirit_forgee_edge.defunct",
+            "label": "King Crucible Burns Low",
+            "description": "King Crucible's fires have sunk to a lesser heat, for now. Blackened traces remain, like the bones of coal.",
+            "lifetime": 180,
+            "aspects": {
+                "remnant": 1
+            },
+            "unique": true,
+            "xtriggers": {
+                "alzabo": "memory.golden"
+            }
+        },
+        {
+            "id": "spirit_forgee_edge.consumed",
+            "label": "An Ashen Taste",
+            "description": "I have consumed the traces that Crucible left in the world. At the very least he will be offended. He might be enraged. I should not summon him again.",
+            "unique": true
+        },
+        {
+            "id": "spirit_graile_edge.defunct",
+            "label": "Ezeem is Sulking",
+            "description": "Ezeem will be fine, eventually.",
+            "lifetime": 180,
+            "comments": "This shouldn't have any aspects. We don't want it to be removed or used - it's solely a blocker.",
+            "unique": true
+        },
+        {
+            "id": "spirit_lanterne_secret.defunct",
+            "label": "Teresa is Resting",
+            "description": "The Baldomerian has retreated to the Sage-Knight's Lodge to rest.",
+            "lifetime": 180,
+            "comments": "This shouldn't have any aspects. We don't want it to be removed or used - it's solely a blocker.",
+            "unique": true
+        }
+    ]
+}

@@ -1,0 +1,146 @@
+{
+    "recipes": [
+        {
+            "id": "worktemplatejob",
+            "label": "Start template Job",
+            "actionId": "work",
+            "requirements": {
+                "legacytemplatejob": 1
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "effects": {
+                "legacytemplate_plotitem": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "templateopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "",
+            "description": "",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "worktemplatejob_matured",
+            "label": "",
+            "actionId": "work",
+            "requirements": {
+                "legacytemplatejob_matured": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "needs",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "funds": 1
+            },
+            "startdescription": "",
+            "description": "",
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "worktemplatejob_epilogue",
+            "label": "",
+            "actionId": "work",
+            "effects": {
+                "legacytemplatejob_matured": -1
+            },
+            "startdescription": "",
+            "description": "",
+            "craftable": false
+        },
+        {
+            "id": "templateopendream",
+            "label": "OPEN DREAM",
+            "actionId": "dream",
+            "startdescription": "",
+            "description": "",
+            "effects": {
+                "LEVER_LastDesire": 1
+            },
+            "warmup": 60,
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "visionsrisk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "templateopenstudy",
+            "label": "OPEN STUDY",
+            "actionId": "study",
+            "startdescription": "",
+            "description": "",
+            "alternativerecipes": [
+                {
+                    "id": "templateopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "reason": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "templateopenexplore",
+            "label": "OPEN EXPLORE",
+            "actionId": "explore",
+            "startdescription": "",
+            "description": "",
+            "warmup": 10,
+            "effects": {
+                "locationbookdealer": 1,
+                "locationcabaret": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "templateopentalk",
+            "label": "",
+            "actionId": "talk",
+            "startdescription": "",
+            "description": "",
+            "effects": {},
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "templatestudy_plotitem",
+            "label": "",
+            "actionId": "study",
+            "requirements": {
+                "legacytemplate_plotitem": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "templateopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "legacytemplate_plotitem": -1,
+                "fascination": 1
+            },
+            "startdescription": "",
+            "description": "",
+            "warmup": 10,
+            "craftable": true
+        }
+    ]
+}

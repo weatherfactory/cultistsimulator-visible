@@ -1,0 +1,342 @@
+{
+    "recipes": [
+        {
+            "id": "workapostleforgejob",
+            "label": "点算我手上的资源",
+            "actionId": "work",
+            "requirements": {
+                "legacyapostleforgejob": 1
+            },
+            "effects": {
+                "funds": 7,
+                "legacyapostleforgejob": -1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "apostleforgeopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "我们的组织拥有一些资源……",
+            "description": "……足够支持一段时间，但我需要去寻找其他的物资来源。",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "apostleforgeopentalk",
+            "label": "我们的大业",
+            "actionId": "talk",
+            "requirements": {},
+            "startdescription": "我并非孤身一人。",
+            "alternativerecipes": [
+                {
+                    "id": "apostleforgeopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "description": "我的同伴们、塑我形者。",
+            "effects": {
+                "LEVER_LastCult": 1,
+                "LEVER_LastFollower": 1,
+                "apostleforge.mentor": 1
+            },
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "begincultfoundation",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "apostleforgeopenstudy",
+            "label": "我记得什么？",
+            "actionId": "study",
+            "startdescription": "我被赐予了秘密。",
+            "alternativerecipes": [
+                {
+                    "id": "apostleforgeopenexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "fragmentforgef": 1,
+                "reason": 1,
+                "waywood": 1,
+                "waywhite": 1,
+                "waystag_after": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "apostleforgeopenexplore",
+            "label": "从这里开始",
+            "actionId": "explore",
+            "startdescription": "上次说到哪来着？",
+            "description": "站在我们的会合地点，我得琢磨琢磨我收到的命令。",
+            "alternativerecipes": [
+                {
+                    "id": "apostleforgeopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "apostleforge.pillar1": 1,
+                "hq.temporary": 1
+            },
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "apostleforgeopendream",
+            "label": "遥远的雷鸣",
+            "actionId": "dream",
+            "startdescription": "什么来了？谁来了？",
+            "description": "我们的塑形者希望改变世界的秩序，甚至包括漫宿的。他遭到反对是必然的。",
+            "warmup": 60,
+            "effects": {
+                "passion": 1
+            },
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "long.spawn.forge",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "workapostlegrailjob",
+            "label": "点算我手上的资源",
+            "actionId": "work",
+            "requirements": {
+                "legacyapostlegrailjob": 1
+            },
+            "effects": {
+                "funds": 7,
+                "legacyapostlegrailjob": -1,
+                "apostlegrail.pillar2.dormant": 1,
+                "apostlegrail.pillarfuel": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "apostlegrailopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "我们的组织拥有一些资源……",
+            "description": "……足够支持一段时间，但我需要去寻找其他的物资来源。而且我现在身体十分虚弱。我只能期望我们的愉悦者会支持我了。",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "apostlegrailopentalk",
+            "label": "我们的大业",
+            "actionId": "talk",
+            "requirements": {},
+            "startdescription": "我并非孤身一人。",
+            "alternativerecipes": [
+                {
+                    "id": "apostlegrailopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "description": "我的同伴们、我的愉悦。",
+            "effects": {
+                "LEVER_LastCult": 1,
+                "LEVER_LastFollower": 1,
+                "apostlegrail.mentor": 1
+            },
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "begincultfoundation",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "apostlegrailopenstudy",
+            "label": "我记得什么？",
+            "actionId": "study",
+            "startdescription": "我被赐予了秘密。",
+            "alternativerecipes": [
+                {
+                    "id": "apostlegrailopenexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "fragmentgrailf": 1,
+                "reason": 1,
+                "waywood": 1,
+                "waywhite": 1,
+                "waystag_after": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "apostlegrailopenexplore",
+            "label": "从这里开始",
+            "actionId": "explore",
+            "startdescription": "上次说到哪来着？",
+            "description": "站在我们的会合地点，我得琢磨琢磨我收到的命令。",
+            "alternativerecipes": [
+                {
+                    "id": "apostlegrailopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "apostlegrail.pillar1": 1,
+                "hq.temporary": 1
+            },
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "apostlegrailopendream",
+            "label": "遥远的光",
+            "actionId": "dream",
+            "startdescription": "什么来了？谁来了？",
+            "description": "我们的塑形者希望改变世界的秩序，甚至包括漫宿的。他遭到反对是必然的。",
+            "warmup": 60,
+            "effects": {
+                "passion": 1
+            },
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "long.spawn.grail",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "workapostlelanternjob",
+            "label": "我必须做的事",
+            "actionId": "work",
+            "requirements": {
+                "legacyapostlelanternjob": 1
+            },
+            "effects": {
+                "funds": 7,
+                "legacyapostlelanternjob": -1,
+                "apostlelantern.pillar1": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "apostlelanternopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "我一惊，回过神来。我刚才在做白日梦？",
+            "description": "这是一件包裹，里面装着钱。给我的指令装一个细长的蓝如天色的信封里。钱足够了。我其他的记忆现在不重要。",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "apostlelanternopentalk",
+            "label": "我们的大业",
+            "actionId": "talk",
+            "requirements": {},
+            "startdescription": "我记得这些名字，虽然从未听别人提起过。",
+            "alternativerecipes": [
+                {
+                    "id": "apostlelanternopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "description": "我的同伴们、我的沐光明者。",
+            "effects": {
+                "LEVER_LastCult": 1,
+                "LEVER_LastFollower": 1,
+                "apostlelantern.mentor": 1
+            },
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "begincultfoundation",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "apostlelanternopenstudy",
+            "label": "我记得什么？",
+            "actionId": "study",
+            "startdescription": "我被赐予了秘密。",
+            "alternativerecipes": [
+                {
+                    "id": "apostlelanternopenexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "fragmentlanternf": 1,
+                "reason": 1,
+                "waywood": 1,
+                "waywhite": 1,
+                "waystag_after": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "apostlelanternopenexplore",
+            "label": "从这里开始",
+            "actionId": "explore",
+            "startdescription": "上次说到哪来着？",
+            "description": "这是我在睡梦边缘的光里见过的那个地方。",
+            "alternativerecipes": [
+                {
+                    "id": "apostlelanternopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "hq.temporary": 1
+            },
+            "warmup": 10,
+            "craftable": false
+        },
+        {
+            "id": "apostlelanternopendream",
+            "label": "遥远的光",
+            "actionId": "dream",
+            "startdescription": "什么来了？谁来了？",
+            "description": "我的梦向我警告过我，沐光明者将遭到反对。别人托给我的梦都是真的。",
+            "warmup": 60,
+            "effects": {
+                "passion": 1
+            },
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "long.spawn.lantern",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        }
+    ]
+}

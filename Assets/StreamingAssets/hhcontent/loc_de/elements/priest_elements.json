@@ -1,0 +1,378 @@
+{
+	"elements": [
+		{
+			"id": "fervour",
+			"label": "Inbrunst",
+			"aspects": {
+				"influence": 1,
+				"heart": 2
+			},
+			"description": "Die Leidenschaft meiner Gemeinde ist groß, wenn auch nicht tief. [Halte deine Gemeinde bei Laune. Ungenutzte Inbrunst zerfällt zu Grauen.]",
+			"lifetime": 180,
+			"decayTo": "dread"
+		},
+		{
+			"id": "lockscaredge",
+			"label": "Kanten-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe durch die Berührung einer Klinge öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"edge": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscaredge"
+			}
+		},
+		{
+			"id": "lockscarforge",
+			"label": "Schmiede-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe durch die Berührung eines heißen Eisens öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"forge": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscarforge"
+			}
+		},
+		{
+			"id": "lockscargrail",
+			"label": "Gral-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe durch einen innigen Kuss öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"grail": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscargrail"
+			}
+		},
+		{
+			"id": "lockscarheart",
+			"label": "Herz-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe durch das Schlagen der Trommel öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"heart": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscarheart"
+			}
+		},
+		{
+			"id": "lockscarlantern",
+			"label": "Laternen-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe durch das Licht der Dämmerung öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"lantern": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscarlantern"
+			}
+		},
+		{
+			"id": "lockscarmoth",
+			"label": "Motte-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird diese Narbe der Schere antworten.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"moth": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscarmoth"
+			}
+		},
+		{
+			"id": "lockscarwinter",
+			"label": "Winter-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe zuletzt öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"winter": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscarwinter"
+			}
+		},
+		{
+			"id": "openedlockscaredge",
+			"label": "Kanten-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe durch die Berührung einer Klinge öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"edge": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscaredge",
+			"icon": "lockscaredge"
+		},
+		{
+			"id": "openedlockscarforge",
+			"label": "Schmiede-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe durch die Berührung eines heißen Eisens öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"forge": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscarforge",
+			"icon": "lockscarforge"
+		},
+		{
+			"id": "openedlockscargrail",
+			"label": "Gral-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe durch einen innigen Kuss öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"grail": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscargrail",
+			"icon": "lockscargrail"
+		},
+		{
+			"id": "openedlockscarheart",
+			"label": "Herz-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe durch das Schlagen der Trommel öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"heart": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscarheart",
+			"icon": "lockscarheart"
+		},
+		{
+			"id": "openedlockscarlantern",
+			"label": "Laternen-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe durch das Licht der Dämmerung öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"lantern": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscarlantern",
+			"icon": "lockscarlantern"
+		},
+		{
+			"id": "openedlockscarmoth",
+			"label": "Motte-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird diese Narbe der Schere antworten.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"moth": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscarmoth",
+			"icon": "lockscarmoth"
+		},
+		{
+			"id": "openedlockscarwinter",
+			"label": "Winter-Schloss-Narbe",
+			"description": "Wenn ich die Schwelle bin, wird sich diese Narbe zuletzt öffnen.",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"winter": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscarwinter",
+			"icon": "lockscarwinter"
+		},
+		{
+			"id": "devotee_edge",
+			"label": "Ein kräftiger Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 2
+			},
+			"animFrames": 1,
+			"description": "Manchmal treibt die Inbrunst Laien dazu, sich eher ungewöhnlichen Pflichten zu verschreiben. [Wenn sein Enthusiasmus nachlässt, kehrt er in die Gemeinde zurück.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_edge"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_forge",
+			"label": "Ein praktisch veranlagter Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"forge": 2
+			},
+			"animFrames": 1,
+			"description": "Manchmal treibt die Inbrunst Laien dazu, sich eher ungewöhnlichen Pflichten zu verschreiben. [Wenn sein Enthusiasmus nachlässt, kehrt er in die Gemeinde zurück.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_forge"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_grail",
+			"label": "Ein eifriger Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"grail": 2
+			},
+			"animFrames": 1,
+			"description": "Manchmal treibt die Inbrunst Laien dazu, sich eher ungewöhnlichen Pflichten zu verschreiben. [Wenn sein Enthusiasmus nachlässt, kehrt er in die Gemeinde zurück.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_grail"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_heart",
+			"label": "Ein lebhafter Gläubiger ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"heart": 2
+			},
+			"animFrames": 1,
+			"description": "Manchmal treibt die Inbrunst Laien dazu, sich eher ungewöhnlichen Pflichten zu verschreiben. [Wenn sein Enthusiasmus nachlässt, kehrt er in die Gemeinde zurück.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_heart"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_knock",
+			"label": "Ein gewandter Gläubiger ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"knock": 2
+			},
+			"animFrames": 1,
+			"description": "Manchmal treibt die Inbrunst Laien dazu, sich eher ungewöhnlichen Pflichten zu verschreiben. [Wenn sein Enthusiasmus nachlässt, kehrt er in die Gemeinde zurück.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_knock"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_lantern",
+			"label": "Ein scharfsichtiger Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"lantern": 2
+			},
+			"animFrames": 1,
+			"description": "Manchmal treibt die Inbrunst Laien dazu, sich eher ungewöhnlichen Pflichten zu verschreiben. [Wenn sein Enthusiasmus nachlässt, kehrt er in die Gemeinde zurück.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_lantern"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_moth",
+			"label": "Ein fahriger Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"moth": 2
+			},
+			"animFrames": 1,
+			"description": "Manchmal treibt die Inbrunst Laien dazu, sich eher ungewöhnlichen Pflichten zu verschreiben. [Wenn sein Enthusiasmus nachlässt, kehrt er in die Gemeinde zurück.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_moth"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_winter",
+			"label": "Ein stiller Gläubiger",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"winter": 2
+			},
+			"animFrames": 1,
+			"description": "Manchmal treibt die Inbrunst Laien dazu, sich eher ungewöhnlichen Pflichten zu verschreiben. [Wenn sein Enthusiasmus nachlässt, kehrt er in die Gemeinde zurück.]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_winter"
+			},
+			"lifetime": 180
+		}
+	]
+}

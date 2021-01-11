@@ -1,0 +1,77 @@
+{
+	"elements": [
+		{
+			"id": "corpse",
+			"label": "人間の死体",
+			"description": "精霊は去ってしまった。いつか臭いが酷くなって捨てることになるだろうが、今のところは大丈夫だ。人目を引くかもしれないし、感受性の強い人を感心させられるかもしれない。[死体がなくなっても、悪評は残る。]",
+			"aspects": {
+				"winter": 3,
+				"grail": 3,
+				"ingredient": 1,
+				"reputation": 2,
+				"remnant": 1
+			},
+			"xtriggers": {
+				"raiseburgeoning": "spirit_wintera_moth",
+				"raiseshattered": "spirit_wintera_edge"
+			},
+			"lifetime": 60,
+			"decayTo": "notoriety"
+		},
+		{
+			"id": "corpse.furious",
+			"label": "傷ついた骨片",
+			"aspects": {
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.furious"
+			},
+			"description": "この断片の中には古い時の神々の記憶がある。"
+		},
+		{
+			"id": "corpse.luxurious",
+			"label": "皮の残骸",
+			"aspects": {
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.luxurious"
+			},
+			"description": "感覚の記憶と切望、絆の秘密は、昔の自分の断片に保管されている。"
+		},
+		{
+			"id": "corpse.liminal",
+			"label": "長生者の欠片",
+			"aspects": {
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.liminal"
+			},
+			"description": "ほとんど残っていないが、この味と言ったら――世に知られていない味だ―― "
+		},
+		{
+			"id": "corpse.horizon",
+			"label": "影のない欠片",
+			"aspects": {
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.horizon"
+			},
+			"description": "王たちは真の栄光を知っていたのか？"
+		},
+		{
+			"id": "corpse.splendid",
+			"label": "狼の頭",
+			"aspects": {
+				"remnant": 1
+			},
+			"xtriggers": {
+				"alzabo": "memory.splendid"
+			},
+			"description": "彼女はありのままの太陽を知っていたのだろうか。"
+		}
+	]
+}

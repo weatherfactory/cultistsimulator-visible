@@ -1,0 +1,164 @@
+{
+	"recipes": [
+		{
+			"id": "explorecabaret",
+			"actionId": "explore",
+			"label": "Den Ecdysis-Klub besuchen",
+			"requirements": {
+				"locationcabaret": 1,
+				"funds": 1
+			},
+			"startdescription": "Der Eingang verliert sich unter weichen Vorhängen in Scharlach-, Zinnober- und Blutrot. Über der Tür steht das Motto des Klubs: 'IN GI RUM IMUS NOC TE ET CON SUMI MUR IGNI'. Es wurde übersetzt als 'In den Kreis der Nacht fliegen wir, bis das Feuer uns genießt'.",
+			"description": ".",
+			"effects": {
+				"funds": -1
+			},
+			"craftable": true,
+			"deckeffect": {
+				"cabaretevents": 1
+			},
+			"linked": [
+				{
+					"id": "cabaretpleasure",
+					"chance": 100
+				},
+				{
+					"id": "cabaretallure",
+					"chance": 100
+				},
+				{
+					"id": "cabareteducation",
+					"chance": 100
+				},
+				{
+					"id": "cabaretglimpse",
+					"chance": 100
+				},
+				{
+					"id": "cabaretharm",
+					"chance": 100
+				},
+				{
+					"id": "cabaretexposure",
+					"chance": 100
+				},
+				{
+					"id": "cabarethunger",
+					"chance": 100
+				},
+				{
+					"id": "cabaretfey",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "cabaretpleasure",
+			"label": "Nächtliche Freuden im Cabaret",
+			"actionId": "explore",
+			"requirements": {
+				"contentment": 1
+			},
+			"startdescription": "Die Drinks, die Lieder, das Licht. Die gewölbten Mauern, der rauchblaue Nebel, das Drücken und Wiegen bekleideten und unbekleideten Fleisches.",
+			"description": "Ich habe mir Vergnügen erkauft. Ich wanke zu unchristlicher Stunde nach Hause und sinke ins Bett.",
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabaretallure",
+			"label": "Verlockung im Ecdysis-Klub",
+			"actionId": "explore",
+			"requirements": {
+				"fascination": 1
+			},
+			"startdescription": "Bei der Performance von heute Abend, 'Amethyst', verfolgt ein netzschwingender Jäger eine schleiergeflügelte Frau durch einen murmelnden Irrgarten aus blattbekleideten Tänzern. Jede Bewegung ist langsam wie unter Wasser.",
+			"description": "Das Licht geht aus, sehr langsam, als die Performance ihr Ende findet. Es gibt keinen Applaus. Jeden treibt es hinaus auf die Straße, allein mit seinem Traum.",
+			"effects": {
+				"contentment": 1
+			},
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabareteducation",
+			"label": "Die Lehren des Cabarets",
+			"actionId": "explore",
+			"requirements": {
+				"erudition": 1
+			},
+			"startdescription": "Die Performance von heute Abend ist eine halbherzige Sache mit flatternden Schals und ernstem Fleische. Das Publikum wendet sich seinen Gesprächen zu.",
+			"description": "Ich habe den Abend damit verbracht, Theorien mit einem Tisch voller Scharlatane, Poser und – vielleicht – Initiierten auszutauschen. Manche jener Theorien könnten sogar wahr sein.",
+			"effects": {
+				"contentment": 1
+			},
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabaretglimpse",
+			"label": "Ein Vorgeschmack auf etwas mehr im Ecdysis-Klub",
+			"actionId": "explore",
+			"requirements": {
+				"glimmering": 1
+			},
+			"startdescription": "Die Hintergründe für die Performances von heute Abend bilden albtraumhafte Gemälde wie von Piranesi – gigantische, unmögliche unterirdische Gefängnisse. Die Tänzer tragen Monstermasken, sind schnell wie das Feuer, und jede Bewegung knistert vor Boshaftigkeit.",
+			"description": "Die Tänzer bewegen sich hinter dem Hintergrund, kreuzen ihn, scheinen sich auf den Treppen und Zugbrücken zu bewegen. Ihre Leiber werden mit der Farbe des Hintergrunds besudelt. Ein Knurren erhebt sich im Publikum. 'Die Mauern des Hauses ...'",
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabaretharm",
+			"label": "Ein verletzender Vollzug im Ecdysis-Klub",
+			"actionId": "explore",
+			"requirements": {
+				"vitality": 1
+			},
+			"startdescription": "Heute Abend gehen die Darsteller durch das Publikum, jonglieren mit Messern oder Flaschen aus rotem Glas, beugen sich herunter, um ein Flüstern oder anderes zu verschenken.",
+			"description": "Ein Tänzer hat mir ein rotes Glas an die Lippen gedrückt. Es war scharf. Mein Mund blutet. Doch der Wein darin war starker Wein –",
+			"effects": {
+				"contentment": 1
+			},
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabaretexposure",
+			"label": "Eine Unterbrechung im Ecdysis-Klub",
+			"actionId": "explore",
+			"requirements": {
+				"notoriety": 1
+			},
+			"startdescription": "Die Performance hat kaum begonnen, da ist ein Ausruf des Grauens aus dem Publikum zu hören!",
+			"description": "Die Performance endet augenblicklich. Das Licht geht an. Wir werden von unseren Plätzen hinaus auf die Straße gebracht. Es bleibt unklar, was genau passiert ist, doch das Personal des Klubs scheint vorbereitet zu sein, als wäre so etwas früher schon gesehen. Lichter gehen hinter Fenstern in der Umgebung an und Passanten starren den Gästen nach, die sich auf den Weg in die Nacht machen.",
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabarethunger",
+			"label": "Der Hunger im Ecdysis-Klub",
+			"actionId": "explore",
+			"requirements": {
+				"influencegrail": 1
+			},
+			"startdescription": "Eine Tänzerin kommt von links auf die Bühne, gehüllt in rote Bandagen, straff die Sehnen. Sie schält eine ab. Noch eine. Noch eine. Noch eine – ",
+			"description": "Das muss ein Trick sein. Man kann keine Kleidung so ausziehen, dass die Knochen unter der Haut zu sehen sind. Knochen, so rosa wie Pfirsichfleisch. Organe wie Weintrauben. Das Licht wird abgedunkelt und verlöscht, und mit ihm der rote Stern auf der Bühne. Unsere Lippen sind trocken.",
+			"warmup": 15,
+			"craftable": false
+		},
+		{
+			"id": "cabaretfey",
+			"label": "Die Mysterien des Ecdysis-Klubs",
+			"actionId": "explore",
+			"requirements": {
+				"influencemoth": 1
+			},
+			"startdescription": "'Der Kranz!', verkündet der Zeremoniemeister. Eine Tänzerin wirbelt auf die Bühne und breitet ihre Arme aus. Lebendige Motten strömen aus ihrem Mund!",
+			"description": "Weiße Motten tanzen durch den Raum. Sie setzen sich auf den Rand von Weingläsern und nippen. Das Publikum applaudiert. Die Frau auf der Bühne bewegt sich, als hätte sie zu viele Glieder. Motten bedecken meine Arme und kuscheln sich an meine Schultern. Nach einer Weile gehe ich hinaus und schaue mir die klaren kalten Sterne an: ich gehe davon aus, dass ich das nicht geträumt habe. Der Rauch im Klub kann trügerisch sein.",
+			"effects": {
+				"contentment": 1
+			},
+			"warmup": 15,
+			"craftable": false
+		}
+	]
+}

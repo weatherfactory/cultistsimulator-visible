@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 124341127}
   - component: {fileID: 124341129}
   m_Layer: 5
-  m_Name: IllopolyQuote
+  m_Name: Quote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
   locLabel: LOADING_QUOTE_1
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &262383010
@@ -488,6 +488,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &894663626
 Canvas:
   m_ObjectHideFlags: 0
@@ -583,8 +584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  destroyOnHide: 0
-  keepActiveOnHide: 0
   durationTurnOn: 0.5
   durationTurnOff: 0.25
 --- !u!225 &932506773
@@ -795,7 +794,7 @@ MonoBehaviour:
   locLabel: LOADING_QUOTE_2
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &1379758232
@@ -931,7 +930,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitUntilAutoComplete: 10
-  targetSceneName: Menu
   fader: {fileID: 932506772}
 --- !u!1 &1774638546
 GameObject:

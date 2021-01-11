@@ -1,0 +1,20 @@
+{
+    "legacies": [
+        {
+            "id": "priest",
+            "label": "The Priest",
+            "description": "In visions have I seen St Agnes. I have learnt not to speak of the form she takes.",
+            "startdescription": "I have been given charge of the spiritual health of a new parish - a charge we used to call 'the cure of souls'.",
+            "effects": {
+                "passion": 1,
+                "priestjob": 1,
+                "funds": 5
+            },
+            "image": "priest",
+            "fromending": "visionsending",
+            "availableWithoutEndingMatch": true,
+            "startingverbid": "work",
+            "newstart": true
+        }
+    ]
+}

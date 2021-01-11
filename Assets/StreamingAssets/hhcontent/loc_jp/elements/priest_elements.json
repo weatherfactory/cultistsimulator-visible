@@ -1,0 +1,378 @@
+{
+	"elements": [
+		{
+			"id": "fervour",
+			"label": "熱狂",
+			"aspects": {
+				"influence": 1,
+				"heart": 2
+			},
+			"description": "会衆の情熱は深いとまではいかなくても強い。[会衆を満足させておくこと。熱狂は使われないと衰退して恐怖なる。]",
+			"lifetime": 180,
+			"decayTo": "dread"
+		},
+		{
+			"id": "lockscaredge",
+			"label": "刃の傷跡の鍵",
+			"description": "私が入り口になると、この傷は刃との接触で開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"edge": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscaredge"
+			}
+		},
+		{
+			"id": "lockscarforge",
+			"label": "鍛造の傷跡の鍵",
+			"description": "私が入り口になると、この傷は熱い鉄との接触で開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"forge": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscarforge"
+			}
+		},
+		{
+			"id": "lockscargrail",
+			"label": "聖杯の傷跡の鍵",
+			"description": "私が入り口になると、この傷は熱いキスで開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"grail": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscargrail"
+			}
+		},
+		{
+			"id": "lockscarheart",
+			"label": "聖杯の傷跡の鍵",
+			"description": "私が入り口になると、太鼓の音でこの傷が開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"heart": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscarheart"
+			}
+		},
+		{
+			"id": "lockscarlantern",
+			"label": "灯りの傷跡の鍵",
+			"description": "私が入り口になると、夜明けの灯りでこの傷は開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"lantern": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscarlantern"
+			}
+		},
+		{
+			"id": "lockscarmoth",
+			"label": "蛾の傷跡の鍵",
+			"description": "私が入り口になると、この傷はハサミに従うだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"moth": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscarmoth"
+			}
+		},
+		{
+			"id": "lockscarwinter",
+			"label": "冬の傷跡の鍵",
+			"description": "私が入り口になると、この傷は最後に開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"lockscar": 1,
+				"winter": 2
+			},
+			"xtriggers": {
+				"unlockscar": "openedlockscarwinter"
+			}
+		},
+		{
+			"id": "openedlockscaredge",
+			"label": "刃の傷跡の鍵",
+			"description": "私が入り口になると、この傷は刃との接触で開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"edge": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscaredge",
+			"icon": "lockscaredge"
+		},
+		{
+			"id": "openedlockscarforge",
+			"label": "鍛造の傷跡の鍵",
+			"description": "私が入り口になると、この傷は熱い鉄との接触で開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"forge": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscarforge",
+			"icon": "lockscarforge"
+		},
+		{
+			"id": "openedlockscargrail",
+			"label": "聖杯の傷跡の鍵",
+			"description": "私が入り口になると、この傷は熱いキスで開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"grail": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscargrail",
+			"icon": "lockscargrail"
+		},
+		{
+			"id": "openedlockscarheart",
+			"label": "聖杯の傷跡の鍵",
+			"description": "私が入り口になると、太鼓の音でこの傷が開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"heart": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscarheart",
+			"icon": "lockscarheart"
+		},
+		{
+			"id": "openedlockscarlantern",
+			"label": "灯りの傷跡の鍵",
+			"description": "私が入り口になると、夜明けの灯りでこの傷は開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"lantern": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscarlantern",
+			"icon": "lockscarlantern"
+		},
+		{
+			"id": "openedlockscarmoth",
+			"label": "蛾の傷跡の鍵",
+			"description": "私が入り口になると、この傷はハサミに従うだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"moth": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscarmoth",
+			"icon": "lockscarmoth"
+		},
+		{
+			"id": "openedlockscarwinter",
+			"label": "冬の傷跡の鍵",
+			"description": "私が入り口になると、この傷は最後に開くだろう。",
+			"aspects": {
+				"tool": 1,
+				"knock": 2,
+				"openedlockscar": 1,
+				"winter": 2
+			},
+			"lifetime": 1,
+			"decayTo": "lockscarwinter",
+			"icon": "lockscarwinter"
+		},
+		{
+			"id": "devotee_edge",
+			"label": "頑強な崇拝者",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 2
+			},
+			"animFrames": 1,
+			"description": "熱心さが一般人たちを駆り立てて、尋常ではない任務に専念させる。[熱意が薄れると、彼らは会衆に戻る。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_edge"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_forge",
+			"label": "実践的な崇拝者",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"forge": 2
+			},
+			"animFrames": 1,
+			"description": "熱心さが一般人たちを駆り立てて、尋常ではない任務に専念させる。[熱意が薄れると、彼らは会衆に戻る。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_forge"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_grail",
+			"label": "熱心な崇拝者",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"grail": 2
+			},
+			"animFrames": 1,
+			"description": "熱心さが一般人たちを駆り立てて、尋常ではない任務に専念させる。[熱意が薄れると、彼らは会衆に戻る。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_grail"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_heart",
+			"label": "賑やかな崇拝者 ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"heart": 2
+			},
+			"animFrames": 1,
+			"description": "熱心さが一般人たちを駆り立てて、尋常ではない任務に専念させる。[熱意が薄れると、彼らは会衆に戻る。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_heart"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_knock",
+			"label": "器用な崇拝者 ",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"knock": 2
+			},
+			"animFrames": 1,
+			"description": "熱心さが一般人たちを駆り立てて、尋常ではない任務に専念させる。[熱意が薄れると、彼らは会衆に戻る。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_knock"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_lantern",
+			"label": "理解力のある崇拝者",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"lantern": 2
+			},
+			"animFrames": 1,
+			"description": "熱心さが一般人たちを駆り立てて、尋常ではない任務に専念させる。[熱意が薄れると、彼らは会衆に戻る。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_lantern"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_moth",
+			"label": "不安定な崇拝者",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"moth": 2
+			},
+			"animFrames": 1,
+			"description": "熱心さが一般人たちを駆り立てて、尋常ではない任務に専念させる。[熱意が薄れると、彼らは会衆に戻る。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_moth"
+			},
+			"lifetime": 180
+		},
+		{
+			"id": "devotee_winter",
+			"label": "静かな崇拝者",
+			"aspects": {
+				"mortal": 1,
+				"follower": 1,
+				"devotee": 1,
+				"edge": 1,
+				"winter": 2
+			},
+			"animFrames": 1,
+			"description": "熱心さが一般人たちを駆り立てて、尋常ではない任務に専念させる。[熱意が薄れると、彼らは会衆に戻る。]",
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"rebellion": "generic_r",
+				"capturefollower": "generic_p",
+				"refiring": "devotee_winter"
+			},
+			"lifetime": 180
+		}
+	]
+}

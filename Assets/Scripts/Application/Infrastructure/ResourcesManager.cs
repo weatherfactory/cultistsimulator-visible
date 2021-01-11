@@ -20,7 +20,6 @@ public class ResourcesManager: MonoBehaviour
     private static readonly Dictionary<string,List<Sprite>> _cachedVerbFrames=new Dictionary<string, List<Sprite>>();
     private static readonly Dictionary<string, List<Sprite>> _cachedElementFrames = new Dictionary<string, List<Sprite>>();
 
-
     public static Sprite GetSpriteForVerbLarge(string verbId)
 	{
         return GetSprite("verbs", verbId);
@@ -172,7 +171,9 @@ public class ResourcesManager: MonoBehaviour
     
     public static Sprite GetSprite(string folder, string file, bool withPlaceholder = true)
     {
-        var spritePath = Path.Combine("images", folder, file);
+        const string imagesFolderNameInResources = "images"; 
+        var spritePath = Path.Combine(Registry.Get<Config>().GetConfigValue(imagesFolderNameInResources),
+            folder, file);
 
         // Try to find the image in a mod first, in case it overrides an existing one
         var modManager = Registry.Get<ModManager>();
@@ -197,7 +198,7 @@ public class ResourcesManager: MonoBehaviour
         if (cultureId != NoonConstants.DEFAULT_CULTURE_ID)
         {
 
-            var spritePath = Path.Combine("images", folder,
+            var spritePath = Path.Combine(Registry.Get<Config>().GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY),
                 NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN, cultureId), file);
 
             // Try to find the image in a mod first, in case it overrides an existing one

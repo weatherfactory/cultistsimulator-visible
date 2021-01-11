@@ -1,0 +1,424 @@
+{
+	"recipes": [
+		{
+			"id": "dreamascensionpowera",
+			"label": "自分の目標である超自然的な力について考える",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionpowera": 1
+			},
+			"slots": [
+				{
+					"id": "Calculation",
+					"label": "計算",
+					"required": {
+						"lore": 1,
+						"health": 1,
+						"reason": 1,
+						"priestjob": 1
+					},
+					"description": "自分が求める信条の伝承に身を捧げるか、他に力を注ぐか。"
+				}
+			],
+			"startdescription": "自分の目的に専念するべきか、他のことに力を注ぐべきだろうか。",
+			"description": "今のところは......今のままの自分でいることした。",
+			"alternativerecipes": [
+				{
+					"id": "dreamascension_abandontemptation",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_sensation",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_enlightenment",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_upgrade_power_1to2",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamascensionsensationa",
+			"label": "感覚の追求について考える",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionsensationa": 1
+			},
+			"slots": [
+				{
+					"id": "Musing",
+					"label": "思いにふける",
+					"required": {
+						"lore": 1,
+						"passion": 1,
+						"reason": 1,
+						"priestjob": 1
+					},
+					"description": "自分が求める信条の伝承に身を捧げるか、他に力を注ぐか。"
+				}
+			],
+			"startdescription": "自分の目的に専念するべきか、他のことに力を注ぐべきだろうか。",
+			"description": "今のところは......今のままの自分でいることした。",
+			"alternativerecipes": [
+				{
+					"id": "dreamascension_abandontemptation",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_power",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_enlightenment",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_upgrade_sensation_1to2m",
+					"chance": 50
+				},
+				{
+					"id": "dreamascension_upgrade_sensation_1to2f",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamascensionenlightenmenta",
+			"label": "自分の目標である超自然的な知識について考える",
+			"actionId": "dream",
+			"requirements": {
+				"ascensionenlightenmenta": 1
+			},
+			"slots": [
+				{
+					"id": "Reflection",
+					"label": "反映",
+					"required": {
+						"lore": 1,
+						"passion": 1,
+						"health": 1,
+						"priestjob": 1
+					},
+					"description": "自分が求める信条の伝承に身を捧げるか、他に力を注ぐか。"
+				}
+			],
+			"startdescription": "自分の目的に専念するべきか、他のことに力を注ぐべきだろうか。",
+			"description": "今のところは......今のままの自分でいることした。",
+			"alternativerecipes": [
+				{
+					"id": "dreamascension_abandontemptation",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_sensation",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_switchto_power",
+					"chance": 100
+				},
+				{
+					"id": "dreamascension_upgrade_enlightenment_1to2",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamascension_abandontemptation",
+			"actionId": "dream",
+			"label": "誘惑から身を清める。",
+			"startdescription": "自分の欲望は何でもない。私は入り口であり、会衆が歩む道である。この目標のために生きる自分に拍車をかけ、決して後戻りはしない。[これにより誘惑は永久的に破壊される。本当に実行したいかを慎重に考えよう。]",
+			"description": "私が選んだと言うかもしれないが、それは必ずしも正しいわけではない。私は<i>選ばれた</i>のだ。",
+			"requirements": {
+				"priestjob": 1
+			},
+			"effects": {
+				"passion": 1,
+				"desire": -1
+			}
+		},
+		{
+			"id": "dreamascension_switchfromchange",
+			"label": "変化よりも感覚を追求する",
+			"requirements": {
+				"ascensionchangea": 1
+			},
+			"actionId": "dream",
+			"effects": {
+				"desire": -1,
+				"ascensionsensationa": 1
+			},
+			"startdescription": "何よりも、変化に対する欲望は最も変化の影響を受けやすい。[変化に対する欲望は、一度失うと、簡単には取り戻せない。]",
+			"description": "私は自分の目的を再確認した。世界の表面下には、静脈のように隠された経験がある。その経験が私をむさぼり食うかもしれないが、私は奥底にあるものを知ることになるだろう。",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "dreamascension_switchto_power",
+			"label": "私は今、力を追求している。",
+			"actionId": "dream",
+			"requirements": {
+				"passion": 1
+			},
+			"effects": {
+				"desire": -1,
+				"ascensionpowera": 1
+			},
+			"startdescription": "力の方が説得力のある目標なのだろう。",
+			"description": "私は自分の目的を再確認した。先人たちは、かつて再創造の力を身につけていた。その力は、皇后や将軍、物理学者が夢見ることしかできなかったものだ。力に体を焼かれるかもしれないが、私も手に入れよう。"
+		},
+		{
+			"id": "dreamascension_switchto_sensation",
+			"label": "私は今、感性を追求している。",
+			"actionId": "dream",
+			"requirements": {
+				"health": 1
+			},
+			"effects": {
+				"desire": -1,
+				"ascensionsensationa": 1
+			},
+			"startdescription": "感性の方が楽な目標なのかもしれない。",
+			"description": "私は自分の目的を再確認した。世界の表面下には、静脈のように隠された経験がある。その経験が私をむさぼり食うかもしれないが、私は奥底にあるものを知ることになるだろう。"
+		},
+		{
+			"id": "dreamascension_switchto_enlightenment",
+			"label": "私は今、悟りを追及している。",
+			"actionId": "dream",
+			"requirements": {
+				"reason": 1
+			},
+			"effects": {
+				"desire": -1,
+				"ascensionenlightenmenta": 1
+			},
+			"startdescription": "知識は精密な目標なのかもしれない。",
+			"description": "私は自分の目的を再確認した。先人たちは、かつて最高の秘密、探求力の秘密、ガラスのように骨を通して光が漏れる秘密、羊皮紙のように皮膚を通して漏れる秘密を握っていた。私も秘密を抱える事になるだろうが、抱えた途端に自分自身が壊れるかもしれない。"
+		},
+		{
+			"id": "dreamascension_upgrade_power_1to2",
+			"label": "炎の献身",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"forge": 1
+			},
+			"startdescription": "力の追求に身を捧げる。",
+			"description": "鍛冶屋が鉄に語りかけ、殺人者が犠牲者に語りかけ、火がその燃料に語りかけるように、私は囁いた。自分が何をしたかは自分だけが知っている。だがそれが今の自分の道を形作っている。[恐るべき昇天への一歩を踏み出した。]",
+			"effects": {
+				"ascensionpowera": -1,
+				"ascensionpowerb": 1
+			},
+			"burnimage": "forgededication"
+		},
+		{
+			"id": "dreamascension_upgrade_sensation_1to2m",
+			"label": "血の献身",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"grail": 1
+			},
+			"startdescription": "感性の追求に身を捧げる。",
+			"description": "耳に心地よい言葉もあれば、美味しい言葉もある。今その味が舌の上に溢れている。一生忘れられないはずだ。[恐るべき昇天への一歩を踏み出した。]",
+			"effects": {
+				"ascensionsensationa": -1,
+				"ascensionsensationbm": 1
+			},
+			"burnimage": "graildedication"
+		},
+		{
+			"id": "dreamascension_upgrade_sensation_1to2f",
+			"label": "血の献身",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"grail": 1
+			},
+			"startdescription": "感性の追求に身を捧げる。",
+			"description": "耳に心地よい言葉もあれば、美味しい言葉もある。今その味が舌の上に溢れている。一生忘れられないはずだ。[恐るべき昇天への一歩を踏み出した。]",
+			"effects": {
+				"ascensionsensationa": -1,
+				"ascensionsensationbf": 1
+			},
+			"burnimage": "graildedication"
+		},
+		{
+			"id": "dreamascension_upgrade_enlightenment_1to2",
+			"label": "光の献身",
+			"actionId": "dream",
+			"requirements": {
+				"lore": 1,
+				"lantern": 1
+			},
+			"startdescription": "知識の追求に身を捧げる。",
+			"description": "「それぞれの時の神には色があるが、色は光があるところにしか存在しない」という言葉を口にしたことがある。私は光があるところへ行く。それによってガラスのように透明になってしまってもだ。[恐るべき昇天への一歩を踏み出した。]",
+			"effects": {
+				"ascensionenlightenmenta": -1,
+				"ascensionenlightenmentb": 1
+			},
+			"burnimage": "lanterndedication"
+		},
+		{
+			"id": "dreamreason",
+			"label": "彷徨う心",
+			"actionId": "dream",
+			"requirements": {
+				"reason": 1
+			},
+			"effects": {
+				
+			},
+			"startdescription": "昔、「理性の眠りは怪物を生む」と言った人がいた。睡眠中に心を彷徨わせることはしばしば健全なことである。しかし、夢を見続けていると、遅かれ早かれ、自分の恐怖から何かしらの怪物が生まれる。",
+			"description": ".",
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "dream_router",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "dream_router",
+			"label": "夢の群れ",
+			"actionId": "dream",
+			"deckeffect": {
+				"dreamreasonresults": 1
+			},
+			"linked": [
+				{
+					"id": "dreamcontentment",
+					"chance": 100
+				},
+				{
+					"id": "dreamrestlessness",
+					"chance": 100
+				},
+				{
+					"id": "dreamvitality",
+					"chance": 100
+				},
+				{
+					"id": "dreamglimmering",
+					"chance": 100
+				},
+				{
+					"id": "nightmarehersault",
+					"chance": 100
+				},
+				{
+					"id": "nightmarecleansingdawn",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "dreamcontentment",
+			"label": "雨の夢",
+			"actionId": "dream",
+			"requirements": {
+				"contentment": 1
+			},
+			"startdescription": "心地よい雨が降りそうだ。",
+			"description": "軒先で雨がささやき、旧友のように窓を叩き、煙突の中でいたずらにシーっと音を鳴らす夢を見た。心地よい雨の中で、惨めな気持ちにならないだろう。",
+			"warmup": 10
+		},
+		{
+			"id": "dreamrestlessness",
+			"label": "扉の夢",
+			"actionId": "dream",
+			"requirements": {
+				"restlessness": 1
+			},
+			"startdescription": "今夜は扉の迷宮の夢を見る。",
+			"description": "扉を開ける夢を見た。赤い扉や金色の扉、ガラスの扉、本のように縛られた扉、客車の扉や城の扉。その向こうには私の求めるものがあった。扉のバタンという音が耳に響いて、私は目を覚ました。",
+			"warmup": 10
+		},
+		{
+			"id": "dreamvitality",
+			"label": "深く穏やかな眠り",
+			"actionId": "dream",
+			"requirements": {
+				"vitality": 1
+			},
+			"startdescription": "今夜の夢は――",
+			"description": "全く何の夢も見なかった。目を覚まして伸びをすると、ゆっくりと起き上がる。静かに眠れたおかげで元気が出た。",
+			"warmup": 10
+		},
+		{
+			"id": "dreamglimmering",
+			"label": "ガラス越しの骨董品の夢",
+			"actionId": "dream",
+			"requirements": {
+				"glimmering": 1
+			},
+			"startdescription": "今夜は博物館の夢を見る。",
+			"description": "存在しないギャラリーの展示ケースの中には、雪のように白く石のように固いリンゴ、厳かな箱に入った金色のカブトムシ、触られるのを待っている内気な幾何学模様。ネジがあふれ出ている黒い封筒。楽器の測定や録音に使われる真鍮製のオペラボックス。缶の中の嵐。通路の端が見える前にいつも目が覚めてしまう。",
+			"warmup": 10
+		},
+		{
+			"id": "nightmarecleansingdawn",
+			"label": "悪夢：浄化の夜明け",
+			"actionId": "dream",
+			"requirements": {
+				"fascination": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "nightmarecleansingdawnsuccess",
+					"chance": 30
+				}
+			],
+			"startdescription": "太陽が昇っている。見逃してはくれないだろう。",
+			"description": "自分の肉を剥ぎ取ることができるようになってきた。歯の間に詰まった繊維のように、腱を引っ張り出すことができる。私の肌は、破れた毛布のようになっている。勝利の雄たけびを上げながら、太陽が地平線の上に昇る。光が酸のように私の骨に落ちる。痛みで目が覚め、骨が何日間も疼いた。",
+			"warmup": 10
+		},
+		{
+			"id": "nightmarecleansingdawnsuccess",
+			"actionId": "dream",
+			"effects": {
+				"influencelanternc": 1
+			},
+			"description": "自分の肉を剥ぎ取ることができるようになってきた。歯の間に詰まった繊維のように、腱を引っ張り出すことができる。私の肌は、破れた毛布のようになっている。勝利の雄たけびを上げながら、太陽が地平線の上に昇る。光が酸のように私の骨に落ちる。痛みで目が覚め、骨が何日間も疼くだろうが、骨には太陽の言葉が焼き付いている。"
+		},
+		{
+			"id": "nightmarehersault",
+			"label": "ヘルソーの悪夢",
+			"actionId": "dream",
+			"requirements": {
+				"dread": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "nightmarehersaultsuccess",
+					"chance": 30
+				}
+			],
+			"startdescription": "降りて行こう。",
+			"description": "ヘルソーがこの事について綴っていたのを思い出した。床の板をこじ開け、下へと潜り込んだ私は、今、床の下に死体のように横たわっている。空気は熱い埃の臭いがする。口の中はトゲだらけだ。今回は望んでいたことを学べなかった――それが何であったとしても。",
+			"warmup": 10
+		},
+		{
+			"id": "nightmarehersaultsuccess",
+			"label": "ヘルソーの悪夢",
+			"actionId": "dream",
+			"effects": {
+				"influenceknockc": 1
+			},
+			"description": "床の板をこじ開け、下へと潜り込んだ私は、今、床の下に死体のように横たわっている。空気は熱い埃の臭いがし、口の中はトゲだらけだが、ここが下の空間なのだ。"
+		}
+	]
+}

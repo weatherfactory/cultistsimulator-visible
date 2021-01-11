@@ -1,0 +1,790 @@
+{
+	"recipes": [
+		{
+			"id": "L_talk_roseopportunity",
+			"label": "Eine Liaison?",
+			"actionId": "talk",
+			"slots": [
+				{
+					"id": "ascension",
+					"label": "Seelenverwandtschaft?",
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "A_startrose_power_initiate",
+					"chance": 100
+				},
+				{
+					"id": "A_startrose_sensation_initiate",
+					"chance": 100
+				},
+				{
+					"id": "A_startrose_change_initiate",
+					"chance": 100
+				},
+				{
+					"id": "A_startrose_enlightenment_initiate",
+					"chance": 100
+				}
+			],
+			"startdescription": ".",
+			"description": "Der Abend nimmt eine Wendung, die ich nicht beabsichtigt hatte. Habe ich etwas Falsches gesagt? Oder passen wir einfach überhaupt nicht zusammen?",
+			"craftable": false,
+			"warmup": 30
+		},
+		{
+			"id": "A_startrose_power_initiate",
+			"actionId": "rose",
+			"label": "Um sich zusammen zu erheben",
+			"requirements": {
+				"follower_lustpower": 1,
+				"resentment": -1,
+				"powermarks": 1
+			},
+			"startdescription": "@#uqtristan|Tristan erhebt sich, bevor ich ausgeredet habe. 'Wir sollten jetzt lieber gehen', sagt er, sehr ruhig, doch als er mir die Hand auf die Schulter legt, zittert sie. \n#uqvalciane|Valciane rückt im Gespräch ein wenig näher an mich heran. Als sie meine Hand nimmt, passt die maschinelle Kraft ihrer Finger zur lodernden Hitze ihrer Haut. 'Es ist mit mir nicht leicht', sagt sie. 'Wir sollten klare Grenzen ziehen.'\n#uqelridge|Elridge hört aufmerksam jedem meiner Worte zu. Seine Augen ruhen immer auf den meinen. Er sagt immer nur 'Ja', doch als wir bei mir zu Hause ankommen, sagt er es auch dann, wenn ich gar keine Frage gestellt habe.\n#uqlaidlaw|Laidlaws Augen leuchten, wenn ich rede. Er scheint den Blick nicht von mir wenden zu können. Seine Hände sind überall, bevor wir beide überhaupt wissen, wie genau das geschehen ist. Nur einen Moment lang zögert der Auktionator. Wir gehen zusammen, bevor noch jemand etwas sagen kann.@",
+			"description": ".",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "forge",
+					"mutationLevel": 1
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "A_startrose_sensation_initiate",
+			"actionId": "rose",
+			"label": "Andere Entdecker",
+			"requirements": {
+				"follower_lustsensation": 1,
+				"resentment": -1,
+				"sensationmarks": 1
+			},
+			"startdescription": "@#uqrose|Rose aalt sich in meinem Arm und lächelt zufrieden. 'Wie früher', sagt sie. 'Was bringst du mich denn nach Hause?'\n#uqsaliba|Saliba hat seine Finger in meinem Haar und grübelt. 'Das wird kein gutes Ende nehmen', verkündet er mit einiger Befriedigung.\n#uqvictor|Über dem Tisch ist Victor der perfekte Gentleman. Eine Hand liegt mit der Handfläche nach oben auf dem Tisch. Eine Motte landet darauf: er schließt die Hand und zerquetscht sie. 'Schöne Erinnerungen', sagt er. 'Gehen wir.'\n#uqviolet|Violet hat sich, irgendwie, an und auf mir drapiert und angefangen, mich mit schmelzenden Küssen zu bedecken. 'Ich werde nicht warten', warnt sie mich. 'Bring mich nach Hause, wenn du weißt, was gut für dich ist.'\n#uqrenira|Renira sitzt vollkommen gefasst im Mittelpunkt des Interesses. Manch einer im Publikum schenkt ihr mehr Aufmerksamkeit als den Tänzern. Wir bewegen uns zusammen wie zwei heiße Tropfen Wachs, die ineinander laufen. 'Ich hoffe doch sehr, dass du mir keine Dummheiten machst', haucht sie unmittelbar bevor sich unsere Lippen treffen. @",
+			"description": ".",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "grail",
+					"mutationLevel": 1
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "A_startrose_enlightenment_initiate",
+			"actionId": "rose",
+			"label": "Geteiltes Licht",
+			"requirements": {
+				"follower_lustenlightenment": 1,
+				"resentment": -1,
+				"enlightenmentmarks": 1
+			},
+			"startdescription": "@#uqenid|Enid kommt mir näher und näher, wie die Reflexion auf einem Wellenkamm, bis sie genau an meiner Seite ist. Sie sagt kein Wort, weder dann noch später.\n#uqauclair|Mit Auclair zu sprechen, ist immer ein wenig wie Fechten und ein wenig wie Buchhaltung, weshalb es überraschend kommt, wenn sie zögert und ihr Zögern dabei auf unelegante Art und Weise in die Länge zieht. 'Ich will dich nicht berühren', sagt sie schließlich, 'aber ich will in dein Bett. Heute Nacht.'\n#uqcat|Katze Karo hört mir zu. Sie hakt sich bei mir ein. 'Das hatte ich mir nicht erträumt', merkt sie an, 'aber das gefällt mir so.' Sie lächelt. 'Ich hatte geträumt, dass ich dich mit zu mir nach Hause nehme. Vielleicht solltest du mich stattdessen mit zu dir nehmen.'\n#uqclifton|Clifton gleitet näher an mich heran. 'Ich habe nichts getrunken', versichert er mir, 'aber betrunken bin ich trotzdem. Liegt vielleicht am Mond.' Er legt versuchsweise seine Hand auf meine Hüfte. 'Vielleicht liegt's an dir. Gehen wir jetzt nach Hause?'\n#uqneville|Neville kann nicht aufhören zu grinsen. Er hängt dir förmlich an den Lippen. 'Ich hätte nie gedacht –', keucht er.\n#uqslee|Slee hat, wie sich herausstellt, ein Gedicht für mich vorbereitet. Es ist sehr schmeichelhaft. Aber es zieht sich endlos hin. Ein Kuss ist eine probate Abkürzung. @\n\n ",
+			"description": ".",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "lantern",
+					"mutationLevel": 1
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "A_startrose_change_initiate",
+			"actionId": "rose",
+			"label": "Wer anders sein wird",
+			"requirements": {
+				"follower_lustchange": 1,
+				"resentment": -1,
+				"changemarks": 1
+			},
+			"startdescription": "@#uqporter|Porter sitzt zusammengerollt auf seinem Platz, regungslos, doch seine Augen funkeln, während er die Bühne beobachtet, und genau so funkeln sie, als ich mich über ihn beuge und ihn küsse. 'Wie du schmeckst', sagt er. 'Wir sind gleich.' Er kichert, dann legt er wieder seine Hand auf mich.\n#uqysabet|Ysabet applaudiert begeistert am Ende jeder Vorstellung. Mit jedem Cocktail, den sie trinkt, wird ihr Applaus lebhafter. Nach unserem 1. Kuss lehnt sie sich zurück, mustert mich, und beginnt wieder zu klatschen.\n#uqclovette|Clovette hält erregt meinen Arm fest. 'So langsam wird mir etwas klar. Ich weiß nicht was, aber es gibt da etwas. Und es geht auch um dich – um dich!' Eine Weile lang sagt sie nichts und dann, sehr viel später, lange nachdem wir den Klub verlassen haben, sagt sie wieder ganz leise: 'Auch um dich.'\n#uqdorothy|Dorothy summt zur Musik. Dorothy bewegt sich unbewusst zusammen mit den Tänzern. Als ich Dorothy küsse, erwidert sie den Kuss mit gleicher Kraft. Sie atmet schwer, als sie sich zurückzieht. 'Ab jetzt werden wir anders sein', sagt sie.\n#uqsylvia|Sylvia wirft sich Oliven in den Mund, während sie die Bühne im Blick behält, und kaut geräuschvoll. Als sie mich küsst, beißt sie so stark in meine Oberlippe, dass sie blutet, und ich habe noch stundelang den Geschmack von Oliven im Mund. 'Ich werde in deine Klamotten kommen', sagt sie hungrig, 'ganz rein. Falls wir passen.'\n#uqleo|Leo sitzt zunächst einmal kerzengerade, doch als Aufregung und Cocktails ihn übermannen, beginnt er sich zu entspannen, bis er sich bis in mich hinein entspannt. 'Ich will anders sein', flüstert er, 'doch ich weiß nicht wie.' Seine Augen sind groß, sein Mund geschmeidig.@",
+			"description": ".",
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "heart",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "moth",
+					"mutationLevel": 1
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "L_checkjealousy",
+			"label": "Noch jemand?",
+			"actionId": "rose",
+			"requirements": {
+				"romanticinterest": 1,
+				"summoned": -1,
+				"corpse": -1
+			},
+			"comments": "re requirements: can't be another if there isn't even one. Also people don't *currently* get jealous of the dead. They're either non-viable, or kept somewhere extremely private",
+			"slots": [
+				{
+					"id": "Who?",
+					"label": "Wer?",
+					"description": "Hand auf Hand, Auge zu Auge.",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"summoned": -1,
+						"corpse": -1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "Gibt es noch jemand anderen? ",
+			"description": ".",
+			"linked": [
+				{
+					"id": "L_activatejealousy",
+					"chance": 100
+				},
+				{
+					"id": "L_roserouter",
+					"chance": 100
+				}
+			],
+			"warmup": 5
+		},
+		{
+			"id": "L_activatejealousy",
+			"label": "Ach, Röschen, du bist krank",
+			"actionId": "rose",
+			"requirements": {
+				"romanticinterest": 2
+			},
+			"comments": "careful: this is a potential weak spot if we ever start making romantic interest additive not binary",
+			"startdescription": "Zwei meiner besonderen Freunde haben mich genau zur gleichen Stunde aufgesucht. Das Gespräch plätschert dahin.",
+			"description": "Mit voranschreitendem Abend bahnen sich die Temperamente ihren Weg und es gibt eine brisante Szene.",
+			"warmup": 10,
+			"effects": {
+				"mystique": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "A_roseend_expulsion",
+					"chance": 100,
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"resentment": 3
+						}
+					}
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "A_roseend_expulsion",
+			"actionId": "roseextra",
+			"comments": "allows us to have only one of a jealous lover break up with the player",
+			"label": "Das wird Folgen haben!",
+			"startdescription": "@#uqauclair|Auclair#uqcat|Katze#uqclovette|Clovette#uqclifton|Clifton#uqdorothy|Dorothy#uqelridge|Elridge\n#uqenid|Enid#uqlaidlaw|Laidlaw#uqleo|Leo#uqneville|Neville#uqporter|Porter#uqrenira|Renira#uqrose|Rose\n#uqsaliba|Saliba#uqslee|Slee#uqsylvia|Sylvia#uqtristan|Tristan\n#uqvalciane|Valciane#uqvictor|Victor#uqviolet|Violet#uqysabet|Ysabet#|Mein Schatz@ nimmt die Vernachlässigung durch mich nicht mehr hin.",
+			"description": "Keiner von uns wird sich gerne an diesen Augenblick erinnern.",
+			"slots": [
+				{
+					"id": "glummer",
+					"label": "Was übrig bleibt",
+					"required": {
+						"contentment": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": -1
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"contentment": -1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "L_roserouter",
+			"actionId": "rose",
+			"linked": [
+				{
+					"id": "L_continuerose_corpse",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_risen",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_power",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_sensation",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_change",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_enlightenment",
+					"chance": 100
+				},
+				{
+					"id": "L_continuerose_noone",
+					"chance": 100
+				}
+			],
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_corpse",
+			"actionId": "rose",
+			"label": "Verloren und krank vor alter Leidenschaft",
+			"requirements": {
+				"corpse": 1,
+				"romanticinterest": 1
+			},
+			"startdescription": "Ich kann nicht. Noch nicht. Die Trauer kriegt noch ihr Recht.",
+			"description": "Mit der Zeit wird der Leib genau so fort sein wie der Geist schon jetzt, und ich werde alles vergessen.\n\nEs sei denn ...",
+			"effects": {
+				"dread": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_risen",
+			"actionId": "rose",
+			"label": "Lass mich niemals gehen",
+			"requirements": {
+				"summoned": 1,
+				"romanticinterest": 1
+			},
+			"slots": [
+				{
+					"id": "Blood?",
+					"label": "Blut?",
+					"description": "Die Kraft des Körpers",
+					"required": {
+						"health": 1
+					}
+				}
+			],
+			"startdescription": "Jemand, der mich liebte, ist nicht mehr wie früher. Wenn ich ein wenig von meinem Blute geben – nur ein bisschen, doch manchmal kommt Gier ins Spiel ... wenn ich nur ein wenig geben, bleibe ich eine Weile in Erinnerung.",
+			"description": "Nein. Was lebendig war, ist nun tot, und mit genug Zeit wird das dann auch alles sein.",
+			"alternativerecipes": [
+				{
+					"id": "A_continuerose_risen_success",
+					"chance": 100
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "summoned",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "L_roseend_risen",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_continuerose_risen_success",
+			"actionId": "rose",
+			"label": "Lass mich niemals gehen",
+			"requirements": {
+				"health": 1
+			},
+			"startdescription": "Die Farben der Haut meines Schatzes – was davon noch übrig ist – werden tiefer und satter. Jenes alte Licht funkelt wieder in den Augen.",
+			"description": "@#spirit_wintera_edge|Schmerz, Kälte, Elend. Mehr bleibt uns nicht, und weil uns das bleibt, ist es vielleicht kostbar.\n#spirit_wintera_moth|Die Hände, die Lippen sind reif vor Leben, doch es ist ein frostiges Leben von Apfelschale und Lilienblütenblatt. Und doch sind es eben jene Hände und jene Lippen.@",
+			"effects": {
+				"dread": 1
+			},
+			"deckeffect": {
+				"roserewards": 1
+			},
+			"aspects": {
+				"damagehealth": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_power",
+			"actionId": "rose",
+			"label": "Eine Liaison: Der Nutzen der Stärke",
+			"requirements": {
+				"follower_lustpower": 1,
+				"romanticinterest": 1
+			},
+			"slots": [
+				{
+					"id": "What?",
+					"label": "Gesundheit",
+					"description": "Die Kraft des Körpers",
+					"required": {
+						"health": 1,
+						"dread": 1,
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "Mein Schatz ist nicht leicht zu befriedigen – aber ich ja auch nicht.",
+			"description": "Gerade jetzt ... Mir fehlt einfach die Energie.",
+			"alternativerecipes": [
+				{
+					"id": "A_rose_binoff_dread",
+					"chance": 100
+				},
+				{
+					"id": "A_rose_binoff_funds",
+					"chance": 100
+				},
+				{
+					"id": "A_continuerose_power_success",
+					"chance": 100
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "L_roseend",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_continuerose_power_success",
+			"actionId": "rose",
+			"label": "Eine Liaison: Der Nutzen der Stärke",
+			"requirements": {
+				"health": 1
+			},
+			"startdescription": "Wenn ich fertig bin, werden wir beide tief und fest schlafen. Doch ich bin nicht nicht fertig.",
+			"description": "@#uqtristan|Tristan trinkt keine harten Sachen, nur mit mir zusammen. Er lässt nicht zu, dass die Uhr nicht aufgezogen ist, nur in den Nächten, in denen ich zu Besuch bin. Er schließt nicht gern die Augen, doch manchmal, wenn wir zusammen sind, kann er gar nicht anders, als sie zu schließen.\n#uqvalciane|Valcianes Haut glüht mit der Hitze eines Ofens. Ihre Stärke wird herrlich auf die Probe gestellt. Immer wenn ich gehe, folgt sie mir die Treppe hinab, um mir noch einen letzten Kuss zu geben.\n#uqelridge|Elridge macht alles ohne zu zögern, elegant und effizient, wobei er genau weiß, was meine Vorlieben sind.\n#uqlaidlaw|Laidlaw ist einfallsreich und unermüdlich. Er macht mir gerne kleine Geschenke: Uhrwerke, Spirituosen, Amüsements in Käfigen.@",
+			"effects": {
+				"contentment": 1
+			},
+			"deckeffect": {
+				"roserewards": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_sensation",
+			"actionId": "rose",
+			"label": "Eine Liaison: Die Imperative der Wonne",
+			"requirements": {
+				"follower_lustsensation": 1,
+				"romanticinterest": 1
+			},
+			"slots": [
+				{
+					"id": "What?",
+					"label": "Leidenschaft",
+					"description": "Der tiefste Imperativ",
+					"required": {
+						"passion": 1,
+						"dread": 1,
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "Mein Schatz kennt bei seinen Experimenten der Lust kein Ende des Einfallsreichtums – doch bislang stehe ich ihm in nichts nach.",
+			"description": "Gerade jetzt ... Mir fehlt einfach die Zeit.",
+			"alternativerecipes": [
+				{
+					"id": "A_rose_binoff_dread",
+					"chance": 100
+				},
+				{
+					"id": "A_rose_binoff_funds",
+					"chance": 100
+				},
+				{
+					"id": "A_continuerose_sensation_success",
+					"chance": 100
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 30,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "L_roseend",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_continuerose_sensation_success",
+			"actionId": "rose",
+			"label": "Eine Liaison: Die Imperative der Wonne",
+			"requirements": {
+				"passion": 1
+			},
+			"startdescription": "Tagelang – tagelang – wird die Erinnerung daran meine Gedanken durcheinanderbringen wie ein Blitz eine Sommernacht.",
+			"description": "@#uqrose|Rose ist auf mir, verzehrend, der Augenblick, in dem ich die Schwelle passiere. Nur einmal hat sie mich 'Victor' genannt. Hinterher haben wir das nie mehr erwähnt.\n#uqsaliba|Saliba ist immer rastlos, immer unermüdlich. Er lächelt nie. Manchmal bricht, hinterher, seine Stimme, als wäre er vielleicht den Tränen nahe, doch seine Augen bleiben trocken.\n#uqvictor|Victor bringt mir immer eine einzelne Rose. Er zögert immer, wenn er sie mir gibt. Danach zögert er nie.\n#uqviolet|Violets Begeisterung ist bodenlos wie ein finsterer Brunnen. Ihre Lust hat etwas Gnadenloses, doch sie hat mir noch nie bleibende Schmerzen zugefügt.\n#uqrenira|Als ich eintreffe, ist Renira von Parfüm umnebelt. Als ich gehe, ist sie ein herrliches Arrangement aus entspannten Gliedern. Ich trage sie noch tagelang bei mir.@",
+			"effects": {
+				"contentment": 1
+			},
+			"deckeffect": {
+				"roserewards": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_enlightenment",
+			"actionId": "rose",
+			"label": "Eine Liaison: Die Entrückung des Begreifens",
+			"requirements": {
+				"follower_lustenlightenment": 1,
+				"romanticinterest": 1
+			},
+			"slots": [
+				{
+					"id": "What?",
+					"label": "Verstand",
+					"description": "Das wahre Licht des Geistes.",
+					"required": {
+						"reason": 1,
+						"dread": 1,
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "Mein Schatz und ich wetteifern in den Räumen über und unter dem Fleische. Ich muss genau so intensiv sein.",
+			"description": "Gerade jetzt ... Ich kann mich einfach nicht konzentrieren.",
+			"alternativerecipes": [
+				{
+					"id": "A_rose_binoff_dread",
+					"chance": 100
+				},
+				{
+					"id": "A_rose_binoff_funds",
+					"chance": 100
+				},
+				{
+					"id": "A_continuerose_enlightenment_success",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "L_roseend",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_continuerose_enlightenment_success",
+			"actionId": "rose",
+			"label": "Eine Liaison: Die Entrückung des Begreifens",
+			"requirements": {
+				"reason": 1
+			},
+			"startdescription": "Zusammen sind wir heller.",
+			"description": "@#uqenid|Enid schließt lieber die Augen als mich anzusehen. Sie sagt, das Sehen schmerze sie. Sie sagt das mit einem solchen Verlangen, dass ich es ihr nicht übel nehmen kann.\n#uqauclair|Auclair stellt die Schachfiguren auf. Jeden Abend sind die Regeln ein wenig anders. Doch am Ende des Abends sind wir ohnehin so abgelenkt, dass wir sie nicht mehr beachten.\n#uqcat|Katze Karo kennt den Weg. Katze Karo kennt so viele Wege. Wir werden sie zusammen gehen, wenn der Mond durch die Vorhänge in die Finsternis lugt.\n#uqclifton|Wenn ich zu Clifton komme, sind seine Räume immer gleißend hell erleuchtet – Kerzen, Bogenlampen, sogar Öllampen. Er besteht darauf. Im Verkaufe des Abends gehen die Lichter nach und nach aus, bis wir uns schließlich in völliger Dunkelheit einander widmen.\n#uqneville|Neville empfängt mich mit Tee und Blumen. Er sitzt mit im Schneidersitz zu Füßen und wartet darauf, dass ich etwas sage. Es kostet immer einige Mühe, ihn dazu zu bringen, die Initiative zu ergreifen, doch ich bin nie enttäuscht.\n#uqslee|Slee taucht stets mit Gedichten auf. Manchmal bin ich in der Stimmung für Gedichte. Manchmal bin ich in der Stimmung für etwas anderes.@",
+			"effects": {
+				"contentment": 1
+			},
+			"deckeffect": {
+				"roserewards": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_change",
+			"actionId": "rose",
+			"label": "Eine Liaison: Damals, als wir ...",
+			"requirements": {
+				"follower_lustchange": 1,
+				"romanticinterest": 1
+			},
+			"slots": [
+				{
+					"id": "What?",
+					"description": "Ein Drang.",
+					"required": {
+						"passion": 1,
+						"dread": 1,
+						"funds": 1
+					}
+				}
+			],
+			"startdescription": "Mein Schatz und ich teilen ein Verlangen, auch wenn wir es selbst gar nicht begreifen mögen.",
+			"description": "Gerade jetzt ... Ich kann einfach nicht.",
+			"alternativerecipes": [
+				{
+					"id": "A_rose_binoff_dread",
+					"chance": 100
+				},
+				{
+					"id": "A_rose_binoff_funds",
+					"chance": 100
+				},
+				{
+					"id": "A_continuerose_change_success",
+					"chance": 100
+				}
+			],
+			"warmup": 30,
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"craftable": false,
+			"linked": [
+				{
+					"id": "L_roseend",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "A_continuerose_change_success",
+			"actionId": "rose",
+			"label": "Eine Liaison: Damals, als wir ...",
+			"requirements": {
+				"passion": 1
+			},
+			"startdescription": "Zusammen werden wir etwas anderes.",
+			"description": "\n@#uqporter|Porter hat sich die Mühe gemacht, vor unserer Zeit zusammen noch zu baden. Er hat sich sogar rasiert, peinlichst genau sogar.\n#uqysabet|Ysabet bewegt sich flink und fast unmerklich, sodass sie nie wirklich nur an einem Ort zu sein scheint. Doch irgendwie ist sie immer dort, wo sie sein sollte.\n#uqclovette|Clovette lacht bei den seltsamsten Anlässen, doch ihr Lachen passt immer. Ihre Freude lässt sich fast schon mit den Händen greifen. Man könnte sich darin verlieren. Man käme nicht unverändert wieder heraus.\n#uqdorothy|Dorothy beharrt darauf, dass das Grammophon spielen müsse, von dem Augenblick an, in dem wir uns berühren, bis zu dem Augenblick, in dem wir scheiden. Ab und zu gibt es Unterbrechungen. Doch sie gleicht diese Unterbrechungen wieder aus, und die Erinnerung an die Musik ist mit der Erinnerung an den Abend verwoben wie ein heller Faden in Satin.\n#uqsylvia|Sylvia schneidet dir mit ihrer Schere die Kleider vom Leibe, dann schneidet sie sich ihre Kleider mit ihrer Schere vom Leibe, und dann bestimmt sie, wo du als Nächstes etwas tun sollst. Das ist kein bequemer Ort.\n#uqleo|Leo freut sich, mich zu sehen – so sehr – so sehr, dass man die Gestalt jener Freude fast schon durch seine fragile Haut zu sehen glaubt. Ich werde sie mit den Fingern abfahren, ihn erregen, ihn beruhigen, während wir das werden, was wir zusammen sind.@",
+			"effects": {
+				"contentment": 1
+			},
+			"deckeffect": {
+				"roserewards": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_continuerose_noone",
+			"label": "Einsamkeit",
+			"actionId": "rose",
+			"requirements": {
+				
+			},
+			"startdescription": "Ich bin allein, doch das gibt mir auch Frieden.",
+			"description": "Manche Tage sind besser als andere. Manchmal ist der Himmel nichts als ein schmutziges Laken. Manchmal fließt der Fluss ganz klar.",
+			"effects": {
+				"contentment": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "L_roseend",
+			"actionId": "rose",
+			"requirements": {
+				"resentment": 3
+			},
+			"label": "Das wird Folgen haben!",
+			"startdescription": "@#uqauclair|Auclair#uqcat|Katze#uqclovette|Clovette#uqclifton|Clifton#uqdorothy|Dorothy#uqelridge|Elridge#uqenid|Enid#uqlaidlaw|Laidlaw#uqleo|Leo#uqneville|Neville#uqporter|Porter#uqrenira|Renira#uqrose|Rose#uqsaliba|Saliba#uqslee|Slee#uqsylvia|Sylvia#uqtristan|Tristan#uqvalciane|Valciane#uqvictor|Victor#uqviolet|Violet#uqysabet|Ysabet#uq|Mein Schatz@ nimmt die Vernachlässigung durch mich nicht mehr hin.",
+			"description": "Keiner von uns wird sich gerne an diesen Augenblick erinnern.",
+			"slots": [
+				{
+					"id": "glummer",
+					"label": "Was übrig bleibt",
+					"required": {
+						"contentment": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": -1
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"contentment": -1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "L_roseend_risen",
+			"actionId": "rose",
+			"requirements": {
+				"resentment": 3,
+				"summoned": 1
+			},
+			"label": "Das wird Folgen haben!",
+			"startdescription": "Die Erinnerung überdauert selbst den Tod. Wie die Wut. Wie die Verachtung. Auch wie die Liebe? Hier werde ich keine Antwort darauf finden.",
+			"description": "Dies sind die letzten Augenblicke eines Endes, das längst begonnen hat. [Selbst die Toten vergeben keine Vernachlässigung.]",
+			"slots": [
+				{
+					"id": "glummer",
+					"label": "Was übrig bleibt",
+					"required": {
+						"contentment": 1
+					},
+					"greedy": true
+				}
+			],
+			"mutations": [
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": -1
+				}
+			],
+			"effects": {
+				"dread": 1,
+				"contentment": -1
+			},
+			"warmup": 10,
+			"craftable": false
+		},
+		{
+			"id": "A_rose_binoff_dread",
+			"actionId": "rose",
+			"requirements": {
+				"dread": 1
+			},
+			"label": "Die Affäre durch offene Verzweiflung beenden  ",
+			"startdescription": "'Wir haben keine Zukunft. Vielleicht noch nicht einmal getrennt, doch gewiss nicht zusammen.'",
+			"description": "Mein ehemaliger Schatz geht. Das Schweigen verdichtet sich.",
+			"effects": {
+				"dread": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": -1
+				}
+			]
+		},
+		{
+			"id": "A_rose_binoff_funds",
+			"actionId": "rose",
+			"requirements": {
+				"funds": 1
+			},
+			"label": "Die Affäre durch Kränkung beenden",
+			"startdescription": "'Komm schon. Kauf dir was Schönes.'",
+			"description": "Die Tür schlägt hinter meinem früheren Schatz zu.",
+			"effects": {
+				"funds": -1,
+				"dread": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "resentment",
+					"mutationLevel": 2,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "romanticinterest",
+					"mutateAspectId": "romanticinterest",
+					"mutationLevel": -1
+				}
+			]
+		}
+	]
+}

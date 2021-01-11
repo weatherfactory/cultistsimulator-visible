@@ -1,0 +1,506 @@
+{
+	"elements": [
+		{
+			"id": "aladim",
+			"label": "イブン・アル＝アディム博士",
+			"aspects": {
+				"tutoraramaic": 1,
+				"tutor": 1,
+				"patron": 1
+			},
+			"description": "アレッポの男として知られるイブン・アル＝アディム博士は、見落とされがちな歴史に興味を持っている。そんな彼が依頼をしてきた。",
+			"unique": true,
+			"xtriggers": {
+				"commissionfulfilled": "aladimaway",
+				"killmortal": "rumour",
+				"derangemortal": "rumour"
+			},
+			"slots": [
+				{
+					"id": "Commission",
+					"label": "依頼",
+					"actionId": "talk",
+					"required": {
+						"commission": 1
+					}
+				},
+				{
+					"id": "Manuscript",
+					"label": "原稿",
+					"actionId": "talk",
+					"required": {
+						"article": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "aladimready",
+			"label": "イブン・アル＝アディム博士",
+			"aspects": {
+				"tutoraramaic": 1,
+				"tutor": 1,
+				"patron": 1
+			},
+			"description": "アレッポの男として知られるイブン・アル＝アディム博士は、見落とされがちな歴史に興味を持っている。そんな彼があなたの助けを必要としている。",
+			"unique": true,
+			"xtriggers": {
+				"commissiongiven": "aladim",
+				"killmortal": "rumour",
+				"derangemortal": "rumour"
+			}
+		},
+		{
+			"id": "bechet",
+			"label": "ベシェ夫人",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1,
+				"tutor": 1,
+				"tutorgreek": 1
+			},
+			"description": "オランプ・ベシェ夫人は、他の文芸誌では恐ろしすぎたり、スリリングすぎて掲載できない記事を取り扱うケリシャム・レビューの編集者だ。そんな彼女から依頼が寄せられた。",
+			"unique": true,
+			"xtriggers": {
+				"commissionfulfilled": "bechetaway",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"slots": [
+				{
+					"id": "Commission",
+					"label": "依頼",
+					"actionId": "talk",
+					"required": {
+						"commission": 1
+					}
+				},
+				{
+					"id": "Manuscript",
+					"label": "原稿",
+					"actionId": "talk",
+					"required": {
+						"article": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "bechetready",
+			"label": "ベシェ夫人",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1,
+				"tutor": 1,
+				"tutorgreek": 1
+			},
+			"description": "オランプ・ベシェ夫人は、他の文芸誌では恐ろしすぎたり、スリリングすぎて掲載できない記事を取り扱うケリシャム・レビューの編集者だ。そんな彼女はあなたの助けを必要としている。",
+			"unique": true,
+			"xtriggers": {
+				"commissiongiven": "bechet",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			}
+		},
+		{
+			"id": "jannings",
+			"label": "ジャニングス伯爵",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1,
+				"tutor": 1,
+				"tutorlatin": 1
+			},
+			"description": "ゴットローブ・ジャニングス伯爵は、大陸の医師とデュエリストの会の代表をしている。そんな彼から依頼が寄せられた。",
+			"unique": true,
+			"xtriggers": {
+				"commissionfulfilled": "janningsaway",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			},
+			"slots": [
+				{
+					"id": "Commission",
+					"label": "依頼",
+					"actionId": "talk",
+					"required": {
+						"commission": 1
+					}
+				},
+				{
+					"id": "Manuscript",
+					"label": "原稿",
+					"actionId": "talk",
+					"required": {
+						"article": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "janningsready",
+			"label": "ジャニングス伯爵",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1,
+				"tutor": 1,
+				"tutorlatin": 1
+			},
+			"description": "ゴットローブ・ジャニングス伯爵は、大陸の医師とデュエリストの会の代表をしている。そんな彼はあなたの助けを必要としている。",
+			"unique": true,
+			"xtriggers": {
+				"commissiongiven": "jannings",
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			}
+		},
+		{
+			"id": "poppyready",
+			"label": "ポピー・ラスセルズ",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1
+			},
+			"description": "愛想の良い財産家の女性。あなたと話したいと言っている。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			}
+		},
+		{
+			"id": "poppy",
+			"label": "ポピー・ラスセルズ",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1
+			},
+			"description": "愛想の良い財産家の女性。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic"
+			}
+		},
+		{
+			"id": "poppycommissionready",
+			"label": "ポピー・ラスセルズ",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1
+			},
+			"description": "愛想の良い財産家の女性。あなたに助けてほしいことがあると言っている。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"commissiongiven": "poppycommission"
+			},
+			"icon": "poppyready"
+		},
+		{
+			"id": "poppycommission",
+			"label": "ポピー・ラスセルズ",
+			"aspects": {
+				"mortal": 1,
+				"patron": 1
+			},
+			"description": "愛想の良い財産家の女性。そんな彼女から依頼が寄せられた。",
+			"unique": true,
+			"xtriggers": {
+				"killmortal": "corpse",
+				"derangemortal": "lunatic",
+				"commissionfulfilled": "poppyaway"
+			},
+			"slots": [
+				{
+					"id": "Commission",
+					"label": "依頼",
+					"actionId": "talk",
+					"required": {
+						"commission": 1
+					}
+				},
+				{
+					"id": "Manuscript",
+					"label": "原稿",
+					"actionId": "talk",
+					"required": {
+						"article": 1
+					}
+				}
+			],
+			"icon": "poppy"
+		},
+		{
+			"id": "aladimaway",
+			"label": "イブン・アル＝アディム博士",
+			"description": "アレッポの男として知られるイブン・アル＝アディム博士は、見落とされがちな歴史に興味を持っている。今は連絡が取れないが、すぐに戻ってくるだろう。",
+			"lifetime": 120,
+			"decayTo": "aladimready",
+			"icon": "aladim"
+		},
+		{
+			"id": "bechetaway",
+			"label": "ベシェ夫人",
+			"description": "オランプ・ベシェ夫人は、他の文芸誌では恐ろしすぎたり、スリリングすぎて掲載できない記事を取り扱うケリシャム・レビューの編集者だ。今は出版準備で忙しいが、またすぐに会えるようになるだろう。",
+			"lifetime": 120,
+			"decayTo": "bechetready",
+			"icon": "bechet"
+		},
+		{
+			"id": "janningsaway",
+			"label": "ジャニングス伯爵",
+			"lifetime": 120,
+			"description": "ゴットローブ・ジャニングス伯爵は、大陸の医師とデュエリストの会の代表をしている。今は国外にいるが、すぐに会えるようになるだろう。",
+			"decayTo": "janningsready",
+			"icon": "jannings"
+		},
+		{
+			"id": "poppyaway",
+			"label": "ポピー・ラスセルズ",
+			"description": "愛想の良い財産家の女性。現在は来客を受け付けていない。",
+			"lifetime": 120,
+			"decayTo": "poppycommissionready",
+			"icon": "poppy"
+		},
+		{
+			"id": "benefactorm",
+			"label": "ティモシー・マンデー卿",
+			"description": "悲しげな目と後退する生え際を持つエレガントな紳士。人懐っこくて神経質な笑い方をしがちである。強い酒にはもう手を出さないだろう。",
+			"animFrames": 1,
+			"uniquenessgroup": "uqbenefactorm",
+			"aspects": {
+				"benefactor": 1,
+				"mortal": 1
+			},
+			"slots": [
+				{
+					"id": "health",
+					"actionId": "work",
+					"label": "体力",
+					"required": {
+						"health": 1
+					}
+				},
+				{
+					"id": "funds",
+					"actionId": "work",
+					"label": "魅惑",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"employment": "benefactorm",
+				"rejection": "benefactorm_rejectedplayer",
+				"killmortal": "corpse",
+				"avowal": "benefactorm_proposedtoplayer"
+			},
+			"lifetime": 180,
+			"decayTo": "benefactorm_rejectedplayer"
+		},
+		{
+			"id": "benefactorf",
+			"label": "スタンフォードの第四侯爵夫人、ニコール",
+			"description": "慎重で賢く、寄り目で、年齢の割には肌がきれいな女性。長い間、自分の家計を管理しており、慈善事業にも熱心に寄付をしている。",
+			"animFrames": 1,
+			"uniquenessgroup": "uqbenefactorf",
+			"aspects": {
+				"benefactor": 1,
+				"mortal": 1
+			},
+			"slots": [
+				{
+					"id": "health",
+					"actionId": "work",
+					"label": "体力",
+					"required": {
+						"health": 1
+					}
+				},
+				{
+					"id": "funds",
+					"actionId": "work",
+					"label": "魅惑",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"xtriggers": {
+				"employment": "benefactorf",
+				"rejection": "benefactorf_rejectedplayer",
+				"killmortal": "corpse",
+				"avowal": "benefactorf_proposedtoplayer"
+			},
+			"lifetime": 180,
+			"decayTo": "benefactorf_rejectedplayer"
+		},
+		{
+			"id": "benefactorm_rejectedplayer",
+			"label": "ティモシー・マンデー卿",
+			"description": "ティモシー卿は、私に手紙を送ってこなくなった。",
+			"uniquenessgroup": "uqbenefactorm",
+			"aspects": {
+				"mortal": 1
+			},
+			"xtriggers": {
+				"killmortal": "corpse"
+			},
+			"icon": "benefactorm"
+		},
+		{
+			"id": "benefactorf_rejectedplayer",
+			"label": "スタンフォードの第四侯爵夫人、ニコール",
+			"description": "スタンフォード公爵夫人は、私のどこを気に入っていたのか自分でもわからない、と言っていたらしい。",
+			"uniquenessgroup": "uqbenefactorf",
+			"aspects": {
+				"mortal": 1
+			},
+			"xtriggers": {
+				"killmortal": "corpse"
+			},
+			"icon": "benefactorf"
+		},
+		{
+			"id": "benefactorm_proposedtoplayer",
+			"label": "ティモシー・マンデー卿",
+			"description": "情熱の瞬間に促されて、ティモシー卿が結婚を申し込んできた。チャンスを逃さずに受け入れたら、私の人生は変わり......前に進むべき道を失ってしまう。[閣下の熱意が冷める前に、または断られたと勘違いされる前に、話しかける。]",
+			"uniquenessgroup": "uqbenefactorm",
+			"aspects": {
+				"mortal": 1,
+				"benefactor_proposal": 1
+			},
+			"xtriggers": {
+				"killmortal": "benefactorwill"
+			},
+			"lifetime": 180,
+			"decayTo": "benefactorm_rejectedplayer",
+			"icon": "benefactorm"
+		},
+		{
+			"id": "benefactorf_proposedtoplayer",
+			"label": "スタンフォードの第四侯爵夫人、ニコール",
+			"description": "情熱の瞬間に促されて、ニコール公爵夫人が結婚を申し込んできた。チャンスを逃さずに受け入れたら、私の人生は変わり......前に進むべき道を失ってしまう。[公爵夫人の熱意が冷める前に、または断られたと勘違いされる前に、話しかける。]",
+			"uniquenessgroup": "uqbenefactorf",
+			"aspects": {
+				"mortal": 1,
+				"benefactor_proposal": 1
+			},
+			"xtriggers": {
+				"killmortal": "benefactorwill"
+			},
+			"lifetime": 180,
+			"decayTo": "benefactorf_rejectedplayer",
+			"icon": "benefactorf"
+		},
+		{
+			"id": "benefactorwill",
+			"label": "故人が残した文書",
+			"description": "私を愛してくれた人が亡くなった。遺言を残してくれたかもしれない。弁護士に相談してみよう。[追求したい場合は行動を起こせば良いが......自分に疑惑がかかる可能性が少しばかりある。]",
+			"slots": [
+				{
+					"id": "lawyerfees",
+					"actionId": "study",
+					"label": "弁護士費用",
+					"consumes": true,
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"aspects": {
+				"legacyplotitem": 1
+			},
+			"icon": "documentgeneric"
+		},
+		{
+			"id": "sulochana",
+			"label": "スロチャナ・アマヴァシャ",
+			"description": "饒舌で元気で明るい目をした、エクディシスクラブのオーナー。",
+			"animFrames": 1,
+			"unique": true,
+			"aspects": {
+				"tutorsanskrit": 1,
+				"tutor": 1,
+				"patron": 1
+			}
+		},
+		{
+			"id": "echidna.enroute",
+			"label": "E夫人が向かっている",
+			"description": "スロチャナの「姉」であるE夫人は「怪物の母」と呼ばれている。普段どこに潜んでいるのかは不明だが、海のこちら側ではないのは確かだ。ここに来るまでには時間がかかるだろう。",
+			"unique": true,
+			"lifetime": 180,
+			"decayTo": "echidna"
+		},
+		{
+			"id": "echidna",
+			"label": "E夫人",
+			"description": "自称「怪物の母」。ぶかぶかのディルンドルのような緑灰色の服を着た、元気で小太りな女性。",
+			"aspects": {
+				"patron": 1
+			},
+			"animFrames": 1,
+			"unique": true
+		},
+		{
+			"id": "marinette.enroute",
+			"label": "操り人形の聖母は向かってる",
+			"description": "スロチャナの「姉」は、普段は「操り人形の聖母」としか呼ばれていない。彼女はもうすぐ、夜になればここに着くだろう。",
+			"unique": true,
+			"lifetime": 180,
+			"decayTo": "marinette"
+		},
+		{
+			"id": "marinette",
+			"label": "マリネット、「操り人形の聖母」",
+			"description": "腐った血の臭いがして、喋るたびに顎の骨がカチンと音を立てる。衣服や骨の下に身を潜めているのは女性だろうか。もしかすると、操り人形師の技なのかもしれない。",
+			"aspects": {
+				"patron": 1
+			},
+			"animFrames": 1,
+			"unique": true
+		},
+		{
+			"id": "kleidouchos.enroute",
+			"label": "シュリュッセル夫人は向かっている",
+			"description": "テレサ・ガルミエの「ペンパル」、日々の鍵の持ち主、スロチャナの「姉」がウィーンからやってくる。駅で会った方がいいかもしれない。",
+			"aspects": {
+				"patron": 1
+			},
+			"lifetime": 180,
+			"decayTo": "kleidouchos"
+		},
+		{
+			"id": "kleidouchos",
+			"label": "シュリュッセル夫人",
+			"description": "白と黒の服を着て、皺だらけ顔立ちをした元気で強気な女性。彼女が瞬きをするところを見た人はいない。スカートの中から小さな黒い子犬が顔をのぞかせている。",
+			"aspects": {
+				"patron": 1
+			}
+		},
+		{
+			"id": "naenia",
+			"label": "「ナエニア嬢」",
+			"description": "雪色の目を持ち、アイボリー色の髪を刈り上げた黒い肌の女性が、スタージャスミンが生い茂る小さな大理石の墓に立っている絵。「1811年、ジョナス・B・ムンク」とサインされている。",
+			"slots": [
+				{
+					"id": "subject",
+					"label": "記憶",
+					"description": "ナエニア嬢に話しかけられたことは、一度もない。彼女はただの絵画だが、後になって、私はいつも彼女が言ったことを思い出すのだ。",
+					"actionId": "talk",
+					"required": {
+						"memory": 1,
+						"ascension.remembrance.offering": 1
+					}
+				}
+			],
+			"aspects": {
+				"patron": 1
+			}
+		}
+	]
+}

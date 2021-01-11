@@ -1,0 +1,382 @@
+{
+    "recipes": [
+        {
+            "id": "studyupgrade_downgrade_lore_hint",
+            "label": "增长关于无形之术的知识？",
+            "actionId": "study",
+            "requirements": {
+                "lore": 1,
+                "edge": -1,
+                "forge": -1,
+                "grail": -1,
+                "heart": -1,
+                "knock": -1,
+                "lantern": -1,
+                "moth": -1,
+                "secrethistories": -1,
+                "winter": -1,
+                "alzabo": -1,
+                "prealzabo": -1
+            },
+            "startdescription": "如果我有两份性相和等级相同的密传片段，我就能把它们放在一起研究，增进我的理解。如果使用<b>理性</b>，我就能分析密传，将其分解成级别较低的片段。或者我可以用另一种密传来拗转它……",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "studyupgradelore_hint",
+            "label": "增长关于无形之术的知识？",
+            "actionId": "study",
+            "requirements": {
+                "lore": 1,
+                "healthskill": -1,
+                "alzabo": -1,
+                "prealzabo": -1
+            },
+            "startdescription": "如果我有两份性相和等级相同的密传片段，我就能把它们放在一起研究，增进我的理解。或者我可以用另一种密传来拗转它……",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "studyprealzabo_hint",
+            "label": "大胆的试验",
+            "actionId": "study",
+            "requirements": {
+                "prealzabo": 1
+            },
+            "startdescription": "我只需要购买最后的几样原料，然后就可以准备进行调制了。我必须鼓起勇气……去寻找一份合适的餐点。",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "studyalzabo_hint",
+            "label": "蜜渍白鸽之宴",
+            "actionId": "study",
+            "requirements": {
+                "alzabo": 1
+            },
+            "startdescription": "我可以通过进食<b>残骸</b>来保住他们拥有的知识中的一小点，使其不至化为尘土。说不定我之后还得重蹈此行。",
+            "craftable": false,
+            "hintonly": true
+        },
+        {
+            "id": "translatelatinhint",
+            "label": "翻译拉丁语？",
+            "actionId": "study",
+            "requirements": {
+                "textlatin": 1
+            },
+            "startdescription": "我的拉丁语水平还不足以解读此文。我或许可以找本教材，或者雇个教师。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translategreekhint",
+            "label": "翻译希腊语？",
+            "actionId": "study",
+            "requirements": {
+                "textgreek": 1
+            },
+            "startdescription": "我的希腊语水平还不足以解读此文。我或许可以找本教材，或者雇个教师。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatearamaichint",
+            "label": "翻译亚兰语？",
+            "actionId": "study",
+            "requirements": {
+                "textaramaic": 1
+            },
+            "startdescription": "我的亚兰语水平还不足以解读此文。我或许可以找本教材，或者雇个教师。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatesanskrithint",
+            "label": "翻译梵语？",
+            "actionId": "study",
+            "requirements": {
+                "textsanskrit": 1
+            },
+            "startdescription": "我的梵语水平还不足以解读此文。我或许可以找本教材，或者雇个教师。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatefucinehint",
+            "label": "翻译富奇诺语？",
+            "actionId": "study",
+            "requirements": {
+                "textfucine": 1
+            },
+            "startdescription": "我并不懂富奇诺语，恐怕活着的人里没有人懂了。或许哪里能发现类似罗塞塔的石碑……也许我可以找一个不完全算活人的教师。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatephrygianhint",
+            "label": "翻译弗里吉亚语？",
+            "actionId": "study",
+            "requirements": {
+                "textphrygian": 1
+            },
+            "startdescription": "我并不懂弗里吉亚语，恐怕活着的人里没有人懂了。或许哪里能发现类似罗塞塔的石碑……也许我可以找一个不完全算活人的教师。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatemandaichint",
+            "label": "翻译渊深曼达安语？",
+            "actionId": "study",
+            "requirements": {
+                "textmandaic": 1
+            },
+            "startdescription": "我并不懂渊深曼达安语，恐怕活着的人里没有人懂了。或许哪里能发现类似罗塞塔的石碑……也许我可以找一个不完全算活人的教师。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "translatevakhint",
+            "label": "翻译伐诃语？",
+            "actionId": "study",
+            "requirements": {
+                "textvak": 1
+            },
+            "startdescription": "我并不懂伐诃语，恐怕活着的人里没有人懂了。或许哪里能发现类似罗塞塔的石碑……也许我可以找一个不完全算活人的教师。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "studyincreasehealthskilld_wronglore",
+            "label": "锻炼身体：独家技巧？",
+            "actionId": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "lore": 1
+            },
+            "startdescription": "这篇<b>密传</b>在此处一无用处。我必须尝试点别的。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasehealthfurtherhint",
+            "label": "增进我的健康？",
+            "actionId": "study",
+            "requirements": {
+                "vitality": 2
+            },
+            "startdescription": "我越是<b>健康</b>，就需要越多的<b>活力</b>。[使用“体魄”技能增加“健康”。]",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasereasonfurtherhint",
+            "label": "增进我的理性？",
+            "actionId": "study",
+            "requirements": {
+                "erudition": 2
+            },
+            "startdescription": "我越是<b>理性</b>，就需要越多的<b>博闻</b>。[使用“学识”技能增长“理性”。]",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasepassionfurtherhint",
+            "label": "增进我的激情？",
+            "actionId": "study",
+            "requirements": {
+                "glimmering": 2
+            },
+            "startdescription": "我越是<b>激情</b>，就需要越多的</b>灵感<b>。[使用“想象”技能增加“激情”。]",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "studyupgradeinfluences.apostlelanternhint",
+            "label": "保持新鲜感",
+            "actionId": "study",
+            "requirements": {
+                "apostlelantern.pillar3": 1
+            },
+            "startdescription": "即便是最大的诱惑，随着时间推移，也会逐渐变得明灭而黯淡。我须得用痴迷之色激活将其唤醒。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "studyupgradeinfluenceshint2",
+            "label": "升级影响？",
+            "actionId": "study",
+            "requirements": {
+                "influence": 2,
+                "lore": -1,
+                "healthskill": -1,
+                "reasonskill": -1,
+                "passionskill": -1
+            },
+            "startdescription": "恰当地组合<b>影响</b>有可能增强其法力……前提是我拥有相应的无形之术知识。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasehealthfurtherhintpluswithskillneedslore",
+            "label": "将我的<b>技能</b>提升至非凡境地？",
+            "actionId": "study",
+            "requirements": {
+                "vitalityplus": 1,
+                "skillhealthc": 1
+            },
+            "startdescription": "我需要足够<b>学有所成</b>……和更多其他东西。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasehealthfurtherhintpluswithskill",
+            "label": "增进我的健康？",
+            "actionId": "study",
+            "requirements": {
+                "vitalityplus": 1,
+                "healthskill": 1
+            },
+            "startdescription": "我需要更加学有所成。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasehealthfurtherhintplus",
+            "label": "增进我的健康？",
+            "actionId": "study",
+            "requirements": {
+                "vitalityplus": 1
+            },
+            "startdescription": "我得将它和<b>力量</b>技能一起运用。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasehealthfurtherhint1",
+            "label": "增进我的健康？",
+            "actionId": "study",
+            "requirements": {
+                "vitality": 1
+            },
+            "startdescription": "我需要更多。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasereasonfurtherhintpluswithskillneedslore",
+            "label": "将我的<b>技能</b>提升至非凡境地？",
+            "actionId": "study",
+            "requirements": {
+                "eruditionplus": 1,
+                "skillreasonc": 1
+            },
+            "startdescription": "我需要足够<b>学有所成</b>……和更多其他东西。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasereasonfurtherhintpluswithskill",
+            "label": "增进我的理性？",
+            "actionId": "study",
+            "requirements": {
+                "eruditionplus": 1,
+                "reasonskill": 1
+            },
+            "startdescription": "我需要更加学有所成。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasereasonfurtherhintplus",
+            "label": "增进我的理性？",
+            "actionId": "study",
+            "requirements": {
+                "eruditionplus": 1
+            },
+            "startdescription": "我得将它和学识技能一起运用。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasereasonfurtherhint1",
+            "label": "增进我的理性？",
+            "actionId": "study",
+            "requirements": {
+                "erudition": 1
+            },
+            "startdescription": "我需要不止一个。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasepassionfurtherhintpluswithskillneedslore",
+            "label": "将我的<b>技能</b>提升至非凡境地？",
+            "actionId": "study",
+            "requirements": {
+                "glimmeringplus": 1,
+                "skillpassionc": 1
+            },
+            "startdescription": "我需要足够<b>学有所成</b>……和更多其他东西。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasepassionfurtherhintpluswithskill",
+            "label": "增进我的激情？",
+            "actionId": "study",
+            "requirements": {
+                "glimmeringplus": 1,
+                "passionskill": 1
+            },
+            "startdescription": "我需要更加学有所成。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasepassionfurtherhintplus",
+            "label": "增进我的激情？",
+            "actionId": "study",
+            "requirements": {
+                "glimmeringplus": 1
+            },
+            "startdescription": "我得将它和<b>想象</b>技能一起运用。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "increasepassionfurtherhint1",
+            "label": "增进我的激情？",
+            "actionId": "study",
+            "requirements": {
+                "glimmering": 1
+            },
+            "startdescription": "我需要不止一个。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "studyrestlessnesshint",
+            "label": "研究躁动？",
+            "actionId": "study",
+            "requirements": {
+                "restlessness": 1
+            },
+            "startdescription": "研究，需要一个人安安静静地坐住。躁动极少会成为做学问者的朋友。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "studyupgradeinfluenceshint1",
+            "label": "升级影响？",
+            "actionId": "study",
+            "requirements": {
+                "influence": 1
+            },
+            "startdescription": "恰当地组合<b>影响</b>有可能增强其法力……",
+            "hintonly": true,
+            "craftable": false
+        }
+    ]
+}

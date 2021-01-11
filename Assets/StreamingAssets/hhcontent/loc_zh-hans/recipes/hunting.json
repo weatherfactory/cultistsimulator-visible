@@ -1,0 +1,643 @@
+{
+    "recipes": [
+        {
+            "id": "suspicion",
+            "label": "不合宜的关注",
+            "actionId": "suspicion",
+            "requirements": {
+                "seasonsuspicion": 1
+            },
+            "slots": [
+                {
+                    "id": "Suspicion",
+                    "label": "敌对分子？",
+                    "required": {
+                        "hunter": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "这个城市充斥着记者、警探和其他好事家。他们能让我安宁多久？",
+            "description": "我暂时安全了。那些好事家的注意一定去了别处。可以松口气了。",
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "suspiciongrabreputation",
+                    "chance": 100
+                },
+                {
+                    "id": "suspiciontrycreatehunter",
+                    "chance": 70
+                }
+            ]
+        },
+        {
+            "id": "suspiciongrabreputation",
+            "label": "正在寻找线索……",
+            "actionId": "suspicion",
+            "requirements": {
+                "hunter": 1
+            },
+            "startdescription": "某个敌对分子正在到处盘问我的活动。",
+            "description": "",
+            "slots": [
+                {
+                    "id": "Clues",
+                    "label": "线索",
+                    "required": {
+                        "reputation": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "suspicion_searchlongerforevidence",
+                    "chance": 100
+                },
+                {
+                    "id": "suspiciongrabevidence",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "suspiciongrabevidence",
+            "actionId": "suspicion",
+            "label": "正在分析证据……",
+            "startdescription": "猎人一旦发现<b>邪名</b>，便会尝试用它构建或升级<b>证据</b>。如果他<b>一丝不苟</b>，便一定能成功。如果他<b>飘忽不定</b>，便多半会失败……但即使没有<b>邪名</b>，这样的猎人偶尔也能凭空造出<b>证据</b>。",
+            "description": "我安全了，至少现下如此。敌对分子没有足够的证据能控告我，也没有发现新的线索。",
+            "slots": [
+                {
+                    "id": "Evidence",
+                    "label": "证据",
+                    "required": {
+                        "evidenceb": 1,
+                        "evidence": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "suspicionpretrial",
+                    "chance": 100
+                },
+                {
+                    "id": "suspicionerratic_alwaysfail",
+                    "chance": 10
+                },
+                {
+                    "id": "suspicionpromoteevidencemeticulous",
+                    "chance": 100
+                },
+                {
+                    "id": "suspicionpromoteevidence",
+                    "chance": 70
+                },
+                {
+                    "id": "suspicioncreateevidencemeticulous",
+                    "chance": 100
+                },
+                {
+                    "id": "suspicioncreateevidence",
+                    "chance": 70
+                }
+            ],
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "suspicionerratic_alwayssucceed",
+                    "chance": 10
+                }
+            ]
+        },
+        {
+            "id": "suspicionerratic_alwaysfail",
+            "actionId": "suspicion",
+            "label": "诡异的行为",
+            "requirements": {
+                "erratic": 1,
+                "reputation": 1
+            },
+            "startdescription": "敌对分子行为反常。[这样的事情并不多见。]",
+            "description": "敌对分子莫非在练习乐器而不是在进行调查？还是在往木靶上掷飞镖？又或者只是在打长盹？关于他的报告前后不一致，不过他本人的行为也是一样。他没有取得任何进展。",
+            "effects": {
+                "reputation": -1
+            }
+        },
+        {
+            "id": "suspicionerratic_alwayssucceed",
+            "actionId": "suspicion",
+            "label": "令人困惑的成功",
+            "requirements": {
+                "erratic": 1,
+                "reputation": -1
+            },
+            "effects": {
+                "notoriety": 1
+            },
+            "startdescription": "有传闻称敌对分子开始靠易经来占卜神谕。也有的称他在梦中追寻答案。还有一种传闻，称他用掷骰子来选择要问的问题。他在本应无据可查的地方找到了证据。[这样的事情并不多见。]",
+            "linked": [
+                {
+                    "id": "suspicionpromoteevidence",
+                    "chance": 100
+                },
+                {
+                    "id": "suspicioncreateevidence",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "suspicion_searchlongerforevidence",
+            "actionId": "suspicion",
+            "requirements": {
+                "mystique": 1
+            },
+            "label": "声望引来危机",
+            "startdescription": "我身上的<b>神秘氛围</b>引来了这名猎人的注意。他暂且还无法证实什么，但他会更加执着地调查。",
+            "effects": {
+                "mystique": -1
+            },
+            "slots": [
+                {
+                    "id": "Clues",
+                    "label": "线索",
+                    "required": {
+                        "reputation": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 60,
+            "linked": [
+                {
+                    "id": "suspicion_searchlongerforevidence",
+                    "chance": 100
+                },
+                {
+                    "id": "suspiciongrabevidence",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "suspicionpromoteevidencemeticulous",
+            "actionId": "suspicion",
+            "label": "构建确凿证据",
+            "requirements": {
+                "evidence": 1,
+                "reputation": 1,
+                "meticulous": 1
+            },
+            "linked": [
+                {
+                    "id": "suspicionpromoteevidence",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "suspicionpromoteevidence",
+            "actionId": "suspicion",
+            "requirements": {
+                "evidence": 1,
+                "reputation": 1
+            },
+            "label": "构建确凿证据",
+            "startdescription": "这名猎人正在对他的调查进行最后的整理。",
+            "description": "一旦事情发展到上法庭，我将陷入严重的危险。即使解决掉了这名猎人，他的笔记也可能被另一名猎人发现。",
+            "effects": {
+                "evidence": -1,
+                "evidenceb": 1,
+                "reputation": -1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "suspicioncreateevidencemeticulous",
+            "actionId": "suspicion",
+            "label": "化线索为证据",
+            "requirements": {
+                "reputation": 1,
+                "meticulous": 1
+            },
+            "linked": [
+                {
+                    "id": "suspicioncreateevidence",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "suspicioncreateevidence",
+            "actionId": "suspicion",
+            "requirements": {
+                "reputation": 1
+            },
+            "label": "化线索为证据",
+            "startdescription": "传闻骤起，四散至市井的每个角落。这名猎人的调查正在取得进展。",
+            "description": "我确信敌对分子将他笔记的副本寄存到其他地方了——给他的律师，他的上司，甚至是报社的联系人。这会给我带来麻烦。",
+            "effects": {
+                "reputation": -1,
+                "evidence": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "suspiciontrycreatehunter",
+            "label": "好奇的少数人",
+            "actionId": "suspicion",
+            "startdescription": "方向错误的声名或会引起好奇之人、保守之人或者寻仇之人的兴趣。[拥有<b>声名</b>或会诱发敌对分子出现。]",
+            "slots": [
+                {
+                    "id": "Clues",
+                    "label": "线索",
+                    "required": {
+                        "reputation": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "suspicioncreatefirsthunter",
+                    "chance": 100
+                },
+                {
+                    "id": "suspicioncreatehunter",
+                    "chance": 100
+                }
+            ],
+            "description": "此刻，我的名声还是清白的。守卫们尚都蛰伏于阴影中。",
+            "effects": {
+                "contentment": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "suspicioncreatefirsthunter",
+            "actionId": "suspicion",
+            "label": "敌对分子！",
+            "requirements": {
+                "reputation": 1
+            },
+            "startdescription": "有人在多管闲事。",
+            "description": "总有人不能理解，或者是理解得太透彻。该捣乱分子可能会搜寻我行动的证据，并呈报给当局。",
+            "effects": {
+                "reputation": -1,
+                "defaulthunter": 1
+            },
+            "maxexecutions": 1,
+            "warmup": 0
+        },
+        {
+            "id": "suspicioncreatehunter",
+            "actionId": "suspicion",
+            "label": "敌对分子！",
+            "requirements": {
+                "reputation": 1
+            },
+            "startdescription": "有人在多管闲事。",
+            "description": "总有人不能理解，或者是理解得太透彻。该捣乱分子可能会搜寻我行动的证据，并呈报给当局。",
+            "deckeffect": {
+                "hunters": 1
+            },
+            "effects": {
+                "reputation": -1
+            },
+            "warmup": 0
+        },
+        {
+            "id": "suspicionpretrial",
+            "label": "防剿局在分析我的案子",
+            "actionId": "suspicion",
+            "requirements": {
+                "evidenceb": 1
+            },
+            "startdescription": "敌对分子已说服防剿局分析我的案子。防剿局负责惩治那些不太常见的罪犯——那些犯行或许只存于梦中的人。",
+            "description": ".",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "suspicion_attemptmitigation_me",
+                    "chance": 30
+                },
+                {
+                    "id": "suspicion_questionfollower",
+                    "chance": 100
+                }
+            ],
+            "burnimage": "beforetrial"
+        },
+        {
+            "id": "suspicion_questionme",
+            "label": "我将上法庭接受裁决！",
+            "actionId": "suspicion",
+            "startdescription": "防剿局已把我带走讯问。",
+            "description": ".",
+            "craftable": false,
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "suspicion_attemptmitigation_me"
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "suspicion_questionfollower",
+            "label": "受审！",
+            "actionId": "suspicion",
+            "slots": [
+                {
+                    "id": "Suspect",
+                    "label": "嫌犯",
+                    "required": {
+                        "follower": 1,
+                        "independent": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1,
+                        "hireling": 1
+                    },
+                    "description": "监管局迫切需要嫌疑人。",
+                    "greedy": true
+                }
+            ],
+            "startdescription": "防剿局正在找我的同伴讯问。如果找不到，他们则会直接找上我。",
+            "description": ".",
+            "craftable": false,
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "suspicion_attemptmitigation_follower"
+                },
+                {
+                    "chance": 100,
+                    "id": "suspicion_attemptmitigation_rival"
+                },
+                {
+                    "chance": 100,
+                    "id": "suspicion_attemptmitigation_me"
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "suspicion_attemptmitigation_me",
+            "actionId": "suspicion",
+            "label": "防剿局要把我送上法庭！",
+            "startdescription": "世间存在国家不公开承认的罪行。我被控的罪行便在此列。防剿局进行了闭庭审判，他们毫无仁慈可言。除非我能善用人脉，不然就难逃牢狱之灾！",
+            "description": ".",
+            "slots": [
+                {
+                    "id": "favour",
+                    "label": "人情",
+                    "required": {
+                        "favour": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "suspicion_favourused"
+                },
+                {
+                    "chance": 70,
+                    "id": "suspicion_meimprisoned"
+                },
+                {
+                    "chance": 100,
+                    "id": "suspicion_meexonerated"
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "suspicion_attemptmitigation_follower",
+            "label": "防剿局要把我的同伴送上法庭！",
+            "actionId": "suspicion",
+            "requirements": {
+                "follower": 1
+            },
+            "startdescription": "世间存在国家不公开承认的罪行。我的同伴被控的罪行便在此列。防剿局进行了闭庭审判，他们毫无仁慈可言。除非我能善用人脉优势，不然我可能永远失去我的同伴……",
+            "description": ".",
+            "slots": [
+                {
+                    "id": "favour",
+                    "label": "人情",
+                    "required": {
+                        "favour": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "suspicion_favourused"
+                },
+                {
+                    "chance": 70,
+                    "id": "suspicion_followerimprisoned"
+                },
+                {
+                    "chance": 100,
+                    "id": "suspicion_followerexonerated"
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "suspicion_attemptmitigation_rival",
+            "label": "防剿局要把我的对手送上法庭！",
+            "actionId": "suspicion",
+            "requirements": {
+                "independent": 1
+            },
+            "startdescription": "世间存在国家不公开承认的罪行。我的对手被控的罪行便在此列。防剿局进行了闭庭审判，他们毫无仁慈可言。我的对手有可能就此完蛋……虽然我也可试试阻止此事。",
+            "description": ".",
+            "slots": [
+                {
+                    "id": "favour",
+                    "label": "人情",
+                    "required": {
+                        "favour": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "suspicion_favourused"
+                },
+                {
+                    "chance": 70,
+                    "id": "suspicion_rivalimprisoned"
+                },
+                {
+                    "chance": 100,
+                    "id": "suspicion_rivalexonerated"
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "suspicion_favourused",
+            "actionId": "suspicion",
+            "label": "暗处的盟友",
+            "requirements": {
+                "favour": 1
+            },
+            "effects": {
+                "favour": -1
+            },
+            "startdescription": "我已向某位显要人士求情。他大概能成为我的保护伞，不过世事难料。",
+            "description": ".",
+            "warmup": 30,
+            "linked": [
+                {
+                    "chance": 70,
+                    "id": "suspicion_followerexonerated"
+                },
+                {
+                    "chance": 70,
+                    "id": "suspicion_meexonerated"
+                },
+                {
+                    "chance": 100,
+                    "id": "suspicion_favourused_failure"
+                }
+            ]
+        },
+        {
+            "id": "suspicion_favourused_failure",
+            "actionId": "suspicion",
+            "label": "不够！",
+            "startdescription": "我已经竭尽全力，但这还不够。防剿局是无情的。如果我有另一条人脉，现在许还用得上。不然的话，我们就只能在公堂上碰运气了。",
+            "description": ".",
+            "warmup": 30,
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "suspicion_attemptmitigation_follower"
+                },
+                {
+                    "chance": 100,
+                    "id": "suspicion_attemptmitigation_me"
+                }
+            ]
+        },
+        {
+            "id": "suspicion_followerimprisoned",
+            "actionId": "suspicion",
+            "label": "防剿局的胜利",
+            "description": "我的同伴被关进了禁止探视的监狱里，甚至连释放日期也暧昧不清。防剿局的胃口暂时饱了；然而他们都从我同伴那知道了什么？",
+            "aspects": {
+                "investigatingsetback": 1
+            },
+            "effects": {
+                "follower": -1
+            }
+        },
+        {
+            "id": "suspicion_meimprisoned",
+            "actionId": "suspicion",
+            "label": "防剿局的胜利",
+            "startdescription": "我被裁定有罪！我的计策全完了。我得做好心理准备了。",
+            "description": ".",
+            "warmup": 10,
+            "signalEndingFlavour": "Melancholy",
+            "ending": "arrest"
+        },
+        {
+            "id": "suspicion_followerexonerated",
+            "actionId": "suspicion",
+            "requirements": {
+                "follower": 1
+            },
+            "label": "防剿局的暴怒",
+            "startdescription": "我的同伴被判无罪！呈堂证供不足以给他定罪，于是他恢复了自由……虽说他可能会对我怀恨在心。防剿局暂且算栽了一跤。",
+            "aspects": {
+                "investigatingsetback": 1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "follower",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": 1,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "suspicion_meexonerated",
+            "actionId": "suspicion",
+            "label": "防剿局的暴怒",
+            "startdescription": "我被判无罪！呈堂证供不足以给我定罪，于是我恢复了自由。",
+            "requirements": {
+                "follower": -1
+            },
+            "aspects": {
+                "evidencelevel": -1
+            }
+        },
+        {
+            "id": "suspiciontrial",
+            "comments": "Here for legacy compatibility",
+            "actionId": "suspicion",
+            "description": "被捕！",
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "suspicionpretrial",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "suspicion_rivalimprisoned",
+            "actionId": "suspicion",
+            "label": "防剿局的胜利",
+            "description": "我的对手不会再重见天日。防剿局的胃口暂时饱了；然而他们都从我对手那知道了什么？",
+            "aspects": {
+                "investigatingsetback": 1
+            },
+            "effects": {
+                "independent": -1
+            }
+        },
+        {
+            "id": "suspicion_rivalexonerated",
+            "actionId": "suspicion",
+            "requirements": {
+                "independent": 1
+            },
+            "label": "防剿局的暴怒",
+            "startdescription": "我的对手被判无罪！呈堂证供不足以给他定罪，于是他恢复了自由……虽说他毫无疑问会把自己受的困算在我头上。",
+            "aspects": {
+                "investigatingsetback": 1
+            },
+            "mutations": [
+                {
+                    "filterOnAspectId": "independent",
+                    "mutateAspectId": "resentment",
+                    "mutationLevel": 1,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "scapegoat",
+            "actionId": "suspicion",
+            "comments": "Here for legacy compatibility",
+            "warmup": 0
+        }
+    ]
+}

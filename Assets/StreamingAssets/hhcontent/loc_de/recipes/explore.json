@@ -1,0 +1,477 @@
+{
+	"recipes": [
+		{
+			"id": "exploremovehq",
+			"actionId": "explore",
+			"label": "Eine Veränderung der Lokalität",
+			"startdescription": "Das Hauptquartier unserer Organisation an einen neuen Standort verlegen. [Dadurch zieht dein Hauptquartier dauerhaft um. Es gibt kein Zurück. Kann Berüchtigtsein verringern.]",
+			"description": "Keine Adresse ist je wirklich von Dauer. Wie unseren Leib lassen wir sie irgendwann hinter uns. Doch für den Augenblick ist das hier ein Zuhause.",
+			"requirements": {
+				"hq": 1,
+				"hq.potential": 1
+			},
+			"aspects": {
+				"movehq": 1
+			},
+			"slots": [
+				{
+					"id": "coldtrail",
+					"label": "Eine kalte Spur",
+					"description": "Wenn wir umziehen, könnte das Dezernat für Unterdrückung Zeit damit vergeuden, an der alten Adresse herumzuschnüffeln.",
+					"greedy": true,
+					"required": {
+						"notoriety": 1
+					}
+				}
+			],
+			"effects": {
+				"notoriety": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.townhouse",
+			"actionId": "explore",
+			"label": "--",
+			"startdescription": "--",
+			"description": "--",
+			"requirements": {
+				"hq.townhouse": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influencegrail": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.hospital",
+			"actionId": "explore",
+			"label": "Wo es sich öffnet",
+			"startdescription": "Die ersten Hüter dieses Ortes übten ihre Ein- und Durchschnitte bis sich die Welt wie die Schale einer Frucht abschälte. Diese Öffnungen sind längst wieder verheilt, doch nichts heilt jemals vollständig.",
+			"description": "Zuerst ist es immer unangenehm, doch wir haben dafür gesorgt, dass alles sauber vonstatten geht, und so berühren wir die hellen Säume der Mutter-der-Ameisen.",
+			"requirements": {
+				"hq.hospital": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influenceknock": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.mithraeum",
+			"actionId": "explore",
+			"label": "Die Sonne unter uns",
+			"startdescription": "Dies war ein gebenedeiter Ort der Unbändigen Sonne, der Ungeteilten Sonne. Mit den reinsten Kerzen können wir das Licht berühren, das noch immer im Stein schwimmt.",
+			"description": "Das Scheinende, das Durchscheinende, die Erinnerung an die Pracht. Vieles ist verloren und vieles bleibt, von der Unsichtbaren und Unteilbaren Sonne.",
+			"requirements": {
+				"hq.mithraeum": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influencelantern": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.church",
+			"actionId": "explore",
+			"label": "Die Wunden der Weisheit",
+			"startdescription": "'Nicht alle Türen sind Wunden, doch jede Wunde ist eine Tür.' Die Geschichte dieses Ortes ist reich an Wunden und Türen. Mit den richtigen Materialien können wir die Luft erweichen, wo sich einst die Luft öffnete.",
+			"description": "Heute Abend wird sich keine Tür in dieser Kirche schließen. Kein Schloss wird einen Schlüssel brauchen. Und jedes Herz wird geöffnet werden.",
+			"requirements": {
+				"hq.church": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influenceknock": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.bookshop",
+			"actionId": "explore",
+			"label": "Der bewachte Herd",
+			"startdescription": "Wir werden die Räumlichkeiten hier dem Laden mit Feuerschein wärmen, sie durch das Pfeifen des Kessels und das Summen des Grammophons mit Leben füllen. Nicht bei allen unseren Feiern müssen wir Blut vergießen.",
+			"description": "Buchläden schenken den Nervösen, Ignoranten und Sorgenvollen Frieden. Selbst nachdem Morland ihre kuriosen Waren hierher gebracht hat, bleibt dieser Frieden. Heute Abend wandelt die Stunde namens Donnerhaut leisen Schritts.",
+			"requirements": {
+				"hq.bookshop": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influenceheart": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehq.warehouse",
+			"actionId": "explore",
+			"label": "Im Gedenken an Maschinen",
+			"startdescription": "Vor seiner Zeit als Lagerhaus war dies eine Villa der Maschinen: ein Haus des Dampfes und des Eisens und, zuweilen, des zerfetzten Fleisches und der Schreie. Wir werden die Öle ausgießen, die jener Zeit gedenken. ",
+			"description": "Erneut haben wir Flammen, erneut haben wir Eisen und erneut wird das Fleisch den Kuss der Hitze spüren – wobei es sich nicht zeigen wird, nicht bei Tageslicht. Weit oben, weit unten vollzieht die Schmiede der Tage ihre Läuterungen.",
+			"requirements": {
+				"hq.warehouse": 1,
+				"funds": 1
+			},
+			"effects": {
+				"influenceforge": 1,
+				"funds": -1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorelocationbookdealer",
+			"label": "Zu deiner Bibliothek hinzufügen",
+			"actionId": "explore",
+			"requirements": {
+				"locationbookdealer": 1,
+				"funds": 1
+			},
+			"effects": {
+				
+			},
+			"deckeffect": {
+				"commontomes": 1
+			},
+			"startdescription": "Es braucht Zeit, das Gold von der Schlacke zu trennen, die Spreu vom Weizen, das Blut vom Wasser. Wenn ich genug Bücher kaufe, finde ich etwas von Interesse.",
+			"description": "Ich habe etwas Bemerkenswertes entdeckt.",
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "explorelocationbookdealer_exhausted",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorelocationbookdealer_exhausted",
+			"label": "Morlands Laden macht dicht!",
+			"actionId": "explore",
+			"requirements": {
+				"genericrubbishbook": 1
+			},
+			"description": "'Ich ziehe weiter', lässt dich Miss Morland wissen. 'Mein Warenbestand ist größtenteils erschöpft und das Dezernat für Unterdrückung interessiert sich für mich. Also ist es Zeit zu gehen. Dieses letzte Buch ist Unsinn, doch ich habe hinten einige interessante Papiere hineingestopft, als Dank für deine Einkäufe.'",
+			"deckeffect": {
+				"oneoffrewards": 1
+			},
+			"warmup": 1,
+			"aspects": {
+				"exhaustlocation": 1
+			}
+		},
+		{
+			"id": "explorelocationauctionhouse",
+			"label": "Eine Auktion bei Oriflamme besuchen",
+			"actionId": "explore",
+			"requirements": {
+				"locationauctionhouse": 1,
+				"auctionable": -1
+			},
+			"effects": {
+				
+			},
+			"deckeffect": {
+				"auctionedcommontomes": 1
+			},
+			"startdescription": "Wir hocken auf beunruhigenden Rietveld-Stühlen in einem fensterlosen Auktionsraum mit Wänden in Blutorange und warten darauf, dass der Auktionator verkündet, was er uns anzubieten hat. Der Geruch nach frischer Farbe verwirrt die Sinne. [Drücke Start um zu sehen, was angeboten wird, oder füge einen Artikel hinzu, den du veräußern möchtest.]",
+			"description": ".",
+			"warmup": 5,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "auctionbuy",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorelocationstreetsstrange",
+			"label": "Erkunde ein verblüffendes Gewirr aus Straßen im Mondschein.",
+			"actionId": "explore",
+			"requirements": {
+				"locationstreetsstrange": 1
+			},
+			"deckeffect": {
+				"streetsstrangefinds": 1
+			},
+			"startdescription": "Straßen sind seltsam in der Stunde namens Meniskate.",
+			"description": "Visionen ziehen mit der Anmut einer Pavane an mir vorbei – ein Fenster über einem Wald, ein Garten aus Eis, eine erschaudernde Sonne, eine Frau aus Glas. Ich werde, widerwillig, nach Hause zurückkehren.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "explorefollower",
+			"label": "Die Stadt durchsuchen",
+			"actionId": "explore",
+			"requirements": {
+				"follower": 1,
+				"location": -1
+			},
+			"deckeffect": {
+				"exploreevents": 1
+			},
+			"linked": [
+				{
+					"id": "explorefindcriminal",
+					"chance": 100
+				},
+				{
+					"id": "explorefindplace",
+					"chance": 100
+				}
+			],
+			"startdescription": "Überfüllte Durchgangsstraßen am Tage, nebelumhüllter Irrgarten bei Nacht. Ich werde meine Schergen entsenden, um nach Gelegenheiten zu suchen.",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "explorerumour",
+			"label": "Einem Gerücht auf den Grund gehen",
+			"actionId": "explore",
+			"requirements": {
+				"rumour": 1
+			},
+			"deckeffect": {
+				"acquaintances": 1
+			},
+			"effects": {
+				"rumour": -1,
+				"notoriety": 1
+			},
+			"startdescription": "Ich habe den Verdacht, dass ich am Ende dieser Geschichte jemanden finden könnte, der hören wird, was ich zu sagen habe.",
+			"description": "Eine wenig verheißende Adresse, aber ein vielversprechender Bewohner.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explorehealth",
+			"label": "Die Stadt durchsuchen",
+			"actionId": "explore",
+			"requirements": {
+				"health": 1,
+				"location": -1
+			},
+			"deckeffect": {
+				"exploreevents": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"linked": [
+				{
+					"id": "explorefindcriminal",
+					"chance": 100
+				},
+				{
+					"id": "explorefindplace",
+					"chance": 100
+				}
+			],
+			"startdescription": "Überfüllte Durchgangsstraßen am Tage, nebelumhüllter Irrgarten bei Nacht. Ich gehe durch die Straßen, suche nach Geheimnissen, bis ich nicht mehr gehen kann.",
+			"description": ".",
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "explorefindcriminal",
+			"label": "Ein Heuerling?",
+			"actionId": "explore",
+			"requirements": {
+				"daycriminals": 1
+			},
+			"deckeffect": {
+				"hirelings": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "explorechoosepaycriminal",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "explorechoosepaycriminal",
+			"label": "Ein Heuerling?",
+			"actionId": "explore",
+			"startdescription": "Ich habe jemanden gefunden, den ich bezahlen könnte, um bedauerliche Notwendigkeit zu erledigen. [Füge Geldmittel hinzu, um ihn für eine begrenzte Zeit anzuheuern.]",
+			"slots": [
+				{
+					"id": "Payment",
+					"label": "Bezahlung",
+					"required": {
+						"funds": 1
+					},
+					"consumes": true
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "explorepaycriminal",
+					"chance": 100
+				}
+			],
+			"effects": {
+				"hireling": -1
+			},
+			"description": "Lieber nicht. Ich muss aufpassen, mit wem ich mich abgebe.",
+			"warmup": 60
+		},
+		{
+			"id": "explorepaycriminal",
+			"label": "Ein Heuerling",
+			"requirements": {
+				"funds": 1
+			},
+			"actionId": "explore",
+			"startdescription": "Damit kaufe ich mir für den Augenblick seine Treue.",
+			"effects": {
+				"funds": -1
+			}
+		},
+		{
+			"id": "explorefindplace",
+			"label": "Ein übersehener Ort?",
+			"actionId": "explore",
+			"requirements": {
+				"dayplaces": 1
+			},
+			"startdescription": "Ich könnte einen ungewöhnlichen Ort entdeckt haben.",
+			"description": ".",
+			"deckeffect": {
+				"citysecrets": 1
+			},
+			"effects": {
+				"season": -1
+			},
+			"warmup": 5
+		},
+		{
+			"id": "explore.searchgraveyard.self",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery": 1,
+				"health": 1
+			},
+			"effects": {
+				"corpse": 1,
+				"mystique": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"label": "Eine Ausgrabung",
+			"startdescription": "Heimliche Ausgrabungen im sanften Lichte einer Laterne.",
+			"description": "Die Schaufel trifft auf Holz. Das ist ein gutes Zeichen. Ist der Sarg zu sehr verfault, sind die Überbleibsel in der Regel knapp bemessen.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "explore.searchgraveyard.follower",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery": 1,
+				"follower": 1
+			},
+			"effects": {
+				"corpse": 1,
+				"mystique": 1
+			},
+			"label": "Eine Ausgrabung",
+			"startdescription": "Heimliche Ausgrabungen im sanften Lichte einer Laterne.",
+			"description": "Die Schaufel trifft auf Holz. Das ist ein gutes Zeichen. Ist der Sarg zu sehr verfault, sind die Überbleibsel in der Regel knapp bemessen.",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "explore.searchgraveyard.closing.self",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery.closing": 1,
+				"health": 1
+			},
+			"effects": {
+				"corpse": 1,
+				"notoriety": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"label": "Eine vorsichtige Ausgrabung",
+			"startdescription": "Stiehl dich durch die wankenden Schatten. Entzünde keine Lampe. Sei auf der Hut.",
+			"description": "Ich grabe in der Finsternis, bis ich genug finde, um weiterzumachen.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explore.searchgraveyard.closing.follower",
+			"actionId": "explore",
+			"requirements": {
+				"location.cemetery.closing": 1,
+				"follower": 1
+			},
+			"effects": {
+				"corpse": 1,
+				"notoriety": 1
+			},
+			"label": "Eine vorsichtige Ausgrabung",
+			"startdescription": "Stiehl dich durch die wankenden Schatten. Entzünde keine Lampe. Sei auf der Hut.",
+			"description": "Ich grabe in der Finsternis, bis ich genug finde, um weiterzumachen.",
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explore.fleeting",
+			"actionId": "explore",
+			"requirements": {
+				"fleeting": 1
+			},
+			"label": "Möge die Erinnerung mich leiten.",
+			"startdescription": "Meine Gedanken werden wandern und ich werde folgen. Alte Gefühle werden sich einstellen.",
+			"description": "Die Erinnerung ist ein Irrgarten, in dessen Herz ein Garten wartet.",
+			"effects": {
+				"fleeting": -1
+			},
+			"internaldeck": {
+				"label": "Wohin wir gehen",
+				"description": "Wohin wir gehen",
+				"spec": [
+					"restlessness",
+					"dread",
+					"fascination",
+					"contentment",
+					"restlessness",
+					"dread",
+					"fascination",
+					"contentment",
+					"restlessness",
+					"dread",
+					"fascination",
+					"contentment"
+				],
+				"resetonexhaustion": true,
+				"draws": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		}
+	]
+}

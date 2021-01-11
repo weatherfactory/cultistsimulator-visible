@@ -1,0 +1,439 @@
+{
+	"recipes": [
+		{
+			"id": "drawseason",
+			"actionId": "time",
+			"deckeffect": {
+				"seasonevents": 1
+			},
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "needs",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "needs",
+			"label": "時の流れ",
+			"actionId": "time",
+			"requirements": {
+				
+			},
+			"alternativerecipes": [
+				{
+					"id": "forlornbloodsickness",
+					"chance": 70,
+					"additional": true
+				},
+				{
+					"id": "sickness",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "pleasantday",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "suspicion",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "ambition",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "despairrisklink",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "visionsrisklink",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "starvation",
+					"chance": 100,
+					"additional": true
+				},
+				{
+					"id": "rosenext",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"startdescription": "時、日時計の影は過ぎ去っていく。生きていくために資金を稼がなければ、病気になってしまう。",
+			"description": ".",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "Expenses",
+					"label": "費用",
+					"required": {
+						"funds": 1
+					},
+					"greedy": true,
+					"noanim": true,
+					"description": "店員には代金を払わなくてはいけない。払わないと飢えてしまう。"
+				}
+			],
+			"linked": [
+				{
+					"id": "discardseason",
+					"chance": 100
+				}
+			],
+			"signalimportantloop": true
+		},
+		{
+			"id": "discardseason",
+			"actionId": "time",
+			"effects": {
+				"season": -1,
+				"funds": -999
+			},
+			"warmup": 0,
+			"linked": [
+				{
+					"id": "drawseason",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "presickness",
+			"label": "喜びの価格",
+			"actionId": "illhealth",
+			"comments": "to lead into actual sickness from opium abuse, which requires Season Of",
+			"startdescription": "呼吸が乱れ、思考が混乱していく。痛みを和らげる薬に、溺れるべきではなかったのかもしれない。",
+			"effects": {
+				"seasonsickness": 1
+			},
+			"linked": [
+				{
+					"id": "sickness"
+				}
+			],
+			"warmup": 15
+		},
+		{
+			"id": "sickness",
+			"label": "病気",
+			"actionId": "illhealth",
+			"startdescription": "具合が悪くなってしまった！",
+			"description": "この病気のせいで、体調を崩してしまった。完治するには、休息が必要だ。[資金か活力で苦痛を治す。]",
+			"requirements": {
+				"seasonsickness": 1
+			},
+			"extantreqs": {
+				"apostlegrail.pillar2.dormant": -1
+			},
+			"comments": "We don't want to double up on normal and Grail-apostle sickness",
+			"slots": [
+				{
+					"id": "Affliction",
+					"label": "体力",
+					"required": {
+						"health": 1,
+						"follower_wound": 1,
+						"fatigue": 1
+					},
+					"forbidden": {
+						"summoned": 1,
+						"corpse": 1,
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"aspects": {
+				"fallsick": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "deathofthewoundedfollower",
+					"chance": 100
+				},
+				{
+					"id": "signalupcomingsicknessdeath",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"effects": {
+				"seasonsickness": -1
+			}
+		},
+		{
+			"id": "signalupcomingsicknessdeath",
+			"actionId": "sickness",
+			"label": "病気",
+			"requirements": {
+				"health": -1,
+				"fatigue": -1
+			},
+			"startdescription": "具合が悪くなってきた！[体力を消費できない病気の場合、特別な防御がない限り......死んでしまう。]",
+			"comments": "need this here so we can have a warning if there's no health; then we link to the stay of execution attempt so we can have a new slot.",
+			"signalEndingFlavour": "Melancholy",
+			"linked": [
+				{
+					"id": "sickness.nohealthavailable.tryforstayofexecution",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "sickness.nohealthavailable.tryforstayofexecution",
+			"actionId": "illhealth",
+			"label": "命の危機",
+			"slots": [
+				{
+					"id": "sicknessprotection",
+					"label": "保護",
+					"required": {
+						"sicknessprotection": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "健康を守るために特別な手配をしない限り、病のせいで命を落とすことになるだろう......",
+			"requirements": {
+				"health": -1,
+				"fatigue": -1
+			},
+			"warmup": 10,
+			"signalEndingFlavour": "Melancholy",
+			"ending": "deathofthebody",
+			"alt": [
+				{
+					"id": "protectedagainstsickness",
+					"actionId": "sickness",
+					"label": "今日は大丈夫",
+					"requirements": {
+						"sicknessprotection": 1
+					},
+					"startdescription": "肉体には限界があり、これから私の肉体は衰えていくだろうが、私には死すべき運命の恵みの印が与えられた。今日はまだ自分の肉体に裏切られないだろう。[「執行停止」が病魔から命を救ってくれた。]",
+					"effects": {
+						"sicknessprotection": -1,
+						"influenceheart": 1
+					}
+				},
+				{
+					"id": "mareendingsickness",
+					"chance": 100,
+					"actionId": "sickness",
+					"label": "私の中の牝馬",
+					"startdescription": "彼女が現れた",
+					"description": "――",
+					"extantreqs": {
+						"lockscar": 3,
+						"health": -1
+					},
+					"signalEndingFlavour": "Melancholy",
+					"ending": "minormarevictory",
+					"craftable": false
+				}
+			]
+		},
+		{
+			"id": "forlornbloodsickness",
+			"label": "病気",
+			"actionId": "illhealth",
+			"extantreqs": {
+				"apostlegrail.pillar2.dormant": 1
+			},
+			"slots": [
+				{
+					"id": "Affliction",
+					"label": "苦悩",
+					"required": {
+						"health": 1,
+						"fatigue": 1,
+						"apostlegrail.pillar2": 1
+					},
+					"greedy": true
+				}
+			],
+			"aspects": {
+				"fallsick": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "savorousbloodrespite",
+					"chance": 100
+				},
+				{
+					"id": "forlornblooddeathofthebody",
+					"chance": 100
+				}
+			],
+			"startdescription": "病が私を迎えに来た。生き延びることが出来たら、一刻も早く、喜びの者の血を味わわなくてはいけない」[この病が「体力」や「美味しい血」を消費できなければ、あなたは命を失う。]",
+			"description": "私の体は縮こまり、青白くなった。疲労のせいで喉が詰まる。死が目的を果たすようにしなければいけない。",
+			"warmup": 60
+		},
+		{
+			"id": "savorousbloodrespite",
+			"actionId": "illhealth",
+			"label": "一時休止",
+			"requirements": {
+				"apostlegrail.pillar2": 1
+			},
+			"startdescription": "喜びの者の血が私を温める。頬が赤い花のように染まり、心臓にワインを注ぐ。聖杯がサンダースキンに教えたリズムで、私の糸を操る。もう少し長く生きようと私は決めた。",
+			"warmup": 10
+		},
+		{
+			"id": "deathofthewoundedfollower",
+			"actionId": "time",
+			"label": "信奉者が死にかけている！",
+			"requirements": {
+				"follower_wound": 1
+			},
+			"startdescription": "致命的な傷だ。どうすることもできない。",
+			"description": "信奉者の魂は、家の中を彷徨っているのかもしれないし、森の中で迷子になり、下へ下へと沈んでいくのかもしれない。死すべき体がここに残っている。",
+			"aspects": {
+				"killmortal": 1
+			},
+			"effects": {
+				"seasonsickness": -1
+			}
+		},
+		{
+			"id": "rosenext",
+			"label": "逢瀬と間奏曲",
+			"actionId": "rose",
+			"requirements": {
+				"seasonardours": 1
+			},
+			"slots": [
+				{
+					"id": "Who?",
+					"label": "誰？",
+					"description": "手と手、目と目。",
+					"required": {
+						"romanticinterest": 1
+					},
+					"forbidden": {
+						"notoriety": 1
+					},
+					"greedy": true
+				}
+			],
+			"startdescription": "特別な友人がいるなら、今が再会のチャンスだと思う。",
+			"description": ".",
+			"linked": [
+				{
+					"id": "L_roseend",
+					"chance": 100
+				},
+				{
+					"id": "L_checkjealousy",
+					"chance": 30
+				},
+				{
+					"id": "L_roserouter",
+					"chance": 100
+				}
+			],
+			"warmup": 5
+		},
+		{
+			"id": "pleasantday",
+			"label": "良い一日",
+			"actionId": "pleasantday",
+			"requirements": {
+				"seasonserenities": 1
+			},
+			"effects": {
+				"contentment": 1
+			},
+			"comments": "currently unused",
+			"startdescription": "今朝、とても気分が良かったんだ。なぜかは分からない。",
+			"description": "良い日もあれば悪い日もある。空が汚れたシーツのように見える日もあれば、川が澄んでいる日もある。",
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "despairrisklink",
+			"label": "despairrisklink",
+			"actionId": "despair",
+			"requirements": {
+				"seasondespair": 1
+			},
+			"warmup": 0,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "despairrisk",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "visionsrisklink",
+			"label": "visionsrisklink",
+			"actionId": "visions",
+			"requirements": {
+				"seasonvisions": 1
+			},
+			"warmup": 0,
+			"craftable": false,
+			"linked": [
+				{
+					"id": "visionsrisk",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "starvation",
+			"label": "飢え",
+			"actionId": "illhealth",
+			"requirements": {
+				"funds": -1
+			},
+			"effects": {
+				"health": -1,
+				"hunger": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "mareendingstarvation",
+					"actionId": "illhealth",
+					"label": "私の中の牝馬",
+					"startdescription": "彼女が現れた",
+					"description": "――",
+					"extantreqs": {
+						"lockscar": 3,
+						"health": -1
+					},
+					"signalEndingFlavour": "Melancholy",
+					"ending": "minormarevictory",
+					"craftable": false
+				},
+				{
+					"id": "deathofthebody",
+					"chance": 100
+				}
+			],
+			"startdescription": ".",
+			"description": "金がなければ、すぐに死んでしまう。[体力を消費できない病気の場合、死んでしまう。]",
+			"warmup": 60,
+			"slots": [
+				{
+					"id": "starvation",
+					"label": "飢え",
+					"required": {
+						"health": 1
+					},
+					"greedy": true
+				}
+			]
+		}
+	]
+}

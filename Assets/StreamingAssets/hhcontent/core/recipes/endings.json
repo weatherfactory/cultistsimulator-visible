@@ -1,0 +1,52 @@
+{
+    "recipes": [
+        {
+            "id": "deathofthebody",
+            "label": "No Health is left",
+            "actionid": "healthend",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1
+            },
+            "effects": {},
+            "startdescription": "My life is slipping away -",
+            "description": "Where will they find me? I am not here.",
+            "warmup": 0,
+            "craftable": false,
+            "ending": "deathofthebody",
+            "signalEndingFlavour": "Melancholy"
+        },
+        {
+            "id": "forlornblooddeathofthebody",
+            "label": "No Health is left",
+            "actionid": "healthend",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1,
+                "apostlegrail.pillar2": -1
+            },
+            "effects": {},
+            "startdescription": "The wrongness in my bones has overcome me. Unless I can muster my strength, or taste the blood of our Delight, it's over.",
+            "description": "Where will they find me? I am not here.",
+            "warmup": 0,
+            "craftable": false,
+            "ending": "deathofthebody",
+            "signalEndingFlavour": "Melancholy"
+        },
+        {
+            "id": "workvictory",
+            "label": "I will settle into a comfortable existence",
+            "actionid": "workwin",
+            "requirements": {
+                "passion": 1
+            },
+            "effects": {},
+            "startdescription": "I've given up my dreams; I'll live well enough.",
+            "description": "It is finished",
+            "warmup": 0,
+            "craftable": false,
+            "ending": "workvictory",
+            "burnimage": "retirement"
+        }
+    ]
+}

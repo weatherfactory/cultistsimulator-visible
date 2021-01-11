@@ -1,0 +1,330 @@
+{
+	"recipes": [
+		{
+			"id": "ambition.apostleforge.emitfuel",
+			"actionId": "work",
+			"label": "Rechtleitung unseres Gestalters",
+			"requirements": {
+				"apostleforge.mentor": 1
+			},
+			"startdescription": "Unser Gestalter lässt uns in den Genuss seiner Rechtleitung kommen. Wir sollten sie nutzen, um nach dem Großen Werke zu streben.",
+			"effects": {
+				"apostleforge.pillarfuel": 1
+			}
+		},
+		{
+			"id": "work.apostleforge.majorvictory.postbetrayal",
+			"actionId": "work",
+			"label": "Wie dem auch sein, das Große Werk geht weiter",
+			"extantreqs": {
+				"apostleforge.mentor": -1
+			},
+			"startdescription": "MIT FEUER NEU ERSCHAFFEN, BEENDEN, WAS WANDEL WEIGERT, ALLE NÄCHTEN EIN ENDE MACHEN. Wenn der Dämmerungsbrecher zu kreisen beginnt, verlangsamt sich fast unmerklich die Erdrotation. Echidna wird den Schlüssel in ihren Klauen haben. Der Kompass wird die letzten Worte sprechen. Blaues Gold wird brennen. Die Wilde Tür wird sich öffnen. Unser Gestalter wird die Schmiede wecken. Und ich, ich werde an die Seite unseres Gestalters zurückkehren. Ich habe mich schon vor langer Zeit entschieden. Ich werde verzehrt werden.",
+			"description": "",
+			"requirements": {
+				"fragmentknockg": 1,
+				"influenceforgeg": 1,
+				"apostleforge.pillar2": 1,
+				"apostleforge.pillar3": 1,
+				"apostleforge.pillar4": 1,
+				"apostleforge.pillar5": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorforgevictory"
+		},
+		{
+			"id": "work.apostleforge.majorvictory",
+			"actionId": "work",
+			"label": "Die letzten Teile des Großen Werkes",
+			"extantreqs": {
+				"apostleforge.mentor": 1
+			},
+			"startdescription": "MIT FEUER NEU ERSCHAFFEN, BEENDEN, WAS WANDEL WEIGERT, ALLE NÄCHTEN EIN ENDE MACHEN. Wenn der Dämmerungsbrecher zu kreisen beginnt, verlangsamt sich fast unmerklich die Erdrotation. Echidna wird den Schlüssel in ihren Klauen haben. Der Kompass wird die letzten Worte sprechen. Blaues Gold wird brennen. Die Wilde Tür wird sich öffnen. Unser Gestalter wird die Schmiede wecken. Und ich, ich werde verzehrt werden.",
+			"description": "",
+			"requirements": {
+				"fragmentknockg": 1,
+				"influenceforgeg": 1,
+				"apostleforge.pillar2": 1,
+				"apostleforge.pillar3": 1,
+				"apostleforge.pillar4": 1,
+				"apostleforge.pillar5": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"ending": "majorforgevictory"
+		},
+		{
+			"id": "work.apostleforge.createcore",
+			"actionId": "work",
+			"label": "Das Schmieden des Dämmerungsbrecher-Kerns",
+			"startdescription": "Dank der Rechtleitung unseres Gestalters und einem Stäubchen der alten Sonne können wir mit dem Bau des Dämmerungsbrechers beginnen.",
+			"description": "Wir summen bei der Arbeit das alte Lied: was den Wandel weigert möge enden. Schließlich ist der Kern vollendet. Das Gerät schlummert. Die Mysterien der Schöpfung werden ihn zum Leben erwecken.",
+			"requirements": {
+				"toolforgef": 1,
+				"apostleforge.pillarfuel": 1
+			},
+			"effects": {
+				"toolforgef": -1,
+				"apostleforge.pillarfuel": -1,
+				"apostleforge.pillar2.dormant": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostleforge.awakencore",
+			"actionId": "work",
+			"label": "Das Erwecken des Dämmerungsbrecher-Kerns",
+			"startdescription": "Die Schmiede, die Madrugada und die Meniskate erinnern sich alle an die Sonne. Wir werden ihre Erinnerung wie eine Armatur um den Kern herum bauen und er wird zu schrecklichem Bewusstsein erwachen.",
+			"description": "Das Gerät erwacht sirrend zum Leben und, wie alles, was lebt, kennt es Hunger. Nur die höchsten Produkte der Alchemie können ihn stellen.",
+			"requirements": {
+				"apostleforge.pillar2.dormant": 1,
+				"fragmentforgeg": 1
+			},
+			"effects": {
+				"apostleforge.pillar2.dormant": -1,
+				"apostleforge.pillar2": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostleforge.upgradeingredientforgeb",
+			"actionId": "work",
+			"label": "Bitterschwarz-Salze veredeln",
+			"startdescription": "Dank der Rechtleitung unseres Gestalters können wir dies zu etwas Größerem veredeln.",
+			"description": "Schwarz klärt sich zu Gelb.",
+			"requirements": {
+				"ingredientforgeb": 1,
+				"apostleforge.pillarfuel": 1
+			},
+			"effects": {
+				"ingredientforgeb": -1,
+				"apostleforge.pillarfuel": -1,
+				"ingredientforged": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostleforge.upgradeingredientforged",
+			"actionId": "work",
+			"label": "Xanthotische Essenz veredeln",
+			"startdescription": "Dank der Rechtleitung unseres Gestalters können wir dies zu etwas Größerem veredeln.",
+			"description": "Gelb reift zu Rot.",
+			"requirements": {
+				"ingredientforged": 1,
+				"apostleforge.pillarfuel": 1
+			},
+			"effects": {
+				"ingredientforged": -1,
+				"apostleforge.pillarfuel": -1,
+				"ingredientforgef": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostleforge.prepareingredientforgef",
+			"actionId": "work",
+			"label": "Iotische Essenz veredeln",
+			"startdescription": "Dank der Rechtleitung unseres Gestalters können wir dies zu etwas Größerem veredeln.",
+			"description": "Rot erregt sich zu Blau.",
+			"requirements": {
+				"ingredientforgef": 1,
+				"apostleforge.pillarfuel": 1
+			},
+			"effects": {
+				"ingredientforgef": -1,
+				"apostleforge.pillarfuel": -1,
+				"apostleforge.pillar3": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "work.apostleforge.baptisefollower",
+			"actionId": "work",
+			"label": "Wähle den Kompass",
+			"startdescription": "Dank der Hilfe unseres Gestalters können wir einen Anhänger so präparieren, dass er einen Makel in der Welt findet. Sobald er ihn entdeckt hat, wird er nie wieder irgendetwas finden.",
+			"description": "Die Augen, Glut. Das Herz, ein wartender Tempel.",
+			"requirements": {
+				"follower": 1,
+				"mortal": 1,
+				"apostleforge.pillarfuel": 1,
+				"tool": -1,
+				"lore": -1
+			},
+			"effects": {
+				"apostleforge.pillarfuel": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "apostleforge.pillar4.dormant",
+					"mutationLevel": 1
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "explore.apostleforge.findflaw",
+			"actionId": "explore",
+			"label": "Der Makel der Welt",
+			"startdescription": "Nur wenige Augen können den Makel sehen, und solche, die ihn einmal gesehen haben, sehen sonst nie wieder etwas.",
+			"description": "Dies ist der Ort, wo die Historien sich aneinander ausrichten – die raue Stelle der Haut der Welt. Jede Wunde hier richtet siebenfach Schaden an. Zünden wir hier den Dämmerungsbrecher, könnte er den Beißenden Schlüssel im Wilden Schloss umdrehen, und unser Gestalter könnte passieren wie einst die Götter-die-Stein-waren.",
+			"requirements": {
+				"apostleforge.pillar4.dormant": 1
+			},
+			"effects": {
+				
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "apostleforge.pillar4",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "edge",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "forge",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "grail",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "heart",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "knock",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "lantern",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "moth",
+					"mutationLevel": -99
+				},
+				{
+					"filterOnAspectId": "apostleforge.pillar4.dormant",
+					"mutateAspectId": "winter",
+					"mutationLevel": -99
+				}
+			],
+			"warmup": 0,
+			"craftable": false
+		},
+		{
+			"id": "talk.apostleforge.sulochanaechidna",
+			"actionId": "talk",
+			"label": "Eine Einführung bei Mrs. E.",
+			"startdescription": "'Dein Gestalter will durch die Wilde Tür, was? Weiß er wirklich, worauf er sich da einlässt? Ich hab gesehen, wie es Schmiede-Lange versucht haben. Im Allgemeinen scheitern sie. Doch ich will sehen, was ich tun kann. Ich habe da eine Schwester, die den Schlüssel hat, den du begehrst. Ich werde mich an sie wenden ... doch das wird eine Weile dauern.'",
+			"description": "",
+			"requirements": {
+				"apostleforge.pillarfuel": 1
+			},
+			"effects": {
+				"apostleforge.pillarfuel": -1,
+				"echidna.enroute": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostleforge.echidna",
+			"actionId": "talk",
+			"label": "Eine Bitte an Mrs. E.",
+			"startdescription": "'Natürlich kann ich dir helfen, Schätzchen. Dein Glück, dass du zu mir gekommen bist Ich bin deutlich umgänglicher als meine Schwestern. Doch ich will jemand Schmackhaften ... es sei denn, du kannst mir einen guten Grund nennen.'",
+			"description": "'Nein? Ich werde noch ein Weilchen hier sein.'",
+			"requirements": {
+				"echidna": 1
+			},
+			"slots": [
+				{
+					"id": "sacrifice",
+					"label": "Jemand Schmackhafter oder einen guten Grund",
+					"required": {
+						"exalted": 1,
+						"cultsecrethistories_1": 1
+					}
+				}
+			],
+			"warmup": 60,
+			"craftable": true,
+			"alternativerecipes": [
+				{
+					"id": "talk.apostleforge.echidnahelp.independent"
+				},
+				{
+					"id": "talk.apostleforge.echidnahelp"
+				},
+				{
+					"id": "talk.apostleforge.echidnahelp.sthydra"
+				}
+			]
+		},
+		{
+			"id": "talk.apostleforge.echidnahelp.independent",
+			"actionId": "talk",
+			"label": "Jemand Schmackhafter",
+			"startdescription": "'Habt ihr beide euch gestritten? Keine Sorge, ich biege das wieder hin. Aber hör mal – ich bin eine Frau, die zu ihrem Worte steht, aber keine Frau, die sonderlich viel Geduld hat.  Warte, bist du bereit bist, dann kümmere ich mich um dein lästiges kleines Problem.",
+			"description": "'Nimm das. Nicht verlieren. Ich werde dort sein.'",
+			"requirements": {
+				"echidna": 1,
+				"exalted": 1
+			},
+			"effects": {
+				"exalted": -1,
+				"apostleforge.pillar5": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostleforge.echidnahelp",
+			"actionId": "talk",
+			"label": "Jemand Schmackhafter",
+			"startdescription": "'Oh, wie schön. Aber hör mal – ich bin eine Frau, die zu ihrem Worte steht, aber keine Frau, die sonderlich viel Geduld hat. Gib mir erst deinen Freund, wenn du bereit bist.'",
+			"description": "'Nimm das. Nicht verlieren. Ich werde dort sein.'",
+			"requirements": {
+				"echidna": 1,
+				"exalted": 1
+			},
+			"effects": {
+				"exalted": -1,
+				"apostleforge.pillar5": 1
+			},
+			"craftable": false
+		},
+		{
+			"id": "talk.apostleforge.echidnahelp.sthydra",
+			"actionId": "talk",
+			"label": "Ein guter Grund",
+			"startdescription": "'Wie ich sehe, stillen wir beide Schlangen. Wie meine Schwester zu sagen pflegt: Ligeia vergisst nicht. Ich will dich gewähren lassen. (Hast du dich jemals gefragt, warum 5 und nicht 7? 2 fehlenden Historien. Nun, warum nur 2? Doch dafür ist jetzt keine Zeit. Ich bin keine Frau, die sonderlich viel Geduld hat.) Bitte mich erst um Hilfe, wenn du bereit bist.'",
+			"description": "'Nimm das. Nicht verlieren. Ich werde dort sein.'",
+			"requirements": {
+				"echidna": 1,
+				"cultsecrethistories_1": 1
+			},
+			"effects": {
+				"apostleforge.pillar5": 1
+			},
+			"craftable": false
+		}
+	]
+}

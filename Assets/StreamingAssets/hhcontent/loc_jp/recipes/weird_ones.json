@@ -1,0 +1,59 @@
+{
+	"recipes": [
+		{
+			"id": "health_expel_to_scar",
+			"label": "体力：傷跡",
+			"actionId": "scar_ability",
+			"startdescription": "体が変わってきた......",
+			"description": "動きによっては、他よりも深い痕を残すものもある。[体力が永久的に傷に変わった。注意：傷は、病気や飢えを満たすことはできない。]",
+			"requirements": {
+				"health": 1
+			},
+			"aspects": {
+				"scarability": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "passion_expel_to_scar",
+			"label": "情熱：傷跡",
+			"actionId": "scar_ability",
+			"startdescription": "感情が私を変えていく......",
+			"description": "思考が私の肉体と魂を、危険なほどきつく縛っている。[情熱が永久的に傷に変わった。]",
+			"requirements": {
+				"passion": 1
+			},
+			"aspects": {
+				"scarability": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "expel_independent",
+			"label": "知らず知らずのうちに",
+			"actionId": "expel_independent",
+			"startdescription": "ライバルは、何が待ち受けているか気づいていないはずだ。",
+			"warmup": 1
+		},
+		{
+			"id": "expel_corpses",
+			"label": "儚い影",
+			"actionId": "expel_corpse",
+			"requirements": {
+				"corpse": 1
+			},
+			"startdescription": "そこにある。",
+			"warmup": 1
+		},
+		{
+			"id": "expel_injury",
+			"label": "血の軌跡",
+			"actionId": "expel_injury",
+			"requirements": {
+				"injury": 1
+			},
+			"startdescription": "痛みは最後の贈り物。",
+			"warmup": 1
+		}
+	]
+}

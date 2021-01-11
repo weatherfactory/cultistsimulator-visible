@@ -1,0 +1,1787 @@
+{
+    "recipes": [
+        {
+            "id": "paintbasic",
+            "label": "作画",
+            "actionId": "work",
+            "requirements": {
+                "ritual": -1,
+                "job": -1,
+                "passion": 1,
+                "passionskill": -1
+            },
+            "startdescription": "我经常作画。我能绘出梦中那些快被我遗忘的景象。或许我能把它们卖出去。多半不能。",
+            "description": "我完成了一幅画作，满心的激动喜悦却只能由我一人独享。[有时，绘画能给你带来灵感。<b>研究</b>它们能解锁进阶的绘画选项。]",
+            "slots": [
+                {
+                    "id": "Yearning",
+                    "label": "渴盼",
+                    "required": {
+                        "restlessness": 1
+                    },
+                    "consumes": true,
+                    "description": "若我感觉躁动，也许此事正是我想做的。"
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "paintbasicsuccess",
+                    "chance": 30
+                }
+            ],
+            "deckeffect": {
+                "paintingresultsbasic": 1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "craftable": true,
+            "warmup": 60
+        },
+        {
+            "id": "paintbasicsuccess",
+            "label": "我卖出了一幅画！",
+            "actionId": "work",
+            "description": "有位买家愿意买下我的画作！或许她会把我的画挂在空闲的卧室里，这辈子再也不多看它一眼。但毕竟，钱就是钱。[有时，绘画能给你带来“灵感”。<b>研究</b>它们能解锁进阶的绘画选项。]",
+            "deckeffect": {
+                "paintingresultsbasic": 2
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "funds": 2
+            }
+        },
+        {
+            "id": "paintwithskill",
+            "label": "作画",
+            "actionId": "work",
+            "requirements": {
+                "passionskill": 1,
+                "ritual": -1,
+                "job": -1
+            },
+            "slots": [
+                {
+                    "id": "Inspiration",
+                    "label": "灵感",
+                    "required": {
+                        "lore": 1,
+                        "influence": 1,
+                        "follower": 1,
+                        "acquaintance": 1,
+                        "memory": 1
+                    },
+                    "description": "富有价值的画题并非必需，但有其作用。有些题材会引起当局注意，但这不是正好说明它们有意思吗？"
+                }
+            ],
+            "startdescription": "谁也说不准。干这个或许能维持生计。[放入“激情”可绘制出独特的作品。放入“秘氛”，尤其是“邪名”可引人注意，多多赚钱。但需要注意：如果你放入“邪名”，展览这幅绘画会让你一直暴露于公共视野。]",
+            "warmup": 20,
+            "craftable": true,
+            "alternativerecipes": [
+                {
+                    "id": "painthasgrandmemory.nocanvas",
+                    "chance": 100
+                },
+                {
+                    "id": "painthasgrandmemory",
+                    "chance": 100
+                },
+                {
+                    "id": "painthaslore",
+                    "chance": 100
+                },
+                {
+                    "id": "painthasinfluence",
+                    "chance": 100
+                },
+                {
+                    "id": "painthasmemory",
+                    "chance": 100
+                },
+                {
+                    "id": "painthassummoned",
+                    "chance": 100
+                },
+                {
+                    "id": "painthasfollower",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paintaddpigment",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "painthasgrandmemory.nocanvas",
+            "actionId": "work",
+            "label": "被遗忘的色彩",
+            "startdescription": "我记得已经被这个世界遗失的色彩。即便我能做到，我也并不敢真实地将它们再现于世。但是，下次有作画的需要时，我或许可以尝试一些致敬元素。",
+            "requirements": {
+                "memory": 5,
+                "passion": 1
+            },
+            "extantreqs": {
+                "canvas.pale": -1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "paint.prepareforcanvas.pale"
+                }
+            ]
+        },
+        {
+            "id": "paint.prepareforcanvas.pale",
+            "actionId": "work",
+            "label": "为淡白至极的画作准备画布",
+            "startdescription": "人或为画家，或为画布。今日，我是画家。[准备画布要花一些时间，且将占用<b><作业></b>行动槽。]",
+            "description": "世界可以为淡白至极的画作再多等待一会儿。反正已经等待许久了。",
+            "slots": [
+                {
+                    "id": "corpse",
+                    "label": "材料",
+                    "description": "处理过程漫长而复杂，但完工后，其气味将几不可闻。",
+                    "required": {
+                        "corpse": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.createcanvas.pale"
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "paint.createcanvas.pale",
+            "actionId": "work",
+            "label": "淡白的画布",
+            "requirements": {
+                "corpse": 1
+            },
+            "startdescription": "准备工作必须保密，在一个无窗的房间中进行……但同时也必须保证极好的通风。",
+            "description": "完成了。他人永远也不会知道，除非他真的贴得特别近去看。最好永远别让当局看到这张画布。[下次画画时再度使用<b>回忆</b>，便可开始在“画布”上作画。]",
+            "effects": {
+                "canvas.pale": 1,
+                "corpse": -1,
+                "notoriety": 1
+            },
+            "warmup": 120
+        },
+        {
+            "id": "painthasgrandmemory",
+            "actionId": "work",
+            "label": "被遗忘的色彩",
+            "startdescription": "\"@#memory.furious|于低垂的红太阳下，沙丘连成的沙床上，一头怪兽与自己扭打着，身侧围拥着随同者们。它体型松弛肥大，色如不纯的硫磺……\r\n\t#memory.luxurious|在漫宿蓝色的夜雾中，游弋着一个珊瑚所制的既为宫殿又为王冠之物，此物时不时让位于月亮……\r\n\t#memory.liminal|透射着金红霞光的紫色暮空……\r\n\t#memory.horizon|在雾气散去，太阳或被误认为是月亮之时，于天幕上的某些斑块可见一种黯淡的白金色……\r\n\t#memory.splendid|玫红极光与蓝青电光争夺着天空。无夜晚亦无黎明，只存在预备为午的时辰和停滞于午的时辰……\r\n\t#memory.endless|它或许丑陋，但它却美丽好似玻璃迷宫褪去鲜血……\r\n\t#memory.wildering|没入黑暗前的林地与其莹绿好似带毒的果实、其色如肉红石髓的根茎……\r\n\t#memory.golden|它的每个刻面都映现着一个光点。也许是火光的闪烁……\r\n\t#memory.honeyed|我们的翅膀舒展而闪耀，我们的鳞片如黑曜石般泛着柔光……\r\n\t@\"",
+            "requirements": {
+                "memory": 5,
+                "passion": 1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "paint.palestpainting.continue"
+                }
+            ]
+        },
+        {
+            "id": "paint.palestpainting.continue",
+            "actionId": "work",
+            "label": "继续创作淡白至极的画作",
+            "startdescription": "我像猎手一般跟踪着笔下的画面，从不直视它的眼睛。我无法用任何颜料表达这些失落的色彩，所以我必须将其轻描淡写。",
+            "description": "世界可以为淡白至极的画作再多等待一会儿。反正已经等待许久了。",
+            "slots": [
+                {
+                    "id": "canvas.pale",
+                    "label": "画布",
+                    "greedy": true,
+                    "description": "Slowly, softly.",
+                    "required": {
+                        "canvas.pale": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "paint.palestpainting.furious"
+                },
+                {
+                    "id": "paint.palestpainting.luxurious"
+                },
+                {
+                    "id": "paint.palestpainting.liminal"
+                },
+                {
+                    "id": "paint.palestpainting.horizon"
+                },
+                {
+                    "id": "paint.palestpainting.splendid"
+                },
+                {
+                    "id": "paint.palestpainting.endless"
+                },
+                {
+                    "id": "paint.palestpainting.wildering"
+                },
+                {
+                    "id": "paint.palestpainting.golden"
+                },
+                {
+                    "id": "paint.palestpainting.honeyed"
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "paint.palestpainting.furious",
+            "actionId": "work",
+            "label": "蟠七之色",
+            "startdescription": "于低垂的红太阳下，沙丘连成的沙床上，一头怪兽与自己扭打着，身侧围拥着随同者们。它体型松弛肥大，色如不纯的硫磺；数条生着獠牙、触角般的脖颈像猫仔一样互相扭打着。它欢快地撕扯着自己的肉，淌下的血是金色的。它重重翻倒，摔成一滩肉褶山肉片海，压死了一团随同者，令余下的边是尖叫边是欢呼。",
+            "requirements": {
+                "memory.furious": 1
+            },
+            "effects": {
+                "memory.furious": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.furious",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
+        },
+        {
+            "id": "paint.palestpainting.luxurious",
+            "actionId": "work",
+            "label": "潮水之色",
+            "startdescription": "在漫宿蓝色的夜雾中，游弋着一个珊瑚所制的既为宫殿又为王冠之物，此物时不时让位于月亮。它用它的前沿吸进那些不显要的具名者，将自己的矿物和汁液涂裹其上；它从它的后沿排出他们，其已抛光磨亮仿若宝石——但不是排出他们中的所有——余下的用于喂饱它那颗带刺的浪潮之心。",
+            "requirements": {
+                "memory.luxurious": 1
+            },
+            "effects": {
+                "memory.luxurious": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.luxurious",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
+        },
+        {
+            "id": "paint.palestpainting.liminal",
+            "actionId": "work",
+            "label": "双重门关之色",
+            "startdescription": "当我回忆双角利斧，我想起了山楂花的香味。我想起了透射着金红霞光的紫色暮空。我想起了方做过活不久的她双刃淋漓的样子。",
+            "requirements": {
+                "memory.liminal": 1
+            },
+            "effects": {
+                "memory.liminal": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.liminal",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
+        },
+        {
+            "id": "paint.palestpainting.horizon",
+            "actionId": "work",
+            "label": "天际之色",
+            "startdescription": "在雾气散去，太阳或被误认为是月亮之时，于天幕上的某些斑块可见一种黯淡的白金色。我们屏住呼吸，看着它转亮，直到每一重颜色与临近的分离开来，仿若一个个新铸的文字。逆孵之卵。",
+            "requirements": {
+                "memory.horizon": 1
+            },
+            "effects": {
+                "memory.horizon": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.horizon",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
+        },
+        {
+            "id": "paint.palestpainting.splendid",
+            "actionId": "work",
+            "label": "已逝之色",
+            "startdescription": "玫红极光与蓝青电光争夺着天空。无夜晚亦无黎明，只存在预备为午的时辰和停滞于午的时辰。我们每一个人都向天空射下的金针敞开心胸。一切色彩在骄阳下皆显得更浓。",
+            "requirements": {
+                "memory.splendid": 1
+            },
+            "effects": {
+                "memory.splendid": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.splendid",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
+        },
+        {
+            "id": "paint.palestpainting.endless",
+            "actionId": "work",
+            "label": "转动之色",
+            "startdescription": "随着一轮一轮地转动，它的纤毛有节奏地颠扑扭摆，它的身体由透明涨成猩红。它或许丑陋，但它却美丽好似玻璃迷宫褪去鲜血。它不会停歇，且它通体缠卷永无穷尽。转轮。",
+            "requirements": {
+                "memory.endless": 1
+            },
+            "effects": {
+                "memory.endless": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.endless",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
+        },
+        {
+            "id": "paint.palestpainting.wildering",
+            "actionId": "work",
+            "label": "非黑之色",
+            "startdescription": "没入黑暗前的林地与其莹绿好似带毒的果实、其色如肉红石髓的根茎。飞蛾的眼睛因饥饿而透出欢喜。他正在捕猎。",
+            "requirements": {
+                "memory.wildering": 1
+            },
+            "effects": {
+                "memory.wildering": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.wildering",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
+        },
+        {
+            "id": "paint.palestpainting.golden",
+            "actionId": "work",
+            "label": "古焰之色",
+            "startdescription": "它只是一块石头而已，尽管被打磨得光滑锋锐臻至午夜之境。然而待再细看：它的每个刻面都映现着一个光点。也许是火光的闪烁，也许每个都是一颗不同的<b>星星</b>。",
+            "requirements": {
+                "memory.golden": 1
+            },
+            "effects": {
+                "memory.golden": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.golden",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
+        },
+        {
+            "id": "paint.palestpainting.honeyed",
+            "actionId": "work",
+            "label": "将现之色",
+            "startdescription": "我们的翅膀舒展而闪耀，我们的鳞片如黑曜石般泛着柔光，我们的双眼拥有宝石般的刻面，我们的脚爪黯黑到无懈可击。",
+            "requirements": {
+                "memory.honeyed": 1
+            },
+            "effects": {
+                "memory.honeyed": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.honeyed",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
+        },
+        {
+            "id": "paint.palestpainting.complete",
+            "actionId": "work",
+            "label": "九色既明",
+            "startdescription": "几近完成。鸽子密匝匝地在我头顶上的屋脊聚集。黄昏屏息以待。",
+            "description": "这幅画不是一扇门。这些司辰业已离世。连祂们的回音都变得空虚。但我仍于此纪念祂们。那位被剥夺至夺无可夺之人，不受欺骗之人，一一唤亡者以姓名之人——祂或许会满意于这副作品。",
+            "requirements": {
+                "colours.furious": 1,
+                "colours.luxurious": 1,
+                "colours.liminal": 1,
+                "colours.horizon": 1,
+                "colours.splendid": 1,
+                "colours.endless": 1,
+                "colours.wildering": 1,
+                "colours.golden": 1,
+                "colours.honeyed": 1
+            },
+            "effects": {
+                "memory": -1,
+                "canvas.pale": -1,
+                "painting.palest": 1,
+                "notoriety": 2
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "warmup": 30
+        },
+        {
+            "id": "painthaslore",
+            "actionId": "work",
+            "label": "玄奥之作",
+            "startdescription": "看得懂的人自然会明白。[包括防剿局的人。]",
+            "requirements": {
+                "lore": 1
+            },
+            "effects": {
+                "insight": 1,
+                "notoriety": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintaddpigment",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "painthasinfluence",
+            "actionId": "work",
+            "label": "随心之作",
+            "startdescription": "应当能引起反响。",
+            "effects": {
+                "insight": 1
+            },
+            "requirements": {
+                "influence": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintaddpigment",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "painthasmemory",
+            "actionId": "work",
+            "label": "重述一段人生",
+            "startdescription": "这些回忆本会失落于我们脚下的泥土中，而今它们会流传下去。",
+            "requirements": {
+                "memory": 1
+            },
+            "effects": {
+                "insight": 1,
+                "notoriety": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "paint.memory.menacing.once",
+                    "chance": 30
+                },
+                {
+                    "id": "paint.memory.shameful.once",
+                    "chance": 30
+                },
+                {
+                    "id": "paint.memory.unexpected.once",
+                    "chance": 30
+                },
+                {
+                    "id": "paint.memory.joyful.once",
+                    "chance": 30
+                },
+                {
+                    "id": "paint.memory.profitable.once",
+                    "chance": 30
+                },
+                {
+                    "id": "paint.memory.generic"
+                },
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
+        },
+        {
+            "id": "paint.memory.menacing.once",
+            "actionId": "work",
+            "label": "灵魂中的秘密",
+            "startdescription": "我瞥见了七蟠之死。[或将引起防剿局注意。]",
+            "requirements": {
+                "memory.menacing": 1
+            },
+            "effects": {
+                "pre.fragmentedgeb": 1,
+                "insight": 3,
+                "notoriety": 1,
+                "memory.menacing": -1
+            },
+            "warmup": 10,
+            "maxexecutions": 1,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
+        },
+        {
+            "id": "paint.memory.shameful.once",
+            "actionId": "work",
+            "label": "灵魂中的秘密",
+            "startdescription": "我瞥见了伟大母亲的形状。[或将引起防剿局注意。]",
+            "requirements": {
+                "memory.shameful": 1
+            },
+            "effects": {
+                "pre.fragmentgrailb": 1,
+                "insight": 3,
+                "notoriety": 1,
+                "memory.shameful": -1
+            },
+            "warmup": 10,
+            "maxexecutions": 1,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
+        },
+        {
+            "id": "paint.memory.unexpected.once",
+            "actionId": "work",
+            "label": "灵魂中的秘密",
+            "startdescription": "我瞥见了双角斧的牺牲。[或将引起防剿局注意。]",
+            "requirements": {
+                "memory.unexpected": 1
+            },
+            "effects": {
+                "pre.fragmentknockb": 1,
+                "insight": 3,
+                "notoriety": 1,
+                "memory.unexpected": -1
+            },
+            "warmup": 10,
+            "maxexecutions": 1,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
+        },
+        {
+            "id": "paint.memory.joyful.once",
+            "actionId": "work",
+            "label": "灵魂中的秘密",
+            "startdescription": "我瞥见了转轮的旋转，尽管学徒们所知的是那转动早已停歇。[或将引起防剿局注意。]",
+            "requirements": {
+                "memory.joyful": 1
+            },
+            "effects": {
+                "pre.fragmentheartb": 1,
+                "insight": 3,
+                "notoriety": 1,
+                "memory.joyful": -1
+            },
+            "warmup": 10,
+            "maxexecutions": 1,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
+        },
+        {
+            "id": "paint.memory.profitable.once",
+            "actionId": "work",
+            "label": "灵魂中的秘密",
+            "startdescription": "我瞥见了火如何改变，甚至是在火有了刻面后的岁月中的改变。[或将引起防剿局注意。]",
+            "requirements": {
+                "memory.profitable": 1
+            },
+            "effects": {
+                "pre.fragmentforgeb": 1,
+                "insight": 3,
+                "notoriety": 1,
+                "memory.profitable": -1
+            },
+            "warmup": 10,
+            "maxexecutions": 1,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
+        },
+        {
+            "id": "paint.memory.generic",
+            "actionId": "work",
+            "label": "人生一幕幕",
+            "startdescription": "我不觉得这是我自己的人生，不过也许它终究是的。终有一天我将完全无法分辨是与不是。",
+            "requirements": {
+                "memory.profitable": 1
+            },
+            "effects": {
+                "insight": 2,
+                "memory": -1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
+        },
+        {
+            "id": "painthasfollower",
+            "actionId": "work",
+            "label": "肖像画",
+            "startdescription": "或许能用来记住某人。",
+            "effects": {
+                "insight": 1
+            },
+            "requirements": {
+                "mortal": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintaddpigment",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "painthassummoned",
+            "actionId": "work",
+            "label": "不同寻常的肖像画",
+            "startdescription": "我要将他的形象画到我们世界的画布上，这或许能让他在这个世界多留一段时间。[可能会引起防剿局的兴趣。]",
+            "requirements": {
+                "summoned": 1
+            },
+            "effects": {
+                "insight": 1,
+                "notoriety": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintaddpigment",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintaddpigment",
+            "actionId": "work",
+            "label": "夜之斑斓",
+            "warmup": 20,
+            "startdescription": "我可以花钱去买更好的颜料，或者我可以尝试一些更异质的颜料……",
+            "slots": [
+                {
+                    "id": "Paints",
+                    "label": "画材",
+                    "required": {
+                        "pigment": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alternativerecipes": [
+                {
+                    "id": "paintluck",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paintfourpassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintthreepassion",
+                    "chance": 100
+                },
+                {
+                    "id": "painttwopassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintonepassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintnopassion",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintluck",
+            "actionId": "work",
+            "warmup": 1,
+            "label": "顺心的一天",
+            "startdescription": "我发挥得比平时更出色。",
+            "effects": {
+                "insight": 1
+            },
+            "comments": "Passionless painting never does better than usual.",
+            "linked": [
+                {
+                    "id": "paintluck",
+                    "chance": 30
+                },
+                {
+                    "id": "paintfourpassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintthreepassion",
+                    "chance": 100
+                },
+                {
+                    "id": "painttwopassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintonepassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintfourpassion",
+            "label": "全神贯注",
+            "startdescription": "我已投入全副心力。",
+            "actionId": "work",
+            "warmup": 10,
+            "requirements": {
+                "passion": 4
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "insight": 4
+            },
+            "linked": [
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintthreepassion",
+            "actionId": "work",
+            "label": "忘我投入",
+            "startdescription": "世界在我身边消隐。",
+            "warmup": 10,
+            "requirements": {
+                "passion": 3
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "insight": 3
+            },
+            "linked": [
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "painttwopassion",
+            "actionId": "work",
+            "label": "满腔激情",
+            "startdescription": "我知道笔触有误，但我也能想见成品的样子。",
+            "warmup": 10,
+            "requirements": {
+                "passion": 2
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "insight": 2
+            },
+            "linked": [
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintonepassion",
+            "actionId": "work",
+            "label": "用心作画",
+            "startdescription": "我没退步。",
+            "warmup": 10,
+            "requirements": {
+                "passion": 1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "insight": 1
+            },
+            "linked": [
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintnopassion",
+            "actionId": "work",
+            "label": "机械死板",
+            "startdescription": "老实说，我只是在不停地重复往画布上抹颜料这个动作罢了。毫无疑问，这幅作品会很糟。",
+            "warmup": 5,
+            "requirements": {
+                "passion": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "insight": -1
+            },
+            "linked": [
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintcheckpigment",
+            "actionId": "work",
+            "alternativerecipes": [
+                {
+                    "id": "painthasfunds",
+                    "chance": 100
+                },
+                {
+                    "id": "painthaspigment",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "painthasfunds",
+            "actionId": "work",
+            "requirements": {
+                "funds": 1
+            },
+            "effects": {
+                "insight": 1,
+                "funds": -1
+            },
+            "label": "用上等材料……",
+            "startdescription": "……画上等画作？",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ],
+            "warmup": 5
+        },
+        {
+            "id": "painthaspigment",
+            "actionId": "work",
+            "requirements": {
+                "pigment": 1
+            },
+            "effects": {
+                "insight": 1,
+                "notoriety": 1
+            },
+            "label": "强效颜料",
+            "startdescription": "这颜料很危险，甚至是违法的。",
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "matchedge",
+                    "chance": 100
+                },
+                {
+                    "id": "matchforge",
+                    "chance": 100
+                },
+                {
+                    "id": "matchgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "matchheart",
+                    "chance": 100
+                },
+                {
+                    "id": "matchknock",
+                    "chance": 100
+                },
+                {
+                    "id": "matchlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "matchmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "matchwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "matchedge",
+            "requirements": {
+                "ingredientedgeb": 1,
+                "edge": 5
+            },
+            "actionId": "work",
+            "label": "相称的介质",
+            "startdescription": "能与寒冬抗衡的永远是暖春。",
+            "effects": {
+                "insight": 2,
+                "influenceedgec": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasteredge_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "matchforge",
+            "requirements": {
+                "ingredientforgeb": 1,
+                "forge": 5
+            },
+            "actionId": "work",
+            "label": "相称的介质",
+            "startdescription": "黑色的颗粒，经过恰当处理，让位于暴烈的色彩。",
+            "effects": {
+                "insight": 2,
+                "influenceforgec": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasterforge_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "matchgrail",
+            "requirements": {
+                "ingredientgrailb": 1,
+                "grail": 5
+            },
+            "actionId": "work",
+            "label": "相称的介质",
+            "startdescription": "永远不会彻底干涸。完美。",
+            "effects": {
+                "insight": 2,
+                "influencegrailc": 1,
+                "notoriety": 1
+            },
+            "comments": "Extra notoriety for Grail",
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmastergrail_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "matchheart",
+            "requirements": {
+                "ingredientheartb": 1,
+                "heart": 5
+            },
+            "actionId": "work",
+            "label": "相称的介质",
+            "startdescription": "甜蜜的海上黎明，重生之色。",
+            "effects": {
+                "insight": 2,
+                "influenceheartc": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasterheart_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "matchknock",
+            "requirements": {
+                "ingredientknockb": 1,
+                "knock": 5
+            },
+            "actionId": "work",
+            "label": "相称的介质",
+            "startdescription": "或早或晚，这张画布终会毁坏，然而其上的色彩将愈发浓烈。",
+            "effects": {
+                "insight": 2,
+                "influenceknockc": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasterknock_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "matchlantern",
+            "requirements": {
+                "ingredientlanternb": 1,
+                "lantern": 5
+            },
+            "actionId": "work",
+            "label": "相称的介质",
+            "startdescription": "它将在绝对的黑暗中现出最大优势，和我们所有人一样。",
+            "effects": {
+                "insight": 2,
+                "influencelanternc": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasterlantern_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "matchmoth",
+            "requirements": {
+                "ingredientmothb": 1,
+                "moth": 5
+            },
+            "actionId": "work",
+            "label": "相称的介质",
+            "startdescription": "让艺评家去争论这究竟是何种颜色吧，他们或许会为此大打出手。",
+            "effects": {
+                "insight": 2,
+                "restlessness": 1,
+                "influencemothc": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmastermoth_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "matchwinter",
+            "requirements": {
+                "ingredientwinterb": 1,
+                "winter": 5
+            },
+            "effects": {
+                "insight": 2,
+                "dread": 1,
+                "influencewinterc": 1
+            },
+            "actionId": "work",
+            "label": "相称的介质",
+            "startdescription": "我在做什么？我都做了些什么？这会让某些人，甚至是所有人伤透了心。",
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasterwinter_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintmasteredge_unique",
+            "requirements": {
+                "insight": 7,
+                "edge": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasteredge": 1
+            },
+            "actionId": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintmasterforge_unique",
+            "requirements": {
+                "insight": 7,
+                "forge": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasterforge": 1
+            },
+            "actionId": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintmastergrail_unique",
+            "requirements": {
+                "insight": 7,
+                "grail": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmastergrail": 1
+            },
+            "actionId": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintmasterheart_unique",
+            "requirements": {
+                "insight": 7,
+                "heart": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasterheart": 1
+            },
+            "actionId": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintmasterknock_unique",
+            "requirements": {
+                "insight": 7,
+                "knock": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasterknock": 1
+            },
+            "actionId": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintmasterlantern_unique",
+            "requirements": {
+                "insight": 7,
+                "lantern": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasterlantern": 1
+            },
+            "actionId": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintmastermoth_unique",
+            "requirements": {
+                "insight": 7,
+                "moth": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmastermoth": 1
+            },
+            "actionId": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintmasterwinter_unique",
+            "requirements": {
+                "insight": 7,
+                "winter": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasterwinter": 1
+            },
+            "actionId": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintresults",
+            "label": "完成！",
+            "startdescription": " ",
+            "actionId": "work",
+            "warmup": 1,
+            "effects": {
+                "restlessness": -1,
+                "pigment": -1
+            },
+            "linked": [
+                {
+                    "id": "paintingqualitymaster_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualityglorious",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualitymagnificent",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualityexceptional",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualitygood",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualitycompetent",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualityfailure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintingqualitymaster_unique",
+            "actionId": "work",
+            "warmup": 5,
+            "label": "独一无二之作",
+            "startdescription": "我画了一幅独一无二的作品，我绝不敢将这幅非凡之作公之于众。[这幅作品见不得光，不能赚取“资金”。]",
+            "requirements": {
+                "tool": 1
+            },
+            "effects": {
+                "glimmering": 3,
+                "contentment": 1,
+                "insight": -99
+            }
+        },
+        {
+            "id": "paintingqualityglorious",
+            "actionId": "work",
+            "warmup": 5,
+            "label": "辉煌的画作",
+            "startdescription": "就算再也不碰画布，我也能名垂青史了。",
+            "requirements": {
+                "insight": 8
+            },
+            "deckeffect": {
+                "paintingresults": 6
+            },
+            "mutations": [
+                {
+                    "filter": "passionskill",
+                    "mutate": "stale",
+                    "level": -1,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "insight": -99,
+                "fascination": 1
+            }
+        },
+        {
+            "id": "paintingqualitymagnificent",
+            "actionId": "work",
+            "warmup": 5,
+            "label": "瑰丽的画作",
+            "startdescription": "我创作出一幅美丽与特色兼备的作品。这很可能使我声名大噪。",
+            "requirements": {
+                "insight": 6
+            },
+            "deckeffect": {
+                "paintingresults": 5
+            },
+            "mutations": [
+                {
+                    "filter": "passionskill",
+                    "mutate": "stale",
+                    "level": -1,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "insight": -99,
+                "fascination": 1
+            }
+        },
+        {
+            "id": "paintingqualityexceptional",
+            "actionId": "work",
+            "warmup": 5,
+            "label": "出色的画作",
+            "startdescription": "这幅作品挺特别，或许会引起反响。",
+            "requirements": {
+                "insight": 4
+            },
+            "deckeffect": {
+                "paintingresults": 4
+            },
+            "mutations": [
+                {
+                    "filter": "passionskill",
+                    "mutate": "stale",
+                    "level": -1,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "insight": -99
+            }
+        },
+        {
+            "id": "paintingqualitygood",
+            "actionId": "work",
+            "warmup": 5,
+            "label": "良好的画作",
+            "startdescription": "这是我的得意之作。只要得到充分的展示，它便能卖出好价钱。",
+            "requirements": {
+                "insight": 2
+            },
+            "deckeffect": {
+                "paintingresults": 3
+            },
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "insight": -99
+            }
+        },
+        {
+            "id": "paintingqualitycompetent",
+            "actionId": "work",
+            "warmup": 5,
+            "label": "合格的画作",
+            "startdescription": "完全拿得出手。",
+            "requirements": {
+                "insight": 1
+            },
+            "deckeffect": {
+                "paintingresults": 2
+            },
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "insight": -99
+            }
+        },
+        {
+            "id": "paintingqualityfailure",
+            "actionId": "work",
+            "warmup": 5,
+            "label": "毫无价值！",
+            "startdescription": "我画出的东西一无用处，一无优点。我该为自己感到羞愧。不过如果我声名在外，这幅画还是有可能卖出去的……",
+            "requirements": {
+                "insight": -1
+            },
+            "effects": {
+                "insight": -99
+            },
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintingreputationcheck",
+            "actionId": "work",
+            "effects": {
+                "insight": -1
+            },
+            "linked": [
+                {
+                    "id": "paintingreputation_celebrated",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_famed",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_notable",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_significant",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_known",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_noticed",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_unknown",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "paintingreputation_celebrated",
+            "label": "对艺术家的回报？",
+            "description": "我的新作广获好评！我画技精良，名声远播。",
+            "actionId": "work",
+            "requirements": {
+                "reputation": 9,
+                "stale": -1
+            },
+            "deckeffect": {
+                "paintingresultsreputation": 7
+            },
+            "linked": [
+                {
+                    "id": "painting.reputation.overexposure"
+                }
+            ]
+        },
+        {
+            "id": "paintingreputation_famed",
+            "label": "对艺术家的回报？",
+            "description": "我的新作小获名气！我的画收到了良好的评价。",
+            "actionId": "work",
+            "requirements": {
+                "reputation": 7,
+                "stale": -2
+            },
+            "deckeffect": {
+                "paintingresultsreputation": 6
+            },
+            "linked": [
+                {
+                    "id": "painting.reputation.overexposure"
+                }
+            ]
+        },
+        {
+            "id": "paintingreputation_notable",
+            "label": "对艺术家的回报？",
+            "description": "我的新作受到瞩目！我已将最近的几幅画公开展览。肯定会有人掏钱的。",
+            "actionId": "work",
+            "requirements": {
+                "reputation": 5,
+                "stale": -3
+            },
+            "deckeffect": {
+                "paintingresultsreputation": 4
+            },
+            "linked": [
+                {
+                    "id": "painting.reputation.overexposure"
+                }
+            ]
+        },
+        {
+            "id": "paintingreputation_significant",
+            "label": "对艺术家的回报？",
+            "description": "我的新作受到好评！我或可以此糊口，不过世事难料。",
+            "actionId": "work",
+            "requirements": {
+                "reputation": 3,
+                "stale": -4
+            },
+            "deckeffect": {
+                "paintingresultsreputation": 3
+            },
+            "linked": [
+                {
+                    "id": "painting.reputation.overexposure"
+                }
+            ]
+        },
+        {
+            "id": "paintingreputation_known",
+            "label": "对艺术家的回报？",
+            "description": "我的新作引发注意。应该能卖得出去。",
+            "actionId": "work",
+            "requirements": {
+                "reputation": 2,
+                "stale": -5
+            },
+            "deckeffect": {
+                "paintingresultsreputation": 2
+            }
+        },
+        {
+            "id": "paintingreputation_noticed",
+            "comments": "No links to over-exposure risk. The overexposure cards will happily decay to funds.",
+            "label": "对艺术家的回报？",
+            "description": "我的新作引来几人观看。运气好的话能卖得出去。",
+            "actionId": "work",
+            "requirements": {
+                "reputation": 1
+            },
+            "deckeffect": {
+                "paintingresultsreputation": 1
+            }
+        },
+        {
+            "id": "paintingreputation_unknown",
+            "comments": "No links to over-exposure risk. The overexposure cards will happily decay to funds.",
+            "label": "对艺术家的回报？",
+            "description": "我的新作无人问津。没有进账。也许作画本身便是其回报吧，但愿如此。",
+            "actionId": "work",
+            "requirements": {
+                "reputation": -1
+            }
+        },
+        {
+            "id": "painting.reputation.overexposure",
+            "label": "对艺术家的回报？",
+            "actionId": "work",
+            "requirements": {
+                "overexposure": 1
+            },
+            "effects": {
+                "overexposure": -1
+            },
+            "mutations": [
+                {
+                    "filter": "passionskill",
+                    "mutate": "stale",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "painting.reputation.overexposure"
+                }
+            ]
+        },
+        {
+            "id": "paintmansus",
+            "label": "描绘漫宿",
+            "actionId": "work",
+            "requirements": {
+                "lantern": 1
+            },
+            "effects": {
+                "paintingmansus": 1
+            },
+            "startdescription": "我回想起了梦中的那些建筑……",
+            "description": "这作品见不得日光。它会给我带来麻烦。",
+            "warmup": 0,
+            "craftable": false
+        }
+    ]
+}

@@ -1,0 +1,494 @@
+{
+    "elements": [
+        {
+            "id": "apostleforge.mentor",
+            "label": "#PREVIOUSCHARACTERNAME#, our Shaper",
+            "description": "The one who raised us; the one who made us what we are; the one who waits in exile, and will rise when we bring the Dawn.",
+            "comments": "Is an acquaintance so we can hijack the cult foundation recipe.",
+            "aspects": {
+                "mentor": 1
+            }
+        },
+        {
+            "id": "legacyapostleforgejob",
+            "label": "A Favoured Place",
+            "description": "For so long I waited at the left hand of our Shaper. Now the time has come for me to lead the Great Work.",
+            "aspects": {
+                "job": 1
+            },
+            "icon": "apostleforge.pillar1"
+        },
+        {
+            "id": "apostleforge.pillarfuel",
+            "label": "Shaper's Guidance",
+            "description": "We will need our Shaper's guidance to forge the Dawnbreaker Core from a Carcass Spark; to refine Forge ingredients to their final form; to make of a follower the Shaper's Compass; to learn of the Key from the Ligeian, Sulochana; and to complete the Work. But if we do not do their bidding swiftly, Dread will follow.",
+            "aspects": {
+                "influence": 1
+            },
+            "lifetime": 60,
+            "decayTo": "dread",
+            "icon": "mentorguidance"
+        },
+        {
+            "id": "apostleforge.pillar1",
+            "label": "Dawnbreaker Technique",
+            "description": "THE SHAPER SPEAKS: 'I must enact the Forge. Set a Carcass Spark at the engine's heart. Awaken it with the highest mysteries. Prepare the fiercest alchemy to fuel it. Find the flaw in the place at the land's edge that has the same name in every History. Bring the device there, with the Biting Key that Sulochana the Ligeian knows. Evoke the Forge's greatest heat; employ the most potent Mysteries of Opening; and I will attend your dissolution.'"
+        },
+        {
+            "id": "apostleforge.pillar2.dormant",
+            "label": "Dormant Dawnbreaker Core",
+            "description": "A shining cage of curved metal, enclosing a softly glowing fragment of ancient light. It might begin our Dawn, if we can rekindle it and purify it with the fiercest alchemy.",
+            "aspects": {
+                "tool": 1,
+                "greatwork": 1
+            }
+        },
+        {
+            "id": "apostleforge.pillar2",
+            "label": "Dawnbreaker Core",
+            "description": "A radiant cage of curved metal, imprisoning a blazing mote of solar fire. If we can carry it to the place where the world's flaw colours the air, we can bring the Dawn.",
+            "aspects": {
+                "tool": 1,
+                "greatwork": 1
+            },
+            "xtriggers": {
+                "sabotage": "apostleforge.pillar2.sabotaged"
+            }
+        },
+        {
+            "id": "apostleforge.pillar3",
+            "label": "Blue Gold",
+            "description": "This is alchemy's savage summit: the deadly blue of fire outpacing light. Touch it and die.",
+            "aspects": {
+                "ingredient": 1,
+                "greatwork": 1
+            },
+            "xtriggers": {
+                "sabotage": "apostleforge.pillar3.sabotaged"
+            }
+        },
+        {
+            "id": "apostleforge.pillar5",
+            "label": "Mrs E.'s Assistance",
+            "description": "A little brass chimaera-head given by Mrs E. as a token. When we have prepared the proper rite, she'll bear her Key to the flaw in the world, so that when I bring the Dawn, the Mansus will open for our Shaper. But she won't wait forever.",
+            "aspects": {
+                "promise": 1
+            },
+            "unique": true,
+            "lifetime": 600
+        },
+        {
+            "id": "apostleforge.pillar2.dormant.sabotaged",
+            "label": "Sabotaged Dormant Dawnbreaker Core",
+            "description": "A battered tangle of bent metal, enclosing a mote of drunkenly bobbing light. We must repair it before it collapses altogether!",
+            "aspects": {
+                "tool": 1,
+                "greatwork.sabotaged": 1
+            },
+            "xtriggers": {
+                "sabotage.repair": "apostleforge.pillar2.dormant"
+            }
+        },
+        {
+            "id": "apostleforge.pillar2.sabotaged",
+            "label": "Sabotaged Dawnbreaker Core",
+            "description": "A flaring tangle of bent metal. A blazing mote of solar fire quivers fitfully within. We must repair it before it collapses altogether!",
+            "aspects": {
+                "tool": 1,
+                "greatwork.sabotaged": 1
+            },
+            "xtriggers": {
+                "sabotage.repair": "apostleforge.pillar2"
+            }
+        },
+        {
+            "id": "apostleforge.pillar3.sabotaged",
+            "label": "Unstable Blue Gold",
+            "description": "A poisoned, stuttering ingot of energetic alchemy. We must soothe its rage, and quickly!",
+            "aspects": {
+                "ingredient": 1,
+                "greatwork.sabotaged": 1
+            },
+            "xtriggers": {
+                "sabotage.repair": "apostleforge.pillar3"
+            }
+        },
+        {
+            "id": "apostlegrail.mentor",
+            "label": "#PREVIOUSCHARACTERNAME#, our Delight",
+            "description": "Our fountain, our joy, who rests in exile until the greatest of Feasts, the Vitulation.",
+            "comments": "Is an acquaintance so we can hijack the cult foundation recipe.",
+            "aspects": {
+                "mentor": 1
+            }
+        },
+        {
+            "id": "legacyapostlegrailjob",
+            "label": "Duty and Delight",
+            "description": "Our Delight saved me from death, and also from boredom. We shall give them everything.",
+            "aspects": {
+                "job": 1
+            },
+            "icon": "apostlegrail.pillar1"
+        },
+        {
+            "id": "apostlegrail.pillarfuel",
+            "label": "Delightful Blood",
+            "description": "I have received a little vial of our Delight's blood, via courier. Our Delight's instructions are written herein, in the tiny tangles of cellular script. We can taste them, as they will taste us. If we waste it, our Delight will wax wroth.",
+            "aspects": {
+                "ingredient": 1,
+                "grail": 3,
+                "auctionable": 1
+            },
+            "lifetime": 240,
+            "decayTo": "dread",
+            "icon": "mentorguidance"
+        },
+        {
+            "id": "apostlegrail.pillar1",
+            "label": "Vitulation Recipe",
+            "description": "'The Delight shall give life; the Delight shall take life; the Delight shall not be sated. We must purchase the secret savours and infuse them with the Hours' gifts; assemble the Host; at the most auspicious time, raise the resistless cry of the Unceasing Mysteries and share from the Chalice Murmurous.'",
+            "aspects": {
+                "lore": 1
+            }
+        },
+        {
+            "id": "apostlegrail.pillar2.dormant",
+            "label": "Forlorn Blood",
+            "description": "I have a disease. My blood is wrong. My bones are sick. I'll die. But perhaps I can preserve myself, long enough, with the holy blood of our Delight.",
+            "aspects": {
+                "illhealth": 1
+            },
+            "slots": [
+                {
+                    "id": "blood",
+                    "actionid": "dream",
+                    "label": "Blood",
+                    "required": {
+                        "apostlegrail.pillarfuel": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "apostlegrail.pillar2",
+            "label": "Savorous Blood",
+            "description": "I am of the same blood as the Delightful, now. As long as their savour graces my veins, my disease cannot touch me. Without their blessing, I'll die.",
+            "aspects": {
+                "promise": 1
+            },
+            "lifetime": 600,
+            "decayTo": "apostlegrail.pillar2.dormant"
+        },
+        {
+            "id": "apostlegrail.pillar3",
+            "label": "The Seven Graces",
+            "description": "The Spices and Savouries department of the eccentric firm of T.R.N. Ltd caters to endeavours such as ours. They have supplied these tempting adornments, with which we shall bedizen and prepare ourselves... once they have been correctly prepared in a sealed and darkened kitchen.",
+            "aspects": {
+                "ingredient": 1,
+                "job": 1,
+                "grail": 2
+            }
+        },
+        {
+            "id": "apostlegrail.pillar4.inprogress1",
+            "label": "The First Fragments of the Host",
+            "description": "We have attracted a few gourmands and perverts. They will expect a feast of the senses.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqvitulation",
+            "lifetime": 120,
+            "xtriggers": {
+                "vitulationupgrade": "apostlegrail.pillar4.inprogress2",
+                "sabotage": "notoriety"
+            }
+        },
+        {
+            "id": "apostlegrail.pillar4.inprogress2",
+            "label": "The Second Fragments of the Host",
+            "description": "Word spreads. Curiosity and appetite will drive strangers to attend our Vitulation.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqvitulation",
+            "lifetime": 120,
+            "decayTo": "apostlegrail.pillar4.inprogress1",
+            "xtriggers": {
+                "vitulationupgrade": "apostlegrail.pillar4.inprogress3",
+                "sabotage": "notoriety"
+            }
+        },
+        {
+            "id": "apostlegrail.pillar4.inprogress3",
+            "label": "The Third Fragments of the Host",
+            "description": "Filthy draggles of the morbid and the inquisitive.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqvitulation",
+            "lifetime": 120,
+            "decayTo": "apostlegrail.pillar4.inprogress2",
+            "xtriggers": {
+                "vitulationupgrade": "apostlegrail.pillar4.inprogress4",
+                "sabotage": "notoriety"
+            }
+        },
+        {
+            "id": "apostlegrail.pillar4.inprogress4",
+            "label": "The Fourth Fragments of the Host",
+            "description": "The hungry, the greedy, the curious: all these have received our invitation.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqvitulation",
+            "lifetime": 120,
+            "decayTo": "apostlegrail.pillar4.inprogress3",
+            "xtriggers": {
+                "vitulationupgrade": "apostlegrail.pillar4.inprogress5",
+                "sabotage": "apostlegrail.pillar4.inprogress1"
+            }
+        },
+        {
+            "id": "apostlegrail.pillar4.inprogress5",
+            "label": "The Fifth Fragments of the Host",
+            "description": "Now the name of the Vitulation is whispered wherever mouths embrace meat.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqvitulation",
+            "lifetime": 120,
+            "decayTo": "apostlegrail.pillar4.inprogress4",
+            "xtriggers": {
+                "vitulationupgrade": "apostlegrail.pillar4.inprogress6",
+                "sabotage": "apostlegrail.pillar4.inprogress2"
+            }
+        },
+        {
+            "id": "apostlegrail.pillar4.inprogress6",
+            "label": "The Sixth Fragments of the Host",
+            "description": "When the time comes, our guests will throng like rats.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqvitulation",
+            "lifetime": 120,
+            "decayTo": "apostlegrail.pillar4.inprogress5",
+            "xtriggers": {
+                "vitulationupgrade": "apostlegrail.pillar4.inprogress7",
+                "sabotage": "apostlegrail.pillar4.inprogress3"
+            }
+        },
+        {
+            "id": "apostlegrail.pillar4.inprogress7",
+            "label": "The Host, Assembled",
+            "description": "We await only the Key-holder, who must open the Kingskin Gate when our Delight enacts the Grail.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqvitulation",
+            "lifetime": 120,
+            "decayTo": "apostlegrail.pillar4.inprogress6",
+            "xtriggers": {
+                "sabotage": "apostlegrail.pillar4.inprogress4"
+            }
+        },
+        {
+            "id": "apostlegrail.pillar4",
+            "label": "The Host and the Guests",
+            "description": "When the signal is given, a great Host will assemble, their eyes so wide - their mouths so wide - to feast and be feasted upon - to draw from me the blood of our Delight. Our very Delight shall lead them in their feasting, and the Lady of Wires shall turn her Key.",
+            "aspects": {
+                "summoned": 1
+            }
+        },
+        {
+            "id": "apostlelantern.mentor",
+            "label": "#PREVIOUSCHARACTERNAME#, our Illuminated One",
+            "description": "Our source, our inspiration, who dwells now in the Mansus.",
+            "comments": "Is an acquaintance so we can hijack the cult foundation recipe.",
+            "aspects": {
+                "mentor": 1
+            }
+        },
+        {
+            "id": "legacyapostlelanternjob",
+            "label": "The First Dream",
+            "description": "The dreams have hollowed me out like a withered oak, and now I am almost ready.",
+            "aspects": {
+                "job": 1
+            },
+            "icon": "apostlelantern.pillar1"
+        },
+        {
+            "id": "apostlelantern.pillarfuel",
+            "label": "A Dream of a Key",
+            "description": "The dream, again. Instructions for me, and for someone else, if I can find them. It will guide me into the Mansus. It will show me what I need to do. It is a presentiment of the true Key, for those who know something of the Glory.",
+            "lifetime": 60,
+            "aspects": {
+                "tool": 1
+            },
+            "decayTo": "fascination",
+            "icon": "mentorguidance"
+        },
+        {
+            "id": "apostlelantern.pillar1",
+            "label": "The Third Mode",
+            "description": "'We shall navigate; we shall illuminate; we shall not be compassionate. Seek the Crossroads behind the Door of Eyes. Raise there the Allure. Send the silvered dead to bring the sleeping souls of mortals. When there are sufficient Witnesses, send for the Key of Days, to open the three-lobed gate Outwards, in its third mode.'",
+            "aspects": {
+                "tool": 1
+            }
+        },
+        {
+            "id": "apostlelantern.pillar2",
+            "label": "The Lesser Crossroads",
+            "slots": [
+                {
+                    "id": "keydream",
+                    "label": "A Dream of a Key",
+                    "required": {
+                        "apostlelantern.pillarfuel": 1
+                    },
+                    "actionid": "dream"
+                },
+                {
+                    "id": "lanterninfluence",
+                    "label": "A Dream of Light",
+                    "required": {
+                        "influencelanterng": 1
+                    },
+                    "actionid": "dream"
+                }
+            ],
+            "description": "A pair of knotted roads beneath the shadow of a tree, and the eye of the Tricuspid Gate, close to the head of the Ascent of Knives. The Concursum's shadow? Its reflection? Its sister?",
+            "aspects": {
+                "way": 1
+            },
+            "unique": true
+        },
+        {
+            "id": "apostlelantern.pillar3",
+            "label": "The Allure",
+            "slots": [
+                {
+                    "id": "fascination",
+                    "label": "The Bait",
+                    "required": {
+                        "fascination": 1
+                    },
+                    "actionid": "study"
+                }
+            ],
+            "description": "Once seen, the Allure clings. Few living souls will ever venture this far into the Mansus. I must employ a Maid-in-the-Mirror and show her the Allure, so that she will know to bring them here.",
+            "aspects": {
+                "influence": 1
+            },
+            "xtriggers": {
+                "renew.apostlelantern.pillar3": "apostlelantern.pillar3"
+            },
+            "lifetime": 180
+        },
+        {
+            "id": "apostlelantern.pillar4.inprogress1",
+            "label": "The Witnesses: One of Seven",
+            "description": "A solitary figure, swaying at the Crossroads in the golden light of the Allure, the blue of the Mansus.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqthirdwaywitnesses",
+            "lifetime": 120,
+            "xtriggers": {
+                "cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress2",
+                "sabotage": "fascination"
+            },
+            "icon": "apostlelantern.pillar4"
+        },
+        {
+            "id": "apostlelantern.pillar4.inprogress2",
+            "label": "The Witnesses: Two of Seven",
+            "description": "A Witness-pair, swaying at the Crossroads in the golden light of the Allure, the blue of the Mansus.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqthirdwaywitnesses",
+            "lifetime": 120,
+            "decayTo": "apostlelantern.pillar4.inprogress1",
+            "xtriggers": {
+                "cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress3",
+                "sabotage": "fascination"
+            },
+            "icon": "apostlelantern.pillar4"
+        },
+        {
+            "id": "apostlelantern.pillar4.inprogress3",
+            "label": "The Witnesses: Three of Seven",
+            "description": "Their faces are blanker than ever, but they have taken each others' hands.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqthirdwaywitnesses",
+            "lifetime": 120,
+            "decayTo": "apostlelantern.pillar4.inprogress2",
+            "xtriggers": {
+                "cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress4",
+                "sabotage": "fascination"
+            },
+            "icon": "apostlelantern.pillar4"
+        },
+        {
+            "id": "apostlelantern.pillar4.inprogress4",
+            "label": "The Witnesses: Four of Seven",
+            "description": "The light bleaches them, but by their nature they will dapple as the moment draws near.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqthirdwaywitnesses",
+            "lifetime": 120,
+            "decayTo": "apostlelantern.pillar4.inprogress3",
+            "xtriggers": {
+                "cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress5",
+                "sabotage": "apostlelantern.pillar4.inprogress1"
+            },
+            "icon": "apostlelantern.pillar4"
+        },
+        {
+            "id": "apostlelantern.pillar4.inprogress5",
+            "label": "The Witnesses: Five of Seven",
+            "description": "Five witnesses wait for the fruit that will swell, but never ripen.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqthirdwaywitnesses",
+            "lifetime": 120,
+            "decayTo": "apostlelantern.pillar4.inprogress4",
+            "xtriggers": {
+                "cloudwitnessesupgrade": "apostlelantern.pillar4.inprogress6",
+                "sabotage": "apostlelantern.pillar4.inprogress2"
+            },
+            "icon": "apostlelantern.pillar4"
+        },
+        {
+            "id": "apostlelantern.pillar4.inprogress6",
+            "label": "The Witnesses: Six of Seven",
+            "description": "The air is agony. They cannot look away.",
+            "aspects": {
+                "summoned": 1
+            },
+            "uniquenessgroup": "uqthirdwaywitnesses",
+            "lifetime": 120,
+            "decayTo": "apostlelantern.pillar4.inprogress5",
+            "xtriggers": {
+                "cloudwitnessesupgrade": "apostlelantern.pillar4",
+                "sabotage": "apostlelantern.pillar4.inprogress3"
+            },
+            "icon": "apostlelantern.pillar4"
+        },
+        {
+            "id": "apostlelantern.pillar4",
+            "label": "The Cloud of Witnesses",
+            "description": "Seven silent souls softly supplicate shining source.",
+            "aspects": {
+                "summoned": 1
+            }
+        }
+    ]
+}

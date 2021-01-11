@@ -1,0 +1,620 @@
+{
+    "recipes": [
+        {
+            "id": "workdetectivejob_start",
+            "label": "在车站",
+            "actionId": "work",
+            "requirements": {
+                "legacydetectivejob": 1
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "effects": {
+                "LEVER_LastFollower": 1,
+                "legacydetective_plotitem": 1,
+                "funds": 3,
+                "health": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "needs",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "detectiveopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "我又一次被借调到了防剿局，一个关注“密教”犯罪案件的政府部门。它的声名可不怎么样。",
+            "description": "防剿局已经确定了一名棘手犯人的身份，并派我去调查。当我看见这人的姓名时，我不由自主地收住了呼吸。我记得另一桩案子，记得太清楚了……",
+            "warmup": 10,
+            "craftable": true,
+            "linked": [
+                {
+                    "id": "workdetectivejob_start_rebellion",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "detectiveopendream",
+            "label": "睡梦中……",
+            "actionId": "dream",
+            "startdescription": "防剿局出版了介绍梦境之危险的备忘录。每周都会新增一种危险。",
+            "description": "“上报有关月光的梦境。上报有关一座困于永夜的森林的梦境。拉开窗帘确保能够被阳光唤醒。睡前不要剪头发。绝不要在开裂的镜子前睡着。”",
+            "effects": {
+                "passion": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_investigate_hint",
+            "label": "继续推进调查？",
+            "actionId": "work",
+            "requirements": {
+                "legacydetectivejob_matured": 1,
+                "suspicious": 1
+            },
+            "startdescription": "如果我运用理性，或许能够进一步了解目标。",
+            "hintonly": true,
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_pursuepromotion",
+            "label": "某种晋升",
+            "actionId": "work",
+            "requirements": {
+                "legacydetectivejob_matured": 1,
+                "favour": 1
+            },
+            "startdescription": "我赢得了当局的青睐。我可以用它来给自己升职，在防剿局的体制内谋得一席之地。[这样的结局可称得上是一次微小的胜利。]",
+            "description": "Ending finish.",
+            "warmup": 60,
+            "ending": "workvictoryb",
+            "signalEndingFlavour": "Grand",
+            "craftable": true
+        },
+        {
+            "id": "workdetectivejob_matured_investigate",
+            "label": "继续推进调查",
+            "actionId": "work",
+            "requirements": {
+                "legacydetectivejob_matured": 1,
+                "suspicious": 1,
+                "reason": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "detectiveopenstudy",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_threereason_success",
+                    "chance": 100
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_tworeason_success",
+                    "chance": 70
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_onereason_success",
+                    "chance": 30
+                }
+            ],
+            "effects": {
+                "funds": 2
+            },
+            "startdescription": "调查一个目标。投入的理性越多，成功的几率就越大。",
+            "description": "我的调查毫无进展。",
+            "warmup": 60,
+            "aspects": {
+                "employment": 1,
+                "fatiguing": 1
+            },
+            "craftable": true
+        },
+        {
+            "id": "workdetectivejob_matured_investigate_threereason_success",
+            "label": "取得进展！",
+            "actionId": "work",
+            "alternativerecipes": [
+                {
+                    "id": "detectiveopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "requirements": {
+                "reason": 3
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "workdetectivejob_matured_attemptsolvecase",
+                    "chance": 100
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_successresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_matured_investigate_tworeason_success",
+            "label": "取得进展！",
+            "actionId": "work",
+            "alternativerecipes": [
+                {
+                    "id": "detectiveopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "requirements": {
+                "reason": 2
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "workdetectivejob_matured_attemptsolvecase",
+                    "chance": 100
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_successresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_matured_investigate_onereason_success",
+            "label": "取得进展！",
+            "actionId": "work",
+            "alternativerecipes": [
+                {
+                    "id": "detectiveopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "requirements": {
+                "reason": 1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "workdetectivejob_matured_attemptsolvecase",
+                    "chance": 100
+                },
+                {
+                    "id": "workdetectivejob_matured_investigate_successresults",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_matured_investigate_successresults",
+            "label": "取得进展！",
+            "actionId": "work",
+            "effects": {
+                "funds": 3,
+                "myevidence": 1
+            },
+            "aspects": {
+                "employment": 1,
+                "fatiguing": 1,
+                "investigatingsuccess": 1,
+                "dreadful": 1
+            },
+            "description": "关门时持续不断的咔哒声，车站墙壁上的潮湿污渍，鞋油的气味和忙得没时间洗澡的我。这些东西加到一起，诞生出了如水晶般清明的真相。我已取得进展，还赚到了些加班费。",
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_attemptsolvecase",
+            "label": "解决案件",
+            "actionId": "work",
+            "requirements": {
+                "myevidenceb": 1
+            },
+            "slots": [
+                {
+                    "id": "Culprit",
+                    "label": "犯人",
+                    "required": {
+                        "independent": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "我已将收集到的证据上交给防剿局局长助理……",
+            "description": "我已经向防剿局提供了充足的证据来实施追捕……但是已经没有需要再逮捕的犯人了。",
+            "alternativerecipes": [
+                {
+                    "id": "workdetectivejob_matured_solvecase_withbackup",
+                    "chance": 100
+                },
+                {
+                    "id": "workdetectivejob_matured_solvecase",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "aspects": {
+                "employment": 1,
+                "fatiguing": 1
+            },
+            "effects": {
+                "funds": 2,
+                "suspicious": -99
+            },
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_solvecase_withbackup",
+            "label": "解决案件",
+            "actionId": "work",
+            "requirements": {
+                "myevidenceb": 1,
+                "independent": 1
+            },
+            "extantreqs": {
+                "desire": -1
+            },
+            "startdescription": "我已经将收集到的证据上交给了防剿局助理局长。此时此刻，我能想象到那个画面，一群面目严峻、衣着朴素的男子正冲撞着我的猎物的大门。",
+            "description": "防剿局在秘密法庭进行了审判，并且毫无仁慈可言。我的猎物从此消失，而我则赢得了晋升。",
+            "effects": {
+                "funds": 7,
+                "favour": 1,
+                "suspicious": -99,
+                "independent": -1,
+                "legacydetective_plotitem_backup": 1
+            },
+            "warmup": 60,
+            "aspects": {
+                "employment": 1,
+                "fatiguing": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "workdetectivejob_newrival",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_solvecase",
+            "label": "解决案件",
+            "actionId": "work",
+            "requirements": {
+                "myevidenceb": 1,
+                "independent": 1
+            },
+            "startdescription": "我已经将收集到的证据上交给了防剿局助理局长。此时此刻，我能想象到那个画面，一群面目严峻、衣着朴素的男子正冲撞着我的猎物的大门。",
+            "description": "防剿局在秘密法庭进行了审判，并且毫无仁慈可言。我的猎物从此消失，而我则赢得了晋升。",
+            "effects": {
+                "funds": 7,
+                "favour": 1,
+                "suspicious": -99,
+                "independent": -1
+            },
+            "warmup": 60,
+            "aspects": {
+                "employment": 1,
+                "fatiguing": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "workdetectivejob_newrival",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_newrival",
+            "label": "又一个邪魔外道？",
+            "actionId": "newrival",
+            "startdescription": "何时才能结束？我们何时才能称我们的法律、城市、世界为“安全”？",
+            "description": "这里有有关于此人的——令人不安的——报告。",
+            "deckeffect": {
+                "acquaintances": 1
+            },
+            "warmup": 60,
+            "linked": [
+                {
+                    "id": "workdetectivejob_newrival_recruit",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_newrival_recruit",
+            "label": "又一个邪魔外道？",
+            "actionId": "newrival",
+            "startdescription": ".",
+            "description": ".",
+            "aspects": {
+                "recruiting": 1
+            },
+            "linked": [
+                {
+                    "id": "workdetectivejob_start_promote_lever_believer",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_start_promote_lever_believer",
+            "comments": "left unrenamed for backwards compatibility",
+            "label": "小心……",
+            "actionId": "newrival",
+            "aspects": {
+                "promotiontodisciple": 1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "workdetectivejob_start_promote_lever_disciple",
+                    "chance": 30
+                },
+                {
+                    "id": "workdetectivejob_start_rebellion",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "workdetectivejob_start_promote_lever_disciple",
+            "comments": "left unrenamed for backwards compatibility",
+            "label": "小心……",
+            "actionId": "newrival",
+            "aspects": {
+                "promotionto_d_edge": 1,
+                "promotionto_d_forge": 1,
+                "promotionto_d_grail": 1,
+                "promotionto_d_heart": 1,
+                "promotionto_d_knock": 1,
+                "promotionto_d_lantern": 1,
+                "promotionto_d_moth": 1,
+                "promotionto_d_winter": 1
+            },
+            "linked": [
+                {
+                    "id": "workdetectivejob_start_rebellion",
+                    "chance": 100
+                }
+            ],
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_start_rebellion",
+            "comments": "left unrenamed for backwards compatibility",
+            "label": "小心……",
+            "actionId": "work",
+            "aspects": {
+                "rebellion": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "workdetectivejob_matured_plead",
+            "label": "恳求复职！",
+            "actionId": "work",
+            "requirements": {
+                "legacydetectivejob_suspended": 1,
+                "passion": 1
+            },
+            "startdescription": "为什么他们就不明白呢？",
+            "description": "我官复原职……至少现下如此。",
+            "aspects": {
+                "plead": 1
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "workdetectivejob_epilogue",
+            "label": "",
+            "actionId": "work",
+            "effects": {
+                "legacydetectivejob_matured": -1
+            },
+            "startdescription": "我失业了",
+            "description": "",
+            "craftable": false
+        },
+        {
+            "id": "legacydetectiveplotitem_tempt",
+            "label": "书页的气味",
+            "actionId": "craving",
+            "requirements": {
+                "detectivetemptation": 1
+            },
+            "linked": [
+                {
+                    "id": "legacydetectiveplotitem_tempt_addslot",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "legacydetectiveplotitem_tempt_addslot",
+            "label": "书页的气味",
+            "actionId": "craving",
+            "slots": [
+                {
+                    "id": "resist",
+                    "label": "抵抗",
+                    "description": "你难以抗拒重读文件的诱惑。你需要投入理性来加强抵抗。",
+                    "required": {
+                        "reason": 1
+                    }
+                }
+            ],
+            "startdescription": "我无法忘记自己在#PREVIOUSCHARACTERNAME#的档案里所看到的东西。[你难以抗拒重读文件的诱惑。你需要投入“理性”加强抵抗。]",
+            "description": "这一页接一页的文字翻动起来让人欲罢不能，好似在给水果去皮，或是在拆封一份神秘的礼物。最后，我的双手沾满墨水，我的大脑恍如沸腾。我开启了什么样的新世界？",
+            "effects": {
+                "legacydetective_plotitem": -1,
+                "LEVER_LastDesire": 1,
+                "fascination": 1,
+                "dread": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "legacydetectiveplotitem_tempt_resist",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsrisk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "legacydetectiveplotitem_tempt_resist",
+            "label": "书页的气味",
+            "requirements": {
+                "reason": 1
+            },
+            "actionId": "craving",
+            "startdescription": "我尊崇律条。我除尊崇律条外别无他想。我坚持了如此长时间不是为了这么轻易地放弃。",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "description": "这阵诱惑过去了，至少现下如此。"
+        },
+        {
+            "id": "detectiveopenstudy",
+            "label": "研究中……",
+            "alternativerecipes": [
+                {
+                    "id": "ascensionnotyet",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "detectiveopenexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "actionId": "study",
+            "startdescription": "我时不时会花点时间提升自己。",
+            "description": "毫无疑问，在那里我能够找到学习的材料。",
+            "effects": {
+                "reason": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "detectiveopenexplore",
+            "label": "探索中……",
+            "actionId": "explore",
+            "startdescription": "我办公室的墙上挂着一张地图，上面满是黑色大头钉与密如蛛网的注释。",
+            "description": "我对这座城市十分了解，但要做到完全了解或许需要花费一生时间。",
+            "warmup": 10,
+            "deckeffect": {
+                "citysecrets": 2
+            },
+            "craftable": false,
+            "alternativerecipes": [
+                {
+                    "id": "detectiveopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "detectiveopentalk",
+            "label": "交谈中……",
+            "actionId": "talk",
+            "startdescription": "我可能会建立一段友谊，也可能会从此结束与某人的关系。",
+            "description": "",
+            "effects": {},
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "detectivestudy_plotitem",
+            "label": "我不该打开这文件",
+            "actionId": "study",
+            "requirements": {
+                "detectivetemptation": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "detectiveopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "detectivetemptation": -1,
+                "fascination": 1,
+                "LEVER_LastDesire": 1,
+                "dread": 1
+            },
+            "startdescription": "我不可以再读它。我花了好几周的时间让自己忘掉那些数字，忘掉那些指示，忘掉那些——上帝啊救救我——该死的素描。",
+            "description": "这一页接一页的文字翻动起来让人欲罢不能，好似在给水果去皮，或是在拆封一份神秘的礼物。最后，我的双手沾满墨水，我的大脑恍如沸腾。我开启了什么样的新世界？",
+            "warmup": 60,
+            "craftable": true,
+            "maxexecutions": 1
+        },
+        {
+            "id": "detectivestudy_plotitem_afterfirsttime",
+            "label": "我不该打开这文件",
+            "actionId": "study",
+            "requirements": {
+                "detectivetemptation": 1
+            },
+            "alternativerecipes": [
+                {
+                    "id": "detectiveopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "detectivetemptation": -1,
+                "fascination": 1,
+                "dread": 1
+            },
+            "startdescription": "我不可以再读它。我花了好几周的时间让自己忘掉那些数字，忘掉那些指示，忘掉那些——上帝啊救救我——该死的素描。",
+            "description": "翻阅这些书页令人感到轻松自在，就像在给水果去皮，或是拆封一份神秘礼物。最后，我的双手沾满墨水，我的大脑恍如沸腾。我做了什么？",
+            "warmup": 60,
+            "craftable": true,
+            "maxexecutions": 1
+        },
+        {
+            "id": "detectivework_plotitem",
+            "label": "烧毁文件",
+            "actionId": "work",
+            "requirements": {
+                "detectivetemptation": 1,
+                "legacydetective_plotitem_burning": -1
+            },
+            "effects": {
+                "detectivetemptation": -1,
+                "legacydetective_plotitem_burning": 1,
+                "restlessness": 1,
+                "contentment": 1
+            },
+            "startdescription": "这是证据，而我们不应烧毁证据。但或许这样做才是最好的结局。",
+            "description": "书页一张张变黑、翘曲、皱缩，如紧握成拳的手。我打开办公室的窗户，让这浓烟消散，不留痕迹。我到底做了什么？",
+            "warmup": 30,
+            "craftable": true
+        }
+    ]
+}

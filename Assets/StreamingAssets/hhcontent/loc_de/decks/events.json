@@ -1,0 +1,438 @@
+{
+	"decks": [
+		{
+			"id": "seasonevents",
+			"label": "Jahreszeiten",
+			"description": "Wann immer die Zeit verstreicht, tritt unter Umständen ein unerwartetes Ereignis ein.",
+			"spec": [
+				"seasonsickness",
+				"seasonsuspicion",
+				"seasonsuspicion",
+				"seasondespair",
+				"seasondespair",
+				"seasonvisions",
+				"seasonvisions",
+				"seasonambitions",
+				"seasonambitions",
+				"seasonsilence",
+				"seasonardours"
+			],
+			"defaultcard": "contentment",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "cabaretevents",
+			"label": "Ein Abend im Klub",
+			"description": "Jeder Abend beschert andere Genüsse, manchmal auch Risiken.",
+			"spec": [
+				"contentment",
+				"contentment",
+				"contentment",
+				"fascination",
+				"fascination",
+				"erudition",
+				"glimmering",
+				"vitality",
+				"notoriety",
+				"influencegrail",
+				"influencemoth"
+			],
+			"defaultcard": "contentment",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "roserewards",
+			"label": "Lohn der Liebe",
+			"description": "Dann, jetzt, wann?",
+			"spec": [
+				"memorybittersweet",
+				"memorypleasant",
+				"memorypassionate",
+				"fleeting"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "dreamreasonresults",
+			"label": "Das Hinterland des Traums",
+			"description": "Der Schlaf bringt für gewöhnlich Ruhe und Frieden – aber nicht immer. Nicht immer.",
+			"spec": [
+				"dread",
+				"fascination",
+				"glimmering",
+				"vitality",
+				"contentment",
+				"restlessness"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "paintingresultsbasic",
+			"label": "Lohn der Kunst",
+			"description": "Das Malen kann Zufriedenheit mit sich bringen, oder, manchmal, eine neue Art von Verständnis.",
+			"spec": [
+				"contentment",
+				"contentment",
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"glimmering"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "paintingresults",
+			"label": "Lohn der Kunst",
+			"description": "Das Malen bringt häufig Zufriedenheit mit sich. Zuweilen sorgt mein Werk für Aufsehen.",
+			"spec": [
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"glimmering",
+				"contentment",
+				"contentment",
+				"contentment",
+				"contentment",
+				"contentment",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "paintingresultsreputation",
+			"label": "Lohn des Ruhms",
+			"description": "Hier sitzt das Geld.",
+			"spec": [
+				"overexposure",
+				"overexposure",
+				"overexposure",
+				"overexposure",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "ecdysisrewards",
+			"label": "Die Gaben am Ende",
+			"description": "Der Klub garantiert ein Minimum, aber manchmal trägt auch das Publikum sein Scherflein bei.",
+			"spec": [
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"compensationb",
+				"compensationb",
+				"compensationc",
+				"jumble",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"compensationb",
+				"compensationb",
+				"compensationc",
+				"jumble",
+				"kitlingripe",
+				"raptintheking",
+				"vienneseconundra"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "robberyrewards",
+			"label": "Lohn der Sünde",
+			"description": "Meine Schergen bringen mir für gewöhnlich kleine Schätzchen mit – manchmal Tand, selten etwas Außergewöhnliches.",
+			"spec": [
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"funds",
+				"jumble",
+				"jumble",
+				"jumble",
+				"jumble",
+				"jumble",
+				"compensation",
+				"compensation",
+				"compensation",
+				"compensation",
+				"compensation",
+				"compensation",
+				"compensationb",
+				"compensationb",
+				"compensationb",
+				"ingredientedgeb",
+				"ingredientforgeb",
+				"ingredientgrailb",
+				"ingredientheartb",
+				"ingredientknockb",
+				"ingredientmothb"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "exploreevents",
+			"label": "Erkundung der Hauptstadt",
+			"description": "Beim Durchsuchen der Stadt findet man vielleicht ...",
+			"spec": [
+				"daycriminals",
+				"dayplaces",
+				"daycriminals",
+				"dayplaces"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "schemeevents",
+			"label": "Mögliche Intrige",
+			"description": "Mein Rivale schmiedet Pläne ...",
+			"spec": [
+				"schememurder",
+				"schememurder",
+				"schemeexpedition",
+				"schemeexpedition",
+				"schemeexpedition",
+				"schemeexpedition",
+				"schemeactivities",
+				"schemeactivities",
+				"schemeactivities",
+				"schemeactivities"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "talkevents",
+			"label": "Treffen um Mitternacht",
+			"description": "Ich könnte Rekruten, Verbündete oder Widersacher finden.",
+			"spec": [
+				"dayacquaintances",
+				"dayacquaintances",
+				"dayacquaintances",
+				"dayacquaintances",
+				"dayacquaintances",
+				"dayacquaintances",
+				"dayacquaintances",
+				"daypatrons",
+				"daypatrons"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "citysecrets",
+			"label": "Geheimnisse der Stadt",
+			"description": "Leicht zu übersehende Orte.",
+			"spec": [
+				"locationauctionhouse",
+				"locationcabaret",
+				"locationbookdealer",
+				"locationstreetsstrange"
+			],
+			"defaultcard": "locationstreetsstrange"
+		},
+		{
+			"id": "streetsstrangefinds",
+			"label": "Seltsame Straßen",
+			"description": "Erkenntnisse und Einflüsse.",
+			"spec": [
+				"influenceknockc",
+				"influenceknockc",
+				"glimmering",
+				"glimmering",
+				"fascination",
+				"contentment",
+				"contentment"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "troublemakerconversations",
+			"label": "Gespräche mit einem Störenfried",
+			"description": "Was könnte ich wohl erfahren?",
+			"spec": [
+				"dread",
+				"dread",
+				"fascination",
+				"fascination",
+				"erudition",
+				"erudition",
+				"erudition",
+				"glimmering",
+				"glimmering"
+			],
+			"defaultcard": "contentment"
+		},
+		{
+			"id": "forgelong",
+			"label": "Ein Feind des Werks",
+			"description": "Unser Feind wird einen eher allgemeinen Ansatz wählen, den wir vielleicht erahnen könnten – aber die Details seines Plans werden wir erst kennen, wenn er ihn umgesetzt hat.",
+			"spec": [
+				"julian_unknown",
+				"welland_unknown",
+				"welland_unknown"
+			],
+			"defaultcard": "julian_unknown"
+		},
+		{
+			"id": "graillong",
+			"label": "Ein Feind des Werks",
+			"description": "Unser Feind wird einen eher allgemeinen Ansatz wählen, den wir vielleicht erahnen könnten – aber die Details seines Plans werden wir erst kennen, wenn er ihn umgesetzt hat.",
+			"spec": [
+				"tryphon_unknown",
+				"tryphon_unknown",
+				"julian_unknown"
+			],
+			"defaultcard": "julian_unknown"
+		},
+		{
+			"id": "lanternlong",
+			"label": "Ein Feind des Werks",
+			"description": "Unser Feind wird einen eher allgemeinen Ansatz wählen, den wir vielleicht erahnen könnten – aber die Details seines Plans werden wir erst kennen, wenn er ihn umgesetzt hat.",
+			"spec": [
+				"julian_unknown",
+				"diarist_unknown",
+				"diarist_unknown"
+			],
+			"defaultcard": "julian_unknown"
+		},
+		{
+			"id": "long.strategies",
+			"label": "Ein Feind des Werks",
+			"description": "Unser Feind wird einen eher allgemeinen Ansatz wählen, den wir vielleicht erahnen könnten – aber die Details seines Plans werden wir erst kennen, wenn er ihn umgesetzt hat.",
+			"spec": [
+				"strategy.assault.concealed",
+				"strategy.intrigue.concealed",
+				"strategy.dreams.concealed",
+				"strategy.downtime.concealed"
+			],
+			"defaultcard": "strategy.downtime",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "long.strategies.preference.assault",
+			"label": "Ein Feind des Werks",
+			"description": "Unser Feind wird einen eher allgemeinen Ansatz wählen, den wir vielleicht erahnen könnten – aber die Details seines Plans werden wir erst kennen, wenn er ihn umgesetzt hat.",
+			"spec": [
+				"strategy.assault.concealed",
+				"strategy.assault.concealed",
+				"strategy.intrigue.concealed",
+				"strategy.dreams.concealed",
+				"strategy.downtime.concealed"
+			],
+			"defaultcard": "strategy.downtime",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "long.strategies.preference.intrigue",
+			"label": "Ein Feind des Werks",
+			"description": "Unser Feind wird einen eher allgemeinen Ansatz wählen, den wir vielleicht erahnen könnten – aber die Details seines Plans werden wir erst kennen, wenn er ihn umgesetzt hat.",
+			"spec": [
+				"strategy.assault.concealed",
+				"strategy.intrigue.concealed",
+				"strategy.intrigue.concealed",
+				"strategy.dreams.concealed",
+				"strategy.downtime.concealed"
+			],
+			"defaultcard": "strategy.downtime",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "long.strategies.preference.dreamwork",
+			"label": "Ein Feind des Werks",
+			"description": "Unser Feind wird einen eher allgemeinen Ansatz wählen, den wir vielleicht erahnen könnten – aber die Details seines Plans werden wir erst kennen, wenn er ihn umgesetzt hat.",
+			"spec": [
+				"strategy.assault.concealed",
+				"strategy.intrigue.concealed",
+				"strategy.dreams.concealed",
+				"strategy.dreams.concealed",
+				"strategy.downtime.concealed"
+			],
+			"defaultcard": "strategy.downtime",
+			"resetonexhaustion": true
+		},
+		{
+			"id": "priest.repevent",
+			"label": "Die Passionen der Gemeinde",
+			"description": "Was wird dies zeitigen?",
+			"spec": [
+				"notoriety",
+				"notoriety",
+				"notoriety",
+				"notoriety",
+				"mystique",
+				"mystique",
+				"mystique",
+				"mystique",
+				"funds",
+				"funds",
+				"funds",
+				"funds"
+			],
+			"resetonexhaustion": true
+		},
+		{
+			"id": "ghoul.memory",
+			"label": "Erinnerungen",
+			"description": "Ich werde mich an das erinnern, was alle anderen vergessen haben",
+			"spec": [
+				"memory.unexpected",
+				"memory.joyful",
+				"memory.profitable",
+				"memory.shameful",
+				"memory.menacing",
+				"memory.joyful",
+				"memory.profitable",
+				"memory.shameful",
+				"memory.menacing",
+				"memory.joyful",
+				"memory.profitable",
+				"memory.shameful",
+				"memory.menacing"
+			],
+			"resetonexhaustion": true
+		}
+	]
+}

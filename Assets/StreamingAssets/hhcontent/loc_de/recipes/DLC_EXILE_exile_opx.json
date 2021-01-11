@@ -1,0 +1,1962 @@
+{
+	"recipes": [
+		{
+			"id": "use.sanatorium.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch ein Sanatorium betreiben?",
+			"startdescription": "Eins reicht.",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": 4,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.sanatorium": 1
+			},
+			"alt": [
+				{
+					"id": "opx.sanatorium.begin",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.doctorspractice.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch eine Arztpraxis betreiben?",
+			"startdescription": "Eine reicht.",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.doctor": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.miracles.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch einen Gesundbeter-Kult anführen?",
+			"startdescription": "Einer reicht.",
+			"requirements": {
+				"connection.holy": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.flowermaker.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch einen Esoterischen Kult des Blumenmachers versammeln?",
+			"startdescription": "Einer reicht.",
+			"description": "Die Gemeinde versammelt sich.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.flowermaker": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.flowermaker": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.horned.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch einen Esoterischen Kult der Hornaxt versammeln?",
+			"startdescription": "Einer reicht.",
+			"description": "Die Gemeinde versammelt sich.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.horned": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.horned": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.wolf.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch einen Esoterischen Kult des Geteilten Wolfes versammeln?",
+			"startdescription": "Einer reicht.",
+			"description": "Die Gemeinde versammelt sich.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.wolf": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.wolf": "-"
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.miracles.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch einen Gesundbeter-Kult fortführen?",
+			"startdescription": "Einer reicht.",
+			"description": "Die Gemeinde versammelt sich erneut.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.import.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch ein Import-Unternehmen betreiben?",
+			"startdescription": "Eins reicht.",
+			"description": "Ich habe meinen Laden eröffnet.",
+			"requirements": {
+				"licence.import": 1,
+				"space": 1,
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"opx.import": "-"
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.counterfeiting.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch eine Fälscherwerkstatt betreiben?",
+			"startdescription": "Eine reicht.",
+			"description": "Die Druckerpressen sind fast so weit.",
+			"requirements": {
+				"connection.underworld": 1,
+				"forge": 6,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.counterfeiting": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.smuggling.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch einen Schmugglerring anführen?",
+			"startdescription": "Einer reicht.",
+			"description": "Alles ist bereit.",
+			"requirements": {
+				"connection.underworld": 1,
+				"op.sea": 1,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.smuggling": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.fights.duplicate.hint",
+			"actionId": "use",
+			"label": "An noch mehr illegalen Kämpfen teilnehmen?",
+			"startdescription": "Jetzt mal im Ernst.",
+			"requirements": {
+				"connection.underworld": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.fights": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.betrayal.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch einen Aufstand verraten?",
+			"startdescription": "Einer reicht.",
+			"requirements": {
+				"connection.radicals": 1,
+				"winter": 2,
+				"domicile": 1,
+				"temptation.defiance": 1
+			},
+			"extantreqs": {
+				"opx.betrayal": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.uprising.duplicate.hint",
+			"actionId": "use",
+			"label": "Noch einen Aufstand unterstützen?",
+			"startdescription": "Einer reicht.",
+			"comments": "Assumes Radicals add Forge 6",
+			"requirements": {
+				"connection.radicals": 1,
+				"forge": 8,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.patronage.duplicate.hint",
+			"actionId": "use",
+			"label": "Den Herrscher um eine weitere Förderung angehen?",
+			"startdescription": "Vielleicht lieber nicht.",
+			"requirements": {
+				"connection.ruler": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.patronage": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.sanatorium",
+			"actionId": "use",
+			"label": "Sanatorium betreiben",
+			"startdescription": "Sobald ich eine Reihe wohlhabender Witwen behandelt habe, wird sich das schnell herumsprechen. [Ein relativ sicherer Weg, gestohlene Lebenszeit in Bargeld umzumünzen. Karten des Herz-Aspekts sind beim Betreiben eines Sanatoriums häufig nützlich.]",
+			"description": "Das Sanatorium hat geöffnet.",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": 4,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.sanatorium": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.sanatorium.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.sanatorium.doctor.hint",
+			"actionId": "use",
+			"label": "Sanatorium oder Arztpraxis betreiben?",
+			"startdescription": "Ich brauche ein Bureau, um eine Arztpraxis zu betreiben, oder großzügige, aber auch beeindruckend Räumlichkeiten für ein Sanatorium. Ein Lagerhaus oder ähnlich reizlose Räumlichkeiten reichen nicht.",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.doctorspractice",
+			"actionId": "use",
+			"label": "Eine Arztpraxis betreiben",
+			"startdescription": "Meine Behandlungsmethoden mögen nicht das sein, was sie zu sein scheinen ... aber das Ergebnis ist immer exzellent. [Ein relativ sicherer Weg, gestohlene Lebenszeit in Bargeld umzumünzen. Karten des Herz-Aspekts sind beim Betreiben einer Arztpraxis häufig nützlich.]",
+			"description": "Die Praxis hat geöffnet.",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 1,
+				"year.stolen": 1,
+				"comfort": 1
+			},
+			"extantreqs": {
+				"opx.doctor": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.doctorspractice.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.miracles",
+			"actionId": "use",
+			"label": "Einen Gesundbeter-Kult anführen",
+			"startdescription": "Ich kann einer Gemeinde echte Wunderheilungen bieten. [Ein relativ sicherer Weg, gestohlene Lebenszeit in Bargeld umzumünzen. Karten des Motte-Aspekts sind beim Betreiben eines Kults häufig nützlich.]",
+			"description": "Die Gemeinde versammelt sich.",
+			"requirements": {
+				"connection.holy": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.miracles.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 4,
+						"filter": {
+							"space": 1,
+							"op.connection.holy": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.flowermaker",
+			"actionId": "use",
+			"label": "Einen Esoterischen Kult des Blumenmachers versammeln",
+			"startdescription": "Die Präsenz des Blumenmachers ist hier stark. Ich lasse die Enthusiasten in der Gemeinde ihren Lüsten nachgehen. [Ein relativ sicherer Weg, gestohlene Lebenszeit in Bargeld umzumünzen. Karten des Motte-Aspekts sind beim Betreiben eines Kults häufig nützlich.]",
+			"description": "Die Gemeinde versammelt sich.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.flowermaker": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.flowermaker": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.flowermaker": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.flowermaker.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.horned",
+			"actionId": "use",
+			"label": "Einen Esoterischen Kult der Hornaxt versammeln",
+			"startdescription": "Die Präsenz der Hornaxt ist hier stark. Ein Teil der Gemeinde wird sich zu ihr hingezogen fühlen. [Ein relativ sicherer Weg, gestohlene Lebenszeit in Bargeld umzumünzen. Karten des Motte-Aspekts sind beim Betreiben eines Kults häufig nützlich.]",
+			"description": "Die Gemeinde versammelt sich.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.horned": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.horned": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.horned": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.horned.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.wolf",
+			"actionId": "use",
+			"label": "Einen Esoterischen Kult des Geteilten Wolfes versammeln",
+			"startdescription": "Die Präsenz des Geteilten Wolfes ist hier stark. Die gewalttätigeren Mitglieder der Gemeinde wird er ansprechen. [Ein relativ sicherer Weg, gestohlene Lebenszeit in Bargeld umzumünzen. Karten des Motte-Aspekts sind beim Betreiben eines Kults häufig nützlich.]",
+			"description": "Die Gemeinde versammelt sich.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.wolf": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.wolf": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.wolf": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.wolf.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.miracles",
+			"actionId": "use",
+			"label": "Einen Gesundbeter-Kult fortführen",
+			"startdescription": "Alle sind glücklich. Die Show muss weitergehen. [Ein relativ sicherer Weg, gestohlene Lebenszeit in Bargeld umzumünzen. Karten des Motte-Aspekts sind beim Betreiben eines Kults häufig nützlich.]",
+			"description": "Die Gemeinde versammelt sich erneut.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"progress.effectiveness": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.miracles.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"progress.effectiveness": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.import",
+			"actionId": "use",
+			"label": "Ein Import-Unternehmen betreiben",
+			"startdescription": "Und alles ist legal. So legal, dass es schon ein wenig nervt. [Ein relativ sicherer Weg, um an Bargeld zu kommen. Karten des Laterne-Aspekts sind beim Betreiben eines Import-Unternehmens häufig nützlich.]",
+			"description": "Ich habe meinen Laden eröffnet.",
+			"requirements": {
+				"licence.import": 1,
+				"space": 1,
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"opx.import": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.import.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.import": 1,
+							"op.sea": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.counterfeiting",
+			"actionId": "use",
+			"label": "Eine Fälscherwerkstatt betreiben",
+			"startdescription": "Solange ich die Kontakte und die Ressourcen habe, kann ich ... Geld machen. [Ein relativ sicherer Weg, um an Bargeld zu kommen. Karten des Schmiede-Aspekts sind beim Betreiben einer Fälscherwerkstatt häufig nützlich.]",
+			"description": "Die Druckerpressen sind fast so weit.",
+			"requirements": {
+				"connection.underworld": 1,
+				"forge": 6,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.counterfeiting": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.counterfeiting.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 4,
+						"filter": {
+							"op.connection.underworld": 1,
+							"space": 1,
+							"forge": 6
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.smuggling",
+			"actionId": "use",
+			"label": "Einen Schmugglerring anführen",
+			"startdescription": "Alles ist irgendwo von Wert. [Ein relativ sicherer Weg, um an Bargeld zu kommen. Schmugglerringe sind in der Regel Subtil, zahlen aber trotzdem gut. Karten des Motte-Aspekts sind beim Betreiben eines Schmugglerrings häufig nützlich.]",
+			"description": "Alles ist bereit.",
+			"requirements": {
+				"connection.underworld": 1,
+				"op.sea": 1,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.smuggling": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.smuggling.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"op.sea": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.fights",
+			"actionId": "use",
+			"label": "An illegalen Kämpfen teilnehmen",
+			"startdescription": "Übel. Doch solange ich noch ein paar Jahre habe, dürfte ich nicht allzu viele bleibenden Schäden davontragen. [Alle gescheiterten Herausforderungen führen zu einer Wunde, die du erst wieder heilen kannst, wenn die Operation abgeschlossen ist. Karten des Kante-Aspekts sind bei illegalen Kämpfen häufig nützlich.]",
+			"requirements": {
+				"connection.underworld": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.fights": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.fights.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.connection.underworld": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.underworld.hint",
+			"actionId": "use",
+			"label": "Kontakt zur Unterwelt nutzen",
+			"requirements": {
+				"connection.underworld": 1
+			},
+			"startdescription": "[Füge Schmiede 6 und Raum hinzu, um eine Fälscherwerkstatt einzurichten, eine Seehafen-Gelegenheit und Raum, um einen Schmugglerring einzurichten, oder ein Gestohlenes Jahr, um an illegalen Kämpfen teilzunehmen.]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.radicals.hint",
+			"actionId": "use",
+			"label": "Kontakt zu Radikalen nutzen",
+			"requirements": {
+				"connection.radicals": 1
+			},
+			"startdescription": "[Setze Schmiede ein, um einen Aufstand zu unterstützen, oder Winter, um ihn zu verraten. Dies ist nur in Notleidenden Städten möglich.]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.uprising.wolf",
+			"actionId": "use",
+			"label": "Chaos für den Geteilten Wolfes anfachen",
+			"startdescription": "'Caput gerat lupinum'. Tja, warum denn nicht? Was schulde ich denn überhaupt irgendwem? [Dies wird für Leid und Zerstörung sorgen. Es wird sich eine Gelegenheit für Profit ergeben. Und Abrechner können dir nicht mehr so leicht auf die Schliche kommen.]",
+			"requirements": {
+				"connection.radicals": 1,
+				"op.wolf": 1,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": -1,
+				"opx.betrayal": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.uprising.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1,
+							"op.wolf.husk.active": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.betrayal",
+			"actionId": "use",
+			"label": "Einen Aufstand verraten",
+			"startdescription": "Dies ist ein Jahrhundert der Revolutionen, und dabei hat es gerade erst begonnen. Ich werde Leben retten. [Es wird sich eine Gelegenheit für Profit ergeben. Und du sicherst dir das Wohlwollen der lokalen Behörden. Der Oberst mag den Status Quo.]",
+			"requirements": {
+				"connection.radicals": 1,
+				"winter": 2,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.betrayal": -1,
+				"opx.uprising": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.betrayal.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.uprising",
+			"actionId": "use",
+			"label": "Bei einem Aufstand helfen",
+			"startdescription": "Das wird nicht angenehm werden, aber vielleicht kann ich die Welt so auf lange Sicht etwas besser machen. [Es wird sich eine Gelegenheit für Profit ergeben. Und Abrechner können dir nicht mehr so leicht auf die Schliche kommen. Der Löwenschmied mag Aufstände.]",
+			"comments": "Assumes Radicals add Forge 6",
+			"requirements": {
+				"connection.radicals": 1,
+				"forge": 8,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": -1,
+				"opx.betrayal": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.uprising.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.patronage",
+			"actionId": "use",
+			"label": "Klienten annehmen",
+			"startdescription": "Nichts will ein Herrscher so sehr wie noch mehr Leben, und es gibt niemanden, der besser zahlt. Ich muss dafür sorgen, dass mein Klient nicht meine Methoden durchschaut, weil er sonst auf dumme Gedanken kommen könnte. [Ein relativ sicherer Weg, gestohlene Lebenszeit in Bargeld umzumünzen.]",
+			"requirements": {
+				"connection.ruler": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.patronage": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.patronage.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.connection.ruler": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "opx.sanatorium.setup",
+			"actionId": "opx.sanatorium",
+			"label": "Ein Sanatorium",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.sanatorium1.heart.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.sanatorium.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.doctorspractice.setup",
+			"actionId": "opx.doctorspractice",
+			"label": "Eine Arztpraxis",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.doctor1.heart.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.doctorspractice.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.miracles.setup",
+			"actionId": "opx.miracles",
+			"label": "Ein Gesundbeter-Kult",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.miracles1.moth.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.miracles.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.flowermaker.setup",
+			"actionId": "opx.flowermaker",
+			"label": "Ein Kult des Blumenmachers",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.flowermaker1.grail.lantern": 1
+			},
+			"linked": [
+				{
+					"id": "opx.flowermaker.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.horned.setup",
+			"actionId": "opx.horned",
+			"label": "Ein Kult der Hornaxt",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.horned1.knock.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.horned.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.wolf.setup",
+			"actionId": "opx.wolf",
+			"label": "Ein Kult des Geteilten Wolfes",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.wolf1.edge.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.wolf.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.import.setup",
+			"actionId": "opx.import",
+			"label": "Ein Import-Unternehmen",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.import1.lantern.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.import.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.counterfeiting.setup",
+			"actionId": "opx.counterfeiting",
+			"label": "Eine Fälscherwerkstatt",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.counterfeiting1.forge.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.counterfeiting.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.smuggling.setup",
+			"actionId": "opx.smuggling",
+			"label": "Ein Schmugglerring",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.smuggling1.moth.knock": 1
+			},
+			"linked": [
+				{
+					"id": "opx.smuggling.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.fights.setup",
+			"actionId": "opx.fights",
+			"label": "Kampf",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.fights1.edge.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.fights.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.uprising.setup",
+			"actionId": "opx.uprising.betrayal",
+			"label": "Aufstand",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.uprising1.edge.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.uprising.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.betrayal.setup",
+			"actionId": "opx.uprising.betrayal",
+			"label": "Verrat",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.betrayal1.winter.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.betrayal.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.patronage.setup",
+			"actionId": "opx.patronage",
+			"label": "Kundschaft",
+			"startdescription": "Im Aufbau ...",
+			"effects": {
+				"ee.patronage1.heart.lantern": 1
+			},
+			"linked": [
+				{
+					"id": "opx.patronage.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.sanatorium.begin",
+			"actionId": "opx.sanatorium",
+			"label": "Ein Sanatorium",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.doctorspractice.begin",
+			"actionId": "opx.doctorspractice",
+			"label": "Eine Arztpraxis",
+			"startdescription": "Sprechstunden. [Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.miracles.begin",
+			"actionId": "opx.miracles",
+			"label": "Ein Gesundbeter-Kult",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.flowermaker.begin",
+			"actionId": "opx.flowermaker",
+			"label": "Ein Kult des Blumenmachers",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.horned.begin",
+			"actionId": "opx.horned",
+			"label": "Ein Kult der Hornaxt",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.wolf.begin",
+			"actionId": "opx.wolf",
+			"label": "Ein Kult des Geteilten Wolfes",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.import.begin",
+			"actionId": "opx.import",
+			"label": "Ein Import-Unternehmen",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.counterfeiting.begin",
+			"actionId": "opx.counterfeiting",
+			"label": "Eine Fälscherwerkstatt",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.smuggling.begin",
+			"actionId": "opx.smuggling",
+			"label": "Ein Schmugglerring",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.fights.begin",
+			"actionId": "opx.fights",
+			"label": "Kampf",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.uprising.begin",
+			"actionId": "opx.uprising.betrayal",
+			"label": "Aufstand",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.betrayal.begin",
+			"actionId": "opx.uprising.betrayal",
+			"label": "Verrat",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.patronage.begin",
+			"actionId": "opx.patronage",
+			"label": "Kundschaft",
+			"startdescription": "[Es wird Herausforderungen geben, wenn deine Operation läuft. Wenn du die Aspekt-Anforderungen durch Hinzufügen von Karten abdecken kannst, läuft deine Operation subtiler oder effektiver. Karten verbleiben bis zum Ende bei der Operation.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Vorbereitungen",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.challenge",
+			"actionId": "opx.",
+			"label": "Eine Herausforderung",
+			"startdescription": "@#ee.doctor1.heart.grail|Arztpraxis: Die Kranken heilen oder den Alten etwas Jugend verleihen?\n#ee.doctor2.heart.knock|Arztpraxis: Im Stillen die Kranken heilen oder die Verwundeten wie durch ein Wunder heilen?\n#ee.doctor3.heart.forge|Arztpraxis: Im Stillen die Kranken heilen oder angeberische Apparaturen bauen?\n#ee.sanatorium1.heart.grail|Sanatorium: Die Kranken heilen oder den Alten etwas Jugend verleihen?\n#ee.sanatorium2.heart.knock|Sanatorium: Im Stillen die Kranken heilen oder die Verwundeten wie durch ein Wunder heilen?\n#ee.sanatorium3.heart.forge|Sanatorium: Im Stillen die Kranken heilen oder angeberische Apparaturen bauen?\n#ee.miracles1.moth.grail|Gesundbeter-Kult: Parabeln oder Promiskuität predigen?\n#ee.miracles2.moth.lantern|Gesundbeter-Kult: Sorgsam vage sein oder echte Geheimnisse offenbaren?\n#ee.miracles3.moth.winter|Gesundbeter-Kult: Tröstende Ablenkung oder triste Offenbarung?\n#ee.flowermaker1.grail.lantern|Blumenmacher-Kult: Zeremonien privater Lust oder öffentlicher Offenbarung?\n#ee.flowermaker2.grail.knock|Blumenmacher-Kult: Die samtenen Vorhänge zuziehen oder die Tore des Gefühls weit aufstoßen?\n#ee.flowermaker3.grail.winter|Blumenmacher-Kult: Verführung oder Ehrfurcht?\n#ee.horned1.knock.winter|Hornaxt-Kult: Alle Besucher vorlassen oder klare Grenzen setzen?\n#ee.horned2.knock.forge|Hornaxt-Kult: Alle Besucher um Hilfe bitten oder die Gemeinde ans Werk schicken?\n#ee.horned3.knock.lantern|Hornaxt-Kult: Die Tür oder die Lampe?\n#ee.wolf1.edge.winter|Geteilter-Wolf-Kult: Agonie oder Eis?\n#ee.wolf2.edge.lantern|Geteilter-Wolf-Kult: Agonie oder Blindheit?\n#ee.wolf3.grail.winter|Geteilter-Wolf-Kult: Eis oder Blut?\n#ee.import1.lantern.heart|Import-Unternehmen: Nach neuen Möglichkeiten suchen oder den Laden im Leerlauf lassen?\n#ee.import1.lantern.forge|Import-Unternehmen: Nach neuen Möglichkeiten suchen oder verbessern, was du hast?\n#ee.import1.lantern.winter|Import-Unternehmen: Nach neuen Möglichkeiten suchen oder den Abgang vorbereiten?\n#ee.counterfeiting1.forge.winter|Fälscherwerkstatt: Produktion erhöhen oder Vorsicht walten lassen?\n#ee.counterfeiting2.forge.moth|Fälscherwerkstatt: Produktion erhöhen oder Fokus auf Täuschung?\n#ee.counterfeiting3.forge.grail|Fälscherwerkstatt: Produktion erhöhen oder Störenfriede auszahlen?\n#ee.smuggling1.moth.knock|Schmugglerring: Mehr Tarnung oder mehr Lieferungen?\n#ee.smuggling2.moth.heart|Schmugglerring: Mehr Tarnung oder mehr Sorgfalt?\n#ee.smuggling3.moth.winter|Schmugglerring: Heimlich oder leise?\n#ee.fights1.edge.grail|Illegale Kämpfe: Mut oder Bestechung?\n#ee.fights2.edge.moth|Illegale Kämpfe: Hart oder schnell?\n#ee.fights3.edge.forge|Illegale Kämpfe: Fäuste oder Waffen?\n#ee.uprising1.edge.heart|Aufstand: Worte oder Kanonen?\n#ee.uprising2.edge.heart|Aufstand: Worte oder Kanonen?\n#ee.uprising3.edge.heart|Aufstand: Worte oder Kanonen?\n#ee.betrayal1.winter.heart|Verrat eines Aufstands: Überzeugung oder Mord?\n#ee.betrayal2.winter.heart|Verrat eines Aufstands: Überzeugung oder Mord?\n#ee.betrayal3.winter.heart|Verrat eines Aufstands: Überzeugung oder Mord?\n#ee.patronage1.heart.lantern|Kundschaft: Diskretion oder Drama?\n#ee.patronage2.heart.lantern|Kundschaft: Diskretion oder Drama?\n#ee.patronage3.heart.lantern|Kundschaft: Diskretion oder Drama?\n#|Eine Herausforderung erwartet dich.@\n\n[Begegne der Herausforderung mit Kante, Schmiede, Klopfen oder Laterne, um die Effektivität zu steigern. Oder du setzt Herz, Gral, Motte oder Winter ein, um die Subtilität zu erhöhen.]",
+			"warmup": 60,
+			"requirements": {
+				"complication": 1
+			},
+			"slots": [
+				{
+					"id": "response",
+					"label": "Antwort",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "opx.tryresolve.edge"
+				},
+				{
+					"id": "opx.tryresolve.forge"
+				},
+				{
+					"id": "opx.tryresolve.lantern"
+				},
+				{
+					"id": "opx.tryresolve.knock"
+				},
+				{
+					"id": "opx.tryresolve.grail"
+				},
+				{
+					"id": "opx.tryresolve.heart"
+				},
+				{
+					"id": "opx.tryresolve.moth"
+				},
+				{
+					"id": "opx.tryresolve.secrethistories"
+				},
+				{
+					"id": "opx.tryresolve.winter"
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge.failed"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.edge",
+			"actionId": "opx.",
+			"label": "Die Helle Kante",
+			"startdescription": "Ich begegne der Herausforderung mit der Kante. Dies steigert die Effektivität.",
+			"requirements": {
+				"minedge": 1,
+				"edge": "minedge"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.forge",
+			"actionId": "opx.",
+			"label": "Hammer und Amboss",
+			"startdescription": "Ich begegne der Herausforderung mit der Schmiede. Dies steigert die Effektivität.",
+			"requirements": {
+				"minforge": 1,
+				"forge": "minforge"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.grail",
+			"actionId": "opx.",
+			"label": "Wonne und ihre Töchter",
+			"startdescription": "Ich begegne der Herausforderung mit dem Gral. Dies steigert die Subtilität.",
+			"requirements": {
+				"mingrail": 1,
+				"grail": "mingrail"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.heart",
+			"actionId": "opx.",
+			"label": "Die Rastlose Trommel",
+			"startdescription": "Ich begegne der Herausforderung mit dem Herzen. Dies steigert die Subtilität.",
+			"requirements": {
+				"minheart": 1,
+				"heart": "minheart"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.knock",
+			"actionId": "opx.",
+			"label": "Alle Wunden sind Türen",
+			"startdescription": "Ich begegne der Herausforderung mit dem Klopfen. Dies steigert die Effektivität.",
+			"requirements": {
+				"minknock": 1,
+				"knock": "minknock"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.lantern",
+			"actionId": "opx.",
+			"label": "Erleuchtung",
+			"startdescription": "Ich begegne der Herausforderung mit der Laterne. Dies steigert die Effektivität.",
+			"requirements": {
+				"minlantern": 1,
+				"lantern": "minlantern"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.moth",
+			"actionId": "opx.",
+			"label": "Netz und doppelter Boden",
+			"startdescription": "Ich begegne der Herausforderung mit der Motte. Dies steigert die Subtilität.",
+			"requirements": {
+				"minmoth": 1,
+				"moth": "minmoth"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.secrethistories",
+			"actionId": "opx.",
+			"label": "Nicht nur eine Historie",
+			"startdescription": "Ich begegne einer Herausforderung mit Geheimen Geschichten. Dies steigert die Subtilität.",
+			"requirements": {
+				"minsecrethistories": 1,
+				"secrethistories": "minsecrethistories"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.winter",
+			"actionId": "opx.",
+			"label": "Die Nacht wird tiefer",
+			"startdescription": "Ich begegne der Herausforderung mit dem Winter. Dies steigert die Subtilität.",
+			"requirements": {
+				"minwinter": 1,
+				"winter": "minwinter"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.challenge.failed",
+			"actionId": "opx.",
+			"label": "Herausforderung verpasst!",
+			"startdescription": "Das hätte besser laufen können.",
+			"aspects": {
+				"failure": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.next",
+			"actionId": "opx.",
+			"label": "Eine Operation geht weiter",
+			"startdescription": "@#opx.doctor|Patienten kommen und gehen in meiner Arztpraxis.<br><br><i>'Der Nächste bitte.'</i>\n\n#opx.sanatorium|Patienten kommen und gehen in meinem Sanatorium.<br><br><i>'Man wird Sie zu Ihrem Zimmer bringen.'</i>\n\n#opx.miracles|Mehr Rekruten für meinen Gesundbeter-Kult.<br><br><i>'Frohlocket!'</i>\n\n#opx.flowermaker|Mehr Riten bei meinem Esoterischen Kult des Blumenmachers.<br><br><i>'Liebe ist das Gesetz, doch es gibt noch mehr.'</i>\n\n#opx.horned|Mehr Riten bei meinem Esoterischen Kult der Hornaxt.<br><br><i>'Wir werden teilen, was nie hätte verschmolzen werden dürfen.'</i>\n\n#opx.wolf|Mehr Riten bei meinem Esoterischen Kult des Geteilten Wolfes.<br><br><i>'Agonie ist das Tor zur Rache.'</i>\n\n#opx.counterfeiting|Meine Fälscherwerkstatt arbeitet noch.<br><br><i>'Möge sie weiter arbeiten.' </i>\n\n#opx.smuggling|Mein Schmugglerring ist noch aktiv.<br><br><i>'Kein Licht!'</i>\n\n#opx.import|Mein Import-Unternehmen läuft noch.<br><br><i>'Hier unterschreiben.'</i>\n\n#opx.fights|Mehr illegale Kämpfe. Ich bin bereit.<br><br><i>'Wer ist der NÄCHSTE?'</i>\n\n#opx.uprising|Mein Aufstand strebt seinem Höhepunkt zu.<br><br><i>'Jetzt dauert es nicht mehr lange.'</i>\n\n#opx.betrayal|Mein Verrat an den Radikalen macht Fortschritte ...<br><br><i>'Ihr könnt mir vertrauen.'</i>\n\n\n#opx.patronage|Ich profitiere von meiner Kundschaft.<br><br><i>'Ja, ich werde erwartet.'</i>\n\n\n@",
+			"aspects": {
+				"next": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.challenge"
+				},
+				{
+					"id": "opx.end"
+				}
+			]
+		},
+		{
+			"id": "opx.end",
+			"actionId": "opx.",
+			"label": "Eine Operation ist abgeschlossen",
+			"startdescription": "@#opx.doctor|'Ich bin entzückt, dass Sie schon so viel besser aussehen.'\n#opx.sanatorium|'Bis zum nächsten Jahr.'\n#opx.miracles|'Und nun muss ich euch verlassen.'\n#opx.flowermaker|'Bleibt mir gewogen.'\n#opx.horned|'Ein Ende, ein Anfang.'\n#opx.wolf|'Eure Zeit ist gekommen.'\n#opx.counterfeiting|'Zumachen.'\n#opx.smuggling|'Feierabend.'\n#opx.import|'Her mit den Ordnern.'\n#opx.fights|'... uff.'\n#opx.uprising|'Dies ist der Tag, auf den wir hingearbeitet haben!'\n#opx.betrayal|'Die sind unter dieser Adresse zu finden ...'\n#opx.patronage|'Ich muss mich da einer geschäftlichen Angelegenheit widmen.'@",
+			"warmup": 5,
+			"burnimage": "operation.complete",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"cash": "opx.basepayout"
+			},
+			"linked": [
+				{
+					"id": "opx.end.subtlety3"
+				},
+				{
+					"id": "opx.end.subtlety2"
+				},
+				{
+					"id": "opx.end.subtlety1"
+				},
+				{
+					"id": "opx.end.subtlety0"
+				},
+				{
+					"id": "opx.end.effectiveness"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety3",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "Operation abgeschlossen: Eine unsichtbare Kunst?",
+			"startdescription": "Meine Werke sind mit Wasser geschrieben. [Du hast 3 Subtilität erreicht. Du hast nicht nur das Risiko von Spuren vermieden, sondern auch eine Unklarheit hinzugewonnen.]",
+			"requirements": {
+				"progress.subtlety": 3
+			},
+			"effects": {
+				"progress.subtlety": -3,
+				"obscurity": 1
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety2",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "Operation abgeschlossen: Mit leichter Hand",
+			"startdescription": "Ich war vorsichtig. [Du hast 2 Subtilität erreicht. Es besteht ein geringeres Risiko einer Spur.]",
+			"requirements": {
+				"progress.subtlety": 2
+			},
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety1",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "Operation abgeschlossen: Für alle, die Augen zum Sehen haben",
+			"startdescription": "Ich hätte subtiler sein können. [Du hast 1 Subtilität erreicht. Es besteht ein erhebliches Risiko einer Spur.]",
+			"requirements": {
+				"progress.subtlety": 1
+			},
+			"aspects": {
+				"tracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety0",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "Operation abgeschlossen: Losen Enden",
+			"startdescription": "Subtilität war hier nicht meine Priorität. [Du hast 1 Subtilität erreicht. Es besteht ein ernsthaftes Risiko einer Spur.]",
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.effectiveness",
+			"actionId": "opx.",
+			"label": "Operation abgeschlossen: Kapitalrendite",
+			"startdescription": "Ich habe einen guten Gegenwert für meine Jahre bekommen.",
+			"aspects": {
+				"success": 1
+			},
+			"warmup": 5,
+			"requirements": {
+				"progress.effectiveness": 1
+			},
+			"effects": {
+				"cash": "progress.effectiveness",
+				"progress.effectiveness": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.special.router",
+			"actionId": "opx.",
+			"label": "[Spezielle Resultate]",
+			"linked": [
+				{
+					"id": "opx.end.uprising"
+				},
+				{
+					"id": "opx.end.betrayal"
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising",
+			"actionId": "opx.",
+			"label": "Ein Aufstand!",
+			"startdescription": "Unser Plan steht fest, und heute wird er im Feuer enden.",
+			"description": "Dies ist ein Sieg für das Volk. Das ist es immer.",
+			"aspects": {
+				"uprising": 1
+			},
+			"purge": {
+				"trace": 100,
+				"op": 100,
+				"connection.ruler": 100,
+				"connection.official": 100
+			},
+			"warmup": 30,
+			"requirements": {
+				"opx.uprising.complete": 1
+			},
+			"effects": {
+				"trail.false.exile": 1
+			},
+			"linked": [
+				{
+					"id": "opx.end.uprising.wolf"
+				},
+				{
+					"id": "opx.end.uprising.colonel"
+				},
+				{
+					"id": "opx.end.uprising.lionsmith"
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal",
+			"actionId": "opx.",
+			"label": "Ein verratener Aufstand!",
+			"startdescription": "Unser Plan steht fest, doch heute wird nicht so enden, wie sie es erwarten.",
+			"description": "Ordnung wurde wieder hergestellt und die Machthaber sind dankbar.",
+			"requirements": {
+				"opx.betrayal.complete": 1
+			},
+			"effects": {
+				"connection.ruler": 1,
+				"op.connection.radicals": -1
+			},
+			"purge": {
+				"connection.radicals": 100
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "opx.end.betrayal.colonel"
+				},
+				{
+					"id": "opx.end.betrayal.lionsmith"
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.wolf",
+			"actionId": "opx.",
+			"label": "Ein Fest des Feuers",
+			"startdescription": "'Wenn wir nicht wissen, wem wir dienen', sagte Julian Coseley einmal, 'dienen wir dem Geteilten Wolf.' Doch ich wusste, was ich tat. [Trotz hat sich gesteigert. Es gibt kein Limit dafür, wie oft du dies machen kannst.]",
+			"requirements": {
+				"op.wolf.husk.active": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.colonel",
+			"actionId": "opx.",
+			"label": "Der Groll des Obersts",
+			"startdescription": "Dem Oberst missfallen Revolutionen. Ich werde in seinem Ansehen sinken. [Trotz hat sich verringert.]",
+			"requirements": {
+				"defiance.uprising": -1,
+				"defiance.consecration.colonel": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.uprising",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.lionsmith",
+			"actionId": "opx.",
+			"label": "Die Wonne des Löwenschmieds",
+			"startdescription": "Der Löwenschmied genießt Revolutionen. Er wird mich noch mehr schätzen. [Trotz hat sich gesteigert.]",
+			"requirements": {
+				"defiance.uprising": -1,
+				"defiance.consecration.lionsmith": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.uprising",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal.colonel",
+			"actionId": "opx.",
+			"label": "Die Befriedigung des Obersts",
+			"startdescription": "Dem Oberst ist an der Bewahrung des Status Quo gelegen. Ich werde in seinem Ansehen steigen. [Trotz hat sich gesteigert.]",
+			"requirements": {
+				"defiance.betrayal": -1,
+				"defiance.consecration.colonel": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.betrayal",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal.lionsmith",
+			"actionId": "opx.",
+			"label": "Der Zorn des Löwenschmieds",
+			"startdescription": "Die Macht des Löwenschmieds wächst bei Revolutionen. Er könnte mir seine Gunst entziehen. [Trotz hat sich verringert.]",
+			"requirements": {
+				"defiance.betrayal": -1,
+				"defiance.consecration.lionsmith": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.betrayal",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		}
+	]
+}

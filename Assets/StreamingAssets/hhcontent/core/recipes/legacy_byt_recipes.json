@@ -1,0 +1,178 @@
+
+{
+    "recipes": [
+        {
+            "id": "workbytjobstart",
+            "label": "A Golden Day of Occasional Work",
+            "actionid": "work",
+            "requirements": {
+                "legacybytjob": 1
+            },
+            "effects": {
+                "funds": 3,
+                "legacybytjob": -1,
+                "legacybytjobmatured": 1
+            },
+            "alt": [
+                {
+                    "id": "bytopenexplore",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "Possibly I'll get something done today.",
+            "description": "It's all going swimmingly. Although Papa's health is not improving. [<b>Explore</b> unlocked.]",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "workbytjob",
+            "label": "A Golden Day of Occasional Work",
+            "actionid": "work",
+            "requirements": {
+                "legacybytjobmatured": 1
+            },
+            "effects": {
+                "funds": 3
+            },
+            "alt": [
+                {
+                    "id": "workbytjobend",
+                    "chance": 30
+                }
+            ],
+            "startdescription": "Possibly I'll get something done today.",
+            "description": "It's all going swimmingly. Although Papa's health is still not improving.",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "workbytjobend",
+            "label": "A Cloud on the Horizon",
+            "actionid": "work",
+            "startdescription": "Papa has summoned me! I must race to his bedside. All the family affairs are suspended, for now - ",
+            "craftable": false,
+            "effects": {
+                "legacybytjobmatured": -1,
+                "funds": 2
+            },
+            "alt": [
+                {
+                    "id": "workbytjobepilogue",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
+        },
+        {
+            "id": "workbytjobepilogue",
+            "label": "Ghastly News",
+            "actionid": "legacyeventbad",
+            "alt": [
+                {
+                    "id": "bytopenstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "health": 2,
+                "funds": 20
+            },
+            "startdescription": "Papa is dead! No-one will tell me exactly how. But the estate is in a state. My allowance is tied up in probate and so forth. One can only hope it's resolved before the bills come due. ",
+            "description": "The business of the will has been settled... but Papa's business affairs have been eaten up with debts like woodworm. No-one seems to know exactly what he spent the money on. But the solicitor is sending me some papers, apparently.",
+            "warmup": 60,
+            "craftable": false
+        },
+        {
+            "id": "bytopenexplore",
+            "label": "A World of Possibilities!",
+            "actionid": "explore",
+            "startdescription": "Some ripping sorts are introducing me to some ripping sorts of places.",
+            "description": "If I ever have trouble deciding how to spend my money, the good people at these spots can certainly be of assistance!",
+            "warmup": 10,
+            "effects": {
+                "locationauctionhouse": 1,
+                "locationcabaret": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "bytopenstudy",
+            "label": "Puzzling Papers",
+            "actionid": "study",
+            "startdescription": "I am to receive papers found among Papa's belongings, which might perhaps shed some sort of light on where exactly the hell all the money has gone.",
+            "alt": [
+                {
+                    "id": "bytopendream",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "description": "I have received the papers. Poor Papa. Page after page after page of desperate scrawl on an invisible house and the colours of sleep and the invisible gods behind the world... but do you know, the more I read, the more it - well, not 'makes sense'. It doesn't make sense. But it does hang together. And here is Papa's diary.",
+            "effects": {
+                "legacydiarylastcharacter": 1,
+                "lever_LastBook": 1
+            },
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "bytstudydiary",
+            "label": "Studying a Troubling Diary",
+            "actionid": "study",
+            "requirements": {
+                "legacydiarylastcharacter": 1
+            },
+            "alt": [
+                {
+                    "id": "bytopentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "effects": {
+                "legacydiarylastcharacter": -1,
+                "reason": 1,
+                "fragmentgrail": 1
+            },
+            "startdescription": "Papa's diary. It's a catalogue of obsessions. But perhaps it will make some sort of sense of recent events?",
+            "description": "The name of #PREVIOUSCHARACTERNAME# appears again and again in these pages. They were 'a locus for impossibility', a 'fount of the future'...'one who has cut the eye.' And, on the last page, there is a correspondence address, and a name.",
+            "warmup": 10,
+            "craftable": true
+        },
+        {
+            "id": "bytopendream",
+            "label": "The House without Walls",
+            "actionid": "dream",
+            "alt": [
+                {
+                    "id": "despairrisk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "The dreams begin. Papa spoke of them, and he said that his father before him had been so troubled. Something in our blood; a biting melancholy that kills the soul.",
+            "description": "I dream of a shrivelling light, a sun that crisps snow but does not melt it. When I wake, my room is always cold.",
+            "warmup": 30,
+            "effects": {
+                "passion": 1,
+                "influencewinter": 1
+            },
+            "craftable": false
+        },
+        {
+            "id": "bytopentalk",
+            "label": "Summoning a Stranger",
+            "actionid": "talk",
+            "startdescription": "I've contacted the individual named in this troubling document. I have little reason to believe they will be able to enlighten me on the nature of what went before. But perhaps they can help with what is to come.",
+            "description": "My new acquaintance speaks authoritatively of Papa. He knew he was dying. He had hoped to taste unknown pleasures before his end - pleasures denied to healthy society. My new acquaintance suggests that I might finish what he began - that if I do so, I might save myself from the despair which haunts my family.",
+            "effects": {
+                "poppyready": 1,
+                "ascensionsensationa": 1
+            },
+            "warmup": 60,
+            "craftable": false
+        }
+    ]
+}

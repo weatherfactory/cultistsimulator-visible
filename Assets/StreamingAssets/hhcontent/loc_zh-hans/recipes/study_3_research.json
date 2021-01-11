@@ -1,0 +1,1820 @@
+{
+    "recipes": [
+        {
+            "id": "studyknocklore",
+            "label": "研究开启的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "knock": 1
+            },
+            "effects": {
+                "project_upgrade_subvert_knock": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "存在拆解事物的咒语，其词语间的空隙与实际的音节拥有相同效力。拆开某物，便知其本质。[与<b>启</b>一同研究的密传都将变为<b>启</b>。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studyupgradelore_edge",
+            "label": "研究利刃的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "edge": 1,
+                "winter": -1,
+                "forge": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_edge": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "一切重大抗争皆以死亡告终。利刃的密传掌握着抗争的经验。",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_edgetowinter",
+            "label": "拗转利刃的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "edge": 1,
+                "winter": 1
+            },
+            "effects": {
+                "project_subvert_edgetowinter": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "万事皆有终结。我将思忖耐心胜于蛮力的道理。[将<b>刃</b>拗转为<b>冬</b>之密传。]",
+            "description": ".",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studyforgelore",
+            "label": "研究燃烧的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "forge": 1,
+                "edge": -1,
+                "lantern": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_forge": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "极少数人知晓铁匠与杀人犯会吟诵相同的祷辞。我要仔细调查那些祷辞。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_forgetoedge",
+            "label": "拗转燃烧的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "forge": 1,
+                "edge": 1
+            },
+            "effects": {
+                "project_subvert_forgetoedge": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "名为狮子匠的司辰打碎其剑，以此逃脱其主的支配。只要拥有足够的武力，万事万物皆可被战胜。[将<b>铸</b>拗转为<b>刃</b>之密传。]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studygraillore",
+            "label": "研究甘美的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "grail": 1,
+                "moth": -1,
+                "heart": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_grail": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "某些言辞会乞求人们将其说出口。花费时间来考虑这些乞求还挺诱人的——不仅诱人，或许也有用。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_grailtomoth",
+            "label": "拗转甘美的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "grail": 1,
+                "moth": 1
+            },
+            "effects": {
+                "project_subvert_grailtomoth": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "据说杯诞生于第一场献祭。然而蛾知道真相并非如此。[将<b>杯</b>拗转为<b>蛾</b>之密传。]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studyheartlore",
+            "label": "研究不休的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "heart": 1,
+                "grail": -1,
+                "winter": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_heart": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "所有解剖家、舞蹈家和萨满都要学的一课。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_hearttograil",
+            "label": "拗转不休的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "heart": 1,
+                "grail": 1
+            },
+            "effects": {
+                "project_subvert_hearttograil": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "不休之物终将屈从诱惑。[将<b>心</b>拗转为<b>杯</b>之密传。]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studylanternlore",
+            "label": "研究辉煌的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "lantern": 1,
+                "forge": -1,
+                "moth": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_lantern": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "无形之术的施行者中流传着一句谚语：“辉光会造访‘无墙的居屋’。”我想了解辉光。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_lanterntoforge",
+            "label": "拗转辉煌的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "lantern": 1,
+                "forge": 1
+            },
+            "effects": {
+                "project_subvert_lanterntoforge": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "术士朱利安·科赛利声称白日铸炉分裂了太阳。也许他是对的。[将<b>灯</b>拗转为<b>铸</b>之密传。]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studymothlore",
+            "label": "研究林地的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "moth": 1,
+                "lantern": -1,
+                "grail": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_moth": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "当气息于杯中变黑，雾气使肌肤绷紧，树林在冬季行走之际，我们听见这些语句。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysubvertlore_mothtolantern",
+            "label": "拗转林地的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "moth": 1,
+                "lantern": 1
+            },
+            "effects": {
+                "project_subvert_mothtolantern": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "辉光是一个疑问，飞蛾总以肯定作答。[将<b>蛾</b>拗转为<b>灯</b>之密传。]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studysecrethistorieslore",
+            "label": "研究历史",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "secrethistories": 1
+            },
+            "effects": {
+                "project_upgrade_secrethistories": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "历史不像我们一贯所学的的那样明确。我可以通过研究其模糊的边缘学到知识。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studywinterlore",
+            "label": "研究破败的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "winter": 1,
+                "heart": -1,
+                "knock": -1
+            },
+            "effects": {
+                "project_upgrade_winter": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "这些语句使空气骤冷，血色褪下我的皮肤。",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "subvertwinterlore",
+            "label": "拗转破败的密传",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2,
+                "winter": 1,
+                "heart": 1
+            },
+            "effects": {
+                "project_subvert_wintertoheart": 1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.entrypoint",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "纵使在雪，在静默中，在没有色彩的纯白中，生命亦不尽休止。[将<b>冬</b>拗转为<b>心</b>之影响。]",
+            "warmup": 30,
+            "craftable": true
+        },
+        {
+            "id": "studyproject_upgrade_edge",
+            "label": "利刃的密传",
+            "actionId": "study",
+            "requirements": {
+                "project_upgrade_edge": 1
+            },
+            "effects": {
+                "project": -1,
+                "edge": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "我对利刃的密传更加精通了，这种密传可据其性相称为<b>刃</b>。"
+        },
+        {
+            "id": "studyproject_upgrade_forge",
+            "label": "燃烧的密传",
+            "actionId": "study",
+            "requirements": {
+                "project_upgrade_forge": 1
+            },
+            "effects": {
+                "project": -1,
+                "forge": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "我对燃烧的密传更加精通了，这种密传可据其性相称为<b>铸</b>。"
+        },
+        {
+            "id": "studyproject_upgrade_grail",
+            "label": "甘美的密传",
+            "actionId": "study",
+            "requirements": {
+                "project_upgrade_grail": 1
+            },
+            "effects": {
+                "project": -1,
+                "grail": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "我对甘美的密传更加精通了，这种密传可据其性相称为<b>杯</b>。"
+        },
+        {
+            "id": "studyproject_upgrade_heart",
+            "label": "不休的密传",
+            "actionId": "study",
+            "requirements": {
+                "project_upgrade_heart": 1
+            },
+            "effects": {
+                "project": -1,
+                "heart": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "我对不休的密传更加精通了，这种密传可据其性相称为<b>心</b>。"
+        },
+        {
+            "id": "studyproject_upgrade_lantern",
+            "label": "辉煌的密传",
+            "actionId": "study",
+            "requirements": {
+                "project_upgrade_lantern": 1
+            },
+            "effects": {
+                "project": -1,
+                "lantern": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "我对辉煌的密传更加精通了，这种密传可据其性相称为<b>灯</b>。"
+        },
+        {
+            "id": "studyproject_upgrade_moth",
+            "label": "林地的密传",
+            "actionId": "study",
+            "requirements": {
+                "project_upgrade_moth": 1
+            },
+            "effects": {
+                "project": -1,
+                "moth": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "我对林地的密传更加精通了，这种密传可据其性相称为<b>蛾</b>。"
+        },
+        {
+            "id": "studyproject_upgrade_secrethistories",
+            "label": "隐秘的历史",
+            "actionId": "study",
+            "requirements": {
+                "project_upgrade_secrethistories": 1
+            },
+            "effects": {
+                "project": -1,
+                "secrethistories": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "我对秘史相关的知识更加精通了，秘史是藏于我们所知的历史背后的历史。"
+        },
+        {
+            "id": "studyproject_upgrade_winter",
+            "label": "破败的密传",
+            "actionId": "study",
+            "requirements": {
+                "project_upgrade_winter": 1
+            },
+            "effects": {
+                "project": -1,
+                "winter": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "我对破败的密传更加精通了，这种密传可据其性相称为<b>冬</b>。"
+        },
+        {
+            "id": "studyproject_subvert_edgetowinter",
+            "label": "万事皆有终结",
+            "actionId": "study",
+            "requirements": {
+                "project_subvert_edgetowinter": 1
+            },
+            "effects": {
+                "project": -1,
+                "edge": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "耐心胜过蛮力。我已把<b>刃</b>之密传拗转为<b>冬</b>。"
+        },
+        {
+            "id": "studyproject_subvert_forgetoedge",
+            "label": "武力征服万物",
+            "actionId": "study",
+            "requirements": {
+                "project_subvert_forgetoedge": 1
+            },
+            "effects": {
+                "project": -1,
+                "forge": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "我打碎了过往的信仰，将<b>铸</b>之密传拗转为<b>刃</b>。"
+        },
+        {
+            "id": "studyproject_subvert_grailtomoth",
+            "label": "欲令智昏",
+            "actionId": "study",
+            "requirements": {
+                "project_subvert_grailtomoth": 1
+            },
+            "effects": {
+                "project": -1,
+                "grail": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "即使是赤杯也深受脑中低语之害。我已把<b>杯</b>之密传拗转为<b>蛾</b>。"
+        },
+        {
+            "id": "studyproject_subvert_hearttograil",
+            "label": "不休之物终将屈服",
+            "actionId": "study",
+            "requirements": {
+                "project_subvert_hearttograil": 1
+            },
+            "effects": {
+                "project": -1,
+                "heart": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "一切有生之物必将被饥饿压垮。我已把<b>心</b>之密传拗转为<b>杯</b>。"
+        },
+        {
+            "id": "studyproject_subvert_lanterntoforge",
+            "label": "午时日落",
+            "actionId": "study",
+            "requirements": {
+                "project_subvert_lanterntoforge": 1
+            },
+            "effects": {
+                "project": -1,
+                "lantern": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "铸炉有技可裂日。我已把<b>灯</b>之密传拗转为<b>铸</b>。"
+        },
+        {
+            "id": "studyproject_subvert_mothtolantern",
+            "label": "凌驾万物之光",
+            "actionId": "study",
+            "requirements": {
+                "project_subvert_mothtolantern": 1
+            },
+            "effects": {
+                "project": -1,
+                "moth": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "辉光是一个疑问，飞蛾总以肯定作答。我已把<b>蛾</b>之密传拗转为<b>灯</b>。"
+        },
+        {
+            "id": "studyproject_subvert_wintertoheart",
+            "label": "生机暗涌",
+            "actionId": "study",
+            "requirements": {
+                "project_subvert_wintertoheart": 1
+            },
+            "effects": {
+                "project": -1,
+                "winter": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "降临的冬终将让位于春。我已把<b>冬</b>之密传拗转为<b>心</b>。"
+        },
+        {
+            "id": "studyproject_upgrade_subvert_knock",
+            "label": "万物均将开启",
+            "actionId": "study",
+            "requirements": {
+                "project_upgrade_subvert_knock": 1
+            },
+            "effects": {
+                "project": -1,
+                "subvertable_lore": -1
+            },
+            "aspects": {
+                "epiphany": 1
+            },
+            "description": "打开某物，便知其本质。我加深了对关于开启的密传的理解，这种密传可据其性相称为<b>启</b>。",
+            "linked": [
+                {
+                    "id": "studyproject_upgrade_subvert_knock_remove_spare_knock",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "studyproject_upgrade_subvert_knock_remove_spare_knock",
+            "label": "万物均将开启",
+            "comments": "This exists to remove a Knock lore, if we were combining Knock lores rather than Knock + another. Dangit Kennedy you wouldn't need hacks like this if you'd implemented OR conditions. Aspects don't *quite* always cut it.",
+            "actionId": "study",
+            "requirements": {
+                "lore": 2
+            },
+            "effects": {
+                "knock": -1
+            },
+            "description": "."
+        },
+        {
+            "id": "studyresearchconsolation",
+            "label": "习学教训",
+            "actionId": "study",
+            "requirements": {},
+            "effects": {
+                "insight": -100,
+                "erudition": 1
+            },
+            "aspects": {
+                "restore": 1
+            },
+            "startdescription": ".",
+            "description": "这一次的研究失败了。但我从中吸取了经验教训。",
+            "warmup": 0,
+            "craftable": false
+        },
+        {
+            "id": "studydowngradefragmentedgeb",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentedgeb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentedgeb": -1,
+                "fragmentedge": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentedgec",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentedgec": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentedgec": -1,
+                "fragmentedgeb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentedged",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentedged": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentedged": -1,
+                "fragmentedgec": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentedgee",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentedgee": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentedgee": -1,
+                "fragmentedged": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentedgef",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentedgef": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentedgef": -1,
+                "fragmentedgee": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentedgeg",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentedgeg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentedgeg": -1,
+                "fragmentedgef": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforgeb",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentforgeb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentforgeb": -1,
+                "fragmentforge": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforgec",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentforgec": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentforgec": -1,
+                "fragmentforgeb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforged",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentforged": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentforged": -1,
+                "fragmentforgec": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforgee",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentforgee": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentforgee": -1,
+                "fragmentforged": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforgef",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentforgef": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentforgef": -1,
+                "fragmentforgee": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentforgeg",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentforgeg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentforgeg": -1,
+                "fragmentforgef": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgrailb",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentgrailb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentgrailb": -1,
+                "fragmentgrail": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgrailc",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentgrailc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentgrailc": -1,
+                "fragmentgrailb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgraild",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentgraild": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentgraild": -1,
+                "fragmentgrailc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgraile",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentgraile": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentgraile": -1,
+                "fragmentgraild": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgrailf",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentgrailf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentgrailf": -1,
+                "fragmentgraile": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentgrailg",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentgrailg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentgrailg": -1,
+                "fragmentgrailf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentheartb",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentheartb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentheartb": -1,
+                "fragmentheart": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentheartc",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentheartc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentheartc": -1,
+                "fragmentheartb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentheartd",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentheartd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentheartd": -1,
+                "fragmentheartc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmenthearte",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmenthearte": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmenthearte": -1,
+                "fragmentheartd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentheartf",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentheartf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentheartf": -1,
+                "fragmenthearte": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentheartg",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentheartg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "project": -1,
+                "fragmentheartg": -1,
+                "fragmentheartf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknockb",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentknockb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentknockb": -1,
+                "fragmentknock": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknockc",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentknockc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentknockc": -1,
+                "fragmentknockb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknockd",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentknockd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentknockd": -1,
+                "fragmentknockc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknocke",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentknocke": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentknocke": -1,
+                "fragmentknockd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknockf",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentknockf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentknockf": -1,
+                "fragmentknocke": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentknockg",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentknockg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentknockg": -1,
+                "fragmentknockf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanternb",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentlanternb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentlanternb": -1,
+                "fragmentlantern": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanternc",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentlanternc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentlanternc": -1,
+                "fragmentlanternb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanternd",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentlanternd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentlanternd": -1,
+                "fragmentlanternc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanterne",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentlanterne": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentlanterne": -1,
+                "fragmentlanternd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanternf",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentlanternf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentlanternf": -1,
+                "fragmentlanterne": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentlanterng",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentlanterng": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentlanterng": -1,
+                "fragmentlanternf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothb",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentmothb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentmothb": -1,
+                "fragmentmoth": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothc",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentmothc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentmothc": -1,
+                "fragmentmothb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothd",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentmothd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentmothd": -1,
+                "fragmentmothc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothe",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentmothe": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentmothe": -1,
+                "fragmentmothd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothf",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentmothf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentmothf": -1,
+                "fragmentmothe": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentmothg",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentmothg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentmothg": -1,
+                "fragmentmothf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriesb",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentsecrethistoriesb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentsecrethistoriesb": -1,
+                "fragmentsecrethistories": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriesc",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentsecrethistoriesc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentsecrethistoriesc": -1,
+                "fragmentsecrethistoriesb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriesd",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentsecrethistoriesd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentsecrethistoriesd": -1,
+                "fragmentsecrethistoriesc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriese",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentsecrethistoriese": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentsecrethistoriese": -1,
+                "fragmentsecrethistoriesd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriesf",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentsecrethistoriesf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentsecrethistoriesf": -1,
+                "fragmentsecrethistoriese": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentsecrethistoriesg",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentsecrethistoriesg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentsecrethistoriesg": -1,
+                "fragmentsecrethistoriesf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwinterb",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentwinterb": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentwinterb": -1,
+                "fragmentwinter": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwinterc",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentwinterc": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentwinterc": -1,
+                "fragmentwinterb": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwinterd",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentwinterd": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentwinterd": -1,
+                "fragmentwinterc": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwintere",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentwintere": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentwintere": -1,
+                "fragmentwinterd": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwinterf",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentwinterf": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentwinterf": -1,
+                "fragmentwintere": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        },
+        {
+            "id": "studydowngradefragmentwinterg",
+            "label": "回归基础",
+            "actionId": "study",
+            "requirements": {
+                "fragmentwinterg": 1,
+                "reason": 1
+            },
+            "comments": "This doesn't participate in the research cycle - it's one-and-done.",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "startdescription": "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
+            "description": "分析为一种解剖，而理性为其刀刃。",
+            "effects": {
+                "fragmentwinterg": -1,
+                "fragmentwinterf": 2
+            },
+            "warmup": 60,
+            "craftable": true
+        }
+    ]
+}

@@ -1,0 +1,758 @@
+{
+	"recipes": [
+		{
+			"id": "legacydancer_openstudy",
+			"label": "捨てられた謎",
+			"actionId": "study",
+			"startdescription": "何百人ものダンサーが、この楽屋を使ってきた。時折、散った花びらのように、忘れられた手袋、色あせた写真、ファンレターなど、ダンサーたちの痕跡を見つけることがある。",
+			"description": "12ページにも及ぶ、くしゃくしゃになった紙に書かれた詩が、忘れられた靴の中に詰め込まれていた。愛の詩ではない。ほぼ確実に、愛の詩ではないはずだが、呼んでいるうちに呼吸が速くなっていった。忘れた記憶を思い出そうとしているのだろうか。",
+			"effects": {
+				"dancerlegacy_plotitem_a": 1
+			},
+			"warmup": 60,
+			"comments": "Opened from initial work"
+		},
+		{
+			"id": "legacydancer_study_plotitema_heart",
+			"actionId": "study",
+			"label": "現実の課題として、くしゃくしゃの詩に挑む",
+			"requirements": {
+				"dancerlegacy_plotitem_a": 1,
+				"heart": 1
+			},
+			"startdescription": "これは何かの暗号なのだろうか？珍しいダンスステップの手がかりなのだろうか？",
+			"effects": {
+				"vitality": 2,
+				"dancerlegacy_plotitem_a": -1
+			},
+			"description": "かなり的確な指示だ。これに書かれているのは確実にステップだ――ステップを体で感じ始めた――そのステップはどこかで終わる――覚醒の世界の下にあるどこかで。違う私が存在するどこかで。肩を回すと、皮膚がきつく感じるのはなぜだろう？",
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_opendream_heart",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "legacydancer_study_plotitema_moth",
+			"actionId": "study",
+			"label": "夢の課題として、くしゃくしゃの詩に挑む",
+			"requirements": {
+				"dancerlegacy_plotitem_a": 1,
+				"moth": 1
+			},
+			"startdescription": "昔、月明かりがシーツを照らす夜に、こんな夢を見たような気がする――自分の手が手ではなく、血以外の何かが皮膚の下で脈を打っていて――皮膚も自分の皮膚ではない夢を見た夜だった。その夢で見たものをもう一度見つけられるとしたら？",
+			"description": "部屋の中に何かがいる気がして、寝つきが悪かった。真夜中を過ぎたころ、ふと自分がその「何か」であることに気が付いて、ほっとして眠りについて。",
+			"effects": {
+				"glimmering": 2,
+				"dancerlegacy_plotitem_a": -1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_opendream_moth",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "legacydancer_opendream_heart",
+			"actionId": "dream",
+			"label": "もうひとりの自分の夢",
+			"startdescription": "夢の中ではっきりと分かってきた。このダンスは、1人で踊れるものでも、パートナーと踊れるものでもない。これは、人形と踊るものだ。",
+			"description": "このステップをぬいぐるみと踊ったが、なぜかしっくりこなかった。ぬいぐるみの布を、皮をむくように剥がすと、心が落ち着いたが、すぐに、予想通り、ぬいぐるみはバラバラになってしまった......何かがおかしい――人形のせいか、この世界のせいか、それとも私か。",
+			"effects": {
+				"ascensionchangea": 1,
+				"dancerlegacy_plotitem_a": -1
+			},
+			"comments": "opened from studying about first plot object with health",
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_openexplore_heart",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "L_desire_addhearttrack",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "L_desire_addhearttrack",
+			"actionId": "dream",
+			"label": "もうひとりの自分の夢",
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desireheart_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "legacydancer_opendream_moth",
+			"label": "昔の自分の夢",
+			"actionId": "dream",
+			"startdescription": "今夜、眠る前に髪を1束切ろうと思う。詩の中に書いてあったんだ。チョキチョキ。",
+			"effects": {
+				"ascensionchangea": 1,
+				"dancerlegacy_plotitem_a": -1
+			},
+			"description": "1つ目の大陸の中心にある大きな森の夢を見た。そこでは、我々は木々の間を移動し、暗闇と光と暗闇を繰り返し、上へ下へと歩き、炎の中へと入っていった。かつて我々は別のものだった――あるいは何か別のものが我々だった――という夢を見た。かつて我々は翼を持っていたのかもしれない。今でも、時折、肩甲骨が疼くことがある。",
+			"comments": "opened from studying about first plot object with passion",
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_openexplore_moth",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "L_desire_addmothtrack",
+					"chance": 100
+				}
+			],
+			"warmup": 60
+		},
+		{
+			"id": "L_desire_addmothtrack",
+			"actionId": "dream",
+			"label": "昔の自分の夢",
+			"mutations": [
+				{
+					"filterOnAspectId": "desire",
+					"mutateAspectId": "desiremoth_track",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "legacydancer_openexplore_heart",
+			"actionId": "explore",
+			"label": "新しいパートナー",
+			"startdescription": "午後になると、時々、市場を歩き回る。詩に書いてあったダンスを踊り、ぬいぐるみを台無しにしてしまった。新しいぬいぐるみを見つければ、もう一度あのステップを踏めるようになる。",
+			"description": "見つけた！半シリングで、ガラクタとしてとして売られていた。完璧とは言えないが、そう遠くはない。表面、傷跡、手足の形がすべてだ。",
+			"effects": {
+				"reason": 1,
+				"toolheartb": 1
+			},
+			"warmup": 60,
+			"comments": "opened from dreaming"
+		},
+		{
+			"id": "legacydancer_openexplore_moth",
+			"actionId": "explore",
+			"label": "昔のパートナー",
+			"startdescription": "月が夜空を照らすと、私はフェンスを越えて鍵のかかった公園に滑り込み、くぼんだ場所に生えている枝を見下ろしていた。理由はまだわからない。",
+			"description": "泥の中に落ちていた小包を見つけた。私が探していたものだと、すぐに分かった。もしかしたら私宛てのものだったのかもしれないし、捨てられた赤ん坊を盗むように、私が盗んだものなのかもしれない。翼のある森の夢の中で、私はそれに少しだけ似たものと踊った。",
+			"effects": {
+				"reason": 1,
+				"toolmothb": 1
+			},
+			"warmup": 60,
+			"comments": "opened from dreaming"
+		},
+		{
+			"id": "legacydancer_opentalk",
+			"actionId": "talk",
+			"label": "話すべきこと、話すタイミング",
+			"comments": "opened from first audience interaction",
+			"startdescription": "私と、私を見張っている人たちには似たところがあるのだろうか？",
+			"effects": {
+				"fleeting": 1
+			},
+			"warmup": 60
+		},
+		{
+			"id": "worklegacydancerjob_pleadforreinstatement",
+			"label": "ゲイエティ劇場で復職を願う",
+			"actionId": "work",
+			"requirements": {
+				"legacydancerjob_suspended": 1,
+				"passion": 1
+			},
+			"aspects": {
+				"plead": 1
+			},
+			"startdescription": "雇い直してもらわなければ。気持ちを改めて働くと言えば、分かってくれるかもしれない。",
+			"description": "泣きつたりはしていない......泣きついたりは。",
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "worklegacydancerjob",
+			"label": "ゲイエティ劇場の舞台に立つ",
+			"actionId": "work",
+			"requirements": {
+				"legacydancerjob": 1,
+				"health": 1
+			},
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_openstudy",
+					"chance": 100,
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "worklegacydancerjob_more",
+					"chance": 70
+				}
+			],
+			"startdescription": "熱くてきれいで、むき出しで明るい舞台が待っている。体を動かし、ステップを踏んで、求められたように踊れば、給料をもらえるはずだ。",
+			"description": ".",
+			"effects": {
+				"funds": 1
+			},
+			"warmup": 45,
+			"craftable": true
+		},
+		{
+			"id": "worklegacydancerjob_more",
+			"actionId": "work",
+			"label": "ゲイエティ劇場でのチャンス",
+			"startdescription": "今夜、絶好のチャンスが訪れる予感がする。今夜、我慢することをやめて、思いっきり踊れば、注目を浴びることができるだろう。",
+			"description": "私は、素っ気なく振る舞った。体を動かし、ステップを踏み、求められるように踊ったから、給料をもらえるはずだ。",
+			"comments": "the better outcomes require heart or moth 2: enough for abilities or for restlessness, too much for fatigue",
+			"slots": [
+				{
+					"id": "more",
+					"label": "さらなる努力",
+					"required": {
+						"ability": 1,
+						"restlessness": 1
+					}
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "A_worklegacydancerjob_more_benefactorm",
+					"chance": 50
+				},
+				{
+					"id": "A_worklegacydancerjob_more_benefactorf",
+					"chance": 70
+				},
+				{
+					"id": "A_worklegacydancerjob_more_ecdysiast",
+					"chance": 70
+				},
+				{
+					"id": "A_worklegacydancerjob_more_heart",
+					"chance": 100
+				},
+				{
+					"id": "A_worklegacydancerjob_more_moth",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "A_worklegacydancerjob_more_benefactorm",
+			"actionId": "work",
+			"requirements": {
+				"potentialbenefactorm": 1,
+				"heart": 2
+			},
+			"label": "後援者候補",
+			"startdescription": ".",
+			"description": "とある紳士が舞台監督を説得して、楽屋まで私に会いに来てくれた。彼は礼儀正しい人で、私の仕事ぶりを褒めてくれて、贈り物をくれた。私と親しくなりたいのだ、と言う。",
+			"effects": {
+				"benefactorm": 1,
+				"funds": 2,
+				"influence": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "job",
+					"mutateAspectId": "potentialbenefactorm",
+					"mutationLevel": -1
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_opentalk",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "A_worklegacydancerjob_more_benefactorf",
+			"actionId": "work",
+			"requirements": {
+				"potentialbenefactorf": 1,
+				"heart": 2
+			},
+			"label": "後援者候補",
+			"startdescription": "",
+			"description": "向かいにある派手なカフェで、とある女性と会うことになった。彼女は親切な人で、私の話をしっかりと聞いてくれて、贈り物までくれた。私と親しくなりたいのだ、と言う。",
+			"effects": {
+				"benefactorf": 1,
+				"funds": 2,
+				"influence": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "job",
+					"mutateAspectId": "potentialbenefactorf",
+					"mutationLevel": -1
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_opentalk",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "A_worklegacydancerjob_more_ecdysiast",
+			"actionId": "work",
+			"requirements": {
+				"potentialecdysiast": 1,
+				"moth": 2
+			},
+			"label": "ファンからの手紙？",
+			"startdescription": ".",
+			"description": "手渡しで届いた、私宛の手紙。タバコとクローブの匂いが強く香る。「自分の夢を誰かに話したくなったら、私を頼って。準備ができるまで連絡は寄こさないでね」と、書かれていた。電話番号と「スロチャナ」という名前も添えられている。",
+			"effects": {
+				"sulochana": 1,
+				"funds": 1,
+				"influence": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "job",
+					"mutateAspectId": "potentialecdysiast",
+					"mutationLevel": -1
+				}
+			],
+			"alternativerecipes": [
+				{
+					"id": "legacydancer_opentalk",
+					"chance": 100,
+					"additional": true
+				}
+			]
+		},
+		{
+			"id": "A_worklegacydancerjob_more_heart",
+			"actionId": "work",
+			"requirements": {
+				"heart": 2
+			},
+			"label": "私は、血と肉が詰まったしなやかな体の持ち主。",
+			"startdescription": "今夜、それに気づいてもらえるだろう。",
+			"description": "みんなの視線が私に集まっていた。そして出番が終わると、ファンから贈り物をもらった。私には派手すぎるものだが、中古市場で売れるだろう。",
+			"effects": {
+				"funds": 1,
+				"influence": -1
+			}
+		},
+		{
+			"id": "A_worklegacydancerjob_more_moth",
+			"actionId": "work",
+			"requirements": {
+				"moth": 2
+			},
+			"label": "私は血と肉を詰まったしなやかな体以上の存在だ。",
+			"startdescription": "今夜、それに気づいてもらえるだろう。",
+			"description": "みんなの視線が私に集まっていた。そして出番が終わると、ファンから贈り物をもらった。私には使いづらいものだが、中古市場で売れるだろう。",
+			"effects": {
+				"funds": 1,
+				"influence": -1
+			}
+		},
+		{
+			"id": "workdancerjobbenefactor",
+			"label": "後援者のために踊る",
+			"actionId": "work",
+			"requirements": {
+				"benefactor": 1,
+				"health": 1,
+				"funds": 1
+			},
+			"effects": {
+				"funds": -1
+			},
+			"aspects": {
+				"employment": 1
+			},
+			"linked": [
+				{
+					"id": "L_workdancerjobbenefactor_discardsme",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_proposes_always",
+					"chance": 100
+				},
+				{
+					"id": "L_workdancerjobbenefactor_proposes_sometimes",
+					"chance": 30
+				},
+				{
+					"id": "L_workdancerjobbenefactor_more_health",
+					"chance": 30
+				},
+				{
+					"id": "L_workdancerjobbenefactor_more_passion",
+					"chance": 30
+				},
+				{
+					"id": "L_workdancerjobbenefactor_more_funds",
+					"chance": 30
+				},
+				{
+					"id": "L_workdancerjobbenefactor_more_reason",
+					"chance": 30
+				},
+				{
+					"id": "L_workdancerjobbenefactor_satisfactory_norequirement",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_bored",
+					"chance": 100
+				}
+			],
+			"startdescription": "厳選された少人数の観客のためにプライベートダンスをしたら、後援者は喜んでくれるだろう。後で食事に誘ってくれて、もちろんお礼には素敵な贈り物をくれるに違いない。",
+			"description": ".",
+			"warmup": 45,
+			"craftable": true
+		},
+		{
+			"id": "L_workdancerjobbenefactor_more_health",
+			"actionId": "work",
+			"label": "私の後援者：エネルギー",
+			"startdescription": "今夜、後援者はとても張り切っている。私も頑張らないと！",
+			"description": ".",
+			"slots": [
+				{
+					"id": "energy",
+					"label": "エネルギー",
+					"required": {
+						"health": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "L_workdancerjobbenefactor_satisfactory_health",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_bored",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "L_workdancerjobbenefactor_more_passion",
+			"actionId": "work",
+			"label": "後援者：\t発想力",
+			"startdescription": "今夜、後援者は私の発想力、意気込み、活気を楽しんでくれるだろう。必要なのは情熱だ。",
+			"description": ".",
+			"slots": [
+				{
+					"id": "vivacity",
+					"label": "活力",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "L_workdancerjobbenefactor_satisfactory_passion",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_bored",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "L_workdancerjobbenefactor_more_funds",
+			"actionId": "work",
+			"label": "後援者：新しい色",
+			"startdescription": "今夜、後援者は新しい衣装を着た私に会いたいと思っているようだ。早く何か買わないと......",
+			"description": ".",
+			"slots": [
+				{
+					"id": "funds",
+					"label": "資金",
+					"required": {
+						"funds": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "L_workdancerjobbenefactor_satisfactory_funds",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_bored",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "L_workdancerjobbenefactor_more_reason",
+			"actionId": "work",
+			"label": "後援者：心の交流",
+			"startdescription": "今夜、後援者は会話を楽しみたい気分なようだ。",
+			"slots": [
+				{
+					"id": "L_conversation",
+					"label": "会話",
+					"required": {
+						"reason": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "L_workdancerjobbenefactor_satisfactory_reason",
+					"chance": 70
+				},
+				{
+					"id": "L_workdancerjobbenefactor_bored",
+					"chance": 100
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "L_workdancerjobbenefactor_satisfactory_health",
+			"actionId": "work",
+			"requirements": {
+				"health": 1
+			},
+			"label": "後援者は私に惹かれている",
+			"description": "出番が終わったばかりの私は、顔が真っ赤で、汗をかいているが、後援者はそれを気に入ったようだ。キラキラした小物をくれた。",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "besotment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 5
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_satisfactory_passion",
+			"actionId": "work",
+			"requirements": {
+				"passion": 1
+			},
+			"label": "後援者は喜ぶ",
+			"startdescription": "観客はみんな、心から拍手を送ってくれた！パフォーマンスはうまくいった。あとで、後援者が敬意と愛情を示してくれる。かなり高価な土産をもらった。",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "besotment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 5
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_satisfactory_funds",
+			"actionId": "work",
+			"requirements": {
+				"funds": 1
+			},
+			"label": "後援者は私を慕っている",
+			"description": "本番用の衣装は慎重に選んだ。後援者が褒め言葉と贈り物を贈ってくれた。",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "besotment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 4
+			},
+			"comments": "only 4 funds; 1 used up"
+		},
+		{
+			"id": "L_workdancerjobbenefactor_satisfactory_reason",
+			"actionId": "work",
+			"requirements": {
+				"reason": 1
+			},
+			"label": "後援者は私に惹かれている",
+			"description": "出番はいつもより短かったが、客たちと会話を交わし、その後、後援者と夜遅くまで2人で話に花を咲かせた。帰りには豪華な贈り物までもらってしまった。",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "besotment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 5
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_satisfactory_norequirement",
+			"actionId": "work",
+			"label": "後援者は私に惹かれている",
+			"startdescription": ".",
+			"description": "今夜は、踊って笑って、後援者を夢中にして、客と楽しい時間を過ごせた。誰もが幸せそうだった。そして私は、しばらく生活していくには十分な物をもらった。",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "besotment",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 5
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_bored",
+			"actionId": "work",
+			"label": "後援者は落ち着きがない",
+			"description": "理由は分からないが、私の最善の努力にもかかわらず、後援者は今夜私にまったく興味を持ってないようだ。丁寧に別れの挨拶をしてくれたが、今夜渡してくれた恒例の贈り物は、上辺だけの物だったようだ。",
+			"mutations": [
+				{
+					"filterOnAspectId": "benefactor",
+					"mutateAspectId": "boredom",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"funds": 2
+			},
+			"aspects": {
+				"employment": 1
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_discardsme",
+			"actionId": "work",
+			"requirements": {
+				"boredom": 7
+			},
+			"label": "後援者に飽きられた？",
+			"startdescription": "後援者から何日も連絡がない......",
+			"description": "電話をすると、来客はないと言われた。3回もそう伝えられたのだ。ついに、ささやかな贈り物と私の幸運を祈る丁寧な手紙を受け取った。署名されていない。おそらく誰も送ってこなかったのだろう。",
+			"aspects": {
+				"rejection": 1
+			},
+			"effects": {
+				"funds": 2
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_proposes_always",
+			"actionId": "work",
+			"requirements": {
+				"besotment": 10,
+				"benefactor_proposal": -1
+			},
+			"label": "後援者がプロポーズしようとしている？",
+			"startdescription": "今夜は興奮を抑えようとしている気がする。",
+			"description": ".",
+			"effects": {
+				"funds": 5,
+				"contentment": 1
+			},
+			"aspects": {
+				"avowal": 1
+			}
+		},
+		{
+			"id": "L_workdancerjobbenefactor_proposes_sometimes",
+			"actionId": "work",
+			"requirements": {
+				"besotment": 7,
+				"benefactor_proposal": -1
+			},
+			"label": "後援者がプロポーズしようとしている？",
+			"startdescription": "今夜は興奮を抑えようとしている気がする。",
+			"description": ".",
+			"effects": {
+				"funds": 5,
+				"contentment": 1
+			},
+			"aspects": {
+				"avowal": 1
+			},
+			"comments": "Identical to proposes_always, but with a lower threshold"
+		},
+		{
+			"id": "talk_benefactormarry",
+			"actionId": "talk",
+			"requirements": {
+				"benefactor_proposal": 1
+			},
+			"slots": [
+				{
+					"id": "Yes",
+					"label": "はい",
+					"required": {
+						"passion": 1
+					}
+				}
+			],
+			"label": "プロポーズを受け入れる",
+			"startdescription": "プロポーズされた。貴族との結婚だ。平和、富、安らぎ、そして、最期の日まで後援者の愛情を感じることができる。誠実に向き合わなければ。それが無理なら、誠実なふりをしなくてはいけない。",
+			"description": "後援者は顔を曇らせて待っている。",
+			"alternativerecipes": [
+				{
+					"id": "talk_benefactormarrycomplete",
+					"chance": 100
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "talk_benefactormarrycomplete",
+			"actionId": "talk",
+			"label": "「はい！」",
+			"requirements": {
+				"benefactor_proposal": 1,
+				"passion": 1
+			},
+			"startdescription": "私は今からこの場所を去り、別の存在になる。幸福感に満ちた存在になれることを願おう―― ",
+			"ending": "workvictorymarriage"
+		}
+	]
+}
