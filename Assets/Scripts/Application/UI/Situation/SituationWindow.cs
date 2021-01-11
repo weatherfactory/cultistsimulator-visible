@@ -123,8 +123,7 @@ namespace SecretHistories.UI {
 
             SituationStateChanged(situation);
             TimerValuesChanged(situation);
-
-
+            
         }
 
 
