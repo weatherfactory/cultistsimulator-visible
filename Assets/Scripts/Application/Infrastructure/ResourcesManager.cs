@@ -172,7 +172,7 @@ public class ResourcesManager: MonoBehaviour
     public static Sprite GetSprite(string folder, string file, bool withPlaceholder = true)
     {
         const string imagesFolderNameInResources = "images"; 
-        var spritePath = Path.Combine(Registry.Get<Config>().GetConfigValue(imagesFolderNameInResources),
+        var spritePath = Path.Combine(imagesFolderNameInResources,
             folder, file);
 
         // Try to find the image in a mod first, in case it overrides an existing one
