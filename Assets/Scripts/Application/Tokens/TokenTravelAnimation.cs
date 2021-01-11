@@ -8,9 +8,10 @@ using SecretHistories.States.TokenStates;
 
 public class TokenTravelAnimation : MonoBehaviour {
 
-	public event System.Action<Token> OnTokenArrival;
+	public event System.Action<Token,Context> OnTokenArrival;
 
 	protected Token _token;
+    protected Context _context;
 
     [SerializeField]
 	private Vector3 _startPosition;
@@ -33,7 +34,9 @@ public class TokenTravelAnimation : MonoBehaviour {
     private float _travelTimeElapsed = 0f;
 
 
-	protected virtual Vector3 StartPosition => _startPosition;
+
+
+    protected virtual Vector3 StartPosition => _startPosition;
 
     protected virtual Vector3 EndPosition => _endPosition;
 
@@ -59,11 +62,12 @@ public class TokenTravelAnimation : MonoBehaviour {
 	//	this._scalePercentage = Mathf.Clamp01(scaleDuration) * ((scaleStart != 1f && scaleEnd != 1f) ? 0.5f : 1f); // may not be bigger than 0.5 for dual scaling
 	}
 
-	public virtual void Begin(Token token,float duration) {
+	public virtual void Begin(Token token,Context context, float duration) {
 		this._travelDuration = duration;
 		this._travelTimeElapsed = 0f;
         
         _token = token;
+        _context = context;
 
         _token.ManifestationRectTransform.localScale = Vector3.one * _scaleStart;
         transform.SetAsLastSibling();
@@ -108,7 +112,7 @@ public class TokenTravelAnimation : MonoBehaviour {
         NoonUtility.LogWarning(
             "we used to disable the token while it was travelling. We don't in fact want to do that, but we should probably disable raycasts");
 
-        OnTokenArrival?.Invoke(_token);
+        OnTokenArrival?.Invoke(_token,_context);
 		Destroy(this);
 	}
 

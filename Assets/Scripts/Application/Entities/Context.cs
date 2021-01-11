@@ -14,17 +14,17 @@ public class Context {
         SituationStoreStacks,
         SituationEffect,
         SituationResults,
-        GreedySlot,
+        GreedyGrab,
         Retire,
         Debug,
         ChangeTo,
 		DoubleClickSend,
         Purge,
-        Split,
         Merge,
-        TravelArrived,
         TravelFailed,
-        UI
+        UI,
+        SpawningAnchor,
+        PushedAside
     }
 
     public ActionSource actionSource;
@@ -49,6 +49,7 @@ public class Context {
     
     public bool IsManualAction() {
         switch (actionSource) {
+            case ActionSource.DoubleClickSend:
             case ActionSource.PlayerDrag:
             case ActionSource.PlayerClick:
             case ActionSource.PlayerDumpAll:

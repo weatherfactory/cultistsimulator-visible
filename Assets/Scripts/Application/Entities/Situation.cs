@@ -776,7 +776,9 @@ namespace SecretHistories.Entities {
 
         public void OnTokensChangedForSphere(TokenInteractionEventArgs args)
         {
-
+            //if tokens have just been added to a threshold sphere for this situation by player action, open the window if it's not already 
+            
+            
             CurrentRecipePrediction = GetUpdatedRecipePrediction();
             PossiblySignalImpendingDoom(CurrentRecipePrediction.SignalEndingFlavour);
 

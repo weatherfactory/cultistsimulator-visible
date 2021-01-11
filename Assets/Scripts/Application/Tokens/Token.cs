@@ -690,18 +690,11 @@ namespace SecretHistories.UI {
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
 
-        public void TravelTo(TokenTravelItinerary itinerary)
+        public void TravelTo(TokenTravelItinerary itinerary,Context context)
         {
             CurrentItinerary = itinerary;
-          itinerary.Depart(this);
+          itinerary.Depart(this,context);
         }
-
-        private void TravelComplete()
-        {
-            CurrentItinerary.DestinationSphere.AcceptToken(this,new Context(Context.ActionSource.TravelArrived));
-            //this will (at time of writing) call Sphere.DisplayHere->Token.Manifest, which also resets itinerary, so this *should* be the only line we need at the end of the animation
-        }
-
 
         public virtual void SituationStateChanged(Situation situation)
         {

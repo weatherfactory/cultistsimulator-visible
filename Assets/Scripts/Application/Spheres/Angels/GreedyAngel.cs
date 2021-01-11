@@ -75,7 +75,7 @@ namespace SecretHistories.Spheres.Angels
                         .WithSphereRoute(enRouteSphere, destinationThresholdSphere);
 
                     
-                    itinerary.Depart(matchingToken);
+                    itinerary.Depart(matchingToken,new Context(Context.ActionSource.GreedyGrab));
 
                     return;
                 }

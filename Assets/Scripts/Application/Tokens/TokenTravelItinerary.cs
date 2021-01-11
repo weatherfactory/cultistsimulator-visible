@@ -47,7 +47,7 @@ namespace SecretHistories.UI
         }
 
 
-        public void Depart(Token tokenToSend)
+        public void Depart(Token tokenToSend, Context context)
         {
             tokenToSend.Unshroud(true);
             tokenToSend.SetState(new TravellingState());
@@ -76,10 +76,10 @@ namespace SecretHistories.UI
                float distance = Vector3.Distance(Anchored3DStartPosition, Anchored3DEndPosition);
                Duration = Mathf.Max(0.3f, distance * 0.001f);
            }
-            tokenAnimation.Begin(tokenToSend, Duration);
+            tokenAnimation.Begin(tokenToSend, context,Duration);
         }
 
-        public void Arrive(Token token)
+        public void Arrive(Token token,Context context)
         {
             try
             {
@@ -89,7 +89,7 @@ namespace SecretHistories.UI
                 {
                     token.SetState(new TravelledToSphere());
                     // Assign element to new slot
-                    DestinationSphere.AcceptToken(token, new Context(Context.ActionSource.TravelArrived));
+                    DestinationSphere.AcceptToken(token,context);
                 }
                 DestinationSphere.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
                     BlockReason.InboundTravellingStack));

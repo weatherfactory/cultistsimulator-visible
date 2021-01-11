@@ -539,7 +539,7 @@ namespace SecretHistories.Constants {
                     .WithSphereRoute(token.Sphere,this).
                     WithDuration(NoonConstants.MOMENT_TIME_INTERVAL);
             journeyToFreePosition.DestinationSphere = this;
-            journeyToFreePosition.Depart(token);
+            journeyToFreePosition.Depart(token,context);
             return true;
         }
 

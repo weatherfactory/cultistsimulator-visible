@@ -55,7 +55,7 @@ namespace SecretHistories.Services {
                     .WithSphereRoute(windowSphere,anchorSphere)
                     .WithScaling(0f,1f);
 
-                newAnchor.TravelTo(spawnedTravelItinerary);
+                newAnchor.TravelTo(spawnedTravelItinerary,new Context(Context.ActionSource.SpawningAnchor));
             }
 
             return situation;

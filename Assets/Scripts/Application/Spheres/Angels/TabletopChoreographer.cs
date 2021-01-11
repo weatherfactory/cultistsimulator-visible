@@ -125,7 +125,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                     .WithDuration(0.2f)
                     .WithScaling(1f,1f);
 
-                token.TravelTo(itinerary);
+                token.TravelTo(itinerary,new Context(Context.ActionSource.PushedAside));
             }
         }
 

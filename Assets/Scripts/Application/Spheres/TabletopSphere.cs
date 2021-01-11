@@ -67,12 +67,12 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     public override void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
     {
         if(args.Interaction==Interaction.OnDoubleClicked)
-            SendTokenToNearestValidDestination(args.Token);
+            SendTokenToNearestValidDestination(args.Token,new Context(Context.ActionSource.DoubleClickSend));
 
         base.OnTokenInThisSphereInteracted(args);
     }
 
-    private bool SendTokenToNearestValidDestination(Token tokenToSend)
+    private bool SendTokenToNearestValidDestination(Token tokenToSend,Context context)
     {
 
         if (!tokenToSend.ElementStack.IsValidElementStack())
@@ -117,7 +117,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
                     .WithScaling(1f, 0.35f)
                     .WithSphereRoute(SendViaContainer, targetThreshold);
                 
-            i.Depart(tokenToSend);
+            i.Depart(tokenToSend,context);
             
             return true;
         }

@@ -47,9 +47,9 @@ namespace SecretHistories.Spheres.Angels
             if (token == TokenToBringHome)
             {
                 if (OriginToken != null)
-                    ReturnToOriginTokenLocation();
+                    ReturnToOriginTokenLocation(context);
                 else 
-                    ReturnToHomeLocation();
+                    ReturnToHomeLocation(context);
 
                 SphereToWatchOver.RemoveAngel(this);
                 return true;
@@ -58,25 +58,25 @@ namespace SecretHistories.Spheres.Angels
             return false;
         }
 
-        private void ReturnToOriginTokenLocation()
+        private void ReturnToOriginTokenLocation(Context context)
         {
             var destination = OriginToken.TokenRectTransform.anchoredPosition3D;
-            SendToken(TokenToBringHome, destination);
+            SendToken(TokenToBringHome, destination, context);
         }
 
-        private void ReturnToHomeLocation()
+        private void ReturnToHomeLocation(Context context)
         {
             var destination = SphereToWatchOver.Choreographer.GetFreeLocalPosition(TokenToBringHome, PreferredHomingPosition);
-            SendToken(TokenToBringHome,destination);
+            SendToken(TokenToBringHome,destination, context);
         }
 
-        private void SendToken(Token token, Vector3 destination)
+        private void SendToken(Token token, Vector3 destination,Context context)
         {
             TokenTravelItinerary travellingHome =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, destination)
                     .WithDuration(NoonConstants.MOMENT_TIME_INTERVAL);
 
-            travellingHome.Depart(token);
+            travellingHome.Depart(token,context);
         }
     }
 }

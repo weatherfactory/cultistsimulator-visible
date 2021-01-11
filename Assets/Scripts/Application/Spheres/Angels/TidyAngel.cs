@@ -51,7 +51,7 @@ namespace SecretHistories.Spheres.Angels
                         tidyToSphere)
                     .WithDuration(NoonConstants.MOMENT_TIME_INTERVAL);
 
-            travellingHome.Depart(token);
+            travellingHome.Depart(token,context);
 
 
             return true;
