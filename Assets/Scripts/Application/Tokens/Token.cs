@@ -258,10 +258,10 @@ namespace SecretHistories.UI {
 
 
 
-
         public bool CurrentlyBeingDragged()
         {
-            return                CurrentState.InPlayerDrivenMotion(this);
+            return  
+                CurrentState.InPlayerDrivenMotion(this);
         }
     
 
@@ -462,7 +462,7 @@ namespace SecretHistories.UI {
                 if (moveAsideFor)
                     SetState(new DroppedOnTokenWhichMovedAsideState());
                 else
-                    SetState(new RejectedByTokenState());
+                    SetState(new RejectedBySituationState());
             }
         }
 
@@ -476,33 +476,36 @@ namespace SecretHistories.UI {
                 PointerEventData = eventData,
                 Interaction = Interaction.OnReceivedADrop
             });
+
             if (ElementStack.IsValidElementStack() && incomingToken.ElementStack.IsValidElementStack())
             {
                 if (ElementStack.CanMergeWith(incomingToken.ElementStack))
                     ElementStack.AcceptIncomingStackForMerge(incomingToken.ElementStack);
                 else
-                
+
                     ElementStack.ShowNoMergeMessage(incomingToken.ElementStack);
-                
             }
+            
+            _attachedToSituation.InteractWithSituation(incomingToken);
 
-            else if (incomingToken.ElementStack.IsValidElementStack())
+        }
+
+        private void TokenEntrance(Token incomingToken)
+        {
+
+            if (incomingToken.ElementStack.IsValidElementStack())
             {
-
                 _attachedToSituation.TryPushDraggedStackIntoThreshold(incomingToken);
 
-                // Then we open the situation (cause this closes other situations and this may returnreturn the stack we try to move
-                // back onto the tabletop - if it was in its starting slots. - Martin
+
                 if (!_attachedToSituation.IsOpen)
                     _attachedToSituation.OpenAtCurrentLocation();
             }
             else
             {
                 //something has gone awryy
-                SetState(new RejectedByTokenState());
+                SetState(new RejectedBySituationState());
             }
-     
-
         }
 
         public Token CalveToken(int quantityToLeaveBehind, Context context)

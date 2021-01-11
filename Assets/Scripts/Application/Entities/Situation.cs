@@ -18,6 +18,7 @@ using SecretHistories.Constants.Events;
 using SecretHistories.TokenContainers;
 using JetBrains.Annotations;
 using SecretHistories.Core;
+using SecretHistories.States.TokenStates;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -642,6 +643,24 @@ namespace SecretHistories.Entities {
 
     }
 
+    public void InteractWithSituation(Token incomingToken)
+    {
+
+        if (incomingToken.ElementStack.IsValidElementStack())
+        {
+            TryPushDraggedStackIntoThreshold(incomingToken);
+
+
+            if (!IsOpen)
+                OpenAtCurrentLocation();
+        }
+        else
+        {
+                //something has gone awryy
+                incomingToken.SetState(new RejectedBySituationState());
+        }
+    }
+
 
         public bool TryPushDraggedStackIntoThreshold(Token token)
         {
@@ -742,6 +761,19 @@ namespace SecretHistories.Entities {
             return rc.GetPredictionForFollowupRecipe(CurrentPrimaryRecipe, this);
         }
 
+
+
+        public bool ForbidCreationOf(SituationCreationCommand scc)
+        {
+            if (scc.Verb.Id != Verb.Id)
+                return false;
+
+            if (scc.Verb.Transient && CurrentState.AllowDuplicateVerbIfTransient) //doesn't matter whether ID matches or not
+                return false;
+
+            return true;
+        }
+
         public void OnTokensChangedForSphere(TokenInteractionEventArgs args)
         {
 
@@ -754,18 +786,7 @@ namespace SecretHistories.Entities {
 
         public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
-//
-        }
-
-        public bool ForbidCreation(SituationCreationCommand scc)
-        {
-            if (scc.Verb.Id != Verb.Id)
-                return false;
-
-            if (scc.Verb.Transient && CurrentState.AllowDuplicateVerbIfTransient) //doesn't matter whether ID matches or not
-                return false;
-
-            return true;
+            //
         }
 
     }
