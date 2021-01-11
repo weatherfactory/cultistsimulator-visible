@@ -1,140 +1,435 @@
 {
     "recipes": [
         {
-            "id": "drawseason"
+            "id": "drawseason",
+            "actionid": "time",
+            "deckeffects": {
+                "seasonevents": 1
+            },
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "needs",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "needs",
-            "label": "Проходит время",
+            "label": "Завербовать смутьяна, обратившись к великой силе ГраниЗавербовать смутьяна, обратившись к великой силе Кузни",
+            "actionid": "time",
+            "requirements": {},
+            "alt": [
+                {
+                    "id": "forlornbloodsickness",
+                    "chance": 70,
+                    "additional": true
+                },
+                {
+                    "id": "sickness",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "pleasantday",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "suspicion",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "ambition",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "despairrisklink",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "visionsrisklink",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "starvation",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "rosenext",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "startdescription": "Это дитя готово ко мне присоединиться... Нужно только отдать ему инструмент в знак уважения и почёта. [Необходимо отдать один инструмент, который будет потерян.]Это дитя готово ко мне присоединиться... Нужно только отдать ему инструмент в знак уважения и почёта. [Необходимо отдать один инструмент, который будет потерян.]",
             "description": ".",
-            "startdescription": "Время проходит, тень на солнечных часах движется. Чтобы жить, мне нужны средства, иначе я заболею.",
+            "warmup": 60,
             "slots": [
                 {
                     "id": "Expenses",
-                    "label": "Расходы",
-                    "description": "Лавочники хотят получить своё. Или я заплачу, или умру с голода."
+                    "label": "Учение",
+                    "required": {
+                        "funds": 1
+                    },
+                    "greedy": true,
+                    "noanim": true,
+                    "description": "Великая сила, которой мы будем служить, требует от меня жертвы.Великая сила, которой мы будем служить, требует от меня жертвы."
                 }
-            ]
+            ],
+            "linked": [
+                {
+                    "id": "discardseason",
+                    "chance": 100
+                }
+            ],
+            "signalimportantloop": true
         },
         {
-            "id": "discardseason"
+            "id": "discardseason",
+            "actionid": "time",
+            "effects": {
+                "season": -1,
+                "funds": -999
+            },
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "drawseason",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "presickness",
-            "label": "Цена радости",
-            "startdescription": "Мне тяжело дышать, мысли мои спутаны. Быть может, не нужно было так налегать на средство от боли."
+            "label": "Завербовать смутьяна, обратившись к великой силе ЧашиЗавербовать смутьяна, обратившись к великой силе Сердца",
+            "actionid": "illhealth",
+            "comments": "to lead into actual sickness from opium abuse, which requires Season Of",
+            "startdescription": "Это дитя готово ко мне присоединиться... Нужно только отдать ему инструмент в знак уважения и почёта. [Необходимо отдать один инструмент, который будет потерян.]Это дитя готово ко мне присоединиться... Нужно только отдать ему инструмент в знак уважения и почёта. [Необходимо отдать один инструмент, который будет потерян.]",
+            "effects": {
+                "seasonsickness": 1
+            },
+            "linked": [
+                {
+                    "id": "sickness"
+                }
+            ],
+            "warmup": 15
         },
         {
             "id": "sickness",
-            "label": "Болезнь",
-            "description": "Болезнь навредила моему здоровью. Мне нужно отдохнуть до полного выздоровления. [Вылечить недуг при помощи средств или стойкости.]",
-            "startdescription": "Мне плохо.",
+            "label": "Завербовать знакомого, обратившись к силе ЧашиЗавербовать знакомого, обратившись к силе Сердца",
+            "actionid": "illhealth",
+            "startdescription": "Это дитя готово ко мне присоединиться... Нужно только отдать ему инструмент в знак уважения и почёта. [Необходимо отдать один инструмент, который будет потерян.]Это дитя готово ко мне присоединиться... Нужно только отдать ему инструмент в знак уважения и почёта. [Необходимо отдать один инструмент, который будет потерян.]",
+            "description": "Прежде чем произнести назначенные слова, новообращенный должен наточить нож — так, чтобы он легко рассёк невесомую нить. И горе ему, если лезвие окажется недостаточно острым.В торжестве принимает участие клеймо. Оно невелико, но след останется на коже до самой смерти.",
+            "requirements": {
+                "seasonsickness": 1
+            },
+            "extantreqs": {
+                "apostlegrail.pillar2.dormant": -1
+            },
+            "comments": "We don't want to double up on normal and Grail-apostle sickness",
             "slots": [
                 {
                     "id": "Affliction",
-                    "label": "Здоровье"
+                    "label": "Здоровье",
+                    "required": {
+                        "health": 1,
+                        "follower_wound": 1,
+                        "fatigue": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1,
+                        "corpse": 1,
+                        "notoriety": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "aspects": {
+                "fallsick": 1
+            },
+            "alt": [
+                {
+                    "id": "deathofthewoundedfollower",
+                    "chance": 100
+                },
+                {
+                    "id": "signalupcomingsicknessdeath",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "effects": {
+                "seasonsickness": -1
+            }
+        },
+        {
+            "id": "signalupcomingsicknessdeath",
+            "actionid": "sickness",
+            "label": "Завербовать знакомого, обратившись к силе ЧашиЗавербовать знакомого, обратившись к силе Сердца",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1
+            },
+            "startdescription": "Это дитя готово ко мне присоединиться... Нужно только отдать ему инструмент в знак уважения и почёта. [Необходимо отдать один инструмент, который будет потерян.]Это дитя готово ко мне присоединиться... Нужно только отдать ему инструмент в знак уважения и почёта. [Необходимо отдать один инструмент, который будет потерян.]",
+            "comments": "need this here so we can have a warning if there's no health; then we link to the stay of execution attempt so we can have a new slot.",
+            "signalEndingFlavour": "Melancholy",
+            "linked": [
+                {
+                    "id": "sickness.nohealthavailable.tryforstayofexecution",
+                    "chance": 100
                 }
             ]
         },
         {
-            "id": "signalupcomingsicknessdeath",
-            "label": "Болезнь",
-            "startdescription": "Мне плохо. [Если болезнь не может расходовать здоровье, то она вас убьёт... если только у вас нет какой-то особой защиты.]"
-        },
-        {
             "id": "sickness.nohealthavailable.tryforstayofexecution",
-            "label": "Смертельная угроза",
-            "startdescription": "Болезнь прикончит меня, если я не приму какие-то исключительные меры для защиты здоровья...",
+            "actionid": "illhealth",
+            "label": "Завербовать знакомого, обратившись к силе ГраниЗавербовать знакомого, обратившись к силе Кузни",
             "slots": [
                 {
                     "id": "sicknessprotection",
-                    "label": "Защита"
+                    "label": "Защита",
+                    "required": {
+                        "sicknessprotection": 1
+                    },
+                    "greedy": true
                 }
             ],
+            "startdescription": "Опустившись на колени новообращённым, мой последователь встанет уже адептом. Я лично приму его клятву.Опустившись на колени новообращённым, мой последователь встанет уже адептом. Я лично приму его клятву.",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1
+            },
+            "warmup": 10,
+            "signalEndingFlavour": "Melancholy",
+            "ending": "deathofthebody",
             "alt": [
                 {
                     "id": "protectedagainstsickness",
+                    "actionid": "sickness",
                     "label": "Не в этот раз",
-                    "startdescription": "У плоти есть свои пределы, моя плоть тоже откажет, но поскольку меня отметили знаком добродетели смертных, случится это нескоро. [Отсрочка казни спасла вас от тягот болезни.]"
+                    "requirements": {
+                        "sicknessprotection": 1
+                    },
+                    "startdescription": "У плоти есть свои пределы, моя плоть тоже откажет, но поскольку меня отметили знаком добродетели смертных, случится это нескоро. [Отсрочка казни спасла вас от тягот болезни.]",
+                    "effects": {
+                        "sicknessprotection": -1,
+                        "influenceheart": 1
+                    }
                 },
                 {
                     "id": "mareendingsickness",
+                    "chance": 100,
+                    "actionid": "sickness",
                     "label": "Кобылица во мне",
+                    "startdescription": "ОНА ИДЁТ",
                     "description": "--",
-                    "startdescription": "ОНА ИДЁТ"
+                    "extantreqs": {
+                        "lockscar": 3,
+                        "health": -1
+                    },
+                    "signalEndingFlavour": "Melancholy",
+                    "ending": "minormarevictory",
+                    "craftable": false
                 }
             ]
         },
         {
             "id": "forlornbloodsickness",
-            "label": "Болезнь",
-            "description": "Я теряю вес и бледнею. Усталость душит меня. Нужно удостовериться, что моя смерть не будет напрасной.",
-            "startdescription": "Я чувствую болезнь. Если выживу, мне нужно будет отведать крови Отрады, и как можно скорее. [Если болезнь не может расходовать здоровье или насыщенную кровь, то она вас убьёт.]",
+            "label": "Завербовать знакомого, обратившись к силе ЧашиЗавербовать знакомого, обратившись к силе Сердца",
+            "actionid": "illhealth",
+            "extantreqs": {
+                "apostlegrail.pillar2.dormant": 1
+            },
             "slots": [
                 {
                     "id": "Affliction",
-                    "label": "Недуг"
+                    "label": "Мои эмоции",
+                    "required": {
+                        "health": 1,
+                        "fatigue": 1,
+                        "apostlegrail.pillar2": 1
+                    },
+                    "greedy": true
                 }
-            ]
+            ],
+            "aspects": {
+                "fallsick": 1
+            },
+            "alt": [
+                {
+                    "id": "savorousbloodrespite",
+                    "chance": 100
+                },
+                {
+                    "id": "forlornblooddeathofthebody",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Опустившись на колени новообращённым, мой последователь встанет уже адептом. Я лично приму его клятву.Опустившись на колени новообращённым, мой последователь встанет уже адептом. Я лично приму его клятву.",
+            "description": "Церемония оглушительна, будто раскаты грома в соборе. Я хорошо знаю, что произойдёт. Ведь это порождение моего разума.Рана невелика. Будь она хоть немного меньше, высшая сила сочла бы себя оскорблённой.",
+            "warmup": 60
         },
         {
             "id": "savorousbloodrespite",
+            "actionid": "illhealth",
             "label": "Передышка",
-            "startdescription": "Кровь Отрады согревает меня, на щеках у меня расцветают красные цветы, в сердце вливается горячее вино, мои струны трепещут так, как Чаша показывала Громовому Ритму. Я решаю жить дальше."
+            "requirements": {
+                "apostlegrail.pillar2": 1
+            },
+            "startdescription": "Опустившись на колени новообращённым, мой последователь встанет уже адептом. Я лично приму его клятву.Опустившись на колени новообращённым, мой последователь встанет уже адептом. Я лично приму его клятву.",
+            "warmup": 10
         },
         {
             "id": "deathofthewoundedfollower",
-            "label": "Мой последователь умирает!",
-            "description": "Может, дух ещё бродит по Дому. Может, он пропал в Лесу или погрузился ещё ниже. Но смертная оболочка пока здесь.",
-            "startdescription": "Раны смертельны. Ничего уже не сделать."
+            "actionid": "time",
+            "label": "Завербовать знакомого, обратившись к силе МотылькаЗавербовать знакомого, обратившись к силе Зимы",
+            "requirements": {
+                "follower_wound": 1
+            },
+            "startdescription": "Опустившись на колени новообращённым, мой последователь встанет уже адептом. Я лично приму его клятву.Опустившись на колени новообращённым, мой последователь встанет уже адептом. Я лично приму его клятву.",
+            "description": "Я произнесу ровно девять слов — не больше и не меньше. Новообращённый будет молчать. «Мои шрамы — моё оружие. Искания ведут меня к победе. Ибо поражение есть истребление. Мы познаём себя лишь в свете Сияющей Грани. Клянусь, что буду служить сильнейшему».",
+            "aspects": {
+                "killmortal": 1
+            },
+            "effects": {
+                "seasonsickness": -1
+            }
         },
         {
             "id": "rosenext",
-            "label": "Свидания и интерлюдии",
-            "description": ".",
-            "startdescription": "Если у меня есть друг, то сейчас самое время возобновить нашу связь.",
+            "label": "Попробовать возвысить адепта до звания убийцыПопробовать возвысить адепта до звания подмастерья",
+            "actionid": "rose",
+            "requirements": {
+                "seasonardours": 1
+            },
             "slots": [
                 {
                     "id": "Who?",
                     "label": "Кто?",
-                    "description": "Ладонь к ладони, глаза в глаза."
+                    "description": "Ладонь к ладони, глаза в глаза.",
+                    "required": {
+                        "romanticinterest": 1
+                    },
+                    "forbidden": {
+                        "notoriety": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "Это дитя, возможно, готово перейти на новую ступень. Нужно только предоставить ему нечто большее.Традиция и порыв — старое, новое или и то и другое вместе. [Копите знания, чтобы выбрать основные принципы своего культа.]",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "L_roseend",
+                    "chance": 100
+                },
+                {
+                    "id": "L_checkjealousy",
+                    "chance": 30
+                },
+                {
+                    "id": "L_roserouter",
+                    "chance": 100
+                }
+            ],
+            "warmup": 5
+        },
+        {
+            "id": "pleasantday",
+            "label": "Попробовать возвысить адепта до звания гедонистаПопробовать возвысить адепта до звания тарантеллиста",
+            "actionid": "pleasantday",
+            "requirements": {
+                "seasonserenities": 1
+            },
+            "effects": {
+                "contentment": 1
+            },
+            "comments": "currently unused",
+            "startdescription": "Оккультное общество, посвящённое изучению пяти Историй и тысячам их полумифических отражений.Оккультное общество, посвящённое тишине, что приходит, и холоду, что кончается.",
+            "description": "В некоторые дни лучше, чем в другие. Иногда небо кажется грязной простынёй, иногда воды реки чисты.",
+            "warmup": 30,
+            "craftable": false
+        },
+        {
+            "id": "despairrisklink",
+            "label": "Попробовать возвысить адепта до звания ключаПопробовать возвысить адепта до звания пророка",
+            "actionid": "despair",
+            "requirements": {
+                "seasondespair": 1
+            },
+            "warmup": 0,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "despairrisk",
+                    "chance": 100
                 }
             ]
         },
         {
-            "id": "pleasantday",
-            "label": "Приятный день",
-            "description": "В некоторые дни лучше, чем в другие. Иногда небо кажется грязной простынёй, иногда воды реки чисты.",
-            "startdescription": "Этим утром я чувствую особенную бодрость. Не знаю, почему."
-        },
-        {
-            "id": "despairrisklink",
-            "label": "despairrisklink"
-        },
-        {
             "id": "visionsrisklink",
-            "label": "visionsrisklink"
+            "label": "Попробовать возвысить адепта до звания кожевенникаПопробовать возвысить адепта",
+            "actionid": "visions",
+            "requirements": {
+                "seasonvisions": 1
+            },
+            "warmup": 0,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsrisk",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "starvation",
-            "label": "Голод",
-            "description": "Без денег я скоро умру от голода. [Если болезнь не может расходовать здоровье, то она вас убьёт.]",
+            "label": "Основать Церковь Сияющей ГраниОсновать Орден Неустрашимых",
+            "actionid": "illhealth",
+            "requirements": {
+                "funds": -1
+            },
+            "effects": {
+                "health": -1,
+                "hunger": 1
+            },
+            "alt": [
+                {
+                    "id": "mareendingstarvation",
+                    "actionid": "illhealth",
+                    "label": "Кобылица во мне",
+                    "startdescription": "ОНА ИДЁТ",
+                    "description": "--",
+                    "extantreqs": {
+                        "lockscar": 3,
+                        "health": -1
+                    },
+                    "signalEndingFlavour": "Melancholy",
+                    "ending": "minormarevictory",
+                    "craftable": false
+                },
+                {
+                    "id": "deathofthebody",
+                    "chance": 100
+                }
+            ],
             "startdescription": ".",
+            "description": "«Как Львиный Кузнец встал на колени перед Полковником, так теперь преклоняю колени и я. Моё служение закончится лишь в смерти — или в разрешении раздора».«Я молот и я — наковальня; я прикосновение огня и благословение железа. Я вверяю себя последнему пламени».",
+            "warmup": 60,
             "slots": [
                 {
                     "id": "starvation",
-                    "label": "Голод"
-                }
-            ],
-            "alternativerecipes": [
-                {
-                    "id": "mareendingstarvation",
-                    "label": "Кобылица во мне",
-                    "description": "--",
-                    "startdescription": "ОНА ИДЁТ"
-                },
-                {
-                    "id": "deathofthebody"
+                    "label": "Основать Церковь Сияющей ГраниОсновать Орден Неустрашимых",
+                    "required": {
+                        "health": 1
+                    },
+                    "greedy": true
                 }
             ]
         }

@@ -3,722 +3,2718 @@
         {
             "id": "auclair_a",
             "label": "Оклер, знакомая",
-            "description": "Оклер начитана и болезненно впечатлительна. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Оклер начитана и болезненно впечатлительна. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "auclair_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "auclair_r"
+            },
+            "uniquenessgroup": "uqauclair"
         },
         {
             "id": "auclair_b",
             "label": "Оклер, неофит",
-            "description": "Оклер немногословна, педантична и безжалостна."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "winter": 2,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Оклер немногословна, педантична и безжалостна.",
+            "xtriggers": {
+                "promotiontodisciple": "auclair_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "auclair_p",
+                "rebellion": "auclair_r"
+            },
+            "uniquenessgroup": "uqauclair"
         },
         {
             "id": "auclair_c",
             "label": "Оклер, адепт",
-            "description": "Оклер редко говорит. Она тщательно подбирает слова и старается как можно меньше двигаться. Никто не видел, чтобы она моргала."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "winter": 5,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Оклер редко говорит. Она тщательно подбирает слова и старается как можно меньше двигаться. Никто не видел, чтобы она моргала.",
+            "xtriggers": {
+                "promotionto_d_winter": "auclair_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "auclair_p",
+                "rebellion": "auclair_r_c"
+            },
+            "uniquenessgroup": "uqauclair"
         },
         {
             "id": "auclair_d",
             "label": "Молчаливая измождённая женщина",
-            "description": "Воздух холодеет, свечи гаснут, шум улицы становится приглушённым. Здесь кто-то есть."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "winter": 10,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Воздух холодеет, свечи гаснут, шум улицы становится приглушённым. Здесь кто-то есть.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "auclair_p",
+                "rebellion": "auclair_r_d"
+            },
+            "uniquenessgroup": "uqauclair"
         },
         {
             "id": "cat_a",
             "label": "Кэт Каро, знакомая",
-            "description": "Женщина, зовущая себя Кэт Каро, общается с духами и предсказывает судьбу для публики. Возможно, у неё есть и другие таланты. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Женщина, зовущая себя Кэт Каро, общается с духами и предсказывает судьбу для публики. Возможно, у неё есть и другие таланты. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "cat_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "cat_r"
+            },
+            "uniquenessgroup": "uqcat"
         },
         {
             "id": "cat_b",
             "label": "Кэт Каро, неофит",
-            "description": "Наблюдательная женщина с зорким взглядом. Прекрасно запоминает сны."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "lantern": 2,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Наблюдательная женщина с зорким взглядом. Прекрасно запоминает сны.",
+            "xtriggers": {
+                "promotiontodisciple": "cat_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "cat_p",
+                "rebellion": "cat_r"
+            },
+            "uniquenessgroup": "uqcat"
         },
         {
             "id": "cat_c",
             "label": "Кэт Каро, адепт",
-            "description": "Она до сих пор иногда выступает перед публикой. Надпись на афише гласит: «Кэт Каро видит путь; Кэт Каро знает дорогу»."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "lantern": 5,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Она до сих пор иногда выступает перед публикой. Надпись на афише гласит: «Кэт Каро видит путь; Кэт Каро знает дорогу».",
+            "xtriggers": {
+                "promotionto_d_lantern": "cat_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "cat_p",
+                "rebellion": "cat_r_c"
+            },
+            "uniquenessgroup": "uqcat"
         },
         {
             "id": "cat_d",
             "label": "Кэт Каро, пророк",
-            "description": "Археологи находят в гробницах сокровища. Фермеры пожинают в полях урожай. Что может найти в своих снах Кэт Каро?"
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "lantern": 10,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Археологи находят в гробницах сокровища. Фермеры пожинают в полях урожай. Что может найти в своих снах Кэт Каро?",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "cat_p",
+                "rebellion": "cat_r_d"
+            },
+            "uniquenessgroup": "uqcat"
         },
         {
             "id": "clifton_a",
             "label": "«Поп» Клифтон, знакомый",
-            "description": "Шумный эксцентричный католик с тягой ко всему мистическому и нестриженой бородой. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Шумный эксцентричный католик с тягой ко всему мистическому и нестриженой бородой. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "clifton_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqclifton"
         },
         {
             "id": "clifton_b",
             "label": "«Поп» Клифтон, неофит",
-            "description": "Теперь Клифтон придумывает новые молитвы с метафорами о солнце, но всё так же не умеет понижать голос и пьёт, как сапожник."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "lantern": 2,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Теперь Клифтон придумывает новые молитвы с метафорами о солнце, но всё так же не умеет понижать голос и пьёт, как сапожник.",
+            "xtriggers": {
+                "promotiontodisciple": "clifton_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "clifton_p",
+                "rebellion": "clifton_r"
+            },
+            "uniquenessgroup": "uqclifton"
         },
         {
             "id": "clifton_c",
             "label": "«Поп» Клифтон, адепт",
-            "description": "Обряды Клифтона усложнились. Его огромные глаза сияют, а голос стал ещё более громоподобным."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "lantern": 5,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Обряды Клифтона усложнились. Его огромные глаза сияют, а голос стал ещё более громоподобным.",
+            "xtriggers": {
+                "promotionto_d_lantern": "clifton_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "clifton_p",
+                "rebellion": "clifton_r_c"
+            },
+            "uniquenessgroup": "uqclifton"
         },
         {
             "id": "clifton_d",
             "label": "Клифтон, пророк",
-            "description": "Клифтон всё ещё возносит молитвы, но теперь они чудные, словно старые зеркала. Каждое утро он встречает рассвет, смотрит прямо на его лик и говорит вам, что видит."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "lantern": 10,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Клифтон всё ещё возносит молитвы, но теперь они чудные, словно старые зеркала. Каждое утро он встречает рассвет, смотрит прямо на его лик и говорит вам, что видит.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "clifton_p",
+                "rebellion": "clifton_r_d"
+            },
+            "uniquenessgroup": "uqclifton"
         },
         {
             "id": "clovette_a",
             "label": "Кловетта, знакомая",
-            "description": "Кловетта счастлива и не приемлет ничего, что могло бы затмить это счастье. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustchange": 1
+            },
+            "description": "Кловетта счастлива и не приемлет ничего, что могло бы затмить это счастье. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "clovette_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqclovette"
         },
         {
             "id": "clovette_b",
             "label": "Кловетта, неофит",
-            "description": "Стойкое счастье Кловетты кажется почти фанатичным."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "heart": 2,
+                "follower_lustchange": 1
+            },
+            "description": "Стойкое счастье Кловетты кажется почти фанатичным.",
+            "xtriggers": {
+                "promotiontodisciple": "clovette_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "clovette_p",
+                "rebellion": "clovette_r"
+            },
+            "uniquenessgroup": "uqclovette"
         },
         {
             "id": "clovette_c",
             "label": "Кловетта, адепт",
-            "description": "Оптимизм Кловетты устрашает. Её радость подобна ударам молота."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "heart": 5,
+                "follower_lustchange": 1
+            },
+            "description": "Оптимизм Кловетты устрашает. Её радость подобна ударам молота.",
+            "xtriggers": {
+                "promotionto_d_heart": "clovette_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "clovette_p",
+                "rebellion": "clovette_r_c"
+            },
+            "uniquenessgroup": "uqclovette"
         },
         {
             "id": "clovette_d",
             "label": "Кловетта, тарантеллистка",
-            "description": "Кловетта вечно движется. Её легко рассмешить, а её улыбка подобна месяцу в ночном небе."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "heart": 10,
+                "follower_lustchange": 1
+            },
+            "description": "Кловетта вечно движется. Её легко рассмешить, а её улыбка подобна месяцу в ночном небе.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "clovette_p",
+                "rebellion": "clovette_r_d"
+            },
+            "uniquenessgroup": "uqclovette"
         },
         {
             "id": "connie_c",
             "label": "Конни, адепт",
-            "description": "Последняя уловка, перед которой Конни не смогла устоять... возможно, так она просто развлекается."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "edge": 5,
+                "grail": 4
+            },
+            "description": "Последняя уловка, перед которой Конни не смогла устоять... возможно, так она просто развлекается.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "promotionto_d_edge": "connie_d",
+                "derangemortal": "lunatic",
+                "capturefollower": "genericprisonerf",
+                "rebellion": "connie_r_c"
+            },
+            "uniquenessgroup": "uqconnie",
+            "icon": "connie_r"
         },
         {
             "id": "connie_d",
             "label": "Конни, завоевательница",
-            "description": "Конни не создана, чтобы служить. Однажды она расправит плечи, но пока что притворяется покорной ради своей цели."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "edge": 10,
+                "grail": 7
+            },
+            "description": "Конни не создана, чтобы служить. Однажды она расправит плечи, но пока что притворяется покорной ради своей цели.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "genericprisonerf",
+                "rebellion": "connie_r_d"
+            },
+            "uniquenessgroup": "uqconnie",
+            "icon": "connie_r"
         },
         {
             "id": "dorothy_a",
             "label": "Дороти, знакомая",
-            "description": "Полная энтузиазма Дороти читает самую разную литературу. Мои намёки на то, что под кожей мира что-то таится, её очаровывают. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustchange": 1
+            },
+            "description": "Полная энтузиазма Дороти читает самую разную литературу. Мои намёки на то, что под кожей мира что-то таится, её очаровывают. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "dorothy_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqdorothy"
         },
         {
             "id": "dorothy_b",
             "label": "Дороти, неофит",
-            "description": "Дороти полна энтузиазма, и её восторженность удалось обратить нам на пользу."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "heart": 2,
+                "follower_lustchange": 1
+            },
+            "description": "Дороти полна энтузиазма, и её восторженность удалось обратить нам на пользу.",
+            "xtriggers": {
+                "promotiontodisciple": "dorothy_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "dorothy_p",
+                "rebellion": "dorothy_r"
+            },
+            "uniquenessgroup": "uqdorothy"
         },
         {
             "id": "dorothy_c",
             "label": "Дороти, адепт",
-            "description": "Энтузиазм Дороти превратился в одержимость. Ничто её не остановит, и сейчас ей интересны танцы."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "heart": 5,
+                "follower_lustchange": 1
+            },
+            "description": "Энтузиазм Дороти превратился в одержимость. Ничто её не остановит, и сейчас ей интересны танцы.",
+            "xtriggers": {
+                "promotionto_d_heart": "dorothy_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "dorothy_p",
+                "rebellion": "dorothy_r_c"
+            },
+            "uniquenessgroup": "uqdorothy"
         },
         {
             "id": "dorothy_d",
             "label": "Дороти, тарантеллистка",
-            "description": "Когда Дороти движется, мы слышим барабанный бой. Когда она заговаривает, мы видим танец. Решимость стала её щитом и оружием."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "heart": 10,
+                "follower_lustchange": 1
+            },
+            "description": "Когда Дороти движется, мы слышим барабанный бой. Когда она заговаривает, мы видим танец. Решимость стала её щитом и оружием.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "dorothy_p",
+                "rebellion": "dorothy_r_d"
+            },
+            "uniquenessgroup": "uqdorothy"
         },
         {
             "id": "douglas_b",
             "label": "Дуглас, неофит",
-            "description": "Дуглас принял силу Кузни."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "forge": 2
+            },
+            "description": "Дуглас принял силу Кузни.",
+            "xtriggers": {
+                "promotiontodisciple": "douglas_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "douglas_p",
+                "rebellion": "douglas_r"
+            },
+            "uniquenessgroup": "uqdouglas",
+            "icon": "douglas_r"
         },
         {
             "id": "douglas_c",
             "label": "Дуглас, адепт",
-            "description": "Молоты напоминают Дугласу об одном неприятном происшествии. Но он использует то, что должен."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "forge": 5
+            },
+            "description": "Молоты напоминают Дугласу об одном неприятном происшествии. Но он использует то, что должен.",
+            "xtriggers": {
+                "promotionto_d_forge": "douglas_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "douglas_p",
+                "rebellion": "douglas_r_c"
+            },
+            "uniquenessgroup": "uqdouglas",
+            "icon": "douglas_r"
         },
         {
             "id": "douglas_d",
             "label": "Дуглас, подмастерье",
-            "description": "Дуглас сильно изменился. Его глаза сияют, как окна кузницы в тумане, а голос напоминает грохот угля, что катится по жёлобу. Его рука длинна."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "forge": 10
+            },
+            "description": "Дуглас сильно изменился. Его глаза сияют, как окна кузницы в тумане, а голос напоминает грохот угля, что катится по жёлобу. Его рука длинна.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "douglas_p",
+                "rebellion": "douglas_r_d"
+            },
+            "uniquenessgroup": "uqdouglas",
+            "icon": "douglas_r"
         },
         {
             "id": "elridge_a",
             "label": "Элридж, знакомый",
-            "description": "Изящный мужчина не самых изящных манер. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustpower": 1
+            },
+            "description": "Изящный мужчина не самых изящных манер. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "elridge_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqelridge"
         },
         {
             "id": "elridge_b",
             "label": "Элридж, неофит",
-            "description": "Элридж уже почти не ковыряет ножом в зубах во время разговора. Не доставать нож из ботинка он пока не научился."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 2,
+                "follower_lustpower": 1
+            },
+            "description": "Элридж уже почти не ковыряет ножом в зубах во время разговора. Не доставать нож из ботинка он пока не научился.",
+            "xtriggers": {
+                "promotiontodisciple": "elridge_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "elridge_p",
+                "rebellion": "elridge_r"
+            },
+            "uniquenessgroup": "uqelridge"
         },
         {
             "id": "elridge_c",
             "label": "Элридж, адепт",
-            "description": "Элридж терпеливо ждёт, когда придёт время снова пустить в ход нож."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "edge": 5,
+                "follower_lustpower": 1
+            },
+            "description": "Элридж терпеливо ждёт, когда придёт время снова пустить в ход нож.",
+            "xtriggers": {
+                "promotionto_d_edge": "elridge_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "elridge_p",
+                "rebellion": "elridge_r_c"
+            },
+            "uniquenessgroup": "uqelridge"
         },
         {
             "id": "elridge_d",
             "label": "Элридж, убийца",
-            "description": "На Элридже никогда не остаётся ни единого пятнышка крови. Никогда."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "edge": 10,
+                "follower_lustpower": 1
+            },
+            "description": "На Элридже никогда не остаётся ни единого пятнышка крови. Никогда.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "elridge_p",
+                "rebellion": "elridge_r_d"
+            },
+            "uniquenessgroup": "uqelridge"
         },
         {
             "id": "enid_a",
             "label": "Энид, знакомая",
-            "description": "Голос Энид мягок, и её взгляд иногда устремлён на что-то незримое. Возможно, вы с ней видите одни и те же сны. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Голос Энид мягок, и её взгляд иногда устремлён на что-то незримое. Возможно, вы с ней видите одни и те же сны. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "enid_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqenid"
         },
         {
             "id": "enid_b",
             "label": "Энид, неофит",
-            "description": "Голос Энид мягок, и её взгляд иногда устремлён на что-то незримое. Она видит то, что недоступно другим."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "knock": 2,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Голос Энид мягок, и её взгляд иногда устремлён на что-то незримое. Она видит то, что недоступно другим.",
+            "xtriggers": {
+                "promotiontodisciple": "enid_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "enid_p",
+                "rebellion": "enid_r_c"
+            },
+            "uniquenessgroup": "uqenid"
         },
         {
             "id": "enid_c",
             "label": "Энид, адепт",
-            "description": "Энид видит то, что недоступно другим. Это приносит пользу, хоть и утруждает её."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "knock": 5,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Энид видит то, что недоступно другим. Это приносит пользу, хоть и утруждает её.",
+            "xtriggers": {
+                "promotionto_d_knock": "enid_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "enid_p",
+                "rebellion": "enid_r_d"
+            },
+            "uniquenessgroup": "uqenid"
         },
         {
             "id": "enid_d",
             "label": "Энид, ключ",
-            "description": "Энид видит зазоры между предметами, и то, чему она научилась, иногда позволяет ей проникнуть в зазор."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "knock": 10,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Энид видит зазоры между предметами, и то, чему она научилась, иногда позволяет ей проникнуть в зазор.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "enid_p",
+                "rebellion": "enid_r"
+            },
+            "uniquenessgroup": "uqenid"
         },
         {
             "id": "laidlaw_a",
             "label": "Лэйдлоу, знакомый",
-            "description": "Лэйдлоу — умелец-ремесленник, чьё мастерство поражает. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustpower": 1
+            },
+            "description": "Лэйдлоу — умелец-ремесленник, чьё мастерство поражает. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "laidlaw_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqlaidlaw"
         },
         {
             "id": "laidlaw_b",
             "label": "Лэйдлоу, неофит",
-            "description": "Лэйдлоу начинает постигать пределы мастерства и силу жертвоприношений."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "forge": 2,
+                "follower_lustpower": 1
+            },
+            "description": "Лэйдлоу начинает постигать пределы мастерства и силу жертвоприношений.",
+            "xtriggers": {
+                "promotiontodisciple": "laidlaw_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "laidlaw_p",
+                "rebellion": "laidlaw_r"
+            },
+            "uniquenessgroup": "uqlaidlaw"
         },
         {
             "id": "laidlaw_c",
             "label": "Лэйдлоу, адепт",
-            "description": "Лэйдлоу научился более изящно применять огонь, медь, воск и кислоту."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "forge": 5,
+                "follower_lustpower": 1
+            },
+            "description": "Лэйдлоу научился более изящно применять огонь, медь, воск и кислоту.",
+            "xtriggers": {
+                "promotionto_d_forge": "laidlaw_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "laidlaw_p",
+                "rebellion": "laidlaw_r_c"
+            },
+            "uniquenessgroup": "uqlaidlaw"
         },
         {
             "id": "laidlaw_d",
             "label": "Лэйдлоу, подмастерье",
-            "description": "Лэйдлоу может переделать сломанное в необходимое."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "forge": 10,
+                "follower_lustpower": 1
+            },
+            "description": "Лэйдлоу может переделать сломанное в необходимое.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "laidlaw_p",
+                "rebellion": "laidlaw_r_d"
+            },
+            "uniquenessgroup": "uqlaidlaw"
         },
         {
             "id": "leo_a",
             "label": "Лео, знакомый",
-            "description": "Лео — честный малый. Он интересуется оккультизмом, и ваши слова о незримых искусствах притягивают его. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustchange": 1
+            },
+            "description": "Лео — честный малый. Он интересуется оккультизмом, и ваши слова о незримых искусствах притягивают его. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "leo_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqleo"
         },
         {
             "id": "leo_b",
             "label": "Лео, неофит",
-            "description": "Лео — честный малый, но готов делать то, что должно."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "heart": 2,
+                "follower_lustchange": 1
+            },
+            "description": "Лео — честный малый, но готов делать то, что должно.",
+            "xtriggers": {
+                "promotiontodisciple": "leo_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "leo_p",
+                "rebellion": "leo_r"
+            },
+            "uniquenessgroup": "uqleo"
         },
         {
             "id": "leo_c",
             "label": "Лео, адепт",
-            "description": "Лео старается уберечь свои ценности и веру в добро, но понимает: чтобы отстоять свои идеалы, иногда приходится совершать сомнительные поступки."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "heart": 5,
+                "follower_lustchange": 1
+            },
+            "description": "Лео старается уберечь свои ценности и веру в добро, но понимает: чтобы отстоять свои идеалы, иногда приходится совершать сомнительные поступки.",
+            "xtriggers": {
+                "promotionto_d_heart": "leo_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "leo_p",
+                "rebellion": "leo_r_c"
+            },
+            "uniquenessgroup": "uqleo"
         },
         {
             "id": "leo_d",
             "label": "Лео, тарантеллист",
-            "description": "Лео пойдёт до конца, чего бы это ни стоило."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "heart": 10,
+                "follower_lustchange": 1
+            },
+            "description": "Лео пойдёт до конца, чего бы это ни стоило.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "leo_p",
+                "rebellion": "leo_r_d"
+            },
+            "uniquenessgroup": "uqleo"
         },
         {
             "id": "natalia_c",
             "label": "Наталия, адепт",
-            "description": "Наталия ни за кем не следует вслепую, кроме вас. Пока что."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "lantern": 5,
+                "forge": 4
+            },
+            "description": "Наталия ни за кем не следует вслепую, кроме вас. Пока что.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "promotionto_d_lantern": "natalia_d",
+                "derangemortal": "lunatic",
+                "capturefollower": "genericprisonerf",
+                "rebellion": "natalia_r_c"
+            },
+            "uniquenessgroup": "uqnatalia",
+            "icon": "natalia_r"
         },
         {
             "id": "natalia_d",
             "label": "Наталия, мудрец",
-            "description": "Наталия ступила на ярчайший путь, который смогла найти."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "lantern": 10,
+                "forge": 7
+            },
+            "description": "Наталия ступила на ярчайший путь, который смогла найти.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "genericprisonerf",
+                "rebellion": "natalia_r_d"
+            },
+            "uniquenessgroup": "uqnatalia",
+            "icon": "natalia_r"
         },
         {
             "id": "neville_a",
             "label": "Невилл, знакомый",
-            "description": "Невилл то и дело замолкает и часто вздрагивает. Он заливисто смеётся, если думает, что вы пошутили. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Невилл то и дело замолкает и часто вздрагивает. Он заливисто смеётся, если думает, что вы пошутили. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "neville_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqneville"
         },
         {
             "id": "neville_b",
             "label": "Невилл, неофит",
-            "description": "Невилл то и дело замолкает и часто вздрагивает. Он восприимчив к незримым материям."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "knock": 2,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Невилл то и дело замолкает и часто вздрагивает. Он восприимчив к незримым материям.",
+            "xtriggers": {
+                "promotiontodisciple": "neville_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "neville_p",
+                "rebellion": "neville_r"
+            },
+            "uniquenessgroup": "uqneville"
         },
         {
             "id": "neville_c",
             "label": "Невилл, адепт",
-            "description": "Взгляд Невилла стал ускользающим, а его голос — пронзительным. Он охотно говорит о своих снах."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "knock": 5,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Взгляд Невилла стал ускользающим, а его голос — пронзительным. Он охотно говорит о своих снах.",
+            "xtriggers": {
+                "promotionto_d_knock": "neville_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "neville_p",
+                "rebellion": "neville_r_c"
+            },
+            "uniquenessgroup": "uqneville"
         },
         {
             "id": "neville_d",
             "label": "Невилл, ключ",
-            "description": "Во снах Невилл видит прорехи, через которые можно открыть проходы под кожей мира."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "knock": 10,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Во снах Невилл видит прорехи, через которые можно открыть проходы под кожей мира.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "neville_p",
+                "rebellion": "neville_r_d"
+            },
+            "uniquenessgroup": "uqneville"
         },
         {
             "id": "porter_a",
             "label": "Портер, знакомый",
-            "description": "До того судебного разбирательства Портер был цирюльником. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustchange": 1
+            },
+            "description": "До того судебного разбирательства Портер был цирюльником. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "porter_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqporter"
         },
         {
             "id": "porter_b",
             "label": "Портер, неофит",
-            "description": "Портер орудует ножницами и бритвой ради блага своих друзей."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "moth": 2,
+                "follower_lustchange": 1
+            },
+            "description": "Портер орудует ножницами и бритвой ради блага своих друзей.",
+            "xtriggers": {
+                "promotiontodisciple": "porter_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "porter_p",
+                "rebellion": "porter_r"
+            },
+            "uniquenessgroup": "uqporter"
         },
         {
             "id": "porter_c",
             "label": "Портер, адепт",
-            "description": "Портер незаметен, пока не готов действовать."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "moth": 5,
+                "follower_lustchange": 1
+            },
+            "description": "Портер незаметен, пока не готов действовать.",
+            "xtriggers": {
+                "promotionto_d_moth": "porter_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "porter_p",
+                "rebellion": "porter_r_c"
+            },
+            "uniquenessgroup": "uqporter"
         },
         {
             "id": "porter_d",
             "label": "Портер, кожевенник",
-            "description": "Словно паук, Портер всегда оказывается в самых неожиданных местах."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "moth": 10,
+                "follower_lustchange": 1
+            },
+            "description": "Словно паук, Портер всегда оказывается в самых неожиданных местах.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "porter_p",
+                "rebellion": "porter_r_d"
+            },
+            "uniquenessgroup": "uqporter"
         },
         {
             "id": "renira_a",
             "label": "Ренира, знакомая",
-            "description": "Рениру трижды признали невиновной в трёх разных судах. Вряд ли её вину хоть когда-нибудь докажут. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustsensation": 1
+            },
+            "description": "Рениру трижды признали невиновной в трёх разных судах. Вряд ли её вину хоть когда-нибудь докажут. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "renira_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqrenira"
         },
         {
             "id": "renira_b",
             "label": "Ренира, неофит",
-            "description": "Ренира удовлетворяет свои желания втайне, хотя её амбиции возросли. "
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "grail": 2,
+                "follower_lustsensation": 1
+            },
+            "description": "Ренира удовлетворяет свои желания втайне, хотя её амбиции возросли.",
+            "xtriggers": {
+                "promotiontodisciple": "renira_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "renira_p",
+                "rebellion": "renira_r"
+            },
+            "uniquenessgroup": "uqrenira"
         },
         {
             "id": "renira_c",
             "label": "Ренира, адепт",
-            "description": "Ренира требует обожания ото всех. Своё внимание она бережёт для тех, кто его заслуживает."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "grail": 5,
+                "follower_lustsensation": 1
+            },
+            "description": "Ренира требует обожания ото всех. Своё внимание она бережёт для тех, кто его заслуживает.",
+            "xtriggers": {
+                "promotionto_d_grail": "renira_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "renira_p",
+                "rebellion": "renira_r_c"
+            },
+            "uniquenessgroup": "uqrenira"
         },
         {
             "id": "renira_d",
             "label": "Ренира, гедонист",
-            "description": "Ренира получает знаки внимания от поклонников почти ежедневно. Иногда это цветы, иногда — стихотворения и драгоценности, а иногда — дары отчаяния, плотно завёрнутые в окровавленную бумагу."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "grail": 10,
+                "follower_lustsensation": 1
+            },
+            "description": "Ренира получает знаки внимания от поклонников почти ежедневно. Иногда это цветы, иногда — стихотворения и драгоценности, а иногда — дары отчаяния, плотно завёрнутые в окровавленную бумагу.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "renira_p",
+                "rebellion": "renira_r_d"
+            },
+            "uniquenessgroup": "uqrenira"
         },
         {
             "id": "rose_a",
             "label": "Роуз, знакомая",
-            "description": "Роуз хитроумна, но в вас она видит что-то необычное. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustsensation": 1
+            },
+            "description": "Роуз хитроумна, но в вас она видит что-то необычное. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "rose_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqrose"
         },
         {
             "id": "rose_b",
             "label": "Роуз, неофит",
-            "description": "Роуз хитроумна, но вам она верна."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 2,
+                "follower_lustsensation": 1
+            },
+            "description": "Роуз хитроумна, но вам она верна.",
+            "xtriggers": {
+                "promotiontodisciple": "rose_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "rose_p",
+                "rebellion": "rose_r"
+            },
+            "uniquenessgroup": "uqrose"
         },
         {
             "id": "rose_c",
             "label": "Роуз, адепт",
-            "description": "Роуз отточила своё хитроумие, доведя его до совершенства."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "edge": 5,
+                "follower_lustsensation": 1
+            },
+            "description": "Роуз отточила своё хитроумие, доведя его до совершенства.",
+            "xtriggers": {
+                "promotionto_d_edge": "rose_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "rose_p",
+                "rebellion": "rose_r_c"
+            },
+            "uniquenessgroup": "uqrose"
         },
         {
             "id": "rose_d",
             "label": "Роуз, убийца",
-            "description": "За ночь до встречи со своей целью Роуз всегда отправляет ей посылку с одной-единственной жёлтой розой."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "edge": 10,
+                "follower_lustsensation": 1
+            },
+            "description": "За ночь до встречи со своей целью Роуз всегда отправляет ей посылку с одной-единственной жёлтой розой.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "rose_p",
+                "rebellion": "rose_r_d"
+            },
+            "uniquenessgroup": "uqrose"
         },
         {
             "id": "saliba_a",
             "label": "Салиба, знакомый",
-            "description": "Салиба ненасытен. Удовлетворение желаний давно перестало приносить ему удовольствие, но в процессе он многое узнал. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustsensation": 1
+            },
+            "description": "Салиба ненасытен. Удовлетворение желаний давно перестало приносить ему удовольствие, но в процессе он многое узнал. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "saliba_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqsaliba"
         },
         {
             "id": "saliba_b",
             "label": "Салиба, неофит",
-            "description": "Салиба понимает путь крови, но ещё не понимает путь рождения."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "grail": 2,
+                "follower_lustsensation": 1
+            },
+            "description": "Салиба понимает путь крови, но ещё не понимает путь рождения.",
+            "xtriggers": {
+                "promotiontodisciple": "saliba_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "saliba_p",
+                "rebellion": "saliba_r"
+            },
+            "uniquenessgroup": "uqsaliba"
         },
         {
             "id": "saliba_c",
             "label": "Салиба, адепт",
-            "description": "Салиба развлекается в комнате без окон. Спутники возвращаются к нему снова и снова, хотя с каждым разом их становится чуть меньше."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "grail": 5,
+                "follower_lustsensation": 1
+            },
+            "description": "Салиба развлекается в комнате без окон. Спутники возвращаются к нему снова и снова, хотя с каждым разом их становится чуть меньше.",
+            "xtriggers": {
+                "promotionto_d_grail": "saliba_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "saliba_p",
+                "rebellion": "saliba_r_c"
+            },
+            "uniquenessgroup": "uqsaliba"
         },
         {
             "id": "saliba_d",
             "label": "Салиба, гедонист",
-            "description": "Обаяние Салибы поражает наповал. Если он чего-то жаждет, отказать ему ужасно сложно."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "grail": 10,
+                "follower_lustsensation": 1
+            },
+            "description": "Обаяние Салибы поражает наповал. Если он чего-то жаждет, отказать ему ужасно сложно.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "saliba_p",
+                "rebellion": "saliba_r_d"
+            },
+            "uniquenessgroup": "uqsaliba"
         },
         {
             "id": "slee_a",
             "label": "Сли, знакомый",
-            "description": "Крэйг Сли, астроном и поэт-авангардист, заинтересовался тайными искусствами из-за проблем со здоровьем. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Крэйг Сли, астроном и поэт-авангардист, заинтересовался тайными искусствами из-за проблем со здоровьем. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "slee_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqslee"
         },
         {
             "id": "slee_b",
             "label": "Сли, неофит",
-            "description": "Сли открыто делится своими теориями со всеми, кто готов слушать: он говорит о звёздах-ранах и кровоточащем Солнце. Его стихи стали ещё более странными."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "lantern": 2,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Сли открыто делится своими теориями со всеми, кто готов слушать: он говорит о звёздах-ранах и кровоточащем Солнце. Его стихи стали ещё более странными.",
+            "xtriggers": {
+                "promotiontodisciple": "slee_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "slee_p",
+                "rebellion": "slee_r"
+            },
+            "uniquenessgroup": "uqslee"
         },
         {
             "id": "slee_c",
             "label": "Сли, адепт",
-            "description": "Головные боли истязают Сли, но его теории с каждым днём становятся всё полезнее. Также он стал лучше писать."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "lantern": 5,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Головные боли истязают Сли, но его теории с каждым днём становятся всё полезнее. Также он стал лучше писать.",
+            "xtriggers": {
+                "promotionto_d_lantern": "slee_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "slee_p",
+                "rebellion": "slee_r_c"
+            },
+            "uniquenessgroup": "uqslee"
         },
         {
             "id": "slee_d",
             "label": "Сли, пророк",
-            "description": "Теперь Сли говорит исключительно на языке математики и поэзии. Притягательны оба, и разница между ними всё менее заметна."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "lantern": 10,
+                "follower_lustenlightenment": 1
+            },
+            "description": "Теперь Сли говорит исключительно на языке математики и поэзии. Притягательны оба, и разница между ними всё менее заметна.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "slee_p",
+                "rebellion": "slee_r_d"
+            },
+            "uniquenessgroup": "uqslee"
         },
         {
             "id": "spencer_c",
             "label": "Спенсер, адепт",
-            "description": "Спенсер носит на шее цепочку с крохотной иконой святой Агнессы. Она прикрывает шрам над сердцем."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "knock": 5,
+                "moth": 4
+            },
+            "description": "Спенсер носит на шее цепочку с крохотной иконой святой Агнессы. Она прикрывает шрам над сердцем.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "promotionto_d_lantern": "spencer_d",
+                "derangemortal": "lunatic",
+                "capturefollower": "genericprisonerm",
+                "rebellion": "spencer_r_c"
+            },
+            "uniquenessgroup": "uqspencer",
+            "icon": "spencer_r"
         },
         {
             "id": "spencer_d",
             "label": "Спенсер, вестник",
-            "description": "Одни идут по пути, другие сами становятся путём. Спенсер больше не говорит, что принял решение: он считает, что решение приняло его."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "knock": 10,
+                "moth": 7
+            },
+            "description": "Одни идут по пути, другие сами становятся путём. Спенсер больше не говорит, что принял решение: он считает, что решение приняло его.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "genericprisonerm",
+                "rebellion": "spencer_r_d"
+            },
+            "uniquenessgroup": "uqspencer",
+            "icon": "spencer_r"
         },
         {
             "id": "sylvia_a",
             "label": "Сильвия, знакомая",
-            "description": "Когда Сильвии было девять, она лишилась глаза в лесу. Каждый год в день Сретения она приходит на место, где его закопала. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustchange": 1
+            },
+            "description": "Когда Сильвии было девять, она лишилась глаза в лесу. Каждый год в день Сретения она приходит на место, где его закопала. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "sylvia_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqsylvia"
         },
         {
             "id": "sylvia_b",
             "label": "Сильвия, неофит",
-            "description": "Сильвия отлично знакома с коньками крыш, рекой во время отлива, ирландским виски и фокусами."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "moth": 2,
+                "follower_lustchange": 1
+            },
+            "description": "Сильвия отлично знакома с коньками крыш, рекой во время отлива, ирландским виски и фокусами.",
+            "xtriggers": {
+                "promotiontodisciple": "sylvia_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "sylvia_p",
+                "rebellion": "sylvia_r"
+            },
+            "uniquenessgroup": "uqsylvia"
         },
         {
             "id": "sylvia_c",
             "label": "Сильвия, адепт",
-            "description": "Любимый приём Сильви — улыбнуться и закрыть глаз. При этом её собеседники удивительно часто выдают то, что у них на уме."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "moth": 5,
+                "follower_lustchange": 1
+            },
+            "description": "Любимый приём Сильви — улыбнуться и закрыть глаз. При этом её собеседники удивительно часто выдают то, что у них на уме.",
+            "xtriggers": {
+                "promotionto_d_moth": "sylvia_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "sylvia_p",
+                "rebellion": "sylvia_r_c"
+            },
+            "uniquenessgroup": "uqsylvia"
         },
         {
             "id": "sylvia_d",
             "label": "Сильвия, кожевенница",
-            "description": "Сильвия теперь умеет выходить из помещения едва ли не прежде, чем заходит в него. Иногда она оставляет засохшие листья под подоконником и временами пишет своё имя там, где его не увидят."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "moth": 10,
+                "follower_lustchange": 1
+            },
+            "description": "Сильвия теперь умеет выходить из помещения едва ли не прежде, чем заходит в него. Иногда она оставляет засохшие листья под подоконником и временами пишет своё имя там, где его не увидят.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "sylvia_p",
+                "rebellion": "sylvia_r_d"
+            },
+            "uniquenessgroup": "uqsylvia"
         },
         {
             "id": "tristan_a",
             "label": "Тристан, знакомый",
-            "description": "Тристан предпочитает не отвлекаться и заканчивать начатое. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustpower": 1
+            },
+            "description": "Тристан предпочитает не отвлекаться и заканчивать начатое. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "tristan_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqtristan"
         },
         {
             "id": "tristan_b",
             "label": "Тристан, неофит",
-            "description": "Тристан предпочитает не отвлекаться и получать результат."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "forge": 2,
+                "follower_lustpower": 1
+            },
+            "description": "Тристан предпочитает не отвлекаться и получать результат.",
+            "xtriggers": {
+                "promotiontodisciple": "tristan_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "tristan_p",
+                "rebellion": "tristan_r"
+            },
+            "uniquenessgroup": "uqtristan"
         },
         {
             "id": "tristan_c",
             "label": "Тристан, адепт",
-            "description": "Тристан сделает, что потребуется. Чтобы что-то создать, иногда надо что-то уничтожить."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "forge": 5,
+                "follower_lustpower": 1
+            },
+            "description": "Тристан сделает, что потребуется. Чтобы что-то создать, иногда надо что-то уничтожить.",
+            "xtriggers": {
+                "promotionto_d_forge": "tristan_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "tristan_p",
+                "rebellion": "tristan_r_c"
+            },
+            "uniquenessgroup": "uqtristan"
         },
         {
             "id": "tristan_d",
             "label": "Тристан, подмастерье",
-            "description": "В другой эпохе Тристан мог быть кузнецом. В другой жизни — подрывником."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "forge": 10,
+                "follower_lustpower": 1
+            },
+            "description": "В другой эпохе Тристан мог быть кузнецом. В другой жизни — подрывником.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "tristan_p",
+                "rebellion": "tristan_r_d"
+            },
+            "uniquenessgroup": "uqtristan"
         },
         {
             "id": "valciane_a",
             "label": "Валсиана, знакомая",
-            "description": "Валсиана работала в своём заведении почти двадцать лет. Она никогда не нанимала помощников. Её руки необычайно сильны. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustpower": 1
+            },
+            "description": "Валсиана работала в своём заведении почти двадцать лет. Она никогда не нанимала помощников. Её руки необычайно сильны. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "valciane_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqvalciane"
         },
         {
             "id": "valciane_b",
             "label": "Валсиана, неофит",
-            "description": "Мастерство Валсианы безгранично. Её хватка сильнее хватки кузнеца."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "forge": 2,
+                "follower_lustpower": 1
+            },
+            "description": "Мастерство Валсианы безгранично. Её хватка сильнее хватки кузнеца.",
+            "xtriggers": {
+                "promotiontodisciple": "valciane_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "valciane_p",
+                "rebellion": "valciane_r"
+            },
+            "uniquenessgroup": "uqvalciane"
         },
         {
             "id": "valciane_c",
             "label": "Валсиана, адепт",
-            "description": "Валсиана — не механизм. В этом можно не сомневаться, потому что время от времени она совершает ошибки, свойственные людям."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "forge": 5,
+                "follower_lustpower": 1
+            },
+            "description": "Валсиана — не механизм. В этом можно не сомневаться, потому что время от времени она совершает ошибки, свойственные людям.",
+            "xtriggers": {
+                "promotionto_d_forge": "valciane_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "valciane_p",
+                "rebellion": "valciane_r_c"
+            },
+            "uniquenessgroup": "uqvalciane"
         },
         {
             "id": "valciane_d",
             "label": "Валсиана, подмастерье",
-            "description": "Теперь Валсиана работает без инструментов, утверждая, что «они только мешают»."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "forge": 10,
+                "follower_lustpower": 1
+            },
+            "description": "Теперь Валсиана работает без инструментов, утверждая, что «они только мешают».",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "valciane_p",
+                "rebellion": "valciane_r_d"
+            },
+            "uniquenessgroup": "uqvalciane"
         },
         {
             "id": "victor_a",
             "label": "Виктор, знакомый",
-            "description": "Виктор хитроумен и ни за что не упустит необычную возможность. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustsensation": 1
+            },
+            "description": "Виктор хитроумен и ни за что не упустит необычную возможность. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "victor_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqvictor"
         },
         {
             "id": "victor_b",
             "label": "Виктор, неофит",
-            "description": "Виктор хитроумен, но вам он верен."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 2,
+                "follower_lustsensation": 1
+            },
+            "description": "Виктор хитроумен, но вам он верен.",
+            "xtriggers": {
+                "promotiontodisciple": "victor_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "victor_p",
+                "rebellion": "victor_r"
+            },
+            "uniquenessgroup": "uqvictor"
         },
         {
             "id": "victor_c",
             "label": "Виктор, адепт",
-            "description": "Виктор отточил своё хитроумие, доведя его до совершенства."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "edge": 5,
+                "follower_lustsensation": 1
+            },
+            "description": "Виктор отточил своё хитроумие, доведя его до совершенства.",
+            "xtriggers": {
+                "promotionto_d_edge": "victor_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "victor_p",
+                "rebellion": "victor_r_c"
+            },
+            "uniquenessgroup": "uqvictor"
         },
         {
             "id": "victor_d",
             "label": "Виктор, убийца",
-            "description": "Виктор любит заводить знакомство со своими целями, чтобы лично принести извинения перед тем, как нанести удар."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "edge": 10,
+                "follower_lustsensation": 1
+            },
+            "description": "Виктор любит заводить знакомство со своими целями, чтобы лично принести извинения перед тем, как нанести удар.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "victor_p",
+                "rebellion": "victor_r_d"
+            },
+            "uniquenessgroup": "uqvictor"
         },
         {
             "id": "violet_a",
             "label": "Вайолет, знакомая",
-            "description": "Вайолет уделяет уйму времени тому, чтобы облегчать страдания умирающих. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustsensation": 1
+            },
+            "description": "Вайолет уделяет уйму времени тому, чтобы облегчать страдания умирающих. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "violet_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqviolet"
         },
         {
             "id": "violet_b",
             "label": "Вайолет, неофит",
-            "description": "Вайолет любит рисовать. Она талантлива, но не хвастается своими умениями. Вайолет никогда не рисует людей: в мире их и без того достаточно."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "winter": 2,
+                "follower_lustsensation": 1
+            },
+            "description": "Вайолет любит рисовать. Она талантлива, но не хвастается своими умениями. Вайолет никогда не рисует людей: в мире их и без того достаточно.",
+            "xtriggers": {
+                "promotiontodisciple": "violet_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "violet_p",
+                "rebellion": "violet_r"
+            },
+            "uniquenessgroup": "uqviolet"
         },
         {
             "id": "violet_c",
             "label": "Вайолет, адепт",
-            "description": "Вайолет всегда очень осторожна."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "winter": 5,
+                "follower_lustsensation": 1
+            },
+            "description": "Вайолет всегда очень осторожна.",
+            "xtriggers": {
+                "promotionto_d_winter": "violet_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "violet_p",
+                "rebellion": "violet_r_c"
+            },
+            "uniquenessgroup": "uqviolet"
         },
         {
             "id": "violet_d",
             "label": "Тихая женщина с добрым лицом",
-            "description": "Тише, засыпай. Ни о чём не волнуйся."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "winter": 10,
+                "follower_lustsensation": 1
+            },
+            "description": "Тише, засыпай. Ни о чём не волнуйся.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "violet_p",
+                "rebellion": "violet_r_d"
+            },
+            "uniquenessgroup": "uqviolet"
         },
         {
             "id": "ysabet_a",
             "label": "Изабет, знакомая",
-            "description": "Изабет всегда нравилось купаться в лунном свете. Она отлично видит в темноте. Днём её легко не заметить.[Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1,
+                "follower_lustchange": 1
+            },
+            "description": "Изабет всегда нравилось купаться в лунном свете. Она отлично видит в темноте. Днём её легко не заметить.[Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "recruiting": "ysabet_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "uniquenessgroup": "uqysabet"
         },
         {
             "id": "ysabet_b",
             "label": "Изабет, неофит",
-            "description": "Изабет спит урывками. Она встает на закате и занимается своими странными делами."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "moth": 2,
+                "follower_lustchange": 1
+            },
+            "description": "Изабет спит урывками. Она встает на закате и занимается своими странными делами.",
+            "xtriggers": {
+                "promotiontodisciple": "ysabet_c",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "ysabet_p",
+                "rebellion": "ysabet_r"
+            },
+            "uniquenessgroup": "uqysabet"
         },
         {
             "id": "ysabet_c",
             "label": "Изабет, адепт",
-            "description": "Всего мгновение назад Изабет была здесь, прямо тут. Почти наверняка была."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "potential": 1,
+                "moth": 5,
+                "follower_lustchange": 1
+            },
+            "description": "Всего мгновение назад Изабет была здесь, прямо тут. Почти наверняка была.",
+            "xtriggers": {
+                "promotionto_d_moth": "ysabet_d",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "ysabet_p",
+                "rebellion": "ysabet_r_c"
+            },
+            "uniquenessgroup": "uqysabet"
         },
         {
             "id": "ysabet_d",
             "label": "Изабет, кожевенница",
-            "description": "Изабет больше не лжёт. В этом нет необходимости."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "moth": 10,
+                "follower_lustchange": 1
+            },
+            "description": "Изабет больше не лжёт. В этом нет необходимости.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "ysabet_p",
+                "rebellion": "ysabet_r_d"
+            },
+            "uniquenessgroup": "uqysabet"
         },
         {
             "id": "zachary_c",
             "label": "Захария, адепт",
-            "description": "Рассуждения Захарии всегда логичны, но теперь ещё более хладнокровны."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "winter": 5,
+                "lantern": 4
+            },
+            "description": "Рассуждения Захарии всегда логичны, но теперь ещё более хладнокровны.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "promotionto_d_winter": "zachary_d",
+                "derangemortal": "lunatic",
+                "capturefollower": "genericprisonerm",
+                "rebellion": "zachary_r_c"
+            },
+            "uniquenessgroup": "uqzachary",
+            "icon": "zachary_r"
         },
         {
             "id": "zachary_d",
             "label": "Захария, финал",
-            "description": "Захария выбрал свой финал."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "exalted": 1,
+                "winter": 10,
+                "lantern": 7
+            },
+            "description": "Захария выбрал свой финал.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "capturefollower": "genericprisonerm",
+                "rebellion": "zachary_r_d"
+            },
+            "uniquenessgroup": "uqzachary",
+            "icon": "zachary_r"
         },
         {
             "id": "auclair_p",
             "label": "Оклер, узница",
-            "description": "Оклер ничего не говорит и не ест."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "winter": 5,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "Оклер ничего не говорит и не ест.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqauclair"
         },
         {
             "id": "cat_p",
             "label": "Кэт Каро, узница",
-            "description": "Женщина, что когда-то называла себя Кэт Каро, спит при любой возможности."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 5,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "Женщина, что когда-то называла себя Кэт Каро, спит при любой возможности.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqcat"
         },
         {
             "id": "clifton_p",
             "label": "«Поп» Клифтон, узник",
-            "description": "Клифтон рычит и ругается, но решётка и стены от этого не исчезают."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 5,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "Клифтон рычит и ругается, но решётка и стены от этого не исчезают.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqclifton"
         },
         {
             "id": "clovette_p",
             "label": "Кловетта, узница",
-            "description": "Кловетта ожидает, что всё наладится."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 5
+            },
+            "description": "Кловетта ожидает, что всё наладится.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqclovette"
         },
         {
             "id": "dorothy_p",
             "label": "Дороти, узница",
-            "description": "Постоянные уговоры Дороти действуют на нервы."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 5
+            },
+            "description": "Постоянные уговоры Дороти действуют на нервы.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqdorothy"
         },
         {
             "id": "douglas_p",
             "label": "Дуглас, узник",
-            "description": "Дуглас грустно покачивает головой. «Никогда бы не подумал, что окажусь по другую сторону решётки. Надо было слушать мамулю»."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "forge": 5
+            },
+            "description": "Дуглас грустно покачивает головой. «Никогда бы не подумал, что окажусь по другую сторону решётки. Надо было слушать мамулю».",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqdouglas",
+            "icon": "defaulthunterprisoner"
         },
         {
             "id": "enid_p",
             "label": "Энид, узница",
-            "description": "Энид теперь всегда молчит."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "knock": 5
+            },
+            "description": "Энид теперь всегда молчит.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqenid"
         },
         {
             "id": "elridge_p",
             "label": "Элридж, узник",
-            "description": "Элриджу не дают ни ложку, ни тарелку. Пожалуй, теперь даже заострённые овощи опасны."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "edge": 5
+            },
+            "description": "Элриджу не дают ни ложку, ни тарелку. Пожалуй, теперь даже заострённые овощи опасны.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqelridge"
         },
         {
             "id": "laidlaw_p",
             "label": "Лэйдлоу, узник",
-            "description": "Лэйдлоу запирают на задвижку, а не на ключ. Мы его слишком хорошо знаем."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "forge": 5
+            },
+            "description": "Лэйдлоу запирают на задвижку, а не на ключ. Мы его слишком хорошо знаем.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqlaidlaw"
         },
         {
             "id": "leo_p",
             "label": "Лео, узник",
-            "description": "Лео не понимает, что он сделал не так."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 5
+            },
+            "description": "Лео не понимает, что он сделал не так.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqleo"
         },
         {
             "id": "neville_p",
             "label": "Невилл, узник",
-            "description": "Невилл рыдает в камере."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "knock": 5
+            },
+            "description": "Невилл рыдает в камере.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqneville"
         },
         {
             "id": "porter_p",
             "label": "Портер, узник",
-            "description": "Портер ждёт, застыв, словно ящерица."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "moth": 5
+            },
+            "description": "Портер ждёт, застыв, словно ящерица.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqporter"
         },
         {
             "id": "renira_p",
             "label": "Ренира, узница",
-            "description": "Ренира всегда находит, чем себя занять."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 5,
+                "heart": 3
+            },
+            "description": "Ренира всегда находит, чем себя занять.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqrenira"
         },
         {
             "id": "rose_p",
             "label": "Роуз, узница",
-            "description": "Роуз не сдается. Думаю, она прячет столовые приборы."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "edge": 5
+            },
+            "description": "Роуз не сдается. Думаю, она прячет столовые приборы.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqrose"
         },
         {
             "id": "slee_p",
             "label": "Сли, узник",
-            "description": "Сли пишет на стенах стихи, словно одержимый. Если чернила кончаются, он использует то, что может найти."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 5,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "Сли пишет на стенах стихи, словно одержимый. Если чернила кончаются, он использует то, что может найти.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqslee"
         },
         {
             "id": "tristan_p",
             "label": "Тристан, узник",
-            "description": "Тристан извлечёт из положения максимум пользы."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "forge": 5
+            },
+            "description": "Тристан извлечёт из положения максимум пользы.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqtristan"
         },
         {
             "id": "saliba_p",
             "label": "Салиба, узник",
-            "description": "Ярость Салибы обжигает, словно лава."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 5,
+                "heart": 3
+            },
+            "description": "Ярость Салибы обжигает, словно лава.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqsaliba"
         },
         {
             "id": "sylvia_p",
             "label": "Сильвия, узница",
-            "description": "На всякий случай мы заглядываем к Сильвии каждый час."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "moth": 5
+            },
+            "description": "На всякий случай мы заглядываем к Сильвии каждый час.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqsylvia"
         },
         {
             "id": "valciane_p",
             "label": "Валсиана, узница",
-            "description": "К Валсиане нельзя подходить на расстояние вытянутой руки."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "forge": 5
+            },
+            "description": "К Валсиане нельзя подходить на расстояние вытянутой руки.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqvalciane"
         },
         {
             "id": "victor_p",
             "label": "Виктор, узник",
-            "description": "Бездонные глаза Виктора полны ярости."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "edge": 5
+            },
+            "description": "Бездонные глаза Виктора полны ярости.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqvictor"
         },
         {
             "id": "violet_p",
             "label": "Вайолет, узница",
-            "description": "Вайолет утверждает, что она в порядке. Так и есть."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "winter": 5
+            },
+            "description": "Вайолет утверждает, что она в порядке. Так и есть.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqviolet"
         },
         {
             "id": "ysabet_p",
             "label": "Изабет, узница",
-            "description": "Возможно, Изабет плачет, но глаза её сухи."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "moth": 5
+            },
+            "description": "Возможно, Изабет плачет, но глаза её сухи.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse",
+            "uniquenessgroup": "uqysabet"
         },
         {
             "id": "generic_a",
             "label": "Приспешник",
-            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1
+            },
+            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]",
+            "comments": "legacy element to keep saves valid",
+            "xtriggers": {
+                "recruiting": "generic_b",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r"
+            }
         },
         {
             "id": "generic_a_edge",
             "label": "Приспешник",
-            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1
+            },
+            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "recruiting": "generic_b_edge"
+            }
         },
         {
             "id": "generic_a_forge",
             "label": "Приспешник",
-            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1
+            },
+            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "recruiting": "generic_b_forge"
+            }
         },
         {
             "id": "generic_a_grail",
             "label": "Приспешник",
-            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1
+            },
+            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "recruiting": "generic_b_grail"
+            }
         },
         {
             "id": "generic_a_heart",
             "label": "Приспешник",
-            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1
+            },
+            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "recruiting": "generic_b_heart"
+            }
         },
         {
             "id": "generic_a_knock",
             "label": "Приспешник",
-            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1
+            },
+            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "recruiting": "generic_b_knock"
+            }
         },
         {
             "id": "generic_a_lantern",
             "label": "Приспешник",
-            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1
+            },
+            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "recruiting": "generic_b_lantern"
+            }
         },
         {
             "id": "generic_a_moth",
             "label": "Приспешник",
-            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1
+            },
+            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "recruiting": "generic_b_moth"
+            }
         },
         {
             "id": "generic_a_winter",
             "label": "Приспешник",
-            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]"
+            "aspects": {
+                "mortal": 1,
+                "acquaintance": 1
+            },
+            "description": "Легко поддаётся влиянию, но вряд ли достигнет больших высот. [Возможно, получится превратить в последователя.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "recruiting": "generic_b_winter"
+            }
         },
         {
             "id": "generic_b",
             "label": "Пешка",
-            "description": "Верный, но недостаточно инициативный член культа."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 1
+            },
+            "description": "Верный, но недостаточно инициативный член культа.",
+            "comments": "This is a legacy element to support older saves.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "promotiontodisciple": "generic_c_knock"
+            }
         },
         {
             "id": "generic_b_edge",
             "label": "Пешка",
-            "description": "Верный, но недостаточно инициативный член культа."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 1
+            },
+            "description": "Верный, но недостаточно инициативный член культа.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "promotiontodisciple": "generic_c_edge"
+            }
         },
         {
             "id": "generic_b_forge",
             "label": "Пешка",
-            "description": "Верный, но недостаточно инициативный член культа."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 1
+            },
+            "description": "Верный, но недостаточно инициативный член культа.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "promotiontodisciple": "generic_c_forge"
+            }
         },
         {
             "id": "generic_b_grail",
             "label": "Пешка",
-            "description": "Верный, но недостаточно инициативный член культа."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 1
+            },
+            "description": "Верный, но недостаточно инициативный член культа.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "promotiontodisciple": "generic_c_grail"
+            }
         },
         {
             "id": "generic_b_heart",
             "label": "Пешка",
-            "description": "Верный, но недостаточно инициативный член культа."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 1
+            },
+            "description": "Верный, но недостаточно инициативный член культа.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "promotiontodisciple": "generic_c_heart"
+            }
         },
         {
             "id": "generic_b_knock",
             "label": "Пешка",
-            "description": "Верный, но недостаточно инициативный член культа."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 1
+            },
+            "description": "Верный, но недостаточно инициативный член культа.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "promotiontodisciple": "generic_c_knock"
+            }
         },
         {
             "id": "generic_b_lantern",
             "label": "Пешка",
-            "description": "Верный, но недостаточно инициативный член культа."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 1
+            },
+            "description": "Верный, но недостаточно инициативный член культа.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "promotiontodisciple": "generic_c_lantern"
+            }
         },
         {
             "id": "generic_b_moth",
             "label": "Пешка",
-            "description": "Верный, но недостаточно инициативный член культа."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 1
+            },
+            "description": "Верный, но недостаточно инициативный член культа.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "promotiontodisciple": "generic_c_moth"
+            }
         },
         {
             "id": "generic_b_winter",
             "label": "Пешка",
-            "description": "Верный, но недостаточно инициативный член культа."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "edge": 1
+            },
+            "description": "Верный, но недостаточно инициативный член культа.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "promotiontodisciple": "generic_c_winter"
+            }
         },
         {
             "id": "generic_c_edge",
             "label": "Выносливый адепт",
-            "description": "Воплощение верности и силы."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "edge": 2
+            },
+            "description": "Воплощение верности и силы.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p"
+            }
         },
         {
             "id": "generic_c_forge",
             "label": "Умелый адепт",
-            "description": "Верный и практичный последователь."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "edge": 1,
+                "forge": 2
+            },
+            "description": "Верный и практичный последователь.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p"
+            }
         },
         {
             "id": "generic_c_grail",
             "label": "Ненасытный адепт",
-            "description": "Верный, но жадный адепт."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "edge": 1,
+                "grail": 2
+            },
+            "description": "Верный, но жадный адепт.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p"
+            }
         },
         {
             "id": "generic_c_heart",
             "label": "Резвый адепт ",
-            "description": "Верный адепт. Всегда может подбодрить песней."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "edge": 1,
+                "heart": 2
+            },
+            "description": "Верный адепт. Всегда может подбодрить песней.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p"
+            }
         },
         {
             "id": "generic_c_knock",
             "label": "Искусный адепт ",
-            "description": "Верный адепт. Умело вскрывает замки."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "edge": 1,
+                "knock": 2
+            },
+            "description": "Верный адепт. Умело вскрывает замки.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p"
+            }
         },
         {
             "id": "generic_c_lantern",
             "label": "Проницательный адепт",
-            "description": "Верный и внимательный адепт."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "edge": 1,
+                "lantern": 2
+            },
+            "description": "Верный и внимательный адепт.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p"
+            }
         },
         {
             "id": "generic_c_moth",
             "label": "Чудаковатый адепт",
-            "description": "Верный адепт, странноватый даже для такого окружения."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "edge": 1,
+                "moth": 2
+            },
+            "description": "Верный адепт, странноватый даже для такого окружения.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p"
+            },
+            "lifetime": 600,
+            "decayTo": "lunatic"
         },
         {
             "id": "generic_c_winter",
             "label": "Молчаливый адепт",
-            "description": "Верный адепт, тихий, словно падающий снег."
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "disciple": 1,
+                "edge": 1,
+                "winter": 2
+            },
+            "description": "Верный адепт, тихий, словно падающий снег.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p"
+            }
         },
         {
             "id": "generic_p",
             "label": "Обманутый последователь",
-            "description": "Вяло борется с судьбой."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "Вяло борется с судьбой.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse"
         }
     ]
 }

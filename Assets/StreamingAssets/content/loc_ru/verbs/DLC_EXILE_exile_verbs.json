@@ -1,101 +1,95 @@
 {
-	"verbs": [
-		{
-			"id": "scout",
-			"label": "Исследовать",
-			"description": "Рассчитать перспективы.",
-			"slot": [
-				{
-					"id": "scout",
-					"label": "Исследовать",
-					"required": {
-						"domicile": 1
-					}
-				}
-			]
-		},
-		{
-			"id": "use",
-			"label": "Использовать",
-			"description": "Использовать что-нибудь. [Относится к Возможностям, Операциям или переводу жизни в наличные].",
-			"slot": [
-				{
-					"id": "plan",
-					"label": "Планировать",
-					"required": {
-						"connection": 1,
-						"op": 1,
-						"weapon": 1,
-						"lore": 1,
-						"comfort": 1,
-						"proof": 1
-					}
-				}
-			]
-		},
-		{
-			"id": "travel",
-			"label": "Путешествовать",
-			"atStart": true,
-			"description": "Какие-то путешествия совершаются с целью расширить сознание, а какие-то — продлить жизнь.",
-			"slot": [
-				{
-					"id": "direction",
-					"label": "Умысел",
-					"description": "Путь или назначение?",
-					"required": {
-						"destination": 1,
-						"location": 1,
-						"ally": 1
-					},
-					"forbidden": {
-						"exhausted": 1
-					}
-				}
-			]
-		},
-		{
-			"id": "send",
-			"label": "Контактировать",
-			"description": "Отправить сообщения, деньги и другое. Будьте осторожнее.",
-			"slot": [
-				{
-					"id": "send",
-					"label": "Отправить",
-					"required": {
-						"desire": 1,
-						"domicile": 1,
-						"cash": 1,
-						"mortal": 1,
-						"ligeian": 1
-					},
-					"forbidden": {
-						"exhausted": 1
-					}
-				}
-			]
-		},
-		{
-			"id": "relinquish",
-			"label": "Ослабить",
-			"description": "Продать; бросить; уничтожить; оставить.",
-			"slot": [
-				{
-					"id": "relinquish",
-					"label": "Ослабить",
-					"required": {
-						"asset": 1,
-						"lifespan.stolen": 1,
-						"trace": 1,
-						"wound.exile": 1
-					}
-				}
-			]
-		},
-		{
-			"id": "time.exile",
-			"label": "Время",
-			"description": "Главный враг?"
-		}
-	]
+    "verbs": [
+        {
+            "id": "scout",
+            "label": "Исследовать",
+            "description": "Рассчитать перспективы.",
+            "slot": {
+                "id": "scout",
+                "label": "Исследовать",
+                "required": {
+                    "domicile": 1
+                }
+            }
+        },
+        {
+            "id": "use",
+            "label": "Использовать",
+            "description": "Использовать что-нибудь. [Относится к Возможностям, Операциям или переводу жизни в наличные].",
+            "slot": {
+                "id": "plan",
+                "label": "Планировать",
+                "required": {
+                    "connection": 1,
+                    "op": 1,
+                    "weapon": 1,
+                    "lore": 1,
+                    "comfort": 1,
+                    "proof": 1
+                }
+            }
+        },
+        {
+            "id": "travel",
+            "label": "Путешествовать",
+            "description": "Какие-то путешествия совершаются с целью расширить сознание, а какие-то — продлить жизнь.",
+            "slot": {
+                "id": "direction",
+                "label": "Намерение",
+                "description": "Путь или назначение?",
+                "required": {
+                    "destination": 1,
+                    "location": 1,
+                    "ally": 1
+                },
+                "forbidden": {
+                    "exhausted": 1
+                }
+            }
+        },
+        {
+            "id": "send",
+            "label": "Контактировать",
+            "description": "Отправить сообщения, деньги и другое. Будьте осторожнее.",
+            "slot": {
+                "id": "send",
+                "label": "Умысел",
+                "required": {
+                    "desire": 1,
+                    "domicile": 1,
+                    "cash": 1,
+                    "mortal": 1,
+                    "ligeian": 1
+                },
+                "forbidden": {
+                    "exhausted": 1
+                }
+            }
+        },
+        {
+            "id": "relinquish",
+            "label": "Освобождение",
+            "description": "Продать; бросить; уничтожить; оставить.",
+            "slot": {
+                "id": "relinquish",
+                "label": "Освобождение",
+                "required": {
+                    "asset": 1,
+                    "lifespan.stolen": 1,
+                    "trace": 1,
+                    "wound.exile": 1,
+                    "corpse.exile.underling": 1
+                }
+            }
+        },
+        {
+            "id": "time.exile",
+            "label": "Время",
+            "description": "Главный враг?",
+            "slot": {
+                "id": "time",
+                "label": "Время"
+            }
+        }
+    ]
 }

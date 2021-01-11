@@ -3,122 +3,425 @@
         {
             "id": "spirit_wintera_edge",
             "label": "Хрупкий восставший",
-            "description": "Раздирающая сила наделила этот труп подобием жизни. При движении он похрустывает, словно разбитое стекло. Его руки подобны костяным когтям. Он недолго продержится в таком состоянии."
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 4,
+                "edge": 4,
+                "remnant": 1
+            },
+            "description": "Раздирающая сила наделила этот труп подобием жизни. При движении он похрустывает, словно разбитое стекло. Его руки подобны костяным когтям. Он недолго продержится в таком состоянии.",
+            "xtriggers": {
+                "renewshattered": "spirit_wintera_edge",
+                "killsummoned": "influencewinter",
+                "alzabo": "influencewinterc"
+            },
+            "lifetime": 120
         },
         {
             "id": "spirit_wintera_moth",
             "label": "Цветущий восставший",
-            "description": "Члены и внутренности этого трупа поросли Лесом: ростки заполняют череп, раздувая его до размеров тыквы, и оплетают сердце. Его глаза влажно и хитро сверкают, а движения подобны подёргиванию марионетки. Его кости — гнилое дерево, что скоро пустит корни, а до тех пор эта оболочка будет верно служить вам."
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 4,
+                "moth": 4,
+                "spiritsicknessprotector": 1,
+                "remnant": 1
+            },
+            "description": "Члены и внутренности этого трупа поросли Лесом: ростки заполняют череп, раздувая его до размеров тыквы, и оплетают сердце. Его глаза влажно и хитро сверкают, а движения подобны подёргиванию марионетки. Его кости — гнилое дерево, что скоро пустит корни, а до тех пор эта оболочка будет верно служить вам.",
+            "xtriggers": {
+                "renewburgeoning": "spirit_wintera_moth",
+                "killsummoned": "influencemoth",
+                "alzabo": "influencemothc"
+            },
+            "lifetime": 120
         },
         {
             "id": "spirit_winterb_heart",
             "label": "Безгласный мертвец",
-            "description": "Мёртвые иногда проходят через Белую Дверь и оказываются в Обители, но на пороге лишаются дара речи. Призванные в мир, они не смогут говорить, но их оболочки из праха будут в вашем распоряжении."
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 6,
+                "moth": 6,
+                "deceiver": 6,
+                "spiriteatspassion": 1
+            },
+            "description": "Мёртвые иногда проходят через Белую Дверь и оказываются в Обители, но на пороге лишаются дара речи. Призванные в мир, они не смогут говорить, но их оболочки из праха будут в вашем распоряжении.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencewinter"
+            },
+            "decayTo": "influencewinter"
         },
         {
             "id": "pre.spirit_winterb_heart",
             "label": "Безгласный мертвец",
-            "description": "Мёртвые иногда проходят через Белую Дверь и оказываются в Обители, но на пороге лишаются дара речи. Призванные в мир, они не смогут говорить, но их оболочки из праха будут в вашем распоряжении."
+            "aspects": {
+                "winter": 6,
+                "moth": 6,
+                "deceiver": 6,
+                "manifesting": 1
+            },
+            "description": "Мёртвые иногда проходят через Белую Дверь и оказываются в Обители, но на пороге лишаются дара речи. Призванные в мир, они не смогут говорить, но их оболочки из праха будут в вашем распоряжении.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencewinter",
+                "killmanifesting": "influencewinter"
+            },
+            "decayTo": "spirit_winterb_heart",
+            "resaturate": true,
+            "icon": "spirit_winterb_heart"
         },
         {
             "id": "spirit_forgec_winter",
             "label": "Калигине",
-            "description": "В уголках Кузни, что стоит в Обители, жар Славы встречается с простейшими элементами. Этот коварный газ может отравить сны ваших врагов."
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "forge": 8,
+                "moth": 8,
+                "deceiver": 8
+            },
+            "description": "В уголках Кузни, что стоит в Обители, жар Славы встречается с простейшими элементами. Этот коварный газ может отравить сны ваших врагов.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influenceforge"
+            },
+            "decayTo": "influenceforge"
         },
         {
             "id": "pre.spirit_forgec_winter",
             "label": "Калигине",
-            "description": "В уголках Кузни, что стоит в Обители, жар Славы встречается с простейшими элементами. Этот коварный газ может отравить сны ваших врагов."
+            "aspects": {
+                "forge": 8,
+                "moth": 8,
+                "deceiver": 8,
+                "manifesting": 1
+            },
+            "description": "В уголках Кузни, что стоит в Обители, жар Славы встречается с простейшими элементами. Этот коварный газ может отравить сны ваших врагов.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influenceforge",
+                "killmanifesting": "influenceforge"
+            },
+            "decayTo": "spirit_forgec_winter",
+            "resaturate": true,
+            "icon": "spirit_forgec_winter"
         },
         {
             "id": "spirit_grailc_moth",
             "label": "Бескожий пророк",
-            "description": "Порой он разделяет, а порой — объединяет. Иногда она предупреждает, а иногда — советует дать волю жажде. Пророчества этого существа сбивают с толку, его шёпот запутывает."
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "grail": 8,
+                "moth": 8,
+                "deceiver": 8,
+                "spiritsicknessprotector": 1,
+                "spiriteatsreason": 1
+            },
+            "description": "Порой он разделяет, а порой — объединяет. Иногда она предупреждает, а иногда — советует дать волю жажде. Пророчества этого существа сбивают с толку, его шёпот запутывает.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencegrail"
+            },
+            "decayTo": "influencegrail"
         },
         {
             "id": "pre.spirit_grailc_moth",
             "label": "Бескожий пророк",
-            "description": "Порой он разделяет, а порой — объединяет. Иногда она предупреждает, а иногда — советует дать волю жажде. Пророчества этого существа сбивают с толку, его шёпот запутывает."
+            "aspects": {
+                "grail": 8,
+                "moth": 8,
+                "deceiver": 8,
+                "manifesting": 1
+            },
+            "description": "Порой он разделяет, а порой — объединяет. Иногда она предупреждает, а иногда — советует дать волю жажде. Пророчества этого существа сбивают с толку, его шёпот запутывает.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencegrail",
+                "killmanifesting": "influencegrail"
+            },
+            "decayTo": "spirit_grailc_moth",
+            "resaturate": true,
+            "icon": "spirit_grailc_moth"
         },
         {
             "id": "spirit_lanternc_edge",
             "label": "Хинт",
-            "description": "Хинты предпочитают держаться позади: за кулисами, за зеркалами, прямо за спиной. Они просачиваются в щели под дверьми и убивают осколком стекла, но взгляд живого смертного тут же их уничтожает."
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "lantern": 8,
+                "edge": 8,
+                "devourer": 8
+            },
+            "description": "Хинты предпочитают держаться позади: за кулисами, за зеркалами, прямо за спиной. Они просачиваются в щели под дверьми и убивают осколком стекла, но взгляд живого смертного тут же их уничтожает.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencelantern"
+            },
+            "decayTo": "influencelantern"
         },
         {
             "id": "pre.spirit_lanternc_edge",
             "label": "Хинт",
-            "description": "Хинты предпочитают держаться позади: за кулисами, за зеркалами, прямо за спиной. Они просачиваются в щели под дверьми и убивают осколком стекла, но взгляд живого смертного тут же их уничтожает."
+            "aspects": {
+                "lantern": 8,
+                "edge": 8,
+                "devourer": 8,
+                "manifesting": 1
+            },
+            "description": "Хинты предпочитают держаться позади: за кулисами, за зеркалами, прямо за спиной. Они просачиваются в щели под дверьми и убивают осколком стекла, но взгляд живого смертного тут же их уничтожает.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencelantern",
+                "killmanifesting": "influencelantern"
+            },
+            "decayTo": "spirit_lanternc_edge",
+            "resaturate": true,
+            "icon": "spirit_lanternc_edge"
         },
         {
             "id": "spirit_heartc_edge",
             "label": "Перкуссигант",
-            "description": "О, Перкуссигант! Он обожает звон систра, рокот тимпана и с удовольствием вспоминает, как освежевали Марсия. Он танцует, и этот танец будет длиться\nбудет длиться\nбудет длиться вечно."
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "heart": 8,
+                "edge": 8,
+                "devourer": 8,
+                "spiritsicknessprotector": 1,
+                "spiriteatsreason": 1
+            },
+            "description": "О, Перкуссигант! Он обожает звон систра, рокот тимпана и с удовольствием вспоминает, как освежевали Марсия. Он танцует, и этот танец будет длиться\nбудет длиться\nбудет длиться вечно.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influenceheart"
+            },
+            "decayTo": "influenceheart"
         },
         {
             "id": "pre.spirit_heartc_edge",
             "label": "Перкуссигант",
-            "description": "О, Перкуссигант! Он обожает звон систра, рокот тимпана и с удовольствием вспоминает, как освежевали Марсия. Он танцует, и этот танец будет длиться\nбудет длиться\nбудет длиться вечно."
+            "aspects": {
+                "heart": 8,
+                "edge": 8,
+                "devourer": 8,
+                "manifesting": 1
+            },
+            "description": "О, Перкуссигант! Он обожает звон систра, рокот тимпана и с удовольствием вспоминает, как освежевали Марсия. Он танцует, и этот танец будет длиться\nбудет длиться\nбудет длиться вечно.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influenceheart",
+                "killmanifesting": "influenceheart"
+            },
+            "decayTo": "spirit_heartc_edge",
+            "resaturate": true,
+            "icon": "spirit_heartc_edge"
         },
         {
             "id": "spirit_winterd_edge",
             "label": "Дева-из-Зеркала",
-            "description": "«Восхождение есть стекло. Стены есть ножи. Каждый шаг есть кровь». Мёртвые, что оказываются у недавно треснувших зеркал, проходят в Павлинью Дверь и преодолевают Острые Ступени, становятся слугами Солнца-в-Лохмотьях."
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "winter": 10,
+                "edge": 10,
+                "devourer": 10,
+                "spiriteatspassion": 1
+            },
+            "description": "«Восхождение есть стекло. Стены есть ножи. Каждый шаг есть кровь». Мёртвые, что оказываются у недавно треснувших зеркал, проходят в Павлинью Дверь и преодолевают Острые Ступени, становятся слугами Солнца-в-Лохмотьях.",
+            "lifetime": 180,
+            "xtriggers": {
+                "killsummoned": "influencewinter"
+            },
+            "decayTo": "influencewinter"
         },
         {
             "id": "pre.spirit_winterd_edge",
             "label": "Дева-из-Зеркала",
-            "description": "«Восхождение есть стекло. Стены есть ножи. Каждый шаг есть кровь». Мёртвые, что оказываются у недавно треснувших зеркал, проходят в Павлинью Дверь и преодолевают Острые Ступени, становятся слугами Солнца-в-Лохмотьях."
+            "aspects": {
+                "winter": 10,
+                "edge": 10,
+                "devourer": 10,
+                "manifesting": 1
+            },
+            "description": "«Восхождение есть стекло. Стены есть ножи. Каждый шаг есть кровь». Мёртвые, что оказываются у недавно треснувших зеркал, проходят в Павлинью Дверь и преодолевают Острые Ступени, становятся слугами Солнца-в-Лохмотьях.",
+            "lifetime": 1,
+            "xtriggers": {
+                "killsummoned": "influencewinter",
+                "killmanifesting": "influencewinter"
+            },
+            "decayTo": "spirit_winterd_edge",
+            "resaturate": true,
+            "icon": "spirit_winterd_edge"
         },
         {
             "id": "spirit_forgee_edge",
             "label": "Король Тигля",
-            "description": "«Я ЖДУ В ПУСТЫНЕ, ГОРЮ В РУИНАХ. МЕТАЛЛ ЕСТЬ ЖИДКОСТЬ, КАМЕНЬ — ЛИШЬ ВОСК, ПЛОТЬ — ПРОСТО ДЫМ. ПРИБЛИЗЬСЯ, И ИСЧЕЗНИ НАВЕК»."
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "forge": 12,
+                "edge": 12,
+                "devourer": 12,
+                "tutor": 1,
+                "spirittutormandaic": 1
+            },
+            "description": "«Я ЖДУ В ПУСТЫНЕ, ГОРЮ В РУИНАХ. МЕТАЛЛ ЕСТЬ ЖИДКОСТЬ, КАМЕНЬ — ЛИШЬ ВОСК, ПЛОТЬ — ПРОСТО ДЫМ. ПРИБЛИЗЬСЯ, И ИСЧЕЗНИ НАВЕК».",
+            "xtriggers": {
+                "killsummoned": "spirit_forgee_edge.defunct"
+            },
+            "lifetime": 180,
+            "decayTo": "spirit_forgee_edge.defunct",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_forgee_edge"
         },
         {
             "id": "pre.spirit_forgee_edge",
             "label": "Король Тигля",
-            "description": "«Я ЖДУ В ПУСТЫНЕ, ГОРЮ В РУИНАХ. МЕТАЛЛ ЕСТЬ ЖИДКОСТЬ, КАМЕНЬ — ЛИШЬ ВОСК, ПЛОТЬ — ПРОСТО ДЫМ. ПРИБЛИЗЬСЯ, И ИСЧЕЗНИ НАВЕК»."
+            "aspects": {
+                "forge": 12,
+                "edge": 12,
+                "devourer": 12,
+                "manifesting": 1
+            },
+            "description": "«Я ЖДУ В ПУСТЫНЕ, ГОРЮ В РУИНАХ. МЕТАЛЛ ЕСТЬ ЖИДКОСТЬ, КАМЕНЬ — ЛИШЬ ВОСК, ПЛОТЬ — ПРОСТО ДЫМ. ПРИБЛИЗЬСЯ, И ИСЧЕЗНИ НАВЕК».",
+            "xtriggers": {
+                "killsummoned": "spirit_forgee_edge.defunct",
+                "killmanifesting": "influenceforge"
+            },
+            "lifetime": 1,
+            "decayTo": "spirit_forgee_edge",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_forgee_edge",
+            "resaturate": true,
+            "icon": "spirit_forgee_edge"
         },
         {
             "id": "spirit_graile_edge",
             "label": "Изиим, второй Жаждущий",
-            "description": "«Преобрази меня. Преобрази меня. Сильнее! А теперь <i>моя</i> очередь»."
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "grail": 12,
+                "edge": 12,
+                "devourer": 12,
+                "tutor": 1,
+                "spirittutorphrygian": 1,
+                "spiritsicknessprotector": 1,
+                "spiriteatsreason": 1
+            },
+            "description": "«Преобрази меня. Преобрази меня. Сильнее! А теперь <i>моя</i> очередь».",
+            "xtriggers": {
+                "killsummoned": "spirit_graile_edge.defunct"
+            },
+            "lifetime": 180,
+            "decayTo": "spirit_graile_edge.defunct",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_graile_edge"
         },
         {
             "id": "pre.spirit_graile_edge",
             "label": "Изиим, второй Жаждущий",
-            "description": "«Преобрази меня. Преобрази меня. Сильнее! А теперь <i>моя</i> очередь»."
+            "aspects": {
+                "grail": 12,
+                "edge": 12,
+                "devourer": 12,
+                "manifesting": 1
+            },
+            "description": "«Преобрази меня. Преобрази меня. Сильнее! А теперь <i>моя</i> очередь».",
+            "xtriggers": {
+                "killsummoned": "spirit_graile_edge.defunct",
+                "killmanifesting": "influencegrail"
+            },
+            "lifetime": 1,
+            "decayTo": "spirit_graile_edge",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_graile_edge",
+            "resaturate": true,
+            "icon": "spirit_graile_edge"
         },
         {
             "id": "spirit_lanterne_secret",
             "label": "Тереза",
-            "description": "«О, мир плоский. Да нет же, плоский! Я не задержусь надолго, я не должна. Открой мне секрет»."
+            "aspects": {
+                "follower": 1,
+                "summoned": 1,
+                "lantern": 12,
+                "secrethistories": 12,
+                "tutor": 1,
+                "spirittutorfucine": 1,
+                "spiritsicknessprotector": 1,
+                "spiriteatspassion": 1
+            },
+            "description": "«О, мир плоский. Да нет же, плоский! Я не задержусь надолго, я не должна. Открой мне секрет».",
+            "xtriggers": {
+                "killsummoned": "spirit_lanterne_secret.defunct"
+            },
+            "lifetime": 180,
+            "decayTo": "spirit_lanterne_secret.defunct",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_lanterne_secret"
         },
         {
             "id": "pre.spirit_lanterne_secret",
             "label": "Тереза",
-            "description": "«О, мир плоский. Да нет же, плоский! Я не задержусь надолго, я не должна. Открой мне секрет»."
+            "aspects": {
+                "lantern": 12,
+                "secrethistories": 12,
+                "tutor": 1,
+                "manifesting": 1
+            },
+            "description": "«О, мир плоский. Да нет же, плоский! Я не задержусь надолго, я не должна. Открой мне секрет».",
+            "xtriggers": {
+                "killsummoned": "spirit_lanterne_secret.defunct",
+                "killmanifesting": "influencelantern"
+            },
+            "lifetime": 1,
+            "decayTo": "spirit_lanterne_secret",
+            "unique": true,
+            "uniquenessgroup": "uqspirit_lanterne_secret",
+            "resaturate": true,
+            "icon": "spirit_lanterne_secret"
         },
         {
             "id": "spirit_forgee_edge.defunct",
             "label": "Король Тигля догорает",
-            "description": "Жар Короля Тигля ослабевает. Остались почерневшие следы, напоминающие угольные кости."
+            "description": "Жар Короля Тигля ослабевает. Остались почерневшие следы, напоминающие угольные кости.",
+            "lifetime": 180,
+            "aspects": {
+                "remnant": 1
+            },
+            "unique": true,
+            "xtriggers": {
+                "alzabo": "memory.golden"
+            }
         },
         {
             "id": "spirit_forgee_edge.consumed",
             "label": "Вкус пепла",
-            "description": "Мне захотелось съесть то, что осталось от Тигля в этом мире. Это его как минимум оскорбит. Возможно, он даже разъярится. Лучше не призывать его снова."
+            "description": "Мне захотелось съесть то, что осталось от Тигля в этом мире. Это его как минимум оскорбит. Возможно, он даже разъярится. Лучше не призывать его снова.",
+            "unique": true
         },
         {
             "id": "spirit_graile_edge.defunct",
             "label": "Изиим заскучал",
-            "description": "Не волнуйтесь, это пройдёт."
+            "description": "Не волнуйтесь, это пройдёт.",
+            "lifetime": 180,
+            "comments": "This shouldn't have any aspects. We don't want it to be removed or used - it's solely a blocker.",
+            "unique": true
         },
         {
             "id": "spirit_lanterne_secret.defunct",
             "label": "Тереза отдыхает",
-            "description": "Балдомерийка отлучилась в шатёр Учёного рыцаря, чтобы отдохнуть."
+            "description": "Балдомерийка отлучилась в шатёр Учёного рыцаря, чтобы отдохнуть.",
+            "lifetime": 180,
+            "comments": "This shouldn't have any aspects. We don't want it to be removed or used - it's solely a blocker.",
+            "unique": true
         }
     ]
 }

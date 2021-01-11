@@ -2,269 +2,1068 @@
     "recipes": [
         {
             "id": "studyresearch.entrypoint",
+            "actionid": "study",
             "label": "Навстречу ночи",
+            "startdescription": "Мудрость суть страна, а это её карты. [Пройдите все испытания на обоих фрагментах знаний, чтобы завершить исследовательское поручение. Потерпев неудачу, вы сможете снова приступить к выполнению.]",
             "description": ".",
-            "startdescription": "Мудрость суть страна, а это её карты. [Пройдите все испытания на обоих фрагментах знаний, чтобы завершить исследовательское поручение. Потерпев неудачу, вы сможете снова приступить к выполнению.]"
+            "requirements": {
+                "lore": 2
+            },
+            "effects": {},
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearch.attemptsolve",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearch.attemptsolve",
+            "actionid": "study",
             "label": "Навстречу ночи",
-            "startdescription": "Мудрость суть страна, а это её карты. [Пройдите все испытания на обоих фрагментах знаний, чтобы завершить исследовательское поручение. Потерпев неудачу, вы сможете снова приступить к выполнению.]"
+            "startdescription": "Мудрость суть страна, а это её карты. [Пройдите все испытания на обоих фрагментах знаний, чтобы завершить исследовательское поручение. Потерпев неудачу, вы сможете снова приступить к выполнению.]",
+            "linked": [
+                {
+                    "id": "studyresearch.nochallengesremaining"
+                },
+                {
+                    "id": "studyresearch.attemptsolve.challenge.knowledge"
+                },
+                {
+                    "id": "studyresearch.attemptsolve.challenge.intuition"
+                },
+                {
+                    "id": "studyresearch.attemptsolve.challenge.grim"
+                },
+                {
+                    "id": "studyresearch.attemptsolve.challenge.obsessive"
+                },
+                {
+                    "id": "studyresearch.attemptsolve.challenge.paradox"
+                },
+                {
+                    "id": "studyresearch.attemptsolve.challenge.illumination"
+                },
+                {
+                    "id": "studyresearch.attemptsolve.challenge.practical"
+                }
+            ]
         },
         {
             "id": "studyresearch.attemptsolve.challenge.knowledge",
+            "actionid": "study",
             "label": "Испытание: знание",
+            "requirements": {
+                "challenge.knowledge": 1
+            },
             "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Необходима эрудиция. Также можно воспользоваться библиотекой.]",
             "slots": [
                 {
                     "id": "solvechallenge",
-                    "label": "Решение"
+                    "label": "Решение",
+                    "required": {
+                        "erudition": 1,
+                        "library": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearch.failed.challenge.knowledge"
+                },
+                {
+                    "id": "studyresearch.solved.challenge.knowledge"
                 }
             ]
         },
         {
             "id": "studyresearch.failed.challenge.knowledge",
+            "actionid": "study",
             "label": "Не удалось!",
-            "startdescription": "С исследованием придётся повременить. Пока что."
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "requirements": {
+                "erudition": -1,
+                "library": -1
+            },
+            "warmup": 30
         },
         {
             "id": "studyresearch.solved.challenge.knowledge",
+            "actionid": "study",
             "label": "Ага!..",
-            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на знание.]"
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на знание.]",
+            "mutations": [
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.knowledge",
+                    "level": -1
+                }
+            ],
+            "warmup": 30,
+            "effects": {
+                "erudition": -1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.attemptsolve",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearch.attemptsolve.challenge.intuition",
+            "actionid": "study",
             "label": "Испытание: интуиция",
+            "requirements": {
+                "challenge.intuition": 1
+            },
             "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Необходим проблеск. Также можно воспользоваться святилищем.]",
             "slots": [
                 {
                     "id": "solvechallenge",
-                    "label": "Решение"
+                    "label": "Решение",
+                    "required": {
+                        "glimmering": 1,
+                        "sanctuary": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearch.failed.challenge.intuition"
+                },
+                {
+                    "id": "studyresearch.solved.challenge.intuition"
                 }
             ]
         },
         {
             "id": "studyresearch.failed.challenge.intuition",
+            "actionid": "study",
             "label": "Не удалось!",
-            "startdescription": "С исследованием придётся повременить. Пока что."
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "requirements": {
+                "glimmering": -1,
+                "sanctuary": -1
+            },
+            "warmup": 30
         },
         {
             "id": "studyresearch.solved.challenge.intuition",
+            "actionid": "study",
             "label": "Ага!..",
-            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на интуицию.]"
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на интуицию.]",
+            "mutations": [
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.intuition",
+                    "level": -1
+                }
+            ],
+            "warmup": 30,
+            "effects": {
+                "glimmering": -1
+            },
+            "linked": [
+                {
+                    "id": "studyresearch.attemptsolve",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearch.attemptsolve.challenge.grim",
+            "actionid": "study",
             "label": "Испытание: мрачные уроки",
+            "requirements": {
+                "challenge.grim": 1
+            },
             "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Необходим ужас. Также можно использовать яму или применить навык «Тихое напряжение». Ужас может развиться.]",
             "slots": [
                 {
                     "id": "solvechallenge",
-                    "label": "Решение"
+                    "label": "Решение",
+                    "required": {
+                        "dread": 1,
+                        "pit": 1,
+                        "skillreasond_concentration": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearch.failed.challenge.grim"
+                },
+                {
+                    "id": "studyresearch.solved.challenge.grim"
                 }
             ]
         },
         {
             "id": "studyresearch.failed.challenge.grim",
+            "actionid": "study",
             "label": "Не удалось!",
-            "startdescription": "С исследованием придётся повременить. Пока что."
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "requirements": {
+                "dread": -1,
+                "pit": -1,
+                "skillreasond_concentration": -1
+            },
+            "warmup": 30
         },
         {
             "id": "studyresearch.solved.challenge.grim",
+            "actionid": "study",
             "label": "Ага!..",
-            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли мрачное испытание.]"
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли мрачное испытание.]",
+            "mutations": [
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.grim",
+                    "level": -1
+                }
+            ],
+            "warmup": 30,
+            "alt": [
+                {
+                    "id": "dreadinduction_ifdread",
+                    "chance": 70,
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "studyresearch.attemptsolve",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearch.attemptsolve.challenge.obsessive",
+            "actionid": "study",
             "label": "Испытание: исследование одержимости",
+            "requirements": {
+                "challenge.obsessive": 1
+            },
             "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Откажитесь от разума, который может быть помутнён навсегда. Также можно воспользоваться библиотекой или применить навык «Никогда-не».]",
             "slots": [
                 {
                     "id": "solvechallenge",
-                    "label": "Решение"
+                    "label": "Решение",
+                    "required": {
+                        "reason": 1,
+                        "library": 1,
+                        "skillpassiond_unreason": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearch.failed.challenge.obsessive"
+                },
+                {
+                    "id": "studyresearch.solved.challenge.obsessive"
                 }
             ]
         },
         {
             "id": "studyresearch.failed.challenge.obsessive",
+            "actionid": "study",
             "label": "Не удалось!",
-            "startdescription": "С исследованием придётся повременить. Пока что."
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "requirements": {
+                "reason": -1,
+                "library": -1,
+                "skillpassiond_unreason": -1
+            },
+            "warmup": 30
         },
         {
             "id": "studyresearch.solved.challenge.obsessive",
+            "actionid": "study",
             "label": "Ага!..",
-            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на одержимость.]"
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на одержимость.]",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.obsessive",
+                    "level": -1
+                }
+            ],
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "studyresearch.damagereason",
+                    "chance": 10
+                },
+                {
+                    "id": "studyresearch.attemptsolve",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearch.damagereason",
+            "actionid": "study",
             "label": "Ноша одержимости",
-            "startdescription": "Мои мысли были заточены, словно клинок, но остриё этого клинка откололось. [Разум помутнён навсегда.]"
+            "startdescription": "Мои мысли были заточены, словно клинок, но остриё этого клинка откололось. [Разум помутнён навсегда.]",
+            "requirements": {
+                "concentration": 1
+            },
+            "aspects": {
+                "damagereason": 1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "studyresearch.attemptsolve",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearch.attemptsolve.challenge.paradox",
+            "actionid": "study",
             "label": "Испытание: парадоксальная решимость",
+            "requirements": {
+                "challenge.paradox": 1
+            },
             "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Откажитесь от эмоций, которые могут быть повреждены. Также можно воспользоваться святилищем или применить навык «Душа нараспашку».]",
             "slots": [
                 {
                     "id": "solvechallenge",
-                    "label": "Решение"
+                    "label": "Решение",
+                    "required": {
+                        "passion": 1,
+                        "sanctuary": 1,
+                        "skillpassiond_folly": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearch.failed.challenge.paradox"
+                },
+                {
+                    "id": "studyresearch.solved.challenge.paradox"
                 }
             ]
         },
         {
             "id": "studyresearch.failed.challenge.paradox",
+            "actionid": "study",
             "label": "Не удалось!",
-            "startdescription": "С исследованием придётся повременить. Пока что."
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "requirements": {
+                "passion": -1,
+                "sanctuary": -1,
+                "skillpassiond_folly": -1
+            },
+            "warmup": 30
         },
         {
             "id": "studyresearch.solved.challenge.paradox",
+            "actionid": "study",
             "label": "Ага!..",
-            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли парадоксальное испытание.]"
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли парадоксальное испытание.]",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.paradox",
+                    "level": -1
+                }
+            ],
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "studyresearch.damagepassion",
+                    "chance": 10
+                },
+                {
+                    "id": "studyresearch.attemptsolve",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearch.damagepassion",
+            "actionid": "study",
             "label": "Сердце лабиринта",
-            "startdescription": "Эмоции провели меня по лабиринту, и теперь я нахожусь в самом его сердце. Сердце лабиринта черно и пусто. Оно обуглено, как дерево. [Эмоции повреждены навсегда.]"
+            "startdescription": "Эмоции провели меня по лабиринту, и теперь я нахожусь в самом его сердце. Сердце лабиринта черно и пусто. Оно обуглено, как дерево. [Эмоции повреждены навсегда.]",
+            "requirements": {
+                "passionexhausted": 1
+            },
+            "aspects": {
+                "damagepassion": 1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "studyresearch.attemptsolve",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearch.attemptsolve.challenge.illumination",
+            "actionid": "study",
             "label": "Испытание: просвещение",
+            "requirements": {
+                "challenge.illumination": 1
+            },
             "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Необходима фиксация — она может развиться. Также можно воспользоваться библиотекой или применить навык «Утончённый ум».]",
             "slots": [
                 {
                     "id": "solvechallenge",
-                    "label": "Решение"
+                    "label": "Решение",
+                    "required": {
+                        "fascination": 1,
+                        "library": 1,
+                        "skillreasond_illumination": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearch.failed.challenge.illumination"
+                },
+                {
+                    "id": "studyresearch.solved.challenge.illumination"
                 }
             ]
         },
         {
             "id": "studyresearch.failed.challenge.illumination",
+            "actionid": "study",
             "label": "Не удалось!",
-            "startdescription": "С исследованием придётся повременить. Пока что."
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "requirements": {
+                "fascination": -1,
+                "library": -1,
+                "skillreasond_illumination": -1
+            },
+            "warmup": 30
         },
         {
             "id": "studyresearch.solved.challenge.illumination",
+            "actionid": "study",
             "label": "Ага!..",
-            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на просвещение.]"
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на просвещение.]",
+            "mutations": [
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.illumination",
+                    "level": -1
+                }
+            ],
+            "warmup": 30,
+            "alt": [
+                {
+                    "id": "fascinationinduction_iffascination",
+                    "chance": 70,
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "studyresearch.attemptsolve",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearch.attemptsolve.challenge.practical",
+            "actionid": "study",
             "label": "Испытание: экспериментальное исследование",
+            "requirements": {
+                "challenge.practical": 1
+            },
             "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Рискните своим здоровьем или возьмите узника.]",
             "slots": [
                 {
                     "id": "solvechallenge",
-                    "label": "Решение"
+                    "label": "Решение",
+                    "required": {
+                        "health": 1,
+                        "prisoner": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearch.failed.challenge.practical"
+                },
+                {
+                    "id": "studyresearch.solved.challenge.practical"
                 }
             ]
         },
         {
             "id": "studyresearch.failed.challenge.practical",
+            "actionid": "study",
             "label": "Не удалось!",
-            "startdescription": "С исследованием придётся повременить. Пока что."
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "requirements": {
+                "health": -1,
+                "prisoner": -1
+            },
+            "warmup": 30
         },
         {
             "id": "studyresearch.solved.challenge.practical",
+            "actionid": "study",
             "label": "Ага!..",
-            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли экспериментальное испытание.]"
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли экспериментальное испытание.]",
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.practical",
+                    "level": -1
+                }
+            ],
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "studyresearch.damagehealth",
+                    "chance": 30
+                },
+                {
+                    "id": "studyresearch.attemptsolve",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearch.damagehealth",
+            "actionid": "study",
             "label": "Ущерб",
-            "startdescription": "Боль, как говорится, обучает. Особенно это любят говорить те, кому не больно. [Здоровье ухудшилось.]"
+            "startdescription": "Боль, как говорится, обучает. Особенно это любят говорить те, кому не больно. [Здоровье ухудшилось.]",
+            "requirements": {
+                "fatigue": 1
+            },
+            "aspects": {
+                "damagehealth": 1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "studyresearch.attemptsolve",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearch.nochallengesremaining",
+            "actionid": "study",
             "label": "Мерцание света",
+            "startdescription": "Теперь... Теперь я понимаю!",
             "description": "",
-            "startdescription": "Теперь... Теперь я понимаю!"
+            "warmup": 30,
+            "requirements": {
+                "challenge.knowledge": -1,
+                "challenge.intuition": -1,
+                "challenge.grim": -1,
+                "challenge.obsessive": -1,
+                "challenge.paradox": -1,
+                "challenge.illumination": -1,
+                "challenge.practical": -1
+            },
+            "mutations": [
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.knowledge",
+                    "level": 0
+                },
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.intuition",
+                    "level": 0
+                },
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.grim",
+                    "level": 0
+                },
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.obsessive",
+                    "level": 0
+                },
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.paradox",
+                    "level": 0
+                },
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.illumination",
+                    "level": 0
+                },
+                {
+                    "filter": "lore",
+                    "mutate": "challenge.practical",
+                    "level": 0
+                }
+            ],
+            "linked": [
+                {
+                    "id": "studyproject_upgrade_edge",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_forge",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_grail",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_heart",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_lantern",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_moth",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_secrethistories",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_winter",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_edgetowinter",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_forgetoedge",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_grailtomoth",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_hearttograil",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_lanterntoforge",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_mothtolantern",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_wintertoheart",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_subvert_knock",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearchtick",
+            "comments": "The lore 2 requirement means this is only available when someone has paired two lore fragments with an earlier recipe. This routes to opportunities to increase Insight.",
             "label": "Многообещающее исследование",
+            "actionid": "study",
+            "requirements": {
+                "lore": 2
+            },
+            "startdescription": "У этого проекта есть возможности. Когда появляются требования, нужно их выполнять, чтобы получать осознание. Если я получу три осознания, то всё получится; если будет иначе — меня ждёт провал.",
             "description": ".",
-            "startdescription": "У этого проекта есть возможности. Когда появляются требования, нужно их выполнять, чтобы получать осознание. Если я получу три осознания, то всё получится; если будет иначе — меня ждёт провал."
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "studyresearchearlyconclusion",
+                    "chance": 100
+                },
+                {
+                    "id": "studyresearchneedsreason",
+                    "chance": 50
+                },
+                {
+                    "id": "studyresearchneedserudition",
+                    "chance": 50
+                },
+                {
+                    "id": "studyresearchneedsglimmering",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearchneedsreason",
             "label": "Тень замешательства",
-            "description": "Чтобы продолжить исследование, мне необходим разум.",
-            "startdescription": "Мой путь затмевает замешательство. Здесь не обойтись без разума.",
+            "actionid": "study",
+            "requirements": {},
+            "effects": {},
             "slots": [
                 {
                     "id": "Reason",
-                    "label": "Разум"
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "id": "studyresearchreasonsuccess",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Мой путь затмевает замешательство. Здесь не обойтись без разума.",
+            "description": "Чтобы продолжить исследование, мне необходим разум.",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearchconclusion",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "studyresearchreasonsuccess",
             "label": "Свет интеллекта!",
-            "startdescription": "Это поручение занимает моё внимание целиком, но я уже вижу плоды своих трудов. [Получено осознание.]"
+            "actionid": "study",
+            "requirements": {
+                "reason": 1
+            },
+            "effects": {
+                "insight": 1
+            },
+            "craftable": false,
+            "startdescription": "Это поручение занимает моё внимание целиком, но я уже вижу плоды своих трудов. [Получено осознание.]",
+            "linked": [
+                {
+                    "id": "studyresearchtick",
+                    "chance": 100
+                }
+            ],
+            "aspects": {
+                "fatiguing": 1
+            }
         },
         {
             "id": "studyresearchneedserudition",
             "label": "Фрагменты мозаики",
-            "description": "Для моего исследования потребуется эрудиция.",
-            "startdescription": "Для моего исследования потребуется эрудиция.",
+            "actionid": "study",
+            "requirements": {},
+            "effects": {},
             "slots": [
                 {
                     "id": "Erudition",
-                    "label": "Решение"
+                    "required": {
+                        "erudition": 1
+                    },
+                    "consumes": true,
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "id": "studyresearcheruditionsuccess",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Для моего исследования потребуется эрудиция.",
+            "description": "Для моего исследования потребуется эрудиция.",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearchconclusion",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "studyresearcheruditionsuccess",
             "label": "Всё подходит!",
-            "startdescription": "Знание множит знание. [Получено осознание.]"
+            "actionid": "study",
+            "requirements": {
+                "erudition": 1
+            },
+            "effects": {
+                "insight": 1
+            },
+            "craftable": false,
+            "startdescription": "Знание множит знание. [Получено осознание.]",
+            "linked": [
+                {
+                    "id": "studyresearchtick",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearchneedsglimmering",
             "label": "Врата интуиции",
-            "description": ".",
-            "startdescription": "Для моего исследования нужен проблеск. ",
+            "actionid": "study",
+            "requirements": {},
+            "effects": {},
             "slots": [
                 {
                     "id": "Glimmering",
-                    "label": "Решение"
+                    "required": {
+                        "glimmering": 1
+                    },
+                    "consumes": true,
+                    "greedy": true
+                }
+            ],
+            "alt": [
+                {
+                    "id": "studyresearchglimmeringsuccess",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Для моего исследования нужен проблеск. ",
+            "description": ".",
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearchconclusion",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "studyresearchglimmeringsuccess",
             "label": "Врата интуиции отворились!",
-            "startdescription": "Порой осознание приходит тогда, когда меньше всего ждёшь. [Получено осознание.]"
+            "actionid": "study",
+            "requirements": {
+                "glimmering": 1
+            },
+            "effects": {
+                "insight": 1
+            },
+            "startdescription": "Порой осознание приходит тогда, когда меньше всего ждёшь. [Получено осознание.]",
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyresearchtick",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "studyresearchearlyconclusion"
+            "id": "studyresearchearlyconclusion",
+            "actionid": "study",
+            "comments": "this is a passthrough / router for if Insight reaches 3,which routes directly to the conclusion",
+            "requirements": {
+                "insight": 3
+            },
+            "alt": [
+                {
+                    "id": "studyresearchconclusion",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "studyresearchconclusion"
+            "id": "studyresearchconclusion",
+            "actionid": "study",
+            "comments": "this is a passthrough / router which the player sees if they don't satisfy a research requirement.",
+            "alt": [
+                {
+                    "id": "studyresearchmaxinsight",
+                    "chance": 100
+                },
+                {
+                    "id": "studyresearchmoderateinsight",
+                    "chance": 100
+                },
+                {
+                    "id": "studyresearchminimalinsight",
+                    "chance": 100
+                },
+                {
+                    "id": "studyresearchconsolation",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "studyresearchmaxinsight",
             "label": "Исследование завершено с максимальной степенью осознания",
+            "alt": [
+                {
+                    "id": "studyresearchsuccess",
+                    "chance": 100
+                }
+            ],
+            "actionid": "study",
+            "requirements": {
+                "insight": 3
+            },
+            "effects": {},
+            "startdescription": "BEGIN studyresearchmaxinsight",
             "description": "COMPLETE studyresearchmaxinsight",
-            "startdescription": "BEGIN studyresearchmaxinsight"
+            "warmup": 0,
+            "comments": "This is currently a pass-through only; including for consistency."
         },
         {
             "id": "studyresearchmoderateinsight",
             "label": "Исследование завершено со средней степенью осознания",
+            "alt": [
+                {
+                    "id": "studyresearchsuccess",
+                    "chance": 70
+                },
+                {
+                    "id": "studyresearchconsolation",
+                    "chance": 100
+                }
+            ],
+            "actionid": "study",
+            "requirements": {
+                "insight": 2
+            },
+            "effects": {},
+            "startdescription": "BEGIN studyresearchsomeinsight",
             "description": "COMPLETE studyresearchsomeinsight",
-            "startdescription": "BEGIN studyresearchsomeinsight"
+            "warmup": 0
         },
         {
             "id": "studyresearchminimalinsight",
             "label": "Исследование завершено с минимальной степенью осознания",
+            "actionid": "study",
+            "requirements": {},
+            "alt": [
+                {
+                    "id": "studyresearchsuccess",
+                    "chance": 30
+                },
+                {
+                    "id": "studyresearchconsolation",
+                    "chance": 100
+                }
+            ],
+            "effects": {},
+            "startdescription": "BEGIN studyresearchnoinsight",
             "description": "COMPLETE studyresearchnoinsight",
-            "startdescription": "BEGIN studyresearchnoinsight"
+            "warmup": 0
         },
         {
             "id": "studyresearchsuccess",
             "label": "Успех!",
+            "actionid": "study",
+            "requirements": {},
+            "aspects": {
+                "restore": 1
+            },
+            "effects": {
+                "insight": -100
+            },
+            "startdescription": ".",
             "description": "Теперь я знаю что-то новое.",
-            "startdescription": "."
+            "warmup": 0,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "studyproject_upgrade_edge",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_forge",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_grail",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_heart",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_lantern",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_moth",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_secrethistories",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_winter",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_edgetowinter",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_forgetoedge",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_grailtomoth",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_hearttograil",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_lanterntoforge",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_mothtolantern",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_subvert_wintertoheart",
+                    "chance": 100
+                },
+                {
+                    "id": "studyproject_upgrade_subvert_knock",
+                    "chance": 100
+                }
+            ]
         }
     ]
 }

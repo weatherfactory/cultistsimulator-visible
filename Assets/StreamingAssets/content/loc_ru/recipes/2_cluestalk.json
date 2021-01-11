@@ -3,117 +3,299 @@
         {
             "id": "recruitindependentresentmenthint",
             "label": "Завербовать индивидуалиста?",
-            "startdescription": "Нет. Этот человек ещё помнит, что было в прошлом. Возможно, однажды наши отношения изменятся, если я больше не причиню ему вреда."
+            "actionid": "talk",
+            "requirements": {
+                "independent": 1,
+                "mortal": 1,
+                "resentment": 1
+            },
+            "startdescription": "Нет. Этот человек ещё помнит, что было в прошлом. Возможно, однажды наши отношения изменятся, если я больше не причиню ему вреда.",
+            "craftable": false,
+            "hintonly": true
         },
         {
             "id": "recruitindependenthint",
             "label": "Завербовать индивидуалиста?",
-            "startdescription": "Этот человек может ко мне присоединиться... если я повышу аспект культа до двадцать первого уровня. [Если у вас достаточно силы, вы можете завербовать даже смутьяна с другими убеждениями, но вам необходимо подарить индивидуалисту как минимум один инструмент.]"
+            "actionid": "talk",
+            "requirements": {
+                "independent": 1,
+                "mortal": 1,
+                "resentment": -1
+            },
+            "startdescription": "Этот человек может ко мне присоединиться... если я повышу аспект культа до двадцать первого уровня. [Если у вас достаточно силы, вы можете завербовать даже смутьяна с другими убеждениями, но вам необходимо подарить индивидуалисту как минимум один инструмент.]",
+            "craftable": false,
+            "hintonly": true
         },
         {
             "id": "promoteto_d_edgehint",
             "label": "Возвысить адепта?",
-            "startdescription": "Чтобы возвысить адепта до звания убийцы, мощь Грани должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые кровожадные."
+            "actionid": "talk",
+            "requirements": {
+                "cultedge_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "Чтобы возвысить адепта до звания убийцы, мощь Грани должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые кровожадные.",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "promoteto_d_forgehint",
             "label": "Возвысить адепта?",
-            "startdescription": "Чтобы возвысить адепта до звания подмастерья, мощь Кузни должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые изобретательные и работящие."
+            "actionid": "talk",
+            "requirements": {
+                "cultforge_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "Чтобы возвысить адепта до звания подмастерья, мощь Кузни должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые изобретательные и работящие.",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "promoteto_d_grailhint",
             "label": "Возвысить адепта?",
-            "startdescription": "Чтобы возвысить адепта до звания гедониста, мощь Чаши должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые ненасытные."
+            "actionid": "talk",
+            "requirements": {
+                "cultgrail_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "Чтобы возвысить адепта до звания гедониста, мощь Чаши должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые ненасытные.",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "promoteto_d_hearthint",
             "label": "Возвысить адепта?",
-            "startdescription": "Чтобы возвысить адепта до звания тарантеллиста, мощь Сердца должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые вдохновенные."
+            "actionid": "talk",
+            "requirements": {
+                "cultheart_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "Чтобы возвысить адепта до звания тарантеллиста, мощь Сердца должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые вдохновенные.",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "promoteto_d_knockhint",
             "label": "Возвысить адепта?",
-            "startdescription": "Чтобы возвысить адепта до звания ключа, мощь Стука должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые одарённые."
+            "actionid": "talk",
+            "requirements": {
+                "cultknock_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "Чтобы возвысить адепта до звания ключа, мощь Стука должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые одарённые.",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "promoteto_d_lanternhint",
             "label": "Возвысить адепта?",
-            "startdescription": "Чтобы возвысить адепта до звания пророка, мощь Лампады должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые проницательные."
+            "actionid": "talk",
+            "requirements": {
+                "cultlantern_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "Чтобы возвысить адепта до звания пророка, мощь Лампады должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые проницательные.",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "promoteto_d_mothhint",
             "label": "Возвысить адепта?",
-            "startdescription": "Чтобы возвысить адепта до звания кожевенника, мощь Мотылька должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые необычные."
+            "actionid": "talk",
+            "requirements": {
+                "cultmoth_1": 1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "Чтобы возвысить адепта до звания кожевенника, мощь Мотылька должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые необычные.",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "promoteto_d_winterhint",
             "label": "Возвысить адепта?",
-            "startdescription": "Чтобы возвысить адепта до безымянного звания, мощь Зимы должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые мрачные души."
+            "actionid": "talk",
+            "requirements": {
+                "venerationwinter": 1,
+                "venerationedge": -1,
+                "venerationforge": -1,
+                "venerationgrail": -1,
+                "venerationheart": -1,
+                "venerationlantern": -1,
+                "venerationknock": -1,
+                "venerationmoth": -1,
+                "follower": 1,
+                "disciple": 1
+            },
+            "startdescription": "Чтобы возвысить адепта до безымянного звания, мощь Зимы должна быть не ниже двадцать первого уровня. В любом случае подойдут только самые мрачные души.",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "promotetodisciplehint",
             "label": "Повысить неофита?",
-            "startdescription": "Чтобы повысить неофита до адепта, мне надо поднять аспект культа как минимум до седьмого уровня."
+            "actionid": "talk",
+            "requirements": {
+                "society": 1,
+                "follower": 1,
+                "disciple": -1,
+                "summoned": -11
+            },
+            "startdescription": "Чтобы повысить неофита до адепта, мне надо поднять аспект культа как минимум до седьмого уровня.",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "talktobenefactorhint",
             "label": "Благодетель настаивает на осторожности",
-            "startdescription": "«Мы не можем говорить здесь, дорогуша. Надо быть осторожнее»."
+            "actionid": "talk",
+            "requirements": {
+                "benefactor": 1
+            },
+            "startdescription": "«Мы не можем говорить здесь, дорогуша. Надо быть осторожнее».",
+            "craftable": false,
+            "hintonly": true
         },
         {
             "id": "recruitacquaintancenoculthint",
             "label": "Завербовать нового последователя?",
-            "startdescription": "[Если культ уже создан, используйте действие <b>РАЗГОВОР</b> вместе с картой культа, чтобы завербовать знакомого.]"
+            "actionid": "talk",
+            "requirements": {
+                "society": -1,
+                "acquaintance": 1
+            },
+            "startdescription": "[Если культ уже создан, используйте действие <b>РАЗГОВОР</b> вместе с картой культа, чтобы завербовать знакомого.]",
+            "craftable": false,
+            "hintonly": true
         },
         {
             "id": "recruitacquaintancehint",
             "label": "Завербовать нового последователя?",
-            "startdescription": "Чтобы завербовать последователя, мне понадобится толика силы, которую мы почитаем. Даровать её может влияние, инструмент, ингредиент или просто знания о наших традициях."
+            "actionid": "talk",
+            "requirements": {
+                "society": 1,
+                "acquaintance": 1
+            },
+            "startdescription": "Чтобы завербовать последователя, мне понадобится толика силы, которую мы почитаем. Даровать её может влияние, инструмент, ингредиент или просто знания о наших традициях.",
+            "craftable": false,
+            "hintonly": true
         },
         {
             "id": "talk_aladim_wantscommission",
             "label": "Заказ?",
-            "startdescription": "«Как дела с заказом? Не терпится увидеть вашу работу»."
+            "actionid": "talk",
+            "requirements": {
+                "aladim": 1
+            },
+            "startdescription": "«Как дела с заказом? Не терпится увидеть вашу работу».",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "talk_bechet_wantscommission",
             "label": "Заказ?",
-            "startdescription": "«Привет. Есть что-нибудь для меня? Как поживает заказ?»."
+            "actionid": "talk",
+            "requirements": {
+                "bechet": 1
+            },
+            "startdescription": "«Привет. Есть что-нибудь для меня? Как поживает заказ?».",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "talk_jannings_wantscommission",
             "label": "Заказ?",
-            "startdescription": "«У вас получится выполнить заказ поскорее? Нам с коллегами срочно нужны эти сведения»."
+            "actionid": "talk",
+            "requirements": {
+                "jannings": 1
+            },
+            "startdescription": "«У вас получится выполнить заказ поскорее? Нам с коллегами срочно нужны эти сведения».",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "talk_poppy_wantscommission",
             "label": "Заказ?",
-            "startdescription": "«Поспешите с заказом, я в нетерпении!»."
+            "actionid": "talk",
+            "requirements": {
+                "poppycommission": 1
+            },
+            "startdescription": "«Поспешите с заказом, я в нетерпении!».",
+            "hintonly": true,
+            "craftable": true
         },
         {
             "id": "fulfilcommission_aladimhint",
             "label": "Выполнить заказ для доктора?",
-            "startdescription": "«Хм-м. Я надеялся на большее». [Ознакомиться с подробностями заказа.]"
+            "actionid": "talk",
+            "requirements": {
+                "commission": 1,
+                "aladim": 1,
+                "article": 1
+            },
+            "startdescription": "«Хм-м. Я надеялся на большее». [Ознакомиться с подробностями заказа.]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
         },
         {
             "id": "fulfilcommission_bechethint",
             "label": "Выполнить заказ для мадам Беше?",
-            "startdescription": "«Увы, это не совсем то. Я ожидала немного другого результата». [Ознакомиться с подробностями заказа.]"
+            "actionid": "talk",
+            "requirements": {
+                "commission": 1,
+                "bechet": 1,
+                "article": 1
+            },
+            "startdescription": "«Увы, это не совсем то. Я ожидала немного другого результата». [Ознакомиться с подробностями заказа.]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
         },
         {
             "id": "fulfilcommission_janningshint",
             "label": "Выполнить заказ для графа?",
-            "startdescription": "«Нет-нет, так не пойдёт. В моих инструкциях всё было чётко расписано». [Ознакомиться с подробностями заказа.]"
+            "actionid": "talk",
+            "requirements": {
+                "commission": 1,
+                "jannings": 1,
+                "article": 1
+            },
+            "startdescription": "«Нет-нет, так не пойдёт. В моих инструкциях всё было чётко расписано». [Ознакомиться с подробностями заказа.]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
         },
         {
             "id": "fulfilcommission_poppyhint",
             "label": "Выполнить заказ для Поппи?",
-            "startdescription": "«Ох, дорогуша. Мне нужно нечто... более глубокое». [Ознакомиться с подробностями заказа.]"
+            "actionid": "talk",
+            "requirements": {
+                "commission": 1,
+                "poppycommission": 1,
+                "article": 1
+            },
+            "startdescription": "«Ох, дорогуша. Мне нужно нечто... более глубокое». [Ознакомиться с подробностями заказа.]",
+            "warmup": 10,
+            "craftable": false,
+            "hintonly": true
         },
         {
             "id": "talk_nointeraction_mortal",
             "label": "Нечего сказать?",
-            "startdescription": "«Не думаю, что нам есть о чём говорить»."
+            "actionid": "talk",
+            "requirements": {
+                "mortal": 1
+            },
+            "startdescription": "«Не думаю, что нам есть о чём говорить».",
+            "craftable": false,
+            "hintonly": true
         }
     ]
 }

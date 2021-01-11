@@ -3,88 +3,178 @@
         {
             "id": "heartinduction",
             "label": "Путь Сердца",
+            "actionid": "heartinduction",
+            "effects": {
+                "previtality": 1
+            },
+            "startdescription": "Каждый раз, когда дело касается принципа Сердца, я могу получить стойкость.",
             "description": "Сегодня моё собственное сердце бьётся сильнее.",
-            "startdescription": "Каждый раз, когда дело касается принципа Сердца, я могу получить стойкость."
+            "warmup": 30,
+            "craftable": false
         },
         {
             "id": "lanterninduction",
             "label": "Свет в черепе",
+            "actionid": "lanterninduction",
+            "effects": {
+                "preerudition": 1
+            },
+            "startdescription": "Каждый раз, когда принцип Лампады проливает свет, я могу получить дополнительные обрывки знаний.",
             "description": "Замшелые факты в моей голове обрели какую-то ясность. Хотя бы на время.",
-            "startdescription": "Каждый раз, когда принцип Лампады проливает свет, я могу получить дополнительные обрывки знаний."
+            "warmup": 30,
+            "craftable": false
         },
         {
             "id": "mothinduction",
             "label": "Старые несчастные далёкие вещи",
+            "actionid": "mothinduction",
+            "effects": {
+                "prerestlessness": 1
+            },
+            "startdescription": "Мотылёк находит свет в темноте, найду и я.",
             "description": "Я чувствую полусознательное томление.",
-            "startdescription": "Мотылёк находит свет в темноте, найду и я."
+            "warmup": 30,
+            "craftable": false
         },
         {
             "id": "mothglimmeringinduction",
             "label": "Тьма, Свет",
+            "actionid": "mothinduction",
+            "effects": {
+                "preglimmering": 1
+            },
+            "startdescription": "Мотылёк находит свет в темноте, найду и я.",
             "description": "Кем мне быть, если я смогу быть не собой?",
-            "startdescription": "Мотылёк находит свет в темноте, найду и я."
+            "warmup": 30,
+            "craftable": false
         },
         {
             "id": "grailinduction",
             "label": "За пределами Желания",
+            "actionid": "grailinduction",
+            "effects": {
+                "preglimmering": 1
+            },
+            "startdescription": "Можно ли чему-то научиться, удовлетворяя желание?",
             "description": "Это похоже на просветление.",
-            "startdescription": "Можно ли чему-то научиться, удовлетворяя желание?"
+            "warmup": 30,
+            "craftable": false
         },
         {
             "id": "dreadinduction",
             "label": "Ночные страхи",
+            "actionid": "dreadinduction",
+            "effects": {
+                "predread": 1
+            },
+            "startdescription": "Я просыпаюсь ночью. Моё лицо и ладони покрыты бусинками пота.",
             "description": "Постепенно я успокаиваюсь, разжимаю кулаки и снова засыпаю. Но что-то, вроде паутины в углу комнаты, остаётся.",
-            "startdescription": "Я просыпаюсь ночью. Моё лицо и ладони покрыты бусинками пота."
+            "warmup": 30,
+            "craftable": false
         },
         {
             "id": "dreadinduction_ifdread",
             "label": "Ночные страхи",
+            "actionid": "dreadinduction",
+            "requirements": {
+                "dread": 1
+            },
+            "effects": {
+                "predread": 1
+            },
+            "comments": "Only triggers if there's already Dread in whatever called this.",
+            "startdescription": "Я просыпаюсь ночью. Моё лицо и ладони покрыты бусинками пота.",
             "description": "Постепенно я успокаиваюсь, разжимаю кулаки и снова засыпаю. Но что-то, вроде паутины в углу комнаты, остаётся.",
-            "startdescription": "Я просыпаюсь ночью. Моё лицо и ладони покрыты бусинками пота."
+            "warmup": 30,
+            "craftable": false
         },
         {
             "id": "fascinationinduction",
             "label": "Новые цвета",
+            "actionid": "fascinationinduction",
+            "effects": {
+                "prefascination": 1
+            },
+            "startdescription": "Я начинаю видеть вокруг себя цвета, для которых даже нет названий.",
             "description": "Я вижу такое, что видеть не дозволяется. Я знаю, что это опасно. Но как же тяжело отказаться от подобного!",
-            "startdescription": "Я начинаю видеть вокруг себя цвета, для которых даже нет названий."
+            "warmup": 30,
+            "craftable": false
         },
         {
             "id": "fascinationinduction_iffascination",
             "label": "Новые цвета",
+            "actionid": "fascinationinduction",
+            "requirements": {
+                "fascination": 1
+            },
+            "effects": {
+                "prefascination": 1
+            },
+            "startdescription": "Я начинаю видеть вокруг себя цвета, для которых даже нет названий.",
             "description": "Я вижу такое, что видеть не дозволяется. Я знаю, что это опасно. Но как же тяжело отказаться от подобного!",
-            "startdescription": "Я начинаю видеть вокруг себя цвета, для которых даже нет названий."
+            "warmup": 30,
+            "craftable": false
         },
         {
             "id": "poison.notoriety.induction",
+            "actionid": "poison.notoriety.induction",
             "label": "Внимание общества",
-            "startdescription": "Не стоило использовать столь известного последователя. Об этом может узнать Бюро умолчания."
+            "startdescription": "Не стоило использовать столь известного последователя. Об этом может узнать Бюро умолчания.",
+            "effects": {
+                "notoriety": 1
+            },
+            "warmup": 30
         },
         {
             "id": "poison.passion.dread.induction",
+            "actionid": "poison.passion.dread.induction",
             "label": "Растекающийся цвет",
-            "startdescription": "Мои эмоции отравлены. Каждая вспышка чувств вызывает ответную вспышку жуткой серости."
+            "startdescription": "Мои эмоции отравлены. Каждая вспышка чувств вызывает ответную вспышку жуткой серости.",
+            "effects": {
+                "dread": 1
+            },
+            "warmup": 30
         },
         {
             "id": "poison.reason.fascination.induction",
+            "actionid": "poison.reason.fascination.induction",
             "label": "Неотступный свет",
-            "startdescription": "Горящая свеча дарит свет. Что же происходит с горящими мыслями?"
+            "startdescription": "Горящая свеча дарит свет. Что же происходит с горящими мыслями?",
+            "effects": {
+                "fascination": 1
+            },
+            "warmup": 30
         },
         {
             "id": "poison.health.dread.induction",
+            "actionid": "poison.health.dread.induction",
             "label": "Гостеприимство агонии",
-            "startdescription": "Я приглашаю старого друга ещё день пожить в моих мышцах."
+            "startdescription": "Я приглашаю старого друга ещё день пожить в моих мышцах.",
+            "effects": {
+                "dread": 1
+            },
+            "warmup": 30
         },
         {
             "id": "secret.induction",
+            "actionid": "unsuspicion",
             "label": "Выгода уединения",
-            "description": "...возможно, так Бюро умолчания будет тяжелее связать улики с нами. Кроме того, будет тяжелее поддерживать репутацию.",
             "startdescription": "Мы постарались найти место для штаб-квартиры в стороне...",
+            "description": "...возможно, так Бюро умолчания будет тяжелее связать улики с нами. Кроме того, будет тяжелее поддерживать репутацию.",
             "slots": [
                 {
                     "id": "reputation",
-                    "label": "Репутация"
+                    "label": "Репутация",
+                    "required": {
+                        "reputation": 1
+                    },
+                    "greedy": true
                 }
-            ]
+            ],
+            "warmup": 180,
+            "effects": {
+                "reputation": -1
+            }
         }
     ]
 }

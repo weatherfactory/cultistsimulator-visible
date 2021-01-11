@@ -3,77 +3,141 @@
         {
             "id": "dayacquaintances",
             "label": "День новых знакомств",
-            "description": "Возможно, я найду единомышленника."
+            "description": "Возможно, я найду единомышленника.",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "daypatrons",
             "label": "День новых покровителей",
-            "description": "Возможно, кто-нибудь предложит мне помощь."
+            "description": "Возможно, кто-нибудь предложит мне помощь.",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "daycriminals",
             "label": "День сомнительных связей",
-            "description": "Возможно, я найду кого-то, кто не боится запачкать руки."
+            "description": "Возможно, я найду кого-то, кто не боится запачкать руки.",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "dayplaces",
             "label": "День картографов",
-            "description": "Возможно, я наткнусь на что-то любопытное."
+            "description": "Возможно, я наткнусь на что-то любопытное.",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "seasonsickness",
             "label": "Пора болезней",
-            "description": "Ночной воздух насыщен пагубными миазмами. [Я могу заболеть, а раненые последователи — умереть.]"
+            "description": "Ночной воздух насыщен пагубными миазмами. [Я могу заболеть, а раненые последователи — умереть.]",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "seasonserenities",
             "label": "Пора безмятежности",
-            "description": "Завтра будет славный день."
+            "description": "Завтра будет славный день.",
+            "comments": "currently unused",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "seasonsuspicion",
             "label": "Пора настороженности",
-            "description": "За мной следят?"
+            "description": "За мной следят?",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "seasondespair",
             "label": "Пора отчаяния",
-            "description": "Ночь ожидает меня."
+            "description": "Ночь ожидает меня.",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "seasonvisions",
             "label": "Пора видений",
-            "description": "Яркие картины."
+            "description": "Яркие картины.",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "seasonambitions",
             "label": "Пора честолюбия",
-            "description": "В эту пору лесные ветра дуют в другом направлении, желания разгораются, а смертные стремятся возвыситься."
+            "description": "В эту пору лесные ветра дуют в другом направлении, желания разгораются, а смертные стремятся возвыситься.",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "seasonsilence",
             "label": "Пора молчания",
-            "description": "Дни, полные ожидания."
+            "description": "Дни, полные ожидания.",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "seasonardours",
             "label": "Пора горячности",
-            "description": "Все мы — и обезьяны, и ангелы."
+            "description": "Все мы — и обезьяны, и ангелы.",
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1
         },
         {
             "id": "schememurder",
             "label": "Кровавый план",
-            "description": "Эти следы оставил соперник, решивший атаковать врага."
+            "aspects": {
+                "season": 1
+            },
+            "description": "Эти следы оставил соперник, решивший атаковать врага.",
+            "lifetime": 1,
+            "icon": "skillhealthd_strength"
         },
         {
             "id": "schemeexpedition",
             "label": "Смелый план",
-            "description": "Эти следы оставил соперник, решивший действовать смело."
+            "aspects": {
+                "season": 1
+            },
+            "description": "Эти следы оставил соперник, решивший действовать смело.",
+            "lifetime": 1,
+            "icon": "vaultrendingmountainsdefault"
         },
         {
             "id": "schemeactivities",
             "label": "Осторожный план",
-            "description": "Эти следы оставил соперник, решивший действовать осторожно."
+            "aspects": {
+                "season": 1
+            },
+            "lifetime": 1,
+            "description": "Эти следы оставил соперник, решивший действовать осторожно.",
+            "icon": "contentment"
         }
     ]
 }

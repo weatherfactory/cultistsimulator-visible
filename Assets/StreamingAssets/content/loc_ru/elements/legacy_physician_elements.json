@@ -2,13 +2,19 @@
     "elements": [
         {
             "id": "legacyphysicianjob",
+            "description": "Сегодня я возвращаюсь к работе. ",
             "label": "Сотрудник клиники",
-            "description": "Сегодня я возвращаюсь к работе. "
+            "aspects": {
+                "job": 1
+            }
         },
         {
             "id": "legacyphysiciannotes",
+            "description": "Записанное моей собственной рукой свидетельство мрачного падения человека по имени #PREVIOUSCHARACTERNAME#. Чем дальше, тем более неровным становится почерк.",
             "label": "Записи о деле человека по имени #PREVIOUSCHARACTERNAME#",
-            "description": "Записанное моей собственной рукой свидетельство мрачного падения человека по имени #PREVIOUSCHARACTERNAME#. Чем дальше, тем более неровным становится почерк."
+            "aspects": {
+                "legacyplotitem": 1
+            }
         }
     ]
 }

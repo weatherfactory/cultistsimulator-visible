@@ -2,179 +2,550 @@
     "recipes": [
         {
             "id": "summoning_haunt_devourer",
-            "startdescription": "Оно сбежало!"
-        },
-        {
-            "id": "summoning_haunt_devourer_eatsmortal",
-            "label": "Скрывающийся Пожиратель",
-            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
-            "startdescription": "Призванное вами существо рыскает по городу в поисках смертных, чтобы их пожрать. [Чем выше аспект Пожирателя, тем с большей вероятностью он навредит смертному.]",
-            "slots": [
+            "actionid": "haunting",
+            "requirements": {
+                "devourer": 1
+            },
+            "startdescription": "Оно сбежало!",
+            "warmup": 0,
+            "linked": [
                 {
-                    "id": "Consuming",
-                    "label": "Поглощение"
+                    "id": "summoning_haunt_devourer_eatsmortal",
+                    "chance": 50
+                },
+                {
+                    "id": "summoning_haunt_devourer_damages_health",
+                    "chance": 100
                 }
             ]
         },
         {
+            "id": "summoning_haunt_devourer_eatsmortal",
+            "label": "Скрывающийся Пожиратель",
+            "actionid": "haunting",
+            "startdescription": "Призванное вами существо рыскает по городу в поисках смертных, чтобы их пожрать. [Чем выше аспект Пожирателя, тем с большей вероятностью он навредит смертному.]",
+            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
+            "slots": [
+                {
+                    "id": "Consuming",
+                    "label": "Поглощение",
+                    "required": {
+                        "mortal": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "comments": "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
+            "alt": [
+                {
+                    "id": "devourer_haunting_mortal_highdevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_mortal_middevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_mortal_lowdevourer",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
             "id": "devourer_haunting_mortal_highdevourer",
             "label": "Бежавшее существо приближается к жертве",
+            "actionid": "haunting",
+            "startdescription": "Всё ближе и ближе с каждым движением стрелки часов, как сжимающийся смерч, как изгибы реки.",
             "description": "Смерть приходит незримой, но никогда — неслышной.",
-            "startdescription": "Всё ближе и ближе с каждым движением стрелки часов, как сжимающийся смерч, как изгибы реки."
+            "requirements": {
+                "mortal": 1,
+                "devourer": 10
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_mortal_success",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "devourer_haunting_mortal_middevourer",
             "label": "Бежавшее существо приближается к жертве",
+            "actionid": "haunting",
+            "startdescription": "Жертва догадается, что чего-то не хватает. Она будет прислушиваться к ночным звукам и постарается подготовиться.",
             "description": ". devourer_haunting_mortal_middevourer",
-            "startdescription": "Жертва догадается, что чего-то не хватает. Она будет прислушиваться к ночным звукам и постарается подготовиться."
+            "requirements": {
+                "mortal": 1,
+                "devourer": 5
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_mortal_success",
+                    "chance": 70
+                },
+                {
+                    "id": "devourer_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "devourer_haunting_mortal_lowdevourer",
             "label": "Бежавшее существо приближается к жертве",
+            "actionid": "haunting",
+            "startdescription": "Это не самая страшная из угроз, но даже такая может быть смертельно опасной.",
             "description": ". devourer_haunting_mortal_lowdevourer",
-            "startdescription": "Это не самая страшная из угроз, но даже такая может быть смертельно опасной."
+            "requirements": {
+                "mortal": 1
+            },
+            "comments": "Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_mortal_success",
+                    "chance": 30
+                },
+                {
+                    "id": "devourer_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "devourer_haunting_mortal_success",
             "label": "Сбежавшее существо добралось до жертвы",
+            "actionid": "haunting",
+            "startdescription": ".",
             "description": "Первые лучи солнца лягут на открытые глаза трупа. Неудача при призыве существа обходится дорого, но платит не всегда тот, кто проводил обряд.",
-            "startdescription": "."
+            "aspects": {
+                "killmortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
         },
         {
             "id": "devourer_haunting_mortal_failure",
             "label": "Сбежавшее существо вселило ужас в свою жертву",
+            "actionid": "haunting",
+            "startdescription": ".",
             "description": "Жертва выжила, но рассказы об этой ночи будут расползаться, как чернильное пятно.",
-            "startdescription": "."
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
         },
         {
             "id": "summoning_haunt_devourer_damages_health",
             "label": "Скрывающийся Пожиратель",
-            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
+            "actionid": "haunting",
             "startdescription": "Сбежавшее существо постарается забрать что-нибудь у вас перед тем, как вернуться на своё место под кожей мироздания. [Чем выше аспект Пожирателя, тем с большей вероятностью он навредит вам.]",
+            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
             "slots": [
                 {
                     "id": "consuming",
-                    "label": "Поглощение"
+                    "label": "Поглощение",
+                    "required": {
+                        "health": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 30,
+            "alt": [
+                {
+                    "id": "devourer_haunting_damageshealth_highdevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_middevourer",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_lowdevourer",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "summoning_haunt_devourer_damages_health"
                 }
             ]
         },
         {
             "id": "devourer_haunting_damageshealth_highdevourer",
             "label": "Сбежавшее существо ожидает своего времени",
+            "actionid": "haunting",
+            "startdescription": "Оно играет со мной?",
             "description": ".",
-            "startdescription": "Оно играет со мной?"
+            "requirements": {
+                "health": 1,
+                "devourer": 10
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_damageshealth_success",
+                    "chance": 100
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "devourer_haunting_damageshealth_middevourer",
             "label": "Сбежавшее существо ожидает вас",
+            "actionid": "haunting",
+            "startdescription": "Есть множество способов уничтожить человеческое тело. Моя кожа уязвима, как открытая дверь.",
             "description": ". devourer_haunting_damageshealth_middevourer",
-            "startdescription": "Есть множество способов уничтожить человеческое тело. Моя кожа уязвима, как открытая дверь."
+            "requirements": {
+                "health": 1,
+                "devourer": 5
+            },
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_damageshealth_success",
+                    "chance": 70
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "devourer_haunting_damageshealth_lowdevourer",
             "label": "Сбежавшее существо ожидает вас",
+            "actionid": "haunting",
+            "startdescription": "Я буду следить за окнами, запру двери и положу подле кровати дуб и серебро. Это должно помочь.",
             "description": ". devourer_haunting_damageshealth_lowdevourer",
-            "startdescription": "Я буду следить за окнами, запру двери и положу подле кровати дуб и серебро. Это должно помочь."
+            "requirements": {
+                "health": 1
+            },
+            "comments": "Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+            "warmup": 15,
+            "linked": [
+                {
+                    "id": "devourer_haunting_damageshealth_success",
+                    "chance": 30
+                },
+                {
+                    "id": "devourer_haunting_damageshealth_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "devourer_haunting_damageshealth_success",
             "label": "Сбежавшее существо напало на вас",
+            "actionid": "haunting",
+            "startdescription": ".",
             "description": "У меня останется шрам. Такой, какие порой фотографируют для музеев. И соседи будут обо мне судачить. О, какие же это будут сплетни...",
-            "startdescription": "."
+            "aspects": {
+                "damagehealth": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
         },
         {
             "id": "devourer_haunting_damageshealth_failure",
             "label": "Сбежавшее существо не смогло с вами справиться",
+            "actionid": "haunting",
+            "startdescription": ".",
             "description": "Со мной такие штуки не пройдут! Но всё же стоило действовать тише. Люди ведь будут говорить.",
-            "startdescription": "."
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
         },
         {
             "id": "summoning_haunt_deceiver",
-            "startdescription": "Оно сбежало!"
+            "actionid": "haunting",
+            "requirements": {
+                "deceiver": 1
+            },
+            "startdescription": "Оно сбежало!",
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "summoning_haunt_deceiver_derangesreason",
+                    "chance": 100
+                }
+            ],
+            "comments": "Currently doesn't call summoning_haunt_deceiver_derangesmortal, because Deceivers don't attack directly."
         },
         {
             "id": "summoning_haunt_deceiver_derangesreason",
             "label": "Скрывающийся Обманщик",
-            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
+            "actionid": "haunting",
             "startdescription": "Сбежавшее существо преследует вас, надеясь вогнать в отчаяние...",
+            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
             "slots": [
                 {
                     "id": "Consuming",
-                    "label": "Поглощение"
+                    "label": "Поглощение",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "warmup": 30,
+            "alt": [
+                {
+                    "id": "deceiver_haunting_reason_highdeceiver",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_reason_middeceiver",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_reason_lowdeceiver",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "summoning_haunt_deceiver_derangesreason"
                 }
             ]
         },
         {
             "id": "deceiver_haunting_reason_highdeceiver",
             "label": "Сбежавшее существо ожидает вас",
+            "actionid": "haunting",
+            "startdescription": "Человеческий разум хрупок, а это существо практически неутомимо.",
             "description": ".",
-            "startdescription": "Человеческий разум хрупок, а это существо практически неутомимо."
-        },
-        {
-            "id": "deceiver_haunting_reason_middeceiver",
-            "label": "Сбежавшее существо ожидает вас",
-            "description": ". deceiver_haunting_reason_middeceiver",
-            "startdescription": "Человеческий разум хрупок, а это существо весьма сильно."
-        },
-        {
-            "id": "deceiver_haunting_reason_lowdeceiver",
-            "label": "Сбежавшее существо ожидает вас",
-            "description": ". deceiver_haunting_reason_lowedge",
-            "startdescription": "Человеческий разум хрупок, но это существо способно разве что на проказы, нанести серьёзный вред оно не может."
-        },
-        {
-            "id": "deceiver_haunting_reason_success",
-            "label": "Сбежавшее существо напало на ваши сны",
-            "description": "События этой ночи будут долго жить в вашей памяти, много дней журналисты будут опрашивать местных жителей.",
-            "startdescription": "."
-        },
-        {
-            "id": "deceiver_haunting_reason_failure",
-            "label": "Сбежавшее существо не сумело сломить вашу волю",
-            "description": "События этой ночи будут долго жить в вашей памяти, но существо с той стороны Бодрствования не способно справиться с вами. Тем не менее, ещё много дней журналисты будут опрашивать местных жителей.",
-            "startdescription": "."
-        },
-        {
-            "id": "summoning_haunt_deceiver_derangesmortal",
-            "label": "Скрывающийся Обманщик",
-            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
-            "startdescription": "Призванное вами существо скитается вокруг, разыскивая смертных, чтобы свести их с ума.",
-            "slots": [
+            "requirements": {
+                "reason": 1,
+                "deceiver": 10
+            },
+            "linked": [
                 {
-                    "id": "Consuming",
-                    "label": "Поглощение"
+                    "id": "deceiver_haunting_reason_success",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_reason_failure",
+                    "chance": 100
                 }
             ]
         },
         {
+            "id": "deceiver_haunting_reason_middeceiver",
+            "label": "Сбежавшее существо ожидает вас",
+            "actionid": "haunting",
+            "startdescription": "Человеческий разум хрупок, а это существо весьма сильно.",
+            "description": ". deceiver_haunting_reason_middeceiver",
+            "requirements": {
+                "reason": 1,
+                "deceiver": 5
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_reason_success",
+                    "chance": 70
+                },
+                {
+                    "id": "deceiver_haunting_reason_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_reason_lowdeceiver",
+            "label": "Сбежавшее существо ожидает вас",
+            "actionid": "haunting",
+            "startdescription": "Человеческий разум хрупок, но это существо способно разве что на проказы, нанести серьёзный вред оно не может.",
+            "description": ". deceiver_haunting_reason_lowedge",
+            "requirements": {
+                "reason": 1
+            },
+            "comments": "Leaving 'Deceiver' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+            "linked": [
+                {
+                    "id": "deceiver_haunting_reason_success",
+                    "chance": 30
+                },
+                {
+                    "id": "deceiver_haunting_reason_failure",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "deceiver_haunting_reason_success",
+            "label": "Сбежавшее существо напало на ваши сны",
+            "actionid": "haunting",
+            "startdescription": ".",
+            "description": "События этой ночи будут долго жить в вашей памяти, много дней журналисты будут опрашивать местных жителей.",
+            "aspects": {
+                "damagereason": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
+        },
+        {
+            "id": "deceiver_haunting_reason_failure",
+            "label": "Сбежавшее существо не сумело сломить вашу волю",
+            "actionid": "haunting",
+            "startdescription": ".",
+            "description": "События этой ночи будут долго жить в вашей памяти, но существо с той стороны Бодрствования не способно справиться с вами. Тем не менее, ещё много дней журналисты будут опрашивать местных жителей.",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
+        },
+        {
+            "id": "summoning_haunt_deceiver_derangesmortal",
+            "label": "Скрывающийся Обманщик",
+            "actionid": "haunting",
+            "startdescription": "Призванное вами существо скитается вокруг, разыскивая смертных, чтобы свести их с ума.",
+            "description": "Призванное ваши существо вернулось на своё место. Пока оно не сможет вам навредить.",
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "derangemortal": 1
+            },
+            "slots": [
+                {
+                    "id": "Consuming",
+                    "label": "Поглощение",
+                    "required": {
+                        "mortal": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "comments": "This isn't currently in use. We only allow Deceivers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
+            "alt": [
+                {
+                    "id": "deceiver_haunting_mortal_highedge",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_mortal_midedge",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_mortal_lowedge",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
+        },
+        {
             "id": "deceiver_haunting_mortal_highedge",
             "label": "Бежавшее существо приближается к жертве",
+            "actionid": "haunting",
+            "startdescription": "Человеческий разум хрупок, а это существо практически неутомимо.",
             "description": ".",
-            "startdescription": "Человеческий разум хрупок, а это существо практически неутомимо."
+            "requirements": {
+                "mortal": 1,
+                "edge": 10
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_mortal_success",
+                    "chance": 100
+                },
+                {
+                    "id": "deceiver_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "deceiver_haunting_mortal_midedge",
             "label": "Бежавшее существо приближается к жертве",
+            "actionid": "haunting",
+            "startdescription": "Человеческий разум хрупок, а это существо весьма сильно.",
             "description": ". deceiver_haunting_mortal_midedge",
-            "startdescription": "Человеческий разум хрупок, а это существо весьма сильно."
+            "requirements": {
+                "mortal": 1,
+                "edge": 5
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_mortal_success",
+                    "chance": 70
+                },
+                {
+                    "id": "deceiver_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "deceiver_haunting_mortal_lowedge",
             "label": "Бежавшее существо приближается к жертве",
+            "actionid": "haunting",
+            "startdescription": "Человеческий разум хрупок, но это существо способно разве что на проказы, нанести серьёзный вред оно не может.",
             "description": ". deceiver_haunting_mortal_lowedge",
-            "startdescription": "Человеческий разум хрупок, но это существо способно разве что на проказы, нанести серьёзный вред оно не может."
+            "requirements": {
+                "mortal": 1,
+                "edge": 1
+            },
+            "linked": [
+                {
+                    "id": "deceiver_haunting_mortal_success",
+                    "chance": 30
+                },
+                {
+                    "id": "deceiver_haunting_mortal_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "deceiver_haunting_mortal_success",
             "label": "Сбежавшее существо вселило ужас в свою жертву",
+            "actionid": "haunting",
+            "startdescription": ".",
             "description": "Только трезвый рассудок может вынести такое. Газетчикам будет о чём рассказывать.",
-            "startdescription": "."
+            "aspects": {
+                "derangemortal": 1,
+                "killsummoned": 1
+            },
+            "effects": {
+                "notoriety": 1
+            }
         },
         {
             "id": "deceiver_haunting_mortal_failure",
             "label": "Сбежавшее существо вселило ужас в свою жертву",
+            "actionid": "haunting",
+            "startdescription": ".",
             "description": "Волю жертвы не удалось сломить. Газетчикам будет о чём рассказывать.",
-            "startdescription": "."
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killsummoned": 1
+            }
         }
     ]
 }

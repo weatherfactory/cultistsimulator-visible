@@ -3,149 +3,585 @@
         {
             "id": "scheme_murderhunter",
             "label": "Готовится план убийства охотника",
-            "startdescription": "Соперник собирается убить охотника. Я могу этим воспользоваться, чтобы получить преимущество... хотя это ещё и привлечёт внимание."
+            "actionid": "scheme",
+            "requirements": {
+                "schememurder": 1
+            },
+            "effects": {},
+            "startdescription": "Соперник собирается убить охотника. Я могу этим воспользоваться, чтобы получить преимущество... хотя это ещё и привлечёт внимание.",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_murderhunter_grab",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "scheme_murderhunter_grab",
             "label": "Готовится план убийства охотника",
+            "actionid": "scheme",
             "slots": [
                 {
                     "id": "victim",
-                    "label": "Жертва"
+                    "label": "Жертва",
+                    "greedy": true,
+                    "required": {
+                        "hunter": 1
+                    }
+                }
+            ],
+            "effects": {},
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_murderhunter_success",
+                    "chance": 30
+                },
+                {
+                    "id": "scheme_murderhunter_failure",
+                    "chance": 100
+                },
+                {
+                    "id": "scheme_murderhunter_nohunterfound",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "scheme_murderhunter_success",
             "label": "Кто-то убил охотника!",
-            "startdescription": "Это может дать мне передышку, но при этом навести на меня Бюро умолчания."
+            "actionid": "scheme",
+            "requirements": {
+                "hunter": 1
+            },
+            "aspects": {
+                "killhunter": 1
+            },
+            "effects": {
+                "notoriety": 1
+            },
+            "startdescription": "Это может дать мне передышку, но при этом навести на меня Бюро умолчания.",
+            "warmup": 5,
+            "craftable": false
         },
         {
             "id": "scheme_murderhunter_failure",
             "label": "Кто-то не смог убить охотника!",
-            "startdescription": "Это может привлечь ко мне внимание Бюро умолчания."
+            "actionid": "scheme",
+            "requirements": {
+                "hunter": 1
+            },
+            "effects": {
+                "notoriety": 1
+            },
+            "startdescription": "Это может привлечь ко мне внимание Бюро умолчания.",
+            "warmup": 5,
+            "craftable": false
         },
         {
             "id": "scheme_murderhunter_nohunterfound",
             "label": "Попытка убить охотника не дала результата.",
-            "startdescription": "Быть может, это к лучшему."
+            "actionid": "scheme",
+            "effects": {},
+            "startdescription": "Быть может, это к лучшему.",
+            "warmup": 60,
+            "craftable": false
         },
         {
             "id": "scheme_expedition_debug",
             "label": "ПРИНУДИТЕЛЬНО ОТПРАВИТЬ ЭКСПЕДИЦИЮ",
+            "actionid": "scheme",
             "slots": [
                 {
                     "id": "target",
-                    "label": "Действующее лицо"
+                    "label": "Действующее лицо",
+                    "required": {
+                        "independent": 1
+                    }
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_grab"
                 }
             ]
         },
         {
             "id": "scheme_expedition_grab",
             "label": "Соперник готовится к экспедиции...",
-            "startdescription": "Мой соперник собирает всё необходимое для вознесения.",
+            "actionid": "scheme",
+            "requirements": {
+                "schemeexpedition": 1
+            },
             "slots": [
                 {
                     "id": "target",
-                    "label": "Цель"
+                    "label": "Цель",
+                    "greedy": true,
+                    "required": {
+                        "vault": 1
+                    }
+                }
+            ],
+            "effects": {},
+            "startdescription": "Мой соперник собирает всё необходимое для вознесения.",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_expedition_prep",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "scheme_expedition_prep",
             "label": "Возможность использовать капкан",
-            "startdescription": "Приготовив капкан, я могу устроить засаду на соперника, сорвав экспедицию или даже нанести ранение...",
+            "actionid": "scheme",
             "slots": [
                 {
                     "id": "snare",
-                    "label": "Засада"
+                    "label": "Засада",
+                    "required": {
+                        "snare": 1
+                    }
+                }
+            ],
+            "requirements": {
+                "vault": 1
+            },
+            "startdescription": "Приготовив капкан, я могу устроить засаду на соперника, сорвав экспедицию или даже нанести ранение...",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_great"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_good"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_poor"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_snare_rubbish"
+                },
+                {
+                    "chance": 70,
+                    "id": "scheme_expedition_success"
+                },
+                {
+                    "chance": 100,
+                    "id": "scheme_expedition_failure"
                 }
             ]
         },
         {
-            "id": "scheme_expedition_snare_great"
+            "id": "scheme_expedition_snare_great",
+            "actionid": "scheme",
+            "requirements": {
+                "snarelevel": 4
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 90
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "scheme_expedition_snare_good"
+            "id": "scheme_expedition_snare_good",
+            "actionid": "scheme",
+            "requirements": {
+                "snarelevel": 3
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 70
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "scheme_expedition_snare_poor"
+            "id": "scheme_expedition_snare_poor",
+            "actionid": "scheme",
+            "requirements": {
+                "snarelevel": 2
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 30
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "scheme_expedition_snare_rubbish"
+            "id": "scheme_expedition_snare_rubbish",
+            "actionid": "scheme",
+            "requirements": {
+                "snarelevel": 1
+            },
+            "linked": [
+                {
+                    "id": "scheme_expedition_snare_success",
+                    "chance": 10
+                },
+                {
+                    "id": "scheme_expedition_snare_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "scheme_expedition_snare_success",
             "label": "Наш капкан сработал!",
-            "startdescription": "Соперник попал в нашу ловушку! Теперь он попытается отступить, зализывая раны."
+            "actionid": "scheme",
+            "effects": {
+                "snare": -1
+            },
+            "startdescription": "Соперник попал в нашу ловушку! Теперь он попытается отступить, зализывая раны.",
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 5,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "independent_scar",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "scheme_expedition_snare_failure",
             "label": "Наш капкан не сработал.",
-            "startdescription": "Мой соперник не попался в ловушку..."
+            "actionid": "scheme",
+            "startdescription": "Мой соперник не попался в ловушку...",
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "snare": -1
+            },
+            "warmup": 5,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "scheme_expedition_success",
+                    "chance": 70
+                },
+                {
+                    "id": "scheme_expedition_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "scheme_expedition_success",
             "label": "Мой соперник разграбил это место...",
-            "startdescription": "Что бы враг ни хотел найти, он это нашёл."
+            "actionid": "scheme",
+            "requirements": {
+                "vault": 1
+            },
+            "effects": {
+                "vault": -1
+            },
+            "startdescription": "Что бы враг ни хотел найти, он это нашёл.",
+            "warmup": 5,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultshires4.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+                    "additional": true
+                },
+                {
+                    "id": "expedition.corpse.find.vaultshires3.ransackedbyrival",
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "scheme_promotion",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "scheme_expedition_failure",
             "label": "Экспедиция моего соперника потерпела неудачу.",
-            "startdescription": "Что бы они здесь ни искали, найти это не удалось. Экспедиция свёрнута... на какое-то время."
+            "actionid": "scheme",
+            "requirements": {
+                "vault": 1
+            },
+            "effects": {},
+            "startdescription": "Что бы они здесь ни искали, найти это не удалось. Экспедиция свёрнута... на какое-то время.",
+            "warmup": 5,
+            "craftable": false
         },
         {
             "id": "scheme_activities",
             "label": "Соперник занимается своим делом под покровом тьмы.",
+            "actionid": "scheme",
+            "requirements": {
+                "schemeactivities": 1
+            },
+            "effects": {
+                "mystique": 1
+            },
+            "startdescription": "Что же там замышляется в укрытии? [Почти всегда это будет завершаться безрезультатно, но иногда соперник всё же сможет тайком увеличить своё могущество. Попробуйте выманить его из укрытия, оставив экспедицию открытой.]",
             "description": "Мой соперник замышляет что-то нехорошее. Возможно, Бюро умолчания стоит обратить на это внимание.",
-            "startdescription": "Что же там замышляется в укрытии? [Почти всегда это будет завершаться безрезультатно, но иногда соперник всё же сможет тайком увеличить своё могущество. Попробуйте выманить его из укрытия, оставив экспедицию открытой.]"
+            "alt": [
+                {
+                    "id": "scheme_calm",
+                    "chance": 10
+                },
+                {
+                    "id": "scheme_promotion",
+                    "chance": 11
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
         },
         {
             "id": "scheme_calm",
             "label": "Настроение моего соперника смягчилось.",
-            "description": "Мой соперник проявляет профессиональную обходительность: мне доставили выдержанное письмо, в котором не говорится ничего конкретного, но... быть может, когда-нибудь мы сможем действовать вместе? [Иногда обида соперника может ослабевать.]"
+            "actionid": "scheme",
+            "effects": {
+                "influenceheartc": 1
+            },
+            "description": "Мой соперник проявляет профессиональную обходительность: мне доставили выдержанное письмо, в котором не говорится ничего конкретного, но... быть может, когда-нибудь мы сможем действовать вместе? [Иногда обида соперника может ослабевать.]",
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "resentment",
+                    "level": -1,
+                    "additive": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
         },
         {
             "id": "scheme_promotion",
             "label": "Мой соперник добился успехов в своём деле.",
-            "description": "Мой соперник накопил больше знаний, сокровищ и связей... и, конечно, становится сильнее."
+            "actionid": "scheme",
+            "alt": [
+                {
+                    "chance": 100,
+                    "id": "scheme_promotion_ascension"
+                }
+            ],
+            "effects": {
+                "mystique": 1
+            },
+            "aspects": {
+                "rival_promotion": 1
+            },
+            "description": "Мой соперник накопил больше знаний, сокровищ и связей... и, конечно, становится сильнее.",
+            "warmup": 60,
+            "craftable": false
         },
         {
             "id": "scheme_promotion_ascension",
             "label": "Мой соперник пытается пройти через Трёхстворчатые Врата и стать кем-то большим.",
-            "startdescription": "Ещё один шаг навстречу цели. Ещё одна ступень вверх по лестнице Дома Солнца. [Осторожно: если вознесение вашего соперника достигнет 7, он выиграет игру вместо вас.]"
+            "actionid": "scheme",
+            "requirements": {
+                "exalted": 1
+            },
+            "effects": {
+                "mystique": 1
+            },
+            "startdescription": "Ещё один шаг навстречу цели. Ещё одна ступень вверх по лестнице Дома Солнца. [Осторожно: если вознесение вашего соперника достигнет 7, он выиграет игру вместо вас.]",
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "rivalmarks",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
         },
         {
             "id": "independent_scar",
             "label": "Соперник получил новый шрам",
-            "startdescription": "Моему сопернику не повезло. Последнее поражение оставило шрам; конечно, вся вина возложена на меня. [Три шрама одного типа убивают смертного.]"
+            "startdescription": "Моему сопернику не повезло. Последнее поражение оставило шрам; конечно, вся вина возложена на меня. [Три шрама одного типа убивают смертного.]",
+            "actionid": "scheme",
+            "linked": [
+                {
+                    "id": "independent_givescar_edge",
+                    "chance": 30
+                },
+                {
+                    "id": "independent_givescar_knock",
+                    "chance": 50
+                },
+                {
+                    "id": "independent_givescar_winter",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "independent_givescar_edge",
-            "label": "Трудности у соперника"
+            "actionid": "scheme",
+            "label": "Трудности у соперника",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_scar_edge",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "edge",
+                    "level": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "independent_deathscar_edge",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "independent_givescar_knock",
-            "label": "Трудности у соперника"
+            "label": "Трудности у соперника",
+            "actionid": "scheme",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_scar_knock",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "knock",
+                    "level": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "independent_deathscar_knock",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "independent_givescar_winter",
-            "label": "Трудности у соперника"
+            "actionid": "scheme",
+            "label": "Трудности у соперника",
+            "mutations": [
+                {
+                    "filter": "mortal",
+                    "mutate": "follower_scar_winter",
+                    "level": 1,
+                    "additive": true
+                },
+                {
+                    "filter": "mortal",
+                    "mutate": "winter",
+                    "level": 2,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "independent_deathscar_winter",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "independent_deathscar_edge",
+            "actionid": "scheme",
             "label": "Смерть: поражение",
-            "description": "Мы будем помнить проявленное мужество и выносливость, но также и то, что этого недостаточно. [Ваш соперник получил три шрама Грани и умер.]"
+            "requirements": {
+                "follower_scar_edge": 3
+            },
+            "description": "Мы будем помнить проявленное мужество и выносливость, но также и то, что этого недостаточно. [Ваш соперник получил три шрама Грани и умер.]",
+            "aspects": {
+                "killmortal": 1
+            }
         },
         {
             "id": "independent_deathscar_knock",
+            "actionid": "scheme",
             "label": "Смерть: открытие",
-            "description": "Чтобы добиваться успеха, нужно держать свои внутренности внутри, не подпуская к ним то, что снаружи. Если часть чьих-то внутренностей оказывается снаружи, их хозяин теряет актуальность. [Ваш соперник получил три шрама Стука и умер.]"
+            "requirements": {
+                "follower_scar_knock": 3
+            },
+            "description": "Чтобы добиваться успеха, нужно держать свои внутренности внутри, не подпуская к ним то, что снаружи. Если часть чьих-то внутренностей оказывается снаружи, их хозяин теряет актуальность. [Ваш соперник получил три шрама Стука и умер.]",
+            "aspects": {
+                "killmortal": 1
+            }
         },
         {
             "id": "independent_deathscar_winter",
+            "actionid": "scheme",
             "label": "Смерть: конец",
-            "description": "Медленно падает снег. Рассвет пачкает всё светом. [Ваш соперник получил три шрама Зимы и умер.]"
+            "requirements": {
+                "follower_scar_winter": 3
+            },
+            "description": "Медленно падает снег. Рассвет пачкает всё светом. [Ваш соперник получил три шрама Зимы и умер.]",
+            "aspects": {
+                "killmortal": 1
+            }
         }
     ]
 }
