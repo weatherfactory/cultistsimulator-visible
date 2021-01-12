@@ -49,7 +49,7 @@ namespace SecretHistories.Services
 
 
 
-        private async void SceneChange(int sceneToLoad,bool withFadeEffect)
+        private async void SceneChange(string sceneToLoad,bool withFadeEffect)
         {
             var sphereCatalogue = Registry.Get<SphereCatalogue>();
 
@@ -88,7 +88,7 @@ namespace SecretHistories.Services
         {
             if(!loadedInfoScene)
             {
-                SceneChange(SceneNumber.InfoScene,false);
+                SceneChange(SceneNumber.S7UhO.ToString(),false);
                 loadedInfoScene = true;
             }
         }
@@ -97,14 +97,14 @@ namespace SecretHistories.Services
         {
             SoundManager.PlaySfx("UIStartGame");
             SourceForGameState = source;
-            SceneChange(SceneNumber.TabletopScene, true);
+            SceneChange(SceneNumber.S4Tabletop.ToString(), true);
         }
 
 
         public void NewGameOnTabletop()
         {
             SourceForGameState = SourceForGameState.NewGame;
-            SceneChange(SceneNumber.TabletopScene, true);
+            SceneChange(SceneNumber.S4Tabletop.ToString(), true);
         }
 
         public void ClearRestartingGameFlag()
@@ -116,35 +116,36 @@ namespace SecretHistories.Services
 
         public void LogoScreen()
         {
-            SceneChange(SceneNumber.LogoScene,false);
+            SceneChange(SceneNumber.S1Logo.ToString(),false);
         }
 
 
         public void QuoteScreen()
         {
-            SceneChange(SceneNumber.QuoteScene,false);
+            SceneChange(SceneNumber.S2Quote.ToString(),false);
         }
 
         public void MenuScreen()
         {
-            SceneChange(SceneNumber.MenuScene,false);
+            SceneChange(SceneNumber.S3MenuCS.ToString(),false);
         }
 
 
-        public bool SceneIsActive(int sceneToCheck)
+        public bool SceneIsActive(string sceneToCheck)
         {
-            return SceneManager.GetSceneByBuildIndex(sceneToCheck).isLoaded;
+            return SceneManager.GetSceneByName(sceneToCheck).IsValid() &&
+                   SceneManager.GetSceneByName(sceneToCheck).isLoaded;
         }
 
 
         public void EndingScreen()
         {
-            SceneChange(SceneNumber.GameOverScene,false);
+            SceneChange(SceneNumber.S5GaameOver.ToString(),false);
         }
 
         public void LegacyChoiceScreen()
         {
-            SceneChange(SceneNumber.NewGameScene,true);
+            SceneChange(SceneNumber.S6NewGame.ToString(),true);
         }
 
 
@@ -154,7 +155,7 @@ namespace SecretHistories.Services
             if (Application.isEditor)
             {
                 if (StartingSceneNumber > 0)
-                    SceneChange(StartingSceneNumber,true);
+                    SceneChange(StartingSceneNumber.ToString(),true);
               //  NewGameOnTabletop();
             }
             
@@ -162,9 +163,9 @@ namespace SecretHistories.Services
             {
 
                 if (skipLogo) // This will allocate and read in config.ini
-                    SceneChange(SceneNumber.QuoteScene,false);
+                    SceneChange(SceneNumber.S2Quote.ToString(),false);
                 else
-                    SceneChange(SceneNumber.LogoScene,false);
+                    SceneChange(SceneNumber.S1Logo.ToString(),false);
             }
         }
     }

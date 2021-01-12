@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
 
-public static class SceneNumber
+public enum SceneNumber
 {
-    public const int MasterScene = 0;
-    public const int LogoScene = 1;
-    public const int QuoteScene = 2;
-    public const int MenuScene = 3;
-    public const int TabletopScene = 4;
-    public const int GameOverScene = 5;
-    public const int NewGameScene = 6;
-    public const int InfoScene = 7;
+    S0Master = 0,
+     S1Logo = 1,
+     S2Quote = 2,
+     S3MenuCS = 3,
+     S4Tabletop = 4,
+     S5GaameOver = 5,
+     S6NewGame = 6,
+     S7UhO = 7,
 
 }
