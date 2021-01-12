@@ -572,7 +572,6 @@ GameObject:
   - component: {fileID: 46838574}
   - component: {fileID: 46838576}
   - component: {fileID: 46838575}
-  - component: {fileID: 46838577}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -697,24 +696,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46838573}
   m_CullTransparentMesh: 0
---- !u!114 &46838577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46838573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  locLabel: UI_CREDITS
-  fontStyle: 2
-  forceFontLanguage: 
-  highContrastPermissibleInContext: 1
-  highContrastBold: 0
-  forceBold: 0
 --- !u!1 &55237395
 GameObject:
   m_ObjectHideFlags: 0
@@ -4262,9 +4243,9 @@ RectTransform:
   m_Father: {fileID: 630448417}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -178, y: 147}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!199 &519087440
@@ -4470,7 +4451,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 1
-      minScalar: 0.5
+      minScalar: 0.7
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4522,8 +4503,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.043137256, g: 0.454902, b: 0.61960787, a: 1}
-      maxColor: {r: 0.9632353, g: 0.9939208, b: 1, a: 1}
+      minColor: {r: 0.61960787, g: 0.51869816, b: 0.043137256, a: 1}
+      maxColor: {r: 1, g: 0.97427773, b: 0.9647059, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4960,15 +4941,15 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 5
-    angle: 25
+    type: 0
+    angle: 80
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 0.5, y: 8, z: 1}
+    m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -5045,7 +5026,7 @@ ParticleSystem:
     m_TextureBilinearFiltering: 0
     randomDirectionAmount: 0
     sphericalDirectionAmount: 0
-    randomPositionAmount: 0
+    randomPositionAmount: 1
     radius:
       value: 1
       mode: 0
@@ -5167,7 +5148,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.6
-      minScalar: 0.2
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5604,33 +5585,33 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 0}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 0.69803923, g: 0.6620453, b: 0.098039195, a: 0.003921569}
+        key1: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 1}
+        key2: {r: 1, g: 1, b: 1, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
+        ctime1: 29491
+        ctime2: 65535
         ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 46832
-        atime2: 65535
-        atime3: 0
+        atime1: 12143
+        atime2: 46832
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 3
+        m_NumColorKeys: 3
+        m_NumAlphaKeys: 4
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -7890,7 +7871,7 @@ ParticleSystem:
     separateAxes: 0
     range: {x: 0, y: 1}
   ColorBySpeedModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -7898,17 +7879,17 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 0.9811321, g: 0.9441866, b: 0.254539, a: 1}
+        key1: {r: 0.6792453, g: 0.44535422, b: 0.44535422, a: 1}
+        key2: {r: 1, g: 1, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
+        ctime0: 15035
+        ctime1: 49922
+        ctime2: 65535
         ctime3: 0
         ctime4: 0
         ctime5: 0
@@ -7923,7 +7904,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 3
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
@@ -18403,7 +18384,6 @@ GameObject:
   - component: {fileID: 1059557256}
   - component: {fileID: 1059557258}
   - component: {fileID: 1059557257}
-  - component: {fileID: 1059557259}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -18528,24 +18508,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059557255}
   m_CullTransparentMesh: 0
---- !u!114 &1059557259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059557255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  locLabel: UI_PURGE_SAVE
-  fontStyle: 2
-  forceFontLanguage: 
-  highContrastPermissibleInContext: 1
-  highContrastBold: 0
-  forceBold: 0
 --- !u!1 &1061650897
 GameObject:
   m_ObjectHideFlags: 0
@@ -28936,7 +28898,6 @@ GameObject:
   - component: {fileID: 1691425580}
   - component: {fileID: 1691425582}
   - component: {fileID: 1691425581}
-  - component: {fileID: 1691425583}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -29061,24 +29022,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691425579}
   m_CullTransparentMesh: 0
---- !u!114 &1691425583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691425579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  locLabel: UI_CONTINUE
-  fontStyle: 2
-  forceFontLanguage: 
-  highContrastPermissibleInContext: 1
-  highContrastBold: 0
-  forceBold: 0
 --- !u!1 &1702584795
 GameObject:
   m_ObjectHideFlags: 0
@@ -29134,7 +29077,6 @@ GameObject:
   - component: {fileID: 1719019547}
   - component: {fileID: 1719019549}
   - component: {fileID: 1719019548}
-  - component: {fileID: 1719019550}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -29259,24 +29201,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719019546}
   m_CullTransparentMesh: 0
---- !u!114 &1719019550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719019546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  locLabel: UI_LEAVE_GAME
-  fontStyle: 2
-  forceFontLanguage: 
-  highContrastPermissibleInContext: 1
-  highContrastBold: 0
-  forceBold: 0
 --- !u!1001 &1727065008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36443,7 +36367,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SUBTITLE  GOES HERE
+  m_text: SUBTITLE GOES HERE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2273c1219e71af478506e3a3f0b5abf, type: 2}
   m_sharedMaterial: {fileID: 7372500967957352885, guid: c2273c1219e71af478506e3a3f0b5abf,
