@@ -171,7 +171,8 @@ public class ResourcesManager: MonoBehaviour
     
     public static Sprite GetSprite(string folder, string file, bool withPlaceholder = true)
     {
-        const string imagesFolderNameInResources = "images"; 
+        var imagesFolderNameInResources =
+            Registry.Get<Config>().GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY);
         var spritePath = Path.Combine(imagesFolderNameInResources,
             folder, file);
 
