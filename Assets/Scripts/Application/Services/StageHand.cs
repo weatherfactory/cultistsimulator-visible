@@ -88,7 +88,7 @@ namespace SecretHistories.Services
         {
             if(!loadedInfoScene)
             {
-                SceneChange(SceneNumber.S7UhO.ToString(),false);
+                SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().UhOScene, false);
                 loadedInfoScene = true;
             }
         }
@@ -97,14 +97,14 @@ namespace SecretHistories.Services
         {
             SoundManager.PlaySfx("UIStartGame");
             SourceForGameState = source;
-            SceneChange(SceneNumber.S4Tabletop.ToString(), true);
+            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().PlayfieldScene, true);
         }
 
 
         public void NewGameOnTabletop()
         {
             SourceForGameState = SourceForGameState.NewGame;
-            SceneChange(SceneNumber.S4Tabletop.ToString(), true);
+            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().NewGameScene, true);
         }
 
         public void ClearRestartingGameFlag()
@@ -116,18 +116,18 @@ namespace SecretHistories.Services
 
         public void LogoScreen()
         {
-            SceneChange(SceneNumber.S1Logo.ToString(),false);
+            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().LogoScene,false);
         }
 
 
         public void QuoteScreen()
         {
-            SceneChange(SceneNumber.S2Quote.ToString(),false);
+            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().QuoteScene, false);
         }
 
         public void MenuScreen()
         {
-            SceneChange(SceneNumber.S3MenuCS.ToString(),false);
+            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().MenuScene, false);
         }
 
 
@@ -140,12 +140,12 @@ namespace SecretHistories.Services
 
         public void EndingScreen()
         {
-            SceneChange(SceneNumber.S5GaameOver.ToString(),false);
+            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().GameOverScene, false);
         }
 
         public void LegacyChoiceScreen()
         {
-            SceneChange(SceneNumber.S6NewGame.ToString(),true);
+            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().NewGameScene, true);
         }
 
 
@@ -162,10 +162,10 @@ namespace SecretHistories.Services
             else
             {
 
-                if (skipLogo) // This will allocate and read in config.ini
-                    SceneChange(SceneNumber.S2Quote.ToString(),false);
+                if (skipLogo)
+                    SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().QuoteScene, false);
                 else
-                    SceneChange(SceneNumber.S1Logo.ToString(),false);
+                    SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().LogoScene, false);
             }
         }
     }

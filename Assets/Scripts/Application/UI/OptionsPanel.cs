@@ -71,7 +71,7 @@ public class OptionsPanel : MonoBehaviour {
         //This options panel class is used in both the main and the menu screen. IsInGame determines which version of behaviour. (You think this is iffy,
         //you shoulda seen the version where it was set with an editor tickbox and overwriting the prefab was a severity 1 error).
 
-        return Registry.Get<StageHand>().SceneIsActive(SceneNumber.S3MenuCS.ToString());
+        return Registry.Get<StageHand>().SceneIsActive(Registry.Get<Compendium>().GetSingleEntity<Dictum>().PlayfieldScene);
     }
 
 
