@@ -50,7 +50,6 @@ public class MenuScreenController : LocalNexus {
     public GameObject brokenSaveMessage;
     public TextMeshProUGUI VersionNumber;
     public Animation versionAnim;
-    public MenuSubtitle Subtitle;
     [SerializeField] public Notifier notifier;
 
     [Header("DLC & Mods")]
@@ -148,14 +147,6 @@ public class MenuScreenController : LocalNexus {
         BuildLegacyStartsPanel(Registry.Get<MetaInfo>().Storefront);
     }
 
-    private static void SetEditionStatus()
-    {
-        string perpetualEditionDumbfileLocation = Application.streamingAssetsPath + "/edition/semper.txt";
-        if (File.Exists(perpetualEditionDumbfileLocation))
-            NoonUtility.PerpetualEdition = true;
-    }
-
-
 
     void InitialiseServices()
 	{
@@ -186,25 +177,7 @@ public class MenuScreenController : LocalNexus {
         continueGameButton.gameObject.SetActive(savedGameExists);
         purgeButton.gameObject.SetActive(savedGameExists);
 
-        //update subtitle text
-        SetEditionStatus();
-
-        
-        if (currentCharacter.ActiveLegacy != null)
-            //we need to go the long wway round because the label on the legacy entity in the character won't have changed if the compendium has just been repopulated with a different culture
-            Subtitle.SetText(Registry.Get<Compendium>().GetEntityById<Legacy>(currentCharacter.ActiveLegacy.Id).Label);
-        else
-        {
-            if (NoonUtility.PerpetualEdition)
-            {
-                Subtitle.UpdateWithLocValue("UI_PERPETUAL_EDITION");
-            }
-            else
-		    {
-                Subtitle.UpdateWithLocValue("UI_BRING_THE_DAWN");
-               
-            }
-        }
+      
         
         //brokenSaveMessage.gameObject.SetActive(savedGameExists);
         UpdateVersionNumber();

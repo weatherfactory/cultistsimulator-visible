@@ -1,6 +1,7 @@
 ﻿
 using SecretHistories.Constants;
 using SecretHistories.Entities;
+using SecretHistories.Services;
 using SecretHistories.UI;
 
 using TMPro;
@@ -13,6 +14,42 @@ public class MenuSubtitle : MonoBehaviour
 
     [SerializeField] public TextMeshProUGUI SubtitleTextShadow;
 
+
+    public void Start()
+    {
+
+        var concursum = Registry.Get<Concursum>();
+        concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
+        ShowSubtitle();
+
+    }
+
+    private void OnContentUpdated(ContentUpdatedArgs arg0)
+    {
+        ShowSubtitle();
+    }
+
+    public void ShowSubtitle()
+    {
+        //update subtitle text
+
+        if (Registry.Get<Character>().ActiveLegacy != null)
+            //we need to go the long wway round because the label on the legacy entity in the character won't have changed if the compendium has just been repopulated with a different culture
+            SetText(Registry.Get<Compendium>().GetEntityById<Legacy>(Registry.Get<Character>().ActiveLegacy.Id).Label);
+        else
+        {
+            if (NoonUtility.PerpetualEdition)
+            {
+                UpdateWithLocValue("UI_PERPETUAL_EDITION");
+            }
+            else
+            {
+                UpdateWithLocValue("UI_BRING_THE_DAWN");
+
+            }
+        }
+    }
+    
     public void UpdateWithLocValue(string text)
     {
         string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);

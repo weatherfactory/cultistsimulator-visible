@@ -186,7 +186,9 @@ namespace SecretHistories.Services
                 windowSettingsAdapter.Initialise();
                 soundManager.Initialise();
 
-
+                string perpetualEditionDumbfileLocation = Application.streamingAssetsPath + "/edition/semper.txt";
+                if (File.Exists(perpetualEditionDumbfileLocation))
+                    NoonUtility.PerpetualEdition = true;
 
 
                 //finally, load the first scene and get the ball rolling.
