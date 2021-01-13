@@ -67,7 +67,6 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
         _activeInStates.Add(state);
     }
     
-
     private const string PRIMARY_SLOT="primary";
 
     //if no details are supplied at all, just create a primary slot specification

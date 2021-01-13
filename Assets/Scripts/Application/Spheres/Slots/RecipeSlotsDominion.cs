@@ -17,13 +17,13 @@ using UnityEngine.UI;
 using TMPro;
 using SecretHistories.Services;
 
-using UnityEngine.Events;
-
 namespace SecretHistories.UI {
     public class RecipeSlotsDominion:MonoBehaviour,ISituationSubscriber,IDominion {
 
         [SerializeField] Transform thresholdsTransform;
         [SerializeField] CanvasGroupFader canvasGroupFader;
+        public List<StateEnum> ActiveInSituationStates;
+        public List<CommandCategory> RespondToCommandCategories;
         
         readonly HashSet<Threshold> recipeSlots=new HashSet<Threshold>();
 
@@ -48,7 +48,7 @@ namespace SecretHistories.UI {
 
         public void SituationStateChanged(Situation situation)
         {
-            //
+            if(!ActiveInSituationStates.Contains(situation.CurrentState.IsActiveInThisState()))
         }
 
         public void TimerValuesChanged(Situation situation)
@@ -76,8 +76,8 @@ namespace SecretHistories.UI {
             var newSlot = Registry.Get<PrefabFactory>().CreateLocally<Threshold>(thresholdsTransform);
             newSlot.Initialise(spec, _situationPath);
 
-
-            spec.MakeActiveInState(StateEnum.Ongoing);
+            foreach(var activeInState in ActiveInSituationStates)
+               spec.MakeActiveInState(activeInState);
 
 
             this.recipeSlots.Add(newSlot);
@@ -86,8 +86,7 @@ namespace SecretHistories.UI {
 
         public bool MatchesCommandCategory(CommandCategory category)
         {
-
-            return category == CommandCategory.RecipeThresholds;
+            return RespondToCommandCategories.Contains(category);
         }
 
         public void ClearThresholds()
