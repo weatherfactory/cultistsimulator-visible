@@ -86,7 +86,7 @@ namespace SecretHistories.UI.SlotsContainers {
             
             var children = GetComponentsInChildren<Threshold>();
             var allSlots = new List<Threshold>(children);
-            validSlots = new List<Threshold>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSlotSpecification != null));
+            validSlots = new List<Threshold>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSphereSpec != null));
 
             _verb = verb;
             _window= window;
@@ -97,7 +97,7 @@ namespace SecretHistories.UI.SlotsContainers {
             if(primarySlotSpecification!=null)
                 primarySlot = BuildSlot(primarySlotSpecification.Label, primarySlotSpecification, null,false);
             else
-                primarySlot = BuildSlot("Primary recipe slot", new SlotSpecification(), null);
+                primarySlot = BuildSlot("Primary recipe slot", new SphereSpec(), null);
 
 
             var otherslots = verb.Slots;
@@ -171,14 +171,14 @@ namespace SecretHistories.UI.SlotsContainers {
         }
 
 
-        protected virtual Threshold BuildSlot(string slotName, SlotSpecification slotSpecification, Threshold parentSlot, bool wideLabel = false)
+        protected virtual Threshold BuildSlot(string slotName, SphereSpec sphereSpec, Threshold parentSlot, bool wideLabel = false)
         {
             var slot = Registry.Get<PrefabFactory>().CreateLocally<Threshold>(transform);
 
-            slot.name = slotName + (slotSpecification != null ? " - " + slotSpecification.Id : "");
+            slot.name = slotName + (sphereSpec != null ? " - " + sphereSpec.Id : "");
             slot.ParentSlot = parentSlot;
-            slotSpecification.MakeActiveInState(StateEnum.Unstarted);
-            slot.Initialise(slotSpecification,_situationPath);
+            sphereSpec.MakeActiveInState(StateEnum.Unstarted);
+            slot.Initialise(sphereSpec,_situationPath);
             
             if (wideLabel)
             {

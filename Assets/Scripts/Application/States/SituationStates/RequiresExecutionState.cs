@@ -38,6 +38,12 @@ namespace SecretHistories.States
             return false;
         }
 
+        public override bool IsVisibleInThisState(Dominion dominion)
+        {
+            return dominion.VisibleFor(StateEnum.RequiringExecution);
+
+        }
+
         public override bool IsValidPredictionForState(Recipe recipeToCheck, Situation s)
         {
             //Situation is RequiringExecution, and recipe is in Linked list of current recipe.  ActionId doesn't need to match.

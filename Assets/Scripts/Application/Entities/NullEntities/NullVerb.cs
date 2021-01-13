@@ -34,8 +34,8 @@ namespace SecretHistories.NullObjects
             return typeof(NullManifestation);
         }
 
-        public SlotSpecification Slot { get; set; }
-        public List<SlotSpecification> Slots { get; set; }
+        public SphereSpec Slot { get; set; }
+        public List<SphereSpec> Slots { get; set; }
         public bool Startable { get; }
         public bool ExclusiveOpen => false;
 
@@ -53,8 +53,8 @@ namespace SecretHistories.NullObjects
 
         protected NullVerb()
         {
-            Slots=new List<SlotSpecification>();
-            Slot=new SlotSpecification();
+            Slots=new List<SphereSpec>();
+            Slot=new SphereSpec();
             Startable = false;
         }
 

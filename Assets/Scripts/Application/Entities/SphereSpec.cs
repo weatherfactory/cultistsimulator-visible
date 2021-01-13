@@ -15,7 +15,7 @@ using SecretHistories.Spheres.Angels;
 
 
 
-public class SlotSpecification: AbstractEntity<SlotSpecification>
+public class SphereSpec: AbstractEntity<SphereSpec>
 {
 
     [FucineValue(DefaultValue = "", Localise = true)]
@@ -70,7 +70,7 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
     private const string PRIMARY_SLOT="primary";
 
     //if no details are supplied at all, just create a primary slot specification
-    public SlotSpecification()
+    public SphereSpec()
     {
         _id = PRIMARY_SLOT;
         Label = "";
@@ -80,7 +80,7 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
         Angels=new List<AngelSpecification>();
     }
 
-    public SlotSpecification(string id)
+    public SphereSpec(string id)
     {
         _id = id;
         Label = id;
@@ -91,7 +91,7 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>
 
     }
 
-    public SlotSpecification(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+    public SphereSpec(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
     {
     }
 

@@ -35,11 +35,11 @@ namespace SecretHistories.Entities.Verbs
             return typeof(DropzoneManifestation);
         }
 
-        [FucineSubEntity(typeof(SlotSpecification), Localise = true)]
-        public SlotSpecification Slot { get; set; }
+        [FucineSubEntity(typeof(SphereSpec), Localise = true)]
+        public SphereSpec Slot { get; set; }
 
         [FucineList(Localise = true)]
-        public List<SlotSpecification> Slots { get; set; }
+        public List<SphereSpec> Slots { get; set; }
 
         public DropzoneVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {

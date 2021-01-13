@@ -138,7 +138,7 @@ namespace SecretHistories.Entities
         public PortalEffect PortalEffect { get; set; }
 
         [FucineList(Localise=true)]
-        public List<SlotSpecification> Slots { get; set; }
+        public List<SphereSpec> Slots { get; set; }
 
         [FucineSubEntity(typeof(DeckSpec))]
         public DeckSpec InternalDeck { get; set; }

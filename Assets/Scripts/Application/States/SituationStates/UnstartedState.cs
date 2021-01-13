@@ -43,8 +43,13 @@ namespace SecretHistories.States
 
                 return false;
 
-            return s.GoverningSlotSpecification.IsActiveInState(StateEnum.Unstarted);
+            return s.GoverningSphereSpec.IsActiveInState(StateEnum.Unstarted);
 
+        }
+
+        public override bool IsVisibleInThisState(Dominion dominion)
+        {
+            return dominion.VisibleFor(StateEnum.Unstarted);
         }
 
         public override bool IsValidPredictionForState(Recipe recipeToCheck,Situation s)

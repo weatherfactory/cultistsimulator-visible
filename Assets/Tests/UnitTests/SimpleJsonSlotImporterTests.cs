@@ -16,7 +16,7 @@ namespace Assets.Tests.UnitTests
         [Test]
         public void ImportsNothingWhenTheresNothing()
         {
-            List<SlotSpecification> noRecipeSlots = new List<SlotSpecification>();
+            List<SphereSpec> noRecipeSlots = new List<SphereSpec>();
             var importedSlotSpecs =
                 SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(new Hashtable(), noRecipeSlots);
             Assert.AreEqual(0, importedSlotSpecs.Count);
@@ -26,7 +26,7 @@ namespace Assets.Tests.UnitTests
         [Test]
         public void rImportsSingleSlotSpecForRecipe()
         {
-            List<SlotSpecification> oneSlotList = new List<SlotSpecification> {new SlotSpecification("oneSlot")};
+            List<SphereSpec> oneSlotList = new List<SphereSpec> {new SphereSpec("oneSlot")};
             var importedSlotSpecs =
                 SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(new Hashtable(), oneSlotList);
             Assert.AreEqual(1, importedSlotSpecs.Count);
@@ -35,8 +35,8 @@ namespace Assets.Tests.UnitTests
         [Test]
         public void ImportsGreedySlotSpecFromRecipe()
         {
-            List<SlotSpecification> oneSlotList = new List<SlotSpecification>
-                {new SlotSpecification("greedySlot") {Greedy = true}};
+            List<SphereSpec> oneSlotList = new List<SphereSpec>
+                {new SphereSpec("greedySlot") {Greedy = true}};
             var importedSlotSpecs =
                 SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(new Hashtable(), oneSlotList);
             Assert.AreEqual(true, importedSlotSpecs.Single().Greedy);
@@ -45,8 +45,8 @@ namespace Assets.Tests.UnitTests
         [Test]
         public void ImportsRequirementsForSlottSpecFromRecipe()
         {
-            List<SlotSpecification> oneSlotList = new List<SlotSpecification>
-                {new SlotSpecification("greedySlot") {Greedy = true}};
+            List<SphereSpec> oneSlotList = new List<SphereSpec>
+                {new SphereSpec("greedySlot") {Greedy = true}};
             var importedSlotSpecs =
                 SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(new Hashtable(), oneSlotList);
             Assert.AreEqual(true, importedSlotSpecs.Single().Greedy);
@@ -68,7 +68,7 @@ namespace Assets.Tests.UnitTests
 
             var importedSlotSpecs =
                 SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(htWithElemenStack,
-                    new List<SlotSpecification>());
+                    new List<SphereSpec>());
             
             Assert.AreEqual("SlotSpecIdThatWeSaved", importedSlotSpecs.Single().Id);
         }

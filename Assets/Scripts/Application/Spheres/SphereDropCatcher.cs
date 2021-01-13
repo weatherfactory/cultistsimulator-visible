@@ -18,7 +18,7 @@ namespace SecretHistories.Spheres
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (Sphere.GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
+            if (Sphere.GoverningSphereSpec.Greedy) // we're greedy? No interaction.
                 return;
 
             var token = eventData.pointerDrag.GetComponent<Token>();

@@ -77,7 +77,7 @@ namespace SecretHistories.Entities
         public AspectsDictionary Aspects { get; set; }
 
         [FucineList(Localise = true)]
-        public List<SlotSpecification> Slots { get; set; }
+        public List<SphereSpec> Slots { get; set; }
 
         /// <summary>
         /// Inductions ONLY OCCUR WHEN A RECIPE COMPLETES. This ensures we don't get inductions spamming over and over.
@@ -130,7 +130,7 @@ namespace SecretHistories.Entities
 
         public Element()
         {
-            Slots = new List<SlotSpecification>();
+            Slots = new List<SphereSpec>();
             Aspects = new AspectsDictionary();
             XTriggers = new Dictionary<string, List<MorphDetails>>();
             Induces = new List<LinkedRecipeDetails>();
@@ -158,7 +158,7 @@ namespace SecretHistories.Entities
                 XTriggers.Add(k,inheritFromElement.XTriggers[k]);
             }
 
-            foreach (SlotSpecification s in inheritFromElement.Slots)
+            foreach (SphereSpec s in inheritFromElement.Slots)
             {
                 Slots.Add(s);
             }

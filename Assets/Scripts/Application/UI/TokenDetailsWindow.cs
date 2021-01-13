@@ -44,7 +44,7 @@ namespace SecretHistories.UI {
         Element _element;
         ElementStack _token;
 
-        SlotSpecification slotSpec;
+        SphereSpec slotSpec;
 
         DeckSpec deckSpec;
         int deckQuantity;
@@ -74,7 +74,7 @@ namespace SecretHistories.UI {
             Show();
         }
 
-        public void ShowSlotDetails(SlotSpecification slotSpec) {
+        public void ShowSlotDetails(SphereSpec slotSpec) {
 			/*
             // Check if we'd show the same, if so: do nothing
             if (this.slotSpec == slotSpec && gameObject.activeSelf)
@@ -176,7 +176,7 @@ namespace SecretHistories.UI {
 
         }
 
-        void SetSlot(SlotSpecification slotSpec)
+        void SetSlot(SphereSpec slotSpec)
 		{
             ShowImage(null);
             ShowImageDecayTimer(false);
@@ -313,7 +313,7 @@ namespace SecretHistories.UI {
             infoHighlight = null;
         }
 
-		void HighlightSlotCompatibleCards(SlotSpecification slotSpec) {
+		void HighlightSlotCompatibleCards(SphereSpec slotSpec) {
 			if (slotSpec.Greedy) // Greedy slots get no possible cards
 				return;
 
@@ -322,7 +322,7 @@ namespace SecretHistories.UI {
 
         private float cardPingLastTriggered = 0.0f;
 
-        public void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec)
+        public void HighlightAllStacksForSlotSpecificationOnTabletop(SphereSpec slotSpec)
         {
             float time = Time.realtimeSinceStartup;
             if (time > cardPingLastTriggered + 1.0f)    // Don't want to trigger these within a second of the last trigger, otherwise they stack up too much
@@ -339,7 +339,7 @@ namespace SecretHistories.UI {
 
 
 
-        private List<Token> FindAllElementTokenssForSlotSpecificationOnTabletop(SlotSpecification slotSpec)
+        private List<Token> FindAllElementTokenssForSlotSpecificationOnTabletop(SphereSpec slotSpec)
         {
             var stackList = new List<Token>();
             var worldSpheres = Registry.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World);

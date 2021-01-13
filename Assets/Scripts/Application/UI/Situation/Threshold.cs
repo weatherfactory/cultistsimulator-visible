@@ -51,18 +51,18 @@ namespace SecretHistories.UI {
 
         public override bool AllowDrag {
             get {
-                return !GoverningSlotSpecification.Greedy;
+                return !GoverningSphereSpec.Greedy;
             }
         }
 
         public override bool IsGreedy
         {
-            get { return GoverningSlotSpecification != null && GoverningSlotSpecification.Greedy; }
+            get { return GoverningSphereSpec != null && GoverningSphereSpec.Greedy; }
         }
 
         public bool IsConsuming
         {
-            get { return GoverningSlotSpecification.Consumes; }
+            get { return GoverningSphereSpec.Consumes; }
         }
 
         public enum SlotModifier { Locked, Ongoing, Greedy, Consuming };
@@ -77,14 +77,14 @@ namespace SecretHistories.UI {
         }
 
 
-        public void Initialise(SlotSpecification slotSpecification,SituationPath situationPath)
+        public void Initialise(SphereSpec sphereSpec,SituationPath situationPath)
         {
             _situationPath = situationPath;
-            GoverningSlotSpecification = slotSpecification;
+            GoverningSphereSpec = sphereSpec;
             gameObject.name = GetPath().ToString();
 
-            SlotLabel.text = slotSpecification.Label;
-            if (slotSpecification.Greedy)
+            SlotLabel.text = sphereSpec.Label;
+            if (sphereSpec.Greedy)
             {
                 GreedyAngel greedyAngel = new GreedyAngel();
                 greedyAngel.SetThresholdToGrabTo(this);
@@ -94,18 +94,18 @@ namespace SecretHistories.UI {
 
             }
 
-            var angelsToAdd = slotSpecification.MakeAngels();
+            var angelsToAdd = sphereSpec.MakeAngels();
             foreach(var a in angelsToAdd)
                 AddAngel(a);
             
-            GreedyIcon.SetActive(slotSpecification.Greedy);
-            ConsumingIcon.SetActive(slotSpecification.Consumes);
+            GreedyIcon.SetActive(sphereSpec.Greedy);
+            ConsumingIcon.SetActive(sphereSpec.Consumes);
 
         }
 
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
-            if (GoverningSlotSpecification.Greedy) // never show glow for greedy slots
+            if (GoverningSphereSpec.Greedy) // never show glow for greedy slots
                 return;
 
             //if we're not dragging anything, and the slot is empty, glow the slot.
@@ -127,7 +127,7 @@ namespace SecretHistories.UI {
         }
 
         public virtual void OnPointerExit(PointerEventData eventData) {
-            if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
+            if (GoverningSphereSpec.Greedy) // we're greedy? No interaction.
                 return;
 
             if(eventData.dragging)
@@ -187,7 +187,7 @@ namespace SecretHistories.UI {
         {
             if (GetElementTokens().Count() > 1)
             {
-                NoonUtility.Log("Something weird in slot " + GoverningSlotSpecification.Id +
+                NoonUtility.Log("Something weird in slot " + GoverningSphereSpec.Id +
                                 ": it has more than one stack, so we're just returning the first.");
                 return GetElementTokens().First();
 
@@ -275,9 +275,9 @@ namespace SecretHistories.UI {
 
             SpherePath path;
             if (ParentSlot != null)
-                path = new SpherePath(ParentSlot.GetPath(), GoverningSlotSpecification.Id);
+                path = new SpherePath(ParentSlot.GetPath(), GoverningSphereSpec.Id);
             else
-                path = new SpherePath(_situationPath,GoverningSlotSpecification.Id);
+                path = new SpherePath(_situationPath,GoverningSphereSpec.Id);
 
 
             if (!string.IsNullOrEmpty(PathIdentifier))
@@ -286,7 +286,7 @@ namespace SecretHistories.UI {
         }
 
         public override void ActivatePreRecipeExecutionBehaviour() {
-            if (GoverningSlotSpecification.Consumes) {
+            if (GoverningSphereSpec.Consumes) {
                 var token = GetElementTokenInSlot();
 
                 if (token != null)
@@ -303,7 +303,7 @@ namespace SecretHistories.UI {
             bool highlightGreedy = GreedyIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(GreedyIcon);
             bool highlightConsumes = ConsumingIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(ConsumingIcon);
 
-            Registry.Get<INotifier>().ShowSlotDetails(GoverningSlotSpecification, highlightGreedy, highlightConsumes);
+            Registry.Get<INotifier>().ShowSlotDetails(GoverningSphereSpec, highlightGreedy, highlightConsumes);
 
         }
 

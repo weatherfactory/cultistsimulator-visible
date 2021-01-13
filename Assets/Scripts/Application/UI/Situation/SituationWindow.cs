@@ -39,7 +39,7 @@ namespace SecretHistories.UI {
         [SerializeField] StartingSlotsManager startingSlots;
 
         [Space]
-        [SerializeField] RecipeSlotsDominion recipeSlotsDominion;
+        [SerializeField] List<Dominion> Dominions;
 
 
         [Space]
@@ -106,8 +106,9 @@ namespace SecretHistories.UI {
             startingSlots.Initialise(Verb, this,_situationPath);
            storage.Initialise(situation);
 
-
-            recipeSlotsDominion.Initialise(situation);
+           foreach(var d in Dominions)
+               d.AttachTo(situation);
+           
             results.Initialise(situation);
 
 

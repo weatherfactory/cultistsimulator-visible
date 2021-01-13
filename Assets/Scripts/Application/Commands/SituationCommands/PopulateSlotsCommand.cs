@@ -12,10 +12,10 @@ namespace SecretHistories.Commands.SituationCommands
 {
   public  class PopulateSlotsCommand: ISituationCommand
     {
-        private List<SlotSpecification> _populateWithSlots = new List<SlotSpecification>();
+        private List<SphereSpec> _populateWithSlots = new List<SphereSpec>();
 
         public CommandCategory CommandCategory => CommandCategory.RecipeThresholds;
-        public PopulateSlotsCommand(List<SlotSpecification> populateWithSlots)
+        public PopulateSlotsCommand(List<SphereSpec> populateWithSlots)
         {
             _populateWithSlots.AddRange(populateWithSlots);
         }

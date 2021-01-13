@@ -3,6 +3,8 @@ using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Constants;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
 
 namespace SecretHistories.States
 {
@@ -28,11 +30,18 @@ namespace SecretHistories.States
                 return true;
 
             //at time of writing, there's only a SlotSpecification if it's a Threshold
-            if (s.SphereCategory == SphereCategory.Threshold && s.GoverningSlotSpecification.IsActiveInState(StateEnum.Ongoing))
+            if (s.SphereCategory == SphereCategory.Threshold && s.GoverningSphereSpec.IsActiveInState(StateEnum.Ongoing))
                 return true;
 
             return false;
         }
+
+        public override bool IsVisibleInThisState(Dominion dominion)
+        {
+            return dominion.VisibleFor(StateEnum.Ongoing);
+
+        }
+
         /// <summary>
         /// WARNING: this assumes ShouldAlwaysSucceed, which is greast for prediction but not for execution
         /// </summary>

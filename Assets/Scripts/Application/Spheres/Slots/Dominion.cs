@@ -18,11 +18,11 @@ using TMPro;
 using SecretHistories.Services;
 
 namespace SecretHistories.UI {
-    public class RecipeSlotsDominion:MonoBehaviour,ISituationSubscriber,IDominion {
+    public class Dominion:MonoBehaviour,ISituationSubscriber {
 
         [SerializeField] Transform thresholdsTransform;
         [SerializeField] CanvasGroupFader canvasGroupFader;
-        public List<StateEnum> ActiveInSituationStates;
+        public List<StateEnum> VisibleForStates;
         public List<CommandCategory> RespondToCommandCategories;
         
         readonly HashSet<Threshold> recipeSlots=new HashSet<Threshold>();
@@ -31,10 +31,10 @@ namespace SecretHistories.UI {
         private readonly OnSphereRemovedEvent onSphereRemoved=new OnSphereRemovedEvent();
         private SituationPath _situationPath;
 
-        public void Initialise(Situation situation)
+        public void AttachTo(Situation situation)
         {
-            situation.AddSubscriber(this);
-            situation.RegisterAttachment(this);
+
+            situation.RegisterDominion(this);
             onSphereAdded.AddListener(situation.AttachSphere);
             onSphereRemoved.AddListener(situation.RemoveSphere);
             _situationPath = situation.Path;
@@ -48,17 +48,16 @@ namespace SecretHistories.UI {
 
         public void SituationStateChanged(Situation situation)
         {
-            if(!ActiveInSituationStates.Contains(situation.CurrentState.IsActiveInThisState()))
+            if(!canvasGroupFader.IsVisible() && situation.CurrentState.IsVisibleInThisState(this))
+                canvasGroupFader.Show();
+
+            if (canvasGroupFader.IsVisible() && !situation.CurrentState.IsVisibleInThisState(this))
+                canvasGroupFader.Hide();
         }
 
         public void TimerValuesChanged(Situation situation)
         {
-            if (situation.TimeRemaining <= 0f)
-                canvasGroupFader.Hide();
-            else
-            {
-                canvasGroupFader.Show();
-            }
+ //
         }
 
         public void SituationSphereContentsUpdated(Situation s)
@@ -71,17 +70,22 @@ namespace SecretHistories.UI {
          //
         }
 
-        public void CreateThreshold(SlotSpecification spec)
+        public void CreateThreshold(SphereSpec spec)
         {
             var newSlot = Registry.Get<PrefabFactory>().CreateLocally<Threshold>(thresholdsTransform);
             newSlot.Initialise(spec, _situationPath);
 
-            foreach(var activeInState in ActiveInSituationStates)
+            foreach(var activeInState in VisibleForStates)
                spec.MakeActiveInState(activeInState);
 
 
             this.recipeSlots.Add(newSlot);
             onSphereAdded.Invoke(newSlot);
+        }
+
+        public bool VisibleFor(StateEnum state)
+        {
+            return VisibleForStates.Contains(state);
         }
 
         public bool MatchesCommandCategory(CommandCategory category)

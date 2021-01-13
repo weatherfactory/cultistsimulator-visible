@@ -8,6 +8,7 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.Constants;
+using SecretHistories.UI;
 
 
 namespace SecretHistories.States
@@ -17,7 +18,8 @@ namespace SecretHistories.States
        public abstract void Enter(Situation situation);
        public abstract void Exit(Situation situation);
        public abstract bool IsActiveInThisState(Sphere sphereToCheck);
-       public abstract bool IsValidPredictionForState(Recipe recipeToCheck, Situation s);
+       public abstract bool IsVisibleInThisState(Dominion dominion);
+        public abstract bool IsValidPredictionForState(Recipe recipeToCheck, Situation s);
        public abstract bool AllowDuplicateVerbIfTransient { get; }
 
 

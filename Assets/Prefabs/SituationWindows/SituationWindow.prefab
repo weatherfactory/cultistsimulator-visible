@@ -468,7 +468,8 @@ MonoBehaviour:
   title: {fileID: 114797357020451180}
   PaginatedNotes: {fileID: 114985364964061106}
   startingSlots: {fileID: 114656839713261566}
-  recipeSlotsDominion: {fileID: 114151265001902868}
+  Dominions:
+  - {fileID: 7731683286596552914}
   results: {fileID: 114941313652618834}
   dumpResultsButton: {fileID: 114000012811200902}
   dumpResultsButtonText: {fileID: 114000013027545752}
@@ -1510,9 +1511,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224333676953882724}
-  - component: {fileID: 114151265001902868}
   - component: {fileID: 225493535554730180}
   - component: {fileID: 114848985628778574}
+  - component: {fileID: 7731683286596552914}
   m_Layer: 5
   m_Name: RecipeSlotsDominion
   m_TagString: Untagged
@@ -1543,22 +1544,6 @@ RectTransform:
   m_AnchoredPosition: {x: 350, y: -50}
   m_SizeDelta: {x: -350, y: 270}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &114151265001902868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269793152998520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f3a2bbc54a75fc4aa6b758cc3538eec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thresholdsTransform: {fileID: 224235797645518614}
-  canvasGroupFader: {fileID: 114848985628778574}
-  ActiveInSituationStates: 02000000
-  RespondToCommandCategories: 02000000
 --- !u!225 &225493535554730180
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1586,6 +1571,22 @@ MonoBehaviour:
   blockRaysDuringFade: 0
   durationTurnOn: 0.5
   durationTurnOff: 0.25
+--- !u!114 &7731683286596552914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269793152998520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdsTransform: {fileID: 224235797645518614}
+  canvasGroupFader: {fileID: 114848985628778574}
+  VisibleForStates: 02000000
+  RespondToCommandCategories: 02000000
 --- !u!1 &1287574504788578
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,7 +47,7 @@ namespace SecretHistories.Entities {
 
         public virtual IVerb Verb { get; set; }
         private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
-        private readonly List<IDominion> _registeredDominions = new List<IDominion>();
+        private readonly List<Dominion> _registeredDominions = new List<Dominion>();
 
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         public string OverrideTitle { get; set; }
@@ -142,8 +142,9 @@ namespace SecretHistories.Entities {
             NotifySubscribersOfTimerValueUpdate();
         }
 
-        public bool RegisterAttachment(IDominion dominionToRegister)
+        public bool RegisterDominion(Dominion dominionToRegister)
         {
+            AddSubscriber(dominionToRegister);
 
             if (_registeredDominions.Contains(dominionToRegister))
                 return false;
@@ -191,12 +192,12 @@ namespace SecretHistories.Entities {
             
         }
 
-        public IList<SlotSpecification> GetSlotsForCurrentRecipe()
+        public IList<SphereSpec> GetSlotsForCurrentRecipe()
         {
             if (CurrentPrimaryRecipe.Slots.Any())
                 return CurrentPrimaryRecipe.Slots;
             else
-                return new List<SlotSpecification>();
+                return new List<SphereSpec>();
         }
 
 
@@ -620,9 +621,9 @@ namespace SecretHistories.Entities {
 
 
 
-    public List<IDominion> GetSituationDominionsForCommandCategory(CommandCategory commandCategory)
+    public List<Dominion> GetSituationDominionsForCommandCategory(CommandCategory commandCategory)
     {
-            return new List<IDominion>(_registeredDominions.Where(a=>a.MatchesCommandCategory(commandCategory)));
+            return new List<Dominion>(_registeredDominions.Where(a=>a.MatchesCommandCategory(commandCategory)));
     }
 
     public List<Sphere> GetAvailableThresholdsForStackPush(ElementStack stack)

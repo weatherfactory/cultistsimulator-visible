@@ -58,7 +58,7 @@ namespace SecretHistories.Spheres.Angels
   
             foreach (var sphereToSearch in _spheresToGrabFrom)
             {
-                var matchingToken = FindStackForSlotSpecificationInSphere(destinationThresholdSphere.GoverningSlotSpecification, sphereToSearch);
+                var matchingToken = FindStackForSlotSpecificationInSphere(destinationThresholdSphere.GoverningSphereSpec, sphereToSearch);
                 if (matchingToken != null)
                 {
                     
@@ -93,7 +93,7 @@ namespace SecretHistories.Spheres.Angels
         }
 
 
-        private Token FindStackForSlotSpecificationInSphere(SlotSpecification slotSpec, Sphere sphereToSearch)
+        private Token FindStackForSlotSpecificationInSphere(SphereSpec slotSpec, Sphere sphereToSearch)
         {
             var rnd = new Random();
             var tokens = sphereToSearch.GetElementTokens().OrderBy(x => rnd.Next());

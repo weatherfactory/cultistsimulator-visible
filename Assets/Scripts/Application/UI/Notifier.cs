@@ -114,7 +114,7 @@ namespace SecretHistories.UI {
                 tokenDetails.Hide(); // hide the token window
         }
         
-        public void ShowSlotDetails(SlotSpecification slot, bool highlightGreedy, bool highlightConsumes) {
+        public void ShowSlotDetails(SphereSpec slot, bool highlightGreedy, bool highlightConsumes) {
             tokenDetails.ShowSlotDetails(slot);
             tokenDetails.HighlightSlotIcon(highlightGreedy, highlightConsumes);
             aspectDetails.Hide();

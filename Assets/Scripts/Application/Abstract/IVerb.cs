@@ -19,8 +19,8 @@ namespace SecretHistories.Interfaces
         string Art { get; }
         Type GetDefaultManifestationType();
         Type GetManifestationType(SphereCategory forSphereCategory);
-      SlotSpecification Slot { get; set; }
-      List<SlotSpecification> Slots { get; set; }
+      SphereSpec Slot { get; set; }
+      List<SphereSpec> Slots { get; set; }
       bool Startable { get; }
       bool ExclusiveOpen { get; }
       Situation CreateDefaultSituation(TokenLocation anchorLocation);

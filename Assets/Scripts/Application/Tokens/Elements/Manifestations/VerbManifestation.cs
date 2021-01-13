@@ -169,7 +169,7 @@ namespace SecretHistories.Elements.Manifestations
             else
             {
                 var sphereToDisplayAsMiniSlot = activeThresholdSpheres.Single();
-                ShowMiniSlot(sphereToDisplayAsMiniSlot.GoverningSlotSpecification.Greedy);
+                ShowMiniSlot(sphereToDisplayAsMiniSlot.GoverningSphereSpec.Greedy);
                 displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetElementStacks());
             }
 

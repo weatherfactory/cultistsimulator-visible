@@ -22,7 +22,7 @@ namespace SecretHistories.Entities
             Id = id;
             Label = label;
             Description = description;
-            Slots=new List<SlotSpecification>();
+            Slots=new List<SphereSpec>();
 
         }
 
@@ -53,8 +53,8 @@ namespace SecretHistories.Entities
 
         public string Description { get; set; }
 
-        public SlotSpecification Slot { get; set; }
-        public List<SlotSpecification> Slots { get; set; }
+        public SphereSpec Slot { get; set; }
+        public List<SphereSpec> Slots { get; set; }
         public bool Startable { get; set; }
         public bool ExclusiveOpen => true;
 

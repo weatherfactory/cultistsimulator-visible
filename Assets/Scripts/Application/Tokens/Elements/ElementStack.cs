@@ -276,7 +276,7 @@ namespace SecretHistories.UI {
 			}
         }
 
-        virtual public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb) {
+        virtual public List<SphereSpec> GetChildSlotSpecificationsForVerb(string forVerb) {
             return Element.Slots.Where(cs=>cs.ActionId==forVerb || cs.ActionId==string.Empty).ToList();
         }
 

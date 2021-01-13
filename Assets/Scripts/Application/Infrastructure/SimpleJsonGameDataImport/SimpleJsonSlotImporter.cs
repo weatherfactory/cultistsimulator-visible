@@ -14,9 +14,9 @@ namespace Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport
     public class SimpleJsonSlotImporter
     {
 
-        public static List<SlotSpecification> ImportSituationOngoingSlotSpecs(Hashtable htSituation, List<SlotSpecification> ongoingSlotsForRecipe)
+        public static List<SphereSpec> ImportSituationOngoingSlotSpecs(Hashtable htSituation, List<SphereSpec> ongoingSlotsForRecipe)
         {
-            List<SlotSpecification> ongoingSlotSpecs = new List<SlotSpecification>();
+            List<SphereSpec> ongoingSlotSpecs = new List<SphereSpec>();
 
             
 
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport
                 foreach (string slotPath in htOngoingSlotStacks.Keys)
                 {
                     var slotId = slotPath.Split(SpherePath.SEPARATOR)[0];
-                    var slotSpec = new SlotSpecification(slotId);
+                    var slotSpec = new SphereSpec(slotId);
                     ongoingSlotSpecs.Add(slotSpec);
                 }
             }

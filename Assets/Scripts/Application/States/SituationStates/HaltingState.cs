@@ -2,6 +2,8 @@
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Constants;
+using SecretHistories.Interfaces;
+using SecretHistories.UI;
 
 namespace SecretHistories.States
 {
@@ -24,6 +26,12 @@ namespace SecretHistories.States
         public override bool IsActiveInThisState(Sphere s)
         {
             return false;
+        }
+
+        public override bool IsVisibleInThisState(Dominion dominion)
+        {
+            return dominion.VisibleFor(StateEnum.Halting);
+
         }
 
         public override bool IsValidPredictionForState(Recipe recipeToCheck, Situation s)

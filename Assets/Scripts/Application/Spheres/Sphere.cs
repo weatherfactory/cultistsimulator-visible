@@ -60,7 +60,7 @@ namespace SecretHistories.Constants {
         public virtual bool ContentsHidden => false;
         public virtual bool IsGreedy => false;
         public abstract SphereCategory SphereCategory { get; }
-        public SlotSpecification GoverningSlotSpecification { get; set; } = new SlotSpecification();
+        public SphereSpec GoverningSphereSpec { get; set; } = new SphereSpec();
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
 
         public virtual bool IsInRangeOf(Sphere otherSphere)
@@ -624,10 +624,10 @@ namespace SecretHistories.Constants {
         {
             if (!stack.IsValidElementStack())
                 return new ContainerMatchForStack(new List<string>(), SlotMatchForAspectsType.ForbiddenAspectPresent);
-            if (GoverningSlotSpecification == null)
+            if (GoverningSphereSpec == null)
                 return ContainerMatchForStack.MatchOK();
             else
-                return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
+                return GoverningSphereSpec.GetSlotMatchForAspects(stack.GetAspects());
         }
 
         public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
