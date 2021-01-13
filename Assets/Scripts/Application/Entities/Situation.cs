@@ -131,7 +131,6 @@ namespace SecretHistories.Entities {
             _window = newWindow;
             AddSubscriber(_window);
 
-
             _window.OnWindowClosed.AddListener(Close);
             _window.OnStart.AddListener(TryStart);
             _window.OnCollect.AddListener(Conclude);

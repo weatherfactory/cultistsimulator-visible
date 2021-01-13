@@ -51,8 +51,12 @@ namespace SecretHistories.UI {
 
         public void TimerValuesChanged(Situation situation)
         {
-            UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
-                situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
+            if (situation.TimeRemaining <= 0f)
+                canvasGroupFader.Hide();
+            else
+            {
+                canvasGroupFader.Show();
+            }
         }
 
         public void SituationSphereContentsUpdated(Situation s)

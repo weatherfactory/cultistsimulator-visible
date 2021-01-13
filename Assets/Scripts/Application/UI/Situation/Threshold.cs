@@ -23,8 +23,7 @@ using UnityEngine.UI;
 
 namespace SecretHistories.UI {
 
-
-
+    
     public class Threshold : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
@@ -77,10 +76,6 @@ namespace SecretHistories.UI {
             
         }
 
-        private void EstablishAngels(SlotSpecification slotSpec)
-        {
-          
-        }
 
         public void Initialise(SlotSpecification slotSpecification,SituationPath situationPath)
         {
