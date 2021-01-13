@@ -1,6 +1,7 @@
 ﻿#pragma warning disable 0649
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using Assets.Scripts.Application.UI.Situation;
 using SecretHistories.Interfaces;
 using SecretHistories.UI.SlotsContainers;
@@ -13,6 +14,8 @@ using SecretHistories.Constants;
 
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 namespace SecretHistories.UI {
 
@@ -145,7 +148,9 @@ namespace SecretHistories.UI {
                 SituationStateChanged(situation);
             }
 
-            positioner.Show(canvasGroupFader.durationTurnOn, targetPosition); // Animates the window (position allows optional change is position)
+            Vector3 targetWorldPosition = transform.parent.TransformPoint(targetPosition);
+
+            positioner.Show(canvasGroupFader.durationTurnOn, targetWorldPosition); // Animates the window (position allows optional change is position)
 
             startingSlots.ArrangeSlots(); //won't have been arranged if a card was dumped in while the window was closed
             PaginatedNotes.SetFinalPage();

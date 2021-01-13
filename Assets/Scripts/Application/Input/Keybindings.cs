@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/Keybindings.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Application/Input/Keybindings.inputactions'
 
 using System;
 using System.Collections;

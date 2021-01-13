@@ -4189,12 +4189,13 @@ GameObject:
   m_Component:
   - component: {fileID: 224394800307692888}
   - component: {fileID: 114656839713261566}
+  - component: {fileID: 4470030975996782642}
   - component: {fileID: 114993708387918274}
   - component: {fileID: 114844407673096716}
   - component: {fileID: 225437182253246534}
   - component: {fileID: 114412774732763762}
   m_Layer: 5
-  m_Name: StartingSlots
+  m_Name: StartingSlotsDominion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4235,6 +4236,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridManager: {fileID: 114567428724889252}
   canvasGroupFader: {fileID: 114412774732763762}
+--- !u!114 &4470030975996782642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930796193437156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdsTransform: {fileID: 224707539595644502}
+  canvasGroupFader: {fileID: 114412774732763762}
+  VisibleForStates: 
+  RespondToCommandCategories: 
 --- !u!114 &114993708387918274
 MonoBehaviour:
   m_ObjectHideFlags: 0
