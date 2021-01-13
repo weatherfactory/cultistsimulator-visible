@@ -40,7 +40,6 @@ namespace SecretHistories.UI {
 
         [Space]
         [SerializeField] OngoingDisplay ongoingDisplay;
-        [SerializeField] SituationCountdownDisplay countdownDisplay;
 
 
         [Space]
@@ -110,7 +109,7 @@ namespace SecretHistories.UI {
 
             ongoingDisplay.Initialise(situation);
             results.Initialise(situation);
-            situation.AddSubscriber(countdownDisplay);
+
 
             //this is an improvement - the situation doesn't need to know what to add - but better yet would be to tie together creation + container add, at runtime
             foreach (var s in startingSlots.GetAllSlots())

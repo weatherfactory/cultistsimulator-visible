@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.UI.Situation;
 using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.UI;
@@ -22,12 +23,12 @@ namespace SecretHistories.UI {
     public class OngoingDisplay:MonoBehaviour,ISituationSubscriber,ISituationAttachment {
 
         [SerializeField] Transform slotHolder; 
-        [SerializeField] Image countdownBar;
-		[SerializeField] TextMeshProUGUI countdownText;
+
         [SerializeField] LayoutGroup storedCardsLayout;
         public CanvasGroupFader canvasGroupFader;
+        [SerializeField] SituationCountdownDisplay countdownDisplay;
+        [SerializeField] private SituationDeckEffectsView deckEffectsView;
 
-        [SerializeField] DeckEffectView[] deckEffectViews;
         readonly HashSet<Threshold> recipeSlots=new HashSet<Threshold>();
 
         private readonly OnContainerAddedEvent _onSlotAdded=new OnContainerAddedEvent();
@@ -41,12 +42,16 @@ namespace SecretHistories.UI {
             _onSlotAdded.AddListener(situation.AttachSphere);
             _onSlotRemoved.AddListener(situation.RemoveContainer);
             _situationPath = situation.Path;
+
+            situation.AddSubscriber(countdownDisplay);
+            situation.AddSubscriber(deckEffectsView);
+
         }
 
 
         public void SituationStateChanged(Situation situation)
         {
-            ShowDeckEffects(situation.CurrentPrimaryRecipe.DeckEffects);
+            //
         }
 
         public void TimerValuesChanged(Situation situation)
@@ -100,85 +105,6 @@ namespace SecretHistories.UI {
             this.recipeSlots.Clear();
         }
 
-
-
-        public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
-            EndingFlavour signalEndingFlavour)
-        {
-            if(durationRemaining<=0f)
-                canvasGroupFader.Hide();
-            else
-            {
-                canvasGroupFader.Show();
-
-                Color barColor =
-                    UIStyle.GetColorForCountdownBar(signalEndingFlavour, durationRemaining);
-
-                countdownBar.color = barColor;
-                countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (durationRemaining / originalDuration));
-                countdownText.color = barColor;
-                countdownText.text =
-                    Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
-                countdownText.richText = true;
-
-
-
-            }
-
-        }
-
-
-        public void ShowStoredAspects(IEnumerable<ElementStack> stacks) {
-            int i = 0;
-
-            var aspectFrames = storedCardsLayout.GetComponentsInChildren<ElementFrame>();
-            ElementFrame frame;
-            Element element;
-
-            foreach (var stack in stacks) {
-                element = Registry.Get<Compendium>().GetEntityById<Element>(stack.Element.Id);
-
-                if(!element.IsHidden)
-                { 
-                    for (int q = 0; q < stack.Quantity; q++) {
-                        if (i < aspectFrames.Length)
-                            frame = aspectFrames[i];
-                        else
-                            frame = Registry.Get<PrefabFactory>().CreateLocally<ElementFrame>(storedCardsLayout.transform);
-
-                        frame.PopulateDisplay(element,1);
-                        frame.gameObject.SetActive(true);
-                        i++;
-                    }
-                }
-            }
-
-            while (i < aspectFrames.Length) {
-                aspectFrames[i].gameObject.SetActive(false);
-
-                i++;
-            }
-        }
-
-        public void ShowDeckEffects(Dictionary<string, int> deckEffects) {
-            if(deckEffects.Count>deckEffectViews.Length)
-                NoonUtility.LogWarning($"{deckEffects.Count} deck effects to show in OngoingDisplay, but only {deckEffectViews.Length} slots.");
-
-            int i = 0;
-            foreach(var dev in deckEffectViews)
-                dev.gameObject.SetActive(false);
-
-
-            // Populate those we need
-            foreach (var item in deckEffects) {
-                var deckSpec = Registry.Get<Compendium>().GetEntityById<DeckSpec>(item.Key);
-                deckEffectViews[i].PopulateDisplay(deckSpec, item.Value);
-                deckEffectViews[i].gameObject.SetActive(true);
-                i++;
-            }
-
-
-        }
 
     }
 }
