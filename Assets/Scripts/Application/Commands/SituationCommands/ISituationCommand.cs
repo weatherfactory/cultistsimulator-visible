@@ -13,8 +13,8 @@ namespace SecretHistories.Commands
     public enum CommandCategory
     {
         Anchor,
-        VerbSlots,
-        RecipeSlots,
+        VerbThresholds,
+        RecipeThresholds,
         Timer,
         Storage,
         Output,

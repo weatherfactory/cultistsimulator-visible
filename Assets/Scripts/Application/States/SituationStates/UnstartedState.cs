@@ -62,7 +62,7 @@ namespace SecretHistories.States
 
         public override void Continue (Situation situation)
         {
-            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.VerbSlots,situation);
+            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.VerbThresholds,situation);
         }
     }
 }

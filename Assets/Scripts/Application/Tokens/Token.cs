@@ -77,8 +77,8 @@ namespace SecretHistories.UI {
         public UnityEvent OnStart;
         public UnityEvent OnCollect;
         public UnityEvent OnWindowClosed;
-        public OnContainerAddedEvent OnContainerAdded;
-        public OnContainerRemovedEvent OnContainerRemoved;
+        public OnSphereAddedEvent OnSphereAdded;
+        public OnSphereRemovedEvent OnSphereRemoved;
 
 
         public virtual void Awake()

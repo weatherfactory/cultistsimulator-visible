@@ -468,7 +468,7 @@ MonoBehaviour:
   title: {fileID: 114797357020451180}
   PaginatedNotes: {fileID: 114985364964061106}
   startingSlots: {fileID: 114656839713261566}
-  ongoingDisplay: {fileID: 114151265001902868}
+  recipeSlotsDominion: {fileID: 114151265001902868}
   results: {fileID: 114941313652618834}
   dumpResultsButton: {fileID: 114000012811200902}
   dumpResultsButtonText: {fileID: 114000013027545752}
@@ -485,10 +485,10 @@ MonoBehaviour:
   OnWindowClosed:
     m_PersistentCalls:
       m_Calls: []
-  OnContainerAdded:
+  OnSphereAdded:
     m_PersistentCalls:
       m_Calls: []
-  OnContainerRemoved:
+  OnSphereRemoved:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &114651031545853594
@@ -911,7 +911,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224333676953882724}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1514,7 +1514,7 @@ GameObject:
   - component: {fileID: 225493535554730180}
   - component: {fileID: 114848985628778574}
   m_Layer: 5
-  m_Name: OngoingDisplay
+  m_Name: RecipeSlotsDominion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1532,7 +1532,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4992054091558347646}
-  - {fileID: 224325926073735766}
   - {fileID: 224235797645518614}
   - {fileID: 224700297124352810}
   - {fileID: 224680463603979946}
@@ -1553,14 +1552,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1269793152998520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83ea79b41c19c24aa23c744bdd740d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f3a2bbc54a75fc4aa6b758cc3538eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotHolder: {fileID: 224235797645518614}
-  storedCardsLayout: {fileID: 114129789786004442}
+  thresholdsTransform: {fileID: 224235797645518614}
   canvasGroupFader: {fileID: 114848985628778574}
-  countdownDisplay: {fileID: 4540098001003118745}
-  deckEffectsView: {fileID: 263503681570708618}
+  countdownDisplay: {fileID: 0}
+  deckEffectsView: {fileID: 0}
 --- !u!225 &225493535554730180
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1940,66 +1938,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1470104448022718
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 224325926073735766}
-  - component: {fileID: 114129789786004442}
-  m_Layer: 5
-  m_Name: StoredElements
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &224325926073735766
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470104448022718}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 224333676953882724}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 100}
-  m_Pivot: {x: 0.5, y: 0}
---- !u!114 &114129789786004442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470104448022718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 10
-    m_Top: 10
-    m_Bottom: 10
-  m_ChildAlignment: 8
-  m_StartCorner: 3
-  m_StartAxis: 0
-  m_CellSize: {x: 40, y: 40}
-  m_Spacing: {x: 2, y: 5}
-  m_Constraint: 0
-  m_ConstraintCount: 2
 --- !u!1 &1484709592614730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2858,7 +2796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224235797645518614}
   m_Layer: 5
-  m_Name: OngoingSlotHolder
+  m_Name: ThresholdsTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2876,7 +2814,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224333676953882724}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3680,7 +3618,7 @@ RectTransform:
   - {fileID: 224750838280811094}
   - {fileID: 224293597891968156}
   m_Father: {fileID: 224333676953882724}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}

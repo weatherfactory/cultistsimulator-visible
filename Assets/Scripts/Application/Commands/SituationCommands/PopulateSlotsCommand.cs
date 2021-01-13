@@ -14,12 +14,11 @@ namespace SecretHistories.Commands.SituationCommands
     {
         private List<SlotSpecification> _populateWithSlots = new List<SlotSpecification>();
 
-        public CommandCategory CommandCategory => CommandCategory.RecipeSlots;
+        public CommandCategory CommandCategory => CommandCategory.RecipeThresholds;
         public PopulateSlotsCommand(List<SlotSpecification> populateWithSlots)
         {
             _populateWithSlots.AddRange(populateWithSlots);
         }
-
 
 
         public bool Execute(Situation situation)
@@ -27,7 +26,7 @@ namespace SecretHistories.Commands.SituationCommands
             if (_populateWithSlots.Count > 0) //only execute if there are any relevant slot instructions. We don't want to clear existing slots with a recipe that doesn't specify them
                 //this may be irrelevant if we only add a command when we need one
             {
-                var attachment = situation.GetSituationAttachmentsForCommandCategory(this.CommandCategory).FirstOrDefault();
+                var attachment = situation.GetSituationDominionsForCommandCategory(this.CommandCategory).FirstOrDefault();
                 if(attachment!=null)
                 {
                     attachment.ClearThresholds();

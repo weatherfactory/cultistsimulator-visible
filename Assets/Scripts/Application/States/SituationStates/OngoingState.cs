@@ -53,7 +53,7 @@ namespace SecretHistories.States
         public override void Continue(Situation situation)
         {
             situation.CommandQueue.ExecuteCommandsFor(CommandCategory.Anchor, situation);
-            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.RecipeSlots, situation);
+            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.RecipeThresholds, situation);
             situation.CommandQueue.ExecuteCommandsFor(CommandCategory.Timer, situation);
 
             if (situation.TimeRemaining <= 0)

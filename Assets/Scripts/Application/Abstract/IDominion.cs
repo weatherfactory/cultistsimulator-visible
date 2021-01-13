@@ -7,7 +7,7 @@ using SecretHistories.Commands;
 
 namespace SecretHistories.Interfaces
 {
-    public interface ISituationAttachment
+    public interface IDominion
     {
         bool MatchesCommandCategory(CommandCategory category);
         void ClearThresholds();

@@ -47,7 +47,7 @@ namespace SecretHistories.Entities {
 
         public virtual IVerb Verb { get; set; }
         private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
-        private readonly List<ISituationAttachment> _registeredAttachments = new List<ISituationAttachment>();
+        private readonly List<IDominion> _registeredDominions = new List<IDominion>();
 
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         public string OverrideTitle { get; set; }
@@ -117,8 +117,8 @@ namespace SecretHistories.Entities {
             _anchor.OnWindowClosed.AddListener(Close);
             _anchor.OnStart.AddListener(TryStart);
             _anchor.OnCollect.AddListener(Conclude);
-            _anchor.OnContainerAdded.AddListener(AttachSphere);
-            _anchor.OnContainerRemoved.AddListener(RemoveContainer);
+            _anchor.OnSphereAdded.AddListener(AttachSphere);
+            _anchor.OnSphereRemoved.AddListener(RemoveSphere);
             _anchor.Populate(this);
             NotifySubscribersOfStateAndTimerChange();
             NotifySubscribersOfTimerValueUpdate();
@@ -134,21 +134,21 @@ namespace SecretHistories.Entities {
             _window.OnWindowClosed.AddListener(Close);
             _window.OnStart.AddListener(TryStart);
             _window.OnCollect.AddListener(Conclude);
-            _window.OnContainerAdded.AddListener(AttachSphere);
-            _window.OnContainerRemoved.AddListener(RemoveContainer);
+            _window.OnSphereAdded.AddListener(AttachSphere);
+            _window.OnSphereRemoved.AddListener(RemoveSphere);
 
             _window.Initialise(this);
             NotifySubscribersOfStateAndTimerChange();
             NotifySubscribersOfTimerValueUpdate();
         }
 
-        public bool RegisterAttachment(ISituationAttachment attachmentToRegister)
+        public bool RegisterAttachment(IDominion dominionToRegister)
         {
 
-            if (_registeredAttachments.Contains(attachmentToRegister))
+            if (_registeredDominions.Contains(dominionToRegister))
                 return false;
 
-            _registeredAttachments.Add(attachmentToRegister);
+            _registeredDominions.Add(dominionToRegister);
             return true;
         }
 
@@ -184,7 +184,7 @@ namespace SecretHistories.Entities {
                 AttachSphere(c);
         }
 
-        public void RemoveContainer(Sphere c)
+        public void RemoveSphere(Sphere c)
         {
             c.Unsubscribe(this);
             _spheres.Remove(c);
@@ -620,9 +620,9 @@ namespace SecretHistories.Entities {
 
 
 
-    public List<ISituationAttachment> GetSituationAttachmentsForCommandCategory(CommandCategory commandCategory)
+    public List<IDominion> GetSituationDominionsForCommandCategory(CommandCategory commandCategory)
     {
-            return new List<ISituationAttachment>(_registeredAttachments.Where(a=>a.MatchesCommandCategory(commandCategory)));
+            return new List<IDominion>(_registeredDominions.Where(a=>a.MatchesCommandCategory(commandCategory)));
     }
 
     public List<Sphere> GetAvailableThresholdsForStackPush(ElementStack stack)

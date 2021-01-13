@@ -20,31 +20,28 @@ using SecretHistories.Services;
 using UnityEngine.Events;
 
 namespace SecretHistories.UI {
-    public class OngoingDisplay:MonoBehaviour,ISituationSubscriber,ISituationAttachment {
+    public class RecipeSlotsDominion:MonoBehaviour,ISituationSubscriber,IDominion {
 
-        [SerializeField] Transform slotHolder; 
-
-        [SerializeField] LayoutGroup storedCardsLayout;
-        public CanvasGroupFader canvasGroupFader;
-        [SerializeField] SituationCountdownDisplay countdownDisplay;
-        [SerializeField] private SituationDeckEffectsView deckEffectsView;
-
+        [SerializeField] Transform thresholdsTransform;
+        [SerializeField] CanvasGroupFader canvasGroupFader;
+        
         readonly HashSet<Threshold> recipeSlots=new HashSet<Threshold>();
 
-        private readonly OnContainerAddedEvent _onSlotAdded=new OnContainerAddedEvent();
-        private readonly OnContainerRemovedEvent _onSlotRemoved=new OnContainerRemovedEvent();
+        private readonly OnSphereAddedEvent onSphereAdded=new OnSphereAddedEvent();
+        private readonly OnSphereRemovedEvent onSphereRemoved=new OnSphereRemovedEvent();
         private SituationPath _situationPath;
 
         public void Initialise(Situation situation)
         {
             situation.AddSubscriber(this);
             situation.RegisterAttachment(this);
-            _onSlotAdded.AddListener(situation.AttachSphere);
-            _onSlotRemoved.AddListener(situation.RemoveContainer);
+            onSphereAdded.AddListener(situation.AttachSphere);
+            onSphereRemoved.AddListener(situation.RemoveSphere);
             _situationPath = situation.Path;
 
-            situation.AddSubscriber(countdownDisplay);
-            situation.AddSubscriber(deckEffectsView);
+     
+            foreach (var c in gameObject.GetComponentsInChildren<ISituationSubscriber>())
+                situation.AddSubscriber(c);
 
         }
 
@@ -76,7 +73,7 @@ namespace SecretHistories.UI {
 
         public void CreateThreshold(SlotSpecification spec)
         {
-            var newSlot = Registry.Get<PrefabFactory>().CreateLocally<Threshold>(slotHolder);
+            var newSlot = Registry.Get<PrefabFactory>().CreateLocally<Threshold>(thresholdsTransform);
             newSlot.Initialise(spec, _situationPath);
 
 
@@ -84,13 +81,13 @@ namespace SecretHistories.UI {
 
 
             this.recipeSlots.Add(newSlot);
-            _onSlotAdded.Invoke(newSlot);
+            onSphereAdded.Invoke(newSlot);
         }
 
         public bool MatchesCommandCategory(CommandCategory category)
         {
 
-            return category == CommandCategory.RecipeSlots;
+            return category == CommandCategory.RecipeThresholds;
         }
 
         public void ClearThresholds()
@@ -98,7 +95,7 @@ namespace SecretHistories.UI {
 
             foreach (var os in this.recipeSlots)
             {
-                _onSlotRemoved.Invoke(os);
+                onSphereRemoved.Invoke(os);
                 os.Retire();
             }
 

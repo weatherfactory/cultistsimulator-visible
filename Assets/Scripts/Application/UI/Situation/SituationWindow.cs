@@ -17,10 +17,10 @@ using UnityEngine.EventSystems;
 namespace SecretHistories.UI {
 
     [Serializable]
-    public class OnContainerAddedEvent : UnityEvent<Sphere> { }
+    public class OnSphereAddedEvent : UnityEvent<Sphere> { }
 
     [Serializable]
-    public class OnContainerRemovedEvent : UnityEvent<Sphere> { }
+    public class OnSphereRemovedEvent : UnityEvent<Sphere> { }
 
 
     [RequireComponent(typeof(SituationWindowPositioner))]
@@ -39,7 +39,7 @@ namespace SecretHistories.UI {
         [SerializeField] StartingSlotsManager startingSlots;
 
         [Space]
-        [SerializeField] OngoingDisplay ongoingDisplay;
+        [SerializeField] RecipeSlotsDominion recipeSlotsDominion;
 
 
         [Space]
@@ -59,8 +59,8 @@ namespace SecretHistories.UI {
         public UnityEvent OnStart;
         public UnityEvent OnCollect;
         public UnityEvent OnWindowClosed;
-        public OnContainerAddedEvent OnContainerAdded;
-        public OnContainerRemovedEvent OnContainerRemoved;
+        public OnSphereAddedEvent OnSphereAdded;
+        public OnSphereRemovedEvent OnSphereRemoved;
 
         public TokenLocation LastOpenLocation;
 
@@ -107,13 +107,13 @@ namespace SecretHistories.UI {
            storage.Initialise(situation);
 
 
-            ongoingDisplay.Initialise(situation);
+            recipeSlotsDominion.Initialise(situation);
             results.Initialise(situation);
 
 
             //this is an improvement - the situation doesn't need to know what to add - but better yet would be to tie together creation + container add, at runtime
             foreach (var s in startingSlots.GetAllSlots())
-                OnContainerAdded.Invoke(s);
+                OnSphereAdded.Invoke(s);
 
             if (Verb.Startable)
             {

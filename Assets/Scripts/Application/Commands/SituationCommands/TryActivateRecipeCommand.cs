@@ -10,7 +10,7 @@ namespace SecretHistories.Commands.SituationCommands
     {
         private readonly Recipe _recipeToActivate;
             
-        public CommandCategory CommandCategory => CommandCategory.VerbSlots;
+        public CommandCategory CommandCategory => CommandCategory.VerbThresholds;
 
         public TryActivateRecipeCommand(Recipe recipeToActivate)
         {
