@@ -20,16 +20,17 @@ using SecretHistories.Services;
 namespace SecretHistories.UI {
     public class Dominion:MonoBehaviour,ISituationSubscriber {
 
-        [SerializeField] Transform thresholdsTransform;
+        [SerializeField] ThresholdsWrangler thresholdsWrangler;
         [SerializeField] CanvasGroupFader canvasGroupFader;
         public List<StateEnum> VisibleForStates;
         public List<CommandCategory> RespondToCommandCategories;
         
-        readonly HashSet<Threshold> recipeSlots=new HashSet<Threshold>();
+        readonly HashSet<ThresholdSphere> thresholds=new HashSet<ThresholdSphere>();
 
         private readonly OnSphereAddedEvent onSphereAdded=new OnSphereAddedEvent();
         private readonly OnSphereRemovedEvent onSphereRemoved=new OnSphereRemovedEvent();
         private SituationPath _situationPath;
+        private IVerb situationVerb;
 
         public void AttachTo(Situation situation)
         {
@@ -48,6 +49,9 @@ namespace SecretHistories.UI {
 
         public void SituationStateChanged(Situation situation)
         {
+            _situationPath = situation.Path;
+            situationVerb = situation.Verb;
+
             if(!canvasGroupFader.IsVisible() && situation.CurrentState.IsVisibleInThisState(this))
                 canvasGroupFader.Show();
 
@@ -62,7 +66,7 @@ namespace SecretHistories.UI {
 
         public void SituationSphereContentsUpdated(Situation s)
         {
-         //
+         
         }
 
         public void ReceiveNotification(INotification n)
@@ -72,15 +76,11 @@ namespace SecretHistories.UI {
 
         public void CreateThreshold(SphereSpec spec)
         {
-            var newSlot = Registry.Get<PrefabFactory>().CreateLocally<Threshold>(thresholdsTransform);
-            newSlot.Initialise(spec, _situationPath);
+            foreach (var activeInState in VisibleForStates)
+                spec.MakeActiveInState(activeInState);
 
-            foreach(var activeInState in VisibleForStates)
-               spec.MakeActiveInState(activeInState);
-
-
-            this.recipeSlots.Add(newSlot);
-            onSphereAdded.Invoke(newSlot);
+            var newThreshold= thresholdsWrangler.BuildPrimaryThreshold(spec,_situationPath,situationVerb);
+            onSphereAdded.Invoke(newThreshold);
         }
 
         public bool VisibleFor(StateEnum state)
@@ -96,13 +96,7 @@ namespace SecretHistories.UI {
         public void ClearThresholds()
         {
 
-            foreach (var os in this.recipeSlots)
-            {
-                onSphereRemoved.Invoke(os);
-                os.Retire();
-            }
-
-            this.recipeSlots.Clear();
+          thresholdsWrangler.RemoveAllThresholds();
         }
 
 

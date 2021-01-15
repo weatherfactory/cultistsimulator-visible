@@ -108,7 +108,7 @@ namespace SecretHistories.Entities {
         }
 
 
-        public void OnTokensChangedForSphere(TokenInteractionEventArgs args)
+        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             NotifyAspectsDirty();
 

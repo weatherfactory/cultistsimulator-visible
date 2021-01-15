@@ -1,13 +1,14 @@
 ﻿#pragma warning disable 0649
 using System.Collections;
 using System.Collections.Generic;
+using SecretHistories.Enums;
 using UnityEngine;
 
 namespace SecretHistories.UI {
     public class RecipeSlotViz : MonoBehaviour {
 
         public RectTransform rectTrans;
-        [SerializeField] Threshold slot;
+        [SerializeField] ThresholdSphere slot;
         [SerializeField] Animation anim;
 
         bool isHidden;
@@ -48,7 +49,7 @@ namespace SecretHistories.UI {
         }
 
         public void OnHideEnd() {
-            slot.Retire();
+            slot.Retire(SphereRetirementType.Graceful);
         }
 
         // POSITION

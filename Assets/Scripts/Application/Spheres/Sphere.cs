@@ -62,6 +62,8 @@ namespace SecretHistories.Constants {
         public abstract SphereCategory SphereCategory { get; }
         public SphereSpec GoverningSphereSpec { get; set; } = new SphereSpec();
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
+        public GameObject GreedyIcon;
+        public GameObject ConsumingIcon;
 
         public virtual bool IsInRangeOf(Sphere otherSphere)
         {
@@ -124,9 +126,16 @@ namespace SecretHistories.Constants {
 
 
 
-        public virtual bool Retire()
+        public virtual bool Retire(SphereRetirementType sphereRetirementType)
         {
-            RetireAllTokens();
+            if(sphereRetirementType!=SphereRetirementType.Destructive && sphereRetirementType!=SphereRetirementType.Graceful)
+                NoonUtility.LogWarning("Unknown sphere retirement type: " + sphereRetirementType);
+
+            if(sphereRetirementType==SphereRetirementType.Destructive)
+                RetireAllTokens();
+            else
+                EvictAllTokens();
+
             Destroy(gameObject);
             Defunct = true;
             return true;
@@ -490,7 +499,7 @@ namespace SecretHistories.Constants {
             if (!_tokens.Contains(token))
                 _tokens.Add(token);
 
-            NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Sphere = this,Context = context,Token=token});
+            NotifyTokensChangedForSphere(new SphereContentsChangedEventArgs() { Sphere = this,Context = context,TokenAdded= token});
             DisplayAndPositionHere(token, context);
 
         }
@@ -582,21 +591,12 @@ namespace SecretHistories.Constants {
         /// removes the stack from this stack manager; doesn't retire the stack
         /// </summary>
         /// <param name="stack"></param>
-        public virtual void RemoveToken(Token token)
+        public virtual void RemoveToken(Token token,Context context)
         {
             _tokens.Remove(token);
-            NotifyTokensChangedForSphere(new TokenInteractionEventArgs {Sphere = this});
+            NotifyTokensChangedForSphere(new SphereContentsChangedEventArgs() {Sphere = this,TokenRemoved= token,Context=context});
         }
 
-        /// <summary>
-        /// removes the stacks from this stack manager; doesn't retire the stack
-        /// </summary>
-        public void RemoveAllStacks()
-        {
-            var tokensListCopy = new List<Token>(_tokens);
-            foreach (Token s in tokensListCopy)
-                RemoveToken(s);
-        }
 
         public void RetireAllTokens()
         {
@@ -612,6 +612,12 @@ namespace SecretHistories.Constants {
                 t.Retire(RetirementVFX.None);
         }
 
+        public void EvictAllTokens()
+        {
+            var listCopy = new List<Token>(_tokens);
+            foreach (Token t in listCopy)
+                t.GoAway(new Context(Context.ActionSource.ContainingSphereRetired));
+        }
 
 
         public virtual void ActivatePreRecipeExecutionBehaviour()
@@ -630,7 +636,7 @@ namespace SecretHistories.Constants {
                 return GoverningSphereSpec.GetSlotMatchForAspects(stack.GetAspects());
         }
 
-        public void NotifyTokensChangedForSphere(TokenInteractionEventArgs args)
+        public void NotifyTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             Catalogue.OnTokensChangedForSphere(args);
             foreach(var s in _subscribers)

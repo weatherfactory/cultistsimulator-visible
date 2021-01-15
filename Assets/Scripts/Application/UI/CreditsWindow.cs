@@ -44,7 +44,7 @@ namespace SecretHistories.UI
 
         }
 
-        public void OnTokensChangedForSphere(TokenInteractionEventArgs args)
+        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
         //
         }

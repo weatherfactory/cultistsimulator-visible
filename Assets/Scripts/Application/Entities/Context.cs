@@ -24,7 +24,8 @@ public class Context {
         TravelFailed,
         UI,
         SpawningAnchor,
-        PushedAside
+        PushedAside,
+        ContainingSphereRetired
     }
 
     public ActionSource actionSource;

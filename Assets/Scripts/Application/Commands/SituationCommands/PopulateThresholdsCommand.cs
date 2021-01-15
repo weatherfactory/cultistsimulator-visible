@@ -10,27 +10,28 @@ using SecretHistories.States;
 
 namespace SecretHistories.Commands.SituationCommands
 {
-  public  class PopulateSlotsCommand: ISituationCommand
+  public  class PopulateThresholdsCommand: ISituationCommand
     {
-        private List<SphereSpec> _populateWithSlots = new List<SphereSpec>();
+        private List<SphereSpec> _populateWithThresholds = new List<SphereSpec>();
 
-        public CommandCategory CommandCategory => CommandCategory.RecipeThresholds;
-        public PopulateSlotsCommand(List<SphereSpec> populateWithSlots)
+        public CommandCategory CommandCategory { get; }
+        public PopulateThresholdsCommand(CommandCategory commandCategory, List<SphereSpec> populateWithThresholds)
         {
-            _populateWithSlots.AddRange(populateWithSlots);
+            _populateWithThresholds.AddRange(populateWithThresholds);
+            CommandCategory = commandCategory;
         }
 
 
         public bool Execute(Situation situation)
         {
-            if (_populateWithSlots.Count > 0) //only execute if there are any relevant slot instructions. We don't want to clear existing slots with a recipe that doesn't specify them
+            if (_populateWithThresholds.Count > 0) //only execute if there are any relevant slot instructions. We don't want to clear existing slots with a recipe that doesn't specify them
                 //this may be irrelevant if we only add a command when we need one
             {
                 var attachment = situation.GetSituationDominionsForCommandCategory(this.CommandCategory).FirstOrDefault();
                 if(attachment!=null)
                 {
                     attachment.ClearThresholds();
-                    foreach (var spec in _populateWithSlots)
+                    foreach (var spec in _populateWithThresholds)
                         attachment.CreateThreshold(spec);
                     return true;
                 }

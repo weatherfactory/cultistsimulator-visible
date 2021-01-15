@@ -171,7 +171,7 @@ namespace SecretHistories.UI {
 			}
 			_aspectsDirtyInc = true;
 
-            _attachedToken.OnElementStackStateChanged(this);
+            _attachedToken.onElementStackQuantityChanged(this);
             
         }
 

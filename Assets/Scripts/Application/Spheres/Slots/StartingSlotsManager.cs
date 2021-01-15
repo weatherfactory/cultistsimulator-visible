@@ -18,11 +18,11 @@ using SecretHistories.Constants;
 namespace SecretHistories.UI.SlotsContainers {
     public class StartingSlotsManager : MonoBehaviour {
 
-        [SerializeField] SlotGridManager gridManager;
+        [SerializeField] ThresholdsWrangler _gridWrangler;
         public CanvasGroupFader canvasGroupFader;
-        protected List<Threshold> validSlots;
+        protected List<ThresholdSphere> validSlots;
 
-        protected Threshold primarySlot;
+        protected ThresholdSphere primarySlot;
         private IVerb _verb;
         private SituationWindow _window;
         private SituationPath _situationPath;
@@ -35,7 +35,7 @@ namespace SecretHistories.UI.SlotsContainers {
             IList<ElementStack> stacks = new List<ElementStack>();
             ElementStack stack;
 
-            foreach (Threshold slot in GetAllSlots())
+            foreach (ThresholdSphere slot in GetAllSlots())
             {
                 stack = slot.GetElementTokenInSlot().ElementStack;
 
@@ -56,7 +56,7 @@ namespace SecretHistories.UI.SlotsContainers {
             AspectsDictionary currentAspects = new AspectsDictionary();
             ElementStack stack;
 
-            foreach (Threshold slot in GetAllSlots())
+            foreach (ThresholdSphere slot in GetAllSlots())
             {
                 stack = slot.GetElementTokenInSlot().ElementStack;
 
@@ -67,45 +67,45 @@ namespace SecretHistories.UI.SlotsContainers {
             return currentAspects;
         }
 
-        public virtual IList<Threshold> GetAllSlots()
+        public virtual IList<ThresholdSphere> GetAllSlots()
         {
 
             return validSlots;
         }
 
-        public Threshold GetSlotBySaveLocationInfoPath(string saveLocationInfoPath)
+        public ThresholdSphere GetSlotBySaveLocationInfoPath(string saveLocationInfoPath)
         {
             var candidateSlots = GetAllSlots();
-            Threshold slotToReturn = candidateSlots.SingleOrDefault(s => s.GetPath().ToString() == saveLocationInfoPath);
+            ThresholdSphere slotToReturn = candidateSlots.SingleOrDefault(s => s.GetPath().ToString() == saveLocationInfoPath);
             return slotToReturn;
         }
 
 
-        public void Initialise(IVerb verb,SituationWindow window,SituationPath situationPath) {
+        //public void Initialise(IVerb verb,SituationWindow window,SituationPath situationPath) {
             
             
-            var children = GetComponentsInChildren<Threshold>();
-            var allSlots = new List<Threshold>(children);
-            validSlots = new List<Threshold>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSphereSpec != null));
+        //    var children = GetComponentsInChildren<ThresholdSphere>();
+        //    var allSlots = new List<ThresholdSphere>(children);
+        //    validSlots = new List<ThresholdSphere>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSphereSpec != null));
 
-            _verb = verb;
-            _window= window;
-            _situationPath = situationPath;
+        //    _verb = verb;
+        //    _window= window;
+        //    _situationPath = situationPath;
             
 
-        var primarySlotSpecification = verb.Slot;
-            if(primarySlotSpecification!=null)
-                primarySlot = BuildSlot(primarySlotSpecification.Label, primarySlotSpecification, null,false);
-            else
-                primarySlot = BuildSlot("Primary recipe slot", new SphereSpec(), null);
+        //var primarySlotSpecification = verb.Slot;
+        //    if(primarySlotSpecification!=null)
+        //        primarySlot = BuildSlot(primarySlotSpecification.Label, primarySlotSpecification, null,false);
+        //    else
+        //        primarySlot = BuildSlot("Primary recipe slot", new SphereSpec(), null);
 
 
-            var otherslots = verb.Slots;
-            if(otherslots!=null)
-                foreach (var s in otherslots)
-                    BuildSlot(s.Label, s, null);;
+        //    var otherslots = verb.Slots;
+        //    if(otherslots!=null)
+        //        foreach (var s in otherslots)
+        //            BuildSlot(s.Label, s, null);;
 
-        }
+        //}
 
         public void UpdateDisplay(Situation situation)
         {
@@ -117,120 +117,42 @@ namespace SecretHistories.UI.SlotsContainers {
         }
 
         
-        public void RespondToStackAdded(Threshold slot, ElementStack stack, Context context) {
-            //currently, nothing calls this - it used to be OnCardAdded. I hope we can feed it through the primary event flow
-
-            _window.TryResizeWindow(GetAllSlots().Count);
-           
-
-            if (slot.IsPrimarySlot() && stack.HasChildSlotsForVerb(_verb.Id))
-                AddSlotsForStack(stack, slot);
-
-            ArrangeSlots();
 
 
-        }
-
-        protected void AddSlotsForStack(ElementStack stack, Threshold parentSlot) {
-
-            foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(_verb.Id))
-            {
-                var slot = BuildSlot("childslot of " + stack.Element.Id, childSlotSpecification, parentSlot);
-                parentSlot.childSlots.Add(slot);
-            }
-        }
-
-        public void RespondToStackRemoved(ElementStack stack, Context context) {
-            //currently, nothing calls this - it used to be OnCardAdded. I hope we can feed it through the primary event flow
-            // startingSlots updated may resize window
 
 
-            // Only update the slots if we're doing this manually, otherwise don't
-            // Addendum: We also do this when retiring a card - Martin
-            if (context.IsManualAction() || context.actionSource == Context.ActionSource.Retire)
-                RemoveAnyChildSlotsWithEmptyParent(context);
-
-            ArrangeSlots();
-
-        }
-
-        public void RemoveAnyChildSlotsWithEmptyParent(Context context) {
-            // We get a copy of the list, since it modifies itself when slots are removed
-            List<Threshold> currentSlots = new List<Threshold>(GetAllSlots());
-
-            foreach (Threshold s in currentSlots) {
-                if (s != null && s.GetElementTokenInSlot() == null && s.childSlots.Count > 0) {
-                    List<Threshold> currentChildSlots = new List<Threshold>(s.childSlots);
-                    s.childSlots.Clear();
-
-                    foreach (Threshold cs in currentChildSlots)
-                        ClearAndDestroySlot(cs, context);
-                }
-            }
-
-        }
 
 
-        protected virtual Threshold BuildSlot(string slotName, SphereSpec sphereSpec, Threshold parentSlot, bool wideLabel = false)
-        {
-            var slot = Registry.Get<PrefabFactory>().CreateLocally<Threshold>(transform);
+        //protected  void ClearAndDestroySlot(ThresholdSphere slot, Context context) {
+        //    if (slot == null)
+        //        return;
+        //    if (slot.Defunct)
+        //        return;
 
-            slot.name = slotName + (sphereSpec != null ? " - " + sphereSpec.Id : "");
-            slot.ParentSlot = parentSlot;
-            sphereSpec.MakeActiveInState(StateEnum.Unstarted);
-            slot.Initialise(sphereSpec,_situationPath);
-            
-            if (wideLabel)
-            {
-                var slotTransform = slot.SlotLabel.GetComponent<RectTransform>();
-                var originalSize = slotTransform.sizeDelta;
-                slotTransform.sizeDelta = new Vector2(originalSize.x * 1.5f, originalSize.y * 0.75f);
-            }
+        //    validSlots.Remove(slot);
 
-            validSlots.Add(slot);
+        //    // This is all copy & paste from the parent class except for the last line
+        //    if (slot.childSlots.Count > 0) {
+        //        List<ThresholdSphere> childSlots = new List<ThresholdSphere>(slot.childSlots);
+        //        foreach (var cs in childSlots)
+        //            ClearAndDestroySlot(cs, context);
 
-            gridManager.AddSlot(slot);
-            return slot;
-        }
+        //        slot.childSlots.Clear();
+        //    }
 
+        //    //Destroy the slot *before* returning the token to the tabletop
+        //    //otherwise, the slot will fire OnCardRemoved again, and we get an infinte loop
+        //    _gridWrangler.RemoveThreshold(slot);
 
-        protected  void ClearAndDestroySlot(Threshold slot, Context context) {
-            if (slot == null)
-                return;
-            if (slot.Defunct)
-                return;
+        //    if (context != null && context.actionSource == Context.ActionSource.SituationStoreStacks)
+        //        return; // Don't return the tokens to tabletop if we
 
-            validSlots.Remove(slot);
+        //    Token tokenContained = slot.GetTokenInSlot();
 
-            // This is all copy & paste from the parent class except for the last line
-            if (slot.childSlots.Count > 0) {
-                List<Threshold> childSlots = new List<Threshold>(slot.childSlots);
-                foreach (var cs in childSlots)
-                    ClearAndDestroySlot(cs, context);
+        //    if (tokenContained != null)
+        //        tokenContained.GoAway(context);
+        //}
 
-                slot.childSlots.Clear();
-            }
-
-            //Destroy the slot *before* returning the token to the tabletop
-            //otherwise, the slot will fire OnCardRemoved again, and we get an infinte loop
-            gridManager.RetireSlot(slot);
-
-            if (context != null && context.actionSource == Context.ActionSource.SituationStoreStacks)
-                return; // Don't return the tokens to tabletop if we
-
-            Token tokenContained = slot.GetTokenInSlot();
-
-            if (tokenContained != null)
-                tokenContained.GoAway(context);
-        }
-
-        public void ArrangeSlots() {
-            gridManager.ReorderSlots();
-        }
-
-        public void SetGridNumPerRow() {
-            gridManager.SetNumPerRow();
-        }
     }
 
 }

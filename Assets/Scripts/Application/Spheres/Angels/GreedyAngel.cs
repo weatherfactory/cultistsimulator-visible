@@ -26,6 +26,7 @@ namespace SecretHistories.Spheres.Angels
         public void SetThresholdToGrabTo(Sphere thresholdSphereToGrabTo)
         {
             _thresholdSphereToGrabTo = thresholdSphereToGrabTo;
+            thresholdSphereToGrabTo.GreedyIcon.SetActive(true);
         }
 
         public int Authority => 10;
@@ -86,7 +87,7 @@ namespace SecretHistories.Spheres.Angels
         {
             //if we're using this for non-classic-CS-recipe slots, we'll need to rewrite it. We'll also need not to hardcode the final scale
             var targetPath = destinationThresholdSphere.GetPath();
-            var targetSituationPath = targetPath.SituationPath;
+            var targetSituationPath = targetPath.GetBaseSituationPath();
             var targetSituation = Registry.Get<SituationsCatalogue>().GetSituationByPath(targetSituationPath);
             var targetPosition = targetSituation.GetAnchorLocation().Anchored3DPosition;
             return targetPosition;

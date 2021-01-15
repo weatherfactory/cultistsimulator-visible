@@ -1,15 +1,18 @@
 ﻿using System;
+using SecretHistories.Elements;
+using SecretHistories.Interfaces;
+using SecretHistories.NullObjects;
 
 namespace SecretHistories.Fucine
 {
-   public class SpherePath:IEquatable<SpherePath>
+   public class SpherePath: FucinePath,IEquatable<SpherePath>
    {
        public const char SEPARATOR = '_';
        public const char CURRENT = '@';
 
         private readonly string _path;
        private readonly string _sphereIdentifier;
-       public SituationPath SituationPath { get; protected set; }
+       private SituationPath _situationPath;
 
         public override bool Equals(object obj)
        {
@@ -31,6 +34,11 @@ namespace SecretHistories.Fucine
            return _path;
        }
 
+       public override SituationPath GetBaseSituationPath()
+       {
+           return _situationPath;
+       }
+
        public static bool operator ==(SpherePath path1, SpherePath path2)
        {
            return path1.Equals(path2);
@@ -50,25 +58,22 @@ namespace SecretHistories.Fucine
 
        public SpherePath(string sphereIdentifier)
        {
+           _situationPath=new NullSituationPath();
            _sphereIdentifier = sphereIdentifier;
            _path = sphereIdentifier;
            
        }
 
-       public SpherePath(SituationPath situationPath, string sphereIdentifier)
-       {
-           SituationPath = situationPath;
-           _sphereIdentifier = sphereIdentifier;
-           _path = SituationPath.ToString() + SEPARATOR + sphereIdentifier;
+
+        public SpherePath(FucinePath basePath, string sphereIdentifier)
+        {
+            _situationPath = basePath.GetBaseSituationPath();
+            _sphereIdentifier = sphereIdentifier;
+
+            _path = basePath.ToString() + SEPARATOR + sphereIdentifier;
        }
 
-       public SpherePath(SpherePath originalPath, string sphereIdentifier)
-       {
-
-           _path = originalPath.ToString() + SEPARATOR + sphereIdentifier;
-
-       }
-
+       
        public static SpherePath Current()
        { 
            return new SpherePath(CURRENT.ToString());

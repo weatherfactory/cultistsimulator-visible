@@ -109,4 +109,10 @@ namespace SecretHistories.Enums
         Subtle
     }
 
+    public enum SphereRetirementType
+    {
+        Destructive=1,
+        Graceful=2
+    }
+
 }

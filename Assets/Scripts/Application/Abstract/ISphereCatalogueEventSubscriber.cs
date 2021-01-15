@@ -4,7 +4,7 @@ namespace SecretHistories.Interfaces
 {
     public interface ISphereCatalogueEventSubscriber
     {
-        void NotifyTokensChanged(TokenInteractionEventArgs args);
+        void NotifyTokensChanged(SphereContentsChangedEventArgs args);
         void OnTokenInteraction(TokenInteractionEventArgs args);
     }
 }

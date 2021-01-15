@@ -25,7 +25,7 @@ namespace SecretHistories.Constants
         NumNonSaveableTypes
     };
 
-    public class Autosaver: MonoBehaviour, ISettingSubscriber,ISphereCatalogueEventSubscriber
+    public class Autosaver: MonoBehaviour, ISettingSubscriber
     {
 
         [SerializeField] private AutosaveWindow _autosaveNotifier;
@@ -155,19 +155,6 @@ namespace SecretHistories.Constants
             }
         }
 
-        public void NotifyTokensChanged(TokenInteractionEventArgs args)
-        {
-           //
-        }
-
-        public void OnTokenInteraction(TokenInteractionEventArgs args)
-        {
-            if(args.Interaction==Interaction.OnDragBegin)
-                isInNonSaveableState[(int)NonSaveableType.Drag] = true;
-
-            if (args.Interaction == Interaction.OnDragEnd)
-                isInNonSaveableState[(int)NonSaveableType.Drag] = false;
-
-        }
+        
     }
 }

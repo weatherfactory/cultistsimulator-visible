@@ -12,7 +12,7 @@ namespace SecretHistories.Interfaces
 {
     public interface ISphereEventSubscriber
     {
-        void OnTokensChangedForSphere(TokenInteractionEventArgs args);
+        void OnTokensChangedForSphere(SphereContentsChangedEventArgs args);
         void OnTokenInteractionInSphere(TokenInteractionEventArgs args);
     }
 }

@@ -273,7 +273,7 @@ namespace SecretHistories.UI {
 
             if (OldSphere != null && OldSphere != newSphere)
             {
-                OldSphere.RemoveToken(this);
+                OldSphere.RemoveToken(this,context);
                 if (OldSphere.ContentsHidden && !newSphere.ContentsHidden)
                     _manifestation.UpdateVisuals(Element,ElementQuantity);
             }
@@ -589,7 +589,7 @@ namespace SecretHistories.UI {
                 }
 
                 // this moves the clicked sibling on top of any other nearby cards.
-                if (Sphere.GetType() != typeof(Threshold) && Sphere.GetType() != typeof(ExhibitCards))
+                if (Sphere.GetType() != typeof(ThresholdSphere) && Sphere.GetType() != typeof(ExhibitCards))
                     transform.SetAsLastSibling();
 
                 previousClickTime = eventData.clickTime;
@@ -627,7 +627,7 @@ namespace SecretHistories.UI {
 
             _manifestation.Retire(vfx, OnManifestationRetired);
             ElementStack.Retire(vfx);
-            Sphere.NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Element = Element, Token = this, Sphere = Sphere });  // Notify tabletop that aspects will need recompiling
+            Sphere.NotifyTokensChangedForSphere(new SphereContentsChangedEventArgs() { TokenRemoved = this,Context = new Context(Context.ActionSource.Retire), Sphere = Sphere });  // Notify tabletop that aspects will need recompiling
 
             SetSphere(Registry.Get<Limbo>(), new Context(Context.ActionSource.Retire));
 
@@ -708,14 +708,14 @@ namespace SecretHistories.UI {
 
         }
 
-        public virtual void OnElementStackStateChanged(ElementStack stack)
+        public virtual void onElementStackQuantityChanged(ElementStack stack)
         {
 
             _manifestation.UpdateVisuals(stack.Element,stack.Quantity);
             _manifestation.UpdateTimerVisuals(stack.Element.Lifetime,stack.LifetimeRemaining,stack.IntervalForLastHeartbeat,Element.Resaturate,EndingFlavour.None);
             PlacementAlreadyChronicled = false; //should really only do this if the element has changed
 
-            Sphere.NotifyTokensChangedForSphere(new TokenInteractionEventArgs { Token = this, Element = Element, Sphere = Sphere });
+            Sphere.NotifyTokensChangedForSphere(new SphereContentsChangedEventArgs() { Sphere = Sphere });
         }
 
     public void SituationSphereContentsUpdated(Situation situation)

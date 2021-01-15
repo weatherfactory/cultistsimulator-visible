@@ -32,7 +32,7 @@ namespace SecretHistories.Services
         public VerbManifestation VerbManifestation = null;
         public PortalManifestation PortalManifestation = null;
         public PickupManifestation PickupManifestation = null;
-        public Threshold Threshold = null;
+        public ThresholdSphere ThresholdSphere = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
 

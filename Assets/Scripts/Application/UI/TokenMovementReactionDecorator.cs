@@ -26,7 +26,7 @@ namespace SecretHistories.UI
                 Registry.Get<SphereCatalogue>().Subscribe(this);
         }
 
-        public void NotifyTokensChanged(TokenInteractionEventArgs args)
+        public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
         {
             //
         }

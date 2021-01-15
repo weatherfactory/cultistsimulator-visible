@@ -38,8 +38,6 @@ namespace SecretHistories.UI {
         [SerializeField] TextMeshProUGUI title;
 		public PaginatedText PaginatedNotes;
 
-		[Space]
-        [SerializeField] StartingSlotsManager startingSlots;
 
         [Space]
         [SerializeField] List<Dominion> Dominions;
@@ -106,7 +104,6 @@ namespace SecretHistories.UI {
             PaginatedNotes.SetText(Verb.Description);
             startButton.onClick.AddListener(OnStart.Invoke);
 
-            startingSlots.Initialise(Verb, this,_situationPath);
            storage.Initialise(situation);
 
            foreach(var d in Dominions)
@@ -114,11 +111,7 @@ namespace SecretHistories.UI {
            
             results.Initialise(situation);
 
-
-            //this is an improvement - the situation doesn't need to know what to add - but better yet would be to tie together creation + container add, at runtime
-            foreach (var s in startingSlots.GetAllSlots())
-                OnSphereAdded.Invoke(s);
-
+            
             if (Verb.Startable)
             {
                 startButton.gameObject.SetActive(true);
@@ -152,7 +145,6 @@ namespace SecretHistories.UI {
 
             positioner.Show(canvasGroupFader.durationTurnOn, targetWorldPosition); // Animates the window (position allows optional change is position)
 
-            startingSlots.ArrangeSlots(); //won't have been arranged if a card was dumped in while the window was closed
             PaginatedNotes.SetFinalPage();
 
         }
@@ -207,13 +199,10 @@ namespace SecretHistories.UI {
                     rectTrans.anchoredPosition = rectTrans.anchoredPosition + new Vector2(100f, 0f);
                 else
                     rectTrans.anchoredPosition = rectTrans.anchoredPosition - new Vector2(100f, 0f);
-
-                startingSlots.SetGridNumPerRow(); // Updates the grid row numbers
             }
 
             windowIsWide = wide;
 
-           startingSlots.ArrangeSlots();
         }
 
 
@@ -245,9 +234,7 @@ namespace SecretHistories.UI {
 
         public void SituationStateChanged(Situation situation)
         {
-      
-                startingSlots.UpdateDisplay(situation);
-
+            
                 DisplayButtonState(situation);
         }
 

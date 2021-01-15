@@ -523,7 +523,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         return File.Exists(NoonUtility.GetGameSaveLocation(index));
     }
 
-    public void NotifyTokensChanged(TokenInteractionEventArgs args)
+    public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
     {
         //
     }

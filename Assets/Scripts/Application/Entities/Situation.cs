@@ -254,7 +254,7 @@ namespace SecretHistories.Entities {
         {
             foreach (var c in _spheres)
             {
-                c.Retire();
+                c.Retire(SphereRetirementType.Destructive);
             }
 
             _window.Retire();
@@ -770,7 +770,7 @@ namespace SecretHistories.Entities {
             return true;
         }
 
-        public void OnTokensChangedForSphere(TokenInteractionEventArgs args)
+        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             if(args.Context.IsManualAction() &&  !IsOpen)
                 OpenAtCurrentLocation();

@@ -90,7 +90,7 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
     }
 
     
-    public void NotifyTokensChanged(TokenInteractionEventArgs args)
+    public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
     {
         UpdateDisplay();
 

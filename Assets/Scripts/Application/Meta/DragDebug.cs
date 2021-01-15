@@ -23,7 +23,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
 
 
 
-    public void NotifyTokensChanged(TokenInteractionEventArgs args)
+    public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
     {
      
     }

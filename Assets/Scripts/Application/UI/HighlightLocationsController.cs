@@ -74,7 +74,7 @@ namespace SecretHistories.UI
 
 
 
-      public void NotifyTokensChanged(TokenInteractionEventArgs args)
+      public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
       {
           var tc = Registry.Get<SphereCatalogue>();
           var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());

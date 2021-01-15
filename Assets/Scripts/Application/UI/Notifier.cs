@@ -137,7 +137,7 @@ namespace SecretHistories.UI {
             tabletopBurner.ShowImageBurn(spriteName, token, duration, scale, alignment);
         }
 
-        public void NotifyTokensChanged(TokenInteractionEventArgs args)
+        public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
         {
             //
         }

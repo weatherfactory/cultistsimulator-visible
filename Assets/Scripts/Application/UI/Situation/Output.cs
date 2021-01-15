@@ -58,7 +58,7 @@ public class Output : Sphere,ISituationSubscriber{
        outputPositioning.ArrangeTokens(GetElementTokens());
     }
 
-    public override void RemoveToken(Token token) {
+    public override void RemoveToken(Token token,Context context) {
         // Did we just drop the last available token? 
         // Update the badge, then reorder cards?
 
@@ -91,7 +91,7 @@ public class Output : Sphere,ISituationSubscriber{
         else
             AllTokenssCollected.Invoke();
 
-        base.RemoveToken(token);
+        base.RemoveToken(token,context);
     }
 
 

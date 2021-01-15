@@ -24,14 +24,9 @@ using UnityEngine.UI;
 namespace SecretHistories.UI {
 
     
-    public class Threshold : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
+    public class ThresholdSphere : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
-
-        // DATA ACCESS
-
-        public IList<Threshold> childSlots { get; set; }
-        public Threshold ParentSlot { get; set; }
 
         // VISUAL ELEMENTS
         public RecipeSlotViz viz;
@@ -40,14 +35,11 @@ namespace SecretHistories.UI {
         public Graphic border;
         public GraphicFader slotGlow;
         public LayoutGroup slotIconHolder;
+        private SpherePath _thresholdSpherePath;
 
-        public GameObject GreedyIcon;
-        public GameObject ConsumingIcon;
-        
 
         public override bool AllowStackMerge { get { return false; } }
 
-        private SituationPath _situationPath;
 
         public override bool AllowDrag {
             get {
@@ -67,9 +59,6 @@ namespace SecretHistories.UI {
 
         public enum SlotModifier { Locked, Ongoing, Greedy, Consuming };
 
-        public Threshold() {
-            childSlots = new List<Threshold>();
-        }
 
         public void Start() {
             slotGlow.Hide();
@@ -77,10 +66,10 @@ namespace SecretHistories.UI {
         }
 
 
-        public void Initialise(SphereSpec sphereSpec,SituationPath situationPath)
+        public void Initialise(SphereSpec sphereSpec,SpherePath pathForThisThreshold)
         {
-            _situationPath = situationPath;
             GoverningSphereSpec = sphereSpec;
+            _thresholdSpherePath = pathForThisThreshold;
             gameObject.name = GetPath().ToString();
 
             SlotLabel.text = sphereSpec.Label;
@@ -98,9 +87,13 @@ namespace SecretHistories.UI {
             foreach(var a in angelsToAdd)
                 AddAngel(a);
             
-            GreedyIcon.SetActive(sphereSpec.Greedy);
             ConsumingIcon.SetActive(sphereSpec.Consumes);
 
+        }
+
+        public override SpherePath GetPath()
+        {
+            return _thresholdSpherePath;
         }
 
 
@@ -162,12 +155,6 @@ namespace SecretHistories.UI {
         {
             SetGlowColor(UIStyle.TokenGlowColor.Default);
                 SoundManager.PlaySfx("TokenHoverOff");
-        }
-
-        public bool HasChildSlots() {
-            if (childSlots == null)
-                return false;
-            return childSlots.Count > 0;
         }
 
 
@@ -267,23 +254,7 @@ namespace SecretHistories.UI {
             return true;
         }
 
-        /// <summary>
-        /// path to slot expressed in underscore-separated slot specification labels: eg "work_sacrifice"
-        /// </summary>
-        public override SpherePath GetPath()
-        {
 
-            SpherePath path;
-            if (ParentSlot != null)
-                path = new SpherePath(ParentSlot.GetPath(), GoverningSphereSpec.Id);
-            else
-                path = new SpherePath(_situationPath,GoverningSphereSpec.Id);
-
-
-            if (!string.IsNullOrEmpty(PathIdentifier))
-                NoonUtility.Log($"We're trying to specify a spherepath ({PathIdentifier}) in a recipe slot / threshold ({path})");
-            return path;
-        }
 
         public override void ActivatePreRecipeExecutionBehaviour() {
             if (GoverningSphereSpec.Consumes) {
@@ -292,11 +263,6 @@ namespace SecretHistories.UI {
                 if (token != null)
                     token.ElementStack.MarkedForConsumption = true;
             }
-        }
-
-        public bool IsPrimarySlot()
-        {
-            return ParentSlot == null;
         }
 
         public void OnPointerClick(PointerEventData eventData) {

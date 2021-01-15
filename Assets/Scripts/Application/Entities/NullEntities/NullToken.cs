@@ -59,7 +59,7 @@ namespace SecretHistories.NullObjects
           //
         }
 
-        public override void OnElementStackStateChanged(ElementStack stack)
+        public override void onElementStackQuantityChanged(ElementStack stack)
         {
            //
         }

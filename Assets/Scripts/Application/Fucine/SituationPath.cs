@@ -8,7 +8,7 @@ using SecretHistories.Interfaces;
 
 namespace SecretHistories.Fucine
 {
-    public class SituationPath: IEquatable<SituationPath>
+    public class SituationPath: FucinePath, IEquatable<SituationPath>
     {
         public const char SEPARATOR = '_';
 
@@ -46,6 +46,11 @@ namespace SecretHistories.Fucine
         public override string ToString()
         {
             return _path;
+        }
+
+        public override SituationPath GetBaseSituationPath()
+        {
+            return this;
         }
 
         public SituationPath(IVerb verb)
