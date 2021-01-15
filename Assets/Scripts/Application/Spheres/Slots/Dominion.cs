@@ -24,11 +24,10 @@ namespace SecretHistories.UI {
         [SerializeField] CanvasGroupFader canvasGroupFader;
         public List<StateEnum> VisibleForStates;
         public List<CommandCategory> RespondToCommandCategories;
-        
-        readonly HashSet<ThresholdSphere> thresholds=new HashSet<ThresholdSphere>();
 
-        private readonly OnSphereAddedEvent onSphereAdded=new OnSphereAddedEvent();
-        private readonly OnSphereRemovedEvent onSphereRemoved=new OnSphereRemovedEvent();
+        public OnSphereAddedEvent OnSphereAdded => thresholdsWrangler.OnSphereAdded;
+
+        public OnSphereRemovedEvent OnSphereRemoved => thresholdsWrangler.OnSphereRemoved;
         private SituationPath _situationPath;
         private IVerb situationVerb;
 
@@ -36,8 +35,6 @@ namespace SecretHistories.UI {
         {
 
             situation.RegisterDominion(this);
-            onSphereAdded.AddListener(situation.AttachSphere);
-            onSphereRemoved.AddListener(situation.RemoveSphere);
             _situationPath = situation.Path;
 
      
@@ -79,8 +76,7 @@ namespace SecretHistories.UI {
             foreach (var activeInState in VisibleForStates)
                 spec.MakeActiveInState(activeInState);
 
-            var newThreshold= thresholdsWrangler.BuildPrimaryThreshold(spec,_situationPath,situationVerb);
-            onSphereAdded.Invoke(newThreshold);
+            thresholdsWrangler.BuildPrimaryThreshold(spec,_situationPath,situationVerb);
         }
 
         public bool VisibleFor(StateEnum state)

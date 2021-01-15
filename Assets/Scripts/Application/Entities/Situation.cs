@@ -145,6 +145,8 @@ namespace SecretHistories.Entities {
         public bool RegisterDominion(Dominion dominionToRegister)
         {
             AddSubscriber(dominionToRegister);
+            dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
+            dominionToRegister.OnSphereRemoved.AddListener(RemoveSphere);
 
             if (_registeredDominions.Contains(dominionToRegister))
                 return false;

@@ -30,9 +30,10 @@ namespace SecretHistories.UI {
 
         [SerializeField] float sizeTransitionDuration = 0.2f;
         [SerializeField] float slotMoveTransitionDuration = 0.2f;
+        public readonly OnSphereAddedEvent OnSphereAdded = new OnSphereAddedEvent();
+        public readonly OnSphereRemovedEvent OnSphereRemoved = new OnSphereRemovedEvent();
 
-      
-      private Dictionary<ThresholdSphere, FucinePath> _thresholds =
+        private Dictionary<ThresholdSphere, FucinePath> _thresholds =
           new Dictionary<ThresholdSphere, FucinePath>();
 
         int numPerRow = 1;
@@ -75,14 +76,15 @@ namespace SecretHistories.UI {
                 RemoveThreshold(t);
         }
 
-        public void RemoveThreshold(ThresholdSphere threshold) {
-			
-            _thresholds.Remove(threshold);
+        public void RemoveThreshold(ThresholdSphere thresholdToRemove) {
+
+            OnSphereRemoved.Invoke(thresholdToRemove);
+            _thresholds.Remove(thresholdToRemove);
 
             if (gameObject.activeInHierarchy)
-                threshold.viz.TriggerHideAnim();
+                thresholdToRemove.viz.TriggerHideAnim();
             else
-                threshold.Retire(SphereRetirementType.Graceful);
+                thresholdToRemove.Retire(SphereRetirementType.Graceful);
         }
 
         public void ReorderThresholds() {
@@ -190,6 +192,8 @@ namespace SecretHistories.UI {
 
 
             _thresholds.Add(threshold, parentPath);
+            OnSphereAdded.Invoke(threshold);
+
 
             threshold.Subscribe(this);
 
@@ -206,7 +210,6 @@ namespace SecretHistories.UI {
             foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(_verb.Id))
             {
                 AddThreshold(childSlotSpecification, parentPath);
-                
             }
         }
         
@@ -223,13 +226,13 @@ namespace SecretHistories.UI {
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             //if a token has been added: add any necessary child thresholds
-            if(args.TokenAdded.ElementStack.IsValidElementStack() && args.TokenRemoved.ElementStack.IsValidElementStack())
-                NoonUtility.LogWarning($"Tokens with valid element stacks seem to have been added ({args.TokenAdded.ElementStack.Element.Id}) and removed ({args.TokenRemoved.ElementStack.Element.Id}) in a single event. This will likely cause issues, but we'll go ahead with both.");
+            if(args.TokenAdded!=null && args.TokenRemoved != null)
+                NoonUtility.LogWarning($"Tokens with valid element stacks seem to have been added ({args.TokenAdded.name}) and removed ({args.TokenRemoved.name}) in a single event. This will likely cause issues, but we'll go ahead with both.");
 
-            if(args.TokenAdded.ElementStack.IsValidElementStack())
+            if(args.TokenAdded!=null && args.TokenAdded.ElementStack.IsValidElementStack())
                 AddChildThresholdsForStack(args.TokenAdded.ElementStack,args.Sphere.GetPath());
 
-            if (args.TokenRemoved.ElementStack.IsValidElementStack())
+            if (args.TokenRemoved!=null)
                 RemoveChildrenOfThreshold(args.Sphere);
 
             //if a token has been removed: remove any child thresholds
