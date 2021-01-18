@@ -627,7 +627,9 @@ namespace SecretHistories.UI {
 
             _manifestation.Retire(vfx, OnManifestationRetired);
             ElementStack.Retire(vfx);
-            Sphere.NotifyTokensChangedForSphere(new SphereContentsChangedEventArgs() { TokenRemoved = this,Context = new Context(Context.ActionSource.Retire), Sphere = Sphere });  // Notify tabletop that aspects will need recompiling
+            var args=new SphereContentsChangedEventArgs(Sphere, new Context(Context.ActionSource.Retire));
+            args.TokenRemoved = this;
+            Sphere.NotifyTokensChangedForSphere(args);
 
             SetSphere(Registry.Get<Limbo>(), new Context(Context.ActionSource.Retire));
 
@@ -708,14 +710,15 @@ namespace SecretHistories.UI {
 
         }
 
-        public virtual void onElementStackQuantityChanged(ElementStack stack)
+        public virtual void onElementStackQuantityChanged(ElementStack stack,Context context)
         {
 
             _manifestation.UpdateVisuals(stack.Element,stack.Quantity);
             _manifestation.UpdateTimerVisuals(stack.Element.Lifetime,stack.LifetimeRemaining,stack.IntervalForLastHeartbeat,Element.Resaturate,EndingFlavour.None);
             PlacementAlreadyChronicled = false; //should really only do this if the element has changed
-
-            Sphere.NotifyTokensChangedForSphere(new SphereContentsChangedEventArgs() { Sphere = Sphere });
+            var args=new SphereContentsChangedEventArgs(Sphere,context);
+            Sphere.NotifyTokensChangedForSphere(args);
+            
         }
 
     public void SituationSphereContentsUpdated(Situation situation)

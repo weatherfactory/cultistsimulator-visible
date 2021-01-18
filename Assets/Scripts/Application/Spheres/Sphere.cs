@@ -499,7 +499,9 @@ namespace SecretHistories.Constants {
             if (!_tokens.Contains(token))
                 _tokens.Add(token);
 
-            NotifyTokensChangedForSphere(new SphereContentsChangedEventArgs() { Sphere = this,Context = context,TokenAdded= token});
+            var args = new SphereContentsChangedEventArgs(this, context);
+            args.TokenAdded = token;
+            NotifyTokensChangedForSphere(args);
             DisplayAndPositionHere(token, context);
 
         }
@@ -594,7 +596,9 @@ namespace SecretHistories.Constants {
         public virtual void RemoveToken(Token token,Context context)
         {
             _tokens.Remove(token);
-            NotifyTokensChangedForSphere(new SphereContentsChangedEventArgs() {Sphere = this,TokenRemoved= token,Context=context});
+            var args= new SphereContentsChangedEventArgs(this,context);
+            args.TokenRemoved = token;
+            NotifyTokensChangedForSphere(args);
         }
 
 
