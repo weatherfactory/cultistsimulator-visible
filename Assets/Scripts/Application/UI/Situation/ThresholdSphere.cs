@@ -56,9 +56,7 @@ namespace SecretHistories.UI {
         {
             get { return GoverningSphereSpec.Consumes; }
         }
-
-        public enum SlotModifier { Locked, Ongoing, Greedy, Consuming };
-
+        
 
         public void Start() {
             slotGlow.Hide();
@@ -86,7 +84,9 @@ namespace SecretHistories.UI {
             var angelsToAdd = sphereSpec.MakeAngels();
             foreach(var a in angelsToAdd)
                 AddAngel(a);
-            
+
+            //refactor to something more generic
+            GreedyIcon.SetActive(sphereSpec.Greedy);
             ConsumingIcon.SetActive(sphereSpec.Consumes);
 
         }
