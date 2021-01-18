@@ -21,7 +21,6 @@ namespace Assets.Core.Services
     
     public class Chronicler
     {
-        private Character _storage;
         private ICompendium _compendium;
         private const string BOOK_ASPECT = "text";
         private const string DESIRE_ASPECT = "desire";
@@ -51,15 +50,14 @@ namespace Assets.Core.Services
 
 
 
-        public Chronicler(Character storage,ICompendium compendium)
+        public Chronicler(ICompendium compendium)
         {
-            _storage = storage;
             _compendium = compendium;
         }
 
         public void CharacterNameChanged(string newName)
         {
-            _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString(), newName);
+            Registry.Get<Character>().SetFutureLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString(), newName);
         }
 
         public void TokenPlacedOnTabletop(ElementStackToken token)
@@ -163,7 +161,7 @@ namespace Assets.Core.Services
 
             if(currentFollower!=null)
 
-            _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastfollower.ToString(), currentFollower.Id);
+                Registry.Get<Character>().SetFutureLegacyEventRecord(LegacyEventRecordId.lastfollower.ToString(), currentFollower.Id);
 
         }
 
@@ -229,7 +227,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
 			{
 				Analytics.CustomEvent( "A_HQ_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.EntityId);
+                Registry.Get<Character>().SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.EntityId);
 			}
         }
 
@@ -238,7 +236,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
             {
 				Analytics.CustomEvent( "A_CULT_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.EntityId);
+                Registry.Get<Character>().SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.EntityId);
 
                 if (tokenAspects.Keys.Contains("cultsecrethistories_1"))
 				{
@@ -284,7 +282,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
 			{
 				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.EntityId);
+                Registry.Get<Character>().SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.EntityId);
 			}
         }
 
@@ -297,17 +295,17 @@ namespace Assets.Core.Services
                 if (tokenAspects.Keys.Contains(POWER_ASPECT))
 				{
 					Analytics.CustomEvent( "A_DESIRE_POWER" );
-                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionpowera");
+                    Registry.Get<Character>().SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionpowera");
 				}
                 else if (tokenAspects.Keys.Contains(SENSATION_ASPECT))
                 {
 					Analytics.CustomEvent( "A_DESIRE_SENSATION" );
-				    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionsensationa");
+                    Registry.Get<Character>().SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionsensationa");
 				}
                 else if (tokenAspects.Keys.Contains(ENLIGHTENMENT_ASPECT))
 				{
 					Analytics.CustomEvent( "A_DESIRE_ENLIGHTENMENT" );
-                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionenlightenmenta");
+                    Registry.Get<Character>().SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionenlightenmenta");
 				}
             }
         }
@@ -317,7 +315,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
 			{
 				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.EntityId);
+                Registry.Get<Character>().SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.EntityId);
 			}
         }
 
