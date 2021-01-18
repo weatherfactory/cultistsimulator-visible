@@ -22,7 +22,7 @@ namespace SecretHistories.Entities
             Id = id;
             Label = label;
             Description = description;
-            Slots=new List<SphereSpec>();
+            Thresholds=new List<SphereSpec>();
 
         }
 
@@ -40,7 +40,7 @@ namespace SecretHistories.Entities
           return  typeof(VerbManifestation);
         }
 
-        
+
 
         public string Id { get; private set; }
 
@@ -53,8 +53,8 @@ namespace SecretHistories.Entities
 
         public string Description { get; set; }
 
-        public SphereSpec Slot { get; set; }
-        public List<SphereSpec> Slots { get; set; }
+        public List<SphereSpec> Thresholds { get; set; }
+
         public bool Startable { get; set; }
         public bool ExclusiveOpen => true;
 

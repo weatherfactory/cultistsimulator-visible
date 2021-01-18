@@ -1517,7 +1517,7 @@ GameObject:
   - component: {fileID: 114848985628778574}
   - component: {fileID: 7731683286596552914}
   m_Layer: 5
-  m_Name: RecipeSlotsDominion
+  m_Name: RecipeThresholdsDominion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4140,7 +4140,7 @@ GameObject:
   - component: {fileID: 225437182253246534}
   - component: {fileID: 114412774732763762}
   m_Layer: 5
-  m_Name: VerbSlotsDominion
+  m_Name: VerbThresholdsDominion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4181,8 +4181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdsWrangler: {fileID: 995767604176707067}
   canvasGroupFader: {fileID: 114412774732763762}
-  VisibleForStates: 
-  RespondToCommandCategories: 
+  VisibleForStates: 00000000
+  RespondToCommandCategories: 01000000
 --- !u!114 &114993708387918274
 MonoBehaviour:
   m_ObjectHideFlags: 0

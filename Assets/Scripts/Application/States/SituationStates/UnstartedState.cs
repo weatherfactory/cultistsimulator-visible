@@ -1,4 +1,5 @@
 ﻿using SecretHistories.Commands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
@@ -13,6 +14,9 @@ namespace SecretHistories.States
         public override void Enter(Situation situation)
         {
             situation.Reset();
+            var verbSlotsCommand= new PopulateThresholdsCommand(CommandCategory.VerbThresholds, situation.Verb.Thresholds);
+            situation.CommandQueue.AddCommand(verbSlotsCommand);
+
         }
 
         public override void Exit(Situation situation)

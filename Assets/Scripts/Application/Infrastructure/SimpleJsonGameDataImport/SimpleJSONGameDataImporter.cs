@@ -265,10 +265,15 @@ namespace SecretHistories.Constants
             }
 
             command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
+            
+            
+            var verbSlotsCommand = new PopulateThresholdsCommand(CommandCategory.VerbThresholds, verb.Thresholds);
+            command.Commands.Add(verbSlotsCommand);
+
 
             var recipeSlotSpecs = SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(htSituationValues, recipe.Slots);
-            var slotsCommand = new PopulateThresholdsCommand(CommandCategory.RecipeThresholds, recipeSlotSpecs);
-            command.Commands.Add(slotsCommand);
+            var recipeSlotsCommand = new PopulateThresholdsCommand(CommandCategory.RecipeThresholds, recipeSlotSpecs);
+            command.Commands.Add(recipeSlotsCommand);
             return command;
         }
 

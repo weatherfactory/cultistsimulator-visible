@@ -35,6 +35,19 @@ namespace SecretHistories.Entities.Verbs
             return typeof(DropzoneManifestation);
         }
 
+        public List<SphereSpec> Thresholds
+        {
+            get
+            {
+                var aggregatedSlotsFromOldAndNewFormat = new List<SphereSpec>();
+                aggregatedSlotsFromOldAndNewFormat.Add(Slot); //what if this is empty? likely source of trouble later
+                aggregatedSlotsFromOldAndNewFormat.AddRange(Slots);
+                return aggregatedSlotsFromOldAndNewFormat;
+            }
+
+
+        }
+
         [FucineSubEntity(typeof(SphereSpec), Localise = true)]
         public SphereSpec Slot { get; set; }
 
