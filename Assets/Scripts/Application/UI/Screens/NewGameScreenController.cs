@@ -60,7 +60,7 @@ namespace SecretHistories.UI {
             AvailableLegaciesForEnding = ls.DetermineLegacies(Registry.Get<Character>().EndingTriggered);
 
             InitLegacyButtons();
-            canvasFader.SetAlpha(0f);
+            canvasFader.SetFinalAlpha(0f);
 
 			FadeIn();
 			SelectLegacy(0);

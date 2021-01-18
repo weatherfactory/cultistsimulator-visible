@@ -1,5 +1,6 @@
 ﻿using System;
 using SecretHistories.Commands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Constants;
@@ -15,7 +16,8 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-
+            var recipeSlotsCommand = new PopulateThresholdsCommand(CommandCategory.RecipeThresholds, situation.CurrentPrimaryRecipe.Slots);
+            situation.CommandQueue.AddCommand(recipeSlotsCommand);
         }
 
         public override void Exit(Situation situation)

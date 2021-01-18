@@ -13,11 +13,32 @@ namespace SecretHistories.UI
         public float durationTurnOn = 0.5f;
         public float durationTurnOff = 0.25f;
 
-        private Coroutine _alphaChangeCoroutine;
+        private Coroutine _appearingCoroutine;
+        private Coroutine _disappearingCoroutine;
+
 
         public bool IsVisible()
         {
             return Group.alpha >=1f;
+        }
+
+        public bool IsInvisible()
+        {
+            return Group.alpha <= 0f;
+        }
+
+
+        public bool Appearing()
+        {
+
+            return _appearingCoroutine != null;
+        }
+
+
+        public bool Disappearing()
+        {
+
+            return _disappearingCoroutine != null;
         }
 
  
@@ -33,56 +54,55 @@ namespace SecretHistories.UI
 
         public void Hide()
         {
-            if (!IsVisible())
+            if (IsInvisible() && !Appearing())
                 return;
   
             if (durationTurnOff <= 0f) {
-                SetAlpha(0f);
+                StopAllCoroutines();
+                SetFinalAlpha(0f);
             }
-            else if (_alphaChangeCoroutine==null)
+            else if (_disappearingCoroutine==null)
             {
-                _alphaChangeCoroutine = StartCoroutine(DoTransparencyChange(0f, durationTurnOff));
+                _disappearingCoroutine = StartCoroutine(DoTransparencyChange(0f, durationTurnOff));
             }
         }
 
 
         public void Show()
         {
-            if (IsVisible())
+            if (IsVisible() && !Disappearing() )
                 return;
             
             if (durationTurnOn <= 0f) {
-                SetAlpha(1f);
+                StopAllCoroutines();
+                SetFinalAlpha(1f);
             }
-            else if (_alphaChangeCoroutine == null)
+            else if (_appearingCoroutine == null)
             {
-               _alphaChangeCoroutine=StartCoroutine(DoTransparencyChange(1f, durationTurnOn));
+                _appearingCoroutine = StartCoroutine(DoTransparencyChange(1f, durationTurnOn));
             }
         }
 
-        IEnumerator DoTransparencyChange(float alpha, float duration) {
+        IEnumerator DoTransparencyChange(float targetAlpha, float duration) {
             float currentAlpha = Group.alpha;
             float currentTime = 0f;
 
             SetInteractable(blockRaysDuringFade);
-            duration = duration * Mathf.Abs(alpha - currentAlpha);
+            duration = duration * Mathf.Abs(targetAlpha - currentAlpha);
 
             while (currentTime <= duration) {
-                Group.alpha = Mathf.Lerp(currentAlpha, alpha, currentTime/duration);
+                Group.alpha = Mathf.Lerp(currentAlpha, targetAlpha, currentTime/duration);
                 currentTime += Time.deltaTime;
                 yield return null;
             }
 
-            SetAlpha(alpha);
+            SetFinalAlpha(targetAlpha);
     
         }
 
-        public void SetAlpha(float alpha) {
-            if(_alphaChangeCoroutine!=null)
-            {
-                StopCoroutine(_alphaChangeCoroutine);
-                _alphaChangeCoroutine = null;
-            }
+        public void SetFinalAlpha(float alpha) {
+        StopAllCoroutines();
+
             Group.alpha = alpha;
 
             if (Mathf.Approximately(alpha, 0f))

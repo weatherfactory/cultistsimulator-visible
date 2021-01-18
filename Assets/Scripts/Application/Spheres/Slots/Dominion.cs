@@ -49,10 +49,10 @@ namespace SecretHistories.UI {
             _situationPath = situation.Path;
             situationVerb = situation.Verb;
 
-            if(!canvasGroupFader.IsVisible() && situation.CurrentState.IsVisibleInThisState(this))
+            if(situation.CurrentState.IsVisibleInThisState(this))
                 canvasGroupFader.Show();
 
-            if (canvasGroupFader.IsVisible() && !situation.CurrentState.IsVisibleInThisState(this))
+            if (!situation.CurrentState.IsVisibleInThisState(this))
                 canvasGroupFader.Hide();
         }
 

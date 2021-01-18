@@ -194,15 +194,6 @@ namespace SecretHistories.Entities {
             
         }
 
-        public IList<SphereSpec> GetSlotsForCurrentRecipe()
-        {
-            if (CurrentPrimaryRecipe.Slots.Any())
-                return CurrentPrimaryRecipe.Slots;
-            else
-                return new List<SphereSpec>();
-        }
-
-
         public void Reset()
         {
             CurrentPrimaryRecipe = NullRecipe.Create(Verb);
