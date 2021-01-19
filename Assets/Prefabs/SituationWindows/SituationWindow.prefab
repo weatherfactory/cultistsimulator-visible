@@ -1517,6 +1517,7 @@ GameObject:
   - component: {fileID: 225493535554730180}
   - component: {fileID: 114848985628778574}
   - component: {fileID: 7731683286596552914}
+  - component: {fileID: 1005240876968007683}
   m_Layer: 5
   m_Name: RecipeThresholdsDominion
   m_TagString: Untagged
@@ -1536,7 +1537,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4992054091558347646}
-  - {fileID: 8002707074122723705}
+  - {fileID: 6076870779573190098}
   - {fileID: 224700297124352810}
   m_Father: {fileID: 224000010579208946}
   m_RootOrder: 10
@@ -1585,10 +1586,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdsWrangler: {fileID: 693745396097824458}
+  thresholdsWrangler: {fileID: 1005240876968007683}
   canvasGroupFader: {fileID: 114848985628778574}
   VisibleForStates: 02000000
   RespondToCommandCategories: 02000000
+--- !u!114 &1005240876968007683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269793152998520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdSpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+    type: 3}
+  rect: {fileID: 6076870779573190098}
+  scrollRect: {fileID: 114993708387918274}
+  clickCatcher: {fileID: 547157987020230599}
+  slotSize: {x: 80, y: 120}
+  spacing: {x: 20, y: 50}
+  margin: {x: 20, y: 40}
+  sizeTransitionDuration: 0.35
+  slotMoveTransitionDuration: 0.35
 --- !u!1 &1287574504788578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,7 +1996,7 @@ RectTransform:
   m_Children:
   - {fileID: 224126967716672960}
   m_Father: {fileID: 224394800307692888}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3510,13 +3533,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224707539595644502}
-  m_Father: {fileID: 7124503099116132504}
-  m_RootOrder: 0
+  m_Father: {fileID: 224394800307692888}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -125, y: 85}
-  m_SizeDelta: {x: 240, y: 170}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &114198153125153756
 MonoBehaviour:
@@ -4137,6 +4160,7 @@ GameObject:
   - component: {fileID: 4470030975996782642}
   - component: {fileID: 114993708387918274}
   - component: {fileID: 114844407673096716}
+  - component: {fileID: 2663436766044327619}
   - component: {fileID: 225437182253246534}
   - component: {fileID: 114412774732763762}
   m_Layer: 5
@@ -4157,8 +4181,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7124503099116132504}
   - {fileID: 224152569211065042}
+  - {fileID: 224001786646866716}
   m_Father: {fileID: 224000010579208946}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4179,7 +4203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdsWrangler: {fileID: 995767604176707067}
+  thresholdsWrangler: {fileID: 2663436766044327619}
   canvasGroupFader: {fileID: 114412774732763762}
   VisibleForStates: 00000000
   RespondToCommandCategories: 01000000
@@ -4233,6 +4257,28 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &2663436766044327619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930796193437156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdSpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+    type: 3}
+  rect: {fileID: 224707539595644502}
+  scrollRect: {fileID: 114993708387918274}
+  clickCatcher: {fileID: 114762676544654032}
+  slotSize: {x: 80, y: 120}
+  spacing: {x: 20, y: 50}
+  margin: {x: 20, y: 40}
+  sizeTransitionDuration: 0.35
+  slotMoveTransitionDuration: 0.35
 --- !u!225 &225437182253246534
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4289,8 +4335,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8002707074122723705}
-  m_RootOrder: 0
+  m_Father: {fileID: 224333676953882724}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4393,121 +4439,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownBar: {fileID: 114455099091669614}
   countdownText: {fileID: 114602261048296978}
---- !u!1 &5900577267291822013
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7124503099116132504}
-  - component: {fileID: 995767604176707067}
-  m_Layer: 5
-  m_Name: ThresholdsWrangler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &7124503099116132504
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5900577267291822013}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 224001786646866716}
-  m_Father: {fileID: 224394800307692888}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &995767604176707067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5900577267291822013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thresholdSpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
-    type: 3}
-  rect: {fileID: 224707539595644502}
-  scrollRect: {fileID: 114993708387918274}
-  clickCatcher: {fileID: 114762676544654032}
-  slotSize: {x: 80, y: 120}
-  spacing: {x: 20, y: 50}
-  margin: {x: 20, y: 40}
-  sizeTransitionDuration: 0.35
-  slotMoveTransitionDuration: 0.35
---- !u!1 &5961114173324241021
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8002707074122723705}
-  - component: {fileID: 693745396097824458}
-  m_Layer: 5
-  m_Name: ThresholdsWrangler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &8002707074122723705
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5961114173324241021}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6076870779573190098}
-  m_Father: {fileID: 224333676953882724}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &693745396097824458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5961114173324241021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thresholdSpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
-    type: 3}
-  rect: {fileID: 6076870779573190098}
-  scrollRect: {fileID: 114993708387918274}
-  clickCatcher: {fileID: 547157987020230599}
-  slotSize: {x: 80, y: 120}
-  spacing: {x: 20, y: 50}
-  margin: {x: 20, y: 40}
-  sizeTransitionDuration: 0.35
-  slotMoveTransitionDuration: 0.35
