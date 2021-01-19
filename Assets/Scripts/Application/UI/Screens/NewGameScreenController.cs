@@ -53,7 +53,7 @@ namespace SecretHistories.UI {
 
             var compendium = new Compendium();
             registry.Register<Compendium>(compendium);
-            var contentImporter = new CompendiumLoader();
+            var contentImporter = new CompendiumLoader(Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
             contentImporter.PopulateCompendium(compendium, Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
             var ls = new LegacySelector(Registry.Get<Compendium>());

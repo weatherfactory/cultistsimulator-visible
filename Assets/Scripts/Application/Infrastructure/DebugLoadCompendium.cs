@@ -20,7 +20,7 @@ public class DebugLoadCompendium : MonoBehaviour
         var registry = new Registry();
         registry.Register(new ModManager());
         var compendium = new Compendium();
-        var contentImporter = new CompendiumLoader();
+        var contentImporter = new CompendiumLoader(Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
         var messages =
             contentImporter.PopulateCompendium(compendium, Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
        foreach (var m in messages.GetMessages())

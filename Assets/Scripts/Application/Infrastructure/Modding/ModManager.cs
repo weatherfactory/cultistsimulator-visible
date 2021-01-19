@@ -249,7 +249,7 @@ namespace SecretHistories.Constants.Modding
             SaveEnabledModList();
 
             
-            var compendiumLoader = new CompendiumLoader();
+            var compendiumLoader = new CompendiumLoader(Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
             var existingCompendium = Registry.Get<Compendium>();
             compendiumLoader.PopulateCompendium(existingCompendium, Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
             var modToAlter= _cataloguedMods[modId];

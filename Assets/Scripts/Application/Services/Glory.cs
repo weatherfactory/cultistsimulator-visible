@@ -223,7 +223,7 @@ namespace SecretHistories.Services
 
         public ContentImportLog LoadCompendium(string cultureId)
         {
-            var compendiumLoader = new CompendiumLoader();
+            var compendiumLoader =new CompendiumLoader(Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
             var log = compendiumLoader.PopulateCompendium(Registry.Get<Compendium>(),cultureId);
             foreach (var m in log.GetMessages())
                 NoonUtility.Log(m);

@@ -22,10 +22,15 @@ namespace SecretHistories.UI
 
         private static readonly Dictionary<Type, System.Object> registered=new Dictionary<Type, object>();
 
-        public static T Get<T>(bool logWarningIfNotRegistered=true) where T: class
+        public static bool Exists<T>()
+        {
+            return (registered.ContainsKey(typeof(T)));
+        }
+
+        public static T Get<T>() where T: class
         {
 
-            if (registered.ContainsKey(typeof(T)))
+            if (Exists<T>())
             {
 
                 T matchingTypeInstance = registered[typeof(T)] as T;
@@ -67,8 +72,7 @@ namespace SecretHistories.UI
                 return tcc as T;
             }
 
-            if (logWarningIfNotRegistered)
-                NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
+              NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
                 
             return null;
 

@@ -32,19 +32,26 @@ using UnityEditor;
 
 public class CompendiumLoader
 {
-
-
-
+    
     readonly ContentImportLog _log=new ContentImportLog();
+    private readonly string _contentFolderName;
+
+    readonly List<DataFileLoader> modContentLoaders = new List<DataFileLoader>();
+    readonly List<DataFileLoader> modLocLoaders = new List<DataFileLoader>();
+
+    public CompendiumLoader(string contentFolderName)
+    {
+        _contentFolderName = contentFolderName;
+    }
 
 
     public ContentImportLog PopulateCompendium(Compendium compendiumToPopulate,string forCultureId)
     {
       string CORE_CONTENT_DIR = Path.Combine(Application.streamingAssetsPath,
-        Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY), NoonConstants.CORE_FOLDER_NAME);
+      _contentFolderName, NoonConstants.CORE_FOLDER_NAME);
 
       string LOC_CONTENT_DIR = Path.Combine(Application.streamingAssetsPath,
-        Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY), NoonConstants.LOC_FOLDER_TEMPLATE);
+        _contentFolderName, NoonConstants.LOC_FOLDER_TEMPLATE);
 
 
     Dictionary<string,EntityTypeDataLoader> dataLoaders=new Dictionary<string,EntityTypeDataLoader>();
@@ -60,22 +67,12 @@ public class CompendiumLoader
         locFileLoader.LoadFilesFromAssignedFolder(_log);
         
 
-        //retrieve content mod files
-        List<DataFileLoader> modContentLoaders=new List<DataFileLoader>();
-        List<DataFileLoader> modLocLoaders=new List<DataFileLoader>();
 
-        var modManager = Registry.Get<ModManager>();
-        modManager.CatalogueMods();
-        foreach (var mod in modManager.GetEnabledMods())
-        {
-            var modContentLoader=new DataFileLoader(mod.ContentFolder);
-            modContentLoader.LoadFilesFromAssignedFolder(_log);
-            modContentLoaders.Add(modContentLoader);
 
-            var modLocLoader = new DataFileLoader(mod.LocFolder);
-            modLocLoader.LoadFilesFromAssignedFolder(_log);
-            modLocLoaders.Add(modLocLoader);
-        }
+        if (Registry.Exists<ModManager>())
+            LoadModsToCompendium();
+
+
 
 
         //what entities need data importing?
@@ -136,19 +133,34 @@ public class CompendiumLoader
 
         compendiumToPopulate.OnPostImport(_log);
 
-        
-        //notify the rest of the application that content has been updated
-        var concursum = Registry.Get<Concursum>();
-        concursum.ContentUpdatedEvent.Invoke(new ContentUpdatedArgs{Message = "Loaded compendium content."});
-
+        if(Registry.Exists<Concursum>())
+        {
+            //notify the rest of the application that content has been updated
+            var concursum = Registry.Get<Concursum>();
+            concursum.ContentUpdatedEvent.Invoke(new ContentUpdatedArgs{Message = "Loaded compendium content."});
+        }
 
         return _log;
 
 
     }
 
+    private void LoadModsToCompendium()
+    {
+        var modManager = Registry.Get<ModManager>();
 
+        modManager.CatalogueMods();
+        foreach (var mod in modManager.GetEnabledMods())
+        {
+            var modContentLoader = new DataFileLoader(mod.ContentFolder);
+            modContentLoader.LoadFilesFromAssignedFolder(_log);
+            modContentLoaders.Add(modContentLoader);
 
+            var modLocLoader = new DataFileLoader(mod.LocFolder);
+            modLocLoader.LoadFilesFromAssignedFolder(_log);
+            modLocLoaders.Add(modLocLoader);
+        }
+    }
 }
 
 

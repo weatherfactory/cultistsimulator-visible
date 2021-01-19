@@ -368,9 +368,9 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         Registry.Get<ModManager>().CatalogueMods();
             
            var existingCompendium = Registry.Get<Compendium>();
-           var compendiumLoader = new CompendiumLoader();
+           var compendiumLoader = new CompendiumLoader(Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
 
-           var startImport = DateTime.Now;
+        var startImport = DateTime.Now;
            var log=compendiumLoader.PopulateCompendium(existingCompendium, Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
         foreach(var m in log.GetMessages())
             NoonUtility.Log(m.Description,m.MessageLevel);
