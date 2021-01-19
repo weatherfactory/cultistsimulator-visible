@@ -253,16 +253,6 @@ namespace SecretHistories.Constants
 
             command.SituationPath = new SituationPath(simplifiedSituationPath);
 
-            float? posx = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_X);
-            float? posy = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Y);
-            float? posz = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_SITUATION_WINDOW_Z);
-
-
-            if (posx != null && posy != null && posz != null)
-            {
-                var windowPosition = new Vector3((float) posx, (float) posy, (float) posz);
-                command.WindowLocation = new TokenLocation(windowPosition, windowSpherePath);
-            }
 
             command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
             
