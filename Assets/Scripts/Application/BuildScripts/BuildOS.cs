@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Constants;
+using SecretHistories.UI;
 using UnityEditor;
 
 namespace SecretHistories.Editor.BuildScripts
@@ -85,12 +86,12 @@ namespace SecretHistories.Editor.BuildScripts
             if (string.IsNullOrEmpty(locale))
                 coreContentPath = NoonUtility.JoinPaths(
                     GetStreamingAssetsPath(),
-                    NoonConstants.DEFAULT_CONTENT_FOLDER_NAME,
+                    Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY),
                     NoonConstants.CORE_FOLDER_NAME);
             else
                 coreContentPath = NoonUtility.JoinPaths(
                     GetStreamingAssetsPath(),
-                    NoonConstants.DEFAULT_CONTENT_FOLDER_NAME,
+                    Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY),
                     NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN, locale));
                 
             return coreContentPath;

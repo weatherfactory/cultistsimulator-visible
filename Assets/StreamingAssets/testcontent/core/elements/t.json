@@ -1,0 +1,46 @@
+{
+    "elements": [
+        {
+            "id": "t.a",
+            "label": "Test Element A",
+            "aspects": {
+                "t.aspect.first": 1,
+                       },
+            "slots": [
+                {
+                    "id": "threshold.a",
+                    "label": "Threshold A",
+                    "actionid": "t",
+                    "description": "Test threshold A.",
+                    "required": {
+                        "t.aspect.first": 1
+                    }
+                }
+            ],
+            "description": "Test Element A"
+        },
+		 {
+            "id": "t.b",
+            "label": "Test Element B",
+            "aspects": {
+                "t.aspect.first": 2
+				},
+          
+
+            "description": "Description B"
+        },
+		{
+            "id": "t.c",
+            "label": "Test Element C",
+            "aspects": {
+                "t.aspect.first": 3,
+				"t.aspect.second": 1 
+				}
+			,
+            "description": "Description C. [Square brackets notes.]",
+            "lifetime": 60,
+            "decayTo": "t.b"
+        }
+      
+    ]
+}

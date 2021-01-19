@@ -1,0 +1,357 @@
+﻿{
+    "settings": [
+
+	    {
+		    "id": "ScreenCanvasSize",
+		    "tabid": "UI_VISUAL",
+		    "hint": "UI_OPT_UISCALING",
+		    "minvalue": 3,
+		    "maxvalue": 5,
+		    "defaultvalue": "4",
+		    "datatype": "Single",
+		    "valuelabels": 
+		    {
+			    "3": "$75%",
+			    "4": "$100%",
+			    "5": "$125%"
+		    }
+
+	    },
+			{
+		    "id": "GraphicsLevel",
+		    "tabid": "UI_VISUAL",
+		    "hint": "UI_OPT_GRAPHICS_LEVEL",
+		    "minvalue": 0,
+		    "maxvalue": 2,
+		    "defaultvalue": "2",
+		    "datatype": "Single",
+		    "valuelabels": 
+		    {
+				"0": "GRAPHICS_LEVEL_1",
+				"1": "GRAPHICS_LEVEL_2",
+				"2": "GRAPHICS_LEVEL_3"
+				
+		    }
+
+	 },
+
+	    {
+		    "id": "Windowed",
+		    "tabid": "UI_VISUAL",
+		    "hint": "UI_OPT_WINDOWED",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": "1",
+		    "datatype": "Single",
+		    "valuelabels": 
+		    {
+			    "0": "UI_OFF",
+			    "1": "UI_ON",	
+		    }
+	    },
+
+
+	    {
+		    "id": "Resolution",
+		    "tabid": "UI_VISUAL",
+		    "hint": "UI_OPT_RESOLUTION",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": "-1",
+		    "datatype": "Int32"
+	    },
+
+
+
+
+	    {
+		    "id": "MusicVolume",
+		    "tabid": "UI_AUDIO",
+		    "hint": "UI_OPT_MUSICVOL",
+			"minvalue": 0,
+			"maxvalue": 10,
+			"defaultvalue": "7",
+		    "datatype": "Single",
+		    "valuelabels": 
+		    {
+"0": "$0%",
+"1": "$10%",
+"2": "$20%",
+"3": "$30%",
+"4": "$40%",
+"5": "$50%",
+"6": "$60%",
+"7": "$70%",
+"8": "$80%",
+"9": "$90%",
+"10": "$100%"
+
+		    }
+
+	    },
+
+
+	    {
+		    "id": "SoundVolume",
+		    "tabid": "UI_AUDIO",
+		    "hint": "UI_OPT_SOUNDVOL",
+		    "minvalue": 0,
+		    "maxvalue": 10,
+		    "defaultvalue": "10",
+		    "datatype": "Single",
+		    "valuelabels": 
+		    {
+			    "0": "$0%",
+			    "1": "$10%",
+			    "2": "$20%",
+			    "3": "$30%",
+			    "4": "$40%",
+			    "5": "$50%",
+			    "6": "$60%",
+			    "7": "$70%",
+			    "8": "$80%",
+			    "9": "$90%",
+			    "10": "$100%"
+		    }
+
+	    },
+
+	    {
+		    "id": "NotificationTime",
+		    "tabid": "UI_GAMEPLAY",
+		    "hint": "UI_OPT_INFODURATION",
+		    "minvalue": -3,
+		    "maxvalue": 10,
+		    "defaultvalue": "0",
+		    "datatype": "Single",
+				"valuelabels": {
+					"-3": "$4 {UI_SECONDS_POSTFIX}",
+					"-2": "$6 {UI_SECONDS_POSTFIX}",
+					"-1": "$8 {UI_SECONDS_POSTFIX}",
+					"0": "$10 {UI_SECONDS_POSTFIX}",
+					"1": "$12 {UI_SECONDS_POSTFIX}",
+					"2": "$14 {UI_SECONDS_POSTFIX}",
+					"3": "$16 {UI_SECONDS_POSTFIX}",
+					"4": "$18 {UI_SECONDS_POSTFIX}",
+					"5": "$20 {UI_SECONDS_POSTFIX}",
+					"6": "$22 {UI_SECONDS_POSTFIX}",
+					"7": "$24 {UI_SECONDS_POSTFIX}",
+					"8": "$26 {UI_SECONDS_POSTFIX}",
+					"9": "$28 {UI_SECONDS_POSTFIX}",
+          "10": "$30 {UI_SECONDS_POSTFIX}"
+				}
+			
+	    },
+
+
+
+	    {
+		    "id": "AutosaveInterval",
+		    "tabid": "UI_GAMEPLAY",
+		    "hint": "UI_OPT_AUTOSAVEINTERVAL",
+		    "minvalue": 1,
+		    "maxvalue":10 ,
+		    "defaultvalue": "4",
+		    "datatype": "Single",
+		    "valuelabels": 
+		    {
+				"1": "$1 {UI_MINUTES_POSTFIX}",
+				"2": "$2 {UI_MINUTES_POSTFIX}",
+				"3": "$3 {UI_MINUTES_POSTFIX}",
+				"4": "$4 {UI_MINUTES_POSTFIX}",
+				"5": "$5 {UI_MINUTES_POSTFIX}",
+				"6": "$6 {UI_MINUTES_POSTFIX}",
+				"7": "$7 {UI_MINUTES_POSTFIX}",
+				"8": "$8 {UI_MINUTES_POSTFIX}",
+				"9": "$9 {UI_MINUTES_POSTFIX}",
+				"10": "$10 {UI_MINUTES_POSTFIX}"
+
+		    }
+
+	    },
+
+	    {
+		    "id": "GridSnapSize",
+		    "tabid": "UI_GAMEPLAY",
+		    "hint": "UI_OPT_GRIDSNAPSIZE",
+		    "minvalue": 0,
+		    "maxvalue": 3,
+		    "defaultvalue": "0",
+		    "datatype": "Single",
+		    "valuelabels": 
+		    {
+				"0": "UI_SNAP_0",
+				"1": "UI_SNAP_1",
+				"2": "UI_SNAP_2",
+				"3": "UI_SNAP_3"
+
+		    }
+
+	    },
+
+		  {
+		    "id": "AllowExploits",
+		    "tabid": "UI_GAMEPLAY",
+		    "hint": "UI_OPT_BIRDWORM",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": "0",
+		    "datatype": "Single",
+		    "valuelabels": 
+		    {
+				"0": "UI_BIRD",
+				"1": "UI_WORM"	
+		    }
+
+	    },
+
+		
+		  {
+		    "id": "AccessibleCards",
+		    "tabid": "UI_VISUAL",
+		    "hint": "UI_OPT_ACCESSIBLE_CARDS",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": "0",
+		    "datatype": "Single",
+		    "valuelabels": 
+		    {
+				"0": "UI_OFF",
+				"1": "UI_ON"	
+		    }
+
+	 },
+	 		 {
+		    "id": "HighContrast",
+		    "tabid": "UI_VISUAL",
+		    "hint": "UI_OPT_CONTRAST",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "datatype": "Single",
+		    "defaultvalue": "0",
+		    "valuelabels": 
+		    {
+				"0": "UI_OFF",
+				"1": "UI_ON",
+		    }
+},
+	    {
+		    "id": "kbpause",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_PAUSE",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/space"
+	    },
+
+	    {
+		    "id": "kbnormalspeed",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_NORMALSPEED",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/n"
+	    },
+
+	    {
+		    "id": "kbfastspeed",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_FASTSPEED",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/m"
+	    },
+
+	    {
+		    "id": "kbstartrecipe",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_STARTRECIPE",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/s"
+	    },
+
+	    {
+		    "id": "kbcollectall",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_COLLECTALL",
+			"datatype": "String",
+		    "defaultvalue": "<Keyboard>/c"
+	    },
+
+
+	    {
+		    "id": "kbzoomin",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_ZOOMIN",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/q"
+	    },
+
+	    {
+		    "id": "kbzoomout",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_ZOOMOUT",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/e"
+	    },
+
+	    {
+		    "id": "kbstack",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_STACKCARDS",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/tab"
+	    },
+	    {
+		    "id": "kbzoom1",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_ZOOM1",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/1"
+	    },
+	    {
+		    "id": "kbzoom2",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_ZOOM2",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/2"
+	    },
+	    {
+		    "id": "kbzoom3",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_ZOOM3",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/3"
+	    },
+	    {
+		    "id": "kbtruckleft",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_TRUCKLEFT",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/leftArrow"
+	    },
+	    {
+		    "id": "kbtruckright",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_TRUCKRIGHT",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/rightArrow"
+	    },
+	    {
+		    "id": "kbpedestalup",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_PEDESTALUP",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/upArrow"
+	    },
+	    {
+		    "id": "kbpedestaldown",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_PEDESTALDOWN",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/downArrow"
+	    },
+		
+
+	   
+
+    ]
+
+}

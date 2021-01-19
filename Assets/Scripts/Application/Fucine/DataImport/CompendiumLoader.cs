@@ -47,23 +47,24 @@ public class CompendiumLoader
 
     public ContentImportLog PopulateCompendium(Compendium compendiumToPopulate,string forCultureId)
     {
-      string CORE_CONTENT_DIR = Path.Combine(Application.streamingAssetsPath,
+      string coreContentDir = Path.Combine(Application.streamingAssetsPath,
       _contentFolderName, NoonConstants.CORE_FOLDER_NAME);
 
-      string LOC_CONTENT_DIR = Path.Combine(Application.streamingAssetsPath,
+      string locContentDir = Path.Combine(Application.streamingAssetsPath,
         _contentFolderName, NoonConstants.LOC_FOLDER_TEMPLATE);
 
 
     Dictionary<string,EntityTypeDataLoader> dataLoaders=new Dictionary<string,EntityTypeDataLoader>();
         List<Type> importableEntityTypes=new List<Type>();
-        var assembly = Assembly.GetExecutingAssembly();
+
+        var assembly =  Assembly.GetAssembly(GetType());
 
         //retrieve base content for game
-        var coreFileLoader=new DataFileLoader(CORE_CONTENT_DIR);
+        var coreFileLoader=new DataFileLoader(coreContentDir);
         coreFileLoader.LoadFilesFromAssignedFolder(_log);
 
         //retrieve loc content for current language
-        var locFileLoader = new DataFileLoader(LOC_CONTENT_DIR.Replace("[culture]", forCultureId));
+        var locFileLoader = new DataFileLoader(locContentDir.Replace("[culture]", forCultureId));
         locFileLoader.LoadFilesFromAssignedFolder(_log);
         
 
@@ -72,9 +73,7 @@ public class CompendiumLoader
         if (Registry.Exists<ModManager>())
             LoadModsToCompendium();
 
-
-
-
+        
         //what entities need data importing?
         foreach (Type type in assembly.GetTypes())
         {

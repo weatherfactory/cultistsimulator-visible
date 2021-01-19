@@ -1,0 +1,20 @@
+{
+    "recipes": [
+        {
+            "id": "t",
+            "label": "Test recipe",
+            "actionid": "t",
+            "requirements": {
+                "t.aspect.first": 1
+            },
+            "effects": {
+                "t.c": 1,
+            },
+            "startdescription": "Start description. [Square brackets.]",
+            "description": "End description.",
+            "warmup": 30,
+            "craftable": true
+        }
+       
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "verbs": [
+        {
+            "id": "t",
+            "label": "T",
+            "description": "Test Verb",
+            "slot": {
+                "id": "t",
+                "label": "Test",
+                "description": "A test threshold.",
+                "required": {
+                    "test.aspect.first": 1
+                }
+            }
+        }
+    ]
+}
