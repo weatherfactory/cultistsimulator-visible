@@ -18,6 +18,7 @@ namespace SecretHistories.Spheres.Angels
 {
     public class GreedyAngel:IAngel
     {
+        private const int GRAB_QUANTITY_LIMIT = 1;
         private const int BEATS_BETWEEN_ANGELRY = 20; 
         private int _beatsTowardsAngelry = 0;
         private Sphere _thresholdSphereToGrabTo;
@@ -66,6 +67,10 @@ namespace SecretHistories.Spheres.Angels
                     if (matchingToken.CurrentlyBeingDragged())
                         matchingToken.FinishDrag();
 
+                    if (matchingToken.ElementQuantity > GRAB_QUANTITY_LIMIT)
+                        matchingToken.CalveToken(matchingToken.ElementQuantity - GRAB_QUANTITY_LIMIT,
+                            new Context(Context.ActionSource.GreedyGrab));
+
                     var enRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
 
                     var targetPosition = GetTargetPositionForDestinationSphere(destinationThresholdSphere);
@@ -75,7 +80,6 @@ namespace SecretHistories.Spheres.Angels
                         .WithScaling(1f,0.35f)
                         .WithSphereRoute(enRouteSphere, destinationThresholdSphere);
 
-                    
                     itinerary.Depart(matchingToken,new Context(Context.ActionSource.GreedyGrab));
 
                     return;
