@@ -21,6 +21,7 @@ namespace SecretHistories.Constants
 {
     public class GameGateway:MonoBehaviour
     {
+        public bool KeepBoardEmpty;
         public void Awake()
         {
             var r = new Registry();
@@ -28,6 +29,9 @@ namespace SecretHistories.Constants
         }
         public void Start()
         {
+            if (KeepBoardEmpty)
+                return;
+
             try
             {
 
