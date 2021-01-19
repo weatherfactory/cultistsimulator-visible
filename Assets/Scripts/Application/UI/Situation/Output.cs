@@ -35,11 +35,8 @@ public class Output : Sphere,ISituationSubscriber{
     public override bool AllowStackMerge { get { return false; } }
 
 
-    public void Initialise(Situation s)
+    public void Awake()
     {
-
-        s.AddSubscriber(this);
-        s.AttachSphere(this);
         buttonClearResultsDefault = "VERB_COLLECT";
         buttonClearResultsNone = "VERB_ACCEPT";
     }

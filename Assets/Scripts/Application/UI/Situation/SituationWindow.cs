@@ -44,12 +44,6 @@ namespace SecretHistories.UI {
 
 
         [Space]
-        [SerializeField] Output results;
-		[SerializeField] Button dumpResultsButton;
-        [SerializeField] TextMeshProUGUI dumpResultsButtonText;
-
-
-        [Space]
         [SerializeField] AspectsDisplay aspectsDisplay;
 
 		[SerializeField] Button startButton;
@@ -106,9 +100,7 @@ namespace SecretHistories.UI {
            foreach(var d in Dominions)
                d.RegisterFor(situation);
            
-            results.Initialise(situation);
-
-            
+     
             if (Verb.Startable)
             {
                 startButton.gameObject.SetActive(true);
