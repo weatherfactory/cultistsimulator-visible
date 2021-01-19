@@ -56,6 +56,9 @@ namespace SecretHistories.UI
 
         public void Show()
         {
+            //show / hide repeatedly still seems to get stuck sometimes.
+            //it may be worth another look to behave differently if this gets called repeatedly in successionW
+
             if (IsVisible())
                 return;
 
