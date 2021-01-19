@@ -28,19 +28,6 @@ namespace SecretHistories.UI
         }
 
 
-        public bool Appearing()
-        {
-
-            return _appearingCoroutine != null;
-        }
-
-
-        public bool Disappearing()
-        {
-
-            return _disappearingCoroutine != null;
-        }
-
  
         CanvasGroup group;
         CanvasGroup Group {
@@ -54,40 +41,41 @@ namespace SecretHistories.UI
 
         public void Hide()
         {
-            if (IsInvisible() && !Appearing())
+            if (IsInvisible())
                 return;
-  
+
+            if (_appearingCoroutine != null)
+                StopCoroutine(_appearingCoroutine);
+
             if (durationTurnOff <= 0f) {
-                StopAllCoroutines();
                 SetFinalAlpha(0f);
             }
-            else if (_disappearingCoroutine==null)
-            {
+            else 
                 _disappearingCoroutine = StartCoroutine(DoTransparencyChange(0f, durationTurnOff));
-            }
         }
 
 
         public void Show()
         {
-            if (IsVisible() && !Disappearing() )
+            if (IsVisible())
                 return;
-            
+
+            if(_disappearingCoroutine!=null)
+                StopCoroutine(_disappearingCoroutine);
+
+
             if (durationTurnOn <= 0f) {
-                StopAllCoroutines();
                 SetFinalAlpha(1f);
             }
-            else if (_appearingCoroutine == null)
-            {
+            else
                 _appearingCoroutine = StartCoroutine(DoTransparencyChange(1f, durationTurnOn));
-            }
         }
 
         IEnumerator DoTransparencyChange(float targetAlpha, float duration) {
             float currentAlpha = Group.alpha;
             float currentTime = 0f;
 
-            SetInteractable(blockRaysDuringFade);
+            SetInteractable(blockRaysDuringFade); 
             duration = duration * Mathf.Abs(targetAlpha - currentAlpha);
 
             while (currentTime <= duration) {
@@ -101,7 +89,11 @@ namespace SecretHistories.UI
         }
 
         public void SetFinalAlpha(float alpha) {
-        StopAllCoroutines();
+            if(_appearingCoroutine!=null)
+                StopCoroutine(_appearingCoroutine);
+       
+            if (_disappearingCoroutine != null)
+                StopCoroutine(_disappearingCoroutine);
 
             Group.alpha = alpha;
 
