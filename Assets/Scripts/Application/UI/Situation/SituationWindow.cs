@@ -48,8 +48,6 @@ namespace SecretHistories.UI {
 		[SerializeField] Button dumpResultsButton;
         [SerializeField] TextMeshProUGUI dumpResultsButtonText;
 
-        [Space]
-        [SerializeField] SituationStorage storage;
 
         [Space]
         [SerializeField] AspectsDisplay aspectsDisplay;
@@ -104,10 +102,9 @@ namespace SecretHistories.UI {
             PaginatedNotes.SetText(Verb.Description);
             startButton.onClick.AddListener(OnStart.Invoke);
 
-           storage.Initialise(situation);
 
            foreach(var d in Dominions)
-               d.AttachTo(situation);
+               d.RegisterFor(situation);
            
             results.Initialise(situation);
 

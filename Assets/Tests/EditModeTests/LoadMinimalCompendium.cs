@@ -8,11 +8,11 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using Debug = UnityEngine.Debug;
 
-
-public class FucineLoadingTests
+[TestFixture]
+public class SituationTests
 {
-    // A Test behaves as an ordinary method
-    [Test]
+    
+    [SetUp]
     public void LoadMinimalCompendium()
     {
         var compendium=new Compendium();
@@ -30,7 +30,12 @@ public class FucineLoadingTests
         Assert.AreEqual(1, compendium.GetEntitiesAsList<BasicVerb>().Count);
 
 
+    }
 
+    [Test]
+    public void CreateSituation()
+    {
+        Assert.AreEqual(1,1);
     }
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use

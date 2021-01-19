@@ -7,6 +7,7 @@ using System.Text;
 using Assets.Scripts.Application.UI.Situation;
 using SecretHistories.Core;
 using SecretHistories.Commands;
+using SecretHistories.Constants;
 using SecretHistories.UI;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -29,17 +30,20 @@ namespace SecretHistories.UI {
 
         public OnSphereRemovedEvent OnSphereRemoved => thresholdsWrangler.OnSphereRemoved;
         private SituationPath _situationPath;
-        private IVerb situationVerb;
+        private IVerb _situationVerb;
 
-        public void AttachTo(Situation situation)
+        public void RegisterFor(Situation situation)
         {
 
             situation.RegisterDominion(this);
             _situationPath = situation.Path;
 
      
-            foreach (var c in gameObject.GetComponentsInChildren<ISituationSubscriber>())
-                situation.AddSubscriber(c);
+            foreach (var subscriber in gameObject.GetComponentsInChildren<ISituationSubscriber>())
+                situation.AddSubscriber(subscriber);
+
+            foreach (var existingSphere in gameObject.GetComponentsInChildren<Sphere>())
+                situation.AttachSphere(existingSphere);
 
         }
 
@@ -47,7 +51,7 @@ namespace SecretHistories.UI {
         public void SituationStateChanged(Situation situation)
         {
             _situationPath = situation.Path;
-            situationVerb = situation.Verb;
+            _situationVerb = situation.Verb;
 
             if(situation.CurrentState.IsVisibleInThisState(this))
                 canvasGroupFader.Show();
@@ -76,7 +80,7 @@ namespace SecretHistories.UI {
             foreach (var activeInState in VisibleForStates)
                 spec.MakeActiveInState(activeInState);
 
-            thresholdsWrangler.BuildPrimaryThreshold(spec,_situationPath,situationVerb);
+            thresholdsWrangler.BuildPrimaryThreshold(spec,_situationPath,_situationVerb);
         }
 
         public bool VisibleFor(StateEnum state)
