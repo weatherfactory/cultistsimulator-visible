@@ -8,10 +8,9 @@ namespace SecretHistories.UI
     public class CanvasGroupFader : MonoBehaviour {
 
         public bool blockRaysDuringFade = false;
-      //  public bool destroyOnHide = false;
-      //  public bool keepActiveOnHide = false;  // Only used if destroyOnHide is false
-        public float durationTurnOn = 0.5f;
-        public float durationTurnOff = 0.25f;
+
+        public float durationTurnOn;
+        public float durationTurnOff;
 
         private Coroutine _appearingCoroutine;
         private Coroutine _disappearingCoroutine;
