@@ -1605,7 +1605,6 @@ MonoBehaviour:
   thresholdSpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
     type: 3}
   thresholdArrangement: {fileID: 4482476914772828801}
-  slotMoveTransitionDuration: 0.1
 --- !u!1 &1287574504788578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,11 +2056,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 224707539595644502}
   clickCatcher: {fileID: 114762676544654032}
-  expectedThresholdSize: {x: 0, y: 0}
-  spacing: {x: 20, y: 20}
+  expectedThresholdSize: {x: 80, y: 120}
+  spacing: {x: 20, y: 50}
   margin: {x: 20, y: 40}
-  sizeTransitionDuration: 0.2
-  slotMoveTransitionDuration: 0.2
+  sizeTransitionDuration: 0.35
+  slotMoveTransitionDuration: 0.35
 --- !u!114 &114762676544654032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3966,7 +3965,6 @@ MonoBehaviour:
   thresholdSpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
     type: 3}
   thresholdArrangement: {fileID: 8157357256015802240}
-  slotMoveTransitionDuration: 0.35
 --- !u!225 &225437182253246534
 CanvasGroup:
   m_ObjectHideFlags: 0
