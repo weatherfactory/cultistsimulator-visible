@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Scripts.Application.Services;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
@@ -10,7 +9,7 @@ using SecretHistories.UI;
 using SecretHistories.Core;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
-
+using SecretHistories.Services;
 using UnityEngine;
 
 namespace SecretHistories.Entities {

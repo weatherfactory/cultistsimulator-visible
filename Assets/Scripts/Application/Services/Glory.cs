@@ -27,7 +27,6 @@ namespace SecretHistories.Services
 #pragma warning disable 649
         public LanguageManager languageManager;
         public StageHand stageHand;
-        public PrefabFactory prefabFactory;
         public GameSaveManager gameSaveManager;
 
         public Concursum concursum;
@@ -120,12 +119,7 @@ namespace SecretHistories.Services
                 registryAccess.Register(situationBuilder);
 
 
-                //prefabFactory means we don't have to rely on magic strings prefab names
-                registryAccess.Register<PrefabFactory>(prefabFactory);
-
-
-                
-
+      
                 registryAccess.Register(gameSaveManager);
 
                 //why here? why not? this whole thing needs fixing

@@ -18,46 +18,11 @@ using Object = UnityEngine.Object;
 
 namespace SecretHistories.Services
 {
-   public class PrefabFactory : MonoBehaviour
+    [ImmanenceAttribute(FallbackType = typeof(PrefabFactory))]
+   public class PrefabFactory
     {
-       // [Header("Prefabs")]
-        
-        //public ElementFrame ElementFrame = null;
-        //public Token Token = null;
-        //public CardManifestation CardManifestation = null;
-        //public DropzoneManifestation DropzoneManifestation = null;
-        //public StoredManifestation StoredManifestation = null;
-        //public MinimalManifestation MinimalManifestation = null;
-        //public VerbManifestation VerbManifestation = null;
-        //public PortalManifestation PortalManifestation = null;
-        //public PickupManifestation PickupManifestation = null;
-        //public ThresholdSphere ThresholdSphere = null;
-        //public NotificationWindow NotificationWindow = null;
-
-        //public SituationNote SituationNote = null;
 
         private readonly string prefabPath = "prefabs/";
-
-
-        public T Create<T>() where T : Component
-        {
-            // var o = GetPrefabObject<T>();
-
-             var o = GetPrefabObjectFromResources<T>();
-            try
-            {
-                var c = Object.Instantiate(o) as T;
-                c.transform.localScale = Vector3.one;
-
-                return c;
-            }
-            catch (Exception e)
-            {
-                NoonUtility.Log("Couldn't instantiate prefab " + typeof(T) + "\n" + e);
-                return null;
-            }
-
-        }
 
         public T CreateLocally<T>(Transform parent) where T : Component
         {
@@ -86,17 +51,6 @@ namespace SecretHistories.Services
               NoonUtility.LogWarning($"Can't find prefab of type {typeof(T).Name} at {loadFromPath}. Returning null.");
 
             return prefab;
-            //var candidates=Resources.FindObjectsOfTypeAll(typeof(T));
-            //if(candidates.Length==0)
-            //{
-
-            //}
-
-            //if (candidates.Length >1)
-            //    NoonUtility.LogWarning($"Multiple types of prefab {typeof(T)} in Resources. Using the first candidate.");
-
-            //return candidates.First() as T;
-
         }
 
         public IManifestation CreateManifestationPrefab(Type manifestationType,Transform parent)
@@ -108,7 +62,7 @@ namespace SecretHistories.Services
                 NoonUtility.LogWarning($"Can't find prefab of type {manifestationType.Name} at {loadFromPath}. Returning null.");
 
 
-            var instantiatedPrefab = Instantiate(prefab, parent) as GameObject;
+            var instantiatedPrefab = Object.Instantiate(prefab, parent) as GameObject;
 
             return instantiatedPrefab.GetComponent(manifestationType) as IManifestation;
         }
