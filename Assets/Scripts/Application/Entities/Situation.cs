@@ -98,7 +98,7 @@ namespace SecretHistories.Entities {
             NotifySubscribersOfStateAndTimerChange();
         }
 
-        public void AttachAnchor(Token newAnchor)
+        public void Attach(Token newAnchor)
         {
             _anchor = newAnchor;
             AddSubscriber(_anchor);
@@ -107,14 +107,14 @@ namespace SecretHistories.Entities {
             _anchor.OnCollect.AddListener(Conclude);
             _anchor.OnSphereAdded.AddListener(AttachSphere);
             _anchor.OnSphereRemoved.AddListener(RemoveSphere);
-            _anchor.Populate(this);
+            _anchor.AttachedTo(this);
             NotifySubscribersOfStateAndTimerChange();
             NotifySubscribersOfTimerValueUpdate();
         }
 
 
 
-        public void AttachWindow(SituationWindow newWindow)
+        public void Attach(SituationWindow newWindow)
         {
             _window = newWindow;
             AddSubscriber(_window);

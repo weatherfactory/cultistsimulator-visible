@@ -67,7 +67,7 @@ namespace SecretHistories.UI {
 
         public bool PlacementAlreadyChronicled = false;
 
-        public virtual IVerb Verb => _attachedToSituation.Verb;
+        public virtual IVerb Verb { get; private set; }
         public virtual ElementStack ElementStack { get; protected set; }
         public int ElementQuantity => ElementStack.Quantity;
         public Element Element => ElementStack.Element;
@@ -124,34 +124,31 @@ namespace SecretHistories.UI {
 
         private TokenState CurrentState;
 
-        protected AnchorDurability _durability;
 
         public AnchorDurability Durability
         {
-            get { return _durability; }
+            get
+            {
+                if (Verb.Transient)
+                    return AnchorDurability.Transient;
+                else
+                    return AnchorDurability.Enduring;
+            }
         }
 
 
-        public void Populate(Situation situation)
+        public void SetVerb(IVerb verb)
         {
-            _attachedToSituation = situation;
-            //commented this out so it happens in Manifest call
-            //          _manifestation = Registry.Get<PrefabFactory>()
-            //               .CreateManifestationPrefab(situation.Verb.GetDefaultManifestationType(), this.transform);
+            Verb = verb;
 
-
-            if (Verb.Transient)
-                _durability = AnchorDurability.Transient;
-            else
-                _durability = AnchorDurability.Enduring;
+   
 
             name = Verb.Id + "_verbtoken";
+        }
 
-            //commented out when I commented the stuff above out
-            //          SituationStateChanged(situation);
-            //          TimerValuesChanged(situation);
-
-
+        public void AttachedTo(Situation situation)
+        {
+            _attachedToSituation = situation;
         }
 
 
@@ -202,7 +199,7 @@ namespace SecretHistories.UI {
                     ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
             }
-            else if (_attachedToSituation.IsValidSituation())
+            else if (Verb!=null) //YUK
                 if (_manifestation.GetType() != Verb.GetManifestationType(Sphere.SphereCategory))
                 {
                     var newManifestation = Watchman.Get<PrefabFactory>()
@@ -212,7 +209,7 @@ namespace SecretHistories.UI {
                 }
                 else
                 {
-                    NoonUtility.LogWarning("Token with neither a valid situation nor a valid stack: " +
+                    NoonUtility.LogWarning("Token with neither a valid verb nor a valid stack: " +
                                            gameObject.name);
                 }
         }

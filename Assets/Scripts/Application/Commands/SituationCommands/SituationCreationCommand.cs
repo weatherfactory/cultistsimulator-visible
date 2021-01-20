@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -63,11 +64,14 @@ namespace SecretHistories.Commands
             var anchorSphere = sphereCatalogue.GetSphereByPath(AnchorLocation.AtSpherePath);
             var windowSphere = sphereCatalogue.GetSphereByPath(new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
 
-            var newAnchor = AttachNewAnchor(AnchorLocation.Anchored3DPosition, newSituation, anchorSphere);
+            var tokenCreationCommand=new TokenCreationCommand(newSituation.Verb,AnchorLocation);
+            var newAnchor=tokenCreationCommand.Execute(sphereCatalogue);
+            newSituation.Attach(newAnchor);
+
+            
             var newWindow = AttachNewWindow(windowSphere, newAnchor, newSituation);
 
-
-
+            
             if (Open)
                 newSituation.OpenAtCurrentLocation();
             else
@@ -87,29 +91,21 @@ namespace SecretHistories.Commands
                     .WithScaling(0f, 1f);
 
                 newAnchor.TravelTo(spawnedTravelItinerary, new Context(Context.ActionSource.SpawningAnchor));
-             }
+            }
 
             return newSituation;
 
 
         }
 
-        private Token AttachNewAnchor(Vector3 position, Situation situation, Sphere anchorSphere)
-        {
-            var newAnchor = Watchman.Get<PrefabFactory>().CreateLocally<Token>(anchorSphere.transform);
-            situation.AttachAnchor(newAnchor);
-            anchorSphere.AcceptToken(newAnchor, new Context(Context.ActionSource.Unknown));
-            newAnchor.transform.localPosition = position;
-            return newAnchor;
-        }
-
+        
         private SituationWindow AttachNewWindow(Sphere windowSphere, Token newAnchor, Situation situation)
         {
             var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(windowSphere.transform);
 
             newWindow.transform.SetParent(windowSphere.transform);
             newWindow.positioner.Initialise(newAnchor);
-            situation.AttachWindow(newWindow);
+            situation.Attach(newWindow);
             return newWindow;
         }
 

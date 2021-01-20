@@ -25,13 +25,17 @@ namespace SecretHistories.UI {
 
         Vector3 dragOffset;
 
-        public void Initialise(Token anchor) {
-            this.anchor = anchor;
+        public void Awake()
+        {
             this.rectTrans = GetComponent<RectTransform>();
             this.canvasGroup = GetComponent<CanvasGroup>();
             this.parentTrans = GetComponentInParent<RectTransform>();
             this.uiCamera = Camera.main; // there is only one camera in our scene so this works.
+        }
 
+        public void Initialise(Token anchor) {
+            this.anchor = anchor;
+            
             SetToWorldPosInScreenBounds(anchor.transform.position);
 
         }

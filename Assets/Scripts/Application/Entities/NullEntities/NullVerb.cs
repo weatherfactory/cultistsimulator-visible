@@ -37,11 +37,7 @@ namespace SecretHistories.NullObjects
         public bool Startable { get; }
         public bool ExclusiveOpen => false;
 
-        public bool ExclusiveCreation(Situation s)
-        {
-            return true;
-        }
-
+        
         public Situation CreateDefaultSituation(TokenLocation anchorLocation)
         {
             return new NullSituation(SituationPath.NullPath());
