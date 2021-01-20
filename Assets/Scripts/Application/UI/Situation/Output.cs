@@ -35,10 +35,11 @@ public class Output : Sphere,ISituationSubscriber{
     public override bool AllowStackMerge { get { return false; } }
 
 
-    public void Awake()
+    public override void Awake()
     {
         buttonClearResultsDefault = "VERB_COLLECT";
         buttonClearResultsNone = "VERB_ACCEPT";
+        base.Awake();
     }
 
 
