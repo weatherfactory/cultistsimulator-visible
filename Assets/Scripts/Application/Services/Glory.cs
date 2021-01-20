@@ -37,7 +37,6 @@ namespace SecretHistories.Services
         [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
         [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
         [SerializeField] private SoundManager soundManager;
-        public SituationBuilder situationBuilder;
         public Limbo limbo;
         public NullManifestation NullManifestation;
         public NullToken NullToken;
@@ -115,9 +114,6 @@ namespace SecretHistories.Services
                 registryAccess.Register(NullElementStack);
 
                 registryAccess.Register(NullToken);
-
-                registryAccess.Register(situationBuilder);
-
 
       
                 registryAccess.Register(gameSaveManager);

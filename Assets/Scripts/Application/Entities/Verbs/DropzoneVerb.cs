@@ -70,7 +70,10 @@ namespace SecretHistories.Entities.Verbs
 
             var cmd = new SituationCreationCommand(this, dropzoneRecipe, StateEnum.Unstarted, anchorLocation,
                 null);
-           var dropzoneSituation= Watchman.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(cmd);
+
+            var situationCat = Watchman.Get<SituationsCatalogue>();
+            var dropzoneSituation = cmd.Execute(situationCat);
+
            
            return dropzoneSituation;
         }

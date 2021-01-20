@@ -105,7 +105,9 @@ namespace SecretHistories.Constants
             SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), StateEnum.Unstarted,
                 new TokenLocation(0f, 0f, -100f, inSphere.GetPath()));
 
-            var situation = Watchman.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(command);
+            var situationCat = Watchman.Get<SituationsCatalogue>();
+            var situation = command.Execute(situationCat);
+
 
             situation.ExecuteHeartbeat(0f);
 

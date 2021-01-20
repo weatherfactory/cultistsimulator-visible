@@ -16,7 +16,6 @@ namespace SecretHistories.Entities
     [Immanence(FallbackType = typeof(SituationsCatalogue))]
     public class SituationsCatalogue
     {
-        private Dictionary<string, SituationBuilder> _builders;
         private  List<Situation> _currentSituations;
         
 
@@ -28,7 +27,6 @@ namespace SecretHistories.Entities
         
         public void Reset()
         {
-            _builders = new Dictionary<string, SituationBuilder>();
             _currentSituations = new List<Situation>();
         }
 
@@ -100,9 +98,9 @@ namespace SecretHistories.Entities
                 return NullSituation.Create();
             }
 
-    
-            var builder = Watchman.Get<SituationBuilder>();
-            var situation =builder.CreateSituationWithAnchorAndWindow(scc);
+            var situationCat = Watchman.Get<SituationsCatalogue>();
+            var situation = scc.Execute(situationCat);
+
 
             situation.ExecuteHeartbeat(0f);
 

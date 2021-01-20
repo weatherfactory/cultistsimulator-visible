@@ -207,7 +207,9 @@ namespace SecretHistories.Constants
 
                 var command = SetupSituationCreationCommand(verb, recipe, situationState, htSituationValues, locationInfo);
 
-                var situation = Watchman.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(command); 
+                var situationCat = Watchman.Get<SituationsCatalogue>();
+                var situation= command.Execute(situationCat);
+
                 situation.ExecuteHeartbeat(0f); //flushes everything through and updates
 
                 ImportSlotContents(situation,htSituationValues,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
