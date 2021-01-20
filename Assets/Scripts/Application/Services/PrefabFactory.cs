@@ -20,26 +20,24 @@ namespace SecretHistories.Services
 {
    public class PrefabFactory : MonoBehaviour
     {
-        [Header("Prefabs")]
+       // [Header("Prefabs")]
         
-        public ElementFrame ElementFrame = null;
+        //public ElementFrame ElementFrame = null;
+        //public Token Token = null;
+        //public CardManifestation CardManifestation = null;
+        //public DropzoneManifestation DropzoneManifestation = null;
+        //public StoredManifestation StoredManifestation = null;
+        //public MinimalManifestation MinimalManifestation = null;
+        //public VerbManifestation VerbManifestation = null;
+        //public PortalManifestation PortalManifestation = null;
+        //public PickupManifestation PickupManifestation = null;
+        //public ThresholdSphere ThresholdSphere = null;
+        //public NotificationWindow NotificationWindow = null;
 
-        public Token Token = null;
-        public CardManifestation CardManifestation = null;
-        public DropzoneManifestation DropzoneManifestation = null;
-        public StoredManifestation StoredManifestation = null;
-        public MinimalManifestation MinimalManifestation = null;
-        public VerbManifestation VerbManifestation = null;
-        public PortalManifestation PortalManifestation = null;
-        public PickupManifestation PickupManifestation = null;
-        public ThresholdSphere ThresholdSphere = null;
-        public NotificationWindow NotificationWindow = null;
-        public SituationNote SituationNote = null;
+        //public SituationNote SituationNote = null;
 
-        public void Awake()
-        {
-            Resources.LoadAll("prefabs");
-        }
+        private readonly string prefabPath = "prefabs/";
+
 
         public T Create<T>() where T : Component
         {
@@ -63,7 +61,8 @@ namespace SecretHistories.Services
 
         public T CreateLocally<T>(Transform parent) where T : Component
         {
-            var o = GetPrefabObject<T>();
+            var o = GetPrefabObjectFromResources<T>();
+
             try
             { 
                 var c = Object.Instantiate(o, parent, false) as T;
@@ -81,49 +80,38 @@ namespace SecretHistories.Services
 
         public T GetPrefabObjectFromResources<T>() where T : Component
         {
-            var candidates=Resources.FindObjectsOfTypeAll(typeof(T));
-            if(candidates.Length==0)
-            {
-               throw new ApplicationException($"Can't find prefab of type {typeof(T)} in Resources. Returning null.");
-            }
-            
-            if (candidates.Length >1)
-                NoonUtility.LogWarning($"Multiple types of prefab {typeof(T)} in Resources. Using the first candidate.");
+            string loadFromPath = prefabPath + typeof(T).Name;
+            var prefab= Resources.Load<T>(loadFromPath);
+            if(prefab==null)
+              NoonUtility.LogWarning($"Can't find prefab of type {typeof(T).Name} at {loadFromPath}. Returning null.");
 
-            return candidates.First() as T;
-
-        }
-
-        public T GetPrefabObject<T>() where T : Component
-        {
-            string prefabFieldName = typeof(T).Name;
-
-            FieldInfo field = GetType().GetField(prefabFieldName);
-            if (field == null)
-                throw new ApplicationException(prefabFieldName +
-                                               " not registered in prefab factory; must have field name and type both '" +
-                                               prefabFieldName + "', must have field populated in editor");
-
-            T prefab = field.GetValue(this) as T;
             return prefab;
+            //var candidates=Resources.FindObjectsOfTypeAll(typeof(T));
+            //if(candidates.Length==0)
+            //{
+
+            //}
+
+            //if (candidates.Length >1)
+            //    NoonUtility.LogWarning($"Multiple types of prefab {typeof(T)} in Resources. Using the first candidate.");
+
+            //return candidates.First() as T;
+
         }
 
-        public IManifestation CreateManifestationPrefab(Type prefabFieldType,Transform parent)
+        public IManifestation CreateManifestationPrefab(Type manifestationType,Transform parent)
         {
-            
-            FieldInfo field = GetType().GetField(prefabFieldType.Name);
-            if (field == null)
-                throw new ApplicationException(prefabFieldType.Name +
-                                               " not registered in prefab factory; must have field name and type both '" +
-                                               prefabFieldType.Name + "', must have field populated in editor");
 
-            var prefabObject = field.GetValue(this) as UnityEngine.Object;
+            string loadFromPath = prefabPath + manifestationType.Name;
+            var prefab = Resources.Load(loadFromPath);
+            if (prefab == null)
+                NoonUtility.LogWarning($"Can't find prefab of type {manifestationType.Name} at {loadFromPath}. Returning null.");
 
-            var instantiatedPrefab = Instantiate(prefabObject,parent);
-            return instantiatedPrefab as IManifestation;
+
+            var instantiatedPrefab = Instantiate(prefab, parent) as GameObject;
+
+            return instantiatedPrefab.GetComponent(manifestationType) as IManifestation;
         }
-
-
 
 
     }
