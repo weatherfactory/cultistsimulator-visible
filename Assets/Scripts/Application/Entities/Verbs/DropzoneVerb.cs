@@ -25,10 +25,6 @@ namespace SecretHistories.Entities.Verbs
         [FucineValue]
         public string Art { get; set; }
 
-        public Type GetDefaultManifestationType()
-        {
-            return typeof(DropzoneManifestation);
-        }
 
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
@@ -70,11 +66,11 @@ namespace SecretHistories.Entities.Verbs
 
         public Situation CreateDefaultSituation(TokenLocation anchorLocation)
         {
-            var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>(NoonConstants.DROPZONE_RECIPE_ID);
+            var dropzoneRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(NoonConstants.DROPZONE_RECIPE_ID);
 
             var cmd = new SituationCreationCommand(this, dropzoneRecipe, StateEnum.Unstarted, anchorLocation,
                 null);
-           var dropzoneSituation= Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(cmd);
+           var dropzoneSituation= Watchman.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(cmd);
            
            return dropzoneSituation;
         }

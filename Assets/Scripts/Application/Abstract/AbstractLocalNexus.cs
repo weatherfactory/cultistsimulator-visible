@@ -33,7 +33,7 @@ namespace SecretHistories.Interfaces
 
         public void Awake()
         {
-       var registry = new Registry();
+       var registry = new Watchman();
        registry.Register(this);
 
         }

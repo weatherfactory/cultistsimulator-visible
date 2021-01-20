@@ -29,11 +29,7 @@ namespace SecretHistories.Entities
         public  bool Transient => true;
 
         public string Art=>String.Empty;
-        public Type GetDefaultManifestationType()
-        {
-            return typeof(VerbManifestation);
 
-        }
 
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {

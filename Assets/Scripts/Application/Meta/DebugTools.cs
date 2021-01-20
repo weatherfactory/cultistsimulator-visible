@@ -77,12 +77,12 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
     public void Awake()
     {
         Toggle(); //start by hiding the panel. If it's not enabled at the beginning, this won't run
-        var registry = new Registry();
+        var registry = new Watchman();
         registry.Register(this);
 
 
         {
-            if (Registry.Get<Config>().knock)
+            if (Watchman.Get<Config>().knock)
                 btnTriggerAchievement.gameObject.SetActive(true);
 
         }
@@ -142,13 +142,13 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
             dbIndex++;
         }
 
-        Registry.Get<SphereCatalogue>().Subscribe(this);
+        Watchman.Get<SphereCatalogue>().Subscribe(this);
     }
 
 
     public void ToggleVisibleLog()
     {
-        Registry.Get<Concursum>().ToggleSecretHistory();
+        Watchman.Get<Concursum>().ToggleSecretHistory();
     }
 
     public bool ProcessInput()
@@ -236,7 +236,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
         // Re-populate it with updated suggestions
         // Disable the suggestion box if there are no suggestions
-        Compendium compendium = Registry.Get<Compendium>();
+        Compendium compendium = Watchman.Get<Compendium>();
         List<AutoCompletionSuggestion> suggestions = GetElementAutoCompletionSuggestions(compendium, value)
             .Concat(GetRecipeAutoCompletionSuggestions(compendium, value))
             .OrderBy(acs => acs.GetText())
@@ -284,7 +284,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
     void AddCard(string elementId)
     {
        
-        var element = Registry.Get<Compendium>().GetEntityById<Element>(elementId);
+        var element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
 
         if (element == null) {
             Debug.LogWarning("No Element with ID " + elementId + " found!");
@@ -305,17 +305,17 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     void BeginSituation(string recipeId)
     {
-        var compendium = Registry.Get<Compendium>();
+        var compendium = Watchman.Get<Compendium>();
         var recipe = compendium.GetEntityById<Recipe>(recipeId.Trim());
         if (recipe!=null)
         {
-            IVerb verbForNewSituation = Registry.Get<Compendium>().GetVerbForRecipe(recipe);
+            IVerb verbForNewSituation = Watchman.Get<Compendium>().GetVerbForRecipe(recipe);
 
 
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, StateEnum.Ongoing,
                 new TokenLocation(0f,0f,-100f,tabletop.GetPath()));
             scc.Open = false;
-        Registry.Get<SituationsCatalogue>().TryBeginNewSituation(scc,new List<Token>());
+        Watchman.Get<SituationsCatalogue>().TryBeginNewSituation(scc,new List<Token>());
         }
         else
             NoonUtility.LogWarning("Tried to begin situation via debug, but couldn't find this recipe: " + recipeId);
@@ -323,24 +323,24 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     void HaltVerb(string verbId)
     {
-        Registry.Get<SituationsCatalogue>().HaltSituation(verbId, 1);
+        Watchman.Get<SituationsCatalogue>().HaltSituation(verbId, 1);
 
     }
 
     private void DeleteVerb(string verbId)
     {
-        Registry.Get<SituationsCatalogue>().DeleteSituation(verbId,1);
+        Watchman.Get<SituationsCatalogue>().DeleteSituation(verbId,1);
     }
 
     private void PurgeElement(string elementId)
     {
-        Registry.Get<SphereCatalogue>().PurgeElement(elementId, 1);
+        Watchman.Get<SphereCatalogue>().PurgeElement(elementId, 1);
     }
 
 
     void BeginLegacy(string legacyId)
     {
-        var l = Registry.Get<Compendium>().GetEntityById<Legacy>(legacyId);
+        var l = Watchman.Get<Compendium>().GetEntityById<Legacy>(legacyId);
         if (l == null)
             return;
 
@@ -348,13 +348,13 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     void TriggerAchievement(string achievementId)
     {
-        var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
+        var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
         storefrontServicesProvider.SetAchievementForCurrentStorefronts(achievementId,true);
     }
 
     void ResetAchievement(string achievementId)
     {
-        var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
+        var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
         storefrontServicesProvider.SetAchievementForCurrentStorefronts(achievementId, false);
     }
 
@@ -365,26 +365,26 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     void UpdateCompendiumContent()
     {
-        Registry.Get<ModManager>().CatalogueMods();
+        Watchman.Get<ModManager>().CatalogueMods();
             
-           var existingCompendium = Registry.Get<Compendium>();
-           var compendiumLoader = new CompendiumLoader(Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
+           var existingCompendium = Watchman.Get<Compendium>();
+           var compendiumLoader = new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
 
         var startImport = DateTime.Now;
-           var log=compendiumLoader.PopulateCompendium(existingCompendium, Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
+           var log=compendiumLoader.PopulateCompendium(existingCompendium, Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
         foreach(var m in log.GetMessages())
             NoonUtility.Log(m.Description,m.MessageLevel);
 
         NoonUtility.Log("Total time to import: " + (DateTime.Now-startImport));
 
         // Populate current decks with new cards (this will shuffle the deck)
-        Registry.Get<Character>().ResetStartingDecks();
+        Watchman.Get<Character>().ResetStartingDecks();
 
     }
 
     public void WordCount()
     {
-        var compendium = Registry.Get<Compendium>();
+        var compendium = Watchman.Get<Compendium>();
         var log=new ContentImportLog();
         compendium.CountWords(log);
         foreach (var m in log.GetMessages())
@@ -394,7 +394,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     public void FnordCount()
     {
-        var compendium = Registry.Get<Compendium>();
+        var compendium = Watchman.Get<Compendium>();
         var log = new ContentImportLog();
         compendium.LogFnords(log);
         foreach (var m in log.GetMessages())
@@ -405,7 +405,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
     public void ImageCheck()
     {
 
-        var compendium = Registry.Get<Compendium>();
+        var compendium = Watchman.Get<Compendium>();
         var log = new ContentImportLog();
         compendium.LogMissingImages(log);
         foreach (var m in log.GetMessages())
@@ -421,7 +421,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
     // to allow access from HotkeyWatcher
     public void EndGame(string endingId)
     {
-        var compendium = Registry.Get<Compendium>();
+        var compendium = Watchman.Get<Compendium>();
 
         var ending = compendium.GetEntityById<Ending>(endingId);
         if (ending == null)
@@ -429,14 +429,14 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
         
         // Get us a random situation that killed us!
-        var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+        var situationControllers = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
         
     throw new NotImplementedException();
     }
 
     public void LoadGame()
     {
-        Registry.Get<StageHand>().LoadGameOnTabletop(SourceForGameState.DefaultSave);
+        Watchman.Get<StageHand>().LoadGameOnTabletop(SourceForGameState.DefaultSave);
     }
 
     public async void SaveGame()
@@ -446,7 +446,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     void ResetDecks()
     {
-        var character= Registry.Get<Character>();
+        var character= Watchman.Get<Character>();
         character.ResetStartingDecks();
     }
 
@@ -488,7 +488,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     async void  SaveDebugSave(int index)
     {
-        TabletopManager tabletopManager = Registry.Get<TabletopManager>();
+        TabletopManager tabletopManager = Watchman.Get<TabletopManager>();
         var source = (SourceForGameState) index;
 
         NoonUtility.LogWarning("THis doesn't work rn");
@@ -506,7 +506,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         if (!CheckDebugSaveExists(index))
             return;
         SourceForGameState source = (SourceForGameState) index;
-        Registry.Get<StageHand>().LoadGameOnTabletop(source);
+        Watchman.Get<StageHand>().LoadGameOnTabletop(source);
         }
 
     void DeleteDebugSave(int index)

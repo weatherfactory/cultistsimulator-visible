@@ -55,7 +55,7 @@ namespace SecretHistories.Constants {
             _uiController.enabled = false; // Disable shortcuts
 
             // pause game
-          Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =3 , GameSpeed = GameSpeed.Paused, WithSFX =false });
+          Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =3 , GameSpeed = GameSpeed.Paused, WithSFX =false });
 
 
            tableScroll.StopMovement(); // make sure the scroll rect stops
@@ -96,7 +96,7 @@ namespace SecretHistories.Constants {
             FadeToBlack(fadeDuration);
             yield return new WaitForSeconds(fadeDuration);
 
-            Registry.Get<StageHand>().EndingScreen();
+            Watchman.Get<StageHand>().EndingScreen();
 
         }
 

@@ -54,7 +54,7 @@ namespace SecretHistories.Constants.Modding
 
             uploadButton.onClick.AddListener(UploadModToStorefront);
             activationToggleButton.onClick.AddListener(ToggleActivation);
-            var concursum = Registry.Get<Concursum>();
+            var concursum = Watchman.Get<Concursum>();
 
             concursum.ModOperationEvent.AddListener(ModOperationEvent);
 
@@ -87,7 +87,7 @@ namespace SecretHistories.Constants.Modding
         {
             var newLabel = _mod.Enabled ? "UI_DISABLE" : "UI_ENABLE";
             activationToggleBabel.UpdateLocLabel(_mod.Enabled ? "UI_DISABLE" : "UI_ENABLE");
-            activationToggleText.text = Registry.Get<ILocStringProvider>().Get(newLabel);
+            activationToggleText.text = Watchman.Get<ILocStringProvider>().Get(newLabel);
             var newColor = _mod.Enabled ? Color.white : Color.gray;
             title.color = newColor;
             description.color = newColor;
@@ -95,7 +95,7 @@ namespace SecretHistories.Constants.Modding
 
         public void ToggleActivation()
         {
-            var modManager = Registry.Get<ModManager>();
+            var modManager = Watchman.Get<ModManager>();
 
             //can't enable two mods with the same name - this would usually be both a local and a Steam version
             if (!_mod.Enabled && modManager.GetEnabledMods().ToList().Exists(m => m.Name == _mod.Name))
@@ -109,7 +109,7 @@ namespace SecretHistories.Constants.Modding
 
         public void SetUploadButtonState()
         {
-            var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
+            var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
             uploadButton.interactable = true;
 
             if (_mod.ModInstallType != ModInstallType.Local // can't upload unless it's installed locally
@@ -127,13 +127,13 @@ namespace SecretHistories.Constants.Modding
             {
                 uploadButton.gameObject.SetActive(true);
                 uploadBabel.UpdateLocLabel("UI_UPLOAD");
-                uploadText.text = Registry.Get<ILocStringProvider>().Get("UI_UPLOAD");
+                uploadText.text = Watchman.Get<ILocStringProvider>().Get("UI_UPLOAD");
             }
             else
             {
                 uploadButton.gameObject.SetActive(true);
                 uploadBabel.UpdateLocLabel("UI_UPDATE");
-                uploadText.text = Registry.Get<ILocStringProvider>().Get("UI_UPDATE");
+                uploadText.text = Watchman.Get<ILocStringProvider>().Get("UI_UPDATE");
                 
             }
 
@@ -143,7 +143,7 @@ namespace SecretHistories.Constants.Modding
         public async void UploadModToStorefront()
         {
 
-            var concursum = Registry.Get<Concursum>();
+            var concursum = Watchman.Get<Concursum>();
 
             if (!File.Exists(_mod.PreviewImageFilePath))
             {
@@ -151,14 +151,14 @@ namespace SecretHistories.Constants.Modding
                 return;
             }
 
-            var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
+            var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
 
             uploadText.text = "...";
 
             concursum.ShowNotification(new NotificationArgs { Title = "Uploading...", Description = "'I will meditate on the triumph of patience over strength.' Please wait a few moments for your files to upload." });
             uploadButton.interactable = false;
 
-            var publishedFileId = Registry.Get<ModManager>().GetPublishedFileIdForMod(_mod);
+            var publishedFileId = Watchman.Get<ModManager>().GetPublishedFileIdForMod(_mod);
 
             
 
@@ -171,7 +171,7 @@ namespace SecretHistories.Constants.Modding
         private string GetPublishedFileIdForThisMod()
         {
 
-            var modManager = Registry.Get<ModManager>();
+            var modManager = Watchman.Get<ModManager>();
             string publishedFileId = modManager.GetPublishedFileIdForMod(_mod);
             return publishedFileId;
         }
@@ -181,7 +181,7 @@ namespace SecretHistories.Constants.Modding
             if (modOperationArgs.Mod.Name != _mod.Name)
                 return;
 
-            var modManager = Registry.Get<ModManager>();
+            var modManager = Watchman.Get<ModManager>();
 
             
 
@@ -198,7 +198,7 @@ namespace SecretHistories.Constants.Modding
             notificationArgs.Title = "Serapeum Response";
             notificationArgs.Description = modOperationArgs.Message;
 
-            var concursum = Registry.Get<Concursum>();
+            var concursum = Watchman.Get<Concursum>();
             concursum.ShowNotification(notificationArgs);
 
 

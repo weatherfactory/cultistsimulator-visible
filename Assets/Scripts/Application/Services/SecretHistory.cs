@@ -49,7 +49,7 @@ namespace SecretHistories.Services
             {
                 SetVisible(true);
                 if(!Application.isEditor)
-                    Registry.Get<StageHand>().LoadInfoScene();
+                    Watchman.Get<StageHand>().LoadInfoScene();
 
             }
 

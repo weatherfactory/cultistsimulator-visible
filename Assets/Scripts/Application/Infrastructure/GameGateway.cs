@@ -24,7 +24,7 @@ namespace SecretHistories.Constants
         public bool KeepBoardEmpty;
         public void Awake()
         {
-            var r = new Registry();
+            var r = new Watchman();
             r.Register(this);
         }
         public void Start()
@@ -35,13 +35,13 @@ namespace SecretHistories.Constants
             try
             {
 
-                if (Registry.Get<StageHand>().SourceForGameState == SourceForGameState.NewGame)
+                if (Watchman.Get<StageHand>().SourceForGameState == SourceForGameState.NewGame)
                 {
-                    Registry.Get<GameGateway>().BeginNewGame();
+                    Watchman.Get<GameGateway>().BeginNewGame();
                 }
                 else
                 {
-                    LoadGame(Registry.Get<StageHand>().SourceForGameState);
+                    LoadGame(Watchman.Get<StageHand>().SourceForGameState);
                 }
             }
             catch (Exception e)
@@ -53,20 +53,20 @@ namespace SecretHistories.Constants
 
         public void LoadGame(SourceForGameState gameStateSource)
         {
-            Compendium compendium = Registry.Get<Compendium>();
+            Compendium compendium = Watchman.Get<Compendium>();
 
 
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
             { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
-            Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
+            Watchman.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             try
             {
 
-                Registry.Get<GameSaveManager>().LoadTabletopState(gameStateSource, 
-                    Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
+                Watchman.Get<GameSaveManager>().LoadTabletopState(gameStateSource, 
+                    Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
 
 
-                var allSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+                var allSituationControllers = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
                 foreach (var s in allSituationControllers)
                 {
                     if (s.IsOpen)
@@ -75,24 +75,24 @@ namespace SecretHistories.Constants
                     }
                 }
 
-                Registry.Get<Concursum>().ShowNotification(
-                     new NotificationArgs(Registry.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"), Registry.Get<ILocStringProvider>().Get("UI_LOADEDDESC")));
+                Watchman.Get<Concursum>().ShowNotification(
+                     new NotificationArgs(Watchman.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"), Watchman.Get<ILocStringProvider>().Get("UI_LOADEDDESC")));
       
             }
             catch (Exception e)
             {
-                Registry.Get<Concursum>().ShowNotification(
-                    new NotificationArgs(Registry.Get<ILocStringProvider>().Get("UI_LOADFAILEDTITLE"), Registry.Get<ILocStringProvider>().Get("UI_LOADFAILEDDESC")));
+                Watchman.Get<Concursum>().ShowNotification(
+                    new NotificationArgs(Watchman.Get<ILocStringProvider>().Get("UI_LOADFAILEDTITLE"), Watchman.Get<ILocStringProvider>().Get("UI_LOADFAILEDDESC")));
            
                 NoonUtility.LogException(e);
             }
 
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
             { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
 
-            Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
+            Watchman.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
-            var activeLegacy = Registry.Get<Character>().ActiveLegacy;
+            var activeLegacy = Watchman.Get<Character>().ActiveLegacy;
 
 
 
@@ -100,12 +100,12 @@ namespace SecretHistories.Constants
 
         private void ProvisionStartingVerb(Legacy activeLegacy, Sphere inSphere)
         {
-            IVerb v = Registry.Get<Compendium>().GetEntityById<BasicVerb>(activeLegacy.StartingVerbId);
+            IVerb v = Watchman.Get<Compendium>().GetEntityById<BasicVerb>(activeLegacy.StartingVerbId);
 
             SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), StateEnum.Unstarted,
                 new TokenLocation(0f, 0f, -100f, inSphere.GetPath()));
 
-            var situation = Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(command);
+            var situation = Watchman.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(command);
 
             situation.ExecuteHeartbeat(0f);
 
@@ -128,8 +128,8 @@ namespace SecretHistories.Constants
 
         public void BeginNewGame()
         {
-            Character character = Registry.Get<Character>();
-            Sphere tabletopSphere = Registry.Get<SphereCatalogue>().GetDefaultWorldSphere();
+            Character character = Watchman.Get<Character>();
+            Sphere tabletopSphere = Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere();
 
 
             ProvisionStartingVerb(character.ActiveLegacy, tabletopSphere);
@@ -137,19 +137,19 @@ namespace SecretHistories.Constants
             
             ProvisionStartingElements(character.ActiveLegacy, tabletopSphere);
 
-            Registry.Get<Concursum>().ShowNotification(new NotificationArgs(character.ActiveLegacy.Label, character.ActiveLegacy.StartDescription));
+            Watchman.Get<Concursum>().ShowNotification(new NotificationArgs(character.ActiveLegacy.Label, character.ActiveLegacy.StartDescription));
 
             character.Reset(character.ActiveLegacy, null);
-            Registry.Get<Compendium>().SupplyLevers(character);
-            Registry.Get<StageHand>().ClearRestartingGameFlag();
+            Watchman.Get<Compendium>().SupplyLevers(character);
+            Watchman.Get<StageHand>().ClearRestartingGameFlag();
         }
 
         private Situation ProvisionDropzoneSituation()
         {
             //if not, create it
-            var dropzoneRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>(NoonConstants.DROPZONE_RECIPE_ID);
-            var dropzoneVerb = Registry.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
-            var dropzoneLocation = new TokenLocation(Vector3.zero, Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
+            var dropzoneRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(NoonConstants.DROPZONE_RECIPE_ID);
+            var dropzoneVerb = Watchman.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
+            var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
             var dropzoneSituation = dropzoneVerb.CreateDefaultSituation(dropzoneLocation);
 
             return dropzoneSituation;
@@ -158,28 +158,28 @@ namespace SecretHistories.Constants
 
         public async void LeaveGame()
         {
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
 
 
-            ITableSaveState tableSaveState = new TableSaveState(Registry.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World).SelectMany(sphere => sphere.GetAllTokens())
+            ITableSaveState tableSaveState = new TableSaveState(Watchman.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World).SelectMany(sphere => sphere.GetAllTokens())
 
-                , Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<MetaInfo>());
+                , Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<MetaInfo>());
 
-            var saveTask = Registry.Get<GameSaveManager>()
-                .SaveActiveGameAsync(tableSaveState, Registry.Get<Character>(), SourceForGameState.DefaultSave);
+            var saveTask = Watchman.Get<GameSaveManager>()
+                .SaveActiveGameAsync(tableSaveState, Watchman.Get<Character>(), SourceForGameState.DefaultSave);
 
             var success = await saveTask;
 
 
             if (success)
             {
-                Registry.Get<StageHand>().MenuScreen();
+                Watchman.Get<StageHand>().MenuScreen();
             }
             else
             {
                 // Save failed, need to let player know there's an issue
                 // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
-                Registry.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
+                Watchman.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
                 GameSaveManager.ShowSaveError();
             }
         }

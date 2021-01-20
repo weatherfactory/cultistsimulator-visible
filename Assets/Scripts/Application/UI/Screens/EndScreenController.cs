@@ -46,7 +46,7 @@ namespace SecretHistories.UI
 		{
             FadeIn(durationFadeIn);
 
-            var ending = Registry.Get<Character>().EndingTriggered;
+            var ending = Watchman.Get<Character>().EndingTriggered;
 
             if (ending == null)
                 ending = Ending.DefaultEnding();
@@ -99,11 +99,11 @@ namespace SecretHistories.UI
 		{
             //save on exit, so the player will return here, not begin a new game
             
-            var saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Registry.Get<MetaInfo>()),Registry.Get<Character>(), SourceForGameState.DefaultSave);
+            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()),Watchman.Get<Character>(), SourceForGameState.DefaultSave);
             await saveTask;
 
 
-            Registry.Get<StageHand>().MenuScreen();
+            Watchman.Get<StageHand>().MenuScreen();
         }
 
         public void StartNewGame()
@@ -118,13 +118,13 @@ namespace SecretHistories.UI
         }
 
         private void StartNewGameInternal() {
-            Registry.Get<StageHand>().LegacyChoiceScreen();
+            Watchman.Get<StageHand>().LegacyChoiceScreen();
         }
 #if UNITY_EDITOR
 		private void OnGUI()
 		{
 			Rect buttonRect = new Rect(5,5,200,20);
-			var compendium = Registry.Get<Compendium>();
+			var compendium = Watchman.Get<Compendium>();
             List<Ending> endings = compendium.GetEntitiesAsList<Ending>();
 			foreach (Ending ending in endings)
 			{

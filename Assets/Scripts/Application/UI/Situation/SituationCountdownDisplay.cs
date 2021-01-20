@@ -30,7 +30,7 @@ namespace Assets.Scripts.Application.UI.Situation
                 countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (s.TimeRemaining / s.Warmup));
                 countdownText.color = barColor;
                 countdownText.text =
-                    Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(s.TimeRemaining);
+                    Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(s.TimeRemaining);
                 countdownText.richText = true;
         }
 

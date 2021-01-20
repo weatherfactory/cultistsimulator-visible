@@ -18,7 +18,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
     // Start is called before the first frame update
     void Start()
     {
-        Registry.Get<SphereCatalogue>().Subscribe(this);
+        Watchman.Get<SphereCatalogue>().Subscribe(this);
     }
 
 

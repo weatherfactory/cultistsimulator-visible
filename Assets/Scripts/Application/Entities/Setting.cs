@@ -92,7 +92,7 @@ namespace SecretHistories.Entities
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
-            if(Registry.Exists<Config>())
+            if(Watchman.Exists<Config>())
                 LinkToConfig();
         }
 
@@ -102,7 +102,7 @@ namespace SecretHistories.Entities
             //otherwise, set it to the default value
             if (DataType == nameof(Single))
             {
-                var potentialValue = Registry.Get<Config>().GetConfigValueAsFloat(Id);
+                var potentialValue = Watchman.Get<Config>().GetConfigValueAsFloat(Id);
                 if (potentialValue == null)
                     CurrentValue = DefaultValue;
                 else
@@ -110,7 +110,7 @@ namespace SecretHistories.Entities
             }
             else if (DataType == nameof(Int32))
             {
-                var potentialValue = Registry.Get<Config>().GetConfigValueAsInt(Id);
+                var potentialValue = Watchman.Get<Config>().GetConfigValueAsInt(Id);
                 if (potentialValue == null)
                     CurrentValue = DefaultValue;
                 else
@@ -118,7 +118,7 @@ namespace SecretHistories.Entities
             }
             else
             {
-                var potentialValue = Registry.Get<Config>().GetConfigValueAsString(Id);
+                var potentialValue = Watchman.Get<Config>().GetConfigValueAsString(Id);
                 if (string.IsNullOrEmpty(potentialValue))
                     CurrentValue = DefaultValue;
                 else
@@ -128,7 +128,7 @@ namespace SecretHistories.Entities
             //now that the value's been set, create an observer so that the config is updated with any changes to the Setting.
             //(Don't do it before now or we'd needlessly double-update the config)
 
-            SettingObserverForConfig observer = new SettingObserverForConfig(Id, Registry.Get<Config>());
+            SettingObserverForConfig observer = new SettingObserverForConfig(Id, Watchman.Get<Config>());
 
             AddSubscriber(observer);
         }

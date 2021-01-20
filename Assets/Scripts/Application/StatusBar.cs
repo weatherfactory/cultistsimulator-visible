@@ -16,12 +16,12 @@ public class StatusBar : MonoBehaviour,ICharacterSubscriber
 
     public void Start()
     {
-        Registry.Get<Character>().Subscribe(this);
+        Watchman.Get<Character>().Subscribe(this);
     }
 
     public void ChangeCharacterName(string newName)
     {
-        Character currentCharacter = Registry.Get<Character>();
+        Character currentCharacter = Watchman.Get<Character>();
 
         if(currentCharacter.Name!=newName)
             currentCharacter.Name = newName;

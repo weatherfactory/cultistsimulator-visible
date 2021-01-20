@@ -86,12 +86,12 @@ namespace SecretHistories.Editor.BuildScripts
             if (string.IsNullOrEmpty(locale))
                 coreContentPath = NoonUtility.JoinPaths(
                     GetStreamingAssetsPath(),
-                    Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY),
+                    Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY),
                     NoonConstants.CORE_FOLDER_NAME);
             else
                 coreContentPath = NoonUtility.JoinPaths(
                     GetStreamingAssetsPath(),
-                    Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY),
+                    Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY),
                     NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN, locale));
                 
             return coreContentPath;

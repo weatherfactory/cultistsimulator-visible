@@ -38,7 +38,7 @@ namespace SecretHistories.Enums.UI
             }
             else
             {
-                title.text = Registry.Get<ILocStringProvider>().Get(spec.LocLabelIfNotInstalled);
+                title.text = Watchman.Get<ILocStringProvider>().Get(spec.LocLabelIfNotInstalled);
                 notInstalledImage.sprite = ResourcesManager.GetSpriteForLegacy("_" + spec.Id);
                 installedImage.gameObject.SetActive(false);
                 notInstalledImage.gameObject.SetActive(true);

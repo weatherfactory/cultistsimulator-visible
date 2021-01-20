@@ -70,7 +70,7 @@ public class CompendiumLoader
 
 
 
-        if (Registry.Exists<ModManager>())
+        if (Watchman.Exists<ModManager>())
             LoadModsToCompendium();
 
         
@@ -132,10 +132,10 @@ public class CompendiumLoader
 
         compendiumToPopulate.OnPostImport(_log);
 
-        if(Registry.Exists<Concursum>())
+        if(Watchman.Exists<Concursum>())
         {
             //notify the rest of the application that content has been updated
-            var concursum = Registry.Get<Concursum>();
+            var concursum = Watchman.Get<Concursum>();
             concursum.ContentUpdatedEvent.Invoke(new ContentUpdatedArgs{Message = "Loaded compendium content."});
         }
 
@@ -146,7 +146,7 @@ public class CompendiumLoader
 
     private void LoadModsToCompendium()
     {
-        var modManager = Registry.Get<ModManager>();
+        var modManager = Watchman.Get<ModManager>();
 
         modManager.CatalogueMods();
         foreach (var mod in modManager.GetEnabledMods())

@@ -76,7 +76,7 @@ public class SoundManager : AudioManager, ISettingSubscriber
         }
 
 
-        var soundVolumeSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.SOUNDVOLUME);
+        var soundVolumeSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.SOUNDVOLUME);
 
         if (soundVolumeSetting == null)
         {

@@ -51,12 +51,12 @@ namespace SecretHistories.Services
 
         private async void SceneChange(string sceneToLoad,bool withFadeEffect)
         {
-            var sphereCatalogue = Registry.Get<SphereCatalogue>();
+            var sphereCatalogue = Watchman.Get<SphereCatalogue>();
 
             if(sphereCatalogue != null)
-                Registry.Get<SphereCatalogue>().Reset();
+                Watchman.Get<SphereCatalogue>().Reset();
 
-            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
+            var situationsCatalogue = Watchman.Get<SituationsCatalogue>();
             if (situationsCatalogue != null)
                 situationsCatalogue.Reset();
 
@@ -88,7 +88,7 @@ namespace SecretHistories.Services
         {
             if(!loadedInfoScene)
             {
-                SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().UhOScene, false);
+                SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().UhOScene, false);
                 loadedInfoScene = true;
             }
         }
@@ -97,14 +97,14 @@ namespace SecretHistories.Services
         {
             SoundManager.PlaySfx("UIStartGame");
             SourceForGameState = source;
-            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().PlayfieldScene, true);
+            SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().PlayfieldScene, true);
         }
 
 
         public void NewGameOnTabletop()
         {
             SourceForGameState = SourceForGameState.NewGame;
-            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().NewGameScene, true);
+            SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NewGameScene, true);
         }
 
         public void ClearRestartingGameFlag()
@@ -116,18 +116,18 @@ namespace SecretHistories.Services
 
         public void LogoScreen()
         {
-            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().LogoScene,false);
+            SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().LogoScene,false);
         }
 
 
         public void QuoteScreen()
         {
-            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().QuoteScene, false);
+            SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().QuoteScene, false);
         }
 
         public void MenuScreen()
         {
-            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().MenuScene, false);
+            SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().MenuScene, false);
         }
 
 
@@ -140,12 +140,12 @@ namespace SecretHistories.Services
 
         public void EndingScreen()
         {
-            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().GameOverScene, false);
+            SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().GameOverScene, false);
         }
 
         public void LegacyChoiceScreen()
         {
-            SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().NewGameScene, true);
+            SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NewGameScene, true);
         }
 
 
@@ -163,9 +163,9 @@ namespace SecretHistories.Services
             {
 
                 if (skipLogo)
-                    SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().QuoteScene, false);
+                    SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().QuoteScene, false);
                 else
-                    SceneChange(Registry.Get<Compendium>().GetSingleEntity<Dictum>().LogoScene, false);
+                    SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().LogoScene, false);
             }
         }
     }

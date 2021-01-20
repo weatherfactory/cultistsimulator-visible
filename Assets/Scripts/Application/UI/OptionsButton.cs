@@ -8,6 +8,6 @@ public class OptionsButton : MonoBehaviour
 {
     public void OnClick()
     {
-        Registry.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
+        Watchman.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
     }
 }

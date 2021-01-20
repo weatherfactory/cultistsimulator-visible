@@ -131,7 +131,7 @@ public class ResourcesManager: MonoBehaviour
      return GetSpriteLocalised(
             "endings",
             endingImage,
-            Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY),
+            Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY),
         false);
 
     }
@@ -172,12 +172,12 @@ public class ResourcesManager: MonoBehaviour
     public static Sprite GetSprite(string folder, string file, bool withPlaceholder = true)
     {
         var imagesFolderNameInResources =
-            Registry.Get<Config>().GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY);
+            Watchman.Get<Config>().GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY);
         var spritePath = Path.Combine(imagesFolderNameInResources,
             folder, file);
 
         // Try to find the image in a mod first, in case it overrides an existing one
-        var modManager = Registry.Get<ModManager>();
+        var modManager = Watchman.Get<ModManager>();
         var modSprite = modManager.GetSprite(spritePath);
         if (modSprite != null)
         {
@@ -199,11 +199,11 @@ public class ResourcesManager: MonoBehaviour
         if (cultureId != NoonConstants.DEFAULT_CULTURE_ID)
         {
 
-            var spritePath = Path.Combine(Registry.Get<Config>().GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY),
+            var spritePath = Path.Combine(Watchman.Get<Config>().GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY),
                 NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN, cultureId), file);
 
             // Try to find the image in a mod first, in case it overrides an existing one
-            var modManager = Registry.Get<ModManager>();
+            var modManager = Watchman.Get<ModManager>();
             spriteToReturn = modManager.GetSprite(spritePath);
             if (spriteToReturn != null)
             {

@@ -47,7 +47,7 @@ namespace SecretHistories.Constants
             var endingTriggeredForCharacterId =
                 TryGetStringFromHashtable(htSave, SaveConstants.SAVE_CURRENTENDING);
 
-            var endingTriggered = Registry.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
+            var endingTriggered = Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
 
 
 
@@ -60,8 +60,8 @@ namespace SecretHistories.Constants
         {
             var htSave = RetrieveHashedSaveFromFile(source);
 
-       windowSpherePath = new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
-          tabletopSpherePath = new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
+       windowSpherePath = new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
+          tabletopSpherePath = new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
 
 
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
@@ -99,7 +99,7 @@ namespace SecretHistories.Constants
             }
             else
             {
-               activeLegacy = Registry.Get<Compendium>().GetEntityById<Legacy>(chosenLegacyForCharacterId);
+               activeLegacy = Watchman.Get<Compendium>().GetEntityById<Legacy>(chosenLegacyForCharacterId);
             }
 
             var endingTriggeredForCharacterId =
@@ -107,7 +107,7 @@ namespace SecretHistories.Constants
             if (string.IsNullOrEmpty(endingTriggeredForCharacterId))
                endingTriggered = null;
             else
-               endingTriggered = Registry.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
+               endingTriggered = Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
 
             
 
@@ -155,7 +155,7 @@ namespace SecretHistories.Constants
             }
 
 
-            Registry.Get<Compendium>().SupplyLevers(character);
+            Watchman.Get<Compendium>().SupplyLevers(character);
 
             var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
 
@@ -182,7 +182,7 @@ namespace SecretHistories.Constants
             {
                 var htEachDeck = htDeckInstances.GetHashtable(k);
 
-                DeckSpec spec = Registry.Get<Compendium>().GetEntityById<DeckSpec>(k.ToString());
+                DeckSpec spec = Watchman.Get<Compendium>().GetEntityById<DeckSpec>(k.ToString());
 
                 if (spec == null)
                     NoonUtility.Log("no deckspec found for saved deckinstance " + k.ToString());
@@ -207,7 +207,7 @@ namespace SecretHistories.Constants
 
                 var command = SetupSituationCreationCommand(verb, recipe, situationState, htSituationValues, locationInfo);
 
-                var situation = Registry.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(command); 
+                var situation = Watchman.Get<SituationBuilder>().CreateSituationWithAnchorAndWindow(command); 
                 situation.ExecuteHeartbeat(0f); //flushes everything through and updates
 
                 ImportSlotContents(situation,htSituationValues,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
@@ -276,7 +276,7 @@ namespace SecretHistories.Constants
         private static IVerb GetSituationVerb(Hashtable htSituationValues)
         {
             string verbId = htSituationValues[SaveConstants.SAVE_VERBID].ToString();
-            IVerb situationVerb = Registry.Get<Compendium>().GetEntityById<BasicVerb>(verbId);
+            IVerb situationVerb = Watchman.Get<Compendium>().GetEntityById<BasicVerb>(verbId);
             if (situationVerb == null)
                 situationVerb = NullVerb.Create();
             return situationVerb;
@@ -285,7 +285,7 @@ namespace SecretHistories.Constants
         private Recipe GetSituationRecipe(Hashtable htSituationValues, IVerb situationVerb)
         {
             string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
-            var recipe = Registry.Get<Compendium>().GetEntityById<Recipe>(recipeId);
+            var recipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(recipeId);
             if (recipe == null)
                 recipe = NullRecipe.Create(situationVerb);
             return recipe;
@@ -305,7 +305,7 @@ namespace SecretHistories.Constants
                                                                                             //in that case we need to do it from the top down, or the slots won't be there
                 {
                     var slotPath = new SpherePath(situation.Path, ess.LocationInfo.Split(SpherePath.SEPARATOR)[0]);
-                    var slot = Registry.Get<SphereCatalogue>().GetSphereByPath(slotPath);
+                    var slot = Watchman.Get<SphereCatalogue>().GetSphereByPath(slotPath);
                     slot.ProvisionStackFromCommand(ess);
 
                 }
@@ -382,7 +382,7 @@ namespace SecretHistories.Constants
                 var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
                 foreach (var ess in elementStackSpecifications)
                 {
-                    var stackToStore=Registry.Get<Limbo>().ProvisionStackFromCommand(ess);
+                    var stackToStore=Watchman.Get<Limbo>().ProvisionStackFromCommand(ess);
 
                     situation.AcceptToken(SphereCategory.SituationStorage, stackToStore,
                         new Context(Context.ActionSource.Loading));

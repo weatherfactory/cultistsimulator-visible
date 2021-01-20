@@ -38,7 +38,7 @@ namespace SecretHistories.Constants {
             
             tableRect = _tabletop.GetRect();
 
-            var snapGridSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
+            var snapGridSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
             if (snapGridSetting != null)
             {
                 snapGridSetting.AddSubscriber(this);

@@ -51,7 +51,7 @@ namespace SecretHistories.UI {
         void SetAspect(Element element)
 		{
             ShowImage(ResourcesManager.GetSpriteForAspect(element.Icon));
-            ShowText(Registry.Get<ILocStringProvider>().Get("UI_ASPECT") + element.Label, element.Description);
+            ShowText(Watchman.Get<ILocStringProvider>().Get("UI_ASPECT") + element.Label, element.Description);
             adjuster.Adjust();
         }
     }

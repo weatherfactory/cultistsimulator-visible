@@ -22,7 +22,7 @@ namespace SecretHistories.UI
 
         public void OnEnable()
         {
-            List<Element> creditCards = Registry.Get<Compendium>().GetEntitiesAsList<Element>()
+            List<Element> creditCards = Watchman.Get<Compendium>().GetEntitiesAsList<Element>()
                 .Where(e => e.Id.StartsWith("credits.")).ToList();
 
 

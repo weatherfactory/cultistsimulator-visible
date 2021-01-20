@@ -8,7 +8,7 @@ namespace SecretHistories.Enums.UI
     {
         public void StackCards()
         {
-            var localNexus = Registry.Get<LocalNexus>();
+            var localNexus = Watchman.Get<LocalNexus>();
             localNexus.StackCardsEvent.Invoke();
         }
     }

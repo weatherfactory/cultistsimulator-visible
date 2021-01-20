@@ -136,7 +136,7 @@ public class MenuScreenController : LocalNexus {
         //// We delay the showing to get a proper fade in
         Invoke("UpdateAndShowMenu", 0.1f);
         
-        var concursum = Registry.Get<Concursum>();
+        var concursum = Watchman.Get<Concursum>();
 
         concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
 
@@ -144,21 +144,21 @@ public class MenuScreenController : LocalNexus {
 
     private void OnContentUpdated(ContentUpdatedArgs args)
     {
-        BuildLegacyStartsPanel(Registry.Get<MetaInfo>().Storefront);
+        BuildLegacyStartsPanel(Watchman.Get<MetaInfo>().Storefront);
     }
 
 
     void InitialiseServices()
 	{
-        currentVersion = Registry.Get<MetaInfo>().VersionNumber;
+        currentVersion = Watchman.Get<MetaInfo>().VersionNumber;
 
-        var store = Registry.Get<MetaInfo>().Storefront;
+        var store = Watchman.Get<MetaInfo>().Storefront;
 
         BuildLegacyStartsPanel(store);
         BuildModsPanel(store);
         BuildLanguagesAvailablePanel();
 
-        new Registry().Register(notifier); //we register a different notifier in the later tabletop scene
+        new Watchman().Register(notifier); //we register a different notifier in the later tabletop scene
 
     }
 
@@ -168,7 +168,7 @@ public class MenuScreenController : LocalNexus {
     void UpdateAndShowMenu()
     {
         
-        var currentCharacter = Registry.Get<Character>();
+        var currentCharacter = Watchman.Get<Character>();
 
         // Show the buttons as needed
         var savedGameExists = (currentCharacter.State != CharacterState.Unformed);
@@ -242,7 +242,7 @@ public class MenuScreenController : LocalNexus {
         if (!canTakeInput)
             return;
 
-        var defaultLegacy = Registry.Get<Compendium>().GetEntitiesAsList<Legacy>().First();
+        var defaultLegacy = Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First();
         BeginNewSaveWithSpecifiedLegacy(defaultLegacy.Id);
 
     }
@@ -252,13 +252,13 @@ public class MenuScreenController : LocalNexus {
         if (!canTakeInput)
             return;
 		
-        if (Registry.Get<Character>().State==CharacterState.Viable) {
+        if (Watchman.Get<Character>().State==CharacterState.Viable) {
             //back into the game!
-            Registry.Get<StageHand>().LoadGameOnTabletop(SourceForGameState.DefaultSave);
+            Watchman.Get<StageHand>().LoadGameOnTabletop(SourceForGameState.DefaultSave);
             return;
         }
 
-        Registry.Get<StageHand>().LegacyChoiceScreen();
+        Watchman.Get<StageHand>().LegacyChoiceScreen();
     }
 
 
@@ -277,25 +277,25 @@ public class MenuScreenController : LocalNexus {
 
 
         currentOverlay = null; // to ensure we can re-open another overlay afterwards
-        Registry.Get<StageHand>().MenuScreen();
+        Watchman.Get<StageHand>().MenuScreen();
     }
 
     private async void ResetToLegacy(Legacy activeLegacy)
     {
-        Registry.Get<Character>().Reset(activeLegacy,null);
+        Watchman.Get<Character>().Reset(activeLegacy,null);
 
 
-        var saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Registry.Get<MetaInfo>()), Registry.Get<Character>(), SourceForGameState.DefaultSave);
+        var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Character>(), SourceForGameState.DefaultSave);
         await saveTask;
 
     }
 
     public void BeginNewSaveWithSpecifiedLegacy(string legacyId)
     {
-        var legacy= Registry.Get<Compendium>().GetEntityById<Legacy>(legacyId);
+        var legacy= Watchman.Get<Compendium>().GetEntityById<Legacy>(legacyId);
         ResetToLegacy(legacy);
         
-        Registry.Get<StageHand>().NewGameOnTabletop();
+        Watchman.Get<StageHand>().NewGameOnTabletop();
     }
 
     public void ShowCredits() {
@@ -325,9 +325,9 @@ public class MenuScreenController : LocalNexus {
 		if (!canTakeInput)
 			return;
 
-        var culture = Registry.Get<Compendium>().GetEntityById<Culture>(lang_code);
+        var culture = Watchman.Get<Compendium>().GetEntityById<Culture>(lang_code);
 
-        Registry.Get<Concursum>().SetNewCulture(culture);
+        Watchman.Get<Concursum>().SetNewCulture(culture);
 
         HideCurrentOverlay();
 
@@ -370,7 +370,7 @@ public class MenuScreenController : LocalNexus {
         foreach (Transform legacyStartEntry in legacyStartEntries)
             Destroy(legacyStartEntry.gameObject);
 
-        var legacies = Registry.Get<Compendium>().GetEntitiesAsList<Legacy>();
+        var legacies = Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>();
 
         var allNewStartLegacies = legacies.Where(l => l.NewStart).ToList();
 
@@ -424,7 +424,7 @@ public class MenuScreenController : LocalNexus {
         foreach (Transform modEntry in modEntries)
             Destroy(modEntry.gameObject);
         
-        foreach (var mod in Registry.Get<ModManager>().GetCataloguedMods())
+        foreach (var mod in Watchman.Get<ModManager>().GetCataloguedMods())
         {
             var modEntry = Instantiate(modEntryPrefab).GetComponent<ModEntry>();
             modEntry.transform.SetParent(modEntries, false);
@@ -432,7 +432,7 @@ public class MenuScreenController : LocalNexus {
         }
 
         //display 'no mods' if no mods are available to enable
-        modEmptyMessage.enabled = !Registry.Get<ModManager>().GetCataloguedMods().Any();
+        modEmptyMessage.enabled = !Watchman.Get<ModManager>().GetCataloguedMods().Any();
     }
 
     private void BuildLanguagesAvailablePanel()
@@ -442,12 +442,12 @@ public class MenuScreenController : LocalNexus {
 
 
 
-        foreach (var culture in Registry.Get<Compendium>().GetEntitiesAsList<Culture>().Where(c=>c.Released))
+        foreach (var culture in Watchman.Get<Compendium>().GetEntitiesAsList<Culture>().Where(c=>c.Released))
         {
             var languageChoice =Instantiate(languageChoicePrefab).GetComponent<LanguageChoice>();
             languageChoice.transform.SetParent(LanguagesAvailable,false);
             languageChoice.Label.text = culture.Endonym;
-            languageChoice.Label.font = Registry.Get<ILocStringProvider>().GetFont(LanguageManager.eFontStyle.Button, culture.FontScript);
+            languageChoice.Label.font = Watchman.Get<ILocStringProvider>().GetFont(LanguageManager.eFontStyle.Button, culture.FontScript);
             languageChoice.gameObject.GetComponent<Button>().onClick.AddListener(()=>SetLanguage(culture.Id));
         }
 

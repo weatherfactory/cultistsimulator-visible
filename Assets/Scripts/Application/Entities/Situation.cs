@@ -252,7 +252,7 @@ namespace SecretHistories.Entities {
 
             _window.Retire();
             _anchor.Retire();
-            Registry.Get<SituationsCatalogue>().DeregisterSituation(this);
+            Watchman.Get<SituationsCatalogue>().DeregisterSituation(this);
         }
 
 
@@ -388,7 +388,7 @@ namespace SecretHistories.Entities {
 
         private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
         {
-            var tabletopManager = Registry.Get<TabletopManager>();
+            var tabletopManager = Watchman.Get<TabletopManager>();
             if (endingFlavour != EndingFlavour.None)
                 tabletopManager.SignalImpendingDoom(_anchor);
             else
@@ -399,10 +399,10 @@ namespace SecretHistories.Entities {
         public void ExecuteCurrentRecipe()
         {
             
-            var tc = Registry.Get<SphereCatalogue>();
+            var tc = Watchman.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
-            RecipeConductor rc =new RecipeConductor(aspectsInContext, Registry.Get<Character>());
+            RecipeConductor rc =new RecipeConductor(aspectsInContext, Watchman.Get<Character>());
 
             IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetRecipeExecutionCommands(CurrentPrimaryRecipe);
 
@@ -432,14 +432,14 @@ namespace SecretHistories.Entities {
                     CreateNewSituation(currentEffectCommand);
                 else
                 {
-                    Registry.Get<Character>().AddExecutionsToHistory(currentEffectCommand.Recipe.Id, 1); //can we make 
-                    var executor = new SituationEffectExecutor(Registry.Get<TabletopManager>());
-                    executor.RunEffects(currentEffectCommand, GetSingleSphereByCategory(SphereCategory.SituationStorage), Registry.Get<Character>(), Registry.Get<IDice>());
+                    Watchman.Get<Character>().AddExecutionsToHistory(currentEffectCommand.Recipe.Id, 1); //can we make 
+                    var executor = new SituationEffectExecutor(Watchman.Get<TabletopManager>());
+                    executor.RunEffects(currentEffectCommand, GetSingleSphereByCategory(SphereCategory.SituationStorage), Watchman.Get<Character>(), Watchman.Get<IDice>());
 
                     if (!string.IsNullOrEmpty(currentEffectCommand.Recipe.Ending))
                     {
-                        var ending = Registry.Get<Compendium>().GetEntityById<Ending>(currentEffectCommand.Recipe.Ending);
-                        Registry.Get<TabletopManager>() .EndGame(ending, this._anchor); //again, ttm (or successor) is subscribed. We should do it through there.
+                        var ending = Watchman.Get<Compendium>().GetEntityById<Ending>(currentEffectCommand.Recipe.Ending);
+                        Watchman.Get<TabletopManager>() .EndGame(ending, this._anchor); //again, ttm (or successor) is subscribed. We should do it through there.
                     }
                     
                     
@@ -454,7 +454,7 @@ namespace SecretHistories.Entities {
         private void TryOverrideVerbIcon(IAspectsDictionary forAspects)
         {
             //if we have an element in the situation now that overrides the verb icon, update it
-            string overrideIcon = Registry.Get<Compendium>().GetVerbIconOverrideFromAspects(forAspects);
+            string overrideIcon = Watchman.Get<Compendium>().GetVerbIconOverrideFromAspects(forAspects);
             if (!string.IsNullOrEmpty(overrideIcon))
             {
                 _anchor.DisplayOverrideIcon(overrideIcon);
@@ -486,7 +486,7 @@ namespace SecretHistories.Entities {
 
 
 
-            IVerb verbForNewSituation = Registry.Get<Compendium>().GetVerbForRecipe(effectCommand.Recipe);
+            IVerb verbForNewSituation = Watchman.Get<Compendium>().GetVerbForRecipe(effectCommand.Recipe);
 
 
             TokenLocation newAnchorLocation;
@@ -499,7 +499,7 @@ namespace SecretHistories.Entities {
 
             var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe,
                 StateEnum.Unstarted, newAnchorLocation, _anchor);
-            var newSituation=Registry.Get<SituationsCatalogue>()
+            var newSituation=Watchman.Get<SituationsCatalogue>()
                 .TryBeginNewSituation(scc,
                     stacksToAddToNewSituation); //tabletop manager is a subscriber, right? can we run this (or access to its successor) through that flow?
 
@@ -546,7 +546,7 @@ namespace SecretHistories.Entities {
 
         foreach (var a in inducingAspects)
         {
-            var aspectElement = Registry.Get<Compendium>().GetEntityById<Element>(a.Key);
+            var aspectElement = Watchman.Get<Compendium>().GetEntityById<Element>(a.Key);
 
             if (aspectElement != null)
                 PerformAspectInduction(aspectElement);
@@ -561,10 +561,10 @@ namespace SecretHistories.Entities {
     {
         foreach (var induction in aspectElement.Induces)
         {
-            var d = Registry.Get<IDice>();
+            var d = Watchman.Get<IDice>();
 
             if (d.Rolld100() <= induction.Chance)
-                CreateRecipeFromInduction(Registry.Get<Compendium>() .GetEntityById<Recipe>(induction.Id), aspectElement.Id);
+                CreateRecipeFromInduction(Watchman.Get<Compendium>() .GetEntityById<Recipe>(induction.Id), aspectElement.Id);
         }
     }
 
@@ -576,10 +576,10 @@ namespace SecretHistories.Entities {
             return;
         }
         
-            var inductionRecipeVerb = Registry.Get<Compendium>().GetVerbForRecipe(inducedRecipe);
+            var inductionRecipeVerb = Watchman.Get<Compendium>().GetVerbForRecipe(inducedRecipe);
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inductionRecipeVerb,
             inducedRecipe, StateEnum.Unstarted, _anchor.Location, _anchor);
-        var inducedSituation=Registry.Get<SituationsCatalogue>().TryBeginNewSituation(inducedSituationCreationCommand, new List<Token>());
+        var inducedSituation=Watchman.Get<SituationsCatalogue>().TryBeginNewSituation(inducedSituationCreationCommand, new List<Token>());
             inducedSituation.TryStart();
 
     }
@@ -600,7 +600,7 @@ namespace SecretHistories.Entities {
         IsOpen = true;
         _window.Show(location.Anchored3DPosition,this);
             
-        Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.Verb.Id);
+        Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.Verb.Id);
     }
 
     public virtual void OpenAtCurrentLocation()
@@ -716,11 +716,11 @@ namespace SecretHistories.Entities {
         {
          
             var aspects = GetAspectsAvailableToSituation(true);
-            var tc = Registry.Get<SphereCatalogue>();
+            var tc = Watchman.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(aspects);
 
 
-            var recipe = Registry.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Registry.Get<Character>(), false);
+            var recipe = Watchman.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Watchman.Get<Character>(), false);
 
             //no recipe found? get outta here
             if (recipe != null)
@@ -743,9 +743,9 @@ namespace SecretHistories.Entities {
             var aspectsAvailableToSituation = GetAspectsAvailableToSituation(true);
 
             var aspectsInContext =
-                Registry.Get<SphereCatalogue>().GetAspectsInContext(aspectsAvailableToSituation);
+                Watchman.Get<SphereCatalogue>().GetAspectsInContext(aspectsAvailableToSituation);
 
-            RecipeConductor rc = new RecipeConductor(aspectsInContext,Registry.Get<Character>());
+            RecipeConductor rc = new RecipeConductor(aspectsInContext,Watchman.Get<Character>());
 
             return rc.GetPredictionForFollowupRecipe(CurrentPrimaryRecipe, this);
         }

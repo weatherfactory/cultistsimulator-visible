@@ -108,7 +108,7 @@ namespace SecretHistories.Elements.Manifestations
                 countdownBar.color = barColor;
                 countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (durationRemaining / originalDuration));
                 countdownText.color = barColor;
-                countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
+                countdownText.text = Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
                 countdownText.richText = true;
             }
             else

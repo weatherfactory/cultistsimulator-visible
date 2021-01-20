@@ -29,7 +29,7 @@ namespace SecretHistories.UI
                 
                 boundSetting.CurrentValue = action.bindings[0].overridePath;
 
-                Registry.Get<Concursum>().ContentUpdatedEvent.Invoke(new ContentUpdatedArgs{Message = "Changed a key binding, which might need reflecting in on-screen prompts"});
+                Watchman.Get<Concursum>().ContentUpdatedEvent.Invoke(new ContentUpdatedArgs{Message = "Changed a key binding, which might need reflecting in on-screen prompts"});
 
                 EventSystem.current.SetSelectedGameObject(null);
                 r.Dispose();

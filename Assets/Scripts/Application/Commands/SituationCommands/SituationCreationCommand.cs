@@ -43,7 +43,7 @@ namespace SecretHistories.Commands
 
         public IVerb GetBasicOrCreatedVerb()
         {
-            return Registry.Get<Compendium>().GetVerbForRecipe(Recipe);
+            return Watchman.Get<Compendium>().GetVerbForRecipe(Recipe);
         }
 
     }

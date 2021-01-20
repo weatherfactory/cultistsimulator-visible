@@ -77,7 +77,7 @@ namespace SecretHistories.UI {
 
         void Awake()
         {
-            var registry = new Registry();
+            var registry = new Watchman();
             registry.Register(this);
         }
 
@@ -88,13 +88,13 @@ namespace SecretHistories.UI {
 			NoonUtility.Log("TabletopManager.EndGame()");
 
             
-            var character = Registry.Get<Character>();
-            var chronicler = Registry.Get<Chronicler>();
+            var character = Watchman.Get<Character>();
+            var chronicler = Watchman.Get<Chronicler>();
 
-            chronicler.ChronicleGameEnd(Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<SphereCatalogue>().GetSpheres(),ending);
+            chronicler.ChronicleGameEnd(Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<SphereCatalogue>().GetSpheres(),ending);
             character.Reset(null,ending);
 
-            var saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Registry.Get<MetaInfo>()), Registry.Get<Character>(),SourceForGameState.DefaultSave);
+            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Character>(),SourceForGameState.DefaultSave);
             var result = await saveTask;
 
         
@@ -171,7 +171,7 @@ namespace SecretHistories.UI {
 		}
 
         public void CloseAllSituationWindowsExcept(string exceptVerbId) {
-            var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+            var situations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
 
             foreach (var s in situations)
             {
@@ -181,14 +181,14 @@ namespace SecretHistories.UI {
         }
 
         public bool IsSituationWindowOpen() {
-	        var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+	        var situationControllers = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
 	        return situationControllers.Any(c => c.IsOpen);
         }
 
         public void SetHighlightedElement(string elementId, int quantity = 1)
         {
             var enableAccessibleCards =
-                Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.ACCESSIBLECARDS);
+                Watchman.Get<Config>().GetConfigValueAsInt(NoonConstants.ACCESSIBLECARDS);
 
             if (enableAccessibleCards==null || enableAccessibleCards==0)
 		        return;

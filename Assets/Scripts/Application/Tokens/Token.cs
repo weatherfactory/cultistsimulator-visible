@@ -90,8 +90,8 @@ namespace SecretHistories.UI {
             canvasGroup = GetComponent<CanvasGroup>();
 
             CurrentItinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
-            _manifestation = Registry.Get<NullManifestation>();
-            ElementStack = Registry.Get<NullElementStack>();
+            _manifestation = Watchman.Get<NullManifestation>();
+            ElementStack = Watchman.Get<NullElementStack>();
 
             SetState(new DroppedInSphereState());
 
@@ -196,7 +196,7 @@ namespace SecretHistories.UI {
 
                 if (_manifestation.GetType() != ElementStack.GetManifestationType(Sphere.SphereCategory))
                 {
-                    var newManifestation = Registry.Get<PrefabFactory>()
+                    var newManifestation = Watchman.Get<PrefabFactory>()
                         .CreateManifestationPrefab(ElementStack.GetManifestationType(Sphere.SphereCategory),
                             this.transform);
                     ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
@@ -205,7 +205,7 @@ namespace SecretHistories.UI {
             else if (_attachedToSituation.IsValidSituation())
                 if (_manifestation.GetType() != Verb.GetManifestationType(Sphere.SphereCategory))
                 {
-                    var newManifestation = Registry.Get<PrefabFactory>()
+                    var newManifestation = Watchman.Get<PrefabFactory>()
                         .CreateManifestationPrefab(Verb.GetManifestationType(Sphere.SphereCategory), this.transform);
                     ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
                     InitialiseVerbManifestation();
@@ -223,7 +223,7 @@ namespace SecretHistories.UI {
         /// <param name="vfx"></param>
         public virtual void Remanifest(RetirementVFX vfx)
         {
-            var reManifestation = Registry.Get<PrefabFactory>()
+            var reManifestation = Watchman.Get<PrefabFactory>()
                 .CreateManifestationPrefab(_manifestation.GetType(), this.transform);
 
             reManifestation.Transform.position = _manifestation.Transform.position;
@@ -323,7 +323,7 @@ namespace SecretHistories.UI {
             if (CurrentState.InSystemDrivenMotion(this))
                 return false;
 
-            var allowExploits = Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.BIRDWORMSLIDER);
+            var allowExploits = Watchman.Get<Config>().GetConfigValueAsInt(NoonConstants.BIRDWORMSLIDER);
             if (allowExploits != null || allowExploits > 0)
             {
 
@@ -356,8 +356,8 @@ namespace SecretHistories.UI {
             }
 
 
-            var enrouteContainer = Registry.Get<SphereCatalogue>().GetSphereByPath(
-                new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
+            var enrouteContainer = Watchman.Get<SphereCatalogue>().GetSphereByPath(
+                new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
 
             enrouteContainer.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
             
@@ -544,7 +544,7 @@ namespace SecretHistories.UI {
                 return;
 
             //Manifestation didn't handle click
-            Registry.Get<DebugTools>().SetInput(_attachedToSituation.RecipeId);
+            Watchman.Get<DebugTools>().SetInput(_attachedToSituation.RecipeId);
 
             if (!_attachedToSituation.IsOpen)
                 _attachedToSituation.OpenAtCurrentLocation();
@@ -610,7 +610,7 @@ namespace SecretHistories.UI {
 
         protected void NotifyChroniclerPlacedOnTabletop()
         {
-            Registry.Get<Chronicler>()?.TokenPlacedOnTabletop(this);
+            Watchman.Get<Chronicler>()?.TokenPlacedOnTabletop(this);
         }
 
         public bool Retire()
@@ -631,7 +631,7 @@ namespace SecretHistories.UI {
             args.TokenRemoved = this;
             Sphere.NotifyTokensChangedForSphere(args);
 
-            SetSphere(Registry.Get<Limbo>(), new Context(Context.ActionSource.Retire));
+            SetSphere(Watchman.Get<Limbo>(), new Context(Context.ActionSource.Retire));
 
             return true;
         }
@@ -649,7 +649,7 @@ namespace SecretHistories.UI {
             if (!eventData.dragging)
                 _manifestation.Highlight(HighlightType.Hover);
 
-            var tabletopManager = Registry.Get<TabletopManager>();
+            var tabletopManager = Watchman.Get<TabletopManager>();
             if (tabletopManager != null
             ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
@@ -677,17 +677,17 @@ namespace SecretHistories.UI {
             });
 
 
-            var ttm = Registry.Get<TabletopManager>();
+            var ttm = Watchman.Get<TabletopManager>();
             if (ttm != null)
             {
-                Registry.Get<TabletopManager>().SetHighlightedElement(null);
+                Watchman.Get<TabletopManager>().SetHighlightedElement(null);
             }
 
         }
 
         public void BurnImageUnderToken(string burnImage)
         {
-            Registry.Get<INotifier>()
+            Watchman.Get<INotifier>()
                 .ShowImageBurn(burnImage, this, 20f, 2f,
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }

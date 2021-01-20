@@ -18,7 +18,7 @@ public class MenuSubtitle : MonoBehaviour
     public void Start()
     {
 
-        var concursum = Registry.Get<Concursum>();
+        var concursum = Watchman.Get<Concursum>();
         concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
         ShowSubtitle();
 
@@ -33,9 +33,9 @@ public class MenuSubtitle : MonoBehaviour
     {
         //update subtitle text
 
-        if (Registry.Get<Character>().ActiveLegacy != null)
+        if (Watchman.Get<Character>().ActiveLegacy != null)
             //we need to go the long wway round because the label on the legacy entity in the character won't have changed if the compendium has just been repopulated with a different culture
-            SetText(Registry.Get<Compendium>().GetEntityById<Legacy>(Registry.Get<Character>().ActiveLegacy.Id).Label);
+            SetText(Watchman.Get<Compendium>().GetEntityById<Legacy>(Watchman.Get<Character>().ActiveLegacy.Id).Label);
         else
         {
             if (NoonUtility.PerpetualEdition)
@@ -52,9 +52,9 @@ public class MenuSubtitle : MonoBehaviour
     
     public void UpdateWithLocValue(string text)
     {
-        string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
+        string currentCultureId = Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
 
-        var currentCulture = Registry.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
+        var currentCulture = Watchman.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
 
 
         Babelfish subfish = SubtitleText.gameObject.GetComponent<Babelfish>();

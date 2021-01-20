@@ -19,7 +19,7 @@ namespace SecretHistories.Commands.SituationCommands
         public bool Execute(Situation situation)
         {
             var aspects = situation.GetAspectsAvailableToSituation(true);
-            var tc = Registry.Get<SphereCatalogue>();
+            var tc = Watchman.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(aspects);
 
             if (_recipeToActivate.RequirementsSatisfiedBy(aspectsInContext))

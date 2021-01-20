@@ -27,7 +27,7 @@ namespace SecretHistories.Enums.UI
         {
             if (template != null && GetTextComponent() != null)
             {
-                GetTextComponent().text = ParameterPattern.Replace(template, match => Registry.Get<ILocStringProvider>().Get(match.Groups[1].Value));
+                GetTextComponent().text = ParameterPattern.Replace(template, match => Watchman.Get<ILocStringProvider>().Get(match.Groups[1].Value));
             }
         }
     }

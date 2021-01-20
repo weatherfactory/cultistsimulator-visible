@@ -46,7 +46,7 @@ namespace Assets.Scripts.Application.UI.Situation
             // Populate those we need
             foreach (var item in deckEffects)
             {
-                var deckSpec = Registry.Get<Compendium>().GetEntityById<DeckSpec>(item.Key);
+                var deckSpec = Watchman.Get<Compendium>().GetEntityById<DeckSpec>(item.Key);
                 deckEffectViews[i].PopulateDisplay(deckSpec, item.Value);
                 deckEffectViews[i].gameObject.SetActive(true);
                 i++;

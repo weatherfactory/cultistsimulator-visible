@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Services;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
@@ -14,6 +15,8 @@ using UnityEngine;
 
 namespace SecretHistories.Entities {
 
+
+    [Immanence(FallbackType = typeof(SphereCatalogue))]
     public class SphereCatalogue:ISphereEventSubscriber {
 
         public bool EnableAspectCaching = true;
@@ -31,7 +34,7 @@ namespace SecretHistories.Entities {
 
         public Sphere GetDefaultWorldSphere()
         {
-            var dictum = Registry.Get<Compendium>().GetSingleEntity<Dictum>();
+            var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
 
             var spherePath = new SpherePath(dictum.DefaultWorldSpherePath);
             var defaultWorldSphere = GetSphereByPath(spherePath);
@@ -40,7 +43,7 @@ namespace SecretHistories.Entities {
 
         public Sphere GetDefaultEnRouteSphere()
         {
-            var dictum = Registry.Get<Compendium>().GetSingleEntity<Dictum>();
+            var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
 
             var spherePath = new SpherePath(dictum.DefaultEnRouteSpherePath);
             var defaultEnRouteSphere = GetSphereByPath(spherePath);
@@ -94,7 +97,7 @@ namespace SecretHistories.Entities {
             {
                 var specifiedSphere = _spheres.SingleOrDefault(c => c.GetPath() == spherePath);
                 if (specifiedSphere == null)
-                    return Registry.Get<Limbo>();
+                    return Watchman.Get<Limbo>();
 
                 return specifiedSphere;
 
@@ -102,7 +105,7 @@ namespace SecretHistories.Entities {
             catch (Exception e)
             {
                 NoonUtility.LogWarning($"Error retrieving container with path {spherePath}: {e.Message}");
-                return Registry.Get<Limbo>();
+                return Watchman.Get<Limbo>();
             }
 
         }
@@ -188,7 +191,7 @@ namespace SecretHistories.Entities {
                 else
                     _allAspectsExtant.Clear();
 
-                var allSituations = Registry.Get<SituationsCatalogue>();
+                var allSituations = Watchman.Get<SituationsCatalogue>();
                 foreach (var s in allSituations.GetRegisteredSituations())
                 {
                     var stacksInSituation = s.GetAllStacksInSituation();
@@ -223,7 +226,7 @@ namespace SecretHistories.Entities {
 
         public int PurgeElement(string elementId, int maxToPurge)
         {
-            var compendium = Registry.Get<Compendium>();
+            var compendium = Watchman.Get<Compendium>();
 
             Element elementToPurge = compendium.GetEntityById<Element>(elementId);
 
@@ -239,7 +242,7 @@ namespace SecretHistories.Entities {
 
    
 
-            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
+            var situationsCatalogue = Watchman.Get<SituationsCatalogue>();
             foreach (var s in situationsCatalogue.GetRegisteredSituations())
             {
                 if (maxToPurge <= 0)

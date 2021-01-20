@@ -13,7 +13,7 @@ namespace SecretHistories.UI
         public override void SetSliderValues(Slider slider)
         {
 
-            var availableResolutions = Registry.Get<ScreenResolutionAdapter>().GetAvailableResolutions();
+            var availableResolutions = Watchman.Get<ScreenResolutionAdapter>().GetAvailableResolutions();
             slider.minValue = 0;
             slider.maxValue = availableResolutions.Count - 1;
 
@@ -23,7 +23,7 @@ namespace SecretHistories.UI
             {
                 //if the slider value is still the default value (-1 or other distinctive marker) then resolution has never been intentionally set: find a match for the current resolution
                 var resolutionIndex = availableResolutions.FindIndex(res =>
-                    res.height == Registry.Get<ScreenResolutionAdapter>().GetScreenHeight() && Registry.Get<ScreenResolutionAdapter>().GetScreenWidth() == res.width);
+                    res.height == Watchman.Get<ScreenResolutionAdapter>().GetScreenHeight() && Watchman.Get<ScreenResolutionAdapter>().GetScreenWidth() == res.width);
                 //original code used screen.height and screen.width; I half-remember I might have needed to do exactly that
 
                 //if we can't find a match, then just pick a candidate from the middle of the range
@@ -41,7 +41,7 @@ namespace SecretHistories.UI
         {
             //for value is the infex of the chosen resolution in the list
 
-            var availableResolutions = Registry.Get<ScreenResolutionAdapter>().GetAvailableResolutions();
+            var availableResolutions = Watchman.Get<ScreenResolutionAdapter>().GetAvailableResolutions();
 
             var chosenResolution = availableResolutions[(int)forValue];
 

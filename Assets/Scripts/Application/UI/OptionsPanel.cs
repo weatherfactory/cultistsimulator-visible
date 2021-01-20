@@ -71,7 +71,7 @@ public class OptionsPanel : MonoBehaviour {
         //This options panel class is used in both the main and the menu screen. IsInGame determines which version of behaviour. (You think this is iffy,
         //you shoulda seen the version where it was set with an editor tickbox and overwriting the prefab was a severity 1 error).
 
-        return Registry.Get<StageHand>().SceneIsActive(Registry.Get<Compendium>().GetSingleEntity<Dictum>().PlayfieldScene);
+        return Watchman.Get<StageHand>().SceneIsActive(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().PlayfieldScene);
     }
 
 
@@ -81,7 +81,7 @@ public class OptionsPanel : MonoBehaviour {
         settingControls = new List<AbstractSettingControl>();
         optionsPanelTabs = new List<OptionsPanelTab>();
 
-        var settings = Registry.Get<Compendium>().GetEntitiesAsList<Setting>();
+        var settings = Watchman.Get<Compendium>().GetEntitiesAsList<Setting>();
 
         PopulateSettingControls(settings);
 
@@ -90,7 +90,7 @@ public class OptionsPanel : MonoBehaviour {
         InitialiseButtons();
 
         var windowednessObserver = new WindowedSettingObserverForOptionsPanel(this);
-        var windowedSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
+        var windowedSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
         if (windowedSetting != null)
             windowedSetting.AddSubscriber(windowednessObserver);
         else
@@ -108,7 +108,7 @@ public class OptionsPanel : MonoBehaviour {
         {
             AbstractSettingControl resolutionSliderControl;
 
-            var windowedSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
+            var windowedSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
             resolutionSliderControl = settingControls.SingleOrDefault(sc => sc.SettingId == NoonConstants.RESOLUTION);
  
         if(Convert.ToSingle(windowedSetting.CurrentValue)>0 && resolutionSliderControl)
@@ -127,9 +127,9 @@ public class OptionsPanel : MonoBehaviour {
 
     private void InitialiseButtons()
     {
-        saveAndExitButton.Initialise(Registry.Get<LocalNexus>().SaveAndExitEvent);
-        resumeButton.Initialise(Registry.Get<LocalNexus>().ToggleOptionsEvent);
-        viewFilesButton.Initialise(Registry.Get<LocalNexus>().ViewFilesEvent);
+        saveAndExitButton.Initialise(Watchman.Get<LocalNexus>().SaveAndExitEvent);
+        resumeButton.Initialise(Watchman.Get<LocalNexus>().ToggleOptionsEvent);
+        viewFilesButton.Initialise(Watchman.Get<LocalNexus>().ViewFilesEvent);
     }
 
     public void OnEnable()
@@ -214,10 +214,10 @@ public class OptionsPanel : MonoBehaviour {
         if (gameObject.activeInHierarchy)
 		
 			// now lock the pause so players can't do it manually - this also pauses
-			Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed = GameSpeed.Paused,WithSFX = false});
+			Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed = GameSpeed.Paused,WithSFX = false});
 		
 		else
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
 
     }
 
@@ -227,7 +227,7 @@ public class OptionsPanel : MonoBehaviour {
         if(restartButton.AttemptRestart())
         {
             ToggleVisibility();
-            Registry.Get<StageHand>().NewGameOnTabletop();
+            Watchman.Get<StageHand>().NewGameOnTabletop();
 
         }
     }
@@ -235,28 +235,28 @@ public class OptionsPanel : MonoBehaviour {
 
     public async void LeaveGame()
     {
-        Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
+        Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
 
 
-        ITableSaveState tableSaveState = new TableSaveState(Registry.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World).SelectMany(sphere=>sphere.GetAllTokens())
+        ITableSaveState tableSaveState = new TableSaveState(Watchman.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World).SelectMany(sphere=>sphere.GetAllTokens())
             
-        , Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<MetaInfo>());
+        , Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<MetaInfo>());
 
-        var saveTask = Registry.Get<GameSaveManager>()
-            .SaveActiveGameAsync(tableSaveState, Registry.Get<Character>(), SourceForGameState.DefaultSave);
+        var saveTask = Watchman.Get<GameSaveManager>()
+            .SaveActiveGameAsync(tableSaveState, Watchman.Get<Character>(), SourceForGameState.DefaultSave);
 
         var success = await saveTask;
 
 
         if (success)
         {
-            Registry.Get<StageHand>().MenuScreen();
+            Watchman.Get<StageHand>().MenuScreen();
         }
         else
         {
             // Save failed, need to let player know there's an issue
             // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
-            Registry.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
+            Watchman.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
             GameSaveManager.ShowSaveError();
         }
     }
@@ -265,7 +265,7 @@ public class OptionsPanel : MonoBehaviour {
     // Leave game without saving
     public void AbandonGame()
 	{
-        Registry.Get<StageHand>().MenuScreen();
+        Watchman.Get<StageHand>().MenuScreen();
     }
 
     public async void BrowseFiles()

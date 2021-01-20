@@ -29,7 +29,7 @@ namespace SecretHistories.UI {
         private int _quantity;
 
         public void Populate(string elementId, int quantity) {
-            _element = Registry.Get<Compendium>().GetEntityById<Element>(elementId);
+            _element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
             _quantity = quantity;
 
             if (_element == null)

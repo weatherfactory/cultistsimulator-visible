@@ -53,12 +53,12 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     {
 
 
-        var concursum = Registry.Get<Concursum>();
+        var concursum = Watchman.Get<Concursum>();
 
         concursum.ChangingCulture.AddListener(OnCultureChanged);
         concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
 
-        var highContrastSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
+        var highContrastSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
         if (highContrastSetting != null)
         {
             highContrastSetting.AddSubscriber(this);
@@ -75,9 +75,9 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 
     public void SetValuesForCurrentCulture()
     {
-        string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
+        string currentCultureId = Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
 
-        var currentCulture = Registry.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
+        var currentCulture = Watchman.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
 
         SetValuesFromCulture(currentCulture);
     }
@@ -86,7 +86,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     {
         
 
-        ILocStringProvider lm = Registry.Get<ILocStringProvider>();
+        ILocStringProvider lm = Watchman.Get<ILocStringProvider>();
 
         if (lm == null)
             lm = new NullLocStringProvider();
@@ -127,11 +127,11 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     public void WhenSettingUpdated(object newValue)
     {
         HighContrastEnabledInGlobalSettings = ((newValue is float ? (float)newValue : 0) > 0.5f);
-        string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY); 
-        var currentCulture = Registry.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
+        string currentCultureId = Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY); 
+        var currentCulture = Watchman.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
         SetValuesFromCulture(currentCulture);
 
-        ILocStringProvider lm = Registry.Get<ILocStringProvider>();
+        ILocStringProvider lm = Watchman.Get<ILocStringProvider>();
 
         if (lm == null)
             lm = new NullLocStringProvider();
@@ -145,7 +145,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         {
             //highContrastBold = true;	// Force all text to go bold
 
-            var highContrastEnabled = Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.HIGHCONTRAST);
+            var highContrastEnabled = Watchman.Get<Config>().GetConfigValueAsInt(NoonConstants.HIGHCONTRAST);
 
             if (highContrastEnabled!=null && highContrastEnabled>0)
             {

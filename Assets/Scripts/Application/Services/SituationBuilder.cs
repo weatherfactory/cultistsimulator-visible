@@ -24,12 +24,12 @@ namespace SecretHistories.Services {
         {
             var situation = CreateSituationFromCommand(command);
 
-            var sphereCatalogue = Registry.Get<SphereCatalogue>();
+            var sphereCatalogue = Watchman.Get<SphereCatalogue>();
             var anchorSphere = sphereCatalogue.GetSphereByPath(command.AnchorLocation.AtSpherePath);
-            var windowSphere = sphereCatalogue.GetSphereByPath(new SpherePath(Registry.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
+            var windowSphere = sphereCatalogue.GetSphereByPath(new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
 
             var newAnchor = AttachNewAnchor(command.AnchorLocation.Anchored3DPosition, situation, anchorSphere);
-            var newWindow=AttachNewWindow(windowSphere, newAnchor, situation);
+            var newWindow=AttachNewWindow(windowSphere, newAnchor, situation, situationWindowPrefab);
 
 
             if (command.Open)
@@ -64,22 +64,22 @@ namespace SecretHistories.Services {
         public Situation CreateSituationFromCommand(SituationCreationCommand command)
         {
             Situation newSituation = new Situation(command);
-            Registry.Get<SituationsCatalogue>().RegisterSituation(newSituation);
+            Watchman.Get<SituationsCatalogue>().RegisterSituation(newSituation);
             return newSituation;
         }
 
         public Token AttachNewAnchor(Vector3 position, Situation situation, Sphere anchorSphere)
         {
-            var newAnchor = Registry.Get<PrefabFactory>().CreateLocally<Token>(anchorSphere.transform);
+            var newAnchor = Watchman.Get<PrefabFactory>().CreateLocally<Token>(anchorSphere.transform);
             situation.AttachAnchor(newAnchor);
             anchorSphere.AcceptToken(newAnchor, new Context(Context.ActionSource.Unknown));
             newAnchor.transform.localPosition = position;
             return newAnchor;
         }
 
-        public SituationWindow AttachNewWindow(Sphere windowSphere, Token newAnchor, Situation situation)
+        public SituationWindow AttachNewWindow(Sphere windowSphere, Token newAnchor, Situation situation, SituationWindow prefab)
         {
-            SituationWindow newWindow = Instantiate(situationWindowPrefab);
+            SituationWindow newWindow = Instantiate(prefab);
             newWindow.transform.SetParent(windowSphere.transform);
             newWindow.positioner.Initialise(newAnchor);
             situation.AttachWindow(newWindow);

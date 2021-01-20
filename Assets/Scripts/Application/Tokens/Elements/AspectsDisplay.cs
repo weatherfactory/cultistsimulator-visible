@@ -38,7 +38,7 @@ namespace SecretHistories.UI
         }
 
         private void AddAspectToDisplay(string aspectId, int quantity) {
-            Element aspect = Registry.Get<Compendium>().GetEntityById<Element>(aspectId);
+            Element aspect = Watchman.Get<Compendium>().GetEntityById<Element>(aspectId);
 
             if (aspect == null)
                 return; // We can't find the aspect? Well then don't add anything
@@ -46,7 +46,7 @@ namespace SecretHistories.UI
             if (aspect.IsHidden)
                 return; //...because it's hidden
 
-            ElementFrame newElementFrame = Registry.Get<PrefabFactory>().CreateLocally<ElementFrame>(transform);
+            ElementFrame newElementFrame = Watchman.Get<PrefabFactory>().CreateLocally<ElementFrame>(transform);
             newElementFrame.PopulateDisplay(aspect, quantity,hasBrightBackground);
 
             if (isWithinDetailsWindow)

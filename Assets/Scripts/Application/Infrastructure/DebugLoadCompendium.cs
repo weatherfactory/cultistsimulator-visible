@@ -17,12 +17,12 @@ public class DebugLoadCompendium : MonoBehaviour
 
 	private void SetupServices()
 	{
-        var registry = new Registry();
+        var registry = new Watchman();
         registry.Register(new ModManager());
         var compendium = new Compendium();
-        var contentImporter = new CompendiumLoader(Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
+        var contentImporter = new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
         var messages =
-            contentImporter.PopulateCompendium(compendium, Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
+            contentImporter.PopulateCompendium(compendium, Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
        foreach (var m in messages.GetMessages())
            NoonUtility.Log(m.Description, m.MessageLevel);
 

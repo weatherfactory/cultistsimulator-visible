@@ -40,7 +40,7 @@ public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 	}
 
 	void DoLoad() {
-        Registry.Get<StageHand>().MenuScreen();
+        Watchman.Get<StageHand>().MenuScreen();
 	}
 
 }

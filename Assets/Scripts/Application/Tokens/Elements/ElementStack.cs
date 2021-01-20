@@ -222,7 +222,7 @@ namespace SecretHistories.UI {
             //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
     
             
-            var tc = Registry.Get<SphereCatalogue>();
+            var tc = Watchman.Get<SphereCatalogue>();
 
             if (Element == null || tc==null)
                 return new AspectsDictionary();
@@ -304,7 +304,7 @@ namespace SecretHistories.UI {
         public void Populate(string elementId, int quantity, Source source)
 		{
             
-            Element = Registry.Get<Compendium>().GetEntityById<Element>(elementId);
+            Element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
             if (Element==null)
 			{
                 Element=new NullElement();
@@ -424,7 +424,7 @@ namespace SecretHistories.UI {
 
             if (stackDroppedOn.Decays)
 			{
-                Registry.Get<Notifier>().ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTMERGE"), Registry.Get<ILocStringProvider>().Get("UI_DECAYS"), false);
+                Watchman.Get<Notifier>().ShowNotificationWindow(Watchman.Get<ILocStringProvider>().Get("UI_CANTMERGE"), Watchman.Get<ILocStringProvider>().Get("UI_DECAYS"), false);
             }
         }
 

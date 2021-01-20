@@ -17,7 +17,6 @@ namespace SecretHistories.Interfaces
        
         bool Transient { get; }
         string Art { get; }
-        Type GetDefaultManifestationType();
         Type GetManifestationType(SphereCategory forSphereCategory);
       List<SphereSpec> Thresholds { get; }
       bool Startable { get; }

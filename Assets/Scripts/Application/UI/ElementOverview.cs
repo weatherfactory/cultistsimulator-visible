@@ -21,10 +21,10 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
 
     public void Start() {
 
-        Registry.Get<SphereCatalogue>().Subscribe(this);
+        Watchman.Get<SphereCatalogue>().Subscribe(this);
 
  
-        Legacy activeLegacy = Registry.Get<Character>().ActiveLegacy;
+        Legacy activeLegacy = Watchman.Get<Character>().ActiveLegacy;
         List<string> statusBarElementIds = new List<string>(activeLegacy.StatusBarElements);
 
         for (int a = 0; a < MAX_ELEMENTS; a++)
@@ -46,7 +46,7 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
         
         foreach (var e in statusBarElementIds)
         {
-            elementCounts[i].PopulateWithElement(Registry.Get<Compendium>().GetEntityById<Element>(e));
+            elementCounts[i].PopulateWithElement(Watchman.Get<Compendium>().GetEntityById<Element>(e));
             i++;
             if (i >= MAX_ELEMENTS)
                 break;
@@ -58,7 +58,7 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
     public void UpdateDisplay()
     {
 
-        var tc = Registry.Get<SphereCatalogue>();
+        var tc = Watchman.Get<SphereCatalogue>();
         var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());
   
         for (int i = 0; i <= 3; i++)

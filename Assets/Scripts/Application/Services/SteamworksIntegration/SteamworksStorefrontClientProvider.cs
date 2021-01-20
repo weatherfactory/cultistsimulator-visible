@@ -166,7 +166,7 @@ namespace SecretHistories.Constants
             if(callback.m_bUserNeedsToAcceptWorkshopLegalAgreement)
             {
 
-                var concursum = Registry.Get<Concursum>();
+                var concursum = Watchman.Get<Concursum>();
 
                 concursum.ShowNotification(new NotificationArgs
                 {
@@ -227,7 +227,7 @@ namespace SecretHistories.Constants
                 operationArgs.Message = $"Update completed for item {callback.m_nPublishedFileId}, mod {_currentlyUploadingMod.Id} with result {callback.m_eResult}";
             }
             
-            Registry.Get<Concursum>().ModOperation(operationArgs);
+            Watchman.Get<Concursum>().ModOperation(operationArgs);
 
 
            ClearCurrentlyUploadingMod();

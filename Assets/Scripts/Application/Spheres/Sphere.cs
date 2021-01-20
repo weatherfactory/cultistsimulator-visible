@@ -89,7 +89,7 @@ namespace SecretHistories.Constants {
             {
                 if (_catalogue == null)
                 {
-                    _catalogue = Registry.Get<SphereCatalogue>();
+                    _catalogue = Watchman.Get<SphereCatalogue>();
                 }
 
                 return _catalogue;
@@ -225,7 +225,7 @@ namespace SecretHistories.Constants {
                 stack.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
 
 
-            var token = Registry.Get<PrefabFactory>().CreateLocally<Token>(transform);
+            var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(transform);
 
             stack.AttachToken(token);
 
@@ -282,7 +282,7 @@ namespace SecretHistories.Constants {
 
         public virtual void OnDestroy()
         {
-            Registry.Get<SphereCatalogue>().DeregisterSphere(this);
+            Watchman.Get<SphereCatalogue>().DeregisterSphere(this);
         }
 
         public void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource, Context context)
@@ -475,7 +475,7 @@ namespace SecretHistories.Constants {
 
                 if (EnforceUniqueStacksInThisContainer)
                 {
-                    var dealer = new Dealer(Registry.Get<Character>());
+                    var dealer = new Dealer(Watchman.Get<Character>());
                     if (!String.IsNullOrEmpty(token.ElementStack.UniquenessGroup))
                         dealer.RemoveFromAllDecksIfInUniquenessGroup(token.ElementStack.UniquenessGroup);
                     if (token.ElementStack.Unique)
@@ -518,7 +518,7 @@ namespace SecretHistories.Constants {
         /// </summary>
         public virtual void EvictToken(Token token, Context context)
         {
-            var exitSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
+            var exitSphere = Watchman.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
             exitSphere.ProcessEvictedToken(token,context);
        
         }

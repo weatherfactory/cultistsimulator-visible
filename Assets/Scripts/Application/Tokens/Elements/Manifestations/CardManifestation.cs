@@ -89,7 +89,7 @@ namespace SecretHistories.Elements
                 return;
 
             string cardDecayTime =
-                Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
+                Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
             decayCountText.text = cardDecayTime;
             decayCountText.richText = true;
 

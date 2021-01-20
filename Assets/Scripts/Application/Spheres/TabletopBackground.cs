@@ -20,7 +20,7 @@ namespace SecretHistories.UI
 
         public void Start()
         {
-            ShowTabletopFor(Registry.Get<Character>().ActiveLegacy);
+            ShowTabletopFor(Watchman.Get<Character>().ActiveLegacy);
         }
 
         public void OnPointerClick(PointerEventData eventData)

@@ -24,10 +24,7 @@ namespace SecretHistories.NullObjects
         
         public bool Transient { get; }
         public string Art => string.Empty;
-        public Type GetDefaultManifestationType()
-        {
-            return typeof(NullManifestation);
-        }
+
 
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {

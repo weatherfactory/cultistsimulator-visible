@@ -23,10 +23,6 @@ namespace SecretHistories.Entities
         [FucineValue]
         public string Art { get; set; }
 
-        public Type GetDefaultManifestationType()
-        {
-            return typeof(VerbManifestation);
-        }
 
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {

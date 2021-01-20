@@ -14,18 +14,18 @@ namespace SecretHistories.Services
 
         public void Awake()
         {
-            var registry=new Registry();
+            var registry=new Watchman();
             registry.Register(this);
 
         }
 
         public void Initialise()
         {
-            var registry = new Registry();
+            var registry = new Watchman();
             registry.Register(this);
 
 
-            var resolutionSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.RESOLUTION);
+            var resolutionSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.RESOLUTION);
             if (resolutionSetting != null)
             {
                 resolutionSetting.AddSubscriber(this);
@@ -51,7 +51,7 @@ namespace SecretHistories.Services
         protected void SetResolution(Resolution resolution)
         {
                Screen.SetResolution(resolution.width,resolution.height, true);
-               Registry.Get<Config>().PersistConfigValue("ResolutionDescription",resolution.width + "x" + resolution.height);
+               Watchman.Get<Config>().PersistConfigValue("ResolutionDescription",resolution.width + "x" + resolution.height);
         }
 
         public List<Resolution> GetAvailableResolutions()

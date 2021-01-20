@@ -126,7 +126,7 @@ namespace SecretHistories.UI {
 
         void HandleOnTokenDecay(float timeRemaining) {
             if(_token!=null) //seeing some nullreference errors in the Unity analytics; maybe this is being called after the token is no longer in the window?
-                ShowImageDecayTimer(true, Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(_token.LifetimeRemaining));
+                ShowImageDecayTimer(true, Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(_token.LifetimeRemaining));
         }
 
         protected override void UpdateContent() {
@@ -159,7 +159,7 @@ namespace SecretHistories.UI {
             if (token != null)
             {
                 ShowImageDecayTimer(token.Decays,
-                    Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(token.LifetimeRemaining));
+                    Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(token.LifetimeRemaining));
                 aspectsDisplayFlat.DisplayAspects(
                     token.GetAspects(false)); //token, not _element: cater for possible mutations
             }
@@ -181,9 +181,9 @@ namespace SecretHistories.UI {
             ShowImage(null);
             ShowImageDecayTimer(false);
 
-			string slotHeader		= Registry.Get<ILocStringProvider>().Get("UI_SLOT");
-			string slotUnnamed		= Registry.Get<ILocStringProvider>().Get("UI_ASPECT");
-			string defaultSlotDesc	= Registry.Get<ILocStringProvider>().Get("UI_EMPTYSPACE");
+			string slotHeader		= Watchman.Get<ILocStringProvider>().Get("UI_SLOT");
+			string slotUnnamed		= Watchman.Get<ILocStringProvider>().Get("UI_ASPECT");
+			string defaultSlotDesc	= Watchman.Get<ILocStringProvider>().Get("UI_EMPTYSPACE");
 
             ShowText(
                 (string.IsNullOrEmpty(slotSpec.Label) ? slotHeader + slotUnnamed : slotHeader + slotSpec.Label),
@@ -251,7 +251,7 @@ namespace SecretHistories.UI {
 
         void ShowDeckInfos(int quantity) {
             deckInfos.enabled = quantity > 0;
-            deckInfos.text = quantity > 0 ? Registry.Get<ILocStringProvider>().Get("UI_UPCOMINGDRAWS") + quantity : null;
+            deckInfos.text = quantity > 0 ? Watchman.Get<ILocStringProvider>().Get("UI_UPCOMINGDRAWS") + quantity : null;
         }
 
         public void HighlightSlotIcon(bool isGreedy, bool consumes) {
@@ -342,7 +342,7 @@ namespace SecretHistories.UI {
         private List<Token> FindAllElementTokenssForSlotSpecificationOnTabletop(SphereSpec slotSpec)
         {
             var stackList = new List<Token>();
-            var worldSpheres = Registry.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World);
+            var worldSpheres = Watchman.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World);
             foreach (var worldSphere in worldSpheres)
             {
                 var stackTokens = worldSphere.GetElementTokens();

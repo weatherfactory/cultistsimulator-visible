@@ -28,13 +28,13 @@ namespace SecretHistories.Entities
             if (MatchType == SlotMatchForAspectsType.ForbiddenAspectPresent)
             {
                 string problemAspects = ProblemAspectsDescription(compendium);
-                description += Registry.Get<ILocStringProvider>().Get("UI_ASPECTSFORBIDDEN") + problemAspects;
+                description += Watchman.Get<ILocStringProvider>().Get("UI_ASPECTSFORBIDDEN") + problemAspects;
             }
 
             if (MatchType == SlotMatchForAspectsType.RequiredAspectMissing)
             {
                 string problemAspects = ProblemAspectsDescription(compendium);
-                description += Registry.Get<ILocStringProvider>().Get("UI_ASPECTSREQUIRED") + problemAspects;
+                description += Watchman.Get<ILocStringProvider>().Get("UI_ASPECTSREQUIRED") + problemAspects;
             }
 
             return description;
@@ -46,10 +46,10 @@ namespace SecretHistories.Entities
             foreach (var problemAspectId in ProblemAspectIds)
             {
                 if (problemAspects != "")
-                    problemAspects += Registry.Get<ILocStringProvider>().Get("UI_OR");
+                    problemAspects += Watchman.Get<ILocStringProvider>().Get("UI_OR");
                 problemAspects += compendium.GetEntityById<Element>(problemAspectId).Label;
             }
-			problemAspects += Registry.Get<ILocStringProvider>().Get("UI_FULLSTOP");
+			problemAspects += Watchman.Get<ILocStringProvider>().Get("UI_FULLSTOP");
             return problemAspects;
         }
     }

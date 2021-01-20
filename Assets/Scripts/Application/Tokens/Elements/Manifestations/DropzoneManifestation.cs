@@ -53,7 +53,7 @@ namespace SecretHistories.Elements.Manifestations
             // Now create an instance of the dropzone prefab parented to this card
             // This way any unused references are still pointing at the original card data, so no risk of null refs.
             // It's a bit hacky, but it's now a live project so refactoring the entire codebase to make it safe is high-risk.
-            TabletopManager tabletop = Registry.Get<TabletopManager>() as TabletopManager;
+            TabletopManager tabletop = Watchman.Get<TabletopManager>() as TabletopManager;
 
             GameObject zoneobj = GameObject.Instantiate(tabletop._dropZoneTemplate, transform);
             Transform newcard = zoneobj.transform.Find("Card");

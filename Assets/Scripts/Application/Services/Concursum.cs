@@ -108,7 +108,7 @@ namespace SecretHistories.Services
 
         public void SetNewCulture(Culture culture)
         {
-            Registry.Get<Config>().PersistConfigValue(NoonConstants.CULTURE_SETTING_KEY,culture.Id);
+            Watchman.Get<Config>().PersistConfigValue(NoonConstants.CULTURE_SETTING_KEY,culture.Id);
 
             BeforeChangingCulture.Invoke(new CultureChangedArgs { NewCulture = culture });
             ChangingCulture.Invoke(new CultureChangedArgs{NewCulture = culture});

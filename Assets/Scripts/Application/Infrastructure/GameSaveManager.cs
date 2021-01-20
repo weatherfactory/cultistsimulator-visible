@@ -116,7 +116,7 @@ namespace SecretHistories.Infrastructure
             int index = (int) source;
               //  var allStacks = tabletop.GetElementStacksManager().GetStacks();
               //  var currentSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-                var metaInfo = Registry.Get<MetaInfo>();
+                var metaInfo = Watchman.Get<MetaInfo>();
       
                 // GetSaveHashTable now does basic validation of the data and might return null if it's bad - CP
                 var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,tableSaveState, character);
@@ -245,7 +245,7 @@ namespace SecretHistories.Infrastructure
             saveCorruptedArgs.Buttons.Add(new ButtonCommand { Caption = "UI_CORRUPTRELOAD" });
             saveCorruptedArgs.Buttons.Add(new ButtonCommand { Caption = "UI_CORRUPTABANDON" });
 
-            Registry.Get<Concursum>().ShowNotification(saveCorruptedArgs);
+            Watchman.Get<Concursum>().ShowNotification(saveCorruptedArgs);
 
             GameSaveManager.saveErrorWarningTriggered = true;
         }

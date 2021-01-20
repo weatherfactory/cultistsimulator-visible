@@ -64,7 +64,7 @@ namespace Assets.Logic
             //NOTE: element purges trigger decayto transformation if the element itself is specified. If we filter by aspect and purge on that, its decayto is *not* triggered.
             foreach (var p in command.Recipe.Purge)
             {
-                Registry.Get<SphereCatalogue>().PurgeElement(p.Key, p.Value);
+                Watchman.Get<SphereCatalogue>().PurgeElement(p.Key, p.Value);
             }
         }
 
@@ -72,10 +72,10 @@ namespace Assets.Logic
         private void RunVerbManipulations(RecipeCompletionEffectCommand command, TabletopManager ttm)
         {
             foreach (var h in command.Recipe.HaltVerb)
-                Registry.Get<SituationsCatalogue>().HaltSituation(h.Key, h.Value);
+                Watchman.Get<SituationsCatalogue>().HaltSituation(h.Key, h.Value);
 
             foreach (var d in command.Recipe.DeleteVerb)
-                Registry.Get<SituationsCatalogue>().DeleteSituation(d.Key, d.Value);
+                Watchman.Get<SituationsCatalogue>().DeleteSituation(d.Key, d.Value);
         }
 
 
@@ -159,7 +159,7 @@ namespace Assets.Logic
         private static void RunXTriggers(Sphere sphere, AspectsDictionary aspectsPresent,
             IDice dice)
         {
-            Compendium _compendium = Registry.Get<Compendium>();
+            Compendium _compendium = Watchman.Get<Compendium>();
 
             foreach (var eachStack in sphere.GetElementStacks())
             {

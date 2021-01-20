@@ -46,7 +46,7 @@ namespace SecretHistories.Core
                         lr.Id +
                         " is marked as an additional linked recipe, but we haven't worked out what to do with additional linked recipes yet");
 
-                Recipe candidateRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>(lr.Id);
+                Recipe candidateRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(lr.Id);
 
                 if (candidateRecipe == null)
                 {
@@ -73,7 +73,7 @@ namespace SecretHistories.Core
 
                     ChallengeArbiter challengeArbiter=new ChallengeArbiter(_aspectsInContext,lr);
                     
-                    int diceResult = Registry.Get<IDice>().Rolld100(currentRecipe);
+                    int diceResult = Watchman.Get<IDice>().Rolld100(currentRecipe);
 
                     if (diceResult > challengeArbiter.GetArbitratedChance())
                     {
@@ -100,7 +100,7 @@ namespace SecretHistories.Core
             _aspectsInContext.ThrowErrorIfNotPopulated(situation.Verb.Id);
 
             //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
-            var _recipes = Registry.Get<Compendium>().GetEntitiesAsList<Recipe>();
+            var _recipes = Watchman.Get<Compendium>().GetEntitiesAsList<Recipe>();
 
             List<Recipe> candidateRecipes =
                 _recipes.Where(r => situation.CurrentState.IsValidPredictionForState(r, situation)).ToList();
@@ -135,7 +135,7 @@ namespace SecretHistories.Core
 
                 ChallengeArbiter challengeArbiter = new ChallengeArbiter(_aspectsInContext, ar);
 
-                int diceResult = Registry.Get<IDice>().Rolld100(recipe);
+                int diceResult = Watchman.Get<IDice>().Rolld100(recipe);
                 if (diceResult > challengeArbiter.GetArbitratedChance()) //BUT NOTE: Challenges always seem to fail on alternative recipes at the mo - though they're working fine on linked recipes.
                 {
                     NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " +
@@ -145,7 +145,7 @@ namespace SecretHistories.Core
                 }
                 else
                 {
-                    Recipe candidateRecipe = Registry.Get<Compendium>().GetEntityById<Recipe>(ar.Id);
+                    Recipe candidateRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(ar.Id);
 
                     if (!candidateRecipe.RequirementsSatisfiedBy(_aspectsInContext))
                     {

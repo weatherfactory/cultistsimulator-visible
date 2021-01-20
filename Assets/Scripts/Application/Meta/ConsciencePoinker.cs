@@ -21,7 +21,7 @@ namespace SecretHistories.Meta
                 DateTime expiry = Convert.ToDateTime(content.First());
                 if (DateTime.Today > expiry)
                 {
-                    Registry.Get<Concursum>().ShowNotification(new NotificationArgs("ERROR - PLEASE UPDATE GAME", @"CRITICAL UPDATE REQUIRED"));
+                    Watchman.Get<Concursum>().ShowNotification(new NotificationArgs("ERROR - PLEASE UPDATE GAME", @"CRITICAL UPDATE REQUIRED"));
                     return; //something here needs to end execution
                 }
             }

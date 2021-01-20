@@ -64,7 +64,7 @@ namespace SecretHistories.Constants
         void TriggerArtAnimation()
         {
             
-            var stacks = Registry.Get<TabletopManager>()._tabletop.GetElementTokens();
+            var stacks = Watchman.Get<TabletopManager>()._tabletop.GetElementTokens();
 
             var animatables = new List<Token>();
             

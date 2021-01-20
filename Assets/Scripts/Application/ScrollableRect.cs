@@ -45,7 +45,7 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     void Start() {
 
-        Registry.Get<SphereCatalogue>().Subscribe(this);
+        Watchman.Get<SphereCatalogue>().Subscribe(this);
 
 
 		scrollRect = GetComponent<ScrollRect>();

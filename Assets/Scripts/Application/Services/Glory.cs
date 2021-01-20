@@ -94,7 +94,7 @@ namespace SecretHistories.Services
                 System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
 
-                var registryAccess = new Registry();
+                var registryAccess = new Watchman();
 
                 //load config: this gives us a lot of info that we'll need early
                 registryAccess.Register(new Config());            
@@ -109,13 +109,6 @@ namespace SecretHistories.Services
                 //stagehand is used to load scenes
                 registryAccess.Register<StageHand>(stageHand);
 
-
-                //we're about to register our first tokencontainer, Limbo: so we need to register the token containers catalogue first.
-                var tokenContainersCatalogue=new SphereCatalogue();
-                registryAccess.Register(tokenContainersCatalogue);
-
-                var situationsCatalogue = new SituationsCatalogue();
-                registryAccess.Register(situationsCatalogue);
 
 
                 registryAccess.Register(limbo);
@@ -151,7 +144,7 @@ namespace SecretHistories.Services
 
                 //load Compendium content. We can't do anything with content files until this is in.
                 registryAccess.Register<Compendium>(new Compendium());
-                var log=LoadCompendium(Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
+                var log=LoadCompendium(Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
                 if (log.ImportFailed())
                 {
@@ -162,7 +155,7 @@ namespace SecretHistories.Services
                 //setting defaults are set as the compendium is loaded, but they may also need to be
                 //migrated from somewhere other than config (like PlayerPrefs)
                 //so we only run this now, allowing it to overwrite any default values
-                Registry.Get<Config>().MigrateAnySettingValuesInRegistry(Registry.Get<Compendium>());
+                Watchman.Get<Config>().MigrateAnySettingValuesInRegistry(Watchman.Get<Compendium>());
 
 
                 //set up loc services
@@ -176,7 +169,7 @@ namespace SecretHistories.Services
                 
                 RegisterSavedOrNewCharacter(registryAccess);
 
-                var chronicler = new Chronicler(Registry.Get<Character>(), Registry.Get<Compendium>());
+                var chronicler = new Chronicler(Watchman.Get<Character>(), Watchman.Get<Compendium>());
 
                 registryAccess.Register(chronicler);
 
@@ -192,7 +185,7 @@ namespace SecretHistories.Services
 
 
                 //finally, load the first scene and get the ball rolling.
-                stageHand.LoadFirstScene(Registry.Get<Config>().skiplogo);
+                stageHand.LoadFirstScene(Watchman.Get<Config>().skiplogo);
 
             }
             catch (Exception e)
@@ -203,17 +196,17 @@ namespace SecretHistories.Services
             }
         }
 
-        private void RegisterSavedOrNewCharacter(Registry registry)
+        private void RegisterSavedOrNewCharacter(Watchman watchman)
         {
-            registry.Register(Character);
+            watchman.Register(Character);
           
 
-            if (Registry.Get<GameSaveManager>().DoesGameSaveExist())
-                Registry.Get<GameSaveManager>().LoadCharacterState(SourceForGameState.DefaultSave,Character);
+            if (Watchman.Get<GameSaveManager>().DoesGameSaveExist())
+                Watchman.Get<GameSaveManager>().LoadCharacterState(SourceForGameState.DefaultSave,Character);
             else
             {
                 NoonUtility.LogWarning("Setting a default legacy for character: shouldn't do this in the actual game");
-                Character.Reset(Registry.Get<Compendium>().GetEntitiesAsList<Legacy>().First(),null);
+                Character.Reset(Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First(),null);
             }
             
 
@@ -223,8 +216,8 @@ namespace SecretHistories.Services
 
         public ContentImportLog LoadCompendium(string cultureId)
         {
-            var compendiumLoader =new CompendiumLoader(Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
-            var log = compendiumLoader.PopulateCompendium(Registry.Get<Compendium>(),cultureId);
+            var compendiumLoader =new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
+            var log = compendiumLoader.PopulateCompendium(Watchman.Get<Compendium>(),cultureId);
             foreach (var m in log.GetMessages())
                 NoonUtility.Log(m);
 

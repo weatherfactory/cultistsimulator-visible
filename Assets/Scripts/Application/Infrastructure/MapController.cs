@@ -22,7 +22,7 @@ namespace SecretHistories.Constants
 
         public void Awake()
         {
-            var registry=new Registry();
+            var registry=new Watchman();
             registry.Register(this);
         }
 

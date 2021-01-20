@@ -70,7 +70,7 @@ namespace SecretHistories.Services
             {
                 IAspectsDictionary tokenAspects = token.ElementStack.GetAspects();
 
-            var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
+            var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
 
             TryChronicleBookPlaced(token, tokenAspects);
 
@@ -96,7 +96,7 @@ namespace SecretHistories.Services
             if (string.IsNullOrEmpty(ending.Achievement))
                 return;
 
-            var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
+            var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
             storefrontServicesProvider.SetAchievementForCurrentStorefronts(ending.Achievement, true);
 
             if (ending.Achievement == NoonConstants.A_ENDING_MAJORFORGEVICTORY ||
@@ -317,7 +317,7 @@ namespace SecretHistories.Services
 
         public void ChronicleMansusEntry(PortalEffect portalEffect)
         {
-            var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
+            var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
 
             switch (portalEffect)
             {

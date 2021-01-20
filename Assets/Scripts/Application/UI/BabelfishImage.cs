@@ -30,9 +30,9 @@ public class BabelfishImage : MonoBehaviour
     {
 		image = gameObject.GetComponent<Image>() as Image;
 
-        string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
+        string currentCultureId = Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
 
-        var currentCulture = Registry.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
+        var currentCulture = Watchman.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
 
         DisplayImageForCulture(currentCulture);
 
@@ -55,13 +55,13 @@ public class BabelfishImage : MonoBehaviour
 
     private void OnEnable()
     {
-        Registry.Get<Concursum>().AfterChangingCulture.AddListener(OnCultureChanged);
+        Watchman.Get<Concursum>().AfterChangingCulture.AddListener(OnCultureChanged);
         
     }
 
     private void OnDisable()
     {
-        Registry.Get<Concursum>().AfterChangingCulture.RemoveListener(OnCultureChanged);
+        Watchman.Get<Concursum>().AfterChangingCulture.RemoveListener(OnCultureChanged);
 
     }
 

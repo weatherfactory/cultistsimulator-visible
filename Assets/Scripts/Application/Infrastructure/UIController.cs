@@ -30,7 +30,7 @@ namespace SecretHistories.Constants
             //  bool setSomeDefaultBindingsForFirstTime = false;
             foreach (InputAction action in playerInput.currentActionMap.actions)
             {
-                if (Registry.Get<Compendium>().EntityExists<Setting>(action.name))
+                if (Watchman.Get<Compendium>().EntityExists<Setting>(action.name))
                 {
                     ApplyExistingKeybindOverrides(action);
                 }
@@ -39,7 +39,7 @@ namespace SecretHistories.Constants
 
         private static void ApplyExistingKeybindOverrides(InputAction action)
         {
-            var keyBindSetting = Registry.Get<Compendium>().GetEntityById<Setting>(action.name);
+            var keyBindSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(action.name);
             if (!string.IsNullOrEmpty(keyBindSetting.CurrentValue.ToString()))
             {
                 action.ApplyBindingOverride(keyBindSetting.CurrentValue.ToString());
@@ -183,7 +183,7 @@ namespace SecretHistories.Constants
             if (IsEditingText())
                 return;
 
-            var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+            var situations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
 
             foreach (var s in situations)
             {
@@ -199,7 +199,7 @@ namespace SecretHistories.Constants
             if (IsEditingText())
                 return;
 
-            var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+            var situations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
 
             foreach (var s in situations)
             {
@@ -228,7 +228,7 @@ namespace SecretHistories.Constants
 	        //if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
             {
               ToggleDebugEvent.Invoke();
-              Registry.Get<Concursum>().ToggleSecretHistory();
+              Watchman.Get<Concursum>().ToggleSecretHistory();
             }
 
 
@@ -236,7 +236,7 @@ namespace SecretHistories.Constants
 			{
 				// Check for open situation windows and close them first
 				bool windowWasOpen = false;
-				var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+				var situations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
 
 				foreach (var situation in situations) {
 					if (situation.IsOpen) {

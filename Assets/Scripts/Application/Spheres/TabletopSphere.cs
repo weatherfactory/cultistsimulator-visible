@@ -78,7 +78,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         if (!tokenToSend.ElementStack.IsValidElementStack())
             return false;
 
-        var registeredSituations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+        var registeredSituations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
         Sphere targetThreshold=null;
         TokenLocation targetLocation = null;
         Vector3 targetDistance = Vector3.positiveInfinity;;
@@ -163,7 +163,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         //Close all open windows if we're not dragging (multi tap stuff)
         // Situation windows get closed first, then details windows.
 
-            var tabletopManager = Registry.Get<TabletopManager>();
+            var tabletopManager = Watchman.Get<TabletopManager>();
             if (tabletopManager.IsSituationWindowOpen())
                 tabletopManager.CloseAllSituationWindowsExcept(null);
             else

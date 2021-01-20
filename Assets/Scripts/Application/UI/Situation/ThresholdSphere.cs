@@ -75,8 +75,8 @@ namespace SecretHistories.UI {
             {
                 GreedyAngel greedyAngel = new GreedyAngel();
                 greedyAngel.SetThresholdToGrabTo(this);
-                greedyAngel.SetWatch(Registry.Get<SphereCatalogue>().GetDefaultWorldSphere());
-                greedyAngel.SetWatch(Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere());
+                greedyAngel.SetWatch(Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
+                greedyAngel.SetWatch(Watchman.Get<SphereCatalogue>().GetDefaultEnRouteSphere());
                 flock.AddAngel(greedyAngel);
 
             }
@@ -212,12 +212,12 @@ namespace SecretHistories.UI {
                 token.SetState(new RejectedBySphereState());
                 token.GoAway(context);
 
-                var notifier = Registry.Get<INotifier>();
+                var notifier = Watchman.Get<INotifier>();
 
-                var compendium = Registry.Get<Compendium>();
+                var compendium = Watchman.Get<Compendium>();
 
                 if (notifier != null)
-                    notifier.ShowNotificationWindow(Registry.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
+                    notifier.ShowNotificationWindow(Watchman.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
             }
             else if (token.ElementQuantity != 1)
             {
@@ -269,7 +269,7 @@ namespace SecretHistories.UI {
             bool highlightGreedy = GreedyIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(GreedyIcon);
             bool highlightConsumes = ConsumingIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(ConsumingIcon);
 
-            Registry.Get<INotifier>().ShowSlotDetails(GoverningSphereSpec, highlightGreedy, highlightConsumes);
+            Watchman.Get<INotifier>().ShowSlotDetails(GoverningSphereSpec, highlightGreedy, highlightConsumes);
 
         }
 

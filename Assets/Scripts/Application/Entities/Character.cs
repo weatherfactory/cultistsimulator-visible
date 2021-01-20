@@ -131,7 +131,7 @@ public class Character:MonoBehaviour
         _deckInstances=new Dictionary<string, DeckInstance>();
         ResetStartingDecks();
 
-        Name = Registry.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME");
+        Name = Watchman.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME");
         // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
         Profession = ActiveLegacy.Label;
 
@@ -144,7 +144,7 @@ public class Character:MonoBehaviour
             Destroy(deck.gameObject);
 
         
-        var compendium = Registry.Get<Compendium>();
+        var compendium = Watchman.Get<Compendium>();
         foreach (var ds in compendium.GetEntitiesAsAlphabetisedList<DeckSpec>())
         {
             DeckInstance di=Instantiate(DeckPrefab, CurrentDecks);

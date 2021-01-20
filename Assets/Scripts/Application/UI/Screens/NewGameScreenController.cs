@@ -45,7 +45,7 @@ namespace SecretHistories.UI {
         private List<Legacy> AvailableLegaciesForEnding;
 
         void Start() {
-            var registry = new Registry();
+            var registry = new Watchman();
 
             var modManager = new ModManager();
             modManager.CatalogueMods();
@@ -53,11 +53,11 @@ namespace SecretHistories.UI {
 
             var compendium = new Compendium();
             registry.Register<Compendium>(compendium);
-            var contentImporter = new CompendiumLoader(Registry.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
-            contentImporter.PopulateCompendium(compendium, Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
+            var contentImporter = new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
+            contentImporter.PopulateCompendium(compendium, Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
-            var ls = new LegacySelector(Registry.Get<Compendium>());
-            AvailableLegaciesForEnding = ls.DetermineLegacies(Registry.Get<Character>().EndingTriggered);
+            var ls = new LegacySelector(Watchman.Get<Compendium>());
+            AvailableLegaciesForEnding = ls.DetermineLegacies(Watchman.Get<Character>().EndingTriggered);
 
             InitLegacyButtons();
             canvasFader.SetFinalAlpha(0f);
@@ -113,10 +113,10 @@ namespace SecretHistories.UI {
 
         async void  ReturnToMenuDelayed() {
 			
-            var saveTask = Registry.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Registry.Get<MetaInfo>()), Registry.Get<Character>(), SourceForGameState.DefaultSave);
+            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Character>(), SourceForGameState.DefaultSave);
             await saveTask;
 
-            Registry.Get<StageHand>().MenuScreen();
+            Watchman.Get<StageHand>().MenuScreen();
         }
 
 		public void StartGame() {
@@ -132,9 +132,9 @@ namespace SecretHistories.UI {
 		void StartGameDelayed()
         {
             var chosenLegacy = AvailableLegaciesForEnding[selectedLegacy];
-            Registry.Get<Character>().Reset(chosenLegacy,null);
+            Watchman.Get<Character>().Reset(chosenLegacy,null);
 
-            Registry.Get<StageHand>().NewGameOnTabletop();
+            Watchman.Get<StageHand>().NewGameOnTabletop();
 
 		}
 
@@ -179,11 +179,11 @@ namespace SecretHistories.UI {
 
             title.text = legacySelected.Label;
             description.text = legacySelected.Description;
-            var ending = Registry.Get<Character>().EndingTriggered;
+            var ending = Watchman.Get<Character>().EndingTriggered;
             if (legacySelected.FromEnding == ending.Id)
 			{
                 //availableBecause.text = "[Always available after " + ending.Title.ToUpper() + "]";
-				availableBecause.text = Registry.Get<ILocStringProvider>().Get("LEGACY_BECAUSE_PREFIX") + ending.Label.ToUpper() + Registry.Get<ILocStringProvider>().Get("LEGACY_BECAUSE_POSTFIX");
+				availableBecause.text = Watchman.Get<ILocStringProvider>().Get("LEGACY_BECAUSE_PREFIX") + ending.Label.ToUpper() + Watchman.Get<ILocStringProvider>().Get("LEGACY_BECAUSE_POSTFIX");
 			}
             else
 			{

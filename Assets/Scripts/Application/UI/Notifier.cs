@@ -30,7 +30,7 @@ namespace SecretHistories.UI {
 
         public void Awake()
         {
-            var r=new Registry();
+            var r=new Watchman();
             r.Register<INotifier>(this);
         }
 
@@ -39,9 +39,9 @@ namespace SecretHistories.UI {
             tokenDetails.gameObject.SetActive(false); // ensure this is turned off at the start
             aspectDetails.gameObject.SetActive(false);
 
-            Registry.Get<Concursum>().ShowNotificationEvent.AddListener(ShowNotificationWindow);
+            Watchman.Get<Concursum>().ShowNotificationEvent.AddListener(ShowNotificationWindow);
             
-            Registry.Get<SphereCatalogue>().Subscribe(this);
+            Watchman.Get<SphereCatalogue>().Subscribe(this);
 
         }
 
@@ -77,7 +77,7 @@ namespace SecretHistories.UI {
         }
 
         private NotificationWindow BuildNotificationWindow(float duration) {
-            var notification = Registry.Get<PrefabFactory>().CreateLocally<NotificationWindow>(notificationHolder);
+            var notification = Watchman.Get<PrefabFactory>().CreateLocally<NotificationWindow>(notificationHolder);
             notification.SetDuration(duration);
             return notification;
         }

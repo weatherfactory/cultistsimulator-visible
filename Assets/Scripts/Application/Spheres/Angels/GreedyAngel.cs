@@ -71,7 +71,7 @@ namespace SecretHistories.Spheres.Angels
                         matchingToken.CalveToken(matchingToken.ElementQuantity - GRAB_QUANTITY_LIMIT,
                             new Context(Context.ActionSource.GreedyGrab));
 
-                    var enRouteSphere = Registry.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
+                    var enRouteSphere = Watchman.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
 
                     var targetPosition = GetTargetPositionForDestinationSphere(destinationThresholdSphere);
 
@@ -92,7 +92,7 @@ namespace SecretHistories.Spheres.Angels
             //if we're using this for non-classic-CS-recipe slots, we'll need to rewrite it. We'll also need not to hardcode the final scale
             var targetPath = destinationThresholdSphere.GetPath();
             var targetSituationPath = targetPath.GetBaseSituationPath();
-            var targetSituation = Registry.Get<SituationsCatalogue>().GetSituationByPath(targetSituationPath);
+            var targetSituation = Watchman.Get<SituationsCatalogue>().GetSituationByPath(targetSituationPath);
             var targetPosition = targetSituation.GetAnchorLocation().Anchored3DPosition;
             return targetPosition;
         }

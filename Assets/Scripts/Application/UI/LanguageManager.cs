@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Assets.Scripts.Application.Services;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.UI;
@@ -41,6 +42,8 @@ public interface ILocStringProvider
     string Get(string locLabel);
 }
 
+
+
 public class LanguageManager : MonoBehaviour,ILocStringProvider
 {
     
@@ -69,7 +72,7 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
 		FixFontStyleSlots();
         // force invariant culture to fix Linux save file issues
 		Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-        var concursum = Registry.Get<Concursum>();
+        var concursum = Watchman.Get<Concursum>();
         concursum.ChangingCulture.AddListener(OnCultureChanged);
 
     }
@@ -156,8 +159,8 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
     public string Get(string locLabel)
     {
 
-        string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
-        var currentCulture = Registry.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
+        string currentCultureId = Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
+        var currentCulture = Watchman.Get<Compendium>().GetEntityById<Culture>(currentCultureId);
 
 
         if (locLabel.StartsWith(NoonConstants.TEMPLATE_MARKER))
@@ -190,7 +193,7 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
 
             string settingId= template.Substring(settingIdStartsAt, substringLength);
 
-            Setting setting = Registry.Get<Compendium>().GetEntityById<Setting>(settingId);
+            Setting setting = Watchman.Get<Compendium>().GetEntityById<Setting>(settingId);
             if(setting==null)
                 break;
 

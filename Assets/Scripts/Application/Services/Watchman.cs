@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Assets.Scripts.Application.Services;
 using SecretHistories.Core;
 using SecretHistories.Entities;
+using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;
 
@@ -12,12 +14,8 @@ using UnityEngine.Assertions;
 
 namespace SecretHistories.UI
 {
-    //public interface IRegisterable
-    //{
-        
-    //}
 
-    public class Registry
+    public class Watchman
     {
 
         private static readonly Dictionary<Type, System.Object> registered=new Dictionary<Type, object>();
@@ -38,6 +36,7 @@ namespace SecretHistories.UI
                 return matchingTypeInstance;
             }
 
+            //look for registered objects implementing an interface
             if (typeof(T).IsInterface)
             {
                 foreach (var candidateType in registered.Keys)
@@ -49,7 +48,7 @@ namespace SecretHistories.UI
 
             }
 
-
+            //look for registered objects inheriting from abstract class
             if (typeof(T).IsAbstract)
             {
                 foreach(var candidateType in registered.Keys)
@@ -61,18 +60,23 @@ namespace SecretHistories.UI
                     
             }
 
-            //fallbacks
+            //if the type has an immanence attribute, create an object on the fly, register and return it
+            ImmanenceAttribute immanenceAttribute =
+                (ImmanenceAttribute)typeof(T).GetCustomAttribute(typeof(ImmanenceAttribute), false);
+
+            if (immanenceAttribute != null)
+            {
+                var immanentObject = Activator.CreateInstance(immanenceAttribute.FallbackType);
+                registered.Add(immanenceAttribute.FallbackType,immanentObject);
+                return immanentObject as T;
+            }
+
+            //fallback hack for LanguageManager
             if (typeof(T)==typeof(LanguageManager))
                 return new NullLocStringProvider() as T;
 
-            if (typeof(T) == typeof(SphereCatalogue))
-            {
-                var tcc=new SphereCatalogue();
-                registered.Add(typeof(T),tcc);
-                return tcc as T;
-            }
 
-              NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
+            NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
                 
             return null;
 

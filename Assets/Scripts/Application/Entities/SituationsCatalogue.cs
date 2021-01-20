@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Application.Services;
 using SecretHistories.Commands;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -12,6 +13,8 @@ using SecretHistories.Services;
 
 namespace SecretHistories.Entities
 {
+
+    [Immanence(FallbackType = typeof(SituationsCatalogue))]
     public class SituationsCatalogue
     {
         private Dictionary<string, SituationBuilder> _builders;
@@ -99,7 +102,7 @@ namespace SecretHistories.Entities
             }
 
     
-            var builder = Registry.Get<SituationBuilder>();
+            var builder = Watchman.Get<SituationBuilder>();
             var situation =builder.CreateSituationWithAnchorAndWindow(scc);
 
             situation.ExecuteHeartbeat(0f);
@@ -117,7 +120,7 @@ namespace SecretHistories.Entities
 
         public void HaltSituation(string toHaltId, int maxToHalt)
         {
-            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
+            var situationsCatalogue = Watchman.Get<SituationsCatalogue>();
             int i = 0;
             //Halt the verb if the actionId matches BEARING IN MIND WILDCARD
 
@@ -157,7 +160,7 @@ namespace SecretHistories.Entities
 
         public void DeleteSituation(string toDeleteId, int maxToDelete)
         {
-            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
+            var situationsCatalogue = Watchman.Get<SituationsCatalogue>();
             int i = 0;
             //Delete the verb if the actionId matches BEARING IN MIND WILDCARD
 

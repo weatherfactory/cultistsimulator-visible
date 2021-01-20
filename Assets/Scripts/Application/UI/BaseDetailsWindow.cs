@@ -47,7 +47,7 @@ namespace SecretHistories.UI {
 
         public void Start()
         {
-            var notificationTimeSetting = Registry.Get<Compendium>().GetEntityById<Setting>(NoonConstants.NOTIFICATIONTIME);
+            var notificationTimeSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.NOTIFICATIONTIME);
             if (notificationTimeSetting == null)
             { NoonUtility.Log("Missing setting entity: " + NoonConstants.NOTIFICATIONTIME);
                 return;
