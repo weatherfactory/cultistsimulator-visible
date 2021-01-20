@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Application.Commands;
 using Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
@@ -33,6 +34,7 @@ namespace SecretHistories.Commands
 
         public List<ISituationCommand> Commands=new List<ISituationCommand>();
 
+
         public SituationCreationCommand(IVerb verb, Recipe recipe, StateEnum state,
             TokenLocation anchorLocation, Token sourceToken = null)
         {
@@ -45,6 +47,9 @@ namespace SecretHistories.Commands
             SourceToken = sourceToken;
             State = state;
             SituationPath =new SituationPath(verb);
+
+
+
         }
 
   
@@ -61,15 +66,15 @@ namespace SecretHistories.Commands
 
 
             var sphereCatalogue = Watchman.Get<SphereCatalogue>();
-            var anchorSphere = sphereCatalogue.GetSphereByPath(AnchorLocation.AtSpherePath);
-            var windowSphere = sphereCatalogue.GetSphereByPath(new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
 
             var tokenCreationCommand=new TokenCreationCommand(newSituation.Verb,AnchorLocation);
             var newAnchor=tokenCreationCommand.Execute(sphereCatalogue);
             newSituation.Attach(newAnchor);
 
-            
-            var newWindow = AttachNewWindow(windowSphere, newAnchor, newSituation);
+            var windowCreationCommand=new WindowCreationCommand(newSituation, new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
+            var newWindow = windowCreationCommand.Execute(sphereCatalogue);
+            newSituation.Attach(newWindow);
+
 
             
             if (Open)
@@ -84,10 +89,16 @@ namespace SecretHistories.Commands
 
             if(SourceToken!=null)
             {
+                var enRouteSpherePath =
+                    new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
+
+                var enrouteSphere = sphereCatalogue.GetSphereByPath(enRouteSpherePath);
+
+
                 var spawnedTravelItinerary = new TokenTravelItinerary(SourceToken.TokenRectTransform.anchoredPosition3D,
-                        anchorSphere.Choreographer.GetFreeLocalPosition(newAnchor, SourceToken.ManifestationRectTransform.anchoredPosition))
+                        newAnchor.Sphere.Choreographer.GetFreeLocalPosition(newAnchor, SourceToken.ManifestationRectTransform.anchoredPosition))
                     .WithDuration(1f)
-                    .WithSphereRoute(windowSphere, anchorSphere)
+                    .WithSphereRoute(enrouteSphere, newAnchor.Sphere)
                     .WithScaling(0f, 1f);
 
                 newAnchor.TravelTo(spawnedTravelItinerary, new Context(Context.ActionSource.SpawningAnchor));
@@ -97,19 +108,6 @@ namespace SecretHistories.Commands
 
 
         }
-
-        
-        private SituationWindow AttachNewWindow(Sphere windowSphere, Token newAnchor, Situation situation)
-        {
-            var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(windowSphere.transform);
-
-            newWindow.transform.SetParent(windowSphere.transform);
-            newWindow.positioner.Initialise(newAnchor);
-            situation.Attach(newWindow);
-            return newWindow;
-        }
-
-
 
 
         private IVerb GetBasicOrCreatedVerb()
