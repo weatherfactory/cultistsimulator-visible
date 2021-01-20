@@ -18,8 +18,7 @@ namespace SecretHistories.Services {
 
         [SerializeField] private SituationWindow situationWindowPrefab;
 
-
-
+        
         public Situation CreateSituationWithAnchorAndWindow(SituationCreationCommand command)
         {
             var situation = CreateSituationFromCommand(command);
@@ -63,8 +62,9 @@ namespace SecretHistories.Services {
 
         public Situation CreateSituationFromCommand(SituationCreationCommand command)
         {
-            Situation newSituation = new Situation(command);
-            Watchman.Get<SituationsCatalogue>().RegisterSituation(newSituation);
+            var situationCat = Watchman.Get<SituationsCatalogue>();
+            var newSituation=command.Execute(situationCat);
+
             return newSituation;
         }
 

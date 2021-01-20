@@ -85,21 +85,9 @@ namespace SecretHistories.Entities {
 
         public const float HOUSEKEEPING_CYCLE_BEATS = 1f;
 
-        public Situation()
+        public Situation(SituationPath path)
         {
-
-        }
-
-        public Situation(SituationCreationCommand command)
-        {
-            Verb = command.GetBasicOrCreatedVerb();
-            TimeRemaining = command.TimeRemaining ?? 0;
-            CurrentPrimaryRecipe = command.Recipe;
-            OverrideTitle = command.OverrideTitle;
-            Path = command.SituationPath;
-            foreach(var c in command.Commands)
-                CommandQueue.AddCommand(c);
-            CurrentState = SituationState.Rehydrate(command.State,this);
+            Path = path;
         }
 
         public void TransitionToState(SituationState newState)

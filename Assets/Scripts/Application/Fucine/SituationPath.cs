@@ -62,5 +62,10 @@ namespace SecretHistories.Fucine
         {
             _path = path;
         }
+
+        public static SituationPath NullPath()
+        {
+            return new SituationPath("NULLPATH");
+        }
     }
 }

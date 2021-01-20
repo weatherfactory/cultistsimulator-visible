@@ -5,6 +5,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Enums;
+using SecretHistories.States;
 
 
 namespace SecretHistories.Commands
@@ -44,6 +45,24 @@ namespace SecretHistories.Commands
         public IVerb GetBasicOrCreatedVerb()
         {
             return Watchman.Get<Compendium>().GetVerbForRecipe(Recipe);
+        }
+
+        public Situation Execute(SituationsCatalogue situationsCatalogue)
+        {
+            Situation newSituation = new Situation(SituationPath);
+            situationsCatalogue.RegisterSituation(newSituation);
+            newSituation.Verb = GetBasicOrCreatedVerb();
+            newSituation.TimeRemaining = TimeRemaining ?? 0;
+            newSituation.CurrentPrimaryRecipe = Recipe;
+            newSituation. OverrideTitle = OverrideTitle;
+            
+            foreach (var c in Commands)
+                newSituation.CommandQueue.AddCommand(c);
+            newSituation.CurrentState = SituationState.Rehydrate(State, newSituation);
+
+            return newSituation;
+
+
         }
 
     }

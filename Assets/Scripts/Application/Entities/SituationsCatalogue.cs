@@ -69,7 +69,7 @@ namespace SecretHistories.Entities
         {
             try
             {
-                return _currentSituations.DefaultIfEmpty(new NullSituation()).SingleOrDefault(s => s.Path == path);
+                return _currentSituations.DefaultIfEmpty(NullSituation.Create()).SingleOrDefault(s => s.Path == path);
 
             }
             catch (InvalidOperationException)
@@ -97,7 +97,7 @@ namespace SecretHistories.Entities
             {
                 NoonUtility.Log("Tried to create " + scc.Recipe.Id + " for verb " + scc.Recipe.ActionId + " but that verb is already active.");
                 //end execution here
-                return new NullSituation();
+                return NullSituation.Create();
             }
 
     

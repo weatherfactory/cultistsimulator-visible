@@ -8,6 +8,7 @@ using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Elements.Manifestations;
+using SecretHistories.Fucine;
 
 namespace SecretHistories.NullObjects
 {
@@ -43,7 +44,7 @@ namespace SecretHistories.NullObjects
 
         public Situation CreateDefaultSituation(TokenLocation anchorLocation)
         {
-            return new NullSituation();
+            return new NullSituation(SituationPath.NullPath());
         }
 
         public bool AllowMultipleInstances => true;

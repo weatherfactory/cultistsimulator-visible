@@ -62,7 +62,7 @@ namespace SecretHistories.UI {
         [SerializeField] protected IManifestation _manifestation;
 
         [Header("Logic")]
-        protected Situation _attachedToSituation = new NullSituation();
+        protected Situation _attachedToSituation = NullSituation.Create();
         //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
 
         public bool PlacementAlreadyChronicled = false;
