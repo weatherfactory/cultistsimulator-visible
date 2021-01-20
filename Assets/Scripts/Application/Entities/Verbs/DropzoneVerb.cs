@@ -68,8 +68,7 @@ namespace SecretHistories.Entities.Verbs
         {
             var dropzoneRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(NoonConstants.DROPZONE_RECIPE_ID);
 
-            var cmd = new SituationCreationCommand(this, dropzoneRecipe, StateEnum.Unstarted, anchorLocation,
-                null);
+            var cmd = new SituationCreationCommand(this, dropzoneRecipe, StateEnum.Unstarted, anchorLocation).WithDefaultAttachments();
 
             var situationCat = Watchman.Get<SituationsCatalogue>();
             var dropzoneSituation = cmd.Execute(situationCat);

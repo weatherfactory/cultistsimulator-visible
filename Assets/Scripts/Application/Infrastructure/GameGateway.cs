@@ -103,7 +103,7 @@ namespace SecretHistories.Constants
             IVerb v = Watchman.Get<Compendium>().GetEntityById<BasicVerb>(activeLegacy.StartingVerbId);
 
             SituationCreationCommand command = new SituationCreationCommand(v, NullRecipe.Create(), StateEnum.Unstarted,
-                new TokenLocation(0f, 0f, -100f, inSphere.GetPath()));
+                new TokenLocation(0f, 0f, -100f, inSphere.GetPath())).WithDefaultAttachments();
 
             var situationCat = Watchman.Get<SituationsCatalogue>();
             var situation = command.Execute(situationCat);

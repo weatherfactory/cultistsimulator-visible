@@ -126,6 +126,7 @@ namespace SecretHistories.Entities {
             _window.OnSphereRemoved.AddListener(RemoveSphere);
 
             _window.Initialise(this);
+            _window.positioner.Initialise(_anchor);
             NotifySubscribersOfStateAndTimerChange();
             NotifySubscribersOfTimerValueUpdate();
         }
@@ -486,7 +487,10 @@ namespace SecretHistories.Entities {
 
 
             var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe,
-                StateEnum.Unstarted, newAnchorLocation, _anchor);
+                StateEnum.Unstarted, newAnchorLocation).WithDefaultAttachments();
+
+            scc.SourceToken = _anchor;
+
             var newSituation=Watchman.Get<SituationsCatalogue>()
                 .TryBeginNewSituation(scc,
                     stacksToAddToNewSituation); //tabletop manager is a subscriber, right? can we run this (or access to its successor) through that flow?
@@ -566,7 +570,10 @@ namespace SecretHistories.Entities {
         
             var inductionRecipeVerb = Watchman.Get<Compendium>().GetVerbForRecipe(inducedRecipe);
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inductionRecipeVerb,
-            inducedRecipe, StateEnum.Unstarted, _anchor.Location, _anchor);
+            inducedRecipe, StateEnum.Unstarted, _anchor.Location).WithDefaultAttachments();
+
+            inducedSituationCreationCommand.SourceToken = _anchor;
+
         var inducedSituation=Watchman.Get<SituationsCatalogue>().TryBeginNewSituation(inducedSituationCreationCommand, new List<Token>());
             inducedSituation.TryStart();
 

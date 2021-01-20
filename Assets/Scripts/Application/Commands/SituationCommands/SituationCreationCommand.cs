@@ -27,16 +27,16 @@ namespace SecretHistories.Commands
         public float? TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public TokenLocation AnchorLocation { get; set; }
-        public TokenLocation WindowLocation { get; set; }
 
         public SituationPath SituationPath { get; set; }
         public bool Open { get; set; }
 
         public List<ISituationCommand> Commands=new List<ISituationCommand>();
-
+        private TokenCreationCommand tokenCreationCommand;
+        private WindowCreationCommand windowCreationCommand;
 
         public SituationCreationCommand(IVerb verb, Recipe recipe, StateEnum state,
-            TokenLocation anchorLocation, Token sourceToken = null)
+            TokenLocation anchorLocation)
         {
             if (recipe == null && verb == null)
                 throw new ArgumentException("Must specify either a recipe or a verb (or both");
@@ -44,12 +44,16 @@ namespace SecretHistories.Commands
             Recipe = recipe;
             Verb = verb;
             AnchorLocation = anchorLocation;
-            SourceToken = sourceToken;
             State = state;
             SituationPath =new SituationPath(verb);
+        }
 
+        public SituationCreationCommand WithDefaultAttachments()
+        {
+            tokenCreationCommand = new TokenCreationCommand(Verb, AnchorLocation, SourceToken);
+            windowCreationCommand=new WindowCreationCommand(new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
 
-
+            return this;
         }
 
   
@@ -67,16 +71,19 @@ namespace SecretHistories.Commands
 
             var sphereCatalogue = Watchman.Get<SphereCatalogue>();
 
-            var tokenCreationCommand=new TokenCreationCommand(newSituation.Verb,AnchorLocation);
-            var newAnchor=tokenCreationCommand.Execute(sphereCatalogue);
-            newSituation.Attach(newAnchor);
-
-            var windowCreationCommand=new WindowCreationCommand(newSituation, new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
-            var newWindow = windowCreationCommand.Execute(sphereCatalogue);
-            newSituation.Attach(newWindow);
-
-
+            if(tokenCreationCommand!=null)
+            {
+                var newAnchor=tokenCreationCommand.Execute(sphereCatalogue);
+                newSituation.Attach(newAnchor);
+            }
             
+            if(windowCreationCommand!=null)
+            { 
+                var newWindow = windowCreationCommand.Execute(sphereCatalogue);
+               newSituation.Attach(newWindow);
+            }
+
+
             if (Open)
                 newSituation.OpenAtCurrentLocation();
             else
@@ -84,25 +91,6 @@ namespace SecretHistories.Commands
 
             foreach (var c in Commands)
                 newSituation.CommandQueue.AddCommand(c);
-
-            SoundManager.PlaySfx("SituationTokenCreate");
-
-            if(SourceToken!=null)
-            {
-                var enRouteSpherePath =
-                    new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
-
-                var enrouteSphere = sphereCatalogue.GetSphereByPath(enRouteSpherePath);
-
-
-                var spawnedTravelItinerary = new TokenTravelItinerary(SourceToken.TokenRectTransform.anchoredPosition3D,
-                        newAnchor.Sphere.Choreographer.GetFreeLocalPosition(newAnchor, SourceToken.ManifestationRectTransform.anchoredPosition))
-                    .WithDuration(1f)
-                    .WithSphereRoute(enrouteSphere, newAnchor.Sphere)
-                    .WithScaling(0f, 1f);
-
-                newAnchor.TravelTo(spawnedTravelItinerary, new Context(Context.ActionSource.SpawningAnchor));
-            }
 
             return newSituation;
 

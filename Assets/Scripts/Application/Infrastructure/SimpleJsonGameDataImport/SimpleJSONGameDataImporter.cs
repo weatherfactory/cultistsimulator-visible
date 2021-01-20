@@ -266,7 +266,7 @@ namespace SecretHistories.Constants
             var recipeSlotSpecs = SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(htSituationValues, recipe.Slots);
             var recipeSlotsCommand = new PopulateThresholdsCommand(CommandCategory.RecipeThresholds, recipeSlotSpecs);
             command.Commands.Add(recipeSlotsCommand);
-            return command;
+            return command.WithDefaultAttachments();
         }
 
 
