@@ -36,10 +36,16 @@ namespace SecretHistories.Services
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
 
+        public void Awake()
+        {
+            Resources.LoadAll("prefabs");
+        }
 
         public T Create<T>() where T : Component
         {
-            var o = GetPrefabObject<T>();
+            // var o = GetPrefabObject<T>();
+
+             var o = GetPrefabObjectFromResources<T>();
             try
             {
                 var c = Object.Instantiate(o) as T;
@@ -70,6 +76,21 @@ namespace SecretHistories.Services
                 NoonUtility.Log("Couldn't instantiate prefab " + typeof(T) + "\n" + e);
                 return null;
             }
+
+        }
+
+        public T GetPrefabObjectFromResources<T>() where T : Component
+        {
+            var candidates=Resources.FindObjectsOfTypeAll(typeof(T));
+            if(candidates.Length==0)
+            {
+               throw new ApplicationException($"Can't find prefab of type {typeof(T)} in Resources. Returning null.");
+            }
+            
+            if (candidates.Length >1)
+                NoonUtility.LogWarning($"Multiple types of prefab {typeof(T)} in Resources. Using the first candidate.");
+
+            return candidates.First() as T;
 
         }
 
