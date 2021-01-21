@@ -13,15 +13,21 @@ using SecretHistories.Services;
 
 namespace SecretHistories.Entities.Verbs
 {
-    [FucineImportable("dropzones")]
-    public class DropzoneVerb: AbstractEntity<DropzoneVerb>,IVerb
+    public class DropzoneVerb: IVerb
     {
+        public string Id { get; private set; }
+
+        public void SetId(string id)
+        {
+            Id = id;
+        }
+
         [FucineValue(DefaultValue = ".", Localise = true)]
         public string Label { get; set; }
 
         [FucineValue(DefaultValue = ".", Localise = true)]
         public string Description { get; set; }
-
+         
         [FucineValue]
         public string Art { get; set; }
 
@@ -31,50 +37,23 @@ namespace SecretHistories.Entities.Verbs
             return typeof(DropzoneManifestation);
         }
 
-        public List<SphereSpec> Thresholds
-        {
-            get
-            {
-                var aggregatedSlotsFromOldAndNewFormat = new List<SphereSpec>();
-                aggregatedSlotsFromOldAndNewFormat.Add(Slot); //what if this is empty? likely source of trouble later
-                aggregatedSlotsFromOldAndNewFormat.AddRange(Slots);
-                return aggregatedSlotsFromOldAndNewFormat;
-            }
+        public List<SphereSpec> Thresholds { get; set; }
+    
 
-
-        }
-
-        [FucineSubEntity(typeof(SphereSpec), Localise = true)]
-        public SphereSpec Slot { get; set; }
-
-        [FucineList(Localise = true)]
-        public List<SphereSpec> Slots { get; set; }
-
-        public DropzoneVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
-        {
-       
-        }
-
-        protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
-        {
-           
-        }
 
         public bool Transient => false;
         public bool Startable => false;
         public bool ExclusiveOpen => false;
 
-        public Situation CreateDefaultSituation(TokenLocation anchorLocation)
+        public DropzoneVerb()
         {
-            var dropzoneRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(NoonConstants.DROPZONE_RECIPE_ID);
+            Thresholds=new List<SphereSpec>();
+        }
 
-            var cmd = new SituationCreationCommand(this, dropzoneRecipe, StateEnum.Unstarted, anchorLocation).WithDefaultAttachments();
+        public static DropzoneVerb Create()
+        {
+            return new DropzoneVerb();
 
-            var situationCat = Watchman.Get<SituationsCatalogue>();
-            var dropzoneSituation = cmd.Execute(situationCat);
-
-           
-           return dropzoneSituation;
         }
     }
 }

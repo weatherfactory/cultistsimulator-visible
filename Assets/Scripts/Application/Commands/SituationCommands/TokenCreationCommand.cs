@@ -41,8 +41,7 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
                     new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
 
                 var enrouteSphere = sphereCatalogue.GetSphereByPath(enRouteSpherePath);
-
-
+                
                 var spawnedTravelItinerary = new TokenTravelItinerary(_sourceToken.TokenRectTransform.anchoredPosition3D,
                         token.Sphere.Choreographer.GetFreeLocalPosition(token, _sourceToken.ManifestationRectTransform.anchoredPosition))
                     .WithDuration(1f)

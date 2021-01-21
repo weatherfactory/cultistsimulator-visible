@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Commands;
@@ -12,6 +13,7 @@ using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.Constants;
+using SecretHistories.Entities.Verbs;
 using SecretHistories.Infrastructure;
 using SecretHistories.Services;
 
@@ -53,8 +55,7 @@ namespace SecretHistories.Constants
 
         public void LoadGame(SourceForGameState gameStateSource)
         {
-            Compendium compendium = Watchman.Get<Compendium>();
-
+          
 
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
             { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
@@ -92,7 +93,7 @@ namespace SecretHistories.Constants
 
             Watchman.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
-            var activeLegacy = Watchman.Get<Character>().ActiveLegacy;
+            ProvisionDropzoneToken();
 
 
 
@@ -135,7 +136,7 @@ namespace SecretHistories.Constants
 
 
             ProvisionStartingVerb(character.ActiveLegacy, tabletopSphere);
-            ProvisionDropzoneSituation();
+            ProvisionDropzoneToken();
             
             ProvisionStartingElements(character.ActiveLegacy, tabletopSphere);
 
@@ -146,15 +147,14 @@ namespace SecretHistories.Constants
             Watchman.Get<StageHand>().ClearRestartingGameFlag();
         }
 
-        private Situation ProvisionDropzoneSituation()
+        private void ProvisionDropzoneToken()
         {
-            //if not, create it
-            var dropzoneRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(NoonConstants.DROPZONE_RECIPE_ID);
-            var dropzoneVerb = Watchman.Get<Compendium>().GetVerbForRecipe(dropzoneRecipe);
+         
+            
+            var dropzoneVerb = new DropzoneVerb();
             var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
-            var dropzoneSituation = dropzoneVerb.CreateDefaultSituation(dropzoneLocation);
-
-            return dropzoneSituation;
+            var dropzoneCreationCommand = new TokenCreationCommand(dropzoneVerb, dropzoneLocation, null);
+            dropzoneCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
         }
 
 

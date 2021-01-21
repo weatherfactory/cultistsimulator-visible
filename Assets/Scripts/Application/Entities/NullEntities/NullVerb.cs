@@ -37,14 +37,6 @@ namespace SecretHistories.NullObjects
         public bool Startable { get; }
         public bool ExclusiveOpen => false;
 
-        
-        public Situation CreateDefaultSituation(TokenLocation anchorLocation)
-        {
-            return new NullSituation(SituationPath.NullPath());
-        }
-
-        public bool AllowMultipleInstances => true;
-
         protected NullVerb()
         {
             Thresholds=new List<SphereSpec>();

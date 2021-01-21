@@ -54,12 +54,5 @@ namespace SecretHistories.Entities
         public bool Startable { get; set; }
         public bool ExclusiveOpen => true;
 
-        public Situation CreateDefaultSituation(TokenLocation anchorLocation)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public bool AllowMultipleInstances => false;
     }
 }

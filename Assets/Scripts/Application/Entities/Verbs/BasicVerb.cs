@@ -60,15 +60,6 @@ namespace SecretHistories.Entities
 
         public bool ExclusiveOpen => true;
 
-
-        public Situation CreateDefaultSituation(TokenLocation anchorLocation)
-        {
-            throw new NotImplementedException();
-        }
-
-        
-        
-        
         public BasicVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 

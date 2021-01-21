@@ -21,7 +21,6 @@ namespace SecretHistories.Interfaces
       List<SphereSpec> Thresholds { get; }
       bool Startable { get; }
       bool ExclusiveOpen { get; }
-      Situation CreateDefaultSituation(TokenLocation anchorLocation);
     }
 
 }

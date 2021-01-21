@@ -215,8 +215,6 @@ public class Compendium
     {
         IVerb verb = GetEntityById<BasicVerb>(recipe.ActionId);
 
-        if (verb == null)
-            verb = GetEntityById<DropzoneVerb>(recipe.ActionId);
 
         if (verb == null)
         {

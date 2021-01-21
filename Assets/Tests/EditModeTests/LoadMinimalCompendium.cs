@@ -13,7 +13,7 @@ public class SituationTests
 {
     
     [SetUp]
-    public void LoadMinimalCompendium()
+    public void WithMinimalCompendiumLoad()
     {
         var compendium=new Compendium();
         var cl = new CompendiumLoader("testcontent");
