@@ -19,6 +19,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
 using Assets.Logic;
+using SecretHistories.Abstract;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants;
@@ -34,7 +35,7 @@ namespace SecretHistories.UI {
 
 
 
-    public class ElementStack: MonoBehaviour
+    public class ElementStack: MonoBehaviour,ITokenPayload
     {
 
         public event System.Action<float> onDecay;
@@ -94,11 +95,6 @@ namespace SecretHistories.UI {
 	        }
         }
 
-        public Type GetDefaultManifestationType()
-        {
-            return typeof(CardManifestation);
-        }
-
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
             if (forSphereCategory == SphereCategory.SituationStorage)
@@ -108,6 +104,14 @@ namespace SecretHistories.UI {
                 return typeof(MinimalManifestation);
 
             return typeof(CardManifestation);
+        }
+
+        public void InitialiseManifestation(IManifestation _manifestation)
+        {
+            _manifestation.InitialiseVisuals(Element);
+            _manifestation.UpdateVisuals(Element, Quantity);
+            _manifestation.UpdateTimerVisuals(Element.Lifetime, LifetimeRemaining, 0f, Element.Resaturate,
+                EndingFlavour.None);
         }
 
 

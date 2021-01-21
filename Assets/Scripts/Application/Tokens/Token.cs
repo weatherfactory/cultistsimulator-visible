@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -68,6 +70,23 @@ namespace SecretHistories.UI {
 
         public bool PlacementAlreadyChronicled = false;
 
+        public virtual ITokenPayload Payload
+        {
+            get
+            {
+                if(ElementStack!=null && ElementStack.IsValidElementStack())
+                    return ElementStack;
+
+                else if (Verb != null)
+                    return Verb;
+                else
+                {
+                    NoonUtility.LogWarning($"Unknown payload type in token {gameObject.name}: retiring it");
+                    Retire(RetirementVFX.None);
+                    return new NullTokenPayload();
+                }
+            }
+        }
         public virtual IVerb Verb { get; private set; }
         public virtual ElementStack ElementStack { get; protected set; }
         public int ElementQuantity => ElementStack.Quantity;
@@ -180,10 +199,12 @@ namespace SecretHistories.UI {
 
             manifestationToRetire.Retire(vfxForOldManifestation, OnReplacedManifestationRetired);
 
-            if (ElementStack.IsValidElementStack())
-                InitialiseElementManifestation();
+            Payload.InitialiseManifestation(_manifestation);
+
+            if (shrouded)
+                _manifestation.Shroud(true);
             else
-                InitialiseVerbManifestation();
+                _manifestation.Reveal(true);
 
         }
 
@@ -195,30 +216,14 @@ namespace SecretHistories.UI {
         public virtual void Manifest()
         {
 
-            if (IsValidElementStack()) 
-            {
-
-                if (_manifestation.GetType() != ElementStack.GetManifestationType(Sphere.SphereCategory))
+                if (_manifestation.GetType() != Payload.GetManifestationType(Sphere.SphereCategory))
                 {
                     var newManifestation = Watchman.Get<PrefabFactory>()
                         .CreateManifestationPrefab(ElementStack.GetManifestationType(Sphere.SphereCategory),
                             this.transform);
                     ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
-            }
-            else if (Verb!=null) //YUK
-                if (_manifestation.GetType() != Verb.GetManifestationType(Sphere.SphereCategory))
-                {
-                    var newManifestation = Watchman.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(Verb.GetManifestationType(Sphere.SphereCategory), this.transform);
-                    ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
-                    InitialiseVerbManifestation();
-                }
-                else
-                {
-                    NoonUtility.LogWarning("Token with neither a valid verb nor a valid stack: " +
-                                           gameObject.name);
-                }
+
         }
 
         /// <summary>
@@ -240,25 +245,8 @@ namespace SecretHistories.UI {
             Manifest();
         }
 
-        private void InitialiseVerbManifestation()
-        {
-            _manifestation.InitialiseVisuals(Verb);
-        }
 
-        private void InitialiseElementManifestation()
-        {
-            _manifestation.InitialiseVisuals(ElementStack.Element);
-            _manifestation.UpdateVisuals(ElementStack.Element, ElementStack.Quantity);
-            _manifestation.UpdateTimerVisuals(Element.Lifetime, ElementStack.LifetimeRemaining, 0f, Element.Resaturate,
-                EndingFlavour.None);
-
-            if(shrouded)
-                _manifestation.Shroud(true);
-            else
-            _manifestation.Reveal(true);
-        }
-
-
+        
 
         public void SetState(TokenState state)
         {

@@ -29,6 +29,11 @@ namespace SecretHistories.Entities
             return typeof(VerbManifestation);
         }
 
+        public void InitialiseManifestation(IManifestation manifestation)
+        {
+            manifestation.InitialiseVisuals(this);
+        }
+
         public List<SphereSpec> Thresholds
         {
             get

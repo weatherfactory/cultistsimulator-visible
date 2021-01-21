@@ -37,6 +37,11 @@ namespace SecretHistories.Entities.Verbs
             return typeof(DropzoneManifestation);
         }
 
+        public void InitialiseManifestation(IManifestation manifestation)
+        {
+            manifestation.InitialiseVisuals(this);
+        }
+
         public List<SphereSpec> Thresholds { get; set; }
     
 

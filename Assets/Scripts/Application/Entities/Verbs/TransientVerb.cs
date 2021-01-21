@@ -36,6 +36,10 @@ namespace SecretHistories.Entities
           return  typeof(VerbManifestation);
         }
 
+        public void InitialiseManifestation(IManifestation manifestation)
+        {
+            manifestation.InitialiseVisuals(this);
+        }
 
 
         public string Id { get; private set; }

@@ -81,7 +81,7 @@ namespace SecretHistories.Elements
 
         public void InitialiseVisuals(IVerb verb)
         {
-            throw new NotImplementedException();
+        //
         }
 
 

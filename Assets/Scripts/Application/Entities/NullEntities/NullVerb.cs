@@ -32,6 +32,11 @@ namespace SecretHistories.NullObjects
             return typeof(NullManifestation);
         }
 
+        public void InitialiseManifestation(IManifestation manifestation)
+        {
+           //
+        }
+
         public List<SphereSpec> Thresholds { get; set; }
 
         public bool Startable { get; }
