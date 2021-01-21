@@ -13,7 +13,7 @@ using SecretHistories.Constants;
 using SecretHistories.Services;
 
 
-namespace SecretHistories.TokenContainers
+namespace SecretHistories.Spheres
 {
   public class CardsPile: Sphere
   {

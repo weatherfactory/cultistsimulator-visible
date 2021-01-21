@@ -16,14 +16,13 @@ using SecretHistories.Constants;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Infrastructure;
 using SecretHistories.Services;
-
+using SecretHistories.Spheres;
 using UnityEngine;
 
 namespace SecretHistories.Constants
 {
     public class GameGateway:MonoBehaviour
     {
-        public bool KeepBoardEmpty;
         public void Awake()
         {
             var r = new Watchman();
@@ -31,8 +30,6 @@ namespace SecretHistories.Constants
         }
         public void Start()
         {
-            if (KeepBoardEmpty)
-                return;
 
             try
             {
@@ -45,6 +42,8 @@ namespace SecretHistories.Constants
                 {
                     LoadGame(Watchman.Get<StageHand>().SourceForGameState);
                 }
+
+                ProvisionDropzoneToken();
             }
             catch (Exception e)
             {
@@ -93,10 +92,6 @@ namespace SecretHistories.Constants
 
             Watchman.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
-            ProvisionDropzoneToken();
-
-
-
         }
 
         private void ProvisionStartingVerb(Legacy activeLegacy, Sphere inSphere)
@@ -136,7 +131,6 @@ namespace SecretHistories.Constants
 
 
             ProvisionStartingVerb(character.ActiveLegacy, tabletopSphere);
-            ProvisionDropzoneToken();
             
             ProvisionStartingElements(character.ActiveLegacy, tabletopSphere);
 
@@ -149,8 +143,6 @@ namespace SecretHistories.Constants
 
         private void ProvisionDropzoneToken()
         {
-         
-            
             var dropzoneVerb = new DropzoneVerb();
             var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
             var dropzoneCreationCommand = new TokenCreationCommand(dropzoneVerb, dropzoneLocation, null);

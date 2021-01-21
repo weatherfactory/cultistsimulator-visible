@@ -7,7 +7,7 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Constants;
+using SecretHistories.Spheres;
 
 using UnityEngine;
 using UnityEngine.EventSystems;

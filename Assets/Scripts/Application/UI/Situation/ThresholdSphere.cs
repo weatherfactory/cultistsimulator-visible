@@ -12,7 +12,7 @@ using SecretHistories.UI;
 using SecretHistories.UI.Scripts;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
-
+using SecretHistories.Spheres;
 using TMPro;
 using UnityEditor;
 using UnityEngine;

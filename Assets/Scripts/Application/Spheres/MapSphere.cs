@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Constants;
+using SecretHistories.Spheres;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

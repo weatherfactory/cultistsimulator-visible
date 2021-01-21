@@ -2,11 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Assets.Scripts.Application.Commands.SituationCommands;
 using NUnit.Framework;
 using SecretHistories.Entities;
+using SecretHistories.Entities.Verbs;
+using SecretHistories.Spheres;
+using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Debug = UnityEngine.Debug;
+using Object = UnityEngine.Object;
 
 [TestFixture]
 public class SituationTests
@@ -15,6 +20,8 @@ public class SituationTests
     [SetUp]
     public void WithMinimalCompendiumLoad()
     {
+        Watchman.ForgetEverything();
+
         var compendium=new Compendium();
         var cl = new CompendiumLoader("testcontent");
         var importLog= cl.PopulateCompendium(compendium, "en");
@@ -29,13 +36,25 @@ public class SituationTests
         Assert.AreEqual(27, compendium.GetEntitiesAsList<Setting>().Count);
         Assert.AreEqual(1, compendium.GetEntitiesAsList<BasicVerb>().Count);
 
-
+        var watchman=new Watchman();
+        watchman.Register(compendium);
     }
 
     [Test]
-    public void CreateSituation()
+    public void CreateDropzoneVerb()
     {
-        Assert.AreEqual(1,1);
+        var worldSphere = Object.FindObjectOfType<TabletopSphere>();
+        Watchman.Get<SphereCatalogue>().RegisterSphere(worldSphere);
+        var enRouteSphere = Object.FindObjectOfType<EnRouteSphere>();
+        Watchman.Get<SphereCatalogue>().RegisterSphere(worldSphere);
+
+
+        var dropzoneVerb = new DropzoneVerb();
+
+
+        var dropzoneLocation = new TokenLocation(Vector3.zero, worldSphere);
+        var dropzoneCreationCommand = new TokenCreationCommand(dropzoneVerb, dropzoneLocation, null);
+        dropzoneCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
     }
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use

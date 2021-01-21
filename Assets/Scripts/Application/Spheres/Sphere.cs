@@ -9,6 +9,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using Assets.Logic;
+using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.Elements;
@@ -18,7 +19,8 @@ using SecretHistories.Services;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace SecretHistories.Constants {
+namespace SecretHistories.Spheres
+{
 
 
     public enum BlockReason
@@ -470,7 +472,7 @@ namespace SecretHistories.Constants {
             
             token.SetSphere(this, context);
 
-            if(token.ElementStack.IsValidElementStack())
+            if(token.IsValidElementStack())
             {
 
                 if (EnforceUniqueStacksInThisContainer)

@@ -4,6 +4,7 @@ using UnityEngine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Interfaces;
+using SecretHistories.Spheres;
 
 public class TokenTravellingToSlot : TokenTravelAnimation {
 

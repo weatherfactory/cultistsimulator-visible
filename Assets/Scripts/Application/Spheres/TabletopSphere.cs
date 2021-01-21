@@ -17,9 +17,12 @@ using SecretHistories.UI.Scripts;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Services;
-using SecretHistories.TokenContainers;
+using SecretHistories.Spheres;
 
 using UnityEngine.EventSystems;
+
+namespace SecretHistories.Spheres
+{
 
 public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 #pragma warning disable 649
@@ -189,5 +192,6 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         else
             canvasGroupFader.Hide();
     }
+}
 
 }

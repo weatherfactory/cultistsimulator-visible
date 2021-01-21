@@ -1,11 +1,12 @@
-﻿using SecretHistories.Entities;
+﻿using SecretHistories.Constants;
+using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Interfaces;
 using UnityEngine;
 
-namespace SecretHistories.Constants
+namespace SecretHistories.Spheres
 {
     public class Limbo : Sphere {
 

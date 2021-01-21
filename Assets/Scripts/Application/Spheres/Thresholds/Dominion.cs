@@ -17,6 +17,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using SecretHistories.Services;
+using SecretHistories.Spheres;
 
 namespace SecretHistories.UI {
     public class Dominion:MonoBehaviour,ISituationSubscriber {

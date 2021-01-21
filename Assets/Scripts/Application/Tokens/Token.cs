@@ -18,12 +18,13 @@ using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants.Events;
 using SecretHistories.Spheres.Angels;
-using SecretHistories.TokenContainers;
+using SecretHistories.Spheres;
 
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Object = UnityEngine.Object;
 
 namespace SecretHistories.UI {
 
@@ -72,6 +73,12 @@ namespace SecretHistories.UI {
         public int ElementQuantity => ElementStack.Quantity;
         public Element Element => ElementStack.Element;
 
+        public bool IsValidElementStack()
+        {
+            if (ElementStack == null)
+                return false;
+            return ElementStack.IsValidElementStack();
+        }
 
 
         public UnityEvent OnStart;
@@ -90,8 +97,8 @@ namespace SecretHistories.UI {
             canvasGroup = GetComponent<CanvasGroup>();
 
             CurrentItinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
-            _manifestation = Watchman.Get<NullManifestation>();
-            ElementStack = Watchman.Get<NullElementStack>();
+            _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform); 
+            ElementStack =Watchman.GetOrInstantiate<NullElementStack>(TokenRectTransform);
 
             SetState(new DroppedInSphereState());
 
@@ -188,7 +195,7 @@ namespace SecretHistories.UI {
         public virtual void Manifest()
         {
 
-            if (ElementStack.IsValidElementStack())
+            if (IsValidElementStack()) 
             {
 
                 if (_manifestation.GetType() != ElementStack.GetManifestationType(Sphere.SphereCategory))

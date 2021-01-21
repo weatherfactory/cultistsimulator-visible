@@ -10,7 +10,7 @@ using SecretHistories.UI;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants.Events;
-using SecretHistories.TokenContainers;
+using SecretHistories.Spheres;
 using UnityEngine;
 
 namespace SecretHistories.NullObjects

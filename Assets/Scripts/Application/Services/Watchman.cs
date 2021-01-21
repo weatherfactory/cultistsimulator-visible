@@ -16,12 +16,31 @@ namespace SecretHistories.UI
 
     public class Watchman
     {
+        public static void ForgetEverything()
+        {
+            registered.Clear();
+        }
 
         private static readonly Dictionary<Type, System.Object> registered=new Dictionary<Type, object>();
 
         public static bool Exists<T>()
         {
             return (registered.ContainsKey(typeof(T)));
+        }
+
+        public static T GetOrInstantiate<T>(Transform atTransform) where T : Component
+        {
+            var existingInstance = Get<T>();
+            if (existingInstance != null)
+                return existingInstance; //an instance exists: use that.
+
+            //no instance yet exists: create and return that.
+            var prefabFactory = Get<PrefabFactory>(); 
+
+            var newlyInstantiatedInstance=prefabFactory?.CreateLocally<T>(atTransform.root); //assuming we have a prefab factory. If we don't, we're stuffed, return null
+            registered.Add(typeof(T),newlyInstantiatedInstance);
+
+            return newlyInstantiatedInstance;
         }
 
         public static T Get<T>() where T: class
@@ -74,9 +93,6 @@ namespace SecretHistories.UI
             if (typeof(T)==typeof(LanguageManager))
                 return new NullLocStringProvider() as T;
 
-
-            NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
-                
             return null;
 
         }

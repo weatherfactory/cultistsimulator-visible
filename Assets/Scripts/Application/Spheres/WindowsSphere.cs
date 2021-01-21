@@ -9,7 +9,7 @@ using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 
-namespace SecretHistories.TokenContainers
+namespace SecretHistories.Spheres
 {
     public class WindowsSphere: Sphere
     {

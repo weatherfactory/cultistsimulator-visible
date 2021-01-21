@@ -14,7 +14,7 @@ using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Modding;
-using SecretHistories.TokenContainers;
+using SecretHistories.Spheres;
 
 using SecretHistories.Enums;
 using SecretHistories.Infrastructure;
@@ -22,9 +22,12 @@ using UnityEngine;
 
 namespace SecretHistories.Services
 {
+
     public class Glory: MonoBehaviour
     {
 #pragma warning disable 649
+
+
         public LanguageManager languageManager;
         public StageHand stageHand;
         public GameSaveManager gameSaveManager;
@@ -41,6 +44,8 @@ namespace SecretHistories.Services
         public NullManifestation NullManifestation;
         public NullToken NullToken;
         public NullElementStack NullElementStack;
+
+        [SerializeField] private string OverrideContentFolder;
 
         private string _initialisedAt;
 #pragma warning restore 649
@@ -111,7 +116,7 @@ namespace SecretHistories.Services
 
                 registryAccess.Register(limbo);
                 registryAccess.Register(NullManifestation);
-                registryAccess.Register(NullElementStack);
+             //   registryAccess.Register(NullElementStack);
 
                 registryAccess.Register(NullToken);
 
@@ -134,6 +139,14 @@ namespace SecretHistories.Services
 
                 //load Compendium content. We can't do anything with content files until this is in.
                 registryAccess.Register<Compendium>(new Compendium());
+                
+                CompendiumLoader loader;
+                if (Application.isEditor && !string.IsNullOrEmpty(OverrideContentFolder))
+                    loader = new CompendiumLoader(OverrideContentFolder);
+                else
+                    loader = new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
+                registryAccess.Register<CompendiumLoader>(loader);
+
                 var log=LoadCompendium(Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
                 if (log.ImportFailed())
@@ -206,8 +219,8 @@ namespace SecretHistories.Services
 
         public ContentImportLog LoadCompendium(string cultureId)
         {
-            var compendiumLoader =new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
-            var log = compendiumLoader.PopulateCompendium(Watchman.Get<Compendium>(),cultureId);
+
+            var log = Watchman.Get<CompendiumLoader>().PopulateCompendium(Watchman.Get<Compendium>(),cultureId);
             foreach (var m in log.GetMessages())
                 NoonUtility.Log(m);
 

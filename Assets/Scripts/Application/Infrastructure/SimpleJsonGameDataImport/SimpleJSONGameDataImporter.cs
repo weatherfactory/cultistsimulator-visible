@@ -18,6 +18,7 @@ using OrbCreationExtensions;
 using UnityEngine;
 using UnityEngine.Assertions;
 using SecretHistories.Services;
+using SecretHistories.Spheres;
 
 namespace SecretHistories.Constants
 {

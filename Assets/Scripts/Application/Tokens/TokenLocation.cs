@@ -7,6 +7,7 @@ using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
+using SecretHistories.Spheres;
 using UnityEngine;
 
 namespace SecretHistories.UI

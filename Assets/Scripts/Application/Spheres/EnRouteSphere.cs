@@ -11,7 +11,7 @@ using SecretHistories.Constants;
 using SecretHistories.Interfaces;
 using UnityEngine;
 
-namespace SecretHistories.TokenContainers
+namespace SecretHistories.Spheres
 {
     public class EnRouteSphere : Sphere
     {

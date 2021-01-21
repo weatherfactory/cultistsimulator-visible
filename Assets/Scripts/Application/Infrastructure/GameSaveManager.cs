@@ -14,6 +14,7 @@ using OrbCreationExtensions;
 using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Enums;
+using SecretHistories.Spheres;
 using UnityEngine;	// added for debug asserts - CP
 using UnityEngine.Analytics;
 

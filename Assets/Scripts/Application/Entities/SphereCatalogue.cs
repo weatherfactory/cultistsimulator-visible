@@ -10,6 +10,7 @@ using SecretHistories.Core;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Services;
+using SecretHistories.Spheres;
 using UnityEngine;
 
 namespace SecretHistories.Entities {

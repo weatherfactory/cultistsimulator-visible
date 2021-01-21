@@ -12,7 +12,7 @@ using SecretHistories.UI;
 using SecretHistories.UI.Scripts;
 using SecretHistories.Services;
 using SecretHistories.Constants;
-
+using SecretHistories.Spheres;
 using TMPro;
 
 public class ExhibitCards : Sphere {

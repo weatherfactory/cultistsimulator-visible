@@ -30,6 +30,7 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
         {
             var sphere = sphereCatalogue.GetSphereByPath(_location.AtSpherePath);
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);
+            
             token.SetVerb(_forVerb);
     
             sphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));

@@ -6,7 +6,7 @@ using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Elements.Manifestations;
-using SecretHistories.TokenContainers;
+using SecretHistories.Spheres;
 
 namespace SecretHistories.Entities
 {
