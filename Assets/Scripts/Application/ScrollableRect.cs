@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
+using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using UnityEngine.InputSystem;
 

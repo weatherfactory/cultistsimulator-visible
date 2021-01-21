@@ -8,6 +8,7 @@ using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
 using UnityEngine;
 using UnityEngine.Events;
@@ -26,14 +27,14 @@ namespace SecretHistories.Elements.Manifestations
     }
 
     public interface IManifestation
-   {
+    {
+        event EventHandler<ManifestationInteractionEventArgs> ManifestationInteracted;
        Transform Transform { get; }
        RectTransform RectTransform { get; }
         void Retire(RetirementVFX retirementVfx, Action callback);
         bool CanAnimateIcon();
         void BeginIconAnimation();
-        void ResetIconAnimation();
-
+        
 
         void InitialiseVisuals(Element element);
         void InitialiseVisuals(IVerb verb);

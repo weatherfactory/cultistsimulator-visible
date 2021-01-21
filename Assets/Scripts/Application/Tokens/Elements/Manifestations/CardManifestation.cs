@@ -11,6 +11,7 @@ using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
 using TMPro;
 using UnityEngine;
@@ -37,6 +38,8 @@ namespace SecretHistories.Elements
         [SerializeField] public CanvasGroup canvasGroup;
         [SerializeField] public GraphicFader glowImage;
 
+
+        public event EventHandler<ManifestationInteractionEventArgs> ManifestationInteracted;
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform=> gameObject.GetComponent<RectTransform>();
      
@@ -57,8 +60,8 @@ namespace SecretHistories.Elements
         
         public void InitialiseVisuals(Element element)
         {
-         
-            Sprite sprite = ResourcesManager.GetSpriteForElement(element.Icon);
+            
+               Sprite sprite = ResourcesManager.GetSpriteForElement(element.Icon);
             artwork.sprite = sprite;
 
             if (sprite == null)

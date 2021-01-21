@@ -8,6 +8,7 @@ using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,7 +18,7 @@ namespace SecretHistories.Elements.Manifestations
     [RequireComponent(typeof(RectTransform))]
     public class PickupManifestation: MonoBehaviour, IManifestation
     {
-
+        public event EventHandler<ManifestationInteractionEventArgs> ManifestationInteracted;
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 

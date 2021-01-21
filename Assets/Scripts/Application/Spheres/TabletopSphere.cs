@@ -28,6 +28,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 #pragma warning disable 649
     [SerializeField] TabletopBackground _background;
     [SerializeField] protected CanvasGroupFader canvasGroupFader;
+    [SerializeField] protected string dropzoneSpherePathIdentifier;
 #pragma warning disable 649
 
     public override SphereCategory SphereCategory => SphereCategory.World;
@@ -54,7 +55,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
     public virtual void Start() {
         _background.onClicked += HandleOnTableClicked;
-        var dropzoneSpherePath = new SpherePath(NoonConstants.DROPZONE_SPHERE_PATH);
+        var dropzoneSpherePath = new SpherePath(dropzoneSpherePathIdentifier);
         flock.AddAngel(new TidyAngel(dropzoneSpherePath));
     }
 

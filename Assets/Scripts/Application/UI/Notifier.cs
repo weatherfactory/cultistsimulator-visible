@@ -8,6 +8,7 @@ using SecretHistories.Services;
 using UnityEngine;
 using SecretHistories.Entities;
 using SecretHistories.Constants.Events;
+using SecretHistories.Enums;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 

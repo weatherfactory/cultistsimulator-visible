@@ -351,7 +351,7 @@ namespace SecretHistories.UI {
             SetState(new BeingDraggedState());
             
             
-            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
+            NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
             if (!Keyboard.current.shiftKey.wasPressedThisFrame)
             {
                 if (ElementStack.IsValidElementStack() && ElementQuantity > 1)
@@ -400,7 +400,7 @@ namespace SecretHistories.UI {
             MoveObject(eventData);
 
 
-            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs {PointerEventData = eventData,Token=this,Sphere= Sphere,Interaction = Interaction.OnDrag});
+            NotifyInteracted(new TokenInteractionEventArgs {PointerEventData = eventData,Token=this,Sphere= Sphere,Interaction = Interaction.OnDrag});
 
         }
 
@@ -436,7 +436,7 @@ namespace SecretHistories.UI {
 
         public  void OnEndDrag(PointerEventData eventData)
         {
-            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
+            NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
             
             FinishDrag();
         }
@@ -473,7 +473,7 @@ namespace SecretHistories.UI {
  
         private void InteractWithIncomingToken(Token incomingToken, PointerEventData eventData)
         {
-            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs
+            NotifyInteracted(new TokenInteractionEventArgs
             {
                 Token = this,
                 Sphere = Sphere,
@@ -564,7 +564,7 @@ namespace SecretHistories.UI {
             if (timeSincePreviousClick<doubleClickInterval)
             {
                 previousClickTime = 0f;
-                Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs
+                NotifyInteracted(new TokenInteractionEventArgs
                 {
                     Element = ElementStack.Element,
                     Token = this,
@@ -582,7 +582,7 @@ namespace SecretHistories.UI {
                 }
                 else
                 {
-                    Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs
+                    NotifyInteracted(new TokenInteractionEventArgs
                     {
                         Element = ElementStack.Element,
                         Token = this,
@@ -612,8 +612,9 @@ namespace SecretHistories.UI {
             _manifestation.OverrideIcon(icon);
         }
 
-        protected void NotifyChroniclerPlacedOnTabletop()
+        protected virtual void NotifyInteracted(TokenInteractionEventArgs args)
         {
+            Sphere.OnTokenInThisSphereInteracted(args);
             Watchman.Get<Chronicler>()?.TokenPlacedOnTabletop(this);
         }
 
@@ -671,7 +672,7 @@ namespace SecretHistories.UI {
             if (!eventData.dragging)
                 _manifestation.Unhighlight(HighlightType.Hover);
 
-            Sphere.OnTokenInThisSphereInteracted(new TokenInteractionEventArgs
+            NotifyInteracted(new TokenInteractionEventArgs
             {
                 Element = Element,
                 Token = this,

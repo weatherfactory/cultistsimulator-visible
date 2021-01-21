@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SecretHistories.Entities;
 using SecretHistories.UI;
 using SecretHistories.Constants.Events;
+using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 
 using UnityEngine;

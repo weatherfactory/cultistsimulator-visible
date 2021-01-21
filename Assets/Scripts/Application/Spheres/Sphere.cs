@@ -136,7 +136,7 @@ namespace SecretHistories.Spheres
             if(sphereRetirementType==SphereRetirementType.Destructive)
                 RetireAllTokens();
             else
-                EvictAllTokens();
+                EvictAllTokens(new Context(Context.ActionSource.ContainingSphereRetired));
 
             Destroy(gameObject);
             Defunct = true;
@@ -516,7 +516,7 @@ namespace SecretHistories.Spheres
         }
 
         /// <summary>
-        /// 'Send token away. Find somewhere suitable. Not my problem.'
+        /// 'Send token away. Find somewhere suitable. Not my problem.' The default implementation hands them off to the default en route sphere, which will have routing angels.
         /// </summary>
         public virtual void EvictToken(Token token, Context context)
         {
@@ -618,11 +618,11 @@ namespace SecretHistories.Spheres
                 t.Retire(RetirementVFX.None);
         }
 
-        public void EvictAllTokens()
+        public void EvictAllTokens(Context context)
         {
             var listCopy = new List<Token>(_tokens);
             foreach (Token t in listCopy)
-                t.GoAway(new Context(Context.ActionSource.ContainingSphereRetired));
+                t.GoAway(context);
         }
 
 

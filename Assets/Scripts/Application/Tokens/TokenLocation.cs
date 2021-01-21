@@ -17,13 +17,12 @@ namespace SecretHistories.UI
     // its *local* position (specifically, anchored3D position) relative to that sphere
     public class TokenLocation
   {
-      public Vector3 Anchored3DPosition;
-      public SpherePath AtSpherePath;
+      public Vector3 Anchored3DPosition { get; private set; }
+      public SpherePath AtSpherePath { get; private set; }
         public TokenLocation(float x,float y,float z, SpherePath atSpherePath)
         {
-            Anchored3DPosition.x = x;
-            Anchored3DPosition.y = y;
-            Anchored3DPosition.z = z;
+            Vector3 anchored3DPosition=new Vector3(x,y,z);
+            Anchored3DPosition = anchored3DPosition;
             AtSpherePath = atSpherePath;
 
         }
@@ -42,11 +41,23 @@ namespace SecretHistories.UI
         }
         
 
-        public TokenLocation(Token forToken)
+        public TokenLocation(Token currentLocationOfToken)
         {
-            Anchored3DPosition = forToken.Location.Anchored3DPosition;
-            AtSpherePath = forToken.Sphere.GetPath();
+            Anchored3DPosition = currentLocationOfToken.Location.Anchored3DPosition;
+            AtSpherePath = currentLocationOfToken.Sphere.GetPath();
         }
+
+        public TokenLocation WithSpherePath(SpherePath withSpherePath)
+        {
+            var newTL=new TokenLocation(Anchored3DPosition,withSpherePath);
+            return newTL;
+        }
+
+        public TokenLocation WithSphere(Sphere withSphere)
+        {
+            return WithSpherePath(withSphere.GetPath());
+        }
+
 
 
   }

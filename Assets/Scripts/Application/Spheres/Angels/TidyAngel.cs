@@ -44,14 +44,14 @@ namespace SecretHistories.Spheres.Angels
             if (!tidyToSphere.IsInRangeOf(token.Sphere))
                 return false;
 
-            TokenTravelItinerary travellingHome =
+            TokenTravelItinerary travellingToTidyTarget =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D,
                         tidyToSphere.Choreographer.GetFreeLocalPosition(token, Vector3.zero))
                     .WithSphereRoute(Watchman.Get<SphereCatalogue>().GetDefaultEnRouteSphere(),
                         tidyToSphere)
                     .WithDuration(NoonConstants.MOMENT_TIME_INTERVAL);
 
-            travellingHome.Depart(token,context);
+            travellingToTidyTarget.Depart(token,context);
 
 
             return true;

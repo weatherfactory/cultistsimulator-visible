@@ -3825,6 +3825,7 @@ MonoBehaviour:
   PathIdentifier: tabletop
   _background: {fileID: 577}
   canvasGroupFader: {fileID: 146}
+  dropzoneSpherePathIdentifier: dropzonebubble
   SendViaContainer: {fileID: 1610149766}
   _tabletopChoreographer: {fileID: 150}
 --- !u!114 &737
@@ -11829,7 +11830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56f4def82b0f2d4c91673117a0da8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KeepBoardEmpty: 1
 --- !u!1 &333650468
 GameObject:
   m_ObjectHideFlags: 0

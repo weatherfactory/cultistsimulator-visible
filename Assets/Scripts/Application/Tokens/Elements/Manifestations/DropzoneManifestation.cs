@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
@@ -16,11 +17,12 @@ using UnityEngine.UI;
 namespace SecretHistories.Elements.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
-    public class DropzoneManifestation: MonoBehaviour,IManifestation
+    public class DropzoneManifestation: MonoBehaviour,IManifestation,IPointerClickHandler
     {
         private GameObject shadow;
         private GraphicFader glowImage;
 
+        public event EventHandler<ManifestationInteractionEventArgs> ManifestationInteracted;
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
@@ -181,6 +183,10 @@ namespace SecretHistories.Elements.Manifestations
         {
         }
 
-        
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            Debug.Log("clicked dropzone");
+        }
     }
 }

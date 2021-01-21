@@ -11,6 +11,7 @@ using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
 using TMPro;
 using UnityEngine;
@@ -60,6 +61,7 @@ namespace SecretHistories.Elements.Manifestations
         [SerializeField] public GraphicFader glowImage;
 
 
+        public event EventHandler<ManifestationInteractionEventArgs> ManifestationInteracted;
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 

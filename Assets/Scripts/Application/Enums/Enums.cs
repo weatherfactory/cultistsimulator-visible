@@ -23,6 +23,9 @@ namespace SecretHistories.Enums
         Normal = 1,
         Fast = 2
     }
+
+    public enum Interaction { OnClicked, OnReceivedADrop, OnPointerEntered, OnPointerExited, OnDoubleClicked, OnDragBegin, OnDrag, OnDragEnd }
+
     public enum MorphEffectType
     {
         Transform = 1,
