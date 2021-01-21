@@ -251,6 +251,11 @@ namespace SecretHistories.UI {
             _manifestation.UpdateVisuals(ElementStack.Element, ElementStack.Quantity);
             _manifestation.UpdateTimerVisuals(Element.Lifetime, ElementStack.LifetimeRemaining, 0f, Element.Resaturate,
                 EndingFlavour.None);
+
+            if(shrouded)
+                _manifestation.Shroud(true);
+            else
+            _manifestation.Reveal(true);
         }
 
 
