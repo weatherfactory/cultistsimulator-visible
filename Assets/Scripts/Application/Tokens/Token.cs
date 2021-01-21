@@ -74,17 +74,20 @@ namespace SecretHistories.UI {
         {
             get
             {
-                if(ElementStack!=null && ElementStack.IsValidElementStack())
-                    return ElementStack;
-
-                else if (Verb != null)
+                 if (Verb != null)
                     return Verb;
-                else
-                {
-                    NoonUtility.LogWarning($"Unknown payload type in token {gameObject.name}: retiring it");
-                    Retire(RetirementVFX.None);
-                    return new NullTokenPayload();
-                }
+
+          
+                 else if (ElementStack!=null && ElementStack.IsValidElementStack())
+                     return ElementStack;
+
+
+                 else
+                 {
+                     NoonUtility.LogWarning($"Unknown payload type in token {gameObject.name}: retiring it");
+                     Retire(RetirementVFX.None);
+                     return new NullTokenPayload();
+                 }
             }
         }
         public virtual IVerb Verb { get; private set; }
@@ -219,7 +222,7 @@ namespace SecretHistories.UI {
                 if (_manifestation.GetType() != Payload.GetManifestationType(Sphere.SphereCategory))
                 {
                     var newManifestation = Watchman.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(ElementStack.GetManifestationType(Sphere.SphereCategory),
+                        .CreateManifestationPrefab(Payload.GetManifestationType(Sphere.SphereCategory),
                             this.transform);
                     ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
