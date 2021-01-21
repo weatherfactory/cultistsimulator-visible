@@ -37,6 +37,7 @@ namespace SecretHistories.UI {
 
     public class ElementStack: MonoBehaviour,ITokenPayload
     {
+        public string Id => Element.Id;
 
         public event System.Action<float> onDecay;
         public bool Defunct { get; protected set; }
@@ -94,6 +95,8 @@ namespace SecretHistories.UI {
 				               .Select(m => $"{m}={mutations[m]}"));
 	        }
         }
+
+
 
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {

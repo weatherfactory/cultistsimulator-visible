@@ -70,27 +70,25 @@ namespace SecretHistories.UI {
 
         public bool PlacementAlreadyChronicled = false;
 
+        private ITokenPayload _payload;
+
         public virtual ITokenPayload Payload
         {
             get
             {
-                 if (Verb != null)
-                    return Verb;
-
-          
-                 else if (ElementStack!=null && ElementStack.IsValidElementStack())
+                if (ElementStack!=null && ElementStack.IsValidElementStack())
                      return ElementStack;
+                else if (_payload!= null)
+                    return _payload;
 
-
-                 else
-                 {
-                     NoonUtility.LogWarning($"Unknown payload type in token {gameObject.name}: retiring it");
-                     Retire(RetirementVFX.None);
-                     return new NullTokenPayload();
-                 }
+                else
+                {
+                    NoonUtility.LogWarning($"Unknown payload type in token {gameObject.name}: retiring it");
+                    Retire(RetirementVFX.None);
+                    return new NullTokenPayload();
+                }
             }
         }
-        public virtual IVerb Verb { get; private set; }
         public virtual ElementStack ElementStack { get; protected set; }
         public int ElementQuantity => ElementStack.Quantity;
         public Element Element => ElementStack.Element;
@@ -154,25 +152,10 @@ namespace SecretHistories.UI {
         private TokenState CurrentState;
 
 
-        public AnchorDurability Durability
-        {
-            get
-            {
-                if (Verb.Transient)
-                    return AnchorDurability.Transient;
-                else
-                    return AnchorDurability.Enduring;
-            }
-        }
-
-
         public void SetVerb(IVerb verb)
         {
-            Verb = verb;
-
-   
-
-            name = Verb.Id + "_verbtoken";
+            _payload = verb;
+        name = _payload.Id + "_verbtoken";
         }
 
         public void AttachedTo(Situation situation)

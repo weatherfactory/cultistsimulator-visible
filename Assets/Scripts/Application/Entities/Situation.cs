@@ -595,7 +595,7 @@ namespace SecretHistories.Entities {
         IsOpen = true;
         _window.Show(location.Anchored3DPosition,this);
             
-        Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.Verb.Id);
+        Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.Payload.Id);
     }
 
     public virtual void OpenAtCurrentLocation()

@@ -10,6 +10,7 @@ namespace SecretHistories.Abstract
     {
     public interface ITokenPayload
     {
+        public string Id { get; }
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
     }

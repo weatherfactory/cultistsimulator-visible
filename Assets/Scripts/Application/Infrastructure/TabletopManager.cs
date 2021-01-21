@@ -231,16 +231,16 @@ namespace SecretHistories.UI {
 
 
         public void SignalImpendingDoom(Token situationToken) {
-            if(!currentDoomTokens.Contains(situationToken.Verb.Id))
-                currentDoomTokens.Add(situationToken.Verb.Id);
+            if(!currentDoomTokens.Contains(situationToken.Payload.Id))
+                currentDoomTokens.Add(situationToken.Payload.Id);
             backgroundMusic.PlayImpendingDoom();
         }
 
 
         public void NoMoreImpendingDoom(Token situationToken)
         {
-            if (currentDoomTokens.Contains(situationToken.Verb.Id))
-                currentDoomTokens.Remove(situationToken.Verb.Id);
+            if (currentDoomTokens.Contains(situationToken.Payload.Id))
+                currentDoomTokens.Remove(situationToken.Payload.Id);
             if(!currentDoomTokens.Any())
                 backgroundMusic.NoMoreImpendingDoom();
         }

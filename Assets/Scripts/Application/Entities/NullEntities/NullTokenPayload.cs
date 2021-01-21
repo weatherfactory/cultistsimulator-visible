@@ -11,6 +11,8 @@ namespace Assets.Scripts.Application.Entities.NullEntities
 {
     public class NullTokenPayload: ITokenPayload
     {
+        public string Id => string.Empty;
+
         public Type GetManifestationType(SphereCategory sphereCategory)
         {
             return typeof(NullManifestation);

@@ -20,7 +20,6 @@ namespace SecretHistories.NullObjects
        public NullManifestation NullManifestation;
        public NullElementStack NullElementStack;
 
-       public override IVerb Verb => NullVerb.Create();
 
        public override void Awake()
        {

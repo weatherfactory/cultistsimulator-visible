@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace SecretHistories.Enums
 {
-    public enum AnchorDurability
-    {
-        Enduring,
-        Transient
-    }
 
     public enum CharacterState
     {
