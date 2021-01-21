@@ -50,7 +50,7 @@ namespace SecretHistories.Constants
 
         public const string WORKSHOP_ITEM_PUBLISHED_ID_FILE_NAME = "serapeum_catalogue_number.txt";
         public static string WORKSHOP_PREVIEW_IMAGE_FILE_NAME = "cover.png";
-        public static string DROPZONE_RECIPE_ID = "dropzone.classic";
+        public static string DROPZONE_SPHERE_PATH="dropbubble";
 
         public const string BIRDWORMSLIDER = "AllowExploits";
         public const string HIGHCONTRAST = "HighContrast";

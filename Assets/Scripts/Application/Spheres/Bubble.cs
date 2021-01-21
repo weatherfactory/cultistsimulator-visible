@@ -9,9 +9,11 @@ using SecretHistories.Enums;
 namespace SecretHistories.Spheres
 {
 
-
+    /// <summary>
+    /// A bubble bursts, dropping all its contents, when interacted with.
+    /// </summary>
     public class Bubble: Sphere
     {
-        public override SphereCategory SphereCategory { get; }
+        public override SphereCategory SphereCategory => SphereCategory.World;
     }
 }
