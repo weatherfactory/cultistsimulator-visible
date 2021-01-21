@@ -43,13 +43,6 @@ public class Output : Sphere,ISituationSubscriber{
     }
 
 
-    public override void AcceptToken(Token token, Context context)
-    {
-        base.AcceptToken(token, context);
-        token.Shroud(true);
-    }
-        //stack.Shroud(true);)
-
     public override void DisplayAndPositionHere(Token token, Context context) {
         base.DisplayAndPositionHere(token, context);
 

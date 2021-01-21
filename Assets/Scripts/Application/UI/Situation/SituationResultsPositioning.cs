@@ -45,13 +45,6 @@ namespace SecretHistories.UI {
                // MoveToPosition(token.TokenRectTransform,positionForThisToken, 0f);
                 token.transform.SetSiblingIndex(i-1); //each card is conceptually on top of the last. Set sibling index to make sure they appear that way.
 
-                //if any stacks are fresh, flip them face down, otherwise face up
-                if (token.ElementStack.StackSource.SourceType == SourceType.Fresh)
-                    token.Shroud(true); // flip down instantly
-                else
-                    token.Unshroud(gameObject.activeInHierarchy); // flip up with anim, if we're visible 
-
-                debugText += token.Element.Id + " (" + token.ElementStack.StackSource.SourceType + ") ";
 
                 i++;
             }
@@ -66,7 +59,7 @@ namespace SecretHistories.UI {
 
             foreach (var stack in elementStacks)
 			{
-                if (stack.ElementStack.StackSource.SourceType == SourceType.Fresh)
+                if (stack.Shrouded())
 				{
 					if (stack.ElementStack.Decays)
 	                    freshStacks.Add(stack);

@@ -126,9 +126,7 @@ namespace Assets.Logic
 
                             if (!string.IsNullOrEmpty(drawnCardId))
                             {
-                                var source = Source.Fresh(); //ultimately this should correspond to deck
-                                sphere.ModifyElementQuantity(drawnCardId, 1, source,
-                                    new Context(Context.ActionSource.SituationEffect));
+                                sphere.ModifyElementQuantity(drawnCardId, 1, new Context(Context.ActionSource.SituationEffect));
                             }
                             else
                             {
@@ -151,9 +149,7 @@ namespace Assets.Logic
                     effectValue = sphere.GetTotalAspects(true).AspectValue(kvp.Value);
                 }
 
-                var source = Source.Fresh(); //might later be eg Transformed
-                sphere.ModifyElementQuantity(kvp.Key, effectValue, source,
-                    new Context(Context.ActionSource.SituationEffect));
+                sphere.ModifyElementQuantity(kvp.Key, effectValue, new Context(Context.ActionSource.SituationEffect));
             }
         }
 
@@ -207,7 +203,6 @@ namespace Assets.Logic
                                     else if (morph.MorphEffect == MorphEffectType.Spawn)
                                     {
                                         sphere.ProvisionElementStackToken(newElementId, morph.Level,
-                                            Source.Existing(),
                                             new Context(Context.ActionSource.ChangeTo),new Dictionary<string,int>());
                                         NoonUtility.Log(
                                             "xtrigger aspect marked additional=true " + mutationXTrigger + " caused " +
@@ -252,16 +247,14 @@ namespace Assets.Logic
                             int existingQuantity = eachStack.Quantity;
                             if (morph.MorphEffect==MorphEffectType.Transform)
                             {
-                                eachStack.Populate(newElementId, existingQuantity, Source.Existing());
+                                eachStack.Populate(newElementId, existingQuantity);
                                 NoonUtility.Log(
                                     "Transform xtrigger " + triggerKey + " caused " + oldElementId +
                                     " to transform into " + newElementId);
                             }
                             else if (morph.MorphEffect == MorphEffectType.Spawn)
                             {
-                              sphere.ProvisionElementStackToken(newElementId, morph.Level,
-                                    Source.Existing(),
-                                    new Context(Context.ActionSource.ChangeTo),new Dictionary<string, int>());
+                              sphere.ProvisionElementStackToken(newElementId, morph.Level, new Context(Context.ActionSource.ChangeTo),new Dictionary<string, int>());
                                 NoonUtility.Log(
                                     "Spawn xtrigger " + triggerKey + " caused " +
                                     oldElementId + " to spawn a new " + newElementId);

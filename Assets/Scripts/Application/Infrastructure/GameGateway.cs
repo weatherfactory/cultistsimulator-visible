@@ -118,7 +118,7 @@ namespace SecretHistories.Constants
             {
                 var context = new Context(Context.ActionSource.Loading);
 
-                Token token = inSphere.ProvisionElementStackToken(e.Key, e.Value, Source.Existing(), context, Element.EmptyMutationsDictionary());
+                Token token = inSphere.ProvisionElementStackToken(e.Key, e.Value, context, Element.EmptyMutationsDictionary());
                 inSphere.Choreographer.PlaceTokenAtFreeLocalPosition(token, context);
             }
         }

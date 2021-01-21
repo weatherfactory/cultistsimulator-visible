@@ -54,7 +54,6 @@ namespace SecretHistories.UI {
 
         public float LifetimeRemaining { get; set; }
 
-        public Source StackSource { get; set; }
 
         
         private Dictionary<string,int> _currentMutations=new Dictionary<string, int>(); //not strictly an aspects dictionary; it can contain negatives
@@ -301,7 +300,7 @@ namespace SecretHistories.UI {
         /// <param name="elementId"></param>
         /// <param name="quantity"></param>
         /// <param name="source"></param>
-        public void Populate(string elementId, int quantity, Source source)
+        public void Populate(string elementId, int quantity)
 		{
             
             Element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
@@ -330,8 +329,6 @@ namespace SecretHistories.UI {
 			
 				_aspectsDirtyExc = true;
 				_aspectsDirtyInc = true;
-
-                StackSource = source;
 
             }
             catch (Exception e)
@@ -467,7 +464,7 @@ namespace SecretHistories.UI {
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
 
-            Populate(elementId,quantity,Source.Existing());
+            Populate(elementId,quantity);
 
             _attachedToken.Remanifest(RetirementVFX.CardTransformWhite);
 

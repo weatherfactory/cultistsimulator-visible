@@ -185,8 +185,7 @@ namespace SecretHistories.Spheres
         public virtual Token ProvisionStackFromCommand(StackCreationCommand stackCreationCommand)
         {
 
-            var token = ProvisionElementStackToken(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity,
-                stackCreationCommand.Context.StackSource, stackCreationCommand.Context, stackCreationCommand.Mutations);
+            var token = ProvisionElementStackToken(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity, stackCreationCommand.Context, stackCreationCommand.Mutations);
 
 
             token.ElementStack.IlluminateLibrarian = new IlluminateLibrarian(stackCreationCommand.Illuminations);
@@ -204,24 +203,22 @@ namespace SecretHistories.Spheres
 
         public Token ProvisionElementStackToken(string elementId, int quantity)
         {
-            return ProvisionElementStackToken(elementId, quantity, Source.Existing(),
-                new Context(Context.ActionSource.Unknown), new Dictionary<string, int>());
+            return ProvisionElementStackToken(elementId, quantity, new Context(Context.ActionSource.Unknown), new Dictionary<string, int>());
         }
 
-        public Token ProvisionElementStackToken(string elementId, int quantity, Source stackSource,
-            Context context)
+        public Token ProvisionElementStackToken(string elementId, int quantity, Context context)
         {
-           return  ProvisionElementStackToken(elementId, quantity, stackSource, context, Element.EmptyMutationsDictionary());
+           return  ProvisionElementStackToken(elementId, quantity, context, Element.EmptyMutationsDictionary());
         }
 
 
-    public Token ProvisionElementStackToken(string elementId, int quantity, Source stackSource,
+    public Token ProvisionElementStackToken(string elementId, int quantity,
             Context context,Dictionary<string,int> withMutations)
         {
 
             var stack= new GameObject(elementId).AddComponent<ElementStack>();
             
-            stack.Populate(elementId, quantity, stackSource);
+            stack.Populate(elementId, quantity);
 
             foreach (var m in withMutations)
                 stack.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
@@ -287,10 +284,10 @@ namespace SecretHistories.Spheres
             Watchman.Get<SphereCatalogue>().DeregisterSphere(this);
         }
 
-        public void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource, Context context)
+        public void ModifyElementQuantity(string elementId, int quantityChange, Context context)
         {
             if (quantityChange > 0)
-                IncreaseElement(elementId, quantityChange, stackSource, context);
+                IncreaseElement(elementId, quantityChange, context);
             else
                 ReduceElement(elementId, quantityChange, context);
         }
@@ -333,14 +330,14 @@ namespace SecretHistories.Spheres
                                             quantityChange + ")");
         }
 
-        public virtual int IncreaseElement(string elementId, int quantityChange, Source stackSource, Context context)
+        public virtual int IncreaseElement(string elementId, int quantityChange, Context context)
         {
 
             if (quantityChange <= 0)
                 throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" +
                                             quantityChange + ")");
 
-            ProvisionElementStackToken(elementId, quantityChange, stackSource, context);
+            ProvisionElementStackToken(elementId, quantityChange, context);
 
             return quantityChange;
         }

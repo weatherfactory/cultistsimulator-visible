@@ -72,7 +72,7 @@ namespace SecretHistories.Entities
 
         public void Add(string elementId)
         {
-            _drawPile.ProvisionElementStackToken(elementId, 1, Source.Existing(), new Context(Context.ActionSource.Unknown));
+            _drawPile.ProvisionElementStackToken(elementId, 1, new Context(Context.ActionSource.Unknown));
         }
         /// <summary>
         /// This card is unique and has been drawn elsewhere, or belongs to the same uniqueness group as one that has been drawn elsewhere

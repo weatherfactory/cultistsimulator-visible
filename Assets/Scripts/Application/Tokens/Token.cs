@@ -516,7 +516,7 @@ namespace SecretHistories.UI {
         {
 
             if (quantityToLeaveBehind <= 0) //for some reason we're trying to leave an empty stack behind..
-                return Sphere.ProvisionElementStackToken(NullElement.NULL_ELEMENT_ID, 0,Source.Existing(),new Context(Context.ActionSource.CalvedStack,new TokenLocation(this)));
+                return Sphere.ProvisionElementStackToken(NullElement.NULL_ELEMENT_ID, 0,new Context(Context.ActionSource.CalvedStack,new TokenLocation(this)));
 
             if (ElementQuantity <= quantityToLeaveBehind
             ) //we're trying to leave everything behind. Abort the drag and return the original token, ie this token
@@ -527,7 +527,7 @@ namespace SecretHistories.UI {
 
 
             var calvedToken =
-                Sphere.ProvisionElementStackToken(Element.Id, ElementQuantity - 1, Source.Existing(), new Context(Context.ActionSource.CalvedStack, new TokenLocation(this)), ElementStack.GetCurrentMutations());
+                Sphere.ProvisionElementStackToken(Element.Id, ElementQuantity - 1, new Context(Context.ActionSource.CalvedStack, new TokenLocation(this)), ElementStack.GetCurrentMutations());
 
 
             ElementStack.SetQuantity(ElementQuantity - quantityToLeaveBehind, context);
@@ -556,8 +556,6 @@ namespace SecretHistories.UI {
                 _attachedToSituation.Close();
 
             float timeSincePreviousClick = eventData.clickTime - previousClickTime;
-
-            Debug.Log("interval: " + timeSincePreviousClick);
 
             float doubleClickInterval = 0.5f;
 
@@ -751,18 +749,12 @@ namespace SecretHistories.UI {
         {
             shrouded = false;
             _manifestation.Reveal(instant);
-
-            //if a card has just been turned face up in a situation, it's now an existing, established card
-            if (ElementStack.IsValidElementStack() && ElementStack.StackSource.SourceType == SourceType.Fresh)
-                ElementStack.StackSource = Source.Existing();
-
         }
 
         public void Shroud(bool instant = false)
         {
             shrouded = true;
             _manifestation.Shroud(instant);
-
 
         }
 

@@ -29,7 +29,7 @@ namespace SecretHistories.UI
 
             foreach (var cc in creditCards)
             {
-                var card=CardsExhibit.ProvisionElementStackToken(cc.Id, 1, Source.Fresh(),new Context(Context.ActionSource.UI));
+                var card=CardsExhibit.ProvisionElementStackToken(cc.Id, 1,new Context(Context.ActionSource.UI));
             }
 
             var firstCard = creditCards[0];

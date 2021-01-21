@@ -32,9 +32,6 @@ public class Context {
 
 
     public TokenLocation TokenDestination { get; set; }
-
-    public Source StackSource { get; set; }
-
     public Context(ActionSource actionSource) {
         this.actionSource = actionSource;
     }

@@ -431,8 +431,7 @@ namespace SecretHistories.Constants
                 TokenLocation stackLocation=new TokenLocation(lasttablepos,tabletopSpherePath);
 
                 Context context=new Context(Context.ActionSource.Loading, stackLocation);
-                context.StackSource=Source.Existing();
-
+                
                 stackCreationCommand.Add(new StackCreationCommand(
                     elementId,
                     elementQuantity,

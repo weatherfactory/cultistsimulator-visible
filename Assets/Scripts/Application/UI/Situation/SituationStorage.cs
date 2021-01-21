@@ -45,6 +45,12 @@ public class SituationStorage : Sphere,ISituationSubscriber
         return new SpherePath("storage");
     }
 
+    public override void AcceptToken(Token token, Context context)
+    {
+        base.AcceptToken(token, context);
+        if (context.actionSource == Context.ActionSource.SituationEffect)
+            token.Shroud(true);
+    }
 
     public void UpdateDisplay(Situation situation)
     {

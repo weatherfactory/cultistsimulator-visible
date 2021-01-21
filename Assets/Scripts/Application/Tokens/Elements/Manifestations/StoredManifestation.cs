@@ -100,12 +100,12 @@ namespace SecretHistories.Elements.Manifestations
 
         public void Reveal(bool instant)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void Shroud(bool instant)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void Emphasise()

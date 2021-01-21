@@ -294,13 +294,13 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         Context debugContext = new Context(Context.ActionSource.Debug);
 
 
-        tabletop.ModifyElementQuantity(elementId,1, Source.Fresh(), debugContext);
+        tabletop.ModifyElementQuantity(elementId,1, debugContext);
 
     }
 
     void RemoveItem(string itemId)
     {
-        tabletop.ModifyElementQuantity(itemId, -1, Source.Fresh(), new Context(Context.ActionSource.Debug));
+        tabletop.ModifyElementQuantity(itemId, -1, new Context(Context.ActionSource.Debug));
     }
 
     void BeginSituation(string recipeId)
