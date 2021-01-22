@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Assets.Scripts.Application.Commands;
 using Assets.Scripts.Application.Commands.SituationCommands;
+using Assets.Scripts.Application.Interfaces;
+using Newtonsoft.Json;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -16,7 +18,7 @@ using Object = UnityEngine.Object;
 
 namespace SecretHistories.Commands
 {
-    public class SituationCreationCommand
+    public class SituationCreationCommand: ISaveable
     {
 
 		public Token SourceToken { get; set; } // this may not be set if no origin is known or needed
@@ -103,5 +105,24 @@ namespace SecretHistories.Commands
             return Watchman.Get<Compendium>().GetVerbForRecipe(Recipe);
         }
 
+        public SituationCreationCommand(Situation basedOnSituation)
+        {
+            Verb = basedOnSituation.Verb;
+            Recipe = basedOnSituation.CurrentPrimaryRecipe;
+            //State = basedOnSituation.CurrentState;
+            TimeRemaining = basedOnSituation.TimeRemaining;
+       //OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
+       AnchorLocation = basedOnSituation.GetAnchorLocation();
+       SituationPath = basedOnSituation.Path;
+       Open = basedOnSituation.IsOpen;
+       Commands = basedOnSituation.CommandQueue.GetCurrentCommandsAsList();
+        }
+
+
+        public string ToJson()
+        {
+            string output = JsonConvert.SerializeObject(this);
+            return output;
+        }
     }
 }

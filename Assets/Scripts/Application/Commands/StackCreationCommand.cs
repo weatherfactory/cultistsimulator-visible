@@ -10,9 +10,6 @@ using UnityEngine;
 
 namespace SecretHistories.Commands
 {
-    /// <summary>
-    /// Used when saving/loading games, just to tidy up the code around wrangling these values
-    /// </summary>
     public class StackCreationCommand
     {
         public string ElementId { get; private set; }

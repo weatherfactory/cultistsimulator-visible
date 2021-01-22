@@ -72,9 +72,6 @@ namespace SecretHistories.Infrastructure
         // Save game safety
         public static int failedSaveCount = 0;
 		public static bool saveErrorWarningTriggered = false;	// so that tabletop knows not to unpause
-#if UNITY_EDITOR
-		public static bool simulateBrokenSave = false;	// For debugging
-#endif
 
     
         public bool DoesGameSaveExist()

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Interfaces;
+using Newtonsoft.Json;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -12,11 +14,11 @@ using SecretHistories.UI;
 
 namespace Assets.Scripts.Application.Commands.SituationCommands
 {
-    public class TokenCreationCommand
+    public class TokenCreationCommand:ISaveable
     {
-        private readonly IVerb _forVerb;
-        private readonly TokenLocation _location;
-        private readonly Token _sourceToken;
+        public readonly IVerb _forVerb;
+        public readonly TokenLocation _location;
+        public readonly Token _sourceToken;
 
         public TokenCreationCommand(IVerb forVerb,TokenLocation location,Token sourceToken)
         {
@@ -25,6 +27,16 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
             _sourceToken = sourceToken;
         }
 
+        public TokenCreationCommand(Token token)
+        {
+            _location = token.Location;
+        }
+
+        public string ToJson()
+        {
+            string output= JsonConvert.SerializeObject(this);
+            return output;
+        }
 
         public Token Execute(SphereCatalogue sphereCatalogue)
         {

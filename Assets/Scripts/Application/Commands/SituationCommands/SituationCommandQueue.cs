@@ -34,5 +34,10 @@ namespace SecretHistories.Core
 
         }
 
+        public List<ISituationCommand> GetCurrentCommandsAsList()
+        {
+            return new List<ISituationCommand>(_commands);
+        }
+
     }
 }

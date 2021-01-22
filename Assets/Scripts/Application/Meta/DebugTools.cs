@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Assets.Scripts.Application.Commands.SituationCommands;
+using Newtonsoft.Json;
 using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
@@ -441,7 +443,27 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     public async void SaveGame()
     {
-      NoonUtility.LogWarning("This doesn't work rn");
+        //var allSpheres = Watchman.Get<SphereCatalogue>().GetSpheres();
+        //foreach (var sphere in allSpheres)
+        //{
+        //    var allTokensInSphere = sphere.GetAllTokens();
+        //    foreach (var t in allTokensInSphere)
+        //    {
+        //        var tc=new TokenCreationCommand(t);
+
+        //   Debug.Log(tc.ToJson());
+        //    }
+
+        //}
+
+        var allSituations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
+        foreach (var situationToSave in allSituations)
+        {
+            var commandToSave = new SituationCreationCommand(situationToSave);
+            Debug.Log(commandToSave.ToJson());
+        }
+
+    NoonUtility.LogWarning("This doesn't work rn");
     }
 
     void ResetDecks()
