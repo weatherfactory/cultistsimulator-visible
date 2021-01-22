@@ -31,13 +31,7 @@ namespace SecretHistories.Spheres
 
             foreach (var t in tokensToLeaveBehind)
             {
-                var startLocation = new TokenLocation(t);
-                var endLocation =
-                    startLocation.WithSpherePath(Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere().GetPath());
-
-                var i = new TokenTravelItinerary(startLocation, endLocation);
-
-                i.Depart(t, context);
+                Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere().AcceptToken(t,context);
             }
         }
 

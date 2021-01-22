@@ -17,7 +17,7 @@ using UnityEngine.UI;
 namespace SecretHistories.Elements.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
-    public class DropzoneManifestation: MonoBehaviour,IManifestation,IPointerClickHandler
+    public class DropzoneManifestation: MonoBehaviour,IManifestation,IPointerClickHandler, IPointerEnterHandler
     {
         private GraphicFader glowImage;
 
@@ -26,6 +26,14 @@ namespace SecretHistories.Elements.Manifestations
 
         public bool RequestingNoDrag => false;
         [SerializeField] private BubbleSphere bubbleSphere;
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            bubbleSphere.Pop(new Context(Context.ActionSource.Unknown));
+
+            ExecuteEvents.Execute<IPointerEnterHandler>(transform.parent.gameObject, eventData,
+                (parentToken, y) => parentToken.OnPointerEnter(eventData));
+        }
 
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -149,6 +157,7 @@ namespace SecretHistories.Elements.Manifestations
         public void Shroud(bool instant)
         {
         }
+
 
 
     }
