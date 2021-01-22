@@ -50,7 +50,7 @@ namespace SecretHistories.UI {
     [Header("Movement")]
         public bool PauseAnimations;
         protected float
-            dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
+            dragHeight = -8f; // Draggables all drag on a specific height and have a specific "default height"
 
 
         public TokenTravelItinerary CurrentItinerary { get; set; }
@@ -205,9 +205,10 @@ namespace SecretHistories.UI {
 
                 if (_manifestation.GetType() != Payload.GetManifestationType(Sphere.SphereCategory))
                 {
-                    var newManifestation = Watchman.Get<PrefabFactory>()
-                        .CreateManifestationPrefab(Payload.GetManifestationType(Sphere.SphereCategory),
-                            this.transform);
+                    Type newManifestationType = Payload.GetManifestationType(Sphere.SphereCategory);
+
+                    var newManifestation = Watchman.Get<PrefabFactory>().CreateManifestationPrefab(newManifestationType, this.transform);
+
                     ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
 

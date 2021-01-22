@@ -28,8 +28,7 @@ namespace SecretHistories.Elements.Manifestations
 
     public interface IManifestation
     {
-        event EventHandler<ManifestationInteractionEventArgs> ManifestationInteracted;
-       Transform Transform { get; }
+        Transform Transform { get; }
        RectTransform RectTransform { get; }
         void Retire(RetirementVFX retirementVfx, Action callback);
         bool CanAnimateIcon();
@@ -56,8 +55,6 @@ namespace SecretHistories.Elements.Manifestations
         bool RequestingNoDrag { get; }
         void DoMove(RectTransform tokenRectTransform);
 
-
-        
         void SendNotification(INotification notification);
 
 

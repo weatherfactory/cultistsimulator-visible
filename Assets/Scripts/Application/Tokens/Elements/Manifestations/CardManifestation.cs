@@ -39,7 +39,6 @@ namespace SecretHistories.Elements
         [SerializeField] public GraphicFader glowImage;
 
 
-        public event EventHandler<ManifestationInteractionEventArgs> ManifestationInteracted;
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform=> gameObject.GetComponent<RectTransform>();
      
@@ -481,9 +480,6 @@ namespace SecretHistories.Elements
             // remove anim
             artwork.overrideSprite = null;
         }
-
-
-
 
     }
 }

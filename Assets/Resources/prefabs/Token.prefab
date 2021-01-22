@@ -71,6 +71,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c5149fee4ad419798100764213271f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TokenRectTransform: {fileID: 224000011999988054}
+  PauseAnimations: 0
+  shrouded: 0
+  rotateOnDrag: 1
+  PlacementAlreadyChronicled: 0
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -80,16 +85,12 @@ MonoBehaviour:
   OnWindowClosed:
     m_PersistentCalls:
       m_Calls: []
-  OnContainerAdded:
+  OnSphereAdded:
     m_PersistentCalls:
       m_Calls: []
-  OnContainerRemoved:
+  OnSphereRemoved:
     m_PersistentCalls:
       m_Calls: []
-  TokenRectTransform: {fileID: 224000011999988054}
-  rotateOnDrag: 1
-  PlacementAlreadyChronicled: 0
-  Sphere: {fileID: 0}
 --- !u!114 &8707909868730412767
 MonoBehaviour:
   m_ObjectHideFlags: 0

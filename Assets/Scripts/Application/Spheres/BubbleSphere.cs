@@ -9,6 +9,7 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace SecretHistories.Spheres
 {
@@ -44,5 +45,6 @@ namespace SecretHistories.Spheres
 
             base.OnTokenInThisSphereInteracted(args);
         }
+
     }
 }

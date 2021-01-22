@@ -61,7 +61,6 @@ namespace SecretHistories.Elements.Manifestations
         [SerializeField] public GraphicFader glowImage;
 
 
-        public event EventHandler<ManifestationInteractionEventArgs> ManifestationInteracted;
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
@@ -75,7 +74,6 @@ namespace SecretHistories.Elements.Manifestations
         public void InitialiseVisuals(Element element)
         {
             NoonUtility.Log("Initialise Visuals for element on verb tokens: should look at this");
-
         }
 
         public void InitialiseVisuals(IVerb verb)

@@ -21,7 +21,6 @@ namespace SecretHistories.Elements.Manifestations
     [RequireComponent(typeof(RectTransform))]
     public class StoredManifestation: MonoBehaviour, IManifestation
     {
-        public event EventHandler<ManifestationInteractionEventArgs> ManifestationInteracted;
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
