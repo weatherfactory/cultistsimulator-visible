@@ -119,7 +119,7 @@ namespace SecretHistories.UI {
 
             CurrentItinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
             _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
-            ElementStack = Watchman.Get<NullElementStack>();
+            ElementStack = new NullElementStack();
 
             SetState(new DroppedInSphereState());
 

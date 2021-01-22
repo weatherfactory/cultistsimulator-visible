@@ -42,8 +42,6 @@ namespace SecretHistories.Services
         [SerializeField] private SoundManager soundManager;
         public Limbo limbo;
         public NullManifestation NullManifestation;
-        public NullToken NullToken;
-        public NullElementStack NullElementStack;
 
         [SerializeField] private string OverrideContentFolder;
 
@@ -116,9 +114,7 @@ namespace SecretHistories.Services
 
                 registryAccess.Register(limbo);
                 registryAccess.Register(NullManifestation);
-             //   registryAccess.Register(NullElementStack);
-
-                registryAccess.Register(NullToken);
+             
 
       
                 registryAccess.Register(gameSaveManager);

@@ -10,7 +10,6 @@ using SecretHistories.UI;
 
 namespace SecretHistories.Elements
 {
-    [Immanence(FallbackType = typeof(NullElementStack))]
     public class NullElementStack: ElementStack
     {
         public override Element Element
