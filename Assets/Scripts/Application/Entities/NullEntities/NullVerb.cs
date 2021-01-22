@@ -37,6 +37,16 @@ namespace SecretHistories.NullObjects
            //
         }
 
+        public bool IsValidElementStack()
+        {
+            return false;
+        }
+
+        public bool IsValidVerb()
+        {
+            return false;
+        }
+
         public List<SphereSpec> Thresholds { get; set; }
 
         public bool Startable { get; }

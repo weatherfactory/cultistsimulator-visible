@@ -6,13 +6,13 @@ using SecretHistories.UI;
 public class FXTestController : MonoBehaviour {
 
     public CardEffect[] testEffects;
-    public ElementStack Target;
+    public Token Target;
 
     public float waitAfterFX = 3f;
     public float pauseDuration = 1f;    
 
     private CardEffect activeEffect;
-    private ElementStack _active;
+    private Token _active;
 
     private int effectNum = 0;
 
@@ -33,7 +33,7 @@ public class FXTestController : MonoBehaviour {
         activeEffect.transform.localScale = effect.transform.localScale;
         activeEffect.gameObject.SetActive(false);
 
-        _active = Instantiate(Target, Target.transform.parent) as ElementStack;
+        _active = Instantiate(Target, Target.transform.parent) as Token;
         _active.transform.position = Target.transform.position;
         _active.transform.localScale = Target.transform.localScale;
         _active.gameObject.SetActive(true);

@@ -41,6 +41,16 @@ namespace SecretHistories.Entities
             manifestation.InitialiseVisuals(this);
         }
 
+        public bool IsValidElementStack()
+        {
+            return false;
+        }
+
+        public bool IsValidVerb()
+        {
+            return true;
+        }
+
 
         public string Id { get; private set; }
 

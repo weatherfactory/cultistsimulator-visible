@@ -11,7 +11,6 @@ namespace SecretHistories.Interfaces
 {
     public interface IVerb: ITokenPayload
     {
-        string Id { get; }
         void SetId(string id);
         string Label { get; set; }
         string Description { get; set; }

@@ -166,7 +166,7 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.ContainsKey(SUMMONED_ASPECT))
 			{
-				Analytics.CustomEvent( "A_SUMMON_GENERIC", new Dictionary<string,object>{ {"id",token.Element.Id } } );
+				Analytics.CustomEvent( "A_SUMMON_GENERIC", new Dictionary<string,object>{ {"id",token.Payload.Id } } );
                 storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_SUMMON_GENERIC", true);
 			}
 
@@ -223,8 +223,8 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
 			{
-				Analytics.CustomEvent( "A_HQ_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id } } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.Element.Id);
+				Analytics.CustomEvent( "A_HQ_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id } } );
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.Payload.Id);
 			}
         }
 
@@ -232,8 +232,8 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
             {
-				Analytics.CustomEvent( "A_CULT_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id} } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.Element.Id);
+				Analytics.CustomEvent( "A_CULT_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id} } );
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.Payload.Id);
 
                 if (tokenAspects.Keys.Contains("cultsecrethistories_1"))
 				{
@@ -278,7 +278,7 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
 			{
-				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id } } );
+				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id } } );
                 _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.Element.Id);
 			}
         }
@@ -287,7 +287,7 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.Keys.Contains(DESIRE_ASPECT))
             {
-				Analytics.CustomEvent( "A_DESIRE_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id } } );
+				Analytics.CustomEvent( "A_DESIRE_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id } } );
 
                 if (tokenAspects.Keys.Contains(POWER_ASPECT))
 				{
@@ -311,7 +311,7 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
 			{
-				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.Element.Id} } );
+				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id} } );
                 _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.Element.Id);
 			}
         }

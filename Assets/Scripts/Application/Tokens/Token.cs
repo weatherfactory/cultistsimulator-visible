@@ -33,7 +33,7 @@ namespace SecretHistories.UI {
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler,
-        IPointerExitHandler, ISituationSubscriber, IInteractsWithTokens
+        IPointerExitHandler, ISituationSubscriber, IInteractsWithTokens,IElementStackHost
     {
         private float previousClickTime = 0f;
 
@@ -43,11 +43,11 @@ namespace SecretHistories.UI {
         [SerializeField] public RectTransform TokenRectTransform;
         public RectTransform ManifestationRectTransform => _manifestation.RectTransform;
         public TokenLocation Location => new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
-        public Sphere Sphere;
-        protected Sphere OldSphere; // Used to tell OldContainsTokens that this thing was dropped successfully
+        public Sphere Sphere { get; set; }
+        protected Sphere OldSphere  { get; set; }// Used to tell OldContainsTokens that this thing was dropped successfully
 
 
-        [Header("Movement")]
+    [Header("Movement")]
         public bool PauseAnimations;
         protected float
             dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
@@ -89,6 +89,7 @@ namespace SecretHistories.UI {
                 }
             }
         }
+
         public virtual ElementStack ElementStack { get; protected set; }
         public int ElementQuantity => ElementStack.Quantity;
         public Element Element => ElementStack.Element;
@@ -117,8 +118,8 @@ namespace SecretHistories.UI {
             canvasGroup = GetComponent<CanvasGroup>();
 
             CurrentItinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
-            _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform); 
-            ElementStack =Watchman.GetOrInstantiate<NullElementStack>(TokenRectTransform);
+            _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
+            ElementStack = Watchman.Get<NullElementStack>();
 
             SetState(new DroppedInSphereState());
 
@@ -636,7 +637,7 @@ namespace SecretHistories.UI {
             ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
                 if (!shrouded && ElementStack.IsValidElementStack())
-                    tabletopManager.SetHighlightedElement(Element.Id, ElementQuantity);
+                    tabletopManager.SetHighlightedElement(Payload.Id, ElementQuantity);
                 else
                     tabletopManager.SetHighlightedElement(null);
             }

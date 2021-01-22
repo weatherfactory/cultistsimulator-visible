@@ -42,6 +42,16 @@ namespace SecretHistories.Entities.Verbs
             manifestation.InitialiseVisuals(this);
         }
 
+        public bool IsValidElementStack()
+        {
+            return false;
+        }
+
+        public bool IsValidVerb()
+        {
+            return true;
+        }
+
         public List<SphereSpec> Thresholds { get; set; }
     
 

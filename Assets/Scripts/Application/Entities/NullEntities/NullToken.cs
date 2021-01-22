@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
@@ -15,50 +16,29 @@ using UnityEngine;
 
 namespace SecretHistories.NullObjects
 {
-   public class NullToken:Token
+   public class NullToken: IElementStackHost
    {
-       public NullManifestation NullManifestation;
-       public NullElementStack NullElementStack;
-
-
-       public override void Awake()
+       
+       public void Populate(ElementStack elementStack)
        {
-           TokenRectTransform = GetComponent<RectTransform>();
-           canvasGroup = GetComponent<CanvasGroup>();
-            _manifestation = NullManifestation;
-            ElementStack = NullElementStack;
-            gameObject.name = nameof(NullToken);
-
+       //
        }
 
-       public override void Populate(ElementStack elementStack)
-       {
-           gameObject.name = "NullTokenForUnpopulatedElementStack";
-       }
+       public bool Defunct { get; private set; }
+       public Sphere Sphere { get; }
 
-       public override bool Retire(RetirementVFX rvfx)
+       public bool Retire(RetirementVFX rvfx)
        {
-           this.Defunct = true;
-           Destroy(gameObject);
+           Defunct = true;
            return true;
        }
-        public override void Manifest()
-        {
-          //
-        }
 
-        public override void Remanifest(RetirementVFX vfx)
+        public void Remanifest(RetirementVFX vfx)
         {
         //
         }
 
-
-        public override void SituationStateChanged(Situation situation)
-        {
-          //
-        }
-
-        public override void onElementStackQuantityChanged(ElementStack stack,Context context)
+        public void onElementStackQuantityChanged(ElementStack stack,Context context)
         {
            //
         }

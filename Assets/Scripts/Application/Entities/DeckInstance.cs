@@ -59,7 +59,7 @@ namespace SecretHistories.Entities
             if (_drawPile.GetTotalStacksCount() > 0)
             {
                 var cardDrawn = _drawPile.GetElementTokens().First();
-                return cardDrawn.Element.Id;
+                return cardDrawn.Payload.Id;
             }
 
             
@@ -80,7 +80,7 @@ namespace SecretHistories.Entities
         /// <param name="elementId"></param>
         public void EliminateCardWithId(string elementId)
         {
-            _drawPile.RetireTokensWhere(x=>x.Element.Id==elementId);
+            _drawPile.RetireTokensWhere(x=>x.Payload.Id==elementId);
 
             if (_deckSpec.Spec.Contains(elementId))
                 _forbiddenCards.ProvisionElementStackToken(elementId, 1);

@@ -22,5 +22,15 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         {
             //
         }
+
+        public bool IsValidElementStack()
+        {
+            return false;
+        }
+
+        public bool IsValidVerb()
+        {
+            return false;
+        }
     }
 }

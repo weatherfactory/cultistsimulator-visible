@@ -532,7 +532,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
     {
      if(args.Interaction==Interaction.OnClicked)
          if (args.Token.ElementStack.IsValidElementStack())
-             SetInput(args.Token.Element.Id);
+             SetInput(args.Token.Payload.Id);
     }
 
 

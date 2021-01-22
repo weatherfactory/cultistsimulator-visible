@@ -216,7 +216,7 @@ namespace SecretHistories.Spheres
             Context context,Dictionary<string,int> withMutations)
         {
 
-            var stack= new GameObject(elementId).AddComponent<ElementStack>();
+            var stack= new ElementStack();
             
             stack.Populate(elementId, quantity);
 
@@ -366,12 +366,12 @@ namespace SecretHistories.Spheres
         {
             var stacks = _tokens.Where(t => t.ElementStack.IsValidElementStack());
 
-            return stacks.Select(s => s.Element.Id).Distinct().ToList();
+            return stacks.Select(s => s.Payload.Id).Distinct().ToList();
         }
 
         public List<string> GetStackElementIds()
         {
-            return GetElementTokens().Select(s => s.Element.Id).ToList();
+            return GetElementTokens().Select(s => s.Payload.Id).ToList();
         }
 
 
@@ -478,7 +478,7 @@ namespace SecretHistories.Spheres
                     if (!String.IsNullOrEmpty(token.ElementStack.UniquenessGroup))
                         dealer.RemoveFromAllDecksIfInUniquenessGroup(token.ElementStack.UniquenessGroup);
                     if (token.ElementStack.Unique)
-                        dealer.IndicateUniqueCardManifested(token.Element.Id);
+                        dealer.IndicateUniqueCardManifested(token.Payload.Id);
                 }
 
                 // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop

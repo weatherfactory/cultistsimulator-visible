@@ -54,7 +54,7 @@ namespace SecretHistories.UI
         {
            if(args.Interaction==Interaction.OnClicked || args.Interaction == Interaction.OnDoubleClicked)
            {
-               CardsExhibit.HighlightCardWithId(args.Token.Element.Id);
+               CardsExhibit.HighlightCardWithId(args.Token.Payload.Id);
              Responsibilities.text = args.Token.Element.Label;
             Names.text = args.Element.Description;
            }

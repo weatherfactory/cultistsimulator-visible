@@ -187,7 +187,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                     return point;
             }
 
-            NoonUtility.Log("Choreographer: No legal tabletop position found for " + token.Element.Id + " (" + centerPos + ")!",1);
+            NoonUtility.Log("Choreographer: No legal tabletop position found for " + token.Payload.Id + " (" + centerPos + ")!",1);
 
             return Vector2.zero;
         }

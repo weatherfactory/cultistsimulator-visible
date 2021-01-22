@@ -35,7 +35,7 @@ namespace SecretHistories.UI {
 
 
 
-    public class ElementStack: MonoBehaviour,ITokenPayload
+    public class ElementStack: ITokenPayload
     {
         public string Id => Element.Id;
 
@@ -45,7 +45,7 @@ namespace SecretHistories.UI {
 
         public virtual Element Element { get; set; }
 
-        private Token _attachedToken;
+        private IElementStackHost _attachedToken;
         private int _quantity;
 
 		// Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
@@ -63,10 +63,9 @@ namespace SecretHistories.UI {
 
 
 
-        public void Awake()
+        public ElementStack()
         {
-            var nullToken = new GameObject().AddComponent<NullToken>();
-            AttachToken(nullToken);
+         _attachedToken=new NullToken();
         }
 
 
@@ -158,7 +157,12 @@ namespace SecretHistories.UI {
         {
             return Element.Id != NullElement.NULL_ELEMENT_ID;
         }
-        
+
+        public bool IsValidVerb()
+        {
+            return false;
+        }
+
         public void SetQuantity(int quantity, Context context)
 		{
 			_quantity = quantity;
@@ -294,7 +298,6 @@ namespace SecretHistories.UI {
         {
             if (_attachedToken != null)
                 _attachedToken.Retire(RetirementVFX.None);
-            gameObject.transform.SetParent(token.transform);
             _attachedToken = token;
             _attachedToken.Populate(this);
         }
@@ -317,7 +320,6 @@ namespace SecretHistories.UI {
 				NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");
             }
 
-            gameObject.name = Element.Id + "_stack";
 
             if (_currentMutations == null)
                 _currentMutations = new Dictionary<string, int>();
@@ -438,13 +440,6 @@ namespace SecretHistories.UI {
             if (!Decays && interval>=0)
 			    return;
             
-
-			var stackAnim = this.gameObject.GetComponent<TokenTravellingToSlot>();
-			if (stackAnim)
-			{
-				return;	// Do not decay while being dragged into greedy slot (#1335) - CP
-			}
-
 
             LifetimeRemaining = LifetimeRemaining - interval;
 

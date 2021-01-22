@@ -13,6 +13,9 @@ namespace SecretHistories.Abstract
         public string Id { get; }
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
+        bool IsValidElementStack();
+        bool IsValidVerb();
+
     }
     }
 

@@ -69,7 +69,7 @@ namespace SecretHistories.Constants
             var animatables = new List<Token>();
             
             foreach (var stack in stacks)
-                if (!stack.Defunct && stack.CanAnimateArt() && stack. Element.Id != lastAnimID)
+                if (!stack.Defunct && stack.CanAnimateArt() && stack.Payload.Id != lastAnimID)
                     animatables.Add(stack);
 
             //List<Token> tokens =new List<Token>(Registry.Get<SituationsCatalogue>().GetAnimatables());
@@ -83,7 +83,7 @@ namespace SecretHistories.Constants
                 int index = UnityEngine.Random.Range(0, animatables.Count);
 
                 animatables[index].StartArtAnimation();
-                lastAnimID = animatables[index].Element.Id;
+                lastAnimID = animatables[index].Payload.Id;
 				numAnimsRemainingToAirSound--;
 
 				if (numAnimsRemainingToAirSound <= 8) {
