@@ -15,7 +15,7 @@ namespace SecretHistories.Spheres
 {
 
     /// <summary>
-    /// A bubble dumps its contents to the world sphere when it receives an interaction event
+    /// A bubble dumps its contents to the world sphere when any of its contents receive an interaction event
     /// </summary>
     public class BubbleSphere: Sphere
     {
@@ -23,12 +23,10 @@ namespace SecretHistories.Spheres
 
         public override SphereCategory SphereCategory => SphereCategory.World;
         public override bool AllowDrag => true;
-        
 
 
-        public override void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
+        public void Pop(Context context)
         {
-            
             var tokensToLeaveBehind = new List<Token>(GetAllTokens());
 
             foreach (var t in tokensToLeaveBehind)
@@ -39,12 +37,21 @@ namespace SecretHistories.Spheres
 
                 var i = new TokenTravelItinerary(startLocation, endLocation);
 
-                i.Depart(t, args.Context);
+                i.Depart(t, context);
             }
+        }
+
+
+        public override void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
+        {
+            
+            Pop(args.Context);
 
 
             base.OnTokenInThisSphereInteracted(args);
         }
 
+
+
     }
-}
+    }

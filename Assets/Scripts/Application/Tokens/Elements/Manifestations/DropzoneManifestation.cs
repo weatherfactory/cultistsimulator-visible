@@ -17,7 +17,7 @@ using UnityEngine.UI;
 namespace SecretHistories.Elements.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
-    public class DropzoneManifestation: MonoBehaviour,IManifestation
+    public class DropzoneManifestation: MonoBehaviour,IManifestation,IPointerClickHandler
     {
         private GraphicFader glowImage;
 
@@ -25,6 +25,14 @@ namespace SecretHistories.Elements.Manifestations
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
         public bool RequestingNoDrag => false;
+        [SerializeField] private BubbleSphere bubbleSphere;
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            bubbleSphere.Pop(new Context(Context.ActionSource.Unknown));
+        }
+
+
         public void DoMove(RectTransform tokenRectTransform)
         {
         }
