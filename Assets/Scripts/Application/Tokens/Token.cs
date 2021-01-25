@@ -690,7 +690,7 @@ namespace SecretHistories.UI {
         public void TimerValuesChanged(Situation situation)
         {
             _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
-                situation.IntervalForLastHeartbeat, false, situation.CurrentPrimaryRecipe.SignalEndingFlavour);
+                situation.IntervalForLastHeartbeat, false, situation.Recipe.SignalEndingFlavour);
 
         }
 

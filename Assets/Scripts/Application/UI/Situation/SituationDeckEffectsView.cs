@@ -15,7 +15,7 @@ namespace Assets.Scripts.Application.UI.Situation
         [SerializeField] DeckEffectView[] deckEffectViews;
         public void SituationStateChanged(SecretHistories.Entities.Situation situation)
         {
-            ShowDeckEffects(situation.CurrentPrimaryRecipe.DeckEffects);
+            ShowDeckEffects(situation.Recipe.DeckEffects);
         }
 
         public void TimerValuesChanged(SecretHistories.Entities.Situation s)

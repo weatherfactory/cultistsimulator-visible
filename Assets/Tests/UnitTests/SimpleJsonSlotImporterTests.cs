@@ -43,7 +43,7 @@ namespace Assets.Tests.UnitTests
         }
 
         [Test]
-        public void ImportsRequirementsForSlottSpecFromRecipe()
+        public void ImportsRequirementsForSlotSpecFromRecipe()
         {
             List<SphereSpec> oneSlotList = new List<SphereSpec>
                 {new SphereSpec("greedySlot") {Greedy = true}};

@@ -5,7 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Assets.Scripts.Application.Commands.SituationCommands;
+using Assets.Scripts.Application.Interfaces;
 using Newtonsoft.Json;
 using SecretHistories.Core;
 using SecretHistories.Commands;
@@ -18,6 +20,7 @@ using SecretHistories.UI.Scripts;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Constants.Modding;
+using SecretHistories.Infrastructure;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using Steamworks;
@@ -456,14 +459,23 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
         //}
 
+        List<ISaveable> saveables=new List<ISaveable>();
         var allSituations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
+        
         foreach (var situationToSave in allSituations)
         {
             var commandToSave = new SituationCreationCommand(situationToSave);
-            Debug.Log(commandToSave.ToJson());
+            saveables.Add(commandToSave);
         }
 
-    NoonUtility.LogWarning("This doesn't work rn");
+        StringBuilder sb=new StringBuilder();
+        foreach (var s in saveables)
+            sb.AppendLine(s.ToJson());
+
+        var saveTask = Watchman.Get<GameSaveManager>()
+            .SaveActiveGameAsync(sb.ToString(), SourceForGameState.DefaultSave);
+        var result = await saveTask;
+
     }
 
     void ResetDecks()

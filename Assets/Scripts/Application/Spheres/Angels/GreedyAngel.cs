@@ -90,7 +90,7 @@ namespace SecretHistories.Spheres.Angels
             var targetPath = destinationThresholdSphere.GetPath();
             var targetSituationPath = targetPath.GetBaseSituationPath();
             var targetSituation = Watchman.Get<SituationsCatalogue>().GetSituationByPath(targetSituationPath);
-            var targetPosition = targetSituation.GetAnchorLocation().Anchored3DPosition;
+            var targetPosition = targetSituation.AnchorLocation.Anchored3DPosition;
             return targetPosition;
         }
 

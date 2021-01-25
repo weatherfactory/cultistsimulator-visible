@@ -166,7 +166,7 @@ namespace SecretHistories.UI {
                 PaginatedNotes.SetText(s.CurrentRecipePrediction.DescriptiveText);
 
 
-            if(s.CurrentPrimaryRecipe.Craftable)
+            if(s.Recipe.Craftable)
             {
                 SoundManager.PlaySfx("SituationAvailable");
               //  ongoingDisplay.UpdateDisplay(s); //Ensures that the time bar is set to 0 to avoid a flicker - commented this out while refactoring, but bear it in mind

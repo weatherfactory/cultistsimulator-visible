@@ -24,7 +24,7 @@ namespace Assets.Scripts.Application.UI.Situation
         public void TimerValuesChanged(SecretHistories.Entities.Situation s)
         {
             Color barColor =
-                    UIStyle.GetColorForCountdownBar(s.CurrentPrimaryRecipe.SignalEndingFlavour, s.TimeRemaining);
+                    UIStyle.GetColorForCountdownBar(s.Recipe.SignalEndingFlavour, s.TimeRemaining);
 
                 countdownBar.color = barColor;
                 countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (s.TimeRemaining / s.Warmup));

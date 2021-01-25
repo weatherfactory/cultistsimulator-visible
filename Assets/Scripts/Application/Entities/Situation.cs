@@ -24,54 +24,54 @@ using UnityEngine.Assertions;
 
 namespace SecretHistories.Entities {
 
-    public class 
-        Situation: ISphereEventSubscriber
+    [EncaustableClass(typeof(SituationCreationCommand))]
+    public class Situation: ISphereEventSubscriber
     {
+        [Encaust]
         public SituationState CurrentState { get; set; }
-        public Recipe CurrentPrimaryRecipe { get; set; }
-        public RecipePrediction CurrentRecipePrediction{ get; set; }
 
+        [Encaust]
+        public Recipe Recipe { get; set; }
+        
+        [Encaust]
         public float TimeRemaining { set; get; }
 
+        [Encaust]
         public float IntervalForLastHeartbeat { private set; get; }
 
-        public float Warmup
-        {
-            get { return CurrentPrimaryRecipe.Warmup; }
-        }
-
-        public string RecipeId
-        {
-            get { return CurrentPrimaryRecipe == null ? null : CurrentPrimaryRecipe.Id; }
-        }
-
+        [Encaust]
         public virtual IVerb Verb { get; set; }
-        private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
-        private readonly List<Dominion> _registeredDominions = new List<Dominion>();
 
-        private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
+        [Encaust]
         public string OverrideTitle { get; set; }
 
-        private Token _anchor;
-        private SituationWindow _window;
-        
+        [Encaust]
         public SituationPath Path { get; }
+
+        [Encaust]
         public bool IsOpen { get; private set; }
 
-        public virtual bool IsValidSituation()
-        {
-            return true;
-        }
+        [Encaust]
+        public SituationCommandQueue CommandQueue { get; set; } = new SituationCommandQueue();
 
+        [Encaust]
+        public RecipeCompletionEffectCommand CurrentCompletionEffectCommand { get; set; } = new RecipeCompletionEffectCommand();
 
-        public SituationCommandQueue CommandQueue= new SituationCommandQueue();
-        public RecipeCompletionEffectCommand CurrentCompletionEffectCommand=new RecipeCompletionEffectCommand();
+        [Encaust]
+        public TokenLocation AnchorLocation => _anchor.Location;
 
+        [DontEncaust] public float Warmup => Recipe.Warmup;
+        [DontEncaust] public string RecipeId => Recipe.Id;
+        [DontEncaust] public RecipePrediction CurrentRecipePrediction { get; set; }
 
-        public TokenLocation GetAnchorLocation()
-        {
-            return _anchor.Location;
-        }
+    
+        private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
+        private readonly List<Dominion> _registeredDominions = new List<Dominion>();
+        private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
+        private Token _anchor;
+        private SituationWindow _window;
+
+        
 
         public Token GetAnchor()
         {
@@ -83,11 +83,11 @@ namespace SecretHistories.Entities {
             return _window.positioner.GetPosition();
         }
 
-        public const float HOUSEKEEPING_CYCLE_BEATS = 1f;
 
         public Situation(SituationPath path)
         {
             Path = path;
+            Recipe = NullRecipe.Create(NullVerb.Create());
         }
 
         public void TransitionToState(SituationState newState)
@@ -185,7 +185,7 @@ namespace SecretHistories.Entities {
 
         public void Reset()
         {
-            CurrentPrimaryRecipe = NullRecipe.Create(Verb);
+            Recipe = NullRecipe.Create(Verb);
             CurrentRecipePrediction = RecipePrediction.DefaultFromVerb(Verb);
             TimeRemaining = 0;
             NotifySubscribersOfStateAndTimerChange();
@@ -393,12 +393,12 @@ namespace SecretHistories.Entities {
 
             RecipeConductor rc =new RecipeConductor(aspectsInContext, Watchman.Get<Character>());
 
-            IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetRecipeExecutionCommands(CurrentPrimaryRecipe);
+            IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetRecipeExecutionCommands(Recipe);
 
             //actually replace the current recipe with the first on the list: any others will be additionals,
             //but we want to loop from this one.
-            if (recipeExecutionCommands.First().Recipe.Id != CurrentPrimaryRecipe.Id)
-                CurrentPrimaryRecipe = recipeExecutionCommands.First().Recipe;
+            if (recipeExecutionCommands.First().Recipe.Id != Recipe.Id)
+                Recipe = recipeExecutionCommands.First().Recipe;
 
 
             foreach (var container in _spheres)
@@ -416,7 +416,7 @@ namespace SecretHistories.Entities {
             foreach (var c in recipeExecutionCommands)
             {
                 RecipeCompletionEffectCommand currentEffectCommand = new RecipeCompletionEffectCommand(c.Recipe,
-                    c.Recipe.ActionId != CurrentPrimaryRecipe.ActionId, c.Expulsion,c.ToPath);
+                    c.Recipe.ActionId != Recipe.ActionId, c.Expulsion,c.ToPath);
                 if (currentEffectCommand.AsNewSituation)
                     CreateNewSituation(currentEffectCommand);
                 else
@@ -600,7 +600,7 @@ namespace SecretHistories.Entities {
 
     public virtual void OpenAtCurrentLocation()
     {
-        var currentLocation = GetAnchorLocation();
+        var currentLocation = AnchorLocation;
         if(currentLocation==null)
             OpenAt(new TokenLocation(Vector3.zero,currentLocation.AtSpherePath));
         else
@@ -742,7 +742,7 @@ namespace SecretHistories.Entities {
 
             RecipeConductor rc = new RecipeConductor(aspectsInContext,Watchman.Get<Character>());
 
-            return rc.GetPredictionForFollowupRecipe(CurrentPrimaryRecipe, this);
+            return rc.GetPredictionForFollowupRecipe(Recipe, this);
         }
 
 
@@ -775,7 +775,11 @@ namespace SecretHistories.Entities {
         {
             //
         }
-
+        
+        public virtual bool IsValidSituation()
+        {
+            return true;
+        }
     }
 
 }

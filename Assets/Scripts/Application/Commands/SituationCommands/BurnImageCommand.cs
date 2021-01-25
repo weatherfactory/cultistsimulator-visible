@@ -27,6 +27,7 @@ namespace SecretHistories.Commands.SituationCommands
         {
             situation.GetAnchor().BurnImageUnderToken(_image);
             return true;
+  
         }
     }
 }

@@ -107,6 +107,29 @@ namespace SecretHistories.Infrastructure
                 File.Delete(NoonUtility.GetGameSaveLocation());
         }
 
+        private string GetGameSaveLocation(SourceForGameState source)
+        {
+            string wholePath = Application.persistentDataPath + $"/save{source}.json";
+            return wholePath;
+        }
+
+
+        public async Task<bool> SaveActiveGameAsync(string jsonToSave, SourceForGameState source)
+        {
+            var saveFilePath = GetGameSaveLocation(source);
+
+            var writeToFileTask = WriteSaveFile(saveFilePath, jsonToSave);
+
+            await writeToFileTask;
+            return true;
+        }
+
+        private async Task WriteSaveFile(string saveFilePath, string JsonToSave)
+        {
+            var task = Task.Run(() => File.WriteAllText(saveFilePath, JsonToSave));
+            await task;
+        }
+
         //  public IEnumerator<bool?> SaveActiveGameAsync(ITableSaveState tableSaveState, Character character, bool forceBadSave = false, int index = 0)
         public async Task<bool> SaveActiveGameAsync(ITableSaveState tableSaveState, Character character, SourceForGameState source, bool forceBadSave = false)
         {

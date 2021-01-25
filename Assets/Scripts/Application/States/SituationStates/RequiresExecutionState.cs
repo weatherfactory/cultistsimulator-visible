@@ -29,7 +29,7 @@ namespace SecretHistories.States
             var outputTokens = situation.GetTokens(SphereCategory.SituationStorage);
             situation.AcceptTokens(SphereCategory.Output, outputTokens, new Context(Context.ActionSource.SituationResults));
 
-            situation.AttemptAspectInductions(situation.CurrentPrimaryRecipe, outputTokens);
+            situation.AttemptAspectInductions(situation.Recipe, outputTokens);
             SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj
 
         }
@@ -48,7 +48,7 @@ namespace SecretHistories.States
         public override bool IsValidPredictionForState(Recipe recipeToCheck, Situation s)
         {
             //Situation is RequiringExecution, and recipe is in Linked list of current recipe.  ActionId doesn't need to match.
-            if (s.CurrentPrimaryRecipe.Linked.Exists(r => r.Id == recipeToCheck.Id))
+            if (s.Recipe.Linked.Exists(r => r.Id == recipeToCheck.Id))
                 return true;
 
             return false;
@@ -62,20 +62,20 @@ namespace SecretHistories.States
 
             var rc = new RecipeConductor(aspectsInContext, Watchman.Get<Character>());
 
-            var linkedRecipe = rc.GetLinkedRecipe(situation.CurrentPrimaryRecipe);
+            var linkedRecipe = rc.GetLinkedRecipe(situation.Recipe);
 
             if (linkedRecipe != null)
             {
                 //send the completion description before we move on
-                INotification notification = new Notification(situation.CurrentPrimaryRecipe.Label, situation.CurrentPrimaryRecipe.Description);
+                INotification notification = new Notification(situation.Recipe.Label, situation.Recipe.Description);
                 situation.SendNotificationToSubscribers(notification);
 
                 //I think this code duplicates ActivateRecipe, below
-                situation.CurrentPrimaryRecipe = linkedRecipe;
-                situation.TimeRemaining = situation.CurrentPrimaryRecipe.Warmup;
+                situation.Recipe = linkedRecipe;
+                situation.TimeRemaining = situation.Recipe.Warmup;
                 if (situation.TimeRemaining > 0) //don't play a sound if we loop through multiple linked ones
                 {
-                    if (situation.CurrentPrimaryRecipe.SignalImportantLoop)
+                    if (situation.Recipe.SignalImportantLoop)
                         SoundManager.PlaySfx("SituationLoopImportant");
                     else
                         SoundManager.PlaySfx("SituationLoop");

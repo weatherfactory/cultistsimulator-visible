@@ -89,7 +89,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
         foreach (Situation candidateSituation in registeredSituations)
         {
-            TokenLocation candidateLocation = candidateSituation.GetAnchorLocation();
+            TokenLocation candidateLocation = candidateSituation.AnchorLocation;
             Vector3 candidateDistance;
             if (candidateSituation.IsOpen && candidateSituation.Verb.ExclusiveOpen)
                 candidateDistance=Vector3.zero;

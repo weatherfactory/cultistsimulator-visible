@@ -66,7 +66,7 @@ namespace SecretHistories.Commands
             situationsCatalogue.RegisterSituation(newSituation);
             newSituation.Verb = GetBasicOrCreatedVerb();
             newSituation.TimeRemaining = TimeRemaining ?? 0;
-            newSituation.CurrentPrimaryRecipe = Recipe;
+            newSituation.Recipe = Recipe;
             newSituation. OverrideTitle = OverrideTitle;
             newSituation.CurrentState = SituationState.Rehydrate(State, newSituation);
 
@@ -108,11 +108,11 @@ namespace SecretHistories.Commands
         public SituationCreationCommand(Situation basedOnSituation)
         {
             Verb = basedOnSituation.Verb;
-            Recipe = basedOnSituation.CurrentPrimaryRecipe;
+            Recipe = basedOnSituation.Recipe;
             //State = basedOnSituation.CurrentState;
             TimeRemaining = basedOnSituation.TimeRemaining;
        //OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
-       AnchorLocation = basedOnSituation.GetAnchorLocation();
+       AnchorLocation = basedOnSituation.AnchorLocation;
        SituationPath = basedOnSituation.Path;
        Open = basedOnSituation.IsOpen;
        Commands = basedOnSituation.CommandQueue.GetCurrentCommandsAsList();

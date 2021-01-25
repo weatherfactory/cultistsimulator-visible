@@ -17,7 +17,7 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var recipeSlotsCommand = new PopulateThresholdsCommand(CommandCategory.RecipeThresholds, situation.CurrentPrimaryRecipe.Slots);
+            var recipeSlotsCommand = new PopulateThresholdsCommand(CommandCategory.RecipeThresholds, situation.Recipe.Slots);
             situation.CommandQueue.AddCommand(recipeSlotsCommand);
         }
 
@@ -55,7 +55,7 @@ namespace SecretHistories.States
         {
 
             //Situation is Ongoing. Recipe is in Alt list of current recipe - as Always Succeed and not as Additional. ActionId doesn't need to match.
-            if(s.CurrentPrimaryRecipe.Alt.Exists(r => r.Id == recipeToCheck.Id && r.ShouldAlwaysSucceed() && !r.Additional))
+            if(s.Recipe.Alt.Exists(r => r.Id == recipeToCheck.Id && r.ShouldAlwaysSucceed() && !r.Additional))
                 return true;
 
             return false;

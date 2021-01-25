@@ -24,7 +24,7 @@ namespace SecretHistories.Commands.SituationCommands
 
             if (_recipeToActivate.RequirementsSatisfiedBy(aspectsInContext))
             {
-                situation.CurrentPrimaryRecipe = _recipeToActivate;
+                situation.Recipe = _recipeToActivate;
                 situation.TimeRemaining = _recipeToActivate.Warmup;
 
                 SoundManager.PlaySfx("SituationBegin");
