@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Interfaces;
 using Newtonsoft.Json;
+using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -14,7 +15,7 @@ using SecretHistories.UI;
 
 namespace Assets.Scripts.Application.Commands.SituationCommands
 {
-    public class TokenCreationCommand:ISaveable
+    public class TokenCreationCommand:IEncaustable
     {
         public readonly IVerb _forVerb;
         public readonly TokenLocation _location;

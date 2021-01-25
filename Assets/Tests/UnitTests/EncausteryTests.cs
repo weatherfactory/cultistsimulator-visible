@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application;
-using Assets.Scripts.Application.Abstract;
+using SecretHistories.Abstract;
+
 using NUnit.Framework;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
@@ -13,24 +14,33 @@ using UnityEditorInternal.VR;
 
 namespace Assets.Tests.UnitTests
 {
-    public class NonEncaustableDummy: IEncaustable
+    public class NonEncaustableX: IEncaustable
     { }
 
 
 
-    [EncaustableClass(typeof(EncaustedCommandDummy))]
-    public class EncaustableWithUnmarkedPropertyDummy: IEncaustable
+    [IsEncaustableClass(typeof(EncaustedCommandX))]
+    public class EncaustableWithUnmarkedPropertyX: IEncaustable
     {
         [Encaust]
         public int MarkedProperty { get; }
         public int UnmarkedProperty { get; }
     }
 
-    public class EncaustedCommandDummy
+    [IsEncaustableClass(typeof(EncaustedCommandX))]
+    public class ValidEncaustableX : IEncaustable
+    {
+        [Encaust]
+        public int MarkedProperty { get; }
+        [DontEncaust]
+        public int OtherMarkedProperty { get; }
+        public int UnmarkedFIeldShouldBeOkay { get; set; }
+    }
+
+    public class EncaustedCommandX
     {
 
     }
-
 
 
 
@@ -38,19 +48,27 @@ namespace Assets.Tests.UnitTests
     public class EncausteryTests
     {
         [Test]
+        public void Encausting_ReturnsInstanceOfSpecifiedCommandType_ForValidEncaustable()
+        {
+            var encaustery=new Encaustery();
+            var vex=new ValidEncaustableX();
+        Assert.IsInstanceOf<EncaustedCommandX>(encaustery.EncaustTo<EncaustedCommandX>(vex));
+        }
+
+        [Test]
         public void EncaustingThrowsException_WhenEncausteryPassedNonEncaustableClass()
         {
         var encaustery=new Encaustery();
-        var dec = new NonEncaustableDummy();
-        Assert.Throws(typeof(ApplicationException), () => encaustery.EncaustTo<EncaustedCommandDummy>(dec));
+        var nex = new NonEncaustableX();
+        Assert.Throws(typeof(ApplicationException), () => encaustery.EncaustTo<EncaustedCommandX>(nex));
         }
 
         [Test]
         public void EncaustingThrowsException_WhenGenericArgumentDoesntMatch_ToTypeForAttribute()
         {
             var encaustery = new Encaustery();
-            var dec = new NonEncaustableDummy();
-            Assert.Throws(typeof(ApplicationException), () => encaustery.EncaustTo<SituationCreationCommand>(dec));
+            var eupx = new ValidEncaustableX();
+            Assert.Throws(typeof(ApplicationException), () => encaustery.EncaustTo<SituationCreationCommand>(eupx));
         }
 
 

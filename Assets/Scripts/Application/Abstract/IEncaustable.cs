@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Application.Abstract
+namespace SecretHistories.Abstract
 {
     public interface IEncaustable
     {

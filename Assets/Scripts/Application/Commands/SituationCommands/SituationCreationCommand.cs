@@ -37,6 +37,11 @@ namespace SecretHistories.Commands
         private TokenCreationCommand tokenCreationCommand;
         private WindowCreationCommand windowCreationCommand;
 
+        public SituationCreationCommand()
+        {
+
+        }
+
         public SituationCreationCommand(IVerb verb, Recipe recipe, StateEnum state,
             TokenLocation anchorLocation)
         {

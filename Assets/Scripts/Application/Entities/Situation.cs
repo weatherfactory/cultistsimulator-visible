@@ -24,7 +24,7 @@ using UnityEngine.Assertions;
 
 namespace SecretHistories.Entities {
 
-    [EncaustableClass(typeof(SituationCreationCommand))]
+    [IsEncaustableClass(typeof(SituationCreationCommand))]
     public class Situation: ISphereEventSubscriber
     {
         [Encaust]

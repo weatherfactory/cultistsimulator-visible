@@ -11,11 +11,11 @@ namespace SecretHistories.Commands
     /// They should implement IEncaustable, and all public properties should be marked Encaust or DontEncaust.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public class EncaustableClass: System.Attribute
+    public class IsEncaustableClass: System.Attribute
     {
         public Type ToType { get; private set; }
 
-        public EncaustableClass(Type toType)
+        public IsEncaustableClass(Type toType)
         {
             ToType = toType;
         }

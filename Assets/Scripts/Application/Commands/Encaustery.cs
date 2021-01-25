@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.Application.Abstract;
+using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 
@@ -11,19 +11,27 @@ namespace SecretHistories.Commands
 {
     public class Encaustery
     {
-        public T EncaustTo<T>(IEncaustable encaustable) where T: class
+        public T EncaustTo<T>(IEncaustable encaustable) where T: class,new()
         {
-            checkEncaustableAttributes(encaustable);
+            checkEncaustableAttributes(encaustable,typeof(T));
+            
 
-            return encaustable as T;
+
+            T encaustedCommand=new T();
+
+            return encaustedCommand;
 
         }
 
-        private void checkEncaustableAttributes(IEncaustable encaustable)
+        private void checkEncaustableAttributes(IEncaustable encaustable,Type specifiedGenericType)
         {
-            var attributes = encaustable.GetType().GetCustomAttributes(typeof(EncaustableClass), false);
-            if(!attributes.Any())
-                throw new ApplicationException($"{encaustable.GetType()} isn't marked with the EncaustableClass attribute");
+            IsEncaustableClass isEncaustableClassAttribute = encaustable.GetType().GetCustomAttributes(typeof(IsEncaustableClass), false).SingleOrDefault() as IsEncaustableClass;
+            if(isEncaustableClassAttribute==null)
+                throw new ApplicationException($"{encaustable.GetType()} can't be encausted: it isn't marked with the IsEncaustableClass attribute");
+            if(isEncaustableClassAttribute.ToType!=specifiedGenericType)
+                throw new ApplicationException($"{encaustable.GetType()} encausts to {isEncaustableClassAttribute.ToType}, but we're trying to encaust it to {specifiedGenericType}");
+
+
         }
     }
 }
