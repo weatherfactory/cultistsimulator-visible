@@ -508,7 +508,7 @@ namespace SecretHistories.UI {
 
 
             var calvedToken =
-                Sphere.ProvisionElementStackToken(Element.Id, ElementQuantity - 1, new Context(Context.ActionSource.CalvedStack, new TokenLocation(this)), ElementStack.GetCurrentMutations());
+                Sphere.ProvisionElementStackToken(Element.Id, ElementQuantity - 1, new Context(Context.ActionSource.CalvedStack, new TokenLocation(this)), ElementStack.Mutations);
 
 
             ElementStack.SetQuantity(ElementQuantity - quantityToLeaveBehind, context);

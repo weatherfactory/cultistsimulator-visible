@@ -170,7 +170,7 @@ namespace Assets.Logic
         private static void RunXTriggersOnMutationsForStack(Sphere sphere, [CanBeNull] AspectsDictionary aspectsPresent, [CanBeNull] IDice dice,
             [CanBeNull] ElementStack eachStack, [CanBeNull] Compendium _compendium)
         {
-            foreach (var eachStackMutation in eachStack.GetCurrentMutations())
+            foreach (var eachStackMutation in eachStack.Mutations)
             {
                 //first we apply xtriggers to mutations - but not to the default stack aspects.
                 //i.e., mutations can get replaced by other mutations thanks to xtrigger morphs

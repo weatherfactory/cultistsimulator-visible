@@ -34,128 +34,83 @@ using UnityEngine.InputSystem;
 namespace SecretHistories.UI {
 
 
-    [IsEncaustableClass(typeof(ElementStack))]
+    [IsEncaustableClass(typeof(ElementStackCreationCommand))]
     public class ElementStack: ITokenPayload,IEncaustable
     {
-        public event System.Action<float> onDecay;
+        public event Action<float> onDecay;
 
         [Encaust]
         public string Id => Element.Id;
 
-        
+        [Encaust]
         public bool Defunct { get; protected set; }
 
-
-        public virtual Element Element { get; set; }
-
-        private IElementStackHost _attachedToken;
-        private int _quantity;
-
-		// Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
-		private IAspectsDictionary _aspectsDictionaryInc=new AspectsDictionary();		// For caching aspects including self 
-		private IAspectsDictionary _aspectsDictionaryExc = new AspectsDictionary();		// For caching aspects excluding self
-		private bool _aspectsDirtyInc = true;
-		private bool _aspectsDirtyExc = true;
-
+        [Encaust]
         public float LifetimeRemaining { get; set; }
 
-
-        
-        private Dictionary<string,int> _currentMutations=new Dictionary<string, int>(); //not strictly an aspects dictionary; it can contain negatives
-        private IlluminateLibrarian _illuminateLibrarian;
-
-
-
-        public ElementStack()
+        [Encaust]
+        public string EntityWithMutationsId
         {
-         _attachedToken=new NullToken();
-        }
-
-
-        virtual public string Label
-        {
-            get { return Element == null ? null : Element.Label; }
-        }
-
-        virtual public string Icon
-        {
-            get { return Element == null ? null : Element.Icon; }
-        }
-
-        public string EntityWithMutationsId 
-        {
-	        // Generate a unique ID for a combination of entity ID and mutations
-	        // IDs will look something like: entity_id?mutation_1=2&mutation_2=-1
-	        get
-	        {
-		        var mutations = GetCurrentMutations();
-		        return Element.Id + "?" + string.Join(
-			               "&", 
-			               mutations.Keys
-				               .Where(m => mutations[m] != 0)
-				               .OrderBy(x => x)
-				               .Select(m => $"{m}={mutations[m]}"));
-	        }
-        }
-
-
-
-        public Type GetManifestationType(SphereCategory forSphereCategory)
-        {
-            if (forSphereCategory == SphereCategory.SituationStorage)
-                return typeof(StoredManifestation);
-
-            if (forSphereCategory == SphereCategory.Dormant)
-                return typeof(MinimalManifestation);
-
-            return typeof(CardManifestation);
-        }
-
-        public void InitialiseManifestation(IManifestation _manifestation)
-        {
-            _manifestation.InitialiseVisuals(Element);
-            _manifestation.UpdateVisuals(Element, Quantity);
-            _manifestation.UpdateTimerVisuals(Element.Lifetime, LifetimeRemaining, 0f, Element.Resaturate,
-                EndingFlavour.None);
-        }
-
-
-        virtual public bool Unique
-        {
+            // Generate a unique ID for a combination of entity ID and mutations
+            // IDs will look something like: entity_id?mutation_1=2&mutation_2=-1
             get
             {
-                if (Element == null)
-                    return false;
-                return Element.Unique;
+                var mutations = Mutations;
+                return Element.Id + "?" + string.Join(
+                    "&",
+                    mutations.Keys
+                        .Where(m => mutations[m] != 0)
+                        .OrderBy(x => x)
+                        .Select(m => $"{m}={mutations[m]}"));
             }
         }
 
-        virtual public string UniquenessGroup
-        {
-            get { return Element == null ? null : Element.UniquenessGroup; }
-        }
+        [Encaust]
+        public virtual int Quantity => Defunct ? 0 : _quantity;
 
-        virtual public bool Decays
-		{
-            get { return Element.Decays; }
-        }
+        [Encaust]
+        public virtual bool MarkedForConsumption { get; set; }
 
-        virtual public int Quantity {
-            get { return Defunct ? 0 : _quantity; }
-        }
+        [Encaust]
+        public virtual Dictionary<string, int> Mutations=>new Dictionary<string, int>(_currentMutations);
 
-
-        virtual public bool MarkedForConsumption { get; set; }
-
+        [Encaust]
         virtual public IlluminateLibrarian IlluminateLibrarian
         {
             get { return _illuminateLibrarian; }
             set { _illuminateLibrarian = value; }
         }
 
+        [DontEncaust]
+        public virtual Element Element { get; set; }
+        [DontEncaust]
+        virtual public string Label => Element.Label;
+        [DontEncaust]
+        virtual public string Icon => Element.Icon;
+        [DontEncaust] 
+        virtual public bool Unique => Element.Unique;
+        [DontEncaust]
+        virtual public string UniquenessGroup =>Element.UniquenessGroup;
+        [DontEncaust]
+        virtual public bool Decays => Element.Decays;
+        [DontEncaust]
         public float IntervalForLastHeartbeat { get; set; }
 
 
+        private IElementStackHost _attachedToken;
+        private int _quantity;
+        // Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
+        private IAspectsDictionary
+            _aspectsDictionaryInc = new AspectsDictionary(); // For caching aspects including self 
+        private IAspectsDictionary
+            _aspectsDictionaryExc = new AspectsDictionary(); // For caching aspects excluding self
+        private bool _aspectsDirtyInc = true;
+        private bool _aspectsDirtyExc = true;
+        private Dictionary<string, int>
+            _currentMutations =
+                new Dictionary<string, int>(); //not strictly an aspects dictionary; it can contain negatives
+        private IlluminateLibrarian _illuminateLibrarian;
+        
         public bool IsValidElementStack()
         {
             return Element.Id != NullElement.NULL_ELEMENT_ID;
@@ -193,14 +148,29 @@ namespace SecretHistories.UI {
         }
 
 
-
-        virtual public Dictionary<string, int> GetCurrentMutations()
+        public ElementStack()
         {
-            return new Dictionary<string, int>(_currentMutations);
+            _attachedToken = new NullToken();
         }
-        virtual public Dictionary<string, string> GetCurrentIlluminations()
+
+
+        public Type GetManifestationType(SphereCategory forSphereCategory)
         {
-            return IlluminateLibrarian.GetCurrentIlluminations();
+            if (forSphereCategory == SphereCategory.SituationStorage)
+                return typeof(StoredManifestation);
+
+            if (forSphereCategory == SphereCategory.Dormant)
+                return typeof(MinimalManifestation);
+
+            return typeof(CardManifestation);
+        }
+
+        public void InitialiseManifestation(IManifestation _manifestation)
+        {
+            _manifestation.InitialiseVisuals(Element);
+            _manifestation.UpdateVisuals(Element, Quantity);
+            _manifestation.UpdateTimerVisuals(Element.Lifetime, LifetimeRemaining, 0f, Element.Resaturate,
+                EndingFlavour.None);
         }
 
         virtual public void SetMutation(string aspectId, int value,bool additive)
@@ -400,7 +370,7 @@ namespace SecretHistories.UI {
                 return false;
             if (!this.AllowsOutgoingMerge())
                 return false;
-            if(!intoStack.GetCurrentMutations().IsEquivalentTo(GetCurrentMutations()))
+            if(!intoStack.Mutations.IsEquivalentTo(Mutations))
                 return false;
 
             return true;

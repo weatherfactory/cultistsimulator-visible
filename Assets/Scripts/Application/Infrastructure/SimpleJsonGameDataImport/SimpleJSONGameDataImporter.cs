@@ -398,9 +398,9 @@ namespace SecretHistories.Constants
 
 
 
-        private List<ElementStackCreationCommand> PopulateElementStackSpecificationsList(Hashtable htStacks)
+        private List<ElementStackSpecification_ForSimpleJSONDataImport> PopulateElementStackSpecificationsList(Hashtable htStacks)
         {
-            var stackCreationCommand = new List<ElementStackCreationCommand>();
+            var stackCreationCommand = new List<ElementStackSpecification_ForSimpleJSONDataImport>();
             foreach (var locationInfoKey in htStacks.Keys)
             {
                 var htEachStack= htStacks.GetHashtable(locationInfoKey);
@@ -432,7 +432,7 @@ namespace SecretHistories.Constants
 
                 Context context=new Context(Context.ActionSource.Loading, stackLocation);
                 
-                stackCreationCommand.Add(new ElementStackCreationCommand(
+                stackCreationCommand.Add(new ElementStackSpecification_ForSimpleJSONDataImport(
                     elementId,
                     elementQuantity,
                     locationInfoKey.ToString(),

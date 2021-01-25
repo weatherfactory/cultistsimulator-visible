@@ -9,6 +9,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using Assets.Logic;
+using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Spheres.Angels;
@@ -182,18 +183,18 @@ namespace SecretHistories.Spheres
 
         }
 
-        public virtual Token ProvisionStackFromCommand(ElementStackCreationCommand elementStackCreationCommand)
+        public virtual Token ProvisionStackFromCommand(ElementStackSpecification_ForSimpleJSONDataImport legacyElementStackCreationSpecification)
         {
 
-            var token = ProvisionElementStackToken(elementStackCreationCommand.ElementId, elementStackCreationCommand.ElementQuantity, elementStackCreationCommand.Context, elementStackCreationCommand.Mutations);
+            var token = ProvisionElementStackToken(legacyElementStackCreationSpecification.Id, legacyElementStackCreationSpecification.Quantity, legacyElementStackCreationSpecification.Context, legacyElementStackCreationSpecification.Mutations);
 
 
-            token.ElementStack.IlluminateLibrarian = new IlluminateLibrarian(elementStackCreationCommand.Illuminations);
+            token.ElementStack.IlluminateLibrarian = new IlluminateLibrarian(legacyElementStackCreationSpecification.Illuminations);
 
-            if (elementStackCreationCommand.LifetimeRemaining > 0)
-                token.ElementStack.LifetimeRemaining = elementStackCreationCommand.LifetimeRemaining;
+            if (legacyElementStackCreationSpecification.LifetimeRemaining > 0)
+                token.ElementStack.LifetimeRemaining = legacyElementStackCreationSpecification.LifetimeRemaining;
 
-            if (elementStackCreationCommand.MarkedForConsumption)
+            if (legacyElementStackCreationSpecification.MarkedForConsumption)
                 token.ElementStack.MarkedForConsumption = true;
 
 
