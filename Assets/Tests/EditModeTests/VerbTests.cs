@@ -54,7 +54,7 @@ public class SituationTests
 
 
         var dropzoneLocation = new TokenLocation(Vector3.zero, worldSphere);
-        var dropzoneCreationCommand = new TokenCreationCommand(dropzoneVerb, dropzoneLocation, null);
+        var dropzoneCreationCommand = new VerbTokenCreationCommand(dropzoneVerb, dropzoneLocation, null);
         dropzoneCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
     }
 

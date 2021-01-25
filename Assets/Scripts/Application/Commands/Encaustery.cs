@@ -55,10 +55,17 @@ namespace SecretHistories.Commands
                     encaustmentPropertyAttributeProblems.Add($"Encaustable of type {encaustable.GetType()} has Encaust-marked property {p.Name}, but the command we're encausting to ({specifiedGenericCommandType}) doesn't have a property with a matching name.");
             }
 
-            if (encaustmentPropertyAttributeProblems.Any())
+            foreach (var cp in specifiedGenericCommandType.GetProperties())
             {
-                throw new ApplicationException(string.Join("\n",encaustmentPropertyAttributeProblems));
+                var candidateEncaustableProperty=allPropertiesOnEncaustable.SingleOrDefault(p => p.Name==cp.Name);
+                if(candidateEncaustableProperty==null)
+                    throw new ApplicationException($"Command type {specifiedGenericCommandType} has a property ({cp.Name}) that encaustable type {encaustable.GetType()} lacks, so we can't encaust the other to the one.");
+                if (candidateEncaustableProperty.IsDefined(typeof(DontEncaust)))
+                    throw new ApplicationException($"Command type {specifiedGenericCommandType} has a property ({cp.Name}) that encaustable type {encaustable.GetType()} marks as DontEncaust, so we can't encaust the other to the one.");
             }
+
+            if (encaustmentPropertyAttributeProblems.Any())
+                throw new ApplicationException(string.Join("\n",encaustmentPropertyAttributeProblems));
 
         }
 

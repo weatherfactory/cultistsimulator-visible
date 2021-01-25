@@ -39,19 +39,32 @@ namespace Assets.Tests.UnitTests
         public int UnmarkedFIeldShouldBeOkay;
     }
 
+
     [IsEncaustableClass(typeof(EncaustedCommandX))]
-    public class EncaustableWithPropertyMissingFromCommandX:IEncaustable
+    public class EncaustableWithAPropertyThatCommandXDoesntHave:IEncaustable
     {
+        [Encaust]
+        public int MarkedProperty { get; set; }
+        [Encaust]
+        public int OtherMarkedProperty { get; set; }
         [Encaust]
         public int MarkedPropertyWithoutMatchInCommmand { get; set; }
     }
+
+    [IsEncaustableClass(typeof(EncaustedCommandX))]
+    public class EncaustableMissingAPropertyThatCommandXHas : IEncaustable
+    {
+        [Encaust]
+        public int MarkedProperty { get; set; }
+        [DontEncaust]
+        public int OtherMarkedProperty { get; set; }
+    }
+
 
     public class EncaustedCommandX
     {
         public int MarkedProperty { get; set; }
         public int OtherMarkedProperty { get; set; }
-        public int MarkedAsDontEncaustProperty { get; set; }
-
     }
 
 
@@ -102,24 +115,22 @@ namespace Assets.Tests.UnitTests
         }
 
         [Test]
-        public void NonEncaustablePropertyValue_DoesntPopulateMatchInIEncaustment()
-        {
-            var encaustery = new Encaustery();
-            var vx = new ValidEncaustableX { MarkedAsDontEncaustProperty = 3 };
-            var encaustedCommand = encaustery.EncaustTo<EncaustedCommandX>(vx);
-            Assert.AreEqual(0,encaustedCommand.MarkedAsDontEncaustProperty);
-        }
-
-
-        [Test]
         public void EncaustablePropertyWithoutCommandPropertyOfSameName_ThrowsApplicationException()
         {
             var encaustery=new Encaustery();
-            var ewpm=new EncaustableWithPropertyMissingFromCommandX{MarkedPropertyWithoutMatchInCommmand = 1};
-            Assert.Throws<ApplicationException>(() => encaustery.EncaustTo<EncaustedCommandX>(ewpm));
+            var ex=new EncaustableWithAPropertyThatCommandXDoesntHave{MarkedPropertyWithoutMatchInCommmand = 1};
+            Assert.Throws<ApplicationException>(() => encaustery.EncaustTo<EncaustedCommandX>(ex));
         }
 
-   
+        [Test]
+        public void CommandPropertyWithoutEncaustablePropertyOfSameName_ThrowsApplicationException()
+        {
+            var encaustery = new Encaustery();
+            var ex = new EncaustableMissingAPropertyThatCommandXHas();
+            
+            Assert.Throws<ApplicationException>(() => encaustery.EncaustTo<EncaustedCommandX>(ex));
+        }
+
 
 
     }

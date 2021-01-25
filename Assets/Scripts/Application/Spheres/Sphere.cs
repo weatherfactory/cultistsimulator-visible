@@ -182,18 +182,18 @@ namespace SecretHistories.Spheres
 
         }
 
-        public virtual Token ProvisionStackFromCommand(StackCreationCommand stackCreationCommand)
+        public virtual Token ProvisionStackFromCommand(ElementStackCreationCommand elementStackCreationCommand)
         {
 
-            var token = ProvisionElementStackToken(stackCreationCommand.ElementId, stackCreationCommand.ElementQuantity, stackCreationCommand.Context, stackCreationCommand.Mutations);
+            var token = ProvisionElementStackToken(elementStackCreationCommand.ElementId, elementStackCreationCommand.ElementQuantity, elementStackCreationCommand.Context, elementStackCreationCommand.Mutations);
 
 
-            token.ElementStack.IlluminateLibrarian = new IlluminateLibrarian(stackCreationCommand.Illuminations);
+            token.ElementStack.IlluminateLibrarian = new IlluminateLibrarian(elementStackCreationCommand.Illuminations);
 
-            if (stackCreationCommand.LifetimeRemaining > 0)
-                token.ElementStack.LifetimeRemaining = stackCreationCommand.LifetimeRemaining;
+            if (elementStackCreationCommand.LifetimeRemaining > 0)
+                token.ElementStack.LifetimeRemaining = elementStackCreationCommand.LifetimeRemaining;
 
-            if (stackCreationCommand.MarkedForConsumption)
+            if (elementStackCreationCommand.MarkedForConsumption)
                 token.ElementStack.MarkedForConsumption = true;
 
 

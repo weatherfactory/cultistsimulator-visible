@@ -4,23 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using SecretHistories.Commands;
+using SecretHistories.UI;
 
 namespace Assets.Tests.UnitTests
 {
     [TestFixture]
-    public class ElementStackCreationCommandTests
+    public class ElementStackCreationCommandEncaustmentTests
     {
-        [Test]
-        public void TokenCreationCommand_WorksForElementStack()
-        {
-            Assert.AreEqual(1, 0);
-        }
-
 
         [Test]
         public void ElementStackEncaustedToCommand()
         {
-            Assert.AreEqual(1, 0);
+            var encaustery=new Encaustery();
+            var elementStack=new ElementStack();
+            encaustery.EncaustTo<ElementStackCreationCommand>(elementStack);
         }
     }
 }

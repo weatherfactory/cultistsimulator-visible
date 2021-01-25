@@ -34,12 +34,15 @@ using UnityEngine.InputSystem;
 namespace SecretHistories.UI {
 
 
-
-    public class ElementStack: ITokenPayload
+    [IsEncaustableClass(typeof(ElementStack))]
+    public class ElementStack: ITokenPayload,IEncaustable
     {
+        public event System.Action<float> onDecay;
+
+        [Encaust]
         public string Id => Element.Id;
 
-        public event System.Action<float> onDecay;
+        
         public bool Defunct { get; protected set; }
 
 

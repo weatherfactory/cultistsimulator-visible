@@ -398,9 +398,9 @@ namespace SecretHistories.Constants
 
 
 
-        private List<StackCreationCommand> PopulateElementStackSpecificationsList(Hashtable htStacks)
+        private List<ElementStackCreationCommand> PopulateElementStackSpecificationsList(Hashtable htStacks)
         {
-            var stackCreationCommand = new List<StackCreationCommand>();
+            var stackCreationCommand = new List<ElementStackCreationCommand>();
             foreach (var locationInfoKey in htStacks.Keys)
             {
                 var htEachStack= htStacks.GetHashtable(locationInfoKey);
@@ -432,7 +432,7 @@ namespace SecretHistories.Constants
 
                 Context context=new Context(Context.ActionSource.Loading, stackLocation);
                 
-                stackCreationCommand.Add(new StackCreationCommand(
+                stackCreationCommand.Add(new ElementStackCreationCommand(
                     elementId,
                     elementQuantity,
                     locationInfoKey.ToString(),
