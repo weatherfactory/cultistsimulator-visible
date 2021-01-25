@@ -35,7 +35,15 @@ namespace Assets.Tests.UnitTests
         public int OtherMarkedProperty { get; set; }
         [DontEncaust]
         public int MarkedAsDontEncaustProperty { get; set; }
-        public int UnmarkedFIeldShouldBeOkay { get; set; }
+
+        public int UnmarkedFIeldShouldBeOkay;
+    }
+
+    [IsEncaustableClass(typeof(EncaustedCommandX))]
+    public class EncaustableWithPropertyMissingFromCommandX:IEncaustable
+    {
+        [Encaust]
+        public int MarkedPropertyWithoutMatchInCommmand { get; set; }
     }
 
     public class EncaustedCommandX
@@ -43,8 +51,6 @@ namespace Assets.Tests.UnitTests
         public int MarkedProperty { get; set; }
         public int OtherMarkedProperty { get; set; }
         public int MarkedAsDontEncaustProperty { get; set; }
-
-
 
     }
 
@@ -104,11 +110,16 @@ namespace Assets.Tests.UnitTests
             Assert.AreEqual(0,encaustedCommand.MarkedAsDontEncaustProperty);
         }
 
+
         [Test]
-        public void EncaustmentWorksOnDecks()
+        public void EncaustablePropertyWithoutCommandPropertyOfSameName_ThrowsApplicationException()
         {
-            Assert.AreEqual(1, 0);
+            var encaustery=new Encaustery();
+            var ewpm=new EncaustableWithPropertyMissingFromCommandX{MarkedPropertyWithoutMatchInCommmand = 1};
+            Assert.Throws<ApplicationException>(() => encaustery.EncaustTo<EncaustedCommandX>(ewpm));
         }
+
+   
 
 
     }
