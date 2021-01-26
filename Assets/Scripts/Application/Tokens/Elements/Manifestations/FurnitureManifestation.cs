@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
@@ -89,7 +90,7 @@ namespace SecretHistories.Elements.Manifestations
             ShowDumpButton(false);
         }
 
-        public void UpdateVisuals(Element element, int quantity)
+        public void UpdateVisuals(ITokenPayload payload)
         {
             throw new NotImplementedException();
         }

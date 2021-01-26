@@ -145,8 +145,11 @@ namespace SecretHistories.UI {
 
         public void OnTokenInteraction(TokenInteractionEventArgs args)
         {
-            if(args.Interaction==Interaction.OnClicked)
-              ShowCardElementDetails(args.Element, args.Token.ElementStack);
+            if (args.Interaction == Interaction.OnClicked)
+            {
+                var element = Watchman.Get<Compendium>().GetEntityById<Element>(args.Payload.Id);
+              ShowCardElementDetails(element, args.Token.ElementStack);
+            }
 
             if (args.Interaction == Interaction.OnDoubleClicked)
                 HideDetails();

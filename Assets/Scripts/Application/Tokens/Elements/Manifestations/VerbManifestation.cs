@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -90,7 +91,7 @@ namespace SecretHistories.Elements.Manifestations
 
         }
 
-        public void UpdateVisuals(Element element, int quantity)
+        public void UpdateVisuals(ITokenPayload payload)
         {
             NoonUtility.Log("Update Visuals on verb tokens: should look at this");
         }

@@ -92,7 +92,7 @@ namespace SecretHistories.UI {
 
         public virtual ElementStack ElementStack { get; protected set; }
         public int ElementQuantity => ElementStack.Quantity;
-        public Element Element => ElementStack.Element;
+      //  public Element Element => ElementStack.Element;
 
         public bool IsValidElementStack()
         {
@@ -168,7 +168,7 @@ namespace SecretHistories.UI {
         public virtual void Populate(ElementStack elementStack)
         {
             ElementStack = elementStack;
-            name = elementStack.Element.Id + "_stacktoken";
+            name = elementStack.Id + "_stacktoken";
         }
 
         private void ReplaceManifestation(IManifestation oldManifestation, IManifestation newManifestation,
@@ -260,7 +260,7 @@ namespace SecretHistories.UI {
             {
                 OldSphere.RemoveToken(this,context);
                 if (OldSphere.ContentsHidden && !newSphere.ContentsHidden)
-                    _manifestation.UpdateVisuals(Element,ElementQuantity);
+                    _manifestation.UpdateVisuals(Payload);
             }
 
             Sphere = newSphere;
@@ -508,7 +508,7 @@ namespace SecretHistories.UI {
 
 
             var calvedToken =
-                Sphere.ProvisionElementStackToken(Element.Id, ElementQuantity - 1, new Context(Context.ActionSource.CalvedStack, new TokenLocation(this)), ElementStack.Mutations);
+                Sphere.ProvisionElementStackToken(Payload.Id, ElementQuantity - 1, new Context(Context.ActionSource.CalvedStack, new TokenLocation(this)), ElementStack.Mutations);
 
 
             ElementStack.SetQuantity(ElementQuantity - quantityToLeaveBehind, context);
@@ -545,7 +545,7 @@ namespace SecretHistories.UI {
                 previousClickTime = 0f;
                 NotifyInteracted(new TokenInteractionEventArgs
                 {
-                    Element = ElementStack.Element,
+                    Payload = Payload,
                     Token = this,
                     Sphere = Sphere,
                     PointerEventData = eventData,
@@ -563,7 +563,7 @@ namespace SecretHistories.UI {
                 {
                     NotifyInteracted(new TokenInteractionEventArgs
                     {
-                        Element = ElementStack.Element,
+                        Payload = Payload,
                         Token = this,
                         Sphere = Sphere,
                         PointerEventData = eventData,
@@ -653,7 +653,7 @@ namespace SecretHistories.UI {
 
             NotifyInteracted(new TokenInteractionEventArgs
             {
-                Element = Element,
+               Payload = Payload,
                 Token = this,
                 Sphere = Sphere,
                 PointerEventData = eventData,
@@ -697,8 +697,8 @@ namespace SecretHistories.UI {
         public virtual void onElementStackQuantityChanged(ElementStack stack,Context context)
         {
 
-            _manifestation.UpdateVisuals(stack.Element,stack.Quantity);
-            _manifestation.UpdateTimerVisuals(stack.Element.Lifetime,stack.LifetimeRemaining,stack.IntervalForLastHeartbeat,Element.Resaturate,EndingFlavour.None);
+            _manifestation.UpdateVisuals(Payload);
+            _manifestation.UpdateTimerVisuals(stack.Lifetime,stack.LifetimeRemaining,stack.IntervalForLastHeartbeat, stack.Resaturate,EndingFlavour.None);
             PlacementAlreadyChronicled = false; //should really only do this if the element has changed
             var args=new SphereContentsChangedEventArgs(Sphere,context);
             Sphere.NotifyTokensChangedForSphere(args);

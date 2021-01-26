@@ -21,6 +21,7 @@ namespace SecretHistories.Commands
         public int Quantity { get; set; }
         public Dictionary<string,int> Mutations { get; set; }
         public IlluminateLibrarian IlluminateLibrarian { get; set; }
+        public bool Defunct { get; set; }
 
         public float LifetimeRemaining { get; set; }
         public bool MarkedForConsumption { get; set; }

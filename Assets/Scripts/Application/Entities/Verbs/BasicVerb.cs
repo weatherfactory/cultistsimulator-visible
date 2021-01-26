@@ -24,6 +24,8 @@ namespace SecretHistories.Entities
         public string Art { get; set; }
 
 
+        public int Quantity => 1;
+
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
             return typeof(VerbManifestation);

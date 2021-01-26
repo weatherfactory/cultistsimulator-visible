@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
@@ -111,7 +112,7 @@ namespace SecretHistories.Elements.Manifestations
             this.transform.position = Vector3.zero;
         }
 
-        public void UpdateVisuals(Element element, int quantity)
+        public void UpdateVisuals(ITokenPayload payload)
         {
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }

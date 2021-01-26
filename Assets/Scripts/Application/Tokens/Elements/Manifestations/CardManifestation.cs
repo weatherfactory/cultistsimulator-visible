@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
@@ -276,11 +277,11 @@ namespace SecretHistories.Elements
                 textBackground.overrideSprite = null;
         }
 
-        public void UpdateVisuals(Element element, int quantity)
+        public void UpdateVisuals(ITokenPayload payload)
         {
-            text.text = element.Label;
-            stackBadge.gameObject.SetActive(quantity > 1);
-            stackCountText.text = quantity.ToString();
+            text.text = payload.Label;
+            stackBadge.gameObject.SetActive(payload.Quantity > 1);
+            stackCountText.text = payload.Quantity.ToString();
 
         }
 

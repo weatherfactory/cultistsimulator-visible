@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -55,7 +56,7 @@ namespace SecretHistories.Elements.Manifestations
         //
         }
 
-        public void UpdateVisuals(Element element, int quantity)
+        public void UpdateVisuals(ITokenPayload payload)
         {
             }
 

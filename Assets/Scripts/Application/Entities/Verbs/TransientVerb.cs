@@ -31,6 +31,8 @@ namespace SecretHistories.Entities
         public string Art=>String.Empty;
 
 
+        public int Quantity => 0;
+
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
           return  typeof(VerbManifestation);

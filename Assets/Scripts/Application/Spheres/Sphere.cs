@@ -564,7 +564,7 @@ namespace SecretHistories.Spheres
             foreach (var existingStack in new List<ElementStack>(GetElementStacks()))
             {
 
-                if (existingStack != incomingStack && existingStack.Element.Id == incomingStack.Element.Id)
+                if (existingStack != incomingStack && existingStack.Id == incomingStack.Id)
                 {
                     NoonUtility.Log(
                         "Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!");

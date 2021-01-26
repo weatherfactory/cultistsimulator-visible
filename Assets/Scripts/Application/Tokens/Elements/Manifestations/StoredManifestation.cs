@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
@@ -42,9 +43,10 @@ namespace SecretHistories.Elements.Manifestations
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support InitialiseVisuals");
         }
 
-        public void UpdateVisuals(Element element, int quantity)
+        public void UpdateVisuals(ITokenPayload payload)
         {
-            elementFrame.PopulateDisplay(element, quantity, false);
+            var element = Watchman.Get<Compendium>().GetEntityById<Element>(payload.Id);
+            elementFrame.PopulateDisplay(element, payload.Quantity, false);
 
         }
 

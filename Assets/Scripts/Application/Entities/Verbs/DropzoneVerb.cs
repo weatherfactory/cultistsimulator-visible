@@ -16,6 +16,7 @@ namespace SecretHistories.Entities.Verbs
     public class DropzoneVerb: IVerb
     {
         public string Id { get; private set; }
+        public int Quantity => 1;
 
         public void SetId(string id)
         {

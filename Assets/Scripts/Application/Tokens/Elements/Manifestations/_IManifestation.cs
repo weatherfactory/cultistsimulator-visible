@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
@@ -38,7 +39,7 @@ namespace SecretHistories.Elements.Manifestations
         void InitialiseVisuals(Element element);
         void InitialiseVisuals(IVerb verb);
 
-        void UpdateVisuals(Element element, int quantity);
+        void UpdateVisuals(ITokenPayload tokenPayload);
         void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate, EndingFlavour signalEndingFlavour);
         void OverrideIcon(string icon);
 

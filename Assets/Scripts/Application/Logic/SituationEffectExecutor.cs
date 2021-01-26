@@ -243,7 +243,7 @@ namespace Assets.Logic
                         else if (morph.Chance >= dice.Rolld100())
                         {
                             string newElementId = morph.Id;
-                            string oldElementId = eachStack.Element.Id;
+                            string oldElementId = eachStack.Id;
                             int existingQuantity = eachStack.Quantity;
                             if (morph.MorphEffect==MorphEffectType.Transform)
                             {

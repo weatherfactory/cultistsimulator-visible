@@ -49,23 +49,6 @@ namespace SecretHistories.UI {
         public float LifetimeRemaining { get; set; }
 
         [Encaust]
-        public string EntityWithMutationsId
-        {
-            // Generate a unique ID for a combination of entity ID and mutations
-            // IDs will look something like: entity_id?mutation_1=2&mutation_2=-1
-            get
-            {
-                var mutations = Mutations;
-                return Element.Id + "?" + string.Join(
-                    "&",
-                    mutations.Keys
-                        .Where(m => mutations[m] != 0)
-                        .OrderBy(x => x)
-                        .Select(m => $"{m}={mutations[m]}"));
-            }
-        }
-
-        [Encaust]
         public virtual int Quantity => Defunct ? 0 : _quantity;
 
         [Encaust]
@@ -81,10 +64,11 @@ namespace SecretHistories.UI {
             set { _illuminateLibrarian = value; }
         }
 
-        [DontEncaust]
-        public virtual Element Element { get; set; }
+        protected virtual Element Element { get; set; }
         [DontEncaust]
         virtual public string Label => Element.Label;
+        [DontEncaust]
+        virtual public string Description => Element.Description;
         [DontEncaust]
         virtual public string Icon => Element.Icon;
         [DontEncaust] 
@@ -93,8 +77,29 @@ namespace SecretHistories.UI {
         virtual public string UniquenessGroup =>Element.UniquenessGroup;
         [DontEncaust]
         virtual public bool Decays => Element.Decays;
+
+        [DontEncaust] public virtual float Lifetime => Element.Lifetime;
+        [DontEncaust] public virtual bool Resaturate => Element.Resaturate;
+
+
         [DontEncaust]
         public float IntervalForLastHeartbeat { get; set; }
+        [DontEncaust]
+        public string EntityWithMutationsId
+        {
+            // Generate a unique ID for a combination of entity ID and mutations
+            // IDs will look something like: entity_id?mutation_1=2&mutation_2=-1
+            get
+            {
+                var mutations = Mutations;
+                return Element.Id + "?" + string.Join(
+                    "&",
+                    mutations.Keys
+                        .Where(m => mutations[m] != 0)
+                        .OrderBy(x => x)
+                        .Select(m => $"{m}={mutations[m]}"));
+            }
+        }
 
 
         private IElementStackHost _attachedToken;
@@ -150,6 +155,7 @@ namespace SecretHistories.UI {
 
         public ElementStack()
         {
+            Element=new NullElement();
             _attachedToken = new NullToken();
         }
 
@@ -168,7 +174,7 @@ namespace SecretHistories.UI {
         public void InitialiseManifestation(IManifestation _manifestation)
         {
             _manifestation.InitialiseVisuals(Element);
-            _manifestation.UpdateVisuals(Element, Quantity);
+            _manifestation.UpdateVisuals(this);
             _manifestation.UpdateTimerVisuals(Element.Lifetime, LifetimeRemaining, 0f, Element.Resaturate,
                 EndingFlavour.None);
         }

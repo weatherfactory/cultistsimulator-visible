@@ -55,8 +55,8 @@ namespace SecretHistories.UI
            if(args.Interaction==Interaction.OnClicked || args.Interaction == Interaction.OnDoubleClicked)
            {
                CardsExhibit.HighlightCardWithId(args.Token.Payload.Id);
-             Responsibilities.text = args.Token.Element.Label;
-            Names.text = args.Element.Description;
+             Responsibilities.text = args.Token.Payload.Label;
+            Names.text = args.Payload.Description;
            }
 
            if(args.Interaction==Interaction.OnPointerEntered)
@@ -64,7 +64,7 @@ namespace SecretHistories.UI
 
            if (args.Interaction == Interaction.OnPointerExited)
            {
-               if (Responsibilities.text != args.Token.Element.Label) // don't remove the highlight if the card is currently selected
+               if (Responsibilities.text != args.Token.Payload.Label) // don't remove the highlight if the card is currently selected
                    args.Token.Understate();
            }
         }

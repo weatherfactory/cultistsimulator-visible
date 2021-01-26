@@ -12,6 +12,10 @@ namespace Assets.Scripts.Application.Entities.NullEntities
     public class NullTokenPayload: ITokenPayload
     {
         public string Id => string.Empty;
+        public int Quantity => 0;
+        public string Label => "";
+        public string Description => "";
+
 
         public Type GetManifestationType(SphereCategory sphereCategory)
         {
@@ -32,5 +36,6 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         {
             return false;
         }
+
     }
 }

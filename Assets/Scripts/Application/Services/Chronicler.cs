@@ -139,18 +139,18 @@ namespace SecretHistories.Services
                 //if the follower is Exalted, update it.
                 if (aspects.ContainsKey(EXALTED_ASPECT))
                 {
-                    currentFollower = _compendium.GetEntityById<Element>(stack.Element.Id);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Id);
 
                 }
 
                 else if (aspects.ContainsKey(DISCIPLE_ASPECT) && currentFollower!=null && !currentFollower.Aspects.ContainsKey(EXALTED_ASPECT))
                 {
-                    currentFollower = _compendium.GetEntityById<Element>(stack.Element.Id);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Id);
                 }
                 else if (currentFollower==null || (!currentFollower.Aspects.ContainsKey(EXALTED_ASPECT) &&
                          !currentFollower.Aspects.ContainsKey(DISCIPLE_ASPECT)))
                 {
-                    currentFollower = _compendium.GetEntityById<Element>(stack.Element.Id);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Id);
 
                 }
 
@@ -279,7 +279,7 @@ namespace SecretHistories.Services
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
 			{
 				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id } } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.Element.Id);
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.Payload.Id);
 			}
         }
 
@@ -312,7 +312,7 @@ namespace SecretHistories.Services
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
 			{
 				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id} } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.Element.Id);
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.Payload.Id);
 			}
         }
 

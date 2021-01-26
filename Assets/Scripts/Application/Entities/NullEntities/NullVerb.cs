@@ -15,6 +15,8 @@ namespace SecretHistories.NullObjects
     public class NullVerb:IVerb
     {
         public string Id { get; private set; }
+        public int Quantity =>0;
+
         public void SetId(string id)
         {
             Id = id;

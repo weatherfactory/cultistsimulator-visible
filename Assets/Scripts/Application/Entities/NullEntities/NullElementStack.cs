@@ -12,7 +12,7 @@ namespace SecretHistories.Elements
 {
     public class NullElementStack: ElementStack
     {
-        public override Element Element
+        protected override Element Element
         {
             get => new NullElement();
             set => NoonUtility.LogWarning("Can't set an element for a NullElementStack, not even " + value.Id);

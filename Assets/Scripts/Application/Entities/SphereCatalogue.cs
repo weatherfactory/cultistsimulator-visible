@@ -168,7 +168,7 @@ namespace SecretHistories.Entities {
                     foreach (var aspect in stackAspects)
                     {
 
-                        if (aspect.Key == tabletopStack.Element.Id)
+                        if (aspect.Key == tabletopStack.Id)
                             multipliedAspects.Add(aspect.Key, aspect.Value);
                         else
                             multipliedAspects.Add(aspect.Key, aspect.Value * tabletopStack.Quantity);
@@ -203,7 +203,7 @@ namespace SecretHistories.Entities {
                         foreach (var aspect in stackAspects)
                         {
 
-                            if (aspect.Key == situationStack.Element.Id)
+                            if (aspect.Key == situationStack.Id)
                                 multipliedAspects.Add(aspect.Key, aspect.Value);
                             else
                                 multipliedAspects.Add(aspect.Key, aspect.Value * situationStack.Quantity);

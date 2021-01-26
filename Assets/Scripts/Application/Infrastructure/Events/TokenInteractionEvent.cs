@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Spheres;
@@ -17,7 +18,7 @@ namespace SecretHistories.Constants.Events
     public class TokenInteractionEventArgs
     {
         public Sphere Sphere { get; set; }
-        public Element Element { get; set; }
+        public ITokenPayload Payload { get; set; }
         public Token Token { get; set; }
         public PointerEventData PointerEventData { get; set; }
         public Context Context { get; set; }

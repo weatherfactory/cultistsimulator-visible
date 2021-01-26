@@ -102,7 +102,7 @@ namespace SecretHistories.UI {
         private void RemoveChildrenOfThreshold(Sphere thresholdToOrphan)
         {
             if(thresholdToOrphan.GetElementStacks().Any())
-                NoonUtility.LogWarning($"This code currently assumes thresholds can only contain one stack token. One ({thresholdToOrphan.GetElementStacks().First().Element.Id}) has been removed from {thresholdToOrphan.GetPath()}, but at least one remains - you may see unexpected results.");
+                NoonUtility.LogWarning($"This code currently assumes thresholds can only contain one stack token. One ({thresholdToOrphan.GetElementStacks().First().Id}) has been removed from {thresholdToOrphan.GetPath()}, but at least one remains - you may see unexpected results.");
 
             var thresholdstoRemove=
                 new List<ThresholdSphere>(_thresholds.Where(kvp=>kvp.Value.Equals(thresholdToOrphan.GetPath())).Select(kvp=>kvp.Key));

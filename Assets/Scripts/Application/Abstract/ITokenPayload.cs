@@ -11,11 +11,13 @@ namespace SecretHistories.Abstract
     public interface ITokenPayload
     {
         public string Id { get; }
+        public int Quantity { get; }
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValidElementStack();
         bool IsValidVerb();
-
+        public string Label { get; }
+        public string Description { get; }
     }
     }
 
