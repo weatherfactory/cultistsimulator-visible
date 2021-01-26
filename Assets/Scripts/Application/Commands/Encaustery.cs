@@ -10,9 +10,9 @@ using SecretHistories.Entities;
 
 namespace SecretHistories.Commands
 {
-    public class Encaustery<T> where T : class, new()
+    public class Encaustery<T> where T: class,new()
     {
-        public T EncaustTo(IEncaustable encaustable) 
+        public T Encaust(IEncaustable encaustable) 
         {
             throwExceptionIfEncaustmentAttributesAreHinky(encaustable,typeof(T));
             
@@ -107,19 +107,37 @@ namespace SecretHistories.Commands
 
             foreach (var encaustableProperty in GetEncaustablePropertiesForType(encaustable.GetType()))
             {
-                if (encaustableProperty.IsDefined(typeof(IsEncaustableClass)))
-                {
+                var commandPropertyToSet = typeof(T).GetProperty(encaustableProperty.Name);
 
+                if (typeof(IEncaustable).IsAssignableFrom(encaustableProperty.PropertyType))
+                {
+                    object innerEncaustedCommand = encaustPropertyAsCommandInItsOwnRight(encaustable, encaustableProperty);
+                        commandPropertyToSet.SetValue(command, innerEncaustedCommand);
                 }
 
- 
-                var commandPropertyToSet = typeof(T).GetProperty(encaustableProperty.Name);
+                else
                     commandPropertyToSet.SetValue(command, encaustableProperty.GetValue(encaustable));
+
+
+
             }
 
             return command;
         }
 
+        private object encaustPropertyAsCommandInItsOwnRight(IEncaustable outerEncaustable, PropertyInfo innerEncaustableAsProperty)
+        {
+            IEncaustable innerEncaustableInstance = innerEncaustableAsProperty.GetValue(outerEncaustable) as IEncaustable;
+            Type encaustInnerAsType = GetEncaustableClassAttribute(innerEncaustableInstance).ToType;
+            Type baseEncausteryType = typeof(Encaustery<>);
+            Type combinedTypeWithGenericArgument = baseEncausteryType.MakeGenericType(encaustInnerAsType);
 
+            object innerEncaustery = Activator.CreateInstance(combinedTypeWithGenericArgument);
+            var encaustMethod = innerEncaustery.GetType().GetMethod("Encaust");
+          var encaustedInnerCommand= encaustMethod.Invoke(innerEncaustery, new object[]{innerEncaustableInstance});
+
+          return encaustedInnerCommand;
+
+        }
     }
 }
