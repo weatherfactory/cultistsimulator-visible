@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 using Assets.Logic;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Modding;
@@ -132,7 +133,7 @@ namespace SecretHistories.UI {
 		void StartGameDelayed()
         {
             var chosenLegacy = AvailableLegaciesForEnding[selectedLegacy];
-            Watchman.Get<Character>().Reset(chosenLegacy,null);
+            Watchman.Get<Character>().Reset(chosenLegacy,NullEnding.Create());
 
             Watchman.Get<StageHand>().NewGameOnTabletop();
 

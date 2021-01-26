@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
 using NUnit.Framework;
 using SecretHistories.Commands;
 using SecretHistories.UI;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 
-    [TestFixture]
+[TestFixture]
     public class CommandsEncaustOkay
     {
 
@@ -24,8 +27,12 @@ using SecretHistories.UI;
         public void CharacterCreationCommand_Encausts()
         {
          var encaustery=new Encaustery<CharacterCreationCommand>();
-         var character=new Character();
-         encaustery.Encaust(character);
+         var characterObject = new GameObject();
+         characterObject.AddComponent<Character>();
+        characterObject.GetComponent<Character>().ActiveLegacy=new NullLegacy();
+        characterObject.GetComponent<Character>().EndingTriggered=NullEnding.Create();
+
+        encaustery.Encaust(characterObject.GetComponent<Character>());
                 }
 
         [Test]

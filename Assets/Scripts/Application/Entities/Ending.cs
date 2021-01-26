@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
@@ -43,16 +44,20 @@ namespace SecretHistories.Entities
         [FucineValue("")]
         public string Achievement { get; set; }
 
+        public virtual bool IsValid()
+        {
+            return true;
+        }
+
         public Ending(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 
         }
 
 
-        private Ending()
+        protected Ending()
         {
         }
-
 
         public static Ending DefaultEnding()
         {

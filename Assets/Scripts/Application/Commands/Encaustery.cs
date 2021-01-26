@@ -47,7 +47,7 @@ namespace SecretHistories.Commands
         {
             List<string> encaustmentPropertyAttributeProblems = new List<string>();
 
-            var allPropertiesOnEncaustable = encaustable.GetType().GetProperties();
+            var allPropertiesOnEncaustable = AllPropertiesOnDeclaredOnEncaustableIgnoringBaseClass(encaustable);
             foreach (var p in allPropertiesOnEncaustable)
             {
                 //are all properties marked either encaust or dontencaust?
@@ -75,6 +75,8 @@ namespace SecretHistories.Commands
             return encaustmentPropertyAttributeProblems;
         }
 
+
+
         private IsEncaustableClass GetEncaustableClassAttribute(IEncaustable encaustable)
         {
             IsEncaustableClass isEncaustableClassAttribute;
@@ -84,9 +86,9 @@ namespace SecretHistories.Commands
             return isEncaustableClassAttribute;
         }
 
-        private List<PropertyInfo> GetEncaustablePropertiesForType(Type t)
+        private List<PropertyInfo> GetEncaustableProperties(IEncaustable encaustable)
         {
-            var allPropertiesOnEncaustable = t.GetProperties();
+            var allPropertiesOnEncaustable = AllPropertiesOnDeclaredOnEncaustableIgnoringBaseClass(encaustable);
             List<PropertyInfo> encaustableProperties = new List<PropertyInfo>();
 
             foreach (var encaustP in allPropertiesOnEncaustable)
@@ -105,7 +107,7 @@ namespace SecretHistories.Commands
         {
             var command=new T();
 
-            foreach (var encaustableProperty in GetEncaustablePropertiesForType(encaustable.GetType()))
+            foreach (var encaustableProperty in GetEncaustableProperties(encaustable))
             {
                 var commandPropertyToSet = typeof(T).GetProperty(encaustableProperty.Name);
 
@@ -138,6 +140,19 @@ namespace SecretHistories.Commands
 
           return encaustedInnerCommand;
 
+        }
+        /// <summary>
+        /// If we pass eg something inherited from Monobehaviour for encausting, it'll bring a lot of properties we don't want to encaust
+        /// </summary>
+        /// <param name="encaustable"></param>
+        /// <returns></returns>
+        private static PropertyInfo[] AllPropertiesOnDeclaredOnEncaustableIgnoringBaseClass(IEncaustable encaustable)
+        {
+            var encaustableType = encaustable.GetType();
+            //BindingFlags.DeclaredOnly means you also need to be specific about which kinds of methods you want to return
+            var encaustableProperties = encaustableType.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance);
+
+            return encaustableProperties;
         }
     }
 }

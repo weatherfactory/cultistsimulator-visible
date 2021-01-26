@@ -74,6 +74,11 @@ namespace SecretHistories.Entities
         [FucineValue(".")]
         public string StartingVerbId { get; set; }
 
+        public virtual bool IsValid()
+        {
+            return true;
+        }
+
         public Legacy(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 

@@ -48,6 +48,15 @@ namespace BasicEncaustingTests
             var eupx = new EncaustableWithUnmarkedPropertyX();
             Assert.Throws<ApplicationException>(() => encaustery.Encaust(eupx));
         }
+
+        [Test]
+        public void EncaustingDoesntThrowError_WhenPropertyEncaustmentStatusInBaseClassIsUnmarked()
+        {
+            var encaustery = new Encaustery<EncaustedCommandX>();
+            var dx = new DerivedEncaustableClassX();
+            encaustery.Encaust(dx);
+        }
+
         [Test]
         public void EncaustablePropertyValue_PopulatesMatchInIEncaustment()
         {
@@ -75,16 +84,27 @@ namespace BasicEncaustingTests
             Assert.Throws<ApplicationException>(() => encaustery.Encaust(ex));
         }
 
-
-
-
+        
     }
 
 public class NonEncaustableX : IEncaustable
 { }
 
+public class UsefulBaseClassThatIsntIntendedEncaustableX
+{
+    public int PropertyThatShouldntBeCheckedForEncaustAttributes { get; }
+}
 
 [IsEncaustableClass(typeof(EncaustedCommandX))]
+public class DerivedEncaustableClassX: UsefulBaseClassThatIsntIntendedEncaustableX,IEncaustable
+{
+    [Encaust]
+    public int MarkedProperty { get; set; }
+    [Encaust]
+    public int OtherMarkedProperty { get; set; }
+    }
+
+    [IsEncaustableClass(typeof(EncaustedCommandX))]
 public class EncaustableWithUnmarkedPropertyX : IEncaustable
 {
     [Encaust]

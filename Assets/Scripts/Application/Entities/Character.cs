@@ -33,21 +33,11 @@ public enum LegacyEventRecordId
 
 [IsEncaustableClass(typeof(CharacterCreationCommand))]
 public class Character:MonoBehaviour,IEncaustable
-{
-
-    [Encaust]
-    public CharacterState State
     {
-        get
-        {
-            if (EndingTriggered != null)
-                return CharacterState.Extinct;
-            if (ActiveLegacy != null)
-                return CharacterState.Viable;
-
-            return CharacterState.Unformed;
-        }
-    }
+[Encaust]
+public string ActiveLegacyId => ActiveLegacy.Id;
+[Encaust]
+public string EndingTriggeredId => EndingTriggered.Id;
 
     [Encaust]
     public string Name
@@ -81,6 +71,24 @@ public class Character:MonoBehaviour,IEncaustable
         }
     }
 
+    [DontEncaust]
+    public CharacterState State
+    {
+        get
+        {
+            if (EndingTriggered.IsValid())
+                return CharacterState.Extinct;
+            if (ActiveLegacy != null)
+                return CharacterState.Viable;
+
+            return CharacterState.Unformed;
+        }
+    }
+    [DontEncaust]
+    public Legacy ActiveLegacy { get; set; }
+    [DontEncaust]
+    public Ending EndingTriggered { get; set; }
+
 
     public Transform CurrentDecks;
     public DeckInstance DeckPrefab;
@@ -109,8 +117,6 @@ public class Character:MonoBehaviour,IEncaustable
 
     private Dictionary<string, string> _inProgressHistoryRecords;
     private Dictionary<string, string> _previousCharacterHistoryRecords;
-    public Legacy ActiveLegacy { get; set; }
-    public Ending EndingTriggered { get; set; }
 
     private Dictionary<string, int> recipeExecutions;
     private Dictionary<string, DeckInstance> _deckInstances;
@@ -118,9 +124,11 @@ public class Character:MonoBehaviour,IEncaustable
     private HashSet<ICharacterSubscriber> _subscribers = new HashSet<ICharacterSubscriber>();
     private string _name = "[unnamed]";
 
+    
     public void Reset(Legacy activeLegacy,Ending endingTriggered)
     {
-       
+    
+
             ActiveLegacy = activeLegacy;
             EndingTriggered = endingTriggered;
 

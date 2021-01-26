@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
@@ -205,7 +206,7 @@ namespace SecretHistories.Services
             else
             {
                 NoonUtility.LogWarning("Setting a default legacy for character: shouldn't do this in the actual game");
-                Character.Reset(Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First(),null);
+                Character.Reset(Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First(), NullEnding.Create());
             }
             
 

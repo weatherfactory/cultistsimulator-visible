@@ -12,6 +12,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
@@ -282,7 +283,7 @@ public class MenuScreenController : LocalNexus {
 
     private async void ResetToLegacy(Legacy activeLegacy)
     {
-        Watchman.Get<Character>().Reset(activeLegacy,null);
+        Watchman.Get<Character>().Reset(activeLegacy,NullEnding.Create());
 
 
         var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Character>(), SourceForGameState.DefaultSave);
