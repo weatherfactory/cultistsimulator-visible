@@ -8,7 +8,7 @@ using SecretHistories.Enums;
 
 namespace SecretHistories.Abstract
     {
-    public interface ITokenPayload
+    public interface ITokenPayload: IEncaustable
     {
         public string Id { get; }
         public int Quantity { get; }

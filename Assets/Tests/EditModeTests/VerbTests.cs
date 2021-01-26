@@ -15,20 +15,20 @@ using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
 [TestFixture]
-public class SituationTests
+public class CreationCommandTests
 {
-    
+
     [SetUp]
     public void WithMinimalCompendiumLoad()
     {
         Watchman.ForgetEverything();
 
-        var compendium=new Compendium();
+        var compendium = new Compendium();
         var cl = new CompendiumLoader("testcontent");
-        var importLog= cl.PopulateCompendium(compendium, "en");
-        foreach(var m in importLog.GetMessages())
+        var importLog = cl.PopulateCompendium(compendium, "en");
+        foreach (var m in importLog.GetMessages())
             Debug.Log(m.Description);
-        Assert.AreEqual(1,compendium.GetEntitiesAsList<DeckSpec>().Count);
+        Assert.AreEqual(1, compendium.GetEntitiesAsList<DeckSpec>().Count);
         Assert.AreEqual(1, compendium.GetEntitiesAsList<Dictum>().Count);
         Assert.AreEqual(5, compendium.GetEntitiesAsList<Element>().Count);
         Assert.AreEqual(1, compendium.GetEntitiesAsList<Ending>().Count);
@@ -37,24 +37,37 @@ public class SituationTests
         Assert.AreEqual(27, compendium.GetEntitiesAsList<Setting>().Count);
         Assert.AreEqual(1, compendium.GetEntitiesAsList<BasicVerb>().Count);
 
-        var watchman=new Watchman();
+        var watchman = new Watchman();
         watchman.Register(compendium);
-    }
 
-    [Test]
-    public void CreateDropzoneVerb()
-    {
         var worldSphere = Object.FindObjectOfType<TabletopSphere>();
         Watchman.Get<SphereCatalogue>().RegisterSphere(worldSphere);
         var enRouteSphere = Object.FindObjectOfType<EnRouteSphere>();
         Watchman.Get<SphereCatalogue>().RegisterSphere(worldSphere);
 
+    }
 
+    [Test]
+        public void CreateElementStackToken()
+        {
+            Assert.AreEqual(1,0);
+        }
+
+        [Test]
+        public void CreateBasicVerbToken()
+        {
+            Assert.AreEqual(1, 0);
+        }
+
+
+        [Test]
+    public void CreateDropzoneVerbToken()
+    {
+        
         var dropzoneVerb = new DropzoneVerb();
-
-
-        var dropzoneLocation = new TokenLocation(Vector3.zero, worldSphere);
-        var dropzoneCreationCommand = new VerbTokenCreationCommand(dropzoneVerb, dropzoneLocation, null);
+        
+        var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
+        var dropzoneCreationCommand = new TokenCreationCommand(dropzoneVerb, dropzoneLocation, null);
         dropzoneCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
     }
 

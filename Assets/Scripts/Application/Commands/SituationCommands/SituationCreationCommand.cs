@@ -34,7 +34,7 @@ namespace SecretHistories.Commands
         public bool Open { get; set; }
 
         public List<ISituationCommand> Commands=new List<ISituationCommand>();
-        private VerbTokenCreationCommand _verbTokenCreationCommand;
+        private TokenCreationCommand _tokenCreationCommand;
         private WindowCreationCommand windowCreationCommand;
 
         public SituationCreationCommand()
@@ -57,7 +57,7 @@ namespace SecretHistories.Commands
 
         public SituationCreationCommand WithDefaultAttachments()
         {
-            _verbTokenCreationCommand = new VerbTokenCreationCommand(Verb, AnchorLocation, SourceToken);
+            _tokenCreationCommand = new TokenCreationCommand(Verb, AnchorLocation, SourceToken);
             windowCreationCommand=new WindowCreationCommand(new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
 
             return this;
@@ -78,9 +78,9 @@ namespace SecretHistories.Commands
 
             var sphereCatalogue = Watchman.Get<SphereCatalogue>();
 
-            if(_verbTokenCreationCommand!=null)
+            if(_tokenCreationCommand!=null)
             {
-                var newAnchor=_verbTokenCreationCommand.Execute(sphereCatalogue);
+                var newAnchor=_tokenCreationCommand.Execute(sphereCatalogue);
                 newSituation.Attach(newAnchor);
             }
             

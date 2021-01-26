@@ -15,20 +15,25 @@ using SecretHistories.UI;
 
 namespace Assets.Scripts.Application.Commands.SituationCommands
 {
-    public class VerbTokenCreationCommand:IEncaustable
+    public class TokenCreationCommand:IEncaustable
     {
         public readonly IVerb _forVerb;
         public readonly TokenLocation _location;
         public readonly Token _sourceToken;
 
-        public VerbTokenCreationCommand(IVerb forVerb,TokenLocation location,Token sourceToken)
+        public TokenCreationCommand()
+        {
+
+        }
+
+        public TokenCreationCommand(IVerb forVerb,TokenLocation location,Token sourceToken)
         {
             _forVerb = forVerb;
             _location = location;
             _sourceToken = sourceToken;
         }
 
-        public VerbTokenCreationCommand(Token token)
+        public TokenCreationCommand(Token token)
         {
             _location = token.Location;
         }

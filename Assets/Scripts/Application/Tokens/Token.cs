@@ -72,6 +72,7 @@ namespace SecretHistories.UI {
 
         private ITokenPayload _payload;
 
+
         public virtual ITokenPayload Payload
         {
             get
@@ -202,8 +203,11 @@ namespace SecretHistories.UI {
 
         public virtual void Manifest()
         {
+            //I believe this only happens in automated test scenarios. but it's a bear sorting out the lifecycle!
+            if (_manifestation == null)
+                _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
 
-                if (_manifestation.GetType() != Payload.GetManifestationType(Sphere.SphereCategory))
+            if (_manifestation.GetType() != Payload.GetManifestationType(Sphere.SphereCategory))
                 {
                     Type newManifestationType = Payload.GetManifestationType(Sphere.SphereCategory);
 

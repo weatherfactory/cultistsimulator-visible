@@ -35,7 +35,7 @@ namespace SecretHistories.UI {
 
 
     [IsEncaustableClass(typeof(ElementStackCreationCommand))]
-    public class ElementStack: ITokenPayload,IEncaustable
+    public class ElementStack: ITokenPayload
     {
         public event Action<float> onDecay;
 
