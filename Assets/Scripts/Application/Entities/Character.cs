@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;
@@ -10,6 +11,8 @@ using SecretHistories.UI;
 using SecretHistories.Constants;
 using JetBrains.Annotations;
 using OrbCreationExtensions;
+using SecretHistories.Abstract;
+using SecretHistories.Commands;
 using SecretHistories.Enums;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,25 +31,11 @@ public enum LegacyEventRecordId
 
 }
 
-
-public class Character:MonoBehaviour
+[IsEncaustableClass(typeof(CharacterCreationCommand))]
+public class Character:MonoBehaviour,IEncaustable
 {
-    private HashSet<ICharacterSubscriber> _subscribers=new HashSet<ICharacterSubscriber>();
-    private string _name="[unnamed]";
 
-    public Transform CurrentDecks;
-    public DeckInstance DeckPrefab;
-
-    public void Subscribe(ICharacterSubscriber subscriber)
-    {
-        _subscribers.Add(subscriber);
-    }
-
-    public void Unsubscribe(ICharacterSubscriber subscriber)
-    {
-        _subscribers.Remove(subscriber);
-    }
-
+    [Encaust]
     public CharacterState State
     {
         get
@@ -60,6 +49,7 @@ public class Character:MonoBehaviour
         }
     }
 
+    [Encaust]
     public string Name
     {
         get { return _name; }
@@ -76,6 +66,7 @@ public class Character:MonoBehaviour
         }
     }
 
+    [Encaust]
     public string Profession
     {
         get => _profession;
@@ -90,6 +81,10 @@ public class Character:MonoBehaviour
         }
     }
 
+
+    public Transform CurrentDecks;
+    public DeckInstance DeckPrefab;
+
     public Dictionary<string, string> GetInProgressHistoryRecords()
     {
         return new Dictionary<string, string>(_inProgressHistoryRecords);
@@ -100,7 +95,18 @@ public class Character:MonoBehaviour
         return new Dictionary<string, string>(_previousCharacterHistoryRecords);
     }
 
-    
+
+    public void Subscribe(ICharacterSubscriber subscriber)
+    {
+        _subscribers.Add(subscriber);
+    }
+
+    public void Unsubscribe(ICharacterSubscriber subscriber)
+    {
+        _subscribers.Remove(subscriber);
+    }
+
+
     private Dictionary<string, string> _inProgressHistoryRecords;
     private Dictionary<string, string> _previousCharacterHistoryRecords;
     public Legacy ActiveLegacy { get; set; }
@@ -109,7 +115,8 @@ public class Character:MonoBehaviour
     private Dictionary<string, int> recipeExecutions;
     private Dictionary<string, DeckInstance> _deckInstances;
     private string _profession;
-
+    private HashSet<ICharacterSubscriber> _subscribers = new HashSet<ICharacterSubscriber>();
+    private string _name = "[unnamed]";
 
     public void Reset(Legacy activeLegacy,Ending endingTriggered)
     {
