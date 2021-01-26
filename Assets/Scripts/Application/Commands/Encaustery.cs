@@ -10,19 +10,17 @@ using SecretHistories.Entities;
 
 namespace SecretHistories.Commands
 {
-    public class Encaustery
+    public class Encaustery<T> where T : class, new()
     {
-        public T EncaustTo<T>(IEncaustable encaustable) where T: class,new()
+        public T EncaustTo(IEncaustable encaustable) 
         {
             throwExceptionIfEncaustmentAttributesAreHinky(encaustable,typeof(T));
             
             T encaustedCommand = setCommandPropertiesFromEncaustable<T>(encaustable);
 
-
             return encaustedCommand;
 
         }
-
 
 
         private void throwExceptionIfEncaustmentAttributesAreHinky(IEncaustable encaustable,Type specifiedGenericCommandType)
@@ -86,24 +84,10 @@ namespace SecretHistories.Commands
             return isEncaustableClassAttribute;
         }
 
-        private T setCommandPropertiesFromEncaustable<T>(IEncaustable encaustable) where T : class, new()
-        {
-            var command=new T();
-
-            
-            foreach (var encaustP in GetEncaustablePropertiesForType(encaustable.GetType()))
-            {
-                var commandPropertyToSet = typeof(T).GetProperty(encaustP.Name);
-                    commandPropertyToSet.SetValue(command, encaustP.GetValue(encaustable));
-            }
-
-            return command;
-        }
-
         private List<PropertyInfo> GetEncaustablePropertiesForType(Type t)
         {
             var allPropertiesOnEncaustable = t.GetProperties();
-            List<PropertyInfo> encaustableProperties=new List<PropertyInfo>();
+            List<PropertyInfo> encaustableProperties = new List<PropertyInfo>();
 
             foreach (var encaustP in allPropertiesOnEncaustable)
             {
@@ -116,5 +100,26 @@ namespace SecretHistories.Commands
 
             return encaustableProperties;
         }
+
+        private T setCommandPropertiesFromEncaustable<T>(IEncaustable encaustable) where T : class, new()
+        {
+            var command=new T();
+
+            foreach (var encaustableProperty in GetEncaustablePropertiesForType(encaustable.GetType()))
+            {
+                if (encaustableProperty.IsDefined(typeof(IsEncaustableClass)))
+                {
+
+                }
+
+ 
+                var commandPropertyToSet = typeof(T).GetProperty(encaustableProperty.Name);
+                    commandPropertyToSet.SetValue(command, encaustableProperty.GetValue(encaustable));
+            }
+
+            return command;
+        }
+
+
     }
 }
