@@ -30,6 +30,7 @@ public class SettingObserverForConfig : ISettingSubscriber
     }
 }
 
+[Immanence(typeof(Config))]
 public class Config
 {
     public bool skiplogo;

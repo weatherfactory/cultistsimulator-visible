@@ -18,7 +18,7 @@ using Object = UnityEngine.Object;
 
 namespace SecretHistories.Services
 {
-    [ImmanenceAttribute(FallbackType = typeof(PrefabFactory))]
+    [ImmanenceAttribute(typeof(PrefabFactory))]
    public class PrefabFactory
     {
 

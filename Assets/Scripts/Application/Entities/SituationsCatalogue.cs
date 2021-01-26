@@ -13,7 +13,7 @@ using SecretHistories.Services;
 namespace SecretHistories.Entities
 {
 
-    [Immanence(FallbackType = typeof(SituationsCatalogue))]
+    [Immanence(typeof(SituationsCatalogue))]
     public class SituationsCatalogue
     {
         private  List<Situation> _currentSituations;

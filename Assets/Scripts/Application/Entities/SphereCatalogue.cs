@@ -16,7 +16,7 @@ using UnityEngine;
 namespace SecretHistories.Entities {
 
 
-    [Immanence(FallbackType = typeof(SphereCatalogue))]
+    [Immanence(typeof(SphereCatalogue))]
     public class SphereCatalogue:ISphereEventSubscriber {
 
         public bool EnableAspectCaching = true;

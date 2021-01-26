@@ -16,6 +16,7 @@ namespace SecretHistories.Constants.Modding
     /// Handles location, enablement and manifest verification of mods
     /// Actual entity loading is handled by the entity data loading classes
     /// </summary>
+    [Immanence(typeof(ModManager))]
     public class ModManager
     {
         private const string MOD_SYNOPSIS_FILENAME = "synopsis.json";

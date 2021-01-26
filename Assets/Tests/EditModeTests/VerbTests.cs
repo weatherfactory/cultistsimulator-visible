@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Assets.Scripts.Application.Commands.SituationCommands;
 using NUnit.Framework;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
+using SecretHistories.Interfaces;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
@@ -15,7 +17,7 @@ using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
 [TestFixture]
-public class CreationCommandTests
+public class CreationCommandTestsRunWithoutErrors
 {
 
     [SetUp]
@@ -56,7 +58,11 @@ public class CreationCommandTests
         [Test]
         public void CreateBasicVerbToken()
         {
-            Assert.AreEqual(1, 0);
+            var basicVerb = Watchman.Get<Compendium>().GetEntitiesAsList<BasicVerb>().First();
+        var location= new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
+        var basicVerbCreationCommand=new TokenCreationCommand(basicVerb,location,null);
+        basicVerbCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
+
         }
 
 
