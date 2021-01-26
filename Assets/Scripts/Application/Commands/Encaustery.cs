@@ -16,8 +16,6 @@ namespace SecretHistories.Commands
         {
             throwExceptionIfEncaustmentAttributesAreHinky(encaustable,typeof(T));
             
-            
-
             T encaustedCommand = setCommandPropertiesFromEncaustable<T>(encaustable);
 
 
@@ -30,43 +28,62 @@ namespace SecretHistories.Commands
         private void throwExceptionIfEncaustmentAttributesAreHinky(IEncaustable encaustable,Type specifiedGenericCommandType)
         {
             //is this an encaustable class?
-            IsEncaustableClass isEncaustableClassAttribute = encaustable.GetType().GetCustomAttributes(typeof(IsEncaustableClass), false).SingleOrDefault() as IsEncaustableClass;
+            var isEncaustableClassAttribute = GetEncaustableClassAttribute(encaustable);
+
             if(isEncaustableClassAttribute==null)
                 throw new ApplicationException($"{encaustable.GetType()} can't be encausted: it isn't marked with the IsEncaustableClass attribute");
 
-            //are we encausting to the expected type?
             if(isEncaustableClassAttribute.ToType!=specifiedGenericCommandType)
                 throw new ApplicationException($"{encaustable.GetType()} encausts to {isEncaustableClassAttribute.ToType}, but we're trying to encaust it to {specifiedGenericCommandType}");
 
-
             
-            var allPropertiesOnEncaustable = encaustable.GetType().GetProperties();
-            List<string> encaustmentPropertyAttributeProblems=new List<string>();
-
             
-            foreach (var p in allPropertiesOnEncaustable)
-            {
-                //are all properties marked either encaust or dontencaust?
-                if (!p.IsDefined(typeof(Encaust), false) && !p.IsDefined(typeof(DontEncaust),false))
-                    encaustmentPropertyAttributeProblems.Add($"Trying to encaust type {encaustable}: property {p.Name} isn't marked as either Encaust or DontEncaust");   
-
-                //is there a matching property of the same name on the command that we're encausting to?
-                if(p.IsDefined(typeof(Encaust)) && specifiedGenericCommandType.GetProperty(p.Name)==null)
-                    encaustmentPropertyAttributeProblems.Add($"Encaustable of type {encaustable.GetType()} has Encaust-marked property {p.Name}, but the command we're encausting to ({specifiedGenericCommandType}) doesn't have a property with a matching name.");
-            }
-
-            foreach (var cp in specifiedGenericCommandType.GetProperties())
-            {
-                var candidateEncaustableProperty=allPropertiesOnEncaustable.SingleOrDefault(p => p.Name==cp.Name);
-                if(candidateEncaustableProperty==null)
-                    throw new ApplicationException($"Command type {specifiedGenericCommandType} has a property ({cp.Name}) that encaustable type {encaustable.GetType()} lacks, so we can't encaust the other to the one.");
-                if (candidateEncaustableProperty.IsDefined(typeof(DontEncaust)))
-                    throw new ApplicationException($"Command type {specifiedGenericCommandType} has a property ({cp.Name}) that encaustable type {encaustable.GetType()} marks as DontEncaust, so we can't encaust the other to the one.");
-            }
+            var encaustmentPropertyAttributeProblems = getEncaustmentPropertyAttributeProblems(encaustable, specifiedGenericCommandType);
 
             if (encaustmentPropertyAttributeProblems.Any())
                 throw new ApplicationException(string.Join("\n",encaustmentPropertyAttributeProblems));
 
+        }
+
+        private List<string> getEncaustmentPropertyAttributeProblems(IEncaustable encaustable, Type specifiedGenericCommandType)
+        {
+            List<string> encaustmentPropertyAttributeProblems = new List<string>();
+
+            var allPropertiesOnEncaustable = encaustable.GetType().GetProperties();
+            foreach (var p in allPropertiesOnEncaustable)
+            {
+                //are all properties marked either encaust or dontencaust?
+                if (!p.IsDefined(typeof(Encaust), false) && !p.IsDefined(typeof(DontEncaust), false))
+                    encaustmentPropertyAttributeProblems.Add(
+                        $"Trying to encaust type {encaustable}: property {p.Name} isn't marked as either Encaust or DontEncaust");
+
+                //is there a matching property of the same name on the command that we're encausting to?
+                if (p.IsDefined(typeof(Encaust)) && specifiedGenericCommandType.GetProperty(p.Name) == null)
+                    encaustmentPropertyAttributeProblems.Add(
+                        $"Encaustable of type {encaustable.GetType()} has Encaust-marked property {p.Name}, but the command we're encausting to ({specifiedGenericCommandType}) doesn't have a property with a matching name.");
+            }
+
+            foreach (var cp in specifiedGenericCommandType.GetProperties())
+            {
+                var candidateEncaustableProperty = allPropertiesOnEncaustable.SingleOrDefault(p => p.Name == cp.Name);
+                if (candidateEncaustableProperty == null)
+                    throw new ApplicationException(
+                        $"Command type {specifiedGenericCommandType} has a property ({cp.Name}) that encaustable type {encaustable.GetType()} lacks, so we can't encaust the other to the one.");
+                if (candidateEncaustableProperty.IsDefined(typeof(DontEncaust)))
+                    throw new ApplicationException(
+                        $"Command type {specifiedGenericCommandType} has a property ({cp.Name}) that encaustable type {encaustable.GetType()} marks as DontEncaust, so we can't encaust the other to the one.");
+            }
+
+            return encaustmentPropertyAttributeProblems;
+        }
+
+        private IsEncaustableClass GetEncaustableClassAttribute(IEncaustable encaustable)
+        {
+            IsEncaustableClass isEncaustableClassAttribute;
+            isEncaustableClassAttribute =
+                encaustable.GetType().GetCustomAttributes(typeof(IsEncaustableClass), false).SingleOrDefault() as
+                    IsEncaustableClass;
+            return isEncaustableClassAttribute;
         }
 
         private T setCommandPropertiesFromEncaustable<T>(IEncaustable encaustable) where T : class, new()
