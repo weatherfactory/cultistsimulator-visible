@@ -565,7 +565,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
     public void OnTokenInteraction(TokenInteractionEventArgs args)
     {
      if(args.Interaction==Interaction.OnClicked)
-         if (args.Token.ElementStack.IsValidElementStack())
+         if (args.Token.IsValidElementStack())
              SetInput(args.Token.Payload.Id);
     }
 

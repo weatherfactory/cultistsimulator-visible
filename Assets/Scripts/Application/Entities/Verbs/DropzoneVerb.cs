@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Constants;
@@ -17,8 +18,15 @@ namespace SecretHistories.Entities.Verbs
 {
     public class DropzoneVerb: IVerb
     {
+        public event Action OnChanged;
         public string Id { get; private set; }
         public int Quantity => 1;
+        public Dictionary<string, int> Mutations { get; }
+
+        public Timeshadow GetTimeshadow()
+        {
+            return Timeshadow.CreateTimelessShadow();
+        }
 
         public void SetId(string id)
         {
@@ -83,6 +91,11 @@ namespace SecretHistories.Entities.Verbs
             return new AspectsDictionary();
         }
 
+        public void ExecuteHeartbeat(float interval)
+        {
+            //
+        }
+
         public ITokenPayload Decay(float interval)
         {
             return this;
@@ -116,6 +129,10 @@ namespace SecretHistories.Entities.Verbs
         public void ModifyQuantity(int unsatisfiedChange, Context context)
         {
             //
+        }
+
+        public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
+        {//
         }
 
         public void ExecuteTokenEffectCommand(ITokenEffectCommand command)

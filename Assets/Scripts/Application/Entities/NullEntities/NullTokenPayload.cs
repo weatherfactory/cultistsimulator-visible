@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Core;
@@ -17,6 +18,13 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         public event Action OnChanged;
         public string Id => string.Empty;
         public int Quantity => 0;
+        public Dictionary<string, int> Mutations { get; }
+
+        public Timeshadow GetTimeshadow()
+        {
+            return Timeshadow.CreateTimelessShadow();
+        }
+
         public string Label => "";
         public string Description => "";
 
@@ -49,6 +57,11 @@ namespace Assets.Scripts.Application.Entities.NullEntities
             return new AspectsDictionary();
         }
 
+        public void ExecuteHeartbeat(float interval)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public void Decay(float interval)
         {
@@ -65,14 +78,9 @@ namespace Assets.Scripts.Application.Entities.NullEntities
             //
         }
 
-        bool ITokenPayload.Retire(RetirementVFX vfx)
+        public bool Retire(RetirementVFX vfx)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Retire(RetirementVFX vfx)
-        {
-            //
+            return false;
         }
 
         public void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload)
@@ -88,6 +96,11 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         public void ModifyQuantity(int unsatisfiedChange, Context context)
         {
             //
+        }
+
+        public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
+        {
+            throw new NotImplementedException();
         }
 
         public void ExecuteTokenEffectCommand(ITokenEffectCommand command)

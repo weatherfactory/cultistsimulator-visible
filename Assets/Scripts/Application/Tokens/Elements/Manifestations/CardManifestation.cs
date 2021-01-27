@@ -85,63 +85,6 @@ namespace SecretHistories.Elements
         }
 
 
-        public void UpdateTimerVisuals(float originalDuration, float durationRemaining,float interval,bool resaturate,EndingFlavour signalEndingFlavour)
-        {
-
-            if (originalDuration <= 0) //this card doesn't decay: never mind the rest
-                return;
-
-            string cardDecayTime =
-                Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
-            decayCountText.text = cardDecayTime;
-            decayCountText.richText = true;
-
-            // Decide whether timer should be visible or not
-            if (durationRemaining < originalDuration / 2)
-                ShowCardDecayTimer(true);
-            
-
-            // This handles moving the alpha value towards the desired target
-            float cosmetic_dt =
-                Mathf.Max(interval, Time.deltaTime) *
-                2.0f; // This allows us to call AdvanceTime with 0 delta and still get animation
-            if (decayVisible)
-                decayAlpha = Mathf.MoveTowards(decayAlpha, 1.0f, cosmetic_dt);
-            else
-                decayAlpha = Mathf.MoveTowards(decayAlpha, 0.0f, cosmetic_dt);
-            if (durationRemaining <= 0.0f)
-                decayAlpha = 0.0f;
-            if (decayView && decayView.gameObject)
-            {
-                decayView.gameObject.SetActive(decayAlpha > 0.0f);
-            }
-
-            // Set the text and background alpha so it fades on and off smoothly
-            if (decayCountText && decayBackgroundImage)
-            {
-                Color col = decayCountText.color;
-                col.a = decayAlpha;
-                decayCountText.color = col;
-                col = cachedDecayBackgroundColor; // Caching the color so that we can multiply with the non-1 alpha - CP
-                col.a *= decayAlpha;
-                decayBackgroundImage.color = col;
-            }
-
-            float percentageDecayed = 1 - durationRemaining / originalDuration;
-                percentageDecayed = Mathf.Clamp01(percentageDecayed);
-                if (resaturate)
-                {
-                    float reversePercentage = 1f - percentageDecayed;
-                    artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);
-                }
-                else
-                {
-                    artwork.color = new Color(1f - percentageDecayed, 1f - percentageDecayed, 1f - percentageDecayed, 1f);
-                }
-
-
-
-        }
 
         public void SendNotification(INotification notification)
         {
@@ -277,11 +220,73 @@ namespace SecretHistories.Elements
                 textBackground.overrideSprite = null;
         }
 
-        public void UpdateVisuals(ITokenPayload payload)
+        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
         {
-            text.text = payload.Label;
-            stackBadge.gameObject.SetActive(payload.Quantity > 1);
-            stackCountText.text = payload.Quantity.ToString();
+            text.text = drivesManifestation.Label;
+            stackBadge.gameObject.SetActive(drivesManifestation.Quantity > 1);
+            stackCountText.text = drivesManifestation.Quantity.ToString();
+            var timeshadow = drivesManifestation.GetTimeshadow();
+            UpdateTimerVisuals(timeshadow.Lifetime,timeshadow.LifetimeRemaining,timeshadow.LastInterval,timeshadow.Resaturate);
+
+        }
+
+
+        private void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate)
+        {
+
+            if (originalDuration <= 0) //this card doesn't decay: never mind the rest
+                return;
+
+            string cardDecayTime =
+                Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
+
+            decayCountText.text = cardDecayTime;
+            decayCountText.richText = true;
+
+            // Decide whether timer should be visible or not
+            if (durationRemaining < originalDuration / 2)
+                ShowCardDecayTimer(true);
+
+
+            // This handles moving the alpha value towards the desired target
+            float cosmetic_dt =
+                Mathf.Max(interval, Time.deltaTime) *
+                2.0f; // This allows us to call AdvanceTime with 0 delta and still get animation
+            if (decayVisible)
+                decayAlpha = Mathf.MoveTowards(decayAlpha, 1.0f, cosmetic_dt);
+            else
+                decayAlpha = Mathf.MoveTowards(decayAlpha, 0.0f, cosmetic_dt);
+            if (durationRemaining <= 0.0f)
+                decayAlpha = 0.0f;
+            if (decayView && decayView.gameObject)
+            {
+                decayView.gameObject.SetActive(decayAlpha > 0.0f);
+            }
+
+            // Set the text and background alpha so it fades on and off smoothly
+            if (decayCountText && decayBackgroundImage)
+            {
+                Color col = decayCountText.color;
+                col.a = decayAlpha;
+                decayCountText.color = col;
+                col = cachedDecayBackgroundColor; // Caching the color so that we can multiply with the non-1 alpha - CP
+                col.a *= decayAlpha;
+                decayBackgroundImage.color = col;
+            }
+
+            float percentageDecayed = 1 - durationRemaining / originalDuration;
+            percentageDecayed = Mathf.Clamp01(percentageDecayed);
+            if (resaturate)
+            {
+                float reversePercentage = 1f - percentageDecayed;
+                artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);
+            }
+            else
+            {
+                artwork.color = new Color(1f - percentageDecayed, 1f - percentageDecayed, 1f - percentageDecayed, 1f);
+            }
+
+
 
         }
 

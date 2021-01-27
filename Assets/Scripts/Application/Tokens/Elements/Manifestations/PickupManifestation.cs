@@ -108,13 +108,16 @@ namespace SecretHistories.Elements.Manifestations
 
         public void InitialiseVisuals(IVerb verb)
         {
-            //
+            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+            
         }
 
-        public void UpdateVisuals(ITokenPayload payload)
+        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
         {
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+
         }
+
 
         public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
             EndingFlavour signalEndingFlavour)

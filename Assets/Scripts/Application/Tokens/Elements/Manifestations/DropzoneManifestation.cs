@@ -56,15 +56,11 @@ namespace SecretHistories.Elements.Manifestations
         //
         }
 
-        public void UpdateVisuals(ITokenPayload payload)
+        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
         {
-            }
-
-        public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
-            EndingFlavour signalEndingFlavour)
-        {
- //
+            //
         }
+
 
         public void SendNotification(INotification notification)
         {

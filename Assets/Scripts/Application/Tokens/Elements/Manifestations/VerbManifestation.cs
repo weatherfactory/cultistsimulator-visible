@@ -91,12 +91,18 @@ namespace SecretHistories.Elements.Manifestations
 
         }
 
-        public void UpdateVisuals(ITokenPayload payload)
+        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
         {
-            NoonUtility.Log("Update Visuals on verb tokens: should look at this");
+            var timeshadow = drivesManifestation.GetTimeshadow();
+
+            if (timeshadow.Transient)
+            {
+                UpdateTimerVisuals(timeshadow.LifetimeRemaining,timeshadow.LifetimeRemaining,timeshadow.LastInterval,timeshadow.Resaturate,timeshadow.EndingFlavour);
+            }
         }
 
-        public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
+
+        private void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
             EndingFlavour signalEndingFlavour)
         {
             if (durationRemaining > 0.0f)

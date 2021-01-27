@@ -416,10 +416,10 @@ namespace SecretHistories.Spheres
         {
             if(SphereCategory==SphereCategory.World || SphereCategory==SphereCategory.Output)
             {
-                var decayingStacks = GetElementStacks().Where(s => s.Decays);
+                var heartbeatableStacks = GetElementTokens();
     
-               foreach (var d in decayingStacks)
-                      d.Decay(interval);
+               foreach (var d in heartbeatableStacks)
+                      d.ExecuteHeartbeat(interval);
             }
 
             flock.Act(interval);
@@ -448,8 +448,8 @@ namespace SecretHistories.Spheres
                         //so end execution here, and return the unsatisfied change amount
                         return unsatisfiedChange;
 
-                    int originalQuantity = elementStackTokenToAffect.Payload.Quantity;
-                    elementStackTokenToAffect.Decay(-1);
+                    int originalQuantity = elementStackTokenToAffect.Quantity;
+                    elementStackTokenToAffect.Purge();
                     //stackToAffect.Populate(element.DecayTo, stackToAffect.Quantity, Source.Existing());
                     unsatisfiedChange -= originalQuantity;
                 }
@@ -485,7 +485,7 @@ namespace SecretHistories.Spheres
 
                 // Check if the stack's elements are decaying, and split them if they are
                 // Decaying stacks should not be allowed
-                while (token.Payload.Decays && token.Quantity > 1)
+                while (token.Payload.GetTimeshadow().Transient && token.Quantity > 1)
                 {
                     AcceptToken(token.CalveToken(1,context),context);
                 }

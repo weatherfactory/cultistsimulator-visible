@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Core;
@@ -20,6 +21,12 @@ namespace SecretHistories.NullObjects
         public event Action OnChanged;
         public string Id { get; private set; }
         public int Quantity =>0;
+        public Dictionary<string, int> Mutations { get; }
+
+        public Timeshadow GetTimeshadow()
+        {
+            return Timeshadow.CreateTimelessShadow();
+        }
 
         public void SetId(string id)
         {
@@ -79,15 +86,11 @@ namespace SecretHistories.NullObjects
             return new AspectsDictionary();
         }
 
-        void ITokenPayload.Decay(float interval)
+        public void ExecuteHeartbeat(float interval)
         {
-            //
+            throw new NotImplementedException();
         }
 
-        public ITokenPayload Decay(float interval)
-        {
-            return this;
-        }
 
         public bool CanMergeWith(ITokenPayload incomingTokenPayload)
         {
@@ -122,6 +125,11 @@ namespace SecretHistories.NullObjects
         public void ModifyQuantity(int unsatisfiedChange, Context context)
         {
             //
+        }
+
+        public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
+        {
+            throw new NotImplementedException();
         }
 
         public void ExecuteTokenEffectCommand(ITokenEffectCommand command)

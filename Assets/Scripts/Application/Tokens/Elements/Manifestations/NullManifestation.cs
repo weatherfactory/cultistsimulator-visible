@@ -116,6 +116,11 @@ namespace SecretHistories.Elements.Manifestations
             //
         }
 
+        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
+        {
+          //
+        }
+
         public void UpdateVisuals(ITokenPayload payload)
         {
         //

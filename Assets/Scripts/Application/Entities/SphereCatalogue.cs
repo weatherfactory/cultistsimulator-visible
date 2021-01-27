@@ -194,7 +194,7 @@ namespace SecretHistories.Entities {
                 var allSituations = Watchman.Get<SituationsCatalogue>();
                 foreach (var s in allSituations.GetRegisteredSituations())
                 {
-                    var stacksInSituation = s.GetAllStacksInSituation();
+                    var stacksInSituation = s.GetElementTokensInSituation();
                     foreach (var situationStack in stacksInSituation)
                     {
                         IAspectsDictionary stackAspects = situationStack.GetAspects();
@@ -203,7 +203,7 @@ namespace SecretHistories.Entities {
                         foreach (var aspect in stackAspects)
                         {
 
-                            if (aspect.Key == situationStack.Id)
+                            if (aspect.Key == situationStack.Payload.Id)
                                 multipliedAspects.Add(aspect.Key, aspect.Value);
                             else
                                 multipliedAspects.Add(aspect.Key, aspect.Value * situationStack.Quantity);

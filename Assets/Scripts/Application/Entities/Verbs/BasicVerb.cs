@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Core;
@@ -26,7 +27,14 @@ namespace SecretHistories.Entities
         public string Art { get; set; }
 
 
+        public event Action OnChanged;
         public int Quantity => 1;
+        public Dictionary<string, int> Mutations { get; }
+
+        public Timeshadow GetTimeshadow()
+        {
+            return Timeshadow.CreateTimelessShadow();
+        }
 
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
@@ -98,6 +106,11 @@ namespace SecretHistories.Entities
             return new AspectsDictionary();
         }
 
+        public void ExecuteHeartbeat(float interval)
+        {
+       //
+        }
+
         public ITokenPayload Decay(float interval)
         {
             return this;
@@ -131,6 +144,11 @@ namespace SecretHistories.Entities
         public void ModifyQuantity(int unsatisfiedChange, Context context)
         {
             //
+        }
+
+        public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
+        {
+         //
         }
 
         public void ExecuteTokenEffectCommand(ITokenEffectCommand command)

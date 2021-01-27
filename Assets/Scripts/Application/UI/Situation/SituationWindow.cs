@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Numerics;
 using Assets.Scripts.Application.UI.Situation;
 using SecretHistories.Interfaces;
-using SecretHistories.UI.SlotsContainers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

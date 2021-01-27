@@ -112,6 +112,11 @@ namespace SecretHistories.Elements.Manifestations
             this.transform.position = Vector3.zero;
         }
 
+        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
+        {
+            //
+        }
+
         public void UpdateVisuals(ITokenPayload payload)
         {
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");

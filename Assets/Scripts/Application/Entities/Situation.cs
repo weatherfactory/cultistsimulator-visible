@@ -12,6 +12,7 @@ using SecretHistories.Services;
 using SecretHistories.States;
 using SecretHistories.UI;
 using Assets.Logic;
+using Assets.Scripts.Application.Logic;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
@@ -19,6 +20,7 @@ using SecretHistories.Spheres;
 using JetBrains.Annotations;
 using SecretHistories.Abstract;
 using SecretHistories.Core;
+using SecretHistories.Elements.Manifestations;
 using SecretHistories.States.TokenStates;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -26,7 +28,7 @@ using UnityEngine.Assertions;
 namespace SecretHistories.Entities {
 
     [IsEncaustableClass(typeof(SituationCreationCommand))]
-    public class Situation: ISphereEventSubscriber
+    public class Situation: ISphereEventSubscriber,IDrivesManifestation
     {
         [Encaust]
         public SituationState CurrentState { get; set; }
@@ -297,11 +299,11 @@ namespace SecretHistories.Entities {
             AcceptTokens(forSphereCategory,tokens,new Context(Context.ActionSource.Unknown));
         }
 
-        public List<ElementStack> GetAllStacksInSituation()
+        public List<Token> GetElementTokensInSituation()
         {
-            List<ElementStack> stacks = new List<ElementStack>();
-            foreach (var container in _spheres)
-                stacks.AddRange(container.GetElementTokens().Select(t=>t.ElementStack));
+            List<Token> stacks = new List<Token>();
+            foreach (var sphere in _spheres)
+                stacks.AddRange(sphere.GetElementTokens());
             return stacks;
         }
 
@@ -753,6 +755,18 @@ namespace SecretHistories.Entities {
         public virtual bool IsValidSituation()
         {
             return true;
+        }
+
+        public string Label => CurrentRecipePrediction.Title;
+        public string Description => CurrentRecipePrediction.DescriptiveText;
+        public int Quantity => 1;
+        public Timeshadow GetTimeshadow()
+        {
+            var ts=new Timeshadow(Recipe.Warmup,
+                TimeRemaining,
+                false);
+            ts.LastInterval = IntervalForLastHeartbeat;
+            return ts;
         }
     }
 

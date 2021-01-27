@@ -12,11 +12,12 @@ using UnityEngine;
 
 namespace SecretHistories.Abstract
     {
-    public interface ITokenPayload: IEncaustable
+    public interface ITokenPayload: IEncaustable,IDrivesManifestation
     {
         public event Action OnChanged ;
         public string Id { get; }
         public int Quantity { get; }
+        Dictionary<string, int> Mutations { get; }
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValidElementStack();
@@ -25,16 +26,18 @@ namespace SecretHistories.Abstract
         public string Description { get; }
         string UniquenessGroup { get; }
         bool Unique { get; }
-        bool Decays { get; }
         IAspectsDictionary GetAspects(bool includeSelf);
-        void Decay(float interval);
+        void ExecuteHeartbeat(float interval);
         bool CanMergeWith(ITokenPayload incomingTokenPayload);
-        void SetQuantity(int quantityToLeaveBehind, Context context);
         bool Retire(RetirementVFX vfx);
         void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload);
         void ShowNoMergeMessage(ITokenPayload incomingTokenPayload);
+        void SetQuantity(int quantityToLeaveBehind, Context context);
         void ModifyQuantity(int unsatisfiedChange, Context context);
+        void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive);
         void ExecuteTokenEffectCommand(ITokenEffectCommand command);
+
+        
     }
     }
 

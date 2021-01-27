@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Core;
@@ -35,6 +36,15 @@ namespace SecretHistories.Entities
 
 
         public int Quantity => 0;
+        public Dictionary<string, int> Mutations { get; }
+
+        public Timeshadow GetTimeshadow()
+        {
+            //so a Transient Verb timeshadow is not actually Transient. which is confusing. Let's rename Transient Verb
+            return Timeshadow.CreateTimelessShadow();
+        }
+
+
 
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
@@ -76,18 +86,18 @@ namespace SecretHistories.Entities
 
         public string UniquenessGroup => string.Empty;
         public bool Unique => false;
-        public bool Decays => false;
 
         public IAspectsDictionary GetAspects(bool includeSelf)
         {
             return new AspectsDictionary();
         }
 
-        public void Decay(float interval)
+        public void ExecuteHeartbeat(float interval)
         {
-            //
+            throw new NotImplementedException();
         }
 
+        
         public bool CanMergeWith(ITokenPayload incomingTokenPayload)
         {
             return false;
@@ -117,6 +127,11 @@ namespace SecretHistories.Entities
         public void ModifyQuantity(int unsatisfiedChange, Context context)
         {
             //
+        }
+
+        public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
+        {
+            throw new NotImplementedException();
         }
 
         public void ExecuteTokenEffectCommand(ITokenEffectCommand command)

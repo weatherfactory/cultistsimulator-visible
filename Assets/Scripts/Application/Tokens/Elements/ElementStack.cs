@@ -19,6 +19,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
 using Assets.Logic;
+using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
@@ -35,25 +36,20 @@ namespace SecretHistories.UI {
 
 
     [IsEncaustableClass(typeof(ElementStackCreationCommand))]
-    public class ElementStack: ITokenPayload
+    public class ElementStack : ITokenPayload
     {
         public event Action<float> onDecay;
         public event Action OnChanged;
 
-        [Encaust]
-        public string Id => Element.Id;
+        [Encaust] public string Id => Element.Id;
 
-        [Encaust]
-        public bool Defunct { get; protected set; }
+        [Encaust] public bool Defunct { get; protected set; }
 
-        [Encaust]
-        public float LifetimeRemaining { get; set; }
+        [Encaust] public float LifetimeRemaining { get; set; }
 
-        [Encaust]
-        public virtual int Quantity => Defunct ? 0 : _quantity;
+        [Encaust] public virtual int Quantity => Defunct ? 0 : _quantity;
 
-        [Encaust]
-        public virtual Dictionary<string, int> Mutations=>new Dictionary<string, int>(_currentMutations);
+        [Encaust] public virtual Dictionary<string, int> Mutations => new Dictionary<string, int>(_currentMutations);
 
         [Encaust]
         public IlluminateLibrarian IlluminateLibrarian
@@ -62,28 +58,24 @@ namespace SecretHistories.UI {
             set { _illuminateLibrarian = value; }
         }
 
-        protected  Element Element { get; set; }
-        [DontEncaust]
-        virtual public string Label => Element.Label;
-        [DontEncaust]
-        virtual public string Description => Element.Description;
-        [DontEncaust]
-        virtual public string Icon => Element.Icon;
-        [DontEncaust] 
-        virtual public bool Unique => Element.Unique;
-        [DontEncaust]
-        virtual public string UniquenessGroup =>Element.UniquenessGroup;
-        [DontEncaust]
-        virtual public bool Decays => Element.Decays;
+        protected Element Element { get; set; }
+        [DontEncaust] virtual public string Label => Element.Label;
+        [DontEncaust] virtual public string Description => Element.Description;
+        [DontEncaust] virtual public string Icon => Element.Icon;
+        [DontEncaust] virtual public bool Unique => Element.Unique;
+        [DontEncaust] virtual public string UniquenessGroup => Element.UniquenessGroup;
+        [DontEncaust] virtual public bool Decays => Element.Decays;
 
-        [DontEncaust] public virtual float Lifetime => Element.Lifetime;
-        [DontEncaust] public virtual bool Resaturate => Element.Resaturate;
+        private Timeshadow _timeshadow;
+
+        public Timeshadow GetTimeshadow()
+        {
+            return _timeshadow;
+        }
 
 
         [DontEncaust]
-        public float IntervalForLastHeartbeat { get; set; }
-        [DontEncaust]
-        public string EntityWithMutationsId
+        public string EntityWithMutationsIde
         {
             // Generate a unique ID for a combination of entity ID and mutations
             // IDs will look something like: entity_id?mutation_1=2&mutation_2=-1
@@ -100,20 +92,25 @@ namespace SecretHistories.UI {
         }
 
 
-        
+
         private int _quantity;
+
         // Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
         private IAspectsDictionary
             _aspectsDictionaryInc = new AspectsDictionary(); // For caching aspects including self 
+
         private IAspectsDictionary
             _aspectsDictionaryExc = new AspectsDictionary(); // For caching aspects excluding self
+
         private bool _aspectsDirtyInc = true;
         private bool _aspectsDirtyExc = true;
+
         private Dictionary<string, int>
             _currentMutations =
                 new Dictionary<string, int>(); //not strictly an aspects dictionary; it can contain negatives
+
         private IlluminateLibrarian _illuminateLibrarian;
-        
+
         public bool IsValidElementStack()
         {
             return Element.Id != NullElement.NULL_ELEMENT_ID;
@@ -125,46 +122,50 @@ namespace SecretHistories.UI {
         }
 
         public void SetQuantity(int quantity, Context context)
-		{
-			_quantity = quantity;
-			if (quantity <= 0)
-			{
-			    if (context.actionSource == Context.ActionSource.Purge)
-			        Retire(RetirementVFX.CardLight);
+        {
+            _quantity = quantity;
+            if (quantity <= 0)
+            {
+                if (context.actionSource == Context.ActionSource.Purge)
+                    Retire(RetirementVFX.CardLight); //this probably doesn't work any more...
                 else
-				    Retire(RetirementVFX.CardBurn);
+                    Retire(RetirementVFX.CardBurn);
                 return;
-			}
+            }
 
-			if (quantity > 1 && (Unique || !string.IsNullOrEmpty(UniquenessGroup)))
-			{
-				_quantity = 1;
-			}
-			_aspectsDirtyInc = true;
+            if (quantity > 1 && (Unique || !string.IsNullOrEmpty(UniquenessGroup)))
+            {
+                _quantity = 1;
+            }
 
-            _attachedToken.onElementStackQuantityChanged(this,context);
-            
+            _aspectsDirtyInc = true;
+
+            _attachedToken.onElementStackQuantityChanged(this, context);
+
         }
 
-        public void ModifyQuantity(int change,Context context) {
+        public void ModifyQuantity(int change, Context context)
+        {
             SetQuantity(_quantity + change, context);
         }
 
 
         public ElementStack()
         {
-            Element=new NullElement();
-            SetQuantity(1,new Context(Context.ActionSource.Unknown));
+            Element = new NullElement();e
+            SetQuantity(1, new Context(Context.ActionSource.Unknown));
         }
 
-        public ElementStack(Element element,int quantity,float lifetimeRemaining, Context context)
+        public ElementStack(Element element, int quantity, float lifetimeRemaining, Context context)
         {
             Element = element;
             LifetimeRemaining = lifetimeRemaining;
-            SetQuantity(quantity,context);
+            SetQuantity(quantity, context);
 
             _aspectsDirtyExc = true;
             _aspectsDirtyInc = true;
+
+            throw new NotImplementedException("we need to create the timeshadow!");
         }
 
 
@@ -184,122 +185,129 @@ namespace SecretHistories.UI {
         {
             _manifestation.InitialiseVisuals(Element);
             _manifestation.UpdateVisuals(this);
-            _manifestation.UpdateTimerVisuals(Element.Lifetime, LifetimeRemaining, 0f, Element.Resaturate,
-                EndingFlavour.None);
         }
 
-        virtual public void SetMutation(string aspectId, int value,bool additive)
+        virtual public void SetMutation(string aspectId, int value, bool additive)
         {
             if (_currentMutations.ContainsKey(aspectId))
             {
                 if (additive)
                     _currentMutations[aspectId] += value;
                 else
-					_currentMutations[aspectId] = value;
+                    _currentMutations[aspectId] = value;
 
                 if (_currentMutations[aspectId] == 0)
                     _currentMutations.Remove(aspectId);
             }
             else if (value != 0)
-			{
-				_currentMutations.Add(aspectId,value);
-			}
-			_aspectsDirtyExc = true;
-			_aspectsDirtyInc = true;
+            {
+                _currentMutations.Add(aspectId, value);
+            }
+
+            _aspectsDirtyExc = true;
+            _aspectsDirtyInc = true;
         }
 
 
 
 
-        virtual public Dictionary<string, List<MorphDetails>> GetXTriggers() {
+        virtual public Dictionary<string, List<MorphDetails>> GetXTriggers()
+        {
             return Element.XTriggers;
         }
 
         public virtual IAspectsDictionary GetAspects(bool includeSelf = true)
         {
             //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
-    
-            
+
+
             var tc = Watchman.Get<SphereCatalogue>();
 
-            if (Element == null || tc==null)
+            if (Element == null || tc == null)
                 return new AspectsDictionary();
-            
-			if (!tc.EnableAspectCaching)
-			{
-				_aspectsDirtyInc = true;
-				_aspectsDirtyExc = true;
-			}
 
-			if (includeSelf)
-			{
-				if (_aspectsDirtyInc)
-				{
-					if (_aspectsDictionaryInc==null)
-						_aspectsDictionaryInc=new AspectsDictionary();
-					else
-						_aspectsDictionaryInc.Clear();	// constructor is expensive
+            if (!tc.EnableAspectCaching)
+            {
+                _aspectsDirtyInc = true;
+                _aspectsDirtyExc = true;
+            }
 
-					_aspectsDictionaryInc.CombineAspects(Element.AspectsIncludingSelf);
-					_aspectsDictionaryInc[Element.Id] = _aspectsDictionaryInc[Element.Id] * Quantity; //This might be a stack. In this case, we always want to return the multiple of the aspect of the element itself (only).
+            if (includeSelf)
+            {
+                if (_aspectsDirtyInc)
+                {
+                    if (_aspectsDictionaryInc == null)
+                        _aspectsDictionaryInc = new AspectsDictionary();
+                    else
+                        _aspectsDictionaryInc.Clear(); // constructor is expensive
 
-					_aspectsDictionaryInc.ApplyMutations(_currentMutations);
+                    _aspectsDictionaryInc.CombineAspects(Element.AspectsIncludingSelf);
+                    _aspectsDictionaryInc[Element.Id] =
+                        _aspectsDictionaryInc[Element.Id] *
+                        Quantity; //This might be a stack. In this case, we always want to return the multiple of the aspect of the element itself (only).
 
-					if (tc.EnableAspectCaching)
-						_aspectsDirtyInc = false;
+                    _aspectsDictionaryInc.ApplyMutations(_currentMutations);
 
-					tc.NotifyAspectsDirty();
-				}
-				return _aspectsDictionaryInc;
-			}
-			else
-			{
-				if (_aspectsDirtyExc)
-				{
-					if (_aspectsDictionaryExc==null)
-						_aspectsDictionaryExc=new AspectsDictionary();
-					else
-						_aspectsDictionaryExc.Clear();	// constructor is expensive
+                    if (tc.EnableAspectCaching)
+                        _aspectsDirtyInc = false;
 
-					_aspectsDictionaryExc.CombineAspects(Element.Aspects);
+                    tc.NotifyAspectsDirty();
+                }
 
-					_aspectsDictionaryExc.ApplyMutations(_currentMutations);
+                return _aspectsDictionaryInc;
+            }
+            else
+            {
+                if (_aspectsDirtyExc)
+                {
+                    if (_aspectsDictionaryExc == null)
+                        _aspectsDictionaryExc = new AspectsDictionary();
+                    else
+                        _aspectsDictionaryExc.Clear(); // constructor is expensive
 
-					if (tc.EnableAspectCaching)
-						_aspectsDirtyExc = false;
+                    _aspectsDictionaryExc.CombineAspects(Element.Aspects);
 
-					tc.NotifyAspectsDirty();
-				}
-				return _aspectsDictionaryExc;
-			}
+                    _aspectsDictionaryExc.ApplyMutations(_currentMutations);
+
+                    if (tc.EnableAspectCaching)
+                        _aspectsDirtyExc = false;
+
+                    tc.NotifyAspectsDirty();
+                }
+
+                return _aspectsDictionaryExc;
+            }
         }
 
-        virtual public List<SphereSpec> GetChildSlotSpecificationsForVerb(string forVerb) {
-            return Element.Slots.Where(cs=>cs.ActionId==forVerb || cs.ActionId==string.Empty).ToList();
+        virtual public List<SphereSpec> GetChildSlotSpecificationsForVerb(string forVerb)
+        {
+            return Element.Slots.Where(cs => cs.ActionId == forVerb || cs.ActionId == string.Empty).ToList();
         }
 
-        virtual public bool HasChildSlotsForVerb(string verb) {
+        virtual public bool HasChildSlotsForVerb(string verb)
+        {
             return Element.HasChildSlotsForVerb(verb);
         }
 
 
 
 
-        public void AcceptIncomingPayloadForMerge(ITokenPayload stackMergedIntoThisOne) {
-            SetQuantity(Quantity + stackMergedIntoThisOne.Quantity,new Context(Context.ActionSource.Merge));
+        public void AcceptIncomingPayloadForMerge(ITokenPayload stackMergedIntoThisOne)
+        {
+            SetQuantity(Quantity + stackMergedIntoThisOne.Quantity, new Context(Context.ActionSource.Merge));
             stackMergedIntoThisOne.Retire(RetirementVFX.None);
 
             SoundManager.PlaySfx("CardPutOnStack");
 
         }
 
-        
+
         public bool Retire()
         {
             return Retire(RetirementVFX.CardBurn);
         }
 
-       
+
         public bool Retire(RetirementVFX vfxName)
         {
 
@@ -307,58 +315,51 @@ namespace SecretHistories.UI {
                 return false;
             Defunct = true;
 
-            if(!_attachedToken.Equals(null) && !_attachedToken.Defunct)
-                _attachedToken.Retire(vfxName); 
+            if (!_attachedToken.Equals(null) && !_attachedToken.Defunct)
+                _attachedToken.Retire(vfxName);
 
             return true;
 
         }
 
-    
+
         public virtual bool CanMergeWith(ITokenPayload intoStack)
-		{
-            if(intoStack.Id != this.Id)
-                return false;
-            if (intoStack == this)
-                return false;
-            if (!intoStack.AllowsIncomingMerge())
-                return false;
-            if (!this.AllowsOutgoingMerge())
-                return false;
-            if(!intoStack.Mutations.IsEquivalentTo(Mutations))
-                return false;
-
-            return true;
-        }
-
-
-
-
-        public virtual bool AllowsIncomingMerge()
         {
             if (Decays || Element.Unique)
                 return false;
-            else
-                return _attachedToken.Sphere.AllowStackMerge;
+
+            if (intoStack.Id != this.Id)
+                return false;
+            if (intoStack == this)
+                return false;
+            if (!this.AllowsOutgoingMerge())
+                return false;
+            if (!intoStack.Mutations.IsEquivalentTo(Mutations))
+                return false;
+
+            return true;
         }
+
 
         virtual public bool AllowsOutgoingMerge()
         {
             if (Decays || Element.Unique)
                 return false;
             else
-                return true;	// If outgoing, it doesn't matter what its current container is - CP
+                return true; // If outgoing, it doesn't matter what its current container is - CP
         }
 
 
 
-        public void ShowNoMergeMessage(ITokenPayload stackDroppedOn) {
+        public void ShowNoMergeMessage(ITokenPayload stackDroppedOn)
+        {
             if (stackDroppedOn.Id != this.Element.Id)
                 return; // We're dropping on a different element? No message needed.
 
-            if (stackDroppedOn.Decays)
-			{
-                Watchman.Get<Notifier>().ShowNotificationWindow(Watchman.Get<ILocStringProvider>().Get("UI_CANTMERGE"), Watchman.Get<ILocStringProvider>().Get("UI_DECAYS"), false);
+            if (stackDroppedOn.GetTimeshadow().Transient)
+            {
+                Watchman.Get<Notifier>().ShowNotificationWindow(Watchman.Get<ILocStringProvider>().Get("UI_CANTMERGE"),
+                    Watchman.Get<ILocStringProvider>().Get("UI_DECAYS"), false);
             }
         }
 
@@ -367,16 +368,22 @@ namespace SecretHistories.UI {
         /// </summary>
         /// <param name="interval"></param>
         /// <returns></returns>
-        public void Decay(float interval) {
+        public void ExecuteHeartbeat(float interval)
+        {
+
+            if (!Decays && interval >= 0)
+                return;
+
+            _timeshadow.ExecuteHeartbeat(interval);
             
-            if (!Decays && interval>=0)
-			    return;
+            
 
             onDecay?.Invoke(LifetimeRemaining); //display decay effects for listeners elsewhere
 
             LifetimeRemaining = LifetimeRemaining - interval;
 
-            if (LifetimeRemaining <= 0 || interval<0) {
+            if (LifetimeRemaining <= 0 || interval < 0)
+            {
 
                 // If we DecayTo, then do that. Otherwise straight up retire the card
                 if (string.IsNullOrEmpty(Element.DecayTo))
@@ -394,8 +401,6 @@ namespace SecretHistories.UI {
         {
             command.ExecuteOn(this);
         }
-        
-
 
         public void ChangeTo(string newElementId)
         {
@@ -404,12 +409,6 @@ namespace SecretHistories.UI {
 
             OnChanged?.Invoke();
         }
-
-
-
-
-
-
 
     }
 }

@@ -39,8 +39,7 @@ namespace SecretHistories.Elements.Manifestations
         void InitialiseVisuals(Element element);
         void InitialiseVisuals(IVerb verb);
 
-        void UpdateVisuals(ITokenPayload tokenPayload);
-        void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate, EndingFlavour signalEndingFlavour);
+        void UpdateVisuals(IDrivesManifestation drivesManifestation);
         void OverrideIcon(string icon);
 
         void OnBeginDragVisuals();

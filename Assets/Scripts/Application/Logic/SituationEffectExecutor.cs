@@ -86,7 +86,7 @@ namespace Assets.Logic
                 foreach (var token in sphere.GetElementTokens())
                 {
                     if (token.GetAspects(true).ContainsKey(mutationEffect.Filter))
-                        token.ElementStack.SetMutation(mutationEffect.Mutate, mutationEffect.Level,
+                        token.Payload.SetMutation(mutationEffect.Mutate, mutationEffect.Level,
                             mutationEffect.Additive);
                 }
             }

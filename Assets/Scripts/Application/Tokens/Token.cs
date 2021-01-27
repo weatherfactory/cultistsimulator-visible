@@ -172,9 +172,14 @@ namespace SecretHistories.UI {
             return Payload.GetAspects(includeSelf);
         }
 
-        public void Decay(float interval)
+        public Dictionary<string, int> GetCurrentMutations()
         {
-        Payload.Decay(interval);
+            return Payload.Mutations;
+        }
+
+        public void ExecuteHeartbeat(float interval)
+        {
+        Payload.ExecuteHeartbeat(interval);
      
         }
         
@@ -521,18 +526,24 @@ namespace SecretHistories.UI {
                 return this;
             }
 
+            var calvedTokenCreationCommand = new ElementStackCreationCommand(Payload.Id, Quantity - 1)
+            {
+                Mutations = Payload.Mutations
+            };
+            var calvingContext = new Context(Context.ActionSource.CalvedStack);
+            calvingContext.TokenDestination = new TokenLocation(this);
 
-            var calvedToken =
-                Sphere.ProvisionElementStackToken(Payload.Id, Quantity - 1, new Context(Context.ActionSource.CalvedStack, new TokenLocation(this)), Payload.Mutations);
-
-
+            var calvedToken=Sphere.ProvisionElementStackToken(calvedTokenCreationCommand,calvingContext);
+            
+            
             Payload.SetQuantity(Quantity - quantityToLeaveBehind, context);
 
-            // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
-            calvedToken.transform.position = transform.position;
 
+            //I think the commented code below is redundant now, because we specify the position in the TokenLocation passed in the context? <--which ultimately should go into a comand, yah
+            // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
+            //calvedToken.transform.position = transform.position;
             // Accepting stack may put it to pos Vector3.zero, so this is last
-            calvedToken.transform.position = transform.position;
+            //calvedToken.transform.position = transform.position;
             return calvedToken;
 
         }
@@ -705,16 +716,14 @@ namespace SecretHistories.UI {
 
         public void TimerValuesChanged(Situation situation)
         {
-            _manifestation.UpdateTimerVisuals(situation.Warmup, situation.TimeRemaining,
-                situation.IntervalForLastHeartbeat, false, situation.Recipe.SignalEndingFlavour);
+            _manifestation.UpdateVisuals(situation);
 
         }
 
-        public virtual void onElementStackQuantityChanged(ElementStack stak,Context context)
+        public virtual void onElementStackQuantityChanged(ElementStack stack,Context context)
         {
 
             _manifestation.UpdateVisuals(_payload);
-            _manifestation.UpdateTimerVisuals(_payload.Lifetime, _payload.LifetimeRemaining,_payload.IntervalForLastHeartbeat, stack.Resaturate,EndingFlavour.None);
             PlacementAlreadyChronicled = false; //should really only do this if the element has changed
             var args=new SphereContentsChangedEventArgs(Sphere,context);
             Sphere.NotifyTokensChangedForSphere(args);
@@ -766,7 +775,7 @@ namespace SecretHistories.UI {
             if (Defunct)
                 return false;
             //can we merge tokens?
-            if (Payload.CanMergeWith(incomingToken.Payload))
+            if(CanMergeWithToken(incomingToken))
                 return true;
 
             //can we put a stack in a threshold associated with this token?
@@ -774,6 +783,14 @@ namespace SecretHistories.UI {
              return true;
 
             return false;
+        }
+
+        public bool CanMergeWithToken(Token incomingToken)
+        {
+            if (!Sphere.AllowStackMerge)
+                return false;
+
+            return (Payload.CanMergeWith(incomingToken.Payload));
         }
 
         public void ShowPossibleInteractionWithToken(Token token)
@@ -791,5 +808,12 @@ namespace SecretHistories.UI {
 
         }
 
+        public void Purge()
+        {
+            if (Payload.GetTimeshadow().Transient)
+                Payload.ExecuteHeartbeat(Payload.GetTimeshadow().LifetimeRemaining + 1); //make it decay to its next form
+            else
+                Payload.Retire(RetirementVFX.CardLight);
+        }
     }
 }
