@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Commands;
 using SecretHistories.Core;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Enums;
@@ -13,6 +14,7 @@ namespace Assets.Scripts.Application.Entities.NullEntities
 {
     public class NullTokenPayload: ITokenPayload
     {
+        public event Action OnChanged;
         public string Id => string.Empty;
         public int Quantity => 0;
         public string Label => "";
@@ -47,9 +49,10 @@ namespace Assets.Scripts.Application.Entities.NullEntities
             return new AspectsDictionary();
         }
 
-        public ITokenPayload Decay(float interval)
+
+        public void Decay(float interval)
         {
-            return this;
+            return;
         }
 
         public bool CanMergeWith(ITokenPayload incomingTokenPayload)
@@ -60,6 +63,11 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         public void SetQuantity(int quantityToLeaveBehind, Context context)
         {
             //
+        }
+
+        bool ITokenPayload.Retire(RetirementVFX vfx)
+        {
+            throw new NotImplementedException();
         }
 
         public void Retire(RetirementVFX vfx)
@@ -80,6 +88,11 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         public void ModifyQuantity(int unsatisfiedChange, Context context)
         {
             //
+        }
+
+        public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
+        {
+          //
         }
     }
 }

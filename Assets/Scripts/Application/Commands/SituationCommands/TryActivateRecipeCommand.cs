@@ -26,16 +26,21 @@ namespace SecretHistories.Commands.SituationCommands
             {
                 situation.Recipe = _recipeToActivate;
                 situation.TimeRemaining = _recipeToActivate.Warmup;
+                situation.CurrentRecipePrediction = situation.GetUpdatedRecipePrediction();
+
+                var storageContainer = situation.GetSingleSphereByCategory(SphereCategory.SituationStorage);
+
+                //now we're safely started on the recipe, consume any tokens in Consuming thresholds
+                foreach (var thresholdSphere in situation.GetSpheresByCategory(SphereCategory.Threshold))
+                {
+                    if (thresholdSphere.GoverningSphereSpec.Consumes)
+                        thresholdSphere.RetireAllTokens();
+                }
+
+                storageContainer.AcceptTokens(situation.GetTokens(SphereCategory.Threshold),
+                    new Context(Context.ActionSource.SituationStoreStacks));
 
                 SoundManager.PlaySfx("SituationBegin");
-
-                //called here in case starting slots trigger consumption
-                foreach (var t in situation.GetSpheresByCategory(SphereCategory.Threshold))
-                    t.ActivatePreRecipeExecutionBehaviour();
-
-                //now move the stacks out of the starting slots into storage
-                situation.AcceptTokens(SphereCategory.SituationStorage,
-                    situation.GetElementTokens(SphereCategory.Threshold));
 
                 situation.TransitionToState(new OngoingState());
 

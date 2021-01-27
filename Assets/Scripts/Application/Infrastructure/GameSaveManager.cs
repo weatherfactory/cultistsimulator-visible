@@ -32,13 +32,6 @@ namespace SecretHistories.Infrastructure
 
         public MetaInfo MetaInfo { get; }
 
-
-        public TableSaveState(IEnumerable<Token> tableStacks, List<Situation> situations,MetaInfo metaInfo)
-        {
-            TableStacks = tableStacks.Select(s=>s.ElementStack);
-            Situations = situations;
-            MetaInfo = metaInfo;
-        }
     }
 
     public class InactiveTableSaveState : ITableSaveState

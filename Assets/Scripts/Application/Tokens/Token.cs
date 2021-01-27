@@ -710,11 +710,11 @@ namespace SecretHistories.UI {
 
         }
 
-        public virtual void onElementStackQuantityChanged(ElementStack stack,Context context)
+        public virtual void onElementStackQuantityChanged(ElementStack stak,Context context)
         {
 
-            _manifestation.UpdateVisuals(Payload);
-            _manifestation.UpdateTimerVisuals(stack.Lifetime,stack.LifetimeRemaining,stack.IntervalForLastHeartbeat, stack.Resaturate,EndingFlavour.None);
+            _manifestation.UpdateVisuals(_payload);
+            _manifestation.UpdateTimerVisuals(_payload.Lifetime, _payload.LifetimeRemaining,_payload.IntervalForLastHeartbeat, stack.Resaturate,EndingFlavour.None);
             PlacementAlreadyChronicled = false; //should really only do this if the element has changed
             var args=new SphereContentsChangedEventArgs(Sphere,context);
             Sphere.NotifyTokensChangedForSphere(args);

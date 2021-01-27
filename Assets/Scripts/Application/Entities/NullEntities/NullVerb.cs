@@ -101,7 +101,7 @@ namespace SecretHistories.NullObjects
 
         bool ITokenPayload.Retire(RetirementVFX vfx)
         {
-            //
+            return false;
         }
 
         public void Retire(RetirementVFX vfx)

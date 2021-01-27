@@ -16,7 +16,6 @@ namespace SecretHistories.Constants
         public static string SAVE_MUTATIONS="mutations";
         public static string SAVE_ILLUMINATIONS = "illuminations";
         public static string LIFETIME_REMAINING="lifetimeRemaining";
-        public static string MARKED_FOR_CONSUMPTION = "markedForConsumption";
         public static string SAVE_ACTIVELEGACY="activeLegacy";
         public static string SAVE_ELIMINATEDCARDS="eliminatedCards";
         public const string SAVE_DECKS="decks";

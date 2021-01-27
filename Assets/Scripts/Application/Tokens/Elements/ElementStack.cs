@@ -53,9 +53,6 @@ namespace SecretHistories.UI {
         public virtual int Quantity => Defunct ? 0 : _quantity;
 
         [Encaust]
-        public virtual bool MarkedForConsumption { get; set; }
-
-        [Encaust]
         public virtual Dictionary<string, int> Mutations=>new Dictionary<string, int>(_currentMutations);
 
         [Encaust]
@@ -103,7 +100,7 @@ namespace SecretHistories.UI {
         }
 
 
-        private IElementStackHost _attachedToken;
+        
         private int _quantity;
         // Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
         private IAspectsDictionary
@@ -157,7 +154,6 @@ namespace SecretHistories.UI {
         public ElementStack()
         {
             Element=new NullElement();
-            _attachedToken = new NullToken();
             SetQuantity(1,new Context(Context.ActionSource.Unknown));
         }
 
@@ -165,7 +161,6 @@ namespace SecretHistories.UI {
         {
             Element = element;
             LifetimeRemaining = lifetimeRemaining;
-            _attachedToken = new NullToken();
             SetQuantity(quantity,context);
 
             _aspectsDirtyExc = true;
@@ -287,13 +282,6 @@ namespace SecretHistories.UI {
             return Element.HasChildSlotsForVerb(verb);
         }
 
-        public void AttachToken(Token token)
-        {
-            if (_attachedToken != null)
-                _attachedToken.Retire(RetirementVFX.None);
-            _attachedToken = token;
-            _attachedToken.Populate(this);
-        }
 
 
 
@@ -346,7 +334,7 @@ namespace SecretHistories.UI {
 
 
 
-        virtual public bool AllowsIncomingMerge()
+        public virtual bool AllowsIncomingMerge()
         {
             if (Decays || Element.Unique)
                 return false;
@@ -413,7 +401,6 @@ namespace SecretHistories.UI {
         {
             var newElement = Watchman.Get<Compendium>().GetEntityById<Element>(newElementId);
             LifetimeRemaining = newElement.Lifetime;
-            MarkedForConsumption = false; //If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
 
             OnChanged?.Invoke();
         }

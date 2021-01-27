@@ -157,27 +157,27 @@ namespace SecretHistories.Constants
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
 
 
-            ITableSaveState tableSaveState = new TableSaveState(Watchman.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World).SelectMany(sphere => sphere.GetAllTokens())
+            //ITableSaveState tableSaveState = new TableSaveState(Watchman.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World).SelectMany(sphere => sphere.GetAllTokens())
 
-                , Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<MetaInfo>());
+            //    , Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<MetaInfo>());
 
-            var saveTask = Watchman.Get<GameSaveManager>()
-                .SaveActiveGameAsync(tableSaveState, Watchman.Get<Character>(), SourceForGameState.DefaultSave);
+            //var saveTask = Watchman.Get<GameSaveManager>()
+            //    .SaveActiveGameAsync(tableSaveState, Watchman.Get<Character>(), SourceForGameState.DefaultSave);
 
-            var success = await saveTask;
+            //var success = await saveTask;
 
 
-            if (success)
-            {
-                Watchman.Get<StageHand>().MenuScreen();
-            }
-            else
-            {
-                // Save failed, need to let player know there's an issue
-                // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
-                Watchman.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
-                GameSaveManager.ShowSaveError();
-            }
+            //if (success)
+            //{
+            //    Watchman.Get<StageHand>().MenuScreen();
+            //}
+            //else
+            //{
+            //    // Save failed, need to let player know there's an issue
+            //    // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
+            //    Watchman.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
+            //    GameSaveManager.ShowSaveError();
+            //}
         }
     }
 }

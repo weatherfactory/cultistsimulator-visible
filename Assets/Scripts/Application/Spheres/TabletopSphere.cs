@@ -98,7 +98,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
             if (candidateDistance.sqrMagnitude < targetDistance.sqrMagnitude)
             {
-                targetThreshold = candidateSituation.GetAvailableThresholdsForStackPush(tokenToSend.ElementStack).FirstOrDefault();
+                targetThreshold = candidateSituation.GetAvailableThresholdsForStackPush(tokenToSend.Payload).FirstOrDefault();
                 if (targetThreshold != null)
                 {
                     targetLocation = candidateLocation;

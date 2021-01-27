@@ -56,9 +56,6 @@ namespace Assets.Logic
             //Element purges are run after verb manipulations. This is so we can halt a verb and then delete any applicable contents (rather than deleting the verb, which is possible but very risky if it contains plot-relevant elements!)
             RunElementPurges(command, _ttm);
 
-            //Do this last: remove any stacks marked for consumption by being placed in a consuming slot
-            RunConsumptions(
-                sphere); //NOTE: If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
         }
 
 
@@ -88,26 +85,13 @@ namespace Assets.Logic
             {
                 foreach (var token in sphere.GetElementTokens())
                 {
-                    if (token.ElementStack.GetAspects(true).ContainsKey(mutationEffect.Filter))
+                    if (token.GetAspects(true).ContainsKey(mutationEffect.Filter))
                         token.ElementStack.SetMutation(mutationEffect.Mutate, mutationEffect.Level,
                             mutationEffect.Additive);
                 }
             }
         }
 
-        private void RunConsumptions(Sphere sphere)
-        {
-
-            var stacks = sphere.GetElementTokens();
-
-            for (int i = 0; i < stacks.Count(); i++)
-            {
-                if (stacks.ElementAt(i) != null && stacks.ElementAt(i).ElementStack.MarkedForConsumption)
-                {
-                    stacks.ElementAt(i).Retire(RetirementVFX.CardBurn);
-                }
-            }
-        }
 
         public void RunDeckEffect(RecipeCompletionEffectCommand command, Sphere sphere,
             Character storage)

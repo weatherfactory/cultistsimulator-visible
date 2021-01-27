@@ -22,24 +22,7 @@ namespace SecretHistories.States
 
         public override void Exit(Situation situation)
         {
-       situation.CurrentRecipePrediction = situation.GetUpdatedRecipePrediction();
 
-            var storageContainer = situation.GetSingleSphereByCategory(SphereCategory.SituationStorage);
-            storageContainer.AcceptTokens(situation.GetTokens(SphereCategory.Threshold),
-                new Context(Context.ActionSource.SituationStoreStacks));
-
-
-            SoundManager.PlaySfx("SituationBegin");
-
-            //called here in case starting slots trigger consumption
-            foreach (var t in situation.GetSpheresByCategory(SphereCategory.Threshold))
-                t.ActivatePreRecipeExecutionBehaviour();
-
-            //now move the stacks out of the starting slots into storage
-         situation.AcceptTokens(SphereCategory.SituationStorage, situation.GetElementTokens(SphereCategory.Threshold));
-
-
-            
         }
 
         public override bool IsActiveInThisState(Sphere s)

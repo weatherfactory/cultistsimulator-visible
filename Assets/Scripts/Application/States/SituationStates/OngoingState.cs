@@ -23,9 +23,9 @@ namespace SecretHistories.States
 
         public override void Exit(Situation situation)
         {
-            
+          situation.GetSingleSphereByCategory(SphereCategory.SituationStorage).AcceptTokens(
+               situation. GetTokens(SphereCategory.Threshold), new Context(Context.ActionSource.SituationStoreStacks));
         }
-
 
         public override bool IsActiveInThisState(Sphere s)
         {

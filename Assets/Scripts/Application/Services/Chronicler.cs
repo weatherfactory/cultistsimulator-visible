@@ -69,7 +69,7 @@ namespace SecretHistories.Services
 
             if(token.Payload.IsValidElementStack())
             {
-                IAspectsDictionary tokenAspects = token.Payload.GetAspects();
+                IAspectsDictionary tokenAspects = token.Payload.GetAspects(true);
 
             var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
 
@@ -113,12 +113,12 @@ namespace SecretHistories.Services
             //a lot of the stuff in TokenPlacedOnTabletop might be better here, actually
             SetAchievementsForEnding(ending);
 
-            List<ElementStack> allStacksInGame=new List<ElementStack>();
+            List<Token> allStacksInGame=new List<Token>();
 
             
             foreach (var tc in tokenContainers)
             {
-                allStacksInGame.AddRange(tc.GetElementStacks());
+                allStacksInGame.AddRange(tc.GetElementTokens());
             }
 
             var rnd=new Random();
@@ -128,7 +128,7 @@ namespace SecretHistories.Services
             TryUpdateBestFollower(allStacksInGame);
         }
 
-        private void TryUpdateBestFollower(List<ElementStack> stacks)
+        private void TryUpdateBestFollower(List<Token> stacks)
         {
 
             Element currentFollower=null;
@@ -139,18 +139,18 @@ namespace SecretHistories.Services
                 //if the follower is Exalted, update it.
                 if (aspects.ContainsKey(EXALTED_ASPECT))
                 {
-                    currentFollower = _compendium.GetEntityById<Element>(stack.Id);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Payload.Id);
 
                 }
 
                 else if (aspects.ContainsKey(DISCIPLE_ASPECT) && currentFollower!=null && !currentFollower.Aspects.ContainsKey(EXALTED_ASPECT))
                 {
-                    currentFollower = _compendium.GetEntityById<Element>(stack.Id);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Payload.Id);
                 }
                 else if (currentFollower==null || (!currentFollower.Aspects.ContainsKey(EXALTED_ASPECT) &&
                          !currentFollower.Aspects.ContainsKey(DISCIPLE_ASPECT)))
                 {
-                    currentFollower = _compendium.GetEntityById<Element>(stack.Id);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Payload.Id);
 
                 }
 

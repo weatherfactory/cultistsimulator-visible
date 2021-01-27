@@ -26,7 +26,6 @@ namespace SecretHistories.Commands
         public bool Defunct { get; set; }
 
         public float LifetimeRemaining { get; set; }
-        public bool MarkedForConsumption { get; set; }
 
         private Element element;
 
@@ -52,11 +51,7 @@ namespace SecretHistories.Commands
                 foreach (var m in Mutations)
                     elementStack.SetMutation(m.Key, m.Value, false);
 
-                elementStack.IlluminateLibrarian = IlluminateLibrarian;
-                elementStack.MarkedForConsumption = MarkedForConsumption;
-
-                MarkedForConsumption = false; //If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
-            }
+                elementStack.IlluminateLibrarian = IlluminateLibrarian; }
             catch (Exception e)
             {
 

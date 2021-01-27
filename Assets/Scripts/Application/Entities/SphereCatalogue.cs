@@ -148,14 +148,14 @@ namespace SecretHistories.Entities {
                 else
                     _tabletopAspects.Clear();
 
-                List<ElementStack> tabletopStacks=new List<ElementStack>();
+                List<Token> tabletopStacks=new List<Token>();
 
 
                 var tabletopContainers =
                     _spheres.Where(tc => tc.SphereCategory == SphereCategory.World);
 
                 foreach(var tc in tabletopContainers)
-                    tabletopStacks.AddRange(tc.GetElementStacks());
+                    tabletopStacks.AddRange(tc.GetElementTokens());
 
                 
                 foreach (var tabletopStack in tabletopStacks)
@@ -168,7 +168,7 @@ namespace SecretHistories.Entities {
                     foreach (var aspect in stackAspects)
                     {
 
-                        if (aspect.Key == tabletopStack.Id)
+                        if (aspect.Key == tabletopStack.Payload.Id)
                             multipliedAspects.Add(aspect.Key, aspect.Value);
                         else
                             multipliedAspects.Add(aspect.Key, aspect.Value * tabletopStack.Quantity);

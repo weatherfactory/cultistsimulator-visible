@@ -190,7 +190,6 @@ namespace SecretHistories.Spheres
                 legacyElementStackCreationSpecification.Quantity);
 
             stackCreationCommand.Mutations = legacyElementStackCreationSpecification.Mutations;
-            stackCreationCommand.MarkedForConsumption = legacyElementStackCreationSpecification.MarkedForConsumption;
             stackCreationCommand.LifetimeRemaining = legacyElementStackCreationSpecification.LifetimeRemaining;
             stackCreationCommand.IlluminateLibrarian =
                 new IlluminateLibrarian(legacyElementStackCreationSpecification.Illuminations);
@@ -621,12 +620,6 @@ namespace SecretHistories.Spheres
                 t.GoAway(context);
         }
 
-
-        public virtual void ActivatePreRecipeExecutionBehaviour()
-        {
-            //eg slot consumptions
-
-        }
 
         public ContainerMatchForStack GetMatchForTokenPayload(ITokenPayload payload)
         {

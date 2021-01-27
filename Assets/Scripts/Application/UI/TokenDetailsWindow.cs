@@ -347,7 +347,7 @@ namespace SecretHistories.UI {
             {
                 var stackTokens = worldSphere.GetElementTokens();
                 foreach (var stackToken in stackTokens)
-                    if (slotSpec.GetSlotMatchForAspects(stackToken.ElementStack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
+                    if (slotSpec.GetSlotMatchForAspects(stackToken.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
                         stackList.Add(stackToken);
             }
 

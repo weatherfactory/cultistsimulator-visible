@@ -191,7 +191,7 @@ namespace SecretHistories.UI {
             }
 
             //incomer is a token. Does it fit in the slot?
-            if (GetMatchForTokenPayload(potentialUsurper.ElementStack).MatchType==SlotMatchForAspectsType.Okay && potentialUsurper.Quantity == 1)
+            if (GetMatchForTokenPayload(potentialUsurper.Payload).MatchType==SlotMatchForAspectsType.Okay && potentialUsurper.Quantity == 1)
             {
                 incumbentMoved = true;
                 incumbent.GoAway(new Context(Context.ActionSource.PlayerDrag)); //do this first; AcceptToken will trigger an update on the displayed aspects
@@ -205,7 +205,7 @@ namespace SecretHistories.UI {
         {
 
             //does the token match the slot? Check that first
-            ContainerMatchForStack match = GetMatchForTokenPayload(token.ElementStack);
+            ContainerMatchForStack match = GetMatchForTokenPayload(token.Payload);
 
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
@@ -255,16 +255,6 @@ namespace SecretHistories.UI {
         }
 
 
-
-        public override void ActivatePreRecipeExecutionBehaviour() {
-            if (GoverningSphereSpec.Consumes) {
-                var token = GetElementTokenInSlot();
-
-                if (token != null)
-                    token.ElementStack.MarkedForConsumption = true;
-            }
-        }
-
         public void OnPointerClick(PointerEventData eventData) {
             bool highlightGreedy = GreedyIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(GreedyIcon);
             bool highlightConsumes = ConsumingIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(ConsumingIcon);
@@ -283,11 +273,11 @@ namespace SecretHistories.UI {
                 return false; // Slot is greedy? It can never take anything.
 
 
-            if (!token.ElementStack.IsValidElementStack())
+            if (!token.IsValidElementStack())
                 return false; // we only accept stacks
 
             //does the token match the slot? Check that first
-            ContainerMatchForStack match = GetMatchForTokenPayload(token.ElementStack);
+            ContainerMatchForStack match = GetMatchForTokenPayload(token.Payload);
 
             return match.MatchType == SlotMatchForAspectsType.Okay;
         }

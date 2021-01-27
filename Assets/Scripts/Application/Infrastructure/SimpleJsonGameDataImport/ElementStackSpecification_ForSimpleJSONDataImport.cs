@@ -23,7 +23,7 @@ namespace Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport
         public bool MarkedForConsumption { get; set; }
         public Context Context { get; set; }
 
-        public ElementStackSpecification_ForSimpleJSONDataImport(string id, int quantity, string locationInfo, Dictionary<string, int> mutations, Dictionary<string, string> illuminations, float lifetimeRemaining, bool markedForConsumption, Context context)
+        public ElementStackSpecification_ForSimpleJSONDataImport(string id, int quantity, string locationInfo, Dictionary<string, int> mutations, Dictionary<string, string> illuminations, float lifetimeRemaining,Context context)
         {
             Id = id;
             Quantity = quantity;
@@ -32,7 +32,6 @@ namespace Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport
             Mutations = new Dictionary<string, int>(mutations);
             Illuminations = new Dictionary<string, string>(illuminations);
             LifetimeRemaining = lifetimeRemaining;
-            MarkedForConsumption = markedForConsumption;
             Context = context;
         }
 

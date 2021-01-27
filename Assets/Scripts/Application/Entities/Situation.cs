@@ -323,14 +323,6 @@ namespace SecretHistories.Entities {
             return stacks;
         }
 
-        public List<ElementStack> GetStacks(SphereCategory forSphereCategory)
-        {
-            List<ElementStack> stacks = new List<ElementStack>();
-            foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory))
-                stacks.AddRange(container.GetElementTokens().Select(s=>s.ElementStack));
-
-            return stacks;
-        }
 
         public IAspectsDictionary GetAspectsAvailableToSituation(bool includeElementAspects)
         {
@@ -400,18 +392,6 @@ namespace SecretHistories.Entities {
             //but we want to loop from this one.
             if (recipeExecutionCommands.First().Recipe.Id != Recipe.Id)
                 Recipe = recipeExecutionCommands.First().Recipe;
-
-
-            foreach (var container in _spheres)
-                container
-                    .ActivatePreRecipeExecutionBehaviour(); //currently, this is just marking items in slots for consumption, so it happens once for everything. I might later want to run it per effect command, tho
-            //on the other hand, I *do* want this to run before the stacks are moved to storage.
-            //but finally, it would probably do better in AcceptToken on the recipeslot anyway
-
-            //move any elements currently in OngoingSlots to situation storage
-            //NB we're doing this *before* we execute the command - the command may affect these elements too
-            GetSingleSphereByCategory(SphereCategory.SituationStorage).AcceptTokens(
-                GetTokens(SphereCategory.Threshold), new Context(Context.ActionSource.SituationStoreStacks));
 
 
             foreach (var c in recipeExecutionCommands)
@@ -698,13 +678,6 @@ namespace SecretHistories.Entities {
         {
            CommandQueue.AddCommand(new ConcludeCommand());
             Continue(0f);
-        }
-
-        public void TryDecayOutputContents( float interval)
-        {
-            var stacksToDecay = GetStacks(SphereCategory.Output);
-            foreach (var s in stacksToDecay)
-                s.Decay(interval);
         }
 
 
