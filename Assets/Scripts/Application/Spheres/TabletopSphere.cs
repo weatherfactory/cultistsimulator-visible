@@ -79,7 +79,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     private bool SendTokenToNearestValidDestination(Token tokenToSend,Context context)
     {
 
-        if (!tokenToSend.ElementStack.IsValidElementStack())
+        if (!tokenToSend.IsValidElementStack())
             return false;
 
         var registeredSituations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
@@ -112,8 +112,8 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         if(targetThreshold!=null)
         {
 
-                if (tokenToSend.ElementQuantity > 1)
-                   tokenToSend.CalveToken(tokenToSend.ElementQuantity - 1, new Context(Context.ActionSource.DoubleClickSend));
+                if (tokenToSend.Quantity > 1)
+                   tokenToSend.CalveToken(tokenToSend.Quantity - 1, new Context(Context.ActionSource.DoubleClickSend));
 
                 TokenTravelItinerary i = new TokenTravelItinerary(tokenToSend.Location,
                         targetLocation)

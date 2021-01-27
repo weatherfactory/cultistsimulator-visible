@@ -11,11 +11,9 @@ namespace SecretHistories.Abstract
 {
     public interface IElementStackHost
     {
-        public void Populate(ElementStack stack);
         bool Defunct { get; }
         Sphere Sphere { get; }
         void onElementStackQuantityChanged(ElementStack elementStack, Context context);
-        void Remanifest(RetirementVFX cardTransformWhite);
         bool Retire(RetirementVFX none);
     }
 }

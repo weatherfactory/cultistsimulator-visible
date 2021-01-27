@@ -15,9 +15,9 @@ using SecretHistories.UI;
 
 namespace Assets.Scripts.Application.Commands.SituationCommands
 {
-    public class TokenCreationCommand:IEncaustable
+    public class TokenCreationCommand
     {
-        public readonly IVerb _forVerb;
+        public readonly ITokenPayload _payload;
         public readonly TokenLocation _location;
         public readonly Token _sourceToken;
 
@@ -26,9 +26,9 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
 
         }
 
-        public TokenCreationCommand(IVerb forVerb,TokenLocation location,Token sourceToken)
+        public TokenCreationCommand(ITokenPayload payload,TokenLocation location,Token sourceToken)
         {
-            _forVerb = forVerb;
+            _payload = payload;
             _location = location;
             _sourceToken = sourceToken;
         }
@@ -49,7 +49,7 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
             var sphere = sphereCatalogue.GetSphereByPath(_location.AtSpherePath);
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);
             
-            token.SetVerb(_forVerb);
+            token.SetPayload(_payload);
     
             sphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
             token.transform.localPosition = _location.Anchored3DPosition;

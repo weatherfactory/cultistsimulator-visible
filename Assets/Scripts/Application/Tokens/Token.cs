@@ -77,9 +77,7 @@ namespace SecretHistories.UI {
         {
             get
             {
-                if (ElementStack!=null && ElementStack.IsValidElementStack())
-                     return ElementStack;
-                else if (_payload!= null)
+                if (_payload!= null)
                     return _payload;
 
                 else
@@ -91,15 +89,13 @@ namespace SecretHistories.UI {
             }
         }
 
-        public virtual ElementStack ElementStack { get; protected set; }
-        public int ElementQuantity => ElementStack.Quantity;
+        //public virtual ElementStack ElementStack { get; protected set; }
+        public int Quantity => Payload.Quantity;
       //  public Element Element => ElementStack.Element;
 
         public bool IsValidElementStack()
         {
-            if (ElementStack == null)
-                return false;
-            return ElementStack.IsValidElementStack();
+            return Payload.IsValidElementStack();
         }
 
 
@@ -120,10 +116,15 @@ namespace SecretHistories.UI {
 
             CurrentItinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
             _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
-            ElementStack = new NullElementStack();
+            _payload = new NullTokenPayload();
 
             SetState(new DroppedInSphereState());
 
+        }
+
+        public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
+        {
+            Payload.ExecuteTokenEffectCommand(command);
         }
 
         public void StartArtAnimation()
@@ -154,10 +155,11 @@ namespace SecretHistories.UI {
         private TokenState CurrentState;
 
 
-        public void SetVerb(IVerb verb)
+        public void SetPayload(ITokenPayload payload)
         {
-            _payload = verb;
-        name = _payload.Id + "_verbtoken";
+            _payload = payload;
+            _payload.OnChanged += RemanifestWithDefaultFX;
+            name = _payload.Id + "_token";
         }
 
         public void AttachedTo(Situation situation)
@@ -165,13 +167,17 @@ namespace SecretHistories.UI {
             _attachedToSituation = situation;
         }
 
-
-        public virtual void Populate(ElementStack elementStack)
+        public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
-            ElementStack = elementStack;
-            name = elementStack.Id + "_stacktoken";
+            return Payload.GetAspects(includeSelf);
         }
 
+        public void Decay(float interval)
+        {
+        Payload.Decay(interval);
+     
+        }
+        
         private void ReplaceManifestation(IManifestation oldManifestation, IManifestation newManifestation,
             RetirementVFX vfxForOldManifestation)
         {
@@ -216,6 +222,11 @@ namespace SecretHistories.UI {
                     ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
 
+        }
+
+        public void RemanifestWithDefaultFX()
+        {
+            Remanifest(RetirementVFX.CardTransformWhite);
         }
 
         /// <summary>
@@ -339,8 +350,8 @@ namespace SecretHistories.UI {
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
             if (!Keyboard.current.shiftKey.wasPressedThisFrame)
             {
-                if (ElementStack.IsValidElementStack() && ElementQuantity > 1)
-                  homingAngel.SetOriginToken(CalveToken(ElementQuantity - 1, new Context(Context.ActionSource.PlayerDrag)));
+                if (Payload.IsValidElementStack() && Quantity > 1)
+                  homingAngel.SetOriginToken(CalveToken(Quantity - 1, new Context(Context.ActionSource.PlayerDrag)));
 
             }
 
@@ -466,13 +477,13 @@ namespace SecretHistories.UI {
                 Interaction = Interaction.OnReceivedADrop
             });
 
-            if (ElementStack.IsValidElementStack() && incomingToken.ElementStack.IsValidElementStack())
+            if (Payload.IsValidElementStack() && incomingToken.Payload.IsValidElementStack())
             {
-                if (ElementStack.CanMergeWith(incomingToken.ElementStack))
-                    ElementStack.AcceptIncomingStackForMerge(incomingToken.ElementStack);
+                if (Payload.CanMergeWith(incomingToken.Payload))
+                    Payload.AcceptIncomingPayloadForMerge(incomingToken.Payload);
                 else
 
-                    ElementStack.ShowNoMergeMessage(incomingToken.ElementStack);
+                    Payload.ShowNoMergeMessage(incomingToken.Payload);
             }
             
             _attachedToSituation.InteractWithSituation(incomingToken);
@@ -482,7 +493,7 @@ namespace SecretHistories.UI {
         private void TokenEntrance(Token incomingToken)
         {
 
-            if (incomingToken.ElementStack.IsValidElementStack())
+            if (incomingToken.IsValidElementStack())
             {
                 _attachedToSituation.TryPushDraggedStackIntoThreshold(incomingToken);
 
@@ -503,7 +514,7 @@ namespace SecretHistories.UI {
             if (quantityToLeaveBehind <= 0) //for some reason we're trying to leave an empty stack behind..
                 return Sphere.ProvisionElementStackToken(NullElement.NULL_ELEMENT_ID, 0,new Context(Context.ActionSource.CalvedStack,new TokenLocation(this)));
 
-            if (ElementQuantity <= quantityToLeaveBehind
+            if (Quantity <= quantityToLeaveBehind
             ) //we're trying to leave everything behind. Abort the drag and return the original token, ie this token
             {
                 FinishDrag();
@@ -512,10 +523,10 @@ namespace SecretHistories.UI {
 
 
             var calvedToken =
-                Sphere.ProvisionElementStackToken(Payload.Id, ElementQuantity - 1, new Context(Context.ActionSource.CalvedStack, new TokenLocation(this)), ElementStack.Mutations);
+                Sphere.ProvisionElementStackToken(Payload.Id, Quantity - 1, new Context(Context.ActionSource.CalvedStack, new TokenLocation(this)), Payload.Mutations);
 
 
-            ElementStack.SetQuantity(ElementQuantity - quantityToLeaveBehind, context);
+            Payload.SetQuantity(Quantity - quantityToLeaveBehind, context);
 
             // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
             calvedToken.transform.position = transform.position;
@@ -611,10 +622,11 @@ namespace SecretHistories.UI {
             if (Defunct)
                 return false;
             Defunct = true;
+            _payload.OnChanged -= RemanifestWithDefaultFX;
             FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
             _manifestation.Retire(vfx, OnManifestationRetired);
-            ElementStack.Retire(vfx);
+            _payload.Retire(vfx);
             var args=new SphereContentsChangedEventArgs(Sphere, new Context(Context.ActionSource.Retire));
             args.TokenRemoved = this;
             Sphere.NotifyTokensChangedForSphere(args);
@@ -641,8 +653,8 @@ namespace SecretHistories.UI {
             if (tabletopManager != null
             ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
-                if (!shrouded && ElementStack.IsValidElementStack())
-                    tabletopManager.SetHighlightedElement(Payload.Id, ElementQuantity);
+                if (!shrouded && Payload.IsValidElementStack())
+                    tabletopManager.SetHighlightedElement(Payload.Id, Quantity);
                 else
                     tabletopManager.SetHighlightedElement(null);
             }
@@ -754,11 +766,11 @@ namespace SecretHistories.UI {
             if (Defunct)
                 return false;
             //can we merge tokens?
-            if (ElementStack.CanMergeWith(incomingToken.ElementStack))
+            if (Payload.CanMergeWith(incomingToken.Payload))
                 return true;
 
             //can we put a stack in a threshold associated with this token?
-            if (_attachedToSituation.GetAvailableThresholdsForStackPush(incomingToken.ElementStack).Count>0)
+            if (_attachedToSituation.GetAvailableThresholdsForStackPush(incomingToken.Payload).Count>0)
              return true;
 
             return false;

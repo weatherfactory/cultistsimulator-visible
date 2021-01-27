@@ -67,9 +67,9 @@ namespace SecretHistories.Services
             if (token.PlacementAlreadyChronicled)
                 return;
 
-            if(token.ElementStack.IsValidElementStack())
+            if(token.Payload.IsValidElementStack())
             {
-                IAspectsDictionary tokenAspects = token.ElementStack.GetAspects();
+                IAspectsDictionary tokenAspects = token.Payload.GetAspects();
 
             var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
 

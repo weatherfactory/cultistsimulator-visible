@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
+using SecretHistories.Commands;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
@@ -14,6 +17,7 @@ namespace SecretHistories.NullObjects
 {
     public class NullVerb:IVerb
     {
+        public event Action OnChanged;
         public string Id { get; private set; }
         public int Quantity =>0;
 
@@ -64,6 +68,65 @@ namespace SecretHistories.NullObjects
         public static NullVerb Create()
         {
             return new NullVerb();
+        }
+
+        public string UniquenessGroup => string.Empty;
+        public bool Unique => false;
+        public bool Decays => false;
+
+        public IAspectsDictionary GetAspects(bool includeSelf)
+        {
+            return new AspectsDictionary();
+        }
+
+        void ITokenPayload.Decay(float interval)
+        {
+            //
+        }
+
+        public ITokenPayload Decay(float interval)
+        {
+            return this;
+        }
+
+        public bool CanMergeWith(ITokenPayload incomingTokenPayload)
+        {
+            return false;
+        }
+
+        public void SetQuantity(int quantityToLeaveBehind, Context context)
+        {
+            //
+        }
+
+        bool ITokenPayload.Retire(RetirementVFX vfx)
+        {
+            //
+        }
+
+        public void Retire(RetirementVFX vfx)
+        {
+            //
+        }
+
+        public void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload)
+        {
+            //
+        }
+
+        public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
+        {
+            //
+        }
+
+        public void ModifyQuantity(int unsatisfiedChange, Context context)
+        {
+            //
+        }
+
+        public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
+        {
+            //
         }
     }
 }

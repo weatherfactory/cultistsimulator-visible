@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SecretHistories.Abstract;
+using SecretHistories.Commands;
+using SecretHistories.Core;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
@@ -54,6 +57,7 @@ namespace SecretHistories.Entities
         }
 
 
+        public event Action OnChanged;
         public string Id { get; private set; }
 
         public void SetId(string id)
@@ -70,5 +74,54 @@ namespace SecretHistories.Entities
         public bool Startable { get; set; }
         public bool ExclusiveOpen => true;
 
+        public string UniquenessGroup => string.Empty;
+        public bool Unique => false;
+        public bool Decays => false;
+
+        public IAspectsDictionary GetAspects(bool includeSelf)
+        {
+            return new AspectsDictionary();
+        }
+
+        public void Decay(float interval)
+        {
+            //
+        }
+
+        public bool CanMergeWith(ITokenPayload incomingTokenPayload)
+        {
+            return false;
+        }
+
+        public void SetQuantity(int quantityToLeaveBehind, Context context)
+        {
+            //
+        }
+
+
+        public bool Retire(RetirementVFX vfx)
+        {
+            return false;
+        }
+
+        public void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload)
+        {
+            //
+        }
+
+        public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
+        {
+            //
+        }
+
+        public void ModifyQuantity(int unsatisfiedChange, Context context)
+        {
+            //
+        }
+
+        public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
+        {
+          //
+        }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Constants;
+using SecretHistories.Core;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
@@ -70,6 +72,55 @@ namespace SecretHistories.Entities.Verbs
         {
             return new DropzoneVerb();
 
+        }
+
+        public string UniquenessGroup => string.Empty;
+        public bool Unique => false;
+        public bool Decays => false;
+
+        public IAspectsDictionary GetAspects(bool includeSelf)
+        {
+            return new AspectsDictionary();
+        }
+
+        public ITokenPayload Decay(float interval)
+        {
+            return this;
+        }
+
+        public bool CanMergeWith(ITokenPayload incomingTokenPayload)
+        {
+            return false;
+        }
+
+        public void SetQuantity(int quantityToLeaveBehind, Context context)
+        {
+            //
+        }
+
+        public bool Retire(RetirementVFX vfx)
+        {
+            return true;
+        }
+
+        public void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload)
+        {
+            //
+        }
+
+        public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
+        {
+            //
+        }
+
+        public void ModifyQuantity(int unsatisfiedChange, Context context)
+        {
+            //
+        }
+
+        public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
+        {
+            //
         }
     }
 }

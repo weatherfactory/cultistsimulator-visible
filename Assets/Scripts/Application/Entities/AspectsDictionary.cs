@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
+using SecretHistories.Abstract;
 using SecretHistories.UI;
 using SecretHistories.Interfaces;
 
@@ -16,7 +17,7 @@ namespace SecretHistories.Core
         public AspectsDictionary():this(new Dictionary<string, int>())
         { }
 
-        public static AspectsDictionary GetFromStacks(IEnumerable<ElementStack> stacks,bool includingSelf=true)
+        public static AspectsDictionary GetFromStacks(IEnumerable<ITokenPayload> stacks,bool includingSelf=true)
         {
             AspectsDictionary totals = new AspectsDictionary();
 

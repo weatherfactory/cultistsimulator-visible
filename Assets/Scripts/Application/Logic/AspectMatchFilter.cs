@@ -23,7 +23,7 @@ namespace Assets.Logic
             foreach (var stack in stacks)
             {
 
-                if (stack.ElementStack.GetAspects().Any(a => _filterCriteria.ContainsKey(a.Key) && _filterCriteria[a.Key] <= a.Value))
+                if (stack.Payload.GetAspects(true).Any(a => _filterCriteria.ContainsKey(a.Key) && _filterCriteria[a.Key] <= a.Value))
                     filteredElementStacks.Add(stack);
             }
             return filteredElementStacks;

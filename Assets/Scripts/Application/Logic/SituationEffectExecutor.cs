@@ -9,6 +9,8 @@ using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using JetBrains.Annotations;
+using SecretHistories.Abstract;
+using SecretHistories.Commands;
 using SecretHistories.Spheres;
 using UnityEngine;
 
@@ -158,116 +160,16 @@ namespace Assets.Logic
         {
             Compendium _compendium = Watchman.Get<Compendium>();
 
-            foreach (var eachStack in sphere.GetElementStacks())
+            ITokenEffectCommand xTriggerCommand=new XTriggerCommand(aspectsPresent,dice,sphere);
+
+            foreach (var eachToken in sphere.GetElementTokens())
             {
-                RunXTriggersOnMutationsForStack(sphere, aspectsPresent, dice, eachStack, _compendium);
-
-
-                RunXTriggersOnStackItself(sphere, aspectsPresent, dice, eachStack, _compendium);
+                eachToken.ExecuteTokenEffectCommand(xTriggerCommand);
             }
         }
 
-        private static void RunXTriggersOnMutationsForStack(Sphere sphere, [CanBeNull] AspectsDictionary aspectsPresent, [CanBeNull] IDice dice,
-            [CanBeNull] ElementStack eachStack, [CanBeNull] Compendium _compendium)
-        {
-            foreach (var eachStackMutation in eachStack.Mutations)
-            {
-                //first we apply xtriggers to mutations - but not to the default stack aspects.
-                //i.e., mutations can get replaced by other mutations thanks to xtrigger morphs
-                //we do this first in the expectation that the stack will generally get repopulated next, if there's a relevant xtrigger
-                var stackMutationBaseAspect = _compendium.GetEntityById<Element>(eachStackMutation.Key);
-                if (stackMutationBaseAspect == null)
-                {
-                    NoonUtility.Log("Mutation aspect id doesn't exist: " + eachStackMutation.Key);
-                }
-                else
-                {
-                    foreach (var mutationXTrigger in stackMutationBaseAspect.XTriggers)
-                    {
-                        if (aspectsPresent.ContainsKey(mutationXTrigger.Key))
-                        {
-                            foreach (var morph in mutationXTrigger.Value)
-                            {
-                                if (morph.Chance >= dice.Rolld100())
-                                {
-                                    string newElementId = morph.Id;
-                                    string currentMutationId = eachStackMutation.Key;
-                                    int existingLevel = eachStackMutation.Value;
+     
 
-                                    if (morph.MorphEffect == MorphEffectType.Transform)
-                                    {
-                                        eachStack.SetMutation(currentMutationId, 0, false);
-                                        eachStack.SetMutation(newElementId, existingLevel * morph.Level,
-                                            true); //make it additive rather than overwriting, just in case
-                                    }
-                                    else if (morph.MorphEffect == MorphEffectType.Spawn)
-                                    {
-                                        sphere.ProvisionElementStackToken(newElementId, morph.Level,
-                                            new Context(Context.ActionSource.ChangeTo),new Dictionary<string,int>());
-                                        NoonUtility.Log(
-                                            "xtrigger aspect marked additional=true " + mutationXTrigger + " caused " +
-                                            currentMutationId + " to spawn a new " + newElementId);
-                                    }
-                                    else if(morph.MorphEffect==MorphEffectType.Mutate) 
-                                    {
-                                        eachStack.SetMutation(newElementId, morph.Level, true);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        private static void RunXTriggersOnStackItself(Sphere sphere, AspectsDictionary aspectsPresent,
-            IDice dice, ElementStack eachStack, Compendium _compendium)
-        {
-            var xTriggers = eachStack.GetXTriggers();
-
-            foreach (var triggerKey in xTriggers.Keys)
-            {
-                //for each XTrigger in the stack, check if any of the aspects present in all the recipe's stacks match the trigger key
-                if (aspectsPresent.ContainsKey(triggerKey))
-                {
-                    foreach (var morph in xTriggers[triggerKey])
-                    {
-                        Element effectElement = _compendium.GetEntityById<Element>(morph.Id);
-                        if (effectElement == null)
-                        {
-                            NoonUtility.Log(
-                                "Tried to run an xtrigger with an element effect id that doesn't exist: " +
-                                xTriggers[triggerKey]);
-                        }
-
-                        else if (morph.Chance >= dice.Rolld100())
-                        {
-                            string newElementId = morph.Id;
-                            string oldElementId = eachStack.Id;
-                            int existingQuantity = eachStack.Quantity;
-                            if (morph.MorphEffect==MorphEffectType.Transform)
-                            {
-                                eachStack.Populate(newElementId, existingQuantity);
-                                NoonUtility.Log(
-                                    "Transform xtrigger " + triggerKey + " caused " + oldElementId +
-                                    " to transform into " + newElementId);
-                            }
-                            else if (morph.MorphEffect == MorphEffectType.Spawn)
-                            {
-                              sphere.ProvisionElementStackToken(newElementId, morph.Level, new Context(Context.ActionSource.ChangeTo),new Dictionary<string, int>());
-                                NoonUtility.Log(
-                                    "Spawn xtrigger " + triggerKey + " caused " +
-                                    oldElementId + " to spawn a new " + newElementId);
-                            }
-                            else if (morph.MorphEffect == MorphEffectType.Mutate)
-                            {
-                                eachStack.SetMutation(newElementId, morph.Level, true);
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }
 

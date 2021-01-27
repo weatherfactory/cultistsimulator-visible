@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using Assets.Scripts.Application.Commands.SituationCommands;
 using NUnit.Framework;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Interfaces;
@@ -17,7 +18,7 @@ using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
 [TestFixture]
-public class CreationCommandTestsRunWithoutErrors
+public class CreationCommandsSmokeTests
 {
 
     [SetUp]
@@ -50,10 +51,28 @@ public class CreationCommandTestsRunWithoutErrors
     }
 
     [Test]
+    public void CreateElementStack()
+    {
+    string elementId= Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First().Id;
+        int elementQuantity= 3;
+        var elementStackCreationCommand = new ElementStackCreationCommand(elementId, elementQuantity);
+        var elementStack=elementStackCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
+        Assert.IsTrue(elementStack.IsValidElementStack());
+        Assert.AreEqual(elementId,elementStack.Id);
+        Assert.AreEqual(elementQuantity, elementStack.Quantity);
+    }
+
+    [Test]
         public void CreateElementStackToken()
         {
-            Assert.AreEqual(1,0);
-        }
+            var element = Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First();
+            var elementStackCreationCommand = new ElementStackCreationCommand(element.Id,1);
+            var elementStack = elementStackCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
+        var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
+        var elementStackTokenCreationCommand = new TokenCreationCommand(elementStack, location, null);
+       var elementStackToken=elementStackTokenCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
+       Assert.IsTrue(elementStackToken.Payload.IsValidElementStack());
+    }
 
         [Test]
         public void CreateBasicVerbToken()
@@ -61,12 +80,13 @@ public class CreationCommandTestsRunWithoutErrors
             var basicVerb = Watchman.Get<Compendium>().GetEntitiesAsList<BasicVerb>().First();
         var location= new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
         var basicVerbCreationCommand=new TokenCreationCommand(basicVerb,location,null);
-        basicVerbCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
+        var basicVerbToken=basicVerbCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
+        Assert.IsTrue(basicVerbToken.Payload.IsValidVerb());
 
-        }
+    }
 
 
-        [Test]
+    [Test]
     public void CreateDropzoneVerbToken()
     {
         
@@ -74,8 +94,11 @@ public class CreationCommandTestsRunWithoutErrors
         
         var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
         var dropzoneCreationCommand = new TokenCreationCommand(dropzoneVerb, dropzoneLocation, null);
-        dropzoneCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
+        var dropzone=dropzoneCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
+        Assert.IsInstanceOf<Token>(dropzone);
+
     }
+
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
     // `yield return null;` to skip a frame.

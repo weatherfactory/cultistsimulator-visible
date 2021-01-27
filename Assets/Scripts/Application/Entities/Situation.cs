@@ -17,6 +17,7 @@ using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
 using JetBrains.Annotations;
+using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.States.TokenStates;
 using UnityEngine;
@@ -529,7 +530,7 @@ namespace SecretHistories.Entities {
         foreach (var os in outputTokens)
         {
             if (!os.Shrouded())
-                inducingAspects.CombineAspects(os.ElementStack.GetAspects());
+                inducingAspects.CombineAspects(os.GetAspects(true));
         }
 
 
@@ -614,7 +615,7 @@ namespace SecretHistories.Entities {
             return new List<Dominion>(_registeredDominions.Where(a=>a.MatchesCommandCategory(commandCategory)));
     }
 
-    public List<Sphere> GetAvailableThresholdsForStackPush(ElementStack stack)
+    public List<Sphere> GetAvailableThresholdsForStackPush(ITokenPayload stack)
     {
         List<Sphere> thresholdsAvailable=new List<Sphere>();
         var thresholds = GetSpheresByCategory(SphereCategory.Threshold);
@@ -623,7 +624,7 @@ namespace SecretHistories.Entities {
             if (!t.IsGreedy
                && CurrentState.IsActiveInThisState(t)
                && !t.CurrentlyBlockedFor(BlockDirection.Inward)
-               && t.GetMatchForStack(stack).MatchType ==SlotMatchForAspectsType.Okay)
+               && t.GetMatchForTokenPayload(stack).MatchType ==SlotMatchForAspectsType.Okay)
 
                 thresholdsAvailable.Add(t);
 
@@ -634,7 +635,7 @@ namespace SecretHistories.Entities {
     public void InteractWithSituation(Token incomingToken)
     {
 
-        if (incomingToken.ElementStack.IsValidElementStack())
+        if (incomingToken.IsValidElementStack())
         {
             TryPushDraggedStackIntoThreshold(incomingToken);
         }
@@ -648,7 +649,7 @@ namespace SecretHistories.Entities {
 
         public bool TryPushDraggedStackIntoThreshold(Token token)
         {
-            var thresholdSpheres = GetAvailableThresholdsForStackPush(token.ElementStack);
+            var thresholdSpheres = GetAvailableThresholdsForStackPush(token.Payload);
             if (thresholdSpheres.Count <= 0)
                 return false;
 

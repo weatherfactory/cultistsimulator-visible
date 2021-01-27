@@ -61,7 +61,7 @@ namespace SecretHistories.UI {
 			{
                 if (stack.Shrouded())
 				{
-					if (stack.ElementStack.Decays)
+					if (stack.Payload.Decays)
 	                    freshStacks.Add(stack);
 					else
 						hiddenStacks.Add(stack);

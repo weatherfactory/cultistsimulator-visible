@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -38,8 +39,12 @@ namespace SecretHistories.Spheres
             RetireAllTokens();
 
             foreach (var s in shuffledList)
-                if(!exceptElements.Contains(s))
-                   ProvisionElementStackToken(s, 1, new Context(Context.ActionSource.Unknown),Element.EmptyMutationsDictionary());
+                if (!exceptElements.Contains(s))
+                {
+                    var newStackCommand=new ElementStackCreationCommand(s,1);
+                    ProvisionElementStackToken(newStackCommand, new Context(Context.ActionSource.Unknown));
+                }
+
       }
 
       public override SpherePath GetPath()

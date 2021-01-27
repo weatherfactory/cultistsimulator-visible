@@ -10,6 +10,7 @@ using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using Assets.Logic;
 using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
+using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Spheres.Angels;
@@ -185,49 +186,46 @@ namespace SecretHistories.Spheres
 
         public virtual Token ProvisionStackFromCommand(ElementStackSpecification_ForSimpleJSONDataImport legacyElementStackCreationSpecification)
         {
+            var stackCreationCommand=new ElementStackCreationCommand(legacyElementStackCreationSpecification.Id,
+                legacyElementStackCreationSpecification.Quantity);
 
-            var token = ProvisionElementStackToken(legacyElementStackCreationSpecification.Id, legacyElementStackCreationSpecification.Quantity, legacyElementStackCreationSpecification.Context, legacyElementStackCreationSpecification.Mutations);
-
-
-            token.ElementStack.IlluminateLibrarian = new IlluminateLibrarian(legacyElementStackCreationSpecification.Illuminations);
-
+            stackCreationCommand.Mutations = legacyElementStackCreationSpecification.Mutations;
+            stackCreationCommand.MarkedForConsumption = legacyElementStackCreationSpecification.MarkedForConsumption;
+            stackCreationCommand.LifetimeRemaining = legacyElementStackCreationSpecification.LifetimeRemaining;
+            stackCreationCommand.IlluminateLibrarian =
+                new IlluminateLibrarian(legacyElementStackCreationSpecification.Illuminations);
             if (legacyElementStackCreationSpecification.LifetimeRemaining > 0)
-                token.ElementStack.LifetimeRemaining = legacyElementStackCreationSpecification.LifetimeRemaining;
+                stackCreationCommand.LifetimeRemaining = legacyElementStackCreationSpecification.LifetimeRemaining;
 
-            if (legacyElementStackCreationSpecification.MarkedForConsumption)
-                token.ElementStack.MarkedForConsumption = true;
-
-
+            
+            var token = ProvisionElementStackToken(stackCreationCommand,legacyElementStackCreationSpecification.Context);
+            
             return token;
         }
 
 
         public Token ProvisionElementStackToken(string elementId, int quantity)
         {
-            return ProvisionElementStackToken(elementId, quantity, new Context(Context.ActionSource.Unknown), new Dictionary<string, int>());
-        }
+            ElementStackCreationCommand ec=new ElementStackCreationCommand(elementId,quantity);
+            return ProvisionElementStackToken(ec,new Context(Context.ActionSource.Unknown));
+            }
 
         public Token ProvisionElementStackToken(string elementId, int quantity, Context context)
         {
-           return  ProvisionElementStackToken(elementId, quantity, context, Element.EmptyMutationsDictionary());
+            ElementStackCreationCommand ec = new ElementStackCreationCommand(elementId, quantity);
+            return ProvisionElementStackToken(ec, context);
         }
 
 
-    public Token ProvisionElementStackToken(string elementId, int quantity,
-            Context context,Dictionary<string,int> withMutations)
-        {
+    public Token ProvisionElementStackToken(ElementStackCreationCommand elementStackCreationCommand,Context context)
+    {
 
-            var stack= new ElementStack();
-            
-            stack.Populate(elementId, quantity);
-
-            foreach (var m in withMutations)
-                stack.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
-
+        var elementStack = elementStackCreationCommand.Execute(context);
+           
 
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(transform);
 
-            stack.AttachToken(token);
+            token.SetPayload(elementStack);
 
             if (context.TokenDestination == null)
             {
@@ -307,15 +305,15 @@ namespace SecretHistories.Spheres
             while (unsatisfiedChange < 0)
             {
                 Token tokenToAffect =
-                    _tokens.FirstOrDefault(c => !c.Defunct && c.ElementStack.GetAspects().ContainsKey(elementId));
+                    _tokens.FirstOrDefault(c => !c.Defunct && c.Payload.GetAspects(true).ContainsKey(elementId));
 
                 if (tokenToAffect == null
                     ) //we haven't found either a concrete matching element, or an element with that ID.
                     //so end execution here, and return the unsatisfied change amount
                     return unsatisfiedChange;
 
-                int originalQuantity = tokenToAffect.ElementStack.Quantity;
-                tokenToAffect.ElementStack.ModifyQuantity(unsatisfiedChange, context);
+                int originalQuantity = tokenToAffect.Payload.Quantity;
+                tokenToAffect.Payload.ModifyQuantity(unsatisfiedChange, context);
                 unsatisfiedChange += originalQuantity;
 
             }
@@ -355,17 +353,17 @@ namespace SecretHistories.Spheres
 
         public List<Token> GetElementTokens()
         {
-            return _tokens.Where(s => !s.Defunct && s.ElementStack.IsValidElementStack()).ToList();
+            return _tokens.Where(s => !s.Defunct && s.IsValidElementStack()).ToList();
         }
 
-        public List<ElementStack> GetElementStacks()
+        public List<ITokenPayload> GetElementStacks()
         {
-            return GetElementTokens().Select(t => t.ElementStack).ToList();
+            return GetElementTokens().Where(t=>t.IsValidElementStack()).Select(t => t.Payload).ToList();
         }
 
         public List<string> GetUniqueStackElementIds()
         {
-            var stacks = _tokens.Where(t => t.ElementStack.IsValidElementStack());
+            var stacks = _tokens.Where(t => t.Payload.IsValidElementStack());
 
             return stacks.Select(s => s.Payload.Id).Distinct().ToList();
         }
@@ -382,9 +380,9 @@ namespace SecretHistories.Spheres
         /// <returns></returns>
         public AspectsDictionary GetTotalAspects(bool includingSelf = true)
         {
-            var stacks = _tokens.Where(t => t.ElementStack.IsValidElementStack());
+            var stacks = _tokens.Where(t => t.Payload.IsValidElementStack());
 
-            return AspectsDictionary.GetFromStacks(stacks.Select(s=>s.ElementStack), includingSelf);
+            return AspectsDictionary.GetFromStacks(stacks.Select(s=>s.Payload), includingSelf);
         }
 
 
@@ -393,10 +391,10 @@ namespace SecretHistories.Spheres
             return GetTotalElementsCount(x => true);
         }
 
-        public int GetTotalStacksCountWithFilter(Func<ElementStack, bool> filter)
+        public int GetTotalStacksCountWithFilter(Func<ITokenPayload, bool> filter)
         {
 
-            return GetElementTokens().Select(t=>t.ElementStack).Where(filter).Count();
+            return GetElementTokens().Select(t=>t.Payload).Where(filter).Count();
         }
         /// <summary>
         /// total of (stacks*quantity of each stack)
@@ -409,9 +407,9 @@ namespace SecretHistories.Spheres
         /// <summary>
         /// total of (stacks*quantity of each stack)
         /// </summary>
-        public int GetTotalElementsCount(Func<ElementStack, bool> filter)
+        public int GetTotalElementsCount(Func<ITokenPayload, bool> filter)
         {
-            return GetElementTokens().Select(t=>t.ElementStack).Where(filter).Sum(stack => stack.Quantity);
+            return GetElementTokens().Select(t=>t.Payload).Where(filter).Sum(stack => stack.Quantity);
 
         }
 
@@ -443,16 +441,16 @@ namespace SecretHistories.Spheres
                 {
 
                     //nb: if we transform a stack of >1, it's possible maxToPurge/Transform will be less than the stack total - iwc it'll transform the whole stack. Probably fine.
-                    ElementStack stackToAffect =
-                        GetElementStacks().FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(element.Id));
+                    var elementStackTokenToAffect =
+                        GetElementTokens().FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(element.Id));
 
-                    if (stackToAffect == null
+                    if (elementStackTokenToAffect == null
                         ) //we haven't found either a concrete matching element, or an element with that ID.
                         //so end execution here, and return the unsatisfied change amount
                         return unsatisfiedChange;
 
-                    int originalQuantity = stackToAffect.Quantity;
-                    stackToAffect.Decay(-1);
+                    int originalQuantity = elementStackTokenToAffect.Payload.Quantity;
+                    elementStackTokenToAffect.Decay(-1);
                     //stackToAffect.Populate(element.DecayTo, stackToAffect.Quantity, Source.Existing());
                     unsatisfiedChange -= originalQuantity;
                 }
@@ -476,19 +474,19 @@ namespace SecretHistories.Spheres
                 if (EnforceUniqueStacksInThisContainer)
                 {
                     var dealer = new Dealer(Watchman.Get<Character>());
-                    if (!String.IsNullOrEmpty(token.ElementStack.UniquenessGroup))
-                        dealer.RemoveFromAllDecksIfInUniquenessGroup(token.ElementStack.UniquenessGroup);
-                    if (token.ElementStack.Unique)
+                    if (!String.IsNullOrEmpty(token.Payload.UniquenessGroup))
+                        dealer.RemoveFromAllDecksIfInUniquenessGroup(token.Payload.UniquenessGroup);
+                    if (token.Payload.Unique)
                         dealer.IndicateUniqueCardManifested(token.Payload.Id);
                 }
 
                 // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
                 if (EnforceUniqueStacksInThisContainer)
-                    RemoveDuplicates(token.ElementStack);
+                    RemoveDuplicates(token.Payload);
 
                 // Check if the stack's elements are decaying, and split them if they are
                 // Decaying stacks should not be allowed
-                while (token.ElementStack.Decays && token.ElementStack.Quantity > 1)
+                while (token.Payload.Decays && token.Quantity > 1)
                 {
                     AcceptToken(token.CalveToken(1,context),context);
                 }
@@ -536,9 +534,9 @@ namespace SecretHistories.Spheres
             //check if there's an existing stack of that type to merge with
             foreach (var elementToken in existingElementTokens)
             {
-                if (token.ElementStack.CanMergeWith(elementToken.ElementStack))
+                if (token.Payload.CanMergeWith(elementToken.Payload))
                 {
-                    elementToken.ElementStack.AcceptIncomingStackForMerge(token.ElementStack);
+                    elementToken.Payload.AcceptIncomingPayloadForMerge(token.Payload);
                     return true;
                 }
             }
@@ -555,13 +553,13 @@ namespace SecretHistories.Spheres
         }
 
 
-        public void RemoveDuplicates(ElementStack incomingStack)
+        public void RemoveDuplicates(ITokenPayload incomingStack)
         {
 
             if (!incomingStack.Unique && string.IsNullOrEmpty(incomingStack.UniquenessGroup))
                 return;
 
-            foreach (var existingStack in new List<ElementStack>(GetElementStacks()))
+            foreach (var existingStack in new List<ITokenPayload>(GetElementStacks()))
             {
 
                 if (existingStack != incomingStack && existingStack.Id == incomingStack.Id)
@@ -630,14 +628,14 @@ namespace SecretHistories.Spheres
 
         }
 
-        public ContainerMatchForStack GetMatchForStack(ElementStack stack)
+        public ContainerMatchForStack GetMatchForTokenPayload(ITokenPayload payload)
         {
-            if (!stack.IsValidElementStack())
+            if (!payload.IsValidElementStack())
                 return new ContainerMatchForStack(new List<string>(), SlotMatchForAspectsType.ForbiddenAspectPresent);
             if (GoverningSphereSpec == null)
                 return ContainerMatchForStack.MatchOK();
             else
-                return GoverningSphereSpec.GetSlotMatchForAspects(stack.GetAspects());
+                return GoverningSphereSpec.GetSlotMatchForAspects(payload.GetAspects(true));
         }
 
         public void NotifyTokensChangedForSphere(SphereContentsChangedEventArgs args)

@@ -38,6 +38,7 @@ namespace SecretHistories.UI {
     public class ElementStack: ITokenPayload
     {
         public event Action<float> onDecay;
+        public event Action OnChanged;
 
         [Encaust]
         public string Id => Element.Id;
@@ -58,13 +59,13 @@ namespace SecretHistories.UI {
         public virtual Dictionary<string, int> Mutations=>new Dictionary<string, int>(_currentMutations);
 
         [Encaust]
-        virtual public IlluminateLibrarian IlluminateLibrarian
+        public IlluminateLibrarian IlluminateLibrarian
         {
             get { return _illuminateLibrarian; }
             set { _illuminateLibrarian = value; }
         }
 
-        protected virtual Element Element { get; set; }
+        protected  Element Element { get; set; }
         [DontEncaust]
         virtual public string Label => Element.Label;
         [DontEncaust]
@@ -157,7 +158,20 @@ namespace SecretHistories.UI {
         {
             Element=new NullElement();
             _attachedToken = new NullToken();
+            SetQuantity(1,new Context(Context.ActionSource.Unknown));
         }
+
+        public ElementStack(Element element,int quantity,float lifetimeRemaining, Context context)
+        {
+            Element = element;
+            LifetimeRemaining = lifetimeRemaining;
+            _attachedToken = new NullToken();
+            SetQuantity(quantity,context);
+
+            _aspectsDirtyExc = true;
+            _aspectsDirtyInc = true;
+        }
+
 
 
         public Type GetManifestationType(SphereCategory forSphereCategory)
@@ -206,7 +220,7 @@ namespace SecretHistories.UI {
             return Element.XTriggers;
         }
 
-        virtual public IAspectsDictionary GetAspects(bool includeSelf = true)
+        public virtual IAspectsDictionary GetAspects(bool includeSelf = true)
         {
             //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
     
@@ -282,59 +296,8 @@ namespace SecretHistories.UI {
         }
 
 
-        /// <summary>
-        /// This is uses both for population and for repopulation - eg when an xtrigger transforms a stack
-        /// Note that it (intentionally) resets the timer.
-        /// </summary>
-        /// <param name="elementId"></param>
-        /// <param name="quantity"></param>
-        /// <param name="source"></param>
-        public void Populate(string elementId, int quantity)
-		{
-            
-            Element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
-            if (Element==null)
-			{
-                Element=new NullElement();
-				NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");
-            }
 
-
-            if (_currentMutations == null)
-                _currentMutations = new Dictionary<string, int>();
-            if (_illuminateLibrarian == null)
-                _illuminateLibrarian = new IlluminateLibrarian();
-
-
-            try
-            {
-                SetQuantity(quantity, new Context(Context.ActionSource.Unknown));
-
-
-                LifetimeRemaining = Element.Lifetime;
-
-                MarkedForConsumption = false; //If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
-			
-				_aspectsDirtyExc = true;
-				_aspectsDirtyInc = true;
-
-            }
-            catch (Exception e)
-            {
-
-                NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
-                Retire(RetirementVFX.None);
-            }
-        }
-
-
-
-
-		
-
-
-
-        public void AcceptIncomingStackForMerge(ElementStack stackMergedIntoThisOne) {
+        public void AcceptIncomingPayloadForMerge(ITokenPayload stackMergedIntoThisOne) {
             SetQuantity(Quantity + stackMergedIntoThisOne.Quantity,new Context(Context.ActionSource.Merge));
             stackMergedIntoThisOne.Retire(RetirementVFX.None);
 
@@ -363,12 +326,10 @@ namespace SecretHistories.UI {
 
         }
 
-
-        
-        
-        public virtual bool CanMergeWith(ElementStack intoStack)
+    
+        public virtual bool CanMergeWith(ITokenPayload intoStack)
 		{
-            if(intoStack.Element != this.Element)
+            if(intoStack.Id != this.Id)
                 return false;
             if (intoStack == this)
                 return false;
@@ -403,8 +364,8 @@ namespace SecretHistories.UI {
 
 
 
-        public void ShowNoMergeMessage(ElementStack stackDroppedOn) {
-            if (stackDroppedOn.Element.Id != this.Element.Id)
+        public void ShowNoMergeMessage(ITokenPayload stackDroppedOn) {
+            if (stackDroppedOn.Id != this.Element.Id)
                 return; // We're dropping on a different element? No message needed.
 
             if (stackDroppedOn.Decays)
@@ -413,12 +374,17 @@ namespace SecretHistories.UI {
             }
         }
 
-        
+        /// <summary>
+        /// passing a negative interval will immediately decay the stack
+        /// </summary>
+        /// <param name="interval"></param>
+        /// <returns></returns>
         public void Decay(float interval) {
-            //passing a negative interval overrides and ensures it'll always decay
+            
             if (!Decays && interval>=0)
 			    return;
-            
+
+            onDecay?.Invoke(LifetimeRemaining); //display decay effects for listeners elsewhere
 
             LifetimeRemaining = LifetimeRemaining - interval;
 
@@ -426,30 +392,30 @@ namespace SecretHistories.UI {
 
                 // If we DecayTo, then do that. Otherwise straight up retire the card
                 if (string.IsNullOrEmpty(Element.DecayTo))
+                {
                     Retire(RetirementVFX.CardBurn);
+                }
                 else
-                    DecayTo(Element.DecayTo);
+                    ChangeTo(Element.DecayTo);
             }
 
-            
-            if (onDecay != null)
-                onDecay(LifetimeRemaining);
+
         }
 
+        public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
+        {
+            command.ExecuteOn(this);
+        }
         
-        
 
 
-        public bool DecayTo(string elementId)
-		{
-            // Save this, since we're retiring and that sets quantity to 0
-            int quantity = Quantity;
+        public void ChangeTo(string newElementId)
+        {
+            var newElement = Watchman.Get<Compendium>().GetEntityById<Element>(newElementId);
+            LifetimeRemaining = newElement.Lifetime;
+            MarkedForConsumption = false; //If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
 
-            Populate(elementId,quantity);
-
-            _attachedToken.Remanifest(RetirementVFX.CardTransformWhite);
-
-            return true;
+            OnChanged?.Invoke();
         }
 
 

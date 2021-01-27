@@ -191,7 +191,7 @@ namespace SecretHistories.UI {
             }
 
             //incomer is a token. Does it fit in the slot?
-            if (GetMatchForStack(potentialUsurper.ElementStack).MatchType==SlotMatchForAspectsType.Okay && potentialUsurper.ElementQuantity == 1)
+            if (GetMatchForTokenPayload(potentialUsurper.ElementStack).MatchType==SlotMatchForAspectsType.Okay && potentialUsurper.Quantity == 1)
             {
                 incumbentMoved = true;
                 incumbent.GoAway(new Context(Context.ActionSource.PlayerDrag)); //do this first; AcceptToken will trigger an update on the displayed aspects
@@ -205,7 +205,7 @@ namespace SecretHistories.UI {
         {
 
             //does the token match the slot? Check that first
-            ContainerMatchForStack match = GetMatchForStack(token.ElementStack);
+            ContainerMatchForStack match = GetMatchForTokenPayload(token.ElementStack);
 
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
@@ -219,7 +219,7 @@ namespace SecretHistories.UI {
                 if (notifier != null)
                     notifier.ShowNotificationWindow(Watchman.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
             }
-            else if (token.ElementQuantity != 1)
+            else if (token.Quantity != 1)
             {
                 // We're dropping a stack of >1?
                 // set main stack to be returned to start position
@@ -287,7 +287,7 @@ namespace SecretHistories.UI {
                 return false; // we only accept stacks
 
             //does the token match the slot? Check that first
-            ContainerMatchForStack match = GetMatchForStack(token.ElementStack);
+            ContainerMatchForStack match = GetMatchForTokenPayload(token.ElementStack);
 
             return match.MatchType == SlotMatchForAspectsType.Okay;
         }

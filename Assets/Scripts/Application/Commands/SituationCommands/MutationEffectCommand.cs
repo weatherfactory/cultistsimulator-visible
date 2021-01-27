@@ -11,10 +11,6 @@ namespace SecretHistories.Commands.SituationCommands
     }
 
 
-   public class XTriggerCommand
-   {
-
-   }
 
    public class DeckEffectCommand
    {

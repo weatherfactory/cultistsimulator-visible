@@ -64,8 +64,8 @@ namespace SecretHistories.Spheres.Angels
                     if (matchingToken.CurrentlyBeingDragged())
                         matchingToken.FinishDrag();
 
-                    if (matchingToken.ElementQuantity > GRAB_QUANTITY_LIMIT)
-                        matchingToken.CalveToken(matchingToken.ElementQuantity - GRAB_QUANTITY_LIMIT,
+                    if (matchingToken.Quantity > GRAB_QUANTITY_LIMIT)
+                        matchingToken.CalveToken(matchingToken.Quantity - GRAB_QUANTITY_LIMIT,
                             new Context(Context.ActionSource.GreedyGrab));
 
                     var enRouteSphere = Watchman.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
@@ -101,7 +101,7 @@ namespace SecretHistories.Spheres.Angels
             var tokens = sphereToSearch.GetElementTokens().OrderBy(x => rnd.Next());
 
             foreach (var token in tokens)
-                if (token.CanBePulled() && slotSpec.GetSlotMatchForAspects(token.ElementStack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
+                if (token.CanBePulled() && slotSpec.GetSlotMatchForAspects(token.Payload.GetAspects(true)).MatchType == SlotMatchForAspectsType.Okay)
                     return token;
 
             return null;
