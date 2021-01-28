@@ -338,7 +338,7 @@ namespace SecretHistories.Elements
             if (!instant)
                 SoundManager.PlaySfx("CardTurnOver");
 
-            _flipHelper.Flip(FlipHelper.TargetOrientation.FaceUp,instant);
+            _flipHelper?.Flip(FlipHelper.TargetOrientation.FaceUp,instant);
 
 
         }
