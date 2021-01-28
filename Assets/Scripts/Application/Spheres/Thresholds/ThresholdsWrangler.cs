@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
@@ -90,16 +91,20 @@ namespace SecretHistories.UI {
             return newThreshold;
         }
 
-        protected void AddChildThresholdsForStack(ElementStack stack, FucinePath parentPath)
+        protected void AddThresholdChildrenForToken(Token token, FucinePath parentPath)
         {
+            var elementInToken = Watchman.Get<Compendium>().GetEntityById<Element>(token.Payload.Id);
 
-            foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(_verb.Id))
+            var childSlotSpecs= elementInToken.Slots.Where(cs => cs.ActionId == _verb.Id || cs.ActionId == string.Empty).ToList();
+            
+
+            foreach (var childSlotSpecification in childSlotSpecs)
             {
                 AddThreshold(childSlotSpecification, parentPath);
             }
         }
         
-        private void RemoveChildrenOfThreshold(Sphere thresholdToOrphan)
+        private void RemoveThresholdChildren(Sphere thresholdToOrphan)
         {
             if(thresholdToOrphan.GetElementStacks().Any())
                 NoonUtility.LogWarning($"This code currently assumes thresholds can only contain one stack token. One ({thresholdToOrphan.GetElementStacks().First().Id}) has been removed from {thresholdToOrphan.GetPath()}, but at least one remains - you may see unexpected results.");
@@ -116,11 +121,11 @@ namespace SecretHistories.UI {
             if(args.TokenAdded!=null && args.TokenRemoved != null)
                 NoonUtility.LogWarning($"Tokens with valid element stacks seem to have been added ({args.TokenAdded.name}) and removed ({args.TokenRemoved.name}) in a single event. This will likely cause issues, but we'll go ahead with both.");
 
-            if(args.TokenAdded!=null && args.TokenAdded.ElementStack.IsValidElementStack())
-                AddChildThresholdsForStack(args.TokenAdded.ElementStack,args.Sphere.GetPath());
+            if(args.TokenAdded!=null)
+                AddThresholdChildrenForToken(args.TokenAdded,args.Sphere.GetPath());
 
             if (args.TokenRemoved!=null)
-                RemoveChildrenOfThreshold(args.Sphere);
+                RemoveThresholdChildren(args.Sphere);
 
             //if a token has been removed: remove any child thresholds
         }

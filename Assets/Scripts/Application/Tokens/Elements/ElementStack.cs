@@ -19,6 +19,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
 using Assets.Logic;
+using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Elements;
@@ -38,8 +39,8 @@ namespace SecretHistories.UI {
     [IsEncaustableClass(typeof(ElementStackCreationCommand))]
     public class ElementStack : ITokenPayload
     {
-        public event Action<float> onDecay;
-        public event Action OnChanged;
+        public event Action<float> OnLifetimeSpent;
+        public event Action<TokenPayloadChangedArgs> OnChanged;
 
         [Encaust] public string Id => Element.Id;
 
@@ -74,24 +75,22 @@ namespace SecretHistories.UI {
         }
 
 
-        [DontEncaust]
-        public string EntityWithMutationsIde
+
+        public string GetSignature()
         {
-            // Generate a unique ID for a combination of entity ID and mutations
-            // IDs will look something like: entity_id?mutation_1=2&mutation_2=-1
-            get
-            {
-                var mutations = Mutations;
-                return Element.Id + "?" + string.Join(
+            // Generate a distinctive signature for a combination of entity ID and mutations
+            // signatures will look something like: entity_id?mutation_1=2&mutation_2=-1
+            
+            var mutations = Mutations;
+                string signature= "elementStack_" + Element.Id + "?" + string.Join(
                     "&",
                     mutations.Keys
                         .Where(m => mutations[m] != 0)
                         .OrderBy(x => x)
                         .Select(m => $"{m}={mutations[m]}"));
-            }
+
+                return signature;
         }
-
-
 
         private int _quantity;
 
@@ -126,11 +125,7 @@ namespace SecretHistories.UI {
             _quantity = quantity;
             if (quantity <= 0)
             {
-                if (context.actionSource == Context.ActionSource.Purge)
-                    Retire(RetirementVFX.CardLight); //this probably doesn't work any more...
-                else
                     Retire(RetirementVFX.CardBurn);
-                return;
             }
 
             if (quantity > 1 && (Unique || !string.IsNullOrEmpty(UniquenessGroup)))
@@ -139,8 +134,7 @@ namespace SecretHistories.UI {
             }
 
             _aspectsDirtyInc = true;
-
-            _attachedToken.onElementStackQuantityChanged(this, context);
+            OnChanged(new TokenPayloadChangedArgs(this,PayloadChangeType.Update,context));
 
         }
 
@@ -152,7 +146,7 @@ namespace SecretHistories.UI {
 
         public ElementStack()
         {
-            Element = new NullElement();e
+            Element = new NullElement();
             SetQuantity(1, new Context(Context.ActionSource.Unknown));
         }
 
@@ -165,7 +159,7 @@ namespace SecretHistories.UI {
             _aspectsDirtyExc = true;
             _aspectsDirtyInc = true;
 
-            throw new NotImplementedException("we need to create the timeshadow!");
+            _timeshadow = new Timeshadow(element.Lifetime, lifetimeRemaining, element.Resaturate);
         }
 
 
@@ -208,7 +202,7 @@ namespace SecretHistories.UI {
             _aspectsDirtyInc = true;
         }
 
-
+  
 
 
         virtual public Dictionary<string, List<MorphDetails>> GetXTriggers()
@@ -279,15 +273,6 @@ namespace SecretHistories.UI {
             }
         }
 
-        virtual public List<SphereSpec> GetChildSlotSpecificationsForVerb(string forVerb)
-        {
-            return Element.Slots.Where(cs => cs.ActionId == forVerb || cs.ActionId == string.Empty).ToList();
-        }
-
-        virtual public bool HasChildSlotsForVerb(string verb)
-        {
-            return Element.HasChildSlotsForVerb(verb);
-        }
 
 
 
@@ -314,9 +299,7 @@ namespace SecretHistories.UI {
             if (Defunct)
                 return false;
             Defunct = true;
-
-            if (!_attachedToken.Equals(null) && !_attachedToken.Defunct)
-                _attachedToken.Retire(vfxName);
+            OnChanged.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Retirement));
 
             return true;
 
@@ -374,11 +357,11 @@ namespace SecretHistories.UI {
             if (!Decays && interval >= 0)
                 return;
 
-            _timeshadow.ExecuteHeartbeat(interval);
+            _timeshadow.SpendTime(interval);
             
             
 
-            onDecay?.Invoke(LifetimeRemaining); //display decay effects for listeners elsewhere
+            OnLifetimeSpent?.Invoke(LifetimeRemaining); //display decay effects for listeners elsewhere
 
             LifetimeRemaining = LifetimeRemaining - interval;
 
@@ -407,7 +390,7 @@ namespace SecretHistories.UI {
             var newElement = Watchman.Get<Compendium>().GetEntityById<Element>(newElementId);
             LifetimeRemaining = newElement.Lifetime;
 
-            OnChanged?.Invoke();
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Fundamental));
         }
 
     }

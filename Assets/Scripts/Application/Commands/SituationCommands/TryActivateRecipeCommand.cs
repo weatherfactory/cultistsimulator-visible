@@ -18,14 +18,14 @@ namespace SecretHistories.Commands.SituationCommands
         }
         public bool Execute(Situation situation)
         {
-            var aspects = situation.GetAspectsAvailableToSituation(true);
+            var aspects = situation.GetAspects(true);
             var tc = Watchman.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(aspects);
 
             if (_recipeToActivate.RequirementsSatisfiedBy(aspectsInContext))
             {
-                situation.Recipe = _recipeToActivate;
-                situation.TimeRemaining = _recipeToActivate.Warmup;
+                situation.ActivateRecipe(_recipeToActivate);
+     
                 situation.CurrentRecipePrediction = situation.GetUpdatedRecipePrediction();
 
                 var storageContainer = situation.GetSingleSphereByCategory(SphereCategory.SituationStorage);

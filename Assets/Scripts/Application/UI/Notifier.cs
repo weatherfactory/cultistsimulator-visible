@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;
@@ -93,7 +94,7 @@ namespace SecretHistories.UI {
         // Token Details
 
         // Variant to link to token decay
-        public void ShowCardElementDetails(Element element, ElementStack token)
+        public void ShowCardElementDetails(Element element, Token token)
 		{
             tokenDetails.ShowElementDetails(element, token);
             aspectDetails.Hide();
@@ -148,7 +149,7 @@ namespace SecretHistories.UI {
             if (args.Interaction == Interaction.OnClicked)
             {
                 var element = Watchman.Get<Compendium>().GetEntityById<Element>(args.Payload.Id);
-              ShowCardElementDetails(element, args.Token.ElementStack);
+              ShowCardElementDetails(element, args.Token);
             }
 
             if (args.Interaction == Interaction.OnDoubleClicked)

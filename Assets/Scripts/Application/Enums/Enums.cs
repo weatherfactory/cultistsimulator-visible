@@ -11,6 +11,7 @@ namespace SecretHistories.Enums
     {
         Viable, Extinct, Unformed
     }
+
     public enum GameSpeed
     {
         DeferToNextLowestCommand = -1,
@@ -26,6 +27,13 @@ namespace SecretHistories.Enums
         Transform = 1,
         Spawn = 2,
         Mutate = 3
+    }
+
+    public enum PayloadChangeType
+    {
+        Fundamental,
+        Update,
+        Retirement
     }
 
     public enum PortalEffect

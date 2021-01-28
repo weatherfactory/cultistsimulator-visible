@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Linq;
+using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Enums.Elements;
@@ -42,14 +43,14 @@ namespace SecretHistories.UI {
 
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element _element;
-        ElementStack _token;
+        Token _token;
 
         SphereSpec slotSpec;
 
         DeckSpec deckSpec;
         int deckQuantity;
 
-        public void ShowElementDetails(Element element, ElementStack stack) {
+        public void ShowElementDetails(Element element, Token token) {
 
             //AK: removed for now. Mutations complicate things, but also, clicking on the card and getting no response feels stuck
             // Check if we'd show the same, if so: do nothing
@@ -65,9 +66,9 @@ namespace SecretHistories.UI {
             //        return;
             //}
 
-            SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
+            _token.Payload.OnLifetimeSpent -= HandleOnTokenDecay;// remove decay listener if we had one on an old token
             this._element = element;
-            this._token = stack; // To be able to update the card's remaining time
+            this._token = token; // To be able to update the card's remaining time
             this.slotSpec = null;
             this.deckSpec = null;
             this.deckQuantity = 0;
@@ -75,13 +76,13 @@ namespace SecretHistories.UI {
         }
 
         public void ShowSlotDetails(SphereSpec slotSpec) {
-			/*
+            /*
             // Check if we'd show the same, if so: do nothing
             if (this.slotSpec == slotSpec && gameObject.activeSelf)
                 return;
 			*/
 
-            SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
+            _token.Payload.OnLifetimeSpent -= HandleOnTokenDecay;// remove decay listener if we had one on an old token
             this._element = null;
             this._token = null;
             this.slotSpec = slotSpec;
@@ -91,13 +92,13 @@ namespace SecretHistories.UI {
         }
 
         public void ShowDeckDetails(DeckSpec deckSpec, int numCards) {
-			/*
+            /*
             // Check if we'd show the same, if so: do nothing
             if (this.deckSpec == deckSpec && this.deckQuantity == numCards && gameObject.activeSelf)
                 return;
 			*/
 
-            SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
+            _token.Payload.OnLifetimeSpent -= HandleOnTokenDecay; // remove decay listener if we had one on an old token
             this._element = null;
             this._token = null;
             this.slotSpec = null;
@@ -107,32 +108,24 @@ namespace SecretHistories.UI {
         }
 
         protected override void ClearContent() {
-            SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
+            _token.Payload.OnLifetimeSpent -= HandleOnTokenDecay; // remove decay listener if we had one on an old token
 
             this._element = null;
             this._token = null;
             this.slotSpec = null;
         }
 
-        void SetTokenDecayEventListener(bool add) {
-            if (this._token == null || !this._token.Decays)
-                return;
 
-            if (add)
-                this._token.onDecay += HandleOnTokenDecay;
-            else
-                this._token.onDecay -= HandleOnTokenDecay;
-        }
 
         void HandleOnTokenDecay(float timeRemaining) {
             if(_token!=null) //seeing some nullreference errors in the Unity analytics; maybe this is being called after the token is no longer in the window?
-                ShowImageDecayTimer(true, Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(_token.LifetimeRemaining));
+                ShowImageDecayTimer(true, Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(_token.Payload.GetTimeshadow().LifetimeRemaining));
         }
 
         protected override void UpdateContent() {
             if (_element != null) {
                 SetElementCard(_element, _token);
-                SetTokenDecayEventListener(true); // Add decay listener if we need one
+                _token.Payload.OnLifetimeSpent += HandleOnTokenDecay;// Add decay listener if we need one
             }
             else if (slotSpec != null) {
 				SetSlot(slotSpec);
@@ -145,7 +138,7 @@ namespace SecretHistories.UI {
 
         // SET TOKEN TYPE CONTENT VISUALS
 
-        void SetElementCard(Element element, ElementStack token) {
+        void SetElementCard(Element element, Token token) {
             Sprite sprite;
 
             if (element.IsAspect)
@@ -158,8 +151,8 @@ namespace SecretHistories.UI {
 
             if (token != null)
             {
-                ShowImageDecayTimer(token.Decays,
-                    Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(token.LifetimeRemaining));
+                ShowImageDecayTimer(token.Payload.GetTimeshadow().Transient,
+                    Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(token.Payload.GetTimeshadow().LifetimeRemaining));
                 aspectsDisplayFlat.DisplayAspects(
                     token.GetAspects(false)); //token, not _element: cater for possible mutations
             }

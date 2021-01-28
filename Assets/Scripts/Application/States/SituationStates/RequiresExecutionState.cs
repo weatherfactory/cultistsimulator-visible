@@ -58,7 +58,7 @@ namespace SecretHistories.States
         {
 
             var tc = Watchman.Get<SphereCatalogue>();
-            var aspectsInContext = tc.GetAspectsInContext(situation.GetAspectsAvailableToSituation(true));
+            var aspectsInContext = tc.GetAspectsInContext(situation.GetAspects(true));
 
             var rc = new RecipeConductor(aspectsInContext, Watchman.Get<Character>());
 
@@ -71,8 +71,8 @@ namespace SecretHistories.States
                 situation.SendNotificationToSubscribers(notification);
 
                 //I think this code duplicates ActivateRecipe, below
-                situation.Recipe = linkedRecipe;
-                situation.TimeRemaining = situation.Recipe.Warmup;
+               // situation.Recipe = linkedRecipe;
+              //  situation.TimeRemaining = situation.Recipe.Warmup;
                 if (situation.TimeRemaining > 0) //don't play a sound if we loop through multiple linked ones
                 {
                     if (situation.Recipe.SignalImportantLoop)

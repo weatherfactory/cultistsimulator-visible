@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
@@ -18,7 +19,8 @@ namespace SecretHistories.Entities.Verbs
 {
     public class DropzoneVerb: IVerb
     {
-        public event Action OnChanged;
+        public event Action<TokenPayloadChangedArgs> OnChanged;
+        public event Action<float> OnLifetimeSpent;
         public string Id { get; private set; }
         public int Quantity => 1;
         public Dictionary<string, int> Mutations { get; }
@@ -133,6 +135,11 @@ namespace SecretHistories.Entities.Verbs
 
         public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
         {//
+        }
+
+        public string GetSignature()
+        {
+            return Id;
         }
 
         public void ExecuteTokenEffectCommand(ITokenEffectCommand command)

@@ -35,12 +35,10 @@ namespace SecretHistories.Entities {
 
         [Encaust]
         public Recipe Recipe { get; set; }
-        
-        [Encaust]
-        public float TimeRemaining { set; get; }
 
-        [Encaust]
-        public float IntervalForLastHeartbeat { private set; get; }
+        [Encaust] public float TimeRemaining => _timeshadow.LifetimeRemaining;
+
+        [Encaust] public float IntervalForLastHeartbeat => _timeshadow.LastInterval;
 
         [Encaust]
         public virtual IVerb Verb { get; set; }
@@ -63,9 +61,12 @@ namespace SecretHistories.Entities {
         [Encaust]
         public TokenLocation AnchorLocation => _anchor.Location;
 
+        [Encaust] public Dictionary<string, int> Mutations => new Dictionary<string, int>();
+
         [DontEncaust] public float Warmup => Recipe.Warmup;
         [DontEncaust] public string RecipeId => Recipe.Id;
         [DontEncaust] public RecipePrediction CurrentRecipePrediction { get; set; }
+        [DontEncaust] public string Id => Verb.Id;
 
     
         private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
@@ -73,7 +74,7 @@ namespace SecretHistories.Entities {
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         private Token _anchor;
         private SituationWindow _window;
-
+        private Timeshadow _timeshadow;
         
 
         public Token GetAnchor()
@@ -91,6 +92,9 @@ namespace SecretHistories.Entities {
         {
             Path = path;
             Recipe = NullRecipe.Create(NullVerb.Create());
+            var ts = new Timeshadow(Recipe.Warmup,
+                TimeRemaining,
+                false);
         }
 
         public void TransitionToState(SituationState newState)
@@ -190,7 +194,7 @@ namespace SecretHistories.Entities {
         {
             Recipe = NullRecipe.Create(Verb);
             CurrentRecipePrediction = RecipePrediction.DefaultFromVerb(Verb);
-            TimeRemaining = 0;
+           _timeshadow=Timeshadow.CreateTimelessShadow();
             NotifySubscribersOfStateAndTimerChange();
         }
 
@@ -326,7 +330,7 @@ namespace SecretHistories.Entities {
         }
 
 
-        public IAspectsDictionary GetAspectsAvailableToSituation(bool includeElementAspects)
+        public IAspectsDictionary GetAspects(bool includeElementAspects)
         {
             var aspects = new AspectsDictionary();
 
@@ -342,9 +346,25 @@ namespace SecretHistories.Entities {
 
         }
 
+        
+
+        public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
+        {
+            throw new NotImplementedException("Does it mean anything to set mutations on a situation?");
+        }
+
+        public string GetSignature()
+        {
+            // Generate a distinctive signature
+
+            return "situation_" + Verb.GetSignature();
+        }
+
         private SituationState Continue(float interval)
         {
-            IntervalForLastHeartbeat = interval;
+            
+
+        _timeshadow.SpendTime(interval);
 
             CurrentState.Continue(this);
 
@@ -384,7 +404,7 @@ namespace SecretHistories.Entities {
         {
             
             var tc = Watchman.Get<SphereCatalogue>();
-            var aspectsInContext = tc.GetAspectsInContext(GetAspectsAvailableToSituation(true));
+            var aspectsInContext = tc.GetAspectsInContext(GetAspects(true));
 
             RecipeConductor rc =new RecipeConductor(aspectsInContext, Watchman.Get<Character>());
 
@@ -415,7 +435,7 @@ namespace SecretHistories.Entities {
                     }
                     
                     
-                    TryOverrideVerbIcon(GetAspectsAvailableToSituation(true));
+                    TryOverrideVerbIcon(GetAspects(true));
 
 
                 }
@@ -485,7 +505,7 @@ namespace SecretHistories.Entities {
     public void SendNotificationToSubscribers(INotification notification)
     {
         //Check for possible text refinements based on the aspects in context
-        var aspectsInSituation = GetAspectsAvailableToSituation(true);
+        var aspectsInSituation = GetAspects(true);
         TextRefiner tr = new TextRefiner(aspectsInSituation);
 
 
@@ -686,7 +706,7 @@ namespace SecretHistories.Entities {
         public void TryStart()
         {
          
-            var aspects = GetAspectsAvailableToSituation(true);
+            var aspects = GetAspects(true);
             var tc = Watchman.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(aspects);
 
@@ -711,7 +731,7 @@ namespace SecretHistories.Entities {
 
         public RecipePrediction GetUpdatedRecipePrediction()
         {
-            var aspectsAvailableToSituation = GetAspectsAvailableToSituation(true);
+            var aspectsAvailableToSituation = GetAspects(true);
 
             var aspectsInContext =
                 Watchman.Get<SphereCatalogue>().GetAspectsInContext(aspectsAvailableToSituation);
@@ -762,11 +782,19 @@ namespace SecretHistories.Entities {
         public int Quantity => 1;
         public Timeshadow GetTimeshadow()
         {
-            var ts=new Timeshadow(Recipe.Warmup,
-                TimeRemaining,
-                false);
-            ts.LastInterval = IntervalForLastHeartbeat;
-            return ts;
+            return _timeshadow;
+
+        }
+
+        public void ActivateRecipe(Recipe recipeToActivate)
+        {
+            Recipe = recipeToActivate;
+            _timeshadow = new Timeshadow(Recipe.Warmup, Recipe.Warmup, false);
+        }
+
+        public void ReduceLifetimeBy(float timeSpent)
+        {
+            _timeshadow.SpendTime(timeSpent);
         }
     }
 

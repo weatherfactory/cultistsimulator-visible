@@ -45,6 +45,7 @@ namespace SecretHistories.Commands
         public ElementStack Execute(Context context)
         {
             ElementStack elementStack = null;
+
             try
             {
                 elementStack = new ElementStack(element, Quantity, LifetimeRemaining, context);

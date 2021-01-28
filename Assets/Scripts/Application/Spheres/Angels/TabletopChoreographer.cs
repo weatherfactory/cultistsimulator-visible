@@ -52,15 +52,15 @@ namespace SecretHistories.Constants {
         {
             var stackTokens = _tabletop.GetElementTokens();
             var groups = stackTokens
-                .GroupBy(e => e.ElementStack.EntityWithMutationsId, e => e)
-                .Select(group => group.OrderByDescending(e => e.ElementStack.Quantity).ToList());
+                .GroupBy(e => e.Payload.GetSignature(), e => e)
+                .Select(group => group.OrderByDescending(e => e.Payload.Quantity).ToList());
 
             foreach (var group in groups)
             {
                 var primaryStackToken = group.First();
 
                 foreach (var stackToken in group.Skip(1))
-                    if (primaryStackToken.ElementStack.CanMergeWith(stackToken.ElementStack))
+                    if (primaryStackToken.Payload.CanMergeWith(stackToken.Payload))
                     {
                         primaryStackToken.ElementStack.AcceptIncomingStackForMerge(stackToken.ElementStack);
                     }

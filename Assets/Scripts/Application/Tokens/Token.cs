@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Application.Entities.NullEntities;
+using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
@@ -33,7 +34,7 @@ namespace SecretHistories.UI {
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler,
-        IPointerExitHandler, ISituationSubscriber, IInteractsWithTokens,IElementStackHost
+        IPointerExitHandler, ISituationSubscriber, IInteractsWithTokens
     {
         private float previousClickTime = 0f;
 
@@ -158,7 +159,7 @@ namespace SecretHistories.UI {
         public void SetPayload(ITokenPayload payload)
         {
             _payload = payload;
-            _payload.OnChanged += RemanifestWithDefaultFX;
+            _payload.OnChanged += OnPayloadChanged;
             name = _payload.Id + "_token";
         }
 
@@ -219,20 +220,16 @@ namespace SecretHistories.UI {
                 _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
 
             if (_manifestation.GetType() != Payload.GetManifestationType(Sphere.SphereCategory))
-                {
-                    Type newManifestationType = Payload.GetManifestationType(Sphere.SphereCategory);
+            {
+                Type newManifestationType = Payload.GetManifestationType(Sphere.SphereCategory);
 
-                    var newManifestation = Watchman.Get<PrefabFactory>().CreateManifestationPrefab(newManifestationType, this.transform);
+                var newManifestation = Watchman.Get<PrefabFactory>().CreateManifestationPrefab(newManifestationType, this.transform);
 
-                    ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
-                }
+                ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
+            }
 
         }
 
-        public void RemanifestWithDefaultFX()
-        {
-            Remanifest(RetirementVFX.CardTransformWhite);
-        }
 
         /// <summary>
         /// replaces one manifestation with an identical manifestation - so for example we can do a vfx retiring the old one
@@ -502,7 +499,6 @@ namespace SecretHistories.UI {
             {
                 _attachedToSituation.TryPushDraggedStackIntoThreshold(incomingToken);
 
-
                 if (!_attachedToSituation.IsOpen)
                     _attachedToSituation.OpenAtCurrentLocation();
             }
@@ -633,7 +629,7 @@ namespace SecretHistories.UI {
             if (Defunct)
                 return false;
             Defunct = true;
-            _payload.OnChanged -= RemanifestWithDefaultFX;
+            _payload.OnChanged -= OnPayloadChanged;
             FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
             _manifestation.Retire(vfx, OnManifestationRetired);
@@ -653,6 +649,21 @@ namespace SecretHistories.UI {
             Destroy(this.gameObject);
         }
 
+        private void OnPayloadChanged(TokenPayloadChangedArgs args)
+        {
+            if(args.ChangeType==PayloadChangeType.Fundamental)
+                Remanifest(RetirementVFX.CardTransformWhite);
+            else if (args.ChangeType == PayloadChangeType.Update)
+            {
+                _manifestation.UpdateVisuals(_payload);
+                PlacementAlreadyChronicled = false; //should really only do this if the element has changed
+                var sphereContentsChangedArgs = new SphereContentsChangedEventArgs(Sphere, args.Context);
+                Sphere.NotifyTokensChangedForSphere(sphereContentsChangedArgs);
+            }
+            else if (args.ChangeType == PayloadChangeType.Retirement)
+                Retire(RetirementVFX.CardBurn);
+            
+        }
 
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -720,15 +731,6 @@ namespace SecretHistories.UI {
 
         }
 
-        public virtual void onElementStackQuantityChanged(ElementStack stack,Context context)
-        {
-
-            _manifestation.UpdateVisuals(_payload);
-            PlacementAlreadyChronicled = false; //should really only do this if the element has changed
-            var args=new SphereContentsChangedEventArgs(Sphere,context);
-            Sphere.NotifyTokensChangedForSphere(args);
-            
-        }
 
     public void SituationSphereContentsUpdated(Situation situation)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
@@ -18,7 +19,8 @@ namespace SecretHistories.NullObjects
 {
     public class NullVerb:IVerb
     {
-        public event Action OnChanged;
+        public event Action<TokenPayloadChangedArgs> OnChanged;
+        public event Action<float> OnLifetimeSpent;
         public string Id { get; private set; }
         public int Quantity =>0;
         public Dictionary<string, int> Mutations { get; }
@@ -130,6 +132,11 @@ namespace SecretHistories.NullObjects
         public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
         {
             throw new NotImplementedException();
+        }
+
+        public string GetSignature()
+        {
+            return string.Empty;
         }
 
         public void ExecuteTokenEffectCommand(ITokenEffectCommand command)

@@ -72,7 +72,7 @@ namespace SecretHistories.States
              situation.TransitionToState(new RequiresExecutionState());
             else
             {
-                situation.TimeRemaining -= situation.IntervalForLastHeartbeat;
+                situation.ReduceLifetimeBy(situation.IntervalForLastHeartbeat);
                 situation.NotifySubscribersOfTimerValueUpdate();
             }
             

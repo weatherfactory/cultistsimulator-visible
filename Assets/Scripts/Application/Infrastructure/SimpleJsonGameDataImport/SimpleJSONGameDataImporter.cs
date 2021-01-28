@@ -233,7 +233,7 @@ namespace SecretHistories.Constants
         {
             var command = new SituationCreationCommand(verb, recipe, situationState, null);
 
-            command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);
+            command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING) ??  0;
             command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
 
             string simplifiedSituationPath;

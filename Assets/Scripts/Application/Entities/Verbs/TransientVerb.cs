@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
@@ -20,6 +21,10 @@ namespace SecretHistories.Entities
         {
             Startable = false;
         }
+
+        public event Action<TokenPayloadChangedArgs> OnChanged;
+        public event Action<float> OnLifetimeSpent;
+
 
         public TransientVerb(string id, string label, string description):this()
         {
@@ -67,7 +72,7 @@ namespace SecretHistories.Entities
         }
 
 
-        public event Action OnChanged;
+        
         public string Id { get; private set; }
 
         public void SetId(string id)
@@ -132,6 +137,11 @@ namespace SecretHistories.Entities
         public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
         {
             throw new NotImplementedException();
+        }
+
+        public string GetSignature()
+        {
+            return Id;
         }
 
         public void ExecuteTokenEffectCommand(ITokenEffectCommand command)

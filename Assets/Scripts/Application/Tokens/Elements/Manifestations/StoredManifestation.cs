@@ -43,17 +43,10 @@ namespace SecretHistories.Elements.Manifestations
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support InitialiseVisuals");
         }
 
-        public void UpdateVisuals(ITokenPayload payload)
+        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
         {
-            var element = Watchman.Get<Compendium>().GetEntityById<Element>(payload.Id);
-            elementFrame.PopulateDisplay(element, payload.Quantity, false);
-
-        }
-
-        public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
-            EndingFlavour signalEndingFlavour)
-        {
-            NoonUtility.LogWarning(this.GetType().Name + " doesn't support UpdateTimerVisuals");
+            var element = Watchman.Get<Compendium>().GetEntityById<Element>(drivesManifestation.Id);
+            elementFrame.PopulateDisplay(element, drivesManifestation.Quantity, false);
         }
 
         public void SendNotification(INotification notification)

@@ -26,7 +26,7 @@ namespace SecretHistories.Commands
         
         public Recipe Recipe { get; set; }
         public StateEnum State { get; set; }
-        public float? TimeRemaining { get; set; }
+        public float TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public TokenLocation AnchorLocation { get; set; }
 
@@ -70,8 +70,11 @@ namespace SecretHistories.Commands
             Situation newSituation = new Situation(SituationPath);
             situationsCatalogue.RegisterSituation(newSituation);
             newSituation.Verb = GetBasicOrCreatedVerb();
-            newSituation.TimeRemaining = TimeRemaining ?? 0;
-            newSituation.Recipe = Recipe;
+            newSituation.ActivateRecipe(Recipe);
+            
+            newSituation.ReduceLifetimeBy(Recipe.Warmup-TimeRemaining);
+
+            
             newSituation. OverrideTitle = OverrideTitle;
             newSituation.CurrentState = SituationState.Rehydrate(State, newSituation);
 

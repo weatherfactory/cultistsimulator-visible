@@ -28,7 +28,7 @@ namespace Assets.Scripts.Application.Logic
             Resaturate = resaturate;
         }
 
-        public void ExecuteHeartbeat(float interval)
+        public void SpendTime(float interval)
         {
             LastInterval = interval;
             LifetimeRemaining -= interval;

@@ -236,7 +236,7 @@ namespace SecretHistories.UI {
         {
             DisplayPredictedRecipe(s);
             
-            var allAspectsToDisplay =s.GetAspectsAvailableToSituation(false);
+            var allAspectsToDisplay =s.GetAspects(false);
             aspectsDisplay.DisplayAspects(allAspectsToDisplay);
             DisplayButtonState(s);
 

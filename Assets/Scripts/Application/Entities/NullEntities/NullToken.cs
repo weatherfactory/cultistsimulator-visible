@@ -16,7 +16,7 @@ using UnityEngine;
 
 namespace SecretHistories.NullObjects
 {
-   public class NullToken: IElementStackHost
+   public class NullToken
    {
        
        public void Populate(ElementStack elementStack)

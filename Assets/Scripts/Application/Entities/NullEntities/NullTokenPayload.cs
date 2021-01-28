@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
@@ -15,7 +16,8 @@ namespace Assets.Scripts.Application.Entities.NullEntities
 {
     public class NullTokenPayload: ITokenPayload
     {
-        public event Action OnChanged;
+        public event Action<TokenPayloadChangedArgs> OnChanged;
+        public event Action<float> OnLifetimeSpent;
         public string Id => string.Empty;
         public int Quantity => 0;
         public Dictionary<string, int> Mutations { get; }
@@ -101,6 +103,11 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
         {
             throw new NotImplementedException();
+        }
+
+        public string GetSignature()
+        {
+            return string.Empty;
         }
 
         public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
