@@ -25,7 +25,6 @@ namespace SecretHistories.Commands
     [AttributeUsage(AttributeTargets.Property)]
     public class Encaust : System.Attribute
     {
-        
     }
 
     [AttributeUsage(AttributeTargets.Property)]

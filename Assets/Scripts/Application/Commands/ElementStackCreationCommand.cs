@@ -19,7 +19,7 @@ namespace SecretHistories.Commands
         /// <summary>
         /// The element id
         /// </summary>
-        public string PayloadId { get; set; }
+        public string Id { get; set; }
         public int Quantity { get; set; }
         public Dictionary<string,int> Mutations { get; set; }
         public IlluminateLibrarian IlluminateLibrarian { get; set; }
@@ -27,17 +27,13 @@ namespace SecretHistories.Commands
 
         public float LifetimeRemaining { get; set; }
 
-        private Element element;
-
         public ElementStackCreationCommand(): this(string.Empty,0)
         {}
 
-        public ElementStackCreationCommand(string elementPayloadId, int quantity)
+        public ElementStackCreationCommand(string elementId, int quantity)
         {
-            PayloadId = elementPayloadId;
+            Id = elementId;
             Quantity = quantity;
-           element = Watchman.Get<Compendium>().GetEntityById<Element>(PayloadId) ?? new NullElement();
-           LifetimeRemaining = element.Lifetime; //set the element lifetime as the default lifetimeremaining for the stack; we can override this subsequently before executing if we like
            IlluminateLibrarian=new IlluminateLibrarian();
            Mutations=Element.EmptyMutationsDictionary();
         }
@@ -48,6 +44,9 @@ namespace SecretHistories.Commands
 
             try
             {
+                var compendium = Watchman.Get<Compendium>();
+                  var  element = compendium.GetEntityById<Element>(Id);
+
                 elementStack = new ElementStack(element, Quantity, LifetimeRemaining, context);
                 foreach (var m in Mutations)
                     elementStack.SetMutation(m.Key, m.Value, false);
@@ -56,7 +55,7 @@ namespace SecretHistories.Commands
             catch (Exception e)
             {
 
-                NoonUtility.Log("Couldn't create element with ID " + PayloadId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
+                NoonUtility.Log("Couldn't create element with ID " + Id + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
                 elementStack?.Retire(RetirementVFX.None);
             }
 
