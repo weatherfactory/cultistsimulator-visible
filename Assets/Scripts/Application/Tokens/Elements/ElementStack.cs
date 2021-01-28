@@ -134,7 +134,7 @@ namespace SecretHistories.UI {
             }
 
             _aspectsDirtyInc = true;
-            OnChanged(new TokenPayloadChangedArgs(this,PayloadChangeType.Update,context));
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Update,context));
 
         }
 
@@ -299,7 +299,7 @@ namespace SecretHistories.UI {
             if (Defunct)
                 return false;
             Defunct = true;
-            OnChanged.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Retirement));
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Retirement));
 
             return true;
 

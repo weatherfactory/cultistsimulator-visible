@@ -93,7 +93,7 @@ namespace SecretHistories.Entities {
             Path = path;
             Recipe = NullRecipe.Create(NullVerb.Create());
             var ts = new Timeshadow(Recipe.Warmup,
-                TimeRemaining,
+                Recipe.Warmup,
                 false);
         }
 

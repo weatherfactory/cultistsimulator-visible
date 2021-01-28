@@ -36,7 +36,7 @@ namespace SecretHistories.Commands
         {
             PayloadId = elementPayloadId;
             Quantity = quantity;
-           element = Watchman.Get<Compendium>().GetEntityById<Element>(PayloadId);
+           element = Watchman.Get<Compendium>().GetEntityById<Element>(PayloadId) ?? new NullElement();
            LifetimeRemaining = element.Lifetime; //set the element lifetime as the default lifetimeremaining for the stack; we can override this subsequently before executing if we like
            IlluminateLibrarian=new IlluminateLibrarian();
            Mutations=Element.EmptyMutationsDictionary();
