@@ -32,15 +32,12 @@ namespace SecretHistories.Elements.Manifestations
         [SerializeField] private ElementFrame elementFrame;
 
 #pragma warning restore 649
-        public void InitialiseVisuals(Element element)
-        {
-            name = "StoredManifestation_" + element.Id;
-            elementFrame.PopulateDisplay(element, 1, false);
-        }
 
-        public void InitialiseVisuals(IVerb verb)
+
+        public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
         {
-            NoonUtility.LogWarning(this.GetType().Name + " doesn't support InitialiseVisuals");
+            name = "StoredManifestation_" + drivesManifestation.Id;
+            elementFrame.PopulateDisplay(drivesManifestation.Id, 1, false);
         }
 
         public void UpdateVisuals(IDrivesManifestation drivesManifestation)

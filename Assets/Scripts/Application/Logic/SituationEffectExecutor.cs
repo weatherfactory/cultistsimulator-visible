@@ -144,7 +144,7 @@ namespace Assets.Logic
         {
             Compendium _compendium = Watchman.Get<Compendium>();
 
-            ITokenEffectCommand xTriggerCommand=new XTriggerCommand(aspectsPresent,dice,sphere);
+            IAffectsTokenCommand xTriggerCommand=new XTriggerCommand(aspectsPresent,dice,sphere);
 
             foreach (var eachToken in sphere.GetElementTokens())
             {

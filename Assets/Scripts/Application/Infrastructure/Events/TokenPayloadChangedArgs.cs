@@ -15,6 +15,7 @@ namespace Assets.Scripts.Application.Infrastructure.Events
         public ITokenPayload Payload { get; set; }
         public PayloadChangeType ChangeType { get; set; }
         public Context Context { get; set; }
+        public RetirementVFX VFX { get; set; }
 
         public TokenPayloadChangedArgs(ITokenPayload payload, PayloadChangeType changeType)
         {

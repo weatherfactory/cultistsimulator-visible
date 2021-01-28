@@ -7,6 +7,7 @@ using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities.NullEntities;
 using NUnit.Framework;
 using SecretHistories.Commands;
+using SecretHistories.Entities.Verbs;
 using SecretHistories.UI;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -43,26 +44,31 @@ using Object = UnityEngine.Object;
         public void ElementStackToken_Encausts()
         {
             var encaustery = new Encaustery<TokenCreationCommand>();
+            var tokenObject=new GameObject();
+            var token=tokenObject.AddComponent<Token>();
+            tokenObject.AddComponent<RectTransform>();
+            var elementStack = new ElementStack();
+            token.SetPayload(elementStack);
+
+        encaustery.Encaust(token);
         }
 
 
 
     [Test]
-        public void VerbToken_Encausts()
+        public void SituationToken_Encausts()
         {
            var encaustery=new Encaustery<TokenCreationCommand>();
-        Assert.AreEqual(1, 0);
+        throw new NotImplementedException();
     }
 
         [Test]
-        public void MiscToken_Encausts()
+        public void DropzoneToken_Encausts()
         {
-            Assert.AreEqual(1, 0);
+            var encaustery = new Encaustery<DropzoneCreationCommand>();
+           var dropzone=new Dropzone();
+           encaustery.Encaust(dropzone);
+
         }
 
-        [Test]
-        public void EncaustmentWorksOnDecks()
-        {
-            Assert.AreEqual(1, 0);
-        }
-    }
+}

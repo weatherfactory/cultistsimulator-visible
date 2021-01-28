@@ -15,7 +15,7 @@ namespace SecretHistories.Fucine
         protected string _id;
 
         [FucineId]
-        public string Id
+        public virtual string Id
         {
             get => _id;
         }

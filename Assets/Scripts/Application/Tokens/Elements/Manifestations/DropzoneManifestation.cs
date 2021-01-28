@@ -46,12 +46,8 @@ namespace SecretHistories.Elements.Manifestations
         {
         }
 
-
-        public void InitialiseVisuals(Element element)
-        {
-        }
-
-        public void InitialiseVisuals(IVerb verb)
+    
+        public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
         {
         //
         }

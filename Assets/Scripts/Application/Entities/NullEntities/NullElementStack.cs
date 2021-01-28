@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Services;
 using SecretHistories.UI;
@@ -11,6 +12,7 @@ using SecretHistories.UI;
 
 namespace SecretHistories.Elements
 {
+    [IsEncaustableClass(typeof(NullElementStackCreationCommand))]
     public class NullElementStack: ElementStack
     {
 

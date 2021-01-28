@@ -9,9 +9,10 @@ using SecretHistories.UI;
 
 namespace SecretHistories.Interfaces
 {
-    public interface IVerb: ITokenPayload
+    public interface IVerb
     {
         void SetId(string id);
+        string Id { get; }
         string Label { get; set; }
         string Description { get; set; }
        

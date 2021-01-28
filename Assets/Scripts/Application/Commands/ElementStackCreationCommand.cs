@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Abstract;
 using SecretHistories.Abstract;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
@@ -14,7 +15,7 @@ using Object = UnityEngine.Object;
 namespace SecretHistories.Commands
 {
     
-    public class ElementStackCreationCommand
+    public class ElementStackCreationCommand: ITokenPayloadCreationCommand
     {
         /// <summary>
         /// The element id
@@ -38,7 +39,7 @@ namespace SecretHistories.Commands
            Mutations=Element.EmptyMutationsDictionary();
         }
 
-        public ElementStack Execute(Context context)
+        public ITokenPayload Execute(Context context)
         {
             ElementStack elementStack = null;
 

@@ -21,9 +21,6 @@ namespace SecretHistories.Abstract
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValidElementStack();
-        bool IsValidVerb();
-        string UniquenessGroup { get; }
-        bool Unique { get; }
         void ExecuteHeartbeat(float interval);
         bool CanMergeWith(ITokenPayload incomingTokenPayload);
         bool Retire(RetirementVFX vfx);
@@ -32,9 +29,11 @@ namespace SecretHistories.Abstract
         void SetQuantity(int quantityToLeaveBehind, Context context);
         void ModifyQuantity(int unsatisfiedChange, Context context);
 
-        void ExecuteTokenEffectCommand(ITokenEffectCommand command);
+        void ExecuteTokenEffectCommand(IAffectsTokenCommand command);
 
-        
+        void OpenAt(TokenLocation location);
+        void Close();
+        bool IsOpen();
     }
     }
 

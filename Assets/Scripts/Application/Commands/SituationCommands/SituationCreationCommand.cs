@@ -4,6 +4,7 @@ using Assets.Scripts.Application.Commands;
 using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Interfaces;
 using Newtonsoft.Json;
+using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -18,7 +19,7 @@ using Object = UnityEngine.Object;
 
 namespace SecretHistories.Commands
 {
-    public class SituationCreationCommand: ISaveable
+    public class SituationCreationCommand: ISaveable,ITokenPayloadCreationCommand
     {
 
 		public Token SourceToken { get; set; } // this may not be set if no origin is known or needed
@@ -28,7 +29,6 @@ namespace SecretHistories.Commands
         public StateEnum State { get; set; }
         public float TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
-        public TokenLocation AnchorLocation { get; set; }
 
         public SituationPath SituationPath { get; set; }
         public bool Open { get; set; }
@@ -50,23 +50,15 @@ namespace SecretHistories.Commands
 
             Recipe = recipe;
             Verb = verb;
-            AnchorLocation = anchorLocation;
             State = state;
             SituationPath =new SituationPath(verb);
         }
 
-        public SituationCreationCommand WithDefaultAttachments()
+        
+        public ITokenPayload Execute(Token token, Context context)
         {
-            _tokenCreationCommand = new TokenCreationCommand(Verb, AnchorLocation, SourceToken);
-            windowCreationCommand=new WindowCreationCommand(new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
+            SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
 
-            return this;
-        }
-
-  
-
-        public Situation Execute(SituationsCatalogue situationsCatalogue)
-        {
             Situation newSituation = new Situation(SituationPath);
             situationsCatalogue.RegisterSituation(newSituation);
             newSituation.Verb = GetBasicOrCreatedVerb();
@@ -81,23 +73,14 @@ namespace SecretHistories.Commands
 
             var sphereCatalogue = Watchman.Get<SphereCatalogue>();
 
-            if(_tokenCreationCommand!=null)
-            {
-                var newAnchor=_tokenCreationCommand.Execute(sphereCatalogue);
-                newSituation.Attach(newAnchor);
-            }
-            
-            if(windowCreationCommand!=null)
+   
+            windowCreationCommand = new WindowCreationCommand(new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
+
+            if (windowCreationCommand!=null)
             { 
                 var newWindow = windowCreationCommand.Execute(sphereCatalogue);
                newSituation.Attach(newWindow);
             }
-
-
-            if (Open)
-                newSituation.OpenAtCurrentLocation();
-            else
-                newSituation.Close();
 
             foreach (var c in Commands)
                 newSituation.CommandQueue.AddCommand(c);
@@ -120,7 +103,6 @@ namespace SecretHistories.Commands
             //State = basedOnSituation.CurrentState;
             TimeRemaining = basedOnSituation.TimeRemaining;
        //OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
-       AnchorLocation = basedOnSituation.AnchorLocation;
        SituationPath = basedOnSituation.Path;
        Open = basedOnSituation.IsOpen;
        Commands = basedOnSituation.CommandQueue.GetCurrentCommandsAsList();

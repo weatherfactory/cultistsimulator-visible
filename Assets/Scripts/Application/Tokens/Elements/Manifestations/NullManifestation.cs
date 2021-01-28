@@ -87,15 +87,6 @@ namespace SecretHistories.Elements.Manifestations
           //
         }
 
-        public void DoRevealEffect(bool instant)
-        {
-            //
-        }
-
-        public void DoShroudEffect(bool instant)
-        {
-            //
-        }
 
         public bool RequestingNoDrag
         {
@@ -106,16 +97,12 @@ namespace SecretHistories.Elements.Manifestations
             //
         }
 
-        public void InitialiseVisuals(Element element)
+        public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
         {
       //
         }
 
-        public void InitialiseVisuals(IVerb verb)
-        {
-            //
-        }
-
+        
         public void UpdateVisuals(IDrivesManifestation drivesManifestation)
         {
           //

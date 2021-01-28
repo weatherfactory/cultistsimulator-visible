@@ -72,13 +72,10 @@ namespace SecretHistories.Elements.Manifestations
 
 #pragma warning restore 649
 
-        public void InitialiseVisuals(Element element)
-        {
-            NoonUtility.Log("Initialise Visuals for element on verb tokens: should look at this");
-        }
 
-        public void InitialiseVisuals(IVerb verb)
+        public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
         {
+
             displayArtForVerb(verb);
             if (verb.Transient)
             {
@@ -98,6 +95,20 @@ namespace SecretHistories.Elements.Manifestations
             if (timeshadow.Transient)
             {
                 UpdateTimerVisuals(timeshadow.LifetimeRemaining,timeshadow.LifetimeRemaining,timeshadow.LastInterval,timeshadow.Resaturate,timeshadow.EndingFlavour);
+            }
+
+            TryOverrideVerbIcon(drivesManifestation.GetAspects(true));
+        }
+
+
+        private void TryOverrideVerbIcon(IAspectsDictionary forAspects)
+        {
+            //if we have an element in the situation now that overrides the verb icon, update it
+            string overrideIcon = Watchman.Get<Compendium>().GetVerbIconOverrideFromAspects(forAspects);
+            if (!string.IsNullOrEmpty(overrideIcon))
+            {
+                OverrideIcon(overrideIcon);
+               // _window.DisplayIcon(overrideIcon);
             }
         }
 

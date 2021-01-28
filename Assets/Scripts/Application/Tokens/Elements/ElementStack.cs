@@ -177,7 +177,7 @@ namespace SecretHistories.UI {
 
         public void InitialiseManifestation(IManifestation _manifestation)
         {
-            _manifestation.InitialiseVisuals(Element);
+            _manifestation.InitialiseVisuals(this);
             _manifestation.UpdateVisuals(this);
         }
 
@@ -299,6 +299,8 @@ namespace SecretHistories.UI {
             if (Defunct)
                 return false;
             Defunct = true;
+            TokenPayloadChangedArgs args= new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement);
+            args.VFX = RetirementVFX.CardBurn;
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Retirement));
 
             return true;
@@ -380,9 +382,25 @@ namespace SecretHistories.UI {
 
         }
 
-        public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
+        public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)
         {
             command.ExecuteOn(this);
+        }
+
+        public void OpenAt(TokenLocation location)
+        {
+  
+            Watchman.Get<Notifier>().ShowCardElementDetails(Element, this);
+        }
+
+        public void Close()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsOpen()
+        {
+            throw new NotImplementedException();
         }
 
         public void ChangeTo(string newElementId)

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Abstract;
 using Assets.Scripts.Application.Interfaces;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
+using SecretHistories.Commands;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -17,8 +19,10 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
 {
     public class TokenCreationCommand
     {
-        public readonly ITokenPayload _payload;
-        public readonly TokenLocation _location;
+        public TokenLocation Location { get; set; }
+        public TokenTravelItinerary CurrentItinerary { get; set; }
+        public ITokenPayloadCreationCommand Payload { get; set; }
+        public bool Defunct { get; set; }
         public readonly Token _sourceToken;
 
         public TokenCreationCommand()
@@ -26,17 +30,23 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
 
         }
 
-        public TokenCreationCommand(ITokenPayload payload,TokenLocation location,Token sourceToken)
+        public TokenCreationCommand(ITokenPayloadCreationCommand payload,TokenLocation location,Token sourceToken)
         {
-            _payload = payload;
-            _location = location;
+            Payload = payload;
+            Location = location;
             _sourceToken = sourceToken;
         }
 
-        public TokenCreationCommand(Token token)
+        public TokenCreationCommand(ElementStack elementStack, TokenLocation location, Token sourceToken)
         {
-            _location = token.Location;
+            var elementStackEncaustery = new Encaustery<ElementStackCreationCommand>();
+            Payload = elementStackEncaustery.Encaust(elementStack);
+            Location = location;
+            _sourceToken = sourceToken;
         }
+
+
+
 
         public string ToJson()
         {
@@ -46,13 +56,13 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
 
         public Token Execute(SphereCatalogue sphereCatalogue)
         {
-            var sphere = sphereCatalogue.GetSphereByPath(_location.AtSpherePath);
+            var sphere = sphereCatalogue.GetSphereByPath(Location.AtSpherePath);
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);
             
-            token.SetPayload(_payload);
+            token.SetPayload(Payload.Execute(new Context(Context.ActionSource.Unknown)));
     
             sphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
-            token.transform.localPosition = _location.Anchored3DPosition;
+            token.transform.localPosition = Location.Anchored3DPosition;
 
             if (_sourceToken != null)
             {

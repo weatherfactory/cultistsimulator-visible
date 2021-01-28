@@ -79,69 +79,12 @@ namespace SecretHistories.NullObjects
             return new NullVerb();
         }
 
-        public string UniquenessGroup => string.Empty;
-        public bool Unique => false;
-        public bool Decays => false;
-
         public IAspectsDictionary GetAspects(bool includeSelf)
         {
             return new AspectsDictionary();
         }
 
-        public void ExecuteHeartbeat(float interval)
-        {
-            throw new NotImplementedException();
-        }
 
 
-        public bool CanMergeWith(ITokenPayload incomingTokenPayload)
-        {
-            return false;
-        }
-
-        public void SetQuantity(int quantityToLeaveBehind, Context context)
-        {
-            //
-        }
-
-        bool ITokenPayload.Retire(RetirementVFX vfx)
-        {
-            return false;
-        }
-
-        public void Retire(RetirementVFX vfx)
-        {
-            //
-        }
-
-        public void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload)
-        {
-            //
-        }
-
-        public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
-        {
-            //
-        }
-
-        public void ModifyQuantity(int unsatisfiedChange, Context context)
-        {
-            //
-        }
-
-        public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetSignature()
-        {
-            return string.Empty;
-        }
-
-        public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
-        {
-            //
-        }
     }
 }

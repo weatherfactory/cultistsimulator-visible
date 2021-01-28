@@ -5,6 +5,7 @@ using SecretHistories.Constants;
 using SecretHistories.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 namespace SecretHistories.UI { 
     /// <summary>
@@ -13,7 +14,7 @@ namespace SecretHistories.UI {
     public class SituationWindowPositioner : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
         public bool canDrag = true;
-        Token anchor;
+
 
         static SituationWindowPositioner windowBeingDragged;
         
@@ -33,10 +34,10 @@ namespace SecretHistories.UI {
             this.uiCamera = Camera.main; // there is only one camera in our scene so this works.
         }
 
-        public void Initialise(Token anchor) {
-            this.anchor = anchor;
-            
-            SetToWorldPosInScreenBounds(anchor.transform.position);
+        public void Initialise(Vector3 worldPosition) {
+
+
+            SetPosition(GetBoundCorrectedWorldPos(worldPosition));
 
         }
 
@@ -46,16 +47,17 @@ namespace SecretHistories.UI {
 
         // SHOW ANIM
 
-        public void Show(float duration, Vector3 targetPosition) {
+        public void Show(float duration, Vector3 openFromPosition, Vector3 targetPosition) {
             StopAllCoroutines();
-            StartCoroutine(DoShowAnim(duration, targetPosition));
+            StartCoroutine(DoShowAnim(duration, openFromPosition, targetPosition));
         }
 
-        IEnumerator DoShowAnim(float duration, Vector3 targetPosition)
+        IEnumerator DoShowAnim(float duration, Vector3 openFromPosition, Vector3 targetPosition)
 		{
             var time = 0f;
+            var startPos = openFromPosition;
+
             var targetPos = GetBoundCorrectedWorldPos(targetPosition);
-            var startPos = anchor.transform.position;
             float lerp;
 
             while (time < duration) {
@@ -72,14 +74,11 @@ namespace SecretHistories.UI {
 
         // GENERAL MOVE BEHAVIOR
 
-        void SetToWorldPosInScreenBounds(Vector3 worldPos) {
-            SetPosition(GetBoundCorrectedWorldPos(worldPos));
-        }
 
         Vector3 GetBoundCorrectedWorldPos(Vector3 worldPos) {
             // Check if one of our corners would be outside the bounds
-            var outOfBoundsOffset = GetScreenPosOffsetForCornerOverlap(anchor.transform.position);
-
+            // var outOfBoundsOffset = GetScreenPosOffsetForCornerOverlap(anchor.transform.position); //changeds this cos we don't reference anchor directly any more. Let's see if it works
+            var outOfBoundsOffset = GetScreenPosOffsetForCornerOverlap(worldPos);
             // We have an offset? Shift the window position!
             if (outOfBoundsOffset.x != 0f || outOfBoundsOffset.y != 0f) {
                 var screenPos = GetScreenPosFromWorld(worldPos);

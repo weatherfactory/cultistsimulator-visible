@@ -30,13 +30,16 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     float width1Digit = 60f; //68f;
     float width0Digits = 40f;
 
-    public void PopulateDisplay(Element element, int quantity, bool hasBrightBg = false) {
-        
+    public void PopulateDisplay(string elementId, int quantity, bool hasBrightBg = false)
+    {
+
+        var element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
+
         _aspect = element;
         Quantity = quantity;
         DisplayAImage(element);
         DisplayQuantity(quantity, hasBrightBg);
-        gameObject.name = "Element - " + element.Id;
+        gameObject.name = "Element - " + elementId;
     }
 
     private void DisplayAImage(Element element)

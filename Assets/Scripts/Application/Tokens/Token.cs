@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities.NullEntities;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
@@ -31,10 +32,11 @@ using Object = UnityEngine.Object;
 
 namespace SecretHistories.UI {
 
+    [IsEncaustableClass(typeof(TokenCreationCommand))]
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler,
-        IPointerExitHandler, ISituationSubscriber, IInteractsWithTokens
+        IPointerExitHandler, ISituationSubscriber, IInteractsWithTokens,IEncaustable
     {
         private float previousClickTime = 0f;
 
@@ -42,18 +44,30 @@ namespace SecretHistories.UI {
 
         [Header("Location")]
         [SerializeField] public RectTransform TokenRectTransform;
+        [DontEncaust]
         public RectTransform ManifestationRectTransform => _manifestation.RectTransform;
-        public TokenLocation Location => new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
+        [Encaust]
+        public TokenLocation Location {
+            get
+            {
+                if (TokenRectTransform !=null && !TokenRectTransform.Equals(null))
+                    return new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
+                else
+                    return TokenLocation.Default();
+            }
+        }
+        [DontEncaust]
         public Sphere Sphere { get; set; }
+        [DontEncaust]
         protected Sphere OldSphere  { get; set; }// Used to tell OldContainsTokens that this thing was dropped successfully
 
 
-    [Header("Movement")]
+        [Header("Movement")]
         public bool PauseAnimations;
         protected float
             dragHeight = -8f; // Draggables all drag on a specific height and have a specific "default height"
 
-
+        [Encaust]
         public TokenTravelItinerary CurrentItinerary { get; set; }
 
         [Header("Display")]
@@ -68,12 +82,17 @@ namespace SecretHistories.UI {
         [Header("Logic")]
         protected Situation _attachedToSituation = NullSituation.Create();
         //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
+        [Encaust]
+        public bool Defunct { get; protected set; }
+        [DontEncaust]
+        public bool NoPush => _manifestation.NoPush;
+
 
         public bool PlacementAlreadyChronicled = false;
 
         private ITokenPayload _payload;
 
-
+        [Encaust]
         public virtual ITokenPayload Payload
         {
             get
@@ -83,16 +102,15 @@ namespace SecretHistories.UI {
 
                 else
                 {
-                    NoonUtility.LogWarning($"Unknown payload type in token {gameObject.name}: retiring it");
-                    Retire(RetirementVFX.None);
-                    return new NullTokenPayload();
+                    NoonUtility.LogWarning($"Unknown payload type in token {gameObject.name}: setting to Null Payload");
+                    _payload=new NullElementStack();
+                    return _payload;
                 }
             }
         }
 
-        //public virtual ElementStack ElementStack { get; protected set; }
+        [DontEncaust]
         public int Quantity => Payload.Quantity;
-      //  public Element Element => ElementStack.Element;
 
         public bool IsValidElementStack()
         {
@@ -117,13 +135,13 @@ namespace SecretHistories.UI {
 
             CurrentItinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
             _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
-            _payload = new NullTokenPayload();
+            _payload = new NullElementStack();
 
             SetState(new DroppedInSphereState());
 
         }
 
-        public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
+        public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)
         {
             Payload.ExecuteTokenEffectCommand(command);
         }
@@ -149,9 +167,7 @@ namespace SecretHistories.UI {
             return _manifestation.CanAnimateIcon();
         }
 
-        public bool IsInMotion { get; set; }
-        public bool Defunct { get; protected set; }
-        public bool NoPush => _manifestation.NoPush;
+        
 
         private TokenState CurrentState;
 
@@ -163,10 +179,6 @@ namespace SecretHistories.UI {
             name = _payload.Id + "_token";
         }
 
-        public void AttachedTo(Situation situation)
-        {
-            _attachedToSituation = situation;
-        }
 
         public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
@@ -487,27 +499,14 @@ namespace SecretHistories.UI {
 
                     Payload.ShowNoMergeMessage(incomingToken.Payload);
             }
-            
+
+            if(!Payload.IsOpen())
+                Payload.OpenAt(Location);
+
             _attachedToSituation.InteractWithSituation(incomingToken);
 
         }
 
-        private void TokenEntrance(Token incomingToken)
-        {
-
-            if (incomingToken.IsValidElementStack())
-            {
-                _attachedToSituation.TryPushDraggedStackIntoThreshold(incomingToken);
-
-                if (!_attachedToSituation.IsOpen)
-                    _attachedToSituation.OpenAtCurrentLocation();
-            }
-            else
-            {
-                //something has gone awryy
-                SetState(new RejectedBySituationState());
-            }
-        }
 
         public Token CalveToken(int quantityToLeaveBehind, Context context)
         {
@@ -553,10 +552,10 @@ namespace SecretHistories.UI {
             //Manifestation didn't handle click
             Watchman.Get<DebugTools>().SetInput(_attachedToSituation.RecipeId);
 
-            if (!_attachedToSituation.IsOpen)
-                _attachedToSituation.OpenAtCurrentLocation();
+            if (!Payload.IsOpen())
+                Payload.OpenAt(Location);
             else
-                _attachedToSituation.Close();
+                Payload.Close();
 
             float timeSincePreviousClick = eventData.clickTime - previousClickTime;
 
@@ -608,11 +607,6 @@ namespace SecretHistories.UI {
         }
 
 
-        public void DisplayOverrideIcon(string icon)
-        {
-            _manifestation.OverrideIcon(icon);
-        }
-
         protected virtual void NotifyInteracted(TokenInteractionEventArgs args)
         {
             Sphere.OnTokenInThisSphereInteracted(args);
@@ -661,7 +655,7 @@ namespace SecretHistories.UI {
                 Sphere.NotifyTokensChangedForSphere(sphereContentsChangedArgs);
             }
             else if (args.ChangeType == PayloadChangeType.Retirement)
-                Retire(RetirementVFX.CardBurn);
+                Retire(args.VFX);
             
         }
 

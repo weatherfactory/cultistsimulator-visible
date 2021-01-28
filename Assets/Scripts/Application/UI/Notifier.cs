@@ -42,8 +42,6 @@ namespace SecretHistories.UI {
             aspectDetails.gameObject.SetActive(false);
 
             Watchman.Get<Concursum>().ShowNotificationEvent.AddListener(ShowNotificationWindow);
-            
-            Watchman.Get<SphereCatalogue>().Subscribe(this);
 
         }
 
@@ -94,9 +92,9 @@ namespace SecretHistories.UI {
         // Token Details
 
         // Variant to link to token decay
-        public void ShowCardElementDetails(Element element, Token token)
+        public void ShowCardElementDetails(Element element, ElementStack stack)
 		{
-            tokenDetails.ShowElementDetails(element, token);
+            tokenDetails.ShowElementDetails(element, stack);
             aspectDetails.Hide();
         }
 
@@ -139,22 +137,8 @@ namespace SecretHistories.UI {
             tabletopBurner.ShowImageBurn(spriteName, token, duration, scale, alignment);
         }
 
-        public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
-        {
-            //
-        }
 
-        public void OnTokenInteraction(TokenInteractionEventArgs args)
-        {
-            if (args.Interaction == Interaction.OnClicked)
-            {
-                var element = Watchman.Get<Compendium>().GetEntityById<Element>(args.Payload.Id);
-              ShowCardElementDetails(element, args.Token);
-            }
 
-            if (args.Interaction == Interaction.OnDoubleClicked)
-                HideDetails();
-        }
 
     }
 }

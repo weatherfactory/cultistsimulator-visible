@@ -145,9 +145,9 @@ namespace SecretHistories.Constants
 
         private void ProvisionDropzoneToken()
         {
-            var dropzoneVerb = new DropzoneVerb();
             var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
-            var dropzoneCreationCommand = new TokenCreationCommand(dropzoneVerb, dropzoneLocation, null);
+            
+            var dropzoneCreationCommand = new TokenCreationCommand(new DropzoneCreationCommand(), dropzoneLocation, null);
             dropzoneCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
         }
 

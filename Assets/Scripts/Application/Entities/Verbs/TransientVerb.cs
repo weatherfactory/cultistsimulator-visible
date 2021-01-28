@@ -40,37 +40,7 @@ namespace SecretHistories.Entities
         public string Art=>String.Empty;
 
 
-        public int Quantity => 0;
         public Dictionary<string, int> Mutations { get; }
-
-        public Timeshadow GetTimeshadow()
-        {
-            //so a Transient Verb timeshadow is not actually Transient. which is confusing. Let's rename Transient Verb
-            return Timeshadow.CreateTimelessShadow();
-        }
-
-
-
-        public Type GetManifestationType(SphereCategory forSphereCategory)
-        {
-          return  typeof(VerbManifestation);
-        }
-
-        public void InitialiseManifestation(IManifestation manifestation)
-        {
-            manifestation.InitialiseVisuals(this);
-        }
-
-        public bool IsValidElementStack()
-        {
-            return false;
-        }
-
-        public bool IsValidVerb()
-        {
-            return true;
-        }
-
 
         
         public string Id { get; private set; }
@@ -144,7 +114,7 @@ namespace SecretHistories.Entities
             return Id;
         }
 
-        public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
+        public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)
         {
           //
         }

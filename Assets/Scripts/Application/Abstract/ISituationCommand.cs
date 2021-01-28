@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.States;
 using SecretHistories.UI;
@@ -28,10 +29,10 @@ namespace SecretHistories.Commands
         bool Execute(Situation situation);
     }
 
-    public interface ITokenEffectCommand
+    public interface IAffectsTokenCommand
     {
         void ExecuteOn(Token token);
-        void ExecuteOn(ElementStack elementStack);
+        void ExecuteOn(ITokenPayload payload);
 
     }
 }

@@ -102,12 +102,7 @@ namespace SecretHistories.Elements.Manifestations
             //
         }
 
-        public void InitialiseVisuals(Element element)
-        {
-            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
-        }
-
-        public void InitialiseVisuals(IVerb verb)
+        public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
         {
             this.transform.position = Vector3.zero;
         }

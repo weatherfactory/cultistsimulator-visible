@@ -58,10 +58,10 @@ namespace SecretHistories.Elements
             _flipHelper = new FlipHelper(this);
         }
         
-        public void InitialiseVisuals(Element element)
+        public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
         {
             
-               Sprite sprite = ResourcesManager.GetSpriteForElement(element.Icon);
+               Sprite sprite = ResourcesManager.GetSpriteForElement(drivesManifestation.Icon);
             artwork.sprite = sprite;
 
             if (sprite == null)
@@ -69,20 +69,16 @@ namespace SecretHistories.Elements
             else
                 artwork.color = Color.white;
 
-            SetCardBackground(element.Unique, element.Decays);
+            SetCardBackground(drivesManifestation.Unique, drivesManifestation.GetTimeshadow().Transient);
 
-            name = "CardManifestation_" + element.Id;
+            name = "CardManifestation_" + drivesManifestation.Id;
             decayBackgroundImage = decayView.GetComponent<Image>();
             cachedDecayBackgroundColor = decayBackgroundImage.color;
 
-            frames = ResourcesManager.GetAnimFramesForElement(element.Id);
+            frames = ResourcesManager.GetAnimFramesForElement(drivesManifestation.Id);
 
         }
 
-        public void InitialiseVisuals(IVerb verb)
-        {
-        //
-        }
 
 
 

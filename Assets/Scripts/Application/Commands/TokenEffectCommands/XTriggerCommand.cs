@@ -12,7 +12,7 @@ using SecretHistories.UI;
 
 namespace SecretHistories.Commands
 {
-  public  class XTriggerCommand: ITokenEffectCommand
+  public  class XTriggerCommand: IAffectsTokenCommand
     {
 
         public IAspectsDictionary AspectsPresent { get; set; }

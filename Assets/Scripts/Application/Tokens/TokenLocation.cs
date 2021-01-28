@@ -33,6 +33,10 @@ namespace SecretHistories.UI
             AtSpherePath = inSphere.GetPath();
         }
 
+        public static TokenLocation Default()
+        {
+            return new TokenLocation(0,0,0,SpherePath.Current());
+        }
 
         public TokenLocation(Vector3 anchored3DPosition,SpherePath atSpherePath)
         {

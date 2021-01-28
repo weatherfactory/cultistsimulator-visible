@@ -67,35 +67,36 @@ public class CreationCommandsSmokeTests
         {
             var element = Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First();
             var elementStackCreationCommand = new ElementStackCreationCommand(element.Id,1);
-            var elementStack = elementStackCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
         var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
-        var elementStackTokenCreationCommand = new TokenCreationCommand(elementStack, location, null);
+        var elementStackTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, location, null);
        var elementStackToken=elementStackTokenCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
        Assert.IsTrue(elementStackToken.Payload.IsValidElementStack());
     }
 
         [Test]
-        public void CreateBasicVerbToken()
+        public void CreateSituationToken()
         {
-            var basicVerb = Watchman.Get<Compendium>().GetEntitiesAsList<BasicVerb>().First();
-        var location= new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
-        var basicVerbCreationCommand=new TokenCreationCommand(basicVerb,location,null);
-        var basicVerbToken=basicVerbCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
-        Assert.IsTrue(basicVerbToken.Payload.IsValidVerb());
-
-    }
+   throw new NotImplementedException();
+        }
 
 
     [Test]
-    public void CreateDropzoneVerbToken()
+    public void CreateDropzoneToken()
     {
         
-        var dropzoneVerb = new DropzoneVerb();
+        var dropzonePayloadCreationCommand=new DropzoneCreationCommand();
         
         var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
-        var dropzoneCreationCommand = new TokenCreationCommand(dropzoneVerb, dropzoneLocation, null);
+        var dropzoneCreationCommand = new TokenCreationCommand(dropzonePayloadCreationCommand, dropzoneLocation, null);
         var dropzone=dropzoneCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
         Assert.IsInstanceOf<Token>(dropzone);
+
+    }
+
+    [Test]
+    public void CreateCharacter()
+    {
+throw new NotImplementedException();
 
     }
 

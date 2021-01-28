@@ -12,6 +12,7 @@ using SecretHistories.Services;
 using SecretHistories.States;
 using SecretHistories.UI;
 using Assets.Logic;
+using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Logic;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
@@ -28,8 +29,11 @@ using UnityEngine.Assertions;
 namespace SecretHistories.Entities {
 
     [IsEncaustableClass(typeof(SituationCreationCommand))]
-    public class Situation: ISphereEventSubscriber,IDrivesManifestation
+    public class Situation: ISphereEventSubscriber,ITokenPayload
     {
+        public event Action<TokenPayloadChangedArgs> OnChanged;
+        public event Action<float> OnLifetimeSpent;
+
         [Encaust]
         public SituationState CurrentState { get; set; }
 
@@ -58,9 +62,6 @@ namespace SecretHistories.Entities {
         [Encaust]
         public RecipeCompletionEffectCommand CurrentCompletionEffectCommand { get; set; } = new RecipeCompletionEffectCommand();
 
-        [Encaust]
-        public TokenLocation AnchorLocation => _anchor.Location;
-
         [Encaust] public Dictionary<string, int> Mutations => new Dictionary<string, int>();
 
         [DontEncaust] public float Warmup => Recipe.Warmup;
@@ -72,15 +73,9 @@ namespace SecretHistories.Entities {
         private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
         private readonly List<Dominion> _registeredDominions = new List<Dominion>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
-        private Token _anchor;
         private SituationWindow _window;
         private Timeshadow _timeshadow;
         
-
-        public Token GetAnchor()
-        {
-            return _anchor;
-        }
 
         public Vector3 GetWindowLocation()
         {
@@ -107,14 +102,13 @@ namespace SecretHistories.Entities {
 
         public void Attach(Token newAnchor)
         {
-            _anchor = newAnchor;
-            AddSubscriber(_anchor);
-            _anchor.OnWindowClosed.AddListener(Close);
-            _anchor.OnStart.AddListener(TryStart);
-            _anchor.OnCollect.AddListener(Conclude);
-            _anchor.OnSphereAdded.AddListener(AttachSphere);
-            _anchor.OnSphereRemoved.AddListener(RemoveSphere);
-            _anchor.AttachedTo(this);
+            AddSubscriber(newAnchor);
+            newAnchor.OnWindowClosed.AddListener(Close);
+            newAnchor.OnStart.AddListener(TryStart);
+            newAnchor.OnCollect.AddListener(Conclude);
+            newAnchor.OnSphereAdded.AddListener(AttachSphere);
+            newAnchor.OnSphereRemoved.AddListener(RemoveSphere);
+            newAnchor.SetPayload(this);
             NotifySubscribersOfStateAndTimerChange();
             NotifySubscribersOfTimerValueUpdate();
         }
@@ -247,14 +241,67 @@ namespace SecretHistories.Entities {
             }
 
             _window.Retire();
-            _anchor.Retire();
+            TokenPayloadChangedArgs args = new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement);
+            args.VFX = RetirementVFX.VerbAnchorVanish;
+            OnChanged?.Invoke(args);
             Watchman.Get<SituationsCatalogue>().DeregisterSituation(this);
         }
 
 
+
+        public Type GetManifestationType(SphereCategory sphereCategory)
+        {
+            return typeof(VerbManifestation);
+        }
+
+        public void InitialiseManifestation(IManifestation manifestation)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsValidElementStack()
+        {
+            throw new NotImplementedException();
+        }
+
         public void ExecuteHeartbeat(float interval)
         {
             Continue(interval);
+        }
+
+        public bool CanMergeWith(ITokenPayload incomingTokenPayload)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Retire(RetirementVFX vfx)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetQuantity(int quantityToLeaveBehind, Context context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ModifyQuantity(int unsatisfiedChange, Context context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -329,7 +376,11 @@ namespace SecretHistories.Entities {
             return stacks;
         }
 
-
+        /// <summary>
+        /// These are the aspects in the situation, not the aspects available to recipe criteria in the situation
+        /// </summary>
+        /// <param name="includeElementAspects"></param>
+        /// <returns></returns>
         public IAspectsDictionary GetAspects(bool includeElementAspects)
         {
             var aspects = new AspectsDictionary();
@@ -357,7 +408,7 @@ namespace SecretHistories.Entities {
         {
             // Generate a distinctive signature
 
-            return "situation_" + Verb.GetSignature();
+            return "situation_" + Verb.Id;
         }
 
         private SituationState Continue(float interval)
@@ -433,26 +484,13 @@ namespace SecretHistories.Entities {
                         var ending = Watchman.Get<Compendium>().GetEntityById<Ending>(currentEffectCommand.Recipe.Ending);
                         Watchman.Get<TabletopManager>() .EndGame(ending, this._anchor); //again, ttm (or successor) is subscribed. We should do it through there.
                     }
-                    
-                    
-                    TryOverrideVerbIcon(GetAspects(true));
 
 
                 }
 
             }
         }
-        //TODO: I don't love this - it goes outside the subscription flow - but there's an expensive lookup here. I should cache it and then rationalise.
-        private void TryOverrideVerbIcon(IAspectsDictionary forAspects)
-        {
-            //if we have an element in the situation now that overrides the verb icon, update it
-            string overrideIcon = Watchman.Get<Compendium>().GetVerbIconOverrideFromAspects(forAspects);
-            if (!string.IsNullOrEmpty(overrideIcon))
-            {
-                _anchor.DisplayOverrideIcon(overrideIcon);
-                _window.DisplayIcon(overrideIcon);
-            }
-        }
+
         private void CreateNewSituation(RecipeCompletionEffectCommand effectCommand)
         {
             List<Token> stacksToAddToNewSituation = new List<Token>();
@@ -573,7 +611,7 @@ namespace SecretHistories.Entities {
         
             var inductionRecipeVerb = Watchman.Get<Compendium>().GetVerbForRecipe(inducedRecipe);
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inductionRecipeVerb,
-            inducedRecipe, StateEnum.Unstarted, _anchor.Location).WithDefaultAttachments();
+            inducedRecipe, StateEnum.Unstarted, _anchor.Location);
 
             inducedSituationCreationCommand.SourceToken = _anchor;
 
@@ -598,18 +636,8 @@ namespace SecretHistories.Entities {
         IsOpen = true;
         _window.Show(location.Anchored3DPosition,this);
             
-        Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(_anchor.Payload.Id);
+        Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(Id);
     }
-
-    public virtual void OpenAtCurrentLocation()
-    {
-        var currentLocation = AnchorLocation;
-        if(currentLocation==null)
-            OpenAt(new TokenLocation(Vector3.zero,currentLocation.AtSpherePath));
-        else
-            OpenAt(currentLocation);
-    }
-
 
 
     public List<Dominion> GetSituationDominionsForCommandCategory(CommandCategory commandCategory)
@@ -756,9 +784,6 @@ namespace SecretHistories.Entities {
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
-            if(args.Context.IsManualAction() &&  !IsOpen)
-                OpenAtCurrentLocation();
-            
             
             CurrentRecipePrediction = GetUpdatedRecipePrediction();
             PossiblySignalImpendingDoom(CurrentRecipePrediction.SignalEndingFlavour);
@@ -780,6 +805,10 @@ namespace SecretHistories.Entities {
         public string Label => CurrentRecipePrediction.Title;
         public string Description => CurrentRecipePrediction.DescriptiveText;
         public int Quantity => 1;
+        public string UniquenessGroup { get; }
+        public bool Unique { get; }
+        public string Icon { get; }
+
         public Timeshadow GetTimeshadow()
         {
             return _timeshadow;

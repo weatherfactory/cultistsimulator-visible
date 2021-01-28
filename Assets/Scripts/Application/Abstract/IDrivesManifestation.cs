@@ -15,6 +15,9 @@ namespace SecretHistories.Abstract
       string Label { get; }
       string Description { get; }
       int Quantity { get; }
+      string UniquenessGroup { get; }
+      bool Unique { get; }
+      string Icon { get; }
       Timeshadow GetTimeshadow();
 
     }

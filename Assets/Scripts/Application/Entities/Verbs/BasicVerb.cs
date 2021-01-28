@@ -17,45 +17,32 @@ namespace SecretHistories.Entities
     [FucineImportable("verbs")]
     public class BasicVerb: AbstractEntity<BasicVerb>,IVerb
     {
+        [Encaust]
+        public override string Id => _id;
 
         [FucineValue(DefaultValue = ".", Localise = true)]
+        [Encaust]
         public string Label { get; set; }
 
         [FucineValue(DefaultValue = ".", Localise = true)]
+        [Encaust]
         public string Description { get; set; }
 
-   [FucineValue]
+        [FucineValue]
+        [Encaust]
         public string Art { get; set; }
 
 
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
+        [Encaust]
         public int Quantity => 1;
+        [Encaust]
         public Dictionary<string, int> Mutations { get; }
 
         public Timeshadow GetTimeshadow()
         {
             return Timeshadow.CreateTimelessShadow();
-        }
-
-        public Type GetManifestationType(SphereCategory forSphereCategory)
-        {
-            return typeof(VerbManifestation);
-        }
-
-        public void InitialiseManifestation(IManifestation manifestation)
-        {
-            manifestation.InitialiseVisuals(this);
-        }
-
-        public bool IsValidElementStack()
-        {
-            return false;
-        }
-
-        public bool IsValidVerb()
-        {
-            return true;
         }
 
         public List<SphereSpec> Thresholds
@@ -89,6 +76,11 @@ namespace SecretHistories.Entities
 
         public bool ExclusiveOpen => true;
 
+        public BasicVerb()
+        {
+
+        }
+
         public BasicVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 
@@ -99,68 +91,5 @@ namespace SecretHistories.Entities
 
         }
 
-        public string UniquenessGroup => string.Empty;
-        public bool Unique => false;
-        public bool Decays => false;
-
-        public IAspectsDictionary GetAspects(bool includeSelf)
-        {
-            return new AspectsDictionary();
-        }
-
-        public void ExecuteHeartbeat(float interval)
-        {
-       //
-        }
-
-        public ITokenPayload Decay(float interval)
-        {
-            return this;
-        }
-
-        public bool CanMergeWith(ITokenPayload incomingTokenPayload)
-        {
-            return false;
-        }
-
-        public void SetQuantity(int quantityToLeaveBehind, Context context)
-        {
-            //
-        }
-
-        public bool Retire(RetirementVFX vfx)
-        {
-            return true;
-        }
-
-        public void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload)
-        {
-            //
-        }
-
-        public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
-        {
-            //
-        }
-
-        public void ModifyQuantity(int unsatisfiedChange, Context context)
-        {
-            //
-        }
-
-        public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
-        {
-         //
-        }
-
-        public string GetSignature()
-        {
-            return Id;
-        }
-
-        public void ExecuteTokenEffectCommand(ITokenEffectCommand command)
-        {
-            //
-        }
     }
 }
