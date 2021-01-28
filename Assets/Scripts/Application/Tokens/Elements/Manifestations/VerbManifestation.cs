@@ -177,7 +177,7 @@ namespace SecretHistories.Elements.Manifestations
             {
                 var sphereToDisplayAsMiniSlot = activeThresholdSpheres.Single();
                 ShowMiniSlot(sphereToDisplayAsMiniSlot.GoverningSphereSpec.Greedy);
-                displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetElementStacks());
+                displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetElementTokens());
             }
 
             var outputSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Output));
@@ -234,24 +234,25 @@ namespace SecretHistories.Elements.Manifestations
         }
 
 
-        private void displayStackInMiniSlot(IEnumerable<ElementStack> stacks)
+        private void displayStackInMiniSlot(IEnumerable<Token> tokens)
         {
-            if(stacks.Count()>1)
+            if(tokens.Count()>1)
             {
                 NoonUtility.LogWarning("VerbManifestation implementation doessn't support >1 stack in minislot");
                 return;
             }
             
 
-            var stack = stacks.SingleOrDefault();
-            if(stack==null)
+            var token = tokens.SingleOrDefault();
+            if(token==null)
             {
                 ongoingSlotArtImage.sprite = null;
                 ongoingSlotArtImage.color = Color.black;
             }
             else
             {
-                ongoingSlotArtImage.sprite = ResourcesManager.GetSpriteForElement(stack.Icon);
+                ElementStack elementStackLordForgiveMe=token.Payload as ElementStack;
+                ongoingSlotArtImage.sprite = ResourcesManager.GetSpriteForElement(elementStackLordForgiveMe?.Icon);
                 ongoingSlotArtImage.color = Color.white;
             }
         }

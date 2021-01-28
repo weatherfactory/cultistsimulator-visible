@@ -62,7 +62,7 @@ namespace SecretHistories.Constants {
                 foreach (var stackToken in group.Skip(1))
                     if (primaryStackToken.Payload.CanMergeWith(stackToken.Payload))
                     {
-                        primaryStackToken.ElementStack.AcceptIncomingStackForMerge(stackToken.ElementStack);
+                        primaryStackToken.Payload.AcceptIncomingPayloadForMerge(stackToken.Payload);
                     }
             }
 
