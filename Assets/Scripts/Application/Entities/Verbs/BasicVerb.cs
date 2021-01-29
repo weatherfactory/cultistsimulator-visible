@@ -66,7 +66,7 @@ namespace SecretHistories.Entities
 
 
 
-        public bool Transient
+        public bool Spontaneous
         {
             get { return false; }
         }

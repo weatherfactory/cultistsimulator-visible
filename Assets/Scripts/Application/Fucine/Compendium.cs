@@ -219,7 +219,7 @@ public class Compendium
         if (verb == null)
         {
             IVerb transientVerb =
-              new TransientVerb();
+              new SpontaneousVerb();
 
             transientVerb.SetId(recipe.ActionId);
             transientVerb.Label = recipe.Label;

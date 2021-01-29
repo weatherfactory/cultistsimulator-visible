@@ -23,29 +23,31 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
         public TokenTravelItinerary CurrentItinerary { get; set; }
         public ITokenPayloadCreationCommand Payload { get; set; }
         public bool Defunct { get; set; }
-        public readonly Token _sourceToken;
+        private Token _sourceToken;
 
         public TokenCreationCommand()
         {
 
         }
 
-        public TokenCreationCommand(ITokenPayloadCreationCommand payload,TokenLocation location,Token sourceToken)
+        public TokenCreationCommand(ITokenPayloadCreationCommand payload,TokenLocation location)
         {
             Payload = payload;
             Location = location;
-            _sourceToken = sourceToken;
         }
 
-        public TokenCreationCommand(ElementStack elementStack, TokenLocation location, Token sourceToken)
+        public TokenCreationCommand(ElementStack elementStack, TokenLocation location)
         {
             var elementStackEncaustery = new Encaustery<ElementStackCreationCommand>();
             Payload = elementStackEncaustery.Encaust(elementStack);
             Location = location;
-            _sourceToken = sourceToken;
         }
 
-
+        public TokenCreationCommand WithSourceToken(Token sourceToken)
+        {
+            _sourceToken = sourceToken;
+            return this;
+        }
 
 
         public string ToJson()
@@ -54,12 +56,14 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
             return output;
         }
 
-        public Token Execute(SphereCatalogue sphereCatalogue)
+        public Token Execute(Context context)
         {
+            var sphereCatalogue = Watchman.Get<SphereCatalogue>();
+
             var sphere = sphereCatalogue.GetSphereByPath(Location.AtSpherePath);
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);
             
-            token.SetPayload(Payload.Execute(new Context(Context.ActionSource.Unknown)));
+            token.SetPayload(Payload.Execute(context));
     
             sphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
             token.transform.localPosition = Location.Anchored3DPosition;

@@ -12,20 +12,17 @@ using SecretHistories.Services;
 using SecretHistories.States;
 using SecretHistories.UI;
 using Assets.Logic;
-using Assets.Scripts.Application.Commands.TokenEffectCommands;
+using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Logic;
 using SecretHistories.Commands.SituationCommands;
-using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
-using JetBrains.Annotations;
 using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.States.TokenStates;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace SecretHistories.Entities {
 
@@ -82,6 +79,10 @@ namespace SecretHistories.Entities {
 
         public Situation(SituationPath path)
         {
+            SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
+
+            situationsCatalogue.RegisterSituation(this);
+
             Path = path;
             Recipe = NullRecipe.Create(NullVerb.Create());
             var ts = new Timeshadow(Recipe.Warmup,
@@ -463,7 +464,7 @@ namespace SecretHistories.Entities {
                 RecipeCompletionEffectCommand currentEffectCommand = new RecipeCompletionEffectCommand(c.Recipe,
                     c.Recipe.ActionId != Recipe.ActionId, c.Expulsion,c.ToPath);
                 if (currentEffectCommand.AsNewSituation)
-                    CreateNewSituation(currentEffectCommand);
+                    SpawnNewSituation(currentEffectCommand);
                 else
                 {
                     Watchman.Get<Character>().AddExecutionsToHistory(currentEffectCommand.Recipe.Id, 1); //can we make 
@@ -485,7 +486,7 @@ namespace SecretHistories.Entities {
             }
         }
 
-        private void CreateNewSituation(RecipeCompletionEffectCommand effectCommand)
+        private void SpawnNewSituation(RecipeCompletionEffectCommand effectCommand)
         {
             List<Token> stacksToAddToNewSituation = new List<Token>();
             //if there's an expulsion
@@ -509,26 +510,12 @@ namespace SecretHistories.Entities {
 
 
             IVerb verbForNewSituation = Watchman.Get<Compendium>().GetVerbForRecipe(effectCommand.Recipe);
+            var situationCreationCommand = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe,
+                StateEnum.Ongoing);
+            situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
+            var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand,effectCommand.ToPath,new Context(Context.ActionSource.SpawningAnchor));
 
-
-            TokenLocation newAnchorLocation;
-
-            if (effectCommand.ToPath != SpherePath.Current())
-                newAnchorLocation = new TokenLocation(Vector3.zero, effectCommand.ToPath);
-            else
-                newAnchorLocation = _anchor.Location;
-
-
-            var scc = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe,
-                StateEnum.Unstarted, newAnchorLocation).WithDefaultAttachments();
-
-            scc.SourceToken = _anchor;
-
-            var newSituation=Watchman.Get<SituationsCatalogue>()
-                .TryBeginNewSituation(scc,
-                    stacksToAddToNewSituation); //tabletop manager is a subscriber, right? can we run this (or access to its successor) through that flow?
-
-            newSituation.TryStart();
+            SendCommandToSubscribers(spawnNewTokenCommand);
 
         }
 
@@ -584,15 +571,16 @@ namespace SecretHistories.Entities {
             NoonUtility.Log("unknown recipe " + inducedRecipe + " in induction for " + aspectID);
             return;
         }
-        
+
+            
+
+
             var inductionRecipeVerb = Watchman.Get<Compendium>().GetVerbForRecipe(inducedRecipe);
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inductionRecipeVerb,
-            inducedRecipe, StateEnum.Unstarted, _anchor.Location);
+            inducedRecipe, StateEnum.Ongoing);
 
-            inducedSituationCreationCommand.SourceToken = _anchor;
-
-        var inducedSituation=Watchman.Get<SituationsCatalogue>().TryBeginNewSituation(inducedSituationCreationCommand, new List<Token>());
-            inducedSituation.TryStart();
+            var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, SpherePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
+            SendCommandToSubscribers(spawnNewTokenCommand);
 
     }
 
@@ -746,18 +734,6 @@ namespace SecretHistories.Entities {
         }
 
 
-
-        public bool ForbidCreationOf(SituationCreationCommand scc)
-        {
-            if (scc.Verb.Id != Verb.Id)
-                return false;
-
-            if (scc.Verb.Transient && CurrentState.AllowDuplicateVerbIfTransient) //doesn't matter whether ID matches or not
-                return false;
-
-            return true;
-        }
-
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             var oldEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
@@ -784,8 +760,29 @@ namespace SecretHistories.Entities {
         public string Label => CurrentRecipePrediction.Title;
         public string Description => CurrentRecipePrediction.DescriptiveText;
         public int Quantity => 1;
-        public string UniquenessGroup { get; }
-        public bool Unique { get; }
+
+        public string UniquenessGroup
+        {
+            get
+            {
+                if (Unique)
+                    return Verb.Id;
+                return string.Empty;
+            }
+        }
+
+        public bool Unique
+        {
+            get
+            {
+                if(!Verb.Spontaneous)
+                    return true;
+                if (!CurrentState.AllowDuplicateVerbIfVerbSpontaneous)
+                    return true;
+
+                return false;
+            }
+        }
         public string Icon { get; }
 
         public Timeshadow GetTimeshadow()

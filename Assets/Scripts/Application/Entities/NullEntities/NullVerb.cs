@@ -38,7 +38,7 @@ namespace SecretHistories.NullObjects
         public string Label { get; set; }
         public string Description { get; set; }
         
-        public bool Transient { get; }
+        public bool Spontaneous { get; }
         public string Art => string.Empty;
 
 

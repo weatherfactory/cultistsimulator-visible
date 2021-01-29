@@ -21,7 +21,7 @@ namespace SecretHistories.States
        public abstract bool IsActiveInThisState(Sphere sphereToCheck);
        public abstract bool IsVisibleInThisState(Dominion dominion);
         public abstract bool IsValidPredictionForState(Recipe recipeToCheck, Situation s);
-       public abstract bool AllowDuplicateVerbIfTransient { get; }
+       public abstract bool AllowDuplicateVerbIfVerbSpontaneous { get; }
 
 
        public static SituationState Rehydrate(StateEnum stateEnum,Situation situation)

@@ -318,8 +318,10 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
 
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, StateEnum.Ongoing,
-                new TokenLocation(0f,0f,-100f,tabletop.GetPath())).WithDefaultAttachments();
+                new TokenLocation(0f,0f,-100f,tabletop.GetPath()));
             scc.Open = false;
+
+
         Watchman.Get<SituationsCatalogue>().TryBeginNewSituation(scc,new List<Token>());
         }
         else

@@ -40,7 +40,7 @@ namespace Assets.Scripts.Application.Entities.NullEntities
 
         }
 
-        public override bool AllowDuplicateVerbIfTransient => true;
+        public override bool AllowDuplicateVerbIfVerbSpontaneous => true;
         public override void Continue(Situation situation)
         {
           //

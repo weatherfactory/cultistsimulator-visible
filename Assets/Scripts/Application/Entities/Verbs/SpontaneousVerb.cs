@@ -15,7 +15,7 @@ using SecretHistories.Spheres;
 
 namespace SecretHistories.Entities
 {
-   public class TransientVerb: IVerb
+   public class SpontaneousVerb: IVerb
     {
         
 
@@ -23,7 +23,7 @@ namespace SecretHistories.Entities
         public event Action<float> OnLifetimeSpent;
 
 
-        public TransientVerb(string id, string label, string description):this()
+        public SpontaneousVerb(string id, string label, string description)
         {
             Id = id;
             Label = label;
@@ -32,7 +32,7 @@ namespace SecretHistories.Entities
 
         }
 
-        public  bool Transient => true;
+        public  bool Spontaneous => true;
 
         public string Art=>String.Empty;
 

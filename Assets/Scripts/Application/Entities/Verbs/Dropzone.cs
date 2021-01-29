@@ -148,5 +148,20 @@ namespace SecretHistories.Entities.Verbs
         {
             //
         }
+
+        public void OpenAt(TokenLocation location)
+        {
+            //
+        }
+
+        public void Close()
+        {
+            //
+        }
+
+        public bool IsOpen()
+        {
+            return false;
+        }
     }
 }

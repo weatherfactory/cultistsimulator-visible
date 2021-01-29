@@ -27,12 +27,12 @@ namespace SecretHistories.Commands.SituationCommands
             // Note: If we collect all from the window we also get the default button sound in any case.
             if (results.Any())
                 SoundManager.PlaySfx("SituationCollectAll");
-            else if (situation.Verb.Transient)
+            else if (situation.Verb.Spontaneous)
                 SoundManager.PlaySfx("SituationTokenRetire");
             else
                 SoundManager.PlaySfx("UIButtonClick");
             
-            if(situation.Verb.Transient)
+            if(situation.Verb.Spontaneous)
                 situation.Retire();
             else
                 situation.TransitionToState(new UnstartedState());

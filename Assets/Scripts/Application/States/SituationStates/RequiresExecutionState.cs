@@ -16,7 +16,7 @@ namespace SecretHistories.States
     public class RequiresExecutionState : SituationState
     {
 
-        public override bool AllowDuplicateVerbIfTransient => false;
+        public override bool AllowDuplicateVerbIfVerbSpontaneous => false;
 
         public override void Enter(Situation situation)
         {

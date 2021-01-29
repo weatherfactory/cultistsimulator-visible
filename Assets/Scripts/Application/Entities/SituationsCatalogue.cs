@@ -78,42 +78,6 @@ namespace SecretHistories.Entities
         }
 
 
-        public Situation TryBeginNewSituation(SituationCreationCommand scc, List<Token> withStacksInStorage)
-        {
-            if (scc.Recipe == null)
-                throw new ApplicationException("DON'T PASS AROUND SITUATIONCREATIONCOMMANDS WITH RECIPE NULL");
-            if (withStacksInStorage == null)
-                throw new ApplicationException("WITHSTACKSINSTORAGE SHOULD NEVER BE NULL");
-
-            //if new situation is beginning with an existing verb: do not action the creation.
-            //oh: I could have an scc property which is a MUST CREATE override
-
-
-            var registeredSituations = GetRegisteredSituations();
-
-            if (registeredSituations.Exists(rs => rs.ForbidCreationOf(scc)))
-            {
-                NoonUtility.Log("Tried to create " + scc.Recipe.Id + " for verb " + scc.Recipe.ActionId + " but that verb is already active.");
-                //end execution here
-                return NullSituation.Create();
-            }
-
-            var situationCat = Watchman.Get<SituationsCatalogue>();
-            var situation = scc.Execute(situationCat);
-
-
-            situation.ExecuteHeartbeat(0f);
-
-
-            //if there's been (for instance) an expulsion, we now want to add the relevant stacks to this situation
-            if (withStacksInStorage.Any())
-                situation.AcceptTokens(SphereCategory.SituationStorage, withStacksInStorage);
-
-            return situation;
-
-        }
-
-     
 
         public void HaltSituation(string toHaltId, int maxToHalt)
         {
