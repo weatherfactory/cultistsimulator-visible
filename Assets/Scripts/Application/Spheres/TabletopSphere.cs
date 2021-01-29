@@ -82,28 +82,29 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         if (!tokenToSend.IsValidElementStack())
             return false;
 
-        var registeredSituations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
+        var allThresholdSpheres=_catalogue.GetSpheresOfCategory(SphereCategory.Threshold);
+
+        var tokenCurrentPath = tokenToSend.Location.AtSpherePath;
+
         Sphere targetThreshold=null;
         TokenLocation targetLocation = null;
         Vector3 targetDistance = Vector3.positiveInfinity;;
 
-        foreach (Situation candidateSituation in registeredSituations)
+        foreach (var threshold  in allThresholdSpheres)
         {
-            TokenLocation candidateLocation = candidateSituation.AnchorLocation;
+
+            Vector3 candidatePosition = threshold.GetReferencePosition(tokenCurrentPath);
+
             Vector3 candidateDistance;
-            if (candidateSituation.IsOpen && candidateSituation.Verb.ExclusiveOpen)
-                candidateDistance=Vector3.zero;
-            else
-                candidateDistance = candidateLocation.Anchored3DPosition - tokenToSend.Location.Anchored3DPosition;
+          
+                candidateDistance = candidatePosition - tokenToSend.Location.Anchored3DPosition;
 
             if (candidateDistance.sqrMagnitude < targetDistance.sqrMagnitude)
             {
-                targetThreshold = candidateSituation.GetAvailableThresholdsForStackPush(tokenToSend.Payload).FirstOrDefault();
+                targetThreshold = threshold;
                 if (targetThreshold != null)
                 {
-                    targetLocation = candidateLocation;
-                    targetDistance = candidateDistance;
-                    if (targetDistance == Vector3.zero) //we have a valid location, and nothing will be closer than this
+                    if (targetDistance.sqrMagnitude<=0) //we have a valid location, and nothing will be closer than this
                         break;
                 }
             }

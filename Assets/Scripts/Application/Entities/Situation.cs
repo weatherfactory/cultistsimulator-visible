@@ -585,16 +585,13 @@ namespace SecretHistories.Entities {
     }
 
 
-        public void Close()
-        { 
-            IsOpen = false; 
-
-            _window.Hide(this);
-
-            DumpUnstartedBusiness();
+        public void TokenMoved(TokenLocation toLocation)
+        {
+            foreach (var sphere in GetSpheres())
+                sphere.SetReferencePosition(toLocation);
         }
 
-     
+
         public void OpenAt(TokenLocation location)
     {
            IsOpen = true;
@@ -603,8 +600,18 @@ namespace SecretHistories.Entities {
         Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(Id);
     }
 
+        public void Close()
+        {
+            IsOpen = false;
 
-    public List<Dominion> GetSituationDominionsForCommandCategory(CommandCategory commandCategory)
+            _window.Hide(this);
+
+            DumpUnstartedBusiness();
+        }
+
+
+
+        public List<Dominion> GetSituationDominionsForCommandCategory(CommandCategory commandCategory)
     {
             return new List<Dominion>(_registeredDominions.Where(a=>a.MatchesCommandCategory(commandCategory)));
     }

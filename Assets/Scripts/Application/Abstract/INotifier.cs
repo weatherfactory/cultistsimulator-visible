@@ -14,6 +14,5 @@ namespace SecretHistories.Interfaces
         void ShowElementDetails(Element element, bool fromDetailsWindow = false);
         void ShowSlotDetails(SphereSpec slot, bool highlightGreedy, bool highlightConsumes);
         void ShowDeckDetails(DeckSpec deckId, int deckQuantity);
-        void ShowImageBurn(string spriteName, Token token, float duration, float scale, TabletopImageBurner.ImageLayoutConfig alignment);
     }
 }

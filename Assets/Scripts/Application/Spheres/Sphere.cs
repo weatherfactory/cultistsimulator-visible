@@ -74,17 +74,19 @@ namespace SecretHistories.Spheres
             return true;
         }
 
-[Tooltip("Use this to specify the SpherePath in the editor")] [SerializeField]
+        [Tooltip("Use this to specify the SpherePath in the editor")] [SerializeField]
         protected string PathIdentifier;
         
 
         public bool Defunct { get; protected set; }
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
-        private SphereCatalogue _catalogue;
+        protected SphereCatalogue _catalogue;
         protected readonly List<Token> _tokens = new List<Token>();
         protected AngelFlock flock = new AngelFlock();
 
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
+
+        private Dictionary<SpherePath, Vector3> referencePositions;
 
 
         public SphereCatalogue Catalogue
@@ -645,7 +647,37 @@ namespace SecretHistories.Spheres
                 s.OnTokenInteractionInSphere(args);
         }
 
-      
+        /// <summary>
+        /// Reference positions: positions in other spheres that correspond to this one.
+        /// eg, the position in TabletopSphere that tokens send, so we know what point thresholds are connected to
+        /// </summary>
+        /// <param name="referenceLocation"></param>
+        public void SetReferencePosition(TokenLocation referenceLocation)
+        {
+            if (referenceLocation.AtSpherePath != this.GetPath())
+            {
+                if (referencePositions.ContainsKey(referenceLocation.AtSpherePath))
+                    referencePositions[referenceLocation.AtSpherePath] = referenceLocation.Anchored3DPosition;
+                else
+                    referencePositions.Add(referenceLocation.AtSpherePath, referenceLocation.Anchored3DPosition);
+            }
+        }
+
+        public Vector3 GetReferencePosition(SpherePath atPath)
+        {
+
+            if (referencePositions.TryGetValue(atPath, out Vector3 referencePosition))
+                return referencePosition;
+
+            var here = GetRectTransform().anchoredPosition3D;
+
+            var hereAsWorldPosition = GetRectTransform().TransformPoint(here);
+            var otherSphere = _catalogue.GetSphereByPath(atPath);
+            var bestGuessReferencePosition = otherSphere.GetRectTransform().InverseTransformPoint(hereAsWorldPosition);
+            
+            return bestGuessReferencePosition;
+        }
+
     }
 
 }

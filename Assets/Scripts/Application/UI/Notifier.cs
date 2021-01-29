@@ -131,13 +131,6 @@ namespace SecretHistories.UI {
             aspectDetails.Hide();
         }
 
-        // TabletopImageBurner
-
-        public void ShowImageBurn(string spriteName, Token token, float duration, float scale, TabletopImageBurner.ImageLayoutConfig alignment) {
-            tabletopBurner.ShowImageBurn(spriteName, token, duration, scale, alignment);
-        }
-
-
 
 
     }

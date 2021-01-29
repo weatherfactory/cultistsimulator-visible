@@ -147,8 +147,8 @@ namespace SecretHistories.Constants
         {
             var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
             
-            var dropzoneCreationCommand = new TokenCreationCommand(new DropzoneCreationCommand(), dropzoneLocation, null);
-            dropzoneCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
+            var dropzoneCreationCommand = new TokenCreationCommand(new DropzoneCreationCommand(), dropzoneLocation);
+            dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
         }
 
         public async void EndGame(Ending ending, Token _anchor)

@@ -43,7 +43,7 @@ namespace SecretHistories.Elements.Manifestations
         public void UpdateVisuals(IDrivesManifestation drivesManifestation)
         {
             var element = Watchman.Get<Compendium>().GetEntityById<Element>(drivesManifestation.Id);
-            elementFrame.PopulateDisplay(element, drivesManifestation.Quantity, false);
+            elementFrame.PopulateDisplay(element.ToString(), drivesManifestation.Quantity, false);
         }
 
         public void SendNotification(INotification notification)

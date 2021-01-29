@@ -428,7 +428,9 @@ namespace SecretHistories.UI {
 
          TokenRectTransform.position = draggedToPosition; ///aaaahh it's *position* not anchoredposition3D because we're getting the world point from the click
 
-            
+         Payload.TokenMoved(Location);  
+
+
             _manifestation.DoMove(ManifestationRectTransform);
 
             // rotate object slightly based on pointer Delta
@@ -501,7 +503,7 @@ namespace SecretHistories.UI {
                     Payload.ShowNoMergeMessage(incomingToken.Payload);
             }
 
-            if(!Payload.IsOpen())
+            if(!Payload.IsOpen)
                 Payload.OpenAt(Location);
 
             _attachedToSituation.InteractWithSituation(incomingToken);
@@ -553,7 +555,7 @@ namespace SecretHistories.UI {
             //Manifestation didn't handle click
             Watchman.Get<DebugTools>().SetInput(_attachedToSituation.RecipeId);
 
-            if (!Payload.IsOpen())
+            if (!Payload.IsOpen)
                 Payload.OpenAt(Location);
             else
                 Payload.Close();
@@ -700,13 +702,6 @@ namespace SecretHistories.UI {
                 Watchman.Get<TabletopManager>().SetHighlightedElement(null);
             }
 
-        }
-
-        public void BurnImageUnderToken(string burnImage)
-        {
-            Watchman.Get<INotifier>()
-                .ShowImageBurn(burnImage, this, 20f, 2f,
-                    TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
 
         public void TravelTo(TokenTravelItinerary itinerary,Context context)

@@ -70,7 +70,7 @@ namespace SecretHistories.Spheres.Angels
 
                     var enRouteSphere = Watchman.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
 
-                    var targetPosition = GetTargetPositionForDestinationSphere(destinationThresholdSphere);
+                    var targetPosition = GetTargetPositionForDestinationSphere(destinationThresholdSphere,matchingToken);
 
                     TokenTravelItinerary itinerary = new TokenTravelItinerary(matchingToken.Location.Anchored3DPosition,
                             targetPosition)
@@ -84,13 +84,11 @@ namespace SecretHistories.Spheres.Angels
             }
         }
 
-        private Vector3 GetTargetPositionForDestinationSphere(Sphere destinationThresholdSphere)
+        private Vector3 GetTargetPositionForDestinationSphere(Sphere destinationThresholdSphere,Token matchingToken)
         {
-            //if we're using this for non-classic-CS-recipe slots, we'll need to rewrite it. We'll also need not to hardcode the final scale
-            var targetPath = destinationThresholdSphere.GetPath();
-            var targetSituationPath = targetPath.GetBaseSituationPath();
-            var targetSituation = Watchman.Get<SituationsCatalogue>().GetSituationByPath(targetSituationPath);
-            var targetPosition = targetSituation.AnchorLocation.Anchored3DPosition;
+
+            var tokenCurrentSpherePath = matchingToken.Sphere.GetPath();
+            var targetPosition = destinationThresholdSphere.GetReferencePosition(tokenCurrentSpherePath);
             return targetPosition;
         }
 

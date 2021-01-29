@@ -39,7 +39,6 @@ namespace SecretHistories.UI {
             situation.RegisterDominion(this);
             _situationPath = situation.Path;
 
-     
             foreach (var subscriber in gameObject.GetComponentsInChildren<ISituationSubscriber>())
                 situation.AddSubscriber(subscriber);
 
@@ -101,8 +100,7 @@ namespace SecretHistories.UI {
 
         public void ClearThresholds()
         {
-
-          thresholdsWrangler.RemoveAllThresholds();
+            thresholdsWrangler.RemoveAllThresholds();
         }
 
 

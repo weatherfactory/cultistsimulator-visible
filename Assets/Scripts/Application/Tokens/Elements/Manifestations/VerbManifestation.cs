@@ -75,8 +75,16 @@ namespace SecretHistories.Elements.Manifestations
 
         public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
         {
+            string art;
+            if (!string.IsNullOrEmpty(verb.Art))
+                art = verb.Art;
+            else
+                art = verb.Id;
 
-            displayArtForVerb(drivesManifestation);
+            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
+            frames = ResourcesManager.GetAnimFramesForVerb(art);
+            artwork.sprite = sprite;
+            
             if (verb.Transient)
             {
                 _transient = true;
@@ -285,18 +293,6 @@ namespace SecretHistories.Elements.Manifestations
             countdownCanvas.gameObject.SetActive(show);
         }
 
-        private void displayArtForVerb(IVerb verb)
-        {
-            string art;
-            if (!string.IsNullOrEmpty(verb.Art))
-                art = verb.Art;
-            else
-                art = verb.Id;
-
-            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
-            frames = ResourcesManager.GetAnimFramesForVerb(art);
-            artwork.sprite = sprite;
-        }
 
 
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)

@@ -8,6 +8,8 @@ using UnityEngine.UI;
 namespace SecretHistories.UI {
     public class TabletopImageBurner : MonoBehaviour {
 
+        
+
         public enum ImageLayoutConfig { CenterOnToken, LowerLeftCorner }
 
         [SerializeField] Image burnImagePrefab;
@@ -18,8 +20,14 @@ namespace SecretHistories.UI {
 
         List<Image> imagePool = new List<Image>();
         List<BurnImage> activeImages = new List<BurnImage>();
-        
-        public void ShowImageBurn(string spriteName, Token token, float duration, float scale, ImageLayoutConfig config) { 
+
+        public void Awake()
+        {
+            new Watchman().Register(this);
+        }
+
+
+        public void ShowImageBurn(string spriteName, Vector3 atPosition, float duration, float scale, ImageLayoutConfig config) { 
             var sprite = LoadBurnSprite(spriteName);
 
             if (sprite == null) {
@@ -34,7 +42,7 @@ namespace SecretHistories.UI {
             image.SetNativeSize();
             image.gameObject.SetActive(true);
             image.rectTransform.pivot = GetPivotFromConfig(config);
-            image.transform.position = token.transform.position;
+            image.transform.position = atPosition;
             image.transform.localRotation = Quaternion.identity;
             image.transform.localScale = Vector3.one * scale;
 

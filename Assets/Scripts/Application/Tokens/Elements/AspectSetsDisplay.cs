@@ -78,7 +78,7 @@ namespace SecretHistories.Enums.Elements
                 return; //...because it's hidden
 
             ElementFrame newElementFrame = Watchman.Get<PrefabFactory>().CreateLocally<ElementFrame>(aspectsDisplay);
-            newElementFrame.PopulateDisplay(aspect, quantity, hasBrightBackground);
+            newElementFrame.PopulateDisplay(aspect.ToString(), quantity, hasBrightBackground);
 
             if (isWithinDetailsWindow)
                 newElementFrame.SetAsDetailWindowChild();

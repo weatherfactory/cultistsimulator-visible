@@ -17,6 +17,7 @@ namespace SecretHistories.Abstract
     {
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
+        bool IsOpen { get;}
 
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
@@ -33,7 +34,8 @@ namespace SecretHistories.Abstract
 
         void OpenAt(TokenLocation location);
         void Close();
-        bool IsOpen();
+
+        void TokenMoved(TokenLocation toLocation);
     }
     }
 
