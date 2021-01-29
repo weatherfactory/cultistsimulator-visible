@@ -19,12 +19,13 @@ namespace SecretHistories.Commands
 
         public bool ExecuteOn(Token token)
         {
-            Watchman.Get<BackgroundMusic>().SignalEndingFlavour(EndingFlavour _endingFlavour);
+            Watchman.Get<BackgroundMusic>().SignalEndingFlavour(_endingFlavour);
+            return true;
         }
 
         public bool ExecuteOn(ITokenPayload payload)
         {
-            throw new NotImplementedException();
+            return false;
         }
     }
 }
