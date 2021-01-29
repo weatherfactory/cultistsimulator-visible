@@ -316,13 +316,14 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         {
             IVerb verbForNewSituation = Watchman.Get<Compendium>().GetVerbForRecipe(recipe);
 
+            SituationCreationCommand newSituationCommand = new SituationCreationCommand(verbForNewSituation, recipe, StateEnum.Ongoing);
 
-            SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, StateEnum.Ongoing,
-                new TokenLocation(0f,0f,-100f,tabletop.GetPath()));
-            scc.Open = false;
+            var newTokenLocation= new TokenLocation(0f, 0f, -100f, tabletop.GetPath());
 
+            var newTokenCommand=new TokenCreationCommand(newSituationCommand,newTokenLocation);
 
-        Watchman.Get<SituationsCatalogue>().TryBeginNewSituation(scc,new List<Token>());
+            newTokenCommand.Execute(new Context(Context.ActionSource.Debug));
+
         }
         else
             NoonUtility.LogWarning("Tried to begin situation via debug, but couldn't find this recipe: " + recipeId);

@@ -68,9 +68,9 @@ public class CreationCommandsSmokeTests
             var element = Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First();
             var elementStackCreationCommand = new ElementStackCreationCommand(element.Id,1);
         var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
-        var elementStackTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, location, null);
-       var elementStackToken=elementStackTokenCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
-       Assert.IsTrue(elementStackToken.Payload.IsValidElementStack());
+        var elementStackTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, location);
+       var elementStackToken=elementStackTokenCreationCommand.Execute(new Context(Context.ActionSource.Debug));
+        Assert.IsTrue(elementStackToken.Payload.IsValidElementStack());
     }
 
         [Test]
@@ -87,8 +87,8 @@ public class CreationCommandsSmokeTests
         var dropzonePayloadCreationCommand=new DropzoneCreationCommand();
         
         var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
-        var dropzoneCreationCommand = new TokenCreationCommand(dropzonePayloadCreationCommand, dropzoneLocation, null);
-        var dropzone=dropzoneCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
+        var dropzoneCreationCommand = new TokenCreationCommand(dropzonePayloadCreationCommand, dropzoneLocation);
+        var dropzone=dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Debug));
         Assert.IsInstanceOf<Token>(dropzone);
 
     }
