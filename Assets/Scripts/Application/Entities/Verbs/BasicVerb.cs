@@ -71,8 +71,6 @@ namespace SecretHistories.Entities
             get { return false; }
         }
         
-        [FucineValue(DefaultValue = true)]
-        public bool Startable { get; set; }
 
         public bool ExclusiveOpen => true;
 

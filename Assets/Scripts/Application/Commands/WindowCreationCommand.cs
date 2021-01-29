@@ -13,16 +13,16 @@ namespace Assets.Scripts.Application.Commands
 {
    public class WindowCreationCommand
     {
-        private readonly SpherePath _windowSpherePath;
+        public TokenLocation Location { get; set; }
 
-        public WindowCreationCommand(SpherePath windowSpherePath)
+        public WindowCreationCommand(TokenLocation location)
         {
-            _windowSpherePath = windowSpherePath;
+            Location = location;
         }
 
         public SituationWindow Execute(SphereCatalogue sphereCatalogue)
         {
-            var sphere = sphereCatalogue.GetSphereByPath(_windowSpherePath);
+            var sphere = sphereCatalogue.GetSphereByPath(Location.AtSpherePath);
             var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphere.transform);
             
             return newWindow;

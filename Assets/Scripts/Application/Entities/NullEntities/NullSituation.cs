@@ -16,11 +16,7 @@ namespace SecretHistories.NullObjects
         public override IVerb Verb { get; set; }=NullVerb.Create();
         
 
-        public override void OpenAtCurrentLocation()
-        {
-            //
-        }
-
+  
         public override bool IsValidSituation()
         {
             return false;

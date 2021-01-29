@@ -17,10 +17,7 @@ namespace SecretHistories.Entities
 {
    public class TransientVerb: IVerb
     {
-        public TransientVerb()
-        {
-            Startable = false;
-        }
+        
 
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
@@ -56,11 +53,8 @@ namespace SecretHistories.Entities
 
         public List<SphereSpec> Thresholds { get; set; }
 
-        public bool Startable { get; set; }
         public bool ExclusiveOpen => true;
 
-        public string UniquenessGroup => string.Empty;
-        public bool Unique => false;
 
         public IAspectsDictionary GetAspects(bool includeSelf)
         {

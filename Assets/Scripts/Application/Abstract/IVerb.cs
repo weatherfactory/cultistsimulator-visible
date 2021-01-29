@@ -19,7 +19,6 @@ namespace SecretHistories.Interfaces
         bool Transient { get; }
         string Art { get; }
         List<SphereSpec> Thresholds { get; }
-      bool Startable { get; }
       bool ExclusiveOpen { get; }
     }
 

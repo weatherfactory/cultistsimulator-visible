@@ -76,7 +76,7 @@ namespace SecretHistories.Elements.Manifestations
         public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
         {
 
-            displayArtForVerb(verb);
+            displayArtForVerb(drivesManifestation);
             if (verb.Transient)
             {
                 _transient = true;

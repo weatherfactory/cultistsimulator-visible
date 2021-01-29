@@ -64,13 +64,11 @@ namespace SecretHistories.NullObjects
 
         public List<SphereSpec> Thresholds { get; set; }
 
-        public bool Startable { get; }
         public bool ExclusiveOpen => false;
 
         protected NullVerb()
         {
             Thresholds=new List<SphereSpec>();
-            Startable = false;
         }
 
 

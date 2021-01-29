@@ -34,11 +34,11 @@ namespace SecretHistories.UI {
             this.uiCamera = Camera.main; // there is only one camera in our scene so this works.
         }
 
-        public void Initialise(Vector3 worldPosition) {
-
+        public void SetInitialPosition(Vector3 localPosition)
+        {
+            var worldPosition = transform.TransformPoint(localPosition);
 
             SetPosition(GetBoundCorrectedWorldPos(worldPosition));
-
         }
 
         Vector2 GetScreenPosFromWorld(Vector3 worldPos) {

@@ -56,8 +56,7 @@ namespace SecretHistories.UI {
 
         public TokenLocation LastOpenLocation;
 
-        private IVerb Verb;
-        private SituationPath _situationPath;
+        private Situation situation; //Ideally, we would reduce this to an ITokenPayload
         private bool windowIsWide = false;
 
         public bool IsVisible {
@@ -75,6 +74,38 @@ namespace SecretHistories.UI {
 			set { positioner.SetPosition( value ); }
 		}
 
+        public void Attach(Situation newSituation, TokenLocation initialLocation)
+        {
+            newSituation.AddSubscriber(this);
+            
+
+            OnWindowClosed.AddListener(newSituation.Close);
+            OnStart.AddListener(newSituation.TryStart);
+            OnCollect.AddListener(newSituation.Conclude);
+            OnSphereAdded.AddListener(newSituation.AttachSphere);
+            OnSphereRemoved.AddListener(newSituation.RemoveSphere);
+
+            name = "Window_" + newSituation.Id;
+            DisplayIcon(situation.Id);
+
+            Title = situation.Label;
+            PaginatedNotes.SetText(newSituation.Description);
+            startButton.onClick.AddListener(OnStart.Invoke);
+
+
+            foreach (var d in Dominions)
+                d.RegisterFor(situation);
+            
+            startButton.gameObject.SetActive(true);
+ 
+
+            SituationStateChanged(situation);
+            TimerValuesChanged(situation);
+
+            positioner.SetInitialPosition(initialLocation.Anchored3DPosition);
+     
+        }
+
         public void TryResizeWindow(int slotsCount)
         {
             SetWindowSize(slotsCount > 3);
@@ -85,35 +116,7 @@ namespace SecretHistories.UI {
             artwork.sprite = sprite;
         }
          
-        public void  Initialise(Situation situation) {
-			Verb = situation.Verb;
-            _situationPath = situation.Path;
-            name = "Window_" + Verb.Id;
-            DisplayIcon(Verb.Id);
-
-            Title = Verb.Label;
-            PaginatedNotes.SetText(Verb.Description);
-            startButton.onClick.AddListener(OnStart.Invoke);
-
-
-           foreach(var d in Dominions)
-               d.RegisterFor(situation);
-           
-     
-            if (Verb.Startable)
-            {
-                startButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                startButton.gameObject.SetActive(false);
-            }
-
-            SituationStateChanged(situation);
-            TimerValuesChanged(situation);
-            
-        }
-
+    
 
         public void Closed() {
           OnWindowClosed.Invoke();
@@ -266,5 +269,7 @@ namespace SecretHistories.UI {
         {
             Destroy(gameObject);
         }
+
+ 
     }
 }

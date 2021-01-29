@@ -55,7 +55,7 @@ namespace SecretHistories.Commands
         }
 
         
-        public ITokenPayload Execute(Token token, Context context)
+        public ITokenPayload Execute(Context context)
         {
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
 
@@ -73,13 +73,18 @@ namespace SecretHistories.Commands
 
             var sphereCatalogue = Watchman.Get<SphereCatalogue>();
 
-   
-            windowCreationCommand = new WindowCreationCommand(new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath));
+
+            var windowSpherePath=new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath); 
+            var windowLocation =
+                new TokenLocation(Vector3.zero,windowSpherePath); //it shouldn't really be zero, b ut we don't know the real token loc in the current flow
+
+
+            windowCreationCommand = new WindowCreationCommand(windowLocation);
 
             if (windowCreationCommand!=null)
             { 
                 var newWindow = windowCreationCommand.Execute(sphereCatalogue);
-               newSituation.Attach(newWindow);
+                newWindow.Attach(newSituation);
             }
 
             foreach (var c in Commands)

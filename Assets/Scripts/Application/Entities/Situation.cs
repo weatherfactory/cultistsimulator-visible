@@ -77,10 +77,6 @@ namespace SecretHistories.Entities {
         private Timeshadow _timeshadow;
         
 
-        public Vector3 GetWindowLocation()
-        {
-            return _window.positioner.GetPosition();
-        }
 
 
         public Situation(SituationPath path)
@@ -113,24 +109,6 @@ namespace SecretHistories.Entities {
             NotifySubscribersOfTimerValueUpdate();
         }
 
-
-
-        public void Attach(SituationWindow newWindow)
-        {
-            _window = newWindow;
-            AddSubscriber(_window);
-
-            _window.OnWindowClosed.AddListener(Close);
-            _window.OnStart.AddListener(TryStart);
-            _window.OnCollect.AddListener(Conclude);
-            _window.OnSphereAdded.AddListener(AttachSphere);
-            _window.OnSphereRemoved.AddListener(RemoveSphere);
-
-            _window.Initialise(this);
-            _window.positioner.Initialise(_anchor);
-            NotifySubscribersOfStateAndTimerChange();
-            NotifySubscribersOfTimerValueUpdate();
-        }
 
         public bool RegisterDominion(Dominion dominionToRegister)
         {
@@ -514,8 +492,6 @@ namespace SecretHistories.Entities {
             }
 
 
-
-
             IVerb verbForNewSituation = Watchman.Get<Compendium>().GetVerbForRecipe(effectCommand.Recipe);
 
 
@@ -630,8 +606,8 @@ namespace SecretHistories.Entities {
             DumpUnstartedBusiness();
         }
 
-
-    public void OpenAt(TokenLocation location)
+     
+        public void OpenAt(TokenLocation location)
     {
         IsOpen = true;
         _window.Show(location.Anchored3DPosition,this);
