@@ -218,14 +218,11 @@ public class Compendium
 
         if (verb == null)
         {
-            IVerb transientVerb =
-              new SpontaneousVerb();
+            IVerb spontaneousVerb =
+              new SpontaneousVerb(recipe.ActionId,recipe.Label,recipe.Description);
 
-            transientVerb.SetId(recipe.ActionId);
-            transientVerb.Label = recipe.Label;
-            transientVerb.Description = recipe.Description;
 
-            return transientVerb;
+            return spontaneousVerb;
         }
 
         return verb;

@@ -597,8 +597,8 @@ namespace SecretHistories.Entities {
      
         public void OpenAt(TokenLocation location)
     {
-        IsOpen = true;
-        _window.Show(location.Anchored3DPosition,this);
+           IsOpen = true;
+           _window.Show(location.Anchored3DPosition);
             
         Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(Id);
     }

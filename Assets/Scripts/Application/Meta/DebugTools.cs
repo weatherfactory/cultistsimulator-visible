@@ -463,13 +463,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         //}
 
         List<ISaveable> saveables=new List<ISaveable>();
-        var allSituations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
-        
-        foreach (var situationToSave in allSituations)
-        {
-            var commandToSave = new SituationCreationCommand(situationToSave);
-            saveables.Add(commandToSave);
-        }
+
 
         StringBuilder sb=new StringBuilder();
         foreach (var s in saveables)

@@ -25,6 +25,7 @@ namespace SecretHistories.UI {
         Camera uiCamera;
 
         Vector3 dragOffset;
+        private Vector3 lastPosition=Vector3.zero;
 
         public void Awake()
         {
@@ -47,9 +48,9 @@ namespace SecretHistories.UI {
 
         // SHOW ANIM
 
-        public void Show(float duration, Vector3 openFromPosition, Vector3 targetPosition) {
+        public void Show(float duration, Vector3 openFromPosition) {
             StopAllCoroutines();
-            StartCoroutine(DoShowAnim(duration, openFromPosition, targetPosition));
+            StartCoroutine(DoShowAnim(duration, openFromPosition, lastPosition));
         }
 
         IEnumerator DoShowAnim(float duration, Vector3 openFromPosition, Vector3 targetPosition)
@@ -205,6 +206,7 @@ namespace SecretHistories.UI {
         void DelayedEndDrag() {
             windowBeingDragged = null;
             canvasGroup.blocksRaycasts = true;
+            lastPosition = transform.localPosition;
         }
     }
 }

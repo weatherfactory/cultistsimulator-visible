@@ -209,7 +209,7 @@ namespace SecretHistories.Constants
                 var command = SetupSituationCreationCommand(verb, recipe, situationState, htSituationValues, locationInfo);
 
                 var situationCat = Watchman.Get<SituationsCatalogue>();
-                var situation= command.Execute(situationCat);
+                var situation= command.Execute(new Context(Context.ActionSource.Loading));
 
                 situation.ExecuteHeartbeat(0f); //flushes everything through and updates
 
@@ -223,15 +223,13 @@ namespace SecretHistories.Constants
                 ImportSituationNotes(htSituationValues, situation);
                
 
-                situation.NotifySubscribersOfStateAndTimerChange();
-
             }
         }
 
         private SituationCreationCommand SetupSituationCreationCommand(IVerb verb, Recipe recipe, StateEnum situationState,
             Hashtable htSituationValues, object locationInfo)
         {
-            var command = new SituationCreationCommand(verb, recipe, situationState, null);
+            var command = new SituationCreationCommand(verb, recipe, situationState);
 
             command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING) ??  0;
             command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);

@@ -124,7 +124,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public void Show( Vector3 targetPosition, Situation situation)
+        public void Show( Vector3 startPosition)
 		{
 			if (!IsVisible)
 			{
@@ -132,10 +132,8 @@ namespace SecretHistories.UI {
                 canvasGroupFader.Show();
                 SituationStateChanged(situation);
             }
-
-            Vector3 targetWorldPosition = transform.parent.TransformPoint(targetPosition);
-
-            positioner.Show(canvasGroupFader.durationTurnOn, targetWorldPosition); // Animates the window (position allows optional change is position)
+            
+            positioner.Show(canvasGroupFader.durationTurnOn, startPosition); // Animates the window (position allows optional change is position)
 
             PaginatedNotes.SetFinalPage();
 
