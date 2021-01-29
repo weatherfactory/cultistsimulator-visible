@@ -30,6 +30,8 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
 
     // Use this for initialization
     void Awake() {
+        var w=new Watchman();
+        w.Register(this);
         backgroundMusic = ResourcesManager.GetBackgroundMusic();
         impendingDoomMusic = ResourcesManager.GetImpendingDoomMusic();
         mansusMusic = ResourcesManager.GetMansusMusic();
@@ -88,19 +90,21 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
         PlayClip(0, mansusMusic);
     }
 
-    public void PlayImpendingDoom() {
+    public void SignalEndingFlavour(EndingFlavour endingFlavour) {
+        if (endingFlavour == EndingFlavour.None)
+        {
+            if (currentClip == impendingDoomMusic.ElementAt(0))
+                PlayNextClip();
+        }
+        else
+        {
+            //room here to play different doom flavour musics
+        
         if(currentClip!=impendingDoomMusic.ElementAt(0))
             PlayClip(0,impendingDoomMusic);
+        }
     }
-
-    public void NoMoreImpendingDoom()
-    {
-        if (currentClip == impendingDoomMusic.ElementAt(0))
-            PlayNextClip();
-    }
-
-    // Options Control
-
+    
 
     private void SetVolume(float volume)
     {

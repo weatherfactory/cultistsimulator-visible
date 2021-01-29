@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework.Constraints;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Constants;
@@ -14,6 +15,7 @@ namespace SecretHistories.Commands
     public class EndGameAtTokenCommand: IAffectsTokenCommand
     {
         private Ending Ending;
+        private bool HasExecuted=false;
 
         public EndGameAtTokenCommand(Ending ending)
         {
@@ -23,8 +25,12 @@ namespace SecretHistories.Commands
 
         public bool ExecuteOn(Token token)
         {
-        Watchman.Get<GameGateway>().EndGame(Ending,token);
-        return true;
+            if(!HasExecuted)
+            {
+                Watchman.Get<GameGateway>().EndGame(Ending,token);
+                HasExecuted = true;
+            }
+            return true;
         }
 
         public bool ExecuteOn(ITokenPayload payload)

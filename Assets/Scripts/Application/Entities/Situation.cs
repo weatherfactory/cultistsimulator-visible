@@ -440,15 +440,7 @@ namespace SecretHistories.Entities {
         }
 
 
-        private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
-        {
-            var tabletopManager = Watchman.Get<TabletopManager>();
-            if (endingFlavour != EndingFlavour.None)
-                tabletopManager.SignalImpendingDoom(_anchor);
-            else
-                tabletopManager.NoMoreImpendingDoom(_anchor);
 
-        }
 
         public void ExecuteCurrentRecipe()
         {
@@ -768,9 +760,12 @@ namespace SecretHistories.Entities {
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
-            
+            var oldEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
             CurrentRecipePrediction = GetUpdatedRecipePrediction();
-            PossiblySignalImpendingDoom(CurrentRecipePrediction.SignalEndingFlavour);
+            var newEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
+
+            if (oldEndingFlavour!=newEndingFlavour)
+                SendCommandToSubscribers(new SignalEndingFlavourCommand(newEndingFlavour));
 
             foreach (var s in _subscribers)
                 s.SituationSphereContentsUpdated(this);
