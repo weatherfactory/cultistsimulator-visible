@@ -74,7 +74,7 @@ namespace SecretHistories.Constants
                 {
                     if (s.IsOpen)
                     {
-                        s.OpenAtCurrentLocation();
+                        s.OpenAt(TokenLocation.Default());
                     }
                 }
 

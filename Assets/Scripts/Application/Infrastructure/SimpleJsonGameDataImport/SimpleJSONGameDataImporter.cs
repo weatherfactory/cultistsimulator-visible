@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
 using SecretHistories.Commands;
 using SecretHistories.Entities; //Recipe,SlotSpecification
@@ -206,10 +207,11 @@ namespace SecretHistories.Constants
                 var recipe = GetSituationRecipe(htSituationValues, verb);
                 var situationState= GetSituationState(htSituationValues);
 
-                var command = SetupSituationCreationCommand(verb, recipe, situationState, htSituationValues, locationInfo);
+                var command = SetupSituationTokenCreationCommand(verb, recipe, situationState, htSituationValues, locationInfo);
 
-                var situationCat = Watchman.Get<SituationsCatalogue>();
-                var situation= command.Execute(new Context(Context.ActionSource.Loading));
+                var situationToken= command.Execute(new Context(Context.ActionSource.Loading));
+                var situation=situationToken.Payload as Situation;
+                ;
 
                 situation.ExecuteHeartbeat(0f); //flushes everything through and updates
 
@@ -226,15 +228,16 @@ namespace SecretHistories.Constants
             }
         }
 
-        private SituationCreationCommand SetupSituationCreationCommand(IVerb verb, Recipe recipe, StateEnum situationState,
+        private TokenCreationCommand SetupSituationTokenCreationCommand(IVerb verb, Recipe recipe, StateEnum situationState,
             Hashtable htSituationValues, object locationInfo)
         {
-            var command = new SituationCreationCommand(verb, recipe, situationState);
+            var situationCreationCommand = new SituationCreationCommand(verb, recipe, situationState);
 
-            command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING) ??  0;
-            command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
+            situationCreationCommand.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING) ??  0;
+            situationCreationCommand.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
 
             string simplifiedSituationPath;
+            TokenLocation tokenLocation;
 
             string[] simplifiedSituationPathParts = locationInfo.ToString().Split(SpherePath.SEPARATOR);
             if (simplifiedSituationPathParts.Length != 3)
@@ -242,30 +245,33 @@ namespace SecretHistories.Constants
                 NoonUtility.LogWarning(
                     $"We can't parse a situation locationinfo: {locationInfo}. So we're just picking the beginning of it to use as the situation path.");
                 simplifiedSituationPath = simplifiedSituationPathParts[0];
-                command.AnchorLocation = new TokenLocation(0, 0, 0, tabletopSpherePath);
+                tokenLocation = new TokenLocation(0, 0, 0, tabletopSpherePath);
             }
             else
             {
                 simplifiedSituationPath = simplifiedSituationPathParts[2];
                 float.TryParse(simplifiedSituationPathParts[0], out float anchorPosX);
                 float.TryParse(simplifiedSituationPathParts[1], out float anchorPosY);
-                command.AnchorLocation = new TokenLocation(anchorPosX, anchorPosY, 0, tabletopSpherePath);
+                tokenLocation = new TokenLocation(anchorPosX, anchorPosY, 0, tabletopSpherePath);
             }
 
-            command.SituationPath = new SituationPath(simplifiedSituationPath);
+            situationCreationCommand.SituationPath = new SituationPath(simplifiedSituationPath);
 
 
-            command.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
+            situationCreationCommand.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
             
             
             var verbSlotsCommand = new PopulateThresholdsCommand(CommandCategory.VerbThresholds, verb.Thresholds);
-            command.Commands.Add(verbSlotsCommand);
+            situationCreationCommand.Commands.Add(verbSlotsCommand);
 
 
             var recipeSlotSpecs = SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(htSituationValues, recipe.Slots);
             var recipeSlotsCommand = new PopulateThresholdsCommand(CommandCategory.RecipeThresholds, recipeSlotSpecs);
-            command.Commands.Add(recipeSlotsCommand);
-            return command.WithDefaultAttachments();
+            situationCreationCommand.Commands.Add(recipeSlotsCommand);
+            
+            var tokenCreationCommand=new TokenCreationCommand(situationCreationCommand, tokenLocation);
+
+            return tokenCreationCommand;
         }
 
 
