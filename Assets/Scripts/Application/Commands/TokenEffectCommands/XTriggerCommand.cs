@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -27,21 +28,21 @@ namespace SecretHistories.Commands
         }
 
 
-        public void ExecuteOn(Token token)
+        public bool ExecuteOn(Token token)
         {
-            //
+            return false;
         }
 
-        public void ExecuteOn(ElementStack onStack)
+        public bool ExecuteOn(ITokenPayload payload)
         {
-           RunXTriggersOnMutationsForStack(onStack);
-           RunXTriggersOnStackItself(onStack);
-
+           RunXTriggersOnMutationsForStack(payload);
+           RunXTriggersOnStackItself(payload);
+           return true;
         }
 
 
 
-        private void RunXTriggersOnMutationsForStack(ElementStack onStack)
+        private void RunXTriggersOnMutationsForStack(ITokenPayload onStack)
         {
             foreach (var eachStackMutation in onStack.Mutations)
             {
@@ -97,8 +98,13 @@ namespace SecretHistories.Commands
             }
         }
 
-        private void RunXTriggersOnStackItself(ElementStack onStack)
+        private void RunXTriggersOnStackItself(ITokenPayload payload)
         {
+            if (!payload.IsValidElementStack())
+                return;
+            
+            var onStack = payload as ElementStack; //bleagh
+
             var xTriggers = onStack.GetXTriggers();
 
             foreach (var triggerKey in xTriggers.Keys)

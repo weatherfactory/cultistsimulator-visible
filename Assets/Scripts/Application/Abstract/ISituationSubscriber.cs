@@ -1,4 +1,5 @@
 ﻿
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 
 namespace SecretHistories.Interfaces
@@ -9,5 +10,6 @@ namespace SecretHistories.Interfaces
         void TimerValuesChanged(Situation s);
         void SituationSphereContentsUpdated(Situation s);
         void ReceiveNotification(INotification n);
+        void ReceiveCommand(IAffectsTokenCommand command);
     }
 }

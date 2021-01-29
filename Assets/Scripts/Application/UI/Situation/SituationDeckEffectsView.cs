@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
@@ -31,6 +32,11 @@ namespace Assets.Scripts.Application.UI.Situation
         public void ReceiveNotification(INotification n)
         {
         //    throw new NotImplementedException();
+        }
+
+        public void ReceiveCommand(IAffectsTokenCommand command)
+        {
+            //can't make use of it
         }
 
         private void ShowDeckEffects(Dictionary<string, int> deckEffects)

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Assets.Scripts.Application.UI.Situation;
+using SecretHistories.Commands;
 using SecretHistories.Interfaces;
 using TMPro;
 using UnityEngine;
@@ -249,7 +250,12 @@ namespace SecretHistories.UI {
         {
             PaginatedNotes.AddText(n.Description);
         }
-         
+
+        public void ReceiveCommand(IAffectsTokenCommand command)
+        {
+            //can't make use of  it
+        }
+
 
         //public override void MoveObject(PointerEventData eventData) {
         //    Vector3 dragPos;

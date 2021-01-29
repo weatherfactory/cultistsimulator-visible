@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -125,5 +126,10 @@ public class Output : Sphere,ISituationSubscriber{
 
     public void ReceiveNotification(INotification n)
     {
+    }
+
+    public void ReceiveCommand(IAffectsTokenCommand command)
+    {
+        //can't make use of it
     }
 }

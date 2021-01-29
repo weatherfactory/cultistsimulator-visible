@@ -12,6 +12,7 @@ using SecretHistories.Services;
 using SecretHistories.States;
 using SecretHistories.UI;
 using Assets.Logic;
+using Assets.Scripts.Application.Commands.TokenEffectCommands;
 using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Logic;
 using SecretHistories.Commands.SituationCommands;
@@ -418,6 +419,26 @@ namespace SecretHistories.Entities {
                 subscriber.TimerValuesChanged(this);
         }
 
+        public void SendNotificationToSubscribers(INotification notification)
+        {
+            //Check for possible text refinements based on the aspects in context
+            var aspectsInSituation = GetAspects(true);
+            TextRefiner tr = new TextRefiner(aspectsInSituation);
+
+
+            Notification refinedNotification = new Notification(notification.Title,
+                tr.RefineString(notification.Description));
+
+            foreach (var subscriber in _subscribers)
+                subscriber.ReceiveNotification(refinedNotification);
+        }
+
+        public void SendCommandToSubscribers(IAffectsTokenCommand command)
+        {
+            foreach(var s in _subscribers)
+                s.ReceiveCommand(command);
+        }
+
 
         private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
         {
@@ -460,7 +481,10 @@ namespace SecretHistories.Entities {
                     if (!string.IsNullOrEmpty(currentEffectCommand.Recipe.Ending))
                     {
                         var ending = Watchman.Get<Compendium>().GetEntityById<Ending>(currentEffectCommand.Recipe.Ending);
-                        Watchman.Get<TabletopManager>() .EndGame(ending, this._anchor); //again, ttm (or successor) is subscribed. We should do it through there.
+                        
+                        var endGameCommand=new EndGameAtTokenCommand(ending);
+
+                        SendCommandToSubscribers(endGameCommand);
                     }
 
 
@@ -515,22 +539,6 @@ namespace SecretHistories.Entities {
             newSituation.TryStart();
 
         }
-
-    public void SendNotificationToSubscribers(INotification notification)
-    {
-        //Check for possible text refinements based on the aspects in context
-        var aspectsInSituation = GetAspects(true);
-        TextRefiner tr = new TextRefiner(aspectsInSituation);
-
-
-        Notification refinedNotification = new Notification(notification.Title,
-            tr.RefineString(notification.Description));
-        
-            foreach (var subscriber in _subscribers)
-                subscriber.ReceiveNotification(refinedNotification);
-
-        }
-
 
 
     public void AttemptAspectInductions(Recipe currentRecipe, List<Token> outputTokens) // this should absolutely go through subscription - something to succeed ttm

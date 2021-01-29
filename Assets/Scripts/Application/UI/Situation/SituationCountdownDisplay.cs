@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Commands;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using TMPro;
@@ -44,5 +45,9 @@ namespace Assets.Scripts.Application.UI.Situation
 
         }
 
+        public void ReceiveCommand(IAffectsTokenCommand command)
+        {
+            //can't make use of it
+        }
     }
 }

@@ -29,8 +29,6 @@ namespace SecretHistories.UI {
     public class TabletopManager : MonoBehaviour
     {
 
-        [SerializeField] private EndGameAnimController _endGameAnimController;
-
         [Header("Tabletop")] [SerializeField] public TabletopSphere _tabletop;
         [SerializeField] TabletopBackground tabletopBackground;
 
@@ -83,26 +81,7 @@ namespace SecretHistories.UI {
 
 
 
-        public async void EndGame(Ending ending, Token _anchor)
-		{
-			NoonUtility.Log("TabletopManager.EndGame()");
-
-            
-            var character = Watchman.Get<Character>();
-            var chronicler = Watchman.Get<Chronicler>();
-
-            chronicler.ChronicleGameEnd(Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<SphereCatalogue>().GetSpheres(),ending);
-            character.Reset(null,ending);
-
-            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Character>(),SourceForGameState.DefaultSave);
-            var result = await saveTask;
-
-        
-            _endGameAnimController.TriggerEnd(_anchor, ending);
-        }
-
-
-        
+       
         public HashSet<AnchorAndSlot> FillTheseSlotsWithFreeStacks(HashSet<AnchorAndSlot> slotsToFill) {
             var unprocessedSlots = new HashSet<AnchorAndSlot>();
 

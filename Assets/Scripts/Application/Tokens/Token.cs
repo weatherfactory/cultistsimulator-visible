@@ -143,7 +143,8 @@ namespace SecretHistories.UI {
 
         public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)
         {
-            Payload.ExecuteTokenEffectCommand(command);
+        if(!command.ExecuteOn(this));
+                Payload.ExecuteTokenEffectCommand(command);
         }
 
         public void StartArtAnimation()
@@ -734,6 +735,11 @@ namespace SecretHistories.UI {
         public void ReceiveNotification(INotification n)
         {
            NoonUtility.Log("ReceiveNotification on Token: use it or lose it");
+        }
+
+        public void ReceiveCommand(IAffectsTokenCommand command)
+        {
+            throw new NotImplementedException();
         }
 
         public void Understate()

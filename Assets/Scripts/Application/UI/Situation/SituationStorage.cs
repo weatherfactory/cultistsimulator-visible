@@ -5,6 +5,7 @@ using SecretHistories.UI;
 using SecretHistories.UI.Scripts;
 using SecretHistories.Constants;
 using System;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -79,5 +80,10 @@ public class SituationStorage : Sphere,ISituationSubscriber
     public void ReceiveNotification(INotification n)
     {
         //
+    }
+
+    public void ReceiveCommand(IAffectsTokenCommand command)
+    {
+        //can't make use of it
     }
 }

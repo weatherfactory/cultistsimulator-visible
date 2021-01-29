@@ -23,6 +23,9 @@ namespace SecretHistories.Constants
 {
     public class GameGateway:MonoBehaviour
     {
+
+        [SerializeField] private EndGameAnimController _endGameAnimController;
+
         public void Awake()
         {
             var r = new Watchman();
@@ -149,6 +152,22 @@ namespace SecretHistories.Constants
             
             var dropzoneCreationCommand = new TokenCreationCommand(new DropzoneCreationCommand(), dropzoneLocation, null);
             dropzoneCreationCommand.Execute(Watchman.Get<SphereCatalogue>());
+        }
+
+        public async void EndGame(Ending ending, Token _anchor)
+        {
+
+            var character = Watchman.Get<Character>();
+            var chronicler = Watchman.Get<Chronicler>();
+
+            chronicler.ChronicleGameEnd(Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<SphereCatalogue>().GetSpheres(), ending);
+            character.Reset(null, ending);
+
+            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Character>(), SourceForGameState.DefaultSave);
+            var result = await saveTask;
+
+
+            _endGameAnimController.TriggerEnd(_anchor, ending);
         }
 
 
