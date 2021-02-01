@@ -34,7 +34,7 @@ namespace SecretHistories.Entities {
         public event Action<float> OnLifetimeSpent;
 
         [Encaust]
-        public SituationState CurrentState { get; set; }
+        public SituationState State { get; set; }
 
         [Encaust]
         public Recipe Recipe { get; set; }
@@ -67,8 +67,47 @@ namespace SecretHistories.Entities {
         [DontEncaust] public string RecipeId => Recipe.Id;
         [DontEncaust] public RecipePrediction CurrentRecipePrediction { get; set; }
         [DontEncaust] public string Id => Verb.Id;
+        [DontEncaust] public string Label => CurrentRecipePrediction.Title;
+        [DontEncaust] public string Description => CurrentRecipePrediction.DescriptiveText;
+        [DontEncaust] public int Quantity => 1;
+        [DontEncaust]
+        public string UniquenessGroup
+        {
+            get
+            {
+                if (Unique)
+                    return Verb.Id;
+                return string.Empty;
+            }
+        }
 
-    
+        [DontEncaust]
+        public bool Unique
+        {
+            get
+            {
+                if (!Verb.Spontaneous)
+                    return true;
+                if (!State.AllowDuplicateVerbIfVerbSpontaneous)
+                    return true;
+
+                return false;
+            }
+        }
+        [DontEncaust]
+        public string Icon
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Verb.Icon))
+                    return Verb.Icon;
+
+                return Verb.Id;
+            }
+
+        }
+
+
         private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
         private readonly List<Dominion> _registeredDominions = new List<Dominion>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
@@ -95,9 +134,9 @@ namespace SecretHistories.Entities {
 
         public void TransitionToState(SituationState newState)
         {
-            CurrentState.Exit(this);
+            State.Exit(this);
             newState.Enter(this);
-            CurrentState = newState;
+            State = newState;
             NotifySubscribersOfStateAndTimerChange();
         }
 
@@ -184,7 +223,7 @@ namespace SecretHistories.Entities {
 
         public List<Sphere> GetSpheresActiveForCurrentState()
         {
-            return new List<Sphere>(_spheres).Where(sphere => CurrentState.IsActiveInThisState(sphere)).ToList();
+            return new List<Sphere>(_spheres).Where(sphere => State.IsActiveInThisState(sphere)).ToList();
         }
 
         public List<Sphere> GetSpheresByCategory(SphereCategory category)
@@ -420,11 +459,11 @@ namespace SecretHistories.Entities {
 
         _timeshadow.SpendTime(interval);
 
-            CurrentState.Continue(this);
+            State.Continue(this);
 
             CurrentCompletionEffectCommand = new RecipeCompletionEffectCommand();
 
-            return CurrentState;
+            return State;
         }
 
 
@@ -656,7 +695,7 @@ namespace SecretHistories.Entities {
         foreach (var t in thresholds)
 
             if (!t.IsGreedy
-               && CurrentState.IsActiveInThisState(t)
+               && State.IsActiveInThisState(t)
                && !t.CurrentlyBlockedFor(BlockDirection.Inward)
                && t.GetMatchForTokenPayload(stack).MatchType ==SlotMatchForAspectsType.Okay)
 
@@ -783,44 +822,8 @@ namespace SecretHistories.Entities {
             return true;
         }
 
-        public string Label => CurrentRecipePrediction.Title;
-        public string Description => CurrentRecipePrediction.DescriptiveText;
-        public int Quantity => 1;
 
-        public string UniquenessGroup
-        {
-            get
-            {
-                if (Unique)
-                    return Verb.Id;
-                return string.Empty;
-            }
-        }
 
-        public bool Unique
-        {
-            get
-            {
-                if(!Verb.Spontaneous)
-                    return true;
-                if (!CurrentState.AllowDuplicateVerbIfVerbSpontaneous)
-                    return true;
-
-                return false;
-            }
-        }
-
-        public string Icon
-        {
-            get
-            {
-                if (!string.IsNullOrEmpty(Verb.Icon))
-                    return Verb.Icon;
-
-                return Verb.Id;
-            }
-
-        }
 
         public string GetIllumination(string key)
         {

@@ -55,7 +55,7 @@ public class SituationStorage : Sphere,ISituationSubscriber
 
     public void UpdateDisplay(Situation situation)
     {
-        if(situation.CurrentState.IsActiveInThisState(this))
+        if(situation.State.IsActiveInThisState(this))
             canvasGroupFader.Show();
         else
             canvasGroupFader.Hide();

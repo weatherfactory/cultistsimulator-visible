@@ -52,10 +52,10 @@ namespace SecretHistories.UI {
         public void SituationStateChanged(Situation situation)
         {
 
-            if(situation.CurrentState.IsVisibleInThisState(this))
+            if(situation.State.IsVisibleInThisState(this))
                 canvasGroupFader.Show();
 
-            if (!situation.CurrentState.IsVisibleInThisState(this))
+            if (!situation.State.IsVisibleInThisState(this))
                 canvasGroupFader.Hide();
         }
 

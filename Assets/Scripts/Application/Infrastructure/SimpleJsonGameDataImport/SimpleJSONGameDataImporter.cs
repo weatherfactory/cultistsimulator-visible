@@ -253,19 +253,19 @@ namespace SecretHistories.Constants
                 tokenLocation = new TokenLocation(anchorPosX, anchorPosY, 0, tabletopSpherePath);
             }
 
-            situationCreationCommand.SituationPath = new SituationPath(simplifiedSituationPath);
+            situationCreationCommand.Path = new SituationPath(simplifiedSituationPath);
 
 
-            situationCreationCommand.Open = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
+            situationCreationCommand.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
             
             
             var verbSlotsCommand = new PopulateThresholdsCommand(CommandCategory.VerbThresholds, verb.Thresholds);
-            situationCreationCommand.Commands.Add(verbSlotsCommand);
+            situationCreationCommand.CommandQueue.Add(verbSlotsCommand);
 
 
             var recipeSlotSpecs = SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(htSituationValues, recipe.Slots);
             var recipeSlotsCommand = new PopulateThresholdsCommand(CommandCategory.RecipeThresholds, recipeSlotSpecs);
-            situationCreationCommand.Commands.Add(recipeSlotsCommand);
+            situationCreationCommand.CommandQueue.Add(recipeSlotsCommand);
             
             var tokenCreationCommand=new TokenCreationCommand(situationCreationCommand, tokenLocation);
 

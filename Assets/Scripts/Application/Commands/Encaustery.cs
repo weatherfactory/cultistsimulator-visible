@@ -65,10 +65,10 @@ namespace SecretHistories.Commands
             {
                 var candidateEncaustableProperty = allPropertiesOnEncaustable.SingleOrDefault(p => p.Name == cp.Name);
                 if (candidateEncaustableProperty == null)
-                    throw new ApplicationException(
-                        $"Command type {specifiedGenericCommandType} has a property ({cp.Name}) that encaustable type {encaustable.GetType()} lacks, so we can't encaust the other to the one.");
-                if (candidateEncaustableProperty.IsDefined(typeof(DontEncaust)))
-                    throw new ApplicationException(
+                    encaustmentPropertyAttributeProblems.Add(
+                       $"Command type {specifiedGenericCommandType} has a property ({cp.Name}) that encaustable type {encaustable.GetType()} lacks, so we can't encaust the other to the one.");
+                else if (candidateEncaustableProperty.IsDefined(typeof(DontEncaust)))
+                    encaustmentPropertyAttributeProblems.Add(
                         $"Command type {specifiedGenericCommandType} has a property ({cp.Name}) that encaustable type {encaustable.GetType()} marks as DontEncaust, so we can't encaust the other to the one.");
             }
 

@@ -29,14 +29,14 @@ namespace SecretHistories.Commands
         public Recipe Recipe { get; set; }
         public StateEnum State { get; set; }
         public float TimeRemaining { get; set; }
+        public float IntervalForLastHeartbeat { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
-
-        public SituationPath SituationPath { get; set; }
-        public bool Open { get; set; }
-
+        public Dictionary<string, int> Mutations { get; set; }
+        public SituationPath Path { get; set; }
+        public bool IsOpen { get; set; }
         public List<Token> TokensToMigrate=new List<Token>();
 
-        public List<ISituationCommand> Commands=new List<ISituationCommand>();
+        public List<ISituationCommand> CommandQueue=new List<ISituationCommand>();
         private WindowCreationCommand windowCreationCommand;
 
         public SituationCreationCommand()
@@ -52,7 +52,7 @@ namespace SecretHistories.Commands
             Recipe = recipe;
             Verb = verb;
             State = state;
-            SituationPath =new SituationPath(verb);
+            Path =new SituationPath(verb);
         }
 
         
@@ -67,9 +67,9 @@ namespace SecretHistories.Commands
                     return NullSituation.Create();
             }
 
-            Situation newSituation = new Situation(SituationPath);
+            Situation newSituation = new Situation(Path);
 
-            newSituation.CurrentState = SituationState.Rehydrate(State, newSituation);
+            newSituation.State = SituationState.Rehydrate(State, newSituation);
             newSituation.Verb = Verb;
             newSituation.ActivateRecipe(Recipe);
             newSituation.ReduceLifetimeBy(Recipe.Warmup - TimeRemaining);
@@ -95,7 +95,7 @@ namespace SecretHistories.Commands
                 var newWindow = windowCreationCommand.Execute(sphereCatalogue);
                 newWindow.Attach(newSituation,windowLocation); }
 
-            foreach (var c in Commands)
+            foreach (var c in CommandQueue)
                 newSituation.CommandQueue.AddCommand(c);
 
             newSituation.ExecuteHeartbeat(0f);

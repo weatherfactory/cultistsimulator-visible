@@ -105,7 +105,7 @@ public class Output : Sphere,ISituationSubscriber{
 
     public void SituationStateChanged(Situation situation)
     {
-        if (situation.CurrentState.IsActiveInThisState(this))
+        if (situation.State.IsActiveInThisState(this))
         {
             canvasGroupFader.Show();
             outputPositioning.ArrangeTokens(GetElementTokens());

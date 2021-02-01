@@ -103,7 +103,7 @@ namespace SecretHistories.Core
             var _recipes = Watchman.Get<Compendium>().GetEntitiesAsList<Recipe>();
 
             List<Recipe> candidateRecipes =
-                _recipes.Where(r => situation.CurrentState.IsValidPredictionForState(r, situation)).ToList();
+                _recipes.Where(r => situation.State.IsValidPredictionForState(r, situation)).ToList();
             List<Recipe> nonExhaustedCandidateRecipes =
                 candidateRecipes.Where(r => !_character.HasExhaustedRecipe(r)).ToList();
 

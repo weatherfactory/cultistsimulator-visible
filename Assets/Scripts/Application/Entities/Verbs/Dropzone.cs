@@ -8,8 +8,6 @@ using SecretHistories.Commands;
 using SecretHistories.Constants;
 using SecretHistories.Core;
 using SecretHistories.Enums;
-using SecretHistories.Fucine;
-using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Elements.Manifestations;
@@ -17,16 +15,29 @@ using SecretHistories.Services;
 
 namespace SecretHistories.Entities.Verbs
 {
+    [IsEncaustableClass(typeof(DropzoneCreationCommand))]
     public class Dropzone: ITokenPayload
     {
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
+        [DontEncaust]
         public string Id { get; private set; }
+        [DontEncaust]
         public int Quantity => 1;
+        [DontEncaust]
         public Dictionary<string, int> Mutations { get; }
-
+        [DontEncaust]
         public string Icon => string.Empty;
+        [DontEncaust]
         public bool IsOpen => false;
+        [DontEncaust] public string Label => "Dropzone";
+        [DontEncaust] public string Description => "Description";
+        [DontEncaust]
+        public List<SphereSpec> Thresholds { get; set; }
+        [DontEncaust]
+        public string UniquenessGroup => string.Empty;
+        [DontEncaust]
+        public bool Unique => false;
 
         public string GetIllumination(string key)
         {
@@ -38,21 +49,7 @@ namespace SecretHistories.Entities.Verbs
             return Timeshadow.CreateTimelessShadow();
         }
 
-        public void SetId(string id)
-        {
-            Id = id;
-        }
-
-        [FucineValue(DefaultValue = ".", Localise = true)]
-        public string Label { get; set; }
-
-        [FucineValue(DefaultValue = ".", Localise = true)]
-        public string Description { get; set; }
-         
-        [FucineValue]
-        public string Art { get; set; }
-
-
+   
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
             return typeof(DropzoneManifestation);
@@ -68,19 +65,9 @@ namespace SecretHistories.Entities.Verbs
             return false;
         }
 
-        public bool IsValidVerb()
-        {
-            return true;
-        }
-
-        public List<SphereSpec> Thresholds { get; set; }
-    
 
 
-        public bool Transient => false;
-        public bool Startable => false;
-        public bool ExclusiveOpen => false;
-
+        
         public Dropzone()
         {
             Thresholds=new List<SphereSpec>();
@@ -92,9 +79,6 @@ namespace SecretHistories.Entities.Verbs
 
         }
 
-        public string UniquenessGroup => string.Empty;
-        public bool Unique => false;
-        public bool Decays => false;
 
         public IAspectsDictionary GetAspects(bool includeSelf)
         {

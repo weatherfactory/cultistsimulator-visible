@@ -7,14 +7,16 @@ using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities.NullEntities;
 using NUnit.Framework;
 using SecretHistories.Commands;
+using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 
 [TestFixture]
-    public class CommandsEncaustOkay
+    public class EncaustablesEncaustOkay
     {
 
         [Test]
@@ -26,6 +28,14 @@ using Object = UnityEngine.Object;
         }
 
         [Test]
+        public void Situation_Encausts()
+        {
+            var situationEncaustery=new Encaustery<SituationCreationCommand>();
+            var situation=new Situation(new SituationPath("pp"));
+            situationEncaustery.Encaust(situation);
+        }
+
+    [Test]
         public void CharacterCreationCommand_Encausts()
         {
 
@@ -59,8 +69,10 @@ using Object = UnityEngine.Object;
         public void SituationToken_Encausts()
         {
            var encaustery=new Encaustery<TokenCreationCommand>();
-        throw new NotImplementedException();
-    }
+           var tokenObject = new GameObject();
+           tokenObject.AddComponent<Token>();
+     throw new NotImplementedException();
+        }
 
         [Test]
         public void DropzoneToken_Encausts()
