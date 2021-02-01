@@ -72,7 +72,7 @@ namespace SecretHistories.Entities {
         private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
         private readonly List<Dominion> _registeredDominions = new List<Dominion>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
-        private SituationWindow _window;
+        
         private Timeshadow _timeshadow;
         
 
@@ -223,7 +223,6 @@ namespace SecretHistories.Entities {
                 c.Retire(SphereRetirementType.Destructive);
             }
 
-            _window.Retire();
             TokenPayloadChangedArgs args = new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement);
             args.VFX = RetirementVFX.VerbAnchorVanish;
             OnChanged?.Invoke(args);
@@ -625,16 +624,20 @@ namespace SecretHistories.Entities {
         public void OpenAt(TokenLocation location)
     {
            IsOpen = true;
-           _window.Show(location.Anchored3DPosition);
-            
-        Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(Id);
+           var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Update);
+           OnChanged?.Invoke(changeArgs);
+
+
+            Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(Id);
     }
 
         public void Close()
         {
             IsOpen = false;
 
-            _window.Hide(this);
+            var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Update);
+
+            OnChanged?.Invoke(changeArgs);
 
             DumpUnstartedBusiness();
         }

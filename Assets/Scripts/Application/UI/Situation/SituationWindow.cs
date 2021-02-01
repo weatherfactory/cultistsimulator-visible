@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.UI.Situation;
+using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Interfaces;
 using TMPro;
@@ -11,6 +13,7 @@ using UnityEngine.UI;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Constants;
+using SecretHistories.Enums;
 using SecretHistories.Spheres;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -57,8 +60,10 @@ namespace SecretHistories.UI {
 
         public TokenLocation LastOpenLocation;
 
-        private Situation situation; //Ideally, we would reduce this to an ITokenPayload
+        private ITokenPayload _payload; //Ideally, we would reduce this to an ITokenPayload
+
         private bool windowIsWide = false;
+        
 
         public bool IsVisible {
             get { return canvasGroupFader.IsVisible(); }
@@ -77,10 +82,9 @@ namespace SecretHistories.UI {
 
         public void Attach(Situation newSituation, TokenLocation initialLocation)
         {
-            situation = newSituation;
+        
 
-            situation.AddSubscriber(this);
-            
+            newSituation.AddSubscriber(this);
 
             OnWindowClosed.AddListener(newSituation.Close);
             OnStart.AddListener(newSituation.TryStart);
@@ -88,25 +92,41 @@ namespace SecretHistories.UI {
             OnSphereAdded.AddListener(newSituation.AttachSphere);
             OnSphereRemoved.AddListener(newSituation.RemoveSphere);
 
-            name = "Window_" + situation.Id;
-            DisplayIcon(situation.Id);
-
-            Title = situation.Label;
+    
             PaginatedNotes.SetText(newSituation.Description);
             startButton.onClick.AddListener(OnStart.Invoke);
 
 
             foreach (var d in Dominions)
-                d.RegisterFor(situation);
+                d.RegisterFor(newSituation);
             
             startButton.gameObject.SetActive(true);
  
 
-            SituationStateChanged(situation);
-            TimerValuesChanged(situation);
+            SituationStateChanged(newSituation);
+            TimerValuesChanged(newSituation);
+
+            _payload = newSituation;
+            _payload.OnChanged += OnPayloadChanged;
+
+            name = "Window_" + _payload.Id;
+            DisplayIcon(_payload.Id);
+
+            Title = _payload.Label;
 
             positioner.SetInitialPosition(initialLocation.Anchored3DPosition);
      
+        }
+
+        private void OnPayloadChanged(TokenPayloadChangedArgs args)
+        {
+            if(args.ChangeType==PayloadChangeType.Retirement)
+                Retire();
+            if(_payload.IsOpen && !this.IsVisible)
+                Show(Vector3.zero);
+
+            if(!_payload.IsOpen && this.IsVisible)
+                Hide();
         }
 
         public void TryResizeWindow(int slotsCount)
@@ -121,10 +141,6 @@ namespace SecretHistories.UI {
          
     
 
-        public void Closed() {
-          OnWindowClosed.Invoke();
-        }
-
 
         public void Show( Vector3 startPosition)
 		{
@@ -132,22 +148,19 @@ namespace SecretHistories.UI {
 			{
 				SoundManager.PlaySfx("SituationWindowShow");
                 canvasGroupFader.Show();
-                SituationStateChanged(situation);
+                positioner.Show(canvasGroupFader.durationTurnOn, startPosition); // Animates the window (position allows optional change in position)
+                PaginatedNotes.SetFinalPage();
             }
-            
-            positioner.Show(canvasGroupFader.durationTurnOn, startPosition); // Animates the window (position allows optional change is position)
 
-            PaginatedNotes.SetFinalPage();
 
         }
 
-		public void Hide(Situation s) {
+		public void Hide() {
             if (IsVisible)
             {
 				SoundManager.PlaySfx("SituationWindowHide");
-                SituationStateChanged(s);
                 canvasGroupFader.Hide();
-                
+                OnWindowClosed.Invoke();
             }
             
         }
@@ -253,7 +266,6 @@ namespace SecretHistories.UI {
 
         public void ReceiveCommand(IAffectsTokenCommand command)
         {
-            //can't make use of  it
         }
 
 
@@ -273,6 +285,7 @@ namespace SecretHistories.UI {
         //}
         public void Retire()
         {
+            _payload.OnChanged -= OnPayloadChanged;
             Destroy(gameObject);
         }
 
