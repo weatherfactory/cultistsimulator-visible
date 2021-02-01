@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Constants;
 using SecretHistories.Core;
 using SecretHistories.Entities;
@@ -19,16 +20,19 @@ public class Compendium
 {
     
     private Dictionary<Type, EntityStore> entityStores;
-
- private Dictionary<string, string> _pastLevers;
-
- private readonly List<string> elementIdsToValidate=new List<string>();
+    private Dictionary<string, string> _pastLevers;
+    private readonly List<string> elementIdsToValidate=new List<string>();
+    private CompendiumNullObjectStore _compendiumNullObjectStore;
 
     private EntityStore EntityStoreFor(Type type)
     {
         return entityStores[type];
     }
 
+    public Compendium()
+    {
+        _compendiumNullObjectStore=new CompendiumNullObjectStore();
+    }
 
     /// <summary>
     /// Very forgiving method that accepts strings or collections in a variety of formats to log element  ids for later validation
@@ -164,6 +168,7 @@ public class Compendium
         }
         else
         {
+
             if (typeof(T) == typeof(Culture))
             {
                 entityStore.TryGetById(NoonConstants.DEFAULT_CULTURE_ID, out T defaultCultureEntity);
@@ -181,9 +186,7 @@ public class Compendium
                 NoonUtility.Log("Can't find entity id '" + entityId + "' of type " + typeof(T));
             }
 
-
-  
-            return null;
+            return _compendiumNullObjectStore.GetNullObjectForType(typeof(T)) as T;
         }
 
 

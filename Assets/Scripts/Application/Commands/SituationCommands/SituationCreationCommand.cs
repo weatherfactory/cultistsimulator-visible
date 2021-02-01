@@ -37,7 +37,6 @@ namespace SecretHistories.Commands
         public List<Token> TokensToMigrate=new List<Token>();
 
         public List<ISituationCommand> Commands=new List<ISituationCommand>();
-        private TokenCreationCommand _tokenCreationCommand;
         private WindowCreationCommand windowCreationCommand;
 
         public SituationCreationCommand()
@@ -71,10 +70,14 @@ namespace SecretHistories.Commands
             Situation newSituation = new Situation(SituationPath);
 
             newSituation.CurrentState = SituationState.Rehydrate(State, newSituation);
+            newSituation.Verb = Verb;
             newSituation.ActivateRecipe(Recipe);
             newSituation.ReduceLifetimeBy(Recipe.Warmup - TimeRemaining);
             newSituation.OverrideTitle = OverrideTitle;
             newSituation.ExecuteHeartbeat(0f);
+            foreach(var c in Commands)
+                newSituation.CommandQueue.AddCommand(c);
+
 
             if(TokensToMigrate.Any())
                 newSituation.AcceptTokens(SphereCategory.SituationStorage,TokensToMigrate);

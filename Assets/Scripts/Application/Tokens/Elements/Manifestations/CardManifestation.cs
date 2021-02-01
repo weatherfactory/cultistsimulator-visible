@@ -58,10 +58,10 @@ namespace SecretHistories.Elements
             _flipHelper = new FlipHelper(this);
         }
         
-        public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
+        public void InitialiseVisuals(IManifestable manifestable)
         {
             
-               Sprite sprite = ResourcesManager.GetSpriteForElement(drivesManifestation.Icon);
+               Sprite sprite = ResourcesManager.GetSpriteForElement(manifestable.Icon);
             artwork.sprite = sprite;
 
             if (sprite == null)
@@ -69,13 +69,13 @@ namespace SecretHistories.Elements
             else
                 artwork.color = Color.white;
 
-            SetCardBackground(drivesManifestation.Unique, drivesManifestation.GetTimeshadow().Transient);
+            SetCardBackground(manifestable.Unique, manifestable.GetTimeshadow().Transient);
 
-            name = "CardManifestation_" + drivesManifestation.Id;
+            name = "CardManifestation_" + manifestable.Id;
             decayBackgroundImage = decayView.GetComponent<Image>();
             cachedDecayBackgroundColor = decayBackgroundImage.color;
 
-            frames = ResourcesManager.GetAnimFramesForElement(drivesManifestation.Id);
+            frames = ResourcesManager.GetAnimFramesForElement(manifestable.Id);
 
         }
 
@@ -216,12 +216,12 @@ namespace SecretHistories.Elements
                 textBackground.overrideSprite = null;
         }
 
-        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
+        public void UpdateVisuals(IManifestable manifestable)
         {
-            text.text = drivesManifestation.Label;
-            stackBadge.gameObject.SetActive(drivesManifestation.Quantity > 1);
-            stackCountText.text = drivesManifestation.Quantity.ToString();
-            var timeshadow = drivesManifestation.GetTimeshadow();
+            text.text = manifestable.Label;
+            stackBadge.gameObject.SetActive(manifestable.Quantity > 1);
+            stackCountText.text = manifestable.Quantity.ToString();
+            var timeshadow = manifestable.GetTimeshadow();
             UpdateTimerVisuals(timeshadow.Lifetime,timeshadow.LifetimeRemaining,timeshadow.LastInterval,timeshadow.Resaturate);
 
         }

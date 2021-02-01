@@ -66,8 +66,16 @@ namespace SecretHistories.UI {
         [DontEncaust] virtual public bool Unique => Element.Unique;
         [DontEncaust] virtual public string UniquenessGroup => Element.UniquenessGroup;
         [DontEncaust] virtual public bool Decays => Element.Decays;
+        [DontEncaust] public bool IsOpen => false;
 
         private Timeshadow _timeshadow;
+
+        public string GetIllumination(string key)
+        {
+            if (IlluminateLibrarian.GetCurrentIlluminations().ContainsKey(key))
+                return IlluminateLibrarian.GetCurrentIlluminations()[key];
+            return string.Empty;
+        }
 
         public Timeshadow GetTimeshadow()
         {
@@ -395,13 +403,14 @@ namespace SecretHistories.UI {
 
         public void Close()
         {
-            throw new NotImplementedException();
+            //
         }
 
-        public bool IsOpen()
+        public void OnTokenMoved(TokenLocation toLocation)
         {
-            throw new NotImplementedException();
+            //
         }
+
 
         public void ChangeTo(string newElementId)
         {

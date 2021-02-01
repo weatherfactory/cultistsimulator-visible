@@ -13,10 +13,7 @@ namespace SecretHistories.NullObjects
     public class NullSituation: Situation
     {
         
-        public override IVerb Verb { get; set; }=NullVerb.Create();
-        
-
-  
+ 
         public override bool IsValidSituation()
         {
             return false;

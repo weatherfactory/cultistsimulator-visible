@@ -428,7 +428,7 @@ namespace SecretHistories.UI {
 
          TokenRectTransform.position = draggedToPosition; ///aaaahh it's *position* not anchoredposition3D because we're getting the world point from the click
 
-         Payload.TokenMoved(Location);  
+         Payload.OnTokenMoved(Location);  
 
 
             _manifestation.DoMove(ManifestationRectTransform);

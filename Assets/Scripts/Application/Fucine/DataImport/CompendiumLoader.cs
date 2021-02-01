@@ -116,12 +116,7 @@ public class CompendiumLoader
     
             dl.LoadEntityDataFromSuppliedFiles();
 
-            foreach (EntityData entityData in dl.GetLoadedEntityDataAsList())
-            {
-                IEntityWithId newEntity = FactoryInstantiator.CreateEntity(dl.EntityType, entityData, _log);
-                if(!compendiumToPopulate.TryAddEntity(newEntity))
-                    _log.LogWarning($"Can't add entity {newEntity.Id} of type {newEntity.GetType()}");
-            }
+            AddImportedEntityInstancesToCompendium(compendiumToPopulate, dl);
 
 
             if (_log.GetMessages().Any(m => m.MessageLevel > 1))
@@ -142,6 +137,16 @@ public class CompendiumLoader
         return _log;
 
 
+    }
+
+    private void AddImportedEntityInstancesToCompendium(Compendium compendiumToPopulate, EntityTypeDataLoader dl)
+    {
+        foreach (EntityData entityData in dl.GetLoadedEntityDataAsList())
+        {
+            IEntityWithId newEntity = FactoryInstantiator.CreateEntity(dl.EntityType, entityData, _log);
+            if (!compendiumToPopulate.TryAddEntity(newEntity))
+                _log.LogWarning($"Can't add entity {newEntity.Id} of type {newEntity.GetType()}");
+        }
     }
 
     private void LoadModsToCompendium()

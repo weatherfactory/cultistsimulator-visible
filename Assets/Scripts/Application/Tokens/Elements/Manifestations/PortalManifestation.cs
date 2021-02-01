@@ -102,12 +102,12 @@ namespace SecretHistories.Elements.Manifestations
             //
         }
 
-        public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
+        public void InitialiseVisuals(IManifestable manifestable)
         {
             this.transform.position = Vector3.zero;
         }
 
-        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
+        public void UpdateVisuals(IManifestable manifestable)
         {
             //
         }

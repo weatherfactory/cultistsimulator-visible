@@ -77,7 +77,9 @@ namespace SecretHistories.UI {
 
         public void Attach(Situation newSituation, TokenLocation initialLocation)
         {
-            newSituation.AddSubscriber(this);
+            situation = newSituation;
+
+            situation.AddSubscriber(this);
             
 
             OnWindowClosed.AddListener(newSituation.Close);
@@ -86,7 +88,7 @@ namespace SecretHistories.UI {
             OnSphereAdded.AddListener(newSituation.AttachSphere);
             OnSphereRemoved.AddListener(newSituation.RemoveSphere);
 
-            name = "Window_" + newSituation.Id;
+            name = "Window_" + situation.Id;
             DisplayIcon(situation.Id);
 
             Title = situation.Label;

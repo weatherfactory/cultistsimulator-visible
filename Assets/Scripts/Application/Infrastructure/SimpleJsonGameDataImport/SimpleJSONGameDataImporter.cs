@@ -211,7 +211,7 @@ namespace SecretHistories.Constants
 
                 var situationToken= command.Execute(new Context(Context.ActionSource.Loading));
                 var situation=situationToken.Payload as Situation;
-                ;
+                
 
                 situation.ExecuteHeartbeat(0f); //flushes everything through and updates
 

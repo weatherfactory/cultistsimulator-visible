@@ -36,9 +36,9 @@ namespace SecretHistories.Elements.Manifestations
         void BeginIconAnimation();
         
 
-        void InitialiseVisuals(IDrivesManifestation drivesManifestation);
+        void InitialiseVisuals(IManifestable manifestable);
 
-        void UpdateVisuals(IDrivesManifestation drivesManifestation);
+        void UpdateVisuals(IManifestable manifestable);
         void OverrideIcon(string icon);
 
         void OnBeginDragVisuals();

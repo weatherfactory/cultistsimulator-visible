@@ -16,5 +16,9 @@ namespace SecretHistories.Entities
             _id = NULL_ELEMENT_ID;
         }
 
+        public static NullElement Create()
+        {
+            return new NullElement();
+        }
     }
 }

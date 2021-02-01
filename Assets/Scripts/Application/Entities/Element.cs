@@ -172,6 +172,7 @@ namespace SecretHistories.Entities
 
         }
 
+
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
  

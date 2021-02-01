@@ -62,7 +62,7 @@ namespace SecretHistories.Constants
         public const string LEVER_PREFIX = "lever_";
         public const string MANSUS_DECKID_PREFIX = "mansus_";
         public const string SupportEmail = "support@weatherfactory.biz";
-
+        public const string IK_SPONTANEOUS = "spontaneous";
 
 
         public const string A_ENDING_MAJORFORGEVICTORY = "A_ENDING_MAJORFORGEVICTORY";
@@ -78,6 +78,7 @@ namespace SecretHistories.Constants
         public const string GRIDSNAPSIZE = "GridSnapSize";
         public const string SITUATION_STARTABLE = "VERB_START";
         public const string SITUATION_RUNNING = "VERB_RUNNING";
+        
 
         public const string ANCHOR_BOOKSHELF = "bookshelf";
         public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;

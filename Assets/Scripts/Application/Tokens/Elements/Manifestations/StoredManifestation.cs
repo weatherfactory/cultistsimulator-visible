@@ -34,16 +34,16 @@ namespace SecretHistories.Elements.Manifestations
 #pragma warning restore 649
 
 
-        public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
+        public void InitialiseVisuals(IManifestable manifestable)
         {
-            name = "StoredManifestation_" + drivesManifestation.Id;
-            elementFrame.PopulateDisplay(drivesManifestation.Id, 1, false);
+            name = "StoredManifestation_" + manifestable.Id;
+            elementFrame.PopulateDisplay(manifestable.Id, 1, false);
         }
 
-        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
+        public void UpdateVisuals(IManifestable manifestable)
         {
-            var element = Watchman.Get<Compendium>().GetEntityById<Element>(drivesManifestation.Id);
-            elementFrame.PopulateDisplay(element.ToString(), drivesManifestation.Quantity, false);
+            var element = Watchman.Get<Compendium>().GetEntityById<Element>(manifestable.Id);
+            elementFrame.PopulateDisplay(element.ToString(), manifestable.Quantity, false);
         }
 
         public void SendNotification(INotification notification)

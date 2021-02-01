@@ -26,6 +26,12 @@ namespace SecretHistories.Entities.Verbs
         public Dictionary<string, int> Mutations { get; }
 
         public string Icon => string.Empty;
+        public bool IsOpen => false;
+
+        public string GetIllumination(string key)
+        {
+            return string.Empty;
+        }
 
         public Timeshadow GetTimeshadow()
         {
@@ -159,9 +165,9 @@ namespace SecretHistories.Entities.Verbs
             //
         }
 
-        public bool IsOpen()
+        public void OnTokenMoved(TokenLocation toLocation)
         {
-            return false;
+           //
         }
     }
 }

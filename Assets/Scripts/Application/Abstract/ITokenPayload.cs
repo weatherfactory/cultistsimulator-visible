@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace SecretHistories.Abstract
     {
-    public interface ITokenPayload: IEncaustable,IDrivesManifestation
+    public interface ITokenPayload: IEncaustable,IManifestable
     {
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
@@ -35,7 +35,7 @@ namespace SecretHistories.Abstract
         void OpenAt(TokenLocation location);
         void Close();
 
-        void TokenMoved(TokenLocation toLocation);
+        void OnTokenMoved(TokenLocation toLocation);
     }
     }
 

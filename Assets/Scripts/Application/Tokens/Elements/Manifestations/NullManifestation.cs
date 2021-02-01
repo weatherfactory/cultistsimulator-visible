@@ -97,13 +97,13 @@ namespace SecretHistories.Elements.Manifestations
             //
         }
 
-        public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
+        public void InitialiseVisuals(IManifestable manifestable)
         {
       //
         }
 
         
-        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
+        public void UpdateVisuals(IManifestable manifestable)
         {
           //
         }

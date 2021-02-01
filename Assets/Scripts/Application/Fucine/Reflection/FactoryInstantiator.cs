@@ -63,7 +63,6 @@ namespace SecretHistories.Fucine
         }
 
 
-
         public static object CreateObjectWithDefaultConstructor(Type typeToCreate)
         {
             IFastInvokableObjectFactory fastInvokableObjectFactory;

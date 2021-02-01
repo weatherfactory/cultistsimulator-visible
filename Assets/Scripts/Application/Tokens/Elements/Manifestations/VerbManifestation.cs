@@ -73,39 +73,35 @@ namespace SecretHistories.Elements.Manifestations
 #pragma warning restore 649
 
 
-        public void InitialiseVisuals(IDrivesManifestation drivesManifestation)
+        public void InitialiseVisuals(IManifestable manifestable)
         {
-            string art;
-            if (!string.IsNullOrEmpty(verb.Art))
-                art = verb.Art;
-            else
-                art = verb.Id;
+            string art = manifestable.Icon;
 
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
             frames = ResourcesManager.GetAnimFramesForVerb(art);
             artwork.sprite = sprite;
-            
-            if (verb.Transient)
-            {
-                _transient = true;
+
+
+            bool spontaneousVerb = (manifestable.GetIllumination(NoonConstants.IK_SPONTANEOUS) != string.Empty);
+
+            if(spontaneousVerb)
                 tokenBody.overrideSprite = lightweightSprite;
-                
-            }
+
             DisplaySpheres(new List<Sphere>());
             UpdateTimerVisuals(0f, 0f, 0f, false, EndingFlavour.None);
 
         }
 
-        public void UpdateVisuals(IDrivesManifestation drivesManifestation)
+        public void UpdateVisuals(IManifestable manifestable)
         {
-            var timeshadow = drivesManifestation.GetTimeshadow();
+            var timeshadow = manifestable.GetTimeshadow();
 
             if (timeshadow.Transient)
             {
                 UpdateTimerVisuals(timeshadow.LifetimeRemaining,timeshadow.LifetimeRemaining,timeshadow.LastInterval,timeshadow.Resaturate,timeshadow.EndingFlavour);
             }
 
-            TryOverrideVerbIcon(drivesManifestation.GetAspects(true));
+            TryOverrideVerbIcon(manifestable.GetAspects(true));
         }
 
 

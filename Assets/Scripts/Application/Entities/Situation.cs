@@ -19,6 +19,7 @@ using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
 using SecretHistories.Abstract;
+using SecretHistories.Constants;
 using SecretHistories.Core;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.States.TokenStates;
@@ -43,7 +44,7 @@ namespace SecretHistories.Entities {
         [Encaust] public float IntervalForLastHeartbeat => _timeshadow.LastInterval;
 
         [Encaust]
-        public virtual IVerb Verb { get; set; }
+        public IVerb Verb { get; set; }
 
         [Encaust]
         public string OverrideTitle { get; set; }
@@ -84,8 +85,10 @@ namespace SecretHistories.Entities {
             situationsCatalogue.RegisterSituation(this);
 
             Path = path;
-            Recipe = NullRecipe.Create(NullVerb.Create());
-            var ts = new Timeshadow(Recipe.Warmup,
+            Verb=NullVerb.Create();
+            Recipe = NullRecipe.Create(Verb);
+            CurrentRecipePrediction = RecipePrediction.DefaultFromVerb(Verb);
+            _timeshadow = new Timeshadow(Recipe.Warmup,
                 Recipe.Warmup,
                 false);
         }
@@ -236,12 +239,12 @@ namespace SecretHistories.Entities {
 
         public void InitialiseManifestation(IManifestation manifestation)
         {
-            throw new NotImplementedException();
+        //
         }
 
         public bool IsValidElementStack()
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public void ExecuteHeartbeat(float interval)
@@ -251,37 +254,37 @@ namespace SecretHistories.Entities {
 
         public bool CanMergeWith(ITokenPayload incomingTokenPayload)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public bool Retire(RetirementVFX vfx)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void SetQuantity(int quantityToLeaveBehind, Context context)
         {
-            throw new NotImplementedException();
+         //
         }
 
         public void ModifyQuantity(int unsatisfiedChange, Context context)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)
         {
-            throw new NotImplementedException();
+            //
         }
 
 
@@ -585,7 +588,7 @@ namespace SecretHistories.Entities {
     }
 
 
-        public void TokenMoved(TokenLocation toLocation)
+        public void OnTokenMoved(TokenLocation toLocation)
         {
             foreach (var sphere in GetSpheres())
                 sphere.SetReferencePosition(toLocation);
@@ -791,6 +794,17 @@ namespace SecretHistories.Entities {
             }
         }
         public string Icon { get; }
+
+        public string GetIllumination(string key)
+        {
+            if (key == NoonConstants.IK_SPONTANEOUS)
+            {
+                if (Verb.Spontaneous)
+                    return "true";
+            }
+
+            return string.Empty;
+        }
 
         public Timeshadow GetTimeshadow()
         {

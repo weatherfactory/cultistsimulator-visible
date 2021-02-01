@@ -57,6 +57,8 @@ namespace SecretHistories.Fucine
 
             Refined = true;
         }
+
+
         /// <summary>
         /// This is overridden wherever we need more logic in each subclass
         /// </summary>

@@ -9,7 +9,7 @@ using SecretHistories.Elements.Manifestations;
 
 namespace SecretHistories.Abstract
 {
-    public interface IDrivesManifestation: IHasAspects
+    public interface IManifestable: IHasAspects
     {
 
       string Label { get; }
@@ -18,6 +18,7 @@ namespace SecretHistories.Abstract
       string UniquenessGroup { get; }
       bool Unique { get; }
       string Icon { get; }
+      string GetIllumination(string key);
       Timeshadow GetTimeshadow();
 
     }
