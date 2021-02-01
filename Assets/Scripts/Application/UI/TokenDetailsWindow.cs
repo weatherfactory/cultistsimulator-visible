@@ -66,7 +66,8 @@ namespace SecretHistories.UI {
             //        return;
             //}
 
-            _stack.OnLifetimeSpent -= HandleOnTokenDecay;// remove decay listener if we had one on an old token
+            if(_stack!=null)
+                _stack.OnLifetimeSpent -= HandleOnTokenDecay;// remove decay listener if we had one on an old token
             this._element = element;
             this._stack = stack; // To be able to update the card's remaining time
             this.slotSpec = null;
@@ -97,8 +98,8 @@ namespace SecretHistories.UI {
             if (this.deckSpec == deckSpec && this.deckQuantity == numCards && gameObject.activeSelf)
                 return;
 			*/
-
-            _stack.OnLifetimeSpent -= HandleOnTokenDecay; // remove decay listener if we had one on an old token
+            if(_stack!=null)
+              _stack.OnLifetimeSpent -= HandleOnTokenDecay; // remove decay listener if we had one on an old token
             this._element = null;
             this._stack = null;
             this.slotSpec = null;

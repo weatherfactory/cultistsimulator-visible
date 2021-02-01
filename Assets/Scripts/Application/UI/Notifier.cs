@@ -30,19 +30,14 @@ namespace SecretHistories.UI {
         [Header("Image Burner")]
         [SerializeField] private TabletopImageBurner tabletopBurner;
 
-        public void Awake()
-        {
-            var r=new Watchman();
-            r.Register<INotifier>(this);
-        }
-
-
         public void Start() {
             tokenDetails.gameObject.SetActive(false); // ensure this is turned off at the start
             aspectDetails.gameObject.SetActive(false);
 
             Watchman.Get<Concursum>().ShowNotificationEvent.AddListener(ShowNotificationWindow);
 
+            var r = new Watchman();
+            r.Register<Notifier>(this);
         }
 
         // Notifications
