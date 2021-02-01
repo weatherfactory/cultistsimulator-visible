@@ -2,472 +2,150 @@
     "recipes": [
         {
             "id": "exploremovehq",
-            "actionid": "explore",
             "label": "Новое помещение",
-            "startdescription": "Переместить штаб-квартиру нашей организации в новое помещение. [Местонахождение вашей штаб-квартиры изменится навсегда. Вернуться назад будет нельзя. Это действие может снизить дурную славу.]",
             "description": "Нельзя сказать, что хоть одно место проживания является по-настоящему постоянным. Рано или поздно мы должны проститься с каждым из них — как прощаемся с собственными телами. Но пока что это место будет нам домом.",
-            "requirements": {
-                "hq": 1,
-                "hq.potential": 1
-            },
-            "aspects": {
-                "movehq": 1
-            },
+            "startdescription": "Переместить штаб-квартиру нашей организации в новое помещение. [Местонахождение вашей штаб-квартиры изменится навсегда. Вернуться назад будет нельзя. Это действие может снизить дурную славу.]",
             "slots": [
                 {
                     "id": "coldtrail",
                     "label": "Остывший след",
-                    "description": "Когда переезд будет уже завершён, вполне вероятно, что Бюро умолчания продолжит следить за нашей прошлой штаб-квартирой и потратит сколько-то времени впустую.",
-                    "greedy": true,
-                    "required": {
-                        "notoriety": 1
-                    }
+                    "description": "Когда переезд будет уже завершён, вполне вероятно, что Бюро умолчания продолжит следить за нашей прошлой штаб-квартирой и потратит сколько-то времени впустую."
                 }
-            ],
-            "effects": {
-                "notoriety": -1
-            },
-            "warmup": 60,
-            "craftable": true
+            ]
         },
         {
             "id": "explorehq.townhouse",
-            "actionid": "explore",
             "label": "--",
-            "startdescription": "--",
             "description": "--",
-            "requirements": {
-                "hq.townhouse": 1,
-                "funds": 1
-            },
-            "effects": {
-                "influencegrail": 1,
-                "funds": -1
-            },
-            "warmup": 60,
-            "craftable": true
+            "startdescription": "--"
         },
         {
             "id": "explorehq.hospital",
-            "actionid": "explore",
             "label": "Там, где разверзнется",
-            "startdescription": "Первые хранители этого места делали надрезы и производили рассечения, пока мир не разошёлся, словно кожура плода. Эти отверстия давно заросли, однако ни одно отверстие не зарастает без следа.",
             "description": "Конечно, приходится вытерпеть некоторое неудобство, но мы стараемся делать всё чётко и аккуратно — и вот мы уже касаемся ярких юбок Матери Муравьёв.",
-            "requirements": {
-                "hq.hospital": 1,
-                "funds": 1
-            },
-            "effects": {
-                "influenceknock": 1,
-                "funds": -1
-            },
-            "warmup": 60,
-            "craftable": true
+            "startdescription": "Первые хранители этого места делали надрезы и производили рассечения, пока мир не разошёлся, словно кожура плода. Эти отверстия давно заросли, однако ни одно отверстие не зарастает без следа."
         },
         {
             "id": "explorehq.mithraeum",
-            "actionid": "explore",
             "label": "Солнце под нами",
-            "startdescription": "Здесь находилось святилище Солнца Непокорённого и Нерассечённого. Чистейшие свечи помогут нам коснуться ещё задержавшегося в камне света.",
             "description": "Светящееся, прозрачное воспоминание о зените славы. Многое было потеряно, но многое и осталось, и Солнце Невидимое и Нерассечённое продолжает жить.",
-            "requirements": {
-                "hq.mithraeum": 1,
-                "funds": 1
-            },
-            "effects": {
-                "influencelantern": 1,
-                "funds": -1
-            },
-            "warmup": 60,
-            "craftable": true
+            "startdescription": "Здесь находилось святилище Солнца Непокорённого и Нерассечённого. Чистейшие свечи помогут нам коснуться ещё задержавшегося в камне света."
         },
         {
             "id": "explorehq.church",
-            "actionid": "explore",
             "label": "Раны мудрости",
-            "startdescription": "«Не все двери суть раны, однако каждая рана есть дверь». Эти стены видели много ран и много дверей. Правильные материалы помогут нам смягчить воздух там, где он когда-то открывался.",
             "description": "Сегодня в этой церкви не закроется ни одна дверь; не будет таких замков, для которых нужны ключи; и каждое сердце будет раскрыто.",
-            "requirements": {
-                "hq.church": 1,
-                "funds": 1
-            },
-            "effects": {
-                "influenceknock": 1,
-                "funds": -1
-            },
-            "warmup": 60,
-            "craftable": true
+            "startdescription": "«Не все двери суть раны, однако каждая рана есть дверь». Эти стены видели много ран и много дверей. Правильные материалы помогут нам смягчить воздух там, где он когда-то открывался."
         },
         {
             "id": "explorehq.bookshop",
-            "actionid": "explore",
             "label": "Сбережённый очаг",
-            "startdescription": "Мы обогреем помещения за магазином светом огня, оживим их свистом чайника и гудением граммофона. Не все торжества требуют пролития крови.",
             "description": "Книжные лавки дают утешение тревожным, невежественным и неуравновешенным. Это чувство покоя живет и теперь, когда Морланд завезла сюда свои необычные товары. Сегодня час, что зовется Громовым Ритмом, ступает по миру тихо.",
-            "requirements": {
-                "hq.bookshop": 1,
-                "funds": 1
-            },
-            "effects": {
-                "influenceheart": 1,
-                "funds": -1
-            },
-            "warmup": 60,
-            "craftable": true
+            "startdescription": "Мы обогреем помещения за магазином светом огня, оживим их свистом чайника и гудением граммофона. Не все торжества требуют пролития крови."
         },
         {
             "id": "explorehq.warehouse",
-            "actionid": "explore",
             "label": "В память о моторах",
-            "startdescription": "Прежде чем стать складом, этот дом был царством механизмов; царством пара, железа и — порой — разорванной плоти и криков. Мы выберем такие масла, чтобы почтить память тех времён. ",
             "description": "И вот перед нами вновь огонь, вновь железо, и плоть вновь познаёт жаркие поцелуи, хотя нигде будет идти снег — но не при свете дня. Высоко над нами и далеко внизу Кузня Дней очищает, и очищает, и очищает.",
-            "requirements": {
-                "hq.warehouse": 1,
-                "funds": 1
-            },
-            "effects": {
-                "influenceforge": 1,
-                "funds": -1
-            },
-            "warmup": 60,
-            "craftable": true
+            "startdescription": "Прежде чем стать складом, этот дом был царством механизмов; царством пара, железа и — порой — разорванной плоти и криков. Мы выберем такие масла, чтобы почтить память тех времён. "
         },
         {
             "id": "explorelocationbookdealer",
             "label": "Пополнить библиотеку",
-            "actionid": "explore",
-            "requirements": {
-                "locationbookdealer": 1,
-                "funds": 1
-            },
-            "effects": {},
-            "deckeffects": {
-                "commontomes": 1
-            },
-            "startdescription": "Чтобы отделить золото от сора, зерно от соломы и кровь от воды, требуется время. Если часто покупать книги, мне наверняка попадётся что-то интересное.",
             "description": "Мне попалось кое-что любопытное.",
-            "warmup": 30,
-            "craftable": true,
-            "linked": [
-                {
-                    "id": "explorelocationbookdealer_exhausted",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Чтобы отделить золото от сора, зерно от соломы и кровь от воды, требуется время. Если часто покупать книги, мне наверняка попадётся что-то интересное."
         },
         {
             "id": "explorelocationbookdealer_exhausted",
             "label": "Лавка Морланд закрывается!",
-            "actionid": "explore",
-            "requirements": {
-                "genericrubbishbook": 1
-            },
-            "description": "«Я буду искать что-то новое, — объясняет мисс Морланд. — Мой склад почти опустел, и, кроме того, лавкой заинтересовалось Бюро умолчания. Так что я пришла попрощаться. Эта книга ничего не стоит, но в качестве благодарности за вашу верность я вложила в корешок кое-какие интересные бумаги».",
-            "deckeffects": {
-                "oneoffrewards": 1
-            },
-            "warmup": 1,
-            "aspects": {
-                "exhaustlocation": 1
-            }
+            "description": "«Я буду искать что-то новое, — объясняет мисс Морланд. — Мой склад почти опустел, и, кроме того, лавкой заинтересовалось Бюро умолчания. Так что я пришла попрощаться. Эта книга ничего не стоит, но в качестве благодарности за вашу верность я вложила в корешок кое-какие интересные бумаги»."
         },
         {
             "id": "explorelocationauctionhouse",
             "label": "Посетить аукцион в «Орифламме»",
-            "actionid": "explore",
-            "requirements": {
-                "locationauctionhouse": 1,
-                "auctionable": -1
-            },
-            "effects": {},
-            "deckeffects": {
-                "auctionedcommontomes": 1
-            },
-            "startdescription": "Мы проходим в глухую, без единого окна, комнату с ярко-оранжевыми стенами и устраиваемся на слегка пугающих красно-синих стульях. Все ждут, когда же аукционист объявит, что сегодня можно приобрести. От едкого запаха свежей краски даже кружится голова. [Нажмите «Начать», чтобы посмотреть, что предлагается к продаже, или добавьте предмет, который хотите продать.]",
             "description": ".",
-            "warmup": 5,
-            "craftable": true,
-            "linked": [
-                {
-                    "id": "auctionbuy",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Мы проходим в глухую, без единого окна, комнату с ярко-оранжевыми стенами и устраиваемся на слегка пугающих красно-синих стульях. Все ждут, когда же аукционист объявит, что сегодня можно приобрести. От едкого запаха свежей краски даже кружится голова. [Нажмите «Начать», чтобы посмотреть, что предлагается к продаже, или добавьте предмет, который хотите продать.]"
         },
         {
             "id": "explorelocationstreetsstrange",
             "label": "Исследовать зловещие сплетения улиц под светом луны.",
-            "actionid": "explore",
-            "requirements": {
-                "locationstreetsstrange": 1
-            },
-            "deckeffects": {
-                "streetsstrangefinds": 1
-            },
-            "startdescription": "В час, что зовется Менискатой, улицы становятся не такими, как всегда.",
             "description": "Видения сменяются одно другим с неспешной грацией танцоров паванильи: окно над лесом, ледяной сад, дрожащее солнце, стеклянная женщина. Мне не хочется идти домой.",
-            "warmup": 30,
-            "craftable": true
+            "startdescription": "В час, что зовется Менискатой, улицы становятся не такими, как всегда."
         },
         {
             "id": "explorefollower",
             "label": "Обыскать город",
-            "actionid": "explore",
-            "requirements": {
-                "follower": 1,
-                "location": -1
-            },
-            "deckeffects": {
-                "exploreevents": 1
-            },
-            "linked": [
-                {
-                    "id": "explorefindcriminal",
-                    "chance": 100
-                },
-                {
-                    "id": "explorefindplace",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Оживлённые проспекты днём — и облечённые туманами лабиринты ночью. Я отправлю своих слуг искать полезные знакомства.",
             "description": ".",
-            "warmup": 10,
-            "craftable": true
+            "startdescription": "Оживлённые проспекты днём — и облечённые туманами лабиринты ночью. Я отправлю своих слуг искать полезные знакомства."
         },
         {
             "id": "explorerumour",
             "label": "Узнать, что стоит за слухами",
-            "actionid": "explore",
-            "requirements": {
-                "rumour": 1
-            },
-            "deckeffects": {
-                "acquaintances": 1
-            },
-            "effects": {
-                "rumour": -1,
-                "notoriety": 1
-            },
-            "startdescription": "Подозреваю, что у конца этой истории я найду кого-то, кто захочет меня послушать.",
             "description": "Малоинтересный адрес и многообещающий жилец",
-            "warmup": 60,
-            "craftable": true
+            "startdescription": "Подозреваю, что у конца этой истории я найду кого-то, кто захочет меня послушать."
         },
         {
             "id": "explorehealth",
             "label": "Обыскать город",
-            "actionid": "explore",
-            "requirements": {
-                "health": 1,
-                "location": -1
-            },
-            "deckeffects": {
-                "exploreevents": 1
-            },
-            "aspects": {
-                "fatiguing": 1
-            },
-            "linked": [
-                {
-                    "id": "explorefindcriminal",
-                    "chance": 100
-                },
-                {
-                    "id": "explorefindplace",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Оживлённые проспекты днём — и облечённые туманами лабиринты ночью. Я буду бродить по улицам в поисках тайн, пока у меня не откажут ноги.",
             "description": ".",
-            "warmup": 10,
-            "craftable": true
+            "startdescription": "Оживлённые проспекты днём — и облечённые туманами лабиринты ночью. Я буду бродить по улицам в поисках тайн, пока у меня не откажут ноги."
         },
         {
             "id": "explorefindcriminal",
-            "label": "Наёмник?",
-            "actionid": "explore",
-            "requirements": {
-                "daycriminals": 1
-            },
-            "deckeffects": {
-                "hirelings": 1
-            },
-            "effects": {
-                "season": -1
-            },
-            "warmup": 0,
-            "linked": [
-                {
-                    "id": "explorechoosepaycriminal",
-                    "chance": 100
-                }
-            ]
+            "label": "Наёмник?"
         },
         {
             "id": "explorechoosepaycriminal",
             "label": "Наёмник?",
-            "actionid": "explore",
+            "description": "Пожалуй, нет. Нужно быть избирательнее в знакомствах.",
             "startdescription": "Мне встретился человек, который готов сделать неприятное, но необходимое дело за деньги. [Добавьте средства, чтобы оплатить услуги этого человека.]",
             "slots": [
                 {
                     "id": "Payment",
-                    "label": "Плата",
-                    "required": {
-                        "funds": 1
-                    },
-                    "consumes": true
+                    "label": "Плата"
                 }
-            ],
-            "alt": [
-                {
-                    "id": "explorepaycriminal",
-                    "chance": 100
-                }
-            ],
-            "effects": {
-                "hireling": -1
-            },
-            "description": "Пожалуй, нет. Нужно быть избирательнее в знакомствах.",
-            "warmup": 60
+            ]
         },
         {
             "id": "explorepaycriminal",
             "label": "Наёмник",
-            "requirements": {
-                "funds": 1
-            },
-            "actionid": "explore",
-            "startdescription": "Этого достаточно, чтобы на время оплатить чужую верность.",
-            "effects": {
-                "funds": -1
-            }
+            "startdescription": "Этого достаточно, чтобы на время оплатить чужую верность."
         },
         {
             "id": "explorefindplace",
             "label": "Незамеченное место?",
-            "actionid": "explore",
-            "requirements": {
-                "dayplaces": 1
-            },
-            "startdescription": "Кажется, мне попалось необычное место.",
             "description": ".",
-            "deckeffects": {
-                "citysecrets": 1
-            },
-            "effects": {
-                "season": -1
-            },
-            "warmup": 5
+            "startdescription": "Кажется, мне попалось необычное место."
         },
         {
             "id": "explore.searchgraveyard.self",
-            "actionid": "explore",
-            "requirements": {
-                "location.cemetery": 1,
-                "health": 1
-            },
-            "effects": {
-                "corpse": 1,
-                "mystique": 1
-            },
-            "aspects": {
-                "fatiguing": 1
-            },
             "label": "Эксгумация",
-            "startdescription": "Осторожные раскопки при приглушённом свете фонаря.",
             "description": "Лопата ударяет по дереву. Хороший знак. В прогнивших гробах останки обычно скудны.",
-            "warmup": 30,
-            "craftable": true
+            "startdescription": "Осторожные раскопки при приглушённом свете фонаря."
         },
         {
             "id": "explore.searchgraveyard.follower",
-            "actionid": "explore",
-            "requirements": {
-                "location.cemetery": 1,
-                "follower": 1
-            },
-            "effects": {
-                "corpse": 1,
-                "mystique": 1
-            },
             "label": "Эксгумация",
-            "startdescription": "Осторожные раскопки при приглушённом свете фонаря.",
             "description": "Лопата ударяет по дереву. Хороший знак. В прогнивших гробах останки обычно скудны.",
-            "warmup": 30,
-            "craftable": true
+            "startdescription": "Осторожные раскопки при приглушённом свете фонаря."
         },
         {
             "id": "explore.searchgraveyard.closing.self",
-            "actionid": "explore",
-            "requirements": {
-                "location.cemetery.closing": 1,
-                "health": 1
-            },
-            "effects": {
-                "corpse": 1,
-                "notoriety": 1
-            },
-            "aspects": {
-                "fatiguing": 1
-            },
             "label": "Осторожная эксгумация",
-            "startdescription": "Прятки в изменчивых тенях. Никакого света. Максимальная осторожность.",
             "description": "Я копаю в полной темноте, пока не найду того, что ищу.",
-            "warmup": 60,
-            "craftable": true
+            "startdescription": "Прятки в изменчивых тенях. Никакого света. Максимальная осторожность."
         },
         {
             "id": "explore.searchgraveyard.closing.follower",
-            "actionid": "explore",
-            "requirements": {
-                "location.cemetery.closing": 1,
-                "follower": 1
-            },
-            "effects": {
-                "corpse": 1,
-                "notoriety": 1
-            },
             "label": "Осторожная эксгумация",
-            "startdescription": "Прятки в изменчивых тенях. Никакого света. Максимальная осторожность.",
             "description": "Я копаю в полной темноте, пока не найду того, что ищу.",
-            "warmup": 60,
-            "craftable": true
+            "startdescription": "Прятки в изменчивых тенях. Никакого света. Максимальная осторожность."
         },
         {
             "id": "explore.fleeting",
-            "actionid": "explore",
-            "requirements": {
-                "fleeting": 1
-            },
             "label": "Отдаться воспоминаниям",
-            "startdescription": "Пусть мои мысли свободно бродят по царству памяти; я последую за ними. В сердце угнездятся забытые было чувства.",
             "description": "Память подобна лабиринту, и в сердце его лежит сад.",
-            "effects": {
-                "fleeting": -1
-            },
-            "internaldeck": {
-                "label": "Куда мы идём",
-                "description": "Куда мы идём",
-                "spec": [
-                    "restlessness",
-                    "dread",
-                    "fascination",
-                    "contentment",
-                    "restlessness",
-                    "dread",
-                    "fascination",
-                    "contentment",
-                    "restlessness",
-                    "dread",
-                    "fascination",
-                    "contentment"
-                ],
-                "resetonexhaustion": true,
-                "draws": 1
-            },
-            "warmup": 30,
-            "craftable": true
+            "startdescription": "Пусть мои мысли свободно бродят по царству памяти; я последую за ними. В сердце угнездятся забытые было чувства."
         }
     ]
 }

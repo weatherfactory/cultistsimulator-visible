@@ -3,65 +3,34 @@
         {
             "id": "legacydetectivejob",
             "label": "Место инспектора",
-            "description": "Я занимаю руководящую должность в столичной полиции.",
-            "aspects": {
-                "job": 1
-            },
-            "xtriggers": {
-                "careeradvancement": "legacydetectivejob_matured"
-            }
+            "description": "Я занимаю руководящую должность в столичной полиции."
         },
         {
             "id": "legacydetectivejob_matured",
             "label": "Место инспектора",
             "description": "Я занимаю руководящую должность в столичной полиции, но меня временно командировали в Бюро умолчания.",
-            "aspects": {
-                "job": 1
-            },
             "slots": [
                 {
                     "id": "target",
                     "label": "Объект",
-                    "required": {
-                        "suspicious": 1
-                    },
-                    "description": "Мне нужно начать наблюдение за добычей, пока я не получу доказательств.",
-                    "actionid": "work"
+                    "description": "Мне нужно начать наблюдение за добычей, пока я не получу доказательств."
                 },
                 {
                     "id": "meticulous",
                     "label": "Педантичность",
-                    "description": "Если в расследовании я буду чаще обращаться к разуму, это увеличит мои шансы на успех.",
-                    "required": {
-                        "reason": 1
-                    },
-                    "actionid": "work"
+                    "description": "Если в расследовании я буду чаще обращаться к разуму, это увеличит мои шансы на успех."
                 },
                 {
                     "id": "vigilant",
                     "label": "Бдительность",
-                    "description": "Если в расследовании я буду чаще обращаться к разуму, это увеличит мои шансы на успех.",
-                    "required": {
-                        "reason": 1
-                    },
-                    "actionid": "work"
+                    "description": "Если в расследовании я буду чаще обращаться к разуму, это увеличит мои шансы на успех."
                 },
                 {
                     "id": "singleminded",
                     "label": "Целеустремлённость",
-                    "description": "Если в расследовании я буду чаще обращаться к разуму, это увеличит мои шансы на успех.",
-                    "required": {
-                        "reason": 1
-                    },
-                    "actionid": "work"
+                    "description": "Если в расследовании я буду чаще обращаться к разуму, это увеличит мои шансы на успех."
                 }
-            ],
-            "xtriggers": {
-                "employment": "legacydetectivejob_matured"
-            },
-            "lifetime": 90,
-            "decayTo": "legacydetectivejob_suspended",
-            "icon": "legacydetectivejob"
+            ]
         },
         {
             "id": "legacydetectivejob_suspended",
@@ -70,81 +39,38 @@
             "slots": [
                 {
                     "id": "passion",
-                    "label": "Эмоции",
-                    "required": {
-                        "passion": 1
-                    },
-                    "actionid": "work"
+                    "label": "Эмоции"
                 }
-            ],
-            "aspects": {
-                "job": 1
-            },
-            "xtriggers": {
-                "plead": "legacydetectivejob_matured"
-            },
-            "lifetime": 90,
-            "decayTo": "legacydetectivejob_disgraced"
+            ]
         },
         {
             "id": "legacydetectivejob_disgraced",
             "label": "Инспектор полиции [В опале]",
-            "description": "Меня уволили. Вряд ли мне удастся вернуть место. Я теперь гражданское лицо, и мне предстоит искать свой путь заново.",
-            "lifetime": 120,
-            "decayTo": "mystique"
+            "description": "Меня уволили. Вряд ли мне удастся вернуть место. Я теперь гражданское лицо, и мне предстоит искать свой путь заново."
         },
         {
             "id": "legacydetective_plotitem",
             "label": "Опечатанное досье Бюро",
-            "aspects": {
-                "desire": 1,
-                "legacyplotitem": 1,
-                "detectivetemptation": 1
-            },
             "description": "Досье на загадочную личность, известную как #PREVIOUSCHARACTERNAME#. Бумаги опечатаны мною лично. Мне прекрасно знакомо их содержание. Если я решусь перечитать их, сны могут вернуться."
         },
         {
             "id": "myevidence",
             "label": "Предварительные улики",
-            "description": "У меня есть некоторые улики касательно деятельности моей цели.",
-            "lifetime": 300,
-            "aspects": {
-                "suspicious": 1
-            },
-            "xtriggers": {
-                "investigatingsuccess": "myevidenceb"
-            }
+            "description": "У меня есть некоторые улики касательно деятельности моей цели."
         },
         {
             "id": "myevidenceb",
             "label": "Изобличающие улики",
-            "description": "У меня есть веские улики касательно деятельности моей цели.",
-            "lifetime": 300,
-            "aspects": {
-                "suspicious": 1
-            }
+            "description": "У меня есть веские улики касательно деятельности моей цели."
         },
         {
             "id": "legacydetective_plotitem_burning",
             "label": "Горящее досье Бюро",
-            "description": "Бумаги почти догорели! Можно попробовать выхватить их из огня... ",
-            "lifetime": 10,
-            "icon": "legacydetective_plotitem",
-            "aspects": {
-                "desire": 1,
-                "legacyplotitem": 1,
-                "detectivetemptation": 1
-            }
+            "description": "Бумаги почти догорели! Можно попробовать выхватить их из огня... "
         },
         {
             "id": "legacydetective_plotitem_backup",
             "label": "Пугающее досье Бюро",
-            "aspects": {
-                "desire": 1,
-                "legacyplotitem": 1,
-                "detectivetemptation": 1
-            },
-            "icon": "legacydetective_plotitem",
             "description": "В числе улик — подробности, которые заставят облизнуться того, кто заинтересован в подобного рода вещах. Мне не следует их читать. Сны могут вернуться."
         }
     ]

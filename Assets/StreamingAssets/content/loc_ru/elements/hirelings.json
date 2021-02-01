@@ -3,131 +3,37 @@
         {
             "id": "thugedgeminor",
             "label": "Громила",
-            "aspects": {
-                "mortal": 1,
-                "hireling": 1,
-                "follower": 1,
-                "edge": 3
-            },
-            "description": "«Я справлюсь с любой работой». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
-            "xtriggers": {
-                "hiring": "thugedgeminor",
-                "killmortal": "corpse",
-                "derangemortal": "lunatic",
-                "capturefollower": "generic_p"
-            },
-            "lifetime": 120
+            "description": "«Я справлюсь с любой работой». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]"
         },
         {
             "id": "thugmothminor",
             "label": "Плутовка",
-            "aspects": {
-                "mortal": 1,
-                "hireling": 1,
-                "follower": 1,
-                "moth": 3
-            },
-            "description": "«Я справлюсь с любой работой». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
-            "xtriggers": {
-                "hiring": "thugmothminor",
-                "killmortal": "corpse",
-                "derangemortal": "lunatic",
-                "capturefollower": "generic_p"
-            },
-            "lifetime": 120
+            "description": "«Я справлюсь с любой работой». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]"
         },
         {
             "id": "thugedge",
             "label": "Боец",
-            "aspects": {
-                "mortal": 1,
-                "hireling": 1,
-                "follower": 1,
-                "edge": 5
-            },
-            "description": "«Я их надвое переломлю». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
-            "xtriggers": {
-                "hiring": "thugedge",
-                "killmortal": "corpse",
-                "derangemortal": "lunatic",
-                "capturefollower": "generic_p"
-            },
-            "lifetime": 120
+            "description": "«Я их надвое переломлю». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]"
         },
         {
             "id": "thugforgeedge",
             "label": "Подрывник",
-            "aspects": {
-                "mortal": 1,
-                "hireling": 1,
-                "follower": 1,
-                "forge": 5,
-                "edge": 3
-            },
-            "description": "«Пожалуй, сейчас не лучшее время обсуждать политику». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
-            "xtriggers": {
-                "hiring": "thugforgeedge",
-                "killmortal": "corpse",
-                "derangemortal": "lunatic",
-                "capturefollower": "generic_p"
-            },
-            "lifetime": 120
+            "description": "«Пожалуй, сейчас не лучшее время обсуждать политику». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]"
         },
         {
             "id": "thugknock",
             "label": "Специалист по взлому",
-            "aspects": {
-                "mortal": 1,
-                "hireling": 1,
-                "follower": 1,
-                "knock": 5
-            },
-            "description": "«Я умею обращаться с замками». [Этот наёмник может быть полезен в некоторых экспедициях.]",
-            "xtriggers": {
-                "hiring": "thugknock",
-                "killmortal": "corpse",
-                "derangemortal": "lunatic",
-                "capturefollower": "generic_p"
-            },
-            "lifetime": 120
+            "description": "«Я умею обращаться с замками». [Этот наёмник может быть полезен в некоторых экспедициях.]"
         },
         {
             "id": "thuglanternmoth",
             "label": "Оракул",
-            "aspects": {
-                "mortal": 1,
-                "hireling": 1,
-                "follower": 1,
-                "lantern": 5,
-                "moth": 3
-            },
-            "description": "«Я вижу многое. Я вижу, что ты отличаешься от других». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
-            "xtriggers": {
-                "hiring": "thuglanternmoth",
-                "killmortal": "corpse",
-                "derangemortal": "lunatic",
-                "capturefollower": "generic_p"
-            },
-            "lifetime": 120
+            "description": "«Я вижу многое. Я вижу, что ты отличаешься от других». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]"
         },
         {
             "id": "thugmoth",
             "label": "Пройдоха",
-            "aspects": {
-                "mortal": 1,
-                "hireling": 1,
-                "follower": 1,
-                "moth": 5,
-                "grail": 1
-            },
-            "description": "«Работать с вами — одно удовольствие!» [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
-            "xtriggers": {
-                "hiring": "thugmoth",
-                "killmortal": "corpse",
-                "derangemortal": "lunatic",
-                "capturefollower": "generic_p"
-            },
-            "lifetime": 120
+            "description": "«Работать с вами — одно удовольствие!» [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]"
         }
     ]
 }

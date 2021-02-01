@@ -3,74 +3,31 @@
         {
             "id": "corpse",
             "label": "Человеческий труп",
-            "description": "Душа давно отошла. Скоро запах станет невыносимым, и тогда от тела придется избавиться, но пока оно лежит здесь. Труп может привлечь внимание; с его помощью можно интриговать впечатлительных. [Дурная слава сохранится даже после того, как труп уберут.]",
-            "aspects": {
-                "winter": 3,
-                "grail": 3,
-                "ingredient": 1,
-                "reputation": 2,
-                "remnant": 1
-            },
-            "xtriggers": {
-                "raiseburgeoning": "spirit_wintera_moth",
-                "raiseshattered": "spirit_wintera_edge"
-            },
-            "lifetime": 60,
-            "decayTo": "notoriety"
+            "description": "Душа давно отошла. Скоро запах станет невыносимым, и тогда от тела придется избавиться, но пока оно лежит здесь. Труп может привлечь внимание; с его помощью можно интриговать впечатлительных. [Дурная слава сохранится даже после того, как труп уберут.]"
         },
         {
             "id": "corpse.furious",
             "label": "Изрезанный осколок кости",
-            "aspects": {
-                "remnant": 1
-            },
-            "xtriggers": {
-                "alzabo": "memory.furious"
-            },
             "description": "В этом осколке хранятся воспоминания о древнем Часе."
         },
         {
             "id": "corpse.luxurious",
             "label": "Обрывок кожи",
-            "aspects": {
-                "remnant": 1
-            },
-            "xtriggers": {
-                "alzabo": "memory.luxurious"
-            },
             "description": "Воспоминания об ощущениях и желаниях, секреты Узла, заключённые в его жалком обрывке."
         },
         {
             "id": "corpse.liminal",
             "label": "Чешуйка Вечного",
-            "aspects": {
-                "remnant": 1
-            },
-            "xtriggers": {
-                "alzabo": "memory.liminal"
-            },
             "description": "Это всего лишь крупица, но её вкус... незаслуженно забытый вкус... "
         },
         {
             "id": "corpse.horizon",
             "label": "Сегмент без Тени",
-            "aspects": {
-                "remnant": 1
-            },
-            "xtriggers": {
-                "alzabo": "memory.horizon"
-            },
             "description": "Знали ли Короли истинную славу?"
         },
         {
             "id": "corpse.splendid",
             "label": "Волчья голова",
-            "aspects": {
-                "remnant": 1
-            },
-            "xtriggers": {
-                "alzabo": "memory.splendid"
-            },
             "description": "Знала ли она Солнце, каким оно было на самом деле?"
         }
     ]

@@ -3,247 +3,62 @@
         {
             "id": "auctionentry6",
             "label": "Продать нечто бесценное",
-            "actionid": "explore",
-            "requirements": {
-                "locationauctionhouse": 1,
-                "auctionable": 6
-            },
-            "effects": {
-                "funds": 20
-            },
-            "linked": [
-                {
-                    "id": "auctionsell_increasegrand",
-                    "chance": 30
-                },
-                {
-                    "id": "auctioncleanup",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Мало кто из посетителей аукциона изучает незримые искусства, однако исключительная ценность этой вещи очевидна любому. [Будьте внимательны. Проданную вещь вернуть невозможно.]",
-            "warmup": 30,
-            "craftable": true
+            "startdescription": "Мало кто из посетителей аукциона изучает незримые искусства, однако исключительная ценность этой вещи очевидна любому. [Будьте внимательны. Проданную вещь вернуть невозможно.]"
         },
         {
             "id": "auctionentry5",
             "label": "Продать нечто драгоценное",
-            "actionid": "explore",
-            "requirements": {
-                "locationauctionhouse": 1,
-                "auctionable": 5
-            },
-            "effects": {
-                "funds": 16
-            },
-            "linked": [
-                {
-                    "id": "auctionsell_increasemajor",
-                    "chance": 30
-                },
-                {
-                    "id": "auctioncleanup",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Мало кто из посетителей аукциона изучает незримые искусства. Могущественные инструменты покупают под видом обычных диковин, не подозревая об их истинной ценности. Однако необычайная редкость этой вещи очевидна. [Будьте внимательны. Проданную вещь вернуть невозможно.]",
-            "warmup": 30,
-            "craftable": true
+            "startdescription": "Мало кто из посетителей аукциона изучает незримые искусства. Могущественные инструменты покупают под видом обычных диковин, не подозревая об их истинной ценности. Однако необычайная редкость этой вещи очевидна. [Будьте внимательны. Проданную вещь вернуть невозможно.]"
         },
         {
             "id": "auctionentry4",
             "label": "Продать нечто исключительно ценное",
-            "actionid": "explore",
-            "requirements": {
-                "locationauctionhouse": 1,
-                "auctionable": 4
-            },
-            "effects": {
-                "funds": 8
-            },
-            "linked": [
-                {
-                    "id": "auctionsell_increasemajor",
-                    "chance": 30
-                },
-                {
-                    "id": "auctioncleanup",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Мало кто из посетителей аукциона изучает незримые искусства. Могущественные инструменты покупают под видом обычных диковин, не подозревая об их истинной ценности. Однако эта вещь, несомненно, не останется без внимания. [Будьте внимательны. Проданную вещь вернуть невозможно.]",
-            "warmup": 30,
-            "craftable": true
+            "startdescription": "Мало кто из посетителей аукциона изучает незримые искусства. Могущественные инструменты покупают под видом обычных диковин, не подозревая об их истинной ценности. Однако эта вещь, несомненно, не останется без внимания. [Будьте внимательны. Проданную вещь вернуть невозможно.]"
         },
         {
             "id": "auctionentry3",
             "label": "Продать нечто весьма ценное",
-            "actionid": "explore",
-            "requirements": {
-                "locationauctionhouse": 1,
-                "auctionable": 3
-            },
-            "effects": {
-                "funds": 4
-            },
-            "linked": [
-                {
-                    "id": "auctionsell_increaseminor",
-                    "chance": 30
-                },
-                {
-                    "id": "auctioncleanup",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Эта необычная вещь непременно поможет вам выручить некоторую сумму. [Будьте внимательны. Проданную вещь вернуть невозможно.]",
-            "warmup": 30,
-            "craftable": true
+            "startdescription": "Эта необычная вещь непременно поможет вам выручить некоторую сумму. [Будьте внимательны. Проданную вещь вернуть невозможно.]"
         },
         {
             "id": "auctionentry2",
             "label": "Продать нечто ценное",
-            "actionid": "explore",
-            "requirements": {
-                "locationauctionhouse": 1,
-                "auctionable": 2
-            },
-            "effects": {
-                "funds": 2
-            },
-            "linked": [
-                {
-                    "id": "auctionsell_increaseminor",
-                    "chance": 30
-                },
-                {
-                    "id": "auctioncleanup",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Эта диковинка выручит вам некоторую сумму. [Будьте внимательны. Проданную вещь вернуть невозможно.]",
-            "warmup": 30,
-            "craftable": true
+            "startdescription": "Эта диковинка выручит вам некоторую сумму. [Будьте внимательны. Проданную вещь вернуть невозможно.]"
         },
         {
             "id": "auctionentry1",
             "label": "Продать нечто условно ценное",
-            "actionid": "explore",
-            "requirements": {
-                "locationauctionhouse": 1,
-                "auctionable": 1
-            },
-            "effects": {
-                "funds": 1
-            },
-            "linked": [
-                {
-                    "id": "auctionsell_increasepetty",
-                    "chance": 30
-                },
-                {
-                    "id": "auctionsell_worthless",
-                    "chance": 30
-                },
-                {
-                    "id": "auctioncleanup",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Эта диковина наверняка что-то стоит, но что-то определённое сказать трудно.",
-            "warmup": 30,
-            "craftable": true
+            "startdescription": "Эта диковина наверняка что-то стоит, но что-то определённое сказать трудно."
         },
         {
             "id": "auctionsell_worthless",
             "label": "Аукцион: ноль внимания",
-            "actionid": "explore",
-            "startdescription": "Все остались равнодушны. Аукционист опускает свой молоточек. Моя вещь всё же продалась, но сумма так смехотворно мала, что её даже глупо указывать.",
-            "linked": [
-                {
-                    "id": "auctioncleanup",
-                    "chance": 100
-                }
-            ],
-            "effects": {
-                "funds": -99,
-                "auctionable": -99
-            },
-            "warmup": 30
+            "startdescription": "Все остались равнодушны. Аукционист опускает свой молоточек. Моя вещь всё же продалась, но сумма так смехотворно мала, что её даже глупо указывать."
         },
         {
             "id": "auctionsell_increasepetty",
             "label": "Аукцион: аудитория перешёптывается",
-            "actionid": "explore",
-            "startdescription": "Кто знает, почему так вышло, но моё предложение заинтересовало участников аукциона.",
-            "linked": [
-                {
-                    "id": "auctioncleanup",
-                    "chance": 100
-                }
-            ],
-            "effects": {
-                "funds": 1
-            },
-            "warmup": 30
+            "startdescription": "Кто знает, почему так вышло, но моё предложение заинтересовало участников аукциона."
         },
         {
             "id": "auctionsell_increaseminor",
             "label": "Аукцион: оживленный торг",
-            "actionid": "explore",
-            "startdescription": "Кое-кто из участников торгов вскакивает на ноги. Люди не в силах держать себя в руках.",
-            "linked": [
-                {
-                    "id": "auctioncleanup",
-                    "chance": 100
-                }
-            ],
-            "effects": {
-                "funds": 2
-            },
-            "warmup": 30
+            "startdescription": "Кое-кто из участников торгов вскакивает на ноги. Люди не в силах держать себя в руках."
         },
         {
             "id": "auctionsell_increasemajor",
             "label": "Аукцион: взволнованные крики",
-            "actionid": "explore",
-            "startdescription": "Аукционисту приходится повысить голос, чтобы перекрыть гомон.",
-            "linked": [
-                {
-                    "id": "auctioncleanup",
-                    "chance": 100
-                }
-            ],
-            "effects": {
-                "funds": 4
-            },
-            "warmup": 30
+            "startdescription": "Аукционисту приходится повысить голос, чтобы перекрыть гомон."
         },
         {
             "id": "auctionsell_increasegrand",
             "label": "Аукцион: дуэль",
-            "actionid": "explore",
-            "startdescription": "Двое богатых коллекционеров вперяют взгляды в лицо аукциониста. Оба выражают свои намерения едва заметными кивками. Если не считать веских объявлений аукциониста, в зале стоит полная тишина.",
-            "effects": {
-                "funds": 8
-            },
-            "linked": [
-                {
-                    "id": "auctioncleanup",
-                    "chance": 100
-                }
-            ],
-            "warmup": 30
+            "startdescription": "Двое богатых коллекционеров вперяют взгляды в лицо аукциониста. Оба выражают свои намерения едва заметными кивками. Если не считать веских объявлений аукциониста, в зале стоит полная тишина."
         },
         {
             "id": "auctioncleanup",
             "label": "Торги завершены",
-            "actionid": "explore",
-            "description": "Аукционист опускает свой молоточек. Моя вещь продана.",
-            "effects": {
-                "auctionable": -99
-            },
-            "warmup": 0
+            "description": "Аукционист опускает свой молоточек. Моя вещь продана."
         }
     ]
 }

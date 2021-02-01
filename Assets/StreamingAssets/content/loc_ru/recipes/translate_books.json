@@ -3,26 +3,13 @@
         {
             "id": "translatehint",
             "label": "Попытаться перевести текст?",
-            "actionid": "study",
-            "requirements": {
-                "language": 1
-            },
-            "startdescription": "Если у меня есть текст на этом языке, то я могу начать переводить его.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Если у меня есть текст на этом языке, то я могу начать переводить его."
         },
         {
             "id": "translate",
             "label": "Начать переводить текст",
-            "actionid": "study",
-            "requirements": {
-                "language": 1,
-                "text": 1
-            },
-            "startdescription": "Закрыть дверь кабинета и начать работать. ",
             "description": "Текст для изучения готов.",
-            "warmup": 60,
-            "craftable": true
+            "startdescription": "Закрыть дверь кабинета и начать работать. "
         }
     ]
 }

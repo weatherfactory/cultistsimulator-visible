@@ -3,117 +3,52 @@
         {
             "id": "temptationremembrancehintdream",
             "label": "Соблазны?",
-            "actionid": "dream",
-            "requirements": {
-                "temptation.remembrance": 1
-            },
-            "startdescription": "Есть цвета мира, есть цвета Обители, а ещё есть утраченные цвета. Их отсутствие — клинок, которому я не могу дать волю. [В вас вцепился соблазн памяти. Никакой другой соблазн уже вас не тронет.]",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Есть цвета мира, есть цвета Обители, а ещё есть утраченные цвета. Их отсутствие — клинок, которому я не могу дать волю. [В вас вцепился соблазн памяти. Никакой другой соблазн уже вас не тронет.]"
         },
         {
             "id": "vitalityhintdream",
             "label": "Стойкость",
-            "actionid": "dream",
-            "requirements": {
-                "vitality": 1
-            },
-            "startdescription": "Не вызывает снов. Можно изучить, чтобы улучшить здоровье.",
-            "craftable": false,
-            "hintonly": true,
-            "comments": "Not currently possible with restrictions on Dream primary slot"
+            "startdescription": "Не вызывает снов. Можно изучить, чтобы улучшить здоровье."
         },
         {
             "id": "eruditionhintdream",
             "label": "Эрудиция",
-            "actionid": "dream",
-            "requirements": {
-                "erudition": 1
-            },
-            "startdescription": "Не вызывает снов. Можно изучить, чтобы укрепить разум.",
-            "craftable": false,
-            "hintonly": true,
-            "comments": "Not currently possible with restrictions on Dream primary slot"
+            "startdescription": "Не вызывает снов. Можно изучить, чтобы укрепить разум."
         },
         {
             "id": "glimmeringhintdream",
             "label": "Проблеск",
-            "actionid": "dream",
-            "requirements": {
-                "glimmering": 1
-            },
-            "startdescription": "Пока что не вызывает снов. Можно изучить, чтобы развить эмоции.",
-            "craftable": false,
-            "hintonly": true,
-            "comments": "Not currently possible with restrictions on Dream primary slot"
+            "startdescription": "Пока что не вызывает снов. Можно изучить, чтобы развить эмоции."
         },
         {
             "id": "contentmenthintdream",
             "label": "Безмятежность",
-            "actionid": "dream",
-            "requirements": {
-                "contentment": 1
-            },
-            "startdescription": "Безмятежность не ведёт к снам, но сны иногда даруют безмятежность...",
-            "craftable": false,
-            "hintonly": true,
-            "comments": "Not currently possible with restrictions on Dream primary slot"
+            "startdescription": "Безмятежность не ведёт к снам, но сны иногда даруют безмятежность..."
         },
         {
             "id": "dedicationtoobsession_power_hint",
             "label": "Следующий шаг",
-            "actionid": "dream",
-            "requirements": {
-                "ascensionpowerb": 1
-            },
-            "startdescription": "Во снах я большего уже не добьюсь. Теперь мне надо <b>потрудиться</b>.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Во снах я большего уже не добьюсь. Теперь мне надо <b>потрудиться</b>."
         },
         {
             "id": "dedicationtoobsession_enlightenment_hint",
             "label": "Следующий шаг",
-            "actionid": "dream",
-            "requirements": {
-                "ascensionenlightenmentb": 1
-            },
-            "startdescription": "Во снах я большего уже не добьюсь. Теперь мне надо <b>потрудиться</b>.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Во снах я большего уже не добьюсь. Теперь мне надо <b>потрудиться</b>."
         },
         {
             "id": "tryreducefascination",
             "label": "Собраться с духом?",
-            "actionid": "dream",
-            "requirements": {
-                "fascination": 1
-            },
-            "startdescription": "Двери видений широко распахнулись. Капля тьмы может смягчить мой свет; даже ужас бывает полезен.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Двери видений широко распахнулись. Капля тьмы может смягчить мой свет; даже ужас бывает полезен."
         },
         {
             "id": "tryrecoverreason",
             "label": "Очистить разум?",
-            "actionid": "dream",
-            "requirements": {
-                "dread": 1
-            },
-            "startdescription": "Что-то во мне изменилось, но я не могу вспомнить, что именно. [Подходящий ресурс может унять ужас.]",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Что-то во мне изменилось, но я не могу вспомнить, что именно. [Подходящий ресурс может унять ужас.]"
         },
         {
             "id": "tryrecoverillhealth",
             "label": "Восстановиться?",
-            "actionid": "dream",
-            "requirements": {
-                "illhealth": 1
-            },
-            "startdescription": "При наличии необходимых ресурсов отдых восстановит мои силы.",
-            "craftable": false,
-            "hintonly": true,
-            "comments": "This one's generic."
+            "startdescription": "При наличии необходимых ресурсов отдых восстановит мои силы."
         }
     ]
 }

@@ -3,65 +3,37 @@
         {
             "id": "owl",
             "label": "Сова без шляпы",
-            "aspects": {
-                "job": 1
-            },
-            "description": "Сова говорит, что последний наш персонаж — #PREVIOUSCHARACTERNAME#, последнее желание — #LAST_DESIRE#, самый верный последователь — #LAST_FOLLOWER#, а последняя книга — #LAST_BOOK#.",
-            "noartneeded": true
+            "description": "Сова говорит, что последний наш персонаж — #PREVIOUSCHARACTERNAME#, последнее желание — #LAST_DESIRE#, самый верный последователь — #LAST_FOLLOWER#, а последняя книга — #LAST_BOOK#."
         },
         {
             "id": "wolfatthedoor",
             "label": "Волк у дверей",
-            "aspects": {
-                "ability": 1,
-                "location": 1,
-                "acquaintance": 1
-            },
+            "description": "Волк примет всё, что ему предложат, и всё пожрёт.",
             "slots": [
                 {
                     "id": "Meal5",
-                    "consumes": true,
-                    "actionid": "explore"
+                    "label": "Meal5"
                 }
-            ],
-            "icon": "violet_p",
-            "description": "Волк примет всё, что ему предложат, и всё пожрёт.",
-            "noartneeded": true
+            ]
         },
         {
-            "id": "wolf",
-            "lifetime": 1,
-            "decayTo": "wolfatthedoor",
-            "description": "",
-            "noartneeded": true
+            "id": "wolf"
         },
         {
             "id": "lionweb",
-            "label": "Лев в паутине",
-            "comments": "Information lives in the sky.",
-            "icon": "valciane_p",
-            "noartneeded": true
+            "label": "Лев в паутине"
         },
         {
             "id": "boarwords",
-            "label": "Вепрь в словах",
-            "comments": "Titles are criminal.",
-            "icon": "victor_p",
-            "noartneeded": true
+            "label": "Вепрь в словах"
         },
         {
             "id": "worldbull",
-            "label": "Мир в Быке",
-            "comments": "The crime At the beginning",
-            "icon": "clifton_p",
-            "noartneeded": true
+            "label": "Мир в Быке"
         },
         {
             "id": "notaworm",
-            "label": "Возможно, Птица",
-            "comments": "We Await S.T.E.",
-            "icon": "clovette_p",
-            "noartneeded": true
+            "label": "Возможно, Птица"
         }
     ]
 }

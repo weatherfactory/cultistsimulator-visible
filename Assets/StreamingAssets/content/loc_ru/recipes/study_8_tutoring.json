@@ -3,297 +3,128 @@
         {
             "id": "studylatintutoring",
             "label": "Изучать латынь с учителем",
-            "actionid": "study",
-            "requirements": {
-                "tutorlatin": 1,
-                "commission": -1,
-                "article": -1
-            },
+            "description": "Учителя не станут заниматься со мной бесплатно. Как-нибудь в другой раз.",
+            "startdescription": "Этот человек поможет мне с изучением латыни, но платить придётся в спинтриях — валюте скрытого мира.",
             "slots": [
                 {
                     "id": "Costs",
-                    "label": "Стоимость",
-                    "required": {
-                        "compensationvalue": 1
-                    }
+                    "label": "Стоимость"
                 }
-            ],
-            "alt": [
-                {
-                    "id": "studylatintutoringpaid",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Этот человек поможет мне с изучением латыни, но платить придётся в спинтриях — валюте скрытого мира.",
-            "description": "Учителя не станут заниматься со мной бесплатно. Как-нибудь в другой раз.",
-            "warmup": 60,
-            "craftable": true
+            ]
         },
         {
             "id": "studylatintutoringpaid",
             "label": "Изучать латынь с учителем",
-            "actionid": "study",
-            "requirements": {
-                "compensationvalue": 2
-            },
-            "effects": {
-                "scholarlatin": 1,
-                "compensationvalue": -2
-            },
-            "startdescription": "Этого хватит. Буду слушать очень внимательно.",
-            "description": "Язык поэмы «О природе вещей» Лукреция, Summa Theologiae Фомы Аквинского и небезызвестной De Horis..."
+            "description": "Язык поэмы «О природе вещей» Лукреция, Summa Theologiae Фомы Аквинского и небезызвестной De Horis...",
+            "startdescription": "Этого хватит. Буду слушать очень внимательно."
         },
         {
             "id": "studygreektutoring",
             "label": "Изучать греческий с учителем",
-            "actionid": "study",
-            "requirements": {
-                "tutorgreek": 1,
-                "commission": -1,
-                "article": -1
-            },
+            "description": "Учителя не станут заниматься со мной бесплатно. Как-нибудь в другой раз.",
+            "startdescription": "Этот человек поможет мне с изучением греческого, но платить придётся в спинтриях — валюте скрытого мира.",
             "slots": [
                 {
                     "id": "Costs",
-                    "label": "Стоимость",
-                    "required": {
-                        "compensationvalue": 1
-                    }
+                    "label": "Стоимость"
                 }
-            ],
-            "alt": [
-                {
-                    "id": "studygreektutoringpaid",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Этот человек поможет мне с изучением греческого, но платить придётся в спинтриях — валюте скрытого мира.",
-            "description": "Учителя не станут заниматься со мной бесплатно. Как-нибудь в другой раз.",
-            "warmup": 60,
-            "craftable": true
+            ]
         },
         {
             "id": "studygreektutoringpaid",
             "label": "Изучать греческий с учителем",
-            "actionid": "study",
-            "requirements": {
-                "compensationvalue": 2
-            },
-            "effects": {
-                "scholargreek": 1,
-                "compensationvalue": -2
-            },
-            "startdescription": "Этого хватит. Буду слушать очень внимательно.",
-            "description": "Язык «Метафизики» Аристотеля, «Тайной истории» Прокопия и зловещего труда «Что сдерживает серебро»..."
+            "description": "Язык «Метафизики» Аристотеля, «Тайной истории» Прокопия и зловещего труда «Что сдерживает серебро»...",
+            "startdescription": "Этого хватит. Буду слушать очень внимательно."
         },
         {
             "id": "studyaramaictutoring",
             "label": "Изучать арамейский с учителем",
-            "actionid": "study",
-            "requirements": {
-                "tutoraramaic": 1,
-                "commission": -1,
-                "article": -1
-            },
+            "description": "Учителя не станут заниматься со мной бесплатно. Как-нибудь в другой раз.",
+            "startdescription": "Этот человек поможет мне с изучением арамейского, но платить придётся в спинтриях — валюте скрытого мира.",
             "slots": [
                 {
                     "id": "Costs",
-                    "label": "Стоимость",
-                    "required": {
-                        "compensationvalue": 1
-                    }
+                    "label": "Стоимость"
                 }
-            ],
-            "alt": [
-                {
-                    "id": "studyaramaictutoringpaid",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Этот человек поможет мне с изучением арамейского, но платить придётся в спинтриях — валюте скрытого мира.",
-            "description": "Учителя не станут заниматься со мной бесплатно. Как-нибудь в другой раз.",
-            "warmup": 60,
-            "craftable": true
+            ]
         },
         {
             "id": "studyaramaictutoringpaid",
             "label": "Изучать арамейский с учителем",
-            "actionid": "study",
-            "requirements": {
-                "compensationvalue": 2
-            },
-            "effects": {
-                "scholararamaic": 1,
-                "compensationvalue": -2
-            },
-            "startdescription": "Этого хватит. Буду слушать очень внимательно.",
-            "description": "Язык «Видений Арама», книги пророка Даниила и «Записей о Канишке у Паучьей Двери»."
+            "description": "Язык «Видений Арама», книги пророка Даниила и «Записей о Канишке у Паучьей Двери».",
+            "startdescription": "Этого хватит. Буду слушать очень внимательно."
         },
         {
             "id": "studysanskrittutoring",
             "label": "Изучать санскрит с учителем",
-            "actionid": "study",
-            "requirements": {
-                "tutorsanskrit": 1,
-                "commission": -1,
-                "article": -1
-            },
+            "description": "Учителя не станут заниматься со мной бесплатно. Как-нибудь в другой раз.",
+            "startdescription": "Этот человек поможет мне с изучением санскрита, но платить придётся в спинтриях — валюте скрытого мира.",
             "slots": [
                 {
                     "id": "Costs",
-                    "label": "Стоимость",
-                    "required": {
-                        "compensationvalue": 1
-                    }
+                    "label": "Стоимость"
                 }
-            ],
-            "alt": [
-                {
-                    "id": "studysanskrittutoringpaid",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Этот человек поможет мне с изучением санскрита, но платить придётся в спинтриях — валюте скрытого мира.",
-            "description": "Учителя не станут заниматься со мной бесплатно. Как-нибудь в другой раз.",
-            "warmup": 60,
-            "craftable": true
+            ]
         },
         {
             "id": "studysanskrittutoringpaid",
             "label": "Изучать санскрит с учителем",
-            "actionid": "study",
-            "requirements": {
-                "compensationvalue": 2
-            },
-            "effects": {
-                "scholarsanskrit": 1,
-                "compensationvalue": -2
-            },
-            "startdescription": "Этого хватит. Буду слушать очень внимательно.",
-            "description": "Священный язык субконтинента. Дверь к сокровищам поэзии, обрядам и таинствам, описанным за четыре тысячи лет."
+            "description": "Священный язык субконтинента. Дверь к сокровищам поэзии, обрядам и таинствам, описанным за четыре тысячи лет.",
+            "startdescription": "Этого хватит. Буду слушать очень внимательно."
         },
         {
             "id": "studyfucinetutoringspirit",
             "label": "Изучать фучинский с учителем",
-            "actionid": "study",
-            "requirements": {
-                "spirittutorfucine": 1,
-                "summoned": 1
-            },
+            "description": "У меня нет нужной базы.",
+            "startdescription": "«Фучинский? Да, я его знаю. Могу научить, если у вас есть база в виде латыни. Но если услышу хоть одну шуточку про ведьмин язык, то мы расстанемся».",
             "slots": [
                 {
                     "id": "Background",
-                    "label": "Условие",
-                    "required": {
-                        "scholarlatin": 1
-                    }
+                    "label": "Условие"
                 }
-            ],
-            "alt": [
-                {
-                    "id": "studyfucinetutoringsuccessful",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "«Фучинский? Да, я его знаю. Могу научить, если у вас есть база в виде латыни. Но если услышу хоть одну шуточку про ведьмин язык, то мы расстанемся».",
-            "description": "У меня нет нужной базы.",
-            "warmup": 60,
-            "craftable": true
+            ]
         },
         {
             "id": "studyfucinetutoringsuccessful",
             "label": "Изучать фучинский с учителем",
-            "actionid": "study",
-            "requirements": {
-                "scholarlatin": 1
-            },
-            "effects": {
-                "scholarfucine": 1
-            },
-            "startdescription": "Я знаю латынь на достаточном уровне. Я выучу всё, что смогу.",
-            "description": "Разговаривая на фучинском, нужно каждые несколько минут делать глоток воды. Он иссушает губы и горло. На нём мог говорить лишь народ, живший у берега озера."
+            "description": "Разговаривая на фучинском, нужно каждые несколько минут делать глоток воды. Он иссушает губы и горло. На нём мог говорить лишь народ, живший у берега озера.",
+            "startdescription": "Я знаю латынь на достаточном уровне. Я выучу всё, что смогу."
         },
         {
             "id": "studyphrygiantutoringspirit",
             "label": "Изучать фригийский с учителем",
-            "actionid": "study",
-            "requirements": {
-                "spirittutorphrygian": 1,
-                "summoned": 1
-            },
+            "description": "У меня нет нужной базы.",
+            "startdescription": "«Фригийский! Язык Великой Матери! Да, конечно. Если вы знаете греческий, то изучение фригийского доставит вам <i>массу</i> удовольствия».",
             "slots": [
                 {
                     "id": "Background",
-                    "label": "Условие",
-                    "required": {
-                        "scholargreek": 1
-                    }
+                    "label": "Условие"
                 }
-            ],
-            "alt": [
-                {
-                    "id": "studyphrygiantutoringsuccessful",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "«Фригийский! Язык Великой Матери! Да, конечно. Если вы знаете греческий, то изучение фригийского доставит вам <i>массу</i> удовольствия».",
-            "description": "У меня нет нужной базы.",
-            "warmup": 60,
-            "craftable": true
+            ]
         },
         {
             "id": "studyphrygiantutoringsuccessful",
             "label": "Изучать фригийский с учителем",
-            "actionid": "study",
-            "requirements": {
-                "scholargreek": 1
-            },
-            "effects": {
-                "scholarphrygian": 1
-            },
-            "startdescription": "Я знаю греческий на достаточном уровне. Я выучу всё, что смогу.",
-            "description": "Геродот рассказывает о фараоне, который выяснил, что первым языком человечества был фригийский. Разумеется, он был неправ: сначала был вач. И всё же легенда всем нравится."
+            "description": "Геродот рассказывает о фараоне, который выяснил, что первым языком человечества был фригийский. Разумеется, он был неправ: сначала был вач. И всё же легенда всем нравится.",
+            "startdescription": "Я знаю греческий на достаточном уровне. Я выучу всё, что смогу."
         },
         {
             "id": "studymandaictutoringspirit",
             "label": "Изучать глубинный мандейский с учителем",
-            "actionid": "study",
-            "requirements": {
-                "spirittutormandaic": 1,
-                "summoned": 1
-            },
+            "description": "У меня нет нужной базы.",
+            "startdescription": "«ВМЕСТЕ МЫ ПОЧТИМ ЯЗЫК НЕОПАЛИМОЙ БОГИНИ».",
             "slots": [
                 {
                     "id": "Background",
-                    "label": "Условие",
-                    "required": {
-                        "scholararamaic": 1
-                    }
+                    "label": "Условие"
                 }
-            ],
-            "alt": [
-                {
-                    "id": "studymandaictutoringsuccessful",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "«ВМЕСТЕ МЫ ПОЧТИМ ЯЗЫК НЕОПАЛИМОЙ БОГИНИ».",
-            "description": "У меня нет нужной базы.",
-            "warmup": 60,
-            "craftable": true
+            ]
         },
         {
             "id": "studymandaictutoringsuccessful",
             "label": "Изучать глубинный мандейский с учителем",
-            "actionid": "study",
-            "requirements": {
-                "scholararamaic": 1
-            },
-            "effects": {
-                "scholarmandaic": 1
-            },
-            "startdescription": "Я знаю арамейский на достаточном уровне. Я выучу всё, что смогу.",
-            "description": "В одной из Историй на этом языке говорили Короли-без-Тени. В другой на нём были основаны заклинания детей Укрощённого Пламени."
+            "description": "В одной из Историй на этом языке говорили Короли-без-Тени. В другой на нём были основаны заклинания детей Укрощённого Пламени.",
+            "startdescription": "Я знаю арамейский на достаточном уровне. Я выучу всё, что смогу."
         }
     ]
 }

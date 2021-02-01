@@ -3,54 +3,17 @@
         {
             "id": "lunatic",
             "label": "Безумец",
-            "aspects": {
-                "mortal": 1,
-                "prisoner": 1,
-                "moth": 3,
-                "grail": 3,
-                "heart": 3
-            },
-            "description": "Какое-то тяжёлое переживание помутило рассудок этого несчастного. Скоро он исчезнет и больше не вернётся.",
-            "lifetime": 60,
-            "xtriggers": {
-                "killmortal": "corpse"
-            }
+            "description": "Какое-то тяжёлое переживание помутило рассудок этого несчастного. Скоро он исчезнет и больше не вернётся."
         },
         {
             "id": "genericprisonerm",
             "label": "Несчастный узник",
-            "aspects": {
-                "mortal": 1,
-                "prisoner": 1,
-                "lantern": 3,
-                "grail": 3,
-                "heart": 3
-            },
-            "description": "Кто-то попал вам в лапы. Ему осталось недолго.",
-            "lifetime": 600,
-            "decayTo": "corpse",
-            "xtriggers": {
-                "killmortal": "corpse",
-                "derangemortal": "lunatic"
-            }
+            "description": "Кто-то попал вам в лапы. Ему осталось недолго."
         },
         {
             "id": "genericprisonerf",
             "label": "Несчастный узник",
-            "aspects": {
-                "mortal": 1,
-                "prisoner": 1,
-                "lantern": 3,
-                "grail": 3,
-                "heart": 3
-            },
-            "description": "Кто-то попал вам в лапы. Ему осталось недолго.",
-            "lifetime": 600,
-            "decayTo": "corpse",
-            "xtriggers": {
-                "killmortal": "corpse",
-                "derangemortal": "lunatic"
-            }
+            "description": "Кто-то попал вам в лапы. Ему осталось недолго."
         }
     ]
 }

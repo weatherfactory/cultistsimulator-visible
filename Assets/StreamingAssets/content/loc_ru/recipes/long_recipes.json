@@ -3,1579 +3,242 @@
         {
             "id": "long.spawn.forge",
             "label": "Кто-то прибыл",
-            "actionid": "long",
-            "startdescription": "В пламени свечей, в огне очага, в струящемся дыме чётко видны предзнаменования. В город прибыл заклятый враг мастера — тот, кто может помешать нашему Делу.",
-            "deckeffects": {
-                "forgelong": 1
-            },
-            "warmup": 60,
-            "craftable": false,
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "В пламени свечей, в огне очага, в струящемся дыме чётко видны предзнаменования. В город прибыл заклятый враг мастера — тот, кто может помешать нашему Делу."
         },
         {
             "id": "long.spawn.grail",
             "label": "Кто-то прибыл",
-            "actionid": "long",
-            "startdescription": "Менялись вкусы и запахи, падали кровавые капли, в кварталах у порта говорили о рождении уродливого скота — нас предупреждали. В город прибыл заклятый враг Отрады — тот, кто может помешать нашему Делу.",
-            "deckeffects": {
-                "graillong": 1
-            },
-            "warmup": 60,
-            "craftable": false,
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Менялись вкусы и запахи, падали кровавые капли, в кварталах у порта говорили о рождении уродливого скота — нас предупреждали. В город прибыл заклятый враг Отрады — тот, кто может помешать нашему Делу."
         },
         {
             "id": "long.spawn.lantern",
             "label": "Кто-то прибыл",
-            "actionid": "long",
-            "startdescription": "Нас предупреждал об этом цвет солнца, лунное затмение, трещина в линзе телескопа. В город прибыл заклятый враг Зарева — тот, кто может помешать нашему Делу.",
-            "deckeffects": {
-                "lanternlong": 1
-            },
-            "warmup": 60,
-            "craftable": false,
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Нас предупреждал об этом цвет солнца, лунное затмение, трещина в линзе телескопа. В город прибыл заклятый враг Зарева — тот, кто может помешать нашему Делу."
         },
         {
             "id": "long.cycle",
             "label": "Кто-то наблюдает",
-            "actionid": "long",
-            "effects": {
-                "intention.assault": -9,
-                "intention.intrigue": -9,
-                "intention.dreams": -9,
-                "intention.downtime": -9,
-                "strategy.prep": -9,
-                "strategy.prep.delayed": -9
-            },
             "startdescription": "Бессмертный в тени обдумывает следующий шаг.",
-            "warmup": 60,
             "slots": [
                 {
                     "id": "longlesson",
                     "label": "Уроки",
-                    "description": "Мы провоцируем врага, а он учится, чтобы в следующий раз нанести более сильный удар.",
-                    "required": {
-                        "long.lesson": 1
-                    },
-                    "greedy": true
-                }
-            ],
-            "craftable": false,
-            "alt": [
-                {
-                    "id": "long.upgrade.might",
-                    "chance": 100
-                },
-                {
-                    "id": "long.upgrade.connections",
-                    "chance": 100
-                },
-                {
-                    "id": "long.upgrade.dreamwork",
-                    "chance": 100
-                },
-                {
-                    "id": "expelspy",
-                    "chance": 100,
-                    "additional": true,
-                    "expulsion": {
-                        "limit": 1,
-                        "filter": {
-                            "follower": 1
-                        }
-                    }
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.selectstrategy",
-                    "chance": 100
+                    "description": "Мы провоцируем врага, а он учится, чтобы в следующий раз нанести более сильный удар."
                 }
             ]
         },
         {
             "id": "expelspy",
-            "actionid": "expelspy",
             "label": "Из ночи",
-            "requirements": {
-                "follower": 1
-            },
-            "startdescription": "Наш шпион вернулся.",
-            "warmup": 10
+            "startdescription": "Наш шпион вернулся."
         },
         {
             "id": "long.upgrade.might",
-            "actionid": "long",
             "label": "Большая мощь",
-            "startdescription": "Мощь Вечного растёт.",
-            "requirements": {
-                "long.lesson.might": 1
-            },
-            "effects": {
-                "long.lesson.might": -1
-            },
-            "mutations": [
-                {
-                    "filter": "long.enemy",
-                    "mutate": "long.might",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10,
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Мощь Вечного растёт."
         },
         {
             "id": "long.upgrade.connections",
-            "actionid": "long",
             "label": "Более глубокие связи",
-            "startdescription": "Этот Вечный развивает свои связи.",
-            "requirements": {
-                "long.lesson.connections": 1
-            },
-            "effects": {
-                "long.lesson.connections": -1
-            },
-            "mutations": [
-                {
-                    "filter": "long.enemy",
-                    "mutate": "long.connections",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10,
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Этот Вечный развивает свои связи."
         },
         {
             "id": "long.upgrade.dreamwork",
-            "actionid": "long",
             "label": "Звёздность расцветает",
-            "startdescription": "Этот Вечный нашёл способ глубже проникнуть в мои сны.",
-            "requirements": {
-                "long.lesson.dreamwork": 1
-            },
-            "effects": {
-                "long.lesson.dreamwork": -1
-            },
-            "mutations": [
-                {
-                    "filter": "long.enemy",
-                    "mutate": "long.dreamwork",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10,
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Этот Вечный нашёл способ глубже проникнуть в мои сны."
         },
         {
             "id": "long.selectstrategy",
-            "actionid": "long",
             "label": "Решение",
-            "startdescription": "Наш бессмертный враг выбрал план действий.",
-            "requirements": {},
-            "deckeffects": {
-                "long.strategies": 1
-            },
-            "warmup": 5,
-            "craftable": false,
-            "alt": [
-                {
-                    "id": "long.preparestrategy.preference.assault"
-                },
-                {
-                    "id": "long.preparestrategy.preference.intrigue"
-                },
-                {
-                    "id": "long.preparestrategy.preference.dreamwork"
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.preparestrategy",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Наш бессмертный враг выбрал план действий."
         },
         {
             "id": "long.preparestrategy.preference.assault",
-            "label": "Решение",
-            "actionid": "long",
-            "requirements": {
-                "long.preference.assault": 1
-            },
-            "deckeffects": {
-                "long.strategies.preference.assault": 1
-            },
-            "linked": [
-                {
-                    "id": "long.preparestrategy",
-                    "chance": 100
-                }
-            ]
+            "label": "Решение"
         },
         {
             "id": "long.preparestrategy.preference.intrigue",
-            "label": "Решение",
-            "actionid": "long",
-            "requirements": {
-                "long.preference.intrigue": 1
-            },
-            "deckeffects": {
-                "long.strategies.preference.intrigue": 1
-            },
-            "linked": [
-                {
-                    "id": "long.preparestrategy",
-                    "chance": 100
-                }
-            ]
+            "label": "Решение"
         },
         {
             "id": "long.preparestrategy.preference.dreamwork",
-            "label": "Решение",
-            "actionid": "long",
-            "requirements": {
-                "long.preference.dreamwork": 1
-            },
-            "deckeffects": {
-                "long.strategies.preference.dreamwork": 1
-            },
-            "linked": [
-                {
-                    "id": "long.preparestrategy",
-                    "chance": 100
-                }
-            ]
+            "label": "Решение"
         },
         {
             "id": "long.preparestrategy",
-            "actionid": "long",
             "label": "Подготовка к действиям",
             "startdescription": "Бессмертный враг готовиться к следующему шагу.\n\n[<sprite name=knock> <sprite name=lantern> позволят последователю разгадать стратегию Вечного.\n<sprite name=edge> <sprite name=forge> позволят последователю задержать штурм,\n<sprite name=grail> <sprite name=heart> — задержать интригу,\n<sprite name=moth> <sprite name=winter> — задержать атаку Звёздности.]",
             "slots": [
                 {
                     "id": "spy",
                     "label": "Шпион",
-                    "description": "Шпионы могут вызнать планы Вечного. Угадав или выведав планы, хорошие шпионы могут затянуть их выполнение.",
-                    "required": {
-                        "follower": 1
-                    }
-                }
-            ],
-            "alt": [
-                {
-                    "id": "expelallspies",
-                    "chance": 100,
-                    "additional": true,
-                    "expulsion": {
-                        "limit": 9,
-                        "filter": {
-                            "follower": 1
-                        }
-                    }
-                },
-                {
-                    "id": "expelallspies_beforeconfrontation.might",
-                    "chance": 100,
-                    "additional": true,
-                    "expulsion": {
-                        "limit": 9,
-                        "filter": {
-                            "follower": 1
-                        }
-                    }
-                },
-                {
-                    "id": "expelallspies_beforeconfrontation.connections",
-                    "chance": 100,
-                    "additional": true,
-                    "expulsion": {
-                        "limit": 9,
-                        "filter": {
-                            "follower": 1
-                        }
-                    }
-                },
-                {
-                    "id": "expelallspies_beforeconfrontation.dreamwork",
-                    "chance": 100,
-                    "additional": true,
-                    "expulsion": {
-                        "limit": 9,
-                        "filter": {
-                            "follower": 1
-                        }
-                    }
-                }
-            ],
-            "effects": {
-                "strategy.prep": 1
-            },
-            "warmup": 60,
-            "craftable": false,
-            "linked": [
-                {
-                    "id": "long.refinestrategy.dreams.learndreams.followup",
-                    "chance": 70
-                },
-                {
-                    "id": "long.assault.confrontation",
-                    "chance": 70
-                },
-                {
-                    "id": "long.intrigue.confrontation",
-                    "chance": 70
-                },
-                {
-                    "id": "long.dreams.confrontation",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.assault.assassination",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.assault.abduct.follower",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.assault.forge.greatwork",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.assault.setambush.expedition",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.assault.destroyhealth",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.assault.injurefollower",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.assault.injurehealth",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.assault.rob",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.assault.intimidate",
-                    "chance": 100
-                },
-                {
-                    "id": "long.refinestrategy.intrigue.scandal",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.intrigue.follower.seduce",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.intrigue.grail.greatwork",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.intrigue.poison.follower.resentment",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.intrigue.detective.assist",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.intrigue.adversary.assist",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.intrigue.poison.follower.notoriety",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.intrigue.fraud",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.intrigue.mystiquetonotoriety",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.intrigue.createmystique",
-                    "chance": 100
-                },
-                {
-                    "id": "long.refinestrategy.dreams.drysoul",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.dreams.fiftheye",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.dreams.poisonway",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.dreams.lantern.greatwork",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.dreams.poisonpassionwithdread",
-                    "chance": 30
-                },
-                {
-                    "id": "long.refinestrategy.dreams.poisonreasonwithfascination",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.dreams.createfascination.poisoned",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.dreams.dreadtofascination.poisoned",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.dreams.learndreams",
-                    "chance": 70
-                },
-                {
-                    "id": "long.refinestrategy.dreams.createfascination",
-                    "chance": 100
-                },
-                {
-                    "id": "long.refinestrategy.downtime.learn.winter",
-                    "chance": 90
-                },
-                {
-                    "id": "long.refinestrategy.downtime.learn",
-                    "chance": 50
-                },
-                {
-                    "id": "long.refinestrategy.downtime.rest",
-                    "chance": 100
-                },
-                {
-                    "id": "long.spyonstrategy.success",
-                    "challenges": {
-                        "knock": "base",
-                        "lantern": "base"
-                    }
-                },
-                {
-                    "id": "long.delayaction.success.assault",
-                    "challenges": {
-                        "edge": "base",
-                        "forge": "base"
-                    }
-                },
-                {
-                    "id": "long.delayaction.success.intrigue",
-                    "challenges": {
-                        "grail": "base",
-                        "heart": "base"
-                    }
-                },
-                {
-                    "id": "long.delayaction.success.dreams",
-                    "challenges": {
-                        "moth": "base",
-                        "winter": "base"
-                    }
-                },
-                {
-                    "id": "long.preparestrategy",
-                    "chance": 100
+                    "description": "Шпионы могут вызнать планы Вечного. Угадав или выведав планы, хорошие шпионы могут затянуть их выполнение."
                 }
             ]
         },
         {
             "id": "expelallspies",
-            "actionid": "expelallspies",
             "label": "Потому что нас слишком много",
-            "requirements": {
-                "follower": 3
-            },
-            "startdescription": "Наш враг не дремлет. Мы отправили слишком много наблюдателей — если отправим больше, чем двоих, потерпим неудачу.",
-            "warmup": 10
+            "startdescription": "Наш враг не дремлет. Мы отправили слишком много наблюдателей — если отправим больше, чем двоих, потерпим неудачу."
         },
         {
             "id": "expelallspies_beforeconfrontation.might",
-            "actionid": "expelallspies",
             "label": "Перед бурей",
-            "requirements": {
-                "long.might": 10,
-                "follower": 1
-            },
-            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов.",
-            "warmup": 10
+            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов."
         },
         {
             "id": "expelallspies_beforeconfrontation.connections",
-            "actionid": "expelallspies",
             "label": "Перед бурей",
-            "requirements": {
-                "long.connections": 10,
-                "follower": 1
-            },
-            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов.",
-            "warmup": 10
+            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов."
         },
         {
             "id": "expelallspies_beforeconfrontation.dreamwork",
-            "actionid": "expelallspies",
             "label": "Перед бурей",
-            "requirements": {
-                "long.dreamwork": 10,
-                "follower": 1
-            },
-            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов.",
-            "warmup": 10
+            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов."
         },
         {
             "id": "long.spyonstrategy.success",
-            "actionid": "long",
             "label": "Отчёт нашего шпиона",
-            "alt": [
-                {
-                    "id": "long.revealidentity.success.might"
-                },
-                {
-                    "id": "long.revealidentity.success.connections"
-                },
-                {
-                    "id": "long.revealidentity.success.dreamwork"
-                }
-            ],
-            "requirements": {
-                "follower": 1,
-                "strategy.revealed": -1
-            },
-            "startdescription": "Общие очертания стратегии Вечного ясны.",
-            "aspects": {
-                "revealstrategy": 1
-            },
-            "warmup": 10,
-            "linked": [
-                {
-                    "id": "long.preparestrategy",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Общие очертания стратегии Вечного ясны."
         },
         {
             "id": "long.revealidentity.success.might",
-            "actionid": "long",
-            "label": "Личность нашего врага",
-            "requirements": {
-                "follower": 1,
-                "julian": -1,
-                "welland": -1,
-                "tryphon": -1,
-                "diarist": -1,
-                "long.might": 3
-            },
-            "linked": [
-                {
-                    "id": "long.revealidentity.success"
-                }
-            ]
+            "label": "Личность нашего врага"
         },
         {
             "id": "long.revealidentity.success.connections",
-            "actionid": "long",
-            "label": "Личность нашего врага",
-            "requirements": {
-                "follower": 1,
-                "julian": -1,
-                "welland": -1,
-                "tryphon": -1,
-                "diarist": -1,
-                "long.connections": 3
-            },
-            "linked": [
-                {
-                    "id": "long.revealidentity.success"
-                }
-            ]
+            "label": "Личность нашего врага"
         },
         {
             "id": "long.revealidentity.success.dreamwork",
-            "actionid": "long",
-            "label": "Личность нашего врага",
-            "requirements": {
-                "follower": 1,
-                "julian": -1,
-                "welland": -1,
-                "tryphon": -1,
-                "diarist": -1,
-                "long.dreamwork": 3
-            },
-            "linked": [
-                {
-                    "id": "long.revealidentity.success"
-                }
-            ]
+            "label": "Личность нашего врага"
         },
         {
             "id": "long.revealidentity.success",
-            "actionid": "long",
             "label": "Личность нашего врага",
-            "startdescription": "@#welland_unknown|Наш враг — капитан Велланд, Вечный Кузни, под разными именами сражавшийся во множестве войн. Он был верен Львиному Кузнецу и Кузне Дней. Ему всегда была симпатична идея прямого штурма, но он не какой-то там простой солдат.\n@#tryphon_unknown|Наш враг — леди Триффон, Вечная Чаши, оставившая за собой след сломленных душ во всех лучших отелях на континенте. Она любима Чашей и Цветоводом. Ей нравится плести интриги, но она готова применить и насилие.\n#diarist_unknown|Наш враг — Вечный Лампады по прозвищу Мемуарист, отринувший физическое обличье ради Обители. Он обласкан Полковником и Менискатой. Обычно он наносит удар через сны, но у него должны быть друзья и в мире яви.\n#julian_unknown|Наш враг — Вечный Зимы, который носит инициалы Дж. К.; мотивы его неясны. Он всегда держался с Забвенными и их последователями, не вмешивающимися в войны Часов. Тем не менее, сейчас он мешает нам.@",
-            "aspects": {
-                "revealidentity": 1
-            },
-            "warmup": 10,
-            "linked": [
-                {
-                    "id": "long.spyonstrategy.success",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "@#welland_unknown|Наш враг — капитан Велланд, Вечный Кузни, под разными именами сражавшийся во множестве войн. Он был верен Львиному Кузнецу и Кузне Дней. Ему всегда была симпатична идея прямого штурма, но он не какой-то там простой солдат.\n@#tryphon_unknown|Наш враг — леди Триффон, Вечная Чаши, оставившая за собой след сломленных душ во всех лучших отелях на континенте. Она любима Чашей и Цветоводом. Ей нравится плести интриги, но она готова применить и насилие.\n#diarist_unknown|Наш враг — Вечный Лампады по прозвищу Мемуарист, отринувший физическое обличье ради Обители. Он обласкан Полковником и Менискатой. Обычно он наносит удар через сны, но у него должны быть друзья и в мире яви.\n#julian_unknown|Наш враг — Вечный Зимы, который носит инициалы Дж. К.; мотивы его неясны. Он всегда держался с Забвенными и их последователями, не вмешивающимися в войны Часов. Тем не менее, сейчас он мешает нам.@"
         },
         {
             "id": "long.delayaction.success.assault",
-            "actionid": "long",
             "label": "Штурм задерживается",
-            "startdescription": "Мы узнали, что Вечный собирался устроить штурм, но сумели это затянуть. [Это возможно только один раз за действие.]",
-            "requirements": {
-                "follower": 1,
-                "strategy.prep": 1,
-                "strategy.prep.delayed": -1,
-                "intention.assault": 1
-            },
-            "effects": {
-                "strategy.prep.delayed": 1,
-                "strategy.prep": -1
-            },
-            "aspects": {
-                "revealstrategy": 1
-            },
-            "warmup": 30,
-            "linked": [
-                {
-                    "id": "long.preparestrategy",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Мы узнали, что Вечный собирался устроить штурм, но сумели это затянуть. [Это возможно только один раз за действие.]"
         },
         {
             "id": "long.delayaction.success.intrigue",
-            "actionid": "long",
             "label": "Интрига задерживается!",
-            "startdescription": "Мы узнали, что Вечный собирался устроить интригу, но сумели это затянуть. [Это возможно только один раз за действие.]",
-            "requirements": {
-                "follower": 1,
-                "strategy.prep": 1,
-                "strategy.prep.delayed": -1,
-                "intention.intrigue": 1
-            },
-            "effects": {
-                "strategy.prep.delayed": 1,
-                "strategy.prep": -1
-            },
-            "aspects": {
-                "revealstrategy": 1
-            },
-            "warmup": 30,
-            "linked": [
-                {
-                    "id": "long.preparestrategy",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Мы узнали, что Вечный собирался устроить интригу, но сумели это затянуть. [Это возможно только один раз за действие.]"
         },
         {
             "id": "long.delayaction.success.dreams",
-            "actionid": "long",
             "label": "Луна в затмении",
-            "startdescription": "Мы узнали, что Вечный собирался напасть на нас через сны, но сумели это затянуть. [Это возможно только один раз за действие.]",
-            "requirements": {
-                "follower": 1,
-                "strategy.prep": 1,
-                "strategy.prep.delayed": -1,
-                "intention.dreams": 1
-            },
-            "effects": {
-                "strategy.prep.delayed": 1,
-                "strategy.prep": -1
-            },
-            "aspects": {
-                "revealstrategy": 1
-            },
-            "warmup": 30,
-            "linked": [
-                {
-                    "id": "long.preparestrategy",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Мы узнали, что Вечный собирался напасть на нас через сны, но сумели это затянуть. [Это возможно только один раз за действие.]"
         },
         {
             "id": "long.delayaction.success",
-            "actionid": "long",
             "label": "Наш шпион сумел задержать врага",
-            "comments": "This generic recipe is included only for backwards compatibility with beta folks",
-            "startdescription": "Они могут только замедлить действия Вечного, не предотвратить. [Это возможно только один раз за действие.]",
-            "requirements": {
-                "follower": 1,
-                "strategy.prep": 1,
-                "strategy.prep.delayed": -1
-            },
-            "effects": {
-                "strategy.prep.delayed": 1,
-                "strategy.prep": -1
-            },
-            "warmup": 10,
-            "linked": [
-                {
-                    "id": "long.preparestrategy",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Они могут только замедлить действия Вечного, не предотвратить. [Это возможно только один раз за действие.]"
         },
         {
-            "id": "long.refinestrategy.assault.assassination",
-            "actionid": "long",
-            "extantreqs": {
-                "assassinationinprogress.player": -1,
-                "assassinationinprogress.follower": -1
-            },
-            "requirements": {
-                "intention.assault": 1,
-                "strategy.prep": 3,
-                "long.might": 8
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.assassination.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.assault.assassination"
         },
         {
-            "id": "long.refinestrategy.assault.forge.greatwork",
-            "actionid": "long",
-            "extantreqs": {
-                "greatwork": 1,
-                "apostleforge.mentor": 1
-            },
-            "requirements": {
-                "intention.assault": 1,
-                "strategy.prep": 3,
-                "long.might": 6
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.assault.forge.greatwork.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.assault.forge.greatwork"
         },
         {
-            "id": "long.refinestrategy.assault.destroyhealth",
-            "actionid": "long",
-            "requirements": {
-                "intention.assault": 1,
-                "strategy.prep": 3,
-                "long.might": 6
-            },
-            "tablereqs": {
-                "follower": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.assault.destroyhealth.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.assault.destroyhealth"
         },
         {
-            "id": "long.refinestrategy.assault.abduct.follower",
-            "actionid": "long",
-            "extantreqs": {
-                "abductioninprogress": -1
-            },
-            "requirements": {
-                "intention.assault": 1,
-                "strategy.prep": 3,
-                "long.might": 4
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.assault.abduct.follower.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.assault.abduct.follower"
         },
         {
-            "id": "long.refinestrategy.assault.setambush.expedition",
-            "actionid": "long",
-            "requirements": {
-                "intention.assault": 1,
-                "strategy.prep": 3,
-                "long.might": 4
-            },
-            "tablereqs": {
-                "vault": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.assault.setambush.expedition.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.assault.setambush.expedition"
         },
         {
-            "id": "long.refinestrategy.assault.injurefollower",
-            "actionid": "long",
-            "requirements": {
-                "intention.assault": 1,
-                "strategy.prep": 3,
-                "long.might": 2
-            },
-            "tablereqs": {
-                "follower": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.assault.injurefollower.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.assault.injurefollower"
         },
         {
-            "id": "long.refinestrategy.assault.injurehealth",
-            "actionid": "long",
-            "requirements": {
-                "intention.assault": 1,
-                "strategy.prep": 3,
-                "long.might": 2
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.assault.injurehealth.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.assault.injurehealth"
         },
         {
-            "id": "long.refinestrategy.assault.rob",
-            "actionid": "long",
-            "requirements": {
-                "intention.assault": 1,
-                "strategy.prep": 3
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.assault.rob.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.assault.rob"
         },
         {
-            "id": "long.refinestrategy.assault.intimidate",
-            "actionid": "long",
-            "requirements": {
-                "intention.assault": 1,
-                "strategy.prep": 3
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.assault.intimidate.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.assault.intimidate"
         },
         {
-            "id": "long.refinestrategy.intrigue.scandal",
-            "actionid": "long",
-            "extantreqs": {
-                "scandalinprogress": -1
-            },
-            "requirements": {
-                "intention.intrigue": 1,
-                "strategy.prep": 3,
-                "long.connections": 8
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.intrigue.scandal.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.intrigue.scandal"
         },
         {
-            "id": "long.refinestrategy.intrigue.follower.seduce",
-            "actionid": "long",
-            "tablereqs": {
-                "resentment": 1
-            },
-            "requirements": {
-                "intention.intrigue": 1,
-                "strategy.prep": 3,
-                "long.connections": 8
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.intrigue.follower.seduce.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.intrigue.follower.seduce"
         },
         {
-            "id": "long.refinestrategy.intrigue.grail.greatwork",
-            "actionid": "long",
-            "tablereqs": {
-                "uqvitulation": 1
-            },
-            "requirements": {
-                "intention.intrigue": 1,
-                "strategy.prep": 3,
-                "long.connections": 6
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.intrigue.grail.greatwork.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.intrigue.grail.greatwork"
         },
         {
-            "id": "long.refinestrategy.intrigue.poison.follower.resentment",
-            "actionid": "long",
-            "tablereqs": {
-                "follower": 1
-            },
-            "requirements": {
-                "intention.intrigue": 1,
-                "strategy.prep": 3,
-                "long.connections": 6
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.intrigue.poison.follower.resentment.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.intrigue.poison.follower.resentment"
         },
         {
-            "id": "long.refinestrategy.intrigue.detective.assist",
-            "actionid": "long",
-            "tablereqs": {
-                "hunter": 1
-            },
-            "requirements": {
-                "intention.intrigue": 1,
-                "strategy.prep": 3,
-                "long.connections": 4
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.intrigue.detective.assist.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.intrigue.detective.assist"
         },
         {
-            "id": "long.refinestrategy.intrigue.adversary.assist",
-            "actionid": "long",
-            "requirements": {
-                "intention.intrigue": 1,
-                "strategy.prep": 3,
-                "long.connections": 4
-            },
-            "tablereqs": {
-                "independent": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.intrigue.adversary.assist.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.intrigue.adversary.assist"
         },
         {
-            "id": "long.refinestrategy.intrigue.poison.follower.notoriety",
-            "actionid": "long",
-            "tablereqs": {
-                "follower": 1
-            },
-            "requirements": {
-                "intention.intrigue": 1,
-                "strategy.prep": 3,
-                "long.connections": 2
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.intrigue.poison.follower.notoriety.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.intrigue.poison.follower.notoriety"
         },
         {
-            "id": "long.refinestrategy.intrigue.mystiquetonotoriety",
-            "actionid": "long",
-            "tablereqs": {
-                "mystique": 1
-            },
-            "requirements": {
-                "intention.intrigue": 1,
-                "strategy.prep": 3,
-                "long.connections": 2
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.intrigue.mystiquetonotoriety.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.intrigue.mystiquetonotoriety"
         },
         {
-            "id": "long.refinestrategy.intrigue.fraud",
-            "actionid": "long",
-            "tablereqs": {
-                "funds": 2
-            },
-            "requirements": {
-                "intention.intrigue": 1,
-                "strategy.prep": 3
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.intrigue.fraud.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.intrigue.fraud"
         },
         {
-            "id": "long.refinestrategy.intrigue.createmystique",
-            "actionid": "long",
-            "requirements": {
-                "intention.intrigue": 1,
-                "strategy.prep": 3
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.intrigue.createmystique.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.intrigue.createmystique"
         },
         {
-            "id": "long.refinestrategy.dreams.drysoul",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3,
-                "long.dreamwork": 8
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.drysoul.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.drysoul"
         },
         {
-            "id": "long.refinestrategy.dreams.fiftheye",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3,
-                "long.dreamwork": 8
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.fiftheye.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.fiftheye"
         },
         {
-            "id": "long.refinestrategy.dreams.poisonway",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3,
-                "long.dreamwork": 6
-            },
-            "tablereqs": {
-                "way": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.poisonway.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.poisonway"
         },
         {
-            "id": "long.refinestrategy.dreams.lantern.greatwork",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3,
-                "long.dreamwork": 6
-            },
-            "tablereqs": {
-                "uqthirdwaywitnesses": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.lantern.greatwork.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.lantern.greatwork"
         },
         {
-            "id": "long.refinestrategy.dreams.poisonpassionwithdread",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3,
-                "long.dreamwork": 4
-            },
-            "tablereqs": {
-                "passion": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.poisonpassionwithdread.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.poisonpassionwithdread"
         },
         {
-            "id": "long.refinestrategy.dreams.poisonreasonwithfascination",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3,
-                "long.dreamwork": 4
-            },
-            "tablereqs": {
-                "reason": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.poisonreasonwithfascination.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.poisonreasonwithfascination"
         },
         {
-            "id": "long.refinestrategy.dreams.createfascination.poisoned",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3,
-                "long.dreamwork": 2
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.createfascination.poisoned.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.createfascination.poisoned"
         },
         {
-            "id": "long.refinestrategy.dreams.dreadtofascination.poisoned",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3,
-                "long.dreamwork": 2
-            },
-            "tablereqs": {
-                "dread": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.dreadtofascination.poisoned.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.dreadtofascination.poisoned"
         },
         {
-            "id": "long.refinestrategy.dreams.createfascination",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.createfascination.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.createfascination"
         },
         {
-            "id": "long.refinestrategy.dreams.learndreams.followup",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3
-            },
-            "tablereqs": {
-                "fascination": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.learndreams.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.learndreams.followup"
         },
         {
-            "id": "long.refinestrategy.dreams.learnfears.followup",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3
-            },
-            "tablereqs": {
-                "dread": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.learnfears.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.learnfears.followup"
         },
         {
-            "id": "long.refinestrategy.dreams.learndreams",
-            "actionid": "long",
-            "requirements": {
-                "intention.dreams": 1,
-                "strategy.prep": 3
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.dreams.learndreams.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.dreams.learndreams"
         },
         {
-            "id": "long.refinestrategy.downtime.learn.winter",
-            "actionid": "long",
-            "requirements": {
-                "intention.downtime": 1,
-                "strategy.prep": 3,
-                "long.preference.winter": 1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.downtime.learn.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.downtime.learn.winter"
         },
         {
-            "id": "long.refinestrategy.downtime.learn",
-            "actionid": "long",
-            "requirements": {
-                "intention.downtime": 1,
-                "strategy.prep": 3,
-                "long.preference.winter": -1
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.downtime.learn.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.downtime.learn"
         },
         {
-            "id": "long.refinestrategy.downtime.rest",
-            "actionid": "long",
-            "requirements": {
-                "intention.downtime": 1,
-                "strategy.prep": 3
-            },
-            "alt": [
-                {
-                    "id": "long.executestrategy.downtime.rest.begin",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "long.cycle",
-                    "chance": 100
-                }
-            ]
+            "id": "long.refinestrategy.downtime.rest"
         }
     ]
 }

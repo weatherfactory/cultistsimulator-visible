@@ -3,50 +3,20 @@
         {
             "id": "deathofthebody",
             "label": "Не осталось здоровья",
-            "actionid": "healthend",
-            "requirements": {
-                "health": -1,
-                "fatigue": -1
-            },
-            "effects": {},
-            "startdescription": "Жизнь покидает моё тело...",
             "description": "Где найдут меня? Я больше не здесь.",
-            "warmup": 0,
-            "craftable": false,
-            "ending": "deathofthebody",
-            "signalEndingFlavour": "Melancholy"
+            "startdescription": "Жизнь покидает моё тело..."
         },
         {
             "id": "forlornblooddeathofthebody",
             "label": "Не осталось здоровья",
-            "actionid": "healthend",
-            "requirements": {
-                "health": -1,
-                "fatigue": -1,
-                "apostlegrail.pillar2": -1
-            },
-            "effects": {},
-            "startdescription": "Я больше не могу превозмогать поселившуюся в костях немочь. Если я не смогу собраться с силами или отведать крови Отрады, всё кончено.",
             "description": "Где найдут меня? Я больше не здесь.",
-            "warmup": 0,
-            "craftable": false,
-            "ending": "deathofthebody",
-            "signalEndingFlavour": "Melancholy"
+            "startdescription": "Я больше не могу превозмогать поселившуюся в костях немочь. Если я не смогу собраться с силами или отведать крови Отрады, всё кончено."
         },
         {
             "id": "workvictory",
             "label": "Я устрою себе вполне комфортную жизнь",
-            "actionid": "workwin",
-            "requirements": {
-                "passion": 1
-            },
-            "effects": {},
-            "startdescription": "Мои мечты давно забыты; жизнь моя будет вполне достойной.",
             "description": "Всё кончено",
-            "warmup": 0,
-            "craftable": false,
-            "ending": "workvictory",
-            "burnimage": "retirement"
+            "startdescription": "Мои мечты давно забыты; жизнь моя будет вполне достойной."
         }
     ]
 }

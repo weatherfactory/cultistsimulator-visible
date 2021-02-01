@@ -3,822 +3,164 @@
         {
             "id": "studyugradeknockinfluence",
             "label": "Ускорить пролом",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "knock": 1
-            },
-            "effects": {
-                "project_influence_upgrade_subvert_knock": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Если надавить на кожу мира, она разойдётся, словно шкурка спелого плода. [Любое влияние, изученное со Стуком, становится Стуком.]",
             "description": ".",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Если надавить на кожу мира, она разойдётся, словно шкурка спелого плода. [Любое влияние, изученное со Стуком, становится Стуком.]"
         },
         {
             "id": "studyupgradeinfluence_edge",
             "label": "Отыскать миг самого пылкого противостояния",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "edge": 1,
-                "winter": -1,
-                "forge": -1,
-                "knock": -1
-            },
-            "effects": {
-                "project_influence_upgrade_edge": 1
-            },
-            "alt": [
-                {
-                    "id": "dreadinduction_ifdread",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Все величайшие противостояния заканчиваются смертью. [Это усилит ваше влияние Грани.]",
             "description": ".",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Все величайшие противостояния заканчиваются смертью. [Это усилит ваше влияние Грани.]"
         },
         {
             "id": "studysubvertinfluence_edgetowinter",
             "label": "Обратить влияние Грани",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "edge": 1,
-                "winter": 1
-            },
-            "effects": {
-                "project_influence_subvert_edgetowinter": 1
-            },
-            "alt": [
-                {
-                    "id": "dreadinduction_ifdread",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Всему приходит конец. Я обдумаю то, как терпение превосходит силу. [Это создаст влияние Зимы вместо Грани.]",
             "description": ".",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Всему приходит конец. Я обдумаю то, как терпение превосходит силу. [Это создаст влияние Зимы вместо Грани.]"
         },
         {
             "id": "studyforgeinfluence",
             "label": "Выстроить великий Жар",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "forge": 1,
-                "edge": -1,
-                "lantern": -1,
-                "knock": -1
-            },
-            "effects": {
-                "project_influence_upgrade_forge": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Чем сытнее кормить пламя, тем ярче оно разгорается. [Это усилит ваше влияние Кузни.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Чем сытнее кормить пламя, тем ярче оно разгорается. [Это усилит ваше влияние Кузни.]"
         },
         {
             "id": "studysubvertinfluence_forgetoedge",
             "label": "Обратить влияние Кузни",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "forge": 1,
-                "edge": 1
-            },
-            "effects": {
-                "project_influence_subvert_forgetoedge": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Час по имени Львиный Кузнец разбил собственный меч, чтобы выйти из-под власти хозяина. Если приложить достаточно сил, превзойти можно что угодно. [Это создаст влияние Грани вместо Кузни.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Час по имени Львиный Кузнец разбил собственный меч, чтобы выйти из-под власти хозяина. Если приложить достаточно сил, превзойти можно что угодно. [Это создаст влияние Грани вместо Кузни.]"
         },
         {
             "id": "studygrailinfluence",
             "label": "Объединить аппетиты",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "grail": 1,
-                "moth": -1,
-                "heart": -1,
-                "knock": -1
-            },
-            "effects": {
-                "project_influence_upgrade_grail": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Отыскав истоки своих желаний, мы видим желания, что питают их. [Это усилит ваше влияние Чаши.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Отыскав истоки своих желаний, мы видим желания, что питают их. [Это усилит ваше влияние Чаши.]"
         },
         {
             "id": "studysubvertinfluence_grailtomoth",
             "label": "Обратить влияние Чаши",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "grail": 1,
-                "moth": 1
-            },
-            "effects": {
-                "project_influence_subvert_grailtomoth": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Утверждают, что Чаша родилась от первого жертвоприношения, но Мотылёк знает, что это не так. [Это создаст влияние Мотылька вместо Чаши.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Утверждают, что Чаша родилась от первого жертвоприношения, но Мотылёк знает, что это не так. [Это создаст влияние Мотылька вместо Чаши.]"
         },
         {
             "id": "studyheartinfluence",
             "label": "Переплести неустанные ритмы",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "heart": 1,
-                "grail": -1,
-                "winter": -1,
-                "knock": -1
-            },
-            "effects": {
-                "project_influence_upgrade_heart": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Бывают уроки, которые нужно освоить и анатому, и танцору, и шаману. [Это усилит ваше влияние Сердца.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Бывают уроки, которые нужно освоить и анатому, и танцору, и шаману. [Это усилит ваше влияние Сердца.]"
         },
         {
             "id": "studysubvertinfluence_hearttograil",
             "label": "Обратить влияние Сердца",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "heart": 1,
-                "grail": 1
-            },
-            "effects": {
-                "project_influence_subvert_hearttograil": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "То, что не прекращается, рано или поздно предастся искушению. [Это создаст влияние Чаши вместо Сердца.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "То, что не прекращается, рано или поздно предастся искушению. [Это создаст влияние Чаши вместо Сердца.]"
         },
         {
             "id": "studylanterninfluence",
             "label": "Выстроить освещённость",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "lantern": 1,
-                "forge": -1,
-                "moth": -1,
-                "knock": -1
-            },
-            "effects": {
-                "project_influence_upgrade_lantern": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Там, где пересекаются зеркала, где расстаются тени, где кровь Солнца гуще всего. [Это усилит ваше влияние Лампады.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Там, где пересекаются зеркала, где расстаются тени, где кровь Солнца гуще всего. [Это усилит ваше влияние Лампады.]"
         },
         {
             "id": "studysubvertinfluence_lanterntoforge",
             "label": "Обратить влияние Лампады",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "lantern": 1,
-                "forge": 1
-            },
-            "effects": {
-                "project_influence_subvert_lanterntoforge": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Маг Джулиан Коузли утверждает, что Кузня Дней рассекла Солнце. Возможно, он был прав. [Это создаст влияние Кузни вместо Лампады.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Маг Джулиан Коузли утверждает, что Кузня Дней рассекла Солнце. Возможно, он был прав. [Это создаст влияние Кузни вместо Лампады.]"
         },
         {
             "id": "studymothinfluence",
             "label": "Возможная опасность",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "moth": 1,
-                "lantern": -1,
-                "grail": -1,
-                "knock": -1
-            },
-            "alt": [
-                {
-                    "id": "fascinationinduction_iffascination",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "effects": {
-                "project_influence_upgrade_moth": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Теперь я отворачиваюсь от того, что понимаю. [Это усилит ваше влияние Мотылька.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Теперь я отворачиваюсь от того, что понимаю. [Это усилит ваше влияние Мотылька.]"
         },
         {
             "id": "studysubvertinfluence_mothtolantern",
             "label": "Обратить влияние Мотылька",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "moth": 1,
-                "lantern": 1
-            },
-            "alt": [
-                {
-                    "id": "fascinationinduction_iffascination",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "effects": {
-                "project_influence_subvert_mothtolantern": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Слава суть вопрос, и Мотылёк всегда отвечает на него согласием. [Это создаст влияние Лампады вместо Мотылька.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Слава суть вопрос, и Мотылёк всегда отвечает на него согласием. [Это создаст влияние Лампады вместо Мотылька.]"
         },
         {
             "id": "studywinterinfluence",
             "label": "Глубокая тишина",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "winter": 1,
-                "heart": -1,
-                "knock": -1
-            },
-            "effects": {
-                "project_influence_upgrade_winter": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Тишина ждёт на западе, но не вечно. [Это усилит ваше влияние Зимы.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Тишина ждёт на западе, но не вечно. [Это усилит ваше влияние Зимы.]"
         },
         {
             "id": "subvertwinterinfluence",
             "label": "Обратить влияние Зимы",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2,
-                "healthskill": -1,
-                "reasonskill": -1,
-                "passionskill": -1,
-                "lore": 1,
-                "winter": 1,
-                "heart": 1
-            },
-            "effects": {
-                "project_influence_subvert_wintertoheart": 1
-            },
-            "linked": [
-                {
-                    "id": "studyinfluence_effectproject",
-                    "chance": 100
-                }
-            ],
-            "startdescription": "Даже в снегу, в безмолвии, в бесцветной белизне жизнь никогда не прекратится полностью. [Это создаст влияние Сердца вместо Зимы.]",
-            "warmup": 5,
-            "craftable": true
+            "startdescription": "Даже в снегу, в безмолвии, в бесцветной белизне жизнь никогда не прекратится полностью. [Это создаст влияние Сердца вместо Зимы.]"
         },
         {
             "id": "studyinfluence_effectproject",
             "label": "Существенный миг",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2
-            },
-            "startdescription": "Действенность и возможность сближаются...",
-            "warmup": 5,
-            "linked": [
-                {
-                    "id": "studyproject_influence_upgrade_edge",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_upgrade_forge",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_upgrade_grail",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_upgrade_heart",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_upgrade_lantern",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_upgrade_moth",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_upgrade_winter",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_subvert_edgetowinter",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_subvert_forgetoedge",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_subvert_grailtomoth",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_subvert_hearttograil",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_subvert_lanterntoforge",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_subvert_mothtolantern",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_subvert_wintertoheart",
-                    "chance": 100
-                },
-                {
-                    "id": "studyproject_influence_upgrade_subvert_knock",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Действенность и возможность сближаются..."
         },
         {
             "id": "studyproject_influence_upgrade_edge",
             "label": "Пылкое противостояние",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_upgrade_edge": 1
-            },
-            "effects": {
-                "influenceedge": -1,
-                "influenceedgec": -1,
-                "influenceedgee": -1,
-                "influenceedgeg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Это влияние Грани стало сильнее."
         },
         {
             "id": "studyproject_influence_upgrade_forge",
             "label": "Великий Жар",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_upgrade_forge": 1
-            },
-            "effects": {
-                "influenceforge": -1,
-                "influenceforgec": -1,
-                "influenceforgee": -1,
-                "influenceforgeg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Это влияние Кузни стало сильнее."
         },
         {
             "id": "studyproject_influence_upgrade_grail",
             "label": "Более алчный аппетит",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_upgrade_grail": 1
-            },
-            "effects": {
-                "influencegrail": -1,
-                "influencegrailc": -1,
-                "influencegraile": -1,
-                "influencegrailg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Это влияние Чаши стало сильнее."
         },
         {
             "id": "studyproject_influence_upgrade_heart",
             "label": "Неустанные ритмы",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_upgrade_heart": 1
-            },
-            "effects": {
-                "influenceheart": -1,
-                "influenceheartc": -1,
-                "influencehearte": -1,
-                "influenceheartg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Это влияние Сердца стало сильнее."
         },
         {
             "id": "studyproject_influence_upgrade_lantern",
             "label": "Освещённость в ряд",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_upgrade_lantern": 1
-            },
-            "effects": {
-                "influencelantern": -1,
-                "influencelanternc": -1,
-                "influencelanterne": -1,
-                "influencelanterng": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Это влияние Лампады стало сильнее."
         },
         {
             "id": "studyproject_influence_upgrade_moth",
             "label": "Ближе и ближе",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_upgrade_moth": 1
-            },
-            "effects": {
-                "influencemoth": -1,
-                "influencemothc": -1,
-                "influencemothe": -1,
-                "influencemothg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Это влияние Мотылька стало сильнее."
         },
         {
             "id": "studyproject_influence_upgrade_winter",
             "label": "Тихое место",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_upgrade_winter": 1
-            },
-            "effects": {
-                "influencewinter": -1,
-                "influencewinterc": -1,
-                "influencewintere": -1,
-                "influencewinterg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Это влияние Зимы стало сильнее."
         },
         {
             "id": "studyproject_influence_subvert_edgetowinter",
             "label": "Всему приходит конец",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_subvert_edgetowinter": 1
-            },
-            "effects": {
-                "influenceedge": -1,
-                "influenceedgec": -1,
-                "influenceedgee": -1,
-                "influenceedgeg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Терпение превосходит силу."
         },
         {
             "id": "studyproject_influence_subvert_forgetoedge",
             "label": "Сила побеждает всё",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_subvert_forgetoedge": 1
-            },
-            "effects": {
-                "influenceforge": -1,
-                "influenceforgec": -1,
-                "influenceforgee": -1,
-                "influenceforgeg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "То, что имело форму, теперь разбито."
         },
         {
             "id": "studyproject_influence_subvert_grailtomoth",
             "label": "Голод есть блажь",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_subvert_grailtomoth": 1
-            },
-            "effects": {
-                "influencegrail": -1,
-                "influencegrailc": -1,
-                "influencegraile": -1,
-                "influencegrailg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Даже Алая Чаша станет жертвой монотонного гула в мозгу."
         },
         {
             "id": "studyproject_influence_subvert_hearttograil",
             "label": "То, что не прекращается, всё равно сдастся",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_subvert_hearttograil": 1
-            },
-            "effects": {
-                "influenceheart": -1,
-                "influenceheartc": -1,
-                "influencehearte": -1,
-                "influenceheartg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Всё, что движется, испытывает голод."
         },
         {
             "id": "studyproject_influence_subvert_lanterntoforge",
             "label": "Полуденный закат",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_subvert_lanterntoforge": 1
-            },
-            "effects": {
-                "influencelantern": -1,
-                "influencelanternc": -1,
-                "influencelanterne": -1,
-                "influencelanterng": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Свет сменяется Жаром."
         },
         {
             "id": "studyproject_influence_subvert_mothtolantern",
             "label": "Свет свыше",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_subvert_mothtolantern": 1
-            },
-            "effects": {
-                "influencemoth": -1,
-                "influencemothc": -1,
-                "influencemothe": -1,
-                "influencemothg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
             "description": "Слава суть вопрос, и Мотылёк всегда отвечает на него согласием."
         },
         {
             "id": "studyproject_influence_subvert_wintertoheart",
-            "label": "Жизнь снизу",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_subvert_wintertoheart": 1
-            },
-            "effects": {
-                "influencewinter": -1,
-                "influencewinterc": -1,
-                "influencewintere": -1,
-                "influencewinterg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
+            "label": "Жизнь внизу",
             "description": "Приход зимы должен в конце концов смениться весной."
         },
         {
             "id": "studyproject_influence_upgrade_subvert_knock",
             "label": "Кожа мира",
-            "actionid": "study",
-            "requirements": {
-                "project_influence_upgrade_subvert_knock": 1
-            },
-            "effects": {
-                "influenceedge": -1,
-                "influenceedgec": -1,
-                "influenceedgee": -1,
-                "influenceedgeg": -1,
-                "influenceforge": -1,
-                "influenceforgec": -1,
-                "influenceforgee": -1,
-                "influenceforgeg": -1,
-                "influencegrail": -1,
-                "influencegrailc": -1,
-                "influencegraile": -1,
-                "influencegrailg": -1,
-                "influenceheart": -1,
-                "influenceheartc": -1,
-                "influencehearte": -1,
-                "influenceheartg": -1,
-                "influencelantern": -1,
-                "influencelanternc": -1,
-                "influencelanterne": -1,
-                "influencelanterng": -1,
-                "influencemoth": -1,
-                "influencemothc": -1,
-                "influencemothe": -1,
-                "influencemothg": -1,
-                "influencewinter": -1,
-                "influencewinterc": -1,
-                "influencewintere": -1,
-                "influencewinterg": -1
-            },
-            "aspects": {
-                "upgradeinfluence": 1
-            },
-            "description": "Если надавить на слабое место, можно содрать с мира кожу.",
-            "linked": [
-                {
-                    "id": "studyproject_influence_upgrade_subvert_knock_remove_spare_knock",
-                    "chance": 100
-                }
-            ]
+            "description": "Если надавить на слабое место, можно содрать с мира кожу."
         },
         {
             "id": "studyproject_influence_upgrade_subvert_knock_remove_spare_knock",
             "label": "Всё будет открыто",
-            "comments": "This exists to remove a Knock influence, if we were combining Knock influences rather than Knock + another. Dangit Kennedy you wouldn't need hacks like this if you'd implemented OR conditions. Aspects don't *quite* always cut it.",
-            "actionid": "study",
-            "requirements": {
-                "influence": 2
-            },
-            "effects": {
-                "influenceknock": -1,
-                "influenceknockc": -1,
-                "influenceknocke": -1,
-                "influenceknockg": -1
-            },
             "description": "."
         }
     ]

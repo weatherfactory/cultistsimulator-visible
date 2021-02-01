@@ -3,57 +3,29 @@
         {
             "id": "health_expel_to_scar",
             "label": "Здоровье: есть шрамы",
-            "actionid": "scar_ability",
-            "startdescription": "Моё тело меняется...",
             "description": "Некоторые движения оставляют след глубже, чем другие. [Здоровье навсегда превращается в шрам. Будьте осторожны: болезнь и голод нельзя удовлетворить шрамами.]",
-            "requirements": {
-                "health": 1
-            },
-            "aspects": {
-                "scarability": 1
-            },
-            "warmup": 10
+            "startdescription": "Моё тело меняется..."
         },
         {
             "id": "passion_expel_to_scar",
             "label": "Эмоции: есть шрамы",
-            "actionid": "scar_ability",
-            "startdescription": "Переживания меняют меня...",
             "description": "Мысли сковывают моё тело и дух слишком крепко, чтобы считать это безопасным. [Эмоция навсегда превращается в шрам.]",
-            "requirements": {
-                "passion": 1
-            },
-            "aspects": {
-                "scarability": 1
-            },
-            "warmup": 10
+            "startdescription": "Переживания меняют меня..."
         },
         {
             "id": "expel_independent",
             "label": "Блаженное неведение",
-            "actionid": "expel_independent",
-            "startdescription": "Мой соперник не должен знать, что его ждёт.",
-            "warmup": 1
+            "startdescription": "Мой соперник не должен знать, что его ждёт."
         },
         {
             "id": "expel_corpses",
             "label": "Хрупкая тень",
-            "actionid": "expel_corpse",
-            "requirements": {
-                "corpse": 1
-            },
-            "startdescription": "Вот оно.",
-            "warmup": 1
+            "startdescription": "Вот оно."
         },
         {
             "id": "expel_injury",
             "label": "Кровавый след",
-            "actionid": "expel_injury",
-            "requirements": {
-                "injury": 1
-            },
-            "startdescription": "Боль — последний из даров.",
-            "warmup": 1
+            "startdescription": "Боль — последний из даров."
         }
     ]
 }

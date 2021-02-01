@@ -3,420 +3,201 @@
         {
             "id": "gloverandgloverjuniorjob",
             "label": "Младший клерк в «Гловер и Гловер»",
-            "aspects": {
-                "job": 1
-            },
-            "description": "Мои интеллектуальные способности достойны лучшего применения! Но платят здесь лучше, чем чернорабочим. [Если не посещать работу регулярно, вас могут понизить в должности.]",
-            "xtriggers": {
-                "careeradvancement": "gloverandglover_difficultbossa_job",
-                "employment": "gloverandgloverjuniorjob"
-            },
-            "lifetime": 90,
-            "decayTo": "gloverandgloverjuniorjob_demotion"
+            "description": "Мои интеллектуальные способности достойны лучшего применения! Но платят здесь лучше, чем чернорабочим. [Если не посещать работу регулярно, вас могут понизить в должности.]"
         },
         {
             "id": "gloverandgloverjuniorjob_nodifficultbossa",
             "label": "Младший клерк в «Гловер и Гловер»",
-            "aspects": {
-                "job": 1
-            },
-            "description": "Мои интеллектуальные способности достойны лучшего применения! Но платят здесь лучше, чем чернорабочим. [Если не посещать работу регулярно, вас могут понизить в должности.]",
-            "xtriggers": {
-                "careeradvancement": "gloverandgloverjob",
-                "employment": "gloverandgloverjuniorjob_nodifficultbossa"
-            },
-            "lifetime": 90,
-            "decayTo": "gloverandgloverjuniorjob_nodifficultbossa_demotion"
+            "description": "Мои интеллектуальные способности достойны лучшего применения! Но платят здесь лучше, чем чернорабочим. [Если не посещать работу регулярно, вас могут понизить в должности.]"
         },
         {
             "id": "gloverandglover_difficultbossa_job",
             "label": "Клерк в галантерейной лавке",
-            "aspects": {
-                "annoyance": 1,
-                "job": 1
-            },
-            "description": "Теперь я работаю с бухгалтерскими книгами под началом мистера Олдена. Я получаю чуть больше и ухожу домой чуть позже. Мистер Олден следит за каждым моим шагом. [Если не посещать работу регулярно, вас могут понизить в должности.]",
-            "xtriggers": {
-                "endannoyance": "gloverandglover_difficultbossa_gone_job",
-                "careeradvancement": "gloverandgloverseniorjob",
-                "employment": "gloverandglover_difficultbossa_job"
-            },
-            "lifetime": 59,
-            "decayTo": "gloverandgloverjuniorjob_demotion"
+            "description": "Теперь я работаю с бухгалтерскими книгами под началом мистера Олдена. Я получаю чуть больше и ухожу домой чуть позже. Мистер Олден следит за каждым моим шагом. [Если не посещать работу регулярно, вас могут понизить в должности.]"
         },
         {
             "id": "gloverandglover_difficultbossa_gone_job",
             "label": "Счетовод в «Гловер и Гловер»",
-            "aspects": {
-                "job": 1
-            },
-            "description": "Человека по фамилии Олден больше нет. Теперь на работе будет поспокойнее.",
-            "comments": "interim job that immediately changes to standard one."
+            "description": "Человека по фамилии Олден больше нет. Теперь на работе будет поспокойнее."
         },
         {
             "id": "gloverandgloverjob",
             "label": "Счетовод в «Гловер и Гловер»",
-            "aspects": {
-                "job": 1
-            },
+            "description": "Я получаю чуть больше и ухожу домой чуть позже. Младший клерк, занявший мой старый стол, смотрит на меня с завистью. [Если не посещать работу регулярно, вас могут понизить в должности.]",
             "slots": [
                 {
                     "id": "Diligence",
                     "label": "Усердие",
-                    "actionid": "work",
-                    "required": {
-                        "reason": 1
-                    },
                     "description": "Больше усилий. Если мне очень повезёт, это окупится."
                 }
-            ],
-            "description": "Я получаю чуть больше и ухожу домой чуть позже. Младший клерк, занявший мой старый стол, смотрит на меня с завистью. [Если не посещать работу регулярно, вас могут понизить в должности.]",
-            "xtriggers": {
-                "careeradvancement": "gloverandgloverseniorjob",
-                "employment": "gloverandgloverjob"
-            },
-            "lifetime": 90,
-            "decayTo": "gloverandgloverjuniorjob_nodifficultbossa_demotion"
+            ]
         },
         {
             "id": "gloverandgloverjob_youngerglovergone",
             "label": "Счетовод в «Гловер и Гловер»",
-            "aspects": {
-                "job": 1
-            },
+            "description": "Я получаю чуть больше и ухожу домой чуть позже. Младший клерк, занявший мой старый стол, смотрит на меня с завистью. [Если не посещать работу регулярно, вас могут понизить в должности.]",
             "slots": [
                 {
                     "id": "Diligence",
                     "label": "Усердие",
-                    "actionid": "work",
-                    "required": {
-                        "reason": 1
-                    },
                     "description": "Больше усилий. Если мне очень повезёт, это окупится."
                 }
-            ],
-            "description": "Я получаю чуть больше и ухожу домой чуть позже. Младший клерк, занявший мой старый стол, смотрит на меня с завистью. [Если не посещать работу регулярно, вас могут понизить в должности.]",
-            "xtriggers": {
-                "careeradvancement": "gloverandgloverseniorjob_youngerglovergone",
-                "employment": "gloverandgloverjob_youngerglovergone"
-            },
-            "lifetime": 90,
-            "decayTo": "gloverandgloverjob_youngerglovergone_demotion"
+            ]
         },
         {
             "id": "gloverandgloverseniorjob",
             "label": "Управляющий в «Гловер и Гловер»",
-            "aspects": {
-                "annoyance": 1,
-                "job": 1
-            },
+            "description": "Теоретически меня могли бы повысить, но для этого кто-то должен умереть. [Если не посещать работу регулярно, вас могут понизить в должности.]",
             "slots": [
                 {
                     "id": "Devotion",
                     "label": "Самоотдача",
-                    "required": {
-                        "reason": 1
-                    },
-                    "actionid": "work",
                     "description": "Моя позиция требует самоотдачи. Мне нужно сосредоточиться."
                 }
-            ],
-            "description": "Теоретически меня могли бы повысить, но для этого кто-то должен умереть. [Если не посещать работу регулярно, вас могут понизить в должности.]",
-            "xtriggers": {
-                "endannoyance": "gloverandgloverseniorjob_youngerglovergone",
-                "employment": "gloverandgloverseniorjob"
-            },
-            "lifetime": 60,
-            "decayTo": "gloverandgloverjob_demotion"
+            ]
         },
         {
             "id": "gloverandgloverseniorjob_youngerglovergone",
             "label": "Управляющий в «Гловер и Гловер»",
-            "aspects": {
-                "job": 1
-            },
+            "description": "Без Гловера-младшего я смогу подняться ещё выше. [Если не посещать работу регулярно, вас могут понизить в должности.]",
             "slots": [
                 {
                     "id": "Devotion",
                     "label": "Самоотдача",
-                    "required": {
-                        "reason": 1
-                    },
-                    "actionid": "work",
                     "description": "Моя позиция требует самоотдачи. Мне нужно сосредоточиться."
                 }
-            ],
-            "description": "Без Гловера-младшего я смогу подняться ещё выше. [Если не посещать работу регулярно, вас могут понизить в должности.]",
-            "xtriggers": {
-                "careeradvancement": "gloverandglovertopjob",
-                "employment": "gloverandgloverseniorjob_youngerglovergone"
-            },
-            "lifetime": 90,
-            "decayTo": "gloverandgloverjob_youngerglovergone_demotion"
+            ]
         },
         {
             "id": "gloverandglovertopjob",
-            "aspects": {
-                "job": 1
-            },
             "label": "Совладелец «Гловер и Гловер»",
-            "description": "После исчезновения Гловера-младшего в управлении лавки освободилось место. Теперь его занимаю я. [Если не посещать работу регулярно, вас могут понизить в должности.]",
-            "lifetime": 100,
-            "decayTo": "gloverandglovertopjob_tainted_demotion",
-            "xtriggers": {
-                "employment": "gloverandglovertopjob"
-            }
+            "description": "После исчезновения Гловера-младшего в управлении лавки освободилось место. Теперь его занимаю я. [Если не посещать работу регулярно, вас могут понизить в должности.]"
         },
         {
             "id": "gloverandglovertopjob_tainted",
-            "aspects": {
-                "job": 1
-            },
             "label": "Совладелец «Гловер и Гловер»",
-            "description": "Слухи о моём интересе к эзотерике достигли ушей Гловера-старшего. Моё положение пошатнулось. [Если не посещать работу регулярно, вас могут понизить в должности.]",
-            "lifetime": 100,
-            "decayTo": "gloverandglovertopjob_tainted_demotion",
-            "xtriggers": {
-                "employment": "gloverandglovertopjob_tainted"
-            }
+            "description": "Слухи о моём интересе к эзотерике достигли ушей Гловера-старшего. Моё положение пошатнулось. [Если не посещать работу регулярно, вас могут понизить в должности.]"
         },
         {
             "id": "gloverandgloverjuniorjob_demotion",
-            "aspects": {
-                "job": 1,
-                "demotion": 1
-            },
             "label": "Сложности на работе: понижение до младшего клерка",
+            "description": "Моё отсутствие не осталось незамеченным. Меня понизили, и мне понадобится всё моё красноречие, чтобы сохранить место.",
             "slots": [
                 {
                     "id": "passion",
-                    "label": "Убеждение",
-                    "required": {
-                        "passion": 1
-                    },
-                    "actionid": "work"
+                    "label": "Убеждение"
                 }
-            ],
-            "description": "Моё отсутствие не осталось незамеченным. Меня понизили, и мне понадобится всё моё красноречие, чтобы сохранить место.",
-            "xtriggers": {
-                "plead": "gloverandgloverjuniorjob"
-            }
+            ]
         },
         {
             "id": "gloverandgloverjuniorjob_nodifficultbossa_demotion",
-            "aspects": {
-                "job": 1,
-                "demotion": 1
-            },
             "label": "Сложности на работе: понижение до младшего клерка",
+            "description": "Моё отсутствие не осталось незамеченным. Меня понизили, и мне понадобится всё моё красноречие, чтобы сохранить место.",
             "slots": [
                 {
                     "id": "passion",
-                    "label": "Убеждение",
-                    "required": {
-                        "passion": 1
-                    },
-                    "actionid": "work"
+                    "label": "Убеждение"
                 }
-            ],
-            "description": "Моё отсутствие не осталось незамеченным. Меня понизили, и мне понадобится всё моё красноречие, чтобы сохранить место.",
-            "xtriggers": {
-                "plead": "gloverandgloverjuniorjob_nodifficultbossa"
-            }
+            ]
         },
         {
             "id": "gloverandgloverjob_demotion",
-            "aspects": {
-                "job": 1,
-                "demotion": 1
-            },
             "label": "Сложности на работе: понижение",
+            "description": "Моё отсутствие не осталось незамеченным. Меня понизили, и мне понадобится всё моё красноречие, чтобы сохранить место.",
             "slots": [
                 {
                     "id": "passion",
-                    "label": "Убеждение",
-                    "required": {
-                        "passion": 1
-                    },
-                    "actionid": "work"
+                    "label": "Убеждение"
                 }
-            ],
-            "description": "Моё отсутствие не осталось незамеченным. Меня понизили, и мне понадобится всё моё красноречие, чтобы сохранить место.",
-            "xtriggers": {
-                "plead": "gloverandgloverjob"
-            }
+            ]
         },
         {
             "id": "gloverandgloverjob_youngerglovergone_demotion",
-            "aspects": {
-                "job": 1,
-                "demotion": 1
-            },
             "label": "Сложности на работе: понижение",
+            "description": "Моё отсутствие не осталось незамеченным. Меня понизили, и мне понадобится всё моё красноречие, чтобы сохранить место.",
             "slots": [
                 {
                     "id": "passion",
-                    "label": "Убеждение",
-                    "required": {
-                        "passion": 1
-                    },
-                    "actionid": "work"
+                    "label": "Убеждение"
                 }
-            ],
-            "description": "Моё отсутствие не осталось незамеченным. Меня понизили, и мне понадобится всё моё красноречие, чтобы сохранить место.",
-            "xtriggers": {
-                "plead": "gloverandgloverjob_youngerglovergone"
-            }
+            ]
         },
         {
             "id": "gloverandglovertopjob_tainted_demotion",
-            "aspects": {
-                "job": 1,
-                "demotion": 1
-            },
             "label": "Сложности на работе: риск понижения",
+            "description": "Моя позиция допускает определённые вольности, но моё отсутствие не осталось незамеченным. Придётся как-то обаять Гловера-старшего.",
             "slots": [
                 {
                     "id": "passion",
-                    "label": "Убеждение",
-                    "required": {
-                        "passion": 1
-                    },
-                    "actionid": "work"
+                    "label": "Убеждение"
                 }
-            ],
-            "description": "Моя позиция допускает определённые вольности, но моё отсутствие не осталось незамеченным. Придётся как-то обаять Гловера-старшего.",
-            "xtriggers": {
-                "plead": "gloverandglovertopjob_tainted"
-            }
+            ]
         },
         {
             "id": "institutephysicianjob",
-            "aspects": {
-                "job": 1
-            },
-            "description": "Работать приходится сверхурочно, но и плата хороша.",
-            "label": "Сотрудник клиники"
+            "label": "Сотрудник клиники",
+            "description": "Работать приходится сверхурочно, но и плата хороша."
         },
         {
             "id": "investmentsjobc",
-            "aspects": {
-                "benign": 1
-            },
             "label": "Огромный частный доход",
-            "description": "Я могу считать себя обеспеченным человеком.",
-            "xtriggers": {
-                "decline": "investmentsjobb"
-            },
-            "noartneeded": true
+            "description": "Я могу считать себя обеспеченным человеком."
         },
         {
             "id": "investmentsjobb",
             "label": "Внушительный частный доход",
-            "description": "Этого достаточно для комфортной жизни.",
-            "aspects": {
-                "benign": 1
-            },
-            "xtriggers": {
-                "decline": "investmentsjoba"
-            },
-            "noartneeded": true
+            "description": "Этого достаточно для комфортной жизни."
         },
         {
             "id": "investmentsjoba",
-            "aspects": {
-                "benign": 1
-            },
             "label": "Скромный частный доход",
-            "description": "Моих вложений более чем достаточно для достойной жизни.",
-            "xtriggers": {
-                "decline": "jumble"
-            },
-            "noartneeded": true
+            "description": "Моих вложений более чем достаточно для достойной жизни."
         },
         {
             "id": "ghouljob.first",
-            "aspects": {
-                "job": 1
-            },
             "label": "Экстатический спиритолог",
             "description": "Иногда, когда я в ударе, первые ряды теряют сознание.",
             "slots": [
                 {
                     "id": "memory",
-                    "label": "Информация",
-                    "actionid": "work",
-                    "required": {
-                        "memory": 1
-                    }
+                    "label": "Информация"
                 }
-            ],
-            "xtriggers": {
-                "demotion": "ghouljob"
-            }
+            ]
         },
         {
             "id": "ghouljob",
-            "aspects": {
-                "job": 1
-            },
             "label": "Репутация медиума",
             "description": "Иногда я говорю голосами, которые невозможно представить.",
             "slots": [
                 {
                     "id": "memory",
-                    "label": "Информация",
-                    "actionid": "work",
-                    "required": {
-                        "memory": 1
-                    }
+                    "label": "Информация"
                 }
             ]
         },
         {
             "id": "auctioneerjob",
-            "aspects": {
-                "job": 1
-            },
             "label": "Служащий аукционного дома «Орифламма»",
-            "description": "",
-            "noartneeded": true
+            "description": ""
         },
         {
             "id": "priestjob",
-            "aspects": {
-                "job": 1
-            },
+            "label": "Назначение в тихий приход",
+            "description": "До тех пор, пока я не привлекаю внимания епископа нарушениями правил и скандалами, я могу неплохо зарабатывать.",
             "slots": [
                 {
                     "id": "ability",
-                    "label": "Способность",
-                    "required": {
-                        "passion": 1,
-                        "reason": 1,
-                        "health": 1
-                    },
-                    "actionid": "work"
+                    "label": "Способность"
                 },
                 {
                     "id": "doctrine",
-                    "label": "Учение",
-                    "required": {
-                        "lore": 1
-                    },
-                    "actionid": "work"
+                    "label": "Учение"
                 },
                 {
                     "id": "fervour",
-                    "label": "Рвение",
-                    "required": {
-                        "fervour": 1
-                    },
-                    "actionid": "work"
+                    "label": "Рвение"
                 }
-            ],
-            "label": "Назначение в тихий приход",
-            "description": "До тех пор, пока я не привлекаю внимания епископа нарушениями правил и скандалами, я могу неплохо зарабатывать."
+            ]
         }
     ]
 }

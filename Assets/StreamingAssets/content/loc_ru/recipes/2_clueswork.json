@@ -2,1287 +2,427 @@
     "recipes": [
         {
             "id": "work.apostleforge.majorvictory.hint5",
-            "actionid": "work",
             "label": "Последние шаги к Великому делу?",
-            "startdescription": "У нас есть Ядро, топливо для него, Компас, Ключ и таинства открытия. Осталось дождаться начала поры, когда жар Кузни становится особенно свирепым.",
-            "requirements": {
-                "apostleforge.pillar2": 1,
-                "apostleforge.pillar3": 1,
-                "apostleforge.pillar4": 1,
-                "apostleforge.pillar5": 1,
-                "fragmentknockg": 1
-            },
-            "effects": {},
-            "warmup": 60,
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "У нас есть Ядро, топливо для него, Компас, Ключ и таинства открытия. Осталось дождаться начала поры, когда жар Кузни становится особенно свирепым."
         },
         {
             "id": "work.apostleforge.majorvictory.hint4",
-            "actionid": "work",
             "label": "Последние шаги к Великому делу?",
-            "startdescription": "У нас есть Ядро, топливо для него, Компас и Ключ, но этого недостаточно. Мы должны проложить путь для нашего мастера при помощи таинств открытия. ",
-            "requirements": {
-                "apostleforge.pillar2": 1,
-                "apostleforge.pillar3": 1,
-                "apostleforge.pillar4": 1,
-                "apostleforge.pillar5": 1
-            },
-            "effects": {},
-            "warmup": 60,
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "У нас есть Ядро, топливо для него, Компас и Ключ, но этого недостаточно. Мы должны проложить путь для нашего мастера при помощи таинств открытия. "
         },
         {
             "id": "work.apostleforge.majorvictory.hint3",
-            "actionid": "work",
             "label": "Последние шаги к Великому делу?",
-            "startdescription": "У нас есть Ядро, топливо для него и Компас. Нам всё ещё нужен Жгучий ключ.",
-            "requirements": {
-                "apostleforge.pillar2": 1,
-                "apostleforge.pillar3": 1,
-                "apostleforge.pillar4": 1
-            },
-            "effects": {},
-            "warmup": 60,
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "У нас есть Ядро, топливо для него и Компас. Нам всё ещё нужен Жгучий ключ."
         },
         {
             "id": "work.apostleforge.majorvictory.hint2",
-            "actionid": "work",
             "label": "Последние шаги к Великому делу?",
-            "startdescription": "У нас есть Ядро и топливо для него. Найти порок мира поможет наш ослеплённый Компас.",
-            "requirements": {
-                "apostleforge.pillar2": 1,
-                "apostleforge.pillar3": 1
-            },
-            "effects": {},
-            "warmup": 60,
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "У нас есть Ядро и топливо для него. Найти порок мира поможет наш ослеплённый Компас."
         },
         {
             "id": "work.apostleforge.majorvictory.hint1",
-            "actionid": "work",
             "label": "Последние шаги к Великому делу?",
-            "startdescription": "У нас есть Ядро. Чтобы его подпитывать, понадобится синее золото.",
-            "requirements": {
-                "apostleforge.pillar2": 1
-            },
-            "effects": {},
-            "warmup": 60,
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "У нас есть Ядро. Чтобы его подпитывать, понадобится синее золото."
         },
         {
             "id": "work.apostlelantern.majorvictory.hint5",
-            "actionid": "work",
             "label": "Врата открываются Наружу?",
-            "startdescription": "Потребуется помощь нашего благородного гостя.",
-            "requirements": {
-                "apostlelantern.pillar3": 1,
-                "apostlelantern.pillar4": 1,
-                "ingredientlanternf": 1,
-                "fragmentmothe": 1,
-                "toollanternf": 1,
-                "kleidouchos": 1
-            },
-            "hintonly": true
+            "startdescription": "Потребуется помощь нашего благородного гостя."
         },
         {
             "id": "work.apostlelantern.majorvictory.hint4",
-            "actionid": "work",
             "label": "Врата открываются Наружу?",
-            "startdescription": "Без особенного Ключа врата не выведут Наружу.",
-            "requirements": {
-                "apostlelantern.pillar3": 1,
-                "apostlelantern.pillar4": 1,
-                "ingredientlanternf": 1,
-                "fragmentmothe": 1,
-                "toollanternf": 1
-            },
-            "hintonly": true
+            "startdescription": "Без особенного Ключа врата не выведут Наружу."
         },
         {
             "id": "work.apostlelantern.majorvictory.hint3",
-            "actionid": "work",
             "label": "Врата открываются Наружу?",
-            "startdescription": "Чтобы наше Зарево достигло высшего просветления, нам понадобится зеркало Дозорного.",
-            "requirements": {
-                "apostlelantern.pillar3": 1,
-                "apostlelantern.pillar4": 1,
-                "ingredientlanternf": 1,
-                "fragmentmothe": 1
-            },
-            "hintonly": true
+            "startdescription": "Чтобы наше Зарево достигло высшего просветления, нам понадобится зеркало Дозорного."
         },
         {
             "id": "work.apostlelantern.majorvictory.hint2",
-            "actionid": "work",
             "label": "Врата открываются Наружу?",
-            "startdescription": "Сколопендра всегда знает дорогу. Надо выведать её секреты.",
-            "requirements": {
-                "apostlelantern.pillar3": 1,
-                "apostlelantern.pillar4": 1,
-                "ingredientlanternf": 1
-            },
-            "hintonly": true
+            "startdescription": "Сколопендра всегда знает дорогу. Надо выведать её секреты."
         },
         {
             "id": "work.apostlelantern.majorvictory.hint1",
-            "actionid": "work",
             "label": "Врата открываются Наружу?",
-            "startdescription": "Глаз Дозорного распахнут, но не обычным способом, а при помощи ножа. Нам понадобится его кровь.",
-            "requirements": {
-                "apostlelantern.pillar3": 1,
-                "apostlelantern.pillar4": 1
-            },
-            "hintonly": true
+            "startdescription": "Глаз Дозорного распахнут, но не обычным способом, а при помощи ножа. Нам понадобится его кровь."
         },
         {
             "id": "work.apostlelantern.majorvictory.hint0",
-            "actionid": "work",
             "label": "Врата открываются Наружу?",
-            "startdescription": "Да, врата могут открыться без Свидетелей, но их надо просветить, чтобы соблюсти законы Дозорного. Он не ведает сострадания.",
-            "requirements": {
-                "apostlelantern.pillar3": 1
-            },
-            "hintonly": true
+            "startdescription": "Да, врата могут открыться без Свидетелей, но их надо просветить, чтобы соблюсти законы Дозорного. Он не ведает сострадания."
         },
         {
             "id": "work.apostlegrail.majorvictory.hint5",
-            "actionid": "work",
             "label": "Последние элементы Экзальтации?",
-            "startdescription": "Особые пряности надо подготовить особым образом. Всё остальное уже сделано.",
-            "requirements": {
-                "fragmentheartg": 1,
-                "influencegrailg": 1,
-                "apostlegrail.pillar2": 1,
-                "apostlegrail.pillar3": 1,
-                "apostlegrail.pillar4": 1,
-                "toolgrailf": 1
-            },
-            "hintonly": true
+            "startdescription": "Особые пряности надо подготовить особым образом. Всё остальное уже сделано."
         },
         {
             "id": "work.apostlegrail.majorvictory.hint4",
-            "actionid": "work",
             "label": "Последние элементы Экзальтации?",
-            "startdescription": "Без Несмолкающих таинств Экзальтация не выйдет достаточно насыщенной.",
-            "requirements": {
-                "influencegrailg": 1,
-                "apostlegrail.pillar2": 1,
-                "apostlegrail.pillar3": 1,
-                "apostlegrail.pillar4": 1,
-                "toolgrailf": 1
-            },
-            "hintonly": true
+            "startdescription": "Без Несмолкающих таинств Экзальтация не выйдет достаточно насыщенной."
         },
         {
             "id": "work.apostlegrail.majorvictory.hint3",
-            "actionid": "work",
             "label": "Последние элементы Экзальтации?",
-            "startdescription": "Нам понадобится самое мощное влияние Чаши из тех, что мы можем достать.",
-            "requirements": {
-                "apostlegrail.pillar2": 1,
-                "apostlegrail.pillar3": 1,
-                "apostlegrail.pillar4": 1,
-                "toolgrailf": 1
-            },
-            "hintonly": true
+            "startdescription": "Нам понадобится самое мощное влияние Чаши из тех, что мы можем достать."
         },
         {
             "id": "work.apostlegrail.majorvictory.hint2",
-            "actionid": "work",
             "label": "Последние элементы Экзальтации?",
-            "startdescription": "Без Шепчущего кубка Экзальтация не была бы Экзальтацией.",
-            "requirements": {
-                "apostlegrail.pillar2": 1,
-                "apostlegrail.pillar3": 1,
-                "apostlegrail.pillar4": 1
-            },
-            "hintonly": true
+            "startdescription": "Без Шепчущего кубка Экзальтация не была бы Экзальтацией."
         },
         {
             "id": "work.apostlegrail.majorvictory.hint1",
-            "actionid": "work",
             "label": "Последние элементы Экзальтации?",
-            "startdescription": "На Экзальтацию надо пригласить достаточно гостей. Наша Отрада должна насытиться.",
-            "requirements": {
-                "apostlegrail.pillar2": 1,
-                "apostlegrail.pillar3": 1
-            },
-            "hintonly": true
+            "startdescription": "На Экзальтацию надо пригласить достаточно гостей. Наша Отрада должна насытиться."
         },
         {
             "id": "work.apostlegrail.majorvictory.hint0",
-            "actionid": "work",
             "label": "Последние элементы Экзальтации?",
-            "startdescription": "Экзальтацию не начать без правильных приправ для меня и других, кто придёт к Хозяину.",
-            "requirements": {
-                "apostlegrail.pillar2": 1
-            },
-            "hintonly": true
+            "startdescription": "Экзальтацию не начать без правильных приправ для меня и других, кто придёт к Хозяину."
         },
         {
             "id": "workbenefactorhint",
             "label": "Частные представления?",
-            "actionid": "work",
-            "requirements": {
-                "benefactor": 1
-            },
-            "startdescription": "Чтобы порадовать благодетеля, мне надо приложить все силы и выглядеть как можно лучше. Но у такого рвения есть цена.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Чтобы порадовать благодетеля, мне надо приложить все силы и выглядеть как можно лучше. Но у такого рвения есть цена."
         },
         {
             "id": "workfundshint",
             "label": "Деньги",
-            "actionid": "work",
-            "requirements": {
-                "funds": 1
-            },
-            "startdescription": "Они ничего не значат. Возможно, я придумаю, куда вложить средства, чтобы обеспечить себе будущее. Если оно у меня есть.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Они ничего не значат. Возможно, я придумаю, куда вложить средства, чтобы обеспечить себе будущее. Если оно у меня есть."
         },
         {
             "id": "skillhealthhintwork",
             "label": "Здоровье",
-            "actionid": "work",
-            "requirements": {
-                "healthskill": 1,
-                "job": -1
-            },
-            "startdescription": "Моё тело сильно, но работа всё равно подрывает моё здоровье.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Моё тело сильно, но работа всё равно подрывает моё здоровье."
         },
         {
             "id": "vitalityhintwork",
             "label": "Стойкость",
-            "actionid": "work",
-            "requirements": {
-                "vitality": 1
-            },
-            "startdescription": "Не подойдет для труда. Можно изучить, чтобы улучшить здоровье.",
-            "craftable": false,
-            "hintonly": true,
-            "comments": "Not currently possible with restrictions on work primary slot"
+            "startdescription": "Не подойдет для труда. Можно изучить, чтобы улучшить здоровье."
         },
         {
             "id": "eruditionhintwork",
             "label": "Эрудиция",
-            "actionid": "work",
-            "requirements": {
-                "erudition": 1
-            },
-            "startdescription": "Не подойдет для труда. Можно изучить, чтобы укрепить разум.",
-            "craftable": false,
-            "hintonly": true,
-            "comments": "Not currently possible with restrictions on work primary slot"
+            "startdescription": "Не подойдет для труда. Можно изучить, чтобы укрепить разум."
         },
         {
             "id": "glimmeringhintwork",
             "label": "Проблеск",
-            "actionid": "work",
-            "requirements": {
-                "glimmering": 1
-            },
-            "startdescription": "Не подойдет для труда. Можно изучить, чтобы развить эмоции.",
-            "craftable": false,
-            "hintonly": true,
-            "comments": "Not currently possible with restrictions on work primary slot"
+            "startdescription": "Не подойдет для труда. Можно изучить, чтобы развить эмоции."
         },
         {
             "id": "contentmenthintwork",
             "label": "Безмятежность",
-            "actionid": "work",
-            "requirements": {
-                "contentment": 1
-            },
-            "startdescription": "Счастье не приносит денег, но помогает продержаться, когда ночь смыкает вокруг меня свои объятия.",
-            "craftable": false,
-            "hintonly": true,
-            "comments": "Not currently possible with restrictions on work primary slot"
+            "startdescription": "Счастье не приносит денег, но помогает продержаться, когда ночь смыкает вокруг меня свои объятия."
         },
         {
             "id": "commissionhint_wronglore",
             "label": "Выполнение заказа",
-            "actionid": "work",
-            "requirements": {
-                "commission": 1,
-                "lore": 1
-            },
-            "startdescription": "Мне надо найти подходящие знания и потрудиться. [В описании заказа указано, какие знания вам нужны.]",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Мне надо найти подходящие знания и потрудиться. [В описании заказа указано, какие знания вам нужны.]"
         },
         {
             "id": "commissionhint",
             "label": "Выполнение заказа?",
-            "actionid": "work",
-            "requirements": {
-                "commission": 1
-            },
-            "startdescription": "Труд с подходящим фрагментом знаний позволит создать манускрипт для выполнения заказа. Закончив манускрипт, мне надо завести разговор об этом заказе с покровителем.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Труд с подходящим фрагментом знаний позволит создать манускрипт для выполнения заказа. Закончив манускрипт, мне надо завести разговор об этом заказе с покровителем."
         },
         {
             "id": "minorforgevictory_hint_sixth",
             "label": "Седьмая метка?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "powermarks": 6
-            },
-            "effects": {},
-            "startdescription": "Название седьмой метки — «Сожжение сердца». Я уже совсем близко, словно пламя свечи к фитилю. Мне понадобится вся сила Кузни, какую я смогу собрать, и сила её должна быть не ниже тридцать шестого уровня.",
-            "hintonly": true
+            "startdescription": "Название седьмой метки — «Сожжение сердца». Я уже совсем близко, словно пламя свечи к фитилю. Мне понадобится вся сила Кузни, какую я смогу собрать, и сила её должна быть не ниже тридцать шестого уровня."
         },
         {
             "id": "minorforgevictory_hint",
             "label": "Седьмая метка?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "powermarks": 1
-            },
-            "effects": {},
-            "startdescription": "Название седьмой метки — «Сожжение сердца». Сперва мне надо получить шестую метку.",
-            "hintonly": true
+            "startdescription": "Название седьмой метки — «Сожжение сердца». Сперва мне надо получить шестую метку."
         },
         {
             "id": "minorgrailvictory_hint_sixth_with_romantic",
             "label": "Быстрый путь к седьмой метке?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "sensationmarks": 6,
-                "romanticinterest": 1
-            },
-            "effects": {},
-            "startdescription": "Название седьмой метки — «Пир истинного рождения». Я уже совсем близко, словно кровь к сердцу. Но пока недостаточно... Чаша когда-то принесла в жертву любимого, и потому она дорожит такими жертвами. Если я смогу принести в жертву свою любовь, мне понадобится сила всего двадцать седьмого уровня.",
-            "hintonly": true
+            "startdescription": "Название седьмой метки — «Пир истинного рождения». Я уже совсем близко, словно кровь к сердцу. Но пока недостаточно... Чаша когда-то принесла в жертву любимого, и потому она дорожит такими жертвами. Если я смогу принести в жертву свою любовь, мне понадобится сила всего двадцать седьмого уровня."
         },
         {
             "id": "minorgrailvictory_hint_sixth",
             "label": "Седьмая метка?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "sensationmarks": 6
-            },
-            "effects": {},
-            "startdescription": "Название седьмой метки — «Пир истинного рождения». Я уже совсем близко, словно кровь к сердцу. Мне понадобится вся сила Чаши, какую я смогу собрать, и сила её должна быть не ниже тридцать шестого уровня.",
-            "hintonly": true
+            "startdescription": "Название седьмой метки — «Пир истинного рождения». Я уже совсем близко, словно кровь к сердцу. Мне понадобится вся сила Чаши, какую я смогу собрать, и сила её должна быть не ниже тридцать шестого уровня."
         },
         {
             "id": "minorgrailvictory_hint",
             "label": "Седьмая метка?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "sensationmarks": 1
-            },
-            "effects": {},
-            "startdescription": "Название седьмой метки — «Пир истинного рождения». Сперва мне надо получить шестую метку.",
-            "hintonly": true
+            "startdescription": "Название седьмой метки — «Пир истинного рождения». Сперва мне надо получить шестую метку."
         },
         {
             "id": "minorlanternvictory_hint_sixth",
             "label": "Седьмая метка?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "enlightenmentmarks": 6
-            },
-            "effects": {},
-            "startdescription": "Название седьмой метки — «Вторжение». Я уже совсем близко, словно свет к кромке тени. Мне понадобится вся сила Лампады, какую я смогу собрать, и сила её должна быть не ниже тридцать шестого уровня.",
-            "hintonly": true
+            "startdescription": "Название седьмой метки — «Вторжение». Я уже совсем близко, словно свет к кромке тени. Мне понадобится вся сила Лампады, какую я смогу собрать, и сила её должна быть не ниже тридцать шестого уровня."
         },
         {
             "id": "minorlanternvictory_hint",
             "label": "Седьмая метка?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "enlightenmentmarks": 1
-            },
-            "effects": {},
-            "startdescription": "Название седьмой метки — «Вторжение». Сперва мне надо получить шестую метку.",
-            "hintonly": true
+            "startdescription": "Название седьмой метки — «Вторжение». Сперва мне надо получить шестую метку."
         },
         {
             "id": "hint_summon_spirit_forgee_edge",
             "label": "Призвать могучее создание Кузни Дней?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "forge": 1,
-                "lantern": 1,
-                "desire": -1
-            },
-            "extantreqs": {
-                "spirit_forgee_edge": -1,
-                "spirit_forgee_edge.defunct": -1,
-                "spirit_forgee_edge.consumed": -1
-            },
-            "startdescription": "У меня есть кое-какие полезные элементы, но этого мало. Чтобы призвать существо из огня и Славы, мне понадобится великая сила Кузни, значительная сила Стука, а также толика силы Лампады.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "У меня есть кое-какие полезные элементы, но этого мало. Чтобы призвать существо из огня и Славы, мне понадобится великая сила Кузни, значительная сила Стука, а также толика силы Лампады."
         },
         {
             "id": "hint_summon_spirit_forgee_edge_exists",
             "label": "Снова Король Тигля?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "forge": 1,
-                "lantern": 1,
-                "desire": -1
-            },
-            "extantreqs": {
-                "spirit_forgee_edge": 1
-            },
-            "startdescription": "Я собираюсь призвать Короля Тигля? Он уже в этом мире.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Я собираюсь призвать Короля Тигля? Он уже в этом мире."
         },
         {
             "id": "hint_summon_spirit_forgee_edge_dayd",
             "label": "Король Тигля? Уже?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "forge": 1,
-                "lantern": 1,
-                "desire": -1
-            },
-            "extantreqs": {
-                "spirit_forgee_edge.defunct": 1
-            },
-            "startdescription": "Я собираюсь призвать Короля Тигля? Он ещё подпитывает своё пламя в Обители.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Я собираюсь призвать Короля Тигля? Он ещё подпитывает своё пламя в Обители."
         },
         {
             "id": "hint_summon_spirit_forgee_edge_nom",
             "label": "Король Тигля? Серьёзно?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "forge": 1,
-                "lantern": 1,
-                "desire": -1
-            },
-            "extantreqs": {
-                "spirit_forgee_edge.consumed": 1
-            },
-            "startdescription": "Оставшийся от Короля Тигля пепел поглощён мною. Он зол на меня. Призывать Имя Кузни, которое на тебя злится — не самая светлая мысль.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Оставшийся от Короля Тигля пепел поглощён мною. Он зол на меня. Призывать Имя Кузни, которое на тебя злится — не самая светлая мысль."
         },
         {
             "id": "hint_summon_spirit_graile_edge",
             "label": "Призвать могучее создание Алой Чаши?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "grail": 1,
-                "forge": 1,
-                "desire": -1
-            },
-            "extantreqs": {
-                "spirit_graile_edge": -1,
-                "spirit_graile_edge.defunct": -1
-            },
-            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать кровавое и изменчивое существо, мне понадобится великая сила Чаши, значительная сила Стука, а также толика силы Кузни.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать кровавое и изменчивое существо, мне понадобится великая сила Чаши, значительная сила Стука, а также толика силы Кузни."
         },
         {
             "id": "hint_summon_spirit_graile_edge_exists",
             "label": "Снова Изиим?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "grail": 1,
-                "forge": 1,
-                "desire": -1
-            },
-            "extantreqs": {
-                "spirit_graile_edge": 1
-            },
-            "startdescription": "Я собираюсь призвать Изиима? Он уже в этом мире.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Я собираюсь призвать Изиима? Он уже в этом мире."
         },
         {
             "id": "hint_summon_spirit_graile_edge_dayd",
             "label": "Изиим? Уже?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "grail": 1,
-                "forge": 1,
-                "desire": -1
-            },
-            "extantreqs": {
-                "spirit_graile_edge.defunct": 1
-            },
-            "startdescription": "Я собираюсь призвать Изиима? Он ещё хандрит в Обители.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Я собираюсь призвать Изиима? Он ещё хандрит в Обители."
         },
         {
             "id": "hint_summon_spirit_lanterne_secret",
             "label": "Призвать кое-кого интересного?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "lantern": 1,
-                "secrethistories": 1,
-                "desire": -1
-            },
-            "extantreqs": {
-                "spirit_lanterne_secret": -1,
-                "spirit_lanterne_secret.defunct": -1
-            },
-            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Если у меня будет достаточно силы Лампады, значительная сила Стука, а также манящие секреты, я смогу призвать кое-кого интересного.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Если у меня будет достаточно силы Лампады, значительная сила Стука, а также манящие секреты, я смогу призвать кое-кого интересного."
         },
         {
             "id": "hint_summon_spirit_lanterne_secret_exists",
             "label": "Снова Балдомерийка?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "lantern": 1,
-                "secrethistories": 1,
-                "desire": -1
-            },
-            "extantreqs": {
-                "spirit_lanterne_secret": 1
-            },
-            "startdescription": "Я собираюсь призвать Балдомерийку? Она уже в этом мире.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Я собираюсь призвать Балдомерийку? Она уже в этом мире."
         },
         {
             "id": "hint_summon_spirit_lanterne_secret_dayd",
             "label": "Балдомерийка? Уже?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "lantern": 1,
-                "secrethistories": 1,
-                "desire": -1
-            },
-            "extantreqs": {
-                "spirit_lanterne_secret.defunct": 1
-            },
-            "startdescription": "Я собираюсь призвать Балдомерийку? Она ещё отдыхает в Обители.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Я собираюсь призвать Балдомерийку? Она ещё отдыхает в Обители."
         },
         {
             "id": "hint_summon_spirit_forgec_winter",
             "label": "Призвать создание Кузни Дней?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "forge": 1,
-                "winter": 1,
-                "desire": -1
-            },
-            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать дымчатое и озорное существо, мне понадобится значительная сила Кузни, а также толика силы Зимы и Стука.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать дымчатое и озорное существо, мне понадобится значительная сила Кузни, а также толика силы Зимы и Стука."
         },
         {
             "id": "hint_summon_spirit_grailc_moth",
             "label": "Призвать создание Алой Чаши?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "grail": 1,
-                "moth": 1,
-                "desire": -1
-            },
-            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать чудовищное и ласковое существо, мне понадобится значительная сила Чаши, а также толика силы Мотылька и Стука.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать чудовищное и ласковое существо, мне понадобится значительная сила Чаши, а также толика силы Мотылька и Стука."
         },
         {
             "id": "hint_summon_spirit_lanternc_edge",
             "label": "Призвать создание из зеркал?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "lantern": 1,
-                "edge": 1,
-                "desire": -1
-            },
-            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать едва различимое, хрупкое и смертоносное создание, мне понадобится значительная сила Лампады, а также толика силы Стука и Грани.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать едва различимое, хрупкое и смертоносное создание, мне понадобится значительная сила Лампады, а также толика силы Стука и Грани."
         },
         {
             "id": "hint_summon_spirit_heartc_edge",
             "label": "Призвать создание Громового Ритма?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "heart": 1,
-                "edge": 1,
-                "desire": -1
-            },
-            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать весёлое, неугомонное и беспощадное создание, мне понадобится значительная сила Сердца, а также толика силы Стука и Грани.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать весёлое, неугомонное и беспощадное создание, мне понадобится значительная сила Сердца, а также толика силы Стука и Грани."
         },
         {
             "id": "hint_summon_spirit_winterd_edge",
             "label": "Призвать создание Солнца-в-Лохмотьях?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "winter": 1,
-                "edge": 1,
-                "desire": -1
-            },
-            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать это холодное и сияющее создание, мне понадобится очень значительная сила Зимы, а также толика силы Стука и Грани.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать это холодное и сияющее создание, мне понадобится очень значительная сила Зимы, а также толика силы Стука и Грани."
         },
         {
             "id": "hint_summon_spirit_winterb_heart",
             "label": "Призвать кого-то из толпы мертвецов?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "winter": 1,
-                "heart": 1,
-                "desire": -1
-            },
-            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать это искорёженное немое создание, мне понадобится сила Зимы четвёртого уровня, а также толика силы Стука и Сердца.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "У меня есть кое-какие полезные элементы, но этой силы мало. Чтобы призвать это искорёженное немое создание, мне понадобится сила Зимы четвёртого уровня, а также толика силы Стука и Сердца."
         },
         {
             "id": "hint_renew_spirit_wintera_edge",
             "label": "Укрепить хрупкого восставшего силой Изувеченного Картографа?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "spirit_wintera_edge": 1,
-                "desire": -1
-            },
-            "startdescription": "Поддерживать существование хрупкого восставшего куда труднее, чем призвать его, но при наличии достаточной силы Зимы и Грани у меня должно получиться. Также можно потратить эту силу на призыв более могущественного духа.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Поддерживать существование хрупкого восставшего куда труднее, чем призвать его, но при наличии достаточной силы Зимы и Грани у меня должно получиться. Также можно потратить эту силу на призыв более могущественного духа."
         },
         {
             "id": "hint_renew_spirit_wintera_moth",
             "label": "Укрепить цветущего восставшего силой Тисовой Спирали?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "spirit_wintera_moth": 1,
-                "desire": -1
-            },
-            "startdescription": "Цветущий восставший не протянет долго, но при наличии достаточной силы Зимы и Мотылька я смогу поддерживать своё творение ещё какое-то время. Также можно потратить эту силу на призыв более могущественного духа.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Цветущий восставший не протянет долго, но при наличии достаточной силы Зимы и Мотылька я смогу поддерживать своё творение ещё какое-то время. Также можно потратить эту силу на призыв более могущественного духа."
         },
         {
             "id": "hint_summon_spirit_wintera_edge",
             "label": "Напитать труп силой Изувеченного Картографа?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "winter": 1,
-                "edge": 1,
-                "desire": -1
-            },
-            "startdescription": "У меня есть кое-какие полезные элементы, но этого мало. Объединив немного силы Зимы, толику силы Грани и труп, я могу создать свирепого слугу.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "У меня есть кое-какие полезные элементы, но этого мало. Объединив немного силы Зимы, толику силы Грани и труп, я могу создать свирепого слугу."
         },
         {
             "id": "hint_summon_spirit_wintera_moth",
             "label": "Напитать труп силой Тисовой Спирали?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "winter": 1,
-                "moth": 1,
-                "desire": -1
-            },
-            "startdescription": "Объединив немного силы Зимы, толику силы Мотылька и труп, я могу создать хитроумного слугу.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Объединив немного силы Зимы, толику силы Мотылька и труп, я могу создать хитроумного слугу."
         },
         {
             "id": "work.openscar.hint",
-            "actionid": "work",
             "label": "Вознесение Границы?",
-            "startdescription": "Для вознесения Границы нужно семь запертых шрамов и сила Стука двадцать четвёртого уровня.",
-            "requirements": {
-                "ritual": 1,
-                "lockscar": 1,
-                "knock": 1
-            },
-            "effects": {},
-            "warmup": 60,
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Для вознесения Границы нужно семь запертых шрамов и сила Стука двадцать четвёртого уровня."
         },
         {
             "id": "ritehinthasknockedge",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "edge": 1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": -1
-            },
-            "startdescription": "Если я добавлю Лампаду, Сердце или Зиму, что-то получится.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Если я добавлю Лампаду, Сердце или Зиму, что-то получится."
         },
         {
             "id": "ritehinthasknockforge",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "forge": 1,
-                "edge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": -1
-            },
-            "startdescription": "Что-то может получиться. Добавив Зиму, я свяжусь с чем-то дымчатым; добавив Лампаду, я свяжусь чем-то пылающим.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Что-то может получиться. Добавив Зиму, я свяжусь с чем-то дымчатым; добавив Лампаду, я свяжусь чем-то пылающим."
         },
         {
             "id": "ritehinthasknockgrail",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "grail": 1,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": -1
-            },
-            "startdescription": "Что-то может получиться. Добавив Мотылька, я свяжусь с чем-то бесформенным; добавив Кузню, я свяжусь чем-то обольстительным и безудержным.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Что-то может получиться. Добавив Мотылька, я свяжусь с чем-то бесформенным; добавив Кузню, я свяжусь чем-то обольстительным и безудержным."
         },
         {
             "id": "ritehinthasknockheart",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "heart": 1,
-                "edge": -1,
-                "forge": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": -1
-            },
-            "startdescription": "Что-то может получиться. Добавив Грань, я свяжусь с чем-то неукротимым; добавив Зиму, я могу призвать кого-то из мертвецов.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Что-то может получиться. Добавив Грань, я свяжусь с чем-то неукротимым; добавив Зиму, я могу призвать кого-то из мертвецов."
         },
         {
             "id": "ritehinthasknocklantern",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "lantern": 1,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": -1
-            },
-            "startdescription": "Что-то может получиться. Добавив Грань, я могу вызвать нечто из-за зеркал; добавив Кузню, я свяжусь чем-то пылающим.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Что-то может получиться. Добавив Грань, я могу вызвать нечто из-за зеркал; добавив Кузню, я свяжусь чем-то пылающим."
         },
         {
             "id": "ritehinthasknockmoth",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "moth": 1,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "secrethistories": -1,
-                "winter": -1
-            },
-            "startdescription": "Что-то может получиться. Добавив Чашу, я могу связаться с чем-то бесформенным.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Что-то может получиться. Добавив Чашу, я могу связаться с чем-то бесформенным."
         },
         {
             "id": "ritehinthasknocksecrethistories",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "secrethistories": 1,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "winter": -1
-            },
-            "startdescription": "Что-то может получиться. Кто знает, с чем я свяжусь, добавив Лампаду?",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Что-то может получиться. Кто знает, с чем я свяжусь, добавив Лампаду?"
         },
         {
             "id": "ritehinthasknockwinter",
             "label": "Зима",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "winter": 1,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1
-            },
-            "startdescription": "Если я добавлю Грань, Сердце или Кузню, что-то получится.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Если я добавлю Грань, Сердце или Кузню, что-то получится."
         },
         {
-            "label": "Слава разума?",
             "id": "arcane_lantern_edge_hint",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "desire": -1,
-                "lantern": 1,
-                "edge": 1
-            },
-            "actionid": "work",
-            "startdescription": "С 5 единицами силы Лампады и 1 единицей силы Грани я могу превратить свои эмоции в разум при помощи мистической практики «Слава разума».",
-            "craftable": false,
-            "hintonly": true
+            "label": "Слава разума?",
+            "startdescription": "С 5 единицами силы Лампады и 1 единицей силы Грани я могу превратить свои эмоции в разум при помощи мистической практики «Слава разума»."
         },
         {
-            "label": "Вихрь эмоций?",
             "id": "arcane_moth_edge_hint",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "desire": -1,
-                "moth": 1,
-                "edge": 1
-            },
-            "actionid": "work",
-            "startdescription": "С 5 единицами силы Мотылька и 1 единицей силы Грани я могу превратить свой разум в эмоции при помощи вдохновенного ритуала «Вихрь эмоций».",
-            "craftable": false,
-            "hintonly": true
+            "label": "Вихрь эмоций?",
+            "startdescription": "С 5 единицами силы Мотылька и 1 единицей силы Грани я могу превратить свой разум в эмоции при помощи вдохновенного ритуала «Вихрь эмоций»."
         },
         {
-            "label": "Искупление Кузни?",
             "id": "arcane_forge_grail_hint",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "desire": -1,
-                "forge": 1,
-                "grail": 1
-            },
-            "startdescription": "С 5 единицами силы Кузни и 1 единицей силы Чаши я могу превратить дряхлость в здоровье при помощи запретного действа «Искупление Кузни».",
-            "craftable": false,
-            "hintonly": true
+            "label": "Искупление Кузни?",
+            "startdescription": "С 5 единицами силы Кузни и 1 единицей силы Чаши я могу превратить дряхлость в здоровье при помощи запретного действа «Искупление Кузни»."
         },
         {
-            "label": "Прекрасный конец?",
             "id": "arcane_winter_lantern_hint",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "desire": -1,
-                "winter": 1,
-                "lantern": 1
-            },
-            "startdescription": "С 5 единицами силы Зимы и 1 единицей силы Лампады я могу воззвать к Часу конца, Солнцу-в-Лохмотьях, и попросить кого-то уничтожить... но указать цель не смогу. Выбор будет за Солнцем-в-Лохмотьях.",
-            "craftable": false,
-            "hintonly": true
+            "label": "Прекрасный конец?",
+            "startdescription": "С 5 единицами силы Зимы и 1 единицей силы Лампады я могу воззвать к Часу конца, Солнцу-в-Лохмотьях, и попросить кого-то уничтожить... но указать цель не смогу. Выбор будет за Солнцем-в-Лохмотьях."
         },
         {
             "id": "ritehinthasedge",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "edge": 1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": -1
-            },
-            "startdescription": "Грань — аспект битвы и борьбы. Добавив Стук, я могу попытаться кого-то призвать; добавив Лампаду или Мотылька, я могу спровоцировать сражение в собственной душе.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Грань — аспект битвы и борьбы. Добавив Стук, я могу попытаться кого-то призвать; добавив Лампаду или Мотылька, я могу спровоцировать сражение в собственной душе."
         },
         {
             "id": "ritehinthasforge",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "forge": 1,
-                "edge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": -1
-            },
-            "startdescription": "Кузня — аспект преображения и разрушения. Добавив Стук, я могу попытаться кого-то призвать; если я почувствую дряхлость, то смогу добавить Чашу и восстановить своё тело.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Кузня — аспект преображения и разрушения. Добавив Стук, я могу попытаться кого-то призвать; если я почувствую дряхлость, то смогу добавить Чашу и восстановить своё тело."
         },
         {
             "id": "ritehinthasgrail",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "grail": 1,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": -1
-            },
-            "startdescription": "Чаша — аспект желаний, крови и рождения. Добавив Стук, я могу попытаться кого-то призвать; если я почувствую дряхлость, то смогу добавить Кузню и восстановить своё тело.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Чаша — аспект желаний, крови и рождения. Добавив Стук, я могу попытаться кого-то призвать; если я почувствую дряхлость, то смогу добавить Кузню и восстановить своё тело."
         },
         {
             "id": "ritehinthasheart",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "heart": 1,
-                "edge": -1,
-                "forge": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": -1
-            },
-            "startdescription": "Сердце — аспект защиты, а также беспрестанного движения. Добавив Стук, я могу попытаться кого-то призвать.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Сердце — аспект защиты, а также беспрестанного движения. Добавив Стук, я могу попытаться кого-то призвать."
         },
         {
             "id": "ritehinthasknock",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 2,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": 1
-            },
-            "startdescription": "Призыв всегда начинается со Стука, но обычно требуется ещё два аспекта. Без Стука я не совершу призыв, но могу открыть какие-то другие оккультные действия.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Призыв всегда начинается со Стука, но обычно требуется ещё два аспекта. Без Стука я не совершу призыв, но могу открыть какие-то другие оккультные действия."
         },
         {
             "id": "ritehinthasmicroknock",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": 1,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": 1
-            },
-            "startdescription": "Призыв всегда начинается со Стука, и его пока недостаточно.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Призыв всегда начинается со Стука, и его пока недостаточно."
         },
         {
             "id": "ritehinthaslantern",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "lantern": 1,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "moth": -1,
-                "secrethistories": -1,
-                "winter": -1,
-                "apostlelantern.pillar4": -1
-            },
-            "comments": "extremely specific and probably unnecessary exclusion with the pillar, but it caught one person once",
-            "startdescription": "Лампада — аспект тайного места, которое иногда именуют Домом Солнца, и света над ним. Добавив Стук, я могу попытаться кого-то призвать; добавив Грань, я могу подавить эмоции при помощи разума. Добавив Зиму, я могу сотворить глупое, но прекрасное волшебство.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Лампада — аспект тайного места, которое иногда именуют Домом Солнца, и света над ним. Добавив Стук, я могу попытаться кого-то призвать; добавив Грань, я могу подавить эмоции при помощи разума. Добавив Зиму, я могу сотворить глупое, но прекрасное волшебство."
         },
         {
             "id": "ritehinthasmoth",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "moth": 1,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "secrethistories": -1,
-                "winter": -1
-            },
-            "startdescription": "Мотылёк — необузданный и опасный аспект хаоса и стремлений. Добавив Стук, я могу попытаться кого-то призвать; добавив Грань, я могу затуманить разум эмоциями.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Мотылёк — необузданный и опасный аспект хаоса и стремлений. Добавив Стук, я могу попытаться кого-то призвать; добавив Грань, я могу затуманить разум эмоциями."
         },
         {
             "id": "ritehinthassecrethistories",
             "label": "Призвать нечто?",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "secrethistories": 1,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "winter": -1
-            },
-            "startdescription": "Тайные истории рассказывают о неведомом и многих версиях прошлого. В незримых искусствах их редко используют напрямую, но кто знает, что произойдёт, если добавить Стук?",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Тайные истории рассказывают о неведомом и многих версиях прошлого. В незримых искусствах их редко используют напрямую, но кто знает, что произойдёт, если добавить Стук?"
         },
         {
             "id": "ritehinthaswinter",
             "label": "Зима",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "knock": -1,
-                "winter": 1,
-                "edge": -1,
-                "forge": -1,
-                "heart": -1,
-                "grail": -1,
-                "lantern": -1,
-                "moth": -1,
-                "secrethistories": -1
-            },
-            "startdescription": "Зима — аспект тишины, конца и не вполне мёртвых созданий. Добавив Стук, я могу попытаться кого-то призвать; добавив Лампаду, я могу сотворить глупое, но прекрасное волшебство.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Зима — аспект тишины, конца и не вполне мёртвых созданий. Добавив Стук, я могу попытаться кого-то призвать; добавив Лампаду, я могу сотворить глупое, но прекрасное волшебство."
         },
         {
             "id": "ritehint",
             "label": "Обряды",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "lore": -1,
-                "ingredient": -1,
-                "influence": -1,
-                "follower": -1,
-                "tool": -1,
-                "desire": -1
-            },
-            "startdescription": "Всякий обряд может служить многим целям. Чтобы кого-то призвать, сперва надо обратиться к силе Стука и открыть путь.",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Всякий обряд может служить многим целям. Чтобы кого-то призвать, сперва надо обратиться к силе Стука и открыть путь."
         },
         {
             "id": "ascensionpower_upgradetoobsession_hint",
             "label": "Пока недостаточно",
-            "actionid": "work",
-            "requirements": {
-                "ascensionpowerb": 1,
-                "waystag_after": 1,
-                "forge": 1
-            },
-            "startdescription": "Этого пока недостаточно. Кузня Дней не ответит, если я не удостоюсь её внимания. Мне нужна сила Кузни не ниже шестого уровня.",
             "description": ".",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Этого пока недостаточно. Кузня Дней не ответит, если я не удостоюсь её внимания. Мне нужна сила Кузни не ниже шестого уровня."
         },
         {
             "id": "ascensionsensation_upgradetoobsession_hint_m",
             "label": "Пока недостаточно",
-            "actionid": "work",
-            "requirements": {
-                "ascensionsensationbm": 1,
-                "waystag_after": 1,
-                "grail": 1
-            },
-            "startdescription": "Этого пока недостаточно. Алая Чаша не ответит, если я не удостоюсь её внимания. Мне нужна сила Чаши не ниже шестого уровня.",
             "description": ".",
-            "hintonly": true
+            "startdescription": "Этого пока недостаточно. Алая Чаша не ответит, если я не удостоюсь её внимания. Мне нужна сила Чаши не ниже шестого уровня."
         },
         {
             "id": "ascensionsensation_upgradetoobsession_hint_f",
             "label": "Пока недостаточно",
-            "actionid": "work",
-            "requirements": {
-                "ascensionsensationbf": 1,
-                "waystag_after": 1,
-                "grail": 1
-            },
-            "startdescription": "Этого пока недостаточно. Алая Чаша не ответит, если я не удостоюсь её внимания. Мне нужна сила Чаши не ниже шестого уровня.",
             "description": ".",
-            "hintonly": true
+            "startdescription": "Этого пока недостаточно. Алая Чаша не ответит, если я не удостоюсь её внимания. Мне нужна сила Чаши не ниже шестого уровня."
         },
         {
             "id": "ascensionenlightenment_upgradetoobsession_hint",
             "label": "Пока недостаточно",
-            "actionid": "work",
-            "requirements": {
-                "ascensionenlightenmentb": 1,
-                "waystag_after": 1,
-                "lantern": 1
-            },
-            "startdescription": "Этого пока недостаточно. Дозорный не ответит, если я не удостоюсь его внимания. Мне нужна сила Лампады не ниже шестого уровня.",
             "description": ".",
-            "craftable": false,
-            "hintonly": true
+            "startdescription": "Этого пока недостаточно. Дозорный не ответит, если я не удостоюсь его внимания. Мне нужна сила Лампады не ниже шестого уровня."
         },
         {
             "id": "work.temptation.remembrance.hint",
-            "actionid": "work",
             "label": "Утраченные цвета?",
-            "startdescription": "Я жажду того, что было утрачено. Завладеть этим можно при помощи другой жажды. Мне надо изучить одну тайну.",
-            "requirements": {
-                "temptation.remembrance": 1
-            },
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Я жажду того, что было утрачено. Завладеть этим можно при помощи другой жажды. Мне надо изучить одну тайну."
         },
         {
             "id": "detectivework_plotitem_burning_hint",
-            "actionid": "work",
             "label": "Сомнения?",
-            "startdescription": "Решение было правильным. Но всё же... [Возможно, я ещё успею изучить документ, пока он не исчез навсегда.]",
-            "requirements": {
-                "legacydetective_plotitem_burning": 1
-            },
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Решение было правильным. Но всё же... [Возможно, я ещё успею изучить документ, пока он не исчез навсегда.]"
         },
         {
             "id": "work.generaldesire.hint",
-            "actionid": "work",
             "label": "Великое дело?",
-            "startdescription": "Когда желание исполняется, это часто приводит к концу. Одной надежды недостаточно. Я либо выстою, либо потерплю поражение. [Желания зачастую помогают пройти игру. Желания, связанные с чувственностью, силой или просветлением, требуют проведения великого ритуала. В дополнениях «Упырь», «Жрец» и «Танцовщица» есть и другие, более редкие желания.]",
-            "requirements": {
-                "desire": 1
-            },
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Когда желание исполняется, это часто приводит к концу. Одной надежды недостаточно. Я либо выстою, либо потерплю поражение. [Желания зачастую помогают пройти игру. Желания, связанные с чувственностью, силой или просветлением, требуют проведения великого ритуала. В дополнениях «Упырь», «Жрец» и «Танцовщица» есть и другие, более редкие желания.]"
         }
     ]
 }

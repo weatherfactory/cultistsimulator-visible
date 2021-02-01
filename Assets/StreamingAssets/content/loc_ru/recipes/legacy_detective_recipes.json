@@ -3,618 +3,167 @@
         {
             "id": "workdetectivejob_start",
             "label": "В отделении",
-            "actionid": "work",
-            "requirements": {
-                "legacydetectivejob": 1
-            },
-            "aspects": {
-                "careeradvancement": 1
-            },
-            "effects": {
-                "lever_LastFollower": 1,
-                "legacydetective_plotitem": 1,
-                "funds": 3,
-                "health": 1
-            },
-            "alt": [
-                {
-                    "id": "needs",
-                    "chance": 100,
-                    "additional": true
-                },
-                {
-                    "id": "detectiveopendream",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "startdescription": "И вновь меня вызывают в Бюро умолчания, правительственную организацию, занимающуюся оккультными преступлениями. У Бюро не очень хорошая репутация.",
             "description": "Бюро выявило подозрительного человека, которым мне предстоит заняться. Увидев имя, я теряю дар речи. Был один случай, который я до сих пор помню в мелочах...",
-            "warmup": 10,
-            "craftable": true,
-            "linked": [
-                {
-                    "id": "workdetectivejob_start_rebellion",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "И вновь меня вызывают в Бюро умолчания, правительственную организацию, занимающуюся оккультными преступлениями. У Бюро не очень хорошая репутация."
         },
         {
             "id": "detectiveopendream",
             "label": "Сны...",
-            "actionid": "dream",
-            "startdescription": "Бюро умолчания публикует еженедельные циркуляры об опасности снов.",
             "description": "«Сообщайте о снах про лунный свет. Сообщайте о снах про ночной лес. Держите шторы открытыми, чтобы вас будило солнце. Не стригите волосы непосредственно перед сном. Никогда не спите перед разбитым зеркалом».",
-            "effects": {
-                "passion": 1
-            },
-            "warmup": 30,
-            "craftable": false
+            "startdescription": "Бюро умолчания публикует еженедельные циркуляры об опасности снов."
         },
         {
             "id": "workdetectivejob_matured_investigate_hint",
             "label": "Идёт расследование?",
-            "actionid": "work",
-            "requirements": {
-                "legacydetectivejob_matured": 1,
-                "suspicious": 1
-            },
-            "startdescription": "Быть может, задействовав разум, я смогу больше узнать о своей цели.",
-            "hintonly": true,
-            "craftable": false
+            "startdescription": "Быть может, задействовав разум, я смогу больше узнать о своей цели."
         },
         {
             "id": "workdetectivejob_matured_pursuepromotion",
             "label": "Своего рода вознесение",
-            "actionid": "work",
-            "requirements": {
-                "legacydetectivejob_matured": 1,
-                "favour": 1
-            },
-            "startdescription": "Власти передо мной в долгу. Я могу этим воспользоваться, чтобы подняться по иерархической лестнице Бюро. [Это завершение истории малой победой.]",
             "description": "Конец сюжетной линии.",
-            "warmup": 60,
-            "ending": "workvictoryb",
-            "signalEndingFlavour": "Grand",
-            "craftable": true
+            "startdescription": "Власти передо мной в долгу. Я могу этим воспользоваться, чтобы подняться по иерархической лестнице Бюро. [Это завершение истории малой победой.]"
         },
         {
             "id": "workdetectivejob_matured_investigate",
             "label": "Идёт расследование",
-            "actionid": "work",
-            "requirements": {
-                "legacydetectivejob_matured": 1,
-                "suspicious": 1,
-                "reason": 1
-            },
-            "alt": [
-                {
-                    "id": "detectiveopenstudy",
-                    "chance": 100,
-                    "additional": true
-                },
-                {
-                    "id": "workdetectivejob_matured_investigate_threereason_success",
-                    "chance": 100
-                },
-                {
-                    "id": "workdetectivejob_matured_investigate_tworeason_success",
-                    "chance": 70
-                },
-                {
-                    "id": "workdetectivejob_matured_investigate_onereason_success",
-                    "chance": 30
-                }
-            ],
-            "effects": {
-                "funds": 2
-            },
-            "startdescription": "Я занимаюсь целью. Чем сильнее я полагаюсь на разум, тем больше шансы на успех.",
             "description": "Расследование позволило найти новые улики.",
-            "warmup": 60,
-            "aspects": {
-                "employment": 1,
-                "fatiguing": 1
-            },
-            "craftable": true
+            "startdescription": "Я занимаюсь целью. Чем сильнее я полагаюсь на разум, тем больше шансы на успех."
         },
         {
             "id": "workdetectivejob_matured_investigate_threereason_success",
-            "label": "Есть успехи!",
-            "actionid": "work",
-            "alt": [
-                {
-                    "id": "detectiveopenstudy",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "requirements": {
-                "reason": 3
-            },
-            "craftable": false,
-            "linked": [
-                {
-                    "id": "workdetectivejob_matured_attemptsolvecase",
-                    "chance": 100
-                },
-                {
-                    "id": "workdetectivejob_matured_investigate_successresults",
-                    "chance": 100
-                }
-            ]
+            "label": "Есть успехи!"
         },
         {
             "id": "workdetectivejob_matured_investigate_tworeason_success",
-            "label": "Есть успехи!",
-            "actionid": "work",
-            "alt": [
-                {
-                    "id": "detectiveopenstudy",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "requirements": {
-                "reason": 2
-            },
-            "craftable": false,
-            "linked": [
-                {
-                    "id": "workdetectivejob_matured_attemptsolvecase",
-                    "chance": 100
-                },
-                {
-                    "id": "workdetectivejob_matured_investigate_successresults",
-                    "chance": 100
-                }
-            ]
+            "label": "Есть успехи!"
         },
         {
             "id": "workdetectivejob_matured_investigate_onereason_success",
-            "label": "Есть успехи!",
-            "actionid": "work",
-            "alt": [
-                {
-                    "id": "detectiveopenstudy",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "requirements": {
-                "reason": 1
-            },
-            "craftable": false,
-            "linked": [
-                {
-                    "id": "workdetectivejob_matured_attemptsolvecase",
-                    "chance": 100
-                },
-                {
-                    "id": "workdetectivejob_matured_investigate_successresults",
-                    "chance": 100
-                }
-            ]
+            "label": "Есть успехи!"
         },
         {
             "id": "workdetectivejob_matured_investigate_successresults",
             "label": "Есть успехи!",
-            "actionid": "work",
-            "effects": {
-                "funds": 3,
-                "myevidence": 1
-            },
-            "aspects": {
-                "employment": 1,
-                "fatiguing": 1,
-                "investigatingsuccess": 1,
-                "dreadful": 1
-            },
-            "description": "Шум захлопываемых дверей, пятна сырости на стенах станции, запах обувной ваксы и пота констеблей. Всё это сопутствует одной алмазно-чёткой истине: мне удалось многого добиться, и теперь я заслуживаю платы за сверхурочные.",
-            "craftable": false
+            "description": "Шум захлопываемых дверей, пятна сырости на стенах станции, запах обувной ваксы и пота констеблей. Всё это сопутствует одной алмазно-чёткой истине: мне удалось многого добиться, и теперь я заслуживаю платы за сверхурочные."
         },
         {
             "id": "workdetectivejob_matured_attemptsolvecase",
             "label": "Решение дела",
-            "actionid": "work",
-            "requirements": {
-                "myevidenceb": 1
-            },
+            "description": "Бюро получило от меня достаточно доказательств, чтобы провести арест... но арестовывать некого.",
+            "startdescription": "Все собранные мной улики переданы помощнику руководителя Бюро умолчания...",
             "slots": [
                 {
                     "id": "Culprit",
-                    "label": "Виновник",
-                    "required": {
-                        "independent": 1
-                    },
-                    "greedy": true
+                    "label": "Виновник"
                 }
-            ],
-            "startdescription": "Все собранные мной улики переданы помощнику руководителя Бюро умолчания...",
-            "description": "Бюро получило от меня достаточно доказательств, чтобы провести арест... но арестовывать некого.",
-            "alt": [
-                {
-                    "id": "workdetectivejob_matured_solvecase_withbackup",
-                    "chance": 100
-                },
-                {
-                    "id": "workdetectivejob_matured_solvecase",
-                    "chance": 100
-                }
-            ],
-            "warmup": 60,
-            "aspects": {
-                "employment": 1,
-                "fatiguing": 1
-            },
-            "effects": {
-                "funds": 2,
-                "suspicious": -99
-            },
-            "craftable": false
+            ]
         },
         {
             "id": "workdetectivejob_matured_solvecase_withbackup",
             "label": "Решение дела",
-            "actionid": "work",
-            "requirements": {
-                "myevidenceb": 1,
-                "independent": 1
-            },
-            "extantreqs": {
-                "desire": -1
-            },
-            "startdescription": "Я передаю все собранные улики помощнику руководителя Бюро умолчания. Вот-вот неброско одетые люди с суровыми лицами постучат в дверь моей жертвы.",
             "description": "Бюро умолчания проводит закрытые суды и славится отсутствием милосердия. Моя жертва просто исчезнет. Меня же, думаю, ждёт повышение. ",
-            "effects": {
-                "funds": 7,
-                "favour": 1,
-                "suspicious": -99,
-                "independent": -1,
-                "legacydetective_plotitem_backup": 1
-            },
-            "warmup": 60,
-            "aspects": {
-                "employment": 1,
-                "fatiguing": 1
-            },
-            "alt": [
-                {
-                    "id": "workdetectivejob_newrival",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "craftable": false
+            "startdescription": "Я передаю все собранные улики помощнику руководителя Бюро умолчания. Вот-вот неброско одетые люди с суровыми лицами постучат в дверь моей жертвы."
         },
         {
             "id": "workdetectivejob_matured_solvecase",
             "label": "Решение дела",
-            "actionid": "work",
-            "requirements": {
-                "myevidenceb": 1,
-                "independent": 1
-            },
-            "startdescription": "Я передаю все собранные улики помощнику руководителя Бюро умолчания. Вот-вот неброско одетые люди с суровыми лицами постучат в дверь моей жертвы.",
             "description": "Бюро умолчания проводит закрытые суды и славится отсутствием милосердия. Моя жертва просто исчезнет. Меня же, думаю, ждёт повышение. ",
-            "effects": {
-                "funds": 7,
-                "favour": 1,
-                "suspicious": -99,
-                "independent": -1
-            },
-            "warmup": 60,
-            "aspects": {
-                "employment": 1,
-                "fatiguing": 1
-            },
-            "alt": [
-                {
-                    "id": "workdetectivejob_newrival",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "craftable": false
+            "startdescription": "Я передаю все собранные улики помощнику руководителя Бюро умолчания. Вот-вот неброско одетые люди с суровыми лицами постучат в дверь моей жертвы."
         },
         {
             "id": "workdetectivejob_newrival",
             "label": "Сколько же ещё негодяев?",
-            "actionid": "newrival",
-            "startdescription": "Будет ли этому конец? Сможем ли мы сказать, что спасли мир, защитили город, отстояли закон?",
             "description": "Поступают сообщения, и весьма тревожные.",
-            "deckeffects": {
-                "acquaintances": 1
-            },
-            "warmup": 60,
-            "linked": [
-                {
-                    "id": "workdetectivejob_newrival_recruit",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Будет ли этому конец? Сможем ли мы сказать, что спасли мир, защитили город, отстояли закон?"
         },
         {
             "id": "workdetectivejob_newrival_recruit",
             "label": "Сколько же ещё негодяев?",
-            "actionid": "newrival",
-            "startdescription": ".",
             "description": ".",
-            "aspects": {
-                "recruiting": 1
-            },
-            "linked": [
-                {
-                    "id": "workdetectivejob_start_promote_lever_believer",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "."
         },
         {
             "id": "workdetectivejob_start_promote_lever_believer",
-            "comments": "left unrenamed for backwards compatibility",
-            "label": "Осторожнее...",
-            "actionid": "newrival",
-            "aspects": {
-                "promotiontodisciple": 1
-            },
-            "craftable": false,
-            "linked": [
-                {
-                    "id": "workdetectivejob_start_promote_lever_disciple",
-                    "chance": 30
-                },
-                {
-                    "id": "workdetectivejob_start_rebellion",
-                    "chance": 100
-                }
-            ]
+            "label": "Осторожнее..."
         },
         {
             "id": "workdetectivejob_start_promote_lever_disciple",
-            "comments": "left unrenamed for backwards compatibility",
-            "label": "Осторожнее...",
-            "actionid": "newrival",
-            "aspects": {
-                "promotionto_d_edge": 1,
-                "promotionto_d_forge": 1,
-                "promotionto_d_grail": 1,
-                "promotionto_d_heart": 1,
-                "promotionto_d_knock": 1,
-                "promotionto_d_lantern": 1,
-                "promotionto_d_moth": 1,
-                "promotionto_d_winter": 1
-            },
-            "linked": [
-                {
-                    "id": "workdetectivejob_start_rebellion",
-                    "chance": 100
-                }
-            ],
-            "craftable": false
+            "label": "Осторожнее..."
         },
         {
             "id": "workdetectivejob_start_rebellion",
-            "comments": "left unrenamed for backwards compatibility",
-            "label": "Осторожнее...",
-            "actionid": "work",
-            "aspects": {
-                "rebellion": 1
-            },
-            "craftable": false
+            "label": "Осторожнее..."
         },
         {
             "id": "workdetectivejob_matured_plead",
             "label": "Стоит попросить о восстановлении!",
-            "actionid": "work",
-            "requirements": {
-                "legacydetectivejob_suspended": 1,
-                "passion": 1
-            },
-            "startdescription": "Почему же они не понимают?",
             "description": "Меня восстановили. На какое-то время.",
-            "aspects": {
-                "plead": 1
-            },
-            "warmup": 60,
-            "craftable": true
+            "startdescription": "Почему же они не понимают?"
         },
         {
             "id": "workdetectivejob_epilogue",
             "label": "",
-            "actionid": "work",
-            "effects": {
-                "legacydetectivejob_matured": -1
-            },
-            "startdescription": "Работы у меня больше нет",
             "description": "",
-            "craftable": false
+            "startdescription": "Работы у меня больше нет"
         },
         {
             "id": "legacydetectiveplotitem_tempt",
-            "label": "Запах страниц",
-            "actionid": "craving",
-            "requirements": {
-                "detectivetemptation": 1
-            },
-            "linked": [
-                {
-                    "id": "legacydetectiveplotitem_tempt_addslot",
-                    "chance": 100
-                }
-            ]
+            "label": "Запах страниц"
         },
         {
             "id": "legacydetectiveplotitem_tempt_addslot",
             "label": "Запах страниц",
-            "actionid": "craving",
+            "description": "Так легко переворачивать страницы! Словно чистишь фрукт, разворачиваешь подарок. А что в итоге? Пальцы у меня перепачканы чернилами, мозг кипит. Во что же я лезу?",
+            "startdescription": "Не могу забыть то, что было написано в деле. Имя «#PREVIOUSCHARACTERNAME#» влечёт меня. [Сложно устоять перед тем, чтобы заново не перечитать дело. Усиливайте разум, чтобы не сдаться.]",
             "slots": [
                 {
                     "id": "resist",
                     "label": "Сопротивляться",
-                    "description": "Сложно устоять перед тем, чтобы заново не перечитать дело. Усиливайте разум, чтобы не сдаться.",
-                    "required": {
-                        "reason": 1
-                    }
-                }
-            ],
-            "startdescription": "Не могу забыть то, что было написано в деле. Имя «#PREVIOUSCHARACTERNAME#» влечёт меня. [Сложно устоять перед тем, чтобы заново не перечитать дело. Усиливайте разум, чтобы не сдаться.]",
-            "description": "Так легко переворачивать страницы! Словно чистишь фрукт, разворачиваешь подарок. А что в итоге? Пальцы у меня перепачканы чернилами, мозг кипит. Во что же я лезу?",
-            "effects": {
-                "legacydetective_plotitem": -1,
-                "lever_LastDesire": 1,
-                "fascination": 1,
-                "dread": 1
-            },
-            "alt": [
-                {
-                    "id": "legacydetectiveplotitem_tempt_resist",
-                    "chance": 100
-                },
-                {
-                    "id": "visionsrisk",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "warmup": 60,
-            "craftable": false
-        },
-        {
-            "id": "legacydetectiveplotitem_tempt_resist",
-            "label": "Запах страниц",
-            "requirements": {
-                "reason": 1
-            },
-            "actionid": "craving",
-            "startdescription": "Я сама дисциплина. Строгая дисциплина. Разве можно было так долго держаться, чтобы сдаться теперь?",
-            "aspects": {
-                "fatiguing": 1
-            },
-            "description": "Соблазн отступил, хотя бы на какое-то время."
-        },
-        {
-            "id": "detectiveopenstudy",
-            "label": "Обучение...",
-            "alt": [
-                {
-                    "id": "ascensionnotyet",
-                    "chance": 100,
-                    "additional": true
-                },
-                {
-                    "id": "detectiveopenexplore",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "actionid": "study",
-            "startdescription": "Я всегда стараюсь находить время, чтобы поработать над собой.",
-            "description": "Без сомнения, я смогу там найти материалы для изучения.",
-            "effects": {
-                "reason": 1
-            },
-            "warmup": 30,
-            "craftable": false
-        },
-        {
-            "id": "detectiveopenexplore",
-            "label": "Исследование...",
-            "actionid": "explore",
-            "startdescription": "На стене в моём кабинете есть карта, утыканная булавками, увешанная записками.",
-            "description": "Я хорошо знаю этот город, но чтобы узнать его полностью, не хватит и всей жизни.",
-            "warmup": 10,
-            "deckeffects": {
-                "citysecrets": 2
-            },
-            "craftable": false,
-            "alt": [
-                {
-                    "id": "detectiveopentalk",
-                    "chance": 100,
-                    "additional": true
+                    "description": "Сложно устоять перед тем, чтобы заново не перечитать дело. Усиливайте разум, чтобы не сдаться."
                 }
             ]
         },
         {
+            "id": "legacydetectiveplotitem_tempt_resist",
+            "label": "Запах страниц",
+            "description": "Соблазн отступил, хотя бы на какое-то время.",
+            "startdescription": "Я сама дисциплина. Строгая дисциплина. Разве можно было так долго держаться, чтобы сдаться теперь?"
+        },
+        {
+            "id": "detectiveopenstudy",
+            "label": "Обучение...",
+            "description": "Без сомнения, я смогу там найти материалы для изучения.",
+            "startdescription": "Я всегда стараюсь находить время, чтобы поработать над собой."
+        },
+        {
+            "id": "detectiveopenexplore",
+            "label": "Исследование...",
+            "description": "Я хорошо знаю этот город, но чтобы узнать его полностью, не хватит и всей жизни.",
+            "startdescription": "На стене в моём кабинете есть карта, утыканная булавками, увешанная записками."
+        },
+        {
             "id": "detectiveopentalk",
             "label": "Общение...",
-            "actionid": "talk",
-            "startdescription": "Мне не помешает друг. Или его отсутствие.",
             "description": "",
-            "effects": {},
-            "warmup": 30,
-            "craftable": false
+            "startdescription": "Мне не помешает друг. Или его отсутствие."
         },
         {
             "id": "detectivestudy_plotitem",
             "label": "Не нужно было открывать дело",
-            "actionid": "study",
-            "requirements": {
-                "detectivetemptation": 1
-            },
-            "alt": [
-                {
-                    "id": "detectiveopendream",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "effects": {
-                "detectivetemptation": -1,
-                "fascination": 1,
-                "lever_LastDesire": 1,
-                "dread": 1
-            },
-            "startdescription": "НЕЛЬЗЯ СНОВА ЧИТАТЬ. Ушло несколько недель, чтобы забыть все детали, все инструкции и, боже упаси, рисунки.",
             "description": "Так легко переворачивать страницы! Словно чистишь фрукт, разворачиваешь подарок. А что в итоге? Пальцы у меня перепачканы чернилами, мозг кипит. Во что же я лезу?",
-            "warmup": 60,
-            "craftable": true,
-            "maxexecutions": 1
+            "startdescription": "НЕЛЬЗЯ СНОВА ЧИТАТЬ. Ушло несколько недель, чтобы забыть все детали, все инструкции и, боже упаси, рисунки."
         },
         {
             "id": "detectivestudy_plotitem_afterfirsttime",
             "label": "Не нужно было открывать дело",
-            "actionid": "study",
-            "requirements": {
-                "detectivetemptation": 1
-            },
-            "alt": [
-                {
-                    "id": "detectiveopendream",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "effects": {
-                "detectivetemptation": -1,
-                "fascination": 1,
-                "dread": 1
-            },
-            "startdescription": "НЕЛЬЗЯ СНОВА ЧИТАТЬ. Ушло несколько недель, чтобы забыть все детали, все инструкции и, боже упаси, рисунки.",
             "description": "Так легко переворачивать страницы! Словно чистишь фрукт, разворачиваешь подарок. А что в итоге? Пальцы у меня перепачканы чернилами, мозг кипит. Что же я делаю?",
-            "warmup": 60,
-            "craftable": true,
-            "maxexecutions": 1
+            "startdescription": "НЕЛЬЗЯ СНОВА ЧИТАТЬ. Ушло несколько недель, чтобы забыть все детали, все инструкции и, боже упаси, рисунки."
         },
         {
             "id": "detectivework_plotitem",
             "label": "Сжечь документы",
-            "actionid": "work",
-            "requirements": {
-                "detectivetemptation": 1,
-                "legacydetective_plotitem_burning": -1
-            },
-            "effects": {
-                "detectivetemptation": -1,
-                "legacydetective_plotitem_burning": 1,
-                "restlessness": 1,
-                "contentment": 1
-            },
-            "startdescription": "Это улики. Нам нельзя сжигать улики. Но кажется, это единственный выход.",
             "description": "Страницы чернеют одна за другой, дрожат и скручиваются. Я открываю окно в кабинете, чтобы ветер унёс дым. Что же я делаю?",
-            "warmup": 30,
-            "craftable": true
+            "startdescription": "Это улики. Нам нельзя сжигать улики. Но кажется, это единственный выход."
         }
     ]
 }

@@ -3,340 +3,89 @@
         {
             "id": "workapostleforgejob",
             "label": "Оценка ресурсов",
-            "actionid": "work",
-            "requirements": {
-                "legacyapostleforgejob": 1
-            },
-            "effects": {
-                "funds": 7,
-                "legacyapostleforgejob": -1
-            },
-            "alt": [
-                {
-                    "id": "apostleforgeopentalk",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "startdescription": "У нашей организации имеются некоторые ресурсы...",
             "description": "...пока что их хватает, но нужно будет найти другие средства к существованию.",
-            "warmup": 10,
-            "craftable": true
+            "startdescription": "У нашей организации имеются некоторые ресурсы..."
         },
         {
             "id": "apostleforgeopentalk",
             "label": "Наше дело",
-            "actionid": "talk",
-            "requirements": {},
-            "startdescription": "Я не в одиночестве.",
-            "alt": [
-                {
-                    "id": "apostleforgeopenstudy",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
             "description": "У меня есть союзники, есть мой мастер.",
-            "effects": {
-                "lever_LastCult": 1,
-                "lever_LastFollower": 1,
-                "apostleforge.mentor": 1
-            },
-            "warmup": 10,
-            "craftable": false,
-            "linked": [
-                {
-                    "id": "begincultfoundation",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Я не в одиночестве."
         },
         {
             "id": "apostleforgeopenstudy",
             "label": "Что я помню?",
-            "actionid": "study",
-            "startdescription": "Мне доверили тайны.",
-            "alt": [
-                {
-                    "id": "apostleforgeopenexplore",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "effects": {
-                "fragmentforgef": 1,
-                "reason": 1,
-                "waywood": 1,
-                "waywhite": 1,
-                "waystag_after": 1
-            },
-            "warmup": 30,
-            "craftable": false
+            "startdescription": "Мне доверили тайны."
         },
         {
             "id": "apostleforgeopenexplore",
             "label": "Место, чтобы начать",
-            "actionid": "explore",
-            "startdescription": "На чём мы остановились?",
             "description": "В месте для встреч я обдумаю полученные приказания.",
-            "alt": [
-                {
-                    "id": "apostleforgeopendream",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "effects": {
-                "apostleforge.pillar1": 1,
-                "hq.temporary": 1
-            },
-            "warmup": 10,
-            "craftable": false
+            "startdescription": "На чём мы остановились?"
         },
         {
             "id": "apostleforgeopendream",
             "label": "Гром вдали",
-            "actionid": "dream",
-            "startdescription": "Что там? Кто там?",
             "description": "Наш мастер хочет изменить устройство мира и даже самой Обители. Конечно, нам будут противодействовать.",
-            "warmup": 60,
-            "effects": {
-                "passion": 1
-            },
-            "craftable": false,
-            "alt": [
-                {
-                    "id": "long.spawn.forge",
-                    "chance": 100,
-                    "additional": true
-                }
-            ]
+            "startdescription": "Что там? Кто там?"
         },
         {
             "id": "workapostlegrailjob",
             "label": "Оценка ресурсов",
-            "actionid": "work",
-            "requirements": {
-                "legacyapostlegrailjob": 1
-            },
-            "effects": {
-                "funds": 7,
-                "legacyapostlegrailjob": -1,
-                "apostlegrail.pillar2.dormant": 1,
-                "apostlegrail.pillarfuel": 1
-            },
-            "alt": [
-                {
-                    "id": "apostlegrailopentalk",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "startdescription": "У нашей организации имеются некоторые ресурсы...",
             "description": "...пока что этого достаточно, но нужно будет найти и другие средства к существованию. И со здоровьем у меня не всё хорошо. Надеюсь, наша Отрада поможет мне.",
-            "warmup": 10,
-            "craftable": true
+            "startdescription": "У нашей организации имеются некоторые ресурсы..."
         },
         {
             "id": "apostlegrailopentalk",
             "label": "Наше дело",
-            "actionid": "talk",
-            "requirements": {},
-            "startdescription": "Я не в одиночестве.",
-            "alt": [
-                {
-                    "id": "apostlegrailopenstudy",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
             "description": "У меня есть союзники, есть моя Отрада.",
-            "effects": {
-                "lever_LastCult": 1,
-                "lever_LastFollower": 1,
-                "apostlegrail.mentor": 1
-            },
-            "warmup": 10,
-            "craftable": false,
-            "linked": [
-                {
-                    "id": "begincultfoundation",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Я не в одиночестве."
         },
         {
             "id": "apostlegrailopenstudy",
             "label": "Что я помню?",
-            "actionid": "study",
-            "startdescription": "Мне доверили тайны.",
-            "alt": [
-                {
-                    "id": "apostlegrailopenexplore",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "effects": {
-                "fragmentgrailf": 1,
-                "reason": 1,
-                "waywood": 1,
-                "waywhite": 1,
-                "waystag_after": 1
-            },
-            "warmup": 30,
-            "craftable": false
+            "startdescription": "Мне доверили тайны."
         },
         {
             "id": "apostlegrailopenexplore",
             "label": "Место, чтобы начать",
-            "actionid": "explore",
-            "startdescription": "На чём мы остановились?",
             "description": "В месте для встреч я обдумаю полученные приказания.",
-            "alt": [
-                {
-                    "id": "apostlegrailopendream",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "effects": {
-                "apostlegrail.pillar1": 1,
-                "hq.temporary": 1
-            },
-            "warmup": 10,
-            "craftable": false
+            "startdescription": "На чём мы остановились?"
         },
         {
             "id": "apostlegrailopendream",
             "label": "Свет вдали",
-            "actionid": "dream",
-            "startdescription": "Что там? Кто там?",
             "description": "Наша Отрада хочет изменить устройство мира и даже самой Обители. Конечно, нам будут противодействовать.",
-            "warmup": 60,
-            "effects": {
-                "passion": 1
-            },
-            "craftable": false,
-            "alt": [
-                {
-                    "id": "long.spawn.grail",
-                    "chance": 100,
-                    "additional": true
-                }
-            ]
+            "startdescription": "Что там? Кто там?"
         },
         {
             "id": "workapostlelanternjob",
             "label": "Что мне нужно сделать",
-            "actionid": "work",
-            "requirements": {
-                "legacyapostlelanternjob": 1
-            },
-            "effects": {
-                "funds": 7,
-                "legacyapostlelanternjob": -1,
-                "apostlelantern.pillar1": 1
-            },
-            "alt": [
-                {
-                    "id": "apostlelanternopentalk",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "startdescription": "Я возвращаюсь к себе, чтобы начать всё заново. Может, всё это был сон наяву?",
             "description": "Вот пакет со средствами. Вот наставления в изящном конверте небесно-голубого цвета. Этого достаточно. Остальные мои воспоминания теперь не имеют значения.",
-            "warmup": 10,
-            "craftable": true
+            "startdescription": "Я возвращаюсь к себе, чтобы начать всё заново. Может, всё это был сон наяву?"
         },
         {
             "id": "apostlelanternopentalk",
             "label": "Наше дело",
-            "actionid": "talk",
-            "requirements": {},
-            "startdescription": "Я помню эти имена, хотя мне не приходилось слышать, как они звучат.",
-            "alt": [
-                {
-                    "id": "apostlelanternopenstudy",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
             "description": "У меня есть союзники, есть моё Зарево.",
-            "effects": {
-                "lever_LastCult": 1,
-                "lever_LastFollower": 1,
-                "apostlelantern.mentor": 1
-            },
-            "warmup": 10,
-            "craftable": false,
-            "linked": [
-                {
-                    "id": "begincultfoundation",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Я помню эти имена, хотя мне не приходилось слышать, как они звучат."
         },
         {
             "id": "apostlelanternopenstudy",
             "label": "Что я помню?",
-            "actionid": "study",
-            "startdescription": "Мне доверили тайны.",
-            "alt": [
-                {
-                    "id": "apostlelanternopenexplore",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "effects": {
-                "fragmentlanternf": 1,
-                "reason": 1,
-                "waywood": 1,
-                "waywhite": 1,
-                "waystag_after": 1
-            },
-            "warmup": 30,
-            "craftable": false
+            "startdescription": "Мне доверили тайны."
         },
         {
             "id": "apostlelanternopenexplore",
             "label": "Место, чтобы начать",
-            "actionid": "explore",
-            "startdescription": "На чём мы остановились?",
             "description": "Это место мне привиделось на самой грани сна.",
-            "alt": [
-                {
-                    "id": "apostlelanternopendream",
-                    "chance": 100,
-                    "additional": true
-                }
-            ],
-            "effects": {
-                "hq.temporary": 1
-            },
-            "warmup": 10,
-            "craftable": false
+            "startdescription": "На чём мы остановились?"
         },
         {
             "id": "apostlelanternopendream",
             "label": "Свет вдали",
-            "actionid": "dream",
-            "startdescription": "Что там? Кто там?",
             "description": "Сны показали мне, что будет противодействие Зареву. А все мои сны сбываются.",
-            "warmup": 60,
-            "effects": {
-                "passion": 1
-            },
-            "craftable": false,
-            "alt": [
-                {
-                    "id": "long.spawn.lantern",
-                    "chance": 100,
-                    "additional": true
-                }
-            ]
+            "startdescription": "Что там? Кто там?"
         }
     ]
 }

@@ -3,695 +3,188 @@
         {
             "id": "getcommissionaladim",
             "label": "Получить заказ от доктора Аль-Адима",
-            "actionid": "talk",
-            "requirements": {
-                "aladimready": 1
-            },
-            "startdescription": "Доктору нужна моя помощь в исследовании.",
             "description": "Вот что ему требуется.",
-            "warmup": 10,
-            "deckeffects": {
-                "aladimcommissions": 1
-            },
-            "aspects": {
-                "commissiongiven": 1
-            },
-            "craftable": true
+            "startdescription": "Доктору нужна моя помощь в исследовании."
         },
         {
             "id": "getcommissionbechet",
             "label": "Получить заказ от мадам Беше",
-            "actionid": "talk",
-            "requirements": {
-                "bechetready": 1
-            },
-            "startdescription": "Она ищет статьи для «Керишемского альманаха», что пользуется дурной славой.",
             "description": "Вот что ей требуется.",
-            "warmup": 10,
-            "deckeffects": {
-                "bechetcommissions": 1
-            },
-            "aspects": {
-                "commissiongiven": 1
-            },
-            "craftable": true
+            "startdescription": "Она ищет статьи для «Керишемского альманаха», что пользуется дурной славой."
         },
         {
             "id": "getcommissionjannings",
             "label": "Получить заказ от графа Яннингса",
-            "actionid": "talk",
-            "requirements": {
-                "janningsready": 1
-            },
-            "startdescription": "Европейское содружество многоуважаемого графа ищет кое-какие исследования.",
             "description": "Вот что ему требуется.",
-            "warmup": 10,
-            "deckeffects": {
-                "janningscommissions": 1
-            },
-            "aspects": {
-                "commissiongiven": 1
-            },
-            "craftable": true
+            "startdescription": "Европейское содружество многоуважаемого графа ищет кое-какие исследования."
         },
         {
             "id": "getcommissionpoppy",
             "label": "Получить заказ от Поппи Ласеллс",
-            "actionid": "talk",
-            "requirements": {
-                "poppycommissionready": 1
-            },
-            "startdescription": "«Я, — по-девичьи хихикает Поппи, — интересуюсь, ну, знаешь, искусствами крови и льда. Знаю, глупости всё это, но у нас, старушек, свои капризы. Ты мне поможешь?»",
             "description": "Вот что ей требуется.",
-            "warmup": 10,
-            "deckeffects": {
-                "poppycommissions": 1
-            },
-            "aspects": {
-                "commissiongiven": 1
-            },
-            "craftable": true
+            "startdescription": "«Я, — по-девичьи хихикает Поппи, — интересуюсь, ну, знаешь, искусствами крови и льда. Знаю, глупости всё это, но у нас, старушек, свои капризы. Ты мне поможешь?»"
         },
         {
             "id": "fulfilcommissionaladimsecrethistoriesc",
             "label": "Выполнить заказ для доктора Аль-Адима",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlesecrethistoriesc": 1,
-                "aladim": 1,
-                "article": 1,
-                "secrethistories": 6
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно доктору.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно доктору."
         },
         {
             "id": "fulfilcommissionaladimsecrethistoriesb",
             "label": "Выполнить заказ для доктора Аль-Адима",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlesecrethistoriesb": 1,
-                "aladim": 1,
-                "article": 1,
-                "secrethistories": 4
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно доктору.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно доктору."
         },
         {
             "id": "fulfilcommissionaladimsecrethistories",
             "label": "Выполнить заказ для доктора Аль-Адима",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlesecrethistories": 1,
-                "aladim": 1,
-                "article": 1,
-                "secrethistories": 2
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно доктору.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно доктору."
         },
         {
             "id": "fulfilcommissionaladimlanternc",
             "label": "Выполнить заказ для доктора Аль-Адима",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlelanternc": 1,
-                "aladim": 1,
-                "article": 1,
-                "lantern": 6
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно доктору.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно доктору."
         },
         {
             "id": "fulfilcommissionaladimlanternb",
             "label": "Выполнить заказ для доктора Аль-Адима",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlelanternb": 1,
-                "aladim": 1,
-                "article": 1,
-                "lantern": 4
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно доктору.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно доктору."
         },
         {
             "id": "fulfilcommissionaladimlantern",
             "label": "Выполнить заказ для доктора Аль-Адима",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlelantern": 1,
-                "aladim": 1,
-                "article": 1,
-                "lantern": 2
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно доктору.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно доктору."
         },
         {
             "id": "fulfilcommissionbechetforgec",
             "label": "Выполнить заказ для мадам Беше",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleforgec": 1,
-                "bechet": 1,
-                "article": 1,
-                "forge": 6
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionbechetforgeb",
             "label": "Выполнить заказ для мадам Беше",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleforgeb": 1,
-                "bechet": 1,
-                "article": 1,
-                "forge": 4
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionbechetforge",
             "label": "Выполнить заказ для мадам Беше",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleforge": 1,
-                "bechet": 1,
-                "article": 1,
-                "forge": 2
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionbechetgrailc",
             "label": "Выполнить заказ для мадам Беше",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlegrailc": 1,
-                "bechet": 1,
-                "article": 1,
-                "grail": 6
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "glimmering": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionbechetgrailb",
             "label": "Выполнить заказ для мадам Беше",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlegrailb": 1,
-                "bechet": 1,
-                "article": 1,
-                "grail": 4
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "glimmering": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionbechetgrail",
             "label": "Выполнить заказ для мадам Беше",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlegrail": 1,
-                "bechet": 1,
-                "article": 1,
-                "grail": 2
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "glimmering": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionbechetmothc",
             "label": "Выполнить заказ для мадам Беше",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlemothc": 1,
-                "bechet": 1,
-                "article": 1,
-                "moth": 6
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "glimmering": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionbechetmothb",
             "label": "Выполнить заказ для мадам Беше",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlemothb": 1,
-                "bechet": 1,
-                "article": 1,
-                "moth": 4
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "glimmering": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionbechetmoth",
             "label": "Выполнить заказ для мадам Беше",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlemoth": 1,
-                "bechet": 1,
-                "article": 1,
-                "moth": 2
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "glimmering": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionjanningsheartc",
             "label": "Выполнить заказ для графа Яннингса",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleheartc": 1,
-                "jannings": 1,
-                "article": 1,
-                "heart": 6
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "glimmering": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionjanningsheartb",
             "label": "Выполнить заказ для графа Яннингса",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleheartb": 1,
-                "jannings": 1,
-                "article": 1,
-                "heart": 4
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "glimmering": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionjanningsheart",
             "label": "Выполнить заказ для графа Яннингса",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleheart": 1,
-                "jannings": 1,
-                "article": 1,
-                "heart": 2
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "glimmering": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionjanningsedgec",
             "label": "Выполнить заказ для графа Яннингса",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleedgec": 1,
-                "jannings": 1,
-                "article": 1,
-                "edge": 6
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionjanningsedgeb",
             "label": "Выполнить заказ для графа Яннингса",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleedgeb": 1,
-                "jannings": 1,
-                "article": 1,
-                "edge": 4
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionjanningsedge",
             "label": "Выполнить заказ для графа Яннингса",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleedge": 1,
-                "jannings": 1,
-                "article": 1,
-                "edge": 2
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно."
         },
         {
             "id": "fulfilcommissionpoppycommissionwinterc",
             "label": "Выполнить заказ для Поппи Ласеллс",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlewinterc": 1,
-                "poppycommission": 1,
-                "article": 1,
-                "winter": 6
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно Поппи.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно Поппи."
         },
         {
             "id": "fulfilcommissionpoppycommissionwinterb",
             "label": "Выполнить заказ для Поппи Ласеллс",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlewinterb": 1,
-                "poppycommission": 1,
-                "article": 1,
-                "winter": 4
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно Поппи.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно Поппи."
         },
         {
             "id": "fulfilcommissionpoppycommissionwinter",
             "label": "Выполнить заказ для Поппи Ласеллс",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticlewinter": 1,
-                "poppycommission": 1,
-                "article": 1,
-                "winter": 2
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно Поппи.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно Поппи."
         },
         {
             "id": "fulfilcommissionpoppycommissionknockc",
             "label": "Выполнить заказ для Поппи Ласеллс",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleknockc": 1,
-                "poppycommission": 1,
-                "article": 1,
-                "knock": 6
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно Поппи.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно Поппи."
         },
         {
             "id": "fulfilcommissionpoppycommissionknockb",
             "label": "Выполнить заказ для Поппи Ласеллс",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleknockb": 1,
-                "poppycommission": 1,
-                "article": 1,
-                "knock": 4
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно Поппи.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно Поппи."
         },
         {
             "id": "fulfilcommissionpoppycommissionknock",
             "label": "Выполнить заказ для Поппи Ласеллс",
-            "actionid": "talk",
-            "requirements": {
-                "commissionarticleknock": 1,
-                "poppycommission": 1,
-                "article": 1,
-                "knock": 2
-            },
-            "effects": {
-                "mystique": 1,
-                "article": -1,
-                "erudition": 1
-            },
-            "startdescription": "У меня есть то, что нужно Поппи.",
             "description": "Валюта тайного мира у меня в руках, а мой покровитель кое о чём проговорился.",
-            "warmup": 10,
-            "craftable": true,
-            "aspects": {
-                "commissionfulfilled": 1
-            }
+            "startdescription": "У меня есть то, что нужно Поппи."
         }
     ]
 }

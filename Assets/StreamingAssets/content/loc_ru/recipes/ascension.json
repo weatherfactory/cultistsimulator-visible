@@ -3,2101 +3,633 @@
         {
             "id": "ascensionpower_upgradetoobsession",
             "label": "Горящий ключ",
-            "actionid": "work",
-            "requirements": {
-                "ascensionpowerb": 1,
-                "waystag_after": 1,
-                "forge": 6
-            },
-            "effects": {
-                "ascensionpowerb": -1,
-                "ascensionpowerc": 1
-            },
-            "startdescription": "Этот обряд — ключ, что позволит Кузне Дней войти в меня. Я изменюсь навсегда.",
             "description": "Обряд завершён, и теперь на мне метки Кузни. Первая метка — мои слова, вторая — мои деяния. Если я внимательно осмотрю своё тело, то найду и третью метку. Во мне ярко горят новые потребности.",
-            "warmup": 60,
-            "craftable": true,
-            "burnimage": "flammarion"
+            "startdescription": "Этот обряд — ключ, что позволит Кузне Дней войти в меня. Я изменюсь навсегда."
         },
         {
-            "comments": "male and female flavour; //TODO implement more elegantly",
             "id": "ascensionsensation_upgradetoobsessionm",
             "label": "Томящийся ключ",
-            "actionid": "work",
-            "requirements": {
-                "ascensionsensationbm": 1,
-                "waystag_after": 1,
-                "grail": 6
-            },
-            "effects": {
-                "ascensionsensationbm": -1,
-                "ascensionsensationc": 1
-            },
-            "startdescription": "Этот обряд — ключ, что позволит Алой Чаше войти в меня. Я изменюсь навсегда.",
             "description": "Обряд завершён, и теперь на мне метки Чаши. Первая метка — мои слова, вторая — мои деяния. Если я внимательно осмотрю своё тело, то найду и третью метку. Я трепещу от новых желаний.",
-            "warmup": 60,
-            "craftable": true,
-            "burnimage": "flammarion"
+            "startdescription": "Этот обряд — ключ, что позволит Алой Чаше войти в меня. Я изменюсь навсегда."
         },
         {
-            "comments": "male and female flavour; //TODO implement more elegantly",
             "id": "ascensionsensation_upgradetoobsessionf",
             "label": "Томящийся ключ",
-            "actionid": "work",
-            "requirements": {
-                "ascensionsensationbf": 1,
-                "waystag_after": 1,
-                "grail": 6
-            },
-            "effects": {
-                "ascensionsensationbf": -1,
-                "ascensionsensationc": 1
-            },
-            "startdescription": "Этот обряд — ключ, что позволит Алой Чаше войти в меня. Я изменюсь навсегда.",
             "description": "Обряд завершён, и теперь на мне метки Чаши. Первая метка — мои слова, вторая — мои деяния. Если я внимательно осмотрю своё тело, то найду и третью метку. Я трепещу от новых желаний.",
-            "warmup": 60,
-            "craftable": true,
-            "burnimage": "flammarion"
+            "startdescription": "Этот обряд — ключ, что позволит Алой Чаше войти в меня. Я изменюсь навсегда."
         },
         {
             "id": "ascensionsensation_switchpolarity_mtof",
             "label": "Предпочтения",
-            "actionid": "dream",
-            "requirements": {
-                "ascensionsensationbm": 1
-            },
-            "effects": {
-                "ascensionsensationbm": -1,
-                "ascensionsensationbf": 1
-            },
-            "startdescription": "Во снах я большего уже не добьюсь. Теперь мне надо <b>потрудиться</b>. Но если я поразмышляю о том, чего вожделею, в первую очередь на ум придут не мужчины...",
             "description": "Вкусы меняются, желания преобразуются, мысли принимают новые формы.",
-            "warmup": 3,
-            "craftable": true
+            "startdescription": "Во снах я большего уже не добьюсь. Теперь мне надо <b>потрудиться</b>. Но если я поразмышляю о том, чего вожделею, в первую очередь на ум придут не мужчины..."
         },
         {
             "id": "ascensionsensation_switchpolarity_ftom",
             "label": "Предпочтения",
-            "actionid": "dream",
-            "requirements": {
-                "ascensionsensationbf": 1
-            },
-            "effects": {
-                "ascensionsensationbf": -1,
-                "ascensionsensationbm": 1
-            },
-            "startdescription": "Во снах я большего уже не добьюсь. Теперь мне надо <b>потрудиться</b>. Но если я поразмышляю о том, чего вожделею, в первую очередь на ум придут не женщины...",
             "description": "Вкусы меняются, желания преобразуются, мысли принимают новые формы.",
-            "warmup": 3,
-            "craftable": true
+            "startdescription": "Во снах я большего уже не добьюсь. Теперь мне надо <b>потрудиться</b>. Но если я поразмышляю о том, чего вожделею, в первую очередь на ум придут не женщины..."
         },
         {
             "id": "ascensionenlightenment_upgradetoobsession",
             "label": "Слепящий ключ",
-            "actionid": "work",
-            "requirements": {
-                "ascensionenlightenmentb": 1,
-                "waystag_after": 1,
-                "lantern": 6
-            },
-            "effects": {
-                "ascensionenlightenmentb": -1,
-                "ascensionenlightenmentc": 1
-            },
-            "startdescription": "Этот обряд — ключ, что позволит взгляду Дозорного войти в меня. Я изменюсь навсегда.",
             "description": "Обряд завершён, и теперь на мне метки Дозорного. Первая метка — мои слова, вторая — мои деяния. Если я внимательно осмотрю своё тело, то найду и третью метку. Мои желания стали утончёнными.",
-            "warmup": 60,
-            "craftable": true,
-            "burnimage": "flammarion"
+            "startdescription": "Этот обряд — ключ, что позволит взгляду Дозорного войти в меня. Я изменюсь навсегда."
         },
         {
             "id": "majorforgevictory",
             "label": "НАСТАЁТ РАССВЕТ",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "ascensionpowerf": 1,
-                "forge": 50
-            },
-            "effects": {},
-            "startdescription": "[Этот текст появляется при наличии продвинутого наследия.]",
             "description": "В тексте концовки будут полезные данные, надо быть внимательнее.",
-            "warmup": 60,
-            "craftable": false
+            "startdescription": "[Этот текст появляется при наличии продвинутого наследия.]"
         },
         {
             "id": "minorforgevictory_trigger",
-            "actionid": "work",
             "label": "Сожжение сердца",
-            "startdescription": "Пламя уже много раз окутывало моё тело. Пластины плоти со скрежетом трутся друг о друга. Я призову жар Кузни, что выжжет остатки меня. Я умру, когда пройду сквозь Трёхстворчатые Врата, но смерть — это не конец. Я обрету бессмертие и проведу вечность под покровительством Кузни. [Последователь, использованный в ритуале, будет поглощён. Если вам дороги те, кого вы оставляете, выбирайте тщательно.]",
-            "requirements": {
-                "ritual": 1,
-                "ascensionpowerf": 1,
-                "forge": 36
-            },
-            "craftable": true,
-            "comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
-            "warmup": 1,
-            "effects": {
-                "follower": -3,
-                "summoned": -3,
-                "passion": -3
-            },
-            "linked": [
-                {
-                    "id": "minorforgevictory_overture",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Пламя уже много раз окутывало моё тело. Пластины плоти со скрежетом трутся друг о друга. Я призову жар Кузни, что выжжет остатки меня. Я умру, когда пройду сквозь Трёхстворчатые Врата, но смерть — это не конец. Я обрету бессмертие и проведу вечность под покровительством Кузни. [Последователь, использованный в ритуале, будет поглощён. Если вам дороги те, кого вы оставляете, выбирайте тщательно.]"
         },
         {
             "id": "minorforgevictory_overture",
             "label": "Сожжение сердца",
-            "actionid": "work",
             "description": "Я становлюсь именем огня. В тексте концовки будут полезные данные, надо быть внимательнее.",
-            "warmup": 60,
             "slots": [
                 {
                     "id": "beloved",
-                    "label": "Любовь",
-                    "required": {
-                        "romanticinterest": 1
-                    },
-                    "forbidden": {
-                        "corpse": 1,
-                        "notoriety": 1
-                    },
-                    "greedy": true
-                }
-            ],
-            "signalEndingFlavour": "Grand",
-            "linked": [
-                {
-                    "chance": 100,
-                    "id": "belovedfarewell"
-                },
-                {
-                    "chance": 100,
-                    "id": "minorforgevictorywithrisen"
-                },
-                {
-                    "chance": 100,
-                    "id": "minorforgevictory"
+                    "label": "Любовь"
                 }
             ]
         },
         {
             "id": "minorforgevictory",
-            "label": "Сожжение сердца",
-            "requirements": {
-                "ascensionpowerf": 1
-            },
-            "ending": "minorforgevictory",
-            "actionid": "work"
+            "label": "Сожжение сердца"
         },
         {
             "id": "minorforgevictorywithrisen",
-            "requirements": {
-                "summoned": 1,
-                "ascensionpowerf": 1
-            },
-            "label": "Сожжение сердца",
-            "ending": "minorforgevictorywithrisen",
-            "actionid": "work"
+            "label": "Сожжение сердца"
         },
         {
             "id": "majorgrailvictory",
             "label": "ГРЯДЁТ ПИР",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "ascensionsensationf": 1,
-                "grail": 50
-            },
-            "effects": {},
-            "startdescription": "[Этот текст появляется при наличии продвинутого наследия.]",
             "description": "Начинается Пир. В тексте концовки будут полезные данные, надо быть внимательнее.",
-            "warmup": 60,
-            "craftable": false
+            "startdescription": "[Этот текст появляется при наличии продвинутого наследия.]"
         },
         {
             "id": "minorgrailvictory_withromanticsacrifice",
             "label": "Пир памяти Сердца",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "ascensionsensationf": 1,
-                "romanticinterest": 1,
-                "grail": 27
-            },
-            "startdescription": "Меня распирает от чужих жизней. Швы на теле начинают расходиться. Время пришло: я взываю к Алой Чаше, Матери Гор, поглощающему источнику. Рядом со мной человек, что любил меня. Возможно, у меня тоже были к нему чувства, как у Алой Чаши к Громовому Ритму, пока не пришёл его конец. Благодаря жертве призыв становится проще и ужаснее одновременно. Я восславлю Её и перерожусь. Трёхстворчатые Врата открываются. Я обрету бессмертие и проведу вечность под покровительством Чаши, и память о том, кто любил меня, будет жива, пока я существую.",
             "description": ".",
-            "warmup": 60,
-            "craftable": true,
-            "signalEndingFlavour": "Grand",
-            "ending": "minorgrailvictory"
+            "startdescription": "Меня распирает от чужих жизней. Швы на теле начинают расходиться. Время пришло: я взываю к Алой Чаше, Матери Гор, поглощающему источнику. Рядом со мной человек, что любил меня. Возможно, у меня тоже были к нему чувства, как у Алой Чаши к Громовому Ритму, пока не пришёл его конец. Благодаря жертве призыв становится проще и ужаснее одновременно. Я восславлю Её и перерожусь. Трёхстворчатые Врата открываются. Я обрету бессмертие и проведу вечность под покровительством Чаши, и память о том, кто любил меня, будет жива, пока я существую."
         },
         {
             "id": "minorgrailvictory_trigger",
-            "actionid": "work",
             "label": "Пир истинного рождения",
-            "startdescription": "Меня распирает от чужих жизней. Швы на теле начинают расходиться. Время пришло: я взываю к Алой Чаше, Матери Гор, поглощающему источнику. Я восславлю Её и перерожусь. Трёхстворчатые Врата открываются. Я обрету бессмертие и проведу вечность под покровительством Чаши. [Последователь, использованный в ритуале, будет поглощён. Если вам дороги те, кого вы оставляете, выбирайте тщательно.]",
-            "requirements": {
-                "ritual": 1,
-                "ascensionsensationf": 1,
-                "grail": 36
-            },
-            "craftable": true,
-            "comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
-            "warmup": 1,
-            "effects": {
-                "follower": -3,
-                "summoned": -3,
-                "passion": -3
-            },
-            "linked": [
-                {
-                    "id": "minorgrailvictory_overture",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Меня распирает от чужих жизней. Швы на теле начинают расходиться. Время пришло: я взываю к Алой Чаше, Матери Гор, поглощающему источнику. Я восславлю Её и перерожусь. Трёхстворчатые Врата открываются. Я обрету бессмертие и проведу вечность под покровительством Чаши. [Последователь, использованный в ритуале, будет поглощён. Если вам дороги те, кого вы оставляете, выбирайте тщательно.]"
         },
         {
             "id": "minorgrailvictory_overture",
             "label": "Пир истинного рождения",
-            "actionid": "work",
             "description": ".",
-            "warmup": 60,
-            "signalEndingFlavour": "Grand",
             "slots": [
                 {
                     "id": "beloved",
-                    "label": "Любовь",
-                    "required": {
-                        "romanticinterest": 1
-                    },
-                    "forbidden": {
-                        "corpse": 1,
-                        "notoriety": 1
-                    },
-                    "greedy": true
-                }
-            ],
-            "linked": [
-                {
-                    "chance": 100,
-                    "id": "minorgrailvictorywithrisen"
-                },
-                {
-                    "chance": 100,
-                    "id": "belovedfarewell"
-                },
-                {
-                    "chance": 100,
-                    "id": "minorgrailvictory"
+                    "label": "Любовь"
                 }
             ]
         },
         {
             "id": "minorgrailvictory",
-            "label": "Пир истинного рождения",
-            "requirements": {
-                "ascensionsensationf": 1
-            },
-            "ending": "minorgrailvictory",
-            "actionid": "work"
+            "label": "Пир истинного рождения"
         },
         {
             "id": "minorgrailvictorywithrisen",
-            "requirements": {
-                "summoned": 1,
-                "ascensionsensationf": 1
-            },
-            "label": "Пир истинного рождения",
-            "ending": "minorgrailvictorywithrisen",
-            "actionid": "work"
+            "label": "Пир истинного рождения"
         },
         {
             "id": "majorlanternvictory",
             "label": "ЛАМПАДА",
-            "actionid": "work",
-            "requirements": {
-                "ritual": 1,
-                "ascensionenlightenmentf": 1,
-                "lantern": 50
-            },
-            "effects": {},
-            "startdescription": "[Этот текст появляется при наличии продвинутого наследия.]",
             "description": "Я приближаюсь к Славе. В тексте концовки будут полезные данные, надо быть внимательнее.",
-            "warmup": 60,
-            "craftable": false
+            "startdescription": "[Этот текст появляется при наличии продвинутого наследия.]"
         },
         {
             "id": "belovedfarewell",
             "label": "Выбор на Границе",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "summoned": -1
-            },
             "startdescription": "Последнее прощание. Они останутся здесь. Я вознесусь.",
             "slots": [
                 {
                     "id": "decision",
                     "label": "Выбор",
-                    "description": "[Добавьте эмоции, чтобы отказаться от вознесения... и бессмертия. Вы останетесь со своей любовью. Хотите продолжить — ничего не делайте.]",
-                    "required": {
-                        "passion": 1
-                    }
+                    "description": "[Добавьте эмоции, чтобы отказаться от вознесения... и бессмертия. Вы останетесь со своей любовью. Хотите продолжить — ничего не делайте.]"
                 }
-            ],
-            "alt": [
-                {
-                    "id": "auclairvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "catvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "clovettevictory",
-                    "chance": 100
-                },
-                {
-                    "id": "cliftonvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "dorothyvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "elridgevictory",
-                    "chance": 100
-                },
-                {
-                    "id": "enidvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "laidlawvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "leovictory",
-                    "chance": 100
-                },
-                {
-                    "id": "nevillevictory",
-                    "chance": 100
-                },
-                {
-                    "id": "portervictory",
-                    "chance": 100
-                },
-                {
-                    "id": "reniravictory",
-                    "chance": 100
-                },
-                {
-                    "id": "rosevictory",
-                    "chance": 100
-                },
-                {
-                    "id": "salibavictory",
-                    "chance": 100
-                },
-                {
-                    "id": "sleevictory",
-                    "chance": 100
-                },
-                {
-                    "id": "sylviavictory",
-                    "chance": 100
-                },
-                {
-                    "id": "tristanvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "valcianevictory",
-                    "chance": 100
-                },
-                {
-                    "id": "victorvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "violetvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "ysabetvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "imnotinlove",
-                    "chance": 100
-                }
-            ],
-            "warmup": 30
+            ]
         },
         {
             "id": "auclairvictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqauclair": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь со своей возлюбленной Оклер.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "auclairvictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь со своей возлюбленной Оклер.]"
         },
         {
             "id": "catvictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqcat": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Кэт Каро.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "catvictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Кэт Каро.]"
         },
         {
             "id": "clovettevictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqclovette": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Кловеттой.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "clovettevictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Кловеттой.]"
         },
         {
             "id": "cliftonvictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqclifton": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Клифтоном.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "cliftonvictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Клифтоном.]"
         },
         {
             "id": "dorothyvictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqdorothy": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Дороти.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "dorothyvictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Дороти.]"
         },
         {
             "id": "elridgevictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqelridge": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Элриджем.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "elridgevictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Элриджем.]"
         },
         {
             "id": "enidvictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqenid": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Энид.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "enidvictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Энид.]"
         },
         {
             "id": "laidlawvictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqlaidlaw": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Лэйдлоу.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "laidlawvictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Лэйдлоу.]"
         },
         {
             "id": "leovictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqleo": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Лео.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "leovictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Лео.]"
         },
         {
             "id": "nevillevictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqneville": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Невиллом.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "nevillevictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Невиллом.]"
         },
         {
             "id": "portervictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqporter": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Портером.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "portervictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Портером.]"
         },
         {
             "id": "reniravictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqrenira": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Ренирой.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "reniravictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Ренирой.]"
         },
         {
             "id": "rosevictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqrose": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Роуз.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "rosevictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Роуз.]"
         },
         {
             "id": "salibavictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqsaliba": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Салибой.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "salibavictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Салибой.]"
         },
         {
             "id": "sleevictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqslee": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь со Сли.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "sleevictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь со Сли.]"
         },
         {
             "id": "sylviavictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqsylvia": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Сильвией.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "sylviavictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Сильвией.]"
         },
         {
             "id": "tristanvictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqtristan": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Тристаном.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "tristanvictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Тристаном.]"
         },
         {
             "id": "valcianevictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqvalciane": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Валсианой.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "valcianevictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Валсианой.]"
         },
         {
             "id": "victorvictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqvictor": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Виктором.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "victorvictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Виктором.]"
         },
         {
             "id": "violetvictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqviolet": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Вайолет.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "violetvictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Вайолет.]"
         },
         {
             "id": "ysabetvictory",
             "label": "Любовь?",
-            "actionid": "work",
-            "requirements": {
-                "romanticinterest": 1,
-                "passion": 1,
-                "uqysabet": 1
-            },
-            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Изабет.]",
             "description": ".",
-            "warmup": 60,
-            "craftable": false,
-            "signalEndingFlavour": "Grand",
-            "ending": "ysabetvictory"
+            "startdescription": "Мне доводилось слышать о весах, в одной чаше которых лежало сердце, а в другой — перо. Выбор сделан, хотя перо даровало бы мне вечность. [Этот выбор отменит ваше вознесение. Вы откажетесь от бессмертия и останетесь с Изабет.]"
         },
         {
             "id": "imnotinlove",
             "label": "Стремление",
-            "startdescription": "Возможно, меня любят. Возможно, я тоже люблю. Возможно, это не имеет значения.",
-            "actionid": "work",
-            "craftable": false,
-            "alt": [
-                {
-                    "id": "minorlanternvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "minorgrailvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "minorforgevictory",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "Возможно, меня любят. Возможно, я тоже люблю. Возможно, это не имеет значения."
         },
         {
             "id": "minorlanternvictory_trigger",
-            "actionid": "work",
             "label": "Вторжение",
-            "startdescription": "От моей плоти почти ничего не осталось. Я пройду сквозь Трёхстворчатые Врата и уже не вернусь. Дозорный ожидает меня, и в Его шагах я увижу блеск Славы. Моя душа не выдержит понимания и разверзнется. Я не обрету бессмертие — я обрету нечто большее. [Последователь, использованный в ритуале, будет поглощён. Если вам дороги те, кого вы оставляете, выбирайте тщательно.]",
-            "requirements": {
-                "ritual": 1,
-                "ascensionenlightenmentf": 1,
-                "lantern": 36
-            },
-            "craftable": true,
-            "comments": "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
-            "warmup": 1,
-            "effects": {
-                "follower": -3,
-                "summoned": -3,
-                "passion": -3
-            },
-            "linked": [
-                {
-                    "id": "minorlanternvictory_overture",
-                    "chance": 100
-                }
-            ]
+            "startdescription": "От моей плоти почти ничего не осталось. Я пройду сквозь Трёхстворчатые Врата и уже не вернусь. Дозорный ожидает меня, и в Его шагах я увижу блеск Славы. Моя душа не выдержит понимания и разверзнется. Я не обрету бессмертие — я обрету нечто большее. [Последователь, использованный в ритуале, будет поглощён. Если вам дороги те, кого вы оставляете, выбирайте тщательно.]"
         },
         {
             "id": "minorlanternvictory_overture",
             "label": "Вторжение",
-            "actionid": "work",
             "description": ".",
-            "warmup": 60,
             "slots": [
                 {
                     "id": "beloved",
-                    "label": "Любовь",
-                    "required": {
-                        "romanticinterest": 1
-                    },
-                    "forbidden": {
-                        "corpse": 1,
-                        "notoriety": 1
-                    },
-                    "greedy": true
-                }
-            ],
-            "signalEndingFlavour": "Grand",
-            "linked": [
-                {
-                    "chance": 100,
-                    "id": "minorlanternvictorywithrisen"
-                },
-                {
-                    "chance": 100,
-                    "id": "belovedfarewell"
-                },
-                {
-                    "chance": 100,
-                    "id": "minorlanternvictory"
+                    "label": "Любовь"
                 }
             ]
         },
         {
             "id": "minorlanternvictory",
-            "label": "Вторжение",
-            "requirements": {
-                "ascensionenlightenmentf": 1
-            },
-            "ending": "minorlanternvictory",
-            "actionid": "work"
+            "label": "Вторжение"
         },
         {
             "id": "minorlanternvictorywithrisen",
-            "requirements": {
-                "summoned": 1,
-                "ascensionenlightenmentf": 1
-            },
-            "label": "Вторжение",
-            "ending": "minorlanternvictorywithrisen",
-            "actionid": "work"
+            "label": "Вторжение"
         },
         {
             "id": "ambition",
-            "requirements": {
-                "seasonambitions": 1
-            },
             "label": "Причудливые желания?",
-            "actionid": "craving",
+            "description": "",
+            "startdescription": "Какая жажда движет нами?",
             "slots": [
                 {
                     "id": "Obsessions",
                     "label": "Одержимость",
-                    "description": "Глубинные порывы",
-                    "required": {
-                        "enlightenmentmarks": 3,
-                        "powermarks": 3,
-                        "sensationmarks": 3,
-                        "remembrancemarks": 2,
-                        "changemarks": 1,
-                        "independent": 1,
-                        "resentment": 3,
-                        "mentor": 1
-                    },
-                    "greedy": true
-                }
-            ],
-            "startdescription": "Какая жажда движет нами?",
-            "description": "",
-            "effects": {},
-            "warmup": 10,
-            "linked": [
-                {
-                    "id": "L_ascension_rival",
-                    "chance": 100
-                },
-                {
-                    "id": "L_independent",
-                    "chance": 100
-                },
-                {
-                    "id": "L_rebellion_activate",
-                    "chance": 70
-                },
-                {
-                    "id": "L_rebellion_noactivation",
-                    "chance": 100
-                },
-                {
-                    "id": "ending.minorcrownedgrowthvictory",
-                    "chance": 100
-                },
-                {
-                    "id": "ambition.apostleforge.emitfuel",
-                    "chance": 100
-                },
-                {
-                    "id": "ambition.apostlegrail.emitfuel",
-                    "chance": 100
-                },
-                {
-                    "id": "ambition.apostlelantern.emitfuel",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingpower",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingsensation",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingenlightenment",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingremembrance",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingremembrancenegative",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_tryascendfromg",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_tryascendfromf",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_tryascendfrome",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_tryascendfromd",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_tryascendfromc",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_tryascendfromb",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_tryascendfroma",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensionnotyet",
-                    "chance": 100
+                    "description": "Глубинные порывы"
                 }
             ]
         },
         {
             "id": "L_independent",
-            "label": "Соперничество!",
-            "requirements": {
-                "independent": 1
-            },
-            "actionid": "ambition",
-            "deckeffects": {
-                "schemeevents": 1
-            },
-            "linked": [
-                {
-                    "id": "L_independent_router",
-                    "chance": 100
-                }
-            ]
+            "label": "Соперничество!"
         },
         {
             "id": "L_independent_router",
             "label": "Соперничество!",
-            "actionid": "ambition",
-            "requirements": {
-                "independent": 1
-            },
-            "comments": "That requirement is strictly unnecessary, but leaving it here just in case we move recipe connections again - it's an important filter",
-            "startdescription": "Кто-то хочет вознестись прежде меня. [Другие оккультисты попытаются привлечь всё внимание Часов к себе. Они могут плести свои интриги независимо от вас.]",
-            "alt": [
-                {
-                    "id": "scheme_murderhunter",
-                    "chance": 100,
-                    "additional": true,
-                    "expulsion": {
-                        "limit": 1,
-                        "filter": {
-                            "independent": 1
-                        }
-                    }
-                },
-                {
-                    "id": "scheme_expedition_grab",
-                    "chance": 100,
-                    "additional": true,
-                    "expulsion": {
-                        "limit": 1,
-                        "filter": {
-                            "independent": 1
-                        }
-                    }
-                },
-                {
-                    "id": "scheme_activities",
-                    "chance": 100,
-                    "additional": true,
-                    "expulsion": {
-                        "limit": 1,
-                        "filter": {
-                            "independent": 1
-                        }
-                    }
-                }
-            ],
-            "warmup": 30
+            "startdescription": "Кто-то хочет вознестись прежде меня. [Другие оккультисты попытаются привлечь всё внимание Часов к себе. Они могут плести свои интриги независимо от вас.]"
         },
         {
             "id": "L_ascension_rival",
-            "actionid": "ambition",
-            "requirements": {
-                "rivalmarks": 7
-            },
-            "extantreqs": {
-                "long.enemy": -1
-            },
             "label": "Победа претендента",
-            "startdescription": "Достижения соперника затмевают мои. Теперь место в Доме Солнца достанется ему, а я останусь здесь, в обычном мире, наедине с обидой и разочарованием.",
-            "ending": "rivalascension",
-            "signalEndingFlavour": "Melancholy",
-            "warmup": 60
+            "startdescription": "Достижения соперника затмевают мои. Теперь место в Доме Солнца достанется ему, а я останусь здесь, в обычном мире, наедине с обидой и разочарованием."
         },
         {
             "id": "L_ascension_rival_apostle",
-            "actionid": "ambition",
-            "requirements": {
-                "rivalmarks": 7
-            },
-            "extantreqs": {
-                "long.enemy": 1
-            },
             "label": "Слишком много врагов",
-            "startdescription": "Даже один бессмертный враг смертельно опасен. Двое бессмертных — это слишком. Великое Дело не свершится.",
-            "ending": "rivalascension",
-            "signalEndingFlavour": "Melancholy",
-            "warmup": 60
+            "startdescription": "Даже один бессмертный враг смертельно опасен. Двое бессмертных — это слишком. Великое Дело не свершится."
         },
         {
             "id": "L_rebellion_activate",
             "label": "Бунт!",
-            "actionid": "ambition",
-            "requirements": {
-                "resentment": 3
-            },
-            "startdescription": "Чересчур или недостаточно? В любом случае мои поступки кого-то сильно рассердили.",
             "description": "Один из союзников покинул меня. Мы не враги, по крайней мере пока что, но служить этот человек мне больше не будет.",
-            "aspects": {
-                "rebellion": 1
-            },
-            "warmup": 30
+            "startdescription": "Чересчур или недостаточно? В любом случае мои поступки кого-то сильно рассердили."
         },
         {
             "id": "L_rebellion_noactivation",
             "label": "Недовольство",
-            "actionid": "ambition",
-            "requirements": {
-                "resentment": 3
-            },
-            "startdescription": "Чересчур или недостаточно? В любом случае мои поступки рассердили союзника.",
             "description": "Этот союзник какое-то время провёл в мрачном уединении, но пока остаётся с нами.",
-            "mutations": [
-                {
-                    "filter": "follower",
-                    "mutate": "resentment",
-                    "level": -1,
-                    "additive": true
-                }
-            ],
-            "warmup": 30
+            "startdescription": "Чересчур или недостаточно? В любом случае мои поступки рассердили союзника."
         },
         {
             "id": "ending.minorcrownedgrowthvictory",
-            "actionid": "ambition",
             "label": "ЗАРАЗИТЬ И ПРЕВРАТИТЬСЯ",
-            "requirements": {
-                "ghoul.hunger": 7
-            },
-            "startdescription": "Мои аппетиты переходят все границы, но всё ещё принадлежат мне. Мой живот плодороден и разрастается. Уже слишком поздно.",
-            "ending": "minorcrownedgrowthvictory",
-            "signalEndingFlavour": "Vile",
-            "warmup": 30
+            "startdescription": "Мои аппетиты переходят все границы, но всё ещё принадлежат мне. Мой живот плодороден и разрастается. Уже слишком поздно."
         },
         {
             "id": "ascensionnotyet",
             "label": "Отчаяние смертных",
-            "actionid": "craving",
-            "requirements": {
-                "enlightenmentmarks": -1,
-                "powermarks": -1,
-                "sensationmarks": -1
-            },
+            "description": "Пока что мои потребности и желания те же, что у любого смертного. Но что во мне просыпается?",
+            "startdescription": "Какая жажда движет мною?",
             "slots": [
                 {
                     "id": "Temptations",
                     "label": "Соблазны",
-                    "description": "Огонь нужно подпитать",
-                    "required": {
-                        "desire": 1
-                    },
-                    "greedy": true
+                    "description": "Огонь нужно подпитать"
                 }
-            ],
-            "startdescription": "Какая жажда движет мною?",
-            "effects": {
-                "restlessness": 1
-            },
-            "description": "Пока что мои потребности и желания те же, что у любого смертного. Но что во мне просыпается?",
-            "alt": [
-                {
-                    "id": "ascensionhintpower2",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensionhintenlightenment2",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensionhintsensation2m",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensionhintsensation2f",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensionhintpower1",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensionhintenlightenment1",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensionhintsensation1",
-                    "chance": 100
-                },
-                {
-                    "id": "legacydetectiveplotitem_tempt",
-                    "chance": 100
-                }
-            ],
-            "warmup": 10
+            ]
         },
         {
             "id": "ascensionhintpower2",
             "label": "Рёв Кузни",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionpowerb": 1
-            },
-            "startdescription": "Теперь мне недостаточно никакого тепла.",
             "description": "Мне снилась Кузня, и я тоскую по теплу её огня. Время свершить Дело и начать изменения почти пришло, но у меня должно быть достаточно силы Кузни. Найти её можно во время <b>исследований</b>.",
-            "effects": {
-                "restlessness": 1
-            },
-            "warmup": 10
+            "startdescription": "Теперь мне недостаточно никакого тепла."
         },
         {
             "id": "ascensionhintenlightenment2",
             "label": "Свет Дозорного",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionenlightenmentb": 1
-            },
-            "startdescription": "Теперь я вижу новые цвета, даже бодрствуя.",
             "description": "Моё любопытство превратилось в потребность. Глаза мои станут порогами. Время свершить Дело и начать изменения почти пришло, но у меня должно быть достаточно силы Лампады. Найти её можно во время <b>исследований</b>.",
-            "effects": {
-                "restlessness": 1
-            },
-            "warmup": 10
+            "startdescription": "Теперь я вижу новые цвета, даже бодрствуя."
         },
         {
             "id": "ascensionhintsensation2m",
             "label": "Касание Чаши",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionsensationbm": 1
-            },
-            "startdescription": "Мои желания преображаются.",
             "description": "Прекрасные волны Чаши омывают меня. Время свершить Дело и начать изменения почти пришло, но у меня должно быть достаточно силы Чаши. Найти её можно во время <b>исследований</b>.",
-            "effects": {
-                "restlessness": 1
-            },
-            "warmup": 10
+            "startdescription": "Мои желания преображаются."
         },
         {
             "id": "ascensionhintsensation2f",
             "label": "Касание Чаши",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionsensationbf": 1
-            },
-            "startdescription": "Мои желания преображаются.",
             "description": "Меня коснулись дивные пальцы Чаши. Время свершить Дело и начать изменения почти пришло, но у меня должно быть достаточно силы Чаши. Найти её можно во время <b>исследований</b>.",
-            "effects": {
-                "restlessness": 1
-            },
-            "warmup": 10
+            "startdescription": "Мои желания преображаются."
         },
         {
             "id": "ascensionhintpower1",
             "label": "Жар Кузни",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionpowera": 1
-            },
-            "startdescription": "В моём сердце разгорается жажда власти, которую могут даровать незримые искусства.",
             "description": "Кузня Дней ждёт меня во снах. Если я получу знания о Кузне и буду видеть сны об этом соблазне, то приближусь к цели. Новая потребность гложет меня.",
-            "effects": {
-                "restlessness": 1
-            },
-            "warmup": 10
+            "startdescription": "В моём сердце разгорается жажда власти, которую могут даровать незримые искусства."
         },
         {
             "id": "ascensionhintenlightenment1",
             "label": "Следы Дозорного",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionenlightenmenta": 1
-            },
-            "startdescription": "В моём мозгу сияет жажда знаний, которые я могу получить благодаря незримым искусствам.",
             "description": "Дозорный, он же Дверь-в-Глазу, ждёт меня во снах. Если я получу знания о Кузне и буду видеть сны об этом соблазне, то приближусь к цели. Новая потребность гложет меня.",
-            "effects": {
-                "restlessness": 1
-            },
-            "warmup": 10
+            "startdescription": "В моём мозгу сияет жажда знаний, которые я могу получить благодаря незримым искусствам."
         },
         {
             "id": "ascensionhintsensation1",
             "label": "Шёпот Чаши",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionsensationa": 1
-            },
-            "startdescription": "Моё тело трепещет от жажды удовольствий, которые я могу испытать благодаря незримым искусствам.",
             "description": "Алый кубок, что топит и поглощает, ждёт меня во снах. Если я получу знания о Чаше и буду видеть сны об этом соблазне, то приближусь к цели. Новая потребность гложет меня.",
-            "effects": {
-                "restlessness": 1
-            },
-            "warmup": 10
+            "startdescription": "Моё тело трепещет от жажды удовольствий, которые я могу испытать благодаря незримым искусствам."
         },
         {
             "id": "ascensioncravingpower",
             "label": "Перековывающий жар",
-            "actionid": "craving",
-            "requirements": {
-                "powermarks": 1
-            },
+            "startdescription": "Мне нужно ещё более жаркое пламя. Найти топливо сложно, и оно обходится дорого. Если я его не раздобуду, холод охватит меня.",
             "slots": [
                 {
                     "id": "Fuels",
                     "label": "Топливо",
-                    "description": "Огонь нужно подпитать",
-                    "required": {
-                        "funds": 1
-                    },
-                    "greedy": true
+                    "description": "Огонь нужно подпитать"
                 }
-            ],
-            "startdescription": "Мне нужно ещё более жаркое пламя. Найти топливо сложно, и оно обходится дорого. Если я его не раздобуду, холод охватит меня.",
-            "linked": [
-                {
-                    "id": "ascensionsuccesscravingpower_descend",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingpower_ascend",
-                    "chance": 100
-                }
-            ],
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensionsuccesscravingpower_descend",
             "label": "Пепел преображения",
-            "actionid": "craving",
-            "requirements": {
-                "funds": -1
-            },
+            "description": "Сила покидает меня. Кровь холодеет. Кажется, исчезают даже некоторые шрамы. Я потухаю.",
+            "startdescription": "Я дрожу от холода. Без огня моё тело иссохнет и ослабнет.",
             "slots": [
                 {
                     "id": "Pain",
                     "label": "Боль",
-                    "description": "Потребность гложет меня.",
-                    "required": {
-                        "health": 1,
-                        "vitality": 1
-                    },
-                    "greedy": true
+                    "description": "Потребность гложет меня."
                 }
-            ],
-            "startdescription": "Я дрожу от холода. Без огня моё тело иссохнет и ослабнет.",
-            "description": "Сила покидает меня. Кровь холодеет. Кажется, исчезают даже некоторые шрамы. Я потухаю.",
-            "aspects": {
-                "descend": 1,
-                "damagehealth": 1
-            },
-            "effects": {
-                "vitality": -1
-            },
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensioncravingpower_ascend",
             "label": "Очередная метка",
-            "actionid": "craving",
-            "startdescription": "",
             "description": "Пламя стремится ко мне, как и я к нему. Касание огня приносит не только боль. Я получаю новую метку.",
-            "effects": {
-                "vitality": 2,
-                "funds": -1
-            },
-            "aspects": {
-                "ascend": 1
-            }
+            "startdescription": ""
         },
         {
             "id": "ascensioncravingsensation",
             "label": "Алая потребность",
-            "actionid": "craving",
-            "requirements": {
-                "sensationmarks": 1
-            },
+            "startdescription": "Жажда крови? Всё не так просто. Иссушая их, я высасываю гораздо больше.",
             "slots": [
                 {
                     "id": "Sustenance",
                     "label": "Пропитание",
-                    "description": "Свежие трупы или живые.",
-                    "required": {
-                        "corpse": 1,
-                        "lunatic": -1,
-                        "prisoner": 1
-                    },
-                    "greedy": true
+                    "description": "Свежие трупы или живые."
                 }
-            ],
-            "startdescription": "Жажда крови? Всё не так просто. Иссушая их, я высасываю гораздо больше.",
-            "linked": [
-                {
-                    "id": "ascensionsuccesscravingsensation_descend",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingsensation_ascend",
-                    "chance": 100
-                }
-            ],
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensionsuccesscravingsensation_descend",
             "label": "Опустошение",
-            "actionid": "craving",
-            "requirements": {
-                "corpse": -1,
-                "lunatic": -1,
-                "prisoner": -1
-            },
+            "description": "Потоки иссякают, плоть истончается, перемены обращаются вспять, страсти затухают. Моё величие умаляется.",
+            "startdescription": "Без жизней других я начну переваривать себя.",
             "slots": [
                 {
                     "id": "Pain",
                     "label": "Боль",
-                    "description": "Потребность гложет меня.",
-                    "required": {
-                        "passion": 1,
-                        "glimmering": 1
-                    },
-                    "greedy": true
+                    "description": "Потребность гложет меня."
                 }
-            ],
-            "startdescription": "Без жизней других я начну переваривать себя.",
-            "description": "Потоки иссякают, плоть истончается, перемены обращаются вспять, страсти затухают. Моё величие умаляется.",
-            "aspects": {
-                "descend": 1,
-                "fatiguing": 1
-            },
-            "effects": {
-                "glimmering": -1
-            },
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensioncravingsensation_ascend",
             "label": "Очередная метка",
-            "actionid": "craving",
-            "effects": {
-                "glimmering": 2,
-                "corpse": -1,
-                "lunatic": -1,
-                "prisoner": -1
-            },
-            "startdescription": "",
             "description": "Закончив, я погружаюсь в пучины удовольствия, словно луна в море. Во мне распускается новая метка.",
-            "aspects": {
-                "ascend": 1
-            }
+            "startdescription": ""
         },
         {
             "id": "ascensioncravingenlightenment",
             "label": "Пытливость света",
-            "actionid": "craving",
-            "requirements": {
-                "enlightenmentmarks": 1
-            },
+            "startdescription": "Побыть в тихом месте наедине с живым разумом. Это всё, что мне нужно.",
             "slots": [
                 {
                     "id": "Conversation",
                     "label": "Общение",
-                    "description": "Последние слова живого разума.",
-                    "required": {
-                        "prisoner": 1
-                    },
-                    "greedy": true
+                    "description": "Последние слова живого разума."
                 }
-            ],
-            "startdescription": "Побыть в тихом месте наедине с живым разумом. Это всё, что мне нужно.",
-            "linked": [
-                {
-                    "id": "ascensionsuccesscravingenlightenment_descend",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingenlightenment_ascend",
-                    "chance": 100
-                }
-            ],
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensionsuccesscravingenlightenment_descend",
             "label": "Опустошение",
-            "actionid": "craving",
-            "requirements": {
-                "prisoner": -1
-            },
+            "description": "Свет Обители во мне бледнеет. Моё величие умаляется. Я нуждаюсь в общении. Эти особые разговоры необходимы.",
+            "startdescription": "Если я не поглощу мысли живого разума, эта потребность обратится против меня.",
             "slots": [
                 {
                     "id": "Pain",
                     "label": "Боль",
-                    "description": "Потребность гложет меня.",
-                    "required": {
-                        "reason": 1,
-                        "erudition": 1
-                    },
-                    "greedy": true
+                    "description": "Потребность гложет меня."
                 }
-            ],
-            "startdescription": "Если я не поглощу мысли живого разума, эта потребность обратится против меня.",
-            "description": "Свет Обители во мне бледнеет. Моё величие умаляется. Я нуждаюсь в общении. Эти особые разговоры необходимы.",
-            "aspects": {
-                "descend": 1,
-                "fatiguing": 1
-            },
-            "effects": {
-                "erudition": -1
-            },
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensioncravingenlightenment_ascend",
             "label": "Очередная метка",
-            "actionid": "craving",
-            "effects": {
-                "erudition": 2,
-                "prisoner": -1
-            },
-            "startdescription": "",
             "description": "Свет разума этого человека теперь трепещет внутри меня. Мои метки сияют ярче.",
-            "aspects": {
-                "ascend": 1
-            }
+            "startdescription": ""
         },
         {
             "id": "ascensioncravingremembrance",
             "label": "Голод, что растёт в тёмной земле",
-            "actionid": "craving",
-            "requirements": {
-                "remembrancemarks": 2,
-                "ghoul.hunger": 1
-            },
-            "mutations": [
-                {
-                    "filter": "remembrancemarks",
-                    "mutate": "ghoul.hunger",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "startdescription": "Особенный вкус, что не прекрасен и не отвратителен, снова тревожит меня. Мой язык распухнет, а губы почернеют. Споры Эликсира проросли во мне, и успокоить их может лишь мёртвая плоть.",
-            "warmup": 30
+            "startdescription": "Особенный вкус, что не прекрасен и не отвратителен, снова тревожит меня. Мой язык распухнет, а губы почернеют. Споры Эликсира проросли во мне, и успокоить их может лишь мёртвая плоть."
         },
         {
             "id": "ascensioncravingremembrancenegative",
             "label": "Голод, что растёт в тёмной земле",
-            "actionid": "craving",
-            "requirements": {
-                "remembrancemarks": 2
-            },
-            "mutations": [
-                {
-                    "filter": "remembrancemarks",
-                    "mutate": "ghoul.hunger",
-                    "level": 1,
-                    "additive": false
-                }
-            ],
-            "startdescription": "Особенный вкус, что не прекрасен и не отвратителен, снова тревожит меня. Мой язык распухнет, а губы почернеют. Споры Эликсира проросли во мне, и успокоить их может лишь мёртвая плоть.",
-            "comments": "This is a safety measure for players who managed to allow their hunger to go negative with an old save.",
-            "warmup": 30
+            "startdescription": "Особенный вкус, что не прекрасен и не отвратителен, снова тревожит меня. Мой язык распухнет, а губы почернеют. Споры Эликсира проросли во мне, и успокоить их может лишь мёртвая плоть."
         },
         {
             "id": "ascensioncravingchange_tryascendfroma",
             "label": "Соблазн преображения",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionchangea": 1
-            },
+            "startdescription": "Я жажду перевоплотиться, но перед тем, как узреть необходимое, мне надо кое-что узнать.",
             "slots": [
                 {
                     "id": "Lesson",
                     "label": "Урок",
-                    "description": "Отказ ради превращения",
-                    "required": {
-                        "ascensionlessonhearta": 1,
-                        "ascensionlessonmotha": 1
-                    },
-                    "greedy": true
+                    "description": "Отказ ради превращения"
                 }
-            ],
-            "startdescription": "Я жажду перевоплотиться, но перед тем, как узреть необходимое, мне надо кое-что узнать.",
-            "linked": [
-                {
-                    "id": "ascensioncravingchange_heartlessonascendfroma",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_mothlessonascendfroma",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_noascension",
-                    "chance": 100
-                }
-            ],
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensioncravingchange_heartlessonascendfroma",
             "label": "Отказ от покровов",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonhearta": 1
-            },
-            "description": "Когда я отказываюсь от принятых решений, когда лунный свет озаряет меня сквозь ветви, моё тело становится лёгким, словно лист.",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonhearta": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desireheart_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Когда я отказываюсь от принятых решений, когда лунный свет озаряет меня сквозь ветви, моё тело становится лёгким, словно лист."
         },
         {
             "id": "ascensioncravingchange_mothlessonascendfroma",
             "label": "Отказ от покровов",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonmotha": 1
-            },
-            "description": "Я сбрасываю оболочку, чтобы вырасти больше. Я вижу луну, и я — в её глазу...",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonmotha": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desiremoth_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Я сбрасываю оболочку, чтобы вырасти больше. Я вижу луну, и я — в её глазу..."
         },
         {
             "id": "ascensioncravingchange_tryascendfromb",
             "label": "Ко второму преображению",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionchangeb": 1
-            },
+            "startdescription": "Кожа станет мне мала, и со временем её придётся покинуть. Чтобы узнать, как это сделать, часть меня должна отправиться в путь.",
             "slots": [
                 {
                     "id": "Lesson",
                     "label": "Урок",
-                    "description": "Отказ ради превращения",
-                    "required": {
-                        "ascensionlessonheartb": 1,
-                        "ascensionlessonmothb": 1
-                    },
-                    "greedy": true
+                    "description": "Отказ ради превращения"
                 }
-            ],
-            "startdescription": "Кожа станет мне мала, и со временем её придётся покинуть. Чтобы узнать, как это сделать, часть меня должна отправиться в путь.",
-            "linked": [
-                {
-                    "id": "ascensioncravingchange_heartlessonascendfromb",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_mothlessonascendfromb",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_noascension",
-                    "chance": 100
-                }
-            ],
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensioncravingchange_heartlessonascendfromb",
             "label": "Отказ от оболочки",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonheartb": 1
-            },
-            "description": "Моя внешняя оболочка спадает клочьями, и я тоже освобождаюсь.",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonheartb": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desireheart_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Моя внешняя оболочка спадает клочьями, и я тоже освобождаюсь."
         },
         {
             "id": "ascensioncravingchange_mothlessonascendfromb",
             "label": "Отказ от оболочки",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonmothb": 1
-            },
-            "description": "Все мы — слои чего-то\n\nно не я",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonmothb": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desiremoth_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Все мы — слои чего-то\n\nно не я"
         },
         {
             "id": "ascensioncravingchange_tryascendfromc",
             "label": "К третьему преображению",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionchangec": 1
-            },
+            "startdescription": "Найти, скрыть, снова найти. Чтобы продвинуться, мне надо научиться сокрытию.",
             "slots": [
                 {
                     "id": "Lesson",
                     "label": "Урок",
-                    "description": "Отказ ради превращения",
-                    "required": {
-                        "ascensionlessonheartc": 1,
-                        "ascensionlessonmothc": 1
-                    },
-                    "greedy": true
+                    "description": "Отказ ради превращения"
                 }
-            ],
-            "startdescription": "Найти, скрыть, снова найти. Чтобы продвинуться, мне надо научиться сокрытию.",
-            "linked": [
-                {
-                    "id": "ascensioncravingchange_heartlessonascendfromc",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_mothlessonascendfromc",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_noascension",
-                    "chance": 100
-                }
-            ],
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensioncravingchange_heartlessonascendfromc",
             "label": "Отказ от шагов",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonheartc": 1
-            },
-            "description": "Без следов, по которым можно пройти, кто нас выследит? Я так хочу отправиться в путь.",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonheartc": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desireheart_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Без следов, по которым можно пройти, кто нас выследит? Я так хочу отправиться в путь."
         },
         {
             "id": "ascensioncravingchange_mothlessonascendfromc",
             "label": "Отказ от шагов",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonmothc": 1
-            },
-            "description": "Древнейшее наставление Гнилушки: «Музыку сменяет тишина».",
-            "comments": "lack of full stop intentional",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonmothc": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desiremoth_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Древнейшее наставление Гнилушки: «Музыку сменяет тишина»."
         },
         {
             "id": "ascensioncravingchange_tryascendfromd",
             "label": "К четвёртому преображению",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionchanged": 1
-            },
+            "startdescription": "Для следующего преображения мне надо размякнуть, чтобы влияние перемен подействовало.",
             "slots": [
                 {
                     "id": "Lesson",
                     "label": "Урок",
-                    "description": "Отказ ради превращения",
-                    "required": {
-                        "ascensionlessonheartd": 1,
-                        "ascensionlessonmothd": 1
-                    },
-                    "greedy": true
+                    "description": "Отказ ради превращения"
                 }
-            ],
-            "startdescription": "Для следующего преображения мне надо размякнуть, чтобы влияние перемен подействовало.",
-            "linked": [
-                {
-                    "id": "ascensioncravingchange_heartlessonascendfromd",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_mothlessonascendfromd",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_noascension",
-                    "chance": 100
-                }
-            ],
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensioncravingchange_heartlessonascendfromd",
             "label": "Отказ от цвета",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonheartd": 1
-            },
-            "description": "Моя бледнеющая плоть насыщена соками распада.",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonheartd": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desireheart_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Моя бледнеющая плоть насыщена соками распада."
         },
         {
             "id": "ascensioncravingchange_mothlessonascendfromd",
             "label": "Отказ от цвета",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonmothd": 1
-            },
-            "description": "Когда я войду в последнюю оболочку, всё, чем я являюсь, растворится. Совсем скоро, пятно за пятном.",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonmothd": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desiremoth_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Когда я войду в последнюю оболочку, всё, чем я являюсь, растворится. Совсем скоро, пятно за пятном."
         },
         {
             "id": "ascensioncravingchange_tryascendfrome",
             "label": "К пятому преображению",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionchangee": 1
-            },
+            "startdescription": "Дверь, в которую я войду, нельзя разглядеть ни наяву, ни закрыв глаза. Мне придётся отдать глаза тому, кто знает путь, и тогда я смогу увидеть.",
             "slots": [
                 {
                     "id": "Lesson",
                     "label": "Урок",
-                    "description": "Отказ ради превращения",
-                    "required": {
-                        "ascensionlessonhearte": 1,
-                        "ascensionlessonmothe": 1
-                    },
-                    "greedy": true
+                    "description": "Отказ ради превращения"
                 }
-            ],
-            "startdescription": "Дверь, в которую я войду, нельзя разглядеть ни наяву, ни закрыв глаза. Мне придётся отдать глаза тому, кто знает путь, и тогда я смогу увидеть.",
-            "linked": [
-                {
-                    "id": "ascensioncravingchange_heartlessonascendfrome",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_mothlessonascendfrome",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_noascension",
-                    "chance": 100
-                }
-            ],
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensioncravingchange_heartlessonascendfrome",
             "label": "Отказ от зрения",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonhearte": 1
-            },
-            "description": "Цитриновые глаза тех, кто прошёл это преображение, иногда принимают за сияющие глаза адептов, близких к Вторжению. Но иллюзия быстро развеивается. ",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonhearte": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desireheart_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Цитриновые глаза тех, кто прошёл это преображение, иногда принимают за сияющие глаза адептов, близких к Вторжению. Но иллюзия быстро развеивается. "
         },
         {
             "id": "ascensioncravingchange_mothlessonascendfrome",
             "label": "Отказ от зрения",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonmothe": 1
-            },
-            "description": "Я вхожу в последнюю оболочку.",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonmothe": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desiremoth_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Я вхожу в последнюю оболочку."
         },
         {
             "id": "ascensioncravingchange_tryascendfromg",
-            "actionid": "craving",
             "label": "Внутреннее биение",
-            "requirements": {
-                "ascensionchangeg": 1
-            },
+            "startdescription": "Мне нужен сон, чтобы душа не разорвалась.",
             "slots": [
                 {
                     "id": "Lesson",
                     "label": "Урок",
-                    "description": "Отказ ради превращения",
-                    "required": {
-                        "ascensionlessonheartf": 1,
-                        "ascensionlessonmothf": 1
-                    },
-                    "greedy": true
+                    "description": "Отказ ради превращения"
                 }
-            ],
-            "startdescription": "Мне нужен сон, чтобы душа не разорвалась.",
-            "warmup": 10
+            ]
         },
         {
             "id": "ascensioncravingchange_tryascendfromf",
-            "actionid": "craving",
             "label": "К шестому преображению",
-            "requirements": {
-                "ascensionchangef": 1
-            },
+            "startdescription": "Кости всегда меняются последними. Когда я узнаю, как именно, можно будет приступать.",
             "slots": [
                 {
                     "id": "Lesson",
                     "label": "Урок",
-                    "description": "Отказ ради превращения",
-                    "required": {
-                        "ascensionlessonheartf": 1,
-                        "ascensionlessonmothf": 1
-                    },
-                    "greedy": true
+                    "description": "Отказ ради превращения"
                 }
-            ],
-            "startdescription": "Кости всегда меняются последними. Когда я узнаю, как именно, можно будет приступать.",
-            "linked": [
-                {
-                    "id": "ascensioncravingchange_heartlessonascendfromf",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_mothlessonascendfromf",
-                    "chance": 100
-                },
-                {
-                    "id": "ascensioncravingchange_noascension",
-                    "chance": 100
-                }
-            ],
-            "warmup": 30
+            ]
         },
         {
             "id": "ascensioncravingchange_heartlessonascendfromf",
             "label": "Отказ от костей",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonheartf": 1
-            },
-            "description": "Солнце садится, тени растворяются, и настаёт время воспоминаний. Я буду вспоминать костями, как меня научили. Уже почти можно приступать.",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonheartf": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desireheart_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Солнце садится, тени растворяются, и настаёт время воспоминаний. Я буду вспоминать костями, как меня научили. Уже почти можно приступать."
         },
         {
             "id": "ascensioncravingchange_mothlessonascendfromf",
             "label": "Отказ от костей",
-            "actionid": "craving",
-            "requirements": {
-                "ascensionlessonmothf": 1
-            },
-            "description": "Солнце зашло, и тени залили всё, словно мазут. Мои кости ощущают, что должно случиться в самом конце. Скоро всё закончится.",
-            "aspects": {
-                "ascend": 1
-            },
-            "effects": {
-                "ascensionlessonmothf": -1
-            },
-            "mutations": [
-                {
-                    "filter": "desire",
-                    "mutate": "desiremoth_track",
-                    "level": 1,
-                    "additive": true
-                }
-            ],
-            "warmup": 10
+            "description": "Солнце зашло, и тени залили всё, словно мазут. Мои кости ощущают, что должно случиться в самом конце. Скоро всё закончится."
         },
         {
             "id": "ascensioncravingchange_noascension",
             "label": "Та же личность",
-            "actionid": "craving",
-            "description": "Пока я не могу пройти по пути преображения дальше. Мне нужно изучить движения тайных форм.",
-            "effects": {
-                "restlessness": 1
-            },
-            "warmup": 10
+            "description": "Пока я не могу пройти по пути преображения дальше. Мне нужно изучить движения тайных форм."
         }
     ]
 }
