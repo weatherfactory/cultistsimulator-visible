@@ -71,7 +71,7 @@ namespace SecretHistories.Constants
 
                 ImportTabletopElementStacks(tabletop, htElementStacks);
 
-                ImportSituations(tabletop, htSituations);
+                    //  ImportSituations(tabletop, htSituations);
 
 
         }

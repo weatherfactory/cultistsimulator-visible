@@ -252,6 +252,14 @@ namespace SecretHistories.Entities {
             Continue(interval);
         }
 
+        public bool CanInteractWith(ITokenPayload incomingTokenPayload)
+        {
+            if (GetAvailableThresholdsForStackPush(incomingTokenPayload).Count > 0)
+                return true;
+
+            return false;
+        }
+
         public bool CanMergeWith(ITokenPayload incomingTokenPayload)
         {
             return false;
@@ -262,9 +270,21 @@ namespace SecretHistories.Entities {
             return false;
         }
 
-        public void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload)
+        public void InteractWithIncoming(Token token)
         {
-            //
+            if (token.IsValidElementStack())
+            {
+                TryPushDraggedStackIntoThreshold(token);
+                if (!IsOpen)
+                    OpenAt(token.Location);
+
+
+            }
+            else
+            {
+                //something has gone awryy
+                token.SetState(new RejectedBySituationState());
+            }
         }
 
         public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
@@ -634,20 +654,6 @@ namespace SecretHistories.Entities {
 
         return thresholdsAvailable;
 
-    }
-
-    public void InteractWithSituation(Token incomingToken)
-    {
-
-        if (incomingToken.IsValidElementStack())
-        {
-            TryPushDraggedStackIntoThreshold(incomingToken);
-        }
-        else
-        {
-                //something has gone awryy
-                incomingToken.SetState(new RejectedBySituationState());
-        }
     }
 
 

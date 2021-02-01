@@ -106,6 +106,11 @@ namespace SecretHistories.Entities.Verbs
             //
         }
 
+        public bool CanInteractWith(ITokenPayload incomingTokenPayload)
+        {
+            return false;
+        }
+
         public ITokenPayload Decay(float interval)
         {
             return this;
@@ -126,7 +131,7 @@ namespace SecretHistories.Entities.Verbs
             return true;
         }
 
-        public void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload)
+        public void InteractWithIncoming(Token incomingToken)
         {
             //
         }

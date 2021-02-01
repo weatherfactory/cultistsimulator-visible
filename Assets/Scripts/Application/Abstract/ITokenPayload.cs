@@ -23,9 +23,10 @@ namespace SecretHistories.Abstract
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValidElementStack();
         void ExecuteHeartbeat(float interval);
+        bool CanInteractWith(ITokenPayload incomingTokenPayload);
         bool CanMergeWith(ITokenPayload incomingTokenPayload);
         bool Retire(RetirementVFX vfx);
-        void AcceptIncomingPayloadForMerge(ITokenPayload incomingTokenPayload);
+        void InteractWithIncoming(Token incomingToken);
         void ShowNoMergeMessage(ITokenPayload incomingTokenPayload);
         void SetQuantity(int quantityToLeaveBehind, Context context);
         void ModifyQuantity(int unsatisfiedChange, Context context);

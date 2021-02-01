@@ -285,10 +285,10 @@ namespace SecretHistories.UI {
 
 
 
-        public void AcceptIncomingPayloadForMerge(ITokenPayload stackMergedIntoThisOne)
+        public void InteractWithIncoming(Token incomingToken)
         {
-            SetQuantity(Quantity + stackMergedIntoThisOne.Quantity, new Context(Context.ActionSource.Merge));
-            stackMergedIntoThisOne.Retire(RetirementVFX.None);
+            SetQuantity(Quantity + incomingToken.Quantity, new Context(Context.ActionSource.Merge));
+            incomingToken.Retire(RetirementVFX.None);
 
             SoundManager.PlaySfx("CardPutOnStack");
 
@@ -316,25 +316,32 @@ namespace SecretHistories.UI {
         }
 
 
-        public virtual bool CanMergeWith(ITokenPayload intoStack)
+        public bool CanInteractWith(ITokenPayload incomingTokenPayload)
         {
+            return CanMergeWith(incomingTokenPayload);
+        }
+
+        public virtual bool CanMergeWith(ITokenPayload otherPayload)
+        {
+            if (!otherPayload.IsValidElementStack())
+                return false;
             if (Decays || Element.Unique)
                 return false;
 
-            if (intoStack.Id != this.Id)
+            if (otherPayload.Id != this.Id)
                 return false;
-            if (intoStack == this)
+            if (otherPayload == this)
                 return false;
             if (!this.AllowsOutgoingMerge())
                 return false;
-            if (!intoStack.Mutations.IsEquivalentTo(Mutations))
+            if (!otherPayload.Mutations.IsEquivalentTo(Mutations))
                 return false;
 
             return true;
         }
 
 
-        virtual public bool AllowsOutgoingMerge()
+        public virtual bool AllowsOutgoingMerge()
         {
             if (Decays || Element.Unique)
                 return false;

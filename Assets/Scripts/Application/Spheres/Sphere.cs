@@ -537,7 +537,7 @@ namespace SecretHistories.Spheres
             {
                 if (token.Payload.CanMergeWith(elementToken.Payload))
                 {
-                    elementToken.Payload.AcceptIncomingPayloadForMerge(token.Payload);
+                    elementToken.Payload.InteractWithIncoming(token);
                     return true;
                 }
             }

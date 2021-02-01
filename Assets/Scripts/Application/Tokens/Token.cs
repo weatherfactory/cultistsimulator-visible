@@ -79,8 +79,7 @@ namespace SecretHistories.UI {
         protected CanvasGroup canvasGroup;
         [SerializeField] protected IManifestation _manifestation;
 
-        [Header("Logic")]
-        protected Situation _attachedToSituation = NullSituation.Create();
+
         //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
         [Encaust]
         public bool Defunct { get; protected set; }
@@ -494,19 +493,11 @@ namespace SecretHistories.UI {
                 Interaction = Interaction.OnReceivedADrop
             });
 
-            if (Payload.IsValidElementStack() && incomingToken.Payload.IsValidElementStack())
-            {
-                if (Payload.CanMergeWith(incomingToken.Payload))
-                    Payload.AcceptIncomingPayloadForMerge(incomingToken.Payload);
-                else
+            if (Payload.CanInteractWith(incomingToken.Payload))
+                Payload.InteractWithIncoming(incomingToken);
+            else
 
-                    Payload.ShowNoMergeMessage(incomingToken.Payload);
-            }
-
-            if(!Payload.IsOpen)
-                Payload.OpenAt(Location);
-
-            _attachedToSituation.InteractWithSituation(incomingToken);
+                Payload.ShowNoMergeMessage(incomingToken.Payload);
 
         }
 
@@ -553,7 +544,7 @@ namespace SecretHistories.UI {
                 return;
 
             //Manifestation didn't handle click
-            Watchman.Get<DebugTools>().SetInput(_attachedToSituation.RecipeId);
+            Watchman.Get<DebugTools>().SetInput(Payload.Id);
 
             if (!Payload.IsOpen)
                 Payload.OpenAt(Location);
@@ -775,9 +766,9 @@ namespace SecretHistories.UI {
             if(CanMergeWithToken(incomingToken))
                 return true;
 
-            //can we put a stack in a threshold associated with this token?
-            if (_attachedToSituation.GetAvailableThresholdsForStackPush(incomingToken.Payload).Count>0)
-             return true;
+            if(Payload.CanInteractWith(incomingToken.Payload))
+
+                 return true;
 
             return false;
         }
