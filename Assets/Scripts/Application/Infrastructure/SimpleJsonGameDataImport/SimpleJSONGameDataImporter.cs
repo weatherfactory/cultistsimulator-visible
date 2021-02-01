@@ -71,9 +71,7 @@ namespace SecretHistories.Constants
 
                 ImportTabletopElementStacks(tabletop, htElementStacks);
 
-                    //  ImportSituations(tabletop, htSituations);
-
-
+                ImportSituations(tabletop, htSituations);
         }
 
         public void ImportCharacter(SourceForGameState source, Character character)
@@ -161,7 +159,7 @@ namespace SecretHistories.Constants
 
             var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
 
-           ImportDecks(character, htDecks);
+     //      ImportDecks(character, htDecks);
 
 
         }

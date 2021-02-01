@@ -74,12 +74,9 @@ namespace SecretHistories.Commands
             newSituation.ActivateRecipe(Recipe);
             newSituation.ReduceLifetimeBy(Recipe.Warmup - TimeRemaining);
             newSituation.OverrideTitle = OverrideTitle;
-            newSituation.ExecuteHeartbeat(0f);
-            foreach(var c in Commands)
-                newSituation.CommandQueue.AddCommand(c);
 
 
-            if(TokensToMigrate.Any())
+            if (TokensToMigrate.Any())
                 newSituation.AcceptTokens(SphereCategory.SituationStorage,TokensToMigrate);
             
 
@@ -100,6 +97,8 @@ namespace SecretHistories.Commands
 
             foreach (var c in Commands)
                 newSituation.CommandQueue.AddCommand(c);
+
+            newSituation.ExecuteHeartbeat(0f);
 
             return newSituation;
 
