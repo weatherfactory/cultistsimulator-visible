@@ -11,15 +11,12 @@ namespace SecretHistories.Interfaces
 {
     public interface IVerb
     {
-        void SetId(string id);
         string Id { get; }
         string Label { get; set; }
-        string Description { get; set; }
-       
+        string Description { get; set; }       
         bool Spontaneous { get; }
-        string Art { get; }
+        string Icon { get; }
         List<SphereSpec> Thresholds { get; }
-      bool ExclusiveOpen { get; }
     }
 
 }

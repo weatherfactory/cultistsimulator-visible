@@ -34,7 +34,7 @@ namespace SecretHistories.Entities
 
         public  bool Spontaneous => true;
 
-        public string Art=>String.Empty;
+        public string Icon=>String.Empty;
 
 
         public Dictionary<string, int> Mutations { get; }

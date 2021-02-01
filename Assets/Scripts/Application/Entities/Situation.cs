@@ -239,7 +239,8 @@ namespace SecretHistories.Entities {
 
         public void InitialiseManifestation(IManifestation manifestation)
         {
-        //
+            manifestation.InitialiseVisuals(this);
+
         }
 
         public bool IsValidElementStack()
@@ -430,17 +431,23 @@ namespace SecretHistories.Entities {
 
         public void NotifySubscribersOfStateAndTimerChange()
         {
+            //This is also schizo. SituationSubscriber is used for window, but OnPayloadChanged is used for token.
             foreach (var subscriber in _subscribers)
             {
                 subscriber.SituationStateChanged(this);
                 subscriber.TimerValuesChanged(this);
             }
+
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Update));
         }
 
         public void NotifySubscribersOfTimerValueUpdate()
         {
+            //This is also schizo. SituationSubscriber is used for window, but OnPayloadChanged is used for token.
+
             foreach (var subscriber in _subscribers)
                 subscriber.TimerValuesChanged(this);
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update));
         }
 
         public void SendNotificationToSubscribers(INotification notification)
@@ -799,7 +806,18 @@ namespace SecretHistories.Entities {
                 return false;
             }
         }
-        public string Icon { get; }
+
+        public string Icon
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Verb.Icon))
+                    return Verb.Icon;
+
+                return Verb.Id;
+            }
+
+        }
 
         public string GetIllumination(string key)
         {

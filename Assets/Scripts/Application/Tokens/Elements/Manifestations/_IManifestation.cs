@@ -39,7 +39,6 @@ namespace SecretHistories.Elements.Manifestations
         void InitialiseVisuals(IManifestable manifestable);
 
         void UpdateVisuals(IManifestable manifestable);
-        void OverrideIcon(string icon);
 
         void OnBeginDragVisuals();
         void OnEndDragVisuals();

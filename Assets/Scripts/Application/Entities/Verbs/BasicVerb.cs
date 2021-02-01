@@ -30,7 +30,7 @@ namespace SecretHistories.Entities
 
         [FucineValue]
         [Encaust]
-        public string Art { get; set; }
+        public string Icon { get; set; }
 
 
         public event Action<TokenPayloadChangedArgs> OnChanged;

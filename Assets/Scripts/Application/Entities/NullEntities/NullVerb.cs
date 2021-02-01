@@ -39,7 +39,7 @@ namespace SecretHistories.NullObjects
         public string Description { get; set; }
         
         public bool Spontaneous { get; }
-        public string Art => string.Empty;
+        public string Icon => string.Empty;
 
 
         public Type GetManifestationType(SphereCategory forSphereCategory)
