@@ -30,28 +30,27 @@ namespace SecretHistories.UI {
         public OnSphereAddedEvent OnSphereAdded => thresholdsWrangler.OnSphereAdded;
 
         public OnSphereRemovedEvent OnSphereRemoved => thresholdsWrangler.OnSphereRemoved;
-        private SituationPath _situationPath;
-        private IVerb _situationVerb;
+        private Situation _situation;
 
         public void RegisterFor(Situation situation)
         {
 
-            situation.RegisterDominion(this);
-            _situationPath = situation.Path;
+            _situation = situation; // this is a bit schizo; we're subscribing to it, but we're also keeping a reference?
+
+            _situation.RegisterDominion(this);
 
             foreach (var subscriber in gameObject.GetComponentsInChildren<ISituationSubscriber>())
-                situation.AddSubscriber(subscriber);
+                _situation.AddSubscriber(subscriber);
 
             foreach (var existingSphere in gameObject.GetComponentsInChildren<Sphere>())
-                situation.AttachSphere(existingSphere);
+                _situation.AttachSphere(existingSphere);
+
 
         }
 
 
         public void SituationStateChanged(Situation situation)
         {
-            _situationPath = situation.Path;
-            _situationVerb = situation.Verb;
 
             if(situation.CurrentState.IsVisibleInThisState(this))
                 canvasGroupFader.Show();
@@ -85,7 +84,7 @@ namespace SecretHistories.UI {
             foreach (var activeInState in VisibleForStates)
                 spec.MakeActiveInState(activeInState);
 
-            thresholdsWrangler.BuildPrimaryThreshold(spec,_situationPath,_situationVerb);
+            thresholdsWrangler.BuildPrimaryThreshold(spec,_situation.Path,_situation.Verb);
         }
 
         public bool VisibleFor(StateEnum state)
