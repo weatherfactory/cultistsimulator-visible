@@ -123,10 +123,10 @@ namespace SecretHistories.UI {
             if(args.ChangeType==PayloadChangeType.Retirement)
                 Retire();
             if(_payload.IsOpen && !this.IsVisible)
-                Show(Vector3.zero);
+                PayloadRequestsShow(Vector3.zero);
 
             if(!_payload.IsOpen && this.IsVisible)
-                Hide();
+                PayloadRequestsHide();
         }
 
         public void TryResizeWindow(int slotsCount)
@@ -138,11 +138,14 @@ namespace SecretHistories.UI {
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(icon);
             artwork.sprite = sprite;
         }
-         
-    
+
+        public void CloseButtonClicked()
+        {
+            OnWindowClosed.Invoke(); //calls down to payload, which should then call up again
+        }
 
 
-        public void Show( Vector3 startPosition)
+        public void PayloadRequestsShow( Vector3 startPosition)
 		{
 			if (!IsVisible)
 			{
@@ -155,12 +158,11 @@ namespace SecretHistories.UI {
 
         }
 
-		public void Hide() {
+		public void PayloadRequestsHide() {
             if (IsVisible)
             {
 				SoundManager.PlaySfx("SituationWindowHide");
                 canvasGroupFader.Hide();
-                OnWindowClosed.Invoke();
             }
             
         }
