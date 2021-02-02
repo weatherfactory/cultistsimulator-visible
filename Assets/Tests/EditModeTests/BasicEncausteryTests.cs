@@ -147,10 +147,14 @@ public class EncaustableMissingAPropertyThatCommandXHas : IEncaustable
 }
 
 
-public class EncaustedCommandX
+public class EncaustedCommandX:IEncaustment
 {
     public int MarkedProperty { get; set; }
     public int OtherMarkedProperty { get; set; }
+    public string ToJson()
+    {
+        throw new NotImplementedException();
+    }
 }
 
 }

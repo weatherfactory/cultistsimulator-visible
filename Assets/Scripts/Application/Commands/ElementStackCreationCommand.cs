@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Scripts.Application.Abstract;
+using Newtonsoft.Json;
 using SecretHistories.Abstract;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
@@ -15,7 +16,7 @@ using Object = UnityEngine.Object;
 namespace SecretHistories.Commands
 {
     
-    public class ElementStackCreationCommand: ITokenPayloadCreationCommand
+    public class ElementStackCreationCommand: ITokenPayloadCreationCommand,IEncaustment
     {
         /// <summary>
         /// The element id
@@ -62,6 +63,12 @@ namespace SecretHistories.Commands
 
             
             return elementStack;
+        }
+
+        public string ToJson()
+        {
+            string output = JsonConvert.SerializeObject(this);
+            return output;
         }
     }
 }

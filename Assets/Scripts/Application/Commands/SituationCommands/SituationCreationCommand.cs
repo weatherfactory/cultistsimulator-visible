@@ -22,7 +22,7 @@ using Object = UnityEngine.Object;
 
 namespace SecretHistories.Commands
 {
-    public class SituationCreationCommand: ISaveable,ITokenPayloadCreationCommand
+    public class SituationCreationCommand: ISaveable,ITokenPayloadCreationCommand,IEncaustment
     {
 
         public IVerb Verb { get; set; }
@@ -55,6 +55,8 @@ namespace SecretHistories.Commands
             Path =new SituationPath(verb);
             CommandQueue = new SituationCommandQueue();
         }
+
+
 
         
         public ITokenPayload Execute(Context context)

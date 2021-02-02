@@ -14,6 +14,10 @@ namespace SecretHistories.Commands
     {
         public T Encaust(IEncaustable encaustable) 
         {
+
+         if(!typeof(IEncaustment).IsAssignableFrom(typeof(T)))
+             throw new ApplicationException($"Trying to encaust to {typeof(T)}, but it doesn't implement IEncaustment");
+
             throwExceptionIfEncaustmentAttributesAreHinky(encaustable,typeof(T));
             
             T encaustedCommand = setCommandPropertiesFromEncaustable<T>(encaustable);

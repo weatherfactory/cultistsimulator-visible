@@ -17,7 +17,7 @@ using SecretHistories.UI;
 
 namespace Assets.Scripts.Application.Commands.SituationCommands
 {
-    public class TokenCreationCommand
+    public class TokenCreationCommand:IEncaustment
     {
         public TokenLocation Location { get; set; }
         public TokenTravelItinerary CurrentItinerary { get; set; }
