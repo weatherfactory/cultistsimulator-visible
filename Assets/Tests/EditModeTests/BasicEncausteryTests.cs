@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application;
+using Newtonsoft.Json;
 using SecretHistories.Abstract;
 
 using NUnit.Framework;
@@ -83,8 +84,28 @@ namespace BasicEncaustingTests
 
             Assert.Throws<ApplicationException>(() => encaustery.Encaust(ex));
         }
+        [Test]
+        public void IEncaustment_Serialises()
+        {
+            var encaustery = new Encaustery<EncaustedCommandX>();
+            var vx = new ValidEncaustableX { MarkedProperty = 1, OtherMarkedProperty = 2 };
+            var encaustedCommand = encaustery.Encaust(vx);
+            var json = encaustedCommand.ToJson();
+            Assert.IsInstanceOf<string>(json);
+        }
 
-        
+        [Test]
+        public void IEncaustment_Deserialises()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public void IEncaustment_SerialisationMatchesDeserialisation()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 
 public class NonEncaustableX : IEncaustable
@@ -153,8 +174,9 @@ public class EncaustedCommandX:IEncaustment
     public int OtherMarkedProperty { get; set; }
     public string ToJson()
     {
-        throw new NotImplementedException();
-    }
+        string output = JsonConvert.SerializeObject(this);
+        return output;
+        }
 }
 
 }

@@ -9,21 +9,11 @@ using NUnit.Framework;
     public class EncaustmentSerialisationTests
     {
         [Test]
-        public void IEncaustment_Serialises()
+        public void ElementStack_SerialisationAndDeserialisationMatch()
         {
             throw new NotImplementedException();
         }
 
-        [Test]
-        public void IEncaustment_Deserialises()
-        {
-        throw new NotImplementedException();
-    }
 
-        [Test]
-        public void IEncaustment_SerialisationMatchesDeserialisation()
-        {
-        throw new NotImplementedException();
-    }
 
     }
