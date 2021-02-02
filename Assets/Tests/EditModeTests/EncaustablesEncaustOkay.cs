@@ -56,11 +56,9 @@ using Object = UnityEngine.Object;
             var encaustery = new Encaustery<TokenCreationCommand>();
             var tokenObject=new GameObject();
             var token=tokenObject.AddComponent<Token>();
-            tokenObject.AddComponent<RectTransform>();
             var elementStack = new ElementStack();
             token.SetPayload(elementStack);
-
-        encaustery.Encaust(token);
+            encaustery.Encaust(token);
         }
 
 
@@ -70,8 +68,12 @@ using Object = UnityEngine.Object;
         {
            var encaustery=new Encaustery<TokenCreationCommand>();
            var tokenObject = new GameObject();
-           tokenObject.AddComponent<Token>();
-     throw new NotImplementedException();
+           var token=tokenObject.AddComponent<Token>();
+
+           var situation=new Situation(new SituationPath("arbitraryverb"));
+           token.SetPayload(situation);
+
+           encaustery.Encaust(token);
         }
 
         [Test]
