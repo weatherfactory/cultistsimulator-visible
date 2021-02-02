@@ -10,23 +10,23 @@ using SecretHistories.Entities;
 
 namespace SecretHistories.Commands
 {
-    public class Encaustery<T> where T: class,new()
+    public class Encaustery<T> where T: class, IEncaustment, new()
     {
         public T Encaust(IEncaustable encaustable) 
         {
 
-         if(!typeof(IEncaustment).IsAssignableFrom(typeof(T)))
-             throw new ApplicationException($"Trying to encaust to {typeof(T)}, but it doesn't implement IEncaustment");
+         //if(!typeof(IEncaustment).IsAssignableFrom(typeof(T)))
+         //    throw new ApplicationException($"Trying to encaust to {typeof(T)}, but it doesn't implement IEncaustment");
 
-            throwExceptionIfEncaustmentAttributesAreHinky(encaustable,typeof(T));
+         throwExceptionIfEncaustmentAttributesAreHinky(encaustable,typeof(T));
             
-            T encaustedCommand = setCommandPropertiesFromEncaustable<T>(encaustable);
+         T encaustedCommand = setCommandPropertiesFromEncaustable<T>(encaustable);
 
-            return encaustedCommand;
+         return encaustedCommand;
 
         }
 
-
+        
         private void throwExceptionIfEncaustmentAttributesAreHinky(IEncaustable encaustable,Type specifiedGenericCommandType)
         {
             //is this an encaustable class?

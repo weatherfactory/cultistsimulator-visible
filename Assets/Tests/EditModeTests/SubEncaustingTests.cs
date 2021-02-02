@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
@@ -27,9 +28,14 @@ public class SubEncaustingTests
 
     }
 
-    public class OuterCommandX
+    public class OuterCommandX: IEncaustment
     {
         public InnerCommandX MarkedProperty { get; set; }
+        public string ToJson()
+        {
+            string output = JsonConvert.SerializeObject(this);
+            return output;
+        }
     }
 
     public class InnerCommandX

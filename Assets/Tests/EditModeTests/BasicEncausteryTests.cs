@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application;
+using Assets.Scripts.Application.Commands.Encausting;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
 
@@ -11,7 +12,8 @@ using NUnit.Framework;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
-    
+using UnityEditor;
+
 namespace BasicEncaustingTests
 {
     [TestFixture]
@@ -88,22 +90,25 @@ namespace BasicEncaustingTests
         public void IEncaustment_Serialises()
         {
             var encaustery = new Encaustery<EncaustedCommandX>();
-            var vx = new ValidEncaustableX { MarkedProperty = 1, OtherMarkedProperty = 2 };
+            var vx = new ValidEncaustableX();
             var encaustedCommand = encaustery.Encaust(vx);
             var json = encaustedCommand.ToJson();
             Assert.IsInstanceOf<string>(json);
         }
 
-        [Test]
-        public void IEncaustment_Deserialises()
-        {
-            throw new NotImplementedException();
-        }
 
         [Test]
-        public void IEncaustment_SerialisationMatchesDeserialisation()
+        public void IEncaustment_ValuesMaintainedOnReserialisation()
         {
-            throw new NotImplementedException();
+            var encaustery = new Encaustery<EncaustedCommandX>();
+            var vx = new ValidEncaustableX { MarkedProperty = 1, OtherMarkedProperty = 2 };
+            var encaustedCommand = encaustery.Encaust(vx);
+            var json = encaustedCommand.ToJson();
+            
+            var jsonportal = new JSONPortal<EncaustedCommandX>();
+            var dx = jsonportal.Deserialize(json);
+            Assert.AreEqual(vx.MarkedProperty,dx.MarkedProperty);
+            Assert.AreEqual(vx.OtherMarkedProperty,dx.OtherMarkedProperty);
         }
 
     }
@@ -172,11 +177,13 @@ public class EncaustedCommandX:IEncaustment
 {
     public int MarkedProperty { get; set; }
     public int OtherMarkedProperty { get; set; }
+    
     public string ToJson()
     {
         string output = JsonConvert.SerializeObject(this);
         return output;
-        }
+    }
+
 }
 
 }
