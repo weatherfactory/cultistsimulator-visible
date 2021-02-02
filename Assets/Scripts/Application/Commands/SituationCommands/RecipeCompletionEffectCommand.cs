@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 
@@ -41,7 +42,6 @@ namespace SecretHistories.Core
 
             return Recipe.DeckEffects;
         }
-
 
     }
 }

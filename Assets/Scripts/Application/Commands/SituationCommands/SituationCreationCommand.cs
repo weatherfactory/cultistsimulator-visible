@@ -7,6 +7,7 @@ using Assets.Scripts.Application.Interfaces;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
 using SecretHistories.Constants;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
@@ -29,14 +30,13 @@ namespace SecretHistories.Commands
         public Recipe Recipe { get; set; }
         public StateEnum State { get; set; }
         public float TimeRemaining { get; set; }
-        public float IntervalForLastHeartbeat { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public Dictionary<string, int> Mutations { get; set; }
         public SituationPath Path { get; set; }
         public bool IsOpen { get; set; }
         public List<Token> TokensToMigrate=new List<Token>();
 
-        public List<ISituationCommand> CommandQueue=new List<ISituationCommand>();
+        public SituationCommandQueue CommandQueue { get; set; }
         private WindowCreationCommand windowCreationCommand;
 
         public SituationCreationCommand()
@@ -53,6 +53,7 @@ namespace SecretHistories.Commands
             Verb = verb;
             State = state;
             Path =new SituationPath(verb);
+            CommandQueue = new SituationCommandQueue();
         }
 
         
@@ -95,7 +96,9 @@ namespace SecretHistories.Commands
                 var newWindow = windowCreationCommand.Execute(sphereCatalogue);
                 newWindow.Attach(newSituation,windowLocation); }
 
-            foreach (var c in CommandQueue)
+            newSituation.CommandQueue.AddCommandsFrom(CommandQueue);
+
+            foreach (var c in CommandQueue.GetCurrentCommandsAsList())
                 newSituation.CommandQueue.AddCommand(c);
 
             newSituation.ExecuteHeartbeat(0f);

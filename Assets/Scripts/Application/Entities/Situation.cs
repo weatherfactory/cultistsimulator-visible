@@ -41,7 +41,7 @@ namespace SecretHistories.Entities {
 
         [Encaust] public float TimeRemaining => _timeshadow.LifetimeRemaining;
 
-        [Encaust] public float IntervalForLastHeartbeat => _timeshadow.LastInterval;
+        
 
         [Encaust]
         public IVerb Verb { get; set; }
@@ -58,8 +58,8 @@ namespace SecretHistories.Entities {
         [Encaust]
         public SituationCommandQueue CommandQueue { get; set; } = new SituationCommandQueue();
 
-        [Encaust]
-        public RecipeCompletionEffectCommand CurrentCompletionEffectCommand { get; set; } = new RecipeCompletionEffectCommand();
+      //  [Encaust]
+      //  public RecipeCompletionEffectCommand CurrentCompletionEffectCommand { get; set; } = new RecipeCompletionEffectCommand();
 
         [Encaust] public Dictionary<string, int> Mutations => new Dictionary<string, int>();
 
@@ -70,6 +70,7 @@ namespace SecretHistories.Entities {
         [DontEncaust] public string Label => CurrentRecipePrediction.Title;
         [DontEncaust] public string Description => CurrentRecipePrediction.DescriptiveText;
         [DontEncaust] public int Quantity => 1;
+        [DontEncaust] public float IntervalForLastHeartbeat => _timeshadow.LastInterval;
         [DontEncaust]
         public string UniquenessGroup
         {
@@ -460,8 +461,6 @@ namespace SecretHistories.Entities {
         _timeshadow.SpendTime(interval);
 
             State.Continue(this);
-
-            CurrentCompletionEffectCommand = new RecipeCompletionEffectCommand();
 
             return State;
         }
