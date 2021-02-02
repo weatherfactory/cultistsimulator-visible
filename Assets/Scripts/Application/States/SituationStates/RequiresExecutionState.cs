@@ -60,7 +60,7 @@ namespace SecretHistories.States
             var tc = Watchman.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(situation.GetAspects(true));
 
-            var rc = new RecipeConductor(aspectsInContext, Watchman.Get<Character>());
+            var rc = new RecipeConductor(aspectsInContext, Watchman.Get<Stable>().Protag());
 
             var linkedRecipe = rc.GetLinkedRecipe(situation.Recipe);
 

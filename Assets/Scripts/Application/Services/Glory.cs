@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities;
 using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
@@ -26,7 +27,7 @@ using UnityEngine;
 namespace SecretHistories.Services
 {
 
-    public class Glory: MonoBehaviour,ICharacterHost
+    public class Glory: MonoBehaviour
     {
 #pragma warning disable 649
 
@@ -44,6 +45,7 @@ namespace SecretHistories.Services
         [SerializeField] private SoundManager soundManager;
         public Limbo limbo;
         public NullManifestation NullManifestation;
+        [SerializeField]private Stable _stable;
 
         [SerializeField] private string OverrideContentFolder;
 
@@ -170,7 +172,7 @@ namespace SecretHistories.Services
                 
                 RegisterSavedOrNewCharacter(registryAccess);
 
-                var chronicler = new Chronicler(Watchman.Get<Character>(), Watchman.Get<Compendium>());
+                var chronicler = new Chronicler(Watchman.Get<Stable>().Protag(), Watchman.Get<Compendium>());
 
                 registryAccess.Register(chronicler);
 
@@ -213,7 +215,7 @@ namespace SecretHistories.Services
                 characterCreationCommand.EndingTriggered=NullEnding.Create();
             }
 
-            var character = characterCreationCommand.Execute(this);
+            var character = characterCreationCommand.Execute(_stable);
 
             watchman.Register(character);
 

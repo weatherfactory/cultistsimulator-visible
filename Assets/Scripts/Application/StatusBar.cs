@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 using SecretHistories.Services;
 using SecretHistories.UI;
@@ -16,12 +17,12 @@ public class StatusBar : MonoBehaviour,ICharacterSubscriber
 
     public void Start()
     {
-        Watchman.Get<Character>().Subscribe(this);
+        Watchman.Get<Stable>().Protag().Subscribe(this);
     }
 
     public void ChangeCharacterName(string newName)
     {
-        Character currentCharacter = Watchman.Get<Character>();
+        Character currentCharacter = Watchman.Get<Stable>().Protag();
 
         if(currentCharacter.Name!=newName)
             currentCharacter.Name = newName;

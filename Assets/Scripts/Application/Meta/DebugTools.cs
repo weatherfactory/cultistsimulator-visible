@@ -386,7 +386,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         NoonUtility.Log("Total time to import: " + (DateTime.Now-startImport));
 
         // Populate current decks with new cards (this will shuffle the deck)
-        Watchman.Get<Character>().ResetStartingDecks();
+        Watchman.Get<Stable>().Protag().ResetStartingDecks();
 
     }
 
@@ -477,7 +477,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     void ResetDecks()
     {
-        var character= Watchman.Get<Character>();
+        var character= Watchman.Get<Stable>().Protag();
         character.ResetStartingDecks();
     }
 

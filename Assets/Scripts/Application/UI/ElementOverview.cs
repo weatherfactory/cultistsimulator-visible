@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Application.Entities;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
@@ -24,7 +25,7 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
         Watchman.Get<SphereCatalogue>().Subscribe(this);
 
  
-        Legacy activeLegacy = Watchman.Get<Character>().ActiveLegacy;
+        Legacy activeLegacy = Watchman.Get<Stable>().Protag().ActiveLegacy;
         List<string> statusBarElementIds = new List<string>(activeLegacy.StatusBarElements);
 
         for (int a = 0; a < MAX_ELEMENTS; a++)

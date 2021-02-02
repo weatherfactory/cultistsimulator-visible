@@ -58,7 +58,7 @@ namespace SecretHistories.UI {
             contentImporter.PopulateCompendium(compendium, Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
             var ls = new LegacySelector(Watchman.Get<Compendium>());
-            AvailableLegaciesForEnding = ls.DetermineLegacies(Watchman.Get<Character>().EndingTriggered);
+            AvailableLegaciesForEnding = ls.DetermineLegacies(Watchman.Get<Stable>().Protag().EndingTriggered);
 
             InitLegacyButtons();
             canvasFader.SetFinalAlpha(0f);
@@ -114,7 +114,7 @@ namespace SecretHistories.UI {
 
         async void  ReturnToMenuDelayed() {
 			
-            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Character>(), SourceForGameState.DefaultSave);
+            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Stable>().Protag(), SourceForGameState.DefaultSave);
             await saveTask;
 
             Watchman.Get<StageHand>().MenuScreen();
@@ -133,7 +133,7 @@ namespace SecretHistories.UI {
 		void StartGameDelayed()
         {
             var chosenLegacy = AvailableLegaciesForEnding[selectedLegacy];
-            Watchman.Get<Character>().Reincarnate(chosenLegacy,NullEnding.Create());
+            Watchman.Get<Stable>().Protag().Reincarnate(chosenLegacy,NullEnding.Create());
 
             Watchman.Get<StageHand>().NewGameOnTabletop();
 
@@ -180,7 +180,7 @@ namespace SecretHistories.UI {
 
             title.text = legacySelected.Label;
             description.text = legacySelected.Description;
-            var ending = Watchman.Get<Character>().EndingTriggered;
+            var ending = Watchman.Get<Stable>().Protag().EndingTriggered;
             if (legacySelected.FromEnding == ending.Id)
 			{
                 //availableBecause.text = "[Always available after " + ending.Title.ToUpper() + "]";

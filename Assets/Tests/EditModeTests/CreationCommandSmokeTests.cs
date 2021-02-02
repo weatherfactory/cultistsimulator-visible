@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using Assets.Scripts.Application.Commands;
 using Assets.Scripts.Application.Commands.SituationCommands;
+using Assets.Scripts.Application.Entities;
 using NUnit.Framework;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
@@ -95,16 +96,15 @@ public class CreationCommandsSmokeTests
 
     }
 
-    class CharacterHost : MonoBehaviour, ICharacterHost { }
 
 
     [Test]
     public void CreateCharacter()
     {
         
-        var characterHost=new GameObject().AddComponent<CharacterHost>();
+        var characterStable=new GameObject().AddComponent<Stable>();
         var characterCreationCommand=new CharacterCreationCommand();
-        var character = characterCreationCommand.Execute(characterHost);
+        var character = characterCreationCommand.Execute(characterStable);
         Assert.IsInstanceOf<Character>(character);
     }
 

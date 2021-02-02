@@ -46,7 +46,7 @@ namespace SecretHistories.UI
 		{
             FadeIn(durationFadeIn);
 
-            var ending = Watchman.Get<Character>().EndingTriggered;
+            var ending = Watchman.Get<Stable>().Protag().EndingTriggered;
 
             if (ending == null)
                 ending = Ending.DefaultEnding();
@@ -99,7 +99,7 @@ namespace SecretHistories.UI
 		{
             //save on exit, so the player will return here, not begin a new game
             
-            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()),Watchman.Get<Character>(), SourceForGameState.DefaultSave);
+            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()),Watchman.Get<Stable>().Protag(), SourceForGameState.DefaultSave);
             await saveTask;
 
 

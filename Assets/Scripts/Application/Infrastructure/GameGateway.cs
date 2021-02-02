@@ -129,7 +129,7 @@ namespace SecretHistories.Constants
 
         public void BeginNewGame()
         {
-            Character character = Watchman.Get<Character>();
+            Character character = Watchman.Get<Stable>().Protag();
             Sphere tabletopSphere = Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere();
 
 
@@ -155,13 +155,13 @@ namespace SecretHistories.Constants
         public async void EndGame(Ending ending, Token _anchor)
         {
 
-            var character = Watchman.Get<Character>();
+            var character = Watchman.Get<Stable>().Protag();
             var chronicler = Watchman.Get<Chronicler>();
 
             chronicler.ChronicleGameEnd(Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<SphereCatalogue>().GetSpheres(), ending);
             character.Reincarnate(NullLegacy.Create(), ending);
 
-            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Character>(), SourceForGameState.DefaultSave);
+            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Stable>().Protag(), SourceForGameState.DefaultSave);
             var result = await saveTask;
 
 
@@ -179,7 +179,7 @@ namespace SecretHistories.Constants
             //    , Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<MetaInfo>());
 
             //var saveTask = Watchman.Get<GameSaveManager>()
-            //    .SaveActiveGameAsync(tableSaveState, Watchman.Get<Character>(), SourceForGameState.DefaultSave);
+            //    .SaveActiveGameAsync(tableSaveState, Watchman.Get<Stable>().Protag(), SourceForGameState.DefaultSave);
 
             //var success = await saveTask;
 

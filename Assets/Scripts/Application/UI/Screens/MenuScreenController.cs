@@ -169,7 +169,7 @@ public class MenuScreenController : LocalNexus {
     void UpdateAndShowMenu()
     {
         
-        var currentCharacter = Watchman.Get<Character>();
+        var currentCharacter = Watchman.Get<Stable>().Protag();
 
         // Show the buttons as needed
         var savedGameExists = (currentCharacter.State != CharacterState.Unformed);
@@ -253,7 +253,7 @@ public class MenuScreenController : LocalNexus {
         if (!canTakeInput)
             return;
 		
-        if (Watchman.Get<Character>().State==CharacterState.Viable) {
+        if (Watchman.Get<Stable>().Protag().State==CharacterState.Viable) {
             //back into the game!
             Watchman.Get<StageHand>().LoadGameOnTabletop(SourceForGameState.DefaultSave);
             return;
@@ -283,10 +283,10 @@ public class MenuScreenController : LocalNexus {
 
     private async void ResetToLegacy(Legacy activeLegacy)
     {
-        Watchman.Get<Character>().Reincarnate(activeLegacy,NullEnding.Create());
+        Watchman.Get<Stable>().Protag().Reincarnate(activeLegacy,NullEnding.Create());
 
 
-        var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Character>(), SourceForGameState.DefaultSave);
+        var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Stable>().Protag(), SourceForGameState.DefaultSave);
         await saveTask;
 
     }

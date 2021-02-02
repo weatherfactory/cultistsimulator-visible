@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Services;
 using SecretHistories.UI;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace SecretHistories.Commands
 {
@@ -26,10 +29,14 @@ namespace SecretHistories.Commands
             RecipeExecutions=new Dictionary<string, int>();
         }
 
-        public Character Execute(ICharacterHost characterHost)
+        public Character Execute(Stable stable)
         {
-            var character = Watchman.Get<PrefabFactory>().CreateLocally<Character>(characterHost.transform);
-            
+      
+            var character = Watchman.Get<PrefabFactory>().CreateLocally<Character>(stable.transform);
+            character.name = "Character_" + Name;
+
+            stable.AddNewCharacterAsProtag(character);
+
             Watchman.Get<Compendium>().SupplyLevers(character);
 
             return character;

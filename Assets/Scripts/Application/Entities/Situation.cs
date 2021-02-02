@@ -13,6 +13,7 @@ using SecretHistories.States;
 using SecretHistories.UI;
 using Assets.Logic;
 using Assets.Scripts.Application.Commands.SituationCommands;
+using Assets.Scripts.Application.Entities;
 using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Logic;
 using SecretHistories.Commands.SituationCommands;
@@ -516,7 +517,7 @@ namespace SecretHistories.Entities {
             var tc = Watchman.Get<SphereCatalogue>();
             var aspectsInContext = tc.GetAspectsInContext(GetAspects(true));
 
-            RecipeConductor rc =new RecipeConductor(aspectsInContext, Watchman.Get<Character>());
+            RecipeConductor rc =new RecipeConductor(aspectsInContext, Watchman.Get<Stable>().Protag());
 
             IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetRecipeExecutionCommands(Recipe);
 
@@ -534,9 +535,9 @@ namespace SecretHistories.Entities {
                     SpawnNewSituation(currentEffectCommand);
                 else
                 {
-                    Watchman.Get<Character>().AddExecutionsToHistory(currentEffectCommand.Recipe.Id, 1);
+                    Watchman.Get<Stable>().Protag().AddExecutionsToHistory(currentEffectCommand.Recipe.Id, 1);
                     var executor = new SituationEffectExecutor(Watchman.Get<TabletopManager>());
-                    executor.RunEffects(currentEffectCommand, GetSingleSphereByCategory(SphereCategory.SituationStorage), Watchman.Get<Character>(), Watchman.Get<IDice>());
+                    executor.RunEffects(currentEffectCommand, GetSingleSphereByCategory(SphereCategory.SituationStorage), Watchman.Get<Stable>().Protag(), Watchman.Get<IDice>());
 
                     if (!string.IsNullOrEmpty(currentEffectCommand.Recipe.Ending))
                     {
@@ -767,7 +768,7 @@ namespace SecretHistories.Entities {
             var aspectsInContext = tc.GetAspectsInContext(aspects);
 
 
-            var recipe = Watchman.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Watchman.Get<Character>(), false);
+            var recipe = Watchman.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Watchman.Get<Stable>().Protag(), false);
 
             //no recipe found? get outta here
             if (recipe != null)
@@ -792,7 +793,7 @@ namespace SecretHistories.Entities {
             var aspectsInContext =
                 Watchman.Get<SphereCatalogue>().GetAspectsInContext(aspectsAvailableToSituation);
 
-            RecipeConductor rc = new RecipeConductor(aspectsInContext,Watchman.Get<Character>());
+            RecipeConductor rc = new RecipeConductor(aspectsInContext,Watchman.Get<Stable>().Protag());
 
             return rc.GetPredictionForFollowupRecipe(Recipe, this);
         }

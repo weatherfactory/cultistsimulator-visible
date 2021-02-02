@@ -100,8 +100,8 @@ public class Character:MonoBehaviour,IEncaustable
     public DeckInstance DeckPrefab;
 
 
-    private Dictionary<string, string> _inProgressHistoryRecords;
-    private Dictionary<string, string> _previousCharacterHistoryRecords;
+    private Dictionary<string, string> _inProgressHistoryRecords=new Dictionary<string, string>();
+    private Dictionary<string, string> _previousCharacterHistoryRecords=new Dictionary<string, string>();
 
     public void Subscribe(ICharacterSubscriber subscriber)
     {

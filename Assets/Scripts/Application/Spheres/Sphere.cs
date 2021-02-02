@@ -474,7 +474,7 @@ namespace SecretHistories.Spheres
 
                 if (EnforceUniqueStacksInThisContainer)
                 {
-                    var dealer = new Dealer(Watchman.Get<Character>());
+                    var dealer = new Dealer(Watchman.Get<Stable>().Protag());
                     if (!String.IsNullOrEmpty(token.Payload.UniquenessGroup))
                         dealer.RemoveFromAllDecksIfInUniquenessGroup(token.Payload.UniquenessGroup);
                     if (token.Payload.Unique)

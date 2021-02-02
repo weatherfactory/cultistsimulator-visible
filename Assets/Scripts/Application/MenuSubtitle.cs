@@ -33,9 +33,9 @@ public class MenuSubtitle : MonoBehaviour
     {
         //update subtitle text
 
-        if (Watchman.Get<Character>().ActiveLegacy != null)
+        if (Watchman.Get<Stable>().Protag().ActiveLegacy != null)
             //we need to go the long wway round because the label on the legacy entity in the character won't have changed if the compendium has just been repopulated with a different culture
-            SetText(Watchman.Get<Compendium>().GetEntityById<Legacy>(Watchman.Get<Character>().ActiveLegacy.Id).Label);
+            SetText(Watchman.Get<Compendium>().GetEntityById<Legacy>(Watchman.Get<Stable>().Protag().ActiveLegacy.Id).Label);
         else
         {
             if (NoonUtility.PerpetualEdition)
