@@ -98,8 +98,7 @@ namespace SecretHistories.Commands
 
             newSituation.CommandQueue.AddCommandsFrom(CommandQueue);
 
-            foreach (var c in CommandQueue.GetCurrentCommandsAsList())
-                newSituation.CommandQueue.AddCommand(c);
+
 
             newSituation.ExecuteHeartbeat(0f);
 
