@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Commands;
+using SecretHistories.Abstract;
+using SecretHistories.Commands;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Constants;
@@ -13,7 +16,8 @@ using Random = System.Random;
 
 namespace SecretHistories.Entities
 {
-    public class DeckInstance : MonoBehaviour
+    [IsEncaustableClass(typeof(DeckInstanceCreationCommand))]
+    public class DeckInstance : MonoBehaviour,IEncaustable
     {
 #pragma warning disable 649
         private DeckSpec _deckSpec;

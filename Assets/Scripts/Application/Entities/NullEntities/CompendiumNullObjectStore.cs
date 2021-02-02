@@ -16,6 +16,8 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         public CompendiumNullObjectStore()
         {
             NullObjectsForEntities.Add(typeof(Element),NullElement.Create());
+            NullObjectsForEntities.Add(typeof(Ending),NullEnding.Create());
+            NullObjectsForEntities.Add(typeof(Legacy),NullLegacy.Create());
 
         }
 

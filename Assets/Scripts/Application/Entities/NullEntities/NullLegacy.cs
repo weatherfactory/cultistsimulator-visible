@@ -13,5 +13,9 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         {
             return false;
         }
+        public static NullLegacy Create()
+        {
+            return new NullLegacy();
+        }
     }
 }

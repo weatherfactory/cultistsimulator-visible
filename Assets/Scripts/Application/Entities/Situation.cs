@@ -534,7 +534,7 @@ namespace SecretHistories.Entities {
                     SpawnNewSituation(currentEffectCommand);
                 else
                 {
-                    Watchman.Get<Character>().AddExecutionsToHistory(currentEffectCommand.Recipe.Id, 1); //can we make 
+                    Watchman.Get<Character>().AddExecutionsToHistory(currentEffectCommand.Recipe.Id, 1);
                     var executor = new SituationEffectExecutor(Watchman.Get<TabletopManager>());
                     executor.RunEffects(currentEffectCommand, GetSingleSphereByCategory(SphereCategory.SituationStorage), Watchman.Get<Character>(), Watchman.Get<IDice>());
 

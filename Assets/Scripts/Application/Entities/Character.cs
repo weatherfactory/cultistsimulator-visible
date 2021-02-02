@@ -34,10 +34,10 @@ public enum LegacyEventRecordId
 [IsEncaustableClass(typeof(CharacterCreationCommand))]
 public class Character:MonoBehaviour,IEncaustable
     {
-[Encaust]
-public string ActiveLegacyId => ActiveLegacy.Id;
-[Encaust]
-public string EndingTriggeredId => EndingTriggered.Id;
+        [Encaust]
+        public Legacy ActiveLegacy { get; set; }
+        [Encaust]
+        public Ending EndingTriggered { get; set; }
 
     [Encaust]
     public string Name
@@ -70,6 +70,15 @@ public string EndingTriggeredId => EndingTriggered.Id;
                     s.CharacterProfessionUpdated(_name);
         }
     }
+    [Encaust]
+    public Dictionary<string, int> RecipeExecutions => new Dictionary<string, int>(recipeExecutions);
+
+    [Encaust]
+    public Dictionary<string, string> InProgressHistoryRecords=>new Dictionary<string, string>(_inProgressHistoryRecords);
+    
+    [Encaust]
+    public Dictionary<string, string> PreviousCharacterHistoryRecords=> new Dictionary<string, string>(_previousCharacterHistoryRecords);
+
 
     [DontEncaust]
     public CharacterState State
@@ -84,25 +93,15 @@ public string EndingTriggeredId => EndingTriggered.Id;
             return CharacterState.Unformed;
         }
     }
-    [DontEncaust]
-    public Legacy ActiveLegacy { get; set; }
-    [DontEncaust]
-    public Ending EndingTriggered { get; set; }
+
 
 
     public Transform CurrentDecks;
     public DeckInstance DeckPrefab;
 
-    public Dictionary<string, string> GetInProgressHistoryRecords()
-    {
-        return new Dictionary<string, string>(_inProgressHistoryRecords);
-    }
 
-    public Dictionary<string, string> GetPreviousCharacterHistoryRecords()
-    {
-        return new Dictionary<string, string>(_previousCharacterHistoryRecords);
-    }
-
+    private Dictionary<string, string> _inProgressHistoryRecords;
+    private Dictionary<string, string> _previousCharacterHistoryRecords;
 
     public void Subscribe(ICharacterSubscriber subscriber)
     {
@@ -115,8 +114,7 @@ public string EndingTriggeredId => EndingTriggered.Id;
     }
 
 
-    private Dictionary<string, string> _inProgressHistoryRecords;
-    private Dictionary<string, string> _previousCharacterHistoryRecords;
+
 
     private Dictionary<string, int> recipeExecutions;
     private Dictionary<string, DeckInstance> _deckInstances;
@@ -125,10 +123,9 @@ public string EndingTriggeredId => EndingTriggered.Id;
     private string _name = "[unnamed]";
 
     
-    public void Reset(Legacy activeLegacy,Ending endingTriggered)
+    public void Reincarnate(Legacy activeLegacy,Ending endingTriggered)
     {
     
-
             ActiveLegacy = activeLegacy;
             EndingTriggered = endingTriggered;
 
@@ -171,15 +168,6 @@ public string EndingTriggeredId => EndingTriggered.Id;
     }
 
 
-    public void ClearExecutions()
-    {
-        recipeExecutions.Clear();
-    }
-
-    public Dictionary<string, int> GetAllExecutions()
-    {
-        return new Dictionary<string, int>(recipeExecutions);
-    }
 
     public void AddExecutionsToHistory(string forRecipeId,int executions)
     {

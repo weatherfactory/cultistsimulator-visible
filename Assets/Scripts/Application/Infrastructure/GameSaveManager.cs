@@ -12,6 +12,7 @@ using SecretHistories.Services;
 
 using OrbCreationExtensions;
 using SecretHistories.Abstract;
+using SecretHistories.Commands;
 using SecretHistories.Constants;
 using SecretHistories.Enums;
 using SecretHistories.Spheres;
@@ -215,9 +216,9 @@ namespace SecretHistories.Infrastructure
             simpleJsonGameDataImporter.ImportTableState(source,tabletop);
         }
 
-        public void LoadCharacterState(SourceForGameState source,Character character)
+        public CharacterCreationCommand GetCharacterCreationCommandFromSavedState(SourceForGameState source)
         {
-            simpleJsonGameDataImporter.ImportCharacter(source,character);
+          return  simpleJsonGameDataImporter.ImportToCharacterCreationCommand(source);
         }
 
 

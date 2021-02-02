@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Assets.Scripts.Application.Commands.SituationCommands;
+using Assets.Scripts.Application.Entities.NullEntities;
 using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
 using SecretHistories.Commands;
 using SecretHistories.Entities; //Recipe,SlotSpecification
@@ -44,18 +45,7 @@ namespace SecretHistories.Constants
             return htSave.ContainsKey(SaveConstants.SAVE_ELEMENTSTACKS) || htSave.ContainsKey(SaveConstants.SAVE_SITUATIONS);
         }
 
-        private void OldFormatSave_TryRetrieveDefunctCharacter(Hashtable htSave, Character character)
-        {
-            var endingTriggeredForCharacterId =
-                TryGetStringFromHashtable(htSave, SaveConstants.SAVE_CURRENTENDING);
 
-            var endingTriggered = Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
-
-
-
-            character.Reset(null, endingTriggered);
-
-        }
 
 
         public void ImportTableState(SourceForGameState source, Sphere tabletop)
@@ -74,60 +64,52 @@ namespace SecretHistories.Constants
                 ImportSituations(tabletop, htSituations);
         }
 
-        public void ImportCharacter(SourceForGameState source, Character character)
+        public CharacterCreationCommand ImportToCharacterCreationCommand(SourceForGameState source)
         {
-
+            var characterCreationCommand=new CharacterCreationCommand();
             var htSave = RetrieveHashedSaveFromFile(source);
 
             var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
             if(htCharacter==null)
             {
-                 OldFormatSave_TryRetrieveDefunctCharacter(htSave, character);
-                 return;
+                //we can't find a character saved in the newer format. Try looking for a defunct character with an ending saved in the older format.
+                var endingTriggeredId = TryGetStringFromHashtable(htSave, SaveConstants.SAVE_CURRENTENDING);
+                characterCreationCommand.EndingTriggered = Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredId);
+
+                return characterCreationCommand;
             }
-            
+
+
+
 
             var chosenLegacyForCharacterId =TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_ACTIVELEGACY);
 
-            Legacy activeLegacy;
-            Ending endingTriggered;
+            characterCreationCommand.ActiveLegacy = Watchman.Get<Compendium>().GetEntityById<Legacy>(chosenLegacyForCharacterId);
 
-
-            if (string.IsNullOrEmpty(chosenLegacyForCharacterId))
-            {
-                activeLegacy = null;
-            }
-            else
-            {
-               activeLegacy = Watchman.Get<Compendium>().GetEntityById<Legacy>(chosenLegacyForCharacterId);
-            }
 
             var endingTriggeredForCharacterId =
                 TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_CURRENTENDING);
-            if (string.IsNullOrEmpty(endingTriggeredForCharacterId))
-               endingTriggered = null;
-            else
-               endingTriggered = Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
+
+            characterCreationCommand.EndingTriggered = Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
+
 
             
-
-            character.Reset(activeLegacy,endingTriggered);
-
-
             if (htCharacter.ContainsKey(SaveConstants.SAVE_NAME))
-                character.Name = htCharacter[SaveConstants.SAVE_NAME].ToString();
+                characterCreationCommand.Name = htCharacter[SaveConstants.SAVE_NAME].ToString();
 
 
             if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
-                character.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
+                characterCreationCommand.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
 
-
-            character.ClearExecutions();
             if (htCharacter.ContainsKey(SaveConstants.SAVE_EXECUTIONS))
             {
                 var htExecutions = htCharacter.GetHashtable(SaveConstants.SAVE_EXECUTIONS);
-                foreach(var key in htExecutions.Keys)
-                    character.AddExecutionsToHistory(key.ToString(),GetIntFromHashtable(htExecutions,key.ToString()));
+                foreach (var key in htExecutions.Keys)
+                {
+                    string recipeExecutedId = key.ToString();
+                    int timesExecuted = GetIntFromHashtable(htExecutions, recipeExecutedId);
+                    characterCreationCommand.RecipeExecutions.Add(recipeExecutedId, timesExecuted);
+                }
             }
 
             if (htCharacter.ContainsKey(SaveConstants.SAVE_PAST_LEVERS))
@@ -135,10 +117,9 @@ namespace SecretHistories.Constants
                 var htPastLevers = htCharacter.GetHashtable(SaveConstants.SAVE_PAST_LEVERS);
                 foreach (var key in htPastLevers.Keys)
                 {
-                    //var enumKey = (LegacyEventRecordId) Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
                     string value = htPastLevers[key].ToString();
                     if(!string.IsNullOrEmpty(value))
-                        character.SetOrOverwritePastLegacyEventRecord(key.ToString().ToLower(), htPastLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys and they may still exist in older saves
+                        characterCreationCommand.PreviousCharacterHistoryRecords.Add(key.ToString().ToLower(), htPastLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys and they may still exist in older saves
 
                 }
             }
@@ -148,20 +129,16 @@ namespace SecretHistories.Constants
                 var htFutureLevers = htCharacter.GetHashtable(SaveConstants.SAVE_FUTURE_LEVERS);
                 foreach (var key in htFutureLevers.Keys)
                 {
-                  //  var enumKey = (LegacyEventRecordId)Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
-                    character.SetFutureLegacyEventRecord(key.ToString().ToLower(), htFutureLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys  and they may still exist in older saves
+                  characterCreationCommand.InProgressHistoryRecords.Add(key.ToString().ToLower(), htFutureLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys  and they may still exist in older saves
 
                 }
             }
 
+            //TODO: deck instance import and creation
+       //     var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
+       //   ImportDecks(character, htDecks);
 
-            Watchman.Get<Compendium>().SupplyLevers(character);
-
-            var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
-
-     //      ImportDecks(character, htDecks);
-
-
+        return characterCreationCommand;
         }
         
 

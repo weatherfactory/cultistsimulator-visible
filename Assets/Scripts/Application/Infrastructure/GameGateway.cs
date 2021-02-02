@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Commands.SituationCommands;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Commands;
@@ -138,7 +139,7 @@ namespace SecretHistories.Constants
 
             Watchman.Get<Concursum>().ShowNotification(new NotificationArgs(character.ActiveLegacy.Label, character.ActiveLegacy.StartDescription));
 
-            character.Reset(character.ActiveLegacy, null);
+            character.Reincarnate(character.ActiveLegacy, NullEnding.Create());
             Watchman.Get<Compendium>().SupplyLevers(character);
             Watchman.Get<StageHand>().ClearRestartingGameFlag();
         }
@@ -158,7 +159,7 @@ namespace SecretHistories.Constants
             var chronicler = Watchman.Get<Chronicler>();
 
             chronicler.ChronicleGameEnd(Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<SphereCatalogue>().GetSpheres(), ending);
-            character.Reset(null, ending);
+            character.Reincarnate(NullLegacy.Create(), ending);
 
             var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Character>(), SourceForGameState.DefaultSave);
             var result = await saveTask;

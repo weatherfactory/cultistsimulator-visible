@@ -283,7 +283,7 @@ public class MenuScreenController : LocalNexus {
 
     private async void ResetToLegacy(Legacy activeLegacy)
     {
-        Watchman.Get<Character>().Reset(activeLegacy,NullEnding.Create());
+        Watchman.Get<Character>().Reincarnate(activeLegacy,NullEnding.Create());
 
 
         var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Character>(), SourceForGameState.DefaultSave);

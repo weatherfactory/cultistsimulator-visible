@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Commands;
 using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities.NullEntities;
 using NUnit.Framework;
@@ -16,10 +17,16 @@ using Object = UnityEngine.Object;
 
 
 [TestFixture]
-    public class EncaustablesEncaustOkay
+    public class EncaustablesEncaust_SmokeTests
     {
-
         [Test]
+        public void DeckInstance_Encausts()
+        {
+            var encaustery = new Encaustery<DeckInstanceCreationCommand>();
+            var deckInstance = new DeckInstance();
+            encaustery.Encaust(deckInstance);
+        }
+    [Test]
         public void ElementStack_Encausts()
         {
             var encaustery = new Encaustery<ElementStackCreationCommand>();
@@ -36,7 +43,7 @@ using Object = UnityEngine.Object;
         }
 
     [Test]
-        public void CharacterCreationCommand_Encausts()
+        public void Character_Encausts()
         {
 
          var encaustery=new Encaustery<CharacterCreationCommand>();

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Abstract;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
@@ -24,7 +26,7 @@ using UnityEngine;
 namespace SecretHistories.Services
 {
 
-    public class Glory: MonoBehaviour
+    public class Glory: MonoBehaviour,ICharacterHost
     {
 #pragma warning disable 649
 
@@ -35,7 +37,6 @@ namespace SecretHistories.Services
 
         public Concursum concursum;
         public SecretHistory SecretHistory;
-        public Character Character;
 
         [SerializeField] private ScreenResolutionAdapter screenResolutionAdapter;
         [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
@@ -198,19 +199,25 @@ namespace SecretHistories.Services
 
         private void RegisterSavedOrNewCharacter(Watchman watchman)
         {
-            watchman.Register(Character);
-          
+
+            CharacterCreationCommand characterCreationCommand=new CharacterCreationCommand();
+
 
             if (Watchman.Get<GameSaveManager>().DoesGameSaveExist())
-                Watchman.Get<GameSaveManager>().LoadCharacterState(SourceForGameState.DefaultSave,Character);
+                characterCreationCommand= Watchman.Get<GameSaveManager>().GetCharacterCreationCommandFromSavedState(SourceForGameState.DefaultSave);
             else
             {
                 NoonUtility.LogWarning("Setting a default legacy for character: shouldn't do this in the actual game");
-                Character.Reset(Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First(), NullEnding.Create());
+                characterCreationCommand =new CharacterCreationCommand();
+                characterCreationCommand.ActiveLegacy = Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First();
+                characterCreationCommand.EndingTriggered=NullEnding.Create();
             }
-            
 
-            
+            var character = characterCreationCommand.Execute(this);
+
+            watchman.Register(character);
+
+
 
         }
 

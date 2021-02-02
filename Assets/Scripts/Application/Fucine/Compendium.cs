@@ -240,7 +240,7 @@ public class Compendium
     /// <param name="populatedCharacter"></param>
     public void SupplyLevers(Character populatedCharacter)
     {
-        _pastLevers = populatedCharacter.GetPreviousCharacterHistoryRecords();
+        _pastLevers = populatedCharacter.PreviousCharacterHistoryRecords;
         TokenReplacer tr = new TokenReplacer(populatedCharacter,this);
 
         EntityStore recipesStore = entityStores[typeof(Recipe)];

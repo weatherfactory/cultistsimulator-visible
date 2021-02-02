@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Assets.Scripts.Application.Commands;
 using Assets.Scripts.Application.Commands.SituationCommands;
 using NUnit.Framework;
+using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
@@ -93,10 +95,26 @@ public class CreationCommandsSmokeTests
 
     }
 
+    class CharacterHost : MonoBehaviour, ICharacterHost { }
+
+
     [Test]
     public void CreateCharacter()
     {
-throw new NotImplementedException();
+        
+        var characterHost=new GameObject().AddComponent<CharacterHost>();
+        var characterCreationCommand=new CharacterCreationCommand();
+        var character = characterCreationCommand.Execute(characterHost);
+        Assert.IsInstanceOf<Character>(character);
+    }
+
+    [Test]
+    public void CreateDeckInstance()
+    {
+
+        var deckInstanceCreationCommand=new DeckInstanceCreationCommand();
+        var deckInstance = deckInstanceCreationCommand.Execute();
+        Assert.IsInstanceOf<DeckInstance>(deckInstance);
 
     }
 
