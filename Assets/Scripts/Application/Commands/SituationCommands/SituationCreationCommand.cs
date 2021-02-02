@@ -22,7 +22,7 @@ using Object = UnityEngine.Object;
 
 namespace SecretHistories.Commands
 {
-    public class SituationCreationCommand: ISaveable,ITokenPayloadCreationCommand,IEncaustment
+    public class SituationCreationCommand: ITokenPayloadCreationCommand,IEncaustment
     {
 
         public IVerb Verb { get; set; }
@@ -107,11 +107,5 @@ namespace SecretHistories.Commands
 
         }
 
-
-        public string ToJson()
-        {
-            string output = JsonConvert.SerializeObject(this);
-            return output;
-        }
     }
 }

@@ -31,19 +31,14 @@ public class SubEncaustingTests
     public class OuterCommandX: IEncaustment
     {
         public InnerCommandX MarkedProperty { get; set; }
-        public string ToJson()
-        {
-            string output = JsonConvert.SerializeObject(this);
-            return output;
-        }
     }
 
-    public class InnerCommandX
+    public class InnerCommandX: IEncaustment
     {
         public InmostCommandX MarkedProperty { get; set; }
     }
 
-    public class InmostCommandX
+    public class InmostCommandX:IEncaustment
     {
         public string MarkedProperty { get; set; }
 

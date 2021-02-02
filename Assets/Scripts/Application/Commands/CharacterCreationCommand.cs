@@ -43,11 +43,7 @@ namespace SecretHistories.Commands
             return character;
         }
 
-        public string ToJson()
-        {
-            string output = JsonConvert.SerializeObject(this);
-            return output;
-        }
+
 
     }
 }

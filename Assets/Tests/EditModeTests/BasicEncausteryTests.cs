@@ -92,7 +92,9 @@ namespace BasicEncaustingTests
             var encaustery = new Encaustery<EncaustedCommandX>();
             var vx = new ValidEncaustableX();
             var encaustedCommand = encaustery.Encaust(vx);
-            var json = encaustedCommand.ToJson();
+            var jsonPortal=new JSONPortal<EncaustedCommandX>();
+
+            var json = jsonPortal.Serialize(encaustedCommand);
             Assert.IsInstanceOf<string>(json);
         }
 
@@ -103,8 +105,11 @@ namespace BasicEncaustingTests
             var encaustery = new Encaustery<EncaustedCommandX>();
             var vx = new ValidEncaustableX { MarkedProperty = 1, OtherMarkedProperty = 2 };
             var encaustedCommand = encaustery.Encaust(vx);
-            var json = encaustedCommand.ToJson();
             
+            var jsonPortal = new JSONPortal<EncaustedCommandX>();
+            var json = jsonPortal.Serialize(encaustedCommand);
+
+
             var jsonportal = new JSONPortal<EncaustedCommandX>();
             var dx = jsonportal.Deserialize(json);
             Assert.AreEqual(vx.MarkedProperty,dx.MarkedProperty);
@@ -178,11 +183,6 @@ public class EncaustedCommandX:IEncaustment
     public int MarkedProperty { get; set; }
     public int OtherMarkedProperty { get; set; }
     
-    public string ToJson()
-    {
-        string output = JsonConvert.SerializeObject(this);
-        return output;
-    }
 
 }
 

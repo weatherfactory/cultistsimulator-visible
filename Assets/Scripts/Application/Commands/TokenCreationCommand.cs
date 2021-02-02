@@ -50,12 +50,6 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
         }
 
 
-        public string ToJson()
-        {
-            string output= JsonConvert.SerializeObject(this);
-            return output;
-        }
-
         public Token Execute(Context context)
         {
             var sphereCatalogue = Watchman.Get<SphereCatalogue>();

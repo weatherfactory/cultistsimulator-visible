@@ -8,6 +8,5 @@ namespace SecretHistories.Abstract
 {
     public interface IEncaustment
     {
-        public string ToJson();
     }
 }

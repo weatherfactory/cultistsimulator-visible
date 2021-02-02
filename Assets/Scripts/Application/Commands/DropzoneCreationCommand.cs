@@ -16,10 +16,5 @@ namespace SecretHistories.Commands
             return new Dropzone();
         }
 
-        public string ToJson()
-        {
-            string output = JsonConvert.SerializeObject(this);
-            return output;
-        }
     }
 }

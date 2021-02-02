@@ -10,6 +10,12 @@ namespace Assets.Scripts.Application.Commands.Encausting
 {
    public class JSONPortal<T> where T: IEncaustment
     {
+        public string Serialize(T encaustment)
+        {
+            string output = JsonConvert.SerializeObject(encaustment);
+            return output;
+        }
+
         public T Deserialize(string fromJson)
         {
             T deserialized = JsonConvert.DeserializeObject<T>(fromJson);

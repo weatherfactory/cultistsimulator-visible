@@ -65,10 +65,5 @@ namespace SecretHistories.Commands
             return elementStack;
         }
 
-        public string ToJson()
-        {
-            string output = JsonConvert.SerializeObject(this);
-            return output;
-        }
     }
 }
