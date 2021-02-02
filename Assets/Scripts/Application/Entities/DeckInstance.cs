@@ -23,6 +23,7 @@ namespace SecretHistories.Entities
         private DeckSpec _deckSpec;
       [SerializeField]  private CardsPile _drawPile;
       [SerializeField] private CardsPile _forbiddenCards;
+      [Encaust]
       public string Id => _deckSpec?.Id;
 
 #pragma warning restore 649

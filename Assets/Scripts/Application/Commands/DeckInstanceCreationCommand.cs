@@ -9,6 +9,8 @@ namespace Assets.Scripts.Application.Commands
 {
     public class DeckInstanceCreationCommand
     {
+        public string Id { get; set; }
+
         public DeckInstance Execute()
         {
             return null;
