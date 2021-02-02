@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Services;
 using UnityEngine;
 
 namespace SecretHistories.Entities
 {
+    [Immanence(typeof(Stable))]
     public class Stable: MonoBehaviour
     {
         private Character _currentCharacter;
-
         private HashSet<Character> characters=new HashSet<Character>();
+
+        public Stable()
+        {
+            AddNewCharacterAsProtag (NullCharacter.Create());
+            
+        }
+
         public void AddNewCharacterAsProtag(Character newCharacter)
         {
             characters.Add(newCharacter);
