@@ -42,6 +42,10 @@ public class Context {
         TokenDestination = tokenDestination;
     }
 
+    public static Context Unknown()
+    {
+        return new Context(ActionSource.Unknown);
+    }
 
 
     

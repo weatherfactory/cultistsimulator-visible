@@ -11,7 +11,9 @@ using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
+using SecretHistories.Enums;
 using SecretHistories.Interfaces;
+using SecretHistories.NullObjects;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
@@ -50,7 +52,8 @@ public class CreationCommandsSmokeTests
         Watchman.Get<SphereCatalogue>().RegisterSphere(worldSphere);
         var enRouteSphere = Object.FindObjectOfType<EnRouteSphere>();
         Watchman.Get<SphereCatalogue>().RegisterSphere(worldSphere);
-
+        var windowsSphere = Object.FindObjectOfType<WindowsSphere>();
+        Watchman.Get<SphereCatalogue>().RegisterSphere(windowsSphere);
     }
 
     [Test]
@@ -77,10 +80,32 @@ public class CreationCommandsSmokeTests
     }
 
         [Test]
+        public void CreateSituation()
+        {
+            var situationCreationCommand=new SituationCreationCommand();
+            situationCreationCommand.Verb=NullVerb.Create();
+            situationCreationCommand.Recipe = NullRecipe.Create();
+            situationCreationCommand.State = StateEnum.Ongoing;
+            var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
+            Assert.IsInstanceOf<Situation>(situation);
+        }
+
+
+    [Test]
         public void CreateSituationToken()
         {
-   throw new NotImplementedException();
-        }
+            var situationCreationCommand = new SituationCreationCommand();
+            situationCreationCommand.Verb = NullVerb.Create();
+            situationCreationCommand.Recipe = NullRecipe.Create();
+            situationCreationCommand.State = StateEnum.Ongoing;
+
+            var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
+
+        var tokenCreationCommand =new TokenCreationCommand(situationCreationCommand,location);
+        var token = tokenCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
+        Assert.IsInstanceOf<Token>(token);
+
+    }
 
 
     [Test]

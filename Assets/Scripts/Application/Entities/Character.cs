@@ -71,7 +71,7 @@ public class Character:MonoBehaviour,IEncaustable
         }
     }
     [Encaust]
-    public Dictionary<string, int> RecipeExecutions => new Dictionary<string, int>(recipeExecutions);
+    public Dictionary<string, int> RecipeExecutions => new Dictionary<string, int>(_recipeExecutions);
 
     [Encaust]
     public Dictionary<string, string> InProgressHistoryRecords=>new Dictionary<string, string>(_inProgressHistoryRecords);
@@ -116,8 +116,8 @@ public class Character:MonoBehaviour,IEncaustable
 
 
 
-    private Dictionary<string, int> recipeExecutions;
-    private Dictionary<string, DeckInstance> _deckInstances;
+    private Dictionary<string, int> _recipeExecutions=new Dictionary<string, int>();
+    private Dictionary<string, DeckInstance> _deckInstances=new Dictionary<string, DeckInstance>();
     private string _profession;
     private HashSet<ICharacterSubscriber> _subscribers = new HashSet<ICharacterSubscriber>();
     private string _name = "[unnamed]";
@@ -139,7 +139,7 @@ public class Character:MonoBehaviour,IEncaustable
         
         
         _inProgressHistoryRecords = new Dictionary<string, string>();
-        recipeExecutions= new Dictionary<string, int>();
+        _recipeExecutions= new Dictionary<string, int>();
         _deckInstances=new Dictionary<string, DeckInstance>();
         ResetStartingDecks();
 
@@ -171,16 +171,16 @@ public class Character:MonoBehaviour,IEncaustable
 
     public void AddExecutionsToHistory(string forRecipeId,int executions)
     {
-        if (recipeExecutions.ContainsKey(forRecipeId))
-            recipeExecutions[forRecipeId]+=executions;
+        if (_recipeExecutions.ContainsKey(forRecipeId))
+            _recipeExecutions[forRecipeId]+=executions;
         else
-            recipeExecutions[forRecipeId] = executions;
+            _recipeExecutions[forRecipeId] = executions;
     }
 
     public int GetExecutionsCount(string forRecipeId)
     {
-        if (recipeExecutions.ContainsKey(forRecipeId))
-            return recipeExecutions[forRecipeId];
+        if (_recipeExecutions.ContainsKey(forRecipeId))
+            return _recipeExecutions[forRecipeId];
 
         return 0;
     }

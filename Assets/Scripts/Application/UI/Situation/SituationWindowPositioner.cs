@@ -18,10 +18,9 @@ namespace SecretHistories.UI {
 
         static SituationWindowPositioner windowBeingDragged;
         
-        RectTransform rectTrans;
-        CanvasGroup canvasGroup;
-
-        RectTransform parentTrans;
+     [SerializeField]RectTransform rectTrans;
+     [SerializeField] CanvasGroup canvasGroup;
+     RectTransform parentTrans;
         Camera uiCamera;
 
         Vector3 dragOffset;
@@ -29,8 +28,6 @@ namespace SecretHistories.UI {
 
         public void Awake()
         {
-            this.rectTrans = GetComponent<RectTransform>();
-            this.canvasGroup = GetComponent<CanvasGroup>();
             this.parentTrans = GetComponentInParent<RectTransform>();
             this.uiCamera = Camera.main; // there is only one camera in our scene so this works.
         }

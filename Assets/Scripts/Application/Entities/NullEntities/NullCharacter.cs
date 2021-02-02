@@ -7,14 +7,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.Application.Entities.NullEntities
 {
-    class NullCharacter: Character
+    public class NullCharacter: Character
     {
-        public static Character Create()
-        {
-            var nullCharacterObj=new GameObject("Null Character");
-            var nullCharacter = nullCharacterObj.AddComponent<NullCharacter>();
 
-            return nullCharacter;
-        }
     }
 }

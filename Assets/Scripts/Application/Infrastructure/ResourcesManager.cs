@@ -171,6 +171,8 @@ public class ResourcesManager: MonoBehaviour
     
     public static Sprite GetSprite(string folder, string file, bool withPlaceholder = true)
     {
+
+
         var imagesFolderNameInResources =
             Watchman.Get<Config>().GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY);
         var spritePath = Path.Combine(imagesFolderNameInResources,
@@ -188,6 +190,10 @@ public class ResourcesManager: MonoBehaviour
         var sprite = Resources.Load<Sprite>(spritePath);
         if (sprite != null || !withPlaceholder)
             return sprite;
+
+        if (string.IsNullOrEmpty(file))
+            file = PLACEHOLDER_IMAGE_NAME; //caters for cases where an empty string is passed by mistake
+
         return Resources.Load<Sprite>(spritePath.Replace(file, PLACEHOLDER_IMAGE_NAME));
     }
 

@@ -15,11 +15,6 @@ namespace SecretHistories.Entities
         private Character _currentCharacter;
         private HashSet<Character> characters=new HashSet<Character>();
 
-        public Stable()
-        {
-            AddNewCharacterAsProtag (NullCharacter.Create());
-            
-        }
 
         public void AddNewCharacterAsProtag(Character newCharacter)
         {
@@ -29,6 +24,13 @@ namespace SecretHistories.Entities
         //in case a character is loaded and we have the existing character already referenced somewhere!
         public Character Protag()
         {
+            if (_currentCharacter == null)
+            {
+                var nullCharacterObj = new GameObject("Null Character");
+                var nullCharacter = nullCharacterObj.AddComponent<NullCharacter>();
+                AddNewCharacterAsProtag(nullCharacter);
+            }
+
             return _currentCharacter;
         }
 

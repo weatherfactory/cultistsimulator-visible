@@ -20,9 +20,9 @@ namespace Assets.Scripts.Application.Commands
             Location = location;
         }
 
-        public SituationWindow Execute(SphereCatalogue sphereCatalogue)
+        public SituationWindow Execute(Context context)
         {
-            var sphere = sphereCatalogue.GetSphereByPath(Location.AtSpherePath);
+            var sphere = Watchman.Get<SphereCatalogue>().GetSphereByPath(Location.AtSpherePath);
             var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphere.transform);
             
             return newWindow;

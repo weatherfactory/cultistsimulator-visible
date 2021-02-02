@@ -21,7 +21,7 @@ namespace SecretHistories.NullObjects
     {
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
-        public string Id { get; private set; }
+        public string Id => string.Empty;
         public int Quantity =>0;
         public Dictionary<string, int> Mutations { get; }
 
@@ -30,10 +30,6 @@ namespace SecretHistories.NullObjects
             return Timeshadow.CreateTimelessShadow();
         }
 
-        public void SetId(string id)
-        {
-            Id = id;
-        }
 
         public string Label { get; set; }
         public string Description { get; set; }

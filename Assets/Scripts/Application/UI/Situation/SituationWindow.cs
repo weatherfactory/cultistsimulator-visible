@@ -114,7 +114,8 @@ namespace SecretHistories.UI {
 
             Title = _payload.Label;
 
-            positioner.SetInitialPosition(initialLocation.Anchored3DPosition);
+            //I took this out for the sake of a test; but it's a shitshow anyway
+        //    positioner.SetInitialPosition(initialLocation.Anchored3DPosition);
      
         }
 

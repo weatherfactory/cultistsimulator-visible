@@ -36,7 +36,7 @@ namespace SecretHistories.Commands
         public bool IsOpen { get; set; }
         public List<Token> TokensToMigrate=new List<Token>();
 
-        public SituationCommandQueue CommandQueue { get; set; }
+        public SituationCommandQueue CommandQueue { get; set; }=new SituationCommandQueue();
         private WindowCreationCommand windowCreationCommand;
 
         public SituationCreationCommand()
@@ -81,8 +81,6 @@ namespace SecretHistories.Commands
                 newSituation.AcceptTokens(SphereCategory.SituationStorage,TokensToMigrate);
             
 
-            var sphereCatalogue = Watchman.Get<SphereCatalogue>();
-
 
             var windowSpherePath=new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath); 
             var windowLocation =
@@ -93,7 +91,7 @@ namespace SecretHistories.Commands
 
             if (windowCreationCommand!=null)
             { 
-                var newWindow = windowCreationCommand.Execute(sphereCatalogue);
+                var newWindow = windowCreationCommand.Execute(Context.Unknown());
                 newWindow.Attach(newSituation,windowLocation); }
 
             newSituation.CommandQueue.AddCommandsFrom(CommandQueue);

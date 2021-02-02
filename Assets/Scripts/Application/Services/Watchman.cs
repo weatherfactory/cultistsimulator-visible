@@ -93,6 +93,9 @@ namespace SecretHistories.UI
             if (typeof(T)==typeof(LanguageManager))
                 return new NullLocStringProvider() as T;
 
+            if (typeof(T) == typeof(ILocStringProvider))
+                return new NullLocStringProvider() as T;
+
             return null;
 
         }
