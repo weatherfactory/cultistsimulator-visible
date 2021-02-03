@@ -27,9 +27,11 @@ namespace SecretHistories.Infrastructure.Persistence
 
         public virtual void Encaust(IEnumerable<Character> characters, IEnumerable<Sphere> spheres)
         {
-            Encaustery<CharacterCreationCommand> characterEncaustery=new Encaustery<CharacterCreationCommand>();
-            _persistedGameState.CharacterCreationCommands = new List<CharacterCreationCommand>();
+      
+            _persistedGameState=new PersistedGameState();
 
+
+            Encaustery<CharacterCreationCommand> characterEncaustery = new Encaustery<CharacterCreationCommand>();
             foreach (var character in characters)
             {
                 var encaustedCharacterCommand = characterEncaustery.Encaust(character);
@@ -38,7 +40,6 @@ namespace SecretHistories.Infrastructure.Persistence
             
             
             Encaustery<TokenCreationCommand> tokenEncaustery = new Encaustery<TokenCreationCommand>();
-            _persistedGameState.TokenCreationCommands = new List<TokenCreationCommand>();
 
             foreach (var sphere in spheres)
             {
