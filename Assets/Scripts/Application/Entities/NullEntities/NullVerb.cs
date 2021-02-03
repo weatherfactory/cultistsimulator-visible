@@ -73,7 +73,7 @@ namespace SecretHistories.NullObjects
             return new NullVerb();
         }
 
-        public IAspectsDictionary GetAspects(bool includeSelf)
+        public AspectsDictionary GetAspects(bool includeSelf)
         {
             return new AspectsDictionary();
         }

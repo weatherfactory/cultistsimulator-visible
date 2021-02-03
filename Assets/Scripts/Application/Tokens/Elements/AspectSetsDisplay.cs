@@ -17,15 +17,15 @@ namespace SecretHistories.Enums.Elements
         [SerializeField] private Transform[] setPrefixes;
         [SerializeField] private Transform aspectsDisplay;
 #pragma warning restore 649
-        private readonly List<IAspectsDictionary> _aspectSets = new List<IAspectsDictionary>();
+        private readonly List<AspectsDictionary> _aspectSets = new List<AspectsDictionary>();
 
-        public void AddAspectSet(int setIndex, IAspectsDictionary aspects)
+        public void AddAspectSet(int setIndex, AspectsDictionary aspects)
         {
             var requiredExpansion = setIndex + 1 - _aspectSets.Count;
             if (requiredExpansion > 0)
             {
                 // Expand the number of sets as necessary
-                _aspectSets.AddRange(new IAspectsDictionary[requiredExpansion]);
+                _aspectSets.AddRange(new AspectsDictionary[requiredExpansion]);
             }
 
             _aspectSets[setIndex] = aspects;

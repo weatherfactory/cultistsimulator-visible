@@ -210,7 +210,7 @@ namespace SecretHistories.Entities
             return true;
         }
 
-        private static bool CheckRequirementsSatisfiedForContext(IAspectsDictionary aspectsToCheck,
+        private static bool CheckRequirementsSatisfiedForContext(AspectsDictionary aspectsToCheck,
             KeyValuePair<string, string> req)
         {
             if (!int.TryParse(req.Value, out var reqValue))

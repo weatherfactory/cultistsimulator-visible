@@ -23,7 +23,7 @@ namespace SecretHistories.Fucine
                 return false;
             }
 
-            IAspectsDictionary aspects = new AspectsDictionary();
+            AspectsDictionary aspects = new AspectsDictionary();
 
             var aspectsAttribute = _cachedFucinePropertyToPopulate.FucineAttribute as FucineAspects;
             var entityProperties =TypeInfoCache<T>.GetCachedFucinePropertiesForType();

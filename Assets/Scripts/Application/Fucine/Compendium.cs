@@ -45,7 +45,7 @@ public class Compendium
             elementIdsToValidate.AddRange(di.Keys);
         else if (validateThis is Dictionary<string, string> ds)
             elementIdsToValidate.AddRange(ds.Keys);
-        else if(validateThis is IAspectsDictionary a)
+        else if(validateThis is AspectsDictionary a)
             elementIdsToValidate.AddRange(a.KeysAsList());
         else if(validateThis is List<string> l)
             elementIdsToValidate.AddRange(l);
@@ -265,7 +265,7 @@ public class Compendium
     /// </summary>
     /// <param name="currentAspects"></param>
     /// <returns></returns>
-    public string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects)
+    public string GetVerbIconOverrideFromAspects(AspectsDictionary currentAspects)
     {
         if (currentAspects != null)
         {

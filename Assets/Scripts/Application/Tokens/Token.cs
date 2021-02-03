@@ -21,6 +21,7 @@ using SecretHistories.UI;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants.Events;
+using SecretHistories.Core;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.Spheres;
 
@@ -180,7 +181,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public IAspectsDictionary GetAspects(bool includeSelf = true)
+        public AspectsDictionary GetAspects(bool includeSelf = true)
         {
             return Payload.GetAspects(includeSelf);
         }

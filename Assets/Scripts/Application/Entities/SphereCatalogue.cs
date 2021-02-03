@@ -133,7 +133,7 @@ namespace SecretHistories.Entities {
         }
 
 
-        public AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation)
+        public AspectsInContext GetAspectsInContext(AspectsDictionary aspectsInSituation)
         {
             if (!EnableAspectCaching)
             {
@@ -160,8 +160,8 @@ namespace SecretHistories.Entities {
                 
                 foreach (var tabletopStack in tabletopStacks)
                 {
-                    IAspectsDictionary stackAspects = tabletopStack.GetAspects();
-                    IAspectsDictionary multipliedAspects = new AspectsDictionary();
+                    AspectsDictionary stackAspects = tabletopStack.GetAspects();
+                    AspectsDictionary multipliedAspects = new AspectsDictionary();
                     //If we just count aspects, a stack of 10 cards only counts them once. I *think* this is the only place we need to worry about this rn,
                     //but bear it in mind in case there's ever a similar issue inside situations <--there is! if multiple cards are output, they stack.
                     //However! To complicate matters, if we're counting elements rather than aspects, there is already code in the stack to multiply aspect * quality, and we don't want to multiply it twice
@@ -197,8 +197,8 @@ namespace SecretHistories.Entities {
                     var stacksInSituation = s.GetElementTokensInSituation();
                     foreach (var situationStack in stacksInSituation)
                     {
-                        IAspectsDictionary stackAspects = situationStack.GetAspects();
-                        IAspectsDictionary multipliedAspects = new AspectsDictionary();
+                        AspectsDictionary stackAspects = situationStack.GetAspects();
+                        AspectsDictionary multipliedAspects = new AspectsDictionary();
                         //See notes above. We need to multiply aspects to take account of stack quantities here too.
                         foreach (var aspect in stackAspects)
                         {

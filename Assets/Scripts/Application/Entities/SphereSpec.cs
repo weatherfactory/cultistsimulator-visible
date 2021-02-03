@@ -100,7 +100,7 @@ public class SphereSpec: AbstractEntity<SphereSpec>
         return new List<IAngel>();
     }
 
-    public ContainerMatchForStack GetSlotMatchForAspects(IAspectsDictionary aspects)
+    public ContainerMatchForStack GetSlotMatchForAspects(AspectsDictionary aspects)
     {
 
         foreach (string k in Forbidden.Keys)

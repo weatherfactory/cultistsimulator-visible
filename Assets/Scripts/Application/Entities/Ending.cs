@@ -55,7 +55,7 @@ namespace SecretHistories.Entities
         }
 
 
-        protected Ending()
+        public Ending()
         {
         }
 

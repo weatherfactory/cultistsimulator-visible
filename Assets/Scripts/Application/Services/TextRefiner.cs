@@ -38,9 +38,9 @@ namespace SecretHistories.Services
     /// </summary>
    public class TextRefiner
    {
-       private IAspectsDictionary _aspectsInContext;
+       private AspectsDictionary _aspectsInContext;
 
-        public TextRefiner(IAspectsDictionary aspectsInContext)
+        public TextRefiner(AspectsDictionary aspectsInContext)
         {
             _aspectsInContext = aspectsInContext;
         }

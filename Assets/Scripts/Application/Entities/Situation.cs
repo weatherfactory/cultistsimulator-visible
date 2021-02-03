@@ -425,7 +425,7 @@ namespace SecretHistories.Entities {
         /// </summary>
         /// <param name="includeElementAspects"></param>
         /// <returns></returns>
-        public IAspectsDictionary GetAspects(bool includeElementAspects)
+        public AspectsDictionary GetAspects(bool includeElementAspects)
         {
             var aspects = new AspectsDictionary();
 

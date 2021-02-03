@@ -9,28 +9,28 @@ namespace SecretHistories.Entities
 {
     public class AspectsInContext
     {
-        public readonly IAspectsDictionary _aspectsInSituation;
-        public readonly IAspectsDictionary _aspectsOnTable;
-        public readonly IAspectsDictionary _aspectsExtant;
+        public readonly AspectsDictionary _aspectsInSituation;
+        public readonly AspectsDictionary _aspectsOnTable;
+        public readonly AspectsDictionary _aspectsExtant;
 
-        public AspectsInContext(IAspectsDictionary aspectsInSituation, IAspectsDictionary aspectsOnTable, IAspectsDictionary aspectsExtant)
+        public AspectsInContext(AspectsDictionary aspectsInSituation, AspectsDictionary aspectsOnTable, AspectsDictionary aspectsExtant)
         {
             _aspectsInSituation = aspectsInSituation;
             _aspectsOnTable = aspectsOnTable;
             _aspectsExtant = aspectsExtant;
         }
 
-        public IAspectsDictionary AspectsExtant
+        public AspectsDictionary AspectsExtant
         {
             get { return _aspectsExtant; }
         }
 
-        public IAspectsDictionary AspectsOnTable
+        public AspectsDictionary AspectsOnTable
         {
             get { return _aspectsOnTable; }
         }
 
-        public IAspectsDictionary AspectsInSituation
+        public AspectsDictionary AspectsInSituation
         {
             get { return _aspectsInSituation; }
         }

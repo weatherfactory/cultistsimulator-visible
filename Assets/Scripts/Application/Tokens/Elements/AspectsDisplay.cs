@@ -24,7 +24,7 @@ namespace SecretHistories.UI
                 Header.enabled = show;
         }
 
-        public virtual void DisplayAspects(IAspectsDictionary aspects) {            
+        public virtual void DisplayAspects(AspectsDictionary aspects) {            
             ClearCurrentlyDisplayedAspects();
 
             bool anyAspects = aspects != null && aspects.Keys.Any();

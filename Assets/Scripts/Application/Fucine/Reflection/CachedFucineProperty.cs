@@ -40,7 +40,7 @@ namespace SecretHistories.Fucine
             return FastInvokeGetter(target);
         }
 
-        public void SetViaFastInvoke(TTarget target, IAspectsDictionary value)
+        public void SetViaFastInvoke(TTarget target, AspectsDictionary value)
         {
                 FastInvokeSetter(target, value);
         }

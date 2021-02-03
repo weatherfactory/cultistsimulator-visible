@@ -101,11 +101,11 @@ namespace SecretHistories.Entities
         /// <summary>
         /// all aspects the element has, *including* the aspect itself as an element
         /// </summary>
-        public IAspectsDictionary AspectsIncludingSelf
+        public AspectsDictionary AspectsIncludingSelf
         {
             get
             {
-                IAspectsDictionary aspectsIncludingElementItself =new AspectsDictionary();
+                AspectsDictionary aspectsIncludingElementItself =new AspectsDictionary();
 
                 foreach(string k in Aspects.Keys)
                     aspectsIncludingElementItself.Add(k,Aspects[k]);

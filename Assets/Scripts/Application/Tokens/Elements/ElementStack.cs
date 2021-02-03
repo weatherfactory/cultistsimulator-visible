@@ -103,10 +103,10 @@ namespace SecretHistories.UI {
         private int _quantity;
 
         // Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
-        private IAspectsDictionary
+        private AspectsDictionary
             _aspectsDictionaryInc = new AspectsDictionary(); // For caching aspects including self 
 
-        private IAspectsDictionary
+        private AspectsDictionary
             _aspectsDictionaryExc = new AspectsDictionary(); // For caching aspects excluding self
 
         private bool _aspectsDirtyInc = true;
@@ -218,7 +218,7 @@ namespace SecretHistories.UI {
             return Element.XTriggers;
         }
 
-        public virtual IAspectsDictionary GetAspects(bool includeSelf = true)
+        public virtual AspectsDictionary GetAspects(bool includeSelf = true)
         {
             //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
 

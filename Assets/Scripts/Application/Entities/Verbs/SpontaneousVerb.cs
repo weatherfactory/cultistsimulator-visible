@@ -56,7 +56,7 @@ namespace SecretHistories.Entities
         public bool ExclusiveOpen => true;
 
 
-        public IAspectsDictionary GetAspects(bool includeSelf)
+        public AspectsDictionary GetAspects(bool includeSelf)
         {
             return new AspectsDictionary();
         }

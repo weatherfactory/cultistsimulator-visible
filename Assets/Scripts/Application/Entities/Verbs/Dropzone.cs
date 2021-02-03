@@ -80,7 +80,7 @@ namespace SecretHistories.Entities.Verbs
         }
 
 
-        public IAspectsDictionary GetAspects(bool includeSelf)
+        public AspectsDictionary GetAspects(bool includeSelf)
         {
             return new AspectsDictionary();
         }

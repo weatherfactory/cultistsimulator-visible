@@ -10,7 +10,7 @@ namespace Assets.Logic
 {
     public class ChallengeArbiter
     {
-        private readonly IAspectsDictionary _aspectsToConsider;
+        private readonly AspectsDictionary _aspectsToConsider;
         private readonly LinkedRecipeDetails _link;
         private const string BASE_CONVENTION_ID = "base";
         private const string ADVANCED_CONVENTION_ID = "advanced";

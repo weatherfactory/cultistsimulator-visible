@@ -22,7 +22,8 @@ namespace SecretHistories.UI
         private const float DefaultStartScale = 1f;
         private const float DefaultEndScale = 1f;
 
-
+        public TokenTravelItinerary()
+        {}
 
         public TokenTravelItinerary(TokenLocation startLocation, TokenLocation endLocation)
         {

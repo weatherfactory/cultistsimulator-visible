@@ -13,6 +13,7 @@ using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
+using SecretHistories.Core;
 using SecretHistories.Spheres;
 using TMPro;
 using UnityEngine;
@@ -105,7 +106,7 @@ namespace SecretHistories.Elements.Manifestations
         }
 
 
-        private void TryOverrideVerbIcon(IAspectsDictionary forAspects)
+        private void TryOverrideVerbIcon(AspectsDictionary forAspects)
         {
             //if we have an element in the situation now that overrides the verb icon, update it
             string overrideIcon = Watchman.Get<Compendium>().GetVerbIconOverrideFromAspects(forAspects);

@@ -19,6 +19,9 @@ namespace SecretHistories.UI
   {
       public Vector3 Anchored3DPosition { get; private set; }
       public SpherePath AtSpherePath { get; private set; }
+
+        public TokenLocation(){}
+
         public TokenLocation(float x,float y,float z, SpherePath atSpherePath)
         {
             Vector3 anchored3DPosition=new Vector3(x,y,z);

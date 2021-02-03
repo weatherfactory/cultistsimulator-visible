@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Core;
 using SecretHistories.Interfaces;
 
 namespace Assets.Scripts.Application.Abstract
@@ -10,7 +11,7 @@ namespace Assets.Scripts.Application.Abstract
     public interface IHasAspects
     {
         string Id { get; }
-        IAspectsDictionary GetAspects(bool includeSelf);
+        AspectsDictionary GetAspects(bool includeSelf);
         Dictionary<string, int> Mutations { get; }
         void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive);
         /// <summary>

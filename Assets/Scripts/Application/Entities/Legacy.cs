@@ -62,7 +62,7 @@ namespace SecretHistories.Entities
         public bool NewStart { get; set; }
 
         [FucineAspects(ValidateAsElementId = true)]
-        public IAspectsDictionary Effects { get; set; }
+        public AspectsDictionary Effects { get; set; }
 
         [FucineList]
         public List<string> ExcludesOnEnding { get; set; }

@@ -12,7 +12,7 @@ using SecretHistories.Interfaces;
 namespace SecretHistories.Core
 {
 
-    public class AspectsDictionary: Dictionary<string, int>, IAspectsDictionary
+    public class AspectsDictionary: Dictionary<string, int>
     {
         public AspectsDictionary():this(new Dictionary<string, int>())
         { }
@@ -58,7 +58,7 @@ namespace SecretHistories.Core
             return 0;
         }
 
-        public void CombineAspects(IAspectsDictionary additionalAspects)
+        public void CombineAspects(AspectsDictionary additionalAspects)
         {
             foreach (string k in additionalAspects.Keys)
             {

@@ -26,7 +26,7 @@ namespace SecretHistories.Commands
         }
 
 
-        public RecipePrediction(Recipe actualRecipe, IAspectsDictionary aspectsAvailable)
+        public RecipePrediction(Recipe actualRecipe, AspectsDictionary aspectsAvailable)
         {
             _actualRecipe = actualRecipe;
             Title = actualRecipe.Label;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
@@ -16,11 +17,11 @@ namespace SecretHistories.Commands
   public  class XTriggerCommand: IAffectsTokenCommand
     {
 
-        public IAspectsDictionary AspectsPresent { get; set; }
+        public AspectsDictionary AspectsPresent { get; set; }
         public IDice UseDice { get; set; }
         public Sphere InSphere { get; set; }
 
-        public XTriggerCommand(IAspectsDictionary aspectsPresent,IDice useDice, Sphere inSphere)
+        public XTriggerCommand(AspectsDictionary aspectsPresent,IDice useDice, Sphere inSphere)
         {
             AspectsPresent = aspectsPresent;
             UseDice = useDice;

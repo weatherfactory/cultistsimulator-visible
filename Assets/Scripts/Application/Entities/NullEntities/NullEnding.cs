@@ -15,7 +15,7 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         {
         }
 
-        protected NullEnding()
+        public NullEnding(): base()
         {}
 
         public override bool IsValid()

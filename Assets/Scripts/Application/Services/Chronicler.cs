@@ -69,7 +69,7 @@ namespace SecretHistories.Services
 
             if(token.Payload.IsValidElementStack())
             {
-                IAspectsDictionary tokenAspects = token.Payload.GetAspects(true);
+                AspectsDictionary tokenAspects = token.Payload.GetAspects(true);
 
             var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
 
@@ -162,7 +162,7 @@ namespace SecretHistories.Services
 
         }
 
-        private void TryChronicleFollowerPlaced(Token token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
+        private void TryChronicleFollowerPlaced(Token token, AspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
         {
             if (tokenAspects.ContainsKey(SUMMONED_ASPECT))
 			{
@@ -219,7 +219,7 @@ namespace SecretHistories.Services
         }
 
 
-        private void TryCHronicleHQPlaced(Token token, IAspectsDictionary tokenAspects)
+        private void TryCHronicleHQPlaced(Token token, AspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
 			{
@@ -228,7 +228,7 @@ namespace SecretHistories.Services
 			}
         }
 
-        private void TryChronicleCultPlaced(Token token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
+        private void TryChronicleCultPlaced(Token token, AspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
         {
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
             {
@@ -274,7 +274,7 @@ namespace SecretHistories.Services
             }
         }
 
-        private void TryChronicleToolPlaced(Token token, IAspectsDictionary tokenAspects)
+        private void TryChronicleToolPlaced(Token token, AspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
 			{
@@ -283,7 +283,7 @@ namespace SecretHistories.Services
 			}
         }
 
-        private void TryChronicleDesirePlaced(Token token, IAspectsDictionary tokenAspects)
+        private void TryChronicleDesirePlaced(Token token, AspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(DESIRE_ASPECT))
             {
@@ -307,7 +307,7 @@ namespace SecretHistories.Services
             }
         }
 
-        private void TryChronicleBookPlaced(Token token, IAspectsDictionary tokenAspects)
+        private void TryChronicleBookPlaced(Token token, AspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
 			{
