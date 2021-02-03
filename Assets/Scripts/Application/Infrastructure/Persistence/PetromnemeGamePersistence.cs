@@ -8,7 +8,7 @@ using SecretHistories.UI;
 
 namespace SecretHistories.Infrastructure.Persistence
 {
-   public class PetromnemeGameState: PersistableGameState
+   public class PetromnemeGamePersistence: GamePersistence
     {
         public override string GetSaveFileLocation()
         {
@@ -19,13 +19,10 @@ namespace SecretHistories.Infrastructure.Persistence
         public override void DeserialiseFromPersistence()
         {
             var importer = new SimpleJSONGameDataImporter();
-            _characterCreationCommands = new List<CharacterCreationCommand>
-            {
-                importer.ImportToCharacterCreationCommand(this)
-            };
+            _persistedGameState=new PersistedGameState();
 
-            _tokenCreationCommands=new List<TokenCreationCommand>();
-
+            var characterCreationCommand= importer.ImportToCharacterCreationCommand(this);
+            _persistedGameState.CharacterCreationCommands.Add(characterCreationCommand);
         }
 
         public override void ImportPetromnemeStateAfterTheAncientFashion()

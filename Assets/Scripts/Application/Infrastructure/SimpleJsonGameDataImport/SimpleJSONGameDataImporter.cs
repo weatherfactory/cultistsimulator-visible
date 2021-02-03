@@ -30,7 +30,7 @@ namespace SecretHistories.Constants
         private  SpherePath windowSpherePath;
         private  SpherePath tabletopSpherePath;
 
-        public Hashtable RetrieveHashedSaveFromFile(PersistableGameState source)
+        public Hashtable RetrieveHashedSaveFromFile(GamePersistence source)
         {
             
             string importJson = File.ReadAllText(source.GetSaveFileLocation());
@@ -38,7 +38,7 @@ namespace SecretHistories.Constants
             return htSave;
         }
 
-        public bool IsSavedGameActive(PersistableGameState source)
+        public bool IsSavedGameActive(GamePersistence source)
         {
             var htSave = RetrieveHashedSaveFromFile(source);
             return htSave.ContainsKey(SaveConstants.SAVE_ELEMENTSTACKS) || htSave.ContainsKey(SaveConstants.SAVE_SITUATIONS);
@@ -47,7 +47,7 @@ namespace SecretHistories.Constants
 
 
 
-        public void ImportTableState(PersistableGameState source, Sphere tabletop)
+        public void ImportTableState(GamePersistence source, Sphere tabletop)
         {
             var htSave = RetrieveHashedSaveFromFile(source);
 
@@ -63,7 +63,7 @@ namespace SecretHistories.Constants
                 ImportSituations(tabletop, htSituations);
         }
 
-        public CharacterCreationCommand ImportToCharacterCreationCommand(PersistableGameState source)
+        public CharacterCreationCommand ImportToCharacterCreationCommand(GamePersistence source)
         {
             var characterCreationCommand=new CharacterCreationCommand();
             var htSave = RetrieveHashedSaveFromFile(source);

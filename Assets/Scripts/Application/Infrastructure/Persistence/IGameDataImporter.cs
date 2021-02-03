@@ -9,8 +9,8 @@ namespace SecretHistories.Constants
 {
     public interface IGameDataImporter
     {
-        void ImportCharacter(PersistableGameState source, Character character);
-        void ImportTableState(PersistableGameState source,Sphere tabletop);
-        bool IsSavedGameActive(PersistableGameState source, bool temp);
+        void ImportCharacter(GamePersistence source, Character character);
+        void ImportTableState(GamePersistence source,Sphere tabletop);
+        bool IsSavedGameActive(GamePersistence source, bool temp);
     }
 }

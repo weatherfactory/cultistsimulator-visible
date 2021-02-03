@@ -171,19 +171,16 @@ namespace SecretHistories.Services
 
                 CharacterCreationCommand characterCreationCommand;
 
-                var oldFormatGame = new PetromnemeGameState();
-                if (oldFormatGame.Exists())
-                {
-                    oldFormatGame.DeserialiseFromPersistence();
-                    characterCreationCommand = oldFormatGame.GetCharacterCreationCommands().First();
-                    stageHand.UsePersistedGame(oldFormatGame);
-                }
-                else
-                {
-                    var newFormatGame = new DefaultPersistableGameState();
-                    characterCreationCommand = newFormatGame.GetCharacterCreationCommands().First();
-                    stageHand.UsePersistedGame(newFormatGame);
-                }
+                GamePersistence gamePersistence=new DefaultGamePersistence();
+                if(!gamePersistence.Exists())
+                    gamePersistence = new PetromnemeGamePersistence();
+
+     
+                gamePersistence.DeserialiseFromPersistence();
+                var persistedState = gamePersistence.RetrieveGameState();
+                characterCreationCommand = persistedState.CharacterCreationCommands.First();
+                stageHand.UsePersistedGame(gamePersistence);
+       
 
 
                 characterCreationCommand.Execute(_stable);

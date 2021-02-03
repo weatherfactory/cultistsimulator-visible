@@ -257,7 +257,7 @@ public class MenuScreenController : LocalNexus {
 		
         if (Watchman.Get<Stable>().Protag().State==CharacterState.Viable) {
             //back into the game!
-            Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultPersistableGameState());
+            Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultGamePersistence());
             return;
         }
 

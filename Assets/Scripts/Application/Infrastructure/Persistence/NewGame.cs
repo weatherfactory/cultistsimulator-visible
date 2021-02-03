@@ -7,7 +7,7 @@ using SecretHistories.Commands;
 
 namespace SecretHistories.Infrastructure.Persistence
 {
-    public class NewGame: PersistableGameState
+    public class NewGame: GamePersistence
     {
         public override string GetSaveFileLocation()
         {

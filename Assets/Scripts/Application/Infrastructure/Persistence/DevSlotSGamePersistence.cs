@@ -8,11 +8,11 @@ using UnityEngine;
 
 namespace SecretHistories.Infrastructure.Persistence
 {
-    public class DevSlotSavePersistableGameState: PersistableGameState
+    public class DevSlotSaveGamePersistence: GamePersistence
     {
         private readonly int _slotNumber;
 
-        public DevSlotSavePersistableGameState(int slotNumber)
+        public DevSlotSaveGamePersistence(int slotNumber)
         {
             _slotNumber = slotNumber;
         }

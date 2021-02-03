@@ -446,21 +446,21 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     public void LoadGame()
     {
-        Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultPersistableGameState());
+        Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultGamePersistence());
     }
 
     public async void SaveGame()
     {
 
-        var game = new DefaultPersistableGameState();
+        var game = new DefaultGamePersistence();
 
-        
-
-
+        var characters = Watchman.Get<Stable>().GetAllCharacters();
         var allSpheres = Watchman.Get<SphereCatalogue>().GetSpheres();
+        
+        game.Encaust(characters, allSpheres);
       
 
-        var saveTask = game.SaveAsync();
+        var saveTask = game.SerialiseAndSaveAsync();
         var result = await saveTask;
 
     }
@@ -524,7 +524,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
     {
         if (!CheckDebugSaveExists(index))
             return;
-        DevSlotSavePersistableGameState source=new DevSlotSavePersistableGameState(index);
+        DevSlotSaveGamePersistence source=new DevSlotSaveGamePersistence(index);
         
         Watchman.Get<StageHand>().LoadGameOnTabletop(source);
         }

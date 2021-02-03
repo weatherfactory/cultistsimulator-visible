@@ -14,6 +14,11 @@ namespace SecretHistories.Entities
         private Character _currentCharacter;
         private readonly List<Character> characters=new List<Character>();
 
+        public IEnumerable<Character> GetAllCharacters()
+        {
+            return new List<Character>(characters);
+
+        }
 
   
         public void AddNewCharacterAsProtag(Character newCharacter)

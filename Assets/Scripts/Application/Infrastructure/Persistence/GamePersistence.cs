@@ -13,38 +13,32 @@ using SecretHistories.Spheres;
 
 namespace SecretHistories.Infrastructure.Persistence
 {
-    public abstract class PersistableGameState
+    public abstract class GamePersistence
     {
         public abstract string GetSaveFileLocation();
 
 
-        protected List<CharacterCreationCommand> _characterCreationCommands;
-        protected List<TokenCreationCommand> _tokenCreationCommands;
+        protected PersistedGameState _persistedGameState;
 
-        public List<CharacterCreationCommand> GetCharacterCreationCommands()
+        public PersistedGameState RetrieveGameState()
         {
-            return new List<CharacterCreationCommand>(_characterCreationCommands);
-        }
-
-        public List<TokenCreationCommand> GetTokenCreationCommands()
-        {
-            return new List<TokenCreationCommand>(_tokenCreationCommands);
+            return _persistedGameState;
         }
 
         public virtual void Encaust(IEnumerable<Character> characters, IEnumerable<Sphere> spheres)
         {
             Encaustery<CharacterCreationCommand> characterEncaustery=new Encaustery<CharacterCreationCommand>();
-            _characterCreationCommands = new List<CharacterCreationCommand>();
+            _persistedGameState.CharacterCreationCommands = new List<CharacterCreationCommand>();
 
             foreach (var character in characters)
             {
                 var encaustedCharacterCommand = characterEncaustery.Encaust(character);
-                _characterCreationCommands.Add(encaustedCharacterCommand);
+                _persistedGameState.CharacterCreationCommands.Add(encaustedCharacterCommand);
             }
             
             
             Encaustery<TokenCreationCommand> tokenEncaustery = new Encaustery<TokenCreationCommand>();
-            _tokenCreationCommands=new List<TokenCreationCommand>();
+            _persistedGameState.TokenCreationCommands = new List<TokenCreationCommand>();
 
             foreach (var sphere in spheres)
             {
@@ -52,7 +46,7 @@ namespace SecretHistories.Infrastructure.Persistence
                 foreach (var t in allTokensInSphere)
                 {
                     var encaustedTokenCommand = tokenEncaustery.Encaust(t);
-                    _tokenCreationCommands.Add(encaustedTokenCommand);
+                    _persistedGameState.TokenCreationCommands.Add(encaustedTokenCommand);
                 }
             }
         }
@@ -68,9 +62,9 @@ namespace SecretHistories.Infrastructure.Persistence
         public abstract void DeserialiseFromPersistence();
 
 
-        public async Task<bool> SaveAsync()
+        public async Task<bool> SerialiseAndSaveAsync()
         {
-            string json = JsonConvert.SerializeObject(this);
+            string json = JsonConvert.SerializeObject(_persistedGameState);
 
             var saveFilePath = GetSaveFileLocation();
 

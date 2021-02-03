@@ -35,13 +35,13 @@ namespace SecretHistories.Constants
 
             try
             {
-                if (!Watchman.Get<StageHand>().PersistableGameState.Exists()) //we can roll BeginNewGame into the deserialisation call, actually
+                if (!Watchman.Get<StageHand>().GamePersistence.Exists()) //we can roll BeginNewGame into the deserialisation call, actually
                 {
                     Watchman.Get<GameGateway>().BeginNewGame();
                 }
                 else
                 {
-                    LoadGame(Watchman.Get<StageHand>().PersistableGameState);
+                    LoadGame(Watchman.Get<StageHand>().GamePersistence);
                 }
 
                 ProvisionDropzoneToken();
@@ -53,7 +53,7 @@ namespace SecretHistories.Constants
         }
 
 
-        public void LoadGame(PersistableGameState gameStateSource)
+        public void LoadGame(GamePersistence gamePersistenceSource)
         {
           
 
@@ -63,15 +63,17 @@ namespace SecretHistories.Constants
             try
             {
 
-                gameStateSource.DeserialiseFromPersistence(); //In the case of a Petromneme, this doesn't just deserialise, it will do the actual loading
-                gameStateSource.ImportPetromnemeStateAfterTheAncientFashion();
+                gamePersistenceSource.DeserialiseFromPersistence(); //In the case of a Petromneme, this doesn't just deserialise, it will do the actual loading
+                gamePersistenceSource.ImportPetromnemeStateAfterTheAncientFashion();
 
-                foreach (var t in gameStateSource.GetTokenCreationCommands()) //in the case of a petromneme, there aren't any tccs
+                var gameState = gamePersistenceSource.RetrieveGameState();
+
+                foreach (var t in gameState.TokenCreationCommands) //in the case of a petromneme, there aren't any tccs
                     t.Execute(new Context(Context.ActionSource.Loading));
 
                 //in both old and new cases, the character has already been deserialised and loaded in Glory by now - but what about reloads?
 
-    Watchman.Get<Concursum>().ShowNotification(
+           Watchman.Get<Concursum>().ShowNotification(
                      new NotificationArgs(Watchman.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"), Watchman.Get<ILocStringProvider>().Get("UI_LOADEDDESC")));
       
             }
