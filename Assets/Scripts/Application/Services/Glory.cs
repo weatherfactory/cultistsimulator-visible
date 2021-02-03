@@ -174,13 +174,14 @@ namespace SecretHistories.Services
                 var oldFormatGame = new Petromneme();
                 if (oldFormatGame.Exists())
                 {
-                    characterCreationCommand = oldFormatGame.GetCharacterCreationCommandFromSave();
+                    oldFormatGame.DeserialiseFromPersistence();
+                    characterCreationCommand = oldFormatGame.GetCharacterCreationCommands().First();
                     stageHand.UsePersistedGame(oldFormatGame);
                 }
                 else
                 {
-                    var newFormatGame = new DefaultPersistedGame();
-                    characterCreationCommand = newFormatGame.GetCharacterCreationCommandFromSave();
+                    var newFormatGame = new DefaultPersistableGameState();
+                    characterCreationCommand = newFormatGame.GetCharacterCreationCommands().First();
                     stageHand.UsePersistedGame(newFormatGame);
                 }
 

@@ -24,11 +24,11 @@ namespace SecretHistories.Services
 
         public int StartingSceneNumber;
 
-        public PersistedGame PersistedGame { get; private set; }
+        public PersistableGameState PersistableGameState { get; private set; }
 
-        public void UsePersistedGame(PersistedGame game)
+        public void UsePersistedGame(PersistableGameState game)
         {
-            PersistedGame = game;
+            PersistableGameState = game;
         }
 
         async Task FadeOut()
@@ -96,23 +96,23 @@ namespace SecretHistories.Services
             }
         }
 
-        public void LoadGameOnTabletop(PersistedGame source)
+        public void LoadGameOnTabletop(PersistableGameState source)
         {
             SoundManager.PlaySfx("UIStartGame");
-            PersistedGame = source;
+            PersistableGameState = source;
             SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().PlayfieldScene, true);
         }
 
 
         public void NewGameOnTabletop()
         {
-            PersistedGame=new NewGame();
+            PersistableGameState=new NewGame();
             SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NewGameScene, true);
         }
 
         public void ClearRestartingGameFlag()
         {
-            PersistedGame=new DefaultPersistedGame();
+            PersistableGameState=new DefaultPersistableGameState();
         }
 
 

@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Commands;
 using UnityEngine;
 
 namespace SecretHistories.Infrastructure.Persistence
 {
-    public class DevSlotSavePersistedGame: PersistedGame
+    public class DevSlotSavePersistableGameState: PersistableGameState
     {
         private readonly int _slotNumber;
 
-        public DevSlotSavePersistedGame(int slotNumber)
+        public DevSlotSavePersistableGameState(int slotNumber)
         {
             _slotNumber = slotNumber;
         }
@@ -21,5 +22,9 @@ namespace SecretHistories.Infrastructure.Persistence
             return $"{Application.persistentDataPath}/devsave_{_slotNumber}.json";
         }
 
+        public override void DeserialiseFromPersistence()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

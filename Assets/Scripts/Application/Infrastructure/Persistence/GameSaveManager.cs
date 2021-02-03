@@ -74,7 +74,7 @@ namespace SecretHistories.Infrastructure
             return File.Exists(NoonUtility.GetGameSaveLocation());
         }
 
-        public bool IsSavedGameActive(PersistedGame source, bool temp = false)
+        public bool IsSavedGameActive(PersistableGameState source, bool temp = false)
         {
             return simpleJsonGameDataImporter.IsSavedGameActive(source);
         }
@@ -98,7 +98,7 @@ namespace SecretHistories.Infrastructure
 
         
        
-        public void LoadTabletopState(PersistedGame source,Sphere tabletop)
+        public void LoadTabletopState(PersistableGameState source,Sphere tabletop)
         {
 
             simpleJsonGameDataImporter.ImportTableState(source,tabletop);

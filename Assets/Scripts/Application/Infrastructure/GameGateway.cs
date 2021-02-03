@@ -12,9 +12,6 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
-using SecretHistories.Spheres.Angels;
-using SecretHistories.Constants;
-using SecretHistories.Entities.Verbs;
 using SecretHistories.Infrastructure;
 using SecretHistories.Infrastructure.Persistence;
 using SecretHistories.Services;
@@ -39,13 +36,13 @@ namespace SecretHistories.Constants
             try
             {
 
-                if (!Watchman.Get<StageHand>().PersistedGame.Exists())
+                if (!Watchman.Get<StageHand>().PersistableGameState.Exists())
                 {
                     Watchman.Get<GameGateway>().BeginNewGame();
                 }
                 else
                 {
-                    LoadGame(Watchman.Get<StageHand>().PersistedGame);
+                    LoadGame(Watchman.Get<StageHand>().PersistableGameState);
                 }
 
                 ProvisionDropzoneToken();
@@ -57,7 +54,7 @@ namespace SecretHistories.Constants
         }
 
 
-        public void LoadGame(PersistedGame gameStateSource)
+        public void LoadGame(PersistableGameState gameStateSource)
         {
           
 

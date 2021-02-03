@@ -446,31 +446,21 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     public void LoadGame()
     {
-        Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultPersistedGame());
+        Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultPersistableGameState());
     }
 
     public async void SaveGame()
     {
-        Encaustery<TokenCreationCommand> tokenEncaustery = new Encaustery<TokenCreationCommand>();
-        JSONPortal<TokenCreationCommand> tokenCreationCommandJsonPortal = new JSONPortal<TokenCreationCommand>();
-        StringBuilder sb = new StringBuilder();
+
+        var game = new DefaultPersistableGameState();
+
+        
+
 
         var allSpheres = Watchman.Get<SphereCatalogue>().GetSpheres();
-        foreach (var sphere in allSpheres)
-        {
-            var allTokensInSphere = sphere.GetAllTokens();
-            foreach (var t in allTokensInSphere)
-            {
-             var encaustedTokenCommand=tokenEncaustery.Encaust(t);
+      
 
-          var tokenJson= tokenCreationCommandJsonPortal.Serialize(encaustedTokenCommand);
-          sb.AppendLine(tokenJson);
-            }
-        }
-
-        var game=new DefaultPersistedGame();
-        
-        var saveTask = game.SaveActiveGameAsync(sb.ToString(), new DefaultPersistedGame());
+        var saveTask = game.SaveAsync();
         var result = await saveTask;
 
     }
@@ -534,7 +524,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
     {
         if (!CheckDebugSaveExists(index))
             return;
-        DevSlotSavePersistedGame source=new DevSlotSavePersistedGame(index);
+        DevSlotSavePersistableGameState source=new DevSlotSavePersistableGameState(index);
         
         Watchman.Get<StageHand>().LoadGameOnTabletop(source);
         }

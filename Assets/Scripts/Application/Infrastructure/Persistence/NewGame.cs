@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Commands;
 
 namespace SecretHistories.Infrastructure.Persistence
 {
-    public class NewGame: PersistedGame
+    public class NewGame: PersistableGameState
     {
         public override string GetSaveFileLocation()
         {
@@ -18,5 +19,9 @@ namespace SecretHistories.Infrastructure.Persistence
             return false;
         }
 
+        public override void DeserialiseFromPersistence()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
