@@ -24,7 +24,7 @@ namespace SecretHistories.Commands
 {
     public class SituationCreationCommand: ITokenPayloadCreationCommand,IEncaustment
     {
-        public Verb Verb { get; set; }
+        public string VerbId { get; set; }
         public string RecipeId { get; set; }
         public StateEnum StateForRehydration { get; set; }
         public float TimeRemaining { get; set; }
@@ -42,13 +42,13 @@ namespace SecretHistories.Commands
 
         }
 
-        public SituationCreationCommand(Verb verb, string recipeId, StateEnum state)
+        public SituationCreationCommand(string verbId, string recipeId, StateEnum state)
         {
 
             RecipeId = recipeId;
-            Verb = verb;
+            VerbId = verbId;
             StateForRehydration = state;
-            Path =new SituationPath(verb);
+            Path =new SituationPath(verbId);
             CommandQueue = new SituationCommandQueue();
         }
 
@@ -62,16 +62,22 @@ namespace SecretHistories.Commands
 
             var recipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(RecipeId);
 
-            if (registeredSituations.Exists(rs => rs.Unique && rs.Verb.Id == Verb.Id))
+            var verb = Watchman.Get<Compendium>().GetEntityById<Verb>(VerbId);
+
+            if (registeredSituations.Exists(rs => rs.Unique && rs.Verb.Id == VerbId))
             {
                 NoonUtility.Log("Tried to create " + recipe.Id + " for verb " + recipe.ActionId + " but that verb is already active.");
                     return NullSituation.Create();
             }
 
+            if (!Path.IsValid())
+                throw new ApplicationException($"trying to create a situation with an invalid path: '{Path}'");
+
+
             Situation newSituation = new Situation(Path);
 
             newSituation.State = SituationState.Rehydrate(StateForRehydration, newSituation);
-            newSituation.Verb = Verb;
+            newSituation.Verb = verb;
             newSituation.ActivateRecipe(recipe);
             newSituation.ReduceLifetimeBy(recipe.Warmup - TimeRemaining);
             newSituation.OverrideTitle = OverrideTitle;

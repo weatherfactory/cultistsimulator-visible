@@ -15,24 +15,26 @@ namespace SecretHistories.Entities
             //do nothing, we're null
         }
 
-        public NullRecipe()
-        {
-            StartDescription = ".";
-            Description = ".";
-            Slots=new List<SphereSpec>();
-        }
 
         public static NullRecipe Create()
         {
             return Create(NullVerb.Create());
         }
 
+        
         public static NullRecipe Create(Verb forVerb)
         {
-            var nr = new NullRecipe();
+            Hashtable nullht = new Hashtable();
+            EntityData fauxEntityData = new EntityData("nullrecipe", nullht);
+            var nr = new NullRecipe(fauxEntityData, new ContentImportLog());
+            nr.Craftable = false;
+            nr.HintOnly = true;
+    
+
             nr.ActionId = forVerb.Id;
             nr.Label = forVerb.Label;
             nr.Description = forVerb.Description;
+         
             return nr;
         }
 

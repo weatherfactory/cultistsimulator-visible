@@ -9,6 +9,6 @@ namespace Assets.Scripts.Application.Entities.NullEntities
 {
     public class NullCharacter: Character
     {
-
+        
     }
 }

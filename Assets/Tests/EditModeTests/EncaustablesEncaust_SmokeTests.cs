@@ -34,13 +34,7 @@ using Object = UnityEngine.Object;
             encaustery.Encaust(elementStack);
         }
 
-        [Test]
-        public void Situation_Encausts()
-        {
-            var situationEncaustery=new Encaustery<SituationCreationCommand>();
-            var situation=new Situation(new SituationPath("pp"));
-            situationEncaustery.Encaust(situation);
-        }
+
 
     [Test]
         public void Character_Encausts()
@@ -67,7 +61,13 @@ using Object = UnityEngine.Object;
             token.SetPayload(elementStack);
             encaustery.Encaust(token);
         }
-
+        [Test]
+        public void Situation_Encausts()
+        {
+            var situationEncaustery = new Encaustery<SituationCreationCommand>();
+            var situation = new Situation(new SituationPath("pp"));
+            situationEncaustery.Encaust(situation);
+        }
 
     [Test]
         public void SituationToken_Encausts()

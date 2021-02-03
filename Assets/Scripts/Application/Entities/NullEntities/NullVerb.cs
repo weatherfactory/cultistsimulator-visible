@@ -21,7 +21,7 @@ namespace SecretHistories.NullObjects
     {
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
-        public string Id => string.Empty;
+        public string Id => ".";
         public int Quantity =>0;
         public Dictionary<string, int> Mutations { get; }
 

@@ -212,21 +212,7 @@ public class Compendium
         return null;
     }
 
-
-    public Verb GetVerbForRecipe(Recipe recipe)
-    {
-        Verb verb = GetEntityById<Verb>(recipe.ActionId);
-
-
-        if (verb == null)
-        {
-            Verb spontaneousVerb =Verb.CreateSpontaneousVerb(recipe.ActionId,recipe.Label,recipe.Description);
-            return spontaneousVerb;
-        }
-
-        return verb;
-    }
-
+    
 
     /// <summary>
     /// allow the character to specify levers (legacy event records)

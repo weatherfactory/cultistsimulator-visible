@@ -12,6 +12,7 @@ using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Enums;
+using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.NullObjects;
 using SecretHistories.Spheres;
@@ -87,8 +88,9 @@ public class CreationCommandsSmokeTests
         public void CreateSituation()
         {
             var situationCreationCommand=new SituationCreationCommand();
-            situationCreationCommand.Verb=NullVerb.Create();
+            situationCreationCommand.VerbId = NullVerb.Create().Id;
             situationCreationCommand.RecipeId = NullRecipe.Create().Id;
+            situationCreationCommand.Path=new SituationPath(".");
             situationCreationCommand.StateForRehydration = StateEnum.Ongoing;
             var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
             Assert.IsInstanceOf<Situation>(situation);
@@ -99,9 +101,10 @@ public class CreationCommandsSmokeTests
         public void CreateSituationToken()
         {
             var situationCreationCommand = new SituationCreationCommand();
-            situationCreationCommand.Verb = NullVerb.Create();
-            situationCreationCommand.RecipeId = NullRecipe.Create().Id;
-            situationCreationCommand.StateForRehydration = StateEnum.Ongoing;
+            situationCreationCommand.VerbId = NullVerb.Create().Id;
+        situationCreationCommand.RecipeId = NullRecipe.Create().Id;
+        situationCreationCommand.Path = new SituationPath(".");
+        situationCreationCommand.StateForRehydration = StateEnum.Ongoing;
 
             var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
 

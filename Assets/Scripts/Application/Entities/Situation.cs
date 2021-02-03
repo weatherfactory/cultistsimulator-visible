@@ -14,6 +14,7 @@ using SecretHistories.UI;
 using Assets.Logic;
 using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities;
+using Assets.Scripts.Application.Entities.NullEntities;
 using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Logic;
 using Newtonsoft.Json;
@@ -48,6 +49,9 @@ namespace SecretHistories.Entities {
         public float TimeRemaining => _timeshadow.LifetimeRemaining;
 
         [Encaust]
+        public string VerbId => Verb.Id;
+
+        [DontEncaust]
         public Verb Verb { get; set; }
 
         [Encaust]
@@ -70,7 +74,7 @@ namespace SecretHistories.Entities {
         [DontEncaust] public SituationState State { get; set; }
         [DontEncaust] public float Warmup => Recipe.Warmup;
         [DontEncaust] public RecipePrediction CurrentRecipePrediction { get; set; }
-        [DontEncaust] public string Id => Verb.Id;
+        [DontEncaust] public string Id => Path.ToString();
         [DontEncaust] public string Label => CurrentRecipePrediction.Title;
         [DontEncaust] public string Description => CurrentRecipePrediction.DescriptiveText;
         [DontEncaust] public int Quantity => 1;
@@ -132,6 +136,7 @@ namespace SecretHistories.Entities {
             Verb=NullVerb.Create();
             Recipe = NullRecipe.Create(Verb);
             CurrentRecipePrediction = RecipePrediction.DefaultFromVerb(Verb);
+            State=new NullSituationState();
             _timeshadow = new Timeshadow(Recipe.Warmup,
                 Recipe.Warmup,
                 false);
@@ -579,9 +584,7 @@ namespace SecretHistories.Entities {
 
             }
 
-
-            Verb verbForNewSituation = Watchman.Get<Compendium>().GetVerbForRecipe(effectCommand.Recipe);
-            var situationCreationCommand = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe.Id,
+            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId, effectCommand.Recipe.Id,
                 StateEnum.Ongoing);
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand,effectCommand.ToPath,new Context(Context.ActionSource.SpawningAnchor));
@@ -643,11 +646,8 @@ namespace SecretHistories.Entities {
             return;
         }
 
-            
-
-
-            var inductionRecipeVerb = Watchman.Get<Compendium>().GetVerbForRecipe(inducedRecipe);
-            SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inductionRecipeVerb,
+        
+            SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId,
             inducedRecipe.Id, StateEnum.Ongoing);
 
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, SpherePath.Current(), new Context(Context.ActionSource.SpawningAnchor));

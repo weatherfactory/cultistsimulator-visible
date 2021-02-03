@@ -65,8 +65,6 @@ namespace SecretHistories.Entities
 
 
 
-        public bool ExclusiveOpen => true;
-
         public Verb()
         {
 

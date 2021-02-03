@@ -60,6 +60,13 @@ namespace SecretHistories.Fucine
             Path = verb.Id + SEPARATOR + Guid.NewGuid();
         }
 
+        public bool IsValid()
+        {
+            if (string.IsNullOrEmpty(Path))
+                return false;
+            return true;
+        }
+
         [JsonConstructor]
         public SituationPath(String path)
         {
