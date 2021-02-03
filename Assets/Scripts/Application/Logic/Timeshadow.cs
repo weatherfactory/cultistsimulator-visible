@@ -9,8 +9,14 @@ namespace Assets.Scripts.Application.Logic
 {
     public class Timeshadow
     {
+        private float _lifetimeRemaining;
         public float Lifetime { get; }
-        public float LifetimeRemaining{ get; private set; }
+
+        public float LifetimeRemaining
+        {
+            get => Math.Max(0,_lifetimeRemaining);
+        }
+
         public float LastInterval { get; private set; }
         public bool Transient => Lifetime > 0;
         public bool Resaturate { get; }
@@ -24,14 +30,14 @@ namespace Assets.Scripts.Application.Logic
         public Timeshadow(float lifetime, float lifetimeRemaining, bool resaturate)
         {
             Lifetime = lifetime;
-            LifetimeRemaining = lifetimeRemaining;
+            _lifetimeRemaining = lifetimeRemaining;
             Resaturate = resaturate;
         }
 
         public void SpendTime(float interval)
         {
             LastInterval = interval;
-            LifetimeRemaining -= interval;
+            _lifetimeRemaining -= interval;
         }
     }
 }
