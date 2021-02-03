@@ -29,7 +29,7 @@ namespace SecretHistories.UI {
         private Dictionary<ThresholdSphere, FucinePath> _thresholds =
           new Dictionary<ThresholdSphere, FucinePath>();
 
-        private IVerb _verb;
+        private Verb _verb;
 
 
 
@@ -40,7 +40,7 @@ namespace SecretHistories.UI {
         /// <param name="situationPath"></param>
         /// <param name="verb"></param>
         /// <returns></returns>
-        public virtual ThresholdSphere BuildPrimaryThreshold(SphereSpec sphereSpec,SituationPath situationPath, IVerb verb)
+        public virtual ThresholdSphere BuildPrimaryThreshold(SphereSpec sphereSpec,SituationPath situationPath, Verb verb)
         {
             RemoveAllThresholds();
 

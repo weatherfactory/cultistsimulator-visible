@@ -316,7 +316,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         var recipe = compendium.GetEntityById<Recipe>(recipeId.Trim());
         if (recipe!=null)
         {
-            IVerb verbForNewSituation = Watchman.Get<Compendium>().GetVerbForRecipe(recipe);
+            Verb verbForNewSituation = Watchman.Get<Compendium>().GetVerbForRecipe(recipe);
 
             SituationCreationCommand newSituationCommand = new SituationCreationCommand(verbForNewSituation, recipe, StateEnum.Ongoing);
 

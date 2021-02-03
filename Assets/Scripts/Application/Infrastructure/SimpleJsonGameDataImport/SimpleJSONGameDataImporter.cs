@@ -200,7 +200,7 @@ namespace SecretHistories.Constants
             }
         }
 
-        private TokenCreationCommand SetupSituationTokenCreationCommand(IVerb verb, Recipe recipe, StateEnum situationState,
+        private TokenCreationCommand SetupSituationTokenCreationCommand(Verb verb, Recipe recipe, StateEnum situationState,
             Hashtable htSituationValues, object locationInfo)
         {
             var situationCreationCommand = new SituationCreationCommand(verb, recipe, situationState);
@@ -252,16 +252,16 @@ namespace SecretHistories.Constants
             return (StateEnum)Enum.Parse(typeof(StateEnum), htSituationValues[SaveConstants.SAVE_SITUATIONSTATE].ToString());
         }
 
-        private static IVerb GetSituationVerb(Hashtable htSituationValues)
+        private static Verb GetSituationVerb(Hashtable htSituationValues)
         {
             string verbId = htSituationValues[SaveConstants.SAVE_VERBID].ToString();
-            IVerb situationVerb = Watchman.Get<Compendium>().GetEntityById<BasicVerb>(verbId);
+            Verb situationVerb = Watchman.Get<Compendium>().GetEntityById<Verb>(verbId);
             if (situationVerb == null)
                 situationVerb = NullVerb.Create();
             return situationVerb;
         }
 
-        private Recipe GetSituationRecipe(Hashtable htSituationValues, IVerb situationVerb)
+        private Recipe GetSituationRecipe(Hashtable htSituationValues, Verb situationVerb)
         {
             string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
             var recipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(recipeId);

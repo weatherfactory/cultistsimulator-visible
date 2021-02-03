@@ -21,6 +21,7 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
     {
         public TokenLocation Location { get; set; }
         public TokenTravelItinerary CurrentItinerary { get; set; }
+        [JsonProperty(TypeNameHandling = TypeNameHandling.Auto)]
         public ITokenPayloadCreationCommand Payload { get; set; }
         public bool Defunct { get; set; }
         private Token _sourceToken;

@@ -16,6 +16,7 @@ using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities;
 using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Logic;
+using Newtonsoft.Json;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
@@ -44,7 +45,7 @@ namespace SecretHistories.Entities {
         public float TimeRemaining => _timeshadow.LifetimeRemaining;
 
         [Encaust]
-        public IVerb Verb { get; set; }
+        public Verb Verb { get; set; }
 
         [Encaust]
         public string OverrideTitle { get; set; }
@@ -577,7 +578,7 @@ namespace SecretHistories.Entities {
             }
 
 
-            IVerb verbForNewSituation = Watchman.Get<Compendium>().GetVerbForRecipe(effectCommand.Recipe);
+            Verb verbForNewSituation = Watchman.Get<Compendium>().GetVerbForRecipe(effectCommand.Recipe);
             var situationCreationCommand = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe,
                 StateEnum.Ongoing);
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;

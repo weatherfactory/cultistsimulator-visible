@@ -24,9 +24,7 @@ namespace SecretHistories.Commands
 {
     public class SituationCreationCommand: ITokenPayloadCreationCommand,IEncaustment
     {
-
-        public IVerb Verb { get; set; }
-        
+        public Verb Verb { get; set; }
         public Recipe Recipe { get; set; }
         public StateEnum StateForRehydration { get; set; }
         public float TimeRemaining { get; set; }
@@ -44,7 +42,7 @@ namespace SecretHistories.Commands
 
         }
 
-        public SituationCreationCommand(IVerb verb, Recipe recipe, StateEnum state)
+        public SituationCreationCommand(Verb verb, Recipe recipe, StateEnum state)
         {
             if (recipe == null && verb == null)
                 throw new ArgumentException("Must specify either a recipe or a verb (or both");

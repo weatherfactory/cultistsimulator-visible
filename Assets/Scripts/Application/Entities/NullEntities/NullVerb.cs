@@ -17,7 +17,7 @@ using SecretHistories.Fucine;
 
 namespace SecretHistories.NullObjects
 {
-    public class NullVerb:IVerb
+    public class NullVerb:Verb
     {
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;

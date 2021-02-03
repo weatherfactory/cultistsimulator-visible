@@ -24,7 +24,7 @@ namespace SecretHistories.Entities
             return nr;
         }
 
-        public static NullRecipe Create(IVerb forVerb)
+        public static NullRecipe Create(Verb forVerb)
         {
             var nr = Create();
             nr.ActionId = forVerb.Id;

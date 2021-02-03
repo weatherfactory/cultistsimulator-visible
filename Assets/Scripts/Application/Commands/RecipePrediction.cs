@@ -19,7 +19,7 @@ namespace SecretHistories.Commands
         public bool Craftable => _actualRecipe.Craftable;
         public bool HintOnly => _actualRecipe.HintOnly;
 
-        public static RecipePrediction DefaultFromVerb(IVerb verb)
+        public static RecipePrediction DefaultFromVerb(Verb verb)
         {
             NullRecipe nullRecipe=NullRecipe.Create(verb);
             return new RecipePrediction(nullRecipe,new AspectsDictionary());

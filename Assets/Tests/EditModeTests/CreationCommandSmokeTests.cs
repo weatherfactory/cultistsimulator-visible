@@ -43,7 +43,7 @@ public class CreationCommandsSmokeTests
         Assert.AreEqual(1, compendium.GetEntitiesAsList<Legacy>().Count);
         Assert.AreEqual(1, compendium.GetEntitiesAsList<Recipe>().Count);
         Assert.AreEqual(27, compendium.GetEntitiesAsList<Setting>().Count);
-        Assert.AreEqual(1, compendium.GetEntitiesAsList<BasicVerb>().Count);
+        Assert.AreEqual(1, compendium.GetEntitiesAsList<Verb>().Count);
 
         var watchman = new Watchman();
         watchman.Register(compendium);

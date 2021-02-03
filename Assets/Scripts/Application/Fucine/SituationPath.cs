@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 
 namespace SecretHistories.Fucine
@@ -53,7 +54,7 @@ namespace SecretHistories.Fucine
             return this;
         }
 
-        public SituationPath(IVerb verb)
+        public SituationPath(Verb verb)
         {
             _path = verb.Id + SEPARATOR + Guid.NewGuid();
         }

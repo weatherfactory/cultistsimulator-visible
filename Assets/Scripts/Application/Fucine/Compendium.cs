@@ -210,17 +210,14 @@ public class Compendium
     }
 
 
-    public IVerb GetVerbForRecipe(Recipe recipe)
+    public Verb GetVerbForRecipe(Recipe recipe)
     {
-        IVerb verb = GetEntityById<BasicVerb>(recipe.ActionId);
+        Verb verb = GetEntityById<Verb>(recipe.ActionId);
 
 
         if (verb == null)
         {
-            IVerb spontaneousVerb =
-              new SpontaneousVerb(recipe.ActionId,recipe.Label,recipe.Description);
-
-
+            Verb spontaneousVerb =Verb.CreateSpontaneousVerb(recipe.ActionId,recipe.Label,recipe.Description);
             return spontaneousVerb;
         }
 
@@ -355,9 +352,9 @@ public class Compendium
             words += (e.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        foreach (var v in entityStores[typeof(BasicVerb)].GetAllAsList<BasicVerb>())
+        foreach (var v in entityStores[typeof(Verb)].GetAllAsList<Verb>())
         {
-            var verb = (BasicVerb) v;
+            var verb = (Verb) v;
 
             words += (verb.Label.Count(char.IsWhiteSpace) + 1);
             words += (verb.Description.Count(char.IsWhiteSpace) + 1);

@@ -15,23 +15,20 @@ using SecretHistories.Elements.Manifestations;
 namespace SecretHistories.Entities
 {
     [FucineImportable("verbs")]
-    public class BasicVerb: AbstractEntity<BasicVerb>,IVerb
+    public class Verb: AbstractEntity<Verb>
     {
-        [Encaust]
         public override string Id => _id;
 
         [FucineValue(DefaultValue = ".", Localise = true)]
-        [Encaust]
         public string Label { get; set; }
 
         [FucineValue(DefaultValue = ".", Localise = true)]
-        [Encaust]
         public string Description { get; set; }
 
         [FucineValue]
-        [Encaust]
         public string Icon { get; set; }
 
+        public bool Spontaneous { get; set; }
 
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
@@ -50,7 +47,8 @@ namespace SecretHistories.Entities
             get
             {
                 var aggregatedSlotsFromOldAndNewFormat = new List<SphereSpec>();
-                aggregatedSlotsFromOldAndNewFormat.Add(Slot); //what if this is empty? likely source of trouble later
+                if(Slot!=null)
+                    aggregatedSlotsFromOldAndNewFormat.Add(Slot); //what if this is empty? likely source of trouble later
                 aggregatedSlotsFromOldAndNewFormat.AddRange(Slots);
                 return aggregatedSlotsFromOldAndNewFormat;
             }
@@ -65,21 +63,31 @@ namespace SecretHistories.Entities
         public List<SphereSpec> Slots { get; set; }
 
 
-
-        public bool Spontaneous
+        protected Verb(string id, string label, string description)
         {
-            get { return false; }
+            _id = id;
+            Label = label;
+            Description = description;
+            Slots = new List<SphereSpec>();
         }
-        
+
+        public static Verb CreateSpontaneousVerb(string id, string label, string description)
+        {
+            var v=new  Verb(id, label, description);
+            v.Spontaneous = true;
+            return v;
+        }
+
+
 
         public bool ExclusiveOpen => true;
 
-        public BasicVerb()
+        public Verb()
         {
 
         }
 
-        public BasicVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        public Verb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 
         }
