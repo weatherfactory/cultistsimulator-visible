@@ -21,11 +21,12 @@ namespace Assets.Scripts.Application.Entities.NullEntities
 
         }
 
-        public object GetNullObjectForType(Type forType)
+        public object GetNullObjectForType(Type forType,string entityId)
         {
             if (NullObjectsForEntities.ContainsKey(forType))
                 return NullObjectsForEntities[forType];
 
+            NoonUtility.Log($"Can't find entity id '{entityId}' of type {forType}, and can't find an appropriate NullObject to return in its place - returning plain old null.");
             return null;
         }
 

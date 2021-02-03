@@ -22,8 +22,8 @@ namespace SecretHistories.Commands
         public Legacy ActiveLegacy { get; set; }
         public Ending EndingTriggered { get; set; }
         public Dictionary<string, int> RecipeExecutions { get; set; }
-        public Dictionary<string, string> InProgressHistoryRecords { get; set; }
-        public Dictionary<string, string> PreviousCharacterHistoryRecords { get; set; }
+        public Dictionary<string, string> InProgressHistoryRecords { get; set; }=new Dictionary<string, string>();
+        public Dictionary<string, string> PreviousCharacterHistoryRecords { get; set; }=new Dictionary<string, string>();
 
         public CharacterCreationCommand()
         {

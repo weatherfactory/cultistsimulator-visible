@@ -182,11 +182,7 @@ public class Compendium
                 }
             }
             else
-            {
-                NoonUtility.Log("Can't find entity id '" + entityId + "' of type " + typeof(T));
-            }
-
-            return _compendiumNullObjectStore.GetNullObjectForType(typeof(T)) as T;
+                return _compendiumNullObjectStore.GetNullObjectForType(typeof(T), entityId) as T;
         }
 
 

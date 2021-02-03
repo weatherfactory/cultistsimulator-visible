@@ -47,6 +47,9 @@ public class CreationCommandsSmokeTests
 
         var watchman = new Watchman();
         watchman.Register(compendium);
+        var gobjStable = new GameObject();
+        var stableComponent=gobjStable.AddComponent<Stable>();
+        watchman.Register(stableComponent);
 
         var worldSphere = Object.FindObjectOfType<TabletopSphere>();
         Watchman.Get<SphereCatalogue>().RegisterSphere(worldSphere);
@@ -54,6 +57,7 @@ public class CreationCommandsSmokeTests
         Watchman.Get<SphereCatalogue>().RegisterSphere(worldSphere);
         var windowsSphere = Object.FindObjectOfType<WindowsSphere>();
         Watchman.Get<SphereCatalogue>().RegisterSphere(windowsSphere);
+
     }
 
     [Test]

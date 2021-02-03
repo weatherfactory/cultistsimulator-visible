@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Commands.Encausting;
 using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Interfaces;
 using Newtonsoft.Json;
@@ -449,25 +450,27 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     public async void SaveGame()
     {
-        //var allSpheres = Watchman.Get<SphereCatalogue>().GetSpheres();
-        //foreach (var sphere in allSpheres)
-        //{
-        //    var allTokensInSphere = sphere.GetAllTokens();
-        //    foreach (var t in allTokensInSphere)
-        //    {
-        //        var tc=new TokenCreationCommand(t);
+        Encaustery<TokenCreationCommand> tokenEncaustery = new Encaustery<TokenCreationCommand>();
+        JSONPortal<TokenCreationCommand> tokenCreationCommandJsonPortal = new JSONPortal<TokenCreationCommand>();
+        StringBuilder sb = new StringBuilder();
 
-        //   Debug.Log(tc.ToJson());
-        //    }
-
-        //}
-
-        List<ISaveable> saveables=new List<ISaveable>();
+        var allSpheres = Watchman.Get<SphereCatalogue>().GetSpheres();
+        foreach (var sphere in allSpheres)
+        {
 
 
-        StringBuilder sb=new StringBuilder();
-        foreach (var s in saveables)
-            sb.AppendLine(s.ToJson());
+
+            var allTokensInSphere = sphere.GetAllTokens();
+            foreach (var t in allTokensInSphere)
+            {
+             var encaustedTokenCommand=tokenEncaustery.Encaust(t);
+
+          var tokenJson= tokenCreationCommandJsonPortal.Serialize(encaustedTokenCommand);
+          sb.AppendLine(tokenJson);
+            }
+
+        }
+
 
         var saveTask = Watchman.Get<GameSaveManager>()
             .SaveActiveGameAsync(sb.ToString(), SourceForGameState.DefaultSave);

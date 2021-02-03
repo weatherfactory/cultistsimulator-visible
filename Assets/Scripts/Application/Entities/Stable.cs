@@ -9,13 +9,13 @@ using UnityEngine;
 
 namespace SecretHistories.Entities
 {
-    [Immanence(typeof(Stable))]
     public class Stable: MonoBehaviour
     {
         private Character _currentCharacter;
-        private HashSet<Character> characters=new HashSet<Character>();
+        private readonly List<Character> characters=new List<Character>();
 
 
+  
         public void AddNewCharacterAsProtag(Character newCharacter)
         {
             characters.Add(newCharacter);

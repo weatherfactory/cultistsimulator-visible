@@ -99,32 +99,32 @@ namespace SecretHistories.Services
                 System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
 
-                var registryAccess = new Watchman();
+                var watchman = new Watchman();
 
                 //load config: this gives us a lot of info that we'll need early
-                registryAccess.Register(new Config());            
+                watchman.Register(new Config());            
             
                 //load concursum: central nexus for event responses
-                registryAccess.Register(concursum);
+                watchman.Register(concursum);
 
                 var metaInfo = new MetaInfo(new VersionNumber(Application.version),GetCurrentStorefront());
-                registryAccess.Register<MetaInfo>(metaInfo);
+                watchman.Register<MetaInfo>(metaInfo);
             
 
                 //stagehand is used to load scenes
-                registryAccess.Register<StageHand>(stageHand);
+                watchman.Register<StageHand>(stageHand);
 
 
 
-                registryAccess.Register(limbo);
-                registryAccess.Register(NullManifestation);
+                watchman.Register(limbo);
+                watchman.Register(NullManifestation);
              
 
       
-                registryAccess.Register(gameSaveManager);
+                watchman.Register(gameSaveManager);
 
                 //why here? why not? this whole thing needs fixing
-                registryAccess.Register<IDice>(new Dice());
+                watchman.Register<IDice>(new Dice());
 
                 //Set up storefronts: integration with GOG and Steam, so this should come early.
                 var storefrontServicesProvider = new StorefrontServicesProvider();
@@ -132,20 +132,20 @@ namespace SecretHistories.Services
                     storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
                 if (metaInfo.Storefront == Storefront.Gog)
                     storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
-                registryAccess.Register<StorefrontServicesProvider>(storefrontServicesProvider);
+                watchman.Register<StorefrontServicesProvider>(storefrontServicesProvider);
 
                 //set up the Mod Manager
-                registryAccess.Register(new ModManager());
+                watchman.Register(new ModManager());
 
                 //load Compendium content. We can't do anything with content files until this is in.
-                registryAccess.Register<Compendium>(new Compendium());
+                watchman.Register<Compendium>(new Compendium());
                 
                 CompendiumLoader loader;
                 if (Application.isEditor && !string.IsNullOrEmpty(OverrideContentFolder))
                     loader = new CompendiumLoader(OverrideContentFolder);
                 else
                     loader = new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
-                registryAccess.Register<CompendiumLoader>(loader);
+                watchman.Register<CompendiumLoader>(loader);
 
                 var log=LoadCompendium(Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
@@ -162,19 +162,18 @@ namespace SecretHistories.Services
 
 
                 //set up loc services
-                registryAccess.Register(languageManager);
+                watchman.Register(languageManager);
                 languageManager.Initialise();
 
 
                 //respond to future culture-changed events, but not the initial one
                 concursum.BeforeChangingCulture.AddListener(OnCultureChanged);
 
-                
-                RegisterSavedOrNewCharacter(registryAccess);
+                CreateAndStableProtagonist(watchman);
 
                 var chronicler = new Chronicler(Watchman.Get<Stable>().Protag(), Watchman.Get<Compendium>());
 
-                registryAccess.Register(chronicler);
+                watchman.Register(chronicler);
 
                 //set up the top-level adapters. We do this here in case we've diverted to the error scene on first load / content fail, in order to avoid spamming the log with messages.
                 screenResolutionAdapter.Initialise();
@@ -199,10 +198,10 @@ namespace SecretHistories.Services
             }
         }
 
-        private void RegisterSavedOrNewCharacter(Watchman watchman)
+        private void CreateAndStableProtagonist(Watchman watchman)
         {
 
-            CharacterCreationCommand characterCreationCommand=new CharacterCreationCommand();
+            CharacterCreationCommand characterCreationCommand;
 
 
             if (Watchman.Get<GameSaveManager>().DoesGameSaveExist())
@@ -215,11 +214,9 @@ namespace SecretHistories.Services
                 characterCreationCommand.EndingTriggered=NullEnding.Create();
             }
 
-            var character = characterCreationCommand.Execute(_stable);
+            characterCreationCommand.Execute(_stable);
 
-            watchman.Register(character);
-
-
+            watchman.Register(_stable);
 
         }
 
