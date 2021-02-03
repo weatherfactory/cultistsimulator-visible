@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using SecretHistories.Elements;
 using SecretHistories.Interfaces;
 using SecretHistories.NullObjects;
@@ -10,8 +11,7 @@ namespace SecretHistories.Fucine
        public const char SEPARATOR = '_';
        public const char CURRENT = '@';
 
-        private readonly string _path;
-       private readonly string _sphereIdentifier;
+       public string Path { get; private set; }
        private SituationPath _situationPath;
 
         public override bool Equals(object obj)
@@ -24,14 +24,14 @@ namespace SecretHistories.Fucine
 
        public override int GetHashCode()
        {
-           return (_path != null ? _path.GetHashCode() : 0);
+           return (Path != null ? Path.GetHashCode() : 0);
        }
 
        
 
        public override string ToString()
        {
-           return _path;
+           return Path;
        }
 
        public override SituationPath GetBaseSituationPath()
@@ -52,25 +52,20 @@ namespace SecretHistories.Fucine
        public bool Equals(SpherePath otherPath)
        {
 
-           return otherPath?.ToString() == _path;
+           return otherPath?.ToString() == Path;
        }
 
-
-       public SpherePath(string sphereIdentifier)
+        [JsonConstructor]
+       public SpherePath(string path)
        {
-           _situationPath=new NullSituationPath();
-           _sphereIdentifier = sphereIdentifier;
-           _path = sphereIdentifier;
-           
+           Path = path;
        }
 
 
         public SpherePath(FucinePath basePath, string sphereIdentifier)
         {
             _situationPath = basePath.GetBaseSituationPath();
-            _sphereIdentifier = sphereIdentifier;
-
-            _path = basePath.ToString() + SEPARATOR + sphereIdentifier;
+            Path = basePath.ToString() + SEPARATOR + sphereIdentifier;
        }
 
        

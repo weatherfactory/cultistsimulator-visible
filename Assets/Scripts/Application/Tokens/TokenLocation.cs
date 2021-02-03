@@ -17,8 +17,8 @@ namespace SecretHistories.UI
     // its *local* position (specifically, anchored3D position) relative to that sphere
     public class TokenLocation
   {
-      public Vector3 Anchored3DPosition { get; private set; }
-      public SpherePath AtSpherePath { get; private set; }
+      public Vector3 Anchored3DPosition { get; set; }
+      public SpherePath AtSpherePath { get; set; }
 
         public TokenLocation(){}
 

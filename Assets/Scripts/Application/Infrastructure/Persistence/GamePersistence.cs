@@ -66,7 +66,7 @@ namespace SecretHistories.Infrastructure.Persistence
         public async Task<bool> SerialiseAndSaveAsync()
         {
             var jsonSerializerSettings=new JsonSerializerSettings();
-            jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+           // jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
             JsonSerializer serializer=JsonSerializer.Create(jsonSerializerSettings);
 
