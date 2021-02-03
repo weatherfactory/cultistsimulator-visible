@@ -35,6 +35,14 @@ namespace SecretHistories.Commands
 
             var character = Watchman.Get<PrefabFactory>().CreateLocally<Character>(stable.transform);
             character.name = "Character_" + Name;
+            character.Profession = Profession;
+            character.ActiveLegacy = ActiveLegacy;
+            character.EndingTriggered = EndingTriggered;
+            character.OverwriteExecutionsWith(RecipeExecutions);
+            foreach (var inProgressRecord in InProgressHistoryRecords)
+                character.SetFutureLegacyEventRecord(inProgressRecord.Key, inProgressRecord.Value);
+            foreach(var previousHistoryRecord in PreviousCharacterHistoryRecords)
+                character.SetOrOverwritePastLegacyEventRecord(previousHistoryRecord.Key,previousHistoryRecord.Value);
 
             stable.AddNewCharacterAsProtag(character);
 

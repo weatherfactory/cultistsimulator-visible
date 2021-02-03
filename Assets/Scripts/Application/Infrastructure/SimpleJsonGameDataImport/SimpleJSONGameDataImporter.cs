@@ -78,9 +78,7 @@ namespace SecretHistories.Constants
 
                 return characterCreationCommand;
             }
-
-
-
+            
 
             var chosenLegacyForCharacterId =TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_ACTIVELEGACY);
 

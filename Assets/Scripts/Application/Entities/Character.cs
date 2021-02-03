@@ -177,6 +177,12 @@ public class Character:MonoBehaviour,IEncaustable
             _recipeExecutions[forRecipeId] = executions;
     }
 
+    public void OverwriteExecutionsWith(Dictionary<string,int> newExecutions)
+    {
+        _recipeExecutions=new Dictionary<string, int>(newExecutions);
+    }
+
+
     public int GetExecutionsCount(string forRecipeId)
     {
         if (_recipeExecutions.ContainsKey(forRecipeId))

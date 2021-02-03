@@ -20,7 +20,8 @@ namespace SecretHistories.UI
 
         public void Start()
         {
-            ShowTabletopFor(Watchman.Get<Stable>().Protag().ActiveLegacy);
+            var protag = Watchman.Get<Stable>().Protag();
+            ShowTabletopFor(protag.ActiveLegacy);
         }
 
         public void OnPointerClick(PointerEventData eventData)

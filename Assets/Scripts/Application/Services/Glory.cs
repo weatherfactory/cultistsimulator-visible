@@ -209,9 +209,11 @@ namespace SecretHistories.Services
             else
             {
                 NoonUtility.LogWarning("Setting a default legacy for character: shouldn't do this in the actual game");
-                characterCreationCommand =new CharacterCreationCommand();
-                characterCreationCommand.ActiveLegacy = Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First();
-                characterCreationCommand.EndingTriggered=NullEnding.Create();
+                characterCreationCommand = new CharacterCreationCommand
+                {
+                    ActiveLegacy = Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First(),
+                    EndingTriggered = NullEnding.Create()
+                };
             }
 
             characterCreationCommand.Execute(_stable);
