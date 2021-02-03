@@ -4,6 +4,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
 using SecretHistories.Entities;
+using SecretHistories.NullObjects;
 
 namespace SecretHistories.Entities
 {
@@ -14,19 +15,21 @@ namespace SecretHistories.Entities
             //do nothing, we're null
         }
 
+        public NullRecipe()
+        {
+            StartDescription = ".";
+            Description = ".";
+            Slots=new List<SphereSpec>();
+        }
+
         public static NullRecipe Create()
         {
-            Hashtable nullht = new Hashtable();
-            EntityData fauxEntityData = new EntityData("nullrecipe", nullht);
-            var nr= new NullRecipe(fauxEntityData, new ContentImportLog());
-            nr.Craftable = false;
-            nr.HintOnly = true;
-            return nr;
+            return Create(NullVerb.Create());
         }
 
         public static NullRecipe Create(Verb forVerb)
         {
-            var nr = Create();
+            var nr = new NullRecipe();
             nr.ActionId = forVerb.Id;
             nr.Label = forVerb.Label;
             nr.Description = forVerb.Description;

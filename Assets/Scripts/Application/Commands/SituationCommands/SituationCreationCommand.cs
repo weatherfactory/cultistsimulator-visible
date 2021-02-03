@@ -25,7 +25,7 @@ namespace SecretHistories.Commands
     public class SituationCreationCommand: ITokenPayloadCreationCommand,IEncaustment
     {
         public Verb Verb { get; set; }
-        public Recipe Recipe { get; set; }
+        public string RecipeId { get; set; }
         public StateEnum StateForRehydration { get; set; }
         public float TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
@@ -42,18 +42,15 @@ namespace SecretHistories.Commands
 
         }
 
-        public SituationCreationCommand(Verb verb, Recipe recipe, StateEnum state)
+        public SituationCreationCommand(Verb verb, string recipeId, StateEnum state)
         {
-            if (recipe == null && verb == null)
-                throw new ArgumentException("Must specify either a recipe or a verb (or both");
 
-            Recipe = recipe;
+            RecipeId = recipeId;
             Verb = verb;
             StateForRehydration = state;
             Path =new SituationPath(verb);
             CommandQueue = new SituationCommandQueue();
         }
-
 
 
         
@@ -62,9 +59,12 @@ namespace SecretHistories.Commands
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
             var registeredSituations = situationsCatalogue.GetRegisteredSituations();
 
-             if (registeredSituations.Exists(rs => rs.Unique && rs.Verb.Id == Verb.Id))
+
+            var recipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(RecipeId);
+
+            if (registeredSituations.Exists(rs => rs.Unique && rs.Verb.Id == Verb.Id))
             {
-                NoonUtility.Log("Tried to create " + Recipe.Id + " for verb " + Recipe.ActionId + " but that verb is already active.");
+                NoonUtility.Log("Tried to create " + recipe.Id + " for verb " + recipe.ActionId + " but that verb is already active.");
                     return NullSituation.Create();
             }
 
@@ -72,8 +72,8 @@ namespace SecretHistories.Commands
 
             newSituation.State = SituationState.Rehydrate(StateForRehydration, newSituation);
             newSituation.Verb = Verb;
-            newSituation.ActivateRecipe(Recipe);
-            newSituation.ReduceLifetimeBy(Recipe.Warmup - TimeRemaining);
+            newSituation.ActivateRecipe(recipe);
+            newSituation.ReduceLifetimeBy(recipe.Warmup - TimeRemaining);
             newSituation.OverrideTitle = OverrideTitle;
 
 

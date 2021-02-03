@@ -168,8 +168,11 @@ public class Compendium
         }
         else
         {
-
-            if (typeof(T) == typeof(Culture))
+            if(typeof(T)==typeof(Verb))
+            {
+                return Verb.CreateSpontaneousVerb(entityId, entityId, entityId) as T;
+            }
+            else   if (typeof(T) == typeof(Culture))
             {
                 entityStore.TryGetById(NoonConstants.DEFAULT_CULTURE_ID, out T defaultCultureEntity);
                 if (defaultCultureEntity == null)

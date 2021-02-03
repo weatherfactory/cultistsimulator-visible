@@ -36,7 +36,7 @@ namespace Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport
             {
                 //we don't have any elements in ongoing slots - but we might still have an empty slot from the recipe, which isn't tracked in the save
                 //so add the slot to the spec anyway
-                foreach (var slot in ongoingSlotsForRecipe)
+               foreach (var slot in ongoingSlotsForRecipe)
                     ongoingSlotSpecs.Add(slot);
             }
 

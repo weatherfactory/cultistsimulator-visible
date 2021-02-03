@@ -38,7 +38,10 @@ namespace SecretHistories.Entities {
         [Encaust]
         public StateEnum StateForRehydration => State.RehydrationValue;
 
-        [Encaust]
+
+        [Encaust] public string RecipeId => Recipe.Id;
+
+        [DontEncaust]
         public Recipe Recipe { get; set; }
 
         [Encaust]
@@ -66,7 +69,6 @@ namespace SecretHistories.Entities {
 
         [DontEncaust] public SituationState State { get; set; }
         [DontEncaust] public float Warmup => Recipe.Warmup;
-        [DontEncaust] public string RecipeId => Recipe.Id;
         [DontEncaust] public RecipePrediction CurrentRecipePrediction { get; set; }
         [DontEncaust] public string Id => Verb.Id;
         [DontEncaust] public string Label => CurrentRecipePrediction.Title;
@@ -579,7 +581,7 @@ namespace SecretHistories.Entities {
 
 
             Verb verbForNewSituation = Watchman.Get<Compendium>().GetVerbForRecipe(effectCommand.Recipe);
-            var situationCreationCommand = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe,
+            var situationCreationCommand = new SituationCreationCommand(verbForNewSituation, effectCommand.Recipe.Id,
                 StateEnum.Ongoing);
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand,effectCommand.ToPath,new Context(Context.ActionSource.SpawningAnchor));
@@ -646,7 +648,7 @@ namespace SecretHistories.Entities {
 
             var inductionRecipeVerb = Watchman.Get<Compendium>().GetVerbForRecipe(inducedRecipe);
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inductionRecipeVerb,
-            inducedRecipe, StateEnum.Ongoing);
+            inducedRecipe.Id, StateEnum.Ongoing);
 
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, SpherePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
             SendCommandToSubscribers(spawnNewTokenCommand);

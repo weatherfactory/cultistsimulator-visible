@@ -88,7 +88,7 @@ public class CreationCommandsSmokeTests
         {
             var situationCreationCommand=new SituationCreationCommand();
             situationCreationCommand.Verb=NullVerb.Create();
-            situationCreationCommand.Recipe = NullRecipe.Create();
+            situationCreationCommand.RecipeId = NullRecipe.Create().Id;
             situationCreationCommand.StateForRehydration = StateEnum.Ongoing;
             var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
             Assert.IsInstanceOf<Situation>(situation);
@@ -100,7 +100,7 @@ public class CreationCommandsSmokeTests
         {
             var situationCreationCommand = new SituationCreationCommand();
             situationCreationCommand.Verb = NullVerb.Create();
-            situationCreationCommand.Recipe = NullRecipe.Create();
+            situationCreationCommand.RecipeId = NullRecipe.Create().Id;
             situationCreationCommand.StateForRehydration = StateEnum.Ongoing;
 
             var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());

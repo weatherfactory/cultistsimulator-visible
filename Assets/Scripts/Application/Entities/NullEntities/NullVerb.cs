@@ -25,45 +25,20 @@ namespace SecretHistories.NullObjects
         public int Quantity =>0;
         public Dictionary<string, int> Mutations { get; }
 
-        public Timeshadow GetTimeshadow()
-        {
-            return Timeshadow.CreateTimelessShadow();
-        }
-
 
         public string Label { get; set; }
         public string Description { get; set; }
         
-        public bool Spontaneous { get; }
+
         public string Icon => string.Empty;
 
-
-        public Type GetManifestationType(SphereCategory forSphereCategory)
-        {
-            return typeof(NullManifestation);
-        }
-
-        public void InitialiseManifestation(IManifestation manifestation)
-        {
-           //
-        }
-
-        public bool IsValidElementStack()
-        {
-            return false;
-        }
-
-        public bool IsValidVerb()
-        {
-            return false;
-        }
-
+        
         public List<SphereSpec> Thresholds { get; set; }
 
-        public bool ExclusiveOpen => false;
-
-        protected NullVerb()
+    
+        public NullVerb()
         {
+            Description = ".";
             Thresholds=new List<SphereSpec>();
         }
 
@@ -73,10 +48,7 @@ namespace SecretHistories.NullObjects
             return new NullVerb();
         }
 
-        public AspectsDictionary GetAspects(bool includeSelf)
-        {
-            return new AspectsDictionary();
-        }
+
 
 
 

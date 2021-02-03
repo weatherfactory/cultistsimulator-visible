@@ -18,6 +18,8 @@ namespace Assets.Scripts.Application.Entities.NullEntities
             NullObjectsForEntities.Add(typeof(Element),NullElement.Create());
             NullObjectsForEntities.Add(typeof(Ending),NullEnding.Create());
             NullObjectsForEntities.Add(typeof(Legacy),NullLegacy.Create());
+            NullObjectsForEntities.Add(typeof(Verb),NullVerb.Create());
+            NullObjectsForEntities.Add(typeof(Recipe),NullRecipe.Create());
 
         }
 

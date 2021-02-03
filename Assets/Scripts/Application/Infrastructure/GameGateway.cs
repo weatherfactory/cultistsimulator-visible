@@ -96,7 +96,7 @@ namespace SecretHistories.Constants
         {
             Verb v = Watchman.Get<Compendium>().GetEntityById<Verb>(activeLegacy.StartingVerbId);
 
-            SituationCreationCommand startingSituation = new SituationCreationCommand(v, NullRecipe.Create(), StateEnum.Unstarted);
+            SituationCreationCommand startingSituation = new SituationCreationCommand(v, NullRecipe.Create().Id, StateEnum.Unstarted);
             TokenCreationCommand startingToken=new TokenCreationCommand(startingSituation,TokenLocation.Default());
 
             startingToken.Execute(new Context(Context.ActionSource.Unknown));
