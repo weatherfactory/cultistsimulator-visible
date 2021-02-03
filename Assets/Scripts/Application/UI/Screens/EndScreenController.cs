@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using SecretHistories.Entities;
@@ -99,9 +100,7 @@ namespace SecretHistories.UI
 		{
             //save on exit, so the player will return here, not begin a new game
             
-            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()),Watchman.Get<Stable>().Protag(), SourceForGameState.DefaultSave);
-            await saveTask;
-
+            throw new NotImplementedException("save here?");
 
             Watchman.Get<StageHand>().MenuScreen();
         }

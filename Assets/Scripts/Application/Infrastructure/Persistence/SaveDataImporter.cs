@@ -11,6 +11,7 @@ using SecretHistories.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SecretHistories.Enums;
+using SecretHistories.Infrastructure.Persistence;
 using SecretHistories.Spheres;
 
 namespace SecretHistories.UI.Scripts
@@ -20,17 +21,17 @@ namespace SecretHistories.UI.Scripts
    public class SaveDataImporter : IGameDataImporter
     {
 
-        public void ImportCharacter(SourceForGameState source, Character character)
+        public void ImportCharacter(PersistedGame source, Character character)
         {
             throw new NotImplementedException();
         }
 
-        public void ImportTableState(SourceForGameState source, Sphere tabletop)
+        public void ImportTableState(PersistedGame source, Sphere tabletop)
         {
             throw new NotImplementedException();
         }
 
-        public bool IsSavedGameActive(SourceForGameState source, bool temp)
+        public bool IsSavedGameActive(PersistedGame source, bool temp)
         {
             throw new NotImplementedException();
 

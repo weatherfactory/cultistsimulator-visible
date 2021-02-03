@@ -22,6 +22,7 @@ using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Constants.Modding;
 using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Persistence;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using Steamworks;
@@ -445,7 +446,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     public void LoadGame()
     {
-        Watchman.Get<StageHand>().LoadGameOnTabletop(SourceForGameState.DefaultSave);
+        Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultPersistedGame());
     }
 
     public async void SaveGame()
@@ -457,9 +458,6 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         var allSpheres = Watchman.Get<SphereCatalogue>().GetSpheres();
         foreach (var sphere in allSpheres)
         {
-
-
-
             var allTokensInSphere = sphere.GetAllTokens();
             foreach (var t in allTokensInSphere)
             {
@@ -468,12 +466,11 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
           var tokenJson= tokenCreationCommandJsonPortal.Serialize(encaustedTokenCommand);
           sb.AppendLine(tokenJson);
             }
-
         }
 
-
-        var saveTask = Watchman.Get<GameSaveManager>()
-            .SaveActiveGameAsync(sb.ToString(), SourceForGameState.DefaultSave);
+        var game=new DefaultPersistedGame();
+        
+        var saveTask = game.SaveActiveGameAsync(sb.ToString(), new DefaultPersistedGame());
         var result = await saveTask;
 
     }
@@ -522,9 +519,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     async void  SaveDebugSave(int index)
     {
-        TabletopManager tabletopManager = Watchman.Get<TabletopManager>();
-        var source = (SourceForGameState) index;
-
+        
         NoonUtility.LogWarning("THis doesn't work rn");
       //  var task = tabletopManager.SaveGameAsync(true, source);
         //var success = await task;
@@ -539,7 +534,8 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
     {
         if (!CheckDebugSaveExists(index))
             return;
-        SourceForGameState source = (SourceForGameState) index;
+        DevSlotSavePersistedGame source=new DevSlotSavePersistedGame(index);
+        
         Watchman.Get<StageHand>().LoadGameOnTabletop(source);
         }
 

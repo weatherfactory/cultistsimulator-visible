@@ -75,8 +75,8 @@ public class CreationCommandsSmokeTests
     [Test]
         public void CreateElementStackToken()
         {
-            var element = Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First();
-            var elementStackCreationCommand = new ElementStackCreationCommand(element.Id,1);
+        var element = Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First();
+        var elementStackCreationCommand = new ElementStackCreationCommand(element.Id,1);
         var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
         var elementStackTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, location);
        var elementStackToken=elementStackTokenCreationCommand.Execute(new Context(Context.ActionSource.Debug));
@@ -89,19 +89,19 @@ public class CreationCommandsSmokeTests
             var situationCreationCommand=new SituationCreationCommand();
             situationCreationCommand.Verb=NullVerb.Create();
             situationCreationCommand.Recipe = NullRecipe.Create();
-            situationCreationCommand.State = StateEnum.Ongoing;
+            situationCreationCommand.StateForRehydration = StateEnum.Ongoing;
             var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
             Assert.IsInstanceOf<Situation>(situation);
         }
 
 
-    [Test]
+        [Test]
         public void CreateSituationToken()
         {
             var situationCreationCommand = new SituationCreationCommand();
             situationCreationCommand.Verb = NullVerb.Create();
             situationCreationCommand.Recipe = NullRecipe.Create();
-            situationCreationCommand.State = StateEnum.Ongoing;
+            situationCreationCommand.StateForRehydration = StateEnum.Ongoing;
 
             var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
 

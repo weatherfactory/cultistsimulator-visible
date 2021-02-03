@@ -28,7 +28,7 @@ namespace SecretHistories.Commands
         public IVerb Verb { get; set; }
         
         public Recipe Recipe { get; set; }
-        public StateEnum State { get; set; }
+        public StateEnum StateForRehydration { get; set; }
         public float TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public Dictionary<string, int> Mutations { get; set; }
@@ -51,7 +51,7 @@ namespace SecretHistories.Commands
 
             Recipe = recipe;
             Verb = verb;
-            State = state;
+            StateForRehydration = state;
             Path =new SituationPath(verb);
             CommandQueue = new SituationCommandQueue();
         }
@@ -72,7 +72,7 @@ namespace SecretHistories.Commands
 
             Situation newSituation = new Situation(Path);
 
-            newSituation.State = SituationState.Rehydrate(State, newSituation);
+            newSituation.State = SituationState.Rehydrate(StateForRehydration, newSituation);
             newSituation.Verb = Verb;
             newSituation.ActivateRecipe(Recipe);
             newSituation.ReduceLifetimeBy(Recipe.Warmup - TimeRemaining);

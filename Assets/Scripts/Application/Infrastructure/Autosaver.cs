@@ -74,7 +74,7 @@ namespace SecretHistories.Constants
 
 
 
-        public async Task<bool> SaveGameAsync(bool withNotification, SourceForGameState source)
+        public async Task<bool> SaveGameAsync(bool withNotification)
         {
             return false;
             //if (!IsSafeToAutosave())
@@ -134,26 +134,6 @@ namespace SecretHistories.Constants
             //return true;
         }
 
-
-        public async void Update()
-        {
-            if (!IsSafeToAutosave())
-                return; //we've had to shut down because of a critical error
-
-            housekeepingTimer += Time.deltaTime;
-            if (housekeepingTimer >= AUTOSAVE_INTERVAL && IsSafeToAutosave()
-            ) // Hold off autsave until it's safe, rather than waiting for the next autosave - CP
-            {
-                housekeepingTimer = 0.0f;
-
-                var saveTask = SaveGameAsync(true, SourceForGameState.DefaultSave);
-                var success = await saveTask;
-
-                if (!success)
-                    housekeepingTimer = AUTOSAVE_INTERVAL - 5.0f;
-
-            }
-        }
 
         
     }

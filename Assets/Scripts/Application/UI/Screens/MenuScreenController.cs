@@ -6,6 +6,7 @@
 // Licensed under GNU General Public License v3.0
 // http://www.gnu.org/licenses/gpl-3.0.txt
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -22,6 +23,7 @@ using SecretHistories.Constants.Modding;
 using SecretHistories.Services;
 using SecretHistories.Enums.UI;
 using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Persistence;
 using TMPro;
 
 public class MenuScreenController : LocalNexus {
@@ -255,7 +257,7 @@ public class MenuScreenController : LocalNexus {
 		
         if (Watchman.Get<Stable>().Protag().State==CharacterState.Viable) {
             //back into the game!
-            Watchman.Get<StageHand>().LoadGameOnTabletop(SourceForGameState.DefaultSave);
+            Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultPersistedGame());
             return;
         }
 
@@ -286,8 +288,7 @@ public class MenuScreenController : LocalNexus {
         Watchman.Get<Stable>().Protag().Reincarnate(activeLegacy,NullEnding.Create());
 
 
-        var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Stable>().Protag(), SourceForGameState.DefaultSave);
-        await saveTask;
+      throw new NotImplementedException("save here?");
 
     }
 

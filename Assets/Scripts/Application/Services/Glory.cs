@@ -22,6 +22,7 @@ using SecretHistories.Spheres;
 
 using SecretHistories.Enums;
 using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Persistence;
 using UnityEngine;
 
 namespace SecretHistories.Services
@@ -115,7 +116,6 @@ namespace SecretHistories.Services
                 watchman.Register<StageHand>(stageHand);
 
 
-
                 watchman.Register(limbo);
                 watchman.Register(NullManifestation);
              
@@ -169,7 +169,25 @@ namespace SecretHistories.Services
                 //respond to future culture-changed events, but not the initial one
                 concursum.BeforeChangingCulture.AddListener(OnCultureChanged);
 
-                CreateAndStableProtagonist(watchman);
+                CharacterCreationCommand characterCreationCommand;
+
+                var oldFormatGame = new Petromneme();
+                if (oldFormatGame.Exists())
+                {
+                    characterCreationCommand = oldFormatGame.GetCharacterCreationCommandFromSave();
+                    stageHand.UsePersistedGame(oldFormatGame);
+                }
+                else
+                {
+                    var newFormatGame = new DefaultPersistedGame();
+                    characterCreationCommand = newFormatGame.GetCharacterCreationCommandFromSave();
+                    stageHand.UsePersistedGame(newFormatGame);
+                }
+
+
+                characterCreationCommand.Execute(_stable);
+
+                watchman.Register(_stable);
 
                 var chronicler = new Chronicler(Watchman.Get<Stable>().Protag(), Watchman.Get<Compendium>());
 
@@ -198,29 +216,6 @@ namespace SecretHistories.Services
             }
         }
 
-        private void CreateAndStableProtagonist(Watchman watchman)
-        {
-
-            CharacterCreationCommand characterCreationCommand;
-
-
-            if (Watchman.Get<GameSaveManager>().DoesGameSaveExist())
-                characterCreationCommand= Watchman.Get<GameSaveManager>().GetCharacterCreationCommandFromSavedState(SourceForGameState.DefaultSave);
-            else
-            {
-                NoonUtility.LogWarning("Setting a default legacy for character: shouldn't do this in the actual game");
-                characterCreationCommand = new CharacterCreationCommand
-                {
-                    ActiveLegacy = Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First(),
-                    EndingTriggered = NullEnding.Create()
-                };
-            }
-
-            characterCreationCommand.Execute(_stable);
-
-            watchman.Register(_stable);
-
-        }
 
         public ContentImportLog LoadCompendium(string cultureId)
         {

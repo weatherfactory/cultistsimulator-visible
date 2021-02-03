@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -22,7 +23,7 @@ namespace SecretHistories.States
        public abstract bool IsVisibleInThisState(Dominion dominion);
         public abstract bool IsValidPredictionForState(Recipe recipeToCheck, Situation s);
        public abstract bool AllowDuplicateVerbIfVerbSpontaneous { get; }
-
+       public abstract StateEnum RehydrationValue { get; }
 
        public static SituationState Rehydrate(StateEnum stateEnum,Situation situation)
        {
@@ -52,9 +53,10 @@ namespace SecretHistories.States
                 case StateEnum.Complete:
                     rehydratedState = new CompleteState();
                     break;
-
-            default:
-                    throw new ArgumentOutOfRangeException(nameof(stateEnum),stateEnum, stateEnum.ToString() + " isn't rehydratable");
+                
+               default:
+                rehydratedState = new NullSituationState();
+                break;
             }
 
           

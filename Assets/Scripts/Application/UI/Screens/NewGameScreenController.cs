@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
@@ -15,6 +16,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace SecretHistories.UI {
     public class NewGameScreenController : MonoBehaviour {
@@ -114,8 +116,7 @@ namespace SecretHistories.UI {
 
         async void  ReturnToMenuDelayed() {
 			
-            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Stable>().Protag(), SourceForGameState.DefaultSave);
-            await saveTask;
+      throw new NotImplementedException("save here?");
 
             Watchman.Get<StageHand>().MenuScreen();
         }

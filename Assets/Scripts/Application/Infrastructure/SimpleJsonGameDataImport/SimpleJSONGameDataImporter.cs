@@ -17,6 +17,7 @@ using SecretHistories.UI;
 using SecretHistories.Commands.SituationCommands;
 
 using OrbCreationExtensions;
+using SecretHistories.Infrastructure.Persistence;
 using UnityEngine;
 using UnityEngine.Assertions;
 using SecretHistories.Services;
@@ -29,26 +30,24 @@ namespace SecretHistories.Constants
         private  SpherePath windowSpherePath;
         private  SpherePath tabletopSpherePath;
 
-        public Hashtable RetrieveHashedSaveFromFile(SourceForGameState source, bool temp = false)
+        public Hashtable RetrieveHashedSaveFromFile(PersistedGame source)
         {
-            var index = (int)source;
-
-            string importJson = File.ReadAllText(
-                temp ? NoonUtility.GetTemporaryGameSaveLocation(index) : NoonUtility.GetGameSaveLocation(index));
+            
+            string importJson = File.ReadAllText(source.GetSaveFileLocation());
             Hashtable htSave = SimpleJsonImporter.Import(importJson);
             return htSave;
         }
 
-        public bool IsSavedGameActive(SourceForGameState source, bool temp)
+        public bool IsSavedGameActive(PersistedGame source)
         {
-            var htSave = RetrieveHashedSaveFromFile(source, temp);
+            var htSave = RetrieveHashedSaveFromFile(source);
             return htSave.ContainsKey(SaveConstants.SAVE_ELEMENTSTACKS) || htSave.ContainsKey(SaveConstants.SAVE_SITUATIONS);
         }
 
 
 
 
-        public void ImportTableState(SourceForGameState source, Sphere tabletop)
+        public void ImportTableState(PersistedGame source, Sphere tabletop)
         {
             var htSave = RetrieveHashedSaveFromFile(source);
 
@@ -64,7 +63,7 @@ namespace SecretHistories.Constants
                 ImportSituations(tabletop, htSituations);
         }
 
-        public CharacterCreationCommand ImportToCharacterCreationCommand(SourceForGameState source)
+        public CharacterCreationCommand ImportToCharacterCreationCommand(PersistedGame source)
         {
             var characterCreationCommand=new CharacterCreationCommand();
             var htSave = RetrieveHashedSaveFromFile(source);

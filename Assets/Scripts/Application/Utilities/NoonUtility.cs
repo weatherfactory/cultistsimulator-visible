@@ -136,12 +136,6 @@ using  SecretHistories.Interfaces;
             return wholePath;
         }
 
-        public static string GetTemporaryGameSaveLocation(int index = 0)
-        {
-	        string wholePath = Application.persistentDataPath + "/save_tmp" + (index == 0 ? "": "_" + index) + ".txt" ;
-	        return wholePath;
-        }
-
         public static string GetBackupGameSaveLocation( int index )
         {
 		    string wholePath = Application.persistentDataPath + "/backup_save" + index + ".txt";

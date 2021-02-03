@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Infrastructure.Persistence;
 using SecretHistories.UI;
 
 using UnityEngine;
@@ -11,9 +12,6 @@ using UnityEngine.UI;
 namespace SecretHistories.Services
 {
 
- 
-
-    
     public class StageHand:MonoBehaviour
     {
         [Header("Fade Visuals")]
@@ -26,7 +24,12 @@ namespace SecretHistories.Services
 
         public int StartingSceneNumber;
 
-        public SourceForGameState SourceForGameState { get; private set; }
+        public PersistedGame PersistedGame { get; private set; }
+
+        public void UsePersistedGame(PersistedGame game)
+        {
+            PersistedGame = game;
+        }
 
         async Task FadeOut()
         {
@@ -93,23 +96,23 @@ namespace SecretHistories.Services
             }
         }
 
-        public void LoadGameOnTabletop(SourceForGameState source)
+        public void LoadGameOnTabletop(PersistedGame source)
         {
             SoundManager.PlaySfx("UIStartGame");
-            SourceForGameState = source;
+            PersistedGame = source;
             SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().PlayfieldScene, true);
         }
 
 
         public void NewGameOnTabletop()
         {
-            SourceForGameState = SourceForGameState.NewGame;
+            PersistedGame=new NewGame();
             SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NewGameScene, true);
         }
 
         public void ClearRestartingGameFlag()
         {
-            SourceForGameState = SourceForGameState.DefaultSave;
+            PersistedGame=new DefaultPersistedGame();
         }
 
 

@@ -82,23 +82,8 @@ namespace SecretHistories.Enums
         Null
     }
 
-    public enum SourceForGameState
-    {
-        NewGame = -1,
-        DefaultSave = 0,
-        DevSlot1 = 1,
-        DevSlot2 = 2,
-        DevSlot3 = 3,
-        DevSlot4 = 5,
-        DevSlot5 = 5,
-        DevSlot6 = 6,
-        DevSlot7 = 7,
-        DevSlot8 = 8,
-        DevSlot9 = 9,
-        DevSlot10 = 10
-    }
 
-    public enum StateEnum {Unstarted,Halting,Ongoing, RequiringExecution, Complete }
+    public enum StateEnum {Unstarted,Halting,Ongoing, RequiringExecution, Complete, Unknown}
 
     public enum Storefront
     {

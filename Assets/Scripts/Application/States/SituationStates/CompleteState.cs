@@ -12,6 +12,8 @@ namespace SecretHistories.States
     public class CompleteState : SituationState
     {
         public override bool AllowDuplicateVerbIfVerbSpontaneous => true;
+        public override StateEnum RehydrationValue => StateEnum.Complete;
+
         public override void Enter(Situation situation)
         {
             

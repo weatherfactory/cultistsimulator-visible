@@ -35,14 +35,13 @@ namespace SecretHistories.Entities {
         public event Action<float> OnLifetimeSpent;
 
         [Encaust]
-        public SituationState State { get; set; }
+        public StateEnum StateForRehydration => State.RehydrationValue;
 
         [Encaust]
         public Recipe Recipe { get; set; }
 
-        [Encaust] public float TimeRemaining => _timeshadow.LifetimeRemaining;
-
-        
+        [Encaust]
+        public float TimeRemaining => _timeshadow.LifetimeRemaining;
 
         [Encaust]
         public IVerb Verb { get; set; }
@@ -64,6 +63,7 @@ namespace SecretHistories.Entities {
 
         [Encaust] public Dictionary<string, int> Mutations => new Dictionary<string, int>();
 
+        [DontEncaust] public SituationState State { get; set; }
         [DontEncaust] public float Warmup => Recipe.Warmup;
         [DontEncaust] public string RecipeId => Recipe.Id;
         [DontEncaust] public RecipePrediction CurrentRecipePrediction { get; set; }
@@ -142,18 +142,18 @@ namespace SecretHistories.Entities {
             NotifySubscribersOfStateAndTimerChange();
         }
 
-        public void Attach(Token newAnchor)
-        {
-            AddSubscriber(newAnchor);
-            newAnchor.OnWindowClosed.AddListener(Close);
-            newAnchor.OnStart.AddListener(TryStart);
-            newAnchor.OnCollect.AddListener(Conclude);
-            newAnchor.OnSphereAdded.AddListener(AttachSphere);
-            newAnchor.OnSphereRemoved.AddListener(RemoveSphere);
-            newAnchor.SetPayload(this);
-            NotifySubscribersOfStateAndTimerChange();
-            NotifySubscribersOfTimerValueUpdate();
-        }
+        //public void Attach(Token newAnchor)
+        //{
+        //    AddSubscriber(newAnchor);
+        //    newAnchor.OnWindowClosed.AddListener(Close);
+        //    newAnchor.OnStart.AddListener(TryStart);
+        //    newAnchor.OnCollect.AddListener(Conclude);
+        //    newAnchor.OnSphereAdded.AddListener(AttachSphere);
+        //    newAnchor.OnSphereRemoved.AddListener(RemoveSphere);
+        //    newAnchor.SetPayload(this);
+        //    NotifySubscribersOfStateAndTimerChange();
+        //    NotifySubscribersOfTimerValueUpdate();
+        //}
 
 
         public bool RegisterDominion(Dominion dominionToRegister)

@@ -16,6 +16,7 @@ using SecretHistories.Spheres.Angels;
 using SecretHistories.Constants;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Persistence;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using UnityEngine;
@@ -38,13 +39,13 @@ namespace SecretHistories.Constants
             try
             {
 
-                if (Watchman.Get<StageHand>().SourceForGameState == SourceForGameState.NewGame)
+                if (!Watchman.Get<StageHand>().PersistedGame.Exists())
                 {
                     Watchman.Get<GameGateway>().BeginNewGame();
                 }
                 else
                 {
-                    LoadGame(Watchman.Get<StageHand>().SourceForGameState);
+                    LoadGame(Watchman.Get<StageHand>().PersistedGame);
                 }
 
                 ProvisionDropzoneToken();
@@ -56,7 +57,7 @@ namespace SecretHistories.Constants
         }
 
 
-        public void LoadGame(SourceForGameState gameStateSource)
+        public void LoadGame(PersistedGame gameStateSource)
         {
           
 
@@ -161,10 +162,8 @@ namespace SecretHistories.Constants
             chronicler.ChronicleGameEnd(Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<SphereCatalogue>().GetSpheres(), ending);
             character.Reincarnate(NullLegacy.Create(), ending);
 
-            var saveTask = Watchman.Get<GameSaveManager>().SaveActiveGameAsync(new InactiveTableSaveState(Watchman.Get<MetaInfo>()), Watchman.Get<Stable>().Protag(), SourceForGameState.DefaultSave);
-            var result = await saveTask;
-
-
+            throw new NotImplementedException("inactive save here?");
+            
             _endGameAnimController.TriggerEnd(_anchor, ending);
         }
 
