@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 
@@ -13,7 +14,7 @@ namespace SecretHistories.Fucine
     {
         public const char SEPARATOR = '_';
 
-        private readonly string _path;
+        public string Path { get; private set; }
 
         public override bool Equals(object obj)
         {
@@ -25,7 +26,7 @@ namespace SecretHistories.Fucine
 
         public override int GetHashCode()
         {
-            return (_path != null ? _path.GetHashCode() : 0);
+            return (Path != null ? Path.GetHashCode() : 0);
         }
 
         
@@ -42,11 +43,11 @@ namespace SecretHistories.Fucine
         public bool Equals(SituationPath otherPath)
         {
 
-            return otherPath?.ToString() == _path;
+            return otherPath?.ToString() == Path;
         }
         public override string ToString()
         {
-            return _path;
+            return Path;
         }
 
         public override SituationPath GetBaseSituationPath()
@@ -56,12 +57,13 @@ namespace SecretHistories.Fucine
 
         public SituationPath(Verb verb)
         {
-            _path = verb.Id + SEPARATOR + Guid.NewGuid();
+            Path = verb.Id + SEPARATOR + Guid.NewGuid();
         }
 
+        [JsonConstructor]
         public SituationPath(String path)
         {
-            _path = path;
+            Path = path;
         }
 
         public static SituationPath NullPath()

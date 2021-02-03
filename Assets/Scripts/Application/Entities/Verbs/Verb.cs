@@ -37,24 +37,10 @@ namespace SecretHistories.Entities
         [Encaust]
         public Dictionary<string, int> Mutations { get; }
 
-        public Timeshadow GetTimeshadow()
-        {
-            return Timeshadow.CreateTimelessShadow();
-        }
-
-        public List<SphereSpec> Thresholds
-        {
-            get
-            {
-                var aggregatedSlotsFromOldAndNewFormat = new List<SphereSpec>();
-                if(Slot!=null)
-                    aggregatedSlotsFromOldAndNewFormat.Add(Slot); //what if this is empty? likely source of trouble later
-                aggregatedSlotsFromOldAndNewFormat.AddRange(Slots);
-                return aggregatedSlotsFromOldAndNewFormat;
-            }
 
 
-        }
+        public List<SphereSpec> Thresholds { get; set; } = new List<SphereSpec>();
+
 
         [FucineSubEntity(typeof(SphereSpec),Localise = true)]
         public SphereSpec Slot { get; set; }
@@ -68,7 +54,6 @@ namespace SecretHistories.Entities
             _id = id;
             Label = label;
             Description = description;
-            Slots = new List<SphereSpec>();
         }
 
         public static Verb CreateSpontaneousVerb(string id, string label, string description)
@@ -96,7 +81,11 @@ namespace SecretHistories.Entities
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
+            if (Slot != null)
+                    Thresholds.Add(Slot); //what if this is empty? likely source of trouble later
+                Thresholds.AddRange(Slots);
 
+            
         }
 
     }
