@@ -65,7 +65,19 @@ namespace SecretHistories.Infrastructure.Persistence
 
         public async Task<bool> SerialiseAndSaveAsync()
         {
-            string json = JsonConvert.SerializeObject(_persistedGameState);
+            var jsonSerializerSettings=new JsonSerializerSettings();
+            jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
+            JsonSerializer serializer=JsonSerializer.Create(jsonSerializerSettings);
+
+            StringBuilder sb=new StringBuilder();
+            StringWriter sw=new StringWriter(sb);
+            JsonWriter jw=new JsonTextWriter(sw);
+            jw.Formatting = Formatting.Indented;
+
+            serializer.Serialize(jw,_persistedGameState);
+
+            string json = sb.ToString();
 
             var saveFilePath = GetSaveFileLocation();
 
