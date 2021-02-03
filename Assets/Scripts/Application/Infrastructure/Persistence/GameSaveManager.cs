@@ -95,14 +95,7 @@ namespace SecretHistories.Infrastructure
 		}
 
 
-
         
-       
-        public void LoadTabletopState(PersistableGameState source,Sphere tabletop)
-        {
-
-            simpleJsonGameDataImporter.ImportTableState(source,tabletop);
-        }
 
 
     }

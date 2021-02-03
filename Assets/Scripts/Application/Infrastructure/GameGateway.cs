@@ -35,8 +35,7 @@ namespace SecretHistories.Constants
 
             try
             {
-
-                if (!Watchman.Get<StageHand>().PersistableGameState.Exists())
+                if (!Watchman.Get<StageHand>().PersistableGameState.Exists()) //we can roll BeginNewGame into the deserialisation call, actually
                 {
                     Watchman.Get<GameGateway>().BeginNewGame();
                 }
@@ -64,20 +63,15 @@ namespace SecretHistories.Constants
             try
             {
 
-                Watchman.Get<GameSaveManager>().LoadTabletopState(gameStateSource, 
-                    Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
+                gameStateSource.DeserialiseFromPersistence(); //In the case of a Petromneme, this doesn't just deserialise, it will do the actual loading
+                gameStateSource.ImportPetromnemeStateAfterTheAncientFashion();
 
+                foreach (var t in gameStateSource.GetTokenCreationCommands()) //in the case of a petromneme, there aren't any tccs
+                    t.Execute(new Context(Context.ActionSource.Loading));
 
-                var allSituationControllers = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
-                foreach (var s in allSituationControllers)
-                {
-                    if (s.IsOpen)
-                    {
-                        s.OpenAt(TokenLocation.Default());
-                    }
-                }
+                //in both old and new cases, the character has already been deserialised and loaded in Glory by now - but what about reloads?
 
-                Watchman.Get<Concursum>().ShowNotification(
+    Watchman.Get<Concursum>().ShowNotification(
                      new NotificationArgs(Watchman.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"), Watchman.Get<ILocStringProvider>().Get("UI_LOADEDDESC")));
       
             }

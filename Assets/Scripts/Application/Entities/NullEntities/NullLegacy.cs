@@ -9,7 +9,7 @@ namespace Assets.Scripts.Application.Entities.NullEntities
 {
     public class NullLegacy: Legacy
     {
-        public virtual bool IsValid()
+        public override bool IsValid()
         {
             return false;
         }

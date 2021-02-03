@@ -26,7 +26,7 @@ namespace SecretHistories.Infrastructure.Persistence
             return new List<CharacterCreationCommand>(_characterCreationCommands);
         }
 
-        public List<TokenCreationCommand> GeTokenCreationCommands()
+        public List<TokenCreationCommand> GetTokenCreationCommands()
         {
             return new List<TokenCreationCommand>(_tokenCreationCommands);
         }
@@ -58,6 +58,7 @@ namespace SecretHistories.Infrastructure.Persistence
         }
 
 
+
         public virtual bool Exists()
         {
             return File.Exists(GetSaveFileLocation());
@@ -84,5 +85,11 @@ namespace SecretHistories.Infrastructure.Persistence
             var task = Task.Run(() => File.WriteAllText(saveFilePath, JsonToSave));
             await task;
         }
+
+        public virtual void ImportPetromnemeStateAfterTheAncientFashion()
+        {
+            //do nothing
+        }
+
     }
 }

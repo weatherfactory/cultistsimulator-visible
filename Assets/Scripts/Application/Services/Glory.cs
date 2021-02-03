@@ -171,7 +171,7 @@ namespace SecretHistories.Services
 
                 CharacterCreationCommand characterCreationCommand;
 
-                var oldFormatGame = new Petromneme();
+                var oldFormatGame = new PetromnemeGameState();
                 if (oldFormatGame.Exists())
                 {
                     oldFormatGame.DeserialiseFromPersistence();
