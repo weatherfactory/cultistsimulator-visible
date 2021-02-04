@@ -1,4 +1,5 @@
 ﻿
+using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 
@@ -11,5 +12,6 @@ namespace SecretHistories.Interfaces
         void SituationSphereContentsUpdated(Situation s);
         void ReceiveNotification(INotification n);
         void ReceiveCommand(IAffectsTokenCommand command);
+
     }
 }

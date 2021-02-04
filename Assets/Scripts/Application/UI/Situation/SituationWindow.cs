@@ -80,7 +80,7 @@ namespace SecretHistories.UI {
 			set { positioner.SetPosition( value ); }
 		}
 
-        public void Attach(Situation newSituation, TokenLocation initialLocation)
+        public void Attach(Situation newSituation)
         {
         
 

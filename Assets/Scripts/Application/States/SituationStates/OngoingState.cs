@@ -75,7 +75,7 @@ namespace SecretHistories.States
             else
             {
                 situation.ReduceLifetimeBy(situation.IntervalForLastHeartbeat);
-                situation.NotifySubscribersOfTimerValueUpdate();
+                situation.NotifyTimerChange();
             }
             
         }

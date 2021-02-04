@@ -35,7 +35,6 @@ namespace SecretHistories.Commands
         public List<Token> TokensToMigrate=new List<Token>();
 
         public SituationCommandQueue CommandQueue { get; set; }=new SituationCommandQueue();
-        private WindowCreationCommand windowCreationCommand;
 
         public SituationCreationCommand()
         {
@@ -76,10 +75,12 @@ namespace SecretHistories.Commands
 
             Situation newSituation = new Situation(Path);
             newSituation.State = SituationState.Rehydrate(StateForRehydration, newSituation);
+
             newSituation.Verb = verb;
             newSituation.ActivateRecipe(recipe);
             newSituation.ReduceLifetimeBy(recipe.Warmup - TimeRemaining);
             newSituation.OverrideTitle = OverrideTitle;
+            
 
             //This MUSt go here, as soon as the situation is created and before tokens or commands are added, because it's here that the situation spheres get attached.
             //which I don't love: this whole setup is still hinky
@@ -87,26 +88,20 @@ namespace SecretHistories.Commands
             var windowLocation =
                 new TokenLocation(Vector3.zero, windowSpherePath); //it shouldn't really be zero, but we don't know the real token loc in the current flow
 
-            windowCreationCommand = new WindowCreationCommand(windowLocation);
-
-            if (windowCreationCommand != null)
-            {
-                var newWindow = windowCreationCommand.Execute(Context.Unknown());
-                newWindow.Attach(newSituation, windowLocation);
-            }
+            var sphere = Watchman.Get<SphereCatalogue>().GetSphereByPath(windowLocation.AtSpherePath);
+            var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphere.transform);
+            newWindow.Attach(newSituation);
 
             
             if (TokensToMigrate.Any())
                 newSituation.AcceptTokens(SphereCategory.SituationStorage,TokensToMigrate);
             
 
-            
-
             newSituation.CommandQueue.AddCommandsFrom(CommandQueue);
-
-
-
             newSituation.ExecuteHeartbeat(0f);
+
+            newSituation.NotifyStateChange();
+            newSituation.NotifyTimerChange();
 
             return newSituation;
 

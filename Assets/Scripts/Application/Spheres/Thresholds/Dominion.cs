@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.UI.Situation;
 using SecretHistories.Core;
 using SecretHistories.Commands;
@@ -20,7 +21,7 @@ using SecretHistories.Services;
 using SecretHistories.Spheres;
 
 namespace SecretHistories.UI {
-    public class Dominion:MonoBehaviour,ISituationSubscriber {
+    public class Dominion:MonoBehaviour {
 
         [SerializeField] ThresholdsWrangler thresholdsWrangler;
         [SerializeField] CanvasGroupFader canvasGroupFader;
@@ -48,35 +49,15 @@ namespace SecretHistories.UI {
 
         }
 
-
-        public void SituationStateChanged(Situation situation)
+        public void Show()
         {
+            canvasGroupFader.Show();
 
-            if(situation.State.IsVisibleInThisState(this))
-                canvasGroupFader.Show();
-
-            if (!situation.State.IsVisibleInThisState(this))
-                canvasGroupFader.Hide();
         }
 
-        public void TimerValuesChanged(Situation situation)
+        public void Hide()
         {
- //
-        }
-
-        public void SituationSphereContentsUpdated(Situation s)
-        {
-         
-        }
-
-        public void ReceiveNotification(INotification n)
-        {
-         //
-        }
-
-        public void ReceiveCommand(IAffectsTokenCommand command)
-        {
-         //can't make use of it
+            canvasGroupFader.Hide();
         }
 
         public void CreateThreshold(SphereSpec spec)

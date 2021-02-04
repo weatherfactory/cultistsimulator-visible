@@ -147,13 +147,12 @@ namespace SecretHistories.Entities {
             State.Exit(this);
             newState.Enter(this);
             State = newState;
-            NotifySubscribersOfStateAndTimerChange();
+            NotifyStateChange();
+            NotifyTimerChange();
         }
 
-  
         public bool RegisterDominion(Dominion dominionToRegister)
         {
-            AddSubscriber(dominionToRegister);
             dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
             dominionToRegister.OnSphereRemoved.AddListener(RemoveSphere);
 
@@ -164,6 +163,7 @@ namespace SecretHistories.Entities {
             return true;
         }
 
+   
         public bool AddSubscriber(ISituationSubscriber subscriber)
         {
 
@@ -209,7 +209,8 @@ namespace SecretHistories.Entities {
             Recipe = NullRecipe.Create(Verb);
             CurrentRecipePrediction = RecipePrediction.DefaultFromVerb(Verb);
            _timeshadow=Timeshadow.CreateTimelessShadow();
-            NotifySubscribersOfStateAndTimerChange();
+            NotifyStateChange();
+            NotifyTimerChange();
         }
 
 
@@ -463,22 +464,28 @@ namespace SecretHistories.Entities {
         }
 
 
-        public void NotifySubscribersOfStateAndTimerChange()
+        public void NotifyStateChange()
         {
-            //This is also schizo. SituationSubscriber is used for window, but OnPayloadChanged is used for token.
             foreach (var subscriber in _subscribers)
             {
                 subscriber.SituationStateChanged(this);
                 subscriber.TimerValuesChanged(this);
             }
 
+            foreach (var dominion in _registeredDominions)
+            {
+                if (State.IsVisibleInThisState(dominion))
+                    dominion.Show();
+                else
+                    dominion.Hide();
+            }
+
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Update));
         }
 
-        public void NotifySubscribersOfTimerValueUpdate()
+        public void NotifyTimerChange()
         {
-            //This is also schizo. SituationSubscriber is used for window, but OnPayloadChanged is used for token.
-
+            
             foreach (var subscriber in _subscribers)
                 subscriber.TimerValuesChanged(this);
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update));

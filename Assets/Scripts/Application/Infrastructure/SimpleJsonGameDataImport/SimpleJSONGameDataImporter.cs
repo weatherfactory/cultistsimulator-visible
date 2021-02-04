@@ -185,8 +185,6 @@ namespace SecretHistories.Constants
                 var situation=situationToken.Payload as Situation;
                 
 
-                situation.ExecuteHeartbeat(0f); //flushes everything through and updates
-
                 ImportSlotContents(situation,htSituationValues,  SaveConstants.SAVE_STARTINGSLOTELEMENTS);
                 ImportSlotContents(situation, htSituationValues,  SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
                 ImportSituationStoredElements(htSituationValues, situation);
