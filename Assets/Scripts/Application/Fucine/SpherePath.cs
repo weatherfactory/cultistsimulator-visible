@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using SecretHistories.Elements;
 using SecretHistories.Interfaces;
@@ -12,7 +14,6 @@ namespace SecretHistories.Fucine
        public const char CURRENT = '@';
 
        public string Path { get; private set; }
-       private SituationPath _situationPath;
 
         public override bool Equals(object obj)
        {
@@ -36,7 +37,10 @@ namespace SecretHistories.Fucine
 
        public override SituationPath GetBaseSituationPath()
        {
-           return _situationPath;
+           List<string> parts = new List<string>(Path.Split(SEPARATOR));
+           if (parts.Count == 1)
+               return SituationPath.NullPath();
+           return new SituationPath(parts.First());
        }
 
        public static bool operator ==(SpherePath path1, SpherePath path2)
@@ -64,7 +68,6 @@ namespace SecretHistories.Fucine
 
         public SpherePath(FucinePath basePath, string sphereIdentifier)
         {
-            _situationPath = basePath.GetBaseSituationPath();
             Path = basePath.ToString() + SEPARATOR + sphereIdentifier;
        }
 

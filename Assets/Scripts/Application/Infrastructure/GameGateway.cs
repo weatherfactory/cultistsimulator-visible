@@ -55,8 +55,6 @@ namespace SecretHistories.Constants
 
         public void LoadGame(GamePersistence gamePersistenceSource)
         {
-          
-
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
             { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
             Watchman.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
