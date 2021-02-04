@@ -72,9 +72,8 @@ namespace SecretHistories.States
                 INotification notification = new Notification(situation.Recipe.Label, situation.Recipe.Description);
                 situation.SendNotificationToSubscribers(notification);
 
-                //I think this code duplicates ActivateRecipe, below
-               // situation.Recipe = linkedRecipe;
-              //  situation.TimeRemaining = situation.Recipe.Warmup;
+                 situation.ActivateRecipe(linkedRecipe);
+                
                 if (situation.TimeRemaining > 0) //don't play a sound if we loop through multiple linked ones
                 {
                     if (situation.Recipe.SignalImportantLoop)
