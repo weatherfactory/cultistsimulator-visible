@@ -542,6 +542,9 @@ namespace SecretHistories.Entities {
                     var executor = new SituationEffectExecutor(Watchman.Get<TabletopManager>());
                     executor.RunEffects(currentEffectCommand, GetSingleSphereByCategory(SphereCategory.SituationStorage), Watchman.Get<Stable>().Protag(), Watchman.Get<IDice>());
 
+
+
+
                     if (!string.IsNullOrEmpty(currentEffectCommand.Recipe.Ending))
                     {
                         var ending = Watchman.Get<Compendium>().GetEntityById<Ending>(currentEffectCommand.Recipe.Ending);

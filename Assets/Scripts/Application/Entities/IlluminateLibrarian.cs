@@ -12,6 +12,7 @@ namespace SecretHistories.Entities
     {
         private Dictionary<string, string> _currentIlluminations;
         private const string KEY_MANSUSJOURNAL = "mansusjournal";
+        private const string TLG_NOTETEXT = "tlg.notetext";
 
 
         public IlluminateLibrarian(Dictionary<string, string> currentIlluminations)
@@ -29,7 +30,10 @@ namespace SecretHistories.Entities
             return new Dictionary<string, string>(_currentIlluminations);
         }
 
-
+        public void SetNoteText(string noteText)
+        {
+            _currentIlluminations[TLG_NOTETEXT] = noteText;
+        }
 
         public void AddMansusJournalEntry(string value)
         {

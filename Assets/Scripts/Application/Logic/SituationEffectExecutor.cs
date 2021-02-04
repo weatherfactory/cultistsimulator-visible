@@ -58,7 +58,6 @@ namespace Assets.Logic
 
         }
 
-
         private void RunElementPurges(RecipeCompletionEffectCommand command, TabletopManager ttm)
         {
             //NOTE: element purges trigger decayto transformation if the element itself is specified. If we filter by aspect and purge on that, its decayto is *not* triggered.
