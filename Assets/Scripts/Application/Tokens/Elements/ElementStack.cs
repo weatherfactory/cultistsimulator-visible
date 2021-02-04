@@ -167,7 +167,6 @@ namespace SecretHistories.UI {
         }
 
 
-
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
             if (forSphereCategory == SphereCategory.SituationStorage)
