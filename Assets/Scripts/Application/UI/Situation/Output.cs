@@ -90,10 +90,8 @@ public class Output : Sphere,ISituationSubscriber{
 
     public override SpherePath GetPath()
     {
-        if (!string.IsNullOrEmpty(PathIdentifier))
-            NoonUtility.Log($"We're trying to specify a spherepath ({PathIdentifier}) in an output sphere");
-        return new SpherePath(SphereCategory.Output.ToString());
-        //   return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
+        return new SpherePath(AttachedToSituation, SphereCategory.Output.ToString());
+        //  from the Before Times: return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
     }
 
     public void UpdateDumpButtonText() {

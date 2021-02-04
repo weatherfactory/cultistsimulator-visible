@@ -148,10 +148,8 @@ if(stack!=null)
 
         public override SpherePath GetPath()
         {
-            if (!string.IsNullOrEmpty(PathIdentifier))
-                NoonUtility.Log($"We're trying to specify a spherepath ({PathIdentifier}) in doorslot for {portalType}");
+            return new SpherePath(AttachedToSituation, portalType.ToString());
 
-            return new SpherePath(portalType.ToString());
         }
 
 #if UNITY_EDITOR

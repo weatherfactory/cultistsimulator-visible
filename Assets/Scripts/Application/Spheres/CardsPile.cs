@@ -49,9 +49,7 @@ namespace SecretHistories.Spheres
 
       public override SpherePath GetPath()
       {
-            if(!string.IsNullOrEmpty(PathIdentifier))
-                NoonUtility.Log($"We're trying to specify a spherepath ({PathIdentifier}) in cardpile for {_deckSpec?.Id}");
-            return new SpherePath(_deckSpec?.Id);
+          return new SpherePath(AttachedToSituation, _deckSpec?.Id);
       }
 
 

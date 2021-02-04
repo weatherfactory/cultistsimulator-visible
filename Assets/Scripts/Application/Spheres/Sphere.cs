@@ -74,8 +74,8 @@ namespace SecretHistories.Spheres
             return true;
         }
 
-        [Tooltip("Use this to specify the SpherePath in the editor")] [SerializeField]
-        protected string PathIdentifier;
+        [Tooltip("Use this to specify the final part of a SpherePath in the editor")] [SerializeField]
+        protected string SphereIdentifier;
         
 
         public bool Defunct { get; protected set; }
@@ -85,6 +85,7 @@ namespace SecretHistories.Spheres
         protected AngelFlock flock = new AngelFlock();
 
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
+        protected SituationPath AttachedToSituation=SituationPath.Root();
 
         private Dictionary<SpherePath, Vector3> referencePositions;
 
@@ -129,7 +130,10 @@ namespace SecretHistories.Spheres
                 this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
-
+        public void SetSituationPath(SituationPath situationPath)
+        {
+            AttachedToSituation = situationPath;
+        }
 
 
         public virtual bool Retire(SphereRetirementType sphereRetirementType)
@@ -276,7 +280,7 @@ namespace SecretHistories.Spheres
 
         public virtual SpherePath GetPath()
         {
-            return new SpherePath(PathIdentifier);
+            return new SpherePath(AttachedToSituation, SphereIdentifier);
         }
 
         public virtual void OnDestroy()

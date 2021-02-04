@@ -9,6 +9,10 @@ namespace SecretHistories.Interfaces
 {
     public abstract class FucinePath
     {
+        public const char SEPARATOR = '_';
+        public const char CURRENT = '#';
+        public const char ROOT = '.';
+
         public abstract SituationPath GetBaseSituationPath();
     }
 }

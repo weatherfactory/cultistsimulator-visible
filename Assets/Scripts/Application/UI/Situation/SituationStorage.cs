@@ -40,10 +40,7 @@ public class SituationStorage : Sphere,ISituationSubscriber
 
     public override SpherePath GetPath()
     {
-        if (!string.IsNullOrEmpty(PathIdentifier))
-            NoonUtility.Log($"We're trying to specify a spherepath ({PathIdentifier}) in a storage sphere)");
-
-        return new SpherePath("storage");
+        return new SpherePath(AttachedToSituation, "storage");
     }
 
     public override void AcceptToken(Token token, Context context)

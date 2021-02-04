@@ -12,8 +12,6 @@ namespace SecretHistories.Fucine
 {
     public class SituationPath: FucinePath, IEquatable<SituationPath>
     {
-        public const char SEPARATOR = '_';
-
         public string Path { get; private set; }
 
         public override bool Equals(object obj)
@@ -73,9 +71,9 @@ namespace SecretHistories.Fucine
             Path = path;
         }
 
-        public static SituationPath NullPath()
+        public static SituationPath Root()
         {
-            return new SituationPath("NULLPATH");
+            return new SituationPath(ROOT.ToString());
         }
     }
 }

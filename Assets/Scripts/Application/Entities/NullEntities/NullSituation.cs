@@ -25,7 +25,7 @@ namespace SecretHistories.NullObjects
 
         public static NullSituation Create()
         {
-            return new NullSituation(SituationPath.NullPath());
+            return new NullSituation(SituationPath.Root());
         }
     }
 }

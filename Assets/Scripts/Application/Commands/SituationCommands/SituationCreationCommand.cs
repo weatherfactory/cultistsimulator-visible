@@ -75,30 +75,32 @@ namespace SecretHistories.Commands
 
 
             Situation newSituation = new Situation(Path);
-
             newSituation.State = SituationState.Rehydrate(StateForRehydration, newSituation);
             newSituation.Verb = verb;
             newSituation.ActivateRecipe(recipe);
             newSituation.ReduceLifetimeBy(recipe.Warmup - TimeRemaining);
             newSituation.OverrideTitle = OverrideTitle;
 
+            //This MUSt go here, as soon as the situation is created and before tokens or commands are added, because it's here that the situation spheres get attached.
+            //which I don't love: this whole setup is still hinky
+            var windowSpherePath = new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
+            var windowLocation =
+                new TokenLocation(Vector3.zero, windowSpherePath); //it shouldn't really be zero, but we don't know the real token loc in the current flow
 
+            windowCreationCommand = new WindowCreationCommand(windowLocation);
+
+            if (windowCreationCommand != null)
+            {
+                var newWindow = windowCreationCommand.Execute(Context.Unknown());
+                newWindow.Attach(newSituation, windowLocation);
+            }
+
+            
             if (TokensToMigrate.Any())
                 newSituation.AcceptTokens(SphereCategory.SituationStorage,TokensToMigrate);
             
 
-
-            var windowSpherePath=new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath); 
-            var windowLocation =
-                new TokenLocation(Vector3.zero,windowSpherePath); //it shouldn't really be zero, but we don't know the real token loc in the current flow
-
-
-            windowCreationCommand = new WindowCreationCommand(windowLocation);
-
-            if (windowCreationCommand!=null)
-            { 
-                var newWindow = windowCreationCommand.Execute(Context.Unknown());
-                newWindow.Attach(newSituation,windowLocation); }
+            
 
             newSituation.CommandQueue.AddCommandsFrom(CommandQueue);
 

@@ -10,10 +10,8 @@ namespace SecretHistories.Fucine
 {
    public class SpherePath: FucinePath,IEquatable<SpherePath>
    {
-       public const char SEPARATOR = '_';
-       public const char CURRENT = '@';
 
-       public string Path { get; private set; }
+        public string Path { get; private set; }
 
         public override bool Equals(object obj)
        {
@@ -39,7 +37,7 @@ namespace SecretHistories.Fucine
        {
            List<string> parts = new List<string>(Path.Split(SEPARATOR));
            if (parts.Count == 1)
-               return SituationPath.NullPath();
+               return SituationPath.Root();
            return new SituationPath(parts.First());
        }
 
@@ -71,8 +69,13 @@ namespace SecretHistories.Fucine
             Path = basePath.ToString() + SEPARATOR + sphereIdentifier;
        }
 
-       
-       public static SpherePath Current()
+        public SpherePath(FucinePath basePath, FucinePath morePath)
+        {
+            Path = basePath.ToString() + SEPARATOR + morePath.ToString();
+        }
+
+
+        public static SpherePath Current()
        { 
            return new SpherePath(CURRENT.ToString());
        }

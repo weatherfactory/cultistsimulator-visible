@@ -150,20 +150,7 @@ namespace SecretHistories.Entities {
             NotifySubscribersOfStateAndTimerChange();
         }
 
-        //public void Attach(Token newAnchor)
-        //{
-        //    AddSubscriber(newAnchor);
-        //    newAnchor.OnWindowClosed.AddListener(Close);
-        //    newAnchor.OnStart.AddListener(TryStart);
-        //    newAnchor.OnCollect.AddListener(Conclude);
-        //    newAnchor.OnSphereAdded.AddListener(AttachSphere);
-        //    newAnchor.OnSphereRemoved.AddListener(RemoveSphere);
-        //    newAnchor.SetPayload(this);
-        //    NotifySubscribersOfStateAndTimerChange();
-        //    NotifySubscribersOfTimerValueUpdate();
-        //}
-
-
+  
         public bool RegisterDominion(Dominion dominionToRegister)
         {
             AddSubscriber(dominionToRegister);
@@ -197,10 +184,11 @@ namespace SecretHistories.Entities {
         }
 
 
-        public void AttachSphere(Sphere container)
+        public void AttachSphere(Sphere sphere)
         {
-            container.Subscribe(this);
-            _spheres.Add(container);
+            sphere.Subscribe(this);
+            sphere.SetSituationPath(Path);
+            _spheres.Add(sphere);
         }
 
         public void AttachSpheres(IEnumerable<Sphere> containers)
