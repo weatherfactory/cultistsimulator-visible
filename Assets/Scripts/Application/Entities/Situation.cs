@@ -16,7 +16,6 @@ using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities;
 using Assets.Scripts.Application.Entities.NullEntities;
 using Assets.Scripts.Application.Infrastructure.Events;
-using Assets.Scripts.Application.Logic;
 using Newtonsoft.Json;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants.Events;
@@ -25,6 +24,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Core;
 using SecretHistories.Elements.Manifestations;
+using SecretHistories.Logic;
 using SecretHistories.States.TokenStates;
 using UnityEngine;
 

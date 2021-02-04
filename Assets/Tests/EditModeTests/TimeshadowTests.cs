@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.Application.Logic;
 using NUnit.Framework;
+using SecretHistories.Logic;
 
 namespace Assets.Tests.EditModeTests
 {
@@ -25,6 +25,13 @@ namespace Assets.Tests.EditModeTests
             var ts = new Timeshadow(10, 9, false);
             ts.SpendTime(90);
             Assert.AreEqual(0, ts.LifetimeRemaining);
+        }
+
+        [Test]
+        public void LifetimeSpent_IsLifetime_MinusLifetimeRemaining()
+        {
+            var ts = new Timeshadow(10, 3, false);
+            Assert.AreEqual(7,ts.LifetimeSpent);
         }
     }
 }

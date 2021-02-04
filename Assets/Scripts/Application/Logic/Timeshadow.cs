@@ -5,17 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Entities;
 
-namespace Assets.Scripts.Application.Logic
+namespace SecretHistories.Logic
 {
     public class Timeshadow
     {
         private float _lifetimeRemaining;
         public float Lifetime { get; }
 
-        public float LifetimeRemaining
-        {
-            get => Math.Max(0,_lifetimeRemaining);
-        }
+        public float LifetimeRemaining => Math.Max(0,_lifetimeRemaining);
+        public float LifetimeSpent => Math.Max(0, Lifetime - LifetimeRemaining);
 
         public float LastInterval { get; private set; }
         public bool Transient => Lifetime > 0;
@@ -37,7 +35,10 @@ namespace Assets.Scripts.Application.Logic
         public void SpendTime(float interval)
         {
             LastInterval = interval;
-            _lifetimeRemaining -= interval;
+            if (Transient)
+            {
+                _lifetimeRemaining -= interval;
+            }
         }
     }
 }

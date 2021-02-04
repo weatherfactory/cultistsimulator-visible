@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Application.Infrastructure.Events;
-using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Constants;
@@ -11,6 +10,7 @@ using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Elements.Manifestations;
+using SecretHistories.Logic;
 using SecretHistories.Services;
 
 namespace SecretHistories.Entities.Verbs

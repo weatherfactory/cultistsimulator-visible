@@ -20,12 +20,12 @@ using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
 using Assets.Logic;
 using Assets.Scripts.Application.Infrastructure.Events;
-using Assets.Scripts.Application.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
+using SecretHistories.Logic;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using SecretHistories.Utilities.Exetensions;
@@ -46,7 +46,7 @@ namespace SecretHistories.UI {
 
         [Encaust] public bool Defunct { get; protected set; }
 
-        [Encaust] public float LifetimeRemaining { get; set; }
+        [Encaust] public float LifetimeRemaining => _timeshadow.LifetimeRemaining;
 
         [Encaust] public virtual int Quantity => Defunct ? 0 : _quantity;
 
@@ -152,22 +152,18 @@ namespace SecretHistories.UI {
         }
 
 
-        public ElementStack()
-        {
-            Element = new NullElement();
-            SetQuantity(1, new Context(Context.ActionSource.Unknown));
-        }
+        public ElementStack():this(NullElement.Create(),1,Timeshadow.CreateTimelessShadow(), Context.Unknown())
+        {}
 
-        public ElementStack(Element element, int quantity, float lifetimeRemaining, Context context)
+
+        public ElementStack(Element element, int quantity, Timeshadow timeshadow, Context context)
         {
             Element = element;
-            LifetimeRemaining = lifetimeRemaining;
             SetQuantity(quantity, context);
 
             _aspectsDirtyExc = true;
             _aspectsDirtyInc = true;
-
-            _timeshadow = new Timeshadow(element.Lifetime, lifetimeRemaining, element.Resaturate);
+            _timeshadow = timeshadow;
         }
 
 
@@ -376,11 +372,8 @@ namespace SecretHistories.UI {
 
             _timeshadow.SpendTime(interval);
             
-            
-
             OnLifetimeSpent?.Invoke(LifetimeRemaining); //display decay effects for listeners elsewhere
 
-            LifetimeRemaining = LifetimeRemaining - interval;
 
             if (LifetimeRemaining <= 0 || interval < 0)
             {
@@ -422,7 +415,7 @@ namespace SecretHistories.UI {
         public void ChangeTo(string newElementId)
         {
             var newElement = Watchman.Get<Compendium>().GetEntityById<Element>(newElementId);
-            LifetimeRemaining = newElement.Lifetime;
+            _timeshadow = new Timeshadow(newElement.Lifetime, newElement.Lifetime, newElement.Resaturate);
 
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Fundamental));
         }
