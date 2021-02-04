@@ -37,7 +37,7 @@ namespace SecretHistories.UI {
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
         IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler,
-        IPointerExitHandler, ISituationSubscriber, IInteractsWithTokens,IEncaustable
+        IPointerExitHandler, IInteractsWithTokens,IEncaustable
     {
         private float previousClickTime = 0f;
 
@@ -638,21 +638,6 @@ namespace SecretHistories.UI {
             Destroy(this.gameObject);
         }
 
-        private void OnPayloadChanged(TokenPayloadChangedArgs args)
-        {
-            if(args.ChangeType==PayloadChangeType.Fundamental)
-                Remanifest(RetirementVFX.CardTransformWhite);
-            else if (args.ChangeType == PayloadChangeType.Update)
-            {
-                _manifestation.UpdateVisuals(_payload);
-                PlacementAlreadyChronicled = false; //should really only do this if the element has changed
-                var sphereContentsChangedArgs = new SphereContentsChangedEventArgs(Sphere, args.Context);
-                Sphere.NotifyTokensChangedForSphere(sphereContentsChangedArgs);
-            }
-            else if (args.ChangeType == PayloadChangeType.Retirement)
-                Retire(args.VFX);
-            
-        }
 
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -702,32 +687,23 @@ namespace SecretHistories.UI {
           itinerary.Depart(this,context);
         }
 
-        public virtual void SituationStateChanged(Situation situation)
+        private void OnPayloadChanged(TokenPayloadChangedArgs args)
         {
-            _manifestation.DisplaySpheres(situation.GetSpheresActiveForCurrentState());
+            if (args.ChangeType == PayloadChangeType.Fundamental)
+                Remanifest(RetirementVFX.CardTransformWhite);
+            else if (args.ChangeType == PayloadChangeType.Update)
+            {
+                _manifestation.UpdateVisuals(_payload);
+                PlacementAlreadyChronicled = false; //should really only do this if the element has changed
+                var sphereContentsChangedArgs = new SphereContentsChangedEventArgs(Sphere, args.Context);
+                Sphere.NotifyTokensChangedForSphere(sphereContentsChangedArgs);
+            }
+            else if (args.ChangeType == PayloadChangeType.Retirement)
+                Retire(args.VFX);
+
         }
 
-        public void TimerValuesChanged(Situation situation)
-        {
-            _manifestation.UpdateVisuals(situation);
 
-        }
-
-
-    public void SituationSphereContentsUpdated(Situation situation)
-        {
-            _manifestation.DisplaySpheres(situation.GetSpheresActiveForCurrentState());
-        }
-
-        public void ReceiveNotification(INotification n)
-        {
-           NoonUtility.Log("ReceiveNotification on Token: use it or lose it");
-        }
-
-        public void ReceiveCommand(IAffectsTokenCommand command)
-        {
-            throw new NotImplementedException();
-        }
 
         public void Understate()
         {
