@@ -31,7 +31,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class DebugTools : MonoBehaviour, ISphereCatalogueEventSubscriber
+public class DebugTools : MonoBehaviour
 {
     private const int MaxAutoCompletionSuggestions = 50;
 
@@ -177,7 +177,6 @@ public void Awake()
             dbIndex++;
         }
 
-        Watchman.Get<SphereCatalogue>().Subscribe(this);
     }
 
 
@@ -548,17 +547,8 @@ public void Awake()
         return File.Exists(NoonUtility.GetGameSaveLocation(index));
     }
 
-    public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
-    {
-        //
-    }
 
-    public void OnTokenInteraction(TokenInteractionEventArgs args)
-    {
-     if(args.Interaction==Interaction.OnClicked)
-         if (args.Token.IsValidElementStack())
-             SetInput(args.Token.Payload.Id);
-    }
+
 
 
 

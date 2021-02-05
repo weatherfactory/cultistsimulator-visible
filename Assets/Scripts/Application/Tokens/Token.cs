@@ -362,7 +362,7 @@ namespace SecretHistories.UI {
             SetState(new BeingDraggedState());
             
             
-            NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
+            NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
             if (!Keyboard.current.shiftKey.wasPressedThisFrame)
             {
                 if (Payload.IsValidElementStack() && Quantity > 1)
@@ -411,7 +411,7 @@ namespace SecretHistories.UI {
             MoveObject(eventData);
 
 
-            NotifyInteracted(new TokenInteractionEventArgs {PointerEventData = eventData,Token=this,Sphere= Sphere,Interaction = Interaction.OnDrag});
+            NotifyInteracted(new TokenInteractionEventArgs {PointerEventData = eventData, Payload = Payload, Token =this,Sphere= Sphere,Interaction = Interaction.OnDrag});
 
         }
 
@@ -449,7 +449,7 @@ namespace SecretHistories.UI {
 
         public  void OnEndDrag(PointerEventData eventData)
         {
-            NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
+            NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
             
             FinishDrag();
         }
@@ -489,6 +489,7 @@ namespace SecretHistories.UI {
             NotifyInteracted(new TokenInteractionEventArgs
             {
                 Token = this,
+                Payload = Payload,
                 Sphere = Sphere,
                 PointerEventData = eventData,
                 Interaction = Interaction.OnReceivedADrop
