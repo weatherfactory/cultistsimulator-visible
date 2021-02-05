@@ -419,20 +419,19 @@ namespace SecretHistories.Spheres
 
         }
 
-        public void ExecuteHeartbeat(float interval)
+
+        public void RequestFlockActions(float interval)
         {
             flock.Act(interval);
+        }
 
-            float tokenHeartbeatIntervalForThisSphere = interval * TokenHeartbeatIntervalMultiplier;
-            if(tokenHeartbeatIntervalForThisSphere <= 0) //for many spheres, the multiplier is 0 and time won't pass for tokens.
-                return;
+        public void RequestTokensSpendTime(float interval)
+        {
 
-            var heartbeatableStacks = GetAllTokens();
+            var tokens = GetAllTokens();
     
-            foreach (var d in heartbeatableStacks)
+            foreach (var d in tokens)
                 d.ExecuteHeartbeat(interval);
-          
-               
         }
 
         public int TryPurgeStacks(Element element, int maxToPurge)

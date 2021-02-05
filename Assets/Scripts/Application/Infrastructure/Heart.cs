@@ -21,7 +21,7 @@ public class Heart : MonoBehaviour
 
 
 
-    private const float BEAT_INTERVAL_SECONDS = 0.05f;
+    public const float BEAT_INTERVAL_SECONDS = 0.05f;
 
     private GameSpeedState gameSpeedState=new GameSpeedState();
 
@@ -68,7 +68,16 @@ public class Heart : MonoBehaviour
         //    sc.ExecuteHeartbeat(beatInterval);
 
         foreach(Sphere sphere in Watchman.Get<SphereCatalogue>().GetSpheres())
-            sphere.ExecuteHeartbeat(beatInterval);
+        {
+            sphere.RequestFlockActions(beatInterval);
+            var tokenHeartbeatIntervalForThisSphere = beatInterval * sphere.TokenHeartbeatIntervalMultiplier;
+
+            if (tokenHeartbeatIntervalForThisSphere > 0) //for many spheres, the multiplier is 0 and time won't pass for tokens.
+                sphere.RequestTokensSpendTime(beatInterval);
+
+
+
+        }
     }
 
 

@@ -55,5 +55,23 @@ namespace Assets.Scripts.Application.Meta
 
     
        }
+
+        public void TimeForwards()
+        {
+            situationDrydockThreshold.RequestTokensSpendTime(Heart.BEAT_INTERVAL_SECONDS * 50);
+        }
+
+        public void TimeBackwards()
+        {
+            situationDrydockThreshold.RequestTokensSpendTime(Heart.BEAT_INTERVAL_SECONDS * -50);
+        }
+
+        public void AdvanceTimeToEndOfRecipe()
+        {
+            var situation = situationDrydockThreshold.GetTokenInSlot().Payload;
+            var timeRemaining = situation.GetTimeshadow().LifetimeRemaining;
+            if(timeRemaining>0)
+                situationDrydockThreshold.RequestTokensSpendTime(timeRemaining);
+        }
     }
 }
