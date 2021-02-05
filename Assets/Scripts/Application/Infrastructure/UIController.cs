@@ -219,17 +219,17 @@ namespace SecretHistories.Constants
             if (!enabled)
                 return;
 
-            // Process any debug tools-specific keys first
-            if (_debugTools!=null && _debugTools.isActiveAndEnabled && _debugTools.ProcessInput())
-          
-                if (IsEditingText())
-                    return;
+        
+            
             if(Keyboard.current.backquoteKey.wasPressedThisFrame || Keyboard.current.quoteKey.wasPressedThisFrame)
-	        //if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
             {
               ToggleDebugEvent.Invoke();
               Watchman.Get<Concursum>().ToggleSecretHistory();
             }
+
+            if (IsEditingText()) //we trigger the console cycling even if in a console input field
+                return;
+
 
 
             if (IsPressingAbortHotkey())	// Uses Keycode.Escape by default, for the benefit of anyone trying to search for this in future :)

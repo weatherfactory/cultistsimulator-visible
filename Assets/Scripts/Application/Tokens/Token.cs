@@ -545,9 +545,6 @@ namespace SecretHistories.UI {
             if (_manifestation.HandlePointerDown(eventData, this))
                 return;
 
-            //Manifestation didn't handle click
-            Watchman.Get<DebugTools>().SetInput(Payload.Id);
-
             if (!Payload.IsOpen)
                 Payload.OpenAt(Location);
             else
