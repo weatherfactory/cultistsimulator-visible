@@ -582,7 +582,7 @@ namespace SecretHistories.Entities {
 
             }
 
-            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId, effectCommand.Recipe.Id,
+            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId, effectCommand.Recipe.Id,new SituationPath(Recipe.ActionId),
                 StateEnum.Ongoing);
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand,effectCommand.ToPath,new Context(Context.ActionSource.SpawningAnchor));
@@ -646,7 +646,7 @@ namespace SecretHistories.Entities {
 
         
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId,
-            inducedRecipe.Id, StateEnum.Ongoing);
+            inducedRecipe.Id, new SituationPath(inducedRecipe.ActionId), StateEnum.Ongoing);
 
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, SpherePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
             SendCommandToSubscribers(spawnNewTokenCommand);

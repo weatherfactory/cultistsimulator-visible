@@ -17,8 +17,6 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
             var notesDominion = situation.GetSituationDominionsForCommandCategory(this.CommandCategory).FirstOrDefault();
 
-
-
             return true;
         }
     }

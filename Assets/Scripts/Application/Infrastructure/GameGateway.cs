@@ -10,6 +10,7 @@ using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Infrastructure;
@@ -97,7 +98,7 @@ namespace SecretHistories.Constants
         private void ProvisionStartingVerb(Legacy activeLegacy, Sphere inSphere)
         {
             
-            SituationCreationCommand startingSituation = new SituationCreationCommand(activeLegacy.StartingVerbId, NullRecipe.Create().Id, StateEnum.Unstarted);
+            SituationCreationCommand startingSituation = new SituationCreationCommand(activeLegacy.StartingVerbId, NullRecipe.Create().Id, new SituationPath(activeLegacy.StartingVerbId),   StateEnum.Unstarted);
             TokenCreationCommand startingToken=new TokenCreationCommand(startingSituation,TokenLocation.Default());
 
             startingToken.Execute(new Context(Context.ActionSource.Unknown));

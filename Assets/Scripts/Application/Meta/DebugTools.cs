@@ -316,7 +316,7 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         var recipe = compendium.GetEntityById<Recipe>(recipeId.Trim());
         if (recipe!=null)
         {
-            SituationCreationCommand newSituationCommand = new SituationCreationCommand(recipe.ActionId, recipe.Id, StateEnum.Ongoing);
+            SituationCreationCommand newSituationCommand = new SituationCreationCommand(recipe.ActionId, recipe.Id, new SituationPath(recipe.ActionId),  StateEnum.Ongoing);
 
             var newTokenLocation= new TokenLocation(0f, 0f, -100f, tabletop.GetPath());
 
