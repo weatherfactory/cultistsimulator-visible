@@ -4842,7 +4842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660c0be108a798549a4fab4f73a69abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drydockWrangler: {fileID: 1112824095}
+  elementDrydockWrangler: {fileID: 1112824095}
   input: {fileID: 628}
 --- !u!1001 &114657585
 PrefabInstance:
@@ -22764,7 +22764,7 @@ GameObject:
   - component: {fileID: 1112824095}
   - component: {fileID: 1112824096}
   m_Layer: 0
-  m_Name: DrydockThresholds
+  m_Name: ElementDrydock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

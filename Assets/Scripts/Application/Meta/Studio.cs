@@ -14,28 +14,31 @@ namespace Assets.Scripts.Application.Meta
 {
     public class Studio: MonoBehaviour
     {
-        [SerializeField] private ThresholdsWrangler drydockWrangler;
+        [SerializeField] private ThresholdsWrangler elementDrydockWrangler;
         [SerializeField] private InputField input;
+        private ThresholdSphere primaryThreshold;
 
         public void Awake()
         {
-            drydockWrangler.BuildPrimaryThreshold(new SphereSpec(), SituationPath.Root(), new NullVerb());
+            primaryThreshold=elementDrydockWrangler.BuildPrimaryThreshold(new SphereSpec(), SituationPath.Root(), new NullVerb());
         }
 
         public void CreateDrydockedItem()
         {
             var elementId = input.text;
 
+            
             var tabletopPath =
                 new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
             var tabletop = Watchman.Get<SphereCatalogue>().GetSphereByPath(tabletopPath);
             var element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
 
+            if (element.Id == NullElement.Create().Id)
+                return;
 
             Context debugContext = new Context(Context.ActionSource.Debug);
 
-
-            tabletop.ModifyElementQuantity(elementId, 1, debugContext);
+            primaryThreshold.ModifyElementQuantity(elementId, 1, debugContext);
 
         }
 
@@ -44,11 +47,8 @@ namespace Assets.Scripts.Application.Meta
 
             var itemId = input.text;
 
-            var tabletopPath =
-                new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
-            var tabletop = Watchman.Get<SphereCatalogue>().GetSphereByPath(tabletopPath);
 
-            tabletop.ModifyElementQuantity(itemId, -1, new Context(Context.ActionSource.Debug));
+            primaryThreshold.ModifyElementQuantity(itemId, -1, new Context(Context.ActionSource.Debug));
         }
     }
 }
