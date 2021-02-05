@@ -133,7 +133,6 @@ public void Awake()
         btnSaveGame.onClick.AddListener(SaveGame);
         btnResetDecks.onClick.AddListener(ResetDecks);
         btnNextTrack.onClick.AddListener(NextTrack);
-        btnBeginSituation.onClick.AddListener(()=>BeginSituation(input.text));
         btnHaltVerb.onClick.AddListener(() => HaltVerb(input.text));
         btnDeleteVerb.onClick.AddListener(() => DeleteVerb(input.text));
         btnPurgeElement.onClick.AddListener(() => PurgeElement(input.text));
@@ -316,24 +315,7 @@ public void Awake()
     }
 
 
-    void BeginSituation(string recipeId)
-    {
-        var compendium = Watchman.Get<Compendium>();
-        var recipe = compendium.GetEntityById<Recipe>(recipeId.Trim());
-        if (recipe!=null)
-        {
-            SituationCreationCommand newSituationCommand = new SituationCreationCommand(recipe.ActionId, recipe.Id, new SituationPath(recipe.ActionId),  StateEnum.Ongoing);
 
-            var newTokenLocation= new TokenLocation(0f, 0f, -100f, tabletop.GetPath());
-
-            var newTokenCommand=new TokenCreationCommand(newSituationCommand,newTokenLocation);
-
-            newTokenCommand.Execute(new Context(Context.ActionSource.Debug));
-
-        }
-        else
-            NoonUtility.LogWarning("Tried to begin situation via debug, but couldn't find this recipe: " + recipeId);
-    }
 
     void HaltVerb(string verbId)
     {

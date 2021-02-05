@@ -15,7 +15,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Application.Meta
 {
-    public class Studio: MonoBehaviour,ISphereEventSubscriber
+    public class ElementsMalleary: MonoBehaviour,ISphereEventSubscriber
     {
         [SerializeField] private ThresholdsWrangler elementDrydockWrangler;
         [SerializeField] private InputField input;
