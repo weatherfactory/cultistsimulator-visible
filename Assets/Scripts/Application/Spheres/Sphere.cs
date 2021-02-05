@@ -87,7 +87,7 @@ namespace SecretHistories.Spheres
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
         protected SituationPath AttachedToSituation=SituationPath.Root();
 
-        private Dictionary<SpherePath, Vector3> referencePositions;
+        private Dictionary<SpherePath, Vector3> referencePositions=new Dictionary<SpherePath, Vector3>();
 
 
         public SphereCatalogue Catalogue
@@ -629,12 +629,11 @@ namespace SecretHistories.Spheres
 
         public ContainerMatchForStack GetMatchForTokenPayload(ITokenPayload payload)
         {
-            if (!payload.IsValidElementStack())
-                return new ContainerMatchForStack(new List<string>(), SlotMatchForAspectsType.ForbiddenAspectPresent);
+
             if (GoverningSphereSpec == null)
                 return ContainerMatchForStack.MatchOK();
             else
-                return GoverningSphereSpec.GetSlotMatchForAspects(payload.GetAspects(true));
+                return GoverningSphereSpec.CheckPayloadAllowedHere(payload);
         }
 
         public void NotifyTokensChangedForSphere(SphereContentsChangedEventArgs args)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -54,6 +55,9 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     [FucineList]
    public List<AngelSpecification> Angels { get; set; }
 
+
+   public bool AllowAnyToken { get; set; }
+
     private readonly HashSet<StateEnum> _activeInStates=new HashSet<StateEnum>();
 
     public bool IsActiveInState(StateEnum state)
@@ -100,8 +104,12 @@ public class SphereSpec: AbstractEntity<SphereSpec>
         return new List<IAngel>();
     }
 
-    public ContainerMatchForStack GetSlotMatchForAspects(AspectsDictionary aspects)
+    public ContainerMatchForStack CheckPayloadAllowedHere(ITokenPayload payload)
     {
+        if (!payload.IsValidElementStack() && !AllowAnyToken)
+            return new ContainerMatchForStack(new List<string>(), SlotMatchForAspectsType.ForbiddenAspectPresent);
+
+        var aspects = payload.GetAspects(true);
 
         foreach (string k in Forbidden.Keys)
         {

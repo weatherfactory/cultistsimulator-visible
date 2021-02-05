@@ -24,6 +24,7 @@ namespace Assets.Scripts.Application.Meta
            var sphereSphec = new SphereSpec();
            sphereSphec.SetId("situationsmalleary");
            sphereSphec.Label = "Malleary: Situations";
+           sphereSphec.AllowAnyToken = true;
      var spherePath=new SpherePath(SituationPath.Root(),sphereSphec.Id);
            
            situationDrydockThreshold.Initialise(sphereSphec, spherePath);

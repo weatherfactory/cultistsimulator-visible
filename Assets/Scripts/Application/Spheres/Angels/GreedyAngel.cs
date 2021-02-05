@@ -99,7 +99,7 @@ namespace SecretHistories.Spheres.Angels
             var tokens = sphereToSearch.GetElementTokens().OrderBy(x => rnd.Next());
 
             foreach (var token in tokens)
-                if (token.CanBePulled() && slotSpec.GetSlotMatchForAspects(token.Payload.GetAspects(true)).MatchType == SlotMatchForAspectsType.Okay)
+                if (token.CanBePulled() && slotSpec.CheckPayloadAllowedHere(token.Payload).MatchType == SlotMatchForAspectsType.Okay)
                     return token;
 
             return null;
