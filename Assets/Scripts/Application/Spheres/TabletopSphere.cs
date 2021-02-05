@@ -40,8 +40,9 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return true; } }
      public override  bool EnforceUniqueStacksInThisContainer => true;
+     public override float TokenHeartbeatIntervalMultiplier => 1;
 
-    public override IChoreographer Choreographer
+        public override IChoreographer Choreographer
     {
         get { return _tabletopChoreographer; }
     }

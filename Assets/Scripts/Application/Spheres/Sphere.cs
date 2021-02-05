@@ -63,6 +63,7 @@ namespace SecretHistories.Spheres
         public virtual bool EnforceUniqueStacksInThisContainer => true;
         public virtual bool ContentsHidden => false;
         public virtual bool IsGreedy => false;
+        public virtual float TokenHeartbeatIntervalMultiplier => 0;
         public abstract SphereCategory SphereCategory { get; }
         public SphereSpec GoverningSphereSpec { get; set; } = new SphereSpec();
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
@@ -420,15 +421,18 @@ namespace SecretHistories.Spheres
 
         public void ExecuteHeartbeat(float interval)
         {
-            if(SphereCategory==SphereCategory.World || SphereCategory==SphereCategory.Output)
-            {
-                var heartbeatableStacks = GetElementTokens();
-    
-               foreach (var d in heartbeatableStacks)
-                      d.ExecuteHeartbeat(interval);
-            }
-
             flock.Act(interval);
+
+            float tokenHeartbeatIntervalForThisSphere = interval * TokenHeartbeatIntervalMultiplier;
+            if(tokenHeartbeatIntervalForThisSphere <= 0) //for many spheres, the multiplier is 0 and time won't pass for tokens.
+                return;
+
+            var heartbeatableStacks = GetAllTokens();
+    
+            foreach (var d in heartbeatableStacks)
+                d.ExecuteHeartbeat(interval);
+          
+               
         }
 
         public int TryPurgeStacks(Element element, int maxToPurge)

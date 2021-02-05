@@ -64,8 +64,8 @@ public class Heart : MonoBehaviour
 
     public void Beat(float beatInterval)
     {
-        foreach (Situation sc in Watchman.Get<SituationsCatalogue>().GetRegisteredSituations())
-            sc.ExecuteHeartbeat(beatInterval);
+        //foreach (Situation sc in Watchman.Get<SituationsCatalogue>().GetRegisteredSituations())
+        //    sc.ExecuteHeartbeat(beatInterval);
 
         foreach(Sphere sphere in Watchman.Get<SphereCatalogue>().GetSpheres())
             sphere.ExecuteHeartbeat(beatInterval);

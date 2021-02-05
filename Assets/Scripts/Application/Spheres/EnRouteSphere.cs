@@ -17,6 +17,7 @@ namespace SecretHistories.Spheres
     {
 
         public override SphereCategory SphereCategory => SphereCategory.World;
+        public override float TokenHeartbeatIntervalMultiplier => 1;
 
         public override bool ProcessEvictedToken(Token token, Context context)
         {

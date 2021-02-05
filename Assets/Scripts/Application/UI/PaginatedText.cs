@@ -133,6 +133,7 @@ namespace SecretHistories.UI {
             if (Notes.Count <= 0)
             {
                 NoonUtility.LogWarning("Tried to set a notes page when there are no notes");
+                return;
             }
 
 			if (page + 1 > Notes.Count) 

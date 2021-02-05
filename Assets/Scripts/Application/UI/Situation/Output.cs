@@ -34,6 +34,7 @@ public class Output : Sphere,ISituationSubscriber{
     
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return false; } }
+    public override float TokenHeartbeatIntervalMultiplier => 1;
 
 
     public override void Awake()
