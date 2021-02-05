@@ -153,7 +153,11 @@ namespace SecretHistories.Entities
 
         }
 
- 
+        public virtual bool IsValid()
+        {
+            return true;
+        }
+
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
             if (InternalDeck.Spec.Any())

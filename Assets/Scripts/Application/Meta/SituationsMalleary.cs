@@ -29,25 +29,30 @@ namespace Assets.Scripts.Application.Meta
            situationDrydockThreshold.Initialise(sphereSphec, spherePath);
        }
 
-       public void BeginSituation()
+
+        public void CreateSituation()
        {
            string recipeId = input.text;
 
            var compendium = Watchman.Get<Compendium>();
            var recipe = compendium.GetEntityById<Recipe>(recipeId.Trim());
-           if (recipe != null)
-           {
-               SituationCreationCommand newSituationCommand = new SituationCreationCommand(recipe.ActionId, recipe.Id, new SituationPath(recipe.ActionId), StateEnum.Ongoing);
 
-               var newTokenLocation = new TokenLocation(0f, 0f, 0f, situationDrydockThreshold.GetPath());
+           if (!recipe.IsValid())
+               return;
 
-               var newTokenCommand = new TokenCreationCommand(newSituationCommand, newTokenLocation);
+    
+           SituationCreationCommand newSituationCommand = new SituationCreationCommand(recipe.ActionId, recipe.Id, new SituationPath(recipe.ActionId), StateEnum.Ongoing);
 
-               newTokenCommand.Execute(new Context(Context.ActionSource.Debug));
+           //assuming we want the whole lifetime of the recipe
+           newSituationCommand.TimeRemaining = recipe.Warmup;
 
-           }
-           else
-               NoonUtility.LogWarning("Tried to begin situation via debug, but couldn't find this recipe: " + recipeId);
+           var newTokenLocation = new TokenLocation(0f, 0f, 0f, situationDrydockThreshold.GetPath());
+
+           var newTokenCommand = new TokenCreationCommand(newSituationCommand, newTokenLocation);
+
+           newTokenCommand.Execute(new Context(Context.ActionSource.Debug));
+
+    
        }
     }
 }

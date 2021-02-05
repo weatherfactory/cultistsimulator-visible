@@ -34,7 +34,10 @@ namespace SecretHistories.NullObjects
         
         public List<SphereSpec> Thresholds { get; set; }
 
-    
+        public override bool IsValid()
+        {
+            return false;
+        }
         public NullVerb()
         {
             Description = ".";

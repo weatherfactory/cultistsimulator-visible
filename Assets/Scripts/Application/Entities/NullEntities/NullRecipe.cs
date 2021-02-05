@@ -20,8 +20,11 @@ namespace SecretHistories.Entities
         {
             return Create(NullVerb.Create());
         }
+        public override bool IsValid()
+        {
+            return false;
+        }
 
-        
         public static NullRecipe Create(Verb forVerb)
         {
             Hashtable nullht = new Hashtable();

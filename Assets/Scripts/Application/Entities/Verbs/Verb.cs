@@ -47,6 +47,11 @@ namespace SecretHistories.Entities
         [FucineList(Localise = true)]
         public List<SphereSpec> Slots { get; set; }
 
+        public virtual bool IsValid()
+        {
+            return true;
+        }
+
 
         protected Verb(string id, string label, string description)
         {
