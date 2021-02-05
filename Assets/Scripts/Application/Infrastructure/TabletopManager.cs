@@ -62,16 +62,6 @@ namespace SecretHistories.UI {
         [SerializeField] private Notifier _notifier;
         [SerializeField] private ElementOverview _elementOverview;
         
-        
-
-        private bool _initialised;
-
-
-
-        private static bool highContrastMode = false;
-        private static bool accessibleCards = false;
-        private List<string> currentDoomTokens = new List<string>();
-
 
         void Awake()
         {
@@ -80,64 +70,6 @@ namespace SecretHistories.UI {
         }
 
 
-
-       
-        public HashSet<AnchorAndSlot> FillTheseSlotsWithFreeStacks(HashSet<AnchorAndSlot> slotsToFill) {
-            var unprocessedSlots = new HashSet<AnchorAndSlot>();
-
-                //uncomment and rework
-            //var choreo = Registry.Get<Choreographer>();
-            //SituationController sit;
-
-            //foreach (var tokenSlotPair in slotsToFill) {
-            //    if (NeedToFillSlot(tokenSlotPair) == false)
-            //        continue; // Skip it, we don't need to fill it
-
-            //    var stack = FindStackForSlotSpecificationOnTabletop(tokenSlotPair.Threshold.GoverningSlotSpecification) as ElementStackToken;
-
-            //    if (stack != null) {
-            //        stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
-            //        choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
-            //        continue; // we found a stack, we're done here
-            //    }
-
-            //    stack = FindStackForSlotSpecificationInSituations(tokenSlotPair.Threshold.GoverningSlotSpecification, out sit) as ElementStackToken;
-
-            //    if (stack != null) {
-            //        stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
-            //        choreo.PrepareElementForGreedyAnim(stack, sit.situationAnchor as VerbAnchor); // this reparents the card so it can animate properly
-            //        choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
-            //        continue; // we found a stack, we're done here
-            //    }
-
-            //    unprocessedSlots.Add(tokenSlotPair);
-           // }
-
-            return unprocessedSlots;
-        }
-
-        private bool NeedToFillSlot(AnchorAndSlot anchorSlotPair) {
-            //rework, move internal
-
-            //if (tokenSlotPair.Token.Equals(null))
-            //    return false; // It has been destroyed
-            //if (tokenSlotPair.Token.Defunct)
-            //    return false;
-            //if (!tokenSlotPair.Token.SituationController.IsOngoing)
-            //    return false;
-            //if (tokenSlotPair.Threshold.Equals(null))
-            //    return false; // It has been destroyed
-            //if (tokenSlotPair.Threshold.Defunct)
-            //    return false;
-            //if (tokenSlotPair.Threshold.IsBeingAnimated)
-            //    return false; // We're animating something into the slot.
-            //if (tokenSlotPair.Threshold.GetElementStackInSlot() != null)
-            //    return false; // It is already filled
-            //if (tokenSlotPair.Threshold.GoverningSlotSpecification==null || !tokenSlotPair.Threshold.GoverningSlotSpecification.Greedy)
-            //    return false; //it's not greedy any more; sometimes if we have a recipe with a greedy slot followed by a recipe with a non-greedy slot, the behaviour carries over for the moment the recipe changes
-
-            return true;
-        }
 
 
 
@@ -180,32 +112,6 @@ namespace SecretHistories.UI {
 	        cardHoverDetail.Show();
         }
 
-
-        public static void SetHighContrast( bool on )
-		{
-			highContrastMode = on;
-   //         Registry.Retrieve<Concursum>().CultureChangedEvent.Invoke();
-			//LanguageManager.LanguageChangeHasOccurred();	// Fire language change to recreate all text, which will also apply contrast adjustments - CP 
-		}
-
-		public static bool GetHighContrast()
-		{
-			return highContrastMode;
-		}
-
-		public static void SetAccessibleCards( bool on )
-		{
-			accessibleCards = on;
-		}
-
-
-
-
-
-        public static bool GetAccessibleCards()
-		{
-			return accessibleCards;
-		}
 
     }
 

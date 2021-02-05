@@ -31,7 +31,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
+public class DebugTools : MonoBehaviour, ISphereCatalogueEventSubscriber
 {
     private const int MaxAutoCompletionSuggestions = 50;
 
@@ -71,19 +71,49 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
     public Transform AutoCompletionSuggestionPrefab;
 
+    public List<GameObject> Panels;
+    private GameObject CurrentPanel;
+
     // Indicates the last selected auto-completion suggestion
     // -1 means no previous suggestion was selected
     private int currentAutoCompletionSuggestion = -1;
 
-    public void Toggle()
+    public void Cycle()
     {
-        gameObject.SetActive(!isActiveAndEnabled);
+        if (!isActiveAndEnabled)
+        {
+            gameObject.SetActive(true);
+            SetCurrentPanel(Panels.First());
+        }
+        else
+        {
+            if (CurrentPanel == Panels.Last())
+                gameObject.SetActive(false);
+            else
+            {
+                var nextPanelIndex = Panels.IndexOf(CurrentPanel) + 1;
+                SetCurrentPanel(Panels[nextPanelIndex]);
+            }
+        }
+
+    }
+
+    private void SetCurrentPanel(GameObject panel)
+    {
+        CurrentPanel = panel;
+        foreach (var p in Panels)
+        {
+            if(p==CurrentPanel)
+                p.SetActive(true);
+            else
+            p.SetActive(false);
+        }
     }
 
 
-    public void Awake()
+public void Awake()
     {
-        Toggle(); //start by hiding the panel. If it's not enabled at the beginning, this won't run
+        gameObject.SetActive(false); //start by hiding the panel. If it's not enabled at the beginning, this won't run
         var registry = new Watchman();
         registry.Register(this);
 
@@ -96,8 +126,6 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
 
         autoCompletionBox.gameObject.SetActive(false);
         input.onValueChanged.AddListener(AttemptAutoCompletion);
-        btnPlusOne.onClick.AddListener(() => AddCard(input.text));
-        btnMinusOne.onClick.AddListener(() => RemoveItem(input.text));
         btnFastForward.onClick.AddListener(() => FastForward(30));
         btnUpdateContent.onClick.AddListener(UpdateCompendiumContent);
         btnEndGame.onClick.AddListener(()=>EndGame(input.text));
@@ -288,27 +316,6 @@ public class DebugTools : MonoBehaviour,ISphereCatalogueEventSubscriber
         return suggestion;
     }
 
-    void AddCard(string elementId)
-    {
-       
-        var element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
-
-        if (element == null) {
-            Debug.LogWarning("No Element with ID " + elementId + " found!");
-            return;
-        }
-
-        Context debugContext = new Context(Context.ActionSource.Debug);
-
-
-        tabletop.ModifyElementQuantity(elementId,1, debugContext);
-
-    }
-
-    void RemoveItem(string itemId)
-    {
-        tabletop.ModifyElementQuantity(itemId, -1, new Context(Context.ActionSource.Debug));
-    }
 
     void BeginSituation(string recipeId)
     {
