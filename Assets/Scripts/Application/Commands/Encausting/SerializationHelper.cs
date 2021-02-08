@@ -42,5 +42,14 @@ namespace SecretHistories.Commands.Encausting
              return encaustment;
             }
 
+            public bool MightBeJson(string possiblyJson)
+            {
+                if (possiblyJson.IndexOf('{') > -1)
+                    return false;
+
+                return true;
+
+            }
+
     }
 }

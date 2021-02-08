@@ -5,23 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Entities;
 using SecretHistories.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Application.Meta
 {
-    
 
-    public class AutoCompletingInput: MonoBehaviour
+
+    public class AutoCompletingInput : MonoBehaviour
     {
-        [SerializeField] private InputField input;
-        [SerializeField] private ScrollRect autoCompletionBox;
+        [SerializeField] private TMP_InputField input;
+        [SerializeField] private AutoCompletionBox autoCompletionBox;
         [SerializeField] private VerticalLayoutGroup autoCompletionSuggestions;
         [SerializeField] public Transform AutoCompletionSuggestionPrefab;
         public bool MakeElementSuggestions;
         public bool MakeRecipeSuggestions;
-
+        public string Text => input.text;
 
         private const int MaxAutoCompletionSuggestions = 50;
 
@@ -41,7 +42,8 @@ namespace Assets.Scripts.Application.Meta
                 return false;
 
             // If the user has right-clicked, close the suggestions box
-            if (Mouse.current.rightButton.wasPressedThisFrame || Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame)
+            if (Mouse.current.rightButton.wasPressedThisFrame || Keyboard.current.escapeKey.wasPressedThisFrame ||
+                Keyboard.current.enterKey.wasPressedThisFrame)
             {
                 AttemptAutoCompletion(null);
                 return true;
@@ -57,49 +59,65 @@ namespace Assets.Scripts.Application.Meta
             if (suggestions.Count == 0)
                 return false;
 
-            // Check if the user is tab-completing
             if (Keyboard.current.tabKey.wasPressedThisFrame)
             {
-                currentAutoCompletionSuggestion = 0;
-                AutoCompletionSuggestion suggestion = suggestions.First();
-                SetInput(suggestion.GetText());
-                input.MoveTextEnd(false);
-                return true;
+                return AutoCompleteWithFirstSuggestion(suggestions);
             }
 
             // Check if the user is navigating suggestions with the arrow keys
             if (Keyboard.current.downArrowKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame)
             {
-                // Get the next suggestion based on what was previously used
-                if (currentAutoCompletionSuggestion < 0)
-                    currentAutoCompletionSuggestion = 0;
-                else if (Keyboard.current.downArrowKey.wasPressedThisFrame)
-                    currentAutoCompletionSuggestion++;
-                else if (Keyboard.current.upArrowKey.wasPressedThisFrame)
-                    currentAutoCompletionSuggestion--;
-
-                // Fold back to beginning and end of the suggestions if we overflow
-                if (currentAutoCompletionSuggestion >= suggestions.Count)
-                    currentAutoCompletionSuggestion = 0;
-                else if (currentAutoCompletionSuggestion < 0)
-                    currentAutoCompletionSuggestion = suggestions.Count - 1;
-
-                SetInput(suggestions[currentAutoCompletionSuggestion].GetText());
-                input.MoveTextEnd(false);
-                return true;
+                return MoveToSuggestionBasedOnArrowKey(suggestions);
             }
 
             return false;
         }
 
+        private bool MoveToSuggestionBasedOnArrowKey(List<AutoCompletionSuggestion> suggestions)
+        {
+            // Get the next suggestion based on what was previously used
+            if (currentAutoCompletionSuggestion < 0)
+                currentAutoCompletionSuggestion = 0;
+            else if (Keyboard.current.downArrowKey.wasPressedThisFrame)
+                currentAutoCompletionSuggestion++;
+            else if (Keyboard.current.upArrowKey.wasPressedThisFrame)
+                currentAutoCompletionSuggestion--;
+
+            // Fold back to beginning and end of the suggestions if we overflow
+            if (currentAutoCompletionSuggestion >= suggestions.Count)
+                currentAutoCompletionSuggestion = 0;
+            else if (currentAutoCompletionSuggestion < 0)
+                currentAutoCompletionSuggestion = suggestions.Count - 1;
+
+            SetInput(suggestions[currentAutoCompletionSuggestion].GetText());
+            input.MoveTextEnd(false);
+            return true;
+        }
+
+        private bool AutoCompleteWithFirstSuggestion(List<AutoCompletionSuggestion> suggestions)
+        {
+            currentAutoCompletionSuggestion = 0;
+            AutoCompletionSuggestion suggestion = suggestions.First();
+            SetInput(suggestion.GetText());
+            input.MoveTextEnd(false);
+            return true;
+        }
+
         void AttemptAutoCompletion(string value)
         {
+            int characterPosition = input.caretPosition-1;
+
+            var characterInfo = input.textComponent.textInfo.characterInfo;
+            SetAutosuggestBoxPositionToMatchCharInfo(characterInfo[characterPosition]);
+
+
             // Don't show the suggestion box if the field is empty
             if (string.IsNullOrEmpty(value))
             {
                 autoCompletionBox.gameObject.SetActive(false);
                 return;
             }
+
             autoCompletionBox.gameObject.SetActive(true);
 
             // Clear the list
@@ -113,27 +131,38 @@ namespace Assets.Scripts.Application.Meta
 
 
             List<AutoCompletionSuggestion> suggestions = new List<AutoCompletionSuggestion>();
-            if(MakeElementSuggestions)
+            if (MakeElementSuggestions)
                 suggestions.AddRange(GetElementAutoCompletionSuggestions(compendium, value));
-            
-           
-            if(MakeRecipeSuggestions)
-                      suggestions.AddRange(GetRecipeAutoCompletionSuggestions(compendium, value));
 
-            
-                
-            var orderedSuggestions= suggestions.OrderBy(acs => acs.GetText()).ToList();
+
+            if (MakeRecipeSuggestions)
+                suggestions.AddRange(GetRecipeAutoCompletionSuggestions(compendium, value));
+
+
+
+            var orderedSuggestions = suggestions.OrderBy(acs => acs.GetText()).ToList();
 
             if (orderedSuggestions.Count == 0)
             {
                 autoCompletionBox.gameObject.SetActive(false);
                 return;
             }
+
             foreach (var suggestion in orderedSuggestions)
                 suggestion.transform.SetParent(autoCompletionSuggestions.transform, false);
+
+
+
         }
 
-        public void SetInput(string text)
+        public void SetAutosuggestBoxPositionToMatchCharInfo(TMP_CharacterInfo character)
+        {
+            
+            autoCompletionBox.RectTransform.anchoredPosition = character.bottomLeft; //bottomleft is calculated in relation to the *current monobehaviour*
+        }
+
+
+    public void SetInput(string text)
         {
             // Do nothing if it's not open
             if (!isActiveAndEnabled || text == null)
