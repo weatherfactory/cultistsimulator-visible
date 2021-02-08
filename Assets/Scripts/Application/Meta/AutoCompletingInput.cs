@@ -158,7 +158,13 @@ namespace Assets.Scripts.Application.Meta
         public void SetAutosuggestBoxPositionToMatchCharInfo(TMP_CharacterInfo character)
         {
             
-            autoCompletionBox.RectTransform.anchoredPosition = character.bottomLeft; //bottomleft is calculated in relation to the *current monobehaviour*
+           var positionConvertedFromPositionInInputFieldToWorld = input.transform.TransformPoint(character.bottomLeft);
+
+           var local = autoCompletionBox.transform.InverseTransformPoint(positionConvertedFromPositionInInputFieldToWorld);
+
+           local.y -= 20;
+
+            autoCompletionBox.RectTransform.anchoredPosition = local;
         }
 
 
