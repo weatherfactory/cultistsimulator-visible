@@ -88,12 +88,18 @@ namespace Assets.Scripts.Application.Meta
             }
         }
 
+        public void DisencaustToDrydock()
+        {
+            var sh = new SerializationHelper();
+            var command = sh.DeserializeFromJsonString<TokenCreationCommand>(jsonInputField.text);
+            command.Execute(Context.Unknown());
+
+        }
+
         public void EncaustDrydockedItem(Token drydockedItem, TMP_InputField jsonEditField)
         {
             var encaustery=new Encaustery<TokenCreationCommand>();
             var encaustedCommand= encaustery.Encaust(drydockedItem);
-            var serializerFactory = new SerializationHelper();
-
             var sh=new SerializationHelper();
 
             jsonEditField.text = sh.SerializeToJsonString(encaustedCommand);
