@@ -50,6 +50,8 @@ namespace Assets.Scripts.Application.Meta
 
             primaryThreshold.ModifyElementQuantity(elementId, 1, debugContext);
 
+            EncaustDrydockedItem(primaryThreshold.GetTokenInSlot(),jsonInputField);
+
         }
 
         public void DestroyDrydockedItem()
