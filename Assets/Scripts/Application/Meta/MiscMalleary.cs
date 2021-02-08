@@ -18,84 +18,10 @@ namespace Assets.Scripts.Application.Meta
 {
     public class MiscMalleary: MonoBehaviour
     {
-        [SerializeField] private InputField input;
-        [SerializeField] private Button btnHaltVerb;
-        [SerializeField] private Button btnDeleteVerb;
-        [SerializeField] private Button btnPurgeElement;
-        [SerializeField] public Button btnTriggerAchievement;
-        [SerializeField] private Button btnResetAchivement;
-        [SerializeField] private Button btnFastForward;
-        [SerializeField] private Button btnNextTrack;
-        [SerializeField] private Button btnUpdateContent;
-        [SerializeField] private Button btnEndGame;
-        [SerializeField] private Button btnLoadGame;
+
         [SerializeField] private Button btnSaveGame;
-        [SerializeField] private Button btnResetDecks;
-        [SerializeField] private BackgroundMusic backgroundMusic;
-
-        // Debug Load/Save/Delete buttons
-        [SerializeField] private List<Button> saveButtons;
-        [SerializeField] private List<Button> loadButtons;
-        [SerializeField] private List<Button> delButtons;
 
 
-
-        public void Awake()
-        {
-         
-
-                if (Watchman.Get<Config>().knock)
-                    btnTriggerAchievement.gameObject.SetActive(true);
-
-
-            btnFastForward.onClick.AddListener(() => FastForward(30));
-            btnUpdateContent.onClick.AddListener(UpdateCompendiumContent);
-            btnEndGame.onClick.AddListener(() => EndGame(input.text));
-            btnLoadGame.onClick.AddListener(LoadGame);
-            btnSaveGame.onClick.AddListener(SaveGame);
-            btnResetDecks.onClick.AddListener(ResetDecks);
-            btnNextTrack.onClick.AddListener(NextTrack);
-            btnHaltVerb.onClick.AddListener(() => HaltVerb(input.text));
-            btnDeleteVerb.onClick.AddListener(() => DeleteVerb(input.text));
-            btnPurgeElement.onClick.AddListener(() => PurgeElement(input.text));
-
-
-            btnTriggerAchievement.onClick.AddListener(() => TriggerAchievement(input.text));
-            btnResetAchivement.onClick.AddListener(() => ResetAchievement(input.text));
-
-
-
-            int sbIndex = 1;
-            foreach (var saveButton in saveButtons)
-            {
-                var index = sbIndex;
-                saveButton.onClick.AddListener(() => SaveDebugSave(index));
-                sbIndex++;
-            }
-
-            int lbIndex = 1;
-            foreach (var loadButton in loadButtons)
-            {
-                var index = lbIndex;
-                loadButton.onClick.AddListener((() => LoadDebugSave(index)));
-                if (!CheckDebugSaveExists(lbIndex))
-                    loadButton.interactable = false;
-
-                lbIndex++;
-            }
-
-            int dbIndex = 1;
-            foreach (var deleteButton in delButtons)
-            {
-                var index = dbIndex;
-                deleteButton.onClick.AddListener((() => DeleteDebugSave(index)));
-                if (!CheckDebugSaveExists(dbIndex))
-                    deleteButton.interactable = false;
-
-                dbIndex++;
-            }
-
-        }
 
 
 
@@ -192,10 +118,6 @@ namespace Assets.Scripts.Application.Meta
         }
 
 
-        void NextTrack()
-        {
-            backgroundMusic.PlayNextClip();
-        }
 
         // to allow access from HotkeyWatcher
         public void EndGame(string endingId)
@@ -276,18 +198,6 @@ namespace Assets.Scripts.Application.Meta
         //    }
         //}
 
-        async void SaveDebugSave(int index)
-        {
-
-            NoonUtility.LogWarning("THis doesn't work rn");
-            //  var task = tabletopManager.SaveGameAsync(true, source);
-            //var success = await task;
-
-
-            //    loadButtons[index-1].interactable = success;
-            //    delButtons[index -1].interactable = success;
-
-        }
 
         void LoadDebugSave(int index)
         {
@@ -298,14 +208,6 @@ namespace Assets.Scripts.Application.Meta
             Watchman.Get<StageHand>().LoadGameOnTabletop(source);
         }
 
-        void DeleteDebugSave(int index)
-        {
-            if (!CheckDebugSaveExists(index))
-                return;
-            File.Delete(NoonUtility.GetGameSaveLocation(index));
-            loadButtons[index - 1].interactable = false;
-            delButtons[index - 1].interactable = false;
-        }
 
         private bool CheckDebugSaveExists(int index)
         {

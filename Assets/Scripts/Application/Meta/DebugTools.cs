@@ -46,8 +46,7 @@ public class DebugTools : MonoBehaviour
 
     public void Cycle()
     {
-        if (!isActiveAndEnabled)
-        {
+        if (!isActiveAndEnabled)        {
             gameObject.SetActive(true);
             SetCurrentPanel(Panels.First());
         }
