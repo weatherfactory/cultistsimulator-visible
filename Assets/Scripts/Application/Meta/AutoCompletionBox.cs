@@ -10,5 +10,7 @@ namespace Assets.Scripts.Application.Meta
     public class AutoCompletionBox: MonoBehaviour
     {
          public RectTransform RectTransform=>transform as RectTransform;
+
+
     }
 }

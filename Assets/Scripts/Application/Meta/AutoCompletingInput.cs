@@ -22,13 +22,18 @@ namespace Assets.Scripts.Application.Meta
         [SerializeField] public Transform AutoCompletionSuggestionPrefab;
         public bool MakeElementSuggestions;
         public bool MakeRecipeSuggestions;
-        public string Text => input.text;
-
+        
         private const int MaxAutoCompletionSuggestions = 50;
 
         // Indicates the last selected auto-completion suggestion
         // -1 means no previous suggestion was selected
         private int currentAutoCompletionSuggestion = -1;
+
+        public string text
+        {
+            get => input.text;
+            set => input.text = value;
+        }
 
         public void Awake()
         {
@@ -105,12 +110,9 @@ namespace Assets.Scripts.Application.Meta
 
         void AttemptAutoCompletion(string value)
         {
-            int characterPosition = input.caretPosition-1;
+            int characterPosition = Math.Max(0,input.caretPosition-2);
 
-            var characterInfo = input.textComponent.textInfo.characterInfo;
-            SetAutosuggestBoxPositionToMatchCharInfo(characterInfo[characterPosition]);
-
-
+  
             // Don't show the suggestion box if the field is empty
             if (string.IsNullOrEmpty(value))
             {
@@ -151,24 +153,23 @@ namespace Assets.Scripts.Application.Meta
             foreach (var suggestion in orderedSuggestions)
                 suggestion.transform.SetParent(autoCompletionSuggestions.transform, false);
 
-
+            var characterInfo = input.textComponent.textInfo.characterInfo;
+            SetAutosuggestBoxPositionToMatchRecentlyTypedCharacter(characterInfo[characterPosition]);
 
         }
 
-        public void SetAutosuggestBoxPositionToMatchCharInfo(TMP_CharacterInfo character)
+        public void SetAutosuggestBoxPositionToMatchRecentlyTypedCharacter(TMP_CharacterInfo character)
         {
-            
-           var positionConvertedFromPositionInInputFieldToWorld = input.transform.TransformPoint(character.bottomLeft);
+            var characterBottomLeftWithOffset=new Vector3(character.bottomLeft.x,character.bottomLeft.y-20,character.bottomLeft.z);
 
-           var local = autoCompletionBox.transform.InverseTransformPoint(positionConvertedFromPositionInInputFieldToWorld);
+            var positionConvertedFromPositionInInputFieldToWorld = input.transform.TransformPoint(characterBottomLeftWithOffset);
 
-           local.y -= 20;
+            autoCompletionBox.RectTransform.position = positionConvertedFromPositionInInputFieldToWorld;
 
-            autoCompletionBox.RectTransform.anchoredPosition = local;
         }
 
 
-    public void SetInput(string text)
+        public void SetInput(string text)
         {
             // Do nothing if it's not open
             if (!isActiveAndEnabled || text == null)
