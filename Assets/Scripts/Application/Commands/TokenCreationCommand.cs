@@ -15,7 +15,7 @@ using SecretHistories.Interfaces;
 using SecretHistories.Services;
 using SecretHistories.UI;
 
-namespace Assets.Scripts.Application.Commands.SituationCommands
+namespace SecretHistories.Commands
 {
     public class TokenCreationCommand:IEncaustment
     {

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SecretHistories.Commands;
+using SecretHistories.Commands.Encausting;
 using SecretHistories.Constants;
 using UnityEngine;
 
@@ -22,7 +23,8 @@ namespace SecretHistories.Infrastructure.Persistence
         public override void DeserialiseFromPersistence()
         {
             string json = File.ReadAllText(GetSaveFileLocation());
-            _persistedGameState = JsonConvert.DeserializeObject<PersistedGameState>(json);
+            var sh=new SerializationHelper();
+            _persistedGameState = sh.DeserializeFromJsonString<PersistedGameState>(json);
         }
     }
 }

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Commands.SituationCommands;
+using Newtonsoft.Json;
+using SecretHistories.Commands;
+using SecretHistories.Commands.Encausting;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -10,6 +14,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.NullObjects;
 using SecretHistories.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +24,7 @@ namespace Assets.Scripts.Application.Meta
     {
         [SerializeField] private ThresholdsWrangler elementDrydockWrangler;
         [SerializeField] private InputField input;
+        [SerializeField] private TMP_InputField jsonInputField;
         private ThresholdSphere primaryThreshold;
 
         public void Awake()
@@ -74,7 +80,21 @@ namespace Assets.Scripts.Application.Meta
         public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
             if (args.Interaction == Interaction.OnDragEnd)
+            {
                 input.text = args.Payload.Id;
+                EncaustDrydockedItem(args.Token,jsonInputField);
+            }
+        }
+
+        public void EncaustDrydockedItem(Token drydockedItem, TMP_InputField jsonEditField)
+        {
+            var encaustery=new Encaustery<TokenCreationCommand>();
+            var encaustedCommand= encaustery.Encaust(drydockedItem);
+            var serializerFactory = new SerializationHelper();
+
+            var sh=new SerializationHelper();
+
+            jsonEditField.text = sh.SerializeToJsonString(encaustedCommand);
         }
     }
 }

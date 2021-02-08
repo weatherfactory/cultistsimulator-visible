@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.Application.Commands.SituationCommands;
 using Newtonsoft.Json;
 using SecretHistories.Commands;
+using SecretHistories.Commands.Encausting;
 using SecretHistories.Constants;
 using SecretHistories.Spheres;
 
@@ -65,19 +65,9 @@ namespace SecretHistories.Infrastructure.Persistence
 
         public async Task<bool> SerialiseAndSaveAsync()
         {
-            var jsonSerializerSettings=new JsonSerializerSettings();
-           // jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            var serializationHelper=new SerializationHelper();
 
-            JsonSerializer serializer=JsonSerializer.Create(jsonSerializerSettings);
-
-            StringBuilder sb=new StringBuilder();
-            StringWriter sw=new StringWriter(sb);
-            JsonWriter jw=new JsonTextWriter(sw);
-            jw.Formatting = Formatting.Indented;
-
-            serializer.Serialize(jw,_persistedGameState);
-
-            string json = sb.ToString();
+            var json = serializationHelper.SerializeToJsonString(_persistedGameState);
 
             var saveFilePath = GetSaveFileLocation();
 

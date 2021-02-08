@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.Application;
-using Assets.Scripts.Application.Commands.Encausting;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
 
 using NUnit.Framework;
 using SecretHistories.Commands;
+using SecretHistories.Commands.Encausting;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using UnityEditor;
@@ -92,9 +87,9 @@ namespace BasicEncaustingTests
             var encaustery = new Encaustery<EncaustedCommandX>();
             var vx = new ValidEncaustableX();
             var encaustedCommand = encaustery.Encaust(vx);
-            var jsonPortal=new JSONPortal<EncaustedCommandX>();
+            var jsonPortal=new SerializationHelper();
 
-            var json = jsonPortal.Serialize(encaustedCommand);
+            var json = jsonPortal.SerializeToJsonString(encaustedCommand);
             Assert.IsInstanceOf<string>(json);
         }
 
@@ -105,13 +100,12 @@ namespace BasicEncaustingTests
             var encaustery = new Encaustery<EncaustedCommandX>();
             var vx = new ValidEncaustableX { MarkedProperty = 1, OtherMarkedProperty = 2 };
             var encaustedCommand = encaustery.Encaust(vx);
-            
-            var jsonPortal = new JSONPortal<EncaustedCommandX>();
-            var json = jsonPortal.Serialize(encaustedCommand);
+
+            var jsonPortal = new SerializationHelper();
+            var json = jsonPortal.SerializeToJsonString(encaustedCommand);
 
 
-            var jsonportal = new JSONPortal<EncaustedCommandX>();
-            var dx = jsonportal.Deserialize(json);
+            var dx = jsonPortal.DeserializeFromJsonString<EncaustedCommandX>(json);
             Assert.AreEqual(vx.MarkedProperty,dx.MarkedProperty);
             Assert.AreEqual(vx.OtherMarkedProperty,dx.OtherMarkedProperty);
         }
