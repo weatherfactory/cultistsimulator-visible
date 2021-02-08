@@ -42,7 +42,6 @@ namespace Assets.Scripts.Application.Meta
             }
             else
             {
-                    
                 var elementId = input.text;
                 var element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
 
@@ -59,9 +58,7 @@ namespace Assets.Scripts.Application.Meta
 
         public void DestroyDrydockedItem()
         {
-
-            var elementId = input.text;
-            primaryThreshold.ModifyElementQuantity(elementId, -1, new Context(Context.ActionSource.Debug));
+             primaryThreshold.GetTokenInSlot().Retire(RetirementVFX.CardTakenShadow);
         }
 
         public void Mutate()
@@ -73,7 +70,6 @@ namespace Assets.Scripts.Application.Meta
         public void Unmutate()
         {
             var elementToken = primaryThreshold.GetElementTokenInSlot();
-
             elementToken.Payload.SetMutation(input.text, -1, true);
         }
 
