@@ -39,7 +39,7 @@ public class CreationCommandsSmokeTests
             Debug.Log(m.Description);
         Assert.AreEqual(1, compendium.GetEntitiesAsList<DeckSpec>().Count);
         Assert.AreEqual(1, compendium.GetEntitiesAsList<Dictum>().Count);
-        Assert.AreEqual(5, compendium.GetEntitiesAsList<Element>().Count);
+        Assert.AreEqual(6, compendium.GetEntitiesAsList<Element>().Count);
         Assert.AreEqual(1, compendium.GetEntitiesAsList<Ending>().Count);
         Assert.AreEqual(1, compendium.GetEntitiesAsList<Legacy>().Count);
         Assert.AreEqual(1, compendium.GetEntitiesAsList<Recipe>().Count);
