@@ -16,7 +16,7 @@ namespace Assets.Scripts.Application.Meta
 {
    public class SituationsMalleary: MonoBehaviour
    {
-       [SerializeField] private InputField input;
+       [SerializeField] private AutoCompletingInput input;
        [SerializeField] private ThresholdSphere situationDrydockThreshold;
 
        public void Awake()
@@ -48,9 +48,7 @@ namespace Assets.Scripts.Application.Meta
            newSituationCommand.TimeRemaining = recipe.Warmup;
 
            var newTokenLocation = new TokenLocation(0f, 0f, 0f, situationDrydockThreshold.GetPath());
-
            var newTokenCommand = new TokenCreationCommand(newSituationCommand, newTokenLocation);
-
            newTokenCommand.Execute(new Context(Context.ActionSource.Debug));
 
     
