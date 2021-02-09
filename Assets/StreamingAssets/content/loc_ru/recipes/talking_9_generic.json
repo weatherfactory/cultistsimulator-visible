@@ -3,210 +3,757 @@
         {
             "id": "speakpublicly",
             "label": "Про эзотерические дела",
+            "actionid": "talk",
+            "requirements": {
+                "society": -1,
+                "lore": 1
+            },
+            "effects": {
+                "mystique": 1
+            },
+            "startdescription": "Прилюдное обсуждение незримых искусств привлечёт внимание. Быть может, это мне и нужно.",
             "description": ".",
-            "startdescription": "Прилюдное обсуждение незримых искусств привлечёт внимание. Быть может, это мне и нужно."
+            "warmup": 60,
+            "craftable": true,
+            "deckeffects": {
+                "talkevents": 1
+            },
+            "linked": [
+                {
+                    "id": "talkfindacquaintance",
+                    "chance": 100
+                },
+                {
+                    "id": "talkfindpatron",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "talkfindacquaintance",
             "label": "Знакомство?",
-            "description": "Мне не удаётся собрать достаточно эмоций, чтобы вовлечь нового человека в свой круг. Быть может, потом.",
-            "startdescription": "Мне удалось найти родственную душу, но для завоевания доверия придётся потрудиться. [Для завоевания знакомого требуются эмоции.]",
+            "actionid": "talk",
+            "requirements": {
+                "dayacquaintances": 1
+            },
             "slots": [
                 {
                     "id": "escalation",
                     "label": "Эмоции",
-                    "description": "Мне нужно вести себя энергично и убедительно."
+                    "description": "Мне нужно вести себя энергично и убедительно.",
+                    "required": {
+                        "passion": 1
+                    },
+                    "greedy": true
                 }
-            ]
+            ],
+            "startdescription": "Мне удалось найти родственную душу, но для завоевания доверия придётся потрудиться. [Для завоевания знакомого требуются эмоции.]",
+            "alt": [
+                {
+                    "id": "talkmeetacquaintance",
+                    "chance": 100
+                }
+            ],
+            "description": "Мне не удаётся собрать достаточно эмоций, чтобы вовлечь нового человека в свой круг. Быть может, потом.",
+            "effects": {
+                "season": -1
+            },
+            "warmup": 60
         },
         {
             "id": "talkfindpatron",
             "label": "Покровитель?",
-            "description": "Я не могу собрать достаточно ментальной энергии, чтобы показать свою сущность. Может, в другой раз.",
-            "startdescription": "Мне встретился человек, обладающий необходимыми мне ресурсами, но сначала нужно произвести впечатление. [Чтобы произвести впечатление на покровителя, нужен разум.]",
+            "actionid": "talk",
+            "requirements": {
+                "daypatrons": 1
+            },
             "slots": [
                 {
                     "id": "escalation",
                     "label": "Разум",
-                    "description": "Мне нужно демонстрировать уверенность и надёжность."
+                    "description": "Мне нужно демонстрировать уверенность и надёжность.",
+                    "required": {
+                        "reason": 1
+                    },
+                    "greedy": true
                 }
-            ]
+            ],
+            "startdescription": "Мне встретился человек, обладающий необходимыми мне ресурсами, но сначала нужно произвести впечатление. [Чтобы произвести впечатление на покровителя, нужен разум.]",
+            "alt": [
+                {
+                    "id": "talkmeetpatron",
+                    "chance": 100
+                }
+            ],
+            "description": "Я не могу собрать достаточно ментальной энергии, чтобы показать свою сущность. Может, в другой раз.",
+            "effects": {
+                "season": -1
+            },
+            "warmup": 60
         },
         {
             "id": "talkmeetacquaintance",
             "label": "Знакомый",
+            "actionid": "talk",
+            "requirements": {
+                "passion": 1
+            },
+            "startdescription": "«Идём со мной».",
             "description": ".",
-            "startdescription": "«Идём со мной»."
+            "deckeffects": {
+                "acquaintances": 1
+            },
+            "effects": {
+                "season": -1
+            },
+            "warmup": 5
         },
         {
             "id": "talkmeetpatron",
             "label": "Покровитель",
+            "actionid": "talk",
+            "requirements": {
+                "reason": 1
+            },
+            "startdescription": "«Мы можем учиться друг у друга».",
             "description": ".",
-            "startdescription": "«Мы можем учиться друг у друга»."
+            "deckeffects": {
+                "scholarpatrons": 1
+            },
+            "effects": {
+                "season": -1
+            },
+            "warmup": 5
         },
         {
             "id": "talktotroublemaker",
             "label": "Организовать встречу на нейтральной территории.",
-            "description": "Состоялся осторожный разговор в кафе, рано утром, сразу после дождя. Ничего узнать не удалось.",
-            "startdescription": "«Мы враждуем? Может, в этом нет необходимости».",
+            "actionid": "talk",
+            "requirements": {
+                "independent": 1,
+                "society": -1,
+                "ritual": -1
+            },
             "slots": [
                 {
                     "id": "Subject",
                     "label": "Объект",
                     "description": "Тема беседы."
                 }
-            ]
+            ],
+            "alt": [
+                {
+                    "id": "A_follower_settrap_independent",
+                    "chance": 100
+                },
+                {
+                    "id": "independentloreconversation",
+                    "chance": 100
+                },
+                {
+                    "id": "independentdesireconversation",
+                    "chance": 100
+                },
+                {
+                    "id": "independentfitewithextraswole",
+                    "chance": 100
+                },
+                {
+                    "id": "independentfitewithswole",
+                    "chance": 100
+                },
+                {
+                    "id": "independentspeakpoison",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "«Мы враждуем? Может, в этом нет необходимости».",
+            "description": "Состоялся осторожный разговор в кафе, рано утром, сразу после дождя. Ничего узнать не удалось.",
+            "effects": {
+                "mystique": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "independentloreconversation",
             "label": "Организовать встречу на нейтральной территории.",
+            "actionid": "talk",
+            "requirements": {
+                "lore": 1
+            },
+            "startdescription": "«Кажется, нам <i>есть</i> что обсудить».",
             "description": "Состоялась негромкая и осторожная беседа при приглушённом свете, с крупицами правды, будто проблесками золота в речном иле. Кто знает, быть может, когда-нибудь мы сможем поговорить более откровенно.",
-            "startdescription": "«Кажется, нам <i>есть</i> что обсудить»."
+            "deckeffects": {
+                "troublemakerconversations": 1
+            }
         },
         {
             "id": "independentdesireconversation",
             "label": "Организовать встречу на нейтральной территории.",
+            "actionid": "talk",
+            "requirements": {
+                "desire": 1
+            },
+            "startdescription": "«Вместе идти к общей цели? Ты это серьезно?»",
             "description": "«Может быть. Когда-нибудь. Меня придётся убеждать. Стоит всё обсудить...» [Если у вас есть культ, есть возможность привлечь на свою сторону смутьяна, хотя это и нелегко.]",
-            "startdescription": "«Вместе идти к общей цели? Ты это серьезно?»"
+            "deckeffects": {
+                "troublemakerconversations": 1
+            }
         },
         {
             "id": "independentfitewithextraswole",
             "label": "Неожиданное нападение на соперника",
+            "actionid": "talk",
+            "requirements": {
+                "murderskill": 1
+            },
+            "startdescription": "Мы встречаемся на нейтральной территории. Все необходимые меры безопасности приняты. Но что враг может противопоставить мне? Прямое нападение можно считать оправданным риском... или последней оставшейся возможностью. [Может и получиться, несмотря ни на что.]",
             "description": "Голова противника у меня в руках. С хрустом ломается шея, тело падает на землю.",
-            "startdescription": "Мы встречаемся на нейтральной территории. Все необходимые меры безопасности приняты. Но что враг может противопоставить мне? Прямое нападение можно считать оправданным риском... или последней оставшейся возможностью. [Может и получиться, несмотря ни на что.]"
+            "alt": [
+                {
+                    "id": "independentfitewithswole_failure",
+                    "chance": 70
+                }
+            ],
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killmortal": 1
+            },
+            "craftable": false
         },
         {
             "id": "independentfitewithswole",
             "label": "Неожиданное нападение на соперника",
+            "actionid": "talk",
+            "requirements": {
+                "healthskill": 1
+            },
+            "startdescription": "Мы встречаемся на нейтральной территории. Все необходимые меры безопасности приняты. Прямое нападение можно считать оправданным риском... или последней оставшейся возможностью. [Шансы не слишком высоки, если честно.]",
             "description": "Голова противника у меня в руках. С хрустом ломается шея, тело падает на землю.",
-            "startdescription": "Мы встречаемся на нейтральной территории. Все необходимые меры безопасности приняты. Прямое нападение можно считать оправданным риском... или последней оставшейся возможностью. [Шансы не слишком высоки, если честно.]"
+            "alt": [
+                {
+                    "id": "independentfitewithswole_failure",
+                    "chance": 90
+                }
+            ],
+            "effects": {
+                "notoriety": 1
+            },
+            "aspects": {
+                "killmortal": 1
+            },
+            "craftable": false
         },
         {
             "id": "independentfitewithswole_failure",
             "label": "Неожиданная атака не принесла результата!",
+            "actionid": "talk",
+            "startdescription": ".",
             "description": "С криком соперник отстраняется, переворачивая стол! Все вокруг оглядываются на нас. Никто не видел моего движения, кроме соперника. Но уходить нужно немедленно.",
-            "startdescription": "."
+            "craftable": false,
+            "effects": {
+                "notoriety": 1
+            },
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "wary",
+                    "level": 1
+                },
+                {
+                    "filter": "independent",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ]
         },
         {
             "id": "independentspeakpoison",
             "label": "Использовать удивительный яд против соперника",
+            "actionid": "talk",
+            "requirements": {
+                "poison": 1
+            },
+            "startdescription": "«Чаю?»",
             "description": "«Неужели?», — соперник разочарованно качает головой и уходит, оставив на столе нетронутый чай.",
-            "startdescription": "«Чаю?»"
+            "mutations": [
+                {
+                    "filter": "independent",
+                    "mutate": "wary",
+                    "level": 1
+                },
+                {
+                    "filter": "independent",
+                    "mutate": "resentment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "craftable": false
         },
         {
             "id": "talktohunter",
             "label": "Организовать встречу с соперником",
-            "description": "Это было безрассудно. Быть может, не стоило так открываться.",
-            "startdescription": "Возможно, мы чего-то добьёмся на переговорах. Или можно послать кого-то, чтобы устроить засаду.",
+            "actionid": "talk",
+            "requirements": {
+                "hunter": 1
+            },
             "slots": [
                 {
                     "id": "Subject",
                     "label": "Объект",
                     "description": "Тема разговора... или подручный, что нападёт."
                 }
-            ]
+            ],
+            "alt": [
+                {
+                    "id": "hunterfitewithextraswole"
+                },
+                {
+                    "id": "hunterfitewithswole"
+                },
+                {
+                    "id": "hunterspeakpoison_glassfinger"
+                },
+                {
+                    "id": "hunterspeakpoison"
+                },
+                {
+                    "id": "hunterspeakwinterg"
+                },
+                {
+                    "id": "hunterspeakwinterd"
+                },
+                {
+                    "id": "hunterspeakwinter"
+                },
+                {
+                    "id": "hunterspeakdread"
+                },
+                {
+                    "id": "hunterspeaklanterng"
+                },
+                {
+                    "id": "hunterspeaklanternd"
+                },
+                {
+                    "id": "hunterspeaklantern"
+                },
+                {
+                    "id": "hunterspeakfascination"
+                },
+                {
+                    "id": "hunterattackhighedge"
+                },
+                {
+                    "id": "hunterattackhighwinter"
+                },
+                {
+                    "id": "hunterattackmidedge"
+                },
+                {
+                    "id": "hunterattackmidwinter"
+                },
+                {
+                    "id": "hunterattacklowedge"
+                },
+                {
+                    "id": "hunterattacklowwinter"
+                },
+                {
+                    "id": "hunterattacknoedge"
+                }
+            ],
+            "startdescription": "Возможно, мы чего-то добьёмся на переговорах. Или можно послать кого-то, чтобы устроить засаду.",
+            "description": "Это было безрассудно. Быть может, не стоило так открываться.",
+            "effects": {
+                "notoriety": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "talktospirit",
             "label": "Поговорить с призванным",
-            "description": "Ничего; мои слова не достигают цели, как бьющиеся о стекло песчинки.",
-            "startdescription": "Не всё, порождённое Обителью, может разговаривать. Но всё может понимать речь смертных, миновав Белую Дверь.",
+            "actionid": "talk",
+            "requirements": {
+                "society": -1,
+                "follower": 1,
+                "summoned": 1
+            },
             "slots": [
                 {
                     "id": "Subject",
                     "label": "Объект",
                     "description": "Тема разговора... или цель."
                 }
-            ]
+            ],
+            "comments": "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+            "alt": [
+                {
+                    "id": "discusspassionsacrifice"
+                },
+                {
+                    "id": "discussreasonsacrifice"
+                },
+                {
+                    "id": "discusssicknessprotectionspirit"
+                },
+                {
+                    "id": "discussfucinespirit"
+                },
+                {
+                    "id": "discussphrygianspirit"
+                },
+                {
+                    "id": "discussmandaicspirit"
+                },
+                {
+                    "id": "hunterattackhighedge"
+                },
+                {
+                    "id": "hunterattackmidedge"
+                },
+                {
+                    "id": "hunterattacklowedge"
+                },
+                {
+                    "id": "hunterattacknoedge"
+                },
+                {
+                    "id": "evidencedestroymidmoth"
+                },
+                {
+                    "id": "evidencedestroylowmoth"
+                },
+                {
+                    "id": "evidencedestroynomoth"
+                },
+                {
+                    "id": "annoyanceseducehighgrail"
+                },
+                {
+                    "id": "annoyanceattackhighedge"
+                },
+                {
+                    "id": "annoyanceseducemidgrail"
+                },
+                {
+                    "id": "annoyanceattackmidedge"
+                },
+                {
+                    "id": "annoyancederangemidmoth"
+                },
+                {
+                    "id": "annoyanceseducelowgrail"
+                },
+                {
+                    "id": "annoyanceattacklowedge"
+                },
+                {
+                    "id": "annoyancederangelowmoth"
+                },
+                {
+                    "id": "annoyanceattacknoedge"
+                },
+                {
+                    "id": "apostlelantern.recruitkleidouchos.teresa"
+                },
+                {
+                    "id": "apostlelantern.usepillar3"
+                },
+                {
+                    "id": "teresadiscusslocksmithsdream1"
+                },
+                {
+                    "id": "teresadiscusslocksmithsdream2"
+                },
+                {
+                    "id": "teresadiscusslocksmithsdream3"
+                },
+                {
+                    "id": "teresadiscusslocksmithsdream4"
+                },
+                {
+                    "id": "teresadiscusslocksmithsdream5"
+                }
+            ],
+            "startdescription": "Не всё, порождённое Обителью, может разговаривать. Но всё может понимать речь смертных, миновав Белую Дверь.",
+            "description": "Ничего; мои слова не достигают цели, как бьющиеся о стекло песчинки.",
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "discusspassionsacrifice",
+            "actionid": "talk",
             "label": "Холодные уроки",
+            "startdescription": "Если я буду внимательно слушать истории, рассказываемые зимним солнцем, то могу узнать что-то ценой увядания моей души. [Это позволит изучить притчу артиста, но превратит эмоцию в дряхлость... хотя может при этом приоткрыть дверь.]",
             "description": "@#spirit_winterb_heart|«Смотря на меня, можно увидеть, что я не живу. Можно подумать, что это моя главная утрата. Но если так, то зачем, спросите вы меня?» Но я ничего не спрашиваю. Мёртвые обычно не разговаривают.\n#spirit_winterd_edge|Голос Девы ясен и резок, как только что огранённый кристалл. «Чего можно лишиться? Любой выбор закрывает какую-то дверь... а в Обители их всего семь».\n#spirit_lanterne_secret|«Чего можно лишиться? Своего детства. Своего бремени. Своих иллюзий. Своей гордости. Своей репутации. Своей тени. Своего сердца...»@",
-            "startdescription": "Если я буду внимательно слушать истории, рассказываемые зимним солнцем, то могу узнать что-то ценой увядания моей души. [Это позволит изучить притчу артиста, но превратит эмоцию в дряхлость... хотя может при этом приоткрыть дверь.]"
+            "requirements": {
+                "passion": 1,
+                "spiriteatspassion": 1
+            },
+            "effects": {
+                "passion": -1,
+                "decrepitude": 1,
+                "fragmentmothc": 1,
+                "influencewintere": 1
+            }
         },
         {
             "id": "discussreasonsacrifice",
+            "actionid": "talk",
             "label": "Непростые уроки",
+            "startdescription": "Если отдамся безумию, то выучу непростой урок. [Это позволит изучить «Принятие ран», но превратит разум в дряхлость... хотя может при этом приоткрыть дверь.]",
             "description": "@#spirit_grailc_moth|Пророк оставит свои предсказания на моей коже, под ними мои мысли расползутся, как старая ткань.\n#spirit_heartc_edge|Перкуссигант покажет мне движения, на которые моё тело не способно, и если я соберусь измениться и всё исправить, то кожа моя сможет об этом поведать, поведать, поведать, обязательно сможет.\n#spirit_graile_edge|«Мы были знакомы в яви, рук у неё было меньше, пальцы были теплее, но губы и тогда были холодны. Можете назвать меня лжецом, пускай. Или приходите, я поцелуями вобью в вас Пятую Историю, чего не увидит никто, даже вы...»@",
-            "startdescription": "Если отдамся безумию, то выучу непростой урок. [Это позволит изучить «Принятие ран», но превратит разум в дряхлость... хотя может при этом приоткрыть дверь.]"
+            "requirements": {
+                "reason": 1,
+                "spiriteatsreason": 1
+            },
+            "effects": {
+                "reason": -1,
+                "decrepitude": 1,
+                "fragmentknockc": 1,
+                "influenceknocke": 1
+            }
         },
         {
             "id": "discusssicknessprotectionspirit",
             "label": "Просить об отсрочке казни",
+            "actionid": "talk",
+            "requirements": {
+                "summoned": 1,
+                "spiritsicknessprotector": 1,
+                "health": 1
+            },
+            "startdescription": "Жители Обители не страдают от слабостей плоти. Некоторые из них порой даже распространяют свою защиту на тех из нас, кто заперт в яви.",
             "description": "@#spirit_wintera_moth|Я помещу прядь своих волос в полость чужой груди, тогда, если повезёт, болезнь будет искать меня там.#spirit_grailc_moth|Бескожий пророк обнимет меня и поцелует всеми своими ртами, вдруг это защитит меня от болезней. Вдруг мы сможем взять их числом.#spirit_heartc_edge|Перкуссигант впишет биение моего сердца в движения своего бесконечного танца, и этого хватит, хватит, хватит. #spirit_graile_edge|«Откройте рот, откиньте голову назад. Всего одна капля. Так, глотайте. Да. Теперь вы поправитесь».#spirit_lanterne_secret|«Я поговорю с вашей тенью, и, может ей удастся отогнать тень более крупную. Это всё, что я могу обещать».@",
-            "startdescription": "Жители Обители не страдают от слабостей плоти. Некоторые из них порой даже распространяют свою защиту на тех из нас, кто заперт в яви."
+            "craftable": false,
+            "effects": {
+                "sicknessprotection": 1
+            }
         },
         {
             "id": "discussfucinespirit",
             "label": "Изучение фучинского",
+            "actionid": "talk",
+            "requirements": {
+                "scholarlatin": 1,
+                "summoned": 1,
+                "spirittutorfucine": 1
+            },
+            "startdescription": "«Фучинский? Да, я его знаю. Могу научить, если у вас есть база в виде латыни. Но если услышу хоть одну шуточку про ведьмин язык, то мы расстанемся». [Используйте <b>ИЗУЧЕНИЕ</b> с Балдомерийкой, чтобы выучить фучинский язык].",
             "description": ".",
-            "startdescription": "«Фучинский? Да, я его знаю. Могу научить, если у вас есть база в виде латыни. Но если услышу хоть одну шуточку про ведьмин язык, то мы расстанемся». [Используйте <b>ИЗУЧЕНИЕ</b> с Балдомерийкой, чтобы выучить фучинский язык]."
+            "craftable": true
         },
         {
             "id": "discussphrygianspirit",
             "label": "Изучение фригийского",
+            "actionid": "talk",
+            "requirements": {
+                "scholargreek": 1,
+                "summoned": 1,
+                "spirittutorphrygian": 1
+            },
+            "startdescription": "«Фригийский! Язык Великой Матери! Да, конечно. Если вы знаете греческий, то изучение фригийского доставит вам <i>массу</i> удовольствия». [Используйте <b>ИЗУЧЕНИЕ</b> с Изиимом, чтобы выучить фригийский язык].",
             "description": ".",
-            "startdescription": "«Фригийский! Язык Великой Матери! Да, конечно. Если вы знаете греческий, то изучение фригийского доставит вам <i>массу</i> удовольствия». [Используйте <b>ИЗУЧЕНИЕ</b> с Изиимом, чтобы выучить фригийский язык]."
+            "craftable": true
         },
         {
             "id": "discussmandaicspirit",
             "label": "Изучение глубинного мандейского",
+            "actionid": "talk",
+            "requirements": {
+                "scholararamaic": 1,
+                "summoned": 1,
+                "spirittutormandaic": 1
+            },
+            "startdescription": "«ВМЕСТЕ МЫ ПОЧТИМ ЯЗЫК НЕОПАЛИМОЙ БОГИНИ». [Используйте <b>ИЗУЧЕНИЕ</b> с Королём Тигля, чтобы выучить глубинный мандейский].",
             "description": ".",
-            "startdescription": "«ВМЕСТЕ МЫ ПОЧТИМ ЯЗЫК НЕОПАЛИМОЙ БОГИНИ». [Используйте <b>ИЗУЧЕНИЕ</b> с Королём Тигля, чтобы выучить глубинный мандейский]."
+            "craftable": true
         },
         {
             "id": "teresadiscusslocksmithsdream1",
             "label": "Обсудить «Сон мастера замков», том 1",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "locksmithsdream1": 1,
+                "autographed": -1
+            },
+            "actionid": "talk",
+            "startdescription": "«Поставить автограф? Мне кажется, это будет весело».",
             "description": "«Мне пришлось жить у Камденского шлюза, работая над этой вещью. Если это не шутка Часов, то я не знаю. Пожалуй, расскажу, что там было с источниками...»",
-            "startdescription": "«Поставить автограф? Мне кажется, это будет весело»."
+            "effects": {
+                "erudition": 1
+            },
+            "mutations": [
+                {
+                    "filter": "text",
+                    "mutate": "autographed",
+                    "level": 1
+                }
+            ]
         },
         {
             "id": "teresadiscusslocksmithsdream2",
             "label": "Обсудить «Сон мастера замков», том 2",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "locksmithsdream2": 1,
+                "autographed": -1
+            },
+            "actionid": "talk",
+            "startdescription": "«Поставить автограф? Будет ведь очень мило. Только никто не поверит, что всё по-настоящему, ведь меня не ждут среди живых».",
             "description": "«Думаю, что Двери как-то связаны с ремесленной работой, с созиданием. Именно так мы начали искать путь к Дому. Но наше восхождение всегда было ограничено — до тех пор, пока мы не научились разговаривать. Я попробую объяснить...»",
-            "startdescription": "«Поставить автограф? Будет ведь очень мило. Только никто не поверит, что всё по-настоящему, ведь меня не ждут среди живых»."
+            "effects": {
+                "glimmering": 1
+            },
+            "mutations": [
+                {
+                    "filter": "text",
+                    "mutate": "autographed",
+                    "level": 1
+                }
+            ]
         },
         {
             "id": "teresadiscusslocksmithsdream3",
             "label": "Обсудить «Сон мастера замков», том 3",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "locksmithsdream3": 1,
+                "autographed": -1
+            },
+            "actionid": "talk",
+            "startdescription": "«Я напишу своё имя? Только то, которым меня называл Кристофер. Не то, которым мне приходилось пользоваться здесь».",
             "description": "«О, в каком же состоянии мне это пришлось писать... Прошу прощения. Но то, что смерть находится внизу — чистая правда. Именно потому я стараюсь держаться повыше в Обители. Я попробую объяснить, о чём тут речь...»",
-            "startdescription": "«Я напишу своё имя? Только то, которым меня называл Кристофер. Не то, которым мне приходилось пользоваться здесь»."
+            "effects": {
+                "glimmering": 1
+            },
+            "mutations": [
+                {
+                    "filter": "text",
+                    "mutate": "autographed",
+                    "level": 1
+                }
+            ]
         },
         {
             "id": "teresadiscusslocksmithsdream4",
             "label": "Обсудить «Сон мастера замков», том 4",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "locksmithsdream4": 1,
+                "autographed": -1
+            },
+            "actionid": "talk",
+            "startdescription": "«Это я обязательно подпишу. Боюсь, правда, никто не увидит автограф — только если не читает книгу во сне».",
             "description": "«Меня тогда очень интересовал Янус. Теперь я думаю, если Янус — это кто угодно, то этим кем угодно должен быть Дозорный или Мениската. Загадки постоянно ширятся, головоломки решаются сами собой».",
-            "startdescription": "«Это я обязательно подпишу. Боюсь, правда, никто не увидит автограф — только если не читает книгу во сне»."
+            "effects": {
+                "glimmering": 1
+            },
+            "mutations": [
+                {
+                    "filter": "text",
+                    "mutate": "autographed",
+                    "level": 1
+                }
+            ]
         },
         {
             "id": "teresadiscusslocksmithsdream5",
             "label": "Обсудить «Сон мастера замков», том 5",
+            "requirements": {
+                "spirit_lanterne_secret": 1,
+                "locksmithsdream5": 1,
+                "autographed": -1
+            },
+            "actionid": "talk",
+            "startdescription": "«Где же вам это попалось?»",
             "description": "«Я подпишу. Но только не своим именем. Пока что нет. И, может, никогда».",
-            "startdescription": "«Где же вам это попалось?»"
+            "effects": {
+                "glimmering": 1
+            },
+            "mutations": [
+                {
+                    "filter": "text",
+                    "mutate": "autographed",
+                    "level": 1
+                }
+            ]
         },
         {
             "id": "begincultfoundation",
             "label": "Новое начало?",
-            "startdescription": "Сегодня мы можем стать чем-то большим."
+            "actionid": "talk",
+            "requirements": {
+                "acquaintance": 1,
+                "ritual": -1,
+                "location": -1
+            },
+            "extantreqs": {
+                "society": -1
+            },
+            "craftable": true,
+            "startdescription": "Сегодня мы можем стать чем-то большим.",
+            "comments": "This is hijacked by links from the Apostle open-talk verbs, to prevent apostles founding a second cult. This is why all the content is in the followup recipe.",
+            "linked": [
+                {
+                    "id": "begincultfoundation_createcult",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "begincultfoundation_createcult",
             "label": "Создается загадочная организация",
+            "extantreqs": {
+                "society": -1
+            },
+            "alt": [
+                {
+                    "id": "cultfoundation",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "actionid": "talk",
+            "effects": {
+                "notoriety": 1
+            },
+            "startdescription": "Вот кто-то, с кем я могу сработаться. Партнёр или последователь. Но сначала мне нужно создать то, что нас сплотит. Общество, орден, культ.",
             "description": "Я берусь за основательный труд, это привлечёт внимание властей. Нужно приготовиться. [Вы начали создавать собственный культ. Пройдёт некоторое время, прежде чем вы сможете привлекать последователей.]",
-            "startdescription": "Вот кто-то, с кем я могу сработаться. Партнёр или последователь. Но сначала мне нужно создать то, что нас сплотит. Общество, орден, культ."
+            "warmup": 10
         },
         {
             "id": "inspiremystique",
+            "actionid": "talk",
             "label": "Привлечение внимания",
+            "effects": {
+                "mystique": 1
+            },
+            "startdescription": "Есть одни часы, а есть другие. Этот час мой.",
             "description": "Рот приоткрыт, глаза сверкают.",
-            "startdescription": "Есть одни часы, а есть другие. Этот час мой."
+            "warmup": 10,
+            "craftable": false
         },
         {
             "id": "findacquaintanceopentalk",
             "label": "Знакомый",
+            "actionid": "talk",
+            "startdescription": "Я жду ответа на письмо.",
             "description": "Ответ на ваше письмо очень аккуратен, даже осторожен. Как вам удалось узнать имя собеседника? Этот вопрос настолько важен, что есть желание с вами встретиться.",
-            "startdescription": "Я жду ответа на письмо."
+            "warmup": 30,
+            "craftable": false,
+            "comments": "this runs as an additional, and is how Talk is opened. I'd like to remove maxexecutions, but it's in here now for safety.",
+            "deckeffects": {
+                "acquaintances": 1
+            },
+            "maxexecutions": 1
         }
     ]
 }

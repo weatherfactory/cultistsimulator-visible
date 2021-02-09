@@ -1,140 +1,435 @@
 {
     "recipes": [
         {
-            "id": "drawseason"
+            "id": "drawseason",
+            "actionid": "time",
+            "deckeffects": {
+                "seasonevents": 1
+            },
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "needs",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "needs",
             "label": "Проходит время",
-            "description": ".",
+            "actionid": "time",
+            "requirements": {},
+            "alt": [
+                {
+                    "id": "forlornbloodsickness",
+                    "chance": 70,
+                    "additional": true
+                },
+                {
+                    "id": "sickness",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "pleasantday",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "suspicion",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "ambition",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "despairrisklink",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "visionsrisklink",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "starvation",
+                    "chance": 100,
+                    "additional": true
+                },
+                {
+                    "id": "rosenext",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
             "startdescription": "Время проходит, тень на солнечных часах движется. Чтобы жить, мне нужны средства, иначе я заболею.",
+            "description": ".",
+            "warmup": 60,
             "slots": [
                 {
                     "id": "Expenses",
-                    "label": "Расходы",
+                    "label": "Издержки",
+                    "required": {
+                        "funds": 1
+                    },
+                    "greedy": true,
+                    "noanim": true,
                     "description": "Лавочники хотят получить своё. Или я заплачу, или умру с голода."
                 }
-            ]
+            ],
+            "linked": [
+                {
+                    "id": "discardseason",
+                    "chance": 100
+                }
+            ],
+            "signalimportantloop": true
         },
         {
-            "id": "discardseason"
+            "id": "discardseason",
+            "actionid": "time",
+            "effects": {
+                "season": -1,
+                "funds": -999
+            },
+            "warmup": 0,
+            "linked": [
+                {
+                    "id": "drawseason",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "presickness",
             "label": "Цена радости",
-            "startdescription": "Мне тяжело дышать, мысли мои спутаны. Быть может, не нужно было так налегать на средство от боли."
+            "actionid": "illhealth",
+            "comments": "to lead into actual sickness from opium abuse, which requires Season Of",
+            "startdescription": "Мне тяжело дышать, мысли мои спутаны. Быть может, не нужно было так налегать на средство от боли.",
+            "effects": {
+                "seasonsickness": 1
+            },
+            "linked": [
+                {
+                    "id": "sickness"
+                }
+            ],
+            "warmup": 15
         },
         {
             "id": "sickness",
             "label": "Болезнь",
-            "description": "Болезнь навредила моему здоровью. Мне нужно отдохнуть до полного выздоровления. [Вылечить недуг при помощи средств или стойкости.]",
+            "actionid": "illhealth",
             "startdescription": "Мне плохо.",
+            "description": "Болезнь навредила моему здоровью. Мне нужно отдохнуть до полного выздоровления. [Вылечить недуг при помощи средств или стойкости.]",
+            "requirements": {
+                "seasonsickness": 1
+            },
+            "extantreqs": {
+                "apostlegrail.pillar2.dormant": -1
+            },
+            "comments": "We don't want to double up on normal and Grail-apostle sickness",
             "slots": [
                 {
                     "id": "Affliction",
-                    "label": "Здоровье"
+                    "label": "Здоровье",
+                    "required": {
+                        "health": 1,
+                        "follower_wound": 1,
+                        "fatigue": 1
+                    },
+                    "forbidden": {
+                        "summoned": 1,
+                        "corpse": 1,
+                        "notoriety": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "aspects": {
+                "fallsick": 1
+            },
+            "alt": [
+                {
+                    "id": "deathofthewoundedfollower",
+                    "chance": 100
+                },
+                {
+                    "id": "signalupcomingsicknessdeath",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "effects": {
+                "seasonsickness": -1
+            }
+        },
+        {
+            "id": "signalupcomingsicknessdeath",
+            "actionid": "sickness",
+            "label": "Болезнь",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1
+            },
+            "startdescription": "Мне плохо. [Если болезнь не может расходовать здоровье, то она вас убьёт... если только у вас нет какой-то особой защиты.]",
+            "comments": "need this here so we can have a warning if there's no health; then we link to the stay of execution attempt so we can have a new slot.",
+            "signalEndingFlavour": "Melancholy",
+            "linked": [
+                {
+                    "id": "sickness.nohealthavailable.tryforstayofexecution",
+                    "chance": 100
                 }
             ]
         },
         {
-            "id": "signalupcomingsicknessdeath",
-            "label": "Болезнь",
-            "startdescription": "Мне плохо. [Если болезнь не может расходовать здоровье, то она вас убьёт... если только у вас нет какой-то особой защиты.]"
-        },
-        {
             "id": "sickness.nohealthavailable.tryforstayofexecution",
+            "actionid": "illhealth",
             "label": "Смертельная угроза",
-            "startdescription": "Болезнь прикончит меня, если я не приму какие-то исключительные меры для защиты здоровья...",
             "slots": [
                 {
                     "id": "sicknessprotection",
-                    "label": "Защита"
+                    "label": "Защита",
+                    "required": {
+                        "sicknessprotection": 1
+                    },
+                    "greedy": true
                 }
             ],
+            "startdescription": "Болезнь прикончит меня, если я не приму какие-то исключительные меры для защиты здоровья...",
+            "requirements": {
+                "health": -1,
+                "fatigue": -1
+            },
+            "warmup": 10,
+            "signalEndingFlavour": "Melancholy",
+            "ending": "deathofthebody",
             "alt": [
                 {
                     "id": "protectedagainstsickness",
+                    "actionid": "sickness",
                     "label": "Не в этот раз",
-                    "startdescription": "У плоти есть свои пределы, моя плоть тоже откажет, но поскольку меня отметили знаком добродетели смертных, случится это нескоро. [Отсрочка казни спасла вас от тягот болезни.]"
+                    "requirements": {
+                        "sicknessprotection": 1
+                    },
+                    "startdescription": "У плоти есть свои пределы, моя плоть тоже откажет, но поскольку меня отметили знаком добродетели смертных, случится это нескоро. [Отсрочка казни спасла вас от тягот болезни.]",
+                    "effects": {
+                        "sicknessprotection": -1,
+                        "influenceheart": 1
+                    }
                 },
                 {
                     "id": "mareendingsickness",
+                    "chance": 100,
+                    "actionid": "sickness",
                     "label": "Кобылица во мне",
+                    "startdescription": "ОНА ИДЁТ",
                     "description": "--",
-                    "startdescription": "ОНА ИДЁТ"
+                    "extantreqs": {
+                        "lockscar": 3,
+                        "health": -1
+                    },
+                    "signalEndingFlavour": "Melancholy",
+                    "ending": "minormarevictory",
+                    "craftable": false
                 }
             ]
         },
         {
             "id": "forlornbloodsickness",
             "label": "Болезнь",
-            "description": "Я теряю вес и бледнею. Усталость душит меня. Нужно удостовериться, что моя смерть не будет напрасной.",
-            "startdescription": "Я чувствую болезнь. Если выживу, мне нужно будет отведать крови Отрады, и как можно скорее. [Если болезнь не может расходовать здоровье или насыщенную кровь, то она вас убьёт.]",
+            "actionid": "illhealth",
+            "extantreqs": {
+                "apostlegrail.pillar2.dormant": 1
+            },
             "slots": [
                 {
                     "id": "Affliction",
-                    "label": "Недуг"
+                    "label": "Недуг",
+                    "required": {
+                        "health": 1,
+                        "fatigue": 1,
+                        "apostlegrail.pillar2": 1
+                    },
+                    "greedy": true
                 }
-            ]
+            ],
+            "aspects": {
+                "fallsick": 1
+            },
+            "alt": [
+                {
+                    "id": "savorousbloodrespite",
+                    "chance": 100
+                },
+                {
+                    "id": "forlornblooddeathofthebody",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Я чувствую болезнь. Если выживу, мне нужно будет отведать крови Отрады, и как можно скорее. [Если болезнь не может расходовать здоровье или насыщенную кровь, то она вас убьёт.]",
+            "description": "Я теряю вес и бледнею. Усталость душит меня. Нужно удостовериться, что моя смерть не будет напрасной.",
+            "warmup": 60
         },
         {
             "id": "savorousbloodrespite",
+            "actionid": "illhealth",
             "label": "Передышка",
-            "startdescription": "Кровь Отрады согревает меня, на щеках у меня расцветают красные цветы, в сердце вливается горячее вино, мои струны трепещут так, как Чаша показывала Громовому Ритму. Я решаю жить дальше."
+            "requirements": {
+                "apostlegrail.pillar2": 1
+            },
+            "startdescription": "Кровь Отрады согревает меня, на щеках у меня расцветают красные цветы, в сердце вливается горячее вино, мои струны трепещут так, как Чаша показывала Громовому Ритму. Я решаю жить дальше.",
+            "warmup": 10
         },
         {
             "id": "deathofthewoundedfollower",
+            "actionid": "time",
             "label": "Мой последователь умирает!",
+            "requirements": {
+                "follower_wound": 1
+            },
+            "startdescription": "Раны смертельны. Ничего уже не сделать.",
             "description": "Может, дух ещё бродит по Дому. Может, он пропал в Лесу или погрузился ещё ниже. Но смертная оболочка пока здесь.",
-            "startdescription": "Раны смертельны. Ничего уже не сделать."
+            "aspects": {
+                "killmortal": 1
+            },
+            "effects": {
+                "seasonsickness": -1
+            }
         },
         {
             "id": "rosenext",
             "label": "Свидания и интерлюдии",
-            "description": ".",
-            "startdescription": "Если у меня есть друг, то сейчас самое время возобновить нашу связь.",
+            "actionid": "rose",
+            "requirements": {
+                "seasonardours": 1
+            },
             "slots": [
                 {
                     "id": "Who?",
                     "label": "Кто?",
-                    "description": "Ладонь к ладони, глаза в глаза."
+                    "description": "Ладонь к ладони, глаза в глаза.",
+                    "required": {
+                        "romanticinterest": 1
+                    },
+                    "forbidden": {
+                        "notoriety": 1
+                    },
+                    "greedy": true
                 }
-            ]
+            ],
+            "startdescription": "Если у меня есть друг, то сейчас самое время возобновить нашу связь.",
+            "description": ".",
+            "linked": [
+                {
+                    "id": "L_roseend",
+                    "chance": 100
+                },
+                {
+                    "id": "L_checkjealousy",
+                    "chance": 30
+                },
+                {
+                    "id": "L_roserouter",
+                    "chance": 100
+                }
+            ],
+            "warmup": 5
         },
         {
             "id": "pleasantday",
             "label": "Приятный день",
+            "actionid": "pleasantday",
+            "requirements": {
+                "seasonserenities": 1
+            },
+            "effects": {
+                "contentment": 1
+            },
+            "comments": "currently unused",
+            "startdescription": "Этим утром я чувствую особенную бодрость. Не знаю, почему.",
             "description": "В некоторые дни лучше, чем в другие. Иногда небо кажется грязной простынёй, иногда воды реки чисты.",
-            "startdescription": "Этим утром я чувствую особенную бодрость. Не знаю, почему."
+            "warmup": 30,
+            "craftable": false
         },
         {
             "id": "despairrisklink",
-            "label": "despairrisklink"
+            "label": "despairrisklink",
+            "actionid": "despair",
+            "requirements": {
+                "seasondespair": 1
+            },
+            "warmup": 0,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "despairrisk",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "visionsrisklink",
-            "label": "visionsrisklink"
+            "label": "visionsrisklink",
+            "actionid": "visions",
+            "requirements": {
+                "seasonvisions": 1
+            },
+            "warmup": 0,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsrisk",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "starvation",
             "label": "Голод",
-            "description": "Без денег я скоро умру от голода. [Если болезнь не может расходовать здоровье, то она вас убьёт.]",
+            "actionid": "illhealth",
+            "requirements": {
+                "funds": -1
+            },
+            "effects": {
+                "health": -1,
+                "hunger": 1
+            },
+            "alt": [
+                {
+                    "id": "mareendingstarvation",
+                    "actionid": "illhealth",
+                    "label": "Кобылица во мне",
+                    "startdescription": "ОНА ИДЁТ",
+                    "description": "--",
+                    "extantreqs": {
+                        "lockscar": 3,
+                        "health": -1
+                    },
+                    "signalEndingFlavour": "Melancholy",
+                    "ending": "minormarevictory",
+                    "craftable": false
+                },
+                {
+                    "id": "deathofthebody",
+                    "chance": 100
+                }
+            ],
             "startdescription": ".",
+            "description": "Без денег я скоро умру от голода. [Если болезнь не может расходовать здоровье, то она вас убьёт.]",
+            "warmup": 60,
             "slots": [
                 {
                     "id": "starvation",
-                    "label": "Голод"
-                }
-            ],
-            "alternativerecipes": [
-                {
-                    "id": "mareendingstarvation",
-                    "label": "Кобылица во мне",
-                    "description": "--",
-                    "startdescription": "ОНА ИДЁТ"
-                },
-                {
-                    "id": "deathofthebody"
+                    "label": "Голод",
+                    "required": {
+                        "health": 1
+                    },
+                    "greedy": true
                 }
             ]
         }

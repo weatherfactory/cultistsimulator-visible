@@ -21,7 +21,6 @@ using Steamworks;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.VR;
 using static Noon.NoonUtility;
 
 public class DebugTools : MonoBehaviour,ITokenObserver

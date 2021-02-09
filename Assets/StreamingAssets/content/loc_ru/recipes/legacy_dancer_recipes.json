@@ -3,230 +3,756 @@
         {
             "id": "legacydancer_openstudy",
             "label": "Брошенная тайна",
+            "actionid": "study",
+            "startdescription": "Сотни танцоров прошли через эту гардеробную. Теперь их следы похожи на опавшие лепестки — утраченная любовь, поблекшая фотография, записка от поклонника...",
             "description": "Дюжина мятых страниц со стихотворением засунута в брошенную туфлю. Это не любовное стихотворение. Почти наверняка не любовное. Но когда я его читаю, моё сердце бьётся сильнее, мне кажется, что я вспоминаю нечто утраченное.",
-            "startdescription": "Сотни танцоров прошли через эту гардеробную. Теперь их следы похожи на опавшие лепестки — утраченная любовь, поблекшая фотография, записка от поклонника..."
+            "effects": {
+                "dancerlegacy_plotitem_a": 1
+            },
+            "warmup": 60,
+            "comments": "Opened from initial work"
         },
         {
             "id": "legacydancer_study_plotitema_heart",
+            "actionid": "study",
             "label": "Считать смятое стихотворение физическим испытанием",
+            "requirements": {
+                "dancerlegacy_plotitem_a": 1,
+                "heart": 1
+            },
+            "startdescription": "Это какой-то шифр? Может, это указания на необычные танцевальные движения?",
+            "effects": {
+                "vitality": 2,
+                "dancerlegacy_plotitem_a": -1
+            },
             "description": "Указания вполне чёткие. Это танцевальные па, шаги. Я чувствую, что они ведут куда-то и заканчиваются за пределами яви. Там, где всё иначе. Я смотрю на свои плечи — почему мне кажется, что собственная кожа теперь мне не по размеру?",
-            "startdescription": "Это какой-то шифр? Может, это указания на необычные танцевальные движения?"
+            "alt": [
+                {
+                    "id": "legacydancer_opendream_heart",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "legacydancer_study_plotitema_moth",
+            "actionid": "study",
             "label": "Считать смятое стихотворение испытанием сна",
+            "requirements": {
+                "dancerlegacy_plotitem_a": 1,
+                "moth": 1
+            },
+            "startdescription": "Кажется, мне уже приходилось видеть подобный сон — когда на мою кровать светила луна. Тогда мне казалось, что мои руки не совсем руки, что в моих венах течёт не вполне кровь, и что кожа у меня не человеческая. Что, если я смогу вынести что-то из этого сна?",
             "description": "Я долго лежу без сна, мне кажется, что в моей комнате что-то есть. Вскоре после полуночи я понимаю, что я и есть это что-то. Понимание дарит мне долгожданный сон.",
-            "startdescription": "Кажется, мне уже приходилось видеть подобный сон — когда на мою кровать светила луна. Тогда мне казалось, что мои руки не совсем руки, что в моих венах течёт не вполне кровь, и что кожа у меня не человеческая. Что, если я смогу вынести что-то из этого сна?"
+            "effects": {
+                "glimmering": 2,
+                "dancerlegacy_plotitem_a": -1
+            },
+            "alt": [
+                {
+                    "id": "legacydancer_opendream_moth",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "legacydancer_opendream_heart",
+            "actionid": "dream",
             "label": "Сны о другом обличье",
+            "startdescription": "Во сне всё становится понятно. Этот танец нельзя танцевать ни в одиночку, ни с партнёром. Этот танец нужно танцевать с куклой.",
             "description": "Я выполняю все нужные па с тряпичной куклой, но где-то допускаю ошибку. Срывая ткань куклы как кожу, я сначала чувствую облегчение... но потом кукла разваливается. Что-то не так. Или с куклой, или с миром, или со мной.",
-            "startdescription": "Во сне всё становится понятно. Этот танец нельзя танцевать ни в одиночку, ни с партнёром. Этот танец нужно танцевать с куклой."
+            "effects": {
+                "ascensionchangea": 1,
+                "dancerlegacy_plotitem_a": -1
+            },
+            "comments": "opened from studying about first plot object with health",
+            "alt": [
+                {
+                    "id": "legacydancer_openexplore_heart",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "L_desire_addhearttrack",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
         },
         {
             "id": "L_desire_addhearttrack",
-            "label": "Сны о другом обличье"
+            "actionid": "dream",
+            "label": "Сны о другом обличье",
+            "mutations": [
+                {
+                    "filter": "desire",
+                    "mutate": "desireheart_track",
+                    "level": 1,
+                    "additive": true
+                }
+            ]
         },
         {
             "id": "legacydancer_opendream_moth",
             "label": "Сны о прежнем обличье",
+            "actionid": "dream",
+            "startdescription": "Сегодня перед сном я отрежу прядь своих волос. Об этом написано в стихотворении. Где же ножницы?",
+            "effects": {
+                "ascensionchangea": 1,
+                "dancerlegacy_plotitem_a": -1
+            },
             "description": "Я вижу во сне глухой лес в сердце континента, где мы шли среди деревьев — тьма, свет и снова тьма, вверх и вниз, потом в огонь. Я вижу, что когда-то мы были другими — или это другие были нами. Может, раньше у нас были крылья. Теперь у меня чешется спина.",
-            "startdescription": "Сегодня перед сном я отрежу прядь своих волос. Об этом написано в стихотворении. Где же ножницы?"
+            "comments": "opened from studying about first plot object with passion",
+            "alt": [
+                {
+                    "id": "legacydancer_openexplore_moth",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "L_desire_addmothtrack",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
         },
         {
             "id": "L_desire_addmothtrack",
-            "label": "Сны о прежнем обличье"
+            "actionid": "dream",
+            "label": "Сны о прежнем обличье",
+            "mutations": [
+                {
+                    "filter": "desire",
+                    "mutate": "desiremoth_track",
+                    "level": 1,
+                    "additive": true
+                }
+            ]
         },
         {
             "id": "legacydancer_openexplore_heart",
+            "actionid": "explore",
             "label": "Новый партнёр",
+            "startdescription": "Иногда по вечерам я брожу по рынкам. Исполненный по стихотворению танец погубил мою куклу. Нужно найти новую, чтобы ещё раз повторить танцевальные па.",
             "description": "Ура, есть! Продавалась за полшиллинга как хлам. Не совсем то... но почти. Поверхность, шрамы, форма конечностей.",
-            "startdescription": "Иногда по вечерам я брожу по рынкам. Исполненный по стихотворению танец погубил мою куклу. Нужно найти новую, чтобы ещё раз повторить танцевальные па."
+            "effects": {
+                "reason": 1,
+                "toolheartb": 1
+            },
+            "warmup": 60,
+            "comments": "opened from dreaming"
         },
         {
             "id": "legacydancer_openexplore_moth",
+            "actionid": "explore",
             "label": "Старый партнёр",
+            "startdescription": "При свете луны я перелезаю через изгородь в парк, ищу укромное место под ветвями. Пока не знаю, зачем.",
             "description": "По пути мне попался свёрток, лежащий в грязи. С первого взгляда стало ясно, что это мне нужно. Может, его приготовили для меня, или он мной украден, как крадут брошенного ребенка. В крылатом сне о Лесе были танцы с подобным предметом.",
-            "startdescription": "При свете луны я перелезаю через изгородь в парк, ищу укромное место под ветвями. Пока не знаю, зачем."
+            "effects": {
+                "reason": 1,
+                "toolmothb": 1
+            },
+            "warmup": 60,
+            "comments": "opened from dreaming"
         },
         {
             "id": "legacydancer_opentalk",
+            "actionid": "talk",
             "label": "Что мы говорим и когда",
-            "startdescription": "Есть ли что-то общее между мной и теми, что наблюдают за мной?"
+            "comments": "opened from first audience interaction",
+            "startdescription": "Есть ли что-то общее между мной и теми, что наблюдают за мной?",
+            "effects": {
+                "fleeting": 1
+            },
+            "warmup": 60
         },
         {
             "id": "worklegacydancerjob_pleadforreinstatement",
             "label": "Просить о восстановлении в театре Веселья",
+            "actionid": "work",
+            "requirements": {
+                "legacydancerjob_suspended": 1,
+                "passion": 1
+            },
+            "aspects": {
+                "plead": 1
+            },
+            "startdescription": "Мне нужна работа. Скажу, что в этот раз всё будет иначе. Может, они войдут в положение.",
             "description": "Нет, никакой мольбы. Почти.",
-            "startdescription": "Мне нужна работа. Скажу, что в этот раз всё будет иначе. Может, они войдут в положение."
+            "warmup": 30,
+            "craftable": true
         },
         {
             "id": "worklegacydancerjob",
             "label": "Выступить в театре Веселья",
+            "actionid": "work",
+            "requirements": {
+                "legacydancerjob": 1,
+                "health": 1
+            },
+            "alt": [
+                {
+                    "id": "legacydancer_openstudy",
+                    "chance": 100,
+                    "additional": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "worklegacydancerjob_more",
+                    "chance": 70
+                }
+            ],
+            "startdescription": "Сцена ждёт, горячая, чистая, освещённая, пустая. Если я выполню нужные па, пройду необходимые шаги, сделаю всё необходимое, то меня отблагодарят.",
             "description": ".",
-            "startdescription": "Сцена ждёт, горячая, чистая, освещённая, пустая. Если я выполню нужные па, пройду необходимые шаги, сделаю всё необходимое, то меня отблагодарят."
+            "effects": {
+                "funds": 1
+            },
+            "warmup": 45,
+            "craftable": true
         },
         {
             "id": "worklegacydancerjob_more",
+            "actionid": "work",
             "label": "Шанс в театре Веселья",
-            "description": "Я действую холодно, без энтузиазма, выполняю па и двигаюсь, как нужно. Теперь они меня отблагодарят.",
             "startdescription": "Сегодня я чувствую возможность. Сегодня я могу привлечь внимание, если перестану сдерживаться, если полностью отдамся делу.",
+            "description": "Я действую холодно, без энтузиазма, выполняю па и двигаюсь, как нужно. Теперь они меня отблагодарят.",
+            "comments": "the better outcomes require heart or moth 2: enough for abilities or for restlessness, too much for fatigue",
             "slots": [
                 {
                     "id": "more",
-                    "label": "Больше усилий"
+                    "label": "Больше усилий",
+                    "required": {
+                        "ability": 1,
+                        "restlessness": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "A_worklegacydancerjob_more_benefactorm",
+                    "chance": 50
+                },
+                {
+                    "id": "A_worklegacydancerjob_more_benefactorf",
+                    "chance": 70
+                },
+                {
+                    "id": "A_worklegacydancerjob_more_ecdysiast",
+                    "chance": 70
+                },
+                {
+                    "id": "A_worklegacydancerjob_more_heart",
+                    "chance": 100
+                },
+                {
+                    "id": "A_worklegacydancerjob_more_moth",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
+        },
+        {
+            "id": "A_worklegacydancerjob_more_benefactorm",
+            "actionid": "work",
+            "requirements": {
+                "potentialbenefactorm": 1,
+                "heart": 2
+            },
+            "label": "Потенциальный благодетель",
+            "startdescription": ".",
+            "description": "Управляющий сценой был так добр, что разрешил мне взглянуть на закулисье. Он весьма обходителен, прекрасно разбирается в моей работе и ценит её, принёс мне подарок. Он надеется, что мы подружимся.",
+            "effects": {
+                "benefactorm": 1,
+                "funds": 2,
+                "influence": -1
+            },
+            "mutations": [
+                {
+                    "filter": "job",
+                    "mutate": "potentialbenefactorm",
+                    "level": -1
+                }
+            ],
+            "alt": [
+                {
+                    "id": "legacydancer_opentalk",
+                    "chance": 100,
+                    "additional": true
                 }
             ]
         },
         {
-            "id": "A_worklegacydancerjob_more_benefactorm",
-            "label": "Потенциальный благодетель",
-            "description": "Управляющий сценой был так добр, что разрешил мне взглянуть на закулисье. Он весьма обходителен, прекрасно разбирается в моей работе и ценит её, принёс мне подарок. Он надеется, что мы подружимся.",
-            "startdescription": "."
-        },
-        {
             "id": "A_worklegacydancerjob_more_benefactorf",
+            "actionid": "work",
+            "requirements": {
+                "potentialbenefactorf": 1,
+                "heart": 2
+            },
             "label": "Потенциальный благодетель",
+            "startdescription": "",
             "description": "Дама устроила нам встречу в сверкающем кафе на той стороне улицы. Она весьма обходительна, внимательно слушает все мои слова, принесла мне подарок. Она надеется, что мы подружимся.",
-            "startdescription": ""
+            "effects": {
+                "benefactorf": 1,
+                "funds": 2,
+                "influence": -1
+            },
+            "mutations": [
+                {
+                    "filter": "job",
+                    "mutate": "potentialbenefactorf",
+                    "level": -1
+                }
+            ],
+            "alt": [
+                {
+                    "id": "legacydancer_opentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
         },
         {
             "id": "A_worklegacydancerjob_more_ecdysiast",
+            "actionid": "work",
+            "requirements": {
+                "potentialecdysiast": 1,
+                "moth": 2
+            },
             "label": "Послание от поклонника?",
+            "startdescription": ".",
             "description": "Рукописное письмо, адресованное мне. От него пахнет сигаретным дымом и гвоздикой. Там написано: «Если вам хочется поговорить с кем-то о ваших снах, давайте встретимся. Позвоните, когда будете готовы». Далее идёт номер телефона и имя: Сулочана.",
-            "startdescription": "."
+            "effects": {
+                "sulochana": 1,
+                "funds": 1,
+                "influence": -1
+            },
+            "mutations": [
+                {
+                    "filter": "job",
+                    "mutate": "potentialecdysiast",
+                    "level": -1
+                }
+            ],
+            "alt": [
+                {
+                    "id": "legacydancer_opentalk",
+                    "chance": 100,
+                    "additional": true
+                }
+            ]
         },
         {
             "id": "A_worklegacydancerjob_more_heart",
+            "actionid": "work",
+            "requirements": {
+                "heart": 2
+            },
             "label": "Я лишь хрупкая оболочка из плоти и крови.",
+            "startdescription": "Сегодня они это увидят.",
             "description": "Все взгляды были обращены на меня. Потом мне передали подарок от поклонника — вещь несколько безвкусную, но я ведь могу и продать её.",
-            "startdescription": "Сегодня они это увидят."
+            "effects": {
+                "funds": 1,
+                "influence": -1
+            }
         },
         {
             "id": "A_worklegacydancerjob_more_moth",
+            "actionid": "work",
+            "requirements": {
+                "moth": 2
+            },
             "label": "Я не просто хрупкая оболочка из плоти и крови.",
+            "startdescription": "Сегодня они это увидят.",
             "description": "Все взгляды были обращены на меня Потом мне передали подарок от поклонника — вещь несколько интимную, чтобы её можно было принять, но я ведь могу и продать её.",
-            "startdescription": "Сегодня они это увидят."
+            "effects": {
+                "funds": 1,
+                "influence": -1
+            }
         },
         {
             "id": "workdancerjobbenefactor",
             "label": "Выступить для благодетеля",
+            "actionid": "work",
+            "requirements": {
+                "benefactor": 1,
+                "health": 1,
+                "funds": 1
+            },
+            "effects": {
+                "funds": -1
+            },
+            "aspects": {
+                "employment": 1
+            },
+            "linked": [
+                {
+                    "id": "L_workdancerjobbenefactor_discardsme",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_proposes_always",
+                    "chance": 100
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_proposes_sometimes",
+                    "chance": 30
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_more_health",
+                    "chance": 30
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_more_passion",
+                    "chance": 30
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_more_funds",
+                    "chance": 30
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_more_reason",
+                    "chance": 30
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_satisfactory_norequirement",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_bored",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Мой благодетель будет рад узнать, что я устрою закрытое представление для небольшой аудитории. Потом меня пригласят на обед, будут предлагать мне подарки в награду за старания и потраченное время.",
             "description": ".",
-            "startdescription": "Мой благодетель будет рад узнать, что я устрою закрытое представление для небольшой аудитории. Потом меня пригласят на обед, будут предлагать мне подарки в награду за старания и потраченное время."
+            "warmup": 45,
+            "craftable": true
         },
         {
             "id": "L_workdancerjobbenefactor_more_health",
+            "actionid": "work",
             "label": "Мой благодетель: энергия",
-            "description": ".",
             "startdescription": "Сегодня мой благодетель полон энергии. То же самое должно быть и со мной!",
+            "description": ".",
             "slots": [
                 {
                     "id": "energy",
-                    "label": "Энергия"
+                    "label": "Энергия",
+                    "required": {
+                        "health": 1
+                    }
                 }
-            ]
+            ],
+            "linked": [
+                {
+                    "id": "L_workdancerjobbenefactor_satisfactory_health",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_bored",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
         },
         {
             "id": "L_workdancerjobbenefactor_more_passion",
+            "actionid": "work",
             "label": "Мой благодетель: изобретательность",
-            "description": ".",
             "startdescription": "Сегодня мой благодетель будет приятно удивлён изобретательностью, энтузиазмом, живостью, эмоциями.",
+            "description": ".",
             "slots": [
                 {
                     "id": "vivacity",
-                    "label": "Живость"
+                    "label": "Живость",
+                    "required": {
+                        "passion": 1
+                    }
                 }
-            ]
+            ],
+            "linked": [
+                {
+                    "id": "L_workdancerjobbenefactor_satisfactory_passion",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_bored",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
         },
         {
             "id": "L_workdancerjobbenefactor_more_funds",
+            "actionid": "work",
             "label": "Мой благодетель: яркие цвета",
-            "description": ".",
             "startdescription": "Сегодня мой благодетель будет рад увидеть меня в чём-то новом. Надо что-то срочно купить...",
+            "description": ".",
             "slots": [
                 {
                     "id": "funds",
-                    "label": "Средства"
+                    "label": "Средства",
+                    "required": {
+                        "funds": 1
+                    }
                 }
-            ]
+            ],
+            "linked": [
+                {
+                    "id": "L_workdancerjobbenefactor_satisfactory_funds",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_bored",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
         },
         {
             "id": "L_workdancerjobbenefactor_more_reason",
+            "actionid": "work",
             "label": "Мой благодетель: жизнь разума",
             "startdescription": "Сегодня мой благодетель в настроении поговорить.",
             "slots": [
                 {
                     "id": "L_conversation",
-                    "label": "Общение"
+                    "label": "Общение",
+                    "required": {
+                        "reason": 1
+                    }
                 }
-            ]
+            ],
+            "linked": [
+                {
+                    "id": "L_workdancerjobbenefactor_satisfactory_reason",
+                    "chance": 70
+                },
+                {
+                    "id": "L_workdancerjobbenefactor_bored",
+                    "chance": 100
+                }
+            ],
+            "warmup": 10
         },
         {
             "id": "L_workdancerjobbenefactor_satisfactory_health",
+            "actionid": "work",
+            "requirements": {
+                "health": 1
+            },
             "label": "Благодетель мне симпатизирует",
-            "description": "После выступления я тяжело дышу, мне хочется смыть с себя пот, но благодетеля это не смущает. Я получаю в подарок нечто маленькое и блестящее."
+            "description": "После выступления я тяжело дышу, мне хочется смыть с себя пот, но благодетеля это не смущает. Я получаю в подарок нечто маленькое и блестящее.",
+            "mutations": [
+                {
+                    "filter": "benefactor",
+                    "mutate": "besotment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 5
+            }
         },
         {
             "id": "L_workdancerjobbenefactor_satisfactory_passion",
+            "actionid": "work",
+            "requirements": {
+                "passion": 1
+            },
             "label": "Мой благодетель крайне доволен",
-            "startdescription": "Гости с восторгом аплодируют! Моё выступление прошло успешно. Благодетель радуется и выказывает знаки внимания. Этим вечером мне достаётся подарок — весьма дорогой, кстати."
+            "startdescription": "Гости с восторгом аплодируют! Моё выступление прошло успешно. Благодетель радуется и выказывает знаки внимания. Этим вечером мне достаётся подарок — весьма дорогой, кстати.",
+            "mutations": [
+                {
+                    "filter": "benefactor",
+                    "mutate": "besotment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 5
+            }
         },
         {
             "id": "L_workdancerjobbenefactor_satisfactory_funds",
+            "actionid": "work",
+            "requirements": {
+                "funds": 1
+            },
             "label": "Благодетель смотрит на меня с гордостью",
-            "description": "Костюм для выступления подобран лучшим образом. Благодетель осыпает меня комплиментами и подарками."
+            "description": "Костюм для выступления подобран лучшим образом. Благодетель осыпает меня комплиментами и подарками.",
+            "mutations": [
+                {
+                    "filter": "benefactor",
+                    "mutate": "besotment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 4
+            },
+            "comments": "only 4 funds; 1 used up"
         },
         {
             "id": "L_workdancerjobbenefactor_satisfactory_reason",
+            "actionid": "work",
+            "requirements": {
+                "reason": 1
+            },
             "label": "Благодетель мне симпатизирует",
-            "description": "Представление короче, чем обычно, но общение с гостями и моим благодетелем затягивается до глубокой ночи. Домой я возвращаюсь с роскошным подарком."
+            "description": "Представление короче, чем обычно, но общение с гостями и моим благодетелем затягивается до глубокой ночи. Домой я возвращаюсь с роскошным подарком.",
+            "mutations": [
+                {
+                    "filter": "benefactor",
+                    "mutate": "besotment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 5
+            }
         },
         {
             "id": "L_workdancerjobbenefactor_satisfactory_norequirement",
+            "actionid": "work",
             "label": "Благодетель мне симпатизирует",
+            "startdescription": ".",
             "description": "Сегодня мне хотелось улыбаться, танцуя. Мы отлично провели время с гостями и моим благодетелем, все были веселы. Мне достался щедрый подарок, который позволит долгое время жить без забот.",
-            "startdescription": "."
+            "mutations": [
+                {
+                    "filter": "benefactor",
+                    "mutate": "besotment",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 5
+            }
         },
         {
             "id": "L_workdancerjobbenefactor_bored",
+            "actionid": "work",
             "label": "Мой благодетель тревожится",
-            "description": "По какой-то причине мой благодетель не обращает на меня внимания, несмотря на все мои старания. Мы расстаемся очень галантно, но прощальный подарок кажется мне чем-то запоздалым и вымученным."
+            "description": "По какой-то причине мой благодетель не обращает на меня внимания, несмотря на все мои старания. Мы расстаемся очень галантно, но прощальный подарок кажется мне чем-то запоздалым и вымученным.",
+            "mutations": [
+                {
+                    "filter": "benefactor",
+                    "mutate": "boredom",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "effects": {
+                "funds": 2
+            },
+            "aspects": {
+                "employment": 1
+            }
         },
         {
             "id": "L_workdancerjobbenefactor_discardsme",
+            "actionid": "work",
+            "requirements": {
+                "boredom": 7
+            },
             "label": "Неужели мой благодетель устал от меня?",
+            "startdescription": "Уже несколько дней от моего благодетеля нет новостей...",
             "description": "На звонки мне отвечают, что никто не принимает посетителей. Трижды я слышу эти слова. Наконец, мне передают скромный подарок с вежливым пожеланием успехов. Подписи нет. Вероятно, никто послал это мне.",
-            "startdescription": "Уже несколько дней от моего благодетеля нет новостей..."
+            "aspects": {
+                "rejection": 1
+            },
+            "effects": {
+                "funds": 2
+            }
         },
         {
             "id": "L_workdancerjobbenefactor_proposes_always",
+            "actionid": "work",
+            "requirements": {
+                "besotment": 10,
+                "benefactor_proposal": -1
+            },
             "label": "Благодетель собирается сделать мне предложение?",
+            "startdescription": "Сегодня в воздухе чувствуется скрываемое возбуждение.",
             "description": ".",
-            "startdescription": "Сегодня в воздухе чувствуется скрываемое возбуждение."
+            "effects": {
+                "funds": 5,
+                "contentment": 1
+            },
+            "aspects": {
+                "avowal": 1
+            }
         },
         {
             "id": "L_workdancerjobbenefactor_proposes_sometimes",
+            "actionid": "work",
+            "requirements": {
+                "besotment": 7,
+                "benefactor_proposal": -1
+            },
             "label": "Благодетель собирается сделать мне предложение?",
+            "startdescription": "Сегодня в воздухе чувствуется скрываемое возбуждение.",
             "description": ".",
-            "startdescription": "Сегодня в воздухе чувствуется скрываемое возбуждение."
+            "effects": {
+                "funds": 5,
+                "contentment": 1
+            },
+            "aspects": {
+                "avowal": 1
+            },
+            "comments": "Identical to proposes_always, but with a lower threshold"
         },
         {
             "id": "talk_benefactormarry",
-            "label": "Принять предложение о женитьбе",
-            "description": "Благодетель ожидает меня с несколько хмурым выражением лица.",
-            "startdescription": "Мне предлагают оформить отношения, заключить брак и войти в ряды аристократии. Это означает мир, процветание, комфорт и близость с благодетелем до конца моей жизни. Мне нужно проявить искренность. Или изобразить, что я отвечаю искренне.",
+            "actionid": "talk",
+            "requirements": {
+                "benefactor_proposal": 1
+            },
             "slots": [
                 {
                     "id": "Yes",
-                    "label": "Да"
+                    "label": "Да",
+                    "required": {
+                        "passion": 1
+                    }
                 }
-            ]
+            ],
+            "label": "Принять предложение о женитьбе",
+            "startdescription": "Мне предлагают оформить отношения, заключить брак и войти в ряды аристократии. Это означает мир, процветание, комфорт и близость с благодетелем до конца моей жизни. Мне нужно проявить искренность. Или изобразить, что я отвечаю искренне.",
+            "description": "Благодетель ожидает меня с несколько хмурым выражением лица.",
+            "alt": [
+                {
+                    "id": "talk_benefactormarrycomplete",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "talk_benefactormarrycomplete",
+            "actionid": "talk",
             "label": "«Да!»",
-            "startdescription": "Мне пора покинуть это место и начать другую жизнь. Счастливую, хочется надеяться... "
+            "requirements": {
+                "benefactor_proposal": 1,
+                "passion": 1
+            },
+            "startdescription": "Мне пора покинуть это место и начать другую жизнь. Счастливую, хочется надеяться... ",
+            "ending": "workvictorymarriage"
         }
     ]
 }

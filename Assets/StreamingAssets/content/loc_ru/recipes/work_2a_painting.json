@@ -3,386 +3,1785 @@
         {
             "id": "paintbasic",
             "label": "Рисование",
-            "description": "Картина закончена, но никто этому не радуется. Никто, кроме меня. [Рисование порой будет приносить вам проблески. <b>Изучайте</b> их, чтобы открывать новые возможности для рисования.]",
+            "actionid": "work",
+            "requirements": {
+                "ritual": -1,
+                "job": -1,
+                "passion": 1,
+                "passionskill": -1
+            },
             "startdescription": "Раньше мне приходилось рисовать. Я могу нарисовать те пейзажи, что помню из снов. Я могу даже что-то продать. Но не буду.",
+            "description": "Картина закончена, но никто этому не радуется. Никто, кроме меня. [Рисование порой будет приносить вам проблески. <b>Изучайте</b> их, чтобы открывать новые возможности для рисования.]",
             "slots": [
                 {
                     "id": "Yearning",
                     "label": "Томление",
+                    "required": {
+                        "restlessness": 1
+                    },
+                    "consumes": true,
                     "description": "Если я не знаю покоя, то вдруг это мне и нужно?"
                 }
-            ]
+            ],
+            "alt": [
+                {
+                    "id": "paintbasicsuccess",
+                    "chance": 30
+                }
+            ],
+            "deckeffects": {
+                "paintingresultsbasic": 1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "craftable": true,
+            "warmup": 60
         },
         {
             "id": "paintbasicsuccess",
             "label": "Мне удалось продать картину!",
-            "description": "Мне удалось найти заказчика! Она наверняка повесит картину в свободной спальне и никогда больше на неё не посмотрит. Но деньги предлагают хорошие. [Рисование порой будет приносить вам проблески. <b>Изучайте</b> их, чтобы открывать новые возможности для рисования.]"
+            "actionid": "work",
+            "description": "Мне удалось найти заказчика! Она наверняка повесит картину в свободной спальне и никогда больше на неё не посмотрит. Но деньги предлагают хорошие. [Рисование порой будет приносить вам проблески. <b>Изучайте</b> их, чтобы открывать новые возможности для рисования.]",
+            "deckeffects": {
+                "paintingresultsbasic": 2
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "funds": 2
+            }
         },
         {
             "id": "paintwithskill",
             "label": "Рисование",
-            "startdescription": "Вдруг это позволит мне выжить? Кто знает. [Добавьте эмоций, чтобы картина получилась запоминающейся. Добавьте мистики или дурной славы, чтобы привлечь внимание и заработать больше денег. Будьте осторожны — после добавления дурной славы выставленные картины будут привлекать к вам внимание.]",
+            "actionid": "work",
+            "requirements": {
+                "passionskill": 1,
+                "ritual": -1,
+                "job": -1
+            },
             "slots": [
                 {
                     "id": "Inspiration",
                     "label": "Вдохновение",
+                    "required": {
+                        "lore": 1,
+                        "influence": 1,
+                        "follower": 1,
+                        "acquaintance": 1,
+                        "memory": 1
+                    },
                     "description": "Достойная тема — не самый главный, но важный элемент. Некоторые темы привлекают внимание властей, но они-то как раз и интересны."
+                }
+            ],
+            "startdescription": "Вдруг это позволит мне выжить? Кто знает. [Добавьте эмоций, чтобы картина получилась запоминающейся. Добавьте мистики или дурной славы, чтобы привлечь внимание и заработать больше денег. Будьте осторожны — после добавления дурной славы выставленные картины будут привлекать к вам внимание.]",
+            "warmup": 20,
+            "craftable": true,
+            "alt": [
+                {
+                    "id": "painthasgrandmemory.nocanvas",
+                    "chance": 100
+                },
+                {
+                    "id": "painthasgrandmemory",
+                    "chance": 100
+                },
+                {
+                    "id": "painthaslore",
+                    "chance": 100
+                },
+                {
+                    "id": "painthasinfluence",
+                    "chance": 100
+                },
+                {
+                    "id": "painthasmemory",
+                    "chance": 100
+                },
+                {
+                    "id": "painthassummoned",
+                    "chance": 100
+                },
+                {
+                    "id": "painthasfollower",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paintaddpigment",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "painthasgrandmemory.nocanvas",
+            "actionid": "work",
             "label": "Забытые цвета",
-            "startdescription": "Я помню цвета, которых больше нет в мире. Я не рискую достоверно воспроизводить их, даже если бы это было возможно. Но можно было бы намекнуть... если бы у меня был холст, достойный такого дела."
+            "startdescription": "Я помню цвета, которых больше нет в мире. Я не рискую достоверно воспроизводить их, даже если бы это было возможно. Но можно было бы намекнуть... если бы у меня был холст, достойный такого дела.",
+            "requirements": {
+                "memory": 5,
+                "passion": 1
+            },
+            "extantreqs": {
+                "canvas.pale": -1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "paint.prepareforcanvas.pale"
+                }
+            ]
         },
         {
             "id": "paint.prepareforcanvas.pale",
+            "actionid": "work",
             "label": "Подготовить холст для Бледнейшей Картины",
-            "description": "Мир долго ждал Бледнейшую Картину, может подождать ещё немного.",
             "startdescription": "Можно быть или художником, или холстом. Сегодня я буду художником. [Подготовка холста на какое-то время займёт действие «Труд».]",
+            "description": "Мир долго ждал Бледнейшую Картину, может подождать ещё немного.",
             "slots": [
                 {
                     "id": "corpse",
                     "label": "Материалы",
-                    "description": "Дело будет долгим и сложным, но когда я закончу, запахи окажутся почти неразличимыми."
+                    "description": "Дело будет долгим и сложным, но когда я закончу, запахи окажутся почти неразличимыми.",
+                    "required": {
+                        "corpse": 1
+                    }
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.createcanvas.pale"
+                }
+            ],
+            "warmup": 30
+        },
+        {
+            "id": "paint.createcanvas.pale",
+            "actionid": "work",
+            "label": "Бледный холст",
+            "requirements": {
+                "corpse": 1
+            },
+            "startdescription": "Приготовления нужно вести тайно, в комнате без окон... но при этом обеспечить крайне хорошую вентиляцию.",
+            "description": "Всё готово. Так даже и не понять, если не приглядываться внимательно. Лучше, если власти этот холст никогда не увидят. [Используйте память, когда будете в следующий раз рисовать, чтобы начать работу над холстом.]",
+            "effects": {
+                "canvas.pale": 1,
+                "corpse": -1,
+                "notoriety": 1
+            },
+            "warmup": 120
+        },
+        {
+            "id": "painthasgrandmemory",
+            "actionid": "work",
+            "label": "Забытый цвет",
+            "startdescription": "@#memory.furious|На постели из дюн, под красным закатным солнцем бьётся само с собой чудовище, а помощники толпятся вокруг. Его клёклое тело цвета грязной серы, огромно...\n#memory.luxurious|В ночной синеве Обители плавает коралловая корона, склоняясь перед луной...\n#memory.liminal|Багровое вечернее небо с золотыми пятнами...\n#memory.horizon|Тусклые бело-золотые заплаты раскрашивают небо, когда туман расступается, но солнце можно принять за луну... \n#memory.splendid|Рассветный румянец переливается пронзительным голубым светом. Это не ночь и не утро, а всего лишь часы полудня предсказанного и полудня длящегося...\n#memory.endless|Это могло бы быть уродливо, но на деле красиво, как кровь, отступающая из стеклянных лабиринтов... \n#memory.wildering|Лес в сумерках, его ядовито-зелёные плоды, его сердоликовые корни...\n#memory.golden|На каждой из граней — одна точка света. Возможно, это отблеск камина...\n#memory.honeyed|Наши сияющие крылья раскрыты, чешуя сверкает, как обсидиан...\n@",
+            "requirements": {
+                "memory": 5,
+                "passion": 1
+            },
+            "warmup": 30,
+            "linked": [
+                {
+                    "id": "paint.palestpainting.continue"
                 }
             ]
         },
         {
-            "id": "paint.createcanvas.pale",
-            "label": "Бледный холст",
-            "description": "Всё готово. Так даже и не понять, если не приглядываться внимательно. Лучше, если власти этот холст никогда не увидят. [Используйте память, когда будете в следующий раз рисовать, чтобы начать работу над холстом.]",
-            "startdescription": "Приготовления нужно вести тайно, в комнате без окон... но при этом обеспечить крайне хорошую вентиляцию."
-        },
-        {
-            "id": "painthasgrandmemory",
-            "label": "Забытый цвет",
-            "startdescription": "@#memory.furious|На постели из дюн, под красным закатным солнцем бьётся само с собой чудовище, а помощники толпятся вокруг. Его клёклое тело цвета грязной серы, огромно...\n   #memory.luxurious|В ночной синеве Обители плавает коралловая корона, склоняясь перед луной...\n   #memory.liminal|Багровое вечернее небо с золотыми пятнами...\n   #memory.horizon|Тусклые бело-золотые заплаты раскрашивают небо, когда туман расступается, но солнце можно принять за луну... \n   #memory.splendid|Рассветный румянец переливается пронзительным голубым светом. Это не ночь и не утро, а всего лишь часы полудня предсказанного и полудня длящегося...\n   #memory.endless|Это могло бы быть уродливо, но на деле красиво, как кровь, отступающая из стеклянных лабиринтов... \n   #memory.wildering|Лес в сумерках, его ядовито-зелёные плоды, его сердоликовые корни...\n   #memory.golden|На каждой из граней — одна точка света. Возможно, это отблеск камина...\n   #memory.honeyed|Наши сияющие крылья раскрыты, чешуя сверкает, как обсидиан...\n@"
-        },
-        {
             "id": "paint.palestpainting.continue",
+            "actionid": "work",
             "label": "Продолжить работу над Бледнейшей Картиной",
-            "description": "Мир долго ждал Бледнейшую Картину, может подождать ещё немного.",
             "startdescription": "Я иду за образом, как охотник за зверем, стараясь не глядеть ему в глаза. Ни одни краситель не может передать утраченные краски, так что мне нужно понять их изнутри.",
+            "description": "Мир долго ждал Бледнейшую Картину, может подождать ещё немного.",
             "slots": [
                 {
                     "id": "canvas.pale",
                     "label": "Холст",
-                    "description": "Медленнее, мягче."
+                    "greedy": true,
+                    "description": "Медленнее, мягче.",
+                    "required": {
+                        "canvas.pale": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "paint.palestpainting.furious"
+                },
+                {
+                    "id": "paint.palestpainting.luxurious"
+                },
+                {
+                    "id": "paint.palestpainting.liminal"
+                },
+                {
+                    "id": "paint.palestpainting.horizon"
+                },
+                {
+                    "id": "paint.palestpainting.splendid"
+                },
+                {
+                    "id": "paint.palestpainting.endless"
+                },
+                {
+                    "id": "paint.palestpainting.wildering"
+                },
+                {
+                    "id": "paint.palestpainting.golden"
+                },
+                {
+                    "id": "paint.palestpainting.honeyed"
+                }
+            ],
+            "warmup": 60
+        },
+        {
+            "id": "paint.palestpainting.furious",
+            "actionid": "work",
+            "label": "Цвета Семи-Витков",
+            "startdescription": "На постели из дюн, под красным закатным солнцем бьётся само с собой чудовище, а помощники толпятся вокруг. Его клёклое тело цвета грязной серы, огромно. Щупальцевидные шеи с клыками дерутся друг с другом, подобно котятам. Оно радостно рвёт собственную плоть, из которой хлещет золотая кровь. Оно переворачивается, сбивая с ног группу помощников, и остальные восторженно вопят.",
+            "requirements": {
+                "memory.furious": 1
+            },
+            "effects": {
+                "memory.furious": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.furious",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
                 }
             ]
         },
         {
-            "id": "paint.palestpainting.furious",
-            "label": "Цвета Семи-Витков",
-            "startdescription": "На постели из дюн, под красным закатным солнцем бьётся само с собой чудовище, а помощники толпятся вокруг. Его клёклое тело цвета грязной серы, огромно. Щупальцевидные шеи с клыками дерутся друг с другом, подобно котятам. Оно радостно рвёт собственную плоть, из которой хлещет золотая кровь. Оно переворачивается, сбивая с ног группу помощников, и остальные восторженно вопят."
-        },
-        {
             "id": "paint.palestpainting.luxurious",
+            "actionid": "work",
             "label": "Цвета приливные",
-            "startdescription": "В ночной синеве Обители плавает коралловая корона, склоняясь перед луной. Спереди она поглощает младшие Имена, покрывая их минералами и соками, а сзади изгоняет их, отполированных, как жемчужины, — но не всех. Остальные же кормят её покрытое шипами приливное сердце."
+            "startdescription": "В ночной синеве Обители плавает коралловая корона, склоняясь перед луной. Спереди она поглощает младшие Имена, покрывая их минералами и соками, а сзади изгоняет их, отполированных, как жемчужины, — но не всех. Остальные же кормят её покрытое шипами приливное сердце.",
+            "requirements": {
+                "memory.luxurious": 1
+            },
+            "effects": {
+                "memory.luxurious": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.luxurious",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
         },
         {
             "id": "paint.palestpainting.liminal",
+            "actionid": "work",
             "label": "Цвета двойной Границы",
-            "startdescription": "Когда я вспоминаю Рогатую Секиру, я чувствую запах боярышника. Я помню пурпурное вечернее небо с золотыми всполохами. Я помню, как блестят её лезвия после усердной работы."
+            "startdescription": "Когда я вспоминаю Рогатую Секиру, я чувствую запах боярышника. Я помню пурпурное вечернее небо с золотыми всполохами. Я помню, как блестят её лезвия после усердной работы.",
+            "requirements": {
+                "memory.liminal": 1
+            },
+            "effects": {
+                "memory.liminal": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.liminal",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
         },
         {
             "id": "paint.palestpainting.horizon",
+            "actionid": "work",
             "label": "Цвета горизонта",
-            "startdescription": "Тусклые бело-золотые заплаты раскрашивают небо, когда туман расступается, но солнце можно принять за луну. Задержав дыхание, мы смотрим, как оно становится ярче, пока от каждого цвета не отделяется новый подобно тому, как буквы алфавита получают новый смысл. Птенец вылупляется."
+            "startdescription": "Тусклые бело-золотые заплаты раскрашивают небо, когда туман расступается, но солнце можно принять за луну. Задержав дыхание, мы смотрим, как оно становится ярче, пока от каждого цвета не отделяется новый подобно тому, как буквы алфавита получают новый смысл. Птенец вылупляется.",
+            "requirements": {
+                "memory.horizon": 1
+            },
+            "effects": {
+                "memory.horizon": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.horizon",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
         },
         {
             "id": "paint.palestpainting.splendid",
+            "actionid": "work",
             "label": "Цвета былого",
-            "startdescription": "Рассветный румянец переливается электрическим голубым светом. Это не ночь и не утро, а всего лишь часы полудня предсказанного и полудня длящегося. Мы раскрываем сердца перед золотой иглой неба. Под Солнцем-в-Зените все цвета становятся ярче."
+            "startdescription": "Рассветный румянец переливается электрическим голубым светом. Это не ночь и не утро, а всего лишь часы полудня предсказанного и полудня длящегося. Мы раскрываем сердца перед золотой иглой неба. Под Солнцем-в-Зените все цвета становятся ярче.",
+            "requirements": {
+                "memory.splendid": 1
+            },
+            "effects": {
+                "memory.splendid": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.splendid",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
         },
         {
             "id": "paint.palestpainting.endless",
+            "actionid": "work",
             "label": "Цвета поворотные",
-            "startdescription": "С каждым поворотом жгутики пульсируют, а тело светится, меняясь от прозрачного к багряному. Оно уродливо, но и красиво, как кровь, вытекающая из лабиринтов стекла. Оно не останавливается; его сложность бесконечна. Колесо."
+            "startdescription": "С каждым поворотом жгутики пульсируют, а тело светится, меняясь от прозрачного к багряному. Оно уродливо, но и красиво, как кровь, вытекающая из лабиринтов стекла. Оно не останавливается; его сложность бесконечна. Колесо.",
+            "requirements": {
+                "memory.endless": 1
+            },
+            "effects": {
+                "memory.endless": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.endless",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
         },
         {
             "id": "paint.palestpainting.wildering",
+            "actionid": "work",
             "label": "Цвета не-чёрные",
-            "startdescription": "Лес в сумерках, его ядовито-зелёные плоды, его сердоликовые корни. Глаза Мотылька сияют голодом и азартом. Он вышел на охоту."
+            "startdescription": "Лес в сумерках, его ядовито-зелёные плоды, его сердоликовые корни. Глаза Мотылька сияют голодом и азартом. Он вышел на охоту.",
+            "requirements": {
+                "memory.wildering": 1
+            },
+            "effects": {
+                "memory.wildering": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.wildering",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
         },
         {
             "id": "paint.palestpainting.golden",
+            "actionid": "work",
             "label": "Цвета старого огня",
-            "startdescription": "Это лишь камень, хотя он гладок и заточен, — но взгляните ближе. На каждой из граней — одна точка света. Возможно, это отблеск камина. А может, это другие звезды."
+            "startdescription": "Это лишь камень, хотя он гладок и заточен, — но взгляните ближе. На каждой из граней — одна точка света. Возможно, это отблеск камина. А может, это другие звезды.",
+            "requirements": {
+                "memory.golden": 1
+            },
+            "effects": {
+                "memory.golden": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.golden",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
         },
         {
             "id": "paint.palestpainting.honeyed",
+            "actionid": "work",
             "label": "Цвета будущего",
-            "startdescription": "Наши сияющие крылья раскрыты, чешуя сверкает, как обсидиан, глаза огранены, как драгоценные камни, а когти заточены до безупречной темноты."
+            "startdescription": "Наши сияющие крылья раскрыты, чешуя сверкает, как обсидиан, глаза огранены, как драгоценные камни, а когти заточены до безупречной темноты.",
+            "requirements": {
+                "memory.honeyed": 1
+            },
+            "effects": {
+                "memory.honeyed": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "mutations": [
+                {
+                    "mutate": "colours.honeyed",
+                    "filter": "canvas.pale",
+                    "level": 1
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paint.palestpainting.complete"
+                }
+            ]
         },
         {
             "id": "paint.palestpainting.complete",
+            "actionid": "work",
             "label": "Девять цветов намечены",
+            "startdescription": "Почти готово. На коньке крыши надо мной сгрудились голуби. Закат ожидает, затаив дыхание.",
             "description": "Картина — не дверь. Эти Часы ушли. Даже их эхо стихло. Но я поминаю их. Тот, у которого нельзя уже ничего взять, тот, кого нельзя обмануть, кто зовёт всех мёртвых по именам — тот, кого работа может удовлетворить.",
-            "startdescription": "Почти готово. На коньке крыши надо мной сгрудились голуби. Закат ожидает, затаив дыхание."
+            "requirements": {
+                "colours.furious": 1,
+                "colours.luxurious": 1,
+                "colours.liminal": 1,
+                "colours.horizon": 1,
+                "colours.splendid": 1,
+                "colours.endless": 1,
+                "colours.wildering": 1,
+                "colours.golden": 1,
+                "colours.honeyed": 1
+            },
+            "effects": {
+                "memory": -1,
+                "canvas.pale": -1,
+                "painting.palest": 1,
+                "notoriety": 2
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "warmup": 30
         },
         {
             "id": "painthaslore",
+            "actionid": "work",
             "label": "Эзотерическое искусство",
-            "startdescription": "Знающие поймут. [Как и Бюро умолчания.]"
+            "startdescription": "Знающие поймут. [Как и Бюро умолчания.]",
+            "requirements": {
+                "lore": 1
+            },
+            "effects": {
+                "insight": 1,
+                "notoriety": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintaddpigment",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "painthasinfluence",
+            "actionid": "work",
             "label": "Вещь с настроением",
-            "startdescription": "Это должно произвести впечатление."
+            "startdescription": "Это должно произвести впечатление.",
+            "effects": {
+                "insight": 1
+            },
+            "requirements": {
+                "influence": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintaddpigment",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "painthasmemory",
+            "actionid": "work",
             "label": "Пересказ жизни",
-            "startdescription": "Эти воспоминания были бы утрачены, но теперь они будут жить. "
+            "startdescription": "Эти воспоминания были бы утрачены, но теперь они будут жить. ",
+            "requirements": {
+                "memory": 1
+            },
+            "effects": {
+                "insight": 1,
+                "notoriety": 1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "paint.memory.menacing.once",
+                    "chance": 30
+                },
+                {
+                    "id": "paint.memory.shameful.once",
+                    "chance": 30
+                },
+                {
+                    "id": "paint.memory.unexpected.once",
+                    "chance": 30
+                },
+                {
+                    "id": "paint.memory.joyful.once",
+                    "chance": 30
+                },
+                {
+                    "id": "paint.memory.profitable.once",
+                    "chance": 30
+                },
+                {
+                    "id": "paint.memory.generic"
+                },
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
         },
         {
             "id": "paint.memory.menacing.once",
+            "actionid": "work",
             "label": "Тайны души",
-            "startdescription": "Мне удалось увидеть смерть Семи-Витков. [Бюро умолчания может обратить внимание.]"
+            "startdescription": "Мне удалось увидеть смерть Семи-Витков. [Бюро умолчания может обратить внимание.]",
+            "requirements": {
+                "memory.menacing": 1
+            },
+            "effects": {
+                "pre.fragmentedgeb": 1,
+                "insight": 3,
+                "notoriety": 1,
+                "memory.menacing": -1
+            },
+            "warmup": 10,
+            "maxexecutions": 1,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
         },
         {
             "id": "paint.memory.shameful.once",
+            "actionid": "work",
             "label": "Тайны души",
-            "startdescription": "Мне удалось увидеть очертания Великой Матери. [Бюро умолчания может обратить внимание.]"
+            "startdescription": "Мне удалось увидеть очертания Великой Матери. [Бюро умолчания может обратить внимание.]",
+            "requirements": {
+                "memory.shameful": 1
+            },
+            "effects": {
+                "pre.fragmentgrailb": 1,
+                "insight": 3,
+                "notoriety": 1,
+                "memory.shameful": -1
+            },
+            "warmup": 10,
+            "maxexecutions": 1,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
         },
         {
             "id": "paint.memory.unexpected.once",
+            "actionid": "work",
             "label": "Тайны души",
-            "startdescription": "Мне удалось увидеть жертву Рогатой Секиры. [Бюро умолчания может обратить внимание.]"
+            "startdescription": "Мне удалось увидеть жертву Рогатой Секиры. [Бюро умолчания может обратить внимание.]",
+            "requirements": {
+                "memory.unexpected": 1
+            },
+            "effects": {
+                "pre.fragmentknockb": 1,
+                "insight": 3,
+                "notoriety": 1,
+                "memory.unexpected": -1
+            },
+            "warmup": 10,
+            "maxexecutions": 1,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
         },
         {
             "id": "paint.memory.joyful.once",
+            "actionid": "work",
             "label": "Тайны души",
-            "startdescription": "Мне удалось увидеть поворот Колеса, хотя адепты говорили, что вращение его остановилось очень давно. [Бюро умолчания может обратить внимание.]"
+            "startdescription": "Мне удалось увидеть поворот Колеса, хотя адепты говорили, что вращение его остановилось очень давно. [Бюро умолчания может обратить внимание.]",
+            "requirements": {
+                "memory.joyful": 1
+            },
+            "effects": {
+                "pre.fragmentheartb": 1,
+                "insight": 3,
+                "notoriety": 1,
+                "memory.joyful": -1
+            },
+            "warmup": 10,
+            "maxexecutions": 1,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
         },
         {
             "id": "paint.memory.profitable.once",
+            "actionid": "work",
             "label": "Тайны души",
-            "startdescription": "Мне удалось увидеть то, как изменился огонь, хотя и не в те времена, когда у него были грани. [Бюро умолчания может обратить внимание.]"
+            "startdescription": "Мне удалось увидеть то, как изменился огонь, хотя и не в те времена, когда у него были грани. [Бюро умолчания может обратить внимание.]",
+            "requirements": {
+                "memory.profitable": 1
+            },
+            "effects": {
+                "pre.fragmentforgeb": 1,
+                "insight": 3,
+                "notoriety": 1,
+                "memory.profitable": -1
+            },
+            "warmup": 10,
+            "maxexecutions": 1,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
         },
         {
             "id": "paint.memory.generic",
+            "actionid": "work",
             "label": "Сцены из жизни",
-            "startdescription": "Я не думаю, что это была моя жизнь, но вдруг... Когда-нибудь я вообще не смогу в этом разобраться."
+            "startdescription": "Я не думаю, что это была моя жизнь, но вдруг... Когда-нибудь я вообще не смогу в этом разобраться.",
+            "requirements": {
+                "memory.profitable": 1
+            },
+            "effects": {
+                "insight": 2,
+                "memory": -1
+            },
+            "warmup": 10,
+            "linked": [
+                {
+                    "id": "paintaddpigment"
+                }
+            ]
         },
         {
             "id": "painthasfollower",
+            "actionid": "work",
             "label": "Портрет",
-            "startdescription": "Что-то на память, наверное."
+            "startdescription": "Что-то на память, наверное.",
+            "effects": {
+                "insight": 1
+            },
+            "requirements": {
+                "mortal": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintaddpigment",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "painthassummoned",
+            "actionid": "work",
             "label": "Необычный портрет",
-            "startdescription": "Если вписать кого-то в наш мир, то он задержится в нём. Может быть. [Бюро умолчания этим наверняка заинтересуется.]"
+            "startdescription": "Если вписать кого-то в наш мир, то он задержится в нём. Может быть. [Бюро умолчания этим наверняка заинтересуется.]",
+            "requirements": {
+                "summoned": 1
+            },
+            "effects": {
+                "insight": 1,
+                "notoriety": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintaddpigment",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "paintaddpigment",
+            "actionid": "work",
             "label": "Цвета ночи",
+            "warmup": 20,
             "startdescription": "Можно разориться на краски получше. Или поискать более экзотические красители...",
             "slots": [
                 {
                     "id": "Paints",
-                    "label": "Краски"
+                    "label": "Краски",
+                    "required": {
+                        "pigment": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "paintluck",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paintfourpassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintthreepassion",
+                    "chance": 100
+                },
+                {
+                    "id": "painttwopassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintonepassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintnopassion",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "paintluck",
+            "actionid": "work",
+            "warmup": 1,
             "label": "Хороший день",
-            "startdescription": "Получается лучше, чем обычно."
+            "startdescription": "Получается лучше, чем обычно.",
+            "effects": {
+                "insight": 1
+            },
+            "comments": "Passionless painting never does better than usual.",
+            "linked": [
+                {
+                    "id": "paintluck",
+                    "chance": 30
+                },
+                {
+                    "id": "paintfourpassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintthreepassion",
+                    "chance": 100
+                },
+                {
+                    "id": "painttwopassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintonepassion",
+                    "chance": 100
+                },
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "paintfourpassion",
             "label": "Полное сосредоточение",
-            "startdescription": "Здесь всё, чем являюсь я."
+            "startdescription": "Здесь всё, чем являюсь я.",
+            "actionid": "work",
+            "warmup": 10,
+            "requirements": {
+                "passion": 4
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "insight": 4
+            },
+            "linked": [
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "paintthreepassion",
+            "actionid": "work",
             "label": "Полная убеждённость",
-            "startdescription": "Мир уходит."
+            "startdescription": "Мир уходит.",
+            "warmup": 10,
+            "requirements": {
+                "passion": 3
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "insight": 3
+            },
+            "linked": [
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "painttwopassion",
+            "actionid": "work",
             "label": "Эмоциональная страсть",
-            "startdescription": "Я вижу ошибки, но так же вижу и конец."
+            "startdescription": "Я вижу ошибки, но так же вижу и конец.",
+            "warmup": 10,
+            "requirements": {
+                "passion": 2
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "insight": 2
+            },
+            "linked": [
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "paintonepassion",
+            "actionid": "work",
             "label": "Работы на день",
-            "startdescription": "Я тружусь честно."
+            "startdescription": "Я тружусь честно.",
+            "warmup": 10,
+            "requirements": {
+                "passion": 1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "insight": 1
+            },
+            "linked": [
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "paintnopassion",
+            "actionid": "work",
             "label": "Механическая работа",
-            "startdescription": "Если честно, я просто повторяю заученные движения. Качество не будет особо высоким."
+            "startdescription": "Если честно, я просто повторяю заученные движения. Качество не будет особо высоким.",
+            "warmup": 5,
+            "requirements": {
+                "passion": -1
+            },
+            "aspects": {
+                "fatiguing": 1
+            },
+            "effects": {
+                "insight": -1
+            },
+            "linked": [
+                {
+                    "id": "paintcheckpigment",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "paintcheckpigment"
+            "id": "paintcheckpigment",
+            "actionid": "work",
+            "alt": [
+                {
+                    "id": "painthasfunds",
+                    "chance": 100
+                },
+                {
+                    "id": "painthaspigment",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "painthasfunds",
+            "actionid": "work",
+            "requirements": {
+                "funds": 1
+            },
+            "effects": {
+                "insight": 1,
+                "funds": -1
+            },
             "label": "Качественные материалы...",
-            "startdescription": "...для качественной работы?"
+            "startdescription": "...для качественной работы?",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ],
+            "warmup": 5
         },
         {
             "id": "painthaspigment",
+            "actionid": "work",
+            "requirements": {
+                "pigment": 1
+            },
+            "effects": {
+                "insight": 1,
+                "notoriety": 1
+            },
             "label": "Хорошие красители",
-            "startdescription": "Этот краситель опасен. И, наверное, запрещён законом."
+            "startdescription": "Этот краситель опасен. И, наверное, запрещён законом.",
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "matchedge",
+                    "chance": 100
+                },
+                {
+                    "id": "matchforge",
+                    "chance": 100
+                },
+                {
+                    "id": "matchgrail",
+                    "chance": 100
+                },
+                {
+                    "id": "matchheart",
+                    "chance": 100
+                },
+                {
+                    "id": "matchknock",
+                    "chance": 100
+                },
+                {
+                    "id": "matchlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "matchmoth",
+                    "chance": 100
+                },
+                {
+                    "id": "matchwinter",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "matchedge",
+            "requirements": {
+                "ingredientedgeb": 1,
+                "edge": 5
+            },
+            "actionid": "work",
             "label": "Достойная форма",
-            "startdescription": "Весна всегда противостоит зиме."
+            "startdescription": "Весна всегда противостоит зиме.",
+            "effects": {
+                "insight": 2,
+                "influenceedgec": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasteredge_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "matchforge",
+            "requirements": {
+                "ingredientforgeb": 1,
+                "forge": 5
+            },
+            "actionid": "work",
             "label": "Достойная форма",
-            "startdescription": "Тёмные зёрна, если их правильно обработать, дают яркий цвет."
+            "startdescription": "Тёмные зёрна, если их правильно обработать, дают яркий цвет.",
+            "effects": {
+                "insight": 2,
+                "influenceforgec": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasterforge_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "matchgrail",
+            "requirements": {
+                "ingredientgrailb": 1,
+                "grail": 5
+            },
+            "actionid": "work",
             "label": "Достойная форма",
-            "startdescription": "Никогда полностью не высохнет. Отлично."
+            "startdescription": "Никогда полностью не высохнет. Отлично.",
+            "effects": {
+                "insight": 2,
+                "influencegrailc": 1,
+                "notoriety": 1
+            },
+            "comments": "Extra notoriety for Grail",
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmastergrail_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "matchheart",
+            "requirements": {
+                "ingredientheartb": 1,
+                "heart": 5
+            },
+            "actionid": "work",
             "label": "Достойная форма",
-            "startdescription": "Заря над морем, оттенок возрождения."
+            "startdescription": "Заря над морем, оттенок возрождения.",
+            "effects": {
+                "insight": 2,
+                "influenceheartc": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasterheart_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "matchknock",
+            "requirements": {
+                "ingredientknockb": 1,
+                "knock": 5
+            },
+            "actionid": "work",
             "label": "Достойная форма",
-            "startdescription": "Рано или поздно холст будет разрезан, но его цвет станет только ярче."
+            "startdescription": "Рано или поздно холст будет разрезан, но его цвет станет только ярче.",
+            "effects": {
+                "insight": 2,
+                "influenceknockc": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasterknock_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "matchlantern",
+            "requirements": {
+                "ingredientlanternb": 1,
+                "lantern": 5
+            },
+            "actionid": "work",
             "label": "Достойная форма",
-            "startdescription": "Полностью потенциал раскрывается только в темноте. Как у всех нас."
+            "startdescription": "Полностью потенциал раскрывается только в темноте. Как у всех нас.",
+            "effects": {
+                "insight": 2,
+                "influencelanternc": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasterlantern_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "matchmoth",
+            "requirements": {
+                "ingredientmothb": 1,
+                "moth": 5
+            },
+            "actionid": "work",
             "label": "Достойная форма",
-            "startdescription": "Пускай критики спорят насчёт того, какой же это цвет. Надеюсь, они подерутся."
+            "startdescription": "Пускай критики спорят насчёт того, какой же это цвет. Надеюсь, они подерутся.",
+            "effects": {
+                "insight": 2,
+                "restlessness": 1,
+                "influencemothc": 1
+            },
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmastermoth_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "matchwinter",
+            "requirements": {
+                "ingredientwinterb": 1,
+                "winter": 5
+            },
+            "effects": {
+                "insight": 2,
+                "dread": 1,
+                "influencewinterc": 1
+            },
+            "actionid": "work",
             "label": "Достойная форма",
-            "startdescription": "Что я делаю? Что же я творю? Это кому-то разобьёт сердце. Или даже всем."
+            "startdescription": "Что я делаю? Что же я творю? Это кому-то разобьёт сердце. Или даже всем.",
+            "warmup": 5,
+            "linked": [
+                {
+                    "id": "paintmasterwinter_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "paintmasteredge_unique"
+            "id": "paintmasteredge_unique",
+            "requirements": {
+                "insight": 7,
+                "edge": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasteredge": 1
+            },
+            "actionid": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "paintmasterforge_unique"
+            "id": "paintmasterforge_unique",
+            "requirements": {
+                "insight": 7,
+                "forge": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasterforge": 1
+            },
+            "actionid": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "paintmastergrail_unique"
+            "id": "paintmastergrail_unique",
+            "requirements": {
+                "insight": 7,
+                "grail": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmastergrail": 1
+            },
+            "actionid": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "paintmasterheart_unique"
+            "id": "paintmasterheart_unique",
+            "requirements": {
+                "insight": 7,
+                "heart": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasterheart": 1
+            },
+            "actionid": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "paintmasterknock_unique"
+            "id": "paintmasterknock_unique",
+            "requirements": {
+                "insight": 7,
+                "knock": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasterknock": 1
+            },
+            "actionid": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "paintmasterlantern_unique"
+            "id": "paintmasterlantern_unique",
+            "requirements": {
+                "insight": 7,
+                "lantern": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasterlantern": 1
+            },
+            "actionid": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "paintmastermoth_unique"
+            "id": "paintmastermoth_unique",
+            "requirements": {
+                "insight": 7,
+                "moth": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmastermoth": 1
+            },
+            "actionid": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "paintmasterwinter_unique"
+            "id": "paintmasterwinter_unique",
+            "requirements": {
+                "insight": 7,
+                "winter": 9
+            },
+            "maxexecutions": 1,
+            "effects": {
+                "paintingmasterwinter": 1
+            },
+            "actionid": "work",
+            "linked": [
+                {
+                    "id": "paintresults",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "paintresults",
             "label": "Готово!",
-            "startdescription": " "
+            "startdescription": " ",
+            "actionid": "work",
+            "warmup": 1,
+            "effects": {
+                "restlessness": -1,
+                "pigment": -1
+            },
+            "linked": [
+                {
+                    "id": "paintingqualitymaster_unique",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualityglorious",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualitymagnificent",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualityexceptional",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualitygood",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualitycompetent",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingqualityfailure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "paintingqualitymaster_unique",
+            "actionid": "work",
+            "warmup": 5,
             "label": "Что-то уникальное",
-            "startdescription": "Мне удалось сотворить нечто уникальное, совершенно из ряда вон, что я никогда не рискну показать публике. [Это никогда не должно увидеть свет. Я не получу средств.]"
+            "startdescription": "Мне удалось сотворить нечто уникальное, совершенно из ряда вон, что я никогда не рискну показать публике. [Это никогда не должно увидеть свет. Я не получу средств.]",
+            "requirements": {
+                "tool": 1
+            },
+            "effects": {
+                "glimmering": 3,
+                "contentment": 1,
+                "insight": -99
+            }
         },
         {
             "id": "paintingqualityglorious",
+            "actionid": "work",
+            "warmup": 5,
             "label": "Великолепная работа",
-            "startdescription": "Даже если я больше никогда не прикоснусь к холсту, место в истории мне уже гарантировано."
+            "startdescription": "Даже если я больше никогда не прикоснусь к холсту, место в истории мне уже гарантировано.",
+            "requirements": {
+                "insight": 8
+            },
+            "deckeffects": {
+                "paintingresults": 6
+            },
+            "mutations": [
+                {
+                    "filter": "passionskill",
+                    "mutate": "stale",
+                    "level": -1,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "insight": -99,
+                "fascination": 1
+            }
         },
         {
             "id": "paintingqualitymagnificent",
+            "actionid": "work",
+            "warmup": 5,
             "label": "Прекрасная работа",
-            "startdescription": "Мне удалось создать что-то красивое и запоминающееся. Оно точно укрепит мою репутацию."
+            "startdescription": "Мне удалось создать что-то красивое и запоминающееся. Оно точно укрепит мою репутацию.",
+            "requirements": {
+                "insight": 6
+            },
+            "deckeffects": {
+                "paintingresults": 5
+            },
+            "mutations": [
+                {
+                    "filter": "passionskill",
+                    "mutate": "stale",
+                    "level": -1,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "insight": -99,
+                "fascination": 1
+            }
         },
         {
             "id": "paintingqualityexceptional",
+            "actionid": "work",
+            "warmup": 5,
             "label": "Исключительная работа",
-            "startdescription": "Это нечто особенное, может вызвать реакцию."
+            "startdescription": "Это нечто особенное, может вызвать реакцию.",
+            "requirements": {
+                "insight": 4
+            },
+            "deckeffects": {
+                "paintingresults": 4
+            },
+            "mutations": [
+                {
+                    "filter": "passionskill",
+                    "mutate": "stale",
+                    "level": -1,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "insight": -99
+            }
         },
         {
             "id": "paintingqualitygood",
+            "actionid": "work",
+            "warmup": 5,
             "label": "Хорошая работа",
-            "startdescription": "Этой работой я смогу гордиться. А при должном старании смогу даже её продать."
+            "startdescription": "Этой работой я смогу гордиться. А при должном старании смогу даже её продать.",
+            "requirements": {
+                "insight": 2
+            },
+            "deckeffects": {
+                "paintingresults": 3
+            },
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "insight": -99
+            }
         },
         {
             "id": "paintingqualitycompetent",
+            "actionid": "work",
+            "warmup": 5,
             "label": "Уверенная работа",
-            "startdescription": "Тут нечего стесняться."
+            "startdescription": "Тут нечего стесняться.",
+            "requirements": {
+                "insight": 1
+            },
+            "deckeffects": {
+                "paintingresults": 2
+            },
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ],
+            "effects": {
+                "insight": -99
+            }
         },
         {
             "id": "paintingqualityfailure",
+            "actionid": "work",
+            "warmup": 5,
             "label": "Не имеет ценности!",
-            "startdescription": "Мне не удалось создать ничего ценного. Гордиться тут нечем. И всё же, если у меня есть репутация, я смогу это продать..."
+            "startdescription": "Мне не удалось создать ничего ценного. Гордиться тут нечем. И всё же, если у меня есть репутация, я смогу это продать...",
+            "requirements": {
+                "insight": -1
+            },
+            "effects": {
+                "insight": -99
+            },
+            "linked": [
+                {
+                    "id": "paintingreputationcheck",
+                    "chance": 100
+                }
+            ]
         },
         {
-            "id": "paintingreputationcheck"
+            "id": "paintingreputationcheck",
+            "actionid": "work",
+            "effects": {
+                "insight": -1
+            },
+            "linked": [
+                {
+                    "id": "paintingreputation_celebrated",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_famed",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_notable",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_significant",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_known",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_noticed",
+                    "chance": 100
+                },
+                {
+                    "id": "paintingreputation_unknown",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "paintingreputation_celebrated",
             "label": "Награда художника?",
-            "description": "Мою недавнюю работу заметили! Моё имя теперь известно, творчество популярно."
+            "description": "Мою недавнюю работу заметили! Моё имя теперь известно, творчество популярно.",
+            "actionid": "work",
+            "requirements": {
+                "reputation": 9,
+                "stale": -1
+            },
+            "deckeffects": {
+                "paintingresultsreputation": 7
+            },
+            "linked": [
+                {
+                    "id": "painting.reputation.overexposure"
+                }
+            ]
         },
         {
             "id": "paintingreputation_famed",
             "label": "Награда художника?",
-            "description": "Моя недавняя работа достаточно популярна! На моё творчество поступают хорошие отзывы."
+            "description": "Моя недавняя работа достаточно популярна! На моё творчество поступают хорошие отзывы.",
+            "actionid": "work",
+            "requirements": {
+                "reputation": 7,
+                "stale": -2
+            },
+            "deckeffects": {
+                "paintingresultsreputation": 6
+            },
+            "linked": [
+                {
+                    "id": "painting.reputation.overexposure"
+                }
+            ]
         },
         {
             "id": "paintingreputation_notable",
             "label": "Награда художника?",
-            "description": "Мою последнюю работу отметили! Недавние произведения я демонстрирую публике, кто-нибудь что-то обязательно купит."
+            "description": "Мою последнюю работу отметили! Недавние произведения я демонстрирую публике, кто-нибудь что-то обязательно купит.",
+            "actionid": "work",
+            "requirements": {
+                "reputation": 5,
+                "stale": -3
+            },
+            "deckeffects": {
+                "paintingresultsreputation": 4
+            },
+            "linked": [
+                {
+                    "id": "painting.reputation.overexposure"
+                }
+            ]
         },
         {
             "id": "paintingreputation_significant",
             "label": "Награда художника?",
-            "description": "Мою последнюю работу сочли важной! Не знаю, удастся ли на этом заработать."
+            "description": "Мою последнюю работу сочли важной! Не знаю, удастся ли на этом заработать.",
+            "actionid": "work",
+            "requirements": {
+                "reputation": 3,
+                "stale": -4
+            },
+            "deckeffects": {
+                "paintingresultsreputation": 3
+            },
+            "linked": [
+                {
+                    "id": "painting.reputation.overexposure"
+                }
+            ]
         },
         {
             "id": "paintingreputation_known",
             "label": "Награда художника?",
-            "description": "Моя последняя работа привлекла внимание. Возможно, что-то даже удастся продать."
+            "description": "Моя последняя работа привлекла внимание. Возможно, что-то даже удастся продать.",
+            "actionid": "work",
+            "requirements": {
+                "reputation": 2,
+                "stale": -5
+            },
+            "deckeffects": {
+                "paintingresultsreputation": 2
+            }
         },
         {
             "id": "paintingreputation_noticed",
+            "comments": "No links to over-exposure risk. The overexposure cards will happily decay to funds.",
             "label": "Награда художника?",
-            "description": "Моя последняя работа привлекла интересующихся. Если повезёт, я что-то продам."
+            "description": "Моя последняя работа привлекла интересующихся. Если повезёт, я что-то продам.",
+            "actionid": "work",
+            "requirements": {
+                "reputation": 1
+            },
+            "deckeffects": {
+                "paintingresultsreputation": 1
+            }
         },
         {
             "id": "paintingreputation_unknown",
+            "comments": "No links to over-exposure risk. The overexposure cards will happily decay to funds.",
             "label": "Награда художника?",
-            "description": "Мою последнюю работу никто не заметил. Ничего не удаётся продать. Может, стоит считать наградой саму работу."
+            "description": "Мою последнюю работу никто не заметил. Ничего не удаётся продать. Может, стоит считать наградой саму работу.",
+            "actionid": "work",
+            "requirements": {
+                "reputation": -1
+            }
         },
         {
             "id": "painting.reputation.overexposure",
-            "label": "Награда художника?"
+            "label": "Награда художника?",
+            "actionid": "work",
+            "requirements": {
+                "overexposure": 1
+            },
+            "effects": {
+                "overexposure": -1
+            },
+            "mutations": [
+                {
+                    "filter": "passionskill",
+                    "mutate": "stale",
+                    "level": 1,
+                    "additive": true
+                }
+            ],
+            "linked": [
+                {
+                    "id": "painting.reputation.overexposure"
+                }
+            ]
         },
         {
             "id": "paintmansus",
             "label": "Изображение Обители",
+            "actionid": "work",
+            "requirements": {
+                "lantern": 1
+            },
+            "effects": {
+                "paintingmansus": 1
+            },
+            "startdescription": "Я помню что-то из архитектуры, увиденной во сне...",
             "description": "Этот холст не должен увидеть света. Иначе у меня будут проблемы.",
-            "startdescription": "Я помню что-то из архитектуры, увиденной во сне..."
+            "warmup": 0,
+            "craftable": false
         }
     ]
 }

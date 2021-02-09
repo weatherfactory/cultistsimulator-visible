@@ -3,122 +3,436 @@
         {
             "id": "seasonevents",
             "label": "Поры",
-            "description": "С течением Времени могут происходить неожиданные события."
+            "description": "С течением Времени могут происходить неожиданные события.",
+            "spec": [
+                "seasonsickness",
+                "seasonsuspicion",
+                "seasonsuspicion",
+                "seasondespair",
+                "seasondespair",
+                "seasonvisions",
+                "seasonvisions",
+                "seasonambitions",
+                "seasonambitions",
+                "seasonsilence",
+                "seasonardours"
+            ],
+            "defaultcard": "contentment",
+            "resetonexhaustion": true
         },
         {
             "id": "cabaretevents",
             "label": "Вечер в клубе",
-            "description": "Каждый вечер приносит новые удовольствия, а порой и опасности."
+            "description": "Каждый вечер приносит новые удовольствия, а порой и опасности.",
+            "spec": [
+                "contentment",
+                "contentment",
+                "contentment",
+                "fascination",
+                "fascination",
+                "erudition",
+                "glimmering",
+                "vitality",
+                "notoriety",
+                "influencegrail",
+                "influencemoth"
+            ],
+            "defaultcard": "contentment",
+            "resetonexhaustion": true
         },
         {
             "id": "roserewards",
             "label": "Награды страсти",
-            "description": "Тогда, сейчас... когда?"
+            "description": "Тогда, сейчас... когда?",
+            "spec": [
+                "memorybittersweet",
+                "memorypleasant",
+                "memorypassionate",
+                "fleeting"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "dreamreasonresults",
             "label": "Страна снов",
-            "description": "Обычно сон приносит покой и отдых, но так бывает не всегда. Далеко не всегда."
+            "description": "Обычно сон приносит покой и отдых, но так бывает не всегда. Далеко не всегда.",
+            "spec": [
+                "dread",
+                "fascination",
+                "glimmering",
+                "vitality",
+                "contentment",
+                "restlessness"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "paintingresultsbasic",
             "label": "Награды искусства",
-            "description": "Живопись приносит безмятежность, а иногда и помогает взглянуть на вещи по-новому."
+            "description": "Живопись приносит безмятежность, а иногда и помогает взглянуть на вещи по-новому.",
+            "spec": [
+                "contentment",
+                "contentment",
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "glimmering"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "paintingresults",
             "label": "Награды искусства",
-            "description": "Живопись часто приносит безмятежность. Порой мой труд может привлечь внимание."
+            "description": "Живопись часто приносит безмятежность. Порой мой труд может привлечь внимание.",
+            "spec": [
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "glimmering",
+                "contentment",
+                "contentment",
+                "contentment",
+                "contentment",
+                "contentment",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "paintingresultsreputation",
             "label": "Награды славы",
-            "description": "Отсюда приходят деньги."
+            "description": "Отсюда приходят деньги.",
+            "spec": [
+                "overexposure",
+                "overexposure",
+                "overexposure",
+                "overexposure",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "ecdysisrewards",
             "label": "Пожертвования в финале",
-            "description": "Клуб гарантирует минимальную оплату, но иногда публика предлагает что-то сама."
+            "description": "Клуб гарантирует минимальную оплату, но иногда публика предлагает что-то сама.",
+            "spec": [
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "compensationb",
+                "compensationb",
+                "compensationc",
+                "jumble",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "compensationb",
+                "compensationb",
+                "compensationc",
+                "jumble",
+                "kitlingripe",
+                "raptintheking",
+                "vienneseconundra"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "robberyrewards",
             "label": "Выгоды греха",
-            "description": "Мои подручные чаще всего приносят мелкие ценности, иногда просто мусор, а порой что-то действительно необычное."
+            "description": "Мои подручные чаще всего приносят мелкие ценности, иногда просто мусор, а порой что-то действительно необычное.",
+            "spec": [
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "funds",
+                "jumble",
+                "jumble",
+                "jumble",
+                "jumble",
+                "jumble",
+                "compensation",
+                "compensation",
+                "compensation",
+                "compensation",
+                "compensation",
+                "compensation",
+                "compensationb",
+                "compensationb",
+                "compensationb",
+                "ingredientedgeb",
+                "ingredientforgeb",
+                "ingredientgrailb",
+                "ingredientheartb",
+                "ingredientknockb",
+                "ingredientmothb"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "exploreevents",
             "label": "Изучение столицы",
-            "description": "Исследуя город, можно многое найти..."
+            "description": "Исследуя город, можно многое найти...",
+            "spec": [
+                "daycriminals",
+                "dayplaces",
+                "daycriminals",
+                "dayplaces"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "schemeevents",
             "label": "Возможные планы",
-            "description": "Интриги моих врагов..."
+            "description": "Интриги моих врагов...",
+            "spec": [
+                "schememurder",
+                "schememurder",
+                "schemeexpedition",
+                "schemeexpedition",
+                "schemeexpedition",
+                "schemeexpedition",
+                "schemeactivities",
+                "schemeactivities",
+                "schemeactivities",
+                "schemeactivities"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "talkevents",
             "label": "Полуночные встречи",
-            "description": "Я могу найти новых послушников, союзников и соперников."
+            "description": "Я могу найти новых послушников, союзников и соперников.",
+            "spec": [
+                "dayacquaintances",
+                "dayacquaintances",
+                "dayacquaintances",
+                "dayacquaintances",
+                "dayacquaintances",
+                "dayacquaintances",
+                "dayacquaintances",
+                "daypatrons",
+                "daypatrons"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "citysecrets",
             "label": "Городские тайны",
-            "description": "Места, которые легко не заметить."
+            "description": "Места, которые легко не заметить.",
+            "spec": [
+                "locationauctionhouse",
+                "locationcabaret",
+                "locationbookdealer",
+                "locationstreetsstrange"
+            ],
+            "defaultcard": "locationstreetsstrange"
         },
         {
             "id": "streetsstrangefinds",
             "label": "Странные улицы",
-            "description": "Знания и влияния."
+            "description": "Знания и влияния.",
+            "spec": [
+                "influenceknockc",
+                "influenceknockc",
+                "glimmering",
+                "glimmering",
+                "fascination",
+                "contentment",
+                "contentment"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "troublemakerconversations",
             "label": "Беседы со Смутьяном",
-            "description": "Что я могу узнать?"
+            "description": "Что я могу узнать?",
+            "spec": [
+                "dread",
+                "dread",
+                "fascination",
+                "fascination",
+                "erudition",
+                "erudition",
+                "erudition",
+                "glimmering",
+                "glimmering"
+            ],
+            "defaultcard": "contentment"
         },
         {
             "id": "forgelong",
             "label": "Происки врага",
-            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение."
+            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "spec": [
+                "julian_unknown",
+                "welland_unknown",
+                "welland_unknown"
+            ],
+            "defaultcard": "julian_unknown"
         },
         {
             "id": "graillong",
             "label": "Происки врага",
-            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение."
+            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "spec": [
+                "tryphon_unknown",
+                "tryphon_unknown",
+                "julian_unknown"
+            ],
+            "defaultcard": "julian_unknown"
         },
         {
             "id": "lanternlong",
             "label": "Происки врага",
-            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение."
+            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "spec": [
+                "julian_unknown",
+                "diarist_unknown",
+                "diarist_unknown"
+            ],
+            "defaultcard": "julian_unknown"
         },
         {
             "id": "long.strategies",
             "label": "Происки врага",
-            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение."
+            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "spec": [
+                "strategy.assault.concealed",
+                "strategy.intrigue.concealed",
+                "strategy.dreams.concealed",
+                "strategy.downtime.concealed"
+            ],
+            "defaultcard": "strategy.downtime",
+            "resetonexhaustion": true
         },
         {
             "id": "long.strategies.preference.assault",
             "label": "Происки врага",
-            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение."
+            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "spec": [
+                "strategy.assault.concealed",
+                "strategy.assault.concealed",
+                "strategy.intrigue.concealed",
+                "strategy.dreams.concealed",
+                "strategy.downtime.concealed"
+            ],
+            "defaultcard": "strategy.downtime",
+            "resetonexhaustion": true
         },
         {
             "id": "long.strategies.preference.intrigue",
             "label": "Происки врага",
-            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение."
+            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "spec": [
+                "strategy.assault.concealed",
+                "strategy.intrigue.concealed",
+                "strategy.intrigue.concealed",
+                "strategy.dreams.concealed",
+                "strategy.downtime.concealed"
+            ],
+            "defaultcard": "strategy.downtime",
+            "resetonexhaustion": true
         },
         {
             "id": "long.strategies.preference.dreamwork",
             "label": "Происки врага",
-            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение."
+            "description": "Наш враг выберет общий подход, который, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "spec": [
+                "strategy.assault.concealed",
+                "strategy.intrigue.concealed",
+                "strategy.dreams.concealed",
+                "strategy.dreams.concealed",
+                "strategy.downtime.concealed"
+            ],
+            "defaultcard": "strategy.downtime",
+            "resetonexhaustion": true
         },
         {
             "id": "priest.repevent",
             "label": "Страсти паствы",
-            "description": "К чему это приведёт?"
+            "description": "К чему это приведёт?",
+            "spec": [
+                "notoriety",
+                "notoriety",
+                "notoriety",
+                "notoriety",
+                "mystique",
+                "mystique",
+                "mystique",
+                "mystique",
+                "funds",
+                "funds",
+                "funds",
+                "funds"
+            ],
+            "resetonexhaustion": true
         },
         {
             "id": "ghoul.memory",
             "label": "Воспоминания",
-            "description": "Я буду помнить то, о чём забыли другие."
+            "description": "Я буду помнить то, о чём забыли другие.",
+            "spec": [
+                "memory.unexpected",
+                "memory.joyful",
+                "memory.profitable",
+                "memory.shameful",
+                "memory.menacing",
+                "memory.joyful",
+                "memory.profitable",
+                "memory.shameful",
+                "memory.menacing",
+                "memory.joyful",
+                "memory.profitable",
+                "memory.shameful",
+                "memory.menacing"
+            ],
+            "resetonexhaustion": true
         }
     ]
 }

@@ -3,117 +3,368 @@
         {
             "id": "fervour",
             "label": "Рвение",
-            "description": "Страсть моей паствы сильна, пусть и неглубока. [Удовлетворяйте нужды своей паствы. Рвение, не нашедшее применения, перерастает в ужас.]"
+            "aspects": {
+                "influence": 1,
+                "heart": 2
+            },
+            "description": "Страсть моей паствы сильна, пусть и неглубока. [Удовлетворяйте нужды своей паствы. Рвение, не нашедшее применения, перерастает в ужас.]",
+            "lifetime": 180,
+            "decayTo": "dread"
         },
         {
             "id": "lockscaredge",
             "label": "Шрам, запертый Гранью",
-            "description": "Когда я стану Границей, этот шрам раскроется от прикосновения клинка."
+            "description": "Когда я стану Границей, этот шрам раскроется от прикосновения клинка.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "edge": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscaredge"
+            }
         },
         {
             "id": "lockscarforge",
             "label": "Шрам, запертый Кузней",
-            "description": "Когда я стану Границей, этот шрам раскроется от прикосновения калёного железа."
+            "description": "Когда я стану Границей, этот шрам раскроется от прикосновения калёного железа.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "forge": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarforge"
+            }
         },
         {
             "id": "lockscargrail",
             "label": "Шрам, запертый Чашей",
-            "description": "Когда я стану Границей, этот шрам раскроется под пламенным поцелуем."
+            "description": "Когда я стану Границей, этот шрам раскроется под пламенным поцелуем.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "grail": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscargrail"
+            }
         },
         {
             "id": "lockscarheart",
             "label": "Шрам, запертый Сердцем",
-            "description": "Когда я стану Границей, этот шрам раскроется под барабанный бой."
+            "description": "Когда я стану Границей, этот шрам раскроется под барабанный бой.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "heart": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarheart"
+            }
         },
         {
             "id": "lockscarlantern",
             "label": "Шрам, запертый Лампадой",
-            "description": "Когда я стану Границей, этот шрам раскроется в розовых лучах рассвета."
+            "description": "Когда я стану Границей, этот шрам раскроется в розовых лучах рассвета.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "lantern": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarlantern"
+            }
         },
         {
             "id": "lockscarmoth",
             "label": "Шрам, запертый Мотыльком",
-            "description": "Когда я стану Границей, этот шрам раскроется под лезвиями ножниц."
+            "description": "Когда я стану Границей, этот шрам раскроется под лезвиями ножниц.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "moth": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarmoth"
+            }
         },
         {
             "id": "lockscarwinter",
             "label": "Шрам, запертый Зимой",
-            "description": "Когда я стану Границей, этот шрам раскроется последним."
+            "description": "Когда я стану Границей, этот шрам раскроется последним.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "lockscar": 1,
+                "winter": 2
+            },
+            "xtriggers": {
+                "unlockscar": "openedlockscarwinter"
+            }
         },
         {
             "id": "openedlockscaredge",
             "label": "Шрам, запертый Гранью",
-            "description": "Когда я стану Границей, этот шрам раскроется от прикосновения клинка."
+            "description": "Когда я стану Границей, этот шрам раскроется от прикосновения клинка.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "edge": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscaredge",
+            "icon": "lockscaredge"
         },
         {
             "id": "openedlockscarforge",
             "label": "Шрам, запертый Кузней",
-            "description": "Когда я стану Границей, этот шрам раскроется от прикосновения калёного железа."
+            "description": "Когда я стану Границей, этот шрам раскроется от прикосновения калёного железа.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "forge": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarforge",
+            "icon": "lockscarforge"
         },
         {
             "id": "openedlockscargrail",
             "label": "Шрам, запертый Чашей",
-            "description": "Когда я стану Границей, этот шрам раскроется под пламенным поцелуем."
+            "description": "Когда я стану Границей, этот шрам раскроется под пламенным поцелуем.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "grail": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscargrail",
+            "icon": "lockscargrail"
         },
         {
             "id": "openedlockscarheart",
             "label": "Шрам, запертый Сердцем",
-            "description": "Когда я стану Границей, этот шрам раскроется под барабанный бой."
+            "description": "Когда я стану Границей, этот шрам раскроется под барабанный бой.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "heart": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarheart",
+            "icon": "lockscarheart"
         },
         {
             "id": "openedlockscarlantern",
             "label": "Шрам, запертый Лампадой",
-            "description": "Когда я стану Границей, этот шрам раскроется в розовых лучах рассвета."
+            "description": "Когда я стану Границей, этот шрам раскроется в розовых лучах рассвета.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "lantern": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarlantern",
+            "icon": "lockscarlantern"
         },
         {
             "id": "openedlockscarmoth",
             "label": "Шрам, запертый Мотыльком",
-            "description": "Когда я стану Границей, этот шрам раскроется под лезвиями ножниц."
+            "description": "Когда я стану Границей, этот шрам раскроется под лезвиями ножниц.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "moth": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarmoth",
+            "icon": "lockscarmoth"
         },
         {
             "id": "openedlockscarwinter",
             "label": "Шрам, запертый Зимой",
-            "description": "Когда я стану Границей, этот шрам раскроется последним."
+            "description": "Когда я стану Границей, этот шрам раскроется последним.",
+            "aspects": {
+                "tool": 1,
+                "knock": 2,
+                "openedlockscar": 1,
+                "winter": 2
+            },
+            "lifetime": 1,
+            "decayTo": "lockscarwinter",
+            "icon": "lockscarwinter"
         },
         {
             "id": "devotee_edge",
             "label": "Выносливый прихожанин",
-            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]"
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 2
+            },
+            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_edge"
+            },
+            "lifetime": 180
         },
         {
             "id": "devotee_forge",
             "label": "Умелый прихожанин",
-            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]"
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "forge": 2
+            },
+            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_forge"
+            },
+            "lifetime": 180
         },
         {
             "id": "devotee_grail",
             "label": "Ненасытный прихожанин",
-            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]"
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "grail": 2
+            },
+            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_grail"
+            },
+            "lifetime": 180
         },
         {
             "id": "devotee_heart",
             "label": "Резвый прихожанин ",
-            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]"
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "heart": 2
+            },
+            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_heart"
+            },
+            "lifetime": 180
         },
         {
             "id": "devotee_knock",
             "label": "Искусный прихожанин ",
-            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]"
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "knock": 2
+            },
+            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_knock"
+            },
+            "lifetime": 180
         },
         {
             "id": "devotee_lantern",
             "label": "Проницательный прихожанин",
-            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]"
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "lantern": 2
+            },
+            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_lantern"
+            },
+            "lifetime": 180
         },
         {
             "id": "devotee_moth",
             "label": "Чудаковатый прихожанин",
-            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]"
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "moth": 2
+            },
+            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_moth"
+            },
+            "lifetime": 180
         },
         {
             "id": "devotee_winter",
             "label": "Молчаливый прихожанин",
-            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]"
+            "aspects": {
+                "mortal": 1,
+                "follower": 1,
+                "devotee": 1,
+                "edge": 1,
+                "winter": 2
+            },
+            "description": "Порой религиозное рвение побуждает мирян взять на себя необычные обязанности. [Когда энтузиазм этого человека ослабнет, он вернётся к остальной пастве.]",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "rebellion": "generic_r",
+                "capturefollower": "generic_p",
+                "refiring": "devotee_winter"
+            },
+            "lifetime": 180
         }
     ]
 }

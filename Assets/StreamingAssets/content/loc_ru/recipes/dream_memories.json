@@ -3,20 +3,55 @@
         {
             "id": "dreampleasantmemory",
             "label": "Погрузиться в приятное воспоминание",
+            "actionid": "dream",
+            "requirements": {
+                "memorypleasant": 1
+            },
+            "effects": {
+                "memorypleasant": -1,
+                "contentment": 1,
+                "fleeting": 1
+            },
+            "startdescription": "Сладость взаимопонимания? Минута, освещённая тусклым зимним солнцем?",
             "description": "Это должно меня поддержать.",
-            "startdescription": "Сладость взаимопонимания? Минута, освещённая тусклым зимним солнцем?"
+            "craftable": true,
+            "warmup": 10
         },
         {
             "id": "dreampassionatememory",
             "label": "Погрузиться в страстное воспоминание",
+            "actionid": "dream",
+            "requirements": {
+                "memorypassionate": 1
+            },
+            "effects": {
+                "memorypassionate": -1,
+                "restlessness": 1,
+                "contentment": 1,
+                "vitality": 1
+            },
+            "startdescription": "Вздохи в унисон, сплетённые тела? Тайный жар в темноте?",
             "description": "Это должно меня отвлечь.",
-            "startdescription": "Вздохи в унисон, сплетённые тела? Тайный жар в темноте?"
+            "craftable": true,
+            "warmup": 10
         },
         {
             "id": "dreambittersweetmemory",
             "label": "Погрузиться в бередящее душу воспоминание",
+            "actionid": "dream",
+            "requirements": {
+                "memorybittersweet": 1
+            },
+            "effects": {
+                "memorybittersweet": -1,
+                "dread": 1,
+                "contentment": 1,
+                "glimmering": 1
+            },
+            "startdescription": "Страшное взаимопонимание, о котором никто из вас не скажет ни слова? Ссора и её последствия?",
             "description": "Это разбудит во мне сомнения.",
-            "startdescription": "Страшное взаимопонимание, о котором никто из вас не скажет ни слова? Ссора и её последствия?"
+            "craftable": true,
+            "warmup": 10
         }
     ]
 }

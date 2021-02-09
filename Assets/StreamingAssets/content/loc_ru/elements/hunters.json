@@ -3,52 +3,197 @@
         {
             "id": "investigator1",
             "label": "Инспектор Уэйкфилд",
-            "description": "Захария Уэйкфилд: меланхоличный, но безжалостный инспектор полиции. Недавно переведён в Бюро умолчания."
+            "aspects": {
+                "hunter": 1,
+                "mortal": 1,
+                "meticulous": 1,
+                "grim": 1
+            },
+            "description": "Захария Уэйкфилд: меланхоличный, но безжалостный инспектор полиции. Недавно переведён в Бюро умолчания.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "killhunter": "corpse",
+                "derangemortal": "zachary_r_c",
+                "capturehunter": "investigator1prisoner",
+                "dissolution": "influencewintere"
+            }
         },
         {
             "id": "investigator2",
             "label": "Спенсер Гобсон",
-            "description": "Гобсон успел побывать репортёром, частным сыщиком и совсем недолго священником. Теперь он служит в Бюро умолчания."
+            "aspects": {
+                "hunter": 1,
+                "mortal": 1,
+                "mystic": 1,
+                "erratic": 1
+            },
+            "description": "Гобсон успел побывать репортёром, частным сыщиком и совсем недолго священником. Теперь он служит в Бюро умолчания.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "killhunter": "corpse",
+                "derangemortal": "spencer_r_c",
+                "capturehunter": "investigator2prisoner",
+                "dissolution": "influenceknocke"
+            }
         },
         {
             "id": "investigator3",
             "label": "Конни Ли",
-            "description": "Богатая наследница, суфражистка и искательница приключений. В последнее время её эксцентричные порывы и внушительные средства направлены на благо Бюро умолчания."
+            "aspects": {
+                "hunter": 1,
+                "mortal": 1,
+                "tenacious": 1,
+                "mystic": 1
+            },
+            "description": "Богатая наследница, суфражистка и искательница приключений. В последнее время её эксцентричные порывы и внушительные средства направлены на благо Бюро умолчания.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "killhunter": "corpse",
+                "derangemortal": "connie_r_c",
+                "capturehunter": "investigator3prisoner",
+                "dissolution": "influenceedgee"
+            }
         },
         {
             "id": "investigator4",
             "label": "Доктор Наталия Дрэгон",
-            "description": "Её с позором выставили из научного сообщества за интерес к альтернативной истории, что только распалило её рвение. Сейчас она работает в Бюро умолчания."
+            "aspects": {
+                "hunter": 1,
+                "mortal": 1,
+                "idealist": 1,
+                "meticulous": 1
+            },
+            "description": "Её с позором выставили из научного сообщества за интерес к альтернативной истории, что только распалило её рвение. Сейчас она работает в Бюро умолчания.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "killhunter": "corpse",
+                "derangemortal": "natalia_r_c",
+                "capturehunter": "investigator4prisoner",
+                "dissolution": "influencelanterne"
+            }
         },
         {
             "id": "defaulthunter",
             "label": "Усталый детектив",
-            "description": "Этот джентльмен предпочёл бы, чтобы его оставили наедине с трубкой и свежим выпуском «Иллюстрейтед Лондон Ньюс», но нет: <i>разумеется</i>, объявился очередной чернокнижник, которого нужно пристрелить, как бешеного пса, и, <i>разумеется</i>, ни у кого больше нет на это времени."
+            "aspects": {
+                "hunter": 1,
+                "mortal": 1
+            },
+            "description": "Этот джентльмен предпочёл бы, чтобы его оставили наедине с трубкой и свежим выпуском «Иллюстрейтед Лондон Ньюс», но нет: <i>разумеется</i>, объявился очередной чернокнижник, которого нужно пристрелить, как бешеного пса, и, <i>разумеется</i>, ни у кого больше нет на это времени.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "killhunter": "corpse",
+                "derangemortal": "douglas_r",
+                "capturehunter": "defaulthunterprisoner",
+                "dissolution": "influenceforgec"
+            }
         },
         {
             "id": "investigator1prisoner",
             "label": "Инспектор Уэйкфилд: захвачен!",
-            "description": "Захария Уэйкфилд: меланхоличный, но безжалостный инспектор полиции. Он никогда больше не увидит дневного света."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "winter": 4
+            },
+            "description": "Захария Уэйкфилд: меланхоличный, но безжалостный инспектор полиции. Он никогда больше не увидит дневного света.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "zachary_r_c",
+                "dissolution": "influencewintere"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse"
         },
         {
             "id": "investigator2prisoner",
             "label": "Спенсер Гобсон: захвачен!",
-            "description": "Гобсон успел побывать репортёром, частным сыщиком и совсем недолго священником. Он никогда больше не увидит дневного света."
+            "aspects": {
+                "prisoner": 1,
+                "mortal": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "knock": 3
+            },
+            "description": "Гобсон успел побывать репортёром, частным сыщиком и совсем недолго священником. Он никогда больше не увидит дневного света.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "spencer_r_c",
+                "dissolution": "influenceknocke"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse"
         },
         {
             "id": "investigator3prisoner",
             "label": "Конни Ли: захвачена!",
-            "description": "Богатая наследница, суфражистка и искательница приключений. Она никогда больше не увидит дневного света."
+            "aspects": {
+                "prisoner": 1,
+                "mortal": 1,
+                "lantern": 3,
+                "grail": 3,
+                "heart": 3,
+                "edge": 3
+            },
+            "description": "Богатая наследница, суфражистка и искательница приключений. Она никогда больше не увидит дневного света.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "connie_r_c",
+                "dissolution": "influenceedgee"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse"
         },
         {
             "id": "investigator4prisoner",
             "label": "Доктор Наталия Дрэгон: захвачена!",
-            "description": "Её с позором выставили из научного сообщества за интерес к альтернативной истории, что только распалило её рвение. Она никогда больше не увидит дневного света."
+            "aspects": {
+                "prisoner": 1,
+                "mortal": 1,
+                "lantern": 5,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "Её с позором выставили из научного сообщества за интерес к альтернативной истории, что только распалило её рвение. Она никогда больше не увидит дневного света.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "natalia_r_c",
+                "dissolution": "influencelanterne"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse"
         },
         {
             "id": "defaulthunterprisoner",
             "label": "Усталый детектив захвачен!",
-            "description": "Этот джентльмен предпочёл бы, чтобы его оставили наедине с трубкой и свежим выпуском «Иллюстрейтед Лондон Ньюс», но нет: теперь он сидит в промозглой дыре под землёй."
+            "aspects": {
+                "mortal": 1,
+                "prisoner": 1,
+                "lantern": 5,
+                "grail": 3,
+                "heart": 3
+            },
+            "description": "Этот джентльмен предпочёл бы, чтобы его оставили наедине с трубкой и свежим выпуском «Иллюстрейтед Лондон Ньюс», но нет: теперь он сидит в промозглой дыре под землёй.",
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "douglas_r",
+                "capturehunter": "defaulthunterprisoner",
+                "dissolution": "influenceforgec"
+            },
+            "lifetime": 600,
+            "decayTo": "corpse"
         }
     ]
 }
