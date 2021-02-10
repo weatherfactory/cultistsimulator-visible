@@ -35,10 +35,12 @@ namespace SecretHistories.UI {
             anim["recipe-slot-hide"].enabled = false;
         }
 
-        public void TriggerHideAnim() {
+        public bool TriggerHideAnim() {
             isHidden = true;
             
             anim.Play("recipe-slot-hide");
+
+            return true;
         }
 
         private void OnDisable() {

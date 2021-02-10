@@ -44,6 +44,11 @@ namespace SecretHistories.Entities.Verbs
             return string.Empty;
         }
 
+        public void SetIllumination(string key, string value)
+        {
+            //
+        }
+
         public Timeshadow GetTimeshadow()
         {
             return Timeshadow.CreateTimelessShadow();
@@ -118,6 +123,11 @@ namespace SecretHistories.Entities.Verbs
         public void InteractWithIncoming(Token incomingToken)
         {
             //
+        }
+
+        public bool ReceiveNote(string label, string description)
+        {
+            return false;
         }
 
         public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)

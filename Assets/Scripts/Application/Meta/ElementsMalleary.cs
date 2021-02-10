@@ -13,6 +13,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
 using SecretHistories.NullObjects;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using TMPro;
 using UnityEngine;
@@ -22,14 +23,14 @@ namespace Assets.Scripts.Application.Meta
 {
     public class ElementsMalleary: MonoBehaviour,ISphereEventSubscriber
     {
-        [SerializeField] private ThresholdsWrangler elementDrydockWrangler;
+        [SerializeField] private SpheresWrangler elementDrydockWrangler;
         [SerializeField] private AutoCompletingInput input;
-        private ThresholdSphere primaryThreshold;
+        private ThresholdSphere _primary;
 
         public void Awake()
         {
-            primaryThreshold=elementDrydockWrangler.BuildPrimaryThreshold(new SphereSpec(), SituationPath.Root(), new NullVerb());
-            primaryThreshold.Subscribe(this);
+            _primary=elementDrydockWrangler.BuildPrimarySphere(new SphereSpec(), SituationPath.Root(), new NullVerb()) as ThresholdSphere;
+            _primary.Subscribe(this);
         }
 
         public void CreateDrydockedItem()
@@ -50,26 +51,26 @@ namespace Assets.Scripts.Application.Meta
 
                 Context debugContext = new Context(Context.ActionSource.Debug);
 
-                primaryThreshold.ModifyElementQuantity(elementId, 1, debugContext);
+                _primary.ModifyElementQuantity(elementId, 1, debugContext);
 
-                EncaustDrydockedItem(primaryThreshold.GetTokenInSlot(), input);
+                EncaustDrydockedItem(_primary.GetTokenInSlot(), input);
             }
         }
 
         public void DestroyDrydockedItem()
         {
-             primaryThreshold.GetTokenInSlot().Retire(RetirementVFX.CardTakenShadow);
+             _primary.GetTokenInSlot().Retire(RetirementVFX.CardTakenShadow);
         }
 
         public void Mutate()
         {
-            var elementToken = primaryThreshold.GetElementTokenInSlot();
+            var elementToken = _primary.GetElementTokenInSlot();
             elementToken.Payload.SetMutation(input.text, 1,true);
         }
 
         public void Unmutate()
         {
-            var elementToken = primaryThreshold.GetElementTokenInSlot();
+            var elementToken = _primary.GetElementTokenInSlot();
             elementToken.Payload.SetMutation(input.text, -1, true);
         }
 

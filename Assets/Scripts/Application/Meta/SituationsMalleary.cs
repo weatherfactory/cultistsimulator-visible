@@ -8,6 +8,7 @@ using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ namespace Assets.Scripts.Application.Meta
    public class SituationsMalleary: MonoBehaviour
    {
        [SerializeField] private AutoCompletingInput input;
-       [SerializeField] private ThresholdSphere situationDrydockThreshold;
+       [SerializeField] private ThresholdSphere _situationDrydock;
 
        public void Awake()
        {
@@ -27,7 +28,7 @@ namespace Assets.Scripts.Application.Meta
            sphereSphec.AllowAnyToken = true;
      var spherePath=new SpherePath(SituationPath.Root(),sphereSphec.Id);
            
-           situationDrydockThreshold.Initialise(sphereSphec, spherePath);
+           _situationDrydock.Initialise(sphereSphec, spherePath);
        }
 
 
@@ -47,7 +48,7 @@ namespace Assets.Scripts.Application.Meta
            //assuming we want the whole lifetime of the recipe
            newSituationCommand.TimeRemaining = recipe.Warmup;
 
-           var newTokenLocation = new TokenLocation(0f, 0f, 0f, situationDrydockThreshold.GetPath());
+           var newTokenLocation = new TokenLocation(0f, 0f, 0f, _situationDrydock.GetPath());
            var newTokenCommand = new TokenCreationCommand(newSituationCommand, newTokenLocation);
            newTokenCommand.Execute(new Context(Context.ActionSource.Debug));
 
@@ -56,20 +57,30 @@ namespace Assets.Scripts.Application.Meta
 
         public void TimeForwards()
         {
-            situationDrydockThreshold.RequestTokensSpendTime(Heart.BEAT_INTERVAL_SECONDS * 50);
+            _situationDrydock.RequestTokensSpendTime(Heart.BEAT_INTERVAL_SECONDS * 50);
         }
 
         public void TimeBackwards()
         {
-            situationDrydockThreshold.RequestTokensSpendTime(Heart.BEAT_INTERVAL_SECONDS * -50);
+            _situationDrydock.RequestTokensSpendTime(Heart.BEAT_INTERVAL_SECONDS * -50);
         }
 
         public void AdvanceTimeToEndOfRecipe()
         {
-            var situation = situationDrydockThreshold.GetTokenInSlot().Payload;
+            var situation = _situationDrydock.GetTokenInSlot().Payload;
             var timeRemaining = situation.GetTimeshadow().LifetimeRemaining;
             if(timeRemaining>0)
-                situationDrydockThreshold.RequestTokensSpendTime(timeRemaining);
+                _situationDrydock.RequestTokensSpendTime(timeRemaining);
         }
+
+        public void AddNote()
+        {
+            var situation = _situationDrydock.GetTokenInSlot().Payload;
+            string title = "!";
+            string description = input.text;
+            var addNoteCommand=new AddNoteCommand(title,description);
+
+       situation.ExecuteTokenEffectCommand(addNoteCommand);
+            }
     }
 }

@@ -50,14 +50,11 @@ namespace SecretHistories.UI {
 
         [Encaust] public virtual int Quantity => Defunct ? 0 : _quantity;
 
-        [Encaust] public virtual Dictionary<string, int> Mutations => new Dictionary<string, int>(_currentMutations);
+        [Encaust] public virtual Dictionary<string, int> Mutations => new Dictionary<string, int>(_mutations);
 
         [Encaust]
-        public IlluminateLibrarian IlluminateLibrarian
-        {
-            get { return _illuminateLibrarian; }
-            set { _illuminateLibrarian = value; }
-        }
+        public virtual Dictionary<string,string> Illuminations=>new Dictionary<string, string>(_illuminations);
+
 
         protected Element Element { get; set; }
         [DontEncaust] virtual public string Label => Element.Label;
@@ -72,9 +69,17 @@ namespace SecretHistories.UI {
 
         public string GetIllumination(string key)
         {
-            if (IlluminateLibrarian.GetCurrentIlluminations().ContainsKey(key))
-                return IlluminateLibrarian.GetCurrentIlluminations()[key];
-            return string.Empty;
+            if (_illuminations.ContainsKey(key))
+                return _illuminations[key];
+            return null;
+        }
+
+        public void SetIllumination(string key, string value)
+        {
+            if(_illuminations.ContainsKey(key))
+                _illuminations[key] = value;
+            else
+                _illuminations.Add(key,value);
         }
 
         public Timeshadow GetTimeshadow()
@@ -112,11 +117,12 @@ namespace SecretHistories.UI {
         private bool _aspectsDirtyInc = true;
         private bool _aspectsDirtyExc = true;
 
-        private Dictionary<string, int>
-            _currentMutations =
-                new Dictionary<string, int>(); //not strictly an aspects dictionary; it can contain negatives
 
-        private IlluminateLibrarian _illuminateLibrarian;
+        private readonly Dictionary<string, int>
+            _mutations =
+                new Dictionary<string, int>(); //not strictly an aspects dictionary; it can contain negatives
+        
+        private readonly Dictionary<string,string> _illuminations=new Dictionary<string, string>();
 
         public bool IsValidElementStack()
         {
@@ -186,19 +192,19 @@ namespace SecretHistories.UI {
 
         virtual public void SetMutation(string aspectId, int value, bool additive)
         {
-            if (_currentMutations.ContainsKey(aspectId))
+            if (_mutations.ContainsKey(aspectId))
             {
                 if (additive)
-                    _currentMutations[aspectId] += value;
+                    _mutations[aspectId] += value;
                 else
-                    _currentMutations[aspectId] = value;
+                    _mutations[aspectId] = value;
 
-                if (_currentMutations[aspectId] == 0)
-                    _currentMutations.Remove(aspectId);
+                if (_mutations[aspectId] == 0)
+                    _mutations.Remove(aspectId);
             }
             else if (value != 0)
             {
-                _currentMutations.Add(aspectId, value);
+                _mutations.Add(aspectId, value);
             }
 
             _aspectsDirtyExc = true;
@@ -243,7 +249,7 @@ namespace SecretHistories.UI {
                         _aspectsDictionaryInc[Element.Id] *
                         Quantity; //This might be a stack. In this case, we always want to return the multiple of the aspect of the element itself (only).
 
-                    _aspectsDictionaryInc.ApplyMutations(_currentMutations);
+                    _aspectsDictionaryInc.ApplyMutations(_mutations);
 
                     if (tc.EnableAspectCaching)
                         _aspectsDirtyInc = false;
@@ -264,7 +270,7 @@ namespace SecretHistories.UI {
 
                     _aspectsDictionaryExc.CombineAspects(Element.Aspects);
 
-                    _aspectsDictionaryExc.ApplyMutations(_currentMutations);
+                    _aspectsDictionaryExc.ApplyMutations(_mutations);
 
                     if (tc.EnableAspectCaching)
                         _aspectsDirtyExc = false;
@@ -287,6 +293,13 @@ namespace SecretHistories.UI {
 
             SoundManager.PlaySfx("CardPutOnStack");
 
+        }
+
+        public bool ReceiveNote(string label, string description)
+        {
+            SetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY, label);
+            SetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, description);
+          return true;
         }
 
 

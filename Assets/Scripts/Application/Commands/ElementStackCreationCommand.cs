@@ -25,7 +25,7 @@ namespace SecretHistories.Commands
         public string Id { get; set; }
         public int Quantity { get; set; }
         public Dictionary<string,int> Mutations { get; set; }
-        public IlluminateLibrarian IlluminateLibrarian { get; set; }
+        public Dictionary<string,string> Illuminations { get; set; }
         public bool Defunct { get; set; }
         public float LifetimeRemaining { get; set; }
 
@@ -36,8 +36,8 @@ namespace SecretHistories.Commands
         {
             Id = elementId;
             Quantity = quantity;
-           IlluminateLibrarian=new IlluminateLibrarian();
            Mutations=Element.EmptyMutationsDictionary();
+           Illuminations = Element.EmptyIlluminationsDictionary();
         }
 
         public ITokenPayload Execute(Context context)
@@ -55,7 +55,9 @@ namespace SecretHistories.Commands
                 foreach (var m in Mutations)
                     elementStack.SetMutation(m.Key, m.Value, false);
 
-                elementStack.IlluminateLibrarian = IlluminateLibrarian; }
+                foreach(var i in Illuminations)
+                    elementStack.SetIllumination(i.Key,i.Value);
+            }
             catch (Exception e)
             {
 

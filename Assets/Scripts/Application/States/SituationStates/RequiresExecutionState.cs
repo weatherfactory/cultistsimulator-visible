@@ -7,6 +7,7 @@ using SecretHistories.Enums;
 using SecretHistories.UI;
 using SecretHistories.Interfaces;
 using Assets.Logic;
+using Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Core;
 using SecretHistories.Constants;
 using SecretHistories.Spheres;
@@ -68,10 +69,9 @@ namespace SecretHistories.States
 
             if (linkedRecipe != null)
             {
-                //send the completion description before we move on
-                INotification notification = new Notification(situation.Recipe.Label, situation.Recipe.Description);
-                situation.SendNotificationToSubscribers(notification);
-
+                var addNoteCommand=new AddNoteCommand(situation.Recipe.Label,situation.Recipe.Description);
+                situation.ExecuteTokenEffectCommand(addNoteCommand);
+                
                  situation.ActivateRecipe(linkedRecipe);
                 
                 if (situation.TimeRemaining > 0) //don't play a sound if we loop through multiple linked ones

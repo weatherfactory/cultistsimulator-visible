@@ -204,6 +204,11 @@ namespace SecretHistories.Entities
         {
             return new Dictionary<string, int>();
         }
+
+        public static Dictionary<string, string> EmptyIlluminationsDictionary()
+        {
+            return new Dictionary<string, string>();
+        }
     }
 
 

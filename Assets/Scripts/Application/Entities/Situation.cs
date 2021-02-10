@@ -325,6 +325,20 @@ namespace SecretHistories.Entities {
             }
         }
 
+        public bool ReceiveNote(string label, string description)
+        {
+            var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
+
+            var notesSphere = GetSingleSphereByCategory(SphereCategory.Notes);
+            var newNote = notesSphere.ProvisionElementStackToken(noteElementId, 1,
+                new Context(Context.ActionSource.SituationEffect));
+
+            var addNoteCommand=new AddNoteCommand(label,description);
+            newNote.ExecuteTokenEffectCommand(addNoteCommand);
+            
+            return true;
+        }
+
         public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
         {
             //
@@ -342,7 +356,7 @@ namespace SecretHistories.Entities {
 
         public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)
         {
-            //
+            command.ExecuteOn(this);
         }
 
 
@@ -491,19 +505,6 @@ namespace SecretHistories.Entities {
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update));
         }
 
-        public void SendNotificationToSubscribers(INotification notification)
-        {
-            //Check for possible text refinements based on the aspects in context
-            var aspectsInSituation = GetAspects(true);
-            TextRefiner tr = new TextRefiner(aspectsInSituation);
-
-
-            Notification refinedNotification = new Notification(notification.Title,
-                tr.RefineString(notification.Description));
-
-            foreach (var subscriber in _subscribers)
-                subscriber.ReceiveNotification(refinedNotification);
-        }
 
         public void SendCommandToSubscribers(IAffectsTokenCommand command)
         {
@@ -529,6 +530,15 @@ namespace SecretHistories.Entities {
             if (recipeExecutionCommands.First().Recipe.Id != Recipe.Id)
                 Recipe = recipeExecutionCommands.First().Recipe;
 
+
+            //Check for possible text refinements based on the aspects in context
+            var aspectsInSituation = GetAspects(true);
+            TextRefiner tr = new TextRefiner(aspectsInSituation);
+
+            var addNoteCommand = new AddNoteCommand(Recipe.Label, tr.RefineString(Recipe.Description));
+
+            ExecuteTokenEffectCommand(addNoteCommand);
+            
 
             foreach (var c in recipeExecutionCommands)
             {
@@ -835,6 +845,11 @@ namespace SecretHistories.Entities {
             }
 
             return string.Empty;
+        }
+
+        public void SetIllumination(string key, string value)
+        {
+    //
         }
 
         public Timeshadow GetTimeshadow()

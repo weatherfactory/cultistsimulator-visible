@@ -19,7 +19,8 @@ namespace SecretHistories.Abstract
       bool Unique { get; }
       string Icon { get; }
       string GetIllumination(string key);
-      Timeshadow GetTimeshadow();
+      void SetIllumination(string key, string value);
+        Timeshadow GetTimeshadow();
 
     }
 }

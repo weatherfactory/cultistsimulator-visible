@@ -344,8 +344,7 @@ namespace SecretHistories.Constants
                 
                 }
                 
-                foreach(var n in notes)
-                    situation.SendNotificationToSubscribers(n.Value);
+
             }
 
         }

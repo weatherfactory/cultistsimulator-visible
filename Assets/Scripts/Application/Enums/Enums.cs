@@ -74,6 +74,7 @@ namespace SecretHistories.Enums
     public enum SphereCategory
     {
         Threshold,
+        Notes,
         SituationStorage,
         Output,
         World,

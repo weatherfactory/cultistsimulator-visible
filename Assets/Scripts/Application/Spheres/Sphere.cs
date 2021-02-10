@@ -197,9 +197,8 @@ namespace SecretHistories.Spheres
                 legacyElementStackCreationSpecification.Quantity);
 
             stackCreationCommand.Mutations = legacyElementStackCreationSpecification.Mutations;
+            stackCreationCommand.Illuminations = legacyElementStackCreationSpecification.Illuminations;
             stackCreationCommand.LifetimeRemaining = legacyElementStackCreationSpecification.LifetimeRemaining;
-            stackCreationCommand.IlluminateLibrarian =
-                new IlluminateLibrarian(legacyElementStackCreationSpecification.Illuminations);
             if (legacyElementStackCreationSpecification.LifetimeRemaining > 0)
                 stackCreationCommand.LifetimeRemaining = legacyElementStackCreationSpecification.LifetimeRemaining;
 

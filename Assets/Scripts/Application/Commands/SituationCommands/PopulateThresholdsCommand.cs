@@ -27,12 +27,12 @@ namespace SecretHistories.Commands.SituationCommands
             if (_populateWithThresholds.Count > 0) //only execute if there are any relevant slot instructions. We don't want to clear existing slots with a recipe that doesn't specify them
                 //this may be irrelevant if we only add a command when we need one
             {
-                var attachment = situation.GetSituationDominionsForCommandCategory(this.CommandCategory).FirstOrDefault();
-                if(attachment!=null)
+                var dominion = situation.GetSituationDominionsForCommandCategory(this.CommandCategory).FirstOrDefault();
+                if(dominion!=null)
                 {
-                    attachment.ClearThresholds();
+                    dominion.ClearThresholds();
                     foreach (var spec in _populateWithThresholds)
-                        attachment.CreateThreshold(spec);
+                        dominion.CreateSphere(spec);
                     return true;
                 }
             }
