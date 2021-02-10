@@ -20,6 +20,7 @@ using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
 using Assets.Logic;
 using Assets.Scripts.Application.Infrastructure.Events;
+using Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Abstract;
 using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
@@ -29,6 +30,7 @@ using SecretHistories.Logic;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using SecretHistories.Utilities.Exetensions;
+using Steamworks;
 using UnityEngine.InputSystem;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
@@ -181,6 +183,9 @@ namespace SecretHistories.UI {
             if (forSphereCategory == SphereCategory.Dormant)
                 return typeof(MinimalManifestation);
 
+            if (forSphereCategory == SphereCategory.Notes)
+                return typeof(TextManifestation);
+
             return typeof(CardManifestation);
         }
 
@@ -299,7 +304,10 @@ namespace SecretHistories.UI {
         {
             SetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY, label);
             SetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, description);
-          return true;
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update, new Context(Context.ActionSource.Unknown)));
+
+
+            return true;
         }
 
 

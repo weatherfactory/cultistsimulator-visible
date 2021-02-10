@@ -80,7 +80,7 @@ namespace Assets.Scripts.Application.Meta
             string description = input.text;
             var addNoteCommand=new AddNoteCommand(title,description);
 
-       situation.ExecuteTokenEffectCommand(addNoteCommand);
+          situation.ExecuteTokenEffectCommand(addNoteCommand);
             }
     }
 }

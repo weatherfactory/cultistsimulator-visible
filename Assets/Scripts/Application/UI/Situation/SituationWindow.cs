@@ -39,7 +39,7 @@ namespace SecretHistories.UI {
         [Space]
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI title;
-		public PaginatedText PaginatedNotes;
+
 
 
         [Space]
@@ -92,8 +92,7 @@ namespace SecretHistories.UI {
             OnSphereAdded.AddListener(newSituation.AttachSphere);
             OnSphereRemoved.AddListener(newSituation.RemoveSphere);
 
-    
-            PaginatedNotes.SetText(newSituation.Description);
+            
             startButton.onClick.AddListener(OnStart.Invoke);
 
 
@@ -153,7 +152,6 @@ namespace SecretHistories.UI {
 				SoundManager.PlaySfx("SituationWindowShow");
                 canvasGroupFader.Show();
                 positioner.Show(canvasGroupFader.durationTurnOn, startPosition); // Animates the window (position allows optional change in position)
-                PaginatedNotes.SetFinalPage();
             }
 
 
@@ -176,13 +174,6 @@ namespace SecretHistories.UI {
 
         public void DisplayPredictedRecipe(Situation s)
         {
-
-            Title = s.CurrentRecipePrediction.Title;
-            
-            if(s.CurrentRecipePrediction. HintOnly)
-                PaginatedNotes.SetText("<i>" + s.CurrentRecipePrediction.DescriptiveText + "</i>");
-            else
-                PaginatedNotes.SetText(s.CurrentRecipePrediction.DescriptiveText);
 
 
             if(s.Recipe.Craftable)
@@ -236,10 +227,6 @@ namespace SecretHistories.UI {
 
         // ACTIONS
 
-        public IEnumerable<ISituationNote> GetNotes() {
-            return PaginatedNotes.GetCurrentTexts();
-        }
-
         public void SituationStateChanged(Situation situation)
         {
             
@@ -262,10 +249,6 @@ namespace SecretHistories.UI {
 
         }
 
-        public void ReceiveNotification(INotification n)
-        {
-            PaginatedNotes.AddText(n.Description);
-        }
 
         public void ReceiveCommand(IAffectsTokenCommand command)
         {
