@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Spheres;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace SecretHistories.UI
 {
-    public class ThresholdsGridArrangement: AbstractThresholdArrangement
+    public class ThresholdsGridArrangement: AbstractSphereArrangement
     {
         [SerializeField] RectTransform rect;
         [SerializeField] Text clickCatcher;
@@ -62,8 +63,10 @@ namespace SecretHistories.UI
 
         //}
 
-        public override void ArrangeThreshold(ThresholdSphere threshold, int index)
+        public override void ArrangeSphere(Sphere sphere, int index)
         {
+            var threshold = sphere as ThresholdSphere;
+
             threshold.viz.rectTrans.SetParent(rect);
             threshold.viz.rectTrans.localScale = Vector3.one;
             threshold.viz.rectTrans.localPosition = Vector3.zero;

@@ -1,29 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using SecretHistories.Commands;
-using SecretHistories.Entities;
+﻿using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Interfaces;
+using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.States.TokenStates;
-using SecretHistories.UI;
-using SecretHistories.UI.Scripts;
-using SecretHistories.Constants;
-using SecretHistories.Constants.Events;
-using SecretHistories.Spheres;
+using System.Linq;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-namespace SecretHistories.UI {
+namespace SecretHistories.UI
+{
 
-    
+
     public class ThresholdSphere : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
@@ -64,7 +56,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public void Initialise(SphereSpec sphereSpec,SpherePath pathForThisThreshold)
+        public override void Initialise(SphereSpec sphereSpec,SpherePath pathForThisThreshold)
         {
             GoverningSphereSpec = sphereSpec;
             _thresholdSpherePath = pathForThisThreshold;
@@ -165,6 +157,14 @@ namespace SecretHistories.UI {
 
             slotIconHolder.transform.SetAsLastSibling();
             
+        }
+
+        public override bool Retire(SphereRetirementType retirementType)
+        {
+            if (gameObject.activeInHierarchy)
+                return  viz.TriggerHideAnim(); //this should (and currently does, tho untidily) call Retire after it's done.
+            else
+                return base.Retire(SphereRetirementType.Graceful);
         }
 
         public Token GetTokenInSlot() {
@@ -293,6 +293,7 @@ namespace SecretHistories.UI {
             slotGlow.Hide(false);
 
         }
+
     }
 
 

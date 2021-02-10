@@ -18,16 +18,16 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace SecretHistories.UI {
-    public class ThresholdsWrangler : MonoBehaviour,ISphereEventSubscriber {
+    public class SpheresWrangler : MonoBehaviour,ISphereEventSubscriber {
 
-        public ThresholdSphere thresholdSpherePrefab;
-        [SerializeField] private AbstractThresholdArrangement thresholdArrangement;
+        public Sphere SpherePrefab;
+        [SerializeField] private AbstractSphereArrangement sphereArrangement;
 
         public readonly OnSphereAddedEvent OnSphereAdded = new OnSphereAddedEvent();
         public readonly OnSphereRemovedEvent OnSphereRemoved = new OnSphereRemovedEvent();
 
-        private Dictionary<ThresholdSphere, FucinePath> _thresholds =
-          new Dictionary<ThresholdSphere, FucinePath>();
+        private Dictionary<Sphere, FucinePath> _spheres =
+          new Dictionary<Sphere, FucinePath>();
 
         private Verb _verb;
 
@@ -40,58 +40,55 @@ namespace SecretHistories.UI {
         /// <param name="situationPath"></param>
         /// <param name="verb"></param>
         /// <returns></returns>
-        public virtual ThresholdSphere BuildPrimaryThreshold(SphereSpec sphereSpec,SituationPath situationPath, Verb verb)
+        public virtual Sphere BuildPrimarySphere(SphereSpec sphereSpec,SituationPath situationPath, Verb verb)
         {
             RemoveAllThresholds();
 
             _verb = verb;
 
-            return AddThreshold(sphereSpec,situationPath);
+            return AddSphere(sphereSpec,situationPath);
 
         }
 
         
         public void RemoveAllThresholds()
         {
-            var thresholdsToRetire = new List<ThresholdSphere>(_thresholds.Keys);
+            var thresholdsToRetire = new List<Sphere>(_spheres.Keys);
             
             foreach(var t in thresholdsToRetire)
-                RemoveThreshold(t);
+                RemoveSphere(t);
         }
 
-        public void RemoveThreshold(ThresholdSphere thresholdToRemove) {
+        public void RemoveSphere(Sphere sphereToRemove) {
 
-            OnSphereRemoved.Invoke(thresholdToRemove);
-            _thresholds.Remove(thresholdToRemove);
+            OnSphereRemoved.Invoke(sphereToRemove);
+            _spheres.Remove(sphereToRemove);
 
-            if (gameObject.activeInHierarchy)
-                thresholdToRemove.viz.TriggerHideAnim();
-            else
-                thresholdToRemove.Retire(SphereRetirementType.Graceful);
+            sphereToRemove.Retire(SphereRetirementType.Graceful);
         }
 
        
 
-        protected ThresholdSphere AddThreshold(SphereSpec sphereSpec,FucinePath parentPath)
+        protected Sphere AddSphere(SphereSpec sphereSpec,FucinePath parentPath)
         {
-            var newThreshold = GameObject.Instantiate(thresholdSpherePrefab);
-            _thresholds.Add(newThreshold, parentPath);
+            var newSphere = GameObject.Instantiate(SpherePrefab);
+            _spheres.Add(newSphere, parentPath);
             SpherePath newThresholdPath = new SpherePath(parentPath, sphereSpec.Id);
-            newThreshold.Initialise(sphereSpec, newThresholdPath);
+            newSphere.Initialise(sphereSpec, newThresholdPath);
 
             
 
-            OnSphereAdded.Invoke(newThreshold);
-            newThreshold.Subscribe(this);
+            OnSphereAdded.Invoke(newSphere);
+            newSphere.Subscribe(this);
 
-            thresholdArrangement.ArrangeThreshold(newThreshold, _thresholds.Keys.Count);
+            sphereArrangement.ArrangeSphere(newSphere, _spheres.Keys.Count);
 
 
 
-            return newThreshold;
+            return newSphere;
         }
 
-        protected void AddThresholdChildrenForToken(Token token, FucinePath parentPath)
+        protected void AddChildSpheresForToken(Token token, FucinePath parentPath)
         {
             var elementInToken = Watchman.Get<Compendium>().GetEntityById<Element>(token.Payload.Id);
 
@@ -100,19 +97,19 @@ namespace SecretHistories.UI {
 
             foreach (var childSlotSpecification in childSlotSpecs)
             {
-                AddThreshold(childSlotSpecification, parentPath);
+                AddSphere(childSlotSpecification, parentPath);
             }
         }
         
-        private void RemoveThresholdChildren(Sphere thresholdToOrphan)
+        private void RemoveChildSpheres(Sphere sphereToOrphan)
         {
-            if(thresholdToOrphan.GetElementStacks().Any())
-                NoonUtility.LogWarning($"This code currently assumes thresholds can only contain one stack token. One ({thresholdToOrphan.GetElementStacks().First().Id}) has been removed from {thresholdToOrphan.GetPath()}, but at least one remains - you may see unexpected results.");
+            if(sphereToOrphan.GetElementStacks().Any())
+                NoonUtility.LogWarning($"This code currently assumes thresholds can only contain one stack token. One ({sphereToOrphan.GetElementStacks().First().Id}) has been removed from {sphereToOrphan.GetPath()}, but at least one remains - you may see unexpected results.");
 
-            var thresholdstoRemove=
-                new List<ThresholdSphere>(_thresholds.Where(kvp=>kvp.Value.Equals(thresholdToOrphan.GetPath())).Select(kvp=>kvp.Key));
-            foreach(var t in thresholdstoRemove)
-                RemoveThreshold(t);
+            var spheresToRemove =
+                new List<Sphere>(_spheres.Where(kvp=>kvp.Value.Equals(sphereToOrphan.GetPath())).Select(kvp=>kvp.Key));
+            foreach(var s in spheresToRemove)
+                RemoveSphere(s);
         }
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
@@ -122,10 +119,10 @@ namespace SecretHistories.UI {
                 NoonUtility.LogWarning($"Tokens with valid element stacks seem to have been added ({args.TokenAdded.name}) and removed ({args.TokenRemoved.name}) in a single event. This will likely cause issues, but we'll go ahead with both.");
 
             if(args.TokenAdded!=null)
-                AddThresholdChildrenForToken(args.TokenAdded,args.Sphere.GetPath());
+                AddChildSpheresForToken(args.TokenAdded,args.Sphere.GetPath());
 
             if (args.TokenRemoved!=null)
-                RemoveThresholdChildren(args.Sphere);
+                RemoveChildSpheres(args.Sphere);
 
             //if a token has been removed: remove any child thresholds
         }

@@ -131,6 +131,11 @@ namespace SecretHistories.Spheres
                 this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
+        public virtual void Initialise(SphereSpec sphereSpec, SpherePath pathForThisThreshold)
+        {
+            //
+        }
+
         public void SetSituationPath(SituationPath situationPath)
         {
             AttachedToSituation = situationPath;

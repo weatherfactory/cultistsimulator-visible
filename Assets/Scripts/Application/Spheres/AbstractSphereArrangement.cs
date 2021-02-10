@@ -11,13 +11,7 @@ namespace SecretHistories.UI
 {
     public abstract class AbstractSphereArrangement : MonoBehaviour
     {
-        public abstract void ArrangeSphere(Sphere sphere, int index);
-    }
-
-    //we can't use an interface if we want it to be a serializable field
-    public class SimpleSphereArrangement: AbstractSphereArrangement
-    {
-        public override void ArrangeSphere(Sphere sphere, int index)
+        public virtual void ArrangeSphere(Sphere sphere, int index)
         {
             sphere.transform.SetParent(this.transform);
             sphere.transform.localScale = Vector3.one;
@@ -25,6 +19,7 @@ namespace SecretHistories.UI
             sphere.transform.localRotation = Quaternion.identity;
         }
     }
+
 
 
 }

@@ -23,14 +23,14 @@ using SecretHistories.Spheres;
 namespace SecretHistories.UI {
     public class Dominion:MonoBehaviour {
 
-        [SerializeField] ThresholdsWrangler thresholdsWrangler;
+        [SerializeField] SpheresWrangler _spheresWrangler;
         [SerializeField] CanvasGroupFader canvasGroupFader;
         public List<StateEnum> VisibleForStates;
         public List<CommandCategory> RespondToCommandCategories;
 
-        public OnSphereAddedEvent OnSphereAdded => thresholdsWrangler.OnSphereAdded;
+        public OnSphereAddedEvent OnSphereAdded => _spheresWrangler.OnSphereAdded;
 
-        public OnSphereRemovedEvent OnSphereRemoved => thresholdsWrangler.OnSphereRemoved;
+        public OnSphereRemovedEvent OnSphereRemoved => _spheresWrangler.OnSphereRemoved;
         private Situation _situation;
 
         public void RegisterFor(Situation situation)
@@ -60,12 +60,12 @@ namespace SecretHistories.UI {
             canvasGroupFader.Hide();
         }
 
-        public void CreateThreshold(SphereSpec spec)
+        public void CreateSphere(SphereSpec spec)
         {
             foreach (var activeInState in VisibleForStates)
                 spec.MakeActiveInState(activeInState);
 
-            thresholdsWrangler.BuildPrimaryThreshold(spec,_situation.Path,_situation.Verb);
+            _spheresWrangler.BuildPrimarySphere(spec,_situation.Path,_situation.Verb);
         }
 
         public bool VisibleFor(StateEnum state)
@@ -80,7 +80,7 @@ namespace SecretHistories.UI {
 
         public void ClearThresholds()
         {
-            thresholdsWrangler.RemoveAllThresholds();
+            _spheresWrangler.RemoveAllThresholds();
         }
 
 

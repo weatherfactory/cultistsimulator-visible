@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdsWrangler: {fileID: 1005240876968007683}
+  _spheresWrangler: {fileID: 1005240876968007683}
   canvasGroupFader: {fileID: 114848985628778574}
   VisibleForStates: 02000000
   RespondToCommandCategories: 02000000
@@ -1628,9 +1628,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdSpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+  SpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
     type: 3}
-  thresholdArrangement: {fileID: 4482476914772828801}
+  sphereArrangement: {fileID: 4482476914772828801}
 --- !u!1 &1287574504788578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,7 +2949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdsWrangler: {fileID: 3951079214793869473}
+  _spheresWrangler: {fileID: 3951079214793869473}
   canvasGroupFader: {fileID: 114595233805244828}
   VisibleForStates: 04000000
   RespondToCommandCategories: 05000000
@@ -2965,8 +2965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdSpherePrefab: {fileID: 0}
-  thresholdArrangement: {fileID: 3227254059054473584}
+  SpherePrefab: {fileID: 0}
+  sphereArrangement: {fileID: 3227254059054473584}
 --- !u!114 &3227254059054473584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3275,6 +3275,7 @@ GameObject:
   - component: {fileID: 5628511893131723470}
   - component: {fileID: 1223493030995727280}
   - component: {fileID: 2645367709224873335}
+  - component: {fileID: 2492295133807206169}
   m_Layer: 5
   m_Name: NoteDominion
   m_TagString: Untagged
@@ -3334,10 +3335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdsWrangler: {fileID: 5628511893131723470}
+  _spheresWrangler: {fileID: 5628511893131723470}
   canvasGroupFader: {fileID: 2645367709224873335}
   VisibleForStates: 0000000001000000020000000300000004000000
-  RespondToCommandCategories: 
+  RespondToCommandCategories: 06000000
 --- !u!114 &5628511893131723470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3350,8 +3351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdSpherePrefab: {fileID: 0}
-  thresholdArrangement: {fileID: 0}
+  SpherePrefab: {fileID: 0}
+  sphereArrangement: {fileID: 2492295133807206169}
 --- !u!225 &1223493030995727280
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3379,6 +3380,18 @@ MonoBehaviour:
   blockRaysDuringFade: 0
   durationTurnOn: 0
   durationTurnOff: 0
+--- !u!114 &2492295133807206169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700666214586562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f28cfca5dad0054ba208ab47434a9c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1743531545229948
 GameObject:
   m_ObjectHideFlags: 0
@@ -4025,7 +4038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdsWrangler: {fileID: 2663436766044327619}
+  _spheresWrangler: {fileID: 2663436766044327619}
   canvasGroupFader: {fileID: 114412774732763762}
   VisibleForStates: 00000000
   RespondToCommandCategories: 01000000
@@ -4061,9 +4074,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdSpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+  SpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
     type: 3}
-  thresholdArrangement: {fileID: 8157357256015802240}
+  sphereArrangement: {fileID: 8157357256015802240}
 --- !u!225 &225437182253246534
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4385,7 +4398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdsWrangler: {fileID: 3604664568726823840}
+  _spheresWrangler: {fileID: 3604664568726823840}
   canvasGroupFader: {fileID: 8146654841912857010}
   VisibleForStates: 02000000
   RespondToCommandCategories: 04000000
@@ -4401,6 +4414,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdSpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
-    type: 3}
-  thresholdArrangement: {fileID: 1617814118146466013}
+  SpherePrefab: {fileID: 0}
+  sphereArrangement: {fileID: 1617814118146466013}
