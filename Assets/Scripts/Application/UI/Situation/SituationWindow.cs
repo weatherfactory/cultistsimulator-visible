@@ -127,6 +127,7 @@ namespace SecretHistories.UI {
 
             if(!_payload.IsOpen && this.IsVisible)
                 PayloadRequestsHide();
+
         }
 
         public void TryResizeWindow(int slotsCount)
@@ -174,7 +175,6 @@ namespace SecretHistories.UI {
 
         public void DisplayPredictedRecipe(Situation s)
         {
-
 
             if(s.Recipe.Craftable)
             {
