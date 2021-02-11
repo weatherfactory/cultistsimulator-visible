@@ -72,7 +72,7 @@ public class SphereSpec: AbstractEntity<SphereSpec>
         _activeInStates.Add(state);
     }
 
-    public SphereSpec()
+    protected SphereSpec()
     {
 
     }

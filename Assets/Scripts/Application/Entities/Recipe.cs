@@ -143,7 +143,7 @@ namespace SecretHistories.Entities
         [FucineSubEntity(typeof(DeckSpec))]
         public DeckSpec InternalDeck { get; set; }
 
-        public Recipe()
+        protected Recipe()
         {
 
         }
