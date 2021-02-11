@@ -31,7 +31,7 @@ namespace SecretHistories.UI {
           new Dictionary<Sphere, FucinePath>();
 
         private Verb _verb;
-
+        public Verb Verb => _verb;
 
 
         /// <summary>
@@ -85,24 +85,14 @@ namespace SecretHistories.UI {
             return newSphere;
         }
 
-        protected void AddChildSpheresForToken(Token token, FucinePath parentPath)
+        protected void AddChildSpheresForToken(Sphere sphere, Token tokenAdded)
         {
-            var elementInToken = Watchman.Get<Compendium>().GetEntityById<Element>(token.Payload.Id);
-
-            var childSlotSpecs= elementInToken.Slots.Where(cs => cs.ActionId == _verb.Id || cs.ActionId == string.Empty).ToList();
-            
+            var childSlotSpecs = sphere.GetChildSpheresSpecsToAddIfThisTokenAdded(tokenAdded, this);
 
             foreach (var childSlotSpecification in childSlotSpecs)
             {
-                AddSphere(childSlotSpecification, parentPath);
+                AddSphere(childSlotSpecification, sphere.GetPath());
             }
-            if(token.Payload.Id== Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId)
-                //I know, but bear with me
-            {
-                var sphereSpec=new SphereSpec(new NotesSphereSpecIdentifierStrategy(_spheres.Count));
-                AddSphere(sphereSpec,parentPath);
-            }
-
         }
         
         private void RemoveChildSpheres(Sphere sphereToOrphan)
@@ -123,7 +113,7 @@ namespace SecretHistories.UI {
                 NoonUtility.LogWarning($"Tokens with valid element stacks seem to have been added ({args.TokenAdded.name}) and removed ({args.TokenRemoved.name}) in a single event. This will likely cause issues, but we'll go ahead with both.");
 
             if(args.TokenAdded!=null)
-                AddChildSpheresForToken(args.TokenAdded,args.Sphere.GetPath());
+                AddChildSpheresForToken(args.Sphere,args.TokenAdded);
 
             if (args.TokenRemoved!=null)
                 RemoveChildSpheres(args.Sphere);
@@ -135,6 +125,11 @@ namespace SecretHistories.UI {
         public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
             //
+        }
+
+        public int GetSpheresCurrentlyWrangledCount()
+        {
+            return _spheres.Count;
         }
     }
 }

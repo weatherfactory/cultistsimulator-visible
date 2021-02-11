@@ -316,8 +316,6 @@ namespace SecretHistories.Entities {
                 TryPushDraggedStackIntoThreshold(token);
                 if (!IsOpen)
                     OpenAt(token.Location);
-
-
             }
             else
             {
@@ -346,7 +344,6 @@ namespace SecretHistories.Entities {
                    }
                    var notesSphereSpec=new SphereSpec(new NotesSphereSpecIdentifierStrategy(0));
                    emptyNoteSphere=notesDominion.CreatePrimarySphere(notesSphereSpec);
-
                }
             }
             catch (Exception e)

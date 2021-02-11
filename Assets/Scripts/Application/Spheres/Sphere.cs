@@ -125,6 +125,13 @@ namespace SecretHistories.Spheres
             flock.RemoveAngel(angel);
         }
 
+        public virtual List<SphereSpec> GetChildSpheresSpecsToAddIfThisTokenAdded(Token t,SpheresWrangler s)
+        {
+            var elementInToken = Watchman.Get<Compendium>().GetEntityById<Element>(t.Payload.Id);
+
+            var childSlotSpecs = elementInToken.Slots.Where(cs => cs.ActionId == s.Verb.Id || cs.ActionId == string.Empty).ToList();
+            return childSlotSpecs;
+        }
 
         public virtual void Awake()
         {
