@@ -11,7 +11,7 @@ namespace SecretHistories.UI
 {
     public abstract class AbstractSphereArrangement : MonoBehaviour
     {
-        public virtual void ArrangeSphere(Sphere sphere, int index)
+        public virtual void AddNewSphereToArrangement(Sphere sphere, int index)
         {
             sphere.transform.SetParent(this.transform);
             sphere.transform.localScale = Vector3.one;

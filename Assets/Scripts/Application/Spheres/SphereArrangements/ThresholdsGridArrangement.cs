@@ -63,7 +63,7 @@ namespace SecretHistories.UI
 
         //}
 
-        public override void ArrangeSphere(Sphere sphere, int index)
+        public override void AddNewSphereToArrangement(Sphere sphere, int index)
         {
             var threshold = sphere as ThresholdSphere;
 

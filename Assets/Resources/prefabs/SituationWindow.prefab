@@ -2734,7 +2734,7 @@ GameObject:
   - component: {fileID: 5628511893131723470}
   - component: {fileID: 1223493030995727280}
   - component: {fileID: 2645367709224873335}
-  - component: {fileID: 2492295133807206169}
+  - component: {fileID: 6070173378976685744}
   m_Layer: 5
   m_Name: NoteDominion
   m_TagString: Untagged
@@ -2791,7 +2791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpherePrefab: {fileID: 1127656137174522416, guid: 8315d660ae3773442ac46832ef4f36d4,
     type: 3}
-  sphereArrangement: {fileID: 2492295133807206169}
+  sphereArrangement: {fileID: 6070173378976685744}
 --- !u!225 &1223493030995727280
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2819,7 +2819,7 @@ MonoBehaviour:
   blockRaysDuringFade: 0
   durationTurnOn: 0
   durationTurnOff: 0
---- !u!114 &2492295133807206169
+--- !u!114 &6070173378976685744
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2828,7 +2828,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1700666214586562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f28cfca5dad0054ba208ab47434a9c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f7c5f81ae9ba4441ad90a918d4c482f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1743531545229948

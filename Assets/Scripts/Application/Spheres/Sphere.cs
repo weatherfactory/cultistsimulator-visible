@@ -696,6 +696,19 @@ namespace SecretHistories.Spheres
             return bestGuessReferencePosition;
         }
 
+        public void Shroud()
+        {
+            var canvasGroup = gameObject.GetComponent<CanvasGroup>();
+            if (canvasGroup != null)
+                canvasGroup.alpha = 0f;
+        }
+
+        public void Reveal()
+        {
+            var canvasGroup = gameObject.GetComponent<CanvasGroup>();
+            if (canvasGroup != null)
+                canvasGroup.alpha = 1f;
+        }
     }
 
 }
