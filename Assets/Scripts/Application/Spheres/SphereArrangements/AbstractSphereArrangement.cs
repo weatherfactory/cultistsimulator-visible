@@ -11,12 +11,12 @@ namespace SecretHistories.UI
 {
     public abstract class AbstractSphereArrangement : MonoBehaviour
     {
-        public virtual void AddNewSphereToArrangement(Sphere sphere, int index)
+        public virtual void AddNewSphereToArrangement(Sphere newSphere, int index)
         {
-            sphere.transform.SetParent(this.transform);
-            sphere.transform.localScale = Vector3.one;
-            sphere.transform.localPosition = Vector3.zero;
-            sphere.transform.localRotation = Quaternion.identity;
+            newSphere.transform.SetParent(this.transform);
+            newSphere.transform.localScale = Vector3.one;
+            newSphere.transform.localPosition = Vector3.zero;
+            newSphere.transform.localRotation = Quaternion.identity;
         }
     }
 
