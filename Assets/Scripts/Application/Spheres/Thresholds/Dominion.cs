@@ -52,7 +52,6 @@ namespace SecretHistories.UI {
         public void Show()
         {
             canvasGroupFader.Show();
-
         }
 
         public void Hide()
@@ -60,12 +59,13 @@ namespace SecretHistories.UI {
             canvasGroupFader.Hide();
         }
 
-        public void CreateSphere(SphereSpec spec)
+        public Sphere CreatePrimarySphere(SphereSpec spec)
         {
+            //ensure that the spec will be visible in states for which this dominion is active
             foreach (var activeInState in VisibleForStates)
                 spec.MakeActiveInState(activeInState);
 
-            _spheresWrangler.BuildPrimarySphere(spec,_situation.Path,_situation.Verb);
+            return  _spheresWrangler.BuildPrimarySphere(spec,_situation.Path,_situation.Verb);
         }
 
         public bool VisibleFor(StateEnum state)
@@ -78,9 +78,9 @@ namespace SecretHistories.UI {
             return RespondToCommandCategories.Contains(category);
         }
 
-        public void ClearThresholds()
+        public void RemoveAllSpheres()
         {
-            _spheresWrangler.RemoveAllThresholds();
+            _spheresWrangler.RemoveAllSpheres();
         }
 
 

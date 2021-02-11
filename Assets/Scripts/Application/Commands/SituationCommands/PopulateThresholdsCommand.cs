@@ -30,9 +30,9 @@ namespace SecretHistories.Commands.SituationCommands
                 var dominion = situation.GetSituationDominionsForCommandCategory(this.CommandCategory).FirstOrDefault();
                 if(dominion!=null)
                 {
-                    dominion.ClearThresholds();
+                    dominion.RemoveAllSpheres();
                     foreach (var spec in _populateWithThresholds)
-                        dominion.CreateSphere(spec);
+                        dominion.CreatePrimarySphere(spec);
                     return true;
                 }
             }

@@ -329,8 +329,31 @@ namespace SecretHistories.Entities {
         {
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
 
-            var notesSphere = GetSingleSphereByCategory(SphereCategory.Notes);
-            var newNote = notesSphere.ProvisionElementStackToken(noteElementId, 1,
+            var notesSpheres = GetSpheresByCategory(SphereCategory.Notes);
+            Sphere emptyNoteSphere;
+            try
+            {
+               emptyNoteSphere = notesSpheres.SingleOrDefault(ns => ns.GetTotalStacksCount() == 0);
+               if(emptyNoteSphere==null)
+               {
+                   var notesDominion = GetSituationDominionsForCommandCategory(CommandCategory.Notes).FirstOrDefault();
+                   if (notesDominion == null)
+                   {
+                       NoonUtility.Log($"No notes sphere and no notes dominion found in {Path}: we won't add note {label}, then.");
+                        return false;
+                   }
+                   var notesSphereSpec=new SphereSpec("notes0");
+                   emptyNoteSphere=notesDominion.CreatePrimarySphere(notesSphereSpec);
+
+               }
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log($"More than one empty notes sphere found in {Path} when we try to add a note. We'll take the first empty notes sphere and put a note in that.");
+                emptyNoteSphere=notesSpheres.First(ns => ns.GetTotalStacksCount() == 0);
+            }
+
+            var newNote = emptyNoteSphere.ProvisionElementStackToken(noteElementId, 1,
                 new Context(Context.ActionSource.SituationEffect));
 
             var addNoteCommand=new AddNoteCommand(label,description);

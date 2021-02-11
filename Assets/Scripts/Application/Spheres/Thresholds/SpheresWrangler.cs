@@ -42,7 +42,7 @@ namespace SecretHistories.UI {
         /// <returns></returns>
         public virtual Sphere BuildPrimarySphere(SphereSpec sphereSpec,SituationPath situationPath, Verb verb)
         {
-            RemoveAllThresholds();
+            RemoveAllSpheres();
 
             _verb = verb;
 
@@ -51,7 +51,7 @@ namespace SecretHistories.UI {
         }
 
         
-        public void RemoveAllThresholds()
+        public void RemoveAllSpheres()
         {
             var thresholdsToRetire = new List<Sphere>(_spheres.Keys);
             
@@ -76,15 +76,11 @@ namespace SecretHistories.UI {
             SpherePath newThresholdPath = new SpherePath(parentPath, sphereSpec.Id);
             newSphere.Initialise(sphereSpec, newThresholdPath);
 
-            
-
             OnSphereAdded.Invoke(newSphere);
             newSphere.Subscribe(this);
 
             sphereArrangement.ArrangeSphere(newSphere, _spheres.Keys.Count);
-
-
-
+            
             return newSphere;
         }
 
