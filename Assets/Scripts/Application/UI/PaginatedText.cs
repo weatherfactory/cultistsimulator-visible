@@ -48,10 +48,7 @@ namespace SecretHistories.UI {
 		}
 
         public void SetText(string description) {
-            //we often add a . to indicate that the description is intentionally empty.
-            //if we do that, or if it's a mistaken empty string, just go back.
-            if (description == "." || description == string.Empty)
-                return;
+          
 
             if (Notes.Count == 1 && Notes[0].Description == description)
                 return;

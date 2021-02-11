@@ -700,14 +700,22 @@ namespace SecretHistories.Spheres
         {
             var canvasGroup = gameObject.GetComponent<CanvasGroup>();
             if (canvasGroup != null)
+            {
                 canvasGroup.alpha = 0f;
+                canvasGroup.blocksRaycasts = false;
+                canvasGroup.interactable = false;
+            }
         }
 
         public void Reveal()
         {
             var canvasGroup = gameObject.GetComponent<CanvasGroup>();
             if (canvasGroup != null)
+            {
                 canvasGroup.alpha = 1f;
+                canvasGroup.blocksRaycasts = true;
+                canvasGroup.interactable = true;
+            }
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Enums;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEditor.Experimental.GraphView;
@@ -35,8 +36,32 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
 
     //now add, and hide, the new sphere
             _arrangingSpheres.Add(newSphere);
+            (newSphere as NotesSphere).OnNoteNavigation += RespondToNoteNavigation;
             newSphere.Shroud();
 
+        }
+
+        public void RespondToNoteNavigation(NoteNavigationArgs args)
+        {
+            var indexToShow = args.Index;
+            
+            if (indexToShow + 1 > _arrangingSpheres.Count)
+            {
+                NoonUtility.Log(
+                    $"Trying to show notes sphere {indexToShow}, but there are only {_arrangingSpheres.Count} spheres in the list under consideration.");
+                return;
+            }
+
+            foreach (var s in _arrangingSpheres)
+            {
+                int thisIndex = _arrangingSpheres.IndexOf(s);
+                if(thisIndex==indexToShow)
+                    _arrangingSpheres[indexToShow].Reveal();
+                else
+                    s.Shroud();
+            }
+
+            SoundManager.PlaySfx("SituationWindowTextMove");
         }
     }
 }

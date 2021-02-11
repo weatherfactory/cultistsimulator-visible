@@ -119,7 +119,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3714203499519974087}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1127656137174522416}
+        m_TargetAssemblyTypeName: Assets.Scripts.Application.Spheres.NotesSphere,
+          SecretHistories.Main
+        m_MethodName: ShowNextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3610084347416597667
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +252,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3714300455914620799}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1127656137174522416}
+        m_TargetAssemblyTypeName: Assets.Scripts.Application.Spheres.NotesSphere,
+          SecretHistories.Main
+        m_MethodName: ShowPrevPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3611771954394558725
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +281,6 @@ GameObject:
   - component: {fileID: 5056061998768607131}
   - component: {fileID: 8967432435252956553}
   - component: {fileID: 3042091678236953927}
-  - component: {fileID: 2901488000592812153}
   m_Layer: 5
   m_Name: NotesSphere
   m_TagString: Untagged
@@ -388,21 +413,3 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &2901488000592812153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3611771954394558725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f04fd97db987c74287f0f87d029d5a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 8967432435252956553}
-  soundIn: 
-  soundOut: 
-  text: {fileID: 0}
-  prevPage: {fileID: 3713763897772479457}
-  nextPage: {fileID: 3714190577688508373}
