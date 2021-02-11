@@ -11,8 +11,8 @@ using SecretHistories.Interfaces;
 using Random = UnityEngine.Random;
 
 namespace SecretHistories.UI {
-    public abstract class BaseDetailsWindow : 
-        AnimatedNoteBase, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,ISettingSubscriber {
+    public abstract class SphereAnimationDetailsWindow : 
+        NoteSphereAnimation, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,ISettingSubscriber {
 
         [SerializeField] protected TextMeshProUGUI title;
         [SerializeField] protected TextMeshProUGUI description;

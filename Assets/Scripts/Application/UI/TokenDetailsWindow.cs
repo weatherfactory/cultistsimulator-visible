@@ -15,7 +15,7 @@ using SecretHistories.Enums;
 using SecretHistories.Enums.Elements;
 
 namespace SecretHistories.UI {
-    public class TokenDetailsWindow : BaseDetailsWindow {
+    public class TokenDetailsWindow : SphereAnimationDetailsWindow {
 
         // coming in with header "Image" from BaseDetailsWindow
         [SerializeField] GameObject decayView;

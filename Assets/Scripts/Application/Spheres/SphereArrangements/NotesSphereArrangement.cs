@@ -13,8 +13,10 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
 {
     public class NotesSphereArrangement: AbstractSphereArrangement
     {
-        private List<Sphere> _arrangingSpheres=new List<Sphere>();
 
+        [SerializeField] private NoteSphereAnimation _noteSphereAnimation;
+        private List<Sphere> _arrangingSpheres=new List<Sphere>();
+        
         public override void AddNewSphereToArrangement(Sphere newSphere, int index)
         {
             
@@ -61,7 +63,6 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
                     s.Shroud();
             }
 
-            SoundManager.PlaySfx("SituationWindowTextMove");
         }
     }
 }

@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace SecretHistories.UI
 {
-	public class NotificationWindow: AnimatedNoteBase, IPointerClickHandler
+	public class NotificationWindow: NoteSphereAnimation, IPointerClickHandler
     {
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI _titleTxt;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AnimatedNoteBase : MonoBehaviour {
+public class NoteSphereAnimation : MonoBehaviour {
 
     protected delegate void AnimResponse();
     protected enum AnimType { None, MoveRight, MoveLeft }

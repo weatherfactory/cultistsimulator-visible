@@ -10,7 +10,7 @@ using SecretHistories.Entities;
 using SecretHistories.Enums.UI;
 
 namespace SecretHistories.UI {
-    public class AspectDetailsWindow : BaseDetailsWindow {
+    public class AspectDetailsWindow : SphereAnimationDetailsWindow {
 
 		[SerializeField] RectTransform tokenDetailsHeight;
         [SerializeField] Vector2 posNoTokenDetails = new Vector2(0f, 0f);

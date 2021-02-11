@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 
 namespace SecretHistories.UI {
-    public class PaginatedText : AnimatedNoteBase {
+    public class PaginatedText : NoteSphereAnimation {
 
         enum AnimDirection { MoveRight, MoveLeft, Switch }
 
@@ -41,8 +41,8 @@ namespace SecretHistories.UI {
 		public void Reset()
 		{
 			targetPage = currentPage;
-			var animOut = AnimatedNoteBase.AnimType.None;
-			var animIn = AnimatedNoteBase.AnimType.MoveRight;
+			var animOut = NoteSphereAnimation.AnimType.None;
+			var animIn = NoteSphereAnimation.AnimType.MoveRight;
 
 			TriggerAnim(animOut, animIn, SetPageToTargetPage, null);	
 		}
@@ -114,8 +114,8 @@ namespace SecretHistories.UI {
 			{
                 targetPage = currentPage + offset;
 
-                var animOut = (anim != AnimDirection.MoveLeft ? AnimatedNoteBase.AnimType.MoveLeft : AnimatedNoteBase.AnimType.MoveRight);
-                var animIn = (anim != AnimDirection.MoveLeft ? AnimatedNoteBase.AnimType.MoveRight : AnimatedNoteBase.AnimType.MoveLeft);
+                var animOut = (anim != AnimDirection.MoveLeft ? NoteSphereAnimation.AnimType.MoveLeft : NoteSphereAnimation.AnimType.MoveRight);
+                var animIn = (anim != AnimDirection.MoveLeft ? NoteSphereAnimation.AnimType.MoveRight : NoteSphereAnimation.AnimType.MoveLeft);
 
                 TriggerAnim(animOut, animIn, SetPageToTargetPage, null);
             }
