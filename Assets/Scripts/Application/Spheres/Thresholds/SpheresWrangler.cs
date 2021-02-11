@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Application.Entities.NullEntities;
+using Assets.Scripts.Application.Spheres;
 using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
@@ -95,6 +96,13 @@ namespace SecretHistories.UI {
             {
                 AddSphere(childSlotSpecification, parentPath);
             }
+            if(token.Payload.Id== Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId)
+                //I know, but bear with me
+            {
+                var sphereSpec=new SphereSpec(new NotesSphereSpecIdentifierStrategy(_spheres.Count));
+                AddSphere(sphereSpec,parentPath);
+            }
+
         }
         
         private void RemoveChildSpheres(Sphere sphereToOrphan)
