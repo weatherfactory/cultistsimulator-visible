@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Spheres;
 using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Entities;
@@ -70,30 +71,25 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     {
         _activeInStates.Add(state);
     }
-    
-    private const string PRIMARY_SLOT="primary";
 
-    //if no details are supplied at all, just create a primary slot specification
     public SphereSpec()
     {
-        _id = PRIMARY_SLOT;
-        Label = "";
-        Required = new AspectsDictionary();
-        Forbidden = new AspectsDictionary();
-        ActionId = string.Empty;
-        Angels=new List<AngelSpecification>();
+
     }
 
-    public SphereSpec(string id)
+    public SphereSpec(string id): this(new SimpleSphereSpecIdentifierStrategy(id)){}
+
+
+    public SphereSpec(AbstractSphereSpecIdentifierStrategy sphereSpecIdentifierStrategy)
     {
-        _id = id;
-        Label = id;
+        _id = sphereSpecIdentifierStrategy.GetIdentifier();
+        Label = sphereSpecIdentifierStrategy.GetIdentifier();
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
         ActionId = string.Empty;
         Angels = new List<AngelSpecification>();
-
     }
+
 
     public SphereSpec(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
     {

@@ -10,6 +10,7 @@ using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using Assets.Logic;
 using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
+using Assets.Scripts.Application.Spheres;
 using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
@@ -65,7 +66,7 @@ namespace SecretHistories.Spheres
         public virtual bool IsGreedy => false;
         public virtual float TokenHeartbeatIntervalMultiplier => 0;
         public abstract SphereCategory SphereCategory { get; }
-        public SphereSpec GoverningSphereSpec { get; set; } = new SphereSpec();
+        public SphereSpec GoverningSphereSpec { get; set; } = new SphereSpec(new SimpleSphereSpecIdentifierStrategy("unspecified"));
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
         public GameObject GreedyIcon;
         public GameObject ConsumingIcon;
@@ -131,9 +132,9 @@ namespace SecretHistories.Spheres
                 this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
-        public virtual void Initialise(SphereSpec sphereSpec, SpherePath pathForThisThreshold)
+        public virtual void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec, SpherePath pathForThisThreshold)
         {
-            //
+            throw new NotImplementedException(); //there's some uncertainty about when the path is based on spherespec and when it's based on SpherePath. Specific behaviour is overridden for notesspheres and thresholdspheres, but I need to make it all more consistent.
         }
 
         public void SetSituationPath(SituationPath situationPath)

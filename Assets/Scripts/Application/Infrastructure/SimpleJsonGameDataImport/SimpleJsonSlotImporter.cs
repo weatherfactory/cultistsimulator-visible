@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Spheres;
 using OrbCreationExtensions;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -27,7 +28,7 @@ namespace Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport
                 foreach (string slotPath in htOngoingSlotStacks.Keys)
                 {
                     var slotId = slotPath.Split(SpherePath.SEPARATOR)[0];
-                    var slotSpec = new SphereSpec(slotId);
+                    var slotSpec = new SphereSpec(new SimpleSphereSpecIdentifierStrategy(slotId));
                     ongoingSlotSpecs.Add(slotSpec);
                 }
             }

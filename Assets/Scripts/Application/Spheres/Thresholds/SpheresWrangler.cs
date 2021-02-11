@@ -74,7 +74,7 @@ namespace SecretHistories.UI {
             var newSphere = GameObject.Instantiate(SpherePrefab);
             _spheres.Add(newSphere, parentPath);
             SpherePath newThresholdPath = new SpherePath(parentPath, sphereSpec.Id);
-            newSphere.Initialise(sphereSpec, newThresholdPath);
+            newSphere.SetUpWithSphereSpecAndPath(sphereSpec, newThresholdPath);
 
             OnSphereAdded.Invoke(newSphere);
             newSphere.Subscribe(this);

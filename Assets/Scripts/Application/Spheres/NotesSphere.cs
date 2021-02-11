@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Enums;
+using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 
 namespace Assets.Scripts.Application.Spheres
@@ -12,6 +13,11 @@ namespace Assets.Scripts.Application.Spheres
     {
         public override SphereCategory SphereCategory => SphereCategory.Notes;
         public virtual bool AllowStackMerge => false;
-        
+
+        public override void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec, SpherePath pathForThisThreshold)
+        {
+            SphereIdentifier = sphereSpec.Id;
         }
+
+    }
 }

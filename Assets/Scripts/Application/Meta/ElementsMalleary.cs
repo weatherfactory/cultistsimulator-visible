@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Commands.SituationCommands;
+using Assets.Scripts.Application.Spheres.SphereSpecIdentifierStrategies;
 using Newtonsoft.Json;
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
@@ -29,7 +30,7 @@ namespace Assets.Scripts.Application.Meta
 
         public void Awake()
         {
-            _primary=elementDrydockWrangler.BuildPrimarySphere(new SphereSpec(), SituationPath.Root(), new NullVerb()) as ThresholdSphere;
+            _primary=elementDrydockWrangler.BuildPrimarySphere(new SphereSpec(new PrimaryThresholdSphereSpecIdentifierStrategy()), SituationPath.Root(), new NullVerb()) as ThresholdSphere;
             _primary.Subscribe(this);
         }
 

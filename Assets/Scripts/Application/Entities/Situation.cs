@@ -16,6 +16,7 @@ using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities;
 using Assets.Scripts.Application.Entities.NullEntities;
 using Assets.Scripts.Application.Infrastructure.Events;
+using Assets.Scripts.Application.Spheres;
 using Newtonsoft.Json;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants.Events;
@@ -330,6 +331,7 @@ namespace SecretHistories.Entities {
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
 
             var notesSpheres = GetSpheresByCategory(SphereCategory.Notes);
+            int existingNotesSpheresCount_AndAlsoNamingIndex = notesSpheres.Count; //so when there are 0 spheres, the first one we create is index 0
             Sphere emptyNoteSphere;
             try
             {
@@ -342,7 +344,7 @@ namespace SecretHistories.Entities {
                        NoonUtility.Log($"No notes sphere and no notes dominion found in {Path}: we won't add note {label}, then.");
                         return false;
                    }
-                   var notesSphereSpec=new SphereSpec("notes0");
+                   var notesSphereSpec=new SphereSpec(new NotesSphereSpecIdentifierStrategy(existingNotesSpheresCount_AndAlsoNamingIndex));
                    emptyNoteSphere=notesDominion.CreatePrimarySphere(notesSphereSpec);
 
                }

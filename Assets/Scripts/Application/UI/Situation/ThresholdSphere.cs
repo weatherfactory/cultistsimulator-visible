@@ -56,7 +56,7 @@ namespace SecretHistories.UI
         }
 
 
-        public override void Initialise(SphereSpec sphereSpec,SpherePath pathForThisThreshold)
+        public override void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec,SpherePath pathForThisThreshold)
         {
             GoverningSphereSpec = sphereSpec;
             _thresholdSpherePath = pathForThisThreshold;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Commands.SituationCommands;
+using Assets.Scripts.Application.Spheres.SphereSpecIdentifierStrategies;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -22,13 +23,13 @@ namespace Assets.Scripts.Application.Meta
 
        public void Awake()
        {
-           var sphereSphec = new SphereSpec();
+           var sphereSphec = new SphereSpec(new PrimaryThresholdSphereSpecIdentifierStrategy());
            sphereSphec.SetId("situationsmalleary");
            sphereSphec.Label = "Malleary: Situations";
            sphereSphec.AllowAnyToken = true;
      var spherePath=new SpherePath(SituationPath.Root(),sphereSphec.Id);
            
-           _situationDrydock.Initialise(sphereSphec, spherePath);
+           _situationDrydock.SetUpWithSphereSpecAndPath(sphereSphec, spherePath);
        }
 
 

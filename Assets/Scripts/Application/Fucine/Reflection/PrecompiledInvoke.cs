@@ -46,7 +46,9 @@ namespace SecretHistories.Fucine
         public static Func<T> BuildDefaultConstructor<T>()
         {
             //var exValue = Expression.Parameter(typeof(TEntity), "t");
-            var constructorInfo = typeof(T).GetConstructor(Type.EmptyTypes);
+
+            //var constructorInfo = typeof(T).GetConstructor(BindingFlags.DeclaredOnly| BindingFlags.Public, Type.DefaultBinder ,Type.EmptyTypes,new ParameterModifier[0]);
+            var constructorInfo = typeof(T).GetConstructor( Type.EmptyTypes);
 
             if (constructorInfo == null)
                 return null;
