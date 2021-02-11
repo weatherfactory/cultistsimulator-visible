@@ -63,9 +63,9 @@ namespace SecretHistories.UI
 
         //}
 
-        public override void AddNewSphereToArrangement(Sphere sphere, int index)
+        public override void AddNewSphereToArrangement(Sphere newSphere, int index)
         {
-            var threshold = sphere as ThresholdSphere;
+            var threshold = newSphere as ThresholdSphere;
 
             threshold.viz.rectTrans.SetParent(rect);
             threshold.viz.rectTrans.localScale = Vector3.one;
