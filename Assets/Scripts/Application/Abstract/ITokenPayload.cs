@@ -27,7 +27,7 @@ namespace SecretHistories.Abstract
         bool CanMergeWith(ITokenPayload incomingTokenPayload);
         bool Retire(RetirementVFX vfx);
         void InteractWithIncoming(Token incomingToken);
-        bool ReceiveNote(string label, string description);
+        bool ReceiveNote(string label, string description,Context context);
         void ShowNoMergeMessage(ITokenPayload incomingTokenPayload);
         void SetQuantity(int quantityToLeaveBehind, Context context);
         void ModifyQuantity(int unsatisfiedChange, Context context);

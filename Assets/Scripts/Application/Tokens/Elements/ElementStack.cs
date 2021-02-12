@@ -300,13 +300,12 @@ namespace SecretHistories.UI {
 
         }
 
-        public bool ReceiveNote(string label, string description)
+        public bool ReceiveNote(string label, string description, Context context)
         {
             SetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY, label);
             SetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, description);
-            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update, new Context(Context.ActionSource.Unknown)));
-
-
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update, context));
+            
             return true;
         }
 

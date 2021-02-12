@@ -19,13 +19,13 @@ namespace SecretHistories.NullObjects
             return false;
         }
 
-        public NullSituation(SituationPath path) : base(path)
+        public NullSituation(SituationPath path,Verb verb) : base(path,verb)
         {
         }
 
         public static NullSituation Create()
         {
-            return new NullSituation(SituationPath.Root());
+            return new NullSituation(SituationPath.Root(),NullVerb.Create());
         }
     }
 }

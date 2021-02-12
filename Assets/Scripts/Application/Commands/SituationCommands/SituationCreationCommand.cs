@@ -73,10 +73,9 @@ namespace SecretHistories.Commands
                 throw new ApplicationException($"trying to create a situation with an invalid path: '{Path}'");
 
 
-            Situation newSituation = new Situation(Path);
+            Situation newSituation = new Situation(Path, verb);
             newSituation.State = SituationState.Rehydrate(StateForRehydration, newSituation);
 
-            newSituation.Verb = verb;
             newSituation.ActivateRecipe(recipe);
             newSituation.ReduceLifetimeBy(recipe.Warmup - TimeRemaining);
             newSituation.OverrideTitle = OverrideTitle;

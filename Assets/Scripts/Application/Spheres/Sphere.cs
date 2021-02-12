@@ -203,7 +203,7 @@ namespace SecretHistories.Spheres
                     cb.BlockDirection == blockToRemove.BlockDirection && cb.BlockReason == blockToRemove.BlockReason);
 
         }
-
+        [Obsolete("Retire in favour of putting everything through ElementStackCreationCommand")]
         public virtual Token ProvisionStackFromCommand(ElementStackSpecification_ForSimpleJSONDataImport legacyElementStackCreationSpecification)
         {
             var stackCreationCommand=new ElementStackCreationCommand(legacyElementStackCreationSpecification.Id,
@@ -222,20 +222,22 @@ namespace SecretHistories.Spheres
         }
 
 
+        [Obsolete("Retire in favour of putting everything through ElementStackCreationCommand")]
         public Token ProvisionElementStackToken(string elementId, int quantity)
         {
             ElementStackCreationCommand ec=new ElementStackCreationCommand(elementId,quantity);
             return ProvisionElementStackToken(ec,new Context(Context.ActionSource.Unknown));
             }
 
+        [Obsolete("Retire in favour of putting everything through ElementStackCreationCommand")]
         public Token ProvisionElementStackToken(string elementId, int quantity, Context context)
         {
             ElementStackCreationCommand ec = new ElementStackCreationCommand(elementId, quantity);
             return ProvisionElementStackToken(ec, context);
         }
 
-
-    public Token ProvisionElementStackToken(ElementStackCreationCommand elementStackCreationCommand,Context context)
+        [Obsolete("Retire in favour of putting everything through ElementStackCreationCommand")]
+        public Token ProvisionElementStackToken(ElementStackCreationCommand elementStackCreationCommand,Context context)
     {
 
         var elementStack = elementStackCreationCommand.Execute(context);

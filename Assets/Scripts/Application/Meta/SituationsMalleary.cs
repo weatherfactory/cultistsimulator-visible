@@ -79,7 +79,7 @@ namespace Assets.Scripts.Application.Meta
             var situation = _situationDrydock.GetTokenInSlot().Payload;
             string title = "!";
             string description = input.text;
-            var addNoteCommand=new AddNoteCommand(title,description);
+            var addNoteCommand=new AddNoteCommand(title,description,new Context(Context.ActionSource.Debug));
 
           situation.ExecuteTokenEffectCommand(addNoteCommand);
             }

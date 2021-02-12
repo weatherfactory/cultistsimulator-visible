@@ -18,11 +18,13 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
        public CommandCategory CommandCategory => CommandCategory.Notes;
        private readonly string _label;
        private readonly string _description;
+       private readonly Context _context;
 
-       public AddNoteCommand(string label,string description)
+       public AddNoteCommand(string label,string description,Context context)
        {
            _label = label;
            _description = description;
+           _context = context;
        }
 
        public bool ExecuteOn(Token token)
@@ -32,7 +34,7 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
 
        public bool ExecuteOn(ITokenPayload payload)
        {
-           return payload.ReceiveNote(_label,_description);
+           return payload.ReceiveNote(_label,_description,_context);
        }
    }
 

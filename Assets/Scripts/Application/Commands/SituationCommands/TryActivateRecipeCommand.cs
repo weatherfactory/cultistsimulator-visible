@@ -26,7 +26,8 @@ namespace SecretHistories.Commands.SituationCommands
             {
                 situation.ActivateRecipe(_recipeToActivate);
      
-                situation.CurrentRecipePrediction = situation.GetUpdatedRecipePrediction();
+                situation.UpdateCurrentRecipePrediction(situation.GetRecipePredictionForCurrentStateAndAspects(),new Context(Context.ActionSource.SituationEffect));
+                
 
                 var storageContainer = situation.GetSingleSphereByCategory(SphereCategory.SituationStorage);
 

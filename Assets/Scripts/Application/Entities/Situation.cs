@@ -74,10 +74,10 @@ namespace SecretHistories.Entities {
 
         [DontEncaust] public SituationState State { get; set; }
         [DontEncaust] public float Warmup => Recipe.Warmup;
-        [DontEncaust] public RecipePrediction CurrentRecipePrediction { get; set; }
+        [DontEncaust] public RecipePrediction CurrentRecipePrediction => _currentRecipePrediction;
         [DontEncaust] public string Id => Path.ToString();
-        [DontEncaust] public string Label => CurrentRecipePrediction.Title;
-        [DontEncaust] public string Description => CurrentRecipePrediction.DescriptiveText;
+        [DontEncaust] public string Label => GetMostRecentNoteLabel();
+        [DontEncaust] public string Description => GetMostRecentNoteDescription();
         [DontEncaust] public int Quantity => 1;
         [DontEncaust] public float IntervalForLastHeartbeat => _timeshadow.LastInterval;
         [DontEncaust]
@@ -118,6 +118,8 @@ namespace SecretHistories.Entities {
         }
 
 
+        private RecipePrediction _currentRecipePrediction;
+
         private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
         private readonly List<Dominion> _registeredDominions = new List<Dominion>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
@@ -127,16 +129,16 @@ namespace SecretHistories.Entities {
 
 
 
-        public Situation(SituationPath path)
+        public Situation(SituationPath path,Verb verb)
         {
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
 
             situationsCatalogue.RegisterSituation(this);
 
             Path = path;
-            Verb=NullVerb.Create();
+            Verb = verb;
             Recipe = NullRecipe.Create(Verb);
-            CurrentRecipePrediction = RecipePrediction.DefaultFromVerb(Verb);
+         UpdateCurrentRecipePrediction(RecipePrediction.DefaultFromVerb(Verb),new Context(Context.ActionSource.SituationCreated));
             State=new NullSituationState();
             _timeshadow = new Timeshadow(Recipe.Warmup,
                 Recipe.Warmup,
@@ -205,14 +207,31 @@ namespace SecretHistories.Entities {
             
         }
 
+        public void UpdateCurrentRecipePrediction(RecipePrediction rp,Context context)
+        {
+            if (rp != _currentRecipePrediction) //repeatedly assigning might mean infinite loops, because eg changing prediction might add recipe note elements
+                rp = CurrentRecipePrediction; 
+
+            _currentRecipePrediction = rp;
+
+            if (Label != rp.Title || Description != rp.DescriptiveText)
+            {
+                var addNoteCommand=new AddNoteCommand(rp.Title,rp.DescriptiveText,context);
+                addNoteCommand.ExecuteOn(this);
+            }
+        }
+
+
         public void Reset()
         {
             Recipe = NullRecipe.Create(Verb);
-            CurrentRecipePrediction = RecipePrediction.DefaultFromVerb(Verb);
+            UpdateCurrentRecipePrediction(RecipePrediction.DefaultFromVerb(Verb), new Context(Context.ActionSource.SituationReset));
            _timeshadow=Timeshadow.CreateTimelessShadow();
             NotifyStateChange();
             NotifyTimerChange();
         }
+
+
 
 
         public List<Sphere> GetSpheres()
@@ -324,11 +343,15 @@ namespace SecretHistories.Entities {
             }
         }
 
-        public bool ReceiveNote(string label, string description)
+        public bool ReceiveNote(string label, string description,Context context)
         {
             //we often add a . to indicate that the description is intentionally empty.
             //if we do that, or if it's a mistaken empty string, just go back.
             if (description == "." || description == string.Empty)
+                return true;
+
+            //no infinite loops pls
+            if (label == this.Label && description == this.Description)
                 return true;
 
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
@@ -357,13 +380,48 @@ namespace SecretHistories.Entities {
                 emptyNoteSphere=notesSpheres.First(ns => ns.GetTotalStacksCount() == 0);
             }
 
-            var newNote = emptyNoteSphere.ProvisionElementStackToken(noteElementId, 1,
-                new Context(Context.ActionSource.SituationEffect));
+            var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
+            newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_TITLE_KEY, label);
+            newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, description);
 
-            var addNoteCommand=new AddNoteCommand(label,description);
-            newNote.ExecuteTokenEffectCommand(addNoteCommand);
+            var tokenCreationCommand =
+                new TokenCreationCommand(newNoteCommand, TokenLocation.Default().WithSphere(emptyNoteSphere));
+
+            tokenCreationCommand.Execute(context);
+
             
             return true;
+        }
+
+        private Sphere LastSphereWithANote()
+        {
+            var notesSpheres = GetSpheresByCategory(SphereCategory.Notes);
+            var lastSphereWithANote = notesSpheres.LastOrDefault(s => s.GetAllTokens().Any());
+            return lastSphereWithANote;
+        }
+
+        private string GetMostRecentNoteLabel()
+        {
+            var noteSphereToCheck = LastSphereWithANote();
+            if (noteSphereToCheck == null)
+                return string.Empty;
+
+            var note = noteSphereToCheck.GetAllTokens().First().Payload;
+            string title = note.GetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY);
+            return title;
+
+
+        }
+
+        private string GetMostRecentNoteDescription()
+        {
+            var noteSphereToCheck = LastSphereWithANote();
+            if (noteSphereToCheck == null)
+                return string.Empty;
+
+            var note = noteSphereToCheck.GetAllTokens().First().Payload;
+            string description = note.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY);
+            return description;
         }
 
         public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
@@ -562,7 +620,7 @@ namespace SecretHistories.Entities {
             var aspectsInSituation = GetAspects(true);
             TextRefiner tr = new TextRefiner(aspectsInSituation);
 
-            var addNoteCommand = new AddNoteCommand(Recipe.Label, tr.RefineString(Recipe.Description));
+            var addNoteCommand = new AddNoteCommand(Recipe.Label, tr.RefineString(Recipe.Description),new Context(Context.ActionSource.SituationEffect));
 
             ExecuteTokenEffectCommand(addNoteCommand);
             
@@ -824,7 +882,7 @@ namespace SecretHistories.Entities {
         }
 
 
-        public RecipePrediction GetUpdatedRecipePrediction()
+        public RecipePrediction GetRecipePredictionForCurrentStateAndAspects()
         {
             var aspectsAvailableToSituation = GetAspects(true);
 
@@ -840,7 +898,7 @@ namespace SecretHistories.Entities {
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             var oldEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
-            CurrentRecipePrediction = GetUpdatedRecipePrediction();
+            UpdateCurrentRecipePrediction(GetRecipePredictionForCurrentStateAndAspects(),args.Context);
             var newEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
 
             if (oldEndingFlavour!=newEndingFlavour)

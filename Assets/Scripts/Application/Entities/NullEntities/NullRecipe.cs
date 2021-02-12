@@ -27,6 +27,9 @@ namespace SecretHistories.Entities
 
         public static NullRecipe Create(Verb forVerb)
         {
+            if(forVerb==null)
+                forVerb=NullVerb.Create(); //just in case
+
             Hashtable nullht = new Hashtable();
             EntityData fauxEntityData = new EntityData("nullrecipe", nullht);
             var nr = new NullRecipe(fauxEntityData, new ContentImportLog());

@@ -9,7 +9,7 @@ using SecretHistories.Services;
 
 namespace SecretHistories.Commands
 {
-   public class RecipePrediction
+   public class RecipePrediction: IEquatable<RecipePrediction>
    {
        private Recipe _actualRecipe;
         public string Title { get; protected set; }
@@ -35,5 +35,41 @@ namespace SecretHistories.Commands
             DescriptiveText = tr.RefineString(DescriptiveText);
 
         }
-    }
+
+        public bool Equals(RecipePrediction other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Equals(_actualRecipe, other._actualRecipe) && Title == other.Title && DescriptiveText == other.DescriptiveText;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((RecipePrediction) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (_actualRecipe != null ? _actualRecipe.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Title != null ? Title.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (DescriptiveText != null ? DescriptiveText.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
+        public static bool operator ==(RecipePrediction left, RecipePrediction right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(RecipePrediction left, RecipePrediction right)
+        {
+            return !Equals(left, right);
+        }
+   }
 }

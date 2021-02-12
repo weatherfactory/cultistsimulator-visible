@@ -21,6 +21,8 @@ public class Context {
 		DoubleClickSend,
         Purge,
         Merge,
+        SituationCreated,
+        SituationReset,
         TravelFailed,
         UI,
         SpawningAnchor,
