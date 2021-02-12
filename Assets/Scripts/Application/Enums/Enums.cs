@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SecretHistories.Enums
 {
-    public enum AnimDirection { MoveRight, MoveLeft, Switch }
-    
+    public enum NavigationAnimationDirection { MoveRight, MoveLeft, None }
+
+
     public enum CharacterState
     {
         Viable, Extinct, Unformed

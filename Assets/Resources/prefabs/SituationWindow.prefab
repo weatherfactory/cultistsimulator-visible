@@ -2736,6 +2736,7 @@ GameObject:
   - component: {fileID: 2645367709224873335}
   - component: {fileID: 6070173378976685744}
   - component: {fileID: 8430572976792214252}
+  - component: {fileID: 8632729047619037706}
   m_Layer: 5
   m_Name: NoteDominion
   m_TagString: Untagged
@@ -2832,7 +2833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7c5f81ae9ba4441ad90a918d4c482f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _noteSphereAnimation: {fileID: 8430572976792214252}
+  _navigationAnimation: {fileID: 8430572976792214252}
 --- !u!114 &8430572976792214252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2845,9 +2846,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0572ad6d097bfb4487a302ad099e542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  animations: {fileID: 8632729047619037706}
   soundIn: SituationWindowTextMove
   soundOut: SituationWindowTextMove
+--- !u!111 &8632729047619037706
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700666214586562}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: c5deb1a3ec805b84c859782299e0109f, type: 2}
+  - {fileID: 7400000, guid: 356c15fd78e42f246999a7865f1a4f9d, type: 2}
+  - {fileID: 7400000, guid: b70a02523e34cc142a54223b55dc15cc, type: 2}
+  - {fileID: 7400000, guid: eb9f88ca12ae8ac498f9c7536af4f8b3, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1743531545229948
 GameObject:
   m_ObjectHideFlags: 0

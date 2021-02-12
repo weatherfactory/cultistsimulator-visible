@@ -6,11 +6,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Assets.Scripts.Application.Spheres;
 using SecretHistories.Entities;
 using SecretHistories.Enums.UI;
 
 namespace SecretHistories.UI {
-    public class AspectDetailsWindow : SphereAnimationDetailsWindow {
+    public class AspectDetailsWindow : AbstractDetailsWindow {
 
 		[SerializeField] RectTransform tokenDetailsHeight;
         [SerializeField] Vector2 posNoTokenDetails = new Vector2(0f, 0f);
@@ -34,6 +35,11 @@ namespace SecretHistories.UI {
 
         protected override void ClearContent() {
             this.element = null;
+        }
+
+        protected override void UpdateContentAfterNavigation(NavigationArgs args)
+        {
+            UpdateContent();
         }
 
         protected override void UpdateContent() {

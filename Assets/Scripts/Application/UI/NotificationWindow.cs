@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Spheres;
+using SecretHistories.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,7 +12,7 @@ using UnityEngine.UI;
 
 namespace SecretHistories.UI
 {
-	public class NotificationWindow: NoteSphereAnimation, IPointerClickHandler
+	public class NotificationWindow: NavigationAnimation, IPointerClickHandler
     {
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI _titleTxt;
@@ -47,24 +49,29 @@ namespace SecretHistories.UI
 			gameObject.SetActive(true);
 
 			// Make the anim move out, then show the content, then move in again
-			TriggerAnim(AnimType.None, AnimType.MoveLeft);
+			TriggerAnimation(new NavigationArgs(0,NavigationAnimationDirection.None,NavigationAnimationDirection.MoveLeft), null,null);
 		}
 
         public void Hide()
 		{
 			if (gameObject.activeInHierarchy && !IsBusy()) {
-				TriggerAnim(AnimType.MoveRight, AnimType.None, DoDisable);
-			}
+                TriggerAnimation(new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.None), null, Cleanup);
+            }
         }
 
-        public void HideNoDestroy()
-		{
-			if (gameObject.activeInHierarchy && !IsBusy()) {
-				TriggerAnim(AnimType.MoveRight, AnimType.None, StopAllCoroutines);
-			}
+  //      public void HideNoDestroy()
+		//{
+		//	if (gameObject.activeInHierarchy && !IsBusy()) {
+  //              TriggerAnimation(AnimType.MoveRight, AnimType.None, StopAllCoroutines);
+		//	}
+  //      }
+
+        protected void E(NavigationArgs args)
+        {
+
         }
 
-		protected void DoDisable()
+		protected void Cleanup(NavigationArgs args)
 		{
 			StopAllCoroutines();
 			Destroy(gameObject);

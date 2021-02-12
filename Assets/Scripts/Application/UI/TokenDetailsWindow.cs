@@ -9,13 +9,14 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Linq;
+using Assets.Scripts.Application.Spheres;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Enums.Elements;
 
 namespace SecretHistories.UI {
-    public class TokenDetailsWindow : SphereAnimationDetailsWindow {
+    public class TokenDetailsWindow : AbstractDetailsWindow {
 
         // coming in with header "Image" from BaseDetailsWindow
         [SerializeField] GameObject decayView;
@@ -121,6 +122,11 @@ namespace SecretHistories.UI {
         void HandleOnTokenDecay(float timeRemaining) {
             if(_stack!=null) //seeing some nullreference errors in the Unity analytics; maybe this is being called after the token is no longer in the window?
                 ShowImageDecayTimer(true, Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(_stack.GetTimeshadow().LifetimeRemaining));
+        }
+
+        protected override void UpdateContentAfterNavigation(NavigationArgs args)
+        {
+            UpdateContent();
         }
 
         protected override void UpdateContent() {

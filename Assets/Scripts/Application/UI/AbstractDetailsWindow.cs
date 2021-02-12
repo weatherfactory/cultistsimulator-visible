@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Assets.Scripts.Application.Spheres;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Interfaces;
 
 using Random = UnityEngine.Random;
 
 namespace SecretHistories.UI {
-    public abstract class SphereAnimationDetailsWindow : 
-        NoteSphereAnimation, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,ISettingSubscriber {
+    public abstract class AbstractDetailsWindow : 
+        NavigationAnimation, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,ISettingSubscriber {
 
         [SerializeField] protected TextMeshProUGUI title;
         [SerializeField] protected TextMeshProUGUI description;
@@ -36,12 +38,15 @@ namespace SecretHistories.UI {
                 // Show the content, then make the anim move in
                 gameObject.SetActive(true);
                 UpdateContent();
-                TriggerAnim(AnimType.None, AnimType.MoveRight);
+                var args=new NavigationArgs(0,NavigationAnimationDirection.None,NavigationAnimationDirection.MoveRight);
+                TriggerAnimation(args, UpdateContentAfterNavigation, null);
                 StartCoroutine(DoWaitForHide());
             }
             else {
                 // Make the anim move out, then show the content, then move in again
-                TriggerAnim(AnimType.MoveRight, AnimType.MoveRight, UpdateContent);
+                var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight);
+                TriggerAnimation(args, UpdateContentAfterNavigation, null);
+
             }
         }
 
@@ -79,6 +84,10 @@ namespace SecretHistories.UI {
             time = 0f;
         }
 
+
+        protected abstract void UpdateContentAfterNavigation(NavigationArgs args);
+
+
         // Used as a delegate when exchanging pages. 
         protected abstract void UpdateContent();
 
@@ -110,9 +119,18 @@ namespace SecretHistories.UI {
 
         public void Hide() {
 			if (gameObject.activeInHierarchy) {
-				TriggerAnim(AnimType.MoveRight, AnimType.None, DoHide);
+
+                var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.None);
+
+                TriggerAnimation(args, DoHideAfterNavigation,null);
 			}
         }
+
+        void DoHideAfterNavigation(NavigationArgs args)
+        {
+            DoHide();
+        }
+
 
         void DoHide() {
             gameObject.SetActive(false);

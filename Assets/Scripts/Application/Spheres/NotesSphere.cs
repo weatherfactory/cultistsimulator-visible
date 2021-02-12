@@ -11,15 +11,19 @@ using SecretHistories.UI;
 
 namespace Assets.Scripts.Application.Spheres
 {
-    public class NoteNavigationArgs
+    public class NavigationArgs
     {
         public int Index { get; set; }
-        public AnimDirection AnimDirection { get; set; }
 
-        public NoteNavigationArgs(int index, AnimDirection animDirection)
+        public NavigationAnimationDirection FirstNavigationDirection { get; set; }
+        public NavigationAnimationDirection FinalNavigationDirection { get; set; }
+
+
+        public NavigationArgs(int index, NavigationAnimationDirection firstNavigationDirection,NavigationAnimationDirection finalNavigationDirection)
         {
             Index = index;
-            AnimDirection = animDirection;
+            FirstNavigationDirection = firstNavigationDirection;
+            FinalNavigationDirection = finalNavigationDirection;
         }
     }
 
@@ -27,7 +31,7 @@ namespace Assets.Scripts.Application.Spheres
     {
         public override SphereCategory SphereCategory => SphereCategory.Notes;
         public override bool AllowStackMerge => false;
-        public event Action<NoteNavigationArgs> OnNoteNavigation;
+        public event Action<NavigationArgs> OnNoteNavigation;
 
         public override void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec, SpherePath pathForThisThreshold)
         {
@@ -55,26 +59,16 @@ namespace Assets.Scripts.Application.Spheres
             return sphereSpecList;
         }
 
-        //public override void Reveal()
-        //{
-
-        //}
-
-        //public override void Hide()
-        //{
-
-        //}
-
 
         public void ShowPrevPage()
         {
-            OnNoteNavigation?.Invoke(new NoteNavigationArgs(GetNoteIndex()-1, AnimDirection.MoveLeft));
+            OnNoteNavigation?.Invoke(new NavigationArgs(GetNoteIndex()-1, NavigationAnimationDirection.MoveLeft, NavigationAnimationDirection.MoveLeft));
         }
 
 
        public void ShowNextPage()
         {
-            OnNoteNavigation?.Invoke(new NoteNavigationArgs(GetNoteIndex()+1, AnimDirection.MoveRight));
+            OnNoteNavigation?.Invoke(new NavigationArgs(GetNoteIndex()+1, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight));
         }
 
 

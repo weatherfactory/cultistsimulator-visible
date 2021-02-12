@@ -14,7 +14,7 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
     public class NotesSphereArrangement: AbstractSphereArrangement
     {
 
-        [SerializeField] private NoteSphereAnimation _noteSphereAnimation;
+        [SerializeField] private NavigationAnimation _navigationAnimation;
         private List<Sphere> _arrangingSpheres=new List<Sphere>();
         
         public override void AddNewSphereToArrangement(Sphere newSphere, int index)
@@ -43,7 +43,7 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
 
         }
 
-        public void RespondToNoteNavigation(NoteNavigationArgs args)
+        public void RespondToNoteNavigation(NavigationArgs args)
         {
             var indexToShow = args.Index;
             
@@ -54,6 +54,18 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
                 return;
             }
 
+            
+            if (indexToShow < 0)
+                //index -1 or lower: there ain't no that
+                return;
+            
+
+            if(indexToShow+1==_arrangingSpheres.Count && !_arrangingSpheres[indexToShow].GetAllTokens().Any())
+                //we're trying to move to an empty sphere at the end - one that doesn't have a note in yet
+                return;
+
+            _navigationAnimation.TriggerAnimation(args,null,OnNoteMoveCompleted);
+
             foreach (var s in _arrangingSpheres)
             {
                 int thisIndex = _arrangingSpheres.IndexOf(s);
@@ -62,7 +74,11 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
                 else
                     s.Shroud();
             }
+        }
 
+        public void OnNoteMoveCompleted(NavigationArgs args)
+        {
+            _arrangingSpheres[args.Index].Reveal();
         }
     }
 }
