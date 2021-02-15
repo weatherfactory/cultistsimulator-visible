@@ -18,6 +18,9 @@ using UnityEditorInternal.VR;
 namespace SecretHistories.Infrastructure.Persistence
 
 {
+    /// <summary>
+    /// ccompletely new game, ab initio
+    /// </summary>
     public class FreshGameProvider: GamePersistenceProvider
     {
         public Legacy StartingLegacy { get; set; }
@@ -37,21 +40,8 @@ namespace SecretHistories.Infrastructure.Persistence
         public override void DepersistGameState()
         {
             
-            Sphere tabletopSphere = Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere();
+            _persistedGameState.TokenCreationCommands.AddRange(StartingLegacy.GetTokenCreationCommandsToEnactLegacy());
             
-            SituationCreationCommand startingSituation = new SituationCreationCommand(StartingLegacy.StartingVerbId, NullRecipe.Create().Id, new SituationPath(StartingLegacy.StartingVerbId), StateEnum.Unstarted);
-            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, TokenLocation.Default().WithSphere(tabletopSphere));
-            _persistedGameState.TokenCreationCommands.Add(startingTokenCommand);
-
-            AspectsDictionary startingElements = new AspectsDictionary();
-            startingElements.CombineAspects(StartingLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
-
-            foreach (var e in startingElements)
-            {
-                var elementStackCreationCommand = new ElementStackCreationCommand(e.Key, e.Value);
-                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default().WithSphere(tabletopSphere));
-                _persistedGameState.TokenCreationCommands.Add(startingStackCommand);
-            }
 
             var cc = CharacterCreationCommand.IncarnateFromLegacy(StartingLegacy);
             _persistedGameState.CharacterCreationCommands.Add(cc);

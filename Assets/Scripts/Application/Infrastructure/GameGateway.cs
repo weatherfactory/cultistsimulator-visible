@@ -59,7 +59,6 @@ namespace SecretHistories.Constants
             {
 
                 gamePersistenceProviderSource.DepersistGameState(); //In the case of a Petromneme, this doesn't just deserialise, it will do the actual loading
-                gamePersistenceProviderSource.ImportPetromnemeStateAfterTheAncientFashion();
 
                 var gameState = gamePersistenceProviderSource.RetrievePersistedGameState();
 

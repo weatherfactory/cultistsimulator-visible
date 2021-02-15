@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using SecretHistories.Commands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
 using SecretHistories.Core;
+using SecretHistories.Enums;
+using SecretHistories.Spheres;
+using SecretHistories.UI;
 
 
 namespace SecretHistories.Entities
@@ -91,6 +96,29 @@ namespace SecretHistories.Entities
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
             
+        }
+
+        public List<TokenCreationCommand> GetTokenCreationCommandsToEnactLegacy()
+        {
+            Sphere tabletopSphere = Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere();
+
+            var commands = new List<TokenCreationCommand>();
+
+            SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId, NullRecipe.Create().Id, new SituationPath(StartingVerbId), StateEnum.Unstarted);
+            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, TokenLocation.Default().WithSphere(tabletopSphere));
+            commands.Add(startingTokenCommand);
+
+            AspectsDictionary startingElements = new AspectsDictionary();
+            startingElements.CombineAspects(Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
+
+            foreach (var e in startingElements)
+            {
+                var elementStackCreationCommand = new ElementStackCreationCommand(e.Key, e.Value);
+                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default().WithSphere(tabletopSphere));
+                commands.Add(startingStackCommand);
+            }
+
+
         }
     }
 }

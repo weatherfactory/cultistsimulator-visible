@@ -95,10 +95,6 @@ namespace SecretHistories.Infrastructure.Persistence
             await task;
         }
 
-        public virtual void ImportPetromnemeStateAfterTheAncientFashion()
-        {
-            //do nothing
-        }
 
         public static GamePersistenceProvider GetMostRelevantValidGamePersistence()
         {

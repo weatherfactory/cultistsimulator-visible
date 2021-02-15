@@ -24,14 +24,11 @@ namespace SecretHistories.Infrastructure.Persistence
 
             var characterCreationCommand= importer.ImportToCharacterCreationCommand(this);
             _persistedGameState.CharacterCreationCommands.Add(characterCreationCommand);
+
+            importer.ImportTableState(this, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere()); //this isn't running through the commands list!
         }
 
-        public override void ImportPetromnemeStateAfterTheAncientFashion()
-        {
-            var importer = new SimpleJSONGameDataImporter();
-            importer.ImportTableState(this, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
-        }
-
+       
         public Hashtable RetrieveHashedSaveFromFile()
         {
 
