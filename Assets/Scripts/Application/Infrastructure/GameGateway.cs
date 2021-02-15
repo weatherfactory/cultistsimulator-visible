@@ -25,8 +25,7 @@ namespace SecretHistories.Constants
     {
 
         [SerializeField] private EndGameAnimController _endGameAnimController;
-        [Header("Untick this to keep the playfield blank for testing")]
-        [SerializeField] private bool PopulateOnRun;
+
 
         public void Awake()
         {
@@ -35,8 +34,6 @@ namespace SecretHistories.Constants
         }
         public void Start()
         {
-            if (!PopulateOnRun)
-                return;
 
             try
             {

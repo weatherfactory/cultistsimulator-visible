@@ -19,10 +19,6 @@ namespace Assets.Scripts.Application.Meta
     public class MiscMalleary: MonoBehaviour
     {
 
-        [SerializeField] private Button btnSaveGame;
-
-
-
 
 
         void HaltVerb(string verbId)
