@@ -104,7 +104,7 @@ namespace SecretHistories.Entities
 
             var commands = new List<TokenCreationCommand>();
 
-            SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId, new SituationPath(StartingVerbId), StateEnum.Unstarted);
+            SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId, new SituationPath(StartingVerbId));
             TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, TokenLocation.Default().WithSphere(tabletopSphere));
             commands.Add(startingTokenCommand);
 

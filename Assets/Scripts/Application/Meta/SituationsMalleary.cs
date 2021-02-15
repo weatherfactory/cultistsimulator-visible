@@ -42,7 +42,7 @@ namespace Assets.Scripts.Application.Meta
            SituationCreationCommand newSituationCommand;
            if (recipe.IsValid())
            {
-                newSituationCommand = new SituationCreationCommand(recipe.ActionId, new SituationPath(recipe.ActionId), StateEnum.Ongoing).WithRecipeId(recipe.Id);
+                newSituationCommand = new SituationCreationCommand(recipe.ActionId, new SituationPath(recipe.ActionId)).WithRecipeId(recipe.Id).AlreadyInState(StateEnum.Ongoing);
                 //assuming we want the whole lifetime of the recipe
                   newSituationCommand.TimeRemaining = recipe.Warmup;
            }
@@ -52,7 +52,7 @@ namespace Assets.Scripts.Application.Meta
                var verb = compendium.GetEntityById<Verb>(entityId);
                if (verb.IsValid())
                    newSituationCommand =
-                       new SituationCreationCommand(verb.Id, new SituationPath(verb.Id), StateEnum.Unstarted);
+                       new SituationCreationCommand(verb.Id, new SituationPath(verb.Id));
                else
                    return;
            }

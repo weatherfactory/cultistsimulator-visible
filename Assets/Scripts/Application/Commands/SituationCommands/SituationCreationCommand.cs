@@ -40,20 +40,26 @@ namespace SecretHistories.Commands
 
         }
 
-        public SituationCreationCommand(string verbId, SituationPath path, StateEnum state)
+        public SituationCreationCommand(string verbId, SituationPath path)
         {
             VerbId = verbId;
             Path = path;
-            StateForRehydration = state;
+            StateForRehydration = StateEnum.Unknown;
             CommandQueue = new SituationCommandQueue();
         }
 
-        public SituationCreationCommand  WithRecipeId(string withRecipeId)
+        public SituationCreationCommand WithRecipeId(string withRecipeId)   
         {
             RecipeId = withRecipeId;
             return this;
         }
-        
+
+        public SituationCreationCommand AlreadyInState(StateEnum state)
+        {
+            StateForRehydration = state;
+            return this;
+        }
+
         public ITokenPayload Execute(Context context)
         {
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();

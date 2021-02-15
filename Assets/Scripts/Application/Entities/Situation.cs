@@ -672,8 +672,8 @@ namespace SecretHistories.Entities {
 
             }
 
-            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId,new SituationPath(Recipe.ActionId),
-                StateEnum.Ongoing).WithRecipeId(effectCommand.Recipe.Id);
+            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId,new SituationPath(Recipe.ActionId)).WithRecipeId(effectCommand.Recipe.Id).AlreadyInState(
+                StateEnum.Ongoing);
             
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand,effectCommand.ToPath,new Context(Context.ActionSource.SpawningAnchor));
@@ -737,7 +737,7 @@ namespace SecretHistories.Entities {
 
         
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId,
-          new SituationPath(inducedRecipe.ActionId), StateEnum.Ongoing).WithRecipeId(inducedRecipe.Id);
+          new SituationPath(inducedRecipe.ActionId)).WithRecipeId(inducedRecipe.Id).AlreadyInState(StateEnum.Ongoing);
 
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, SpherePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
             SendCommandToSubscribers(spawnNewTokenCommand);

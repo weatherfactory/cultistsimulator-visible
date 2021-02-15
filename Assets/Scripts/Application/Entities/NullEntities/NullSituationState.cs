@@ -47,7 +47,7 @@ namespace Assets.Scripts.Application.Entities.NullEntities
 
         public override void Continue(Situation situation)
         {
-          //
+          situation.TransitionToState(new UnstartedState());
         }
     }
 }

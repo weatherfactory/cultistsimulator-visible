@@ -194,9 +194,8 @@ namespace SecretHistories.Constants
         private TokenCreationCommand SetupSituationTokenCreationCommand(Verb verb, Recipe recipe, StateEnum situationState,
             Hashtable htSituationValues, object locationInfo)
         {
-            var situationCreationCommand = new SituationCreationCommand(verb.Id, new SituationPath(verb.Id),  situationState);
-            situationCreationCommand.RecipeId = recipe.Id;
-
+            var situationCreationCommand = new SituationCreationCommand(verb.Id, new SituationPath(verb.Id)).WithRecipeId(recipe.Id).AlreadyInState(situationState);
+            
             situationCreationCommand.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING) ??  0;
             situationCreationCommand.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
 
