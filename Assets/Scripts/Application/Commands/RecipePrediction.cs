@@ -11,7 +11,8 @@ namespace SecretHistories.Commands
 {
    public class RecipePrediction: IEquatable<RecipePrediction>
    {
-       private Recipe _actualRecipe;
+       private readonly Recipe _actualRecipe;
+       public string RecipeId => _actualRecipe.Id;
         public string Title { get; protected set; }
         public string DescriptiveText { get; protected set; }
         public string BurnImage => _actualRecipe.BurnImage;

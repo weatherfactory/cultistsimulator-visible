@@ -616,7 +616,7 @@ namespace SecretHistories.Entities {
             var aspectsInSituation = GetAspects(true);
             TextRefiner tr = new TextRefiner(aspectsInSituation);
 
-            var addNoteCommand = new AddNoteCommand(Recipe.Label, tr.RefineString(Recipe.Description),new Context(Context.ActionSource.SituationEffect));
+            var addNoteCommand = new AddNoteCommand(Recipe.Label, tr.RefineString(Recipe.Description),new Context(Context.ActionSource.UI));
 
             ExecuteTokenEffectCommand(addNoteCommand);
             
@@ -893,6 +893,10 @@ namespace SecretHistories.Entities {
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
+            if (args.Context.Metafictional)
+                //it's just a note or something equally cosmetic. Don't update recipe prediction or any of that stuff - it's not only unnecessary, it can also cause weird behaviour.
+                return;
+
             var oldEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
 
             UpdateCurrentRecipePrediction(GetRecipePredictionForCurrentStateAndAspects(),args.Context);

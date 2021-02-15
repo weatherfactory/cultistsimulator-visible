@@ -69,7 +69,7 @@ namespace SecretHistories.States
 
             if (linkedRecipe != null)
             {
-                var addNoteCommand=new AddNoteCommand(situation.Recipe.Label,situation.Recipe.Description, new Context(Context.ActionSource.SituationEffect));
+                var addNoteCommand=new AddNoteCommand(situation.Recipe.Label,situation.Recipe.Description, new Context(Context.ActionSource.UI));
                 situation.ExecuteTokenEffectCommand(addNoteCommand);
                 
                  situation.ActivateRecipe(linkedRecipe);

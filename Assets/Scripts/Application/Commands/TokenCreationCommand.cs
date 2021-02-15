@@ -60,7 +60,7 @@ namespace SecretHistories.Commands
             
             token.SetPayload(Payload.Execute(context));
     
-            sphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
+            sphere.AcceptToken(token, context);
             token.transform.localPosition = Location.Anchored3DPosition;
 
             if (_sourceToken != null)

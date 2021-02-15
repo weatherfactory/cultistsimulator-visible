@@ -34,6 +34,7 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
 
        public bool ExecuteOn(ITokenPayload payload)
        {
+           _context.Metafictional = true;
            return payload.ReceiveNote(_label,_description,_context);
        }
    }

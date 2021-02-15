@@ -31,24 +31,24 @@ public class Context {
     }
 
     public ActionSource actionSource;
-
-
+    public bool Metafictional { get; set; }
     public TokenLocation TokenDestination { get; set; }
     public Context(ActionSource actionSource) {
         this.actionSource = actionSource;
+        Metafictional = false;
     }
 
     public Context(ActionSource actionSource,TokenLocation tokenDestination)
     {
         this.actionSource = actionSource;
         TokenDestination = tokenDestination;
+        Metafictional = false;
     }
 
     public static Context Unknown()
     {
         return new Context(ActionSource.Unknown);
     }
-
 
     
     public bool IsManualAction() {
