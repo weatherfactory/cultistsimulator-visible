@@ -40,17 +40,19 @@ namespace SecretHistories.Commands
 
         }
 
-        public SituationCreationCommand(string verbId, string recipeId, SituationPath path, StateEnum state)
+        public SituationCreationCommand(string verbId, SituationPath path, StateEnum state)
         {
-
-            RecipeId = recipeId;
             VerbId = verbId;
             Path = path;
             StateForRehydration = state;
             CommandQueue = new SituationCommandQueue();
         }
 
-
+        public SituationCreationCommand  WithRecipeId(string withRecipeId)
+        {
+            RecipeId = withRecipeId;
+            return this;
+        }
         
         public ITokenPayload Execute(Context context)
         {

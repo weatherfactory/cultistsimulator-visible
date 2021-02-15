@@ -127,7 +127,6 @@ namespace SecretHistories.Entities {
         
 
 
-
         public Situation(SituationPath path,Verb verb)
         {
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
@@ -136,8 +135,9 @@ namespace SecretHistories.Entities {
 
             Path = path;
             Verb = verb;
-            Recipe = NullRecipe.Create(Verb);
-         UpdateCurrentRecipePrediction(RecipePrediction.DefaultFromVerb(Verb),new Context(Context.ActionSource.SituationCreated));
+            Recipe = NullRecipe.Create();
+         _currentRecipePrediction=new RecipePrediction(Recipe,AspectsDictionary.Empty());
+
             State=new NullSituationState();
             _timeshadow = new Timeshadow(Recipe.Warmup,
                 Recipe.Warmup,
@@ -672,8 +672,9 @@ namespace SecretHistories.Entities {
 
             }
 
-            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId, effectCommand.Recipe.Id,new SituationPath(Recipe.ActionId),
-                StateEnum.Ongoing);
+            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId,new SituationPath(Recipe.ActionId),
+                StateEnum.Ongoing).WithRecipeId(effectCommand.Recipe.Id);
+            
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand,effectCommand.ToPath,new Context(Context.ActionSource.SpawningAnchor));
 
@@ -736,7 +737,7 @@ namespace SecretHistories.Entities {
 
         
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId,
-            inducedRecipe.Id, new SituationPath(inducedRecipe.ActionId), StateEnum.Ongoing);
+          new SituationPath(inducedRecipe.ActionId), StateEnum.Ongoing).WithRecipeId(inducedRecipe.Id);
 
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, SpherePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
             SendCommandToSubscribers(spawnNewTokenCommand);

@@ -19,6 +19,7 @@ namespace SecretHistories.States
             var verbSlotsCommand= new PopulateThresholdsCommand(CommandCategory.VerbThresholds, situation.Verb.Thresholds);
             situation.CommandQueue.AddCommand(verbSlotsCommand);
 
+
         }
 
         public override void Exit(Situation situation)

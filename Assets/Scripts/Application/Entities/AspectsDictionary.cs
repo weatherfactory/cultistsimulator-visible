@@ -17,6 +17,11 @@ namespace SecretHistories.Core
         public AspectsDictionary():this(new Dictionary<string, int>())
         { }
 
+        public static AspectsDictionary Empty()
+        {
+            return new AspectsDictionary();
+        }
+
         public static AspectsDictionary GetFromStacks(IEnumerable<ITokenPayload> stacks,bool includingSelf=true)
         {
             AspectsDictionary totals = new AspectsDictionary();
