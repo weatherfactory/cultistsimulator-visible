@@ -71,5 +71,24 @@ namespace SecretHistories.Commands
         {
             return !Equals(left, right);
         }
+
+        public bool AddsMeaningfulInformation(RecipePrediction currentRecipePrediction)
+        {
+
+            if (currentRecipePrediction == null) //if there's no existing prediction, this has to be an improvement
+                return true;
+
+            if (currentRecipePrediction == this) //if this and we are the same, forget about it
+                return false;
+
+            //we often add a . to indicate that the description is intentionally empty.
+            //if we do that, or if it's a mistaken empty string, just go back.
+
+
+            if (!Situation.TextIntendedForDisplay(DescriptiveText))
+                return false;
+
+            return true;
+        }
    }
 }

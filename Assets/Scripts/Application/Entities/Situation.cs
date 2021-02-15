@@ -209,14 +209,14 @@ namespace SecretHistories.Entities {
 
         public void UpdateCurrentRecipePrediction(RecipePrediction newRecipePrediction,Context context)
         {
-            if (newRecipePrediction != _currentRecipePrediction) //repeatedly assigning might mean infinite loops, because eg changing prediction might add recipe note elements
-                    _currentRecipePrediction = newRecipePrediction;
+            if (!newRecipePrediction.AddsMeaningfulInformation(_currentRecipePrediction))
+                return;
 
-            if (Label != newRecipePrediction.Title || Description != newRecipePrediction.DescriptiveText)
-            {
-                var addNoteCommand=new AddNoteCommand(newRecipePrediction.Title,newRecipePrediction.DescriptiveText,context);
+            _currentRecipePrediction = newRecipePrediction;
+
+              var addNoteCommand=new AddNoteCommand(newRecipePrediction.Title,newRecipePrediction.DescriptiveText,context);
                 addNoteCommand.ExecuteOn(this);
-            }
+
         }
 
 
@@ -343,13 +343,11 @@ namespace SecretHistories.Entities {
 
         public bool ReceiveNote(string label, string description,Context context)
         {
-            //we often add a . to indicate that the description is intentionally empty.
-            //if we do that, or if it's a mistaken empty string, just go back.
-            if (description == "." || description == string.Empty)
-                return true;
-
             //no infinite loops pls
             if (label == this.Label && description == this.Description)
+                return true;
+
+            if (!Situation.TextIntendedForDisplay(description))
                 return true;
 
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
@@ -896,6 +894,7 @@ namespace SecretHistories.Entities {
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             var oldEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
+
             UpdateCurrentRecipePrediction(GetRecipePredictionForCurrentStateAndAspects(),args.Context);
             var newEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
 
@@ -950,6 +949,18 @@ namespace SecretHistories.Entities {
         public void ReduceLifetimeBy(float timeSpent)
         {
             _timeshadow.SpendTime(timeSpent);
+        }
+
+        public static bool TextIntendedForDisplay(string descriptiveText)
+        {
+            if (string.IsNullOrEmpty(descriptiveText))
+                return false;
+
+            if (descriptiveText == ".")
+
+                return false;
+
+            return true;
         }
     }
 

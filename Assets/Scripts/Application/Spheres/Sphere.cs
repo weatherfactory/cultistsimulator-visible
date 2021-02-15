@@ -160,8 +160,10 @@ namespace SecretHistories.Spheres
             else
                 EvictAllTokens(new Context(Context.ActionSource.ContainingSphereRetired));
 
+            Watchman.Get<SphereCatalogue>().DeregisterSphere(this);
+
+                Defunct = true;
             Destroy(gameObject);
-            Defunct = true;
             return true;
         }
 
@@ -656,14 +658,18 @@ namespace SecretHistories.Spheres
         public void NotifyTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             Catalogue.OnTokensChangedForSphere(args);
-            foreach(var s in _subscribers)
+            var subscribersToNotify=new HashSet<ISphereEventSubscriber>(_subscribers);
+
+            foreach(var s in subscribersToNotify)
                 s.OnTokensChangedForSphere(args);
         }
 
         public virtual void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {
             Catalogue.OnTokenInteractionInSphere(args);
-            foreach (var s in _subscribers)
+
+            var subscribersToNotify = new HashSet<ISphereEventSubscriber>(_subscribers);
+            foreach (var s in subscribersToNotify)
                 s.OnTokenInteractionInSphere(args);
         }
 
