@@ -221,7 +221,7 @@ namespace SecretHistories.Entities {
 
         public void Reset()
         {
-            Recipe = NullRecipe.Create(Verb);
+            Recipe = Recipe.CreateSpontaneousHintRecipe(Verb);
             UpdateCurrentRecipePrediction(RecipePrediction.DefaultFromVerb(Verb), new Context(Context.ActionSource.SituationReset));
            _timeshadow=Timeshadow.CreateTimelessShadow();
             NotifyStateChange();

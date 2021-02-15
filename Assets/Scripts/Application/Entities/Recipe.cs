@@ -153,6 +153,30 @@ namespace SecretHistories.Entities
 
         }
 
+        public static Recipe CreateSpontaneousHintRecipe(Verb forVerb)
+        {
+
+            var spontanousHintRecipe = new Recipe
+            {
+                Label = forVerb.Label, StartDescription = forVerb.Description, Craftable = false, HintOnly = true
+            };
+
+
+            spontanousHintRecipe.DeckEffects = new Dictionary<string, int>();
+            spontanousHintRecipe.Requirements = new Dictionary<string, string>();
+            spontanousHintRecipe.TableReqs = new Dictionary<string, string>();
+            spontanousHintRecipe.ExtantReqs = new Dictionary<string, string>();
+            spontanousHintRecipe.Effects = new Dictionary<string, string>();
+            spontanousHintRecipe.Aspects = AspectsDictionary.Empty();
+            spontanousHintRecipe.Mutations = new List<MutationEffect>();
+            spontanousHintRecipe.Purge = new Dictionary<string, int>();
+            spontanousHintRecipe.HaltVerb = new Dictionary<string, int>();
+            spontanousHintRecipe.DeleteVerb = new Dictionary<string, int>();
+
+
+            return spontanousHintRecipe;
+        }
+
         public virtual bool IsValid()
         {
             return true;
@@ -185,16 +209,6 @@ namespace SecretHistories.Entities
             return MaxExecutions == 0;
         }
 
-
-
-        public bool CanExecuteInContext(Recipe currentRecipe,SituationState state)
-        {
-
-
-
-
-            return false;
-        }
 
 
         public bool RequirementsSatisfiedBy(AspectsInContext aspectsinContext)

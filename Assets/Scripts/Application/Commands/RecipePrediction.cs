@@ -22,8 +22,8 @@ namespace SecretHistories.Commands
 
         public static RecipePrediction DefaultFromVerb(Verb verb)
         {
-            NullRecipe nullRecipe=NullRecipe.Create(verb);
-            return new RecipePrediction(nullRecipe,new AspectsDictionary());
+            Recipe hintRecipe= Recipe.CreateSpontaneousHintRecipe(verb);
+            return new RecipePrediction(hintRecipe, new AspectsDictionary());
         }
 
 

@@ -257,7 +257,7 @@ namespace SecretHistories.Constants
             string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
             var recipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(recipeId);
             if (recipe == null)
-                recipe = NullRecipe.Create(situationVerb);
+                recipe = Recipe.CreateSpontaneousHintRecipe(situationVerb);
             return recipe;
         }
 

@@ -20,11 +20,8 @@ namespace SecretHistories.NullObjects
     {
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
-        public int Quantity =>0;
         public Dictionary<string, int> Mutations { get; }
 
-
-        
         public string Icon => string.Empty;
 
         
@@ -34,7 +31,14 @@ namespace SecretHistories.NullObjects
         {
             return false;
         }
-        public NullVerb()
+
+
+        public static NullVerb Create()
+        {
+            return new NullVerb();
+        }
+
+        protected NullVerb()
         {
             Thresholds=new List<SphereSpec>();
             SetId(string.Empty);
@@ -43,10 +47,6 @@ namespace SecretHistories.NullObjects
         }
 
 
-        public static NullVerb Create()
-        {
-            return new NullVerb();
-        }
 
 
 

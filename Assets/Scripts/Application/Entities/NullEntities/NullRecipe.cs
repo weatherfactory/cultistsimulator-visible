@@ -6,40 +6,42 @@ using SecretHistories.Fucine.DataImport;
 using SecretHistories.Interfaces;
 using SecretHistories.Entities;
 using SecretHistories.NullObjects;
+using SecretHistories.Core;
 
 namespace SecretHistories.Entities
 {
     public class NullRecipe : Recipe
     {
 
-        protected NullRecipe(string actionId, string label, string startDescription): base()
+        protected NullRecipe()
         {
             Craftable = false;
             HintOnly = true;
-            ActionId = actionId;
-            Label = label;
-            StartDescription = startDescription;
+            ActionId = NullVerb.Create().Id;
+            Label = NullVerb.Create().Label;
+            StartDescription = NullVerb.Create().Description;
             Description = String.Empty;
+            DeckEffects=new Dictionary<string, int>();
+            Requirements = new Dictionary<string, string>();
+            TableReqs=new Dictionary<string, string>();
+            ExtantReqs=new Dictionary<string, string>();
+            Effects=new Dictionary<string, string>();
+            Aspects = AspectsDictionary.Empty();
+            Mutations = new List<MutationEffect>();
+            Purge = new Dictionary<string, int>();
+            HaltVerb =new Dictionary<string, int>();
+            DeleteVerb=new Dictionary<string, int>();
         }
 
     public static NullRecipe Create()
         {
-            return Create(NullVerb.Create());
+            return new NullRecipe();
         }
         public override bool IsValid()
         {
             return false;
         }
 
-        public static NullRecipe Create(Verb forVerb)
-        {
-            if(forVerb==null)
-                forVerb=NullVerb.Create(); //just in case
-
-            var nr = new NullRecipe(forVerb.Id,forVerb.Label,forVerb.Description);
-
-            return nr;
-        }
 
         public override int Priority => -1;
     }
