@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
@@ -10,13 +11,18 @@ namespace SecretHistories.Entities
 {
     public class NullRecipe : Recipe
     {
-        public NullRecipe(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+
+        protected NullRecipe(string actionId, string label, string startDescription): base()
         {
-            //do nothing, we're null
+            Craftable = false;
+            HintOnly = true;
+            ActionId = actionId;
+            Label = label;
+            StartDescription = startDescription;
+            Description = String.Empty;
         }
 
-
-        public static NullRecipe Create()
+    public static NullRecipe Create()
         {
             return Create(NullVerb.Create());
         }
@@ -30,17 +36,8 @@ namespace SecretHistories.Entities
             if(forVerb==null)
                 forVerb=NullVerb.Create(); //just in case
 
-            Hashtable nullht = new Hashtable();
-            EntityData fauxEntityData = new EntityData("nullrecipe", nullht);
-            var nr = new NullRecipe(fauxEntityData, new ContentImportLog());
-            nr.Craftable = false;
-            nr.HintOnly = true;
-    
+            var nr = new NullRecipe(forVerb.Id,forVerb.Label,forVerb.Description);
 
-            nr.ActionId = forVerb.Id;
-            nr.Label = forVerb.Label;
-            nr.Description = forVerb.Description;
-         
             return nr;
         }
 

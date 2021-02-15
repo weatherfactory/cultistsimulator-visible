@@ -20,15 +20,11 @@ namespace SecretHistories.NullObjects
     {
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
-        public string Id => ".";
         public int Quantity =>0;
         public Dictionary<string, int> Mutations { get; }
 
 
-        public string Label { get; set; }
-        public string Description { get; set; }
         
-
         public string Icon => string.Empty;
 
         
@@ -40,8 +36,10 @@ namespace SecretHistories.NullObjects
         }
         public NullVerb()
         {
-            Description = ".";
             Thresholds=new List<SphereSpec>();
+            SetId(string.Empty);
+            Label = string.Empty;
+            Description = string.Empty;
         }
 
 
