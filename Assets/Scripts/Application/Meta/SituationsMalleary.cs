@@ -89,6 +89,13 @@ namespace Assets.Scripts.Application.Meta
             var addNoteCommand=new AddNoteCommand(title,description,new Context(Context.ActionSource.UI));
 
           situation.ExecuteTokenEffectCommand(addNoteCommand);
-            }
+        }
+
+        public void DestroyDrydockedToken()
+        {
+            var token = _situationDrydock.GetTokenInSlot();
+            token.Retire(RetirementVFX.None);
+        }
+        
     }
 }
