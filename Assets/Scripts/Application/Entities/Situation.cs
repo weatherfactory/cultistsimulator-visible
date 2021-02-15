@@ -207,16 +207,14 @@ namespace SecretHistories.Entities {
             
         }
 
-        public void UpdateCurrentRecipePrediction(RecipePrediction rp,Context context)
+        public void UpdateCurrentRecipePrediction(RecipePrediction newRecipePrediction,Context context)
         {
-            if (rp != _currentRecipePrediction) //repeatedly assigning might mean infinite loops, because eg changing prediction might add recipe note elements
-                rp = CurrentRecipePrediction; 
+            if (newRecipePrediction != _currentRecipePrediction) //repeatedly assigning might mean infinite loops, because eg changing prediction might add recipe note elements
+                    _currentRecipePrediction = newRecipePrediction;
 
-            _currentRecipePrediction = rp;
-
-            if (Label != rp.Title || Description != rp.DescriptiveText)
+            if (Label != newRecipePrediction.Title || Description != newRecipePrediction.DescriptiveText)
             {
-                var addNoteCommand=new AddNoteCommand(rp.Title,rp.DescriptiveText,context);
+                var addNoteCommand=new AddNoteCommand(newRecipePrediction.Title,newRecipePrediction.DescriptiveText,context);
                 addNoteCommand.ExecuteOn(this);
             }
         }
