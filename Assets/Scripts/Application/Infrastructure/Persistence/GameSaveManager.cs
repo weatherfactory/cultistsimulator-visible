@@ -74,7 +74,7 @@ namespace SecretHistories.Infrastructure
             return File.Exists(NoonUtility.GetGameSaveLocation());
         }
 
-        public bool IsSavedGameActive(GamePersistence source, bool temp = false)
+        public bool IsSavedGameActive(PetromnemeGamePersistenceProvider source, bool temp = false)
         {
             return simpleJsonGameDataImporter.IsSavedGameActive(source);
         }

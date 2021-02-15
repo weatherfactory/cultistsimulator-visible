@@ -10,20 +10,20 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.UI;
 
-namespace Assets.Scripts.Application.Commands.SituationCommands
+namespace SecretHistories.Commands.SituationCommands
 {
    public class AddNoteCommand: IAffectsTokenCommand
    {
 
        public CommandCategory CommandCategory => CommandCategory.Notes;
-       private readonly string _label;
-       private readonly string _description;
+       public readonly string Label;
+       public readonly string Description;
        private readonly Context _context;
 
        public AddNoteCommand(string label,string description,Context context)
        {
-           _label = label;
-           _description = description;
+           Label = label;
+           Description = description;
            _context = context;
        }
 
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Application.Commands.SituationCommands
        public bool ExecuteOn(ITokenPayload payload)
        {
            _context.Metafictional = true;
-           return payload.ReceiveNote(_label,_description,_context);
+           return payload.ReceiveNote(Label,Description,_context);
        }
    }
 

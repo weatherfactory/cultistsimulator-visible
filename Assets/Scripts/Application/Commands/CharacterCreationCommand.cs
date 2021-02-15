@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Entities;
+using Assets.Scripts.Application.Entities.NullEntities;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
@@ -28,6 +29,44 @@ namespace SecretHistories.Commands
         public CharacterCreationCommand()
         {
             RecipeExecutions = new Dictionary<string, int>();
+        }
+
+        public static CharacterCreationCommand Reincarnate(Dictionary<string,string> lastCharacterHistoryRecords, Legacy asLegacy, Ending afterEnding)
+        {
+            var cc = new CharacterCreationCommand
+            {
+                ActiveLegacy = asLegacy,
+                EndingTriggered = afterEnding,
+                Name = Watchman.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME"),
+                Profession = asLegacy.Label
+            };
+            // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
+
+            var hb = new HistoryBuilder();
+            cc.PreviousCharacterHistoryRecords = hb.FillInDefaultPast(lastCharacterHistoryRecords);
+            
+            return cc;
+
+        }
+
+
+        public static CharacterCreationCommand IncarnateFromLegacy(Legacy activeLegacy)
+        {
+            var cc = new CharacterCreationCommand
+            {
+                ActiveLegacy = activeLegacy,
+                EndingTriggered = NullEnding.Create(),
+                Name = Watchman.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME"),
+                Profession = activeLegacy.Label
+            };
+            // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
+
+            var hb = new HistoryBuilder();
+            cc.PreviousCharacterHistoryRecords = hb.FillInDefaultPast();
+            
+
+            return cc;
+
         }
 
         public Character Execute(Stable stable)

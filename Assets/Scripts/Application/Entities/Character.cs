@@ -122,32 +122,6 @@ public class Character:MonoBehaviour,IEncaustable
     private HashSet<ICharacterSubscriber> _subscribers = new HashSet<ICharacterSubscriber>();
     private string _name = "[unnamed]";
 
-    
-    public void Reincarnate(Legacy activeLegacy,Ending endingTriggered)
-    {
-    
-            ActiveLegacy = activeLegacy;
-            EndingTriggered = endingTriggered;
-
-            var hb = new HistoryBuilder();
-        if (EndingTriggered!=null)
-            //The game has ended. The current character becomes the previous character.
-            _previousCharacterHistoryRecords = hb.FillInDefaultPast(_inProgressHistoryRecords);
-        else
-        //the game hasn't ended yet. There may be existing previous
-            _previousCharacterHistoryRecords = hb.FillInDefaultPast(_previousCharacterHistoryRecords);
-        
-        
-        _inProgressHistoryRecords = new Dictionary<string, string>();
-        _recipeExecutions= new Dictionary<string, int>();
-        _deckInstances=new Dictionary<string, DeckInstance>();
-        ResetStartingDecks();
-
-        Name = Watchman.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME");
-        // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
-        Profession = ActiveLegacy.Label;
-
-    }
 
 
     public void ResetStartingDecks()

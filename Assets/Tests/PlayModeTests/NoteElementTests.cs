@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.Application.Commands.SituationCommands;
 using NUnit.Framework;
 using SecretHistories.Commands;
 using SecretHistories.Entities;

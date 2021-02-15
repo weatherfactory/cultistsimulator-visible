@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Core;
@@ -37,15 +36,8 @@ namespace SecretHistories.Constants
 
             try
             {
-                if (!Watchman.Get<StageHand>().GamePersistence.Exists()) //we can roll BeginNewGame into the deserialisation call, actually
-                {
-                    Watchman.Get<GameGateway>().BeginNewGame();
-                }
-                else
-                {
-                    LoadGame(Watchman.Get<StageHand>().GamePersistence);
-                }
 
+                LoadGame(Watchman.Get<StageHand>().GamePersistenceProvider);
                 ProvisionDropzoneToken();
             }
             catch (Exception e)
@@ -55,27 +47,34 @@ namespace SecretHistories.Constants
         }
 
 
-        public void LoadGame(GamePersistence gamePersistenceSource)
+        public void LoadGame(GamePersistenceProvider gamePersistenceProviderSource)
         {
+            //TODO: if we use the freshgameprovider, save the restart game json
+            
+
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
             { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
             Watchman.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             try
             {
 
-                gamePersistenceSource.DeserialiseFromPersistence(); //In the case of a Petromneme, this doesn't just deserialise, it will do the actual loading
-                gamePersistenceSource.ImportPetromnemeStateAfterTheAncientFashion();
+                gamePersistenceProviderSource.DepersistGameState(); //In the case of a Petromneme, this doesn't just deserialise, it will do the actual loading
+                gamePersistenceProviderSource.ImportPetromnemeStateAfterTheAncientFashion();
 
-                var gameState = gamePersistenceSource.RetrieveGameState();
+                var gameState = gamePersistenceProviderSource.RetrievePersistedGameState();
+
+                foreach (var c in gameState.CharacterCreationCommands)
+                    c.Execute(Watchman.Get<Stable>());
 
                 foreach (var t in gameState.TokenCreationCommands) //in the case of a petromneme, there aren't any tccs
                     t.Execute(new Context(Context.ActionSource.Loading));
 
-                //in both old and new cases, the character has already been deserialised and loaded in Glory by now - but what about reloads?
+                foreach (var n in gameState.NotificationCommands)
+                {
+                    Watchman.Get<Concursum>().ShowNotification(new NotificationArgs(n.Label, n.Description)); //ultimately, I'd like the float note to be a token, too - we're using AddCommand here currently just as a holder for the strings
+                }
 
-           Watchman.Get<Concursum>().ShowNotification(
-                     new NotificationArgs(Watchman.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"), Watchman.Get<ILocStringProvider>().Get("UI_LOADEDDESC")));
-      
+                
             }
             catch (Exception e)
             {
@@ -90,51 +89,8 @@ namespace SecretHistories.Constants
 
             Watchman.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
-        }
-
-        private void ProvisionStartingVerb(Legacy activeLegacy, Sphere inSphere)
-        {
-            
-            SituationCreationCommand startingSituation = new SituationCreationCommand(activeLegacy.StartingVerbId, NullRecipe.Create().Id, new SituationPath(activeLegacy.StartingVerbId),   StateEnum.Unstarted);
-            TokenCreationCommand startingToken=new TokenCreationCommand(startingSituation,TokenLocation.Default());
-
-            startingToken.Execute(new Context(Context.ActionSource.Unknown));
-            
-
-        }
-
-        private void ProvisionStartingElements(Legacy activeLegacy,Sphere inSphere)
-        {
-            AspectsDictionary startingElements = new AspectsDictionary();
-            startingElements.CombineAspects(activeLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
-
-            foreach (var e in startingElements)
-            {
-                var context = new Context(Context.ActionSource.Loading);
-
-                var elementStackCreationCommand=new ElementStackCreationCommand(e.Key, e.Value);
-
-                Token token = inSphere.ProvisionElementStackToken(elementStackCreationCommand,context);
-                inSphere.Choreographer.PlaceTokenAtFreeLocalPosition(token, context);
-            }
-        }
 
 
-        public void BeginNewGame()
-        {
-            Character character = Watchman.Get<Stable>().Protag();
-            Sphere tabletopSphere = Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere();
-
-
-            ProvisionStartingVerb(character.ActiveLegacy, tabletopSphere);
-            
-            ProvisionStartingElements(character.ActiveLegacy, tabletopSphere);
-
-            Watchman.Get<Concursum>().ShowNotification(new NotificationArgs(character.ActiveLegacy.Label, character.ActiveLegacy.StartDescription));
-
-            character.Reincarnate(character.ActiveLegacy, NullEnding.Create());
-            Watchman.Get<Compendium>().SupplyLevers(character);
-            Watchman.Get<StageHand>().ClearRestartingGameFlag();
         }
 
         private void ProvisionDropzoneToken()
@@ -148,11 +104,11 @@ namespace SecretHistories.Constants
         public async void EndGame(Ending ending, Token _anchor)
         {
 
-            var character = Watchman.Get<Stable>().Protag();
             var chronicler = Watchman.Get<Chronicler>();
 
             chronicler.ChronicleGameEnd(Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<SphereCatalogue>().GetSpheres(), ending);
-            character.Reincarnate(NullLegacy.Create(), ending);
+            var characterCreationCommand=CharacterCreationCommand.Reincarnate(Watchman.Get<Stable>().Protag().InProgressHistoryRecords, NullLegacy.Create(), ending);
+            characterCreationCommand.Execute(Watchman.Get<Stable>());
 
             throw new NotImplementedException("inactive save here?");
             

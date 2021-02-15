@@ -257,7 +257,7 @@ public class MenuScreenController : LocalNexus {
 		
         if (Watchman.Get<Stable>().Protag().State==CharacterState.Viable) {
             //back into the game!
-            Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultGamePersistence());
+            Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultGamePersistenceProvider());
             return;
         }
 
@@ -285,7 +285,7 @@ public class MenuScreenController : LocalNexus {
 
     private async void ResetToLegacy(Legacy activeLegacy)
     {
-        Watchman.Get<Stable>().Protag().Reincarnate(activeLegacy,NullEnding.Create());
+     //   Watchman.Get<Stable>().Protag().Reincarnate(activeLegacy,NullEnding.Create());
 
 
       throw new NotImplementedException("save here?");
@@ -295,9 +295,9 @@ public class MenuScreenController : LocalNexus {
     public void BeginNewSaveWithSpecifiedLegacy(string legacyId)
     {
         var legacy= Watchman.Get<Compendium>().GetEntityById<Legacy>(legacyId);
-        ResetToLegacy(legacy);
-        
-        Watchman.Get<StageHand>().NewGameOnTabletop();
+        var freshGamePersistenceProvider=new FreshGameProvider(legacy);
+       
+        Watchman.Get<StageHand>().LoadGameOnTabletop(freshGamePersistenceProvider);
     }
 
     public void ShowCredits() {

@@ -12,7 +12,6 @@ using SecretHistories.Services;
 using SecretHistories.States;
 using SecretHistories.UI;
 using Assets.Logic;
-using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities;
 using Assets.Scripts.Application.Entities.NullEntities;
 using Assets.Scripts.Application.Infrastructure.Events;

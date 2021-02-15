@@ -133,20 +133,16 @@ namespace Assets.Scripts.Application.Meta
 
         public void LoadGame()
         {
-            Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultGamePersistence());
+            Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultGamePersistenceProvider());
         }
 
         public async void SaveGame()
         {
 
-            var game = new DefaultGamePersistence();
-
+            var game = new DefaultGamePersistenceProvider();
             var characters = Watchman.Get<Stable>().GetAllCharacters();
             var allSpheres = Watchman.Get<SphereCatalogue>().GetSpheres();
-
             game.Encaust(characters, allSpheres);
-
-
             var saveTask = game.SerialiseAndSaveAsync();
             var result = await saveTask;
 
@@ -199,7 +195,7 @@ namespace Assets.Scripts.Application.Meta
         {
             if (!CheckDebugSaveExists(index))
                 return;
-            DevSlotSaveGamePersistence source = new DevSlotSaveGamePersistence(index);
+            DevSlotSaveGamePersistenceProvider source = new DevSlotSaveGamePersistenceProvider(index);
 
             Watchman.Get<StageHand>().LoadGameOnTabletop(source);
         }

@@ -21,17 +21,17 @@ namespace SecretHistories.UI.Scripts
    public class SaveDataImporter : IGameDataImporter
     {
 
-        public void ImportCharacter(GamePersistence source, Character character)
+        public void ImportCharacter(GamePersistenceProvider source, Character character)
         {
             throw new NotImplementedException();
         }
 
-        public void ImportTableState(GamePersistence source, Sphere tabletop)
+        public void ImportTableState(GamePersistenceProvider source, Sphere tabletop)
         {
             throw new NotImplementedException();
         }
 
-        public bool IsSavedGameActive(GamePersistence source, bool temp)
+        public bool IsSavedGameActive(GamePersistenceProvider source, bool temp)
         {
             throw new NotImplementedException();
 

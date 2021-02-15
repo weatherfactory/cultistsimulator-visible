@@ -18,6 +18,7 @@ using SecretHistories.Interfaces;
 using TMPro;
 using SecretHistories.Constants;
 using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Persistence;
 using SecretHistories.Services;
 
 public class WindowedSettingObserverForOptionsPanel:ISettingSubscriber
@@ -227,7 +228,8 @@ public class OptionsPanel : MonoBehaviour {
         if(restartButton.AttemptRestart())
         {
             ToggleVisibility();
-            Watchman.Get<StageHand>().NewGameOnTabletop();
+            var restartingGameProvider=new RestartingGameProvider();
+            Watchman.Get<StageHand>().LoadGameOnTabletop(restartingGameProvider);
 
         }
     }

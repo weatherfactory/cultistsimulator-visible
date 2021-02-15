@@ -7,7 +7,7 @@ using SecretHistories.Enums;
 using SecretHistories.UI;
 using SecretHistories.Interfaces;
 using Assets.Logic;
-using Assets.Scripts.Application.Commands.SituationCommands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Core;
 using SecretHistories.Constants;
 using SecretHistories.Spheres;

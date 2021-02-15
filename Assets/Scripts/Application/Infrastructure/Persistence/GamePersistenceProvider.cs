@@ -7,20 +7,24 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
+using SecretHistories.Entities;
+using SecretHistories.Services;
 using SecretHistories.Spheres;
+using SecretHistories.UI;
 
 
 namespace SecretHistories.Infrastructure.Persistence
 {
-    public abstract class GamePersistence
+    public abstract class GamePersistenceProvider
     {
-        public abstract string GetSaveFileLocation();
+        protected abstract string GetSaveFileLocation();
 
 
         protected PersistedGameState _persistedGameState;
 
-        public PersistedGameState RetrieveGameState()
+        public PersistedGameState RetrievePersistedGameState()
         {
             return _persistedGameState;
         }
@@ -60,7 +64,15 @@ namespace SecretHistories.Infrastructure.Persistence
         }
 
 
-        public abstract void DeserialiseFromPersistence();
+        public virtual void DepersistGameState()
+        {
+            string json = File.ReadAllText(GetSaveFileLocation());
+            var sh = new SerializationHelper();
+            _persistedGameState = sh.DeserializeFromJsonString<PersistedGameState>(json);
+            _persistedGameState.NotificationCommands.Add(new AddNoteCommand(Watchman.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"), 
+                Watchman.Get<ILocStringProvider>().Get("UI_LOADEDDESC"),
+                new Context(Context.ActionSource.Loading)));
+        }
 
 
         public async Task<bool> SerialiseAndSaveAsync()
@@ -86,6 +98,21 @@ namespace SecretHistories.Infrastructure.Persistence
         public virtual void ImportPetromnemeStateAfterTheAncientFashion()
         {
             //do nothing
+        }
+
+        public static GamePersistenceProvider GetMostRelevantValidGamePersistence()
+        {
+            var defaultPersistence = new DefaultGamePersistenceProvider();
+            if (defaultPersistence.Exists())
+                return defaultPersistence;
+            var petromnemePersistence = new PetromnemeGamePersistenceProvider();
+            if (petromnemePersistence.Exists())
+                return petromnemePersistence;
+
+            var defaultLegacy = Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First();
+
+
+            return new FreshGameProvider(defaultLegacy);
         }
 
     }

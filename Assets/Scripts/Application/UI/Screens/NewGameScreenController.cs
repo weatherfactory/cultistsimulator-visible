@@ -134,9 +134,9 @@ namespace SecretHistories.UI {
 		void StartGameDelayed()
         {
             var chosenLegacy = AvailableLegaciesForEnding[selectedLegacy];
-            Watchman.Get<Stable>().Protag().Reincarnate(chosenLegacy,NullEnding.Create());
+            //Watchman.Get<Stable>().Protag().Reincarnate(chosenLegacy,NullEnding.Create());
 
-            Watchman.Get<StageHand>().NewGameOnTabletop();
+            //Watchman.Get<StageHand>().NewGameOnTabletop();
 
 		}
 

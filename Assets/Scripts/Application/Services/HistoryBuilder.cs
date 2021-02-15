@@ -21,6 +21,11 @@ namespace SecretHistories.Services
         public const string DEFAULT_LAST_PERSON_KILLED = "neville_a";
         public const string DEFAULT_FOLLOWER_AT_GAME_END = "rose_b";
 
+        public Dictionary<string, string> FillInDefaultPast()
+        {
+            return FillInDefaultPast(new Dictionary<string, string>());
+        }
+
         public Dictionary<string, string> FillInDefaultPast(Dictionary<string, string> currentPast)
         {
             Dictionary<string, string> populatedPast;

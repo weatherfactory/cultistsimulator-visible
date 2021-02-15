@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities.NullEntities;
 using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
 using SecretHistories.Commands;
@@ -30,28 +29,22 @@ namespace SecretHistories.Constants
         private  SpherePath windowSpherePath;
         private  SpherePath tabletopSpherePath;
 
-        public Hashtable RetrieveHashedSaveFromFile(GamePersistence source)
-        {
-            
-            string importJson = File.ReadAllText(source.GetSaveFileLocation());
-            Hashtable htSave = SimpleJsonImporter.Import(importJson);
-            return htSave;
-        }
 
-        public bool IsSavedGameActive(GamePersistence source)
+
+        public bool IsSavedGameActive(PetromnemeGamePersistenceProvider source)
         {
-            var htSave = RetrieveHashedSaveFromFile(source);
+            var htSave = source.RetrieveHashedSaveFromFile();
             return htSave.ContainsKey(SaveConstants.SAVE_ELEMENTSTACKS) || htSave.ContainsKey(SaveConstants.SAVE_SITUATIONS);
         }
 
 
 
 
-        public void ImportTableState(GamePersistence source, Sphere tabletop)
+        public void ImportTableState(PetromnemeGamePersistenceProvider source, Sphere tabletop)
         {
-            var htSave = RetrieveHashedSaveFromFile(source);
+            var htSave = source.RetrieveHashedSaveFromFile();
 
-       windowSpherePath = new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
+            windowSpherePath = new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
           tabletopSpherePath = new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
 
 
@@ -63,10 +56,10 @@ namespace SecretHistories.Constants
                 ImportSituations(tabletop, htSituations);
         }
 
-        public CharacterCreationCommand ImportToCharacterCreationCommand(GamePersistence source)
+        public CharacterCreationCommand ImportToCharacterCreationCommand(PetromnemeGamePersistenceProvider source)
         {
             var characterCreationCommand=new CharacterCreationCommand();
-            var htSave = RetrieveHashedSaveFromFile(source);
+            var htSave = source.RetrieveHashedSaveFromFile();
 
             var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
             if(htCharacter==null)

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Assets.Scripts.Application.Commands;
-using Assets.Scripts.Application.Commands.SituationCommands;
 using Assets.Scripts.Application.Entities;
 using NUnit.Framework;
 using SecretHistories.Abstract;
