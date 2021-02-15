@@ -1,0 +1,705 @@
+Using pre-set license
+Built from '2020.2/release' branch; Version is '2020.2.1f1 (270dd8c3da1c) revision 2559448'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.0) 64bit' Language: 'en' Physical Memory: 32712 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.2.1f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/Alexis/Documents/GitHub/csunity
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+55540
+Successfully changed project path to: C:/Users/Alexis/Documents/GitHub/csunity
+C:/Users/Alexis/Documents/GitHub/csunity
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 88.39 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.1f1 (270dd8c3da1c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Alexis/Documents/GitHub/csunity/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3090 (ID=0x2204)
+    Vendor:   
+    VRAM:     24348 MB
+    Driver:   27.21.14.6109
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56376
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.1f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.002569 seconds.
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 93.54 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.531 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004588 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 114.80 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.581 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.86 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1892 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 86.1 MB.
+System memory in use after: 86.2 MB.
+
+Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 2322.
+Total: 1.782300 ms (FindLiveObjects: 0.185300 ms CreateObjectMapping: 0.046300 ms MarkObjects: 1.494000 ms  DeleteObjects: 0.056000 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSansCJK-Bold.ttc
+  artifactKey: Guid(1ff35b5c51fc8354b949fbba9051729c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSansCJK-Bold.ttc using Guid(1ff35b5c51fc8354b949fbba9051729c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0ce1a77c0fb4a769e09297acbbb6e5b') in 0.220214 seconds
+  Import took 0.224299 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000620 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/Philosopher-BoldItalic.ttf
+  artifactKey: Guid(0707c776aa3c9c745ba4b70c758fada7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/Philosopher-BoldItalic.ttf using Guid(0707c776aa3c9c745ba4b70c758fada7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f17d5def2c5e4cbc57ab1a0a5dadb7ac') in 0.027985 seconds
+  Import took 0.030506 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000212 seconds.
+  path: Assets/Resources/images/elements/textbookgreek.png
+  artifactKey: Guid(4fc33eb07f096fe429f2ce021b2bdbc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookgreek.png using Guid(4fc33eb07f096fe429f2ce021b2bdbc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2c609a6573c03626bdd78ad0eef42d4') in 0.095011 seconds
+  Import took 0.097475 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000259 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/berylium bd it.ttf
+  artifactKey: Guid(bf025e2738fcf5649964a5282b540a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/berylium bd it.ttf using Guid(bf025e2738fcf5649964a5282b540a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8b2edd1dc1f9c12d54cfc58db519b13') in 0.023216 seconds
+  Import took 0.025876 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000184 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/Philosopher-Bold.ttf
+  artifactKey: Guid(ebd02413ad1117641b0be695c2f08ff9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/Philosopher-Bold.ttf using Guid(ebd02413ad1117641b0be695c2f08ff9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdfeaefecb890e90bb5cb79cfe4ec3df') in 0.026725 seconds
+  Import took 0.029649 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000183 seconds.
+  path: Assets/Plugins/TextMesh Pro/Examples & Extras/Prefabs/Text Popup.prefab
+  artifactKey: Guid(b06f0e6c1dfa4356ac918da1bb32c603) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/TextMesh Pro/Examples & Extras/Prefabs/Text Popup.prefab using Guid(b06f0e6c1dfa4356ac918da1bb32c603) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90ea760d374f9ae8c019f2154f30f030') in 0.186155 seconds
+  Import took 0.189421 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000268 seconds.
+  path: Assets/Plugins/TextMesh Pro/Examples & Extras/Fonts/Oswald-Bold.ttf
+  artifactKey: Guid(c9f6d0e7bc8541498c9a4799ba184ede) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/TextMesh Pro/Examples & Extras/Fonts/Oswald-Bold.ttf using Guid(c9f6d0e7bc8541498c9a4799ba184ede) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9d8e081fb2b5dcab254c8ce24207750') in 0.026550 seconds
+  Import took 0.029438 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/Resources/prefabs/TextManifestation.prefab
+  artifactKey: Guid(20e2a960bc6b6aa4989645530b27565d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/TextManifestation.prefab using Guid(20e2a960bc6b6aa4989645530b27565d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2bb443472c5a9d0a991311474df0711d') in 0.147743 seconds
+  Import took 0.150264 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000256 seconds.
+  path: Assets/Plugins/TextMesh Pro/Examples & Extras/Fonts/Roboto-Bold.ttf
+  artifactKey: Guid(4beb055f07aaff244873dec698d0363e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/TextMesh Pro/Examples & Extras/Fonts/Roboto-Bold.ttf using Guid(4beb055f07aaff244873dec698d0363e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '430e711dc44036f3e5574c2e4f4fd36a') in 0.024570 seconds
+  Import took 0.027171 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSansCJKsc-Regular.otf
+  artifactKey: Guid(c62c9dd3e90b65e41994d815f0483d66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSansCJKsc-Regular.otf using Guid(c62c9dd3e90b65e41994d815f0483d66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa5dc14f3f9c7d55611994ef3240f034') in 0.041279 seconds
+  Import took 0.044465 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000254 seconds.
+  path: Assets/Resources/images/elements/textbookfucine.png
+  artifactKey: Guid(bd9ac771bbfc1e44580918ddd3d9c42c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookfucine.png using Guid(bd9ac771bbfc1e44580918ddd3d9c42c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3a56d945e6c78f733ddfaf7a3e4fe01') in 0.029658 seconds
+  Import took 0.032288 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000227 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSansCJK-Regular.ttc
+  artifactKey: Guid(274e1aa782da5d346a120c2ef5dc3b9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSansCJK-Regular.ttc using Guid(274e1aa782da5d346a120c2ef5dc3b9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54a8d63ee83fee9b5c235449c319bc54') in 0.041809 seconds
+  Import took 0.045582 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000204 seconds.
+  path: Assets/Resources/images/elements/textbookpassion.png
+  artifactKey: Guid(c8ca62bb85ac4334183bf2f71aee3abc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookpassion.png using Guid(c8ca62bb85ac4334183bf2f71aee3abc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4b858ad55d50c501220b18252a5ff82') in 0.029121 seconds
+  Import took 0.031515 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Resources/images/elements/textbookvaksanskrit.png
+  artifactKey: Guid(0b0c91ee19784134faa3b8a3bbb2bd31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookvaksanskrit.png using Guid(0b0c91ee19784134faa3b8a3bbb2bd31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c53240adb53323d2bd37c80e662571db') in 0.026556 seconds
+  Import took 0.028776 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000209 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/Belgrad.ttf
+  artifactKey: Guid(cb22c9998f6d7d9439f6f1f6cb430e05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/Belgrad.ttf using Guid(cb22c9998f6d7d9439f6f1f6cb430e05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf9af1f572b097e8850b07234db48938') in 0.021840 seconds
+  Import took 0.023956 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000245 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/Titania-Regular.ttf
+  artifactKey: Guid(598a175163794d447bca057b0df641d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/Titania-Regular.ttf using Guid(598a175163794d447bca057b0df641d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf82ec06f7d409c508884d9aced8935f') in 0.022547 seconds
+  Import took 0.025051 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000226 seconds.
+  path: Assets/Resources/images/ui/loc_zh-hans/textbinary.png
+  artifactKey: Guid(f3db911d01c524a4c9cde8db2c2ec0c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/ui/loc_zh-hans/textbinary.png using Guid(f3db911d01c524a4c9cde8db2c2ec0c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b197c99760830bac563f9a8ad844cab') in 0.023005 seconds
+  Import took 0.025563 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000248 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSans-Regular.ttf
+  artifactKey: Guid(62377e8acefe747dbb8aac3b239de4f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSans-Regular.ttf using Guid(62377e8acefe747dbb8aac3b239de4f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b66f69a9a12a7a9edf7851fc226d5b30') in 0.025885 seconds
+  Import took 0.028289 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000229 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSansJP-Bold.otf
+  artifactKey: Guid(cd83e966d69b89541be0dd236ebd5bfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSansJP-Bold.otf using Guid(cd83e966d69b89541be0dd236ebd5bfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c7739d59400fa9dbe5479e994b7cae4') in 0.027384 seconds
+  Import took 0.029780 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000217 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSerif-Bold.ttf
+  artifactKey: Guid(d6b784b214ec4f74283658ac9521b6c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSerif-Bold.ttf using Guid(d6b784b214ec4f74283658ac9521b6c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e4bae5c6c40304384e2340af9199e06') in 0.023623 seconds
+  Import took 0.025968 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000240 seconds.
+  path: Assets/Plugins/TextMesh Pro/Examples & Extras/Prefabs/TextMeshPro - Prefab 1.prefab
+  artifactKey: Guid(a6e39ced0ea046bcb636c3f0b2e2a745) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/TextMesh Pro/Examples & Extras/Prefabs/TextMeshPro - Prefab 1.prefab using Guid(a6e39ced0ea046bcb636c3f0b2e2a745) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61d09312508e1b31a9f541846584343f') in 0.050646 seconds
+  Import took 0.053330 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/Resources/images/elements/textbookphrygian.png
+  artifactKey: Guid(9ae14f0894a8fdc45877f21b053bb998) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookphrygian.png using Guid(9ae14f0894a8fdc45877f21b053bb998) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a1e1fa03c914fb9e0427e81b9cd0423') in 0.023578 seconds
+  Import took 0.025993 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000202 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/berylium bd.ttf
+  artifactKey: Guid(b7665e259f0f8b4438cdbc9766aa6904) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/berylium bd.ttf using Guid(b7665e259f0f8b4438cdbc9766aa6904) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '006b2bb5a72abd6868a50f4a7e941a9d') in 0.022784 seconds
+  Import took 0.025172 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000224 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSerif-Italic.ttf
+  artifactKey: Guid(822896705042a814a8e55ad197917dd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSerif-Italic.ttf using Guid(822896705042a814a8e55ad197917dd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7df8ea93153242af383c71b3b2c4dbaf') in 0.023897 seconds
+  Import took 0.026758 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSansCJKsc-Bold.otf
+  artifactKey: Guid(f74120848cceaaa4bbb4b4c1768a3095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSansCJKsc-Bold.otf using Guid(f74120848cceaaa4bbb4b4c1768a3095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'feac05002ee3722e9c8cbbcb6d0c0eb2') in 0.037793 seconds
+  Import took 0.040566 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000220 seconds.
+  path: Assets/Resources/images/elements/textbookfucinelatin.png
+  artifactKey: Guid(a20f975a3383e054fa757eb14d3e82f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookfucinelatin.png using Guid(a20f975a3383e054fa757eb14d3e82f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01b92c6d4305aa69556ac0f47124abc5') in 0.029376 seconds
+  Import took 0.031793 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/Plugins/TextMesh Pro/Examples & Extras/Prefabs/TextMeshPro - Prefab 2.prefab
+  artifactKey: Guid(fdad9d952ae84cafb74c63f2e694d042) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/TextMesh Pro/Examples & Extras/Prefabs/TextMeshPro - Prefab 2.prefab using Guid(fdad9d952ae84cafb74c63f2e694d042) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73e88d1f0144d2ca8e92d5f867de04a1') in 0.023535 seconds
+  Import took 0.027157 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/Resources/images/elements/textbookmandaicaramaic.png
+  artifactKey: Guid(abc74a31f3bd2f14ca4adc2da5c76f02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookmandaicaramaic.png using Guid(abc74a31f3bd2f14ca4adc2da5c76f02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f9fdb04cc30ba46ab0f464b42f97969') in 0.027387 seconds
+  Import took 0.029930 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000178 seconds.
+  path: Assets/Sprites/GameOver/texture_leatherTile_sml.png
+  artifactKey: Guid(9703658810e8e2a47ae8dc43146f3e01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GameOver/texture_leatherTile_sml.png using Guid(9703658810e8e2a47ae8dc43146f3e01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2396f2933f94592adece033548303391') in 0.025646 seconds
+  Import took 0.028056 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000240 seconds.
+  path: Assets/Resources/images/elements/textbookreason.png
+  artifactKey: Guid(8cb94b1b19e82f34587f9023c8e3d298) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookreason.png using Guid(8cb94b1b19e82f34587f9023c8e3d298) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a0041ce14455a5b43ab29fbf7e0195b') in 0.026764 seconds
+  Import took 0.029006 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000223 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSans-Italic.ttf
+  artifactKey: Guid(82fe1c1c2be18564ebeccb9f9cc610be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSans-Italic.ttf using Guid(82fe1c1c2be18564ebeccb9f9cc610be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d207d15f772d362cb0dfab000de4acf') in 0.023524 seconds
+  Import took 0.025724 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000216 seconds.
+  path: Assets/Resources/images/elements/textbooksanskrit.png
+  artifactKey: Guid(17da0ba61d083ca4c82955ec2cc6077a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbooksanskrit.png using Guid(17da0ba61d083ca4c82955ec2cc6077a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5eff940591e9eff472b22bcd47a78f60') in 0.024334 seconds
+  Import took 0.026754 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000238 seconds.
+  path: Assets/Resources/images/ui/loc_ru/textbinary.png
+  artifactKey: Guid(7cb604c7d8bfbde4f9edaf46831fe012) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/ui/loc_ru/textbinary.png using Guid(7cb604c7d8bfbde4f9edaf46831fe012) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a251e1265d020e8d370d6a2199c7ae6') in 0.020571 seconds
+  Import took 0.022743 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000226 seconds.
+  path: Assets/Resources/images/elements/textbookaramaic.png
+  artifactKey: Guid(30082e89a49a91a44b8b736914ba62b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookaramaic.png using Guid(30082e89a49a91a44b8b736914ba62b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c604223c8f4013d6d5f56edb4b440835') in 0.022861 seconds
+  Import took 0.024975 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Plugins/TextMesh Pro/Examples & Extras/Textures/Text Overflow - Linked Text Image 1.png
+  artifactKey: Guid(4ccf43d26c4748c792174516f4a8fcef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/TextMesh Pro/Examples & Extras/Textures/Text Overflow - Linked Text Image 1.png using Guid(4ccf43d26c4748c792174516f4a8fcef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea467cec538b8fb3c72691bea752af31') in 0.019260 seconds
+  Import took 0.021495 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000224 seconds.
+  path: Assets/Resources/images/elements/textbookvak.png
+  artifactKey: Guid(cd32ea6783b2a584091199bfcb74c58b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookvak.png using Guid(cd32ea6783b2a584091199bfcb74c58b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd744cd7b8e602c667eaa6fb97814b84') in 0.028470 seconds
+  Import took 0.031106 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000256 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/Philosopher-Italic.ttf
+  artifactKey: Guid(9f9115fd175185d4c90fcc8e8030c2ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/Philosopher-Italic.ttf using Guid(9f9115fd175185d4c90fcc8e8030c2ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad48da01a37c6f0040ffccbfff702326') in 0.027811 seconds
+  Import took 0.031068 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000247 seconds.
+  path: Assets/Plugins/TextMesh Pro/Examples & Extras/Fonts/Electronic Highway Sign.TTF
+  artifactKey: Guid(8a2b9e2a607dd2143b58c44bc32410b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/TextMesh Pro/Examples & Extras/Fonts/Electronic Highway Sign.TTF using Guid(8a2b9e2a607dd2143b58c44bc32410b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff023896c123c07138928423d49bb4f5') in 0.029049 seconds
+  Import took 0.031930 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000246 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/berylium rg.ttf
+  artifactKey: Guid(9e6bda22bd7467e47b405a0b06d5e5a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/berylium rg.ttf using Guid(9e6bda22bd7467e47b405a0b06d5e5a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e212c5981ba0df55b3b9f8584d9fb584') in 0.026425 seconds
+  Import took 0.028878 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000230 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSansJP-Regular.otf
+  artifactKey: Guid(7770f3110a4faf745a049aceae7a3d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSansJP-Regular.otf using Guid(7770f3110a4faf745a049aceae7a3d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cd66a6c6d2da0db4d2f3e8011b811a7') in 0.026060 seconds
+  Import took 0.028373 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000368 seconds.
+  path: Assets/Plugins/TextMesh Pro/Examples & Extras/Fonts/Bangers.ttf
+  artifactKey: Guid(5dd49b3eacc540408c98eee0de38e0f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/TextMesh Pro/Examples & Extras/Fonts/Bangers.ttf using Guid(5dd49b3eacc540408c98eee0de38e0f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a05932da869ae9db357ad9a03f0dc38a') in 0.022761 seconds
+  Import took 0.025152 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000314 seconds.
+  path: Assets/Resources/images/elements/textbooklatin.png
+  artifactKey: Guid(84be05e38aa2af443a5a7e7959c05153) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbooklatin.png using Guid(84be05e38aa2af443a5a7e7959c05153) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f173f9dc5326bfeda39eea14de8be7b') in 0.023650 seconds
+  Import took 0.026130 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000239 seconds.
+  path: Assets/Materials/Menu/skyShader_motionTex.png
+  artifactKey: Guid(d460507ac8ca930418e7f9755eb461d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Menu/skyShader_motionTex.png using Guid(d460507ac8ca930418e7f9755eb461d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df1e7151ded98303f272f439cd1e5dbd') in 0.017170 seconds
+  Import took 0.019480 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/Plugins/TextMesh Pro/Examples & Extras/Textures/Text Overflow - Linked Text UI Screenshot.png
+  artifactKey: Guid(c76d18757a194d618355f05f815cb0a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/TextMesh Pro/Examples & Extras/Textures/Text Overflow - Linked Text UI Screenshot.png using Guid(c76d18757a194d618355f05f815cb0a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a680b265a9eb60547f5027d4a8db2054') in 0.027325 seconds
+  Import took 0.029691 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000229 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6643916fc4cfc95c1e412ce51ac590f9') in 0.137807 seconds
+  Import took 0.140593 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000388 seconds.
+  path: Assets/Resources/images/elements/textbookmandaic.png
+  artifactKey: Guid(ce8acd682917a2c4284737eed35e242f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookmandaic.png using Guid(ce8acd682917a2c4284737eed35e242f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b658cc601bf3a8c90bd6d62ad0346a9') in 0.023407 seconds
+  Import took 0.025761 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000202 seconds.
+  path: Assets/Resources/images/ui/textbinary.png
+  artifactKey: Guid(61c9f524251f303488d8997f662d85c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/ui/textbinary.png using Guid(61c9f524251f303488d8997f662d85c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d851f5567d932d02147b6d845765c5b') in 0.016423 seconds
+  Import took 0.018561 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/berylium rg it.ttf
+  artifactKey: Guid(f5d93f0edd5030e48a9a6c9c8049622e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/berylium rg it.ttf using Guid(f5d93f0edd5030e48a9a6c9c8049622e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9ea9b400e939d3108744a9b595d082a') in 0.022723 seconds
+  Import took 0.024807 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000227 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSans-Bold.ttf
+  artifactKey: Guid(0b168df4f2cd18c43b4412f575b70c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSans-Bold.ttf using Guid(0b168df4f2cd18c43b4412f575b70c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b1b28373a2b59182617bd2e4777f823') in 0.028313 seconds
+  Import took 0.030825 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000244 seconds.
+  path: Assets/Resources/Fonts & Materials/Fonts/NotoSerif-BoldItalic.ttf
+  artifactKey: Guid(ac55b698a0745124a9341c964c96c25e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Fonts/NotoSerif-BoldItalic.ttf using Guid(ac55b698a0745124a9341c964c96c25e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea1fc2eb6ad42643cfbca93d8a99d6bc') in 0.024558 seconds
+  Import took 0.027178 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000233 seconds.
+  path: Assets/Resources/images/elements/textbookphrygiangreek.png
+  artifactKey: Guid(ed250df437e975b4881867dfec792e06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/images/elements/textbookphrygiangreek.png using Guid(ed250df437e975b4881867dfec792e06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd86c986276df02d988222edb54d23fae') in 0.023350 seconds
+  Import took 0.025543 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.688509 seconds.
+  path: Assets/Resources/prefabs/TextManifestation.prefab
+  artifactKey: Guid(20e2a960bc6b6aa4989645530b27565d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/TextManifestation.prefab using Guid(20e2a960bc6b6aa4989645530b27565d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb2682c3f2bc325eb2e541cdb005a2a5') in 0.109634 seconds
+  Import took 0.112822 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.467442 seconds.
+  path: Assets/Resources/prefabs/TextManifestation.prefab
+  artifactKey: Guid(20e2a960bc6b6aa4989645530b27565d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/TextManifestation.prefab using Guid(20e2a960bc6b6aa4989645530b27565d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '806dc5da68e8ec3d6e134ffcf1ebfa68') in 0.110854 seconds
+  Import took 0.114418 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 37.168254 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79dd1fa0e69e00a984f66258b4ad5467') in 0.047553 seconds
+  Import took 0.050759 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005406 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.13 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.383 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.06 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1866 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 89.1 MB.
+System memory in use after: 89.2 MB.
+
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2372.
+Total: 1.514900 ms (FindLiveObjects: 0.165700 ms CreateObjectMapping: 0.035600 ms MarkObjects: 1.291600 ms  DeleteObjects: 0.021200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004469 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.07 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.349 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.04 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1866 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 89.4 MB.
+System memory in use after: 89.5 MB.
+
+Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 2374.
+Total: 1.577600 ms (FindLiveObjects: 0.217700 ms CreateObjectMapping: 0.050000 ms MarkObjects: 1.292200 ms  DeleteObjects: 0.016900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 152.938720 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff2dab44393200003371dd528ad0a431') in 0.125579 seconds
+  Import took 0.128536 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.812993 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40f4d119ee8ae30a32e915913981d2e6') in 0.007935 seconds
+  Import took 0.010891 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.755803 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24797a2c4c99f18d6ee41e934e8a71d3') in 0.008559 seconds
+  Import took 0.011850 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.829875 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '288942bf82bc6343f3c5965fa3db01b8') in 0.008407 seconds
+  Import took 0.011822 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.579130 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '209fa6179a0efc4b96e3a8fd04f48d6f') in 0.008038 seconds
+  Import took 0.011121 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 24.316385 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8a65d6ebe33c89cfec64ca6d583e530') in 0.008106 seconds
+  Import took 0.010926 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.627545 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c5cc061c9eb51ee83f8177e2e5cf4e6') in 0.008171 seconds
+  Import took 0.010967 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.188034 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c33a81c320d2939f76fef720c36b58f') in 0.008282 seconds
+  Import took 0.011227 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.978110 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a91f68b7b1271f145318df5681d54958') in 0.008053 seconds
+  Import took 0.011206 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.440243 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f98618fb61fe236860e0410a76834eaa') in 0.008263 seconds
+  Import took 0.011127 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.505519 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e340d5f45a4458f6f09b976037eac7de') in 0.008413 seconds
+  Import took 0.011232 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.304720 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f97a56d9ca14cad0a758ce44a40f109f') in 0.008146 seconds
+  Import took 0.010962 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.570758 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51d3c545903c9069fd25ca2ea520de33') in 0.008286 seconds
+  Import took 0.011687 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004357 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.07 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.343 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.56 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1866 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 89.6 MB.
+System memory in use after: 89.7 MB.
+
+Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 2376.
+Total: 1.838700 ms (FindLiveObjects: 0.186300 ms CreateObjectMapping: 0.039000 ms MarkObjects: 1.593300 ms  DeleteObjects: 0.019400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 76.961924 seconds.
+  path: Assets/Resources/prefabs/NotesSphere.prefab
+  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d7209b2478b1260c3ed8de076722c6a') in 0.130283 seconds
+  Import took 0.133297 seconds .
+

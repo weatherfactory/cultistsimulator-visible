@@ -8,6 +8,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
+using UnityEngine;
 
 namespace Assets.Scripts.Application.Spheres
 {
@@ -58,6 +59,16 @@ namespace Assets.Scripts.Application.Spheres
             sphereSpecList.Add(sphereSpec);
             return sphereSpecList;
         }
+
+        public override void DisplayAndPositionHere(Token token, Context context)
+        {
+            token.Manifest();
+            token.transform.SetParent(transform, true); //this is the default: specifying for clarity in case I revisit
+            token.transform.localRotation = Quaternion.identity;
+            token.transform.localScale = Vector3.one;
+
+        }
+
 
 
         public void ShowPrevPage()
