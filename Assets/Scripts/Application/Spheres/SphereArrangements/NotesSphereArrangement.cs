@@ -19,12 +19,12 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
         
         public override void AddNewSphereToArrangement(Sphere newSphere, int index)
         {
-            
-            
-            newSphere.transform.localPosition = Vector3.zero;
-    newSphere.GetRectTransform().SetParent(this.transform);
-    newSphere.GetRectTransform().anchoredPosition = Vector2.zero;
-    newSphere.GetRectTransform().sizeDelta=new Vector2(0,0);
+
+            RectTransform sphereRectTransform = newSphere.GetRectTransform();
+
+            sphereRectTransform.SetParent(this.transform);
+            sphereRectTransform.anchoredPosition3D = Vector3.zero;
+            sphereRectTransform.sizeDelta =new Vector3(0,0,0);
 
 
     //hide all but the last *existing* sphere. The just-added sphere is an empty child sphere
