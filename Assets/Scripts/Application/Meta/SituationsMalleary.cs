@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Spheres.SphereSpecIdentifierStrategies;
 using SecretHistories.Commands;
+using SecretHistories.Commands.Encausting;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
@@ -16,7 +19,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Application.Meta
 {
-   public class SituationsMalleary: MonoBehaviour
+   public class SituationsMalleary: MonoBehaviour,ISphereEventSubscriber
    {
        [SerializeField] private AutoCompletingInput input;
        [SerializeField] private ThresholdSphere _situationDrydock;
@@ -30,6 +33,9 @@ namespace Assets.Scripts.Application.Meta
      var spherePath=new SpherePath(SituationPath.Root(),sphereSphec.Id);
            
            _situationDrydock.SetUpWithSphereSpecAndPath(sphereSphec, spherePath);
+
+
+           _situationDrydock.Subscribe(this);
        }
 
 
@@ -96,6 +102,28 @@ namespace Assets.Scripts.Application.Meta
             var token = _situationDrydock.GetTokenInSlot();
             token.Retire(RetirementVFX.None);
         }
-        
+
+        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
+        {
+            //
+        }
+
+        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
+        {
+            if (args.Interaction == Interaction.OnDragEnd)
+            {
+                input.text = args.Payload.Id;
+                EncaustDrydockedItem(args.Token, input);
+            }
+        }
+
+        public void EncaustDrydockedItem(Token drydockedItem, AutoCompletingInput jsonEditField)
+        {
+            var encaustery = new Encaustery<TokenCreationCommand>();
+            var encaustedCommand = encaustery.Encaust(drydockedItem);
+            var sh = new SerializationHelper();
+
+            jsonEditField.text = sh.SerializeToJsonString(encaustedCommand);
+        }
     }
 }

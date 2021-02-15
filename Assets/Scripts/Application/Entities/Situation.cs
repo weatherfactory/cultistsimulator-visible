@@ -271,18 +271,7 @@ namespace SecretHistories.Entities {
 
         }
         
-        public void Retire()
-        {
-            foreach (var c in _spheres)
-            {
-                c.Retire(SphereRetirementType.Destructive);
-            }
 
-            TokenPayloadChangedArgs args = new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement);
-            args.VFX = RetirementVFX.VerbAnchorVanish;
-            OnChanged?.Invoke(args);
-            Watchman.Get<SituationsCatalogue>().DeregisterSituation(this);
-        }
 
 
 
@@ -322,7 +311,18 @@ namespace SecretHistories.Entities {
 
         public bool Retire(RetirementVFX vfx)
         {
-            return false;
+
+                foreach (var c in _spheres)
+                {
+                    c.Retire(SphereRetirementType.Destructive);
+                }
+
+                TokenPayloadChangedArgs args = new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement);
+                args.VFX = RetirementVFX.VerbAnchorVanish;
+                OnChanged?.Invoke(args);
+                Watchman.Get<SituationsCatalogue>().DeregisterSituation(this);
+
+                return true;
         }
 
         public void InteractWithIncoming(Token token)

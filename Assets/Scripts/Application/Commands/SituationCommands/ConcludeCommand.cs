@@ -33,7 +33,7 @@ namespace SecretHistories.Commands.SituationCommands
                 SoundManager.PlaySfx("UIButtonClick");
             
             if(situation.Verb.Spontaneous)
-                situation.Retire();
+                situation.Retire(RetirementVFX.VerbAnchorVanish);
             else
                 situation.TransitionToState(new UnstartedState());
 
