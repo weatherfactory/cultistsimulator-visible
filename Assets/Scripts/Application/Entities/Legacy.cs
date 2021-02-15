@@ -118,7 +118,7 @@ namespace SecretHistories.Entities
                 commands.Add(startingStackCommand);
             }
 
-
+            return commands;
         }
     }
 }

@@ -59,12 +59,6 @@ namespace SecretHistories.UI
             }
         }
 
-  //      public void HideNoDestroy()
-		//{
-		//	if (gameObject.activeInHierarchy && !IsBusy()) {
-  //              TriggerAnimation(AnimType.MoveRight, AnimType.None, StopAllCoroutines);
-		//	}
-  //      }
 
         protected void E(NavigationArgs args)
         {

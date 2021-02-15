@@ -14,7 +14,6 @@ namespace SecretHistories.Infrastructure.Persistence
         public List<CharacterCreationCommand> CharacterCreationCommands;
         public List<TokenCreationCommand> TokenCreationCommands;
         public List<AddNoteCommand> NotificationCommands;
-
         public PersistedGameState()
         {
 

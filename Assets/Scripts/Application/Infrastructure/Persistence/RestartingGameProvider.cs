@@ -17,9 +17,6 @@ namespace SecretHistories.Infrastructure.Persistence
         {
             return $"{Application.persistentDataPath}/restart.json";
         }
-        public override void DepersistGameState()
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

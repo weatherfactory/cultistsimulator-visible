@@ -36,7 +36,6 @@ namespace SecretHistories.Constants
 
             try
             {
-
                 LoadGame(Watchman.Get<StageHand>().GamePersistenceProvider);
                 ProvisionDropzoneToken();
             }
@@ -49,7 +48,6 @@ namespace SecretHistories.Constants
 
         public void LoadGame(GamePersistenceProvider gamePersistenceProviderSource)
         {
-            //TODO: if we use the freshgameprovider, save the restart game json
             
 
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
@@ -72,8 +70,6 @@ namespace SecretHistories.Constants
                 {
                     Watchman.Get<Concursum>().ShowNotification(new NotificationArgs(n.Label, n.Description)); //ultimately, I'd like the float note to be a token, too - we're using AddCommand here currently just as a holder for the strings
                 }
-
-                
             }
             catch (Exception e)
             {
@@ -83,6 +79,13 @@ namespace SecretHistories.Constants
                 NoonUtility.LogException(e);
             }
 
+            //if the current protag has zero recipe executions, this is a fresh game. Save the restart.
+
+            if (Watchman.Get<Stable>().Protag().RecipeExecutions.Count == 0)
+            {
+                SaveRestartState();
+            }
+
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
             { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
 
@@ -90,6 +93,16 @@ namespace SecretHistories.Constants
 
 
 
+        }
+
+        private static async Task SaveRestartState()
+        {
+            var restartingGameStateProvider = new RestartingGameProvider();
+            var characters = Watchman.Get<Stable>().GetAllCharacters();
+            var allSpheres = Watchman.Get<SphereCatalogue>().GetSpheres();
+            restartingGameStateProvider.Encaust(characters, allSpheres);
+            var saveTask = restartingGameStateProvider.SerialiseAndSaveAsync();
+            var result = await saveTask;
         }
 
         private void ProvisionDropzoneToken()

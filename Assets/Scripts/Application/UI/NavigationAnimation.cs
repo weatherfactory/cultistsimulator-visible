@@ -23,6 +23,7 @@ public class NavigationAnimation : MonoBehaviour {
     }
 
     public void TriggerAnimation(NavigationArgs args, AnimationResponse onBegin, AnimationResponse onComplete) {
+        
         StartCoroutine(DoAnimation(args, onBegin, onComplete));
     }
 
@@ -56,6 +57,7 @@ public class NavigationAnimation : MonoBehaviour {
 
         isBusy = false;
     }
+
 
     private string GetOutClip(NavigationAnimationDirection direction) {
         if (direction == NavigationAnimationDirection.MoveRight)
