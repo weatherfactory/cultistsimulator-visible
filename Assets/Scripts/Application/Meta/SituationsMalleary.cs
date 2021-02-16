@@ -41,6 +41,15 @@ namespace Assets.Scripts.Application.Meta
 
         public void CreateSituation()
        {
+
+           var sh = new SerializationHelper();
+           if (sh.MightBeJson(input.text))
+           {
+               var command = sh.DeserializeFromJsonString<TokenCreationCommand>(input.text);
+               command.Execute(Context.Unknown());
+               return;
+           }
+
            string entityId = input.text;
 
            var compendium = Watchman.Get<Compendium>();

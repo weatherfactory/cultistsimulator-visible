@@ -86,7 +86,7 @@ namespace SecretHistories.Enums
     }
 
 
-    public enum StateEnum {Unstarted,Halting,Ongoing, RequiringExecution, Complete, Unknown}
+    public enum StateEnum {Unstarted=1,Halting=2,Ongoing=3, RequiringExecution=4, Complete=5, Unknown=0}
 
     public enum Storefront
     {
