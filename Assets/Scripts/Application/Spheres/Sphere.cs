@@ -87,7 +87,7 @@ namespace SecretHistories.Spheres
         protected AngelFlock flock = new AngelFlock();
 
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
-        protected SituationPath AttachedToSituation=SituationPath.Root();
+        public SituationPath ParentSituation { get; protected set; }=SituationPath.Root();
 
         private Dictionary<SpherePath, Vector3> referencePositions=new Dictionary<SpherePath, Vector3>();
 
@@ -146,7 +146,7 @@ namespace SecretHistories.Spheres
 
         public void SetSituationPath(SituationPath situationPath)
         {
-            AttachedToSituation = situationPath;
+            ParentSituation = situationPath;
         }
 
 
@@ -297,7 +297,7 @@ namespace SecretHistories.Spheres
 
         public virtual SpherePath GetPath()
         {
-            return new SpherePath(AttachedToSituation, SphereIdentifier);
+            return new SpherePath(ParentSituation, SphereIdentifier);
         }
 
         public virtual void OnDestroy()

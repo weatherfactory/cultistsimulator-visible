@@ -10,25 +10,20 @@ using NUnit.Framework;
     public class SituationCreationCommandTests
     {
         [Test]
-        public void SituationEncaustedToCommand()
+        public void VerbThresholds_EncaustToSubcommandsWithTokenContents()
+        {
+            Assert.AreEqual(1, 0);
+        }
+
+   
+        [Test]
+        public void RecipeThresholds_EncaustToSubcommandsWithTokenContents()
         {
             Assert.AreEqual(1, 0);
         }
 
         [Test]
-        public void ElementsInSituationSpheres_EncaustToSubcommands()
-        {
-            Assert.AreEqual(1, 0);
-        }
-
-        [Test]
-        public void WindowOnSituation_EncaustsToSubcommand()
-        {
-            Assert.AreEqual(1, 0);
-        }
-
-        [Test]
-        public void TokenForSituation_EncaustsToSubcommand()
+        public void ElementsInSituationSpheres_Encaust()
         {
             Assert.AreEqual(1, 0);
         }

@@ -148,7 +148,7 @@ if(stack!=null)
 
         public override SpherePath GetPath()
         {
-            return new SpherePath(AttachedToSituation, portalType.ToString());
+            return new SpherePath(ParentSituation, portalType.ToString());
 
         }
 

@@ -140,9 +140,7 @@ namespace Assets.Scripts.Application.Meta
         {
 
             var game = new DefaultGamePersistenceProvider();
-            var characters = Watchman.Get<Stable>().GetAllCharacters();
-            var allSpheres = Watchman.Get<SphereCatalogue>().GetSpheres();
-            game.Encaust(characters, allSpheres);
+            game.Encaust(Watchman.Get<Stable>(), Watchman.Get<SphereCatalogue>());
             var saveTask = game.SerialiseAndSaveAsync();
             var result = await saveTask;
 

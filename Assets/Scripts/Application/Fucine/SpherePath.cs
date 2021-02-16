@@ -35,7 +35,7 @@ namespace SecretHistories.Fucine
 
        public override SituationPath GetBaseSituationPath()
        {
-           List<string> parts = new List<string>(Path.Split(SEPARATOR));
+           List<string> parts = new List<string>(Path.Split(SPHERE));
            if (parts.Count == 1)
                return SituationPath.Root();
            return new SituationPath(parts.First());
@@ -66,12 +66,12 @@ namespace SecretHistories.Fucine
 
         public SpherePath(FucinePath basePath, string sphereIdentifier)
         {
-            Path = basePath.ToString() + SEPARATOR + sphereIdentifier;
+            Path = basePath.ToString() + SPHERE + sphereIdentifier;
        }
 
         public SpherePath(FucinePath basePath, FucinePath morePath)
         {
-            Path = basePath.ToString() + SEPARATOR + morePath.ToString();
+            Path = basePath.ToString() + SPHERE + morePath.ToString();
         }
 
 

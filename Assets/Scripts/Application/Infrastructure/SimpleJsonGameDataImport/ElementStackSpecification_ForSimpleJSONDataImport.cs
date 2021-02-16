@@ -28,7 +28,7 @@ namespace Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport
             Id = id;
             Quantity = quantity;
             LocationInfo = locationInfo;
-            Depth = locationInfo.Count(c => c == SpherePath.SEPARATOR);
+            Depth = locationInfo.Count(c => c == SpherePath.SPHERE);
             Mutations = new Dictionary<string, int>(mutations);
             Illuminations = new Dictionary<string, string>(illuminations);
             LifetimeRemaining = lifetimeRemaining;

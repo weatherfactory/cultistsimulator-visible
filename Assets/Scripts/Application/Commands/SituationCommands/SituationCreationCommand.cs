@@ -89,7 +89,6 @@ namespace SecretHistories.Commands
             
 
             //This MUSt go here, as soon as the situation is created and before tokens or commands are added, because it's here that the situation spheres get attached.
-            //which I don't love: this whole setup is still hinky
             var windowSpherePath = new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
             var windowLocation =
                 new TokenLocation(Vector3.zero, windowSpherePath); //it shouldn't really be zero, but we don't know the real token loc in the current flow
@@ -98,6 +97,7 @@ namespace SecretHistories.Commands
             var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphere.transform);
             newWindow.Attach(newSituation);
 
+            
             
             if (TokensToMigrate.Any())
                 newSituation.AcceptTokens(SphereCategory.SituationStorage,TokensToMigrate);

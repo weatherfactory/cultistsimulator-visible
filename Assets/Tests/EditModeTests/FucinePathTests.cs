@@ -11,6 +11,8 @@ namespace Assets.Tests.EditModeTests
     [TestFixture]
    public class FucinePathTests
     {
+
+
         [Test]
         public void SituationPath_CanBeIdentifiedInSpherePath()
         {

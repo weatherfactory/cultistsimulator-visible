@@ -49,7 +49,7 @@ namespace SecretHistories.Spheres
 
       public override SpherePath GetPath()
       {
-          return new SpherePath(AttachedToSituation, _deckSpec?.Id);
+          return new SpherePath(ParentSituation, _deckSpec?.Id);
       }
 
 

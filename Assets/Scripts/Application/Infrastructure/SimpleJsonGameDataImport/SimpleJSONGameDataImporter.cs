@@ -202,7 +202,7 @@ namespace SecretHistories.Constants
             string simplifiedSituationPath;
             TokenLocation tokenLocation;
 
-            string[] simplifiedSituationPathParts = locationInfo.ToString().Split(SpherePath.SEPARATOR);
+            string[] simplifiedSituationPathParts = locationInfo.ToString().Split(SpherePath.SPHERE);
             if (simplifiedSituationPathParts.Length != 3)
             {
                 NoonUtility.LogWarning(
@@ -274,7 +274,7 @@ namespace SecretHistories.Constants
                 foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
                                                                                             //in that case we need to do it from the top down, or the slots won't be there
                 {
-                    var slotPath = new SpherePath(situation.Path, ess.LocationInfo.Split(SpherePath.SEPARATOR)[0]);
+                    var slotPath = new SpherePath(situation.Path, ess.LocationInfo.Split(SpherePath.SPHERE)[0]);
                     var slot = Watchman.Get<SphereCatalogue>().GetSphereByPath(slotPath);
                     slot.ProvisionStackFromCommand(ess);
 

@@ -40,7 +40,7 @@ public class SituationStorage : Sphere,ISituationSubscriber
 
     public override SpherePath GetPath()
     {
-        return new SpherePath(AttachedToSituation, "storage");
+        return new SpherePath(ParentSituation, "storage");
     }
 
     public override void AcceptToken(Token token, Context context)

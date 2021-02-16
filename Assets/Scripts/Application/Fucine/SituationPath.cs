@@ -55,7 +55,7 @@ namespace SecretHistories.Fucine
 
         public SituationPath(Verb verb)
         {
-            Path = verb.Id + SEPARATOR + Guid.NewGuid();
+            Path = verb.Id + SPHERE + Guid.NewGuid();
         }
 
         public bool IsValid()
@@ -73,7 +73,9 @@ namespace SecretHistories.Fucine
 
         public static SituationPath Root()
         {
-            return new SituationPath(ROOT.ToString());
+            string rootPath = new StringBuilder(FucinePath.SITUATION, FucinePath.ROOT).ToString();
+
+            return new SituationPath(rootPath);
         }
     }
 }

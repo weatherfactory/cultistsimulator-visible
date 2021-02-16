@@ -91,7 +91,7 @@ public class Output : Sphere,ISituationSubscriber{
 
     public override SpherePath GetPath()
     {
-        return new SpherePath(AttachedToSituation, SphereCategory.Output.ToString());
+        return new SpherePath(ParentSituation, SphereCategory.Output.ToString());
         //  from the Before Times: return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
     }
 

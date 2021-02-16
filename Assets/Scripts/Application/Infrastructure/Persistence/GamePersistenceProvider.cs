@@ -10,6 +10,7 @@ using SecretHistories.Commands.Encausting;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
+using SecretHistories.Fucine;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
@@ -29,10 +30,21 @@ namespace SecretHistories.Infrastructure.Persistence
             return _persistedGameState;
         }
 
-        public virtual void Encaust(IEnumerable<Character> characters, IEnumerable<Sphere> spheres)
+        public virtual void Encaust(Stable stable,SphereCatalogue sphereCatalogue)
         {
-      
-            _persistedGameState=new PersistedGameState();
+
+            var characters = stable.GetAllCharacters();
+            var rootSpheres = sphereCatalogue.GetSpheres().Where(s=>s.ParentSituation==SituationPath.Root());
+
+         //spheres can contain tokens, but tokens (eg Situations) can also contain spheres.
+         //only spheres in the root (level=0) are never in tokens.
+         //so we only attempt to encaust tokens in level 0 spheres directly. All others should be encausted via creation commands in their tokens.
+         //this also means thresholdcreationcommands should specify the elements in them at creation, but we'll come back to that.
+         //BUT WAIT all spheres have situationpaths. Does that make our life easier? 'encaust non-root situations?'
+         //it does for now, rather than reworking the whole path mechanism. I'm not sure whether I want to keep two forms of address tho
+
+
+            _persistedGameState =new PersistedGameState();
 
 
             Encaustery<CharacterCreationCommand> characterEncaustery = new Encaustery<CharacterCreationCommand>();
@@ -45,7 +57,7 @@ namespace SecretHistories.Infrastructure.Persistence
             
             Encaustery<TokenCreationCommand> tokenEncaustery = new Encaustery<TokenCreationCommand>();
 
-            foreach (var sphere in spheres)
+            foreach (var sphere in rootSpheres)
             {
                 var allTokensInSphere = sphere.GetAllTokens();
                 foreach (var t in allTokensInSphere)

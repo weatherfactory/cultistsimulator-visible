@@ -16,10 +16,8 @@ namespace SecretHistories.States
         public override void Enter(Situation situation)
         {
             situation.Reset();
-            var verbSlotsCommand= new PopulateThresholdsCommand(CommandCategory.VerbThresholds, situation.Verb.Thresholds);
-            situation.CommandQueue.AddCommand(verbSlotsCommand);
-
-
+            var verbThresholdsCommand= new PopulateThresholdsCommand(CommandCategory.VerbThresholds, situation.Verb.Thresholds);
+            situation.CommandQueue.AddCommand(verbThresholdsCommand);
         }
 
         public override void Exit(Situation situation)

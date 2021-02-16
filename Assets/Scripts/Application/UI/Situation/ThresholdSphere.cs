@@ -85,7 +85,7 @@ namespace SecretHistories.UI
 
         public override SpherePath GetPath()
         {
-            return new SpherePath(AttachedToSituation, _thresholdSpherePath);
+            return new SpherePath(ParentSituation, _thresholdSpherePath);
 
         }
 
