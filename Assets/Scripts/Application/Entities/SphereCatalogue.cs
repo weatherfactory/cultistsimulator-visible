@@ -32,21 +32,31 @@ namespace SecretHistories.Entities {
         public const string STORAGE_PATH = "storage";
 
 
+        public SpherePath GetDefaultWorldSpherePath()
+        {
+            var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
+            var spherePath = new SpherePath(dictum.DefaultWorldSpherePath);
+            return spherePath;
+        }
+
         public Sphere GetDefaultWorldSphere()
         {
             var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
-
-            var spherePath = new SpherePath(dictum.DefaultWorldSpherePath);
-            var defaultWorldSphere = GetSphereByPath(spherePath);
+            var defaultWorldSphere = GetSphereByPath(GetDefaultWorldSpherePath());
             return defaultWorldSphere;
         }
 
-        public Sphere GetDefaultEnRouteSphere()
+        public SpherePath GetDefaultEnRouteSpherePath()
         {
             var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
-
             var spherePath = new SpherePath(dictum.DefaultEnRouteSpherePath);
-            var defaultEnRouteSphere = GetSphereByPath(spherePath);
+            return spherePath;
+        }
+
+        
+        public Sphere GetDefaultEnRouteSphere()
+        {
+            var defaultEnRouteSphere = GetSphereByPath(GetDefaultEnRouteSpherePath());
             return defaultEnRouteSphere;
         }
 
@@ -97,8 +107,13 @@ namespace SecretHistories.Entities {
             {
                 var specifiedSphere = _spheres.SingleOrDefault(c => c.GetPath() == spherePath);
                 if (specifiedSphere == null)
-                    return Watchman.Get<Limbo>();
-
+                {
+                    if (spherePath == GetDefaultWorldSpherePath())
+                        return Watchman.Get<Limbo>(); //we can't find the default world sphere, so no point getting stuck in an infinite loop - just return limbo.
+                    else
+                        return GetDefaultWorldSphere(); //no longer limbo; let's let people recover things
+                }
+                
                 return specifiedSphere;
 
             }
