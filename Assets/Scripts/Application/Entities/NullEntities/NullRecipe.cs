@@ -15,6 +15,7 @@ namespace SecretHistories.Entities
 
         protected NullRecipe()
         {
+            SetId(String.Empty);
             Craftable = false;
             HintOnly = true;
             ActionId = NullVerb.Create().Id;
@@ -26,6 +27,8 @@ namespace SecretHistories.Entities
             TableReqs=new Dictionary<string, string>();
             ExtantReqs=new Dictionary<string, string>();
             Effects=new Dictionary<string, string>();
+            Alt=new List<LinkedRecipeDetails>();
+            Linked=new List<LinkedRecipeDetails>();
             Aspects = AspectsDictionary.Empty();
             Mutations = new List<MutationEffect>();
             Purge = new Dictionary<string, int>();
