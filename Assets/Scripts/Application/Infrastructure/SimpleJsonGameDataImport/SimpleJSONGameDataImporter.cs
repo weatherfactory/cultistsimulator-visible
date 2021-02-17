@@ -194,7 +194,7 @@ namespace SecretHistories.Constants
         private TokenCreationCommand SetupSituationTokenCreationCommand(Verb verb, Recipe recipe, StateEnum situationState,
             Hashtable htSituationValues, object locationInfo)
         {
-            var situationCreationCommand = new SituationCreationCommand(verb.Id, new SituationPath(verb.Id)).WithRecipeId(recipe.Id).AlreadyInState(situationState);
+            var situationCreationCommand = new SituationCreationCommand(verb.Id, new TokenPath(verb.Id)).WithRecipeId(recipe.Id).AlreadyInState(situationState);
             
             situationCreationCommand.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING) ??  0;
             situationCreationCommand.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
@@ -218,7 +218,7 @@ namespace SecretHistories.Constants
                 tokenLocation = new TokenLocation(anchorPosX, anchorPosY, 0, tabletopSpherePath);
             }
 
-            situationCreationCommand.Path = new SituationPath(simplifiedSituationPath);
+            situationCreationCommand.Path = new TokenPath(simplifiedSituationPath);
 
 
             situationCreationCommand.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();

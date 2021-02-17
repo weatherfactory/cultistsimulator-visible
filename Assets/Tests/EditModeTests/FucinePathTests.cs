@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Fucine;
 using NUnit.Framework;
 using SecretHistories.Fucine;
 
@@ -13,34 +14,38 @@ namespace Assets.Tests.EditModeTests
     {
 
         [Test]
-        public void SituationPath_CanBeSpecifiedWithBang()
+        public void TokenPathId_CanBeSpecifiedWithBang()
         {
-            var situationPath = new SituationPath("!foo");
-            Assert.AreEqual(situationPath.ToString(),"!foo");
+            var tokenPathId = new TokenPathId("!foo");
+            Assert.AreEqual("!foo", tokenPathId.ToString());
         }
 
         [Test]
-        public void SituationPath_SpecifiedWithoutABang_PrependsBang()
+        public void TokenPathId_SpecifiedWithoutABang_PrependsBang()
         {
-            var situationPath = new SituationPath("foo");
-            Assert.AreEqual(situationPath.ToString(), "!foo");
+            var tokenPathId = new TokenPathId("foo");
+            Assert.AreEqual( "!foo", tokenPathId.ToString());
 
         }
 
 
         [Test]
-        public void SituationPath_CanBeIdentifiedInSpherePath()
+        public void SpherePathId_CanBeSpecifiedWithForwardSlash()
         {
-            var spherePath = new SpherePath("!spath/sphereid");
-            Assert.AreEqual(spherePath.GetBaseSituationPath(), new SituationPath("!spath"));
+            var spherePathId=new SpherePathId("/foo");
+            Assert.AreEqual("/foo",spherePathId.ToString());
         }
 
         [Test]
-        public void RootSituationPath_CanBeIdentifiedInSpherePath()
+        public void SpherePathId_SpecifiedWithoutForwardSlash_PrependsSlash()
         {
-            var spherePath = new SpherePath("!./tabletop/spath/sphereid");
-            Assert.AreEqual(spherePath.GetBaseSituationPath(), new SituationPath("!."));
+            var spherePathId = new SpherePathId("foo");
+            Assert.AreEqual("/foo", spherePathId.ToString());
+
         }
+
+
+
 
     }
 }

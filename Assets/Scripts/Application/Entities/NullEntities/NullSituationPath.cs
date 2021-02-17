@@ -9,7 +9,7 @@ using SecretHistories.Interfaces;
 namespace SecretHistories.Elements
 
 {
-    public class NullSituationPath: SituationPath
+    public class NullSituationPath: TokenPath
     {
 
         public NullSituationPath() : base(string.Empty)
@@ -17,10 +17,6 @@ namespace SecretHistories.Elements
 
         }
 
-        public override SituationPath GetBaseSituationPath()
-        {
-            return this;
-        }
 
     }
 }

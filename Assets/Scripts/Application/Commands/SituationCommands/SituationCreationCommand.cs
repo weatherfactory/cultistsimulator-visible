@@ -29,7 +29,7 @@ namespace SecretHistories.Commands
         public float TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public Dictionary<string, int> Mutations { get; set; }
-        public SituationPath Path { get; set; }
+        public TokenPath Path { get; set; }
         public bool IsOpen { get; set; }
         public List<Token> TokensToMigrate=new List<Token>();
 
@@ -40,7 +40,7 @@ namespace SecretHistories.Commands
 
         }
 
-        public SituationCreationCommand(string verbId, SituationPath path)
+        public SituationCreationCommand(string verbId, TokenPath path)
         {
             VerbId = verbId;
             Path = path;

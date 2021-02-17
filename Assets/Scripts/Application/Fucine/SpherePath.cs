@@ -33,13 +33,14 @@ namespace SecretHistories.Fucine
            return Path;
        }
 
-       public override SituationPath GetBaseSituationPath()
+       public override bool IsAbsolute()
        {
-           List<string> parts = new List<string>(Path.Split(SPHERE));
-           if (parts.Count == 1)
-               return SituationPath.Root();
-           return new SituationPath(parts.First());
+           return false;
        }
+
+       public override SpherePath Sphere { get; }
+       public override TokenPath Token { get; }
+
 
        public static bool operator ==(SpherePath path1, SpherePath path2)
        {

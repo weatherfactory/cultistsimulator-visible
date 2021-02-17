@@ -34,7 +34,7 @@ namespace SecretHistories.Infrastructure.Persistence
         {
 
             var characters = stable.GetAllCharacters();
-            var rootSpheres = sphereCatalogue.GetSpheres().Where(s=>s.ParentSituation==SituationPath.Root());
+            var rootSpheres = sphereCatalogue.GetSpheres().Where(s=>s.ParentSituation==TokenPath.Root());
 
          //spheres can contain tokens, but tokens (eg Situations) can also contain spheres.
          //only spheres in the root (level=0) are never in tokens.

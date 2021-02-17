@@ -10,7 +10,7 @@ using SecretHistories.Interfaces;
 
 namespace SecretHistories.Fucine
 {
-    public class SituationPath: FucinePath, IEquatable<SituationPath>
+    public class TokenPath: FucinePath, IEquatable<TokenPath>
     {
         public string Path { get; private set; }
 
@@ -28,17 +28,17 @@ namespace SecretHistories.Fucine
         }
 
         
-        public static bool operator ==(SituationPath path1, SituationPath path2)
+        public static bool operator ==(TokenPath path1, TokenPath path2)
         {
             return path1.Equals(path2);
         }
 
-        public static bool operator !=(SituationPath path1, SituationPath path2)
+        public static bool operator !=(TokenPath path1, TokenPath path2)
         {
             return !(path1 == path2);
         }
 
-        public bool Equals(SituationPath otherPath)
+        public bool Equals(TokenPath otherPath)
         {
 
             return otherPath?.ToString() == Path;
@@ -48,12 +48,15 @@ namespace SecretHistories.Fucine
             return Path;
         }
 
-        public override SituationPath GetBaseSituationPath()
+        public override bool IsAbsolute()
         {
-            return this;
+            return false;
         }
 
-        public SituationPath(Verb verb)
+        public override SpherePath Sphere { get; }
+        public override TokenPath Token { get; }
+
+        public TokenPath(Verb verb)
         {
             Path = verb.Id + SPHERE + Guid.NewGuid();
         }
@@ -66,22 +69,19 @@ namespace SecretHistories.Fucine
         }
 
         [JsonConstructor]
-        public SituationPath(String path)
+        public TokenPath(String path)
         {
-            if (path.First() == SITUATION)
-                Path = path;
-            else
-                Path = SITUATION + path;
+            Path = path;
 
         }
 
-        public static SituationPath Root()
+        public static TokenPath Root()
         {
             StringBuilder rootPath=new StringBuilder();
 
             rootPath.Append(new char[] {SITUATION, FucinePath.ROOT});
 
-            return new SituationPath(rootPath.ToString());
+            return new TokenPath(rootPath.ToString());
         }
     }
 }

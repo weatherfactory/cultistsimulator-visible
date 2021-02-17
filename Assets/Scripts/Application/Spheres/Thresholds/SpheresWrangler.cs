@@ -38,16 +38,16 @@ namespace SecretHistories.UI {
         /// Removes any existing thresholds, so we only ever have one primary
         /// </summary>
         /// <param name="sphereSpec"></param>
-        /// <param name="situationPath"></param>
+        /// <param name="tokenPath"></param>
         /// <param name="verb"></param>
         /// <returns></returns>
-        public virtual Sphere BuildPrimarySphere(SphereSpec sphereSpec,SituationPath situationPath, Verb verb)
+        public virtual Sphere BuildPrimarySphere(SphereSpec sphereSpec,TokenPath tokenPath, Verb verb)
         {
             RemoveAllSpheres();
 
             _verb = verb;
 
-            return AddSphere(sphereSpec,situationPath);
+            return AddSphere(sphereSpec,tokenPath);
 
         }
 

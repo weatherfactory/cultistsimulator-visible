@@ -65,7 +65,7 @@ using Object = UnityEngine.Object;
         public void Situation_Encausts()
         {
             var situationEncaustery = new Encaustery<SituationCreationCommand>();
-            var situation = new Situation(new SituationPath("pp"), NullVerb.Create());
+            var situation = new Situation(new TokenPath("pp"), NullVerb.Create());
             situationEncaustery.Encaust(situation);
         }
 
@@ -76,7 +76,7 @@ using Object = UnityEngine.Object;
            var tokenObject = new GameObject();
            var token=tokenObject.AddComponent<Token>();
 
-           var situation=new Situation(new SituationPath("arbitraryverb"),NullVerb.Create());
+           var situation=new Situation(new TokenPath("arbitraryverb"),NullVerb.Create());
            token.SetPayload(situation);
 
            encaustery.Encaust(token);

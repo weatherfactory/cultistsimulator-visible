@@ -58,7 +58,7 @@ namespace SecretHistories.Entities {
         public string OverrideTitle { get; set; }
 
         [Encaust]
-        public SituationPath Path { get; }
+        public TokenPath Path { get; }
 
         [Encaust]
         public bool IsOpen { get; private set; }
@@ -127,7 +127,7 @@ namespace SecretHistories.Entities {
         
 
 
-        public Situation(SituationPath path,Verb verb)
+        public Situation(TokenPath path,Verb verb)
         {
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
 
@@ -672,7 +672,7 @@ namespace SecretHistories.Entities {
 
             }
 
-            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId,new SituationPath(Recipe.ActionId)).WithRecipeId(effectCommand.Recipe.Id).AlreadyInState(
+            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId,new TokenPath(Recipe.ActionId)).WithRecipeId(effectCommand.Recipe.Id).AlreadyInState(
                 StateEnum.Ongoing);
             
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
@@ -737,7 +737,7 @@ namespace SecretHistories.Entities {
 
         
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId,
-          new SituationPath(inducedRecipe.ActionId)).WithRecipeId(inducedRecipe.Id).AlreadyInState(StateEnum.Ongoing);
+          new TokenPath(inducedRecipe.ActionId)).WithRecipeId(inducedRecipe.Id).AlreadyInState(StateEnum.Ongoing);
 
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, SpherePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
             SendCommandToSubscribers(spawnNewTokenCommand);

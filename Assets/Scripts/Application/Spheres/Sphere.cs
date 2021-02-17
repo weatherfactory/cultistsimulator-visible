@@ -87,7 +87,7 @@ namespace SecretHistories.Spheres
         protected AngelFlock flock = new AngelFlock();
 
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
-        public SituationPath ParentSituation { get; protected set; }=SituationPath.Root();
+        public TokenPath ParentSituation { get; protected set; }=TokenPath.Root();
 
         private Dictionary<SpherePath, Vector3> referencePositions=new Dictionary<SpherePath, Vector3>();
 
@@ -144,9 +144,9 @@ namespace SecretHistories.Spheres
             throw new NotImplementedException(); //there's some uncertainty about when the path is based on spherespec and when it's based on SpherePath. Specific behaviour is overridden for notesspheres and thresholdspheres, but I need to make it all more consistent.
         }
 
-        public void SetSituationPath(SituationPath situationPath)
+        public void SetSituationPath(TokenPath tokenPath)
         {
-            ParentSituation = situationPath;
+            ParentSituation = tokenPath;
         }
 
 

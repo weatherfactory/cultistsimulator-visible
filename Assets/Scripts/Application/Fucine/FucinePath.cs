@@ -14,8 +14,11 @@ namespace SecretHistories.Interfaces
         public const char SPHERE = '/';
         public const char CURRENT = '#';
         
-        
+        public abstract bool IsAbsolute();
 
-        public abstract SituationPath GetBaseSituationPath();
+        public abstract SpherePath Sphere { get; }
+    
+        public abstract TokenPath Token {get;}
+
     }
 }

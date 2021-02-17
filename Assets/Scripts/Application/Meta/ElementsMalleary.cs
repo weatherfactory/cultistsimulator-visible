@@ -29,7 +29,7 @@ namespace Assets.Scripts.Application.Meta
 
         public void Awake()
         {
-            _primary=elementDrydockWrangler.BuildPrimarySphere(new SphereSpec(new PrimaryThresholdSphereSpecIdentifierStrategy()), SituationPath.Root(), NullVerb.Create()) as ThresholdSphere;
+            _primary=elementDrydockWrangler.BuildPrimarySphere(new SphereSpec(new PrimaryThresholdSphereSpecIdentifierStrategy()), TokenPath.Root(), NullVerb.Create()) as ThresholdSphere;
             _primary.Subscribe(this);
         }
 
