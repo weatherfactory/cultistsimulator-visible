@@ -40,7 +40,7 @@ namespace SecretHistories.Fucine
         {
             StringBuilder rootPath=new StringBuilder();
 
-            rootPath.Append(new char[] {SITUATION, FucinePath.ROOT});
+            rootPath.Append(new char[] {TOKEN, FucinePath.ROOT});
 
             return new TokenPath(rootPath.ToString());
         }

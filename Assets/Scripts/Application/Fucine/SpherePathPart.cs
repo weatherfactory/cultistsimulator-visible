@@ -9,17 +9,17 @@ using SecretHistories.Interfaces;
 namespace Assets.Scripts.Application.Fucine
 {
 
-    public class SpherePathId: FucinePathId
+    public class SpherePathPart: FucinePathPart
     {
         private char sphereIdPrefix => FucinePath.SPHERE;
 
 
-        public SpherePathId(string pathId) : base(pathId)
+        public SpherePathPart(string pathId) : base(pathId)
         {
             if (pathId.First() == sphereIdPrefix)
-                _pathId = pathId;
+                PathId = pathId;
             else
-                _pathId = sphereIdPrefix + pathId;
+                PathId = sphereIdPrefix + pathId;
         }
 
         public override PathCategory Category => PathCategory.Token;

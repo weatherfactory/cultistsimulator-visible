@@ -6,28 +6,29 @@ using System.Threading.Tasks;
 
 namespace SecretHistories.Fucine
 {
-    public abstract class FucinePathId
+    public abstract class FucinePathPart
     {
 
         public enum PathCategory
         {
             Root,
             Token,
-            Sphere
+            Sphere,
+            Null
         }
 
-        protected string _pathId;
+        protected string PathId;
         public abstract PathCategory Category { get; }
        
 
-        protected FucinePathId(string pathId)
+        protected FucinePathPart(string pathId)
         {
-
+            PathId = pathId;
         }
 
         public override string ToString()
         {
-            return _pathId;
+            return PathId;
         }
     }
 }

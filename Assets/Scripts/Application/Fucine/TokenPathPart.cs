@@ -8,23 +8,23 @@ using SecretHistories.Interfaces;
 
 namespace SecretHistories.Fucine
 {
-    public class TokenPathId: FucinePathId
+    public class TokenPathPart: FucinePathPart
     {
 
-private char tokenIdPrefix => FucinePath.SITUATION;
+private char tokenIdPrefix => FucinePath.TOKEN;
 
-        public TokenPathId(string pathId) : base(pathId)
+        public TokenPathPart(string pathId) : base(pathId)
         {
             if (pathId.First() == tokenIdPrefix)
-                _pathId = pathId;
+                PathId = pathId;
             else
-                _pathId = tokenIdPrefix + pathId;
+                PathId = tokenIdPrefix + pathId;
         }
 
 
-        public TokenPathId  FromVerbId(string verbId)
+        public TokenPathPart  FromVerbId(string verbId)
         {
-            return new TokenPathId(verbId + Guid.NewGuid());
+            return new TokenPathPart(verbId + Guid.NewGuid());
             
         }
 

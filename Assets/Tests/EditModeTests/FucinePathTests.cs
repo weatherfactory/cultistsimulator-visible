@@ -17,14 +17,14 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void TokenPathId_CanBeSpecifiedWithBang()
         {
-            var tokenPathId = new TokenPathId("!foo");
+            var tokenPathId = new TokenPathPart("!foo");
             Assert.AreEqual("!foo", tokenPathId.ToString());
         }
 
         [Test]
         public void TokenPathId_SpecifiedWithoutABang_PrependsBang()
         {
-            var tokenPathId = new TokenPathId("foo");
+            var tokenPathId = new TokenPathPart("foo");
             Assert.AreEqual( "!foo", tokenPathId.ToString());
 
         }
@@ -33,14 +33,14 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void SpherePathId_CanBeSpecifiedWithForwardSlash()
         {
-            var spherePathId=new SpherePathId("/foo");
+            var spherePathId=new SpherePathPart("/foo");
             Assert.AreEqual("/foo",spherePathId.ToString());
         }
 
         [Test]
         public void SpherePathId_SpecifiedWithoutForwardSlash_PrependsSlash()
         {
-            var spherePathId = new SpherePathId("foo");
+            var spherePathId = new SpherePathPart("foo");
             Assert.AreEqual("/foo", spherePathId.ToString());
 
         }
@@ -66,6 +66,27 @@ namespace Assets.Tests.EditModeTests
         {
             var relativePath=new FucinePath("/somesphereid");
             Assert.IsFalse(relativePath.IsAbsolute());
+
+        }
+
+        [Test]
+        public void FucinePath_Parse_RenderToString()
+        {
+            var rootPath=new FucinePath(".");
+            Assert.AreEqual(".",rootPath.ToString());
+
+            var absoluteSpherePath = new FucinePath("./sphereid");
+            Assert.AreEqual("./sphereid",absoluteSpherePath.ToString());
+
+
+            var relativeSpherePath = new FucinePath("/sphereId");
+            Assert.AreEqual("/sphereId",relativeSpherePath.ToString());
+
+            var relativeTokenPath = new FucinePath("!tokenId");
+            Assert.AreEqual("!tokenId",relativeTokenPath.ToString() );
+
+            var complexPath= new FucinePath("./sphereId1/tokenIdA/sphereId2/tokenIdB");
+            Assert.AreEqual("./sphereId1/tokenIdA/sphereId2/tokenIdB",complexPath.ToString());
 
         }
 
@@ -103,6 +124,19 @@ namespace Assets.Tests.EditModeTests
             throw new NotImplementedException();
         }
 
+        [Test]
+        public void WeDoSomethingSensibleWhenAFucinePathIsInitialisedWithEmptyString()
+        {
+            throw new NotImplementedException();
+
+        }
+
+        [Test]
+        public void WeDoSomethingSensibleWhenAFucinePathIsInitialisedWithNull()
+        {
+            throw new NotImplementedException();
 
     }
+
+}
 }

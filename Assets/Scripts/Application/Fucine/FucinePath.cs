@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,11 @@ namespace SecretHistories.Interfaces
     public class FucinePath
     {
         public const char ROOT = '.';
-        public const char SITUATION = '!'; 
+        public const char TOKEN = '!'; 
         public const char SPHERE = '/';
         public const char CURRENT = '#';
 
-        protected List<FucinePathId> PathParts=new List<FucinePathId>();
+        protected List<FucinePathPart> PathParts=new List<FucinePathPart>();
 
         public bool IsValid()
         {
@@ -25,11 +26,38 @@ namespace SecretHistories.Interfaces
 
         public bool IsAbsolute()
         {
-            return (PathParts.First().Category == FucinePathId.PathCategory.Root);
+            return (PathParts.First().Category == FucinePathPart.PathCategory.Root);
         }
 
-        public SpherePath Sphere { get; }
-    
+        public FucinePathPart EndingPathPart
+        {
+            get
+            {
+                if(!PathParts.Any())
+                    return new NullSpherePathPart();
+
+                return PathParts.Last();
+            }
+        }
+
+        public FucinePath Sphere
+        {
+            get
+            {
+                if (EndingPathPart.Category == FucinePathPart.PathCategory.Sphere)
+                    return this;
+                
+                var spherePath=new FucinePath("");
+                return spherePath;
+
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Join(string.Empty, PathParts);
+        }
+
         public TokenPath Token {get;}
 
         [JsonConstructor]
@@ -47,33 +75,59 @@ namespace SecretHistories.Interfaces
           if(sphereParts[0]==ROOT.ToString())
           {
             AddRootPart();
-              sphereParts.RemoveAt(0);
+             sphereParts.RemoveAt(0);
           }
+
+          if (sphereParts.Any())
+          {
+              Parse(sphereParts);
+          }
+
+         
+        }
+
+        private void Parse(List<string> sphereParts)
+        {
+            if (sphereParts[0].StartsWith(TOKEN.ToString()) && sphereParts.Count == 1)
+            {
+                //this is a token path part, on its own. This is only legal when there is exactly one path part:
+                //it has to be relative (so no root) and it can't be preceded by anything else (or it would have to be preceded by a sphere
+                AddToken(sphereParts[0]);
+                return;
+            }
+
             foreach (var spherePart in sphereParts)
             {
-                if(!string.IsNullOrEmpty(spherePart) && !string.IsNullOrWhiteSpace(spherePart))
+
+                if (!string.IsNullOrEmpty(spherePart) && !string.IsNullOrWhiteSpace(spherePart))
                 {
-                    string[] mightBeSphereAndSituation = spherePart.Split(SITUATION);
+                    string[] mightBeSphereAndSituation = spherePart.Split(TOKEN);
                     if (mightBeSphereAndSituation.Length > 1)
-                        AddSphereAndToken(mightBeSphereAndSituation[0],mightBeSphereAndSituation[1]);
+                        AddSphereAndToken(mightBeSphereAndSituation[0], mightBeSphereAndSituation[1]);
                     else
                         AddSphere(mightBeSphereAndSituation[0]);
                 }
             }
         }
 
+        private void AddToken(string token)
+        {
+            TokenPathPart tokenPathPart=new TokenPathPart(token);
+            PathParts.Add(tokenPathPart);
+        }
+
         private void AddSphereAndToken(string sphere, string token)
         {
-            SpherePathId spherePathId=new SpherePathId(sphere);
-            PathParts.Add(spherePathId);
-            TokenPathId tokenPathId=new TokenPathId(token);
-            PathParts.Add(tokenPathId);
+            SpherePathPart spherePathPart=new SpherePathPart(sphere);
+            PathParts.Add(spherePathPart);
+            TokenPathPart tokenPathPart=new TokenPathPart(token);
+            PathParts.Add(tokenPathPart);
         }
 
         private void AddSphere(string sphere)
         {
-            SpherePathId spherePathId=new SpherePathId(sphere);
-            PathParts.Add(spherePathId);
+            SpherePathPart spherePathPart=new SpherePathPart(sphere);
+            PathParts.Add(spherePathPart);
         }
 
         
@@ -96,7 +150,7 @@ namespace SecretHistories.Interfaces
 
         private void AddRootPart()
         {
-            PathParts.Add(new RootPathId());
+            PathParts.Add(new RootPathPart());
         }
 
     }

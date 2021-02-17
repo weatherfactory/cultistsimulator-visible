@@ -7,9 +7,9 @@ using SecretHistories.Interfaces;
 
 namespace SecretHistories.Fucine
 {
-    public class RootPathId: FucinePathId
+    public class RootPathPart: FucinePathPart
     {
-        public RootPathId() : base(FucinePath.ROOT.ToString())
+        public RootPathPart() : base(FucinePath.ROOT.ToString())
         {
             
         }
