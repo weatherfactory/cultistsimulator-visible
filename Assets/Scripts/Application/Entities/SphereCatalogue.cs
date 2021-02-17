@@ -41,7 +41,6 @@ namespace SecretHistories.Entities {
 
         public Sphere GetDefaultWorldSphere()
         {
-            var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
             var defaultWorldSphere = GetSphereByPath(GetDefaultWorldSpherePath());
             return defaultWorldSphere;
         }

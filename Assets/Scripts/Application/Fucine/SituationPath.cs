@@ -68,14 +68,20 @@ namespace SecretHistories.Fucine
         [JsonConstructor]
         public SituationPath(String path)
         {
-            Path = path;
+            if (path.First() == SITUATION)
+                Path = path;
+            else
+                Path = SITUATION + path;
+
         }
 
         public static SituationPath Root()
         {
-            string rootPath = new StringBuilder(FucinePath.SITUATION, FucinePath.ROOT).ToString();
+            StringBuilder rootPath=new StringBuilder();
 
-            return new SituationPath(rootPath);
+            rootPath.Append(new char[] {SITUATION, FucinePath.ROOT});
+
+            return new SituationPath(rootPath.ToString());
         }
     }
 }
