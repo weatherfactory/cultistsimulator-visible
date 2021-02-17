@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Assets.Scripts.Application.Fucine;
 using NUnit.Framework;
 using SecretHistories.Fucine;
+using SecretHistories.Interfaces;
 
 namespace Assets.Tests.EditModeTests
 {
@@ -44,7 +45,63 @@ namespace Assets.Tests.EditModeTests
 
         }
 
+        //I don't think we need the subclasses after all
+        [Test]
+        public void FucinePath_WithRootAsOnlyMember_IsAbsolute()
+        {
+            var absolutePath = new FucinePath(".");
+            Assert.IsTrue(absolutePath.IsAbsolute());
+        }
 
+        //I don't think we need the subclasses after all
+        [Test]
+        public void FucinePath_WithRootInFirstPosition_IsAbsolute()
+        {
+            var absolutePath=new FucinePath("./tabletop");
+            Assert.IsTrue(absolutePath.IsAbsolute());
+        }
+
+        [Test]
+        public void FucinePath_WithoutRootInFirstPosition_IsNotAbsolute()
+        {
+            var relativePath=new FucinePath("/somesphereid");
+            Assert.IsFalse(relativePath.IsAbsolute());
+
+        }
+
+        [Test]
+        public void FucinePath_WithTokenXAtEndOfList_ReturnsXAsToken()
+        {
+            throw new NotImplementedException();
+
+        }
+
+        [Test]
+        public void FucinePath_WithSphereAtEndOfList_ReturnsPreviousToken_AsToken()
+        {
+            throw new NotImplementedException();
+
+        }
+
+        [Test]
+        public void FucinePath_WithSphereYAtEndOfList_ReturnsYAsSphere()
+        {
+            throw new NotImplementedException();
+
+        }
+
+        [Test]
+        public void FucinePath_WithTokenAtEndOfList_ReturnsPreviousYAsSphere()
+        {
+            throw new NotImplementedException();
+
+        }
+
+        [Test]
+        public void RootPathFollowedBySituationIsInvalid()
+        {
+            throw new NotImplementedException();
+        }
 
 
     }

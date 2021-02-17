@@ -9,7 +9,15 @@ namespace SecretHistories.Fucine
     public abstract class FucinePathId
     {
 
+        public enum PathCategory
+        {
+            Root,
+            Token,
+            Sphere
+        }
+
         protected string _pathId;
+        public abstract PathCategory Category { get; }
        
 
         protected FucinePathId(string pathId)

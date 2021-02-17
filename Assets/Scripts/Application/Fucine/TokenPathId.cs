@@ -27,5 +27,8 @@ private char tokenIdPrefix => FucinePath.SITUATION;
             return new TokenPathId(verbId + Guid.NewGuid());
             
         }
+
+        public override PathCategory Category => PathCategory.Token;
+
     }
 }

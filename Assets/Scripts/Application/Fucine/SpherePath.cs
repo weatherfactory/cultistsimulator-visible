@@ -11,11 +11,7 @@ namespace SecretHistories.Fucine
    public class SpherePath: FucinePath
    {
 
-       public override SpherePath Sphere { get; }
-       public override TokenPath Token { get; }
-
-
-
+    
         [JsonConstructor]
        public SpherePath(string path):base(path)
        {

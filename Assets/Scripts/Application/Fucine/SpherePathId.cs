@@ -22,5 +22,6 @@ namespace Assets.Scripts.Application.Fucine
                 _pathId = sphereIdPrefix + pathId;
         }
 
+        public override PathCategory Category => PathCategory.Token;
     }
 }
