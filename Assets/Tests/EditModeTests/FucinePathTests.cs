@@ -91,30 +91,34 @@ namespace Assets.Tests.EditModeTests
         }
 
         [Test]
-        public void FucinePath_WithTokenXAtEndOfList_ReturnsXAsToken()
+        public void FucinePath_WithTokenXAtEndOfList_ReturnsPathUpToXAsToken()
         {
-            throw new NotImplementedException();
+            var pathWithTokenAtEnd=new FucinePath("./spherez!tokenx");
+            Assert.AreEqual("./spherez!tokenx", pathWithTokenAtEnd.Token.ToString());
+            
+        }
+
+        [Test]
+        public void FucinePath_WithSphereAtEndOfList_ReturnsPathUpToPreviousToken_AsToken()
+        {
+            var pathWithSphereAtEnd=new FucinePath("./spherez!tokenx/spherey");
+            Assert.AreEqual("./spherez!tokenx",pathWithSphereAtEnd.Token.ToString());
 
         }
 
         [Test]
-        public void FucinePath_WithSphereAtEndOfList_ReturnsPreviousToken_AsToken()
+        public void FucinePath_WithSphereYAtEndOfList_ReturnsPathUpToYAsSphere()
         {
-            throw new NotImplementedException();
+            var pathWithSphereAtEnd = new FucinePath("./spherez!tokenx/spherey");
+            Assert.AreEqual("./spherez!tokenx/spherey",pathWithSphereAtEnd.Sphere.ToString());
 
         }
 
         [Test]
-        public void FucinePath_WithSphereYAtEndOfList_ReturnsYAsSphere()
+        public void FucinePath_WithTokenAtEndOfList_ReturnsPathUpToPreviousYAsSphere()
         {
-            throw new NotImplementedException();
-
-        }
-
-        [Test]
-        public void FucinePath_WithTokenAtEndOfList_ReturnsPreviousYAsSphere()
-        {
-            throw new NotImplementedException();
+            var pathWithTokenAtEnd = new FucinePath("./spherey!tokenx");
+            Assert.AreEqual("./spherey",pathWithTokenAtEnd.Sphere.ToString());
 
         }
 

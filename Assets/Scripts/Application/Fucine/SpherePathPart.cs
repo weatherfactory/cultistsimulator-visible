@@ -13,6 +13,7 @@ namespace Assets.Scripts.Application.Fucine
     {
         private char sphereIdPrefix => FucinePath.SPHERE;
 
+        public override PathCategory Category => PathCategory.Sphere;
 
         public SpherePathPart(string pathId) : base(pathId)
         {
@@ -22,6 +23,6 @@ namespace Assets.Scripts.Application.Fucine
                 PathId = sphereIdPrefix + pathId;
         }
 
-        public override PathCategory Category => PathCategory.Token;
+        
     }
 }

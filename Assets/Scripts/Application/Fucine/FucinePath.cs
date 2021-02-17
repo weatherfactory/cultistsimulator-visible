@@ -19,7 +19,44 @@ namespace SecretHistories.Interfaces
 
         protected List<FucinePathPart> PathParts=new List<FucinePathPart>();
 
-        public bool IsValid()
+
+        [JsonConstructor]
+        public FucinePath(string path)
+        {
+
+
+            //  ./sphere1!situationa/sphere2!situationb
+            List<string> sphereParts = path.Split(SPHERE).ToList();
+            //  .
+            //  sphere1!situationa
+            //  sphere2!situationb
+
+
+            if (sphereParts[0] == ROOT.ToString())
+            {
+                AddRootPart();
+                sphereParts.RemoveAt(0);
+            }
+
+            if (sphereParts.Any())
+            {
+                Parse(sphereParts);
+            }
+
+
+        }
+
+        public FucinePath(FucinePathPart part)
+        {
+            PathParts.Add(part);
+        }
+
+        public FucinePath(IEnumerable<FucinePathPart> parts)
+        {
+            PathParts.AddRange(parts);
+        }
+
+        public virtual bool IsValid()
         {
             throw new NotImplementedException();
         }
@@ -40,16 +77,26 @@ namespace SecretHistories.Interfaces
             }
         }
 
-        public FucinePath Sphere
+        public FucinePath SpherePath
         {
             get
             {
+                if(!PathParts.Any())
+                    return new NullFucinePath();
+
                 if (EndingPathPart.Category == FucinePathPart.PathCategory.Sphere)
                     return this;
+                //doesn't end with a sphere; it's either a root path...
+                if(EndingPathPart.Category==FucinePathPart.PathCategory.Root)
+                    return FucinePath.Root();
+                //or something else we don't want. Iterate up the string until we find a sphere or run out of parts
+                else
+                {
+                    var pathPartsRemaining = PathParts.Take(PathParts.Count - 1);
+                    var subPath=new FucinePath(pathPartsRemaining);
+                    return subPath.SpherePath;
+                }
                 
-                var spherePath=new FucinePath("");
-                return spherePath;
-
             }
         }
 
@@ -58,32 +105,32 @@ namespace SecretHistories.Interfaces
             return string.Join(string.Empty, PathParts);
         }
 
-        public TokenPath Token {get;}
-
-        [JsonConstructor]
-        public FucinePath(string path)
+        public FucinePath TokenPath
         {
-            
+            get
+            {
+                if(!PathParts.Any())
+                    return new NullFucinePath();
 
-       //  ./sphere1!situationa/sphere2!situationb
-           List<string> sphereParts = path.Split(SPHERE).ToList();
-          //  .
-          //  sphere1!situationa
-          //  sphere2!situationb
-            
+                if (EndingPathPart.Category == FucinePathPart.PathCategory.Token)
+                    return this;
+                if (EndingPathPart.Category == FucinePathPart.PathCategory.Root)
+                    return FucinePath.Root();
+                else
+                {
+                    var pathPartsRemaining = PathParts.Take(PathParts.Count - 1);
+                    var subPath=new FucinePath(pathPartsRemaining);
+                    return subPath.TokenPath;
+                }
 
-          if(sphereParts[0]==ROOT.ToString())
-          {
-            AddRootPart();
-             sphereParts.RemoveAt(0);
-          }
+            }
+        }
 
-          if (sphereParts.Any())
-          {
-              Parse(sphereParts);
-          }
+      
 
-         
+        public static FucinePath Root()
+        {
+            return new FucinePath(new RootPathPart());
         }
 
         private void Parse(List<string> sphereParts)
