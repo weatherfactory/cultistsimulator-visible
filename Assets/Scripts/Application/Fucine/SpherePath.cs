@@ -8,77 +8,42 @@ using SecretHistories.NullObjects;
 
 namespace SecretHistories.Fucine
 {
-   public class SpherePath: FucinePath,IEquatable<SpherePath>
+   public class SpherePath: FucinePath
    {
-
-        public string Path { get; private set; }
-
-        public override bool Equals(object obj)
-       {
-           if (ReferenceEquals(null, obj)) return false;
-           if (ReferenceEquals(this, obj)) return true;
-           if (obj.GetType() != this.GetType()) return false;
-           return Equals((SpherePath) obj);
-       }
-
-       public override int GetHashCode()
-       {
-           return (Path != null ? Path.GetHashCode() : 0);
-       }
-
-       
-
-       public override string ToString()
-       {
-           return Path;
-       }
-
-       public override bool IsAbsolute()
-       {
-           return false;
-       }
 
        public override SpherePath Sphere { get; }
        public override TokenPath Token { get; }
 
 
-       public static bool operator ==(SpherePath path1, SpherePath path2)
-       {
-           return path1.Equals(path2);
-       }
-
-       public static bool operator !=(SpherePath path1, SpherePath path2)
-       {
-           return !(path1 == path2);
-       }
-
-       public bool Equals(SpherePath otherPath)
-       {
-
-           return otherPath?.ToString() == Path;
-       }
 
         [JsonConstructor]
-       public SpherePath(string path)
+       public SpherePath(string path):base(path)
        {
-           Path = path;
        }
 
+       public SpherePath(string path1, string path2) : base(path1, path2)
+       {
+           throw new NotImplementedException();
 
-        public SpherePath(FucinePath basePath, string sphereIdentifier)
-        {
-            Path = basePath.ToString() + SPHERE + sphereIdentifier;
        }
 
-        public SpherePath(FucinePath basePath, FucinePath morePath)
-        {
-            Path = basePath.ToString() + SPHERE + morePath.ToString();
-        }
+       public SpherePath(FucinePath existingPath, string appendPath) : base(existingPath, appendPath)
+       {
+           throw new NotImplementedException();
+
+       }
+
+       public SpherePath(TokenPath tPath, SpherePath sPath): base(tPath,sPath)
+       {
+           throw new NotImplementedException();
+       }
 
 
         public static SpherePath Current()
        { 
            return new SpherePath(CURRENT.ToString());
        }
+
+   
    }
 }

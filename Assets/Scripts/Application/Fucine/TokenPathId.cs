@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Entities;
 using SecretHistories.Interfaces;
 
 namespace SecretHistories.Fucine
@@ -20,5 +21,11 @@ private char tokenIdPrefix => FucinePath.SITUATION;
                 _pathId = tokenIdPrefix + pathId;
         }
 
+
+        public TokenPathId  FromVerbId(string verbId)
+        {
+            return new TokenPathId(verbId + Guid.NewGuid());
+            
+        }
     }
 }
