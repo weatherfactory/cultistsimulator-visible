@@ -8,7 +8,6 @@ using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
-using SecretHistories.Interfaces;
 using SecretHistories.Core;
 using SecretHistories.Enums;
 using SecretHistories.Spheres;
@@ -104,7 +103,7 @@ namespace SecretHistories.Entities
 
             var commands = new List<TokenCreationCommand>();
 
-            SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId, new TokenPath(StartingVerbId));
+            SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId, new FucinePath(StartingVerbId));
             TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, TokenLocation.Default().WithSphere(tabletopSphere));
             commands.Add(startingTokenCommand);
 

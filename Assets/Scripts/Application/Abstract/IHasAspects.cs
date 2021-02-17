@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Core;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 
 namespace Assets.Scripts.Application.Abstract
 {

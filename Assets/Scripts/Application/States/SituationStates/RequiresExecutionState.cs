@@ -5,7 +5,7 @@ using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using Assets.Logic;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Core;

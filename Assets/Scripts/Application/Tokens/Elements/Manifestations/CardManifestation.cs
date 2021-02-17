@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants;

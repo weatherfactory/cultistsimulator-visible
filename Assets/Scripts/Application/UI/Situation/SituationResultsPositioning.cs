@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 
 
 namespace SecretHistories.UI {

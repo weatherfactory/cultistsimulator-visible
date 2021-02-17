@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using SecretHistories.Core;
 using SecretHistories.Entities;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Services;
 using UnityEngine;

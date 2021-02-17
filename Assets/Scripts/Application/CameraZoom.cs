@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using SecretHistories.Constants;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 
 [RequireComponent(typeof(Camera))]
 public class CameraZoom : MonoBehaviour {

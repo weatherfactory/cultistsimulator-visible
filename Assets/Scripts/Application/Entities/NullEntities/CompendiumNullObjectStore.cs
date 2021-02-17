@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Entities;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
 
 namespace Assets.Scripts.Application.Entities.NullEntities

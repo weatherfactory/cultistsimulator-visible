@@ -1,5 +1,5 @@
 ﻿
-namespace SecretHistories.Interfaces
+namespace SecretHistories.Fucine
 {
     public interface ICharacterSubscriber
     {

@@ -1,5 +1,5 @@
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using UnityEngine;
 
 namespace SecretHistories.Enums.UI

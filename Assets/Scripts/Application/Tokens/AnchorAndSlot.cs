@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SecretHistories.UI;
 using SecretHistories.Constants;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 
 namespace SecretHistories.UI

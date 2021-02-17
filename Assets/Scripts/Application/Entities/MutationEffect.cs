@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
-using SecretHistories.Interfaces;
 
 namespace SecretHistories.Entities
 {

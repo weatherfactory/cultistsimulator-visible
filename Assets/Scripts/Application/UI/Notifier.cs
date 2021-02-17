@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SecretHistories.Abstract;
 using SecretHistories.Core;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.Services;
 using UnityEngine;
 using SecretHistories.Entities;

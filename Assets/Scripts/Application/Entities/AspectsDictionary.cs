@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using SecretHistories.Abstract;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 
 namespace SecretHistories.Core
 {

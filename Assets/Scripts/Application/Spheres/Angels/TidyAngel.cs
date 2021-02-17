@@ -7,7 +7,6 @@ using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
-using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using UnityEngine;
 

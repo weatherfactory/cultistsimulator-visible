@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
-using SecretHistories.Interfaces;
 using JetBrains.Annotations;
 
 namespace SecretHistories.Entities

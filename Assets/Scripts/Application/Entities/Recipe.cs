@@ -7,7 +7,6 @@ using SecretHistories.Core;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
-using SecretHistories.Interfaces;
 using SecretHistories.States;
 
 namespace SecretHistories.Entities

@@ -7,7 +7,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Enums;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using TMPro;

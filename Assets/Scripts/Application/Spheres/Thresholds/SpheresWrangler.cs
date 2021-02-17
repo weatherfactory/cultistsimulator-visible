@@ -10,7 +10,6 @@ using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.Interfaces;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using TMPro;
@@ -41,7 +40,7 @@ namespace SecretHistories.UI {
         /// <param name="tokenPath"></param>
         /// <param name="verb"></param>
         /// <returns></returns>
-        public virtual Sphere BuildPrimarySphere(SphereSpec sphereSpec,TokenPath tokenPath, Verb verb)
+        public virtual Sphere BuildPrimarySphere(SphereSpec sphereSpec, FucinePath tokenPath, Verb verb)
         {
             RemoveAllSpheres();
 

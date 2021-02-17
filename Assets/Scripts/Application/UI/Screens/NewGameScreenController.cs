@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using SecretHistories.Entities;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using Assets.Logic;
 using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.UI;

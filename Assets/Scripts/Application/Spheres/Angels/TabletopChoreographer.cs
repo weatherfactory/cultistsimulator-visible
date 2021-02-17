@@ -6,7 +6,7 @@ using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Enums;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.Services;

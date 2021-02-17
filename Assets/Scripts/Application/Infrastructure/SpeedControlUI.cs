@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using SecretHistories.Enums;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 
 using UnityEditor;
 using UnityEngine;

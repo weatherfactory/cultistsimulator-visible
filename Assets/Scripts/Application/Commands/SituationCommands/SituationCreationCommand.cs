@@ -9,7 +9,6 @@ using SecretHistories.Constants;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
-using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.Enums;
 using SecretHistories.NullObjects;
@@ -29,7 +28,7 @@ namespace SecretHistories.Commands
         public float TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public Dictionary<string, int> Mutations { get; set; }
-        public TokenPath Path { get; set; }
+        public FucinePath Path { get; set; }
         public bool IsOpen { get; set; }
         public List<Token> TokensToMigrate=new List<Token>();
 
@@ -40,7 +39,7 @@ namespace SecretHistories.Commands
 
         }
 
-        public SituationCreationCommand(string verbId, TokenPath path)
+        public SituationCreationCommand(string verbId, FucinePath path)
         {
             VerbId = verbId;
             Path = path;

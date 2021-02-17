@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using SecretHistories.Fucine.DataImport;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using UnityEngine;
 
 namespace SecretHistories.Fucine

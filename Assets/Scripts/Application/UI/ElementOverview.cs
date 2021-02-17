@@ -6,7 +6,7 @@ using System.Linq;
 using Assets.Scripts.Application.Entities;
 using SecretHistories.Core;
 using SecretHistories.Entities;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants.Events;
 

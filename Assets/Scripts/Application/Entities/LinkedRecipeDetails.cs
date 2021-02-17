@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
-using SecretHistories.Interfaces;
 using UnityEngine.UIElements;
 
 namespace SecretHistories.Entities

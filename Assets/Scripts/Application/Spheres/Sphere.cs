@@ -6,7 +6,6 @@ using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using Assets.Logic;
 using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
@@ -87,7 +86,7 @@ namespace SecretHistories.Spheres
         protected AngelFlock flock = new AngelFlock();
 
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
-        public TokenPath ParentSituation { get; protected set; }=TokenPath.Root();
+        public FucinePath ParentSituation { get; protected set; }= FucinePath.Root();
 
         private Dictionary<SpherePath, Vector3> referencePositions=new Dictionary<SpherePath, Vector3>();
 
@@ -144,7 +143,7 @@ namespace SecretHistories.Spheres
             throw new NotImplementedException(); //there's some uncertainty about when the path is based on spherespec and when it's based on SpherePath. Specific behaviour is overridden for notesspheres and thresholdspheres, but I need to make it all more consistent.
         }
 
-        public void SetSituationPath(TokenPath tokenPath)
+        public void SetSituationPath(FucinePath tokenPath)
         {
             ParentSituation = tokenPath;
         }

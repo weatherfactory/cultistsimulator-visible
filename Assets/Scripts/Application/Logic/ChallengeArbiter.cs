@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SecretHistories.Core;
 using SecretHistories.Entities;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 
 namespace Assets.Logic
 {

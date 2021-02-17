@@ -1,6 +1,6 @@
 ﻿using SecretHistories.Constants.Events;
 
-namespace SecretHistories.Interfaces
+namespace SecretHistories.Fucine
 {
     public interface ISphereCatalogueEventSubscriber
     {

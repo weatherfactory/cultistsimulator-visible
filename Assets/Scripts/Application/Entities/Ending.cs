@@ -7,7 +7,6 @@ using System.Text;
 using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
-using SecretHistories.Interfaces;
 
 namespace SecretHistories.Entities
 {

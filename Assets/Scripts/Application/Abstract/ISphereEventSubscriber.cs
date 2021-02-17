@@ -8,7 +8,7 @@ using SecretHistories.UI;
 using SecretHistories.Constants.Events;
 using UnityEngine.EventSystems;
 
-namespace SecretHistories.Interfaces
+namespace SecretHistories.Fucine
 {
     public interface ISphereEventSubscriber
     {

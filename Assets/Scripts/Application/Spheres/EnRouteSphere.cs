@@ -8,7 +8,6 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
-using SecretHistories.Interfaces;
 using UnityEngine;
 
 namespace SecretHistories.Spheres

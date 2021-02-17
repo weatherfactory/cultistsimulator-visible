@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
-using SecretHistories.Interfaces;
 
 namespace SecretHistories.NullObjects
 {
@@ -19,13 +18,13 @@ namespace SecretHistories.NullObjects
             return false;
         }
 
-        public NullSituation(TokenPath path,Verb verb) : base(path,verb)
+        public NullSituation(FucinePath path,Verb verb) : base(path,verb)
         {
         }
 
         public static NullSituation Create()
         {
-            return new NullSituation(TokenPath.Root(),NullVerb.Create());
+            return new NullSituation(FucinePath.Root(),NullVerb.Create());
         }
     }
 }

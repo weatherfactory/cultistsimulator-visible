@@ -3,7 +3,7 @@ using System.Collections;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.Services;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;

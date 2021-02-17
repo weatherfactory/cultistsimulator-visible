@@ -5,7 +5,6 @@ using System.Reflection;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
-using SecretHistories.Interfaces;
 using SecretHistories.Services;
 
 using UnityEngine;

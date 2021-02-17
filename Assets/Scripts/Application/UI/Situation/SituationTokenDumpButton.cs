@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 
 namespace SecretHistories.UI {
     public class SituationTokenDumpButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {

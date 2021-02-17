@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace SecretHistories.Interfaces
+namespace SecretHistories.Fucine
 {
     public interface ISettingSubscriber
     {

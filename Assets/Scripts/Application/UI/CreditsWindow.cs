@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Entities;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants.Events;
 using SecretHistories.Enums;

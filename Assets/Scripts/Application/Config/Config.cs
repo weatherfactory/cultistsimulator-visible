@@ -7,7 +7,7 @@ using System.Linq;
 using SecretHistories.Entities;
 using SecretHistories.UI;
 using SecretHistories.Constants;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.Services;
 using UnityEngine;
 using UnityEngine.SceneManagement;

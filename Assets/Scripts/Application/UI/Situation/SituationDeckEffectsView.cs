@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 using UnityEngine;
 

@@ -63,7 +63,7 @@ namespace SecretHistories.Entities
             return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen);
         }
 
-        public Situation GetSituationByPath(TokenPath path)
+        public Situation GetSituationByPath(FucinePath path)
         {
             try
             {

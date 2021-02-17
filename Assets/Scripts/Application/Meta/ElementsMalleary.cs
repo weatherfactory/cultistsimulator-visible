@@ -11,7 +11,6 @@ using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.Interfaces;
 using SecretHistories.NullObjects;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
@@ -29,7 +28,7 @@ namespace Assets.Scripts.Application.Meta
 
         public void Awake()
         {
-            _primary=elementDrydockWrangler.BuildPrimarySphere(new SphereSpec(new PrimaryThresholdSphereSpecIdentifierStrategy()), TokenPath.Root(), NullVerb.Create()) as ThresholdSphere;
+            _primary=elementDrydockWrangler.BuildPrimarySphere(new SphereSpec(new PrimaryThresholdSphereSpecIdentifierStrategy()), FucinePath.Root(), NullVerb.Create()) as ThresholdSphere;
             _primary.Subscribe(this);
         }
 

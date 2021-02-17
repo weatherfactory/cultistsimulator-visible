@@ -13,7 +13,6 @@ using SecretHistories.UI;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;

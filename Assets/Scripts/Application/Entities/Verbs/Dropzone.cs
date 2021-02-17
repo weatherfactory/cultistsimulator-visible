@@ -7,7 +7,7 @@ using SecretHistories.Commands;
 using SecretHistories.Constants;
 using SecretHistories.Core;
 using SecretHistories.Enums;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Logic;

@@ -11,7 +11,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-namespace SecretHistories.Interfaces
+namespace SecretHistories.Fucine
 {
 
     

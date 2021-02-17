@@ -2,7 +2,7 @@
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Constants;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 

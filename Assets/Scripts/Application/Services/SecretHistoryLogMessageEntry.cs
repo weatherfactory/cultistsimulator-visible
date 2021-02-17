@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using TMPro;
 using UnityEngine;
 

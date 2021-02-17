@@ -6,7 +6,6 @@ using System.Text;
 using SecretHistories.Commands;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.Interfaces;
 using SecretHistories.NullObjects;
 using SecretHistories.Services;
 using SecretHistories.States;
@@ -58,7 +57,7 @@ namespace SecretHistories.Entities {
         public string OverrideTitle { get; set; }
 
         [Encaust]
-        public TokenPath Path { get; }
+        public FucinePath Path { get; }
 
         [Encaust]
         public bool IsOpen { get; private set; }
@@ -127,7 +126,7 @@ namespace SecretHistories.Entities {
         
 
 
-        public Situation(TokenPath path,Verb verb)
+        public Situation(FucinePath path,Verb verb)
         {
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
 
@@ -672,7 +671,7 @@ namespace SecretHistories.Entities {
 
             }
 
-            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId,new TokenPath(Recipe.ActionId)).WithRecipeId(effectCommand.Recipe.Id).AlreadyInState(
+            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId,new FucinePath(Recipe.ActionId)).WithRecipeId(effectCommand.Recipe.Id).AlreadyInState(
                 StateEnum.Ongoing);
             
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
@@ -737,7 +736,7 @@ namespace SecretHistories.Entities {
 
         
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId,
-          new TokenPath(inducedRecipe.ActionId)).WithRecipeId(inducedRecipe.Id).AlreadyInState(StateEnum.Ongoing);
+          new FucinePath(inducedRecipe.ActionId)).WithRecipeId(inducedRecipe.Id).AlreadyInState(StateEnum.Ongoing);
 
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, SpherePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
             SendCommandToSubscribers(spawnNewTokenCommand);

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 
 using UnityEngine;

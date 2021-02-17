@@ -20,7 +20,7 @@ namespace Assets.Tests.PlayModeTests
         public void GenerateSituation()
         {
             Verb verb = Watchman.Get<Compendium>().GetEntityById<Verb>("work");
-            var sc = new SituationCreationCommand(verb.Id, new TokenPath(verb.Id));
+            var sc = new SituationCreationCommand(verb.Id, new FucinePath(verb.Id));
             var tc = new TokenCreationCommand(sc, TokenLocation.Default());
             tc.Execute(Context.Unknown());
 

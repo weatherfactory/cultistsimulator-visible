@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Linq;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 using TMPro;
 using UnityEngine.EventSystems;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SecretHistories.Interfaces
+namespace SecretHistories.Fucine
 {
     public interface IQuickSpecEntity
     {

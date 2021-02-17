@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 
 
 public class EntityStore

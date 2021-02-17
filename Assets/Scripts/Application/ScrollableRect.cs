@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Enums;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ScrollRect))]

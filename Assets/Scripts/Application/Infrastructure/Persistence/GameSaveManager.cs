@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SecretHistories.UI.Scripts;
 using SecretHistories.Entities;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Services;
 

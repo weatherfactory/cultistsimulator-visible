@@ -6,7 +6,7 @@ using System.Text;
 using Assets.Scripts.Application.Commands;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Spheres;

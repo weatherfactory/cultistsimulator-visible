@@ -3,7 +3,7 @@ using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 
-namespace SecretHistories.Interfaces
+namespace SecretHistories.Fucine
 {
     public interface ISituationSubscriber
     {

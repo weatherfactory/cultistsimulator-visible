@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using SecretHistories.Elements;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
 
 namespace SecretHistories.Fucine
@@ -29,7 +29,7 @@ namespace SecretHistories.Fucine
 
        }
 
-       public SpherePath(TokenPath tPath, SpherePath sPath): base(tPath,sPath)
+       public SpherePath(FucinePath tPath, SpherePath sPath): base(tPath,sPath)
        {
            throw new NotImplementedException();
        }

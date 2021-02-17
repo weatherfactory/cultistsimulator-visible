@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
-using SecretHistories.Interfaces;
 
 namespace SecretHistories.Entities
 {

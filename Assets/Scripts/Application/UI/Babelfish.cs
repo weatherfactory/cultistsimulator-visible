@@ -3,7 +3,7 @@ using SecretHistories.Entities;
 using TMPro;
 using UnityEngine;
 using SecretHistories.UI;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using SecretHistories.Services;
 
 using SecretHistories.Enums.UI;

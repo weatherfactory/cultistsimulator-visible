@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using SecretHistories.Interfaces;
 using SecretHistories.UI;
 using SecretHistories.UI.Scripts;
 using SecretHistories.Constants;

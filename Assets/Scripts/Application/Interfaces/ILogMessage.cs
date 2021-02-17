@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SecretHistories.Interfaces
+namespace SecretHistories.Fucine
 {
 
         public interface ILogMessage

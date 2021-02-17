@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SecretHistories.Core;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 
 namespace SecretHistories.Services
 {

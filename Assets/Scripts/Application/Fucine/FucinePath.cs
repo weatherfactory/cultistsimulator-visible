@@ -8,7 +8,7 @@ using Assets.Scripts.Application.Fucine;
 using Newtonsoft.Json;
 using SecretHistories.Fucine;
 
-namespace SecretHistories.Interfaces
+namespace SecretHistories.Fucine
 {
     public class FucinePath
     {
@@ -190,7 +190,7 @@ namespace SecretHistories.Interfaces
 
         }
 
-        public FucinePath(TokenPath existingPath, SpherePath appendPath)
+        public FucinePath(FucinePath existingPath, FucinePath appendPath)
         {
             throw new NotImplementedException();
         }

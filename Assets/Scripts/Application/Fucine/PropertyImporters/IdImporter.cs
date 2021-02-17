@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Reflection;
 using SecretHistories.Fucine.DataImport;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using OrbCreationExtensions;
 
 namespace SecretHistories.Fucine

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 
 namespace SecretHistories.Commands
 {

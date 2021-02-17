@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Fucine.DataImport;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 
 namespace SecretHistories.Fucine
 {

@@ -2,7 +2,7 @@
 using SecretHistories.Entities;
 using SecretHistories.Services;
 
-namespace SecretHistories.Interfaces
+namespace SecretHistories.Fucine
 {
     public interface INotifier
     {

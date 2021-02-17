@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using SecretHistories.Fucine.DataImport;
-using SecretHistories.Interfaces;
+using SecretHistories.Fucine;
 using OrbCreationExtensions;
 using SecretHistories.Core;
 

@@ -6,7 +6,6 @@ using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.UI.Situation;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
-using SecretHistories.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Assets.Scripts.Application.Fucine;
 using NUnit.Framework;
 using SecretHistories.Fucine;
-using SecretHistories.Interfaces;
 
 namespace Assets.Tests.EditModeTests
 {
