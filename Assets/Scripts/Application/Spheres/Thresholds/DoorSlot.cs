@@ -147,7 +147,7 @@ if(stack!=null)
 
         public override FucinePath GetPath()
         {
-            return ParentSituation.AppendPath(portalType.ToString());
+            return ParentPath.AppendPath(portalType.ToString());
 
         }
 

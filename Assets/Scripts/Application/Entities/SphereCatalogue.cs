@@ -123,7 +123,7 @@ namespace SecretHistories.Entities {
             }
             catch (Exception e)
             {
-                NoonUtility.LogWarning($"Error retrieving container with path {spherePath}: {e.Message}");
+                NoonUtility.LogWarning($"Error retrieving sphere with path {spherePath}: {e.Message}");
                 return Watchman.Get<Limbo>();
             }
 

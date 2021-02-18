@@ -86,7 +86,7 @@ namespace SecretHistories.Spheres
         protected AngelFlock flock = new AngelFlock();
 
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
-        public FucinePath ParentSituation { get; protected set; }= FucinePath.Root();
+        public FucinePath ParentPath { get; protected set; }= FucinePath.Root();
 
         private Dictionary<FucinePath, Vector3> referencePositions=new Dictionary<FucinePath, Vector3>();
 
@@ -145,7 +145,7 @@ namespace SecretHistories.Spheres
 
         public void SetSituationPath(FucinePath tokenPath)
         {
-            ParentSituation = tokenPath;
+            ParentPath = tokenPath;
         }
 
 
@@ -296,7 +296,7 @@ namespace SecretHistories.Spheres
 
         public virtual FucinePath GetPath()
         {
-            return ParentSituation.AppendPath(SphereIdentifier);
+            return ParentPath.AppendPath(SphereIdentifier);
         }
 
         public virtual void OnDestroy()

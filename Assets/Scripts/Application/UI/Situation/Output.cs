@@ -90,7 +90,7 @@ public class Output : Sphere,ISituationSubscriber{
 
     public override FucinePath GetPath()
     {
-        return ParentSituation.AppendPath(SphereCategory.Output.ToString());
+        return ParentPath.AppendPath(SphereCategory.Output.ToString());
         //  from the Before Times: return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
     }
 

@@ -162,6 +162,14 @@ namespace Assets.Tests.EditModeTests
             throw new NotImplementedException();
         }
 
+        [Test]
+        public void EqualityTestWorksForFucinePaths()
+        {
+            var path1 = new FucinePath("./spherea!token1/sphereb!token1");
+            var path2 = new FucinePath("./spherea!token1/sphereb!token1");
+            Assert.AreEqual(path1,path2);
+
+        }
 
 
         [Test]

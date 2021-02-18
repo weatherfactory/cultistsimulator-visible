@@ -276,7 +276,8 @@ namespace SecretHistories.Fucine
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Equals(PathParts, other.PathParts) && Validity == other.Validity;
+
+            return (this.ToString() == other.ToString());
         }
 
         public override bool Equals(object obj)
@@ -289,10 +290,7 @@ namespace SecretHistories.Fucine
 
         public override int GetHashCode()
         {
-            unchecked
-            {
-                return ((PathParts != null ? PathParts.GetHashCode() : 0) * 397) ^ (int) Validity;
-            }
+            return (PathParts != null ? PathParts.GetHashCode() : 0);
         }
 
         public static bool operator ==(FucinePath left, FucinePath right)

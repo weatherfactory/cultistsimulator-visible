@@ -99,12 +99,12 @@ namespace SecretHistories.Entities
 
         public List<TokenCreationCommand> GetTokenCreationCommandsToEnactLegacy()
         {
-            Sphere tabletopSphere = Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere();
+            FucinePath tabletopSpherePath = Watchman.Get<SphereCatalogue>().GetDefaultWorldSpherePath();
 
             var commands = new List<TokenCreationCommand>();
 
             SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId, new FucinePath(StartingVerbId));
-            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, TokenLocation.Default().WithSphere(tabletopSphere));
+            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, TokenLocation.Default().WithSpherePath(tabletopSpherePath));
             commands.Add(startingTokenCommand);
 
             AspectsDictionary startingElements = new AspectsDictionary();
@@ -113,7 +113,7 @@ namespace SecretHistories.Entities
             foreach (var e in startingElements)
             {
                 var elementStackCreationCommand = new ElementStackCreationCommand(e.Key, e.Value);
-                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default().WithSphere(tabletopSphere));
+                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default().WithSpherePath(tabletopSpherePath));
                 commands.Add(startingStackCommand);
             }
 
