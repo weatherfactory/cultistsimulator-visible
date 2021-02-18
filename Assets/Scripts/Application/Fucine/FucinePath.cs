@@ -11,7 +11,7 @@ using SecretHistories.Fucine;
 
 namespace SecretHistories.Fucine
 {
-    public class FucinePath
+    public class FucinePath:IEquatable<FucinePath>
     {
         public const char ROOT = '.';
         public const char TOKEN = '!';
@@ -37,24 +37,36 @@ namespace SecretHistories.Fucine
     [JsonConstructor]
         public FucinePath(string path)
         {
-            if (string.IsNullOrEmpty(path) || string.IsNullOrWhiteSpace(path))
+            if (path == null)
             {
+                AddNullPathPart();
                 Validity = FucineValidity.Empty;
+                return;
+            }
+
+
+            path = path.Trim(); //remove whitespace
+            if (path==string.Empty)
+            {
+                AddCurrentLocationPart();
+                Validity = FucineValidity.Valid;
                 return;
             }
 
             try
             {
                 List<string> sphereParts;
-
-                if(path[0]==ROOT)
+                //  ./sphere1!situationa/sphere2!situationb
+                if (path[0]==ROOT)
                 {
                     AddRootPart();
                     sphereParts=path.Substring(1).Split(SPHERE).ToList();
                 }
                 else
-                    //  ./sphere1!situationa/sphere2!situationb
+                {
+                    AddCurrentLocationPart();   
                     sphereParts = path.Split(SPHERE).ToList();
+                }
                 //  .
                 //  sphere1!situationa
                 //  sphere2!situationb
@@ -64,7 +76,7 @@ namespace SecretHistories.Fucine
                     Parse(sphereParts);
                 }
 
-                Validity=Validate(PathParts);
+                Validity=ValidateAfterParsing(PathParts);
 
             }
             catch (Exception e)
@@ -76,7 +88,7 @@ namespace SecretHistories.Fucine
 
         }
 
-        private FucineValidity Validate(List<FucinePathPart> pathParts)
+        private FucineValidity ValidateAfterParsing(List<FucinePathPart> pathParts)
         {
             if (!pathParts.Any())
                 return  FucineValidity.Empty;
@@ -112,7 +124,7 @@ namespace SecretHistories.Fucine
             get
             {
                 if(!PathParts.Any())
-                    return new NullSpherePathPart();
+                    return new NullFucinePathPart();
 
                 return PathParts.Last();
             }
@@ -239,14 +251,57 @@ namespace SecretHistories.Fucine
             throw new NotImplementedException();
         }
 
+        private void AddNullPathPart()
+        {
+            PathParts.Add(new NullFucinePathPart());
+        }
+
         private void AddRootPart()
         {
             PathParts.Add(new RootPathPart());
         }
 
+        private void AddCurrentLocationPart()
+        {
+            PathParts.Add(new CurrentLocationPathPart());
+        }
+
         public static FucinePath Current()
         {
-            return new FucinePath(CURRENT.ToString());
+            return new FucinePath(String.Empty);
+        }
+
+        public bool Equals(FucinePath other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Equals(PathParts, other.PathParts) && Validity == other.Validity;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((FucinePath) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return ((PathParts != null ? PathParts.GetHashCode() : 0) * 397) ^ (int) Validity;
+            }
+        }
+
+        public static bool operator ==(FucinePath left, FucinePath right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(FucinePath left, FucinePath right)
+        {
+            return !Equals(left, right);
         }
     }
 }

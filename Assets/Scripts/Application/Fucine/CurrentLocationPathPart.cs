@@ -7,12 +7,12 @@ using SecretHistories.Fucine;
 
 namespace Assets.Scripts.Application.Fucine
 {
-    public class NullTokenPathPart: TokenPathPart
+    public class CurrentLocationPathPart: FucinePathPart
     {
-        public NullTokenPathPart() : base(string.Empty)
+        public CurrentLocationPathPart() : base(String.Empty)
         {
         }
 
-        public override PathCategory Category => PathCategory.Null;
+        public override PathCategory Category => PathCategory.Current;
     }
 }

@@ -8,9 +8,9 @@ using SecretHistories.Fucine;
 
 namespace SecretHistories.Fucine
 {
-    public class NullSpherePathPart: SpherePathPart
+    public class NullFucinePathPart: FucinePathPart
     {
-        public NullSpherePathPart() : base(string.Empty)
+        public NullFucinePathPart() : base(null)
         {
         }
 

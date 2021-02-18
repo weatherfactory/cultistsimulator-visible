@@ -136,17 +136,18 @@ namespace Assets.Tests.EditModeTests
         }
 
         [Test]
-        public void WeDoSomethingSensibleWhenAFucinePathIsInitialisedWithEmptyString()
+        public void FucinePathInitialisedWithNull_Parses()
         {
             var emptyPath=new FucinePath("");
-            Assert.IsFalse(emptyPath.IsValid());
+            Assert.IsTrue(emptyPath.IsValid());
+            Assert.AreEqual(string.Empty,emptyPath.ToString());
             var whitespaceEmptyPath=new FucinePath(" ");
-            Assert.IsFalse(whitespaceEmptyPath.IsValid());
-
+            Assert.IsTrue(whitespaceEmptyPath.IsValid());
+            Assert.AreEqual(string.Empty, emptyPath.ToString());
         }
 
         [Test]
-        public void WeDoSomethingSensibleWhenAFucinePathIsInitialisedWithNull()
+        public void FucinePathInitialisedWithNull_IsAnInvalidPath()
         {
             var nullPath = new FucinePath(null as FucinePathPart);
             Assert.IsFalse(nullPath.IsValid());

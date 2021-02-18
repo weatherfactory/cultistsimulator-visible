@@ -14,7 +14,8 @@ namespace SecretHistories.Fucine
             Root,
             Token,
             Sphere,
-            Null
+            Null,
+            Current
         }
 
         protected string PathId;

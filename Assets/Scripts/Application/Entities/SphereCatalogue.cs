@@ -98,9 +98,15 @@ namespace SecretHistories.Entities {
         }
 
 
+        public Sphere GetSphereByPath(FucinePath getsphereForPath, FucinePath relativeTo)
+        {
+            throw new NotImplementedException();
+        }
+
         public Sphere GetSphereByPath(FucinePath spherePath)
         {
-
+            if(!spherePath.IsAbsolute())
+                throw new ApplicationException($"trying to find a sphere with sphere path {spherePath.ToString()}, but that's not an absolute path, and no context was provided");
             try
             {
                 var specifiedSphere = _spheres.SingleOrDefault(c => c.GetPath() == spherePath);
