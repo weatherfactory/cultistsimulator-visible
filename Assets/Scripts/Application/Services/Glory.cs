@@ -35,7 +35,7 @@ namespace SecretHistories.Services
 
         public LanguageManager languageManager;
         public StageHand stageHand;
-        public GameSaveManager gameSaveManager;
+        
 
         public Concursum concursum;
         public SecretHistory SecretHistory;
@@ -118,10 +118,7 @@ namespace SecretHistories.Services
 
                 watchman.Register(limbo);
                 watchman.Register(NullManifestation);
-             
-
-      
-                watchman.Register(gameSaveManager);
+                
 
                 //why here? why not? this whole thing needs fixing
                 watchman.Register<IDice>(new Dice());

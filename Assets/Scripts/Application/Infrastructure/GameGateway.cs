@@ -24,7 +24,7 @@ namespace SecretHistories.Constants
 
         [SerializeField] private EndGameAnimController _endGameAnimController;
 
-
+        public bool DontLoadGame;
         public void Awake()
         {
             var r = new Watchman();
@@ -32,10 +32,12 @@ namespace SecretHistories.Constants
         }
         public void Start()
         {
-
             try
             {
-                LoadGame(Watchman.Get<StageHand>().GamePersistenceProvider);
+
+                if (!DontLoadGame)
+                    LoadGame(Watchman.Get<StageHand>().GamePersistenceProvider);
+
                 ProvisionDropzoneToken();
             }
             catch (Exception e)
@@ -48,7 +50,6 @@ namespace SecretHistories.Constants
         public void LoadGame(GamePersistenceProvider gamePersistenceProviderSource)
         {
             
-
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
             { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
             Watchman.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));

@@ -14,7 +14,7 @@ namespace SecretHistories.Enums
         Viable, Extinct, Unformed
     }
 
-    public enum FucineValidity { Valid, ParsingError, TokenInRoot, Uninitialised,Empty }
+    public enum FucineValidity { Valid, TokenInRoot, Uninitialised,Empty }
 
     public enum GameSpeed
     {

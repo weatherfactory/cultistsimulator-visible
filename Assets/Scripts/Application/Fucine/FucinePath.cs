@@ -81,8 +81,7 @@ namespace SecretHistories.Fucine
             }
             catch (Exception e)
             {
-                NoonUtility.Log($"Error parsing fucine path: {path}, ({e.Message})");
-                Validity = FucineValidity.ParsingError;
+              throw new ApplicationException($"Error parsing Fucine path: {path}, ({e.Message})",e);
             }
 
 

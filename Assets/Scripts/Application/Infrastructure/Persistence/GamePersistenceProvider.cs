@@ -23,7 +23,7 @@ namespace SecretHistories.Infrastructure.Persistence
         protected abstract string GetSaveFileLocation();
 
 
-        protected PersistedGameState _persistedGameState;
+        protected PersistedGameState _persistedGameState=new PersistedGameState();
 
         public PersistedGameState RetrievePersistedGameState()
         {
