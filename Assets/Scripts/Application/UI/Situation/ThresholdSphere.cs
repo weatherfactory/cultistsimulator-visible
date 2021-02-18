@@ -84,7 +84,7 @@ namespace SecretHistories.UI
 
         public override FucinePath GetPath()
         {
-            return new FucinePath(ParentSituation, _thresholdSpherePath);
+            return ParentSituation.AppendPath(_thresholdSpherePath);
 
         }
 

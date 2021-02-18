@@ -29,7 +29,7 @@ namespace Assets.Scripts.Application.Meta
            sphereSphec.SetId("situationsmalleary");
            sphereSphec.Label = "Malleary: Situations";
            sphereSphec.AllowAnyToken = true;
-     var spherePath=new FucinePath(FucinePath.Root(),sphereSphec.Id);
+     var spherePath= FucinePath.Root().AppendPath(sphereSphec.Id);
            
            _situationDrydock.SetUpWithSphereSpecAndPath(sphereSphec, spherePath);
 

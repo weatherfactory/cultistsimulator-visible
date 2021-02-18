@@ -296,7 +296,7 @@ namespace SecretHistories.Spheres
 
         public virtual FucinePath GetPath()
         {
-            return new FucinePath(ParentSituation, SphereIdentifier);
+            return ParentSituation.AppendPath(SphereIdentifier);
         }
 
         public virtual void OnDestroy()

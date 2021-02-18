@@ -272,7 +272,7 @@ namespace SecretHistories.Constants
                 foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
                                                                                             //in that case we need to do it from the top down, or the slots won't be there
                 {
-                    var slotPath = new FucinePath(situation.Path, ess.LocationInfo.Split(FucinePath.SPHERE)[0]);
+                    var slotPath = situation.Path.AppendPath(ess.LocationInfo.Split(FucinePath.SPHERE)[0]);
                     var slot = Watchman.Get<SphereCatalogue>().GetSphereByPath(slotPath);
                     slot.ProvisionStackFromCommand(ess);
 

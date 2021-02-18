@@ -233,22 +233,24 @@ namespace SecretHistories.Fucine
             PathParts.Add(spherePathPart);
         }
 
-        
-        public FucinePath(string path1, string path2)
+
+
+        public FucinePath AppendPath(string appendPathString)
         {
-            throw new NotImplementedException();
+          var pathToAppend=new FucinePath(appendPathString);
+          return AppendPath(pathToAppend);
 
         }
 
-        public FucinePath(FucinePath existingPath, string appendPath)
+        public FucinePath AppendPath(FucinePath pathToAppend)
         {
-            throw new NotImplementedException();
+            if(pathToAppend.IsAbsolute() && this.IsAbsolute())
+                throw new InvalidOperationException($"Can't combine two absolute paths: '{this.ToString()}' and '{pathToAppend.ToString()}'");
 
-        }
+            string newPathString= string.Concat(this.ToString(),pathToAppend.ToString());
 
-        public FucinePath(FucinePath existingPath, FucinePath appendPath)
-        {
-            throw new NotImplementedException();
+            var newPath = new FucinePath(newPathString);
+            return newPath;
         }
 
         private void AddNullPathPart()

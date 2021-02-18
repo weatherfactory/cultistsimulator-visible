@@ -75,6 +75,7 @@ namespace Assets.Tests.EditModeTests
 
         }
 
+ 
         [Test]
         public void FucinePath_Parse_RenderToString()
         {
@@ -160,6 +161,39 @@ namespace Assets.Tests.EditModeTests
         {
             throw new NotImplementedException();
         }
+
+
+
+        [Test]
+        public void AppendingAbsolutePathToAbsolutePath_ThrowsException()
+        {
+            var path1 = new FucinePath("./sphere");
+            var path2 = new FucinePath("./sphere2");
+            FucinePath combinedPath;
+            Assert.Throws<InvalidOperationException>(() => combinedPath = path1.AppendPath(path2));
+        }
+
+        
+        [Test]
+        public void CanCreatePathFromRelativePathPlusRelativePathString()
+        {
+            var existingPath=new FucinePath("/sphere");
+            var newPath=existingPath.AppendPath("!token");
+            Assert.IsTrue(newPath.IsValid());
+            Assert.AreEqual("/sphere!token", newPath.ToString());
+            }
+
+        [Test]
+        public void AppendingPathIsEquivalentToCombiningPathStrings()
+        {
+            var path1=new FucinePath("./sphere");
+            var path2=new FucinePath("!token");
+            var pathValidCombined=path1.AppendPath(path2);
+            Assert.IsTrue(pathValidCombined.IsValid());
+            Assert.AreEqual("./sphere!token", pathValidCombined.ToString());
+        }
+
+   
 
     }
 }
