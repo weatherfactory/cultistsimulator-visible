@@ -88,7 +88,7 @@ namespace SecretHistories.Spheres
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
         public FucinePath ParentSituation { get; protected set; }= FucinePath.Root();
 
-        private Dictionary<SpherePath, Vector3> referencePositions=new Dictionary<SpherePath, Vector3>();
+        private Dictionary<FucinePath, Vector3> referencePositions=new Dictionary<FucinePath, Vector3>();
 
 
         public SphereCatalogue Catalogue
@@ -138,7 +138,7 @@ namespace SecretHistories.Spheres
                 this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
-        public virtual void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec, SpherePath pathForThisThreshold)
+        public virtual void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec, FucinePath pathForThisThreshold)
         {
             throw new NotImplementedException(); //there's some uncertainty about when the path is based on spherespec and when it's based on SpherePath. Specific behaviour is overridden for notesspheres and thresholdspheres, but I need to make it all more consistent.
         }
@@ -294,9 +294,9 @@ namespace SecretHistories.Spheres
             incumbentMoved = false;
         }
 
-        public virtual SpherePath GetPath()
+        public virtual FucinePath GetPath()
         {
-            return new SpherePath(ParentSituation, SphereIdentifier);
+            return new FucinePath(ParentSituation, SphereIdentifier);
         }
 
         public virtual void OnDestroy()
@@ -688,7 +688,7 @@ namespace SecretHistories.Spheres
             }
         }
 
-        public Vector3 GetReferencePosition(SpherePath atPath)
+        public Vector3 GetReferencePosition(FucinePath atPath)
         {
 
             if (referencePositions.TryGetValue(atPath, out Vector3 referencePosition))

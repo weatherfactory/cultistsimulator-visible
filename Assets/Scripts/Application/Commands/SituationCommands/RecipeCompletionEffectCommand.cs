@@ -12,12 +12,12 @@ namespace SecretHistories.Core
         public Recipe Recipe { get; set; }
         public bool AsNewSituation { get; set; } //determines whether the recipe will spawn a new situation.
         public Expulsion Expulsion { get; set; }
-        public SpherePath ToPath { get; set; }
+        public FucinePath ToPath { get; set; }
         
-        public RecipeCompletionEffectCommand() : this(NullRecipe.Create(), false, new Expulsion(),SpherePath.Current())
+        public RecipeCompletionEffectCommand() : this(NullRecipe.Create(), false, new Expulsion(), FucinePath.Current())
         {}
 
-        public RecipeCompletionEffectCommand(Recipe recipe,bool asNewSituation,Expulsion expulsion,SpherePath toPath)
+        public RecipeCompletionEffectCommand(Recipe recipe,bool asNewSituation,Expulsion expulsion, FucinePath toPath)
         {
             Recipe = recipe;
             Title = "default title";

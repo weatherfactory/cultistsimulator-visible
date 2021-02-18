@@ -27,7 +27,7 @@ namespace Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport
 
                 foreach (string slotPath in htOngoingSlotStacks.Keys)
                 {
-                    var slotId = slotPath.Split(SpherePath.SPHERE)[0];
+                    var slotId = slotPath.Split(FucinePath.SPHERE)[0];
                     var slotSpec = new SphereSpec(new SimpleSphereSpecIdentifierStrategy(slotId));
                     ongoingSlotSpecs.Add(slotSpec);
                 }

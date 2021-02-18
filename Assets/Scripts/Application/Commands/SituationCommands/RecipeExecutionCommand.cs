@@ -11,9 +11,9 @@ namespace SecretHistories.Commands
     {
         public Recipe Recipe { get; set; }
         public Expulsion Expulsion { get; set; }
-        public SpherePath ToPath { get; set; }
+        public FucinePath ToPath { get; set; }
 
-        public RecipeExecutionCommand(Recipe recipe, Expulsion expulsion,SpherePath toPath)
+        public RecipeExecutionCommand(Recipe recipe, Expulsion expulsion, FucinePath toPath)
         {
             Recipe = recipe;
             Expulsion = expulsion;

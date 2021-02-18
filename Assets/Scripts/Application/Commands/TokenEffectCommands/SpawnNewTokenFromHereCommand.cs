@@ -15,10 +15,10 @@ namespace SecretHistories.Commands
   {
       private SituationCreationCommand _situationCreationCommand;
       private Context _context;
-      private SpherePath toSpherePath;
+      private FucinePath toSpherePath;
 
       private bool hasExecuted = false;
-        public SpawnNewTokenFromHereCommand(SituationCreationCommand situationCreationCommand, SpherePath toSpherePath, Context context)
+        public SpawnNewTokenFromHereCommand(SituationCreationCommand situationCreationCommand, FucinePath toSpherePath, Context context)
         {
             _situationCreationCommand = situationCreationCommand;
             _context = context;
@@ -30,7 +30,7 @@ namespace SecretHistories.Commands
             {
                 TokenLocation newAnchorLocation;
 
-                if (toSpherePath!= SpherePath.Current())
+                if (toSpherePath!= FucinePath.Current())
                     newAnchorLocation = new TokenLocation(Vector3.zero, toSpherePath);
                 else
                     newAnchorLocation = token.Location;

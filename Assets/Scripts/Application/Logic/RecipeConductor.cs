@@ -123,7 +123,7 @@ namespace SecretHistories.Core
         public IList<RecipeExecutionCommand> GetRecipeExecutionCommands(Recipe recipe)
         {
             //start with the execution command for the original recipe
-            IList<RecipeExecutionCommand> recipeExecutionCommands = new List<RecipeExecutionCommand>() {new RecipeExecutionCommand(recipe,null,new SpherePath(String.Empty)) }; ;
+            IList<RecipeExecutionCommand> recipeExecutionCommands = new List<RecipeExecutionCommand>() {new RecipeExecutionCommand(recipe,null,new FucinePath(String.Empty)) }; ;
             if (recipe.Alt.Count == 0)
                 return recipeExecutionCommands;
 
@@ -158,7 +158,7 @@ namespace SecretHistories.Core
                     }
                     if (ar.Additional)
                     {
-                        recipeExecutionCommands.Add(new RecipeExecutionCommand(candidateRecipe,ar.Expulsion,new SpherePath(ar.ToPath))); //add the additional recipe, and keep going
+                        recipeExecutionCommands.Add(new RecipeExecutionCommand(candidateRecipe,ar.Expulsion,new FucinePath(ar.ToPath))); //add the additional recipe, and keep going
                         NoonUtility.Log(recipe.Id + " says: Found additional recipe with dice result " + diceResult + ", against chance " + +challengeArbiter.GetArbitratedChance()  + ar.Id +
                                         " to execute - adding it to execution list and looking for more");
                     }

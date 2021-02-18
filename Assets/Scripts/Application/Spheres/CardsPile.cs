@@ -47,9 +47,9 @@ namespace SecretHistories.Spheres
 
       }
 
-      public override SpherePath GetPath()
+      public override FucinePath GetPath()
       {
-          return new SpherePath(ParentSituation, _deckSpec?.Id);
+          return new FucinePath(ParentSituation, _deckSpec?.Id);
       }
 
 

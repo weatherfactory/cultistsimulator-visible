@@ -65,7 +65,7 @@ namespace SecretHistories.Commands
             if (_sourceToken != null)
             {
                 var enRouteSpherePath =
-                    new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
+                    new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
 
                 var enrouteSphere = sphereCatalogue.GetSphereByPath(enRouteSpherePath);
                 

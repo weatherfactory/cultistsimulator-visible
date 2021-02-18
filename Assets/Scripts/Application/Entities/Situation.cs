@@ -738,7 +738,7 @@ namespace SecretHistories.Entities {
             SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId,
           new FucinePath(inducedRecipe.ActionId)).WithRecipeId(inducedRecipe.Id).AlreadyInState(StateEnum.Ongoing);
 
-            var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, SpherePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
+            var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, FucinePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
             SendCommandToSubscribers(spawnNewTokenCommand);
 
     }

@@ -25,9 +25,8 @@ namespace SecretHistories.Constants
 {
     public class SimpleJSONGameDataImporter
     {
-        private  SpherePath windowSpherePath;
-        private  SpherePath tabletopSpherePath;
-
+        private FucinePath windowSpherePath;
+        private FucinePath tabletopSpherePath;
 
 
         public bool IsSavedGameActive(PetromnemeGamePersistenceProvider source)
@@ -43,8 +42,8 @@ namespace SecretHistories.Constants
         {
             var htSave = source.RetrieveHashedSaveFromFile();
 
-            windowSpherePath = new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
-          tabletopSpherePath = new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
+            windowSpherePath = new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
+          tabletopSpherePath = new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
 
 
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
@@ -201,7 +200,7 @@ namespace SecretHistories.Constants
             string simplifiedSituationPath;
             TokenLocation tokenLocation;
 
-            string[] simplifiedSituationPathParts = locationInfo.ToString().Split(SpherePath.SPHERE);
+            string[] simplifiedSituationPathParts = locationInfo.ToString().Split(FucinePath.SPHERE);
             if (simplifiedSituationPathParts.Length != 3)
             {
                 NoonUtility.LogWarning(
@@ -273,7 +272,7 @@ namespace SecretHistories.Constants
                 foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
                                                                                             //in that case we need to do it from the top down, or the slots won't be there
                 {
-                    var slotPath = new SpherePath(situation.Path, ess.LocationInfo.Split(SpherePath.SPHERE)[0]);
+                    var slotPath = new FucinePath(situation.Path, ess.LocationInfo.Split(FucinePath.SPHERE)[0]);
                     var slot = Watchman.Get<SphereCatalogue>().GetSphereByPath(slotPath);
                     slot.ProvisionStackFromCommand(ess);
 

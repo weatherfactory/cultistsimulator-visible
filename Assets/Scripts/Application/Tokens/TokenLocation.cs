@@ -18,11 +18,11 @@ namespace SecretHistories.UI
     public class TokenLocation
   {
       public Vector3 Anchored3DPosition { get; set; }
-      public SpherePath AtSpherePath { get; set; }
+      public FucinePath AtSpherePath { get; set; }
 
         public TokenLocation(){}
 
-        public TokenLocation(float x,float y,float z, SpherePath atSpherePath)
+        public TokenLocation(float x,float y,float z, FucinePath atSpherePath)
         {
             Vector3 anchored3DPosition=new Vector3(x,y,z);
             Anchored3DPosition = anchored3DPosition;
@@ -38,10 +38,10 @@ namespace SecretHistories.UI
 
         public static TokenLocation Default()
         {
-            return new TokenLocation(0,0,0,SpherePath.Current());
+            return new TokenLocation(0,0,0, FucinePath.Current());
         }
 
-        public TokenLocation(Vector3 anchored3DPosition,SpherePath atSpherePath)
+        public TokenLocation(Vector3 anchored3DPosition, FucinePath atSpherePath)
         {
             Anchored3DPosition = anchored3DPosition;
             AtSpherePath = atSpherePath;
@@ -54,7 +54,7 @@ namespace SecretHistories.UI
             AtSpherePath = currentLocationOfToken.Sphere.GetPath();
         }
 
-        public TokenLocation WithSpherePath(SpherePath withSpherePath)
+        public TokenLocation WithSpherePath(FucinePath withSpherePath)
         {
             var newTL=new TokenLocation(Anchored3DPosition,withSpherePath);
             return newTL;

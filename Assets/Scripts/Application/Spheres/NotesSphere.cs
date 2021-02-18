@@ -34,7 +34,7 @@ namespace Assets.Scripts.Application.Spheres
         public override bool AllowStackMerge => false;
         public event Action<NavigationArgs> OnNoteNavigation;
 
-        public override void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec, SpherePath pathForThisThreshold)
+        public override void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec, FucinePath pathForThisThreshold)
         {
             SphereIdentifier = sphereSpec.Id;
             gameObject.name = SphereIdentifier; //this could be more usefully frequent in other sphere implementations

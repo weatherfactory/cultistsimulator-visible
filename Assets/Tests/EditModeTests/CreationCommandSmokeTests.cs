@@ -104,7 +104,7 @@ public class CreationCommandsSmokeTests
         situationCreationCommand.Path = new FucinePath(".");
         situationCreationCommand.StateForRehydration = StateEnum.Ongoing;
 
-            var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
+        var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
 
         var tokenCreationCommand =new TokenCreationCommand(situationCreationCommand,location);
         var token = tokenCreationCommand.Execute(new Context(Context.ActionSource.Unknown));

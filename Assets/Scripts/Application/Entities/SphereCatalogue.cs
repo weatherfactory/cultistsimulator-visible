@@ -31,10 +31,10 @@ namespace SecretHistories.Entities {
         public const string STORAGE_PATH = "storage";
 
 
-        public SpherePath GetDefaultWorldSpherePath()
+        public FucinePath GetDefaultWorldSpherePath()
         {
             var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
-            var spherePath = new SpherePath(dictum.DefaultWorldSpherePath);
+            var spherePath = new FucinePath(dictum.DefaultWorldSpherePath);
             return spherePath;
         }
 
@@ -44,10 +44,10 @@ namespace SecretHistories.Entities {
             return defaultWorldSphere;
         }
 
-        public SpherePath GetDefaultEnRouteSpherePath()
+        public FucinePath GetDefaultEnRouteSpherePath()
         {
             var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
-            var spherePath = new SpherePath(dictum.DefaultEnRouteSpherePath);
+            var spherePath = new FucinePath(dictum.DefaultEnRouteSpherePath);
             return spherePath;
         }
 
@@ -98,7 +98,7 @@ namespace SecretHistories.Entities {
         }
 
 
-        public Sphere GetSphereByPath(SpherePath spherePath)
+        public Sphere GetSphereByPath(FucinePath spherePath)
         {
 
             try

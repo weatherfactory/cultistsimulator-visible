@@ -16,11 +16,11 @@ namespace SecretHistories.Spheres.Angels
     //low-aggression angel which tidies up evicted tokens with no particular home
     public class TidyAngel: IAngel
     {
-        private SpherePath _tidyToPath;
+        private FucinePath _tidyToPath;
 
         public int Authority => 0;
 
-        public TidyAngel(SpherePath tidyToPath)
+        public TidyAngel(FucinePath tidyToPath)
         {
             _tidyToPath = tidyToPath;
         }

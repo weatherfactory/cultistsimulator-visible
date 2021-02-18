@@ -145,9 +145,9 @@ if(stack!=null)
             return GetComponentInChildren<ElementStack>();
         }
 
-        public override SpherePath GetPath()
+        public override FucinePath GetPath()
         {
-            return new SpherePath(ParentSituation, portalType.ToString());
+            return new FucinePath(ParentSituation, portalType.ToString());
 
         }
 

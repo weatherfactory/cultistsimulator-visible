@@ -44,7 +44,14 @@ namespace Assets.Tests.EditModeTests
 
         }
 
-        //I don't think we need the subclasses after all
+        [Test]
+        public void FucineRootPath_ParsesCorrectly()
+        {
+            var rootPath=new FucinePath(".");
+            Assert.AreEqual(".",rootPath.ToString());
+        }
+
+        
         [Test]
         public void FucinePath_WithRootAsOnlyMember_IsAbsolute()
         {
@@ -52,7 +59,7 @@ namespace Assets.Tests.EditModeTests
             Assert.IsTrue(absolutePath.IsAbsolute());
         }
 
-        //I don't think we need the subclasses after all
+        
         [Test]
         public void FucinePath_WithRootInFirstPosition_IsAbsolute()
         {
@@ -124,22 +131,34 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void RootPathFollowedBySituationIsInvalid()
         {
-            throw new NotImplementedException();
+         var pathFollowedBySituation=new FucinePath(".!token");
+         Assert.IsFalse(pathFollowedBySituation.IsValid());
         }
 
         [Test]
         public void WeDoSomethingSensibleWhenAFucinePathIsInitialisedWithEmptyString()
         {
-            throw new NotImplementedException();
+            var emptyPath=new FucinePath("");
+            Assert.IsFalse(emptyPath.IsValid());
+            var whitespaceEmptyPath=new FucinePath(" ");
+            Assert.IsFalse(whitespaceEmptyPath.IsValid());
 
         }
 
         [Test]
         public void WeDoSomethingSensibleWhenAFucinePathIsInitialisedWithNull()
         {
+            var nullPath = new FucinePath(null as FucinePathPart);
+            Assert.IsFalse(nullPath.IsValid());
+            var nullStringPath=new FucinePath(null as string);
+            Assert.IsFalse(nullStringPath.IsValid());
+        }
+
+        [Test]
+        public void Current_DoesSomethingSensible()
+        {
             throw new NotImplementedException();
+        }
 
     }
-
-}
 }

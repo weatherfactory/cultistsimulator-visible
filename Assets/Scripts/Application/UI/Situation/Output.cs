@@ -88,9 +88,9 @@ public class Output : Sphere,ISituationSubscriber{
 
 
 
-    public override SpherePath GetPath()
+    public override FucinePath GetPath()
     {
-        return new SpherePath(ParentSituation, SphereCategory.Output.ToString());
+        return new FucinePath(ParentSituation, SphereCategory.Output.ToString());
         //  from the Before Times: return (token.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + token.RectTransform.localPosition.y).ToString();
     }
 

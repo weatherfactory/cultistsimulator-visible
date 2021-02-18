@@ -370,7 +370,7 @@ namespace SecretHistories.UI {
 
 
             var enrouteContainer = Watchman.Get<SphereCatalogue>().GetSphereByPath(
-                new SpherePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
+                new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
 
             enrouteContainer.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
             

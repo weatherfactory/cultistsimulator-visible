@@ -26,7 +26,7 @@ namespace SecretHistories.UI
         public Graphic border;
         public GraphicFader slotGlow;
         public LayoutGroup slotIconHolder;
-        private SpherePath _thresholdSpherePath;
+        private FucinePath _thresholdSpherePath;
 
 
         public override bool AllowStackMerge { get { return false; } }
@@ -55,7 +55,7 @@ namespace SecretHistories.UI
         }
 
 
-        public override void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec,SpherePath pathForThisThreshold)
+        public override void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec, FucinePath pathForThisThreshold)
         {
             GoverningSphereSpec = sphereSpec;
             _thresholdSpherePath = pathForThisThreshold;
@@ -82,9 +82,9 @@ namespace SecretHistories.UI
 
         }
 
-        public override SpherePath GetPath()
+        public override FucinePath GetPath()
         {
-            return new SpherePath(ParentSituation, _thresholdSpherePath);
+            return new FucinePath(ParentSituation, _thresholdSpherePath);
 
         }
 

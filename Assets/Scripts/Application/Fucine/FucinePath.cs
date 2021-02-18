@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Fucine;
 using Newtonsoft.Json;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 
 namespace SecretHistories.Fucine
@@ -13,37 +14,81 @@ namespace SecretHistories.Fucine
     public class FucinePath
     {
         public const char ROOT = '.';
-        public const char TOKEN = '!'; 
+        public const char TOKEN = '!';
         public const char SPHERE = '/';
         public const char CURRENT = '#';
 
-        protected List<FucinePathPart> PathParts=new List<FucinePathPart>();
 
 
-        [JsonConstructor]
+        protected List<FucinePathPart> PathParts = new List<FucinePathPart>();
+
+
+        protected FucineValidity Validity = FucineValidity.Uninitialised;
+
+        public virtual bool IsValid()
+        {
+            if (Validity == FucineValidity.Valid)
+                return true;
+
+            return false;
+        }
+
+
+    [JsonConstructor]
         public FucinePath(string path)
         {
-
-
-            //  ./sphere1!situationa/sphere2!situationb
-            List<string> sphereParts = path.Split(SPHERE).ToList();
-            //  .
-            //  sphere1!situationa
-            //  sphere2!situationb
-
-
-            if (sphereParts[0] == ROOT.ToString())
+            if (string.IsNullOrEmpty(path) || string.IsNullOrWhiteSpace(path))
             {
-                AddRootPart();
-                sphereParts.RemoveAt(0);
+                Validity = FucineValidity.Empty;
+                return;
             }
 
-            if (sphereParts.Any())
+            try
             {
-                Parse(sphereParts);
+                List<string> sphereParts;
+
+                if(path[0]==ROOT)
+                {
+                    AddRootPart();
+                    sphereParts=path.Substring(1).Split(SPHERE).ToList();
+                }
+                else
+                    //  ./sphere1!situationa/sphere2!situationb
+                    sphereParts = path.Split(SPHERE).ToList();
+                //  .
+                //  sphere1!situationa
+                //  sphere2!situationb
+
+                if (sphereParts.Any()) 
+                {
+                    Parse(sphereParts);
+                }
+
+                Validity=Validate(PathParts);
+
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log($"Error parsing fucine path: {path}, ({e.Message})");
+                Validity = FucineValidity.ParsingError;
             }
 
 
+        }
+
+        private FucineValidity Validate(List<FucinePathPart> pathParts)
+        {
+            if (!pathParts.Any())
+                return  FucineValidity.Empty;
+
+            if (pathParts.Count > 1)
+            {
+                if (pathParts[0].Category == FucinePathPart.PathCategory.Root &&
+                    pathParts[1].Category == FucinePathPart.PathCategory.Token)
+                    return FucineValidity.TokenInRoot;
+            }
+
+            return FucineValidity.Valid;
         }
 
         public FucinePath(FucinePathPart part)
@@ -56,10 +101,6 @@ namespace SecretHistories.Fucine
             PathParts.AddRange(parts);
         }
 
-        public virtual bool IsValid()
-        {
-            throw new NotImplementedException();
-        }
 
         public bool IsAbsolute()
         {
@@ -135,26 +176,29 @@ namespace SecretHistories.Fucine
 
         private void Parse(List<string> sphereParts)
         {
-            if (sphereParts[0].StartsWith(TOKEN.ToString()) && sphereParts.Count == 1)
-            {
-                //this is a token path part, on its own. This is only legal when there is exactly one path part:
-                //it has to be relative (so no root) and it can't be preceded by anything else (or it would have to be preceded by a sphere
-                AddToken(sphereParts[0]);
-                return;
-            }
-
-            foreach (var spherePart in sphereParts)
-            {
-
-                if (!string.IsNullOrEmpty(spherePart) && !string.IsNullOrWhiteSpace(spherePart))
+       
+                if (sphereParts[0].StartsWith(TOKEN.ToString()) && sphereParts.Count == 1)
                 {
-                    string[] mightBeSphereAndSituation = spherePart.Split(TOKEN);
-                    if (mightBeSphereAndSituation.Length > 1)
-                        AddSphereAndToken(mightBeSphereAndSituation[0], mightBeSphereAndSituation[1]);
-                    else
-                        AddSphere(mightBeSphereAndSituation[0]);
+                    //this is a token path part, on its own. This is only legal when there is exactly one path part:
+                    //it has to be relative (so no root) and it can't be preceded by anything else (or it would have to be preceded by a sphere
+                    AddToken(sphereParts[0]);
+                    return;
                 }
-            }
+
+                foreach (var spherePart in sphereParts)
+                {
+
+                    if (!string.IsNullOrEmpty(spherePart) && !string.IsNullOrWhiteSpace(spherePart))
+                    {
+                        string[] mightBeSphereAndSituation = spherePart.Split(TOKEN);
+                        if (mightBeSphereAndSituation.Length > 1)
+                            AddSphereAndToken(mightBeSphereAndSituation[0], mightBeSphereAndSituation[1]);
+                        else
+                            AddSphere(mightBeSphereAndSituation[0]);
+                    }
+                }
+            
+
         }
 
         private void AddToken(string token)
@@ -200,5 +244,9 @@ namespace SecretHistories.Fucine
             PathParts.Add(new RootPathPart());
         }
 
+        public static FucinePath Current()
+        {
+            return new FucinePath(CURRENT.ToString());
+        }
     }
 }
