@@ -8,6 +8,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using Assets.Logic;
+using Assets.Scripts.Application.Fucine;
 using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
 using Assets.Scripts.Application.Spheres;
 using SecretHistories.Abstract;
@@ -86,7 +87,7 @@ namespace SecretHistories.Spheres
         protected AngelFlock flock = new AngelFlock();
 
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
-        public FucinePath ParentPath { get; protected set; }= FucinePath.Root();
+        public FucinePath Path { get; protected set; }=new NullFucinePath();
 
         private Dictionary<FucinePath, Vector3> referencePositions=new Dictionary<FucinePath, Vector3>();
 
@@ -134,20 +135,21 @@ namespace SecretHistories.Spheres
 
         public virtual void Awake()
         {
+            Path = FucinePath.Root().AppendPath(SphereIdentifier); //default; will be overridden if the sphere is instantiated, rather than created in the editor
+
             Catalogue.RegisterSphere(
                 this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
-        public virtual void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec, FucinePath pathForThisThreshold)
+        public virtual void SpecifyPath(FucinePath path)
         {
-            throw new NotImplementedException(); //there's some uncertainty about when the path is based on spherespec and when it's based on SpherePath. Specific behaviour is overridden for notesspheres and thresholdspheres, but I need to make it all more consistent.
+            Path = path;
         }
 
-        public void SetSituationPath(FucinePath tokenPath)
+        public virtual void ApplySpec(SphereSpec spec)
         {
-            ParentPath = tokenPath;
+            GoverningSphereSpec = spec;
         }
-
 
         public virtual bool Retire(SphereRetirementType sphereRetirementType)
         {
@@ -296,7 +298,7 @@ namespace SecretHistories.Spheres
 
         public virtual FucinePath GetPath()
         {
-            return ParentPath.AppendPath(SphereIdentifier);
+            return Path.AppendPath(SphereIdentifier);
         }
 
         public virtual void OnDestroy()
@@ -723,6 +725,13 @@ namespace SecretHistories.Spheres
                 canvasGroup.blocksRaycasts = true;
                 canvasGroup.interactable = true;
             }
+        }
+
+        public void MoveToPayload(ITokenPayload payload)
+        {
+            var payloadPath = payload.Path;
+            var immediateRelativePath=new FucinePath(Path.EndingPathPart);
+            Path = payloadPath.AppendPath(immediateRelativePath);
         }
     }
 

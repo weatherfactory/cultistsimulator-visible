@@ -188,7 +188,7 @@ namespace SecretHistories.Entities {
         public void AttachSphere(Sphere sphere)
         {
             sphere.Subscribe(this);
-            sphere.SetSituationPath(Path);
+            sphere.MoveToPayload(this);
             _spheres.Add(sphere);
         }
 

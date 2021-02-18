@@ -12,6 +12,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.UI;
 using SecretHistories.Enums;
+using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
 
 
@@ -55,6 +56,7 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     [FucineList]
    public List<AngelSpecification> Angels { get; set; }
 
+   public Type SphereType { get; set; } = typeof(ThresholdSphere); //this is the default.
 
    public bool AllowAnyToken { get; set; }
 

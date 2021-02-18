@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.Application.Spheres.SphereSpecIdentifierStrategies;
+
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
 using SecretHistories.Commands.SituationCommands;
@@ -25,13 +25,14 @@ namespace Assets.Scripts.Application.Meta
 
        public void Awake()
        {
-           var sphereSphec = new SphereSpec(new PrimaryThresholdSphereSpecIdentifierStrategy());
+           var sphereSphec = new SphereSpec(new LegacyPrimaryThresholdSphereSpecIdentifierStrategy());
            sphereSphec.SetId("situationsmalleary");
            sphereSphec.Label = "Malleary: Situations";
            sphereSphec.AllowAnyToken = true;
-     var spherePath= FucinePath.Root().AppendPath(sphereSphec.Id);
+     var spherePath=FucinePath.Root().AppendPath(sphereSphec.Id);
            
-           _situationDrydock.SetUpWithSphereSpecAndPath(sphereSphec, spherePath);
+     _situationDrydock.SpecifyPath(spherePath);
+           _situationDrydock.ApplySpec(sphereSphec);
 
 
            _situationDrydock.Subscribe(this);

@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Application.Spheres
+﻿namespace SecretHistories.Spheres
 {
     public class NotesSphereSpecIdentifierStrategy: AbstractSphereSpecIdentifierStrategy
     {

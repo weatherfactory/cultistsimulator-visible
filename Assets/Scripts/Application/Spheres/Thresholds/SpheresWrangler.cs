@@ -18,9 +18,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace SecretHistories.UI {
-    public class SpheresWrangler : MonoBehaviour,ISphereEventSubscriber {
+    public class SpheresWrangler  : MonoBehaviour, ISphereEventSubscriber
+    {
 
-        public Sphere SpherePrefab;
         [SerializeField] private AbstractSphereArrangement sphereArrangement;
 
         public readonly OnSphereAddedEvent OnSphereAdded = new OnSphereAddedEvent();
@@ -37,16 +37,16 @@ namespace SecretHistories.UI {
         /// Removes any existing thresholds, so we only ever have one primary
         /// </summary>
         /// <param name="sphereSpec"></param>
-        /// <param name="tokenPath"></param>
+        /// <param name="parentPath"></param>
         /// <param name="verb"></param>
         /// <returns></returns>
-        public virtual Sphere BuildPrimarySphere(SphereSpec sphereSpec, FucinePath tokenPath, Verb verb)
+        public virtual Sphere BuildPrimarySphere(SphereSpec sphereSpec, FucinePath parentPath, Verb verb)
         {
             RemoveAllSpheres();
 
             _verb = verb;
 
-            return AddSphere(sphereSpec,tokenPath);
+            return AddSphere(sphereSpec,parentPath);
 
         }
 
@@ -71,10 +71,8 @@ namespace SecretHistories.UI {
 
         protected Sphere AddSphere(SphereSpec sphereSpec,FucinePath parentPath)
         {
-            var newSphere = GameObject.Instantiate(SpherePrefab);
+            var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(sphereSpec, parentPath);
             _spheres.Add(newSphere, parentPath);
-            FucinePath newThresholdPath = parentPath.AppendPath(sphereSpec.Id);
-            newSphere.SetUpWithSphereSpecAndPath(sphereSpec, newThresholdPath);
 
             OnSphereAdded.Invoke(newSphere);
             newSphere.Subscribe(this);

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using Assets.Scripts.Application.Fucine;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using UnityEngine;
@@ -65,6 +66,32 @@ namespace SecretHistories.Services
             var instantiatedPrefab = Object.Instantiate(prefab, parent) as GameObject;
 
             return instantiatedPrefab.GetComponent(manifestationType) as IManifestation;
+        }
+
+        public Sphere InstantiateSphere(SphereSpec spec, FucinePath parentPath)
+        {
+            string loadFromPath = prefabPath + spec.SphereType.Name;
+            var prefab = Resources.Load(loadFromPath);
+            GameObject instantiatedPrefab;
+            try
+            {
+                instantiatedPrefab = Object.Instantiate(prefab) as GameObject;
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log($"Can't instantiate a sphere prefab at path {loadFromPath}; instantiating a generic game object and adding a thresholdsphere component to it");
+                instantiatedPrefab=new GameObject();
+                instantiatedPrefab.AddComponent<ThresholdSphere>();
+            }
+
+            var spherePath = parentPath.AppendPath(spec.Id);
+
+
+            instantiatedPrefab.name = $"{nameof(spec.SphereType)}_{spherePath}";
+            var newSphere = instantiatedPrefab.GetComponent(spec.SphereType) as Sphere;
+            newSphere.SpecifyPath(spherePath);
+            newSphere.ApplySpec(spec);
+            return newSphere;
         }
 
 

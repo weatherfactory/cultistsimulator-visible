@@ -65,6 +65,7 @@ namespace SecretHistories.UI {
         [DontEncaust] virtual public string UniquenessGroup => Element.UniquenessGroup;
         [DontEncaust] virtual public bool Decays => Element.Decays;
         [DontEncaust] public bool IsOpen => false;
+        public FucinePath Path { get {throw new NotImplementedException("haven't finished fucine paths for element stack payloads yet");} }
 
         private Timeshadow _timeshadow;
 

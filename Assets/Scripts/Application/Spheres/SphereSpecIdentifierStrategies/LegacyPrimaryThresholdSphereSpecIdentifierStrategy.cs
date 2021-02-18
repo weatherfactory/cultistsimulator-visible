@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Application.Spheres.SphereSpecIdentifierStrategies
+namespace SecretHistories.Spheres
 {
-    public class PrimaryThresholdSphereSpecIdentifierStrategy: AbstractSphereSpecIdentifierStrategy
+    public class LegacyPrimaryThresholdSphereSpecIdentifierStrategy: AbstractSphereSpecIdentifierStrategy
     {
         private const string PRIMARY_SLOT = "primary"; //this is probably now legacy, but may still be necessary for older saved games.
 

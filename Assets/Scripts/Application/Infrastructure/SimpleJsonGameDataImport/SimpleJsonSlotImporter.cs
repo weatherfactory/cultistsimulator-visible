@@ -9,6 +9,7 @@ using OrbCreationExtensions;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Constants;
+using SecretHistories.Spheres;
 
 namespace Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport
 {

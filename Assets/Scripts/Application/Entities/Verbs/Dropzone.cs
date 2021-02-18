@@ -30,6 +30,8 @@ namespace SecretHistories.Entities.Verbs
         public string Icon => string.Empty;
         [DontEncaust]
         public bool IsOpen => false;
+
+        public FucinePath Path { get { throw new NotImplementedException("haven't finished fucine paths for dropzones yet"); } }
         [DontEncaust] public string Label => "Dropzone";
         [DontEncaust] public string Description => "Description";
         [DontEncaust]

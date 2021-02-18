@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.Application.Spheres.SphereSpecIdentifierStrategies;
+using Assets.Scripts.Application.Spheres;
 using Newtonsoft.Json;
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
@@ -24,12 +24,14 @@ namespace Assets.Scripts.Application.Meta
     {
         [SerializeField] private SpheresWrangler elementDrydockWrangler;
         [SerializeField] private AutoCompletingInput input;
-        private ThresholdSphere _primary;
+        private ThresholdSphere _drydockThresholdSphere;
 
         public void Awake()
         {
-            _primary=elementDrydockWrangler.BuildPrimarySphere(new SphereSpec(new PrimaryThresholdSphereSpecIdentifierStrategy()), FucinePath.Root(), NullVerb.Create()) as ThresholdSphere;
-            _primary.Subscribe(this);
+            var mallearyThresholdSpec = new SphereSpec(new SimpleSphereSpecIdentifierStrategy("elementsmalleary"));
+
+            _drydockThresholdSphere =elementDrydockWrangler.BuildPrimarySphere(mallearyThresholdSpec, FucinePath.Root(), NullVerb.Create()) as ThresholdSphere;
+            _drydockThresholdSphere.Subscribe(this);
         }
 
         public void CreateDrydockedItem()
@@ -50,26 +52,26 @@ namespace Assets.Scripts.Application.Meta
 
                 Context debugContext = new Context(Context.ActionSource.Debug);
 
-                _primary.ModifyElementQuantity(elementId, 1, debugContext);
+                _drydockThresholdSphere.ModifyElementQuantity(elementId, 1, debugContext);
 
-                EncaustDrydockedItem(_primary.GetTokenInSlot(), input);
+                EncaustDrydockedItem(_drydockThresholdSphere.GetTokenInSlot(), input);
             }
         }
 
         public void DestroyDrydockedItem()
         {
-             _primary.GetTokenInSlot().Retire(RetirementVFX.CardTakenShadow);
+             _drydockThresholdSphere.GetTokenInSlot().Retire(RetirementVFX.CardTakenShadow);
         }
 
         public void Mutate()
         {
-            var elementToken = _primary.GetElementTokenInSlot();
+            var elementToken = _drydockThresholdSphere.GetElementTokenInSlot();
             elementToken.Payload.SetMutation(input.text, 1,true);
         }
 
         public void Unmutate()
         {
-            var elementToken = _primary.GetElementTokenInSlot();
+            var elementToken = _drydockThresholdSphere.GetElementTokenInSlot();
             elementToken.Payload.SetMutation(input.text, -1, true);
         }
 

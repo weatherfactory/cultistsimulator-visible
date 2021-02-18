@@ -49,7 +49,7 @@ namespace SecretHistories.Spheres
 
       public override FucinePath GetPath()
       {
-          return ParentPath.AppendPath(_deckSpec?.Id);
+          return Path.AppendPath(_deckSpec?.Id);
       }
 
 

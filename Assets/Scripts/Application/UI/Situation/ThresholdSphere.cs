@@ -55,11 +55,9 @@ namespace SecretHistories.UI
         }
 
 
-        public override void SetUpWithSphereSpecAndPath(SphereSpec sphereSpec, FucinePath pathForThisThreshold)
+        public override void ApplySpec(SphereSpec sphereSpec)
         {
-            GoverningSphereSpec = sphereSpec;
-            _thresholdSpherePath = pathForThisThreshold;
-            gameObject.name = GetPath().ToString();
+            base.ApplySpec(sphereSpec);
 
             SlotLabel.text = sphereSpec.Label;
             if (sphereSpec.Greedy)
@@ -84,7 +82,7 @@ namespace SecretHistories.UI
 
         public override FucinePath GetPath()
         {
-            return ParentPath.AppendPath(_thresholdSpherePath);
+            return Path.AppendPath(_thresholdSpherePath);
 
         }
 
