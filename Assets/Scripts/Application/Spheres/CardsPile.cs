@@ -47,10 +47,6 @@ namespace SecretHistories.Spheres
 
       }
 
-      public override FucinePath GetPath()
-      {
-          return Path.AppendPath(_deckSpec?.Id);
-      }
 
 
   }

@@ -145,11 +145,6 @@ if(stack!=null)
             return GetComponentInChildren<ElementStack>();
         }
 
-        public override FucinePath GetPath()
-        {
-            return Path.AppendPath(portalType.ToString());
-
-        }
 
 #if UNITY_EDITOR
         void OnValidate() {

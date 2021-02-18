@@ -37,10 +37,6 @@ public class SituationStorage : Sphere,ISituationSubscriber
     }
 
 
-    public override FucinePath GetPath()
-    {
-        return Path.AppendPath("storage");
-    }
 
     public override void AcceptToken(Token token, Context context)
     {

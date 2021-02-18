@@ -296,7 +296,7 @@ namespace SecretHistories.Spheres
             incumbentMoved = false;
         }
 
-        public virtual FucinePath GetPath()
+        public FucinePath GetPath()
         {
             return Path.AppendPath(SphereIdentifier);
         }

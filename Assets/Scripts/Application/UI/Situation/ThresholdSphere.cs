@@ -80,12 +80,6 @@ namespace SecretHistories.UI
 
         }
 
-        public override FucinePath GetPath()
-        {
-            return Path.AppendPath(_thresholdSpherePath);
-
-        }
-
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
             if (GoverningSphereSpec.Greedy) // never show glow for greedy slots

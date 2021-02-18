@@ -56,6 +56,16 @@ namespace SecretHistories.UI {
         [Encaust]
         public virtual Dictionary<string,string> Illuminations=>new Dictionary<string, string>(_illuminations);
 
+        [DontEncaust]
+        public FucinePath Path
+        {
+            get
+            {
+                NoonUtility.LogWarning("Fix element path ids; and move paths from payloads to tokens.");
+                return new FucinePath($"{Id}_{Guid.NewGuid()}");
+            }
+        }
+
 
         protected Element Element { get; set; }
         [DontEncaust] virtual public string Label => Element.Label;
@@ -65,7 +75,7 @@ namespace SecretHistories.UI {
         [DontEncaust] virtual public string UniquenessGroup => Element.UniquenessGroup;
         [DontEncaust] virtual public bool Decays => Element.Decays;
         [DontEncaust] public bool IsOpen => false;
-        public FucinePath Path { get {throw new NotImplementedException("haven't finished fucine paths for element stack payloads yet");} }
+        
 
         private Timeshadow _timeshadow;
 
@@ -172,6 +182,7 @@ namespace SecretHistories.UI {
             _aspectsDirtyExc = true;
             _aspectsDirtyInc = true;
             _timeshadow = timeshadow;
+
         }
 
 

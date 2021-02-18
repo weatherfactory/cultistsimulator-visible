@@ -757,7 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
-  SphereIdentifier: 
+  SphereIdentifier: storage
   canvasGroupFader: {fileID: 8454324788978835547}
 --- !u!225 &4521111748551047189
 CanvasGroup:
@@ -1208,8 +1208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
-    type: 3}
   sphereArrangement: {fileID: 4482476914772828801}
 --- !u!1 &1287574504788578
 GameObject:
@@ -2425,7 +2423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpherePrefab: {fileID: 0}
   sphereArrangement: {fileID: 3227254059054473584}
 --- !u!114 &3227254059054473584
 MonoBehaviour:
@@ -2791,8 +2788,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpherePrefab: {fileID: 1127656137174522416, guid: 8315d660ae3773442ac46832ef4f36d4,
-    type: 3}
   sphereArrangement: {fileID: 6070173378976685744}
 --- !u!225 &1223493030995727280
 CanvasGroup:
@@ -3550,8 +3545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
-    type: 3}
   sphereArrangement: {fileID: 8157357256015802240}
 --- !u!225 &225437182253246534
 CanvasGroup:
@@ -3630,7 +3623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
-  SphereIdentifier: 
+  SphereIdentifier: output
   canvasGroupFader: {fileID: 114595233805244828}
   outputPositioning: {fileID: 114962248236931796}
   dumpResultsButtonText: {fileID: 114000013027545752}
@@ -3890,5 +3883,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpherePrefab: {fileID: 0}
   sphereArrangement: {fileID: 1617814118146466013}
