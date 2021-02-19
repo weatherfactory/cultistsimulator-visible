@@ -18,13 +18,13 @@ namespace SecretHistories.NullObjects
             return false;
         }
 
-        public NullSituation(FucinePath path,Verb verb) : base(path,verb)
+        public NullSituation(Verb verb) : base(verb)
         {
         }
 
         public static NullSituation Create()
         {
-            return new NullSituation(FucinePath.Root(),NullVerb.Create());
+            return new NullSituation(NullVerb.Create());
         }
     }
 }

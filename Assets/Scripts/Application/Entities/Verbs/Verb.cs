@@ -68,6 +68,13 @@ namespace SecretHistories.Entities
 
 
 
+        public FucinePath DefaultUniqueRelativeTokenPath()
+        {
+            return new FucinePath($"!{Id}_{Guid.NewGuid()}");
+        }
+
+
+
         public Verb()
         {
 
@@ -78,15 +85,13 @@ namespace SecretHistories.Entities
 
         }
 
- 
+        
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
             if (Slot != null)
                     Thresholds.Add(Slot); //what if this is empty? likely source of trouble later
                 Thresholds.AddRange(Slots);
-
-            
         }
 
     }

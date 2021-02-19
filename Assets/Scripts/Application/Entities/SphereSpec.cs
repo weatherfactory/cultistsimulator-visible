@@ -56,7 +56,7 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     [FucineList]
    public List<AngelSpecification> Angels { get; set; }
 
-   public Type SphereType { get; set; } = typeof(ThresholdSphere); //this is the default.
+   public virtual Type SphereType => typeof(ThresholdSphere); //this is the default. We'll probably want to make this an actual fucine value later
 
    public bool AllowAnyToken { get; set; }
 

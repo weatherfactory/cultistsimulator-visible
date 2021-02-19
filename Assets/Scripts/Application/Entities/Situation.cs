@@ -13,6 +13,7 @@ using SecretHistories.UI;
 using Assets.Logic;
 using Assets.Scripts.Application.Entities;
 using Assets.Scripts.Application.Entities.NullEntities;
+using Assets.Scripts.Application.Fucine;
 using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.Spheres;
 using Newtonsoft.Json;
@@ -56,8 +57,7 @@ namespace SecretHistories.Entities {
         [Encaust]
         public string OverrideTitle { get; set; }
 
-        [Encaust]
-        public FucinePath Path { get; }
+        [Encaust] public FucinePath Path { get; protected set; }
 
         [Encaust]
         public bool IsOpen { get; private set; }
@@ -123,16 +123,14 @@ namespace SecretHistories.Entities {
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         
         private Timeshadow _timeshadow;
-        
 
-
-        public Situation(FucinePath path,Verb verb)
+        public Situation(Verb verb)
         {
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
 
             situationsCatalogue.RegisterSituation(this);
 
-            Path = path;
+            Path = Watchman.Get<SphereCatalogue>().GetDefaultWorldSpherePath().AppendPath(verb.DefaultUniqueRelativeTokenPath());
             Verb = verb;
             Recipe = NullRecipe.Create();
          _currentRecipePrediction=new RecipePrediction(Recipe,AspectsDictionary.Empty());
@@ -141,6 +139,16 @@ namespace SecretHistories.Entities {
             _timeshadow = new Timeshadow(Recipe.Warmup,
                 Recipe.Warmup,
                 false);
+        }
+
+
+        public void SpecifyPath (FucinePath path)
+        {
+            if(path.TokenPath.IsValid())
+                Path = path.TokenPath;
+            else
+                NoonUtility.Log($"Invalid path specified for situation; keeping existing path {Path}");
+
         }
 
         public void TransitionToState(SituationState newState)
@@ -364,7 +372,7 @@ namespace SecretHistories.Entities {
                        NoonUtility.Log($"No notes sphere and no notes dominion found in {Path}: we won't add note {label}, then.");
                         return false;
                    }
-                   var notesSphereSpec=new SphereSpec(new NotesSphereSpecIdentifierStrategy(0));
+                   var notesSphereSpec=new NotesSphereSpec(0);
                    emptyNoteSphere=notesDominion.CreatePrimarySphere(notesSphereSpec);
                }
             }
@@ -379,7 +387,7 @@ namespace SecretHistories.Entities {
             newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, description);
 
             var tokenCreationCommand =
-                new TokenCreationCommand(newNoteCommand, TokenLocation.Default().WithSphere(emptyNoteSphere));
+                new TokenCreationCommand(newNoteCommand, TokenLocation.Default(emptyNoteSphere.Path));
 
             tokenCreationCommand.Execute(context);
 

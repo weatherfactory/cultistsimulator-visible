@@ -57,7 +57,8 @@ namespace Assets.Scripts.Application.Meta
            SituationCreationCommand newSituationCommand;
            if (recipe.IsValid())
            {
-                newSituationCommand = new SituationCreationCommand(recipe.ActionId, new FucinePath(recipe.ActionId)).WithRecipeId(recipe.Id).AlreadyInState(StateEnum.Ongoing);
+               var rPath = _situationDrydock.Path.AppendPath(recipe.ActionId);
+                newSituationCommand = new SituationCreationCommand(recipe.ActionId, rPath).WithRecipeId(recipe.Id).AlreadyInState(StateEnum.Ongoing);
                 //assuming we want the whole lifetime of the recipe
                   newSituationCommand.TimeRemaining = recipe.Warmup;
            }
@@ -71,7 +72,7 @@ namespace Assets.Scripts.Application.Meta
                else
                    return;
            }
-           var newTokenLocation = new TokenLocation(0f, 0f, 0f, _situationDrydock.GetPath());
+           var newTokenLocation = new TokenLocation(0f, 0f, 0f, _situationDrydock.Path);
            var newTokenCommand = new TokenCreationCommand(newSituationCommand, newTokenLocation);
            newTokenCommand.Execute(new Context(Context.ActionSource.Debug));
 

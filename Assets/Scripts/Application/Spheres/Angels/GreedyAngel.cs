@@ -87,7 +87,7 @@ namespace SecretHistories.Spheres.Angels
         private Vector3 GetTargetPositionForDestinationSphere(Sphere destinationThresholdSphere,Token matchingToken)
         {
 
-            var tokenCurrentSpherePath = matchingToken.Sphere.GetPath();
+            var tokenCurrentSpherePath = matchingToken.Sphere.Path;
             var targetPosition = destinationThresholdSphere.GetReferencePosition(tokenCurrentSpherePath);
             return targetPosition;
         }

@@ -10,6 +10,8 @@ namespace Assets.Scripts.Application.Entities
 {
     public class NotesSphereSpec: SphereSpec
     {
+        public override Type SphereType => typeof(NotesSphere);
+
         public NotesSphereSpec(int index): base(new NotesSphereSpecIdentifierStrategy(index))
         {
             

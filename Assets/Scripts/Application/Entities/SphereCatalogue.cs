@@ -109,7 +109,7 @@ namespace SecretHistories.Entities {
                 throw new ApplicationException($"trying to find a sphere with sphere path {spherePath.ToString()}, but that's not an absolute path, and no context was provided");
             try
             {
-                var specifiedSphere = _spheres.SingleOrDefault(c => c.GetPath() == spherePath);
+                var specifiedSphere = _spheres.SingleOrDefault(c => c.Path == spherePath);
                 if (specifiedSphere == null)
                 {
                     if (spherePath == GetDefaultWorldSpherePath())

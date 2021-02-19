@@ -104,7 +104,7 @@ namespace SecretHistories.Entities
             var commands = new List<TokenCreationCommand>();
 
             SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId, new FucinePath(StartingVerbId));
-            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, TokenLocation.Default().WithSpherePath(tabletopSpherePath));
+            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, TokenLocation.Default(tabletopSpherePath));
             commands.Add(startingTokenCommand);
 
             AspectsDictionary startingElements = new AspectsDictionary();
@@ -113,7 +113,7 @@ namespace SecretHistories.Entities
             foreach (var e in startingElements)
             {
                 var elementStackCreationCommand = new ElementStackCreationCommand(e.Key, e.Value);
-                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default().WithSpherePath(tabletopSpherePath));
+                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default(tabletopSpherePath));
                 commands.Add(startingStackCommand);
             }
 

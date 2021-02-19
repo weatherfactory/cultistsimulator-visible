@@ -143,7 +143,10 @@ namespace SecretHistories.Spheres
 
         public virtual void SpecifyPath(FucinePath path)
         {
-            Path = path;
+            if (path.SpherePath.IsValid())
+                Path = path.SpherePath;
+            else
+                NoonUtility.Log($"Invalid path specified for sphere; keeping existing path {Path}");
         }
 
         public virtual void ApplySpec(SphereSpec spec)
@@ -294,11 +297,6 @@ namespace SecretHistories.Spheres
         {
             // By default: do no move-aside
             incumbentMoved = false;
-        }
-
-        public FucinePath GetPath()
-        {
-            return Path.AppendPath(SphereIdentifier);
         }
 
         public virtual void OnDestroy()
@@ -681,7 +679,7 @@ namespace SecretHistories.Spheres
         /// <param name="referenceLocation"></param>
         public void SetReferencePosition(TokenLocation referenceLocation)
         {
-            if (referenceLocation.AtSpherePath != this.GetPath())
+            if (referenceLocation.AtSpherePath != this.Path)
             {
                 if (referencePositions.ContainsKey(referenceLocation.AtSpherePath))
                     referencePositions[referenceLocation.AtSpherePath] = referenceLocation.Anchored3DPosition;

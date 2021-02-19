@@ -32,7 +32,7 @@ namespace SecretHistories.Spheres.Angels
 
         public void SetWatch(Sphere sphere)
         {
-            _tidyToPath = sphere.GetPath();
+            _tidyToPath = sphere.Path;
         }
 
         public bool MinisterToEvictedToken(Token token, Context context)

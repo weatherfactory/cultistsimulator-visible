@@ -50,9 +50,9 @@ namespace SecretHistories.UI {
             get
             {
                 if (TokenRectTransform !=null && !TokenRectTransform.Equals(null))
-                    return new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.GetPath());
+                    return new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.Path);
                 else
-                    return TokenLocation.Default();
+                    return TokenLocation.Default(Sphere.Path);
             }
         }
         [DontEncaust]

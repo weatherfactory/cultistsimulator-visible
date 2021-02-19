@@ -18552,8 +18552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
-    type: 3}
   sphereArrangement: {fileID: 1112824096}
 --- !u!114 &1112824096
 MonoBehaviour:
@@ -19549,7 +19547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -5.0000305}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1243788745
@@ -22091,7 +22089,7 @@ GameObject:
   - component: {fileID: 1610149765}
   - component: {fileID: 1610149766}
   m_Layer: 5
-  m_Name: EnRouteTokenContainer
+  m_Name: EnRouteSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25370,7 +25368,7 @@ PrefabInstance:
     - target: {fileID: 1784779315677875502, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.0000305
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 1784779315865869679, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
         type: 3}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -48,7 +49,7 @@ namespace Assets.Scripts.Application.Spheres
 
         public override List<SphereSpec> GetChildSpheresSpecsToAddIfThisTokenAdded(Token t, SpheresWrangler s)
         {
-            var sphereSpec = new SphereSpec(new NotesSphereSpecIdentifierStrategy(s.GetSpheresCurrentlyWrangledCount()));
+            var sphereSpec = new NotesSphereSpec(s.GetSpheresCurrentlyWrangledCount());
             var sphereSpecList=new List<SphereSpec>();
 
             sphereSpecList.Add(sphereSpec);

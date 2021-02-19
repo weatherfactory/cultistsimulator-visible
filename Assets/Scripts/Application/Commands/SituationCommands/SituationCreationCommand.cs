@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Application.Commands;
+using Assets.Scripts.Application.Fucine;
 using Assets.Scripts.Application.Interfaces;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
@@ -36,15 +37,15 @@ namespace SecretHistories.Commands
 
         public SituationCreationCommand()
         {
-
+            StateForRehydration = StateEnum.Unknown;
+            CommandQueue = new SituationCommandQueue();
+            Path=new NullFucinePath();
         }
 
-        public SituationCreationCommand(string verbId, FucinePath path)
+        public SituationCreationCommand(string verbId, FucinePath path): this()
         {
             VerbId = verbId;
             Path = path;
-            StateForRehydration = StateEnum.Unknown;
-            CommandQueue = new SituationCommandQueue();
         }
 
         public SituationCreationCommand WithRecipeId(string withRecipeId)   
@@ -75,11 +76,21 @@ namespace SecretHistories.Commands
                     return NullSituation.Create();
             }
 
-            if (!Path.IsValid())
-                throw new ApplicationException($"trying to create a situation with an invalid path: '{Path}'");
 
+            
+            Situation newSituation = new Situation(verb);
 
-            Situation newSituation = new Situation(Path, verb);
+            if (Path.IsValid() && !Path.IsAbsolute())
+                newSituation.SpecifyPath(Path);
+            else
+            {
+                if (!Path.IsAbsolute())
+                    throw new ApplicationException($"trying to create a situation with a relative path: '{Path}'");
+                else
+                    throw new ApplicationException($"trying to create a situation with an invalid path: '{Path}'");
+                
+            }
+            
             newSituation.State = SituationState.Rehydrate(StateForRehydration, newSituation);
 
             newSituation.ActivateRecipe(recipe);

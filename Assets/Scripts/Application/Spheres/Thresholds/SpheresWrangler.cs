@@ -88,17 +88,17 @@ namespace SecretHistories.UI {
 
             foreach (var childSlotSpecification in childSlotSpecs)
             {
-                AddSphere(childSlotSpecification, sphere.GetPath());
+                AddSphere(childSlotSpecification, sphere.Path);
             }
         }
         
         private void RemoveChildSpheres(Sphere sphereToOrphan)
         {
             if(sphereToOrphan.GetElementStacks().Any())
-                NoonUtility.LogWarning($"This code currently assumes thresholds can only contain one stack token. One ({sphereToOrphan.GetElementStacks().First().Id}) has been removed from {sphereToOrphan.GetPath()}, but at least one remains - you may see unexpected results.");
+                NoonUtility.LogWarning($"This code currently assumes thresholds can only contain one stack token. One ({sphereToOrphan.GetElementStacks().First().Id}) has been removed from {sphereToOrphan.Path}, but at least one remains - you may see unexpected results.");
 
             var spheresToRemove =
-                new List<Sphere>(_spheres.Where(kvp=>kvp.Value.Equals(sphereToOrphan.GetPath())).Select(kvp=>kvp.Key));
+                new List<Sphere>(_spheres.Where(kvp=>kvp.Value.Equals(sphereToOrphan.Path)).Select(kvp=>kvp.Key));
             foreach(var s in spheresToRemove)
                 RemoveSphere(s);
         }

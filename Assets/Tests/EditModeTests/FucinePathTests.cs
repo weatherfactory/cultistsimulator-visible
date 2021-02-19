@@ -156,11 +156,6 @@ namespace Assets.Tests.EditModeTests
             Assert.IsFalse(nullStringPath.IsValid());
         }
 
-        [Test]
-        public void Current_DoesSomethingSensible()
-        {
-            throw new NotImplementedException();
-        }
 
         [Test]
         public void EqualityTestWorksForFucinePaths()
