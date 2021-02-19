@@ -12,21 +12,7 @@ namespace SubEncaustingTests
 [TestFixture]
 public class SubEncaustingTests
 {
-    [Test]
-    public void EncaustableProperty_WhichIsItselfAnEncaustableObject_IsEncaustedToSubCommand()
-    {
-        var encaustery = new Encaustery<OuterCommandX>();
-        var x1=new OuterEncaustableX();
-        var x2=new InnerEncaustableX();
-        var x3=new InmostEncaustableX();
-        x1.MarkedProperty = x2;
-        x2.MarkedProperty = x3;
 
-       var outerCommand= encaustery.Encaust(x1);
-        Assert.IsInstanceOf<InnerCommandX>(outerCommand.MarkedProperty);
-        Assert.IsInstanceOf<InmostCommandX>(outerCommand.MarkedProperty.MarkedProperty);
-
-    }
 
     public class OuterCommandX: IEncaustment
     {
@@ -62,6 +48,22 @@ public class SubEncaustingTests
     {
         [Encaust]
         public string MarkedProperty { get; set; }
+    }
+
+    [Test]
+    public void EncaustableProperty_WhichIsItselfAnEncaustableObject_IsEncaustedToSubCommand()
+    {
+        var encaustery = new Encaustery<OuterCommandX>();
+        var x1 = new OuterEncaustableX();
+        var x2 = new InnerEncaustableX();
+        var x3 = new InmostEncaustableX();
+        x1.MarkedProperty = x2;
+        x2.MarkedProperty = x3;
+
+        var outerCommand = encaustery.Encaust(x1);
+        Assert.IsInstanceOf<InnerCommandX>(outerCommand.MarkedProperty);
+        Assert.IsInstanceOf<InmostCommandX>(outerCommand.MarkedProperty.MarkedProperty);
+
     }
     }
 }

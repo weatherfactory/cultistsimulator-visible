@@ -34,14 +34,14 @@ namespace SecretHistories.Infrastructure.Persistence
         {
 
             var characters = stable.GetAllCharacters();
-            var rootSpheres = sphereCatalogue.GetSpheres();
+            var rootSpheres = sphereCatalogue.GetRootSpheres();
 
+            
          //spheres can contain tokens, but tokens (eg Situations) can also contain spheres.
          //only spheres in the root (level=0) are never in tokens.
          //so we only attempt to encaust tokens in level 0 spheres directly. All others should be encausted via creation commands in their tokens.
-         //this also means thresholdcreationcommands should specify the elements in them at creation, but we'll come back to that.
-         //BUT WAIT all spheres have situationpaths. Does that make our life easier? 'encaust non-root situations?'
-         //it does for now, rather than reworking the whole path mechanism. I'm not sure whether I want to keep two forms of address tho
+         
+         //TODO: So now we're going to go away and make sure recursive encaustment works!
 
 
             _persistedGameState =new PersistedGameState();

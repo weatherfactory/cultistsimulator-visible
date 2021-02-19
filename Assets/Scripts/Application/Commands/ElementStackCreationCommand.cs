@@ -28,6 +28,7 @@ namespace SecretHistories.Commands
         public Dictionary<string,string> Illuminations { get; set; }
         public bool Defunct { get; set; }
         public float LifetimeRemaining { get; set; }
+        public List<SphereCreationCommand> SphereCreationCommands { get; set; } = new List<SphereCreationCommand>();
 
         public ElementStackCreationCommand(): this(string.Empty,0)
         {}
@@ -68,6 +69,7 @@ namespace SecretHistories.Commands
             
             return elementStack;
         }
+
 
     }
 }

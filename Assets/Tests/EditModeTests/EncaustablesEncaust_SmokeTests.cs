@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Assets.Scripts.Application.Commands;
 using Assets.Scripts.Application.Entities.NullEntities;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
@@ -28,8 +29,8 @@ using Object = UnityEngine.Object;
             Watchman.ForgetEverything();
             var sphereObject = new GameObject();
             sphere = sphereObject.AddComponent<NullSphere>();
+        }
 
-    }
         [Test]
         public void DeckInstance_Encausts()
         {
@@ -82,6 +83,7 @@ using Object = UnityEngine.Object;
             situationEncaustery.Encaust(situation);
         }
 
+    
     [Test]
         public void SituationToken_Encausts()
         {
@@ -96,7 +98,23 @@ using Object = UnityEngine.Object;
            encaustery.Encaust(token);
         }
 
+
+
         [Test]
+        public void SituationToken_EncaustsWithMemberSpheres()
+        {
+            var encaustery=new Encaustery<TokenCreationCommand>();
+        var tokenObject = new GameObject();
+        var token = tokenObject.AddComponent<Token>();
+
+        var situation = new Situation(NullVerb.Create(), new FucinePath("./s1!t1"));
+        sphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
+        token.SetPayload(situation);
+
+        var encaustedToken= encaustery.Encaust(token);
+        }
+
+    [Test]
         public void DropzoneToken_Encausts()
         {
             var encaustery = new Encaustery<DropzoneCreationCommand>();
