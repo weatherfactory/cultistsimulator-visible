@@ -12,9 +12,27 @@ namespace SubEncaustingTests
 [TestFixture]
 public class SubEncaustingTests
 {
+    [IsEncaustableClass(typeof(OuterCommandX))]
+    public class OuterEncaustableX : IEncaustable
+    {
+        [Encaust]
+        public InnerEncaustableX MarkedProperty { get; set; }
+    }
 
+    [IsEncaustableClass(typeof(InnerCommandX))]
+    public class InnerEncaustableX : IEncaustable
+    {
+        [Encaust]
+        public InmostEncaustableX MarkedProperty { get; set; }
+    }
+    [IsEncaustableClass(typeof(InmostCommandX))]
+    public class InmostEncaustableX : IEncaustable
+    {
+        [Encaust]
+        public string MarkedProperty { get; set; }
+    }
 
-    public class OuterCommandX: IEncaustment
+        public class OuterCommandX: IEncaustment
     {
         public InnerCommandX MarkedProperty { get; set; }
     }
@@ -27,30 +45,33 @@ public class SubEncaustingTests
     public class InmostCommandX:IEncaustment
     {
         public string MarkedProperty { get; set; }
-
     }
 
-    [IsEncaustableClass(typeof(OuterCommandX))]
-    public class OuterEncaustableX : IEncaustable
+
+    [IsEncaustableClass(typeof(OuterCommandY))]
+    public class OuterEncaustableY : IEncaustable
     {
-        [Encaust]
-        public InnerEncaustableX MarkedProperty { get; set; }
+        public List<InnerEncaustableY> MarkedListProperty = new List<InnerEncaustableY>();
     }
 
-    [IsEncaustableClass(typeof(InnerCommandX))]
-    public class InnerEncaustableX: IEncaustable
-        {
-            [Encaust]
-            public InmostEncaustableX MarkedProperty { get; set; }
-        }
-    [IsEncaustableClass(typeof(InmostCommandX))]
-    public class InmostEncaustableX: IEncaustable
+    [IsEncaustableClass(typeof(InnerCommandY))]
+    public class InnerEncaustableY : IEncaustable
     {
         [Encaust]
         public string MarkedProperty { get; set; }
     }
 
-    [Test]
+        public class OuterCommandY : IEncaustment
+    {
+        public List<InnerCommandX> MarkedListProperty { get; set; }
+    }
+
+        public class InnerCommandY : IEncaustment
+        {
+            public string MarkedProperty { get; set; }
+        }
+
+        [Test]
     public void EncaustableProperty_WhichIsItselfAnEncaustableObject_IsEncaustedToSubCommand()
     {
         var encaustery = new Encaustery<OuterCommandX>();
@@ -65,5 +86,22 @@ public class SubEncaustingTests
         Assert.IsInstanceOf<InmostCommandX>(outerCommand.MarkedProperty.MarkedProperty);
 
     }
+
+    [Test]
+    public void EncaustableProperty_WhichIsAListOfEncaustableObjects_IsEncaustedToSubCommand()
+        {
+        var encaustery = new Encaustery<OuterCommandY>();
+        var y1=new OuterEncaustableY();
+        var innery1=new InnerEncaustableY{MarkedProperty = "1"};
+        var innery2 = new InnerEncaustableY { MarkedProperty = "2" };
+            y1.MarkedListProperty.Add(innery1);
+            y1.MarkedListProperty.Add(innery2);
+            
+        var outerCommand = encaustery.Encaust(y1);
+        Assert.AreEqual("1",outerCommand.MarkedListProperty[0].MarkedProperty);
+        Assert.AreEqual("2", outerCommand.MarkedListProperty[1].MarkedProperty);
+
+        }
+
     }
 }

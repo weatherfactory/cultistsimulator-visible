@@ -176,8 +176,9 @@ public class EncaustedCommandX:IEncaustment
 {
     public int MarkedProperty { get; set; }
     public int OtherMarkedProperty { get; set; }
-    
 
 }
+
+
 
 }

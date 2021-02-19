@@ -98,6 +98,15 @@ using Object = UnityEngine.Object;
            encaustery.Encaust(token);
         }
 
+        [Test]
+        public void Sphere_Encausts()
+        {
+            var encaustery = new Encaustery<SphereCreationCommand>();
+        var sphereObject = new GameObject();
+        sphere = sphereObject.AddComponent<ThresholdSphere>();
+
+        encaustery.Encaust(sphere);
+        }
 
 
         [Test]
@@ -112,6 +121,7 @@ using Object = UnityEngine.Object;
         token.SetPayload(situation);
 
         var encaustedToken= encaustery.Encaust(token);
+        Assert.AreEqual(situation.Spheres.Count, encaustedToken.Payload.Spheres);
         }
 
     [Test]

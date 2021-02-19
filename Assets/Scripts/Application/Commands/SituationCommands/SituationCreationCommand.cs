@@ -32,7 +32,7 @@ namespace SecretHistories.Commands
         public FucinePath Path { get; set; }
         public bool IsOpen { get; set; }
         public List<Token> TokensToMigrate=new List<Token>();
-        public List<SphereCreationCommand> SphereCreationCommands { get; set; }=new List<SphereCreationCommand>();
+        public List<SphereCreationCommand> Spheres { get; set; }=new List<SphereCreationCommand>();
 
         public SituationCommandQueue CommandQueue { get; set; }=new SituationCommandQueue();
 

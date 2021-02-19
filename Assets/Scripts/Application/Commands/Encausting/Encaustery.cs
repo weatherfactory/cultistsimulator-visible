@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -115,12 +116,13 @@ namespace SecretHistories.Commands
             {
                 var commandPropertyToSet = typeof(T).GetProperty(encaustableProperty.Name);
 
+                //is the property we're trying to encaust itself an encaustable entity in its own right? if so, do it as an inner command
                 if (typeof(IEncaustable).IsAssignableFrom(encaustableProperty.PropertyType))
                 {
                     object innerEncaustedCommand = encaustPropertyAsCommandInItsOwnRight(encaustable, encaustableProperty);
                         commandPropertyToSet.SetValue(command, innerEncaustedCommand);
                 }
-
+                
                 else
                     commandPropertyToSet.SetValue(command, encaustableProperty.GetValue(encaustable));
 
@@ -130,6 +132,7 @@ namespace SecretHistories.Commands
 
             return command;
         }
+
 
         private object encaustPropertyAsCommandInItsOwnRight(IEncaustable outerEncaustable, PropertyInfo innerEncaustableAsProperty)
         {

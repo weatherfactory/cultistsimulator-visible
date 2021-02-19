@@ -11,6 +11,6 @@ namespace SecretHistories.Abstract
     public interface ITokenPayloadCreationCommand
     {
         public ITokenPayload Execute(Context context);
-        public List<SphereCreationCommand> SphereCreationCommands { get; }
+        public List<SphereCreationCommand> Spheres { get; }
     }
 }

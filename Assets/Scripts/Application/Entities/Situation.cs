@@ -60,6 +60,12 @@ namespace SecretHistories.Entities {
         [Encaust] public FucinePath Path { get; protected set; }
 
         [Encaust]
+        public List<Sphere> Spheres
+        {
+            get { return new List<Sphere>(_spheres); }
+        }
+
+        [Encaust]
         public bool IsOpen { get; private set; }
 
         [Encaust]
@@ -246,10 +252,7 @@ namespace SecretHistories.Entities {
 
 
 
-        public List<Sphere> GetSpheres()
-        {
-            return new List<Sphere>(_spheres);
-        }
+
 
 
         public List<Sphere> GetSpheresActiveForCurrentState()
@@ -762,7 +765,7 @@ namespace SecretHistories.Entities {
 
         public void OnTokenMoved(TokenLocation toLocation)
         {
-            foreach (var sphere in GetSpheres())
+            foreach (var sphere in Spheres)
                 sphere.SetReferencePosition(toLocation);
         }
 

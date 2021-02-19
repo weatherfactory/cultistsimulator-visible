@@ -12,7 +12,7 @@ namespace SecretHistories.Commands
     public class DropzoneCreationCommand: ITokenPayloadCreationCommand,IEncaustment
     {
 
-        public List<SphereCreationCommand> SphereCreationCommands { get; set; } = new List<SphereCreationCommand>();
+        public List<SphereCreationCommand> Spheres { get; set; } = new List<SphereCreationCommand>();
 
         public ITokenPayload Execute(Context context)
         {

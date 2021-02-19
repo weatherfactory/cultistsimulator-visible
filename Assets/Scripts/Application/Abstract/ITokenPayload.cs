@@ -8,6 +8,7 @@ using SecretHistories.Commands;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace SecretHistories.Abstract
         bool IsOpen { get;}
 
         public FucinePath Path { get; }
+        public List<Sphere> Spheres { get; }
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValidElementStack();

@@ -12,6 +12,7 @@ using SecretHistories.UI;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Logic;
 using SecretHistories.Services;
+using SecretHistories.Spheres;
 
 namespace SecretHistories.Entities.Verbs
 {
@@ -32,6 +33,11 @@ namespace SecretHistories.Entities.Verbs
         public bool IsOpen => false;
         [DontEncaust]
         public FucinePath Path { get { throw new NotImplementedException("haven't finished fucine paths for dropzones yet"); } }
+        [Encaust]
+        public List<Sphere> Spheres
+        {
+            get { return new List<Sphere>(); }
+        }
         [DontEncaust] public string Label => "Dropzone";
         [DontEncaust] public string Description => "Description";
         [DontEncaust]

@@ -54,19 +54,34 @@ namespace SecretHistories.Spheres
         }
     }
 
+    [IsEncaustableClass(typeof(SphereCreationCommand))]
     public abstract class 
-        Sphere : MonoBehaviour
+        Sphere : MonoBehaviour,IEncaustable
     {
+        [Encaust]
+        public SphereSpec GoverningSphereSpec { get; set; } = new SphereSpec(new SimpleSphereSpecIdentifierStrategy("unspecified"));
+        [Encaust]
+        public FucinePath Path { get; protected set; } = new NullFucinePath();
 
+        [Encaust]
+        public bool Defunct { get; protected set; }
+
+        [DontEncaust]
         public virtual bool AllowDrag { get; private set; }
+        [DontEncaust]
         public virtual bool AllowStackMerge => true;
+        [DontEncaust]
         public virtual bool PersistBetweenScenes => false;
+        [DontEncaust]
         public virtual bool EnforceUniqueStacksInThisContainer => true;
+        [DontEncaust]
         public virtual bool ContentsHidden => false;
+        [DontEncaust]
         public virtual bool IsGreedy => false;
+        [DontEncaust]
         public virtual float TokenHeartbeatIntervalMultiplier => 0;
         public abstract SphereCategory SphereCategory { get; }
-        public SphereSpec GoverningSphereSpec { get; set; } = new SphereSpec(new SimpleSphereSpecIdentifierStrategy("unspecified"));
+        
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
         public GameObject GreedyIcon;
         public GameObject ConsumingIcon;
@@ -79,15 +94,14 @@ namespace SecretHistories.Spheres
         [Tooltip("Use this to specify the final part of a SpherePath in the editor")] [SerializeField]
         protected string SphereIdentifier;
         
-
-        public bool Defunct { get; protected set; }
+ 
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
         protected SphereCatalogue _catalogue;
         protected readonly List<Token> _tokens = new List<Token>();
         protected AngelFlock flock = new AngelFlock();
 
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
-        public FucinePath Path { get; protected set; }=new NullFucinePath();
+
 
         private Dictionary<FucinePath, Vector3> referencePositions=new Dictionary<FucinePath, Vector3>();
 

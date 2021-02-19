@@ -65,6 +65,11 @@ namespace SecretHistories.UI {
                 return new FucinePath($"{Id}_{Guid.NewGuid()}");
             }
         }
+        [Encaust]
+        public List<Sphere> Spheres
+        {
+            get { return new List<Sphere>(); }
+        }
 
 
         protected Element Element { get; set; }
