@@ -33,7 +33,7 @@ namespace SecretHistories.Commands
 
         private Type GetActualEncaustableType(IEncaustable encaustable)
         {
-            var encaustableAttribute = GetEncaustableClassAttributeFromEncaustableInstance(encaustable);
+            var encaustableAttribute = GetEncaustableClassAttributeFromType(encaustable.GetType());
             if (encaustableAttribute != null)
                 return encaustable.GetType();
 
@@ -48,7 +48,7 @@ namespace SecretHistories.Commands
         private void ThrowExceptionIfEncaustmentAttributesAreHinky(IEncaustable encaustable,Type specifiedGenericCommandType)
         {
             //is this an encaustable class?g
-            var isEncaustableClassAttribute = GetEncaustableClassAttributeFromEncaustableInstance(encaustable);
+            var isEncaustableClassAttribute = GetEncaustableClassAttributeFromType(CachedEncaustableType);
 
             if(isEncaustableClassAttribute==null)
                 throw new ApplicationException($"{CachedEncaustableType} can't be encausted: it isn't marked with the IsEncaustableClass attribute");
