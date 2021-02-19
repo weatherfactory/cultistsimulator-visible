@@ -101,7 +101,7 @@ namespace Assets.Tests.EditModeTests
         public void FucinePath_WithTokenXAtEndOfList_ReturnsPathUpToXAsToken()
         {
             var pathWithTokenAtEnd=new FucinePath("./spherez!tokenx");
-            Assert.AreEqual("./spherez!tokenx", pathWithTokenAtEnd.TokenPath.ToString());
+            Assert.AreEqual("./spherez!tokenx", pathWithTokenAtEnd.GetTokenPath().ToString());
             
         }
 
@@ -109,7 +109,7 @@ namespace Assets.Tests.EditModeTests
         public void FucinePath_WithSphereAtEndOfList_ReturnsPathUpToPreviousToken_AsToken()
         {
             var pathWithSphereAtEnd=new FucinePath("./spherez!tokenx/spherey");
-            Assert.AreEqual("./spherez!tokenx",pathWithSphereAtEnd.TokenPath.ToString());
+            Assert.AreEqual("./spherez!tokenx",pathWithSphereAtEnd.GetTokenPath().ToString());
 
         }
 
@@ -117,7 +117,7 @@ namespace Assets.Tests.EditModeTests
         public void FucinePath_WithSphereYAtEndOfList_ReturnsPathUpToYAsSphere()
         {
             var pathWithSphereAtEnd = new FucinePath("./spherez!tokenx/spherey");
-            Assert.AreEqual("./spherez!tokenx/spherey",pathWithSphereAtEnd.SpherePath.ToString());
+            Assert.AreEqual("./spherez!tokenx/spherey",pathWithSphereAtEnd.GetSpherePath().ToString());
 
         }
 
@@ -125,7 +125,7 @@ namespace Assets.Tests.EditModeTests
         public void FucinePath_WithTokenAtEndOfList_ReturnsPathUpToPreviousYAsSphere()
         {
             var pathWithTokenAtEnd = new FucinePath("./spherey!tokenx");
-            Assert.AreEqual("./spherey",pathWithTokenAtEnd.SpherePath.ToString());
+            Assert.AreEqual("./spherey",pathWithTokenAtEnd.GetSpherePath().ToString());
 
         }
 

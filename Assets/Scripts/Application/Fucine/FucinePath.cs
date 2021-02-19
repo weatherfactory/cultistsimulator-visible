@@ -19,7 +19,6 @@ namespace SecretHistories.Fucine
         public const char CURRENT = '#';
 
 
-
         protected List<FucinePathPart> PathParts = new List<FucinePathPart>();
 
 
@@ -118,37 +117,30 @@ namespace SecretHistories.Fucine
             return (PathParts.First().Category == FucinePathPart.PathCategory.Root);
         }
 
-        public FucinePathPart EndingPathPart
+        public FucinePathPart GetEndingPathPart()
         {
-            get
-            {
-                if(!PathParts.Any())
-                    return new NullFucinePathPart();
+            if (!PathParts.Any())
+                return new NullFucinePathPart();
 
-                return PathParts.Last();
-            }
+            return PathParts.Last();
         }
 
-        public FucinePath SpherePath
+        public FucinePath GetSpherePath()
         {
-            get
-            {
-                if(!PathParts.Any())
-                    return new NullFucinePath();
+            if (!PathParts.Any())
+                return new NullFucinePath();
 
-                if (EndingPathPart.Category == FucinePathPart.PathCategory.Sphere)
-                    return this;
-                //doesn't end with a sphere; it's either a root path...
-                if(EndingPathPart.Category==FucinePathPart.PathCategory.Root)
-                    return FucinePath.Root();
-                //or something else we don't want. Iterate up the string until we find a sphere or run out of parts
-                else
-                {
-                    var pathPartsRemaining = PathParts.Take(PathParts.Count - 1);
-                    var subPath=new FucinePath(pathPartsRemaining);
-                    return subPath.SpherePath;
-                }
-                
+            if (GetEndingPathPart().Category == FucinePathPart.PathCategory.Sphere)
+                return this;
+            //doesn't end with a sphere; it's either a root path...
+            if (GetEndingPathPart().Category == FucinePathPart.PathCategory.Root)
+                return FucinePath.Root();
+            //or something else we don't want. Iterate up the string until we find a sphere or run out of parts
+            else
+            {
+                var pathPartsRemaining = PathParts.Take(PathParts.Count - 1);
+                var subPath = new FucinePath(pathPartsRemaining);
+                return subPath.GetSpherePath();
             }
         }
 
@@ -157,28 +149,23 @@ namespace SecretHistories.Fucine
             return string.Join(string.Empty, PathParts);
         }
 
-        public FucinePath TokenPath
+        public FucinePath GetTokenPath()
         {
-            get
+            if (!PathParts.Any())
+                return new NullFucinePath();
+
+            if (GetEndingPathPart().Category == FucinePathPart.PathCategory.Token)
+                return this;
+            if (GetEndingPathPart().Category == FucinePathPart.PathCategory.Root)
+                return FucinePath.Root();
+            else
             {
-                if(!PathParts.Any())
-                    return new NullFucinePath();
-
-                if (EndingPathPart.Category == FucinePathPart.PathCategory.Token)
-                    return this;
-                if (EndingPathPart.Category == FucinePathPart.PathCategory.Root)
-                    return FucinePath.Root();
-                else
-                {
-                    var pathPartsRemaining = PathParts.Take(PathParts.Count - 1);
-                    var subPath=new FucinePath(pathPartsRemaining);
-                    return subPath.TokenPath;
-                }
-
+                var pathPartsRemaining = PathParts.Take(PathParts.Count - 1);
+                var subPath = new FucinePath(pathPartsRemaining);
+                return subPath.GetTokenPath();
             }
         }
 
-      
 
         public static FucinePath Root()
         {

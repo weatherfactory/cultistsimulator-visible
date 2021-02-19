@@ -152,8 +152,8 @@ namespace SecretHistories.Entities {
 
         public void SpecifyPath (FucinePath path)
         {
-            if(path.TokenPath.IsValid())
-                Path = path.TokenPath;
+            if(path.GetTokenPath().IsValid())
+                Path = path.GetTokenPath();
             else
                 NoonUtility.Log($"Invalid path specified for situation; keeping existing path {Path}");
 

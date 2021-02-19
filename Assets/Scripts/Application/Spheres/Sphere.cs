@@ -143,8 +143,8 @@ namespace SecretHistories.Spheres
 
         public virtual void SpecifyPath(FucinePath path)
         {
-            if (path.SpherePath.IsValid())
-                Path = path.SpherePath;
+            if (path.GetSpherePath().IsValid())
+                Path = path.GetSpherePath();
             else
                 NoonUtility.Log($"Invalid path specified for sphere; keeping existing path {Path}");
         }
@@ -728,7 +728,7 @@ namespace SecretHistories.Spheres
         public void MoveToPayload(ITokenPayload payload)
         {
             var payloadPath = payload.Path;
-            var immediateRelativePath=new FucinePath(Path.EndingPathPart);
+            var immediateRelativePath=new FucinePath(Path.GetEndingPathPart());
             Path = payloadPath.AppendPath(immediateRelativePath);
         }
     }
