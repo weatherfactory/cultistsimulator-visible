@@ -11,6 +11,7 @@ using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -55,9 +56,12 @@ using Object = UnityEngine.Object;
         public void ElementStackToken_Encausts()
         {
             var encaustery = new Encaustery<TokenCreationCommand>();
+            var sphereObject=new GameObject();
+            var sphere = sphereObject.AddComponent<NullSphere>();
             var tokenObject=new GameObject();
             var token=tokenObject.AddComponent<Token>();
             var elementStack = new ElementStack();
+            sphere.AcceptToken(token,new Context(Context.ActionSource.Unknown));
             token.SetPayload(elementStack);
             encaustery.Encaust(token);
         }

@@ -41,8 +41,8 @@ namespace SecretHistories.UI {
 
 
 
-        [Header("Location")]
-        [SerializeField] public RectTransform TokenRectTransform;
+        [DontEncaust]
+        public RectTransform TokenRectTransform => GetComponent<RectTransform>();
         [DontEncaust]
         public RectTransform ManifestationRectTransform => _manifestation.RectTransform;
         [Encaust]
@@ -128,7 +128,6 @@ namespace SecretHistories.UI {
             //if (Sphere == null)
             //    Sphere = Registry.Get<Limbo>();
 
-            TokenRectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
 
             CurrentItinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
