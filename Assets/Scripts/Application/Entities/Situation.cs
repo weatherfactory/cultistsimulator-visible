@@ -124,21 +124,29 @@ namespace SecretHistories.Entities {
         
         private Timeshadow _timeshadow;
 
-        public Situation(Verb verb)
+        public Situation(Verb verb) : this(verb,
+            Watchman.Get<SphereCatalogue>().GetDefaultWorldSpherePath()
+                .AppendPath(verb.DefaultUniqueRelativeTokenPath()))
+        {
+        }
+
+
+        public Situation(Verb verb, FucinePath path)
         {
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
 
             situationsCatalogue.RegisterSituation(this);
 
-            Path = Watchman.Get<SphereCatalogue>().GetDefaultWorldSpherePath().AppendPath(verb.DefaultUniqueRelativeTokenPath());
+            Path = path;
             Verb = verb;
             Recipe = NullRecipe.Create();
-         _currentRecipePrediction=new RecipePrediction(Recipe,AspectsDictionary.Empty());
+            _currentRecipePrediction = new RecipePrediction(Recipe, AspectsDictionary.Empty());
 
-            State=new NullSituationState();
+            State = new NullSituationState();
             _timeshadow = new Timeshadow(Recipe.Warmup,
                 Recipe.Warmup,
                 false);
+        
         }
 
 

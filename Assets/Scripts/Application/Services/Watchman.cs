@@ -20,6 +20,12 @@ namespace SecretHistories.UI
             registered.Clear();
         }
 
+        public static void Forget<T>() where T : class
+        {
+            if (registered.ContainsKey(typeof(T)))
+                registered.Remove(typeof(T));
+        }
+
         private static readonly Dictionary<Type, System.Object> registered=new Dictionary<Type, object>();
 
         public static bool Exists<T>()
@@ -47,7 +53,6 @@ namespace SecretHistories.UI
 
             if (Exists<T>())
             {
-
                 T matchingTypeInstance = registered[typeof(T)] as T;
 
                 return matchingTypeInstance;
@@ -105,6 +110,8 @@ namespace SecretHistories.UI
         {
             registered[typeof(T)] = toRegister;
         }
+
+
 
 
     }

@@ -20,6 +20,16 @@ using Object = UnityEngine.Object;
 [TestFixture]
     public class EncaustablesEncaust_SmokeTests
     {
+        private Sphere sphere;
+
+        [SetUp]
+        public void Setup()
+        {
+            Watchman.ForgetEverything();
+            var sphereObject = new GameObject();
+            sphere = sphereObject.AddComponent<NullSphere>();
+
+    }
         [Test]
         public void DeckInstance_Encausts()
         {
@@ -56,8 +66,7 @@ using Object = UnityEngine.Object;
         public void ElementStackToken_Encausts()
         {
             var encaustery = new Encaustery<TokenCreationCommand>();
-            var sphereObject=new GameObject();
-            var sphere = sphereObject.AddComponent<NullSphere>();
+          
             var tokenObject=new GameObject();
             var token=tokenObject.AddComponent<Token>();
             var elementStack = new ElementStack();
@@ -69,7 +78,7 @@ using Object = UnityEngine.Object;
         public void Situation_Encausts()
         {
             var situationEncaustery = new Encaustery<SituationCreationCommand>();
-            var situation = new Situation(NullVerb.Create());
+            var situation = new Situation(NullVerb.Create(), new FucinePath("./s1!t1"));
             situationEncaustery.Encaust(situation);
         }
 
@@ -80,7 +89,8 @@ using Object = UnityEngine.Object;
            var tokenObject = new GameObject();
            var token=tokenObject.AddComponent<Token>();
 
-           var situation=new Situation(NullVerb.Create());
+           var situation=new Situation(NullVerb.Create(),new FucinePath("./s1!t1"));
+           sphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
            token.SetPayload(situation);
 
            encaustery.Encaust(token);
