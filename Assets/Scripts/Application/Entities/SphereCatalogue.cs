@@ -73,6 +73,12 @@ namespace SecretHistories.Entities {
             return defaultWindowsSphere;
         }
 
+        public HashSet<Sphere> GetRootSpheres()
+        {
+            return new HashSet<Sphere>(_spheres.Where(s=>s.IsInRoot()));
+        }
+
+
         public HashSet<Sphere> GetSpheres() {
             return new HashSet<Sphere>(_spheres);
         }

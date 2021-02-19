@@ -731,6 +731,11 @@ namespace SecretHistories.Spheres
             var immediateRelativePath=new FucinePath(Path.GetEndingPathPart());
             Path = payloadPath.AppendPath(immediateRelativePath);
         }
+
+        public bool IsInRoot()
+        {
+            return Path.IsSphereInRootPath();
+        }
     }
 
 }

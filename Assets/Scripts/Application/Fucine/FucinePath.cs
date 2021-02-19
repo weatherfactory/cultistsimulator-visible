@@ -289,5 +289,17 @@ namespace SecretHistories.Fucine
         {
             return !Equals(left, right);
         }
+
+        public bool IsSphereInRootPath()
+        {
+            if(PathParts.Count!=2) //it's empty, or it's just the root, or it's sphere + token, or....
+                return false;
+
+            if (PathParts.First().Category == FucinePathPart.PathCategory.Root &&
+                PathParts[1].Category == FucinePathPart.PathCategory.Sphere)
+                return true;
+
+            return false;
+        }
     }
 }

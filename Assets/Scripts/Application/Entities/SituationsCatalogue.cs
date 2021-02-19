@@ -58,26 +58,6 @@ namespace SecretHistories.Entities
         }
 
 
-        public Situation GetFirstOpenSituation()
-        {
-            return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen);
-        }
-
-        public Situation GetSituationByPath(FucinePath path)
-        {
-            try
-            {
-                return _currentSituations.DefaultIfEmpty(NullSituation.Create()).SingleOrDefault(s => s.Path == path);
-
-            }
-            catch (InvalidOperationException)
-            {
-                NoonUtility.LogWarning("More than one situation with path " + path + "  - returning the first.");
-                return _currentSituations.First(s => s.Path == path);
-            }
-        }
-
-
 
         public void HaltSituation(string toHaltId, int maxToHalt)
         {

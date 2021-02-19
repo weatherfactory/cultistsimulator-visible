@@ -196,7 +196,17 @@ namespace Assets.Tests.EditModeTests
             Assert.AreEqual("./sphere!token", pathValidCombined.ToString());
         }
 
-   
+        [Test]
+        public void IsInRootIdentifiesSpheresAtRootLevel()
+        {
+            var pathInRoot=new FucinePath("./s");
+            var pathNotInRoot=new FucinePath("./s!t/s2");
+            var pathNotInRootAndRelativeAnywa=new FucinePath("/s!t/s2");
+
+            Assert.IsTrue(pathInRoot.IsSphereInRootPath());
+            Assert.IsFalse(pathNotInRoot.IsSphereInRootPath());
+            Assert.IsFalse(pathNotInRootAndRelativeAnywa.IsSphereInRootPath());
+        }
 
     }
 }
