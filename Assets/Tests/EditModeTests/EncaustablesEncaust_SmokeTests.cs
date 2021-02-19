@@ -23,7 +23,7 @@ using Object = UnityEngine.Object;
         public void DeckInstance_Encausts()
         {
             var encaustery = new Encaustery<DeckInstanceCreationCommand>();
-            var deckInstance = new DeckInstance();
+            var deckInstance = new GameObject().AddComponent<DeckInstance>();
             encaustery.Encaust(deckInstance);
         }
     [Test]

@@ -24,6 +24,7 @@ using Object = UnityEngine.Object;
 [TestFixture]
 public class CreationCommandsSmokeTests
 {
+    private SphereCatalogue Catalogue;
 
     [SetUp]
     public void WithMinimalCompendiumLoad()
@@ -50,12 +51,17 @@ public class CreationCommandsSmokeTests
         var stableComponent=gobjStable.AddComponent<Stable>();
         watchman.Register(stableComponent);
 
+        Catalogue = Watchman.Get<SphereCatalogue>();
+
         var worldSphere = Object.FindObjectOfType<TabletopSphere>();
-        Watchman.Get<SphereCatalogue>().RegisterSphere(worldSphere);
+        worldSphere.SpecifyPath(Catalogue.GetDefaultWorldSpherePath());
+        Catalogue.RegisterSphere(worldSphere);
         var enRouteSphere = Object.FindObjectOfType<EnRouteSphere>();
-        Watchman.Get<SphereCatalogue>().RegisterSphere(worldSphere);
+        enRouteSphere.SpecifyPath(Catalogue.GetDefaultEnRouteSpherePath());
+        Catalogue.RegisterSphere(enRouteSphere);
         var windowsSphere = Object.FindObjectOfType<WindowsSphere>();
-        Watchman.Get<SphereCatalogue>().RegisterSphere(windowsSphere);
+        windowsSphere.SpecifyPath(Catalogue.GetDefaultWindowSpherePath());
+        Catalogue.RegisterSphere(windowsSphere);
 
     }
 
@@ -88,7 +94,6 @@ public class CreationCommandsSmokeTests
             var situationCreationCommand=new SituationCreationCommand();
             situationCreationCommand.VerbId = NullVerb.Create().Id;
             situationCreationCommand.RecipeId = NullRecipe.Create().Id;
-            situationCreationCommand.Path=new FucinePath(".");
             situationCreationCommand.StateForRehydration = StateEnum.Ongoing;
             var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
             Assert.IsInstanceOf<Situation>(situation);
@@ -101,9 +106,7 @@ public class CreationCommandsSmokeTests
             var situationCreationCommand = new SituationCreationCommand();
             situationCreationCommand.VerbId = NullVerb.Create().Id;
         situationCreationCommand.RecipeId = NullRecipe.Create().Id;
-        situationCreationCommand.Path = new FucinePath(".");
         situationCreationCommand.StateForRehydration = StateEnum.Ongoing;
-
         var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
 
         var tokenCreationCommand =new TokenCreationCommand(situationCreationCommand,location);
@@ -118,7 +121,6 @@ public class CreationCommandsSmokeTests
     {
         
         var dropzonePayloadCreationCommand=new DropzoneCreationCommand();
-        
         var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
         var dropzoneCreationCommand = new TokenCreationCommand(dropzonePayloadCreationCommand, dropzoneLocation);
         var dropzone=dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Debug));

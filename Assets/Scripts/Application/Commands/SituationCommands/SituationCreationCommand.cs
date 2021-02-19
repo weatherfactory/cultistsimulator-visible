@@ -85,9 +85,9 @@ namespace SecretHistories.Commands
             else
             {
                 if (!Path.IsAbsolute())
-                    throw new ApplicationException($"trying to create a situation with a relative path: '{Path}'");
+                    NoonUtility.Log($"trying to create a situation with a relative path: '{Path}'");
                 else
-                    throw new ApplicationException($"trying to create a situation with an invalid path: '{Path}'");
+                    NoonUtility.Log($"trying to create a situation with an invalid path: '{Path}'");
                 
             }
             

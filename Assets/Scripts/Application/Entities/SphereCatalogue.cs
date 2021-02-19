@@ -58,6 +58,21 @@ namespace SecretHistories.Entities {
             return defaultEnRouteSphere;
         }
 
+
+        public FucinePath GetDefaultWindowSpherePath()
+        {
+            var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
+            var spherePath = new FucinePath(dictum.DefaultWindowSpherePath);
+            return spherePath;
+        }
+
+
+        public Sphere GetDefaultWindowSphere()
+        {
+            var defaultWindowsSphere = GetSphereByPath(GetDefaultWindowSpherePath());
+            return defaultWindowsSphere;
+        }
+
         public HashSet<Sphere> GetSpheres() {
             return new HashSet<Sphere>(_spheres);
         }
