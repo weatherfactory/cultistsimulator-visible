@@ -9,5 +9,6 @@ namespace SecretHistories.Commands
 {
     public class SphereCreationCommand: IEncaustment
     {
+        public SphereSpec GoverningSphereSpec { get; set; }
     }
 }

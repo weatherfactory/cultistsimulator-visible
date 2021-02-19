@@ -110,6 +110,16 @@ namespace BasicEncaustingTests
             Assert.AreEqual(vx.OtherMarkedProperty,dx.OtherMarkedProperty);
         }
 
+        [Test]
+        public void EmulousEncaustable_UsesEncaustmentInformationFromBaseEncaustable()
+        {
+            var encaustery=new Encaustery<EncaustedCommandX>();
+            var emulite=new EmulousEncaustableX();
+            emulite.MarkedProperty = 1;
+            var commandx= encaustery.Encaust(emulite);
+            Assert.AreEqual(emulite.MarkedProperty,commandx.MarkedProperty);
+        }
+
     }
 
 public class NonEncaustableX : IEncaustable
@@ -150,8 +160,14 @@ public class ValidEncaustableX : IEncaustable
     public int UnmarkedFIeldShouldBeOkay;
 }
 
+[IsEmulousEncaustable(typeof(ValidEncaustableX))]
+public class EmulousEncaustableX : ValidEncaustableX
+    {
+public int PropertyExistsOnlyOnEmulousSubclass { get; set; }
+}
 
-[IsEncaustableClass(typeof(EncaustedCommandX))]
+
+    [IsEncaustableClass(typeof(EncaustedCommandX))]
 public class EncaustableWithAPropertyThatCommandXDoesntHave : IEncaustable
 {
     [Encaust]

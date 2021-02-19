@@ -5,6 +5,7 @@ using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.States.TokenStates;
 using System.Linq;
+using SecretHistories.Commands;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,7 +15,7 @@ using UnityEngine.UI;
 namespace SecretHistories.UI
 {
 
-
+    [IsEncaustableClass(typeof(SphereCreationCommand))]
     public class ThresholdSphere : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;

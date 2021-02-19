@@ -22,6 +22,20 @@ namespace SecretHistories.Commands
 
     }
 
+    //use this if we want to copy the encaustment information from a specified class - ie the opposite way from how we normally work
+    //we expect the emulated class to be a base one, but nothing currently enforces this
+    [AttributeUsage(AttributeTargets.Class)]
+    public class IsEmulousEncaustable : System.Attribute
+    {
+        public Type EmulateBaseEncaustableType { get; private set; }
+
+        public IsEmulousEncaustable(Type emulateBaseEncaustableType)
+        {
+            EmulateBaseEncaustableType = emulateBaseEncaustableType;
+        }
+
+    }
+
     [AttributeUsage(AttributeTargets.Property)]
     public class Encaust : System.Attribute
     {

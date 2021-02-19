@@ -59,26 +59,17 @@ namespace SecretHistories.Spheres
         Sphere : MonoBehaviour,IEncaustable
     {
         [Encaust]
-        public SphereSpec GoverningSphereSpec { get; set; } = new SphereSpec(new SimpleSphereSpecIdentifierStrategy("unspecified"));
-        [Encaust]
+        public SphereSpec GoverningSphereSpec { get; set; } 
         public FucinePath Path { get; protected set; } = new NullFucinePath();
 
-        [Encaust]
         public bool Defunct { get; protected set; }
 
-        [DontEncaust]
         public virtual bool AllowDrag { get; private set; }
-        [DontEncaust]
         public virtual bool AllowStackMerge => true;
-        [DontEncaust]
         public virtual bool PersistBetweenScenes => false;
-        [DontEncaust]
         public virtual bool EnforceUniqueStacksInThisContainer => true;
-        [DontEncaust]
         public virtual bool ContentsHidden => false;
-        [DontEncaust]
         public virtual bool IsGreedy => false;
-        [DontEncaust]
         public virtual float TokenHeartbeatIntervalMultiplier => 0;
         public abstract SphereCategory SphereCategory { get; }
         

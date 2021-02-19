@@ -103,7 +103,7 @@ using Object = UnityEngine.Object;
         {
             var encaustery = new Encaustery<SphereCreationCommand>();
         var sphereObject = new GameObject();
-        sphere = sphereObject.AddComponent<ThresholdSphere>();
+        Sphere sphere = sphereObject.AddComponent<ThresholdSphere>();
 
         encaustery.Encaust(sphere);
         }
