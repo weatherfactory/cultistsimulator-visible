@@ -15,7 +15,7 @@ using UnityEngine.UI;
 namespace SecretHistories.UI
 {
 
-    [IsEncaustableClass(typeof(SphereCreationCommand))]
+    [IsEmulousEncaustable(typeof(Sphere))]
     public class ThresholdSphere : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;

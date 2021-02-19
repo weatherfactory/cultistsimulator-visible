@@ -59,20 +59,28 @@ namespace SecretHistories.Spheres
         Sphere : MonoBehaviour,IEncaustable
     {
         [Encaust]
-        public SphereSpec GoverningSphereSpec { get; set; } 
+        public SphereSpec GoverningSphereSpec { get; set; }
+        [Encaust]
         public FucinePath Path { get; protected set; } = new NullFucinePath();
-
+        [DontEncaust]
         public bool Defunct { get; protected set; }
-
+        [DontEncaust]
         public virtual bool AllowDrag { get; private set; }
+        [DontEncaust]
         public virtual bool AllowStackMerge => true;
+        [DontEncaust]
         public virtual bool PersistBetweenScenes => false;
+        [DontEncaust]
         public virtual bool EnforceUniqueStacksInThisContainer => true;
+        [DontEncaust]
         public virtual bool ContentsHidden => false;
+        [DontEncaust]
         public virtual bool IsGreedy => false;
+        [DontEncaust]
         public virtual float TokenHeartbeatIntervalMultiplier => 0;
+        [DontEncaust]
         public abstract SphereCategory SphereCategory { get; }
-        
+        [DontEncaust]
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
         public GameObject GreedyIcon;
         public GameObject ConsumingIcon;
@@ -97,18 +105,6 @@ namespace SecretHistories.Spheres
         private Dictionary<FucinePath, Vector3> referencePositions=new Dictionary<FucinePath, Vector3>();
 
 
-        public SphereCatalogue Catalogue
-        {
-            get
-            {
-                if (_catalogue == null)
-                {
-                    _catalogue = Watchman.Get<SphereCatalogue>();
-                }
-
-                return _catalogue;
-            }
-        }
 
         public void Subscribe(ISphereEventSubscriber subscriber)
         {
@@ -142,7 +138,7 @@ namespace SecretHistories.Spheres
         {
             Path = FucinePath.Root().AppendPath(SphereIdentifier); //default; will be overridden if the sphere is instantiated, rather than created in the editor
 
-            Catalogue.RegisterSphere(
+            Watchman.Get<SphereCatalogue>().RegisterSphere(
                 this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
@@ -661,7 +657,7 @@ namespace SecretHistories.Spheres
 
         public void NotifyTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
-            Catalogue.OnTokensChangedForSphere(args);
+            Watchman.Get<SphereCatalogue>().OnTokensChangedForSphere(args);
             var subscribersToNotify=new HashSet<ISphereEventSubscriber>(_subscribers);
 
             foreach(var s in subscribersToNotify)
@@ -670,7 +666,7 @@ namespace SecretHistories.Spheres
 
         public virtual void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {
-            Catalogue.OnTokenInteractionInSphere(args);
+            Watchman.Get<SphereCatalogue>().OnTokenInteractionInSphere(args);
 
             var subscribersToNotify = new HashSet<ISphereEventSubscriber>(_subscribers);
             foreach (var s in subscribersToNotify)
