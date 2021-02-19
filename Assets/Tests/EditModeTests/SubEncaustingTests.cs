@@ -51,7 +51,8 @@ public class SubEncaustingTests
     [IsEncaustableClass(typeof(OuterCommandY))]
     public class OuterEncaustableY : IEncaustable
     {
-        public List<InnerEncaustableY> MarkedListProperty = new List<InnerEncaustableY>();
+        [Encaust]
+        public List<InnerEncaustableY> MarkedListProperty { get; set; } = new List<InnerEncaustableY>();
     }
 
     [IsEncaustableClass(typeof(InnerCommandY))]
@@ -63,7 +64,7 @@ public class SubEncaustingTests
 
         public class OuterCommandY : IEncaustment
     {
-        public List<InnerCommandX> MarkedListProperty { get; set; }
+        public List<InnerCommandY> MarkedListProperty { get; set; }
     }
 
         public class InnerCommandY : IEncaustment

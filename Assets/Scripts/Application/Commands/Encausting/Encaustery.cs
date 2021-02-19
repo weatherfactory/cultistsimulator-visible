@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
+using UnityEngine;
 
 namespace SecretHistories.Commands
 {
@@ -31,7 +32,7 @@ namespace SecretHistories.Commands
         private void throwExceptionIfEncaustmentAttributesAreHinky(IEncaustable encaustable,Type specifiedGenericCommandType)
         {
             //is this an encaustable class?
-            var isEncaustableClassAttribute = GetEncaustableClassAttribute(encaustable);
+            var isEncaustableClassAttribute = GetEncaustableClassAttributeFromEncaustableInstance(encaustable);
 
             if(isEncaustableClassAttribute==null)
                 throw new ApplicationException($"{encaustable.GetType()} can't be encausted: it isn't marked with the IsEncaustableClass attribute");
@@ -82,11 +83,19 @@ namespace SecretHistories.Commands
 
 
 
-        private IsEncaustableClass GetEncaustableClassAttribute(IEncaustable encaustable)
+        private IsEncaustableClass GetEncaustableClassAttributeFromEncaustableInstance(IEncaustable encaustable)
         {
             IsEncaustableClass isEncaustableClassAttribute;
             isEncaustableClassAttribute =
                 encaustable.GetType().GetCustomAttributes(typeof(IsEncaustableClass), false).SingleOrDefault() as
+                    IsEncaustableClass;
+            return isEncaustableClassAttribute;
+        }
+
+        private IsEncaustableClass GetEncaustableClassAttributeFromType(Type encaustableType)
+        {
+            IsEncaustableClass isEncaustableClassAttribute;
+            isEncaustableClassAttribute =encaustableType.GetCustomAttributes(typeof(IsEncaustableClass), false).SingleOrDefault() as
                     IsEncaustableClass;
             return isEncaustableClassAttribute;
         }
@@ -116,13 +125,19 @@ namespace SecretHistories.Commands
             {
                 var commandPropertyToSet = typeof(T).GetProperty(encaustableProperty.Name);
 
+                if(isGenericListOfEncaustables(encaustableProperty.PropertyType))
+                    commandPropertyToSet.SetValue(command, EncaustListToEncaustedList(encaustable,encaustableProperty));
+
+
                 //is the property we're trying to encaust itself an encaustable entity in its own right? if so, do it as an inner command
-                if (typeof(IEncaustable).IsAssignableFrom(encaustableProperty.PropertyType))
+                else if (typeof(IEncaustable).IsAssignableFrom(encaustableProperty.PropertyType))
                 {
-                    object innerEncaustedCommand = encaustPropertyAsCommandInItsOwnRight(encaustable, encaustableProperty);
+                    IEncaustable innerEncaustableInstance = encaustableProperty.GetValue(encaustable) as IEncaustable;
+                    object innerEncaustedCommand = encaustPropertyAsCommandInItsOwnRight(innerEncaustableInstance);
                         commandPropertyToSet.SetValue(command, innerEncaustedCommand);
                 }
                 
+
                 else
                     commandPropertyToSet.SetValue(command, encaustableProperty.GetValue(encaustable));
 
@@ -133,21 +148,65 @@ namespace SecretHistories.Commands
             return command;
         }
 
-
-        private object encaustPropertyAsCommandInItsOwnRight(IEncaustable outerEncaustable, PropertyInfo innerEncaustableAsProperty)
+        private bool isGenericListOfEncaustables(Type potentialListOfEncaustablesType)
         {
-            IEncaustable innerEncaustableInstance = innerEncaustableAsProperty.GetValue(outerEncaustable) as IEncaustable;
-            Type encaustInnerAsType = GetEncaustableClassAttribute(innerEncaustableInstance).ToType;
+            if (!potentialListOfEncaustablesType.IsGenericType)
+                return false;
+            if(potentialListOfEncaustablesType.GetGenericTypeDefinition()==typeof(List<>))
+                return true;
+            return false;
+        }
+        private object EncaustListToEncaustedList(IEncaustable outerEncaustable, PropertyInfo encaustableListProperty)
+        {
+            //get a list of all the members, as objects
+            IList untypedIntermediateSourceList = encaustableListProperty.GetValue(outerEncaustable, null) as IList;
+
+            //get the type of the encaustable members
+            var encaustableTypeArgument = encaustableListProperty.PropertyType.GenericTypeArguments[0];
+
+            //get the type we'll encaust them to, via the attribute on the member type
+
+            var encaustableClassAttribute = GetEncaustableClassAttributeFromType(encaustableTypeArgument);
+            Type encaustToType = encaustableClassAttribute.ToType;
+
+            //create a generic list where the encaust-to type is the type argument
+            Type destinationListConstructedType = typeof(List<>).MakeGenericType(encaustToType);
+
+            //now instantiate the destination list
+            var destinationList = (IList) Activator.CreateInstance(destinationListConstructedType);
+
+            //now encaust each of the members of the intermediate source list, and assign them to the destination list
+
+            foreach (IEncaustable member in untypedIntermediateSourceList)
+            {
+                object encaustedMember = encaustPropertyAsCommandInItsOwnRight(member);
+                destinationList.Add(encaustedMember);
+            }
+
+            return destinationList;
+
+
+        }
+
+
+        private object encaustPropertyAsCommandInItsOwnRight(IEncaustable innerEncaustableInstance)
+        {
+            Type encaustInnerAsType = GetEncaustableClassAttributeFromEncaustableInstance(innerEncaustableInstance).ToType; //for an encausted list, this is called each time through - so there's room for caching
             Type baseEncausteryType = typeof(Encaustery<>);
             Type combinedTypeWithGenericArgument = baseEncausteryType.MakeGenericType(encaustInnerAsType);
 
             object innerEncaustery = Activator.CreateInstance(combinedTypeWithGenericArgument);
             var encaustMethod = innerEncaustery.GetType().GetMethod("Encaust");
-          var encaustedInnerCommand= encaustMethod.Invoke(innerEncaustery, new object[]{innerEncaustableInstance});
+            var encaustedInnerCommand = encaustMethod.Invoke(innerEncaustery, new object[] { innerEncaustableInstance });
 
-          return encaustedInnerCommand;
+            return encaustedInnerCommand;
 
         }
+
+
+
+
+
         /// <summary>
         /// If we pass eg something inherited from Monobehaviour for encausting, it'll bring a lot of properties we don't want to encaust
         /// </summary>
