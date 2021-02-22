@@ -25,24 +25,7 @@ namespace SecretHistories.Commands.SituationCommands
             if (_recipeToActivate.RequirementsSatisfiedBy(aspectsInContext))
             {
                 situation.ActivateRecipe(_recipeToActivate);
-     
                 situation.UpdateCurrentRecipePrediction(situation.GetRecipePredictionForCurrentStateAndAspects(),new Context(Context.ActionSource.SituationEffect));
-                
-
-                var storageContainer = situation.GetSingleSphereByCategory(SphereCategory.SituationStorage);
-
-                //now we're safely started on the recipe, consume any tokens in Consuming thresholds
-                foreach (var thresholdSphere in situation.GetSpheresByCategory(SphereCategory.Threshold))
-                {
-                    if (thresholdSphere.GoverningSphereSpec.Consumes)
-                        thresholdSphere.RetireAllTokens();
-                }
-
-                storageContainer.AcceptTokens(situation.GetTokens(SphereCategory.Threshold),
-                    new Context(Context.ActionSource.SituationStoreStacks));
-
-                SoundManager.PlaySfx("SituationBegin");
-
                 situation.TransitionToState(new OngoingState());
 
                 return true;

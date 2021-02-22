@@ -10,6 +10,20 @@ namespace SecretHistories.Core
     {
         private readonly List<ISituationCommand> _commands=new List<ISituationCommand>();
 
+        public void ExecuteCommandsFor(List<CommandCategory> forActiveOnDominion, Situation situation)
+        {
+            foreach (var command in new List<ISituationCommand>(_commands))
+            {
+                if (forActiveOnDominion.Contains(command.CommandCategory))
+                {
+                    bool executed = command.Execute(situation);
+                    if (executed)
+                        MarkCommandCompleted(command);
+                }
+            }
+        }
+
+
         public void ExecuteCommandsFor(CommandCategory forActiveOnDominion,Situation situation)
         {
             foreach(var command in new List<ISituationCommand>(_commands))

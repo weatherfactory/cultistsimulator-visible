@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using Assets.Scripts.Application.Spheres;
 using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Entities;
@@ -15,7 +10,8 @@ using SecretHistories.Enums;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
 
-
+ namespace SecretHistories.Entities
+{
 
 public class SphereSpec: AbstractEntity<SphereSpec>
 {
@@ -150,4 +146,5 @@ public enum SlotMatchForAspectsType
 Okay,
     RequiredAspectMissing,
     ForbiddenAspectPresent
+}
 }

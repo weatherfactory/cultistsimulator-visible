@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
@@ -19,14 +21,23 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var recipeSlotsCommand = new PopulateThresholdsCommand(CommandCategory.RecipeThresholds, situation.Recipe.Slots);
+            var recipeSlotsCommand = new PopulateDominionSpheresCommand(CommandCategory.RecipeThresholds, situation.Recipe.Slots);
             situation.CommandQueue.AddCommand(recipeSlotsCommand);
+
+            var storageCommand = new PopulateDominionSpheresCommand(CommandCategory.Storage, new StorageSphereSpec());
+                situation.CommandQueue.AddCommand(storageCommand);
+
+                var migrateFromVerbSlotsToStorageCommand=new MigrateTokensInsideSituation(SphereCategory.Threshold,SphereCategory.SituationStorage,CommandCategory.Storage);
+                situation.CommandQueue.AddCommand(migrateFromVerbSlotsToStorageCommand);
+            
+                SoundManager.PlaySfx("SituationBegin");
         }
 
         public override void Exit(Situation situation)
         {
-          situation.GetSingleSphereByCategory(SphereCategory.SituationStorage).AcceptTokens(
-               situation. GetTokens(SphereCategory.Threshold), new Context(Context.ActionSource.SituationStoreStacks));
+            //this can and should be replaced with a command
+            situation.GetSingleSphereByCategory(SphereCategory.SituationStorage).AcceptTokens(
+               situation. GetTokens(SphereCategory.Threshold), new Context(Context.ActionSource.TokenMigration));
         }
 
         public override bool IsActiveInThisState(Sphere s)
@@ -67,7 +78,7 @@ namespace SecretHistories.States
         public override void Continue(Situation situation)
         {
             situation.CommandQueue.ExecuteCommandsFor(CommandCategory.Anchor, situation);
-            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.RecipeThresholds, situation);
+            situation.CommandQueue.ExecuteCommandsFor(new List<CommandCategory>{ CommandCategory.RecipeThresholds,CommandCategory.Storage}, situation);
             situation.CommandQueue.ExecuteCommandsFor(CommandCategory.Timer, situation);
 
             if (situation.TimeRemaining <= 0)

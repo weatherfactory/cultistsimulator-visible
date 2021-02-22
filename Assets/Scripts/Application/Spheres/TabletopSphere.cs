@@ -55,6 +55,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
     public virtual void Start() {
         _background.onClicked += HandleOnTableClicked;
+        GoverningSphereSpec=new SphereSpec(SphereIdentifier);
         var dropzoneSpherePath = new FucinePath(dropzoneSpherePathIdentifier);
         flock.AddAngel(new TidyAngel(dropzoneSpherePath));
     }

@@ -10,28 +10,35 @@ using SecretHistories.States;
 
 namespace SecretHistories.Commands.SituationCommands
 {
-  public  class PopulateThresholdsCommand: ISituationCommand
+  public  class PopulateDominionSpheresCommand: ISituationCommand
     {
-        private List<SphereSpec> _populateWithThresholds = new List<SphereSpec>();
+        private List<SphereSpec> _populateWith = new List<SphereSpec>();
 
         public CommandCategory CommandCategory { get; }
-        public PopulateThresholdsCommand(CommandCategory commandCategory, List<SphereSpec> populateWithThresholds)
+
+        public PopulateDominionSpheresCommand(CommandCategory commandCategory, SphereSpec populateWith)
         {
-            _populateWithThresholds.AddRange(populateWithThresholds);
+            _populateWith.Add(populateWith);
+            CommandCategory = commandCategory;
+        }
+
+        public PopulateDominionSpheresCommand(CommandCategory commandCategory, List<SphereSpec> populateWith)
+        {
+            _populateWith.AddRange(populateWith);
             CommandCategory = commandCategory;
         }
 
 
         public bool Execute(Situation situation)
         {
-            if (_populateWithThresholds.Count > 0) //only execute if there are any relevant slot instructions. We don't want to clear existing slots with a recipe that doesn't specify them
+            if (_populateWith.Count > 0) //only execute if there are any relevant slot instructions. We don't want to clear existing slots with a recipe that doesn't specify them
                 //this may be irrelevant if we only add a command when we need one
             {
                 var dominion = situation.GetSituationDominionsForCommandCategory(this.CommandCategory).FirstOrDefault();
                 if(dominion!=null)
                 {
                     dominion.RemoveAllSpheres();
-                    foreach (var spec in _populateWithThresholds)
+                    foreach (var spec in _populateWith)
                         dominion.CreatePrimarySphere(spec);
                     return true;
                 }

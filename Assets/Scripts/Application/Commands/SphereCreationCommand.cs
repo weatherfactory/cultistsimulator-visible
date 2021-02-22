@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Entities;
 using SecretHistories.Fucine;
 
 namespace SecretHistories.Commands

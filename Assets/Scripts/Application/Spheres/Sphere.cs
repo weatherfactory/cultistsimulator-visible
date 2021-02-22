@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using SecretHistories.Core;
+﻿using Assets.Logic;
+using Assets.Scripts.Application.Fucine;
+using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
+using SecretHistories.Abstract;
 using SecretHistories.Commands;
+using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.UI;
-using Assets.Logic;
-using Assets.Scripts.Application.Fucine;
-using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
-using Assets.Scripts.Application.Spheres;
-using SecretHistories.Abstract;
-using SecretHistories.Constants;
-using SecretHistories.Constants.Events;
-using SecretHistories.Spheres.Angels;
-using SecretHistories.Elements;
-using SecretHistories.Elements.Manifestations;
 using SecretHistories.Services;
-
+using SecretHistories.Spheres.Angels;
+using SecretHistories.UI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace SecretHistories.Spheres
 {

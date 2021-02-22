@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
 using NUnit.Framework;
 using SecretHistories.Constants;
+using SecretHistories.Entities;
 
 namespace Assets.Tests.UnitTests
 {

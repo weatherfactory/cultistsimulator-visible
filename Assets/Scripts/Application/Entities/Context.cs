@@ -11,7 +11,7 @@ public class Context {
         CalvedStack,
         PlayerClick,
         PlayerDumpAll,
-        SituationStoreStacks,
+TokenMigration,
         SituationEffect,
         SituationResults,
         GreedyGrab,

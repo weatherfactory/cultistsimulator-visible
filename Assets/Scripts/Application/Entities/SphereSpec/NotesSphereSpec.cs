@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Assets.Scripts.Application.Spheres;
 using SecretHistories.Spheres;
 
-namespace Assets.Scripts.Application.Entities
+namespace SecretHistories.Entities
 {
     public class NotesSphereSpec: SphereSpec
     {
