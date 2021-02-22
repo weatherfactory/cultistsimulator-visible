@@ -35,9 +35,10 @@ namespace SecretHistories.States
 
         public override void Exit(Situation situation)
         {
-            //this can and should be replaced with a command
-            situation.GetSingleSphereByCategory(SphereCategory.SituationStorage).AcceptTokens(
-               situation. GetTokens(SphereCategory.Threshold), new Context(Context.ActionSource.TokenMigration));
+
+            var migrateFromRecipeSlotsToStorageComand = new MigrateTokensInsideSituationCommand(SphereCategory.Threshold, SphereCategory.SituationStorage, CommandCategory.Storage);
+            situation.CommandQueue.AddCommand(migrateFromRecipeSlotsToStorageComand);
+            
         }
 
         public override bool IsActiveInThisState(Sphere s)
