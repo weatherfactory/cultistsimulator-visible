@@ -128,7 +128,7 @@ using Object = UnityEngine.Object;
         worldSphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
         
         var encaustedToken= encaustery.Encaust(token);
-        Assert.AreEqual(situation.Spheres.Count, encaustedToken.Payload.Spheres);
+        Assert.AreEqual(situation.Spheres.Count, encaustedToken.Payload.Spheres.Count);
         }
 
     [Test]
