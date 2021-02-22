@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Commands;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
@@ -17,6 +18,7 @@ namespace SecretHistories.Spheres
     /// <summary>
     /// A bubble dumps its contents to the world sphere when any of its contents receive an interaction event
     /// </summary>
+       [IsEmulousEncaustable(typeof(Sphere))]
     public class BubbleSphere: Sphere
     {
         [SerializeField] private Token AssociatedToken;

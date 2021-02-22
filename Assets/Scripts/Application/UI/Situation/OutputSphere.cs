@@ -17,6 +17,7 @@ using UnityEngine.Events;
 /// <summary>
 /// The contents of Output spheres can be picked up by the player, but not replaced. They become unavailable once empty.
 /// </summary>
+[IsEmulousEncaustable(typeof(Sphere))]
 public class OutputSphere : Sphere,ISituationSubscriber{
 
     public CanvasGroupFader canvasGroupFader;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Spheres;
+using SecretHistories.Abstract;
 using SecretHistories.Spheres;
 
 namespace SecretHistories.Entities

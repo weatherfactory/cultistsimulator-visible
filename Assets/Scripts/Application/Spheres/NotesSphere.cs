@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Entities;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -28,7 +29,7 @@ namespace Assets.Scripts.Application.Spheres
             FinalNavigationDirection = finalNavigationDirection;
         }
     }
-
+    [IsEmulousEncaustable(typeof(Sphere))]
     public class NotesSphere: Sphere
     {
         public override SphereCategory SphereCategory => SphereCategory.Notes;

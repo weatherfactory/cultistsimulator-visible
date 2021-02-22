@@ -12,7 +12,7 @@ using SecretHistories.Elements;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Spheres;
 
-
+[IsEmulousEncaustable(typeof(Sphere))]
 public class SituationStorageSphere : Sphere,ISituationSubscriber
 {
     //because this is just a sphere, I don't think it needs to be an ISituationAttachment

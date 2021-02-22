@@ -16,7 +16,8 @@ using SecretHistories.Services;
 
 namespace SecretHistories.Spheres
 {
-  public class CardsPile: Sphere
+    [IsEmulousEncaustable(typeof(Sphere))]
+    public class CardsPile: Sphere
   {
       private DeckSpec _deckSpec;
 
