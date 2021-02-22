@@ -60,7 +60,7 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
                 return;
             
 
-            if(indexToShow+1==_arrangingSpheres.Count && !_arrangingSpheres[indexToShow].GetAllTokens().Any())
+            if(indexToShow+1==_arrangingSpheres.Count && !_arrangingSpheres[indexToShow].Tokens.Any())
                 //we're trying to move to an empty sphere at the end - one that doesn't have a note in yet
                 return;
 

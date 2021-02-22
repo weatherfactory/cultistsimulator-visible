@@ -13,5 +13,6 @@ namespace SecretHistories.Commands
     {
         public SphereSpec GoverningSphereSpec { get; set; }
         public FucinePath Path { get; set; }
+        public List<TokenCreationCommand> Tokens { get; set; }
     }
 }

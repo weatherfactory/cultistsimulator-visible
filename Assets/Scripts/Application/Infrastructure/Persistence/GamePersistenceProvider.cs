@@ -59,7 +59,7 @@ namespace SecretHistories.Infrastructure.Persistence
 
             foreach (var sphere in rootSpheres)
             {
-                var allTokensInSphere = sphere.GetAllTokens();
+                var allTokensInSphere = sphere.Tokens;
                 foreach (var t in allTokensInSphere)
                 {
                     var encaustedTokenCommand = tokenEncaustery.Encaust(t);

@@ -37,7 +37,7 @@ namespace SecretHistories.Spheres.Angels
            
                 _beatsTowardsAngelry = 0;
 
-            if (!_thresholdSphereToGrabTo.CurrentlyBlockedFor(BlockDirection.Inward) && _thresholdSphereToGrabTo.GetAllTokens().Count == 0)
+            if (!_thresholdSphereToGrabTo.CurrentlyBlockedFor(BlockDirection.Inward) && _thresholdSphereToGrabTo.Tokens.Count == 0)
                 TryGrabStack(_thresholdSphereToGrabTo, interval);
             
         }

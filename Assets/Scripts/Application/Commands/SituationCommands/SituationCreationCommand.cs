@@ -25,6 +25,7 @@ namespace SecretHistories.Commands
     {
         public string VerbId { get; set; }
         public string RecipeId { get; set; }
+        public int Quantity { get; set; }
         public StateEnum StateForRehydration { get; set; }
         public float TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe

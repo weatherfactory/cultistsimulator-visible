@@ -11,7 +11,7 @@ namespace SecretHistories.Commands
 {
     public class DropzoneCreationCommand: ITokenPayloadCreationCommand,IEncaustment
     {
-
+        public int Quantity { get; set; }
         public List<SphereCreationCommand> Spheres { get; set; } = new List<SphereCreationCommand>();
 
         public ITokenPayload Execute(Context context)
@@ -19,5 +19,6 @@ namespace SecretHistories.Commands
             return new Dropzone();
         }
 
+        
     }
 }

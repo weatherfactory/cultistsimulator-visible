@@ -75,6 +75,8 @@ namespace SecretHistories.Entities {
       //  public RecipeCompletionEffectCommand CurrentCompletionEffectCommand { get; set; } = new RecipeCompletionEffectCommand();
 
         [Encaust] public Dictionary<string, int> Mutations => new Dictionary<string, int>();
+        [Encaust] public int Quantity => 1;
+
 
         [DontEncaust] public SituationState State { get; set; }
         [DontEncaust] public float Warmup => Recipe.Warmup;
@@ -82,7 +84,6 @@ namespace SecretHistories.Entities {
         [DontEncaust] public string Id => Path.ToString();
         [DontEncaust] public string Label => GetMostRecentNoteLabel();
         [DontEncaust] public string Description => GetMostRecentNoteDescription();
-        [DontEncaust] public int Quantity => 1;
         [DontEncaust] public float IntervalForLastHeartbeat => _timeshadow.LastInterval;
         [DontEncaust]
         public string UniquenessGroup
@@ -409,7 +410,7 @@ namespace SecretHistories.Entities {
         private Sphere LastSphereWithANote()
         {
             var notesSpheres = GetSpheresByCategory(SphereCategory.Notes);
-            var lastSphereWithANote = notesSpheres.LastOrDefault(s => s.GetAllTokens().Any());
+            var lastSphereWithANote = notesSpheres.LastOrDefault(s => s.Tokens.Any());
             return lastSphereWithANote;
         }
 
@@ -419,7 +420,7 @@ namespace SecretHistories.Entities {
             if (noteSphereToCheck == null)
                 return string.Empty;
 
-            var note = noteSphereToCheck.GetAllTokens().First().Payload;
+            var note = noteSphereToCheck.Tokens.First().Payload;
             string title = note.GetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY);
             return title;
 
@@ -432,7 +433,7 @@ namespace SecretHistories.Entities {
             if (noteSphereToCheck == null)
                 return string.Empty;
 
-            var note = noteSphereToCheck.GetAllTokens().First().Payload;
+            var note = noteSphereToCheck.Tokens.First().Payload;
             string description = note.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY);
             return description;
         }
@@ -515,7 +516,7 @@ namespace SecretHistories.Entities {
         {
             List<Token> stacks = new List<Token>();
             foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory))
-                stacks.AddRange(container.GetAllTokens());
+                stacks.AddRange(container.Tokens);
 
             return stacks;
         }

@@ -29,7 +29,7 @@ namespace SecretHistories.Spheres
 
         public void Pop(Context context)
         {
-            var tokensToLeaveBehind = new List<Token>(GetAllTokens());
+            var tokensToLeaveBehind = new List<Token>(Tokens);
 
             foreach (var t in tokensToLeaveBehind)
             {

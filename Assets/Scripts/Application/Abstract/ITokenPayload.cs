@@ -32,6 +32,7 @@ namespace SecretHistories.Abstract
         void InteractWithIncoming(Token incomingToken);
         bool ReceiveNote(string label, string description,Context context);
         void ShowNoMergeMessage(ITokenPayload incomingTokenPayload);
+        int Quantity { get; }
         void SetQuantity(int quantityToLeaveBehind, Context context);
         void ModifyQuantity(int unsatisfiedChange, Context context);
 

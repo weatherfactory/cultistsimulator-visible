@@ -57,6 +57,11 @@ namespace SecretHistories.Spheres
         public SphereSpec GoverningSphereSpec { get; set; }
         [Encaust]
         public FucinePath Path { get; protected set; } = new NullFucinePath();
+        [Encaust]
+        public List<Token> Tokens
+        {
+            get { return new List<Token>(_tokens); }
+        }
         [DontEncaust]
         public bool Defunct { get; protected set; }
         [DontEncaust]
@@ -363,10 +368,7 @@ namespace SecretHistories.Spheres
             return _tokens.Count <= 0;
         }
 
-        public List<Token> GetAllTokens()
-        {
-            return new List<Token>(_tokens);
-        }
+
 
         public List<Token> GetElementTokens()
         {
@@ -439,7 +441,7 @@ namespace SecretHistories.Spheres
         public void RequestTokensSpendTime(float interval)
         {
 
-            var tokens = GetAllTokens();
+            var tokens = Tokens;
     
             foreach (var d in tokens)
                 d.ExecuteHeartbeat(interval);

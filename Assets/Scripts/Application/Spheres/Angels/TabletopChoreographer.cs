@@ -112,7 +112,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
 			Rect pushedRect;
 
-            foreach (var token in _tabletop.GetAllTokens()) {
+            foreach (var token in _tabletop.Tokens) {
                 if (token==pushingToken || CanTokenBeIgnored(token))
                     continue;
 
@@ -236,7 +236,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             Rect otherTokenRect;
 
 
-            foreach (var token in _tabletop.GetAllTokens()) {
+            foreach (var token in _tabletop.Tokens) {
                   otherTokenRect = GetRectWithSpherePosition(token.TokenRectTransform);
                 
               

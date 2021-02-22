@@ -12,6 +12,7 @@ using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Fucine;
+using SecretHistories.Logic;
 using SecretHistories.NullObjects;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
@@ -105,14 +106,30 @@ using Object = UnityEngine.Object;
             var encaustery = new Encaustery<SphereCreationCommand>();
         var sphereObject = new GameObject();
         Sphere sphere = sphereObject.AddComponent<ThresholdSphere>();
-
-        encaustery.Encaust(sphere);
+        var sphereCreationCommand= encaustery.Encaust(sphere);
+        Assert.AreEqual(sphere.Path, sphereCreationCommand.Path);
         }
 
 
         [Test]
-        public void SituationToken_EncaustsWithMemberSpheres()
+        public void Sphere_Encausts_With_Contents()
         {
+            var encaustery = new Encaustery<SphereCreationCommand>();
+            var sphereObject = new GameObject();
+            Sphere sphere = sphereObject.AddComponent<CardsPile>();
+            var tokenObject = new GameObject();
+            var token = tokenObject.AddComponent<Token>();
+            var payload = new ElementStack();
+            token.SetPayload(payload);
+            sphere.AcceptToken(token,new Context(Context.ActionSource.Unknown));
+            var sphereCreationCommand = encaustery.Encaust(sphere);
+
+            Assert.AreEqual(token.Payload.Quantity, sphereCreationCommand.Tokens.First().Payload.Quantity);
+        }
+
+    [Test]
+        public void SituationToken_EncaustsWithMemberSpheres()
+        { 
             var encaustery=new Encaustery<TokenCreationCommand>();
         var tokenObject = new GameObject();
         var token = tokenObject.AddComponent<Token>();
@@ -128,7 +145,7 @@ using Object = UnityEngine.Object;
         worldSphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
         
         var encaustedToken= encaustery.Encaust(token);
-        Assert.AreEqual(situation.Spheres.Count, encaustedToken.Payload.Spheres.Count);
+        Assert.AreEqual(situation.Spheres.First().Path, encaustedToken.Payload.Spheres.First().Path);
         }
 
     [Test]
@@ -137,7 +154,6 @@ using Object = UnityEngine.Object;
             var encaustery = new Encaustery<DropzoneCreationCommand>();
            var dropzone=new Dropzone();
            encaustery.Encaust(dropzone);
-
         }
 
 }

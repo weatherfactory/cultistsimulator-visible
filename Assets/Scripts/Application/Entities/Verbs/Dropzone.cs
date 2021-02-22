@@ -23,7 +23,7 @@ namespace SecretHistories.Entities.Verbs
         public event Action<float> OnLifetimeSpent;
         [DontEncaust]
         public string Id { get; private set; }
-        [DontEncaust]
+        [Encaust]
         public int Quantity => 1;
         [DontEncaust]
         public Dictionary<string, int> Mutations { get; }
