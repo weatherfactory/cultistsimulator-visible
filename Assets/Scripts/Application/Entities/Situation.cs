@@ -777,7 +777,7 @@ namespace SecretHistories.Entities {
            OnChanged?.Invoke(changeArgs);
 
 
-            Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(Id);
+            Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(VerbId);
     }
 
         public void Close()
