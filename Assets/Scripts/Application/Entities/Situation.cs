@@ -701,66 +701,6 @@ namespace SecretHistories.Entities {
         }
 
 
-    public void AttemptAspectInductions(Recipe currentRecipe, List<Token> outputTokens) // this should absolutely go through subscription - something to succeed ttm
-    {
-        //If any elements in the output, or in the situation itself, have inductions, test whether to start a new recipe
-
-     var inducingAspects = new AspectsDictionary();
-
-        //shrouded cards don't trigger inductions. This is because we don't generally want to trigger an induction
-        //for something that has JUST BEEN CREATED. This started out as a hack, but now we've moved from 'face-down'
-        //to 'shrouded' it feels more suitable.
-
-        foreach (var os in outputTokens)
-        {
-            if (!os.Shrouded())
-                inducingAspects.CombineAspects(os.GetAspects(true));
-        }
-
-
-        inducingAspects.CombineAspects(currentRecipe.Aspects);
-
-
-        foreach (var a in inducingAspects)
-        {
-            var aspectElement = Watchman.Get<Compendium>().GetEntityById<Element>(a.Key);
-
-            if (aspectElement != null)
-                PerformAspectInduction(aspectElement);
-            else
-                NoonUtility.Log("unknown aspect " + a + " in output");
-        }
-    }
-
-
-
-    void PerformAspectInduction(Element aspectElement)
-    {
-        foreach (var induction in aspectElement.Induces)
-        {
-            var d = Watchman.Get<IDice>();
-
-            if (d.Rolld100() <= induction.Chance)
-                CreateRecipeFromInduction(Watchman.Get<Compendium>() .GetEntityById<Recipe>(induction.Id), aspectElement.Id);
-        }
-    }
-
-    void CreateRecipeFromInduction(Recipe inducedRecipe, string aspectID) // yeah this *definitely* should be through subscription!
-    {
-        if (inducedRecipe == null)
-        {
-            NoonUtility.Log("unknown recipe " + inducedRecipe + " in induction for " + aspectID);
-            return;
-        }
-
-        
-            SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId,
-          new FucinePath(inducedRecipe.ActionId)).WithRecipeId(inducedRecipe.Id).AlreadyInState(StateEnum.Ongoing);
-
-            var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, FucinePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
-            SendCommandToSubscribers(spawnNewTokenCommand);
-
-    }
 
 
         public void OnTokenMoved(TokenLocation toLocation)
@@ -775,9 +715,7 @@ namespace SecretHistories.Entities {
            IsOpen = true;
            var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Update);
            OnChanged?.Invoke(changeArgs);
-
-
-            Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(VerbId);
+           Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(VerbId);
     }
 
         public void Close()

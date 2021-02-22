@@ -9,13 +9,13 @@ using SecretHistories.Enums;
 
 namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
 {
-   public class MigrateTokensInsideSituation: ISituationCommand
+   public class MigrateTokensInsideSituationCommand: ISituationCommand
     {
         private readonly SphereCategory _fromCategory;
         private readonly SphereCategory _toCategory;
         public CommandCategory CommandCategory { get; }
 
-        public MigrateTokensInsideSituation(SphereCategory fromCategory,SphereCategory toCategory,CommandCategory commandCategory)
+        public MigrateTokensInsideSituationCommand(SphereCategory fromCategory,SphereCategory toCategory,CommandCategory commandCategory)
         {
             _fromCategory = fromCategory;
             _toCategory = toCategory;

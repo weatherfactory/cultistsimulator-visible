@@ -27,7 +27,7 @@ namespace SecretHistories.States
             var storageCommand = new PopulateDominionSpheresCommand(CommandCategory.Storage, new StorageSphereSpec());
                 situation.CommandQueue.AddCommand(storageCommand);
 
-                var migrateFromVerbSlotsToStorageCommand=new MigrateTokensInsideSituation(SphereCategory.Threshold,SphereCategory.SituationStorage,CommandCategory.Storage);
+                var migrateFromVerbSlotsToStorageCommand=new MigrateTokensInsideSituationCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,CommandCategory.Storage);
                 situation.CommandQueue.AddCommand(migrateFromVerbSlotsToStorageCommand);
             
                 SoundManager.PlaySfx("SituationBegin");

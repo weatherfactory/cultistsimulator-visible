@@ -1,11 +1,14 @@
 ﻿using System;
+using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Commands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Constants;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
+using SSecretHistories.Entities;
 
 namespace SecretHistories.States
 {
@@ -16,7 +19,17 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            
+            var createOutputShereCommand = new PopulateDominionSpheresCommand(CommandCategory.Output, new OutputSphereSpec());
+            situation.CommandQueue.AddCommand(createOutputShereCommand);
+
+            var migrateToOutputCommand=new MigrateTokensInsideSituationCommand(SphereCategory.SituationStorage,SphereCategory.Output,CommandCategory.Output);
+            situation.CommandQueue.AddCommand(migrateToOutputCommand);
+
+            var attemptAspectInductionsCommand=new AttemptAspectInductionCommand(CommandCategory.Output,SphereCategory.Output);
+            situation.CommandQueue.AddCommand(attemptAspectInductionsCommand);
+
+            SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj
+
         }
 
         public override void Exit(Situation situation)

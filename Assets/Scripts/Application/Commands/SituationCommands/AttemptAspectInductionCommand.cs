@@ -1,0 +1,98 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SecretHistories.Commands;
+using SecretHistories.Core;
+using SecretHistories.Entities;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
+using SecretHistories.UI;
+
+namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
+{
+   public class AttemptAspectInductionCommand: ISituationCommand
+    {
+        private readonly SphereCategory _forSphereCategory;
+        public CommandCategory CommandCategory { get; }
+
+        public AttemptAspectInductionCommand(CommandCategory commandCategory,SphereCategory forSphereCategory)
+        {
+            _forSphereCategory = forSphereCategory;
+            CommandCategory = commandCategory;
+        }
+
+        public bool Execute(Situation situation)
+        {
+            //If any elements in the output, or in the situation itself, have inductions, test whether to start a new recipe
+
+            var inducingAspects = new AspectsDictionary();
+
+            //shrouded cards don't trigger inductions. This is because we don't generally want to trigger an induction
+            //for something that has JUST BEEN CREATED. This started out as a hack, but now we've moved from 'face-down'
+            //to 'shrouded' it feels more suitable.
+
+            var spheresToGetFrom = situation.GetSpheresByCategory(_forSphereCategory);
+            List<Token> tokens=new List<Token>();
+
+            foreach (var s in spheresToGetFrom)
+            {
+                tokens.AddRange(s.GetElementTokens());
+            }
+
+
+
+            foreach (var t in tokens)
+            {
+                if (!t.Shrouded())
+                    inducingAspects.CombineAspects(t.GetAspects(true));
+            }
+
+
+            inducingAspects.CombineAspects(situation.Recipe.Aspects);
+
+
+            foreach (var a in inducingAspects)
+            {
+                var aspectElement = Watchman.Get<Compendium>().GetEntityById<Element>(a.Key);
+
+                if (aspectElement != null)
+                    PerformAspectInduction(aspectElement,situation);
+                else
+                    NoonUtility.Log("unknown aspect " + a + " in output");
+            }
+
+            return true;
+        }
+
+
+        void PerformAspectInduction(Element aspectElement, Situation situation)
+        {
+            foreach (var induction in aspectElement.Induces)
+            {
+                var d = Watchman.Get<IDice>();
+
+                if (d.Rolld100() <= induction.Chance)
+                    CreateRecipeFromInduction(Watchman.Get<Compendium>().GetEntityById<Recipe>(induction.Id), aspectElement.Id,situation);
+            }
+        }
+
+        void CreateRecipeFromInduction(Recipe inducedRecipe, string aspectID, Situation situation) // yeah this *definitely* should be through subscription!
+        {
+            if (inducedRecipe == null)
+            {
+                NoonUtility.Log("unknown recipe " + inducedRecipe + " in induction for " + aspectID);
+                return;
+            }
+
+
+            SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId,
+                new FucinePath(inducedRecipe.ActionId)).WithRecipeId(inducedRecipe.Id).AlreadyInState(StateEnum.Ongoing);
+
+            var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, FucinePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
+       situation.SendCommandToSubscribers(spawnNewTokenCommand);
+
+        }
+    }
+}

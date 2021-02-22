@@ -13,7 +13,6 @@ public class Context {
         PlayerDumpAll,
 TokenMigration,
         SituationEffect,
-        SituationResults,
         GreedyGrab,
         Retire,
         Debug,
