@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
+using SecretHistories.Spheres;
 
 namespace SecretHistories.Commands
 {
@@ -14,5 +15,10 @@ namespace SecretHistories.Commands
         public SphereSpec GoverningSphereSpec { get; set; }
         public FucinePath Path { get; set; }
         public List<TokenCreationCommand> Tokens { get; set; }
+
+        public Sphere Execute()
+        {
+        //    public Sphere InstantiateSphere(SphereSpec spec, FucinePath parentPath)
+        }
     }
 }
