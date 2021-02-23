@@ -222,12 +222,12 @@ namespace SecretHistories.Constants
             situationCreationCommand.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
             
             
-            var verbSlotsCommand = new PopulateDominionSpheresCommand(CommandCategory.VerbThresholds, verb.Thresholds);
+            var verbSlotsCommand = new PopulateDominionSpheresCommand(verb.Thresholds);
             situationCreationCommand.CommandQueue.AddCommand(verbSlotsCommand);
 
 
             var recipeSlotSpecs = SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(htSituationValues, recipe.Slots);
-            var recipeSlotsCommand = new PopulateDominionSpheresCommand(CommandCategory.RecipeThresholds, recipeSlotSpecs);
+            var recipeSlotsCommand = new PopulateDominionSpheresCommand(recipeSlotSpecs);
             situationCreationCommand.CommandQueue.AddCommand(recipeSlotsCommand);
             
             var tokenCreationCommand=new TokenCreationCommand(situationCreationCommand, tokenLocation);

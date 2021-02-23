@@ -27,6 +27,10 @@ namespace SecretHistories.UI {
         public List<StateEnum> VisibleForStates;
         public List<CommandCategory> RespondToCommandCategories;
 
+        [Header("Preserve spheres when dismissed?")]
+        [Tooltip("Dominions will gracefully retire spheres and flush their contents when dismissed unless this box is ticked. NB that hiding a window doesn't dismiss dominions - dismissal is a situation life cycle thing.")]
+        public bool PreserveSpheresWhenDismissed;
+
         public OnSphereAddedEvent OnSphereAdded => _spheresWrangler.OnSphereAdded;
 
         public OnSphereRemovedEvent OnSphereRemoved => _spheresWrangler.OnSphereRemoved;
@@ -44,18 +48,18 @@ namespace SecretHistories.UI {
 
             foreach (var existingSphere in gameObject.GetComponentsInChildren<Sphere>())
                 _situation.AttachSphere(existingSphere);
-
-
         }
 
-        public void Show()
+        public void Evoke()
         {
             canvasGroupFader.Show();
         }
 
-        public void Hide()
+        public void Dismiss()
         {
             canvasGroupFader.Hide();
+            if(!PreserveSpheresWhenDismissed)
+                RemoveAllSpheres();
         }
 
         public Sphere CreatePrimarySphere(SphereSpec spec)

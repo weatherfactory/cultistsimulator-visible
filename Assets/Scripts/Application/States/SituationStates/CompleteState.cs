@@ -19,10 +19,10 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var createOutputShereCommand = new PopulateDominionSpheresCommand(CommandCategory.Output, new OutputSphereSpec());
+            var createOutputShereCommand = new PopulateDominionSpheresCommand(new OutputSphereSpec());
             situation.CommandQueue.AddCommand(createOutputShereCommand);
 
-            var migrateToOutputCommand=new MigrateTokensInsideSituationCommand(SphereCategory.SituationStorage,SphereCategory.Output,CommandCategory.Output);
+            var migrateToOutputCommand=new FlushTokensToCategoryCommand(SphereCategory.SituationStorage,SphereCategory.Output,CommandCategory.Output);
             situation.CommandQueue.AddCommand(migrateToOutputCommand);
 
             var attemptAspectInductionsCommand=new AttemptAspectInductionCommand(CommandCategory.Output,SphereCategory.Output);

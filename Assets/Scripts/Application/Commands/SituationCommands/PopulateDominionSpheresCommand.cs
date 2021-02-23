@@ -12,27 +12,24 @@ namespace SecretHistories.Commands.SituationCommands
 {
   public  class PopulateDominionSpheresCommand: ISituationCommand
     {
-        private List<SphereSpec> _populateWith = new List<SphereSpec>();
+        private readonly List<SphereSpec> _populateWith = new List<SphereSpec>();
 
-        public CommandCategory CommandCategory { get; }
+        public CommandCategory CommandCategory => CommandCategory.All;
 
-        public PopulateDominionSpheresCommand(CommandCategory commandCategory, SphereSpec populateWith)
+        public PopulateDominionSpheresCommand(SphereSpec populateWith)
         {
             _populateWith.Add(populateWith);
-            CommandCategory = commandCategory;
         }
 
-        public PopulateDominionSpheresCommand(CommandCategory commandCategory, List<SphereSpec> populateWith)
+        public PopulateDominionSpheresCommand(List<SphereSpec> populateWith)
         {
             _populateWith.AddRange(populateWith);
-            CommandCategory = commandCategory;
         }
 
 
         public bool Execute(Situation situation)
         {
-            if (_populateWith.Count > 0) //only execute if there are any relevant slot instructions. We don't want to clear existing slots with a recipe that doesn't specify them
-                //this may be irrelevant if we only add a command when we need one
+            if (_populateWith.Count > 0) //This means we don't clear existing slots unless there are sl
             {
                 var dominion = situation.GetSituationDominionsForCommandCategory(this.CommandCategory).FirstOrDefault();
                 if(dominion!=null)

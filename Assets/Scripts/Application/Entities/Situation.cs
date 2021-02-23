@@ -588,9 +588,9 @@ namespace SecretHistories.Entities {
             foreach (var dominion in _registeredDominions)
             {
                 if (State.IsVisibleInThisState(dominion))
-                    dominion.Show();
+                    dominion.Evoke();
                 else
-                    dominion.Hide();
+                    dominion.Dismiss();
             }
 
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Update));

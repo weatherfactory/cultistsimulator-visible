@@ -14,7 +14,7 @@ namespace SecretHistories.Core
         {
             foreach (var command in new List<ISituationCommand>(_commands))
             {
-                if (forActiveOnDominion.Contains(command.CommandCategory))
+                if (command.CommandCategory == CommandCategory.All || forActiveOnDominion.Contains(command.CommandCategory))
                 {
                     bool executed = command.Execute(situation);
                     if (executed)
@@ -28,12 +28,22 @@ namespace SecretHistories.Core
         {
             foreach(var command in new List<ISituationCommand>(_commands))
             {
-                if (command.CommandCategory == forActiveOnDominion)
+                if (command.CommandCategory==CommandCategory.All || command.CommandCategory == forActiveOnDominion)
                 {
                     bool executed = command.Execute(situation);
                     if (executed)
                         MarkCommandCompleted(command);
                 }
+            }
+        }
+
+        public void ExecuteAllCommands(Situation situation)
+        {
+            foreach (var command in new List<ISituationCommand>(_commands))
+            {
+                    bool executed = command.Execute(situation);
+                    if (executed)
+                        MarkCommandCompleted(command);
             }
         }
 

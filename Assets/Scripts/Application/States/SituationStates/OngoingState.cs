@@ -21,13 +21,13 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var recipeSlotsCommand = new PopulateDominionSpheresCommand(CommandCategory.RecipeThresholds, situation.Recipe.Slots);
+            var recipeSlotsCommand = new PopulateDominionSpheresCommand(situation.Recipe.Slots);
             situation.CommandQueue.AddCommand(recipeSlotsCommand);
 
-            var storageCommand = new PopulateDominionSpheresCommand(CommandCategory.Storage, new StorageSphereSpec());
+            var storageCommand = new PopulateDominionSpheresCommand(new StorageSphereSpec());
                 situation.CommandQueue.AddCommand(storageCommand);
 
-                var migrateFromVerbSlotsToStorageCommand=new MigrateTokensInsideSituationCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,CommandCategory.Storage);
+                var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,CommandCategory.Storage);
                 situation.CommandQueue.AddCommand(migrateFromVerbSlotsToStorageCommand);
             
                 SoundManager.PlaySfx("SituationBegin");
@@ -36,7 +36,7 @@ namespace SecretHistories.States
         public override void Exit(Situation situation)
         {
 
-            var migrateFromRecipeSlotsToStorageComand = new MigrateTokensInsideSituationCommand(SphereCategory.Threshold, SphereCategory.SituationStorage, CommandCategory.Storage);
+            var migrateFromRecipeSlotsToStorageComand = new FlushTokensToCategoryCommand(SphereCategory.Threshold, SphereCategory.SituationStorage, CommandCategory.Storage);
             situation.CommandQueue.AddCommand(migrateFromRecipeSlotsToStorageComand);
             
         }

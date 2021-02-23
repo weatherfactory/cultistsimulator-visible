@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Spheres;
 
 namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
 {
-   public class MigrateTokensInsideSituationCommand: ISituationCommand
+   public class FlushTokensToCategoryCommand: ISituationCommand
     {
         private readonly SphereCategory _fromCategory;
         private readonly SphereCategory _toCategory;
         public CommandCategory CommandCategory { get; }
 
-        public MigrateTokensInsideSituationCommand(SphereCategory fromCategory,SphereCategory toCategory,CommandCategory commandCategory)
+        public FlushTokensToCategoryCommand(SphereCategory fromCategory,SphereCategory toCategory,CommandCategory commandCategory)
         {
             _fromCategory = fromCategory;
             _toCategory = toCategory;

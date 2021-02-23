@@ -16,9 +16,10 @@ namespace SecretHistories.Commands
         public FucinePath Path { get; set; }
         public List<TokenCreationCommand> Tokens { get; set; }
 
-        public Sphere Execute()
+        public Sphere Execute(Context context)
         {
         //    public Sphere InstantiateSphere(SphereSpec spec, FucinePath parentPath)
+        return null;
         }
     }
 }
