@@ -27,7 +27,7 @@ namespace SecretHistories.States
             var storageCommand = new PopulateDominionSpheresCommand(new StorageSphereSpec());
                 situation.CommandQueue.AddCommand(storageCommand);
 
-                var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,CommandCategory.Storage);
+                var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);
                 situation.CommandQueue.AddCommand(migrateFromVerbSlotsToStorageCommand);
             
                 SoundManager.PlaySfx("SituationBegin");
@@ -36,7 +36,7 @@ namespace SecretHistories.States
         public override void Exit(Situation situation)
         {
 
-            var migrateFromRecipeSlotsToStorageComand = new FlushTokensToCategoryCommand(SphereCategory.Threshold, SphereCategory.SituationStorage, CommandCategory.Storage);
+            var migrateFromRecipeSlotsToStorageComand = new FlushTokensToCategoryCommand(SphereCategory.Threshold, SphereCategory.SituationStorage, StateEnum.RequiringExecution);
             situation.CommandQueue.AddCommand(migrateFromRecipeSlotsToStorageComand);
             
         }
@@ -53,11 +53,6 @@ namespace SecretHistories.States
             return false;
         }
 
-        public override bool IsVisibleInThisState(Dominion dominion)
-        {
-            return dominion.VisibleFor(StateEnum.Ongoing);
-
-        }
 
         /// <summary>
         /// WARNING: this assumes ShouldAlwaysSucceed, which is greast for prediction but not for execution
@@ -78,10 +73,8 @@ namespace SecretHistories.States
 
         public override void Continue(Situation situation)
         {
-            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.Anchor, situation);
-            situation.CommandQueue.ExecuteCommandsFor(new List<CommandCategory>{ CommandCategory.RecipeThresholds,CommandCategory.Storage}, situation);
-            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.Timer, situation);
-
+            situation.CommandQueue.ExecuteCommandsFor(RehydrationValue, situation);
+            
             if (situation.TimeRemaining <= 0)
              situation.TransitionToState(new RequiresExecutionState());
             else

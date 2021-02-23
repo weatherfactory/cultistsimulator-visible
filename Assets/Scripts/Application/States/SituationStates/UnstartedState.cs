@@ -35,11 +35,6 @@ namespace SecretHistories.States
 
         }
 
-        public override bool IsVisibleInThisState(Dominion dominion)
-        {
-            return dominion.VisibleFor(StateEnum.Unstarted);
-        }
-
         public override bool IsValidPredictionForState(Recipe recipeToCheck,Situation s)
         {
             //return true if:
@@ -55,7 +50,7 @@ namespace SecretHistories.States
 
         public override void Continue (Situation situation)
         {
-            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.VerbThresholds,situation);
+            situation.CommandQueue.ExecuteCommandsFor(RehydrationValue,situation);
         }
     }
 }

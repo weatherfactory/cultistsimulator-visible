@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.States;
 
 namespace SecretHistories.Core
@@ -10,11 +12,11 @@ namespace SecretHistories.Core
     {
         private readonly List<ISituationCommand> _commands=new List<ISituationCommand>();
 
-        public void ExecuteCommandsFor(List<CommandCategory> forActiveOnDominion, Situation situation)
+        public void ExecuteCommandsFor(List<StateEnum> forStates, Situation situation)
         {
             foreach (var command in new List<ISituationCommand>(_commands))
             {
-                if (command.CommandCategory == CommandCategory.All || forActiveOnDominion.Contains(command.CommandCategory))
+                if (forStates.Intersect(command.ValidForStates).Any())
                 {
                     bool executed = command.Execute(situation);
                     if (executed)
@@ -24,11 +26,11 @@ namespace SecretHistories.Core
         }
 
 
-        public void ExecuteCommandsFor(CommandCategory forActiveOnDominion,Situation situation)
+        public void ExecuteCommandsFor(StateEnum forState,Situation situation)
         {
             foreach(var command in new List<ISituationCommand>(_commands))
             {
-                if (command.CommandCategory==CommandCategory.All || command.CommandCategory == forActiveOnDominion)
+                if (command.ValidForStates.Contains(forState))
                 {
                     bool executed = command.Execute(situation);
                     if (executed)

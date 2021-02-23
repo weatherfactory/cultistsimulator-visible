@@ -25,8 +25,8 @@ namespace SecretHistories.UI {
         [SerializeField] SpheresWrangler _spheresWrangler;
         [SerializeField] CanvasGroupFader canvasGroupFader;
         public List<StateEnum> VisibleForStates;
-        public List<CommandCategory> RespondToCommandCategories;
-
+        public Sphere spherePrefab;
+        
         [Header("Preserve spheres when dismissed?")]
         [Tooltip("Dominions will gracefully retire spheres and flush their contents when dismissed unless this box is ticked. NB that hiding a window doesn't dismiss dominions - dismissal is a situation life cycle thing.")]
         public bool PreserveSpheresWhenDismissed;
@@ -76,10 +76,13 @@ namespace SecretHistories.UI {
             return VisibleForStates.Contains(state);
         }
 
-        public bool MatchesCommandCategory(CommandCategory category)
+        public bool RelevantTo(StateEnum state,Type sphereType)
         {
-            return RespondToCommandCategories.Contains(category);
+            Type dominionSphereType = spherePrefab.GetType();
+            return VisibleForStates.Contains(state) && sphereType == dominionSphereType;
         }
+
+
 
         public void RemoveAllSpheres()
         {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.States;
 using SecretHistories.UI;
@@ -16,7 +17,7 @@ namespace SecretHistories.Commands
     {
         private string _image;
 
-        public CommandCategory CommandCategory => CommandCategory.Anchor;
+        public List<StateEnum> ValidForStates => new List<StateEnum> { StateEnum.Complete };
 
 
         public BurnImageCommand(string image)
@@ -37,8 +38,6 @@ namespace SecretHistories.Commands
     public class BurnImageUnderTokenCommand : IAffectsTokenCommand
     {
         private string _image;
-
-        public CommandCategory CommandCategory => CommandCategory.Anchor;
 
 
         public BurnImageUnderTokenCommand(string image)

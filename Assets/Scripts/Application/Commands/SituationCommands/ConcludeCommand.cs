@@ -12,7 +12,7 @@ namespace SecretHistories.Commands.SituationCommands
 {
    public class ConcludeCommand: ISituationCommand
    {
-       public CommandCategory CommandCategory => CommandCategory.Output;
+       public List<StateEnum> ValidForStates => new List<StateEnum> { StateEnum.Complete };
 
         public bool Execute(Situation situation)
         {

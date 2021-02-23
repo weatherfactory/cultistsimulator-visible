@@ -30,11 +30,6 @@ namespace SecretHistories.States
             return false;
         }
 
-        public override bool IsVisibleInThisState(Dominion dominion)
-        {
-            return dominion.VisibleFor(StateEnum.Halting);
-
-        }
 
         public override bool IsValidPredictionForState(Recipe recipeToCheck, Situation s)
         {

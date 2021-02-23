@@ -29,11 +29,6 @@ namespace Assets.Scripts.Application.Entities.NullEntities
             return false;
         }
 
-        public override bool IsVisibleInThisState(Dominion dominion)
-        {
-            return false;
-
-        }
 
         public override bool IsValidPredictionForState(Recipe recipeToCheck, Situation s)
         {

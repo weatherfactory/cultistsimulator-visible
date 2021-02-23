@@ -14,13 +14,13 @@ namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
     {
         private readonly SphereCategory _fromCategory;
         private readonly SphereCategory _toCategory;
-        public CommandCategory CommandCategory { get; }
+        public List<StateEnum> ValidForStates => new List<StateEnum>();
 
-        public FlushTokensToCategoryCommand(SphereCategory fromCategory,SphereCategory toCategory,CommandCategory commandCategory)
+        public FlushTokensToCategoryCommand(SphereCategory fromCategory,SphereCategory toCategory,StateEnum onState)
         {
             _fromCategory = fromCategory;
             _toCategory = toCategory;
-            CommandCategory = commandCategory;
+            ValidForStates.Add(onState);
         }
 
         public bool Execute(Situation situation)

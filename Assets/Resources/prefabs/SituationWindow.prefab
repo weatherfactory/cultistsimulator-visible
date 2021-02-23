@@ -1178,7 +1178,9 @@ MonoBehaviour:
   _spheresWrangler: {fileID: 1005240876968007683}
   canvasGroupFader: {fileID: 114848985628778574}
   VisibleForStates: 0200000003000000
-  RespondToCommandCategories: 02000000
+  spherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+    type: 3}
+  PreserveSpheresWhenDismissed: 0
 --- !u!114 &1005240876968007683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2392,7 +2394,9 @@ MonoBehaviour:
   _spheresWrangler: {fileID: 3951079214793869473}
   canvasGroupFader: {fileID: 114595233805244828}
   VisibleForStates: 05000000
-  RespondToCommandCategories: 05000000
+  spherePrefab: {fileID: 173994217101375650, guid: 1215ec9de9884424e82cd0d2fcdf0623,
+    type: 3}
+  PreserveSpheresWhenDismissed: 0
 --- !u!114 &3951079214793869473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2757,7 +2761,9 @@ MonoBehaviour:
   _spheresWrangler: {fileID: 5628511893131723470}
   canvasGroupFader: {fileID: 2645367709224873335}
   VisibleForStates: 0000000001000000020000000300000004000000
-  RespondToCommandCategories: 06000000
+  spherePrefab: {fileID: 1127656137174522416, guid: 8315d660ae3773442ac46832ef4f36d4,
+    type: 3}
+  PreserveSpheresWhenDismissed: 0
 --- !u!114 &5628511893131723470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3494,7 +3500,9 @@ MonoBehaviour:
   _spheresWrangler: {fileID: 2663436766044327619}
   canvasGroupFader: {fileID: 114412774732763762}
   VisibleForStates: 0000000001000000
-  RespondToCommandCategories: 01000000
+  spherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+    type: 3}
+  PreserveSpheresWhenDismissed: 0
 --- !u!114 &114844407673096716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3783,7 +3791,9 @@ MonoBehaviour:
   _spheresWrangler: {fileID: 3604664568726823840}
   canvasGroupFader: {fileID: 8146654841912857010}
   VisibleForStates: 0200000003000000
-  RespondToCommandCategories: 04000000
+  spherePrefab: {fileID: 8896989850952037998, guid: 91cdd0265e269894e8f4ffac210cf045,
+    type: 3}
+  PreserveSpheresWhenDismissed: 0
 --- !u!114 &3604664568726823840
 MonoBehaviour:
   m_ObjectHideFlags: 0

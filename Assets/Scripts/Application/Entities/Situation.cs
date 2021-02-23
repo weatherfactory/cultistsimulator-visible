@@ -378,7 +378,7 @@ namespace SecretHistories.Entities {
                emptyNoteSphere = notesSpheres.SingleOrDefault(ns => ns.GetTotalStacksCount() == 0);
                if(emptyNoteSphere==null)
                {
-                   var notesDominion = GetSituationDominionsForCommandCategory(CommandCategory.Notes).FirstOrDefault();
+                   var notesDominion = GetRelevantDominions(StateForRehydration,typeof(NotesSphere)).FirstOrDefault();
                    if (notesDominion == null)
                    {
                        NoonUtility.Log($"No notes sphere and no notes dominion found in {Path}: we won't add note {label}, then.");
@@ -732,9 +732,9 @@ namespace SecretHistories.Entities {
 
 
 
-        public List<Dominion> GetSituationDominionsForCommandCategory(CommandCategory commandCategory)
+        public List<Dominion> GetRelevantDominions(StateEnum forState,Type sphereType)
     {
-            return new List<Dominion>(_registeredDominions.Where(a=>a.MatchesCommandCategory(commandCategory)));
+            return new List<Dominion>(_registeredDominions.Where(a=>a.RelevantTo(forState,sphereType)));
     }
 
     public List<Sphere> GetAvailableThresholdsForStackPush(ITokenPayload stack)

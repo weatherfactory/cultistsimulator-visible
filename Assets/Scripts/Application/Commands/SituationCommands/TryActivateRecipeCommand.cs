@@ -1,8 +1,10 @@
-﻿using SecretHistories.Commands;
+﻿using System.Collections.Generic;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.States;
 using SecretHistories.UI;
+using UnityEditorInternal;
 
 namespace SecretHistories.Commands.SituationCommands
 {
@@ -10,12 +12,14 @@ namespace SecretHistories.Commands.SituationCommands
     {
         private readonly Recipe _recipeToActivate;
             
-        public CommandCategory CommandCategory => CommandCategory.VerbThresholds;
-
+        
         public TryActivateRecipeCommand(Recipe recipeToActivate)
         {
             _recipeToActivate = recipeToActivate;
         }
+
+        public List<StateEnum> ValidForStates=>new List<StateEnum> {StateEnum.Unstarted};
+
         public bool Execute(Situation situation)
         {
             var aspects = situation.GetAspects(true);

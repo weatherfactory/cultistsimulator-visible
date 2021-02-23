@@ -22,10 +22,10 @@ namespace SecretHistories.States
             var createOutputShereCommand = new PopulateDominionSpheresCommand(new OutputSphereSpec());
             situation.CommandQueue.AddCommand(createOutputShereCommand);
 
-            var migrateToOutputCommand=new FlushTokensToCategoryCommand(SphereCategory.SituationStorage,SphereCategory.Output,CommandCategory.Output);
+            var migrateToOutputCommand=new FlushTokensToCategoryCommand(SphereCategory.SituationStorage,SphereCategory.Output,StateEnum.Complete);
             situation.CommandQueue.AddCommand(migrateToOutputCommand);
 
-            var attemptAspectInductionsCommand=new AttemptAspectInductionCommand(CommandCategory.Output,SphereCategory.Output);
+            var attemptAspectInductionsCommand=new AttemptAspectInductionCommand(SphereCategory.Output);
             situation.CommandQueue.AddCommand(attemptAspectInductionsCommand);
 
             SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj
@@ -45,11 +45,6 @@ namespace SecretHistories.States
             return false;
         }
 
-        public override bool IsVisibleInThisState(Dominion dominion)
-        {
-            return dominion.VisibleFor(StateEnum.Complete);
-
-        }
 
         public override bool IsValidPredictionForState(Recipe recipeToCheck, Situation s)
         {
@@ -58,7 +53,7 @@ namespace SecretHistories.States
 
         public override void Continue(Situation situation)
         {
-            situation.CommandQueue.ExecuteCommandsFor(CommandCategory.Output, situation);
+            situation.CommandQueue.ExecuteCommandsFor(RehydrationValue, situation);
 
         }
     }
