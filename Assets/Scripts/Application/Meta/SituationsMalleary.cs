@@ -25,7 +25,7 @@ namespace Assets.Scripts.Application.Meta
 
        public void Awake()
        {
-           var sphereSphec = new SphereSpec(new LegacyPrimaryThresholdSphereSpecIdentifierStrategy());
+           var sphereSphec = new SphereSpec(new SimpleSphereSpecIdentifierStrategy("drydock"));
            sphereSphec.SetId("situationsmalleary");
            sphereSphec.Label = "Malleary: Situations";
            sphereSphec.AllowAnyToken = true;
