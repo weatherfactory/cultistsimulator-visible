@@ -17,7 +17,7 @@ namespace SecretHistories.Commands.Encausting
             public SerializationHelper()
         {
             var jsonSerializerSettings = new JsonSerializerSettings();
-             jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+      //       jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
             serializer = JsonSerializer.Create(jsonSerializerSettings);
         }

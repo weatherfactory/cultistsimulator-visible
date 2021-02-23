@@ -11,6 +11,7 @@ using SecretHistories.Fucine;
 
 namespace SecretHistories.Fucine
 {
+
     public class FucinePath:IEquatable<FucinePath>
     {
         public const char ROOT = '.';
@@ -18,6 +19,8 @@ namespace SecretHistories.Fucine
         public const char SPHERE = '/';
         public const char CURRENT = '#';
 
+
+        
 
         protected List<FucinePathPart> PathParts = new List<FucinePathPart>();
 
@@ -32,8 +35,14 @@ namespace SecretHistories.Fucine
             return false;
         }
 
+        public override string ToString()
+        {
+            return string.Join(string.Empty, PathParts);
+        }
 
-    [JsonConstructor]
+        public string Path => ToString();
+        
+        [JsonConstructor]
         public FucinePath(string path)
         {
             if (path == null)
@@ -144,10 +153,7 @@ namespace SecretHistories.Fucine
             }
         }
 
-        public override string ToString()
-        {
-            return string.Join(string.Empty, PathParts);
-        }
+
 
         public FucinePath GetTokenPath()
         {

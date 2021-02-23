@@ -104,8 +104,11 @@ namespace SecretHistories.Commands
                 
 
                 else
+                {
+                    //if(!encaustableProperty.PropertyType.IsSerializable)
+                    //    NoonUtility.LogWarning($"Property {encaustableProperty.Name} on {encaustable.GetType().Name} isn't marked serializable, so the value probably won't be persisted.");
                     commandPropertyToSet.SetValue(command, encaustableProperty.GetValue(encaustable));
-
+                }
 
 
             }
