@@ -18,7 +18,7 @@ namespace SecretHistories.Commands.SituationCommands
             _recipeToActivate = recipeToActivate;
         }
 
-        public List<StateEnum> ValidForStates=>new List<StateEnum> {StateEnum.Unstarted};
+        public List<StateEnum> GetStatesCommandIsValidFor() => new List<StateEnum> {StateEnum.Unstarted};
 
         public bool Execute(Situation situation)
         {

@@ -16,7 +16,7 @@ namespace SecretHistories.Core
         {
             foreach (var command in new List<ISituationCommand>(_commands))
             {
-                if (forStates.Intersect(command.ValidForStates).Any())
+                if (forStates.Intersect(command.GetStatesCommandIsValidFor()).Any())
                 {
                     bool executed = command.Execute(situation);
                     if (executed)
@@ -30,7 +30,7 @@ namespace SecretHistories.Core
         {
             foreach(var command in new List<ISituationCommand>(_commands))
             {
-                if (command.ValidForStates.Contains(forState))
+                if (command.GetStatesCommandIsValidFor().Contains(forState))
                 {
                     bool executed = command.Execute(situation);
                     if (executed)

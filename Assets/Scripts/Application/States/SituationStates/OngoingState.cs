@@ -21,10 +21,10 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var recipeSlotsCommand = new PopulateDominionSpheresCommand(situation.Recipe.Slots);
+            var recipeSlotsCommand = new PopulateDominionCommand(situation.Recipe.Slots);
             situation.CommandQueue.AddCommand(recipeSlotsCommand);
 
-            var storageCommand = new PopulateDominionSpheresCommand(new StorageSphereSpec());
+            var storageCommand = new PopulateDominionCommand(new StorageSphereSpec());
                 situation.CommandQueue.AddCommand(storageCommand);
 
                 var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);

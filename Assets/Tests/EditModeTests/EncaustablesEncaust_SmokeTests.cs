@@ -7,6 +7,7 @@ using Assets.Scripts.Application.Commands;
 using Assets.Scripts.Application.Entities.NullEntities;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
+using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
@@ -103,18 +104,18 @@ using Object = UnityEngine.Object;
         [Test]
         public void Sphere_Encausts()
         {
-            var encaustery = new Encaustery<SphereCreationCommand>();
+            var encaustery = new Encaustery<DominionSphereCreationCommand>();
         var sphereObject = new GameObject();
         Sphere sphere = sphereObject.AddComponent<ThresholdSphere>();
-        var sphereCreationCommand= encaustery.Encaust(sphere);
-        Assert.AreEqual(sphere.Path, sphereCreationCommand.Path);
+        var sphereSpec= encaustery.Encaust(sphere);
+        Assert.AreEqual(sphere.Path, sphereSpec.Path);
         }
 
 
         [Test]
         public void Sphere_Encausts_With_Contents()
         {
-            var encaustery = new Encaustery<SphereCreationCommand>();
+            var encaustery = new Encaustery<DominionSphereCreationCommand>();
             var sphereObject = new GameObject();
             Sphere sphere = sphereObject.AddComponent<CardsPile>();
             var tokenObject = new GameObject();
@@ -125,27 +126,6 @@ using Object = UnityEngine.Object;
             var sphereCreationCommand = encaustery.Encaust(sphere);
 
             Assert.AreEqual(token.Payload.Quantity, sphereCreationCommand.Tokens.First().Payload.Quantity);
-        }
-
-    [Test]
-        public void SituationToken_EncaustsWithMemberSpheres()
-        { 
-            var encaustery=new Encaustery<TokenCreationCommand>();
-        var tokenObject = new GameObject();
-        var token = tokenObject.AddComponent<Token>();
-
-        var situation = new Situation(NullVerb.Create(), new FucinePath("./s1!t1"));
-
-        var storageSphere = new GameObject("storageSphere").AddComponent<SituationStorageSphere>();
-        storageSphere.GoverningSphereSpec=new StorageSphereSpec();
-        situation.AttachSphere(storageSphere);
-
-        token.SetPayload(situation);
-
-        worldSphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
-        
-        var encaustedToken= encaustery.Encaust(token);
-        Assert.AreEqual(situation.Spheres.First().Path, encaustedToken.Payload.Spheres.First().Path);
         }
 
     [Test]

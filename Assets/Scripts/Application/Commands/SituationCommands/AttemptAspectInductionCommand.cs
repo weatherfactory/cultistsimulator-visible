@@ -15,7 +15,7 @@ namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
    public class AttemptAspectInductionCommand: ISituationCommand
     {
         private readonly SphereCategory _forSphereCategory;
-        public List<StateEnum> ValidForStates => new List<StateEnum> {StateEnum.Complete };
+        public List<StateEnum> GetStatesCommandIsValidFor() => new List<StateEnum> {StateEnum.Complete};
 
         public AttemptAspectInductionCommand(SphereCategory forSphereCategory)
         {

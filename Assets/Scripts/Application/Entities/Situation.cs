@@ -60,10 +60,7 @@ namespace SecretHistories.Entities {
         [Encaust] public FucinePath Path { get; protected set; }
 
         [Encaust]
-        public List<Sphere> Spheres
-        {
-            get { return new List<Sphere>(_spheres); }
-        }
+        public List<Dominion> Dominions => new List<Dominion>(_registeredDominions);
 
         [Encaust]
         public bool IsOpen { get; private set; }
@@ -330,8 +327,8 @@ namespace SecretHistories.Entities {
 
         public bool Retire(RetirementVFX vfx)
         {
-
-                foreach (var c in _spheres)
+            var spheresToRetire=new List<Sphere>(_spheres);
+                foreach (var c in spheresToRetire)
                 {
                     c.Retire(SphereRetirementType.Destructive);
                 }
@@ -706,7 +703,7 @@ namespace SecretHistories.Entities {
 
         public void OnTokenMoved(TokenLocation toLocation)
         {
-            foreach (var sphere in Spheres)
+            foreach (var sphere in _spheres)
                 sphere.SetReferencePosition(toLocation);
         }
 

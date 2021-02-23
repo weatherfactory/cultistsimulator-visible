@@ -34,9 +34,9 @@ namespace SecretHistories.Entities.Verbs
         [DontEncaust]
         public FucinePath Path { get { throw new NotImplementedException("haven't finished fucine paths for dropzones yet"); } }
         [Encaust]
-        public List<Sphere> Spheres
+        public List<Dominion> Dominions
         {
-            get { return new List<Sphere>(); }
+            get { return new List<Dominion>(); }
         }
         [DontEncaust] public string Label => "Dropzone";
         [DontEncaust] public string Description => "Description";

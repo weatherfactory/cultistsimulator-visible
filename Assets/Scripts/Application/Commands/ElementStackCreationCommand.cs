@@ -5,6 +5,7 @@ using System.Text;
 using Assets.Scripts.Application.Abstract;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
@@ -28,7 +29,7 @@ namespace SecretHistories.Commands
         public Dictionary<string,string> Illuminations { get; set; }
         public bool Defunct { get; set; }
         public float LifetimeRemaining { get; set; }
-        public List<SphereCreationCommand> Spheres { get; set; } = new List<SphereCreationCommand>();
+        public List<PopulateDominionCommand> Dominions { get; set; } = new List<PopulateDominionCommand>();
 
         public ElementStackCreationCommand(): this(string.Empty,0)
         {}
@@ -44,6 +45,7 @@ namespace SecretHistories.Commands
         public ITokenPayload Execute(Context context)
         {
             ElementStack elementStack = null;
+
 
             try
             {

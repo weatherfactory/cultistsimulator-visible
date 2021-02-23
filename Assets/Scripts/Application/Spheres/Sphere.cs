@@ -15,6 +15,8 @@ using SecretHistories.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SecretHistories.Assets.Scripts.Application.Commands;
+using SecretHistories.Commands.SituationCommands;
 using UnityEngine;
 
 namespace SecretHistories.Spheres
@@ -49,7 +51,7 @@ namespace SecretHistories.Spheres
         }
     }
 
-    [IsEncaustableClass(typeof(SphereCreationCommand))]
+    [IsEncaustableClass(typeof(DominionSphereCreationCommand))]
     public abstract class 
         Sphere : MonoBehaviour,IEncaustable
     {

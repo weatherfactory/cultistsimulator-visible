@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Commands;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.Spheres;
 using SecretHistories.UI;
-using UnityEngine;
 
 namespace SecretHistories.Abstract
     {
@@ -21,7 +16,7 @@ namespace SecretHistories.Abstract
         bool IsOpen { get;}
 
         public FucinePath Path { get; }
-        public List<Sphere> Spheres { get; }
+        public List<Dominion> Dominions { get; }
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValidElementStack();

@@ -13,9 +13,9 @@ namespace SecretHistories.Commands.SituationCommands
 {
     public class TryHaltSituationCommand : ISituationCommand
     {
-        public List<StateEnum> ValidForStates => new List<StateEnum> { StateEnum.Ongoing };
+        public List<StateEnum> GetStatesCommandIsValidFor() => new List<StateEnum> {StateEnum.Ongoing};
 
-        
+
         public TryHaltSituationCommand()
         {
 

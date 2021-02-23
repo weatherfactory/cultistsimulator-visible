@@ -19,7 +19,7 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var createOutputShereCommand = new PopulateDominionSpheresCommand(new OutputSphereSpec());
+            var createOutputShereCommand = new PopulateDominionCommand(new OutputSphereSpec());
             situation.CommandQueue.AddCommand(createOutputShereCommand);
 
             var migrateToOutputCommand=new FlushTokensToCategoryCommand(SphereCategory.SituationStorage,SphereCategory.Output,StateEnum.Complete);

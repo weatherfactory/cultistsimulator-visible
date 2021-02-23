@@ -50,6 +50,11 @@ namespace SecretHistories.UI {
 
         }
 
+        public List<Sphere> GetSpheres()
+        {
+            return new List<Sphere>(_spheres.Keys);
+        }
+
         
         public void RemoveAllSpheres()
         {

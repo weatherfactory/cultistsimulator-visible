@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Commands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Spheres;
 
 namespace SecretHistories.Abstract
@@ -12,6 +13,6 @@ namespace SecretHistories.Abstract
     {
         public ITokenPayload Execute(Context context);
         public int Quantity { get; }
-        public List<SphereCreationCommand> Spheres { get; }
+        public List<PopulateDominionCommand> Dominions { get; set; }
     }
 }

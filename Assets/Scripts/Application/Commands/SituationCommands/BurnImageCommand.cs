@@ -17,7 +17,7 @@ namespace SecretHistories.Commands
     {
         private string _image;
 
-        public List<StateEnum> ValidForStates => new List<StateEnum> { StateEnum.Complete };
+        public List<StateEnum> GetStatesCommandIsValidFor() => new List<StateEnum> {StateEnum.Complete};
 
 
         public BurnImageCommand(string image)

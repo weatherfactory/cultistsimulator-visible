@@ -6,8 +6,10 @@ using System.Linq;
 using System.Text;
 using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.UI.Situation;
+using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Commands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.UI;
 using SecretHistories.Entities;
@@ -20,20 +22,26 @@ using SecretHistories.Services;
 using SecretHistories.Spheres;
 
 namespace SecretHistories.UI {
-    public class Dominion:MonoBehaviour {
+    [IsEncaustableClass(typeof(PopulateDominionCommand))]
+    public class Dominion:MonoBehaviour,IEncaustable {
 
         [SerializeField] SpheresWrangler _spheresWrangler;
         [SerializeField] CanvasGroupFader canvasGroupFader;
-        public List<StateEnum> VisibleForStates;
-        public Sphere spherePrefab;
+
+        [Encaust]
+        public List<Sphere> Spheres => _spheresWrangler.GetSpheres();
         
+        [DontEncaust]
+        public OnSphereAddedEvent OnSphereAdded => _spheresWrangler.OnSphereAdded;
+        [DontEncaust]
+        public OnSphereRemovedEvent OnSphereRemoved => _spheresWrangler.OnSphereRemoved;
+
         [Header("Preserve spheres when dismissed?")]
         [Tooltip("Dominions will gracefully retire spheres and flush their contents when dismissed unless this box is ticked. NB that hiding a window doesn't dismiss dominions - dismissal is a situation life cycle thing.")]
         public bool PreserveSpheresWhenDismissed;
+        public List<StateEnum> VisibleForStates;
+        public Sphere spherePrefab;
 
-        public OnSphereAddedEvent OnSphereAdded => _spheresWrangler.OnSphereAdded;
-
-        public OnSphereRemovedEvent OnSphereRemoved => _spheresWrangler.OnSphereRemoved;
         private Situation _situation;
 
         public void RegisterFor(Situation situation)

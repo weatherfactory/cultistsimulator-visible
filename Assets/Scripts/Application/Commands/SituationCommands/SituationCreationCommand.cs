@@ -6,6 +6,7 @@ using Assets.Scripts.Application.Fucine;
 using Assets.Scripts.Application.Interfaces;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.Core;
 using SecretHistories.Entities;
@@ -33,7 +34,7 @@ namespace SecretHistories.Commands
         public FucinePath Path { get; set; }
         public bool IsOpen { get; set; }
         public List<Token> TokensToMigrate=new List<Token>();
-        public List<SphereCreationCommand> Spheres { get; set; }=new List<SphereCreationCommand>();
+        public List<PopulateDominionCommand> Dominions { get; set; }=new List<PopulateDominionCommand>();
 
         public SituationCommandQueue CommandQueue { get; set; }=new SituationCommandQueue();
 
@@ -105,12 +106,15 @@ namespace SecretHistories.Commands
             var windowLocation =
                 new TokenLocation(Vector3.zero, windowSpherePath); //it shouldn't really be zero, but we don't know the real token loc in the current flow
 
-            var sphere = Watchman.Get<SphereCatalogue>().GetSphereByPath(windowLocation.AtSpherePath);
-            var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphere.transform);
+            var sphereToDisplayWindowIn = Watchman.Get<SphereCatalogue>().GetSphereByPath(windowLocation.AtSpherePath);
+            var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphereToDisplayWindowIn.transform);
             newWindow.Attach(newSituation);
 
-            
-            
+
+            foreach (var d in Dominions) //there's a risk here. If we automatically clear dismissed dominions, then we might conceivably dismiss one we've just populated here
+                d.Execute(newSituation);
+
+            //this may have been specified if the new situation is being spawned from an old one
             if (TokensToMigrate.Any())
                 newSituation.AcceptTokens(SphereCategory.SituationStorage,TokensToMigrate);
             
