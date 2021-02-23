@@ -34,8 +34,7 @@ namespace Assets.Scripts.Application.Meta
      _situationDrydock.SpecifyPath(spherePath);
            _situationDrydock.ApplySpec(sphereSphec);
 
-
-           _situationDrydock.Subscribe(this);
+            _situationDrydock.Subscribe(this);
        }
 
 
@@ -76,8 +75,12 @@ namespace Assets.Scripts.Application.Meta
            var newTokenCommand = new TokenCreationCommand(newSituationCommand, newTokenLocation);
            newTokenCommand.Execute(new Context(Context.ActionSource.Debug));
 
-    
-       }
+
+           EncaustDrydockedItem(_situationDrydock.GetTokenInSlot(), input);
+
+
+
+        }
 
         public void TimeForwards()
         {

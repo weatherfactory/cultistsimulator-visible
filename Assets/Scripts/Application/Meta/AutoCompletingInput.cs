@@ -28,7 +28,7 @@ namespace Assets.Scripts.Application.Meta
         // Indicates the last selected auto-completion suggestion
         // -1 means no previous suggestion was selected
         private int currentAutoCompletionSuggestion = -1;
-
+        private string lastAutocompleteCheckedTextValue;
         public string text
         {
             get => input.text;
@@ -38,7 +38,18 @@ namespace Assets.Scripts.Application.Meta
         public void Awake()
         {
             autoCompletionBox.gameObject.SetActive(false);
-            input.onValueChanged.AddListener(AttemptAutoCompletion);
+            
+        }
+
+        public void Update()
+        {
+            ProcessInput();
+
+            if (lastAutocompleteCheckedTextValue == text)
+                return;
+
+            lastAutocompleteCheckedTextValue = text;
+            AttemptAutoCompletion(text);
         }
 
         public bool ProcessInput()
@@ -58,6 +69,7 @@ namespace Assets.Scripts.Application.Meta
             if (!input.isFocused)
                 return false;
 
+ 
             List<AutoCompletionSuggestion> suggestions = new List<AutoCompletionSuggestion>();
             autoCompletionSuggestions.GetComponentsInChildren(suggestions);
 
@@ -74,6 +86,9 @@ namespace Assets.Scripts.Application.Meta
             {
                 return MoveToSuggestionBasedOnArrowKey(suggestions);
             }
+
+
+
 
             return false;
         }
@@ -120,6 +135,7 @@ namespace Assets.Scripts.Application.Meta
                 return;
             }
 
+            
             autoCompletionBox.gameObject.SetActive(true);
 
             // Clear the list
@@ -175,10 +191,9 @@ namespace Assets.Scripts.Application.Meta
             if (!isActiveAndEnabled || text == null)
                 return;
 
-            // Temporarily disable suggestions so that this doesn't trigger a new auto-completion attempt
-            input.onValueChanged.RemoveListener(AttemptAutoCompletion);
+         
             input.text = text;
-            input.onValueChanged.AddListener(AttemptAutoCompletion);
+            lastAutocompleteCheckedTextValue = text; //so we don't trigger an autocomplete attempt
         }
 
 
