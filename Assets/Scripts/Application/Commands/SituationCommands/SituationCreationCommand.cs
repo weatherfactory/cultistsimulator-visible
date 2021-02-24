@@ -89,9 +89,11 @@ namespace SecretHistories.Commands
                     return NullSituation.Create();
             }
 
+            //If we deserialise a situation, we'll already know its ID. If we're creating it for the first time, we need to pick an ID
+            if (String.IsNullOrEmpty(Id))
+                Id = Id = verb.DefaultUniqueTokenId();
 
-            
-            Situation newSituation = new Situation(verb);
+            Situation newSituation = new Situation(verb,Id);
 
             newSituation.SetParentPath(atSpherePath);
             

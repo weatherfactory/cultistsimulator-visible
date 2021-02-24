@@ -10,6 +10,7 @@ using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Constants;
 using SecretHistories.Spheres;
+using SecretHistories.UI;
 
 namespace Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport
 {
@@ -29,7 +30,7 @@ namespace Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport
                 foreach (string slotPath in htOngoingSlotStacks.Keys)
                 {
                     var slotId = slotPath.Split(FucinePath.SPHERE)[0];
-                    var slotSpec = new SphereSpec(new SimpleSphereSpecIdentifierStrategy(slotId));
+                    var slotSpec = new SphereSpec(typeof(ThresholdSphere), slotId);
                     ongoingSlotSpecs.Add(slotSpec);
                 }
             }

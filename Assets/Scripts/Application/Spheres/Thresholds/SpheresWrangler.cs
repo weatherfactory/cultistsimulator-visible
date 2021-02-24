@@ -1,4 +1,5 @@
 ﻿#pragma warning disable 0649
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,8 +43,6 @@ namespace SecretHistories.UI {
         /// <returns></returns>
         public virtual Sphere BuildPrimarySphere(SphereSpec sphereSpec, FucinePath parentPath, Verb verb)
         {
-            RemoveAllSpheres();
-
             _verb = verb;
 
             return AddSphere(sphereSpec,parentPath);
@@ -74,7 +73,7 @@ namespace SecretHistories.UI {
 
        
 
-        protected Sphere AddSphere(SphereSpec sphereSpec,FucinePath parentPath)
+        public Sphere AddSphere(SphereSpec sphereSpec,FucinePath parentPath)
         {
             var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(sphereSpec, parentPath);
             _spheres.Add(newSphere, parentPath);

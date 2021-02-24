@@ -68,11 +68,10 @@ namespace SecretHistories.Entities
 
 
 
-        public FucinePath DefaultUniqueRelativeTokenPath()
+        public string DefaultUniqueTokenId()
         {
-            return new FucinePath($"!{Id}_{Guid.NewGuid()}");
+            return $"!{Id}_{Guid.NewGuid()}";
         }
-
 
 
         public Verb()

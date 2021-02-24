@@ -50,7 +50,8 @@ namespace Assets.Scripts.Application.Spheres
 
         public override List<SphereSpec> GetChildSpheresSpecsToAddIfThisTokenAdded(Token t, SpheresWrangler s)
         {
-            var sphereSpec = new NotesSphereSpec(s.GetSpheresCurrentlyWrangledCount());
+            var idstrategy=new NotesSphereSpecIdentifierStrategy(s.GetSpheresCurrentlyWrangledCount());
+            var sphereSpec = new SphereSpec(typeof(NotesSphere),idstrategy);
             var sphereSpecList=new List<SphereSpec>();
 
             sphereSpecList.Add(sphereSpec);

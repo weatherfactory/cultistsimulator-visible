@@ -8,7 +8,7 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Spheres;
 
-namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
+namespace SecretHistories.Commands.SituationCommands
 {
    public class FlushTokensToCategoryCommand: ISituationCommand
     {

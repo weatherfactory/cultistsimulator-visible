@@ -8,6 +8,7 @@ using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
 using NUnit.Framework;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
+using SecretHistories.UI;
 
 namespace Assets.Tests.UnitTests
 {
@@ -25,9 +26,9 @@ namespace Assets.Tests.UnitTests
         }
 
         [Test]
-        public void rImportsSingleSlotSpecForRecipe()
+        public void ImportsSingleSlotSpecForRecipe()
         {
-            List<SphereSpec> oneSlotList = new List<SphereSpec> {new SphereSpec("oneSlot")};
+            List<SphereSpec> oneSlotList = new List<SphereSpec> {new SphereSpec(typeof(ThresholdSphere),"oneSlot")};
             var importedSlotSpecs =
                 SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(new Hashtable(), oneSlotList);
             Assert.AreEqual(1, importedSlotSpecs.Count);
@@ -37,7 +38,7 @@ namespace Assets.Tests.UnitTests
         public void ImportsGreedySlotSpecFromRecipe()
         {
             List<SphereSpec> oneSlotList = new List<SphereSpec>
-                {new SphereSpec("greedySlot") {Greedy = true}};
+                {new SphereSpec(typeof(ThresholdSphere),"greedySlot") {Greedy = true}};
             var importedSlotSpecs =
                 SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(new Hashtable(), oneSlotList);
             Assert.AreEqual(true, importedSlotSpecs.Single().Greedy);
@@ -47,7 +48,7 @@ namespace Assets.Tests.UnitTests
         public void ImportsRequirementsForSlotSpecFromRecipe()
         {
             List<SphereSpec> oneSlotList = new List<SphereSpec>
-                {new SphereSpec("greedySlot") {Greedy = true}};
+                {new SphereSpec(typeof(ThresholdSphere),"greedySlot") {Greedy = true}};
             var importedSlotSpecs =
                 SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(new Hashtable(), oneSlotList);
             Assert.AreEqual(true, importedSlotSpecs.Single().Greedy);

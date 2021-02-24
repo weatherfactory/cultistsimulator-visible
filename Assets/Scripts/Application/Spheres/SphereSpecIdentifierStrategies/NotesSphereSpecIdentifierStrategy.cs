@@ -14,9 +14,5 @@
             return string.Concat(PREFIX, _index.ToString());
         }
 
-        public override string GetLabel()
-        {
-            return GetIdentifier();
-        }
     }
 }

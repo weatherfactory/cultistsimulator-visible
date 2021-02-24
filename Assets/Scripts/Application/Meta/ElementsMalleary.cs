@@ -28,7 +28,7 @@ namespace Assets.Scripts.Application.Meta
 
         public void Awake()
         {
-            var mallearyThresholdSpec = new SphereSpec(new SimpleSphereSpecIdentifierStrategy("elementsmalleary"));
+            var mallearyThresholdSpec = new SphereSpec(typeof(ThresholdSphere), "elementsmalleary");
 
             _drydockThresholdSphere =elementDrydockWrangler.BuildPrimarySphere(mallearyThresholdSpec, FucinePath.Root(), NullVerb.Create()) as ThresholdSphere;
             _drydockThresholdSphere.Subscribe(this);

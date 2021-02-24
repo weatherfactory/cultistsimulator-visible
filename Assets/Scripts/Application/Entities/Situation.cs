@@ -136,14 +136,14 @@ namespace SecretHistories.Entities {
         private Timeshadow _timeshadow;
 
 
-        public Situation(Verb verb)
+        public Situation(Verb verb,string id)
         {
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
 
             situationsCatalogue.RegisterSituation(this);
-            
+
+            Id = id;
             Verb = verb;
-            Id = verb.DefaultUniqueRelativeTokenPath().ToString();
             Recipe = NullRecipe.Create();
             _currentRecipePrediction = new RecipePrediction(Recipe, AspectsDictionary.Empty());
 
@@ -372,8 +372,9 @@ namespace SecretHistories.Entities {
                        NoonUtility.Log($"No notes sphere and no notes dominion found in {CachedParentPath}: we won't add note {label}, then.");
                         return false;
                    }
-                   var notesSphereSpec=new NotesSphereSpec(0);
-                   emptyNoteSphere=notesDominion.CreatePrimarySphere(notesSphereSpec);
+                   var specIdStrategy=new NotesSphereSpecIdentifierStrategy(0);
+                   var notesSphereSpec=new SphereSpec(typeof(NotesSphere),specIdStrategy);
+                   emptyNoteSphere=notesDominion.CreateSphere(notesSphereSpec);
                }
             }
             catch (Exception e)

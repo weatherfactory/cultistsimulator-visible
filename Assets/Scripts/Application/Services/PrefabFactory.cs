@@ -88,7 +88,7 @@ namespace SecretHistories.Services
             var spherePath = parentPath.AppendPath(spec.RelativePath);
 
 
-            instantiatedPrefab.name = $"{nameof(spec.SphereType)}_{spherePath}";
+            instantiatedPrefab.name = $"{spec.SphereType.Name}_{spherePath}";
             var newSphere = instantiatedPrefab.GetComponent(spec.SphereType) as Sphere;
             newSphere.SpecifyPath(spherePath);
             newSphere.ApplySpec(spec);

@@ -18,7 +18,7 @@ namespace SecretHistories.NullObjects
             return false;
         }
 
-        public NullSituation(Verb verb) : base(verb)
+        public NullSituation(Verb verb) : base(verb,verb.DefaultUniqueTokenId())
         {
         }
 

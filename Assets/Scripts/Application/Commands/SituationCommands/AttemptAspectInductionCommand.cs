@@ -10,7 +10,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 
-namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
+namespace SecretHistories.Commands.SituationCommands
 {
    public class AttemptAspectInductionCommand: ISituationCommand
     {

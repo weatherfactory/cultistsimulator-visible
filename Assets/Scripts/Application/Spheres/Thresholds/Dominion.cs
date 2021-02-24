@@ -66,18 +66,22 @@ namespace SecretHistories.UI {
         public void Dismiss()
         {
             canvasGroupFader.Hide();
-            if(!PreserveSpheresWhenDismissed)
-                RemoveAllSpheres();
+            //if(!PreserveSpheresWhenDismissed)
+            //    RemoveAllSpheres();
         }
 
-        public Sphere CreatePrimarySphere(SphereSpec spec)
+        public Sphere CreateSphere(SphereSpec spec)
         {
             //ensure that the spec will be visible in states for which this dominion is active
             foreach (var activeInState in VisibleForStates)
                 spec.MakeActiveInState(activeInState);
 
-            return  _spheresWrangler.BuildPrimarySphere(spec,_situation.CachedParentPath,_situation.Verb);
+            if(_spheresWrangler.GetSpheresCurrentlyWrangledCount()==0)
+                return  _spheresWrangler.BuildPrimarySphere(spec,_situation.CachedParentPath,_situation.Verb);
+
+            return _spheresWrangler.AddSphere(spec, _situation.CachedParentPath);
         }
+
 
         public bool VisibleFor(StateEnum state)
         {

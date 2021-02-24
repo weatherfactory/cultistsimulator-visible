@@ -53,7 +53,7 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     [FucineList]
    public List<AngelSpecification> Angels { get; set; }
 
-   public virtual Type SphereType { get; set; } //this is the default. We'll probably want to make this an actual fucine value later
+   public Type SphereType { get; set; } //this is the default. We'll probably want to make this an actual fucine value later
     public FucinePath RelativePath => new FucinePath(_id);
 
 
@@ -76,19 +76,24 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     {
 
     }
-    
+
+    /// <summary>
+    /// for this constructor, ID and type have already been determined, and are just being set and/or deserialised from the parameters
+    /// </summary>
     [JsonConstructor]
-    public SphereSpec(string id): this(new SimpleSphereSpecIdentifierStrategy(id)){}
-
-
-    public SphereSpec(AbstractSphereSpecIdentifierStrategy sphereSpecIdentifierStrategy)
+    public SphereSpec(Type sphereType, string id)
     {
-        _id = sphereSpecIdentifierStrategy.GetIdentifier();
-        Label = sphereSpecIdentifierStrategy.GetIdentifier();
+        _id = id;
+        SphereType = sphereType;
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
         ActionId = string.Empty;
         Angels = new List<AngelSpecification>();
+        }
+
+
+    public SphereSpec(Type sphereType, AbstractSphereSpecIdentifierStrategy sphereSpecIdentifierStrategy): this(sphereType,sphereSpecIdentifierStrategy.GetIdentifier())
+    {
     }
 
 

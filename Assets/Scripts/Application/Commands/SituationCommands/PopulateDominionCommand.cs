@@ -51,12 +51,11 @@ namespace SecretHistories.Commands.SituationCommands
         
         public bool Execute(Situation situation)
         {
-            if (Spheres.Count > 0) //This means we don't clear existing slots unless there are sl
+            if (Spheres.Any()) 
             {
                 var dominion = situation.GetRelevantDominions(situation.State.RehydrationValue, getSphereType()).FirstOrDefault();
                 if(dominion!=null)
                 {
-                    dominion.RemoveAllSpheres();
                     foreach (var s in Spheres)
                         s.ExecuteOn(dominion,new Context(Context.ActionSource.Unknown)); 
                     return true;

@@ -82,7 +82,8 @@ using Object = UnityEngine.Object;
         public void Situation_Encausts()
         {
             var situationEncaustery = new Encaustery<SituationCreationCommand>();
-            var situation = new Situation(NullVerb.Create());
+            var verb = NullVerb.Create();
+            var situation = new Situation(verb,verb.DefaultUniqueTokenId());
             situationEncaustery.Encaust(situation);
         }
 
@@ -93,8 +94,8 @@ using Object = UnityEngine.Object;
            var encaustery=new Encaustery<TokenCreationCommand>();
            var tokenObject = new GameObject();
            var token=tokenObject.AddComponent<Token>();
-
-           var situation=new Situation(NullVerb.Create());
+           var verb = NullVerb.Create();
+           var situation=new Situation(verb,verb.DefaultUniqueTokenId());
            token.SetPayload(situation);
            worldSphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
            

@@ -1,5 +1,4 @@
 ﻿using System;
-using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
@@ -7,8 +6,8 @@ using SecretHistories.Enums;
 using SecretHistories.Constants;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
+using SecretHistories.SphereSpecIdentifierStrategies;
 using SecretHistories.UI;
-using SSecretHistories.Entities;
 
 namespace SecretHistories.States
 {
@@ -19,8 +18,8 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var createOutputShereCommand = new PopulateDominionCommand(new OutputSphereSpec());
-            situation.CommandQueue.AddCommand(createOutputShereCommand);
+            var createOutputSphereCommand = new PopulateDominionCommand(new SphereSpec(typeof(OutputSphere),new OutputSphereIdStrategy()));
+            situation.CommandQueue.AddCommand(createOutputSphereCommand);
 
             var migrateToOutputCommand=new FlushTokensToCategoryCommand(SphereCategory.SituationStorage,SphereCategory.Output,StateEnum.Complete);
             situation.CommandQueue.AddCommand(migrateToOutputCommand);

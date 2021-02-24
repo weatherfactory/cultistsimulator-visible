@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
@@ -23,8 +22,8 @@ namespace SecretHistories.States
         {
             var recipeSlotsCommand = new PopulateDominionCommand(situation.Recipe.Slots);
             situation.CommandQueue.AddCommand(recipeSlotsCommand);
-
-            var storageCommand = new PopulateDominionCommand(new StorageSphereSpec());
+            var sphereSpec=new SphereSpec(typeof(SituationStorageSphere), new StorageSphereIdStrategy());
+            var storageCommand = new PopulateDominionCommand(sphereSpec);
                 situation.CommandQueue.AddCommand(storageCommand);
 
                 var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);

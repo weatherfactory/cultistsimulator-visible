@@ -56,8 +56,6 @@ namespace SecretHistories.Commands
 
             var sphere = sphereCatalogue.GetSphereByPath(Location.AtSpherePath);
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);
-
-
             
             var payloadForToken = Payload.Execute(context,Location.AtSpherePath);
 

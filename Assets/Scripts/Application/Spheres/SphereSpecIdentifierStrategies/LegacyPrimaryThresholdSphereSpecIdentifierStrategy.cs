@@ -15,10 +15,5 @@ namespace SecretHistories.Spheres
             return PRIMARY_SLOT;
 
         }
-
-    public override string GetLabel()
-        {
-            return PRIMARY_SLOT;
-        }
     }
 }
