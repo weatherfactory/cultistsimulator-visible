@@ -82,7 +82,7 @@ using Object = UnityEngine.Object;
         public void Situation_Encausts()
         {
             var situationEncaustery = new Encaustery<SituationCreationCommand>();
-            var situation = new Situation(NullVerb.Create(), new FucinePath("./s1!t1"));
+            var situation = new Situation(NullVerb.Create());
             situationEncaustery.Encaust(situation);
         }
 
@@ -94,7 +94,7 @@ using Object = UnityEngine.Object;
            var tokenObject = new GameObject();
            var token=tokenObject.AddComponent<Token>();
 
-           var situation=new Situation(NullVerb.Create(),new FucinePath("./s1!t1"));
+           var situation=new Situation(NullVerb.Create());
            token.SetPayload(situation);
            worldSphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
            

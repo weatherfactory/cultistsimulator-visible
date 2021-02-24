@@ -71,7 +71,7 @@ public class CreationCommandsSmokeTests
     string elementId= Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First().Id;
         int elementQuantity= 3;
         var elementStackCreationCommand = new ElementStackCreationCommand(elementId, elementQuantity);
-        var elementStack=elementStackCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
+        var elementStack=elementStackCreationCommand.Execute(new Context(Context.ActionSource.Unknown),new FucinePath("./s1!t1"));
         Assert.IsTrue(elementStack.IsValidElementStack());
         Assert.AreEqual(elementId,elementStack.Id);
         Assert.AreEqual(elementQuantity, elementStack.Quantity);
@@ -95,7 +95,7 @@ public class CreationCommandsSmokeTests
             situationCreationCommand.VerbId = NullVerb.Create().Id;
             situationCreationCommand.RecipeId = NullRecipe.Create().Id;
             situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
-            var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
+            var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown), new FucinePath("./s1!t1"));
             Assert.IsInstanceOf<Situation>(situation);
         }
 

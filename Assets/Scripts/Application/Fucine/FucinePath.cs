@@ -35,6 +35,14 @@ namespace SecretHistories.Fucine
             return false;
         }
 
+        public virtual bool IsEmpty()
+        {
+            if (Validity == FucineValidity.Empty)
+                return true;
+
+            return false;
+        }
+
         public override string ToString()
         {
             return string.Join(string.Empty, PathParts);

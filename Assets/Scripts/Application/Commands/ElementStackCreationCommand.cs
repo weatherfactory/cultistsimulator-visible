@@ -43,7 +43,7 @@ namespace SecretHistories.Commands
            Illuminations = Element.EmptyIlluminationsDictionary();
         }
 
-        public ITokenPayload Execute(Context context)
+        public ITokenPayload Execute(Context context,FucinePath atSpherePath)
         {
             ElementStack elementStack = null;
 
@@ -61,6 +61,8 @@ namespace SecretHistories.Commands
 
                 foreach(var i in Illuminations)
                     elementStack.SetIllumination(i.Key,i.Value);
+
+                elementStack.SetParentPath(atSpherePath);
             }
             catch (Exception e)
             {
@@ -69,7 +71,7 @@ namespace SecretHistories.Commands
                 elementStack?.Retire(RetirementVFX.None);
             }
 
-            
+     
             return elementStack;
         }
 

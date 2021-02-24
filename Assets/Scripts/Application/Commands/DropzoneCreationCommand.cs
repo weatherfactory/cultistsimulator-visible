@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using SecretHistories.Abstract;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities.Verbs;
+using SecretHistories.Fucine;
 
 namespace SecretHistories.Commands
 {
@@ -15,11 +16,11 @@ namespace SecretHistories.Commands
         public int Quantity { get; set; }
         public List<PopulateDominionCommand> Dominions { get; set; }
 
-        public ITokenPayload Execute(Context context)
+        public ITokenPayload Execute(Context context, FucinePath atSpherePath)
         {
-
-
-            return new Dropzone();
+            var dz= new Dropzone();
+            dz.SetParentPath(atSpherePath);
+            return dz;
         }
 
         

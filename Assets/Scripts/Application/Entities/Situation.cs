@@ -63,8 +63,9 @@ namespace SecretHistories.Entities {
         {
             CachedParentPath = path;
         }
-
+        [Encaust] public string Id { get; protected set; }
         [DontEncaust] public FucinePath AbsolutePath => CachedParentPath.AppendToken(this.Id);
+        
         [Encaust]
         public List<Dominion> Dominions => new List<Dominion>(_registeredDominions);
 
@@ -84,7 +85,7 @@ namespace SecretHistories.Entities {
         [DontEncaust] public SituationState State { get; set; }
         [DontEncaust] public float Warmup => Recipe.Warmup;
         [DontEncaust] public RecipePrediction CurrentRecipePrediction => _currentRecipePrediction;
-        [DontEncaust] public string Id => CachedParentPath.ToString();
+        
         [DontEncaust] public string Label => GetMostRecentNoteLabel();
         [DontEncaust] public string Description => GetMostRecentNoteDescription();
         [DontEncaust] public float IntervalForLastHeartbeat => _timeshadow.LastInterval;
@@ -134,21 +135,15 @@ namespace SecretHistories.Entities {
         
         private Timeshadow _timeshadow;
 
-        public Situation(Verb verb) : this(verb,
-            Watchman.Get<SphereCatalogue>().GetDefaultWorldSpherePath()
-                .AppendPath(verb.DefaultUniqueRelativeTokenPath()))
-        {
-        }
 
-
-        public Situation(Verb verb, FucinePath cachedParentPath)
+        public Situation(Verb verb)
         {
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
 
             situationsCatalogue.RegisterSituation(this);
-
-            CachedParentPath = cachedParentPath;
+            
             Verb = verb;
+            Id = verb.DefaultUniqueRelativeTokenPath().ToString();
             Recipe = NullRecipe.Create();
             _currentRecipePrediction = new RecipePrediction(Recipe, AspectsDictionary.Empty());
 
@@ -158,15 +153,6 @@ namespace SecretHistories.Entities {
                 false);
         }
 
-
-        public void SpecifyPath (FucinePath path)
-        {
-            if(path.GetTokenPath().IsValid())
-                CachedParentPath = path.GetTokenPath();
-            else
-                NoonUtility.Log($"Invalid path specified for situation; keeping existing path {CachedParentPath}");
-
-        }
 
         public void TransitionToState(SituationState newState)
         {
