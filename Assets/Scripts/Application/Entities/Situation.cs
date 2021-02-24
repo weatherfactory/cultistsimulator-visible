@@ -62,6 +62,8 @@ namespace SecretHistories.Entities {
         public void SetParentPath(FucinePath path)
         {
             CachedParentPath = path;
+            foreach(var s in _spheres)
+                s.UpdatePathToMatchPayload(this);
         }
         [Encaust] public string Id { get; protected set; }
         [DontEncaust] public FucinePath AbsolutePath => CachedParentPath.AppendToken(this.Id);
@@ -199,7 +201,7 @@ namespace SecretHistories.Entities {
         public void AttachSphere(Sphere sphere)
         {
             sphere.Subscribe(this);
-            sphere.PutInsidePayload(this);
+            sphere.UpdatePathToMatchPayload(this);
             _spheres.Add(sphere);
         }
 
@@ -685,7 +687,9 @@ namespace SecretHistories.Entities {
         public void OnTokenMoved(TokenLocation toLocation)
         {
             foreach (var sphere in _spheres)
+            {
                 sphere.SetReferencePosition(toLocation);
+            }
         }
 
 

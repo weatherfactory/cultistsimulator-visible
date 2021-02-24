@@ -59,8 +59,9 @@ namespace SecretHistories.Commands
             
             var payloadForToken = Payload.Execute(context,Location.AtSpherePath);
 
-            token.SetPayload(payloadForToken);
             sphere.AcceptToken(token, context);
+            token.SetPayload(payloadForToken);
+            
             token.transform.localPosition = Location.Anchored3DPosition;
 
             if (_sourceToken != null)

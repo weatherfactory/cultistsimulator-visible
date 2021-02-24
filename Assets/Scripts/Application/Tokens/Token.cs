@@ -180,6 +180,7 @@ namespace SecretHistories.UI {
             _payload.SetParentPath(Location.AtSpherePath);
             _payload.OnChanged += OnPayloadChanged;
             name = _payload.Id + "_token";
+            Manifest();
         }
 
 
@@ -432,10 +433,9 @@ namespace SecretHistories.UI {
 
          TokenRectTransform.position = draggedToPosition; ///aaaahh it's *position* not anchoredposition3D because we're getting the world point from the click
 
-         Payload.OnTokenMoved(Location);  
+         Payload.OnTokenMoved(Location);
 
-
-            _manifestation.DoMove(ManifestationRectTransform);
+         _manifestation.DoMove(ManifestationRectTransform);
 
             // rotate object slightly based on pointer Delta
             if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f)

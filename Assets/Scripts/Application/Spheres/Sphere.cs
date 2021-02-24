@@ -725,7 +725,7 @@ namespace SecretHistories.Spheres
             }
         }
 
-        public void PutInsidePayload(ITokenPayload payload)
+        public void UpdatePathToMatchPayload(ITokenPayload payload)
         {
             var payloadAbsolutePath = payload.AbsolutePath;
             var immediateRelativePathOfSphere=new FucinePath(Path.GetEndingPathPart());
