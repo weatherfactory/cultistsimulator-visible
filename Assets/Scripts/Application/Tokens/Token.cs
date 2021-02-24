@@ -125,15 +125,13 @@ namespace SecretHistories.UI {
 
         public virtual void Awake()
         {
-            //if (Sphere == null)
-            //    Sphere = Registry.Get<Limbo>();
-
+            
             canvasGroup = GetComponent<CanvasGroup>();
 
             CurrentItinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
             _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
             _payload = new NullElementStack();
-
+            Sphere = Watchman.Get<Limbo>();
             SetState(new DroppedInSphereState());
 
         }
@@ -173,6 +171,7 @@ namespace SecretHistories.UI {
         public void SetPayload(ITokenPayload payload)
         {
             _payload = payload;
+            _payload.SetParentPath(Location.AtSpherePath);
             _payload.OnChanged += OnPayloadChanged;
             name = _payload.Id + "_token";
         }
@@ -291,6 +290,7 @@ namespace SecretHistories.UI {
             }
 
             Sphere = newSphere;
+            _payload.SetParentPath(Location.AtSpherePath);
         }
 
         public bool IsInContainer(Sphere compareContainer, Context context)

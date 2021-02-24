@@ -76,7 +76,7 @@ namespace SecretHistories.UI {
             foreach (var activeInState in VisibleForStates)
                 spec.MakeActiveInState(activeInState);
 
-            return  _spheresWrangler.BuildPrimarySphere(spec,_situation.Path,_situation.Verb);
+            return  _spheresWrangler.BuildPrimarySphere(spec,_situation.CachedParentPath,_situation.Verb);
         }
 
         public bool VisibleFor(StateEnum state)

@@ -57,8 +57,14 @@ namespace SecretHistories.Entities {
         [Encaust]
         public string OverrideTitle { get; set; }
 
-        [Encaust] public FucinePath Path { get; protected set; }
+        [Encaust] public FucinePath CachedParentPath { get; protected set; }
+        
+        public void SetParentPath(FucinePath path)
+        {
+            CachedParentPath = path;
+        }
 
+        [DontEncaust] public FucinePath AbsolutePath => CachedParentPath.AppendToken(this.Id);
         [Encaust]
         public List<Dominion> Dominions => new List<Dominion>(_registeredDominions);
 
@@ -78,7 +84,7 @@ namespace SecretHistories.Entities {
         [DontEncaust] public SituationState State { get; set; }
         [DontEncaust] public float Warmup => Recipe.Warmup;
         [DontEncaust] public RecipePrediction CurrentRecipePrediction => _currentRecipePrediction;
-        [DontEncaust] public string Id => Path.ToString();
+        [DontEncaust] public string Id => CachedParentPath.ToString();
         [DontEncaust] public string Label => GetMostRecentNoteLabel();
         [DontEncaust] public string Description => GetMostRecentNoteDescription();
         [DontEncaust] public float IntervalForLastHeartbeat => _timeshadow.LastInterval;
@@ -135,13 +141,13 @@ namespace SecretHistories.Entities {
         }
 
 
-        public Situation(Verb verb, FucinePath path)
+        public Situation(Verb verb, FucinePath cachedParentPath)
         {
             SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
 
             situationsCatalogue.RegisterSituation(this);
 
-            Path = path;
+            CachedParentPath = cachedParentPath;
             Verb = verb;
             Recipe = NullRecipe.Create();
             _currentRecipePrediction = new RecipePrediction(Recipe, AspectsDictionary.Empty());
@@ -150,16 +156,15 @@ namespace SecretHistories.Entities {
             _timeshadow = new Timeshadow(Recipe.Warmup,
                 Recipe.Warmup,
                 false);
-        
         }
 
 
         public void SpecifyPath (FucinePath path)
         {
             if(path.GetTokenPath().IsValid())
-                Path = path.GetTokenPath();
+                CachedParentPath = path.GetTokenPath();
             else
-                NoonUtility.Log($"Invalid path specified for situation; keeping existing path {Path}");
+                NoonUtility.Log($"Invalid path specified for situation; keeping existing path {CachedParentPath}");
 
         }
 
@@ -208,7 +213,7 @@ namespace SecretHistories.Entities {
         public void AttachSphere(Sphere sphere)
         {
             sphere.Subscribe(this);
-            sphere.MoveToPayload(this);
+            sphere.PutInsidePayload(this);
             _spheres.Add(sphere);
         }
 
@@ -378,7 +383,7 @@ namespace SecretHistories.Entities {
                    var notesDominion = GetRelevantDominions(StateForRehydration,typeof(NotesSphere)).FirstOrDefault();
                    if (notesDominion == null)
                    {
-                       NoonUtility.Log($"No notes sphere and no notes dominion found in {Path}: we won't add note {label}, then.");
+                       NoonUtility.Log($"No notes sphere and no notes dominion found in {CachedParentPath}: we won't add note {label}, then.");
                         return false;
                    }
                    var notesSphereSpec=new NotesSphereSpec(0);
@@ -387,7 +392,7 @@ namespace SecretHistories.Entities {
             }
             catch (Exception e)
             {
-                NoonUtility.Log($"More than one empty notes sphere found in {Path} when we try to add a note. We'll take the first empty notes sphere and put a note in that.");
+                NoonUtility.Log($"More than one empty notes sphere found in {CachedParentPath} when we try to add a note. We'll take the first empty notes sphere and put a note in that.");
                 emptyNoteSphere=notesSpheres.First(ns => ns.GetTotalStacksCount() == 0);
             }
 

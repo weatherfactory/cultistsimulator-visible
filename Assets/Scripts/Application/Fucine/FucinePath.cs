@@ -225,6 +225,25 @@ namespace SecretHistories.Fucine
             PathParts.Add(spherePathPart);
         }
 
+        public FucinePath AppendToken(string tokenId)
+        {
+            TokenPathPart tokenPathPart = new TokenPathPart(tokenId);
+        var partsForNewPath=new List<FucinePathPart>(PathParts);
+        partsForNewPath.Add(tokenPathPart);
+            var newPath=new FucinePath(partsForNewPath);
+            return newPath;
+        }
+
+
+        public FucinePath AppendSphere(string sphereId)
+        {
+            SpherePathPart spherePathPart = new SpherePathPart(sphereId);
+            var partsForNewPath = new List<FucinePathPart>(PathParts);
+            partsForNewPath.Add(spherePathPart);
+            var newPath = new FucinePath(partsForNewPath);
+            return newPath;
+        }
+
 
 
         public FucinePath AppendPath(string appendPathString)

@@ -15,7 +15,9 @@ namespace SecretHistories.Abstract
         public event Action<float> OnLifetimeSpent;
         bool IsOpen { get;}
 
-        public FucinePath Path { get; }
+        public FucinePath CachedParentPath { get; }
+        public void SetParentPath(FucinePath path);
+        public FucinePath AbsolutePath { get; }
         public List<Dominion> Dominions { get; }
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);

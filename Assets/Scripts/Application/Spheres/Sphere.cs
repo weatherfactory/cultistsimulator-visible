@@ -725,11 +725,11 @@ namespace SecretHistories.Spheres
             }
         }
 
-        public void MoveToPayload(ITokenPayload payload)
+        public void PutInsidePayload(ITokenPayload payload)
         {
-            var payloadPath = payload.Path;
-            var immediateRelativePath=new FucinePath(Path.GetEndingPathPart());
-            Path = payloadPath.AppendPath(immediateRelativePath);
+            var payloadAbsolutePath = payload.AbsolutePath;
+            var immediateRelativePathOfSphere=new FucinePath(Path.GetEndingPathPart());
+            Path = payloadAbsolutePath.AppendPath(immediateRelativePathOfSphere);
         }
 
         public bool IsInRoot()

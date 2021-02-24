@@ -31,8 +31,16 @@ namespace SecretHistories.Entities.Verbs
         public string Icon => string.Empty;
         [DontEncaust]
         public bool IsOpen => false;
-        [DontEncaust]
-        public FucinePath Path { get { throw new NotImplementedException("haven't finished fucine paths for dropzones yet"); } }
+        [Encaust]
+        public FucinePath CachedParentPath { get; protected set; }
+
+        public void SetParentPath(FucinePath path)
+        {
+            CachedParentPath = path;
+        }
+
+        [DontEncaust] public FucinePath AbsolutePath => CachedParentPath.AppendToken(this.Id);
+
         [Encaust]
         public List<Dominion> Dominions
         {

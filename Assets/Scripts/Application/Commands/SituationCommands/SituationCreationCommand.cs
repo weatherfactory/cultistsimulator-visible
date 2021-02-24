@@ -31,7 +31,7 @@ namespace SecretHistories.Commands
         public float TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public Dictionary<string, int> Mutations { get; set; }
-        public FucinePath Path { get; set; }
+        public FucinePath CachedParentPath { get; set; }
         public bool IsOpen { get; set; }
         public List<Token> TokensToMigrate=new List<Token>();
         public List<PopulateDominionCommand> Dominions { get; set; }=new List<PopulateDominionCommand>();
@@ -42,14 +42,14 @@ namespace SecretHistories.Commands
         {
             StateForRehydration = StateEnum.Unknown;
             CommandQueue = new SituationCommandQueue();
-            Path=new NullFucinePath();
+            CachedParentPath=new NullFucinePath();
         }
 
         [JsonConstructor]
-        public SituationCreationCommand(string verbId, FucinePath path): this()
+        public SituationCreationCommand(string verbId, FucinePath cachedParentPath): this()
         {
             VerbId = verbId;
-            Path = path;
+            CachedParentPath = cachedParentPath;
         }
 
         public SituationCreationCommand WithRecipeId(string withRecipeId)   
@@ -91,14 +91,14 @@ namespace SecretHistories.Commands
             
             Situation newSituation = new Situation(verb);
 
-            if (Path.IsValid() && !Path.IsAbsolute())
-                newSituation.SpecifyPath(Path);
+            if (CachedParentPath.IsValid() && !CachedParentPath.IsAbsolute())
+                newSituation.SpecifyPath(CachedParentPath);
             else
             {
-                if (!Path.IsAbsolute())
-                    NoonUtility.Log($"trying to create a situation with a relative path: '{Path}'");
+                if (!CachedParentPath.IsAbsolute())
+                    NoonUtility.Log($"trying to create a situation with a relative path: '{CachedParentPath}'");
                 else
-                    NoonUtility.Log($"trying to create a situation with an invalid path: '{Path}'");
+                    NoonUtility.Log($"trying to create a situation with an invalid path: '{CachedParentPath}'");
                 
             }
             

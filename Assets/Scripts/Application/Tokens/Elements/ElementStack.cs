@@ -56,15 +56,24 @@ namespace SecretHistories.UI {
         [Encaust]
         public virtual Dictionary<string,string> Illuminations=>new Dictionary<string, string>(_illuminations);
 
-        [DontEncaust]
-        public FucinePath Path
+        [Encaust]
+        public FucinePath CachedParentPath { get; protected set; }
+
+        public void SetParentPath(FucinePath path)
+        {
+            CachedParentPath = path;
+        }
+
+        [DontEncaust] public FucinePath AbsolutePath
         {
             get
             {
                 NoonUtility.LogWarning("Fix element path ids; and move paths from payloads to tokens.");
-                return new FucinePath($"{Id}_{Guid.NewGuid()}");
+                   return CachedParentPath.AppendPath( new FucinePath($"{Id}_{Guid.NewGuid()}"));
             }
         }
+    
+
         [Encaust]
         public List<Dominion> Dominions
         {

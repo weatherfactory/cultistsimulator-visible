@@ -216,7 +216,7 @@ namespace SecretHistories.Constants
                 tokenLocation = new TokenLocation(anchorPosX, anchorPosY, 0, tabletopSpherePath);
             }
 
-            situationCreationCommand.Path = new FucinePath(simplifiedSituationPath);
+            situationCreationCommand.CachedParentPath = new FucinePath(simplifiedSituationPath);
 
 
             situationCreationCommand.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
@@ -272,7 +272,7 @@ namespace SecretHistories.Constants
                 foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
                                                                                             //in that case we need to do it from the top down, or the slots won't be there
                 {
-                    var slotPath = situation.Path.AppendPath(ess.LocationInfo.Split(FucinePath.SPHERE)[0]);
+                    var slotPath = situation.CachedParentPath.AppendPath(ess.LocationInfo.Split(FucinePath.SPHERE)[0]);
                     var slot = Watchman.Get<SphereCatalogue>().GetSphereByPath(slotPath);
                     slot.ProvisionStackFromCommand(ess);
 
