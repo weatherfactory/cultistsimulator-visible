@@ -39,14 +39,15 @@ namespace Assets.Scripts.Application.Spheres
 
         public int GetNoteIndex()
         {
-            string digits= String.Join("", SphereIdentifier.Where(char.IsDigit));
+            string digits= String.Join("", GoverningSphereSpec.Id.Where(char.IsDigit));
 
 
             if (digits.Length > 0)
                 return int.Parse(digits);
 
-            throw new ApplicationException($"Can't find index digits for a note sphere in {SphereIdentifier}");
+            throw new ApplicationException($"Can't find index digits for a note sphere in {GoverningSphereSpec.Id}");
         }
+
 
 
         public override void DisplayAndPositionHere(Token token, Context context)
