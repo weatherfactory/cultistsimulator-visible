@@ -81,7 +81,7 @@ namespace SecretHistories.UI {
             OnSphereAdded.Invoke(newSphere);
             newSphere.Subscribe(this);
 
-            sphereArrangement.AddNewSphereToArrangement(newSphere, _spheres.Keys.Count);
+            sphereArrangement.AddNewSphereToArrangement(newSphere, _spheres.Keys.Count-1);
             
             return newSphere;
         }
