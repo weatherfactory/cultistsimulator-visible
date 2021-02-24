@@ -48,15 +48,6 @@ namespace Assets.Scripts.Application.Spheres
             throw new ApplicationException($"Can't find index digits for a note sphere in {SphereIdentifier}");
         }
 
-        public override List<SphereSpec> GetChildSpheresSpecsToAddIfThisTokenAdded(Token t, SpheresWrangler s)
-        {
-            var idstrategy=new NotesSphereSpecIdentifierStrategy(s.GetSpheresCurrentlyWrangledCount());
-            var sphereSpec = new SphereSpec(typeof(NotesSphere),idstrategy);
-            var sphereSpecList=new List<SphereSpec>();
-
-            sphereSpecList.Add(sphereSpec);
-            return sphereSpecList;
-        }
 
         public override void DisplayAndPositionHere(Token token, Context context)
         {

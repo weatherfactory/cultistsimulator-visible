@@ -358,30 +358,20 @@ namespace SecretHistories.Entities {
 
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
 
-            var notesSpheres = GetSpheresByCategory(SphereCategory.Notes);
+            var existingNotesSpheres = GetSpheresByCategory(SphereCategory.Notes);
 
-            Sphere emptyNoteSphere;
-            try
-            {
-               emptyNoteSphere = notesSpheres.SingleOrDefault(ns => ns.GetTotalStacksCount() == 0);
-               if(emptyNoteSphere==null)
-               {
-                   var notesDominion = GetRelevantDominions(StateForRehydration,typeof(NotesSphere)).FirstOrDefault();
-                   if (notesDominion == null)
-                   {
-                       NoonUtility.Log($"No notes sphere and no notes dominion found in {CachedParentPath}: we won't add note {label}, then.");
-                        return false;
-                   }
-                   var specIdStrategy=new NotesSphereSpecIdentifierStrategy(0);
-                   var notesSphereSpec=new SphereSpec(typeof(NotesSphere),specIdStrategy);
-                   emptyNoteSphere=notesDominion.CreateSphere(notesSphereSpec);
-               }
-            }
-            catch (Exception e)
-            {
-                NoonUtility.Log($"More than one empty notes sphere found in {CachedParentPath} when we try to add a note. We'll take the first empty notes sphere and put a note in that.");
-                emptyNoteSphere=notesSpheres.First(ns => ns.GetTotalStacksCount() == 0);
-            }
+            
+           var notesDominion = GetRelevantDominions(StateForRehydration,typeof(NotesSphere)).FirstOrDefault();
+           if (notesDominion == null)
+           {
+               NoonUtility.Log($"No notes sphere and no notes dominion found in {CachedParentPath}: we won't add note {label}, then.");
+                return false;
+           }
+           var specIdStrategy=new NotesSphereSpecIdentifierStrategy(existingNotesSpheres.Count);
+           var notesSphereSpec=new SphereSpec(typeof(NotesSphere),specIdStrategy);
+           var emptyNoteSphere = notesDominion.CreateSphere(notesSphereSpec);
+  
+           
 
             var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
             newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_TITLE_KEY, label);

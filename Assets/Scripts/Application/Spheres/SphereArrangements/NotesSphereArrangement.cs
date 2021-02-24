@@ -27,19 +27,16 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
             sphereRectTransform.sizeDelta =new Vector3(0,0,0);
 
 
-    //hide all but the last *existing* sphere. The just-added sphere is an empty child sphere
+    //hide all previous spheres
     foreach (var s in _arrangingSpheres)
     {
-        if(_arrangingSpheres.Last()==s)
-            s.Reveal();
-        else
             s.Shroud();
     }
 
-    //now add, and hide, the new sphere
+    //now add, and reveal, the new sphere
             _arrangingSpheres.Add(newSphere);
             (newSphere as NotesSphere).OnNoteNavigation += RespondToNoteNavigation;
-            newSphere.Shroud();
+            newSphere.Reveal();
 
         }
 
