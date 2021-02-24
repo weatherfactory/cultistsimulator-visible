@@ -93,7 +93,7 @@ namespace SecretHistories.Commands
             
             Situation newSituation = new Situation(verb);
 
-newSituation.SetParentPath(atSpherePath);
+            newSituation.SetParentPath(atSpherePath);
             
             newSituation.State = SituationState.Rehydrate(StateForRehydration, newSituation);
 

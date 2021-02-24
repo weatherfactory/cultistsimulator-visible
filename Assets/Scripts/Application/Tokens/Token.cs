@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Application.Entities.NullEntities;
+using Assets.Scripts.Application.Fucine;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
@@ -49,10 +50,15 @@ namespace SecretHistories.UI {
         public TokenLocation Location {
             get
             {
-                if (TokenRectTransform !=null && !TokenRectTransform.Equals(null))
-                    return new TokenLocation(TokenRectTransform.anchoredPosition3D, Sphere.Path);
+                FucinePath locationPath;
+                if (Sphere == null)
+                    locationPath = new NullFucinePath();
                 else
-                    return TokenLocation.Default(Sphere.Path);
+                    locationPath = Sphere.Path;
+                if (TokenRectTransform !=null && !TokenRectTransform.Equals(null))
+                    return new TokenLocation(TokenRectTransform.anchoredPosition3D, locationPath);
+                else
+                    return TokenLocation.Default(locationPath);
             }
         }
         [DontEncaust]
@@ -131,7 +137,7 @@ namespace SecretHistories.UI {
             CurrentItinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
             _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
             _payload = new NullElementStack();
-            Sphere = Watchman.Get<Limbo>();
+
             SetState(new DroppedInSphereState());
 
         }
