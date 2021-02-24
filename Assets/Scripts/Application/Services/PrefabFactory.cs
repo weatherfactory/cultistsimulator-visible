@@ -85,7 +85,7 @@ namespace SecretHistories.Services
                 instantiatedPrefab.AddComponent<ThresholdSphere>();
             }
 
-            var spherePath = parentPath.AppendPath(spec.Id);
+            var spherePath = parentPath.AppendPath(spec.RelativePath);
 
 
             instantiatedPrefab.name = $"{nameof(spec.SphereType)}_{spherePath}";

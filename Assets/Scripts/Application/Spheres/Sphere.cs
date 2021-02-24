@@ -51,19 +51,19 @@ namespace SecretHistories.Spheres
         }
     }
 
-    [IsEncaustableClass(typeof(DominionSphereCreationCommand))]
+    [IsEncaustableClass(typeof(SphereCreationCommand))]
     public abstract class 
         Sphere : MonoBehaviour,IEncaustable
     {
         [Encaust]
         public SphereSpec GoverningSphereSpec { get; set; }
         [Encaust]
-        public FucinePath Path { get; protected set; } = new NullFucinePath();
-        [Encaust]
         public List<Token> Tokens
         {
             get { return new List<Token>(_tokens); }
         }
+        [DontEncaust]
+        public FucinePath Path { get; protected set; } = new NullFucinePath();
         [DontEncaust]
         public bool Defunct { get; protected set; }
         [DontEncaust]

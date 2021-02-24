@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Entities;
@@ -53,8 +54,10 @@ public class SphereSpec: AbstractEntity<SphereSpec>
    public List<AngelSpecification> Angels { get; set; }
 
    public virtual Type SphereType => typeof(ThresholdSphere); //this is the default. We'll probably want to make this an actual fucine value later
+    public FucinePath RelativePath => new FucinePath(_id);
 
-   public bool AllowAnyToken { get; set; }
+
+        public bool AllowAnyToken { get; set; }
 
     private readonly HashSet<StateEnum> _activeInStates=new HashSet<StateEnum>();
 
@@ -73,7 +76,8 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     {
 
     }
-
+    
+    [JsonConstructor]
     public SphereSpec(string id): this(new SimpleSphereSpecIdentifierStrategy(id)){}
 
 

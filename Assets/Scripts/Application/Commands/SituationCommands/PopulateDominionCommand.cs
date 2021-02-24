@@ -21,7 +21,7 @@ namespace SecretHistories.Commands.SituationCommands
             StateEnum.Unknown
         };
 
-        public  List<DominionSphereCreationCommand> Spheres { get; set; } = new List<DominionSphereCreationCommand>();
+        public  List<SphereCreationCommand> Spheres { get; set; } = new List<SphereCreationCommand>();
 
         public PopulateDominionCommand()
         {
@@ -33,19 +33,17 @@ namespace SecretHistories.Commands.SituationCommands
             return Spheres.First().GoverningSphereSpec.SphereType;
         }
 
-                public PopulateDominionCommand(SphereSpec populateWith)
+                public PopulateDominionCommand(SphereSpec spec)
         {
-            var newCommand=new DominionSphereCreationCommand();
-            newCommand.GoverningSphereSpec = populateWith;
+            var newCommand=new SphereCreationCommand(spec);
             Spheres.Add(newCommand);
         }
 
-        public PopulateDominionCommand(List<SphereSpec> populateWith)
+        public PopulateDominionCommand(List<SphereSpec> specs)
         {
-            foreach (var p in populateWith)
+            foreach (var s in specs)
             {
-                var newCommand = new DominionSphereCreationCommand();
-                newCommand.GoverningSphereSpec = p;
+                var newCommand = new SphereCreationCommand(s);
                 Spheres.Add(newCommand);
             }
         }

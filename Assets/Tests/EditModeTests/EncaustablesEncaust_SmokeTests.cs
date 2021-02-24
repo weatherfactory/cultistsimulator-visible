@@ -104,18 +104,18 @@ using Object = UnityEngine.Object;
         [Test]
         public void Sphere_Encausts()
         {
-            var encaustery = new Encaustery<DominionSphereCreationCommand>();
+            var encaustery = new Encaustery<SphereCreationCommand>();
         var sphereObject = new GameObject();
         Sphere sphere = sphereObject.AddComponent<ThresholdSphere>();
-        var sphereSpec= encaustery.Encaust(sphere);
-        Assert.AreEqual(sphere.Path, sphereSpec.Path);
+        var sphereCommand= encaustery.Encaust(sphere);
+        Assert.AreEqual(sphere.GoverningSphereSpec.Id, sphereCommand.GoverningSphereSpec.Id);
         }
 
 
         [Test]
         public void Sphere_Encausts_With_Contents()
         {
-            var encaustery = new Encaustery<DominionSphereCreationCommand>();
+            var encaustery = new Encaustery<SphereCreationCommand>();
             var sphereObject = new GameObject();
             Sphere sphere = sphereObject.AddComponent<CardsPile>();
             var tokenObject = new GameObject();
