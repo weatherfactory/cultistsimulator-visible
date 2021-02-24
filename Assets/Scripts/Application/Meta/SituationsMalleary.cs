@@ -56,8 +56,7 @@ namespace Assets.Scripts.Application.Meta
            SituationCreationCommand newSituationCommand;
            if (recipe.IsValid())
            {
-               var rPath = _situationDrydock.Path.AppendPath(recipe.ActionId);
-                newSituationCommand = new SituationCreationCommand(recipe.ActionId, rPath).WithRecipeId(recipe.Id).AlreadyInState(StateEnum.Ongoing);
+                newSituationCommand = new SituationCreationCommand().WithVerbId(recipe.ActionId).WithRecipeId(recipe.Id).AlreadyInState(StateEnum.Ongoing);
                 //assuming we want the whole lifetime of the recipe
                   newSituationCommand.TimeRemaining = recipe.Warmup;
            }
@@ -67,11 +66,11 @@ namespace Assets.Scripts.Application.Meta
                var verb = compendium.GetEntityById<Verb>(entityId);
                if (verb.IsValid())
                    newSituationCommand =
-                       new SituationCreationCommand(verb.Id, new FucinePath(verb.Id));
+                       new SituationCreationCommand().WithVerbId(verb.Id);
                else
                    return;
            }
-           var newTokenLocation = new TokenLocation(0f, 0f, 0f, _situationDrydock.Path);
+           var newTokenLocation = new TokenLocation(0f, 0f, 0f, _situationDrydock.Path); //this is the only place we need to, or should, specify the path!
            var newTokenCommand = new TokenCreationCommand(newSituationCommand, newTokenLocation);
            newTokenCommand.Execute(new Context(Context.ActionSource.Debug));
 

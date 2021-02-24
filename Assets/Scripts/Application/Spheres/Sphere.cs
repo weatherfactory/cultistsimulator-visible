@@ -62,7 +62,7 @@ namespace SecretHistories.Spheres
         {
             get { return new List<Token>(_tokens); }
         }
-        [DontEncaust]
+        [Encaust]
         public FucinePath Path { get; protected set; } = new NullFucinePath();
         [DontEncaust]
         public bool Defunct { get; protected set; }

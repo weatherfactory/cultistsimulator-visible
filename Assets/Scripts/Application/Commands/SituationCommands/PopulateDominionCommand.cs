@@ -58,7 +58,7 @@ namespace SecretHistories.Commands.SituationCommands
                 {
                     dominion.RemoveAllSpheres();
                     foreach (var s in Spheres)
-                        dominion.CreatePrimarySphere(s.GoverningSphereSpec); //I KNOW. But it's been a long day. 
+                        s.ExecuteOn(dominion,new Context(Context.ActionSource.Unknown)); 
                     return true;
                 }
             }

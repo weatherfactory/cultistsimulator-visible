@@ -1,5 +1,6 @@
 ﻿
 using SecretHistories.Entities;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 
 public class Context {
@@ -32,9 +33,15 @@ TokenMigration,
     public ActionSource actionSource;
     public bool Metafictional { get; set; }
     public TokenLocation TokenDestination { get; set; }
+    public FucinePath OccurringAt { get; set; }
     public Context(ActionSource actionSource) {
         this.actionSource = actionSource;
         Metafictional = false;
+    }
+
+    public Context(Context fromContext)
+    {
+
     }
 
     public Context(ActionSource actionSource,TokenLocation tokenDestination)

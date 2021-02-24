@@ -45,6 +45,7 @@ namespace SecretHistories.Commands
             Path=new NullFucinePath();
         }
 
+        [JsonConstructor]
         public SituationCreationCommand(string verbId, FucinePath path): this()
         {
             VerbId = verbId;
@@ -56,6 +57,13 @@ namespace SecretHistories.Commands
             RecipeId = withRecipeId;
             return this;
         }
+
+        public SituationCreationCommand WithVerbId(string verbId)
+        {
+            VerbId = verbId;
+            return this;
+        }
+
 
         public SituationCreationCommand AlreadyInState(StateEnum state)
         {
