@@ -53,7 +53,8 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     [FucineList]
    public List<AngelSpecification> Angels { get; set; }
 
-   public Type SphereType { get; set; } //this is the default. We'll probably want to make this an actual fucine value later
+
+      public Type SphereType { get; set; }
     public FucinePath RelativePath => new FucinePath(_id);
 
 
@@ -74,7 +75,8 @@ public class SphereSpec: AbstractEntity<SphereSpec>
 
     protected SphereSpec()
     {
-
+        //setting here as default.
+        SphereType = typeof(ThresholdSphere);
     }
 
     /// <summary>
@@ -99,6 +101,7 @@ public class SphereSpec: AbstractEntity<SphereSpec>
 
     public SphereSpec(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
     {
+        SphereType = typeof(ThresholdSphere); //ultimately we will want to import the spheretype, but that'll do for now
     }
 
     public List<IAngel> MakeAngels()

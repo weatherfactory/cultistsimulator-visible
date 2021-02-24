@@ -80,6 +80,8 @@ namespace SecretHistories.Fucine
     }
 
 
+
+
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineId : Fucine
     {
