@@ -17,10 +17,15 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
         [SerializeField] private NavigationAnimation _navigationAnimation;
         private List<Sphere> _arrangingSpheres=new List<Sphere>();
         
-        public override void AddNewSphereToArrangement(Sphere newSphere, int index)
+        public override void AddNewSphereToArrangement(Sphere sphereAdded, int index)
         {
+            NotesSphere newsNotesSphere= sphereAdded as NotesSphere;
+            if(newsNotesSphere==null)
+                throw new ApplicationException(sphereAdded.Path + " isn't a notes sphere");
 
-            RectTransform sphereRectTransform = newSphere.GetRectTransform();
+            newsNotesSphere.Index = index;
+
+            RectTransform sphereRectTransform = newsNotesSphere.GetRectTransform();
 
             sphereRectTransform.SetParent(this.transform);
             sphereRectTransform.anchoredPosition3D = Vector3.zero;
@@ -34,9 +39,9 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
     }
 
     //now add, and reveal, the new sphere
-            _arrangingSpheres.Add(newSphere);
-            (newSphere as NotesSphere).OnNoteNavigation += RespondToNoteNavigation;
-            newSphere.Reveal();
+            _arrangingSpheres.Add(newsNotesSphere);
+            newsNotesSphere.OnNoteNavigation += RespondToNoteNavigation;
+            newsNotesSphere.Reveal();
 
         }
 

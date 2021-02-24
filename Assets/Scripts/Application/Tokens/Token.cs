@@ -296,7 +296,8 @@ namespace SecretHistories.UI {
             }
 
             Sphere = newSphere;
-            _payload.SetParentPath(Location.AtSpherePath);
+            var parentSpherePath = Location.AtSpherePath;
+            _payload.SetParentPath(parentSpherePath);
         }
 
         public bool IsInContainer(Sphere compareContainer, Context context)

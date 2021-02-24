@@ -35,18 +35,9 @@ namespace Assets.Scripts.Application.Spheres
         public override SphereCategory SphereCategory => SphereCategory.Notes;
         public override bool AllowStackMerge => false;
         public event Action<NavigationArgs> OnNoteNavigation;
+        public int Index { get; set; }
 
 
-        public int GetNoteIndex()
-        {
-            string digits= String.Join("", GoverningSphereSpec.Id.Where(char.IsDigit));
-
-
-            if (digits.Length > 0)
-                return int.Parse(digits);
-
-            throw new ApplicationException($"Can't find index digits for a note sphere in {GoverningSphereSpec.Id}");
-        }
 
 
 
@@ -63,13 +54,13 @@ namespace Assets.Scripts.Application.Spheres
 
         public void ShowPrevPage()
         {
-            OnNoteNavigation?.Invoke(new NavigationArgs(GetNoteIndex()-1, NavigationAnimationDirection.MoveLeft, NavigationAnimationDirection.MoveLeft));
+            OnNoteNavigation?.Invoke(new NavigationArgs(Index-1, NavigationAnimationDirection.MoveLeft, NavigationAnimationDirection.MoveLeft));
         }
 
 
        public void ShowNextPage()
         {
-            OnNoteNavigation?.Invoke(new NavigationArgs(GetNoteIndex()+1, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight));
+            OnNoteNavigation?.Invoke(new NavigationArgs(Index+1, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight));
         }
 
 

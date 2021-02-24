@@ -74,8 +74,9 @@ using Object = UnityEngine.Object;
             var tokenObject=new GameObject();
             var token=tokenObject.AddComponent<Token>();
             var elementStack = new ElementStack();
-            worldSphere.AcceptToken(token,new Context(Context.ActionSource.Unknown));
-            token.SetPayload(elementStack);
+        token.SetPayload(elementStack);
+        worldSphere.AcceptToken(token,new Context(Context.ActionSource.Unknown));
+            
             encaustery.Encaust(token);
         }
         [Test]
@@ -108,6 +109,7 @@ using Object = UnityEngine.Object;
             var encaustery = new Encaustery<SphereCreationCommand>();
         var sphereObject = new GameObject();
         Sphere sphere = sphereObject.AddComponent<ThresholdSphere>();
+        sphere.GoverningSphereSpec=new SphereSpec(typeof(ThresholdSphere),"chione");
         var sphereCommand= encaustery.Encaust(sphere);
         Assert.AreEqual(sphere.GoverningSphereSpec.Id, sphereCommand.GoverningSphereSpec.Id);
         }
