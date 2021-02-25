@@ -25,9 +25,9 @@ namespace SecretHistories.States
        public abstract bool AllowDuplicateVerbIfVerbSpontaneous { get; }
        public abstract StateEnum RehydrationValue { get; }
 
-       public bool IsVisibleInThisState(Dominion dominion)
+       public bool IsVisibleInThisState(SituationDominion situationDominion)
        {
-           return dominion.VisibleFor(RehydrationValue);
+           return situationDominion.VisibleFor(RehydrationValue);
         }
 
         public static SituationState Rehydrate(StateEnum stateEnum,Situation situation)

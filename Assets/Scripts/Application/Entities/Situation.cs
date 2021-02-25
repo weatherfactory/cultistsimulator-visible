@@ -125,7 +125,7 @@ namespace SecretHistories.Entities {
         private RecipePrediction _currentRecipePrediction;
 
         private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
-        private readonly List<Dominion> _registeredDominions = new List<Dominion>();
+        private readonly List<SituationDominion> _registeredDominions = new List<SituationDominion>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         
         private Timeshadow _timeshadow;
@@ -158,15 +158,15 @@ namespace SecretHistories.Entities {
             NotifyTimerChange();
         }
 
-        public bool RegisterDominion(Dominion dominionToRegister)
+        public bool RegisterDominion(SituationDominion situationDominionToRegister)
         {
-            dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
-            dominionToRegister.OnSphereRemoved.AddListener(RemoveSphere);
+            situationDominionToRegister.OnSphereAdded.AddListener(AttachSphere);
+            situationDominionToRegister.OnSphereRemoved.AddListener(RemoveSphere);
 
-            if (_registeredDominions.Contains(dominionToRegister))
+            if (_registeredDominions.Contains(situationDominionToRegister))
                 return false;
 
-            _registeredDominions.Add(dominionToRegister);
+            _registeredDominions.Add(situationDominionToRegister);
             return true;
         }
 
@@ -706,9 +706,9 @@ namespace SecretHistories.Entities {
 
 
 
-        public List<Dominion> GetRelevantDominions(StateEnum forState,Type sphereType)
+        public List<SituationDominion> GetRelevantDominions(StateEnum forState,Type sphereType)
     {
-            return new List<Dominion>(_registeredDominions.Where(a=>a.RelevantTo(forState,sphereType)));
+            return new List<SituationDominion>(_registeredDominions.Where(a=>a.RelevantTo(forState,sphereType)));
     }
 
     public List<Sphere> GetAvailableThresholdsForStackPush(ITokenPayload stack)

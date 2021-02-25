@@ -97,7 +97,7 @@ namespace SecretHistories.UI {
         private ITokenPayload _payload;
 
         [Encaust]
-        public virtual ITokenPayload Payload
+        public ITokenPayload Payload
         {
             get
             {

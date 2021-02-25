@@ -15,7 +15,9 @@ using SecretHistories.Entities.Verbs;
 using SecretHistories.Fucine;
 using SecretHistories.Logic;
 using SecretHistories.NullObjects;
+using SecretHistories.Services;
 using SecretHistories.Spheres;
+using SecretHistories.Spheres.SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 
@@ -29,8 +31,8 @@ using UnityEngine;
         public void Setup()
         {
             Watchman.ForgetEverything();
-            var sphereObject = new GameObject();
-            worldSphere = sphereObject.AddComponent<NullSphere>();
+            worldSphere = Watchman.Get<PrefabFactory>()
+                .InstantiateSphere(new SphereSpec(typeof(MinimalSphere), "minimalworldsphere"));
         }
 
         [Test]
@@ -73,8 +75,9 @@ using UnityEngine;
             var tokenObject=new GameObject();
             var token=tokenObject.AddComponent<Token>();
             var elementStack = new ElementStack();
+            worldSphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
         token.SetPayload(elementStack);
-        worldSphere.AcceptToken(token,new Context(Context.ActionSource.Unknown));
+        
             
             encaustery.Encaust(token);
         }

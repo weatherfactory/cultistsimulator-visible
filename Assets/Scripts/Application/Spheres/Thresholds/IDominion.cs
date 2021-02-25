@@ -10,9 +10,10 @@ using UnityEngine;
 
 namespace SecretHistories.UI
 {
-  public interface IDominion
 
-  {
+  public interface IDominion: IEncaustable
+
+    {
       List<Sphere> Spheres { get; }
       Sphere CreateSphere(SphereSpec spec);
       Sphere GetSphereById(string id);

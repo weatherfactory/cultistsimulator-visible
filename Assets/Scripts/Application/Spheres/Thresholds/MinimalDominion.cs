@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Commands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
@@ -11,7 +13,8 @@ using UnityEngine;
 
 namespace SecretHistories.UI
 {
-   public class MinimalDominion: MonoBehaviour, IDominion, IEncaustable
+    [IsEncaustableClass(typeof(PopulateDominionCommand))]
+    public class MinimalDominion: MonoBehaviour, IDominion
     {
         
         public  List<Sphere> Spheres { get; }=new List<Sphere>();

@@ -23,7 +23,7 @@ using SecretHistories.Spheres;
 
 namespace SecretHistories.UI {
     [IsEncaustableClass(typeof(PopulateDominionCommand))]
-    public class Dominion: MonoBehaviour, IDominion, IEncaustable
+    public class SituationDominion: MonoBehaviour, IDominion
     {
 
         [SerializeField] protected SpheresWrangler _spheresWrangler;

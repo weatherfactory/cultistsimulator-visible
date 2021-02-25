@@ -42,7 +42,7 @@ namespace SecretHistories.UI {
 
 
         [Space]
-        [SerializeField] List<Dominion> Dominions;
+        [SerializeField] List<SituationDominion> Dominions;
 
 
         [Space]

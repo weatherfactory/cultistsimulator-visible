@@ -90,9 +90,13 @@ namespace SecretHistories.Commands
             {
                 var commandPropertyToSet = typeof(T).GetProperty(encaustableProperty.Name);
 
-                if(isGenericListOfEncaustables(encaustableProperty.PropertyType))
-                    commandPropertyToSet.SetValue(command, EncaustListToEncaustedList(encaustable,encaustableProperty));
-
+                if (isGenericListOfEncaustables(encaustableProperty.PropertyType))
+                {
+                    object encaustedList = EncaustListToEncaustedList(encaustable, encaustableProperty);
+                    if(encaustedList!=null) //which it might be if the list was empty
+                        commandPropertyToSet.SetValue(command, encaustedList);
+                }
+                
 
                 //is the property we're trying to encaust itself an encaustable entity in its own right? if so, do it as an inner command
                 else if (typeof(IEncaustable).IsAssignableFrom(encaustableProperty.PropertyType))
@@ -128,9 +132,14 @@ namespace SecretHistories.Commands
         {
             //get a list of all the members, as objects
             IList untypedIntermediateSourceList = encaustableListProperty.GetValue(outerEncaustable, null) as IList;
+            if (untypedIntermediateSourceList.Count == 0) //it's not populated. This means it's not worth encausting, and *also*
+            //that if the list is an interface implemented by encaustable types, then we have no way to tell what the type to encaust to would be anyway
+            //(Unless we expand encaustability to interfaces)
+                return null; 
 
             //get the type of the encaustable members
-            var encaustableTypeArgument = encaustableListProperty.PropertyType.GenericTypeArguments[0];
+            var encaustableTypeArgument = untypedIntermediateSourceList[0].GetType();
+            //var encaustableTypeArgument = encaustableListProperty.PropertyType.GenericTypeArguments[0];
 
             //get the type we'll encaust them to, via the attribute on the member type
 
