@@ -29,9 +29,7 @@ namespace Assets.Scripts.Application.Meta
            sphereSphec.SetId("situationsmalleary");
            sphereSphec.Label = "Malleary: Situations";
            sphereSphec.AllowAnyToken = true;
-     var spherePath=FucinePath.Root().AppendPath(sphereSphec.Id);
-           
-     _situationDrydock.SpecifyPath(spherePath);
+
            _situationDrydock.ApplySpec(sphereSphec);
 
             _situationDrydock.Subscribe(this);
@@ -70,7 +68,7 @@ namespace Assets.Scripts.Application.Meta
                else
                    return;
            }
-           var newTokenLocation = new TokenLocation(0f, 0f, 0f, _situationDrydock.Path); //this is the only place we need to, or should, specify the path!
+           var newTokenLocation = new TokenLocation(0f, 0f, 0f, _situationDrydock.GetAbsolutePath()); //this is the only place we need to, or should, specify the path!
            var newTokenCommand = new TokenCreationCommand(newSituationCommand, newTokenLocation);
            newTokenCommand.Execute(new Context(Context.ActionSource.Debug));
 

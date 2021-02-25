@@ -22,7 +22,7 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
 
     public void Start() {
 
-        Watchman.Get<SphereCatalogue>().Subscribe(this);
+        Watchman.Get<HornedAxe>().Subscribe(this);
 
  
         Legacy activeLegacy = Watchman.Get<Stable>().Protag().ActiveLegacy;
@@ -59,7 +59,7 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
     public void UpdateDisplay()
     {
 
-        var tc = Watchman.Get<SphereCatalogue>();
+        var tc = Watchman.Get<HornedAxe>();
         var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());
   
         for (int i = 0; i <= 3; i++)

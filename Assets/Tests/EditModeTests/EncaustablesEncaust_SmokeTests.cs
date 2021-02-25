@@ -18,7 +18,6 @@ using SecretHistories.NullObjects;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 
 [TestFixture]

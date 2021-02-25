@@ -27,7 +27,7 @@ namespace SecretHistories.UI
 
       public void Start()
       {
-            Watchman.Get<SphereCatalogue>().Subscribe(this);
+            Watchman.Get<HornedAxe>().Subscribe(this);
 
           //scan for child highlight locations
           var hls = GetComponentsInChildren<HighlightLocation>();
@@ -77,7 +77,7 @@ namespace SecretHistories.UI
 
       public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
       {
-          var tc = Watchman.Get<SphereCatalogue>();
+          var tc = Watchman.Get<HornedAxe>();
           var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());
 
           foreach (var hl in highlightLocations)

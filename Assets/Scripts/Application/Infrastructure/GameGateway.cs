@@ -98,14 +98,14 @@ namespace SecretHistories.Constants
         private static async Task SaveRestartState()
         {
             var restartingGameStateProvider = new RestartingGameProvider();
-      restartingGameStateProvider.Encaust(Watchman.Get<Stable>(), Watchman.Get<SphereCatalogue>());
+      restartingGameStateProvider.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
             var saveTask = restartingGameStateProvider.SerialiseAndSaveAsync();
             var result = await saveTask;
         }
 
         private void ProvisionDropzoneToken()
         {
-            var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
+            var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
             
             var dropzoneCreationCommand = new TokenCreationCommand(new DropzoneCreationCommand(), dropzoneLocation);
             dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
@@ -116,7 +116,7 @@ namespace SecretHistories.Constants
 
             var chronicler = Watchman.Get<Chronicler>();
 
-            chronicler.ChronicleGameEnd(Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<SphereCatalogue>().GetSpheres(), ending);
+            chronicler.ChronicleGameEnd(Watchman.Get<HornedAxe>().GetRegisteredSituations(), Watchman.Get<HornedAxe>().GetSpheres(), ending);
             var characterCreationCommand=CharacterCreationCommand.Reincarnate(Watchman.Get<Stable>().Protag().InProgressHistoryRecords, NullLegacy.Create(), ending);
             characterCreationCommand.Execute(Watchman.Get<Stable>());
 

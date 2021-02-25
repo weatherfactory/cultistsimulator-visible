@@ -99,7 +99,7 @@ namespace SecretHistories.Entities
 
         public List<TokenCreationCommand> GetTokenCreationCommandsToEnactLegacy()
         {
-            FucinePath tabletopSpherePath = Watchman.Get<SphereCatalogue>().GetDefaultWorldSpherePath();
+            FucinePath tabletopSpherePath = Watchman.Get<HornedAxe>().GetDefaultWorldSpherePath();
 
             var commands = new List<TokenCreationCommand>();
 

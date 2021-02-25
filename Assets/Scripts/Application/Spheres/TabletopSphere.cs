@@ -43,7 +43,12 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
         public override IChoreographer Choreographer
     {
-        get { return _tabletopChoreographer; }
+            get
+            {
+                if(_tabletopChoreographer==null)
+                    return new SimpleChoreographer(); //there's a nasty snarl-up where the choreographer is populated in Awake, which don't play nice with tests
+                return _tabletopChoreographer;
+            }
     }
 
     [SerializeField] private TabletopChoreographer _tabletopChoreographer;
@@ -51,6 +56,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
     // This is used to determine if this component is the tabletop.
     // Needed because the MapTokenContainer inherits from TabletopTokenContainer but is not the Tabletop
+    //YOU AR FUCKING KIDING ME - AK
     public virtual bool IsTabletop { get { return true; } }
 
     public virtual void Start() {
@@ -66,7 +72,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 
         base.DisplayAndPositionHere(token, context);
 
-        _tabletopChoreographer.SnapToGrid(token.transform.localPosition);
+        Choreographer.SnapToGrid(token.transform.localPosition);
     }
 
     public override void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
@@ -83,7 +89,7 @@ public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
         if (!tokenToSend.IsValidElementStack())
             return false;
 
-        var allThresholdSpheres=_catalogue.GetSpheresOfCategory(SphereCategory.Threshold);
+        var allThresholdSpheres=Watchman.Get<HornedAxe>().GetSpheresOfCategory(SphereCategory.Threshold);
 
         var tokenCurrentPath = tokenToSend.Location.AtSpherePath;
 

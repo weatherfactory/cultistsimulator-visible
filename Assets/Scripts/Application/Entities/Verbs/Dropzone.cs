@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Application.Fucine;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
@@ -31,15 +32,8 @@ namespace SecretHistories.Entities.Verbs
         public string Icon => string.Empty;
         [DontEncaust]
         public bool IsOpen => false;
-        [Encaust]
-        public FucinePath CachedParentPath { get; protected set; }
 
-        public void SetParentPath(FucinePath path)
-        {
-            CachedParentPath = path;
-        }
-
-        [DontEncaust] public FucinePath AbsolutePath => CachedParentPath.AppendToken(this.Id);
+        [DontEncaust] public FucinePath AbsolutePath => new NullFucinePath();
 
         [Encaust]
         public List<Dominion> Dominions

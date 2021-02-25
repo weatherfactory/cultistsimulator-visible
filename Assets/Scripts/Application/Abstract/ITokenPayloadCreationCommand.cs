@@ -15,6 +15,5 @@ namespace SecretHistories.Abstract
         public ITokenPayload Execute(Context context,FucinePath atSpherePath);
         public int Quantity { get; }
         public List<PopulateDominionCommand> Dominions { get; set; }
-        public FucinePath CachedParentPath { get; }
     }
 }

@@ -30,7 +30,7 @@ namespace Assets.Scripts.Application.Meta
         {
             var mallearyThresholdSpec = new SphereSpec(typeof(ThresholdSphere), "elementsmalleary");
 
-            _drydockThresholdSphere =elementDrydockWrangler.BuildPrimarySphere(mallearyThresholdSpec, FucinePath.Root(), NullVerb.Create()) as ThresholdSphere;
+            _drydockThresholdSphere =elementDrydockWrangler.BuildPrimarySphere(mallearyThresholdSpec, NullVerb.Create()) as ThresholdSphere;
             _drydockThresholdSphere.Subscribe(this);
         }
 

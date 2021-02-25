@@ -68,7 +68,7 @@ namespace SecretHistories.Spheres.Angels
                         matchingToken.CalveToken(matchingToken.Quantity - GRAB_QUANTITY_LIMIT,
                             new Context(Context.ActionSource.GreedyGrab));
 
-                    var enRouteSphere = Watchman.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
+                    var enRouteSphere = Watchman.Get<HornedAxe>().GetDefaultEnRouteSphere();
 
                     var targetPosition = GetTargetPositionForDestinationSphere(destinationThresholdSphere,matchingToken);
 
@@ -87,7 +87,7 @@ namespace SecretHistories.Spheres.Angels
         private Vector3 GetTargetPositionForDestinationSphere(Sphere destinationThresholdSphere,Token matchingToken)
         {
 
-            var tokenCurrentSpherePath = matchingToken.Sphere.Path;
+            var tokenCurrentSpherePath = matchingToken.Sphere.GetAbsolutePath();
             var targetPosition = destinationThresholdSphere.GetReferencePosition(tokenCurrentSpherePath);
             return targetPosition;
         }

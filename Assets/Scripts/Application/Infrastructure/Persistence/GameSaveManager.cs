@@ -23,45 +23,13 @@ using UnityEngine.Analytics;
 namespace SecretHistories.Infrastructure
 {
 
-    public class TableSaveState : ITableSaveState
-    {
-        public IEnumerable<ElementStack> TableStacks { get; private set; }
-        public List<Situation> Situations { get; private set; }
-        public bool IsTableActive()
-        {
-            return true;
-        }
 
-        public MetaInfo MetaInfo { get; }
 
-    }
-
-    public class InactiveTableSaveState : ITableSaveState
-    {
-        public IEnumerable<ElementStack> TableStacks { get; private set; }
-        public List<Situation> Situations { get; private set; }
-
-        public bool IsTableActive()
-        {
-            return false;
-        }
-
-        public MetaInfo MetaInfo { get; }
-
-        public InactiveTableSaveState(MetaInfo metaInfo)
-        {
-            TableStacks = new List<ElementStack>();
-            Situations = new List<Situation>();
-            MetaInfo = metaInfo;
-        }
-
-    }
 
 
     public class GameSaveManager: MonoBehaviour
     {
         private IGameDataImporter dataImporter= new SaveDataImporter();
-        private SaveDataExporter dataExporter= new SaveDataExporter();
         private SimpleJSONGameDataImporter simpleJsonGameDataImporter=new SimpleJSONGameDataImporter();
 
         // Save game safety

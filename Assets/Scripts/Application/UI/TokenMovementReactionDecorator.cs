@@ -24,7 +24,7 @@ namespace SecretHistories.UI
             if(_decorated==null)
                 NoonUtility.LogWarning("Can't initialise a TokenMovementReactionDecorator: IInteractswithTokens component missing on " + gameObject.name);
             else
-                Watchman.Get<SphereCatalogue>().Subscribe(this);
+                Watchman.Get<HornedAxe>().Subscribe(this);
         }
 
         public void NotifyTokensChanged(SphereContentsChangedEventArgs args)

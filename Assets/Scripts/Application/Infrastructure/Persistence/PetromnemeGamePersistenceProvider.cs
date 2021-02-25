@@ -25,7 +25,7 @@ namespace SecretHistories.Infrastructure.Persistence
             var characterCreationCommand= importer.ImportToCharacterCreationCommand(this);
             _persistedGameState.CharacterCreationCommands.Add(characterCreationCommand);
 
-            importer.ImportTableState(this, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere()); //this isn't running through the commands list!
+            importer.ImportTableState(this, Watchman.Get<HornedAxe>().GetDefaultWorldSphere()); //this isn't running through the commands list!
         }
 
        

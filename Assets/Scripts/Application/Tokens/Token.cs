@@ -54,7 +54,7 @@ namespace SecretHistories.UI {
                 if (Sphere == null)
                     locationPath = new NullFucinePath();
                 else
-                    locationPath = Sphere.Path;
+                    locationPath = Sphere.GetAbsolutePath();
                 if (TokenRectTransform !=null && !TokenRectTransform.Equals(null))
                     return new TokenLocation(TokenRectTransform.anchoredPosition3D, locationPath);
                 else
@@ -177,7 +177,6 @@ namespace SecretHistories.UI {
         public void SetPayload(ITokenPayload payload)
         {
             _payload = payload;
-            _payload.SetParentPath(Location.AtSpherePath);
             _payload.OnChanged += OnPayloadChanged;
             name = _payload.Id + "_token";
             Manifest();
@@ -297,13 +296,6 @@ namespace SecretHistories.UI {
             }
 
             Sphere = newSphere;
-            var parentSpherePath = Location.AtSpherePath;
-            _payload.SetParentPath(parentSpherePath);
-        }
-
-        public bool IsInContainer(Sphere compareContainer, Context context)
-        {
-            return compareContainer == Sphere;
         }
 
 
@@ -376,7 +368,7 @@ namespace SecretHistories.UI {
             }
 
 
-            var enrouteContainer = Watchman.Get<SphereCatalogue>().GetSphereByPath(
+            var enrouteContainer = Watchman.Get<HornedAxe>().GetSphereByPath(
                 new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
 
             enrouteContainer.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));

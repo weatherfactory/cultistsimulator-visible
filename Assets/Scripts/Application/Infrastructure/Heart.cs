@@ -67,7 +67,7 @@ public class Heart : MonoBehaviour
         //foreach (Situation sc in Watchman.Get<SituationsCatalogue>().GetRegisteredSituations())
         //    sc.ExecuteHeartbeat(beatInterval);
 
-        foreach(Sphere sphere in Watchman.Get<SphereCatalogue>().GetSpheres())
+        foreach(Sphere sphere in Watchman.Get<HornedAxe>().GetSpheres())
         {
             sphere.RequestFlockActions(beatInterval);
             var tokenHeartbeatIntervalForThisSphere = beatInterval * sphere.TokenHeartbeatIntervalMultiplier;

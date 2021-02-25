@@ -51,7 +51,7 @@ namespace SecretHistories.States
         public override void Continue(Situation situation)
         {
 
-            var tc = Watchman.Get<SphereCatalogue>();
+            var tc = Watchman.Get<HornedAxe>();
             var aspectsInContext = tc.GetAspectsInContext(situation.GetAspects(true));
 
             var rc = new RecipeConductor(aspectsInContext, Watchman.Get<Stable>().Protag());

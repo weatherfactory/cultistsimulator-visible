@@ -33,7 +33,7 @@ namespace SecretHistories.Spheres
 
             foreach (var t in tokensToLeaveBehind)
             {
-                Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere().AcceptToken(t,context);
+                Watchman.Get<HornedAxe>().GetDefaultWorldSphere().AcceptToken(t,context);
             }
         }
 

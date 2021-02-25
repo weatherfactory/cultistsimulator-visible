@@ -34,6 +34,10 @@ namespace SecretHistories.Spheres.Angels
             return Vector3.zero;
         }
 
-
+        public Vector3 SnapToGrid(Vector3 transformLocalPosition)
+        {
+           
+           return Vector3.zero;
+        }
     }
 }

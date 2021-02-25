@@ -33,7 +33,7 @@ namespace SecretHistories.UI
         public TokenLocation(Vector3 anchored3DPosition, Sphere inSphere)
         {
             Anchored3DPosition = anchored3DPosition;
-            AtSpherePath = inSphere.Path;
+            AtSpherePath = inSphere.GetAbsolutePath();
         }
 
         public static TokenLocation Default(FucinePath atSpherePath)
@@ -51,7 +51,7 @@ namespace SecretHistories.UI
         public TokenLocation(Token currentLocationOfToken)
         {
             Anchored3DPosition = currentLocationOfToken.Location.Anchored3DPosition;
-            AtSpherePath = currentLocationOfToken.Sphere.Path;
+            AtSpherePath = currentLocationOfToken.Sphere.GetAbsolutePath();
         }
 
         public TokenLocation WithSpherePath(FucinePath withSpherePath)
@@ -62,7 +62,7 @@ namespace SecretHistories.UI
 
         public TokenLocation WithSphere(Sphere withSphere)
         {
-            return WithSpherePath(withSphere.Path);
+            return WithSpherePath(withSphere.GetAbsolutePath());
         }
 
 

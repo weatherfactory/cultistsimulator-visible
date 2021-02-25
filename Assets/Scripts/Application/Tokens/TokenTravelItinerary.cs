@@ -29,8 +29,8 @@ namespace SecretHistories.UI
         {
             Anchored3DStartPosition = startLocation.Anchored3DPosition;
             Anchored3DEndPosition = endLocation.Anchored3DPosition;
-            EnRouteSphere = Watchman.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
-            DestinationSphere = Watchman.Get<SphereCatalogue>().GetSphereByPath(endLocation.AtSpherePath);
+            EnRouteSphere = Watchman.Get<HornedAxe>().GetDefaultEnRouteSphere();
+            DestinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(endLocation.AtSpherePath);
             StartScale = DefaultStartScale;
             EndScale = DefaultEndScale;
         }
@@ -41,8 +41,8 @@ namespace SecretHistories.UI
             Anchored3DStartPosition = anchored3DStartPosition;
             Anchored3DEndPosition = anchored3DEndPosition;
 
-            EnRouteSphere = Watchman.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
-            DestinationSphere = Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere();
+            EnRouteSphere = Watchman.Get<HornedAxe>().GetDefaultEnRouteSphere();
+            DestinationSphere = Watchman.Get<HornedAxe>().GetDefaultWorldSphere();
             StartScale = DefaultStartScale;
             EndScale = DefaultEndScale;
         }

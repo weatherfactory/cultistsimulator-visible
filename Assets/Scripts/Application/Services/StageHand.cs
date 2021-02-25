@@ -54,12 +54,12 @@ namespace SecretHistories.Services
 
         private async void SceneChange(string sceneToLoad,bool withFadeEffect)
         {
-            var sphereCatalogue = Watchman.Get<SphereCatalogue>();
+            var sphereCatalogue = Watchman.Get<HornedAxe>();
 
             if(sphereCatalogue != null)
-                Watchman.Get<SphereCatalogue>().Reset();
+                Watchman.Get<HornedAxe>().Reset();
 
-            var situationsCatalogue = Watchman.Get<SituationsCatalogue>();
+            var situationsCatalogue = Watchman.Get<HornedAxe>();
             if (situationsCatalogue != null)
                 situationsCatalogue.Reset();
 

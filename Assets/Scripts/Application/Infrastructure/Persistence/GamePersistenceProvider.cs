@@ -30,11 +30,11 @@ namespace SecretHistories.Infrastructure.Persistence
             return _persistedGameState;
         }
 
-        public virtual void Encaust(Stable stable,SphereCatalogue sphereCatalogue)
+        public virtual void Encaust(Stable stable,HornedAxe hornedAxe)
         {
 
             var characters = stable.GetAllCharacters();
-            var rootSpheres = sphereCatalogue.GetRootSpheres();
+            var rootSpheres = hornedAxe.GetRootSpheres();
 
             
          //spheres can contain tokens, but tokens (eg Situations) can also contain spheres.

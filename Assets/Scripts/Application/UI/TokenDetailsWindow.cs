@@ -342,7 +342,7 @@ namespace SecretHistories.UI {
         private List<Token> FindAllElementTokenssForSlotSpecificationOnTabletop(SphereSpec slotSpec)
         {
             var stackList = new List<Token>();
-            var worldSpheres = Watchman.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World);
+            var worldSpheres = Watchman.Get<HornedAxe>().GetSpheresOfCategory(SphereCategory.World);
             foreach (var worldSphere in worldSpheres)
             {
                 var stackTokens = worldSphere.GetElementTokens();

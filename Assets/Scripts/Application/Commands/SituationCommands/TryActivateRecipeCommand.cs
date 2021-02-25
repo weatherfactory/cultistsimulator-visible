@@ -23,7 +23,7 @@ namespace SecretHistories.Commands.SituationCommands
         public bool Execute(Situation situation)
         {
             var aspects = situation.GetAspects(true);
-            var tc = Watchman.Get<SphereCatalogue>();
+            var tc = Watchman.Get<HornedAxe>();
             var aspectsInContext = tc.GetAspectsInContext(aspects);
 
             if (_recipeToActivate.RequirementsSatisfiedBy(aspectsInContext))

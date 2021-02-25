@@ -15,8 +15,7 @@ namespace SecretHistories.Abstract
         public event Action<float> OnLifetimeSpent;
         bool IsOpen { get;}
 
-        public FucinePath CachedParentPath { get; }
-        public void SetParentPath(FucinePath path);
+
         public FucinePath AbsolutePath { get; }
         public List<Dominion> Dominions { get; }
         Type GetManifestationType(SphereCategory sphereCategory);
@@ -29,7 +28,6 @@ namespace SecretHistories.Abstract
         void InteractWithIncoming(Token incomingToken);
         bool ReceiveNote(string label, string description,Context context);
         void ShowNoMergeMessage(ITokenPayload incomingTokenPayload);
-        int Quantity { get; }
         void SetQuantity(int quantityToLeaveBehind, Context context);
         void ModifyQuantity(int unsatisfiedChange, Context context);
 

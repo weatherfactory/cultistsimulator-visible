@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Assets.Scripts.Application.Fucine;
+using SecretHistories.Assets.Scripts.Application.Abstract;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using UnityEngine;
@@ -69,32 +71,35 @@ namespace SecretHistories.Services
             return instantiatedPrefab.GetComponent(manifestationType) as IManifestation;
         }
 
-        public Sphere InstantiateSphere(SphereSpec spec, FucinePath parentPath)
+        public Sphere InstantiateSphere(SphereSpec spec)
         {
-            string loadFromPath = prefabPath + spec.SphereType.Name;
-            var prefab = Resources.Load(loadFromPath);
-            GameObject instantiatedPrefab;
-            try
-            {
-                instantiatedPrefab = Object.Instantiate(prefab) as GameObject;
-            }
-            catch (Exception e)
-            {
-                NoonUtility.Log($"Can't instantiate a sphere prefab at path {loadFromPath}; instantiating a generic game object and adding a thresholdsphere component to it");
-                instantiatedPrefab=new GameObject();
-                instantiatedPrefab.AddComponent<ThresholdSphere>();
-            }
-
-            var spherePath = parentPath.AppendPath(spec.RelativePath);
-
-
-            instantiatedPrefab.name = $"{spec.SphereType.Name}_{spherePath}";
-            var newSphere = instantiatedPrefab.GetComponent(spec.SphereType) as Sphere;
-            newSphere.SpecifyPath(spherePath);
-            newSphere.ApplySpec(spec);
-            return newSphere;
+            return InstantiateSphere(spec, FucineRoot.Get());
         }
 
+        public Sphere InstantiateSphere(SphereSpec spec,IHasFucinePath container)
+            {
+                string loadFromPath = prefabPath + spec.SphereType.Name;
+                var prefab = Resources.Load(loadFromPath);
+                GameObject instantiatedPrefab;
+                try
+                {
+                    instantiatedPrefab = Object.Instantiate(prefab) as GameObject;
+                }
+                catch (Exception e)
+                {
+                    NoonUtility.Log($"Can't instantiate a sphere prefab at path {loadFromPath}; instantiating a generic game object and adding a thresholdsphere component to it");
+                    instantiatedPrefab = new GameObject();
+                    instantiatedPrefab.AddComponent<ThresholdSphere>();
+                }
 
-    }
+
+                instantiatedPrefab.name = $"{spec.SphereType.Name}";
+                var newSphere = instantiatedPrefab.GetComponent(spec.SphereType) as Sphere;
+                newSphere.SetContainer(container);
+                newSphere.ApplySpec(spec);
+                return newSphere;
+            }
+
+
+        }
 }

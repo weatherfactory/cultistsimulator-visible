@@ -81,7 +81,7 @@ namespace SecretHistories.UI {
 		}
 
         public void CloseAllSituationWindowsExcept(string exceptVerbId) {
-            var situations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
+            var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
 
             foreach (var s in situations)
             {
@@ -91,7 +91,7 @@ namespace SecretHistories.UI {
         }
 
         public bool IsSituationWindowOpen() {
-	        var situationControllers = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
+	        var situationControllers = Watchman.Get<HornedAxe>().GetRegisteredSituations();
 	        return situationControllers.Any(c => c.IsOpen);
         }
 

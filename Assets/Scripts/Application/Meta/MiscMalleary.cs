@@ -23,18 +23,18 @@ namespace Assets.Scripts.Application.Meta
 
         void HaltVerb(string verbId)
         {
-            Watchman.Get<SituationsCatalogue>().HaltSituation(verbId, 1);
+            Watchman.Get<HornedAxe>().HaltSituation(verbId, 1);
 
         }
 
         private void DeleteVerb(string verbId)
         {
-            Watchman.Get<SituationsCatalogue>().DeleteSituation(verbId, 1);
+            Watchman.Get<HornedAxe>().DeleteSituation(verbId, 1);
         }
 
         private void PurgeElement(string elementId)
         {
-            Watchman.Get<SphereCatalogue>().PurgeElement(elementId, 1);
+            Watchman.Get<HornedAxe>().PurgeElement(elementId, 1);
         }
 
 
@@ -126,7 +126,7 @@ namespace Assets.Scripts.Application.Meta
 
 
             // Get us a random situation that killed us!
-            var situationControllers = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
+            var situationControllers = Watchman.Get<HornedAxe>().GetRegisteredSituations();
 
             throw new NotImplementedException();
         }
@@ -140,7 +140,7 @@ namespace Assets.Scripts.Application.Meta
         {
 
             var game = new DefaultGamePersistenceProvider();
-            game.Encaust(Watchman.Get<Stable>(), Watchman.Get<SphereCatalogue>());
+            game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
             var saveTask = game.SerialiseAndSaveAsync();
             var result = await saveTask;
 

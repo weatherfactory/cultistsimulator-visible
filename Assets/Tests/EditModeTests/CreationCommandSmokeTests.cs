@@ -24,7 +24,7 @@ using Object = UnityEngine.Object;
 [TestFixture]
 public class CreationCommandsSmokeTests
 {
-    private SphereCatalogue Catalogue;
+    private HornedAxe _hornedAxe;
 
     [SetUp]
     public void WithMinimalCompendiumLoad()
@@ -51,17 +51,14 @@ public class CreationCommandsSmokeTests
         var stableComponent=gobjStable.AddComponent<Stable>();
         watchman.Register(stableComponent);
 
-        Catalogue = Watchman.Get<SphereCatalogue>();
+        _hornedAxe = Watchman.Get<HornedAxe>();
 
         var worldSphere = Object.FindObjectOfType<TabletopSphere>();
-        worldSphere.SpecifyPath(Catalogue.GetDefaultWorldSpherePath());
-        Catalogue.RegisterSphere(worldSphere);
+        _hornedAxe.RegisterSphere(worldSphere);
         var enRouteSphere = Object.FindObjectOfType<EnRouteSphere>();
-        enRouteSphere.SpecifyPath(Catalogue.GetDefaultEnRouteSpherePath());
-        Catalogue.RegisterSphere(enRouteSphere);
+        _hornedAxe.RegisterSphere(enRouteSphere);
         var windowsSphere = Object.FindObjectOfType<WindowsSphere>();
-        windowsSphere.SpecifyPath(Catalogue.GetDefaultWindowSpherePath());
-        Catalogue.RegisterSphere(windowsSphere);
+        _hornedAxe.RegisterSphere(windowsSphere);
 
     }
 
@@ -82,7 +79,7 @@ public class CreationCommandsSmokeTests
         {
         var element = Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First();
         var elementStackCreationCommand = new ElementStackCreationCommand(element.Id,1);
-        var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
+        var location = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
         var elementStackTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, location);
        var elementStackToken=elementStackTokenCreationCommand.Execute(new Context(Context.ActionSource.Debug));
         Assert.IsTrue(elementStackToken.Payload.IsValidElementStack());
@@ -107,7 +104,7 @@ public class CreationCommandsSmokeTests
             situationCreationCommand.VerbId = NullVerb.Create().Id;
         situationCreationCommand.RecipeId = NullRecipe.Create().Id;
         situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
-        var location = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
+        var location = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
 
         var tokenCreationCommand =new TokenCreationCommand(situationCreationCommand,location);
         var token = tokenCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
@@ -121,7 +118,7 @@ public class CreationCommandsSmokeTests
     {
         
         var dropzonePayloadCreationCommand=new DropzoneCreationCommand();
-        var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<SphereCatalogue>().GetDefaultWorldSphere());
+        var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
         var dropzoneCreationCommand = new TokenCreationCommand(dropzonePayloadCreationCommand, dropzoneLocation);
         var dropzone=dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Debug));
         Assert.IsInstanceOf<Token>(dropzone);

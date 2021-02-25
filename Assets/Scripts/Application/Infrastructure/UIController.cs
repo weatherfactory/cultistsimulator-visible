@@ -183,7 +183,7 @@ namespace SecretHistories.Constants
             if (IsEditingText())
                 return;
 
-            var situations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
+            var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
 
             foreach (var s in situations)
             {
@@ -199,7 +199,7 @@ namespace SecretHistories.Constants
             if (IsEditingText())
                 return;
 
-            var situations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
+            var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
 
             foreach (var s in situations)
             {
@@ -236,7 +236,7 @@ namespace SecretHistories.Constants
 			{
 				// Check for open situation windows and close them first
 				bool windowWasOpen = false;
-				var situations = Watchman.Get<SituationsCatalogue>().GetRegisteredSituations();
+				var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
 
 				foreach (var situation in situations) {
 					if (situation.IsOpen) {

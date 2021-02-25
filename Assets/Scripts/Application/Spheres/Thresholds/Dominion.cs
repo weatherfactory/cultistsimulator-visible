@@ -77,9 +77,9 @@ namespace SecretHistories.UI {
                 spec.MakeActiveInState(activeInState);
 
             if(_spheresWrangler.GetSpheresCurrentlyWrangledCount()==0)
-                return  _spheresWrangler.BuildPrimarySphere(spec,_situation.CachedParentPath,_situation.Verb);
+                return  _spheresWrangler.BuildPrimarySphere(spec,_situation.Verb);
 
-            return _spheresWrangler.AddSphere(spec, _situation.CachedParentPath);
+            return _spheresWrangler.AddSphere(spec);
         }
 
 

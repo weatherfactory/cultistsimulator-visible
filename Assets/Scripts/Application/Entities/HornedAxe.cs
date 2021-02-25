@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
@@ -15,8 +16,8 @@ using UnityEngine;
 namespace SecretHistories.Entities {
 
 
-    [Immanence(typeof(SphereCatalogue))]
-    public class SphereCatalogue:ISphereEventSubscriber {
+    [Immanence(typeof(HornedAxe))]
+    public class HornedAxe:ISphereEventSubscriber {
 
         public bool EnableAspectCaching = true;
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
@@ -25,11 +26,25 @@ namespace SecretHistories.Entities {
         private AspectsDictionary _allAspectsExtant = null;
         private bool _tabletopAspectsDirty = true;
         private bool _allAspectsExtantDirty = true;
+        private List<Situation> _currentSituations;
 
         public const string EN_ROUTE_PATH = "enroute";
         
         public const string STORAGE_PATH = "storage";
 
+        public HornedAxe()
+        {
+            Reset();
+        }
+
+        public void Reset()
+        {
+            _currentSituations = new List<Situation>();
+            foreach (var c in new List<Sphere>(_spheres))
+                _spheres.RemoveWhere(tc => !tc.PersistBetweenScenes);
+
+            _subscribers.Clear();
+        }
 
         public FucinePath GetDefaultWorldSpherePath()
         {
@@ -100,14 +115,6 @@ namespace SecretHistories.Entities {
         }
 
 
-        public void Reset()
-        {
-            foreach(var c in new List<Sphere>(_spheres))
-                _spheres.RemoveWhere(tc => !tc.PersistBetweenScenes);
-            
-            _subscribers.Clear();
-        }
-
 
         public void Subscribe(ISphereCatalogueEventSubscriber subscriber) {
             _subscribers.Add(subscriber);
@@ -127,10 +134,11 @@ namespace SecretHistories.Entities {
         public Sphere GetSphereByPath(FucinePath spherePath)
         {
             if(!spherePath.IsAbsolute())
-                throw new ApplicationException($"trying to find a sphere with sphere path {spherePath.ToString()}, but that's not an absolute path, and no context was provided");
+               NoonUtility.LogWarning($"trying to find a sphere with sphere path {spherePath.ToString()}, but that's not an absolute path, and no context was provided");
+
             try
             {
-                var specifiedSphere = _spheres.SingleOrDefault(c => c.Path == spherePath);
+                var specifiedSphere = _spheres.SingleOrDefault(c => c.GetAbsolutePath() == spherePath);
                 if (specifiedSphere == null)
                 {
                     if (spherePath == GetDefaultWorldSpherePath())
@@ -231,8 +239,8 @@ namespace SecretHistories.Entities {
                 else
                     _allAspectsExtant.Clear();
 
-                var allSituations = Watchman.Get<SituationsCatalogue>();
-                foreach (var s in allSituations.GetRegisteredSituations())
+
+                foreach (var s in GetRegisteredSituations())
                 {
                     var stacksInSituation = s.GetElementTokensInSituation();
                     foreach (var situationStack in stacksInSituation)
@@ -282,8 +290,7 @@ namespace SecretHistories.Entities {
 
    
 
-            var situationsCatalogue = Watchman.Get<SituationsCatalogue>();
-            foreach (var s in situationsCatalogue.GetRegisteredSituations())
+            foreach (var s in GetRegisteredSituations())
             {
                 if (maxToPurge <= 0)
                     return maxToPurge;
@@ -301,5 +308,119 @@ namespace SecretHistories.Entities {
         }
 
 
+
+
+
+        public List<Situation> GetRegisteredSituations()
+        {
+            return new List<Situation>(_currentSituations);
+        }
+
+
+        public void RegisterSituation(Situation situation)
+        {
+            _currentSituations.Add(situation);
+        }
+
+        public void DeregisterSituation(Situation situation)
+        {
+            _currentSituations.Remove(situation);
+        }
+
+        public IEnumerable<Situation> GetSituationsWithVerbOfType(Type verbType)
+        {
+            return _currentSituations.Where(situation => situation.Verb.GetType() == verbType);
+        }
+
+        public IEnumerable<Situation> GetSituationsWithVerbOfActionId(string actionId)
+        {
+            return _currentSituations.Where(situation => situation.Verb.Id == actionId);
+        }
+
+
+
+        public void HaltSituation(string toHaltId, int maxToHalt)
+        {
+
+            int i = 0;
+            //Halt the verb if the actionId matches BEARING IN MIND WILDCARD
+
+            if (toHaltId.Contains('*'))
+            {
+                string wildcardToDelete = toHaltId.Remove(toHaltId.IndexOf('*'));
+
+                foreach (var s in GetRegisteredSituations())
+                {
+                    if (s.Verb.Id.StartsWith(wildcardToDelete))
+                    {
+                        s.CommandQueue.AddCommand(new TryHaltSituationCommand());
+                        s.ExecuteHeartbeat(0f);
+                        i++;
+                    }
+
+                    if (i >= maxToHalt)
+                        break;
+                }
+            }
+
+            else
+            {
+                foreach (var s in GetRegisteredSituations())
+                {
+                    if (s.Verb.Id == toHaltId.Trim())
+                    {
+                        s.CommandQueue.AddCommand(new TryHaltSituationCommand());
+                        s.ExecuteHeartbeat(0f);
+                        i++;
+                    }
+                    if (i >= maxToHalt)
+                        break;
+                }
+            }
+        }
+
+        public void DeleteSituation(string toDeleteId, int maxToDelete)
+        {
+
+            int i = 0;
+            //Delete the verb if the actionId matches BEARING IN MIND WILDCARD
+
+            if (toDeleteId.Contains('*'))
+            {
+                string wildcardToDelete = toDeleteId.Remove(toDeleteId.IndexOf('*'));
+
+                foreach (var s in GetRegisteredSituations())
+                {
+                    if (s.Verb.Id.StartsWith(wildcardToDelete))
+                    {
+                        s.Retire(RetirementVFX.VerbAnchorVanish);
+                        i++;
+                    }
+
+                    if (i >= maxToDelete)
+                        break;
+                }
+            }
+
+            else
+            {
+                foreach (var s in GetRegisteredSituations())
+                {
+                    if (s.Verb.Id == toDeleteId.Trim())
+                    {
+                        s.Retire(RetirementVFX.VerbAnchorVanish);
+                        i++;
+                    }
+                    if (i >= maxToDelete)
+                        break;
+                }
+            }
+        }
+
+        //public IEnumerable<Token> GetAnimatables()
+        //{
+        //    var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as Token);
+
+        //    return situationTokens.Where(s => s.CanAnimateArt());
     }
 }

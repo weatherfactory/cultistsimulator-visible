@@ -52,7 +52,7 @@ namespace SecretHistories.Commands
 
         public Token Execute(Context context)
         {
-            var sphereCatalogue = Watchman.Get<SphereCatalogue>();
+            var sphereCatalogue = Watchman.Get<HornedAxe>();
 
             var sphere = sphereCatalogue.GetSphereByPath(Location.AtSpherePath);
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);

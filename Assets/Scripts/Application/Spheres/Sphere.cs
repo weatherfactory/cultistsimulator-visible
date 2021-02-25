@@ -15,8 +15,12 @@ using SecretHistories.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Application.Abstract;
+using SecretHistories.Assets.Scripts.Application.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands.SituationCommands;
+using Steamworks;
 using UnityEngine;
 
 namespace SecretHistories.Spheres
@@ -46,15 +50,22 @@ namespace SecretHistories.Spheres
 
         public ContainerBlock(BlockDirection direction, BlockReason reason)
         {
-            BlockDirection = direction;
+            BlockDirection = direction; 
             BlockReason = reason;
         }
     }
 
     [IsEncaustableClass(typeof(SphereCreationCommand))]
     public abstract class 
-        Sphere : MonoBehaviour,IEncaustable
+        Sphere : MonoBehaviour,IEncaustable,IHasFucinePath
     {
+        [Tooltip("Use this to specify a sphere ID in the editor. otherwise, it'll be expected in the spec")]
+        [SerializeField]
+        protected string SphereIdentifier;
+
+
+        [Encaust] public string Id => SphereIdentifier;
+
         [Encaust]
         public SphereSpec GoverningSphereSpec { get; set; }
         [Encaust]
@@ -63,7 +74,11 @@ namespace SecretHistories.Spheres
             get { return new List<Token>(_tokens); }
         }
         [Encaust]
-        public FucinePath Path { get; protected set; } = new NullFucinePath();
+        public string OwnerSphereIdentifier { get; set; }
+
+        private IHasFucinePath _container = FucineRoot.Get();
+
+   
         [DontEncaust]
         public bool Defunct { get; protected set; }
         [DontEncaust]
@@ -84,20 +99,40 @@ namespace SecretHistories.Spheres
         public abstract SphereCategory SphereCategory { get; }
         [DontEncaust]
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
+
+
+
         public GameObject GreedyIcon;
         public GameObject ConsumingIcon;
+
+        public IHasFucinePath GetContainer()
+        {
+            return _container;
+        }
+
+
+        public void SetContainer(IHasFucinePath container)
+        {
+            _container = container;
+        }
+
+        public FucinePath GetAbsolutePath()
+        {
+            return _container.GetAbsolutePath().AppendSphere(Id);
+        }
+
+
 
         public virtual bool IsInRangeOf(Sphere otherSphere)
         {
             return true;
         }
 
-        [Tooltip("Use this to specify the final part of a SpherePath in the editor")] [SerializeField]
-        protected string SphereIdentifier;
+
         
  
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
-        protected SphereCatalogue _catalogue;
+        protected HornedAxe HornedAxe;
         protected readonly List<Token> _tokens = new List<Token>();
         protected AngelFlock flock = new AngelFlock();
 
@@ -138,23 +173,16 @@ namespace SecretHistories.Spheres
 
         public virtual void Awake()
         {
-            Path = FucinePath.Root().AppendPath(SphereIdentifier); //default; will be overridden if the sphere is instantiated, rather than created in the editor
-
-            Watchman.Get<SphereCatalogue>().RegisterSphere(
+        Watchman.Get<HornedAxe>().RegisterSphere(
                 this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
-        public virtual void SpecifyPath(FucinePath path)
-        {
-            if (path.GetSpherePath().IsValid())
-                Path = path.GetSpherePath();
-            else
-                NoonUtility.Log($"Invalid path specified for sphere; keeping existing path {Path}");
-        }
+
 
         public virtual void ApplySpec(SphereSpec spec)
         {
             GoverningSphereSpec = spec;
+            SphereIdentifier = spec.Id;
         }
 
         public virtual bool Retire(SphereRetirementType sphereRetirementType)
@@ -167,7 +195,7 @@ namespace SecretHistories.Spheres
             else
                 EvictAllTokens(new Context(Context.ActionSource.ContainingSphereRetired));
 
-            Watchman.Get<SphereCatalogue>().DeregisterSphere(this);
+            Watchman.Get<HornedAxe>().DeregisterSphere(this);
 
                 Defunct = true;
             Destroy(gameObject);
@@ -304,7 +332,7 @@ namespace SecretHistories.Spheres
 
         public virtual void OnDestroy()
         {
-            Watchman.Get<SphereCatalogue>().DeregisterSphere(this);
+            Watchman.Get<HornedAxe>().DeregisterSphere(this);
         }
 
         public void ModifyElementQuantity(string elementId, int quantityChange, Context context)
@@ -539,7 +567,7 @@ namespace SecretHistories.Spheres
         /// </summary>
         public virtual void EvictToken(Token token, Context context)
         {
-            var exitSphere = Watchman.Get<SphereCatalogue>().GetDefaultEnRouteSphere();
+            var exitSphere = Watchman.Get<HornedAxe>().GetDefaultEnRouteSphere();
             exitSphere.ProcessEvictedToken(token,context);
        
         }
@@ -656,7 +684,7 @@ namespace SecretHistories.Spheres
 
         public void NotifyTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
-            Watchman.Get<SphereCatalogue>().OnTokensChangedForSphere(args);
+            Watchman.Get<HornedAxe>().OnTokensChangedForSphere(args);
             var subscribersToNotify=new HashSet<ISphereEventSubscriber>(_subscribers);
 
             foreach(var s in subscribersToNotify)
@@ -665,7 +693,7 @@ namespace SecretHistories.Spheres
 
         public virtual void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {
-            Watchman.Get<SphereCatalogue>().OnTokenInteractionInSphere(args);
+            Watchman.Get<HornedAxe>().OnTokenInteractionInSphere(args);
 
             var subscribersToNotify = new HashSet<ISphereEventSubscriber>(_subscribers);
             foreach (var s in subscribersToNotify)
@@ -679,7 +707,7 @@ namespace SecretHistories.Spheres
         /// <param name="referenceLocation"></param>
         public void SetReferencePosition(TokenLocation referenceLocation)
         {
-            if (referenceLocation.AtSpherePath != this.Path)
+            if (referenceLocation.AtSpherePath != this.GetAbsolutePath())
             {
                 if (referencePositions.ContainsKey(referenceLocation.AtSpherePath))
                     referencePositions[referenceLocation.AtSpherePath] = referenceLocation.Anchored3DPosition;
@@ -697,7 +725,7 @@ namespace SecretHistories.Spheres
             var here = GetRectTransform().anchoredPosition3D;
 
             var hereAsWorldPosition = GetRectTransform().TransformPoint(here);
-            var otherSphere = _catalogue.GetSphereByPath(atPath);
+            var otherSphere = Watchman.Get<HornedAxe>().GetSphereByPath(atPath);
             var bestGuessReferencePosition = otherSphere.GetRectTransform().InverseTransformPoint(hereAsWorldPosition);
             
             return bestGuessReferencePosition;
@@ -725,16 +753,10 @@ namespace SecretHistories.Spheres
             }
         }
 
-        public void UpdatePathToMatchPayload(ITokenPayload payload)
-        {
-            var payloadAbsolutePath = payload.AbsolutePath;
-            var immediateRelativePathOfSphere=new FucinePath(Path.GetEndingPathPart());
-            Path = payloadAbsolutePath.AppendPath(immediateRelativePathOfSphere);
-        }
 
         public bool IsInRoot()
         {
-            return Path.IsSphereInRootPath();
+            return GetAbsolutePath().IsSphereInRootPath();
         }
     }
 

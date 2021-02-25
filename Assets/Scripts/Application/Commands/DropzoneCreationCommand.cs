@@ -20,7 +20,6 @@ namespace SecretHistories.Commands
         public ITokenPayload Execute(Context context, FucinePath atSpherePath)
         {
             var dz= new Dropzone();
-            dz.SetParentPath(atSpherePath);
             return dz;
         }
 

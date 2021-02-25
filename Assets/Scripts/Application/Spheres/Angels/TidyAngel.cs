@@ -32,13 +32,13 @@ namespace SecretHistories.Spheres.Angels
 
         public void SetWatch(Sphere sphere)
         {
-            _tidyToPath = sphere.Path;
+            _tidyToPath = sphere.GetAbsolutePath();
         }
 
         public bool MinisterToEvictedToken(Token token, Context context)
         {
 
-            var tidyToSphere = Watchman.Get<SphereCatalogue>().GetSphereByPath(_tidyToPath);
+            var tidyToSphere = Watchman.Get<HornedAxe>().GetSphereByPath(_tidyToPath);
 
             if (!tidyToSphere.IsInRangeOf(token.Sphere))
                 return false;
@@ -46,7 +46,7 @@ namespace SecretHistories.Spheres.Angels
             TokenTravelItinerary travellingToTidyTarget =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D,
                         tidyToSphere.Choreographer.GetFreeLocalPosition(token, Vector3.zero))
-                    .WithSphereRoute(Watchman.Get<SphereCatalogue>().GetDefaultEnRouteSphere(),
+                    .WithSphereRoute(Watchman.Get<HornedAxe>().GetDefaultEnRouteSphere(),
                         tidyToSphere)
                     .WithDuration(NoonConstants.MOMENT_TIME_INTERVAL);
 

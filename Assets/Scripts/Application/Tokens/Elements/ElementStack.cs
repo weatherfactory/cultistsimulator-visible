@@ -254,7 +254,7 @@ namespace SecretHistories.UI {
             //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
 
 
-            var tc = Watchman.Get<SphereCatalogue>();
+            var tc = Watchman.Get<HornedAxe>();
 
             if (Element == null || tc == null)
                 return new AspectsDictionary();

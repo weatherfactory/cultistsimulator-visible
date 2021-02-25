@@ -57,16 +57,9 @@ namespace SecretHistories.Entities {
         [Encaust]
         public string OverrideTitle { get; set; }
 
-        [Encaust] public FucinePath CachedParentPath { get; protected set; }
-        
-        public void SetParentPath(FucinePath path)
-        {
-            CachedParentPath = path;
-            foreach(var s in _spheres)
-                s.UpdatePathToMatchPayload(this);
-        }
+
         [Encaust] public string Id { get; protected set; }
-        [DontEncaust] public FucinePath AbsolutePath => CachedParentPath.AppendToken(this.Id);
+        [DontEncaust] public FucinePath AbsolutePath => null;
         
         [Encaust]
         public List<Dominion> Dominions => new List<Dominion>(_registeredDominions);
@@ -140,9 +133,9 @@ namespace SecretHistories.Entities {
 
         public Situation(Verb verb,string id)
         {
-            SituationsCatalogue situationsCatalogue = Watchman.Get<SituationsCatalogue>();
+            HornedAxe hornedAxe = Watchman.Get<HornedAxe>();
 
-            situationsCatalogue.RegisterSituation(this);
+            hornedAxe.RegisterSituation(this);
 
             Id = id;
             Verb = verb;
@@ -201,7 +194,6 @@ namespace SecretHistories.Entities {
         public void AttachSphere(Sphere sphere)
         {
             sphere.Subscribe(this);
-            sphere.UpdatePathToMatchPayload(this);
             _spheres.Add(sphere);
         }
 
@@ -329,7 +321,7 @@ namespace SecretHistories.Entities {
                 TokenPayloadChangedArgs args = new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement);
                 args.VFX = RetirementVFX.VerbAnchorVanish;
                 OnChanged?.Invoke(args);
-                Watchman.Get<SituationsCatalogue>().DeregisterSituation(this);
+                Watchman.Get<HornedAxe>().DeregisterSituation(this);
 
                 return true;
         }
@@ -366,7 +358,7 @@ namespace SecretHistories.Entities {
            var notesDominion = GetRelevantDominions(StateForRehydration,typeof(NotesSphere)).FirstOrDefault();
            if (notesDominion == null)
            {
-               NoonUtility.Log($"No notes sphere and no notes dominion found in {CachedParentPath}: we won't add note {label}, then.");
+               NoonUtility.Log($"No notes sphere and no notes dominion found: we won't add note {label}, then.");
                 return false;
            }
            var specIdStrategy=new NotesSphereSpecIdentifierStrategy(existingNotesSpheres.Count);
@@ -379,7 +371,7 @@ namespace SecretHistories.Entities {
             newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, description);
 
             var tokenCreationCommand =
-                new TokenCreationCommand(newNoteCommand, TokenLocation.Default(emptyNoteSphere.Path));
+                new TokenCreationCommand(newNoteCommand, TokenLocation.Default(emptyNoteSphere.GetAbsolutePath()));
 
             tokenCreationCommand.Execute(context);
 
@@ -597,7 +589,7 @@ namespace SecretHistories.Entities {
         public void ExecuteCurrentRecipe()
         {
             
-            var tc = Watchman.Get<SphereCatalogue>();
+            var tc = Watchman.Get<HornedAxe>();
             var aspectsInContext = tc.GetAspectsInContext(GetAspects(true));
 
             RecipeConductor rc =new RecipeConductor(aspectsInContext, Watchman.Get<Stable>().Protag());
@@ -795,7 +787,7 @@ namespace SecretHistories.Entities {
         {
          
             var aspects = GetAspects(true);
-            var tc = Watchman.Get<SphereCatalogue>();
+            var tc = Watchman.Get<HornedAxe>();
             var aspectsInContext = tc.GetAspectsInContext(aspects);
 
 
@@ -822,7 +814,7 @@ namespace SecretHistories.Entities {
             var aspectsAvailableToSituation = GetAspects(true);
 
             var aspectsInContext =
-                Watchman.Get<SphereCatalogue>().GetAspectsInContext(aspectsAvailableToSituation);
+                Watchman.Get<HornedAxe>().GetAspectsInContext(aspectsAvailableToSituation);
 
             RecipeConductor rc = new RecipeConductor(aspectsInContext,Watchman.Get<Stable>().Protag());
 

@@ -28,7 +28,6 @@ namespace SecretHistories.Commands
         public Dictionary<string,int> Mutations { get; set; }
         public Dictionary<string,string> Illuminations { get; set; }
         public bool Defunct { get; set; }
-        public FucinePath CachedParentPath { get; set; }
         public float LifetimeRemaining { get; set; }
         public List<PopulateDominionCommand> Dominions { get; set; } = new List<PopulateDominionCommand>();
 
@@ -62,7 +61,6 @@ namespace SecretHistories.Commands
                 foreach(var i in Illuminations)
                     elementStack.SetIllumination(i.Key,i.Value);
 
-                elementStack.SetParentPath(atSpherePath);
             }
             catch (Exception e)
             {
