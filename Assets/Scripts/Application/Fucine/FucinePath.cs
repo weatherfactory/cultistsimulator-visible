@@ -323,7 +323,7 @@ namespace SecretHistories.Fucine
             return !Equals(left, right);
         }
 
-        public bool IsSphereInRootPath()
+        public bool IsPathToSphereInRoot()
         {
             if(PathParts.Count!=2) //it's empty, or it's just the root, or it's sphere + token, or....
                 return false;

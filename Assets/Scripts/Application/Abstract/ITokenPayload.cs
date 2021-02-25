@@ -17,7 +17,7 @@ namespace SecretHistories.Abstract
 
 
         public FucinePath AbsolutePath { get; }
-        public List<Dominion> Dominions { get; }
+        public List<IDominion> Dominions { get; }
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValidElementStack();

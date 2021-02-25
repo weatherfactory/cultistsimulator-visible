@@ -24,9 +24,14 @@ namespace Assets.Tests.EditModeTests
         private HornedAxe _hornedAxe;
         private PrefabFactory _prefabFactory;
         private Sphere _sphereInRoot;
+        private Sphere _OTHERSphereInRoot;
         private Token _tokenInSphere;
+        private Sphere _sphereInTokenPayload;
 
         private const string SPHEREINROOT_ID = "sphereinroot";
+        private const string OTHERSPHEREINROOT_ID = "othersphereinroot";
+        private const string SPHEREINTOKENPAYLOAD_ID = "sphereintokenpayload";
+
 
         [SetUp]
         public void Setup()
@@ -34,13 +39,28 @@ namespace Assets.Tests.EditModeTests
             Watchman.ForgetEverything();
             _hornedAxe = Watchman.Get<HornedAxe>();
             _prefabFactory = Watchman.Get<PrefabFactory>();
+
             SphereSpec rootSphereSpec = new SphereSpec(typeof(MinimalSphere), SPHEREINROOT_ID );
              _sphereInRoot = _prefabFactory.InstantiateSphere(rootSphereSpec);
              _hornedAxe.RegisterSphere(_sphereInRoot);
 
+             SphereSpec otherRootSphereSpec = new SphereSpec(typeof(MinimalSphere), OTHERSPHEREINROOT_ID);
+             _OTHERSphereInRoot = _prefabFactory.InstantiateSphere(otherRootSphereSpec);
+             _hornedAxe.RegisterSphere(_OTHERSphereInRoot);
 
-             
 
+            var tokenCreationCommand = new TokenCreationCommand();
+             var minimalPayloadCreationCommand = new MinimalPayloadCreationCommand();
+             tokenCreationCommand.Payload = minimalPayloadCreationCommand;
+
+             _tokenInSphere = tokenCreationCommand.Execute(Context.Unknown(), _sphereInRoot);
+
+             var sphereInTokenPayloadSpec = new SphereSpec(typeof(MinimalSphere), SPHEREINTOKENPAYLOAD_ID);
+
+             _sphereInTokenPayload= _tokenInSphere.Payload.Dominions.First().CreateSphere(sphereInTokenPayloadSpec);
+             _hornedAxe.RegisterSphere(_sphereInTokenPayload);
+
+            
         }
 
         [Test]
@@ -55,34 +75,45 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void RetrieveTokenPayload_ByPath()
         {
-            var tokenCreationCommand = new TokenCreationCommand();
-            var minimalPayloadCreationCommand = new MinimalPayloadCreationCommand();
-            tokenCreationCommand.Payload = minimalPayloadCreationCommand;
-
-            _tokenInSphere = tokenCreationCommand.Execute(Context.Unknown(), _sphereInRoot);
-
             var tokenInSpherePath = _sphereInRoot.GetAbsolutePath().AppendToken(_tokenInSphere.PayloadId);
             var retrievedToken = _hornedAxe.GetTokenByPath(tokenInSpherePath);
             Assert.AreEqual(_tokenInSphere.PayloadId, retrievedToken.PayloadId);
-
         }
 
         [Test]
         public void RetrieveSphereInTokenPayload_ByPath()
         {
-            throw new NotImplementedException();
+            var sphereInTokenPayloadPath = _sphereInRoot.GetAbsolutePath().AppendToken(_tokenInSphere.PayloadId)
+                .AppendSphere(SPHEREINTOKENPAYLOAD_ID);
+            var retrievedSphere = _hornedAxe.GetSphereByPath(sphereInTokenPayloadPath);
+            Assert.AreEqual(_sphereInTokenPayload,retrievedSphere);
         }
 
 
         [Test]
         public void RetrieveTokenPayload_ByPath_AfterMovingToken()
         {
-            throw new NotImplementedException();
+         _OTHERSphereInRoot.AcceptToken(_tokenInSphere,Context.Unknown());
+
+         var tokenInSpherePath = _OTHERSphereInRoot.GetAbsolutePath().AppendToken(_tokenInSphere.PayloadId);
+         var retrievedToken = _hornedAxe.GetTokenByPath(tokenInSpherePath);
+         Assert.AreEqual(_tokenInSphere.PayloadId, retrievedToken.PayloadId);
 
         }
 
         [Test]
         public void RetrieveSphereInTokenPayload_ByPath_AfterMovingToken()
+        {
+            _OTHERSphereInRoot.AcceptToken(_tokenInSphere, Context.Unknown());
+
+            var sphereInTokenPayloadPath = _OTHERSphereInRoot.GetAbsolutePath().AppendToken(_tokenInSphere.PayloadId)
+                .AppendSphere(SPHEREINTOKENPAYLOAD_ID);
+            var retrievedSphere = _hornedAxe.GetSphereByPath(sphereInTokenPayloadPath);
+            Assert.AreEqual(_sphereInTokenPayload, retrievedSphere);
+        }
+
+        [Test]
+        public void PurgeSituations_WithPath()
         {
             throw new NotImplementedException();
 

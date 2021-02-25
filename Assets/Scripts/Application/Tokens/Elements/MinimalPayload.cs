@@ -12,6 +12,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Logic;
 using SecretHistories.UI;
+using UnityEngine;
 
 namespace SecretHistories.Entities
 {
@@ -21,18 +22,18 @@ namespace SecretHistories.Entities
         public string Id { get; protected set; }
         public AspectsDictionary GetAspects(bool includeSelf)
         {
-            throw new NotImplementedException();
+            return new AspectsDictionary();
         }
 
         public Dictionary<string, int> Mutations { get; }
         public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
         {
-            throw new NotImplementedException();
+      //
         }
 
         public string GetSignature()
         {
-            throw new NotImplementedException();
+            return Id;
         }
 
         public string Label { get; }
@@ -43,17 +44,17 @@ namespace SecretHistories.Entities
         public string Icon { get; }
         public string GetIllumination(string key)
         {
-            throw new NotImplementedException();
+            return String.Empty;
         }
 
         public void SetIllumination(string key, string value)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public Timeshadow GetTimeshadow()
         {
-            throw new NotImplementedException();
+            return Timeshadow.CreateTimelessShadow();
         }
 
         public event Action<TokenPayloadChangedArgs> OnChanged;
@@ -68,7 +69,7 @@ namespace SecretHistories.Entities
         
         public bool IsOpen { get; }
         public FucinePath AbsolutePath { get; }
-        public List<Dominion> Dominions { get; }
+        public List<IDominion> Dominions { get; }=new List<IDominion>();
         public Type GetManifestationType(SphereCategory sphereCategory)
         {
             return typeof(MinimalManifestation);
@@ -102,52 +103,58 @@ namespace SecretHistories.Entities
 
         public bool Retire(RetirementVFX vfx)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Retiring a minimal payload. should this kill the token?");
         }
 
         public void InteractWithIncoming(Token incomingToken)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public bool ReceiveNote(string label, string description, Context context)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
         {
-            throw new NotImplementedException();
+            //
+
         }
 
         public void SetQuantity(int quantityToLeaveBehind, Context context)
         {
-            throw new NotImplementedException();
+            //
+
         }
 
         public void ModifyQuantity(int unsatisfiedChange, Context context)
         {
-            throw new NotImplementedException();
+            //
+
         }
 
         public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)
         {
-            throw new NotImplementedException();
+            //
+
         }
 
         public void OpenAt(TokenLocation location)
         {
-            throw new NotImplementedException();
+            //
+
         }
 
         public void Close()
         {
-            throw new NotImplementedException();
+            //
+
         }
 
         public void OnTokenMoved(TokenLocation toLocation)
         {
-            throw new NotImplementedException();
+            //
         }
     }
 }

@@ -75,9 +75,9 @@ namespace SecretHistories.UI {
     
 
         [Encaust]
-        public List<Dominion> Dominions
+        public List<IDominion> Dominions
         {
-            get { return new List<Dominion>(); }
+            get { return new List<IDominion>(); }
         }
 
 

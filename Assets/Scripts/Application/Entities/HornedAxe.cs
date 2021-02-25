@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using SecretHistories.Commands.SituationCommands;
@@ -134,25 +135,45 @@ namespace SecretHistories.Entities {
         public Sphere GetSphereByPath(FucinePath spherePath)
         {
             if(!spherePath.IsAbsolute())
-               NoonUtility.LogWarning($"trying to find a sphere with sphere path {spherePath.ToString()}, but that's not an absolute path, and no context was provided");
+               throw new ApplicationException($"trying to find a sphere with sphere path {spherePath.ToString()}, but that's not an absolute path, and no context was provided");
 
+            if(spherePath.GetEndingPathPart().Category==FucinePathPart.PathCategory.Root)
+                throw new ApplicationException($"trying to find a sphere with sphere path {spherePath.ToString()}, which seems to be a bare root path");
+
+            if (spherePath.IsPathToSphereInRoot())
+                return GetSphereInRootPath(spherePath);
+
+            //either it's a token path - in which case return the fallback sphere - 
+            if (spherePath.GetEndingPathPart().Category == FucinePathPart.PathCategory.Token)
+                return GetFallbackSphere(spherePath);
+
+            //or it's a sphere not in the root, i.e. in a token payload.
+            var targetSphereId = spherePath.GetEndingPathPart().GetId();
+            var candidateTokenPath = spherePath.GetTokenPath();
+            var tokenThatShouldContainSphere= GetTokenByPath(candidateTokenPath);
+
+            var tokenDominions = tokenThatShouldContainSphere.Payload.Dominions;
+            foreach (var d in tokenDominions)
+            {
+                var sphereFound = d.GetSphereById(targetSphereId);
+                if (sphereFound != null)
+                    return sphereFound;
+            }
+
+            return GetFallbackSphere(spherePath);
+
+        }
+
+        private Sphere GetSphereInRootPath(FucinePath spherePath)
+        {
             try
             {
                 var specifiedSphere = _spheres.SingleOrDefault(c => c.GetAbsolutePath() == spherePath);
                 if (specifiedSphere == null)
                 {
-                    if (spherePath == GetDefaultWorldSpherePath())
-                    {
-                        NoonUtility.LogWarning($"Can't find sphere with path {spherePath}, nor a default world sphere, so returning limbo ");
-                        return Watchman.Get<Limbo>(); //we can't find the default world sphere, so no point getting stuck in an infinite loop - just return limbo.
-                    }
-                    else
-                    {
-                        NoonUtility.LogWarning($"Can't find sphere with path {spherePath}, so returning a default world sphere");
-                        return GetDefaultWorldSphere(); //no longer limbo; let's let people recover things
-                    }
+                    return GetFallbackSphere(spherePath);
                 }
-                
+
                 return specifiedSphere;
 
             }
@@ -161,7 +182,22 @@ namespace SecretHistories.Entities {
                 NoonUtility.LogWarning($"Error retrieving sphere with path {spherePath}: {e.Message}");
                 return Watchman.Get<Limbo>();
             }
+        }
 
+        private Sphere GetFallbackSphere(FucinePath spherePath)
+        {
+            if (spherePath == GetDefaultWorldSpherePath())
+            {
+                NoonUtility.LogWarning(
+                    $"Can't find sphere with path {spherePath}, nor a default world sphere, so returning limbo");
+                return
+                    Watchman.Get<Limbo>(); //we can't find the default world sphere, so no point getting stuck in an infinite loop - just return limbo.
+            }
+            else
+            {
+                NoonUtility.LogWarning($"Can't find sphere with path {spherePath}, so returning a default world sphere");
+                return GetDefaultWorldSphere(); //no longer limbo; let's let people recover things
+            }
         }
 
 
@@ -312,9 +348,6 @@ namespace SecretHistories.Entities {
         {
             _tabletopAspectsDirty = true;
         }
-
-
-
 
 
         public List<Situation> GetRegisteredSituations()

@@ -62,7 +62,7 @@ namespace SecretHistories.Entities {
         [DontEncaust] public FucinePath AbsolutePath => null;
         
         [Encaust]
-        public List<Dominion> Dominions => new List<Dominion>(_registeredDominions);
+        public List<IDominion> Dominions => new List<IDominion>(_registeredDominions);
 
         [Encaust]
         public bool IsOpen { get; private set; }

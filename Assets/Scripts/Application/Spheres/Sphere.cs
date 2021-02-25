@@ -756,7 +756,7 @@ namespace SecretHistories.Spheres
 
         public bool IsInRoot()
         {
-            return GetAbsolutePath().IsSphereInRootPath();
+            return GetAbsolutePath().IsPathToSphereInRoot();
         }
     }
 

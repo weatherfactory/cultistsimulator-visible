@@ -203,9 +203,9 @@ namespace Assets.Tests.EditModeTests
             var pathNotInRoot=new FucinePath("./s!t/s2");
             var pathNotInRootAndRelativeAnywa=new FucinePath("/s!t/s2");
 
-            Assert.IsTrue(pathInRoot.IsSphereInRootPath());
-            Assert.IsFalse(pathNotInRoot.IsSphereInRootPath());
-            Assert.IsFalse(pathNotInRootAndRelativeAnywa.IsSphereInRootPath());
+            Assert.IsTrue(pathInRoot.IsPathToSphereInRoot());
+            Assert.IsFalse(pathNotInRoot.IsPathToSphereInRoot());
+            Assert.IsFalse(pathNotInRootAndRelativeAnywa.IsPathToSphereInRoot());
         }
 
     }

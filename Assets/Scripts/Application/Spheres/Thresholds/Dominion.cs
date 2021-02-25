@@ -23,10 +23,12 @@ using SecretHistories.Spheres;
 
 namespace SecretHistories.UI {
     [IsEncaustableClass(typeof(PopulateDominionCommand))]
-    public class Dominion:MonoBehaviour,IEncaustable {
+    public class Dominion: MonoBehaviour, IDominion, IEncaustable
+    {
 
-        [SerializeField] SpheresWrangler _spheresWrangler;
+        [SerializeField] protected SpheresWrangler _spheresWrangler;
         [SerializeField] CanvasGroupFader canvasGroupFader;
+
 
         [Encaust]
         public List<Sphere> Spheres => _spheresWrangler.GetSpheres();
@@ -70,7 +72,7 @@ namespace SecretHistories.UI {
             //    RemoveAllSpheres();
         }
 
-        public Sphere CreateSphere(SphereSpec spec)
+        public  Sphere CreateSphere(SphereSpec spec)
         {
             //ensure that the spec will be visible in states for which this dominion is active
             foreach (var activeInState in VisibleForStates)
@@ -81,6 +83,7 @@ namespace SecretHistories.UI {
 
             return _spheresWrangler.AddSphere(spec);
         }
+
 
 
         public bool VisibleFor(StateEnum state)
@@ -94,7 +97,10 @@ namespace SecretHistories.UI {
             return VisibleForStates.Contains(state) && sphereType == dominionSphereType;
         }
 
-
+        public Sphere GetSphereById(string Id)
+        {
+            return Spheres.SingleOrDefault(s => s.Id == Id);
+        }
 
         public void RemoveAllSpheres()
         {

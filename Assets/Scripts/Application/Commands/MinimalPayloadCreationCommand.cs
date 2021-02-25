@@ -8,6 +8,8 @@ using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Fucine;
+using SecretHistories.UI;
+using UnityEngine;
 
 namespace SecretHistories.Commands
 {
@@ -25,6 +27,8 @@ namespace SecretHistories.Commands
         public ITokenPayload Execute(Context context)
         {
             var mp = new MinimalPayload(Id);
+            var dominion = new GameObject().AddComponent<MinimalDominion>();
+            mp. Dominions.Add(dominion); //this may need rethinking if we use PopulateDominionCommands here
             return mp;
         }
 

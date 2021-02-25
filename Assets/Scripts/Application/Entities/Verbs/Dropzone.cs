@@ -36,9 +36,9 @@ namespace SecretHistories.Entities.Verbs
         [DontEncaust] public FucinePath AbsolutePath => new NullFucinePath();
 
         [Encaust]
-        public List<Dominion> Dominions
+        public List<IDominion> Dominions
         {
-            get { return new List<Dominion>(); }
+            get { return new List<IDominion>(); }
         }
         [DontEncaust] public string Label => "Dropzone";
         [DontEncaust] public string Description => "Description";
