@@ -37,7 +37,8 @@ namespace SecretHistories.Commands
 
 
                 var tokenCreationCommand=new TokenCreationCommand(_situationCreationCommand, newAnchorLocation);
-                tokenCreationCommand.Execute(_context);
+
+                tokenCreationCommand.Execute(_context,token.Sphere);
             }
             return true;
         }

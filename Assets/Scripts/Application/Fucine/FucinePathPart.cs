@@ -18,18 +18,19 @@ namespace SecretHistories.Fucine
             Current
         }
 
-        protected string PathId;
+        protected string PathPartValue;
         public abstract PathCategory Category { get; }
-       
 
-        protected FucinePathPart(string pathId)
+        public abstract string GetId();
+
+        protected FucinePathPart(string pathPartValue)
         {
-            PathId = pathId;
+            PathPartValue = pathPartValue;
         }
 
         public override string ToString()
         {
-            return PathId;
+            return PathPartValue;
         }
     }
 }

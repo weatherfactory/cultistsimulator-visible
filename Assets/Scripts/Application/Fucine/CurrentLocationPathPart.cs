@@ -14,5 +14,9 @@ namespace Assets.Scripts.Application.Fucine
         }
 
         public override PathCategory Category => PathCategory.Current;
+        public override string GetId()
+        {
+            return string.Empty;
+        }
     }
 }

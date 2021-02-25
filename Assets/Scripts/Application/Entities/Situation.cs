@@ -373,7 +373,7 @@ namespace SecretHistories.Entities {
             var tokenCreationCommand =
                 new TokenCreationCommand(newNoteCommand, TokenLocation.Default(emptyNoteSphere.GetAbsolutePath()));
 
-            tokenCreationCommand.Execute(context);
+            tokenCreationCommand.Execute(context,emptyNoteSphere);
 
             
             return true;

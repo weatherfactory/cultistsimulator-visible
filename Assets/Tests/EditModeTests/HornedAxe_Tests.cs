@@ -24,6 +24,7 @@ namespace Assets.Tests.EditModeTests
         private HornedAxe _hornedAxe;
         private PrefabFactory _prefabFactory;
         private Sphere _sphereInRoot;
+        private Token _tokenInSphere;
 
         private const string SPHEREINROOT_ID = "sphereinroot";
 
@@ -36,6 +37,10 @@ namespace Assets.Tests.EditModeTests
             SphereSpec rootSphereSpec = new SphereSpec(typeof(MinimalSphere), SPHEREINROOT_ID );
              _sphereInRoot = _prefabFactory.InstantiateSphere(rootSphereSpec);
              _hornedAxe.RegisterSphere(_sphereInRoot);
+
+
+             
+
         }
 
         [Test]
@@ -50,8 +55,15 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void RetrieveTokenPayload_ByPath()
         {
-            throw new NotImplementedException();
+            var tokenCreationCommand = new TokenCreationCommand();
+            var minimalPayloadCreationCommand = new MinimalPayloadCreationCommand();
+            tokenCreationCommand.Payload = minimalPayloadCreationCommand;
 
+            _tokenInSphere = tokenCreationCommand.Execute(Context.Unknown(), _sphereInRoot);
+
+            var tokenInSpherePath = _sphereInRoot.GetAbsolutePath().AppendToken(_tokenInSphere.PayloadId);
+            var retrievedToken = _hornedAxe.GetTokenByPath(tokenInSpherePath);
+            Assert.AreEqual(_tokenInSphere.PayloadId, retrievedToken.PayloadId);
 
         }
 

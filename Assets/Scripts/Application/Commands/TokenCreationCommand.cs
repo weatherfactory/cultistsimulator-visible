@@ -12,6 +12,7 @@ using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Services;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 
 namespace SecretHistories.Commands
@@ -27,7 +28,7 @@ namespace SecretHistories.Commands
 
         public TokenCreationCommand()
         {
-
+            Location=TokenLocation.Default(FucinePath.Root());
         }
 
         public TokenCreationCommand(ITokenPayloadCreationCommand payload,TokenLocation location)
@@ -50,39 +51,43 @@ namespace SecretHistories.Commands
         }
 
 
-        public Token Execute(Context context)
+        public Token Execute(Context context,Sphere sphere)
         {
-            var sphereCatalogue = Watchman.Get<HornedAxe>();
 
-            var sphere = sphereCatalogue.GetSphereByPath(Location.AtSpherePath);
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);
             
-            var payloadForToken = Payload.Execute(context,Location.AtSpherePath);
-
+            var payloadForToken = Payload.Execute(context);
             sphere.AcceptToken(token, context);
             token.SetPayload(payloadForToken);
+            
             
             token.transform.localPosition = Location.Anchored3DPosition;
 
             if (_sourceToken != null)
             {
-                var enRouteSpherePath =
-                    new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
-
-                var enrouteSphere = sphereCatalogue.GetSphereByPath(enRouteSpherePath);
-                
-                var spawnedTravelItinerary = new TokenTravelItinerary(_sourceToken.TokenRectTransform.anchoredPosition3D,
-                        token.Sphere.Choreographer.GetFreeLocalPosition(token, _sourceToken.ManifestationRectTransform.anchoredPosition))
-                    .WithDuration(1f)
-                    .WithSphereRoute(enrouteSphere, token.Sphere)
-                    .WithScaling(0f, 1f);
-
-                token.TravelTo(spawnedTravelItinerary, new Context(Context.ActionSource.SpawningAnchor));
+                SetTokenTravellingFromSpawnPoint(token);
             }
 
             SoundManager.PlaySfx("SituationTokenCreate");
 
             return token;
+        }
+
+        private void SetTokenTravellingFromSpawnPoint(Token token)
+        {
+            var enRouteSpherePath =
+                new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
+
+            var enrouteSphere = Watchman.Get<HornedAxe>().GetSphereByPath(enRouteSpherePath);
+
+            var spawnedTravelItinerary = new TokenTravelItinerary(_sourceToken.TokenRectTransform.anchoredPosition3D,
+                    token.Sphere.Choreographer.GetFreeLocalPosition(token,
+                        _sourceToken.ManifestationRectTransform.anchoredPosition))
+                .WithDuration(1f)
+                .WithSphereRoute(enrouteSphere, token.Sphere)
+                .WithScaling(0f, 1f);
+
+            token.TravelTo(spawnedTravelItinerary, new Context(Context.ActionSource.SpawningAnchor));
         }
     }
 }

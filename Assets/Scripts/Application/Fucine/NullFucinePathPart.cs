@@ -15,5 +15,9 @@ namespace SecretHistories.Fucine
         }
 
         public override PathCategory Category => PathCategory.Null;
+        public override string GetId()
+        {
+            return null;
+        }
     }
 }

@@ -142,9 +142,15 @@ namespace SecretHistories.Entities {
                 if (specifiedSphere == null)
                 {
                     if (spherePath == GetDefaultWorldSpherePath())
+                    {
+                        NoonUtility.LogWarning($"Can't find sphere with path {spherePath}, nor a default world sphere, so returning limbo ");
                         return Watchman.Get<Limbo>(); //we can't find the default world sphere, so no point getting stuck in an infinite loop - just return limbo.
+                    }
                     else
+                    {
+                        NoonUtility.LogWarning($"Can't find sphere with path {spherePath}, so returning a default world sphere");
                         return GetDefaultWorldSphere(); //no longer limbo; let's let people recover things
+                    }
                 }
                 
                 return specifiedSphere;
@@ -422,5 +428,16 @@ namespace SecretHistories.Entities {
         //    var situationTokens = GetRegisteredSituations().Select(s => s.situationAnchor as Token);
 
         //    return situationTokens.Where(s => s.CanAnimateArt());
+        public Token GetTokenByPath(FucinePath tokenInSpherePath)
+        {
+
+            var spherePath = tokenInSpherePath.GetSpherePath();
+            var tokenPath = tokenInSpherePath.GetTokenPath();
+            var tokenId = tokenPath.GetEndingPathPart().GetId(); //this won't work, I don't think: !
+            var sphere = GetSphereByPath(spherePath);
+            var token = sphere.Tokens.SingleOrDefault(t => t.PayloadId == tokenId);
+            return token;
+
+        }
     }
 }

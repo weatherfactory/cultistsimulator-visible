@@ -68,7 +68,7 @@ public class CreationCommandsSmokeTests
     string elementId= Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First().Id;
         int elementQuantity= 3;
         var elementStackCreationCommand = new ElementStackCreationCommand(elementId, elementQuantity);
-        var elementStack=elementStackCreationCommand.Execute(new Context(Context.ActionSource.Unknown),new FucinePath("./s1!t1"));
+        var elementStack=elementStackCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
         Assert.IsTrue(elementStack.IsValidElementStack());
         Assert.AreEqual(elementId,elementStack.Id);
         Assert.AreEqual(elementQuantity, elementStack.Quantity);
@@ -81,7 +81,7 @@ public class CreationCommandsSmokeTests
         var elementStackCreationCommand = new ElementStackCreationCommand(element.Id,1);
         var location = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
         var elementStackTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, location);
-       var elementStackToken=elementStackTokenCreationCommand.Execute(new Context(Context.ActionSource.Debug));
+       var elementStackToken=elementStackTokenCreationCommand.Execute(new Context(Context.ActionSource.Debug),Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
         Assert.IsTrue(elementStackToken.Payload.IsValidElementStack());
     }
 
@@ -92,7 +92,7 @@ public class CreationCommandsSmokeTests
             situationCreationCommand.VerbId = NullVerb.Create().Id;
             situationCreationCommand.RecipeId = NullRecipe.Create().Id;
             situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
-            var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown), new FucinePath("./s1!t1"));
+            var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
             Assert.IsInstanceOf<Situation>(situation);
         }
 
@@ -107,7 +107,7 @@ public class CreationCommandsSmokeTests
         var location = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
 
         var tokenCreationCommand =new TokenCreationCommand(situationCreationCommand,location);
-        var token = tokenCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
+        var token = tokenCreationCommand.Execute(new Context(Context.ActionSource.Unknown), Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
         Assert.IsInstanceOf<Token>(token);
 
     }
@@ -120,7 +120,7 @@ public class CreationCommandsSmokeTests
         var dropzonePayloadCreationCommand=new DropzoneCreationCommand();
         var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
         var dropzoneCreationCommand = new TokenCreationCommand(dropzonePayloadCreationCommand, dropzoneLocation);
-        var dropzone=dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Debug));
+        var dropzone=dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Debug), Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
         Assert.IsInstanceOf<Token>(dropzone);
 
     }

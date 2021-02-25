@@ -63,8 +63,10 @@ namespace SecretHistories.Constants
                 foreach (var c in gameState.CharacterCreationCommands)
                     c.Execute(Watchman.Get<Stable>());
 
-                foreach (var t in gameState.TokenCreationCommands) //in the case of a petromneme, there aren't any tccs
-                    t.Execute(new Context(Context.ActionSource.Loading));
+                throw new NotImplementedException("We should walk the tree instead of using paths");
+
+                //foreach (var t in gameState.TokenCreationCommands) //in the case of a petromneme, there aren't any tccs
+                    //.Execute(new Context(Context.ActionSource.Loading));
 
                 foreach (var n in gameState.NotificationCommands)
                 {
@@ -108,7 +110,7 @@ namespace SecretHistories.Constants
             var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
             
             var dropzoneCreationCommand = new TokenCreationCommand(new DropzoneCreationCommand(), dropzoneLocation);
-            dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
+            dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Unknown),Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
         }
 
         public async void EndGame(Ending ending, Token _anchor)

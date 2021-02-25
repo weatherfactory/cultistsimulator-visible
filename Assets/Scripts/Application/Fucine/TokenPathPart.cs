@@ -13,22 +13,22 @@ namespace SecretHistories.Fucine
 
 private char tokenIdPrefix => FucinePath.TOKEN;
 
-        public TokenPathPart(string pathId) : base(pathId)
+        public TokenPathPart(string pathpartvalue) : base(pathpartvalue)
         {
-            if (pathId.First() == tokenIdPrefix)
-                PathId = pathId;
+            if (pathpartvalue.First() == tokenIdPrefix)
+                PathPartValue = pathpartvalue;
             else
-                PathId = tokenIdPrefix + pathId;
+                PathPartValue = tokenIdPrefix + pathpartvalue;
         }
 
-
-        public TokenPathPart  FromVerbId(string verbId)
-        {
-            return new TokenPathPart(verbId + Guid.NewGuid());
-            
-        }
 
         public override PathCategory Category => PathCategory.Token;
+        public override string GetId()
+        {
+            if (PathPartValue.First() == tokenIdPrefix)
+                return PathPartValue.Substring(1);
 
+            throw new ApplicationException("Can't find the token ID in token pathpart " + PathPartValue);
+        }
     }
 }

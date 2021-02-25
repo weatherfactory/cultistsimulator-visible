@@ -40,7 +40,7 @@ namespace Assets.Scripts.Application.Meta
             if(sh.MightBeJson(input.text))
             {
                 var command = sh.DeserializeFromJsonString<TokenCreationCommand>(input.text);
-                command.Execute(Context.Unknown());
+                command.Execute(Context.Unknown(),_drydockThresholdSphere);
             }
             else
             {

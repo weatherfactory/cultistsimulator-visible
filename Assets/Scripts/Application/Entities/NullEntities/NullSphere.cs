@@ -11,5 +11,7 @@ namespace Assets.Scripts.Application.Entities.NullEntities
    public class NullSphere: Sphere
    {
        public override SphereCategory SphereCategory => SphereCategory.Null;
+
+
    }
 }

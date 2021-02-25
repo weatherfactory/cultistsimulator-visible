@@ -277,7 +277,7 @@ namespace SecretHistories.Spheres
         public Token ProvisionElementStackToken(ElementStackCreationCommand elementStackCreationCommand,Context context)
     {
 
-        var elementStack = elementStackCreationCommand.Execute(context, new FucinePath("./s1!t1"));
+        var elementStack = elementStackCreationCommand.Execute(context);
            
 
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(transform);

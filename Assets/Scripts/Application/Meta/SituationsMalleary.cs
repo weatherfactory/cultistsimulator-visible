@@ -43,7 +43,7 @@ namespace Assets.Scripts.Application.Meta
            if (sh.MightBeJson(input.text))
            {
                var command = sh.DeserializeFromJsonString<TokenCreationCommand>(input.text);
-               command.Execute(Context.Unknown());
+               command.Execute(Context.Unknown(),_situationDrydock);
                return;
            }
 
@@ -70,7 +70,7 @@ namespace Assets.Scripts.Application.Meta
            }
            var newTokenLocation = new TokenLocation(0f, 0f, 0f, _situationDrydock.GetAbsolutePath()); //this is the only place we need to, or should, specify the path!
            var newTokenCommand = new TokenCreationCommand(newSituationCommand, newTokenLocation);
-           newTokenCommand.Execute(new Context(Context.ActionSource.Debug));
+           newTokenCommand.Execute(new Context(Context.ActionSource.Debug),_situationDrydock);
 
 
            EncaustDrydockedItem(_situationDrydock.GetTokenInSlot(), input);

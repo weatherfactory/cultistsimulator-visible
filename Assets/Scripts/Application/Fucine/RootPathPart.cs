@@ -15,5 +15,9 @@ namespace SecretHistories.Fucine
         }
 
         public override PathCategory Category => PathCategory.Root;
+        public override string GetId()
+        {
+            return FucinePath.ROOT.ToString();
+        }
     }
 }

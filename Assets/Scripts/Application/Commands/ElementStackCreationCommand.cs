@@ -42,7 +42,7 @@ namespace SecretHistories.Commands
            Illuminations = Element.EmptyIlluminationsDictionary();
         }
 
-        public ITokenPayload Execute(Context context,FucinePath atSpherePath)
+        public ITokenPayload Execute(Context context)
         {
             ElementStack elementStack = null;
 

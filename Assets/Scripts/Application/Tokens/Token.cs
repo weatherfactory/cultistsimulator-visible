@@ -106,8 +106,7 @@ namespace SecretHistories.UI {
 
                 else
                 {
-                    NoonUtility.LogWarning($"Unknown payload type in token {gameObject.name}: setting to Null Payload");
-                    _payload=new NullElementStack();
+                    _payload=new MinimalPayload("");
                     return _payload;
                 }
             }
@@ -115,6 +114,8 @@ namespace SecretHistories.UI {
 
         [DontEncaust]
         public int Quantity => Payload.Quantity;
+
+        [DontEncaust] public string PayloadId => Payload.Id;
 
         public bool IsValidElementStack()
         {

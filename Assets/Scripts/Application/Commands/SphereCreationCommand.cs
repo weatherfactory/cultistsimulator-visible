@@ -27,9 +27,9 @@ namespace SecretHistories.Assets.Scripts.Application.Commands
 
         public void ExecuteOn(Dominion dominion,Context context)
         {
-         dominion.CreateSphere(GoverningSphereSpec);
+     var sphere=dominion.CreateSphere(GoverningSphereSpec);
          foreach (var t in Tokens)
-             t.Execute(context);
+             t.Execute(context,sphere);
         }
     }
 }

@@ -13,14 +13,23 @@ namespace Assets.Scripts.Application.Fucine
         private char sphereIdPrefix => FucinePath.SPHERE;
 
         public override PathCategory Category => PathCategory.Sphere;
-
-        public SpherePathPart(string pathId) : base(pathId)
+        public override string GetId()
         {
-            if (pathId.First() == sphereIdPrefix)
-                PathId = pathId;
-            else
-                PathId = sphereIdPrefix + pathId;
+            if (PathPartValue.First() == sphereIdPrefix)
+                return PathPartValue.Substring(1);
+
+            throw new ApplicationException("Can't find the sphere ID in sphere Ipathpart " + PathPartValue);
+
         }
+
+        public SpherePathPart(string pathPartValue) : base(pathPartValue)
+        {
+            if (pathPartValue.First() == sphereIdPrefix)
+                PathPartValue = pathPartValue;
+            else
+                PathPartValue = sphereIdPrefix + pathPartValue;
+        }
+
 
         
     }
