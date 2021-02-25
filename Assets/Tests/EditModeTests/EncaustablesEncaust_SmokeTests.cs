@@ -122,13 +122,13 @@ using UnityEngine;
         {
             var encaustery = new Encaustery<SphereCreationCommand>();
             var sphereObject = new GameObject();
-            Sphere sphere = sphereObject.AddComponent<CardsPile>();
+            
             var tokenObject = new GameObject();
             var token = tokenObject.AddComponent<Token>();
             var payload = new ElementStack();
             token.SetPayload(payload);
-            sphere.AcceptToken(token,new Context(Context.ActionSource.Unknown));
-            var sphereCreationCommand = encaustery.Encaust(sphere);
+            worldSphere.AcceptToken(token,new Context(Context.ActionSource.Unknown));
+            var sphereCreationCommand = encaustery.Encaust(worldSphere);
 
             Assert.AreEqual(token.Payload.Quantity, sphereCreationCommand.Tokens.First().Payload.Quantity);
         }

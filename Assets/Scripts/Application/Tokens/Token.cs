@@ -235,13 +235,18 @@ namespace SecretHistories.UI {
             if (_manifestation == null)
                 _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
 
-            if (_manifestation.GetType() != Payload.GetManifestationType(Sphere.SphereCategory))
+            if(Sphere!=null) //OKAY JUST THIS ONCE WE'RE DOING A NULL TEST. It's a headache trying to ge ta null sphere into the mix.
             {
-                Type newManifestationType = Payload.GetManifestationType(Sphere.SphereCategory);
 
-                var newManifestation = Watchman.Get<PrefabFactory>().CreateManifestationPrefab(newManifestationType, this.transform);
+                if (_manifestation.GetType() != Payload.GetManifestationType(Sphere.SphereCategory))
+                {
+                    Type newManifestationType = Payload.GetManifestationType(Sphere.SphereCategory);
 
-                ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
+                    var newManifestation = Watchman.Get<PrefabFactory>().CreateManifestationPrefab(newManifestationType, this.transform);
+
+                    ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
+                }
+
             }
 
         }
