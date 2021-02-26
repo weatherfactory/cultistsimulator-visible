@@ -98,9 +98,12 @@ namespace SecretHistories.Entities.Verbs
             return false;
         }
 
+        public void FirstHeartbeat()
+        {
+            ExecuteHeartbeat(0f);
+        }
 
 
-        
         public Dropzone()
         {
             Thresholds=new List<SphereSpec>();

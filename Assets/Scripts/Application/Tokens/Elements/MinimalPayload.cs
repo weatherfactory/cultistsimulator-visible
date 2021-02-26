@@ -109,19 +109,25 @@ namespace SecretHistories.Entities
             return false;
         }
 
+        public void FirstHeartbeat()
+        {
+            ExecuteHeartbeat(0f);
+        }
+
         public void ExecuteHeartbeat(float interval)
         {
-            throw new NotImplementedException();
+        //
         }
 
         public bool CanInteractWith(ITokenPayload incomingTokenPayload)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public bool CanMergeWith(ITokenPayload incomingTokenPayload)
         {
-            throw new NotImplementedException();
+            return false;
+
         }
 
         public bool Retire(RetirementVFX vfx)

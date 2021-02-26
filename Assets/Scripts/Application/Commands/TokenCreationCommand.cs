@@ -66,7 +66,7 @@ namespace SecretHistories.Commands
 
             token.SetPayload(payloadForToken);
             sphere.AcceptToken(token, context);
-            payloadForToken.ExecuteHeartbeat(0f); 
+            payloadForToken.ExecuteHeartbeat(0f);
 
             token.transform.localPosition = Location.Anchored3DPosition;
 

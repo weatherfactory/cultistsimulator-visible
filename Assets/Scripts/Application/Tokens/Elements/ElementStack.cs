@@ -143,6 +143,11 @@ namespace SecretHistories.UI {
             return Element.Id != NullElement.NULL_ELEMENT_ID;
         }
 
+        public void FirstHeartbeat()
+        {
+            ExecuteHeartbeat(0f);
+        }
+
         public bool IsValidVerb()
         {
             return false;

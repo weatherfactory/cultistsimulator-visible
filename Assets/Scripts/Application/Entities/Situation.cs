@@ -293,12 +293,18 @@ namespace SecretHistories.Entities {
         public void InitialiseManifestation(IManifestation manifestation)
         {
             manifestation.InitialiseVisuals(this);
-
         }
 
         public bool IsValidElementStack()
         {
             return false;
+        }
+
+        public void FirstHeartbeat()
+        {
+             ExecuteHeartbeat(0f);
+             NotifyStateChange();
+             NotifyTimerChange();
         }
 
         public void ExecuteHeartbeat(float interval)
