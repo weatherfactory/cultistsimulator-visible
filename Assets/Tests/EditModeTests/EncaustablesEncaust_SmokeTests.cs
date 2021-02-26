@@ -8,6 +8,7 @@ using Assets.Scripts.Application.Entities.NullEntities;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using SecretHistories.Assets.Scripts.Application.Commands;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
@@ -33,6 +34,15 @@ using UnityEngine;
             Watchman.ForgetEverything();
             worldSphere = Watchman.Get<PrefabFactory>()
                 .InstantiateSphere(new SphereSpec(typeof(MinimalSphere), "minimalworldsphere"));
+        }
+
+        [Test]
+        public void Root_Encausts()
+        {
+            var encaustery = new Encaustery<RootPopulationCommand>();
+            var root = FucineRoot.Get();
+            encaustery.Encaust(root);
+
         }
 
         [Test]

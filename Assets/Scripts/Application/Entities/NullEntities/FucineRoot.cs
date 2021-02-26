@@ -5,12 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Abstract;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Commands;
+using SecretHistories.Commands;
 using SecretHistories.Core;
+using SecretHistories.Entities;
 using SecretHistories.Fucine;
+using SecretHistories.Services;
+using SecretHistories.Spheres;
+using SecretHistories.UI;
 
 namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
 {
-    public sealed class FucineRoot: IHasFucinePath
+    [IsEncaustableClass(typeof(RootPopulationCommand))]
+    public sealed class FucineRoot: IHasFucinePath,IDominion
     {
         static readonly FucineRoot instance=new FucineRoot();
 
@@ -21,16 +28,25 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             // not to mark type as beforefieldinit"
         }
 
+        [Encaust]
         public string Id => FucinePath.ROOT.ToString();
-        public AspectsDictionary GetAspects(bool includeSelf)
-        {
-            return new AspectsDictionary();
-        }
 
+        private ITokenPayload _payload;
+
+        private readonly List<Sphere> _spheres=new List<Sphere>();
+        [Encaust]
+        public List<Sphere> Spheres => new List<Sphere>(_spheres);
+
+        [Encaust]
         public Dictionary<string, int> Mutations { get; }=new AspectsDictionary();
         public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
         {
            //
+        }
+
+        public AspectsDictionary GetAspects(bool includeSelf)
+        {
+            return new AspectsDictionary();
         }
 
         public static FucineRoot Get()
@@ -43,6 +59,26 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
         {
             return FucinePath.Root();
         }
+        [DontEncaust]
+        public OnSphereAddedEvent OnSphereAdded { get; }
+        [DontEncaust]
+        public OnSphereRemovedEvent OnSphereRemoved { get; }
+        public void RegisterFor(ITokenPayload payload)
+        {
+        //
+        }
 
+
+        public Sphere CreateSphere(SphereSpec spec)
+        {
+              var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec,this);
+             Spheres.Add(newSphere);
+             return newSphere;
+        }
+
+        public Sphere GetSphereById(string id)
+        {
+            return _spheres.SingleOrDefault(s => s.Id == id);
+        }
     }
 }

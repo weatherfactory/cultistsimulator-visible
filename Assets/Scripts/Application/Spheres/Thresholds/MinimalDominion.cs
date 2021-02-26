@@ -17,8 +17,10 @@ namespace SecretHistories.UI
     public class MinimalDominion: MonoBehaviour, IDominion
     {
         private ITokenPayload _payload;
+        private readonly List<Sphere> _spheres=new List<Sphere>();
 
-        public  List<Sphere> Spheres { get; }=new List<Sphere>();
+        [Encaust]
+        public List<Sphere> Spheres => new List<Sphere>(_spheres);
         [DontEncaust]
         public OnSphereAddedEvent OnSphereAdded { get;  }
         [DontEncaust]
@@ -32,7 +34,7 @@ namespace SecretHistories.UI
         public Sphere CreateSphere(SphereSpec spec)
         {
             var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec,_payload);
-            Spheres.Add(newSphere);
+            _spheres.Add(newSphere);
             return newSphere;
         }
 
