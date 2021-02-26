@@ -20,7 +20,7 @@ using UnityEngine.UI;
 
 namespace SecretHistories.UI
 {
-    public class SpheresWrangler : MonoBehaviour, ISphereEventSubscriber
+    public class pheresWrangler : MonoBehaviour, ISphereEventSubscriber
     {
         [SerializeField] private AbstractSphereArrangement sphereArrangement;
 
@@ -86,7 +86,7 @@ namespace SecretHistories.UI
 
         protected void AddChildSpheresForToken(Sphere sphere, Token tokenAdded)
         {
-            var childSlotSpecs = sphere.GetChildSpheresSpecsToAddIfThisTokenAdded(tokenAdded, this);
+            var childSlotSpecs = sphere.GetChildSpheresSpecsToAddIfThisTokenAdded(tokenAdded, Verb.Id);
 
             foreach (var childSlotSpecification in childSlotSpecs)
             {

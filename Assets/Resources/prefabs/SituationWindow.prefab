@@ -1106,7 +1106,6 @@ GameObject:
   - component: {fileID: 225493535554730180}
   - component: {fileID: 114848985628778574}
   - component: {fileID: 7731683286596552914}
-  - component: {fileID: 1005240876968007683}
   m_Layer: 5
   m_Name: RecipeThresholdsDominion
   m_TagString: Untagged
@@ -1175,25 +1174,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spheresWrangler: {fileID: 1005240876968007683}
   canvasGroupFader: {fileID: 114848985628778574}
+  sphereArrangement: {fileID: 4482476914772828801}
+  PreserveSpheresWhenDismissed: 0
   VisibleForStates: 0200000003000000
   spherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
     type: 3}
-  PreserveSpheresWhenDismissed: 0
---- !u!114 &1005240876968007683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269793152998520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphereArrangement: {fileID: 4482476914772828801}
 --- !u!1 &1287574504788578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,7 +2295,6 @@ GameObject:
   - component: {fileID: 114595233805244828}
   - component: {fileID: 114962248236931796}
   - component: {fileID: 7216067067506907108}
-  - component: {fileID: 3951079214793869473}
   - component: {fileID: 3227254059054473584}
   m_Layer: 5
   m_Name: OutputDominion
@@ -2391,25 +2376,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spheresWrangler: {fileID: 3951079214793869473}
   canvasGroupFader: {fileID: 114595233805244828}
+  sphereArrangement: {fileID: 0}
+  PreserveSpheresWhenDismissed: 0
   VisibleForStates: 05000000
   spherePrefab: {fileID: 173994217101375650, guid: 1215ec9de9884424e82cd0d2fcdf0623,
     type: 3}
-  PreserveSpheresWhenDismissed: 0
---- !u!114 &3951079214793869473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657405471885890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphereArrangement: {fileID: 3227254059054473584}
 --- !u!114 &3227254059054473584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2714,7 +2686,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224793174929483730}
   - component: {fileID: 4789969075872377100}
-  - component: {fileID: 5628511893131723470}
   - component: {fileID: 1223493030995727280}
   - component: {fileID: 2645367709224873335}
   - component: {fileID: 6070173378976685744}
@@ -2758,25 +2729,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spheresWrangler: {fileID: 5628511893131723470}
   canvasGroupFader: {fileID: 2645367709224873335}
+  sphereArrangement: {fileID: 6070173378976685744}
+  PreserveSpheresWhenDismissed: 0
   VisibleForStates: 0000000001000000020000000300000004000000
   spherePrefab: {fileID: 1127656137174522416, guid: 8315d660ae3773442ac46832ef4f36d4,
     type: 3}
-  PreserveSpheresWhenDismissed: 0
---- !u!114 &5628511893131723470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700666214586562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphereArrangement: {fileID: 6070173378976685744}
 --- !u!225 &1223493030995727280
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3455,7 +3413,6 @@ GameObject:
   - component: {fileID: 224394800307692888}
   - component: {fileID: 4470030975996782642}
   - component: {fileID: 114844407673096716}
-  - component: {fileID: 2663436766044327619}
   - component: {fileID: 225437182253246534}
   - component: {fileID: 114412774732763762}
   m_Layer: 5
@@ -3497,12 +3454,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spheresWrangler: {fileID: 2663436766044327619}
   canvasGroupFader: {fileID: 114412774732763762}
+  sphereArrangement: {fileID: 8157357256015802240}
+  PreserveSpheresWhenDismissed: 0
   VisibleForStates: 0000000001000000
   spherePrefab: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
     type: 3}
-  PreserveSpheresWhenDismissed: 0
 --- !u!114 &114844407673096716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3523,19 +3480,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &2663436766044327619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930796193437156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphereArrangement: {fileID: 8157357256015802240}
 --- !u!225 &225437182253246534
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3721,7 +3665,6 @@ GameObject:
   - component: {fileID: 9196189261632043866}
   - component: {fileID: 8146654841912857010}
   - component: {fileID: 8331173372513189640}
-  - component: {fileID: 3604664568726823840}
   m_Layer: 5
   m_Name: StorageDominion
   m_TagString: Untagged
@@ -3788,22 +3731,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spheresWrangler: {fileID: 3604664568726823840}
   canvasGroupFader: {fileID: 8146654841912857010}
+  sphereArrangement: {fileID: 1617814118146466013}
+  PreserveSpheresWhenDismissed: 0
   VisibleForStates: 0200000003000000
   spherePrefab: {fileID: 8896989850952037998, guid: 91cdd0265e269894e8f4ffac210cf045,
     type: 3}
-  PreserveSpheresWhenDismissed: 0
---- !u!114 &3604664568726823840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7937006777892650396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphereArrangement: {fileID: 1617814118146466013}

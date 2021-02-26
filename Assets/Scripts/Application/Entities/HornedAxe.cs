@@ -107,6 +107,7 @@ namespace SecretHistories.Entities {
 
         public void RegisterSphere(Sphere sphere) {
             
+            sphere.TryApplyEditableSpec(); //make sure there's an id / spec in it
             _spheres.Add(sphere);
         }
 

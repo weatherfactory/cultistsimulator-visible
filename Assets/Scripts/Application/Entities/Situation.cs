@@ -61,7 +61,9 @@ namespace SecretHistories.Entities {
         [Encaust] public string Id { get; protected set; }
         public FucinePath GetAbsolutePath()
         {
-            throw new NotImplementedException();
+            var pathAbove = _token.Sphere.GetAbsolutePath();
+            var absolutePath = pathAbove.AppendToken(this.Id);
+            return absolutePath;
         }
 
         [DontEncaust] public FucinePath AbsolutePath => null;

@@ -46,7 +46,9 @@ namespace SecretHistories.UI {
         [Encaust] public string Id => Element.Id;
         public FucinePath GetAbsolutePath()
         {
-            throw new NotImplementedException();
+            var pathAbove = _token.Sphere.GetAbsolutePath();
+            var absolutePath = pathAbove.AppendToken(this.Id);
+            return absolutePath;
         }
 
         [Encaust] public bool Defunct { get; protected set; }
@@ -60,15 +62,6 @@ namespace SecretHistories.UI {
         [Encaust]
         public virtual Dictionary<string,string> Illuminations=>new Dictionary<string, string>(_illuminations);
 
-
-        [DontEncaust] public FucinePath AbsolutePath
-        {
-            get
-            {
-            throw new NotImplementedException();
-            }
-        }
-    
 
         [Encaust]
         public List<IDominion> Dominions => new List<IDominion>(_dominions);

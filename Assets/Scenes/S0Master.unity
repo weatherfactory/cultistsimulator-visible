@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 67}
   - component: {fileID: 66}
   - component: {fileID: 68}
+  - component: {fileID: 69}
   m_Layer: 0
   m_Name: Limbo
   m_TagString: Untagged
@@ -154,9 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876e8111ed625f3429f5283925fdf384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SphereIdentifier: limbo
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
-  SphereIdentifier: limbo
 --- !u!224 &67
 RectTransform:
   m_ObjectHideFlags: 0
@@ -188,6 +189,20 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &69
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyToSphere: {fileID: 66}
+  ApplyId: limbo
 --- !u!1 &91402276
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,7 +950,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   languageManager: {fileID: 91402277}
   stageHand: {fileID: 1768733093}
-  gameSaveManager: {fileID: 0}
   concursum: {fileID: 1256507083}
   SecretHistory: {fileID: 1477282972}
   screenResolutionAdapter: {fileID: 1955269523}

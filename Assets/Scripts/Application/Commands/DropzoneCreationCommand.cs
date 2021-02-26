@@ -19,6 +19,7 @@ namespace SecretHistories.Commands
         public ITokenPayload Execute(Context context)
         {
             var dz= new Dropzone();
+            
             return dz;
         }
 

@@ -14,10 +14,12 @@ using SecretHistories.Spheres.Angels;
 using SecretHistories.UI;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using Assets.Scripts.Application.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Assets.Scripts.Application.Spheres;
 using SecretHistories.Commands.SituationCommands;
 using Steamworks;
 using UnityEngine;
@@ -58,20 +60,19 @@ namespace SecretHistories.Spheres
     public abstract class 
         Sphere : MonoBehaviour,IEncaustable,IHasFucinePath
     {
-        [Tooltip("Use this to specify a sphere ID in the editor. otherwise, it'll be expected in the spec")]
-        [SerializeField]
-        protected string SphereIdentifier;
 
+        [Encaust] public string Id => GoverningSphereSpec.Id;
 
-        [Encaust] public string Id => SphereIdentifier;
-
-        [Encaust]
+            [Encaust]
         public SphereSpec GoverningSphereSpec { get; set; }
         [Encaust]
         public List<Token> Tokens
         {
             get { return new List<Token>(_tokens); }
         }
+        /// <summary>
+        /// This is used for child thresholds, and other spheres that depend for their temporary existence on the state of another sphere.
+        /// </summary>
         [Encaust]
         public string OwnerSphereIdentifier { get; set; }
 
@@ -106,12 +107,15 @@ namespace SecretHistories.Spheres
 
         public IHasFucinePath GetContainer()
         {
+
             return _container;
         }
 
 
         public void SetContainer(IHasFucinePath container)
         {
+            if(container==null)
+                NoonUtility.LogWarning($"We're trying to set null as a container for sphere {Id} / {gameObject.name}");
             _container = container;
         }
 
@@ -162,26 +166,33 @@ namespace SecretHistories.Spheres
             flock.RemoveAngel(angel);
         }
 
-        public virtual List<SphereSpec> GetChildSpheresSpecsToAddIfThisTokenAdded(Token t,SpheresWrangler s)
+        public virtual List<SphereSpec> GetChildSpheresSpecsToAddIfThisTokenAdded(Token t,string verbId)
         {
             var elementInToken = Watchman.Get<Compendium>().GetEntityById<Element>(t.Payload.Id);
 
-            var childSlotSpecs = elementInToken.Slots.Where(cs => cs.ActionId == s.Verb.Id || cs.ActionId == string.Empty).ToList();
+            var childSlotSpecs = elementInToken.Slots.Where(cs => cs.ActionId == verbId || cs.ActionId == string.Empty).ToList();
             return childSlotSpecs;
         }
 
         public virtual void Awake()
         {
-        Watchman.Get<HornedAxe>().RegisterSphere(
+            Watchman.Get<HornedAxe>().RegisterSphere(
                 this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
         }
 
-
+        public void TryApplyEditableSpec()
+        {
+            var editableSpec = this.gameObject.GetComponent<EditableSphereSpec>();
+            if(editableSpec!=null)
+                editableSpec.ApplySpecToSphere(this);
+        }
 
         public virtual void ApplySpec(SphereSpec spec)
         {
+            if(string.IsNullOrEmpty(spec.Id))
+                NoonUtility.LogWarning("PROBLEM: null sphere id passed in SphereSpec for sphere " + gameObject.name + " in container " + GetContainer().Id);
+
             GoverningSphereSpec = spec;
-            SphereIdentifier = spec.Id;
         }
 
         public virtual bool Retire(SphereRetirementType sphereRetirementType)

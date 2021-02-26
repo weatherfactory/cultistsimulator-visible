@@ -22,16 +22,12 @@ namespace Assets.Scripts.Application.Meta
 {
     public class ElementsMalleary: MonoBehaviour,ISphereEventSubscriber
     {
-        [SerializeField] private SpheresWrangler elementDrydockWrangler;
         [SerializeField] private AutoCompletingInput input;
-        private ThresholdSphere _drydockThresholdSphere;
+      [SerializeField]  private ThresholdSphere _elementDrydock;
 
         public void Awake()
         {
-            var mallearyThresholdSpec = new SphereSpec(typeof(ThresholdSphere), "elementsmalleary");
-
-            _drydockThresholdSphere =elementDrydockWrangler.BuildPrimarySphere(mallearyThresholdSpec, NullVerb.Create()) as ThresholdSphere;
-            _drydockThresholdSphere.Subscribe(this);
+            _elementDrydock.Subscribe(this);
         }
 
         public void CreateDrydockedItem()
@@ -40,7 +36,7 @@ namespace Assets.Scripts.Application.Meta
             if(sh.MightBeJson(input.text))
             {
                 var command = sh.DeserializeFromJsonString<TokenCreationCommand>(input.text);
-                command.Execute(Context.Unknown(),_drydockThresholdSphere);
+                command.Execute(Context.Unknown(),_elementDrydock);
             }
             else
             {
@@ -52,26 +48,26 @@ namespace Assets.Scripts.Application.Meta
 
                 Context debugContext = new Context(Context.ActionSource.Debug);
 
-                _drydockThresholdSphere.ModifyElementQuantity(elementId, 1, debugContext);
+                _elementDrydock.ModifyElementQuantity(elementId, 1, debugContext);
 
-                EncaustDrydockedItem(_drydockThresholdSphere.GetTokenInSlot(), input);
+                EncaustDrydockedItem(_elementDrydock.GetTokenInSlot(), input);
             }
         }
 
         public void DestroyDrydockedItem()
         {
-             _drydockThresholdSphere.GetTokenInSlot().Retire(RetirementVFX.CardTakenShadow);
+             _elementDrydock.GetTokenInSlot().Retire(RetirementVFX.CardTakenShadow);
         }
 
         public void Mutate()
         {
-            var elementToken = _drydockThresholdSphere.GetElementTokenInSlot();
+            var elementToken = _elementDrydock.GetElementTokenInSlot();
             elementToken.Payload.SetMutation(input.text, 1,true);
         }
 
         public void Unmutate()
         {
-            var elementToken = _drydockThresholdSphere.GetElementTokenInSlot();
+            var elementToken = _elementDrydock.GetElementTokenInSlot();
             elementToken.Payload.SetMutation(input.text, -1, true);
         }
 

@@ -55,8 +55,6 @@ public class SphereSpec: AbstractEntity<SphereSpec>
 
 
       public Type SphereType { get; set; }
-    public FucinePath RelativePath => new FucinePath(_id);
-
 
         public bool AllowAnyToken { get; set; }
 

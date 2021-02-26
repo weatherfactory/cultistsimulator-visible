@@ -29,7 +29,9 @@ namespace SecretHistories.Entities.Verbs
 
         public FucinePath GetAbsolutePath()
         {
-            throw new NotImplementedException();
+            var pathAbove = _token.Sphere.GetAbsolutePath();
+            var absolutePath = pathAbove.AppendToken(this.Id);
+            return absolutePath;
         }
 
         [Encaust]
