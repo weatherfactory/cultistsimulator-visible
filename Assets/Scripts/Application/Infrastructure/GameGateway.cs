@@ -63,11 +63,10 @@ namespace SecretHistories.Constants
                 foreach (var c in gameState.CharacterCreationCommands)
                     c.Execute(Watchman.Get<Stable>());
 
-                throw new NotImplementedException("We should walk the tree instead of using paths");
-
-                //foreach (var t in gameState.TokenCreationCommands) //in the case of a petromneme, there aren't any tccs
-                    //.Execute(new Context(Context.ActionSource.Loading));
-
+                foreach (var t in gameState.TokenCreationCommands)
+                    t.Execute(new Context(Context.ActionSource.Loading),
+                        Watchman.Get<HornedAxe>().GetDefaultWorldSphere()); //THIS IS WRONG
+                
                 foreach (var n in gameState.NotificationCommands)
                 {
                     Watchman.Get<Concursum>().ShowNotification(new NotificationArgs(n.Label, n.Description)); //ultimately, I'd like the float note to be a token, too - we're using AddCommand here currently just as a holder for the strings
