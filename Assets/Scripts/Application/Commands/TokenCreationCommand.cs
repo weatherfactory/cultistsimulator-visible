@@ -28,13 +28,13 @@ namespace SecretHistories.Commands
 
         public TokenCreationCommand()
         {
-            Location=TokenLocation.Default(FucinePath.Root());
+            Location=TokenLocation.Default(FucinePath.Root()); // we expect the sphere to be overwritten in Execute.The SpherePath bit of Location here is redundant
         }
 
         public TokenCreationCommand(ITokenPayloadCreationCommand payload,TokenLocation location)
         {
             Payload = payload;
-            Location = location;
+            Location = location; // we expect the sphere to be overwritten in Execute.The SpherePath bit of Location here is redundant
         }
 
         public TokenCreationCommand(ElementStack elementStack, TokenLocation location)
@@ -50,6 +50,12 @@ namespace SecretHistories.Commands
             return this;
         }
 
+        public TokenCreationCommand WithElementStack(string elementId,int quantity)
+        {
+            Payload = new ElementStackCreationCommand(elementId, quantity);
+            return this;
+        }
+
 
         public Token Execute(Context context,Sphere sphere)
         {
@@ -57,10 +63,10 @@ namespace SecretHistories.Commands
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);
             
             var payloadForToken = Payload.Execute(context);
-            sphere.AcceptToken(token, context);
             token.SetPayload(payloadForToken);
-            
-            
+            sphere.AcceptToken(token, context);
+
+
             token.transform.localPosition = Location.Anchored3DPosition;
 
             if (_sourceToken != null)

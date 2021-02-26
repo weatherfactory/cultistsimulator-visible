@@ -36,6 +36,7 @@ namespace SecretHistories.UI
             AtSpherePath = inSphere.GetAbsolutePath();
         }
 
+
         public static TokenLocation Default(FucinePath atSpherePath)
         {
             return new TokenLocation(0,0,0, atSpherePath);

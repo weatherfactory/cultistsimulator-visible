@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
@@ -29,7 +30,8 @@ namespace SecretHistories.UI
 
             foreach (var cc in creditCards)
             {
-                var card=CardsExhibit.ProvisionElementStackToken(cc.Id, 1,new Context(Context.ActionSource.UI));
+                var t=new TokenCreationCommand().WithElementStack(cc.Id,1);
+                t.Execute(new Context(Context.ActionSource.UI), CardsExhibit);
             }
 
             var firstCard = creditCards[0];

@@ -136,7 +136,7 @@ namespace SecretHistories.Constants
 
             foreach (var ess in elementStackSpecifications)
             {
-                tabletop.ProvisionStackFromCommand(ess);
+           //     tabletop.ProvisionStackFromCommand(ess);
             }
 
         }
@@ -299,7 +299,7 @@ namespace SecretHistories.Constants
                     var stackSpecification = PopulateElementStackSpecificationsList(htSituationOutputStacks);
                     foreach (var ess in stackSpecification)
                     {
-                        outputStacks.Add(tabletop.ProvisionStackFromCommand(ess));
+                //        outputStacks.Add(tabletop.ProvisionStackFromCommand(ess));
                     }
 
             }
@@ -348,10 +348,11 @@ namespace SecretHistories.Constants
                 var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
                 foreach (var ess in elementStackSpecifications)
                 {
-                    var stackToStore=Watchman.Get<Limbo>().ProvisionStackFromCommand(ess);
+                   // var stackToStore=Watchman.Get<Limbo>().ProvisionStackFromCommand(ess);
 
-                    situation.AcceptToken(SphereCategory.SituationStorage, stackToStore,
-                        new Context(Context.ActionSource.Loading));
+
+                 //   situation.AcceptToken(SphereCategory.SituationStorage, stackToStore,
+                //        new Context(Context.ActionSource.Loading));
                 }
 
 

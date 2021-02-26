@@ -80,8 +80,12 @@ namespace SecretHistories.Commands
                                         ElementStackCreationCommand spawnedElementCommand =
                                             new ElementStackCreationCommand(newElementId, morph.Level);
 
-                                        InSphere.ProvisionElementStackToken(spawnedElementCommand,
-                                            new Context(Context.ActionSource.ChangeTo));
+
+                                        var tokenCommand = new TokenCreationCommand(spawnedElementCommand,
+                                            TokenLocation.Default(InSphere.GetAbsolutePath()));
+
+                                        tokenCommand.Execute(new Context(Context.ActionSource.ChangeTo), InSphere);
+
 
                                         NoonUtility.Log(
                                             "xtrigger aspect marked additional=true " + mutationXTrigger + " caused " +
@@ -137,10 +141,10 @@ namespace SecretHistories.Commands
                             }
                             else if (morph.MorphEffect == MorphEffectType.Spawn)
                             {
-                                var elementStackCreationCommand = new ElementStackCreationCommand(newElementId, morph.Level);
-                                InSphere.ProvisionElementStackToken(elementStackCreationCommand,
-                                    new Context(Context.ActionSource.ChangeTo));
-                                NoonUtility.Log(
+                                var t = new TokenCreationCommand().WithElementStack(newElementId, morph.Level);
+                                t.Execute(new Context(Context.ActionSource.ChangeTo), InSphere);
+
+                            NoonUtility.Log(
                                       "Spawn xtrigger " + triggerKey + " caused " +
                                       oldElementId + " to spawn a new " + newElementId);
                             }

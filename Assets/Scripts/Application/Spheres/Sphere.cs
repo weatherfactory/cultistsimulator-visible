@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Net.Http.Headers;
 using Assets.Scripts.Application.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
@@ -250,63 +251,8 @@ namespace SecretHistories.Spheres
                     cb.BlockDirection == blockToRemove.BlockDirection && cb.BlockReason == blockToRemove.BlockReason);
 
         }
-        [Obsolete("Retire in favour of putting everything through ElementStackCreationCommand")]
-        public virtual Token ProvisionStackFromCommand(ElementStackSpecification_ForSimpleJSONDataImport legacyElementStackCreationSpecification)
-        {
-            var stackCreationCommand=new ElementStackCreationCommand(legacyElementStackCreationSpecification.Id,
-                legacyElementStackCreationSpecification.Quantity);
+      
 
-            stackCreationCommand.Mutations = legacyElementStackCreationSpecification.Mutations;
-            stackCreationCommand.Illuminations = legacyElementStackCreationSpecification.Illuminations;
-            stackCreationCommand.LifetimeRemaining = legacyElementStackCreationSpecification.LifetimeRemaining;
-            if (legacyElementStackCreationSpecification.LifetimeRemaining > 0)
-                stackCreationCommand.LifetimeRemaining = legacyElementStackCreationSpecification.LifetimeRemaining;
-
-            
-            var token = ProvisionElementStackToken(stackCreationCommand,legacyElementStackCreationSpecification.Context);
-            
-            return token;
-        }
-
-
-        [Obsolete("Retire in favour of putting everything through ElementStackCreationCommand")]
-        public Token ProvisionElementStackToken(string elementId, int quantity)
-        {
-            ElementStackCreationCommand ec=new ElementStackCreationCommand(elementId,quantity);
-            return ProvisionElementStackToken(ec,new Context(Context.ActionSource.Unknown));
-            }
-
-        [Obsolete("Retire in favour of putting everything through ElementStackCreationCommand")]
-        public Token ProvisionElementStackToken(string elementId, int quantity, Context context)
-        {
-            ElementStackCreationCommand ec = new ElementStackCreationCommand(elementId, quantity);
-            return ProvisionElementStackToken(ec, context);
-        }
-
-        [Obsolete("Retire in favour of putting everything through ElementStackCreationCommand")]
-        public Token ProvisionElementStackToken(ElementStackCreationCommand elementStackCreationCommand,Context context)
-    {
-
-        var elementStack = elementStackCreationCommand.Execute(context);
-           
-
-            var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(transform);
-
-            token.SetPayload(elementStack);
-
-            if (context.TokenDestination == null)
-            {
-                Choreographer.PlaceTokenAtFreeLocalPosition(token, context);
-            }
-            else
-            {
-                token.TokenRectTransform.anchoredPosition3D = context.TokenDestination.Anchored3DPosition;
-            }
-
-            AcceptToken(token, context);
-
-            return token;
-        }
         
 
         // Returns a rect for use by the Choreographer
@@ -398,8 +344,10 @@ namespace SecretHistories.Spheres
                 throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" +
                                             quantityChange + ")");
 
-            ProvisionElementStackToken(elementId, quantityChange, context);
+            var t=new TokenCreationCommand().WithElementStack(elementId,quantityChange);
+            t.Execute(context,this);
 
+            
             return quantityChange;
         }
 

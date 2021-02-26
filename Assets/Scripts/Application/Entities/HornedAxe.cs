@@ -108,6 +108,11 @@ namespace SecretHistories.Entities {
         public void RegisterSphere(Sphere sphere) {
             
             sphere.TryApplyEditableSpec(); //make sure there's an id / spec in it
+            if(sphere.GoverningSphereSpec==null)
+                NoonUtility.LogWarning($"Registered a sphere, {sphere.gameObject.name} , container {sphere.GetContainer().Id}, with no spec");
+            else if( string.IsNullOrEmpty(sphere.Id))
+                NoonUtility.LogWarning($"Registered a sphere, {sphere.gameObject.name} , container {sphere.GetContainer().Id}, with an empty id");
+
             _spheres.Add(sphere);
         }
 

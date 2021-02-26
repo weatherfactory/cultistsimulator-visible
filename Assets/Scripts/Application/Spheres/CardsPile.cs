@@ -42,8 +42,8 @@ namespace SecretHistories.Spheres
             foreach (var s in shuffledList)
                 if (!exceptElements.Contains(s))
                 {
-                    var newStackCommand=new ElementStackCreationCommand(s,1);
-                    ProvisionElementStackToken(newStackCommand, new Context(Context.ActionSource.Unknown));
+                    var t = new TokenCreationCommand().WithElementStack(s, 1);
+                    t.Execute(Context.Unknown(), this);
                 }
 
       }

@@ -18568,7 +18568,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1112824094}
-  - component: {fileID: 1112824095}
   - component: {fileID: 1112824096}
   m_Layer: 0
   m_Name: ElementDrydock
@@ -18592,19 +18591,6 @@ Transform:
   m_Father: {fileID: 1917257528}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1112824095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112824093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0374017f6318ab46a9d4472d14020c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphereArrangement: {fileID: 1112824096}
 --- !u!114 &1112824096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26085,13 +26071,27 @@ GameObject:
   - component: {fileID: 3454068282511589701}
   - component: {fileID: 7530986280803648818}
   - component: {fileID: 129363917725752119}
+  - component: {fileID: 3228010501015127858}
   m_Layer: 5
-  m_Name: ThresholdSphere
+  m_Name: ElementDrydockThreshold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3228010501015127858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3228010501015127857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyId: elementdrydock
 --- !u!111 &3262000451312928231
 Animation:
   m_ObjectHideFlags: 0
@@ -28630,6 +28630,7 @@ GameObject:
   - component: {fileID: 7207242450584937013}
   - component: {fileID: 2551680618661635650}
   - component: {fileID: 5341695579443230791}
+  - component: {fileID: 7432670486226265154}
   m_Layer: 5
   m_Name: SituationTokenThreshold
   m_TagString: Untagged
@@ -28637,6 +28638,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7432670486226265154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7432670486226265153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyId: situationdrydock
 --- !u!1001 &7522539820319185488
 PrefabInstance:
   m_ObjectHideFlags: 0

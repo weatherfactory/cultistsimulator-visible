@@ -511,7 +511,11 @@ namespace SecretHistories.UI {
         {
 
             if (quantityToLeaveBehind <= 0) //for some reason we're trying to leave an empty stack behind..
-                return Sphere.ProvisionElementStackToken(NullElement.NULL_ELEMENT_ID, 0,new Context(Context.ActionSource.CalvedStack,new TokenLocation(this)));
+            {
+                var elementStackCreationCommand=new ElementStackCreationCommand(NullElement.NULL_ELEMENT_ID, 0);
+                var emptyTokenCommand=new TokenCreationCommand(elementStackCreationCommand,new TokenLocation(this));
+                return emptyTokenCommand.Execute(new Context(Context.ActionSource.CalvedStack, new TokenLocation(this)), this.Sphere);
+            }
 
             if (Quantity <= quantityToLeaveBehind
             ) //we're trying to leave everything behind. Abort the drag and return the original token, ie this token
@@ -527,9 +531,8 @@ namespace SecretHistories.UI {
             var calvingContext = new Context(Context.ActionSource.CalvedStack);
             calvingContext.TokenDestination = new TokenLocation(this);
 
-            var calvedToken=Sphere.ProvisionElementStackToken(calvedTokenCreationCommand,calvingContext);
-            
-            
+            var calvedTokenCommand = new TokenCreationCommand(calvedTokenCreationCommand,new TokenLocation(this));
+            var calvedToken = calvedTokenCommand.Execute(calvingContext, Sphere);
             Payload.SetQuantity(Quantity - quantityToLeaveBehind, context);
 
 

@@ -77,7 +77,11 @@ namespace SecretHistories.Entities
 
         public void Add(string elementId)
         {
-            _drawPile.ProvisionElementStackToken(elementId, 1, new Context(Context.ActionSource.Unknown));
+
+            var t = new TokenCreationCommand().WithElementStack(elementId, 1);
+            t.Execute(Context.Unknown(), _drawPile);
+
+            
         }
         /// <summary>
         /// This card is unique and has been drawn elsewhere, or belongs to the same uniqueness group as one that has been drawn elsewhere
@@ -88,7 +92,10 @@ namespace SecretHistories.Entities
             _drawPile.RetireTokensWhere(x=>x.Payload.Id==elementId);
 
             if (_deckSpec.Spec.Contains(elementId))
-                _forbiddenCards.ProvisionElementStackToken(elementId, 1);
+            {
+                var t = new TokenCreationCommand().WithElementStack(elementId, 1);
+                t.Execute(Context.Unknown(), _drawPile);
+            }
 
         }
 
