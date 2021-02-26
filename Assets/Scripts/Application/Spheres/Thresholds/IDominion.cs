@@ -13,8 +13,12 @@ namespace SecretHistories.UI
 
   public interface IDominion: IEncaustable
 
-    {
-      List<Sphere> Spheres { get; }
+  {
+
+      OnSphereAddedEvent OnSphereAdded { get; }
+        OnSphereRemovedEvent OnSphereRemoved { get; }
+        void RegisterFor(ITokenPayload payload);
+        List<Sphere> Spheres { get; }
       Sphere CreateSphere(SphereSpec spec);
       Sphere GetSphereById(string id);
   }

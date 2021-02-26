@@ -20,10 +20,18 @@ namespace SecretHistories.Entities.Verbs
     [IsEncaustableClass(typeof(DropzoneCreationCommand))]
     public class Dropzone: ITokenPayload
     {
+        private Token _token;
+        private List<IDominion> _dominions=new List<IDominion>();
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
         [DontEncaust]
         public string Id { get; private set; }
+
+        public FucinePath GetAbsolutePath()
+        {
+            throw new NotImplementedException();
+        }
+
         [Encaust]
         public int Quantity => 1;
         [DontEncaust]
@@ -38,7 +46,7 @@ namespace SecretHistories.Entities.Verbs
         [Encaust]
         public List<IDominion> Dominions
         {
-            get { return new List<IDominion>(); }
+            get { return new List<IDominion>(_dominions); }
         }
         [DontEncaust] public string Label => "Dropzone";
         [DontEncaust] public string Description => "Description";
@@ -64,7 +72,15 @@ namespace SecretHistories.Entities.Verbs
             return Timeshadow.CreateTimelessShadow();
         }
 
-   
+
+        public bool RegisterDominion(IDominion dominion)
+        {
+            if (_dominions.Contains(dominion))
+                return false;
+            _dominions.Add(dominion);
+            return true;
+        }
+
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
             return typeof(DropzoneManifestation);
@@ -172,6 +188,11 @@ namespace SecretHistories.Entities.Verbs
         public void Close()
         {
             //
+        }
+
+        public void SetToken(Token token)
+        {
+            _token = token;
         }
 
         public void OnTokenMoved(TokenLocation toLocation)

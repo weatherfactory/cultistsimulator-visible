@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Assets.Scripts.Application.Fucine;
-using SecretHistories.Assets.Scripts.Application.Abstract;
+using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Fucine;
 using SecretHistories.UI;

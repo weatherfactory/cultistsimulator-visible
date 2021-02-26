@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Fucine;
 
 namespace Assets.Scripts.Application.Abstract
 {
-    public interface IHasAspects
+    public interface IHasAspects: IHasFucinePath
     {
-        string Id { get; }
+
         AspectsDictionary GetAspects(bool includeSelf);
         Dictionary<string, int> Mutations { get; }
         void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive);

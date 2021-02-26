@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Abstract;
-using SecretHistories.Assets.Scripts.Application.Abstract;
+using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Fucine;
 
@@ -38,10 +38,6 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             return instance;
         }
 
-        public FucinePath GetPath()
-        {
-            throw new NotImplementedException();
-        }
 
         public FucinePath GetAbsolutePath()
         {

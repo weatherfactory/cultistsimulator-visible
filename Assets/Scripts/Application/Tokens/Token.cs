@@ -179,6 +179,7 @@ namespace SecretHistories.UI {
         {
             _payload = payload;
             _payload.OnChanged += OnPayloadChanged;
+            _payload.SetToken(this);
             name = _payload.Id + "_token";
             Manifest();
         }

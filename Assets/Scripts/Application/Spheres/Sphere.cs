@@ -16,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Application.Abstract;
-using SecretHistories.Assets.Scripts.Application.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands.SituationCommands;

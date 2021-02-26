@@ -46,10 +46,10 @@ namespace SecretHistories.UI {
 
         private Situation _situation;
 
-        public void RegisterFor(Situation situation)
+        public void RegisterFor(ITokenPayload situation)
         {
 
-            _situation = situation; // this is a bit schizo; we're subscribing to it, but we're also keeping a reference?
+            _situation = situation as Situation; // this is a bit schizo; we're subscribing to it, but we're also keeping a reference?
 
             _situation.RegisterDominion(this);
 

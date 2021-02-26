@@ -14,5 +14,6 @@ namespace SecretHistories.Fucine
     {
         void OnTokensChangedForSphere(SphereContentsChangedEventArgs args);
         void OnTokenInteractionInSphere(TokenInteractionEventArgs args);
+        
     }
 }

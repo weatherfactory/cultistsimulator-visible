@@ -59,6 +59,11 @@ namespace SecretHistories.Entities {
 
 
         [Encaust] public string Id { get; protected set; }
+        public FucinePath GetAbsolutePath()
+        {
+            throw new NotImplementedException();
+        }
+
         [DontEncaust] public FucinePath AbsolutePath => null;
         
         [Encaust]
@@ -129,6 +134,7 @@ namespace SecretHistories.Entities {
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         
         private Timeshadow _timeshadow;
+        private Token _token;
 
 
         public Situation(Verb verb,string id)
@@ -158,15 +164,15 @@ namespace SecretHistories.Entities {
             NotifyTimerChange();
         }
 
-        public bool RegisterDominion(SituationDominion situationDominionToRegister)
+        public bool RegisterDominion(IDominion dominionToRegister)
         {
-            situationDominionToRegister.OnSphereAdded.AddListener(AttachSphere);
-            situationDominionToRegister.OnSphereRemoved.AddListener(RemoveSphere);
+            dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
+            dominionToRegister.OnSphereRemoved.AddListener(RemoveSphere);
 
-            if (_registeredDominions.Contains(situationDominionToRegister))
+            if (_registeredDominions.Contains(dominionToRegister))
                 return false;
 
-            _registeredDominions.Add(situationDominionToRegister);
+            _registeredDominions.Add(dominionToRegister as SituationDominion);
             return true;
         }
 
@@ -194,6 +200,7 @@ namespace SecretHistories.Entities {
         public void AttachSphere(Sphere sphere)
         {
             sphere.Subscribe(this);
+            sphere.SetContainer(this);
             _spheres.Add(sphere);
         }
 
@@ -674,7 +681,10 @@ namespace SecretHistories.Entities {
         }
 
 
-
+        public void SetToken(Token token)
+        {
+            _token = token;
+        }
 
         public void OnTokenMoved(TokenLocation toLocation)
         {

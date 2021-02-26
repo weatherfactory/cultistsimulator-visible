@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.Scripts.Application.Infrastructure.Events;
+
 using SecretHistories.Commands;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Enums;
@@ -16,8 +17,8 @@ namespace SecretHistories.Abstract
         bool IsOpen { get;}
 
 
-        public FucinePath AbsolutePath { get; }
         public List<IDominion> Dominions { get; }
+        bool RegisterDominion(IDominion dominion);
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValidElementStack();
@@ -36,6 +37,7 @@ namespace SecretHistories.Abstract
         void OpenAt(TokenLocation location);
         void Close();
 
+        void SetToken(Token token);
         void OnTokenMoved(TokenLocation toLocation);
     }
     }

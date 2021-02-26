@@ -19,7 +19,22 @@ namespace SecretHistories.Entities
     
     public class MinimalPayload : ITokenPayload
     {
+        private Token _token;
+        private List<IDominion> _dominions= new List<IDominion>();
         public string Id { get; protected set; }
+        
+        public FucinePath GetAbsolutePath()
+        {
+            var pathAbove = _token.Sphere.GetAbsolutePath();
+            var absolutePath = pathAbove.AppendToken(this.Id);
+            return absolutePath;
+        }
+
+                public void SetToken(Token token)
+        {
+            _token = token;
+        }
+
         public AspectsDictionary GetAspects(bool includeSelf)
         {
             return new AspectsDictionary();
@@ -69,7 +84,15 @@ namespace SecretHistories.Entities
         
         public bool IsOpen { get; }
         public FucinePath AbsolutePath { get; }
-        public List<IDominion> Dominions { get; }=new List<IDominion>();
+        public List<IDominion> Dominions=>new List<IDominion>(_dominions);
+        public bool RegisterDominion(IDominion dominion)
+        {
+            if (_dominions.Contains(dominion))
+                return false;
+            _dominions.Add(dominion);
+            return true;
+        }
+
         public Type GetManifestationType(SphereCategory sphereCategory)
         {
             return typeof(MinimalManifestation);
@@ -151,6 +174,8 @@ namespace SecretHistories.Entities
             //
 
         }
+
+
 
         public void OnTokenMoved(TokenLocation toLocation)
         {

@@ -44,6 +44,10 @@ namespace SecretHistories.UI {
         public event Action<TokenPayloadChangedArgs> OnChanged;
 
         [Encaust] public string Id => Element.Id;
+        public FucinePath GetAbsolutePath()
+        {
+            throw new NotImplementedException();
+        }
 
         [Encaust] public bool Defunct { get; protected set; }
 
@@ -67,10 +71,7 @@ namespace SecretHistories.UI {
     
 
         [Encaust]
-        public List<IDominion> Dominions
-        {
-            get { return new List<IDominion>(); }
-        }
+        public List<IDominion> Dominions => new List<IDominion>(_dominions);
 
 
         protected Element Element { get; set; }
@@ -141,6 +142,8 @@ namespace SecretHistories.UI {
                 new Dictionary<string, int>(); //not strictly an aspects dictionary; it can contain negatives
         
         private readonly Dictionary<string,string> _illuminations=new Dictionary<string, string>();
+        private Token _token;
+        private List<IDominion> _dominions=new List<IDominion>();
 
         public bool IsValidElementStack()
         {
@@ -191,6 +194,14 @@ namespace SecretHistories.UI {
 
         }
 
+
+        public bool RegisterDominion(IDominion dominion)
+        {
+            if (_dominions.Contains(dominion))
+                return false;
+            _dominions.Add(dominion);
+            return true;
+        }
 
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
@@ -442,6 +453,10 @@ namespace SecretHistories.UI {
             //
         }
 
+        public void SetToken(Token token)
+        {
+            _token = token;
+        }
         public void OnTokenMoved(TokenLocation toLocation)
         {
             //

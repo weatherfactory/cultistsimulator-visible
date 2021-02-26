@@ -28,7 +28,7 @@ namespace SecretHistories.Commands
         {
             var mp = new MinimalPayload(Id);
             var dominion = new GameObject().AddComponent<MinimalDominion>();
-            mp. Dominions.Add(dominion); //this may need rethinking if we use PopulateDominionCommands here
+            dominion.RegisterFor(mp); //this may need rethinking if we use PopulateDominionCommands here
             return mp;
         }
 

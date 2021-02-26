@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Fucine;
 
-namespace SecretHistories.Assets.Scripts.Application.Abstract
+namespace SecretHistories.Abstract
 {
     public interface IHasFucinePath
     {
