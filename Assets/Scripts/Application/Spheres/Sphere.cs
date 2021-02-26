@@ -62,7 +62,7 @@ namespace SecretHistories.Spheres
         Sphere : MonoBehaviour,IEncaustable,IHasFucinePath
     {
 
-        [Encaust] public string Id => GoverningSphereSpec.Id;
+        [DontEncaust] public string Id => GoverningSphereSpec.Id;
 
             [Encaust]
         public SphereSpec GoverningSphereSpec { get; set; }
@@ -175,11 +175,6 @@ namespace SecretHistories.Spheres
             return childSlotSpecs;
         }
 
-        public virtual void Awake()
-        {
-            Watchman.Get<HornedAxe>().RegisterSphere(
-                this); //this is a double call - we already subscribe above. This should be fine because it's a hashset, and because we may want to disable then re-enable. But FYI, future AK.
-        }
 
         public void TryApplyEditableSpec()
         {

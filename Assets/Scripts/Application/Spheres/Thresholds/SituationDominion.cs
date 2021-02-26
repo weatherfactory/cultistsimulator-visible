@@ -172,7 +172,7 @@ namespace SecretHistories.UI {
 
             //THIS WILL EXPLODE. We need to coalese Path and SphereIdentifier (and OwnerSphereIdentifier)
             var spheresToRemove =
-                new List<Sphere>(_spheres.Where(s => s.OwnerSphereIdentifier.Equals(sphereToOrphan.Id)));
+                new List<Sphere>(_spheres.Where(s => s.OwnerSphereIdentifier==sphereToOrphan.Id));
             foreach (var s in spheresToRemove)
                 RemoveSphere(s);
         }

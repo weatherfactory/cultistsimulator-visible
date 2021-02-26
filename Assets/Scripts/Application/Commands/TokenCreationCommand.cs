@@ -63,9 +63,10 @@ namespace SecretHistories.Commands
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);
             
             var payloadForToken = Payload.Execute(context);
+
             token.SetPayload(payloadForToken);
             sphere.AcceptToken(token, context);
-
+            payloadForToken.ExecuteHeartbeat(0f); 
 
             token.transform.localPosition = Location.Anchored3DPosition;
 

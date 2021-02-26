@@ -28,7 +28,7 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             // not to mark type as beforefieldinit"
         }
 
-        [Encaust]
+        [DontEncaust]
         public string Id => FucinePath.ROOT.ToString();
 
         private ITokenPayload _payload;
@@ -80,5 +80,18 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
         {
             return _spheres.SingleOrDefault(s => s.Id == id);
         }
+
+        public void AddSphere(Sphere sphere)
+        {
+            if(!_spheres.Contains(sphere))
+                _spheres.Add(sphere);
+        }
+
+        public void RemoveSphere(Sphere sphere)
+        {
+            if (_spheres.Contains(sphere))
+                _spheres.Remove(sphere);
+        }
+
     }
 }

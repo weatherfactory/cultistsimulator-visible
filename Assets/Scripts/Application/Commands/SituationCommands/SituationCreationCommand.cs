@@ -119,11 +119,7 @@ namespace SecretHistories.Commands
             
 
             newSituation.CommandQueue.AddCommandsFrom(CommandQueue);
-            newSituation.ExecuteHeartbeat(0f);
-
-            newSituation.NotifyStateChange();
-            newSituation.NotifyTimerChange();
-
+            
             return newSituation;
 
 

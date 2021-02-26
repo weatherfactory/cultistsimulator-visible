@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SecretHistories.Assets.Scripts.Application.Commands;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
 using SecretHistories.Commands.SituationCommands;
@@ -34,14 +36,7 @@ namespace SecretHistories.Infrastructure.Persistence
         {
 
             var characters = stable.GetAllCharacters();
-            var rootSpheres = hornedAxe.GetRootSpheres();
-
-            
-         //spheres can contain tokens, but tokens (eg Situations) can also contain spheres.
-         //only spheres in the root (level=0) are never in tokens.
-         //so we only attempt to encaust tokens in level 0 spheres directly. All others should be encausted via creation commands in their tokens.
-         
-         //TODO: So now we're going to go away and make sure recursive encaustment works!
+     
 
 
             _persistedGameState =new PersistedGameState();
@@ -54,18 +49,10 @@ namespace SecretHistories.Infrastructure.Persistence
                 _persistedGameState.CharacterCreationCommands.Add(encaustedCharacterCommand);
             }
             
-            
-            Encaustery<TokenCreationCommand> tokenEncaustery = new Encaustery<TokenCreationCommand>();
+            Encaustery<RootPopulationCommand> rootEncaustery = new Encaustery<RootPopulationCommand>();
 
-            foreach (var sphere in rootSpheres)
-            {
-                var allTokensInSphere = sphere.Tokens;
-                foreach (var t in allTokensInSphere)
-                {
-                    var encaustedTokenCommand = tokenEncaustery.Encaust(t);
-                    _persistedGameState.TokenCreationCommands.Add(encaustedTokenCommand);
-                }
-            }
+     _persistedGameState.RootPopulationCommand=rootEncaustery.Encaust(FucineRoot.Get());
+            
         }
 
 

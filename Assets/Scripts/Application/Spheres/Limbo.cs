@@ -1,4 +1,5 @@
-﻿using SecretHistories.Constants;
+﻿using SecretHistories.Commands;
+using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -7,6 +8,7 @@ using UnityEngine;
 
 namespace SecretHistories.Spheres
 {
+    [IsEmulousEncaustable(typeof(Sphere))]
     public class Limbo : Sphere {
 
         public override SphereCategory SphereCategory => SphereCategory.Dormant;

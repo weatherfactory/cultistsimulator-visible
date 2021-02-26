@@ -28,22 +28,15 @@ public class OutputSphere : Sphere,ISituationSubscriber{
 
     public override SphereCategory SphereCategory => SphereCategory.Output;
 
-    private string buttonClearResultsDefault;
-    private string buttonClearResultsNone;
+    private string buttonClearResultsDefault = "VERB_COLLECT";
+    private string buttonClearResultsNone = "VERB_ACCEPT";
 
     
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return false; } }
     public override float TokenHeartbeatIntervalMultiplier => 1;
 
-
-    public override void Awake()
-    {
-        buttonClearResultsDefault = "VERB_COLLECT";
-        buttonClearResultsNone = "VERB_ACCEPT";
-        base.Awake();
-    }
-
+    
 
     public override void DisplayAndPositionHere(Token token, Context context) {
         base.DisplayAndPositionHere(token, context);

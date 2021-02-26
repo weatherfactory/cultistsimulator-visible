@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
@@ -63,9 +64,8 @@ namespace SecretHistories.Constants
                 foreach (var c in gameState.CharacterCreationCommands)
                     c.Execute(Watchman.Get<Stable>());
 
-                foreach (var t in gameState.TokenCreationCommands)
-                    t.Execute(new Context(Context.ActionSource.Loading),
-                        Watchman.Get<HornedAxe>().GetDefaultWorldSphere()); //THIS IS WRONG
+                gameState.RootPopulationCommand.Execute(new Context(Context.ActionSource.Loading));
+
                 
                 foreach (var n in gameState.NotificationCommands)
                 {

@@ -22,8 +22,8 @@ using UnityEngine.EventSystems;
 
 namespace SecretHistories.Spheres
 {
-
-public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
+    [IsEmulousEncaustable(typeof(Sphere))]
+    public class TabletopSphere : Sphere,IBeginDragHandler,IEndDragHandler {
 #pragma warning disable 649
     [SerializeField] TabletopBackground _background;
     [SerializeField] protected CanvasGroupFader canvasGroupFader;

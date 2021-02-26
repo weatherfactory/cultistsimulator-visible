@@ -3237,7 +3237,6 @@ GameObject:
   - component: {fileID: 93661272}
   - component: {fileID: 93661274}
   - component: {fileID: 93661275}
-  - component: {fileID: 93661276}
   m_Layer: 5
   m_Name: ElementMalleary
   m_TagString: Untagged
@@ -3344,19 +3343,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 764640508}
   _elementDrydock: {fileID: 3267245899109754367}
---- !u!114 &93661276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93661270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ApplyId: elementDrydock
 --- !u!1 &97625624
 GameObject:
   m_ObjectHideFlags: 0

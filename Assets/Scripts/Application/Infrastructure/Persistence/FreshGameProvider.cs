@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Core;
@@ -39,10 +40,8 @@ namespace SecretHistories.Infrastructure.Persistence
 
         public override void DepersistGameState()
         {
-            
-            _persistedGameState.TokenCreationCommands.AddRange(StartingLegacy.GetTokenCreationCommandsToEnactLegacy());
-            
-
+            _persistedGameState.RootPopulationCommand = RootPopulationCommand.ForLegacy(StartingLegacy);
+          
             var cc = CharacterCreationCommand.IncarnateFromLegacy(StartingLegacy);
             _persistedGameState.CharacterCreationCommands.Add(cc);
 

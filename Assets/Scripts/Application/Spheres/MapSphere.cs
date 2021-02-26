@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using SecretHistories.Commands;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Constants;
@@ -9,6 +10,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace SecretHistories.UI {
+    [IsEmulousEncaustable(typeof(Sphere))]
     public class MapSphere : Sphere {
 
         DoorSlot[] allSlots;

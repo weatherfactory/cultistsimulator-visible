@@ -91,12 +91,12 @@ namespace SecretHistories.Services
                     instantiatedPrefab = new GameObject();
                     instantiatedPrefab.AddComponent<ThresholdSphere>();
                 }
-
-
                 instantiatedPrefab.name = $"{spec.SphereType.Name}";
                 var newSphere = instantiatedPrefab.GetComponent(spec.SphereType) as Sphere;
                 newSphere.SetContainer(container);
                 newSphere.ApplySpec(spec);
+            Watchman.Get<HornedAxe>().RegisterSphere(newSphere);
+
                 return newSphere;
             }
 
