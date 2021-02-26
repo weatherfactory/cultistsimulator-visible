@@ -61,6 +61,8 @@ namespace SecretHistories.Entities {
         [Encaust] public string Id { get; protected set; }
         public FucinePath GetAbsolutePath()
         {
+            if(_token==null)
+                return new NullFucinePath();
             var pathAbove = _token.Sphere.GetAbsolutePath();
             var absolutePath = pathAbove.AppendToken(this.Id);
             return absolutePath;
@@ -83,10 +85,10 @@ namespace SecretHistories.Entities {
         [Encaust] public Dictionary<string, int> Mutations => new Dictionary<string, int>();
         [Encaust] public int Quantity => 1;
 
-
+        [DontEncaust] public RecipePrediction CurrentRecipePrediction => _currentRecipePrediction;
         [DontEncaust] public SituationState State { get; set; }
         [DontEncaust] public float Warmup => Recipe.Warmup;
-        [DontEncaust] public RecipePrediction CurrentRecipePrediction => _currentRecipePrediction;
+
         
         [DontEncaust] public string Label => GetMostRecentNoteLabel();
         [DontEncaust] public string Description => GetMostRecentNoteDescription();
@@ -380,7 +382,6 @@ namespace SecretHistories.Entities {
            var notesSphereSpec=new SphereSpec(typeof(NotesSphere),specIdStrategy);
            var emptyNoteSphere = notesDominion.CreateSphere(notesSphereSpec);
   
-
             var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
             newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_TITLE_KEY, label);
             newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, description);

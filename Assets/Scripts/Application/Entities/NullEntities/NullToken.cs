@@ -16,14 +16,10 @@ using UnityEngine;
 
 namespace SecretHistories.NullObjects
 {
-   public class NullToken
+   public class NullToken: Token
    {
        
-       public void Populate(ElementStack elementStack)
-       {
-       //
-       }
-
+ 
        public bool Defunct { get; private set; }
        public Sphere Sphere { get; }
 
@@ -33,17 +29,13 @@ namespace SecretHistories.NullObjects
            return true;
        }
 
-        public void Remanifest(RetirementVFX vfx)
+
+        public static NullToken Create()
         {
-        //
+            var obj=new GameObject("NullToken");
+            var nullTokenComponent = obj.AddComponent<NullToken>();
+            nullTokenComponent.SetPayload(NullElementStack.Create());
+            return nullTokenComponent;
         }
-
-        public void onElementStackQuantityChanged(ElementStack stack,Context context)
-        {
-           //
-        }
-
-        
-
-    }
+   }
 }

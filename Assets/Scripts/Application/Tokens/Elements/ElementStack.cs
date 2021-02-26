@@ -411,11 +411,10 @@ namespace SecretHistories.UI {
         /// <returns></returns>
         public void ExecuteHeartbeat(float interval)
         {
-
-            if (!Decays && interval >= 0)
+            if (interval <= 0 || !Decays)
                 return;
 
-            _timeshadow.SpendTime(interval);
+      _timeshadow.SpendTime(interval);
             
             OnLifetimeSpent?.Invoke(LifetimeRemaining); //display decay effects for listeners elsewhere
 

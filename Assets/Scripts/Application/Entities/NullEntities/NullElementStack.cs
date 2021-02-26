@@ -26,6 +26,9 @@ namespace SecretHistories.Elements
             Element=new NullElement();
         }
 
-
+        public static NullElementStack Create()
+        {
+            return new NullElementStack();
+        }
     }
 }

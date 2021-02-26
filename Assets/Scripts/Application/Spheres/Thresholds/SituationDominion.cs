@@ -94,12 +94,6 @@ namespace SecretHistories.UI {
             foreach (var activeInState in VisibleForStates)
                 spec.MakeActiveInState(activeInState);
 
-            if (GetSpheresCurrentlyWrangledCount() == 0)
-            {
-                RemoveAllSpheres();
-            }
-                
-
             return AddSphere(spec);
         }
 
