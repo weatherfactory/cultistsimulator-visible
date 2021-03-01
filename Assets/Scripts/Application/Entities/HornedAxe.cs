@@ -29,6 +29,7 @@ namespace SecretHistories.Entities {
         private bool _tabletopAspectsDirty = true;
         private bool _allAspectsExtantDirty = true;
         private List<Situation> _currentSituations;
+        private readonly HashSet<Sphere> _registeredSpheres=new HashSet<Sphere>(); //Use this to find, eg, all World spheres. Don't use it for Fucine pathing!
 
         public const string EN_ROUTE_PATH = "enroute";
         
@@ -42,10 +43,10 @@ namespace SecretHistories.Entities {
         public void Reset()
         {
             _currentSituations = new List<Situation>();
-            foreach (var c in new List<Sphere>(FucineRoot.Get().Spheres))
+            foreach (var c in new List<Sphere>(_registeredSpheres))
             {
-                if(!c.PersistBetweenScenes)
-                    FucineRoot.Get().RemoveSphere(c);
+                if (!c.PersistBetweenScenes)
+                    _registeredSpheres.Remove(c);
             }
 
             _subscribers.Clear();
@@ -96,33 +97,30 @@ namespace SecretHistories.Entities {
 
 
         public HashSet<Sphere> GetSpheres() {
-            return new HashSet<Sphere>(FucineRoot.Get().Spheres);
+            return new HashSet<Sphere>(_registeredSpheres);
         }
 
         public IEnumerable<Sphere> GetSpheresOfCategory(SphereCategory category)
         {
-            return FucineRoot.Get().Spheres.Where(c => c.SphereCategory == category);
+            return _registeredSpheres.Where(c => c.SphereCategory == category);
         }
 
 
         public void RegisterSphere(Sphere sphere) {
             
-            sphere.TryApplyEditableSpec(); //make sure there's an id / spec in it
             if(sphere.GoverningSphereSpec==null)
                 NoonUtility.LogWarning($"Registered a sphere, {sphere.gameObject.name} , container {sphere.GetContainer().Id}, with no spec");
             else if( string.IsNullOrEmpty(sphere.Id))
                 NoonUtility.LogWarning($"Registered a sphere, {sphere.gameObject.name} , container {sphere.GetContainer().Id}, with an empty id");
 
-            FucineRoot.Get().AddSphere(sphere);
+            _registeredSpheres.Add(sphere);
         }
 
         public void DeregisterSphere(Sphere sphere) {
-            
-            FucineRoot.Get().RemoveSphere(sphere);
+
+            _registeredSpheres.Remove(sphere);
         }
-
-
-
+        
         public void Subscribe(ISphereCatalogueEventSubscriber subscriber) {
             _subscribers.Add(subscriber);
          }
@@ -147,7 +145,7 @@ namespace SecretHistories.Entities {
                 throw new ApplicationException($"trying to find a sphere with sphere path {spherePath.ToString()}, which seems to be a bare root path");
 
             if (spherePath.IsPathToSphereInRoot())
-                return GetSphereInRootPath(spherePath);
+                return GetSphereInRootByPath(spherePath);
 
             //either it's a token path - in which case return the fallback sphere - 
             if (spherePath.GetEndingPathPart().Category == FucinePathPart.PathCategory.Token)
@@ -170,7 +168,7 @@ namespace SecretHistories.Entities {
 
         }
 
-        private Sphere GetSphereInRootPath(FucinePath spherePath)
+        private Sphere GetSphereInRootByPath(FucinePath spherePath)
         {
             try
             {
@@ -248,7 +246,7 @@ namespace SecretHistories.Entities {
 
 
                 var tabletopContainers =
-                    FucineRoot.Get().Spheres.Where(tc => tc.SphereCategory == SphereCategory.World);
+                    _registeredSpheres.Where(tc => tc.SphereCategory == SphereCategory.World);
 
                 foreach(var tc in tabletopContainers)
                     tabletopStacks.AddRange(tc.GetElementTokens());

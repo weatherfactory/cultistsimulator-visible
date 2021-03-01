@@ -84,7 +84,10 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
         public void AddSphere(Sphere sphere)
         {
             if(!_spheres.Contains(sphere))
+            {
                 _spheres.Add(sphere);
+                sphere.SetContainer(this);
+            }
         }
 
         public void RemoveSphere(Sphere sphere)

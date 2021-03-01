@@ -22,6 +22,7 @@ using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Assets.Scripts.Application.Spheres;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.NullObjects;
 using Steamworks;
 using UnityEngine;
 
@@ -77,7 +78,7 @@ namespace SecretHistories.Spheres
         [Encaust]
         public string OwnerSphereIdentifier { get; set; }
 
-        private IHasFucinePath _container = FucineRoot.Get();
+        private IHasFucinePath _container = NullSituation.Create();
 
    
         [DontEncaust]
@@ -175,13 +176,6 @@ namespace SecretHistories.Spheres
             return childSlotSpecs;
         }
 
-
-        public void TryApplyEditableSpec()
-        {
-            var editableSpec = this.gameObject.GetComponent<EditableSphereSpec>();
-            if(editableSpec!=null)
-                editableSpec.ApplySpecToSphere(this);
-        }
 
         public virtual void ApplySpec(SphereSpec spec)
         {
