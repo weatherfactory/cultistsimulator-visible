@@ -9,6 +9,7 @@ using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
+using SecretHistories.Entities.Verbs;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
@@ -106,10 +107,14 @@ namespace SecretHistories.Constants
 
         private void ProvisionDropzoneToken()
         {
-            var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
+            var worldSphere = Watchman.Get<HornedAxe>().GetDefaultWorldSphere();
             
-            var dropzoneCreationCommand = new TokenCreationCommand(new DropzoneCreationCommand(), dropzoneLocation);
-            dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Unknown),Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
+            if(worldSphere.Tokens.Count(t => t.Payload.GetType() == typeof(Dropzone))==0)
+            {
+                var dropzoneLocation = new TokenLocation(Vector3.zero, worldSphere);
+                var dropzoneCreationCommand = new TokenCreationCommand(new DropzoneCreationCommand(), dropzoneLocation);
+                dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Unknown),worldSphere);
+            }
         }
 
         public async void EndGame(Ending ending, Token _anchor)
