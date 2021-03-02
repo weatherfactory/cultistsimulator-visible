@@ -13,10 +13,11 @@ using UnityEngine.EventSystems;
 
 namespace SecretHistories.Manifestations
 {
+    [RequireComponent(typeof(RectTransform))]
     public class BookcaseManifestation: MonoBehaviour, IManifestation
     {
-        public Transform Transform { get; }
-        public RectTransform RectTransform { get; }
+        public Transform Transform => gameObject.transform;
+        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
             throw new NotImplementedException();
