@@ -10,7 +10,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Spheres;
-
+using SecretHistories.Spheres.Angels;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -49,7 +49,10 @@ namespace SecretHistories.Elements.Manifestations
     
         public void InitialiseVisuals(IManifestable manifestable)
         {
-        //
+            var bubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), "classicdropzonebubble");
+
+            bubbleSphere.ApplySpec(bubbleSphereSpec);
+            manifestable.AttachSphere(bubbleSphere);
         }
 
         public void UpdateVisuals(IManifestable manifestable)

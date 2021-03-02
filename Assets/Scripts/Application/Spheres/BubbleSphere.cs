@@ -21,8 +21,7 @@ namespace SecretHistories.Spheres
        [IsEmulousEncaustable(typeof(Sphere))]
     public class BubbleSphere: Sphere
     {
-        [SerializeField] private Token AssociatedToken;
-
+    
         public override SphereCategory SphereCategory => SphereCategory.World;
         public override bool AllowDrag => true;
 

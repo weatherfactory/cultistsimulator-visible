@@ -15,6 +15,8 @@ using SecretHistories.Logic;
 using SecretHistories.NullObjects;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
+using SecretHistories.Spheres.Angels;
+using UnityEngine;
 
 namespace SecretHistories.Entities.Verbs
 {
@@ -68,6 +70,14 @@ namespace SecretHistories.Entities.Verbs
 
 
         private List<Sphere> _spheres { get; set; }
+
+
+        public Dropzone()
+        {
+            _spheres = new List<Sphere>();
+            Id = "dropzoneclassic";
+        }
+
         public string GetIllumination(string key)
         {
             return string.Empty;
@@ -107,6 +117,12 @@ namespace SecretHistories.Entities.Verbs
         public void InitialiseManifestation(IManifestation manifestation)
         {
             manifestation.InitialiseVisuals(this);
+
+
+            //assume we have exactly one dropzone bubble sphere
+            var dropzoneSpherePath = _spheres.Single().GetAbsolutePath();
+            var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
+            tabletopSphere.AddAngel(new TidyAngel(dropzoneSpherePath));
         }
 
         public bool IsValidElementStack()
@@ -116,14 +132,14 @@ namespace SecretHistories.Entities.Verbs
 
         public void FirstHeartbeat()
         {
+
+
+
+
             ExecuteHeartbeat(0f);
         }
 
 
-        public Dropzone()
-        {
-            _spheres=new List<Sphere>();
-        }
 
         public void AttachSphere(Sphere sphere)
         {

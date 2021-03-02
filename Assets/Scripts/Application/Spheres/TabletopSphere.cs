@@ -27,7 +27,6 @@ namespace SecretHistories.Spheres
 #pragma warning disable 649
     [SerializeField] TabletopBackground _background;
     [SerializeField] protected CanvasGroupFader canvasGroupFader;
-    [SerializeField] protected string dropzoneSpherePath;
 #pragma warning disable 649
 
     public override SphereCategory SphereCategory => SphereCategory.World;
@@ -61,8 +60,6 @@ namespace SecretHistories.Spheres
 
     public virtual void Start() {
         _background.onClicked += HandleOnTableClicked;
-        var dropzoneSpherePath = new FucinePath(this.dropzoneSpherePath);
-        flock.AddAngel(new TidyAngel(dropzoneSpherePath));
     }
 
 
