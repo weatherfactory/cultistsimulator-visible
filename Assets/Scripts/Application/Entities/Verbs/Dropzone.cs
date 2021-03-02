@@ -27,13 +27,20 @@ namespace SecretHistories.Entities.Verbs
         public event Action<float> OnLifetimeSpent;
         [DontEncaust]
         public string Id { get; private set; }
-
-        public FucinePath GetAbsolutePath()
+        [DontEncaust]
+        public Token Token
         {
-            var pathAbove = _token.Sphere.GetAbsolutePath();
-            var absolutePath = pathAbove.AppendToken(this.Id);
-            return absolutePath;
+            get
+            {
+                {
+                    if (_token == null)
+                        return NullToken.Create();
+                    return _token;
+                }
+            }
         }
+
+ 
 
         [Encaust]
         public int Quantity => 1;
@@ -69,6 +76,13 @@ namespace SecretHistories.Entities.Verbs
         public void SetIllumination(string key, string value)
         {
             //
+        }
+
+        public FucinePath GetAbsolutePath()
+        {
+            var pathAbove = _token.Sphere.GetAbsolutePath();
+            var absolutePath = pathAbove.AppendToken(this.Id);
+            return absolutePath;
         }
 
         public Timeshadow GetTimeshadow()
@@ -196,17 +210,6 @@ namespace SecretHistories.Entities.Verbs
             return Id;
         }
 
-        public Token Token
-        {
-            get
-            {
-                {
-                    if (_token == null)
-                        return NullToken.Create();
-                    return _token;
-                }
-            }
-        }
 
         public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)
         {

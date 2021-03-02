@@ -129,7 +129,7 @@ namespace SecretHistories.Entities {
             }
 
         }
-
+        [DontEncaust]
         public Token Token
         {
             get

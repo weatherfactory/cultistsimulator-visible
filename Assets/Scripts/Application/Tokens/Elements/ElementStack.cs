@@ -116,7 +116,7 @@ namespace SecretHistories.UI {
 
                 return signature;
         }
-
+        [DontEncaust]
         public Token Token
         {
             get
