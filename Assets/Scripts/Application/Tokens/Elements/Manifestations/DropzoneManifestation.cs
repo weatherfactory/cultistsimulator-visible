@@ -52,6 +52,8 @@ namespace SecretHistories.Elements.Manifestations
             var bubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), "classicdropzonebubble");
 
             bubbleSphere.ApplySpec(bubbleSphereSpec);
+
+            Watchman.Get<HornedAxe>().RegisterSphere(bubbleSphere);
             manifestable.AttachSphere(bubbleSphere);
         }
 

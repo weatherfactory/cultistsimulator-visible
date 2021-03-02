@@ -118,7 +118,6 @@ namespace SecretHistories.Entities.Verbs
         {
             manifestation.InitialiseVisuals(this);
 
-
             //assume we have exactly one dropzone bubble sphere
             var dropzoneSpherePath = _spheres.Single().GetAbsolutePath();
             var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
@@ -132,10 +131,6 @@ namespace SecretHistories.Entities.Verbs
 
         public void FirstHeartbeat()
         {
-
-
-
-
             ExecuteHeartbeat(0f);
         }
 

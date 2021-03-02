@@ -42,7 +42,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
             applyToSphere.ApplySpec(_sphereSpec);
 
             FucineRoot.Get().AttachSphere(applyToSphere);
-
+            Watchman.Get<HornedAxe>().RegisterSphere(applyToSphere);
         }
     }
 }
