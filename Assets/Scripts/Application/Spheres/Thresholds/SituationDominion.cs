@@ -62,7 +62,7 @@ namespace SecretHistories.UI {
         private readonly List<Sphere> _spheres=new List<Sphere>();
         
 
-        public void RegisterFor(ITokenPayload situation)
+        public void RegisterFor(IManifestable situation)
         {
 
             _situation = situation as Situation; // this is a bit schizo; we're subscribing to it, but we're also keeping a reference?

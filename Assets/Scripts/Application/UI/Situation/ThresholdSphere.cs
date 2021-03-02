@@ -27,7 +27,6 @@ namespace SecretHistories.UI
         public Graphic border;
         public GraphicFader slotGlow;
         public LayoutGroup slotIconHolder;
-        private FucinePath _thresholdSpherePath;
 
 
         public override bool AllowStackMerge { get { return false; } }
@@ -77,7 +76,9 @@ namespace SecretHistories.UI
                 AddAngel(a);
 
             //refactor to something more generic
+            if(GreedyIcon!=null)
             GreedyIcon.SetActive(sphereSpec.Greedy);
+            if(ConsumingIcon!=null)
             ConsumingIcon.SetActive(sphereSpec.Consumes);
 
         }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Abstract;
 using SecretHistories.Logic;
+using SecretHistories.UI;
 
 namespace SecretHistories.Abstract
 {
@@ -20,6 +21,7 @@ namespace SecretHistories.Abstract
       string GetIllumination(string key);
       void SetIllumination(string key, string value);
         Timeshadow GetTimeshadow();
+        bool RegisterDominion(IDominion dominion);
 
     }
 }

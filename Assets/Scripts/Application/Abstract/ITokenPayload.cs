@@ -18,7 +18,7 @@ namespace SecretHistories.Abstract
 
 
         public List<IDominion> Dominions { get; }
-        bool RegisterDominion(IDominion dominion);
+        
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValidElementStack();

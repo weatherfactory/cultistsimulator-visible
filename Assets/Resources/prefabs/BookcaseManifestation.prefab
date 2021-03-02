@@ -92,6 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c4d1168f7b3c641b4f4eeb04023ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dominions:
+  - {fileID: 4811172271083714018}
+  - {fileID: 1231338705992716365}
+  - {fileID: 1670603914413158594}
 --- !u!114 &7057015605671445014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1876514928171224021}
   - component: {fileID: 1231338705992716365}
+  - component: {fileID: 1064521638816396039}
   m_Layer: 5
   m_Name: ShelfDominion2
   m_TagString: Untagged
@@ -166,6 +171,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5f0c7471913d6449fa886e95c49410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1064521638816396039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5330772862957944687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &6544779969198721087
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,8 +207,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1493625185485339595}
   - component: {fileID: 1670603914413158594}
+  - component: {fileID: 2733772404378350170}
   m_Layer: 5
-  m_Name: ShelfDominion (2)
+  m_Name: ShelfDominion3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,6 +246,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5f0c7471913d6449fa886e95c49410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2733772404378350170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6544779969198721087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &6609659380403923008
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3009677010958005865}
   - component: {fileID: 4811172271083714018}
+  - component: {fileID: 930875665045509826}
   m_Layer: 5
   m_Name: ShelfDominion1
   m_TagString: Untagged
@@ -262,3 +321,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5f0c7471913d6449fa886e95c49410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &930875665045509826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609659380403923008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0

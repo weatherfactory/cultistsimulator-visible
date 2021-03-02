@@ -94,7 +94,6 @@ namespace SecretHistories.UI {
             
             startButton.onClick.AddListener(OnStart.Invoke);
 
-
             foreach (var d in Dominions)
                 d.RegisterFor(newSituation);
             

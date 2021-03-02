@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Spheres.Thresholds;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
@@ -18,6 +19,9 @@ namespace SecretHistories.Manifestations
     {
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
+
+        [SerializeField] List<ShelfDominion> _dominions;
+
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
             throw new NotImplementedException();
@@ -36,6 +40,8 @@ namespace SecretHistories.Manifestations
         public void InitialiseVisuals(IManifestable manifestable)
         {
             name = "BookcaseManifestation" + manifestable.Id;
+            foreach(var d in _dominions)
+                d.RegisterFor(manifestable);
         }
 
         public void UpdateVisuals(IManifestable manifestable)

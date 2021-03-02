@@ -17,7 +17,7 @@ namespace SecretHistories.UI
 
       OnSphereAddedEvent OnSphereAdded { get; }
         OnSphereRemovedEvent OnSphereRemoved { get; }
-        void RegisterFor(ITokenPayload payload);
+        void RegisterFor(IManifestable manifestable);
         List<Sphere> Spheres { get; }
       Sphere CreateSphere(SphereSpec spec);
       Sphere GetSphereById(string id);

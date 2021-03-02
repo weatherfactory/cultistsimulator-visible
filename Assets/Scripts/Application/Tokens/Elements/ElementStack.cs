@@ -37,7 +37,7 @@ namespace SecretHistories.UI {
 
 
     [IsEncaustableClass(typeof(ElementStackCreationCommand))]
-    public class ElementStack : ITokenPayload
+    public class ElementStack : ITokenPayload,ISphereEventSubscriber
     {
         public event Action<float> OnLifetimeSpent;
         public event Action<TokenPayloadChangedArgs> OnChanged;
@@ -77,6 +77,8 @@ namespace SecretHistories.UI {
         
 
         private Timeshadow _timeshadow;
+        private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
+
 
         public string GetIllumination(string key)
         {
@@ -144,12 +146,15 @@ namespace SecretHistories.UI {
 
         public void AttachSphere(Sphere sphere)
         {
-            throw new NotImplementedException();
+            sphere.Subscribe(this);
+            sphere.SetContainer(this);
+            _spheres.Add(sphere);
         }
 
-        public void DetachSphere(Sphere sphere)
+        public void DetachSphere(Sphere c)
         {
-            throw new NotImplementedException();
+            c.Unsubscribe(this);
+            _spheres.Remove(c);
         }
 
         private int _quantity;
@@ -228,11 +233,15 @@ namespace SecretHistories.UI {
         }
 
 
-        public bool RegisterDominion(IDominion dominion)
+        public bool RegisterDominion(IDominion dominionToRegister)
         {
-            if (_dominions.Contains(dominion))
+            dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
+            dominionToRegister.OnSphereRemoved.AddListener(DetachSphere);
+
+            if (_dominions.Contains(dominionToRegister))
                 return false;
-            _dominions.Add(dominion);
+
+            _dominions.Add(dominionToRegister);
             return true;
         }
 
@@ -506,5 +515,14 @@ namespace SecretHistories.UI {
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Fundamental));
         }
 
+        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
+        {
+            //
+        }
+
+        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
+        {
+           //
+        }
     }
 }
