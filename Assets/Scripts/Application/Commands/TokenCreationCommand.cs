@@ -83,7 +83,7 @@ namespace SecretHistories.Commands
         private void SetTokenTravellingFromSpawnPoint(Token token)
         {
             
-            var enrouteSphere = token.Sphere.GetEnRouteSphere();
+            var enrouteSphere = token.Payload.GetEnRouteSphere();
 
             var spawnedTravelItinerary = new TokenTravelItinerary(_sourceToken.TokenRectTransform.anchoredPosition3D,
                     token.Sphere.Choreographer.GetFreeLocalPosition(token,

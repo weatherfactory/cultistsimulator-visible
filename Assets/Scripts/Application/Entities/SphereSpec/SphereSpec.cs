@@ -61,9 +61,9 @@ public class SphereSpec: AbstractEntity<SphereSpec>
    public FucinePath WindowsSpherePath { get; set; }
 
 
-        public Type SphereType { get; set; }
+   public Type SphereType { get; set; }
 
-        public bool AllowAnyToken { get; set; }
+   public bool AllowAnyToken { get; set; }
 
     private readonly HashSet<StateEnum> _activeInStates=new HashSet<StateEnum>();
 

@@ -106,10 +106,10 @@ namespace SecretHistories.Entities {
         public Sphere GetSphereByPath(FucinePath spherePath)
         {
             if(!spherePath.IsAbsolute())
-               throw new ApplicationException($"trying to find a sphere with sphere path {spherePath.ToString()}, but that's not an absolute path, and no context was provided");
+               throw new ApplicationException($"trying to find a sphere with sphere path '{spherePath.ToString()}', but that's not an absolute path, and no context was provided");
 
             if(spherePath.GetEndingPathPart().Category==FucinePathPart.PathCategory.Root)
-                throw new ApplicationException($"trying to find a sphere with sphere path {spherePath.ToString()}, which seems to be a bare root path");
+                throw new ApplicationException($"trying to find a sphere with sphere path '{spherePath.ToString()}', which seems to be a bare root path");
 
             if (spherePath.IsPathToSphereInRoot())
                 return GetSphereInRootByPath(spherePath);

@@ -46,7 +46,7 @@ namespace SecretHistories.Spheres.Angels
             TokenTravelItinerary travellingToTidyTarget =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D,
                         tidyToSphere.Choreographer.GetFreeLocalPosition(token, Vector3.zero))
-                    .WithSphereRoute(token.Sphere.GetEnRouteSphere(),
+                    .WithSphereRoute(token.Payload.GetEnRouteSphere(),
                         tidyToSphere)
                     .WithDuration(NoonConstants.MOMENT_TIME_INTERVAL);
 

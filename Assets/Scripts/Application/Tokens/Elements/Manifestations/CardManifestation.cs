@@ -96,11 +96,7 @@ namespace SecretHistories.Manifestations
         {
             canvasGroup.alpha = 0.3f;
         }
-
-
-
-
-
+        
 
         public bool HandlePointerDown(PointerEventData eventData, Token token)
         {

@@ -17,20 +17,44 @@ namespace SecretHistories.NullObjects
 {
    public class NullToken: Token
    {
-       
+       private static NullToken _instance;
+       private Sphere _sphere;
+
        public override bool Retire(RetirementVFX rvfx)
        {
            Defunct = true;
            return true;
        }
 
+       public override Sphere Sphere
+       {
+           get => Watchman.Get<HornedAxe>().GetDefaultSphere();
+
+        set => throw new NotImplementedException();
+       }
+
+
+       public override void Manifest()
+       {
+           //
+       }
+
+       public override void Remanifest(RetirementVFX vfx)
+       {
+           //
+       }
 
         public static NullToken Create()
         {
-            var obj=new GameObject("NullToken");
-            var nullTokenComponent = obj.AddComponent<NullToken>();
-            nullTokenComponent.SetPayload(NullElementStack.Create());
-            return nullTokenComponent;
+            if(_instance == null)
+            {
+                    var obj=new GameObject("NullToken");
+                    var nullTokenComponent = obj.AddComponent<NullToken>();
+                    nullTokenComponent.SetPayload(NullElementStack.Create());
+                    _instance = nullTokenComponent;
+            }
+
+            return _instance;
         }
    }
 }

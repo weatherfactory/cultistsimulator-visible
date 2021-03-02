@@ -68,7 +68,7 @@ namespace SecretHistories.Spheres.Angels
                         matchingToken.CalveToken(matchingToken.Quantity - GRAB_QUANTITY_LIMIT,
                             new Context(Context.ActionSource.GreedyGrab));
 
-                    var enRouteSphere = sphereToSearch.GetEnRouteSphere();
+                    var enRouteSphere = matchingToken.Payload.GetEnRouteSphere();
 
                     var targetPosition = GetTargetPositionForDestinationSphere(destinationThresholdSphere,matchingToken);
 

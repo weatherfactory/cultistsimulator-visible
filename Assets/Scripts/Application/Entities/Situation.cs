@@ -217,6 +217,8 @@ namespace SecretHistories.Entities {
         }
 
 
+
+
         public void AttachSphere(Sphere sphere)
         {
             sphere.Subscribe(this);
@@ -560,6 +562,21 @@ namespace SecretHistories.Entities {
             // Generate a distinctive signature
 
             return "situation_" + Verb.Id;
+        }
+        public Sphere GetEnRouteSphere()
+        {
+            if (Token.Sphere.GoverningSphereSpec.EnRouteSpherePath.IsValid())
+                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere.GoverningSphereSpec.EnRouteSpherePath);
+
+            return Token.Sphere.GetContainer().GetEnRouteSphere();
+        }
+
+        public Sphere GetWindowsSphere()
+        {
+            if (Token.Sphere.GoverningSphereSpec.WindowsSpherePath.IsValid())
+                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere.GoverningSphereSpec.WindowsSpherePath);
+
+            return Token.Sphere.GetContainer().GetWindowsSphere();
         }
 
         private SituationState Continue(float interval)

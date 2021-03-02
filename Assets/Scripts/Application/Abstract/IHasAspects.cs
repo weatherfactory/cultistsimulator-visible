@@ -23,7 +23,8 @@ namespace Assets.Scripts.Application.Abstract
         /// <returns></returns>
         string GetSignature();
 
-        Token Token { get; }
+        public Sphere GetEnRouteSphere();
+        public Sphere GetWindowsSphere();
         void AttachSphere(Sphere sphere);
         void DetachSphere(Sphere sphere);
     }

@@ -63,8 +63,9 @@ namespace SecretHistories.Fucine
             path = path.Trim(); //remove whitespace
             if (path==string.Empty)
             {
-                AddCurrentLocationPart();
-                Validity = FucineValidity.Valid;
+                //changed our mind. Empty path is no longer valid.
+                AddNullPathPart();
+                Validity = FucineValidity.Empty;
                 return;
             }
 

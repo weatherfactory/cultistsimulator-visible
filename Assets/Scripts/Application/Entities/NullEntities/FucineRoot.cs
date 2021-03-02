@@ -59,7 +59,17 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
         {
             return FucinePath.ROOT.ToString();
         }
+        public Sphere GetEnRouteSphere()
+        {
+            var defaultSphere=Watchman.Get<HornedAxe>().GetDefaultSphere();
+            return Watchman.Get<HornedAxe>().GetSphereByPath(defaultSphere.GoverningSphereSpec.EnRouteSpherePath);
+        }
 
+        public Sphere GetWindowsSphere()
+        {
+            var defaultSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
+            return Watchman.Get<HornedAxe>().GetSphereByPath(defaultSphere.GoverningSphereSpec.WindowsSpherePath);
+        }
 
 
         public AspectsDictionary GetAspects(bool includeSelf)

@@ -34,7 +34,7 @@ namespace SecretHistories.Manifestations
 
         public void InitialiseVisuals(IManifestable manifestable)
         {
-     
+            name = "BookcaseManifestation" + manifestable.Id;
         }
 
         public void UpdateVisuals(IManifestable manifestable)
@@ -44,22 +44,18 @@ namespace SecretHistories.Manifestations
 
         public void OnBeginDragVisuals()
         {
-            throw new NotImplementedException();
         }
 
         public void OnEndDragVisuals()
         {
-            throw new NotImplementedException();
         }
 
         public void Highlight(HighlightType highlightType)
         {
-            throw new NotImplementedException();
         }
 
         public void Unhighlight(HighlightType highlightType)
         {
-            throw new NotImplementedException();
         }
 
         public bool NoPush { get; }
@@ -75,38 +71,35 @@ namespace SecretHistories.Manifestations
 
         public void Emphasise()
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void Understate()
         {
-            throw new NotImplementedException();
+           //
         }
 
         public bool RequestingNoDrag { get; }
         public void DoMove(RectTransform tokenRectTransform)
         {
-            throw new NotImplementedException();
+       
         }
 
         public void SendNotification(INotification notification)
         {
-            throw new NotImplementedException();
         }
 
         public bool HandlePointerDown(PointerEventData eventData, Token token)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
-            throw new NotImplementedException();
         }
 
         public void SetParticleSimulationSpace(Transform transform)
         {
-            throw new NotImplementedException();
         }
     }
 }

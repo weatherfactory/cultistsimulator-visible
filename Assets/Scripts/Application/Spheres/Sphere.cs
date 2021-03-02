@@ -102,22 +102,6 @@ namespace SecretHistories.Spheres
         [DontEncaust]
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
 
-        public Sphere GetEnRouteSphere()
-        {
-            if(GoverningSphereSpec.EnRouteSpherePath.IsValid())
-                return Watchman.Get<HornedAxe>().GetSphereByPath(GoverningSphereSpec.EnRouteSpherePath);
-
-            return _container.Token.Sphere.GetEnRouteSphere();
-        }
-
-        public Sphere GetWindowsSphere()
-        {
-            if (GoverningSphereSpec.EnRouteSpherePath.IsValid())
-                return Watchman.Get<HornedAxe>().GetSphereByPath(GoverningSphereSpec.WindowsSpherePath);
-
-            return _container.Token.Sphere.GetWindowsSphere();
-        }
-
 
         public GameObject GreedyIcon;
         public GameObject ConsumingIcon;
@@ -531,7 +515,7 @@ namespace SecretHistories.Spheres
         /// </summary>
         public virtual void EvictToken(Token token, Context context)
         {
-            var exitSphere = GetEnRouteSphere();
+            var exitSphere = token.Payload.GetEnRouteSphere();
             exitSphere.ProcessEvictedToken(token,context);
        
         }

@@ -62,7 +62,7 @@ namespace SecretHistories.UI {
             }
         }
         [DontEncaust]
-        public Sphere Sphere { get; set; }
+        public virtual Sphere Sphere { get; set; }
         [DontEncaust]
         protected Sphere OldSphere  { get; set; }// Used to tell OldContainsTokens that this thing was dropped successfully
 
@@ -375,7 +375,7 @@ namespace SecretHistories.UI {
             }
 
 
-            var enrouteSphere = Sphere.GetEnRouteSphere();
+            var enrouteSphere = Payload.GetEnRouteSphere();
 
             enrouteSphere.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
             

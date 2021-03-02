@@ -102,7 +102,7 @@ namespace SecretHistories.Commands
             
 
             //This MUST go here, as soon as the situation is created and before tokens or commands are added, because it's here that the situation spheres get attached.
-            var windowSphere = sphere.GetWindowsSphere();
+            var windowSphere = newSituation.GetWindowsSphere();
             var windowLocation =
                 new TokenLocation(Vector3.zero, windowSphere.GetAbsolutePath()); //it shouldn't really be zero, but we don't know the real token loc in the current flow
 
