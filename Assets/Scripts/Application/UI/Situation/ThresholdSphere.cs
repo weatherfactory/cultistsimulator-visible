@@ -140,7 +140,7 @@ namespace SecretHistories.UI
         private void HideHoverGlow()
         {
             SetGlowColor(UIStyle.TokenGlowColor.Default);
-                SoundManager.PlaySfx("TokenHoverOff");
+
         }
 
 
