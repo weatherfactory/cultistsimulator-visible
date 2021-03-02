@@ -15,6 +15,7 @@ using SecretHistories.UI;
 using SecretHistories.Enums;
 using SecretHistories.NullObjects;
 using SecretHistories.Services;
+using SecretHistories.Spheres;
 using SecretHistories.States;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -70,7 +71,7 @@ namespace SecretHistories.Commands
             return this;
         }
 
-        public ITokenPayload Execute(Context context)
+        public ITokenPayload Execute(Context context, Sphere sphere)
         {
             HornedAxe situationsCatalogue = Watchman.Get<HornedAxe>();
             var registeredSituations = situationsCatalogue.GetRegisteredSituations();
@@ -100,10 +101,10 @@ namespace SecretHistories.Commands
             newSituation.OverrideTitle = OverrideTitle;
             
 
-            //This MUSt go here, as soon as the situation is created and before tokens or commands are added, because it's here that the situation spheres get attached.
-            var windowSpherePath = new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
+            //This MUST go here, as soon as the situation is created and before tokens or commands are added, because it's here that the situation spheres get attached.
+            var windowSphere = sphere.GetWindowsSphere();
             var windowLocation =
-                new TokenLocation(Vector3.zero, windowSpherePath); //it shouldn't really be zero, but we don't know the real token loc in the current flow
+                new TokenLocation(Vector3.zero, windowSphere.GetAbsolutePath()); //it shouldn't really be zero, but we don't know the real token loc in the current flow
 
             var sphereToDisplayWindowIn = Watchman.Get<HornedAxe>().GetSphereByPath(windowLocation.AtSpherePath);
             var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphereToDisplayWindowIn.transform);

@@ -8,6 +8,7 @@ using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Fucine;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ namespace SecretHistories.Commands
             Id = "defaultminimalpayloadid";
         }
 
-        public ITokenPayload Execute(Context context)
+        public ITokenPayload Execute(Context context, Sphere sphere)
         {
             var mp = new MinimalPayload(Id);
             var dominion = new GameObject().AddComponent<MinimalDominion>();

@@ -17,10 +17,12 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
     public string ApplyId;
         
         private SphereSpec _sphereSpec;
-
+        public string EnRouteSpherePath;
+        public string WindowsSpherePath;
+  
         public void Awake()
         {
-            //registering awake on hardcoded spheres ONLY using this approach.
+            //registering awake on permanent root spheres ONLY using this approach.
             //when we call it on Awake on all spheres, then instantiated spheres get registered on instantiation, before their spec is applied.
             var permanentRootSphere = gameObject.GetComponent<Sphere>();
             if(permanentRootSphere==null)
@@ -34,6 +36,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
             if(string.IsNullOrEmpty(ApplyId))
                 NoonUtility.LogWarning("SpecApplier for sphere " + applyToSphere.name + " doesn't have an id specified.");
             _sphereSpec=new SphereSpec(applyToSphere.GetType(), ApplyId);
+            _sphereSpec.EnRouteSpherePath=new FucinePath(EnRouteSpherePath);
+            _sphereSpec.WindowsSpherePath = new FucinePath(WindowsSpherePath);
 
             applyToSphere.ApplySpec(_sphereSpec);
 

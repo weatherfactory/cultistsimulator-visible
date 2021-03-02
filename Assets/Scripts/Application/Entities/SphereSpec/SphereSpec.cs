@@ -13,7 +13,7 @@ using SecretHistories.Spheres.Angels;
 
  namespace SecretHistories.Entities
 {
-
+    [Serializable]
 public class SphereSpec: AbstractEntity<SphereSpec>
 {
 
@@ -54,7 +54,14 @@ public class SphereSpec: AbstractEntity<SphereSpec>
    public List<AngelSpecification> Angels { get; set; }
 
 
-      public Type SphereType { get; set; }
+   [FucineValue]
+   public FucinePath EnRouteSpherePath { get; set; }
+
+   [FucineValue]
+   public FucinePath WindowsSpherePath { get; set; }
+
+
+        public Type SphereType { get; set; }
 
         public bool AllowAnyToken { get; set; }
 

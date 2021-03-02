@@ -15,11 +15,6 @@ namespace SecretHistories.Entities
         [FucineValue]
         public string DefaultWorldSpherePath { get; set; }
 
-        [FucineValue]
-        public string DefaultEnRouteSpherePath { get; set; }
-
-        [FucineValue]
-        public string DefaultWindowSpherePath { get; set; }
 
         [FucineValue]
         public string MasterScene { get; set; }

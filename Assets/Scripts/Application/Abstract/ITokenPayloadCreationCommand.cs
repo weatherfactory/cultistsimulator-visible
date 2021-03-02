@@ -12,7 +12,7 @@ namespace SecretHistories.Abstract
 {
     public interface ITokenPayloadCreationCommand
     {
-        public ITokenPayload Execute(Context context);
+        public ITokenPayload Execute(Context context,Sphere sphere);
         public int Quantity { get; }
         public List<PopulateDominionCommand> Dominions { get; set; }
     }

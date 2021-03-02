@@ -1,5 +1,6 @@
 using System;
 using System.Numerics;
+using System.Security.Cryptography;
 using SecretHistories.Entities;
 using SecretHistories.States.TokenStates;
 using SecretHistories.Constants;
@@ -29,8 +30,8 @@ namespace SecretHistories.UI
         {
             Anchored3DStartPosition = startLocation.Anchored3DPosition;
             Anchored3DEndPosition = endLocation.Anchored3DPosition;
-            EnRouteSphere = Watchman.Get<HornedAxe>().GetDefaultEnRouteSphere();
             DestinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(endLocation.AtSpherePath);
+            EnRouteSphere = DestinationSphere.GetEnRouteSphere();
             StartScale = DefaultStartScale;
             EndScale = DefaultEndScale;
         }
@@ -41,8 +42,9 @@ namespace SecretHistories.UI
             Anchored3DStartPosition = anchored3DStartPosition;
             Anchored3DEndPosition = anchored3DEndPosition;
 
-            EnRouteSphere = Watchman.Get<HornedAxe>().GetDefaultEnRouteSphere();
+            
             DestinationSphere = Watchman.Get<HornedAxe>().GetDefaultWorldSphere();
+            EnRouteSphere = DestinationSphere.GetEnRouteSphere();
             StartScale = DefaultStartScale;
             EndScale = DefaultEndScale;
         }

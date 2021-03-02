@@ -8,6 +8,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Fucine;
+using SecretHistories.Spheres;
 
 namespace SecretHistories.Commands
 {
@@ -16,7 +17,7 @@ namespace SecretHistories.Commands
         public int Quantity { get; set; }
         public List<PopulateDominionCommand> Dominions { get; set; }
         
-        public ITokenPayload Execute(Context context)
+        public ITokenPayload Execute(Context context,Sphere sphere)
         {
             var dz= new Dropzone();
             

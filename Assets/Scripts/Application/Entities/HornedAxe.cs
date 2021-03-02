@@ -31,9 +31,6 @@ namespace SecretHistories.Entities {
         private List<Situation> _currentSituations;
         private readonly HashSet<Sphere> _registeredSpheres=new HashSet<Sphere>(); //Use this to find, eg, all World spheres. Don't use it for Fucine pathing!
 
-        public const string EN_ROUTE_PATH = "enroute";
-        
-        public const string STORAGE_PATH = "storage";
 
         public HornedAxe()
         {
@@ -64,36 +61,6 @@ namespace SecretHistories.Entities {
             var defaultWorldSphere = GetSphereByPath(GetDefaultWorldSpherePath());
             return defaultWorldSphere;
         }
-
-        public FucinePath GetDefaultEnRouteSpherePath()
-        {
-            var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
-            var spherePath = new FucinePath(dictum.DefaultEnRouteSpherePath);
-            return spherePath;
-        }
-
-        
-        public Sphere GetDefaultEnRouteSphere()
-        {
-            var defaultEnRouteSphere = GetSphereByPath(GetDefaultEnRouteSpherePath());
-            return defaultEnRouteSphere;
-        }
-
-
-        public FucinePath GetDefaultWindowSpherePath()
-        {
-            var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
-            var spherePath = new FucinePath(dictum.DefaultWindowSpherePath);
-            return spherePath;
-        }
-
-
-        public Sphere GetDefaultWindowSphere()
-        {
-            var defaultWindowsSphere = GetSphereByPath(GetDefaultWindowSpherePath());
-            return defaultWindowsSphere;
-        }
-
 
 
         public HashSet<Sphere> GetSpheres() {

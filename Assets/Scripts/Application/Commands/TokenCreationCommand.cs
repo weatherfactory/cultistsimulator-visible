@@ -62,7 +62,7 @@ namespace SecretHistories.Commands
 
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);
             
-            var payloadForToken = Payload.Execute(context);
+            var payloadForToken = Payload.Execute(context,sphere);
 
             token.SetPayload(payloadForToken);
             sphere.AcceptToken(token, context);
@@ -82,10 +82,8 @@ namespace SecretHistories.Commands
 
         private void SetTokenTravellingFromSpawnPoint(Token token)
         {
-            var enRouteSpherePath =
-                new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
-
-            var enrouteSphere = Watchman.Get<HornedAxe>().GetSphereByPath(enRouteSpherePath);
+            
+            var enrouteSphere = token.Sphere.GetEnRouteSphere();
 
             var spawnedTravelItinerary = new TokenTravelItinerary(_sourceToken.TokenRectTransform.anchoredPosition3D,
                     token.Sphere.Choreographer.GetFreeLocalPosition(token,

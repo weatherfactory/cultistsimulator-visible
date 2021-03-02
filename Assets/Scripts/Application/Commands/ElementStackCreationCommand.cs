@@ -12,6 +12,7 @@ using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Logic;
+using SecretHistories.Spheres;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -42,7 +43,7 @@ namespace SecretHistories.Commands
            Illuminations = Element.EmptyIlluminationsDictionary();
         }
 
-        public ITokenPayload Execute(Context context)
+        public ITokenPayload Execute(Context context, Sphere sphere)
         {
             ElementStack elementStack = null;
 

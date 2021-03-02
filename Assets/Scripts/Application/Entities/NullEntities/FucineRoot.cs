@@ -90,11 +90,7 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             }
         }
 
-        public void RemoveSphere(Sphere sphere)
-        {
-            if (_spheres.Contains(sphere))
-                _spheres.Remove(sphere);
-        }
+
 
     }
 }

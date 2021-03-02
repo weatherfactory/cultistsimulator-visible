@@ -42,7 +42,7 @@ namespace SecretHistories.Constants
         {
             var htSave = source.RetrieveHashedSaveFromFile();
 
-            windowSpherePath = new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
+   //         windowSpherePath = new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
           tabletopSpherePath = new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
 
 

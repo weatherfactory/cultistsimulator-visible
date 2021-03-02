@@ -375,10 +375,9 @@ namespace SecretHistories.UI {
             }
 
 
-            var enrouteContainer = Watchman.Get<HornedAxe>().GetSphereByPath(
-                new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultEnRouteSpherePath));
+            var enrouteSphere = Sphere.GetEnRouteSphere();
 
-            enrouteContainer.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
+            enrouteSphere.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
             
             TokenRectTransform.SetAsLastSibling();
             _manifestation.OnBeginDragVisuals();
