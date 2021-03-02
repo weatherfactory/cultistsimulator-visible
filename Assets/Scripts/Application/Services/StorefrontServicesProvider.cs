@@ -89,7 +89,9 @@ return;
                 
         }
 
+#pragma warning disable 1998
         public async Task UploadModForCurrentStorefront(Mod modToUpload)
+
         { if(_steamClientProvider is SteamworksStorefrontClientProvider steamClient)
         
                 steamClient.UploadMod(modToUpload);
@@ -101,5 +103,7 @@ return;
             if (_steamClientProvider is SteamworksStorefrontClientProvider steamClient)
                 steamClient.UpdateMod(modToUpload,publishedFileId);
         }
+
+#pragma warning restore 1998
     }
 }

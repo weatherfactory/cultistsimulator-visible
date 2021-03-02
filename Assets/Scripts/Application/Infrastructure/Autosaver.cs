@@ -35,7 +35,7 @@ namespace SecretHistories.Constants
 
 
         private float
-            housekeepingTimer = 0.0f; // Now a float so that we can time autosaves independent of Heart.Beat - CP
+            housekeepingTimer; // Now a float so that we can time autosaves independent of Heart.Beat - CP
 
         private float AUTOSAVE_INTERVAL = 300.0f;
 
@@ -74,9 +74,9 @@ namespace SecretHistories.Constants
 
 
 
-        public async Task<bool> SaveGameAsync(bool withNotification)
-        {
-            return false;
+        //public async Task<bool> SaveGameAsync(bool withNotification)
+        //{
+        //    return false;
             //if (!IsSafeToAutosave())
             //{
             //    NoonUtility.Log("Unsafe to autosave: returning", 0, VerbosityLevel.SystemChatter);
@@ -132,7 +132,7 @@ namespace SecretHistories.Constants
             //}
 
             //return true;
-        }
+    //    }
 
 
         

@@ -88,7 +88,7 @@ namespace SecretHistories.Services
                 }
                 catch (Exception e)
                 {
-                    NoonUtility.Log($"Can't instantiate a sphere prefab at path {loadFromPath}; instantiating a generic game object and adding a thresholdsphere component to it");
+                    NoonUtility.Log($"Can't instantiate a sphere prefab at path {loadFromPath}; instantiating a generic game object and adding a thresholdsphere component to it. Error specifics: {e.Message}");
                     instantiatedPrefab = new GameObject();
                     instantiatedPrefab.AddComponent<ThresholdSphere>();
                 }

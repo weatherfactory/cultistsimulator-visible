@@ -23,7 +23,7 @@ namespace SecretHistories.Commands
             if (encaustmentPropertyAttributeProblems.Any())
                 throw new ApplicationException(string.Join("\n", encaustmentPropertyAttributeProblems));
             
-            var encaustedCommand = setCommandPropertiesFromEncaustable<T>(encaustable);
+            var encaustedCommand = setCommandPropertiesFromEncaustable(encaustable);
 
          return encaustedCommand;
 
@@ -82,7 +82,7 @@ namespace SecretHistories.Commands
             return encaustableProperties;
         }
 
-        private T setCommandPropertiesFromEncaustable<T>(IEncaustable encaustable) where T : class, new()
+        private T setCommandPropertiesFromEncaustable(IEncaustable encaustable)
         {
             var command=new T();
 

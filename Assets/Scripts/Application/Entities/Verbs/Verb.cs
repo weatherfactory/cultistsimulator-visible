@@ -28,8 +28,10 @@ namespace SecretHistories.Entities
 
         public bool Spontaneous { get; set; }
 
+#pragma warning disable 67
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
+#pragma warning restore 67
         [Encaust]
         public int Quantity => 1;
         [Encaust]

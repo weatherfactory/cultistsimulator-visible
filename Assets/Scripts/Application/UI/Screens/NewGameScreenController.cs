@@ -114,12 +114,12 @@ namespace SecretHistories.UI {
 			Invoke("ReturnToMenuDelayed", fadeDuration);
         }
 
-        async void  ReturnToMenuDelayed() {
+      //  async void  ReturnToMenuDelayed() { //unused?
 			
-      throw new NotImplementedException("save here?");
+      //throw new NotImplementedException("save here?");
 
-            Watchman.Get<StageHand>().MenuScreen();
-        }
+      //      Watchman.Get<StageHand>().MenuScreen();
+      //  }
 
 		public void StartGame() {
 			if (!canInteract)

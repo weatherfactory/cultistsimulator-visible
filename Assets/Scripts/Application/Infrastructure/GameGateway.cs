@@ -49,7 +49,7 @@ namespace SecretHistories.Constants
         }
 
 
-        public void LoadGame(GamePersistenceProvider gamePersistenceProviderSource)
+        public async void LoadGame(GamePersistenceProvider gamePersistenceProviderSource)
         {
             
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
@@ -85,7 +85,7 @@ namespace SecretHistories.Constants
 
             if (Watchman.Get<Stable>().Protag().RecipeExecutions.Count == 0)
             {
-                SaveRestartState();
+              await  SaveRestartState();
             }
 
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
@@ -117,7 +117,7 @@ namespace SecretHistories.Constants
             }
         }
 
-        public async void EndGame(Ending ending, Token _anchor)
+        public void EndGame(Ending ending, Token _anchor)
         {
 
             var chronicler = Watchman.Get<Chronicler>();
@@ -132,7 +132,7 @@ namespace SecretHistories.Constants
         }
 
 
-        public async void LeaveGame()
+        public void LeaveGame()
         {
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
 

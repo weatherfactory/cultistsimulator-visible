@@ -25,8 +25,10 @@ namespace SecretHistories.Entities.Verbs
     {
         private Token _token;
         private List<IDominion> _dominions=new List<IDominion>();
+#pragma warning disable 67
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
+#pragma warning restore 67
         [DontEncaust]
         public string Id { get; private set; }
         [DontEncaust]

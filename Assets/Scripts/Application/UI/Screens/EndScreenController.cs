@@ -96,14 +96,14 @@ namespace SecretHistories.UI
             Invoke("ReturnToMenuInternal", durationFadeOut);
         }
 
-        private async void ReturnToMenuInternal()
-		{
-            //save on exit, so the player will return here, not begin a new game
+  //      private async void ReturnToMenuInternal() //unused?
+		//{
+  //          //save on exit, so the player will return here, not begin a new game
             
-            throw new NotImplementedException("save here?");
+  //          throw new NotImplementedException("save here?");
 
-            Watchman.Get<StageHand>().MenuScreen();
-        }
+  //          Watchman.Get<StageHand>().MenuScreen();
+  //      }
 
         public void StartNewGame()
 		{

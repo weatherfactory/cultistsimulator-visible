@@ -436,7 +436,7 @@ namespace SecretHistories.UI {
             if (interval <= 0 || !Decays)
                 return;
 
-      _timeshadow.SpendTime(interval);
+            _timeshadow.SpendTime(interval);
             
             OnLifetimeSpent?.Invoke(LifetimeRemaining); //display decay effects for listeners elsewhere
 

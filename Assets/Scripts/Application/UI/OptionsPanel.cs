@@ -242,7 +242,7 @@ public class OptionsPanel : MonoBehaviour {
         Watchman.Get<StageHand>().MenuScreen();
     }
 
-    public async void BrowseFiles()
+    public void BrowseFiles()
     {
 	    OpenInFileBrowser.Open(Application.persistentDataPath);
     }

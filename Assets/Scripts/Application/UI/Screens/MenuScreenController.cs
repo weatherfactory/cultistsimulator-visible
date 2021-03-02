@@ -283,7 +283,7 @@ public class MenuScreenController : LocalNexus {
         Watchman.Get<StageHand>().MenuScreen();
     }
 
-    private async void ResetToLegacy(Legacy activeLegacy)
+    private void ResetToLegacy(Legacy activeLegacy)
     {
      //   Watchman.Get<Stable>().Protag().Reincarnate(activeLegacy,NullEnding.Create());
 

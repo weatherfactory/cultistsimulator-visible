@@ -17,15 +17,9 @@ namespace SecretHistories.NullObjects
 {
     public class NullVerb:Verb
     {
-        public event Action<TokenPayloadChangedArgs> OnChanged;
-        public event Action<float> OnLifetimeSpent;
-        public Dictionary<string, int> Mutations { get; }
-
-        public string Icon => string.Empty;
+        
 
         
-        public List<SphereSpec> Thresholds { get; set; }
-
         public override bool IsValid()
         {
             return false;

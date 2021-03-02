@@ -21,6 +21,11 @@ namespace SecretHistories.Entities
     
     public class MinimalPayload : ITokenPayload
     {
+#pragma warning disable 67
+        public event Action<TokenPayloadChangedArgs> OnChanged;
+        public event Action<float> OnLifetimeSpent;
+#pragma warning restore 67
+
         private Token _token;
         private List<IDominion> _dominions= new List<IDominion>();
         public string Id { get; protected set; }
@@ -99,8 +104,7 @@ namespace SecretHistories.Entities
             return Timeshadow.CreateTimelessShadow();
         }
 
-        public event Action<TokenPayloadChangedArgs> OnChanged;
-        public event Action<float> OnLifetimeSpent;
+
 
 
         public MinimalPayload(string id)
