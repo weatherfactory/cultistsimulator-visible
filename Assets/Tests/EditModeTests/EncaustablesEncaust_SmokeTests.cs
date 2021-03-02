@@ -32,6 +32,8 @@ using UnityEngine;
         public void Setup()
         {
             Watchman.ForgetEverything();
+            FucineRoot.Reset();
+            
             worldSphere = Watchman.Get<PrefabFactory>()
                 .InstantiateSphere(new SphereSpec(typeof(MinimalSphere), "minimalworldsphere"));
         }
