@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
-using SecretHistories.Elements.Manifestations;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
@@ -14,7 +13,7 @@ using UnityEngine.EventSystems;
 
 namespace SecretHistories.Manifestations
 {
-    public class FurnitureManifestation: MonoBehaviour, IManifestation
+    public class BookcaseManifestation: MonoBehaviour, IManifestation
     {
         public Transform Transform { get; }
         public RectTransform RectTransform { get; }
@@ -35,12 +34,12 @@ namespace SecretHistories.Manifestations
 
         public void InitialiseVisuals(IManifestable manifestable)
         {
-            throw new NotImplementedException();
+     
         }
 
         public void UpdateVisuals(IManifestable manifestable)
         {
-            throw new NotImplementedException();
+     
         }
 
         public void OnBeginDragVisuals()
@@ -66,12 +65,12 @@ namespace SecretHistories.Manifestations
         public bool NoPush { get; }
         public void Reveal(bool instant)
         {
-            throw new NotImplementedException();
+       
         }
 
         public void Shroud(bool instant)
         {
-            throw new NotImplementedException();
+    
         }
 
         public void Emphasise()

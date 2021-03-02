@@ -8,7 +8,6 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.UI;
-using SecretHistories.Elements.Manifestations;
 
 namespace SecretHistories.Entities
 {

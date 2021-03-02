@@ -9,7 +9,6 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Elements;
-using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants;
 using SecretHistories.Services;
 

@@ -112,7 +112,20 @@ namespace SecretHistories.UI
         }
 
 
+        public static Type LocateManifestationType(string shortManifestationName, Assembly inAssembly)
+        {
+            string fullTypeName = $"SecretHistories.Manifestations.{shortManifestationName}Manifestation";
 
+            var type=inAssembly.GetType(fullTypeName);
+            return type;
+        }
+
+        public static Type LocateManifestationType(string shortManifestationName)
+        {
+       var inAssembly = typeof(Watchman).Assembly;
+      
+       return LocateManifestationType(shortManifestationName, inAssembly);
+        }
 
     }
 }

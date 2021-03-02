@@ -155,7 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876e8111ed625f3429f5283925fdf384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SphereIdentifier: limbo
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
 --- !u!224 &67
@@ -201,8 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplyToSphere: {fileID: 66}
   ApplyId: limbo
+  EnRouteSpherePath: 
+  WindowsSpherePath: 
 --- !u!1 &91402276
 GameObject:
   m_ObjectHideFlags: 0

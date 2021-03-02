@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Abstract;
-using SecretHistories.Elements.Manifestations;
 using SecretHistories.Logic;
 
 namespace SecretHistories.Abstract

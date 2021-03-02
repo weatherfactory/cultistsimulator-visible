@@ -233,10 +233,10 @@ namespace SecretHistories.UI {
             if (forSphereCategory == SphereCategory.Notes)
                 return typeof(TextManifestation);
 
-            //var type =Type.GetType("CardManifestation");
-            //return type;
+            var type = Watchman.LocateManifestationType(Element.ManifestationType);
+            return type;
 
-            return typeof(CardManifestation);
+            //return typeof(CardManifestation);
         }
 
         public void InitialiseManifestation(IManifestation _manifestation)
