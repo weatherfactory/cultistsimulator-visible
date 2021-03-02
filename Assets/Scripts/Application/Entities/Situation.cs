@@ -130,6 +130,20 @@ namespace SecretHistories.Entities {
 
         }
 
+        public Token Token
+        {
+            get
+            {
+                {
+                    if (_token == null)
+                        return NullToken.Create();
+                    return _token;
+                }
+            }
+        }
+
+
+
 
         private RecipePrediction _currentRecipePrediction;
 

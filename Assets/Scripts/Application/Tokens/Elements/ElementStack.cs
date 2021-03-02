@@ -117,6 +117,18 @@ namespace SecretHistories.UI {
                 return signature;
         }
 
+        public Token Token
+        {
+            get
+            {
+                {
+                    if (_token == null)
+                        return NullToken.Create();
+                    return _token;
+                }
+            }
+        }
+
         private int _quantity;
 
         // Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP

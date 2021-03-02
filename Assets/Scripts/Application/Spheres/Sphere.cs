@@ -78,7 +78,7 @@ namespace SecretHistories.Spheres
         [Encaust]
         public string OwnerSphereIdentifier { get; set; }
 
-        private IHasFucinePath _container = NullSituation.Create();
+        private IHasAspects _container = NullSituation.Create();
 
    
         [DontEncaust]
@@ -102,22 +102,34 @@ namespace SecretHistories.Spheres
         [DontEncaust]
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
 
-        public Sphere GetEnRouteSphere() => Watchman.Get<HornedAxe>().GetSphereByPath(GoverningSphereSpec.EnRouteSpherePath);
+        public Sphere GetEnRouteSphere()
+        {
+            if(GoverningSphereSpec.EnRouteSpherePath.IsValid() && !GoverningSphereSpec.EnRouteSpherePath.IsEmpty())
+                return Watchman.Get<HornedAxe>().GetSphereByPath(GoverningSphereSpec.EnRouteSpherePath);
 
-        public Sphere GetWindowsSphere() => Watchman.Get<HornedAxe>().GetSphereByPath(GoverningSphereSpec.WindowsSpherePath);
+            return _container.Token.Sphere.GetEnRouteSphere();
+        }
+
+        public Sphere GetWindowsSphere()
+        {
+            if (GoverningSphereSpec.EnRouteSpherePath.IsValid() && !GoverningSphereSpec.WindowsSpherePath.IsEmpty())
+                return Watchman.Get<HornedAxe>().GetSphereByPath(GoverningSphereSpec.WindowsSpherePath);
+
+            return _container.Token.Sphere.GetWindowsSphere();
+        }
 
 
         public GameObject GreedyIcon;
         public GameObject ConsumingIcon;
 
-        public IHasFucinePath GetContainer()
+        public IHasAspects GetContainer()
         {
 
             return _container;
         }
 
 
-        public void SetContainer(IHasFucinePath container)
+        public void SetContainer(IHasAspects container)
         {
             if(container==null)
                 NoonUtility.LogWarning($"We're trying to set null as a container for sphere {Id} / {gameObject.name}");

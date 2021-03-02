@@ -10,6 +10,7 @@ using SecretHistories.Commands;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
+using SecretHistories.NullObjects;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
@@ -17,7 +18,7 @@ using SecretHistories.UI;
 namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
 {
     [IsEncaustableClass(typeof(RootPopulationCommand))]
-    public sealed class FucineRoot: IHasFucinePath,IDominion
+    public sealed class FucineRoot: IHasAspects,IEncaustable
     {
         static readonly FucineRoot instance=new FucineRoot();
 
@@ -39,10 +40,27 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
 
         [Encaust]
         public Dictionary<string, int> Mutations { get; }=new AspectsDictionary();
+
+        [DontEncaust]
+        public Token Token
+        {
+            get
+            {
+                return NullToken.Create();
+            }
+        }
+
         public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
         {
            //
         }
+
+        public string GetSignature()
+        {
+            return FucinePath.ROOT.ToString();
+        }
+
+
 
         public AspectsDictionary GetAspects(bool includeSelf)
         {

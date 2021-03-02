@@ -11,6 +11,7 @@ using SecretHistories.Elements.Manifestations;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Logic;
+using SecretHistories.NullObjects;
 using SecretHistories.UI;
 using UnityEngine;
 
@@ -49,6 +50,18 @@ namespace SecretHistories.Entities
         public string GetSignature()
         {
             return Id;
+        }
+
+        public Token Token
+        {
+            get
+            {
+                {
+                    if (_token == null)
+                        return NullToken.Create();
+                    return _token;
+                }
+            }
         }
 
         public string Label { get; }

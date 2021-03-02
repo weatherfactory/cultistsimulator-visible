@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using Assets.Scripts.Application.Abstract;
 using Assets.Scripts.Application.Fucine;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
@@ -76,7 +77,7 @@ namespace SecretHistories.Services
             return InstantiateSphere(spec, FucineRoot.Get());
         }
 
-        public Sphere InstantiateSphere(SphereSpec spec,IHasFucinePath container)
+        public Sphere InstantiateSphere(SphereSpec spec, IHasAspects container)
             {
                 string loadFromPath = prefabPath + spec.SphereType.Name;
                 var prefab = Resources.Load(loadFromPath);

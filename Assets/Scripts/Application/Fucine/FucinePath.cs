@@ -14,7 +14,7 @@ namespace SecretHistories.Fucine
 
     public class FucinePath:IEquatable<FucinePath>
     {
-        public const char ROOT = '.';
+        public const char ROOT = '~';
         public const char TOKEN = '!';
         public const char SPHERE = '/';
         public const char CURRENT = '#';

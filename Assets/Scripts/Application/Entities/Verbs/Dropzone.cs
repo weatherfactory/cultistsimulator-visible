@@ -12,6 +12,7 @@ using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Logic;
+using SecretHistories.NullObjects;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 
@@ -178,6 +179,18 @@ namespace SecretHistories.Entities.Verbs
         public string GetSignature()
         {
             return Id;
+        }
+
+        public Token Token
+        {
+            get
+            {
+                {
+                    if (_token == null)
+                        return NullToken.Create();
+                    return _token;
+                }
+            }
         }
 
         public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)

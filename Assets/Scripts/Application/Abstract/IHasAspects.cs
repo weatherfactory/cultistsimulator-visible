@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Fucine;
+using SecretHistories.Spheres;
+using SecretHistories.UI;
 
 namespace Assets.Scripts.Application.Abstract
 {
@@ -20,5 +22,7 @@ namespace Assets.Scripts.Application.Abstract
         /// </summary>
         /// <returns></returns>
         string GetSignature();
+
+        Token Token { get; }
     }
 }

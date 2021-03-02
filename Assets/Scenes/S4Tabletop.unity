@@ -822,8 +822,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ApplyId: tabletop
-  EnRouteSpherePath: ./enroute
-  WindowsSpherePath: ./windows
+  EnRouteSpherePath: ~/enroute
+  WindowsSpherePath: ~/windows
 --- !u!1 &152
 GameObject:
   m_ObjectHideFlags: 0
@@ -10512,8 +10512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ApplyId: windows
-  EnRouteSpherePath: 
-  WindowsSpherePath: 
+  EnRouteSpherePath: ~/enroute
+  WindowsSpherePath: '#'
 --- !u!1001 &440382887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22210,8 +22210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ApplyId: enroute
-  EnRouteSpherePath: 
-  WindowsSpherePath: 
+  EnRouteSpherePath: '#'
+  WindowsSpherePath: ~/wndows
 --- !u!1001 &1627794616
 PrefabInstance:
   m_ObjectHideFlags: 0
