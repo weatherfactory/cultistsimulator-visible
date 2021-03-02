@@ -60,6 +60,8 @@ namespace SecretHistories.UI {
 
             notificationTimeSetting.AddSubscriber(this);
             WhenSettingUpdated(notificationTimeSetting.CurrentValue);
+
+
         }
 
         public void WhenSettingUpdated(object newValue)
