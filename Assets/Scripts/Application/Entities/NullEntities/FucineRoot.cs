@@ -20,7 +20,7 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
     [IsEncaustableClass(typeof(RootPopulationCommand))]
     public sealed class FucineRoot: IHasAspects,IEncaustable
     {
-        static readonly FucineRoot instance=new FucineRoot();
+        static FucineRoot _instance=new FucineRoot();
 
         static FucineRoot()
         {
@@ -69,43 +69,37 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
 
         public static FucineRoot Get()
         {
-            return instance;
+            return _instance;
         }
 
+        public static void Reset()
+        {
+            _instance=new FucineRoot();
+        }
 
         public FucinePath GetAbsolutePath()
         {
             return FucinePath.Root();
         }
-        [DontEncaust]
-        public OnSphereAddedEvent OnSphereAdded { get; }
-        [DontEncaust]
-        public OnSphereRemovedEvent OnSphereRemoved { get; }
-        public void RegisterFor(ITokenPayload payload)
-        {
-        //
-        }
 
-
-        public Sphere CreateSphere(SphereSpec spec)
-        {
-              var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec,this);
-             Spheres.Add(newSphere);
-             return newSphere;
-        }
 
         public Sphere GetSphereById(string id)
         {
             return _spheres.SingleOrDefault(s => s.Id == id);
         }
 
-        public void AddSphere(Sphere sphere)
+        public void AttachSphere(Sphere sphere)
         {
             if(!_spheres.Contains(sphere))
             {
                 _spheres.Add(sphere);
                 sphere.SetContainer(this);
             }
+        }
+
+        public void DetachSphere(Sphere c)
+        {
+            _spheres.Remove(c);
         }
 
 

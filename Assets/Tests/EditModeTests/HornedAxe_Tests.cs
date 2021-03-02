@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -36,17 +37,18 @@ namespace Assets.Tests.EditModeTests
         [SetUp]
         public void Setup()
         {
+            FucineRoot.Reset();
             Watchman.ForgetEverything();
+            
             _hornedAxe = Watchman.Get<HornedAxe>();
             _prefabFactory = Watchman.Get<PrefabFactory>();
 
+
             SphereSpec rootSphereSpec = new SphereSpec(typeof(MinimalSphere), SPHEREINROOT_ID );
              _sphereInRoot = _prefabFactory.InstantiateSphere(rootSphereSpec);
-             _hornedAxe.RegisterSphere(_sphereInRoot);
 
              SphereSpec otherRootSphereSpec = new SphereSpec(typeof(MinimalSphere), OTHERSPHEREINROOT_ID);
              _OTHERSphereInRoot = _prefabFactory.InstantiateSphere(otherRootSphereSpec);
-             _hornedAxe.RegisterSphere(_OTHERSphereInRoot);
 
 
             var tokenCreationCommand = new TokenCreationCommand();
@@ -66,7 +68,7 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void RetrieveRootSphere_ByPath()
         {
-            var sphereinrootpath = new FucinePath("./" + SPHEREINROOT_ID);
+            var sphereinrootpath = new FucinePath("~/" + SPHEREINROOT_ID);
             var retrievedSphere = _hornedAxe.GetSphereByPath(sphereinrootpath);
             Assert.AreEqual(_sphereInRoot,retrievedSphere);
 

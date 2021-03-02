@@ -185,7 +185,7 @@ namespace SecretHistories.Entities {
         public bool RegisterDominion(IDominion dominionToRegister)
         {
             dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
-            dominionToRegister.OnSphereRemoved.AddListener(RemoveSphere);
+            dominionToRegister.OnSphereRemoved.AddListener(DetachSphere);
 
             if (_registeredDominions.Contains(dominionToRegister))
                 return false;
@@ -222,17 +222,10 @@ namespace SecretHistories.Entities {
             _spheres.Add(sphere);
         }
 
-        public void AttachSpheres(IEnumerable<Sphere> containers)
-        {
-            foreach (var c in containers)
-                AttachSphere(c);
-        }
-
-        public void RemoveSphere(Sphere c)
+        public void DetachSphere(Sphere c)
         {
             c.Unsubscribe(this);
             _spheres.Remove(c);
-            
         }
 
         public void UpdateCurrentRecipePrediction(RecipePrediction newRecipePrediction,Context context)

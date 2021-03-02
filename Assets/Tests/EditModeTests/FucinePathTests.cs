@@ -47,15 +47,15 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void FucineRootPath_ParsesCorrectly()
         {
-            var rootPath=new FucinePath(".");
-            Assert.AreEqual(".",rootPath.ToString());
+            var rootPath=new FucinePath("~");
+            Assert.AreEqual("~", rootPath.ToString());
         }
 
         
         [Test]
         public void FucinePath_WithRootAsOnlyMember_IsAbsolute()
         {
-            var absolutePath = new FucinePath(".");
+            var absolutePath = new FucinePath("~");
             Assert.IsTrue(absolutePath.IsAbsolute());
         }
 
@@ -63,7 +63,7 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void FucinePath_WithRootInFirstPosition_IsAbsolute()
         {
-            var absolutePath=new FucinePath("./tabletop");
+            var absolutePath=new FucinePath("~/tabletop");
             Assert.IsTrue(absolutePath.IsAbsolute());
         }
 
@@ -79,11 +79,11 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void FucinePath_Parse_RenderToString()
         {
-            var rootPath=new FucinePath(".");
-            Assert.AreEqual(".",rootPath.ToString());
+            var rootPath=new FucinePath("~");
+            Assert.AreEqual("~", rootPath.ToString());
 
-            var absoluteSpherePath = new FucinePath("./sphereid");
-            Assert.AreEqual("./sphereid",absoluteSpherePath.ToString());
+            var absoluteSpherePath = new FucinePath("~/sphereid");
+            Assert.AreEqual("~/sphereid",absoluteSpherePath.ToString());
 
 
             var relativeSpherePath = new FucinePath("/sphereId");
@@ -92,47 +92,47 @@ namespace Assets.Tests.EditModeTests
             var relativeTokenPath = new FucinePath("!tokenId");
             Assert.AreEqual("!tokenId",relativeTokenPath.ToString() );
 
-            var complexPath= new FucinePath("./sphereId1/tokenIdA/sphereId2/tokenIdB");
-            Assert.AreEqual("./sphereId1/tokenIdA/sphereId2/tokenIdB",complexPath.ToString());
+            var complexPath= new FucinePath("~/sphereId1/tokenIdA/sphereId2/tokenIdB");
+            Assert.AreEqual("~/sphereId1/tokenIdA/sphereId2/tokenIdB",complexPath.ToString());
 
         }
 
         [Test]
         public void FucinePath_WithTokenXAtEndOfList_ReturnsPathUpToXAsToken()
         {
-            var pathWithTokenAtEnd=new FucinePath("./spherez!tokenx");
-            Assert.AreEqual("./spherez!tokenx", pathWithTokenAtEnd.GetTokenPath().ToString());
+            var pathWithTokenAtEnd=new FucinePath("~/spherez!tokenx");
+            Assert.AreEqual("~/spherez!tokenx", pathWithTokenAtEnd.GetTokenPath().ToString());
             
         }
 
         [Test]
         public void FucinePath_WithSphereAtEndOfList_ReturnsPathUpToPreviousToken_AsToken()
         {
-            var pathWithSphereAtEnd=new FucinePath("./spherez!tokenx/spherey");
-            Assert.AreEqual("./spherez!tokenx",pathWithSphereAtEnd.GetTokenPath().ToString());
+            var pathWithSphereAtEnd=new FucinePath("~/spherez!tokenx/spherey");
+            Assert.AreEqual("~/spherez!tokenx",pathWithSphereAtEnd.GetTokenPath().ToString());
 
         }
 
         [Test]
         public void FucinePath_WithSphereYAtEndOfList_ReturnsPathUpToYAsSphere()
         {
-            var pathWithSphereAtEnd = new FucinePath("./spherez!tokenx/spherey");
-            Assert.AreEqual("./spherez!tokenx/spherey",pathWithSphereAtEnd.GetSpherePath().ToString());
+            var pathWithSphereAtEnd = new FucinePath("~/spherez!tokenx/spherey");
+            Assert.AreEqual("~/spherez!tokenx/spherey",pathWithSphereAtEnd.GetSpherePath().ToString());
 
         }
 
         [Test]
         public void FucinePath_WithTokenAtEndOfList_ReturnsPathUpToPreviousYAsSphere()
         {
-            var pathWithTokenAtEnd = new FucinePath("./spherey!tokenx");
-            Assert.AreEqual("./spherey",pathWithTokenAtEnd.GetSpherePath().ToString());
+            var pathWithTokenAtEnd = new FucinePath("~/spherey!tokenx");
+            Assert.AreEqual("~/spherey",pathWithTokenAtEnd.GetSpherePath().ToString());
 
         }
 
         [Test]
-        public void RootPathFollowedBySituationIsInvalid()
+        public void RootPathFollowedByTokenIsInvalid()
         {
-         var pathFollowedBySituation=new FucinePath(".!token");
+         var pathFollowedBySituation=new FucinePath("~!token");
          Assert.IsFalse(pathFollowedBySituation.IsValid());
         }
 
@@ -160,8 +160,8 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void EqualityTestWorksForFucinePaths()
         {
-            var path1 = new FucinePath("./spherea!token1/sphereb!token1");
-            var path2 = new FucinePath("./spherea!token1/sphereb!token1");
+            var path1 = new FucinePath("~/spherea!token1/sphereb!token1");
+            var path2 = new FucinePath("~/spherea!token1/sphereb!token1");
             Assert.AreEqual(path1,path2);
 
         }
@@ -170,8 +170,8 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void AppendingAbsolutePathToAbsolutePath_ThrowsException()
         {
-            var path1 = new FucinePath("./sphere");
-            var path2 = new FucinePath("./sphere2");
+            var path1 = new FucinePath("~/sphere");
+            var path2 = new FucinePath("~/sphere2");
             FucinePath combinedPath;
             Assert.Throws<InvalidOperationException>(() => combinedPath = path1.AppendPath(path2));
         }
@@ -189,18 +189,18 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void AppendingPathIsEquivalentToCombiningPathStrings()
         {
-            var path1=new FucinePath("./sphere");
+            var path1=new FucinePath("~/sphere");
             var path2=new FucinePath("!token");
             var pathValidCombined=path1.AppendPath(path2);
             Assert.IsTrue(pathValidCombined.IsValid());
-            Assert.AreEqual("./sphere!token", pathValidCombined.ToString());
+            Assert.AreEqual("~/sphere!token", pathValidCombined.ToString());
         }
 
         [Test]
         public void IsInRootIdentifiesSpheresAtRootLevel()
         {
-            var pathInRoot=new FucinePath("./s");
-            var pathNotInRoot=new FucinePath("./s!t/s2");
+            var pathInRoot=new FucinePath("~/s");
+            var pathNotInRoot=new FucinePath("~/s!t/s2");
             var pathNotInRootAndRelativeAnywa=new FucinePath("/s!t/s2");
 
             Assert.IsTrue(pathInRoot.IsPathToSphereInRoot());

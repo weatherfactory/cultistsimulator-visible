@@ -9,7 +9,7 @@ namespace Assets.Scripts.Application.Fucine
 {
     public class CurrentLocationPathPart: FucinePathPart
     {
-        public CurrentLocationPathPart() : base(FucinePath.CURRENT.ToString())
+        public CurrentLocationPathPart() : base(String.Empty)
         {
         }
 

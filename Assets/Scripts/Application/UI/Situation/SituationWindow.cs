@@ -89,7 +89,7 @@ namespace SecretHistories.UI {
             OnStart.AddListener(newSituation.TryStart);
             OnCollect.AddListener(newSituation.Conclude);
             OnSphereAdded.AddListener(newSituation.AttachSphere);
-            OnSphereRemoved.AddListener(newSituation.RemoveSphere);
+            OnSphereRemoved.AddListener(newSituation.DetachSphere);
 
             
             startButton.onClick.AddListener(OnStart.Invoke);

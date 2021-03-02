@@ -17,10 +17,9 @@ namespace SecretHistories.Fucine
         public const char ROOT = '~';
         public const char TOKEN = '!';
         public const char SPHERE = '/';
-        public const char CURRENT = '#';
 
 
-        
+
 
         protected List<FucinePathPart> PathParts = new List<FucinePathPart>();
 

@@ -24,5 +24,7 @@ namespace Assets.Scripts.Application.Abstract
         string GetSignature();
 
         Token Token { get; }
+        void AttachSphere(Sphere sphere);
+        void DetachSphere(Sphere sphere);
     }
 }

@@ -53,13 +53,14 @@ namespace SecretHistories.Entities.Verbs
         }
         [DontEncaust] public string Label => "Dropzone";
         [DontEncaust] public string Description => "Description";
-        [DontEncaust]
-        public List<SphereSpec> Thresholds { get; set; }
+        
         [DontEncaust]
         public string UniquenessGroup => string.Empty;
         [DontEncaust]
         public bool Unique => false;
 
+
+        private List<Sphere> _spheres { get; set; }
         public string GetIllumination(string key)
         {
             return string.Empty;
@@ -107,7 +108,21 @@ namespace SecretHistories.Entities.Verbs
 
         public Dropzone()
         {
-            Thresholds=new List<SphereSpec>();
+            _spheres=new List<Sphere>();
+        }
+
+        public void AttachSphere(Sphere sphere)
+        {
+            if (!_spheres.Contains(sphere))
+            {
+                _spheres.Add(sphere);
+                sphere.SetContainer(this);
+            }
+        }
+
+        public void DetachSphere(Sphere c)
+        {
+            _spheres.Remove(c);
         }
 
         public static Dropzone Create()

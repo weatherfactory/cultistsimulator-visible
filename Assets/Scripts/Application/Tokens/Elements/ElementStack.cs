@@ -129,6 +129,16 @@ namespace SecretHistories.UI {
             }
         }
 
+        public void AttachSphere(Sphere sphere)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DetachSphere(Sphere sphere)
+        {
+            throw new NotImplementedException();
+        }
+
         private int _quantity;
 
         // Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP

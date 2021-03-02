@@ -104,7 +104,7 @@ namespace SecretHistories.Spheres
 
         public Sphere GetEnRouteSphere()
         {
-            if(GoverningSphereSpec.EnRouteSpherePath.IsValid() && !GoverningSphereSpec.EnRouteSpherePath.IsEmpty())
+            if(GoverningSphereSpec.EnRouteSpherePath.IsValid())
                 return Watchman.Get<HornedAxe>().GetSphereByPath(GoverningSphereSpec.EnRouteSpherePath);
 
             return _container.Token.Sphere.GetEnRouteSphere();
@@ -112,7 +112,7 @@ namespace SecretHistories.Spheres
 
         public Sphere GetWindowsSphere()
         {
-            if (GoverningSphereSpec.EnRouteSpherePath.IsValid() && !GoverningSphereSpec.WindowsSpherePath.IsEmpty())
+            if (GoverningSphereSpec.EnRouteSpherePath.IsValid())
                 return Watchman.Get<HornedAxe>().GetSphereByPath(GoverningSphereSpec.WindowsSpherePath);
 
             return _container.Token.Sphere.GetWindowsSphere();
@@ -129,11 +129,17 @@ namespace SecretHistories.Spheres
         }
 
 
-        public void SetContainer(IHasAspects container)
+        public void SetContainer(IHasAspects newContainer)
         {
-            if(container==null)
+            if(newContainer==null)
                 NoonUtility.LogWarning($"We're trying to set null as a container for sphere {Id} / {gameObject.name}");
-            _container = container;
+
+            var oldContainer = _container;
+            if (oldContainer == newContainer)
+                return;
+            
+            _container = newContainer;
+            oldContainer.DetachSphere(this);
         }
 
         public FucinePath GetAbsolutePath()
@@ -142,17 +148,13 @@ namespace SecretHistories.Spheres
         }
 
 
-
         public virtual bool IsInRangeOf(Sphere otherSphere)
         {
             return true;
         }
 
-
-        
- 
         protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
-        protected HornedAxe HornedAxe;
+
         protected readonly List<Token> _tokens = new List<Token>();
         protected AngelFlock flock = new AngelFlock();
 

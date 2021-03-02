@@ -56,13 +56,13 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void Payload_ReturnsCorrectAbsolutePath()
         {
-            Assert.AreEqual("./rootSphere!minimalPayload",_tokenInSphere.Payload.GetAbsolutePath().ToString());
+            Assert.AreEqual("~/rootSphere!minimalPayload", _tokenInSphere.Payload.GetAbsolutePath().ToString());
         }
 
         [Test]
         public void Sphere_ReturnsCorrectAbsolutePath()
         {
-            Assert.AreEqual("./rootSphere!minimalPayload/sphereInTokenPayload", _sphereInTokenPayload.GetAbsolutePath().ToString());
+            Assert.AreEqual("~/rootSphere!minimalPayload/sphereInTokenPayload", _sphereInTokenPayload.GetAbsolutePath().ToString());
         }
 
     }

@@ -17,7 +17,7 @@ namespace SecretHistories.Entities
         [FucineValue(false)]
         public bool Additional { get; set; }
 
-        [FucineValue(DefaultValue = FucinePath.CURRENT)]
+        [FucineValue]
         public string ToPath { get; set; }
 
         /// <summary>

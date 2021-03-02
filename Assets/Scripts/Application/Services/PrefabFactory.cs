@@ -94,9 +94,11 @@ namespace SecretHistories.Services
                 }
                 instantiatedPrefab.name = $"{spec.SphereType.Name}";
                 var newSphere = instantiatedPrefab.GetComponent(spec.SphereType) as Sphere;
-                newSphere.SetContainer(container);
+                container.AttachSphere(newSphere);
+                
                 newSphere.ApplySpec(spec);
-            Watchman.Get<HornedAxe>().RegisterSphere(newSphere);
+
+                Watchman.Get<HornedAxe>().RegisterSphere(newSphere);
 
                 return newSphere;
             }

@@ -12,6 +12,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Logic;
 using SecretHistories.NullObjects;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 
@@ -23,6 +24,8 @@ namespace SecretHistories.Entities
         private Token _token;
         private List<IDominion> _dominions= new List<IDominion>();
         public string Id { get; protected set; }
+
+        private HashSet<Sphere> _spheres=new HashSet<Sphere>();
         
         public FucinePath GetAbsolutePath()
         {
@@ -62,6 +65,17 @@ namespace SecretHistories.Entities
                     return _token;
                 }
             }
+        }
+
+        public void AttachSphere(Sphere sphere)
+        {
+          sphere.SetContainer(this);
+          _spheres.Add(sphere);
+        }
+
+        public void DetachSphere(Sphere sphere)
+        {
+            _spheres.Remove(sphere);
         }
 
         public string Label { get; }
