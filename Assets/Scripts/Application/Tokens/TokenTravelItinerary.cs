@@ -43,7 +43,7 @@ namespace SecretHistories.UI
             Anchored3DEndPosition = anchored3DEndPosition;
 
             
-            DestinationSphere = Watchman.Get<HornedAxe>().GetDefaultWorldSphere();
+            DestinationSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
             EnRouteSphere = DestinationSphere.GetEnRouteSphere();
             StartScale = DefaultStartScale;
             EndScale = DefaultEndScale;

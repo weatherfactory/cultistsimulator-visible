@@ -65,7 +65,7 @@ namespace SecretHistories.UI
             {
                 GreedyAngel greedyAngel = new GreedyAngel();
                 greedyAngel.SetThresholdToGrabTo(this);
-                var worldSphere = Watchman.Get<HornedAxe>().GetDefaultWorldSphere();
+                var worldSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
                 greedyAngel.SetWatch(worldSphere);
                 greedyAngel.SetWatch(worldSphere.GetEnRouteSphere());
                 flock.AddAngel(greedyAngel);

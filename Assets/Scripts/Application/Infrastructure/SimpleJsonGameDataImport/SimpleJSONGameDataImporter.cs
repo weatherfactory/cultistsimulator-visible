@@ -172,7 +172,7 @@ namespace SecretHistories.Constants
 
                 var command = SetupSituationTokenCreationCommand(verb, recipe, situationState, htSituationValues, locationInfo);
 
-                var situationToken= command.Execute(new Context(Context.ActionSource.Loading),Watchman.Get<HornedAxe>().GetDefaultWorldSphere());
+                var situationToken= command.Execute(new Context(Context.ActionSource.Loading),Watchman.Get<HornedAxe>().GetDefaultSphere());
                 var situation=situationToken.Payload as Situation;
                 
 

@@ -49,17 +49,17 @@ namespace SecretHistories.Entities {
             _subscribers.Clear();
         }
 
-        public FucinePath GetDefaultWorldSpherePath()
+        public FucinePath GetDefaultSpherePath()
         {
             var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
             var spherePath = new FucinePath(dictum.DefaultWorldSpherePath);
             return spherePath;
         }
 
-        public Sphere GetDefaultWorldSphere()
+        public Sphere GetDefaultSphere()
         {
-            var defaultWorldSphere = GetSphereByPath(GetDefaultWorldSpherePath());
-            return defaultWorldSphere;
+            var defaultSphere = GetSphereByPath(GetDefaultSpherePath());
+            return defaultSphere;
         }
 
 
@@ -157,7 +157,7 @@ namespace SecretHistories.Entities {
 
         private Sphere GetFallbackSphere(FucinePath spherePath)
         {
-            if (spherePath == GetDefaultWorldSpherePath())
+            if (spherePath == GetDefaultSpherePath())
             {
                 NoonUtility.LogWarning(
                     $"Can't find sphere with path {spherePath}, nor a default world sphere, so returning limbo");
@@ -167,7 +167,7 @@ namespace SecretHistories.Entities {
             else
             {
                 NoonUtility.LogWarning($"Can't find sphere with path {spherePath}, so returning a default world sphere");
-                return GetDefaultWorldSphere(); //no longer limbo; let's let people recover things
+                return GetDefaultSphere(); //no longer limbo; let's let people recover things
             }
         }
 

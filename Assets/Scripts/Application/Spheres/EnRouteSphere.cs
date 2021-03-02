@@ -25,7 +25,7 @@ namespace SecretHistories.Spheres
             //accept it before moving it on: the place it's come from may just have been destroyed, so we want it out of harm's way
             AcceptToken(token,context);
 
-            var nextStop = Watchman.Get<HornedAxe>().GetDefaultWorldSphere();
+            var nextStop = Watchman.Get<HornedAxe>().GetDefaultSphere();
             nextStop.ProcessEvictedToken(token, context);
             return true;
             

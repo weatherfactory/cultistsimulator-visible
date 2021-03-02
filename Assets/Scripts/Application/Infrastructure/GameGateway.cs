@@ -107,7 +107,7 @@ namespace SecretHistories.Constants
 
         private void ProvisionDropzoneToken()
         {
-            var worldSphere = Watchman.Get<HornedAxe>().GetDefaultWorldSphere();
+            var worldSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
             
             if(worldSphere.Tokens.Count(t => t.Payload.GetType() == typeof(Dropzone))==0)
             {
