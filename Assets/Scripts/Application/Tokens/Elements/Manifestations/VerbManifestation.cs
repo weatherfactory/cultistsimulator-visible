@@ -420,7 +420,6 @@ namespace SecretHistories.Elements.Manifestations
             else
             {
                 
-                SoundManager.PlaySfx("TokenHoverOff");
                 glowImage.Hide();
             }
         }
