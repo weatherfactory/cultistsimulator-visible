@@ -10,12 +10,14 @@ using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
+using SecretHistories.Elements.Manifestations;
 using SecretHistories.Spheres;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace SecretHistories.Elements.Manifestations
+namespace SecretHistories.Manifestations
+
 {
 
 #pragma warning disable 649

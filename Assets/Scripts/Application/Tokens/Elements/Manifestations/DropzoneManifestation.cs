@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Constants.Events;
+using SecretHistories.Elements.Manifestations;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -15,7 +16,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace SecretHistories.Elements.Manifestations
+namespace SecretHistories.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
     public class DropzoneManifestation: MonoBehaviour,IManifestation,IPointerClickHandler, IPointerEnterHandler

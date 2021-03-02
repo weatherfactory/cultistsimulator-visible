@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Assets.Scripts.Application.Infrastructure.Events;
 
 using SecretHistories.Commands;
-using SecretHistories.Elements.Manifestations;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
+using SecretHistories.Manifestations;
 using SecretHistories.UI;
 
 namespace SecretHistories.Abstract

@@ -23,8 +23,8 @@ using SecretHistories.Spheres;
 using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Core;
-using SecretHistories.Elements.Manifestations;
 using SecretHistories.Logic;
+using SecretHistories.Manifestations;
 using SecretHistories.States.TokenStates;
 using UnityEngine;
 

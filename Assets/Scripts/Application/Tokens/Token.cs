@@ -18,9 +18,9 @@ using SecretHistories.Constants;
 using SecretHistories.States.TokenStates;
 using SecretHistories.UI;
 using SecretHistories.Elements;
-using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants.Events;
 using SecretHistories.Core;
+using SecretHistories.Manifestations;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.Spheres;
 

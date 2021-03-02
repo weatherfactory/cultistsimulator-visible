@@ -13,13 +13,14 @@ using SecretHistories.UI;
 using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
+using SecretHistories.Elements;
 using SecretHistories.Spheres;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace SecretHistories.Elements
+namespace SecretHistories.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
     public class CardManifestation : MonoBehaviour, IManifestation

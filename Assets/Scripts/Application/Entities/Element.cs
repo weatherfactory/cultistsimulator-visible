@@ -58,6 +58,9 @@ namespace SecretHistories.Entities
         [FucineValue(false)]
         public bool NoArtNeeded { get; set; }
 
+        [FucineValue("Card")]
+        public string ManifestationType { get; set; }
+
 
 
         /// <summary>

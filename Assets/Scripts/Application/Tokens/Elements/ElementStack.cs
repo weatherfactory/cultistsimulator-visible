@@ -19,13 +19,12 @@ using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
 using Assets.Logic;
 using Assets.Scripts.Application.Infrastructure.Events;
-using Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Abstract;
 using SecretHistories.Elements;
-using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Logic;
+using SecretHistories.Manifestations;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using SecretHistories.Utilities.Exetensions;
@@ -233,6 +232,9 @@ namespace SecretHistories.UI {
 
             if (forSphereCategory == SphereCategory.Notes)
                 return typeof(TextManifestation);
+
+            //var type =Type.GetType("CardManifestation");
+            //return type;
 
             return typeof(CardManifestation);
         }

@@ -14,7 +14,7 @@ using SecretHistories.Spheres;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace SecretHistories.Elements.Manifestations
+namespace SecretHistories.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
     public class MinimalManifestation:MonoBehaviour,IManifestation

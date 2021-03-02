@@ -14,7 +14,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Assets.Scripts.Application.Tokens.Elements.Manifestations
+namespace SecretHistories.Manifestations
+
 {
     [RequireComponent(typeof(RectTransform))]
     public class TextManifestation : MonoBehaviour, IManifestation

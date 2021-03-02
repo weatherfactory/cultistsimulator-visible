@@ -15,7 +15,6 @@ using SecretHistories.NullObjects;
 using SecretHistories.Services;
 using SecretHistories.UI;
 using SecretHistories.Elements;
-using SecretHistories.Elements.Manifestations;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Modding;
 using SecretHistories.Spheres;
@@ -23,6 +22,7 @@ using SecretHistories.Spheres;
 using SecretHistories.Enums;
 using SecretHistories.Infrastructure;
 using SecretHistories.Infrastructure.Persistence;
+using SecretHistories.Manifestations;
 using UnityEngine;
 
 namespace SecretHistories.Services

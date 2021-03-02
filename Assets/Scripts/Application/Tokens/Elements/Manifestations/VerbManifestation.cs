@@ -20,7 +20,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace SecretHistories.Elements.Manifestations
+namespace SecretHistories.Manifestations
+
 {
     [RequireComponent(typeof(RectTransform))]
     public class VerbManifestation: MonoBehaviour, IManifestation
