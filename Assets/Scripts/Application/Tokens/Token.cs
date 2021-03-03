@@ -489,6 +489,9 @@ namespace SecretHistories.UI {
         public  void FinishDrag()
         {
             canvasGroup.blocksRaycasts = true;
+            HideGhost();
+
+
             if (!CurrentState.Docked(this))
                    this.Sphere.EvictToken(this,new Context(Context.ActionSource.Unknown));
             
