@@ -40,7 +40,7 @@ namespace SecretHistories.Spheres
             if (tokenGhostDisplay == null)
                 return false;
 
-            tokenGhostDisplay.DisplayGhost(forToken);
+            tokenGhostDisplay.DisplayGhost(forToken,Sphere);
                 return true;
         }
     }

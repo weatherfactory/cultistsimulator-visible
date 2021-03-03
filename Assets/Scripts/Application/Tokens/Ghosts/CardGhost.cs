@@ -10,15 +10,20 @@ namespace SecretHistories.Ghosts
 {
     public interface IGhost
     {
-        void FollowToken(Token forToken);
+        void ShowPosition(Vector3 anchoredPosition3D);
     }
 
     public class CardGhost: MonoBehaviour,IGhost
     {
+        private RectTransform rectTransform;
 
-        public void FollowToken(Token forToken)
+        public void Awake()
         {
-            transform.position = forToken.transform.position;
+            rectTransform = GetComponent<RectTransform>();
+        }
+        public void ShowPosition(Vector3 anchoredPosition3D)
+        {
+            rectTransform.anchoredPosition3D = anchoredPosition3D;
         }
     }
 }

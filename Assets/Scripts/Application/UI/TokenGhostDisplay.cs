@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Ghosts;
 using SecretHistories.Services;
+using SecretHistories.Spheres;
 using UnityEngine;
 
 namespace SecretHistories.UI
@@ -16,7 +17,7 @@ namespace SecretHistories.UI
 
         private Dictionary<string,IGhost> ghosts=new Dictionary<string,IGhost>();
 
-        public void DisplayGhost(Token forToken)
+        public void DisplayGhost(Token forToken,Sphere inSphere)
         {
             IGhost ghost;
             if (!ghosts.ContainsKey(forToken.PayloadId))
@@ -27,9 +28,10 @@ namespace SecretHistories.UI
             }
             else
                 ghost = ghosts[forToken.PayloadId];
-        
+
+            var candidatePosition=inSphere.Choreographer.GetFreeLocalPosition(forToken, forToken.Location.Anchored3DPosition);
             
-            ghost.FollowToken(forToken);
+            ghost.ShowPosition(candidatePosition);
 
         }
     }
