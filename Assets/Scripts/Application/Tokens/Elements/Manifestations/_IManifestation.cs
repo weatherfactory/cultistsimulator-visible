@@ -19,7 +19,6 @@ namespace SecretHistories.Manifestations
 {
     public enum HighlightType
     {
-        CanFitSlot,
         WillInteract,
         All,
         Hover,

@@ -429,9 +429,14 @@ namespace SecretHistories.Manifestations
 
         public void Highlight(HighlightType highlightType)
         {
-            if(highlightType == HighlightType.PotentiallyRelevant)
+            if (highlightType == HighlightType.WillInteract)
             {
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
+                ShowGlow(true, false);
+            }
+            else if (highlightType == HighlightType.PotentiallyRelevant)
+            {
+                SetGlowColor(UIStyle.brightPink);
                 ShowGlow(true, false);
             }
             else if (highlightType == HighlightType.Hover)
@@ -445,11 +450,18 @@ namespace SecretHistories.Manifestations
 
         public void Unhighlight(HighlightType highlightType)
         {
+            if (highlightType== HighlightType.All)
+            {
+                ShowHoverGlow(false);
+                ShowGlow(false);
+                return;
+            }
+
             if (highlightType == HighlightType.Hover)
             {
                 ShowHoverGlow(false);
             }
-            else if (highlightType == HighlightType.PotentiallyRelevant)
+            else if (highlightType == HighlightType.PotentiallyRelevant || highlightType == HighlightType.WillInteract)
             {
                 ShowGlow(false, false);
             }

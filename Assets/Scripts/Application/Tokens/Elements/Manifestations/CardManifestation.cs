@@ -170,12 +170,11 @@ namespace SecretHistories.Manifestations
             {
                 ShowHoverGlow(false);
             }
-            else if (highlightType == HighlightType.PotentiallyRelevant)
+            else if (highlightType == HighlightType.PotentiallyRelevant || highlightType == HighlightType.WillInteract)
             {
                 ShowGlow(false, false);
             }
-            else if(highlightType==HighlightType.WillInteract || highlightType==HighlightType.CanFitSlot)
-                ShowGlow(false,false);
+        
         }
 
         private IEnumerator PulseGlow()
