@@ -429,7 +429,7 @@ namespace SecretHistories.Manifestations
 
         public void Highlight(HighlightType highlightType)
         {
-            if(highlightType == HighlightType.CanInteractWithOtherToken)
+            if(highlightType == HighlightType.PotentiallyRelevant)
             {
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
                 ShowGlow(true, false);
@@ -449,7 +449,7 @@ namespace SecretHistories.Manifestations
             {
                 ShowHoverGlow(false);
             }
-            else if (highlightType == HighlightType.CanInteractWithOtherToken)
+            else if (highlightType == HighlightType.PotentiallyRelevant)
             {
                 ShowGlow(false, false);
             }

@@ -774,6 +774,7 @@ namespace SecretHistories.UI {
             if(CanInteractWithToken(incomingToken))
             {
                 incomingToken.HideGhost();
+                _manifestation.Highlight(HighlightType.WillInteract);
                 return true;
             }
 
@@ -808,13 +809,13 @@ namespace SecretHistories.UI {
             if (Defunct)
                 return;
 
-            _manifestation.Highlight(HighlightType.CanInteractWithOtherToken);
+            _manifestation.Highlight(HighlightType.PotentiallyRelevant);
 
         }
 
         public void StopShowingPossibleInteractionWithToken(Token token)
         {
-            _manifestation.Unhighlight(HighlightType.CanInteractWithOtherToken);
+            _manifestation.Unhighlight(HighlightType.PotentiallyRelevant);
 
         }
 

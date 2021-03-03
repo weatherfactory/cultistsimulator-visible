@@ -20,11 +20,11 @@ namespace SecretHistories.Manifestations
     public enum HighlightType
     {
         CanFitSlot,
-        CanMerge,
+        WillInteract,
         All,
         Hover,
         AttentionPls,
-        CanInteractWithOtherToken
+        PotentiallyRelevant
     }
 
     public interface IManifestation

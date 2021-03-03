@@ -135,7 +135,7 @@ namespace SecretHistories.Manifestations
 
         public void Highlight(HighlightType highlightType)
         {
-            if (highlightType == HighlightType.CanMerge)
+            if (highlightType == HighlightType.WillInteract)
             {
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
                 ShowGlow(true,false);
@@ -145,7 +145,7 @@ namespace SecretHistories.Manifestations
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
                 StartCoroutine(PulseGlow());
             }
-            else if (highlightType == HighlightType.CanInteractWithOtherToken)
+            else if (highlightType == HighlightType.PotentiallyRelevant)
             {
                 ShowHoverGlow(true, false, UIStyle.brightPink);
             }
@@ -162,11 +162,11 @@ namespace SecretHistories.Manifestations
         {
             ShowHoverGlow(false);
         }
-        else if (highlightType == HighlightType.CanInteractWithOtherToken)
+        else if (highlightType == HighlightType.PotentiallyRelevant)
         {
             ShowHoverGlow(false, false);
         }
-        else if(highlightType==HighlightType.CanMerge || highlightType==HighlightType.CanFitSlot)
+        else if(highlightType==HighlightType.WillInteract || highlightType==HighlightType.CanFitSlot)
             ShowGlow(false,false);
         }
 

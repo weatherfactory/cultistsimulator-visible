@@ -35,7 +35,12 @@ namespace SecretHistories.Spheres
 
         public override void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {
+
             base.OnTokenInThisSphereInteracted(args);
+
+
+            //when a token is being dragged through it, the EnRoute sphere asks anything underneath to predict interactions were it dropped.
+            //we only want to show one predicted interaction, hence the break statements.
 
             if (args.PointerEventData == null || args.Token==null)
                 return;
