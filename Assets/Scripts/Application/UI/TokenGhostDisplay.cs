@@ -17,19 +17,26 @@ namespace SecretHistories.UI
 
         private Dictionary<string,IGhost> ghosts=new Dictionary<string,IGhost>();
 
-        public void DisplayGhost(Token forToken,Sphere inSphere)
+        public void DisplayGhost(Token forToken,Sphere displayInSphere)
         {
             IGhost ghost;
             if (!ghosts.ContainsKey(forToken.PayloadId))
             {
                 ghost = Watchman.Get<PrefabFactory>()
-                    .CreateGhostPrefab(forToken.GetGhostManifestationType(), this.gameObject.transform);
+                    .CreateGhostPrefab(forToken.GetGhostManifestationType(), displayInSphere.GetRectTransform());
                 ghosts[forToken.PayloadId] = ghost;
             }
             else
                 ghost = ghosts[forToken.PayloadId];
 
-            var candidatePosition=inSphere.Choreographer.GetFreeLocalPosition(forToken, forToken.Location.Anchored3DPosition);
+
+
+
+            var tokenWorldPosition = forToken.Sphere.GetRectTransform().TransformPoint(forToken.Location.Anchored3DPosition);
+            var projectionPosition = displayInSphere.GetRectTransform().InverseTransformPoint(tokenWorldPosition);
+            
+
+            var candidatePosition=displayInSphere.Choreographer.GetFreeLocalPosition(forToken, projectionPosition);
             
             ghost.ShowPosition(candidatePosition);
 
