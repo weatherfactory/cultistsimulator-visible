@@ -353,21 +353,21 @@ namespace SecretHistories.Spheres
             return _tokens.Where(s => !s.Defunct && s.IsValidElementStack()).ToList();
         }
 
-        public List<ITokenPayload> GetElementStacks()
+        public List<ElementStack> GetElementStacks()
         {
-            return GetElementTokens().Where(t=>t.IsValidElementStack()).Select(t => t.Payload).ToList();
+            return GetElementTokens().Where(t=>t.IsValidElementStack()).Select(t => t.Payload as ElementStack).ToList();
         }
 
         public List<string> GetUniqueStackElementIds()
         {
             var stacks = _tokens.Where(t => t.Payload.IsValidElementStack());
 
-            return stacks.Select(s => s.Payload.Id).Distinct().ToList();
+            return stacks.Select(s => s.Payload.EntityId).Distinct().ToList();
         }
 
         public List<string> GetStackElementIds()
         {
-            return GetElementTokens().Select(s => s.Payload.Id).ToList();
+            return GetElementTokens().Select(s => s.Payload.EntityId).ToList();
         }
 
 
@@ -476,7 +476,7 @@ namespace SecretHistories.Spheres
                     if (!String.IsNullOrEmpty(token.Payload.UniquenessGroup))
                         dealer.RemoveFromAllDecksIfInUniquenessGroup(token.Payload.UniquenessGroup);
                     if (token.Payload.Unique)
-                        dealer.IndicateUniqueCardManifested(token.Payload.Id);
+                        dealer.IndicateUniqueCardManifested(token.Payload.EntityId);
                 }
 
                 // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
@@ -561,7 +561,7 @@ namespace SecretHistories.Spheres
             foreach (var existingStack in new List<ITokenPayload>(GetElementStacks()))
             {
 
-                if (existingStack != incomingStack && existingStack.Id == incomingStack.Id)
+                if (existingStack != incomingStack && existingStack.EntityId == incomingStack.EntityId)
                 {
                     NoonUtility.Log(
                         "Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!");

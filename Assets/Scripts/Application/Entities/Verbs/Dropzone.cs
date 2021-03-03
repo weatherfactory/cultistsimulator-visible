@@ -55,6 +55,9 @@ namespace SecretHistories.Entities.Verbs
         [DontEncaust]
         public bool IsOpen => false;
 
+        [DontEncaust]
+        public string EntityId => string.Empty;
+
         [DontEncaust] public FucinePath AbsolutePath => new NullFucinePath();
 
         [Encaust]

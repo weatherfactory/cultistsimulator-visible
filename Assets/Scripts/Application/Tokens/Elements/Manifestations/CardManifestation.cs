@@ -75,7 +75,7 @@ namespace SecretHistories.Manifestations
             decayBackgroundImage = decayView.GetComponent<Image>();
             cachedDecayBackgroundColor = decayBackgroundImage.color;
 
-            frames = ResourcesManager.GetAnimFramesForElement(manifestable.Id);
+            frames = ResourcesManager.GetAnimFramesForElement(manifestable.EntityId);
 
         }
 

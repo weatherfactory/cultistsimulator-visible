@@ -523,7 +523,7 @@ namespace SecretHistories.UI {
                 return this;
             }
 
-            var calvedTokenCreationCommand = new ElementStackCreationCommand(Payload.Id, Quantity - 1)
+            var calvedTokenCreationCommand = new ElementStackCreationCommand(Payload.EntityId, Quantity - 1)
             {
                 Mutations = Payload.Mutations
             };
@@ -653,7 +653,7 @@ namespace SecretHistories.UI {
             ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
                 if (!shrouded && Payload.IsValidElementStack())
-                    tabletopManager.SetHighlightedElement(Payload.Id, Quantity);
+                    tabletopManager.SetHighlightedElement(Payload.EntityId, Quantity);
                 else
                     tabletopManager.SetHighlightedElement(null);
             }

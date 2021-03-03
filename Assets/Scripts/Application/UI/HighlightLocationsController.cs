@@ -96,11 +96,11 @@ namespace SecretHistories.UI
       {
           if(args.Interaction==Interaction.OnPointerEntered)
             if (!args.PointerEventData.dragging)
-              ActivateOnlyMatchingHighlightLocation(args.Payload.Id);
+              ActivateOnlyMatchingHighlightLocation(args.Payload.EntityId);
 
           if (args.Interaction == Interaction.OnPointerExited)
               if (!args.PointerEventData.dragging)
-                  DeactivateMatchingHighlightLocation(args.Payload.Id);
+                  DeactivateMatchingHighlightLocation(args.Payload.EntityId);
       }
 
 

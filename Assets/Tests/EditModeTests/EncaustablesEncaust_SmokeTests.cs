@@ -98,7 +98,7 @@ using UnityEngine;
         {
             var situationEncaustery = new Encaustery<SituationCreationCommand>();
             var verb = NullVerb.Create();
-            var situation = new Situation(verb,verb.DefaultUniqueTokenId());
+            var situation = new Situation(verb,verb.Id);
             situationEncaustery.Encaust(situation);
         }
 
@@ -110,7 +110,7 @@ using UnityEngine;
            var tokenObject = new GameObject();
            var token=tokenObject.AddComponent<Token>();
            var verb = NullVerb.Create();
-           var situation=new Situation(verb,verb.DefaultUniqueTokenId());
+           var situation=new Situation(verb,verb.Id);
            token.SetPayload(situation);
            worldSphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
            

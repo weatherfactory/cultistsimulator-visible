@@ -43,6 +43,7 @@ namespace SecretHistories.UI {
         public event Action<TokenPayloadChangedArgs> OnChanged;
 
         [Encaust] public string Id => Element.Id;
+        [DontEncaust] public string EntityId => Element.Id;
         public FucinePath GetAbsolutePath()
         {
             var pathAbove = _token.Sphere.GetAbsolutePath();
@@ -416,7 +417,7 @@ namespace SecretHistories.UI {
             if (Decays || Element.Unique)
                 return false;
 
-            if (otherPayload.Id != this.Id)
+            if (otherPayload.EntityId != this.EntityId)
                 return false;
             if (otherPayload == this)
                 return false;
@@ -441,7 +442,7 @@ namespace SecretHistories.UI {
 
         public void ShowNoMergeMessage(ITokenPayload stackDroppedOn)
         {
-            if (stackDroppedOn.Id != this.Element.Id)
+            if (stackDroppedOn.EntityId != EntityId)
                 return; // We're dropping on a different element? No message needed.
 
             if (stackDroppedOn.GetTimeshadow().Transient)

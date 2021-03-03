@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Core;
 using SecretHistories.Enums;
@@ -71,7 +72,8 @@ namespace SecretHistories.Entities
 
         public string DefaultUniqueTokenId()
         {
-            return $"!{Id}_{Guid.NewGuid()}";
+            int identity = FucineRoot.Get().IncrementedIdentity();
+            return $"!{Id}_{identity}";
         }
 
 

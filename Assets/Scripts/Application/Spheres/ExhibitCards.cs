@@ -35,7 +35,7 @@ public class ExhibitCards : Sphere {
 
         foreach (var card in cards)
         {
-            if (card.Payload.Id == elementId)
+            if (card.Payload.EntityId == elementId)
                 card.Emphasise();
             else
                 card.Understate();

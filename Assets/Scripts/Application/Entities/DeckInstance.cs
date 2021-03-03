@@ -63,8 +63,8 @@ namespace SecretHistories.Entities
             //so let's test again
             if (_drawPile.GetTotalStacksCount() > 0)
             {
-                var cardDrawn = _drawPile.GetElementTokens().First();
-                return cardDrawn.Payload.Id;
+                var cardDrawn = _drawPile.GetElementStacks().First();
+                return cardDrawn.EntityId;
             }
 
             
@@ -89,7 +89,7 @@ namespace SecretHistories.Entities
         /// <param name="elementId"></param>
         public void EliminateCardWithId(string elementId)
         {
-            _drawPile.RetireTokensWhere(x=>x.Payload.Id==elementId);
+            _drawPile.RetireTokensWhere(x=>x.Payload.EntityId==elementId);
 
             if (_deckSpec.Spec.Contains(elementId))
             {

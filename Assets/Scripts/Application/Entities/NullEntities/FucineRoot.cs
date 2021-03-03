@@ -20,6 +20,7 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
     [IsEncaustableClass(typeof(RootPopulationCommand))]
     public sealed class FucineRoot: IHasAspects,IEncaustable
     {
+        private const string IIKEY = "II";
         static FucineRoot _instance=new FucineRoot();
 
         static FucineRoot()
@@ -35,11 +36,17 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
         private ITokenPayload _payload;
 
         private readonly List<Sphere> _spheres=new List<Sphere>();
+        private Dictionary<string, int> _mutations= new Dictionary<string, int>();
+
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
 
         [Encaust]
-        public Dictionary<string, int> Mutations { get; }=new AspectsDictionary();
+        public Dictionary<string, int> Mutations
+        {
+            get => _mutations;
+            set => _mutations = value;
+        }
 
         [DontEncaust]
         public Token Token
@@ -50,9 +57,22 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             }
         }
 
-        public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
+        public void SetMutation(string aspectId, int value, bool additive)
         {
-           //
+            if (_mutations.ContainsKey(aspectId))
+            {
+                if (additive)
+                    _mutations[aspectId] += value;
+                else
+                    _mutations[aspectId] = value;
+
+                if (_mutations[aspectId] == 0)
+                    _mutations.Remove(aspectId);
+            }
+            else if (value != 0)
+            {
+                _mutations.Add(aspectId, value);
+            }
         }
 
         public string GetSignature()
@@ -112,6 +132,18 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             _spheres.Remove(c);
         }
 
+        public int IncrementedIdentity()
+        {
+            int iiMutationValue;
+
+            if (_mutations.ContainsKey(IIKEY))
+                iiMutationValue = (_mutations[IIKEY]);
+            else
+                iiMutationValue = 0;
+
+            SetMutation(IIKEY,iiMutationValue+1,false);
+            return iiMutationValue;
+        }
 
 
     }

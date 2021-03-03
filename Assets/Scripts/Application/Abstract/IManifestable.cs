@@ -11,8 +11,8 @@ namespace SecretHistories.Abstract
 {
     public interface IManifestable: IHasAspects
     {
-
-      string Label { get; }
+        string EntityId { get; }
+        string Label { get; }
       string Description { get; }
       int Quantity { get; }
       string UniquenessGroup { get; }

@@ -106,7 +106,7 @@ namespace SecretHistories.UI {
             _payload = newSituation;
             _payload.OnChanged += OnPayloadChanged;
 
-            name = "Window_" + _payload.Id;
+            name = "Window_" + _payload.EntityId;
             DisplayIcon(_payload.Id);
 
             Title = _payload.Label;

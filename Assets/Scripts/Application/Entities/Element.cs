@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Core;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
@@ -202,6 +203,11 @@ namespace SecretHistories.Entities
 
         }
 
+        public string DefaultUniqueTokenId()
+        {
+            int identity = FucineRoot.Get().IncrementedIdentity();
+            return $"!{Id}_{identity}";
+        }
 
         public static Dictionary<string, int> EmptyMutationsDictionary()
         {

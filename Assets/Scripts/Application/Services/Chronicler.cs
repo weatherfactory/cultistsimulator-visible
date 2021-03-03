@@ -139,18 +139,18 @@ namespace SecretHistories.Services
                 //if the follower is Exalted, update it.
                 if (aspects.ContainsKey(EXALTED_ASPECT))
                 {
-                    currentFollower = _compendium.GetEntityById<Element>(stack.Payload.Id);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Payload.EntityId);
 
                 }
 
                 else if (aspects.ContainsKey(DISCIPLE_ASPECT) && currentFollower!=null && !currentFollower.Aspects.ContainsKey(EXALTED_ASPECT))
                 {
-                    currentFollower = _compendium.GetEntityById<Element>(stack.Payload.Id);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Payload.EntityId);
                 }
                 else if (currentFollower==null || (!currentFollower.Aspects.ContainsKey(EXALTED_ASPECT) &&
                          !currentFollower.Aspects.ContainsKey(DISCIPLE_ASPECT)))
                 {
-                    currentFollower = _compendium.GetEntityById<Element>(stack.Payload.Id);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.Payload.EntityId);
 
                 }
 
@@ -166,7 +166,7 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.ContainsKey(SUMMONED_ASPECT))
 			{
-				Analytics.CustomEvent( "A_SUMMON_GENERIC", new Dictionary<string,object>{ {"id",token.Payload.Id } } );
+				Analytics.CustomEvent( "A_SUMMON_GENERIC", new Dictionary<string,object>{ {"id",token.Payload.EntityId } } );
                 storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_SUMMON_GENERIC", true);
 			}
 
@@ -223,8 +223,8 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
 			{
-				Analytics.CustomEvent( "A_HQ_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id } } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.Payload.Id);
+				Analytics.CustomEvent( "A_HQ_PLACED", new Dictionary<string,object>{ {"id",token.Payload.EntityId } } );
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.Payload.EntityId);
 			}
         }
 
@@ -232,8 +232,8 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
             {
-				Analytics.CustomEvent( "A_CULT_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id} } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.Payload.Id);
+				Analytics.CustomEvent( "A_CULT_PLACED", new Dictionary<string,object>{ {"id",token.Payload.EntityId } } );
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.Payload.EntityId);
 
                 if (tokenAspects.Keys.Contains("cultsecrethistories_1"))
 				{
@@ -278,8 +278,8 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
 			{
-				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id } } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.Payload.Id);
+				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.Payload.EntityId } } );
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.Payload.EntityId);
 			}
         }
 
@@ -287,7 +287,7 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.Keys.Contains(DESIRE_ASPECT))
             {
-				Analytics.CustomEvent( "A_DESIRE_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id } } );
+				Analytics.CustomEvent( "A_DESIRE_PLACED", new Dictionary<string,object>{ {"id",token.Payload.EntityId } } );
 
                 if (tokenAspects.Keys.Contains(POWER_ASPECT))
 				{
@@ -311,8 +311,8 @@ namespace SecretHistories.Services
         {
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
 			{
-				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.Payload.Id} } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.Payload.Id);
+				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.Payload.EntityId } } );
+                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.Payload.EntityId);
 			}
         }
 

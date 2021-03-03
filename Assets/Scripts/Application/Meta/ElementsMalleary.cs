@@ -80,7 +80,7 @@ namespace Assets.Scripts.Application.Meta
         {
             if (args.Interaction == Interaction.OnDragEnd)
             {
-                input.text = args.Payload.Id;
+                input.text = args.Payload.EntityId;
                 EncaustDrydockedItem(args.Token, input);
             }
         }

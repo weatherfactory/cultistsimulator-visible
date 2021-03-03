@@ -130,7 +130,7 @@ namespace SecretHistories.Commands
                         else if (morph.Chance >= UseDice.Rolld100())
                         {
                             string newElementId = morph.Id;
-                            string oldElementId = onStack.Id;
+                            string oldElementId = onStack.EntityId;
                             int existingQuantity = onStack.Quantity;
                             if (morph.MorphEffect == MorphEffectType.Transform)
                             {

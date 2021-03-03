@@ -209,14 +209,14 @@ namespace SecretHistories.Entities {
                 else
                     _tabletopAspects.Clear();
 
-                List<Token> tabletopStacks=new List<Token>();
+                List<ElementStack> tabletopStacks=new List<ElementStack>();
 
 
                 var tabletopContainers =
                     _registeredSpheres.Where(tc => tc.SphereCategory == SphereCategory.World);
 
                 foreach(var tc in tabletopContainers)
-                    tabletopStacks.AddRange(tc.GetElementTokens());
+                    tabletopStacks.AddRange(tc.GetElementStacks().Select(es=>es as ElementStack));
 
                 
                 foreach (var tabletopStack in tabletopStacks)
@@ -229,7 +229,7 @@ namespace SecretHistories.Entities {
                     foreach (var aspect in stackAspects)
                     {
 
-                        if (aspect.Key == tabletopStack.Payload.Id)
+                        if (aspect.Key == tabletopStack.EntityId)
                             multipliedAspects.Add(aspect.Key, aspect.Value);
                         else
                             multipliedAspects.Add(aspect.Key, aspect.Value * tabletopStack.Quantity);
@@ -255,7 +255,7 @@ namespace SecretHistories.Entities {
 
                 foreach (var s in GetRegisteredSituations())
                 {
-                    var stacksInSituation = s.GetElementTokensInSituation();
+                    var stacksInSituation = s.GetElementTokensInSituation().Select(e=>e.Payload as ElementStack);
                     foreach (var situationStack in stacksInSituation)
                     {
                         AspectsDictionary stackAspects = situationStack.GetAspects();
@@ -264,7 +264,7 @@ namespace SecretHistories.Entities {
                         foreach (var aspect in stackAspects)
                         {
 
-                            if (aspect.Key == situationStack.Payload.Id)
+                            if (aspect.Key == situationStack.EntityId)
                                 multipliedAspects.Add(aspect.Key, aspect.Value);
                             else
                                 multipliedAspects.Add(aspect.Key, aspect.Value * situationStack.Quantity);

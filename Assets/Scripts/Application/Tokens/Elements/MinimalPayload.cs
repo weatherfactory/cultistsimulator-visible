@@ -130,6 +130,7 @@ namespace SecretHistories.Entities
         
         
         public bool IsOpen { get; }
+        public string EntityId => "minimal";
         public FucinePath AbsolutePath { get; }
         public List<IDominion> Dominions=>new List<IDominion>(_dominions);
         public bool RegisterDominion(IDominion dominion)

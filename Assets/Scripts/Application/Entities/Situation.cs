@@ -71,7 +71,9 @@ namespace SecretHistories.Entities {
         }
 
         [DontEncaust] public FucinePath AbsolutePath => null;
-        
+
+        [DontEncaust] public string EntityId => Verb.Id;
+
         [Encaust]
         public List<IDominion> Dominions => new List<IDominion>(_registeredDominions);
 
