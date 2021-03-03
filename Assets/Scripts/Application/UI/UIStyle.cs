@@ -57,7 +57,7 @@ public static class UIStyle {
             case TokenGlowColor.OnHover:
                 return hoverWhite;
             case TokenGlowColor.Default:
-                return hoverWhite;
+                return lightBlue;
             default:
                 return brightPink;
         }

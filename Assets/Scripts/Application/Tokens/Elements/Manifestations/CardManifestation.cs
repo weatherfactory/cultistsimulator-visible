@@ -158,7 +158,14 @@ namespace SecretHistories.Manifestations
 
         public void Unhighlight(HighlightType highlightType)
         {
-        if (highlightType == HighlightType.Hover)
+            if(highlightType==HighlightType.All)
+            {
+                ShowGlow(false,false);
+                ShowHoverGlow(false);
+                return;
+            }
+
+            if (highlightType == HighlightType.Hover)
         {
             ShowHoverGlow(false);
         }

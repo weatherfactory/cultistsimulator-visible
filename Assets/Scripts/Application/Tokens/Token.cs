@@ -529,10 +529,11 @@ namespace SecretHistories.UI {
                 Interaction = Interaction.OnReceivedADrop
             });
 
+            _manifestation.Unhighlight(HighlightType.All); //whatever's just happened, we don't want to keep predicting interactions
+
             if (Payload.CanInteractWith(incomingToken.Payload))
                 Payload.InteractWithIncoming(incomingToken);
             else
-
                 Payload.ShowNoMergeMessage(incomingToken.Payload);
 
         }
@@ -773,6 +774,7 @@ namespace SecretHistories.UI {
         {
             if(CanInteractWithToken(incomingToken))
             {
+
                 incomingToken.HideGhost();
                 _manifestation.Highlight(HighlightType.WillInteract);
                 return true;
