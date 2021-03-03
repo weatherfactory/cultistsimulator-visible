@@ -634,20 +634,21 @@ namespace SecretHistories.Spheres
 
         public void NotifyTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
-            Watchman.Get<HornedAxe>().OnTokensChangedForSphere(args);
+            Watchman.Get<HornedAxe>().OnTokensChangedForAnySphere(args);
             var subscribersToNotify=new HashSet<ISphereEventSubscriber>(_subscribers);
 
             foreach(var s in subscribersToNotify)
-                s.OnTokensChangedForSphere(args);
+                s.OnTokensChangedForAnySphere(args);
         }
 
         public virtual void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {
-            Watchman.Get<HornedAxe>().OnTokenInteractionInSphere(args);
+            
+            Watchman.Get<HornedAxe>().OnTokenInteractionInAnySphere(args);
 
             var subscribersToNotify = new HashSet<ISphereEventSubscriber>(_subscribers);
             foreach (var s in subscribersToNotify)
-                s.OnTokenInteractionInSphere(args);
+                s.OnTokenInteractionInAnySphere(args);
         }
 
         /// <summary>

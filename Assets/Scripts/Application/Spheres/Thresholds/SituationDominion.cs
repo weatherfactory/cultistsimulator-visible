@@ -171,7 +171,7 @@ namespace SecretHistories.UI {
                 RemoveSphere(s);
         }
 
-        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
+        public void OnTokensChangedForAnySphere(SphereContentsChangedEventArgs args)
         {
             //if a token has been added: add any necessary child thresholds
             if (args.TokenAdded != null && args.TokenRemoved != null)
@@ -188,7 +188,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
+        public void OnTokenInteractionInAnySphere(TokenInteractionEventArgs args)
         {
             //
         }

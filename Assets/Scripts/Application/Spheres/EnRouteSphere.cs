@@ -9,6 +9,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
 using UnityEngine;
 
 namespace SecretHistories.Spheres
@@ -29,6 +30,29 @@ namespace SecretHistories.Spheres
             nextStop.ProcessEvictedToken(token, context);
             return true;
             
+        }
+
+
+        public override void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
+        {
+            base.OnTokenInThisSphereInteracted(args);
+
+            if (args.PointerEventData == null || args.Token==null)
+                return;
+            
+            var hovered = args.PointerEventData.hovered;
+            foreach (var h in hovered)
+            {
+                var potentialDropCatcher = h.GetComponent<SphereDropCatcher>();
+                if (potentialDropCatcher != null)
+                {
+                    potentialDropCatcher.DisplayGhost(args.Token);
+                    //if (potentialDropCatcher.DisplayGhost(args.Token))
+                    //    break;
+                }
+            }
+
+
         }
     }
 }

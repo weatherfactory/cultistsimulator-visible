@@ -94,7 +94,8 @@ namespace SecretHistories.Constants {
 /// </summary>
         public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
 {
-    token.TokenRectTransform.anchoredPosition = GetFreeLocalPosition(token, pos);
+    var freeLocalPosition= GetFreeLocalPosition(token, pos);
+    token.TokenRectTransform.anchoredPosition = freeLocalPosition;
 
 }
 

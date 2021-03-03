@@ -34,6 +34,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
     {
       if(args.Interaction==Interaction.OnClicked || args.Interaction==Interaction.OnDrag || args.Interaction==Interaction.OnDragBegin || args.Interaction == Interaction.OnDragEnd)
           DisplayDetails(args);
+
     }
 
 
@@ -58,7 +59,19 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
 
             string pstring = $"{Math.Round(position.x, 0)}, {Math.Round(position.y, 0)}, {Math.Round(position.z, 0)}";
 
-            positioningText.text = $"Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} ";
+
+
+            string hoveringOver = string.Empty;
+            var hovered = args.PointerEventData.hovered;
+
+            if(hovered.Any())
+            {
+                foreach (var h in hovered)
+                    hoveringOver = $"{hoveringOver}\n{h.name}";
+            }
+
+
+            positioningText.text = $"Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \n Hovering Over: {hoveringOver}";
 
         }
 

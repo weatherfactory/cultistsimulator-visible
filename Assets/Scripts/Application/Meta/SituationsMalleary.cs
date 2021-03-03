@@ -113,12 +113,12 @@ namespace Assets.Scripts.Application.Meta
             token.Retire(RetirementVFX.None);
         }
 
-        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
+        public void OnTokensChangedForAnySphere(SphereContentsChangedEventArgs args)
         {
             //
         }
 
-        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
+        public void OnTokenInteractionInAnySphere(TokenInteractionEventArgs args)
         {
             if (args.Interaction == Interaction.OnDragEnd)
             {

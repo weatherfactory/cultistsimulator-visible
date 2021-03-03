@@ -19,7 +19,7 @@ namespace SecretHistories.Entities {
 
 
     [Immanence(typeof(HornedAxe))]
-    public class HornedAxe:ISphereEventSubscriber {
+    public class HornedAxe {
 
         public bool EnableAspectCaching = true;
         
@@ -172,7 +172,7 @@ namespace SecretHistories.Entities {
         }
 
 
-        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
+        public void OnTokensChangedForAnySphere(SphereContentsChangedEventArgs args)
         {
             NotifyAspectsDirty();
 
@@ -183,7 +183,7 @@ namespace SecretHistories.Entities {
                     s.NotifyTokensChanged(args);
         }
 
-        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
+        public void OnTokenInteractionInAnySphere(TokenInteractionEventArgs args)
         {
             foreach (var s in new List<ISphereCatalogueEventSubscriber>(_subscribers))
 

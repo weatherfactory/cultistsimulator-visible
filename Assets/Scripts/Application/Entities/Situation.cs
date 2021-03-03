@@ -869,7 +869,7 @@ namespace SecretHistories.Entities {
         }
 
 
-        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
+        public void OnTokensChangedForAnySphere(SphereContentsChangedEventArgs args)
         {
             if (args.Context.Metafictional)
                 //it's just a note or something equally cosmetic. Don't update recipe prediction or any of that stuff - it's not only unnecessary, it can also cause weird behaviour.
@@ -887,7 +887,7 @@ namespace SecretHistories.Entities {
                 s.SituationSphereContentsUpdated(this);
         }
 
-        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
+        public void OnTokenInteractionInAnySphere(TokenInteractionEventArgs args)
         {
             //
         }

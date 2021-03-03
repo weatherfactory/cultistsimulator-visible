@@ -410,10 +410,9 @@ namespace SecretHistories.UI {
         {
             if (!CurrentlyBeingDragged())
                 return;
-
+           
             MoveObject(eventData);
-
-
+            
             NotifyInteracted(new TokenInteractionEventArgs {PointerEventData = eventData, Payload = Payload, Token =this,Sphere= Sphere,Interaction = Interaction.OnDrag});
 
         }
@@ -476,7 +475,7 @@ namespace SecretHistories.UI {
                 InteractWithIncomingToken(incomingToken, eventData);
             else
             {
-                this.Sphere.TryMoveAsideFor(this, incomingToken, out bool moveAsideFor);
+                this.Sphere.TryMoveAsideFor(incomingToken,this, out bool moveAsideFor);
 
                 if (moveAsideFor)
                     SetState(new DroppedOnTokenWhichMovedAsideState());

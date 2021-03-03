@@ -31,5 +31,12 @@ namespace SecretHistories.Spheres
               
 
         }
+
+
+        public bool DisplayGhost(Token forToken)
+        {
+            Debug.Log($"{forToken.name} over {gameObject.name}");
+            return true;
+        }
     }
 }
