@@ -115,7 +115,7 @@ namespace SecretHistories.UI
                 var potentialDragToken = eventData.pointerDrag.GetComponent<Token>();
 
                 if ( potentialDragToken != null)
-                    potentialDragToken.ShowPossibleInteractionWithToken(potentialDragToken);
+                    potentialDragToken.StopShowingPossibleInteractionWithToken(potentialDragToken);
             }
 
             HideHoverGlow();

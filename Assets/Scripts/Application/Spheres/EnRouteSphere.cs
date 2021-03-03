@@ -43,6 +43,17 @@ namespace SecretHistories.Spheres
             var hovered = args.PointerEventData.hovered;
             foreach (var h in hovered)
             {
+                var potentialToken = h.GetComponent<Token>();
+                if (potentialToken != null && potentialToken!=args.Token)
+                {
+                    if(potentialToken.CanInteractWithToken(args.Token))
+                    {
+                        args.Token.HideGhost();
+                        break;
+                    }
+                }
+
+
                 var potentialDropCatcher = h.GetComponent<SphereDropCatcher>();
                 if (potentialDropCatcher != null)
                 {

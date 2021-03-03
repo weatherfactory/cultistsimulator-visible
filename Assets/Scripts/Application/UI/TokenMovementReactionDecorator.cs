@@ -13,6 +13,9 @@ using UnityEngine;
 
 namespace SecretHistories.UI
 {
+    /// <summary>
+    /// This allows reaction to a token being moved anywhere in the playfield - eg a 'come here, could interact' glow
+    /// </summary>
     public class TokenMovementReactionDecorator : MonoBehaviour, ISphereCatalogueEventSubscriber
     { 
         
