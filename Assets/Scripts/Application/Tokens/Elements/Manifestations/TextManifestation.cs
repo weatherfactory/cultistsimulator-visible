@@ -7,6 +7,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
+using SecretHistories.Ghosts;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using TMPro;
@@ -21,6 +22,7 @@ namespace SecretHistories.Manifestations
     {
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
+        public Type GhostType => typeof(CardGhost);
 
         [SerializeField] private TMP_Text textComponent;
         public void Retire(RetirementVFX retirementVfx, Action callback)

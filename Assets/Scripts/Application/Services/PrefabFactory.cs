@@ -15,6 +15,7 @@ using SecretHistories.UI.Scripts;
 using SecretHistories.Elements;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
+using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
 using SecretHistories.Spheres;
 
@@ -62,14 +63,24 @@ namespace SecretHistories.Services
         {
 
             string loadFromPath = prefabPath + manifestationType.Name;
+            return GetPrefab(loadFromPath,parent).GetComponent(manifestationType) as IManifestation;
+        }
+
+
+        public IGhost CreateGhostPrefab(Type ghostType, Transform parent)
+        {
+            string loadFromPath = prefabPath + ghostType.Name;
+            return GetPrefab(loadFromPath, parent).GetComponent(ghostType) as IGhost;
+        }
+
+        private GameObject GetPrefab(string loadFromPath,Transform parent)
+        {
             var prefab = Resources.Load(loadFromPath);
             if (prefab == null)
-                NoonUtility.LogWarning($"Can't find prefab of type {manifestationType.Name} at {loadFromPath}. Returning null.");
-
-
+                NoonUtility.LogWarning($"Can't find  prefab at {loadFromPath}. Returning null.");
+            
             var instantiatedPrefab = Object.Instantiate(prefab, parent) as GameObject;
-
-            return instantiatedPrefab.GetComponent(manifestationType) as IManifestation;
+            return instantiatedPrefab;
         }
 
         public Sphere InstantiateSphere(SphereSpec spec)

@@ -10,6 +10,7 @@ using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
+using SecretHistories.Ghosts;
 using SecretHistories.Spheres;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -29,11 +30,11 @@ namespace SecretHistories.Manifestations
 
         [SerializeField] private CanvasGroup canvasGroup;
 
-        
         [SerializeField] private ElementFrame elementFrame;
 
 #pragma warning restore 649
 
+        public Type GhostType => typeof(CardGhost);
 
         public void InitialiseVisuals(IManifestable manifestable)
         {

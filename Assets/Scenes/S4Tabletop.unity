@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 12}
   - component: {fileID: 11}
   - component: {fileID: 14}
+  - component: {fileID: 15}
   m_Layer: 5
   m_Name: TabletopBackground
   m_TagString: Untagged
@@ -145,6 +146,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sphere: {fileID: 730}
+--- !u!114 &15
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba70486dc85437047956c449bdec6b8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &18
 GameObject:
   m_ObjectHideFlags: 0

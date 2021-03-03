@@ -51,6 +51,7 @@ namespace SecretHistories.Manifestations
         void Emphasise();
         void Understate();
         bool RequestingNoDrag { get; }
+        Type GhostType { get;}
         void DoMove(RectTransform tokenRectTransform);
 
         void SendNotification(INotification notification);

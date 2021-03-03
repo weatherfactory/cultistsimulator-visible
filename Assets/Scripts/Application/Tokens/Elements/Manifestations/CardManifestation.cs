@@ -13,6 +13,7 @@ using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Elements;
+using SecretHistories.Ghosts;
 using SecretHistories.Spheres;
 using TMPro;
 using UnityEngine;
@@ -52,6 +53,7 @@ namespace SecretHistories.Manifestations
         private FlipHelper _flipHelper;
 
         public bool RequestingNoDrag => _flipHelper.FlipInProgress;
+        public Type GhostType => typeof(CardGhost);
 
         public void Awake()
         {

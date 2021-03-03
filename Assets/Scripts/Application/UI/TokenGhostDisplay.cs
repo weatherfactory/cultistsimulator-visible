@@ -3,17 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Ghosts;
+using SecretHistories.Services;
 using UnityEngine;
 
 namespace SecretHistories.UI
 {
+
+
  public class TokenGhostDisplay: MonoBehaviour
     {
 
-        public bool DisplayGhost(Token forToken)
+        private Dictionary<string,IGhost> ghosts=new Dictionary<string,IGhost>();
+
+        public void DisplayGhost(Token forToken)
         {
-            Debug.Log($"{forToken.name} over {gameObject.name}");
-            return true;
+            IGhost ghost;
+            if (!ghosts.ContainsKey(forToken.PayloadId))
+            {
+                ghost = Watchman.Get<PrefabFactory>()
+                    .CreateGhostPrefab(forToken.GetGhostManifestationType(), this.gameObject.transform);
+                ghosts[forToken.PayloadId] = ghost;
+            }
+            else
+                ghost = ghosts[forToken.PayloadId];
+        
+            
+            ghost.FollowToken(forToken);
+
         }
     }
 }

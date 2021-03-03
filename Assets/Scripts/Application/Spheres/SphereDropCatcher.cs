@@ -33,10 +33,15 @@ namespace SecretHistories.Spheres
         }
 
 
-        public bool DisplayGhost(Token forToken)
+        public bool TryDisplayGhost(Token forToken)
         {
-            Debug.Log($"{forToken.name} over {gameObject.name}");
-            return true;
+            var tokenGhostDisplay = gameObject.GetComponent<TokenGhostDisplay>();
+
+            if (tokenGhostDisplay == null)
+                return false;
+
+            tokenGhostDisplay.DisplayGhost(forToken);
+                return true;
         }
     }
 }

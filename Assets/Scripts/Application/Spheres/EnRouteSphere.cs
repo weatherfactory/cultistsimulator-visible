@@ -46,7 +46,7 @@ namespace SecretHistories.Spheres
                 var potentialDropCatcher = h.GetComponent<SphereDropCatcher>();
                 if (potentialDropCatcher != null)
                 {
-                    potentialDropCatcher.DisplayGhost(args.Token);
+                    potentialDropCatcher.TryDisplayGhost(args.Token);
                     //if (potentialDropCatcher.DisplayGhost(args.Token))
                     //    break;
                 }

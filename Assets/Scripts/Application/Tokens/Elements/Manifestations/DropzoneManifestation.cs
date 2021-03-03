@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
+using SecretHistories.Ghosts;
 using SecretHistories.UI;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
@@ -27,6 +29,9 @@ namespace SecretHistories.Manifestations
 
         public bool RequestingNoDrag => false;
         [SerializeField] private BubbleSphere bubbleSphere;
+
+        public Type GhostType => typeof(CardGhost);
+
 
         public void OnPointerEnter(PointerEventData eventData)
         {

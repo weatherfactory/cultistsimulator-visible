@@ -10,6 +10,7 @@ using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
+using SecretHistories.Ghosts;
 using SecretHistories.Spheres;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -21,6 +22,9 @@ namespace SecretHistories.Manifestations
     {
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
+
+        public Type GhostType => typeof(CardGhost);
+
 
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {

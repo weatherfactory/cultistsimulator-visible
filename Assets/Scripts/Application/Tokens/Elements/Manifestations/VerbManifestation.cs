@@ -14,6 +14,7 @@ using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Core;
+using SecretHistories.Ghosts;
 using SecretHistories.Spheres;
 using TMPro;
 using UnityEngine;
@@ -63,6 +64,7 @@ namespace SecretHistories.Manifestations
 
         [SerializeField] public GraphicFader glowImage;
 
+        public Type GhostType => typeof(CardGhost);
 
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();

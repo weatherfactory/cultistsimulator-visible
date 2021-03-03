@@ -92,10 +92,6 @@ namespace SecretHistories.UI {
         public bool NoPush => _manifestation.NoPush;
 
 
-        public bool PlacementAlreadyChronicled = false;
-
-        private ITokenPayload _payload;
-
         [Encaust]
         public ITokenPayload Payload
         {
@@ -123,6 +119,9 @@ namespace SecretHistories.UI {
         }
 
 
+        public bool PlacementAlreadyChronicled = false;
+
+        private ITokenPayload _payload;
         public UnityEvent OnStart;
         public UnityEvent OnCollect;
         public UnityEvent OnWindowClosed;
@@ -228,6 +227,11 @@ namespace SecretHistories.UI {
         private void OnReplacedManifestationRetired()
         {
             //
+        }
+
+        public Type GetGhostManifestationType()
+        {
+            return _manifestation.GhostType;
         }
 
         public virtual void Manifest()

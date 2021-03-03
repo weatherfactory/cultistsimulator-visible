@@ -7,6 +7,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Spheres.Thresholds;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
+using SecretHistories.Ghosts;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
@@ -21,6 +22,9 @@ namespace SecretHistories.Manifestations
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
         [SerializeField] List<ShelfDominion> _dominions;
+
+        public Type GhostType => typeof(CardGhost);
+
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
