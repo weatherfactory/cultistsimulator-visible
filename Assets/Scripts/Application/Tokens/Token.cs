@@ -6,6 +6,7 @@ using System.Linq;
 using Assets.Scripts.Application.Entities.NullEntities;
 using Assets.Scripts.Application.Fucine;
 using Assets.Scripts.Application.Infrastructure.Events;
+using Newtonsoft.Json.Bson;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
@@ -20,6 +21,7 @@ using SecretHistories.UI;
 using SecretHistories.Elements;
 using SecretHistories.Constants.Events;
 using SecretHistories.Core;
+using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.Spheres;
@@ -222,6 +224,13 @@ namespace SecretHistories.UI {
             else
                 _manifestation.Reveal(true);
 
+            if(_ghost!=null)
+                Destroy(_ghost);
+
+            _ghost = AbstractGhost.Create(_manifestation);
+            HideGhost();
+
+
         }
 
         private void OnReplacedManifestationRetired()
@@ -229,10 +238,27 @@ namespace SecretHistories.UI {
             //
         }
 
-        public Type GetGhostManifestationType()
+        private AbstractGhost _ghost;
+        public bool DisplayGhost(Sphere projectInSphere)
         {
-            return _manifestation.GhostType;
+            if (_ghost == null)
+                return false;
+
+            var tokenWorldPosition = Sphere.GetRectTransform().TransformPoint(Location.Anchored3DPosition);
+            var projectionPosition = projectInSphere.GetRectTransform().InverseTransformPoint(tokenWorldPosition);
+            
+            var candidatePosition = projectInSphere.Choreographer.GetFreeLocalPosition(this, projectionPosition);
+
+            _ghost.ShowAt(projectInSphere.GetRectTransform(), candidatePosition);
+            return true;
         }
+
+        public void HideGhost()
+        {
+            if(_ghost!=null)
+                _ghost.HideIn(this);
+        }
+
 
         public virtual void Manifest()
         {

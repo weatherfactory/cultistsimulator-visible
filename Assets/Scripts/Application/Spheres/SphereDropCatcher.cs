@@ -35,13 +35,7 @@ namespace SecretHistories.Spheres
 
         public bool TryDisplayGhost(Token forToken)
         {
-            var tokenGhostDisplay = gameObject.GetComponent<TokenGhostDisplay>();
-
-            if (tokenGhostDisplay == null)
-                return false;
-
-            tokenGhostDisplay.DisplayGhost(forToken,Sphere);
-                return true;
+            return forToken.DisplayGhost(Sphere);
         }
     }
 }

@@ -67,10 +67,10 @@ namespace SecretHistories.Services
         }
 
 
-        public IGhost CreateGhostPrefab(Type ghostType, Transform parent)
+        public AbstractGhost CreateGhostPrefab(Type ghostType, Transform parent)
         {
             string loadFromPath = prefabPath + ghostType.Name;
-            return GetPrefab(loadFromPath, parent).GetComponent(ghostType) as IGhost;
+            return GetPrefab(loadFromPath, parent).GetComponent(ghostType) as AbstractGhost;
         }
 
         private GameObject GetPrefab(string loadFromPath,Transform parent)
