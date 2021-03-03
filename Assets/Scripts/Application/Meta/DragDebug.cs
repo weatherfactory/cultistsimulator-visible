@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using SecretHistories.Entities;
 using SecretHistories.UI;
 using SecretHistories.Constants.Events;
@@ -13,7 +14,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
 {
     public TextMeshProUGUI currentlyDragging;
     public TextMeshProUGUI currentSphere;
-    public TextMeshProUGUI currentAnchorPoint3D;
+    public TextMeshProUGUI positioningText;
 
 
     // Start is called before the first frame update
@@ -44,9 +45,20 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
         currentSphere.text = args.Sphere?.name;
         if (args.Token != null && args.Token.ManifestationRectTransform != null)
         {
-            var position = args.Token.TokenRectTransform.anchoredPosition3D;
+            var localPosition = args.Token.TokenRectTransform.localPosition;
+            
+            string lpstring = $"{Math.Round(localPosition.x, 0)}, {Math.Round(localPosition.y, 0)}, {Math.Round(localPosition.z, 0)}";
 
-            currentAnchorPoint3D.text = $"{Math.Round(position.x, 0)}, {Math.Round(position.y, 0)}, {Math.Round(position.z, 0)}";
+            var anchoredPosition3D = args.Token.TokenRectTransform.anchoredPosition3D;
+
+            string apstring= $"{Math.Round(anchoredPosition3D.x, 0)}, {Math.Round(anchoredPosition3D.y, 0)}, {Math.Round(anchoredPosition3D.z, 0)}";
+
+
+            var position = args.Token.TokenRectTransform.position;
+
+            string pstring = $"{Math.Round(position.x, 0)}, {Math.Round(position.y, 0)}, {Math.Round(position.z, 0)}";
+
+            positioningText.text = $"Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} ";
 
         }
 

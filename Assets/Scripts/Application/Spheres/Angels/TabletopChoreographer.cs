@@ -95,9 +95,8 @@ namespace SecretHistories.Constants {
         public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
 {
     token.TokenRectTransform.anchoredPosition = GetFreeLocalPosition(token, pos);
-    _tabletop.DisplayAndPositionHere(token, context);
 
-        }
+}
 
 public void MoveAllTokensOverlappingWith(Token pushingToken)
 		{

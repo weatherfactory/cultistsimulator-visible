@@ -263,9 +263,11 @@ namespace SecretHistories.Spheres
         public virtual void DisplayAndPositionHere(Token token, Context context)
         {
             token.Manifest();
+            
             token.transform.SetParent(transform,true); //this is the default: specifying for clarity in case I revisit
             token.transform.localRotation = Quaternion.identity;
             token.transform.localScale = Vector3.one;
+            Choreographer.PlaceTokenAsCloseAsPossibleToSpecifiedPosition(token,context,token.Location.Anchored3DPosition);
 
         }
 

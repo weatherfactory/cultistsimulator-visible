@@ -68,7 +68,7 @@ namespace SecretHistories.Spheres
 
         base.DisplayAndPositionHere(token, context);
 
-        Choreographer.SnapToGrid(token.transform.localPosition);
+token.TokenRectTransform.anchoredPosition3D=Choreographer.SnapToGrid(token.transform.localPosition);
     }
 
     public override void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
