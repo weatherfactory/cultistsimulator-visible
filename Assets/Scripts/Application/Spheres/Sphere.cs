@@ -527,6 +527,8 @@ namespace SecretHistories.Spheres
         /// </summary>
         public virtual bool ProcessEvictedToken(Token token, Context context)
         {
+            if (token.TryFulfilGhostPromise(context)) //this should probably be an angel, actually
+                return true;
             if (flock.MinisterToEvictedToken(token, context))
                 return true;
 

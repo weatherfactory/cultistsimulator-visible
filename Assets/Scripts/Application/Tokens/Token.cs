@@ -249,12 +249,11 @@ namespace SecretHistories.UI {
             
             var candidatePosition = projectInSphere.Choreographer.GetFreeLocalPosition(this, projectionPosition);
 
-            _ghost.ShowAt(projectInSphere.GetRectTransform(), candidatePosition);
+            _ghost.ShowAt(projectInSphere, candidatePosition);
 
 
 //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
             _manifestation.Unhighlight(HighlightType.WillInteract);
-
 
             return true;
         }
@@ -264,6 +263,12 @@ namespace SecretHistories.UI {
             if(_ghost!=null)
                 _ghost.HideIn(this);
         }
+
+        public bool TryFulfilGhostPromise(Context context)
+        {
+            
+            return   _ghost.TryFulfilPromise(this,context);
+            }
 
 
         public virtual void Manifest()
@@ -495,12 +500,13 @@ namespace SecretHistories.UI {
         public  void FinishDrag()
         {
             canvasGroup.blocksRaycasts = true;
-            HideGhost();
-
 
             if (!CurrentState.Docked(this))
+                //evict the token before hiding the ghost. If the ghost is still active, it'll give the evicted token a place to go.
                    this.Sphere.EvictToken(this,new Context(Context.ActionSource.Unknown));
-            
+
+            HideGhost(); 
+
         }
 
         public  void OnDrop(PointerEventData eventData)
@@ -519,7 +525,7 @@ namespace SecretHistories.UI {
                 if (moveAsideFor)
                     SetState(new DroppedOnTokenWhichMovedAsideState());
                 else
-                    SetState(new RejectedBySituationState());
+                    SetState(new RejectedByTokenState());
             }
         }
 

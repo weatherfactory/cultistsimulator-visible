@@ -152,13 +152,6 @@ namespace SecretHistories.Spheres
             _tabletopChoreographer.MoveAllTokensOverlappingWith(token);
         }
 
-        public override void TryMoveAsideFor(Token potentialUsurper, Token incumbent, out bool incumbentMoved)
-        {
-            //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
-            incumbentMoved = true;
-            AcceptToken(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
-            CheckOverlappingTokens(potentialUsurper);
-        }
 
 
         void HandleOnTableDropped(PointerEventData eventData)

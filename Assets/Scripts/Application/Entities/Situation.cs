@@ -367,7 +367,7 @@ namespace SecretHistories.Entities {
             else
             {
                 //something has gone awryy
-                token.SetState(new RejectedBySituationState());
+                token.SetState(new RejectedByTokenState());
             }
         }
 

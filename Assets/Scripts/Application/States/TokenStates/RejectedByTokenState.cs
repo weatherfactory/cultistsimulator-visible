@@ -8,7 +8,7 @@ using SecretHistories.UI;
 
 namespace SecretHistories.States.TokenStates
 {
-   public class RejectedBySituationState: TokenState
+   public class RejectedByTokenState: TokenState
     {
         public override bool Docked(Token token)
         {
