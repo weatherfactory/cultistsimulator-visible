@@ -707,7 +707,7 @@ namespace SecretHistories.Entities {
 
             }
 
-            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId,new FucinePath(Recipe.ActionId)).WithRecipeId(effectCommand.Recipe.Id).AlreadyInState(
+            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId).WithRecipeId(effectCommand.Recipe.Id).AlreadyInState(
                 StateEnum.Ongoing);
             
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;

@@ -192,7 +192,7 @@ namespace SecretHistories.Constants
         private TokenCreationCommand SetupSituationTokenCreationCommand(Verb verb, Recipe recipe, StateEnum situationState,
             Hashtable htSituationValues, object locationInfo)
         {
-            var situationCreationCommand = new SituationCreationCommand(verb.Id, new FucinePath(verb.Id)).WithRecipeId(recipe.Id).AlreadyInState(situationState);
+            var situationCreationCommand = new SituationCreationCommand(verb.Id).WithRecipeId(recipe.Id).AlreadyInState(situationState);
             
             situationCreationCommand.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING) ??  0;
             situationCreationCommand.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);

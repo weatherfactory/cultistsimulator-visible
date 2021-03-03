@@ -25,6 +25,7 @@ namespace SecretHistories.Commands
         /// The element id
         /// </summary>
         public string Id { get; set; }
+        public string EntityId { get; set; }
         public int Quantity { get; set; }
         public Dictionary<string,int> Mutations { get; set; }
         public Dictionary<string,string> Illuminations { get; set; }
@@ -37,7 +38,7 @@ namespace SecretHistories.Commands
 
         public ElementStackCreationCommand(string elementId, int quantity)
         {
-            Id = elementId;
+            EntityId = elementId;
             Quantity = quantity;
            Mutations=Element.EmptyMutationsDictionary();
            Illuminations = Element.EmptyIlluminationsDictionary();
@@ -51,9 +52,14 @@ namespace SecretHistories.Commands
             try
             {
                 var compendium = Watchman.Get<Compendium>();
-                  var  element = compendium.GetEntityById<Element>(Id);
+                  var  element = compendium.GetEntityById<Element>(EntityId);
 
-                  var timeshadow = new Timeshadow(element.Lifetime, LifetimeRemaining, element.Resaturate);
+                  //If we deserialise a stack, we'll already know its ID. If we're creating it for the first time, we need to pick an ID
+                  if (String.IsNullOrEmpty(Id))
+                     Id = element.DefaultUniqueTokenId();
+
+
+                var timeshadow = new Timeshadow(element.Lifetime, LifetimeRemaining, element.Resaturate);
 
                 elementStack = new ElementStack(element, Quantity, timeshadow, context);
                 foreach (var m in Mutations)

@@ -103,7 +103,7 @@ namespace SecretHistories.Entities
 
             var commands = new List<TokenCreationCommand>();
 
-            SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId, new FucinePath(StartingVerbId));
+            SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId);
             TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, TokenLocation.Default(tabletopSpherePath));
             commands.Add(startingTokenCommand);
 

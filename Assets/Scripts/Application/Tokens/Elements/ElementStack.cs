@@ -43,7 +43,7 @@ namespace SecretHistories.UI {
         public event Action<TokenPayloadChangedArgs> OnChanged;
 
         [Encaust] public string Id => Element.Id;
-        [DontEncaust] public string EntityId => Element.Id;
+        [Encaust] public string EntityId => Element.Id;
         public FucinePath GetAbsolutePath()
         {
             var pathAbove = _token.Sphere.GetAbsolutePath();

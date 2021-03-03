@@ -86,8 +86,7 @@ namespace SecretHistories.Commands.SituationCommands
             }
 
 
-            SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId,
-                new FucinePath(inducedRecipe.ActionId)).WithRecipeId(inducedRecipe.Id).AlreadyInState(StateEnum.Ongoing);
+            SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId).WithRecipeId(inducedRecipe.Id).AlreadyInState(StateEnum.Ongoing);
 
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, FucinePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
        situation.SendCommandToSubscribers(spawnNewTokenCommand);
