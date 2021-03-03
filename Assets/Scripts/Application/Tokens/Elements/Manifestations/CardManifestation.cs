@@ -147,7 +147,8 @@ namespace SecretHistories.Manifestations
             }
             else if (highlightType == HighlightType.PotentiallyRelevant)
             {
-                ShowHoverGlow(true, false, UIStyle.brightPink);
+                SetGlowColor(UIStyle.brightPink);
+                ShowGlow(true, false);
             }
             else if (highlightType == HighlightType.Hover)
             {
@@ -166,15 +167,15 @@ namespace SecretHistories.Manifestations
             }
 
             if (highlightType == HighlightType.Hover)
-        {
-            ShowHoverGlow(false);
-        }
-        else if (highlightType == HighlightType.PotentiallyRelevant)
-        {
-            ShowHoverGlow(false, false);
-        }
-        else if(highlightType==HighlightType.WillInteract || highlightType==HighlightType.CanFitSlot)
-            ShowGlow(false,false);
+            {
+                ShowHoverGlow(false);
+            }
+            else if (highlightType == HighlightType.PotentiallyRelevant)
+            {
+                ShowGlow(false, false);
+            }
+            else if(highlightType==HighlightType.WillInteract || highlightType==HighlightType.CanFitSlot)
+                ShowGlow(false,false);
         }
 
         private IEnumerator PulseGlow()
@@ -301,7 +302,9 @@ namespace SecretHistories.Manifestations
 
         private void SetGlowColor(Color color)
         {
-            glowImage.SetColor(color);
+            if(glowImage.currentColor!=color)
+
+                glowImage.SetColor(color);
         }
 
         private void SetGlowColor(UIStyle.TokenGlowColor colorType)

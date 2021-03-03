@@ -250,6 +250,12 @@ namespace SecretHistories.UI {
             var candidatePosition = projectInSphere.Choreographer.GetFreeLocalPosition(this, projectionPosition);
 
             _ghost.ShowAt(projectInSphere.GetRectTransform(), candidatePosition);
+
+
+//if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
+            _manifestation.Unhighlight(HighlightType.WillInteract);
+
+
             return true;
         }
 
@@ -770,12 +776,18 @@ namespace SecretHistories.UI {
             return shrouded;
         }
 
+        public void ShowReadyToInteract()
+        {
+            HideGhost();
+            _manifestation.Highlight(HighlightType.WillInteract);
+        }
+   
+
         public bool TryShowPredictedInteractionIfDropped(Token incomingToken)
         {
             if(CanInteractWithToken(incomingToken))
             {
-
-                incomingToken.HideGhost();
+                incomingToken.ShowReadyToInteract();
                 _manifestation.Highlight(HighlightType.WillInteract);
                 return true;
             }

@@ -37,7 +37,8 @@ namespace SecretHistories.UI
 
         public void OnTokenInteraction(TokenInteractionEventArgs args)
         {
-            if (args.Interaction == Interaction.OnDragBegin)
+            if (args.Interaction == Interaction.OnDragBegin || args.Interaction==Interaction.OnDrag) //both: circumstances may change as we move, after we've picked it up
+            //and we may want to override WilLInteract glows
             {
                 if (_decorated.CanInteractWithToken(args.Token))
                     _decorated.ShowPossibleInteractionWithToken(args.Token);
