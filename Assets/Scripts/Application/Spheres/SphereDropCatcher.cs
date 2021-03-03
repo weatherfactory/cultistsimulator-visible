@@ -33,7 +33,7 @@ namespace SecretHistories.Spheres
         }
 
 
-        public bool TryDisplayGhost(Token forToken)
+        public bool TryShowPredictedInteractionIfDropped(Token forToken)
         {
             return Sphere.TryDisplayGhost(forToken);
             

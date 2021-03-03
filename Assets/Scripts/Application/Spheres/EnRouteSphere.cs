@@ -46,18 +46,15 @@ namespace SecretHistories.Spheres
                 var potentialToken = h.GetComponent<Token>();
                 if (potentialToken != null && potentialToken!=args.Token)
                 {
-                    if(potentialToken.CanInteractWithToken(args.Token))
-                    {
-                        args.Token.HideGhost();
+                    if (potentialToken.TryShowPredictedInteractionIfDropped(args.Token))
                         break;
-                    }
                 }
 
 
                 var potentialDropCatcher = h.GetComponent<SphereDropCatcher>();
                 if (potentialDropCatcher != null)
                 {
-                    if (potentialDropCatcher.TryDisplayGhost(args.Token))
+                    if (potentialDropCatcher.TryShowPredictedInteractionIfDropped(args.Token))
                         break;
                 }
             }

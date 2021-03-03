@@ -769,6 +769,16 @@ namespace SecretHistories.UI {
             return shrouded;
         }
 
+        public bool TryShowPredictedInteractionIfDropped(Token incomingToken)
+        {
+            if(CanInteractWithToken(incomingToken))
+            {
+                incomingToken.HideGhost();
+                return true;
+            }
+
+            return false;
+        }
 
         public bool CanInteractWithToken(Token incomingToken)
         {
@@ -815,5 +825,7 @@ namespace SecretHistories.UI {
             else
                 Payload.Retire(RetirementVFX.CardLight);
         }
+
+
     }
 }
