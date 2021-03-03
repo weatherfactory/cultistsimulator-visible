@@ -23,7 +23,7 @@ namespace SecretHistories.Manifestations
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
-        public Type GhostType => typeof(CardGhost);
+        public Type GhostType => typeof(NullGhost);
 
 
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)

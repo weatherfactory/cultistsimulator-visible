@@ -64,7 +64,7 @@ namespace SecretHistories.Manifestations
 
         [SerializeField] public GraphicFader glowImage;
 
-        public Type GhostType => typeof(CardGhost);
+        public Type GhostType => typeof(VerbGhost);
 
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();

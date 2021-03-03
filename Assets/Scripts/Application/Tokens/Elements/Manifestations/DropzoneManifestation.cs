@@ -30,7 +30,7 @@ namespace SecretHistories.Manifestations
         public bool RequestingNoDrag => false;
         [SerializeField] private BubbleSphere bubbleSphere;
 
-        public Type GhostType => typeof(CardGhost);
+        public Type GhostType => typeof(NullGhost);
 
 
         public void OnPointerEnter(PointerEventData eventData)

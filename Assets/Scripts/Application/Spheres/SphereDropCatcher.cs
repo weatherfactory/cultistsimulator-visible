@@ -35,7 +35,8 @@ namespace SecretHistories.Spheres
 
         public bool TryDisplayGhost(Token forToken)
         {
-            return forToken.DisplayGhost(Sphere);
+            return Sphere.TryDisplayGhost(forToken);
+            
         }
     }
 }

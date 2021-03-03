@@ -7,8 +7,8 @@ using UnityEditor.Experimental.GraphView;
 
 namespace SecretHistories.Ghosts
 {
-    public class CardGhost: AbstractGhost
+    public class BookcaseGhost : AbstractGhost
     {
-        
+
     }
 }

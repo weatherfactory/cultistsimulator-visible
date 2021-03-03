@@ -23,7 +23,7 @@ namespace SecretHistories.Manifestations
 
         [SerializeField] List<ShelfDominion> _dominions;
 
-        public Type GhostType => typeof(CardGhost);
+        public Type GhostType => typeof(BookcaseGhost);
 
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
