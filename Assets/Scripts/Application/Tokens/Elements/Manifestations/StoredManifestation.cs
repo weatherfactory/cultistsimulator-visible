@@ -34,7 +34,7 @@ namespace SecretHistories.Manifestations
 
 #pragma warning restore 649
 
-        public Type GhostType => typeof(CardGhost);
+        public Type GhostType => typeof(NullGhost);
 
         public void InitialiseVisuals(IManifestable manifestable)
         {

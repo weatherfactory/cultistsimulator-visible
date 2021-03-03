@@ -53,11 +53,9 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     [FucineList]
    public List<AngelSpecification> Angels { get; set; }
 
-
-   [FucineValue]
+        
    public FucinePath EnRouteSpherePath { get; set; }
 
-   [FucineValue]
    public FucinePath WindowsSpherePath { get; set; }
 
 
@@ -82,13 +80,18 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     {
         //setting here as default.
         SphereType = typeof(ThresholdSphere);
-    }
+        //the next two lines: this should ultimately load from Fucine, but 
+        //(1)natively loading FucinePath don't happen yet
+        //(2) we want to converge Fucine defaults on loading, and defaults on runtime creation, which we don't yet
+            EnRouteSpherePath = new FucinePath(String.Empty);
+        WindowsSpherePath = new FucinePath(String.Empty);
+        }
 
     /// <summary>
     /// for this constructor, ID and type have already been determined, and are just being set and/or deserialised from the parameters
     /// </summary>
     [JsonConstructor]
-    public SphereSpec(Type sphereType, string id)
+    public SphereSpec(Type sphereType, string id):this()
     {
         _id = id;
         SphereType = sphereType;
@@ -96,7 +99,8 @@ public class SphereSpec: AbstractEntity<SphereSpec>
         Forbidden = new AspectsDictionary();
         ActionId = string.Empty;
         Angels = new List<AngelSpecification>();
-        }
+
+    }
 
 
     public SphereSpec(Type sphereType, AbstractSphereSpecIdentifierStrategy sphereSpecIdentifierStrategy): this(sphereType,sphereSpecIdentifierStrategy.GetIdentifier())
@@ -107,7 +111,12 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     public SphereSpec(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
     {
         SphereType = typeof(ThresholdSphere); //ultimately we will want to import the spheretype, but that'll do for now
-    }
+
+        //(1)natively loading FucinePath don't happen yet
+        //(2) we want to converge Fucine defaults on loading, and defaults on runtime creation, which we don't yet
+        EnRouteSpherePath = new FucinePath(String.Empty);
+        WindowsSpherePath = new FucinePath(String.Empty);
+        }
 
     public List<IAngel> MakeAngels()
     {
