@@ -11,8 +11,8 @@ namespace SecretHistories.Entities
     public class NullElement: Element
     {
         public const string NULL_ELEMENT_ID = "NULL_ELEMENT_ID";
-        public static NullElement _instance;
-        public NullElement()
+        private static NullElement _instance;
+        protected NullElement()
         {
             _id = NULL_ELEMENT_ID;
             ManifestationType = "Null";

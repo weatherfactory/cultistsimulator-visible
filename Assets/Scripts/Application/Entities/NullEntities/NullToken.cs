@@ -18,8 +18,7 @@ namespace SecretHistories.NullObjects
    public class NullToken: Token
    {
        private static NullToken _instance;
-       private Sphere _sphere;
-
+       
        public override bool Retire(RetirementVFX rvfx)
        {
            Defunct = true;

@@ -15,20 +15,24 @@ namespace SecretHistories.Elements
     [IsEncaustableClass(typeof(NullElementStackCreationCommand))]
     public class NullElementStack: ElementStack
     {
+        private static NullElementStack _instance;
+
 
         public override bool CanMergeWith(ITokenPayload otherPayload)
         {
             return false;
         }
 
-        public NullElementStack()
+        protected NullElementStack()
         {
-            Element=new NullElement();
+            Element = NullElement.Create();
         }
 
         public static NullElementStack Create()
         {
-            return new NullElementStack();
+            if(_instance==null)
+                _instance=new NullElementStack();
+            return _instance;
         }
     }
 }

@@ -61,7 +61,8 @@ namespace SecretHistories.Commands
 
                 var timeshadow = new Timeshadow(element.Lifetime, LifetimeRemaining, element.Resaturate);
 
-                elementStack = new ElementStack(element, Quantity, timeshadow, context);
+                elementStack = new ElementStack(Id,element, Quantity, timeshadow, context);
+                
                 foreach (var m in Mutations)
                     elementStack.SetMutation(m.Key, m.Value, false);
 

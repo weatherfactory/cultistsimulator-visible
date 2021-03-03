@@ -16,8 +16,8 @@ namespace SecretHistories.NullObjects
 {
     public class NullVerb:Verb
     {
-        
 
+        private static NullVerb _instance;
         
         public override bool IsValid()
         {
@@ -27,7 +27,10 @@ namespace SecretHistories.NullObjects
 
         public static NullVerb Create()
         {
-            return new NullVerb();
+            if(_instance==null)
+                _instance= new NullVerb();
+
+            return _instance;
         }
 
         protected NullVerb()

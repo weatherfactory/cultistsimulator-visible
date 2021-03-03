@@ -42,7 +42,8 @@ namespace SecretHistories.UI {
         public event Action<float> OnLifetimeSpent;
         public event Action<TokenPayloadChangedArgs> OnChanged;
 
-        [Encaust] public string Id => Element.Id;
+        [Encaust] public string Id { get; private set; }
+    
         [Encaust] public string EntityId => Element.Id;
         public FucinePath GetAbsolutePath()
         {
@@ -218,12 +219,13 @@ namespace SecretHistories.UI {
         }
 
 
-        public ElementStack():this(NullElement.Create(),1,Timeshadow.CreateTimelessShadow(), Context.Unknown())
+        public ElementStack():this(NullElement.Create().DefaultUniqueTokenId(),NullElement.Create(),1,Timeshadow.CreateTimelessShadow(), Context.Unknown())
         {}
 
 
-        public ElementStack(Element element, int quantity, Timeshadow timeshadow, Context context)
+        public ElementStack(string id, Element element, int quantity, Timeshadow timeshadow, Context context)
         {
+            Id = id;
             Element = element;
             SetQuantity(quantity, context);
 

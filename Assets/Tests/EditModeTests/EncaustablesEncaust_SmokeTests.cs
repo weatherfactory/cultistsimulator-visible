@@ -71,7 +71,7 @@ using UnityEngine;
          var encaustery=new Encaustery<CharacterCreationCommand>();
          var characterObject = new GameObject();
          characterObject.AddComponent<Character>();
-        characterObject.GetComponent<Character>().ActiveLegacy=new NullLegacy();
+         characterObject.GetComponent<Character>().ActiveLegacy = NullLegacy.Create();
         characterObject.GetComponent<Character>().EndingTriggered=NullEnding.Create();
         //pretty horrible, right? worth considering not passing Monobehaviours to encausting, OR use the CreationCommand in the first place!
 

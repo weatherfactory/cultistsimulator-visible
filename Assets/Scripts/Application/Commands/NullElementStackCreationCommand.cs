@@ -12,7 +12,7 @@ namespace SecretHistories.Commands
     {
         public NullElementStack Execute(Context context)
         {
-            return new NullElementStack();
+            return  NullElementStack.Create();
         }
     }
 }

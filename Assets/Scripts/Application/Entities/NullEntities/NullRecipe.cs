@@ -11,7 +11,7 @@ namespace SecretHistories.Entities
 {
     public class NullRecipe : Recipe
     {
-
+        private static NullRecipe _instance;
         protected NullRecipe()
         {
             SetId(String.Empty);
@@ -37,7 +37,9 @@ namespace SecretHistories.Entities
 
     public static NullRecipe Create()
         {
-            return new NullRecipe();
+            if(_instance==null)
+                _instance=new NullRecipe();
+            return _instance;
         }
         public override bool IsValid()
         {
