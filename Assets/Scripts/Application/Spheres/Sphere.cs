@@ -640,7 +640,7 @@ namespace SecretHistories.Spheres
             var subscribersToNotify=new HashSet<ISphereEventSubscriber>(_subscribers);
 
             foreach(var s in subscribersToNotify)
-                s.OnTokensChangedForAnySphere(args);
+                s.OnTokensChangedForSphere(args);
         }
 
         public virtual void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
@@ -650,7 +650,7 @@ namespace SecretHistories.Spheres
 
             var subscribersToNotify = new HashSet<ISphereEventSubscriber>(_subscribers);
             foreach (var s in subscribersToNotify)
-                s.OnTokenInteractionInAnySphere(args);
+                s.OnTokenInteractionInSphere(args);
         }
 
         /// <summary>

@@ -518,12 +518,12 @@ namespace SecretHistories.UI {
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Fundamental));
         }
 
-        public void OnTokensChangedForAnySphere(SphereContentsChangedEventArgs args)
+        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             //
         }
 
-        public void OnTokenInteractionInAnySphere(TokenInteractionEventArgs args)
+        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
            //
         }

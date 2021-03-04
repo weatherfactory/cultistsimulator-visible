@@ -47,12 +47,12 @@ namespace SecretHistories.UI
 
         }
 
-        public void OnTokensChangedForAnySphere(SphereContentsChangedEventArgs args)
+        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
         //
         }
 
-        public void OnTokenInteractionInAnySphere(TokenInteractionEventArgs args)
+        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
            if(args.Interaction==Interaction.OnClicked || args.Interaction == Interaction.OnDoubleClicked)
            {

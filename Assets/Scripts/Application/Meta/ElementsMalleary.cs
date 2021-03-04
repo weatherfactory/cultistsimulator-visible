@@ -71,12 +71,12 @@ namespace Assets.Scripts.Application.Meta
             elementToken.Payload.SetMutation(input.text, -1, true);
         }
 
-        public void OnTokensChangedForAnySphere(SphereContentsChangedEventArgs args)
+        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
 //
         }
 
-        public void OnTokenInteractionInAnySphere(TokenInteractionEventArgs args)
+        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
             if (args.Interaction == Interaction.OnDragEnd)
             {

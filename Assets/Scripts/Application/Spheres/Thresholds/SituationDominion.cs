@@ -161,18 +161,15 @@ namespace SecretHistories.UI {
 
         private void RemoveChildSpheres(Sphere sphereToOrphan)
         {
-            if (sphereToOrphan.GetElementStacks().Any())
-                NoonUtility.LogWarning(
-                    $"This code currently assumes thresholds can only contain one stack token. One ({sphereToOrphan.GetElementStacks().First().Id}) has been removed from {sphereToOrphan.Id}, but at least one remains - you may see unexpected results.");
 
-            //THIS WILL EXPLODE. We need to coalese Path and SphereIdentifier (and OwnerSphereIdentifier)
+            //THIS WILL EXPLODE. We need to coalesce Path and SphereIdentifier (and OwnerSphereIdentifier)
             var spheresToRemove =
                 new List<Sphere>(_spheres.Where(s => s.OwnerSphereIdentifier==sphereToOrphan.Id));
             foreach (var s in spheresToRemove)
                 RemoveSphere(s);
         }
 
-        public void OnTokensChangedForAnySphere(SphereContentsChangedEventArgs args)
+        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             //if a token has been added: add any necessary child thresholds
             if (args.TokenAdded != null && args.TokenRemoved != null)
@@ -189,7 +186,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public void OnTokenInteractionInAnySphere(TokenInteractionEventArgs args)
+        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
             //
         }

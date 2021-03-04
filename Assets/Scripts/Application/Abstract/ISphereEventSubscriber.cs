@@ -12,8 +12,8 @@ namespace SecretHistories.Fucine
 {
     public interface ISphereEventSubscriber
     {
-        void OnTokensChangedForAnySphere(SphereContentsChangedEventArgs args);
-        void OnTokenInteractionInAnySphere(TokenInteractionEventArgs args);
+        void OnTokensChangedForSphere(SphereContentsChangedEventArgs args);
+        void OnTokenInteractionInSphere(TokenInteractionEventArgs args);
         
     }
 }
