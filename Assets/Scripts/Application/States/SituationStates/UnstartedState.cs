@@ -23,7 +23,7 @@ namespace SecretHistories.States
             situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.Storage));
             situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.Output));
 
-            situation.Reset();
+            situation.CommandQueue.AddCommand(new ResetSituationCommand());
 
             var verbThresholdsCommand= new PopulateDominionCommand(DominionEnum.VerbThresholds,situation.Verb.Thresholds);
             situation.CommandQueue.AddCommand(verbThresholdsCommand);

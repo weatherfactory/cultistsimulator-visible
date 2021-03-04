@@ -247,21 +247,6 @@ namespace SecretHistories.Entities {
         }
 
 
-        public void Reset()
-        {
-            Recipe = Recipe.CreateSpontaneousHintRecipe(Verb);
-            UpdateCurrentRecipePrediction(RecipePrediction.DefaultFromVerb(Verb), new Context(Context.ActionSource.SituationReset));
-           _timeshadow=Timeshadow.CreateTimelessShadow();
-
-
-            NotifyStateChange();
-            NotifyTimerChange();
-        }
-
-
-
-
-
 
 
         public List<Sphere> GetSpheresActiveForCurrentState()
@@ -921,6 +906,12 @@ namespace SecretHistories.Entities {
         public Timeshadow GetTimeshadow()
         {
             return _timeshadow;
+
+        }
+
+        public void SetTimelessShadow()
+        {
+            _timeshadow=Timeshadow.CreateTimelessShadow();
 
         }
 

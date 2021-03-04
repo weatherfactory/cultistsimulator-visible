@@ -23,7 +23,7 @@ namespace SecretHistories.States
 
         public override void Exit(Situation situation)
         {
-            situation.Reset();
+           
         }
 
         public override bool IsActiveInThisState(Sphere s)
