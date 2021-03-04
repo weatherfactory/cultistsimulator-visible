@@ -16,7 +16,8 @@ namespace SecretHistories.Commands.SituationCommands
 {
   public  class PopulateDominionCommand: ISituationCommand,IEncaustment
     {
-        public string Id { get; set; }
+
+        public DominionEnum Identifier { get; set; }
 
         public bool IsValidForState(StateEnum forState)
         {
@@ -32,13 +33,13 @@ namespace SecretHistories.Commands.SituationCommands
         }
 
 
-        public PopulateDominionCommand(string id,SphereSpec spec): this(id,new List<SphereSpec>{ spec })
+        public PopulateDominionCommand(DominionEnum identifier,SphereSpec spec): this(identifier, new List<SphereSpec>{ spec })
         {}
  
 
-        public PopulateDominionCommand(string id, List<SphereSpec> specs)
+        public PopulateDominionCommand(DominionEnum identifier, List<SphereSpec> specs)
         {
-            Id = id;
+            Identifier = identifier;
 
             foreach (var s in specs)
             {
@@ -53,7 +54,7 @@ namespace SecretHistories.Commands.SituationCommands
         {
             if (Spheres.Any())
             {
-                var dominion = situation.Dominions.SingleOrDefault(d => d.Id == Id);
+                var dominion = situation.Dominions.SingleOrDefault(d => d.Identifier == Identifier);
                 if (dominion!=null)
                 {
                     foreach (var s in Spheres)
@@ -61,7 +62,7 @@ namespace SecretHistories.Commands.SituationCommands
                     return true;
                 }
                 else
-                {NoonUtility.LogWarning($"Tried to populate dominion {Id} in situation {situation.Id}, but can't find that dominion id");
+                {NoonUtility.LogWarning($"Tried to populate dominion {Identifier} in situation {situation.Id}, but can't find that dominion identifier");
                     return false;
                 }
             }

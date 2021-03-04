@@ -20,6 +20,9 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
         public override void AddNewSphereToArrangement(Sphere sphereAdded, int index)
         {
             NotesSphere newsNotesSphere= sphereAdded as NotesSphere;
+
+            //newsNotesSphere.OnDestroy()
+
             if(newsNotesSphere==null)
                 throw new ApplicationException(sphereAdded.GetAbsolutePath() + " isn't a notes sphere");
 
@@ -43,6 +46,12 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
             newsNotesSphere.OnNoteNavigation += RespondToNoteNavigation;
             newsNotesSphere.Reveal();
 
+        }
+
+        public override void SphereRemoved(Sphere sphere)
+        {
+            if(_arrangingSpheres.Contains(sphere))
+            _arrangingSpheres.Remove(sphere);
         }
 
         public void RespondToNoteNavigation(NavigationArgs args)

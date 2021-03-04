@@ -7,6 +7,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using UnityEngine;
@@ -25,6 +26,9 @@ namespace SecretHistories.UI
 
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
+
+        public DominionEnum Identifier => DominionEnum.Unknown;
+
         [DontEncaust]
         public OnSphereAddedEvent OnSphereAdded { get;  }
         [DontEncaust]
@@ -42,6 +46,7 @@ namespace SecretHistories.UI
             {
                 _spheres.Remove(sphereToRemove);
                 OnSphereRemoved.Invoke(sphereToRemove);
+                sphereToRemove.Retire(SphereRetirementType.Graceful);
                 return true;
             }
             else

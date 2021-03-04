@@ -12,7 +12,10 @@ namespace SecretHistories.UI
     //we can't use an interface if we want it to be a serializable field
     public class SimpleSphereArrangement: AbstractSphereArrangement
     {
-
+        public override void SphereRemoved(Sphere sphere)
+        {
+            //
+        }
     }
 
 }

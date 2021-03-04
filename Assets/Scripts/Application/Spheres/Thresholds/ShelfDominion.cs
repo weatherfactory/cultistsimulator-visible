@@ -7,6 +7,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
@@ -31,6 +32,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
 
         private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
         private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
+
+        public DominionEnum Identifier => DominionEnum.Unknown;
 
         [DontEncaust]
         public OnSphereAddedEvent OnSphereAdded
@@ -79,6 +82,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
             {
                 _spheres.Remove(sphereToRemove);
                 OnSphereRemoved.Invoke(sphereToRemove);
+                sphereToRemove.Retire(SphereRetirementType.Graceful);
                 return true;
             }
             else

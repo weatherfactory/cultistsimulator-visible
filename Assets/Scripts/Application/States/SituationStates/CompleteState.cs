@@ -18,7 +18,7 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var createOutputSphereCommand = new PopulateDominionCommand("OutputDominion",new SphereSpec(typeof(OutputSphere),new OutputSphereIdStrategy()));
+            var createOutputSphereCommand = new PopulateDominionCommand(DominionEnum.Output,new SphereSpec(typeof(OutputSphere),new OutputSphereIdStrategy()));
             situation.CommandQueue.AddCommand(createOutputSphereCommand);
 
             var migrateToOutputCommand=new FlushTokensToCategoryCommand(SphereCategory.SituationStorage,SphereCategory.Output,StateEnum.Complete);

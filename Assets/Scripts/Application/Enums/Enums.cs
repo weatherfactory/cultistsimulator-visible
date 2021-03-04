@@ -14,6 +14,8 @@ namespace SecretHistories.Enums
         Viable, Extinct, Unformed
     }
 
+    public enum DominionEnum { VerbThresholds = 1, RecipeThresholds = 2, Notes = 3, Storage = 4, Output = 5, Unknown = 0 }
+
     public enum FucineValidity { Valid, TokenInRoot, Uninitialised,Empty }
 
     public enum GameSpeed

@@ -24,7 +24,7 @@ public class OutputSphere : Sphere,ISituationSubscriber{
     [SerializeField] SituationResultsPositioning outputPositioning;
     [SerializeField] TextMeshProUGUI dumpResultsButtonText;
 
-    [SerializeField] public UnityEvent AllTokenssCollected;
+    [SerializeField] public UnityEvent AllTokensCollected;
 
     public override SphereCategory SphereCategory => SphereCategory.Output;
 
@@ -75,7 +75,7 @@ public class OutputSphere : Sphere,ISituationSubscriber{
         if (cardsRemaining)
             outputPositioning.ArrangeTokens(stacks);
         else
-            AllTokenssCollected.Invoke();
+            AllTokensCollected.Invoke();
 
         base.RemoveToken(token,context);
     }

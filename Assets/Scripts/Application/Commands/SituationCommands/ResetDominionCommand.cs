@@ -14,11 +14,11 @@ namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
 {
     public class ResetDominionCommand: ISituationCommand
     {
-        public string Id { get; set; }
+        public DominionEnum Identifier { get; set; }
 
         public bool Execute(Situation situation)
         {
-            var dominion = situation.Dominions.SingleOrDefault(d => d.Id == Id);
+            var dominion = situation.Dominions.SingleOrDefault(d => d.Identifier == Identifier);
             if (dominion != null)
             {
                 var spheresToRemove = new List<Sphere>(dominion.Spheres);
@@ -29,14 +29,14 @@ namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
             }
             else
             {
-                NoonUtility.LogWarning($"Tried to populate dominion {Id} in situation {situation.Id}, but can't find that dominion id");
+                NoonUtility.LogWarning($"Tried to populate dominion {Identifier} in situation {situation.Id}, but can't find that dominion id");
                 return false;
             }
         }
 
-        public ResetDominionCommand(string id)
+        public ResetDominionCommand(DominionEnum identifier)
         {
-            Id = id;
+            Identifier = identifier;
         }
 
         public bool IsValidForState(StateEnum forState)

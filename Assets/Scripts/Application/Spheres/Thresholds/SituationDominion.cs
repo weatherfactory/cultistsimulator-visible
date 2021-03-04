@@ -34,12 +34,14 @@ namespace SecretHistories.UI {
         private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
         private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
 
-        [Encaust] public string Id => gameObject.name; //SituationDominions are specified in the editor... where they had better be uniquely named.
-        
+        [Encaust] public DominionEnum Identifier => EditableIdentifier;
+        [SerializeField] private DominionEnum EditableIdentifier;
+
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
 
-    
+
+
 
         [DontEncaust]
         public OnSphereAddedEvent OnSphereAdded
@@ -74,6 +76,8 @@ namespace SecretHistories.UI {
 
             foreach (var existingSphere in gameObject.GetComponentsInChildren<Sphere>())
                 _situation.AttachSphere(existingSphere);
+
+            OnSphereRemoved.AddListener(sphereArrangement.SphereRemoved);
         }
 
         public void Evoke()

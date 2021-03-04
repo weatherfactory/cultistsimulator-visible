@@ -80,6 +80,11 @@ namespace SecretHistories.UI
                 threshold.viz.TriggerShowAnim();
         }
 
+        public override void SphereRemoved(Sphere sphere)
+        {
+            //we don't keep a list of spheres to track in here, so we don't need to remove anything explicitly
+        }
+
         protected void SetNumPerRow()
         {
             // one extra spacing added to width to compensate for spacing added to n slots, not n-1 slots.

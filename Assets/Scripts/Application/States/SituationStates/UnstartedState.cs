@@ -17,14 +17,15 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            situation.CommandQueue.AddCommand(new ResetDominionCommand("VerbThresholdsDominion"));
-            situation.CommandQueue.AddCommand(new ResetDominionCommand("RecipeThresholdsDominion"));
-            situation.CommandQueue.AddCommand(new ResetDominionCommand("StorageDominion"));
-            situation.CommandQueue.AddCommand(new ResetDominionCommand("OutputDominion"));
+            situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.VerbThresholds));
+            situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.RecipeThresholds));
+            situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.Notes));
+            situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.Storage));
+            situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.Output));
 
             situation.Reset();
 
-            var verbThresholdsCommand= new PopulateDominionCommand("VerbThresholdsDominion",situation.Verb.Thresholds);
+            var verbThresholdsCommand= new PopulateDominionCommand(DominionEnum.VerbThresholds,situation.Verb.Thresholds);
             situation.CommandQueue.AddCommand(verbThresholdsCommand);
         }
 

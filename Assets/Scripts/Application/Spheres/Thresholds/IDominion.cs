@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Spheres;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace SecretHistories.UI
   public interface IDominion: IEncaustable
 
   {
-        public string Id { get; }
+      public DominionEnum Identifier { get; }
       OnSphereAddedEvent OnSphereAdded { get; }
         OnSphereRemovedEvent OnSphereRemoved { get; }
         void RegisterFor(IManifestable manifestable);

@@ -18,6 +18,8 @@ namespace SecretHistories.UI
             newSphere.transform.localPosition = Vector3.zero;
             newSphere.transform.localRotation = Quaternion.identity;
         }
+
+        public abstract void SphereRemoved(Sphere sphere);
     }
 
 

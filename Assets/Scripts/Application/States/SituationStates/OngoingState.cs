@@ -20,10 +20,10 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var recipeSlotsCommand = new PopulateDominionCommand("RecipeThresholdsDominion",situation.Recipe.Slots);
+            var recipeSlotsCommand = new PopulateDominionCommand(DominionEnum.RecipeThresholds,situation.Recipe.Slots);
             situation.CommandQueue.AddCommand(recipeSlotsCommand);
             var sphereSpec=new SphereSpec(typeof(SituationStorageSphere), new StorageSphereIdStrategy());
-            var storageCommand = new PopulateDominionCommand("StorageDominion",sphereSpec);
+            var storageCommand = new PopulateDominionCommand(DominionEnum.Storage,sphereSpec);
                 situation.CommandQueue.AddCommand(storageCommand);
 
                 var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);
