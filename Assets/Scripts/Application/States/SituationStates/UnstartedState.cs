@@ -1,4 +1,6 @@
-﻿using SecretHistories.Commands;
+﻿
+using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
+using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -15,15 +17,20 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
+            situation.CommandQueue.AddCommand(new ResetDominionCommand("VerbThresholdsDominion"));
+            situation.CommandQueue.AddCommand(new ResetDominionCommand("RecipeThresholdsDominion"));
+            situation.CommandQueue.AddCommand(new ResetDominionCommand("StorageDominion"));
+            situation.CommandQueue.AddCommand(new ResetDominionCommand("OutputDominion"));
+
             situation.Reset();
+
             var verbThresholdsCommand= new PopulateDominionCommand("VerbThresholdsDominion",situation.Verb.Thresholds);
             situation.CommandQueue.AddCommand(verbThresholdsCommand);
         }
 
         public override void Exit(Situation situation)
         {
-
-        }
+            }
 
         public override bool IsActiveInThisState(Sphere s)
         {

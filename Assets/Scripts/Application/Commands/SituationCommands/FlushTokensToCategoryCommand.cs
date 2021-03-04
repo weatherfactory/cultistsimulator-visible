@@ -17,9 +17,10 @@ namespace SecretHistories.Commands.SituationCommands
 
         private readonly List<StateEnum> _statesCommandIsValidFor=new List<StateEnum>();
 
-        public List<StateEnum> GetStatesCommandIsValidFor()
+
+        public bool IsValidForState(StateEnum forState)
         {
-            return new List<StateEnum>(_statesCommandIsValidFor);
+            return _statesCommandIsValidFor.Contains(forState);
         }
 
         public FlushTokensToCategoryCommand(SphereCategory fromCategory,SphereCategory toCategory,StateEnum onState)

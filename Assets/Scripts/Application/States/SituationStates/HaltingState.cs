@@ -1,4 +1,5 @@
 ﻿using System;
+using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Constants;
@@ -17,12 +18,12 @@ namespace SecretHistories.States
         {
             //If we leave anything in the ongoing slot, it's lost, so let's rescue it to SituationStorage
             situation.AcceptTokens(SphereCategory.SituationStorage, situation.GetTokens(SphereCategory.Threshold));
-            situation.Reset();
+            
         }
 
         public override void Exit(Situation situation)
         {
-            //
+            situation.Reset();
         }
 
         public override bool IsActiveInThisState(Sphere s)

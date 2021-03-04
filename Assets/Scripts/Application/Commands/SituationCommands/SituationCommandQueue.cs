@@ -12,25 +12,12 @@ namespace SecretHistories.Core
     {
         private readonly List<ISituationCommand> _commands=new List<ISituationCommand>();
 
-        public void ExecuteCommandsFor(List<StateEnum> forStates, Situation situation)
-        {
-            foreach (var command in new List<ISituationCommand>(_commands))
-            {
-                if (forStates.Intersect(command.GetStatesCommandIsValidFor()).Any())
-                {
-                    bool executed = command.Execute(situation);
-                    if (executed)
-                        MarkCommandCompleted(command);
-                }
-            }
-        }
-
 
         public void ExecuteCommandsFor(StateEnum forState,Situation situation)
         {
             foreach(var command in new List<ISituationCommand>(_commands))
             {
-                if (command.GetStatesCommandIsValidFor().Contains(forState))
+                if (command.IsValidForState(forState))
                 {
                     bool executed = command.Execute(situation);
                     if (executed)
@@ -39,15 +26,6 @@ namespace SecretHistories.Core
             }
         }
 
-        public void ExecuteAllCommands(Situation situation)
-        {
-            foreach (var command in new List<ISituationCommand>(_commands))
-            {
-                    bool executed = command.Execute(situation);
-                    if (executed)
-                        MarkCommandCompleted(command);
-            }
-        }
 
         public void AddCommand(ISituationCommand command)
         {

@@ -18,11 +18,11 @@ namespace SecretHistories.Commands.SituationCommands
     {
         public string Id { get; set; }
 
-        public List<StateEnum> GetStatesCommandIsValidFor() => new List<StateEnum>
+        public bool IsValidForState(StateEnum forState)
         {
-            StateEnum.Unstarted, StateEnum.Complete, StateEnum.Halting, StateEnum.Ongoing, StateEnum.RequiringExecution,
-            StateEnum.Unknown
-        };
+            return true;
+        }
+
 
         public  List<SphereCreationCommand> Spheres { get; set; } = new List<SphereCreationCommand>();
 
@@ -60,10 +60,15 @@ namespace SecretHistories.Commands.SituationCommands
                         s.ExecuteOn(dominion as SituationDominion, new Context(Context.ActionSource.Unknown)); 
                     return true;
                 }
+                else
+                {NoonUtility.LogWarning($"Tried to populate dominion {Id} in situation {situation.Id}, but can't find that dominion id");
+                    return false;
+                }
             }
 
             return false;
         }
-        
+
+
     }
 }

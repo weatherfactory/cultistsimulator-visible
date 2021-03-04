@@ -21,5 +21,6 @@ namespace SecretHistories.UI
         List<Sphere> Spheres { get; }
       Sphere CreateSphere(SphereSpec spec);
       Sphere GetSphereById(string id);
+      bool RemoveSphere(string id);
   }
 }

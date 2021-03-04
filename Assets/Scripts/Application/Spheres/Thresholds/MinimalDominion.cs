@@ -35,6 +35,19 @@ namespace SecretHistories.UI
             return Spheres.SingleOrDefault(s => s.Id == Id);
         }
 
+        public bool RemoveSphere(string id)
+        {
+            var sphereToRemove = GetSphereById(id);
+            if (sphereToRemove != null)
+            {
+                _spheres.Remove(sphereToRemove);
+                OnSphereRemoved.Invoke(sphereToRemove);
+                return true;
+            }
+            else
+                return false;
+        }
+
         public Sphere CreateSphere(SphereSpec spec)
         {
             var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec, _manifestable);

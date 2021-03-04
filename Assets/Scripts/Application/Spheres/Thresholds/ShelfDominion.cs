@@ -71,5 +71,18 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
         {
             return _spheres.SingleOrDefault(s => s.Id == id);
         }
+
+        public bool RemoveSphere(string id)
+        {
+            var sphereToRemove = GetSphereById(id);
+            if (sphereToRemove != null)
+            {
+                _spheres.Remove(sphereToRemove);
+                OnSphereRemoved.Invoke(sphereToRemove);
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }

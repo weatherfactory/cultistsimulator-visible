@@ -14,7 +14,8 @@ namespace SecretHistories.Commands
     
     public interface ISituationCommand
     {
-        List<StateEnum> GetStatesCommandIsValidFor();
+   
         bool Execute(Situation situation);
+        bool IsValidForState(StateEnum forState);
     }
 }

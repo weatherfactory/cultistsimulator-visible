@@ -113,16 +113,15 @@ namespace SecretHistories.UI {
             return Spheres.SingleOrDefault(s => s.Id == Id);
         }
 
-      
-
-
-        public void RemoveAllSpheres()
+        public bool RemoveSphere(string id)
         {
-            var spheresToRetire = new List<Sphere>(_spheres);
-
-            foreach (var t in spheresToRetire)
-                RemoveSphere(t);
+            var sphereToRemove = GetSphereById(id);
+            if (sphereToRemove == null)
+                return false;
+            RemoveSphere(sphereToRemove);
+            return true;
         }
+
 
         public void RemoveSphere(Sphere sphereToRemove)
         {

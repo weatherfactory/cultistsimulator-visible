@@ -12,9 +12,13 @@ namespace SecretHistories.Commands.SituationCommands
 {
    public class ConcludeCommand: ISituationCommand
    {
-       public List<StateEnum> GetStatesCommandIsValidFor() => new List<StateEnum> {StateEnum.Complete};
+       
+       public bool IsValidForState(StateEnum forState)
+       {
+           return forState == StateEnum.Complete;
+       }
 
-       public bool Execute(Situation situation)
+        public bool Execute(Situation situation)
         {
             var results = situation.GetElementTokens(SphereCategory.Output);
             foreach (var item in results)

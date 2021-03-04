@@ -17,8 +17,10 @@ namespace SecretHistories.Commands
     {
         private string _image;
 
-        public List<StateEnum> GetStatesCommandIsValidFor() => new List<StateEnum> {StateEnum.Complete};
-
+        public bool IsValidForState(StateEnum forState)
+        {
+            return forState == StateEnum.Complete;
+        }
 
         public BurnImageCommand(string image)
         {
@@ -32,6 +34,8 @@ namespace SecretHistories.Commands
             situation.SendCommandToSubscribers(burnImageUnderTokenCommand);
             return true;
         }
+
+
     }
 
 
