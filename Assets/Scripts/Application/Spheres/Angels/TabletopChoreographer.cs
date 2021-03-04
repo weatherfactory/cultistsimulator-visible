@@ -46,7 +46,7 @@ namespace SecretHistories.Constants {
 
         public TabletopSphere _tabletop;
         private Rect tableRect;
-
+        private bool showDebugInfo;
         const float checkPointPerArcLength = 100f;
 
         const float pointGridSize = 100f;
@@ -76,6 +76,9 @@ namespace SecretHistories.Constants {
 
         public void OnGUI()
         {
+            if (!showDebugInfo)
+                return;
+
           foreach (var r in rectanglesToDisplay)
                 GUI.Box(r.Value, r.Key);
         }
@@ -221,7 +224,8 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             // request a new set of points, since the center pos has shifted
             currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations);
 
-            if (IsLegalPosition(GetCenterPosRect(targetRect.position, targetRect.size), token).IsLegal)
+            var centerPosRect = GetCenterPosRect(targetRect.position, targetRect.size);
+            if (IsLegalPosition(centerPosRect, token).IsLegal)
                 return centerPos;
 
             foreach (var point in currentPoints)

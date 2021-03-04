@@ -12,6 +12,7 @@ using SecretHistories.Core;
 using SecretHistories.Enums;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
+using UnityEngine;
 
 
 namespace SecretHistories.Entities
@@ -99,12 +100,16 @@ namespace SecretHistories.Entities
 
         public List<TokenCreationCommand> GetTokenCreationCommandsToEnactLegacy()
         {
+            var startingTokenDistributionStrategy=new CSClassicStartingTokenDistributionStrategy();
+
             FucinePath tabletopSpherePath = Watchman.Get<HornedAxe>().GetDefaultSpherePath();
 
             var commands = new List<TokenCreationCommand>();
 
             SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId);
-            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, TokenLocation.Default(tabletopSpherePath));
+            var verbTokenLocation=new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(),tabletopSpherePath);
+
+            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, verbTokenLocation);
             commands.Add(startingTokenCommand);
 
             AspectsDictionary startingElements = new AspectsDictionary();
@@ -113,11 +118,44 @@ namespace SecretHistories.Entities
             foreach (var e in startingElements)
             {
                 var elementStackCreationCommand = new ElementStackCreationCommand(e.Key, e.Value);
-                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default(tabletopSpherePath));
+                var startingLocationForToken = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
+                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, startingLocationForToken);
                 commands.Add(startingStackCommand);
             }
 
+
+            startingTokenDistributionStrategy.NextRow();
+
+            var dropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
+            var dropzoneCreationCommand = new TokenCreationCommand(new DropzoneCreationCommand(), dropzoneLocation);
+            commands.Add(dropzoneCreationCommand);
+
             return commands;
+        }
+
+        class CSClassicStartingTokenDistributionStrategy
+        {
+            public int tokenCount { get; private set; }
+            public int rowCount { get; private set; }
+            private const int STARTINGX = -200;
+            private const int XGAP = 100;
+            private const int STARTINGY = 0;
+            private const int YGAP = 250;
+
+            public Vector3 GetNextTokenPositionAndIncrementCount()
+            {
+                int x = STARTINGX + (tokenCount * XGAP);
+                int y = STARTINGY - (YGAP * rowCount); //nb minus: next row is below previous one
+                var startingPosition=new Vector3(x,y,0);
+                tokenCount++;
+                return startingPosition;
+            }
+
+            public void NextRow()
+            {
+                tokenCount = 0;
+                rowCount++;
+            }
         }
     }
 }

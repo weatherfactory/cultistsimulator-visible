@@ -40,7 +40,6 @@ namespace SecretHistories.Constants
                 if (!DontLoadGame)
                     LoadGame(Watchman.Get<StageHand>().GamePersistenceProvider);
 
-                ProvisionDropzoneToken();
             }
             catch (Exception e)
             {
@@ -105,17 +104,6 @@ namespace SecretHistories.Constants
             var result = await saveTask;
         }
 
-        private void ProvisionDropzoneToken()
-        {
-            var worldSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
-            
-            if(worldSphere.Tokens.Count(t => t.Payload.GetType() == typeof(Dropzone))==0)
-            {
-                var dropzoneLocation = new TokenLocation(Vector3.zero, worldSphere);
-                var dropzoneCreationCommand = new TokenCreationCommand(new DropzoneCreationCommand(), dropzoneLocation);
-                dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Unknown),worldSphere);
-            }
-        }
 
         public void EndGame(Ending ending, Token _anchor)
         {

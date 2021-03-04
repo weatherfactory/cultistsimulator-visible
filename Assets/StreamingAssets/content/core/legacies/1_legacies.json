@@ -1,6 +1,6 @@
 {
     "legacies": [
-        {
+	        {
             "id": "aspirant",
             "label": "The Aspirant",
             "description": "June the 28th, once again.",
@@ -13,6 +13,22 @@
             "availableWithoutEndingMatch": true,
             "startingverbid": "work"
         },
+	        {
+            "id": "detective",
+            "label": "The Detective",
+            "description": "I am an Inspector in the capital's police, charged with the investigation of the most vile and wretched things that one human does to another.",
+            "startdescription": "I have ended the careers of thieves, murderers, blackmailers, arsonists. Some criminals do worse still; and on some mornings, my hands have been known to tremble.",
+            "effects": {
+                "legacydetectivejob": 1,
+                "reason": 1,
+                "health": 1
+            },
+            "image": "detective",
+            "fromending": "arrest",
+            "availableWithoutEndingMatch": true,
+            "startingverbid": "work"
+        },
+
         {
             "id": "brightyoungthing",
             "label": "The Bright Young Thing",
@@ -42,21 +58,7 @@
             "availableWithoutEndingMatch": true,
             "startingverbid": "work"
         },
-        {
-            "id": "detective",
-            "label": "The Detective",
-            "description": "I am an Inspector in the capital's police, charged with the investigation of the most vile and wretched things that one human does to another.",
-            "startdescription": "I have ended the careers of thieves, murderers, blackmailers, arsonists. Some criminals do worse still; and on some mornings, my hands have been known to tremble.",
-            "effects": {
-                "legacydetectivejob": 1,
-                "reason": 1,
-                "health": 1
-            },
-            "image": "detective",
-            "fromending": "arrest",
-            "availableWithoutEndingMatch": true,
-            "startingverbid": "work"
-        },
+
         {
             "id": "detectivepostpromotion",
             "label": "The Detective",

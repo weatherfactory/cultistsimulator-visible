@@ -63,8 +63,13 @@ namespace SecretHistories.Commands
             if (sphere == null && Location.AtSpherePath.IsValid())
                 sphere = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
 
-            var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);
-           
+            var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.GetRectTransform());
+            token.TokenRectTransform.anchoredPosition3D = Location.Anchored3DPosition;
+           //pay attention, AK. At this point,t he token has been created with localposition 0,0.
+           //the Location value in the command determines our final intended localposition, but that's meaningless until we've placed it in the sphere.
+           //However, Sphere.Accept is where we call DisplayAndPositionHere, and thus PlaceTokenAsCloseAsPossibleToIntendedPosition, and that checks the Token's Location, not the command's location - which of course is still 0,0.
+           //...because it was designed for a token that has just been dragged through the air.
+           //WAIT THIS IS WRONG. It's *instantiated* in the sphere.
             
             var payloadForToken = Payload.Execute(context,sphere);
 
