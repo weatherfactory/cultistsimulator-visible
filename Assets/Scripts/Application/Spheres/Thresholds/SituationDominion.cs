@@ -33,10 +33,13 @@ namespace SecretHistories.UI {
         
         private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
         private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
-        
 
+        [Encaust] public string Id => gameObject.name; //SituationDominions are specified in the editor... where they had better be uniquely named.
+        
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
+
+    
 
         [DontEncaust]
         public OnSphereAddedEvent OnSphereAdded
@@ -52,9 +55,6 @@ namespace SecretHistories.UI {
             set => _onSphereRemoved = value;
         }
 
-        [Header("Preserve spheres when dismissed?")]
-        [Tooltip("Dominions will gracefully retire spheres and flush their contents when dismissed unless this box is ticked. NB that hiding a window doesn't dismiss dominions - dismissal is a situation life cycle thing.")]
-        public bool PreserveSpheresWhenDismissed;
         public List<StateEnum> VisibleForStates;
         public Sphere spherePrefab;
 
@@ -84,8 +84,6 @@ namespace SecretHistories.UI {
         public void Dismiss()
         {
             canvasGroupFader.Hide();
-            //if(!PreserveSpheresWhenDismissed)
-            //    RemoveAllSpheres();
         }
 
         public  Sphere CreateSphere(SphereSpec spec)

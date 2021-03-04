@@ -16,7 +16,7 @@ namespace SecretHistories.States
         public override void Enter(Situation situation)
         {
             situation.Reset();
-            var verbThresholdsCommand= new PopulateDominionCommand(situation.Verb.Thresholds);
+            var verbThresholdsCommand= new PopulateDominionCommand("VerbThresholdsDominion",situation.Verb.Thresholds);
             situation.CommandQueue.AddCommand(verbThresholdsCommand);
         }
 
@@ -50,7 +50,7 @@ namespace SecretHistories.States
 
         public override void Continue (Situation situation)
         {
-            situation.CommandQueue.ExecuteCommandsFor(RehydrationValue,situation);
+        
         }
     }
 }

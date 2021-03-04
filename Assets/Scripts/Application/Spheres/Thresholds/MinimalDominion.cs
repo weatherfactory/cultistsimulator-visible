@@ -16,8 +16,12 @@ namespace SecretHistories.UI
     [IsEncaustableClass(typeof(PopulateDominionCommand))]
     public class MinimalDominion: MonoBehaviour, IDominion
     {
-        private IManifestable manifestable;
+        private IManifestable _manifestable;
         private readonly List<Sphere> _spheres=new List<Sphere>();
+
+        [Encaust]
+        public string Id { get; set; }
+
 
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
@@ -33,14 +37,14 @@ namespace SecretHistories.UI
 
         public Sphere CreateSphere(SphereSpec spec)
         {
-            var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec, manifestable);
+            var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec, _manifestable);
             _spheres.Add(newSphere);
             return newSphere;
         }
 
         public void RegisterFor(IManifestable manifestable)
         {
-            manifestable = manifestable;
+            _manifestable = manifestable;
             manifestable.RegisterDominion(this);
 
             foreach (Sphere s in Spheres)

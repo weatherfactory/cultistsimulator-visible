@@ -10,11 +10,14 @@ using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.States;
+using SecretHistories.UI;
 
 namespace SecretHistories.Commands.SituationCommands
 {
   public  class PopulateDominionCommand: ISituationCommand,IEncaustment
     {
+        public string Id { get; set; }
+
         public List<StateEnum> GetStatesCommandIsValidFor() => new List<StateEnum>
         {
             StateEnum.Unstarted, StateEnum.Complete, StateEnum.Halting, StateEnum.Ongoing, StateEnum.RequiringExecution,
@@ -28,36 +31,33 @@ namespace SecretHistories.Commands.SituationCommands
 
         }
 
-        private Type getSphereType()
-        {
-            return Spheres.First().GoverningSphereSpec.SphereType;
-        }
 
-                public PopulateDominionCommand(SphereSpec spec)
-        {
-            var newCommand=new SphereCreationCommand(spec);
-            Spheres.Add(newCommand);
-        }
+        public PopulateDominionCommand(string id,SphereSpec spec): this(id,new List<SphereSpec>{ spec })
+        {}
+ 
 
-        public PopulateDominionCommand(List<SphereSpec> specs)
+        public PopulateDominionCommand(string id, List<SphereSpec> specs)
         {
+            Id = id;
+
             foreach (var s in specs)
             {
                 var newCommand = new SphereCreationCommand(s);
                 Spheres.Add(newCommand);
+
             }
         }
 
         
         public bool Execute(Situation situation)
         {
-            if (Spheres.Any()) 
+            if (Spheres.Any())
             {
-                var dominion = situation.GetRelevantDominions(situation.State.RehydrationValue, getSphereType()).FirstOrDefault();
-                if(dominion!=null)
+                var dominion = situation.Dominions.SingleOrDefault(d => d.Id == Id);
+                if (dominion!=null)
                 {
                     foreach (var s in Spheres)
-                        s.ExecuteOn(dominion,new Context(Context.ActionSource.Unknown)); 
+                        s.ExecuteOn(dominion as SituationDominion, new Context(Context.ActionSource.Unknown)); 
                     return true;
                 }
             }

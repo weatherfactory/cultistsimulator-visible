@@ -15,11 +15,18 @@ namespace SecretHistories.Commands.SituationCommands
    public class AttemptAspectInductionCommand: ISituationCommand
     {
         private readonly SphereCategory _forSphereCategory;
-        public List<StateEnum> GetStatesCommandIsValidFor() => new List<StateEnum> {StateEnum.Complete};
 
-        public AttemptAspectInductionCommand(SphereCategory forSphereCategory)
+        private readonly List<StateEnum> _statesCommandIsValidFor = new List<StateEnum>();
+
+        public List<StateEnum> GetStatesCommandIsValidFor()
+        {
+            return new List<StateEnum>(_statesCommandIsValidFor);
+        }
+
+        public AttemptAspectInductionCommand(SphereCategory forSphereCategory, StateEnum onState)
         {
             _forSphereCategory = forSphereCategory;
+            _statesCommandIsValidFor.Add(onState);
             }
 
         public bool Execute(Situation situation)

@@ -14,18 +14,26 @@ namespace SecretHistories.Commands.SituationCommands
     {
         private readonly SphereCategory _fromCategory;
         private readonly SphereCategory _toCategory;
-        public List<StateEnum> GetStatesCommandIsValidFor() => new List<StateEnum>();
+
+        private readonly List<StateEnum> _statesCommandIsValidFor=new List<StateEnum>();
+
+        public List<StateEnum> GetStatesCommandIsValidFor()
+        {
+            return new List<StateEnum>(_statesCommandIsValidFor);
+        }
 
         public FlushTokensToCategoryCommand(SphereCategory fromCategory,SphereCategory toCategory,StateEnum onState)
         {
             _fromCategory = fromCategory;
             _toCategory = toCategory;
-            GetStatesCommandIsValidFor().Add(onState);
+            _statesCommandIsValidFor.Add(onState);
         }
 
         public bool Execute(Situation situation)
         {
             var toSphere = situation.GetSingleSphereByCategory(_toCategory);
+
+            
 
             //now we're safely started on the migration, consume any tokens in Consuming thresholds
             foreach (var fromSphere in situation.GetSpheresByCategory(_fromCategory))
@@ -34,6 +42,11 @@ namespace SecretHistories.Commands.SituationCommands
                     fromSphere.RetireAllTokens();
             }
 
+            if (toSphere == null)
+            {
+                NoonUtility.LogWarning($"We're about to try to flush tokens to sphere category {_toCategory}, but there aren't any. Execution won't occur.");
+                return false;
+            }
             toSphere.AcceptTokens(situation.GetTokens(_fromCategory),
                 new Context(Context.ActionSource.TokenMigration));
 

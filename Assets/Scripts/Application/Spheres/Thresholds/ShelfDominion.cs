@@ -18,9 +18,13 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
     public class ShelfDominion: MonoBehaviour,IDominion
     {
         private IManifestable _manifestable;
-        
 
         private HashSet<Sphere>_spheres=new HashSet<Sphere>();
+
+
+        [Encaust]
+        public string Id { get; set; }
+
 
         [Encaust]
         public List<Sphere> Spheres =>new List<Sphere>(_spheres);

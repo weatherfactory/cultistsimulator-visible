@@ -20,10 +20,10 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var recipeSlotsCommand = new PopulateDominionCommand(situation.Recipe.Slots);
+            var recipeSlotsCommand = new PopulateDominionCommand("RecipeThresholdsDominion",situation.Recipe.Slots);
             situation.CommandQueue.AddCommand(recipeSlotsCommand);
             var sphereSpec=new SphereSpec(typeof(SituationStorageSphere), new StorageSphereIdStrategy());
-            var storageCommand = new PopulateDominionCommand(sphereSpec);
+            var storageCommand = new PopulateDominionCommand("StorageDominion",sphereSpec);
                 situation.CommandQueue.AddCommand(storageCommand);
 
                 var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);
@@ -72,8 +72,7 @@ namespace SecretHistories.States
 
         public override void Continue(Situation situation)
         {
-            situation.CommandQueue.ExecuteCommandsFor(RehydrationValue, situation);
-            
+       
             if (situation.TimeRemaining <= 0)
              situation.TransitionToState(new RequiresExecutionState());
             else

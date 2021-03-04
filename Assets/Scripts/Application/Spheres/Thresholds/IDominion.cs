@@ -14,7 +14,7 @@ namespace SecretHistories.UI
   public interface IDominion: IEncaustable
 
   {
-
+        public string Id { get; }
       OnSphereAddedEvent OnSphereAdded { get; }
         OnSphereRemovedEvent OnSphereRemoved { get; }
         void RegisterFor(IManifestable manifestable);

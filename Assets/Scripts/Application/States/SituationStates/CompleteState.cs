@@ -18,13 +18,13 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var createOutputSphereCommand = new PopulateDominionCommand(new SphereSpec(typeof(OutputSphere),new OutputSphereIdStrategy()));
+            var createOutputSphereCommand = new PopulateDominionCommand("OutputDominion",new SphereSpec(typeof(OutputSphere),new OutputSphereIdStrategy()));
             situation.CommandQueue.AddCommand(createOutputSphereCommand);
 
             var migrateToOutputCommand=new FlushTokensToCategoryCommand(SphereCategory.SituationStorage,SphereCategory.Output,StateEnum.Complete);
             situation.CommandQueue.AddCommand(migrateToOutputCommand);
 
-            var attemptAspectInductionsCommand=new AttemptAspectInductionCommand(SphereCategory.Output);
+            var attemptAspectInductionsCommand=new AttemptAspectInductionCommand(SphereCategory.Output,StateEnum.Complete);
             situation.CommandQueue.AddCommand(attemptAspectInductionsCommand);
 
             SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj
@@ -52,7 +52,7 @@ namespace SecretHistories.States
 
         public override void Continue(Situation situation)
         {
-            situation.CommandQueue.ExecuteCommandsFor(RehydrationValue, situation);
+            
 
         }
     }

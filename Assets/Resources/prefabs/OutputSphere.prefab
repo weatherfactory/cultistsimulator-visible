@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6514412836286171956}
   - component: {fileID: 173994217101375650}
+  - component: {fileID: 4581970129566787473}
   m_Layer: 5
   m_Name: OutputSphere
   m_TagString: Untagged
@@ -50,9 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
-  SphereIdentifier: output
   canvasGroupFader: {fileID: 0}
-  outputPositioning: {fileID: 0}
+  outputPositioning: {fileID: 4581970129566787473}
   dumpResultsButtonText: {fileID: 0}
   AllTokenssCollected:
     m_PersistentCalls:
@@ -69,3 +69,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4581970129566787473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2576815992965740311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4c22b9545bf034fbd6f65bffe0746e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectTransform: {fileID: 6514412836286171956}
+  margin: {x: 50, y: 40}

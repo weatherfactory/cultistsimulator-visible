@@ -583,11 +583,11 @@ namespace SecretHistories.Entities {
 
         private SituationState Continue(float interval)
         {
-            
 
-        _timeshadow.SpendTime(interval);
+            CommandQueue.ExecuteCommandsFor(State.RehydrationValue, this);
+            _timeshadow.SpendTime(interval);
 
-            State.Continue(this);
+              State.Continue(this);
 
             return State;
         }
