@@ -59,17 +59,21 @@ namespace SecretHistories.Commands
 
         public Token Execute(Context context,Sphere sphere)
         {
+            //only use the location sphere is for some reason we don't have a valid sphere to accept the token
+            if (sphere == null && Location.AtSpherePath.IsValid())
+                sphere = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
 
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.transform);
+           
             
             var payloadForToken = Payload.Execute(context,sphere);
 
             token.SetPayload(payloadForToken);
+            
             sphere.AcceptToken(token, context);
             payloadForToken.FirstHeartbeat();
 
-            token.transform.localPosition = Location.Anchored3DPosition;
-
+            
             if (_sourceToken != null)
             {
                 SetTokenTravellingFromSpawnPoint(token);

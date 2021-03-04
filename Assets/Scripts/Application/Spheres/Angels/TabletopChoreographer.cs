@@ -14,10 +14,35 @@ using SecretHistories.Spheres;
 
 
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 namespace SecretHistories.Constants {
     //places, arranges and displays things on the table
+
     public class TabletopChoreographer:MonoBehaviour, ISettingSubscriber,IChoreographer {
+
+       class LegalPositionCheckResult
+       {
+           public bool IsLegal=false;
+           public string BlockerName;
+           public Rect BlockerRect;
+
+
+           public static LegalPositionCheckResult Legal()
+           {
+               return new LegalPositionCheckResult() { IsLegal = true};
+           }
+
+            public static LegalPositionCheckResult Illegal()
+           {
+               return new LegalPositionCheckResult();
+            }
+
+            public static LegalPositionCheckResult Blocked(string name,Rect rect)
+            {
+                return new LegalPositionCheckResult(){BlockerName = name,BlockerRect = rect};
+            }
+        }
 
         public TabletopSphere _tabletop;
         private Rect tableRect;
@@ -32,7 +57,7 @@ namespace SecretHistories.Constants {
         const float radiusIncrement = 50f;
         const float radiusMaxSize = 250f;
 
-        
+        private Dictionary<string,Rect> rectanglesToDisplay=new Dictionary<string, Rect>();
 
         public void Awake() {
             
@@ -46,6 +71,13 @@ namespace SecretHistories.Constants {
             }
             else
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.GRIDSNAPSIZE);
+        }
+
+
+        public void OnGUI()
+        {
+          foreach (var r in rectanglesToDisplay)
+                GUI.Box(r.Value, r.Key);
         }
 
         public void GroupAllStacks()
@@ -152,9 +184,20 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 			centerPos = SnapToGrid( centerPos );
 			var targetRect = GetCenterPosRect(centerPos, token.ManifestationRectTransform.rect.size);
 
-            if (IsLegalPosition(targetRect, token))
+            var legalPositionCheckResult = IsLegalPosition(targetRect, token);
+            if (legalPositionCheckResult.IsLegal)
+            {
+                HideAllRects();
                 return centerPos;
+            }
+            else
+            {
+                ShowRect(targetRect, token.name);
+                ShowRect(legalPositionCheckResult.BlockerRect, legalPositionCheckResult.BlockerName);
+            }
 
+        
+        
 
             // We grab a bunch of test points
             startIteration = startIteration > 0f ? startIteration : 1;
@@ -163,7 +206,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             // Go over the test points and check if there's a clear spot to place things
             foreach (var point in currentPoints)
 			{
-                if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token))
+                if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token).IsLegal)
                     return point;
             }
 
@@ -178,12 +221,12 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             // request a new set of points, since the center pos has shifted
             currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations);
 
-            if (IsLegalPosition(GetCenterPosRect(targetRect.position, targetRect.size), token))
+            if (IsLegalPosition(GetCenterPosRect(targetRect.position, targetRect.size), token).IsLegal)
                 return centerPos;
 
             foreach (var point in currentPoints)
 			{
-                if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token))
+                if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token).IsLegal)
                     return point;
             }
 
@@ -212,48 +255,50 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return pos;
         }
 
-        GameObject ShowRect(Rect rect,string name)
+        void ShowRect(Rect rect,string name)
         {
-        var obj=new GameObject("rect_" + name);    
-        obj.transform.SetParent(_tabletop.transform);
-        obj.AddComponent<UnityEngine.UI.Image>();
-        var objRectTransform = obj.GetComponent<RectTransform>();
-        objRectTransform.localPosition = rect.position;
-        objRectTransform. sizeDelta=new Vector2(rect.width,rect.height);
-    
+            if (string.IsNullOrEmpty(name))
+                return;
 
-        return obj;
+            var rectWorldPosition = _tabletop.GetRectTransform().TransformPoint(rect.position);
+            var rectScreenPosition= RectTransformUtility.WorldToScreenPoint( Camera.main, rectWorldPosition);
 
+            var guiRect=new Rect(rectScreenPosition,rect.size);
+
+            rectanglesToDisplay[name] = guiRect;
         }
 
-        bool IsLegalPosition(Rect candidateRect,  Token placingToken)
-		{
+        void HideRect(string name)
+        {
+            if (rectanglesToDisplay.ContainsKey(name))
+                rectanglesToDisplay.Remove(name);
+        }
 
-            
+        public void HideAllRects()
+        {
+            rectanglesToDisplay.Clear();
+        }
+
+        LegalPositionCheckResult IsLegalPosition(Rect candidateRect,  Token placingToken)
+		{
+          
             if (tableRect.Contains(candidateRect.position + candidateRect.size / 2f) == false)
-                return false;
+                
+                return LegalPositionCheckResult.Illegal();
             
             Rect otherTokenRect;
 
 
-            foreach (var token in _tabletop.Tokens) {
-                  otherTokenRect = GetRectWithSpherePosition(token.TokenRectTransform);
-                
-              
-            //  ShowRect(otherTokenRect,token.name);
+            foreach (var otherToken in _tabletop.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t))) {
+                  otherTokenRect = GetRectWithSpherePosition(otherToken.TokenRectTransform);
 
-                if (token==placingToken || CanTokenBeIgnored(token))
-                    continue;
-
-
-                if (otherTokenRect.Overlaps(candidateRect)) {
-                    //Debug.Log("Not a legal pos");
-                    return false;
+             if (otherTokenRect.Overlaps(candidateRect))
+                {
+                    return LegalPositionCheckResult.Blocked(otherToken.name,otherTokenRect);
                 }
             }
 
-            //Debug.Log("IS a legal pos");
-            return true;
+            return LegalPositionCheckResult.Legal();
         }
 
         bool CanTokenBeIgnored(Token token) {

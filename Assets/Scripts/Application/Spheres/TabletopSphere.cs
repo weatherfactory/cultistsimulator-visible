@@ -152,23 +152,14 @@ namespace SecretHistories.Spheres
             _tabletopChoreographer.MoveAllTokensOverlappingWith(token);
         }
 
-
-
-        void HandleOnTableDropped(PointerEventData eventData)
+        public override void AcceptToken(Token token, Context context)
         {
-            //if an anchor or element stack has been dropped on the background, we want to deal with it.
-            var potentialToken = eventData.pointerDrag.GetComponent<Token>();
-            if (potentialToken != null)
-            {
-                potentialToken.SetState(new DroppedInSphereState());
-                AcceptToken(potentialToken,
-                    new Context(Context.ActionSource.PlayerDrag));
-
-                CheckOverlappingTokens(potentialToken);
-                SoundManager.PlaySfx("CardDrop");
-            }
-
+          base.AcceptToken(token,context);
+          CheckOverlappingTokens(token);
+          SoundManager.PlaySfx("CardDrop");
+          _tabletopChoreographer.HideAllRects();
         }
+
 
         void HandleOnTableClicked(PointerEventData eventData)
         {

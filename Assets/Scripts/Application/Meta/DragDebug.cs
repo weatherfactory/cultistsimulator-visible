@@ -44,7 +44,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
     {
         currentlyDragging.text = args.Token?.name;
         currentSphere.text = args.Sphere?.name;
-        if (args.Token != null && args.Token.ManifestationRectTransform != null)
+        if (args.Token != null && args.Token.ManifestationRectTransform != null && args.Sphere!=null)
         {
             var localPosition = args.Token.TokenRectTransform.localPosition;
             
@@ -60,18 +60,26 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
             string pstring = $"{Math.Round(position.x, 0)}, {Math.Round(position.y, 0)}, {Math.Round(position.z, 0)}";
 
 
+            var defaultSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
+
+            
+            var projectionPosition = defaultSphere.GetRectTransform().InverseTransformPoint(position);
+            string projectedPositionInTabletop = $"{Math.Round(projectionPosition.x, 0)}, {Math.Round(projectionPosition.y, 0)}, {Math.Round(projectionPosition.z, 0)}";
+
+
 
             string hoveringOver = string.Empty;
             var hovered = args.PointerEventData.hovered;
 
             if(hovered.Any())
             {
+                hoveringOver = string.Empty;
                 foreach (var h in hovered)
                     hoveringOver = $"{hoveringOver}\n{h.name}";
             }
 
 
-            positioningText.text = $"Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \n Hovering Over: {hoveringOver}";
+            positioningText.text = $"Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \n Projected Position on Tabletop: {projectedPositionInTabletop} \nHovering Over: {hoveringOver}";
 
         }
 

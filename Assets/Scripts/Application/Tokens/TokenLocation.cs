@@ -17,7 +17,7 @@ namespace SecretHistories.UI
     // its *local* position (specifically, anchored3D position) relative to that sphere
     public class TokenLocation
   {
-      public Vector3 Anchored3DPosition { get; set; }
+      public virtual Vector3 Anchored3DPosition { get; set; }
       public FucinePath AtSpherePath { get; set; }
 
         public TokenLocation(){}
@@ -57,14 +57,15 @@ namespace SecretHistories.UI
 
         public TokenLocation WithSpherePath(FucinePath withSpherePath)
         {
-            var newTL=new TokenLocation(Anchored3DPosition,withSpherePath);
-            return newTL;
+            var newTl=new TokenLocation(Anchored3DPosition,withSpherePath);
+            return newTl;
         }
 
         public TokenLocation WithSphere(Sphere withSphere)
         {
             return WithSpherePath(withSphere.GetAbsolutePath());
         }
+
 
 
 

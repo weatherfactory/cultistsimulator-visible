@@ -252,7 +252,7 @@ namespace SecretHistories.UI {
             _ghost.ShowAt(projectInSphere, candidatePosition);
 
 
-//if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
+            //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
             _manifestation.Unhighlight(HighlightType.WillInteract);
 
             return true;

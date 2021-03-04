@@ -46,8 +46,8 @@ namespace SecretHistories.Ghosts
             if (!Visible)
                 return false; //if the ghost isn't active, there's no promise to fulfill.
 
-           //otherwise, we did show the ghost, so we'd better be ready to make good on it.
-      TokenTravelItinerary travellingToGhost =
+            //otherwise, we did show the ghost, so we'd better be ready to make good on it.
+            TokenTravelItinerary travellingToGhost =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, rectTransform.anchoredPosition3D)
                     .WithDuration(0.25f); //should be NoonConstants.MOMENT...
 
