@@ -29,8 +29,9 @@ namespace SecretHistories.Infrastructure
             set => _spheres = value;
         }
 
-        [Encaust]
-        public DominionEnum Identifier => DominionEnum.Unknown;
+
+        [Encaust] public DominionEnum Identifier => EditableIdentifier;
+        [SerializeField] private DominionEnum EditableIdentifier;
 
         private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
         private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();

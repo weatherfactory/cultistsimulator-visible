@@ -36,7 +36,7 @@ namespace SecretHistories.Commands
 
             foreach(var s in Spheres)
                 s.ExecuteOn(root, context);
-
+            
             DealersTable.Execute(root.DealersTable);
         }
 
@@ -51,30 +51,40 @@ namespace SecretHistories.Commands
             tabletopSphereCreationCommand.Tokens.AddRange(startingLegacy.GetTokenCreationCommandsToEnactLegacy());
             rootCommand.Spheres.Add(tabletopSphereCreationCommand);
 
-            rootCommand.DealersTable=new PopulateDominionCommand();
+            DealersTableForLegacy(startingLegacy, rootCommand);
 
-            var allDeckSpecs=Watchman.Get<Compendium>().GetEntitiesAsList<DeckSpec>();
-            foreach (var d in allDeckSpecs)
+
+            return rootCommand;
+        }
+
+        private static void DealersTableForLegacy(Legacy startingLegacy, RootPopulationCommand rootCommand)
+        {
+            rootCommand.DealersTable = new PopulateDominionCommand();
+
+            var allDeckSpecs = Watchman.Get<Compendium>().GetEntitiesAsList<DeckSpec>();
+            foreach (var deckSpec in allDeckSpecs)
             {
-                if (string.IsNullOrEmpty(d.ForLegacy) || startingLegacy.Id == d.ForLegacy)
+                if (string.IsNullOrEmpty(deckSpec.ForLegacy) || startingLegacy.Id == deckSpec.ForLegacy)
                 {
-                    var drawSphereSpec = new SphereSpec(typeof(CardPile), $"{d.Id}_draw");
-                    drawSphereSpec.ActionId = d.Id;
-
+                    var drawSphereSpec = new SphereSpec(typeof(CardPile), $"{deckSpec.Id}_draw");
+                    drawSphereSpec.ActionId = deckSpec.Id;
                     var drawSphereCommand = new SphereCreationCommand(drawSphereSpec);
+                    
+
+                    foreach(var card in deckSpec.Spec)
+                    {
+                        var t=new TokenCreationCommand().WithElementStack(card,1);
+                        drawSphereCommand.Tokens.Add(t);
+                    }
+
                     rootCommand.DealersTable.Spheres.Add(drawSphereCommand);
 
-                    var discardSphereSpec = new SphereSpec(typeof(CardPile), $"{d.Id}_discard");
-                    discardSphereSpec.ActionId = d.Id;
-
-                    var discardSphereCommand=new SphereCreationCommand(discardSphereSpec);
+                    var discardSphereSpec = new SphereSpec(typeof(CardPile), $"{deckSpec.Id}_discard");
+                    discardSphereSpec.ActionId = deckSpec.Id;
+                    var discardSphereCommand = new SphereCreationCommand(discardSphereSpec);
                     rootCommand.DealersTable.Spheres.Add(discardSphereCommand);
                 }
-
             }
-
-            
-            return rootCommand;
         }
     }
 }
