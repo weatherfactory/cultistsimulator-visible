@@ -11,6 +11,7 @@ using SecretHistories.Constants;
 using JetBrains.Annotations;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
+using SecretHistories.Infrastructure;
 using SecretHistories.Spheres;
 using UnityEngine;
 
@@ -98,28 +99,19 @@ namespace Assets.Logic
             var deckIds = command.GetDeckEffects();
             if (deckIds != null && deckIds.Any())
             {
-                var dealer = new Dealer(storage);
+                var dealer = new Dealer(Watchman.Get<DealersTable>());
 
                 foreach (var deckId in deckIds.Keys)
-                {
-                    var deck = storage.GetDeckInstanceById(deckId);
-                    if (deck != null)
-                    {
+     
                         for (int i = 1; i <= deckIds[deckId]; i++)
                         {
-                            var drawnCardId = deck.Draw();
-
-                            if (!string.IsNullOrEmpty(drawnCardId))
                             {
-                                sphere.ModifyElementQuantity(drawnCardId, 1, new Context(Context.ActionSource.SituationEffect));
-                            }
-                            else
-                            {
-                                Debug.LogError($"Failed to draw card '{drawnCardId}' from deck '{deckId}'");
+                                var drawnCard=dealer.Deal(deckId);
+                                sphere.AcceptToken(drawnCard,Context.Unknown());
+                 
+                           
                             }
                         }
-                    }
-                }
             }
         }
 

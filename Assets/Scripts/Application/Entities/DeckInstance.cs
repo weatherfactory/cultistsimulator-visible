@@ -61,29 +61,7 @@ namespace SecretHistories.Entities
         }
 
 
-        public string Draw()
-        {
-            if (_drawPile.GetTotalStacksCount()==0)
-            {
-                //if the deck is exhausted:
-                //--some decks reset, so we can have an infinite supply of whatevers.
-                if (_deckSpec.ResetOnExhaustion)
-                    Shuffle();
-            }
-            //Conceivably, resetting the deck might still not have given us a card,
-            //so let's test again
-            if (_drawPile.GetTotalStacksCount() > 0)
-            {
-                var cardDrawn = _drawPile.GetElementStacks().First();
-                return cardDrawn.EntityId;
-            }
 
-            
-            else
-                //if either the deck didn't reset on exhaustion,
-                //or a reset has still left us with no cards, always return the default card
-                return _deckSpec.DefaultCard;
-        }
 
 
         public void Add(string elementId)
@@ -94,29 +72,7 @@ namespace SecretHistories.Entities
 
             
         }
-        /// <summary>
-        /// This card is unique and has been drawn elsewhere, or belongs to the same uniqueness group as one that has been drawn elsewhere
-        /// </summary>
-        /// <param name="elementId"></param>
-        public void EliminateCardWithId(string elementId)
-        {
-            _drawPile.RetireTokensWhere(x=>x.Payload.EntityId==elementId);
 
-            if (_deckSpec.Spec.Contains(elementId))
-            {
-                var t = new TokenCreationCommand().WithElementStack(elementId, 1);
-                t.Execute(Context.Unknown(), _drawPile);
-            }
-
-        }
-
-        public void EliminateCardsInUniquenessGroup(string elementUniquenessGroup)
-        {
-            List<string> cardsToEliminate = _deckSpec.CardsInUniquenessGroup(elementUniquenessGroup);
-            if(cardsToEliminate!=null)
-                foreach(var c in cardsToEliminate)
-                    EliminateCardWithId(c);
-        }
 
 
         public List<string> GetCurrentCardsAsList()

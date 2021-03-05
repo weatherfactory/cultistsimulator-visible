@@ -79,7 +79,7 @@ namespace Assets.Scripts.Application.Meta
             NoonUtility.Log("Total time to import: " + (DateTime.Now - startImport));
 
             // Populate current decks with new cards (this will shuffle the deck)
-            Watchman.Get<Stable>().Protag().ResetStartingDecks();
+            //Watchman.Get<Stable>().Protag().ResetStartingDecks();
 
         }
 
@@ -146,11 +146,6 @@ namespace Assets.Scripts.Application.Meta
 
         }
 
-        void ResetDecks()
-        {
-            var character = Watchman.Get<Stable>().Protag();
-            character.ResetStartingDecks();
-        }
 
         void QueueRoll(string roll)
         {

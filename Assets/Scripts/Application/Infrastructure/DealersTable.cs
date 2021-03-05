@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Logic;
 using Assets.Scripts.Application.Abstract;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
@@ -58,6 +59,24 @@ namespace SecretHistories.Infrastructure
             w.Register(this);
         }
 
+        public IEnumerable<Sphere> GetDrawPiles()
+        {
+            var drawDeckSpheres = _spheres.Where(s => s.Id.EndsWith("_draw"));
+            return drawDeckSpheres;
+        }
+
+        public Sphere GetDrawPile(string forDeckSpecId)
+        {
+            return _spheres.SingleOrDefault(s =>
+                s.GoverningSphereSpec.ActionId == forDeckSpecId && s.Id.EndsWith("_draw"));
+        }
+
+        public Sphere GetForbiddenPile(string forDeckSpecId)
+        {
+            return _spheres.SingleOrDefault(s =>
+                s.GoverningSphereSpec.ActionId == forDeckSpecId && s.Id.EndsWith("_forbidden"));
+        }
+
         public void RegisterFor(IManifestable manifestable)
         {
             throw new NotImplementedException();
@@ -68,14 +87,14 @@ namespace SecretHistories.Infrastructure
             var newSphere=Watchman.Get<PrefabFactory>().InstantiateSphere(spec, Container);
             newSphere.transform.SetParent(transform);
             _spheres.Add(newSphere);
-            
+
             OnSphereAdded.Invoke(newSphere);
             return newSphere;
         }
 
         public Sphere GetSphereById(string id)
         {
-            throw new NotImplementedException();
+            return _spheres.SingleOrDefault(s => s.Id == id);
         }
 
         public bool RemoveSphere(string id)
@@ -91,6 +110,11 @@ namespace SecretHistories.Infrastructure
         public void Dismiss()
         {
             throw new NotImplementedException();
+        }
+
+        public Dealer GetDealer()
+        {
+            return new Dealer(this);
         }
     }
 }

@@ -61,7 +61,7 @@ namespace SecretHistories.Commands
         {
             rootCommand.DealersTable = new PopulateDominionCommand();
 
-            var allDeckSpecs = Watchman.Get<Compendium>().GetEntitiesAsList<DeckSpec>();
+            var allDeckSpecs = Watchman.Get<Compendium>().GetEntitiesAsAlphabetisedList<DeckSpec>();
             foreach (var deckSpec in allDeckSpecs)
             {
                 if (string.IsNullOrEmpty(deckSpec.ForLegacy) || startingLegacy.Id == deckSpec.ForLegacy)
@@ -79,7 +79,7 @@ namespace SecretHistories.Commands
 
                     rootCommand.DealersTable.Spheres.Add(drawSphereCommand);
 
-                    var discardSphereSpec = new SphereSpec(typeof(CardPile), $"{deckSpec.Id}_discard");
+                    var discardSphereSpec = new SphereSpec(typeof(CardPile), $"{deckSpec.Id}_forbidden");
                     discardSphereSpec.ActionId = deckSpec.Id;
                     var discardSphereCommand = new SphereCreationCommand(discardSphereSpec);
                     rootCommand.DealersTable.Spheres.Add(discardSphereCommand);

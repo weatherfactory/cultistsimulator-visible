@@ -95,9 +95,6 @@ public class Character:MonoBehaviour,IEncaustable
 
 
 
-    public Transform CurrentDecks;
-    public DeckInstance DeckPrefab;
-
 
     private Dictionary<string, string> _inProgressHistoryRecords=new Dictionary<string, string>();
     private Dictionary<string, string> _previousCharacterHistoryRecords=new Dictionary<string, string>();
@@ -116,29 +113,10 @@ public class Character:MonoBehaviour,IEncaustable
 
 
     private Dictionary<string, int> _recipeExecutions=new Dictionary<string, int>();
-    private Dictionary<string, DeckInstance> _deckInstances=new Dictionary<string, DeckInstance>();
     private string _profession;
     private HashSet<ICharacterSubscriber> _subscribers = new HashSet<ICharacterSubscriber>();
     private string _name = "[unnamed]";
 
-
-
-    public void ResetStartingDecks()
-    {
-        foreach (Transform deck in CurrentDecks)
-            Destroy(deck.gameObject);
-
-        
-        var compendium = Watchman.Get<Compendium>();
-        foreach (var ds in compendium.GetEntitiesAsAlphabetisedList<DeckSpec>())
-        {
-            DeckInstance di=Instantiate(DeckPrefab, CurrentDecks);
-            di.SetSpec(ds);
-            di.Shuffle();
-
-            _deckInstances.Add(di.Id,di);
-        }
-    }
 
 
 
@@ -207,60 +185,8 @@ else
             return null;
     }
 
-    public List<DeckInstance> GetAllDecks()
-    {
-        return _deckInstances.Values.ToList();
-    }
-
-    public DeckInstance GetDeckInstanceById(string id)
-    {
-        try
-        {
-            foreach (Transform d in CurrentDecks)
-            {
-                var deck = d.GetComponent<DeckInstance>();
-                if (deck.Id == id)
-                    return deck;
-            }
-
-            return null;
-                
-        }
-        catch (Exception e)
-        {
-            NoonUtility.Log(e.Message + " for deck instance id " + id,2);
-            throw;
-        }
-    }
-
-    public void UpdateDeckInstanceFromSave(DeckSpec ds,Hashtable htEachDeck)
-    {
-        DeckInstance deckToUpdate;
-            
-        deckToUpdate= GetDeckInstanceById(ds.Id);
-        if (deckToUpdate == null)
-        {
-            deckToUpdate = Instantiate(DeckPrefab, CurrentDecks);
-            deckToUpdate.SetSpec(ds);
-        }
-
-  
-        foreach (string key in htEachDeck.Keys)
-        {
-            if (key==SaveConstants.SAVE_ELIMINATEDCARDS)
-            {
-                ArrayList alEliminated = htEachDeck.GetArrayList(key);
-                foreach (string eliminatedCard in alEliminated)
-                    deckToUpdate.EliminateCardWithId(eliminatedCard);
-            }
-            else
-            {
-                deckToUpdate.Add(htEachDeck[key].ToString());
-            }
-        }
 
 
-    }
 
  
 

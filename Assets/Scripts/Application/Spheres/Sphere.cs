@@ -22,6 +22,7 @@ using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Assets.Scripts.Application.Spheres;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Infrastructure;
 using SecretHistories.NullObjects;
 using Steamworks;
 using UnityEngine;
@@ -474,11 +475,11 @@ namespace SecretHistories.Spheres
 
                 if (EnforceUniqueStacksInThisContainer)
                 {
-                    var dealer = new Dealer(Watchman.Get<Stable>().Protag());
+                    var dealer = new Dealer(Watchman.Get<DealersTable>());
                     if (!String.IsNullOrEmpty(token.Payload.UniquenessGroup))
-                        dealer.RemoveFromAllDecksIfInUniquenessGroup(token.Payload.UniquenessGroup);
+                        dealer.IndicateElementInUniquenessGroupManifested(token.Payload.UniquenessGroup);
                     if (token.Payload.Unique)
-                        dealer.IndicateUniqueCardManifested(token.Payload.EntityId);
+                        dealer.IndicateUniqueElementManifested(token.Payload.EntityId);
                 }
 
                 // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
@@ -610,11 +611,17 @@ namespace SecretHistories.Spheres
                 t.Retire(RetirementVFX.None);
         }
 
+        public IEnumerable<Token> GetTokensWhere(Func<Token,bool> filter)
+        {
+            return _tokens.Where(filter);
+        }
+
         public void RetireTokensWhere(Func<Token, bool> filter)
         {
             var tokensToRetire = new List<Token>(_tokens).Where(filter);
             foreach (Token t in tokensToRetire)
                 t.Retire(RetirementVFX.None);
+            
         }
 
         public void EvictAllTokens(Context context)
