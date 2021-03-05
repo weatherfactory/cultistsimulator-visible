@@ -1,4 +1,5 @@
-﻿using SecretHistories.Manifestations;
+﻿using SecretHistories.Abstract;
+using SecretHistories.Manifestations;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
@@ -6,22 +7,28 @@ using UnityEngine;
 
 namespace SecretHistories.Ghosts
 {
-    public class NullGhost : AbstractGhost
+    public class NullGhost : IGhost
     {
+        public bool Visible { get; private set; }
 
-        public override void ShowAt(Sphere projectInSphere, Vector3 anchoredPosition3D)
+        public  void ShowAt(Sphere projectInSphere, Vector3 anchoredPosition3D)
         {
             Visible = false; //nope, null ghosts are never visible
 
         }
 
-        public override void HideIn(Token forToken)
+        public  void HideIn(Token forToken)
         {
    
             Visible = false;
         }
 
-        public override void Retire()
+        public bool TryFulfilPromise(Token token, Context context)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public  void Retire()
         {
            //
         }
