@@ -259,6 +259,9 @@ namespace SecretHistories.UI {
             if (forSphereCategory == SphereCategory.Notes)
                 return typeof(TextManifestation);
 
+            if (forSphereCategory == SphereCategory.Meta)
+                return typeof(NullManifestation);
+
             var type = Watchman.LocateManifestationType(Element.ManifestationType);
             return type;
 

@@ -16,7 +16,7 @@ namespace SecretHistories.Abstract
         public event Action<float> OnLifetimeSpent;
         bool IsOpen { get;}
 
-
+        
         public List<IDominion> Dominions { get; }
         
         Type GetManifestationType(SphereCategory sphereCategory);

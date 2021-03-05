@@ -29,6 +29,7 @@ public class CreationCommandsSmokeTests
 {
     private HornedAxe _hornedAxe;
     private Sphere _minimalTabletopSurrogate;
+    private Sphere _minimalWindowsSurrogate;
 
     [SetUp]
     public void WithMinimalCompendiumLoad()
@@ -58,8 +59,11 @@ public class CreationCommandsSmokeTests
 
         _hornedAxe = Watchman.Get<HornedAxe>();
 
-        var minimalSphereSpec = new SphereSpec(typeof(MinimalSphere), "tabletop");
-        _minimalTabletopSurrogate = Watchman.Get<PrefabFactory>().InstantiateSphere(minimalSphereSpec);
+        var defaultSphereSpec = new SphereSpec(typeof(MinimalSphere), "tabletop");
+        defaultSphereSpec.WindowsSpherePath = new FucinePath("~/windows");
+        _minimalTabletopSurrogate = Watchman.Get<PrefabFactory>().InstantiateSphere(defaultSphereSpec);
+        var windowsSphereSpec = new SphereSpec(typeof(MinimalSphere), "windows");
+        _minimalWindowsSurrogate = Watchman.Get<PrefabFactory>().InstantiateSphere(windowsSphereSpec);
 
     }
 
@@ -71,7 +75,7 @@ public class CreationCommandsSmokeTests
         var elementStackCreationCommand = new ElementStackCreationCommand(elementId, elementQuantity);
         var elementStack=elementStackCreationCommand.Execute(new Context(Context.ActionSource.Unknown), _minimalTabletopSurrogate);
         Assert.IsTrue(elementStack.IsValidElementStack());
-        Assert.AreEqual(elementId,elementStack.Id);
+        Assert.AreEqual(elementId,elementStack.EntityId);
         Assert.AreEqual(elementQuantity, elementStack.Quantity);
     }
 

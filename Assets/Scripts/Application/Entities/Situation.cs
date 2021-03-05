@@ -289,6 +289,9 @@ namespace SecretHistories.Entities {
 
         public Type GetManifestationType(SphereCategory sphereCategory)
         {
+            if (sphereCategory == SphereCategory.Meta)
+                return typeof(NullManifestation);
+
             return typeof(VerbManifestation);
         }
 
