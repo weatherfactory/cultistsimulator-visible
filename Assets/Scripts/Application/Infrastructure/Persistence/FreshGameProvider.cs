@@ -40,14 +40,7 @@ namespace SecretHistories.Infrastructure.Persistence
 
         public override void DepersistGameState()
         {
-            _persistedGameState.RootPopulationCommand = RootPopulationCommand.ForLegacy(StartingLegacy);
-          
-            var cc = CharacterCreationCommand.IncarnateFromLegacy(StartingLegacy);
-            _persistedGameState.CharacterCreationCommands.Add(cc);
-
-            var notificationCommand=new AddNoteCommand(StartingLegacy.Label,StartingLegacy.Description,new Context(Context.ActionSource.Loading));
-
-            _persistedGameState.NotificationCommands.Add(notificationCommand);
+            _persistedGameState= PersistedGameState.ForLegacy(StartingLegacy);
 
         }
 

@@ -8,7 +8,7 @@ using SecretHistories.Fucine;
 using SecretHistories.UI;
 using UnityEngine;
 
-namespace SecretHistories.Assets.Scripts.Application.Commands
+namespace SecretHistories.Commands
 {
     public class SphereCreationCommand: IEncaustment
     {

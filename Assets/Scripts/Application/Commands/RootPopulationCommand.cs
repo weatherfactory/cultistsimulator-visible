@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
+using SecretHistories.Infrastructure.Persistence;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 
-namespace SecretHistories.Assets.Scripts.Application.Commands
+namespace SecretHistories.Commands
 {
     public class RootPopulationCommand: IEncaustment
     {
@@ -36,7 +38,8 @@ namespace SecretHistories.Assets.Scripts.Application.Commands
           
         }
 
-        public static RootPopulationCommand ForLegacy(Legacy startingLegacy)
+        
+        public static RootPopulationCommand RootCommandForLegacy(Legacy startingLegacy)
         {
             var rootCommand=new  RootPopulationCommand();
             var tabletoppath=new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
