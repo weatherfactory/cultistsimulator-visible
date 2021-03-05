@@ -40,15 +40,17 @@ namespace SecretHistories.Commands
          }
         }
 
-        public void ExecuteOn(SituationDominion situationDominion,Context context)
+        public void ExecuteOn(IDominion dominion,Context context)
         {
             
             //ownersphereidentifier and container will also need thought
-     var sphere=situationDominion.CreateSphere(GoverningSphereSpec);
+     var sphere=dominion.CreateSphere(GoverningSphereSpec);
      sphere.OwnerSphereIdentifier = OwnerSphereIdentifier;
          foreach (var t in Tokens)
              t.Execute(context,sphere);
         }
+
+
     }
 }
  

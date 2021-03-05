@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Abstract;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
@@ -13,27 +15,25 @@ using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 
-namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
+namespace SecretHistories.Infrastructure
 {
     [IsEncaustableClass(typeof(PopulateDominionCommand))]
-    public class ShelfDominion: MonoBehaviour,IDominion
+    public class DealersTable: MonoBehaviour,IDominion
     {
-        private IManifestable _manifestable;
-
-        private HashSet<Sphere>_spheres=new HashSet<Sphere>();
-
+        private List<Sphere> _spheres=new List<Sphere>();
 
         [Encaust]
-        public string Id { get; set; }
-
+        public List<Sphere> Spheres
+        {
+            get => _spheres;
+            set => _spheres = value;
+        }
 
         [Encaust]
-        public List<Sphere> Spheres =>new List<Sphere>(_spheres);
+        public DominionEnum Identifier => DominionEnum.Unknown;
 
         private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
         private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
-
-        public DominionEnum Identifier => DominionEnum.Unknown;
 
         [DontEncaust]
         public OnSphereAddedEvent OnSphereAdded
@@ -48,55 +48,48 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
             get => _onSphereRemoved;
             set => _onSphereRemoved = value;
         }
+        [DontEncaust]
+        public IHasAspects Container=>FucineRoot.Get(); //in case we ever move it
 
+        public void Awake()
+        {
+            var w=new Watchman();
+            w.Register(this);
+        }
 
         public void RegisterFor(IManifestable manifestable)
         {
-            _manifestable = manifestable;
-            manifestable.RegisterDominion(this);
-
-            for (int i = 0; i < 3; i++)
-            {
-                var shelfSpaceSpec=new SphereSpec(typeof(ShelfSpaceSphere),"shelf" + i);
-               _spheres.Add(CreateSphere(shelfSpaceSpec));
-            }
+            throw new NotImplementedException();
         }
-        
+
         public Sphere CreateSphere(SphereSpec spec)
         {
-            var newSphere=Watchman.Get<PrefabFactory>().InstantiateSphere(spec);
-            newSphere.gameObject.transform.SetParent(this.gameObject.transform); //MANUALLY? really? the problem is that the gameobject hierarchy is now quite different from the FucinePath one
+            var newSphere=Watchman.Get<PrefabFactory>().InstantiateSphere(spec, Container);
+            newSphere.transform.SetParent(transform);
+            _spheres.Add(newSphere);
+            
             OnSphereAdded.Invoke(newSphere);
             return newSphere;
         }
 
         public Sphere GetSphereById(string id)
         {
-            return _spheres.SingleOrDefault(s => s.Id == id);
+            throw new NotImplementedException();
         }
 
         public bool RemoveSphere(string id)
         {
-            var sphereToRemove = GetSphereById(id);
-            if (sphereToRemove != null)
-            {
-                _spheres.Remove(sphereToRemove);
-                OnSphereRemoved.Invoke(sphereToRemove);
-                sphereToRemove.Retire(SphereRetirementType.Graceful);
-                return true;
-            }
-            else
-                return false;
+            throw new NotImplementedException();
         }
 
         public void Evoke()
         {
-           //
+            throw new NotImplementedException();
         }
 
         public void Dismiss()
         {
-            //
+            throw new NotImplementedException();
         }
     }
 }

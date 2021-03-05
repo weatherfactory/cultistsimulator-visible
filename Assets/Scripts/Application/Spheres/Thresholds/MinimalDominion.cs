@@ -53,6 +53,16 @@ namespace SecretHistories.UI
                 return false;
         }
 
+        public void Evoke()
+        {
+            //
+        }
+
+        public void Dismiss()
+        {
+         //
+        }
+
         public Sphere CreateSphere(SphereSpec spec)
         {
             var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec, _manifestable);

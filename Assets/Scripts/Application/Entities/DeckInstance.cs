@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Scripts.Application.Commands;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Fucine;
@@ -16,13 +15,25 @@ using Random = System.Random;
 
 namespace SecretHistories.Entities
 {
-    [IsEncaustableClass(typeof(DeckInstanceCreationCommand))]
-    public class DeckInstance : MonoBehaviour,IEncaustable
+    public class DeckInstance : MonoBehaviour
     {
 #pragma warning disable 649
         private DeckSpec _deckSpec;
-      [SerializeField]  private CardsPile _drawPile;
-      [SerializeField] private CardsPile _forbiddenCards;
+      [SerializeField]  private CardPile _drawPile;
+      [SerializeField] private CardPile _forbiddenCard;
+
+      [Encaust]
+      public List<CardPile> CardsPiles
+      {
+          get
+          {
+              var piles=new List<CardPile>();
+                piles.Add(_drawPile);
+                piles.Add(_forbiddenCard);
+                return piles;
+          }
+      }
+
       [Encaust]
       public string Id => _deckSpec?.Id;
 
@@ -46,7 +57,7 @@ namespace SecretHistories.Entities
 
         public void Shuffle()
         {
-        _drawPile.Shuffle(_forbiddenCards.GetUniqueStackElementIds());
+        _drawPile.Shuffle(_forbiddenCard.GetUniqueStackElementIds());
         }
 
 

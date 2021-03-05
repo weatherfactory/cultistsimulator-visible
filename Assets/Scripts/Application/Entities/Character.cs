@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Scripts.Application.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Services;

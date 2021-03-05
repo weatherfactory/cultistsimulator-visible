@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Logic;
 using Assets.Scripts.Application.Abstract;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
@@ -10,6 +11,7 @@ using SecretHistories.Commands;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
+using SecretHistories.Infrastructure;
 using SecretHistories.NullObjects;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
@@ -33,13 +35,15 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
         [DontEncaust]
         public string Id => FucinePath.ROOT.ToString();
 
-        private ITokenPayload _payload;
 
         private readonly List<Sphere> _spheres=new List<Sphere>();
+        private readonly List<CardPile> _cardPiles=new List<CardPile>();
         private Dictionary<string, int> _mutations= new Dictionary<string, int>();
 
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
+
+        [Encaust] public DealersTable DealersTable => Watchman.Get<DealersTable>();
 
         [Encaust]
         public Dictionary<string, int> Mutations
@@ -85,6 +89,7 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             return Watchman.Get<HornedAxe>().GetSphereByPath(defaultSphere.GoverningSphereSpec.EnRouteSpherePath);
         }
 
+        
         public Sphere GetWindowsSphere()
         {
             var defaultSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();

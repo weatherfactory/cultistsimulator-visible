@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assets.Scripts.Application.Commands;
 using Assets.Scripts.Application.Entities.NullEntities;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
@@ -14,6 +13,7 @@ using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Fucine;
+using SecretHistories.Infrastructure;
 using SecretHistories.Logic;
 using SecretHistories.NullObjects;
 using SecretHistories.Services;
@@ -27,6 +27,7 @@ using UnityEngine;
     public class EncaustablesEncaust_SmokeTests
     {
         private Sphere worldSphere;
+        private DealersTable dealersTable;
 
         [SetUp]
         public void Setup()
@@ -36,6 +37,12 @@ using UnityEngine;
             
             worldSphere = Watchman.Get<PrefabFactory>()
                 .InstantiateSphere(new SphereSpec(typeof(MinimalSphere), "minimalworldsphere"));
+
+            var dealersTableObj=new GameObject();
+            dealersTable = dealersTableObj.AddComponent<DealersTable>();
+            var w=new Watchman();
+            w.Register(dealersTable);
+
         }
 
         [Test]
@@ -48,13 +55,6 @@ using UnityEngine;
         }
 
         [Test]
-        public void DeckInstance_Encausts()
-        {
-            var encaustery = new Encaustery<DeckInstanceCreationCommand>();
-            var deckInstance = new GameObject().AddComponent<DeckInstance>();
-            encaustery.Encaust(deckInstance);
-        }
-    [Test]
         public void ElementStack_Encausts()
         {
             var encaustery = new Encaustery<ElementStackCreationCommand>();

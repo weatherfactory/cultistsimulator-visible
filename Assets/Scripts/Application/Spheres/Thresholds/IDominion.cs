@@ -23,5 +23,7 @@ namespace SecretHistories.UI
       Sphere CreateSphere(SphereSpec spec);
       Sphere GetSphereById(string id);
       bool RemoveSphere(string id);
-  }
+      public void Evoke();
+      public void Dismiss();
+    }
 }

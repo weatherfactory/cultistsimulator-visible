@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Assets.Scripts.Application.Commands;
-using Assets.Scripts.Application.Entities;
+
 using NUnit.Framework;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
@@ -142,15 +141,7 @@ public class CreationCommandsSmokeTests
         Assert.IsInstanceOf<Character>(character);
     }
 
-    [Test]
-    public void CreateDeckInstance()
-    {
 
-        var deckInstanceCreationCommand=new DeckInstanceCreationCommand();
-        var deckInstance = deckInstanceCreationCommand.Execute();
-        Assert.IsInstanceOf<DeckInstance>(deckInstance);
-
-    }
 
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use

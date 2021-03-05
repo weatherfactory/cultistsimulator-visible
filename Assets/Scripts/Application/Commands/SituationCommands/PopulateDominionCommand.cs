@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
@@ -49,6 +50,17 @@ namespace SecretHistories.Commands.SituationCommands
             }
         }
 
+        public bool Execute(IDominion dominion)
+        {
+           if (dominion != null)
+           {
+               foreach (var s in Spheres)
+                   s.ExecuteOn(dominion, new Context(Context.ActionSource.Unknown));
+               return true;
+           }
+
+           return false;
+        }
         
         public bool Execute(Situation situation)
         {

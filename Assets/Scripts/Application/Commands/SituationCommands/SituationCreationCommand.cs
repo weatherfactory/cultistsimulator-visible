@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Application.Commands;
-using Assets.Scripts.Application.Fucine;
-using Assets.Scripts.Application.Interfaces;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
 using SecretHistories.Commands.SituationCommands;

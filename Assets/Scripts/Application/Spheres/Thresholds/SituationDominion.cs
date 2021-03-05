@@ -30,9 +30,7 @@ namespace SecretHistories.UI {
 
         [SerializeField] private AbstractSphereArrangement sphereArrangement;
 
-        
-        private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
-        private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
+
 
         [Encaust] public DominionEnum Identifier => EditableIdentifier;
         [SerializeField] private DominionEnum EditableIdentifier;
@@ -42,6 +40,8 @@ namespace SecretHistories.UI {
 
 
 
+        private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
+        private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
 
         [DontEncaust]
         public OnSphereAddedEvent OnSphereAdded

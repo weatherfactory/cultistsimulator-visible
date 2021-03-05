@@ -103,7 +103,7 @@ namespace SecretHistories.Services
                     instantiatedPrefab = new GameObject();
                     instantiatedPrefab.AddComponent<ThresholdSphere>();
                 }
-                instantiatedPrefab.name = $"{spec.SphereType.Name}";
+                instantiatedPrefab.name = $"{spec.SphereType.Name}_{spec.Id}";
                 var newSphere = instantiatedPrefab.GetComponent(spec.SphereType) as Sphere;
                 container.AttachSphere(newSphere);
                 
