@@ -34,7 +34,7 @@ namespace SecretHistories.Manifestations
 
 #pragma warning restore 649
 
-        public Type GhostType => typeof(NullGhost);
+
 
         public void InitialiseVisuals(IManifestable manifestable)
         {
@@ -61,6 +61,11 @@ namespace SecretHistories.Manifestations
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support DisplaySpheres");
+        }
+
+        public IGhost CreateGhost()
+        {
+            return new NullGhost();
         }
 
         public void OverrideIcon(string icon)

@@ -140,10 +140,12 @@ namespace Assets.Tests.EditModeTests
         public void FucinePathInitialisedWithNull_Parses()
         {
             var emptyPath=new FucinePath("");
-            Assert.IsTrue(emptyPath.IsValid());
+            Assert.IsFalse(emptyPath.IsValid());
+            Assert.IsTrue(emptyPath.IsEmpty());
             Assert.AreEqual(string.Empty,emptyPath.ToString());
             var whitespaceEmptyPath=new FucinePath(" ");
-            Assert.IsTrue(whitespaceEmptyPath.IsValid());
+            Assert.IsFalse(whitespaceEmptyPath.IsValid());
+            Assert.IsTrue(emptyPath.IsEmpty());
             Assert.AreEqual(string.Empty, emptyPath.ToString());
         }
 

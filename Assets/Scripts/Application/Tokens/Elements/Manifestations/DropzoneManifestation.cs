@@ -10,6 +10,7 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Ghosts;
+using SecretHistories.Services;
 using SecretHistories.UI;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
@@ -30,7 +31,6 @@ namespace SecretHistories.Manifestations
         public bool RequestingNoDrag => false;
         [SerializeField] private BubbleSphere bubbleSphere;
 
-        public Type GhostType => typeof(NullGhost);
 
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -81,6 +81,11 @@ namespace SecretHistories.Manifestations
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
         //
+        }
+
+        public IGhost CreateGhost()
+        {
+        return new NullGhost();
         }
 
         public void OverrideIcon(string icon)

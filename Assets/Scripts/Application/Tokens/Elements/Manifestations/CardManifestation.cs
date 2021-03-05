@@ -14,6 +14,7 @@ using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Elements;
 using SecretHistories.Ghosts;
+using SecretHistories.Services;
 using SecretHistories.Spheres;
 using TMPro;
 using UnityEngine;
@@ -53,7 +54,7 @@ namespace SecretHistories.Manifestations
         private FlipHelper _flipHelper;
 
         public bool RequestingNoDrag => _flipHelper.FlipInProgress;
-        public Type GhostType => typeof(CardGhost);
+        
 
         public void Awake()
         {
@@ -108,6 +109,13 @@ namespace SecretHistories.Manifestations
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
             NoonUtility.LogWarning("CardManifestation doesn't support DisplaySpheres");
+        }
+
+        public IGhost CreateGhost()
+        {
+            var newGhost = Watchman.Get<PrefabFactory>()
+                .CreateGhostPrefab(typeof(CardGhost), this.RectTransform);
+            return newGhost;
         }
 
         public void OverrideIcon(string icon)

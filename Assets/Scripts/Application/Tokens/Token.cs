@@ -225,9 +225,9 @@ namespace SecretHistories.UI {
                 _manifestation.Reveal(true);
 
             if(_ghost!=null)
-                Destroy(_ghost);
+                _ghost.Retire();
 
-            _ghost = AbstractGhost.Create(_manifestation);
+            _ghost = _manifestation.CreateGhost();
             HideGhost();
 
 
@@ -238,7 +238,7 @@ namespace SecretHistories.UI {
             //
         }
 
-        private AbstractGhost _ghost;
+        private IGhost _ghost;
         public bool DisplayGhost(Sphere projectInSphere)
         {
             if (_ghost == null)

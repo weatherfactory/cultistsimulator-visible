@@ -8,6 +8,7 @@ using SecretHistories.Assets.Scripts.Application.Spheres.Thresholds;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Ghosts;
+using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
@@ -23,8 +24,7 @@ namespace SecretHistories.Manifestations
 
         [SerializeField] List<ShelfDominion> _dominions;
 
-        public Type GhostType => typeof(BookcaseGhost);
-
+ 
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
@@ -107,6 +107,13 @@ namespace SecretHistories.Manifestations
 
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
+        }
+
+        public IGhost CreateGhost()
+        {
+            var newGhost = Watchman.Get<PrefabFactory>()
+                .CreateGhostPrefab(typeof(BookcaseGhost), this.RectTransform);
+            return newGhost;
         }
 
         public void SetParticleSimulationSpace(Transform transform)

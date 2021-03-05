@@ -22,8 +22,7 @@ namespace SecretHistories.Manifestations
     {
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
-        public Type GhostType => typeof(NullGhost);
-
+        
         [SerializeField] private TMP_Text textComponent;
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
@@ -113,6 +112,11 @@ namespace SecretHistories.Manifestations
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
             NoonUtility.Log("Not implemented for TextManifestation: DisplaySpheres");
+        }
+
+        public IGhost CreateGhost()
+        {
+            return new NullGhost();
         }
 
         public void SetParticleSimulationSpace(Transform transform)

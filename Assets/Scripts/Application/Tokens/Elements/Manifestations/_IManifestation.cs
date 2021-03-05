@@ -50,7 +50,6 @@ namespace SecretHistories.Manifestations
         void Emphasise();
         void Understate();
         bool RequestingNoDrag { get; }
-        Type GhostType { get;}
         void DoMove(RectTransform tokenRectTransform);
 
         void SendNotification(INotification notification);
@@ -59,7 +58,7 @@ namespace SecretHistories.Manifestations
         bool HandlePointerDown(PointerEventData eventData, Token token);
 
         void DisplaySpheres(IEnumerable<Sphere> spheres);
-        
+        IGhost CreateGhost();
         
         /// <summary>
         /// needs to be set to initial token container

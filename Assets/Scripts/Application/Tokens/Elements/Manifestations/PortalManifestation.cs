@@ -22,8 +22,7 @@ namespace SecretHistories.Manifestations
     {
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
-        public Type GhostType => typeof(NullGhost);
-
+   
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
@@ -173,6 +172,11 @@ namespace SecretHistories.Manifestations
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
+        }
+
+        public IGhost CreateGhost()
+        {
+            return new NullGhost();
         }
 
         public void OverrideIcon(string icon)

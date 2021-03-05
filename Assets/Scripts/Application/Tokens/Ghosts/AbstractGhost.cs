@@ -1,4 +1,5 @@
-﻿using SecretHistories.Commands;
+﻿using SecretHistories.Abstract;
+using SecretHistories.Commands;
 using SecretHistories.Manifestations;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace SecretHistories.Ghosts
 {
-    public abstract class AbstractGhost: MonoBehaviour
+    public abstract class AbstractGhost: MonoBehaviour,IGhost
     {
         
         protected RectTransform rectTransform;
@@ -34,12 +35,6 @@ namespace SecretHistories.Ghosts
             Visible = false;
         }
 
-        public static AbstractGhost Create(IManifestation manifestation)
-        {
-            var newGhost=Watchman.Get<PrefabFactory>()
-                .CreateGhostPrefab(manifestation.GhostType,manifestation.RectTransform);
-            return newGhost;
-        }
 
         public bool TryFulfilPromise(Token token,Context context)
         {
@@ -57,6 +52,11 @@ namespace SecretHistories.Ghosts
 
             //and say that we've fulfilled the promise
             return true;
+        }
+
+        public virtual void Retire()
+        {
+            Destroy(gameObject);
         }
 
     }

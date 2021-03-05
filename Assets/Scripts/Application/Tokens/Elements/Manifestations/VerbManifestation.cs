@@ -15,6 +15,7 @@ using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Core;
 using SecretHistories.Ghosts;
+using SecretHistories.Services;
 using SecretHistories.Spheres;
 using TMPro;
 using UnityEngine;
@@ -63,8 +64,6 @@ namespace SecretHistories.Manifestations
         SituationTokenDumpButton dumpButton;
 
         [SerializeField] public GraphicFader glowImage;
-
-        public Type GhostType => typeof(VerbGhost);
 
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
@@ -227,6 +226,13 @@ namespace SecretHistories.Manifestations
                 dumpButton.gameObject.SetActive(false);
             }
 
+        }
+
+        public IGhost CreateGhost()
+        {
+            var newGhost = Watchman.Get<PrefabFactory>()
+                .CreateGhostPrefab(typeof(CardGhost), this.RectTransform);
+            return newGhost;
         }
 
 

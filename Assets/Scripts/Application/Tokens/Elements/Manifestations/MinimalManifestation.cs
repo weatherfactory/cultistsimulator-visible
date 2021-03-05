@@ -11,6 +11,7 @@ using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Ghosts;
+using SecretHistories.Services;
 using SecretHistories.Spheres;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -69,6 +70,11 @@ namespace SecretHistories.Manifestations
 
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
+        }
+
+        public IGhost CreateGhost()
+        {
+      return new NullGhost();
         }
 
         public void OverrideIcon(string icon)

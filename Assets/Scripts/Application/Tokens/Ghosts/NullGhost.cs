@@ -17,8 +17,13 @@ namespace SecretHistories.Ghosts
 
         public override void HideIn(Token forToken)
         {
-            rectTransform.SetParent(forToken.TokenRectTransform); //so it doesn't clutter up the hierarchy
+   
             Visible = false;
+        }
+
+        public override void Retire()
+        {
+           //
         }
 
 
