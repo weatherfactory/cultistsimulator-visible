@@ -157,7 +157,7 @@ namespace SecretHistories.Manifestations
             
         }
 
-        public bool NoPush => true;
+        public bool NoPush => false;
         public void Reveal(bool instant)
         {
         }
