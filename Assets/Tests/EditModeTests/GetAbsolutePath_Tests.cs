@@ -49,7 +49,7 @@ namespace Assets.Tests.EditModeTests
 
             var sphereInTokenPayloadSpec = new SphereSpec(typeof(MinimalSphere), "sphereInTokenPayload");
 
-            _sphereInTokenPayload = _tokenInSphere.Payload.Dominions.First().CreateSphere(sphereInTokenPayloadSpec);
+            _sphereInTokenPayload = _tokenInSphere.Payload.Dominions.First().TryCreateSphere(sphereInTokenPayloadSpec);
             _hornedAxe.RegisterSphere(_sphereInTokenPayload);
         }
 

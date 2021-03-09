@@ -376,7 +376,7 @@ namespace SecretHistories.Entities {
            }
            var specIdStrategy=new NotesSphereSpecIdentifierStrategy(existingNotesSpheres.Count);
            var notesSphereSpec=new SphereSpec(typeof(NotesSphere),specIdStrategy);
-           var emptyNoteSphere = notesDominion.CreateSphere(notesSphereSpec);
+           var emptyNoteSphere = notesDominion.TryCreateSphere(notesSphereSpec);
   
             var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
             newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_TITLE_KEY, label);

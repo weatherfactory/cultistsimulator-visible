@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Entities.NullEntities;
 using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.UI.Situation;
 using SecretHistories.Abstract;
@@ -62,7 +63,8 @@ namespace SecretHistories.UI {
 
         private Situation _situation;
         private readonly List<Sphere> _spheres=new List<Sphere>();
-        
+      [SerializeField] private int MaxSpheresAllowed;
+
 
         public void RegisterFor(IManifestable situation)
         {
@@ -90,18 +92,29 @@ namespace SecretHistories.UI {
             canvasGroupFader.Hide();
         }
 
-        public  Sphere CreateSphere(SphereSpec spec)
+        public  Sphere TryCreateSphere(SphereSpec spec)
         {
+            if (!CanCreateSphere(spec))
+                return NullSphere.Create();
+
             //ensure that the spec will be visible in states for which this dominion is active
             foreach (var activeInState in VisibleForStates)
                 spec.MakeActiveInState(activeInState);
 
             return AddSphere(spec);
         }
+public bool CanCreateSphere(SphereSpec spec)
+{
+    if (MaxSpheresAllowed == 0)
+        return true;
+
+    return (_spheres.Count < MaxSpheresAllowed);
+}
 
 
 
-        public bool VisibleFor(StateEnum state)
+
+public bool VisibleFor(StateEnum state)
         {
             return VisibleForStates.Contains(state);
         }

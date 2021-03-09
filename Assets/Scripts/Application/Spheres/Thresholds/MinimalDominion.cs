@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
@@ -63,8 +64,16 @@ namespace SecretHistories.UI
          //
         }
 
-        public Sphere CreateSphere(SphereSpec spec)
+        public bool CanCreateSphere(SphereSpec spec)
         {
+            return true;
+        }
+
+        public Sphere TryCreateSphere(SphereSpec spec)
+        {
+            if (!CanCreateSphere(spec))
+                return NullSphere.Create();
+
             var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec, _manifestable);
             _spheres.Add(newSphere);
             return newSphere;

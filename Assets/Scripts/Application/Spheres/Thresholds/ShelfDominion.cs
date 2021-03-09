@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
@@ -58,12 +59,15 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
             for (int i = 0; i < 3; i++)
             {
                 var shelfSpaceSpec=new SphereSpec(typeof(ShelfSpaceSphere),"shelf" + i);
-               _spheres.Add(CreateSphere(shelfSpaceSpec));
+               _spheres.Add(TryCreateSphere(shelfSpaceSpec));
             }
         }
         
-        public Sphere CreateSphere(SphereSpec spec)
+        public Sphere TryCreateSphere(SphereSpec spec)
         {
+            if (!CanCreateSphere(spec))
+                return NullSphere.Create();
+
             var newSphere=Watchman.Get<PrefabFactory>().InstantiateSphere(spec);
             newSphere.gameObject.transform.SetParent(this.gameObject.transform); //MANUALLY? really? the problem is that the gameobject hierarchy is now quite different from the FucinePath one
             OnSphereAdded.Invoke(newSphere);
@@ -97,6 +101,11 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
         public void Dismiss()
         {
             //
+        }
+
+        public bool CanCreateSphere(SphereSpec spec)
+        {
+            return true;
         }
     }
 }

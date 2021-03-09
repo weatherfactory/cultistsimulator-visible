@@ -82,7 +82,7 @@ namespace SecretHistories.Infrastructure
             throw new NotImplementedException();
         }
 
-        public Sphere CreateSphere(SphereSpec spec)
+        public Sphere TryCreateSphere(SphereSpec spec)
         {
             var newSphere=Watchman.Get<PrefabFactory>().InstantiateSphere(spec, Container);
             newSphere.transform.SetParent(transform);
@@ -110,6 +110,11 @@ namespace SecretHistories.Infrastructure
         public void Dismiss()
         {
             throw new NotImplementedException();
+        }
+
+        public bool CanCreateSphere(SphereSpec spec)
+        {
+            return true;
         }
 
         public Dealer GetDealer()

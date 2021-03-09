@@ -20,10 +20,11 @@ namespace SecretHistories.UI
         OnSphereRemovedEvent OnSphereRemoved { get; }
         void RegisterFor(IManifestable manifestable);
         List<Sphere> Spheres { get; }
-      Sphere CreateSphere(SphereSpec spec);
+      Sphere TryCreateSphere(SphereSpec spec);
       Sphere GetSphereById(string id);
       bool RemoveSphere(string id);
       public void Evoke();
       public void Dismiss();
-    }
+      bool CanCreateSphere(SphereSpec spec);
+  }
 }
