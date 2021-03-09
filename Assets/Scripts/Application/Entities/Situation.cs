@@ -566,6 +566,8 @@ namespace SecretHistories.Entities {
 
         public void TransitionToState(SituationState newState)
         {
+
+
             State.Exit(this);
             newState.Enter(this);
             State = newState;
@@ -575,7 +577,6 @@ namespace SecretHistories.Entities {
 
         private SituationState Continue(float interval)
         {
-
             CommandQueue.ExecuteCommandsFor(State.RehydrationValue, this);
             _timeshadow.SpendTime(interval);
 

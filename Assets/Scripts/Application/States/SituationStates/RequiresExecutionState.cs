@@ -24,7 +24,7 @@ namespace SecretHistories.States
         public override void Enter(Situation situation)
         {
 
-            situation.ExecuteCurrentRecipe();
+           
         }
 
         public override void Exit(Situation situation)
@@ -51,7 +51,9 @@ namespace SecretHistories.States
 
         public override void Continue(Situation situation)
         {
-        
+            //This almost certainly needs tweaking to a command-based approach. Although in fact, we might want to reconsider replacing this whole state with commands.
+            situation.ExecuteCurrentRecipe();
+
 
             var tc = Watchman.Get<HornedAxe>();
             var aspectsInContext = tc.GetAspectsInContext(situation.GetAspects(true));
