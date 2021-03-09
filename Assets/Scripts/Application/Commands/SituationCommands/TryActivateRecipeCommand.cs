@@ -10,14 +10,25 @@ namespace SecretHistories.Commands.SituationCommands
 {
     public class TryActivateRecipeCommand: ISituationCommand
     {
-        private readonly Recipe _recipeToActivate;
-            
-        
-        public TryActivateRecipeCommand(Recipe recipeToActivate)
+        private readonly string _recipeId;
+        private readonly List<StateEnum> _validForStates=new List<StateEnum>();
+
+        protected TryActivateRecipeCommand(string recipeId, List<StateEnum> validForStates)
         {
-            _recipeToActivate = recipeToActivate;
+            _recipeId = recipeId;
+            _validForStates.AddRange(validForStates);
+
         }
 
+        public static TryActivateRecipeCommand ManualRecipeActivation(string recipeId)
+        {
+            return new TryActivateRecipeCommand(recipeId,new List<StateEnum>(){ StateEnum.Unstarted });
+        }
+        public static TryActivateRecipeCommand LinkedRecipeActivation(string recipeId)
+        {
+            return new TryActivateRecipeCommand(recipeId, new List<StateEnum>() { StateEnum.RequiringExecution,StateEnum.Ongoing });
+
+        }
 
         public bool IsValidForState(StateEnum forState)
         {
@@ -30,18 +41,18 @@ namespace SecretHistories.Commands.SituationCommands
             var tc = Watchman.Get<HornedAxe>();
             var aspectsInContext = tc.GetAspectsInContext(aspects);
 
-            if (_recipeToActivate.RequirementsSatisfiedBy(aspectsInContext))
+            var recipeToActivate = Watchman.Get<Compendium>().GetEntityById<Recipe>(_recipeId);
+
+
+            if (recipeToActivate.RequirementsSatisfiedBy(aspectsInContext))
             {
-                situation.ActivateRecipe(_recipeToActivate);
+                situation.ActivateRecipe(recipeToActivate);
                 situation.UpdateCurrentRecipePrediction(situation.GetRecipePredictionForCurrentStateAndAspects(),new Context(Context.ActionSource.SituationEffect));
                 situation.TransitionToState(new OngoingState());
 
-                return true;
             }
 
-            else
-                return false;
-
+            return true; //this is a *try* command. So it always counts as executed when we've tried to activate it, successful or not.
         }
     }
 }

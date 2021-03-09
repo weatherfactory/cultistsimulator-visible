@@ -44,7 +44,7 @@ namespace SecretHistories.Commands
            Illuminations = Element.EmptyIlluminationsDictionary();
         }
 
-        public ITokenPayload Execute(Context context, Sphere sphere)
+        public ITokenPayload Execute(Context context)
         {
             ElementStack elementStack = null;
 

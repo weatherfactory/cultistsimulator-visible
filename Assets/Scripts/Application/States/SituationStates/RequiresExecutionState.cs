@@ -33,6 +33,7 @@ namespace SecretHistories.States
 
         }
 
+
         public override bool IsActiveInThisState(Sphere s)
         {
             return false;
@@ -50,6 +51,7 @@ namespace SecretHistories.States
 
         public override void Continue(Situation situation)
         {
+        
 
             var tc = Watchman.Get<HornedAxe>();
             var aspectsInContext = tc.GetAspectsInContext(situation.GetAspects(true));

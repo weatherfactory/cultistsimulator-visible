@@ -46,6 +46,10 @@ namespace SecretHistories.Entities
             return false;
         }
 
+        public override bool RequirementsSatisfiedBy(AspectsInContext aspectsinContext)
+        {
+            return false;
+        }
 
         public override int Priority => -1;
     }

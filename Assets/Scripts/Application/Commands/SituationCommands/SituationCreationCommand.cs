@@ -68,7 +68,7 @@ namespace SecretHistories.Commands
             return this;
         }
 
-        public ITokenPayload Execute(Context context, Sphere sphere)
+        public ITokenPayload Execute(Context context)
         {
             HornedAxe situationsCatalogue = Watchman.Get<HornedAxe>();
             var registeredSituations = situationsCatalogue.GetRegisteredSituations();

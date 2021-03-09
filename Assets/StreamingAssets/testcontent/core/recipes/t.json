@@ -1,8 +1,21 @@
 {
     "recipes": [
+	{
+            "id": "req0effect1",
+            "label": "Test recipe, no requirements, one effect",
+            "actionid": "t",
+            "effects": {
+                "t.c": 1,
+            },
+            "startdescription": "Start description. [Square brackets.]",
+            "description": "End description.",
+            "warmup": 30,
+            "craftable": true
+        },
+	
         {
-            "id": "t",
-            "label": "Test recipe",
+            "id": "req1effect1",
+            "label": "Test recipe, one aspect requirement, one effect",
             "actionid": "t",
             "requirements": {
                 "t.aspect.first": 1

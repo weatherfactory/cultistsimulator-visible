@@ -41,14 +41,6 @@ public class CreationCommandsSmokeTests
         var importLog = cl.PopulateCompendium(compendium, "en");
         foreach (var m in importLog.GetMessages())
             Debug.Log(m.Description);
-        Assert.AreEqual(1, compendium.GetEntitiesAsList<DeckSpec>().Count);
-        Assert.AreEqual(1, compendium.GetEntitiesAsList<Dictum>().Count);
-        Assert.AreEqual(6, compendium.GetEntitiesAsList<Element>().Count);
-        Assert.AreEqual(1, compendium.GetEntitiesAsList<Ending>().Count);
-        Assert.AreEqual(1, compendium.GetEntitiesAsList<Legacy>().Count);
-        Assert.AreEqual(1, compendium.GetEntitiesAsList<Recipe>().Count);
-        Assert.AreEqual(27, compendium.GetEntitiesAsList<Setting>().Count);
-        Assert.AreEqual(1, compendium.GetEntitiesAsList<Verb>().Count);
 
         var watchman = new Watchman();
         watchman.Register(compendium);
@@ -72,7 +64,7 @@ public class CreationCommandsSmokeTests
     string elementId= Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First().Id;
         int elementQuantity= 3;
         var elementStackCreationCommand = new ElementStackCreationCommand(elementId, elementQuantity);
-        var elementStack=elementStackCreationCommand.Execute(new Context(Context.ActionSource.Unknown), _minimalTabletopSurrogate);
+        var elementStack=elementStackCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
         Assert.IsTrue(elementStack.IsValidElementStack());
         Assert.AreEqual(elementId,elementStack.EntityId);
         Assert.AreEqual(elementQuantity, elementStack.Quantity);
@@ -96,7 +88,7 @@ public class CreationCommandsSmokeTests
             situationCreationCommand.VerbId = NullVerb.Create().Id;
             situationCreationCommand.RecipeId = NullRecipe.Create().Id;
             situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
-            var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown), _minimalTabletopSurrogate);
+            var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
             Assert.IsInstanceOf<Situation>(situation);
         }
 

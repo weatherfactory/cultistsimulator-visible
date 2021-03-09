@@ -172,7 +172,7 @@ namespace SecretHistories.Spheres
 
         public virtual List<SphereSpec> GetChildSpheresSpecsToAddIfThisTokenAdded(Token t,string verbId)
         {
-            var elementInToken = Watchman.Get<Compendium>().GetEntityById<Element>(t.Payload.Id);
+            var elementInToken = Watchman.Get<Compendium>().GetEntityById<Element>(t.Payload.EntityId);
 
             var childSlotSpecs = elementInToken.Slots.Where(cs => cs.ActionId == verbId || cs.ActionId == string.Empty).ToList();
             return childSlotSpecs;

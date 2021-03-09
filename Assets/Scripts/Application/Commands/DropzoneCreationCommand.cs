@@ -17,7 +17,7 @@ namespace SecretHistories.Commands
         public int Quantity { get; set; }
         public List<PopulateDominionCommand> Dominions { get; set; }
         
-        public ITokenPayload Execute(Context context,Sphere sphere)
+        public ITokenPayload Execute(Context context)
         {
             var dz= new Dropzone();
             

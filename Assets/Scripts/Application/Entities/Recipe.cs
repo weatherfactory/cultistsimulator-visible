@@ -210,7 +210,7 @@ namespace SecretHistories.Entities
 
 
 
-        public bool RequirementsSatisfiedBy(AspectsInContext aspectsinContext)
+        public virtual bool RequirementsSatisfiedBy(AspectsInContext aspectsinContext)
         {
             foreach (var req in Requirements)
                 if (!CheckRequirementsSatisfiedForContext(aspectsinContext.AspectsInSituation, req))

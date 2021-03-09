@@ -177,14 +177,7 @@ namespace SecretHistories.Entities {
         }
 
 
-        public void TransitionToState(SituationState newState)
-        {
-            State.Exit(this);
-            newState.Enter(this);
-            State = newState;
-            NotifyStateChange();
-            NotifyTimerChange();
-        }
+
 
         public bool RegisterDominion(IDominion dominionToRegister)
         {
@@ -571,6 +564,15 @@ namespace SecretHistories.Entities {
             return Token.Sphere.GetContainer().GetWindowsSphere();
         }
 
+        public void TransitionToState(SituationState newState)
+        {
+            State.Exit(this);
+            newState.Enter(this);
+            State = newState;
+            NotifyStateChange();
+            NotifyTimerChange();
+        }
+
         private SituationState Continue(float interval)
         {
 
@@ -834,7 +836,7 @@ namespace SecretHistories.Entities {
             if (recipe != null)
 
             {
-               var activateRecipeCommand=new TryActivateRecipeCommand(recipe);
+               var activateRecipeCommand=TryActivateRecipeCommand.ManualRecipeActivation(recipe.Id);
                 CommandQueue.AddCommand(activateRecipeCommand);
 
                 //The game might be paused! or the player might just be incredibly quick off the mark

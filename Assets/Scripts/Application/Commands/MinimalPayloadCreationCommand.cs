@@ -25,7 +25,7 @@ namespace SecretHistories.Commands
             Id = "defaultminimalpayloadid";
         }
 
-        public ITokenPayload Execute(Context context, Sphere sphere)
+        public ITokenPayload Execute(Context context)
         {
             var mp = new MinimalPayload(Id);
             var dominion = new GameObject().AddComponent<MinimalDominion>();
