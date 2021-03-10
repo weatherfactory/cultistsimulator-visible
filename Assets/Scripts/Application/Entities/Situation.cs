@@ -244,19 +244,19 @@ namespace SecretHistories.Entities {
 
         public List<Sphere> GetSpheresActiveForCurrentState()
         {
-            return new List<Sphere>(_spheres).Where(sphere => State.IsActiveInThisState(sphere)).ToList();
+            return new List<Sphere>(_spheres).Where(sphere => State.IsActiveInThisState(sphere) && !sphere.Defunct).ToList();
         }
 
         public List<Sphere> GetSpheresByCategory(SphereCategory category)
         {
-            return new List<Sphere>(_spheres.Where(c => c.SphereCategory == category));
+            return new List<Sphere>(_spheres.Where(c => c.SphereCategory == category && !c.Defunct));
         }
 
         public Sphere GetSingleSphereByCategory(SphereCategory category)
         {
             try
             {
-                return _spheres.SingleOrDefault(c => c.SphereCategory == category);
+                return _spheres.SingleOrDefault(c => c.SphereCategory == category && !c.Defunct);
             }
             catch (Exception e)
             {

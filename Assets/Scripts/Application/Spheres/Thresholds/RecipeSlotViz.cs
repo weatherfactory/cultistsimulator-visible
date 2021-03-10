@@ -34,8 +34,12 @@ namespace SecretHistories.UI {
 
             anim.Play("recipe-slot-hide");
 
-            while (anim.isPlaying)
+            float timeOut = 0f;
+
+            while (anim.isPlaying || timeOut<3f)
             {
+                timeOut += Time.deltaTime;
+
                 yield return null;
             };
             

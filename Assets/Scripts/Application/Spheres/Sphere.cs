@@ -190,6 +190,9 @@ namespace SecretHistories.Spheres
 
         public void Retire(SphereRetirementType sphereRetirementType)
         {
+            if (Defunct)
+                return;
+
             Defunct = true;
             AddBlock(new ContainerBlock(BlockDirection.Inward, BlockReason.Retiring));
             Watchman.Get<HornedAxe>().DeregisterSphere(this);

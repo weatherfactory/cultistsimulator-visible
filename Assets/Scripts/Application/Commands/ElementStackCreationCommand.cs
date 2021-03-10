@@ -48,7 +48,6 @@ namespace SecretHistories.Commands
         {
             ElementStack elementStack = null;
 
-
             try
             {
                 var compendium = Watchman.Get<Compendium>();
@@ -57,6 +56,9 @@ namespace SecretHistories.Commands
                   //If we deserialise a stack, we'll already know its ID. If we're creating it for the first time, we need to pick an ID
                   if (String.IsNullOrEmpty(Id))
                      Id = element.DefaultUniqueTokenId();
+                  if (LifetimeRemaining <= 0 && !Defunct)
+                      LifetimeRemaining = element.Lifetime;
+
 
 
                 var timeshadow = new Timeshadow(element.Lifetime, LifetimeRemaining, element.Resaturate);
