@@ -61,20 +61,20 @@ namespace SecretHistories.Infrastructure
 
         public IEnumerable<Sphere> GetDrawPiles()
         {
-            var drawDeckSpheres = _spheres.Where(s => s.Id.EndsWith("_draw"));
+            var drawDeckSpheres = _spheres.Where(s => s.GoverningSphereSpec.SphereType == typeof(DrawPile));
             return drawDeckSpheres;
         }
 
         public Sphere GetDrawPile(string forDeckSpecId)
         {
             return _spheres.SingleOrDefault(s =>
-                s.GoverningSphereSpec.ActionId == forDeckSpecId && s.Id.EndsWith("_draw"));
+                s.GoverningSphereSpec.ActionId == forDeckSpecId && s.GoverningSphereSpec.SphereType==typeof(DrawPile));
         }
 
         public Sphere GetForbiddenPile(string forDeckSpecId)
         {
             return _spheres.SingleOrDefault(s =>
-                s.GoverningSphereSpec.ActionId == forDeckSpecId && s.Id.EndsWith("_forbidden"));
+                s.GoverningSphereSpec.ActionId == forDeckSpecId && s.GoverningSphereSpec.SphereType == typeof(ForbiddenPile));
         }
 
         public void RegisterFor(IManifestable manifestable)

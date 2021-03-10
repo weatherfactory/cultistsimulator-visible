@@ -65,7 +65,7 @@ namespace SecretHistories.Commands
             {
                 if (string.IsNullOrEmpty(deckSpec.ForLegacy) || startingLegacy.Id == deckSpec.ForLegacy)
                 {
-                    var drawSphereSpec = new SphereSpec(typeof(CardPile), $"{deckSpec.Id}_draw");
+                    var drawSphereSpec = new SphereSpec(typeof(DrawPile), $"{deckSpec.Id}_draw");
                     drawSphereSpec.ActionId = deckSpec.Id;
                     var drawSphereCommand = new SphereCreationCommand(drawSphereSpec);
                     
@@ -73,7 +73,7 @@ namespace SecretHistories.Commands
 
                     dealersTableCommand.Spheres.Add(drawSphereCommand);
 
-                    var discardSphereSpec = new SphereSpec(typeof(CardPile), $"{deckSpec.Id}_forbidden");
+                    var discardSphereSpec = new SphereSpec(typeof(ForbiddenPile), $"{deckSpec.Id}_forbidden");
                     discardSphereSpec.ActionId = deckSpec.Id;
                     var discardSphereCommand = new SphereCreationCommand(discardSphereSpec);
                     dealersTableCommand.Spheres.Add(discardSphereCommand);

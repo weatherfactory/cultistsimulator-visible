@@ -37,7 +37,7 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
 
 
         private readonly List<Sphere> _spheres=new List<Sphere>();
-        private readonly List<CardPile> _cardPiles=new List<CardPile>();
+        private readonly List<DrawPile> _cardPiles=new List<DrawPile>();
         private Dictionary<string, int> _mutations= new Dictionary<string, int>();
 
         [Encaust]
