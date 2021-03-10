@@ -47,13 +47,9 @@ namespace Assets.Logic
             
 
             if (_drawPile.GetTotalStacksCount() == 0)
-            {
-                //if the deck is exhausted:
-                //--some decks reset, so we can have an infinite supply of whatevers.
-                if (deckSpec.ResetOnExhaustion)
-                    Shuffle(fromDeckSpecId);
-            }
-            //Conceivably, resetting the deck might still not have given us a card,
+                Shuffle(fromDeckSpecId);
+            
+            //shuffling the might still not have given us a card - eg if all cards were forbidden.
             //so let's test again
             if (_drawPile.GetTotalStacksCount() > 0)
             {
@@ -84,13 +80,13 @@ namespace Assets.Logic
             var forbiddenPile = _dealersTable.GetForbiddenPile(deckSpecId);
             var r = new System.Random();
 
-            foreach (var card in deckSpec.Spec.OrderBy(x=>r.Next()))
+            var forbiddenCards = forbiddenPile.GetElementTokens().Select(f => f.PayloadEntityId);
+            var permittedCards = deckSpec.Spec.Except(forbiddenCards);
+
+            foreach (var card in permittedCards.OrderBy(x=>r.Next()))
             {
-                if(!forbiddenPile.GetElementTokens().Exists(e=>e.Payload.EntityId==card))
-                {
-                    var t = new TokenCreationCommand().WithElementStack(card, 1);
+                var t = new TokenCreationCommand().WithElementStack(card, 1);
                     t.Execute(Context.Unknown(), drawPile);
-                }
             }
         }
 

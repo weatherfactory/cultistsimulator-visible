@@ -3,18 +3,26 @@
     {
       "id": "dbarsacrossthesun",
       "label": "Not 2",
-      "actionId": "escape",
+      "actionId": "explore",
       "startdescription": "garbanzo",
       "warmup": 2,
-      "linked": [
-        {
-          "id": "dbarsacrossthesunnier",
-          "label": "Not 3",
-          "startdescription": "cicero",
-          "warmup":10
-        }
-      ]
+	     "internaldeck": {
+                "spec": [
+                    "wainscothistories",
+                    "textbookfucine",
+                    "travellingatnight3",
+                    "locksmithsdream4",
+                    "treatiseonunderplaces"
+                ],
+                "draws": 5,
+                "defaultcard": "compensationb",
+                "resetonexhaustion": false
+            },
+   
+      "craftable":true
     }
+	
+	        
 
 
   ]

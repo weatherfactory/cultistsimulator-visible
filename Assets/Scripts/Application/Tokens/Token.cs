@@ -114,6 +114,7 @@ namespace SecretHistories.UI {
         public int Quantity => Payload.Quantity;
 
         [DontEncaust] public string PayloadId => Payload.Id;
+        [DontEncaust] public string PayloadEntityId => Payload.EntityId;
 
         public bool IsValidElementStack()
         {
