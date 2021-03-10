@@ -56,8 +56,8 @@ namespace SecretHistories.Commands
                   //If we deserialise a stack, we'll already know its ID. If we're creating it for the first time, we need to pick an ID
                   if (String.IsNullOrEmpty(Id))
                      Id = element.DefaultUniqueTokenId();
-                  if (LifetimeRemaining <= 0 && !Defunct)
-                      LifetimeRemaining = element.Lifetime;
+                  if (LifetimeRemaining == 0 && !Defunct)
+                      LifetimeRemaining = element.Lifetime; //I wish I didn't have to use 0 for 'uninitialised' and '0 remaining.'
 
 
 

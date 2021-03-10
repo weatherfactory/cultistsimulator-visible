@@ -27,7 +27,7 @@ namespace SecretHistories.States
                 situation.CommandQueue.AddCommand(storageCommand);
 
                 var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);
-                migrateFromVerbSlotsToStorageCommand.RetireFromSpheres = true;
+                migrateFromVerbSlotsToStorageCommand.RetireSourceSpheres = true;
                 situation.CommandQueue.AddCommand(migrateFromVerbSlotsToStorageCommand);
             
                 SoundManager.PlaySfx("SituationBegin");
@@ -37,7 +37,7 @@ namespace SecretHistories.States
         {
 
             var migrateFromRecipeSlotsToStorageComand = new FlushTokensToCategoryCommand(SphereCategory.Threshold, SphereCategory.SituationStorage, StateEnum.RequiringExecution);
-            migrateFromRecipeSlotsToStorageComand.RetireFromSpheres = true;
+            migrateFromRecipeSlotsToStorageComand.RetireSourceSpheres = true;
             situation.CommandQueue.AddCommand(migrateFromRecipeSlotsToStorageComand);
             
         }

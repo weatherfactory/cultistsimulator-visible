@@ -37,7 +37,7 @@ namespace SecretHistories.UI
 
         public Sphere GetSphereById(string Id)
         {
-            return Spheres.SingleOrDefault(s => s.Id == Id);
+            return Spheres.SingleOrDefault(s => s.Id == Id && !s.Defunct);
         }
 
         public bool RemoveSphere(string id)

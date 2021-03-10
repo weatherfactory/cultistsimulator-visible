@@ -272,7 +272,7 @@ namespace SecretHistories.Entities {
                 NoonUtility.LogException(e);
             }
 
-            return null;
+            return NullSphere.Create();
 
         }
         
