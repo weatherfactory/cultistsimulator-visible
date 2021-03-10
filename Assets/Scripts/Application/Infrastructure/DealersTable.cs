@@ -117,9 +117,5 @@ namespace SecretHistories.Infrastructure
             return true;
         }
 
-        public Dealer GetDealer()
-        {
-            return new Dealer(this);
-        }
     }
 }

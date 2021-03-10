@@ -26,27 +26,6 @@ namespace SecretHistories.Spheres
         
 
 
-        public void SetSpec(DeckSpec deckSpec)
-      {
-          _deckSpec = deckSpec;
-      }
-        public void Shuffle(List<string> exceptElements)
-      {
-          var rnd = new Random();
-          var unshuffledList = new List<string>(_deckSpec.Spec);
-          var shuffledList = unshuffledList.OrderBy(x => rnd.Next());
-
-            RetireAllTokens();
-
-            foreach (var s in shuffledList)
-                if (!exceptElements.Contains(s))
-                {
-                    var t = new TokenCreationCommand().WithElementStack(s, 1);
-                    t.Execute(Context.Unknown(), this);
-                }
-
-      }
-
 
 
   }

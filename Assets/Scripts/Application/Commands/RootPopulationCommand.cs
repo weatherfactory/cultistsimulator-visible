@@ -51,15 +51,14 @@ namespace SecretHistories.Commands
             tabletopSphereCreationCommand.Tokens.AddRange(startingLegacy.GetTokenCreationCommandsToEnactLegacy());
             rootCommand.Spheres.Add(tabletopSphereCreationCommand);
 
-            DealersTableForLegacy(startingLegacy, rootCommand);
-
+         rootCommand.DealersTable=DealersTableForLegacy(startingLegacy);
 
             return rootCommand;
         }
 
-        private static void DealersTableForLegacy(Legacy startingLegacy, RootPopulationCommand rootCommand)
+        private static PopulateDominionCommand DealersTableForLegacy(Legacy startingLegacy)
         {
-            rootCommand.DealersTable = new PopulateDominionCommand();
+       var dealersTableCommand = new PopulateDominionCommand();
 
             var allDeckSpecs = Watchman.Get<Compendium>().GetEntitiesAsAlphabetisedList<DeckSpec>();
             foreach (var deckSpec in allDeckSpecs)
@@ -71,20 +70,17 @@ namespace SecretHistories.Commands
                     var drawSphereCommand = new SphereCreationCommand(drawSphereSpec);
                     
 
-                    foreach(var card in deckSpec.Spec)
-                    {
-                        var t=new TokenCreationCommand().WithElementStack(card,1);
-                        drawSphereCommand.Tokens.Add(t);
-                    }
 
-                    rootCommand.DealersTable.Spheres.Add(drawSphereCommand);
+                    dealersTableCommand.Spheres.Add(drawSphereCommand);
 
                     var discardSphereSpec = new SphereSpec(typeof(CardPile), $"{deckSpec.Id}_forbidden");
                     discardSphereSpec.ActionId = deckSpec.Id;
                     var discardSphereCommand = new SphereCreationCommand(discardSphereSpec);
-                    rootCommand.DealersTable.Spheres.Add(discardSphereCommand);
+                    dealersTableCommand.Spheres.Add(discardSphereCommand);
                 }
             }
+
+            return dealersTableCommand;
         }
     }
 }

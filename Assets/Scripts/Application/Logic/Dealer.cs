@@ -6,6 +6,7 @@ using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Infrastructure;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Assets.Logic
 {
     public class Dealer
     {
-        private DealersTable _dealersTable;
+        private readonly DealersTable _dealersTable;
 
         public Dealer(DealersTable dealersTable)
         {
@@ -42,6 +43,7 @@ namespace Assets.Logic
         {
             var deckSpec = Watchman.Get<Compendium>().GetEntityById<DeckSpec>(fromDeckSpecId);
             var _drawPile = _dealersTable.GetDrawPile(fromDeckSpecId);
+            var _forbiddenPile = _dealersTable.GetForbiddenPile(fromDeckSpecId);
             
 
             if (_drawPile.GetTotalStacksCount() == 0)
@@ -56,6 +58,10 @@ namespace Assets.Logic
             if (_drawPile.GetTotalStacksCount() > 0)
             {
                 var cardDrawn = _drawPile.GetElementTokens().First();
+                if(!deckSpec.ResetOnExhaustion)
+                    ForbidRedrawOfCard(cardDrawn.Payload.EntityId,deckSpec);
+                //This means that a 'don't reset on exhaustion' deck will forbid every card we draw, so a second shuffle won't renew anything.
+
                 return cardDrawn;
             }
 
@@ -63,12 +69,11 @@ namespace Assets.Logic
                 //if either the deck didn't reset on exhaustion,
                 //or a reset has still left us with no cards,
                 //then always return the default card
-            {
-                var defaultCardCommand=new TokenCreationCommand().WithElementStack(deckSpec.DefaultCard,1);
-                var defaultCard=defaultCardCommand.Execute(Context.Unknown(), _drawPile);
-                return defaultCard;
-            }
+                return GetDefaultCardForDeck(deckSpec, _drawPile);
+          
         }
+
+
 
 
         public void Shuffle(string deckSpecId)
@@ -77,8 +82,9 @@ namespace Assets.Logic
 
             var drawPile = _dealersTable.GetDrawPile(deckSpecId);
             var forbiddenPile = _dealersTable.GetForbiddenPile(deckSpecId);
-            
-            foreach (var card in deckSpec.Spec)
+            var r = new System.Random();
+
+            foreach (var card in deckSpec.Spec.OrderBy(x=>r.Next()))
             {
                 if(!forbiddenPile.GetElementTokens().Exists(e=>e.Payload.EntityId==card))
                 {
@@ -98,22 +104,17 @@ namespace Assets.Logic
             { 
                 d.RetireTokensWhere(x => x.Payload.EntityId == elementId);
 
-                //I do need to do both of these... what happens if Ezeem has been drawn in the past, and then is shuffled back in later?
+                //I do in fact need to do both of these... what happens if Ezeem has been drawn in the past, and then is shuffled back in later?
                 //more elegant alternative might be to add the cards to the forbidden pile, and then autoremove all instances of that card from the matching draw pile whenever a card enters the forbidden pile
 
                 var deckSpec = Watchman.Get<Compendium>().GetEntityById<DeckSpec>(d.GoverningSphereSpec.ActionId);
 
                 if (deckSpec.Spec.Contains(elementId))
-                {
-                    var _forbiddenPile = _dealersTable.GetForbiddenPile(deckSpec.Id);
-
-                    var t = new TokenCreationCommand().WithElementStack(elementId, 1);
-                    t.Execute(Context.Unknown(), _forbiddenPile);
-                }
+                    ForbidRedrawOfCard(elementId, deckSpec);
+                
             }
 
         }
-
 
         public void IndicateElementInUniquenessGroupManifested(string elementUniquenessGroup)
         {
@@ -127,6 +128,22 @@ namespace Assets.Logic
         }
 
 
+        private void ForbidRedrawOfCard(string elementId, DeckSpec deckSpec)
+        {
+            var _forbiddenPile = _dealersTable.GetForbiddenPile(deckSpec.Id);
+            if(_forbiddenPile.GetElementTokens().All(t => t.Payload.EntityId != elementId)) //don't clutter the forbidden pile unless there's no such card in there already
+            {
+                var t = new TokenCreationCommand().WithElementStack(elementId, 1);
+                t.Execute(Context.Unknown(), _forbiddenPile);
+            }
+        }
+
+        private Token GetDefaultCardForDeck(DeckSpec deckSpec, Sphere _drawPile)
+        {
+            var defaultCardCommand = new TokenCreationCommand().WithElementStack(deckSpec.DefaultCard, 1);
+            var defaultCard = defaultCardCommand.Execute(Context.Unknown(), _drawPile);
+            return defaultCard;
+        }
 
     }
 }
