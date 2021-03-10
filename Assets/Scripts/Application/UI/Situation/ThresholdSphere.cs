@@ -1,4 +1,5 @@
-﻿using SecretHistories.Entities;
+﻿using System;
+using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
@@ -153,12 +154,18 @@ namespace SecretHistories.UI
             
         }
 
-        public override bool Retire(SphereRetirementType retirementType)
+        public override void DoRetirement(Action onRetirementComplete, SphereRetirementType retirementType)
         {
+         //this should (and currently does, tho untidily) call Retire after it's done.
+            HandleContentsGracefully(retirementType);
+
             if (gameObject.activeInHierarchy)
-                return  viz.TriggerHideAnim(); //this should (and currently does, tho untidily) call Retire after it's done.
+            {
+                var fxCoroutine = viz.TriggerHideAnim(onRetirementComplete);
+                StartCoroutine(fxCoroutine);
+            }
             else
-                return base.Retire(SphereRetirementType.Graceful);
+                onRetirementComplete();
         }
 
         public Token GetTokenInSlot() {

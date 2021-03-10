@@ -22,11 +22,12 @@ namespace SecretHistories.States
         {
             var recipeSlotsCommand = new PopulateDominionCommand(DominionEnum.RecipeThresholds,situation.Recipe.Slots);
             situation.CommandQueue.AddCommand(recipeSlotsCommand);
-            var sphereSpec=new SphereSpec(typeof(SituationStorageSphere), new StorageSphereIdStrategy());
+            var sphereSpec=new SphereSpec(typeof(SituationStorageSphere), nameof(SituationStorageSphere));
             var storageCommand = new PopulateDominionCommand(DominionEnum.Storage,sphereSpec);
                 situation.CommandQueue.AddCommand(storageCommand);
 
                 var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);
+                migrateFromVerbSlotsToStorageCommand.RetireFromSpheres = true;
                 situation.CommandQueue.AddCommand(migrateFromVerbSlotsToStorageCommand);
             
                 SoundManager.PlaySfx("SituationBegin");
@@ -36,6 +37,7 @@ namespace SecretHistories.States
         {
 
             var migrateFromRecipeSlotsToStorageComand = new FlushTokensToCategoryCommand(SphereCategory.Threshold, SphereCategory.SituationStorage, StateEnum.RequiringExecution);
+            migrateFromRecipeSlotsToStorageComand.RetireFromSpheres = true;
             situation.CommandQueue.AddCommand(migrateFromRecipeSlotsToStorageComand);
             
         }

@@ -19,10 +19,9 @@ namespace Assets.Scripts.Application.Entities.NullEntities
 
         private static NullSphere _instance;
 
-        public override bool Retire(SphereRetirementType rvfx)
+        public void Retire(SphereRetirementType rvfx)
         {
             Defunct = true;
-            return true;
         }
 
 

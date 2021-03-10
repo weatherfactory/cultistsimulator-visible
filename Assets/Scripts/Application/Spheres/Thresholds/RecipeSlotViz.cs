@@ -1,4 +1,5 @@
 ﻿#pragma warning disable 0649
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SecretHistories.Enums;
@@ -27,7 +28,21 @@ namespace SecretHistories.UI {
             anim.Play("recipe-slot-show");
         }
 
-        void ShowDefault() {
+
+        public IEnumerator TriggerHideAnim(Action onComplete) {
+            isHidden = true;
+
+            anim.Play("recipe-slot-hide");
+
+            while (anim.isPlaying)
+            {
+                yield return null;
+            };
+            
+            onComplete();
+        }
+
+        private void OnDisable() {
             anim["recipe-slot-hide"].time = 0f;
             anim["recipe-slot-hide"].enabled = true;
             anim["recipe-slot-hide"].weight = 1;
@@ -35,24 +50,6 @@ namespace SecretHistories.UI {
             anim["recipe-slot-hide"].enabled = false;
         }
 
-        public bool TriggerHideAnim() {
-            isHidden = true;
-            
-            anim.Play("recipe-slot-hide");
-
-            return true;
-        }
-
-        private void OnDisable() {
-            if (isHidden)
-                OnHideEnd();
-            else
-                ShowDefault();
-        }
-
-        public void OnHideEnd() {
-            slot.Retire(SphereRetirementType.Graceful);
-        }
 
         // POSITION
 

@@ -33,7 +33,8 @@ namespace SecretHistories.Spheres
 
     public enum BlockReason
     {
-      InboundTravellingStack
+      InboundTravellingStack,
+      Retiring
     }
 
     public enum BlockDirection
@@ -187,22 +188,39 @@ namespace SecretHistories.Spheres
             GoverningSphereSpec = spec;
         }
 
-        public virtual bool Retire(SphereRetirementType sphereRetirementType)
+        public void Retire(SphereRetirementType sphereRetirementType)
         {
-            if(sphereRetirementType!=SphereRetirementType.Destructive && sphereRetirementType!=SphereRetirementType.Graceful)
-                NoonUtility.LogWarning("Unknown sphere retirement type: " + sphereRetirementType);
+            Defunct = true;
+            AddBlock(new ContainerBlock(BlockDirection.Inward, BlockReason.Retiring));
+            Watchman.Get<HornedAxe>().DeregisterSphere(this);
 
-            if(sphereRetirementType==SphereRetirementType.Destructive)
+            DoRetirement(FinishRetirement,sphereRetirementType);
+
+        }
+
+        public virtual void DoRetirement(Action onRetirementComplete,SphereRetirementType retirementType)
+        {
+            HandleContentsGracefully(retirementType);
+            onRetirementComplete();
+        }
+
+        protected void HandleContentsGracefully(SphereRetirementType retirementType)
+        {
+            if (retirementType != SphereRetirementType.Destructive && retirementType != SphereRetirementType.Graceful)
+                NoonUtility.LogWarning("Unknown sphere retirement type: " + retirementType);
+
+            if (retirementType == SphereRetirementType.Destructive)
                 RetireAllTokens();
             else
                 EvictAllTokens(new Context(Context.ActionSource.ContainingSphereRetired));
-
-            Watchman.Get<HornedAxe>().DeregisterSphere(this);
-
-                Defunct = true;
-            Destroy(gameObject);
-            return true;
         }
+
+
+        private void FinishRetirement()
+        {
+            Destroy(gameObject);
+        }
+        
 
         public virtual bool CurrentlyBlockedFor(BlockDirection direction)
         {

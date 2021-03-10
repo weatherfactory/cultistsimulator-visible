@@ -6,7 +6,6 @@ using SecretHistories.Enums;
 using SecretHistories.Constants;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
-using SecretHistories.SphereSpecIdentifierStrategies;
 using SecretHistories.UI;
 
 namespace SecretHistories.States
@@ -18,10 +17,11 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var createOutputSphereCommand = new PopulateDominionCommand(DominionEnum.Output,new SphereSpec(typeof(OutputSphere),new OutputSphereIdStrategy()));
+            var createOutputSphereCommand = new PopulateDominionCommand(DominionEnum.Output,new SphereSpec(typeof(OutputSphere),nameof(OutputSphere)));
             situation.CommandQueue.AddCommand(createOutputSphereCommand);
 
             var migrateToOutputCommand=new FlushTokensToCategoryCommand(SphereCategory.SituationStorage,SphereCategory.Output,StateEnum.Complete);
+            migrateToOutputCommand.RetireFromSpheres = true;
             situation.CommandQueue.AddCommand(migrateToOutputCommand);
 
             var attemptAspectInductionsCommand=new AttemptAspectInductionCommand(SphereCategory.Output,StateEnum.Complete);

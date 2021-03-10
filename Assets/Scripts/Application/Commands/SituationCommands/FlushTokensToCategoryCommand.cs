@@ -17,6 +17,8 @@ namespace SecretHistories.Commands.SituationCommands
 
         private readonly List<StateEnum> _statesCommandIsValidFor=new List<StateEnum>();
 
+        public bool RetireFromSpheres { get; set; }
+
 
         public bool IsValidForState(StateEnum forState)
         {
@@ -30,26 +32,40 @@ namespace SecretHistories.Commands.SituationCommands
             _statesCommandIsValidFor.Add(onState);
         }
 
+
         public bool Execute(Situation situation)
         {
+            //Get the destination sphere. We only expect one.
             var toSphere = situation.GetSingleSphereByCategory(_toCategory);
 
-            
-
-            //now we're safely started on the migration, consume any tokens in Consuming thresholds
-            foreach (var fromSphere in situation.GetSpheresByCategory(_fromCategory))
-            {
-                if (fromSphere.GoverningSphereSpec.Consumes)
-                    fromSphere.RetireAllTokens();
-            }
-
+            //if we can't find one, give up.
             if (toSphere == null)
             {
                 NoonUtility.LogWarning($"We're about to try to flush tokens to sphere category {_toCategory}, but there aren't any. Execution won't occur.");
                 return false;
             }
+
+            var fromSpheres = situation.GetSpheresByCategory(_fromCategory);
+            //if this is count=0, it doesn't matter.
+
+            //now we're safely started on the migration, consume any tokens in Consuming thresholds.
+            //This intentionally occurs before the migration - non-consumed tokens will be migratd.
+            foreach (var fromSphere in fromSpheres)
+            {
+                if (fromSphere.GoverningSphereSpec.Consumes)
+                    fromSphere.RetireAllTokens();
+            }
+
+            //Migrate all remaining tokens
             toSphere.AcceptTokens(situation.GetTokens(_fromCategory),
                 new Context(Context.ActionSource.TokenMigration));
+
+            if (RetireFromSpheres)
+            {
+                var spheresToRetire=new List<Sphere>(fromSpheres);
+                foreach (var s in spheresToRetire)
+                    s.Retire(SphereRetirementType.Graceful); //we might later allow execution where toSphere is null, iwc this will become useful.
+            }
 
             return true;
         }

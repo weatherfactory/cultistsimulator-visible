@@ -103,11 +103,6 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     }
 
 
-    public SphereSpec(Type sphereType, AbstractSphereSpecIdentifierStrategy sphereSpecIdentifierStrategy): this(sphereType,sphereSpecIdentifierStrategy.GetIdentifier())
-    {
-    }
-
-
     public SphereSpec(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
     {
         SphereType = typeof(ThresholdSphere); //ultimately we will want to import the spheretype, but that'll do for now

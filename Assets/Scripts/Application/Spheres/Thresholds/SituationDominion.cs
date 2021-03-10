@@ -168,14 +168,15 @@ public bool VisibleFor(StateEnum state)
 
             foreach (var childSlotSpecification in childSlotSpecs)
             {
-                AddSphere(childSlotSpecification);
+                var newSphere=AddSphere(childSlotSpecification);
+                newSphere.OwnerSphereIdentifier = sphere.Id;
             }
         }
 
         private void RemoveChildSpheres(Sphere sphereToOrphan)
         {
 
-            //THIS WILL EXPLODE. We need to coalesce Path and SphereIdentifier (and OwnerSphereIdentifier)
+            //This assumes all spheres in a given dominion will have unique ids... but, currently, they should!
             var spheresToRemove =
                 new List<Sphere>(_spheres.Where(s => s.OwnerSphereIdentifier==sphereToOrphan.Id));
             foreach (var s in spheresToRemove)
@@ -192,10 +193,11 @@ public bool VisibleFor(StateEnum state)
             if (args.TokenAdded != null)
                 AddChildSpheresForToken(args.Sphere, args.TokenAdded);
 
+            //if a token has been removed: remove any child thresholds
             if (args.TokenRemoved != null)
                 RemoveChildSpheres(args.Sphere);
 
-            //if a token has been removed: remove any child thresholds
+         
         }
 
 

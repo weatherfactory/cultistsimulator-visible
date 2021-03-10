@@ -374,8 +374,7 @@ namespace SecretHistories.Entities {
                NoonUtility.Log($"No notes sphere and no notes dominion found: we won't add note {label}, then.");
                 return false;
            }
-           var specIdStrategy=new NotesSphereSpecIdentifierStrategy(existingNotesSpheres.Count);
-           var notesSphereSpec=new SphereSpec(typeof(NotesSphere),specIdStrategy);
+           var notesSphereSpec=new SphereSpec(typeof(NotesSphere),$"{nameof(NotesSphere)}{existingNotesSpheres.Count}");
            var emptyNoteSphere = notesDominion.TryCreateSphere(notesSphereSpec);
   
             var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
