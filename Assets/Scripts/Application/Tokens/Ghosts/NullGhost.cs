@@ -25,7 +25,7 @@ namespace SecretHistories.Ghosts
 
         public bool TryFulfilPromise(Token token, Context context)
         {
-            throw new System.NotImplementedException();
+          return false;
         }
 
         public  void Retire()

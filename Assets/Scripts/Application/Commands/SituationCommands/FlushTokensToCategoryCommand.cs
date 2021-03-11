@@ -47,16 +47,7 @@ namespace SecretHistories.Commands.SituationCommands
 
             var fromSpheres = situation.GetSpheresByCategory(_fromCategory);
             //if this is count=0, it doesn't matter.
-
-
-            ////now we're safely started on the migration, consume any tokens in Consuming thresholds. <-- if I've coded consuming angels correctly, this will now be redundant
-            ////This intentionally occurs before the migration - non-consumed tokens will be migratd.
-            //foreach (var fromSphere in fromSpheres)
-            //{
-            //    if (fromSphere.GoverningSphereSpec.Consumes)
-            //        fromSphere.RetireAllTokens();
-            //}
-
+            
             //Migrate all remaining tokens
             toSphere.AcceptTokens(situation.GetTokens(_fromCategory),
                 new Context(Context.ActionSource.FlushingTokens));

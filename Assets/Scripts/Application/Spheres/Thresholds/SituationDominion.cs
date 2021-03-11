@@ -169,7 +169,7 @@ public bool VisibleFor(StateEnum state)
             return newSphere;
         }
 
-        protected void AddChildSpheresForToken(Sphere sphere, Token tokenAdded)
+        protected void AddDependentSpheresForToken(Sphere sphere, Token tokenAdded)
         {
             var childSlotSpecs = sphere.GetChildSpheresSpecsToAddIfThisTokenAdded(tokenAdded, _situation.VerbId);
 
@@ -180,7 +180,7 @@ public bool VisibleFor(StateEnum state)
             }
         }
 
-        private void RemoveChildSpheres(Sphere sphereToOrphan)
+        private void removeDependentSpheres(Sphere sphereToOrphan)
         {
 
             //This assumes all spheres in a given dominion will have unique ids... but, currently, they should!
@@ -198,13 +198,16 @@ public bool VisibleFor(StateEnum state)
                     $"Tokens with valid element stacks seem to have been added ({args.TokenAdded.name}) and removed ({args.TokenRemoved.name}) in a single event. This will likely cause issues, but we'll go ahead with both.");
 
             if (args.TokenAdded != null)
-                AddChildSpheresForToken(args.Sphere, args.TokenAdded);
+                AddDependentSpheresForToken(args.Sphere, args.TokenAdded);
 
-            //if a token has been removed: remove any child thresholds
             if (args.TokenRemoved != null)
-                RemoveChildSpheres(args.Sphere);
+            {
+                if(args.Context.actionSource!=Context.ActionSource.FlushingTokens) //This is another strong argument for moving ActionSource to class rather than enum.
+                //The reason it's here is because when we're flushing tokens between categories during situation activation, the first token will leave the slot,
+                //and all the other tokens will be evicted from the disappearing dependent-slots before they can be flushed.
+                    removeDependentSpheres(args.Sphere);
+            }
 
-         
         }
 
 
