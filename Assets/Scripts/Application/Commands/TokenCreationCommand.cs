@@ -94,7 +94,7 @@ namespace SecretHistories.Commands
                     token.Sphere.Choreographer.GetFreeLocalPosition(token,
                         _sourceToken.ManifestationRectTransform.anchoredPosition))
                 .WithDuration(1f)
-                .WithSphereRoute(enrouteSphere, token.Sphere)
+                .WithDestinationSpherePath(token.Sphere.GetAbsolutePath())
                 .WithScaling(0f, 1f);
 
             token.TravelTo(spawnedTravelItinerary, new Context(Context.ActionSource.SpawningAnchor));

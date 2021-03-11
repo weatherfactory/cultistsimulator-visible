@@ -4,6 +4,8 @@ using System.Security.Cryptography;
 using SecretHistories.Entities;
 using SecretHistories.States.TokenStates;
 using SecretHistories.Constants;
+using SecretHistories.Enums;
+using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
@@ -12,8 +14,7 @@ namespace SecretHistories.UI
 {
     public class TokenTravelItinerary
     {
-        public Sphere EnRouteSphere { get; set; }
-        public Sphere DestinationSphere { get; set; }
+        public FucinePath DestinationSpherePath { get; set; }
         public float Duration { get; set; }
         public Vector3 Anchored3DStartPosition { get; set; }
         public Vector3 Anchored3DEndPosition { get; set; }
@@ -30,9 +31,7 @@ namespace SecretHistories.UI
         {
             Anchored3DStartPosition = startLocation.Anchored3DPosition;
             Anchored3DEndPosition = endLocation.Anchored3DPosition;
-            DestinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(endLocation.AtSpherePath);
-            EnRouteSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSphere.GoverningSphereSpec.EnRouteSpherePath);
-
+            DestinationSpherePath = endLocation.AtSpherePath;
             StartScale = DefaultStartScale;
             EndScale = DefaultEndScale;
         }
@@ -44,8 +43,7 @@ namespace SecretHistories.UI
             Anchored3DEndPosition = anchored3DEndPosition;
 
             
-            DestinationSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
-            EnRouteSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSphere.GoverningSphereSpec.EnRouteSpherePath);
+            DestinationSpherePath = Watchman.Get<HornedAxe>().GetDefaultSpherePath();
             StartScale = DefaultStartScale;
             EndScale = DefaultEndScale;
         }
@@ -62,14 +60,17 @@ namespace SecretHistories.UI
 
             //this will cause hilarity if it's applied to a world sphere rather than a threshold
             //future AK: you'll need a smart way to apply this differently for non-CS-recipe-slot situations
-            DestinationSphere.AddBlock(new ContainerBlock(BlockDirection.Inward,
+            var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
+            if(destinationSphere.SphereCategory==SphereCategory.Threshold) //hacky. Something more like a 'max tokens #' would make sense.
+            {
+                destinationSphere.AddBlock(new ContainerBlock(BlockDirection.Inward,
                 BlockReason.InboundTravellingStack));
+            }
 
-            
             //We convert to world positions before sending, because we'll be animating through an EnRouteSphere to a DestinationSphere,
             //and the local positions in those are unlikely to match.
             Vector3 startPositioninWorldSpace = tokenToSend.Sphere.GetRectTransform().TransformPoint(Anchored3DStartPosition);
-            Vector3 endPositionInWorldSpace = DestinationSphere.GetRectTransform().TransformPoint(Anchored3DEndPosition);
+            Vector3 endPositionInWorldSpace = destinationSphere.GetRectTransform().TransformPoint(Anchored3DEndPosition);
             
             tokenAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
             tokenAnimation.SetScaling(StartScale,EndScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
@@ -87,15 +88,18 @@ namespace SecretHistories.UI
         {
             try
             {
-                if (DestinationSphere.Equals(null) || DestinationSphere.Defunct)
+                var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
+
+                if (destinationSphere.Equals(null) || destinationSphere.Defunct)
                     TravelFailed(token);
                 else
                 {
                     token.SetState(new TravelledToSphere());
                     // Assign element to new slot
-                    DestinationSphere.AcceptToken(token,context);
+                    destinationSphere.AcceptToken(token,context);
                 }
-                DestinationSphere.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
+
+                destinationSphere.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
                     BlockReason.InboundTravellingStack));
             }
             catch(Exception e)
@@ -107,7 +111,9 @@ namespace SecretHistories.UI
 
         private void TravelFailed(Token token)
         {
-            DestinationSphere.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
+            var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
+
+            destinationSphere.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
                 BlockReason.InboundTravellingStack));
 
             token.SetState(new TravellingState() );
@@ -120,8 +126,7 @@ namespace SecretHistories.UI
            var i=new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, token.TokenRectTransform.anchoredPosition3D);
            i.StartScale = token.TokenRectTransform.localScale.magnitude;
            i.EndScale= token.TokenRectTransform.localScale.magnitude;
-           i.EnRouteSphere = token.Sphere;
-           i.DestinationSphere = token.Sphere;
+           i.DestinationSpherePath = FucinePath.Current();
            return i;
         }
 
@@ -132,10 +137,9 @@ namespace SecretHistories.UI
         /// </summary>
         /// <param name="enRouteSphere"></param>
         /// <param name="destinationSphere"></param>
-        public TokenTravelItinerary WithSphereRoute(Sphere enRouteSphere, Sphere destinationSphere)
+        public TokenTravelItinerary WithDestinationSpherePath( FucinePath destinationSpherePath)
         {
-            EnRouteSphere = enRouteSphere;
-            DestinationSphere = destinationSphere;
+            DestinationSpherePath = destinationSpherePath;
             return this;
         }
 

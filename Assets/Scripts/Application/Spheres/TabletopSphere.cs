@@ -131,7 +131,7 @@ namespace SecretHistories.Spheres
                         targetLocation)
                     .WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION)
                     .WithScaling(1f, 0.35f)
-                    .WithSphereRoute(SendViaContainer, targetThreshold);
+                    .WithDestinationSpherePath(targetThreshold.GetAbsolutePath());
 
                 i.Depart(tokenToSend, context);
 

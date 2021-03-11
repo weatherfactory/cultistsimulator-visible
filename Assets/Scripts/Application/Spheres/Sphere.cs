@@ -570,9 +570,9 @@ namespace SecretHistories.Spheres
 
             TokenTravelItinerary journeyToFreePosition =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, targetFreePosition)
-                    .WithSphereRoute(token.Sphere,this).
+                    .WithDestinationSpherePath(this.GetAbsolutePath()).
                     WithDuration(NoonConstants.MOMENT_TIME_INTERVAL);
-            journeyToFreePosition.DestinationSphere = this;
+            journeyToFreePosition.DestinationSpherePath = this.GetAbsolutePath();
             journeyToFreePosition.Depart(token,context);
             return true;
         }

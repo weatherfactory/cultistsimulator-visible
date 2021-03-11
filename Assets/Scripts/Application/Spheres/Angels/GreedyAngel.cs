@@ -74,8 +74,8 @@ namespace SecretHistories.Spheres.Angels
 
                     TokenTravelItinerary itinerary = new TokenTravelItinerary(matchingToken.Location.Anchored3DPosition,
                             targetPosition)
-                        .WithScaling(1f,0.35f)
-                        .WithSphereRoute(enRouteSphere, destinationThresholdSphere);
+                        .WithScaling(1f, 0.35f)
+                        .WithDestinationSpherePath(destinationThresholdSphere.GetAbsolutePath());
 
                     itinerary.Depart(matchingToken,new Context(Context.ActionSource.GreedyGrab));
 
