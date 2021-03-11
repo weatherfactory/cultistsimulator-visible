@@ -656,11 +656,10 @@ namespace SecretHistories.Entities {
                 else
                 {
                     Watchman.Get<Stable>().Protag().AddExecutionsToHistory(currentEffectCommand.Recipe.Id, 1);
-                    var executor = new SituationEffectExecutor(Watchman.Get<TabletopManager>());
-                    executor.RunEffects(currentEffectCommand, GetSingleSphereByCategory(SphereCategory.SituationStorage), Watchman.Get<Stable>().Protag(), Watchman.Get<IDice>());
 
+                    currentEffectCommand.Execute(this);
 
-
+                    
 
                     if (!string.IsNullOrEmpty(currentEffectCommand.Recipe.Ending))
                     {

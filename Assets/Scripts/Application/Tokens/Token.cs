@@ -669,7 +669,7 @@ namespace SecretHistories.UI {
                 return false;
             Defunct = true;
             _payload.OnChanged -= OnPayloadChanged;
-            //FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex) <-- finishdrag fires other behaviour we might not want. Check next if we can still merge OK
+          //  FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex) <-- finishdrag fires other behaviour we might not want. Check next if we can still merge OK
 
             _manifestation.Retire(vfx, OnManifestationRetired);
             _payload.Retire(vfx);

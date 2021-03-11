@@ -19,14 +19,13 @@ namespace Assets.Logic
 {
     public class SituationEffectExecutor
     {
-        private TabletopManager _ttm;
-
-        public SituationEffectExecutor(TabletopManager ttm)
+       
+        public SituationEffectExecutor()
         {
-            _ttm = ttm;
+         
         }
 
-        public void RunEffects(RecipeCompletionEffectCommand command, Sphere sphere,
+        private void RunEffects(RecipeCompletionEffectCommand command, Sphere sphere,
             Character storage, IDice d)
         {
             var recipeAspects = command.Recipe.Aspects;
@@ -53,13 +52,13 @@ namespace Assets.Logic
 
             //Penultimate: run verb manipulations and element purges. This means purges will occur *after* any elements have been mutated or xtrigger-transformed.
 
-            RunVerbManipulations(command, _ttm);
+            RunVerbManipulations(command);
             //Element purges are run after verb manipulations. This is so we can halt a verb and then delete any applicable contents (rather than deleting the verb, which is possible but very risky if it contains plot-relevant elements!)
-            RunElementPurges(command, _ttm);
+            RunElementPurges(command);
 
         }
 
-        private void RunElementPurges(RecipeCompletionEffectCommand command, TabletopManager ttm)
+        private void RunElementPurges(RecipeCompletionEffectCommand command)
         {
             //NOTE: element purges trigger decayto transformation if the element itself is specified. If we filter by aspect and purge on that, its decayto is *not* triggered.
             foreach (var p in command.Recipe.Purge)
@@ -69,7 +68,7 @@ namespace Assets.Logic
         }
 
 
-        private void RunVerbManipulations(RecipeCompletionEffectCommand command, TabletopManager ttm)
+        private void RunVerbManipulations(RecipeCompletionEffectCommand command)
         {
             foreach (var h in command.Recipe.HaltVerb)
                 Watchman.Get<HornedAxe>().HaltSituation(h.Key, h.Value);
