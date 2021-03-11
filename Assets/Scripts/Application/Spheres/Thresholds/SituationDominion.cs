@@ -105,10 +105,13 @@ namespace SecretHistories.UI {
         }
 public bool CanCreateSphere(SphereSpec spec)
 {
-    if (MaxSpheresAllowed == 0)
-        return true;
+    if (GetSphereById(spec.Id) != null)
+        return false; //no spheres with duplicate id
 
-    return (_spheres.Count < MaxSpheresAllowed);
+            if (MaxSpheresAllowed == 0)
+                return true;
+            else
+                return (_spheres.Count < MaxSpheresAllowed);
 }
 
 
@@ -157,7 +160,8 @@ public bool VisibleFor(StateEnum state)
             OnSphereAdded.Invoke(newSphere);
             newSphere.Subscribe(this);
 
-            sphereArrangement.AddNewSphereToArrangement(newSphere, _spheres.Count - 1);
+            if(sphereArrangement!=null) //for testing, but may be useful later also
+                sphereArrangement.AddNewSphereToArrangement(newSphere, _spheres.Count - 1);
 
             return newSphere;
         }

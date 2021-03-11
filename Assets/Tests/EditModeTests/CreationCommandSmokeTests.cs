@@ -8,6 +8,7 @@ using NUnit.Framework;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Enums;
@@ -93,7 +94,8 @@ public class CreationCommandsSmokeTests
         }
 
 
-        [Test]
+
+    [Test]
         public void CreateSituationToken()
         {
             var situationCreationCommand = new SituationCreationCommand();

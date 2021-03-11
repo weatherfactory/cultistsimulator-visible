@@ -73,5 +73,6 @@ namespace Assets.Tests.EditModeTests
             Assert.AreEqual(StateEnum.Ongoing, situation.StateForRehydration);
 
         }
-    }
+
+        }
 }
