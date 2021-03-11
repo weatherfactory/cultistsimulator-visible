@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Enums;
@@ -98,10 +99,12 @@ namespace SecretHistories.Entities {
         }
 
 
-        public Sphere GetSphereByPath(FucinePath getsphereForPath, FucinePath relativeTo)
+        public Sphere GetSphereByPath(FucinePath relativePath, IHasFucinePath relativeTo)
         {
-            throw new NotImplementedException();
+            var constructedPath = relativeTo.GetAbsolutePath().AppendPath(relativePath);
+            return GetSphereByPath(constructedPath);
         }
+
 
         public Sphere GetSphereByPath(FucinePath spherePath)
         {

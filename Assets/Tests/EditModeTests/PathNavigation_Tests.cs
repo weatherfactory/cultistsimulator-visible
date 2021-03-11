@@ -19,7 +19,7 @@ namespace Assets.Tests.EditModeTests
 {
 
     [TestFixture]
-    public class HornedAxe_Tests
+    public class PathNavigation_Tests
     {
 
         private HornedAxe _hornedAxe;
@@ -115,10 +115,44 @@ namespace Assets.Tests.EditModeTests
         }
 
         [Test]
+        public void Payload_ReturnsCorrectAbsolutePath()
+        {
+            Assert.AreEqual("~/sphereinroot!defaultminimalpayloadid", _tokenInSphere.Payload.GetAbsolutePath().ToString());
+        }
+
+        [Test]
+        public void Sphere_ReturnsCorrectAbsolutePath()
+        {
+            Assert.AreEqual("~/sphereinroot!defaultminimalpayloadid/sphereintokenpayload", _sphereInTokenPayload.GetAbsolutePath().ToString());
+        }
+
+        [Test]
+        public void CanRetrieveSphereWithRelativePath()
+        {
+            FucinePath relativePath = new FucinePath("/sphereintokenpayload");
+            var sphereRetrieved = Watchman.Get<HornedAxe>().GetSphereByPath(relativePath, _tokenInSphere.Payload);
+            Assert.AreEqual(_sphereInTokenPayload,sphereRetrieved);
+        }
+
+
+        [Test]
+        public void EmptyPathRetrievesCurrentSphere()
+        {
+            FucinePath relativePath = new FucinePath(String.Empty);
+            var sphereRetrieved = Watchman.Get<HornedAxe>().GetSphereByPath(relativePath, _sphereInRoot);
+            Assert.AreEqual(_sphereInRoot, sphereRetrieved);
+
+
+        }
+
+        [Test]
         public void PurgeSituations_WithPath()
         {
             throw new NotImplementedException();
 
         }
+
+
+
     }
 }

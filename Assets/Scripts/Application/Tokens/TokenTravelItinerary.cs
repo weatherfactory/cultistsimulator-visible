@@ -81,6 +81,8 @@ namespace SecretHistories.UI
                float distance = Vector3.Distance(Anchored3DStartPosition, Anchored3DEndPosition);
                Duration = Mathf.Max(0.3f, distance * 0.001f);
            }
+
+           tokenToSend.SetSphere(tokenToSend.Payload.GetEnRouteSphere(),context);
             tokenAnimation.Begin(tokenToSend, context,Duration);
         }
 

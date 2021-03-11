@@ -10,7 +10,7 @@ using SecretHistories.Fucine;
 namespace Assets.Tests.EditModeTests
 {
     [TestFixture]
-   public class FucinePathTests
+   public class PathParsingTests
     {
 
         [Test]
@@ -209,6 +209,7 @@ namespace Assets.Tests.EditModeTests
             Assert.IsFalse(pathNotInRoot.IsPathToSphereInRoot());
             Assert.IsFalse(pathNotInRootAndRelativeAnywa.IsPathToSphereInRoot());
         }
+
 
     }
 }
