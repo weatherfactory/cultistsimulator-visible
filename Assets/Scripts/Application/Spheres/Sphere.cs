@@ -72,7 +72,7 @@ namespace SecretHistories.Spheres
         [Encaust]
         public List<Token> Tokens
         {
-            get { return new List<Token>(_tokens); }
+            get { return new List<Token>(_tokens.Where(t=>!t.Defunct)); }
         }
         /// <summary>
         /// This is used for child thresholds, and other spheres that depend for their temporary existence on the state of another sphere.
@@ -491,6 +491,9 @@ namespace SecretHistories.Spheres
             
             token.SetSphere(this, context);
 
+            if (token.Defunct) //possibly the token was destroyed as it left the previous sphere - eg by a consuming angel.
+                return;
+
             if(token.IsValidElementStack())
             {
 
@@ -619,6 +622,7 @@ namespace SecretHistories.Spheres
         public virtual void RemoveToken(Token token,Context context)
         {
             _tokens.Remove(token);
+            flock.MinisterToDepartingToken(token, context);
             var args= new SphereContentsChangedEventArgs(this,context);
             args.TokenRemoved = token;
             NotifyTokensChangedForSphere(args);

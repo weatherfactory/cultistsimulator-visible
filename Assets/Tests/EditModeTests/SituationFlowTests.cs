@@ -74,5 +74,29 @@ namespace Assets.Tests.EditModeTests
 
         }
 
+        [Test]
+        public void ConsumingAngel_ConsumesWhenTokenFlushed()
+        {
+
+
+            var consumingSpec = new SphereSpec(typeof(ThresholdSphere), "consumingthreshold");
+            consumingSpec.Consumes = true;
+            var consumingSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(consumingSpec);
+            
+            var outSphereSpec=new SphereSpec(typeof(MinimalSphere),"outsphere");
+            var outSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(outSphereSpec);
+
+            var element = Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First();
+            var elementStackTokenCreationCommand = new TokenCreationCommand().WithElementStack(element.Id, 1);
+
+
+            var elementStackToken = elementStackTokenCreationCommand.Execute(new Context(Context.ActionSource.Debug), consumingSphere);
+            Assert.IsTrue(elementStackToken.Payload.IsValidElementStack());
+
+            outSphere.AcceptToken(elementStackToken,new Context(Context.ActionSource.FlushingTokens));
+
+            Assert.AreEqual(0,outSphere.Tokens.Count);
+        }
+
         }
 }

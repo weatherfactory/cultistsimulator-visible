@@ -31,7 +31,8 @@ namespace SecretHistories.Ghosts
         public virtual void HideIn(Token forToken)
         {
             canvasGroup.alpha = 0f;
-            rectTransform.SetParent(forToken.TokenRectTransform); //so it doesn't clutter up the hierarchy
+            if(rectTransform!=null)
+                rectTransform.SetParent(forToken.TokenRectTransform); //so it doesn't clutter up the hierarchy
             Visible = false;
         }
 

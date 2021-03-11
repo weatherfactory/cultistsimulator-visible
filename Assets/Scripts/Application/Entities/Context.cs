@@ -12,7 +12,7 @@ public class Context {
         CalvedStack,
         PlayerClick,
         PlayerDumpAll,
-TokenMigration,
+        FlushingTokens, //Tokens are being flushed from one sphere (or >1 spheres) to another sphere, via a situation command
         SituationEffect,
         GreedyGrab,
         Retire,

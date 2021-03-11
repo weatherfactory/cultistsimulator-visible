@@ -174,7 +174,7 @@ namespace SecretHistories.UI {
 
         
 
-        private TokenState CurrentState;
+        private TokenState CurrentState=new UnknownState();
 
 
         public void SetPayload(ITokenPayload payload)
@@ -500,11 +500,12 @@ namespace SecretHistories.UI {
 
         public  void FinishDrag()
         {
-            canvasGroup.blocksRaycasts = true;
+            if(canvasGroup!=null)
+                canvasGroup.blocksRaycasts = true;
 
             if (!CurrentState.Docked(this))
                 //evict the token before hiding the ghost. If the ghost is still active, it'll give the evicted token a place to go.
-                   this.Sphere.EvictToken(this,new Context(Context.ActionSource.Unknown));
+                   this.Sphere.EvictToken(this,new Context(Context.ActionSource.PlayerDrag));
 
             HideGhost(); 
 
@@ -668,7 +669,7 @@ namespace SecretHistories.UI {
                 return false;
             Defunct = true;
             _payload.OnChanged -= OnPayloadChanged;
-            FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
+            //FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex) <-- finishdrag fires other behaviour we might not want. Check next if we can still merge OK
 
             _manifestation.Retire(vfx, OnManifestationRetired);
             _payload.Retire(vfx);
@@ -683,8 +684,8 @@ namespace SecretHistories.UI {
 
         private void OnManifestationRetired()
         {
-
-            Destroy(this.gameObject);
+            if(!Application.isEditor)
+                Destroy(this.gameObject); //destroy doesn't work in edit mode / will destroy things permanently
         }
 
 

@@ -35,6 +35,11 @@ namespace SecretHistories.Spheres.Angels
             _tidyToPath = sphere.GetAbsolutePath();
         }
 
+        public bool MinisterToDepartingToken(Token token, Context context)
+        {
+            return true; //if it's been purposefully removed, it's not our business
+        }
+
         public bool MinisterToEvictedToken(Token token, Context context)
         {
 

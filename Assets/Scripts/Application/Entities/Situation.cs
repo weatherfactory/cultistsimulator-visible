@@ -498,7 +498,7 @@ namespace SecretHistories.Entities {
         public List<Token> GetTokens(SphereCategory forSphereCategory)
         {
             List<Token> stacks = new List<Token>();
-            foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory))
+            foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory && !c.Defunct))
                 stacks.AddRange(container.Tokens);
 
             return stacks;
@@ -507,7 +507,7 @@ namespace SecretHistories.Entities {
         public List<Token> GetElementTokens(SphereCategory forSphereCategory)
         {
             List<Token> stacks = new List<Token>();
-            foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory))
+            foreach (var container in _spheres.Where(c => c.SphereCategory == forSphereCategory && !c.Defunct))
                 stacks.AddRange(container.GetElementTokens());
 
             return stacks;

@@ -30,6 +30,15 @@ namespace SecretHistories.Spheres.Angels
             }
         }
 
+        public bool MinisterToDepartingToken(Token token, Context context)
+        {
+            foreach (var a in _angels.OrderByDescending(angel => angel.Authority))
+                if (a.MinisterToDepartingToken(token, context))
+                    return true;
+
+            return false;
+        }
+
         public bool MinisterToEvictedToken(Token token, Context context)
         {
             foreach (var a in _angels.OrderByDescending(angel=>angel.Authority))

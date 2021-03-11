@@ -182,6 +182,9 @@ namespace SecretHistories.UI {
 
         public bool IsValidElementStack()
         {
+            if (Defunct)
+                return false;
+
             return Element.Id != NullElement.NULL_ELEMENT_ID;
         }
 

@@ -113,9 +113,27 @@ public class SphereSpec: AbstractEntity<SphereSpec>
         WindowsSpherePath = new FucinePath(String.Empty);
         }
 
-    public List<IAngel> MakeAngels()
+    public List<IAngel> MakeAngels(Sphere inSphere)
     {
-        return new List<IAngel>();
+        var angelsMade = new List<IAngel>();
+        if (Greedy)
+        {
+            GreedyAngel greedyAngel = new GreedyAngel();
+            greedyAngel.SetThresholdToGrabTo(inSphere as ThresholdSphere);
+            var worldSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
+            greedyAngel.SetWatch(worldSphere);
+            greedyAngel.SetWatch(Watchman.Get<HornedAxe>().GetSphereByPath(worldSphere.GoverningSphereSpec.EnRouteSpherePath));
+            angelsMade.Add(greedyAngel);
+
+        }
+
+        if (Consumes)
+        {
+            ConsumingAngel consumingAngel = new ConsumingAngel();
+            angelsMade.Add(consumingAngel);
+        }
+
+        return angelsMade;
     }
 
     public ContainerMatchForStack CheckPayloadAllowedHere(ITokenPayload payload)

@@ -44,11 +44,6 @@ namespace SecretHistories.UI
             get { return GoverningSphereSpec != null && GoverningSphereSpec.Greedy; }
         }
 
-        public bool IsConsuming
-        {
-            get { return GoverningSphereSpec.Consumes; }
-        }
-        
 
         public void Start() {
             slotGlow.Hide();
@@ -61,26 +56,11 @@ namespace SecretHistories.UI
             base.ApplySpec(sphereSpec);
 
             SlotLabel.text = sphereSpec.Label;
-            if (sphereSpec.Greedy)
-            {
-                GreedyAngel greedyAngel = new GreedyAngel();
-                greedyAngel.SetThresholdToGrabTo(this);
-                var worldSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
-                greedyAngel.SetWatch(worldSphere);
-                greedyAngel.SetWatch(Watchman.Get<HornedAxe>().GetSphereByPath(worldSphere.GoverningSphereSpec.EnRouteSpherePath));
-                flock.AddAngel(greedyAngel);
 
-            }
 
-            var angelsToAdd = sphereSpec.MakeAngels();
+            var angelsToAdd = sphereSpec.MakeAngels(this);
             foreach(var a in angelsToAdd)
                 AddAngel(a);
-
-            //refactor to something more generic
-            if(GreedyIcon!=null)
-            GreedyIcon.SetActive(sphereSpec.Greedy);
-            if(ConsumingIcon!=null)
-            ConsumingIcon.SetActive(sphereSpec.Consumes);
 
         }
 

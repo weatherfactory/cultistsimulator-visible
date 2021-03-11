@@ -97,6 +97,9 @@ namespace SecretHistories.UI {
             if (!CanCreateSphere(spec))
                 return NullSphere.Create();
 
+            if(VisibleForStates==null)
+                VisibleForStates=new List<StateEnum>(); //in case it hasn't been initialised - eg in testing
+
             //ensure that the spec will be visible in states for which this dominion is active
             foreach (var activeInState in VisibleForStates)
                 spec.MakeActiveInState(activeInState);

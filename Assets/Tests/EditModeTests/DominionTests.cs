@@ -19,7 +19,6 @@ namespace Assets.Tests.EditModeTests
         public void SphereWIthDuplicateId_CannotBeCreatedOnSituationDominion()
         {
             var situationDominion = new GameObject().AddComponent<SituationDominion>();
-            situationDominion.VisibleForStates = new List<StateEnum>();
             var sphereSpec = new SphereSpec(typeof(MinimalSphere), "idwillbeduplicate");
             situationDominion.TryCreateSphere(sphereSpec);
             situationDominion.TryCreateSphere(sphereSpec);

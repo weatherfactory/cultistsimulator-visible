@@ -18,16 +18,17 @@ namespace SecretHistories.Spheres.Angels
         private const int GRAB_QUANTITY_LIMIT = 1;
         private const int BEATS_BETWEEN_ANGELRY = 20; 
         private int _beatsTowardsAngelry = 0;
-        private Sphere _thresholdSphereToGrabTo;
+        private ThresholdSphere _thresholdSphereToGrabTo;
         private readonly HashSet<Sphere> _spheresToGrabFrom=new HashSet<Sphere>();
 
-        public void SetThresholdToGrabTo(Sphere thresholdSphereToGrabTo)
+        public void SetThresholdToGrabTo(ThresholdSphere thresholdSphereToGrabTo)
         {
             _thresholdSphereToGrabTo = thresholdSphereToGrabTo;
-            thresholdSphereToGrabTo.GreedyIcon.SetActive(true);
+            if(_thresholdSphereToGrabTo.GreedyIcon!=null)
+                thresholdSphereToGrabTo.GreedyIcon.SetActive(true);
         }
 
-        public int Authority => 10;
+        public int Authority => 9;
 
         public void Act(float interval)
         {
@@ -47,9 +48,14 @@ namespace SecretHistories.Spheres.Angels
             _spheresToGrabFrom.Add(sphere);
         }
 
+        public bool MinisterToDepartingToken(Token token, Context context)
+        {
+            return false; //could check here whether we're allowed to remove this token.
+        }
+
         public bool MinisterToEvictedToken(Token token,Context context)
         {
-            return false; // if  we want to grab evicted tokens, this would be a good place
+            return false; // if  we want to grab tokens after they're evictedl this would be a good place
         }
 
         private void TryGrabStack(Sphere destinationThresholdSphere, float interval)
@@ -68,7 +74,6 @@ namespace SecretHistories.Spheres.Angels
                         matchingToken.CalveToken(matchingToken.Quantity - GRAB_QUANTITY_LIMIT,
                             new Context(Context.ActionSource.GreedyGrab));
 
-                    var enRouteSphere = matchingToken.Payload.GetEnRouteSphere();
 
                     var targetPosition = GetTargetPositionForDestinationSphere(destinationThresholdSphere,matchingToken);
 
