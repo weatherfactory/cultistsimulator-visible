@@ -919,7 +919,7 @@ namespace SecretHistories.Entities {
 
         }
 
-        public void ActivateRecipe(Recipe recipeToActivate)
+        public void SetRecipeActive(Recipe recipeToActivate)
         {
             Recipe = recipeToActivate;
             _timeshadow = new Timeshadow(Recipe.Warmup, Recipe.Warmup, false);

@@ -67,7 +67,7 @@ namespace SecretHistories.States
                 var addNoteCommand=new AddNoteCommand(situation.Recipe.Label,situation.Recipe.Description, new Context(Context.ActionSource.UI));
                 situation.ExecuteTokenEffectCommand(addNoteCommand);
                 
-                 situation.ActivateRecipe(linkedRecipe);
+                 situation.SetRecipeActive(linkedRecipe);
                 
                 if (situation.TimeRemaining > 0) //don't play a sound if we loop through multiple linked ones
                 {

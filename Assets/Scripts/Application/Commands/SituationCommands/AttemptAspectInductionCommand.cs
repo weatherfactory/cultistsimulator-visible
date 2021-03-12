@@ -94,10 +94,11 @@ namespace SecretHistories.Commands.SituationCommands
             }
 
 
-            SituationCreationCommand inducedSituationCreationCommand = new SituationCreationCommand(inducedRecipe.ActionId).WithRecipeId(inducedRecipe.Id).AlreadyInState(StateEnum.Ongoing);
+            SituationCreationCommand inducedSituationCreationCommand =
+                new SituationCreationCommand(inducedRecipe.ActionId).WithRecipeAboutToActivate(inducedRecipe.Id);
 
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(inducedSituationCreationCommand, FucinePath.Current(), new Context(Context.ActionSource.SpawningAnchor));
-       situation.SendCommandToSubscribers(spawnNewTokenCommand);
+            situation.Token.ExecuteTokenEffectCommand(spawnNewTokenCommand);
 
         }
     }

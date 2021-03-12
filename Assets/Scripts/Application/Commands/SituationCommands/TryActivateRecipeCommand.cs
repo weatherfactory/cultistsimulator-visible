@@ -12,21 +12,30 @@ namespace SecretHistories.Commands.SituationCommands
     {
         private readonly string _recipeId;
         private readonly List<StateEnum> _validForStates=new List<StateEnum>();
+        private readonly bool _alwaysActivateRegardlessOfRequirements;
 
-        protected TryActivateRecipeCommand(string recipeId, List<StateEnum> validForStates)
+        protected TryActivateRecipeCommand(string recipeId, List<StateEnum> validForStates, bool alwaysActivateRegardlessOfRequirements)
         {
             _recipeId = recipeId;
             _validForStates.AddRange(validForStates);
+            _alwaysActivateRegardlessOfRequirements = alwaysActivateRegardlessOfRequirements;
 
         }
 
         public static TryActivateRecipeCommand ManualRecipeActivation(string recipeId)
         {
-            return new TryActivateRecipeCommand(recipeId,new List<StateEnum>(){ StateEnum.Unstarted });
+            return new TryActivateRecipeCommand(recipeId,new List<StateEnum>(){ StateEnum.Unstarted },false);
         }
         public static TryActivateRecipeCommand LinkedRecipeActivation(string recipeId)
         {
-            return new TryActivateRecipeCommand(recipeId, new List<StateEnum>() { StateEnum.RequiringExecution,StateEnum.Ongoing });
+            return new TryActivateRecipeCommand(recipeId, new List<StateEnum>() { StateEnum.RequiringExecution,StateEnum.Ongoing },true);
+
+        }
+
+
+        public static TryActivateRecipeCommand OverridingRecipeActivation(string recipeId)
+        {
+            return new TryActivateRecipeCommand(recipeId, new List<StateEnum>() { StateEnum.RequiringExecution, StateEnum.Ongoing,StateEnum.Unstarted }, true);
 
         }
 
@@ -44,9 +53,9 @@ namespace SecretHistories.Commands.SituationCommands
             var recipeToActivate = Watchman.Get<Compendium>().GetEntityById<Recipe>(_recipeId);
 
 
-            if (recipeToActivate.RequirementsSatisfiedBy(aspectsInContext))
+            if (_alwaysActivateRegardlessOfRequirements || recipeToActivate.RequirementsSatisfiedBy(aspectsInContext))
             {
-                situation.ActivateRecipe(recipeToActivate);
+                situation.SetRecipeActive(recipeToActivate);
                 situation.UpdateCurrentRecipePrediction(situation.GetRecipePredictionForCurrentStateAndAspects(),new Context(Context.ActionSource.SituationEffect));
                 situation.TransitionToState(new OngoingState());
 

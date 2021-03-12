@@ -68,6 +68,15 @@ namespace SecretHistories.Commands
             return this;
         }
 
+        public SituationCreationCommand WithRecipeAboutToActivate(string recipeId)
+        {
+            StateForRehydration = StateEnum.Unstarted;
+            CommandQueue.AddCommand(TryActivateRecipeCommand.OverridingRecipeActivation(recipeId));
+            return this;
+        }
+
+
+
         public ITokenPayload Execute(Context context)
         {
             HornedAxe situationsCatalogue = Watchman.Get<HornedAxe>();
@@ -93,7 +102,7 @@ namespace SecretHistories.Commands
            
             newSituation.State = SituationState.Rehydrate(StateForRehydration, newSituation);
 
-            newSituation.ActivateRecipe(recipe);
+            newSituation.SetRecipeActive(recipe);
             newSituation.ReduceLifetimeBy(recipe.Warmup - TimeRemaining);
             newSituation.OverrideTitle = OverrideTitle;
             
