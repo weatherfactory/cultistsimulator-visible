@@ -32,6 +32,8 @@ namespace Assets.Scripts.Application.Entities.NullEntities
                 var obj = new GameObject("NullSphere");
                 var nullSphereComponent = obj.AddComponent<NullSphere>();
                 _instance = nullSphereComponent;
+                _instance.ApplySpec(new SphereSpec(typeof(NullSphere),nameof(NullSphere)));
+
             }
 
             return _instance;
