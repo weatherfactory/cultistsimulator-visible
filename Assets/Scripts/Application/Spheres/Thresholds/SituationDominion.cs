@@ -114,7 +114,7 @@ public bool CanCreateSphere(SphereSpec spec)
             if (MaxSpheresAllowed == 0)
                 return true;
             else
-                return (_spheres.Count < MaxSpheresAllowed);
+                return (_spheres.Count(s => !s.Defunct) < MaxSpheresAllowed);
 }
 
 

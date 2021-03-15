@@ -31,7 +31,7 @@
 		
 		 {
             "id": "apls",
-            "label": "Test recipe, one threshold, doesn't link",
+            "label": "Test recipe, one threshold for a, doesn't link",
             "actionid": "t",
             "slots": [
                 {
@@ -44,9 +44,117 @@
             ],
             "startdescription": "Start description. [Square brackets.]",
             "description": "End description.",
-            "warmup": 10,
+            "warmup": 1,
             "craftable": true
-        }
+        },
+		 {
+            "id": "apls.linkto.bpls.loop",
+            "label": "Test recipe, one threshold for a, links to bpls.loop",
+            "actionid": "t",
+            "slots": [
+                {
+                    "id": "apls",
+                    "label": "apls",
+                    "required": {
+                        "t.a": 1
+                    }
+                }
+            ],
+            "startdescription": "Start description. [Square brackets.]",
+            "description": "End description.",
+            "warmup": 1,
+            "craftable": true,
+			    "linked": [
+                {
+                    "id": "bpls.loop",
+                    "chance": 100
+                }
+				]
+        },
+		
+		
+		{
+            "id": "bpls",
+            "label": "Test recipe, one threshold for b, doesn't link",
+            "actionid": "t",
+            "slots": [
+                {
+                    "id": "bpls",
+                    "label": "bpls",
+                    "required": {
+                        "t.b": 1
+                    }
+                }
+            ],
+            "startdescription": "Start description. [Square brackets.]",
+            "description": "End description.",
+            "warmup": 1,
+            "craftable": true
+        },
+		
+		{
+            "id": "bpls.loop",
+            "label": "Test recipe, one threshold for b, loops",
+            "actionid": "t",
+            "slots": [
+                {
+                    "id": "bpls",
+                    "label": "bpls",
+                    "required": {
+                        "t.b": 1
+                    }
+                }
+            ],
+            "startdescription": "Start description. [Square brackets.]",
+            "description": "End description.",
+            "warmup": 1,
+            "craftable": true,
+			    "linked": [
+                {
+                    "id": "bpls.loop",
+                    "chance": 100
+                }
+				]
+        },
+		{
+            "id": "apls.linkto.hiatus.loop",
+            "label": "Test recipe, one threshold for a, links to bpls.loop",
+            "actionid": "t",
+            "slots": [
+                {
+                    "id": "apls",
+                    "label": "apls",
+                    "required": {
+                        "t.a": 1
+                    }
+                }
+            ],
+            "startdescription": "Start description. [Square brackets.]",
+            "description": "End description.",
+            "warmup": 1,
+            "craftable": true,
+			    "linked": [
+                {
+                    "id": "hiatus.loop",
+                    "chance": 100
+                }
+				]
+        },
+				{
+            "id": "hiatus.loop",
+            "label": "Test recipe, does nothing except loop",
+            "actionid": "t",
+            "startdescription": "Start description. [Square brackets.]",
+            "description": "End description.",
+            "warmup": 1,
+            "craftable": true,
+			    "linked": [
+                {
+                    "id": "hiatus.loop",
+                    "chance": 100
+                }
+				]
+        },
        
     ]
 }

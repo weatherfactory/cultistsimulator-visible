@@ -33,6 +33,7 @@ namespace SecretHistories.Entities
             Purge = new Dictionary<string, int>();
             HaltVerb =new Dictionary<string, int>();
             DeleteVerb=new Dictionary<string, int>();
+            Slots=new List<SphereSpec>();
         }
 
     public static NullRecipe Create()

@@ -85,11 +85,53 @@ namespace Assets.Tests.EditModeTests
 
             var activationCommand = TryActivateRecipeCommand.OverridingRecipeActivation(recipeWithThreshold.Id);
             situation.CommandQueue.AddCommand(activationCommand);
-            situation.ExecuteHeartbeat(1f); //first time switches to Ongoing
-            situation.ExecuteHeartbeat(1f); //second time executes the outstanding command
-            Assert.AreEqual(situation.GetSpheresByCategory(SphereCategory.Threshold).First().Id, recipeWithThreshold.Id);
+            
+            situation.ExecuteHeartbeat(0f); //first time switches to Ongoing
+            situation.ExecuteHeartbeat(0f); //second time executes the outstanding command
+            Assert.AreEqual(recipeWithThreshold.Id,situation.GetSpheresByCategory(SphereCategory.Threshold).First().Id);
+        }
+
+        [Test]
+        public void RecipeWithSlot_Replaces_RecipeThreshold_FromPreviousRecipe()
+        {
+            SituationCreationCommand situationCreationCommand = new SituationCreationCommand("t");
+            situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
+            var situation = situationCreationCommand.Execute(Context.Unknown()) as Situation;
+
+            var recipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("apls.linkto.bpls.loop");
+
+            var secondRecipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("bpls.loop");
+
+            var activationCommand = TryActivateRecipeCommand.OverridingRecipeActivation(recipeWithThreshold.Id);
+            situation.CommandQueue.AddCommand(activationCommand);
+            situation.ExecuteHeartbeat(recipeWithThreshold.Warmup+1); //first time switches to Ongoing
+            situation.ExecuteHeartbeat(0f); //second time executes the outstanding sphere creation command and switches to RecipeExecution
+            situation.ExecuteHeartbeat(0f); //third time switches back to Ongoing
+            situation.ExecuteHeartbeat(0f); //fourth time time executes the outstanding sphere creation command and switches to RecipeExecution
+
+            Assert.AreEqual(secondRecipeWithThreshold.Slots.First().Id,situation.GetSpheresByCategory(SphereCategory.Threshold).First().Id);
+        }
 
 
+        [Test]
+        public void RecipeSlot_IsRetained_WhenMovingToALinkedRecipeThatDoesntSpecifySlot()
+        {
+            SituationCreationCommand situationCreationCommand = new SituationCreationCommand("t");
+            situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
+            var situation = situationCreationCommand.Execute(Context.Unknown()) as Situation;
+
+            var recipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("apls.linkto.hiatus.loop");
+
+            var secondRecipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("hiatus.loop");
+
+            var activationCommand = TryActivateRecipeCommand.OverridingRecipeActivation(recipeWithThreshold.Id);
+            situation.CommandQueue.AddCommand(activationCommand);
+            situation.ExecuteHeartbeat(recipeWithThreshold.Warmup + 1); //first time switches to Ongoing
+            situation.ExecuteHeartbeat(0f); //second time executes the outstanding sphere creation command and switches to RecipeExecution
+            situation.ExecuteHeartbeat(0f); //third time switches back to Ongoing
+            situation.ExecuteHeartbeat(0f); //fourth time time executes the outstanding sphere creation command and switches to RecipeExecution
+
+            Assert.AreEqual(secondRecipeWithThreshold.Id, situation.GetSpheresByCategory(SphereCategory.Threshold).First().Id);
         }
 
         [Test]
