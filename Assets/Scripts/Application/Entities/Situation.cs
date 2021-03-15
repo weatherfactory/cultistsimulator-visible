@@ -152,7 +152,7 @@ namespace SecretHistories.Entities {
         private RecipePrediction _currentRecipePrediction;
 
         private readonly List<ISituationSubscriber> _subscribers = new List<ISituationSubscriber>();
-        private readonly List<SituationDominion> _registeredDominions = new List<SituationDominion>();
+        private readonly List<IDominion> _registeredDominions = new List<IDominion>();
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
         
         private Timeshadow _timeshadow;
@@ -187,7 +187,7 @@ namespace SecretHistories.Entities {
             if (_registeredDominions.Contains(dominionToRegister))
                 return false;
 
-            _registeredDominions.Add(dominionToRegister as SituationDominion);
+            _registeredDominions.Add(dominionToRegister);
             return true;
         }
 
@@ -744,9 +744,9 @@ namespace SecretHistories.Entities {
 
 
 
-        public List<SituationDominion> GetRelevantDominions(StateEnum forState,Type sphereType)
+        public List<IDominion> GetRelevantDominions(StateEnum forState,Type sphereType)
     {
-            return new List<SituationDominion>(_registeredDominions.Where(a=>a.RelevantTo(forState,sphereType)));
+            return new List<IDominion>(_registeredDominions.Where(a=>a.RelevantTo(forState,sphereType)));
     }
 
     public List<Sphere> GetAvailableThresholdsForStackPush(ITokenPayload stack)

@@ -7,6 +7,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Spheres;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace SecretHistories.UI
@@ -22,6 +23,8 @@ namespace SecretHistories.UI
         List<Sphere> Spheres { get; }
       Sphere TryCreateSphere(SphereSpec spec);
       Sphere GetSphereById(string id);
+      bool VisibleFor(StateEnum state);
+      bool RelevantTo(StateEnum state, Type sphereType);
       bool RemoveSphere(string id);
       public void Evoke();
       public void Dismiss();

@@ -27,6 +27,25 @@
             "description": "End description.",
             "warmup": 30,
             "craftable": true
+        },
+		
+		 {
+            "id": "apls",
+            "label": "Test recipe, one threshold, doesn't link",
+            "actionid": "t",
+            "slots": [
+                {
+                    "id": "apls",
+                    "label": "apls",
+                    "required": {
+                        "t.a": 1
+                    }
+                }
+            ],
+            "startdescription": "Start description. [Square brackets.]",
+            "description": "End description.",
+            "warmup": 10,
+            "craftable": true
         }
        
     ]

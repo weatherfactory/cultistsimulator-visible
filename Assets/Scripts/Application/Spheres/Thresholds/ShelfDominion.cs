@@ -79,6 +79,16 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
             return _spheres.SingleOrDefault(s => s.Id == id);
         }
 
+        public bool VisibleFor(StateEnum state)
+        {
+            return true;
+        }
+
+        public bool RelevantTo(StateEnum state, Type sphereType)
+        {
+            return true;
+        }
+
         public bool RemoveSphere(string id)
         {
             var sphereToRemove = GetSphereById(id);

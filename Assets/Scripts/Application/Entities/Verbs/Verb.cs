@@ -73,7 +73,7 @@ namespace SecretHistories.Entities
         public string DefaultUniqueTokenId()
         {
             int identity = FucineRoot.Get().IncrementedIdentity();
-            return $"!{Id}_{identity}";
+            return $"{Id}_{identity}";
         }
 
 

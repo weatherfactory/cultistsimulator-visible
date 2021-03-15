@@ -75,10 +75,27 @@ namespace Assets.Tests.EditModeTests
         }
 
         [Test]
+        public void RecipeWithSlot_AddsRecipeThreshold()
+        {
+            SituationCreationCommand situationCreationCommand = new SituationCreationCommand("t");
+            situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
+            var situation = situationCreationCommand.Execute(Context.Unknown()) as Situation;
+
+            var recipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("apls");
+
+            var activationCommand = TryActivateRecipeCommand.OverridingRecipeActivation(recipeWithThreshold.Id);
+            situation.CommandQueue.AddCommand(activationCommand);
+            situation.ExecuteHeartbeat(1f); //first time switches to Ongoing
+            situation.ExecuteHeartbeat(1f); //second time executes the outstanding command
+            Assert.AreEqual(situation.GetSpheresByCategory(SphereCategory.Threshold).First().Id, recipeWithThreshold.Id);
+
+
+        }
+
+        [Test]
         public void ConsumingAngel_ConsumesWhenTokenFlushed()
         {
-
-
+            
             var consumingSpec = new SphereSpec(typeof(ThresholdSphere), "consumingthreshold");
             consumingSpec.Consumes = true;
             var consumingSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(consumingSpec);
