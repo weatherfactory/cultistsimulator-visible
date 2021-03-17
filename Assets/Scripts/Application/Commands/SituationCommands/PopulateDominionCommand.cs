@@ -15,7 +15,11 @@ using SecretHistories.UI;
 
 namespace SecretHistories.Commands.SituationCommands
 {
-  public  class PopulateDominionCommand: ISituationCommand,IEncaustment
+    /// <summary>
+    /// Populates spheres for specified dominion. Will overwrite (and gracefully retire) any existing spheres, but only if there are SphereCreationCommands specified.
+    /// If there are no spherecreationcommands there, it'll do nothing - use ClearDominionCommand instead
+    /// </summary>
+  public class PopulateDominionCommand: ISituationCommand,IEncaustment
     {
 
         public DominionEnum Identifier { get; set; }
@@ -69,6 +73,11 @@ namespace SecretHistories.Commands.SituationCommands
                 var dominion = situation.Dominions.SingleOrDefault(d => d.Identifier == Identifier);
                 if (dominion!=null)
                 {
+                    //we're going to replace any existing spheres
+                    var sphereIdsToRemove = new List<string>(dominion.Spheres.Select(s => s.Id));
+                    foreach (var s in sphereIdsToRemove)
+                        dominion.RemoveSphere(s, SphereRetirementType.Graceful);
+
                     foreach (var s in Spheres)
                         s.ExecuteOn(dominion as SituationDominion, new Context(Context.ActionSource.Unknown)); 
                     return true;

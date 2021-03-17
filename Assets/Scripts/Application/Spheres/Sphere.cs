@@ -221,7 +221,8 @@ namespace SecretHistories.Spheres
 
         private void FinishRetirement()
         {
-            Destroy(gameObject);
+            if(!Application.isEditor)
+                Destroy(gameObject);
         }
         
 

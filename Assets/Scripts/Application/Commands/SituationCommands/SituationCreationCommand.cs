@@ -117,7 +117,7 @@ namespace SecretHistories.Commands
             newWindow.Attach(newSituation);
 
 
-            foreach (var d in Dominions) //there's a risk here. If we automatically clear dismissed dominions, then we might conceivably dismiss one we've just populated here
+            foreach (var d in Dominions)
                 d.Execute(newSituation);
 
             //this may have been specified if the new situation is being spawned from an old one
