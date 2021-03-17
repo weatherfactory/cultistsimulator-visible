@@ -17,16 +17,11 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.VerbThresholds));
-            situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.RecipeThresholds));
-            situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.Notes));
-            situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.Storage));
-            situation.CommandQueue.AddCommand(new ResetDominionCommand(DominionEnum.Output));
-
-            situation.CommandQueue.AddCommand(new ResetSituationCommand());
 
             var verbThresholdsCommand= new PopulateDominionCommand(DominionEnum.VerbThresholds,situation.Verb.Thresholds);
             situation.CommandQueue.AddCommand(verbThresholdsCommand);
+            var resetSituationCommand=new ResetSituationCommand();
+            situation.CommandQueue.AddCommand(resetSituationCommand);
         }
 
         public override void Exit(Situation situation)

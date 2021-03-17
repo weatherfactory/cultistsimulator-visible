@@ -107,7 +107,7 @@ namespace SecretHistories.Infrastructure
             return true;
         }
 
-        public bool RemoveSphere(string id)
+        public bool RemoveSphere(string id,SphereRetirementType retirementType)
         {
             throw new NotImplementedException();
         }

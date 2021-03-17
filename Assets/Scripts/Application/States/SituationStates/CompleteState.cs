@@ -29,11 +29,11 @@ namespace SecretHistories.States
 
 
             //remove verb, recipe and storage slots here.
-            var clearVerbThresholdsCommand =new ClearDominionCommand(DominionEnum.VerbThresholds);
+            var clearVerbThresholdsCommand =new ClearDominionCommand(DominionEnum.VerbThresholds,SphereRetirementType.Graceful);
             situation.CommandQueue.AddCommand(clearVerbThresholdsCommand);
-            var clearRecipeThresholdsCommand = new ClearDominionCommand(DominionEnum.RecipeThresholds);
+            var clearRecipeThresholdsCommand = new ClearDominionCommand(DominionEnum.RecipeThresholds, SphereRetirementType.Graceful);
             situation.CommandQueue.AddCommand(clearRecipeThresholdsCommand);
-            var clearStorageThresholdsCommand = new ClearDominionCommand(DominionEnum.Storage);
+            var clearStorageThresholdsCommand = new ClearDominionCommand(DominionEnum.Storage, SphereRetirementType.Graceful);
             situation.CommandQueue.AddCommand(clearStorageThresholdsCommand);
 
 

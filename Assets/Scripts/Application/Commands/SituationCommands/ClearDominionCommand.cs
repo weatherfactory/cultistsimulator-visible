@@ -19,6 +19,7 @@ namespace SecretHistories.Commands.SituationCommands
     {
 
         public DominionEnum Identifier { get; set; }
+        public SphereRetirementType RetirementType { get; set; }
 
         public bool IsValidForState(StateEnum forState)
         {
@@ -32,14 +33,11 @@ namespace SecretHistories.Commands.SituationCommands
 
         }
 
-
-   
-
-
-        public ClearDominionCommand(DominionEnum identifier)
+        
+        public ClearDominionCommand(DominionEnum identifier,SphereRetirementType retirementType)
         {
             Identifier = identifier;
-
+            RetirementType = retirementType;
         }
 
     
@@ -51,7 +49,7 @@ namespace SecretHistories.Commands.SituationCommands
                 {
                     var sphereIdsToRemove = new List<string>(dominion.Spheres.Select(s => s.Id));
                     foreach (var s in sphereIdsToRemove)
-                        dominion.RemoveSphere(s);
+                        dominion.RemoveSphere(s,RetirementType);
 
                     return true;
                 }

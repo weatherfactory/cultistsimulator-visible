@@ -89,14 +89,14 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
             return true;
         }
 
-        public bool RemoveSphere(string id)
+        public bool RemoveSphere(string id,SphereRetirementType retirementType)
         {
             var sphereToRemove = GetSphereById(id);
             if (sphereToRemove != null)
             {
                 _spheres.Remove(sphereToRemove);
                 OnSphereRemoved.Invoke(sphereToRemove);
-                sphereToRemove.Retire(SphereRetirementType.Graceful);
+                sphereToRemove.Retire(retirementType);
                 return true;
             }
             else

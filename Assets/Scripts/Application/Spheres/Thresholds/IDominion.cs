@@ -25,7 +25,7 @@ namespace SecretHistories.UI
       Sphere GetSphereById(string id);
       bool VisibleFor(StateEnum state);
       bool RelevantTo(StateEnum state, Type sphereType);
-      bool RemoveSphere(string id);
+      bool RemoveSphere(string id,SphereRetirementType retirementType);
       public void Evoke();
       public void Dismiss();
       bool CanCreateSphere(SphereSpec spec);
