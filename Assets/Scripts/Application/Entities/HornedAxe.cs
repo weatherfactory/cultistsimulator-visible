@@ -126,15 +126,12 @@ namespace SecretHistories.Entities {
             var candidateTokenPath = spherePath.GetTokenPath();
             var tokenThatShouldContainSphere= GetTokenByPath(candidateTokenPath);
 
-            if(tokenThatShouldContainSphere!=null && tokenThatShouldContainSphere.Payload!=null && tokenThatShouldContainSphere.Payload.Dominions!=null) //just in case
+            if(tokenThatShouldContainSphere!=null && tokenThatShouldContainSphere.Payload!=null) 
             {
-                var tokenDominions = tokenThatShouldContainSphere.Payload.Dominions;
-                foreach (var d in tokenDominions)
-                {
-                    var sphereFound = d.GetSphereById(targetSphereId);
+                var sphereFound = tokenThatShouldContainSphere.Payload.GetSphereById(targetSphereId);
                     if (sphereFound != null)
                         return sphereFound;
-                }
+                
             }
             return GetFallbackSphere(spherePath);
 

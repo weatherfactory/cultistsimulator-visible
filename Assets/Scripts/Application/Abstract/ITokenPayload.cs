@@ -6,6 +6,7 @@ using SecretHistories.Commands;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Manifestations;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 
 namespace SecretHistories.Abstract
@@ -18,6 +19,7 @@ namespace SecretHistories.Abstract
 
         
         public List<IDominion> Dominions { get; }
+        public Sphere GetSphereById(string id);
         
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);

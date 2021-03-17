@@ -114,6 +114,11 @@ namespace SecretHistories.Entities.Verbs
             return true;
         }
 
+        public Sphere GetSphereById(string id)
+        {
+            return _spheres.SingleOrDefault(s => s.Id == Id && !s.Defunct);
+        }
+
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
             return typeof(DropzoneManifestation);
