@@ -21,11 +21,22 @@ namespace SecretHistories.States
             situation.CommandQueue.AddCommand(createOutputSphereCommand);
 
             var migrateToOutputCommand=new FlushTokensToCategoryCommand(SphereCategory.SituationStorage,SphereCategory.Output,StateEnum.Complete);
-            migrateToOutputCommand.RetireSourceSpheres = false;
+            
             situation.CommandQueue.AddCommand(migrateToOutputCommand);
 
             var attemptAspectInductionsCommand=new AttemptAspectInductionCommand(SphereCategory.Output,StateEnum.Complete);
             situation.CommandQueue.AddCommand(attemptAspectInductionsCommand);
+
+
+            //remove verb, recipe and storage slots here.
+            var clearVerbThresholdsCommand =new ClearDominionCommand(DominionEnum.VerbThresholds);
+            situation.CommandQueue.AddCommand(clearVerbThresholdsCommand);
+            var clearRecipeThresholdsCommand = new ClearDominionCommand(DominionEnum.RecipeThresholds);
+            situation.CommandQueue.AddCommand(clearRecipeThresholdsCommand);
+            var clearStorageThresholdsCommand = new ClearDominionCommand(DominionEnum.Storage);
+            situation.CommandQueue.AddCommand(clearStorageThresholdsCommand);
+
+
 
             SoundManager.PlaySfx("SituationComplete"); //this could run through that Echo obj
 

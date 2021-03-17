@@ -26,7 +26,6 @@ namespace SecretHistories.States
                 situation.CommandQueue.AddCommand(storageCommand);
 
                 var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);
-                migrateFromVerbSlotsToStorageCommand.RetireSourceSpheres = true;
                 situation.CommandQueue.AddCommand(migrateFromVerbSlotsToStorageCommand);
 
 
@@ -40,7 +39,6 @@ namespace SecretHistories.States
         {
 
             var migrateFromRecipeSlotsToStorageComand = new FlushTokensToCategoryCommand(SphereCategory.Threshold, SphereCategory.SituationStorage, StateEnum.RequiringExecution);
-            migrateFromRecipeSlotsToStorageComand.RetireSourceSpheres = true;
             situation.CommandQueue.AddCommand(migrateFromRecipeSlotsToStorageComand);
             
         }

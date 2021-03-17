@@ -141,12 +141,12 @@ public bool VisibleFor(StateEnum state)
             var sphereToRemove = GetSphereById(id);
             if (sphereToRemove == null)
                 return false;
-            RemoveSphere(sphereToRemove);
+            RemoveSphereGracefully(sphereToRemove);
             return true;
         }
 
 
-        public void RemoveSphere(Sphere sphereToRemove)
+        public void RemoveSphereGracefully(Sphere sphereToRemove)
         {
             OnSphereRemoved.Invoke(sphereToRemove);
             _spheres.Remove(sphereToRemove);
@@ -187,7 +187,7 @@ public bool VisibleFor(StateEnum state)
             var spheresToRemove =
                 new List<Sphere>(_spheres.Where(s => s.OwnerSphereIdentifier==sphereToOrphan.Id));
             foreach (var s in spheresToRemove)
-                RemoveSphere(s);
+                RemoveSphereGracefully(s);
         }
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)

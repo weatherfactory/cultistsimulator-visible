@@ -83,6 +83,7 @@ namespace SecretHistories.States
             }
             else
             {
+             
                 situation.TransitionToState( new CompleteState());
 
             }

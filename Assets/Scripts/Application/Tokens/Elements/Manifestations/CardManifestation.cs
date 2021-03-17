@@ -200,6 +200,9 @@ namespace SecretHistories.Manifestations
 
         private void ShowGlow(bool glowState, bool instant)
         {
+            if(glowImage.Equals(null))
+                return; //just in case this manifestation is currently undergoing Destroy
+
             if (glowState)
                 glowImage.Show(instant);
             else

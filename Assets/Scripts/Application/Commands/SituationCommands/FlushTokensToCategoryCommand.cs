@@ -17,7 +17,7 @@ namespace SecretHistories.Commands.SituationCommands
 
         private readonly List<StateEnum> _statesCommandIsValidFor=new List<StateEnum>();
 
-        public bool RetireSourceSpheres { get; set; }
+  
 
 
         public bool IsValidForState(StateEnum forState)
@@ -52,12 +52,6 @@ namespace SecretHistories.Commands.SituationCommands
             toSphere.AcceptTokens(situation.GetTokens(_fromCategory),
                 new Context(Context.ActionSource.FlushingTokens));
 
-            if (RetireSourceSpheres)
-            {
-                var spheresToRetire=new List<Sphere>(fromSpheres);
-                foreach (var s in spheresToRetire)
-                    s.Retire(SphereRetirementType.Graceful); //we might later allow execution where toSphere is null, iwc this will become useful.
-            }
 
             return true;
         }
