@@ -630,65 +630,61 @@ namespace SecretHistories.Entities {
 
             RecipeConductor rc =new RecipeConductor(aspectsInContext, Watchman.Get<Stable>().Protag());
 
-            IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetRecipeExecutionCommands(Recipe);
+            IList<AlternateRecipeExecution> alternateRecipeExecutions = rc.GetAlternateRecipes(Recipe);
 
-            //actually replace the current recipe with the first on the list: any others will be additionals,
-            //but we want to loop from this one.
-            if (recipeExecutionCommands.First().Recipe.Id != Recipe.Id)
-                Recipe = recipeExecutionCommands.First().Recipe;
+           //The first recipe will either be the current recipe, or the alternate recipe which has replaced it.
+           //Any others in the list will be additionals that we'll execute afterwards in their own right.
 
+           var primaryRecipeExecution = alternateRecipeExecutions.First();
+            var additionalRecipeExecutions = alternateRecipeExecutions.Skip(1);
 
+            
             //Check for possible text refinements based on the aspects in context
             var aspectsInSituation = GetAspects(true);
             TextRefiner tr = new TextRefiner(aspectsInSituation);
-
-            var addNoteCommand = new AddNoteCommand(Recipe.Label, tr.RefineString(Recipe.Description),new Context(Context.ActionSource.UI));
-
+            var addNoteCommand = new AddNoteCommand(primaryRecipeExecution.Recipe.Label, tr.RefineString(primaryRecipeExecution.Recipe.Description),new Context(Context.ActionSource.UI));
             ExecuteTokenEffectCommand(addNoteCommand);
-            
+             
+            RecipeCompletionEffectCommand primaryRecipeCompletionEffectCommand = new RecipeCompletionEffectCommand(primaryRecipeExecution.Recipe,
+                primaryRecipeExecution.Recipe.ActionId != Recipe.ActionId, primaryRecipeExecution.Expulsion, primaryRecipeExecution.ToPath);
 
-            foreach (var c in recipeExecutionCommands)
+
+            Watchman.Get<Stable>().Protag().AddExecutionsToHistory(primaryRecipeCompletionEffectCommand.Recipe.Id, 1);
+
+            primaryRecipeCompletionEffectCommand.Execute(this);
+
+            if (!string.IsNullOrEmpty(primaryRecipeCompletionEffectCommand.Recipe.Ending))
             {
-                RecipeCompletionEffectCommand currentEffectCommand = new RecipeCompletionEffectCommand(c.Recipe,
-                    c.Recipe.ActionId != Recipe.ActionId, c.Expulsion,c.ToPath);
-                if (currentEffectCommand.AsNewSituation)
-                    SpawnNewSituation(currentEffectCommand);
-                else
-                {
-                    Watchman.Get<Stable>().Protag().AddExecutionsToHistory(currentEffectCommand.Recipe.Id, 1);
+                var ending = Watchman.Get<Compendium>().GetEntityById<Ending>(primaryRecipeCompletionEffectCommand.Recipe.Ending);
 
-                    currentEffectCommand.Execute(this);
+                var endGameCommand = new EndGameAtTokenCommand(ending);
 
-                    
+                SendCommandToSubscribers(endGameCommand);
+            }
 
-                    if (!string.IsNullOrEmpty(currentEffectCommand.Recipe.Ending))
-                    {
-                        var ending = Watchman.Get<Compendium>().GetEntityById<Ending>(currentEffectCommand.Recipe.Ending);
-                        
-                        var endGameCommand=new EndGameAtTokenCommand(ending);
+            foreach (var c in additionalRecipeExecutions)
+            {
+                if(c.Recipe.ActionId==Recipe.ActionId)
+                    NoonUtility.LogWarning($"{Recipe.ActionId} {Recipe.Id} is trying to start an additional recipe, {c.Recipe.Id}... but it's got the same actionID as the existing situation, so it probably won't spawn successfully.");
 
-                        SendCommandToSubscribers(endGameCommand);
-                    }
-
-
-                }
+                SpawnNewSituation(c.Recipe,c.Expulsion,c.ToPath);
 
             }
         }
 
-        private void SpawnNewSituation(RecipeCompletionEffectCommand effectCommand)
+        private void SpawnNewSituation(Recipe withRecipe,Expulsion withExpulsion, FucinePath toPath)
         {
             List<Token> stacksToAddToNewSituation = new List<Token>();
             //if there's an expulsion
-            if (effectCommand.Expulsion.Limit > 0)
+            if (withExpulsion.Limit > 0)
             {
                 //find one or more matching stacks. Important! the limit applies to stacks, not cards. This might need to change.
-                AspectMatchFilter filter = new AspectMatchFilter(effectCommand.Expulsion.Filter);
+                AspectMatchFilter filter = new AspectMatchFilter(withExpulsion.Filter);
                 var filteredStacks = filter.FilterElementStacks(GetElementTokens(SphereCategory.SituationStorage)).ToList();
 
-                if (filteredStacks.Any() && effectCommand.Expulsion.Limit > 0)
+                if (filteredStacks.Any() && withExpulsion.Limit > 0)
                 {
-                    while (filteredStacks.Count > effectCommand.Expulsion.Limit)
+                    while (filteredStacks.Count > withExpulsion.Limit)
                     {
                         filteredStacks.RemoveAt(filteredStacks.Count - 1);
                     }
@@ -698,14 +694,14 @@ namespace SecretHistories.Entities {
 
             }
 
-            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId).WithRecipeId(effectCommand.Recipe.Id).AlreadyInState(
+            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId).WithRecipeId(withRecipe.Id).AlreadyInState(
                 StateEnum.Ongoing);
             
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
-            var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand,effectCommand.ToPath,new Context(Context.ActionSource.SpawningAnchor));
+            var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand, toPath, new Context(Context.ActionSource.SpawningAnchor));
 
-            SendCommandToSubscribers(spawnNewTokenCommand);
-
+            spawnNewTokenCommand.ExecuteOn(Token);
+            
         }
 
 

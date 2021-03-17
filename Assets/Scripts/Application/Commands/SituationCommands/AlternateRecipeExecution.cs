@@ -7,13 +7,13 @@ using SecretHistories.Fucine;
 
 namespace SecretHistories.Commands
 {
-    public class RecipeExecutionCommand
+    public class AlternateRecipeExecution
     {
         public Recipe Recipe { get; set; }
         public Expulsion Expulsion { get; set; }
         public FucinePath ToPath { get; set; }
 
-        public RecipeExecutionCommand(Recipe recipe, Expulsion expulsion, FucinePath toPath)
+        public AlternateRecipeExecution(Recipe recipe, Expulsion expulsion, FucinePath toPath)
         {
             Recipe = recipe;
             Expulsion = expulsion;

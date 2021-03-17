@@ -54,6 +54,7 @@ namespace SecretHistories.Core
 
         public bool Execute(Situation situation)
         {
+            situation.Recipe = this.Recipe;
             var recipeAspects = Recipe.Aspects;
             var targetSphere = situation.GetSingleSphereByCategory(SphereCategory.SituationStorage);
             var cardAspects = targetSphere.GetTotalAspects();

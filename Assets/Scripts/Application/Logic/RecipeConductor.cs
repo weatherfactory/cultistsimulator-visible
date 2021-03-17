@@ -120,12 +120,15 @@ namespace SecretHistories.Core
             return new RecipePrediction(currentRecipe, _aspectsInContext.AspectsInSituation);
         }
 
-        public IList<RecipeExecutionCommand> GetRecipeExecutionCommands(Recipe recipe)
+        public IList<AlternateRecipeExecution> GetAlternateRecipes(Recipe recipe)
         {
             //start with the execution command for the original recipe
-            IList<RecipeExecutionCommand> recipeExecutionCommands = new List<RecipeExecutionCommand>() {new RecipeExecutionCommand(recipe,null,new FucinePath(String.Empty)) }; ;
+            //This is because additional recipes will add to it. If we find a non-additional alternate recipe,
+            //we will return that recipe instead of this list.
+//Which is horrible, but I reckon I did it this way so we could mix additionals and non-additionals in the fallthrough list.
+            IList<AlternateRecipeExecution> originalRecipePlusAdditionals = new List<AlternateRecipeExecution>() {new AlternateRecipeExecution(recipe,null,new FucinePath(String.Empty)) }; ;
             if (recipe.Alt.Count == 0)
-                return recipeExecutionCommands;
+                return originalRecipePlusAdditionals;
 
 
             foreach (var ar in recipe.Alt)
@@ -158,15 +161,15 @@ namespace SecretHistories.Core
                     }
                     if (ar.Additional)
                     {
-                        recipeExecutionCommands.Add(new RecipeExecutionCommand(candidateRecipe,ar.Expulsion,new FucinePath(ar.ToPath))); //add the additional recipe, and keep going
+                        originalRecipePlusAdditionals.Add(new AlternateRecipeExecution(candidateRecipe,ar.Expulsion,new FucinePath(ar.ToPath))); //add the additional recipe, and keep going
                         NoonUtility.Log(recipe.Id + " says: Found additional recipe with dice result " + diceResult + ", against chance " + +challengeArbiter.GetArbitratedChance()  + ar.Id +
                                         " to execute - adding it to execution list and looking for more");
                     }
                     else
                     {
-                        IList<RecipeExecutionCommand>
+                        IList<AlternateRecipeExecution>
                             recursiveRange =
-                                GetRecipeExecutionCommands(candidateRecipe); //check if this recipe has any substitutes in turn, and then
+                                GetAlternateRecipes(candidateRecipe); //check if this recipe has any substitutes in turn, and then
 
                         string logmessage =
                             recipe.Id + " says: reached the bottom of the execution list: returning ";
@@ -180,7 +183,7 @@ namespace SecretHistories.Core
                 }
             }
 
-            return recipeExecutionCommands; //we either found no matching candidates and are returning the original, or we added one or more additional recipes to the list
+            return originalRecipePlusAdditionals; //we either found no matching candidates and are returning the original, or we added one or more additional recipes to the list
         }
 
     }
