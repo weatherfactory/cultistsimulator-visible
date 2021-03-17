@@ -31,7 +31,7 @@ namespace SecretHistories.Manifestations
         public bool RequestingNoDrag => false;
         [SerializeField] private BubbleSphere bubbleSphere;
 
-
+        [SerializeField] private List<MinimalDominion> Dominions;
 
         public void OnPointerEnter(PointerEventData eventData)
         {
@@ -54,12 +54,13 @@ namespace SecretHistories.Manifestations
     
         public void InitialiseVisuals(IManifestable manifestable)
         {
+            foreach (var d in Dominions)
+                d.RegisterFor(manifestable);
+
             var bubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), "classicdropzonebubble");
-
-            bubbleSphere.ApplySpec(bubbleSphereSpec);
-
-            Watchman.Get<HornedAxe>().RegisterSphere(bubbleSphere);
-            manifestable.AttachSphere(bubbleSphere);
+            
+         bubbleSphere=Dominions.First().TryCreateSphere(bubbleSphereSpec) as BubbleSphere;
+            
         }
 
         public void UpdateVisuals(IManifestable manifestable)

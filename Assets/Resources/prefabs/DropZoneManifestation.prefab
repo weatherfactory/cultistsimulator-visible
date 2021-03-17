@@ -29,8 +29,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2275579710972598573}
-  - {fileID: 1103137115732253738}
+  - {fileID: 7365295413341852415}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -59,7 +58,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1930649155029d243a92458eeaba91ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubbleSphere: {fileID: 6816212586780397351}
+  bubbleSphere: {fileID: 0}
+  Dominions:
+  - {fileID: 9050940084163831835}
 --- !u!1 &5111367793869024320
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,12 +70,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2275579710972598573}
-  - component: {fileID: 6816212586780397351}
   - component: {fileID: 1992455625328484841}
   - component: {fileID: 4729410386516023239}
   - component: {fileID: 4485664145706728221}
   m_Layer: 5
-  m_Name: DropzoneBubble
+  m_Name: DropzoneBubbleHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,29 +90,16 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 224000011999988054}
+  m_Children:
+  - {fileID: 1103137115732253738}
+  m_Father: {fileID: 7365295413341852415}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 140, y: 0}
+  m_AnchoredPosition: {x: 190, y: 0}
   m_SizeDelta: {x: 280, y: 134}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6816212586780397351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5111367793869024320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72279e9dfbabb94479bcf73b894c1481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GreedyIcon: {fileID: 0}
-  ConsumingIcon: {fileID: 0}
 --- !u!114 &1992455625328484841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,12 +194,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 224000011999988054}
-  m_RootOrder: 1
+  m_Father: {fileID: 2275579710972598573}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -140, y: 0}
   m_SizeDelta: {x: 280, y: 134}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5596451809436917576
@@ -269,3 +256,52 @@ MonoBehaviour:
   durationTurnOn: 0.2
   durationTurnOff: 0.1
   currentColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &9084688244949003382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7365295413341852415}
+  - component: {fileID: 9050940084163831835}
+  m_Layer: 5
+  m_Name: Dominion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7365295413341852415
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084688244949003382}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2275579710972598573}
+  m_Father: {fileID: 224000011999988054}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9050940084163831835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084688244949003382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cdb9255f3e7c0e46b0277ac97cc46d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

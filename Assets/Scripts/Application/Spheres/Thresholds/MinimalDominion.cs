@@ -21,13 +21,11 @@ namespace SecretHistories.UI
         private IManifestable _manifestable;
         private readonly List<Sphere> _spheres=new List<Sphere>();
         
-        [Encaust]
-        public string Id { get; set; }
-
-
+        
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
-
+        
+        [Encaust]
         public DominionEnum Identifier { get; set; }
 
 

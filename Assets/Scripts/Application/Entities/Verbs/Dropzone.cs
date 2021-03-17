@@ -106,11 +106,15 @@ namespace SecretHistories.Entities.Verbs
         }
 
 
-        public bool RegisterDominion(IDominion dominion)
+        public bool RegisterDominion(IDominion dominionToRegister)
         {
-            if (_dominions.Contains(dominion))
+            dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
+            dominionToRegister.OnSphereRemoved.AddListener(DetachSphere);
+
+            if (_dominions.Contains(dominionToRegister))
                 return false;
-            _dominions.Add(dominion);
+
+            _dominions.Add(dominionToRegister);
             return true;
         }
 
