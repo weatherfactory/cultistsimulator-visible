@@ -122,8 +122,7 @@ namespace Assets.Tests.EditModeTests
 
             var recipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("apls.linkto.hiatus.loop");
 
-            var secondRecipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("hiatus.loop");
-
+            
             var activationCommand = TryActivateRecipeCommand.OverridingRecipeActivation(recipeWithThreshold.Id);
             situation.CommandQueue.AddCommand(activationCommand);
             situation.ExecuteHeartbeat(recipeWithThreshold.Warmup + 1); //first time switches to Ongoing
@@ -131,7 +130,7 @@ namespace Assets.Tests.EditModeTests
             situation.ExecuteHeartbeat(0f); //third time switches back to Ongoing
             situation.ExecuteHeartbeat(0f); //fourth time time executes the outstanding sphere creation command and switches to RecipeExecution
 
-            Assert.AreEqual(secondRecipeWithThreshold.Id, situation.GetSpheresByCategory(SphereCategory.Threshold).First().Id);
+            Assert.AreEqual(recipeWithThreshold.Slots.First().Id, situation.GetSpheresByCategory(SphereCategory.Threshold).First().Id);
         }
 
         [Test]
