@@ -694,9 +694,8 @@ namespace SecretHistories.Entities {
 
             }
 
-            var situationCreationCommand = new SituationCreationCommand(Recipe.ActionId).WithRecipeId(withRecipe.Id).AlreadyInState(
-                StateEnum.Ongoing);
-            
+            var situationCreationCommand = new SituationCreationCommand(withRecipe.ActionId).WithRecipeAboutToActivate(withRecipe.Id);
+
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
             var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand, toPath, new Context(Context.ActionSource.SpawningAnchor));
 
