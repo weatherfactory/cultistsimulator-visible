@@ -114,9 +114,9 @@ namespace SecretHistories.Entities.Verbs
             return true;
         }
 
-        public Sphere GetSphereById(string id)
+        public Sphere GetSphereById(string sphereId)
         {
-            return _spheres.SingleOrDefault(s => s.Id == Id && !s.Defunct);
+            return _spheres.SingleOrDefault(s => s.Id == sphereId && !s.Defunct);
         }
 
         public Type GetManifestationType(SphereCategory forSphereCategory)
