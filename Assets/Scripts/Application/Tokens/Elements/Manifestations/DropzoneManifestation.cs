@@ -59,7 +59,7 @@ namespace SecretHistories.Manifestations
 
             var bubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), "classicdropzonebubble");
             
-         bubbleSphere=Dominions.First().TryCreateSphere(bubbleSphereSpec) as BubbleSphere;
+            bubbleSphere=Dominions.First().TryCreateSphere(bubbleSphereSpec) as BubbleSphere;
             
         }
 

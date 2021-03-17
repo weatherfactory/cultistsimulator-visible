@@ -102,6 +102,7 @@ namespace SecretHistories.UI
                 return NullSphere.Create();
 
             var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec, _manifestable);
+            newSphere.transform.SetParent(transform);
             _spheres.Add(newSphere);
             return newSphere;
         }
