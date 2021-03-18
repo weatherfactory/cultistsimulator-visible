@@ -16,11 +16,18 @@ namespace SecretHistories.Commands
     {
         public int Quantity { get; set; }
         public List<PopulateDominionCommand> Dominions { get; set; }
-        
+
+        public DropzoneCreationCommand()
+        {
+            Dominions=new List<PopulateDominionCommand>();
+        }
+
         public ITokenPayload Execute(Context context)
         {
             var dz= new Dropzone();
-            
+            foreach (var d in Dominions)
+                    d.Execute(dz);
+
             return dz;
         }
 

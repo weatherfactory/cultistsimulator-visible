@@ -65,12 +65,17 @@ namespace SecretHistories.Commands.SituationCommands
 
            return false;
         }
-        
+
         public bool Execute(Situation situation)
+        {
+            return Execute(situation as ITokenPayload);
+        }
+
+        public bool Execute(ITokenPayload payload)
         {
             if (Spheres.Any())
             {
-                var dominion = situation.Dominions.SingleOrDefault(d => d.Identifier == Identifier);
+                var dominion = payload.Dominions.SingleOrDefault(d => d.Identifier == Identifier);
                 if (dominion!=null)
                 {
                     //we're going to replace any existing spheres
@@ -83,9 +88,11 @@ namespace SecretHistories.Commands.SituationCommands
                     return true;
                 }
                 else
-                {NoonUtility.LogWarning($"Tried to populate dominion {Identifier} in situation {situation.Id}, but can't find that dominion identifier");
-                    return false;
-                }
+                
+                //store the dominion creation for later. If a payload keeps its spheres in a manifestation, it
+                //may not yet be manifested, so the dominion may not yet exist.
+                    payload.StorePopulateDominionCommand(this);
+                
             }
 
             return false;

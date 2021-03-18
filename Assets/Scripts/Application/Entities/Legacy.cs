@@ -127,8 +127,11 @@ namespace SecretHistories.Entities
             startingTokenDistributionStrategy.NextRow();
 
             var dropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
-            var dropzoneCreationCommand = new TokenCreationCommand(new DropzoneCreationCommand(), dropzoneLocation);
-            commands.Add(dropzoneCreationCommand);
+            var dropzoneCreationCommand = new DropzoneCreationCommand();
+            var bubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), "classicdropzonebubble");
+            dropzoneCreationCommand.Dominions.Add(new PopulateDominionCommand(DominionEnum.Unknown, bubbleSphereSpec));
+             var dropzoneTokenCreationCommand = new TokenCreationCommand(dropzoneCreationCommand, dropzoneLocation);
+            commands.Add(dropzoneTokenCreationCommand);
 
             return commands;
         }

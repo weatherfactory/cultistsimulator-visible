@@ -5,6 +5,7 @@ using Assets.Scripts.Application.Fucine;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.Core;
 using SecretHistories.Enums;
@@ -25,6 +26,7 @@ namespace SecretHistories.Entities.Verbs
     {
         private Token _token;
         private List<IDominion> _dominions=new List<IDominion>();
+        private List<PopulateDominionCommand> _storedDominionCommands=new List<PopulateDominionCommand>();
 #pragma warning disable 67
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
@@ -115,6 +117,13 @@ namespace SecretHistories.Entities.Verbs
                 return false;
 
             _dominions.Add(dominionToRegister);
+
+
+            foreach(var storedPopulateDominionCommand in _storedDominionCommands)
+            {
+                if (dominionToRegister.Identifier == storedPopulateDominionCommand.Identifier)
+                    storedPopulateDominionCommand.Execute(dominionToRegister);
+            }
             return true;
         }
 
@@ -275,6 +284,11 @@ namespace SecretHistories.Entities.Verbs
         public void OnTokenMoved(TokenLocation toLocation)
         {
            //
+        }
+
+        public void StorePopulateDominionCommand(PopulateDominionCommand populateDominionCommand)
+        {
+            _storedDominionCommands.Add(populateDominionCommand);
         }
     }
 }

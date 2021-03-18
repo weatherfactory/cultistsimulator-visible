@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Core;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -239,6 +240,11 @@ namespace SecretHistories.Entities
         public void OnTokenMoved(TokenLocation toLocation)
         {
             //
+        }
+
+        public void StorePopulateDominionCommand(PopulateDominionCommand populateDominionCommand)
+        {
+            throw new ApplicationException($"No provision for storing a populate dominion command on a minimal payload, but we can't find dominion with identifier {populateDominionCommand.Identifier} on payload {Id}");
         }
     }
 }

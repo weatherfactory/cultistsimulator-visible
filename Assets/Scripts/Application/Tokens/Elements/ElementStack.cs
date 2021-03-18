@@ -20,6 +20,7 @@ using SecretHistories.NullObjects;
 using Assets.Logic;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Elements;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
@@ -518,6 +519,11 @@ namespace SecretHistories.UI {
         public void OnTokenMoved(TokenLocation toLocation)
         {
             //
+        }
+
+        public void StorePopulateDominionCommand(PopulateDominionCommand populateDominionCommand)
+        {
+            throw new ApplicationException($"No provision for storing a populate dominion command on an elementstack, but we can't find dominion with identifier {populateDominionCommand.Identifier} on elementstack {Id}");
         }
 
 

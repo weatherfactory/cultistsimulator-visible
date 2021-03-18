@@ -93,6 +93,9 @@ namespace SecretHistories.UI
 
         public bool CanCreateSphere(SphereSpec spec)
         {
+            if (GetSphereById(spec.Id) != null)
+                return false; //no spheres with duplicate id
+
             return true;
         }
 
@@ -102,7 +105,7 @@ namespace SecretHistories.UI
                 return NullSphere.Create();
 
             var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec, _manifestable);
-            newSphere.transform.SetParent(transform);
+            newSphere.transform.SetParent(transform,false);
             _spheres.Add(newSphere);
             return newSphere;
         }

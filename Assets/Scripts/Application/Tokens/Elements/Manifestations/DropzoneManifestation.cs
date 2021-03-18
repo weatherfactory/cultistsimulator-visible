@@ -56,11 +56,6 @@ namespace SecretHistories.Manifestations
         {
             foreach (var d in Dominions)
                 d.RegisterFor(manifestable);
-
-            var bubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), "classicdropzonebubble");
-            
-            bubbleSphere=Dominions.First().TryCreateSphere(bubbleSphereSpec) as BubbleSphere;
-            
         }
 
         public void UpdateVisuals(IManifestable manifestable)
