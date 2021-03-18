@@ -14,13 +14,20 @@ namespace SecretHistories.Manifestations
         private readonly MonoBehaviour _flippee;
         private Coroutine _turnCoroutine;
         private TargetOrientation? _targetOrientation;
-
+        private TargetOrientation? _currentOrientation;
+        
         public bool FlipInProgress => _turnCoroutine != null;
+
+        public TargetOrientation? CurrentOrientation
+        {
+            get => _currentOrientation;
+            set => _currentOrientation = value;
+        }
 
         public FlipHelper(MonoBehaviour flippee)
         {
             _flippee = flippee;
-        }
+            }
 
         public void Flip(TargetOrientation targetOrientation, bool instant)
         {
@@ -49,7 +56,7 @@ namespace SecretHistories.Manifestations
 
             _flippee.transform.localRotation = Quaternion.Euler(0f, (float)_targetOrientation, 0f);
             _turnCoroutine = null;
-
+            CurrentOrientation = _targetOrientation;
             _targetOrientation = null;
         }
 

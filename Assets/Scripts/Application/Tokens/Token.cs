@@ -692,18 +692,8 @@ namespace SecretHistories.UI {
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-        
-            var tabletopManager = Watchman.Get<TabletopManager>();
-            if (tabletopManager != null
-            ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
-            {
-                if (!shrouded && Payload.IsValidElementStack())
-                    tabletopManager.SetHighlightedElement(Payload.EntityId, Quantity);
-                else
-                    tabletopManager.SetHighlightedElement(null);
-            }
-
-
+            if (!eventData.dragging)
+                _manifestation.Highlight(HighlightType.Hover);
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -721,11 +711,6 @@ namespace SecretHistories.UI {
             });
 
 
-            var ttm = Watchman.Get<TabletopManager>();
-            if (ttm != null)
-            {
-                Watchman.Get<TabletopManager>().SetHighlightedElement(null);
-            }
 
         }
 

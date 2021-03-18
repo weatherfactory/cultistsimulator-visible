@@ -24,7 +24,7 @@ using UnityEngine.UI;
 namespace SecretHistories.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
-    public class CardManifestation : MonoBehaviour, IManifestation,IPointerEnterHandler 
+    public class CardManifestation : MonoBehaviour, IManifestation,IPointerEnterHandler,IPointerExitHandler
     {
 
         [SerializeField] public Image artwork;
@@ -52,6 +52,8 @@ namespace SecretHistories.Manifestations
         private Coroutine animCoroutine;
         private List<Sprite> frames;
         private FlipHelper _flipHelper;
+        private string _entityId;
+        private int _quantity;
 
         public bool RequestingNoDrag => _flipHelper.FlipInProgress;
         
@@ -79,6 +81,8 @@ namespace SecretHistories.Manifestations
             cachedDecayBackgroundColor = decayBackgroundImage.color;
 
             frames = ResourcesManager.GetAnimFramesForElement(manifestable.EntityId);
+            _entityId = manifestable.EntityId;
+            _quantity = manifestable.Quantity;
 
         }
 
@@ -234,9 +238,12 @@ namespace SecretHistories.Manifestations
 
         public void UpdateVisuals(IManifestable manifestable)
         {
+            _entityId = manifestable.EntityId;
+            _quantity = manifestable.Quantity;
+
             text.text = manifestable.Label;
-            stackBadge.gameObject.SetActive(manifestable.Quantity > 1);
-            stackCountText.text = manifestable.Quantity.ToString();
+            stackBadge.gameObject.SetActive(_quantity > 1);
+            stackCountText.text = _quantity.ToString();
             var timeshadow = manifestable.GetTimeshadow();
             UpdateTimerVisuals(timeshadow.Lifetime,timeshadow.LifetimeRemaining,timeshadow.LastInterval,timeshadow.Resaturate);
 
@@ -353,8 +360,7 @@ namespace SecretHistories.Manifestations
                 SoundManager.PlaySfx("CardTurnOver");
 
             _flipHelper?.Flip(FlipHelper.TargetOrientation.FaceUp,instant);
-
-
+            
         }
 
         public void Shroud(bool instant)
@@ -503,13 +509,34 @@ namespace SecretHistories.Manifestations
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (!eventData.dragging)
-                Highlight(HighlightType.Hover);
+
+            var tabletopManager = Watchman.Get<TabletopManager>();
+            if (tabletopManager != null
+            ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
+            {
+                if (_flipHelper.CurrentOrientation!=FlipHelper.TargetOrientation.FaceDown)
+                    tabletopManager.SetHighlightedElement(_entityId,_quantity);
+                else
+                    tabletopManager.SetHighlightedElement(null);
+            }
 
             ExecuteEvents.Execute<IPointerEnterHandler>(transform.parent.gameObject, eventData,
                 (parentToken, y) => parentToken.OnPointerEnter(eventData));
         }
 
 
+        public void OnPointerExit(PointerEventData eventData)
+        {
+
+
+            var ttm = Watchman.Get<TabletopManager>();
+            if (ttm != null)
+            {
+                Watchman.Get<TabletopManager>().SetHighlightedElement(null);
+            }
+
+            ExecuteEvents.Execute<IPointerExitHandler>(transform.parent.gameObject, eventData,
+                (parentToken, y) => parentToken.OnPointerExit(eventData));
         }
+    }
     }
