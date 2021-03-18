@@ -527,8 +527,6 @@ namespace SecretHistories.Manifestations
 
         public void OnPointerExit(PointerEventData eventData)
         {
-
-
             var ttm = Watchman.Get<TabletopManager>();
             if (ttm != null)
             {

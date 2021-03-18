@@ -409,12 +409,7 @@ namespace SecretHistories.UI {
             
             
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
-            if (!Keyboard.current.shiftKey.wasPressedThisFrame)
-            {
-                if (Payload.IsValidElementStack() && Quantity > 1)
-                  homingAngel.SetOriginToken(CalveToken(Quantity - 1, new Context(Context.ActionSource.PlayerDrag)));
-
-            }
+            TryCalveOriginStack(homingAngel);
 
 
             var enrouteSphere = Payload.GetEnRouteSphere();
@@ -446,6 +441,14 @@ namespace SecretHistories.UI {
 
         }
 
+        private void TryCalveOriginStack(HomingAngel homingAngel)
+        {
+            if (!Keyboard.current.shiftKey.isPressed)
+            {
+                if (Payload.IsValidElementStack() && Quantity > 1)
+                    homingAngel.SetOriginToken(CalveToken(Quantity - 1, new Context(Context.ActionSource.PlayerDrag)));
+            }
+        }
 
 
         public void OnDrag(PointerEventData eventData)
