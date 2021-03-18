@@ -23,27 +23,42 @@ namespace SecretHistories.Manifestations
     [RequireComponent(typeof(RectTransform))]
     public class DropzoneManifestation: MonoBehaviour,IManifestation,IPointerClickHandler, IPointerEnterHandler
     {
-        private GraphicFader glowImage;
-
+        
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
         public bool RequestingNoDrag => false;
-        [SerializeField] private BubbleSphere bubbleSphere;
 
         [SerializeField] private List<MinimalDominion> Dominions;
 
+
         public void OnPointerEnter(PointerEventData eventData)
         {
-            bubbleSphere.Pop(new Context(Context.ActionSource.Unknown));
+
+            popDropzoneBubbles();
 
             ExecuteEvents.Execute<IPointerEnterHandler>(transform.parent.gameObject, eventData,
                 (parentToken, y) => parentToken.OnPointerEnter(eventData));
         }
 
+
         public void OnPointerClick(PointerEventData eventData)
         {
-            bubbleSphere.Pop(new Context(Context.ActionSource.Unknown));
+            popDropzoneBubbles();
+
+        }
+
+        private void popDropzoneBubbles()
+        {
+            foreach (var d in Dominions)
+            {
+                foreach (var s in d.Spheres)
+                {
+                    var b = s as BubbleSphere;
+                    if (b != null)
+                        b.Pop(new Context(Context.ActionSource.Unknown));
+                }
+            }
         }
 
 

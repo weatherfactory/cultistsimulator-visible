@@ -24,7 +24,7 @@ using UnityEngine.UI;
 namespace SecretHistories.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
-    public class CardManifestation : MonoBehaviour, IManifestation
+    public class CardManifestation : MonoBehaviour, IManifestation,IPointerEnterHandler 
     {
 
         [SerializeField] public Image artwork;
@@ -501,5 +501,15 @@ namespace SecretHistories.Manifestations
             artwork.overrideSprite = null;
         }
 
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (!eventData.dragging)
+                Highlight(HighlightType.Hover);
+
+            ExecuteEvents.Execute<IPointerEnterHandler>(transform.parent.gameObject, eventData,
+                (parentToken, y) => parentToken.OnPointerEnter(eventData));
+        }
+
+
+        }
     }
-}

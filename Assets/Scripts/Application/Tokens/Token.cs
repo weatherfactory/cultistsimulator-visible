@@ -692,9 +692,7 @@ namespace SecretHistories.UI {
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (!eventData.dragging)
-                _manifestation.Highlight(HighlightType.Hover);
-
+        
             var tabletopManager = Watchman.Get<TabletopManager>();
             if (tabletopManager != null
             ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
