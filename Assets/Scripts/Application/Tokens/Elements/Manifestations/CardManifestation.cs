@@ -24,7 +24,7 @@ using UnityEngine.UI;
 namespace SecretHistories.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
-    public class CardManifestation : MonoBehaviour, IManifestation,IPointerEnterHandler,IPointerExitHandler
+    public class CardManifestation : MonoBehaviour, IManifestation,IPointerEnterHandler,IPointerExitHandler,IBeginDragHandler
     {
 
         [SerializeField] public Image artwork;
@@ -520,8 +520,8 @@ namespace SecretHistories.Manifestations
                     tabletopManager.SetHighlightedElement(null);
             }
 
-            ExecuteEvents.Execute<IPointerEnterHandler>(transform.parent.gameObject, eventData,
-                (parentToken, y) => parentToken.OnPointerEnter(eventData));
+            //ExecuteEvents.Execute<IPointerEnterHandler>(transform.parent.gameObject, eventData,
+            //    (parentToken, y) => parentToken.OnPointerEnter(eventData));
         }
 
 
@@ -535,6 +535,14 @@ namespace SecretHistories.Manifestations
 
             ExecuteEvents.Execute<IPointerExitHandler>(transform.parent.gameObject, eventData,
                 (parentToken, y) => parentToken.OnPointerExit(eventData));
+        }
+
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            NoonUtility.Log("CardManifestation begindrag");
+            //ExecuteEvents.Execute<IBeginDragHandler>(transform.parent.gameObject, eventData,
+            //    (parentToken, y) => parentToken.OnBeginDrag(eventData));
         }
     }
     }

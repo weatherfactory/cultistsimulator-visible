@@ -354,7 +354,7 @@ namespace SecretHistories.UI {
 
             if (CanBeDragged())
                 StartDrag(eventData);
-            
+
 
         }
         /// <summary>
@@ -362,7 +362,7 @@ namespace SecretHistories.UI {
         /// </summary>
         /// <param name="eventData"></param>
         /// <returns></returns>
-       public bool CanBeDragged()
+        public bool CanBeDragged()
         {
             return
                 Sphere.AllowDrag 
