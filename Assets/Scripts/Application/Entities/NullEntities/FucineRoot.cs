@@ -16,6 +16,7 @@ using SecretHistories.NullObjects;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
+using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
 {
@@ -117,6 +118,12 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             return FucinePath.Root();
         }
 
+        public RectTransform GetReferenceRectTransform()
+        {
+            NoonUtility.LogWarning("Trying to get fucine root recttransform; supplying the default sphere rect transfomr.");
+            return Watchman.Get<HornedAxe>().GetDefaultSphere().GetReferenceRectTransform(); //this is most likely what we're expecting
+        }
+
 
         public Sphere GetSphereById(string id)
         {
@@ -136,6 +143,8 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
         {
             _spheres.Remove(c);
         }
+
+        public bool IsOpen => true; //will this be always true? possibly not if we have an otherworld blocking it?
 
         public int IncrementedIdentity()
         {

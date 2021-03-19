@@ -53,6 +53,12 @@ namespace SecretHistories.UI {
             return absolutePath;
         }
 
+        public RectTransform GetReferenceRectTransform()
+        {
+            return Token.TokenRectTransform;
+
+        }
+
         [Encaust] public bool Defunct { get; protected set; }
 
         [Encaust] public float LifetimeRemaining => _timeshadow.LifetimeRemaining;

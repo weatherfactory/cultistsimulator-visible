@@ -102,6 +102,11 @@ namespace SecretHistories.Entities.Verbs
             return absolutePath;
         }
 
+        public RectTransform GetReferenceRectTransform()
+        {
+            return Token.TokenRectTransform;
+        }
+
         public Timeshadow GetTimeshadow()
         {
             return Timeshadow.CreateTimelessShadow();

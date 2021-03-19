@@ -236,6 +236,26 @@ namespace SecretHistories.UI
             return true;
         }
 
+        /// <summary>
+        /// Reference positions: positions in other spheres that correspond to this one.
+        /// </summary>
+        public override Vector3 GetReferencePosition(FucinePath atPath)
+        {
+
+            Vector3 hereAsWorldPosition;
+            if (_container.IsOpen)
+            //the threshold is visible, so the reference position should be the sphere itself in world space
+                hereAsWorldPosition = GetReferenceRectTransform().position;
+            else
+                hereAsWorldPosition = _container.GetReferenceRectTransform().position;
+
+            
+            var otherSphere = Watchman.Get<HornedAxe>().GetSphereByPath(atPath);
+            var otherSphereTransform = otherSphere.GetReferenceRectTransform();
+            var bestGuessReferencePosition = otherSphereTransform.InverseTransformPoint(hereAsWorldPosition);
+            return bestGuessReferencePosition;
+
+        }
 
         public void OnPointerClick(PointerEventData eventData) {
             bool highlightGreedy = GreedyIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(GreedyIcon);

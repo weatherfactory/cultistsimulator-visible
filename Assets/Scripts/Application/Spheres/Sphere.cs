@@ -80,7 +80,7 @@ namespace SecretHistories.Spheres
         [Encaust]
         public string OwnerSphereIdentifier { get; set; }
 
-        private IHasAspects _container = NullSituation.Create();
+        protected IHasAspects _container = NullSituation.Create();
 
    
         [DontEncaust]
@@ -145,10 +145,6 @@ namespace SecretHistories.Spheres
         protected AngelFlock flock = new AngelFlock();
 
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
-
-
-        private Dictionary<FucinePath, Vector3> referencePositions=new Dictionary<FucinePath, Vector3>();
-
 
 
         public void Subscribe(ISphereEventSubscriber subscriber)
@@ -271,11 +267,11 @@ namespace SecretHistories.Spheres
         // Returns a rect for use by the Choreographer
         public Rect GetRect()
         {
-            return GetRectTransform().rect;
+            return GetReferenceRectTransform().rect;
         }
 
 
-        public RectTransform GetRectTransform()
+        public RectTransform GetReferenceRectTransform()
         {
             var rectTrans = transform as RectTransform;
             if (rectTrans == null)
@@ -687,34 +683,18 @@ namespace SecretHistories.Spheres
                 s.OnTokenInteractionInSphere(args);
         }
 
+ 
         /// <summary>
         /// Reference positions: positions in other spheres that correspond to this one.
-        /// eg, the position in TabletopSphere that tokens send, so we know what point thresholds are connected to
         /// </summary>
-        /// <param name="referenceLocation"></param>
-        public void SetReferencePosition(TokenLocation referenceLocation)
+        public virtual Vector3 GetReferencePosition(FucinePath atPath)
         {
-            if (referenceLocation.AtSpherePath != this.GetAbsolutePath())
-            {
-                if (referencePositions.ContainsKey(referenceLocation.AtSpherePath))
-                    referencePositions[referenceLocation.AtSpherePath] = referenceLocation.Anchored3DPosition;
-                else
-                    referencePositions.Add(referenceLocation.AtSpherePath, referenceLocation.Anchored3DPosition);
-            }
-        }
+            var hereAsWorldPosition = GetReferenceRectTransform().position;
 
-        public Vector3 GetReferencePosition(FucinePath atPath)
-        {
-
-            if (referencePositions.TryGetValue(atPath, out Vector3 referencePosition))
-                return referencePosition;
-
-            var here = GetRectTransform().anchoredPosition3D;
-
-            var hereAsWorldPosition = GetRectTransform().TransformPoint(here);
             var otherSphere = Watchman.Get<HornedAxe>().GetSphereByPath(atPath);
-            var bestGuessReferencePosition = otherSphere.GetRectTransform().InverseTransformPoint(hereAsWorldPosition);
-            
+            var otherSphereTransform = otherSphere.GetReferenceRectTransform();
+            var bestGuessReferencePosition = otherSphereTransform.InverseTransformPoint(hereAsWorldPosition);
+
             return bestGuessReferencePosition;
         }
 

@@ -69,8 +69,8 @@ namespace SecretHistories.UI
 
             //We convert to world positions before sending, because we'll be animating through an EnRouteSphere to a DestinationSphere,
             //and the local positions in those are unlikely to match.
-            Vector3 startPositioninWorldSpace = tokenToSend.Sphere.GetRectTransform().TransformPoint(Anchored3DStartPosition);
-            Vector3 endPositionInWorldSpace = destinationSphere.GetRectTransform().TransformPoint(Anchored3DEndPosition);
+            Vector3 startPositioninWorldSpace = tokenToSend.Sphere.GetReferenceRectTransform().TransformPoint(Anchored3DStartPosition);
+            Vector3 endPositionInWorldSpace = destinationSphere.GetReferenceRectTransform().TransformPoint(Anchored3DEndPosition);
             
             tokenAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
             tokenAnimation.SetScaling(StartScale,EndScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 

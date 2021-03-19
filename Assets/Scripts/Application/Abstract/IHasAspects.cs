@@ -27,5 +27,7 @@ namespace Assets.Scripts.Application.Abstract
         public Sphere GetWindowsSphere();
         void AttachSphere(Sphere sphere);
         void DetachSphere(Sphere sphere);
+
+        bool IsOpen { get; }
     }
 }

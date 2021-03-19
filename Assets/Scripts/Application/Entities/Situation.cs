@@ -27,6 +27,7 @@ using SecretHistories.Logic;
 using SecretHistories.Manifestations;
 using SecretHistories.States.TokenStates;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace SecretHistories.Entities {
 
@@ -68,6 +69,11 @@ namespace SecretHistories.Entities {
             var pathAbove = _token.Sphere.GetAbsolutePath();
             var absolutePath = pathAbove.AppendToken(this.Id);
             return absolutePath;
+        }
+
+        public RectTransform GetReferenceRectTransform()
+        {
+            return Token.TokenRectTransform;
         }
 
         [DontEncaust] public FucinePath AbsolutePath => null;
@@ -713,10 +719,12 @@ namespace SecretHistories.Entities {
 
         public void OnTokenMoved(TokenLocation toLocation)
         {
-            foreach (var sphere in _spheres)
-            {
-                sphere.SetReferencePosition(toLocation);
-            }
+            //foreach (var sphere in _spheres)
+            //{
+            //    sphere.SetReferencePosition(toLocation);
+                
+            //    Debug.Log($"Reference position x: {toLocation.Anchored3DPosition.x} y: {toLocation.Anchored3DPosition.y} z: {toLocation.Anchored3DPosition.z} in sphere {toLocation.AtSpherePath}");
+            //}
         }
 
         public void StorePopulateDominionCommand(PopulateDominionCommand populateDominionCommand)

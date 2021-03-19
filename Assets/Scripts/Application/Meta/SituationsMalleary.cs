@@ -54,7 +54,7 @@ namespace Assets.Scripts.Application.Meta
            SituationCreationCommand newSituationCommand;
            if (recipe.IsValid())
            {
-                newSituationCommand = new SituationCreationCommand().WithVerbId(recipe.ActionId).WithRecipeId(recipe.Id).AlreadyInState(StateEnum.Ongoing);
+               newSituationCommand = new SituationCreationCommand().WithVerbId(recipe.ActionId).WithRecipeAboutToActivate(recipe.Id);
                 //assuming we want the whole lifetime of the recipe
                   newSituationCommand.TimeRemaining = recipe.Warmup;
            }

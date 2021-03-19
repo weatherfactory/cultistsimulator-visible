@@ -272,7 +272,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             if (string.IsNullOrEmpty(name))
                 return;
 
-            var rectWorldPosition = _tabletop.GetRectTransform().TransformPoint(rect.position);
+            var rectWorldPosition = _tabletop.GetReferenceRectTransform().TransformPoint(rect.position);
             var rectScreenPosition= RectTransformUtility.WorldToScreenPoint( Camera.main, rectWorldPosition);
 
             var guiRect=new Rect(rectScreenPosition,rect.size);

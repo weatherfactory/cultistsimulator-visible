@@ -40,7 +40,12 @@ namespace SecretHistories.Entities
             return absolutePath;
         }
 
-                public void SetToken(Token token)
+        public RectTransform GetReferenceRectTransform()
+        {
+            return Token.TokenRectTransform;
+        }
+
+        public void SetToken(Token token)
         {
             _token = token;
         }
