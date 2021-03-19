@@ -183,7 +183,7 @@ namespace SecretHistories.UI {
             _payload.OnChanged += OnPayloadChanged;
             _payload.SetToken(this);
             name = _payload.Id + "_token";
-            Manifest();
+            Remanifest(RetirementVFX.None); //Remanifest not manifest. If we've just set a new payload, the manifestation type is very likely already the correct type for that sphere.
         }
 
 
