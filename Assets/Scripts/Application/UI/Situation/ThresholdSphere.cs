@@ -39,11 +39,6 @@ namespace SecretHistories.UI
             }
         }
 
-        public override bool IsGreedy
-        {
-            get { return GoverningSphereSpec != null && GoverningSphereSpec.Greedy; }
-        }
-
 
         public void Start() {
             slotGlow.Hide();
@@ -167,7 +162,7 @@ namespace SecretHistories.UI
 
 
         public override void TryMoveAsideFor(Token potentialUsurper, Token incumbent, out bool incumbentMoved) {
-            if (IsGreedy) { // We do not allow
+            if (CurrentlyBlockedFor(BlockDirection.Inward)) { // We do not allow
                 incumbentMoved = false;
                 return;
             }
@@ -271,8 +266,8 @@ namespace SecretHistories.UI
 
             if (GetElementTokenInSlot() != null)
                 return false; // Slot is filled? Don't highlight it as interactive
-            if (IsGreedy)
-                return false; // Slot is greedy? It can never take anything.
+            if (CurrentlyBlockedFor(BlockDirection.Inward))
+                return false; 
 
 
             if (!token.IsValidElementStack())

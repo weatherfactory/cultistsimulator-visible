@@ -33,6 +33,7 @@ namespace SecretHistories.Spheres
 
     public enum BlockReason
     {
+        GreedyAngel,
       InboundTravellingStack,
       Retiring
     }
@@ -48,12 +49,12 @@ namespace SecretHistories.Spheres
     /// <summary>
     /// blocking entry/exit
     /// </summary>
-    public class ContainerBlock
+    public class SphereBlock
     {
         public BlockDirection BlockDirection { get; }
         public BlockReason BlockReason { get; }
 
-        public ContainerBlock(BlockDirection direction, BlockReason reason)
+        public SphereBlock(BlockDirection direction, BlockReason reason)
         {
             BlockDirection = direction; 
             BlockReason = reason;
@@ -96,8 +97,6 @@ namespace SecretHistories.Spheres
         [DontEncaust]
         public virtual bool ContentsHidden => false;
         [DontEncaust]
-        public virtual bool IsGreedy => false;
-        [DontEncaust]
         public virtual float TokenHeartbeatIntervalMultiplier => 0;
         [DontEncaust]
         public abstract SphereCategory SphereCategory { get; }
@@ -139,7 +138,7 @@ namespace SecretHistories.Spheres
             return true;
         }
 
-        protected HashSet<ContainerBlock> _currentContainerBlocks = new HashSet<ContainerBlock>();
+        protected HashSet<SphereBlock> _currentContainerBlocks = new HashSet<SphereBlock>();
 
         protected readonly List<Token> _tokens = new List<Token>();
         protected AngelFlock flock = new AngelFlock();
@@ -190,7 +189,7 @@ namespace SecretHistories.Spheres
                 return;
 
             Defunct = true;
-            AddBlock(new ContainerBlock(BlockDirection.Inward, BlockReason.Retiring));
+            AddBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Retiring));
             Watchman.Get<HornedAxe>().DeregisterSphere(this);
 
             DoRetirement(FinishRetirement,sphereRetirementType);
@@ -229,6 +228,19 @@ namespace SecretHistories.Spheres
                     currentBlockDirection == direction);
         }
 
+        public virtual bool CurrentlyBlockedForDirectionWithAnyReasonExcept(BlockDirection direction, BlockReason exceptReason)
+        {
+            foreach (var cb in _currentContainerBlocks)
+            {
+                if (cb.BlockDirection == direction || cb.BlockDirection == BlockDirection.All)
+                
+                    if(cb.BlockReason!=exceptReason)
+                        return true;
+            }
+
+            return false;
+        }
+
         public BlockDirection CurrentBlockDirection()
         {
             bool inwardblock = _currentContainerBlocks.Any(cb => cb.BlockDirection == BlockDirection.Inward);
@@ -246,12 +258,12 @@ namespace SecretHistories.Spheres
             return BlockDirection.None;
         }
 
-        public bool AddBlock(ContainerBlock block)
+        public bool AddBlock(SphereBlock block)
         {
             return _currentContainerBlocks.Add(block);
         }
 
-        public int RemoveBlock(ContainerBlock blockToRemove)
+        public int RemoveBlock(SphereBlock blockToRemove)
         {
             if (blockToRemove.BlockDirection == BlockDirection.All)
                 return _currentContainerBlocks.RemoveWhere(cb => cb.BlockReason == blockToRemove.BlockReason);

@@ -20,8 +20,11 @@ namespace SecretHistories.Spheres.Angels
        void SetWatch(Sphere sphere);
 
        bool MinisterToDepartingToken(Token token, Context context);
-
+       
         bool MinisterToEvictedToken(Token token, Context context);
 
-    }
+        void Retire();
+
+        bool Defunct { get; }
+   }
 }

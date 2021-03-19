@@ -63,7 +63,7 @@ namespace SecretHistories.UI
             var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
             if(destinationSphere.SphereCategory==SphereCategory.Threshold) //hacky. Something more like a 'max tokens #' would make sense.
             {
-                destinationSphere.AddBlock(new ContainerBlock(BlockDirection.Inward,
+                destinationSphere.AddBlock(new SphereBlock(BlockDirection.Inward,
                 BlockReason.InboundTravellingStack));
             }
 
@@ -101,7 +101,7 @@ namespace SecretHistories.UI
                     destinationSphere.AcceptToken(token,context);
                 }
 
-                destinationSphere.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
+                destinationSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward,
                     BlockReason.InboundTravellingStack));
             }
             catch(Exception e)
@@ -115,7 +115,7 @@ namespace SecretHistories.UI
         {
             var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
 
-            destinationSphere.RemoveBlock(new ContainerBlock(BlockDirection.Inward,
+            destinationSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward,
                 BlockReason.InboundTravellingStack));
 
             token.SetState(new TravellingState() );

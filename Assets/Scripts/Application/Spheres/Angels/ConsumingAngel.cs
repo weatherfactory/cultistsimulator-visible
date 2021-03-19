@@ -47,5 +47,11 @@ namespace SecretHistories.Spheres.Angels
             return false;
         }
 
+        public void Retire()
+        {
+            Defunct = true;
+        }
+
+        public bool Defunct { get; protected set; }
     }
 }

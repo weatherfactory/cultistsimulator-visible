@@ -19,6 +19,7 @@ namespace SecretHistories.Spheres.Angels
 
         public void RemoveAngel(IAngel angel)
         {
+            angel.Retire();
             _angels.Remove(angel);
         }
 

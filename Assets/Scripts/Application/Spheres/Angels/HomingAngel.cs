@@ -63,7 +63,15 @@ namespace SecretHistories.Spheres.Angels
             return false;
         }
 
-        private void ReturnToOriginTokenLocation(Context context)
+        public void Retire()
+        {
+            Defunct = true;
+        }
+
+        public bool Defunct { get; protected set; }
+    
+
+    private void ReturnToOriginTokenLocation(Context context)
         {
             var destination = OriginToken.TokenRectTransform.anchoredPosition3D;
             SendToken(TokenToBringHome, destination, context);

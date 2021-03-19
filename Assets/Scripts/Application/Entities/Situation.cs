@@ -765,8 +765,7 @@ namespace SecretHistories.Entities {
         var thresholds = GetSpheresByCategory(SphereCategory.Threshold);
         foreach (var t in thresholds)
 
-            if (!t.IsGreedy
-               && State.IsActiveInThisState(t)
+            if (State.IsActiveInThisState(t)
                && !t.CurrentlyBlockedFor(BlockDirection.Inward)
                && t.GetMatchForTokenPayload(stack).MatchType ==SlotMatchForAspectsType.Okay)
 

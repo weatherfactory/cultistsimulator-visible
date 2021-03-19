@@ -19,20 +19,23 @@ namespace SecretHistories.Spheres.Angels
         private const int BEATS_BETWEEN_ANGELRY = 20; 
         private int _beatsTowardsAngelry = 0;
         private ThresholdSphere _thresholdSphereToGrabTo;
-        
+        private readonly SphereBlock _angelBlock = new SphereBlock(BlockDirection.Inward, BlockReason.GreedyAngel);
 
-   
+
         public int Authority => 9;
 
         public void Act(float interval)
         {
+   
+        
+
             _beatsTowardsAngelry++;
 
             if (_beatsTowardsAngelry >= BEATS_BETWEEN_ANGELRY)
            
                 _beatsTowardsAngelry = 0;
 
-            if (!_thresholdSphereToGrabTo.CurrentlyBlockedFor(BlockDirection.Inward) && _thresholdSphereToGrabTo.Tokens.Count == 0)
+            if (!_thresholdSphereToGrabTo.CurrentlyBlockedForDirectionWithAnyReasonExcept(BlockDirection.Inward,BlockReason.GreedyAngel) && _thresholdSphereToGrabTo.Tokens.Count == 0)
                 TryGrabStack(_thresholdSphereToGrabTo, interval);
             
         }
@@ -42,6 +45,8 @@ namespace SecretHistories.Spheres.Angels
             _thresholdSphereToGrabTo = thresholdSphereToGrabTo as ThresholdSphere;
             if (_thresholdSphereToGrabTo.GreedyIcon != null)
                 thresholdSphereToGrabTo.GreedyIcon.SetActive(true);
+
+            _thresholdSphereToGrabTo.AddBlock(_angelBlock);
         }
 
         public bool MinisterToDepartingToken(Token token, Context context)
@@ -53,6 +58,14 @@ namespace SecretHistories.Spheres.Angels
         {
             return false; // if  we want to grab tokens after they're evictedl this would be a good place
         }
+
+        public void Retire()
+        {
+            _thresholdSphereToGrabTo.RemoveBlock(_angelBlock);
+            Defunct = true;
+        }
+
+        public bool Defunct { get; protected set; }
 
         private void TryGrabStack(Sphere destinationThresholdSphere, float interval)
         {
