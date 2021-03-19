@@ -63,7 +63,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
             var defaultSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
 
             
-            var projectionPosition = defaultSphere.GetReferenceRectTransform().InverseTransformPoint(position);
+            var projectionPosition = defaultSphere.GetRectTransform().InverseTransformPoint(position);
             string projectedPositionInTabletop = $"{Math.Round(projectionPosition.x, 0)}, {Math.Round(projectionPosition.y, 0)}, {Math.Round(projectionPosition.z, 0)}";
 
 

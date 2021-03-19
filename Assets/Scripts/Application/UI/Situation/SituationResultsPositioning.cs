@@ -56,6 +56,7 @@ namespace SecretHistories.UI {
 			var hiddenStacks = new List<Token>();	// Hidden fresh cards
             var freshStacks = new List<Token>();	// Face-up fresh cards
             var existingStacks = new List<Token>(); // Face-up existing cards
+            var allStacks = new List<Token>();
 
             foreach (var stack in elementStacks)
 			{
@@ -69,11 +70,11 @@ namespace SecretHistories.UI {
                 else
                     existingStacks.Add(stack);
             }
+            allStacks.AddRange(hiddenStacks);
+            allStacks.AddRange(freshStacks); //fresh face-up stacks go after hidden stacks
+            allStacks.AddRange(existingStacks); //existing stacks go after fresh stacks
 
-			hiddenStacks.AddRange(freshStacks); //fresh face-up stacks go after hidden stacks
-            hiddenStacks.AddRange(existingStacks); //existing stacks go after fresh stacks
-
-            return hiddenStacks;
+            return allStacks;
         }
 
         Vector2 GetPositionForIndex(int currentTokenIndex, float totalTokensCount) {

@@ -245,8 +245,8 @@ namespace SecretHistories.UI {
             if (_ghost == null)
                 return false;
 
-            var tokenWorldPosition = Sphere.GetReferenceRectTransform().TransformPoint(Location.Anchored3DPosition);
-            var projectionPosition = projectInSphere.GetReferenceRectTransform().InverseTransformPoint(tokenWorldPosition);
+            var tokenWorldPosition = Sphere.GetRectTransform().TransformPoint(Location.Anchored3DPosition);
+            var projectionPosition = projectInSphere.GetRectTransform().InverseTransformPoint(tokenWorldPosition);
             
             var candidatePosition = projectInSphere.Choreographer.GetFreeLocalPosition(this, projectionPosition);
 
@@ -466,7 +466,7 @@ namespace SecretHistories.UI {
 
         public void MoveObject(PointerEventData eventData)
         {
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Sphere.GetReferenceRectTransform(),
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Sphere.GetRectTransform(),
                 eventData.position, eventData.pressEventCamera, out var draggedToPosition);
 
             

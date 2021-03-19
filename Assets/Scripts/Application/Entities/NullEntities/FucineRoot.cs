@@ -47,6 +47,9 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
         [Encaust] public DealersTable DealersTable => Watchman.Get<DealersTable>();
 
         [Encaust]
+        public bool IsOpen => true; //will this be always true? possibly not if we have an otherworld blocking it?
+
+        [Encaust]
         public Dictionary<string, int> Mutations
         {
             get => _mutations;
@@ -118,10 +121,10 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             return FucinePath.Root();
         }
 
-        public RectTransform GetReferenceRectTransform()
+        public RectTransform GetRectTransform()
         {
             NoonUtility.LogWarning("Trying to get fucine root recttransform; supplying the default sphere rect transfomr.");
-            return Watchman.Get<HornedAxe>().GetDefaultSphere().GetReferenceRectTransform(); //this is most likely what we're expecting
+            return Watchman.Get<HornedAxe>().GetDefaultSphere().GetRectTransform(); //this is most likely what we're expecting
         }
 
 
@@ -144,7 +147,7 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             _spheres.Remove(c);
         }
 
-        public bool IsOpen => true; //will this be always true? possibly not if we have an otherworld blocking it?
+        
 
         public int IncrementedIdentity()
         {

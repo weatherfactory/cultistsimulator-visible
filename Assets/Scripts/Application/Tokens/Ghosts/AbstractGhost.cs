@@ -23,7 +23,7 @@ namespace SecretHistories.Ghosts
         public virtual void ShowAt(Sphere projectInSphere, Vector3 anchoredPosition3D)
         {
             canvasGroup.alpha = 1f;
-            rectTransform.SetParent(projectInSphere.GetReferenceRectTransform());
+            rectTransform.SetParent(projectInSphere.GetRectTransform());
             rectTransform.anchoredPosition3D = anchoredPosition3D;
             Visible = true;
         }

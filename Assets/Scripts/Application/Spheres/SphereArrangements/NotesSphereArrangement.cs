@@ -28,7 +28,7 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
 
             newsNotesSphere.Index = index;
 
-            RectTransform sphereRectTransform = newsNotesSphere.GetReferenceRectTransform();
+            RectTransform sphereRectTransform = newsNotesSphere.GetRectTransform();
 
             sphereRectTransform.SetParent(this.transform);
             sphereRectTransform.anchoredPosition3D = Vector3.zero;

@@ -21,6 +21,7 @@ namespace SecretHistories.Commands
         public Dictionary<string, int> Mutations { get; set; }
         public List<SphereCreationCommand> Spheres { get; set; }
         public PopulateDominionCommand DealersTable { get; set; }
+        public bool IsOpen { get; set; }
 
         public RootPopulationCommand()
         {

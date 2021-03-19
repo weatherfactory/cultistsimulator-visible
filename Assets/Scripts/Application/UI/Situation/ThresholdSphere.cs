@@ -240,13 +240,13 @@ namespace SecretHistories.UI
             Vector3 hereAsWorldPosition;
             if (_container.IsOpen)
             //the threshold is visible, so the reference position should be the sphere itself in world space
-                hereAsWorldPosition = GetReferenceRectTransform().position;
+                hereAsWorldPosition = GetRectTransform().position;
             else
-                hereAsWorldPosition = _container.GetReferenceRectTransform().position;
+                hereAsWorldPosition = _container.GetRectTransform().position;
 
             
             var otherSphere = Watchman.Get<HornedAxe>().GetSphereByPath(atPath);
-            var otherSphereTransform = otherSphere.GetReferenceRectTransform();
+            var otherSphereTransform = otherSphere.GetRectTransform();
             var bestGuessReferencePosition = otherSphereTransform.InverseTransformPoint(hereAsWorldPosition);
             return bestGuessReferencePosition;
 

@@ -38,7 +38,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         public Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos, int startIteration = -1)
         {
             
-            float sphereWidth = _sphere.GetReferenceRectTransform().rect.width;
+            float sphereWidth = _sphere.GetRectTransform().rect.width;
             float halfSphereWidth = sphereWidth / 2; //as x, this would be our centre position
             float halfTokenWidth = token.ManifestationRectTransform.rect.width / 2; //we should offset the token at least half its manifestation's width to the right from the starting position, on the assumption it has a centre pivot
             //nb this is the manifestation's width, not the token's, because the token's may not have been updated at this point, and manifestation is our best guess

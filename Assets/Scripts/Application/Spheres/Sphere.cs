@@ -274,16 +274,13 @@ namespace SecretHistories.Spheres
         }
       
 
-        
-
-        // Returns a rect for use by the Choreographer
         public Rect GetRect()
         {
-            return GetReferenceRectTransform().rect;
+            return GetRectTransform().rect;
         }
 
 
-        public RectTransform GetReferenceRectTransform()
+        public RectTransform GetRectTransform()
         {
             var rectTrans = transform as RectTransform;
             if (rectTrans == null)
@@ -701,10 +698,10 @@ namespace SecretHistories.Spheres
         /// </summary>
         public virtual Vector3 GetReferencePosition(FucinePath atPath)
         {
-            var hereAsWorldPosition = GetReferenceRectTransform().position;
+            var hereAsWorldPosition = GetRectTransform().position;
 
             var otherSphere = Watchman.Get<HornedAxe>().GetSphereByPath(atPath);
-            var otherSphereTransform = otherSphere.GetReferenceRectTransform();
+            var otherSphereTransform = otherSphere.GetRectTransform();
             var bestGuessReferencePosition = otherSphereTransform.InverseTransformPoint(hereAsWorldPosition);
 
             return bestGuessReferencePosition;

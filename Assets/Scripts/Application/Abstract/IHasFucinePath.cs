@@ -17,6 +17,6 @@ namespace SecretHistories.Abstract
         /// as the game object parent of the component; eg, FucineRoot has no reference position of its own, and uses the default sphere
         /// </summary>
         /// <returns></returns>
-        RectTransform GetReferenceRectTransform();
+        RectTransform GetRectTransform();
     }
 }

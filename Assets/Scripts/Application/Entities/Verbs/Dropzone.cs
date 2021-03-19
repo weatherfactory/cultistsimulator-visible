@@ -102,7 +102,7 @@ namespace SecretHistories.Entities.Verbs
             return absolutePath;
         }
 
-        public RectTransform GetReferenceRectTransform()
+        public RectTransform GetRectTransform()
         {
             return Token.TokenRectTransform;
         }

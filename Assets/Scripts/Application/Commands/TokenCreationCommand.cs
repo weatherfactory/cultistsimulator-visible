@@ -63,7 +63,7 @@ namespace SecretHistories.Commands
             if (sphere == null && Location.AtSpherePath.IsValid())
                 sphere = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
 
-            var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.GetReferenceRectTransform());
+            var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.GetRectTransform());
             token.TokenRectTransform.anchoredPosition3D = Location.Anchored3DPosition;
             
             sphere.AcceptToken(token, context);
