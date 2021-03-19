@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Spheres.Angels;
 using SecretHistories.Commands;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Spheres.Angels;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,7 +26,9 @@ namespace SecretHistories.Spheres
     
         public override SphereCategory SphereCategory => SphereCategory.World;
         public override bool AllowDrag => true;
-
+        public override IChoreographer Choreographer=>new HorizontalLayoutChoreographer(this); //we don't use a horizontal layout group because - as I learnt to my cost - that moves the anchor positions to (0,0) (top left) and spaffs everything up when they leave the bubblesphere later
+        
+        
 
         public void Pop(Context context)
         {

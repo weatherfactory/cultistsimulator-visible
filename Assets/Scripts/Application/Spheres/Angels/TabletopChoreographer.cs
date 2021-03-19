@@ -45,7 +45,11 @@ namespace SecretHistories.Constants {
         }
 
         public TabletopSphere _tabletop;
-        private Rect tableRect;
+
+        private Rect GetTableRect()
+        {
+            return _tabletop.GetRect();
+        }
         private bool showDebugInfo;
         const float checkPointPerArcLength = 100f;
 
@@ -61,7 +65,7 @@ namespace SecretHistories.Constants {
 
         public void Awake() {
             
-            tableRect = _tabletop.GetRect();
+            
 
             var snapGridSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
             if (snapGridSetting != null)
@@ -180,18 +184,18 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return pos;
         }
 
-        Vector2 GetFreeTokenPosition(Token token, Vector2 centerPos, int startIteration = -1)
+        Vector2 GetFreeTokenPosition(Token token, Vector2 startPos, int startIteration = -1)
 		{
             //Debug.Log("Trying to find FREE POS for " + token.Id);
-            centerPos = GetPosClampedToTable(centerPos);
-			centerPos = SnapToGrid( centerPos );
-			var targetRect = GetCenterPosRect(centerPos, token.ManifestationRectTransform.rect.size);
+            Vector2 centerPosition = GetPosClampedToTable(startPos);
+           Vector2 snappedToGridPosition = SnapToGrid(centerPosition);
+            var targetRect = GetCenterPosRect(snappedToGridPosition, token.ManifestationRectTransform.rect.size);
 
             var legalPositionCheckResult = IsLegalPosition(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
             {
                 HideAllRects();
-                return centerPos;
+                return snappedToGridPosition;
             }
             else
             {
@@ -215,7 +219,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
             // we've exhausted things, so we do again
             // but we  shift the target pos a bit
-            centerPos = centerPos + targetRect.size;
+            Vector2 newStartPosition = snappedToGridPosition + targetRect.size;
             // and we reduce the smaller rect size. This allows overlap
             targetRect.size = targetRect.size * 0.4f;
 
@@ -226,7 +230,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
             var centerPosRect = GetCenterPosRect(targetRect.position, targetRect.size);
             if (IsLegalPosition(centerPosRect, token).IsLegal)
-                return centerPos;
+                return newStartPosition;
 
             foreach (var point in currentPoints)
 			{
@@ -234,7 +238,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                     return point;
             }
 
-            NoonUtility.Log("Choreographer: No legal tabletop position found for " + token.Payload.Id + " (" + centerPos + ")!",1);
+            NoonUtility.Log("Choreographer: No legal tabletop position found for " + token.Payload.Id + " (" + newStartPosition + ")!",1);
 
             return Vector2.zero;
         }
@@ -254,8 +258,12 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 		{
             const float padding = .2f;
 
-            pos.x = Mathf.Clamp(pos.x, tableRect.x + padding, tableRect.x + tableRect.width - padding);
-            pos.y = Mathf.Clamp(pos.y, tableRect.y + padding, tableRect.y + tableRect.height - padding);
+            var tableMinX = GetTableRect().x + padding;
+            var tableMaxX = GetTableRect().x + GetTableRect().width - padding;
+            var tableMinY = GetTableRect().y + padding;
+            var tableMaxY = GetTableRect().y + GetTableRect().height - padding;
+            pos.x = Mathf.Clamp(pos.x, tableMinX,tableMaxX );
+            pos.y = Mathf.Clamp(pos.y, tableMinY,tableMaxY);
             return pos;
         }
 
@@ -286,7 +294,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
         LegalPositionCheckResult IsLegalPosition(Rect candidateRect,  Token placingToken)
 		{
           
-            if (tableRect.Contains(candidateRect.position + candidateRect.size / 2f) == false)
+            if (GetTableRect().Contains(candidateRect.position + candidateRect.size / 2f) == false)
                 
                 return LegalPositionCheckResult.Illegal();
             
