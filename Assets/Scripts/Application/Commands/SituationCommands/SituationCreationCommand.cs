@@ -39,7 +39,7 @@ namespace SecretHistories.Commands
 
         public SituationCreationCommand()
         {
-            StateIdentifier = StateEnum.Unknown;
+            StateIdentifier = StateEnum.Inchoate;
             CommandQueue = new SituationCommandQueue();
         }
 

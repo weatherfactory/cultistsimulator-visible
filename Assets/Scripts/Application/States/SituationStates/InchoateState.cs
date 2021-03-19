@@ -10,7 +10,7 @@ using SecretHistories.States;
 
 namespace SecretHistories.Assets.Scripts.Application.States.SituationStates
 {
-    public class FreshState: SituationState
+    public class InchoateState: SituationState
     {
         public override void Enter(Situation situation)
         {
@@ -33,7 +33,7 @@ namespace SecretHistories.Assets.Scripts.Application.States.SituationStates
         }
 
         public override bool AllowDuplicateVerbIfVerbSpontaneous => false;
-        public override StateEnum RehydrationValue => StateEnum.Fresh;
+        public override StateEnum Identifier => StateEnum.Inchoate;
         public override void Continue(Situation situation)
         {
             situation.TransitionToState(new UnstartedState());

@@ -69,9 +69,9 @@ namespace Assets.Tests.EditModeTests
 
             var activationCommand = TryActivateRecipeCommand.ManualRecipeActivation("req0effect1");
             situation.CommandQueue.AddCommand(activationCommand);
-            Assert.AreEqual(StateEnum.Unstarted, situation.StateForRehydration);
+            Assert.AreEqual(StateEnum.Unstarted, situation.StateIdentifier);
             situation.ExecuteHeartbeat(1f);
-            Assert.AreEqual(StateEnum.Ongoing, situation.StateForRehydration);
+            Assert.AreEqual(StateEnum.Ongoing, situation.StateIdentifier);
 
         }
 
@@ -162,7 +162,7 @@ namespace Assets.Tests.EditModeTests
         {
             var verb = Watchman.Get<Compendium>().GetEntityById<Verb>("t");
             SituationCreationCommand situationCreationCommand = new SituationCreationCommand(verb.Id);
-            situationCreationCommand.StateIdentifier = StateEnum.Fresh;
+            
             var situation = situationCreationCommand.Execute(Context.Unknown()) as Situation;
             situation.FirstHeartbeat();
             situation.ExecuteHeartbeat(0f);

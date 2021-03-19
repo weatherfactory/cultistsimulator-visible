@@ -39,7 +39,7 @@ namespace SecretHistories.Entities {
 #pragma warning restore 67
 
         [Encaust]
-        public StateEnum StateForRehydration => State.RehydrationValue;
+        public StateEnum StateIdentifier => State.Identifier;
 
 
         [Encaust] public string RecipeId => Recipe.Id;
@@ -370,7 +370,7 @@ namespace SecretHistories.Entities {
             var existingNotesSpheres = GetSpheresByCategory(SphereCategory.Notes);
 
             
-           var notesDominion = GetRelevantDominions(StateForRehydration,typeof(NotesSphere)).FirstOrDefault();
+           var notesDominion = GetRelevantDominions(StateIdentifier,typeof(NotesSphere)).FirstOrDefault();
            if (notesDominion == null)
            {
                NoonUtility.Log($"No notes sphere and no notes dominion found: we won't add note {label}, then.");
@@ -578,7 +578,7 @@ namespace SecretHistories.Entities {
 
         private SituationState Continue(float interval)
         {
-            CommandQueue.ExecuteCommandsFor(State.RehydrationValue, this);
+            CommandQueue.ExecuteCommandsFor(State.Identifier, this);
             _timeshadow.SpendTime(interval);
 
               State.Continue(this);

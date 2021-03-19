@@ -23,11 +23,11 @@ namespace SecretHistories.States
 
         public abstract bool IsValidPredictionForState(Recipe recipeToCheck, Situation s);
        public abstract bool AllowDuplicateVerbIfVerbSpontaneous { get; }
-       public abstract StateEnum RehydrationValue { get; }
+       public abstract StateEnum Identifier { get; }
 
        public bool IsVisibleInThisState(IDominion situationDominion)
        {
-           return situationDominion.VisibleFor(RehydrationValue);
+           return situationDominion.VisibleFor(Identifier);
         }
 
         public static SituationState Rehydrate(StateEnum stateEnum,Situation situation)

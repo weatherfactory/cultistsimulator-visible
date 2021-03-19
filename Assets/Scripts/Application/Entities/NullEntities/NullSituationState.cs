@@ -38,7 +38,7 @@ namespace Assets.Scripts.Application.Entities.NullEntities
 
         public override bool AllowDuplicateVerbIfVerbSpontaneous => true;
 
-        public override StateEnum RehydrationValue => StateEnum.Unknown;
+        public override StateEnum Identifier => StateEnum.Inchoate;
 
         public override void Continue(Situation situation)
         {

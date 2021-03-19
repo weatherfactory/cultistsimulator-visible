@@ -15,7 +15,7 @@ namespace SecretHistories.States
     {
 
         public override bool AllowDuplicateVerbIfVerbSpontaneous => false;
-        public override StateEnum RehydrationValue => StateEnum.Ongoing;
+        public override StateEnum Identifier => StateEnum.Ongoing;
 
 
         public override void Enter(Situation situation)

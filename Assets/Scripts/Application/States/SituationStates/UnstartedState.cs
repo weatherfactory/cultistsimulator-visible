@@ -13,7 +13,7 @@ namespace SecretHistories.States
 {
     public class UnstartedState : SituationState
     {
-        public override StateEnum RehydrationValue => StateEnum.Unstarted;
+        public override StateEnum Identifier => StateEnum.Unstarted;
 
         public override void Enter(Situation situation)
         {

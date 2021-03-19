@@ -15,7 +15,7 @@ namespace SecretHistories.Commands.SituationCommands
    public class AddNoteCommand: IAffectsTokenCommand
    {
 
-       public List<StateEnum> ValidForStates => new List<StateEnum> { StateEnum.Unstarted,StateEnum.Complete,StateEnum.Halting,StateEnum.Ongoing,StateEnum.RequiringExecution,StateEnum.Unknown };
+       public List<StateEnum> ValidForStates => new List<StateEnum> { StateEnum.Unstarted,StateEnum.Complete,StateEnum.Halting,StateEnum.Ongoing,StateEnum.RequiringExecution,StateEnum.Inchoate };
         public readonly string Label;
        public readonly string Description;
        private readonly Context _context;

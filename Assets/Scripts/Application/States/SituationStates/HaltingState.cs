@@ -12,7 +12,7 @@ namespace SecretHistories.States
     public class HaltingState : SituationState
     {
         public override bool AllowDuplicateVerbIfVerbSpontaneous => true;
-        public override StateEnum RehydrationValue => StateEnum.Halting;
+        public override StateEnum Identifier => StateEnum.Halting;
 
         public override void Enter(Situation situation)
         {
