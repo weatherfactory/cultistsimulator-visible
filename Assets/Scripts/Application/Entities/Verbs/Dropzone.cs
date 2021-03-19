@@ -124,6 +124,9 @@ namespace SecretHistories.Entities.Verbs
                 if (dominionToRegister.Identifier == storedPopulateDominionCommand.Identifier)
                     storedPopulateDominionCommand.Execute(dominionToRegister);
             }
+
+
+
             return true;
         }
 
@@ -141,10 +144,7 @@ namespace SecretHistories.Entities.Verbs
         {
             manifestation.InitialiseVisuals(this);
 
-            //assume we have exactly one dropzone bubble sphere
-            var dropzoneSpherePath = _spheres.Single().GetAbsolutePath();
-            var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
-            tabletopSphere.AddAngel(new TidyAngel(dropzoneSpherePath));
+
         }
 
         public bool IsValidElementStack()
@@ -181,6 +181,12 @@ namespace SecretHistories.Entities.Verbs
             {
                 _spheres.Add(sphere);
                 sphere.SetContainer(this);
+                
+
+                var dropzoneSpherePath = sphere.GetAbsolutePath();
+                var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
+                tabletopSphere.AddAngel(new TidyAngel(dropzoneSpherePath));
+
             }
         }
 
