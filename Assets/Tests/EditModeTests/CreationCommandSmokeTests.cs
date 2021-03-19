@@ -88,7 +88,7 @@ public class CreationCommandsSmokeTests
             var situationCreationCommand=new SituationCreationCommand();
             situationCreationCommand.VerbId = NullVerb.Create().Id;
             situationCreationCommand.RecipeId = NullRecipe.Create().Id;
-            situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
+            situationCreationCommand.StateIdentifier = StateEnum.Unstarted;
             var situation = situationCreationCommand.Execute(new Context(Context.ActionSource.Unknown));
             Assert.IsInstanceOf<Situation>(situation);
         }
@@ -101,7 +101,7 @@ public class CreationCommandsSmokeTests
             var situationCreationCommand = new SituationCreationCommand();
             situationCreationCommand.VerbId = NullVerb.Create().Id;
         situationCreationCommand.RecipeId = NullRecipe.Create().Id;
-        situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
+        situationCreationCommand.StateIdentifier = StateEnum.Unstarted;
         var location = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere());
 
         var tokenCreationCommand =new TokenCreationCommand(situationCreationCommand,location);

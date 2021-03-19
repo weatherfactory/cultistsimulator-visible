@@ -26,7 +26,7 @@ namespace SecretHistories.Commands
         public string VerbId { get; set; }
         public string RecipeId { get; set; }
         public int Quantity { get; set; }
-        public StateEnum StateForRehydration { get; set; }
+        public StateEnum StateIdentifier { get; set; }
         public float TimeRemaining { get; set; }
         public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public Dictionary<string, int> Mutations { get; set; }
@@ -39,7 +39,7 @@ namespace SecretHistories.Commands
 
         public SituationCreationCommand()
         {
-            StateForRehydration = StateEnum.Unknown;
+            StateIdentifier = StateEnum.Unknown;
             CommandQueue = new SituationCommandQueue();
         }
 
@@ -64,13 +64,13 @@ namespace SecretHistories.Commands
 
         public SituationCreationCommand AlreadyInState(StateEnum state)
         {
-            StateForRehydration = state;
+            StateIdentifier = state;
             return this;
         }
 
         public SituationCreationCommand WithRecipeAboutToActivate(string recipeId)
         {
-            StateForRehydration = StateEnum.Unstarted;
+            StateIdentifier = StateEnum.Unstarted;
             CommandQueue.AddCommand(TryActivateRecipeCommand.OverridingRecipeActivation(recipeId));
             return this;
         }
@@ -100,7 +100,7 @@ namespace SecretHistories.Commands
             Situation newSituation = new Situation(verb,Id);
 
            
-            newSituation.State = SituationState.Rehydrate(StateForRehydration, newSituation);
+            newSituation.State = SituationState.Rehydrate(StateIdentifier, newSituation);
 
             newSituation.SetRecipeActive(recipe);
             newSituation.ReduceLifetimeBy(recipe.Warmup - TimeRemaining);

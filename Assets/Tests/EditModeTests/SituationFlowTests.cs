@@ -7,6 +7,7 @@ using NUnit.Framework;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -63,7 +64,7 @@ namespace Assets.Tests.EditModeTests
         public void ActivateRecipeManually()
         {
             SituationCreationCommand situationCreationCommand = new SituationCreationCommand("t");
-            situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
+            situationCreationCommand.StateIdentifier = StateEnum.Unstarted;
             var situation = situationCreationCommand.Execute(Context.Unknown()) as Situation;
 
             var activationCommand = TryActivateRecipeCommand.ManualRecipeActivation("req0effect1");
@@ -78,7 +79,7 @@ namespace Assets.Tests.EditModeTests
         public void RecipeWithSlot_AddsRecipeThreshold()
         {
             SituationCreationCommand situationCreationCommand = new SituationCreationCommand("t");
-            situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
+            situationCreationCommand.StateIdentifier = StateEnum.Unstarted;
             var situation = situationCreationCommand.Execute(Context.Unknown()) as Situation;
 
             var recipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("apls");
@@ -95,7 +96,7 @@ namespace Assets.Tests.EditModeTests
         public void RecipeWithSlot_Replaces_RecipeThreshold_FromPreviousRecipe()
         {
             SituationCreationCommand situationCreationCommand = new SituationCreationCommand("t");
-            situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
+            situationCreationCommand.StateIdentifier = StateEnum.Unstarted;
             var situation = situationCreationCommand.Execute(Context.Unknown()) as Situation;
 
             var recipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("apls.linkto.bpls.loop");
@@ -117,7 +118,7 @@ namespace Assets.Tests.EditModeTests
         public void RecipeSlot_IsRetained_WhenMovingToALinkedRecipeThatDoesntSpecifySlot()
         {
             SituationCreationCommand situationCreationCommand = new SituationCreationCommand("t");
-            situationCreationCommand.StateForRehydration = StateEnum.Unstarted;
+            situationCreationCommand.StateIdentifier = StateEnum.Unstarted;
             var situation = situationCreationCommand.Execute(Context.Unknown()) as Situation;
 
             var recipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("apls.linkto.hiatus.loop");
@@ -156,5 +157,26 @@ namespace Assets.Tests.EditModeTests
             Assert.AreEqual(0,outSphere.Tokens.Count);
         }
 
+        [Test]
+        public void UnstartedVerbDisplaysDefaultHint()
+        {
+            var verb = Watchman.Get<Compendium>().GetEntityById<Verb>("t");
+            SituationCreationCommand situationCreationCommand = new SituationCreationCommand(verb.Id);
+            situationCreationCommand.StateIdentifier = StateEnum.Fresh;
+            var situation = situationCreationCommand.Execute(Context.Unknown()) as Situation;
+            situation.FirstHeartbeat();
+            situation.ExecuteHeartbeat(0f);
+
+            var notesDominion = situation.Dominions.Single(d => d.Identifier == DominionEnum.Notes);
+           
+            var notesSphere=notesDominion.Spheres.Single();
+            var notesStack =notesSphere.Tokens.SingleOrDefault().Payload;
+            var notesText = notesStack.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY);
+            Assert.AreEqual(verb.Description,notesText);
+            Assert.AreEqual(situation.Description, notesText);
+
+
+
         }
+    }
 }
