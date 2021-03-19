@@ -216,7 +216,7 @@ namespace SecretHistories.Spheres
 
         private void FinishRetirement()
         {
-            if(!Application.isEditor)
+            if(Application.isPlaying) //don't destroy objects if we're in Edit Mode
                 Destroy(gameObject);
         }
         

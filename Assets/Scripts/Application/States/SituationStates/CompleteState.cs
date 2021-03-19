@@ -21,7 +21,6 @@ namespace SecretHistories.States
             situation.CommandQueue.AddCommand(createOutputSphereCommand);
 
             var migrateToOutputCommand=new FlushTokensToCategoryCommand(SphereCategory.SituationStorage,SphereCategory.Output,StateEnum.Complete);
-            
             situation.CommandQueue.AddCommand(migrateToOutputCommand);
 
             var attemptAspectInductionsCommand=new AttemptAspectInductionCommand(SphereCategory.Output,StateEnum.Complete);
