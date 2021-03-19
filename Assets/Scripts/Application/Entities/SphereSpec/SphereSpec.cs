@@ -119,10 +119,7 @@ public class SphereSpec: AbstractEntity<SphereSpec>
         if (Greedy)
         {
             GreedyAngel greedyAngel = new GreedyAngel();
-            greedyAngel.SetThresholdToGrabTo(inSphere as ThresholdSphere);
-            var worldSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
-            greedyAngel.SetWatch(worldSphere);
-            greedyAngel.SetWatch(Watchman.Get<HornedAxe>().GetSphereByPath(worldSphere.GoverningSphereSpec.EnRouteSpherePath));
+            greedyAngel.SetWatch(inSphere);
             angelsMade.Add(greedyAngel);
 
         }

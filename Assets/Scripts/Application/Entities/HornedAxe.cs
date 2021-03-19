@@ -68,6 +68,13 @@ namespace SecretHistories.Entities {
             return new HashSet<Sphere>(_registeredSpheres);
         }
 
+        public List<Sphere> GetSpheresWhichAllowDragging()
+        {
+            //cache?
+            var spheresWhichCanBeDraggedFrom = _registeredSpheres.Where(s => !s.Defunct && s.AllowDrag);
+            return spheresWhichCanBeDraggedFrom.ToList();
+        }
+
         public IEnumerable<Sphere> GetSpheresOfCategory(SphereCategory category)
         {
             return _registeredSpheres.Where(c => c.SphereCategory == category);

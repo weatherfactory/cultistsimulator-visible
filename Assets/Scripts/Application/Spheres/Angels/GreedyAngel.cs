@@ -19,15 +19,9 @@ namespace SecretHistories.Spheres.Angels
         private const int BEATS_BETWEEN_ANGELRY = 20; 
         private int _beatsTowardsAngelry = 0;
         private ThresholdSphere _thresholdSphereToGrabTo;
-        private readonly HashSet<Sphere> _spheresToGrabFrom=new HashSet<Sphere>();
+        
 
-        public void SetThresholdToGrabTo(ThresholdSphere thresholdSphereToGrabTo)
-        {
-            _thresholdSphereToGrabTo = thresholdSphereToGrabTo;
-            if(_thresholdSphereToGrabTo.GreedyIcon!=null)
-                thresholdSphereToGrabTo.GreedyIcon.SetActive(true);
-        }
-
+   
         public int Authority => 9;
 
         public void Act(float interval)
@@ -43,9 +37,11 @@ namespace SecretHistories.Spheres.Angels
             
         }
 
-        public void SetWatch(Sphere sphere)
+        public void SetWatch(Sphere thresholdSphereToGrabTo)
         {
-            _spheresToGrabFrom.Add(sphere);
+            _thresholdSphereToGrabTo = thresholdSphereToGrabTo as ThresholdSphere;
+            if (_thresholdSphereToGrabTo.GreedyIcon != null)
+                thresholdSphereToGrabTo.GreedyIcon.SetActive(true);
         }
 
         public bool MinisterToDepartingToken(Token token, Context context)
@@ -60,8 +56,12 @@ namespace SecretHistories.Spheres.Angels
 
         private void TryGrabStack(Sphere destinationThresholdSphere, float interval)
         {
+
+            var spheresWhichAllowDragging = Watchman.Get<HornedAxe>().GetSpheres();
+
+
   
-            foreach (var sphereToSearch in _spheresToGrabFrom)
+            foreach (var sphereToSearch in spheresWhichAllowDragging)
             {
                 var matchingToken = FindStackForSlotSpecificationInSphere(destinationThresholdSphere.GoverningSphereSpec, sphereToSearch);
                 if (matchingToken != null)
