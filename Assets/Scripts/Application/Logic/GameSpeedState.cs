@@ -25,7 +25,7 @@ namespace SecretHistories.Constants
 
         }
 
-        public void SetGameSpeedCommand(int commandPriority, GameSpeed speed)
+        public void SetGameSpeedCommand(int commandPriority, GameSpeed setToSpeed)
         {
             if (commandPriority > levels || commandPriority<0)
             {
@@ -34,10 +34,10 @@ namespace SecretHistories.Constants
             }
 
             //if trying to pause and already paused, then unset the pause but don't explicitly set a speed
-            if (speed == GameSpeed.Paused && CurrentGameSpeedCommands[commandPriority] == GameSpeed.Paused)
+            if (setToSpeed == GameSpeed.Paused && CurrentGameSpeedCommands[commandPriority] == GameSpeed.Paused)
                 CurrentGameSpeedCommands[commandPriority] = GameSpeed.DeferToNextLowestCommand;
             else
-                CurrentGameSpeedCommands[commandPriority] = speed;
+                CurrentGameSpeedCommands[commandPriority] = setToSpeed;
 
         }
 

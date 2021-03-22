@@ -11,6 +11,7 @@ using SecretHistories.Commands.Encausting;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
@@ -61,6 +62,11 @@ namespace SecretHistories.Infrastructure.Persistence
             return File.Exists(GetSaveFileLocation());
         }
 
+
+        public virtual GameSpeed GetDefaultGameSpeed()
+        {
+            return GameSpeed.Paused;
+        }
 
         public virtual void DepersistGameState()
         {

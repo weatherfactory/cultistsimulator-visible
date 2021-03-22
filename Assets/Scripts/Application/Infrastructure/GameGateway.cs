@@ -52,7 +52,8 @@ namespace SecretHistories.Constants
         {
             
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
-            { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
+            { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProviderSource.GetDefaultGameSpeed(), WithSFX = false });
+            
             Watchman.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             try
             {
@@ -87,8 +88,6 @@ namespace SecretHistories.Constants
               await  SaveRestartState();
             }
 
-            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
-            { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
 
             Watchman.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 

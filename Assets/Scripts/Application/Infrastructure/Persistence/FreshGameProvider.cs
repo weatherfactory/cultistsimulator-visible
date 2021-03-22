@@ -33,6 +33,11 @@ namespace SecretHistories.Infrastructure.Persistence
         }
 
 
+        public override GameSpeed GetDefaultGameSpeed()
+        {
+            return GameSpeed.Normal;
+        }
+
         public FreshGameProvider(Legacy startingLegacy)
         {
             StartingLegacy = startingLegacy;
