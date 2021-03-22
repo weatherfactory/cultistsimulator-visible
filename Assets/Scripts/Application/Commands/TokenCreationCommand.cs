@@ -13,6 +13,7 @@ using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
+using SecretHistories.States;
 using SecretHistories.UI;
 
 namespace SecretHistories.Commands
@@ -24,6 +25,7 @@ namespace SecretHistories.Commands
         [JsonProperty(TypeNameHandling = TypeNameHandling.Auto)]
         public ITokenPayloadCreationCommand Payload { get; set; }
         public bool Defunct { get; set; }
+        public TokenState CurrentState { get; set; }
         private Token _sourceToken;
 
         public TokenCreationCommand()

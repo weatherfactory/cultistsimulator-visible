@@ -26,7 +26,7 @@ namespace SecretHistories.Spheres
             if (token != null)
             {
                 if (Sphere.TryAcceptToken(token, new Context(Context.ActionSource.PlayerDrag)))
-                    token.SetState(new DroppedInSphereState());
+                    token.CurrentState=new DroppedInSphereState();
             }
               
 

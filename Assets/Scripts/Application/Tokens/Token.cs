@@ -63,6 +63,11 @@ namespace SecretHistories.UI {
                     return TokenLocation.Default(locationPath);
             }
         }
+
+        [Encaust]
+        public TokenState CurrentState { get; set; } = new UnknownState();
+
+
         [DontEncaust]
         public virtual Sphere Sphere { get; set; }
         [DontEncaust]
@@ -141,7 +146,7 @@ namespace SecretHistories.UI {
             _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
             _payload = NullElementStack.Create();
 
-            SetState(new DroppedInSphereState());
+            CurrentState=new DroppedInSphereState();
 
         }
 
@@ -174,7 +179,7 @@ namespace SecretHistories.UI {
 
         
 
-        private TokenState CurrentState=new UnknownState();
+        
 
 
         public void SetPayload(ITokenPayload payload)
@@ -316,14 +321,6 @@ namespace SecretHistories.UI {
 
 
         
-
-        public void SetState(TokenState state)
-        {
-            CurrentState = state;
-        }
-
-
-
         public bool CurrentlyBeingDragged()
         {
             return  
@@ -405,7 +402,7 @@ namespace SecretHistories.UI {
             homingAngel.SetWatch(Sphere);
             Sphere.AddAngel(homingAngel);
 
-            SetState(new BeingDraggedState());
+            CurrentState=new BeingDraggedState();
             
             
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
@@ -528,9 +525,9 @@ namespace SecretHistories.UI {
                 this.Sphere.TryMoveAsideFor(incomingToken,this, out bool moveAsideFor);
 
                 if (moveAsideFor)
-                    SetState(new DroppedOnTokenWhichMovedAsideState());
+                   CurrentState=new DroppedOnTokenWhichMovedAsideState();
                 else
-                    SetState(new RejectedByTokenState());
+                    CurrentState = new RejectedByTokenState();
             }
         }
 

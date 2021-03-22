@@ -186,7 +186,7 @@ namespace SecretHistories.UI
 
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
-                token.SetState(new RejectedBySphereState());
+                token.CurrentState=new RejectedBySphereState();
                 token.GoAway(context);
 
                 var notifier = Watchman.Get<INotifier>();
@@ -200,7 +200,7 @@ namespace SecretHistories.UI
             {
                 // We're dropping a stack of >1?
                 // set main stack to be returned to start position
-                token.SetState(new RejectedViaSplit());
+                token.CurrentState = new RejectedViaSplit();
                 // And we split a new one that's 1 (leaving the returning card to be n-1)
                 var newStack = token.CalveToken(1, new Context(Context.ActionSource.PlayerDrag));
                 // And we put that into the slot
@@ -214,7 +214,7 @@ namespace SecretHistories.UI
                 // if we drop in the same slot where we came from, do nothing.
                 if (currentOccupant == token)
                 {
-                    token.SetState(new DroppedInSphereState());
+                    token.CurrentState=new DroppedInSphereState();
                     return false;
                 }
 
@@ -223,7 +223,7 @@ namespace SecretHistories.UI
                 //currentOccupant.ReturnToTabletop();
 
                 //now we put the token in the slot.
-                token.SetState(new DroppedInSphereState());
+                token.CurrentState=new DroppedInSphereState();
                 AcceptToken(token, context);
                 SoundManager.PlaySfx("CardPutInSlot");
             }

@@ -52,7 +52,7 @@ namespace SecretHistories.UI
         public void Depart(Token tokenToSend, Context context)
         {
             tokenToSend.Unshroud(true);
-            tokenToSend.SetState(new TravellingState());
+            tokenToSend.CurrentState=new TravellingState();
 
             var tokenAnimation = tokenToSend.gameObject.AddComponent<TokenTravelAnimation>();
             tokenAnimation.OnTokenArrival += Arrive;
@@ -96,7 +96,7 @@ namespace SecretHistories.UI
                     TravelFailed(token);
                 else
                 {
-                    token.SetState(new TravelledToSphere());
+                    token.CurrentState=new TravelledToSphere();
                     // Assign element to new slot
                     destinationSphere.AcceptToken(token,context);
                 }
@@ -118,7 +118,7 @@ namespace SecretHistories.UI
             destinationSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward,
                 BlockReason.InboundTravellingStack));
 
-            token.SetState(new TravellingState() );
+            token.CurrentState=new TravellingState();
             token.GoAway(new Context(Context.ActionSource.TravelFailed));
 
         }
