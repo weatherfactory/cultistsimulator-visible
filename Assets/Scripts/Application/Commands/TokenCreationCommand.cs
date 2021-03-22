@@ -22,11 +22,12 @@ namespace SecretHistories.Commands
     public class TokenCreationCommand:IEncaustment
     {
         public TokenLocation Location { get; set; }
-        [JsonProperty(TypeNameHandling = TypeNameHandling.Auto)]
+        [JsonProperty(TypeNameHandling = TypeNameHandling.All)]
         public AbstractItinerary CurrentItinerary { get; set; }
-        [JsonProperty(TypeNameHandling = TypeNameHandling.Auto)]
+        [JsonProperty(TypeNameHandling = TypeNameHandling.All)]
         public ITokenPayloadCreationCommand Payload { get; set; }
         public bool Defunct { get; set; }
+        [JsonProperty(TypeNameHandling = TypeNameHandling.All)]
         public TokenState CurrentState { get; set; }
         private Token _sourceToken;
 

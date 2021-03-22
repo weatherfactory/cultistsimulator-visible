@@ -206,7 +206,17 @@ namespace SecretHistories.UI {
 
         public void ExecuteHeartbeat(float interval)
         {
-        Payload.ExecuteHeartbeat(interval);
+
+         //   if (CurrentState.InSystemDrivenMotion(this))
+        //    {
+                var animationComponent = gameObject.GetComponent<TokenTravelAnimation>();
+
+                if(animationComponent!=null)
+                    animationComponent.ExecuteHeartbeat(interval);
+
+         //   }
+
+            Payload.ExecuteHeartbeat(interval);
      
         }
         

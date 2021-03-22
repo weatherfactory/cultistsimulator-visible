@@ -80,10 +80,14 @@ namespace SecretHistories.UI
            if (Duration <= 0)
            {
                float distance = Vector3.Distance(Anchored3DStartPosition, Anchored3DEndPosition);
-               Duration = Mathf.Max(0.3f, distance * 0.001f);
+               float defaultTravelDuration = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultTravelDuration;
+
+               Duration = Mathf.Max(defaultTravelDuration, distance * 0.001f);
            }
 
-           tokenToSend.SetSphere(tokenToSend.Payload.GetEnRouteSphere(),context);
+           var enrouteSphere=tokenToSend.Payload.GetEnRouteSphere();
+            enrouteSphere.AcceptToken(tokenToSend,context);
+
             tokenAnimation.Begin(tokenToSend, context,Duration);
         }
 

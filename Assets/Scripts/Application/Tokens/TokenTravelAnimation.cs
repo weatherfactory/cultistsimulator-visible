@@ -73,24 +73,24 @@ public class TokenTravelAnimation : MonoBehaviour {
         transform.SetAsLastSibling();
 	}
 
-	void Update ()
+public	void ExecuteHeartbeat (float interval)
     {
         if (_token.PauseAnimations)
             return;
 		if (_travelDuration < 0)
 			return;
 		else if (_travelTimeElapsed < _travelDuration) 
-			Continue();
+			Continue(interval);
 		else
 			Complete();
 	}
 
-	void Continue() {
+	void Continue(float interval) {
 
-		_travelTimeElapsed += Time.deltaTime;
+        //	_travelTimeElapsed += Time.deltaTime;
+        _travelTimeElapsed += interval;
 
-
-		float completion = _travelTimeElapsed / _travelDuration;
+        float completion = _travelTimeElapsed / _travelDuration;
 
 		_token.TokenRectTransform.position = GetPos(Easing.Circular.Out(completion));
 
