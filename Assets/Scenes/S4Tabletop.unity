@@ -15185,8 +15185,8 @@ MonoBehaviour:
   SaveAndExitEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 600}
-        m_TargetAssemblyTypeName: Assets.CS.TabletopUI.TabletopManager, Assembly-CSharp
+      - m_Target: {fileID: 318130295}
+        m_TargetAssemblyTypeName: SecretHistories.Constants.GameGateway, SecretHistories.Main
         m_MethodName: LeaveGame
         m_Mode: 1
         m_Arguments:
@@ -23573,6 +23573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a838b64008588469d96e05929a4083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameGateway: {fileID: 318130295}
   _autosaveNotifier: {fileID: 1985926805}
   housekeepingTimer: 0
   AUTOSAVE_INTERVAL: 300

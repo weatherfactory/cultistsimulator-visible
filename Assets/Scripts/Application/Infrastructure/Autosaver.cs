@@ -21,11 +21,11 @@ namespace SecretHistories.Constants
     public class Autosaver: MonoBehaviour, ISettingSubscriber
     {
 
+        [SerializeField] private GameGateway gameGateway;
+
         [SerializeField] private AutosaveWindow _autosaveNotifier;
 
-
-
-      [SerializeField]  private float
+        [SerializeField]  private float
             housekeepingTimer; // Now a float so that we can time autosaves independent of Heart.Beat - CP
 
       [SerializeField] private float AUTOSAVE_INTERVAL = 300.0f;
@@ -72,22 +72,11 @@ namespace SecretHistories.Constants
             {
                 _autosaveNotifier.SetDuration(3.0f);
                   _autosaveNotifier.Show();
-
-              Autosave();
+                  housekeepingTimer = 0f;
+                  gameGateway.DefaultSave();
             }
         }
 
-        public async void Autosave()
-        {
-            housekeepingTimer = 0f;
-
-            var game = new DefaultGamePersistenceProvider();
-            game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
-            var saveTask = game.SerialiseAndSaveAsync();
-            var result = await saveTask;
-
-        
-        }
 
         //Old code below for history and reference
         //public async Task<bool> SaveGameAsync(bool withNotification)

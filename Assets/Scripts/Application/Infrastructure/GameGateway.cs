@@ -104,6 +104,15 @@ namespace SecretHistories.Constants
         }
 
 
+        public async void DefaultSave()
+        {
+            var game = new DefaultGamePersistenceProvider();
+            game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
+            var saveTask = game.SerialiseAndSaveAsync();
+            var result = await saveTask;
+        }
+
+
         public void EndGame(Ending ending, Token _anchor)
         {
 
@@ -123,6 +132,9 @@ namespace SecretHistories.Constants
         {
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
 
+            DefaultSave();
+
+            Watchman.Get<StageHand>().MenuScreen();
 
             //ITableSaveState tableSaveState = new TableSaveState(Watchman.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World).SelectMany(sphere => sphere.GetAllTokens())
 
@@ -146,5 +158,7 @@ namespace SecretHistories.Constants
             //    GameSaveManager.ShowSaveError();
             //}
         }
+
+        
     }
 }
