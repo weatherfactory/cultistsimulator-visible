@@ -33,8 +33,6 @@ namespace SecretHistories.Services
             }
             else
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.RESOLUTION);
-
-
         }
 
         public void WhenSettingUpdated(object newValue)

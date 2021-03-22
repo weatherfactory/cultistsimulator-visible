@@ -31,7 +31,30 @@ namespace SecretHistories.Constants
       [SerializeField] private float AUTOSAVE_INTERVAL = 300.0f;
 
 
-        
+      public void Awake()
+      {
+         Initialise();
+
+      }
+
+      public void Initialise()
+      {
+          var registry = new Watchman();
+          registry.Register(this);
+
+
+          var autosaveSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.AUTOSAVEINTERVAL);
+          if (autosaveSetting != null)
+          {
+              autosaveSetting.AddSubscriber(this);
+              WhenSettingUpdated(autosaveSetting.CurrentValue);
+          }
+          else
+              NoonUtility.Log("Missing setting entity: " + NoonConstants.AUTOSAVEINTERVAL);
+      }
+
+
+
         protected void SetAutosaveInterval(float minutes)
         {
             AUTOSAVE_INTERVAL = minutes * 60.0f;
@@ -66,7 +89,7 @@ namespace SecretHistories.Constants
         
         }
 
-
+        //Old code below for history and reference
         //public async Task<bool> SaveGameAsync(bool withNotification)
         //{
         //    return false;
