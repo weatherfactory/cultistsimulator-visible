@@ -184,20 +184,7 @@ namespace Assets.Scripts.Application.Meta
         //}
 
 
-        void LoadDebugSave(int index)
-        {
-            if (!CheckDebugSaveExists(index))
-                return;
-            DevSlotSaveGamePersistenceProvider source = new DevSlotSaveGamePersistenceProvider(index);
 
-            Watchman.Get<StageHand>().LoadGameOnTabletop(source);
-        }
-
-
-        private bool CheckDebugSaveExists(int index)
-        {
-            return File.Exists(NoonUtility.GetGameSaveLocation(index));
-        }
 
     }
 }

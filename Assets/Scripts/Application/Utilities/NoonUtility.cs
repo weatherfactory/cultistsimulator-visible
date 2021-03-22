@@ -130,18 +130,6 @@ using  SecretHistories.Fucine;
             Log(message);
         }
 
-        public static string GetGameSaveLocation(int index = 0)
-        {
-            string wholePath = Application.persistentDataPath + "/save" + (index == 0 ? "": "_" + index) + ".txt" ;
-            return wholePath;
-        }
-
-        public static string GetBackupGameSaveLocation( int index )
-        {
-		    string wholePath = Application.persistentDataPath + "/backup_save" + index + ".txt";
-            return wholePath;
-        }
-
         public static string GetErrorSaveLocation( DateTime timestamp, string postfix )
         {
 		    string wholePath = Application.persistentDataPath + "/error_save_" + timestamp.ToString("yyyyMMdd_HHmmss") + "_" + postfix + ".txt";

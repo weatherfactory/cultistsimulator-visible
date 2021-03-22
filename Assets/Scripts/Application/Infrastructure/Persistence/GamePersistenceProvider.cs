@@ -16,6 +16,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
+using UnityEngine;
 
 
 namespace SecretHistories.Infrastructure.Persistence
@@ -87,6 +88,10 @@ namespace SecretHistories.Infrastructure.Persistence
 
             var saveFilePath = GetSaveFileLocation();
 
+            var backupSaveTask = WriteSaveFile(GetBackupSaveFileLocation(), json);
+            await backupSaveTask;
+
+
             var writeToFileTask = WriteSaveFile(saveFilePath, json);
 
             await writeToFileTask;
@@ -98,8 +103,45 @@ namespace SecretHistories.Infrastructure.Persistence
 
         private async Task WriteSaveFile(string saveFilePath, string JsonToSave)
         {
-            var task = Task.Run(() => File.WriteAllText(saveFilePath, JsonToSave));
+  
+
+
+            var task = Task.Run(() =>
+            {
+               
+                FileInfo fileInfo = new System.IO.FileInfo(saveFilePath);
+                fileInfo.Directory.Create(); 
+                File.WriteAllText(fileInfo.FullName, JsonToSave);
+            });
             await task;
+        }
+
+
+        protected string GetBackupSaveFileLocation()
+        {
+            return $"{Application.persistentDataPath}/backups/save.json";
+        }
+
+
+
+        //copies old version in case of corruption
+        private void BackupSave(int index)
+        {
+            const int MAX_BACKUPS = 5;
+            // Back up a number of previous saves
+            for (int i = MAX_BACKUPS - 1; i >= 1; i--)
+            {
+                if (File.Exists(GetBackupSaveGameLocation(i)))  //otherwise we can't copy it
+                    File.Copy(GetBackupSaveGameLocation(i), GetBackupSaveGameLocation(i + 1), true);
+            }
+            // Back up the main save
+            if (File.Exists(GetSaveFileLocation()))	//otherwise we can't copy it
+                File.Copy(GetSaveFileLocation(), GetBackupSaveGameLocation(1), true);
+        }
+
+        private string GetBackupSaveGameLocation(int i)
+        {
+            return i.ToString();
         }
 
 
