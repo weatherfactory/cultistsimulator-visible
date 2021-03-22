@@ -16,7 +16,7 @@ namespace SecretHistories.Infrastructure.Persistence
     {
         protected override string GetSaveFileLocation()
         {
-            return $"{Application.persistentDataPath}/save.json";
+            return $"{persistentDataPath}/save.json";
         }
 
     }

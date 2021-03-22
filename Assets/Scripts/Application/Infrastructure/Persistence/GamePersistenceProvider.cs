@@ -16,6 +16,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -23,6 +24,8 @@ namespace SecretHistories.Infrastructure.Persistence
 {
     public abstract class GamePersistenceProvider
     {
+        protected string persistentDataPath = Application.persistentDataPath; //cached here because it has to be called from the main thread; also it might, you know, turn out to be something else
+
         protected abstract string GetSaveFileLocation();
 
 
@@ -88,28 +91,27 @@ namespace SecretHistories.Infrastructure.Persistence
 
             var saveFilePath = GetSaveFileLocation();
 
-            var backupSaveTask = WriteSaveFile(GetBackupSaveFileLocation(), json);
-            await backupSaveTask;
-
-
             var writeToFileTask = WriteSaveFile(saveFilePath, json);
-
             await writeToFileTask;
 
             NoonUtility.Log($"Saved game via {this.GetType().Name} at {DateTime.Now}",0, VerbosityLevel.Significants);
+
+            var backupSaveFileLocation = GetBackupSaveFileLocation();
+            var backupSaveTask = WriteSaveFile(backupSaveFileLocation, json);
+            await backupSaveTask;
+
+            var purgeBackupsTask = PurgeBackups();
+            await purgeBackupsTask;
 
             return true;
         }
 
         private async Task WriteSaveFile(string saveFilePath, string JsonToSave)
         {
-  
-
-
-            var task = Task.Run(() =>
+        var task = Task.Run(() =>
             {
                
-                FileInfo fileInfo = new System.IO.FileInfo(saveFilePath);
+                FileInfo fileInfo = new FileInfo(saveFilePath);
                 fileInfo.Directory.Create(); 
                 File.WriteAllText(fileInfo.FullName, JsonToSave);
             });
@@ -119,32 +121,35 @@ namespace SecretHistories.Infrastructure.Persistence
 
         protected string GetBackupSaveFileLocation()
         {
-            return $"{Application.persistentDataPath}/backups/save.json";
+            return $"{persistentDataPath}/backups/save{DateTime.Now:yyyyMMddHHmmssfff}.json";
         }
 
-
-
-        //copies old version in case of corruption
-        private void BackupSave(int index)
+        protected async Task PurgeBackups()
         {
-            const int MAX_BACKUPS = 5;
-            // Back up a number of previous saves
-            for (int i = MAX_BACKUPS - 1; i >= 1; i--)
+            const int MAX_BACKUPS = 7;
+
+            var task = Task.Run(() =>
             {
-                if (File.Exists(GetBackupSaveGameLocation(i)))  //otherwise we can't copy it
-                    File.Copy(GetBackupSaveGameLocation(i), GetBackupSaveGameLocation(i + 1), true);
-            }
-            // Back up the main save
-            if (File.Exists(GetSaveFileLocation()))	//otherwise we can't copy it
-                File.Copy(GetSaveFileLocation(), GetBackupSaveGameLocation(1), true);
+                FileInfo backupsFileInfo = new FileInfo(GetBackupSaveFileLocation());
+                if (backupsFileInfo == null)
+                    return;
+                var existingFiles = backupsFileInfo.Directory.GetFiles().OrderBy(f => f.CreationTime);
+                int existingFilesCount = existingFiles.Count();
+
+                if (existingFilesCount > MAX_BACKUPS)
+                {
+                    var filesToPurge = existingFiles.Take(existingFilesCount - MAX_BACKUPS);
+                    foreach (var f in filesToPurge)
+                        f.Delete();
+
+                }
+            });
+
+            await task;
+
         }
 
-        private string GetBackupSaveGameLocation(int i)
-        {
-            return i.ToString();
-        }
-
-
+        
         public static GamePersistenceProvider GetMostRelevantValidGamePersistence()
         {
             var defaultPersistence = new DefaultGamePersistenceProvider();

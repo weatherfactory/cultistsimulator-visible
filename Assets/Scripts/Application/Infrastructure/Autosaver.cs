@@ -56,12 +56,14 @@ namespace SecretHistories.Constants
 
         public async void Autosave()
         {
+            housekeepingTimer = 0f;
+
             var game = new DefaultGamePersistenceProvider();
             game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
             var saveTask = game.SerialiseAndSaveAsync();
             var result = await saveTask;
 
-            housekeepingTimer = 0f;
+        
         }
 
 
