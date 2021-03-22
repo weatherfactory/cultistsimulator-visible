@@ -8,6 +8,8 @@ using Assets.Scripts.Application.Fucine;
 using Assets.Scripts.Application.Infrastructure.Events;
 using Newtonsoft.Json.Bson;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens;
+using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -80,7 +82,7 @@ namespace SecretHistories.UI {
             dragHeight = -8f; // Draggables all drag on a specific height and have a specific "default height"
 
         [Encaust]
-        public TokenTravelItinerary CurrentItinerary { get; set; }
+        public AbstractItinerary CurrentItinerary { get; set; }
 
         [Header("Display")]
         [SerializeField] protected bool shrouded;
@@ -142,7 +144,7 @@ namespace SecretHistories.UI {
             
             canvasGroup = GetComponent<CanvasGroup>();
 
-            CurrentItinerary = TokenTravelItinerary.StayExactlyWhereYouAre(this);
+            CurrentItinerary = new InertItinerary();
             _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
             _payload = NullElementStack.Create();
 

@@ -7,6 +7,7 @@ using Assets.Scripts.Application.Abstract;
 using Assets.Scripts.Application.Interfaces;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Commands;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
@@ -21,7 +22,8 @@ namespace SecretHistories.Commands
     public class TokenCreationCommand:IEncaustment
     {
         public TokenLocation Location { get; set; }
-        public TokenTravelItinerary CurrentItinerary { get; set; }
+        [JsonProperty(TypeNameHandling = TypeNameHandling.Auto)]
+        public AbstractItinerary CurrentItinerary { get; set; }
         [JsonProperty(TypeNameHandling = TypeNameHandling.Auto)]
         public ITokenPayloadCreationCommand Payload { get; set; }
         public bool Defunct { get; set; }

@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using System.Security.Cryptography;
+using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Entities;
 using SecretHistories.States.TokenStates;
 using SecretHistories.Constants;
@@ -12,7 +13,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace SecretHistories.UI
 {
-    public class TokenTravelItinerary
+    public class TokenTravelItinerary: AbstractItinerary
     {
         public FucinePath DestinationSpherePath { get; set; }
         public float Duration { get; set; }
@@ -49,7 +50,7 @@ namespace SecretHistories.UI
         }
 
 
-        public void Depart(Token tokenToSend, Context context)
+        public override void Depart(Token tokenToSend, Context context)
         {
             tokenToSend.Unshroud(true);
             tokenToSend.CurrentState=new TravellingState();
@@ -86,7 +87,7 @@ namespace SecretHistories.UI
             tokenAnimation.Begin(tokenToSend, context,Duration);
         }
 
-        public void Arrive(Token token,Context context)
+        public override void Arrive(Token token,Context context)
         {
             try
             {
@@ -123,16 +124,7 @@ namespace SecretHistories.UI
 
         }
 
-        public static TokenTravelItinerary StayExactlyWhereYouAre(Token token)
-        {
-           var i=new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, token.TokenRectTransform.anchoredPosition3D);
-           i.StartScale = token.TokenRectTransform.localScale.magnitude;
-           i.EndScale= token.TokenRectTransform.localScale.magnitude;
-           i.DestinationSpherePath = FucinePath.Current();
-           return i;
-        }
-
-      
+     
 
         /// <summary>
         /// if we want to move to another sphere, set the sphere to travel through and the sphere to end in
