@@ -44,7 +44,7 @@ namespace SecretHistories.Entities {
             foreach (var c in new List<Sphere>(_registeredSpheres))
             {
                 if (!c.PersistBetweenScenes)
-                    _registeredSpheres.Remove(c);
+                    c.Retire(SphereRetirementType.Destructive);
             }
 
             _subscribers.Clear();

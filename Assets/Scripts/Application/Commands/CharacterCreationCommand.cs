@@ -55,7 +55,7 @@ namespace SecretHistories.Commands
             var cc = new CharacterCreationCommand
             {
                 ActiveLegacy = activeLegacy,
-                EndingTriggered = NullEnding.Create(),
+                EndingTriggered = Ending.NotEnded(),
                 Name = Watchman.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME"),
                 Profession = activeLegacy.Label
             };

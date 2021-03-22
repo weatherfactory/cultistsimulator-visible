@@ -45,6 +45,9 @@ namespace SecretHistories.Entities
 
         public virtual bool IsValid()
         {
+            if (string.IsNullOrEmpty(Id))
+                return false;
+
             return true;
         }
 
@@ -56,6 +59,13 @@ namespace SecretHistories.Entities
 
         public Ending()
         {
+        }
+
+        //if we use subclasses for null, that borks serialization
+        public static Ending NotEnded()
+        {
+            var nullEnding=new Ending();
+            return nullEnding;
         }
 
         public static Ending DefaultEnding()

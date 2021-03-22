@@ -51,7 +51,6 @@ namespace SecretHistories.Services
         }
 
 
-
         private async void SceneChange(string sceneToLoad,bool withFadeEffect)
         {
             var sphereCatalogue = Watchman.Get<HornedAxe>();
@@ -68,8 +67,11 @@ namespace SecretHistories.Services
                 NoonUtility.Log("More than 2 scenes loaded",2);
 
             else if (SceneManager.sceneCount==2)
-                SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
+            {
+                var sceneToUnload = SceneManager.GetSceneAt(1);
+                AsyncOperation unloadOperation=SceneManager.UnloadSceneAsync(sceneToUnload);
 
+            }
 
             if (withFadeEffect)
             {
@@ -86,6 +88,7 @@ namespace SecretHistories.Services
             }
 
         }
+
 
         public void LoadInfoScene()
         {
