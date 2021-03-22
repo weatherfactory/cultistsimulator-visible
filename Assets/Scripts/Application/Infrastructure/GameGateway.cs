@@ -98,7 +98,7 @@ namespace SecretHistories.Constants
         private static async Task SaveRestartState()
         {
             var restartingGameStateProvider = new RestartingGameProvider();
-      restartingGameStateProvider.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
+       restartingGameStateProvider.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
             var saveTask = restartingGameStateProvider.SerialiseAndSaveAsync();
             var result = await saveTask;
         }

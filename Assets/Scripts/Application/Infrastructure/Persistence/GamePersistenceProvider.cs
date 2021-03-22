@@ -90,6 +90,9 @@ namespace SecretHistories.Infrastructure.Persistence
             var writeToFileTask = WriteSaveFile(saveFilePath, json);
 
             await writeToFileTask;
+
+            NoonUtility.Log($"Saved game via {this.GetType().Name} at {DateTime.Now}",0, VerbosityLevel.Significants);
+
             return true;
         }
 

@@ -9,6 +9,7 @@ using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
+using SecretHistories.Infrastructure.Persistence;
 using SecretHistories.Services;
 
 using UnityEngine;
@@ -16,52 +17,21 @@ using UnityEngine;
 namespace SecretHistories.Constants
 {
 
-    public enum NonSaveableType
-    {
-        Drag, // Cannot save because held card gets lost
-        Mansus, // Cannot save by design
-        Greedy, // Cannot save during Magnet grab (spec fix for #1253)
-        WindowAnim, // Cannot save during situation window open
-        NumNonSaveableTypes
-    };
 
     public class Autosaver: MonoBehaviour, ISettingSubscriber
     {
 
         [SerializeField] private AutosaveWindow _autosaveNotifier;
 
-        static private bool[] isInNonSaveableState = new bool[(int)NonSaveableType.NumNonSaveableTypes];
 
 
-
-        private float
+      [SerializeField]  private float
             housekeepingTimer; // Now a float so that we can time autosaves independent of Heart.Beat - CP
 
-        private float AUTOSAVE_INTERVAL = 300.0f;
+      [SerializeField] private float AUTOSAVE_INTERVAL = 300.0f;
 
 
-
-
-        private bool IsSafeToAutosave()
-        {
-            for (int i = 0; i < (int)NonSaveableType.NumNonSaveableTypes; i++)
-            {
-                if (isInNonSaveableState[i])
-                    return false;
-            }
-            return true;
-        }
-
-
-        private void RemoveAllNonsaveableFlags()  // For use when we absolutely, definitely want to restore autosave permission - CP
-        {
-            for (int i = 0; i < (int)NonSaveableType.NumNonSaveableTypes; i++)
-            {
-                isInNonSaveableState[i] = false;
-            }
-        }
-
-
+        
         protected void SetAutosaveInterval(float minutes)
         {
             AUTOSAVE_INTERVAL = minutes * 60.0f;
@@ -72,6 +42,27 @@ namespace SecretHistories.Constants
             SetAutosaveInterval(newValue is float ? (float)newValue : 0);
         }
 
+        public void Update()
+        {
+            housekeepingTimer += Time.deltaTime;
+            if (housekeepingTimer > AUTOSAVE_INTERVAL)
+            {
+                _autosaveNotifier.SetDuration(3.0f);
+                  _autosaveNotifier.Show();
+
+              Autosave();
+            }
+        }
+
+        public async void Autosave()
+        {
+            var game = new DefaultGamePersistenceProvider();
+            game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
+            var saveTask = game.SerialiseAndSaveAsync();
+            var result = await saveTask;
+
+            housekeepingTimer = 0f;
+        }
 
 
         //public async Task<bool> SaveGameAsync(bool withNotification)
