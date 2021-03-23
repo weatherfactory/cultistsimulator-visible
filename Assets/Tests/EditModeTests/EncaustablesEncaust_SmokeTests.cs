@@ -75,9 +75,8 @@ using UnityEngine;
         characterObject.GetComponent<Character>().EndingTriggered=Ending.NotEnded();
         //pretty horrible, right? worth considering not passing Monobehaviours to encausting, OR use the CreationCommand in the first place!
 
-
         encaustery.Encaust(characterObject.GetComponent<Character>());
-                }
+        }
 
         [Test]
         public void ElementStackToken_Encausts()

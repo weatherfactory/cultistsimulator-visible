@@ -187,7 +187,12 @@ namespace SecretHistories.UI {
         private Token _token;
         private List<IDominion> _dominions=new List<IDominion>();
 
-        public bool IsValidElementStack()
+        public virtual bool IsValid()
+        {
+            return true;
+        }
+
+        public virtual bool IsValidElementStack()
         {
             if (Defunct)
                 return false;

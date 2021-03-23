@@ -12,8 +12,8 @@ namespace SecretHistories.NullObjects
     public class NullSituation: Situation
     {
         private static NullSituation _instance;
- 
-        public override bool IsValidSituation()
+
+        public override bool IsValid()
         {
             return false;
         }

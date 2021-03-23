@@ -152,6 +152,11 @@ namespace SecretHistories.Entities.Verbs
 
         }
 
+        public bool IsValid()
+        {
+            return true;
+        }
+
         public bool IsValidElementStack()
         {
             return false;

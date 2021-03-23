@@ -23,6 +23,17 @@ namespace SecretHistories.Elements
             return false;
         }
 
+        public override bool IsValid()
+        {
+            return false;
+        }
+
+        public override bool IsValidElementStack()
+        {
+            return false;
+
+        }
+
         protected NullElementStack()
         {
             Element = NullElement.Create();

@@ -318,6 +318,10 @@ namespace SecretHistories.UI {
         /// <param name="vfx"></param>
         public virtual void Remanifest(RetirementVFX vfx)
         {
+            //I believe this only happens in automated test scenarios. but it's a bear sorting out the lifecycle!
+            if (_manifestation == null)
+                _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
+
             var reManifestation = Watchman.Get<PrefabFactory>()
                 .CreateManifestationPrefab(_manifestation.GetType(), this.transform);
 

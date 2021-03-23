@@ -163,6 +163,11 @@ namespace SecretHistories.Entities
           //
         }
 
+        public bool IsValid()
+        {
+            return true;
+        }
+
         public bool IsValidElementStack()
         {
             return false;

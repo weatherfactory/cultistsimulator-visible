@@ -301,6 +301,11 @@ namespace SecretHistories.Entities {
             manifestation.InitialiseVisuals(this);
         }
 
+        public virtual bool IsValid()
+        {
+            return true;
+        }
+
         public bool IsValidElementStack()
         {
             return false;
@@ -894,12 +899,6 @@ namespace SecretHistories.Entities {
             //
         }
         
-        public virtual bool IsValidSituation()
-        {
-            return true;
-        }
-
-
 
 
         public string GetIllumination(string key)

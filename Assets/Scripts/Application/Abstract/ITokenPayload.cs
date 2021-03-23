@@ -24,6 +24,7 @@ namespace SecretHistories.Abstract
         
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
+        bool IsValid();
         bool IsValidElementStack();
         void FirstHeartbeat();
         void ExecuteHeartbeat(float interval);
