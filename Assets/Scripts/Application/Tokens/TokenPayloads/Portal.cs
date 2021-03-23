@@ -9,6 +9,7 @@ using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Core;
+using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Logic;
@@ -94,7 +95,10 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public Sphere GetWindowsSphere()
         {
-            throw new NotImplementedException();
+            if (Token.Sphere.GoverningSphereSpec.WindowsSpherePath.IsValid())
+                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere.GoverningSphereSpec.WindowsSpherePath);
+
+            return Token.Sphere.GetContainer().GetWindowsSphere();
         }
 
         public void AttachSphere(Sphere sphere)
@@ -159,13 +163,15 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public void FirstHeartbeat()
         {
-          //
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Fundamental, Context.Unknown()));
+
         }
 
         public void ExecuteHeartbeat(float interval)
         {
             //
         }
+
 
         public bool CanInteractWith(ITokenPayload incomingTokenPayload)
         {

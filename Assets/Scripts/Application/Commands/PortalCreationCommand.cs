@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Entities;
+using SecretHistories.Services;
 using SecretHistories.Tokens.TokenPayloads;
+using SecretHistories.UI;
+using UnityEngine;
 
 namespace SecretHistories.Commands
 {
@@ -27,8 +31,19 @@ namespace SecretHistories.Commands
 
         public ITokenPayload Execute(Context context)
         {
-            var portal=new Portal(_portalId,_otherworldId);
-            return portal;
+            var newPortal=new Portal(_portalId,_otherworldId);
+
+            //This MUST go here, as soon as the payload is created and before tokens or commands are added, because it's here that the payload spheres get attached.
+            var windowSphere = newPortal.GetWindowsSphere();
+            var windowLocation =
+                new TokenLocation(Vector3.zero, windowSphere.GetAbsolutePath()); //it shouldn't really be zero, but we don't know the real token loc in the current flow
+
+            var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<OtherworldWindow>(windowSphere.transform);
+            newWindow.Attach(newPortal);
+
+
+
+            return newPortal;
         }
     }
 }

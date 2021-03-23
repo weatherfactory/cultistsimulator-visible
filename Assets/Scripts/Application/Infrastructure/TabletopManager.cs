@@ -40,12 +40,6 @@ namespace SecretHistories.UI {
         [SerializeField] private CardHoverDetail cardHoverDetail;
 
 
-        [SerializeField] [UnityEngine.Serialization.FormerlySerializedAs("mapContainsTokens")]
-        public MapSphere MapSphere;
-
-        [SerializeField] TabletopBackground mapBackground;
-        [SerializeField] MapAnimation mapAnimation;
-
         [Header("Drag & Window")] [SerializeField]
         private RectTransform draggableHolderRectTransform;
 
