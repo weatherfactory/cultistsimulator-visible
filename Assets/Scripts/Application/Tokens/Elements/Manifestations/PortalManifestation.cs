@@ -14,6 +14,7 @@ using SecretHistories.Ghosts;
 using SecretHistories.Spheres;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace SecretHistories.Manifestations
 {
@@ -22,7 +23,9 @@ namespace SecretHistories.Manifestations
     {
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
-   
+
+        private List<Sprite> frames;
+        [SerializeField] Image artwork;
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
@@ -105,7 +108,14 @@ namespace SecretHistories.Manifestations
 
         public void InitialiseVisuals(IManifestable manifestable)
         {
-            this.transform.position = Vector3.zero;
+            string art = manifestable.Icon;
+
+            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
+            frames = ResourcesManager.GetAnimFramesForVerb(art);
+            artwork.sprite = sprite;
+
+
+            DisplaySpheres(new List<Sphere>());
         }
 
         public void UpdateVisuals(IManifestable manifestable)
@@ -134,15 +144,6 @@ namespace SecretHistories.Manifestations
             //
         }
 
-        public void ShowMiniSlot(bool greedy)
-        {
-            //
-        }
-
-        public void HideMiniSlot()
-        {
-            //
-        }
 
         public void DisplayStackInMiniSlot(ElementStack stack)
         {

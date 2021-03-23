@@ -680,12 +680,12 @@ namespace SecretHistories.Entities {
                 if(c.Recipe.ActionId==Recipe.ActionId)
                     NoonUtility.LogWarning($"{Recipe.ActionId} {Recipe.Id} is trying to start an additional recipe, {c.Recipe.Id}... but it's got the same actionID as the existing situation, so it probably won't spawn successfully.");
 
-                SpawnNewSituation(c.Recipe,c.Expulsion,c.ToPath);
+                SpawnNewSituation(c.Recipe,c.Expulsion);
 
             }
         }
 
-        private void SpawnNewSituation(Recipe withRecipe,Expulsion withExpulsion, FucinePath toPath)
+        private void SpawnNewSituation(Recipe withRecipe,Expulsion withExpulsion)
         {
             List<Token> stacksToAddToNewSituation = new List<Token>();
             //if there's an expulsion
@@ -710,7 +710,7 @@ namespace SecretHistories.Entities {
             var situationCreationCommand = new SituationCreationCommand(withRecipe.ActionId).WithRecipeAboutToActivate(withRecipe.Id);
 
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
-            var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand, toPath, new Context(Context.ActionSource.SpawningAnchor));
+            var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand,  new Context(Context.ActionSource.SpawningAnchor));
 
             spawnNewTokenCommand.ExecuteOn(Token);
             

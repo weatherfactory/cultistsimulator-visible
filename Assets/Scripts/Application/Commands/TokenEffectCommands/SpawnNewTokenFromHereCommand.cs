@@ -13,14 +13,14 @@ namespace SecretHistories.Commands
 {
   public  class SpawnNewTokenFromHereCommand: IAffectsTokenCommand
   {
-      private SituationCreationCommand _situationCreationCommand;
+      private readonly ITokenPayloadCreationCommand _payloadCreationCommand;
       private Context _context;
       private FucinePath toSpherePath;
 
       private bool hasExecuted = false;
-        public SpawnNewTokenFromHereCommand(SituationCreationCommand situationCreationCommand, FucinePath toSpherePath, Context context)
+        public SpawnNewTokenFromHereCommand(ITokenPayloadCreationCommand payloadCreationCommand,Context context)
         {
-            _situationCreationCommand = situationCreationCommand;
+            _payloadCreationCommand = payloadCreationCommand;
             _context = context;
         }
 
@@ -36,7 +36,7 @@ namespace SecretHistories.Commands
                     newAnchorLocation = token.Location;
 
 
-                var tokenCreationCommand=new TokenCreationCommand(_situationCreationCommand, newAnchorLocation);
+                var tokenCreationCommand=new TokenCreationCommand(_payloadCreationCommand, newAnchorLocation);
 
                 tokenCreationCommand.Execute(_context,token.Sphere);
             }

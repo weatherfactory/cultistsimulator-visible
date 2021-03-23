@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Assets.Logic;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -84,8 +86,12 @@ namespace SecretHistories.Core
             //Element purges are run after verb manipulations. This is so we can halt a verb and then delete any applicable contents (rather than deleting the verb, which is possible but very risky if it contains plot-relevant elements!)
             RunElementPurges();
 
+            OpenPortals(situation);
+
             return true;
         }
+
+
 
         public bool IsValidForState(StateEnum forState)
         {
@@ -171,6 +177,16 @@ namespace SecretHistories.Core
             foreach (var eachToken in sphere.GetElementTokens())
             {
                 eachToken.ExecuteTokenEffectCommand(xTriggerCommand);
+            }
+        }
+
+        private void OpenPortals(Situation situation)
+        {
+            if (Recipe.PortalEffect != PortalEffect.None)
+            {
+                var portalCreationCommand=new PortalCreationCommand(Recipe.PortalEffect.ToString(),"mansus");
+                var spawnPortalTokenCommand=new SpawnNewTokenFromHereCommand(portalCreationCommand,Context.Unknown());
+                situation.Token.ExecuteTokenEffectCommand(spawnPortalTokenCommand);
             }
         }
     }

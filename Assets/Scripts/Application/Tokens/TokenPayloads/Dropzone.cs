@@ -47,7 +47,6 @@ namespace SecretHistories.Entities.Verbs
         }
 
  
-
         [Encaust]
         public int Quantity => 1;
         [DontEncaust]

@@ -50,7 +50,8 @@ namespace SecretHistories.Enums
         StagDoor = 30,
         SpiderDoor = 40,
         PeacockDoor = 50,
-        TricuspidGate = 60
+        TricuspidGate = 60,
+        ILIKECAKE=70
     }
     public enum RetirementVFX
     {

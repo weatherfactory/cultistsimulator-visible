@@ -17,6 +17,7 @@ using SecretHistories.NullObjects;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.SecretHistories.Spheres;
+using SecretHistories.Tokens.TokenPayloads;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -119,8 +120,18 @@ public class CreationCommandsSmokeTests
         var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere());
         var dropzoneCreationCommand = new TokenCreationCommand(dropzonePayloadCreationCommand, dropzoneLocation);
         var dropzone=dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Debug), Watchman.Get<HornedAxe>().GetDefaultSphere());
-        Assert.IsInstanceOf<Token>(dropzone);
+        Assert.IsInstanceOf<Dropzone>(dropzone.Payload);
 
+    }
+
+    [Test]
+    public void CreatePortalToken()
+    {
+        var portalCreationCommand=new PortalCreationCommand("wood","mansus");
+        var portalLocation= new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere());
+        var portalTokenCreationCommand = new TokenCreationCommand(portalCreationCommand, portalLocation);
+           var portalToken=portalTokenCreationCommand.Execute(new Context(Context.ActionSource.Debug), Watchman.Get<HornedAxe>().GetDefaultSphere());
+           Assert.IsInstanceOf<Portal>(portalToken.Payload);
     }
 
 
@@ -128,7 +139,6 @@ public class CreationCommandsSmokeTests
     [Test]
     public void CreateCharacter()
     {
-        
         var characterStable=new GameObject().AddComponent<Stable>();
         var characterCreationCommand=new CharacterCreationCommand();
         var character = characterCreationCommand.Execute(characterStable);

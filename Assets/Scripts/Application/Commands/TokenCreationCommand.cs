@@ -12,6 +12,7 @@ using SecretHistories.Commands;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
+using SecretHistories.NullObjects;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.States;
@@ -64,19 +65,14 @@ namespace SecretHistories.Commands
 
         public Token Execute(Context context,Sphere sphere)
         {
-            //only use the location sphere is for some reason we don't have a valid sphere to accept the token
-            if (sphere == null && Location.AtSpherePath.IsValid())
-                sphere = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
 
-            var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.GetRectTransform());
-            token.TokenRectTransform.anchoredPosition3D = Location.Anchored3DPosition;
-            
-            sphere.AcceptToken(token, context);
+            var payloadForToken = Payload.Execute(context); //do this first, so we can decide not to instantiate the token if the payload turns out to be invalid (eg, an attempt to create a unique verb twice)
+            if(!payloadForToken.IsValid())
+                return NullToken.Create();
 
-            var payloadForToken = Payload.Execute(context);
+            var token = InstantiateTokenInSphere(context, sphere);
 
             token.SetPayload(payloadForToken);
-            
             payloadForToken.FirstHeartbeat();
 
             
@@ -87,6 +83,18 @@ namespace SecretHistories.Commands
 
             SoundManager.PlaySfx("SituationTokenCreate");
 
+            return token;
+        }
+
+        private Token InstantiateTokenInSphere(Context context, Sphere sphere)
+        {
+            //only use the location sphere if for some reason we don't have a valid sphere to accept the token
+            if (sphere == null && Location.AtSpherePath.IsValid())
+                sphere = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
+
+            var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.GetRectTransform());
+            token.TokenRectTransform.anchoredPosition3D = Location.Anchored3DPosition;
+            sphere.AcceptToken(token, context);
             return token;
         }
 
