@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace SecretHistories.UI {
-    public class MapAnimation : MonoBehaviour {
+    public class OtherworldAnimation : MonoBehaviour {
 
-        public event System.Action<bool> onAnimDone;
+        public event System.Action<bool> onAnimationComplete;
 
         public Color colorBeforeShow = new Color(0f, 1f, 0f, 1f);
         public float durationShow = 2f;
@@ -69,7 +69,7 @@ namespace SecretHistories.UI {
 
         public void Show() {
             gameObject.SetActive(true);
-            StartCoroutine(DoAnim(durationShow, colorBeforeShow, colorVisible, true));
+            StartCoroutine(DoAnimation(durationShow, colorBeforeShow, colorVisible, true));
 
         }//dreamenterwood
 
@@ -77,10 +77,10 @@ namespace SecretHistories.UI {
         public void Hide()
         {
             gameObject.SetActive(true);
-            StartCoroutine(DoAnim(durationHide, colorVisible, colorAfterHidden, false));
+            StartCoroutine(DoAnimation(durationHide, colorVisible, colorAfterHidden, false));
         }
 
-        IEnumerator DoAnim(float duration, Color colorA, Color colorB, bool shownAtEnd) {
+        IEnumerator DoAnimation(float duration, Color colorA, Color colorB, bool shownAtEnd) {
             float time = 0f;
             isAnimating = true;
 
@@ -100,8 +100,8 @@ namespace SecretHistories.UI {
             gameObject.SetActive(shownAtEnd);
             isAnimating = false;
 
-            if (onAnimDone != null)
-                onAnimDone(shownAtEnd);
+            if (onAnimationComplete != null)
+                onAnimationComplete(shownAtEnd);
         }
 
     }

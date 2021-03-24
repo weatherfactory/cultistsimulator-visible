@@ -16,7 +16,7 @@ namespace SecretHistories.Constants
     {
         private MapSphere _mapSphere;
         //private TabletopBackground _mapBackground;
-        private MapAnimation _mapAnimation;
+        private OtherworldAnimation _otherworldAnimation;
 
         private ElementStack[] cards;
 
@@ -26,7 +26,7 @@ namespace SecretHistories.Constants
             registry.Register(this);
         }
 
-        public void Initialise(MapSphere mapSphere, TabletopBackground mapBackground, MapAnimation mapAnimation) {
+        public void Initialise(MapSphere mapSphere, TabletopBackground mapBackground, OtherworldAnimation otherworldAnimation) {
             mapBackground.gameObject.SetActive(false);
 
             mapSphere.gameObject.SetActive(false);
@@ -34,8 +34,8 @@ namespace SecretHistories.Constants
 
             //_mapBackground = mapBackground;
 
-            _mapAnimation = mapAnimation;
-            mapAnimation.Init();
+            _otherworldAnimation = otherworldAnimation;
+            otherworldAnimation.Init();
         }
 
         public void SetupMap(PortalEffect effect) {
@@ -158,21 +158,21 @@ namespace SecretHistories.Constants
 
         public void ShowMansusMap(Transform effectCenter, bool show = true)
         {
-            if (!_mapAnimation.CanShow())
+            if (!_otherworldAnimation.CanShow())
                 return;
 
             //if (!show) // hide the container
             //    _mapSphere.Show(false);
 
-            _mapAnimation.onAnimDone += OnMansusMapAnimDone;
-            _mapAnimation.SetCenterForEffect(effectCenter);
-            _mapAnimation.Show(); // starts coroutine that calls onManusMapAnimDone when done
+            _otherworldAnimation.onAnimationComplete += OnMansusMapAnimationComplete;
+            _otherworldAnimation.SetCenterForEffect(effectCenter);
+            _otherworldAnimation.Show(); // starts coroutine that calls onManusMapAnimDone when done
          //   _mapAnimation.Show(show); was the extra line a c/p error or a hack?
         }
 
-        void OnMansusMapAnimDone(bool show)
+        void OnMansusMapAnimationComplete(bool show)
         {
-            _mapAnimation.onAnimDone -= OnMansusMapAnimDone;
+            _otherworldAnimation.onAnimationComplete -= OnMansusMapAnimationComplete;
 
             //if (show) // show the container
             //    _mapSphere.Show(true);

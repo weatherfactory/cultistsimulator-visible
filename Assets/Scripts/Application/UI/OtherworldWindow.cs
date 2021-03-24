@@ -11,7 +11,7 @@ namespace SecretHistories.UI
 {
     public class OtherworldWindow: MonoBehaviour
     {
-        [SerializeField] private MapAnimation _mapAnimation;
+        [SerializeField] private OtherworldAnimation _otherworldAnimation;
 
         private ITokenPayload _portal;
 
@@ -31,29 +31,29 @@ namespace SecretHistories.UI
 
         public void Show(Transform effectCenter)
         {
-            if (_mapAnimation.CanShow() == false)
+            if (_otherworldAnimation.CanShow() == false)
                 return;
 
             //if (!show) // hide the container
             //    _mapSphere.Show(false);
 
-            _mapAnimation.onAnimDone += OnShowAnimDone;
-            _mapAnimation.SetCenterForEffect(effectCenter);
-            _mapAnimation.Show(); // starts coroutine that calls onManusMapAnimDone when done
+            _otherworldAnimation.onAnimationComplete += OnShowComplete;
+            _otherworldAnimation.SetCenterForEffect(effectCenter);
+            _otherworldAnimation.Show(); // starts coroutine that calls onManusMapAnimDone when done
         }
 
-        void OnShowAnimDone(bool show)
+        void OnShowComplete(bool show)
         {
-            _mapAnimation.onAnimDone -= OnShowAnimDone;
+            _otherworldAnimation.onAnimationComplete -= OnShowComplete;
 
             //if (show) // show the container
             //    _mapSphere.Show(true);
 
         }
 
-        void OnHideAnimDone()
+        void OnHideComplete()
         {
-            _mapAnimation.onAnimDone -= OnShowAnimDone;
+            _otherworldAnimation.onAnimationComplete -= OnShowComplete;
 
             //if (show) // show the container
             //    _mapSphere.Show(true);
