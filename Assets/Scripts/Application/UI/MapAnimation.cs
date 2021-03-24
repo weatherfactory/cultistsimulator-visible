@@ -26,9 +26,18 @@ namespace SecretHistories.UI {
             gameObject.SetActive(false); // turn off at start
         }
 
-        public bool CanShow(bool showMap) {
-            return !isAnimating && gameObject.activeSelf != showMap;
+        public bool CanShow() {
+
+            
+            return !isAnimating && gameObject.activeSelf != true;
         }
+
+        public bool CanHide()
+        {
+
+            return !isAnimating && gameObject.activeSelf != false;
+        }
+
 
         public void SetCenterForEffect(Transform effectOrigin) {
             var screenPoint = RectTransformUtility.WorldToScreenPoint(background.canvas.worldCamera, effectOrigin.position);
@@ -58,13 +67,17 @@ namespace SecretHistories.UI {
             background.material.SetTextureScale(uvTexName, uvScale);
         }
 
-        public void Show(bool showMap) {
+        public void Show() {
             gameObject.SetActive(true);
+            StartCoroutine(DoAnim(durationShow, colorBeforeShow, colorVisible, true));
 
-            if (showMap) 
-                StartCoroutine(DoAnim(durationShow, colorBeforeShow, colorVisible, true));
-            else
-                StartCoroutine(DoAnim(durationHide, colorVisible, colorAfterHidden, false));
+        }//dreamenterwood
+
+
+        public void Hide()
+        {
+            gameObject.SetActive(true);
+            StartCoroutine(DoAnim(durationHide, colorVisible, colorAfterHidden, false));
         }
 
         IEnumerator DoAnim(float duration, Color colorA, Color colorB, bool shownAtEnd) {

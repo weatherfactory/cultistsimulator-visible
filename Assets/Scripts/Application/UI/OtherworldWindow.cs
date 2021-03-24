@@ -26,26 +26,34 @@ namespace SecretHistories.UI
         private void OnPayloadChanged(TokenPayloadChangedArgs args)
         {
             if(!_isOpen && args.Payload.IsOpen)
-                ShowMansusMap(args.Payload.GetRectTransform());
+                Show(args.Payload.GetRectTransform());
         }
 
-        public void ShowMansusMap(Transform effectCenter, bool show = true)
+        public void Show(Transform effectCenter)
         {
-            if (_mapAnimation.CanShow(show) == false)
+            if (_mapAnimation.CanShow() == false)
                 return;
 
             //if (!show) // hide the container
             //    _mapSphere.Show(false);
 
-            _mapAnimation.onAnimDone += OnMansusMapAnimDone;
+            _mapAnimation.onAnimDone += OnShowAnimDone;
             _mapAnimation.SetCenterForEffect(effectCenter);
-            _mapAnimation.Show(show); // starts coroutine that calls onManusMapAnimDone when done
-            _mapAnimation.Show(show);
+            _mapAnimation.Show(); // starts coroutine that calls onManusMapAnimDone when done
         }
 
-        void OnMansusMapAnimDone(bool show)
+        void OnShowAnimDone(bool show)
         {
-            _mapAnimation.onAnimDone -= OnMansusMapAnimDone;
+            _mapAnimation.onAnimDone -= OnShowAnimDone;
+
+            //if (show) // show the container
+            //    _mapSphere.Show(true);
+
+        }
+
+        void OnHideAnimDone()
+        {
+            _mapAnimation.onAnimDone -= OnShowAnimDone;
 
             //if (show) // show the container
             //    _mapSphere.Show(true);

@@ -42,7 +42,7 @@ namespace SecretHistories.Tokens.TokenPayloads
             }
         }
 
-        public bool IsOpen { get; }
+        public bool IsOpen { get; protected set; }
         public string EntityId { get; }
         public string Label { get; }
         public string Description { get; }
@@ -69,7 +69,7 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public RectTransform GetRectTransform()
         {
-            throw new NotImplementedException();
+            return Token.TokenRectTransform;
         }
 
         public AspectsDictionary GetAspects(bool includeSelf)
@@ -163,8 +163,7 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public void FirstHeartbeat()
         {
-            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Fundamental, Context.Unknown()));
-
+            OpenAt(Token.Location);
         }
 
         public void ExecuteHeartbeat(float interval)
@@ -220,7 +219,9 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public void OpenAt(TokenLocation location)
         {
-            throw new NotImplementedException();
+            //note: we don't actually use the passed location. We always assume, inside the window, that we just centre on the portal.
+            this.IsOpen = true;   
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Fundamental, Context.Unknown()));
         }
 
         public void Close()

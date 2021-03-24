@@ -158,7 +158,7 @@ namespace SecretHistories.Constants
 
         public void ShowMansusMap(Transform effectCenter, bool show = true)
         {
-            if (_mapAnimation.CanShow(show) == false)
+            if (!_mapAnimation.CanShow())
                 return;
 
             //if (!show) // hide the container
@@ -166,8 +166,8 @@ namespace SecretHistories.Constants
 
             _mapAnimation.onAnimDone += OnMansusMapAnimDone;
             _mapAnimation.SetCenterForEffect(effectCenter);
-            _mapAnimation.Show(show); // starts coroutine that calls onManusMapAnimDone when done
-            _mapAnimation.Show(show);
+            _mapAnimation.Show(); // starts coroutine that calls onManusMapAnimDone when done
+         //   _mapAnimation.Show(show); was the extra line a c/p error or a hack?
         }
 
         void OnMansusMapAnimDone(bool show)
