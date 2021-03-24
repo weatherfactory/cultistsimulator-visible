@@ -27,7 +27,7 @@ namespace SecretHistories.States
 
        public bool IsVisibleInThisState(IDominion situationDominion)
        {
-           return situationDominion.VisibleFor(Identifier);
+           return situationDominion.VisibleFor(Identifier.ToString());
         }
 
         public static SituationState Rehydrate(StateEnum stateEnum,Situation situation)

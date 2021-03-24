@@ -23,8 +23,8 @@ namespace SecretHistories.UI
         List<Sphere> Spheres { get; }
       Sphere TryCreateSphere(SphereSpec spec);
       Sphere GetSphereById(string id);
-      bool VisibleFor(StateEnum state);
-      bool RelevantTo(StateEnum state, Type sphereType);
+      bool VisibleFor(string state);
+      bool RelevantTo(string state, Type sphereType);
       bool RemoveSphere(string id,SphereRetirementType retirementType);
       public void Evoke();
       public void Dismiss();

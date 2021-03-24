@@ -11,20 +11,22 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
+using SecretHistories.UI;
 using UnityEngine;
 
-namespace SecretHistories.UI
+namespace SecretHistories.Assets.Scripts.Application.Spheres
 {
+    
     [IsEncaustableClass(typeof(PopulateDominionCommand))]
-    public class MinimalDominion: MonoBehaviour, IDominion
+    public class OtherworldDominion: MonoBehaviour,IDominion
     {
         private IManifestable _manifestable;
-        private readonly List<Sphere> _spheres=new List<Sphere>();
-        
-        
+        private readonly List<Sphere> _spheres = new List<Sphere>();
+
+
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
-        
+
         [Encaust]
         public DominionEnum Identifier { get; set; }
 
@@ -46,7 +48,7 @@ namespace SecretHistories.UI
             set => _onSphereRemoved = value;
         }
 
-        public MinimalDominion()
+        public OtherworldDominion()
         {
             Identifier = DominionEnum.Unknown;
         }
@@ -67,7 +69,7 @@ namespace SecretHistories.UI
 
         }
 
-        public bool RemoveSphere(string id,SphereRetirementType retirementType)
+        public bool RemoveSphere(string id, SphereRetirementType retirementType)
         {
             var sphereToRemove = GetSphereById(id);
             if (sphereToRemove != null)
@@ -88,7 +90,7 @@ namespace SecretHistories.UI
 
         public void Dismiss()
         {
-         //
+            //
         }
 
         public bool CanCreateSphere(SphereSpec spec)
@@ -105,7 +107,7 @@ namespace SecretHistories.UI
                 return NullSphere.Create();
 
             var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec, _manifestable);
-            newSphere.transform.SetParent(transform,false);
+            newSphere.transform.SetParent(transform, false);
             _spheres.Add(newSphere);
             return newSphere;
         }
@@ -120,9 +122,7 @@ namespace SecretHistories.UI
                 s.SetContainer(manifestable);
             }
 
-          
+
         }
     }
-
-
 }

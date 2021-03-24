@@ -22,9 +22,7 @@ namespace SecretHistories.UI {
 #pragma warning restore 649
         float particleTargetRadius;
 
-        public void Init() {
-            gameObject.SetActive(false); // turn off at start
-        }
+ 
 
         public bool CanShow() {
 

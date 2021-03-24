@@ -761,7 +761,7 @@ namespace SecretHistories.Entities {
 
         public List<IDominion> GetRelevantDominions(StateEnum forState,Type sphereType)
     {
-            return new List<IDominion>(_registeredDominions.Where(a=>a.RelevantTo(forState,sphereType)));
+            return new List<IDominion>(_registeredDominions.Where(a=>a.RelevantTo(forState.ToString(),sphereType)));
     }
 
     public List<Sphere> GetAvailableThresholdsForStackPush(ITokenPayload stack)

@@ -22,6 +22,7 @@ using UnityEngine.UI;
 using TMPro;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
+using UnityEditorInternal;
 
 namespace SecretHistories.UI {
     [IsEncaustableClass(typeof(PopulateDominionCommand))]
@@ -120,15 +121,31 @@ public bool CanCreateSphere(SphereSpec spec)
 
 
 
-public bool VisibleFor(StateEnum state)
-        {
-            return VisibleForStates.Contains(state);
+public bool VisibleFor(string state)
+{
+    var canParseState = Enum.TryParse(state, false, out StateEnum stateEnum);
+    if (!canParseState)
+    {
+        NoonUtility.LogWarning($"Can't parse {state} as a StateEnum; assuming it's a match for dominion {Identifier}");
+        return true;
+
+    }
+    stateEnum = (StateEnum)Enum.Parse(typeof(StateEnum), state);
+    return VisibleForStates.Contains(stateEnum);
         }
 
-        public bool RelevantTo(StateEnum state,Type sphereType)
+        public bool RelevantTo(string state,Type sphereType)
         {
-            Type dominionSphereType = spherePrefab.GetType();
-            return VisibleForStates.Contains(state) && sphereType == dominionSphereType;
+         var canParseState=Enum.TryParse(state, false, out StateEnum stateEnum);
+         if (!canParseState)
+         {
+             NoonUtility.LogWarning($"Can't parse {state} as a StateEnum; assuming it's a match for dominion {Identifier}");
+             return true;
+         }
+         stateEnum = (StateEnum)Enum.Parse(typeof(StateEnum), state);
+
+         Type dominionSphereType = spherePrefab.GetType();
+         return VisibleForStates.Contains(stateEnum) && sphereType == dominionSphereType;
         }
 
         public Sphere GetSphereById(string Id)

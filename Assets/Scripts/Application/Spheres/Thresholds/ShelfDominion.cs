@@ -79,12 +79,12 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
             return _spheres.SingleOrDefault(s => s.Id == id);
         }
 
-        public bool VisibleFor(StateEnum state)
+        public bool VisibleFor(string state)
         {
             return true;
         }
 
-        public bool RelevantTo(StateEnum state, Type sphereType)
+        public bool RelevantTo(string state, Type sphereType)
         {
             return true;
         }
