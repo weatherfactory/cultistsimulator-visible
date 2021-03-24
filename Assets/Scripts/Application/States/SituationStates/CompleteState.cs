@@ -17,7 +17,7 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            var createOutputSphereCommand = new PopulateDominionCommand(DominionEnum.Output,new SphereSpec(typeof(OutputSphere),nameof(OutputSphere)));
+            var createOutputSphereCommand = new PopulateDominionCommand(SituationDominionEnum.Output.ToString(),new SphereSpec(typeof(OutputSphere),nameof(OutputSphere)));
             situation.CommandQueue.AddCommand(createOutputSphereCommand);
 
             var migrateToOutputCommand=new FlushTokensToCategoryCommand(SphereCategory.SituationStorage,SphereCategory.Output,StateEnum.Complete);
@@ -28,11 +28,11 @@ namespace SecretHistories.States
 
 
             //remove verb, recipe and storage slots here.
-            var clearVerbThresholdsCommand =new ClearDominionCommand(DominionEnum.VerbThresholds,SphereRetirementType.Graceful);
+            var clearVerbThresholdsCommand =new ClearDominionCommand(SituationDominionEnum.VerbThresholds.ToString(),SphereRetirementType.Graceful);
             situation.CommandQueue.AddCommand(clearVerbThresholdsCommand);
-            var clearRecipeThresholdsCommand = new ClearDominionCommand(DominionEnum.RecipeThresholds, SphereRetirementType.Graceful);
+            var clearRecipeThresholdsCommand = new ClearDominionCommand(SituationDominionEnum.RecipeThresholds.ToString(), SphereRetirementType.Graceful);
             situation.CommandQueue.AddCommand(clearRecipeThresholdsCommand);
-            var clearStorageThresholdsCommand = new ClearDominionCommand(DominionEnum.Storage, SphereRetirementType.Graceful);
+            var clearStorageThresholdsCommand = new ClearDominionCommand(SituationDominionEnum.Storage.ToString(), SphereRetirementType.Graceful);
             situation.CommandQueue.AddCommand(clearStorageThresholdsCommand);
 
 

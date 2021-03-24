@@ -34,7 +34,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
         private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
         private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
 
-        public DominionEnum Identifier => DominionEnum.Unknown;
+        public string Identifier => SituationDominionEnum.Unknown.ToString();
 
         [DontEncaust]
         public OnSphereAddedEvent OnSphereAdded

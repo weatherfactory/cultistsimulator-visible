@@ -18,7 +18,7 @@ namespace SecretHistories.Commands.SituationCommands
     public class ClearDominionCommand : ISituationCommand, IEncaustment
     {
 
-        public DominionEnum Identifier { get; set; }
+        public string Identifier { get; set; }
         public SphereRetirementType RetirementType { get; set; }
 
         public bool IsValidForState(StateEnum forState)
@@ -34,7 +34,7 @@ namespace SecretHistories.Commands.SituationCommands
         }
 
         
-        public ClearDominionCommand(DominionEnum identifier,SphereRetirementType retirementType)
+        public ClearDominionCommand(string identifier,SphereRetirementType retirementType)
         {
             Identifier = identifier;
             RetirementType = retirementType;

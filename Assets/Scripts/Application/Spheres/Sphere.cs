@@ -183,7 +183,7 @@ namespace SecretHistories.Spheres
             GoverningSphereSpec = spec;
         }
 
-        public void Retire(SphereRetirementType sphereRetirementType)
+        public virtual void Retire(SphereRetirementType sphereRetirementType)
         {
             if (Defunct)
                 return;

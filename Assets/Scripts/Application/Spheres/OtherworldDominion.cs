@@ -28,7 +28,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
 
         [Encaust]
-        public DominionEnum Identifier { get; set; }
+        public string Identifier { get; protected set; }
 
 
         private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
@@ -50,7 +50,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
         public OtherworldDominion()
         {
-            Identifier = DominionEnum.Unknown;
+            Identifier = SituationDominionEnum.Unknown.ToString();
         }
 
         public Sphere GetSphereById(string Id)

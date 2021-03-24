@@ -22,7 +22,7 @@ namespace SecretHistories.Commands.SituationCommands
   public class PopulateDominionCommand: ISituationCommand,IEncaustment
     {
 
-        public DominionEnum Identifier { get; set; }
+        public string Identifier { get; set; }
 
         public bool IsValidForState(StateEnum forState)
         {
@@ -38,11 +38,11 @@ namespace SecretHistories.Commands.SituationCommands
         }
 
 
-        public PopulateDominionCommand(DominionEnum identifier,SphereSpec spec): this(identifier, new List<SphereSpec>{ spec })
+        public PopulateDominionCommand(string identifier,SphereSpec spec): this(identifier, new List<SphereSpec>{ spec })
         {}
  
 
-        public PopulateDominionCommand(DominionEnum identifier, List<SphereSpec> specs)
+        public PopulateDominionCommand(string identifier, List<SphereSpec> specs)
         {
             Identifier = identifier;
 

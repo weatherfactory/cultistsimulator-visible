@@ -22,14 +22,14 @@ namespace SecretHistories.States
         {
             
             var sphereSpec=new SphereSpec(typeof(SituationStorageSphere), nameof(SituationStorageSphere));
-            var storageCommand = new PopulateDominionCommand(DominionEnum.Storage,sphereSpec);
+            var storageCommand = new PopulateDominionCommand(SituationDominionEnum.Storage.ToString(),sphereSpec);
                 situation.CommandQueue.AddCommand(storageCommand);
 
                 var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);
                 situation.CommandQueue.AddCommand(migrateFromVerbSlotsToStorageCommand);
 
 
-                var recipeSlotsCommand = new PopulateDominionCommand(DominionEnum.RecipeThresholds, situation.Recipe.Slots);
+                var recipeSlotsCommand = new PopulateDominionCommand(SituationDominionEnum.RecipeThresholds.ToString(), situation.Recipe.Slots);
                 situation.CommandQueue.AddCommand(recipeSlotsCommand);
 
             SoundManager.PlaySfx("SituationBegin");

@@ -167,7 +167,7 @@ namespace Assets.Tests.EditModeTests
             situation.FirstHeartbeat();
             situation.ExecuteHeartbeat(0f);
 
-            var notesDominion = situation.Dominions.Single(d => d.Identifier == DominionEnum.Notes);
+            var notesDominion = situation.Dominions.Single(d => d.Identifier == SituationDominionEnum.Notes.ToString());
            
             var notesSphere=notesDominion.Spheres.Single();
             var notesStack =notesSphere.Tokens.SingleOrDefault().Payload;

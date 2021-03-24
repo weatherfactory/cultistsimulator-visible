@@ -34,8 +34,8 @@ namespace SecretHistories.UI {
 
 
 
-        [Encaust] public DominionEnum Identifier => EditableIdentifier;
-        [SerializeField] private DominionEnum EditableIdentifier;
+        [Encaust] public string Identifier => EditableIdentifier;
+        [SerializeField] private string EditableIdentifier;
 
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_spheres);

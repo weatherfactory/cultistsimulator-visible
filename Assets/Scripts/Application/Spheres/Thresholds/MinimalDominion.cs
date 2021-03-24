@@ -26,7 +26,7 @@ namespace SecretHistories.UI
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
         
         [Encaust]
-        public DominionEnum Identifier { get; set; }
+        public string Identifier { get; set; }
 
 
         private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
@@ -48,7 +48,7 @@ namespace SecretHistories.UI
 
         public MinimalDominion()
         {
-            Identifier = DominionEnum.Unknown;
+            Identifier = SituationDominionEnum.Unknown.ToString();
         }
 
         public Sphere GetSphereById(string Id)

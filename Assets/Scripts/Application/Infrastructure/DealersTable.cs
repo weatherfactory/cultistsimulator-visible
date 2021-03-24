@@ -31,8 +31,8 @@ namespace SecretHistories.Infrastructure
         }
 
 
-        [Encaust] public DominionEnum Identifier => EditableIdentifier;
-        [SerializeField] private DominionEnum EditableIdentifier;
+        [Encaust] public string Identifier => EditableIdentifier;
+        [SerializeField] private string EditableIdentifier;
 
         private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
         private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
