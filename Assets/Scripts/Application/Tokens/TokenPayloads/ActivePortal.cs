@@ -96,7 +96,10 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public Sphere GetEnRouteSphere()
         {
-            throw new NotImplementedException();
+            if (Token.Sphere.GoverningSphereSpec.EnRouteSpherePath.IsValid())
+                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere.GoverningSphereSpec.EnRouteSpherePath);
+
+            return Token.Sphere.GetContainer().GetEnRouteSphere();
         }
 
         public Sphere GetWindowsSphere()

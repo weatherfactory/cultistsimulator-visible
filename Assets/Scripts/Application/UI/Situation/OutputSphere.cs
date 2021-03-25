@@ -22,20 +22,25 @@ public class OutputSphere : Sphere{
 
     [SerializeField] SituationResultsPositioning outputPositioning;
 
-    
-
     public override SphereCategory SphereCategory => SphereCategory.Output;
 
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return false; } }
     public override float TokenHeartbeatIntervalMultiplier => 1;
-
+    public bool AlwaysShroudIncomingTokens;
     
 
     public override void DisplayAndPositionHere(Token token, Context context) {
         base.DisplayAndPositionHere(token, context);
 
        outputPositioning.ArrangeTokens(GetElementTokens());
+    }
+
+    public override void AcceptToken(Token token, Context context)
+    {
+        if(!token.Shrouded() && AlwaysShroudIncomingTokens)
+            token.Shroud(true);
+        base.AcceptToken(token, context);
     }
 
     public override void RemoveToken(Token token,Context context) {
