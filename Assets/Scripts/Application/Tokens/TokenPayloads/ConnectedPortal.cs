@@ -21,8 +21,8 @@ using UnityEngine;
 
 namespace SecretHistories.Tokens.TokenPayloads
 {
-    [IsEncaustableClass(typeof(DropzoneCreationCommand))]
-    public  class Portal: ITokenPayload
+    [IsEncaustableClass(typeof(PortalCreationCommand))]
+    public  class ConnectedPortal: ITokenPayload
     {
         
         private Token _token;
@@ -54,7 +54,7 @@ namespace SecretHistories.Tokens.TokenPayloads
         private readonly string _otherworldId;
         private List<IDominion> _registeredDominions=new List<IDominion>();
 
-        public Portal(string portalId, string otherworldId)
+        public ConnectedPortal(string portalId, string otherworldId)
         {
             _otherworldId = otherworldId;
             int identity = FucineRoot.Get().IncrementedIdentity();

@@ -93,7 +93,7 @@ namespace SecretHistories.Entities
         {
             if (Slot != null)
                     Thresholds.Add(Slot); //what if this is empty? likely source of trouble later
-                Thresholds.AddRange(Slots);
+            Thresholds.AddRange(Slots);
         }
 
     }

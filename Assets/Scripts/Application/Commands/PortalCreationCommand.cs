@@ -31,7 +31,7 @@ namespace SecretHistories.Commands
 
         public ITokenPayload Execute(Context context)
         {
-            var newPortal=new Portal(_portalId,_otherworldId);
+            var newPortal=new ConnectedPortal(_portalId,_otherworldId);
 
             //This MUST go here, as soon as the payload is created and before tokens or commands are added, because it's here that the payload spheres get attached.
             var windowSphere = newPortal.GetWindowsSphere();
