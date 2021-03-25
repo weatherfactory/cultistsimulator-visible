@@ -1,9 +1,27 @@
 {
     "portals": [
-	        {
-            "id": "wood",
-            "label": "The Wood",
-            "description": "The Wood"
+    {
+      "id": "wood",
+      "icon": "wood",
+	  "label": "Wood draws: 1",
+	  "description": "Wood description here",
+      "consequences": [
+        {
+          "id": "dreamenterwood.cards.door",
+          "additional": true,
+          "topath": "#wood0"
+        },
+        {
+          "id": "dreamenterwood.cards.well",
+          "additional": true,
+          "topath": "#wood1"
+        },
+        {
+          "id": "dreamenterwood.cards.wheel",
+          "additional": true,
+          "topath": "#wood2"
         }
+      ]
+    },
     ]
 }

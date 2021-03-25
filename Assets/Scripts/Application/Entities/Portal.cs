@@ -18,6 +18,9 @@ namespace SecretHistories.Entities
         [FucineValue(DefaultValue = ".", Localise = true)]
         public string Description { get; set; }
 
+        [FucineValue(DefaultValue = ".", Localise = true)]
+        public string Icon { get; set; }
+
         [FucineList(Localise = true)]
         public List<LinkedRecipeDetails> Consequences { get; set; }
 

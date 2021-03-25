@@ -190,35 +190,10 @@
         }
       ],
 	  	   "portaleffect": "wood",
-		   "comments": "don't forget next n recipes!",
       "warmup": 0,
       "aspects": {
         "fatiguing": 1
       }
-    },
-    {
-      "id": "wood",
-      "label": "Wood draws: 1",
-      "actionid": "portal.mansus",
-      "craftable": false,
-      "startdescription": ".",
-      "alt": [
-        {
-          "id": "dreamenterwood.cards.door",
-          "additional": true,
-          "topath": "#wood0"
-        },
-        {
-          "id": "dreamenterwood.cards.well",
-          "additional": true,
-          "topath": "#wood1"
-        },
-        {
-          "id": "dreamenterwood.cards.wheel",
-          "additional": true,
-          "topath": "#wood2"
-        }
-      ]
     },
     {
       "id": "dreamenterwood.cards.door",
