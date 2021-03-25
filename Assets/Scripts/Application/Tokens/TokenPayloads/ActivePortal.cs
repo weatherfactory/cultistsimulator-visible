@@ -21,11 +21,13 @@ using UnityEngine;
 
 namespace SecretHistories.Tokens.TokenPayloads
 {
-    [IsEncaustableClass(typeof(PortalCreationCommand))]
-    public  class ConnectedPortal: ITokenPayload
+    [IsEncaustableClass(typeof(ActivePortalCreationCommand))]
+    public  class ActivePortal: ITokenPayload
     {
         
         private Token _token;
+        private Portal _portal { get; set; }
+
 
         [DontEncaust]
         public string Id { get; private set; }
@@ -43,24 +45,21 @@ namespace SecretHistories.Tokens.TokenPayloads
         }
 
         public bool IsOpen { get; protected set; }
-        public string EntityId { get; }
+        public string EntityId => _portal.Id;
         public string Label { get; }
         public string Description { get; }
         public int Quantity { get; }
         public string UniquenessGroup { get; }
         public bool Unique { get; }
-        public string Icon { get; }
+        public string Icon => _portal.Icon;
 
-        private readonly string _otherworldId;
         private List<IDominion> _registeredDominions=new List<IDominion>();
 
-        public ConnectedPortal(string portalId, string otherworldId)
+        public ActivePortal(Portal portal)
         {
-            _otherworldId = otherworldId;
+            _portal = portal;
             int identity = FucineRoot.Get().IncrementedIdentity();
-            Id = $"!{portalId}_{otherworldId}_{identity}";
-            EntityId = portalId;
-            Icon = portalId;
+            Id = $"!{portal.Id}_{identity}";
         }
 
     public FucinePath GetAbsolutePath()
@@ -180,7 +179,7 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public bool CanInteractWith(ITokenPayload incomingTokenPayload)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public bool CanMergeWith(ITokenPayload incomingTokenPayload)

@@ -19,11 +19,20 @@ namespace SecretHistories.Entities
         public string Description { get; set; }
 
         [FucineValue(DefaultValue = ".", Localise = true)]
-        public string Icon { get; set; }
+        public virtual string Icon { get; set; }
+
+        [FucineValue]
+        public virtual string Otherworld { get; set; }
+
 
         [FucineList(Localise = true)]
         public List<LinkedRecipeDetails> Consequences { get; set; }
 
+
+        public Portal()
+        {
+
+        }
 
         public Portal(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {

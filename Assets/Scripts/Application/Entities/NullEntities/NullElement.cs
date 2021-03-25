@@ -23,6 +23,6 @@ namespace SecretHistories.Entities
             if(_instance==null)
                 _instance=new NullElement();
             return _instance;
-            }
+        }
     }
 }

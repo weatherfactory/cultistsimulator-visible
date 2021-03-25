@@ -184,7 +184,7 @@ namespace SecretHistories.Core
         {
             if (!string.IsNullOrEmpty(Recipe.PortalEffect))
             {
-                var portalCreationCommand=new PortalCreationCommand(Recipe.PortalEffect.ToString(),"mansus");
+                var portalCreationCommand=new ActivePortalCreationCommand(Recipe.PortalEffect.ToString(),"mansus");
                 var spawnPortalTokenCommand=new SpawnNewTokenFromHereCommand(portalCreationCommand,Context.Unknown());
                 situation.Token.ExecuteTokenEffectCommand(spawnPortalTokenCommand);
             }
