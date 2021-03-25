@@ -10,6 +10,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace SecretHistories.UI {
+    [Obsolete]
     [IsEmulousEncaustable(typeof(Sphere))]
     public class MapSphere : Sphere {
 

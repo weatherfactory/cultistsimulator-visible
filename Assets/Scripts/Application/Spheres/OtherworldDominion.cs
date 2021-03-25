@@ -22,13 +22,16 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
     {
         private IManifestable _manifestable;
         private readonly List<Sphere> _spheres = new List<Sphere>();
+        [SerializeField] private CanvasGroupFader canvasGroupFader;
+        [SerializeField] private DoorSlot doorSlot;
 
 
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
 
-        [Encaust]
-        public string Identifier { get; protected set; }
+
+        [Encaust] public string Identifier => EditableIdentifier;
+        [SerializeField] private string EditableIdentifier;
 
 
         private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
@@ -50,7 +53,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
         public OtherworldDominion()
         {
-            Identifier = SituationDominionEnum.Unknown.ToString();
+            
         }
 
         public Sphere GetSphereById(string Id)
@@ -85,12 +88,15 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
         public void Evoke()
         {
-            //
+            canvasGroupFader.Show();
+            doorSlot.SetAsActive(true);
         }
 
         public void Dismiss()
         {
-            //
+            canvasGroupFader.Hide();
+            doorSlot.SetAsActive(false);
+
         }
 
         public bool CanCreateSphere(SphereSpec spec)

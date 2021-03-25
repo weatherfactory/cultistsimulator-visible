@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Spheres;
 using SecretHistories.Enums;
 using SecretHistories.Tokens.TokenPayloads;
 using UnityEngine;
@@ -15,14 +16,19 @@ namespace SecretHistories.UI
     {
         [SerializeField] private OtherworldAnimation _otherworldAnimation;
 
+        [Space]
+        [SerializeField] List<OtherworldDominion> Dominions;
+
         private ITokenPayload _portal;
 
         private bool _isOpen;
 
-        public void Attach(ITokenPayload toTokenPayload)
+        public void Attach(ITokenPayload tokenPayload)
         {
-            _portal = toTokenPayload;
+            _portal = tokenPayload;
             _portal.OnChanged += OnPayloadChanged;
+            foreach (var d in Dominions)
+                d.RegisterFor(tokenPayload);
         }
 
         private void OnPayloadChanged(TokenPayloadChangedArgs args)
@@ -47,10 +53,6 @@ namespace SecretHistories.UI
         void OnShowComplete(bool show)
         {
             _otherworldAnimation.onAnimationComplete -= OnShowComplete;
-
-            //if (show) // show the container
-            //    _mapSphere.Show(true);
-            SetupMap(_portal.EntityId);
 
         }
 

@@ -52,6 +52,7 @@ namespace SecretHistories.Tokens.TokenPayloads
         public string Icon { get; }
 
         private readonly string _otherworldId;
+        private List<IDominion> _registeredDominions=new List<IDominion>();
 
         public Portal(string portalId, string otherworldId)
         {
@@ -127,9 +128,14 @@ namespace SecretHistories.Tokens.TokenPayloads
             throw new NotImplementedException();
         }
 
-        public bool RegisterDominion(IDominion dominion)
+        public bool RegisterDominion(IDominion dominionToRegister)
         {
-            throw new NotImplementedException();
+
+            if (_registeredDominions.Contains(dominionToRegister))
+                return false;
+
+            _registeredDominions.Add(dominionToRegister);
+            return true;
         }
 
         public event Action<TokenPayloadChangedArgs> OnChanged;
@@ -179,7 +185,7 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public bool CanMergeWith(ITokenPayload incomingTokenPayload)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public bool Retire(RetirementVFX vfx)
@@ -222,6 +228,12 @@ namespace SecretHistories.Tokens.TokenPayloads
             //note: we don't actually use the passed location. We always assume, inside the window, that we just centre on the portal.
             this.IsOpen = true;   
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Fundamental, Context.Unknown()));
+
+            foreach(var d in _registeredDominions)
+                if(d.Identifier==EntityId)
+                    d.Evoke();
+                else
+                 d.Dismiss();
         }
 
         public void Close()
