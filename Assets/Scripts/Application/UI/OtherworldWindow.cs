@@ -60,18 +60,12 @@ namespace SecretHistories.UI
         {
             _otherworldAnimation.onAnimationComplete -= OnShowComplete;
 
-            //if (show) // show the container
-            //    _mapSphere.Show(true);
-
         }
 
         public void SetupMap(string portalId)
         {
-            // Highlight active door
-            //         _mapSphere.SetActiveDoor(effect);
-            //         var activeDoor = _mapSphere.GetActiveDoor();
-            //         activeDoor.onCardDropped += HandleOnSlotFilled;
 
+ 
 
             //         //get card position names
             //         //populate card positions 1,2,3 from decks with names of positions

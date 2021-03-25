@@ -133,8 +133,8 @@ namespace SecretHistories.Entities
         [FucineValue(null)]
         public string BurnImage { get; set; }
 
-        [FucineValue((int)PortalEffect.None)]
-        public PortalEffect PortalEffect { get; set; }
+        [FucineValue]
+        public string PortalEffect { get; set; }
 
         [FucineList(Localise=true)]
         public List<SphereSpec> Slots { get; set; }

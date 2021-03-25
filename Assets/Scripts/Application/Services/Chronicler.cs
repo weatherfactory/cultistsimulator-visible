@@ -316,31 +316,23 @@ namespace SecretHistories.Services
 			}
         }
 
-        public void ChronicleMansusEntry(PortalEffect portalEffect)
+        public void ChronicleMansusEntry(string portalEffect)
         {
             var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
 
-            switch (portalEffect)
-            {
-                case PortalEffect.Wood:
-                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_WOOD",true);
-                    break;
-                case PortalEffect.WhiteDoor:
+            if(portalEffect==PortalEffect.Wood.ToString())
+                storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_WOOD",true);
+            else if (portalEffect == PortalEffect.WhiteDoor.ToString())
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_WHITEDOOR", true);
-                    break;
-                case PortalEffect.StagDoor:
-                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_STAGDOOR", true);
-                    break;
-                case PortalEffect.SpiderDoor:
-                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_SPIDERDOOR", true);
-                    break;
-                case PortalEffect.PeacockDoor:
-                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_PEACOCKDOOR", true);
-                    break;
-                case PortalEffect.TricuspidGate:
+            else if (portalEffect == PortalEffect.StagDoor.ToString())
+                storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_STAGDOOR", true);
+            else if (portalEffect == PortalEffect.SpiderDoor.ToString())
+                storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_SPIDERDOOR", true);
+            else if (portalEffect == PortalEffect.PeacockDoor.ToString())
+                storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_PEACOCKDOOR", true);
+            else if (portalEffect == PortalEffect.TricuspidGate.ToString())
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_TRICUSPIDGATE", true);
-                    break;
-            }
+                    
         }
 
         public void CharacterNameUpdated(string newName)

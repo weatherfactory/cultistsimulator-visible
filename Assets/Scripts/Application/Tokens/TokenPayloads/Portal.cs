@@ -230,7 +230,7 @@ namespace SecretHistories.Tokens.TokenPayloads
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Fundamental, Context.Unknown()));
 
             foreach(var d in _registeredDominions)
-                if(d.Identifier==EntityId)
+                if(String.Equals(d.Identifier, EntityId, StringComparison.InvariantCultureIgnoreCase)) //Portal identifiers used to be enums, with ToString= eg Wood. Let's be extra forgiving.
                     d.Evoke();
                 else
                  d.Dismiss();

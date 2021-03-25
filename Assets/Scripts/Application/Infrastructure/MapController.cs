@@ -20,7 +20,7 @@ namespace SecretHistories.Constants
       
 
 
-        ElementStack BuildCard(Vector3 position, string id,PortalEffect portalType,string mansusJournalEntryMessage)
+        ElementStack BuildCard(Vector3 position, string id,string portalType,string mansusJournalEntryMessage)
         {
         //    var newCard =
         //        _mapSphere.ProvisionElementStackToken(id, 1, Source.Fresh(),
