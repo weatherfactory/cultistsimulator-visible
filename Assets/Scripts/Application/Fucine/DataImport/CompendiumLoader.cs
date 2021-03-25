@@ -66,9 +66,6 @@ public class CompendiumLoader
         var locFileLoader = new DataFileLoader(locContentDir.Replace("[culture]", forCultureId));
         locFileLoader.LoadFilesFromAssignedFolder(_log);
         
-
-
-
         if (Watchman.Exists<ModManager>())
             LoadModsToCompendium();
 

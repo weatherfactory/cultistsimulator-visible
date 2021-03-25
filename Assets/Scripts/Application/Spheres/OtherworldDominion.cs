@@ -21,7 +21,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
     public class OtherworldDominion: MonoBehaviour,IDominion
     {
         private IManifestable _manifestable;
-        private readonly List<Sphere> _spheres = new List<Sphere>();
+        [SerializeField] private List<Sphere> _spheres;
         [SerializeField] private CanvasGroupFader canvasGroupFader;
         [SerializeField] private DoorSlot doorSlot;
 
@@ -125,6 +125,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
             foreach (Sphere s in Spheres)
             {
+                manifestable.AttachSphere(s);
                 s.SetContainer(manifestable);
             }
 

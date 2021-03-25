@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Logic;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
@@ -12,6 +14,7 @@ using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
+using SecretHistories.Infrastructure;
 using SecretHistories.Logic;
 using SecretHistories.Manifestations;
 using SecretHistories.NullObjects;
@@ -54,6 +57,7 @@ namespace SecretHistories.Tokens.TokenPayloads
         public string Icon => _portal.Icon;
 
         private List<IDominion> _registeredDominions=new List<IDominion>();
+        private List<Sphere> _spheres=new List<Sphere>();
 
         public ActivePortal(Portal portal)
         {
@@ -64,7 +68,9 @@ namespace SecretHistories.Tokens.TokenPayloads
 
     public FucinePath GetAbsolutePath()
         {
-            throw new NotImplementedException();
+            var pathAbove = _token.Sphere.GetAbsolutePath();
+            var absolutePath = pathAbove.AppendToken(this.Id);
+            return absolutePath;
         }
 
         public RectTransform GetRectTransform()
@@ -103,12 +109,14 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public void AttachSphere(Sphere sphere)
         {
-            throw new NotImplementedException();
+            sphere.SetContainer(this);
+            _spheres.Add(sphere);
         }
 
         public void DetachSphere(Sphere sphere)
         {
-            throw new NotImplementedException();
+            _spheres.Remove(sphere);
+
         }
 
 
@@ -129,6 +137,8 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public bool RegisterDominion(IDominion dominionToRegister)
         {
+            dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
+            dominionToRegister.OnSphereRemoved.AddListener(DetachSphere);
 
             if (_registeredDominions.Contains(dominionToRegister))
                 return false;
@@ -233,6 +243,32 @@ namespace SecretHistories.Tokens.TokenPayloads
                     d.Evoke();
                 else
                  d.Dismiss();
+
+            foreach (var c in _portal.Consequences)
+            {
+                var consequenceRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(c.Id);
+                //we could conceivably use RecipeCompletionEffectCommand here, but that expects a Situation at the moment
+
+       
+                    var targetSphere = _spheres.SingleOrDefault(s => s.Id == c.ToPath); //NOTE: we're not actually using the pathing system here. We might want to upgrade to that.
+
+                    if(targetSphere!=null) //if we were using pathing we wouldn't have to do this
+                    {
+                   
+                        var dealer = new Dealer(Watchman.Get<DealersTable>());
+
+                        foreach (var deckId in consequenceRecipe.DeckEffects.Keys)
+
+                            for (int i = 1; i <= consequenceRecipe.DeckEffects[deckId]; i++)
+                            {
+                                {
+                                    var drawnCard = dealer.Deal(deckId);
+                                    targetSphere.AcceptToken(drawnCard, Context.Unknown());
+                                }
+                            }
+                }
+
+            }
         }
 
         public void Close()

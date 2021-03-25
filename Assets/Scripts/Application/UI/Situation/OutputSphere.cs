@@ -41,9 +41,7 @@ public class OutputSphere : Sphere{
     public override void RemoveToken(Token token,Context context) {
         // Did we just drop the last available token? 
         // Update the badge, then reorder cards?
-
         
-
         bool cardsRemaining = false;
         IEnumerable<Token> stacks = GetElementTokens();
 

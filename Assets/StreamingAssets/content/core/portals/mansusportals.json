@@ -9,18 +9,18 @@
       "consequences": [
         {
           "id": "dreamenterwood.cards.door",
-          "additional": true,
-          "topath": "#wood0"
+          "topath": "wood0",
+		        "deckeffects": {"mansus_wood": 1      }
         },
         {
           "id": "dreamenterwood.cards.well",
-          "additional": true,
-          "topath": "#wood1"
+          "topath": "wood1",
+		        "deckeffects": {"mansus_wood1": 1      }
         },
         {
           "id": "dreamenterwood.cards.wheel",
-          "additional": true,
-          "topath": "#wood2"
+          "topath": "wood2",
+		        "deckeffects": { "mansus_wood2": 1      }
         }
       ]
     },

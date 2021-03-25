@@ -38,22 +38,6 @@ namespace SecretHistories.Core
             ToPath = toPath;
         }
 
-        public Dictionary<string, string> GetElementChanges()
-        {
-            return Recipe.Effects;
-        }
-
-        /// <summary>
-        /// returns the deck to draw from if there is one, or null if there isn't one
-        /// </summary>
-        /// <returns></returns>
-        public Dictionary<string, int> GetDeckEffects()
-        {
-            //we only return the name of the deck. Implementation of drawing is up to classes with access to a compendium.
-
-            return Recipe.DeckEffects;
-        }
-
         public bool Execute(Situation situation)
         {
             situation.Recipe = this.Recipe;
@@ -134,20 +118,17 @@ namespace SecretHistories.Core
 
         public void RunDeckEffect(Sphere sphere)
         {
-            var deckIds = GetDeckEffects();
-            if (deckIds != null && deckIds.Any())
+            if (Recipe.DeckEffects != null && Recipe.DeckEffects.Any())
             {
                 var dealer = new Dealer(Watchman.Get<DealersTable>());
 
-                foreach (var deckId in deckIds.Keys)
+                foreach (var deckId in Recipe.DeckEffects.Keys)
 
-                    for (int i = 1; i <= deckIds[deckId]; i++)
+                    for (int i = 1; i <= Recipe.DeckEffects[deckId]; i++)
                     {
                         {
                             var drawnCard = dealer.Deal(deckId);
                             sphere.AcceptToken(drawnCard, Context.Unknown());
-
-
                         }
                     }
             }
@@ -155,7 +136,7 @@ namespace SecretHistories.Core
 
         private void RunRecipeEffects(Sphere sphere)
         {
-            foreach (var kvp in GetElementChanges())
+            foreach (var kvp in Recipe.Effects)
             {
 
                 if (!int.TryParse(kvp.Value, out var effectValue))

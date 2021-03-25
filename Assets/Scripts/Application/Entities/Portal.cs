@@ -40,7 +40,8 @@ namespace SecretHistories.Entities
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
-           //
+            foreach (var c in Consequences)
+                c.OnPostImport(log, populatedCompendium);
         }
     }
 }
