@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace SecretHistories.UI
 {
-    public class OtherworldWindow: MonoBehaviour
+    public class OtherworldLayer: MonoBehaviour
     {
         [SerializeField] private OtherworldAnimation _otherworldAnimation;
 
@@ -22,6 +22,12 @@ namespace SecretHistories.UI
         private ITokenPayload _portal;
 
         private bool _isOpen;
+
+        public void Awake()
+        {
+            var w=new Watchman();
+            w.Register(this);
+        }
 
         public void Attach(ITokenPayload tokenPayload)
         {

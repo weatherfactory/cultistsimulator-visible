@@ -33,19 +33,15 @@ namespace SecretHistories.Commands
         {
 
             var portal = Watchman.Get<Compendium>().GetEntityById<Portal>(_portalId);
-
             var newConnectedPortal=new ActivePortal(portal);
-
-            //This MUST go here, as soon as the payload is created and before tokens or commands are added, because it's here that the payload spheres get attached.
-            var windowSphere = newConnectedPortal.GetWindowsSphere();
-            var windowLocation =
-                new TokenLocation(Vector3.zero, windowSphere.GetAbsolutePath()); //it shouldn't really be zero, but we don't know the real token loc in the current flow
-
-            var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<OtherworldWindow>(windowSphere.transform);
-            newWindow.Attach(newConnectedPortal);
-
-
-
+            
+            var otherworldLayer = Watchman.Get<OtherworldLayer>();
+            
+            if(otherworldLayer!=null)
+                otherworldLayer.Attach(newConnectedPortal);
+            else
+                NoonUtility.LogWarning("Can't find otherworld layer to attach portal to");
+            
             return newConnectedPortal;
         }
     }
