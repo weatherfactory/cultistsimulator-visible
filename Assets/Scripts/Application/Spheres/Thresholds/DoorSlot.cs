@@ -43,15 +43,6 @@ namespace SecretHistories.UI {
         }
 
 
-        public string GetDeckName(int cardPosition)
-        {
-            //cardPosition 0 is the portal itself; >0 is its sub-locations
-            string deckId = NoonConstants.MANSUS_DECKID_PREFIX + portalType.ToString().ToLowerInvariant();
-            if (cardPosition > 0)
-                deckId += cardPosition.ToString();
-
-            return deckId;
-        }
 
 
         // IGlowableView implementation
