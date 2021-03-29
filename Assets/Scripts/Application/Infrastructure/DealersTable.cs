@@ -52,10 +52,6 @@ namespace SecretHistories.Infrastructure
                 s.GoverningSphereSpec.ActionId == forDeckSpecId && s.GoverningSphereSpec.SphereType == typeof(ForbiddenPile));
         }
 
-        public override void RegisterFor(IManifestable manifestable)
-        {
-            throw new NotImplementedException();
-        }
 
         public override Sphere TryCreateSphere(SphereSpec spec)
         {
@@ -67,10 +63,6 @@ namespace SecretHistories.Infrastructure
             return newSphere;
         }
 
-        public override Sphere GetSphereById(string id)
-        {
-            return _spheres.SingleOrDefault(s => s.Id == id);
-        }
 
         public override bool VisibleFor(string state)
         {

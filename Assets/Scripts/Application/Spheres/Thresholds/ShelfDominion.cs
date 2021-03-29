@@ -74,10 +74,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
             return newSphere;
         }
 
-        public override Sphere GetSphereById(string id)
-        {
-            return _spheres.SingleOrDefault(s => s.Id == id);
-        }
 
         public override bool VisibleFor(string state)
         {

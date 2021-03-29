@@ -39,8 +39,7 @@ namespace SecretHistories.UI {
         public List<StateEnum> VisibleForStates;
         public Sphere spherePrefab;
 
-        private Situation _situation;
-        
+       
 
         [SerializeField] private int MaxSpheresAllowed;
 
@@ -50,18 +49,18 @@ namespace SecretHistories.UI {
           Identifier = EditableIdentifier;
       }
 
-        public override void RegisterFor(IManifestable situation)
+        public override void RegisterFor(IManifestable manifestable)
         {
 
-            _situation = situation as Situation; // this is a bit schizo; we're subscribing to it, but we're also keeping a reference?
+            base.RegisterFor(manifestable);
 
-            _situation.RegisterDominion(this);
-
+          var situation = manifestable as Situation;
+            
             foreach (var subscriber in gameObject.GetComponentsInChildren<ISituationSubscriber>())
-                _situation.AddSubscriber(subscriber);
+                situation.AddSubscriber(subscriber);
 
             foreach (var existingSphere in gameObject.GetComponentsInChildren<Sphere>())
-                _situation.AttachSphere(existingSphere);
+                situation.AttachSphere(existingSphere);
 
             OnSphereRemoved.AddListener(sphereArrangement.SphereRemoved);
         }
@@ -131,10 +130,6 @@ public override bool VisibleFor(string state)
          return VisibleForStates.Contains(stateEnum) && sphereType == dominionSphereType;
         }
 
-        public override Sphere GetSphereById(string Id)
-        {
-            return Spheres.SingleOrDefault(s => s.Id == Id && !s.Defunct);
-        }
 
         public override bool RemoveSphere(string id,SphereRetirementType retirementType)
         {
@@ -171,7 +166,12 @@ public override bool VisibleFor(string state)
 
         protected void AddDependentSpheresForToken(Sphere sphere, Token tokenAdded)
         {
-            var childSlotSpecs = sphere.GetChildSpheresSpecsToAddIfThisTokenAdded(tokenAdded, _situation.VerbId);
+            var situation = _manifestable as Situation;
+
+            if (situation==null)
+                throw new NotImplementedException("UGH PICK AN INTERFACE AK");
+
+            var childSlotSpecs = sphere.GetChildSpheresSpecsToAddIfThisTokenAdded(tokenAdded, situation.VerbId);
 
             foreach (var childSlotSpecification in childSlotSpecs)
             {

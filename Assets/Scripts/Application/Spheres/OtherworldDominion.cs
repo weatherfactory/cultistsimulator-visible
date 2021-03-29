@@ -19,7 +19,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
     [IsEmulousEncaustable(typeof(AbstractDominion))]
     public class OtherworldDominion: AbstractDominion
     {
-        private IManifestable _manifestable;
         [SerializeField] private CanvasGroupFader canvasGroupFader;
         [SerializeField] private DoorSlot doorSlot;
 
@@ -35,11 +34,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
         public void Awake()
         {
             Identifier = EditableIdentifier;
-        }
-
-        public override Sphere GetSphereById(string Id)
-        {
-            return Spheres.SingleOrDefault(s => s.Id == Id && !s.Defunct);
         }
 
         public override bool VisibleFor(string state)
@@ -99,18 +93,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
             return newSphere;
         }
 
-        public override void RegisterFor(IManifestable manifestable)
-        {
-            _manifestable = manifestable;
-            manifestable.RegisterDominion(this);
-
-            foreach (Sphere s in Spheres)
-            {
-                manifestable.AttachSphere(s);
-                s.SetContainer(manifestable);
-            }
-
-
-        }
+      
     }
 }

@@ -18,18 +18,12 @@ namespace SecretHistories.UI
     [IsEmulousEncaustable(typeof(AbstractDominion))]
     public class MinimalDominion: AbstractDominion
     {
-        private IManifestable _manifestable;
-     
         
         public MinimalDominion()
         {
             Identifier = SituationDominionEnum.Unknown.ToString();
         }
 
-        public override Sphere GetSphereById(string Id)
-        {
-            return Spheres.SingleOrDefault(s => s.Id == Id && !s.Defunct);
-        }
 
         public override bool VisibleFor(string state)
         {
@@ -85,18 +79,6 @@ namespace SecretHistories.UI
             return newSphere;
         }
 
-        public override void RegisterFor(IManifestable manifestable)
-        {
-            _manifestable = manifestable;
-            manifestable.RegisterDominion(this);
-
-            foreach (Sphere s in Spheres)
-            {
-                s.SetContainer(manifestable);
-            }
-
-          
-        }
     }
 
 
