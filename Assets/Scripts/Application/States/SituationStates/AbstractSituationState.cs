@@ -25,7 +25,7 @@ namespace SecretHistories.States
        public abstract bool AllowDuplicateVerbIfVerbSpontaneous { get; }
        public abstract StateEnum Identifier { get; }
 
-       public bool IsVisibleInThisState(IDominion situationDominion)
+       public bool IsVisibleInThisState(AbstractDominion situationDominion)
        {
            return situationDominion.VisibleFor(Identifier.ToString());
         }

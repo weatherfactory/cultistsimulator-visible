@@ -56,7 +56,7 @@ namespace SecretHistories.Tokens.TokenPayloads
         public bool Unique { get; }
         public string Icon => _portal.Icon;
 
-        private List<IDominion> _registeredDominions=new List<IDominion>();
+        private List<AbstractDominion> _registeredDominions=new List<AbstractDominion>();
         private List<Sphere> _spheres=new List<Sphere>();
 
         public ActivePortal(Portal portal)
@@ -138,7 +138,7 @@ namespace SecretHistories.Tokens.TokenPayloads
             throw new NotImplementedException();
         }
 
-        public bool RegisterDominion(IDominion dominionToRegister)
+        public bool RegisterDominion(AbstractDominion dominionToRegister)
         {
             dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
             dominionToRegister.OnSphereRemoved.AddListener(DetachSphere);
@@ -152,7 +152,7 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
-        public List<IDominion> Dominions { get; }
+        public List<AbstractDominion> Dominions { get; }
         public Sphere GetSphereById(string id)
         {
             throw new NotImplementedException();

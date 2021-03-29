@@ -25,7 +25,7 @@ namespace SecretHistories.Entities.Verbs
     public class Dropzone: ITokenPayload
     {
         private Token _token;
-        private List<IDominion> _dominions=new List<IDominion>();
+        private List<AbstractDominion> _dominions=new List<AbstractDominion>();
         private List<PopulateDominionCommand> _storedDominionCommands=new List<PopulateDominionCommand>();
 #pragma warning disable 67
         public event Action<TokenPayloadChangedArgs> OnChanged;
@@ -62,9 +62,9 @@ namespace SecretHistories.Entities.Verbs
         [DontEncaust] public FucinePath AbsolutePath => new NullFucinePath();
 
         [Encaust]
-        public List<IDominion> Dominions
+        public List<AbstractDominion> Dominions
         {
-            get { return new List<IDominion>(_dominions); }
+            get { return new List<AbstractDominion>(_dominions); }
         }
         [DontEncaust] public string Label => "Dropzone";
         [DontEncaust] public string Description => "Description";
@@ -112,7 +112,7 @@ namespace SecretHistories.Entities.Verbs
         }
 
 
-        public bool RegisterDominion(IDominion dominionToRegister)
+        public bool RegisterDominion(AbstractDominion dominionToRegister)
         {
             dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
             dominionToRegister.OnSphereRemoved.AddListener(DetachSphere);

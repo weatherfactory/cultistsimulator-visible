@@ -72,7 +72,7 @@ namespace SecretHistories.UI {
 
 
         [Encaust]
-        public List<IDominion> Dominions => new List<IDominion>(_dominions);
+        public List<AbstractDominion> Dominions => new List<AbstractDominion>(_dominions);
 
 
         protected Element Element { get; set; }
@@ -185,7 +185,7 @@ namespace SecretHistories.UI {
         
         private readonly Dictionary<string,string> _illuminations=new Dictionary<string, string>();
         private Token _token;
-        private List<IDominion> _dominions=new List<IDominion>();
+        private List<AbstractDominion> _dominions=new List<AbstractDominion>();
 
         public virtual bool IsValid()
         {
@@ -251,7 +251,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public bool RegisterDominion(IDominion dominionToRegister)
+        public bool RegisterDominion(AbstractDominion dominionToRegister)
         {
             dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
             dominionToRegister.OnSphereRemoved.AddListener(DetachSphere);

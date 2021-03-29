@@ -17,7 +17,7 @@ using UnityEngine;
 namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
 {
     [IsEncaustableClass(typeof(PopulateDominionCommand))]
-    public class ShelfDominion: MonoBehaviour,IDominion
+    public class ShelfDominion: AbstractDominion
     {
         private IManifestable _manifestable;
 
@@ -51,7 +51,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
         }
 
 
-        public void RegisterFor(IManifestable manifestable)
+        public override void RegisterFor(IManifestable manifestable)
         {
             _manifestable = manifestable;
             manifestable.RegisterDominion(this);
@@ -62,8 +62,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
                _spheres.Add(TryCreateSphere(shelfSpaceSpec));
             }
         }
-        
-        public Sphere TryCreateSphere(SphereSpec spec)
+
+        public override Sphere TryCreateSphere(SphereSpec spec)
         {
             if (!CanCreateSphere(spec))
                 return NullSphere.Create();
@@ -74,22 +74,22 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
             return newSphere;
         }
 
-        public Sphere GetSphereById(string id)
+        public override Sphere GetSphereById(string id)
         {
             return _spheres.SingleOrDefault(s => s.Id == id);
         }
 
-        public bool VisibleFor(string state)
+        public override bool VisibleFor(string state)
         {
             return true;
         }
 
-        public bool RelevantTo(string state, Type sphereType)
+        public override bool RelevantTo(string state, Type sphereType)
         {
             return true;
         }
 
-        public bool RemoveSphere(string id,SphereRetirementType retirementType)
+        public override bool RemoveSphere(string id,SphereRetirementType retirementType)
         {
             var sphereToRemove = GetSphereById(id);
             if (sphereToRemove != null)
@@ -103,17 +103,17 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
                 return false;
         }
 
-        public void Evoke()
+        public override void Evoke()
         {
            //
         }
 
-        public void Dismiss()
+        public override void Dismiss()
         {
             //
         }
 
-        public bool CanCreateSphere(SphereSpec spec)
+        public override bool CanCreateSphere(SphereSpec spec)
         {
             return true;
         }

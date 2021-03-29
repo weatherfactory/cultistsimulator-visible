@@ -40,7 +40,7 @@ namespace SecretHistories.Commands
          }
         }
 
-        public void ExecuteOn(IDominion dominion,Context context)
+        public void ExecuteOn(AbstractDominion dominion,Context context)
         {
             //ownersphereidentifier and container will also need thought
      var sphere=dominion.TryCreateSphere(GoverningSphereSpec);

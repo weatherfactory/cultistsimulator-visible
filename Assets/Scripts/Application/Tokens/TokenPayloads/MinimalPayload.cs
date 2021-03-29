@@ -28,7 +28,7 @@ namespace SecretHistories.Entities
 #pragma warning restore 67
 
         private Token _token;
-        private List<IDominion> _dominions= new List<IDominion>();
+        private List<AbstractDominion> _dominions= new List<AbstractDominion>();
         public string Id { get; protected set; }
 
         private HashSet<Sphere> _spheres=new HashSet<Sphere>();
@@ -138,8 +138,8 @@ namespace SecretHistories.Entities
         public bool IsOpen { get; }
         public string EntityId => "minimal";
         public FucinePath AbsolutePath { get; }
-        public List<IDominion> Dominions=>new List<IDominion>(_dominions);
-        public bool RegisterDominion(IDominion dominion)
+        public List<AbstractDominion> Dominions=>new List<AbstractDominion>(_dominions);
+        public bool RegisterDominion(AbstractDominion dominion)
         {
             if (_dominions.Contains(dominion))
                 return false;

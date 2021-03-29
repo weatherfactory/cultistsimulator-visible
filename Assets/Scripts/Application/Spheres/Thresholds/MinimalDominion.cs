@@ -15,59 +15,34 @@ using UnityEngine;
 
 namespace SecretHistories.UI
 {
-    [IsEncaustableClass(typeof(PopulateDominionCommand))]
-    public class MinimalDominion: MonoBehaviour, IDominion
+    [IsEmulousEncaustable(typeof(AbstractDominion))]
+    public class MinimalDominion: AbstractDominion
     {
         private IManifestable _manifestable;
-        private readonly List<Sphere> _spheres=new List<Sphere>();
+     
         
-        
-        [Encaust]
-        public List<Sphere> Spheres => new List<Sphere>(_spheres);
-        
-        [Encaust]
-        public string Identifier { get; set; }
-
-
-        private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
-        private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
-
-        [DontEncaust]
-        public OnSphereAddedEvent OnSphereAdded
-        {
-            get => _onSphereAdded;
-            set => _onSphereAdded = value;
-        }
-
-        [DontEncaust]
-        public OnSphereRemovedEvent OnSphereRemoved
-        {
-            get => _onSphereRemoved;
-            set => _onSphereRemoved = value;
-        }
-
         public MinimalDominion()
         {
             Identifier = SituationDominionEnum.Unknown.ToString();
         }
 
-        public Sphere GetSphereById(string Id)
+        public override Sphere GetSphereById(string Id)
         {
             return Spheres.SingleOrDefault(s => s.Id == Id && !s.Defunct);
         }
 
-        public bool VisibleFor(string state)
+        public override bool VisibleFor(string state)
         {
             return true;
         }
 
-        public bool RelevantTo(string state, Type sphereType)
+        public override bool RelevantTo(string state, Type sphereType)
         {
             return true;
 
         }
 
-        public bool RemoveSphere(string id,SphereRetirementType retirementType)
+        public override bool RemoveSphere(string id,SphereRetirementType retirementType)
         {
             var sphereToRemove = GetSphereById(id);
             if (sphereToRemove != null)
@@ -81,17 +56,17 @@ namespace SecretHistories.UI
                 return false;
         }
 
-        public void Evoke()
+        public override void Evoke()
         {
             //
         }
 
-        public void Dismiss()
+        public override void Dismiss()
         {
          //
         }
 
-        public bool CanCreateSphere(SphereSpec spec)
+        public override bool CanCreateSphere(SphereSpec spec)
         {
             if (GetSphereById(spec.Id) != null)
                 return false; //no spheres with duplicate id
@@ -99,7 +74,7 @@ namespace SecretHistories.UI
             return true;
         }
 
-        public Sphere TryCreateSphere(SphereSpec spec)
+        public override Sphere TryCreateSphere(SphereSpec spec)
         {
             if (!CanCreateSphere(spec))
                 return NullSphere.Create();
@@ -110,7 +85,7 @@ namespace SecretHistories.UI
             return newSphere;
         }
 
-        public void RegisterFor(IManifestable manifestable)
+        public override void RegisterFor(IManifestable manifestable)
         {
             _manifestable = manifestable;
             manifestable.RegisterDominion(this);

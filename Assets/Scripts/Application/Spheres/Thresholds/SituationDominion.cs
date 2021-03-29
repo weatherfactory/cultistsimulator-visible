@@ -25,49 +25,32 @@ using SecretHistories.Spheres;
 using UnityEditorInternal;
 
 namespace SecretHistories.UI {
-    [IsEncaustableClass(typeof(PopulateDominionCommand))]
-    public class SituationDominion: MonoBehaviour, IDominion,ISphereEventSubscriber
+
+    [IsEmulousEncaustable(typeof(AbstractDominion))]
+    public class SituationDominion: AbstractDominion,ISphereEventSubscriber
     {
         [SerializeField] CanvasGroupFader canvasGroupFader;
 
         [SerializeField] private AbstractSphereArrangement sphereArrangement;
 
 
-
-        [Encaust] public string Identifier => EditableIdentifier;
         [SerializeField] private string EditableIdentifier;
-
-        [Encaust]
-        public List<Sphere> Spheres => new List<Sphere>(_spheres);
-
-
-
-        private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
-        private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
-
-        [DontEncaust]
-        public OnSphereAddedEvent OnSphereAdded
-        {
-            get => _onSphereAdded;
-            set => _onSphereAdded = value;
-        }
-
-        [DontEncaust]
-        public OnSphereRemovedEvent OnSphereRemoved
-        {
-            get => _onSphereRemoved;
-            set => _onSphereRemoved = value;
-        }
 
         public List<StateEnum> VisibleForStates;
         public Sphere spherePrefab;
 
         private Situation _situation;
-        private readonly List<Sphere> _spheres=new List<Sphere>();
-      [SerializeField] private int MaxSpheresAllowed;
+        
+
+        [SerializeField] private int MaxSpheresAllowed;
 
 
-        public void RegisterFor(IManifestable situation)
+      public void Awake()
+      {
+          Identifier = EditableIdentifier;
+      }
+
+        public override void RegisterFor(IManifestable situation)
         {
 
             _situation = situation as Situation; // this is a bit schizo; we're subscribing to it, but we're also keeping a reference?
@@ -83,17 +66,17 @@ namespace SecretHistories.UI {
             OnSphereRemoved.AddListener(sphereArrangement.SphereRemoved);
         }
 
-        public void Evoke()
+        public override void Evoke()
         {
             canvasGroupFader.Show();
         }
 
-        public void Dismiss()
+        public override void Dismiss()
         {
             canvasGroupFader.Hide();
         }
 
-        public  Sphere TryCreateSphere(SphereSpec spec)
+        public override Sphere TryCreateSphere(SphereSpec spec)
         {
             if (!CanCreateSphere(spec))
                 return NullSphere.Create();
@@ -107,7 +90,7 @@ namespace SecretHistories.UI {
 
             return AddSphere(spec);
         }
-public bool CanCreateSphere(SphereSpec spec)
+public override bool CanCreateSphere(SphereSpec spec)
 {
     if (GetSphereById(spec.Id) != null)
         return false; //no spheres with duplicate id
@@ -121,7 +104,7 @@ public bool CanCreateSphere(SphereSpec spec)
 
 
 
-public bool VisibleFor(string state)
+public override bool VisibleFor(string state)
 {
     var canParseState = Enum.TryParse(state, false, out StateEnum stateEnum);
     if (!canParseState)
@@ -134,7 +117,7 @@ public bool VisibleFor(string state)
     return VisibleForStates.Contains(stateEnum);
         }
 
-        public bool RelevantTo(string state,Type sphereType)
+        public override bool RelevantTo(string state,Type sphereType)
         {
          var canParseState=Enum.TryParse(state, false, out StateEnum stateEnum);
          if (!canParseState)
@@ -148,12 +131,12 @@ public bool VisibleFor(string state)
          return VisibleForStates.Contains(stateEnum) && sphereType == dominionSphereType;
         }
 
-        public Sphere GetSphereById(string Id)
+        public override Sphere GetSphereById(string Id)
         {
             return Spheres.SingleOrDefault(s => s.Id == Id && !s.Defunct);
         }
 
-        public bool RemoveSphere(string id,SphereRetirementType retirementType)
+        public override bool RemoveSphere(string id,SphereRetirementType retirementType)
         {
             var sphereToRemove = GetSphereById(id);
             if (sphereToRemove == null)

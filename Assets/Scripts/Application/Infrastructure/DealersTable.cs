@@ -18,43 +18,18 @@ using UnityEngine;
 
 namespace SecretHistories.Infrastructure
 {
-    [IsEncaustableClass(typeof(PopulateDominionCommand))]
-    public class DealersTable: MonoBehaviour,IDominion
+    [IsEmulousEncaustable(typeof(AbstractDominion))]
+    public class DealersTable: AbstractDominion
     {
-        private List<Sphere> _spheres=new List<Sphere>();
-
-        [Encaust]
-        public List<Sphere> Spheres
-        {
-            get => _spheres;
-            set => _spheres = value;
-        }
-
-
-        [Encaust] public string Identifier => EditableIdentifier;
+        
         [SerializeField] private string EditableIdentifier;
 
-        private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
-        private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
-
-        [DontEncaust]
-        public OnSphereAddedEvent OnSphereAdded
-        {
-            get => _onSphereAdded;
-            set => _onSphereAdded = value;
-        }
-
-        [DontEncaust]
-        public OnSphereRemovedEvent OnSphereRemoved
-        {
-            get => _onSphereRemoved;
-            set => _onSphereRemoved = value;
-        }
-        [DontEncaust]
+        
         public IHasAspects Container=>FucineRoot.Get(); //in case we ever move it
 
         public void Awake()
         {
+            Identifier = EditableIdentifier;
             var w=new Watchman();
             w.Register(this);
         }
@@ -77,12 +52,12 @@ namespace SecretHistories.Infrastructure
                 s.GoverningSphereSpec.ActionId == forDeckSpecId && s.GoverningSphereSpec.SphereType == typeof(ForbiddenPile));
         }
 
-        public void RegisterFor(IManifestable manifestable)
+        public override void RegisterFor(IManifestable manifestable)
         {
             throw new NotImplementedException();
         }
 
-        public Sphere TryCreateSphere(SphereSpec spec)
+        public override Sphere TryCreateSphere(SphereSpec spec)
         {
             var newSphere=Watchman.Get<PrefabFactory>().InstantiateSphere(spec, Container);
             newSphere.transform.SetParent(transform);
@@ -92,37 +67,37 @@ namespace SecretHistories.Infrastructure
             return newSphere;
         }
 
-        public Sphere GetSphereById(string id)
+        public override Sphere GetSphereById(string id)
         {
             return _spheres.SingleOrDefault(s => s.Id == id);
         }
 
-        public bool VisibleFor(string state)
+        public override bool VisibleFor(string state)
         {
             return true;
         }
 
-        public bool RelevantTo(string state, Type sphereType)
+        public override bool RelevantTo(string state, Type sphereType)
         {
             return true;
         }
 
-        public bool RemoveSphere(string id,SphereRetirementType retirementType)
+        public override bool RemoveSphere(string id,SphereRetirementType retirementType)
         {
             throw new NotImplementedException();
         }
 
-        public void Evoke()
+        public override void Evoke()
         {
             throw new NotImplementedException();
         }
 
-        public void Dismiss()
+        public override void Dismiss()
         {
             throw new NotImplementedException();
         }
 
-        public bool CanCreateSphere(SphereSpec spec)
+        public override bool CanCreateSphere(SphereSpec spec)
         {
             return true;
         }

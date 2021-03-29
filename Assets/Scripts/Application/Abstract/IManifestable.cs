@@ -21,7 +21,7 @@ namespace SecretHistories.Abstract
       string GetIllumination(string key);
       void SetIllumination(string key, string value);
         Timeshadow GetTimeshadow();
-        bool RegisterDominion(IDominion dominion);
+        bool RegisterDominion(AbstractDominion dominion);
 
     }
 }

@@ -54,7 +54,7 @@ namespace SecretHistories.Commands.SituationCommands
             }
         }
 
-        public bool Execute(IDominion dominion)
+        public bool Execute(AbstractDominion dominion)
         {
            if (dominion != null)
            {
