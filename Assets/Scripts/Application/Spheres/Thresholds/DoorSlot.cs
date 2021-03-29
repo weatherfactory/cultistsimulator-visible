@@ -112,8 +112,8 @@ namespace SecretHistories.UI {
 
             Token stack = eventData.pointerDrag.GetComponent<Token>();
 
-if(stack!=null)
-{
+        if(stack!=null)
+            {
 
                 //now we put the token in the slot.
                 AcceptToken(stack, new global::Context(Context.ActionSource.PlayerDrag));
