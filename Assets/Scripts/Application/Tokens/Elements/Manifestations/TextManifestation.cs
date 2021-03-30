@@ -72,7 +72,7 @@ namespace SecretHistories.Manifestations
         }
 
         public bool NoPush => true;
-        public void Reveal(bool instant)
+        public void Unshroud(bool instant)
         {
             NoonUtility.Log("Not implemented for TextManifestation: Reveal");
         }

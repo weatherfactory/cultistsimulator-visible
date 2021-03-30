@@ -33,10 +33,10 @@ namespace SecretHistories.Spheres
         }
 
 
-        public override void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
+        public override void NotifyTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {
 
-            base.OnTokenInThisSphereInteracted(args);
+            base.NotifyTokenInThisSphereInteracted(args);
 
 
             //when a token is being dragged through it, the EnRoute sphere asks anything underneath to predict interactions were it dropped.

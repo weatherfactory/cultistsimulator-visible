@@ -354,7 +354,7 @@ namespace SecretHistories.Manifestations
             get { return false; }
         }
 
-        public void Reveal(bool instant)
+        public void Unshroud(bool instant)
         {
             if (!instant)
                 SoundManager.PlaySfx("CardTurnOver");

@@ -25,6 +25,7 @@ namespace SecretHistories.Constants.Events
         public Sphere Sphere { get; set; }
         public Token TokenAdded { get; set; }
         public Token TokenRemoved { get; set; }
+        public Token TokenChanged { get; set; }
         public Context Context { get; set; }
 
     }

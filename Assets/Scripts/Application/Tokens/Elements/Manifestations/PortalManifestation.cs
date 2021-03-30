@@ -69,7 +69,7 @@ namespace SecretHistories.Manifestations
         }
 
         public bool NoPush => true;
-        public void Reveal(bool instant)
+        public void Unshroud(bool instant)
         {
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
         }

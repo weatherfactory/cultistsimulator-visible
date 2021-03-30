@@ -70,7 +70,7 @@ namespace SecretHistories.Manifestations
         }
 
         public bool NoPush { get; }
-        public void Reveal(bool instant)
+        public void Unshroud(bool instant)
         {
        
         }

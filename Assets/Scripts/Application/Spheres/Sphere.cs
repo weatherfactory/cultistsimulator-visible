@@ -677,16 +677,13 @@ namespace SecretHistories.Spheres
         {
             Watchman.Get<HornedAxe>().OnTokensChangedForAnySphere(args);
             var subscribersToNotify=new HashSet<ISphereEventSubscriber>(_subscribers);
-
             foreach(var s in subscribersToNotify)
                 s.OnTokensChangedForSphere(args);
         }
 
-        public virtual void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
+        public virtual void NotifyTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {
-            
             Watchman.Get<HornedAxe>().OnTokenInteractionInAnySphere(args);
-
             var subscribersToNotify = new HashSet<ISphereEventSubscriber>(_subscribers);
             foreach (var s in subscribersToNotify)
                 s.OnTokenInteractionInSphere(args);

@@ -96,7 +96,7 @@ namespace SecretHistories.Manifestations
             //
         }
 
-        public void Reveal(bool instant)
+        public void Unshroud(bool instant)
         {
             //
         }

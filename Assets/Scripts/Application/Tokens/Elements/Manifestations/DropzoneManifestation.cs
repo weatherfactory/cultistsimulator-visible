@@ -169,7 +169,7 @@ namespace SecretHistories.Manifestations
         }
 
         public bool NoPush => false;
-        public void Reveal(bool instant)
+        public void Unshroud(bool instant)
         {
         }
 

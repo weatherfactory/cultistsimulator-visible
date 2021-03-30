@@ -41,13 +41,13 @@ namespace SecretHistories.Spheres
         }
 
 
-        public override void OnTokenInThisSphereInteracted(TokenInteractionEventArgs args)
+        public override void NotifyTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {
             
             Pop(args.Context);
 
 
-            base.OnTokenInThisSphereInteracted(args);
+            base.NotifyTokenInThisSphereInteracted(args);
         }
 
 

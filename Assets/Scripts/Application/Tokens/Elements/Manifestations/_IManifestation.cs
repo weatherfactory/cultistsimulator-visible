@@ -45,7 +45,7 @@ namespace SecretHistories.Manifestations
         void Highlight(HighlightType highlightType);
         void Unhighlight(HighlightType highlightType);
         bool NoPush { get; }
-        void Reveal(bool instant);
+        void Unshroud(bool instant);
         void Shroud(bool instant);
         void Emphasise();
         void Understate();

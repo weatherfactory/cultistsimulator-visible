@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Assets.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Spheres;
+using SecretHistories.Assets.Scripts.Application.UI.Otherworlds;
+using SecretHistories.Constants.Events;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -25,6 +27,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         [SerializeField] List<AbstractDominion> Dominions;
         [SerializeField] private OtherworldAnimation EntryAnimation;
         private readonly HashSet<Sphere> _spheres=new HashSet<Sphere>();
+        private readonly List<AbstractOtherworldAttendant> _attendants=new List<AbstractOtherworldAttendant>();
+
         private Ingress _activeIngress;
 
         public string Id => gameObject.name;
@@ -68,14 +72,33 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             throw new NotImplementedException();
         }
 
+        public List<Sphere> GetSpheres()
+        {
+            return new List<Sphere>(_spheres);
+        }
+
         public void AttachSphere(Sphere sphere)
         {
             _spheres.Add(sphere);
+            foreach(var a in _attendants)
+                sphere.Subscribe(a);
         }
 
         public void DetachSphere(Sphere sphere)
         {
             _spheres.Remove(sphere);
+            foreach (var a in _attendants)
+                sphere.Unsubscribe(a);
+        }
+
+        public void RegisterAttendant(AbstractOtherworldAttendant a)
+        {
+            //ultimately, then, we should have some sort of external service locator to set up these attendants
+            if(!_attendants.Contains(a))
+                _attendants.Add(a);
+
+            foreach(var s in _spheres)
+                s.Subscribe(a);
         }
 
         public bool IsOpen { get; }
@@ -86,6 +109,23 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         public string UniquenessGroup { get; }
         public bool Unique { get; }
         public string Icon { get; }
+
+        /// <summary>
+        /// Register dominions, summon attendants
+        /// </summary>
+        public void Prepare()
+        {
+            
+            foreach (var d in Dominions)
+                d.RegisterFor(this);
+
+            RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
+
+        }
+
+
+
+
         public string GetIllumination(string key)
         {
             throw new NotImplementedException();
@@ -113,11 +153,6 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             return true;
         }
 
-        public void RegisterDominions()
-        {
-            foreach (var d in Dominions)
-               d.RegisterFor(this);
-        }
 
         public void Show(Transform effectCenter,Ingress ingress)
         {
@@ -182,5 +217,14 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         }
 
 
+        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
+        {
+      
+        }
+
+        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
+        {
+            //
+        }
     }
 }

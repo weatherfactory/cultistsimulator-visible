@@ -16,6 +16,8 @@ public class Context {
         SituationEffect,
         GreedyGrab,
         Retire,
+        Shroud,
+        Unshroud,
         Debug,
         ChangeTo,
 		DoubleClickSend,

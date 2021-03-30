@@ -240,7 +240,7 @@ namespace SecretHistories.UI {
             if (shrouded)
                 _manifestation.Shroud(true);
             else
-                _manifestation.Reveal(true);
+                _manifestation.Unshroud(true);
 
             if(_ghost!=null)
                 _ghost.Retire();
@@ -670,7 +670,7 @@ namespace SecretHistories.UI {
 
         protected virtual void NotifyInteracted(TokenInteractionEventArgs args)
         {
-            Sphere.OnTokenInThisSphereInteracted(args);
+            Sphere.NotifyTokenInThisSphereInteracted(args);
             Watchman.Get<Chronicler>()?.TokenPlacedOnTabletop(this);
         }
 
@@ -745,6 +745,7 @@ namespace SecretHistories.UI {
                 _manifestation.UpdateVisuals(_payload);
                 PlacementAlreadyChronicled = false; //should really only do this if the element has changed
                 var sphereContentsChangedArgs = new SphereContentsChangedEventArgs(Sphere, args.Context);
+                sphereContentsChangedArgs.TokenChanged = this;
                 Sphere.NotifyTokensChangedForSphere(sphereContentsChangedArgs);
             }
             else if (args.ChangeType == PayloadChangeType.Retirement)
@@ -768,12 +769,18 @@ namespace SecretHistories.UI {
         public void Unshroud(bool instant = false)
         {
             shrouded = false;
-            _manifestation.Reveal(instant);
+            var sphereContentsChangedArgs = new SphereContentsChangedEventArgs(Sphere, new Context(Context.ActionSource.Unshroud));
+            sphereContentsChangedArgs.TokenChanged = this;
+            Sphere.NotifyTokensChangedForSphere(sphereContentsChangedArgs);
+            _manifestation.Unshroud(instant);
         }
 
         public void Shroud(bool instant = false)
         {
             shrouded = true;
+            var sphereContentsChangedArgs = new SphereContentsChangedEventArgs(Sphere, new Context(Context.ActionSource.Shroud));
+            sphereContentsChangedArgs.TokenChanged = this;
+            Sphere.NotifyTokensChangedForSphere(sphereContentsChangedArgs);
             _manifestation.Shroud(instant);
 
         }

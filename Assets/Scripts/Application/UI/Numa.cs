@@ -17,17 +17,12 @@ using UnityEngine;
 
 namespace SecretHistories.UI
 {
-    public class OtherworldLayer: MonoBehaviour
+    public class Numa: MonoBehaviour
     {
-        [SerializeField] private OtherworldAnimation _otherworldAnimation;
 
         [Space]
         [SerializeField] List<Otherworld> Otherworlds;
 
-
-        private Ingress _activeIngress;
-        private Portal _activePortal;
-        private Otherworld _activeOtherworld;
 
 
         public void Awake()
@@ -36,7 +31,7 @@ namespace SecretHistories.UI
             w.Register(this);
 
             foreach(var o in Otherworlds)
-                o.RegisterDominions();
+                o.Prepare();
         }
 
         public void Open(RectTransform atRectTransform,Ingress ingress)
