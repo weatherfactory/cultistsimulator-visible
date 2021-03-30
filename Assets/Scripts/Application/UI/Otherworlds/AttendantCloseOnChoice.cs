@@ -23,7 +23,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Otherworlds
 
         public override void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
-            var tokenToTakeHome = args.TokenAdded;
+             var tokenToTakeHome = args.TokenAdded;
             if (tokenToTakeHome == null)
                 return;
             if(args.Sphere == _respondToThisSphere)

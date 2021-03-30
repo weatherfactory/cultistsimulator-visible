@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Logic;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Assets.Scripts.Application.Spheres;
 using SecretHistories.Assets.Scripts.Application.UI.Otherworlds;
 using SecretHistories.Constants.Events;
@@ -67,12 +68,12 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         public Sphere GetEnRouteSphere()
         {
-            throw new NotImplementedException();
+            return FucineRoot.Get().GetEnRouteSphere();
         }
 
         public Sphere GetWindowsSphere()
         {
-            throw new NotImplementedException();
+            return FucineRoot.Get().GetWindowsSphere();
         }
 
         public List<Sphere> GetSpheres()
