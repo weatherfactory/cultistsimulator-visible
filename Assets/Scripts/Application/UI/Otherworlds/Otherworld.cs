@@ -141,12 +141,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             
             foreach (var d in Dominions)
                 d.RegisterFor(this);
-
-            
-
         }
-
-
 
 
         public string GetIllumination(string key)
@@ -223,6 +218,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             DisplayOrHideDominions();
             foreach (var d in _dominions)
             {
+                d.EgressSphere.SetEvictionDestination(_activeIngress.GetEgressOutputSphere());
                 var closeOnChoice = new AttendantCloseOnChoice(this, d.EgressSphere);
                 RegisterAttendant(closeOnChoice);
             }

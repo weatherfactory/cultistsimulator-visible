@@ -36,7 +36,7 @@ namespace SecretHistories.Manifestations
 
 
 
-        public void InitialiseVisuals(IManifestable manifestable)
+        public void Initialise(IManifestable manifestable)
         {
             name = "StoredManifestation_" + manifestable.Id;
             elementFrame.PopulateDisplay(manifestable.EntityId, 1, false);

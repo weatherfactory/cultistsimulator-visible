@@ -151,7 +151,7 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public Timeshadow GetTimeshadow()
         {
-            throw new NotImplementedException();
+            return Timeshadow.CreateTimelessShadow();
         }
 
         public bool RegisterDominion(AbstractDominion dominionToRegister)
@@ -163,12 +163,19 @@ namespace SecretHistories.Tokens.TokenPayloads
                 return false;
 
             _registeredDominions.Add(dominionToRegister);
-            return true;
+               return true;
+        }
+
+        public List<AbstractDominion> Dominions => new List<AbstractDominion>(_registeredDominions);
+
+        public Sphere GetEgressOutputSphere()
+        {
+            return _spheres.Single();
         }
 
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
-        public List<AbstractDominion> Dominions { get; }
+        
         public Sphere GetSphereById(string id)
         {
             throw new NotImplementedException();
@@ -181,7 +188,7 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public void InitialiseManifestation(IManifestation manifestation)
         {
-            manifestation.InitialiseVisuals(this);
+            manifestation.Initialise(this);
 
         }
 
@@ -280,5 +287,7 @@ namespace SecretHistories.Tokens.TokenPayloads
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

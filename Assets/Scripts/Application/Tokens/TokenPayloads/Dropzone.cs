@@ -146,7 +146,7 @@ namespace SecretHistories.Entities.Verbs
 
         public void InitialiseManifestation(IManifestation manifestation)
         {
-            manifestation.InitialiseVisuals(this);
+            manifestation.Initialise(this);
 
 
         }

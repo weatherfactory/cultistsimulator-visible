@@ -64,12 +64,9 @@ namespace SecretHistories.UI
             foreach (var permanentSphere in permanentSpheres)
             {
                 var actualSphere = permanentSphere.GetSphereComponent();
-
-                
                 permanentSphere.ApplySpecToSphere(actualSphere);
                 _spheres.Add(actualSphere);
             }
-
 
             foreach (Sphere s in Spheres)
             {

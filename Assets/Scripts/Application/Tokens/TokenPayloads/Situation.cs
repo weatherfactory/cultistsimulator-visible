@@ -296,7 +296,7 @@ namespace SecretHistories.Entities {
 
         public void InitialiseManifestation(IManifestation manifestation)
         {
-            manifestation.InitialiseVisuals(this);
+            manifestation.Initialise(this);
         }
 
         public virtual bool IsValid()

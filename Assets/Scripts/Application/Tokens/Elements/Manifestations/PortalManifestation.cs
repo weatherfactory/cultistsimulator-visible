@@ -12,6 +12,7 @@ using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Ghosts;
 using SecretHistories.Spheres;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -26,6 +27,9 @@ namespace SecretHistories.Manifestations
 
         private List<Sprite> frames;
         [SerializeField] Image artwork;
+        [SerializeField] private TextMeshProUGUI egressMessage;
+        [SerializeField] private MinimalDominion soleDominion;
+        public OutputSphere EgressOutput;
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
@@ -106,7 +110,7 @@ namespace SecretHistories.Manifestations
             //
         }
 
-        public void InitialiseVisuals(IManifestable manifestable)
+        public void Initialise(IManifestable manifestable)
         {
             string art = manifestable.Icon;
 
@@ -114,8 +118,9 @@ namespace SecretHistories.Manifestations
             frames = ResourcesManager.GetAnimFramesForVerb(art);
             artwork.sprite = sprite;
 
-
-            DisplaySpheres(new List<Sphere>());
+            egressMessage.text = "none yet";
+            soleDominion.RegisterFor(manifestable);
+            
         }
 
         public void UpdateVisuals(IManifestable manifestable)

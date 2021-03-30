@@ -33,6 +33,7 @@ namespace SecretHistories.UI {
 
         public override bool AllowDrag { get { return false; } }
         public override bool AllowStackMerge { get { return false; } }
+        private Sphere _evictionDestination;
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
 
@@ -48,6 +49,21 @@ namespace SecretHistories.UI {
 
         public virtual void OnPointerExit(PointerEventData eventData) {
             ShowHoverGlow(false);
+        }
+
+        public void SetEvictionDestination(Sphere destinationSphere)
+        {
+            _evictionDestination = destinationSphere;
+        }
+
+
+        public override void EvictToken(Token token, Context context)
+        {
+            if(_evictionDestination!=null)
+                _evictionDestination.AcceptToken(token,context);
+            else
+            base.EvictToken(token,context);
+
         }
 
         public void SetAsActive(bool active) {
@@ -132,11 +148,6 @@ namespace SecretHistories.UI {
         }
 
 
-#if UNITY_EDITOR
-        void OnValidate() {
-            ShowGlow(false, true);
-        }
-#endif
 
     }
 }

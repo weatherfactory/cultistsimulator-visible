@@ -41,7 +41,7 @@ namespace SecretHistories.Manifestations
           //
         }
 
-        public void InitialiseVisuals(IManifestable manifestable)
+        public void Initialise(IManifestable manifestable)
         {
             name = "BookcaseManifestation" + manifestable.Id;
             foreach(var d in _dominions)

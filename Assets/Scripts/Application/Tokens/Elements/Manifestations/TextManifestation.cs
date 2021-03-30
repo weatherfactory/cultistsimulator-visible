@@ -39,7 +39,7 @@ namespace SecretHistories.Manifestations
             //
         }
 
-        public void InitialiseVisuals(IManifestable manifestable)
+        public void Initialise(IManifestable manifestable)
         {
             var description=manifestable.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY);
             textComponent.text= description;

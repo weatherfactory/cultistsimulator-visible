@@ -290,7 +290,7 @@ namespace SecretHistories.UI {
 
         public void InitialiseManifestation(IManifestation _manifestation)
         {
-            _manifestation.InitialiseVisuals(this);
+            _manifestation.Initialise(this);
             _manifestation.UpdateVisuals(this);
         }
 

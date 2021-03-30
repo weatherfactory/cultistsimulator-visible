@@ -35,7 +35,7 @@ namespace SecretHistories.Manifestations
         void BeginIconAnimation();
         
 
-        void InitialiseVisuals(IManifestable manifestable);
+        void Initialise(IManifestable manifestable);
 
         void UpdateVisuals(IManifestable manifestable);
 

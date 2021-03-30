@@ -76,7 +76,7 @@ namespace SecretHistories.Manifestations
 #pragma warning restore 649
 
 
-        public void InitialiseVisuals(IManifestable manifestable)
+        public void Initialise(IManifestable manifestable)
         {
             string art = manifestable.Icon;
 

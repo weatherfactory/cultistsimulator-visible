@@ -27,7 +27,10 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Otherworlds
             if (tokenToTakeHome == null)
                 return;
             if(args.Sphere == _respondToThisSphere)
+            {
                 _otherworld.Hide();
+
+            }
         }
     }
 }

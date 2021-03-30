@@ -63,7 +63,7 @@ namespace SecretHistories.Manifestations
             _flipHelper = new FlipHelper(this);
         }
         
-        public void InitialiseVisuals(IManifestable manifestable)
+        public void Initialise(IManifestable manifestable)
         {
             
                Sprite sprite = ResourcesManager.GetSpriteForElement(manifestable.Icon);

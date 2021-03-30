@@ -67,7 +67,7 @@ namespace SecretHistories.Manifestations
         }
 
     
-        public void InitialiseVisuals(IManifestable manifestable)
+        public void Initialise(IManifestable manifestable)
         {
             foreach (var d in Dominions)
                 d.RegisterFor(manifestable);

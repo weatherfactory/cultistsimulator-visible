@@ -40,7 +40,7 @@ namespace SecretHistories.Manifestations
         }
 
 
-        public void InitialiseVisuals(IManifestable manifestable)
+        public void Initialise(IManifestable manifestable)
         {
         }
 
