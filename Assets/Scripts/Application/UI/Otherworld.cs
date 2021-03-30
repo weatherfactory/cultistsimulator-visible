@@ -106,19 +106,17 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             dominion.OnSphereAdded.AddListener(AttachSphere);
             dominion.OnSphereRemoved.AddListener(DetachSphere);
 
-            if (Dominions.Contains(dominion))
-                return false;
+            //we set dominions associated with an otherworld in the editor. But we might later want to add one at run time.
+            if(!Dominions.Contains(dominion))
+                Dominions.Add(dominion);
 
-            Dominions.Add(dominion);
-            foreach(var s in dominion.Spheres)
-                AttachSphere(s);
             return true;
         }
 
         public void RegisterDominions()
         {
             foreach (var d in Dominions)
-                RegisterDominion(d);
+               d.RegisterFor(this);
         }
 
         public void Show(Transform effectCenter,Ingress ingress)
