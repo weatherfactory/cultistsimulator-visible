@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace SecretHistories.Commands
 {
-    public class ActivePortalCreationCommand: ITokenPayloadCreationCommand, IEncaustment
+    public class IngressCreationCommand: ITokenPayloadCreationCommand, IEncaustment
     {
         private readonly string _portalId;
         private readonly string _otherworldId;
@@ -22,7 +22,7 @@ namespace SecretHistories.Commands
         public int Quantity => 1;
         public List<PopulateDominionCommand> Dominions { get; set; }
 
-        public ActivePortalCreationCommand(string portalId,string otherworldId)
+        public IngressCreationCommand(string portalId,string otherworldId)
         {
             _portalId = portalId;
             _otherworldId = otherworldId;
@@ -33,16 +33,10 @@ namespace SecretHistories.Commands
         {
 
             var portal = Watchman.Get<Compendium>().GetEntityById<Portal>(_portalId);
-            var newConnectedPortal=new ActivePortal(portal);
+            var ingress=new Ingress(portal);
             
-            var otherworldLayer = Watchman.Get<OtherworldLayer>();
-            
-            if(otherworldLayer!=null)
-                otherworldLayer.Attach(newConnectedPortal);
-            else
-                NoonUtility.LogWarning("Can't find otherworld layer to attach portal to");
-            
-            return newConnectedPortal;
+          
+            return ingress;
         }
     }
 }

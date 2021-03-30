@@ -22,7 +22,10 @@ namespace SecretHistories.Entities
         public virtual string Icon { get; set; }
 
         [FucineValue]
-        public virtual string Otherworld { get; set; }
+        public virtual string OtherworldId { get; set; }
+
+        [FucineValue]
+        public virtual string EgressId { get; set; }
 
 
         [FucineList(Localise = true)]

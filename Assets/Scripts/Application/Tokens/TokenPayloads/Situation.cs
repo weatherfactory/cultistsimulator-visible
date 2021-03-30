@@ -76,8 +76,6 @@ namespace SecretHistories.Entities {
             return Token.TokenRectTransform;
         }
 
-        [DontEncaust] public FucinePath AbsolutePath => null;
-
         [DontEncaust] public string EntityId => Verb.Id;
 
         [Encaust]

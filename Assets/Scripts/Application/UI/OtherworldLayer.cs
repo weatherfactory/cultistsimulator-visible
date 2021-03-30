@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Logic;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Spheres;
+using SecretHistories.Assets.Scripts.Application.UI;
+using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Infrastructure;
+using SecretHistories.Spheres;
 using SecretHistories.Tokens.TokenPayloads;
 using UnityEngine;
 
@@ -17,56 +22,38 @@ namespace SecretHistories.UI
         [SerializeField] private OtherworldAnimation _otherworldAnimation;
 
         [Space]
-        [SerializeField] List<OtherworldDominion> Dominions;
+        [SerializeField] List<Otherworld> Otherworlds;
 
-        private ITokenPayload _portal;
 
-        private bool _isOpen;
+        private Ingress _activeIngress;
+        private Portal _activePortal;
+        private Otherworld _activeOtherworld;
+
 
         public void Awake()
         {
             var w=new Watchman();
             w.Register(this);
+
+            foreach(var o in Otherworlds)
+                o.RegisterDominions();
         }
 
-        public void Attach(ITokenPayload tokenPayload)
+        public void Open(RectTransform atRectTransform,Ingress ingress)
         {
-            _portal = tokenPayload;
-            _portal.OnChanged += OnPayloadChanged;
-            foreach (var d in Dominions)
-                d.RegisterFor(tokenPayload);
-        }
+            
 
-        private void OnPayloadChanged(TokenPayloadChangedArgs args)
-        {
-            if(!_isOpen && args.Payload.IsOpen)
-                Show(args.Payload.GetRectTransform());
-        }
-
-        public void Show(Transform effectCenter)
-        {
-            if (_otherworldAnimation.CanShow() == false)
-                return;
-
-            //if (!show) // hide the container
-            //    _mapSphere.Show(false);
-
-            _otherworldAnimation.onAnimationComplete += OnShowComplete;
-            _otherworldAnimation.SetCenterForEffect(effectCenter);
-            _otherworldAnimation.Show(); // starts coroutine that calls onManusMapAnimDone when done
-        }
-
-        void OnShowComplete(bool show)
-        {
-            _otherworldAnimation.onAnimationComplete -= OnShowComplete;
+            var otherworldToOpen = Otherworlds.SingleOrDefault(o => o.EntityId == ingress.GetOtherworldId());
+            if(otherworldToOpen==null)
+                NoonUtility.LogWarning("Can't find otherworld with id " + ingress.GetOtherworldId());
+            else
+                otherworldToOpen.Show(atRectTransform,ingress);
 
         }
 
-        void OnHideComplete()
-        {
-            _otherworldAnimation.onAnimationComplete -= OnShowComplete;
 
-        }
+
+
 
         public void SetupMap(string portalId)
         {

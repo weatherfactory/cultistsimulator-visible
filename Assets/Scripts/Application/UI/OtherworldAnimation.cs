@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace SecretHistories.UI {
     public class OtherworldAnimation : MonoBehaviour {
 
-        public event System.Action<bool> onAnimationComplete;
+        public event System.Action onAnimationComplete;
 
         public Color colorBeforeShow = new Color(0f, 1f, 0f, 1f);
         public float durationShow = 2f;
@@ -99,7 +99,7 @@ namespace SecretHistories.UI {
             isAnimating = false;
 
             if (onAnimationComplete != null)
-                onAnimationComplete(shownAtEnd);
+                onAnimationComplete();
         }
 
     }

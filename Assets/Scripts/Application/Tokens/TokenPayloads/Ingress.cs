@@ -24,8 +24,8 @@ using UnityEngine;
 
 namespace SecretHistories.Tokens.TokenPayloads
 {
-    [IsEncaustableClass(typeof(ActivePortalCreationCommand))]
-    public  class ActivePortal: ITokenPayload
+    [IsEncaustableClass(typeof(IngressCreationCommand))]
+    public  class Ingress: ITokenPayload
     {
         
         private Token _token;
@@ -59,14 +59,30 @@ namespace SecretHistories.Tokens.TokenPayloads
         private List<AbstractDominion> _registeredDominions=new List<AbstractDominion>();
         private List<Sphere> _spheres=new List<Sphere>();
 
-        public ActivePortal(Portal portal)
+        public Ingress(Portal portal)
         {
             _portal = portal;
             int identity = FucineRoot.Get().IncrementedIdentity();
             Id = $"!{portal.Id}_{identity}";
         }
 
-    public FucinePath GetAbsolutePath()
+
+        public string GetOtherworldId()
+        {
+            return _portal.OtherworldId;
+        }
+
+        public string GetEgressId()
+        {
+            return _portal.EgressId;
+        }
+
+        public List<LinkedRecipeDetails> GetConsequences()
+        {
+            return new List<LinkedRecipeDetails>(_portal.Consequences);
+        }
+
+        public FucinePath GetAbsolutePath()
         {
             var pathAbove = _token.Sphere.GetAbsolutePath();
             var absolutePath = pathAbove.AppendToken(this.Id);
@@ -238,40 +254,11 @@ namespace SecretHistories.Tokens.TokenPayloads
         public void OpenAt(TokenLocation location)
         {
             //note: we don't actually use the passed location. We always assume, inside the window, that we just centre on the portal.
-            this.IsOpen = true;   
-            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Fundamental, Context.Unknown()));
-
-            foreach(var d in _registeredDominions)
-                if(String.Equals(d.Identifier, EntityId, StringComparison.InvariantCultureIgnoreCase)) //Portal identifiers used to be enums, with ToString= eg Wood. Let's be extra forgiving.
-                    d.Evoke();
-                else
-                 d.Dismiss();
-
-            foreach (var c in _portal.Consequences)
-            {
-                var consequenceRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(c.Id);
-                //we could conceivably use RecipeCompletionEffectCommand here, but that expects a Situation at the moment
-
-       
-                    var targetSphere = _spheres.SingleOrDefault(s => s.Id == c.ToPath); //NOTE: we're not actually using the pathing system here. We might want to upgrade to that.
-
-                    if(targetSphere!=null) //if we were using pathing we wouldn't have to do this
-                    {
-                   
-                        var dealer = new Dealer(Watchman.Get<DealersTable>());
-
-                        foreach (var deckId in consequenceRecipe.DeckEffects.Keys)
-
-                            for (int i = 1; i <= consequenceRecipe.DeckEffects[deckId]; i++)
-                            {
-                                {
-                                    var drawnCard = dealer.Deal(deckId);
-                                    targetSphere.AcceptToken(drawnCard, Context.Unknown());
-                                }
-                            }
-                }
-
-            }
+            this.IsOpen = true;
+            Watchman.Get<OtherworldLayer>().Open(this.GetRectTransform(),this);
+     
+            
+        
         }
 
         public void Close()
