@@ -16,7 +16,7 @@ using UnityEngine.UI;
 
 namespace SecretHistories.UI {
     [ExecuteInEditMode]
-    public class DoorSlot : Sphere, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
+    public class EgressThreshold : Sphere, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
         public event System.Action<Token> onCardDropped;
 
@@ -41,12 +41,7 @@ namespace SecretHistories.UI {
             ShowGlow(false, true);
             slotGlow.Hide(true);
         }
-
-
-
-
-        // IGlowableView implementation
-
+        
         public virtual void OnPointerEnter(PointerEventData eventData) {
             ShowHoverGlow(true);
         }

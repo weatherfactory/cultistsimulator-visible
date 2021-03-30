@@ -223,7 +223,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             DisplayOrHideDominions();
             foreach (var d in _dominions)
             {
-                var closeOnChoice = new AttendantCloseOnChoice(this, d.doorSlot);
+                var closeOnChoice = new AttendantCloseOnChoice(this, d.EgressSphere);
                 RegisterAttendant(closeOnChoice);
             }
 

@@ -20,7 +20,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
     public class OtherworldDominion: AbstractDominion
     {
         [SerializeField] private CanvasGroupFader canvasGroupFader;
-        [SerializeField] public DoorSlot doorSlot;
+        [SerializeField] public EgressThreshold EgressSphere;
 
         [SerializeField] private string EditableIdentifier;
 
@@ -64,14 +64,13 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
         public override void Evoke()
         {
             canvasGroupFader.Show();
-            doorSlot.SetAsActive(true);
+            EgressSphere.SetAsActive(true);
         }
 
         public override void Dismiss()
         {
             canvasGroupFader.Hide();
-            doorSlot.SetAsActive(false);
-
+            EgressSphere.SetAsActive(false);
         }
 
         public override bool CanCreateSphere(SphereSpec spec)

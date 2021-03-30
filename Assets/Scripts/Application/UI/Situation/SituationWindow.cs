@@ -28,12 +28,12 @@ namespace SecretHistories.UI {
     public class OnSphereRemovedEvent : UnityEvent<Sphere> { }
 
 
-    [RequireComponent(typeof(SituationWindowPositioner))]
+    [RequireComponent(typeof(WindowPositioner))]
     public class SituationWindow : MonoBehaviour, ISituationSubscriber {
 
         [Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
-        public SituationWindowPositioner positioner;
+        public WindowPositioner positioner;
 
         [Space]
         [SerializeField] Image artwork;

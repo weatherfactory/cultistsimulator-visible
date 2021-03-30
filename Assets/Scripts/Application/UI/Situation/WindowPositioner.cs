@@ -11,12 +11,12 @@ namespace SecretHistories.UI {
     /// <summary>
     /// Class that manages the movement of the situation Window. Tries to stick to token, stay on screen and remain draggable
     /// </summary>
-    public class SituationWindowPositioner : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
+    public class WindowPositioner : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
         public bool canDrag = true;
 
 
-        static SituationWindowPositioner windowBeingDragged;
+        static WindowPositioner windowBeingDragged;
         
      [SerializeField]RectTransform rectTrans;
      [SerializeField] CanvasGroup canvasGroup;
