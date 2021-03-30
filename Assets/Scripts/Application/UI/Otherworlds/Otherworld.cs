@@ -13,6 +13,7 @@ using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Infrastructure;
 using SecretHistories.Logic;
+using SecretHistories.Otherworlds;
 using SecretHistories.Spheres;
 using SecretHistories.Tokens.TokenPayloads;
 using SecretHistories.UI;
@@ -24,8 +25,10 @@ namespace SecretHistories.Assets.Scripts.Application.UI
     {
         //Otherworlds are NOT currently encausted or saved
         //also, we've broken the model for simplicity - this is a Manifestable which is also its own manifestation
-        [SerializeField] List<AbstractDominion> Dominions;
+         List<AbstractDominion> Dominions=>new List<AbstractDominion>(_dominions);
+         [SerializeField] private List<OtherworldDominion> _dominions;
         [SerializeField] private OtherworldAnimation EntryAnimation;
+
         private readonly HashSet<Sphere> _spheres=new HashSet<Sphere>();
         private readonly List<AbstractOtherworldAttendant> _attendants=new List<AbstractOtherworldAttendant>();
 
@@ -101,6 +104,25 @@ namespace SecretHistories.Assets.Scripts.Application.UI
                 s.Subscribe(a);
         }
 
+        public void UnregisterAttendant(AbstractOtherworldAttendant a)
+        {
+            if (_attendants.Contains(a))
+                _attendants.Remove(a);
+
+            foreach (var s in _spheres)
+                s.Unsubscribe(a);
+        }
+
+        public void UnregisterAllAttendants()
+        {
+            var attendantsToUnregister=new List<AbstractOtherworldAttendant>(_attendants);
+
+            foreach(var a in attendantsToUnregister)
+                UnregisterAttendant(a);
+
+            _attendants.Clear();
+        }
+
         public bool IsOpen { get; }
         
         public string Label { get; }
@@ -119,7 +141,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             foreach (var d in Dominions)
                 d.RegisterFor(this);
 
-            RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
+            
 
         }
 
@@ -158,7 +180,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         {
             _activeIngress = ingress;
 
-            if (EntryAnimation.CanShow() == false)
+            if (!EntryAnimation.CanShow())
                 return;
 
             EntryAnimation.onAnimationComplete += OnShowComplete;
@@ -172,34 +194,68 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             OnArrival();
         }
 
+        public void Hide()
+        {
+            if (!EntryAnimation.CanHide())
+
+
+                EntryAnimation.onAnimationComplete += OnHideComplete;
+            EntryAnimation.Hide();
+        }
+
         void OnHideComplete()
         {
             EntryAnimation.onAnimationComplete -= OnShowComplete;
+            OnLeave();
+        }
 
+        private void OnLeave()
+        {
+            UnregisterAllAttendants();
         }
 
         public void OnArrival()
         {
-      
+            RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
+            
+
+            DisplayOrHideDominions();
+            foreach (var d in _dominions)
+            {
+                var closeOnChoice = new AttendantCloseOnChoice(this, d.doorSlot);
+                RegisterAttendant(closeOnChoice);
+            }
+
+            EnactConsequences();
+        }
+
+        private void DisplayOrHideDominions()
+        {
             foreach (var d in Dominions)
-                if (String.Equals(d.Identifier, _activeIngress.GetEgressId(), StringComparison.InvariantCultureIgnoreCase)) //Portal identifiers used to be enums, with ToString= eg Wood. Let's be extra forgiving.
+                if (String.Equals(d.Identifier, _activeIngress.GetEgressId(), StringComparison.InvariantCultureIgnoreCase)
+                ) //Portal identifiers used to be enums, with ToString= eg Wood. Let's be extra forgiving.
                 {
                     d.Evoke();
+
                 }
                 else
                     d.Dismiss();
+        }
 
+        private void EnactConsequences()
+        {
             foreach (var c in _activeIngress.GetConsequences())
             {
                 var consequenceRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(c.Id);
                 //we could conceivably use RecipeCompletionEffectCommand here, but that expects a Situation at the moment
 
 
-                var targetSphere = _spheres.SingleOrDefault(s => s.Id == c.ToPath); //NOTE: we're not actually using the pathing system here. We might want to upgrade to that.
+                var targetSphere =
+                    _spheres.SingleOrDefault(s =>
+                        s.Id == c.ToPath); //NOTE: we're not actually using the pathing system here. We might want to upgrade to that.
 
                 if (targetSphere != null) //if we were using pathing we wouldn't have to do this
                 {
-
                     var dealer = new Dealer(Watchman.Get<DealersTable>());
 
                     foreach (var deckId in consequenceRecipe.DeckEffects.Keys)
@@ -212,19 +268,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
                             }
                         }
                 }
-
             }
-        }
-
-
-        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
-        {
-      
-        }
-
-        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
-        {
-            //
         }
     }
 }

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.UI;
 using SecretHistories.Constants.Events;
 using SecretHistories.Enums;
 
-namespace SecretHistories.Assets.Scripts.Application.UI.Otherworlds
+namespace SecretHistories.Otherworlds
 {
     /// <summary>
     /// when a token is unshrouded, purge all other tokens in this otherworld

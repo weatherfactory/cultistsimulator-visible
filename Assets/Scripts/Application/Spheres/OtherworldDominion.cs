@@ -20,7 +20,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
     public class OtherworldDominion: AbstractDominion
     {
         [SerializeField] private CanvasGroupFader canvasGroupFader;
-        [SerializeField] private DoorSlot doorSlot;
+        [SerializeField] public DoorSlot doorSlot;
 
         [SerializeField] private string EditableIdentifier;
 
