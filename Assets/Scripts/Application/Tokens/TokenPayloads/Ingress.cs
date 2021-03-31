@@ -235,12 +235,15 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public bool Retire(RetirementVFX vfx)
         {
-            foreach(var s in _spheres)
+            if (Defunct)
+                return false;
+
+            Defunct = true; //don't want an infinite loop if there are any tokens in the output sphere
+
+            foreach (var s in _spheres)
                 s.Retire(SphereRetirementType.Graceful);
-            Defunct = true; 
 
 
-            Defunct = true;
             TokenPayloadChangedArgs args = new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement);
             args.VFX = RetirementVFX.None;
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement));
@@ -291,7 +294,7 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public void Close()
         {
-            throw new NotImplementedException();
+            this.Retire(RetirementVFX.None);
         }
 
         public void SetToken(Token token)

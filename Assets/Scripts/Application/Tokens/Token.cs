@@ -450,7 +450,7 @@ public bool IsValidElementStack()
             TokenRectTransform.SetAsLastSibling();
             _manifestation.OnBeginDragVisuals();
 
-            canvasGroup.blocksRaycasts = false;
+MakeNonInteractable();
 
             startSiblingIndex = TokenRectTransform.GetSiblingIndex();
 
@@ -532,17 +532,28 @@ public bool IsValidElementStack()
         }
 
 
-        public  void FinishDrag()
+        public void FinishDrag()
         {
-            if(canvasGroup!=null)
-                canvasGroup.blocksRaycasts = true;
+            MakeNonInteractable();
 
             if (!CurrentState.Docked(this))
                 //evict the token before hiding the ghost. If the ghost is still active, it'll give the evicted token a place to go.
-                   this.Sphere.EvictToken(this,new Context(Context.ActionSource.PlayerDrag));
+                this.Sphere.EvictToken(this,new Context(Context.ActionSource.PlayerDrag));
 
             HideGhost(); 
 
+        }
+
+        public void MakeInteractable()
+        {
+            if (canvasGroup != null)
+                canvasGroup.blocksRaycasts = true;
+        }
+
+        public void MakeNonInteractable()
+        {
+        if (canvasGroup != null)
+                canvasGroup.blocksRaycasts = false;
         }
 
         public  void OnDrop(PointerEventData eventData)

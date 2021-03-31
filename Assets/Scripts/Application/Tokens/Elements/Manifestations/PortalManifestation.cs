@@ -27,6 +27,7 @@ namespace SecretHistories.Manifestations
 
         private List<Sprite> frames;
         [SerializeField] Image artwork;
+        [SerializeField] private TextMeshProUGUI title;
         [SerializeField] private TextMeshProUGUI egressMessage;
         [SerializeField] private MinimalDominion soleDominion;
         public OutputSphere EgressOutput;
@@ -125,6 +126,7 @@ namespace SecretHistories.Manifestations
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
             frames = ResourcesManager.GetAnimFramesForVerb(art);
             artwork.sprite = sprite;
+            title.text = manifestable.Label;
             egressMessage.text = manifestable.Description;
         }
 
