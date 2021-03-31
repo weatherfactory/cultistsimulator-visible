@@ -31,6 +31,7 @@ namespace SecretHistories.Manifestations
         [SerializeField] private TextMeshProUGUI egressMessage;
         [SerializeField] private MinimalDominion soleDominion;
         public OutputSphere EgressOutput;
+        public CanvasGroupFader Fader;
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
@@ -113,6 +114,8 @@ namespace SecretHistories.Manifestations
 
         public void Initialise(IManifestable manifestable)
         {
+            Fader.Hide(); //make it invisible; alpha isn't set to 0 cos it's a nuisance when editing the prefab
+            Fader.Show();
     UpdateVisuals(manifestable);
 
     soleDominion.RegisterFor(manifestable);

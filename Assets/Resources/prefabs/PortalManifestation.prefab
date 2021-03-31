@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 2931150508249505524}
   - component: {fileID: 8399757162958279375}
   - component: {fileID: 9119816571352034221}
+  - component: {fileID: 8773586266171999874}
   m_Layer: 5
   m_Name: PortalManifestation
   m_TagString: Untagged
@@ -308,6 +309,22 @@ MonoBehaviour:
   egressMessage: {fileID: 3661403498976939506}
   soleDominion: {fileID: 4190596164174123644}
   EgressOutput: {fileID: 2657735848016407849}
+  Fader: {fileID: 8773586266171999874}
+--- !u!114 &8773586266171999874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3982648519476642128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e835ed38c168545d8acd9e0f7f3943f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockRaysDuringFade: 0
+  durationTurnOn: 3
+  durationTurnOff: 0
 --- !u!1 &4530534939183435135
 GameObject:
   m_ObjectHideFlags: 0

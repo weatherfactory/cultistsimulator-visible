@@ -251,6 +251,11 @@ namespace SecretHistories.Assets.Scripts.Application.UI
                     _spheres.SingleOrDefault(s =>
                         s.Id == c.ToPath); //NOTE: we're not actually using the pathing system here. We might want to upgrade to that.
 
+                var fader = targetSphere.gameObject.GetComponent<CanvasGroupFader>();
+                if(fader!=null)
+                    fader.Show();
+
+
                 if (targetSphere != null) //if we were using pathing we wouldn't have to do this
                 {
                     var dealer = new Dealer(Watchman.Get<DealersTable>());
