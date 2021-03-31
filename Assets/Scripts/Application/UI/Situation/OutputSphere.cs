@@ -64,7 +64,7 @@ public class OutputSphere : Sphere{
             cardsRemaining = true;
         }
 
- 
+        
         if (cardsRemaining)
             outputPositioning.ArrangeTokens(stacks);
 

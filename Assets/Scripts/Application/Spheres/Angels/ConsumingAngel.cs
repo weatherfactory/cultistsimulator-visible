@@ -12,7 +12,7 @@ namespace SecretHistories.Spheres.Angels
     {
         private ThresholdSphere _watchingOverThreshold;
 
-        public int Authority { get; }
+        public int Authority => 9;
 
         public void Act(float interval)
         {

@@ -112,26 +112,22 @@ namespace SecretHistories.Manifestations
 
         public void Initialise(IManifestable manifestable)
         {
-            string art = manifestable.Icon;
+    UpdateVisuals(manifestable);
 
-            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
-            frames = ResourcesManager.GetAnimFramesForVerb(art);
-            artwork.sprite = sprite;
-
-            egressMessage.text = "none yet";
-            soleDominion.RegisterFor(manifestable);
+    soleDominion.RegisterFor(manifestable);
             
         }
 
         public void UpdateVisuals(IManifestable manifestable)
         {
-            //
+            string art = manifestable.Icon;
+
+            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
+            frames = ResourcesManager.GetAnimFramesForVerb(art);
+            artwork.sprite = sprite;
+            egressMessage.text = manifestable.Description;
         }
 
-        public void UpdateVisuals(ITokenPayload payload)
-        {
-            NoonUtility.LogWarning(this.GetType().Name + " doesn't support this operation");
-        }
 
         public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
             EndingFlavour signalEndingFlavour)
@@ -185,19 +181,14 @@ namespace SecretHistories.Manifestations
             return new NullGhost();
         }
 
-        public void OverrideIcon(string icon)
-        {
-          //
-        }
-
-        public Vector3 GetOngoingSlotPosition()
-        {
-          return Vector3.zero;
-        }
-
         public void SetParticleSimulationSpace(Transform transform)
         {
           //
         }
+
+
+        
+
+
     }
 }

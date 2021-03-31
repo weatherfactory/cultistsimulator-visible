@@ -79,7 +79,7 @@ namespace Assets.Logic
             //if we can find a suitable draw message, set an illumination
             if (fromDeckSpec.DrawMessages.ContainsKey(cardDrawn.PayloadEntityId))
             {
-                string drawMessage = fromDeckSpec.DrawMessages.FirstOrDefault(m => m.Key == cardDrawn.PayloadEntityId).Value;
+                string drawMessage = fromDeckSpec.DrawMessages.First(m => m.Key == cardDrawn.PayloadEntityId).Value;
                 cardDrawn.Payload.SetIllumination(NoonConstants.MESSAGE_ILLUMINATION_KEY,drawMessage);
             }
 

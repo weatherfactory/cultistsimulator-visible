@@ -52,12 +52,8 @@ namespace SecretHistories.Manifestations
         bool RequestingNoDrag { get; }
         void DoMove(RectTransform tokenRectTransform);
 
-        void SendNotification(INotification notification);
-
-
         bool HandlePointerDown(PointerEventData eventData, Token token);
 
-        void DisplaySpheres(IEnumerable<Sphere> spheres);
         IGhost CreateGhost();
         
         /// <summary>

@@ -10,6 +10,8 @@ using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Constants;
+using SecretHistories.Constants.Events;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -25,7 +27,7 @@ using UnityEngine;
 namespace SecretHistories.Tokens.TokenPayloads
 {
     [IsEncaustableClass(typeof(IngressCreationCommand))]
-    public  class Ingress: ITokenPayload
+    public  class Ingress: ITokenPayload, ISphereEventSubscriber
     {
         
         private Token _token;
@@ -49,12 +51,16 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public bool IsOpen { get; protected set; }
         public string EntityId => _portal.Id;
-        public string Label { get; }
-        public string Description { get; }
+        public string Label { get; protected set; }
+        public string Description { get; protected set; }
         public int Quantity { get; }
         public string UniquenessGroup { get; }
         public bool Unique { get; }
         public string Icon => _portal.Icon;
+        public bool Defunct
+        { get; set; }
+
+
 
         private List<AbstractDominion> _registeredDominions=new List<AbstractDominion>();
         private List<Sphere> _spheres=new List<Sphere>();
@@ -64,6 +70,8 @@ namespace SecretHistories.Tokens.TokenPayloads
             _portal = portal;
             int identity = FucineRoot.Get().IncrementedIdentity();
             Id = $"!{portal.Id}_{identity}";
+            Label = _portal.Label;
+            Description = _portal.Description;
         }
 
 
@@ -129,7 +137,9 @@ namespace SecretHistories.Tokens.TokenPayloads
         public void AttachSphere(Sphere sphere)
         {
             sphere.SetContainer(this);
+            sphere.Subscribe(this);
             _spheres.Add(sphere);
+            
         }
 
         public void DetachSphere(Sphere sphere)
@@ -225,8 +235,19 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public bool Retire(RetirementVFX vfx)
         {
-            throw new NotImplementedException();
+            foreach(var s in _spheres)
+                s.Retire(SphereRetirementType.Graceful);
+            Defunct = true; 
+
+
+            Defunct = true;
+            TokenPayloadChangedArgs args = new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement);
+            args.VFX = RetirementVFX.None;
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement));
+
+            return true;
         }
+
 
         public void InteractWithIncoming(Token incomingToken)
         {
@@ -280,7 +301,7 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public void OnTokenMoved(TokenLocation toLocation)
         {
-            throw new NotImplementedException();
+    //
         }
 
         public void StorePopulateDominionCommand(PopulateDominionCommand populateDominionCommand)
@@ -288,6 +309,38 @@ namespace SecretHistories.Tokens.TokenPayloads
             throw new NotImplementedException();
         }
 
+        private void TryDisplayDrawMessage(SphereContentsChangedEventArgs args)
+        {
+            var potentialMessage =
+                args.TokenAdded.Payload.GetIllumination(NoonConstants.MESSAGE_ILLUMINATION_KEY);
+            if (!string.IsNullOrEmpty(potentialMessage))
+            {
+               this.Description= potentialMessage;
+                args.TokenAdded.Payload.SetIllumination(NoonConstants.MESSAGE_ILLUMINATION_KEY, string.Empty);
+            }
+            OnChanged.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Update));
+        }
 
+        /// <summary>
+        /// NB: this will fire for *any* sphere that's been attached, because we subscribe to all spheres which are attached.
+        /// Of course at the moment there's only one sphere - the egressoutput - but bear it in mind pls
+        /// </summary>
+        /// <param name="args"></param>
+        public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
+        {
+            if (args.TokenAdded != null)
+                TryDisplayDrawMessage(args);
+            if (args.TokenRemoved != null)
+            {
+                if (args.Sphere.Tokens.Count == 0)
+                    Retire(RetirementVFX.None);
+            }
+
+        }
+
+        public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
+        {
+            //
+        }
     }
 }
