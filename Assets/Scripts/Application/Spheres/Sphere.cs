@@ -63,7 +63,7 @@ namespace SecretHistories.Spheres
 
     [IsEncaustableClass(typeof(SphereCreationCommand))]
     public abstract class 
-        Sphere : MonoBehaviour,IEncaustable,IHasFucinePath
+        Sphere : MonoBehaviour,IEncaustable,IHasFucinePath,IHasElementTokens
     {
 
         [DontEncaust] public string Id => GoverningSphereSpec.Id;
@@ -113,6 +113,10 @@ namespace SecretHistories.Spheres
             return _container;
         }
 
+        public string GetDeckSpecId()
+        {
+            return GoverningSphereSpec.ActionId;
+        }
 
         public void SetContainer(IHasAspects newContainer)
         {
@@ -387,6 +391,13 @@ namespace SecretHistories.Spheres
         public List<ElementStack> GetElementStacks()
         {
             return GetElementTokens().Where(t=>t.IsValidElementStack()).Select(t => t.Payload as ElementStack).ToList();
+        }
+
+        public Token ProvisionElementToken(string elementId, int count)
+        {
+            var tc = new TokenCreationCommand().WithElementStack(elementId, count);
+            var token=tc.Execute(Context.Unknown(), this);
+            return token;
         }
 
         public List<string> GetUniqueStackElementIds()

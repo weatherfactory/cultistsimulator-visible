@@ -19,7 +19,7 @@ using UnityEngine;
 namespace SecretHistories.Infrastructure
 {
     [IsEmulousEncaustable(typeof(AbstractDominion))]
-    public class DealersTable: AbstractDominion
+    public class DealersTable: AbstractDominion, IHasCardPiles
     {
         
         [SerializeField] private string EditableIdentifier;
@@ -34,19 +34,19 @@ namespace SecretHistories.Infrastructure
             w.Register(this);
         }
 
-        public IEnumerable<Sphere> GetDrawPiles()
+        public IEnumerable<IHasElementTokens> GetDrawPiles()
         {
             var drawDeckSpheres = _spheres.Where(s => s.GoverningSphereSpec.SphereType == typeof(DrawPile));
             return drawDeckSpheres;
         }
 
-        public Sphere GetDrawPile(string forDeckSpecId)
+        public IHasElementTokens GetDrawPile(string forDeckSpecId)
         {
             return _spheres.SingleOrDefault(s =>
                 s.GoverningSphereSpec.ActionId == forDeckSpecId && s.GoverningSphereSpec.SphereType==typeof(DrawPile));
         }
 
-        public Sphere GetForbiddenPile(string forDeckSpecId)
+        public IHasElementTokens GetForbiddenPile(string forDeckSpecId)
         {
             return _spheres.SingleOrDefault(s =>
                 s.GoverningSphereSpec.ActionId == forDeckSpecId && s.GoverningSphereSpec.SphereType == typeof(ForbiddenPile));

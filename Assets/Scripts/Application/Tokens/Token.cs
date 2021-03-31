@@ -120,10 +120,28 @@ namespace SecretHistories.UI {
         [DontEncaust]
         public int Quantity => Payload.Quantity;
 
-        [DontEncaust] public string PayloadId => Payload.Id;
-        [DontEncaust] public string PayloadEntityId => Payload.EntityId;
+        [DontEncaust]
+        public string PayloadId
+        {
+            get
+            {
+                if (Payload == null)
+                    return string.Empty;
+                return Payload.Id;
+            }
+        }
 
-        public bool IsValidElementStack()
+        [DontEncaust] public string PayloadEntityId
+        {
+            get
+            {
+                if (Payload == null)
+                    return string.Empty;
+                return Payload.EntityId;
+            }
+        }
+
+public bool IsValidElementStack()
         {
             return Payload.IsValidElementStack();
         }
