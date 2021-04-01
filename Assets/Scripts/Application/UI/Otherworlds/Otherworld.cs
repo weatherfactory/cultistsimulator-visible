@@ -194,9 +194,10 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         public void Hide()
         {
             if (!EntryAnimation.CanHide())
+                return;
 
+            EntryAnimation.onAnimationComplete += OnHideComplete;
 
-                EntryAnimation.onAnimationComplete += OnHideComplete;
             EntryAnimation.Hide();
         }
 
@@ -209,6 +210,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         private void OnLeave()
         {
             UnregisterAllAttendants();
+            foreach(var d in _dominions)
+                d.EgressSphere.EvictAllTokens(Context.Unknown());
         }
 
         public void OnArrival()

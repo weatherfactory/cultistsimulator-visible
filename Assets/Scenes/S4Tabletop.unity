@@ -7544,7 +7544,6 @@ GameObject:
   - component: {fileID: 627808687}
   - component: {fileID: 627808686}
   - component: {fileID: 627808685}
-  - component: {fileID: 627808688}
   m_Layer: 5
   m_Name: DominionSpider
   m_TagString: Untagged
@@ -7618,19 +7617,6 @@ MonoBehaviour:
   EgressSphere: {fileID: 7432958911624007776}
   EditableIdentifier: spiderdoor
   IsAlwaysVisible: 1
---- !u!114 &627808688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627808683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ApplyId: mansusthresholdspider
 --- !u!1 &633230593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1784193620949908711, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
@@ -20796,6 +20782,7 @@ GameObject:
   - component: {fileID: 675935385017318389}
   - component: {fileID: 852537043589602033}
   - component: {fileID: 644161020294119518}
+  - component: {fileID: 644161020294119519}
   m_Layer: 5
   m_Name: MansusThresholdWood
   m_TagString: Untagged
@@ -20816,6 +20803,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ApplyId: mansusthresholdwood
+--- !u!114 &644161020294119519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644161020294119517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5c6b13c46627442a5a2c35c6c51c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sphere: {fileID: 675935385017318389}
 --- !u!1 &644338997595237455
 GameObject:
   m_ObjectHideFlags: 0
@@ -31075,6 +31075,7 @@ GameObject:
   - component: {fileID: 7327098950857243820}
   - component: {fileID: 7432958911624007776}
   - component: {fileID: 7319082725774438756}
+  - component: {fileID: 7401329612702510025}
   m_Layer: 5
   m_Name: mansusthresholdspider
   m_TagString: Untagged
@@ -31082,6 +31083,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7401329612702510025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401329612702510024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyId: mansusthresholdspider
 --- !u!1 &7401420882751365986
 GameObject:
   m_ObjectHideFlags: 0
@@ -32446,13 +32460,27 @@ GameObject:
   - component: {fileID: 8484287667323495557}
   - component: {fileID: 8590061851706689609}
   - component: {fileID: 8467807401746852173}
+  - component: {fileID: 8550054290814055394}
   m_Layer: 5
-  m_Name: DoorSlot_Triscupid
+  m_Name: mansusthresholdtricuspid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8550054290814055394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550054290814055393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyId: mansusthresholdtricuspid
 --- !u!114 &8589500678537055031
 MonoBehaviour:
   m_ObjectHideFlags: 0

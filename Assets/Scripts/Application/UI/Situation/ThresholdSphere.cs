@@ -17,6 +17,7 @@ namespace SecretHistories.UI
 {
 
     [IsEmulousEncaustable(typeof(Sphere))]
+    [RequireComponent(typeof(SphereDropCatcher))]
     public class ThresholdSphere : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
@@ -129,7 +130,8 @@ namespace SecretHistories.UI
             base.DisplayAndPositionHere(token, context);
             Choreographer.PlaceTokenAtFreeLocalPosition(token,context);
 
-            slotIconHolder.transform.SetAsLastSibling();
+            if(slotIconHolder!=null)
+            slotIconHolder.transform.SetAsLastSibling(); //this is p legacy hacky and exists just cos the hierarchy is how it is
             
         }
 
