@@ -9,22 +9,152 @@
 	  "egressid": "wood",
       "consequences": [
         {
-          "id": "dreamenterwood.cards.door",
+          "id": "dreamenterwood0",
           "topath": "wood0",
 		        "deckeffects": {"mansus_wood": 1      }
         },
         {
-          "id": "dreamenterwood.cards.well",
+          "id": "dreamenterwoodwell",
           "topath": "wood1",
 		        "deckeffects": {"mansus_wood1": 1      }
         },
         {
-          "id": "dreamenterwood.cards.wheel",
+          "id": "dreamenterwheel",
           "topath": "wood2",
 		        "deckeffects": { "mansus_wood2": 1      }
         }
       ]
     },
+    {
+      "id": "whitedoor",
+      "icon": "whitedoor",
+	  "label": "The White Door Opens",
+	  "description": "",
+	  "otherworldid": "mansus",
+	  "egressid": "whitedoor",
+      "consequences": [
+        {
+          "id": "dreamenterwhitedoor0",
+          "topath": "whitedoor0",
+		        "deckeffects": {"mansus_whitedoor": 1      }
+        },
+        {
+          "id": "dreamenterwhitedoorlodge",
+          "topath": "whitedoor1",
+		        "deckeffects": {"mansus_whitedoor1": 1      }
+        },
+        {
+          "id": "dreamenterwhitedoororchard",
+          "topath": "whitedoor2",
+		        "deckeffects": { "mansus_whitedoor2": 1      }
+        }
+      ]
+    },
+	    {
+      "id": "stagdoor",
+      "icon": "stagdoor",
+	  "label": "The Stag Door Opens",
+	  "description": "",
+	  "otherworldid": "mansus",
+	  "egressid": "stagdoor",
+      "consequences": [
+        {
+          "id": "dreamenterstagdoor0",
+          "topath": "stagdoor0",
+		        "deckeffects": {"mansus_stagdoor": 1      }
+        },
+        {
+          "id": "dreamenterstagdoorascent",
+          "topath": "stagdoor1",
+		        "deckeffects": {"mansus_stagdoor1": 1      }
+        },
+        {
+          "id": "dreamenterstagdoorriver",
+          "topath": "stagdoor2",
+		        "deckeffects": { "mansus_stagdoor2": 1      }
+        }
+      ]
+    },
+	    {
+      "id": "spiderdoor",
+      "icon": "spiderdoor",
+	  "label": "The Spider Door Gapes",
+	  "description": "",
+	  "otherworldid": "mansus",
+	  "egressid": "spiderdoor",
+      "consequences": [
+        {
+          "id": "dreamenterspiderdoor0",
+          "topath": "spiderdoor0",
+		        "deckeffects": {"mansus_spiderdoor": 1      }
+        },
+        {
+          "id": "dreamenterspiderdoormalleary",
+          "topath": "spiderdoor1",
+		        "deckeffects": {"mansus_spiderdoor1": 1      }
+        },
+        {
+          "id": "dreamenterspiderdoorconcursum",
+          "topath": "spiderdoor2",
+		        "deckeffects": { "mansus_spiderdoor2": 1      }
+        }
+      ]
+    },
+	    {
+      "id": "peacockdoor",
+      "icon": "peacockdoor",
+	  "label": "The Peacock Door Unseal'd",
+	  "description": "",
+	  "otherworldid": "mansus",
+	  "egressid": "peacockdoor",
+      "consequences": [
+        {
+          "id": "dreamenterpeacockdoor0",
+          "topath": "peacockdoor0",
+		        "deckeffects": {"mansus_peacockdoor": 1      }
+        },
+        {
+          "id": "dreamenterpeacockdoorchurch",
+          "topath": "peacockdoor1",
+		        "deckeffects": {"mansus_peacockdoor1": 1      }
+        },
+        {
+          "id": "dreamenterpeacockdoormuseum",
+          "topath": "peacockdoor2",
+		        "deckeffects": { "mansus_peacockdoor2": 1      }
+        }
+      ]
+    },
+	    {
+      "id": "tricuspidgate",
+      "icon": "tricuspidgate",
+	  "label": "Through the tricuspidgate",
+	  "description": "",
+	  "otherworldid": "mansus",
+	  "egressid": "tricuspidgate",
+      "consequences": [
+        {
+          "id": "dreamentertricuspidgate0",
+          "topath": "tricuspidgate0",
+		        "deckeffects": {"mansus_tricuspidgate": 1      }
+        },
+        {
+          "id": "dreamentertricuspidgate1",
+          "topath": "tricuspidgate1",
+		        "deckeffects": {"mansus_tricuspidgate1": 1      }
+        },
+        {
+          "id": "dreamentertricuspidgate2",
+          "topath": "tricuspidgate2",
+		        "deckeffects": { "mansus_tricuspidgate2": 1      }
+        }
+      ]
+    },
+	
+	
+	
+	
+
 	 {
       "id": "mysteries",
       "icon": "study",
@@ -33,5 +163,7 @@
 	  "otherworldid": "mysteries",
 	  "egressid": "tree"
     },
+	
+	
     ]
 }
