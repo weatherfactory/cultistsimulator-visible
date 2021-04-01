@@ -27,6 +27,9 @@ namespace SecretHistories.Assets.Scripts.Application.UI
          [SerializeField] private List<OtherworldDominion> _dominions;
         [SerializeField] private OtherworldAnimation EntryAnimation;
         [SerializeField] private EnRouteSphere otherworldSpecificEnRouteSphere;
+        [SerializeField] private string EntrySfxName;
+        [SerializeField] private string ExitSfxName;
+
 
         private readonly HashSet<Sphere> _spheres=new HashSet<Sphere>();
         private readonly List<AbstractOtherworldAttendant> _attendants=new List<AbstractOtherworldAttendant>();
@@ -140,12 +143,9 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         /// </summary>
         public void Prepare()
         {
-
-
             foreach (var d in Dominions)
                 d.RegisterFor(this);
-
-
+            
             //I really might need to rethink this approach
             var permanentSphereSpec = otherworldSpecificEnRouteSphere.GetComponent<PermanentSphereSpec>();
             permanentSphereSpec.ApplySpecToSphere(otherworldSpecificEnRouteSphere);
@@ -188,6 +188,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             if (!EntryAnimation.CanShow())
                 return;
 
+            SoundManager.PlaySfx(EntrySfxName);
+
             EntryAnimation.onAnimationComplete += OnShowComplete;
             EntryAnimation.SetCenterForEffect(effectCenter);
             EntryAnimation.Show(); // starts coroutine that calls OnShowComplete when done
@@ -206,6 +208,9 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         {
             if (!EntryAnimation.CanHide())
                 return;
+
+            SoundManager.PlaySfx(ExitSfxName);
+
 
             EntryAnimation.onAnimationComplete += OnHideComplete;
 
