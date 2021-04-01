@@ -24,6 +24,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
         [SerializeField] private string EditableIdentifier;
 
+        [SerializeField]
+        private bool IsAlwaysVisible;
         
         
         public OtherworldDominion()
@@ -36,9 +38,14 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
             Identifier = EditableIdentifier;
         }
 
-        public override bool VisibleFor(string state)
-        {
-            return true;
+        public override bool VisibleFor(string egressId)
+        { 
+            //Portal identifiers used to be enums, with ToString= eg Wood. Let's be extra forgiving.
+            if (String.Equals(Identifier, egressId, StringComparison.InvariantCultureIgnoreCase))
+                return true;
+            else
+                return IsAlwaysVisible;
+
         }
 
         public override bool RelevantTo(string state, Type sphereType)

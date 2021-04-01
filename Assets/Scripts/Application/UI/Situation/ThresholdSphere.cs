@@ -50,7 +50,8 @@ namespace SecretHistories.UI
         {
             base.ApplySpec(sphereSpec);
 
-            SlotLabel.text = sphereSpec.Label;
+            if(SlotLabel!=null)
+                SlotLabel.text = sphereSpec.Label;
 
 
             var angelsToAdd = sphereSpec.MakeAngels(this);

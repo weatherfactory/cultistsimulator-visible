@@ -229,14 +229,12 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         private void DisplayOrHideDominions()
         {
             foreach (var d in Dominions)
-                if (String.Equals(d.Identifier, _activeIngress.GetEgressId(), StringComparison.InvariantCultureIgnoreCase)
-                ) //Portal identifiers used to be enums, with ToString= eg Wood. Let's be extra forgiving.
-                {
+            {
+                if(d.VisibleFor(_activeIngress.GetEgressId()))
                     d.Evoke();
-
-                }
                 else
                     d.Dismiss();
+            }
         }
 
         private void EnactConsequences()

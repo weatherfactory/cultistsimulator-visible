@@ -5627,6 +5627,7 @@ MonoBehaviour:
   canvasGroupFader: {fileID: 388977807}
   EgressSphere: {fileID: 7359964923290734915}
   EditableIdentifier: peacockdoor
+  IsAlwaysVisible: 1
 --- !u!1 &392807926
 GameObject:
   m_ObjectHideFlags: 0
@@ -7615,6 +7616,7 @@ MonoBehaviour:
   canvasGroupFader: {fileID: 627808685}
   EgressSphere: {fileID: 7432958911624007776}
   EditableIdentifier: spiderdoor
+  IsAlwaysVisible: 1
 --- !u!1 &633230593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1784193620949908711, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
@@ -8314,6 +8316,7 @@ MonoBehaviour:
   canvasGroupFader: {fileID: 729575452}
   EgressSphere: {fileID: 0}
   EditableIdentifier: tree
+  IsAlwaysVisible: 0
 --- !u!1001 &745980492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16135,6 +16138,7 @@ MonoBehaviour:
   canvasGroupFader: {fileID: 1527107301}
   EgressSphere: {fileID: 4736375815170560048}
   EditableIdentifier: stagdoor
+  IsAlwaysVisible: 1
 --- !u!1 &1545887499
 GameObject:
   m_ObjectHideFlags: 0
@@ -18282,6 +18286,7 @@ MonoBehaviour:
   canvasGroupFader: {fileID: 1820579728}
   EgressSphere: {fileID: 3522978690608700880}
   EditableIdentifier: whitedoor
+  IsAlwaysVisible: 1
 --- !u!1001 &1833504807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18755,13 +18760,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
-  portalType: 10
-  cardPositions:
-  - {fileID: 1912866862}
-  - {fileID: 857754131}
-  - {fileID: 1641921380}
-  activeGlow: {fileID: 881085280}
+  viz: {fileID: 0}
+  SlotLabel: {fileID: 0}
+  border: {fileID: 0}
   slotGlow: {fileID: 1673771354}
+  slotIconHolder: {fileID: 0}
+  activeGlow: {fileID: 881085280}
   defaultBackgroundColor: {r: 0.57254905, g: 0.8666667, b: 0.7921569, a: 1}
   doorColor: {fileID: 1608732178}
 --- !u!1 &1855372718
@@ -20185,7 +20189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 575, y: -530}
+  m_AnchoredPosition: {x: -289, y: 548}
   m_SizeDelta: {x: 1626.3679, y: 553.9498}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051024983
@@ -20230,6 +20234,7 @@ MonoBehaviour:
   canvasGroupFader: {fileID: 2051024983}
   EgressSphere: {fileID: 8590061851706689609}
   EditableIdentifier: tricuspidgate
+  IsAlwaysVisible: 1
 --- !u!1 &2090570202
 GameObject:
   m_ObjectHideFlags: 0
@@ -21017,13 +21022,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
-  portalType: 10
-  cardPositions:
-  - {fileID: 858564169816643705}
-  - {fileID: 857992987530172021}
-  - {fileID: 858755679187080123}
-  activeGlow: {fileID: 676014488588943851}
+  viz: {fileID: 0}
+  SlotLabel: {fileID: 0}
+  border: {fileID: 0}
   slotGlow: {fileID: 676636194615586161}
+  slotIconHolder: {fileID: 0}
+  activeGlow: {fileID: 676014488588943851}
   defaultBackgroundColor: {r: 0.57254905, g: 0.8666667, b: 0.7921569, a: 1}
   doorColor: {fileID: 676614553548614581}
 --- !u!114 &676014488588943851
@@ -22288,7 +22292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2918241247813129172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27711,13 +27715,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
-  portalType: 20
-  cardPositions:
-  - {fileID: 3634262248808971868}
-  - {fileID: 3633685549569634384}
-  - {fileID: 3634313018543306142}
-  activeGlow: {fileID: 3523198414765352910}
+  viz: {fileID: 0}
+  SlotLabel: {fileID: 0}
+  border: {fileID: 0}
   slotGlow: {fileID: 3523680618374859604}
+  slotIconHolder: {fileID: 0}
+  activeGlow: {fileID: 3523198414765352910}
   defaultBackgroundColor: {r: 0.91764706, g: 0.9098039, b: 0.81960785, a: 1}
   doorColor: {fileID: 3523667073992330640}
 --- !u!114 &3523198414765352910
@@ -28725,13 +28728,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
-  portalType: 30
-  cardPositions:
-  - {fileID: 4841827559507260348}
-  - {fileID: 4842406442838261168}
-  - {fileID: 4841777169877661822}
-  activeGlow: {fileID: 4736155730236697134}
+  viz: {fileID: 0}
+  SlotLabel: {fileID: 0}
+  border: {fileID: 0}
   slotGlow: {fileID: 4735673666180155060}
+  slotIconHolder: {fileID: 0}
+  activeGlow: {fileID: 4736155730236697134}
   defaultBackgroundColor: {r: 0.827451, g: 0.70980394, b: 0.8392157, a: 1}
   doorColor: {fileID: 4735616687199682672}
 --- !u!114 &4789609758443495695
@@ -29891,6 +29893,7 @@ MonoBehaviour:
   canvasGroupFader: {fileID: 8199396344479588534}
   EgressSphere: {fileID: 675935385017318389}
   EditableIdentifier: wood
+  IsAlwaysVisible: 1
 --- !u!225 &7207242450584937013
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -30716,13 +30719,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
-  portalType: 50
-  cardPositions:
-  - {fileID: 7253193627559146191}
-  - {fileID: 7253762634435378371}
-  - {fileID: 7253142862119647501}
-  activeGlow: {fileID: 7359745066134023005}
+  viz: {fileID: 0}
+  SlotLabel: {fileID: 0}
+  border: {fileID: 0}
   slotGlow: {fileID: 7359264095444223943}
+  slotIconHolder: {fileID: 0}
+  activeGlow: {fileID: 7359745066134023005}
   defaultBackgroundColor: {r: 0.72156864, g: 0.8666667, b: 1, a: 1}
   doorColor: {fileID: 7359286302368940291}
 --- !u!111 &7399097800641537687
@@ -31598,13 +31600,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
-  portalType: 40
-  cardPositions:
-  - {fileID: 7326354428086334444}
-  - {fileID: 7326933328731160032}
-  - {fileID: 7326409522853263406}
-  activeGlow: {fileID: 7433160953121876606}
+  viz: {fileID: 0}
+  SlotLabel: {fileID: 0}
+  border: {fileID: 0}
   slotGlow: {fileID: 7432538151576749796}
+  slotIconHolder: {fileID: 0}
+  activeGlow: {fileID: 7433160953121876606}
   defaultBackgroundColor: {r: 0.49803922, g: 0.7764706, b: 0.9019608, a: 1}
   doorColor: {fileID: 7432516374282453024}
 --- !u!114 &7433160953121876606
@@ -32176,10 +32177,10 @@ RectTransform:
   m_Father: {fileID: 2051024982}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.41731036, y: 0.76082355}
-  m_AnchorMax: {x: 0.41731036, y: 0.76082355}
-  m_AnchoredPosition: {x: -1571.4604, y: 1358.9626}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -62, y: 55}
+  m_SizeDelta: {x: 149.99998, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &8484592619531101641
 RectTransform:
@@ -32516,13 +32517,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GreedyIcon: {fileID: 0}
   ConsumingIcon: {fileID: 0}
-  portalType: 60
-  cardPositions:
-  - {fileID: 8484037927477898181}
-  - {fileID: 8484592619531101641}
-  - {fileID: 8484088622050828295}
-  activeGlow: {fileID: 8590281502042026583}
+  viz: {fileID: 0}
+  SlotLabel: {fileID: 0}
+  border: {fileID: 0}
   slotGlow: {fileID: 8589636708112637645}
+  slotIconHolder: {fileID: 0}
+  activeGlow: {fileID: 8590281502042026583}
   defaultBackgroundColor: {r: 0.85882354, g: 0.7254902, b: 0.972549, a: 1}
   doorColor: {fileID: 8589685282915325961}
 --- !u!114 &8590281502042026583
