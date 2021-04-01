@@ -35,7 +35,8 @@ namespace SecretHistories.Spheres
     {
         GreedyAngel,
       InboundTravellingStack,
-      Retiring
+      Retiring,
+      Inactive
     }
 
     public enum BlockDirection

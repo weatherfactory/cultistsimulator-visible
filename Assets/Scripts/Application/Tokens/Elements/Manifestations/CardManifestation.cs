@@ -149,12 +149,12 @@ namespace SecretHistories.Manifestations
         {
             if (highlightType == HighlightType.WillInteract)
             {
-                SetGlowColor(UIStyle.TokenGlowColor.Default);
+                SetGlowColor(UIStyle.GlowPurpose.Default);
                 ShowGlow(true,false);
             }
             else if (highlightType == HighlightType.AttentionPls)
             {
-                SetGlowColor(UIStyle.TokenGlowColor.Default);
+                SetGlowColor(UIStyle.GlowPurpose.Default);
                 StartCoroutine(PulseGlow());
             }
             else if (highlightType == HighlightType.PotentiallyRelevant)
@@ -324,9 +324,9 @@ namespace SecretHistories.Manifestations
                 glowImage.SetColor(color);
         }
 
-        private void SetGlowColor(UIStyle.TokenGlowColor colorType)
+        private void SetGlowColor(UIStyle.GlowPurpose purposeType)
         {
-            SetGlowColor(UIStyle.GetGlowColor(colorType));
+            SetGlowColor(UIStyle.GetGlowColor(purposeType,UIStyle.GlowTheme.Classic));
         }
 
         private void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null)
@@ -337,7 +337,7 @@ namespace SecretHistories.Manifestations
                 if (playSFX)
                     SoundManager.PlaySfx("TokenHover");
 
-                glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover) : hoverColor.Value);
+                glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.GlowPurpose.OnHover, UIStyle.GlowTheme.Classic) : hoverColor.Value);
                 glowImage.Show();
             }
             else

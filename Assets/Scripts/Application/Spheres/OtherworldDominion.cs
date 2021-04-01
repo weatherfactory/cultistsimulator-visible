@@ -38,10 +38,17 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
             Identifier = EditableIdentifier;
         }
 
+        public bool MatchesEgress(string egressId)
+        
+        {
+            //Portal identifiers used to be enums, with ToString= eg Wood. Let's be extra forgiving.
+            return String.Equals(Identifier, egressId, StringComparison.InvariantCultureIgnoreCase);
+        }
+
         public override bool VisibleFor(string egressId)
         { 
-            //Portal identifiers used to be enums, with ToString= eg Wood. Let's be extra forgiving.
-            if (String.Equals(Identifier, egressId, StringComparison.InvariantCultureIgnoreCase))
+
+            if (MatchesEgress(egressId))
                 return true;
             else
                 return IsAlwaysVisible;
@@ -71,13 +78,11 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
         public override void Evoke()
         {
             canvasGroupFader.Show();
-            EgressSphere.SetAsActive(true);
         }
 
         public override void Dismiss()
         {
             canvasGroupFader.Hide();
-            EgressSphere.SetAsActive(false);
         }
 
         public override bool CanCreateSphere(SphereSpec spec)

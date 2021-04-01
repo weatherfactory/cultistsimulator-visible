@@ -18,6 +18,7 @@ using SecretHistories.Otherworlds;
 using SecretHistories.Spheres;
 using SecretHistories.Tokens.TokenPayloads;
 using SecretHistories.UI;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.UI
@@ -215,7 +216,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
             
 
-            DisplayOrHideDominions();
+            ActivateDominionsAndDoors();
             foreach (var d in _dominions)
             {
                 d.EgressSphere.SetEvictionDestination(_activeIngress.GetEgressOutputSphere());
@@ -226,14 +227,20 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             EnactConsequences();
         }
 
-        private void DisplayOrHideDominions()
+        private void ActivateDominionsAndDoors()
         {
-            foreach (var d in Dominions)
+            foreach (var d in _dominions)
             {
                 if(d.VisibleFor(_activeIngress.GetEgressId()))
                     d.Evoke();
                 else
                     d.Dismiss();
+
+                if (d.MatchesEgress(_activeIngress.GetEgressId()))
+                    d.EgressSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Inactive));
+
+                else
+                    d.EgressSphere.AddBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Inactive));
             }
         }
 

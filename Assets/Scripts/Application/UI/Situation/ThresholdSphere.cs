@@ -28,6 +28,7 @@ namespace SecretHistories.UI
         public Graphic border;
         public GraphicFader slotGlow;
         public LayoutGroup slotIconHolder;
+        protected virtual UIStyle.GlowTheme GlowTheme=>UIStyle.GlowTheme.Classic;
 
 
         public override bool AllowStackMerge { get { return false; } }
@@ -42,7 +43,6 @@ namespace SecretHistories.UI
 
         public void Start() {
             slotGlow.Hide();
-            
         }
 
 
@@ -63,6 +63,9 @@ namespace SecretHistories.UI
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
             if (GoverningSphereSpec.Greedy) // never show glow for greedy slots
+                return;
+
+            if (CurrentlyBlockedFor(BlockDirection.Inward))
                 return;
 
             //if we're not dragging anything, and the slot is empty, glow the slot.
@@ -98,8 +101,8 @@ namespace SecretHistories.UI
             HideHoverGlow();
         }
 
-        public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
-            SetGlowColor(UIStyle.GetGlowColor(colorType));
+        public void SetGlowColor(UIStyle.GlowPurpose purposeType) {
+            SetGlowColor(UIStyle.GetGlowColor(purposeType,GlowTheme));
         }
 
         public void SetGlowColor(Color color) {
@@ -109,7 +112,7 @@ namespace SecretHistories.UI
 
         private  void ShowHoverGlow() {
 
-                SetGlowColor(UIStyle.TokenGlowColor.OnHover);
+                SetGlowColor(UIStyle.GlowPurpose.OnHover);
                 SoundManager.PlaySfx("TokenHover");
                 slotGlow.Show();
 
@@ -117,7 +120,7 @@ namespace SecretHistories.UI
 
         private void HideHoverGlow()
         {
-            SetGlowColor(UIStyle.TokenGlowColor.Default);
+            SetGlowColor(UIStyle.GlowPurpose.Default);
 
         }
 

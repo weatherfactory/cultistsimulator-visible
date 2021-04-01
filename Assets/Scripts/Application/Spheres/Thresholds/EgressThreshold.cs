@@ -23,26 +23,27 @@ namespace SecretHistories.UI {
         public Image activeGlow;
         public Color defaultBackgroundColor;
         public Image doorColor;
-        bool isActive;
+        protected override UIStyle.GlowTheme GlowTheme => UIStyle.GlowTheme.Classic;
 
-        const float glowDefaultFactor = 0.65f;
-
+        
         public override bool AllowDrag { get { return false; } }
         public override bool AllowStackMerge { get { return false; } }
         private Sphere _evictionDestination;
 
 
-        //public void Start()
-        //{
-        //    ShowGlow(false, true);
-        //    slotGlow.Hide(true);
-        //}
-        
-        
+        public void Start()
+        {
+            doorColor.color = defaultBackgroundColor;
+            activeGlow.color = defaultBackgroundColor;
+        }
+
+
         public void SetEvictionDestination(Sphere destinationSphere)
         {
             _evictionDestination = destinationSphere;
         }
+
+        
 
 
         public override void EvictToken(Token token, Context context)
@@ -50,16 +51,8 @@ namespace SecretHistories.UI {
             if(_evictionDestination!=null)
                 _evictionDestination.AcceptToken(token,context);
             else
-            base.EvictToken(token,context);
+              base.EvictToken(token,context);
 
-        }
-
-        public void SetAsActive(bool active) {
-            isActive = active;
-            activeGlow.gameObject.SetActive(active);
-            doorColor.color = defaultBackgroundColor;
-            activeGlow.color = defaultBackgroundColor;
-     //       ShowGlow(false, true);
         }
 
 

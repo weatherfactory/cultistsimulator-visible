@@ -7544,6 +7544,7 @@ GameObject:
   - component: {fileID: 627808687}
   - component: {fileID: 627808686}
   - component: {fileID: 627808685}
+  - component: {fileID: 627808688}
   m_Layer: 5
   m_Name: DominionSpider
   m_TagString: Untagged
@@ -7617,6 +7618,19 @@ MonoBehaviour:
   EgressSphere: {fileID: 7432958911624007776}
   EditableIdentifier: spiderdoor
   IsAlwaysVisible: 1
+--- !u!114 &627808688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627808683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyId: mansusthresholdspider
 --- !u!1 &633230593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1784193620949908711, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
@@ -20801,7 +20815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplyId: mansus.threshold.wood
+  ApplyId: mansusthresholdwood
 --- !u!1 &644338997595237455
 GameObject:
   m_ObjectHideFlags: 0
@@ -22292,7 +22306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2918241247813129172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27975,13 +27989,27 @@ GameObject:
   - component: {fileID: 3633309130448924956}
   - component: {fileID: 3522978690608700880}
   - component: {fileID: 3625842170211564756}
+  - component: {fileID: 3563966723320882809}
   m_Layer: 5
-  m_Name: DoorSlot_White
+  m_Name: MansusThresholdWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3563966723320882809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563966723320882808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyId: mansusthresholdwhite
 --- !u!1 &3564362873075421228
 GameObject:
   m_ObjectHideFlags: 0
@@ -28315,13 +28343,27 @@ GameObject:
   - component: {fileID: 4842149869678886140}
   - component: {fileID: 4736375815170560048}
   - component: {fileID: 4832163388495360308}
+  - component: {fileID: 4623822546324958105}
   m_Layer: 5
-  m_Name: DoorSlot_Stag
+  m_Name: mansusthresholdstag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4623822546324958105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623822546324958104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyId: mansusthresholdstag
 --- !u!1 &4623979013626113928
 GameObject:
   m_ObjectHideFlags: 0
@@ -31034,7 +31076,7 @@ GameObject:
   - component: {fileID: 7432958911624007776}
   - component: {fileID: 7319082725774438756}
   m_Layer: 5
-  m_Name: DoorSlot_Spider
+  m_Name: mansusthresholdspider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31665,13 +31707,27 @@ GameObject:
   - component: {fileID: 7254137954850028943}
   - component: {fileID: 7359964923290734915}
   - component: {fileID: 7248103039788363847}
+  - component: {fileID: 7472100377782807276}
   m_Layer: 5
-  m_Name: DoorSlot_Peacock
+  m_Name: mansusthresholdpeacock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7472100377782807276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7472100377782807275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyId: mansusthresholdpeacock
 --- !u!1 &7472186215289188091
 GameObject:
   m_ObjectHideFlags: 0
