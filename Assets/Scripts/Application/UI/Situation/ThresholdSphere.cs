@@ -18,6 +18,7 @@ namespace SecretHistories.UI
 
     [IsEmulousEncaustable(typeof(Sphere))]
     [RequireComponent(typeof(SphereDropCatcher))]
+    [RequireComponent(typeof(TokenMovementReactionDecorator))]
     public class ThresholdSphere : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
@@ -122,7 +123,6 @@ namespace SecretHistories.UI
         private void HideHoverGlow()
         {
             SetGlowColor(UIStyle.GlowPurpose.Default);
-
         }
 
 
@@ -287,11 +287,13 @@ namespace SecretHistories.UI
 
         public void ShowPossibleInteractionWithToken(Token token)
         {
+          SetGlowColor(UIStyle.GlowPurpose.Hint);
             slotGlow.Show(false);
         }
 
         public void StopShowingPossibleInteractionWithToken(Token token)
         {
+            SetGlowColor(UIStyle.GlowPurpose.Default);
             slotGlow.Hide(false);
 
         }

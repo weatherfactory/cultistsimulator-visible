@@ -44,8 +44,6 @@ namespace SecretHistories.UI {
         }
 
         
-
-
         public override void EvictToken(Token token, Context context)
         {
             if(_evictionDestination!=null)

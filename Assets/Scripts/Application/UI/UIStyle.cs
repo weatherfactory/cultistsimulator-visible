@@ -4,7 +4,7 @@ using SecretHistories.Entities;
 using UnityEngine;
 
 public static class UIStyle {
-    public enum GlowPurpose { Default, OnHover }
+    public enum GlowPurpose { Default, OnHover, Hint}
     public enum GlowTheme {Classic,Mansus}
     
     public static Color aspectHover = new Color32(0xDD, 0xDD, 0xDD, 0xFF);
@@ -62,6 +62,11 @@ public static class UIStyle {
                     return lightBlue;
                 else
                     return coldWhite;
+            case GlowPurpose.Hint:
+                if (theme == GlowTheme.Classic)
+                    return coldWhite;
+                else
+                    return warmWhite;
             default:
                 return brightPink;
         }
