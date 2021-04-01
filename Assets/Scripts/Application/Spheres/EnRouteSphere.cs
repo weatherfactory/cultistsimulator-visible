@@ -19,19 +19,32 @@ namespace SecretHistories.Spheres
     {
 
         public override SphereCategory SphereCategory => SphereCategory.World;
-        public override float TokenHeartbeatIntervalMultiplier => 1;
+        public override float TokenHeartbeatIntervalMultiplier => SpecifiedTokenHeartbeatIntervalMultiplier;
+        [SerializeField] private float SpecifiedTokenHeartbeatIntervalMultiplier;
+        private Sphere _overridingDefaultDestination;
 
         public override bool ProcessEvictedToken(Token token, Context context)
         {
             //accept it before moving it on: the place it's come from may just have been destroyed, so we want it out of harm's way
             AcceptToken(token,context);
             token.MakeInteractable(); //if we got stuck halfway through a drag event, let's make sure we restore raycasting &c
-            var nextStop = Watchman.Get<HornedAxe>().GetDefaultSphere();
-            nextStop.ProcessEvictedToken(token, context);
+            
+            if (_overridingDefaultDestination != null)
+              _overridingDefaultDestination.AcceptToken(token,context);
+            else
+            {
+            
+                var  nextStop = Watchman.Get<HornedAxe>().GetDefaultSphere();
+                nextStop.ProcessEvictedToken(token, context);
+            }
             return true;
             
         }
 
+        public void SetOverridingNextStop(Sphere overridingNextStop)
+        {
+            _overridingDefaultDestination = overridingNextStop;
+        }
 
         public override void NotifyTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {

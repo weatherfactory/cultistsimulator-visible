@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
+using SecretHistories.UI;
 
 namespace SecretHistories.Assets.Scripts.Application.UI.Otherworlds
 {
@@ -28,8 +29,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Otherworlds
                 return;
             if(args.Sphere == _respondToThisSphere)
             {
-                _otherworld.Hide();
-
+               Watchman.Get<Numa>().HideCurrentOtherworld();
             }
         }
     }

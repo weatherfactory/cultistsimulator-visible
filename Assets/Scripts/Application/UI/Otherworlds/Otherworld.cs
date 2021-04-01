@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Logic;
+﻿using Assets.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Assets.Scripts.Application.Spheres;
 using SecretHistories.Assets.Scripts.Application.UI.Otherworlds;
-using SecretHistories.Constants.Events;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -18,7 +12,9 @@ using SecretHistories.Otherworlds;
 using SecretHistories.Spheres;
 using SecretHistories.Tokens.TokenPayloads;
 using SecretHistories.UI;
-using UnityEditor.Experimental.GraphView;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.UI
@@ -30,11 +26,13 @@ namespace SecretHistories.Assets.Scripts.Application.UI
          List<AbstractDominion> Dominions=>new List<AbstractDominion>(_dominions);
          [SerializeField] private List<OtherworldDominion> _dominions;
         [SerializeField] private OtherworldAnimation EntryAnimation;
+        [SerializeField] private EnRouteSphere otherworldSpecificEnRouteSphere;
 
         private readonly HashSet<Sphere> _spheres=new HashSet<Sphere>();
         private readonly List<AbstractOtherworldAttendant> _attendants=new List<AbstractOtherworldAttendant>();
 
         private Ingress _activeIngress;
+        private EgressThreshold _activeEgress;
 
         public string Id => gameObject.name;
         public string EntityId => editableId;
@@ -69,6 +67,9 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         public Sphere GetEnRouteSphere()
         {
+            if (otherworldSpecificEnRouteSphere != null)
+                return otherworldSpecificEnRouteSphere;
+
             return FucineRoot.Get().GetEnRouteSphere();
         }
 
@@ -139,9 +140,17 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         /// </summary>
         public void Prepare()
         {
-            
+
+
             foreach (var d in Dominions)
                 d.RegisterFor(this);
+
+
+            //I really might need to rethink this approach
+            var permanentSphereSpec = otherworldSpecificEnRouteSphere.GetComponent<PermanentSphereSpec>();
+            permanentSphereSpec.ApplySpecToSphere(otherworldSpecificEnRouteSphere);
+            otherworldSpecificEnRouteSphere.SetContainer(this);
+            
         }
 
 
@@ -172,11 +181,10 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             return true;
         }
 
-
         public void Show(Transform effectCenter,Ingress ingress)
         {
             _activeIngress = ingress;
-
+            
             if (!EntryAnimation.CanShow())
                 return;
 
@@ -191,6 +199,9 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             OnArrival();
         }
 
+        /// <summary>
+        /// call this from Numa, not directly
+        /// </summary>
         public void Hide()
         {
             if (!EntryAnimation.CanHide())
@@ -210,16 +221,20 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         private void OnLeave()
         {
             UnregisterAllAttendants();
-            foreach(var d in _dominions)
-                d.EgressSphere.EvictAllTokens(Context.Unknown());
+            if(_activeEgress!=null)
+            {
+                _activeEgress.EvictAllTokens(Context.Unknown());
+                _activeEgress = null;
+                otherworldSpecificEnRouteSphere.SetOverridingNextStop(_activeEgress);
+            }
         }
 
         public void OnArrival()
         {
             RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
             
-
             ActivateDominionsAndDoors();
+
             foreach (var d in _dominions)
             {
                 d.EgressSphere.SetEvictionDestination(_activeIngress.GetEgressOutputSphere());
@@ -240,8 +255,11 @@ namespace SecretHistories.Assets.Scripts.Application.UI
                     d.Dismiss();
 
                 if (d.MatchesEgress(_activeIngress.GetEgressId()))
+                {
                     d.EgressSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Inactive));
-
+                    _activeEgress = d.EgressSphere;
+                    otherworldSpecificEnRouteSphere.SetOverridingNextStop(_activeEgress);
+                }
                 else
                     d.EgressSphere.AddBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Inactive));
             }

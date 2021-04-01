@@ -72,9 +72,6 @@ namespace SecretHistories.UI {
 
         [DontEncaust]
         public virtual Sphere Sphere { get; set; }
-        [DontEncaust]
-        protected Sphere OldSphere  { get; set; }// Used to tell OldContainsTokens that this thing was dropped successfully
-
 
         [Header("Movement")]
         public bool PauseAnimations;
@@ -365,17 +362,15 @@ public bool IsValidElementStack()
 
     public void SetSphere(Sphere newSphere, Context context)
         {
-            OldSphere = Sphere;
+            var oldSphere = Sphere;
             Sphere = newSphere;
 
-            if (OldSphere != null && OldSphere != newSphere)
+            if (oldSphere != null && oldSphere != newSphere)
             {
-                OldSphere.RemoveToken(this,context);
-                if (OldSphere.ContentsHidden && !newSphere.ContentsHidden)
+                oldSphere.RemoveToken(this,context);
+                if (oldSphere.ContentsHidden && !newSphere.ContentsHidden)
                     _manifestation.UpdateVisuals(Payload);
             }
-
-            Sphere = newSphere;
         }
 
 

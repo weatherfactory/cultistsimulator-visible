@@ -110,7 +110,6 @@ namespace SecretHistories.Spheres
 
         public IHasAspects GetContainer()
         {
-
             return _container;
         }
 
