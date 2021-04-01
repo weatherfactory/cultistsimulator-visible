@@ -29,6 +29,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         [SerializeField] private EnRouteSphere otherworldSpecificEnRouteSphere;
         [SerializeField] private string EntrySfxName;
         [SerializeField] private string ExitSfxName;
+        [SerializeField] private string Music;
 
 
         private readonly HashSet<Sphere> _spheres=new HashSet<Sphere>();
@@ -189,6 +190,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
                 return;
 
             SoundManager.PlaySfx(EntrySfxName);
+   
 
             EntryAnimation.onAnimationComplete += OnShowComplete;
             EntryAnimation.SetCenterForEffect(effectCenter);
@@ -232,6 +234,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
                 _activeEgress = null;
                 otherworldSpecificEnRouteSphere.SetOverridingNextStop(_activeEgress);
             }
+
+            Watchman.Get<BackgroundMusic>().PlayRandomClip();
         }
 
         public void OnArrival()
@@ -248,6 +252,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             }
 
             EnactConsequences();
+            Watchman.Get<BackgroundMusic>().PlayOtherworldClip(Music);
         }
 
         private void ActivateDominionsAndDoors()

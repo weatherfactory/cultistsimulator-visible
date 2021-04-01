@@ -147,8 +147,8 @@ public class ResourcesManager: MonoBehaviour
         return Resources.LoadAll<AudioClip>("music/impendingdoom");
     }
 
-    public static IEnumerable<AudioClip> GetMansusMusic() {
-        return Resources.LoadAll<AudioClip>("music/mansus");
+    public static IEnumerable<AudioClip> GetOtherworldMusic() {
+        return Resources.LoadAll<AudioClip>("music/otherworld");
     }
 
     public static IEnumerable<AudioClip> GetEndingMusic(EndingFlavour endingFlavour)

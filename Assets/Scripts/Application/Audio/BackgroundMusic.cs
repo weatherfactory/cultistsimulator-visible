@@ -15,7 +15,7 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
 
     protected IEnumerable<AudioClip> backgroundMusic;
     protected IEnumerable<AudioClip> impendingDoomMusic;
-    protected IEnumerable<AudioClip> mansusMusic;
+    protected IEnumerable<AudioClip> otherworldMusic;
 
     [SerializeField]
     private AudioSource audioSource;
@@ -34,7 +34,7 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
         w.Register(this);
         backgroundMusic = ResourcesManager.GetBackgroundMusic();
         impendingDoomMusic = ResourcesManager.GetImpendingDoomMusic();
-        mansusMusic = ResourcesManager.GetMansusMusic();
+        otherworldMusic = ResourcesManager.GetOtherworldMusic();
         random = new System.Random();
     }
 
@@ -86,8 +86,17 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
 
     }
 
-    public void PlayMansusClip() {
-        PlayClip(0, mansusMusic);
+    public void PlayOtherworldClip(string trackName)
+    {
+        var clip = otherworldMusic.SingleOrDefault(c => c.name == trackName);
+        if (clip == null)
+        {
+            NoonUtility.Log($"Couldn't find track name {trackName} in otherworld clips");
+            return;
+        }
+        audioSource.Stop();
+        audioSource.PlayOneShot(clip);
+        NoonUtility.Log("Playing" + currentClip.name, 0, VerbosityLevel.Trivia);
     }
 
     public void SignalEndingFlavour(EndingFlavour endingFlavour) {
