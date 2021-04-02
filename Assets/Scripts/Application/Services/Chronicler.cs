@@ -316,21 +316,21 @@ namespace SecretHistories.Services
 			}
         }
 
-        public void ChronicleMansusEntry(string portalEffect)
+        public void ChronicleOtherworldEntry(string portalEffect)
         {
             var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
 
-            if(portalEffect==PortalEffect.Wood.ToString())
+            if(portalEffect.ToLower()==PortalEffect.Wood.ToString().ToLower())
                 storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_WOOD",true);
-            else if (portalEffect == PortalEffect.WhiteDoor.ToString())
+            else if (portalEffect.ToLower() == PortalEffect.WhiteDoor.ToString().ToLower())
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_WHITEDOOR", true);
-            else if (portalEffect == PortalEffect.StagDoor.ToString())
+            else if (portalEffect.ToLower() == PortalEffect.StagDoor.ToString().ToLower())
                 storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_STAGDOOR", true);
-            else if (portalEffect == PortalEffect.SpiderDoor.ToString())
+            else if (portalEffect.ToLower() == PortalEffect.SpiderDoor.ToString().ToLower())
                 storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_SPIDERDOOR", true);
-            else if (portalEffect == PortalEffect.PeacockDoor.ToString())
+            else if (portalEffect.ToLower() == PortalEffect.PeacockDoor.ToString().ToLower())
                 storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_PEACOCKDOOR", true);
-            else if (portalEffect == PortalEffect.TricuspidGate.ToString())
+            else if (portalEffect.ToLower() == PortalEffect.TricuspidGate.ToString().ToLower())
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_TRICUSPIDGATE", true);
                     
         }

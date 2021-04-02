@@ -131,6 +131,7 @@ namespace SecretHistories.Manifestations
             artwork.sprite = sprite;
             title.text = manifestable.Label;
             egressMessage.text = manifestable.Description;
+
         }
 
 

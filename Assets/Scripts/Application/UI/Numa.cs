@@ -11,6 +11,7 @@ using SecretHistories.Assets.Scripts.Application.UI;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Infrastructure;
+using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.Tokens.TokenPayloads;
 using UnityEngine;
@@ -50,6 +51,8 @@ namespace SecretHistories.UI
                 otherworldToOpen.Show(atRectTransform, ingress);
                 _currentOtherworld = otherworldToOpen;
             }
+
+            Watchman.Get<Chronicler>()?.ChronicleOtherworldEntry(ingress.EntityId);
         }
 
         private async void PreOtherworldAutosave()

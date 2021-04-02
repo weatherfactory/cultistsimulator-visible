@@ -64,7 +64,13 @@ namespace SecretHistories.Constants {
 
             // TODO: play death effect / music
 
-            var menuBarCanvasGrp = menuCanvas.GetComponent<CanvasGroup>();
+            // Start hiding all tokens
+            RetireAllStacks(RetirementVFX.CardBurn);
+
+            // (Spawn specific effect based on token, depending on end-game-type)
+            InstantiateEffect(ending, culpableVerb.transform);
+
+            
             float time = 0f;
             Vector2 startPos = tableScroll.content.anchoredPosition;
             Vector2 targetPos = -1f * culpableVerb.TokenRectTransform.anchoredPosition + targetPosOffset;
@@ -72,14 +78,11 @@ namespace SecretHistories.Constants {
 
             Debug.Log("Target Zoom Pos " + targetPos);
 
-            // Start zoom in on offending token 
-			cameraZoom.StartFixedZoom(0f, zoomDuration);
 
-            // Start hiding all tokens
-            RetireAllStacks(RetirementVFX.CardBurn);
+            cameraZoom.StartFixedZoom(0f, zoomDuration);
 
-            // (Spawn specific effect based on token, depending on end-game-type)
-            InstantiateEffect(ending, culpableVerb.transform);
+            var menuBarCanvasGrp = menuCanvas.GetComponent<CanvasGroup>();
+
 
             while (time < zoomDuration && !_uiController.IsPressingAbortHotkey()) {
                 menuBarCanvasGrp.alpha = 1f - time; // remove lower button bar.
@@ -89,8 +92,11 @@ namespace SecretHistories.Constants {
             }
 
             // automatically jumps here on Abort - NOTE: At the moment this auto-focuses the token, but that's okay, it's important info
-            menuBarCanvasGrp.alpha = 0f;
             tableScroll.content.anchoredPosition = targetPos;
+
+
+            menuBarCanvasGrp.alpha = 0f;
+            
 
             // TODO: Put the fade into the while loop so that on aborting the zoom still continues
             FadeToBlack(fadeDuration);
