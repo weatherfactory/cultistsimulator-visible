@@ -19,6 +19,7 @@ using SecretHistories.NullObjects;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.SecretHistories.Spheres;
+using SecretHistories.Tokens.TokenPayloads;
 using SecretHistories.UI;
 using UnityEngine;
 
@@ -150,6 +151,17 @@ using UnityEngine;
             var encaustery = new Encaustery<DropzoneCreationCommand>();
            var dropzone=new Dropzone();
            encaustery.Encaust(dropzone);
+        }
+
+
+        [Test]
+        public void IngressToken_Encausts()
+        {
+            var encaustery = new Encaustery<IngressCreationCommand>();
+            var portal=new Portal{OtherworldId = "otherworldId",EgressId = "EgressId"};
+            portal.SetId("portalId");
+            var ingress = new Ingress(portal);
+            encaustery.Encaust(ingress);
         }
 
 }

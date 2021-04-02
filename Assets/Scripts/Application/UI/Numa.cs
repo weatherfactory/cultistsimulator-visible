@@ -33,9 +33,14 @@ namespace SecretHistories.UI
                 o.Prepare();
         }
 
+        public bool IsOtherworldActive()
+        {
+            return _currentOtherworld != null;
+        }
+
         public void Open(RectTransform atRectTransform, Ingress ingress)
         {
-
+            PreOtherworldAutosave();
 
             var otherworldToOpen = Otherworlds.SingleOrDefault(o => o.EntityId == ingress.GetOtherworldId());
             if (otherworldToOpen == null)
@@ -45,6 +50,13 @@ namespace SecretHistories.UI
                 otherworldToOpen.Show(atRectTransform, ingress);
                 _currentOtherworld = otherworldToOpen;
             }
+        }
+
+        private async void PreOtherworldAutosave()
+        {
+            var autosave = Watchman.Get<Autosaver>();
+            if(autosave!=null)
+             await   autosave.ForceAutosaveNow();
         }
 
         public void HideCurrentOtherworld()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 
@@ -45,6 +46,13 @@ namespace SecretHistories.Entities
         {
             foreach (var c in Consequences)
                 c.OnPostImport(log, populatedCompendium);
+        }
+
+        public string DefaultUniqueTokenId()
+        {
+            int identity = FucineRoot.Get().IncrementedIdentity();
+            string uniqueId = $"!{Id}_{identity}";
+            return uniqueId;
         }
     }
 }

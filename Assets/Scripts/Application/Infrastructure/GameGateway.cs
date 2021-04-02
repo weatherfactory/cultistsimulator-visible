@@ -104,12 +104,25 @@ namespace SecretHistories.Constants
         }
 
 
-        public async void DefaultSave()
+        public async Task<bool> TryDefaultSave()
         {
+            if (!gameInSaveableState())
+                return false;
+
             var game = new DefaultGamePersistenceProvider();
             game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
             var saveTask = game.SerialiseAndSaveAsync();
             var result = await saveTask;
+            return result;
+        }
+
+        private bool gameInSaveableState()
+        {
+            var numa = Watchman.Get<Numa>();
+            if (numa == null)
+                return true;
+
+            return !numa.IsOtherworldActive();
         }
 
 
@@ -132,7 +145,7 @@ namespace SecretHistories.Constants
         {
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
 
-            DefaultSave();
+            TryDefaultSave();
 
             Watchman.Get<StageHand>().MenuScreen();
 

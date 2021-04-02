@@ -14,14 +14,13 @@ using SecretHistories.Services;
 
 using UnityEngine;
 
-namespace SecretHistories.Constants
+namespace SecretHistories.Infrastructure
 {
 
 
     public class Autosaver: MonoBehaviour, ISettingSubscriber
     {
 
-        [SerializeField] private GameGateway gameGateway;
 
         [SerializeField] private AutosaveWindow _autosaveNotifier;
 
@@ -30,6 +29,7 @@ namespace SecretHistories.Constants
 
       [SerializeField] private float AUTOSAVE_INTERVAL = 300.0f;
 
+      private GameGateway gameGateway;
 
       public void Awake()
       {
@@ -51,9 +51,25 @@ namespace SecretHistories.Constants
           }
           else
               NoonUtility.Log("Missing setting entity: " + NoonConstants.AUTOSAVEINTERVAL);
+
+
+          gameGateway = Watchman.Get<GameGateway>();
+          if(gameGateway==null)
+              NoonUtility.LogWarning("Can't find GameGateway; autosave won't run.");
       }
 
+      public async Task<bool> ForceAutosaveNow()
+      {
+          housekeepingTimer = 0f;
 
+          if (gameGateway != null)
+          {
+             await gameGateway.TryDefaultSave();
+              return true;
+          }
+
+          return false;
+      }
 
         protected void SetAutosaveInterval(float minutes)
         {
@@ -73,7 +89,9 @@ namespace SecretHistories.Constants
                 _autosaveNotifier.SetDuration(3.0f);
                   _autosaveNotifier.Show();
                   housekeepingTimer = 0f;
-                  gameGateway.DefaultSave();
+                
+                if(gameGateway!=null)
+                    gameGateway.TryDefaultSave();
             }
         }
 

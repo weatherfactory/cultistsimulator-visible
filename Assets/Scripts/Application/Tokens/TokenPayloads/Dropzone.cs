@@ -31,7 +31,7 @@ namespace SecretHistories.Entities.Verbs
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
 #pragma warning restore 67
-        [DontEncaust]
+        [Encaust]
         public string Id { get; private set; }
         [DontEncaust]
         public Token Token

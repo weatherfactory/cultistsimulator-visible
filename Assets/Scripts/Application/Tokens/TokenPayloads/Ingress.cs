@@ -34,7 +34,7 @@ namespace SecretHistories.Tokens.TokenPayloads
         private Portal _portal { get; set; }
 
 
-        [DontEncaust]
+        [Encaust]
         public string Id { get; private set; }
         [DontEncaust]
         public Token Token
@@ -48,22 +48,54 @@ namespace SecretHistories.Tokens.TokenPayloads
                 }
             }
         }
-
+        [DontEncaust]
         public bool IsOpen { get; protected set; }
+        [Encaust]
         public string EntityId => _portal.Id;
-        public string Label { get; protected set; }
-        public string Description { get; protected set; }
+        [Encaust]
+        public string Label { get; set; }
+        [Encaust]
+        public string Description { get; set; }
+        [Encaust]
         public int Quantity { get; }
+        [DontEncaust]
         public string UniquenessGroup { get; }
+        [DontEncaust]
         public bool Unique { get; }
+        [DontEncaust]
         public string Icon => _portal.Icon;
+        [DontEncaust]
         public bool Defunct
         { get; set; }
+        [Encaust]
+        public List<AbstractDominion> Dominions => new List<AbstractDominion>(_registeredDominions);
 
+        [Encaust]
+        public Dictionary<string, int> Mutations => _mutations;
+
+        public void SetMutation(string aspectId, int value, bool additive)
+        {
+            if (_mutations.ContainsKey(aspectId))
+            {
+                if (additive)
+                    _mutations[aspectId] += value;
+                else
+                    _mutations[aspectId] = value;
+
+                if (_mutations[aspectId] == 0)
+                    _mutations.Remove(aspectId);
+            }
+            else if (value != 0)
+            {
+                _mutations.Add(aspectId, value);
+            }
+
+        }
 
 
         private List<AbstractDominion> _registeredDominions=new List<AbstractDominion>();
         private List<Sphere> _spheres=new List<Sphere>();
+        private readonly Dictionary<string, int> _mutations=new Dictionary<string, int>();
 
         public Ingress(Portal portal)
         {
@@ -107,11 +139,7 @@ namespace SecretHistories.Tokens.TokenPayloads
             throw new NotImplementedException();
         }
 
-        public Dictionary<string, int> Mutations { get; }
-        public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public string GetSignature()
         {
@@ -175,8 +203,6 @@ namespace SecretHistories.Tokens.TokenPayloads
             _registeredDominions.Add(dominionToRegister);
                return true;
         }
-
-        public List<AbstractDominion> Dominions => new List<AbstractDominion>(_registeredDominions);
 
         public Sphere GetEgressOutputSphere()
         {

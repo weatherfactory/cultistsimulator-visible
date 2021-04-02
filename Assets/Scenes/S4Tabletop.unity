@@ -959,7 +959,7 @@ Transform:
   m_Children:
   - {fileID: 1851038294}
   m_Father: {fileID: 187}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &187
 Transform:
@@ -975,7 +975,6 @@ Transform:
   - {fileID: 318130294}
   - {fileID: 1506403064}
   - {fileID: 2130193019}
-  - {fileID: 1698081294}
   - {fileID: 190}
   - {fileID: 1514115095}
   - {fileID: 937582877}
@@ -997,7 +996,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 187}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!4 &190
 Transform:
@@ -1011,7 +1010,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 187}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &193 stripped
 Transform:
@@ -5620,8 +5619,6 @@ GameObject:
   - component: {fileID: 388977809}
   - component: {fileID: 388977808}
   - component: {fileID: 388977807}
-  - component: {fileID: 388977811}
-  - component: {fileID: 388977810}
   m_Layer: 5
   m_Name: DominionPeacock
   m_TagString: Untagged
@@ -5695,31 +5692,6 @@ MonoBehaviour:
   EgressSphere: {fileID: 7359964923290734915}
   EditableIdentifier: peacockdoor
   IsAlwaysVisible: 1
---- !u!114 &388977810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388977805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a5c6b13c46627442a5a2c35c6c51c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sphere: {fileID: 0}
---- !u!114 &388977811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388977805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab99a322f7e947344a21e3ffb6da6fef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &392807926
 GameObject:
   m_ObjectHideFlags: 0
@@ -7636,8 +7608,6 @@ GameObject:
   - component: {fileID: 627808687}
   - component: {fileID: 627808686}
   - component: {fileID: 627808685}
-  - component: {fileID: 627808689}
-  - component: {fileID: 627808688}
   m_Layer: 5
   m_Name: DominionSpider
   m_TagString: Untagged
@@ -7711,31 +7681,6 @@ MonoBehaviour:
   EgressSphere: {fileID: 7432958911624007776}
   EditableIdentifier: spiderdoor
   IsAlwaysVisible: 1
---- !u!114 &627808688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627808683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a5c6b13c46627442a5a2c35c6c51c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sphere: {fileID: 0}
---- !u!114 &627808689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627808683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab99a322f7e947344a21e3ffb6da6fef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &633230593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1784193620949908711, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
@@ -10143,7 +10088,7 @@ Transform:
   m_Children:
   - {fileID: 202816350}
   m_Father: {fileID: 187}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937582878
 MonoBehaviour:
@@ -16136,7 +16081,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 187}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1514115096
 MonoBehaviour:
@@ -16250,8 +16195,6 @@ GameObject:
   - component: {fileID: 1527107303}
   - component: {fileID: 1527107302}
   - component: {fileID: 1527107301}
-  - component: {fileID: 1527107305}
-  - component: {fileID: 1527107304}
   m_Layer: 5
   m_Name: DominionStag
   m_TagString: Untagged
@@ -16325,31 +16268,6 @@ MonoBehaviour:
   EgressSphere: {fileID: 4736375815170560048}
   EditableIdentifier: stagdoor
   IsAlwaysVisible: 1
---- !u!114 &1527107304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527107299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a5c6b13c46627442a5a2c35c6c51c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sphere: {fileID: 0}
---- !u!114 &1527107305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527107299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab99a322f7e947344a21e3ffb6da6fef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1545887499
 GameObject:
   m_ObjectHideFlags: 0
@@ -17762,49 +17680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e5eb293a8c40e2b25b8c854c3ad5ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1698081293
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1698081294}
-  - component: {fileID: 1698081295}
-  m_Layer: 0
-  m_Name: MapController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1698081294
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1698081293}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 187}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1698081295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1698081293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f59ab3d2751c06f4299d99d4feb8e5a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1708684190
 GameObject:
   m_ObjectHideFlags: 0
@@ -18431,8 +18306,6 @@ GameObject:
   - component: {fileID: 1820579730}
   - component: {fileID: 1820579729}
   - component: {fileID: 1820579728}
-  - component: {fileID: 1820579732}
-  - component: {fileID: 1820579731}
   m_Layer: 5
   m_Name: DominionWhite
   m_TagString: Untagged
@@ -18506,31 +18379,6 @@ MonoBehaviour:
   EgressSphere: {fileID: 3522978690608700880}
   EditableIdentifier: whitedoor
   IsAlwaysVisible: 1
---- !u!114 &1820579731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820579726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a5c6b13c46627442a5a2c35c6c51c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sphere: {fileID: 0}
---- !u!114 &1820579732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820579726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab99a322f7e947344a21e3ffb6da6fef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1833504807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18916,7 +18764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a838b64008588469d96e05929a4083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameGateway: {fileID: 318130295}
   _autosaveNotifier: {fileID: 1985926805}
   housekeepingTimer: 0
   AUTOSAVE_INTERVAL: 300
@@ -20433,8 +20280,6 @@ GameObject:
   - component: {fileID: 2051024985}
   - component: {fileID: 2051024984}
   - component: {fileID: 2051024983}
-  - component: {fileID: 2051024987}
-  - component: {fileID: 2051024986}
   m_Layer: 5
   m_Name: DominionTricuspid
   m_TagString: Untagged
@@ -20508,31 +20353,6 @@ MonoBehaviour:
   EgressSphere: {fileID: 8590061851706689609}
   EditableIdentifier: tricuspidgate
   IsAlwaysVisible: 1
---- !u!114 &2051024986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2051024981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a5c6b13c46627442a5a2c35c6c51c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sphere: {fileID: 0}
---- !u!114 &2051024987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2051024981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab99a322f7e947344a21e3ffb6da6fef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2090570202
 GameObject:
   m_ObjectHideFlags: 0
