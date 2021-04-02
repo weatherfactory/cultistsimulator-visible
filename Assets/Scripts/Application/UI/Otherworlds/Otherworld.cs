@@ -240,6 +240,14 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         public void OnArrival()
         {
+            //WELCOME BACK AK. THIS SHOULD DO A CameraZoom.ZoomToTransformAnchoredPosition
+
+            //ONCE I've SORTED OUT POSITIONING
+
+
+            //LOVE, AK
+
+
             RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
             
             ActivateDominionsAndDoors();
