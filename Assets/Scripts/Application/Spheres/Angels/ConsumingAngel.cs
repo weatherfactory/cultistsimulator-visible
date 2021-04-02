@@ -26,8 +26,8 @@ namespace SecretHistories.Spheres.Angels
             if(_watchingOverThreshold == null)
                 NoonUtility.LogWarning($"tried to set a consuming angel to watch over sphere {sphere.Id}, but it isn't a threshold sphere, so that won't work.");
             else
-            {if(_watchingOverThreshold.ConsumingIcon!=null)
-                    _watchingOverThreshold.ConsumingIcon.SetActive(true);
+            {
+                _watchingOverThreshold.ShowAngelPresence(this);
             }
         }
 
@@ -49,9 +49,27 @@ namespace SecretHistories.Spheres.Angels
 
         public void Retire()
         {
+            _watchingOverThreshold.HideAngelPresence(this);
             Defunct = true;
         }
 
         public bool Defunct { get; protected set; }
+        public void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
+        {
+            var consumingV =
+                visibleCharacteristics.Where(v => v.VisibleCharacteristicId == VisibleCharacteristicId.Consuming);
+
+            foreach(var v in consumingV)
+                v.Show();
+        }
+
+        public void HideRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
+        {
+            var consumingV =
+                visibleCharacteristics.Where(v => v.VisibleCharacteristicId == VisibleCharacteristicId.Consuming);
+
+            foreach (var v in consumingV)
+                v.Hide();
+        }
     }
 }

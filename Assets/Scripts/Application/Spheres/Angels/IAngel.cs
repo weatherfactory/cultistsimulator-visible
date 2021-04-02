@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.UI;
 using SecretHistories.Constants;
+using UnityEngine;
 
 namespace SecretHistories.Spheres.Angels
 {
@@ -26,5 +27,7 @@ namespace SecretHistories.Spheres.Angels
         void Retire();
 
         bool Defunct { get; }
+        void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics);
+        void HideRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics);
    }
 }

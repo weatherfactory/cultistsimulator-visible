@@ -66,6 +66,14 @@ namespace SecretHistories.Spheres.Angels
         }
 
         public bool Defunct { get; protected set; }
-    
-}
+        public void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
+        {
+            //
+        }
+
+        public void HideRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
+        {
+            //
+        }
+    }
 }

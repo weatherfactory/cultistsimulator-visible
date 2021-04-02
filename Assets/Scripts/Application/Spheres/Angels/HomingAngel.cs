@@ -69,9 +69,18 @@ namespace SecretHistories.Spheres.Angels
         }
 
         public bool Defunct { get; protected set; }
-    
+        public void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
+        {
+            //
+        }
 
-    private void ReturnToOriginTokenLocation(Context context)
+        public void HideRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
+        {
+            //
+        }
+
+
+        private void ReturnToOriginTokenLocation(Context context)
         {
             var destination = OriginToken.TokenRectTransform.anchoredPosition3D;
             SendToken(TokenToBringHome, destination, context);

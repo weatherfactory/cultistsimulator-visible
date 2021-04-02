@@ -43,9 +43,8 @@ namespace SecretHistories.Spheres.Angels
         public void SetWatch(Sphere thresholdSphereToGrabTo)
         {
             _thresholdSphereToGrabTo = thresholdSphereToGrabTo as ThresholdSphere;
-            if (_thresholdSphereToGrabTo.GreedyIcon != null)
-                thresholdSphereToGrabTo.GreedyIcon.SetActive(true);
-
+     
+            thresholdSphereToGrabTo.ShowAngelPresence(this);
             _thresholdSphereToGrabTo.AddBlock(_angelBlock);
         }
 
@@ -62,10 +61,28 @@ namespace SecretHistories.Spheres.Angels
         public void Retire()
         {
             _thresholdSphereToGrabTo.RemoveBlock(_angelBlock);
+            _thresholdSphereToGrabTo.HideAngelPresence(this);
             Defunct = true;
         }
 
         public bool Defunct { get; protected set; }
+        public void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
+        {
+            var greedyV =
+                visibleCharacteristics.Where(v => v.VisibleCharacteristicId == VisibleCharacteristicId.Greedy);
+
+            foreach (var v in greedyV)
+                v.Show();
+        }
+
+        public void HideRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
+        {
+            var greedyV =
+                visibleCharacteristics.Where(v => v.VisibleCharacteristicId == VisibleCharacteristicId.Greedy);
+
+            foreach (var v in greedyV)
+                v.Hide();
+        }
 
         private void TryGrabStack(Sphere destinationThresholdSphere, float interval)
         {

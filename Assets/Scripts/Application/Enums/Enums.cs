@@ -14,6 +14,9 @@ namespace SecretHistories.Enums
         Viable, Extinct, Unformed
     }
 
+    public enum VisibleCharacteristicId
+    {Greedy,Consuming}
+
     public enum SituationDominionEnum { VerbThresholds = 1, RecipeThresholds = 2, Notes = 3, Storage = 4, Output = 5,  Unknown = 0 }
 
     public enum FucineValidity { Valid, TokenInRoot, Uninitialised,Empty }

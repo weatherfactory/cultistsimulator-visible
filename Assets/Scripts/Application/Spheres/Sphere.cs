@@ -105,8 +105,25 @@ namespace SecretHistories.Spheres
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
 
 
-        public GameObject GreedyIcon;
-        public GameObject ConsumingIcon;
+       [SerializeField] protected GameObject GreedyIcon;
+       [SerializeField] protected GameObject ConsumingIcon;
+
+       /// <summary>
+       /// This is an arbitrary list of GameObjects tagged with VisibleCharacteristic which can be used to display the presence of angels or anything else that wants to make use of them.
+       /// </summary>
+       [SerializeField] private List<VisibleCharacteristic> VisibleCharacteristics;
+
+       /// <param name="angel"></param>
+       public void ShowAngelPresence(IAngel angel)
+       {
+           angel.ShowRelevantVisibleCharacteristic(VisibleCharacteristics);
+       }
+
+
+       public void HideAngelPresence(IAngel angel)
+       {
+           angel.HideRelevantVisibleCharacteristic(VisibleCharacteristics);
+        }
 
         public IHasAspects GetContainer()
         {
