@@ -445,7 +445,7 @@ public bool IsValidElementStack()
             TokenRectTransform.SetAsLastSibling();
             _manifestation.OnBeginDragVisuals();
 
-MakeNonInteractable();
+            MakeNonInteractable();
 
             startSiblingIndex = TokenRectTransform.GetSiblingIndex();
 
@@ -529,7 +529,7 @@ MakeNonInteractable();
 
         public void FinishDrag()
         {
-            MakeNonInteractable();
+            MakeInteractable();
 
             if (!CurrentState.Docked(this))
                 //evict the token before hiding the ghost. If the ghost is still active, it'll give the evicted token a place to go.
