@@ -48,7 +48,7 @@ namespace SecretHistories.Tokens.TokenPayloads
                 }
             }
         }
-        [DontEncaust]
+        [DontEncaust] //intentionally non-encausted. Openness is a transient in-game property.
         public bool IsOpen { get; protected set; }
         [Encaust]
         public string EntityId => _portal.Id;
@@ -240,12 +240,12 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public void FirstHeartbeat()
         {
-            OpenAt(Token.Location);
+           //Don't open yet: we don't want to open  if the game is paused.
         }
 
         public void ExecuteHeartbeat(float interval)
         {
-            //
+            OpenAt(Token.Location);
         }
 
 
@@ -310,6 +310,8 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public void OpenAt(TokenLocation location)
         {
+            if (IsOpen)
+                return;
             //note: we don't actually use the passed location. We always assume, inside the window, that we just centre on the portal.
             this.IsOpen = true;
             Watchman.Get<Numa>().Open(this.GetRectTransform(),this);

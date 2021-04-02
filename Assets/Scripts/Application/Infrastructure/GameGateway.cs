@@ -141,11 +141,11 @@ namespace SecretHistories.Constants
         }
 
 
-        public void LeaveGame()
+        public async void LeaveGame()
         {
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
 
-            TryDefaultSave();
+          var saveResult=await TryDefaultSave();
 
             Watchman.Get<StageHand>().MenuScreen();
 

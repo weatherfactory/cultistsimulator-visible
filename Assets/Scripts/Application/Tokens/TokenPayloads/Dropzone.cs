@@ -81,7 +81,11 @@ namespace SecretHistories.Entities.Verbs
         public Dropzone()
         {
             _spheres = new List<Sphere>();
-            Id = "dropzoneclassic";
+        }
+
+        public Dropzone(string id):this()
+        {
+            Id = id;
         }
 
         public string GetIllumination(string key)
