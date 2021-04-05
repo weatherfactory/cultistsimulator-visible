@@ -135,8 +135,6 @@ namespace SecretHistories.Constants
             var characterCreationCommand=CharacterCreationCommand.Reincarnate(Watchman.Get<Stable>().Protag().InProgressHistoryRecords, NullLegacy.Create(), ending);
             characterCreationCommand.Execute(Watchman.Get<Stable>());
 
-            throw new NotImplementedException("inactive save here?");
-            
             _endGameAnimController.TriggerEnd(_anchor, ending);
         }
 

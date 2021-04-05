@@ -668,9 +668,8 @@ namespace SecretHistories.Entities {
             {
                 var ending = Watchman.Get<Compendium>().GetEntityById<Ending>(primaryRecipeCompletionEffectCommand.Recipe.Ending);
 
-                var endGameCommand = new EndGameAtTokenCommand(ending);
-
-                SendCommandToSubscribers(endGameCommand);
+                Watchman.Get<GameGateway>().EndGame(ending, _token);
+                return;
             }
 
             foreach (var c in additionalRecipeExecutions)
