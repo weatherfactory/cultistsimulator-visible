@@ -634,6 +634,7 @@ public bool IsValidElementStack()
         public void OnPointerClick(PointerEventData eventData)
         {
 
+
             if (_manifestation.HandlePointerDown(eventData, this))
                 return;
 

@@ -34,6 +34,11 @@ public class CameraZoom : MonoBehaviour {
     [SerializeField] private ScrollRect tableScroll;
     [SerializeField] private Canvas menuCanvas;
 
+    public void Awake()
+    {
+        var w=new Watchman();
+        w.Register(this);
+    }
 
 
     protected void Start() {
@@ -79,41 +84,29 @@ public class CameraZoom : MonoBehaviour {
         zoomSpeed = zoomDiff / duration;
     }
 
-    public IEnumerator ZoomToTransformAnchoredPosition(RectTransform rectTransform)
+    public IEnumerator LookAt(Vector3 targetPos,float zoomDuration)
     {
-        const float zoomDuration = 5f;
-
-        float time = 0f;
-        Vector2 startPos = tableScroll.content.anchoredPosition;
-        Vector2 targetPos = -1f * rectTransform.anchoredPosition;
-        // In the original, targetPosOffset fixes the difference between the scrollable and tokenParent rect sizes. Is this still relevant?
-
         
-        StartFixedZoom(0f, zoomDuration);
+        float time = 0f;
+        Vector3 startPos = zoomCam.transform.position;
+        Vector3 endPos =new Vector3(targetPos.x, targetPos.y - 150, startPos.z);
 
-        //in the original, we make the menu bar gradually transparent in this loop
 
-
-        while (time < zoomDuration) // in the original, we also check for  !_uiController.IsPressingAbortHotkey(). But now the UIController should call/interrupt this, isntead
+        while (time < zoomDuration) // in the original, we also check for  !_uiController.IsPressingAbortHotkey(). But now the UIController should call/interrupt this, instead
         {
-            tableScroll.content.anchoredPosition = Vector2.Lerp(startPos, targetPos, Easing.Circular.Out((time / zoomDuration)));
+            zoomCam.transform.position = Vector3.Lerp(startPos, endPos, time / zoomDuration);
             yield return null;
             time += Time.deltaTime;
         }
 
-        // automatically jumps here on Abort - NOTE: At the moment this auto-focuses the token, but that's okay, it's important info
-        tableScroll.content.anchoredPosition = targetPos;
-
-
         
     }
-
-
     // Here we get the currentZoom between 0 (zoomed in) and 1 (zoomed out)
     // We use that to evaluate the curve to get another value between 0 and 1. This distorts the zoom so that zooming out is slower
     // Then we use that value to get a scale factor between our min and max zoomScales and put that in the canvas
     void SetScale(float zoom) {
         zoomCam.fieldOfView = Mathf.Lerp(zoomScaleIn, zoomScaleOut, zoomCurve.Evaluate(zoom));
     }
+
 
 }

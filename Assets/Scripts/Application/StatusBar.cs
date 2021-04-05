@@ -39,4 +39,5 @@ public class StatusBar : MonoBehaviour,ICharacterSubscriber
     {
         CharacterProfession.text = newProfession;
     }
+
 }

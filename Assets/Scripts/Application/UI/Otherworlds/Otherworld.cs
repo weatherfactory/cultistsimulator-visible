@@ -184,17 +184,26 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         public void Show(Transform effectCenter,Ingress ingress)
         {
+            
             _activeIngress = ingress;
             
             if (!EntryAnimation.CanShow())
                 return;
 
             SoundManager.PlaySfx(EntrySfxName);
-   
+
+            RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
 
             EntryAnimation.onAnimationComplete += OnShowComplete;
             EntryAnimation.SetCenterForEffect(effectCenter);
             EntryAnimation.Show(); // starts coroutine that calls OnShowComplete when done
+
+
+            ActivateDominionsAndDoors();
+            EnactConsequences();
+            StartCoroutine(Watchman.Get<CameraZoom>().LookAt(_activeEgress.transform.position, 1f));
+
+
         }
 
         void OnShowComplete()
@@ -240,26 +249,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         public void OnArrival()
         {
-            //WELCOME BACK AK. THIS SHOULD DO A CameraZoom.ZoomToTransformAnchoredPosition
 
-            //ONCE I've SORTED OUT POSITIONING
-
-
-            //LOVE, AK
-
-
-            RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
-            
-            ActivateDominionsAndDoors();
-
-            foreach (var d in _dominions)
-            {
-                d.EgressSphere.SetEvictionDestination(_activeIngress.GetEgressOutputSphere());
-                var closeOnChoice = new AttendantCloseOnChoice(this, d.EgressSphere);
-                RegisterAttendant(closeOnChoice);
-            }
-
-            EnactConsequences();
             Watchman.Get<BackgroundMusic>().PlayOtherworldClip(Music);
         }
 
@@ -280,6 +270,13 @@ namespace SecretHistories.Assets.Scripts.Application.UI
                 }
                 else
                     d.EgressSphere.AddBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Inactive));
+            }
+
+            foreach (var d in _dominions)
+            {
+                d.EgressSphere.SetEvictionDestination(_activeIngress.GetEgressOutputSphere());
+                var closeOnChoice = new AttendantCloseOnChoice(this, d.EgressSphere);
+                RegisterAttendant(closeOnChoice);
             }
         }
 
