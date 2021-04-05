@@ -198,15 +198,15 @@ public class ResourcesManager: MonoBehaviour
     }
 
 
-    public static Sprite GetSpriteLocalised(string folder, string file, string cultureId, bool withPlaceholder = true)
+    public static Sprite GetSpriteLocalised(string imagesSubFolder, string file, string cultureId, bool withPlaceholder = true)
     {
         Sprite spriteToReturn=null;
 
         if (cultureId != NoonConstants.DEFAULT_CULTURE_ID)
         {
             var locFolderForCulture = NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN, cultureId);
-            var imagesFolder = Watchman.Get<Config>().GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY);
-            var spritePath = Path.Combine(imagesFolder, folder, locFolderForCulture, file);
+            var topLevelImagesFolder = Watchman.Get<Config>().GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY);
+            var spritePath = Path.Combine(topLevelImagesFolder, imagesSubFolder, locFolderForCulture, file);
 
             // Try to find the image in a mod first, in case it overrides an existing one
             var modManager = Watchman.Get<ModManager>();
@@ -221,7 +221,7 @@ public class ResourcesManager: MonoBehaviour
         }
 
         if (spriteToReturn == null)
-            return GetSprite(folder, file, withPlaceholder);
+            return GetSprite(imagesSubFolder, file, withPlaceholder);
         else
             return spriteToReturn;
 

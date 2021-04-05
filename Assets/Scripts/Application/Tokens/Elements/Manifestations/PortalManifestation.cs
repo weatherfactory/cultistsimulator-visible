@@ -35,8 +35,8 @@ namespace SecretHistories.Manifestations
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
-            Destroy(gameObject);
-            callback();
+            Fader.SetOnChangeCompleteCallback(callback);
+            Fader.Hide();
         }
 
         public bool CanAnimateIcon()
@@ -114,7 +114,8 @@ namespace SecretHistories.Manifestations
 
         public void Initialise(IManifestable manifestable)
         {
-            Fader.Hide(); //make it invisible; alpha isn't set to 0 cos it's a nuisance when editing the prefab
+
+            Fader.SetFinalAlpha(0f); //make it invisible; alpha isn't set to 0 cos it's a nuisance when editing the prefab
             Fader.Show();
     UpdateVisuals(manifestable);
 

@@ -15,6 +15,7 @@ namespace SecretHistories.UI
         private Coroutine _appearingCoroutine;
         private Coroutine _disappearingCoroutine;
 
+        private Action _onChangeComplete;
 
         public bool IsVisible()
         {
@@ -29,6 +30,8 @@ namespace SecretHistories.UI
 
  
         CanvasGroup group;
+
+
         CanvasGroup Group {
             get {
                 if (group == null)
@@ -36,6 +39,11 @@ namespace SecretHistories.UI
 
                 return group;
             }
+        }
+
+        public void SetOnChangeCompleteCallback(Action onChangeComplete)
+        {
+            _onChangeComplete = onChangeComplete;
         }
 
         public void Hide()
@@ -87,6 +95,12 @@ namespace SecretHistories.UI
             }
 
             SetFinalAlpha(targetAlpha);
+
+            if (_onChangeComplete != null)
+            {
+                _onChangeComplete();
+                _onChangeComplete = null;
+            }
     
         }
 
