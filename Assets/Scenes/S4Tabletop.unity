@@ -319,6 +319,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   enablePlayerZoom: 1
+  tableCanvas: {fileID: 0}
+  tableScroll: {fileID: 0}
+  menuCanvas: {fileID: 0}
 --- !u!1 &53
 GameObject:
   m_ObjectHideFlags: 0
@@ -5664,7 +5667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  durationTurnOn: 0
+  durationTurnOn: 1
   durationTurnOff: 0
 --- !u!225 &388977808
 CanvasGroup:
@@ -7654,7 +7657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  durationTurnOn: 0
+  durationTurnOn: 1
   durationTurnOff: 0
 --- !u!225 &627808686
 CanvasGroup:
@@ -11856,7 +11859,7 @@ PrefabInstance:
     - target: {fileID: 4057377681283847744, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -200.99188
+      value: -201
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681481686471, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
@@ -11916,7 +11919,7 @@ PrefabInstance:
     - target: {fileID: 4057377681792788907, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -110.49594
+      value: -110.5
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681820958115, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
@@ -12236,7 +12239,7 @@ PrefabInstance:
     - target: {fileID: 6671848926856241789, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -802.97565
+      value: -803
       objectReference: {fileID: 0}
     - target: {fileID: 6671848927037740596, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
@@ -16243,7 +16246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  durationTurnOn: 0
+  durationTurnOn: 1
   durationTurnOff: 0
 --- !u!225 &1527107302
 CanvasGroup:
@@ -17989,6 +17992,7 @@ GameObject:
   - component: {fileID: 1759030034}
   - component: {fileID: 1759030037}
   - component: {fileID: 1759030036}
+  - component: {fileID: 1759030038}
   m_Layer: 5
   m_Name: FadeOverlay
   m_TagString: Untagged
@@ -18086,6 +18090,19 @@ Canvas:
   m_SortingLayerID: -1222684305
   m_SortingOrder: 5
   m_TargetDisplay: 0
+--- !u!114 &1759030038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759030032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9f971d365362749946e4fa49c3a676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1759030034}
 --- !u!1 &1776116588
 GameObject:
   m_ObjectHideFlags: 0
@@ -18356,7 +18373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  durationTurnOn: 0
+  durationTurnOn: 1
   durationTurnOff: 0
 --- !u!225 &1820579729
 CanvasGroup:
@@ -20332,7 +20349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  durationTurnOn: 0
+  durationTurnOn: 1
   durationTurnOff: 0
 --- !u!225 &2051024984
 CanvasGroup:
@@ -32389,7 +32406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRaysDuringFade: 0
-  durationTurnOn: 0
+  durationTurnOn: 1
   durationTurnOff: 0
 --- !u!225 &8467807401746852173
 CanvasGroup:

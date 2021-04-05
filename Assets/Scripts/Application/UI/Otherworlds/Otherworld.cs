@@ -199,9 +199,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             EntryAnimation.Show(); // starts coroutine that calls OnShowComplete when done
 
 
-            ActivateDominionsAndDoors();
-            StartCoroutine(Watchman.Get<CameraZoom>().LookAtDontInterrupt(_activeEgress.transform.position, 1f));
-
+            ActivateEgress();
 
         }
 
@@ -219,7 +217,17 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             if (!EntryAnimation.CanHide())
                 return;
 
-            DeactivateDominionsAndDoors();
+            UnregisterAllAttendants();
+
+            foreach (var d in _dominions)
+            {
+                {
+                    foreach (var s in d.Spheres)
+                        if (s != d.EgressSphere)
+                            s.RetireAllTokens();
+                }
+                d.Dismiss();
+            }
 
             SoundManager.PlaySfx(ExitSfxName);
 
@@ -250,19 +258,24 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         public void OnArrival()
         {
+            StartCoroutine(Watchman.Get<CameraZoom>().LookAtDontInterrupt(_activeEgress.transform.position, 1f));
+
+            foreach (var d in _dominions)
+            {
+                if (d.VisibleFor(_activeIngress.GetEgressId()))
+                    d.Evoke();
+                else
+                    d.Dismiss();
+            }
+
             EnactConsequences();
             Watchman.Get<BackgroundMusic>().PlayOtherworldClip(Music);
         }
 
-        private void ActivateDominionsAndDoors()
+        private void ActivateEgress()
         {
             foreach (var d in _dominions)
             {
-                if(d.VisibleFor(_activeIngress.GetEgressId()))
-                    d.Evoke();
-                else
-                    d.Dismiss();
-
                 if (d.MatchesEgress(_activeIngress.GetEgressId()))
                 {
                     d.EgressSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Inactive));
@@ -281,20 +294,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             }
         }
 
-        private void DeactivateDominionsAndDoors()
-        {
-            UnregisterAllAttendants();
 
-            foreach (var d in _dominions)
-            {
-                {
-                    foreach (var s in d.Spheres)
-                        if(s!=d.EgressSphere)
-                            s.RetireAllTokens();
-                }
-                d.Dismiss();
-            }
-        }
 
         private void EnactConsequences()
         {
