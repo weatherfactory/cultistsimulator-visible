@@ -200,8 +200,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
 
             ActivateDominionsAndDoors();
-            EnactConsequences();
-            StartCoroutine(Watchman.Get<CameraZoom>().LookAt(_activeEgress.transform.position, 1f));
+            StartCoroutine(Watchman.Get<CameraZoom>().LookAtDontInterrupt(_activeEgress.transform.position, 1f));
 
 
         }
@@ -220,13 +219,16 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             if (!EntryAnimation.CanHide())
                 return;
 
-            SoundManager.PlaySfx(ExitSfxName);
+            DeactivateDominionsAndDoors();
 
+            SoundManager.PlaySfx(ExitSfxName);
 
             EntryAnimation.onAnimationComplete += OnHideComplete;
 
             EntryAnimation.Hide();
         }
+
+
 
         void OnHideComplete()
         {
@@ -236,7 +238,6 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         private void OnLeave()
         {
-            UnregisterAllAttendants();
             if(_activeEgress!=null)
             {
                 _activeEgress.EvictAllTokens(Context.Unknown());
@@ -249,7 +250,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         public void OnArrival()
         {
-
+            EnactConsequences();
             Watchman.Get<BackgroundMusic>().PlayOtherworldClip(Music);
         }
 
@@ -277,6 +278,21 @@ namespace SecretHistories.Assets.Scripts.Application.UI
                 d.EgressSphere.SetEvictionDestination(_activeIngress.GetEgressOutputSphere());
                 var closeOnChoice = new AttendantCloseOnChoice(this, d.EgressSphere);
                 RegisterAttendant(closeOnChoice);
+            }
+        }
+
+        private void DeactivateDominionsAndDoors()
+        {
+            UnregisterAllAttendants();
+
+            foreach (var d in _dominions)
+            {
+                {
+                    foreach (var s in d.Spheres)
+                        if(s!=d.EgressSphere)
+                            s.RetireAllTokens();
+                }
+                d.Dismiss();
             }
         }
 

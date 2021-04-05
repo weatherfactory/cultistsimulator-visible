@@ -222,16 +222,13 @@ public bool IsValidElementStack()
         public void ExecuteHeartbeat(float interval)
         {
 
-         //   if (CurrentState.InSystemDrivenMotion(this))
-        //    {
                 var animationComponent = gameObject.GetComponent<TokenTravelAnimation>();
 
                 if(animationComponent!=null)
                     animationComponent.ExecuteHeartbeat(interval);
 
-         //   }
 
-            Payload.ExecuteHeartbeat(interval);
+                Payload.ExecuteHeartbeat(interval);
      
         }
         
@@ -701,6 +698,7 @@ public bool IsValidElementStack()
 
         public bool Retire()
         {
+            MakeNonInteractable();
             return Retire(RetirementVFX.None);
         }
 
@@ -725,8 +723,8 @@ public bool IsValidElementStack()
 
         private void OnManifestationRetired()
         {
-            if(!Application.isEditor)
-                Destroy(this.gameObject); //destroy doesn't work in edit mode / will destroy things permanently
+            if(Application.isPlaying)  //destroy doesn't work in edit mode / will destroy things permanently
+                Destroy(this.gameObject);
         }
 
 

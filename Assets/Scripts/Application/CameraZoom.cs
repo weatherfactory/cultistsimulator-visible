@@ -84,15 +84,15 @@ public class CameraZoom : MonoBehaviour {
         zoomSpeed = zoomDiff / duration;
     }
 
-    public IEnumerator LookAt(Vector3 targetPos,float zoomDuration)
+    public IEnumerator LookAtDontInterrupt(Vector3 targetPos,float zoomDuration)
     {
         
         float time = 0f;
         Vector3 startPos = zoomCam.transform.position;
-        Vector3 endPos =new Vector3(targetPos.x, targetPos.y - 150, startPos.z);
+        Vector3 endPos =new Vector3(targetPos.x, targetPos.y - 60, startPos.z); //this y is a fudge that should actually be calculated on the fly
 
 
-        while (time < zoomDuration) // in the original, we also check for  !_uiController.IsPressingAbortHotkey(). But now the UIController should call/interrupt this, instead
+        while (time < zoomDuration) 
         {
             zoomCam.transform.position = Vector3.Lerp(startPos, endPos, time / zoomDuration);
             yield return null;

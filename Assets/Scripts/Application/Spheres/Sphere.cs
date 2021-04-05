@@ -238,10 +238,12 @@ namespace SecretHistories.Spheres
         private void FinishRetirement()
         {
             if(Application.isPlaying) //don't destroy objects if we're in Edit Mode
-                Destroy(gameObject);
+                Destroy(gameObject,0.1f); //For some reason, destroying the sphere when a token has just been removed from it borks the token's CanvasGroup.
+            //waiting a tenth of a second avoids this.
+            //I'd love to know why.
         }
-        
 
+        
         public virtual bool CurrentlyBlockedFor(BlockDirection direction)
         {
             var currentBlockDirection = CurrentBlockDirection();
@@ -560,9 +562,10 @@ namespace SecretHistories.Spheres
 
             var args = new SphereContentsChangedEventArgs(this, context);
             args.TokenAdded = token;
-            NotifyTokensChangedForSphere(args);
+            
             DisplayAndPositionHere(token, context);
 
+            NotifyTokensChangedForSphere(args);
         }
 
 

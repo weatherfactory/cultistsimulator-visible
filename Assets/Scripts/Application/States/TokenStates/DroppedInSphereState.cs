@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace SecretHistories.States.TokenStates
 {
     public class DroppedInSphereState: TokenState
     {
+
         public override bool Docked(Token token)
         {
             return true;

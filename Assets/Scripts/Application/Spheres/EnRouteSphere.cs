@@ -58,7 +58,7 @@ namespace SecretHistories.Spheres
             if (args.PointerEventData == null || args.Token==null)
                 return;
             
-            var hovered = args.PointerEventData.hovered;
+            var hovered = args.PointerEventData.hovered.Where(h=>!h.Equals(null)); //make sure whatever we're hovering over hasn't been destroyed
             foreach (var h in hovered)
             {
                 var potentialToken = h.GetComponent<Token>();
