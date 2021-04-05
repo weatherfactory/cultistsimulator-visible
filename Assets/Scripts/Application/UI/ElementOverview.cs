@@ -53,6 +53,7 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
                 break;
         }
 
+        UpdateDisplay();
     }
 
 
