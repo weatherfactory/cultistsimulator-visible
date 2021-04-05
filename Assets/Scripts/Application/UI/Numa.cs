@@ -8,8 +8,10 @@ using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Spheres;
 using SecretHistories.Assets.Scripts.Application.UI;
+using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Fucine;
 using SecretHistories.Infrastructure;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
@@ -41,6 +43,9 @@ namespace SecretHistories.UI
 
         public void Open(RectTransform atRectTransform, Ingress ingress)
         {
+
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
+
             PreOtherworldAutosave();
 
             var otherworldToOpen = Otherworlds.SingleOrDefault(o => o.EntityId == ingress.GetOtherworldId());
@@ -69,6 +74,8 @@ namespace SecretHistories.UI
                 _currentOtherworld.Hide();
                 _currentOtherworld = null;
             }
+
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
 
         }
 

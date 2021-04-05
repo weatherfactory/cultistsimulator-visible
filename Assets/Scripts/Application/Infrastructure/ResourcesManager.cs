@@ -204,9 +204,9 @@ public class ResourcesManager: MonoBehaviour
 
         if (cultureId != NoonConstants.DEFAULT_CULTURE_ID)
         {
-
-            var spritePath = Path.Combine(Watchman.Get<Config>().GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY),
-                NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN, cultureId), file);
+            var locFolderForCulture = NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN, cultureId);
+            var imagesFolder = Watchman.Get<Config>().GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY);
+            var spritePath = Path.Combine(imagesFolder, folder, locFolderForCulture, file);
 
             // Try to find the image in a mod first, in case it overrides an existing one
             var modManager = Watchman.Get<ModManager>();
