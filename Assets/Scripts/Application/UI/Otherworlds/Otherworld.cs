@@ -232,7 +232,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             SoundManager.PlaySfx(ExitSfxName);
 
             EntryAnimation.onAnimationComplete += OnHideComplete;
-
+            StartCoroutine(Watchman.Get<CameraZoom>().LookAtDontInterrupt(_activeIngress.GetRectTransform().position, 0.5f));
             EntryAnimation.Hide();
         }
 
@@ -258,7 +258,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         public void OnArrival()
         {
-            StartCoroutine(Watchman.Get<CameraZoom>().LookAtDontInterrupt(_activeEgress.transform.position, 1f));
+            StartCoroutine(Watchman.Get<CameraZoom>().LookAtDontInterrupt(_activeEgress.transform.position, 0.5f));
 
             foreach (var d in _dominions)
             {

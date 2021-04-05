@@ -74,7 +74,6 @@ namespace SecretHistories.UI {
 
         public void Hide()
         {
-            gameObject.SetActive(true);
             StartCoroutine(DoAnimation(durationHide, colorVisible, colorAfterHidden, false));
         }
 
