@@ -316,15 +316,13 @@ namespace SecretHistories.Manifestations
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
             if(vfx== RetirementVFX.Default)
-                DoVanishFx(vfx.ToString());
+                DoVanishFx();
             Destroy(gameObject);
             callbackOnRetired();
         }
 
-        private void DoVanishFx(string effectName)
+        private void DoVanishFx()
         {
-
-            
             if (vanishFxPrefab is null)
                 return;
 

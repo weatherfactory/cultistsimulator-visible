@@ -20,7 +20,6 @@ namespace SecretHistories.UI
 
         public void FadeToBlack(float duration)
         {
-            gameObject.SetActive(true);
             image.canvasRenderer.SetAlpha(0f);
                  image.CrossFadeAlpha(1f, duration, true);
         }

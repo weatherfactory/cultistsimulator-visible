@@ -2180,8 +2180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3b89797d7e0a045b238143cffbb612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenAnims: 5
-  timeBetweenAnimsVariation: 1
+  minSecondsBetweenAmbientAnimations: 5
+  maxSecondsBetweenAmbientAnimations: 8
+  minSecondsBetweenAmbientSfx: 8
+  maxSecondsBetweenAmbientSfx: 20
 --- !u!114 &600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17954,7 +17956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1759030033
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18020,7 +18022,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759030032}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 1
@@ -18498,7 +18500,7 @@ PrefabInstance:
     - target: {fileID: 4645126518579149436, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0006933212
+      value: -0.00068187714
       objectReference: {fileID: 0}
     - target: {fileID: 4645126518784053587, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
