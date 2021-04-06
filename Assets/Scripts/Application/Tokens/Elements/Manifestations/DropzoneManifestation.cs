@@ -104,10 +104,6 @@ namespace SecretHistories.Manifestations
             throw new NotImplementedException();
         }
 
-        public void SetParticleSimulationSpace(Transform transform)
-        {
-        //
-        }
 
         public void ResetIconAnimation()
         {

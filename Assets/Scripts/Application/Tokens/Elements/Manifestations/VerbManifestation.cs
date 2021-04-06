@@ -85,6 +85,17 @@ namespace SecretHistories.Manifestations
             artwork.sprite = sprite;
 
 
+            ///Does this need to be for on the outer transform? hope not
+            ParticleSystem.MainModule mainSettings;
+
+            for (int i = 0; i < particles.Length; i++)
+            {
+                mainSettings = particles[i].main;
+                mainSettings.customSimulationSpace = transform;
+            }
+
+
+
             bool spontaneousVerb = (manifestable.GetIllumination(NoonConstants.IK_SPONTANEOUS) != string.Empty);
 
             if(spontaneousVerb)
@@ -505,21 +516,6 @@ namespace SecretHistories.Manifestations
 
         public bool RequestingNoDrag { get; }
 
-
-        /// <summary>
-        /// needs to be set to initial token container
-        /// </summary>
-        /// <param name="transform"></param>
-        public void SetParticleSimulationSpace(Transform transform)
-        {
-            ParticleSystem.MainModule mainSettings;
-
-            for (int i = 0; i < particles.Length; i++)
-            {
-                mainSettings = particles[i].main;
-                mainSettings.customSimulationSpace = transform;
-            }
-        }
 
    
     }

@@ -55,13 +55,6 @@ namespace SecretHistories.Manifestations
         bool HandlePointerDown(PointerEventData eventData, Token token);
 
         IGhost CreateGhost();
-        
-        /// <summary>
-        /// needs to be set to initial token container
-        /// </summary>
-        /// <param name="transform"></param>
-        void SetParticleSimulationSpace(Transform transform);
-
 
 
     }

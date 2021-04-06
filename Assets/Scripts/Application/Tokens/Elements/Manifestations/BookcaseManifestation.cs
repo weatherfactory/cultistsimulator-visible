@@ -116,8 +116,5 @@ namespace SecretHistories.Manifestations
             return newGhost;
         }
 
-        public void SetParticleSimulationSpace(Transform transform)
-        {
-        }
     }
 }

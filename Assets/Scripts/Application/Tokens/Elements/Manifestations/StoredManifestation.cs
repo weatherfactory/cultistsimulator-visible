@@ -73,11 +73,6 @@ namespace SecretHistories.Manifestations
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support OverrideIcon");
         }
 
-        public void SetParticleSimulationSpace(Transform transform)
-        {
-            NoonUtility.LogWarning(this.GetType().Name + " doesn't support SetParticleSimulationSpace");
-        }
-
 
         public void ResetIconAnimation()
         {

@@ -128,11 +128,6 @@ namespace SecretHistories.Manifestations
         }
 
 
-        public void SetParticleSimulationSpace(Transform transform)
-        {
-            NoonUtility.LogWarning("CardManifestation doesn't support OverrideIcon");
-        }
-
 
         public void OnBeginDragVisuals()
         {

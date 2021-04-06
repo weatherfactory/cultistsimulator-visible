@@ -80,11 +80,6 @@ namespace SecretHistories.Manifestations
         public void OverrideIcon(string icon)
         {
         }
-
-        public void SetParticleSimulationSpace(Transform transform)
-        {
-        }
-
         public void ResetIconAnimation()
         {
             //do nothing

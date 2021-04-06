@@ -189,10 +189,6 @@ namespace SecretHistories.Manifestations
             return Vector3.zero;
         }
 
-        public void SetParticleSimulationSpace(Transform transform)
-        {
-            //
-        }
 
     }
 }

@@ -119,9 +119,5 @@ namespace SecretHistories.Manifestations
             return new NullGhost();
         }
 
-        public void SetParticleSimulationSpace(Transform transform)
-        {
-            NoonUtility.Log("Not implemented for TextManifestation: SetParticleSimulationSpace");
-        }
     }
 }

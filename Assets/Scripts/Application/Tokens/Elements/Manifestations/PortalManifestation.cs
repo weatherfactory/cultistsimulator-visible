@@ -188,13 +188,7 @@ namespace SecretHistories.Manifestations
             return new NullGhost();
         }
 
-        public void SetParticleSimulationSpace(Transform transform)
-        {
-          //
-        }
-
-
-        
+      
 
 
     }
