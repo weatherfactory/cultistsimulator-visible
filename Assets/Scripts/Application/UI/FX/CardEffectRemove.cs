@@ -22,10 +22,6 @@ namespace SecretHistories.UI {
                 SoundManager.PlaySfx(sfx);
         }
 
-        public override void OnAnimDone() {
-            if (tokenCanvasGroup != null)
-                Destroy(tokenCanvasGroup.gameObject);
-        }
-
+        
     }
 }

@@ -383,12 +383,18 @@ namespace SecretHistories.Manifestations
                     effect = InstantiateEffect(retirementVfx.ToString());
 
                 if (effect != null)
+                {
+                    effect.SetCallbackOnComplete(callbackOnRetired);
                     effect.StartAnim(this.transform);
+                }
                 else
+                {
                     Destroy(gameObject);
+                     callbackOnRetired();
+                 }
             }
 
-            callbackOnRetired();
+            
         }
 
 
@@ -400,7 +406,7 @@ namespace SecretHistories.Manifestations
             if (prefab == null)
                 return null;
 
-            var obj = Instantiate(prefab) as GameObject;
+            var obj = Instantiate(prefab,this.transform) as GameObject;
 
             if (obj == null)
                 return null;
