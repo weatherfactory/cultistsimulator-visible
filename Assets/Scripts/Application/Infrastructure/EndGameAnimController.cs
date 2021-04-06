@@ -23,23 +23,19 @@ namespace SecretHistories.Constants {
 		[SerializeField] private CameraZoom cameraZoom;
         [SerializeField] private ScrollRect tableScroll;
         [SerializeField] private Canvas menuCanvas;
-        [SerializeField] private Image fadeOverlay;
+
 #pragma warning restore 649
+
         bool isEnding = false;
-
-        public void Start() {
-            fadeOverlay.gameObject.SetActive(false);
-        }
-
-        public void TriggerEnd(Token culpableVerb, Ending ending) {
+        public void TriggerEnd(RectTransform focusOnTransform, Ending ending) {
             if (isEnding)
                 return;
 
             isEnding = true;
-            StartCoroutine(DoEndGameAnim(culpableVerb, ending));
+            StartCoroutine(DoEndGameAnim(focusOnTransform, ending));
         }
 
-        IEnumerator DoEndGameAnim(Token culpableVerb, Ending ending) {
+        IEnumerator DoEndGameAnim(RectTransform focusOnTransform, Ending ending) {
             const float zoomDuration = 5f;
             const float fadeDuration = 2f;
 
@@ -68,12 +64,12 @@ namespace SecretHistories.Constants {
             RetireAllStacks(RetirementVFX.CardBurn);
 
             // (Spawn specific effect based on token, depending on end-game-type)
-            InstantiateEffect(ending, culpableVerb.transform);
+            InstantiateEffect(ending, focusOnTransform);
 
             
             float time = 0f;
             Vector2 startPos = tableScroll.content.anchoredPosition;
-            Vector2 targetPos = -1f * culpableVerb.TokenRectTransform.anchoredPosition + targetPosOffset;
+            Vector2 targetPos = -1f * focusOnTransform.anchoredPosition + targetPosOffset;
             // ^ WARNING: targetPosOffset fixes the difference between the scrollable and tokenParent rect sizes 
 
             Debug.Log("Target Zoom Pos " + targetPos);

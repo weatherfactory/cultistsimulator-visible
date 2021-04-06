@@ -17950,6 +17950,7 @@ GameObject:
   - component: {fileID: 1759030037}
   - component: {fileID: 1759030036}
   - component: {fileID: 1759030038}
+  - component: {fileID: 1759030039}
   m_Layer: 5
   m_Name: FadeOverlay
   m_TagString: Untagged
@@ -18059,7 +18060,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9f971d365362749946e4fa49c3a676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1759030034}
+  fader: {fileID: 1759030039}
+--- !u!114 &1759030039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759030032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e835ed38c168545d8acd9e0f7f3943f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockRaysDuringFade: 0
+  durationTurnOn: 2
+  durationTurnOff: 0
 --- !u!1 &1776116588
 GameObject:
   m_ObjectHideFlags: 0
@@ -20625,7 +20641,6 @@ MonoBehaviour:
   cameraZoom: {fileID: 49}
   tableScroll: {fileID: 631}
   menuCanvas: {fileID: 980569408}
-  fadeOverlay: {fileID: 1759030034}
 --- !u!1 &2138126489
 GameObject:
   m_ObjectHideFlags: 0

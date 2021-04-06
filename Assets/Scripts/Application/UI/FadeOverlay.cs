@@ -10,7 +10,7 @@ namespace SecretHistories.UI
 {
     public class FadeOverlay: MonoBehaviour
     {
-        [SerializeField] private Image image;
+        [SerializeField] private CanvasGroupFader fader;
 
         public void Awake()
         {
@@ -20,8 +20,8 @@ namespace SecretHistories.UI
 
         public void FadeToBlack(float duration)
         {
-            image.canvasRenderer.SetAlpha(0f);
-                 image.CrossFadeAlpha(1f, duration, true);
+            fader.durationTurnOn = duration;
+                 fader.Show();
         }
 
     }

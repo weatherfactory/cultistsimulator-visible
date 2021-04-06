@@ -126,7 +126,7 @@ namespace SecretHistories.Constants
         }
 
 
-        public void EndGame(Ending ending, Token _anchor)
+        public void EndGame(Ending ending, RectTransform focusOnRectTransform)
         {
 
             var chronicler = Watchman.Get<Chronicler>();
@@ -135,7 +135,7 @@ namespace SecretHistories.Constants
             var characterCreationCommand=CharacterCreationCommand.Reincarnate(Watchman.Get<Stable>().Protag().InProgressHistoryRecords, NullLegacy.Create(), ending);
             characterCreationCommand.Execute(Watchman.Get<Stable>());
 
-            _endGameAnimController.TriggerEnd(_anchor, ending);
+            _endGameAnimController.TriggerEnd(focusOnRectTransform, ending);
         }
 
 
