@@ -75,6 +75,13 @@ namespace SecretHistories.Entities {
             return spheresWhichCanBeDraggedFrom.ToList();
         }
 
+        public List<Sphere> GetSpheresWhichAllowAmbientAnimations()
+        {
+            //cache?
+            var spheresWhichCanBeDraggedFrom = _registeredSpheres.Where(s => s.AllowAmbientAnimations && !s.Defunct);
+            return spheresWhichCanBeDraggedFrom.ToList();
+        }
+
         public IEnumerable<Sphere> GetSpheresOfCategory(SphereCategory category)
         {
             return _registeredSpheres.Where(c => c.SphereCategory == category);
@@ -452,5 +459,6 @@ namespace SecretHistories.Entities {
             return token;
 
         }
+
     }
 }

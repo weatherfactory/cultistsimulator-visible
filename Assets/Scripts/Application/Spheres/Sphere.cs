@@ -92,6 +92,8 @@ namespace SecretHistories.Spheres
         [DontEncaust]
         public virtual bool AllowStackMerge => true;
         [DontEncaust]
+        public virtual bool AllowAmbientAnimations => false;
+        [DontEncaust]
         public virtual bool PersistBetweenScenes => false;
         [DontEncaust]
         public virtual bool EnforceUniqueStacksInThisContainer => true;
@@ -482,8 +484,8 @@ namespace SecretHistories.Spheres
 
             var tokens = Tokens;
     
-            foreach (var d in tokens)
-                d.ExecuteHeartbeat(interval);
+            foreach (var t in tokens)
+                t.ExecuteHeartbeat(interval);
         }
 
         public int TryPurgeStacks(Element element, int maxToPurge)

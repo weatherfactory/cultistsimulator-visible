@@ -46,8 +46,11 @@ namespace SecretHistories.Spheres
             get { return true; }
         }
 
+        public override bool AllowAmbientAnimations => true;
+
         public override bool EnforceUniqueStacksInThisContainer => true;
         public override float TokenHeartbeatIntervalMultiplier => 1;
+        
 
         public override IChoreographer Choreographer
         {
