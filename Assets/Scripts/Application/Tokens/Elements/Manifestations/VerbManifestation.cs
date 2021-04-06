@@ -91,7 +91,7 @@ namespace SecretHistories.Manifestations
             for (int i = 0; i < particles.Length; i++)
             {
                 mainSettings = particles[i].main;
-                mainSettings.customSimulationSpace = transform;
+                mainSettings.customSimulationSpace = manifestable.GetRectTransform();
             }
 
 
@@ -302,7 +302,7 @@ namespace SecretHistories.Manifestations
             if (show != countdownCanvas.gameObject.activeSelf)
             {
                 if (show)
-                    particles[0].Play(); // only need to hit play on the first one
+                    particles[0].Play();
                 else
                     particles[0].Stop();
             }
