@@ -70,7 +70,7 @@ namespace SecretHistories.Enums
         CardTakenShadowSlow,
         CardTransformWhite,
         CardHide,
-        VerbAnchorVanish,
+        Default,
         None
     }
 

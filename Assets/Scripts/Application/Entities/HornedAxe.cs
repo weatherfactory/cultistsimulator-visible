@@ -419,7 +419,7 @@ namespace SecretHistories.Entities {
                 {
                     if (s.Verb.Id.StartsWith(wildcardToDelete))
                     {
-                        s.Retire(RetirementVFX.VerbAnchorVanish);
+                        s.Retire(RetirementVFX.Default);
                         i++;
                     }
 
@@ -434,7 +434,7 @@ namespace SecretHistories.Entities {
                 {
                     if (s.Verb.Id == toDeleteId.Trim())
                     {
-                        s.Retire(RetirementVFX.VerbAnchorVanish);
+                        s.Retire(RetirementVFX.Default);
                         i++;
                     }
                     if (i >= maxToDelete)

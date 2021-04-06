@@ -64,6 +64,7 @@ namespace SecretHistories.Manifestations
         SituationTokenDumpButton dumpButton;
 
         [SerializeField] public GraphicFader glowImage;
+        [SerializeField] private GameObject vanishFxPrefab;
 
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
@@ -314,20 +315,20 @@ namespace SecretHistories.Manifestations
 
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
-            VanishFx(vfx.ToString());
+            if(vfx== RetirementVFX.Default)
+                DoVanishFx(vfx.ToString());
             Destroy(gameObject);
             callbackOnRetired();
         }
 
-        private void VanishFx(string effectName)
+        private void DoVanishFx(string effectName)
         {
 
-            var prefab = Resources.Load("FX/VerbAnchor/" + effectName);
-
-            if (prefab is null)
+            
+            if (vanishFxPrefab is null)
                 return;
 
-            var vanishFxObject = Instantiate(prefab, transform.parent) as GameObject;
+            var vanishFxObject = Instantiate(vanishFxPrefab, transform.parent.parent) as GameObject; //This is nasty because it assumes the token's current sphere is the grandparent. We may want to revisit, but I'm not surte about the best approach
             if (!(vanishFxObject is null)) //I mean it shouldn't be, but let's keep the compiler happy
             {
                 vanishFxObject.transform.position = transform.position;

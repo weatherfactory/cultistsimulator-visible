@@ -343,7 +343,7 @@ namespace SecretHistories.Entities {
                 }
 
                 TokenPayloadChangedArgs args = new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement);
-                args.VFX = RetirementVFX.VerbAnchorVanish;
+                args.VFX = RetirementVFX.Default;
                 OnChanged?.Invoke(args);
                 Watchman.Get<HornedAxe>().DeregisterSituation(this);
 
