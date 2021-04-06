@@ -28,6 +28,7 @@ namespace SecretHistories.Manifestations
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
             Watchman.Forget<NullManifestation>();
+            Destroy(gameObject);
             callbackOnRetired();
         }
 

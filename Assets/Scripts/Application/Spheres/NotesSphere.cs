@@ -38,7 +38,22 @@ namespace Assets.Scripts.Application.Spheres
         public int Index { get; set; }
 
 
+        /// <summary>
+        ///  //Notes spheres always destroy all their contents. We don't want notes to be evicted on to the desktop
+        /// </summary>
+        /// <param name="sphereRetirementType"></param>
+        public override void Retire(SphereRetirementType sphereRetirementType)
+        {
+            if (Defunct)
+                return;
 
+            Defunct = true;
+            AddBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Retiring));
+            Watchman.Get<HornedAxe>().DeregisterSphere(this);
+
+            DoRetirement(FinishRetirement, SphereRetirementType.Destructive);
+
+        }
 
 
         public override void DisplayAndPositionHere(Token token, Context context)

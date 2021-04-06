@@ -710,7 +710,7 @@ public bool IsValidElementStack()
             _payload.OnChanged -= OnPayloadChanged;
           //  FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex) <-- finishdrag fires other behaviour we might not want. Check next if we can still merge OK
 
-            _manifestation.Retire(vfx, OnManifestationRetired);
+            _manifestation.Retire(vfx, OnCurrentManifestationRetired);
             _payload.Retire(vfx);
             var args=new SphereContentsChangedEventArgs(Sphere, new Context(Context.ActionSource.Retire));
             args.TokenRemoved = this;
@@ -721,7 +721,7 @@ public bool IsValidElementStack()
             return true;
         }
 
-        private void OnManifestationRetired()
+        private void OnCurrentManifestationRetired()
         {
             if(Application.isPlaying)  //destroy doesn't work in edit mode / will destroy things permanently
                 Destroy(this.gameObject);

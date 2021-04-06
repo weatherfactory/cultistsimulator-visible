@@ -237,7 +237,7 @@ namespace SecretHistories.Spheres
         }
 
 
-        private void FinishRetirement()
+        protected void FinishRetirement()
         {
             if(Application.isPlaying) //don't destroy objects if we're in Edit Mode
                 Destroy(gameObject,0.1f); //For some reason, destroying the sphere when a token has just been removed from it borks the token's CanvasGroup.
