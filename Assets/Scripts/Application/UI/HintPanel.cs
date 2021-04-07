@@ -33,6 +33,9 @@ namespace SecretHistories.UI
 
         public void Hide()
         {
+            if (canvasGroupFader.Equals(null)) //this might be called from OnDisable, in which case the canvasfader might already be gone
+                return;
+
             canvasGroupFader.Hide();
             hintText.text = string.Empty;
         }

@@ -35,5 +35,11 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             HintPanel h = Watchman.Get<HintPanel>();
             h.Hide();
         }
+
+        public void OnDisable()
+        {
+            HintPanel h = Watchman.Get<HintPanel>();
+            h.Hide();
+        }
     }
 }
