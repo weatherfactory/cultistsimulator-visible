@@ -130,7 +130,23 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
 
         public Sphere GetSphereById(string id)
         {
-            return _spheres.SingleOrDefault(s => s.Id == id);
+            try
+            {
+                return _spheres.SingleOrDefault(s => s.Id == id);
+            }
+            catch (Exception e)
+            {
+                if(_spheres!=null && _spheres.Count>0)
+                {
+                    string message =
+                        $"trying to retrieve sphere with id {id}, but there are {_spheres.Count(s => s.Id == id)} spheres with that id.";
+                    NoonUtility.Log(message);
+                }
+                NoonUtility.LogException(e);
+
+            }
+
+            return null;
         }
 
         public void AttachSphere(Sphere sphere)

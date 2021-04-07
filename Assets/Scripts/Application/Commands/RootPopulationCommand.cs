@@ -48,6 +48,7 @@ namespace SecretHistories.Commands
             var tabletoppath=new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
             var tabletopId = tabletoppath.GetEndingPathPart().GetId();
             var tabletopSphereSpec = new SphereSpec(typeof(TabletopSphere), tabletopId);
+
             var tabletopSphereCreationCommand = new SphereCreationCommand(tabletopSphereSpec);
             tabletopSphereCreationCommand.Tokens.AddRange(startingLegacy.GetTokenCreationCommandsToEnactLegacy());
             rootCommand.Spheres.Add(tabletopSphereCreationCommand);

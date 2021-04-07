@@ -10,6 +10,7 @@ using SecretHistories.Constants;
 using SecretHistories.Constants.Modding;
 using SecretHistories.Enums;
 using SecretHistories.Infrastructure;
+using SecretHistories.Infrastructure.Persistence;
 using SecretHistories.Services;
 
 using TMPro;
@@ -107,11 +108,14 @@ namespace SecretHistories.UI {
         public  void ReturnToMenu() {
 			if (!canInteract)
 				return;
-			
+
+
+            Watchman.Get<StageHand>().MenuScreen();
+
             //save on exit, so the player will return here, not begin a new game
-			FadeOut();
-			canInteract = false;
-			Invoke("ReturnToMenuDelayed", fadeDuration);
+//            FadeOut();
+	//		canInteract = false;
+		//	Invoke("ReturnToMenuDelayed", fadeDuration);
         }
 
       //  async void  ReturnToMenuDelayed() { //unused?
@@ -124,11 +128,18 @@ namespace SecretHistories.UI {
 		public void StartGame() {
 			if (!canInteract)
 				return;
-			
-			FadeOut();
-			canInteract = false;
-			SoundManager.PlaySfx("UIStartGame");
-			Invoke("StartGameDelayed", fadeDuration);
+
+            var chosenLegacy = AvailableLegaciesForEnding[selectedLegacy];
+
+            var freshGamePersistenceProvider = new FreshGameProvider(chosenLegacy);
+
+            Watchman.Get<StageHand>().LoadGameOnTabletop(freshGamePersistenceProvider);
+
+
+            //         FadeOut();
+            //canInteract = false;
+            //SoundManager.PlaySfx("UIStartGame");
+            //Invoke("StartGameDelayed", fadeDuration);
         }
 
 		void StartGameDelayed()

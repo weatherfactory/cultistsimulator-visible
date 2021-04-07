@@ -41,10 +41,10 @@ namespace SecretHistories.Entities {
         public void Reset()
         {
             _currentSituations = new List<Situation>();
-            foreach (var c in new List<Sphere>(_registeredSpheres))
+            foreach (var s in new List<Sphere>(_registeredSpheres))
             {
-                if (!c.PersistBetweenScenes)
-                    c.Retire(SphereRetirementType.Destructive);
+                if (!s.PersistBetweenScenes)
+                    DeregisterSphere(s);
             }
 
             _subscribers.Clear();

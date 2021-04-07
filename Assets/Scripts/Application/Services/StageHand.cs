@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Infrastructure.Persistence;
@@ -53,15 +54,7 @@ namespace SecretHistories.Services
 
         private async void SceneChange(string sceneToLoad,bool withFadeEffect)
         {
-            var sphereCatalogue = Watchman.Get<HornedAxe>();
-
-            if(sphereCatalogue != null)
-                Watchman.Get<HornedAxe>().Reset();
-
-            var situationsCatalogue = Watchman.Get<HornedAxe>();
-            if (situationsCatalogue != null)
-                situationsCatalogue.Reset();
-
+            CleanUpSceneContents();
 
             if(SceneManager.sceneCount > 2)
                 NoonUtility.Log("More than 2 scenes loaded",2);
@@ -87,6 +80,16 @@ namespace SecretHistories.Services
                 SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
             }
 
+        }
+
+        private void CleanUpSceneContents()
+        {
+            var hornedAxe = Watchman.Get<HornedAxe>();
+
+            if (hornedAxe != null)
+                Watchman.Get<HornedAxe>().Reset();
+
+            FucineRoot.Reset();
         }
 
 
@@ -156,7 +159,6 @@ namespace SecretHistories.Services
             {
                 if (StartingSceneNumber > 0)
                     SceneChange(StartingSceneNumber.ToString(),true);
-              //  NewGameOnTabletop();
             }
             
             else
