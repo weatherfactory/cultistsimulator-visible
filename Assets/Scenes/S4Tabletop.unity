@@ -3741,6 +3741,7 @@ GameObject:
   - component: {fileID: 152919328}
   - component: {fileID: 152919327}
   - component: {fileID: 152919326}
+  - component: {fileID: 152919329}
   m_Layer: 5
   m_Name: FinishRecipeTimer
   m_TagString: Untagged
@@ -3862,6 +3863,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152919324}
   m_CullTransparentMesh: 0
+--- !u!114 &152919329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152919324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93bc836b051104d46a7ef1b3afa1b56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hint: Complete Current Recipe
 --- !u!114 &155420901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8713522962242268452, guid: d7dd4dc93e7af6e489e258c92e502019,
@@ -9903,6 +9917,7 @@ GameObject:
   - component: {fileID: 881365487}
   - component: {fileID: 881365486}
   - component: {fileID: 881365485}
+  - component: {fileID: 881365488}
   m_Layer: 5
   m_Name: Create
   m_TagString: Untagged
@@ -10024,6 +10039,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881365483}
   m_CullTransparentMesh: 0
+--- !u!114 &881365488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881365483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93bc836b051104d46a7ef1b3afa1b56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hint: Create Situation
 --- !u!1 &886427925
 GameObject:
   m_ObjectHideFlags: 0
@@ -13953,6 +13981,7 @@ GameObject:
   - component: {fileID: 1219289047}
   - component: {fileID: 1219289046}
   - component: {fileID: 1219289045}
+  - component: {fileID: 1219289048}
   m_Layer: 5
   m_Name: Backwards
   m_TagString: Untagged
@@ -14074,6 +14103,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219289043}
   m_CullTransparentMesh: 0
+--- !u!114 &1219289048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219289043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93bc836b051104d46a7ef1b3afa1b56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hint: << 30 seconds heartbeat
 --- !u!224 &1225921666 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
@@ -15179,6 +15221,7 @@ GameObject:
   - component: {fileID: 1409238555}
   - component: {fileID: 1409238554}
   - component: {fileID: 1409238553}
+  - component: {fileID: 1409238557}
   m_Layer: 5
   m_Name: Destroy
   m_TagString: Untagged
@@ -15320,6 +15363,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409238551}
   m_CullTransparentMesh: 0
+--- !u!114 &1409238557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409238551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93bc836b051104d46a7ef1b3afa1b56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hint: End
 --- !u!114 &1425097421 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4057377682700763706, guid: d7dd4dc93e7af6e489e258c92e502019,
@@ -19073,6 +19129,7 @@ GameObject:
   - component: {fileID: 1886784521}
   - component: {fileID: 1886784520}
   - component: {fileID: 1886784519}
+  - component: {fileID: 1886784522}
   m_Layer: 5
   m_Name: Forward
   m_TagString: Untagged
@@ -19194,6 +19251,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886784517}
   m_CullTransparentMesh: 0
+--- !u!114 &1886784522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886784517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93bc836b051104d46a7ef1b3afa1b56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hint: '>> 30 seconds heartbeat'
 --- !u!1 &1895797519
 GameObject:
   m_ObjectHideFlags: 0
@@ -20469,6 +20539,7 @@ GameObject:
   - component: {fileID: 2123297469}
   - component: {fileID: 2123297468}
   - component: {fileID: 2123297467}
+  - component: {fileID: 2123297470}
   m_Layer: 5
   m_Name: AddNote
   m_TagString: Untagged
@@ -20590,6 +20661,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123297465}
   m_CullTransparentMesh: 0
+--- !u!114 &2123297470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123297465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93bc836b051104d46a7ef1b3afa1b56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hint: Add Note
 --- !u!1 &2130193018
 GameObject:
   m_ObjectHideFlags: 0

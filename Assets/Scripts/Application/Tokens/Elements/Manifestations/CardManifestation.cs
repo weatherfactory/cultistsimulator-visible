@@ -257,9 +257,7 @@ namespace SecretHistories.Manifestations
             if (originalDuration <= 0) //this card doesn't decay: never mind the rest
                 return;
 
-
-
-
+            
             //I'm very hazy on whether this does what it was originally intended to.
 
             // This handles moving the alpha value towards the desired target

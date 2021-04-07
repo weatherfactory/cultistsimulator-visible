@@ -36,7 +36,6 @@ namespace SecretHistories.Constants
         {
             try
             {
-
                 if (!DontLoadGame)
                     LoadGame(Watchman.Get<StageHand>().GamePersistenceProvider);
 

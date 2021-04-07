@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SecretHistories.Assets.Scripts.Application.UI;
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
 using SecretHistories.Commands.SituationCommands;
@@ -23,6 +23,7 @@ namespace Assets.Scripts.Application.Meta
        [SerializeField] private AutoCompletingInput input;
        [SerializeField] private ThresholdSphere _situationDrydock;
 
+
        public void Awake()
        {
            var sphereSphec = new SphereSpec(typeof(ThresholdSphere), "drydock");
@@ -34,6 +35,7 @@ namespace Assets.Scripts.Application.Meta
 
             _situationDrydock.Subscribe(this);
        }
+
 
 
         public void CreateSituation()
