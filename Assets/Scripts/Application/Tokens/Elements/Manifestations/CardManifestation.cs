@@ -47,7 +47,6 @@ namespace SecretHistories.Manifestations
      
         private Image decayBackgroundImage;
         private Color cachedDecayBackgroundColor;
-        private bool decayVisible = false;
         private float decayAlpha = 0.0f;
         private Coroutine animCoroutine;
         private List<Sprite> frames;
@@ -214,10 +213,17 @@ namespace SecretHistories.Manifestations
         }
 
 
-        private void ShowCardDecayTimer(bool showTimer)
+        private void ShowCardDecayTimer()
         {
             if (decayView != null)
-                decayView.gameObject.SetActive(showTimer);
+                decayView.gameObject.SetActive(true);
+        }
+
+
+        private void HideCardDecayTimer()
+        {
+            if (decayView != null)
+                decayView.gameObject.SetActive(false);
         }
 
 
@@ -251,30 +257,30 @@ namespace SecretHistories.Manifestations
             if (originalDuration <= 0) //this card doesn't decay: never mind the rest
                 return;
 
-            string cardDecayTime =
-                Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
 
-            decayCountText.text = cardDecayTime;
-            decayCountText.richText = true;
 
-            // Decide whether timer should be visible or not
-            if (durationRemaining < originalDuration / 2)
-                ShowCardDecayTimer(true);
 
+            //I'm very hazy on whether this does what it was originally intended to.
 
             // This handles moving the alpha value towards the desired target
             float cosmetic_dt =
                 Mathf.Max(interval, Time.deltaTime) *
                 2.0f; // This allows us to call AdvanceTime with 0 delta and still get animation
-            if (decayVisible)
+            if (durationRemaining < originalDuration / 2)
                 decayAlpha = Mathf.MoveTowards(decayAlpha, 1.0f, cosmetic_dt);
             else
                 decayAlpha = Mathf.MoveTowards(decayAlpha, 0.0f, cosmetic_dt);
             if (durationRemaining <= 0.0f)
                 decayAlpha = 0.0f;
+
             if (decayView && decayView.gameObject)
             {
                 decayView.gameObject.SetActive(decayAlpha > 0.0f);
+                string cardDecayTimeString =
+                    Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
+
+                decayCountText.text = cardDecayTimeString;
+                decayCountText.richText = true;
             }
 
             // Set the text and background alpha so it fades on and off smoothly

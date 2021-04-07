@@ -50,7 +50,6 @@ namespace SecretHistories.Constants
 
         public async void LoadGame(GamePersistenceProvider gamePersistenceProviderSource)
         {
-            
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
             { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProviderSource.GetDefaultGameSpeed(), WithSFX = false });
             
@@ -81,11 +80,13 @@ namespace SecretHistories.Constants
                 NoonUtility.LogException(e);
             }
 
-            //if the current protag has zero recipe executions, this is a fresh game. Save the restart.
+            //if the current protag has zero recipe executions, this is a fresh game. Save the current state, so they'll come straight here rather than via new game next time
+            //and also save the restart state.
 
             if (Watchman.Get<Stable>().Protag().RecipeExecutions.Count == 0)
             {
-              await  SaveRestartState();
+                await TryDefaultSave();
+                await  SaveRestartState();
             }
 
 

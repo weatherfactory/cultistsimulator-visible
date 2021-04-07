@@ -95,7 +95,7 @@ namespace SecretHistories.Constants {
             
 
             // TODO: Put the fade into the while loop so that on aborting the zoom still continues
-            Watchman.Get<FadeOverlay>().FadeToBlack(fadeDuration);
+            Watchman.Get<TabletopFadeOverlay>().FadeToBlack(fadeDuration);
             yield return new WaitForSeconds(fadeDuration);
 
             Watchman.Get<StageHand>().EndingScreen();

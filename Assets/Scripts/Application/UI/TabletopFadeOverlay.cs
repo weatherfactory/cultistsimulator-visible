@@ -8,7 +8,10 @@ using UnityEngine.UI;
 
 namespace SecretHistories.UI
 {
-    public class FadeOverlay: MonoBehaviour
+    /// <summary>
+    /// use this for a non-standard in-scene fade. The standard fade-to-black between scenes is handled by StageHand
+    /// </summary>
+    public class TabletopFadeOverlay: MonoBehaviour
     {
         [SerializeField] private CanvasGroupFader fader;
 

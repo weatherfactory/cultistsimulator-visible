@@ -143,7 +143,7 @@ namespace SecretHistories.Services
 
         public void EndingScreen()
         {
-            SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().GameOverScene, false);
+            SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().GameOverScene, true);
         }
 
         public void LegacyChoiceScreen()
