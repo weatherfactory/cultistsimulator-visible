@@ -116,7 +116,9 @@ namespace SecretHistories.UI {
 
         private void OnPayloadChanged(TokenPayloadChangedArgs args)
         {
-            if(args.ChangeType==PayloadChangeType.Retirement)
+            Title = _payload.Label;
+
+            if (args.ChangeType==PayloadChangeType.Retirement)
                 Retire();
             if(_payload.IsOpen && !this.IsVisible)
                 PayloadRequestsShow(args.Payload.GetRectTransform().position);
