@@ -27,8 +27,6 @@ namespace SecretHistories.Spheres.Angels
         public void Act(float interval)
         {
    
-        
-
             _beatsTowardsAngelry++;
 
             if (_beatsTowardsAngelry >= BEATS_BETWEEN_ANGELRY)

@@ -19,7 +19,7 @@ namespace SecretHistories.Abstract
      
 
         
-        public List<AbstractDominion> Dominions { get; }
+     
         public Sphere GetSphereById(string id);
         
         Type GetManifestationType(SphereCategory sphereCategory);

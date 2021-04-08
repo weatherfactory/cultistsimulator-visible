@@ -223,12 +223,16 @@ namespace SecretHistories.Entities {
             sphere.Subscribe(this);
             sphere.SetContainer(this);
             _spheres.Add(sphere);
+            var args=new TokenPayloadChangedArgs(this,PayloadChangeType.Update);
+            OnChanged?.Invoke(args);
         }
 
         public void DetachSphere(Sphere c)
         {
             c.Unsubscribe(this);
             _spheres.Remove(c);
+            var args = new TokenPayloadChangedArgs(this, PayloadChangeType.Update);
+            OnChanged?.Invoke(args);
         }
 
         public void UpdateCurrentRecipePrediction(RecipePrediction newRecipePrediction,Context context)
