@@ -94,10 +94,9 @@ namespace SecretHistories.Spheres
             if (!tokenToSend.IsValidElementStack())
                 return false;
 
-            var allThresholdSpheres = Watchman.Get<HornedAxe>().GetSpheresOfCategory(SphereCategory.Threshold);
+            var allThresholdSpheres = Watchman.Get<HornedAxe>().GetSpheresOfCategory(SphereCategory.Threshold).Where(s=>s.IsInRangeOf(this));
 
-            var tokenCurrentPath = tokenToSend.Location.AtSpherePath;
-
+            
             TokenTravelItinerary candidateItinerary=null;
             Sphere targetThreshold = null;
             TokenLocation targetLocation = null;

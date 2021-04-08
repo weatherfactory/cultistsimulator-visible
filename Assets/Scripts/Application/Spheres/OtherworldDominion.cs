@@ -55,6 +55,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
         }
 
+
         public override bool RelevantTo(string state, Type sphereType)
         {
             return true;

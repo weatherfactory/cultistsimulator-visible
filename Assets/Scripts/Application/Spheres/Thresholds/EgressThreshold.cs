@@ -36,7 +36,10 @@ namespace SecretHistories.UI {
             doorColor.color = defaultBackgroundColor;
             activeGlow.color = defaultBackgroundColor;
         }
-
+        public override bool IsInRangeOf(Sphere otherSphere)
+        {
+            return (otherSphere.GetContainer() == this.GetContainer()); //only if we share an Otherworld;
+        }
 
         public void SetEvictionDestination(Sphere destinationSphere)
         {

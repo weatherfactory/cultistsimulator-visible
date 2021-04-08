@@ -250,12 +250,12 @@ namespace SecretHistories.UI
             //the threshold is visible, so the reference position should be the sphere itself in world space
             {
                 eventualTokenPosition = Choreographer.GetFreeLocalPosition(forToken, Vector2.zero);
-        
                 destinationScale = 1f;
             }
             else
             {
-                eventualTokenPosition = _container.GetRectTransform().position; //this won't quite do it for the minislot
+                var worldPosOfToken = _container.GetRectTransform().position; 
+                eventualTokenPosition = this.GetRectTransform().InverseTransformPoint(worldPosOfToken);
                 destinationScale = 0.35f;
             }
 
@@ -265,7 +265,7 @@ namespace SecretHistories.UI
                 .WithDestinationSpherePath(GetAbsolutePath());
 
 
-            return itinerary;
+             return itinerary;
 
         }
 

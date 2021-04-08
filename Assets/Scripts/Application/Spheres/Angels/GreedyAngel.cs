@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.UI;
@@ -103,7 +104,7 @@ namespace SecretHistories.Spheres.Angels
                             new Context(Context.ActionSource.GreedyGrab));
 
 
-                    TokenTravelItinerary itinerary = destinationThresholdSphere.GetItineraryFor(matchingToken);
+                    TokenTravelItinerary itinerary = destinationThresholdSphere.GetItineraryFor(matchingToken).WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION);
 
      
 
