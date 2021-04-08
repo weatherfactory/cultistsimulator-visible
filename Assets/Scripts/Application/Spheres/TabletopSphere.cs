@@ -129,7 +129,6 @@ namespace SecretHistories.Spheres
                 TokenTravelItinerary i = new TokenTravelItinerary(tokenToSend.Location,
                         targetLocation)
                     .WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION)
-                    .WithScaling(1f, 0.35f)
                     .WithDestinationSpherePath(targetThreshold.GetAbsolutePath());
 
                 i.Depart(tokenToSend, context);
