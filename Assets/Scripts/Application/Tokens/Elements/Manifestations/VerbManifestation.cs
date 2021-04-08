@@ -113,7 +113,7 @@ namespace SecretHistories.Manifestations
 
             if (timeshadow.Transient)
             {
-                UpdateTimerVisuals(timeshadow.LifetimeRemaining,timeshadow.LifetimeRemaining,timeshadow.LastInterval,timeshadow.Resaturate,timeshadow.EndingFlavour);
+                UpdateTimerVisuals(timeshadow.Lifetime,timeshadow.LifetimeRemaining,timeshadow.LastInterval,timeshadow.Resaturate,timeshadow.EndingFlavour);
             }
 
             TryOverrideVerbIcon(manifestable.GetAspects(true));
