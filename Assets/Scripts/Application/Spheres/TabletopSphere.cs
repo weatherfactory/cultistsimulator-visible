@@ -98,6 +98,7 @@ namespace SecretHistories.Spheres
 
             var tokenCurrentPath = tokenToSend.Location.AtSpherePath;
 
+            TokenTravelItinerary candidateItinerary=null;
             Sphere targetThreshold = null;
             TokenLocation targetLocation = null;
             Vector3 targetDistance = Vector3.positiveInfinity;
@@ -106,9 +107,9 @@ namespace SecretHistories.Spheres
             foreach (var thresholdToConsider in allThresholdSpheres)
             {
 
-                Vector3 candidatePosition = thresholdToConsider.GetReferencePosition(tokenCurrentPath);
+                candidateItinerary = thresholdToConsider.GetItineraryFor(tokenToSend);
 
-                var candidateDistance = candidatePosition - tokenToSend.Location.Anchored3DPosition;
+                var candidateDistance = candidateItinerary.Anchored3DEndPosition - tokenToSend.Location.Anchored3DPosition; //This might well be wrong / n
 
                 if (candidateDistance.sqrMagnitude < targetDistance.sqrMagnitude)
                 {
@@ -126,12 +127,11 @@ namespace SecretHistories.Spheres
                 if (tokenToSend.Quantity > 1)
                     tokenToSend.CalveToken(tokenToSend.Quantity - 1, new Context(Context.ActionSource.DoubleClickSend));
 
-                TokenTravelItinerary i = new TokenTravelItinerary(tokenToSend.Location,
-                        targetLocation)
-                    .WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION)
-                    .WithDestinationSpherePath(targetThreshold.GetAbsolutePath());
-
-                i.Depart(tokenToSend, context);
+                if(candidateItinerary!=null)
+                {
+                    candidateItinerary = candidateItinerary.WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION);
+                 candidateItinerary.Depart(tokenToSend,context);
+                }
 
                 return true;
             }

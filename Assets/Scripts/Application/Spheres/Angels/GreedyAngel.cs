@@ -103,12 +103,9 @@ namespace SecretHistories.Spheres.Angels
                             new Context(Context.ActionSource.GreedyGrab));
 
 
-                    var targetPosition = GetTargetPositionForDestinationSphere(destinationThresholdSphere,matchingToken);
+                    TokenTravelItinerary itinerary = destinationThresholdSphere.GetItineraryFor(matchingToken);
 
-                    TokenTravelItinerary itinerary = new TokenTravelItinerary(matchingToken.Location.Anchored3DPosition,
-                            targetPosition)
-                        .WithScaling(1f, 0.35f)
-                        .WithDestinationSpherePath(destinationThresholdSphere.GetAbsolutePath());
+     
 
                     itinerary.Depart(matchingToken,new Context(Context.ActionSource.GreedyGrab));
 
@@ -117,13 +114,7 @@ namespace SecretHistories.Spheres.Angels
             }
         }
 
-        private Vector3 GetTargetPositionForDestinationSphere(Sphere destinationThresholdSphere,Token matchingToken)
-        {
 
-            var tokenCurrentSpherePath = matchingToken.Sphere.GetAbsolutePath();
-            var targetPosition = destinationThresholdSphere.GetReferencePosition(tokenCurrentSpherePath);
-            return targetPosition;
-        }
 
 
         private Token FindStackForSlotSpecificationInSphere(SphereSpec slotSpec, Sphere sphereToSearch)

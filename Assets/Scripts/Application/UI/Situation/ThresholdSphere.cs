@@ -6,11 +6,14 @@ using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.States.TokenStates;
 using System.Linq;
+
 using SecretHistories.Commands;
+using SecretHistories.Constants;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Vector3 = UnityEngine.Vector3;
 
 
 namespace SecretHistories.UI
@@ -238,25 +241,49 @@ namespace SecretHistories.UI
             return true;
         }
 
-        /// <summary>
-        /// Reference positions: positions in other spheres that correspond to this one.
-        /// </summary>
-        public override Vector3 GetReferencePosition(FucinePath atPath)
+        public override TokenTravelItinerary GetItineraryFor(Token forToken)
         {
 
-            Vector3 hereAsWorldPosition;
+            Vector3 eventualTokenPosition;
+            float destinationScale;
             if (_container.IsOpen)
             //the threshold is visible, so the reference position should be the sphere itself in world space
-                hereAsWorldPosition = GetRectTransform().position;
+            {
+                eventualTokenPosition = Choreographer.GetFreeLocalPosition(forToken, Vector2.zero);
+        
+                destinationScale = 1f;
+            }
             else
-                hereAsWorldPosition = _container.GetRectTransform().position;
+            {
+                eventualTokenPosition = _container.GetRectTransform().position; //this won't quite do it for the minislot
+                destinationScale = 0.35f;
+            }
 
-            
-            var otherSphere = Watchman.Get<HornedAxe>().GetSphereByPath(atPath);
-            var otherSphereTransform = otherSphere.GetRectTransform();
+            TokenTravelItinerary itinerary = new TokenTravelItinerary(forToken.Location.Anchored3DPosition,
+                    eventualTokenPosition)
+                .WithScaling(1f, destinationScale)
+                .WithDestinationSpherePath(GetAbsolutePath());
+
+
+            return itinerary;
+
+        }
+
+
+        public virtual TokenTravelItinerary GetItineraryFor(Token forToken,bool fum )
+        {
+            var hereAsWorldPosition = GetRectTransform().position;
+
+            var currentSphere = Watchman.Get<HornedAxe>().GetSphereByPath(forToken.Location.AtSpherePath);
+            var otherSphereTransform = currentSphere.GetRectTransform();
             var bestGuessReferencePosition = otherSphereTransform.InverseTransformPoint(hereAsWorldPosition);
-            return bestGuessReferencePosition;
 
+            TokenTravelItinerary itinerary = new TokenTravelItinerary(forToken.Location.Anchored3DPosition,
+                    bestGuessReferencePosition)
+                .WithScaling(1f, 0.35f)
+                .WithDestinationSpherePath(GetAbsolutePath());
+
+            return itinerary;
         }
 
         public void OnPointerClick(PointerEventData eventData) {

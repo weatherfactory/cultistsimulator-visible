@@ -15,6 +15,7 @@ using SecretHistories.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http.Headers;
 using Assets.Scripts.Application.Abstract;
@@ -62,6 +63,7 @@ namespace SecretHistories.Spheres
         }
     }
 
+
     [IsEncaustableClass(typeof(SphereCreationCommand))]
     public abstract class 
         Sphere : MonoBehaviour,IEncaustable,IHasFucinePath,IHasElementTokens
@@ -106,8 +108,15 @@ namespace SecretHistories.Spheres
         [DontEncaust]
         public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
 
+        public Vector3 WorldPosition;
 
-       [SerializeField] protected GameObject GreedyIcon;
+        public void Update()
+        {
+            WorldPosition = GetRectTransform().position;
+        }
+
+
+        [SerializeField] protected GameObject GreedyIcon;
        [SerializeField] protected GameObject ConsumingIcon;
 
        /// <summary>
@@ -520,8 +529,6 @@ namespace SecretHistories.Spheres
                 return unsatisfiedChange;
             }
 
-
-
         }
 
 
@@ -723,18 +730,20 @@ namespace SecretHistories.Spheres
         }
 
  
-        /// <summary>
-        /// Reference positions: positions in other spheres that correspond to this one.
-        /// </summary>
-        public virtual Vector3 GetReferencePosition(FucinePath atPath)
+        public virtual TokenTravelItinerary GetItineraryFor(Token forToken)
         {
             var hereAsWorldPosition = GetRectTransform().position;
 
-            var otherSphere = Watchman.Get<HornedAxe>().GetSphereByPath(atPath);
-            var otherSphereTransform = otherSphere.GetRectTransform();
+            var currentSphere = Watchman.Get<HornedAxe>().GetSphereByPath(forToken.Location.AtSpherePath);
+            var otherSphereTransform = currentSphere.GetRectTransform();
             var bestGuessReferencePosition = otherSphereTransform.InverseTransformPoint(hereAsWorldPosition);
 
-            return bestGuessReferencePosition;
+            TokenTravelItinerary itinerary = new TokenTravelItinerary(forToken.Location.Anchored3DPosition,
+                    bestGuessReferencePosition)
+                .WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION)
+                .WithDestinationSpherePath(GetAbsolutePath());
+
+            return itinerary;
         }
 
         public void Shroud()

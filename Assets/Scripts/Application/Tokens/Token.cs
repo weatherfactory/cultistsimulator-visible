@@ -153,7 +153,14 @@ namespace SecretHistories.UI {
             }
         }
 
-public bool IsValidElementStack()
+        public Vector3 WorldPosition;
+
+        public void Update()
+        {
+            WorldPosition = TokenRectTransform.position;
+        }
+
+        public bool IsValidElementStack()
         {
             return Payload.IsValidElementStack();
         }
