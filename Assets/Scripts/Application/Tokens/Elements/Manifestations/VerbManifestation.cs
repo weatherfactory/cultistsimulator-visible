@@ -102,9 +102,8 @@ namespace SecretHistories.Manifestations
             if(spontaneousVerb)
                 tokenBody.overrideSprite = lightweightSprite;
 
-            DisplaySpheres(new List<Sphere>());
-            UpdateTimerVisuals(0f, 0f, 0f, false, EndingFlavour.None);
-
+            UpdateVisuals(manifestable);
+            
         }
 
         public void UpdateVisuals(IManifestable manifestable)
@@ -117,6 +116,8 @@ namespace SecretHistories.Manifestations
             }
 
             TryOverrideVerbIcon(manifestable.GetAspects(true));
+            DisplayRecipeThreshold(manifestable);
+            DisplayOutputs(manifestable);
         }
 
 
@@ -197,20 +198,41 @@ namespace SecretHistories.Manifestations
                 return false;
         }
 
-        public void DisplaySpheres(IEnumerable<Sphere> spheres)
+        private void DisplayRecipeThreshold(IManifestable manifestable)
         {
-            
-            var activeThresholdSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Threshold));
-            if (!activeThresholdSpheres.Any())
+            var recipeThresholdDominion = manifestable.Dominions.SingleOrDefault(d =>
+                d.Identifier == SituationDominionEnum.RecipeThresholds.ToString());
+
+            if (recipeThresholdDominion == null)
+                return;
+
+            var recipeThresholdSpheres = recipeThresholdDominion.Spheres;
+
+            if(recipeThresholdSpheres.Count==0)
+                HideMiniSlot();
+
+            if (!recipeThresholdSpheres.Any())
                 HideMiniSlot();
             else
             {
-                var sphereToDisplayAsMiniSlot = activeThresholdSpheres.Single();
+                var sphereToDisplayAsMiniSlot = recipeThresholdSpheres.Single();
                 ShowMiniSlot(sphereToDisplayAsMiniSlot.GoverningSphereSpec.Greedy);
                 displayStackInMiniSlot(sphereToDisplayAsMiniSlot.GetElementTokens());
             }
 
-            var outputSpheres = new List<Sphere>(spheres.Where(s => s.SphereCategory == SphereCategory.Output));
+        }
+
+        public void DisplayOutputs(IManifestable manifestable)
+        {
+            var outputDominion = manifestable.Dominions.SingleOrDefault(d =>
+                d.Identifier == SituationDominionEnum.Output.ToString());
+
+            if (outputDominion == null)
+                return;
+
+
+            var outputSpheres = outputDominion.Spheres;
+
             if (outputSpheres.Any())
             {
 
