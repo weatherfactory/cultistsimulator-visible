@@ -103,29 +103,25 @@ namespace SecretHistories.Spheres
             Vector3 targetDistance = Vector3.positiveInfinity;
             ;
 
-            foreach (var threshold in allThresholdSpheres)
+            foreach (var thresholdToConsider in allThresholdSpheres)
             {
 
-                Vector3 candidatePosition = threshold.GetReferencePosition(tokenCurrentPath);
+                Vector3 candidatePosition = thresholdToConsider.GetReferencePosition(tokenCurrentPath);
 
-                Vector3 candidateDistance;
-
-                candidateDistance = candidatePosition - tokenToSend.Location.Anchored3DPosition;
+                var candidateDistance = candidatePosition - tokenToSend.Location.Anchored3DPosition;
 
                 if (candidateDistance.sqrMagnitude < targetDistance.sqrMagnitude)
                 {
-                    targetThreshold = threshold;
-                    if (targetThreshold != null)
-                    {
-                        if (targetDistance.sqrMagnitude <= 0
-                        ) //we have a valid location, and nothing will be closer than this
+                    targetThreshold = thresholdToConsider;
+                    targetLocation=new TokenLocation(targetThreshold.GetRectTransform().anchoredPosition3D,targetThreshold.GetAbsolutePath());
+                    if (targetDistance.sqrMagnitude <= 0) //we have a valid location, and nothing will be closer than this
                             break;
-                    }
                 }
             }
 
             if (targetThreshold != null)
             {
+                
 
                 if (tokenToSend.Quantity > 1)
                     tokenToSend.CalveToken(tokenToSend.Quantity - 1, new Context(Context.ActionSource.DoubleClickSend));

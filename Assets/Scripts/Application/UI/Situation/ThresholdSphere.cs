@@ -193,6 +193,7 @@ namespace SecretHistories.UI
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
                 token.CurrentState=new RejectedBySphereState();
+                SoundManager.PlaySfx("CardDragFail");
                 token.GoAway(context);
 
                 var notifier = Watchman.Get<INotifier>();
