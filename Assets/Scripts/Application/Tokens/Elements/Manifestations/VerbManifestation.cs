@@ -102,6 +102,8 @@ namespace SecretHistories.Manifestations
             if(spontaneousVerb)
                 tokenBody.overrideSprite = lightweightSprite;
 
+            SetInitialTimerVisuals();
+
             UpdateVisuals(manifestable);
             
         }
@@ -132,6 +134,11 @@ namespace SecretHistories.Manifestations
             }
         }
 
+
+        private void SetInitialTimerVisuals()
+        {
+            UpdateTimerVisuals(0f, 0f, 0f, false, EndingFlavour.None);
+        }
 
         private void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,
             EndingFlavour signalEndingFlavour)
