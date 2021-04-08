@@ -70,8 +70,10 @@ namespace SecretHistories.UI
             if (IsVisible())
                 return;
 
-            if(_disappearingCoroutine!=null)
-                StopCoroutine(_disappearingCoroutine);
+
+            //I commented this out because it seems to be implicated in the stuttering effect when windows were opening?
+            //if(_disappearingCoroutine!=null)
+            //    StopCoroutine(_disappearingCoroutine);
 
 
             if (durationTurnOn <= 0f) {

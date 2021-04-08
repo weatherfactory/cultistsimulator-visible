@@ -144,7 +144,7 @@ namespace SecretHistories.Entities {
             {
                 {
                     if (_token == null)
-                        return NullToken.Create();
+                          return NullToken.Create();
                     return _token;
                 }
             }

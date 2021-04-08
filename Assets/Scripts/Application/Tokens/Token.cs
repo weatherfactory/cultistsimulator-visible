@@ -65,6 +65,21 @@ namespace SecretHistories.UI {
                     return TokenLocation.Default(locationPath);
             }
         }
+        /// <summary>
+        /// This gives the anchorPosition3D run through Transform.TransformPoint()
+        /// </summary>
+        /// <returns></returns>
+        public Vector3 AnchoredPosInWorld()
+        {
+            if (TokenRectTransform == null)
+                return Vector3.zero;
+            if (TokenRectTransform == null)
+                return Vector3.zero;
+
+            Vector3 worldPos = TokenRectTransform.parent.TransformPoint(TokenRectTransform.anchoredPosition3D);
+
+            return worldPos;
+        }
 
         [Encaust]
         public TokenState CurrentState { get; set; } = new UnknownState();

@@ -111,9 +111,7 @@ namespace SecretHistories.UI {
 
             Title = _payload.Label;
 
-            //I took this out for the sake of a test; but it's a shitshow anyway
-        //    positioner.SetInitialPosition(initialLocation.Anchored3DPosition);
-     
+
         }
 
         private void OnPayloadChanged(TokenPayloadChangedArgs args)
@@ -121,9 +119,9 @@ namespace SecretHistories.UI {
             if(args.ChangeType==PayloadChangeType.Retirement)
                 Retire();
             if(_payload.IsOpen && !this.IsVisible)
-                PayloadRequestsShow(Vector3.zero);
+                PayloadRequestsShow(args.Payload.GetRectTransform().position);
 
-            if(!_payload.IsOpen && this.IsVisible)
+            if (!_payload.IsOpen && this.IsVisible)
                 PayloadRequestsHide();
 
         }

@@ -24,7 +24,7 @@ namespace SecretHistories.UI {
         Camera uiCamera;
 
         Vector3 dragOffset;
-        private Vector3 lastPosition=Vector3.zero;
+        private Vector3? draggedToPosition;
 
         public void Awake()
         {
@@ -32,12 +32,7 @@ namespace SecretHistories.UI {
             this.uiCamera = Camera.main; // there is only one camera in our scene so this works.
         }
 
-        public void SetInitialPosition(Vector3 localPosition)
-        {
-            var worldPosition = transform.TransformPoint(localPosition);
 
-            SetPosition(GetBoundCorrectedWorldPos(worldPosition));
-        }
 
         Vector2 GetScreenPosFromWorld(Vector3 worldPos) {
             return RectTransformUtility.WorldToScreenPoint(uiCamera, worldPos);
@@ -45,9 +40,18 @@ namespace SecretHistories.UI {
 
         // SHOW ANIM
 
-        public void Show(float duration, Vector3 openFromPosition) {
+        public void Show(float duration, Vector3 openFromPosition)
+        {
+
+            Vector3 openToPosition;
+
+            if(draggedToPosition != null)
+                openToPosition=GetBoundCorrectedWorldPos((Vector3)draggedToPosition);
+            else
+                openToPosition=GetBoundCorrectedWorldPos(openFromPosition);
+
             StopAllCoroutines();
-            StartCoroutine(DoShowAnim(duration, openFromPosition, lastPosition));
+           StartCoroutine(DoShowAnim(duration, openFromPosition, openToPosition));
         }
 
         IEnumerator DoShowAnim(float duration, Vector3 openFromPosition, Vector3 targetPosition)
@@ -73,7 +77,7 @@ namespace SecretHistories.UI {
         // GENERAL MOVE BEHAVIOR
 
 
-        Vector3 GetBoundCorrectedWorldPos(Vector3 worldPos) {
+      public Vector3 GetBoundCorrectedWorldPos(Vector3 worldPos) {
             // Check if one of our corners would be outside the bounds
             // var outOfBoundsOffset = GetScreenPosOffsetForCornerOverlap(anchor.transform.position); //changeds this cos we don't reference anchor directly any more. Let's see if it works
             var outOfBoundsOffset = GetScreenPosOffsetForCornerOverlap(worldPos);
@@ -182,7 +186,9 @@ namespace SecretHistories.UI {
 
 		// Raw position get/set are exposed to allow saving of window coords - CP
         public void SetPosition(Vector3 pos) {
-            rectTrans.position = new Vector3(pos.x, pos.y, rectTrans.position.z);
+          var newPos= new Vector3(pos.x, pos.y, rectTrans.position.z);
+          rectTrans.position = newPos;
+        //  lastPosition = newPos;
         }
 
         public Vector3 GetPosition() {
@@ -203,7 +209,9 @@ namespace SecretHistories.UI {
         void DelayedEndDrag() {
             windowBeingDragged = null;
             canvasGroup.blocksRaycasts = true;
-            lastPosition = transform.localPosition;
+            draggedToPosition = transform.position;
         }
+
+
     }
 }
