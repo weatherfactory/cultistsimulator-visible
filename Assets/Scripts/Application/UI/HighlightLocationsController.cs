@@ -8,6 +8,7 @@ using SecretHistories.Entities;
 using SecretHistories.UI;
 using SecretHistories.Constants.Events;
 using SecretHistories.Enums;
+using SecretHistories.Events;
 using SecretHistories.Fucine;
 using UnityEngine;
 using UnityEngine.UI;
@@ -74,8 +75,12 @@ namespace SecretHistories.UI
       }
 
 
+      public void OnSphereChanged(SphereChangedArgs args)
+      {
+          //
+      }
 
-      public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
+      public void OnTokensChanged(SphereContentsChangedEventArgs args)
       {
           var tc = Watchman.Get<HornedAxe>();
           var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());

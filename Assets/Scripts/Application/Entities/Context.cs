@@ -29,7 +29,8 @@ public class Context {
         UI,
         SpawningAnchor,
         PushedAside,
-        ContainingSphereRetired
+        ContainingSphereRetired,
+        SphereReferenceLocationChanged
     }
 
     public ActionSource actionSource;

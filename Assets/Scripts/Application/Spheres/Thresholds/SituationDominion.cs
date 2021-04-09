@@ -16,6 +16,7 @@ using SecretHistories.Constants.Events;
 using SecretHistories.UI;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Events;
 using SecretHistories.Fucine;
 using UnityEngine;
 using UnityEngine.UI;
@@ -188,6 +189,11 @@ public override bool VisibleFor(string state)
                 new List<Sphere>(_spheres.Where(s => s.OwnerSphereIdentifier==sphereToOrphan.Id));
             foreach (var s in spheresToRemove)
                 RemoveSphere(s,SphereRetirementType.Graceful);
+        }
+
+        public void OnSphereChanged(SphereChangedArgs args)
+        {
+            //
         }
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)

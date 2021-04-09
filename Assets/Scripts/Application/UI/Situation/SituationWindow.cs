@@ -1,6 +1,7 @@
 ﻿#pragma warning disable 0649
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.UI.Situation;
@@ -13,6 +14,7 @@ using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Constants;
 using SecretHistories.Enums;
+using SecretHistories.Events;
 using SecretHistories.Spheres;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -151,6 +153,7 @@ namespace SecretHistories.UI {
 				SoundManager.PlaySfx("SituationWindowShow");
                 canvasGroupFader.Show();
                 positioner.Show(canvasGroupFader.durationTurnOn, startPosition); // Animates the window (position allows optional change in position)
+                NotifySpheresChanged(new Context(Context.ActionSource.SphereReferenceLocationChanged));
             }
 
 
@@ -161,6 +164,7 @@ namespace SecretHistories.UI {
             {
 				SoundManager.PlaySfx("SituationWindowHide");
                 canvasGroupFader.Hide();
+                NotifySpheresChanged(new Context(Context.ActionSource.SphereReferenceLocationChanged));
             }
             
         }
@@ -273,6 +277,28 @@ namespace SecretHistories.UI {
             Destroy(gameObject);
         }
 
- 
+
+  
+        /// <summary>
+        /// Something's happened that affects our spheres. Anything with an interest in its constituent spheres (like tokens travelling to 'em) will want to know.  It might be that this should go into the Situation.
+        /// </summary>
+        public void NotifySpheresChanged(Context context)
+        {
+            List<Sphere> spheres = new List<Sphere>();
+            foreach (var d in Dominions)
+            {
+                spheres.AddRange(d.Spheres);
+            }
+
+            foreach (var sphere in spheres)
+            {
+                SphereChangedArgs args;
+                
+
+                args = new SphereChangedArgs(sphere, context);
+                sphere.NotifySphereChanged(args);
+            }
+
+        }
     }
 }

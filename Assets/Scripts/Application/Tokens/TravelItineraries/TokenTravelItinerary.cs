@@ -25,6 +25,7 @@ namespace SecretHistories.UI
         private const float DefaultStartScale = 1f;
         private const float DefaultEndScale = 1f;
 
+        
         public TokenTravelItinerary()
         {}
 
@@ -49,6 +50,19 @@ namespace SecretHistories.UI
             EndScale = DefaultEndScale;
         }
 
+        /// <summary>
+        /// use when a token is already en route, ie has a running animation
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="argsContext"></param>
+        public void Divert(Token token, Context context)
+        {
+            var currentTravelAnimation = token.gameObject.GetComponent<TokenTravelAnimation>();
+            if (currentTravelAnimation != null)
+                currentTravelAnimation.Retire();
+
+            Depart(token,context);
+        }
 
         public override void Depart(Token tokenToSend, Context context)
         {
@@ -87,6 +101,9 @@ namespace SecretHistories.UI
 
            var enrouteSphere=tokenToSend.Payload.GetEnRouteSphere();
             enrouteSphere.AcceptToken(tokenToSend,context);
+
+
+            destinationSphere.Subscribe(tokenAnimation);
 
             tokenAnimation.Begin(tokenToSend, context,Duration);
         }
@@ -155,6 +172,6 @@ namespace SecretHistories.UI
         }
 
 
-        
+
     }
 }

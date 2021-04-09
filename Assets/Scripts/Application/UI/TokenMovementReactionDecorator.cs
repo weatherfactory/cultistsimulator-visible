@@ -7,6 +7,7 @@ using SecretHistories.Entities;
 using SecretHistories.UI;
 using SecretHistories.Constants.Events;
 using SecretHistories.Enums;
+using SecretHistories.Events;
 using SecretHistories.Fucine;
 
 using UnityEngine;
@@ -30,7 +31,12 @@ namespace SecretHistories.UI
                 Watchman.Get<HornedAxe>().Subscribe(this);
         }
 
-        public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
+        public void OnSphereChanged(SphereChangedArgs args)
+        {
+            //
+        }
+
+        public void OnTokensChanged(SphereContentsChangedEventArgs args)
         {
             //
         }

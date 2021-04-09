@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Assets.Scripts.Application.UI;
 using SecretHistories.Constants.Events;
+using SecretHistories.Events;
 using SecretHistories.Fucine;
 
 namespace SecretHistories.Abstract
@@ -16,6 +17,11 @@ namespace SecretHistories.Abstract
         public AbstractOtherworldAttendant(Otherworld otherworld)
         {
             _otherworld = otherworld;
+        }
+
+        public void OnSphereChanged(SphereChangedArgs args)
+        {
+            //
         }
 
         public virtual void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)

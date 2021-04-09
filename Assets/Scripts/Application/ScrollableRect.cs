@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Enums;
+using SecretHistories.Events;
 using SecretHistories.Fucine;
 using UnityEngine.InputSystem;
 
@@ -169,7 +170,12 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	}
 
 
-    public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
+    public void OnSphereChanged(SphereChangedArgs args)
+    {
+        //
+    }
+
+    public void OnTokensChanged(SphereContentsChangedEventArgs args)
     {
         //
     }

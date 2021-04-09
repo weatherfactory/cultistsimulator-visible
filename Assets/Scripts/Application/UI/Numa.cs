@@ -22,8 +22,7 @@ namespace SecretHistories.UI
 {
     public class Numa : MonoBehaviour
     {
-
-        [Space] [SerializeField] List<Otherworld> Otherworlds;
+        [SerializeField] private List<Otherworld> Otherworlds;
 
         private Otherworld _currentOtherworld;
 
@@ -40,6 +39,14 @@ namespace SecretHistories.UI
         {
             return _currentOtherworld != null;
         }
+
+        private async void PreOtherworldAutosave()
+        {
+            var autosave = Watchman.Get<Autosaver>();
+            if (autosave != null)
+                await autosave.ForceAutosaveNow();
+        }
+
 
         public void Open(RectTransform atRectTransform, Ingress ingress)
         {
@@ -60,12 +67,6 @@ namespace SecretHistories.UI
             Watchman.Get<Chronicler>()?.ChronicleOtherworldEntry(ingress.EntityId);
         }
 
-        private async void PreOtherworldAutosave()
-        {
-            var autosave = Watchman.Get<Autosaver>();
-            if(autosave!=null)
-             await   autosave.ForceAutosaveNow();
-        }
 
         public void HideCurrentOtherworld()
         {

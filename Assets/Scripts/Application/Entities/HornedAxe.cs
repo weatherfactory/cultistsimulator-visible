@@ -12,6 +12,7 @@ using SecretHistories.UI;
 using SecretHistories.Core;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
+using SecretHistories.Events;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using UnityEngine;
@@ -187,6 +188,15 @@ namespace SecretHistories.Entities {
             }
         }
 
+        public void OnAnySphereChanged(SphereChangedArgs args)
+        {
+            foreach (var s in new List<ISphereCatalogueEventSubscriber>(_subscribers))
+                if (s.Equals(null))
+                    Unsubscribe(s);
+                else
+                    s.OnSphereChanged(args);
+        }
+
 
         public void OnTokensChangedForAnySphere(SphereContentsChangedEventArgs args)
         {
@@ -196,7 +206,7 @@ namespace SecretHistories.Entities {
                 if(s.Equals(null))
                     Unsubscribe(s);
                 else
-                    s.NotifyTokensChanged(args);
+                    s.OnTokensChanged(args);
         }
 
         public void OnTokenInteractionInAnySphere(TokenInteractionEventArgs args)
@@ -459,6 +469,7 @@ namespace SecretHistories.Entities {
             return token;
 
         }
+
 
     }
 }

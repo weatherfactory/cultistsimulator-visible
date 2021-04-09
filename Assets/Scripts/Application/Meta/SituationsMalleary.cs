@@ -10,6 +10,7 @@ using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Events;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
@@ -113,6 +114,11 @@ namespace Assets.Scripts.Application.Meta
         {
             var token = _situationDrydock.GetTokenInSlot();
             token.Retire(RetirementVFX.None);
+        }
+
+        public void OnSphereChanged(SphereChangedArgs args)
+        {
+            //
         }
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)

@@ -24,6 +24,7 @@ using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Elements;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
+using SecretHistories.Events;
 using SecretHistories.Logic;
 using SecretHistories.Manifestations;
 using SecretHistories.Spheres;
@@ -549,6 +550,11 @@ namespace SecretHistories.UI {
 
 
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Fundamental));
+        }
+
+        public void OnSphereChanged(SphereChangedArgs args)
+        {
+            //
         }
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)

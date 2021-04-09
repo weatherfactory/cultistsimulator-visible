@@ -9,7 +9,7 @@ using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants.Events;
-
+using SecretHistories.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -91,8 +91,13 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
 
     }
 
-    
-    public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
+
+    public void OnSphereChanged(SphereChangedArgs args)
+    {
+        //
+    }
+
+    public void OnTokensChanged(SphereContentsChangedEventArgs args)
     {
         UpdateDisplay();
 

@@ -6,6 +6,7 @@ using SecretHistories.Entities;
 using SecretHistories.UI;
 using SecretHistories.Constants.Events;
 using SecretHistories.Enums;
+using SecretHistories.Events;
 using SecretHistories.Fucine;
 using TMPro;
 using UnityEngine;
@@ -24,8 +25,12 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
     }
 
 
+    public void OnSphereChanged(SphereChangedArgs args)
+    {
+        //
+    }
 
-    public void NotifyTokensChanged(SphereContentsChangedEventArgs args)
+    public void OnTokensChanged(SphereContentsChangedEventArgs args)
     {
      
     }

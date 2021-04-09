@@ -72,6 +72,7 @@ namespace SecretHistories.UI {
 
             transform.localScale = Vector3.one;
             SetPosition(targetPos);
+            NotifyWindowThatPositionChangeIsComplete();
         }
 
         // GENERAL MOVE BEHAVIOR
@@ -181,14 +182,20 @@ namespace SecretHistories.UI {
             }
 
             Vector3 dragPos = GetWorldPosFromScreen(eventData.position);
+
             SetPosition(new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y));
+
+
         }
 
 		// Raw position get/set are exposed to allow saving of window coords - CP
         public void SetPosition(Vector3 pos) {
           var newPos= new Vector3(pos.x, pos.y, rectTrans.position.z);
           rectTrans.position = newPos;
-        //  lastPosition = newPos;
+
+
+
+
         }
 
         public Vector3 GetPosition() {
@@ -210,8 +217,19 @@ namespace SecretHistories.UI {
             windowBeingDragged = null;
             canvasGroup.blocksRaycasts = true;
             draggedToPosition = transform.position;
+
+            NotifyWindowThatPositionChangeIsComplete();
+ 
         }
 
+        void NotifyWindowThatPositionChangeIsComplete()
+        {
+            //if we're being used to position a situation window, advise it so it can update sphere destination information
+            var situationWindow = gameObject.GetComponent<SituationWindow>();
+            if (situationWindow != null)
+                situationWindow.NotifySpheresChanged(new Context(Context.ActionSource.SphereReferenceLocationChanged));
+
+        }
 
     }
 }

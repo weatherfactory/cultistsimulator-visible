@@ -15,6 +15,7 @@ using SecretHistories.Constants.Events;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Events;
 using SecretHistories.Fucine;
 using SecretHistories.Infrastructure;
 using SecretHistories.Logic;
@@ -350,6 +351,11 @@ namespace SecretHistories.Tokens.TokenPayloads
                 args.TokenAdded.Payload.SetIllumination(NoonConstants.MESSAGE_ILLUMINATION_KEY, string.Empty);
             }
             OnChanged.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Update));
+        }
+
+        public void OnSphereChanged(SphereChangedArgs args)
+        {
+            //
         }
 
         /// <summary>

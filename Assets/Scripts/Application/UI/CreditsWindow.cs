@@ -9,6 +9,7 @@ using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants.Events;
 using SecretHistories.Enums;
+using SecretHistories.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -45,6 +46,11 @@ namespace SecretHistories.UI
         {
          CardsExhibit.RetireAllTokens();
 
+        }
+
+        public void OnSphereChanged(SphereChangedArgs args)
+        {
+            //
         }
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)

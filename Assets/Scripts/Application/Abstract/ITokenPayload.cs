@@ -17,8 +17,6 @@ namespace SecretHistories.Abstract
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
      
-
-        
      
         public Sphere GetSphereById(string id);
         

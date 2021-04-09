@@ -23,6 +23,7 @@ using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Assets.Scripts.Application.Spheres;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Events;
 using SecretHistories.Infrastructure;
 using SecretHistories.NullObjects;
 using Steamworks;
@@ -167,6 +168,9 @@ namespace SecretHistories.Spheres
 
         public virtual bool IsInRangeOf(Sphere otherSphere)
         {
+            if (!this.gameObject.activeInHierarchy) //This is a pretty sensible rule, and it means that (eg) drydock thresholds are considered out of range when their parent is hidden.
+            //I will likely need to modify it for specific cases, though.
+                return false;
             return true;
         }
 
@@ -713,12 +717,28 @@ namespace SecretHistories.Spheres
                 return GoverningSphereSpec.CheckPayloadAllowedHere(payload);
         }
 
+
+        public void NotifySphereChanged(SphereChangedArgs args)
+        {
+            Watchman.Get<HornedAxe>().OnAnySphereChanged(args);
+            var subscribersToNotify = new HashSet<ISphereEventSubscriber>(_subscribers);
+            foreach (var s in subscribersToNotify)
+                if (s.Equals(null))
+                    _subscribers.Remove(s);
+                else
+                    s.OnSphereChanged(args);
+
+        }
+
         public void NotifyTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             Watchman.Get<HornedAxe>().OnTokensChangedForAnySphere(args);
             var subscribersToNotify=new HashSet<ISphereEventSubscriber>(_subscribers);
             foreach(var s in subscribersToNotify)
-                s.OnTokensChangedForSphere(args);
+                if (s.Equals(null))
+                    _subscribers.Remove(s);
+                else
+                    s.OnTokensChangedForSphere(args);
         }
 
         public virtual void NotifyTokenInThisSphereInteracted(TokenInteractionEventArgs args)
@@ -726,7 +746,10 @@ namespace SecretHistories.Spheres
             Watchman.Get<HornedAxe>().OnTokenInteractionInAnySphere(args);
             var subscribersToNotify = new HashSet<ISphereEventSubscriber>(_subscribers);
             foreach (var s in subscribersToNotify)
-                s.OnTokenInteractionInSphere(args);
+                if (s.Equals(null))
+                    _subscribers.Remove(s);
+                else
+                    s.OnTokenInteractionInSphere(args);
         }
 
  

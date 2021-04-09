@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
+using SecretHistories.Events;
+using SecretHistories.Fucine;
 using UnityEngine;
 using SecretHistories.UI;
 using SecretHistories.States.TokenStates;
 
 
-public class TokenTravelAnimation : MonoBehaviour {
+public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
 
 	public event System.Action<Token,Context> OnTokenArrival;
 
@@ -113,7 +116,33 @@ public	void ExecuteHeartbeat (float interval)
             "we used to disable the token while it was travelling. We don't in fact want to do that, but we should probably disable raycasts");
 
         OnTokenArrival?.Invoke(_token,_context);
-		Destroy(this);
+		Retire();
 	}
 
+    public void OnSphereChanged(SphereChangedArgs args)
+    {
+        //destination sphere has been changed, eg its reference point has moved
+        var destinationSphere = args.Sphere;
+        var sphereTokenLocation = args.Context.TokenDestination;
+
+        var newItinerary = destinationSphere.GetItineraryFor(_token);
+
+        newItinerary.Divert(_token,args.Context);
+
+    }
+
+    public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
+    {
+        //tokens in destination sphere have been changed
+    }
+
+    public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
+    {
+        //someone's done something else in the destination sphere
+    }
+
+    public void Retire()
+    {
+        Destroy(this);
+    }
 }

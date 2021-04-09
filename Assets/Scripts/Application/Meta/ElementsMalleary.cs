@@ -10,6 +10,7 @@ using SecretHistories.Commands.Encausting;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Events;
 using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
 using SecretHistories.Spheres;
@@ -69,6 +70,11 @@ namespace Assets.Scripts.Application.Meta
         {
             var elementToken = _elementDrydock.GetElementTokenInSlot();
             elementToken.Payload.SetMutation(input.text, -1, true);
+        }
+
+        public void OnSphereChanged(SphereChangedArgs args)
+        {
+            //
         }
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)

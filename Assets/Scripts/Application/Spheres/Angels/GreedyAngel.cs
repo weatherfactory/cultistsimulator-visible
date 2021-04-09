@@ -106,8 +106,6 @@ namespace SecretHistories.Spheres.Angels
 
                     TokenTravelItinerary itinerary = destinationThresholdSphere.GetItineraryFor(matchingToken).WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION);
 
-     
-
                     itinerary.Depart(matchingToken,new Context(Context.ActionSource.GreedyGrab));
 
                     return;

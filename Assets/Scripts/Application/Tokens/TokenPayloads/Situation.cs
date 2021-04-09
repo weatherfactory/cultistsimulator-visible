@@ -23,6 +23,7 @@ using SecretHistories.Spheres;
 using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Core;
+using SecretHistories.Events;
 using SecretHistories.Logic;
 using SecretHistories.Manifestations;
 using SecretHistories.States.TokenStates;
@@ -725,12 +726,24 @@ namespace SecretHistories.Entities {
 
         public void OnTokenMoved(TokenLocation toLocation)
         {
-            //foreach (var sphere in _spheres)
-            //{
-            //    sphere.SetReferencePosition(toLocation);
-                
-            //    Debug.Log($"Reference position x: {toLocation.Anchored3DPosition.x} y: {toLocation.Anchored3DPosition.y} z: {toLocation.Anchored3DPosition.z} in sphere {toLocation.AtSpherePath}");
-            //}
+            NotifySpheresChanged(new Context(Context.ActionSource.SphereReferenceLocationChanged));
+        }
+
+        public void NotifySpheresChanged(Context context)
+        {
+            List<Sphere> spheres = new List<Sphere>();
+            foreach (var d in Dominions)
+            {
+                spheres.AddRange(d.Spheres);
+            }
+
+            foreach (var sphere in spheres)
+            {
+                SphereChangedArgs args;
+                args = new SphereChangedArgs(sphere, context);
+                sphere.NotifySphereChanged(args);
+            }
+
         }
 
         public void StorePopulateDominionCommand(PopulateDominionCommand populateDominionCommand)
@@ -754,7 +767,6 @@ namespace SecretHistories.Entities {
             var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Update);
 
             OnChanged?.Invoke(changeArgs);
-
             DumpUnstartedBusiness();
         }
 
@@ -876,6 +888,11 @@ namespace SecretHistories.Entities {
             return rc.GetPredictionForFollowupRecipe(Recipe, this);
         }
 
+
+        public void OnSphereChanged(SphereChangedArgs args)
+        {
+            //
+        }
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
