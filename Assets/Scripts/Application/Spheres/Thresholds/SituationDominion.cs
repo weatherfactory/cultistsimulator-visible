@@ -30,11 +30,7 @@ namespace SecretHistories.UI {
     [IsEmulousEncaustable(typeof(AbstractDominion))]
     public class SituationDominion: AbstractDominion,ISphereEventSubscriber
     {
-        [SerializeField] CanvasGroupFader canvasGroupFader;
-
         [SerializeField] private AbstractSphereArrangement sphereArrangement;
-
-
         [SerializeField] private string EditableIdentifier;
 
         public List<StateEnum> VisibleForStates;
@@ -45,9 +41,10 @@ namespace SecretHistories.UI {
         [SerializeField] private int MaxSpheresAllowed;
 
 
-      public void Awake()
+      public override void Awake()
       {
           Identifier = EditableIdentifier;
+          base.Awake();
       }
 
         public override void RegisterFor(IManifestable manifestable)
@@ -66,15 +63,7 @@ namespace SecretHistories.UI {
             OnSphereRemoved.AddListener(sphereArrangement.SphereRemoved);
         }
 
-        public override void Evoke()
-        {
-            canvasGroupFader.Show();
-        }
 
-        public override void Dismiss()
-        {
-            canvasGroupFader.Hide();
-        }
 
         public override Sphere TryCreateSphere(SphereSpec spec)
         {

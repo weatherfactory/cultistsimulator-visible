@@ -50,15 +50,6 @@ namespace SecretHistories.UI
                 return false;
         }
 
-        public override void Evoke()
-        {
-            //
-        }
-
-        public override void Dismiss()
-        {
-         //
-        }
 
         public override bool CanCreateSphere(SphereSpec spec)
         {

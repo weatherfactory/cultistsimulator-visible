@@ -79,15 +79,6 @@ namespace SecretHistories.Infrastructure
             throw new NotImplementedException();
         }
 
-        public override void Evoke()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Dismiss()
-        {
-            throw new NotImplementedException();
-        }
 
         public override bool CanCreateSphere(SphereSpec spec)
         {

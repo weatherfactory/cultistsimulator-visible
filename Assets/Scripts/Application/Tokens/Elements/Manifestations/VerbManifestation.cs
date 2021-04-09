@@ -234,8 +234,12 @@ namespace SecretHistories.Manifestations
             var outputDominion = manifestable.Dominions.SingleOrDefault(d =>
                 d.Identifier == SituationDominionEnum.Output.ToString());
 
-            if (outputDominion == null)
+            if (outputDominion == null || !outputDominion.CurrentlyEvoked)
+            {
+                completionBadge.gameObject.SetActive(false);
+                dumpButton.gameObject.SetActive(false);
                 return;
+            }
 
 
             var outputSpheres = outputDominion.Spheres;

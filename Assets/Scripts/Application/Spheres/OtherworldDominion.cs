@@ -19,7 +19,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
     [IsEmulousEncaustable(typeof(AbstractDominion))]
     public class OtherworldDominion: AbstractDominion
     {
-        [SerializeField] private CanvasGroupFader canvasGroupFader;
+
         [SerializeField] public EgressThreshold EgressSphere;
 
         [SerializeField] private string EditableIdentifier;
@@ -33,9 +33,10 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
             
         }
 
-        public void Awake()
+        public override void Awake()
         {
             Identifier = EditableIdentifier;
+            base.Awake();
         }
 
         public bool MatchesEgress(string egressId)
@@ -76,15 +77,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
                 return false;
         }
 
-        public override void Evoke()
-        {
-            canvasGroupFader.Show();
-        }
-
-        public override void Dismiss()
-        {
-            canvasGroupFader.Hide();
-        }
 
         public override bool CanCreateSphere(SphereSpec spec)
         {

@@ -99,15 +99,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
                 return false;
         }
 
-        public override void Evoke()
-        {
-           //
-        }
 
-        public override void Dismiss()
-        {
-            //
-        }
 
         public override bool CanCreateSphere(SphereSpec spec)
         {

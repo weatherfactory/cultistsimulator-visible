@@ -48,10 +48,35 @@ namespace SecretHistories.UI
         public abstract bool VisibleFor(string state);
         public abstract bool RelevantTo(string state, Type sphereType);
         public abstract bool RemoveSphere(string id,SphereRetirementType retirementType);
-        public abstract void Evoke();
-        public abstract void Dismiss();
         public abstract bool CanCreateSphere(SphereSpec spec);
 
+        [DontEncaust]
+        public bool CurrentlyEvoked {
+            get
+            {
+                if (canvasGroupFader == null)
+                    return false;
+                return canvasGroupFader.IsVisible();
+            }}
+
+        [SerializeField] private CanvasGroupFader canvasGroupFader;
+
+        public virtual void Awake()
+        {
+            //nothing right now, but a couple of base classes call it
+        }
+
+        public virtual void Evoke()
+        {
+            canvasGroupFader?.Show(); //some subclasses don't need or use it
+            
+        }
+
+        public virtual void Dismiss()
+        {
+            canvasGroupFader?.Hide(); //some subclasses don't need or use it
+
+        }
 
         public virtual void RegisterFor(IManifestable manifestable)
         {
