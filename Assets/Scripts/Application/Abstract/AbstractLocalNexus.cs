@@ -24,7 +24,6 @@ namespace SecretHistories.Fucine
        [SerializeField] public UnityEvent ToggleDebugEvent;
        [SerializeField] public UnityEvent StackCardsEvent;
        [SerializeField] public SpeedControlEvent SpeedControlEvent;
-       [SerializeField] public UILookAtMeEvent UILookAtMeEvent;
        [SerializeField] public ZoomEvent ZoomEvent;
        [SerializeField] public TruckEvent TruckEvent;
        [SerializeField] public PedestalEvent PedestalEvent;

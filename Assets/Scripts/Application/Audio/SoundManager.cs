@@ -177,8 +177,6 @@ public class SoundManager : AudioManager, ISettingSubscriber
         if (Instance.soundsThisFrame.Contains(name))
             return -1;
 
-        Debug.Log($"Playing {name}");
-
         return Instance.PlaySound(name, -1);
     }
 
