@@ -10,7 +10,6 @@ namespace SecretHistories.Fucine
         void SituationStateChanged(Situation situation);
         void TimerValuesChanged(Situation s);
         void SituationSphereContentsUpdated(Situation s);
-        void ReceiveCommand(IAffectsTokenCommand command);
 
     }
 }

@@ -49,9 +49,7 @@ namespace SecretHistories.Spheres
         All
     }
 
-    /// <summary>
-    /// blocking entry/exit
-    /// </summary>
+    [Serializable]
     public class SphereBlock
     {
         public BlockDirection BlockDirection { get; }
@@ -117,13 +115,12 @@ namespace SecretHistories.Spheres
         }
 
 
-        [SerializeField] protected GameObject GreedyIcon;
-       [SerializeField] protected GameObject ConsumingIcon;
-
        /// <summary>
        /// This is an arbitrary list of GameObjects tagged with VisibleCharacteristic which can be used to display the presence of angels or anything else that wants to make use of them.
        /// </summary>
        [SerializeField] private List<VisibleCharacteristic> VisibleCharacteristics;
+   
+        protected HashSet<SphereBlock> CurrentSphereBlocks = new HashSet<SphereBlock>();
 
        /// <param name="angel"></param>
        public void ShowAngelPresence(IAngel angel)
@@ -174,7 +171,7 @@ namespace SecretHistories.Spheres
             return true;
         }
 
-        protected HashSet<SphereBlock> _currentContainerBlocks = new HashSet<SphereBlock>();
+
 
         protected readonly List<Token> _tokens = new List<Token>();
         protected AngelFlock flock = new AngelFlock();
@@ -268,7 +265,7 @@ namespace SecretHistories.Spheres
 
         public virtual bool CurrentlyBlockedForDirectionWithAnyReasonExcept(BlockDirection direction, BlockReason exceptReason)
         {
-            foreach (var cb in _currentContainerBlocks)
+            foreach (var cb in CurrentSphereBlocks)
             {
                 if (cb.BlockDirection == direction || cb.BlockDirection == BlockDirection.All)
                 
@@ -281,9 +278,9 @@ namespace SecretHistories.Spheres
 
         public BlockDirection CurrentBlockDirection()
         {
-            bool inwardblock = _currentContainerBlocks.Any(cb => cb.BlockDirection == BlockDirection.Inward);
-            bool outwardBlock = _currentContainerBlocks.Any(cb => cb.BlockDirection == BlockDirection.Outward);
-            bool allBlock = _currentContainerBlocks.Any(cb => cb.BlockDirection == BlockDirection.All);
+            bool inwardblock = CurrentSphereBlocks.Any(cb => cb.BlockDirection == BlockDirection.Inward);
+            bool outwardBlock = CurrentSphereBlocks.Any(cb => cb.BlockDirection == BlockDirection.Outward);
+            bool allBlock = CurrentSphereBlocks.Any(cb => cb.BlockDirection == BlockDirection.All);
 
             if (allBlock || (inwardblock && outwardBlock))
                 return BlockDirection.All;
@@ -298,15 +295,15 @@ namespace SecretHistories.Spheres
 
         public bool AddBlock(SphereBlock block)
         {
-            return _currentContainerBlocks.Add(block);
+            return CurrentSphereBlocks.Add(block);
         }
 
         public int RemoveBlock(SphereBlock blockToRemove)
         {
             if (blockToRemove.BlockDirection == BlockDirection.All)
-                return _currentContainerBlocks.RemoveWhere(cb => cb.BlockReason == blockToRemove.BlockReason);
+                return CurrentSphereBlocks.RemoveWhere(cb => cb.BlockReason == blockToRemove.BlockReason);
             else
-                return _currentContainerBlocks.RemoveWhere(cb =>
+                return CurrentSphereBlocks.RemoveWhere(cb =>
                     cb.BlockDirection == blockToRemove.BlockDirection && cb.BlockReason == blockToRemove.BlockReason);
 
         }

@@ -34,10 +34,6 @@ namespace Assets.Scripts.Application.UI.Situation
         //    throw new NotImplementedException();
         }
 
-        public void ReceiveCommand(IAffectsTokenCommand command)
-        {
-            //can't make use of it
-        }
 
         private void ShowDeckEffects(Dictionary<string, int> deckEffects)
         {

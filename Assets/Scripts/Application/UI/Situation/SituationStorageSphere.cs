@@ -73,8 +73,4 @@ public class SituationStorageSphere : Sphere,ISituationSubscriber
         //
     }
 
-    public void ReceiveCommand(IAffectsTokenCommand command)
-    {
-        //can't make use of it
-    }
 }

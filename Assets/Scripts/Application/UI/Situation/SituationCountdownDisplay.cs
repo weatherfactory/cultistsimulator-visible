@@ -45,9 +45,5 @@ namespace Assets.Scripts.Application.UI.Situation
 
         }
 
-        public void ReceiveCommand(IAffectsTokenCommand command)
-        {
-            //can't make use of it
-        }
     }
 }

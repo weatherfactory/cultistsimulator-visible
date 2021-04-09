@@ -42,10 +42,5 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
 
         }
-
-        public void ReceiveCommand(IAffectsTokenCommand command)
-        {
-            //
-        }
     }
 }

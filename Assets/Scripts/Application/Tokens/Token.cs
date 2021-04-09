@@ -901,6 +901,5 @@ namespace SecretHistories.UI {
                 Payload.Retire(RetirementVFX.CardLight);
         }
 
-
     }
 }

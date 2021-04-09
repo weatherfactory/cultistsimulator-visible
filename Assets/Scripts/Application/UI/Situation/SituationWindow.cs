@@ -252,11 +252,6 @@ namespace SecretHistories.UI {
         }
 
 
-        public void ReceiveCommand(IAffectsTokenCommand command)
-        {
-        }
-
-
         //public override void MoveObject(PointerEventData eventData) {
         //    Vector3 dragPos;
         //    RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.position, eventData.pressEventCamera, out dragPos);

@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Events;
 using SecretHistories.Fucine;
+using SecretHistories.Spheres;
 using UnityEngine;
 using SecretHistories.UI;
 using SecretHistories.States.TokenStates;
@@ -11,7 +13,8 @@ using SecretHistories.States.TokenStates;
 
 public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
 
-	public event System.Action<Token,Context> OnTokenArrival;
+	public event Action<Token,Context> OnTokenArrival;
+    public event Func<SphereBlock,int> OnBlockRedundant;
 
 	protected Token _token;
     protected Context _context;
@@ -37,7 +40,11 @@ public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
     private float _travelTimeElapsed = 0f;
 
 
-
+    public SphereBlock AppliesSphereBlock()
+    {
+        return new SphereBlock(BlockDirection.Inward,
+            BlockReason.InboundTravellingStack);
+    }
 
     protected virtual Vector3 StartPosition => _startPosition;
 
@@ -144,5 +151,10 @@ public	void ExecuteHeartbeat (float interval)
     public void Retire()
     {
         Destroy(this);
+    }
+
+    public void OnDestroy()
+    {
+        OnBlockRedundant?.Invoke(AppliesSphereBlock());
     }
 }

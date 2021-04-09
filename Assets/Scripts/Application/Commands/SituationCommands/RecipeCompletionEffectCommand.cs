@@ -71,10 +71,19 @@ namespace SecretHistories.Core
             RunElementPurges();
 
             OpenPortals(situation);
+            DoRecipeVfx(situation);
 
             return true;
         }
 
+        private void DoRecipeVfx(Situation situation)
+        {
+            if(!string.IsNullOrEmpty(Recipe.BurnImage))
+            {
+                var burnImageCommand=new BurnImageCommand(Recipe.BurnImage);
+                situation.CommandQueue.AddCommand(burnImageCommand);
+            }
+        }
 
 
         public bool IsValidForState(StateEnum forState)

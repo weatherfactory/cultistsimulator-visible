@@ -629,14 +629,6 @@ namespace SecretHistories.Entities {
         }
 
 
-        public void SendCommandToSubscribers(IAffectsTokenCommand command)
-        {
-            foreach(var s in _subscribers)
-                s.ReceiveCommand(command);
-        }
-
-
-
 
         public void ExecuteCurrentRecipe()
         {
@@ -906,7 +898,7 @@ namespace SecretHistories.Entities {
             var newEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
 
             if (oldEndingFlavour!=newEndingFlavour)
-                SendCommandToSubscribers(new SignalEndingFlavourCommand(newEndingFlavour));
+                Token.ExecuteTokenEffectCommand(new SignalEndingFlavourCommand(newEndingFlavour));
 
             foreach (var s in _subscribers)
                 s.SituationSphereContentsUpdated(this);

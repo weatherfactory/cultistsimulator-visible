@@ -19,7 +19,7 @@ namespace SecretHistories.Commands
 
         public bool IsValidForState(StateEnum forState)
         {
-            return forState == StateEnum.Complete;
+            return true;
         }
 
         public BurnImageCommand(string image)
@@ -31,7 +31,7 @@ namespace SecretHistories.Commands
         public bool Execute(Situation situation)
         {
             var burnImageUnderTokenCommand=new BurnImageUnderTokenCommand(_image);
-            situation.SendCommandToSubscribers(burnImageUnderTokenCommand);
+            situation.Token.ExecuteTokenEffectCommand(burnImageUnderTokenCommand);
             return true;
         }
 

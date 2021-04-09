@@ -78,8 +78,8 @@ namespace SecretHistories.UI
             var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
             if(destinationSphere.SphereCategory==SphereCategory.Threshold) //hacky. Something more like a 'max tokens #' would make sense.
             {
-                destinationSphere.AddBlock(new SphereBlock(BlockDirection.Inward,
-                BlockReason.InboundTravellingStack));
+                destinationSphere.AddBlock(tokenAnimation.AppliesSphereBlock());
+                tokenAnimation.OnBlockRedundant += destinationSphere.RemoveBlock;
             }
 
             //We convert to world positions before sending, because we'll be animating through an EnRouteSphere to a DestinationSphere,
