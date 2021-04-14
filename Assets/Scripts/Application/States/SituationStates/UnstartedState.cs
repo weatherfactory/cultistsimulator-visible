@@ -19,9 +19,9 @@ namespace SecretHistories.States
         {
 
             var verbThresholdsCommand= new PopulateDominionCommand(SituationDominionEnum.VerbThresholds.ToString(),situation.Verb.Thresholds);
-            situation.CommandQueue.AddCommand(verbThresholdsCommand);
+            situation.AddCommand(verbThresholdsCommand);
             var resetSituationCommand=new ResetSituationCommand();
-            situation.CommandQueue.AddCommand(resetSituationCommand);
+            situation.AddCommand(resetSituationCommand);
         }
 
         public override void Exit(Situation situation)

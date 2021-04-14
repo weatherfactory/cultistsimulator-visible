@@ -389,7 +389,7 @@ namespace SecretHistories.Entities {
                 {
                     if (s.Verb.Id.StartsWith(wildcardToDelete))
                     {
-                        s.CommandQueue.AddCommand(new TryHaltSituationCommand());
+                        s.AddCommand(new TryHaltSituationCommand());
                         s.ExecuteHeartbeat(0f, 0f);
                         i++;
                     }
@@ -405,7 +405,7 @@ namespace SecretHistories.Entities {
                 {
                     if (s.Verb.Id == toHaltId.Trim())
                     {
-                        s.CommandQueue.AddCommand(new TryHaltSituationCommand());
+                        s.AddCommand(new TryHaltSituationCommand());
                         s.ExecuteHeartbeat(0f, 0f);
                         i++;
                     }

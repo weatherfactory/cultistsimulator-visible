@@ -68,7 +68,7 @@ namespace Assets.Tests.EditModeTests
             var situation = situationCreationCommand.Execute(Context.Unknown()) as Situation;
 
             var activationCommand = TryActivateRecipeCommand.ManualRecipeActivation("req0effect1");
-            situation.CommandQueue.AddCommand(activationCommand);
+            situation.AddCommand(activationCommand);
             Assert.AreEqual(StateEnum.Unstarted, situation.StateIdentifier);
             situation.ExecuteHeartbeat(1f, 1f);
             Assert.AreEqual(StateEnum.Ongoing, situation.StateIdentifier);
@@ -85,7 +85,7 @@ namespace Assets.Tests.EditModeTests
             var recipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("apls");
 
             var activationCommand = TryActivateRecipeCommand.OverridingRecipeActivation(recipeWithThreshold.Id);
-            situation.CommandQueue.AddCommand(activationCommand);
+            situation.AddCommand(activationCommand);
             
             situation.ExecuteHeartbeat(0f, 0f); //first time switches to Ongoing
             situation.ExecuteHeartbeat(0f, 0f ); //second time executes the outstanding command
@@ -104,7 +104,7 @@ namespace Assets.Tests.EditModeTests
             var secondRecipeWithThreshold = Watchman.Get<Compendium>().GetEntityById<Recipe>("bpls.loop");
 
             var activationCommand = TryActivateRecipeCommand.OverridingRecipeActivation(recipeWithThreshold.Id);
-            situation.CommandQueue.AddCommand(activationCommand);
+            situation.AddCommand(activationCommand);
             situation.ExecuteHeartbeat(recipeWithThreshold.Warmup+1, recipeWithThreshold.Warmup+1); //first time switches to Ongoing
             situation.ExecuteHeartbeat(0f, 0f); //second time executes the outstanding sphere creation command and switches to RecipeExecution
             situation.ExecuteHeartbeat(0f, 0f); //third time switches back to Ongoing
@@ -125,7 +125,7 @@ namespace Assets.Tests.EditModeTests
 
             
             var activationCommand = TryActivateRecipeCommand.OverridingRecipeActivation(recipeWithThreshold.Id);
-            situation.CommandQueue.AddCommand(activationCommand);
+            situation.AddCommand(activationCommand);
             situation.ExecuteHeartbeat(recipeWithThreshold.Warmup + 1, recipeWithThreshold.Warmup+1); //first time switches to Ongoing
             situation.ExecuteHeartbeat(0f, 0f); //second time executes the outstanding sphere creation command and switches to RecipeExecution
             situation.ExecuteHeartbeat(0f, 0f); //third time switches back to Ongoing

@@ -81,7 +81,7 @@ namespace SecretHistories.Core
             if(!string.IsNullOrEmpty(Recipe.BurnImage))
             {
                 var burnImageCommand=new BurnImageCommand(Recipe.BurnImage);
-                situation.CommandQueue.AddCommand(burnImageCommand);
+                situation.AddCommand(burnImageCommand);
             }
         }
 

@@ -35,12 +35,12 @@ namespace SecretHistories.Commands
         public List<Token> TokensToMigrate=new List<Token>();
         public List<PopulateDominionCommand> Dominions { get; set; }=new List<PopulateDominionCommand>();
 
-        public SituationCommandQueue CommandQueue { get; set; }=new SituationCommandQueue();
+        [JsonProperty(TypeNameHandling = TypeNameHandling.Auto)]
+        public List<ISituationCommand> CommandQueue { get; set; } = new List<ISituationCommand>();
 
         public SituationCreationCommand()
         {
             StateIdentifier = StateEnum.Inchoate;
-            CommandQueue = new SituationCommandQueue();
         }
 
         [JsonConstructor]
@@ -71,7 +71,7 @@ namespace SecretHistories.Commands
         public SituationCreationCommand WithRecipeAboutToActivate(string recipeId)
         {
             StateIdentifier = StateEnum.Unstarted;
-            CommandQueue.AddCommand(TryActivateRecipeCommand.OverridingRecipeActivation(recipeId));
+            CommandQueue.Add(TryActivateRecipeCommand.OverridingRecipeActivation(recipeId));
             return this;
         }
 
@@ -125,7 +125,7 @@ namespace SecretHistories.Commands
                 newSituation.AcceptTokens(SphereCategory.SituationStorage,TokensToMigrate);
             
 
-            newSituation.CommandQueue.AddCommandsFrom(CommandQueue);
+            newSituation.AddCommandsFrom(CommandQueue);
             
             return newSituation;
 

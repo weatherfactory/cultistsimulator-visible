@@ -86,10 +86,8 @@ namespace SecretHistories.Entities {
         public bool IsOpen { get; private set; }
 
         [Encaust]
-        public SituationCommandQueue CommandQueue { get; set; } = new SituationCommandQueue();
+        public List<ISituationCommand> CommandQueue { get; set; } = new List<ISituationCommand>();
 
-      //  [Encaust]
-      //  public RecipeCompletionEffectCommand CurrentCompletionEffectCommand { get; set; } = new RecipeCompletionEffectCommand();
 
         [Encaust] public Dictionary<string, int> Mutations => new Dictionary<string, int>();
         [Encaust] public int Quantity => 1;
@@ -584,7 +582,7 @@ namespace SecretHistories.Entities {
             State.Exit(this);
             newState.Enter(this);
             State = newState;
-          //  CommandQueue.ExecuteCommandsFor(State.Identifier, this);
+
             NotifyStateChange();
             NotifyTimerChange();
         }
@@ -592,13 +590,41 @@ namespace SecretHistories.Entities {
         private SituationState Continue(float seconds,float metaseconds)
         {
             _timeshadow.SpendTime(seconds);
-            CommandQueue.ExecuteCommandsFor(State.Identifier,this);
+            ExecuteCommandsFor(State.Identifier,this);
             State.Continue(this);
 
             return State;
         }
 
+        public void ExecuteCommandsFor(StateEnum forState, Situation situation)
+        {
+            foreach (var command in new List<ISituationCommand>(CommandQueue))
+            {
+                if (command.IsValidForState(forState))
+                {
+                    bool executed = command.Execute(situation);
+                    if (executed)
+                        MarkCommandCompleted(command);
+                }
+            }
+        }
 
+        public void AddCommand(ISituationCommand command)
+        {
+            CommandQueue.Add(command);
+        }
+
+        public void AddCommandsFrom(List<ISituationCommand> existingQueue)
+        {
+            foreach (var c in existingQueue)
+                AddCommand(c);
+        }
+
+        public void MarkCommandCompleted(ISituationCommand command)
+        {
+            CommandQueue.Remove(command);
+
+        }
         public void NotifyStateChange()
         {
             foreach (var subscriber in _subscribers)
@@ -833,9 +859,9 @@ namespace SecretHistories.Entities {
         /// </summary>
         public void Conclude()
         {
-           CommandQueue.AddCommand(new ConcludeCommand());
+           AddCommand(new ConcludeCommand());
            var retireNotesCommand=new ClearDominionCommand(SituationDominionEnum.Notes.ToString(), SphereRetirementType.Destructive);
-           CommandQueue.AddCommand(retireNotesCommand);
+           AddCommand(retireNotesCommand);
            Continue(0f,0f);
         }
 
@@ -855,7 +881,7 @@ namespace SecretHistories.Entities {
 
             {
                var activateRecipeCommand=TryActivateRecipeCommand.ManualRecipeActivation(recipe.Id);
-                CommandQueue.AddCommand(activateRecipeCommand);
+                AddCommand(activateRecipeCommand);
 
                 //The game might be paused! or the player might just be incredibly quick off the mark
                 //so immediately continue with a 0 interval
