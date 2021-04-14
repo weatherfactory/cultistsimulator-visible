@@ -83,6 +83,6 @@ namespace SecretHistories.Constants
         
 
         public const string ANCHOR_BOOKSHELF = "bookshelf";
-        public const float SEND_STACK_TO_SLOT_DURATION = 10f;
+        public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
     }
 }
