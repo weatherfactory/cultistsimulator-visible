@@ -484,18 +484,18 @@ namespace SecretHistories.Spheres
         }
 
 
-        public void RequestFlockActions(float interval)
+        public void RequestFlockActions(float seconds, float metaseconds)
         {
-            flock.Act(interval);
+            flock.Act(seconds, metaseconds);
         }
 
-        public void RequestTokensSpendTime(float interval)
+        public void RequestTokensSpendTime(float seconds, float metaseconds)
         {
 
             var tokens = Tokens;
     
             foreach (var t in tokens)
-                t.ExecuteHeartbeat(interval);
+                t.ExecuteHeartbeat(seconds, metaseconds);
         }
 
         public int TryPurgeStacks(Element element, int maxToPurge)

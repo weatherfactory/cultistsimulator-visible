@@ -316,14 +316,14 @@ namespace SecretHistories.Entities {
 
         public void FirstHeartbeat()
         {
-             ExecuteHeartbeat(0f);
+             ExecuteHeartbeat(0f, 0f);
              NotifyStateChange();
              NotifyTimerChange();
         }
 
-        public void ExecuteHeartbeat(float interval)
+        public void ExecuteHeartbeat(float seconds, float metaseconds)
         {
-            Continue(interval);
+            Continue(seconds,metaseconds);
         }
 
         public bool CanInteractWith(ITokenPayload incomingTokenPayload)
@@ -581,21 +581,19 @@ namespace SecretHistories.Entities {
 
         public void TransitionToState(SituationState newState)
         {
-
-
             State.Exit(this);
             newState.Enter(this);
             State = newState;
+          //  CommandQueue.ExecuteCommandsFor(State.Identifier, this);
             NotifyStateChange();
             NotifyTimerChange();
         }
 
-        private SituationState Continue(float interval)
+        private SituationState Continue(float seconds,float metaseconds)
         {
-            CommandQueue.ExecuteCommandsFor(State.Identifier, this);
-            _timeshadow.SpendTime(interval);
-
-              State.Continue(this);
+            _timeshadow.SpendTime(seconds);
+            CommandQueue.ExecuteCommandsFor(State.Identifier,this);
+            State.Continue(this);
 
             return State;
         }
@@ -838,7 +836,7 @@ namespace SecretHistories.Entities {
            CommandQueue.AddCommand(new ConcludeCommand());
            var retireNotesCommand=new ClearDominionCommand(SituationDominionEnum.Notes.ToString(), SphereRetirementType.Destructive);
            CommandQueue.AddCommand(retireNotesCommand);
-           Continue(0f);
+           Continue(0f,0f);
         }
 
 
@@ -862,7 +860,7 @@ namespace SecretHistories.Entities {
                 //The game might be paused! or the player might just be incredibly quick off the mark
                 //so immediately continue with a 0 interval
 
-                Continue(0f);
+                Continue(0f,0f);
             }
 
         }

@@ -25,9 +25,8 @@ namespace SecretHistories.Spheres.Angels
 
         public int Authority => 9;
 
-        public void Act(float interval)
+        public void Act(float seconds, float metaseconds)
         {
-   
             _beatsTowardsAngelry++;
 
             if (_beatsTowardsAngelry >= BEATS_BETWEEN_ANGELRY)
@@ -35,7 +34,7 @@ namespace SecretHistories.Spheres.Angels
                 _beatsTowardsAngelry = 0;
 
             if (!_thresholdSphereToGrabTo.CurrentlyBlockedForDirectionWithAnyReasonExcept(BlockDirection.Inward,BlockReason.GreedyAngel) && _thresholdSphereToGrabTo.Tokens.Count == 0)
-                TryGrabStack(_thresholdSphereToGrabTo, interval);
+                TryGrabStack(_thresholdSphereToGrabTo, metaseconds);
             
         }
 
@@ -87,7 +86,6 @@ namespace SecretHistories.Spheres.Angels
         {
 
             var spheresWhichAllowDragging = Watchman.Get<HornedAxe>().GetSpheres();
-
 
   
             foreach (var sphereToSearch in spheresWhichAllowDragging)

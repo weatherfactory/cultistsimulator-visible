@@ -50,12 +50,11 @@ namespace SecretHistories.Constants
         public async void LoadGame(GamePersistenceProvider gamePersistenceProviderSource)
         {
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
-            { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProviderSource.GetDefaultGameSpeed(), WithSFX = false });
+            { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false }); //always pause before trying to load the game
 
             try
             {
-
-                gamePersistenceProviderSource.DepersistGameState(); //In the case of a Petromneme, this doesn't just deserialise, it will do the actual loading
+                gamePersistenceProviderSource.DepersistGameState();
 
                 var gameState = gamePersistenceProviderSource.RetrievePersistedGameState();
 
@@ -86,8 +85,9 @@ namespace SecretHistories.Constants
                 await TryDefaultSave();
                 await  SaveRestartState();
             }
-            
 
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+                { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProviderSource.GetDefaultGameSpeed(), WithSFX = false }); //now unpause the game and let's go
 
         }
 

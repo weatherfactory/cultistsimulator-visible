@@ -16,7 +16,7 @@ namespace SecretHistories.Spheres.Angels
        /// </summary>
        int Authority { get; }
        
-       void Act(float interval);
+       void Act(float seconds, float metaseconds);
 
        void SetWatch(Sphere sphere);
 

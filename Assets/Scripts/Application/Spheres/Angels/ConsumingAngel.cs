@@ -14,7 +14,7 @@ namespace SecretHistories.Spheres.Angels
 
         public int Authority => 9;
 
-        public void Act(float interval)
+        public void Act(float seconds, float metaseconds)
         {
         if (_watchingOverThreshold == null)
                 return;

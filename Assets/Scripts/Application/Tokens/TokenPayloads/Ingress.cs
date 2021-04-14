@@ -244,9 +244,10 @@ namespace SecretHistories.Tokens.TokenPayloads
            //Don't open yet: we don't want to open  if the game is paused.
         }
 
-        public void ExecuteHeartbeat(float interval)
+        public void ExecuteHeartbeat(float seconds, float metaseconds)
         {
-            OpenAt(Token.Location);
+            if(seconds>0)
+                OpenAt(Token.Location);
         }
 
 

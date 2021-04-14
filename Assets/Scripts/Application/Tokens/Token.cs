@@ -241,16 +241,15 @@ namespace SecretHistories.UI {
             return Payload.Mutations;
         }
 
-        public void ExecuteHeartbeat(float interval)
+        public void ExecuteHeartbeat(float seconds, float metaseconds)
         {
 
                 var animationComponent = gameObject.GetComponent<TokenTravelAnimation>();
 
                 if(animationComponent!=null)
-                    animationComponent.ExecuteHeartbeat(interval);
-
-
-                Payload.ExecuteHeartbeat(interval);
+                    animationComponent.ExecuteHeartbeat(seconds, metaseconds);
+                
+                Payload.ExecuteHeartbeat(seconds, metaseconds);
      
         }
         
@@ -896,7 +895,7 @@ namespace SecretHistories.UI {
         public void Purge()
         {
             if (Payload.GetTimeshadow().Transient)
-                Payload.ExecuteHeartbeat(Payload.GetTimeshadow().LifetimeRemaining + 1); //make it decay to its next form
+                Payload.ExecuteHeartbeat(Payload.GetTimeshadow().LifetimeRemaining + 1, Payload.GetTimeshadow().LifetimeRemaining + 1); //make it decay to its next form
             else
                 Payload.Retire(RetirementVFX.CardLight);
         }

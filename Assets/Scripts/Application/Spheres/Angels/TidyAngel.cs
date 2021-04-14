@@ -25,7 +25,7 @@ namespace SecretHistories.Spheres.Angels
             _tidyToPath = tidyToPath;
         }
 
-        public void Act(float interval)
+        public void Act(float seconds, float metaseconds)
         {
             //do nothing?
         }

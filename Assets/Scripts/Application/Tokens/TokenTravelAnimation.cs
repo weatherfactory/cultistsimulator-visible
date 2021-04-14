@@ -83,22 +83,22 @@ public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
         transform.SetAsLastSibling();
 	}
 
-public	void ExecuteHeartbeat (float interval)
+public void ExecuteHeartbeat(float seconds, float metaseconds)
     {
         if (_token.PauseAnimations)
             return;
 		if (_travelDuration < 0)
 			return;
 		else if (_travelTimeElapsed < _travelDuration) 
-			Continue(interval);
+			Continue( metaseconds);
 		else
 			Complete();
 	}
 
-	void Continue(float interval) {
+	void Continue( float metaseconds) {
 
         //	_travelTimeElapsed += Time.deltaTime;
-        _travelTimeElapsed += interval;
+        _travelTimeElapsed += metaseconds;
 
         float completion = _travelTimeElapsed / _travelDuration;
 

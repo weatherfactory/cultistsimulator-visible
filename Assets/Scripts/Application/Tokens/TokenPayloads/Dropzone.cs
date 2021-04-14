@@ -167,7 +167,7 @@ namespace SecretHistories.Entities.Verbs
 
         public void FirstHeartbeat()
         {
-            ExecuteHeartbeat(0f);
+            ExecuteHeartbeat(0f, 0f);
         }
 
 
@@ -220,7 +220,7 @@ namespace SecretHistories.Entities.Verbs
             return new AspectsDictionary();
         }
 
-        public void ExecuteHeartbeat(float interval)
+        public void ExecuteHeartbeat(float seconds, float metaseconds)
         {
             //
         }

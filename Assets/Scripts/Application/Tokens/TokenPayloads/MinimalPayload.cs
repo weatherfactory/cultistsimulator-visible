@@ -175,10 +175,10 @@ namespace SecretHistories.Entities
 
         public void FirstHeartbeat()
         {
-            ExecuteHeartbeat(0f);
+            ExecuteHeartbeat(0f, 0f);
         }
 
-        public void ExecuteHeartbeat(float interval)
+        public void ExecuteHeartbeat(float seconds, float metaseconds)
         {
         //
         }

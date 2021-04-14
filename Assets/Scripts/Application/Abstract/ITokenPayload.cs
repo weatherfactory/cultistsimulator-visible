@@ -25,7 +25,7 @@ namespace SecretHistories.Abstract
         bool IsValid();
         bool IsValidElementStack();
         void FirstHeartbeat();
-        void ExecuteHeartbeat(float interval);
+        void ExecuteHeartbeat(float seconds, float metaseconds);
         bool CanInteractWith(ITokenPayload incomingTokenPayload);
         bool CanMergeWith(ITokenPayload incomingTokenPayload);
         bool Retire(RetirementVFX vfx);

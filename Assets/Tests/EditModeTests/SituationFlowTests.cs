@@ -70,7 +70,7 @@ namespace Assets.Tests.EditModeTests
             var activationCommand = TryActivateRecipeCommand.ManualRecipeActivation("req0effect1");
             situation.CommandQueue.AddCommand(activationCommand);
             Assert.AreEqual(StateEnum.Unstarted, situation.StateIdentifier);
-            situation.ExecuteHeartbeat(1f);
+            situation.ExecuteHeartbeat(1f, 1f);
             Assert.AreEqual(StateEnum.Ongoing, situation.StateIdentifier);
 
         }
@@ -87,8 +87,8 @@ namespace Assets.Tests.EditModeTests
             var activationCommand = TryActivateRecipeCommand.OverridingRecipeActivation(recipeWithThreshold.Id);
             situation.CommandQueue.AddCommand(activationCommand);
             
-            situation.ExecuteHeartbeat(0f); //first time switches to Ongoing
-            situation.ExecuteHeartbeat(0f); //second time executes the outstanding command
+            situation.ExecuteHeartbeat(0f, 0f); //first time switches to Ongoing
+            situation.ExecuteHeartbeat(0f, 0f ); //second time executes the outstanding command
             Assert.AreEqual(recipeWithThreshold.Id,situation.GetSpheresByCategory(SphereCategory.Threshold).First().Id);
         }
 
@@ -105,10 +105,10 @@ namespace Assets.Tests.EditModeTests
 
             var activationCommand = TryActivateRecipeCommand.OverridingRecipeActivation(recipeWithThreshold.Id);
             situation.CommandQueue.AddCommand(activationCommand);
-            situation.ExecuteHeartbeat(recipeWithThreshold.Warmup+1); //first time switches to Ongoing
-            situation.ExecuteHeartbeat(0f); //second time executes the outstanding sphere creation command and switches to RecipeExecution
-            situation.ExecuteHeartbeat(0f); //third time switches back to Ongoing
-            situation.ExecuteHeartbeat(0f); //fourth time time executes the outstanding sphere creation command and switches to RecipeExecution
+            situation.ExecuteHeartbeat(recipeWithThreshold.Warmup+1, recipeWithThreshold.Warmup+1); //first time switches to Ongoing
+            situation.ExecuteHeartbeat(0f, 0f); //second time executes the outstanding sphere creation command and switches to RecipeExecution
+            situation.ExecuteHeartbeat(0f, 0f); //third time switches back to Ongoing
+            situation.ExecuteHeartbeat(0f, 0f); //fourth time time executes the outstanding sphere creation command and switches to RecipeExecution
 
             Assert.AreEqual(secondRecipeWithThreshold.Slots.First().Id,situation.GetSpheresByCategory(SphereCategory.Threshold).First().Id);
         }
@@ -126,10 +126,10 @@ namespace Assets.Tests.EditModeTests
             
             var activationCommand = TryActivateRecipeCommand.OverridingRecipeActivation(recipeWithThreshold.Id);
             situation.CommandQueue.AddCommand(activationCommand);
-            situation.ExecuteHeartbeat(recipeWithThreshold.Warmup + 1); //first time switches to Ongoing
-            situation.ExecuteHeartbeat(0f); //second time executes the outstanding sphere creation command and switches to RecipeExecution
-            situation.ExecuteHeartbeat(0f); //third time switches back to Ongoing
-            situation.ExecuteHeartbeat(0f); //fourth time time executes the outstanding sphere creation command and switches to RecipeExecution
+            situation.ExecuteHeartbeat(recipeWithThreshold.Warmup + 1, recipeWithThreshold.Warmup+1); //first time switches to Ongoing
+            situation.ExecuteHeartbeat(0f, 0f); //second time executes the outstanding sphere creation command and switches to RecipeExecution
+            situation.ExecuteHeartbeat(0f, 0f); //third time switches back to Ongoing
+            situation.ExecuteHeartbeat(0f, 0f); //fourth time time executes the outstanding sphere creation command and switches to RecipeExecution
 
             Assert.AreEqual(recipeWithThreshold.Slots.First().Id, situation.GetSpheresByCategory(SphereCategory.Threshold).First().Id);
         }
@@ -165,7 +165,7 @@ namespace Assets.Tests.EditModeTests
             
             var situation = situationCreationCommand.Execute(Context.Unknown()) as Situation;
             situation.FirstHeartbeat();
-            situation.ExecuteHeartbeat(0f);
+            situation.ExecuteHeartbeat(0f, 0f);
 
             var notesDominion = situation.Dominions.Single(d => d.Identifier == SituationDominionEnum.Notes.ToString());
            

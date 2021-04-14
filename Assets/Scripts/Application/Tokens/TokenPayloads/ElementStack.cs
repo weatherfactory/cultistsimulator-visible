@@ -203,7 +203,7 @@ namespace SecretHistories.UI {
 
         public void FirstHeartbeat()
         {
-            ExecuteHeartbeat(0f);
+            ExecuteHeartbeat(0f, 0f);
         }
 
         public bool IsValidVerb()
@@ -481,21 +481,22 @@ namespace SecretHistories.UI {
         /// <summary>
         /// passing a negative interval will immediately decay the stack
         /// </summary>
-        /// <param name="interval"></param>
+        /// <param name="seconds"></param>
+        /// <param name="metaseconds"></param>
         /// <returns></returns>
-        public void ExecuteHeartbeat(float interval)
+        public void ExecuteHeartbeat(float seconds, float metaseconds)
         {
-            if (interval <= 0 || !Decays)
+            if (seconds <= 0 || !Decays)
                 return;
 
-            _timeshadow.SpendTime(interval);
+            _timeshadow.SpendTime(seconds);
             
             OnLifetimeSpent?.Invoke(LifetimeRemaining); //display decay effects for listeners elsewhere
 
 
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update));
 
-            if (LifetimeRemaining <= 0 || interval < 0)
+            if (LifetimeRemaining <= 0 || seconds < 0)
             {
 
                 // If we DecayTo, then do that. Otherwise straight up retire the card

@@ -89,18 +89,17 @@ public class Heart : MonoBehaviour
     {
         try
         {
-            if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused)
-                return;
-
             timerBetweenBeats += Time.deltaTime;
 
             if (timerBetweenBeats > BEAT_INTERVAL_SECONDS)
             {
                 timerBetweenBeats -= BEAT_INTERVAL_SECONDS;
                 if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Fast)
-                    Beat(BEAT_INTERVAL_SECONDS * 3);
+                    Beat(BEAT_INTERVAL_SECONDS * 3, BEAT_INTERVAL_SECONDS);
                 else if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Normal)
-                    Beat(BEAT_INTERVAL_SECONDS);
+                    Beat(BEAT_INTERVAL_SECONDS, BEAT_INTERVAL_SECONDS);
+                else if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused)
+                    Beat(0, BEAT_INTERVAL_SECONDS);
 
                 else
                     NoonUtility.Log("Unknown game speed state: " + gameSpeedState.GetEffectiveGameSpeed());
@@ -119,16 +118,14 @@ public class Heart : MonoBehaviour
     }
 
 
-    public void Beat(float beatInterval)
+    public void Beat(float seconds,float metaseconds)
     {
 
         foreach(Sphere sphere in Watchman.Get<HornedAxe>().GetSpheres())
         {
-            sphere.RequestFlockActions(beatInterval);
-            var tokenHeartbeatIntervalForThisSphere = beatInterval * sphere.TokenHeartbeatIntervalMultiplier;
-
-            if (tokenHeartbeatIntervalForThisSphere > 0) //for many spheres, the multiplier is 0 and time won't pass for tokens.
-                sphere.RequestTokensSpendTime(beatInterval);
+            var secondsForSphere = seconds * sphere.TokenHeartbeatIntervalMultiplier;
+            sphere.RequestFlockActions(secondsForSphere, metaseconds);
+            sphere.RequestTokensSpendTime(secondsForSphere, metaseconds);
 
         }
     }

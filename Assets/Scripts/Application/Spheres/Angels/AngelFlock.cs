@@ -23,11 +23,11 @@ namespace SecretHistories.Spheres.Angels
             _angels.Remove(angel);
         }
 
-        public void Act(float interval)
+        public void Act(float seconds, float metaseconds)
         {
             foreach (var angel in _angels)
             {
-                angel.Act(interval);
+                angel.Act(seconds, metaseconds);
             }
         }
 

@@ -31,8 +31,7 @@ namespace SecretHistories.Infrastructure.Persistence
             {
                 RootPopulationCommand = RootPopulationCommand.RootCommandForLegacy(startingLegacy)
             };
-
-
+            
             var cc = CharacterCreationCommand.IncarnateFromLegacy(startingLegacy);
             state.CharacterCreationCommands.Add(cc);
 

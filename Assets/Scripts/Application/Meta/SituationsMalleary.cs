@@ -84,12 +84,12 @@ namespace Assets.Scripts.Application.Meta
 
         public void TimeForwards()
         {
-            _situationDrydock.RequestTokensSpendTime(Heart.BEAT_INTERVAL_SECONDS * 50);
+            _situationDrydock.RequestTokensSpendTime(Heart.BEAT_INTERVAL_SECONDS * 50, 0);
         }
 
         public void TimeBackwards()
         {
-            _situationDrydock.RequestTokensSpendTime(Heart.BEAT_INTERVAL_SECONDS * -50);
+            _situationDrydock.RequestTokensSpendTime(Heart.BEAT_INTERVAL_SECONDS * -50, 0);
         }
 
         public void AdvanceTimeToEndOfRecipe()
@@ -97,7 +97,7 @@ namespace Assets.Scripts.Application.Meta
             var situation = _situationDrydock.GetTokenInSlot().Payload;
             var timeRemaining = situation.GetTimeshadow().LifetimeRemaining;
             if(timeRemaining>0)
-                _situationDrydock.RequestTokensSpendTime(timeRemaining);
+                _situationDrydock.RequestTokensSpendTime(timeRemaining, 0);
         }
 
         public void AddNote()
