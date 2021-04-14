@@ -83,7 +83,7 @@ namespace SecretHistories.Constants
             if (Watchman.Get<Stable>().Protag().RecipeExecutions.Count == 0)
             {
                 await TryDefaultSave();
-                await  SaveRestartState();
+                await SaveRestartState();
             }
 
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
