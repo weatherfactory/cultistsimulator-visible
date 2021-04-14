@@ -18,6 +18,7 @@ namespace SecretHistories.Commands.Encausting
         {
             var jsonSerializerSettings = new JsonSerializerSettings();
       //       jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        jsonSerializerSettings.TypeNameHandling = TypeNameHandling.Objects;
 
             serializer = JsonSerializer.Create(jsonSerializerSettings);
         }
@@ -38,7 +39,13 @@ namespace SecretHistories.Commands.Encausting
 
             public T DeserializeFromJsonString<T>(string json) where T:IEncaustment
             {
-             var encaustment=JsonConvert.DeserializeObject<T>(json);
+                //var encaustment=JsonConvert.DeserializeObject<T>(json);
+
+             StringReader sr=new StringReader(json);
+             JsonReader jr=new JsonTextReader(sr);
+             var encaustment= serializer.Deserialize<T>(jr);
+
+
              return encaustment;
             }
 

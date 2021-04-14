@@ -35,7 +35,7 @@ namespace SecretHistories.Commands
         public List<Token> TokensToMigrate=new List<Token>();
         public List<PopulateDominionCommand> Dominions { get; set; }=new List<PopulateDominionCommand>();
 
-        [JsonProperty(TypeNameHandling = TypeNameHandling.Auto)]
+     
         public List<ISituationCommand> CommandQueue { get; set; } = new List<ISituationCommand>();
 
         public SituationCreationCommand()

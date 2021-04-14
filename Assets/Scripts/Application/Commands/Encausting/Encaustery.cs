@@ -124,7 +124,15 @@ namespace SecretHistories.Commands
         {
             if (!potentialListOfEncaustablesType.IsGenericType)
                 return false;
-            if(potentialListOfEncaustablesType.GetGenericTypeDefinition()==typeof(List<>))
+
+            var genericArguments = potentialListOfEncaustablesType.GetGenericArguments();
+            if (genericArguments.Length != 1) //either it's something like a dictionary with >1 type argument, iwc this isn't relevant, or it doesn't have any type arguments, iwc lawks who knows
+                return false;
+
+            if (!typeof(IEncaustable).IsAssignableFrom(genericArguments.First()))
+                return false; //it may be a generic list, but the type argument isn't encaustable
+
+            if (potentialListOfEncaustablesType.GetGenericTypeDefinition()==typeof(List<>))
                 return true;
             return false;
         }
