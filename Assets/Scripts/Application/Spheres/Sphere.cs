@@ -111,7 +111,8 @@ namespace SecretHistories.Spheres
 
         public void Update()
         {
-            WorldPosition = GetRectTransform().position;
+            if(GetRectTransform()!=null)
+                WorldPosition = GetRectTransform().position;
         }
 
 
