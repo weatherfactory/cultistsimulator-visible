@@ -48,5 +48,10 @@ namespace SecretHistories.Spheres.Angels
 
             return false;
         }
+
+        public bool HasAngel(Type angelType)
+        {
+            return _angels.Any(a => a.GetType() == angelType);
+        }
     }
 }

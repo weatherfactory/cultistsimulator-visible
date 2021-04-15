@@ -26,6 +26,7 @@ using SecretHistories.Core;
 using SecretHistories.Events;
 using SecretHistories.Logic;
 using SecretHistories.Manifestations;
+using SecretHistories.Spheres.Angels;
 using SecretHistories.States.TokenStates;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -149,7 +150,7 @@ namespace SecretHistories.Entities {
             }
         }
 
-
+        
 
 
         private RecipePrediction _currentRecipePrediction;
@@ -388,6 +389,7 @@ namespace SecretHistories.Entities {
            }
            var notesSphereSpec=new SphereSpec(typeof(NotesSphere),$"{nameof(NotesSphere)}{existingNotesSpheres.Count}");
            var emptyNoteSphere = notesDominion.TryCreateSphere(notesSphereSpec);
+           emptyNoteSphere.transform.localScale=Vector3.one; //HACK! there's a bug where opening the window can increase the scale of new notes spheres. This sets it usefully, but I should find a more permanent solution if the issue shows up again
   
             var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
             newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_TITLE_KEY, label);
@@ -765,6 +767,14 @@ namespace SecretHistories.Entities {
             throw new ApplicationException($"No provision for storing a populate dominion command on a situation, but we can't find dominion with identifier {populateDominionCommand.Identifier} on situation {Id}");
         }
 
+        private void Open()
+        {
+    if(_token==null)
+        OpenAt(TokenLocation.Default(GetAbsolutePath()));
+    else
+        OpenAt(_token.Location);
+        }
+
 
         public void OpenAt(TokenLocation location)
     {
@@ -925,11 +935,14 @@ namespace SecretHistories.Entities {
                 return;
 
 
-           // if a token has just been added to a situation -eg by dropping a token on a verb, or double-click - to - send arriving - then open this situation
-            if (args.Sphere.SphereCategory == SphereCategory.Threshold && args.TokenAdded != null &&
-                args.TokenRemoved == null && args.TokenChanged == null)
+            // if a token has just been added to a situation -eg by dropping a token on a verb, or double-click - to - send arriving - then open this situation
+            if (args.Sphere.SphereCategory == SphereCategory.Threshold &&
+                !args.Sphere.HasAngel(typeof(GreedyAngel)) && //a token going to a greedy sphere shouldn't trigger a situation opening
+                 args.TokenAdded != null &&
+                args.TokenRemoved == null && 
+                args.TokenChanged == null)
             {
-                OpenAt(_token.Location);
+                Open();
             }
 
 
@@ -945,6 +958,7 @@ namespace SecretHistories.Entities {
                 s.SituationSphereContentsUpdated(this);
         }
 
+        
         public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
             //

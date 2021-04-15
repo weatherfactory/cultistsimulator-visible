@@ -483,6 +483,10 @@ namespace SecretHistories.Spheres
 
         }
 
+        public bool HasAngel(Type angelType)
+        {
+            return flock.HasAngel(angelType);
+        }
 
         public void RequestFlockActions(float seconds, float metaseconds)
         {
