@@ -90,20 +90,19 @@ namespace SecretHistories.Spheres
 
         private bool SendTokenToNearestValidDestination(Token tokenToSend, Context context)
         {
-
             if (!tokenToSend.IsValidElementStack())
                 return false;
 
-            var allThresholdSpheres = Watchman.Get<HornedAxe>().GetSpheresOfCategory(SphereCategory.Threshold).Where(s=>s.IsInRangeOf(this));
-
             
+            var availableThresholdSpheres = Watchman.Get<HornedAxe>().
+                GetSpheresOfCategory(SphereCategory.Threshold).Where(s=>s.IsValidDestinationForToken(tokenToSend));
 
             TokenTravelItinerary selectedItinerary = null;
             
             Vector3 selectedTargetDistance = Vector3.positiveInfinity;
             
 
-            foreach (var thresholdToConsider in allThresholdSpheres)
+            foreach (var thresholdToConsider in availableThresholdSpheres)
             {
                 TokenTravelItinerary candidateItinerary;
                 candidateItinerary = thresholdToConsider.GetItineraryFor(tokenToSend);
@@ -142,6 +141,7 @@ namespace SecretHistories.Spheres
             //final fallthrough - couldn't send it anywhere
             return false;
         }
+
 
 
 

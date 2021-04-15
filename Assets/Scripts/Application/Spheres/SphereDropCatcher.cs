@@ -21,6 +21,9 @@ namespace SecretHistories.Spheres
             if (Sphere.GoverningSphereSpec.Greedy) // we're greedy? No interaction.
                 return;
 
+            if (Sphere.CurrentlyBlockedFor(BlockDirection.Inward))
+                return;
+
             var token = eventData.pointerDrag.GetComponent<Token>();
 
             if (token != null)

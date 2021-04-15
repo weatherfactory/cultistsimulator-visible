@@ -164,6 +164,18 @@ namespace SecretHistories.Spheres
         }
 
 
+        public virtual bool IsValidDestinationForToken(Token tokenToSend)
+        {
+            if (!IsInRangeOf(tokenToSend.Sphere))
+                return false;
+            if (CurrentlyBlockedFor(BlockDirection.Inward))
+                return false;
+            if(GetMatchForTokenPayload(tokenToSend.Payload).MatchType != SlotMatchForAspectsType.Okay)
+                return false;
+
+            return true;
+        }
+
         public virtual bool IsInRangeOf(Sphere otherSphere)
         {
             if (!this.gameObject.activeInHierarchy) //This is a pretty sensible rule, and it means that (eg) drydock thresholds are considered out of range when their parent is hidden.

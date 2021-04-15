@@ -120,7 +120,7 @@ namespace SecretHistories.UI
                 {
                     token.CurrentState=new TravelledToSphere();
                     // Assign element to new slot
-                    destinationSphere.AcceptToken(token,context);
+                    destinationSphere.TryAcceptToken(token,context);
                 }
 
                 destinationSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward,

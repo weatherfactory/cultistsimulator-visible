@@ -235,7 +235,7 @@ namespace SecretHistories.UI
 
                 //now we put the token in the slot.
                 token.CurrentState=new DroppedInSphereState();
-                AcceptToken(token, context);
+               AcceptToken(token, context);
                 SoundManager.PlaySfx("CardPutInSlot");
             }
 
