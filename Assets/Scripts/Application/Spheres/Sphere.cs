@@ -319,8 +319,7 @@ namespace SecretHistories.Spheres
         public RectTransform GetRectTransform()
         {
             var rectTrans = transform as RectTransform;
-            if (rectTrans == null)
-                NoonUtility.LogWarning("Tried to get a recttransform for " + name + ", but it doesn't have one.");
+
             return rectTrans;
         }
 

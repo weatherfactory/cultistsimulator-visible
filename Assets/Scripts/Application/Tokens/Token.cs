@@ -39,7 +39,7 @@ namespace SecretHistories.UI {
     [IsEncaustableClass(typeof(TokenCreationCommand))]
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler,
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerDownHandler, IPointerClickHandler, IPointerEnterHandler,
         IPointerExitHandler, IInteractsWithTokens,IEncaustable
     {
         private float previousClickTime = 0f;
@@ -398,8 +398,6 @@ namespace SecretHistories.UI {
 
             if (CanBeDragged())
                 StartDrag(eventData);
-
-
         }
         /// <summary>
         /// can move manually
@@ -453,7 +451,7 @@ namespace SecretHistories.UI {
             
             
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
-            TryCalveOriginStack(homingAngel);
+            TryCalveOriginToken(homingAngel);
 
 
             var enrouteSphere = Payload.GetEnRouteSphere();
@@ -485,13 +483,18 @@ namespace SecretHistories.UI {
 
         }
 
-        private void TryCalveOriginStack(HomingAngel homingAngel)
+        private void TryCalveOriginToken(HomingAngel homingAngel)
         {
-            if (!Keyboard.current.shiftKey.isPressed)
-            {
-                if (Payload.IsValidElementStack() && Quantity > 1)
-                    homingAngel.SetOriginToken(CalveToken(Quantity - 1, new Context(Context.ActionSource.PlayerDrag)));
-            }
+            if (_manifestation.RequestingNoSplit)
+                return;
+            if (Keyboard.current.shiftKey.isPressed)
+                return;
+
+            if (Quantity <= 1)
+                return;
+
+            homingAngel.SetOriginToken(CalveToken(Quantity - 1, new Context(Context.ActionSource.PlayerDrag)));
+           
         }
 
 
@@ -649,12 +652,14 @@ namespace SecretHistories.UI {
 
         }
 
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            bool handled = _manifestation.HandlePointerDown(eventData, this);
+        }
+
         public void OnPointerClick(PointerEventData eventData)
         {
-
-
-            if (_manifestation.HandlePointerDown(eventData, this))
-                return;
+          
 
             if (!Payload.IsOpen)
                 Payload.OpenAt(Location);
@@ -899,6 +904,7 @@ namespace SecretHistories.UI {
             else
                 Payload.Retire(RetirementVFX.CardLight);
         }
+
 
     }
 }

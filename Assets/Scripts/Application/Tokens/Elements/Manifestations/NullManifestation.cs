@@ -97,6 +97,9 @@ namespace SecretHistories.Manifestations
         {
             get { return true; }
         }
+
+        public bool RequestingNoSplit => false;
+
         public void DoMove(RectTransform tokenRectTransform)
         {
             //

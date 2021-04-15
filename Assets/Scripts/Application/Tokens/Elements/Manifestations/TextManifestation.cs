@@ -93,6 +93,8 @@ namespace SecretHistories.Manifestations
         }
 
         public bool RequestingNoDrag => false;
+        public bool RequestingNoSplit => false;
+
         public void DoMove(RectTransform tokenRectTransform)
         {
             NoonUtility.Log("Not implemented for TextManifestation: ");

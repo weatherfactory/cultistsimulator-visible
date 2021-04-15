@@ -34,7 +34,6 @@ namespace SecretHistories.Manifestations
         bool CanAnimateIcon();
         void BeginIconAnimation();
         
-
         void Initialise(IManifestable manifestable);
 
         void UpdateVisuals(IManifestable manifestable);
@@ -50,6 +49,7 @@ namespace SecretHistories.Manifestations
         void Emphasise();
         void Understate();
         bool RequestingNoDrag { get; }
+        bool RequestingNoSplit { get; }
         void DoMove(RectTransform tokenRectTransform);
 
         bool HandlePointerDown(PointerEventData eventData, Token token);

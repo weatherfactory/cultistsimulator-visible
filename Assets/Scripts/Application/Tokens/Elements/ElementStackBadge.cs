@@ -20,24 +20,28 @@ namespace SecretHistories.UI {
         [SerializeField] Image image;
         [SerializeField] Sprite badgeHoverSprite;
 
-        
-        public void OnPointerEnter(PointerEventData eventData) {
+        public bool PointerAboveThis { get; protected set; }
 
-			SoundManager.PlaySfx("TokenHover");
 
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            PointerAboveThis = true;
             // only highlight if we're not dragging anything
             if (!eventData.dragging)
+            {
                 image.overrideSprite = badgeHoverSprite;
+                SoundManager.PlaySfx("TokenHover");
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData) {
+            PointerAboveThis = false;
             image.overrideSprite = null;
         }
 
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-
             NoonUtility.Log("StackBadge begindrag");
         }
     }

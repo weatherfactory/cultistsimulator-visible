@@ -24,7 +24,7 @@ using UnityEngine.UI;
 namespace SecretHistories.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
-    public class CardManifestation : MonoBehaviour, IManifestation,IPointerEnterHandler,IPointerExitHandler,IBeginDragHandler
+    public class CardManifestation : MonoBehaviour, IManifestation,IPointerEnterHandler,IPointerExitHandler
     {
 
         [SerializeField] public Image artwork;
@@ -55,7 +55,8 @@ namespace SecretHistories.Manifestations
         private int _quantity;
 
         public bool RequestingNoDrag => _flipHelper.FlipInProgress;
-        
+        public bool RequestingNoSplit => stackBadge.PointerAboveThis;
+
 
         public void Awake()
         {
@@ -106,7 +107,8 @@ namespace SecretHistories.Manifestations
 
         public bool HandlePointerDown(PointerEventData eventData, Token token)
         {
-       return false;
+            return false;
+
         }
 
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
@@ -543,11 +545,6 @@ namespace SecretHistories.Manifestations
         }
 
 
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            NoonUtility.Log("CardManifestation begindrag");
-            //ExecuteEvents.Execute<IBeginDragHandler>(transform.parent.gameObject, eventData,
-            //    (parentToken, y) => parentToken.OnBeginDrag(eventData));
-        }
+
     }
     }

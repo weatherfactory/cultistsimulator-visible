@@ -74,6 +74,9 @@ namespace SecretHistories.Manifestations
         private bool _transient;
         private Coroutine animCoroutine;
 
+        public bool RequestingNoDrag { get; }
+        public bool RequestingNoSplit => true;
+
 #pragma warning restore 649
 
 
@@ -187,6 +190,8 @@ namespace SecretHistories.Manifestations
             return  ongoingSlotImage.rectTransform.anchoredPosition3D;
         }
 
+
+
         public void DoMove(RectTransform tokenRectTransform)
         {
              shadow.DoMove(tokenRectTransform);
@@ -196,7 +201,7 @@ namespace SecretHistories.Manifestations
 
         public bool HandlePointerDown(PointerEventData eventData, Token token)
         {
-            if (dumpButton.IsHovering())
+            if (dumpButton.PointerAboveThis)
             {
                 token.OnCollect.Invoke();
                 return true;
@@ -546,9 +551,8 @@ namespace SecretHistories.Manifestations
 
         }
 
-        public bool RequestingNoDrag { get; }
 
 
-   
+
     }
 }

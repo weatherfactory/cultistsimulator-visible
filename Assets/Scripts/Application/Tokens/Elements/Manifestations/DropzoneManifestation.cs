@@ -28,6 +28,7 @@ namespace SecretHistories.Manifestations
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
         public bool RequestingNoDrag => false;
+        public bool RequestingNoSplit => true;
 
         [SerializeField] private List<MinimalDominion> Dominions;
 

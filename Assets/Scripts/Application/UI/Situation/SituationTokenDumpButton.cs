@@ -14,7 +14,7 @@ namespace SecretHistories.UI {
         [SerializeField] Color buttonColorDefault;
         [SerializeField] Color buttonColorHover;
 #pragma warning restore 649
-        bool isHovering;
+        public bool PointerAboveThis { get; protected set; }
 
         public void Show(bool show) {
             gameObject.SetActive(show);
@@ -23,22 +23,18 @@ namespace SecretHistories.UI {
 
         private void OnDisable() {
             // make sure we're no longer hovering after we hit the button
-            isHovering = false; 
+            PointerAboveThis = false; 
         }
 
-        // to check if we're on the dump button when clicking
-        public bool IsHovering() {
-            return isHovering;
-        }
         
         public void OnPointerEnter(PointerEventData eventData) {
             ShowGlow(true);
-            isHovering = true;
+            PointerAboveThis = true;
         }
 
         public void OnPointerExit(PointerEventData eventData) {
             ShowGlow(false);
-            isHovering = false;
+            PointerAboveThis = false;
         }
 
         public void ShowGlow(bool glowState, bool instant = false) {
