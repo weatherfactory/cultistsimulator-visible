@@ -97,39 +97,42 @@ namespace SecretHistories.Spheres
             var allThresholdSpheres = Watchman.Get<HornedAxe>().GetSpheresOfCategory(SphereCategory.Threshold).Where(s=>s.IsInRangeOf(this));
 
             
-            TokenTravelItinerary candidateItinerary=null;
-            Sphere targetThreshold = null;
-            TokenLocation targetLocation = null;
-            Vector3 targetDistance = Vector3.positiveInfinity;
-            ;
+
+            TokenTravelItinerary selectedItinerary = null;
+            
+            Vector3 selectedTargetDistance = Vector3.positiveInfinity;
+            
 
             foreach (var thresholdToConsider in allThresholdSpheres)
             {
-
+                TokenTravelItinerary candidateItinerary;
                 candidateItinerary = thresholdToConsider.GetItineraryFor(tokenToSend);
 
+                if (thresholdToConsider.GetContainer().IsOpen)
+                {
+                    selectedItinerary = candidateItinerary;
+                    break; //thresholds in open tokens/situations always get priority. This assumes there is only one, though! which may not be the case in future.
+                }
                 var candidateDistance = candidateItinerary.Anchored3DEndPosition - tokenToSend.Location.Anchored3DPosition; //This might well be wrong / n
 
-                if (candidateDistance.sqrMagnitude < targetDistance.sqrMagnitude)
+                if (candidateDistance.sqrMagnitude < selectedTargetDistance.sqrMagnitude)
                 {
-                    targetThreshold = thresholdToConsider;
-                    targetLocation=new TokenLocation(targetThreshold.GetRectTransform().anchoredPosition3D,targetThreshold.GetAbsolutePath());
-                    if (targetDistance.sqrMagnitude <= 0) //we have a valid location, and nothing will be closer than this
+                    selectedItinerary = candidateItinerary;
+                    selectedTargetDistance = candidateDistance;
+                    if (selectedTargetDistance.sqrMagnitude <= 0) //we have a valid location, and nothing will be closer than this
                             break;
                 }
             }
 
-            if (targetThreshold != null)
+            if (selectedItinerary != null)
             {
-                
-
                 if (tokenToSend.Quantity > 1)
                     tokenToSend.CalveToken(tokenToSend.Quantity - 1, new Context(Context.ActionSource.DoubleClickSend));
 
-                if(candidateItinerary!=null)
+                if(selectedItinerary != null)
                 {
-                    candidateItinerary = candidateItinerary.WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION);
-                 candidateItinerary.Depart(tokenToSend,context);
+                    selectedItinerary = selectedItinerary.WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION);
+                    selectedItinerary.Depart(tokenToSend,context);
                 }
 
                 return true;
