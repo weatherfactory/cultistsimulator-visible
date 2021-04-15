@@ -42,7 +42,9 @@ namespace SecretHistories.Enums
     {
         Fundamental,
         Update,
-        Retirement
+        Retirement,
+        Opening,
+        Closing
     }
 
     public enum PortalEffect

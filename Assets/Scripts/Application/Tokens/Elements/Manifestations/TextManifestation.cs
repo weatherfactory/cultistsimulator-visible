@@ -45,6 +45,7 @@ namespace SecretHistories.Manifestations
             textComponent.text= description;
         }
 
+  
         public void UpdateVisuals(IManifestable manifestable)
         {
             var description = manifestable.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY);

@@ -358,8 +358,6 @@ namespace SecretHistories.Entities {
             if (token.IsValidElementStack())
             {
                 TryPushDraggedStackIntoThreshold(token);
-                if (!IsOpen)
-                    OpenAt(token.Location);
             }
             else
             {
@@ -771,7 +769,7 @@ namespace SecretHistories.Entities {
         public void OpenAt(TokenLocation location)
     {
            IsOpen = true;
-           var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Update);
+           var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Opening);
            OnChanged?.Invoke(changeArgs);
            Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(VerbId);
     }
@@ -780,7 +778,7 @@ namespace SecretHistories.Entities {
         {
             IsOpen = false;
 
-            var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Update);
+            var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Closing);
 
             OnChanged?.Invoke(changeArgs);
             DumpUnstartedBusiness();
@@ -840,10 +838,20 @@ namespace SecretHistories.Entities {
 
         public void DumpUnstartedBusiness()
         {
-       //deferring this a bit longer. I need to think about how to connect startingslot behaviour with the BOH model:
-       //slot behaviour: dump when window closed?
-       //slot behaviour: block for certain kinds of interaction? using existing block?
-       //slot behaviour: specify connection type with other containers? ie expand 'greedy' effect to mean multiple things and directions
+            var verbThresholdsDominion = GetRelevantDominions(StateEnum.Unstarted, typeof(ThresholdSphere)).SingleOrDefault();
+            if(verbThresholdsDominion!=null)
+            {
+              var verbThresholds = new List<Sphere>(verbThresholdsDominion.Spheres);
+                foreach (var vt in verbThresholds)
+                {
+                    if(!vt.Defunct)
+                        vt.EvictAllTokens(Context.Unknown());
+                }
+            }
+            //deferring this a bit longer. I need to think about how to connect startingslot behaviour with the BOH model:
+            //slot behaviour: dump when window closed?
+            //slot behaviour: block for certain kinds of interaction? using existing block?
+            //slot behaviour: specify connection type with other containers? ie expand 'greedy' effect to mean multiple things and directions
             //if(CurrentState!=CurrentState.Ongoing)
             //{
             //    var slotted = GetStacks(ContainerCategory.Threshold);
@@ -915,6 +923,15 @@ namespace SecretHistories.Entities {
             if (args.Context.Metafictional)
                 //it's just a note or something equally cosmetic. Don't update recipe prediction or any of that stuff - it's not only unnecessary, it can also cause weird behaviour.
                 return;
+
+
+           // if a token has just been added to a situation -eg by dropping a token on a verb, or double-click - to - send arriving - then open this situation
+            if (args.Sphere.SphereCategory == SphereCategory.Threshold && args.TokenAdded != null &&
+                args.TokenRemoved == null && args.TokenChanged == null)
+            {
+                OpenAt(_token.Location);
+            }
+
 
             var oldEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
 

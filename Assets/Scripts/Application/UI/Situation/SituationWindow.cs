@@ -122,10 +122,10 @@ namespace SecretHistories.UI {
 
             if (args.ChangeType==PayloadChangeType.Retirement)
                 Retire();
-            if(_payload.IsOpen && !this.IsVisible)
+            if(args.ChangeType==PayloadChangeType.Opening && !this.IsVisible)
                 PayloadRequestsShow(args.Payload.GetRectTransform().position);
 
-            if (!_payload.IsOpen && this.IsVisible)
+            if (args.ChangeType == PayloadChangeType.Closing && this.IsVisible)
                 PayloadRequestsHide();
 
         }
