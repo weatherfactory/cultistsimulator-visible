@@ -43,7 +43,7 @@ namespace SecretHistories.Core
             situation.Recipe = this.Recipe;
             var recipeAspects = Recipe.Aspects;
             var targetSphere = situation.GetSingleSphereByCategory(SphereCategory.SituationStorage);
-            var cardAspects = targetSphere.GetTotalAspects();
+            var aspectsFromContents = targetSphere.GetTotalAspects();
             IDice dice = Watchman.Get<IDice>();
 
             //MutationEffects happen first. I often regret this, because I sometimes create a card and want to apply a mutationeffect to it.
@@ -57,7 +57,7 @@ namespace SecretHistories.Core
             //If this basic logic doesn't work, solutions under consideration: (1) xtrigger priorities (2) feeding a stack back in if it's transformed to react to its new xtriggers (with guard against loop)
 
             RunXTriggers(targetSphere, recipeAspects, dice);
-            RunXTriggers(targetSphere, cardAspects, dice);
+            RunXTriggers(targetSphere, aspectsFromContents, dice);
 
             //note: standard effects happen *after* XTrigger effects
             RunDeckEffect(targetSphere);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
@@ -20,12 +21,14 @@ namespace SecretHistories.States
 
         public override void Enter(Situation situation)
         {
-            
-            var sphereSpec=new SphereSpec(typeof(SituationStorageSphere), nameof(SituationStorageSphere));
-            var storageCommand = new PopulateDominionCommand(SituationDominionEnum.Storage.ToString(),sphereSpec);
+            if(!situation.GetSpheresByCategory(SphereCategory.SituationStorage).Any()) //create storage sphere if none exists already. *Don't* create if it does - we might have looped
+            //straight back in here from a linked recipe, in which the existing storage sphere probably contains cardsn we don't want to flush.
+            {
+                var sphereSpec=new SphereSpec(typeof(SituationStorageSphere), nameof(SituationStorageSphere));
+                var storageCommand = new PopulateDominionCommand(SituationDominionEnum.Storage.ToString(),sphereSpec);
                 situation.AddCommand(storageCommand);
-
-                var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);
+            }
+            var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);
                 situation.AddCommand(migrateFromVerbSlotsToStorageCommand);
 
 
