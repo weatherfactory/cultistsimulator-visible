@@ -677,7 +677,7 @@ namespace SecretHistories.Entities {
             
             //Check for possible text refinements based on the aspects in context
             var aspectsInSituation = GetAspects(true);
-            TextRefiner tr = new TextRefiner(aspectsInSituation,Verb);
+            TextRefiner tr = new TextRefiner(aspectsInSituation);
             var addNoteCommand = new AddNoteCommand(primaryRecipeExecution.Recipe.Label, tr.RefineString(primaryRecipeExecution.Recipe.Description),new Context(Context.ActionSource.UI));
             ExecuteTokenEffectCommand(addNoteCommand);
              

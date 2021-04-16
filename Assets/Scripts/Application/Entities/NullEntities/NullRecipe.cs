@@ -20,8 +20,8 @@ namespace SecretHistories.Entities
             Craftable = false;
             HintOnly = true;
             ActionId = NullVerb.Create().Id;
-            Label = TextRefiner.AS_VERB_LABEL;
-            StartDescription = TextRefiner.AS_VERB_DESCRIPTION;
+            Label = String.Empty;
+            StartDescription = String.Empty;
             Description = String.Empty;
             DeckEffects=new Dictionary<string, int>();
             Requirements = new Dictionary<string, string>();

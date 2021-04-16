@@ -38,25 +38,14 @@ namespace SecretHistories.Services
    public class TextRefiner
    {
        private AspectsDictionary _aspectsInContext;
-       private Verb _withVerb;
-       public const string AS_VERB_LABEL= "[VERB_LABEL]";
-       public const string AS_VERB_DESCRIPTION = "[VERB_DESCRIPTION]";
-
-
-        public TextRefiner(AspectsDictionary aspectsInContext,Verb withVerb)
+       
+        public TextRefiner(AspectsDictionary aspectsInContext)
         {
             _aspectsInContext = aspectsInContext;
-            _withVerb = withVerb;
         }
 
        public string RefineString(string stringToRefine)
        {
-           //super-simple. In the future we might want cleverer verb manipulations, but this just allows us to return the default verb info for a null label
-           if (stringToRefine == AS_VERB_LABEL)
-               return _withVerb.Label;
-
-           if (stringToRefine == AS_VERB_DESCRIPTION)
-               return _withVerb.Description;
 
             //refinements follow this pattern: @#benefactorm|Timothy#benefactorf|Nicole#|Bozo@
             //must begin @ and end @

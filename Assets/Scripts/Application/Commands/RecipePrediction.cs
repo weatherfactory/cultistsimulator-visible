@@ -11,14 +11,14 @@ namespace SecretHistories.Commands
 {
    public class RecipePrediction: IEquatable<RecipePrediction>,INotification
    {
-       private readonly Recipe _actualRecipe;
-       public string RecipeId => _actualRecipe.Id;
+       private readonly Recipe _predictingRecipe;
+       public string RecipeId => _predictingRecipe.Id;
         public string Title { get; protected set; }
         public string Description { get; protected set; }
         public bool Additive => true;
-        public EndingFlavour SignalEndingFlavour => _actualRecipe.SignalEndingFlavour;
-        public bool Craftable => _actualRecipe.Craftable;
-        public bool HintOnly => _actualRecipe.HintOnly;
+        public EndingFlavour SignalEndingFlavour => _predictingRecipe.SignalEndingFlavour;
+        public bool Craftable => _predictingRecipe.Craftable;
+        public bool HintOnly => _predictingRecipe.HintOnly;
 
         //public static RecipePrediction DefaultFromVerb(Verb verb)
         //{
@@ -27,14 +27,17 @@ namespace SecretHistories.Commands
         //}
 
         
-        public RecipePrediction(Recipe actualRecipe, AspectsDictionary aspectsAvailable,Verb withVerb)
+        public RecipePrediction(Recipe predictingRecipe, AspectsDictionary aspectsAvailable,Verb withVerb)
         {
-            _actualRecipe = actualRecipe;
+            if (!predictingRecipe.IsValid())
+                predictingRecipe = Recipe.CreateSpontaneousHintRecipe(withVerb);
 
-            TextRefiner tr = new TextRefiner(aspectsAvailable,withVerb);
-            Title = tr.RefineString(actualRecipe.Label);
-            Description = tr.RefineString(actualRecipe.StartDescription);
-            Description = actualRecipe.StartDescription;
+            _predictingRecipe = predictingRecipe;
+
+            TextRefiner tr = new TextRefiner(aspectsAvailable);
+            Title = tr.RefineString(predictingRecipe.Label);
+            Description = tr.RefineString(predictingRecipe.StartDescription);
+            Description = predictingRecipe.StartDescription;
 
             Description = tr.RefineString(Description);
         }
@@ -43,7 +46,7 @@ namespace SecretHistories.Commands
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Equals(_actualRecipe, other._actualRecipe) && Title == other.Title && Description == other.Description;
+            return Equals(_predictingRecipe, other._predictingRecipe) && Title == other.Title && Description == other.Description;
         }
 
         public override bool Equals(object obj)
@@ -58,7 +61,7 @@ namespace SecretHistories.Commands
         {
             unchecked
             {
-                var hashCode = (_actualRecipe != null ? _actualRecipe.GetHashCode() : 0);
+                var hashCode = (_predictingRecipe != null ? _predictingRecipe.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Title != null ? Title.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Description != null ? Description.GetHashCode() : 0);
                 return hashCode;

@@ -94,7 +94,7 @@ namespace SecretHistories.Core
 
         /// <summary>
         /// Returns information on the recipe that's going to execute, based on current recipe and aspect context
-        public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentRecipe, Situation situation)
+        public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentlyPredictedRecipe, Situation situation)
         {
             _aspectsInContext.ThrowErrorIfNotPopulated(situation.Verb.Id);
 
@@ -116,9 +116,10 @@ namespace SecretHistories.Core
                     return new RecipePrediction(candidateRecipe, _aspectsInContext.AspectsInSituation,situation.Verb);
             }
 
-         
-            return new RecipePrediction(currentRecipe, _aspectsInContext.AspectsInSituation, situation.Verb);
-        }
+   
+             return new RecipePrediction(currentlyPredictedRecipe, _aspectsInContext.AspectsInSituation, situation.Verb);
+            
+    }
 
         public IList<AlternateRecipeExecution> GetAlternateRecipes(Recipe recipe)
         {
