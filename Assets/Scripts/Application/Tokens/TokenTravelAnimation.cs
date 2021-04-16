@@ -80,6 +80,7 @@ public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
         _context = context;
 
         _token.ManifestationRectTransform.localScale = Vector3.one * _scaleStart;
+        _token.MakeNonInteractable();
         transform.SetAsLastSibling();
 	}
 
@@ -119,9 +120,8 @@ public void ExecuteHeartbeat(float seconds, float metaseconds)
 	void Complete() {;
 		_token.TokenRectTransform.position = new Vector3(EndPosition.x, EndPosition.y, EndPosition.z);
 		_token.TokenRectTransform.localScale = Vector3.one * _scaleEnd;
-        NoonUtility.LogWarning(
-            "we used to disable the token while it was travelling. We don't in fact want to do that, but we should probably disable raycasts");
-
+ 
+        _token.MakeInteractable();
         OnTokenArrival?.Invoke(_token,_context);
 		Retire();
 	}
