@@ -86,8 +86,9 @@ namespace SecretHistories.Constants
                 await SaveRestartState();
             }
 
-            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
-                { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProviderSource.GetDefaultGameSpeed(), WithSFX = false }); //now unpause the game and let's go
+            if(gamePersistenceProviderSource.GetDefaultGameSpeed()!=GameSpeed.Paused)
+                Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+                { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProviderSource.GetDefaultGameSpeed(), WithSFX = false }); //unpause the game if appropriate
 
         }
 
