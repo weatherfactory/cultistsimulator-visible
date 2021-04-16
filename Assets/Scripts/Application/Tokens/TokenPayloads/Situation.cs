@@ -243,8 +243,7 @@ namespace SecretHistories.Entities {
             _currentRecipePrediction = newRecipePrediction;
 
 
-
-              var addNoteCommand=new AddNoteCommand(newRecipePrediction.Title,newRecipePrediction.Description,context);
+              var addNoteCommand=new AddNoteCommand(newRecipePrediction, context);
                 addNoteCommand.ExecuteOn(this);
 
         }
@@ -390,6 +389,16 @@ namespace SecretHistories.Entities {
                 return false;
            }
            var notesSphereSpec=new SphereSpec(typeof(NotesSphere),$"{nameof(NotesSphere)}{existingNotesSpheres.Count}");
+           if (!notification.Additive) //clear out existing notes spheres first
+           {
+               var existingSpheres = notesDominion.Spheres;
+               var idsToRemove = existingSpheres.Select(s => s.Id);
+               foreach(var i in idsToRemove)
+               {
+                   notesDominion.RemoveSphere(i, SphereRetirementType.Destructive);
+               }
+            }
+
            var emptyNoteSphere = notesDominion.TryCreateSphere(notesSphereSpec);
            emptyNoteSphere.transform.localScale=Vector3.one; //HACK! there's a bug where opening the window can increase the scale of new notes spheres. This sets it usefully, but I should find a more permanent solution if the issue shows up again
   
@@ -678,7 +687,10 @@ namespace SecretHistories.Entities {
             //Check for possible text refinements based on the aspects in context
             var aspectsInSituation = GetAspects(true);
             TextRefiner tr = new TextRefiner(aspectsInSituation);
-            var addNoteCommand = new AddNoteCommand(primaryRecipeExecution.Recipe.Label, tr.RefineString(primaryRecipeExecution.Recipe.Description),new Context(Context.ActionSource.UI));
+            var note = new Notification(primaryRecipeExecution.Recipe.Label,
+                tr.RefineString(primaryRecipeExecution.Recipe.Description));
+
+            var addNoteCommand = new AddNoteCommand(note, new Context(Context.ActionSource.UI));
             ExecuteTokenEffectCommand(addNoteCommand);
              
             RecipeCompletionEffectCommand primaryRecipeCompletionEffectCommand = new RecipeCompletionEffectCommand(primaryRecipeExecution.Recipe,

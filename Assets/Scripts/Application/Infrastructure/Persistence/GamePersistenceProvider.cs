@@ -77,8 +77,10 @@ namespace SecretHistories.Infrastructure.Persistence
             string json = File.ReadAllText(GetSaveFileLocation());
             var sh = new SerializationHelper();
             _persistedGameState = sh.DeserializeFromJsonString<PersistedGameState>(json);
-            _persistedGameState.NotificationCommands.Add(new AddNoteCommand(Watchman.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"), 
-                Watchman.Get<ILocStringProvider>().Get("UI_LOADEDDESC"),
+            var note = new Notification(Watchman.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"),
+                Watchman.Get<ILocStringProvider>().Get("UI_LOADEDDESC"));
+
+            _persistedGameState.NotificationCommands.Add(new AddNoteCommand(note,
                 new Context(Context.ActionSource.Loading)));
         }
 

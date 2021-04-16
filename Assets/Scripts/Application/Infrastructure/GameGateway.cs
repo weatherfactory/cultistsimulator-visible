@@ -65,7 +65,7 @@ namespace SecretHistories.Constants
                 
                 foreach (var n in gameState.NotificationCommands)
                 {
-                    Watchman.Get<Concursum>().ShowNotification(new NotificationArgs(n.Label, n.Description)); //ultimately, I'd like the float note to be a token, too - we're using AddCommand here currently just as a holder for the strings
+                    Watchman.Get<Concursum>().ShowNotification(new NotificationArgs(n.Notification.Title, n.Notification.Description)); //ultimately, I'd like the float note to be a token, too - we're using AddCommand here currently just as a holder for the strings
                 }
             }
             catch (Exception e)

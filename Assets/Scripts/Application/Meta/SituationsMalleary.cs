@@ -105,7 +105,11 @@ namespace Assets.Scripts.Application.Meta
             var situation = _situationDrydock.GetTokenInSlot().Payload;
             string title = "!";
             string description = input.text;
-            var addNoteCommand=new AddNoteCommand(title,description,new Context(Context.ActionSource.UI));
+   
+            var note=new Notification(title, description);
+
+
+            var addNoteCommand=new AddNoteCommand(note,new Context(Context.ActionSource.UI));
 
           situation.ExecuteTokenEffectCommand(addNoteCommand);
         }

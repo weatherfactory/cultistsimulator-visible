@@ -47,7 +47,7 @@ namespace SecretHistories.UI
 
 
 
-        public void Start() {
+        public virtual void Start() {
             slotGlow.Hide();
         }
 

@@ -15,7 +15,7 @@ namespace SecretHistories.Commands
        public string RecipeId => _predictingRecipe.Id;
         public string Title { get; protected set; }
         public string Description { get; protected set; }
-        public bool Additive => true;
+        public bool Additive { get; protected set; }
         public EndingFlavour SignalEndingFlavour => _predictingRecipe.SignalEndingFlavour;
         public bool Craftable => _predictingRecipe.Craftable;
         public bool HintOnly => _predictingRecipe.HintOnly;
@@ -30,7 +30,12 @@ namespace SecretHistories.Commands
         public RecipePrediction(Recipe predictingRecipe, AspectsDictionary aspectsAvailable,Verb withVerb)
         {
             if (!predictingRecipe.IsValid())
+            { //it's a null recipe, or for some other reason not useful Fall back to the basic verb info.
                 predictingRecipe = Recipe.CreateSpontaneousHintRecipe(withVerb);
+                Additive = false;
+            }
+            else
+                Additive = true;    
 
             _predictingRecipe = predictingRecipe;
 

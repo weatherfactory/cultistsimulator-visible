@@ -31,7 +31,7 @@ namespace SecretHistories.UI {
         private Sphere _evictionDestination;
 
 
-        public void Start()
+        public override void Start()
         {
             doorColor.color = defaultBackgroundColor;
             activeGlow.color = defaultBackgroundColor;

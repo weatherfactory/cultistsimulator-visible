@@ -8,6 +8,7 @@ using SecretHistories.Commands;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
 
 namespace SecretHistories.Commands.SituationCommands
@@ -16,14 +17,12 @@ namespace SecretHistories.Commands.SituationCommands
    {
 
        public List<StateEnum> ValidForStates => new List<StateEnum> { StateEnum.Unstarted,StateEnum.Complete,StateEnum.Halting,StateEnum.Ongoing,StateEnum.RequiringExecution,StateEnum.Inchoate };
-        public readonly string Label;
-       public readonly string Description;
+       public INotification Notification { get; protected set; }
        private readonly Context _context;
 
-       public AddNoteCommand(string label,string description,Context context)
+       public AddNoteCommand(INotification notification,Context context)
        {
-           Label = label;
-           Description = description;
+           Notification = notification;
            _context = context;
        }
 
@@ -35,8 +34,7 @@ namespace SecretHistories.Commands.SituationCommands
        public bool ExecuteOn(ITokenPayload payload)
        {
            _context.Metafictional = true;
-           var note=new Notification(Label,Description);
-           return payload.ReceiveNote(note,_context);
+           return payload.ReceiveNote(Notification, _context);
        }
    }
 
