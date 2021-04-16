@@ -33,6 +33,10 @@ namespace SecretHistories.UI {
     [RequireComponent(typeof(WindowPositioner))]
     public class SituationWindow : MonoBehaviour, ISituationSubscriber {
 
+
+        [SerializeField] private StateEnum CurrentStateIdentifier;
+        [SerializeField] private string CurrentRecipeId;
+
         [Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
         public WindowPositioner positioner;
@@ -59,6 +63,7 @@ namespace SecretHistories.UI {
         public OnSphereAddedEvent OnSphereAdded;
         public OnSphereRemovedEvent OnSphereRemoved;
 
+
         public TokenLocation LastOpenLocation;
 
         private ITokenPayload _payload; //Ideally, we would reduce this to an ITokenPayload
@@ -84,7 +89,6 @@ namespace SecretHistories.UI {
         public void Attach(Situation newSituation)
         {
         
-
             newSituation.AddSubscriber(this);
 
             OnWindowClosed.AddListener(newSituation.Close);
@@ -231,8 +235,9 @@ namespace SecretHistories.UI {
 
         public void SituationStateChanged(Situation situation)
         {
-            
-                DisplayButtonState(situation);
+            DisplayButtonState(situation);
+            CurrentStateIdentifier = situation.StateIdentifier;
+            CurrentRecipeId = situation.RecipeId;
         }
 
         public void TimerValuesChanged(Situation situation)

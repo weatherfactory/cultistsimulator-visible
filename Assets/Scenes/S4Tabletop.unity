@@ -4854,7 +4854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 153.644, y: -56.164833}
+  m_AnchoredPosition: {x: 153.644, y: -56.16484}
   m_SizeDelta: {x: 307.288, y: 92.329666}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &274150445
@@ -5643,22 +5643,22 @@ PrefabInstance:
     - target: {fileID: 4857400481091278155, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4857400481091278155, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4857400481091278155, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 149
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4857400481091278155, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -14
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a929c4c99a74d741a819fc4cd105ede, type: 3}
@@ -5720,7 +5720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93bc836b051104d46a7ef1b3afa1b56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hint: Ten Heartbeats
+  Hint: Ten One-Second Heartbeats
 --- !u!114 &386719950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7965,6 +7965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7b8083457de2749bcdb05723d28d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MetapauseButton: {fileID: 1095987429}
+  UnmetapauseButton: {fileID: 708381877}
 --- !u!114 &634146885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8526,7 +8528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &708381875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8541,9 +8543,9 @@ RectTransform:
   m_Father: {fileID: 2138126490}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 115, y: -32.5}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &708381876
@@ -11455,7 +11457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 157.644, y: -95.16483}
+  m_AnchoredPosition: {x: 157.644, y: -95.164825}
   m_SizeDelta: {x: 307.288, y: 182.32967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1031795054
@@ -18389,7 +18391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93bc836b051104d46a7ef1b3afa1b56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hint: Single Heartbeat
+  Hint: Single One-Second Heartbeat
 --- !u!114 &1682200104
 MonoBehaviour:
   m_ObjectHideFlags: 0

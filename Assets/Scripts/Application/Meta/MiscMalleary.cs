@@ -162,9 +162,16 @@ namespace Assets.Scripts.Application.Meta
 
         }
 
-        public void DoHeartbeats(int beats)
+        public void DoHeartbeats(int beatsToDo)
         {
+            Watchman.Get<Heart>().Metapause();
 
+            int beatsDone = 0;
+            while(beatsDone<beatsToDo)
+            {
+            Watchman.Get<Heart>().Beat(1f,1f);
+            beatsDone++;
+            }
         }
 
 

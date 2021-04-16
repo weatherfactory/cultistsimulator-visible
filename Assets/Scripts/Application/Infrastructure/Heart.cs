@@ -24,7 +24,7 @@ public class Heart : MonoBehaviour
 
     public const float BEAT_INTERVAL_SECONDS = 0.05f;
 
-    private bool _metapaused;
+    public bool Metapaused { get; protected set; }
 
     private GameSpeedState gameSpeedState=new GameSpeedState();
 
@@ -48,12 +48,12 @@ public class Heart : MonoBehaviour
 
     public void Metapause()
     {
-        _metapaused = true;
+        Metapaused = true;
     }
 
     public void Unmetapause()
     {
-        _metapaused = false;
+        Metapaused = false;
     }
 
     void SetNextAnimTime()
@@ -68,7 +68,7 @@ public class Heart : MonoBehaviour
 
     public void Update()
     {
-        if (_metapaused)
+        if (Metapaused)
             return;
 
         ProcessBeatCounter();
