@@ -47,10 +47,15 @@ namespace SecretHistories.Commands.SituationCommands
 
             var fromSpheres = situation.GetSpheresByCategory(_fromCategory);
             //if this is count=0, it doesn't matter.
-            
-            //Migrate all remaining tokens
-            toSphere.AcceptTokens(situation.GetTokens(_fromCategory),
-                new Context(Context.ActionSource.FlushingTokens));
+
+            foreach (var fs in fromSpheres)
+            {
+                toSphere.AcceptTokens(fs.Tokens, new Context(Context.ActionSource.FlushingTokens));
+            }
+
+            ////code was originally this
+            //toSphere.AcceptTokens(situation.GetTokens(_fromCategory),
+            //    new Context(Context.ActionSource.FlushingTokens));
 
 
             return true;

@@ -49,8 +49,7 @@ namespace SecretHistories.Constants
 
         public async void LoadGame(GamePersistenceProvider gamePersistenceProviderSource)
         {
-            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
-            { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false }); //always pause before trying to load the game
+            Watchman.Get<Heart>().Metapause();
 
             try
             {
@@ -86,9 +85,10 @@ namespace SecretHistories.Constants
                 await SaveRestartState();
             }
 
-            if(gamePersistenceProviderSource.GetDefaultGameSpeed()!=GameSpeed.Paused)
+            Watchman.Get<Heart>().Unmetapause();
+
                 Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
-                { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProviderSource.GetDefaultGameSpeed(), WithSFX = false }); //unpause the game if appropriate
+                { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProviderSource.GetDefaultGameSpeed(), WithSFX = false });
 
         }
 

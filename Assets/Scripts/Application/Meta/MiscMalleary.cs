@@ -19,7 +19,8 @@ namespace Assets.Scripts.Application.Meta
     public class MiscMalleary: MonoBehaviour
     {
 
-
+        [SerializeField] private Button MetapauseButton;
+        [SerializeField] private Button UnmetapauseButton;
 
         void HaltVerb(string verbId)
         {
@@ -143,6 +144,26 @@ namespace Assets.Scripts.Application.Meta
             game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
             var saveTask = game.SerialiseAndSaveAsync();
             var result = await saveTask;
+
+        }
+
+        public void Metapause()
+        {
+            Watchman.Get<Heart>().Metapause();
+            MetapauseButton.gameObject.SetActive(false);
+            UnmetapauseButton.gameObject.SetActive(true);
+        }
+
+        public void Unmetapause()
+        {
+            Watchman.Get<Heart>().Unmetapause();
+            MetapauseButton.gameObject.SetActive(true);
+            UnmetapauseButton.gameObject.SetActive(false);
+
+        }
+
+        public void DoHeartbeats(int beats)
+        {
 
         }
 

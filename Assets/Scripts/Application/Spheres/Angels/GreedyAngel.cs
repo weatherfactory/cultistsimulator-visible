@@ -85,7 +85,7 @@ namespace SecretHistories.Spheres.Angels
         private void TryGrabStack(Sphere destinationThresholdSphere, float interval)
         {
 
-            var spheresWhichAllowDragging = Watchman.Get<HornedAxe>().GetSpheres();
+            var spheresWhichAllowDragging = Watchman.Get<HornedAxe>().GetSpheresWhichAllowDragging();
 
   
             foreach (var sphereToSearch in spheresWhichAllowDragging)

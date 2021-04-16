@@ -24,21 +24,37 @@ public class Heart : MonoBehaviour
 
     public const float BEAT_INTERVAL_SECONDS = 0.05f;
 
+    private bool _metapaused;
+
     private GameSpeedState gameSpeedState=new GameSpeedState();
 
     private float timerBetweenBeats=0f;
     private float nextAnimTime;
     private float nextAirSoundTime;
     private string idOfLastTokenAnimated; // to not animate the same twice. Keep player on their toes
-    
 
+    public void Awake()
+    {
+        var w=new Watchman();
+        w.Register(this);
+    }
 
     public void Start()
     {
         SetNextAnimTime();
         SetNextAirSoundTime();
+        
     }
 
+    public void Metapause()
+    {
+        _metapaused = true;
+    }
+
+    public void Unmetapause()
+    {
+        _metapaused = false;
+    }
 
     void SetNextAnimTime()
     {
@@ -52,6 +68,9 @@ public class Heart : MonoBehaviour
 
     public void Update()
     {
+        if (_metapaused)
+            return;
+
         ProcessBeatCounter();
         ProcessAmbientAnimationCounter();
         ProcessAmbientSoundCounter();

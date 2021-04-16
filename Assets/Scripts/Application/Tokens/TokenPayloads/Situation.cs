@@ -582,6 +582,8 @@ namespace SecretHistories.Entities {
             State.Exit(this);
             newState.Enter(this);
             State = newState;
+            ExecuteCommandsFor(State.Identifier, this);
+
 
             NotifyStateChange();
             NotifyTimerChange();
