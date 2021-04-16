@@ -285,7 +285,7 @@ namespace SecretHistories.Tokens.TokenPayloads
             throw new NotImplementedException();
         }
 
-        public bool ReceiveNote(string label, string description, Context context)
+        public bool ReceiveNote(INotification notification, Context context)
         {
             throw new NotImplementedException();
         }

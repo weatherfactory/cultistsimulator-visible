@@ -35,7 +35,8 @@ namespace SecretHistories.Commands.SituationCommands
        public bool ExecuteOn(ITokenPayload payload)
        {
            _context.Metafictional = true;
-           return payload.ReceiveNote(Label,Description,_context);
+           var note=new Notification(Label,Description);
+           return payload.ReceiveNote(note,_context);
        }
    }
 

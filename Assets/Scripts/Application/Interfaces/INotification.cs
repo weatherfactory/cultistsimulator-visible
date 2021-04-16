@@ -2,7 +2,8 @@
 {
     public interface INotification
     {
-        string Title { get; set; }
-        string Description { get; set; }
+        string Title { get; }
+        string Description { get; }
+        bool Additive { get; }
     }
 }

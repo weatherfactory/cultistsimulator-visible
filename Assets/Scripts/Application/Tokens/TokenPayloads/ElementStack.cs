@@ -400,10 +400,12 @@ namespace SecretHistories.UI {
 
         }
 
-        public bool ReceiveNote(string label, string description, Context context)
+  
+
+        public bool ReceiveNote(INotification notification, Context context)
         {
-            SetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY, label);
-            SetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, description);
+            SetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY, notification.Title);
+            SetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, notification.Description);
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update, context));
             
             return true;

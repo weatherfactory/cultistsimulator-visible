@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using SecretHistories.Commands;
 using SecretHistories.Core;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.States;
+using SecretHistories.UI;
 
 namespace SecretHistories.Entities
 {
@@ -175,6 +177,8 @@ namespace SecretHistories.Entities
 
             return spontanousHintRecipe;
         }
+
+
 
         public virtual bool IsValid()
         {

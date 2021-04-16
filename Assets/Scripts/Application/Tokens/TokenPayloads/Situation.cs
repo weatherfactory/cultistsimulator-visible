@@ -172,7 +172,7 @@ namespace SecretHistories.Entities {
             Id = id;
             Verb = verb;
             Recipe = NullRecipe.Create();
-            _currentRecipePrediction = new RecipePrediction(Recipe, AspectsDictionary.Empty());
+            _currentRecipePrediction = new RecipePrediction(Recipe, AspectsDictionary.Empty(),Verb);
 
             State = new NullSituationState();
             _timeshadow = new Timeshadow(Recipe.Warmup,
@@ -242,7 +242,9 @@ namespace SecretHistories.Entities {
 
             _currentRecipePrediction = newRecipePrediction;
 
-              var addNoteCommand=new AddNoteCommand(newRecipePrediction.Title,newRecipePrediction.DescriptiveText,context);
+
+
+              var addNoteCommand=new AddNoteCommand(newRecipePrediction.Title,newRecipePrediction.Description,context);
                 addNoteCommand.ExecuteOn(this);
 
         }
@@ -367,13 +369,13 @@ namespace SecretHistories.Entities {
             }
         }
 
-        public bool ReceiveNote(string label, string description,Context context)
+        public bool ReceiveNote(INotification notification, Context context)
         {
             //no infinite loops pls
-            if (label == this.Label && description == this.Description)
+            if (notification.Title == this.Label && notification.Description == this.Description)
                 return true;
 
-            if (!Situation.TextIntendedForDisplay(description))
+            if (!Situation.TextIntendedForDisplay(notification.Description))
                 return true;
 
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
@@ -384,7 +386,7 @@ namespace SecretHistories.Entities {
            var notesDominion = GetRelevantDominions(StateIdentifier,typeof(NotesSphere)).FirstOrDefault();
            if (notesDominion == null)
            {
-               NoonUtility.Log($"No notes sphere and no notes dominion found: we won't add note {label}, then.");
+               NoonUtility.Log($"No notes sphere and no notes dominion found: we won't add note {notification.Title}, then.");
                 return false;
            }
            var notesSphereSpec=new SphereSpec(typeof(NotesSphere),$"{nameof(NotesSphere)}{existingNotesSpheres.Count}");
@@ -392,8 +394,8 @@ namespace SecretHistories.Entities {
            emptyNoteSphere.transform.localScale=Vector3.one; //HACK! there's a bug where opening the window can increase the scale of new notes spheres. This sets it usefully, but I should find a more permanent solution if the issue shows up again
   
             var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
-            newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_TITLE_KEY, label);
-            newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, description);
+            newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_TITLE_KEY, notification.Title);
+            newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, notification.Description);
 
             var tokenCreationCommand =
                 new TokenCreationCommand(newNoteCommand, TokenLocation.Default(emptyNoteSphere.GetAbsolutePath()));
@@ -675,7 +677,7 @@ namespace SecretHistories.Entities {
             
             //Check for possible text refinements based on the aspects in context
             var aspectsInSituation = GetAspects(true);
-            TextRefiner tr = new TextRefiner(aspectsInSituation);
+            TextRefiner tr = new TextRefiner(aspectsInSituation,Verb);
             var addNoteCommand = new AddNoteCommand(primaryRecipeExecution.Recipe.Label, tr.RefineString(primaryRecipeExecution.Recipe.Description),new Context(Context.ActionSource.UI));
             ExecuteTokenEffectCommand(addNoteCommand);
              

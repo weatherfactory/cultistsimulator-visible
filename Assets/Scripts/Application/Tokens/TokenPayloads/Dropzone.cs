@@ -255,7 +255,7 @@ namespace SecretHistories.Entities.Verbs
             //
         }
 
-        public bool ReceiveNote(string label, string description,Context context)
+        public bool ReceiveNote(INotification notification, Context context)
         {
             return false;
         }

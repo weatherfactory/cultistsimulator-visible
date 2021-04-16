@@ -6,6 +6,8 @@ using SecretHistories.Fucine.DataImport;
 using SecretHistories.Entities;
 using SecretHistories.NullObjects;
 using SecretHistories.Core;
+using SecretHistories.Services;
+using UnityEngine.UIElements;
 
 namespace SecretHistories.Entities
 {
@@ -18,8 +20,8 @@ namespace SecretHistories.Entities
             Craftable = false;
             HintOnly = true;
             ActionId = NullVerb.Create().Id;
-            Label = NullVerb.Create().Label;
-            StartDescription = NullVerb.Create().Description;
+            Label = TextRefiner.AS_VERB_LABEL;
+            StartDescription = TextRefiner.AS_VERB_DESCRIPTION;
             Description = String.Empty;
             DeckEffects=new Dictionary<string, int>();
             Requirements = new Dictionary<string, string>();

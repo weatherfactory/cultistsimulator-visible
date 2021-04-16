@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SecretHistories.Core;
+using SecretHistories.Entities;
 using SecretHistories.Fucine;
 
 namespace SecretHistories.Services
@@ -29,8 +30,6 @@ namespace SecretHistories.Services
 
         }
 
-
-
     }
 
     /// <summary>
@@ -39,14 +38,26 @@ namespace SecretHistories.Services
    public class TextRefiner
    {
        private AspectsDictionary _aspectsInContext;
+       private Verb _withVerb;
+       public const string AS_VERB_LABEL= "[VERB_LABEL]";
+       public const string AS_VERB_DESCRIPTION = "[VERB_DESCRIPTION]";
 
-        public TextRefiner(AspectsDictionary aspectsInContext)
+
+        public TextRefiner(AspectsDictionary aspectsInContext,Verb withVerb)
         {
             _aspectsInContext = aspectsInContext;
+            _withVerb = withVerb;
         }
 
        public string RefineString(string stringToRefine)
        {
+           //super-simple. In the future we might want cleverer verb manipulations, but this just allows us to return the default verb info for a null label
+           if (stringToRefine == AS_VERB_LABEL)
+               return _withVerb.Label;
+
+           if (stringToRefine == AS_VERB_DESCRIPTION)
+               return _withVerb.Description;
+
             //refinements follow this pattern: @#benefactorm|Timothy#benefactorf|Nicole#|Bozo@
             //must begin @ and end @
             //#[aspectid]|[text]
@@ -55,7 +66,7 @@ namespace SecretHistories.Services
             //CURRENTLY this code assumes max of one refinement set per string.
 
             //simplest most frequent: no refinements.
-           if (!stringToRefine.Contains('@'))
+            if (!stringToRefine.Contains('@'))
             return stringToRefine;
 
            int indexBegin = stringToRefine.IndexOf('@');

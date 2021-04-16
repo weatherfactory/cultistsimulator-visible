@@ -113,11 +113,11 @@ namespace SecretHistories.Core
             foreach (var candidateRecipe in orderedCandidateRecipes)
             {
                 if (candidateRecipe.RequirementsSatisfiedBy(_aspectsInContext))
-                    return new RecipePrediction(candidateRecipe, _aspectsInContext.AspectsInSituation);
+                    return new RecipePrediction(candidateRecipe, _aspectsInContext.AspectsInSituation,situation.Verb);
             }
 
          
-            return new RecipePrediction(currentRecipe, _aspectsInContext.AspectsInSituation);
+            return new RecipePrediction(currentRecipe, _aspectsInContext.AspectsInSituation, situation.Verb);
         }
 
         public IList<AlternateRecipeExecution> GetAlternateRecipes(Recipe recipe)

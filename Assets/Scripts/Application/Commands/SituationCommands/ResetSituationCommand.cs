@@ -13,8 +13,8 @@ namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
     {
         public bool Execute(Situation situation)
         {
-           situation.Recipe = Recipe.CreateSpontaneousHintRecipe(situation.Verb);
-           situation.UpdateCurrentRecipePrediction(RecipePrediction.DefaultFromVerb(situation.Verb), new Context(Context.ActionSource.SituationReset));
+            situation.Recipe = NullRecipe.Create();
+            situation.UpdateCurrentRecipePrediction(situation.GetRecipePredictionForCurrentStateAndAspects(), new Context(Context.ActionSource.SituationReset));
            situation.SetTimelessShadow();
             
 
