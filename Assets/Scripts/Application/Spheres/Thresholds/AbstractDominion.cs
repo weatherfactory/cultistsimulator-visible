@@ -44,12 +44,32 @@ namespace SecretHistories.UI
         protected OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
         protected IManifestable _manifestable;
 
+        public Sphere spherePrefab;
+
+        public virtual Sphere CreateAutonamedNativeSphere()
+        {
+
+            Type sphereType;
+            if(spherePrefab==null)
+                sphereType=typeof(ThresholdSphere);
+            else
+                sphereType=spherePrefab.GetType();
+            int sphereCount = _spheres.Count;
+            int newSphereIndex = sphereCount;
+            string newSphereId = $"{sphereType.Name}_{newSphereIndex}";
+
+
+            var nativeSphereSpec=new SphereSpec(sphereType,newSphereId);
+
+            return TryCreateSphere(nativeSphereSpec);
+        }
+
         public abstract Sphere TryCreateSphere(SphereSpec spec);
         public abstract bool VisibleFor(string state);
         public abstract bool RelevantTo(string state, Type sphereType);
         public abstract bool RemoveSphere(string id,SphereRetirementType retirementType);
         public abstract bool CanCreateSphere(SphereSpec spec);
-
+        
         [DontEncaust]
         public bool CurrentlyEvoked {
             get

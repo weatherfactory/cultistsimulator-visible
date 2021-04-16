@@ -85,7 +85,8 @@ public class SphereSpec: AbstractEntity<SphereSpec>
         //(2) we want to converge Fucine defaults on loading, and defaults on runtime creation, which we don't yet
             EnRouteSpherePath = new FucinePath(String.Empty);
         WindowsSpherePath = new FucinePath(String.Empty);
-        }
+    }
+
 
     /// <summary>
     /// for this constructor, ID and type have already been determined, and are just being set and/or deserialised from the parameters

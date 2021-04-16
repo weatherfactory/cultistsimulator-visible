@@ -374,13 +374,11 @@ namespace SecretHistories.Entities {
             if (notification.Title == this.Label && notification.Description == this.Description)
                 return true;
 
+
             if (!Situation.TextIntendedForDisplay(notification.Description))
                 return true;
 
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
-
-            var existingNotesSpheres = GetSpheresByCategory(SphereCategory.Notes);
-
             
            var notesDominion = GetRelevantDominions(StateIdentifier,typeof(NotesSphere)).FirstOrDefault();
            if (notesDominion == null)
@@ -388,7 +386,7 @@ namespace SecretHistories.Entities {
                NoonUtility.Log($"No notes sphere and no notes dominion found: we won't add note {notification.Title}, then.");
                 return false;
            }
-           var notesSphereSpec=new SphereSpec(typeof(NotesSphere),$"{nameof(NotesSphere)}{existingNotesSpheres.Count}");
+           
            if (!notification.Additive) //clear out existing notes spheres first
            {
                var existingSpheres = notesDominion.Spheres;
@@ -399,7 +397,13 @@ namespace SecretHistories.Entities {
                }
             }
 
-           var emptyNoteSphere = notesDominion.TryCreateSphere(notesSphereSpec);
+            var existingNotesSpheres = notesDominion.Spheres;
+
+            var notesSphereSpec = new SphereSpec(typeof(NotesSphere), $"{nameof(NotesSphere)}{existingNotesSpheres.Count}");
+
+            // var notesSphereSpec = new SphereSpec(typeof(NotesSphere), $"{nameof(NotesSphere)}{existingNotesSpheres.Count}");
+
+            var emptyNoteSphere = notesDominion.TryCreateSphere(notesSphereSpec);
            emptyNoteSphere.transform.localScale=Vector3.one; //HACK! there's a bug where opening the window can increase the scale of new notes spheres. This sets it usefully, but I should find a more permanent solution if the issue shows up again
   
             var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
@@ -411,11 +415,12 @@ namespace SecretHistories.Entities {
 
             tokenCreationCommand.Execute(context,emptyNoteSphere);
 
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update));
             
             return true;
         }
 
-        private Sphere LastSphereWithANote()
+        private Sphere GetMostRecentSphereWithANote()
         {
             var notesSpheres = GetSpheresByCategory(SphereCategory.Notes);
             var lastSphereWithANote = notesSpheres.LastOrDefault(s => s.Tokens.Any());
@@ -424,7 +429,7 @@ namespace SecretHistories.Entities {
 
         private string GetMostRecentNoteLabel()
         {
-            var noteSphereToCheck = LastSphereWithANote();
+            var noteSphereToCheck = GetMostRecentSphereWithANote();
             if (noteSphereToCheck == null)
                 return string.Empty;
 
@@ -437,7 +442,7 @@ namespace SecretHistories.Entities {
 
         private string GetMostRecentNoteDescription()
         {
-            var noteSphereToCheck = LastSphereWithANote();
+            var noteSphereToCheck = GetMostRecentSphereWithANote();
             if (noteSphereToCheck == null)
                 return string.Empty;
 
