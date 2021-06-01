@@ -391,9 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd8fd31ca5debb4a9fb268a35948187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GreedyIcon: {fileID: 0}
-  ConsumingIcon: {fileID: 0}
-  SphereIdentifier: 
+  WorldPosition: {x: 0, y: 0, z: 0}
+  VisibleCharacteristics: []
 --- !u!114 &5056061998768607131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,8 +456,8 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
