@@ -15,11 +15,11 @@ C:/Users/Alexis/Documents/GitHub/csunity
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53703
+54171
 Successfully changed project path to: C:/Users/Alexis/Documents/GitHub/csunity
 C:/Users/Alexis/Documents/GitHub/csunity
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 49.54 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 47.25 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.4f1 (becced5a802b)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Resources/UnitySubsystems
@@ -35,134 +35,260 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56896
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56592
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.002640 seconds.
+Registered in 0.002564 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 41.83 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 43.72 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.466 seconds
+- Completed reload, in  0.946 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005410 seconds.
+Registered in 0.004200 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 45.77 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 45.20 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.872 seconds
+- Completed reload, in  0.877 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.86 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.92 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1935 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 88.0 MB.
+System memory in use before: 88.1 MB.
 System memory in use after: 88.1 MB.
 
 Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 2371.
-Total: 1.681600 ms (FindLiveObjects: 0.168300 ms CreateObjectMapping: 0.056200 ms MarkObjects: 1.392300 ms  DeleteObjects: 0.064100 ms)
+Total: 2.018500 ms (FindLiveObjects: 0.204700 ms CreateObjectMapping: 0.055800 ms MarkObjects: 1.682200 ms  DeleteObjects: 0.074600 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Resources/prefabs/SituationWindow.prefab
-  artifactKey: Guid(deb00c042628c48cfa9eef03d318a4ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/prefabs/SituationWindow.prefab using Guid(deb00c042628c48cfa9eef03d318a4ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b) The same field name is serialized multiple times in the class or its parent class. This is not supported: Base(MonoBehaviour) spherePrefab
-
- -> (artifact id: 'efb23f7f5ac528ce44341a7f423b1a9a') in 0.257247 seconds
-  Import took 0.261759 seconds .
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53037545338025f3fc4c590905c38752') in 0.134631 seconds
+  Import took 0.138082 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 22.695367 seconds.
-  path: Assets/Resources/prefabs/NotesSphere.prefab
-  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01bba0a9ad17ea8ff37f0731a5bdd048') in 0.007885 seconds
-  Import took 0.011414 seconds .
+  Time since last request: 9.623564 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '112c1ca15eb37e1bc64c17c9c077b3b8') in 0.035284 seconds
+  Import took 0.038485 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.006115 seconds.
-  path: Assets/Resources/prefabs/NotesSphere.prefab
-  artifactKey: Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/prefabs/NotesSphere.prefab using Guid(8315d660ae3773442ac46832ef4f36d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01bba0a9ad17ea8ff37f0731a5bdd048') in 0.003299 seconds
-  Import took 0.005923 seconds .
+  Time since last request: 8.090838 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '533fcb5b4fb6261a6d6ee12f16aa1462') in 0.033327 seconds
+  Import took 0.036471 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 59.768423 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '394f6bc49c0a9415d43c033624a3800a') in 0.088214 seconds
+  Import took 0.091293 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 29.907651 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '133f141339d501ef6319428128792c09') in 0.058560 seconds
+  Import took 0.061844 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 78.561592 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd20972acc93e1d80eb56abb8a6030c22') in 0.063841 seconds
+  Import took 0.068252 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.843411 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61f09a7a021160e01510e7c8e14da745') in 0.046904 seconds
+  Import took 0.050521 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.416340 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c282ec13e93b4d47f5c08ba1f51515cb') in 0.047730 seconds
+  Import took 0.051513 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.803209 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '543dfddaa7d678b1cba6eddca0f99c24') in 0.033808 seconds
+  Import took 0.036868 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002595 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '543dfddaa7d678b1cba6eddca0f99c24') in 0.031068 seconds
+  Import took 0.033762 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.371923 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62e6df4840d1341ff9fc231b7b9af21b') in 0.056775 seconds
+  Import took 0.059769 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 17.471483 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08e44164bf26d3f204d59c5343426e30') in 0.059671 seconds
+  Import took 0.062830 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003874 seconds.
+Registered in 0.004248 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.83 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1.07 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.760 seconds
+- Completed reload, in  1.049 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.87 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1909 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 90.1 MB.
+System memory in use after: 90.2 MB.
+
+Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 2413.
+Total: 1.615300 ms (FindLiveObjects: 0.153600 ms CreateObjectMapping: 0.037500 ms MarkObjects: 1.408000 ms  DeleteObjects: 0.015500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 41.434670 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a22a5f6e16237c7c69c77a48c30663c8') in 0.107100 seconds
+  Import took 0.110177 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.182423 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b822e0e43cea076cb86f09dc3c925dc1') in 0.060914 seconds
+  Import took 0.064029 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.688482 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '268062f9649bf7a3ca605c06bc9cf2b5') in 0.153473 seconds
+  Import took 0.159044 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.649676 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45d570917b1025cd155d4393aa14c443') in 0.125193 seconds
+  Import took 0.129327 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004158 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.85 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.781 seconds
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.88 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1909 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 87.1 MB.
-System memory in use after: 87.2 MB.
+System memory in use before: 90.2 MB.
+System memory in use after: 90.3 MB.
 
-Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 2375.
-Total: 1.643900 ms (FindLiveObjects: 0.156500 ms CreateObjectMapping: 0.041500 ms MarkObjects: 1.428000 ms  DeleteObjects: 0.016900 ms)
+Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 2416.
+Total: 1.637700 ms (FindLiveObjects: 0.158900 ms CreateObjectMapping: 0.041400 ms MarkObjects: 1.421800 ms  DeleteObjects: 0.014700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 145.742220 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d661822e3181f05387f579bd00536f9') in 0.102889 seconds
+  Import took 0.106237 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 26.387643 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53b045cb0f19195ee8af0b2a773c9c12') in 0.057050 seconds
+  Import took 0.059928 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 17.627524 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71e29867791b3a5bd261e72863df7372') in 0.058196 seconds
+  Import took 0.061225 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003962 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.83 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.759 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.90 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1909 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 87.2 MB.
-System memory in use after: 87.3 MB.
-
-Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 2377.
-Total: 1.534600 ms (FindLiveObjects: 0.153700 ms CreateObjectMapping: 0.036900 ms MarkObjects: 1.325100 ms  DeleteObjects: 0.018300 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.004065 seconds.
+Registered in 0.004120 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
@@ -174,14 +300,39 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.782 seconds
+- Completed reload, in  0.755 seconds
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.86 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1909 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 87.2 MB.
-System memory in use after: 87.3 MB.
+System memory in use before: 90.2 MB.
+System memory in use after: 90.3 MB.
 
-Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 2379.
-Total: 1.540800 ms (FindLiveObjects: 0.196500 ms CreateObjectMapping: 0.061600 ms MarkObjects: 1.266300 ms  DeleteObjects: 0.015500 ms)
+Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 2419.
+Total: 1.866300 ms (FindLiveObjects: 0.207300 ms CreateObjectMapping: 0.056300 ms MarkObjects: 1.581000 ms  DeleteObjects: 0.020700 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 112.281068 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbca501cee245e805c6f95a026b579bd') in 0.102825 seconds
+  Import took 0.106015 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 53.207016 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69535d7d5bb61bd6f3a866ea2072fb74') in 0.140829 seconds
+  Import took 0.143927 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.288189 seconds.
+  path: Assets/Resources/Fonts & Materials/Text_Philosopher.asset
+  artifactKey: Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fonts & Materials/Text_Philosopher.asset using Guid(924035b7778230945bf7c1c414c6a332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35741b5ee6bdc7c0770ff374c90960c1') in 0.115276 seconds
+  Import took 0.118708 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
