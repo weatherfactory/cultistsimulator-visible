@@ -36,7 +36,6 @@ namespace Assets.Scripts.Application.Spheres
         [SerializeField] private NavigationAnimation _navigationAnimation;
         public override SphereCategory SphereCategory => SphereCategory.Notes;
         public override bool AllowStackMerge => false;
-        public event Action<NavigationArgs> OnNoteNavigation;
         public List<Token> PagedTokens=new List<Token>();
         public int Index { get; set; }
         
@@ -73,7 +72,7 @@ namespace Assets.Scripts.Application.Spheres
                 
                 PagedTokens.Add(token);
                 int newIndex = PagedTokens.FindIndex(t => t == token); //should always be the high index, but maybe we'll want to insert in the middle later
-                var navigationArgs=new NavigationArgs(newIndex,NavigationAnimationDirection.MoveRight,NavigationAnimationDirection.MoveRight);
+             //   var navigationArgs=new NavigationArgs(newIndex,NavigationAnimationDirection.MoveRight,NavigationAnimationDirection.MoveRight);
              //   RespondToNoteNavigation(navigationArgs);
             }
 
@@ -111,13 +110,13 @@ namespace Assets.Scripts.Application.Spheres
 
         public void ShowPrevPage()
         {
-            OnNoteNavigation?.Invoke(new NavigationArgs(Index-1, NavigationAnimationDirection.MoveLeft, NavigationAnimationDirection.MoveLeft));
+            RespondToNoteNavigation(new NavigationArgs(Index-1, NavigationAnimationDirection.MoveLeft, NavigationAnimationDirection.MoveLeft));
         }
 
 
        public void ShowNextPage()
         {
-            OnNoteNavigation?.Invoke(new NavigationArgs(Index+1, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight));
+            RespondToNoteNavigation(new NavigationArgs(Index+1, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight));
         }
 
 

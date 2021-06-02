@@ -463,6 +463,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d82a6bfde0cdd94890dbb172a940e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentStateIdentifier: 0
+  CurrentRecipeId: 
   canvasGroupFader: {fileID: 114000011356646590}
   positioner: {fileID: 114651031545853594}
   artwork: {fileID: 114475561134123840}
@@ -1174,12 +1176,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spherePrefab: {fileID: 114887034075387412, guid: d98bf647d379b1444a0357c052d9c4a8,
+    type: 3}
   canvasGroupFader: {fileID: 114848985628778574}
   sphereArrangement: {fileID: 4482476914772828801}
   EditableIdentifier: RecipeThresholds
   VisibleForStates: 0200000003000000
-  spherePrefab: {fileID: 114887034075387412, guid: d98bf647d379b1444a0357c052d9c4a8,
-    type: 3}
   MaxSpheresAllowed: 1
 --- !u!1 &1287574504788578
 GameObject:
@@ -2377,12 +2379,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spherePrefab: {fileID: 173994217101375650, guid: 1215ec9de9884424e82cd0d2fcdf0623,
+    type: 3}
   canvasGroupFader: {fileID: 114595233805244828}
   sphereArrangement: {fileID: 1663720440976026478}
   EditableIdentifier: Output
   VisibleForStates: 05000000
-  spherePrefab: {fileID: 173994217101375650, guid: 1215ec9de9884424e82cd0d2fcdf0623,
-    type: 3}
   MaxSpheresAllowed: 1
 --- !u!114 &1663720440976026478
 MonoBehaviour:
@@ -2690,9 +2692,7 @@ GameObject:
   - component: {fileID: 4789969075872377100}
   - component: {fileID: 1223493030995727280}
   - component: {fileID: 2645367709224873335}
-  - component: {fileID: 6070173378976685744}
-  - component: {fileID: 8430572976792214252}
-  - component: {fileID: 8632729047619037706}
+  - component: {fileID: 6704220074974933016}
   m_Layer: 5
   m_Name: NoteDominion
   m_TagString: Untagged
@@ -2731,12 +2731,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroupFader: {fileID: 2645367709224873335}
-  sphereArrangement: {fileID: 6070173378976685744}
-  EditableIdentifier: Notes
-  VisibleForStates: 000000000100000002000000030000000400000005000000
   spherePrefab: {fileID: 1127656137174522416, guid: 8315d660ae3773442ac46832ef4f36d4,
     type: 3}
+  canvasGroupFader: {fileID: 2645367709224873335}
+  sphereArrangement: {fileID: 6704220074974933016}
+  EditableIdentifier: Notes
+  VisibleForStates: 000000000100000002000000030000000400000005000000
   MaxSpheresAllowed: 0
 --- !u!225 &1223493030995727280
 CanvasGroup:
@@ -2765,7 +2765,7 @@ MonoBehaviour:
   blockRaysDuringFade: 0
   durationTurnOn: 0
   durationTurnOff: 0
---- !u!114 &6070173378976685744
+--- !u!114 &6704220074974933016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2774,44 +2774,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1700666214586562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f7c5f81ae9ba4441ad90a918d4c482f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a831aa247887f2489deb77204be998f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navigationAnimation: {fileID: 8430572976792214252}
---- !u!114 &8430572976792214252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700666214586562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0572ad6d097bfb4487a302ad099e542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animations: {fileID: 8632729047619037706}
-  soundIn: SituationWindowTextMove
-  soundOut: SituationWindowTextMove
---- !u!111 &8632729047619037706
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700666214586562}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: c5deb1a3ec805b84c859782299e0109f, type: 2}
-  - {fileID: 7400000, guid: 356c15fd78e42f246999a7865f1a4f9d, type: 2}
-  - {fileID: 7400000, guid: b70a02523e34cc142a54223b55dc15cc, type: 2}
-  - {fileID: 7400000, guid: eb9f88ca12ae8ac498f9c7536af4f8b3, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &1743531545229948
 GameObject:
   m_ObjectHideFlags: 0
@@ -3457,12 +3422,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spherePrefab: {fileID: 114887034075387412, guid: d98bf647d379b1444a0357c052d9c4a8,
+    type: 3}
   canvasGroupFader: {fileID: 114412774732763762}
   sphereArrangement: {fileID: 8157357256015802240}
   EditableIdentifier: VerbThresholds
   VisibleForStates: 0000000001000000
-  spherePrefab: {fileID: 114887034075387412, guid: d98bf647d379b1444a0357c052d9c4a8,
-    type: 3}
   MaxSpheresAllowed: 0
 --- !u!114 &114844407673096716
 MonoBehaviour:
@@ -3735,12 +3700,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spherePrefab: {fileID: 8896989850952037998, guid: 91cdd0265e269894e8f4ffac210cf045,
+    type: 3}
   canvasGroupFader: {fileID: 8146654841912857010}
   sphereArrangement: {fileID: 1617814118146466013}
   EditableIdentifier: Storage
   VisibleForStates: 0200000003000000
-  spherePrefab: {fileID: 8896989850952037998, guid: 91cdd0265e269894e8f4ffac210cf045,
-    type: 3}
   MaxSpheresAllowed: 1
 --- !u!1 &8741477894281076604
 GameObject:
