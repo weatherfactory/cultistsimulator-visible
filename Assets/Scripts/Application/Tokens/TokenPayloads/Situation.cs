@@ -899,8 +899,6 @@ namespace SecretHistories.Entities {
         public void Conclude()
         {
            AddCommand(new ConcludeCommand());
-           var retireNotesCommand=new ClearDominionCommand(SituationDominionEnum.Notes.ToString(), SphereRetirementType.Destructive);
-           AddCommand(retireNotesCommand);
            Continue(0f,0f);
         }
 
