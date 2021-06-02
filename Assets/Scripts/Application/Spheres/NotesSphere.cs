@@ -74,6 +74,7 @@ namespace Assets.Scripts.Application.Spheres
                 int newIndex = PagedTokens.FindIndex(t => t == token); //should always be the high index, but maybe we'll want to insert in the middle later
              //   var navigationArgs=new NavigationArgs(newIndex,NavigationAnimationDirection.MoveRight,NavigationAnimationDirection.MoveRight);
              //   RespondToNoteNavigation(navigationArgs);
+             Index = newIndex;
             }
 
             
@@ -106,6 +107,7 @@ namespace Assets.Scripts.Application.Spheres
         public void OnNoteMoveCompleted(NavigationArgs args)
         {
             PagedTokens[args.Index].MakeVisible();
+            Index = args.Index;
         }
 
         public void ShowPrevPage()
