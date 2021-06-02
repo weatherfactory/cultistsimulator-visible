@@ -68,10 +68,13 @@ namespace Assets.Scripts.Application.Spheres
 
             if(!PagedTokens.Contains(token))
             {
+                foreach(var existingToken in PagedTokens)
+                    existingToken.MakeInvisible();
+                
                 PagedTokens.Add(token);
                 int newIndex = PagedTokens.FindIndex(t => t == token); //should always be the high index, but maybe we'll want to insert in the middle later
                 var navigationArgs=new NavigationArgs(newIndex,NavigationAnimationDirection.MoveRight,NavigationAnimationDirection.MoveRight);
-                RespondToNoteNavigation(navigationArgs);
+             //   RespondToNoteNavigation(navigationArgs);
             }
 
             
