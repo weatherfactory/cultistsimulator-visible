@@ -21,6 +21,7 @@ namespace Assets.Scripts.Application.Spheres
 
         public NavigationAnimationDirection FirstNavigationDirection { get; set; }
         public NavigationAnimationDirection FinalNavigationDirection { get; set; }
+        public bool Instant { get; set; }
 
 
         public NavigationArgs(int index, NavigationAnimationDirection firstNavigationDirection,NavigationAnimationDirection finalNavigationDirection)
@@ -72,15 +73,17 @@ namespace Assets.Scripts.Application.Spheres
                 
                 PagedTokens.Add(token);
                 int newIndex = PagedTokens.FindIndex(t => t == token); //should always be the high index, but maybe we'll want to insert in the middle later
-             //   var navigationArgs=new NavigationArgs(newIndex,NavigationAnimationDirection.MoveRight,NavigationAnimationDirection.MoveRight);
-             //   RespondToNoteNavigation(navigationArgs);
-             Index = newIndex;
+                var navigationArgs=new NavigationArgs(newIndex,NavigationAnimationDirection.MoveRight,NavigationAnimationDirection.MoveRight);
+                if (!this._container.IsOpen)
+                    navigationArgs.Instant = true;
+                Navigate(navigationArgs);
+       
             }
 
             
         }
 
-        public void RespondToNoteNavigation(NavigationArgs args)
+        public void Navigate(NavigationArgs args)
         {
             var indexToShow = args.Index;
 
@@ -99,8 +102,10 @@ namespace Assets.Scripts.Application.Spheres
             foreach (var t in Tokens)
                 t.MakeInvisible();
 
-
-            _navigationAnimation.TriggerAnimation(args, null, OnNoteMoveCompleted);
+            if(args.Instant)
+                OnNoteMoveCompleted(args);
+            else
+                _navigationAnimation.TriggerAnimation(args, null, OnNoteMoveCompleted);
 
         }
 
@@ -112,13 +117,13 @@ namespace Assets.Scripts.Application.Spheres
 
         public void ShowPrevPage()
         {
-            RespondToNoteNavigation(new NavigationArgs(Index-1, NavigationAnimationDirection.MoveLeft, NavigationAnimationDirection.MoveLeft));
+            Navigate(new NavigationArgs(Index-1, NavigationAnimationDirection.MoveLeft, NavigationAnimationDirection.MoveLeft));
         }
 
 
        public void ShowNextPage()
         {
-            RespondToNoteNavigation(new NavigationArgs(Index+1, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight));
+            Navigate(new NavigationArgs(Index+1, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight));
         }
 
 
