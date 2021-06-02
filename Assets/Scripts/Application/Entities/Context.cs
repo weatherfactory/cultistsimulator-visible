@@ -34,24 +34,21 @@ public class Context {
     }
 
     public ActionSource actionSource;
-    public bool Metafictional { get; set; }
     public TokenLocation TokenDestination { get; set; }
     public FucinePath OccurringAt { get; set; }
     public Context(ActionSource actionSource) {
         this.actionSource = actionSource;
-        Metafictional = false;
     }
 
-    public Context(Context fromContext)
+    public Context(Context fromContext):this(fromContext.actionSource,fromContext.TokenDestination)
     {
-
+        
     }
 
     public Context(ActionSource actionSource,TokenLocation tokenDestination)
     {
         this.actionSource = actionSource;
         TokenDestination = tokenDestination;
-        Metafictional = false;
     }
 
     public static Context Unknown()

@@ -24,7 +24,9 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         //Otherworlds are NOT currently encausted or saved
         //also, we've broken the model for simplicity - this is a Manifestable which is also its own manifestation
       public   List<AbstractDominion> Dominions=>new List<AbstractDominion>(_dominions);
-         [SerializeField] private List<OtherworldDominion> _dominions;
+       public bool Metafictional => false;
+
+        [SerializeField] private List<OtherworldDominion> _dominions;
         [SerializeField] private OtherworldAnimation EntryAnimation;
         [SerializeField] private EnRouteSphere otherworldSpecificEnRouteSphere;
         [SerializeField] private string EntrySfxName;

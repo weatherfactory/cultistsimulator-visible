@@ -71,6 +71,9 @@ namespace SecretHistories.Tokens.TokenPayloads
         [Encaust]
         public List<AbstractDominion> Dominions => new List<AbstractDominion>(_registeredDominions);
 
+        [DontEncaust] public bool Metafictional => false;
+
+
         [Encaust]
         public Dictionary<string, int> Mutations => _mutations;
 

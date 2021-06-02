@@ -83,6 +83,9 @@ namespace SecretHistories.Entities {
         [Encaust]
         public List<AbstractDominion> Dominions => new List<AbstractDominion>(_registeredDominions);
 
+        [DontEncaust] public bool Metafictional => false;
+
+
         [Encaust]
         public bool IsOpen { get; private set; }
 
@@ -245,6 +248,7 @@ namespace SecretHistories.Entities {
 
               var addNoteCommand=new AddNoteCommand(newRecipePrediction, context);
                 addNoteCommand.ExecuteOn(this);
+                Debug.Log("");
 
         }
 
@@ -996,13 +1000,25 @@ namespace SecretHistories.Entities {
             //
         }
 
+        private bool ChangesAreMetafictional(SphereContentsChangedEventArgs args)
+        {
+          if(args.TokenAdded != null && !args.TokenAdded.Payload.Metafictional && args.TokenAdded.Payload.IsValid())
+                return false;
+          if (args.TokenRemoved != null && !args.TokenRemoved.Payload.Metafictional && args.TokenRemoved.Payload.IsValid())
+              return false;
+          if (args.TokenChanged != null && !args.TokenChanged.Payload.Metafictional && args.TokenChanged.Payload.IsValid())
+              return false;
+
+          return true;
+
+        }
+
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
-            if (args.Context.Metafictional)
+            if (ChangesAreMetafictional(args))
                 //it's just a note or something equally cosmetic. Don't update recipe prediction or any of that stuff - it's not only unnecessary, it can also cause weird behaviour.
                 return;
-
-
+            
             // if a token has just been added to a situation -eg by dropping a token on a verb, or double-click - to - send arriving - then open this situation
             if (args.Sphere.SphereCategory == SphereCategory.Threshold &&
                 !args.Sphere.HasAngel(typeof(GreedyAngel)) && //a token going to a greedy sphere shouldn't trigger a situation opening

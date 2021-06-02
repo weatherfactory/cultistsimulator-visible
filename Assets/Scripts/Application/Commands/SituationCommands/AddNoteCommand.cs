@@ -23,7 +23,7 @@ namespace SecretHistories.Commands.SituationCommands
        public AddNoteCommand(INotification notification,Context context)
        {
            Notification = notification;
-           _context = context;
+           _context = new Context(context);
        }
 
        public bool ExecuteOn(Token token)
@@ -33,7 +33,6 @@ namespace SecretHistories.Commands.SituationCommands
 
        public bool ExecuteOn(ITokenPayload payload)
        {
-           _context.Metafictional = true;
            return payload.ReceiveNote(Notification, _context);
        }
    }

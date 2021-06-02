@@ -23,6 +23,7 @@ namespace SecretHistories.Abstract
         Timeshadow GetTimeshadow();
         bool RegisterDominion(AbstractDominion dominion);
         public List<AbstractDominion> Dominions { get; }
+        public bool Metafictional { get; }
 
     }
 }

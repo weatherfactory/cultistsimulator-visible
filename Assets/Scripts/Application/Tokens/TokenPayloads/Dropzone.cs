@@ -66,6 +66,8 @@ namespace SecretHistories.Entities.Verbs
         {
             get { return new List<AbstractDominion>(_dominions); }
         }
+
+        [DontEncaust] public bool Metafictional => true;
         [DontEncaust] public string Label => "Dropzone";
         [DontEncaust] public string Description => "Description";
         

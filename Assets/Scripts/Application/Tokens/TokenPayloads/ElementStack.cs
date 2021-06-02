@@ -75,6 +75,8 @@ namespace SecretHistories.UI {
         [Encaust]
         public List<AbstractDominion> Dominions => new List<AbstractDominion>(_dominions);
 
+        
+
 
         protected Element Element { get; set; }
         [DontEncaust] virtual public string Label => Element.Label;
@@ -84,7 +86,8 @@ namespace SecretHistories.UI {
         [DontEncaust] virtual public string UniquenessGroup => Element.UniquenessGroup;
         [DontEncaust] virtual public bool Decays => Element.Decays;
         [DontEncaust] public bool IsOpen => false;
-        
+
+        [DontEncaust] public bool Metafictional => Element.Metafictional;
 
         private Timeshadow _timeshadow;
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();

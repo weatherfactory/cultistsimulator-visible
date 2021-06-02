@@ -139,6 +139,9 @@ namespace SecretHistories.Entities
         public string EntityId => "minimal";
         public FucinePath AbsolutePath { get; }
         public List<AbstractDominion> Dominions=>new List<AbstractDominion>(_dominions);
+        [DontEncaust] public bool Metafictional => false;
+
+
         public bool RegisterDominion(AbstractDominion dominion)
         {
             if (_dominions.Contains(dominion))
