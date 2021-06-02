@@ -323,6 +323,8 @@ GameObject:
   - component: {fileID: 5056061998768607131}
   - component: {fileID: 3042091678236953927}
   - component: {fileID: 5120080095768125446}
+  - component: {fileID: 7786375455754679757}
+  - component: {fileID: 1338798017544059444}
   m_Layer: 5
   m_Name: NotesSphere
   m_TagString: Untagged
@@ -393,6 +395,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldPosition: {x: 0, y: 0, z: 0}
   VisibleCharacteristics: []
+  _navigationAnimation: {fileID: 7786375455754679757}
+  PagedTokens: []
 --- !u!114 &5056061998768607131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,3 +465,37 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &7786375455754679757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611771954394558725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0572ad6d097bfb4487a302ad099e542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animations: {fileID: 1338798017544059444}
+  soundIn: SituationWindowTextMove
+  soundOut: SituationWindowTextMove
+--- !u!111 &1338798017544059444
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611771954394558725}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: c5deb1a3ec805b84c859782299e0109f, type: 2}
+  - {fileID: 7400000, guid: 356c15fd78e42f246999a7865f1a4f9d, type: 2}
+  - {fileID: 7400000, guid: b70a02523e34cc142a54223b55dc15cc, type: 2}
+  - {fileID: 7400000, guid: eb9f88ca12ae8ac498f9c7536af4f8b3, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

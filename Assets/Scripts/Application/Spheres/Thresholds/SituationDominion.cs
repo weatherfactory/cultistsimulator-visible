@@ -34,10 +34,7 @@ namespace SecretHistories.UI {
         [SerializeField] private string EditableIdentifier;
 
         public List<StateEnum> VisibleForStates;
-        public Sphere spherePrefab;
-
-       
-
+ 
         [SerializeField] private int MaxSpheresAllowed;
 
 

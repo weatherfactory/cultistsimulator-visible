@@ -21,7 +21,7 @@ namespace Assets.Scripts.Application.Spheres.SphereArrangements
         {
             NotesSphere newsNotesSphere= sphereAdded as NotesSphere;
 
-            //newsNotesSphere.OnDestroy()
+    
 
             if(newsNotesSphere==null)
                 throw new ApplicationException(sphereAdded.GetAbsolutePath() + " isn't a notes sphere");

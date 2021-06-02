@@ -379,6 +379,54 @@ namespace SecretHistories.Entities {
                 return true;
 
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
+
+            var notesDominion = GetRelevantDominions(StateIdentifier, typeof(NotesSphere)).FirstOrDefault();
+            if (notesDominion == null)
+            {
+                NoonUtility.Log($"No notes sphere and no notes dominion found: we won't add note {notification.Title}, then.");
+                return false;
+            }
+
+
+            Sphere notesSphere = notesDominion.Spheres.SingleOrDefault();
+            if (notesSphere == null)
+            {
+                //no notes sphere yet exists: create one
+                var notesSphereSpec = new SphereSpec(typeof(NotesSphere), $"{nameof(NotesSphere)}");
+                notesSphere = notesDominion.TryCreateSphere(notesSphereSpec);
+                notesSphere.transform.localScale = Vector3.one; //HACK! there's a bug where opening the window can increase the scale of new notes spheres. This sets it usefully, but I should find a more permanent solution if the issue shows up again
+            }
+
+            if (!notification.Additive) //clear out existing notes first
+                notesSphere.RetireAllTokens();
+                
+
+            var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
+            newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_TITLE_KEY, notification.Title);
+            newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, notification.Description);
+
+            var tokenCreationCommand =
+                new TokenCreationCommand(newNoteCommand, TokenLocation.Default(notesSphere.GetAbsolutePath()));
+
+            tokenCreationCommand.Execute(context, notesSphere);
+
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update));
+
+            return true;
+        }
+
+
+        public bool oldReceiveNoteUsingDistinctSpheres(INotification notification, Context context)
+        {
+            //no infinite loops pls
+            if (notification.Title == this.Label && notification.Description == this.Description)
+                return true;
+
+
+            if (!Situation.TextIntendedForDisplay(notification.Description))
+                return true;
+
+            var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
             
            var notesDominion = GetRelevantDominions(StateIdentifier,typeof(NotesSphere)).FirstOrDefault();
            if (notesDominion == null)
@@ -387,6 +435,7 @@ namespace SecretHistories.Entities {
                 return false;
            }
            
+
            if (!notification.Additive) //clear out existing notes spheres first
            {
                var existingSpheres = notesDominion.Spheres;
@@ -399,9 +448,9 @@ namespace SecretHistories.Entities {
 
             var existingNotesSpheres = notesDominion.Spheres;
 
+
             var notesSphereSpec = new SphereSpec(typeof(NotesSphere), $"{nameof(NotesSphere)}{existingNotesSpheres.Count}");
 
-            // var notesSphereSpec = new SphereSpec(typeof(NotesSphere), $"{nameof(NotesSphere)}{existingNotesSpheres.Count}");
 
             var emptyNoteSphere = notesDominion.TryCreateSphere(notesSphereSpec);
            emptyNoteSphere.transform.localScale=Vector3.one; //HACK! there's a bug where opening the window can increase the scale of new notes spheres. This sets it usefully, but I should find a more permanent solution if the issue shows up again

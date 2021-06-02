@@ -572,6 +572,25 @@ namespace SecretHistories.UI {
                 canvasGroup.blocksRaycasts = false;
         }
 
+        
+
+        public void MakeVisible()
+        {
+            if (canvasGroup != null)
+                canvasGroup.alpha = 1f; //This is a bit of a blunt instrument; what if we're fading? Manifestations don't know about this kind of thing as standard,
+            //but maybe this behaviour should be moved to there and they should have CanvasGroupFaders if necessary. OTOH, this seems to be the same kind of behaviour as MakeInteractable, which lives in Token
+
+            MakeInteractable();
+        }
+
+        public void MakeInvisible()
+        {
+            if (canvasGroup != null)
+                canvasGroup.alpha = 0f;
+
+            MakeNonInteractable();
+        }
+
         public  void OnDrop(PointerEventData eventData)
         {
 

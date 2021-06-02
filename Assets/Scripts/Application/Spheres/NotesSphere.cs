@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Entities;
 using SecretHistories.Commands;
+using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -32,11 +33,13 @@ namespace Assets.Scripts.Application.Spheres
     [IsEmulousEncaustable(typeof(Sphere))]
     public class NotesSphere: Sphere
     {
+        [SerializeField] private NavigationAnimation _navigationAnimation;
         public override SphereCategory SphereCategory => SphereCategory.Notes;
         public override bool AllowStackMerge => false;
         public event Action<NavigationArgs> OnNoteNavigation;
+        public List<Token> PagedTokens=new List<Token>();
         public int Index { get; set; }
-
+        
 
         /// <summary>
         ///  //Notes spheres always destroy all their contents. We don't want notes to be evicted on to the desktop
@@ -56,16 +59,52 @@ namespace Assets.Scripts.Application.Spheres
         }
 
 
-        public override void DisplayAndPositionHere(Token token, Context context)
+    public override void DisplayAndPositionHere(Token token, Context context)
         {
             token.Manifest();
             token.transform.SetParent(transform, true); //this is the default: specifying for clarity in case I revisit
             token.transform.localRotation = Quaternion.identity;
             token.transform.localScale = Vector3.one;
 
+            if(!PagedTokens.Contains(token))
+            {
+                PagedTokens.Add(token);
+                int newIndex = PagedTokens.FindIndex(t => t == token); //should always be the high index, but maybe we'll want to insert in the middle later
+                var navigationArgs=new NavigationArgs(newIndex,NavigationAnimationDirection.MoveRight,NavigationAnimationDirection.MoveRight);
+                RespondToNoteNavigation(navigationArgs);
+            }
+
+            
         }
 
+        public void RespondToNoteNavigation(NavigationArgs args)
+        {
+            var indexToShow = args.Index;
 
+            if (indexToShow +1 > PagedTokens.Count)
+            {
+                NoonUtility.Log(
+                    $"Trying to show note {indexToShow}, but there are only {PagedTokens.Count} spheres in the list under consideration.");
+                return;
+            }
+
+
+            if (indexToShow < 0)
+                //index -1 or lower: there ain't no that
+                return;
+
+            foreach (var t in Tokens)
+                t.MakeInvisible();
+
+
+            _navigationAnimation.TriggerAnimation(args, null, OnNoteMoveCompleted);
+
+        }
+
+        public void OnNoteMoveCompleted(NavigationArgs args)
+        {
+            PagedTokens[args.Index].MakeVisible();
+        }
 
         public void ShowPrevPage()
         {
@@ -79,5 +118,15 @@ namespace Assets.Scripts.Application.Spheres
         }
 
 
+
+ 
+        //public override void SphereRemoved(Sphere sphere)
+        //{
+        //    if (_arrangingSpheres.Contains(sphere))
+        //        _arrangingSpheres.Remove(sphere);
+        //}
+
+
     }
+
 }
