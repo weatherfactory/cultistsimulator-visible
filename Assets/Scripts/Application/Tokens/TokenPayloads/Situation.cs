@@ -100,9 +100,17 @@ namespace SecretHistories.Entities {
         [DontEncaust] public SituationState State { get; set; }
         [DontEncaust] public float Warmup => Recipe.Warmup;
 
+        /// <summary>
+        /// At time of writing, Label and Description are updated internally when a note is added. This may cause issues if we stop doing that, but 'effective description'
+        /// is a fuzzy term that may change its meaning.
+        /// </summary>
+        [DontEncaust] public string Label { private set; get; }
+        /// <summary>
+        /// At time of writing, Label and Description are updated internally when a note is added. This may cause issues if we stop doing that, but 'effective description'
+        /// is a fuzzy term that may change its meaning.
+        /// </summary>
+        [DontEncaust] public string Description { private set; get; }
         
-        [DontEncaust] public string Label => GetMostRecentNoteLabel();
-        [DontEncaust] public string Description => GetMostRecentNoteDescription();
         [DontEncaust] public float IntervalForLastHeartbeat => _timeshadow.LastInterval;
         [DontEncaust]
         public string UniquenessGroup
@@ -382,6 +390,10 @@ namespace SecretHistories.Entities {
             if (!Situation.TextIntendedForDisplay(notification.Description))
                 return true;
 
+            //At time of writing, these are only used to check whether a note is a meaningful update.
+            Label = notification.Title;
+            Description = notification.Description;
+
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
 
             var notesDominion = GetRelevantDominions(StateIdentifier, typeof(NotesSphere)).FirstOrDefault();
@@ -473,36 +485,8 @@ namespace SecretHistories.Entities {
             return true;
         }
 
-        private Sphere GetMostRecentSphereWithANote()
-        {
-            var notesSpheres = GetSpheresByCategory(SphereCategory.Notes);
-            var lastSphereWithANote = notesSpheres.LastOrDefault(s => s.Tokens.Any());
-            return lastSphereWithANote;
-        }
-
-        private string GetMostRecentNoteLabel()
-        {
-            var noteSphereToCheck = GetMostRecentSphereWithANote();
-            if (noteSphereToCheck == null)
-                return string.Empty;
-
-            var note = noteSphereToCheck.Tokens.First().Payload;
-            string title = note.GetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY);
-            return title;
 
 
-        }
-
-        private string GetMostRecentNoteDescription()
-        {
-            var noteSphereToCheck = GetMostRecentSphereWithANote();
-            if (noteSphereToCheck == null)
-                return string.Empty;
-
-            var note = noteSphereToCheck.Tokens.First().Payload;
-            string description = note.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY);
-            return description;
-        }
 
         public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
         {
