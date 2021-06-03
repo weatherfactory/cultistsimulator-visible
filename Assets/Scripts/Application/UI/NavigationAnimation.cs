@@ -22,14 +22,16 @@ public class NavigationAnimation : MonoBehaviour {
         return isBusy;
     }
 
-    public void TriggerAnimation(NavigationArgs args, AnimationResponse onBegin, AnimationResponse onComplete) {
+    public void TriggerAnimation(NavigationArgs args) {
         
-        StartCoroutine(DoAnimation(args, onBegin, onComplete));
+        StartCoroutine(DoAnimation(args));
     }
 
-    private IEnumerator DoAnimation(NavigationArgs args,AnimationResponse onOutDone, AnimationResponse onInDone) {
+    private IEnumerator DoAnimation(NavigationArgs args) {
         string clipName;
         isBusy = true;
+
+        args.OnBegin?.Invoke(args);
 
         clipName = GetOutClip(args.FirstNavigationDirection);
         if (clipName != null) { 
@@ -40,8 +42,7 @@ public class NavigationAnimation : MonoBehaviour {
                 yield return null;
         }
 
-        if (onOutDone != null)
-            onOutDone(args);
+        args.OnOutComplete?.Invoke(args);
 
         clipName = GetInClip(args.FinalNavigationDirection);
         if (clipName != null) { 
@@ -52,8 +53,9 @@ public class NavigationAnimation : MonoBehaviour {
                 yield return null;
         }
 
-        if (onInDone != null)
-            onInDone(args);
+        args.OnInComplete?.Invoke(args);
+
+        args.OnEnd?.Invoke(args);
 
         isBusy = false;
     }

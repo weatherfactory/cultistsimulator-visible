@@ -39,13 +39,17 @@ namespace SecretHistories.UI {
                 gameObject.SetActive(true);
                 UpdateContent();
                 var args=new NavigationArgs(0,NavigationAnimationDirection.None,NavigationAnimationDirection.MoveRight);
-                TriggerAnimation(args, UpdateContentAfterNavigation, null);
+                args.OnBegin = UpdateContentAfterNavigation;
+
+                TriggerAnimation(args);
                 StartCoroutine(DoWaitForHide());
             }
             else {
                 // Make the anim move out, then show the content, then move in again
                 var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight);
-                TriggerAnimation(args, UpdateContentAfterNavigation, null);
+                args.OnBegin = UpdateContentAfterNavigation;
+
+                TriggerAnimation(args);
 
             }
         }
@@ -123,8 +127,8 @@ namespace SecretHistories.UI {
 			if (gameObject.activeInHierarchy) {
 
                 var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.None);
-
-                TriggerAnimation(args, DoHideAfterNavigation,null);
+                args.OnBegin = DoHideAfterNavigation;
+                TriggerAnimation(args);
 			}
         }
 

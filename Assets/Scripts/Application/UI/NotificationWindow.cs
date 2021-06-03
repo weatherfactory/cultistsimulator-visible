@@ -49,21 +49,20 @@ namespace SecretHistories.UI
 			gameObject.SetActive(true);
 
 			// Make the anim move out, then show the content, then move in again
-			TriggerAnimation(new NavigationArgs(0,NavigationAnimationDirection.None,NavigationAnimationDirection.MoveLeft), null,null);
+			TriggerAnimation(new NavigationArgs(0,NavigationAnimationDirection.None,NavigationAnimationDirection.MoveLeft));
 		}
 
         public void Hide()
 		{
-			if (gameObject.activeInHierarchy && !IsBusy()) {
-                TriggerAnimation(new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.None), null, Cleanup);
+			if (gameObject.activeInHierarchy && !IsBusy())
+            {
+                var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight,
+                    NavigationAnimationDirection.None);
+                args.OnEnd = Cleanup;
             }
         }
 
 
-        protected void E(NavigationArgs args)
-        {
-
-        }
 
 		protected void Cleanup(NavigationArgs args)
 		{
