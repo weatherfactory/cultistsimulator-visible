@@ -59,6 +59,9 @@ namespace SecretHistories.UI
                 var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight,
                     NavigationAnimationDirection.None);
                 args.OnEnd = Cleanup;
+
+                TriggerAnimation(args);
+
             }
         }
 
