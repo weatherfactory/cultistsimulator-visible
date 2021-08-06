@@ -23,6 +23,7 @@ namespace SecretHistories.Commands
         public Legacy ActiveLegacy { get; set; }
         public Ending EndingTriggered { get; set; }
         public Dictionary<string, int> RecipeExecutions { get; set; }
+        public DateTime DateTimeCreated { get; set; }
         public Dictionary<string, string> InProgressHistoryRecords { get; set; }=new Dictionary<string, string>();
         public Dictionary<string, string> PreviousCharacterHistoryRecords { get; set; }=new Dictionary<string, string>();
 
@@ -38,7 +39,8 @@ namespace SecretHistories.Commands
                 ActiveLegacy = asLegacy,
                 EndingTriggered = afterEnding,
                 Name = Watchman.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME"),
-                Profession = asLegacy.Label
+                Profession = asLegacy.Label,
+                DateTimeCreated = DateTime.Now
             };
             // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
 
@@ -57,7 +59,8 @@ namespace SecretHistories.Commands
                 ActiveLegacy = activeLegacy,
                 EndingTriggered = Ending.NotEnded(),
                 Name = Watchman.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME"),
-                Profession = activeLegacy.Label
+                Profession = activeLegacy.Label,
+                DateTimeCreated=DateTime.Now
             };
             // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
 
@@ -77,6 +80,7 @@ namespace SecretHistories.Commands
             character.Profession = Profession;
             character.ActiveLegacy = ActiveLegacy;
             character.EndingTriggered = EndingTriggered;
+            character.SetCreatedAtTime(DateTimeCreated);
             character.OverwriteExecutionsWith(RecipeExecutions);
             foreach (var inProgressRecord in InProgressHistoryRecords)
                 character.SetFutureLegacyEventRecord(inProgressRecord.Key, inProgressRecord.Value);
@@ -86,6 +90,7 @@ namespace SecretHistories.Commands
             stable.AddNewCharacterAsProtag(character);
 
             Watchman.Get<Compendium>().SupplyLevers(character);
+
 
             return character;
         }

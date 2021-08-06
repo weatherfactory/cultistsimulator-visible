@@ -38,7 +38,11 @@ public class Character:MonoBehaviour,IEncaustable
         [Encaust]
         public Ending EndingTriggered { get; set; }
 
-    [Encaust]
+        [Encaust]
+        public DateTime DateTimeCreated => _dateTimeCreated;
+
+
+        [Encaust]
     public string Name
     {
         get { return _name; }
@@ -93,11 +97,14 @@ public class Character:MonoBehaviour,IEncaustable
         }
     }
 
-
-
-
+    private Dictionary<string, int> _recipeExecutions = new Dictionary<string, int>();
+    private string _profession;
+    private HashSet<ICharacterSubscriber> _subscribers = new HashSet<ICharacterSubscriber>();
+    private string _name = "[unnamed]";
+    
     private Dictionary<string, string> _inProgressHistoryRecords=new Dictionary<string, string>();
     private Dictionary<string, string> _previousCharacterHistoryRecords=new Dictionary<string, string>();
+    private DateTime _dateTimeCreated;
 
     public void Subscribe(ICharacterSubscriber subscriber)
     {
@@ -110,12 +117,11 @@ public class Character:MonoBehaviour,IEncaustable
     }
 
 
+    public void SetCreatedAtTime(DateTime createdAtTime)
+    {
+        _dateTimeCreated = createdAtTime;
+    }
 
-
-    private Dictionary<string, int> _recipeExecutions=new Dictionary<string, int>();
-    private string _profession;
-    private HashSet<ICharacterSubscriber> _subscribers = new HashSet<ICharacterSubscriber>();
-    private string _name = "[unnamed]";
 
 
 

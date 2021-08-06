@@ -76,10 +76,11 @@ namespace SecretHistories.Constants
                 NoonUtility.LogException(e);
             }
 
-            //if the current protag has zero recipe executions, this is a fresh game. Save the current state, so they'll come straight here rather than via new game next time
+  
+            TimeSpan sinceCharacterCreated= DateTime.Now- Watchman.Get<Stable>().Protag().DateTimeCreated;
+            //if the current protag has been in existence for less than one complete second, this is a fresh game. Save the current state, so they'll come straight here rather than via new game next time
             //and also save the restart state.
-
-            if (Watchman.Get<Stable>().Protag().RecipeExecutions.Count == 0)
+            if (sinceCharacterCreated.Seconds<=0)
             {
                 await TryDefaultSave();
                 await SaveRestartState();

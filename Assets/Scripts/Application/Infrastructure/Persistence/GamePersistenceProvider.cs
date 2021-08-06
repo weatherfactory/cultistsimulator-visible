@@ -96,14 +96,20 @@ namespace SecretHistories.Infrastructure.Persistence
             var writeToFileTask = WriteSaveFile(saveFilePath, json);
             await writeToFileTask;
 
-            NoonUtility.Log($"Saved game via {this.GetType().Name} at {DateTime.Now}",0, VerbosityLevel.Significants);
+            NoonUtility.Log($"Saved game via {this.GetType().Name} to {saveFilePath} at {DateTime.Now}",0, VerbosityLevel.Significants);
 
             var backupSaveFileLocation = GetBackupSaveFileLocation();
-            var backupSaveTask = WriteSaveFile(backupSaveFileLocation, json);
-            await backupSaveTask;
+            if(!string.IsNullOrEmpty(backupSaveFileLocation))
+            {
+                var backupSaveTask = WriteSaveFile(backupSaveFileLocation, json);
+                await backupSaveTask;
+                NoonUtility.Log($"Saved backup via {this.GetType().Name} to {backupSaveFileLocation} at {DateTime.Now}", 0, VerbosityLevel.Significants);
 
-            var purgeBackupsTask = PurgeBackups();
-            await purgeBackupsTask;
+                var purgeBackupsTask = PurgeBackups();
+                await purgeBackupsTask;
+            }
+
+            
 
             return true;
         }
@@ -121,7 +127,7 @@ namespace SecretHistories.Infrastructure.Persistence
         }
 
 
-        protected string GetBackupSaveFileLocation()
+        protected virtual string GetBackupSaveFileLocation()
         {
             return $"{persistentDataPath}/backups/save{DateTime.Now:yyyyMMddHHmmssfff}.json";
         }
