@@ -76,7 +76,7 @@ namespace SecretHistories.Constants.Modding
             foreach (var sm in storefrontMods)
             {
                 if(_cataloguedMods.ContainsKey(sm.Key))
-                    NoonUtility.Log($"Duplicate mod id {sm.Key} - not cataloguing duplicate instance of mod");
+                    NoonUtility.Log($"Duplicate mod id {sm.Key} - not cataloguing duplicate instance of mod",1,VerbosityLevel.Significants);
                 else
                     _cataloguedMods.Add(sm.Key,sm.Value);
             }
@@ -90,7 +90,7 @@ namespace SecretHistories.Constants.Modding
                     {
                         NoonUtility.Log(
                             "Dependency '" + dependency.ModId + "' for '" + mod.Key + "' not found ", 
-                            messageLevel: 1);
+                            messageLevel: 1, VerbosityLevel.Significants);
                     }
                     else
                     {
@@ -122,7 +122,7 @@ namespace SecretHistories.Constants.Modding
                         {
                             NoonUtility.Log(
                                 "Dependency '" + dependency.ModId + "' for '" + mod.Key + "' has incompatible version",
-                                messageLevel: 1);
+                                messageLevel: 2,VerbosityLevel.Significants);
                         }
                     }
                 }
@@ -147,10 +147,10 @@ namespace SecretHistories.Constants.Modding
             if(cataloguedMod.IsValid)
             {
                 theseMods.Add(cataloguedMod.Id, cataloguedMod);
-                NoonUtility.Log(cataloguedMod.CataloguingLog,0,VerbosityLevel.Significants);
+                NoonUtility.Log(cataloguedMod.CataloguingLog,0,VerbosityLevel.SystemChatter);
             }
             else
-               NoonUtility.Log(cataloguedMod.CataloguingLog, 2, VerbosityLevel.Significants);
+                NoonUtility.Log(cataloguedMod.CataloguingLog, 2, VerbosityLevel.Significants);
         }
 
             return theseMods;
