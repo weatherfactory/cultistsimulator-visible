@@ -17,10 +17,8 @@ namespace SecretHistories.Entities
         public IEnumerable<Character> GetAllCharacters()
         {
             return new List<Character>(characters);
-
         }
 
-  
         public void AddNewCharacterAsProtag(Character newCharacter)
         {
             characters.Add(newCharacter);
