@@ -191,7 +191,7 @@ namespace SecretHistories.UI {
 
         public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)
         {
-        if(!command.ExecuteOn(this))
+            if(!command.ExecuteOn(this))
                 Payload.ExecuteTokenEffectCommand(command);
         }
 

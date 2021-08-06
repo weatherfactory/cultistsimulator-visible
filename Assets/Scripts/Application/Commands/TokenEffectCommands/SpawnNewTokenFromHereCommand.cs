@@ -34,8 +34,7 @@ namespace SecretHistories.Commands
                     newAnchorLocation = new TokenLocation(Vector3.zero, toSpherePath);
                 else
                     newAnchorLocation = token.Location;
-
-
+                
                 var tokenCreationCommand=new TokenCreationCommand(_payloadCreationCommand, newAnchorLocation);
 
                 tokenCreationCommand.Execute(_context,token.Sphere);

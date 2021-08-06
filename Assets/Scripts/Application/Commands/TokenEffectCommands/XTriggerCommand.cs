@@ -30,7 +30,7 @@ namespace SecretHistories.Commands
 
 
         public bool ExecuteOn(Token token)
-        {
+            {
             return false;
         }
 
