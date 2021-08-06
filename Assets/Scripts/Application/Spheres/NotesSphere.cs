@@ -140,8 +140,6 @@ namespace Assets.Scripts.Application.Spheres
         {
             CurrentIndex = args.Index;
             PagedTokens[CurrentIndex].MakeVisible();
-            Debug.Log("Visible token index: " + CurrentIndex);
-
         }
 
 

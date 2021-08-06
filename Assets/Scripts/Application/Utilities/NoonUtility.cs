@@ -63,13 +63,15 @@ using  SecretHistories.Fucine;
 
     public interface ILogSubscriber
     {
+        /// <summary>
+        /// Ignore messages of verbosity>sensitivity
+        /// </summary>
+        VerbosityLevel Sensitivity { get; }
         void AddMessage(ILogMessage message);
     }
 
     public class NoonUtility
     {
-
-        public static int CurrentVerbosity =Convert.ToInt32(VerbosityLevel.SystemChatter);
 
         public static bool AchievementsActive = true;
         public static bool PerpetualEdition = false;
@@ -88,31 +90,15 @@ using  SecretHistories.Fucine;
             if (message == null)
                 message=new NoonLogMessage("Null log message supplied");
 
-            if(message.VerbosityNeeded <= CurrentVerbosity || CurrentVerbosity==0) //very early in the process - like, at content load - this doesn't seem to be set, because something something static classes
-            {
+      
                 foreach(var s in subscribers)
+                {
+                    if((int)message.VerbosityNeeded<=(int)s.Sensitivity)
                         s.AddMessage(message);
+                
 
-            }
-            string formattedMessage =
-                (message.VerbosityNeeded > 0 ? new String('>', message.VerbosityNeeded) + " " : "") + message.Description;
-            switch (message.MessageLevel)
-            {
-                case 0:
-                    Debug.Log(formattedMessage);
-                    break;
-                case 1:
-                    Debug.LogWarning(formattedMessage);
-                    break;
-                case 2:
-                    Debug.LogError(formattedMessage);
-                    break;
-                default:
-                    Debug.LogError(formattedMessage);
-                    break;
+        }
 
-            }
-            
         }
 
 

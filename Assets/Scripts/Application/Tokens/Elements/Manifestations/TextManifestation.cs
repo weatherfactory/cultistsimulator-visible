@@ -54,43 +54,38 @@ namespace SecretHistories.Manifestations
 
         public void OnBeginDragVisuals()
         {
-            NoonUtility.Log("Not implemented for TextManifestation: OnBeginDragVisuals");
         }
 
         public void OnEndDragVisuals()
         {
-            NoonUtility.Log("Not implemented for TextManifestation: OnEndDragVisuals");
         }
 
         public void Highlight(HighlightType highlightType)
         {
-            NoonUtility.Log("Not implemented for TextManifestation: Highlight");
         }
 
         public void Unhighlight(HighlightType highlightType)
         {
-            NoonUtility.Log("Not implemented for TextManifestation: Unhighlight");
         }
 
         public bool NoPush => true;
         public void Unshroud(bool instant)
         {
-            NoonUtility.Log("Not implemented for TextManifestation: Reveal");
+        
         }
 
         public void Shroud(bool instant)
         {
-            NoonUtility.Log("Not implemented for TextManifestation: Shroud");
+            
         }
 
         public void Emphasise()
         {
-            NoonUtility.Log("Not implemented for TextManifestation: Emphasise");
+           
         }
 
         public void Understate()
         {
-            NoonUtility.Log("Not implemented for TextManifestation: Understate");
         }
 
         public bool RequestingNoDrag => false;
@@ -98,23 +93,19 @@ namespace SecretHistories.Manifestations
 
         public void DoMove(RectTransform tokenRectTransform)
         {
-            NoonUtility.Log("Not implemented for TextManifestation: ");
         }
 
         public void SendNotification(INotification notification)
         {
-            NoonUtility.Log("Not implemented for TextManifestation: ");
         }
 
         public bool HandlePointerDown(PointerEventData eventData, Token token)
         {
-            NoonUtility.Log("Not implemented for TextManifestation: HandlePointerDown");
             return false;
         }
 
         public void DisplaySpheres(IEnumerable<Sphere> spheres)
         {
-            NoonUtility.Log("Not implemented for TextManifestation: DisplaySpheres");
         }
 
         public IGhost CreateGhost()

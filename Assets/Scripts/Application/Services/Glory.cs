@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Assets.Scripts.Application.Entities;
 using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Services;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -70,6 +71,8 @@ namespace SecretHistories.Services
             }
 
             NoonUtility.Subscribe(SecretHistory);
+            var logWrapper=new UnityLogWrapper();
+            NoonUtility.Subscribe(logWrapper);
 
             LogSystemSettings();
             //Glory.Initialise needs to be run before anything else... or oyu won't like what happens next.

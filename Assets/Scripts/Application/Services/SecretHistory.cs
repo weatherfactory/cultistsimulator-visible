@@ -33,7 +33,9 @@ namespace SecretHistories.Services
             canvas.SetActive(visible);
         }
 
-        
+
+        public VerbosityLevel Sensitivity => VerbosityLevel.Trivia;
+
         public void AddMessage(ILogMessage message)
         {
             

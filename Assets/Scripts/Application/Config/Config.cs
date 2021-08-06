@@ -90,15 +90,6 @@ public class Config
                 skiplogo = true;
             }
 
-            if (String.IsNullOrEmpty(GetConfigValue("verbosity")))
-            {
-                NoonUtility.CurrentVerbosity = (int) VerbosityLevel.SystemChatter;
-                PersistConfigValue("verbosity",((int)VerbosityLevel.SystemChatter).ToString());
-            }
-            else
-            {
-                int.TryParse(GetConfigValue("verbosity"), out NoonUtility.CurrentVerbosity);
-            }
 
 
             if (String.IsNullOrEmpty(GetConfigValue("knock")))
