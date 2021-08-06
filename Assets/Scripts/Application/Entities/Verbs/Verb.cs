@@ -26,6 +26,12 @@ namespace SecretHistories.Entities
         [FucineValue]
         public string Icon { get; set; }
 
+        /// <summary>
+        /// This doesn't do anything at the moment; but we should support it for teh legacy
+        /// </summary>
+        [FucineValue(DefaultValue = true)]
+        public bool Startable { get; set; }
+
         public bool Spontaneous { get; set; }
 
 #pragma warning disable 67
