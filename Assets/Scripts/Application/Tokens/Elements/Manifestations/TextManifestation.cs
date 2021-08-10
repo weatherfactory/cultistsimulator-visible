@@ -26,7 +26,7 @@ namespace SecretHistories.Manifestations
         [SerializeField] private TMP_Text textComponent;
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
-            NoonUtility.Log("Not implemented for TextManifestation: ");
+            
         }
 
         public bool CanAnimateIcon()
