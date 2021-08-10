@@ -19,38 +19,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
     [IsEncaustableClass(typeof(PopulateDominionCommand))]
     public class ShelfDominion: AbstractDominion
     {
-        private IManifestable _manifestable;
-
-        private HashSet<Sphere>_spheres=new HashSet<Sphere>();
-
-
-        [Encaust]
-        public string Id { get; set; }
-
-
-        [Encaust]
-        public List<Sphere> Spheres =>new List<Sphere>(_spheres);
-
-        private OnSphereAddedEvent _onSphereAdded = new OnSphereAddedEvent();
-        private OnSphereRemovedEvent _onSphereRemoved = new OnSphereRemovedEvent();
-
-        public string Identifier => SituationDominionEnum.Unknown.ToString();
-
-        [DontEncaust]
-        public OnSphereAddedEvent OnSphereAdded
-        {
-            get => _onSphereAdded;
-            set => _onSphereAdded = value;
-        }
-
-        [DontEncaust]
-        public OnSphereRemovedEvent OnSphereRemoved
-        {
-            get => _onSphereRemoved;
-            set => _onSphereRemoved = value;
-        }
-
-
+     
         public override void RegisterFor(IManifestable manifestable)
         {
             _manifestable = manifestable;

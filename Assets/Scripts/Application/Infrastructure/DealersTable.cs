@@ -27,7 +27,7 @@ namespace SecretHistories.Infrastructure
         
         public IHasAspects Container=>FucineRoot.Get(); //in case we ever move it
 
-        public void Awake()
+        public override void Awake()
         {
             Identifier = EditableIdentifier;
             var w=new Watchman();

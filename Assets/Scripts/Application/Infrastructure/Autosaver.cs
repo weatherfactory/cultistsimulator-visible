@@ -91,7 +91,7 @@ namespace SecretHistories.Infrastructure
                   housekeepingTimer = 0f;
                 
                 if(gameGateway!=null)
-                    gameGateway.TryDefaultSave();
+                   gameGateway.TryDefaultSave();
             }
         }
 
