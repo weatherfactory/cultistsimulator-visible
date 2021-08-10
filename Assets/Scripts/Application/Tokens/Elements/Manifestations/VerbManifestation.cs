@@ -376,7 +376,7 @@ namespace SecretHistories.Manifestations
 
         public void ResetIconAnimation()
         {
-            NoonUtility.Log("Verb manifestion ResetIcon(): use it or lose it");
+            artwork.overrideSprite = null;
         }
 
 
