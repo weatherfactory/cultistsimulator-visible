@@ -70,20 +70,20 @@ namespace SecretHistories.Commands
             if(!payloadForToken.IsValid())
                 return NullToken.Create();
 
-            var token = InstantiateTokenInSphere(context, sphere);
+            var newToken = InstantiateTokenInSphere(context, sphere);
 
-            token.SetPayload(payloadForToken);
+            newToken.SetPayload(payloadForToken);
             payloadForToken.FirstHeartbeat();
 
             
             if (_sourceToken != null)
             {
-                SetTokenTravellingFromSpawnPoint(token);
+                SetTokenTravellingFromSourceToken(newToken,_sourceToken);
             }
 
             SoundManager.PlaySfx("SituationTokenCreate");
 
-            return token;
+            return newToken;
         }
 
         private Token InstantiateTokenInSphere(Context context, Sphere sphere)
@@ -98,19 +98,19 @@ namespace SecretHistories.Commands
             return token;
         }
 
-        private void SetTokenTravellingFromSpawnPoint(Token token)
+        private void SetTokenTravellingFromSourceToken(Token newToken,Token fromSourceToken)
         {
             
-            var enrouteSphere = token.Payload.GetEnRouteSphere();
+            var enrouteSphere = newToken.Payload.GetEnRouteSphere();
 
-            var spawnedTravelItinerary = new TokenTravelItinerary(_sourceToken.TokenRectTransform.anchoredPosition3D,
-                    token.Sphere.Choreographer.GetFreeLocalPosition(token,
-                        _sourceToken.ManifestationRectTransform.anchoredPosition))
+            var spawnedTravelItinerary = new TokenTravelItinerary(fromSourceToken.TokenRectTransform.anchoredPosition3D,
+                    newToken.Sphere.Choreographer.GetFreeLocalPosition(newToken,
+                        fromSourceToken.ManifestationRectTransform.anchoredPosition))
                 .WithDuration(1f)
-                .WithDestinationSpherePath(token.Sphere.GetAbsolutePath())
+                .WithDestinationSpherePath(newToken.Sphere.GetAbsolutePath())
                 .WithScaling(0f, 1f);
 
-            token.TravelTo(spawnedTravelItinerary, new Context(Context.ActionSource.SpawningAnchor));
+            newToken.TravelTo(spawnedTravelItinerary, new Context(Context.ActionSource.SpawningAnchor));
         }
     }
 }

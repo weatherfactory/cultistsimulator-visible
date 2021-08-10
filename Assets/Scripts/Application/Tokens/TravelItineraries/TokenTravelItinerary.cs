@@ -69,12 +69,17 @@ namespace SecretHistories.UI
             tokenToSend.Unshroud(true);
             tokenToSend.CurrentState=new TravellingState();
 
+            //create TokenTravelAnimation component
+            //set the Arrival event on TokenTravelAnimation so we know how to deal with it @end
+            //set the destination & scaling
+            //finally, TokenTravelAnimation.Begin starts the journey
+            //from then on, it's in the hands of TokenTravelAnimation.ExecuteHeartbeat
+
+
             var tokenAnimation = tokenToSend.gameObject.AddComponent<TokenTravelAnimation>();
             tokenAnimation.OnTokenArrival += Arrive;
 
 
-            //this will cause hilarity if it's applied to a world sphere rather than a threshold
-            //future AK: you'll need a smart way to apply this differently for non-CS-recipe-slot situations
             var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
             if(destinationSphere.SphereCategory==SphereCategory.Threshold) //hacky. Something more like a 'max tokens #' would make sense.
             {
@@ -89,8 +94,8 @@ namespace SecretHistories.UI
             
             tokenAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
             tokenAnimation.SetScaling(StartScale,EndScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
-                                                               //is it if scaling ends before travel duration?
-//set a default duraation if we don't have a valid one
+             //is it if scaling ends before travel duration?
+            //set a default duration if we don't have a valid one
            if (Duration <= 0)
            {
                float distance = Vector3.Distance(Anchored3DStartPosition, Anchored3DEndPosition);
@@ -123,6 +128,7 @@ namespace SecretHistories.UI
                     destinationSphere.TryAcceptToken(token,context);
                 }
 
+                //THERE MAY BE TROUBLE AHEAD. Do we add/remove blocks for world as well as threshold spheres?
                 destinationSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward,
                     BlockReason.InboundTravellingStack));
             }

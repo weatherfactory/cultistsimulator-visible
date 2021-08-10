@@ -786,7 +786,7 @@ namespace SecretHistories.Entities {
             var situationCreationCommand = new SituationCreationCommand(withRecipe.ActionId).WithRecipeAboutToActivate(withRecipe.Id);
 
             situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
-            var spawnNewTokenCommand = new SpawnNewTokenFromHereCommand(situationCreationCommand,  new Context(Context.ActionSource.SpawningAnchor));
+            var spawnNewTokenCommand = new SpawnNewTokenFromThisOneCommand(situationCreationCommand,  new Context(Context.ActionSource.SpawningAnchor));
 
             spawnNewTokenCommand.ExecuteOn(Token);
             

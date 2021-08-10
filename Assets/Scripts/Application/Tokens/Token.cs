@@ -391,6 +391,13 @@ namespace SecretHistories.UI {
             }
         }
 
+    //also sets scale for Manifestation
+    public void SetScale(Vector3 newScale)
+    {
+        TokenRectTransform.localScale = newScale;
+        _manifestation.RectTransform.localScale = newScale;
+    }
+
 
         public void OnBeginDrag(PointerEventData eventData)
         {

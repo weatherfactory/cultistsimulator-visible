@@ -11,14 +11,14 @@ using UnityEngine;
 
 namespace SecretHistories.Commands
 {
-  public  class SpawnNewTokenFromHereCommand: IAffectsTokenCommand
+  public  class SpawnNewTokenFromThisOneCommand: IAffectsTokenCommand
   {
       private readonly ITokenPayloadCreationCommand _payloadCreationCommand;
       private Context _context;
       private FucinePath toSpherePath;
 
       private bool hasExecuted = false;
-        public SpawnNewTokenFromHereCommand(ITokenPayloadCreationCommand payloadCreationCommand,Context context)
+        public SpawnNewTokenFromThisOneCommand(ITokenPayloadCreationCommand payloadCreationCommand,Context context)
         {
             _payloadCreationCommand = payloadCreationCommand;
             _context = context;
@@ -35,7 +35,7 @@ namespace SecretHistories.Commands
                 else
                     newAnchorLocation = token.Location;
                 
-                var tokenCreationCommand=new TokenCreationCommand(_payloadCreationCommand, newAnchorLocation);
+                var tokenCreationCommand=new TokenCreationCommand(_payloadCreationCommand, newAnchorLocation).WithSourceToken(token);
 
                 tokenCreationCommand.Execute(_context,token.Sphere);
             }
