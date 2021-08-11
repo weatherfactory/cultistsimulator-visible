@@ -192,23 +192,22 @@ namespace SecretHistories.UI {
 
         
        public void SetWindowSize(int slotsCount) {
-            RectTransform rectTrans = transform as RectTransform;
-            bool wide = true;
+           ///CAN I PLS DO THIS WITH A CONTENTSIZEAFITTER?
+            //RectTransform rectTrans = transform as RectTransform;
+            //bool wide = true;
 
-            if (wide)
-                rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 900f);
-            else
-                rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 700f);
+            //int rowWidth = 3;
+            //int numberOfRows = slotsCount / rowWidth;
+            //if (slotsCount % rowWidth > 0)
+            //    numberOfRows++;
 
-            if (wide != windowIsWide) {
-                if (wide)
-                    rectTrans.anchoredPosition = rectTrans.anchoredPosition + new Vector2(100f, 0f);
-                else
-                    rectTrans.anchoredPosition = rectTrans.anchoredPosition - new Vector2(100f, 0f);
-            }
+            //float windowHeight = 420f;
+            //float extraHeightPerRow=
+            //if(numberOfRows>2) //that's our standard window height
+            //    float extr
 
-            windowIsWide = wide;
 
+        //rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 700f);
         }
 
 
