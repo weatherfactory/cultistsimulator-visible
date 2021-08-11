@@ -19,7 +19,8 @@ namespace SecretHistories.Abstract
      
      
         public Sphere GetSphereById(string id);
-        
+        public List<Sphere> GetSpheresByCategory(SphereCategory category);
+
         Type GetManifestationType(SphereCategory sphereCategory);
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValid();

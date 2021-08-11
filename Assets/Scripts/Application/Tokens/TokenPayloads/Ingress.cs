@@ -218,7 +218,13 @@ namespace SecretHistories.Tokens.TokenPayloads
         
         public Sphere GetSphereById(string id)
         {
-            throw new NotImplementedException();
+            return _spheres.SingleOrDefault(s => s.Id == id && !s.Defunct);
+        }
+
+        public List<Sphere> GetSpheresByCategory(SphereCategory category)
+        {
+            return new List<Sphere>(_spheres.Where(c => c.SphereCategory == category && !c.Defunct));
+
         }
 
         public Type GetManifestationType(SphereCategory sphereCategory)

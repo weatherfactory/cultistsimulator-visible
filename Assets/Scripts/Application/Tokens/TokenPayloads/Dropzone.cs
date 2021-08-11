@@ -145,6 +145,11 @@ namespace SecretHistories.Entities.Verbs
             return _spheres.SingleOrDefault(s => s.Id == sphereId && !s.Defunct);
         }
 
+        public List<Sphere> GetSpheresByCategory(SphereCategory category)
+        {
+            return new List<Sphere>(_spheres.Where(c => c.SphereCategory == category && !c.Defunct));
+        }
+
         public Type GetManifestationType(SphereCategory forSphereCategory)
         {
             return typeof(DropzoneManifestation);

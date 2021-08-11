@@ -132,12 +132,12 @@ namespace SecretHistories.UI {
             if (args.ChangeType == PayloadChangeType.Closing && this.IsVisible)
                 PayloadRequestsHide();
 
+            int slotsCount = args.Payload.GetSpheresByCategory(SphereCategory.Threshold).Count;
+            SetWindowSize(slotsCount);
+
         }
 
-        public void TryResizeWindow(int slotsCount)
-        {
-            SetWindowSize(slotsCount > 3);
-        }
+
         public void DisplayIcon(string icon)
         {
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(icon);
@@ -191,8 +191,9 @@ namespace SecretHistories.UI {
         }
 
         
-       public void SetWindowSize(bool wide) {
+       public void SetWindowSize(int slotsCount) {
             RectTransform rectTrans = transform as RectTransform;
+            bool wide = true;
 
             if (wide)
                 rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 900f);

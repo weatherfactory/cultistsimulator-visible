@@ -1,4 +1,5 @@
 ﻿#pragma warning disable 0649
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SecretHistories.Core;
@@ -11,18 +12,22 @@ using UnityEngine.UI;
 
 namespace SecretHistories.UI.Scripts
 {
+
+	//I've removed this component from the aspects display. I can't tell if it's necessary,
+	//and it certainly interferes with the Unity layout.
     /// <summary>
     /// displays a summary of aspects; used for the workspace display, and in the recipe book
 	/// </summary>
+	[Obsolete]
 	[ExecuteInEditMode]
 	[RequireComponent(typeof(RectTransform))]
 	public class RectTransformSizeDriver : UIBehaviour {
 
         // This is pushed to the Aspect Frame 
         // There it is used in the click>Notifier call to tell the notifier where to place the details window
-		[SerializeField] RectTransform.Axis m_axis;
-		[SerializeField] RectTransform m_sizeTarget;
-		[SerializeField] float m_sizeBase = 370f;
+		[SerializeField] RectTransform.Axis m_axis; //in SituationWindow, when in use, this was 'vertical'
+		[SerializeField] RectTransform m_sizeTarget; //in SituationWindow, when in use, this was the situationwindow rectransform
+		[SerializeField] float m_sizeBase = 370f; //in SituationWindow, when in use, this was 'vertical'
 
 		public RectTransform.Axis axis { 
 			get { return m_axis; } 
