@@ -325,7 +325,7 @@ namespace SecretHistories.Tokens.TokenPayloads
                 return;
             //note: we don't actually use the passed location. We always assume, inside the window, that we just centre on the portal.
             this.IsOpen = true;
-            Watchman.Get<Numa>().Open(this.GetRectTransform(),this);
+            Watchman.Get<Numa>().OpenIngress(this.GetRectTransform(),this);
      
             
         

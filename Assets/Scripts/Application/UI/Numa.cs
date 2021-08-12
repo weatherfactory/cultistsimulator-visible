@@ -48,7 +48,7 @@ namespace SecretHistories.UI
         }
 
 
-        public void Open(RectTransform atRectTransform, Ingress ingress)
+        public void OpenIngress(RectTransform atRectTransform, Ingress ingress)
         {
 
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
