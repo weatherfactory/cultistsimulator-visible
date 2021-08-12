@@ -412,6 +412,8 @@ GameObject:
   - component: {fileID: 114651031545853594}
   - component: {fileID: 114000011356646590}
   - component: {fileID: 225000011348779986}
+  - component: {fileID: 8308132016232569959}
+  - component: {fileID: 7815957290418404374}
   m_Layer: 5
   m_Name: SituationWindow
   m_TagString: Untagged
@@ -449,7 +451,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 200}
-  m_SizeDelta: {x: 700, y: 420}
+  m_SizeDelta: {x: 700, y: 0}
   m_Pivot: {x: 0.5, y: 0.7}
 --- !u!114 &114020662237663214
 MonoBehaviour:
@@ -535,6 +537,40 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 1
+--- !u!114 &8308132016232569959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013105576594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 1
+--- !u!114 &7815957290418404374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013105576594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: 420
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1000013346015528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1606,7 @@ GameObject:
   - component: {fileID: 222278930201792232}
   - component: {fileID: 8157357256015802240}
   - component: {fileID: 114762676544654032}
+  - component: {fileID: 2926373607018041545}
   m_Layer: 5
   m_Name: ThresholdsGrid
   m_TagString: Untagged
@@ -1617,6 +1654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 224707539595644502}
+  layoutElement: {fileID: 2926373607018041545}
   clickCatcher: {fileID: 114762676544654032}
   expectedThresholdSize: {x: 80, y: 120}
   spacing: {x: 20, y: 50}
@@ -1657,6 +1695,26 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &2926373607018041545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487670980817628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: 270
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1491330763645038
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,7 +3422,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224394800307692888}
   - component: {fileID: 4470030975996782642}
-  - component: {fileID: 114844407673096716}
   - component: {fileID: 225437182253246534}
   - component: {fileID: 114412774732763762}
   m_Layer: 5
@@ -3413,26 +3470,6 @@ MonoBehaviour:
   EditableIdentifier: VerbThresholds
   VisibleForStates: 0000000001000000
   MaxSpheresAllowed: 0
---- !u!114 &114844407673096716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930796193437156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: 200
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
 --- !u!225 &225437182253246534
 CanvasGroup:
   m_ObjectHideFlags: 0

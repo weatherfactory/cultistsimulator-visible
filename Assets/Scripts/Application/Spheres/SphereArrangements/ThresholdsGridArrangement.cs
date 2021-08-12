@@ -13,6 +13,7 @@ namespace SecretHistories.UI
     public class ThresholdsGridArrangement: AbstractSphereArrangement
     {
         [SerializeField] RectTransform rect;
+        [SerializeField] private LayoutElement layoutElement;
         [SerializeField] Text clickCatcher;
         [SerializeField] private Vector2 expectedThresholdSize;
         [SerializeField] private Vector2 spacing;
@@ -22,46 +23,49 @@ namespace SecretHistories.UI
         [SerializeField] private float slotMoveTransitionDuration;
         int numPerRow = 1;
         int numRows = 1;
+        
         float slotSpacing;
         void OnEnable()
         {
             SetNumPerRow();
-            float height = GetHeightForSlotCount();
+            float height = GetHeightForRowCount(numRows);
             SetHeight(height, true);
         }
 
-        //This is currently not in use, but I'm not sure if it might need to be used for reference again
+        //I very much do need this. Whoops. The larger context wasn't responding to rows at all.
 
-        //public void ReorderThresholds()
-        //{
+        public void ReorderThresholds(int newThresholdIndex)
+        {
 
-        //    int oldRowCount = numRows;
+            int oldRowCount = numRows;
 
-        //    // Set dimension values
-        //    SetNumPerRow();
-
-        //    // Set height if our row count has changed
-        //    if (numRows != oldRowCount)
-        //    {
-        //        float targetHeight = GetHeightForSlotCount();
-
-        //        if (gameObject.activeInHierarchy)
-        //        {
-        //            StartCoroutine(AdjustHeight(targetHeight, sizeTransitionDuration));
-        //        }
-        //        else
-        //        {
-        //            SetHeight(targetHeight, true);
-        //        }
-        //    }
-
-        //    int thresholdIndex = 0;
-
-        //    foreach (var t in _thresholds.Keys)
-        //        t.viz.MoveToPosition(GetPositionForIndex(thresholdIndex), slotMoveTransitionDuration);
+            numRows = newThresholdIndex / numPerRow;
+            if (newThresholdIndex % numPerRow > 0)
+                numRows++;
 
 
-        //}
+            // Set height if our row count has changed
+            if (numRows != oldRowCount)
+            {
+                float targetHeight = GetHeightForRowCount(numRows);
+
+                if (false && gameObject.activeInHierarchy)
+                {
+                    StartCoroutine(AdjustHeight(targetHeight, sizeTransitionDuration));
+                }
+                else
+                {
+                    SetHeight(targetHeight, true);
+                }
+            }
+
+         //   int thresholdIndex = 0;
+
+                //     foreach (var t in _thresholds.Keys)
+                //t.viz.MoveToPosition(GetPositionForIndex(thresholdIndex), slotMoveTransitionDuration);
+
+
+        }
 
         public override void AddNewSphereToArrangement(Sphere newSphere, int index)
         {
@@ -78,6 +82,8 @@ namespace SecretHistories.UI
             // do not animate if we're not visible - usually only for first slot being created in Initialise
             if (gameObject.activeInHierarchy)
                 threshold.viz.TriggerShowAnim();
+
+            ReorderThresholds(index);
         }
 
         public override void SphereRemoved(Sphere sphere)
@@ -93,10 +99,10 @@ namespace SecretHistories.UI
             slotSpacing = (rect.rect.width - margin.x - margin.x) / numPerRow;
         }
 
-        float GetHeightForSlotCount()
+        float GetHeightForRowCount(int rowCount)
         {
             // remove extra spacing because we add a spacing with each row and only need n-1 spaces
-            return margin.y + margin.y + numRows * (expectedThresholdSize.y + spacing.y) - spacing.y;
+            return margin.y + margin.y + rowCount * (expectedThresholdSize.y + spacing.y) - spacing.y;
         }
 
         Vector2 GetPositionForIndex(int i)
@@ -104,7 +110,6 @@ namespace SecretHistories.UI
             // ReSharper disable once PossibleLossOfFraction
             int rowNumberForThisThreshold = Mathf.FloorToInt(i / numPerRow);
             int overflowXModuloBasedOnIndexAndNumPerRow = i % numPerRow;
-
 
             float xPos = overflowXModuloBasedOnIndexAndNumPerRow * slotSpacing + expectedThresholdSize.x * 0.5f;
 
@@ -126,7 +131,8 @@ namespace SecretHistories.UI
             float time = 0f;
             float current = rect.rect.height;
 
-
+            LayoutElement l;
+       
             while (time < duration)
             {
                 SetHeight(Mathf.Lerp(current, target, time / duration)); // TODO: Add some nice easing?
@@ -140,6 +146,7 @@ namespace SecretHistories.UI
         void SetHeight(float height, bool resetPos = false)
         {
             rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+            layoutElement.minHeight = height;
 
             // we also want to reset the start pos
             if (resetPos)

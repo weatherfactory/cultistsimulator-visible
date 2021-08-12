@@ -192,7 +192,8 @@ namespace SecretHistories.UI {
 
         
        public void SetWindowSize(int slotsCount) {
-           ///CAN I PLS DO THIS WITH A CONTENTSIZEAFITTER?
+            ///CAN I PLS DO THIS WITH A CONTENTSIZEAFITTER?
+            /// For example, when the pivot is in the center, the Content Size Fitter will expand the Rect Transform out equally in all directions. And when the pivot is in the upper left corner, the Content Size Fitter will expand the Rect Transform down and to the right. -- so I probably need to move it if I don't wnat to expand all ways
             //RectTransform rectTrans = transform as RectTransform;
             //bool wide = true;
 
@@ -207,7 +208,7 @@ namespace SecretHistories.UI {
             //    float extr
 
 
-        //rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 700f);
+            //rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 700f);
         }
 
 
