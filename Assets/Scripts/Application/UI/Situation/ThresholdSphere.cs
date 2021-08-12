@@ -127,6 +127,7 @@ namespace SecretHistories.UI
         private void HideHoverGlow()
         {
             SetGlowColor(UIStyle.GlowPurpose.Default);
+            slotGlow.Hide();
         }
 
 
