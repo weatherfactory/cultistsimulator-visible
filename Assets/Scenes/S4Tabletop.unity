@@ -11486,9 +11486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7436e8964394ea40887b4ec7291528b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dominions:
-  - {fileID: 0}
-  EntryAnimation: {fileID: 872153027}
+  _dominions: []
+  _transitionFx: {fileID: 0}
   otherworldSpecificEnRouteSphere: {fileID: 1470560994}
   EntrySfxName: 
   ExitSfxName: 
@@ -18951,7 +18950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dominions:
   - {fileID: 729575454}
-  EntryAnimation: {fileID: 1553501482}
+  _transitionFx: {fileID: 0}
   otherworldSpecificEnRouteSphere: {fileID: 1308481383}
   EntrySfxName: 
   ExitSfxName: 
@@ -25828,7 +25827,7 @@ MonoBehaviour:
   - {fileID: 627808687}
   - {fileID: 388977809}
   - {fileID: 2051024985}
-  EntryAnimation: {fileID: 5835571674112409605}
+  _transitionFx: {fileID: 5835571674112409605}
   otherworldSpecificEnRouteSphere: {fileID: 21383323}
   EntrySfxName: MansusEntry
   ExitSfxName: MansusExit

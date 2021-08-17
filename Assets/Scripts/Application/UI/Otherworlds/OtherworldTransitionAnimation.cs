@@ -1,18 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using SecretHistories.Assets.Scripts.Application.UI.Otherworlds;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace SecretHistories.UI {
-    public class OtherworldAnimation : MonoBehaviour {
+    public class OtherworldTransitionAnimation : OtherworldTransitionFX {
 
-        public event System.Action onAnimationComplete;
+
 
         public Color colorBeforeShow = new Color(0f, 1f, 0f, 1f);
         public float durationShow = 2f;
         public Color colorVisible = new Color(1f, 1f, 1f, 1f);
         public float durationHide = 1f;
         public Color colorAfterHidden = new Color(1f, 1f, 1f, 0f);
+        private event System.Action onAnimationComplete;
 
         bool isAnimating;
         const string uvTexName = "_FadeTex";
@@ -24,13 +27,13 @@ namespace SecretHistories.UI {
 
  
 
-        public bool CanShow() {
+        public override bool CanShow() {
 
             
             return !isAnimating && gameObject.activeSelf != true;
         }
 
-        public bool CanHide()
+        public override bool CanHide()
         {
 
             return !isAnimating && gameObject.activeSelf != false;
@@ -65,15 +68,19 @@ namespace SecretHistories.UI {
             background.material.SetTextureScale(uvTexName, uvScale);
         }
 
-        public void Show() {
+        public override void Show(Action onShowComplete)
+        {
+            
             gameObject.SetActive(true);
+            onAnimationComplete = onShowComplete;
             StartCoroutine(DoAnimation(durationShow, colorBeforeShow, colorVisible, true));
 
-        }//dreamenterwood
+        }
 
 
-        public void Hide()
+        public override void Hide(Action onHideComplete)
         {
+            onAnimationComplete += onHideComplete;
             StartCoroutine(DoAnimation(durationHide, colorVisible, colorAfterHidden, false));
         }
 
@@ -99,6 +106,8 @@ namespace SecretHistories.UI {
 
             if (onAnimationComplete != null)
                 onAnimationComplete();
+
+            onAnimationComplete = null;
         }
 
     }

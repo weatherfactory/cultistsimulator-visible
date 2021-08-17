@@ -140,7 +140,7 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         public AspectsDictionary GetAspects(bool includeSelf)
         {
-            throw new NotImplementedException();
+            return new AspectsDictionary();
         }
 
         

@@ -27,7 +27,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
        public bool Metafictional => false;
 
         [SerializeField] private List<OtherworldDominion> _dominions;
-        [SerializeField] private OtherworldAnimation EntryAnimation;
+        [SerializeField] private OtherworldTransitionFX _transitionFx;
         [SerializeField] private EnRouteSphere otherworldSpecificEnRouteSphere;
         [SerializeField] private string EntrySfxName;
         [SerializeField] private string ExitSfxName;
@@ -192,16 +192,14 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             
             _activeIngress = ingress;
             
-            if (!EntryAnimation.CanShow())
+            if (!_transitionFx.CanShow())
                 return;
 
             SoundManager.PlaySfx(EntrySfxName);
 
             RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
 
-            EntryAnimation.onAnimationComplete += OnShowComplete;
-            EntryAnimation.SetCenterForEffect(effectCenter);
-            EntryAnimation.Show(); // starts coroutine that calls OnShowComplete when done
+            _transitionFx.Show(OnShowComplete); // starts coroutine that calls OnShowComplete when done
 
 
             ActivateEgress();
@@ -210,7 +208,6 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         void OnShowComplete()
         {
-            EntryAnimation.onAnimationComplete -= OnShowComplete;
             OnArrival();
         }
 
@@ -219,7 +216,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         /// </summary>
         public void Hide()
         {
-            if (!EntryAnimation.CanHide())
+            if (!_transitionFx.CanHide())
                 return;
 
             UnregisterAllAttendants();
@@ -236,15 +233,13 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
             SoundManager.PlaySfx(ExitSfxName);
 
-            EntryAnimation.onAnimationComplete += OnHideComplete;
             StartCoroutine(Watchman.Get<CameraZoom>().LookAtDontInterrupt(_activeIngress.GetRectTransform().position, 0.5f));
-            EntryAnimation.Hide();
+            _transitionFx.Hide(OnHideComplete);
         }
 
 
         void OnHideComplete()
         {
-            EntryAnimation.onAnimationComplete -= OnShowComplete;
             OnLeave();
         }
 
