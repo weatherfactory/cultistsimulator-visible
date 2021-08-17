@@ -318,6 +318,7 @@ namespace SecretHistories.Services
 
         public void ChronicleOtherworldEntry(string portalEffect)
         {
+
             var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
 
             if(portalEffect.ToLower()==PortalEffect.Wood.ToString().ToLower())

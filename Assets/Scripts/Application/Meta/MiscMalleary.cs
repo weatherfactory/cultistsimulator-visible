@@ -119,20 +119,23 @@ namespace Assets.Scripts.Application.Meta
 
         public void EndGame(string endingId)
         {
+            Ending ending;
             var compendium = Watchman.Get<Compendium>();
-
-            var ending = compendium.GetEntityById<Ending>(endingId);
-            if (ending == null)
+            if (string.IsNullOrEmpty(endingId))
                 ending = compendium.GetEntitiesAsList<Ending>().First();
+            else
+                ending = compendium.GetEntityById<Ending>(endingId);
 
-            var endingPortal = Portal.CreateEndingPortal(ending,"anotherdescent");
 
-            
+            //get a plausible token
 
-            var endingIngressCreationCommand=new IngressCreationCommand(endingPortal);
-           var tokenCreationCommand = new TokenCreationCommand(endingIngressCreationCommand,TokenLocation.Default(FucinePath.Root()));
-           var ingressToken=tokenCreationCommand.Execute(Context.Unknown(), Watchman.Get<HornedAxe>().GetDefaultSphere());
-           ingressToken.Payload.OpenAt(ingressToken.Location);
+            var focalToken=Watchman.Get<HornedAxe>().GetDefaultSphere().GetTokensWhere(t => !t.Defunct).FirstOrDefault();
+            if(focalToken==null)
+                NoonUtility.LogWarning("Can't find any tokens in the default sphere to focus game ending on.");
+            else
+                Watchman.Get<GameGateway>().EndGame(ending,focalToken);
+
+
 
         }
 

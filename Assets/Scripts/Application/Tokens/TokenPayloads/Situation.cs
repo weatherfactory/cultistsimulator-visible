@@ -747,7 +747,7 @@ namespace SecretHistories.Entities {
             {
                 var ending = Watchman.Get<Compendium>().GetEntityById<Ending>(primaryRecipeCompletionEffectCommand.Recipe.Ending);
 
-                Watchman.Get<GameGateway>().EndGame(ending, _token.TokenRectTransform);
+                Watchman.Get<GameGateway>().EndGame(ending, _token);
                 return;
             }
 

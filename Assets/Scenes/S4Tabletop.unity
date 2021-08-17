@@ -11382,10 +11382,10 @@ GameObject:
   - component: {fileID: 872153023}
   - component: {fileID: 872153031}
   - component: {fileID: 872153030}
-  - component: {fileID: 872153027}
   - component: {fileID: 872153026}
   - component: {fileID: 872153025}
   - component: {fileID: 872153024}
+  - component: {fileID: 872153027}
   m_Layer: 5
   m_Name: AnotherDescent
   m_TagString: Untagged
@@ -11464,16 +11464,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 872153022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c567876dc2286b0478227275e0595a44, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d9f2b5cc23d4b4469dee0c016c6b1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorBeforeShow: {r: 0, g: 1, b: 0, a: 1}
-  durationShow: 2
-  colorVisible: {r: 0.503, g: 1, b: 1, a: 1}
-  durationHide: 0.5
-  colorAfterHidden: {r: 1, g: 0, b: 0.5019608, a: 0.716}
-  background: {fileID: 1073147807}
-  particles: {fileID: 3017572218212224635}
+  EntrySfxName: 
+  ExitSfxName: 
+  Music: 
 --- !u!114 &872153030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11487,11 +11483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dominions: []
-  _transitionFx: {fileID: 0}
+  _transitionFx: {fileID: 872153027}
   otherworldSpecificEnRouteSphere: {fileID: 1470560994}
-  EntrySfxName: 
-  ExitSfxName: 
-  Music: 
   editableId: anotherdescent
 --- !u!222 &872153031
 CanvasRenderer:
@@ -18884,6 +18877,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c567876dc2286b0478227275e0595a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntrySfxName: 
+  ExitSfxName: 
+  Music: 
   colorBeforeShow: {r: 0, g: 1, b: 0, a: 1}
   durationShow: 2
   colorVisible: {r: 0.503, g: 1, b: 1, a: 1}
@@ -18952,9 +18948,6 @@ MonoBehaviour:
   - {fileID: 729575454}
   _transitionFx: {fileID: 0}
   otherworldSpecificEnRouteSphere: {fileID: 1308481383}
-  EntrySfxName: 
-  ExitSfxName: 
-  Music: 
   editableId: mysteries
 --- !u!222 &1553501486
 CanvasRenderer:
@@ -25829,9 +25822,6 @@ MonoBehaviour:
   - {fileID: 2051024985}
   _transitionFx: {fileID: 5835571674112409605}
   otherworldSpecificEnRouteSphere: {fileID: 21383323}
-  EntrySfxName: MansusEntry
-  ExitSfxName: MansusExit
-  Music: 0szymanowski-nocturne
   editableId: mansus
 --- !u!198 &3017572218212224635
 ParticleSystem:
@@ -33418,6 +33408,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c567876dc2286b0478227275e0595a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntrySfxName: MansusEntry
+  ExitSfxName: MansusExit
+  Music: 0szymanowski-nocturne
   colorBeforeShow: {r: 0, g: 1, b: 0, a: 1}
   durationShow: 2
   colorVisible: {r: 0.503, g: 1, b: 1, a: 1}

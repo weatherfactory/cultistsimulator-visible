@@ -29,9 +29,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         [SerializeField] private List<OtherworldDominion> _dominions;
         [SerializeField] private OtherworldTransitionFX _transitionFx;
         [SerializeField] private EnRouteSphere otherworldSpecificEnRouteSphere;
-        [SerializeField] private string EntrySfxName;
-        [SerializeField] private string ExitSfxName;
-        [SerializeField] private string Music;
+
 
 
         private readonly HashSet<Sphere> _spheres=new HashSet<Sphere>();
@@ -195,11 +193,10 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             if (!_transitionFx.CanShow())
                 return;
 
-            SoundManager.PlaySfx(EntrySfxName);
 
             RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
 
-            _transitionFx.Show(OnShowComplete); // starts coroutine that calls OnShowComplete when done
+            _transitionFx.Show(_activeIngress, OnShowComplete); // starts coroutine that calls OnShowComplete when done
 
 
             ActivateEgress();
@@ -231,7 +228,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
                 d.Dismiss();
             }
 
-            SoundManager.PlaySfx(ExitSfxName);
+
 
             StartCoroutine(Watchman.Get<CameraZoom>().LookAtDontInterrupt(_activeIngress.GetRectTransform().position, 0.5f));
             _transitionFx.Hide(OnHideComplete);
@@ -268,7 +265,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             }
 
             EnactConsequences();
-            Watchman.Get<BackgroundMusic>().PlayOtherworldClip(Music);
+
         }
 
         private void ActivateEgress()

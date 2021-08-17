@@ -124,7 +124,7 @@ namespace SecretHistories.Constants
         }
 
 
-        public void EndGame(Ending ending, RectTransform focusOnRectTransform)
+        public void EndGame(Ending ending, Token focusOnToken)
         {
 
             var chronicler = Watchman.Get<Chronicler>();
@@ -133,7 +133,12 @@ namespace SecretHistories.Constants
             var characterCreationCommand=CharacterCreationCommand.Reincarnate(Watchman.Get<Stable>().Protag().InProgressHistoryRecords, NullLegacy.Create(), ending);
             characterCreationCommand.Execute(Watchman.Get<Stable>());
 
-            _endGameAnimController.TriggerEnd(focusOnRectTransform, ending);
+            var endingPortal = Portal.CreateEndingPortal(ending, "anotherdescent");
+
+            var endingIngressCreationCommand = new IngressCreationCommand(endingPortal);
+            var tokenCreationCommand = new TokenCreationCommand(endingIngressCreationCommand, focusOnToken.Location);
+            var ingressToken = tokenCreationCommand.Execute(Context.Unknown(), focusOnToken.Sphere);
+            ingressToken.Payload.OpenAt(ingressToken.Location);
         }
 
 

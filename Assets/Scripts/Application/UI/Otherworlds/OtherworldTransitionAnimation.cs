@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using SecretHistories.Assets.Scripts.Application.UI.Otherworlds;
+using SecretHistories.Tokens.TokenPayloads;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace SecretHistories.UI {
     public class OtherworldTransitionAnimation : OtherworldTransitionFX {
-
-
 
         public Color colorBeforeShow = new Color(0f, 1f, 0f, 1f);
         public float durationShow = 2f;
@@ -68,12 +65,14 @@ namespace SecretHistories.UI {
             background.material.SetTextureScale(uvTexName, uvScale);
         }
 
-        public override void Show(Action onShowComplete)
+        public override void Show(Ingress activeIngress, Action onShowComplete)
         {
             
             gameObject.SetActive(true);
             onAnimationComplete = onShowComplete;
             StartCoroutine(DoAnimation(durationShow, colorBeforeShow, colorVisible, true));
+            SoundManager.PlaySfx(EntrySfxName);
+            Watchman.Get<BackgroundMusic>().PlayOtherworldClip(Music);
 
         }
 
@@ -82,6 +81,7 @@ namespace SecretHistories.UI {
         {
             onAnimationComplete += onHideComplete;
             StartCoroutine(DoAnimation(durationHide, colorVisible, colorAfterHidden, false));
+            SoundManager.PlaySfx(ExitSfxName);
         }
 
         IEnumerator DoAnimation(float duration, Color colorA, Color colorB, bool shownAtEnd) {
@@ -104,10 +104,13 @@ namespace SecretHistories.UI {
             gameObject.SetActive(shownAtEnd);
             isAnimating = false;
 
+            
+
             if (onAnimationComplete != null)
                 onAnimationComplete();
 
             onAnimationComplete = null;
+            
         }
 
     }
