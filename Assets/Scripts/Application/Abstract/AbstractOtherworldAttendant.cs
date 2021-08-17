@@ -19,7 +19,13 @@ namespace SecretHistories.Abstract
             _otherworld = otherworld;
         }
 
-        public void OnSphereChanged(SphereChangedArgs args)
+        public virtual void OnOtherworldEntryComplete()
+        { }
+
+        public virtual void OnOtherworldExitComplete()
+        { }
+
+        public virtual void OnSphereChanged(SphereChangedArgs args)
         {
             //
         }

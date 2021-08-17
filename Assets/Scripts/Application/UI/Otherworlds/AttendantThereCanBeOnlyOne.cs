@@ -20,6 +20,12 @@ namespace SecretHistories.Otherworlds
         {
         }
 
+        public override void OnOtherworldEntryComplete()
+        { }
+
+        public override void OnOtherworldExitComplete()
+        { }
+
         public override void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             if (args.Context.actionSource == Context.ActionSource.Unshroud)

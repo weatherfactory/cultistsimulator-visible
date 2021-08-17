@@ -17,6 +17,12 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Otherworlds
     {
         private Sphere _respondToThisSphere;
 
+        public override void OnOtherworldEntryComplete()
+        { }
+
+        public override void OnOtherworldExitComplete()
+        { }
+
         public AttendantCloseOnChoice(Otherworld otherworld,Sphere sphere) : base(otherworld)
         {
             _respondToThisSphere = sphere;
