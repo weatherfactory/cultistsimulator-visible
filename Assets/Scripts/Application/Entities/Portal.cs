@@ -62,7 +62,7 @@ namespace SecretHistories.Entities
 
         public static Portal CreateEndingPortal(Ending ending,string endingOtherworldId)
         {
-            var endingPortal = new Portal(ending.Id) {OtherworldId = endingOtherworldId,Icon=ending.Image};
+            var endingPortal = new Portal(ending.Id) {OtherworldId = endingOtherworldId,Icon=ending.Image,Consequences = new List<LinkedRecipeDetails>()};
             return endingPortal;
         }
     }

@@ -27,5 +27,11 @@ namespace SecretHistories.UI
                  fader.Show();
         }
 
+        public void FadeIn(float duration)
+        {
+            fader.durationTurnOn = duration;
+            fader.Hide();
+        }
+
     }
 }

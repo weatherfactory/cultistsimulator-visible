@@ -254,7 +254,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         public void OnArrival()
         {
-            StartCoroutine(Watchman.Get<CameraZoom>().LookAtDontInterrupt(_activeEgress.transform.position, 0.5f));
+            if(_activeEgress!=null) //end games, for example, have no egress in the usual sense
+                StartCoroutine(Watchman.Get<CameraZoom>().LookAtDontInterrupt(_activeEgress.transform.position, 0.5f));
 
             foreach (var d in _dominions)
             {
