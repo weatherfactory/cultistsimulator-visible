@@ -146,9 +146,12 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         /// </summary>
         public void Prepare()
         {
-            foreach (var d in Dominions)
-                d.RegisterFor(this);
             
+                foreach (var d in Dominions)
+                    if(d!=null)
+                        d.RegisterFor(this);
+            
+
             //I really might need to rethink this approach
             var permanentSphereSpec = otherworldSpecificEnRouteSphere.GetComponent<PermanentSphereSpec>();
             permanentSphereSpec.ApplySpecToSphere(otherworldSpecificEnRouteSphere);
