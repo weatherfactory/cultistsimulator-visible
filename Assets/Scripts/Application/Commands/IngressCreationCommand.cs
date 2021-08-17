@@ -16,8 +16,7 @@ namespace SecretHistories.Commands
     public class IngressCreationCommand: ITokenPayloadCreationCommand, IEncaustment
     {
         public string EntityId { get; set; }
-        private readonly string _otherworldId;
-
+        
         public string Id { get; set; }
         public string Label { get; set; }
         public string Description { get; set; }
@@ -32,10 +31,9 @@ namespace SecretHistories.Commands
 
         }
 
-        public IngressCreationCommand(string entityId,string otherworldId): this()
+        public IngressCreationCommand(string entityId): this()
         {
             EntityId = entityId;
-            _otherworldId = otherworldId;
             Dominions = new List<PopulateDominionCommand>();
         }
 

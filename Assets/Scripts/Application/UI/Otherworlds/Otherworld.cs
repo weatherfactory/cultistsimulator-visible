@@ -239,7 +239,6 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         }
 
 
-
         void OnHideComplete()
         {
             EntryAnimation.onAnimationComplete -= OnShowComplete;

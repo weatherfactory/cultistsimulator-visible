@@ -127,7 +127,7 @@ public class CreationCommandsSmokeTests
     [Test]
     public void CreatePortalToken()
     {
-        var portalCreationCommand=new IngressCreationCommand("wood","mansus");
+        var portalCreationCommand=new IngressCreationCommand("wood");
         var portalLocation= new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere());
         var portalTokenCreationCommand = new TokenCreationCommand(portalCreationCommand, portalLocation);
            var portalToken=portalTokenCreationCommand.Execute(new Context(Context.ActionSource.Debug), Watchman.Get<HornedAxe>().GetDefaultSphere());

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Commands;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Modding;
 using SecretHistories.Entities;
@@ -116,7 +117,6 @@ namespace Assets.Scripts.Application.Meta
 
 
 
-        // to allow access from HotkeyWatcher
         public void EndGame(string endingId)
         {
             var compendium = Watchman.Get<Compendium>();
@@ -125,11 +125,8 @@ namespace Assets.Scripts.Application.Meta
             if (ending == null)
                 ending = compendium.GetEntitiesAsList<Ending>().First();
 
+       //     var portalCreationCommand = new IngressCreationCommand(Recipe.PortalEffect.ToString(), );
 
-            // Get us a random situation that killed us!
-            var situationControllers = Watchman.Get<HornedAxe>().GetRegisteredSituations();
-
-            throw new NotImplementedException();
         }
 
         public void LoadGame()
