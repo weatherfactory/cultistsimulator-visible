@@ -89,7 +89,11 @@ public class OtherworldTransitionEndingFade: OtherworldTransitionFX
 
         public override void Show(Ingress activeIngress, Action onShowComplete)
         {
-
+            var compendium = Watchman.Get<Compendium>();
+            var ending=compendium.GetEntityById<Ending>(activeIngress.EntityId);
+            RectTransform focusOnTransform = activeIngress.Token.TokenRectTransform;
+            gameObject.SetActive(true);
+            StartCoroutine(DoFade(focusOnTransform,ending));
         }
 
         public override void Hide(Action onHideComplete)
@@ -97,7 +101,7 @@ public class OtherworldTransitionEndingFade: OtherworldTransitionFX
             //
         }
 
-        IEnumerator DoEndGameAnim(RectTransform focusOnTransform, Ending ending)
+        IEnumerator DoFade(RectTransform focusOnTransform, Ending ending)
         {
             const float zoomDuration = 5f;
             const float fadeDuration = 2f;
