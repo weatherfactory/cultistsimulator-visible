@@ -131,7 +131,8 @@ namespace Assets.Scripts.Application.Meta
 
             var endingIngressCreationCommand=new IngressCreationCommand(endingPortal);
            var tokenCreationCommand = new TokenCreationCommand(endingIngressCreationCommand,TokenLocation.Default(FucinePath.Root()));
-           tokenCreationCommand.Execute(Context.Unknown(), Watchman.Get<HornedAxe>().GetDefaultSphere());
+           var ingressToken=tokenCreationCommand.Execute(Context.Unknown(), Watchman.Get<HornedAxe>().GetDefaultSphere());
+           ingressToken.Payload.OpenAt(ingressToken.Location);
 
         }
 
