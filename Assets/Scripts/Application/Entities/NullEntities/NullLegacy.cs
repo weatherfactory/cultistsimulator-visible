@@ -12,7 +12,7 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         private static NullLegacy _instance;
         protected NullLegacy()
         {
-            
+ 
         }
         public override bool IsValid()
         {
@@ -22,6 +22,7 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         {
             if(_instance==null)
                 _instance=new NullLegacy();
+            
 
             return _instance;
         }

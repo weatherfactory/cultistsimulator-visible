@@ -26,6 +26,11 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
 
  
         Legacy activeLegacy = Watchman.Get<Stable>().Protag().ActiveLegacy;
+        if (activeLegacy == null || !activeLegacy.IsValid())
+        {
+            NoonUtility.LogWarning("no active legacy! Status bar can't display elements.");
+            return;
+        }
         List<string> statusBarElementIds = new List<string>(activeLegacy.StatusBarElements);
 
         for (int a = 0; a < MAX_ELEMENTS; a++)
