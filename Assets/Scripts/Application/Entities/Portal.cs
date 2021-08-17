@@ -33,9 +33,14 @@ namespace SecretHistories.Entities
         public List<LinkedRecipeDetails> Consequences { get; set; }
 
 
+
         public Portal()
         {
+        }
 
+        public Portal(string id): base()
+        {
+            _id = id;
         }
 
         public Portal(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
@@ -53,6 +58,12 @@ namespace SecretHistories.Entities
             int identity = FucineRoot.Get().IncrementedIdentity();
             string uniqueId = $"!{Id}_{identity}";
             return uniqueId;
+        }
+
+        public static Portal CreateEndingPortal(Ending ending,string endingOtherworldId)
+        {
+            var endingPortal = new Portal(ending.Id) {OtherworldId = endingOtherworldId,Icon="winter"};
+            return endingPortal;
         }
     }
 }

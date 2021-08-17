@@ -125,7 +125,13 @@ namespace Assets.Scripts.Application.Meta
             if (ending == null)
                 ending = compendium.GetEntitiesAsList<Ending>().First();
 
-       //     var portalCreationCommand = new IngressCreationCommand(Recipe.PortalEffect.ToString(), );
+            var endingPortal = Portal.CreateEndingPortal(ending,"anotherdescent");
+
+            
+
+            var endingIngressCreationCommand=new IngressCreationCommand(endingPortal);
+           var tokenCreationCommand = new TokenCreationCommand(endingIngressCreationCommand,TokenLocation.Default(FucinePath.Root()));
+           tokenCreationCommand.Execute(Context.Unknown(), Watchman.Get<HornedAxe>().GetDefaultSphere());
 
         }
 
