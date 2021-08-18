@@ -44,7 +44,7 @@ public class CameraZoom : MonoBehaviour {
     protected void Start() {
         enabled = true;
         zoomCam = GetComponent<Camera>();
-        SetScale(currentZoom);
+        SetFieldOfView(currentZoom);
     }
 
     public void OnZoomEvent(ZoomLevelEventArgs args)
@@ -69,7 +69,7 @@ public class CameraZoom : MonoBehaviour {
             else
                 currentZoom += (targetZoom - currentZoom) * Time.deltaTime * zoomSpeed;
 
-            SetScale(currentZoom);
+            SetFieldOfView(currentZoom);
         }
     }
 
@@ -84,7 +84,7 @@ public class CameraZoom : MonoBehaviour {
         zoomSpeed = zoomDiff / duration;
     }
 
-    public IEnumerator LookAtDontInterrupt(Vector3 targetPos,float zoomDuration)
+    public IEnumerator FocusOn(Vector3 targetPos,float zoomDuration)
     {
         
         float time = 0f;
@@ -104,7 +104,7 @@ public class CameraZoom : MonoBehaviour {
     // Here we get the currentZoom between 0 (zoomed in) and 1 (zoomed out)
     // We use that to evaluate the curve to get another value between 0 and 1. This distorts the zoom so that zooming out is slower
     // Then we use that value to get a scale factor between our min and max zoomScales and put that in the canvas
-    void SetScale(float zoom) {
+    void SetFieldOfView(float zoom) {
         zoomCam.fieldOfView = Mathf.Lerp(zoomScaleIn, zoomScaleOut, zoomCurve.Evaluate(zoom));
     }
 
