@@ -115,7 +115,13 @@ public class OtherworldTransitionEndingFade: OtherworldTransitionFX
             // (Spawn specific effect based on token, depending on end-game-type)
             InstantiateEffect(ending, focusOnTransform);
 
-            
+
+            //float time = 0f;
+            //Vector2 startPos = tableScroll.content.anchoredPosition;
+            //Vector2 targetPos = -1f * focusOnTransform.anchoredPosition + targetPosOffset;
+            //// ^ WARNING: targetPosOffset fixes the difference between the scrollable and tokenParent rect sizes 
+
+
             // TODO: Put the fade into the while loop so that on aborting the zoom still continues
             Watchman.Get<TabletopFadeOverlay>().FadeToBlack(fadeDuration);
             yield return new WaitForSeconds(fadeDuration);

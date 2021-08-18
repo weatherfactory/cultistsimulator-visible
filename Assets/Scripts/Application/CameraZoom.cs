@@ -47,7 +47,7 @@ public class CameraZoom : MonoBehaviour {
         SetScale(currentZoom);
     }
 
-    public void OnZoomEvent(ZoomEventArgs args)
+    public void OnZoomEvent(ZoomLevelEventArgs args)
     {
        if(args.AbsoluteTargetZoomLevel>0)
            targetZoom = args.AbsoluteTargetZoomLevel;

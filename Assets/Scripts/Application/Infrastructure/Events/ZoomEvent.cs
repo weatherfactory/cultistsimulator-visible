@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace SecretHistories.Constants
 {
-    public class ZoomEventArgs
+    public class ZoomLevelEventArgs
     {
         public static float ZOOM_CLOSE = 0.01f;
         public static float ZOOM_MID = 0.4f;
@@ -17,7 +17,7 @@ namespace SecretHistories.Constants
 
 
     [Serializable]
-    public class ZoomEvent : UnityEvent<ZoomEventArgs>
+    public class ZoomLevelEvent : UnityEvent<ZoomLevelEventArgs>
     {
     }
 

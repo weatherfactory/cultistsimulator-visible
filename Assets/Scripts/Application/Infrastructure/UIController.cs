@@ -62,7 +62,7 @@ namespace SecretHistories.Constants
             else
                 value = 0;
             
-            ZoomEvent.Invoke(new ZoomEventArgs{CurrentZoomInput =value });
+            ZoomLevelEvent.Invoke(new ZoomLevelEventArgs{CurrentZoomInput =value });
         }
 
 
@@ -97,7 +97,7 @@ namespace SecretHistories.Constants
 
         public void Input_Zoom_Scrollwheel(InputAction.CallbackContext context)
         {
-            ZoomEvent.Invoke(new ZoomEventArgs { CurrentZoomInput = context.ReadValue<Single>()});
+            ZoomLevelEvent.Invoke(new ZoomLevelEventArgs { CurrentZoomInput = context.ReadValue<Single>()});
         }
 
         
@@ -106,7 +106,7 @@ namespace SecretHistories.Constants
             if (IsEditingText())
                 return;
 
-            ZoomEvent.Invoke(new ZoomEventArgs { AbsoluteTargetZoomLevel = ZoomEventArgs.ZOOM_CLOSE });
+            ZoomLevelEvent.Invoke(new ZoomLevelEventArgs { AbsoluteTargetZoomLevel = ZoomLevelEventArgs.ZOOM_CLOSE });
         }
 
         public void Input_ZoomMid(InputAction.CallbackContext context)
@@ -114,7 +114,7 @@ namespace SecretHistories.Constants
             if (IsEditingText())
                 return;
 
-            ZoomEvent.Invoke(new ZoomEventArgs { AbsoluteTargetZoomLevel = ZoomEventArgs.ZOOM_MID });
+            ZoomLevelEvent.Invoke(new ZoomLevelEventArgs { AbsoluteTargetZoomLevel = ZoomLevelEventArgs.ZOOM_MID });
         }
 
         public void Input_ZoomFar(InputAction.CallbackContext context)
@@ -122,7 +122,7 @@ namespace SecretHistories.Constants
             if (IsEditingText())
                 return;
 
-            ZoomEvent.Invoke(new ZoomEventArgs { AbsoluteTargetZoomLevel = ZoomEventArgs.ZOOM_FAR });
+            ZoomLevelEvent.Invoke(new ZoomLevelEventArgs { AbsoluteTargetZoomLevel = ZoomLevelEventArgs.ZOOM_FAR });
         }
 
 
