@@ -21,6 +21,7 @@ namespace Assets.Scripts.Editor
                 Debug.Log("Looking at " + gameObject.name);
                 lookAtMe = false;
                 Vector3 target = gameObject.transform.position;
+                Debug.Log($"Focusing on {target}");
                 StartCoroutine(Watchman.Get<CameraZoom>().FocusOn(target, 0.5f));
             }
         }

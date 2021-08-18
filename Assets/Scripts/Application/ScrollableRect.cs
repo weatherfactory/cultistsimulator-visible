@@ -12,10 +12,10 @@ using SecretHistories.Events;
 using SecretHistories.Fucine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(ScrollRect))]
+//[RequireComponent(typeof(ScrollRect))]
 public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ISphereCatalogueEventSubscriber  {
 	
-	ScrollRect scrollRect;
+	//ScrollRect scrollRect;
     // Vector4 order is Top, Right, Bottom, Left
 #pragma warning disable 649
     [Range(0.01f, 0.49f)]
@@ -50,8 +50,8 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         Watchman.Get<HornedAxe>().Subscribe(this);
 
 
-		scrollRect = GetComponent<ScrollRect>();
-		// TODO: Disable on touch?
+		//scrollRect = GetComponent<ScrollRect>();
+		//// TODO: Disable on touch?
 
 		marginVect = new Vector2();
 
@@ -76,14 +76,16 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	}
 
 	public void OnBeginDrag(PointerEventData eventData) {
-		//OnBeginDrag fired on the scrollrect itself: we're dragging it directly
-		if (scrollRect.isActiveAndEnabled)
-			ManualScrollRectDragIsActive = true;
-	}
+        //OnBeginDrag fired on the scrollrect itself: we're dragging it directly
+        Debug.Log("begin drag scroll rect");
+        //if (scrollRect.isActiveAndEnabled)
+        //    ManualScrollRectDragIsActive = true;
+    }
 
 	public void OnEndDrag(PointerEventData eventData) {
-        if (scrollRect.isActiveAndEnabled)
-            scrollRect.velocity = Vector2.zero;
+        Debug.Log("end drag scroll rect");
+        //if (scrollRect.isActiveAndEnabled)
+        //    scrollRect.velocity = Vector2.zero;
     }
 
     public void OnTruckEvent(TruckEventArgs args)
@@ -105,41 +107,41 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         //This still isn't working perfectly - I don't understand the differing decelerations when using keys -
         //but I'm going to move on and come back to it
 
-        if (Mathf.Approximately(magnitude, 0f))
-        {
-            pointerEnterEdgeTime = 0f;
-            return;
-        }
+        //if (Mathf.Approximately(magnitude, 0f))
+        //{
+        //    pointerEnterEdgeTime = 0f;
+        //    return;
+        //}
 
-        // Increment our edgeTimer if we're not over the timeout
-        if (pointerEnterEdgeTime < timeout)
-        {
-            pointerEnterEdgeTime += Time.deltaTime;
+        //// Increment our edgeTimer if we're not over the timeout
+        //if (pointerEnterEdgeTime < timeout)
+        //{
+        //    pointerEnterEdgeTime += Time.deltaTime;
 
-            // Still not enough, then get us out of here
-            if (pointerEnterEdgeTime < timeout)
-                return;
-        }
+        //    // Still not enough, then get us out of here
+        //    if (pointerEnterEdgeTime < timeout)
+        //        return;
+        //}
 
-        magnitude = Mathf.Lerp(minAcceleration, maxAcceleration, magnitude);
+        //magnitude = Mathf.Lerp(minAcceleration, maxAcceleration, magnitude);
 
-        // -1f to invert the vector 
-        var vector = mousePos.normalized * magnitude * -1f * Time.deltaTime;
+        //// -1f to invert the vector 
+        //var vector = mousePos.normalized * magnitude * -1f * Time.deltaTime;
 
-        // Set horizontal velocity
-        // if we change direction, do so immediately! Otherwise add on top up to our max speed.
-        if (Mathf.Sign(vector.x) != Mathf.Sign(scrollRect.velocity.x))
-            vector.x = Mathf.Min(vector.x, maxVelocity);
-        else 
-            vector.x = Mathf.Min(scrollRect.velocity.x + vector.x, maxVelocity);
+        //// Set horizontal velocity
+        //// if we change direction, do so immediately! Otherwise add on top up to our max speed.
+        //if (Mathf.Sign(vector.x) != Mathf.Sign(scrollRect.velocity.x))
+        //    vector.x = Mathf.Min(vector.x, maxVelocity);
+        //else 
+        //    vector.x = Mathf.Min(scrollRect.velocity.x + vector.x, maxVelocity);
 
-        if (Mathf.Sign(vector.y) != Mathf.Sign(scrollRect.velocity.y))
-            vector.y = Mathf.Min(vector.y, maxVelocity);
-        else 
-            vector.y = Mathf.Min(scrollRect.velocity.y + vector.y, maxVelocity);
+        //if (Mathf.Sign(vector.y) != Mathf.Sign(scrollRect.velocity.y))
+        //    vector.y = Mathf.Min(vector.y, maxVelocity);
+        //else 
+        //    vector.y = Mathf.Min(scrollRect.velocity.y + vector.y, maxVelocity);
 
-        // Push the velocity into the scrollRect
-        scrollRect.velocity = vector;
+        //// Push the velocity into the scrollRect
+        //scrollRect.velocity = vector;
 	}
 
 
