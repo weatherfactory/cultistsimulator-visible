@@ -6187,7 +6187,7 @@ PrefabInstance:
     - target: {fileID: 4645126518579149436, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0010633469
+      value: 0.000054359436
       objectReference: {fileID: 0}
     - target: {fileID: 4645126518784053587, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
@@ -7362,7 +7362,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539260420
 MonoBehaviour:
@@ -11456,6 +11456,7 @@ MonoBehaviour:
   EntrySfxName: 
   ExitSfxName: 
   Music: 
+  endingContent: {fileID: 1011039108}
 --- !u!114 &872153030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12653,7 +12654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1011039109
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12663,7 +12664,7 @@ RectTransform:
   m_GameObject: {fileID: 1011039108}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 659523955}
   - {fileID: 539260419}
@@ -12690,7 +12691,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 65bbf99585bdc124e9ab6bb3502379fc, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1001 &1011711298

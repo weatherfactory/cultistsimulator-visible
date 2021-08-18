@@ -76,6 +76,8 @@ namespace SecretHistories.UI
 
 public class OtherworldTransitionEndingFade: OtherworldTransitionFX
 {
+    [SerializeField] private GameObject endingContent;
+
     private System.Action onFadeComplete;
         public override bool CanShow()
         {
@@ -95,7 +97,8 @@ public class OtherworldTransitionEndingFade: OtherworldTransitionFX
             RectTransform focusOnTransform = activeIngress.Token.TokenRectTransform;
             gameObject.SetActive(true);
             onFadeComplete += onShowComplete;
-            StartCoroutine(DoFade(focusOnTransform,ending));
+            StartCoroutine(DoFadeTransition(focusOnTransform,ending));
+            
         }
 
         public override void Hide(Action onHideComplete)
@@ -103,7 +106,7 @@ public class OtherworldTransitionEndingFade: OtherworldTransitionFX
             //
         }
 
-        IEnumerator DoFade(RectTransform focusOnTransform, Ending ending)
+        IEnumerator DoFadeTransition(RectTransform focusOnTransform, Ending ending)
         {
             const float zoomDuration = 5f;
             const float fadeDuration = 2f;
@@ -120,6 +123,7 @@ public class OtherworldTransitionEndingFade: OtherworldTransitionFX
             onFadeComplete();
             onFadeComplete = null;
             Watchman.Get<TabletopFadeOverlay>().FadeIn(fadeDuration / 10);
+            endingContent.gameObject.SetActive(true);
 
         }
 
