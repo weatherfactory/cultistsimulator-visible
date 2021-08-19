@@ -271,7 +271,6 @@ GameObject:
   - component: {fileID: 195}
   - component: {fileID: 199}
   - component: {fileID: 49}
-  - component: {fileID: 50}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -280,46 +279,6 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &49
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96b172d61edc13e468e17037397851a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoomScaleIn: 20
-  zoomScaleOut: 75
-  zoomSpeed: 5
-  zoomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1.6630951
-      outSlope: 1.6630951
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.25400093
-      outSlope: 0.25400093
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  cameraZoomEnabled: 1
---- !u!114 &50
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11987,7 +11946,7 @@ MonoBehaviour:
   ZoomLevelEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 50}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CameraPan, SecretHistories.Main
         m_MethodName: OnZoomEvent
         m_Mode: 0
@@ -12002,7 +11961,7 @@ MonoBehaviour:
   TruckEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 50}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CameraPan, SecretHistories.Main
         m_MethodName: OnTruckEvent
         m_Mode: 0
@@ -12017,7 +11976,7 @@ MonoBehaviour:
   PedestalEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 50}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CameraPan, SecretHistories.Main
         m_MethodName: OnPedestalEvent
         m_Mode: 0
@@ -23735,7 +23694,6 @@ MonoBehaviour:
   _speedControlUi: {fileID: 0}
   _uiController: {fileID: 937582878}
   tableCanvas: {fileID: 341}
-  cameraZoom: {fileID: 49}
   tableScroll: {fileID: 631}
   menuCanvas: {fileID: 980569408}
 --- !u!1 &2138126489

@@ -10,7 +10,7 @@ using SecretHistories.Fucine;
 using UnityEngine.SocialPlatforms;
 
 [RequireComponent(typeof(Camera))]
-public class CameraPan : MonoBehaviour {
+public class CamOperator : MonoBehaviour {
 
     private Camera attachedCamera;
     private float currentTruckInput;

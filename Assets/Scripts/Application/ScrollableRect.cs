@@ -86,7 +86,7 @@ public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     {
         
 
-        Watchman.Get<CameraPan>().PointCameraAtTableLevelVector2(eventData.position);
+        Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(eventData.position);
     }
 
 

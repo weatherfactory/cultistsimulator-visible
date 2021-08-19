@@ -20,7 +20,6 @@ namespace SecretHistories.Constants {
         
         [Header("Visuals")]
         [SerializeField] private Canvas tableCanvas;
-		[SerializeField] private CameraZoom cameraZoom;
         [SerializeField] private ScrollRect tableScroll;
         [SerializeField] private Canvas menuCanvas;
 
@@ -47,7 +46,7 @@ namespace SecretHistories.Constants {
             rayCaster = menuCanvas.GetComponent<GraphicRaycaster>();
             rayCaster.enabled = false; // Disable clicks on Screen
 
-			cameraZoom.cameraZoomEnabled = false;
+			//cameraZoom.cameraZoomEnabled = false;
             _uiController.enabled = false; // Disable shortcuts
 
             // pause game
@@ -75,7 +74,7 @@ namespace SecretHistories.Constants {
             Debug.Log("Target Zoom Pos " + targetPos);
 
 
-            cameraZoom.StartFixedZoom(0f, zoomDuration);
+           // cameraZoom.StartFixedZoom(0f, zoomDuration);
 
             var menuBarCanvasGrp = menuCanvas.GetComponent<CanvasGroup>();
 

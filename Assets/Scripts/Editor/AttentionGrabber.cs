@@ -22,7 +22,7 @@ namespace Assets.Scripts.Editor
                 lookAtMe = false;
                 Vector2 target = gameObject.transform.position;
                 Debug.Log($"Focusing on {target}");
-                Watchman.Get<CameraPan>().PointCameraAtTableLevelVector2(target);
+                Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(target);
             }
         }
     }
