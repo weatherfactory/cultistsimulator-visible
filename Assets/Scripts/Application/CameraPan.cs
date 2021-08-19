@@ -61,4 +61,22 @@ public class CameraPan : MonoBehaviour {
                 ref cameraVelocity, panDuration);
         }
     }
+
+    public IEnumerator FocusOn(Vector3 targetPos, float zoomDuration)
+    {
+
+        float time = 0f;
+        Vector3 startPos = attachedCamera.transform.position;
+        Vector3 endPos = new Vector3(targetPos.x, targetPos.y - 60, startPos.z); //this y is a fudge that should actually be calculated on the fly
+
+
+        while (time < zoomDuration)
+        {
+            attachedCamera.transform.position = Vector3.Lerp(startPos, endPos, time / zoomDuration);
+            yield return null;
+            time += Time.deltaTime;
+        }
+
+
+    }
 }

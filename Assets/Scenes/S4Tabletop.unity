@@ -270,7 +270,6 @@ GameObject:
   - component: {fileID: 188}
   - component: {fileID: 195}
   - component: {fileID: 199}
-  - component: {fileID: 196}
   - component: {fileID: 49}
   - component: {fileID: 50}
   m_Layer: 0
@@ -319,10 +318,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  enablePlayerZoom: 1
-  tableCanvas: {fileID: 0}
-  tableScroll: {fileID: 0}
-  menuCanvas: {fileID: 0}
+  cameraZoomEnabled: 1
 --- !u!114 &50
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,14 +1111,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &196
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48}
-  m_Enabled: 0
 --- !u!104 &198
 RenderSettings:
   m_ObjectHideFlags: 0

@@ -92,23 +92,7 @@ public class CameraZoom : MonoBehaviour {
         zoomSpeed = zoomDiff / duration;
     }
 
-    public IEnumerator FocusOn(Vector3 targetPos,float zoomDuration)
-    {
-        
-        float time = 0f;
-        Vector3 startPos = zoomCam.transform.position;
-        Vector3 endPos =new Vector3(targetPos.x, targetPos.y - 60, startPos.z); //this y is a fudge that should actually be calculated on the fly
 
-
-        while (time < zoomDuration) 
-        {
-            zoomCam.transform.position = Vector3.Lerp(startPos, endPos, time / zoomDuration);
-            yield return null;
-            time += Time.deltaTime;
-        }
-
-        
-    }
     // Here we get the currentZoom between 0 (zoomed in) and 1 (zoomed out)
     // We use that to evaluate the curve to get another value between 0 and 1. This distorts the zoom so that zooming out is slower
     // Then we use that value to get a scale factor between our min and max zoomScales and put that in the canvas

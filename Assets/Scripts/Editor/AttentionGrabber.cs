@@ -22,7 +22,7 @@ namespace Assets.Scripts.Editor
                 lookAtMe = false;
                 Vector3 target = gameObject.transform.position;
                 Debug.Log($"Focusing on {target}");
-                StartCoroutine(Watchman.Get<CameraZoom>().FocusOn(target, 0.5f));
+                StartCoroutine(Watchman.Get<CameraPan>().FocusOn(target, 0.5f));
             }
         }
     }
