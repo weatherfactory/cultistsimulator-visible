@@ -50,10 +50,6 @@ public class CameraZoom : MonoBehaviour {
 
     public void OnZoomEvent(ZoomLevelEventArgs args)
     {
-       if(args.AbsoluteTargetZoomLevel>0)
-           targetZoom = args.AbsoluteTargetZoomLevel;
-       //NB: this result is received when the zoom-increment key is lifted, at which point it'll be set to 0 and stop the zoom continuing
-       //if we receive a zoom with an absolute value, that will also reset-and-halt any ongoing zoom effects
       
            currentZoomInput = args.CurrentZoomInput;
        

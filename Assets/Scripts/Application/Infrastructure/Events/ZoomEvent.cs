@@ -3,16 +3,17 @@ using UnityEngine.Events;
 
 namespace SecretHistories.Constants
 {
+    public enum ZoomLevel
+    {
+       Unspecified=0, Far=1,Mid=2,Close=3
+    }
+
     public class ZoomLevelEventArgs
     {
-        public static float ZOOM_CLOSE = 0.01f;
-        public static float ZOOM_MID = 0.4f;
-        public static float ZOOM_FAR = 1f;
-
-
+     
         public float CurrentZoomInput { get; set; }
 
-        public float AbsoluteTargetZoomLevel { get; set; }
+        public ZoomLevel AbsoluteTargetZoomLevel { get; set; }
     }
 
 

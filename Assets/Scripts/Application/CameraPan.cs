@@ -17,13 +17,18 @@ public class CameraPan : MonoBehaviour {
     private float currentPedestalInput;
     private float currentZoomInput;
     [SerializeField]
-    private float panDuration;
+    private float cameraMovementDuration;
     [SerializeField]
     private  float pan_step_distance;
     [SerializeField]
-    private float zoomDuration;
-    [SerializeField]
     private float zoom_step_distance;
+    [SerializeField]
+    private float zoom_z_close;
+    [SerializeField]
+    private float zoom_z_mid;
+    [SerializeField]
+    private float zoom_z_far;
+
 
     private Vector3 cameraTargetPosition;
     private Vector3 cameraVelocity=Vector3.zero;
@@ -56,9 +61,16 @@ public class CameraPan : MonoBehaviour {
     public void OnZoomEvent(ZoomLevelEventArgs args)
     {
 
-        //commented out absolute zoom for the mo
-        //if (args.AbsoluteTargetZoomLevel > 0)
-            //targetZoom = args.AbsoluteTargetZoomLevel;
+
+        if (args.AbsoluteTargetZoomLevel == ZoomLevel.Close)
+            cameraTargetPosition.z = zoom_z_close;
+
+        if (args.AbsoluteTargetZoomLevel == ZoomLevel.Mid)
+            cameraTargetPosition.z = zoom_z_mid;
+
+        if (args.AbsoluteTargetZoomLevel == ZoomLevel.Far)
+            cameraTargetPosition.z = zoom_z_far;
+
         //NB: this result is received when the zoom-increment key is lifted, at which point it'll be set to 0 and stop the zoom continuing
         //if we receive a zoom with an absolute value, that will also reset-and-halt any ongoing zoom effects
 
@@ -80,7 +92,7 @@ public class CameraPan : MonoBehaviour {
         if (attachedCamera.transform.position != cameraTargetPosition)
         {
             attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, cameraTargetPosition,
-                ref cameraVelocity, panDuration);
+                ref cameraVelocity, cameraMovementDuration);
         }
     }
 
