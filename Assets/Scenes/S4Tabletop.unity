@@ -333,6 +333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panDuration: 0.45
   pan_step_distance: 30
+  zoomDuration: 0.45
+  zoom_step_distance: 30
 --- !u!1 &53
 GameObject:
   m_ObjectHideFlags: 0
@@ -6164,7 +6166,7 @@ PrefabInstance:
     - target: {fileID: 4645126518579149436, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0010213852
+      value: 0.000027656555
       objectReference: {fileID: 0}
     - target: {fileID: 4645126518784053587, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
@@ -11983,8 +11985,8 @@ MonoBehaviour:
   ZoomLevelEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 49}
-        m_TargetAssemblyTypeName: CameraZoom, SecretHistories.Main
+      - m_Target: {fileID: 50}
+        m_TargetAssemblyTypeName: CameraPan, SecretHistories.Main
         m_MethodName: OnZoomEvent
         m_Mode: 0
         m_Arguments:

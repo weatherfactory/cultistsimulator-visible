@@ -30,17 +30,14 @@ public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 #pragma warning restore 649
 #pragma warning disable 414
 	bool pointerInRect;
-    float pointerEnterEdgeTime = 0f;
-	bool ManualScrollRectDragIsActive;
-	bool blockScrolling;
+    
 #pragma warning restore 414
 
     Vector2 mousePos;
 	Vector4 innerBounds;
 	Vector2 marginVect;
 	float magnitude;
-
-
+    private Vector2 beginDragPos;
 
 
     void Start() {
@@ -75,18 +72,22 @@ public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
 	public void OnBeginDrag(PointerEventData eventData) {
         //OnBeginDrag fired on the scrollrect itself: we're dragging it directly
-        Debug.Log("begin drag scroll rect");
-        //if (scrollRect.isActiveAndEnabled)
-        //    ManualScrollRectDragIsActive = true;
+        Debug.Log($"begin drag scroll rect at {eventData.position}");
+        beginDragPos = eventData.position;
+        
     }
 
-	public void OnEndDrag(PointerEventData eventData) {
+    public void OnEndDrag(PointerEventData eventData) {
         Debug.Log("end drag scroll rect");
-        //if (scrollRect.isActiveAndEnabled)
-        //    scrollRect.velocity = Vector2.zero;
+
     }
 
+    public void OnDrag(PointerEventData eventData)
+    {
+        
 
+        Watchman.Get<CameraPan>().PointCameraAtTableLevelVector2(eventData.position);
+    }
 
 
     void Update()
@@ -182,8 +183,5 @@ public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     }
 
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        //
-    }
+
 }

@@ -15,11 +15,16 @@ public class CameraPan : MonoBehaviour {
     private Camera attachedCamera;
     private float currentTruckInput;
     private float currentPedestalInput;
+    private float currentZoomInput;
     [SerializeField]
     private float panDuration;
     [SerializeField]
     private  float pan_step_distance;
-    
+    [SerializeField]
+    private float zoomDuration;
+    [SerializeField]
+    private float zoom_step_distance;
+
     private Vector3 cameraTargetPosition;
     private Vector3 cameraVelocity=Vector3.zero;
 
@@ -48,12 +53,29 @@ public class CameraPan : MonoBehaviour {
         Debug.Log($"Pedestal event {currentPedestalInput}");
     }
 
+    public void OnZoomEvent(ZoomLevelEventArgs args)
+    {
+
+        //commented out absolute zoom for the mo
+        //if (args.AbsoluteTargetZoomLevel > 0)
+            //targetZoom = args.AbsoluteTargetZoomLevel;
+        //NB: this result is received when the zoom-increment key is lifted, at which point it'll be set to 0 and stop the zoom continuing
+        //if we receive a zoom with an absolute value, that will also reset-and-halt any ongoing zoom effects
+
+        currentZoomInput = args.CurrentZoomInput * zoom_step_distance;
+        Debug.Log($"Zoom event {currentZoomInput}");
+
+    }
+
     public void Update()
     {
         if (currentTruckInput != 0)
             cameraTargetPosition.x += currentTruckInput;
         if (currentPedestalInput != 0)
             cameraTargetPosition.y += currentPedestalInput;
+
+        if (currentZoomInput != 0)
+            cameraTargetPosition.z -= currentZoomInput;
 
         if (attachedCamera.transform.position != cameraTargetPosition)
         {
@@ -62,10 +84,15 @@ public class CameraPan : MonoBehaviour {
         }
     }
 
-    public void SetCameraTargetPosition(Vector2 targetPosition)
+    public void PointCameraAtTableLevelVector2(Vector2 targetPosition)
     {
         //we avoid changing the camera z as long as field of view is our zoom solution
-        cameraTargetPosition = new Vector3(targetPosition.x, targetPosition.y, attachedCamera.transform.position.z);
+        float angle = attachedCamera.transform.rotation.x;
+        float adjacentSide = attachedCamera.transform.position.z;
+        float tanOfAngle = Mathf.Tan(angle);
+        float oppositeSide = adjacentSide * tanOfAngle;
+
+        cameraTargetPosition = new Vector3(targetPosition.x, targetPosition.y-oppositeSide, attachedCamera.transform.position.z);
     }
 
     public IEnumerator FocusOn(Vector3 targetPos, float zoomDuration)
