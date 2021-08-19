@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 199}
   - component: {fileID: 196}
   - component: {fileID: 49}
+  - component: {fileID: 50}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -322,6 +323,20 @@ MonoBehaviour:
   tableCanvas: {fileID: 0}
   tableScroll: {fileID: 0}
   menuCanvas: {fileID: 0}
+--- !u!114 &50
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de107eae7186ff641909dbca34ca7c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panDuration: 0.45
+  pan_step_distance: 30
 --- !u!1 &53
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +420,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fabe8f01c85034bd1aaf4235ab7e1dc5, type: 3}
   m_Name: 
@@ -435,7 +450,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc175e04d50ac6e48b086196121cef1d, type: 3}
   m_Name: 
@@ -6161,7 +6176,7 @@ PrefabInstance:
     - target: {fileID: 4645126518579149436, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000054359436
+      value: -0.0010213852
       objectReference: {fileID: 0}
     - target: {fileID: 4645126518784053587, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
@@ -11995,8 +12010,8 @@ MonoBehaviour:
   TruckEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 62}
-        m_TargetAssemblyTypeName: ScrollRectMouseMover, Assembly-CSharp
+      - m_Target: {fileID: 50}
+        m_TargetAssemblyTypeName: CameraPan, SecretHistories.Main
         m_MethodName: OnTruckEvent
         m_Mode: 0
         m_Arguments:
@@ -12010,8 +12025,8 @@ MonoBehaviour:
   PedestalEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 62}
-        m_TargetAssemblyTypeName: ScrollRectMouseMover, Assembly-CSharp
+      - m_Target: {fileID: 50}
+        m_TargetAssemblyTypeName: CameraPan, SecretHistories.Main
         m_MethodName: OnPedestalEvent
         m_Mode: 0
         m_Arguments:

@@ -47,7 +47,7 @@ namespace SecretHistories.Constants {
             rayCaster = menuCanvas.GetComponent<GraphicRaycaster>();
             rayCaster.enabled = false; // Disable clicks on Screen
 
-			cameraZoom.enablePlayerZoom = false;
+			cameraZoom.cameraZoomEnabled = false;
             _uiController.enabled = false; // Disable shortcuts
 
             // pause game

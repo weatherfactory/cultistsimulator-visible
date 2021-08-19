@@ -12,6 +12,9 @@ using UnityEngine.SocialPlatforms;
 [RequireComponent(typeof(Camera))]
 public class CameraZoom : MonoBehaviour {
 
+
+    Camera zoomCam;
+
     public float zoomScaleIn = 2f; // 1 == 100% = pixel perfect zoom
     public float zoomScaleOut = 4f;     // Needs to be smaller than zoomScaleIn to enable zooming
 
@@ -27,12 +30,10 @@ public class CameraZoom : MonoBehaviour {
     public const float ZOOM_BASE_INCREMENT = 0.025f;
     private const float zoomTolerance = 0.00001f; // snap when this close to target
 
-    public bool enablePlayerZoom = true;
-    Camera zoomCam;
+    public bool cameraZoomEnabled = true;
+    
 
-    [SerializeField] private Canvas tableCanvas;
-    [SerializeField] private ScrollRect tableScroll;
-    [SerializeField] private Canvas menuCanvas;
+
 
     public void Awake()
     {
@@ -60,10 +61,17 @@ public class CameraZoom : MonoBehaviour {
 
     void Update ()
     {
+        if(cameraZoomEnabled)
+            UpdateZoomState();
+    }
+
+    private void UpdateZoomState()
+    {
         if (currentZoomInput < 0 || currentZoomInput > 0)
-            SetTargetZoom(targetZoom+currentZoomInput* ZOOM_BASE_INCREMENT);
-        
-        if (targetZoom != currentZoom) {
+            SetTargetZoom(targetZoom + currentZoomInput * ZOOM_BASE_INCREMENT);
+
+        if (targetZoom != currentZoom)
+        {
             if (Mathf.Approximately(targetZoom, currentZoom))
                 currentZoom = targetZoom;
             else

@@ -13,7 +13,7 @@ using SecretHistories.Fucine;
 using UnityEngine.InputSystem;
 
 //[RequireComponent(typeof(ScrollRect))]
-public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ISphereCatalogueEventSubscriber  {
+public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ISphereCatalogueEventSubscriber  {
 	
 	//ScrollRect scrollRect;
     // Vector4 order is Top, Right, Bottom, Left
@@ -40,9 +40,7 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 	Vector2 marginVect;
 	float magnitude;
 
-    private float currentTruckInput;
-    private float currentPedestalInput;
-    private const float KEY_MOVEMENT_EFFECT_MULTIPLIER=90f;
+
 
 
     void Start() {
@@ -88,18 +86,7 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         //    scrollRect.velocity = Vector2.zero;
     }
 
-    public void OnTruckEvent(TruckEventArgs args)
-    {
-        currentTruckInput = args.CurrentTruckInput * KEY_MOVEMENT_EFFECT_MULTIPLIER;
-        mousePos = new Vector2(args.CurrentTruckInput, currentPedestalInput);
-        }
 
-    public void OnPedestalEvent(PedestalEventArgs args)
-    {
-        currentPedestalInput = args.CurrentPedestalInput * KEY_MOVEMENT_EFFECT_MULTIPLIER;
-        mousePos = new Vector2(currentTruckInput, currentPedestalInput);
-
-    }
 
 
     void Update()
@@ -194,7 +181,9 @@ public class ScrollableRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         }
     }
 
-  
 
-
+    public void OnDrag(PointerEventData eventData)
+    {
+        //
+    }
 }
