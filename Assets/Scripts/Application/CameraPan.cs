@@ -62,6 +62,12 @@ public class CameraPan : MonoBehaviour {
         }
     }
 
+    public void SetCameraTargetPosition(Vector2 targetPosition)
+    {
+        //we avoid changing the camera z as long as field of view is our zoom solution
+        cameraTargetPosition = new Vector3(targetPosition.x, targetPosition.y, attachedCamera.transform.position.z);
+    }
+
     public IEnumerator FocusOn(Vector3 targetPos, float zoomDuration)
     {
 

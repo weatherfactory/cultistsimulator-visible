@@ -20,9 +20,9 @@ namespace Assets.Scripts.Editor
             {
                 Debug.Log("Looking at " + gameObject.name);
                 lookAtMe = false;
-                Vector3 target = gameObject.transform.position;
+                Vector2 target = gameObject.transform.position;
                 Debug.Log($"Focusing on {target}");
-                StartCoroutine(Watchman.Get<CameraPan>().FocusOn(target, 0.5f));
+                Watchman.Get<CameraPan>().SetCameraTargetPosition(target);
             }
         }
     }
