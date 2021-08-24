@@ -39,7 +39,7 @@ public class CamOperator : MonoBehaviour {
 
     [SerializeField] private float cameraMoveDuration;
 
-    [SerializeField] private CameraNavigationRect navigationRect;
+    [SerializeField] private RectTransform navigationLimits;
 
 
     public void Awake()
@@ -124,14 +124,14 @@ public class CamOperator : MonoBehaviour {
 
         if (attachedCamera.transform.position != snapTargetPosition)
         {
-            snapTargetPosition = ClampToNavigationRect(navigationRect, snapTargetPosition);
+            snapTargetPosition = ClampToNavigationRect(navigationLimits, snapTargetPosition);
             attachedCamera.transform.position = snapTargetPosition;
             smoothTargetPosition = attachedCamera.transform.position;
         }
 
         else if (attachedCamera.transform.position != smoothTargetPosition)
         {
-            smoothTargetPosition = ClampToNavigationRect(navigationRect, smoothTargetPosition);
+            smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
             attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, smoothTargetPosition,
                 ref cameraVelocity, cameraMoveDuration);
             snapTargetPosition = attachedCamera.transform.position;
@@ -139,11 +139,11 @@ public class CamOperator : MonoBehaviour {
 
     }
 
-    private Vector3 ClampToNavigationRect(CameraNavigationRect cameraNavigationRect, Vector3 targetPosition)
+    private Vector3 ClampToNavigationRect(RectTransform limitTo, Vector3 targetPosition)
     {
         //CACHE THESE ON ZOOM!
-        Vector2 adjustedMin = getCameraPositionAboveTableAdjustedForRotation(cameraNavigationRect.InnerBoundsMin);
-        Vector2 adjustedMax = getCameraPositionAboveTableAdjustedForRotation(cameraNavigationRect.InnerBoundsMax);
+        Vector2 adjustedMin = getCameraPositionAboveTableAdjustedForRotation(limitTo.rect.min);
+        Vector2 adjustedMax = getCameraPositionAboveTableAdjustedForRotation(limitTo.rect.max);
 
         targetPosition.x = Mathf.Clamp(targetPosition.x, adjustedMin.x, adjustedMax.x);
         targetPosition.y = Mathf.Clamp(targetPosition.y, adjustedMin.y, adjustedMax.y);

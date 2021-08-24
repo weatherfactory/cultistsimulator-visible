@@ -26,8 +26,7 @@ public class CameraNavigationRect : MonoBehaviour, IDragHandler, IBeginDragHandl
     [SerializeField] float timeout = 0.1f;
     [SerializeField] private float driftAfterDrag = 0.02f;
 
-    public Vector2 InnerBoundsMin;
-    public Vector2 InnerBoundsMax;
+
     
 
 #pragma warning restore 649
@@ -52,9 +51,6 @@ public class CameraNavigationRect : MonoBehaviour, IDragHandler, IBeginDragHandl
     void Start() {
 
         Watchman.Get<HornedAxe>().Subscribe(this);
-        var rect = gameObject.GetComponent<RectTransform>().rect;
-        InnerBoundsMin = rect.min;
-        InnerBoundsMax = rect.max;
 
         //// TODO: Disable on touch?
 
