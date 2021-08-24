@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,7 +10,8 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
-
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 
 [RequireComponent(typeof(Camera))]
@@ -37,7 +39,7 @@ public class CamOperator : MonoBehaviour {
 
     [SerializeField] private float cameraMoveDuration;
 
-
+    [SerializeField] private CameraNavigationRect navigationRect;
 
 
     public void Awake()
@@ -105,6 +107,9 @@ public class CamOperator : MonoBehaviour {
     public void Update()
     {
 
+        ClampToNavigationRect(navigationRect, snapTargetPosition, smoothTargetPosition);
+
+
         if (currentSnapInput != Vector3.zero)
         {
            snapTargetPosition += currentSnapInput;
@@ -138,16 +143,27 @@ public class CamOperator : MonoBehaviour {
 
     }
 
+    private void ClampToNavigationRect(CameraNavigationRect cameraNavigationRect, Vector3 snapTargetPosition, Vector3 smoothTargetPosition1)
+    {
+        //
+    }
+
 
     public void PointCameraAtTableLevelVector2(Vector2 targetPosition)
     {
- 
+
+        smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition);
+    }
+
+    private Vector3 getCameraPositionAboveTableAdjustedForRotation(Vector2 tablePosition)
+    {
         float angle = attachedCamera.transform.rotation.x;
         float adjacentSide = attachedCamera.transform.position.z;
         float tanOfAngle = Mathf.Tan(angle);
         float oppositeSide = adjacentSide * tanOfAngle;
 
-        snapTargetPosition = new Vector3(targetPosition.x, targetPosition.y-oppositeSide, attachedCamera.transform.position.z);
+
+        return new Vector3(tablePosition.x, tablePosition.y - oppositeSide, attachedCamera.transform.position.z);
     }
 
     public IEnumerator FocusOn(Vector3 targetPos, float zoomDuration)

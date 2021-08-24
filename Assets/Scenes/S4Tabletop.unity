@@ -296,6 +296,7 @@ MonoBehaviour:
   zoom_z_mid: -600
   zoom_z_far: -1200
   cameraMoveDuration: 0.2
+  navigationRect: {fileID: 62}
 --- !u!1 &53
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +365,7 @@ GameObject:
   - component: {fileID: 62}
   - component: {fileID: 63}
   m_Layer: 5
-  m_Name: ScrollableRect
+  m_Name: CameraNavigationRect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,7 +386,7 @@ MonoBehaviour:
   edgeAreaSize: 0.1
   edgePadding: {x: 0, y: 0, z: 0.08, w: 0}
   timeout: 0.1
-  driftAfterDrag: 1
+  driftAfterDrag: 2
 --- !u!225 &63
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -22448,7 +22449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100.99988, y: 0}
+  m_AnchoredPosition: {x: -101, y: 0}
   m_SizeDelta: {x: -1102.2994, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1909590238 stripped

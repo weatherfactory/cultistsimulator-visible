@@ -13,7 +13,7 @@ using SecretHistories.Events;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 
-public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ISphereCatalogueEventSubscriber  {
+public class CameraNavigationRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ISphereCatalogueEventSubscriber  {
 	
 	//ScrollRect scrollRect;
     // Vector4 order is Top, Right, Bottom, Left
@@ -23,6 +23,9 @@ public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 	[SerializeField] Vector4 edgePadding;
     [SerializeField] float timeout = 0.1f;
     [SerializeField] private float driftAfterDrag = 0.02f;
+
+    
+
 #pragma warning restore 649
 #pragma warning disable 414
 	bool pointerInRect;
@@ -34,22 +37,12 @@ public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     Vector2 mousePos;
 	Vector4 innerBounds;
 	Vector2 marginVect;
-	float magnitude;
-    private Vector3 lastDragPos;
+
     private Vector2 lastChangeVector;
-    private RectTransform rectTransform;
-
-
+    
     void Awake()
     {
-        try
-        {
-            rectTransform = gameObject.GetComponent<RectTransform>();
-        }
-        catch (Exception e)
-        {
-            NoonUtility.Log("For some reason the bloody rectransform's gone mising from the scrollrect",2,VerbosityLevel.Essential);
-        }
+        
     }
 
     void Start() {
