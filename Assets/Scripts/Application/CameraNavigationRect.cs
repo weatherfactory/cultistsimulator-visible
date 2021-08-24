@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using SecretHistories.Entities;
 using SecretHistories.UI;
 using UnityEngine;
@@ -12,18 +13,21 @@ using SecretHistories.Enums;
 using SecretHistories.Events;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
+using Vector2 = UnityEngine.Vector2;
+using Vector4 = UnityEngine.Vector4;
 
 public class CameraNavigationRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ISphereCatalogueEventSubscriber  {
 	
 	//ScrollRect scrollRect;
     // Vector4 order is Top, Right, Bottom, Left
 #pragma warning disable 649
-    [Range(0.01f, 0.49f)]
 	[SerializeField] float edgeAreaSize = 0.1f;
 	[SerializeField] Vector4 edgePadding;
     [SerializeField] float timeout = 0.1f;
     [SerializeField] private float driftAfterDrag = 0.02f;
 
+    public Vector2 InnerBoundsMin;
+    public Vector2 InnerBoundsMax;
     
 
 #pragma warning restore 649
@@ -48,11 +52,13 @@ public class CameraNavigationRect : MonoBehaviour, IDragHandler, IBeginDragHandl
     void Start() {
 
         Watchman.Get<HornedAxe>().Subscribe(this);
+        var rect = gameObject.GetComponent<RectTransform>().rect;
+        InnerBoundsMin = rect.min;
+        InnerBoundsMax = rect.max;
 
+        //// TODO: Disable on touch?
 
-		//// TODO: Disable on touch?
-
-		marginVect = new Vector2();
+        marginVect = new Vector2();
 
 		if (Screen.width < Screen.height) {
 			marginVect.x = edgeAreaSize;
