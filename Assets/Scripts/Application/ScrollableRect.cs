@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using SecretHistories.Entities;
 using SecretHistories.UI;
@@ -10,9 +11,8 @@ using SecretHistories.Constants.Events;
 using SecretHistories.Enums;
 using SecretHistories.Events;
 using SecretHistories.Fucine;
-using UnityEngine.InputSystem;
+using SecretHistories.Spheres;
 
-//[RequireComponent(typeof(ScrollRect))]
 public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ISphereCatalogueEventSubscriber  {
 	
 	//ScrollRect scrollRect;
@@ -21,31 +21,42 @@ public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     [Range(0.01f, 0.49f)]
 	[SerializeField] float edgeAreaSize = 0.1f;
 	[SerializeField] Vector4 edgePadding;
-
-	[SerializeField] float minAcceleration = 100f;
-	[SerializeField] float maxAcceleration = 1000f;
-	[SerializeField] float maxVelocity = 2000f;
-
-	[SerializeField] float timeout = 0.1f;
+    [SerializeField] float timeout = 0.1f;
+    [SerializeField] private float driftAfterDrag = 0.02f;
 #pragma warning restore 649
 #pragma warning disable 414
 	bool pointerInRect;
-    
+
 #pragma warning restore 414
 
+    Vector2 firstMousePos;
+    Vector2 lastMousePos;
     Vector2 mousePos;
 	Vector4 innerBounds;
 	Vector2 marginVect;
 	float magnitude;
-    private Vector2 beginDragPos;
+    private Vector3 lastDragPos;
+    private Vector2 lastChangeVector;
+    private RectTransform rectTransform;
 
+
+    void Awake()
+    {
+        try
+        {
+            rectTransform = gameObject.GetComponent<RectTransform>();
+        }
+        catch (Exception e)
+        {
+            NoonUtility.Log("For some reason the bloody rectransform's gone mising from the scrollrect",2,VerbosityLevel.Essential);
+        }
+    }
 
     void Start() {
 
         Watchman.Get<HornedAxe>().Subscribe(this);
 
 
-		//scrollRect = GetComponent<ScrollRect>();
 		//// TODO: Disable on touch?
 
 		marginVect = new Vector2();
@@ -70,24 +81,31 @@ public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 		pointerInRect = false;
 	}
 
-	public void OnBeginDrag(PointerEventData eventData) {
-        //OnBeginDrag fired on the scrollrect itself: we're dragging it directly
-        Debug.Log($"begin drag scroll rect at {eventData.position}");
-        beginDragPos = eventData.position;
-        
-    }
-
-    public void OnEndDrag(PointerEventData eventData) {
-        Debug.Log("end drag scroll rect");
-
+	public void OnBeginDrag(PointerEventData eventData)
+    {
+        firstMousePos = eventData.position;
+        lastMousePos = eventData.position;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        
+        mousePos = eventData.position;
+        if (lastMousePos != mousePos)
+        {
+            lastChangeVector = lastMousePos - mousePos;
+            Watchman.Get<CamOperator>().ApplySnapInputVector(lastChangeVector);
+            lastMousePos = mousePos;
+        }
 
-        Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(eventData.position);
     }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        Vector2 finalChangevector = firstMousePos - eventData.position;
+        Watchman.Get<CamOperator>().ApplySmoothInputVector(finalChangevector * driftAfterDrag);
+    }
+
+
 
 
     void Update()
@@ -136,28 +154,28 @@ public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
 
 
-    void SetMagnitudeFromMouse() {
-		magnitude = 0f;
-		// Vertical
-		// up
-		if (mousePos.y > innerBounds.x) {
-			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.y - innerBounds.x) / marginVect.y);
-		}
-		// down
-		else if (mousePos.y < innerBounds.z) {
-			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.y - innerBounds.z) / marginVect.y);
-		}
+ //   void SetMagnitudeFromMouse() {
+	//	magnitude = 0f;
+	//	// Vertical
+	//	// up
+	//	if (mousePos.y > innerBounds.x) {
+	//		magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.y - innerBounds.x) / marginVect.y);
+	//	}
+	//	// down
+	//	else if (mousePos.y < innerBounds.z) {
+	//		magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.y - innerBounds.z) / marginVect.y);
+	//	}
 
-		// Horizontal
-		// right
-		if (mousePos.x > innerBounds.y) {
-			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.x - innerBounds.y) / marginVect.x);
-		}
-		// left
-		else if (mousePos.x < innerBounds.w) {
-			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.x - innerBounds.w) / marginVect.x);
-		}
-	}
+	//	// Horizontal
+	//	// right
+	//	if (mousePos.x > innerBounds.y) {
+	//		magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.x - innerBounds.y) / marginVect.x);
+	//	}
+	//	// left
+	//	else if (mousePos.x < innerBounds.w) {
+	//		magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.x - innerBounds.w) / marginVect.x);
+	//	}
+	//}
 
 
     public void OnSphereChanged(SphereChangedArgs args)
@@ -177,8 +195,8 @@ public class ScrollableRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
             // if we're dragging a token, check if the mouse is in the scroll zone near the edge of the screen.
 
             // point ranging from (-0.5, -0.5) to (0.5, 0.5)
-            mousePos = new Vector2(Pointer.current.position.x.ReadValue() / Screen.width - 0.5f, Pointer.current.position.y.ReadValue() / Screen.height - 0.5f);
-            SetMagnitudeFromMouse();
+        //    mousePos = new Vector2(Pointer.current.position.x.ReadValue() / Screen.width - 0.5f, Pointer.current.position.y.ReadValue() / Screen.height - 0.5f);
+        //    SetMagnitudeFromMouse();
         }
     }
 

@@ -8,6 +8,9 @@ using SecretHistories.Constants;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.UIElements;
+
+
 
 [RequireComponent(typeof(Camera))]
 public class CamOperator : MonoBehaviour {
@@ -16,8 +19,11 @@ public class CamOperator : MonoBehaviour {
     private float currentTruckInput;
     private float currentPedestalInput;
     private float currentZoomInput;
-    [SerializeField]
-    private float cameraMovementDuration;
+    private Vector3 currentSnapInput;
+    private Vector3 snapTargetPosition;
+    private Vector3 smoothTargetPosition;
+    private Vector3 cameraVelocity = Vector3.zero;
+
     [SerializeField]
     private  float pan_step_distance;
     [SerializeField]
@@ -29,9 +35,10 @@ public class CamOperator : MonoBehaviour {
     [SerializeField]
     private float zoom_z_far;
 
+    [SerializeField] private float cameraMoveDuration;
 
-    private Vector3 cameraTargetPosition;
-    private Vector3 cameraVelocity=Vector3.zero;
+
+
 
     public void Awake()
     {
@@ -43,7 +50,9 @@ public class CamOperator : MonoBehaviour {
     protected void Start()
     {
         attachedCamera = gameObject.GetComponent<Camera>();
-        cameraTargetPosition = attachedCamera.transform.position;
+        snapTargetPosition = attachedCamera.transform.position;
+        smoothTargetPosition = attachedCamera.transform.position;
+
     }
 
     public void OnTruckEvent(TruckEventArgs args)
@@ -58,18 +67,20 @@ public class CamOperator : MonoBehaviour {
         Debug.Log($"Pedestal event {currentPedestalInput}");
     }
 
+
+
     public void OnZoomEvent(ZoomLevelEventArgs args)
     {
 
 
         if (args.AbsoluteTargetZoomLevel == ZoomLevel.Close)
-            cameraTargetPosition.z = zoom_z_close;
+            snapTargetPosition.z = zoom_z_close;
 
         if (args.AbsoluteTargetZoomLevel == ZoomLevel.Mid)
-            cameraTargetPosition.z = zoom_z_mid;
+            snapTargetPosition.z = zoom_z_mid;
 
         if (args.AbsoluteTargetZoomLevel == ZoomLevel.Far)
-            cameraTargetPosition.z = zoom_z_far;
+            snapTargetPosition.z = zoom_z_far;
 
         //NB: this result is received when the zoom-increment key is lifted, at which point it'll be set to 0 and stop the zoom continuing
         //if we receive a zoom with an absolute value, that will also reset-and-halt any ongoing zoom effects
@@ -77,34 +88,66 @@ public class CamOperator : MonoBehaviour {
         currentZoomInput = args.CurrentZoomInput * zoom_step_distance;
         Debug.Log($"Zoom event {currentZoomInput}");
 
+
+    }
+
+    public void ApplySnapInputVector(Vector3 snapInput)
+    {
+        currentSnapInput += snapInput;
+    }
+
+
+    public void ApplySmoothInputVector(Vector3 smoothInput)
+    {
+        smoothTargetPosition += smoothInput;
     }
 
     public void Update()
     {
-        if (currentTruckInput != 0)
-            cameraTargetPosition.x += currentTruckInput;
-        if (currentPedestalInput != 0)
-            cameraTargetPosition.y += currentPedestalInput;
 
-        if (currentZoomInput != 0)
-            cameraTargetPosition.z -= currentZoomInput;
-
-        if (attachedCamera.transform.position != cameraTargetPosition)
+        if (currentSnapInput != Vector3.zero)
         {
-            attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, cameraTargetPosition,
-                ref cameraVelocity, cameraMovementDuration);
+           snapTargetPosition += currentSnapInput;
+           currentSnapInput = Vector3.zero;
+
         }
+        else
+        {
+            if (currentTruckInput != 0)
+                smoothTargetPosition.x += currentTruckInput;
+            if (currentPedestalInput != 0)
+                smoothTargetPosition.y += currentPedestalInput;
+
+            if (currentZoomInput != 0)
+                smoothTargetPosition.z -= currentZoomInput;
+        }
+
+        if (attachedCamera.transform.position != snapTargetPosition)
+        {
+            
+            attachedCamera.transform.position = snapTargetPosition;
+            smoothTargetPosition = attachedCamera.transform.position;
+        }
+
+        else if (attachedCamera.transform.position != smoothTargetPosition)
+        {
+            attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, smoothTargetPosition,
+                ref cameraVelocity, cameraMoveDuration);
+            snapTargetPosition = attachedCamera.transform.position;
+        }
+
     }
+
 
     public void PointCameraAtTableLevelVector2(Vector2 targetPosition)
     {
-        //we avoid changing the camera z as long as field of view is our zoom solution
+ 
         float angle = attachedCamera.transform.rotation.x;
         float adjacentSide = attachedCamera.transform.position.z;
         float tanOfAngle = Mathf.Tan(angle);
         float oppositeSide = adjacentSide * tanOfAngle;
 
-        cameraTargetPosition = new Vector3(targetPosition.x, targetPosition.y-oppositeSide, attachedCamera.transform.position.z);
+        snapTargetPosition = new Vector3(targetPosition.x, targetPosition.y-oppositeSide, attachedCamera.transform.position.z);
     }
 
     public IEnumerator FocusOn(Vector3 targetPos, float zoomDuration)
@@ -124,4 +167,6 @@ public class CamOperator : MonoBehaviour {
 
 
     }
+
+
 }

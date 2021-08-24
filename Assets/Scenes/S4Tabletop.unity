@@ -290,12 +290,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de107eae7186ff641909dbca34ca7c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMovementDuration: 0.2
   pan_step_distance: 30
   zoom_step_distance: 30
   zoom_z_close: -300
   zoom_z_mid: -600
   zoom_z_far: -1200
+  cameraMoveDuration: 0.2
 --- !u!1 &53
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,8 +361,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 395}
-  - component: {fileID: 64}
-  - component: {fileID: 631}
   - component: {fileID: 62}
   - component: {fileID: 63}
   m_Layer: 5
@@ -386,10 +384,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   edgeAreaSize: 0.1
   edgePadding: {x: 0, y: 0, z: 0.08, w: 0}
-  minAcceleration: 100
-  maxAcceleration: 2000
-  maxVelocity: 4000
   timeout: 0.1
+  driftAfterDrag: 1
 --- !u!225 &63
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -402,18 +398,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &64
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc175e04d50ac6e48b086196121cef1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &66
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,7 +989,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48}
   m_LocalRotation: {x: -0.13052624, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: -393, z: -1200}
+  m_LocalPosition: {x: 0, y: -400, z: -1200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 187}
@@ -2185,7 +2169,7 @@ MonoBehaviour:
   tokenDetailsWindow: {fileID: 114111364633692442}
   cardHoverDetail: {fileID: 5265435531635378363}
   draggableHolderRectTransform: {fileID: 1610149764}
-  tableScroll: {fileID: 631}
+  tableScroll: {fileID: 0}
   _dropZoneTemplate: {fileID: 1000011432613132, guid: 1156e72892331c64397bcd330e4ea6c6,
     type: 3}
   StatusBar: {fileID: 1243788745}
@@ -2364,36 +2348,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundFXName: 
   hoverFXName: TokenHover
---- !u!114 &631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Content: {fileID: 462}
-  m_Horizontal: 1
-  m_Vertical: 1
-  m_MovementType: 2
-  m_Elasticity: 0.1
-  m_Inertia: 1
-  m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 0
-  m_Viewport: {fileID: 0}
-  m_HorizontalScrollbar: {fileID: 0}
-  m_VerticalScrollbar: {fileID: 0}
-  m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 2
-  m_HorizontalScrollbarSpacing: -3
-  m_VerticalScrollbarSpacing: -3
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6127,7 +6081,7 @@ PrefabInstance:
     - target: {fileID: 4645126518579149436, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000027656555
+      value: 0.00013828278
       objectReference: {fileID: 0}
     - target: {fileID: 4645126518784053587, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
@@ -16416,7 +16370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -5.0000305}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1243788745
@@ -22494,7 +22448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -101, y: 0}
+  m_AnchoredPosition: {x: -100.99988, y: 0}
   m_SizeDelta: {x: -1102.2994, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1909590238 stripped
@@ -23694,7 +23648,7 @@ MonoBehaviour:
   _speedControlUi: {fileID: 0}
   _uiController: {fileID: 937582878}
   tableCanvas: {fileID: 341}
-  tableScroll: {fileID: 631}
+  tableScroll: {fileID: 0}
   menuCanvas: {fileID: 980569408}
 --- !u!1 &2138126489
 GameObject:
@@ -24685,7 +24639,7 @@ PrefabInstance:
     - target: {fileID: 1784779315677875502, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.0000305
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 1784779315865869679, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
         type: 3}
