@@ -62,6 +62,7 @@ namespace SecretHistories.Entities
 
         public static Portal CreateEndingPortal(Ending ending,string endingOtherworldId)
         {
+            //we're passing the ending ID as the portal ID. This is okay, but kludgy
             var endingPortal = new Portal(ending.Id) {OtherworldId = endingOtherworldId,Icon=ending.Image,Consequences = new List<LinkedRecipeDetails>()};
             return endingPortal;
         }

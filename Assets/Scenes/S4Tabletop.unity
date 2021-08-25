@@ -3737,10 +3737,10 @@ RectTransform:
   m_Father: {fileID: 1768254034}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 996, y: -90}
-  m_SizeDelta: {x: 488, y: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 90}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &127017955
 MonoBehaviour:
@@ -4830,10 +4830,10 @@ RectTransform:
   m_Father: {fileID: 1768254034}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 488, y: -90}
-  m_SizeDelta: {x: 488, y: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 90}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &229039626
 MonoBehaviour:
@@ -6118,7 +6118,7 @@ PrefabInstance:
     - target: {fileID: 4645126518579149436, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0006170273
+      value: 0.00072574615
       objectReference: {fileID: 0}
     - target: {fileID: 4645126518784053587, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
@@ -7291,9 +7291,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 350}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539260420
 MonoBehaviour:
@@ -11323,7 +11323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &872153023
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11423,6 +11423,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dominions: []
+  _ceremonies:
+  - {fileID: 0}
   _transitionFx: {fileID: 872153027}
   otherworldSpecificEnRouteSphere: {fileID: 1470560994}
   editableId: anotherdescent
@@ -12601,13 +12603,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1011039109}
   - component: {fileID: 1011039111}
+  - component: {fileID: 1011039110}
   m_Layer: 5
   m_Name: AnotherDescentContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1011039109
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12631,6 +12634,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -400, y: -400}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1011039110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011039108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9516b16b9d934964f8db8c166e13a584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Title: {fileID: 1671440310}
+  Description: {fileID: 572002103}
+  Image: {fileID: 775914244}
 --- !u!111 &1011039111
 Animation:
   m_ObjectHideFlags: 0
@@ -18846,6 +18864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dominions:
   - {fileID: 729575454}
+  _ceremonies: []
   _transitionFx: {fileID: 0}
   otherworldSpecificEnRouteSphere: {fileID: 1308481383}
   editableId: mysteries
@@ -25540,6 +25559,7 @@ MonoBehaviour:
   - {fileID: 627808687}
   - {fileID: 388977809}
   - {fileID: 2051024985}
+  _ceremonies: []
   _transitionFx: {fileID: 5835571674112409605}
   otherworldSpecificEnRouteSphere: {fileID: 21383323}
   editableId: mansus

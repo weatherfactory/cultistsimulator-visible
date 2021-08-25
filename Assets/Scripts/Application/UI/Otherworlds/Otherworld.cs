@@ -15,6 +15,7 @@ using SecretHistories.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SecretHistories.Assets.Scripts.Application.UI.Otherworlds.Ceremonies;
 using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.UI
@@ -24,13 +25,14 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         //Otherworlds are NOT currently encausted or saved
         //also, we've broken the model for simplicity - this is a Manifestable which is also its own manifestation
       public   List<AbstractDominion> Dominions=>new List<AbstractDominion>(_dominions);
+      public List<AbstractOtherworldCeremony> Ceremonies=>new List<AbstractOtherworldCeremony>(_ceremonies);
        public bool Metafictional => false;
 
         [SerializeField] private List<OtherworldDominion> _dominions;
+        [SerializeField] private List<AbstractOtherworldCeremony> _ceremonies;
+
         [SerializeField] private OtherworldTransitionFX _transitionFx;
         [SerializeField] private EnRouteSphere otherworldSpecificEnRouteSphere;
-
-
 
         private readonly HashSet<Sphere> _spheres=new HashSet<Sphere>();
         private readonly List<AbstractOtherworldAttendant> _attendants=new List<AbstractOtherworldAttendant>();
@@ -200,7 +202,13 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
 
             ActivateEgress();
+            ActivateHeralds();
 
+        }
+
+        private void ActivateHeralds()
+        {
+            throw new NotImplementedException();
         }
 
         void OnShowComplete()
@@ -264,6 +272,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
                 else
                     d.Dismiss();
             }
+
+
 
             EnactConsequences();
 

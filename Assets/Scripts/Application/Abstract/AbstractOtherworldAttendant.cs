@@ -10,6 +10,7 @@ using SecretHistories.Fucine;
 
 namespace SecretHistories.Abstract
 {
+    //Attendants govern token and sphere behaviour in an otherworld.
     public abstract class AbstractOtherworldAttendant: ISphereEventSubscriber
     {
         protected readonly Otherworld _otherworld;
