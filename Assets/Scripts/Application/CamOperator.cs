@@ -122,18 +122,21 @@ public class CamOperator : MonoBehaviour {
                 smoothTargetPosition.z -= currentZoomInput;
         }
 
-        if (attachedCamera.transform.position != snapTargetPosition)
+        if (Vector3. Distance(attachedCamera.transform.position,snapTargetPosition)>0)
         {
             snapTargetPosition = ClampToNavigationRect(navigationLimits, snapTargetPosition);
             attachedCamera.transform.position = snapTargetPosition;
             smoothTargetPosition = attachedCamera.transform.position;
         }
 
-        else if (attachedCamera.transform.position != smoothTargetPosition)
+        else if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 0)
         {
             smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
+            Debug.Log($"CamOps: SmoothTargetPosition after clamp{smoothTargetPosition}");
+            
             attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, smoothTargetPosition,
                 ref cameraVelocity, cameraMoveDuration);
+            Debug.Log($"CamOps: attachedCamera.transform.position after move{attachedCamera.transform.position}");
             snapTargetPosition = attachedCamera.transform.position;
         }
 
@@ -144,11 +147,21 @@ public class CamOperator : MonoBehaviour {
         //CACHE THESE ON ZOOM!
         Vector2 adjustedMin = getCameraPositionAboveTableAdjustedForRotation(limitTo.rect.min);
         Vector2 adjustedMax = getCameraPositionAboveTableAdjustedForRotation(limitTo.rect.max);
-
+        
         targetPosition.x = Mathf.Clamp(targetPosition.x, adjustedMin.x, adjustedMax.x);
         targetPosition.y = Mathf.Clamp(targetPosition.y, adjustedMin.y, adjustedMax.y);
 
         return targetPosition;
+
+    }
+
+    public void OnGUI()
+    {
+        Vector2 adjustedMin = getCameraPositionAboveTableAdjustedForRotation(navigationLimits.rect.min);
+        Vector2 adjustedMax = getCameraPositionAboveTableAdjustedForRotation(navigationLimits.rect.max);
+
+        GUI.Label(new Rect(10,10,200,20),$"adjustedMin: {adjustedMin} adjustedMax: {adjustedMax}");
+        GUI.Label(new Rect(10, 30, 200, 20), $"smoothTarget: {smoothTargetPosition}");
 
     }
 
