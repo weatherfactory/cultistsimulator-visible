@@ -25,6 +25,8 @@ public class CamOperator : MonoBehaviour {
     private Vector3 snapTargetPosition;
     private Vector3 smoothTargetPosition;
     private Vector3 cameraVelocity = Vector3.zero;
+    private Vector2 AdjustedCameraBoundsMin;
+    private Vector2 AdjustedCameraBoundsMax;
 
     [SerializeField]
     private  float pan_step_distance;
@@ -54,7 +56,14 @@ public class CamOperator : MonoBehaviour {
         attachedCamera = gameObject.GetComponent<Camera>();
         snapTargetPosition = attachedCamera.transform.position;
         smoothTargetPosition = attachedCamera.transform.position;
+        SetNavigationLimitsBasedOnCurrentCameraHeight();
 
+    }
+
+    private void SetNavigationLimitsBasedOnCurrentCameraHeight()
+    {
+        AdjustedCameraBoundsMin = getCameraPositionAboveTableAdjustedForRotation(navigationLimits.rect.min);
+        AdjustedCameraBoundsMax = getCameraPositionAboveTableAdjustedForRotation(navigationLimits.rect.max);
     }
 
     public void OnTruckEvent(TruckEventArgs args)
@@ -119,7 +128,10 @@ public class CamOperator : MonoBehaviour {
                 smoothTargetPosition.y += currentPedestalInput;
 
             if (currentZoomInput != 0)
+            {
                 smoothTargetPosition.z -= currentZoomInput;
+                smoothTargetPosition.z = Mathf.Clamp(smoothTargetPosition.z, zoom_z_far, zoom_z_close);
+            }
         }
 
         if (Vector3. Distance(attachedCamera.transform.position,snapTargetPosition)>0)
@@ -136,20 +148,20 @@ public class CamOperator : MonoBehaviour {
             
             attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, smoothTargetPosition,
                 ref cameraVelocity, cameraMoveDuration);
-            Debug.Log($"CamOps: attachedCamera.transform.position after move{attachedCamera.transform.position}");
+            
             snapTargetPosition = attachedCamera.transform.position;
+
+            SetNavigationLimitsBasedOnCurrentCameraHeight(); //so this is called every time the camera smooth-moves, which works but is clunky.
+
         }
 
     }
 
     private Vector3 ClampToNavigationRect(RectTransform limitTo, Vector3 targetPosition)
     {
-        //CACHE THESE ON ZOOM!
-        Vector2 adjustedMin = getCameraPositionAboveTableAdjustedForRotation(limitTo.rect.min);
-        Vector2 adjustedMax = getCameraPositionAboveTableAdjustedForRotation(limitTo.rect.max);
         
-        targetPosition.x = Mathf.Clamp(targetPosition.x, adjustedMin.x, adjustedMax.x);
-        targetPosition.y = Mathf.Clamp(targetPosition.y, adjustedMin.y, adjustedMax.y);
+        targetPosition.x = Mathf.Clamp(targetPosition.x, AdjustedCameraBoundsMin.x, AdjustedCameraBoundsMax.x);
+        targetPosition.y = Mathf.Clamp(targetPosition.y, AdjustedCameraBoundsMin.y, AdjustedCameraBoundsMax.y);
 
         return targetPosition;
 
@@ -157,11 +169,10 @@ public class CamOperator : MonoBehaviour {
 
     public void OnGUI()
     {
-        Vector2 adjustedMin = getCameraPositionAboveTableAdjustedForRotation(navigationLimits.rect.min);
-        Vector2 adjustedMax = getCameraPositionAboveTableAdjustedForRotation(navigationLimits.rect.max);
-
-        GUI.Label(new Rect(10,10,200,20),$"adjustedMin: {adjustedMin} adjustedMax: {adjustedMax}");
-        GUI.Label(new Rect(10, 30, 200, 20), $"smoothTarget: {smoothTargetPosition}");
+        
+        GUI.Label(new Rect(10,10,200,20),$"adjustedMin: {AdjustedCameraBoundsMin}");
+        GUI.Label(new Rect(10, 30, 200, 20), $"adjustedMax: {AdjustedCameraBoundsMax}");
+        GUI.Label(new Rect(10, 50, 200, 20), $"smoothTarget: {smoothTargetPosition}");
 
     }
 
