@@ -133,12 +133,14 @@ namespace SecretHistories.Constants
             var characterCreationCommand=CharacterCreationCommand.Reincarnate(Watchman.Get<Stable>().Protag().InProgressHistoryRecords, NullLegacy.Create(), ending);
             characterCreationCommand.Execute(Watchman.Get<Stable>());
 
-            var endingPortal = Portal.CreateEndingPortal(ending, "anotherdescent");
+            Watchman.Get<StageHand>().EndingScreen();
 
-            var endingIngressCreationCommand = new IngressCreationCommand(endingPortal);
-            var tokenCreationCommand = new TokenCreationCommand(endingIngressCreationCommand, focusOnToken.Location);
-            var ingressToken = tokenCreationCommand.Execute(Context.Unknown(), focusOnToken.Sphere);
-            ingressToken.Payload.OpenAt(ingressToken.Location);
+            //var endingPortal = Portal.CreateEndingPortal(ending, "anotherdescent");
+
+            //var endingIngressCreationCommand = new IngressCreationCommand(endingPortal);
+            //var tokenCreationCommand = new TokenCreationCommand(endingIngressCreationCommand, focusOnToken.Location);
+            //var ingressToken = tokenCreationCommand.Execute(Context.Unknown(), focusOnToken.Sphere);
+            //ingressToken.Payload.OpenAt(ingressToken.Location);
         }
 
 
