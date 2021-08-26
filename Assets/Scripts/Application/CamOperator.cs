@@ -1,17 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using SecretHistories.UI;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using SecretHistories.Constants;
-using SecretHistories.Enums;
-using SecretHistories.Fucine;
-using UnityEngine.SocialPlatforms;
-using UnityEngine.UIElements;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
+
 
 
 [RequireComponent(typeof(Camera))]
@@ -22,7 +18,6 @@ public class CamOperator : MonoBehaviour {
     private float currentPedestalInput;
     private float currentZoomInput;
     private Vector3 currentSnapInput;
-    private Vector3 snapTargetPosition;
     private Vector3 smoothTargetPosition;
     private Vector3 cameraVelocity = Vector3.zero;
     private Vector2 AdjustedCameraBoundsMin;
@@ -45,6 +40,8 @@ public class CamOperator : MonoBehaviour {
     [SerializeField] private RectTransform navigationLimits;
 
 
+    public event Action OnCameraArrived;
+
     public void Awake()
     {
         var w = new Watchman();
@@ -55,7 +52,6 @@ public class CamOperator : MonoBehaviour {
     protected void Start()
     {
         attachedCamera = gameObject.GetComponent<Camera>();
-        snapTargetPosition = attachedCamera.transform.position;
         smoothTargetPosition = attachedCamera.transform.position;
         SetNavigationLimitsBasedOnCurrentCameraHeight();
 
@@ -83,15 +79,6 @@ public class CamOperator : MonoBehaviour {
 
     public void OnZoomEvent(ZoomLevelEventArgs args)
     {
-        if (args.AbsoluteTargetZoomLevel == ZoomLevel.Close)
-            snapTargetPosition.z = zoom_z_close;
-
-        if (args.AbsoluteTargetZoomLevel == ZoomLevel.Mid)
-            snapTargetPosition.z = zoom_z_mid;
-
-        if (args.AbsoluteTargetZoomLevel == ZoomLevel.Far)
-            snapTargetPosition.z = zoom_z_far;
-
         //NB: this result is received when the zoom-increment key is lifted, at which point it'll be set to 0 and stop the zoom continuing
         //if we receive a zoom with an absolute value, that will also reset-and-halt any ongoing zoom effects
 
@@ -117,9 +104,12 @@ public class CamOperator : MonoBehaviour {
 
         if (currentSnapInput != Vector3.zero)
         {
-           snapTargetPosition += currentSnapInput;
-           currentSnapInput = Vector3.zero;
+            Vector3 snapTargetPosition = attachedCamera.transform.position;
 
+           snapTargetPosition = ClampToNavigationRect(navigationLimits, snapTargetPosition);
+           attachedCamera.transform.position = snapTargetPosition;
+           currentSnapInput = Vector3.zero;
+           cameraHasArrived();
         }
         else
         {
@@ -142,35 +132,32 @@ public class CamOperator : MonoBehaviour {
                 smoothTargetPosition.z = Mathf.Clamp(smoothTargetPosition.z, zoom_z_far, zoom_z_close);
                 currentCameraMoveDuration = cameraMoveDuration; //reset to standard duration if we're moving manually again
             }
+
+            if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 1)
+            {
+                smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
+
+                attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, smoothTargetPosition,
+                    ref cameraVelocity, currentCameraMoveDuration);
+
+                if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 1)
+                    cameraHasArrived();
+
+                SetNavigationLimitsBasedOnCurrentCameraHeight(); //so this is called every time the camera smooth-moves, which works but is clunky.
+
+            }
         }
 
-        if (Vector3. Distance(attachedCamera.transform.position,snapTargetPosition)>1)
-        {
-            snapTargetPosition = ClampToNavigationRect(navigationLimits, snapTargetPosition);
-            attachedCamera.transform.position = snapTargetPosition;
-            smoothTargetPosition = attachedCamera.transform.position;
-        }
 
-        else if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 1)
-        {
-            smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
-            Debug.Log($"CamOps: SmoothTargetPosition after clamp{smoothTargetPosition}");
-            
-            attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, smoothTargetPosition,
-                ref cameraVelocity, currentCameraMoveDuration);
-            
-            snapTargetPosition = attachedCamera.transform.position;
 
-            SetNavigationLimitsBasedOnCurrentCameraHeight(); //so this is called every time the camera smooth-moves, which works but is clunky.
 
-        }
+    }
 
-        if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 1)
-        {
-            currentCameraMoveDuration = cameraMoveDuration; //If we're at the target position, always reset to standard movement speed
-
-        }
-
+    private void cameraHasArrived()
+    {
+        smoothTargetPosition = attachedCamera.transform.position;
+        currentCameraMoveDuration = cameraMoveDuration; //If we're at the target position, always reset to standard movement speed
+        OnCameraArrived?.Invoke();
     }
 
     private Vector3 ClampToNavigationRect(RectTransform limitTo, Vector3 targetPosition)
@@ -197,6 +184,12 @@ public class CamOperator : MonoBehaviour {
     {
         smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition);
         currentCameraMoveDuration = secondsTakenToGetThere;
+    }
+
+    public void PointCameraAtTableLevelVector2(Vector2 targetPosition, float secondsTakenToGetThere,Action onArrival)
+    {
+        OnCameraArrived += onArrival;
+        PointCameraAtTableLevelVector2(targetPosition,secondsTakenToGetThere);
     }
 
 

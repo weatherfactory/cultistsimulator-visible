@@ -59,43 +59,25 @@ namespace SecretHistories.Constants {
 
             // TODO: play death effect / music
 
-            // Start hiding all tokens
-    
-
-   
+         
+     
             
-            float time = 0f;
-            Vector2 startPos = tableScroll.content.anchoredPosition;
-            Vector2 targetPos = -1f * focusOnTransform.anchoredPosition + targetPosOffset;
-            // ^ WARNING: targetPosOffset fixes the difference between the scrollable and tokenParent rect sizes 
-
-            Debug.Log("Target Zoom Pos " + targetPos);
-
 
            // cameraZoom.StartFixedZoom(0f, zoomDuration);
 
             var menuBarCanvasGrp = menuCanvas.GetComponent<CanvasGroup>();
 
 
-            while (time < zoomDuration && !_uiController.IsPressingAbortHotkey()) {
-                menuBarCanvasGrp.alpha = 1f - time; // remove lower button bar.
-                tableScroll.content.anchoredPosition = Vector2.Lerp(startPos, targetPos, Easing.Circular.Out((time / zoomDuration)));
-                yield return null;
-                time += Time.deltaTime;
-            }
-
-            // automatically jumps here on Abort - NOTE: At the moment this auto-focuses the token, but that's okay, it's important info
-            tableScroll.content.anchoredPosition = targetPos;
 
 
             menuBarCanvasGrp.alpha = 0f;
             
 
             // TODO: Put the fade into the while loop so that on aborting the zoom still continues
-            Watchman.Get<TabletopFadeOverlay>().FadeToBlack(fadeDuration);
+            
             yield return new WaitForSeconds(fadeDuration);
 
-            Watchman.Get<StageHand>().EndingScreen();
+            
 
         }
 

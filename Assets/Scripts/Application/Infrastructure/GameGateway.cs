@@ -140,24 +140,32 @@ namespace SecretHistories.Constants
             
             //Glowy cracky effect on token
             InstantiateCSEndingEffect(ending, focusOnToken);
-            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position,3f);
-            StartCoroutine(FadeToEndingScreen());
-            //Ending: pause before screen switch
+            
+            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position,5f, FinalTransitionToEndingScreen);
             //Ending: slow fade
-            //Ending: zoom to causative token
+            
             //Ending: music
+
+            //Ending: allow AbortHotkey to abort
 
             //ending: enable input
             //ending: unmetapause
 
-
-
-
         }
+
+
+
+        public void FinalTransitionToEndingScreen()
+        {
+            StartCoroutine(FadeToEndingScreen());
+        }
+
+        
 
         private IEnumerator FadeToEndingScreen()
         {
-            yield return new WaitForSeconds(3f);
+            Watchman.Get<TabletopFadeOverlay>().FadeToBlack(2f);
+            yield return new WaitForSeconds(2f);
             Watchman.Get<StageHand>().EndingScreen();
         }
 
