@@ -21,10 +21,7 @@ public class CameraNavigationRect : MonoBehaviour, IDragHandler, IBeginDragHandl
 	//ScrollRect scrollRect;
     // Vector4 order is Top, Right, Bottom, Left
 #pragma warning disable 649
-	[SerializeField] float edgeAreaSize = 0.1f;
-	[SerializeField] Vector4 edgePadding;
-    [SerializeField] float timeout = 0.1f;
-    [SerializeField] private float driftAfterDrag = 0.02f;
+	[SerializeField] private float driftAfterDrag;
 
 
     
@@ -38,35 +35,16 @@ public class CameraNavigationRect : MonoBehaviour, IDragHandler, IBeginDragHandl
     Vector2 firstMousePos;
     Vector2 lastMousePos;
     Vector2 mousePos;
-	Vector4 innerBounds;
-	Vector2 marginVect;
+	
 
     private Vector2 lastChangeVector;
     
-    void Awake()
-    {
-        
-    }
+    
 
     void Start() {
 
         Watchman.Get<HornedAxe>().Subscribe(this);
-
-        //// TODO: Disable on touch?
-
-        marginVect = new Vector2();
-
-		if (Screen.width < Screen.height) {
-			marginVect.x = edgeAreaSize;
-			marginVect.y = edgeAreaSize * Screen.width / Screen.height;
-		}
-		else {
-			marginVect.x = edgeAreaSize * Screen.height / Screen.width;
-			marginVect.y = edgeAreaSize;
-		}
-		
-		innerBounds = new Vector4(0.5f - edgePadding.x - marginVect.y, 0.5f - edgePadding.y - marginVect.x, -0.5f + edgePadding.z + marginVect.y, -0.5f + edgePadding.w + marginVect.x);
-	}
+    }
 
 	public void OnPointerEnter(PointerEventData eventData) {
 		pointerInRect = true;

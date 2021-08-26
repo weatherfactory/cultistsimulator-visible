@@ -386,7 +386,7 @@ MonoBehaviour:
   edgeAreaSize: 0.1
   edgePadding: {x: 0, y: 0, z: 0.08, w: 0}
   timeout: 0.1
-  driftAfterDrag: 2
+  driftAfterDrag: 0.5
 --- !u!225 &63
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5675,7 +5675,7 @@ PrefabInstance:
     - target: {fileID: 4645126518579149436, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0003042221
+      value: 0.00044345856
       objectReference: {fileID: 0}
     - target: {fileID: 4645126518784053587, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
