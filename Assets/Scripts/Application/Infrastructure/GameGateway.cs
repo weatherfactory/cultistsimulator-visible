@@ -26,7 +26,6 @@ namespace SecretHistories.Constants
     public class GameGateway:MonoBehaviour
     {
 
-        [SerializeField] private EndGameAnimController _endGameAnimController;
 
         public bool DontLoadGame;
         public void Awake()
