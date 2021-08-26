@@ -169,13 +169,23 @@ public class SoundManager : AudioManager, ISettingSubscriber
 
     public static int PlaySfx(string name) {
         if (Instance == null)
+        {
+            NoonUtility.LogWarning($"Trying to play SFX {name}: null SoundManager instance");
             return -1;
-
-		if (string.IsNullOrEmpty(name))
-			return -1;
+        }
+        if (string.IsNullOrEmpty(name))
+        {
+            NoonUtility.LogWarning("Trying to play SFX: null or empty name");
+            return -1;
+        }
 
         if (Instance.soundsThisFrame.Contains(name))
+        {
+            NoonUtility.Log($"Trying to play SFX {name}: but it was already played this frame");
             return -1;
+        }
+
+        NoonUtility.Log("Playing SFX clip: " +name, 0, VerbosityLevel.Trivia);
 
         return Instance.PlaySound(name, -1);
     }

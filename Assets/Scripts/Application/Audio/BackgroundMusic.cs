@@ -65,10 +65,7 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
     }
 
     public virtual void PlayNextClip() {
-        //currentTrackNumber++;
-        //if (currentTrackNumber == backgroundMusic.Count())
-        //    currentTrackNumber = 0;
-        //PlayClip(currentTrackNumber);
+
 
         PlayClip(random.Next(1, backgroundMusic.Count()), backgroundMusic); //never plays the first clip
 
@@ -97,6 +94,25 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
         audioSource.Stop();
         audioSource.PlayOneShot(clip);
         NoonUtility.Log("Playing" + currentClip.name, 0, VerbosityLevel.Trivia);
+    }
+
+
+
+    public void FadeToSilence(float overSeconds)
+    {
+        StartCoroutine(ChangeVolumeOverTime(audioSource.volume, 0f, overSeconds));
+    }
+
+    private IEnumerator ChangeVolumeOverTime(float fromVol,float toVol, float changeOverSeconds)
+    {
+        float elapsedSeconds = 0f;
+
+        while (elapsedSeconds < changeOverSeconds)
+        {
+            elapsedSeconds += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(fromVol, toVol, elapsedSeconds / changeOverSeconds);
+            yield return null;
+        }
     }
 
     public void SignalEndingFlavour(EndingFlavour endingFlavour) {

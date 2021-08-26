@@ -136,21 +136,20 @@ namespace SecretHistories.Constants
             var characterCreationCommand=CharacterCreationCommand.Reincarnate(Watchman.Get<Stable>().Protag().InProgressHistoryRecords, NullLegacy.Create(), ending);
             characterCreationCommand.Execute(Watchman.Get<Stable>());
 
-            //GraphicRaycaster rayCaster;
-            //rayCaster = tableCanvas.GetComponent<GraphicRaycaster>();
-            //rayCaster.enabled = false; // Disable clicks on tabletop
-
-            //rayCaster = menuCanvas.GetComponent<GraphicRaycaster>();
-            //rayCaster.enabled = false; // Disable clicks on Screen
-
-            Watchman.Get<Heart>().Metapause();
             
+            //stop everything
+            Watchman.Get<Heart>().Metapause();
+
+            //stop current music clip
+            Watchman.Get<BackgroundMusic>().FadeToSilence(3f);
+
+
             InstantiateCSEndingEffect(ending, focusOnToken);
 
             Watchman.Get<LocalNexus>().DisablePlayerInput(10f);
 
             Watchman.Get<LocalNexus>().AbortEvent.AddListener(FinalTransitionToEndingScreen);
-            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position,3f, FinalTransitionToEndingScreen);
+            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position,2f, FinalTransitionToEndingScreen);
             //and zoom in?
             
             //Ending: music
