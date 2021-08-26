@@ -19,6 +19,7 @@ using SecretHistories.Infrastructure.Persistence;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SecretHistories.Constants
 {
@@ -136,25 +137,25 @@ namespace SecretHistories.Constants
             var characterCreationCommand=CharacterCreationCommand.Reincarnate(Watchman.Get<Stable>().Protag().InProgressHistoryRecords, NullLegacy.Create(), ending);
             characterCreationCommand.Execute(Watchman.Get<Stable>());
 
-            Watchman.Get<Heart>().Metapause(); //for giiven duration maybe?
-         
+            //GraphicRaycaster rayCaster;
+            //rayCaster = tableCanvas.GetComponent<GraphicRaycaster>();
+            //rayCaster.enabled = false; // Disable clicks on tabletop
+
+            //rayCaster = menuCanvas.GetComponent<GraphicRaycaster>();
+            //rayCaster.enabled = false; // Disable clicks on Screen
+
+            Watchman.Get<Heart>().Metapause();
             
-            //Glowy cracky effect on token
             InstantiateCSEndingEffect(ending, focusOnToken);
 
             Watchman.Get<LocalNexus>().DisablePlayerInput(10f);
 
             Watchman.Get<LocalNexus>().AbortEvent.AddListener(FinalTransitionToEndingScreen);
             Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position,3f, FinalTransitionToEndingScreen);
-            //Ending: slow fade
+            //and zoom in?
             
             //Ending: music
 
-            //Ending: allow AbortHotkey to abort
-
-            //ending: enable input
-            //ending: unmetapause
-            
 
         }
 

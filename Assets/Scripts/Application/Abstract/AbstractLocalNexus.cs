@@ -25,7 +25,9 @@ namespace SecretHistories.Fucine
        [SerializeField] public UnityEvent AbortEvent;
         [SerializeField] public UnityEvent ToggleDebugEvent;
        [SerializeField] public UnityEvent StackCardsEvent;
-       [SerializeField] public SpeedControlEvent SpeedControlEvent;
+       [SerializeField] public UnityEvent LockInteractionEvent;
+       [SerializeField] public UnityEvent UnlockInteractionEvent;
+        [SerializeField] public SpeedControlEvent SpeedControlEvent;
        [SerializeField] public ZoomLevelEvent ZoomLevelEvent;
        [SerializeField] public TruckEvent TruckEvent;
        [SerializeField] public PedestalEvent PedestalEvent;
@@ -52,12 +54,14 @@ namespace SecretHistories.Fucine
                 _enablePlayerInputAfterDelayCoroutine = StartCoroutine(EnablePlayerInputAfterDelay(forSeconds));
 
             playerInputDisabled = true;
+            LockInteractionEvent.Invoke();
         }
 
         protected IEnumerator EnablePlayerInputAfterDelay(float afterDelay)
         {
             yield return new WaitForSeconds(afterDelay);
-            playerInputDisabled = true; //this may re-enable things we don't want
+            playerInputDisabled = false; //this may re-enable things we don't want
+            UnlockInteractionEvent.Invoke();
         }
 
         public void EnablePlayerInput()
@@ -65,7 +69,8 @@ namespace SecretHistories.Fucine
             if (_enablePlayerInputAfterDelayCoroutine != null)
                 StopCoroutine(_enablePlayerInputAfterDelayCoroutine);
 
-            playerInputDisabled = false;
+            playerInputDisabled = false; //this may re-enable things we don't want
+            UnlockInteractionEvent.Invoke();
         }
 
 
