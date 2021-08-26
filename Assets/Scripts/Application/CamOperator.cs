@@ -26,15 +26,16 @@ public class CamOperator : MonoBehaviour {
     private  float pan_step_distance;
     [SerializeField]
     private float zoom_step_distance;
-    [SerializeField]
-    private float zoom_z_close;
-    [SerializeField]
-    private float zoom_z_mid;
-    [SerializeField]
-    private float zoom_z_far;
+    
+    public const float ZOOM_Z_CLOSE=-30f;
+
+    public const float ZOOM_Z_MID=-600f;
+    
+    public const float ZOOM_Z_FAR =-1200f;
 
     [SerializeField] private float cameraMoveDuration;
     private float currentCameraMoveDuration; //overridden by eg pooint-to instructions
+    private float currentMoveDurationRemaining = 0f;
 
     [SerializeField] private RectTransform navigationLimits;
 
@@ -78,11 +79,17 @@ public class CamOperator : MonoBehaviour {
 
     public void OnZoomEvent(ZoomLevelEventArgs args)
     {
-        //NB: this result is received when the zoom-increment key is lifted, at which point it'll be set to 0 and stop the zoom continuing
-        //if we receive a zoom with an absolute value, that will also reset-and-halt any ongoing zoom effects
+        if (args.AbsoluteTargetZoomLevel == ZoomLevel.Close)
+            smoothTargetPosition.z = ZOOM_Z_CLOSE;
 
-        currentZoomInput = args.CurrentZoomInput * zoom_step_distance;
-        Debug.Log($"Zoom event {currentZoomInput}");
+       else if (args.AbsoluteTargetZoomLevel == ZoomLevel.Mid)
+            smoothTargetPosition.z = ZOOM_Z_MID;
+
+        else if (args.AbsoluteTargetZoomLevel == ZoomLevel.Far)
+            smoothTargetPosition.z = ZOOM_Z_FAR;
+        else
+          currentZoomInput = args.CurrentZoomInput * zoom_step_distance;
+
 
 
     }
@@ -103,6 +110,8 @@ public class CamOperator : MonoBehaviour {
     public void Update()
     {
 
+       if(Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 10)
+            currentMoveDurationRemaining -= Time.deltaTime;
 
             if (currentTruckInput != 0)
             {
@@ -120,18 +129,18 @@ public class CamOperator : MonoBehaviour {
             if (currentZoomInput != 0)
             {
                 smoothTargetPosition.z -= currentZoomInput;
-                smoothTargetPosition.z = Mathf.Clamp(smoothTargetPosition.z, zoom_z_far, zoom_z_close);
+                smoothTargetPosition.z = Mathf.Clamp(smoothTargetPosition.z, ZOOM_Z_FAR, ZOOM_Z_CLOSE);
                 currentCameraMoveDuration = cameraMoveDuration; //reset to standard duration if we're moving manually again
             }
 
-            if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 1)
+            if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 10)
             {
                 smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
 
                 attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, smoothTargetPosition,
                     ref cameraVelocity, currentCameraMoveDuration);
 
-                if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 1)
+                if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 10)
                     cameraHasArrived();
 
                 SetNavigationLimitsBasedOnCurrentCameraHeight(); //so this is called every time the camera smooth-moves, which works but is clunky.
@@ -148,6 +157,7 @@ public class CamOperator : MonoBehaviour {
     {
         smoothTargetPosition = attachedCamera.transform.position;
         currentCameraMoveDuration = cameraMoveDuration; //If we're at the target position, always reset to standard movement speed
+        currentMoveDurationRemaining = 0f;
         OnCameraArrived?.Invoke();
     }
 
@@ -161,20 +171,23 @@ public class CamOperator : MonoBehaviour {
 
     }
 
-    //public void OnGUI()
-    //{
-        
-    //    GUI.Label(new Rect(10,10,200,20),$"adjustedMin: {AdjustedCameraBoundsMin}");
-    //    GUI.Label(new Rect(10, 30, 200, 20), $"adjustedMax: {AdjustedCameraBoundsMax}");
-    //    GUI.Label(new Rect(10, 50, 200, 20), $"smoothTarget: {smoothTargetPosition}");
+    public void OnGUI()
+    {
 
-    //}
+        GUI.Label(new Rect(10, 10, 300, 20), $"currentCameraMoveDuration: {currentCameraMoveDuration}");
+        GUI.Label(new Rect(10, 30, 300, 20), $"currentMoveDurationRemaining: {currentMoveDurationRemaining}");
+        GUI.Label(new Rect(10, 50, 300, 20), $"camera position: {attachedCamera.transform.position}");
+        GUI.Label(new Rect(10, 70, 300, 20), $"smoothTarget: {smoothTargetPosition}");
+        GUI.Label(new Rect(10, 90, 300, 20), $"cam velocity: {cameraVelocity}");
+
+    }
 
 
     public void PointCameraAtTableLevelVector2(Vector2 targetPosition,float secondsTakenToGetThere)
     {
         smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition);
         currentCameraMoveDuration = secondsTakenToGetThere;
+        currentMoveDurationRemaining = secondsTakenToGetThere;
     }
 
     public void PointCameraAtTableLevelVector2(Vector2 targetPosition, float secondsTakenToGetThere,Action onArrival)

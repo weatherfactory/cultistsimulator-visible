@@ -149,11 +149,8 @@ namespace SecretHistories.Constants
             Watchman.Get<LocalNexus>().DisablePlayerInput(10f);
 
             Watchman.Get<LocalNexus>().AbortEvent.AddListener(FinalTransitionToEndingScreen);
-            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position,2f, FinalTransitionToEndingScreen);
-            //and zoom in?
             
-            //Ending: music
-
+            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position, 1f, FinalTransitionToEndingScreen);
 
         }
 
@@ -182,6 +179,8 @@ namespace SecretHistories.Constants
                 effectName = "DramaticLight";
             else
                 effectName = ending.Anim;
+
+            Debug.Log(effectName);
             
             var prefab = Resources.Load("FX/EndGame/" + effectName);
 
