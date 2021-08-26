@@ -16,7 +16,7 @@ using SecretHistories.Spheres;
 using Vector2 = UnityEngine.Vector2;
 using Vector4 = UnityEngine.Vector4;
 
-public class CameraNavigationRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ISphereCatalogueEventSubscriber  {
+public class CameraDragRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler,ISphereCatalogueEventSubscriber  {
 	
 	//ScrollRect scrollRect;
     // Vector4 order is Top, Right, Bottom, Left

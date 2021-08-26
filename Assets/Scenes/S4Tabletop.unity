@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 62}
   - component: {fileID: 63}
   m_Layer: 5
-  m_Name: CameraNavigationRect
+  m_Name: CameraDragRect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,9 +383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabe8f01c85034bd1aaf4235ab7e1dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  edgeAreaSize: 0.1
-  edgePadding: {x: 0, y: 0, z: 0.08, w: 0}
-  timeout: 0.1
   driftAfterDrag: 0.5
 --- !u!225 &63
 CanvasGroup:
