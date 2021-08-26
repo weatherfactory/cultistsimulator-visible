@@ -88,7 +88,7 @@ public class CameraNavigationRect : MonoBehaviour, IDragHandler, IBeginDragHandl
         if (lastMousePos != mousePos)
         {
             lastChangeVector = lastMousePos - mousePos;
-            Watchman.Get<CamOperator>().ApplySnapInputVector(lastChangeVector);
+            Watchman.Get<CamOperator>().ApplySmoothInputVector(lastChangeVector,0f);
             lastMousePos = mousePos;
         }
 

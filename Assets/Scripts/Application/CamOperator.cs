@@ -17,7 +17,6 @@ public class CamOperator : MonoBehaviour {
     private float currentTruckInput;
     private float currentPedestalInput;
     private float currentZoomInput;
-    private Vector3 currentSnapInput;
     private Vector3 smoothTargetPosition;
     private Vector3 cameraVelocity = Vector3.zero;
     private Vector2 AdjustedCameraBoundsMin;
@@ -88,10 +87,6 @@ public class CamOperator : MonoBehaviour {
 
     }
 
-    public void ApplySnapInputVector(Vector3 snapInput)
-    {
-        currentSnapInput += snapInput;
-    }
 
 
     public void ApplySmoothInputVector(Vector3 smoothInput)
@@ -99,20 +94,16 @@ public class CamOperator : MonoBehaviour {
         smoothTargetPosition += smoothInput;
     }
 
+    public void ApplySmoothInputVector(Vector3 smoothInput,float movementDuration)
+    {
+        smoothTargetPosition += smoothInput;
+        currentCameraMoveDuration = movementDuration;
+    }
+
     public void Update()
     {
 
-        if (currentSnapInput != Vector3.zero)
-        {
-            Vector3 snapTargetPosition = attachedCamera.transform.position;
 
-           snapTargetPosition = ClampToNavigationRect(navigationLimits, snapTargetPosition);
-           attachedCamera.transform.position = snapTargetPosition;
-           currentSnapInput = Vector3.zero;
-           cameraHasArrived();
-        }
-        else
-        {
             if (currentTruckInput != 0)
             {
                 smoothTargetPosition.x += currentTruckInput;
@@ -146,7 +137,7 @@ public class CamOperator : MonoBehaviour {
                 SetNavigationLimitsBasedOnCurrentCameraHeight(); //so this is called every time the camera smooth-moves, which works but is clunky.
 
             }
-        }
+        
 
 
 
