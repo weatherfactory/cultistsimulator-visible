@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace SecretHistories.Constants
         [SerializeField] private PlayerInput playerInput;
 #pragma warning restore 649
         public DebugTools _debugTools;
+
 
 
         public void Start()
@@ -51,9 +53,10 @@ namespace SecretHistories.Constants
         }
 
 
+
         public void Input_Zoom_Key(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() || playerInputDisabled)
                 return;
 
             float value;
@@ -68,7 +71,7 @@ namespace SecretHistories.Constants
 
         public void Input_Truck_Key(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() || playerInputDisabled)
                 return;
 
             float value;
@@ -83,7 +86,7 @@ namespace SecretHistories.Constants
 
         public void Input_Pedestal_Key(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() || playerInputDisabled)
                 return;
 
             float value;
@@ -97,13 +100,16 @@ namespace SecretHistories.Constants
 
         public void Input_Zoom_Scrollwheel(InputAction.CallbackContext context)
         {
+            if (playerInputDisabled)
+                return;
+
             ZoomLevelEvent.Invoke(new ZoomLevelEventArgs { CurrentZoomInput = context.ReadValue<Single>()});
         }
 
         
         public void Input_ZoomClose(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() || playerInputDisabled)
                 return;
 
             ZoomLevelEvent.Invoke(new ZoomLevelEventArgs { AbsoluteTargetZoomLevel = ZoomLevel.Close });
@@ -111,7 +117,7 @@ namespace SecretHistories.Constants
 
         public void Input_ZoomMid(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() || playerInputDisabled)
                 return;
 
             ZoomLevelEvent.Invoke(new ZoomLevelEventArgs { AbsoluteTargetZoomLevel = ZoomLevel.Mid });
@@ -119,7 +125,7 @@ namespace SecretHistories.Constants
 
         public void Input_ZoomFar(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() || playerInputDisabled)
                 return;
 
             ZoomLevelEvent.Invoke(new ZoomLevelEventArgs { AbsoluteTargetZoomLevel = ZoomLevel.Far});
@@ -172,7 +178,7 @@ namespace SecretHistories.Constants
 
         public void Input_GroupAllStacks(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() || playerInputDisabled)
                 return;
 
             StackCardsEvent.Invoke();
@@ -180,7 +186,7 @@ namespace SecretHistories.Constants
 
         public void Input_StartRecipe(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() || playerInputDisabled)
                 return;
 
             var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
@@ -196,7 +202,7 @@ namespace SecretHistories.Constants
         }
         public void Input_CollectAll(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() || playerInputDisabled)
                 return;
 
             var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
@@ -216,15 +222,17 @@ namespace SecretHistories.Constants
         public void Update()
         {
 
-            if (!enabled)
+            if (!enabled) 
                 return;
-
-        
             
-            if(Keyboard.current.backquoteKey.wasPressedThisFrame || Keyboard.current.quoteKey.wasPressedThisFrame)
+            
+            if(!playerInputDisabled)
             {
-              ToggleDebugEvent.Invoke();
-              Watchman.Get<Concursum>().ToggleSecretHistory();
+                if(Keyboard.current.backquoteKey.wasPressedThisFrame || Keyboard.current.quoteKey.wasPressedThisFrame)
+                {
+                    ToggleDebugEvent.Invoke();
+                    Watchman.Get<Concursum>().ToggleSecretHistory();
+                }
             }
 
             if (IsEditingText()) //we trigger the console cycling even if in a console input field
@@ -236,23 +244,26 @@ namespace SecretHistories.Constants
 			{
                 AbortEvent.Invoke(); //everything should in fact go through here innit
 
-				// Check for open situation windows and close them first
-				bool windowWasOpen = false;
-				var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
+                if(!playerInputDisabled)
+                {
+                    // Check for open situation windows and close them first
+                    bool windowWasOpen = false;
+                    var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
 
-				foreach (var situation in situations) {
-					if (situation.IsOpen) {
-						situation.Close();
-						windowWasOpen = true;
-						break;
-					}
-				}
+                    foreach (var situation in situations) {
+                        if (situation.IsOpen) {
+                            situation.Close();
+                            windowWasOpen = true;
+                            break;
+                        }
+                    }
 
-				if (!windowWasOpen)	// Only summon options if no windows to clear
-				{
-                    ToggleOptionsEvent.Invoke();
+                    if (!windowWasOpen)	// Only summon options if no windows to clear
+                    {
+                        ToggleOptionsEvent.Invoke();
+                    }
                 }
-			}
+            }
 
 
         }

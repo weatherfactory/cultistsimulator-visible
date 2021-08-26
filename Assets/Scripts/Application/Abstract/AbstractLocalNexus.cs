@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,15 +29,43 @@ namespace SecretHistories.Fucine
        [SerializeField] public ZoomLevelEvent ZoomLevelEvent;
        [SerializeField] public TruckEvent TruckEvent;
        [SerializeField] public PedestalEvent PedestalEvent;
-       
 
 
+       protected bool playerInputDisabled = false;
+       protected Coroutine _enablePlayerInputAfterDelayCoroutine;
 
         public void Awake()
         {
        var registry = new Watchman();
        registry.Register(this);
 
+        }
+
+        //0 seconds means 'until further notice'
+        public void DisablePlayerInput(float forSeconds)
+        {
+            if (_enablePlayerInputAfterDelayCoroutine != null)
+                StopCoroutine(_enablePlayerInputAfterDelayCoroutine);
+
+
+            if (forSeconds > 0)
+                _enablePlayerInputAfterDelayCoroutine = StartCoroutine(EnablePlayerInputAfterDelay(forSeconds));
+
+            playerInputDisabled = true;
+        }
+
+        protected IEnumerator EnablePlayerInputAfterDelay(float afterDelay)
+        {
+            yield return new WaitForSeconds(afterDelay);
+            playerInputDisabled = true; //this may re-enable things we don't want
+        }
+
+        public void EnablePlayerInput()
+        {
+            if (_enablePlayerInputAfterDelayCoroutine != null)
+                StopCoroutine(_enablePlayerInputAfterDelayCoroutine);
+
+            playerInputDisabled = false;
         }
 
 

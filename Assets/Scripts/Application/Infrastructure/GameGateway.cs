@@ -142,7 +142,8 @@ namespace SecretHistories.Constants
             //Glowy cracky effect on token
             InstantiateCSEndingEffect(ending, focusOnToken);
 
-            //Ending: disable input
+            Watchman.Get<LocalNexus>().DisablePlayerInput(10f);
+
             Watchman.Get<LocalNexus>().AbortEvent.AddListener(FinalTransitionToEndingScreen);
             Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position,3f, FinalTransitionToEndingScreen);
             //Ending: slow fade
