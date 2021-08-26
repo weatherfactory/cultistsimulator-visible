@@ -135,9 +135,11 @@ namespace SecretHistories.Constants
             characterCreationCommand.Execute(Watchman.Get<Stable>());
 
             Watchman.Get<Heart>().Metapause();
-
+            //Ending: disable input
+            
             //Glowy cracky effect on token
             InstantiateCSEndingEffect(ending, focusOnToken);
+            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position,3f);
 
             //Ending: pause before screen switch
             //Ending: slow fade
@@ -145,10 +147,11 @@ namespace SecretHistories.Constants
             //Ending: music
 
 
+            //Ending: enable input
+            //Ending: metapause
+            //        Watchman.Get<StageHand>().EndingScreen();
 
-    //        Watchman.Get<StageHand>().EndingScreen();
 
-            
         }
 
         GameObject InstantiateCSEndingEffect(Ending ending, Token focusOnToken)

@@ -235,7 +235,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
 
 
-            StartCoroutine(Watchman.Get<CamOperator>().FocusOn(_activeIngress.GetRectTransform().position, 0.5f));
+            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(_activeIngress.GetRectTransform().position,3f);
             _transitionFx.Hide(OnHideComplete);
         }
 
@@ -260,7 +260,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         public void OnArrival()
         {
             if(_activeEgress!=null) //end games, for example, have no egress in the usual sense
-                StartCoroutine(Watchman.Get<CamOperator>().FocusOn(_activeEgress.transform.position, 0.5f));
+                Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(_activeEgress.GetRectTransform().position, 3f);
+
 
             foreach (var d in _dominions)
             {

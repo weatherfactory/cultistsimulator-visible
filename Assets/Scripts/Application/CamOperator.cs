@@ -40,6 +40,7 @@ public class CamOperator : MonoBehaviour {
     private float zoom_z_far;
 
     [SerializeField] private float cameraMoveDuration;
+    private float currentCameraMoveDuration; //overridden by eg pooint-to instructions
 
     [SerializeField] private RectTransform navigationLimits;
 
@@ -123,35 +124,50 @@ public class CamOperator : MonoBehaviour {
         else
         {
             if (currentTruckInput != 0)
+            {
                 smoothTargetPosition.x += currentTruckInput;
+                currentCameraMoveDuration = cameraMoveDuration; //reset to standard duration if we're moving manually again
+            }
+
             if (currentPedestalInput != 0)
+            {
                 smoothTargetPosition.y += currentPedestalInput;
+                currentCameraMoveDuration = cameraMoveDuration; //reset to standard duration if we're moving manually again
+            }
+                
 
             if (currentZoomInput != 0)
             {
                 smoothTargetPosition.z -= currentZoomInput;
                 smoothTargetPosition.z = Mathf.Clamp(smoothTargetPosition.z, zoom_z_far, zoom_z_close);
+                currentCameraMoveDuration = cameraMoveDuration; //reset to standard duration if we're moving manually again
             }
         }
 
-        if (Vector3. Distance(attachedCamera.transform.position,snapTargetPosition)>0)
+        if (Vector3. Distance(attachedCamera.transform.position,snapTargetPosition)>1)
         {
             snapTargetPosition = ClampToNavigationRect(navigationLimits, snapTargetPosition);
             attachedCamera.transform.position = snapTargetPosition;
             smoothTargetPosition = attachedCamera.transform.position;
         }
 
-        else if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 0)
+        else if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 1)
         {
             smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
             Debug.Log($"CamOps: SmoothTargetPosition after clamp{smoothTargetPosition}");
             
             attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, smoothTargetPosition,
-                ref cameraVelocity, cameraMoveDuration);
+                ref cameraVelocity, currentCameraMoveDuration);
             
             snapTargetPosition = attachedCamera.transform.position;
 
             SetNavigationLimitsBasedOnCurrentCameraHeight(); //so this is called every time the camera smooth-moves, which works but is clunky.
+
+        }
+
+        if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 1)
+        {
+            currentCameraMoveDuration = cameraMoveDuration; //If we're at the target position, always reset to standard movement speed
 
         }
 
@@ -167,21 +183,23 @@ public class CamOperator : MonoBehaviour {
 
     }
 
-    public void OnGUI()
-    {
+    //public void OnGUI()
+    //{
         
-        GUI.Label(new Rect(10,10,200,20),$"adjustedMin: {AdjustedCameraBoundsMin}");
-        GUI.Label(new Rect(10, 30, 200, 20), $"adjustedMax: {AdjustedCameraBoundsMax}");
-        GUI.Label(new Rect(10, 50, 200, 20), $"smoothTarget: {smoothTargetPosition}");
+    //    GUI.Label(new Rect(10,10,200,20),$"adjustedMin: {AdjustedCameraBoundsMin}");
+    //    GUI.Label(new Rect(10, 30, 200, 20), $"adjustedMax: {AdjustedCameraBoundsMax}");
+    //    GUI.Label(new Rect(10, 50, 200, 20), $"smoothTarget: {smoothTargetPosition}");
 
-    }
+    //}
 
 
-    public void PointCameraAtTableLevelVector2(Vector2 targetPosition)
+    public void PointCameraAtTableLevelVector2(Vector2 targetPosition,float secondsTakenToGetThere)
     {
-
         smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition);
+        currentCameraMoveDuration = secondsTakenToGetThere;
     }
+
+
 
     private Vector3 getCameraPositionAboveTableAdjustedForRotation(Vector2 tablePosition)
     {
@@ -194,23 +212,6 @@ public class CamOperator : MonoBehaviour {
         return new Vector3(tablePosition.x, tablePosition.y - oppositeSide, attachedCamera.transform.position.z);
     }
 
-    public IEnumerator FocusOn(Vector3 targetPos, float zoomDuration)
-    {
-
-        float time = 0f;
-        Vector3 startPos = attachedCamera.transform.position;
-        Vector3 endPos = new Vector3(targetPos.x, targetPos.y - 60, startPos.z); //this y is a fudge that should actually be calculated on the fly
-
-
-        while (time < zoomDuration)
-        {
-            attachedCamera.transform.position = Vector3.Lerp(startPos, endPos, time / zoomDuration);
-            yield return null;
-            time += Time.deltaTime;
-        }
-
-
-    }
 
 
 }

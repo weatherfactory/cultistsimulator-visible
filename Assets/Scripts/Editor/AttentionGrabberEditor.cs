@@ -12,15 +12,19 @@ namespace Assets.Scripts.Editor
     public class AttentionGrabberEditor: UnityEditor.Editor
     {
         private SerializedProperty lookAtMe;
+        private SerializedProperty cameraMoveDuration;
         void OnEnable()
         {
             lookAtMe = serializedObject.FindProperty("lookAtMe");
+            cameraMoveDuration = serializedObject.FindProperty("cameraMoveDuration");
         }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
             EditorGUILayout.PropertyField(lookAtMe);
+            EditorGUILayout.PropertyField(cameraMoveDuration);
+
             serializedObject.ApplyModifiedProperties();
         }
     }

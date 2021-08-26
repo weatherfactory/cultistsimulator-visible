@@ -13,6 +13,8 @@ namespace Assets.Scripts.Editor
     {
         [SerializeField]
         private bool lookAtMe = false;
+        [SerializeField]
+        private float cameraMoveDuration = 2f;
 
         public void Update()
         {
@@ -22,7 +24,7 @@ namespace Assets.Scripts.Editor
                 lookAtMe = false;
                 Vector2 target = gameObject.transform.position;
                 Debug.Log($"Focusing on {target}");
-                Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(target);
+                Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(target, cameraMoveDuration);
             }
         }
     }
