@@ -124,6 +124,7 @@ namespace SecretHistories.Constants
             return !numa.IsOtherworldActive();
         }
 
+        
 
         public void EndGame(Ending ending, Token focusOnToken)
         {
@@ -136,12 +137,14 @@ namespace SecretHistories.Constants
             characterCreationCommand.Execute(Watchman.Get<Stable>());
 
             Watchman.Get<Heart>().Metapause(); //for giiven duration maybe?
-            //Ending: disable input
+         
             
             //Glowy cracky effect on token
             InstantiateCSEndingEffect(ending, focusOnToken);
-            
-            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position,5f, FinalTransitionToEndingScreen);
+
+            //Ending: disable input
+            Watchman.Get<LocalNexus>().AbortEvent.AddListener(FinalTransitionToEndingScreen);
+            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position,3f, FinalTransitionToEndingScreen);
             //Ending: slow fade
             
             //Ending: music
@@ -150,6 +153,7 @@ namespace SecretHistories.Constants
 
             //ending: enable input
             //ending: unmetapause
+            
 
         }
 

@@ -21,12 +21,14 @@ namespace SecretHistories.Fucine
        [SerializeField] public UnityEvent ViewFilesEvent;
        [SerializeField] public UnityEvent ToggleOptionsEvent;
        [SerializeField] public UnityEvent SaveAndExitEvent;
-       [SerializeField] public UnityEvent ToggleDebugEvent;
+       [SerializeField] public UnityEvent AbortEvent;
+        [SerializeField] public UnityEvent ToggleDebugEvent;
        [SerializeField] public UnityEvent StackCardsEvent;
        [SerializeField] public SpeedControlEvent SpeedControlEvent;
        [SerializeField] public ZoomLevelEvent ZoomLevelEvent;
        [SerializeField] public TruckEvent TruckEvent;
        [SerializeField] public PedestalEvent PedestalEvent;
+       
 
 
 

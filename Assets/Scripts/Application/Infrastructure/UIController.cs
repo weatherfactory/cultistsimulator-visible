@@ -234,6 +234,8 @@ namespace SecretHistories.Constants
 
             if (IsPressingAbortHotkey())	// Uses Keycode.Escape by default, for the benefit of anyone trying to search for this in future :)
 			{
+                AbortEvent.Invoke(); //everything should in fact go through here innit
+
 				// Check for open situation windows and close them first
 				bool windowWasOpen = false;
 				var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
