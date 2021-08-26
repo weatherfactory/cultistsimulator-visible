@@ -62,9 +62,7 @@ namespace SecretHistories.Constants {
             // Start hiding all tokens
             RetireAllStacks(RetirementVFX.CardBurn);
 
-            // (Spawn specific effect based on token, depending on end-game-type)
-            InstantiateEffect(ending, focusOnTransform);
-
+   
             
             float time = 0f;
             Vector2 startPos = tableScroll.content.anchoredPosition;
@@ -101,34 +99,7 @@ namespace SecretHistories.Constants {
 
         }
 
-        GameObject InstantiateEffect(Ending ending, Transform token) {
 
-            string effectName;
-
-            if (string.IsNullOrEmpty(ending.Anim))
-                effectName = "DramaticLight";
-            else
-                effectName = ending.Anim;
-
-
-            var prefab = Resources.Load("FX/EndGame/" + effectName);
-
-            if (prefab == null)
-                return null;
-
-            var go = Instantiate(prefab, token) as GameObject;
-            go.transform.position = token.position;
-            go.transform.localScale = Vector3.one;
-            go.SetActive(true);
-
-            var effect = go.GetComponent<CardEffect>();
-
-            //AK temporarily commented out to fix build
-            if (effect != null)
-                effect.StartAnim(token);
-
-            return go;
-        }
 
         void RetireAllStacks(RetirementVFX anim) {
             var stacks = _tabletopManager._tabletop.GetElementTokens();

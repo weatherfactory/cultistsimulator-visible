@@ -126,21 +126,57 @@ namespace SecretHistories.Constants
 
         public void EndGame(Ending ending, Token focusOnToken)
         {
-
+            //chronicle ending
             var chronicler = Watchman.Get<Chronicler>();
-
             chronicler.ChronicleGameEnd(Watchman.Get<HornedAxe>().GetRegisteredSituations(), Watchman.Get<HornedAxe>().GetSpheres(), ending);
+
+            //Mark character as defunct
             var characterCreationCommand=CharacterCreationCommand.Reincarnate(Watchman.Get<Stable>().Protag().InProgressHistoryRecords, NullLegacy.Create(), ending);
             characterCreationCommand.Execute(Watchman.Get<Stable>());
 
-            Watchman.Get<StageHand>().EndingScreen();
+            Watchman.Get<Heart>().Metapause();
 
-            //var endingPortal = Portal.CreateEndingPortal(ending, "anotherdescent");
+            //Glowy cracky effect on token
+            InstantiateCSEndingEffect(ending, focusOnToken);
 
-            //var endingIngressCreationCommand = new IngressCreationCommand(endingPortal);
-            //var tokenCreationCommand = new TokenCreationCommand(endingIngressCreationCommand, focusOnToken.Location);
-            //var ingressToken = tokenCreationCommand.Execute(Context.Unknown(), focusOnToken.Sphere);
-            //ingressToken.Payload.OpenAt(ingressToken.Location);
+            //Ending: pause before screen switch
+            //Ending: slow fade
+            //Ending: zoom to causative token
+            //Ending: music
+
+
+
+    //        Watchman.Get<StageHand>().EndingScreen();
+
+            
+        }
+
+        GameObject InstantiateCSEndingEffect(Ending ending, Token focusOnToken)
+        {
+            var tokenTransform = focusOnToken.transform;
+            string effectName;
+
+            if (string.IsNullOrEmpty(ending.Anim))
+                effectName = "DramaticLight";
+            else
+                effectName = ending.Anim;
+            
+            var prefab = Resources.Load("FX/EndGame/" + effectName);
+
+            if (prefab == null)
+                return null;
+
+            var go = Instantiate(prefab, tokenTransform) as GameObject;
+            go.transform.position = tokenTransform.position;
+            go.transform.localScale = Vector3.one;
+            go.SetActive(true);
+
+            var effect = go.GetComponent<CardEffect>();
+
+            if (effect != null)
+                effect.StartAnim(tokenTransform);
+
+            return go;
         }
 
 
