@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -134,27 +135,33 @@ namespace SecretHistories.Constants
             var characterCreationCommand=CharacterCreationCommand.Reincarnate(Watchman.Get<Stable>().Protag().InProgressHistoryRecords, NullLegacy.Create(), ending);
             characterCreationCommand.Execute(Watchman.Get<Stable>());
 
-            Watchman.Get<Heart>().Metapause();
+            Watchman.Get<Heart>().Metapause(); //for giiven duration maybe?
             //Ending: disable input
             
             //Glowy cracky effect on token
             InstantiateCSEndingEffect(ending, focusOnToken);
             Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position,3f);
-
+            StartCoroutine(FadeToEndingScreen());
             //Ending: pause before screen switch
             //Ending: slow fade
             //Ending: zoom to causative token
             //Ending: music
 
+            //ending: enable input
+            //ending: unmetapause
 
-            //Ending: enable input
-            //Ending: metapause
-            //        Watchman.Get<StageHand>().EndingScreen();
+
 
 
         }
 
-        GameObject InstantiateCSEndingEffect(Ending ending, Token focusOnToken)
+        private IEnumerator FadeToEndingScreen()
+        {
+            yield return new WaitForSeconds(3f);
+            Watchman.Get<StageHand>().EndingScreen();
+        }
+
+        private GameObject InstantiateCSEndingEffect(Ending ending, Token focusOnToken)
         {
             var tokenTransform = focusOnToken.transform;
             string effectName;

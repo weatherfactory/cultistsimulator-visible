@@ -60,7 +60,7 @@ namespace SecretHistories.Constants {
             // TODO: play death effect / music
 
             // Start hiding all tokens
-            RetireAllStacks(RetirementVFX.CardBurn);
+    
 
    
             
@@ -99,14 +99,6 @@ namespace SecretHistories.Constants {
 
         }
 
-
-
-        void RetireAllStacks(RetirementVFX anim) {
-            var stacks = _tabletopManager._tabletop.GetElementTokens();
-
-            foreach (var item in stacks)
-                item.Retire(anim);
-        }
 
 
     }
