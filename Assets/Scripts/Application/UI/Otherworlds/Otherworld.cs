@@ -195,6 +195,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
             RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
 
+            Watchman.Get<LocalNexus>().DisablePlayerInput(10f);
             _transitionFx.Show(_activeIngress, OnShowComplete); // starts coroutine that calls OnShowComplete when done
 
 
@@ -205,7 +206,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         private void ActivateHeralds()
         {
-            throw new NotImplementedException();
+           //none as yet
         }
 
         void OnShowComplete()
@@ -272,9 +273,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             }
 
 
-
             EnactConsequences();
-
+            Watchman.Get<LocalNexus>().EnablePlayerInput();
         }
 
         private void ActivateEgress()
