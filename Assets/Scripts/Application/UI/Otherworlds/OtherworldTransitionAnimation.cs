@@ -18,9 +18,7 @@ namespace SecretHistories.UI {
         const string uvTexName = "_FadeTex";
 #pragma warning disable 649
         [SerializeField] Image background;
-        [SerializeField] ParticleSystem particles;
 #pragma warning restore 649
-        float particleTargetRadius;
 
  
 
@@ -48,7 +46,6 @@ namespace SecretHistories.UI {
 
             //  Debug.Log("screen point " + screenPoint + " / Local point " +localPoint);
 
-            particles.transform.position = effectOrigin.position;
             SetMaterialCenter(localPoint);
         }
 
@@ -59,7 +56,6 @@ namespace SecretHistories.UI {
             var uvScale = new Vector2(scaleX, scaleY);
             var uvOffset = new Vector2(Mathf.Max(0, 1f - scaleX), Mathf.Min(0, 1f - scaleY));
 
-            particleTargetRadius = Mathf.Max(1f / uvScale.x, 1f / uvScale.y);
 
             background.material.SetTextureOffset(uvTexName, uvOffset);
             background.material.SetTextureScale(uvTexName, uvScale);
@@ -92,10 +88,7 @@ namespace SecretHistories.UI {
                 time += Time.deltaTime;
                 background.color = Color.Lerp(colorA, colorB, time / duration);
 
-                if (shownAtEnd) {
-                    var shp = particles.shape;
-                    shp.radius = Mathf.Lerp(0f, particleTargetRadius, time / duration * 1.5f);
-                }
+     
 
                 yield return null;
             }
