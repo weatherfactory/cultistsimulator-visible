@@ -5350,6 +5350,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DontLoadGame: 0
+--- !u!1 &329169011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1783463730704568225, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1784779315865870141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &329169012
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329169011}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 356c15fd78e42f246999a7865f1a4f9d, type: 2}
+  - {fileID: 7400000, guid: eb9f88ca12ae8ac498f9c7536af4f8b3, type: 2}
+  - {fileID: 7400000, guid: b70a02523e34cc142a54223b55dc15cc, type: 2}
+  - {fileID: 7400000, guid: c5deb1a3ec805b84c859782299e0109f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &360850263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7010,7 +7035,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1784779315865870141}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 329169011}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d5183cba2446f14dbeca1cc8e99e5f4, type: 3}
@@ -17358,7 +17383,6 @@ MonoBehaviour:
   durationHide: 0.5
   colorAfterHidden: {r: 1, g: 0, b: 0.5019608, a: 0.716}
   background: {fileID: 1553501484}
-  particles: {fileID: 0}
 --- !u!114 &1553501483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22837,10 +22861,20 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2102322, guid: fbef3c704dce48f08a44612d6c856c8d, type: 2}
+    - target: {fileID: 1824596198128108883, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
+        type: 3}
+      propertyPath: animations
+      value: 
+      objectReference: {fileID: 329169012}
     - target: {fileID: 1824689030853759373, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824728977241371971, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
+        type: 3}
+      propertyPath: m_Padding.m_Right
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1824799985369372255, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
         type: 3}
@@ -26612,7 +26646,6 @@ MonoBehaviour:
   durationHide: 0.5
   colorAfterHidden: {r: 1, g: 0, b: 0.5019608, a: 0.716}
   background: {fileID: 7653848576407720534}
-  particles: {fileID: 0}
 --- !u!114 &6730034224521615899
 MonoBehaviour:
   m_ObjectHideFlags: 0
