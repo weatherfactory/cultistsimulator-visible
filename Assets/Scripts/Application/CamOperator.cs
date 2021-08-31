@@ -27,14 +27,14 @@ public class CamOperator : MonoBehaviour {
     [SerializeField]
     private float zoom_step_distance;
     
-    public const float ZOOM_Z_CLOSE=-30f;
+    public const float ZOOM_Z_CLOSE=-500f;
 
-    public const float ZOOM_Z_MID=-600f;
+    public const float ZOOM_Z_MID=-900f;
     
-    public const float ZOOM_Z_FAR =-1200f;
+    public const float ZOOM_Z_FAR =-1500f;
 
     [SerializeField] private float cameraMoveDuration;
-    private float currentCameraMoveDuration; //overridden by eg pooint-to instructions
+    private float currentCameraMoveDuration; //overridden by eg point-to instructions
     private float currentMoveDurationRemaining = 0f;
 
     [SerializeField] private RectTransform navigationLimits;
