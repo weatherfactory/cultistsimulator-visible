@@ -59,8 +59,8 @@ public class CamOperator : MonoBehaviour {
 
     private void SetNavigationLimitsBasedOnCurrentCameraHeight()
     {
-        AdjustedCameraBoundsMin = getCameraPositionAboveTableAdjustedForRotation(navigationLimits.rect.min);
-        AdjustedCameraBoundsMax = getCameraPositionAboveTableAdjustedForRotation(navigationLimits.rect.max);
+        AdjustedCameraBoundsMin = getCameraPositionAboveTableAdjustedForRotation(navigationLimits.rect.min, attachedCamera.transform.position.z);
+        AdjustedCameraBoundsMax = getCameraPositionAboveTableAdjustedForRotation(navigationLimits.rect.max, attachedCamera.transform.position.z);
     }
 
     public void OnTruckEvent(TruckEventArgs args)
@@ -185,20 +185,24 @@ public class CamOperator : MonoBehaviour {
 
     public void PointCameraAtTableLevelVector2(Vector2 targetPosition,float secondsTakenToGetThere)
     {
-        smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition);
+        smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition, attachedCamera.transform.position.z);
         currentCameraMoveDuration = secondsTakenToGetThere;
         currentMoveDurationRemaining = secondsTakenToGetThere;
     }
 
-    public void PointCameraAtTableLevelVector2(Vector2 targetPosition, float secondsTakenToGetThere,Action onArrival)
+    public void PointAtTableLevelWithZoomFactor(Vector2 targetPosition, float zoomFactor, float secondsTakenToGetThere,Action onArrival)
     {
         OnCameraArrived += onArrival;
-        PointCameraAtTableLevelVector2(targetPosition,secondsTakenToGetThere);
+        float targetHeight = attachedCamera.transform.position.z * zoomFactor;
+        smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition, targetHeight);
+        smoothTargetPosition.z = targetHeight;
+        currentCameraMoveDuration = secondsTakenToGetThere;
+        currentMoveDurationRemaining = secondsTakenToGetThere;
     }
 
 
 
-    private Vector3 getCameraPositionAboveTableAdjustedForRotation(Vector2 tablePosition)
+    public Vector3 getCameraPositionAboveTableAdjustedForRotation(Vector2 tablePosition,float zPosition)
     {
         float angle = attachedCamera.transform.rotation.x;
         float adjacentSide = attachedCamera.transform.position.z;
@@ -206,7 +210,7 @@ public class CamOperator : MonoBehaviour {
         float oppositeSide = adjacentSide * tanOfAngle;
 
 
-        return new Vector3(tablePosition.x, tablePosition.y - oppositeSide, attachedCamera.transform.position.z);
+        return new Vector3(tablePosition.x, tablePosition.y - oppositeSide, zPosition);
     }
 
 

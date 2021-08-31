@@ -149,8 +149,9 @@ namespace SecretHistories.Constants
             Watchman.Get<LocalNexus>().DisablePlayerInput(10f);
 
             Watchman.Get<LocalNexus>().AbortEvent.AddListener(FinalTransitionToEndingScreen);
+
             
-            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(focusOnToken.transform.position, 1f, FinalTransitionToEndingScreen);
+            Watchman.Get<CamOperator>().PointAtTableLevelWithZoomFactor(focusOnToken.transform.position,0.6f,1.52f, FinalTransitionToEndingScreen);
 
         }
 
