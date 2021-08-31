@@ -52,6 +52,7 @@ namespace SecretHistories.UI
         {
 
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
+            Watchman.Get<LocalNexus>().DoHideHud();
             Watchman.Get<CamOperator>().OnZoomEvent(new ZoomLevelEventArgs{AbsoluteTargetZoomLevel = ZoomLevel.Far});
 
             PreOtherworldAutosave();
@@ -78,6 +79,8 @@ namespace SecretHistories.UI
             }
 
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
+
+            Watchman.Get<LocalNexus>().DoShowHud();
 
         }
 

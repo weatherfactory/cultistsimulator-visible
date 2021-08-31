@@ -142,15 +142,9 @@ namespace SecretHistories.Constants
 
             //stop current music clip
             Watchman.Get<BackgroundMusic>().FadeToSilence(3f);
-
-
             InstantiateCSEndingEffect(ending, focusOnToken);
-
             Watchman.Get<LocalNexus>().DisablePlayerInput(10f);
-
             Watchman.Get<LocalNexus>().AbortEvent.AddListener(FinalTransitionToEndingScreen);
-
-            
             Watchman.Get<CamOperator>().PointAtTableLevelWithZoomFactor(focusOnToken.transform.position,0.6f,1.52f, FinalTransitionToEndingScreen);
 
         }

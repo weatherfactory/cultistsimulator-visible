@@ -27,6 +27,8 @@ namespace SecretHistories.Fucine
        [SerializeField] public UnityEvent StackCardsEvent;
        [SerializeField] public UnityEvent LockInteractionEvent;
        [SerializeField] public UnityEvent UnlockInteractionEvent;
+       [SerializeField] public UnityEvent ShowHudEvent;
+       [SerializeField] public UnityEvent HideHudEvent;
         [SerializeField] public SpeedControlEvent SpeedControlEvent;
        [SerializeField] public ZoomLevelEvent ZoomLevelEvent;
        [SerializeField] public TruckEvent TruckEvent;
@@ -73,7 +75,15 @@ namespace SecretHistories.Fucine
             UnlockInteractionEvent.Invoke();
         }
 
+        public void DoShowHud()
+        {
+            ShowHudEvent.Invoke();
+        }
 
+        public void DoHideHud()
+        {
+            HideHudEvent.Invoke();
+        }
 
     }
 }

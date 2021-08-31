@@ -195,9 +195,9 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
             RegisterAttendant(new AttendantThereCanBeOnlyOne(this));
 
-            Watchman.Get<LocalNexus>().DisablePlayerInput(10f);
+            Watchman.Get<LocalNexus>().DisablePlayerInput(10f); //adding a timeout in case we get stuck
             _transitionFx.Show(_activeIngress, OnShowComplete); // starts coroutine that calls OnShowComplete when done
-
+            
 
             ActivateEgress();
             ActivateHeralds();

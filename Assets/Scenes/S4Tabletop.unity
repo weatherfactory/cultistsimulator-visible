@@ -3247,8 +3247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -250, y: -150}
-  m_SizeDelta: {x: -1100, y: -300}
+  m_AnchoredPosition: {x: 0, y: -150}
+  m_SizeDelta: {x: -600, y: -300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &93661270
 GameObject:
@@ -10727,6 +10727,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  ShowHudEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 980569405}
+        m_TargetAssemblyTypeName: SecretHistories.UI.CanvasGroupFader, SecretHistories.Main
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  HideHudEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 980569405}
+        m_TargetAssemblyTypeName: SecretHistories.UI.CanvasGroupFader, SecretHistories.Main
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   SpeedControlEvent:
     m_PersistentCalls:
       m_Calls:
@@ -10902,6 +10932,7 @@ GameObject:
   - component: {fileID: 980569407}
   - component: {fileID: 980569406}
   - component: {fileID: 980569409}
+  - component: {fileID: 980569405}
   m_Layer: 5
   m_Name: CanvasScalableUI
   m_TagString: Untagged
@@ -10933,6 +10964,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &980569405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980569403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e835ed38c168545d8acd9e0f7f3943f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockRaysDuringFade: 0
+  durationTurnOn: 0.5
+  durationTurnOff: 0.5
 --- !u!114 &980569406
 MonoBehaviour:
   m_ObjectHideFlags: 0
