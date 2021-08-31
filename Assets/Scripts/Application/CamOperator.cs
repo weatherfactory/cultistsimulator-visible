@@ -113,39 +113,39 @@ public class CamOperator : MonoBehaviour {
        if(Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 10)
             currentMoveDurationRemaining -= Time.deltaTime;
 
-            if (currentTruckInput != 0)
-            {
-                smoothTargetPosition.x += currentTruckInput;
-                currentCameraMoveDuration = cameraMoveDuration; //reset to standard duration if we're moving manually again
-            }
+       if (currentTruckInput != 0)
+       {
+           smoothTargetPosition.x += currentTruckInput;
+           currentCameraMoveDuration = cameraMoveDuration; //reset to standard duration if we're moving manually again
+       }
 
-            if (currentPedestalInput != 0)
-            {
-                smoothTargetPosition.y += currentPedestalInput;
-                currentCameraMoveDuration = cameraMoveDuration; //reset to standard duration if we're moving manually again
-            }
+       if (currentPedestalInput != 0)
+       {
+           smoothTargetPosition.y += currentPedestalInput;
+           currentCameraMoveDuration = cameraMoveDuration; //reset to standard duration if we're moving manually again
+       }
                 
 
-            if (currentZoomInput != 0)
-            {
-                smoothTargetPosition.z -= currentZoomInput;
-                smoothTargetPosition.z = Mathf.Clamp(smoothTargetPosition.z, ZOOM_Z_FAR, ZOOM_Z_CLOSE);
-                currentCameraMoveDuration = cameraMoveDuration; //reset to standard duration if we're moving manually again
-            }
+       if (currentZoomInput != 0)
+       {
+           smoothTargetPosition.z -= currentZoomInput;
+           smoothTargetPosition.z = Mathf.Clamp(smoothTargetPosition.z, ZOOM_Z_FAR, ZOOM_Z_CLOSE);
+           currentCameraMoveDuration = cameraMoveDuration; //reset to standard duration if we're moving manually again
+       }
 
-            if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 10)
-            {
-                smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
+       if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 10)
+       {
+           smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
 
-                attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, smoothTargetPosition,
-                    ref cameraVelocity, currentCameraMoveDuration);
+           attachedCamera.transform.position = Vector3.SmoothDamp(attachedCamera.transform.position, smoothTargetPosition,
+               ref cameraVelocity, currentCameraMoveDuration);
 
-                if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 10)
-                    cameraHasArrived();
+           if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 10)
+               cameraHasArrived();
 
-                SetNavigationLimitsBasedOnCurrentCameraHeight(); //so this is called every time the camera smooth-moves, which works but is clunky.
+           SetNavigationLimitsBasedOnCurrentCameraHeight(); //so this is called every time the camera smooth-moves, which works but is clunky.
 
-            }
+       }
         
 
 
@@ -192,14 +192,19 @@ public class CamOperator : MonoBehaviour {
 
     public void PointAtTableLevelWithZoomFactor(Vector2 targetPosition, float zoomFactor, float secondsTakenToGetThere,Action onArrival)
     {
-        OnCameraArrived += onArrival;
         float targetHeight = attachedCamera.transform.position.z * zoomFactor;
+        PointAtTableLevelAtHeight(targetPosition,targetHeight,secondsTakenToGetThere,onArrival);
+        
+        }
+
+    public void PointAtTableLevelAtHeight(Vector2 targetPosition, float targetHeight, float secondsTakenToGetThere, Action onArrival)
+    {
+        OnCameraArrived += onArrival;
         smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition, targetHeight);
         smoothTargetPosition.z = targetHeight;
         currentCameraMoveDuration = secondsTakenToGetThere;
         currentMoveDurationRemaining = secondsTakenToGetThere;
     }
-
 
 
     public Vector3 getCameraPositionAboveTableAdjustedForRotation(Vector2 tablePosition,float zPosition)

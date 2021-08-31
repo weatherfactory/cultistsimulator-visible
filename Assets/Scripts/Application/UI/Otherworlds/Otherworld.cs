@@ -260,8 +260,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         public void OnArrival()
         {
-            if(_activeEgress!=null) //end games, for example, have no egress in the usual sense
-                Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(_activeEgress.GetRectTransform().position, 3f);
+            float targetHeight = CamOperator.ZOOM_Z_MID;
+                Watchman.Get<CamOperator>().PointAtTableLevelAtHeight(_activeEgress.GetRectTransform().position, targetHeight,0.2f,null);
 
 
             foreach (var d in _dominions)
