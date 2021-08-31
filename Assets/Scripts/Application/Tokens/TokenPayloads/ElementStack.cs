@@ -556,8 +556,9 @@ namespace SecretHistories.UI {
         {
             var newElement = Watchman.Get<Compendium>().GetEntityById<Element>(newElementId);
             _timeshadow = new Timeshadow(newElement.Lifetime, newElement.Lifetime, newElement.Resaturate);
-            
             Element = newElement;
+            _aspectsDirtyExc = true;
+            _aspectsDirtyInc = true;
 
 
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Fundamental));
