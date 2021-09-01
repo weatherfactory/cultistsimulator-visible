@@ -18,10 +18,10 @@ namespace SecretHistories.UI
 #pragma warning restore 649
 
 
-        public void Start()
+        public void Awake()
         {
-            var protag = Watchman.Get<Stable>().Protag();
-            ShowTabletopFor(protag.ActiveLegacy);
+            var w=new Watchman();
+            w.Register(this);
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -38,7 +38,7 @@ namespace SecretHistories.UI
                 Cover.sprite = coverImage;
             }
 
-            if (!string.IsNullOrEmpty(characterActiveLegacy.TableEdgeImage))
+            if (!string.IsNullOrEmpty(characterActiveLegacy.TableSurfaceImage))
             {
                 var surfaceImage = ResourcesManager.GetSpriteForUI(characterActiveLegacy.TableSurfaceImage);
                 Surface.sprite = surfaceImage;

@@ -171,16 +171,16 @@ public class CamOperator : MonoBehaviour {
 
     }
 
-    public void OnGUI()
-    {
+    //public void OnGUI()
+    //{
 
-        GUI.Label(new Rect(10, 10, 300, 20), $"currentCameraMoveDuration: {currentCameraMoveDuration}");
-        GUI.Label(new Rect(10, 30, 300, 20), $"currentMoveDurationRemaining: {currentMoveDurationRemaining}");
-        GUI.Label(new Rect(10, 50, 300, 20), $"camera position: {attachedCamera.transform.position}");
-        GUI.Label(new Rect(10, 70, 300, 20), $"smoothTarget: {smoothTargetPosition}");
-        GUI.Label(new Rect(10, 90, 300, 20), $"cam velocity: {cameraVelocity}");
+    //    GUI.Label(new Rect(10, 10, 300, 20), $"currentCameraMoveDuration: {currentCameraMoveDuration}");
+    //    GUI.Label(new Rect(10, 30, 300, 20), $"currentMoveDurationRemaining: {currentMoveDurationRemaining}");
+    //    GUI.Label(new Rect(10, 50, 300, 20), $"camera position: {attachedCamera.transform.position}");
+    //    GUI.Label(new Rect(10, 70, 300, 20), $"smoothTarget: {smoothTargetPosition}");
+    //    GUI.Label(new Rect(10, 90, 300, 20), $"cam velocity: {cameraVelocity}");
 
-    }
+    //}
 
 
     public void PointCameraAtTableLevelVector2(Vector2 targetPosition,float secondsTakenToGetThere)

@@ -37,5 +37,14 @@ namespace SecretHistories.Entities
             return _currentCharacter;
         }
 
+        /// <summary>
+        /// If we load a game repeatedly, we'll keep populating this with duplicate characters, since we populate it by
+        /// repeatedly calling CharacterCreationCommand
+        /// So always call PrepForLoad before populating it with characters.
+        /// </summary>
+        public void PrepForLoad()
+        {
+            characters.Clear();
+        }
     }
 }

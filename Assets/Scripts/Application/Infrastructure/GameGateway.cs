@@ -58,8 +58,14 @@ namespace SecretHistories.Constants
 
                 var gameState = gamePersistenceProviderSource.RetrievePersistedGameState();
 
+                Watchman.Get<Stable>().PrepForLoad();
                 foreach (var c in gameState.CharacterCreationCommands)
                     c.Execute(Watchman.Get<Stable>());
+
+                //Now that we've loaded the characters, display an appropriate tabletop
+                var protag = Watchman.Get<Stable>().Protag();
+                Watchman.Get<TabletopBackground>().ShowTabletopFor(protag.ActiveLegacy);
+
 
                 gameState.RootPopulationCommand.Execute(new Context(Context.ActionSource.Loading));
 
