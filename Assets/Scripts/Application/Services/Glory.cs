@@ -176,6 +176,7 @@ namespace SecretHistories.Services
                 gamePersistenceProvider.DepersistGameState();
                 var persistedState = gamePersistenceProvider.RetrievePersistedGameState();
                 characterCreationCommand = persistedState.CharacterCreationCommands.First();
+                _stable.PrepForLoad();
                 characterCreationCommand.Execute(_stable);
 
                 stageHand.UseProvider(gamePersistenceProvider);
