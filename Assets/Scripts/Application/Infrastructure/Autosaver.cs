@@ -22,14 +22,14 @@ namespace SecretHistories.Infrastructure
     {
 
 
-        [SerializeField] private AutosaveWindow _autosaveNotifier;
-
         [SerializeField]  private float
             housekeepingTimer; // Now a float so that we can time autosaves independent of Heart.Beat - CP
 
       [SerializeField] private float AUTOSAVE_INTERVAL = 300.0f;
+      [SerializeField] private CanvasGroupFader AutosaveIndicator;
 
-      private GameGateway gameGateway;
+
+        private GameGateway gameGateway;
       private Heart heart;
 
       public void Awake()
@@ -40,7 +40,9 @@ namespace SecretHistories.Infrastructure
 
       public void Initialise()
       {
-          var registry = new Watchman();
+          AutosaveIndicator.Hide();
+
+            var registry = new Watchman();
           registry.Register(this);
 
 
@@ -81,15 +83,14 @@ namespace SecretHistories.Infrastructure
 
             if (housekeepingTimer > AUTOSAVE_INTERVAL)
             {
-                _autosaveNotifier.SetDuration(3.0f);
-                  housekeepingTimer = 0f;
+                housekeepingTimer = 0f;
                   TryAutosave();
             }
         }
 
         public async void TryAutosave()
         {
-            _autosaveNotifier.Show();
+            AutosaveIndicator.Show();
 
          heart.Metapause();
             Watchman.Get<LocalNexus>().DisablePlayerInput(0f);
