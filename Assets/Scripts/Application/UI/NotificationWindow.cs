@@ -18,7 +18,12 @@ namespace SecretHistories.UI
         [SerializeField] TextMeshProUGUI _titleTxt;
         [SerializeField] TextMeshProUGUI _descriptionTxt;
         [SerializeField] TextMeshProUGUI _additionalText;
-
+        /// <summary>
+        /// Permanent notification windows
+        /// - are not hidden on click - they must be explicitly closed
+        /// - are disabled, not destroyed, when hidden
+        /// </summary>
+        [SerializeField] private bool Permanent;
 
         public string Title
         {
@@ -85,12 +90,16 @@ namespace SecretHistories.UI
 		protected void Cleanup(NavigationArgs args)
 		{
 			StopAllCoroutines();
-			Destroy(gameObject);
+            if(!Permanent)
+			    Destroy(gameObject);
+            else
+                gameObject.SetActive(false);
 		}
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Hide();
+            if(!Permanent)
+                Hide();
         }
     }
 }

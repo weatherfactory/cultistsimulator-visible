@@ -47,10 +47,10 @@ namespace SecretHistories.Constants
             }
         }
 
-        public void DefaultLoad()
+        //uses Stagehand to reload the scene as from the beginning
+        public void LoadAfresh()
         {
-            var provider= new DefaultGamePersistenceProvider();
-            LoadGame(provider);
+           Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultGamePersistenceProvider());
         }
 
         public async void LoadGame(GamePersistenceProvider gamePersistenceProviderSource)
