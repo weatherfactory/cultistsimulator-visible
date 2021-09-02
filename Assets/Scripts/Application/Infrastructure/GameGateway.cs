@@ -47,10 +47,16 @@ namespace SecretHistories.Constants
             }
         }
 
+        public void DefaultLoad()
+        {
+            var provider= new DefaultGamePersistenceProvider();
+            LoadGame(provider);
+        }
 
         public async void LoadGame(GamePersistenceProvider gamePersistenceProviderSource)
         {
             Watchman.Get<Heart>().Metapause();
+            Watchman.Get<LocalNexus>().DisablePlayerInput(0f);
 
             try
             {
@@ -94,8 +100,9 @@ namespace SecretHistories.Constants
             }
 
             Watchman.Get<Heart>().Unmetapause();
+            Watchman.Get<LocalNexus>().EnablePlayerInput();
 
-                Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
                 { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProviderSource.GetDefaultGameSpeed(), WithSFX = false });
 
         }
@@ -111,6 +118,7 @@ namespace SecretHistories.Constants
 
         public async Task<bool> TryDefaultSave()
         {
+          
             var notifier = Watchman.Get<Notifier>();
             if(notifier==null)
                 NoonUtility.LogWarning("Can't find notifier for saving messages");

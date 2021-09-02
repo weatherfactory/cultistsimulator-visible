@@ -21,6 +21,7 @@ public class Heart : MonoBehaviour
     [SerializeField] private float maxSecondsBetweenAmbientAnimations = 8f;
     [SerializeField] private float minSecondsBetweenAmbientSfx = 8f;
     [SerializeField] private float maxSecondsBetweenAmbientSfx = 20f;
+    [SerializeField] private CanvasGroupFader MetapauseIndicator;
 
     public const float BEAT_INTERVAL_SECONDS = 0.05f;
 
@@ -49,11 +50,14 @@ public class Heart : MonoBehaviour
     public void Metapause()
     {
         Metapaused = true;
+        MetapauseIndicator.Show();
     }
 
     public void Unmetapause()
     {
         Metapaused = false;
+        MetapauseIndicator.Hide();
+
     }
 
     void SetNextAnimTime()

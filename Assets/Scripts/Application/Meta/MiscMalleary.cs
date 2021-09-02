@@ -146,9 +146,19 @@ namespace Assets.Scripts.Application.Meta
 
         public async void SaveGame()
         {
+            Watchman.Get<Heart>().Metapause();
+            Watchman.Get<LocalNexus>().DisablePlayerInput(0f);
+
+
             var gameGateway =Watchman.Get<GameGateway>();
-                
-            await gameGateway.TryDefaultSave();
+          var saveResult= await gameGateway.TryDefaultSave();
+
+            if(saveResult)
+            {
+                Watchman.Get<Heart>().Unmetapause();
+                Watchman.Get<LocalNexus>().EnablePlayerInput();
+            }
+            //if not, we'll let the gamegateway show a problem window and sort it out
 
         }
 

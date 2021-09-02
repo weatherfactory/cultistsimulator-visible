@@ -75,6 +75,12 @@ namespace SecretHistories.Fucine
             UnlockInteractionEvent.Invoke();
         }
 
+        public void EnablePlayerInputAndUnmetapause()
+        {
+            EnablePlayerInput();
+            Watchman.Get<Heart>().Unmetapause();
+        }
+
         public void DoShowHud()
         {
             ShowHudEvent.Invoke();

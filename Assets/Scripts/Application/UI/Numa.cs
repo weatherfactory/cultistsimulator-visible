@@ -42,9 +42,15 @@ namespace SecretHistories.UI
 
         private async void PreOtherworldAutosave()
         {
-            var autosave = Watchman.Get<Autosaver>();
-            if (autosave != null)
-                await autosave.ForceAutosaveNow();
+            Watchman.Get<Heart>().Metapause();
+            Watchman.Get<LocalNexus>().DisablePlayerInput(0f);
+
+
+            var gameGateway = Watchman.Get<GameGateway>();
+            await gameGateway.TryDefaultSave();
+
+            Watchman.Get<Heart>().Unmetapause();
+            Watchman.Get<LocalNexus>().EnablePlayerInput();
         }
 
 

@@ -15,18 +15,12 @@ using UnityEngine.Events;
 
 namespace SecretHistories.Services
 {
-    public class ButtonCommand
-    {
-        public string Caption { get; set; }
-
-    }
-
+  
     public class NotificationArgs
     {
         public string Title { get; set; }
         public string Description { get; set; }
         public bool DuplicatesAllowed { get; set; }
-        public List<ButtonCommand> Buttons { get; set; }=new List<ButtonCommand>();
         
 
         public NotificationArgs()

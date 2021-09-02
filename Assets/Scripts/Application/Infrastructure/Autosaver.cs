@@ -58,18 +58,6 @@ namespace SecretHistories.Infrastructure
               NoonUtility.LogWarning("Can't find GameGateway; autosave won't run.");
       }
 
-      public async Task<bool> ForceAutosaveNow()
-      {
-          housekeepingTimer = 0f;
-
-          if (gameGateway != null)
-          {
-             await gameGateway.TryDefaultSave();
-              return true;
-          }
-
-          return false;
-      }
 
         protected void SetAutosaveInterval(float minutes)
         {
@@ -89,9 +77,17 @@ namespace SecretHistories.Infrastructure
                 _autosaveNotifier.SetDuration(3.0f);
                   _autosaveNotifier.Show();
                   housekeepingTimer = 0f;
-                
-                if(gameGateway!=null)
+
+                  Watchman.Get<Heart>().Metapause();
+                  Watchman.Get<LocalNexus>().DisablePlayerInput(0f);
+
+
+                if (gameGateway!=null)
                    gameGateway.TryDefaultSave();
+
+                Watchman.Get<Heart>().Unmetapause();
+                Watchman.Get<LocalNexus>().EnablePlayerInput();
+
             }
         }
 
