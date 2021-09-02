@@ -102,9 +102,6 @@ namespace SecretHistories.Constants
             Watchman.Get<Heart>().Unmetapause();
             Watchman.Get<LocalNexus>().EnablePlayerInput();
 
-            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
-                { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProviderSource.GetDefaultGameSpeed(), WithSFX = false });
-
         }
 
         private static async Task SaveRestartState()
@@ -114,6 +111,7 @@ namespace SecretHistories.Constants
             var saveTask = restartingGameStateProvider.SerialiseAndSaveAsync();
             var result = await saveTask;
         }
+
 
 
         public async Task<bool> TryDefaultSave()
@@ -129,8 +127,6 @@ namespace SecretHistories.Constants
                 if (!gameInSaveableState())
                     return false;
      
-                throw new NotImplementedException();
-
                 var game = new DefaultGamePersistenceProvider();
                 game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
                 var saveTask = game.SerialiseAndSaveAsync();
@@ -141,7 +137,7 @@ namespace SecretHistories.Constants
             {
                 var notifierArgs = new CustomNotificationWindowArgs();
                 notifierArgs.WindowId = CustomNotificationWindowId.ShowSaveError;
-                notifierArgs.AdditionalText = e.Message;
+                notifierArgs.AdditionalText = $"\n'<b>{e.Message}</b>'";
                 notifier.ShowCustomWindow(notifierArgs);
                 return false;
             }

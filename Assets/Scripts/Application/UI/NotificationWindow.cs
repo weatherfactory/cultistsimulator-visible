@@ -56,12 +56,12 @@ namespace SecretHistories.UI
 
         public void SetDetails(string title, string description)
         {
-            SetDetails(title,description,string.Empty);
-        }
-        public void SetDetails(string title, string description,string additionalText)
-        {
             _titleTxt.text = title;
             _descriptionTxt.text = description;
+        }
+        public void SetAdditionalText(string additionalText)
+        {
+            
             _additionalText.text = additionalText;
         }
 

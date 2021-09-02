@@ -17,8 +17,7 @@ namespace SecretHistories.UI {
 
     public enum CustomNotificationWindowId
     {
-        ShowSaveError = 1,
-        ShowSaveDenied = 2
+        ShowSaveError = 1
     };
 
     public class CustomNotificationWindowArgs
@@ -131,11 +130,9 @@ namespace SecretHistories.UI {
         {
             if(args.WindowId==CustomNotificationWindowId.ShowSaveError)
             {
-                SaveErrorWindow.SetDetails(SaveErrorWindow.Title,SaveErrorWindow.Description,args.AdditionalText);
+                SaveErrorWindow.SetAdditionalText(args.AdditionalText);
                 SaveErrorWindow.Show();
             }
-            else if (args.WindowId == CustomNotificationWindowId.ShowSaveDenied)
-                SaveDeniedWindow.Show();
             else
                NoonUtility.Log($"Unknown notification window id: {args.WindowId}");
         }
