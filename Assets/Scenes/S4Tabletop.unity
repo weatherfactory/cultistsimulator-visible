@@ -5797,7 +5797,7 @@ PrefabInstance:
     - target: {fileID: 4645126518579149436, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0005636215
+      value: 0.0005464554
       objectReference: {fileID: 0}
     - target: {fileID: 4645126518784053587, guid: 4a929c4c99a74d741a819fc4cd105ede,
         type: 3}
@@ -10781,9 +10781,9 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 980569409}
+      - m_Target: {fileID: 1243788746}
         m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
         m_MethodName: set_interactable
         m_Mode: 6
@@ -10810,7 +10810,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 980569409}
+      - m_Target: {fileID: 1243788746}
         m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
         m_MethodName: set_interactable
         m_Mode: 6
@@ -10820,7 +10820,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   ShowHudEvent:
     m_PersistentCalls:
@@ -15110,6 +15110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1243788744}
   - component: {fileID: 1243788745}
+  - component: {fileID: 1243788746}
   m_Layer: 5
   m_Name: StatusBar
   m_TagString: Untagged
@@ -15155,6 +15156,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: {fileID: 861054906}
   CharacterProfession: {fileID: 830670324}
+--- !u!225 &1243788746
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243788743}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1254318319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22909,7 +22922,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 597}
+      objectReference: {fileID: 937582878}
+    - target: {fileID: 1827523107282828337, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnablePlayerInputAndUnmetapause
+      objectReference: {fileID: 0}
+    - target: {fileID: 1827523107282828337, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SecretHistories.Fucine.LocalNexus, SecretHistories.Main
+      objectReference: {fileID: 0}
     - target: {fileID: 2006398238096966673, guid: 84fe65b9f68047a42939ba2a4bcab9f8,
         type: 3}
       propertyPath: m_AnchorMax.y
