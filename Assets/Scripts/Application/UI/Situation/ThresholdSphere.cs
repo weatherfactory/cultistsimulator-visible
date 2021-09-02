@@ -201,7 +201,7 @@ namespace SecretHistories.UI
                 SoundManager.PlaySfx("CardDragFail");
                 token.GoAway(context);
 
-                var notifier = Watchman.Get<INotifier>();
+                var notifier = Watchman.Get<Notifier>();
 
                 var compendium = Watchman.Get<Compendium>();
 

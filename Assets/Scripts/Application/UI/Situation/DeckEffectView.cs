@@ -40,7 +40,7 @@ public class DeckEffectView : MonoBehaviour, IPointerClickHandler, IPointerEnter
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        Watchman.Get<INotifier>().ShowDeckDetails(deckSpec, quantity);
+        Watchman.Get<Notifier>().ShowDeckDetails(deckSpec, quantity);
     }
 
 

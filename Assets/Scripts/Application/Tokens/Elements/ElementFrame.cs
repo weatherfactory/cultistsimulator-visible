@@ -85,7 +85,7 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
         //if(_elementStack!=null)
         //    Watchman.Get<INotifier>().ShowCardElementDetails(_aspect, _elementStack);
         //else
-            Watchman.Get<INotifier>().ShowElementDetails(_aspect, parentIsDetailsWindow);
+            Watchman.Get<Notifier>().ShowElementDetails(_aspect, parentIsDetailsWindow);
     }
 
     public Vector3 GetNotificationPosition()

@@ -111,14 +111,32 @@ namespace SecretHistories.Constants
 
         public async Task<bool> TryDefaultSave()
         {
-            if (!gameInSaveableState())
-                return false;
+            var notifier = Watchman.Get<Notifier>();
+            if(notifier==null)
+                NoonUtility.LogWarning("Can't find notifier for saving messages");
 
-            var game = new DefaultGamePersistenceProvider();
-            game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
-            var saveTask = game.SerialiseAndSaveAsync();
-            var result = await saveTask;
-            return result;
+            try
+            {
+
+                if (!gameInSaveableState())
+                    return false;
+     
+                throw new NotImplementedException();
+
+                var game = new DefaultGamePersistenceProvider();
+                game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
+                var saveTask = game.SerialiseAndSaveAsync();
+                var result = await saveTask;
+                return result;
+            }
+            catch (Exception e)
+            {
+                var notifierArgs = new CustomNotificationWindowArgs();
+                notifierArgs.WindowId = CustomNotificationWindowId.ShowSaveError;
+                notifierArgs.AdditionalText = e.Message;
+                notifier.ShowCustomWindow(notifierArgs);
+                return false;
+            }
         }
 
         private bool gameInSaveableState()

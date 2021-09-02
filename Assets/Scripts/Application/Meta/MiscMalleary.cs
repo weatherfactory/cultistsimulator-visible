@@ -146,11 +146,9 @@ namespace Assets.Scripts.Application.Meta
 
         public async void SaveGame()
         {
-
-            var game = new DefaultGamePersistenceProvider();
-            game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
-            var saveTask = game.SerialiseAndSaveAsync();
-            var result = await saveTask;
+            var gameGateway =Watchman.Get<GameGateway>();
+                
+            await gameGateway.TryDefaultSave();
 
         }
 

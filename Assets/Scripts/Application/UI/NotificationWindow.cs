@@ -17,6 +17,8 @@ namespace SecretHistories.UI
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI _titleTxt;
         [SerializeField] TextMeshProUGUI _descriptionTxt;
+        [SerializeField] TextMeshProUGUI _additionalText;
+
 
         public string Title
         {
@@ -34,6 +36,14 @@ namespace SecretHistories.UI
 	        }
         }
 
+        public string AdditionalText
+        {
+            get
+            {
+                return _additionalText.text;
+            }
+        }
+
         public void SetDuration(float duration)
         {
             Invoke("Hide", duration);
@@ -41,11 +51,16 @@ namespace SecretHistories.UI
 
         public void SetDetails(string title, string description)
         {
+            SetDetails(title,description,string.Empty);
+        }
+        public void SetDetails(string title, string description,string additionalText)
+        {
             _titleTxt.text = title;
             _descriptionTxt.text = description;
+            _additionalText.text = additionalText;
         }
 
-		public void Show() {
+        public void Show() {
 			gameObject.SetActive(true);
 
 			// Make the anim move out, then show the content, then move in again

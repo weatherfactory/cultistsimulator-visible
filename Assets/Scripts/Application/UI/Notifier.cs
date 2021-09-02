@@ -15,20 +15,29 @@ using UnityEngine.EventSystems;
 
 namespace SecretHistories.UI {
 
+    public enum CustomNotificationWindowId
+    {
+        ShowSaveError = 1,
+        ShowSaveDenied = 2
+    };
 
+    public class CustomNotificationWindowArgs
+    {
+        public CustomNotificationWindowId WindowId { get; set; }
+        public string AdditionalText { get; set; }
+    }
 
-    public class Notifier : MonoBehaviour, INotifier {
+    public class Notifier : MonoBehaviour {
         
         [Header("Notification")]
         [SerializeField] Transform notificationHolder;
-        [SerializeField] NotificationLog notificationLog;
 
         [Header("Token Details")]
         [SerializeField] TokenDetailsWindow tokenDetails;
         [SerializeField] AspectDetailsWindow aspectDetails;
 
-        [Header("Image Burner")]
-        [SerializeField] private TabletopImageBurner tabletopBurner;
+        [SerializeField] NotificationWindow SaveErrorWindow;
+        [SerializeField] NotificationWindow SaveDeniedWindow;
 
         public void Start() {
             tokenDetails.gameObject.SetActive(false); // ensure this is turned off at the start
@@ -38,14 +47,6 @@ namespace SecretHistories.UI {
 
             var r = new Watchman();
             r.Register<Notifier>(this);
-        }
-
-        // Notifications
-
-
-		// Text Log Disabled
-        public void PushTextToLog(string text) {
-        	notificationLog.AddText(text);
         }
 
         public void ShowNotificationWindow(NotificationArgs args)
@@ -126,7 +127,22 @@ namespace SecretHistories.UI {
             aspectDetails.Hide();
         }
 
+        public void ShowCustomWindow(CustomNotificationWindowArgs args)
+        {
+            if(args.WindowId==CustomNotificationWindowId.ShowSaveError)
+            {
+                SaveErrorWindow.SetDetails(SaveErrorWindow.Title,SaveErrorWindow.Description,args.AdditionalText);
+                SaveErrorWindow.Show();
+            }
+            else if (args.WindowId == CustomNotificationWindowId.ShowSaveDenied)
+                SaveDeniedWindow.Show();
+            else
+               NoonUtility.Log($"Unknown notification window id: {args.WindowId}");
+        }
 
+
+
+        
 
     }
 }
