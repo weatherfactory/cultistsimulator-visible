@@ -99,7 +99,10 @@ namespace SecretHistories.Infrastructure
             if (gameGateway != null)
             {
                 var saveResult = await gameGateway.TryDefaultSave();
-                if(saveResult)
+                AutosaveIndicator.Hide(); //always hide, succeed or fail
+                //but stay paused and disabled if the save went wrong
+
+                if (saveResult)
                 {
                     heart.Unmetapause();
                     Watchman.Get<LocalNexus>().EnablePlayerInput();
