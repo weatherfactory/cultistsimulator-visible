@@ -84,7 +84,8 @@ namespace SecretHistories.UI {
                 return;
 			*/
 
-            _stack.OnLifetimeSpent -= HandleOnTokenDecay;// remove decay listener if we had one on an old token
+            if(_stack!=null)
+                _stack.OnLifetimeSpent -= HandleOnTokenDecay;// remove decay listener if we had one on an old token <-- not sure if
             this._element = null;
             this._stack = null;
             this.slotSpec = slotSpec;
@@ -254,13 +255,13 @@ namespace SecretHistories.UI {
             deckInfos.text = quantity > 0 ? Watchman.Get<ILocStringProvider>().Get("UI_UPCOMINGDRAWS") + quantity : null;
         }
 
-        public void HighlightSlotIcon(bool isGreedy, bool consumes) {
+        public void HighlightSlotIcon(SphereSpec slotSpec) {
             if (infoHighlight != null)
                 StopCoroutine(infoHighlight);
 
             // note can only Highlight one of the two
 
-            if (isGreedy) {
+            if (slotSpec.Greedy) {
                 infoHighlight = StartCoroutine(DoHighlightSlotIcon(greedyIcon, greedyInfo));
             }
             else {
@@ -268,7 +269,7 @@ namespace SecretHistories.UI {
                 greedyIcon.color = UIStyle.slotDefault;
                 greedyInfo.color = UIStyle.textColorLight;
 
-                if (consumes) {
+                if (slotSpec.Consumes) {
                     infoHighlight = StartCoroutine(DoHighlightSlotIcon(consumesIcon, consumesInfo));
                 }
                 else {

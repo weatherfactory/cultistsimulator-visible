@@ -292,7 +292,7 @@ namespace SecretHistories.UI
        //     bool highlightGreedy = GreedyIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(GreedyIcon);
        //     bool highlightConsumes = ConsumingIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(ConsumingIcon);
 
-     //       Watchman.Get<INotifier>().ShowSlotDetails(GoverningSphereSpec, highlightGreedy, highlightConsumes);
+            Watchman.Get<Notifier>().ShowSlotDetails(GoverningSphereSpec);
 
         }
 
