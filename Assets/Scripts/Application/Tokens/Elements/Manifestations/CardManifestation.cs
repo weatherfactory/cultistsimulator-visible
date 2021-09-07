@@ -47,13 +47,17 @@ namespace SecretHistories.Manifestations
      
         private Image decayBackgroundImage;
         private Color cachedDecayBackgroundColor;
-        private float decayAlpha = 0.0f;
+       [SerializeField] private float decayAlpha = 0.0f;
         private Coroutine animCoroutine;
         private List<Sprite> frames;
         private FlipHelper _flipHelper;
         private string _entityId;
         private int _quantity;
+        private float _originalDuration = 0f;
+        private float _durationRemaining = 0f;
+        private bool _forceDisplayTimeRemaining = false;
 
+        
         public bool RequestingNoDrag => _flipHelper.FlipInProgress;
         public bool RequestingNoSplit => stackBadge.PointerAboveThis;
 
@@ -163,6 +167,9 @@ namespace SecretHistories.Manifestations
                 ShowHoverGlow(true);
             }
 
+            if (Decays())
+                _forceDisplayTimeRemaining = true;
+
         }
 
         public void Unhighlight(HighlightType highlightType)
@@ -182,7 +189,9 @@ namespace SecretHistories.Manifestations
             {
                 ShowGlow(false, false);
             }
-        
+
+            if (Decays())
+                _forceDisplayTimeRemaining = false;
         }
 
         private IEnumerator PulseGlow()
@@ -215,19 +224,6 @@ namespace SecretHistories.Manifestations
         }
 
 
-        private void ShowCardDecayTimer()
-        {
-            if (decayView != null)
-                decayView.gameObject.SetActive(true);
-        }
-
-
-        private void HideCardDecayTimer()
-        {
-            if (decayView != null)
-                decayView.gameObject.SetActive(false);
-        }
-
 
         private void SetCardBackground(bool unique, bool decays)
         {
@@ -252,32 +248,51 @@ namespace SecretHistories.Manifestations
 
         }
 
+        private bool Decays()
+        {
+            return _originalDuration > 0f;
+        }
 
-        private void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate)
+
+        private bool ApproachingFinalDissolution()
+        {
+            return _durationRemaining < _originalDuration / 2;
+        }
+
+        private void UpdateTimerVisuals(float originalDurationOfCurrentElement, float currentDurationRemaining, float interval, bool resaturate)
         {
 
-            if (originalDuration <= 0) //this card doesn't decay: never mind the rest
+            if (originalDurationOfCurrentElement <= 0) //this card doesn't decay.
+            {
+                decayView.gameObject.SetActive(false);
+                _originalDuration = 0f;
+                _durationRemaining = 0f;
                 return;
+            }
 
-            
+            _originalDuration = originalDurationOfCurrentElement;
+            _durationRemaining = currentDurationRemaining;
+
+
             //I'm very hazy on whether this does what it was originally intended to.
 
             // This handles moving the alpha value towards the desired target
             float cosmetic_dt =
                 Mathf.Max(interval, Time.deltaTime) *
                 2.0f; // This allows us to call AdvanceTime with 0 delta and still get animation
-            if (durationRemaining < originalDuration / 2)
+            if (ApproachingFinalDissolution() || _forceDisplayTimeRemaining)
                 decayAlpha = Mathf.MoveTowards(decayAlpha, 1.0f, cosmetic_dt);
             else
                 decayAlpha = Mathf.MoveTowards(decayAlpha, 0.0f, cosmetic_dt);
-            if (durationRemaining <= 0.0f)
+            if (_durationRemaining <= 0.0f)
                 decayAlpha = 0.0f;
 
-            if (decayView && decayView.gameObject)
+            if (decayView)
             {
-                decayView.gameObject.SetActive(decayAlpha > 0.0f);
+                decayView.gameObject.SetActive(_forceDisplayTimeRemaining || decayAlpha > 0.0f);
+ 
                 string cardDecayTimeString =
-                    Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
+                    Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(_durationRemaining);
 
                 decayCountText.text = cardDecayTimeString;
                 decayCountText.richText = true;
@@ -294,7 +309,7 @@ namespace SecretHistories.Manifestations
                 decayBackgroundImage.color = col;
             }
 
-            float percentageDecayed = 1 - durationRemaining / originalDuration;
+            float percentageDecayed = 1 - _durationRemaining / _originalDuration;
             percentageDecayed = Mathf.Clamp01(percentageDecayed);
             if (resaturate)
             {
@@ -305,8 +320,6 @@ namespace SecretHistories.Manifestations
             {
                 artwork.color = new Color(1f - percentageDecayed, 1f - percentageDecayed, 1f - percentageDecayed, 1f);
             }
-
-
 
         }
 
@@ -397,7 +410,7 @@ namespace SecretHistories.Manifestations
                 {
                     Destroy(gameObject);
                      callbackOnRetired();
-                 }
+                }
             }
 
             
