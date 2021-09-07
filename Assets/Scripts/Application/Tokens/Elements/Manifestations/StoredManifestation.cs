@@ -39,13 +39,13 @@ namespace SecretHistories.Manifestations
         public void Initialise(IManifestable manifestable)
         {
             name = "StoredManifestation_" + manifestable.Id;
-            elementFrame.PopulateDisplay(manifestable.Icon, 1, false);
+            elementFrame.PopulateDisplay(manifestable);
         }
 
         public void UpdateVisuals(IManifestable manifestable)
         {
             var element = Watchman.Get<Compendium>().GetEntityById<Element>(manifestable.EntityId);
-            elementFrame.PopulateDisplay(element.Icon, manifestable.Quantity, false);
+            elementFrame.PopulateDisplay(element, manifestable.Quantity, false);
         }
 
         public void SendNotification(INotification notification)

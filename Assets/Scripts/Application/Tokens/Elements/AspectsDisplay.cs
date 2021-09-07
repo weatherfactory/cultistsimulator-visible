@@ -47,7 +47,7 @@ namespace SecretHistories.UI
                 return; //...because it's hidden
 
             ElementFrame newElementFrame = Watchman.Get<PrefabFactory>().CreateLocally<ElementFrame>(transform);
-            newElementFrame.PopulateDisplay(aspectElement.Id, quantity,hasBrightBackground);
+            newElementFrame.PopulateDisplay(aspectElement, quantity,hasBrightBackground);
 
             if (isWithinDetailsWindow)
                 newElementFrame.SetAsDetailWindowChild();

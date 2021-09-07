@@ -8,6 +8,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
+using SecretHistories.Abstract;
 using SecretHistories.Entities;
 
 public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
@@ -30,16 +31,26 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     float width1Digit = 60f; //68f;
     float width0Digits = 40f;
 
-    public void PopulateDisplay(string elementId, int quantity, bool hasBrightBg = false)
+    public void PopulateDisplay(IManifestable manifestable)
     {
+        //If we've passed a manifestable here, we probably want to cast it as an element and display that. But maybe we want to convert
+        //it in a more complex way. This method leaves room for eg 'a verb but let's get a likely element from that'
+        string potentialElementId = manifestable.Id;
+        Element letsShowThisElementThen = Watchman.Get<Compendium>().GetEntityById<Element>(potentialElementId);
+        //might be the null element, that's ok
+        PopulateDisplay(letsShowThisElementThen,1);
 
-        var element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
+    }
+    
+
+        public void PopulateDisplay(Element element, int quantity, bool hasBrightBg = false)
+    {
 
         _aspect = element;
         Quantity = quantity;
         DisplayAImage(element);
         DisplayQuantity(quantity, hasBrightBg);
-        gameObject.name = "Element - " + elementId;
+        gameObject.name = "Element - " + element.Id;
     }
 
     private void DisplayAImage(Element element)
