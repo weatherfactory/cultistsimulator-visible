@@ -344,7 +344,6 @@ namespace SecretHistories.Spheres
             token.transform.localScale = Vector3.one;
       
             Choreographer.PlaceTokenAsCloseAsPossibleToSpecifiedPosition(token,context,token.Location.Anchored3DPosition);
-
         }
 
         public virtual void TryMoveAsideFor(Token potentialUsurper, Token incumbent,

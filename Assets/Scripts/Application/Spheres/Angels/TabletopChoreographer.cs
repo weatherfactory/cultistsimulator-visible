@@ -133,10 +133,14 @@ namespace SecretHistories.Constants {
 /// </summary>
         public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
 {
-    var freeLocalPosition= GetFreeLocalPosition(token, pos);
-    token.TokenRectTransform.anchoredPosition = freeLocalPosition;
+    Vector2 freeLocalPosition= GetFreeLocalPosition(token, pos);
+    //token.TokenRectTransform.anchoredPosition = freeLocalPosition;
+            Vector3 finalPositionAtTableLevel=new Vector3(freeLocalPosition.x,freeLocalPosition.y,_tabletop.transform.position.z);
+            token.TokenRectTransform.localPosition = finalPositionAtTableLevel;
 
-}
+
+
+        }
 
 public void MoveAllTokensOverlappingWith(Token pushingToken)
 		{

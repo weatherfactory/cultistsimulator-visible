@@ -23,7 +23,7 @@ using UnityEngine.EventSystems;
 namespace SecretHistories.Spheres
 {
     [IsEmulousEncaustable(typeof(Sphere))]
-    public class TabletopSphere : Sphere, IBeginDragHandler, IEndDragHandler
+    public class TabletopSphere : Sphere
     {
 #pragma warning disable 649
         [SerializeField] TabletopBackground _background;
@@ -144,7 +144,6 @@ namespace SecretHistories.Spheres
 
 
 
-
         // Tabletop specific
         public void CheckOverlappingTokens(Token token)
         {
@@ -172,16 +171,6 @@ namespace SecretHistories.Spheres
             else
                 tabletopManager.CloseAllDetailsWindows();
 
-        }
-
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            //can we make the table draggable rather than do the rect scroll thing?
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            //can we make the table draggable rather than do the rect scroll thing?
         }
 
 
