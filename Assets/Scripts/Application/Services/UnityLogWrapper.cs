@@ -10,7 +10,7 @@ namespace SecretHistories.Assets.Scripts.Application.Services
 {
    public class UnityLogWrapper: ILogSubscriber
    {
-       public VerbosityLevel Sensitivity => VerbosityLevel.Trivia;
+       public VerbosityLevel Sensitivity => VerbosityLevel.Significants;
         public void AddMessage(ILogMessage message)
         {
             string formattedMessage =

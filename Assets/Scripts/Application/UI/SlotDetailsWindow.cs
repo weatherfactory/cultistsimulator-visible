@@ -16,15 +16,15 @@ using SecretHistories.Enums;
 using SecretHistories.Enums.Elements;
 
 namespace SecretHistories.UI {
-    public class TokenDetailsWindow : AbstractDetailsWindow {
+    public class SlotDetailsWindow : AbstractDetailsWindow {
 
-        // coming in with header "Image" from BaseDetailsWindow
-        [SerializeField] GameObject decayView;
-        [SerializeField] TextMeshProUGUI decayCountText;
 
-        [Header("Card Infos")]
-        [SerializeField] GameObject cardInfoHolder;
-        [SerializeField] GameObject uniqueInfo;
+        [Header("Slot Infos")]
+        [SerializeField] GameObject slotInfoHolder;
+        [SerializeField] TextMeshProUGUI greedyInfo;
+        [SerializeField] TextMeshProUGUI consumesInfo;
+        [SerializeField] Image greedyIcon;
+        [SerializeField] Image consumesIcon;
 
         [Header("Deck Infos")]
         [SerializeField] TextMeshProUGUI deckInfos;
@@ -60,11 +60,26 @@ namespace SecretHistories.UI {
             //        return;
             //}
 
-            if(_stack!=null)
-                _stack.OnLifetimeSpent -= HandleOnTokenDecay;// remove decay listener if we had one on an old token
+
             this._element = element;
             this._stack = stack; // To be able to update the card's remaining time
             this.slotSpec = null;
+            this.deckSpec = null;
+            this.deckQuantity = 0;
+            Show();
+        }
+
+        public void ShowSlotDetails(SphereSpec slotSpec) {
+            /*
+            // Check if we'd show the same, if so: do nothing
+            if (this.slotSpec == slotSpec && gameObject.activeSelf)
+                return;
+			*/
+
+
+            this._element = null;
+            this._stack = null;
+            this.slotSpec = slotSpec;
             this.deckSpec = null;
             this.deckQuantity = 0;
             Show();
@@ -76,8 +91,7 @@ namespace SecretHistories.UI {
             if (this.deckSpec == deckSpec && this.deckQuantity == numCards && gameObject.activeSelf)
                 return;
 			*/
-            if(_stack!=null)
-              _stack.OnLifetimeSpent -= HandleOnTokenDecay; // remove decay listener if we had one on an old token
+
             this._element = null;
             this._stack = null;
             this.slotSpec = null;
@@ -87,7 +101,6 @@ namespace SecretHistories.UI {
         }
 
         protected override void ClearContent() {
-            _stack.OnLifetimeSpent -= HandleOnTokenDecay; // remove decay listener if we had one on an old token
 
             this._element = null;
             this._stack = null;
@@ -96,10 +109,7 @@ namespace SecretHistories.UI {
 
 
 
-        void HandleOnTokenDecay(float timeRemaining) {
-            if(_stack!=null) //seeing some nullreference errors in the Unity analytics; maybe this is being called after the token is no longer in the window?
-                ShowImageDecayTimer(true, Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(_stack.GetTimeshadow().LifetimeRemaining));
-        }
+
 
         protected override void UpdateContentAfterNavigation(NavigationArgs args)
         {
@@ -107,11 +117,7 @@ namespace SecretHistories.UI {
         }
 
         protected override void UpdateContent() {
-            if (_element != null) {
-                SetElementCard(_element, _stack);
-                _stack.OnLifetimeSpent += HandleOnTokenDecay;// Add decay listener if we need one
-            }
-            else if (slotSpec != null) {
+         if (slotSpec != null) {
 				SetSlot(slotSpec);
 				HighlightSlotCompatibleCards(slotSpec);
             }
@@ -133,20 +139,10 @@ namespace SecretHistories.UI {
             SetImageNarrow(false);
             ShowImage(sprite);
 
-            if (stack != null)
-            {
-                ShowImageDecayTimer(stack.GetTimeshadow().Transient,
-                    Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(stack.GetTimeshadow().LifetimeRemaining));
-                aspectsDisplayFlat.DisplayAspects(
-                    stack.GetAspects(false)); //token, not _element: cater for possible mutations
-            }
-            else
-                ShowImageDecayTimer(false);
-
             ShowText(element.Label, element.Description);
             SetTextMargin(true, element.Unique || element.Lifetime > 0); // if the general lifetime is > 0 it decays
 
-            ShowCardIcons(element.Unique, element.Lifetime > 0);
+            ShowSlotIcons(false, false); // Make sure the other hint icons are gone
             ShowDeckInfos(0); // Make sure the other hint icons are gone
             aspectsDisplayRequiredAndForbidden.Clear();
 
@@ -155,7 +151,7 @@ namespace SecretHistories.UI {
         void SetSlot(SphereSpec slotSpec)
 		{
             ShowImage(null);
-            ShowImageDecayTimer(false);
+  
 
 			string slotHeader		= Watchman.Get<ILocStringProvider>().Get("UI_SLOT");
 			string slotUnnamed		= Watchman.Get<ILocStringProvider>().Get("UI_ASPECT");
@@ -167,7 +163,8 @@ namespace SecretHistories.UI {
                 );
             SetTextMargin(false, slotSpec.Greedy || slotSpec.Consumes);
 
-            ShowCardIcons(false, false); // Make sure the other hint icons are gone
+
+            ShowSlotIcons(slotSpec.Greedy, slotSpec.Consumes);
             ShowDeckInfos(0); // Make sure the other hint icons are gone
 
             aspectsDisplayFlat.DisplayAspects(null);
@@ -180,12 +177,13 @@ namespace SecretHistories.UI {
 
             SetImageNarrow(true);
             ShowImage(sprite);
-            ShowImageDecayTimer(false);
+
 
             ShowText(deckId.Label, deckId.Description);
             SetTextMargin(sprite != null, true);
 
-            ShowCardIcons(false, false); // Make sure the other hint icons are gone
+ 
+            ShowSlotIcons(false, false); // Make sure the other hint icons are gone
             ShowDeckInfos(deckQuantity);
 
             aspectsDisplayFlat.DisplayAspects(null);
@@ -198,11 +196,6 @@ namespace SecretHistories.UI {
             artwork.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, narrow ? 65f : 100f);
         }
 
-        void ShowImageDecayTimer(bool show, string timeString = null) {
-            decayView.gameObject.SetActive(show);
-            decayCountText.text = timeString;
-			decayCountText.richText = true;
-        }
 
         void SetTextMargin(bool hasImage, bool hasHints)
 		{
@@ -212,19 +205,43 @@ namespace SecretHistories.UI {
             description.margin = new Vector4(hasImage ? 100f : 20f, 0f, 20f, 0f);
         }
 
-        void ShowCardIcons(bool isUnique, bool decays) {
-            cardInfoHolder.gameObject.SetActive(isUnique || decays);
-            uniqueInfo.gameObject.SetActive(isUnique);
+
+
+        void ShowSlotIcons(bool isGreedy, bool consumes) {
+            slotInfoHolder.gameObject.SetActive(isGreedy || consumes);
+            greedyInfo.gameObject.SetActive(isGreedy);
+            consumesInfo.gameObject.SetActive(consumes);
         }
-
-
 
         void ShowDeckInfos(int quantity) {
             deckInfos.enabled = quantity > 0;
             deckInfos.text = quantity > 0 ? Watchman.Get<ILocStringProvider>().Get("UI_UPCOMINGDRAWS") + quantity : null;
         }
 
-     
+        public void HighlightSlotIcon(SphereSpec slotSpec) {
+            if (infoHighlight != null)
+                StopCoroutine(infoHighlight);
+
+            // note can only Highlight one of the two
+
+            if (slotSpec.Greedy) {
+                infoHighlight = StartCoroutine(DoHighlightSlotIcon(greedyIcon, greedyInfo));
+            }
+            else {
+                greedyIcon.transform.localScale = Vector3.one;
+                greedyIcon.color = UIStyle.slotDefault;
+                greedyInfo.color = UIStyle.textColorLight;
+
+                if (slotSpec.Consumes) {
+                    infoHighlight = StartCoroutine(DoHighlightSlotIcon(consumesIcon, consumesInfo));
+                }
+                else {
+                    consumesIcon.transform.localScale = Vector3.one;
+                    consumesIcon.color = UIStyle.slotDefault;
+                    consumesInfo.color = UIStyle.textColorLight;
+                }
+            }
+        }
 
         IEnumerator DoHighlightSlotIcon(Image icon, TextMeshProUGUI text) {
             const float durationAttack = 0.2f;
@@ -279,8 +296,11 @@ namespace SecretHistories.UI {
                 var stacks = FindAllElementTokenssForSlotSpecificationOnTabletop(slotSpec);
 
                 foreach (var stack in stacks)
-                
-                    ShowFXonToken("FX/CardPingEffect", stack.transform);
+                {
+
+                    var cardPingPrefab = Resources.Load("/FX/CardPingEffect");
+                    ShowFXonToken(cardPingPrefab, stack.transform);
+                }
             }
         }
 
@@ -301,7 +321,7 @@ namespace SecretHistories.UI {
             return stackList;
         }
 
-        private void ShowFXonToken(string name, Transform parent)
+        private void ShowFXonToken(UnityEngine.Object fx, Transform parent)
         {
             var prefab = Resources.Load(name);
 

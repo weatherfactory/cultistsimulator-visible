@@ -33,6 +33,7 @@ namespace SecretHistories.UI {
 
         [Header("Token Details")]
         [SerializeField] TokenDetailsWindow tokenDetails;
+        [SerializeField] SlotDetailsWindow slotDetails;
         [SerializeField] AspectDetailsWindow aspectDetails;
 
         [SerializeField] NotificationWindow SaveErrorWindow;
@@ -110,8 +111,9 @@ namespace SecretHistories.UI {
         }
         
         public void ShowSlotDetails(SphereSpec slotSpec) {
-            tokenDetails.ShowSlotDetails(slotSpec);
-            tokenDetails.HighlightSlotIcon(slotSpec);
+            slotDetails.ShowSlotDetails(slotSpec);
+            slotDetails.HighlightSlotIcon(slotSpec);
+            tokenDetails.Hide();
             aspectDetails.Hide();
         }
 
